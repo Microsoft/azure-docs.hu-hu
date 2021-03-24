@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b74319581b4e74c63045afe73ee66b6efcf53c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585315"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955236"
 ---
 # <a name="azure-ad-built-in-roles"></a>Beépített Azure AD-szerepkörök
 
@@ -71,7 +71,7 @@ Ajánlott eljárásként Azt javasoljuk, hogy a szerepkört a szervezetnél keve
 > | [Csoportok rendszergazdája](#groups-administrator) | Ennek a szerepkörnek a tagjai csoportokat hozhatnak létre/kezelhetnek, csoportokat hozhatnak létre/kezelhetnek, például elnevezési és lejárati szabályzatokat, valamint csoportok tevékenység-és naplózási jelentéseket tekinthetnek | fdd7a751-b60b-444a-984c-02652fe8fa1c |
 > | [Vendég meghívója](#guest-inviter) | Meghívhatja a vendég felhasználókat a "tagok hívhatják meg a vendégeket" beállítástól függetlenül. | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [Segélyszolgálat rendszergazdája](#helpdesk-administrator) | Alaphelyzetbe állíthatja a nem rendszergazdák és az ügyfélszolgálati rendszergazdák jelszavát. | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
-> | [Hibrid identitás-rendszergazda](#hybrid-identity-administrator) | Az AD-t az Azure AD Felhőbeli üzembe helyezési és összevonási beállításainak kezelésére képes kezelni. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Hibrid identitás-rendszergazda](#hybrid-identity-administrator) | Az AD-t az Azure AD Cloud kiépítési, Azure AD Connect-és összevonási beállításaival kezelheti. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
 > | [Az Áttekintés rendszergazdája](#insights-administrator) | Rendszergazdai hozzáféréssel rendelkezik a Microsoft 365 bepillantást biztosító alkalmazásban. | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Üzleti vezető](#insights-business-leader) | Megtekintheti és megoszthatja az irányítópultokat és az ismereteket az M365-bepillantást használó alkalmazással. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune-rendszergazda](#intune-administrator) | Az Intune-termék minden aspektusát képes kezelni. | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
@@ -229,7 +229,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Yes |
+| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Igen |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -264,7 +264,7 @@ A [hitelesítési rendszergazda](#authentication-administrator) és az emelt [sz
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
 
 > [!IMPORTANT]
 > Ez a szerepkör jelenleg nem képes kezelni az MFA-beállításokat az örökölt MFA felügyeleti portálon.
@@ -997,7 +997,7 @@ Ezt a szerepkört korábban "password Administrator" néven nevezték a [Azure P
 
 ## <a name="hybrid-identity-administrator"></a>Hibrid identitás-rendszergazda
 
-Az ebben a szerepkörben lévő felhasználók létrehozhatják, kezelhetik és telepíthetik az AD-ből az Azure AD-be történő üzembe helyezési konfigurációt a felhőalapú kiépítés, valamint az összevonási beállítások kezelése révén. A felhasználók ezen szerepkör használatával is elhárítják és megfigyelheti a naplókat.
+Az ebben a szerepkörben lévő felhasználók létrehozhatják, kezelhetik és telepíthetik az AD-ből az Azure AD-be történő üzembe helyezési konfigurációt a felhő kiépítése, valamint a Azure AD Connect és az összevonási beállítások kezelése során. A felhasználók ezen szerepkör használatával is elhárítják és megfigyelheti a naplókat.
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -1402,7 +1402,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:

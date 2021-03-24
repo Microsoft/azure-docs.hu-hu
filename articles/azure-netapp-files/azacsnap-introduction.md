@@ -14,16 +14,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: b168167ce4f44d87c396746cca3f271f95f83163
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632684"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869956"
 ---
 # <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Mi az Azure Application konzisztens pillanatkép-eszköz (előzetes verzió)
 
-Az Azure Application konzisztens pillanatkép-eszköz (AzAcSnap) egy olyan parancssori eszköz, amely lehetővé teszi, hogy leegyszerűsítse a harmadik féltől származó adatbázisok SAP HANA (például a SUSE és a RHEL) adatvédelmi funkcióit.  
+Az Azure Application konzisztens pillanatkép-eszköz (AzAcSnap) egy olyan parancssori eszköz, amely lehetővé teszi a harmadik féltől származó adatbázisok adatvédelmét úgy, hogy az alkalmazás konzisztens állapotba helyezi őket, mielőtt a tárolási pillanatképet elvégezte.
+
+## <a name="supported-platforms-and-os"></a>Támogatott platformok és operációs rendszer
+
+- **Adatbázisok**
+  - SAP HANA (részletekért tekintse meg a [támogatási mátrixot](azacsnap-get-started.md#snapshot-support-matrix-from-sap) )
+
+- **Operációs rendszerek**
+  - SUSE Linux Enterprise Server 12 +
+  - Red Hat Enterprise Linux 7 +
 
 ## <a name="benefits-of-using-azacsnap"></a>A AzAcSnap használatának előnyei
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: bba912930a9dff0a79e0b0d81025b7524c238db0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f74a143859f0a6629c88f0dcb61a97697f49d0be
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94368678"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889229"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Rövid útmutató: privát végpont létrehozása az Azure CLI-vel
 
@@ -183,9 +183,9 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>A magánhálózati DNS-zóna konfigurálása
 
-Ebben a szakaszban a magánhálózati DNS-zónát az [az Network Private-DNS Zone Create](/cli/azure/ext/privatedns/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)paranccsal hozhatja létre és konfigurálja.  
+Ebben a szakaszban a magánhálózati DNS-zónát az [az Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)paranccsal hozhatja létre és konfigurálja.  
 
-Az az [Network Private-DNS link vnet Create](/cli/azure/ext/privatedns/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) paranccsal hozhatja létre a DNS-zónához tartozó virtuális hálózati kapcsolatot.
+Az az [Network Private-DNS link vnet Create](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) paranccsal hozhatja létre a DNS-zónához tartozó virtuális hálózati kapcsolatot.
 
 Hozzon létre egy DNS-zónát az [az Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create)paranccsal.
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
-ms.openlocfilehash: 087f284bed7ab0c9eb551c1629ab4f9196c80d76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1b4570b09994f292de2b175396e4b6d1882658d9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945697"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866488"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felületével
 
@@ -24,7 +24,7 @@ Ebből a dokumentumból megtudhatja, hogyan használhatja a Ambari webes felhasz
 
 Az [Apache Ambari](https://ambari.apache.org) egy könnyen használható webes felhasználói felületet biztosít a Hadoop-kezeléshez. A Ambari használatával felügyelheti és figyelheti a Hadoop-fürtöket. A fejlesztők a [AMBARI REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)-k használatával integrálhatja ezeket a képességeket alkalmazásaiba.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 A Ambari webes felhasználói felülete a HDInsight-fürtön érhető el `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
@@ -44,7 +44,7 @@ A Ambari webes felhasználói felületéhez való csatlakozáskor a rendszer fel
 
 Amikor megnyílik az oldal, jegyezze fel a felső sávot. Ez a sáv a következő információkat és vezérlőket tartalmazza:
 
-![Apache Ambari-irányítópult – áttekintés](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png" alt-text="Apache Ambari-irányítópult – áttekintés":::
 
 |Elem |Leírás |
 |---|---|
@@ -73,15 +73,15 @@ Az **októl** eltérő riasztások miatt a **# riasztások** bejegyzés jelenik 
 
 A riasztások több alapértelmezett csoportba vannak rendezve, amelyek a **riasztások** lapról jeleníthetők meg.
 
-![Apache Ambari-riasztások lapja – összefoglalás](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png" alt-text="Apache Ambari-riasztások lapja – összefoglalás":::
 
 A csoportokat a **műveletek** menü segítségével kezelheti, és a **riasztási csoportok kezelése** lehetőségre kattintva.
 
-![Apache Ambari – riasztási csoportok kezelése](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png" alt-text="Apache Ambari – riasztási csoportok kezelése":::
 
 A riasztási módszereket kezelheti, és riasztási értesítéseket hozhat létre a **műveletek** menüből az __értesítések kezelése__ lehetőség kiválasztásával. Minden aktuális értesítés megjelenik. Hozzon létre értesítéseket innen. Értesítéseket küldhet **e-mailben** vagy **SNMP** -n, ha adott riasztási/súlyossági kombinációk történnek. Küldhet például egy e-mailt, ha a **fonal alapértelmezett** csoportjában lévő bármelyik riasztás **kritikus** értékre van állítva.
 
-![Apache Ambari riasztási értesítés létrehozása](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png" alt-text="Apache Ambari riasztási értesítés létrehozása":::
 
 Végül, ha a __műveletek__ menüben a __riasztási beállítások kezelése__ lehetőséget választja, megadhatja, hogy a riasztások hányszor legyenek elküldve az értesítés elküldése előtt. Ezzel a beállítással elkerülhetők az átmeneti hibák értesítései.
 
@@ -91,29 +91,29 @@ Az ingyenes [SendGrid-fiókkal](../sendgrid-dotnet-how-to-send-email.md)rendelke
 
 Az irányítópult **metrikák** lapja több widgetet tartalmaz, amelyek megkönnyítik a fürt állapotának figyelését egy pillantással. Több widget (például **CPU-használat**) esetén további információk is megadhatók a kattintáskor.
 
-![Apache Ambari-irányítópult metrikákkal](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png" alt-text="Apache Ambari-irányítópult metrikákkal":::
 
 A **intenzitástérképei** lap színes intenzitástérképei jeleníti meg a metrikákat, zöldről pirosra haladva.
 
-![Apache Ambari-irányítópult a intenzitástérképei](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png" alt-text="Apache Ambari-irányítópult a intenzitástérképei":::
 
 A fürtben lévő csomópontokkal kapcsolatos további információkért válassza a **gazdagépek** lehetőséget. Ezután válassza ki azt a csomópontot, amelyre kíváncsi.
 
-![Apache Ambari-gazdagép összegzése – részletek](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png" alt-text="Apache Ambari-gazdagép összegzése – részletek":::
 
 ### <a name="services"></a>Szolgáltatások
 
 Az irányítópulton található **szolgáltatások** oldalsáv gyors betekintést nyújt a fürtön futó szolgáltatások állapotával. A különböző ikonok jelzik az állapotot vagy a végrehajtandó műveleteket. A sárga Lomtár például akkor jelenik meg, ha egy szolgáltatást újra kell indítani.
 
 
-![Apache Ambari-szolgáltatások oldalsó sáv](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png" alt-text="Apache Ambari-szolgáltatások oldalsó sáv":::
 
 > [!NOTE]  
 > A megjelenített szolgáltatások különböznek a HDInsight-fürtök típusai és verziói között. Az itt megjelenő szolgáltatások eltérhetnek a fürthöz megjelenített szolgáltatástól.
 
 A szolgáltatás kiválasztása részletesebb információkat jelenít meg a szolgáltatásról.
 
-![Apache Ambari szolgáltatás – összefoglaló információk](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png" alt-text="Apache Ambari szolgáltatás – összefoglaló információk":::
 
 #### <a name="quick-links"></a>Gyorshivatkozások
 
@@ -142,7 +142,7 @@ A felhasználók, csoportok és engedélyek használata támogatott. A helyi fel
 
 A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gazdagépek kezeléséhez kövesse az alábbi lépéseket.
 
-![Az Apache Ambari hosts oldalának áttekintése](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png" alt-text="Az Apache Ambari hosts oldalának áttekintése":::
 
 > [!NOTE]  
 > A gazdagépek hozzáadása, leszerelése és újraüzembe helyezése nem használható HDInsight-fürtökkel.
@@ -179,7 +179,7 @@ Míg a **műveletek** gomb újraindíthatja az összes szolgáltatást, gyakran 
 
 2. Az **Összefoglalás** lap tetején kattintson a **szolgáltatási műveletek** gombra, és válassza ki az elvégzendő műveletet. Ez a művelet újraindítja a szolgáltatást az összes csomóponton.
 
-    ![Az Apache Ambari egyedi szolgáltatási műveletei](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
+    :::image type="content" source="./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png" alt-text="Az Apache Ambari egyedi szolgáltatási műveletei":::
 
    > [!NOTE]  
    > Bizonyos szolgáltatások újraindítása, amíg a fürt fut, riasztásokat hozhatnak. A riasztások elkerülése érdekében a **szolgáltatás műveletei** gomb használatával engedélyezheti a **karbantartási módot** a szolgáltatás számára az újraindítás előtt.
@@ -195,7 +195,7 @@ A szolgáltatás konfigurálásához kövesse az alábbi lépéseket:
 
 2. Válassza a **konfigurációk** fület. Megjelenik az aktuális konfiguráció. Megjelenik a korábbi konfigurációk listája is.
 
-    ![Apache Ambari szolgáltatás konfigurációja](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
+    :::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png" alt-text="Apache Ambari szolgáltatás konfigurációja":::
 
 3. A megjelenített mezők használatával módosítsa a konfigurációt, majd válassza a **Mentés** lehetőséget. Vagy válasszon egy korábbi konfigurációt, majd válassza az **aktuális** lehetőséget az előző beállításokra való visszalépéshez.
 

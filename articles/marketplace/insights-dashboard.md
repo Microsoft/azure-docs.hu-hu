@@ -4,15 +4,15 @@ description: Hozzáférés a piactér webes elemzési szolgáltatásához a part
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553935"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953272"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>A Marketplace Insights irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -115,7 +115,9 @@ Ez a táblázat a meglátogatott oldalak megtekintését, valamint a kiválaszto
 | Kapcsolatfelvétel | Kapcsolatfelvétel | A "Contact me" CTA-ra való kattintások száma az ajánlat oldalán egy adott dátumra vonatkozóan. | ContactMe |
 | Tesztverzió | Tesztverzió | A "tesztvezetés" CTA-re való kattintások száma az ajánlat lapján egy adott dátumra vonatkozóan. | TestDrive |
 | Ingyenes próba | Ingyenes próba | Az "ingyenes próbaverzió" CTA-ra való kattintások száma az ajánlat oldalán egy adott dátumra vonatkozóan. | FreeTrial |
-|||||
+| Kampány | A kampány neve | Képes megérteni a webes telemetria (oldal-és CTA-kattintásokat) a kampány nevével. | Kampány |
+| n.a. | Hely | Annak a kirakatnak a neve, amelyből a lap látogatása vagy CTA elemre kattintva sor került. Lehetséges értékek:<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | Hely |
+|
 
 ## <a name="next-steps"></a>Következő lépések
 

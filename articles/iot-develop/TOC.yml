@@ -18,7 +18,11 @@
         - name: Telemetria küldése IoT Hub (csomópont)
           href: quickstart-send-telemetry-cli-node.md
     - name: Ismerkedés a beágyazott fejlesztéssel
-      href: quickstart-device-development.md
+      items:
+        - name: Beágyazott eszközök fejlesztésének gyors lépései
+          href: quickstart-device-development.md
+        - name: MXCHIP-AZ3166 összekötése IoT Central
+          href: quickstart-devkit-mxchip-az3166.md
 - name: Oktatóanyagok
   items:
     - name: IoT-eszközök biztonságos csatlakoztatása a felhőhöz

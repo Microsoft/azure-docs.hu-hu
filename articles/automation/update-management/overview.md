@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: e24a90f05ef52c5164ce966e905e9c27055d1bf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e5deefabd6a37dbfece9f32abdce5d5144681238
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670613"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950059"
 ---
 # <a name="update-management-overview"></a>Az Update Management áttekintése
 
@@ -22,7 +22,7 @@ Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben
 > [!NOTE]
 > Jelenleg a Update Management engedélyezése közvetlenül egy ív-kompatibilis kiszolgálóról nem támogatott. A követelmények megismeréséhez és a kiszolgáló engedélyezéséhez lásd: [Update Management engedélyezése az Automation-fiókból](../../automation/update-management/enable-from-automation-account.md) .
 
-Ha az Azure-beli virtuális gépen automatikusan le szeretné tölteni és telepíteni kívánja a *kritikus* és *biztonsági* javításokat, tekintse át a Windows rendszerű virtuális gépekhez készült automatikus virtuálisgép- [javítás](../../virtual-machines/windows/automatic-vm-guest-patching.md)
+Ha az Azure-beli virtuális gépen automatikusan le szeretné tölteni és telepíteni kívánja a *kritikus* és *biztonsági* javításokat, tekintse át a Windows rendszerű virtuális gépekhez készült automatikus virtuálisgép- [javítás](../../virtual-machines/automatic-vm-guest-patching.md)
 
 A Update Management üzembe helyezése és a gépek felügyelethez való engedélyezése előtt győződjön meg arról, hogy az alábbi részben található információk ismerete szükséges.  
 
@@ -167,11 +167,11 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Description |
+| Csatlakoztatott forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Yes |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 

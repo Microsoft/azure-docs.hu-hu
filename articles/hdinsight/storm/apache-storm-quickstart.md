@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
 ms.custom: mvc
-ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b0434065b06f25320a0666937fd7969c863b33
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928857"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870211"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rövid útmutató: Apache Storm topológia létrehozása és figyelése az Azure HDInsight
 
@@ -48,7 +48,7 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
 
 2. A **topológia összegzése** területen válassza ki a **WordCount** bejegyzést a **Name (név** ) oszlopban. Megjelennek a topológiával kapcsolatos információk.
 
-    ![A Storm irányítópultja a Storm Starter WordCount-topológiára vonatkozó információkkal.](./media/apache-storm-quickstart/hdi-topology-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-topology-summary.png" alt-text="A Storm irányítópultja a Storm Starter WordCount-topológiára vonatkozó információkkal." border="true":::
 
     Az új oldal a következő információkat tartalmazza:
 
@@ -65,7 +65,7 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
 
 3. Válassza ki a jelen lapon található **Spoutok** vagy **Boltok** szakaszok bejegyzéseinek egyikét. Ekkor információk jelennek meg a kiválasztott összetevővel kapcsolatban.
 
-    ![A Storm irányítópultja a kiválasztott összetevőkkel kapcsolatos információkkal.](./media/apache-storm-quickstart/hdi-component-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-component-summary.png" alt-text="A Storm irányítópultja a kiválasztott összetevőkkel kapcsolatos információkkal." border="true":::
 
     Az új oldalon az alábbi információk jelennek meg:
 

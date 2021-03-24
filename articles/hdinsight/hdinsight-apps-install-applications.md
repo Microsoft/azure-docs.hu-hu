@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: cfbbc1f11a24379561df26e2fb8d9da20b249317
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46a22b78ade3d137f25b14e5cbdaff3264208228
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942737"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868392"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Apache Hadoop alkalmazások telepítése az Azure HDInsight
 
@@ -20,7 +20,7 @@ An méretű HDInsight alkalmazás egy olyan alkalmazás, amelyet a felhasználó
 
 A közzétett alkalmazások a következő listában láthatók:
 
-|Alkalmazás |Fürt típusa (i) | Description |
+|Alkalmazás |Fürt típusa (i) | Leírás |
 |---|---|---|
 |[AtScale Intelligence platform](https://aws.amazon.com/marketplace/pp/AtScale-AtScale-Intelligence-Platform/B07BWWHH18) |Hadoop |A AtScale bekapcsolja a HDInsight-fürtöt egy kibővített OLAP-kiszolgálóra, amely lehetővé teszi, hogy több milliárd sornyi adatsort interaktív módon tudjon lekérdezni a már ismert BI-eszközökkel, a saját és a szeretettel – a Microsoft Excel, a Power BI, a tabló szoftver és a QlikView használatával. |
 |[CDAP a HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |A CDAP az első olyan egységesített integrációs big data platform, amely felgyorsítja a Hadoop értékét, és lehetővé teszi az informatikai szolgáltatások számára az önkiszolgáló adattárolást. A nyílt forráskód és a bővíthető CDAP eltávolítja az innováció akadályait. Követelmények: 4 régiós csomópont, min D3 v2. |
@@ -53,10 +53,10 @@ Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazások
 3. Válasszon ki egy HDInsight-fürtöt a listából.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. A **Beállítások** kategóriában válassza az **alkalmazások** lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
    
-    ![HDInsight-alkalmazások menü a portálon](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png" alt-text="HDInsight-alkalmazások portál menü":::
 5. Válassza a **+ Hozzáadás** lehetőséget a menüből. Megtekintheti az elérhető alkalmazások listáját.  Ha a **+ Hozzáadás** szürkén jelenik meg, az azt jelenti, hogy a HDInsight-fürt ezen verziójához nem tartoznak alkalmazások.
    
-    ![HDInsight-alkalmazások, elérhető alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png" alt-text="HDInsight alkalmazások elérhető alkalmazások":::
 6. Válasszon ki egyet az elérhető alkalmazások közül, majd kövesse az utasításokat a jogi feltételek elfogadásához.
 
 A telepítési állapotot a portál értesítései között tekintheti meg (a portál tetején található harang ikonra kattintva). Az alkalmazás telepítése után az alkalmazás megjelenik a telepített alkalmazások listájában.
@@ -65,7 +65,7 @@ A telepítési állapotot a portál értesítései között tekintheti meg (a po
 
 HDInsight-alkalmazásokat fürt létrehozása közben is telepíthet. A HDInsight-alkalmazásokat azt követően telepíti a rendszer, hogy a fürt létrejött, és futó állapotba került. Ha az alkalmazásokat a Azure Portal használatával szeretné telepíteni a fürt létrehozása során, a **konfiguráció + díjszabás** lapon válassza az **+ alkalmazás hozzáadása** lehetőséget.
 
-![Fürtözött konfigurációs alkalmazások Azure Portal](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
+:::image type="content" source="./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png" alt-text="Fürtözött konfigurációs alkalmazások Azure Portal":::
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Telepített HDInsight-alkalmazások és az alkalmazástulajdonságok listázása
 A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásokat, valamint az egyes telepített alkalmazásokhoz tartozó tulajdonságokat.
@@ -77,7 +77,7 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
 3. Válasszon ki egy HDInsight-fürtöt a listából.
 4. A **Beállítások** kategóriában válassza az **alkalmazások** lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
    
-    ![HDInsight-alkalmazások, telepített alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png" alt-text="HDInsight alkalmazások telepített alkalmazásai":::
 5. Válassza ki az egyik telepített alkalmazást a tulajdonság megjelenítéséhez. A tulajdonságok listája:
 
     |Tulajdonság | Leírás |
@@ -86,7 +86,7 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
     |Állapot |Az alkalmazás állapota. |
     |Weblap |A peremhálózati csomóponton üzembe helyezett webalkalmazás URL-címe. A hitelesítő adatok ugyanazok, mint amelyeket a fürthöz beállított HTTP-felhasználónál használt. |
     |SSH-végpont |Az SSH használatával csatlakozhat a peremhálózati csomóponthoz. Az SSH hitelesítő adatai ugyanazok, mint amelyeket a fürthöz beállított SSH-felhasználónál használt. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Description | Az alkalmazás leírása. |
+    |Leírás | Az alkalmazás leírása. |
 
 6. Egy alkalmazás törléséhez kattintson a jobb gombbal az alkalmazásra, majd a helyi menüben kattintson a **Törlés** parancsra.
 

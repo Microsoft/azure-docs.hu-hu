@@ -4,12 +4,12 @@ description: Hogyan biztosítható a maximális rendelkezésre állás és konzi
 ms.topic: article
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cd446cf86c22b851bae9cb9d8535a8e5234e08b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e014a33e94fe7f90569dd2ef1e9b620eef274842
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722531"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952864"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubsban
 Ez a cikk az Azure Event Hubs által támogatott rendelkezésre állásról és konzisztenciaról nyújt információkat. 
@@ -43,7 +43,7 @@ Azt javasoljuk, hogy a partíciók adatainak megadása nélkül küldje el az es
 Ebből a szakaszból megtudhatja, hogyan küldhet eseményeket egy adott partícióra különböző programozási nyelvek használatával. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
-Ha egy adott partícióra szeretne eseményeket küldeni, hozza létre a köteget a [EventHubProducerClient. CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) metódussal a `PartitionId` vagy a `PartitionKey` in [CreateBatchOptions](/dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions?view=azure-dotnet)megadásával. A következő kód a partíciós kulcs megadásával küldi el az események kötegét egy adott partícióra. Event Hubs biztosítja, hogy a partíciós kulcs értékeit megosztó összes esemény együtt, az érkezési sorrendben legyen tárolva.
+Ha egy adott partícióra szeretne eseményeket küldeni, hozza létre a köteget a [EventHubProducerClient. CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) metódussal a `PartitionId` vagy a `PartitionKey` in [CreateBatchOptions](/dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions)megadásával. A következő kód a partíciós kulcs megadásával küldi el az események kötegét egy adott partícióra. Event Hubs biztosítja, hogy a partíciós kulcs értékeit megosztó összes esemény együtt, az érkezési sorrendben legyen tárolva.
 
 ```csharp
 var batchOptions = new CreateBatchOptions { PartitionKey = "cities" };

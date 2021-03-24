@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c7125e25c9716a9934c97f9f8f85666d264d5f89
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946805"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866947"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Az Excel és az Apache Hadoop csatlakoztatása az Azure HDInsightban a Microsoft Hive ODBC-illesztővel
 
@@ -37,7 +37,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy struktúra ODBC-ad
 
 1. A Windowsban navigáljon a **Start > Windows felügyeleti eszközök > ODBC-adatforrások (32 bites)/(64 bites)** elemre.  Ez a művelet megnyitja az **ODBC-adatforrás felügyeleti** ablakát.
 
-    ![OBDC-adatforrás rendszergazdája](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "ADATFORRÁS konfigurálása az ODBC-adatforrás rendszergazdájával")
+   :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png" alt-text="OBDC-adatforrás rendszergazdája" border="true":::
 
 1. A **felhasználói DSN** lapon válassza a **Hozzáadás** lehetőséget az **új adatforrás létrehozása** ablak megnyitásához.
 
@@ -63,7 +63,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy struktúra ODBC-ad
    |  Beolvasott sorok száma blokkban |Nagy számú rekord beolvasása esetén a paraméter finomhangolása az optimális teljesítmény biztosítása érdekében szükséges lehet. |
    |  Alapértelmezett karakterlánc-oszlop hossza, Bináris oszlop hossza, decimális oszlop mérete |Az adattípus hossza és pontossága befolyásolhatja az adatvisszaadás módját. A pontosság és a csonkítás elvesztése miatt helytelen adatokat ad vissza. |
 
-    ![Speciális DSN-konfigurációs beállítások](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Speciális DSN-konfigurációs beállítások")
+    :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png" alt-text="Speciális DSN-konfigurációs beállítások" border="true":::
 
 1. Válassza a **teszt** lehetőséget az adatforrás teszteléséhez. Ha az adatforrás megfelelően van konfigurálva, a teszt eredménye a **sikert mutatja.**
 
@@ -81,7 +81,7 @@ A következő lépések leírják, hogyan importálhat egy struktúra-táblázat
 
 2. Az **adatok** lapon navigáljon az **adatok beolvasása**  >  **más forrásokból** az ODBC-ből,  >   hogy elindítsa a **from ODBC** ablakot.
 
-    ![Az Excel-adatkapcsolatok varázsló megnyitása](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Az Excel-adatkapcsolatok varázsló megnyitása")
+   :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png" alt-text="Az Excel-adatkapcsolatok varázsló megnyitása" border="true":::
 
 3. A legördülő listában válassza ki az előző szakaszban létrehozott adatforrás nevét, majd kattintson az **OK gombra**.
 
@@ -89,7 +89,7 @@ A következő lépések leírják, hogyan importálhat egy struktúra-táblázat
 
 5. A **Navigátorban** navigáljon a **kaptár**  >  **alapértelmezett**  >  **hivesampletable**, majd válassza a **Betöltés** lehetőséget. Néhány percet vesz igénybe, mielőtt az Excelbe importálja az adatimportálást.
 
-    ![HDInsight Excel-struktúra ODBC-navigátor](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel-struktúra ODBC-navigátor")
+   :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png" alt-text="HDInsight Excel-struktúra ODBC-navigátor" border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 

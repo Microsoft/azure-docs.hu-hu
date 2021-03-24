@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944005"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869468"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Működővé tenni ML Services-fürt az Azure HDInsight
 
@@ -53,31 +53,31 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
 1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához**.
 
-    ![R Server felügyeleti segédprogram kiválasztása](./media/r-server-operationalize/admin-util-one-box-1.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-1.png" alt-text="R Server felügyeleti segédprogram kiválasztása" border="true":::
 
 1. Ezzel a lehetőséggel megadhatja, hogyan szeretné működővé tenni ML Server. A megjelenő beállítások közül válassza ki az elsőt a következő beírásával **:.**
 
-    ![R Server felügyeleti segédprogram működővé tenni](./media/r-server-operationalize/admin-util-one-box-2.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-2.png" alt-text="R Server felügyeleti segédprogram működővé tenni" border="true":::
 
 1. Ha a rendszer kéri, írja be és írja be újra a helyi rendszergazda felhasználó jelszavát.
 
 1. A művelet sikerességét sugalló kimenetnek kell megjelennie. A menüben egy másik lehetőséget is meg kell adnia. Válassza az E lehetőséget a főmenüre való visszatéréshez.
 
-    ![Az R Server felügyeleti segédprogramjának sikeressége](./media/r-server-operationalize/admin-util-one-box-3.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-3.png" alt-text="Az R Server felügyeleti segédprogramjának sikeressége" border="true":::
 
 1. A diagnosztikai ellenőrzéseket a következőképpen végezheti el diagnosztikai tesztek futtatásával:
 
     a. A főmenüben válassza a **6** lehetőséget a diagnosztikai tesztek futtatásához.
 
-    ![R Server felügyeleti segédprogram diagnosztika](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="R Server felügyeleti segédprogram diagnosztika" border="true":::
 
     b. A diagnosztikai tesztek menüből válassza ki **a** következőt:. Ha a rendszer kéri, adja meg a helyi rendszergazda felhasználóhoz megadott jelszót.
 
-    ![R Server felügyeleti segédprogram tesztelése](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="R Server felügyeleti segédprogram tesztelése" border="true":::
 
     c. Győződjön meg arról, hogy a kimenetben látható, hogy a teljes állapot pass.
 
-    ![R Server felügyeleti segédprogram pass](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic3.png" alt-text="R Server felügyeleti segédprogram pass" border="true":::
 
     d. A megjelenő menüben adja meg az **E** gombot a főmenühöz való visszatéréshez, majd írja be a **8-as** értéket a felügyeleti segédprogramból való kilépéshez.
 
@@ -154,7 +154,7 @@ A munkavégző csomópontok leszereléséhez kövesse az alábbi lépéseket:
 
 1. Kattintson a **műveletek**  >  **kiválasztott gazdagépek**  >  **gazdagépek**  >  **karbantartási mód bekapcsolása** elemre. A következő képen például a wn3 és a wn4 pontokat választottuk ki leszerelésre.  
 
-   ![Az Apache Ambari bekapcsolja a karbantartási módot](./media/r-server-operationalize/get-started-operationalization.png)  
+   :::image type="content" source="./media/r-server-operationalize/get-started-operationalization.png" alt-text="Az Apache Ambari bekapcsolja a karbantartási módot" border="true":::  
 
 * Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **leszerelés** elemre.
 * Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **leszerelés** elemre.

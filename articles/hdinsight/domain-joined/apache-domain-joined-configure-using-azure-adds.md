@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f478b97464cd47e9d0e04bfe83bd48a2b3bfe7c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946915"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867100"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>HDInsight-fürtök konfigurálása Azure Active Directory integrációhoz Enterprise Security Package
 
@@ -70,7 +70,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 Azure Active Directory Domain Services állapotának megtekintése a **kezelés** kategória **állapot** parancsával. Győződjön meg arról, hogy az Azure AD DS állapota zöld (fut), és a szinkronizálás befejeződött.
 
-![Azure AD DS állapot](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png" alt-text="Azure AD DS állapot" border="true":::
 
 ### <a name="create-and-authorize-a-managed-identity"></a>Felügyelt identitás létrehozása és engedélyezése
 
@@ -82,7 +82,7 @@ Az ESP-fürtök beállításához hozzon létre egy felhasználó által hozzár
 
 Ezután rendelje hozzá a **HDInsight tartományi szolgáltatások közreműködői** szerepkört a felügyelt identitáshoz az Azure AD DS **hozzáférés-vezérlésében** . A szerepkör-hozzárendelés végrehajtásához Azure AD DS rendszergazdai jogosultságok szükségesek.
 
-![Azure Active Directory Domain Services hozzáférés-vezérlés](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png" alt-text="Azure Active Directory Domain Services hozzáférés-vezérlés" border="true":::
 
 A **HDInsight tartományi szolgáltatások közreműködői** szerepkörének hozzárendelésével biztosíthatja, hogy ez az identitás megfelelő ( `on behalf of` ) hozzáférést biztosítson az Azure AD DS tartományban található tartományi szolgáltatások műveleteihez. Ezek a műveletek magukban foglalják a szervezeti egységek létrehozását és törlését.
 
@@ -90,7 +90,7 @@ Miután a felügyelt identitás megkapta a szerepkört, az Azure AD DS rendszerg
 
 Az Azure AD DS rendszergazdája például hozzárendelheti ezt a szerepkört a **sjmsi** által felügyelt identitás **MarketingTeam** csoportjához. Az alábbi képen egy példa látható. Ez a hozzárendelés biztosítja, hogy a szervezet megfelelő tagjai a felügyelt identitás használatával ESP-fürtöket hozzanak létre.
 
-![HDInsight felügyelt identitás-kezelő szerepkör-hozzárendelés](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png" alt-text="HDInsight felügyelt identitás-kezelő szerepkör-hozzárendelés" border="true":::
 
 ### <a name="network-configuration"></a>Hálózati konfiguráció
 
@@ -99,17 +99,17 @@ Az Azure AD DS rendszergazdája például hozzárendelheti ezt a szerepkört a *
 
 Az Azure AD DS engedélyezése. Ezután egy helyi tartománynévrendszer-(DNS-) kiszolgáló fut a Active Directory virtuális gépeken (VM). Konfigurálja az Azure AD DS Virtual Network szolgáltatást ezeknek az egyéni DNS-kiszolgálóknak a használatára. A megfelelő IP-címek megkereséséhez válassza a **kezelés** kategória **Tulajdonságok** elemét, és keresse meg **a virtuális hálózat IP-címe** elemét.
 
-![Helyi DNS-kiszolgálók IP-címeinek megkeresése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png" alt-text="Helyi DNS-kiszolgálók IP-címeinek megkeresése" border="true":::
 
 Módosítsa a DNS-kiszolgálók konfigurációját az Azure AD DS Virtual Network szolgáltatásban. Ha ezeket az egyéni IP-címeket szeretné használni, válassza a **DNS-kiszolgálók** lehetőséget a **Beállítások** kategóriában. Ezután válassza az **Egyéni** lehetőséget, adja meg az első IP-címet a szövegmezőben, majd kattintson a **Mentés** gombra. Adja hozzá a további IP-címeket ugyanezen lépések végrehajtásával.
 
-![A virtuális hálózat DNS-konfigurációjának frissítése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png" alt-text="A virtuális hálózat DNS-konfigurációjának frissítése" border="true":::
 
 Az Azure AD DS-példány és a HDInsight-fürt is egyszerűbben helyezhető el ugyanabban az Azure-beli virtuális hálózaton. Ha különböző virtuális hálózatokat kíván használni, ezeket a virtuális hálózatokat egyenrangúként kell megadnia, hogy a tartományvezérlő látható legyen a HDInsight virtuális gépek számára. További információ: [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md).
 
 A virtuális hálózatok társítása után konfigurálja a HDInsight virtuális hálózatot egyéni DNS-kiszolgáló használatára. Adja meg az Azure AD DS magánhálózati IP-címeket a DNS-kiszolgáló címeiként. Ha mindkét virtuális hálózat ugyanazokat a DNS-kiszolgálókat használja, az egyéni tartománynevet a megfelelő IP-címhez fogja feloldani, és elérhető lesz a HDInsight. Ha például a tartománynév `contoso.com` , akkor ezt a lépést követően `ping contoso.com` a megfelelő Azure AD DS IP-címen kell feloldania.
 
-![Egyéni DNS-kiszolgálók konfigurálása egy egyenrangú virtuális hálózathoz](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png" alt-text="Egyéni DNS-kiszolgálók konfigurálása egy egyenrangú virtuális hálózathoz" border="true":::
 
 Ha hálózati biztonsági csoport (NSG) szabályokat használ a HDInsight-alhálózatban, engedélyezze a [szükséges IP-címeket](../hdinsight-management-ip-addresses.md) a bejövő és a kimenő forgalomhoz is.
 
@@ -126,11 +126,11 @@ A HDInsight-azonosító- [átvitelszervező](identity-broker.md) szolgáltatás 
 > [!NOTE]  
 > Az ESP-fürtök nevének első hat karakterének egyedinek kell lennie a környezetben. Ha például több ESP-fürttel rendelkezik különböző virtuális hálózatokban, válasszon egy elnevezési konvenciót, amely biztosítja, hogy a fürt neveinek első hat karaktere egyedi legyen.
 
-![Tartomány-érvényesítés az Azure HDInsight Enterprise Security Package](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png" alt-text="Tartomány-érvényesítés az Azure HDInsight Enterprise Security Package" border="true":::
 
 Az ESP engedélyezése után a rendszer automatikusan észleli és ellenőrzi az Azure AD DShoz kapcsolódó gyakori helytelen konfigurációkat. A hibák elhárítása után folytassa a következő lépéssel.
 
-![Az Azure HDInsight Enterprise Security Package sikertelen volt a tartomány ellenőrzése](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png" alt-text="Az Azure HDInsight Enterprise Security Package sikertelen volt a tartomány ellenőrzése" border="true":::
 
 Ha ESP-vel rendelkező HDInsight-fürtöt hoz létre, a következő paramétereket kell megadnia:
 
@@ -142,7 +142,7 @@ Ha ESP-vel rendelkező HDInsight-fürtöt hoz létre, a következő paraméterek
 
 A létrehozott felügyelt identitás kiválasztható a **felhasználó által hozzárendelt felügyelt identitás** legördülő listából, ha új fürtöt hoz létre.
 
-![Azure HDInsight ESP Active Directory Domain Services felügyelt identitás](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
+Az :::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png" alt-text="Azure HDINSIGHT ESP Active Directory Domain Services felügyelt identitást" border="true":::.
 
 ## <a name="next-steps"></a>Következő lépések
 

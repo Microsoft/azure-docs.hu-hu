@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 551d985ea78e83397e507676c5fd7ecfce12ff7b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945569"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864244"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-lekérdezések optimalizálása az Azure HDInsightban
 
@@ -34,11 +34,11 @@ A munkavégző csomópontok számának növelése egy HDInsight-fürtben lehető
 
 * Fürt létrehozásakor megadhatja a munkavégző csomópontok számát a Azure Portal, a Azure PowerShell vagy a parancssori felület használatával.  További információ: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md). Az alábbi képernyőfelvételen a Azure Portal munkavégző csomópontjának konfigurációja látható:
   
-    ![Azure Portal fürt méretének csomópontjai](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png" alt-text="Azure Portal fürt méretének csomópontjai":::
 
 * A létrehozást követően szerkesztheti a munkavégző csomópontok számát úgy, hogy az újbóli létrehozása nélkül is kibővítse a fürtöt:
 
-    ![Azure Portal méretezési fürt mérete](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png " alt-text="Azure Portal méretezési fürt mérete":::
 
 További információ a HDInsight skálázásáról: HDInsight- [fürtök méretezése](hdinsight-scaling-best-practices.md)
 
@@ -46,7 +46,7 @@ További információ a HDInsight skálázásáról: HDInsight- [fürtök méret
 
 Az [Apache TEZ](https://tez.apache.org/) egy alternatív végrehajtási motor a MapReduce motorhoz. A Linux-alapú HDInsight-fürtök alapértelmezés szerint engedélyezve vannak a TEZ.
 
-![HDInsight Apache TEZ – áttekintési diagram](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png" alt-text="HDInsight Apache TEZ – áttekintési diagram":::
 
 A TEZ az alábbiak miatt gyorsabb:
 
@@ -70,7 +70,7 @@ Az I/O műveletek a kaptár-lekérdezések futtatásának legnagyobb teljesítm�
 
 A struktúra particionálását úgy valósítja meg, hogy átrendezi a nyers adattárakat új címtárakba. Minden partíció saját könyvtárral rendelkezik. A particionálást a felhasználó határozza meg. Az alábbi ábrán egy struktúra-táblázat particionálását mutatjuk be az oszlop *év* szerint. A rendszer minden évben létrehoz egy új könyvtárat.
 
-![HDInsight Apache Hive particionálás](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png" alt-text="HDInsight Apache Hive particionálás":::
 
 Néhány particionálási szempont:
 

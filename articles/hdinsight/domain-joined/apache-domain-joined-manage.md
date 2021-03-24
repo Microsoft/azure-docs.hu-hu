@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket Enterpr
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/04/2019
-ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc31c3d71590a6b8c0b324ffcb8c10129a9f8699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742211"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863241"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
 
@@ -116,7 +116,7 @@ A HDInsight Enterprise Security Package a következő szerepkörökkel rendelkez
 2. A bal oldali menüben válassza a **szerepkörök** lehetőséget.
 3. Válassza ki a kék kérdőjelet az engedélyek megtekintéséhez:
 
-    ![ESP HDInsight-szerepkörök engedélyei](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png" alt-text="ESP HDInsight-szerepkörök engedélyei" border="true":::
 
 ## <a name="open-the-ambari-management-ui"></a>A Ambari-kezelés felhasználói felületének megnyitása
 
@@ -124,25 +124,25 @@ A HDInsight Enterprise Security Package a következő szerepkörökkel rendelkez
 1. Jelentkezzen be a Ambari a fürt rendszergazdai tartományának felhasználónevével és jelszavával.
 1. A jobb felső sarokban kattintson a **rendszergazda** legördülő menüre, majd válassza a **Ambari kezelése** lehetőséget.
 
-    ![ESP HDInsight az Apache Ambari kezelése](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png" alt-text="ESP HDInsight az Apache Ambari kezelése" border="true":::
 
     A felhasználói felület a következőképpen néz ki:
 
-    ![ESP HDInsight Apache Ambari-kezelési felhasználói felület](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png" alt-text="ESP HDInsight Apache Ambari-kezelési felhasználói felület" border="true":::
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>A Active Directoryról szinkronizált tartományi felhasználók listázása
 
 1. Nyissa meg a Ambari-kezelő felhasználói felületét.  Lásd: [a Ambari-kezelés felhasználói felületének megnyitása](#open-the-ambari-management-ui).
 2. A bal oldali menüben válassza a **felhasználók** lehetőséget. A Active Directoryról a HDInsight-fürtre szinkronizált összes felhasználót látnia kell.
 
-    ![ESP-HDInsight Ambari-kezelési felhasználói felületének listájának felhasználói](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png" alt-text="ESP-HDInsight Ambari-kezelési felhasználói felületének listájának felhasználói" border="true":::
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>A Active Directory szinkronizált tartományi csoportok listázása
 
 1. Nyissa meg a Ambari-kezelő felhasználói felületét.  Lásd: [a Ambari-kezelés felhasználói felületének megnyitása](#open-the-ambari-management-ui).
 2. A bal oldali menüben válassza a **csoportok** lehetőséget. A Active Directoryról a HDInsight-fürtre szinkronizált összes csoportot látnia kell.
 
-    ![ESP HDInsight Ambari felügyeleti felhasználói felületi csoportok listája](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png" alt-text="ESP HDInsight Ambari felügyeleti felhasználói felületi csoportok listája" border="true":::
 
 ## <a name="configure-hive-views-permissions"></a>A kaptár-nézetek engedélyeinek konfigurálása
 
@@ -150,12 +150,12 @@ A HDInsight Enterprise Security Package a következő szerepkörökkel rendelkez
 2. A bal oldali menüben válassza a **nézetek** elemet.
 3. Válassza ki a **kaptárt** a részletek megjelenítéséhez.
 
-    ![ESP HDInsight Ambari-kezelő felhasználói felületi struktúrájának nézetei](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png" alt-text="ESP HDInsight Ambari-kezelő felhasználói felületi struktúrájának nézetei" border="true":::
 
 4. A kaptár nézeteinek konfigurálásához válassza a **struktúra nézet** hivatkozását.
 5. Görgessen le az **engedélyek** szakaszhoz.
 
-    ![ESP HDInsight Ambari-kezelő felhasználói felületi struktúrájának nézeteire vonatkozó engedélyek konfigurálása](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png" alt-text="ESP HDInsight Ambari-kezelő felhasználói felületi struktúrájának nézeteire vonatkozó engedélyek konfigurálása" border="true":::
 
 6. Válassza a **felhasználó hozzáadása** vagy a **Csoport hozzáadása** lehetőséget, majd adja meg azokat a felhasználókat vagy csoportokat, akik használhatják a kaptár nézeteket.
 

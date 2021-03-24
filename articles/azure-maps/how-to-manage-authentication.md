@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 955b541bdb4ae38066f1eb4d2f09363ec51be1d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92895766"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864074"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 
@@ -78,6 +78,31 @@ Igényeljen tokent az Azure AD-jogkivonat végpontján. Az Azure AD-kérelemben 
 | Azure Government felhő | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
 További információ az Azure AD-től a felhasználók és a szolgáltatások hozzáférési jogkivonatának igénylésével kapcsolatban: [hitelesítési forgatókönyvek az Azure ad-hez](../active-directory/develop/authentication-vs-authorization.md) és a [forgatókönyvekben](./how-to-manage-authentication.md#determine-authentication-and-authorization)megadott forgatókönyvek megtekintése.
+
+## <a name="manage-and-rotate-shared-keys"></a>Megosztott kulcsok kezelése és elforgatása
+
+A Azure Maps előfizetési kulcsai hasonlóak a Azure Maps-fiókhoz tartozó legfelső szintű jelszóhoz. Mindig ügyeljen arra, hogy megvédje az előfizetési kulcsait. A kulcsok biztonságos kezelése és elforgatása Azure Key Vault használatával. Kerülje a hozzáférési kulcsok más felhasználók számára történő terjesztését, a merevlemezek kódolását, vagy a mások számára elérhető egyszerű szövegben való mentését. Ha úgy gondolja, hogy a kulcsok biztonsága megsérült, akkor forgassa el a kulcsokat.
+
+> [!NOTE]
+> A Microsoft azt javasolja, hogy az Azure Active Directory (Azure AD) használatával engedélyezze a kérelmeket, ha lehetséges, a megosztott kulcs helyett. Az Azure AD kiváló biztonságot és könnyű használatot biztosít a megosztott kulcson keresztül.
+
+### <a name="manually-rotate-subscription-keys"></a>Előfizetési kulcsok manuális elforgatása
+
+A Microsoft azt javasolja, hogy rendszeresen fordítsa el az előfizetési kulcsokat, hogy segítsen a Azure Maps-fiók biztonságának megőrzésében. Ha lehetséges, használja a Azure Key Vault a hozzáférési kulcsok kezeléséhez. Ha nem Key Vault használ, manuálisan kell elforgatnia a kulcsokat.
+
+Két előfizetési kulcs van hozzárendelve, hogy el lehessen forgatni a kulcsokat. A két kulcs biztosítja, hogy az alkalmazás a folyamat során Azure Maps a hozzáférést.
+
+Azure Maps-előfizetési kulcsok elforgatása a Azure Portalban:
+
+1. Frissítse az alkalmazás kódját, és hivatkozzon a Azure Maps fiók másodlagos kulcsára, és telepítse a alkalmazást.
+2. Navigáljon a [Azure Portal](https://portal.azure.com/)Azure Maps-fiókjához.
+3. A **Beállítások** területen válassza a **hitelesítés** lehetőséget.
+4. A Azure Maps-fiók elsődleges kulcsának újralétrehozásához kattintson az elsődleges kulcs melletti **újralétrehozás** gombra.
+5. Frissítse az alkalmazás kódját az új elsődleges kulcsra és a telepítésre való hivatkozáshoz.
+6. A másodlagos kulcs újragenerálása ugyanúgy történik.
+
+> [!WARNING]
+> A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken és a 2. kulcsban az 1. kulcsot használja másokban, nem fogja tudni elforgatni a kulcsokat anélkül, hogy egyes alkalmazások elvesztik a hozzáférést.
 
 ## <a name="next-steps"></a>Következő lépések
 

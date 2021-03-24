@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 148ba2ce256b11b623bf28cf7723dbb0cce60830
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929746"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870296"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -18,7 +18,7 @@ An méretű HDInsight Spark-fürt tartalmazza a Apache Spark könyvtár telepít
 
 Az alapértelmezett HDInsight Apache Spark-fürt a következő csomópontokat tartalmazza: három Apache ZooKeeper csomópont, két fő csomópont és egy vagy több munkavégző csomópont:
 
-![Spark HDInsight architektúra](./media/apache-spark-settings/spark-hdinsight-arch.png)
+:::image type="content" source="./media/apache-spark-settings/spark-hdinsight-arch.png" alt-text="Spark HDInsight architektúra" border="false":::
 
 A virtuális gépek és a virtuálisgép-méretek száma a HDInsight-fürt csomópontjaira hatással lehet a Spark-konfigurációra. A nem alapértelmezett HDInsight-konfigurációs értékek gyakran nem alapértelmezett Spark-konfigurációs értékeket igényelnek. HDInsight Spark-fürt létrehozásakor az egyes összetevőknél javasolt virtuálisgép-méretek láthatók. Jelenleg az Azure-hoz készült [memória-optimalizált Linux virtuális gépek mérete](../../virtual-machines/sizes-memory.md) D12 v2 vagy újabb.
 
@@ -59,7 +59,7 @@ Megjelenik az Apache Ambari webes KEZELŐFELÜLETe, amely a fő fürterőforrás
 
 A Apache Spark konfigurációs értékeinek megtekintéséhez válassza a konfiguráció **előzményei** lehetőséget, majd válassza a **Spark2** lehetőséget.  Válassza a **konfigurációk** fület, majd a `Spark` szolgáltatás listában válassza a (vagy a `Spark2` verziótól függően) hivatkozást.  Ekkor megjelenik a fürthöz tartozó konfigurációs értékek listája:
 
-![Spark-konfigurációk](./media/apache-spark-settings/spark-configurations.png)
+:::image type="content" source="./media/apache-spark-settings/spark-configurations.png" alt-text="Spark-konfigurációk" border="true":::
 
 Az egyes Spark-konfigurációs értékek megtekintéséhez és módosításához válassza a cím "Spark" elemét.  A Spark-konfigurációk a következő kategóriákban tartalmazzák az egyéni és a speciális konfigurációs értékeket is:
 
@@ -78,7 +78,7 @@ Ha a konfigurációs értékek nem alapértelmezett készletét hozza létre, a 
 
 A következő ábrán a legfontosabb Spark-objektumok láthatók: az illesztőprogram-program és a hozzá tartozó Spark-környezet, valamint a Fürtfelügyelő és az *n* feldolgozó csomópontok.  Minden feldolgozói csomópont tartalmaz egy végrehajtót, egy gyorsítótárat és egy *n* Task instances-példányt.
 
-![Fürtözött objektumok](./media/apache-spark-settings/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-spark-architecture.png" alt-text="Fürtözött objektumok" border="false":::
 
 A Spark-feladatok a feldolgozói erőforrásokat, különösen a memóriát használják, ezért gyakori a Spark-konfigurációs értékek beállítása a feldolgozó csomópont-végrehajtók számára.
 
@@ -89,7 +89,7 @@ Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására mó
 
 A Spark-végrehajtók által használt erőforrásokkal kapcsolatos további információforrás a Spark-alkalmazás felhasználói felülete.  A felhasználói felületen a  **végrehajtók** a konfiguráció és a felhasznált erőforrások összefoglaló és részletes nézeteit jelenítik meg.  Döntse el, hogy módosítja-e a végrehajtók értékét a teljes fürtön, vagy a feladatok bizonyos készleteit.
 
-![Spark-végrehajtók](./media/apache-spark-settings/apache-spark-executors.png)
+:::image type="content" source="./media/apache-spark-settings/apache-spark-executors.png" alt-text="Spark-végrehajtók" border="true":::
 
 Vagy használhatja a Ambari REST API a HDInsight és a Spark-fürt konfigurációs beállításainak programozott ellenőrzéséhez.  További információ a [githubon elérhető Apache AMBARI API-referenciában](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)található.
 
@@ -103,7 +103,7 @@ A Spark számítási feladattól függően előfordulhat, hogy egy nem alapérte
 
 Íme egy példa két feldolgozói csomópontra, különböző konfigurációs értékekkel:
 
-![Két csomópontos konfiguráció](./media/apache-spark-settings/executor-configuration.png)
+:::image type="content" source="./media/apache-spark-settings/executor-configuration.png" alt-text="Két csomópontos konfiguráció" border="false":::
 
 Az alábbi lista a fő Spark-végrehajtó memória paramétereit mutatja be.
 
@@ -116,7 +116,7 @@ Az alábbi lista a fő Spark-végrehajtó memória paramétereit mutatja be.
 
 A fonal az egyes Spark-csomópontokon lévő tárolók által használt memória maximális számát szabályozza. Az alábbi ábrán a szálak konfigurációs objektumai és a Spark-objektumok közötti csomópont-kapcsolatok láthatók.
 
-![A fonal Spark memóriájának kezelése](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-yarn-spark-memory.png" alt-text="A fonal Spark memóriájának kezelése" border="false":::
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook futó alkalmazás paramétereinek módosítása
 

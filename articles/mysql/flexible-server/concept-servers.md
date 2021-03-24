@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034659"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869378"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>A kiszolgálói fogalmak a Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -55,7 +55,14 @@ Az időkiszolgáló leállításakor nem hajthatók végre felügyeleti művelet
 
 ## <a name="how-do-i-manage-a-server"></a>Hogyan felügyel egy kiszolgálót?
 
-Azure Database for MySQL rugalmas kiszolgálót a [Azure Portal](./quickstart-create-server-portal.md) vagy az [Azure CLI](./quickstart-create-server-cli.md)használatával kezelheti.
+Kezelheti a létrehozását, törlését, a kiszolgálói paraméterek konfigurációját (My. cnf), a skálázást, a hálózatkezelést, a biztonságot, a magas rendelkezésre állást, a biztonsági mentési & visszaállítást, a Azure Database for MySQL rugalmas kiszolgáló figyelését az [Azure Portal](./quickstart-create-server-portal.md) vagy az [Azure CLI](./quickstart-create-server-cli.md)használatával. Emellett a következő tárolt eljárások is elérhetők a Azure Database for MySQLban, hogy bizonyos adatbázis-felügyeleti feladatokat végezzenek el, mivel a FELÜGYELŐi jogosultságok nem támogatottak a kiszolgálón.
+
+|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|N/A|Egyenértékű a [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja a megadott processlist_idhoz társított kapcsolatokat, miután leállította a kapcsolatok végrehajtásának utasításait.|
+|*mysql.az_kill_query*|processlist_id|N/A|Egyenértékű a [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja azt az utasítást, amely szerint a kapcsolatok jelenleg végrehajtás alatt állnak. Maga a kapcsolatok maradnak életben.|
+|*mysql.az_load_timezone*|N.A.|N.A.|Betölti az [időzóna-táblákat](../howto-server-parameters.md#working-with-the-time-zone-parameter) , hogy a `time_zone` paraméter megnevezett értékre legyen beállítva (pl. "USA/csendes-óceáni térség").|
+
 
 ## <a name="next-steps"></a>Következő lépések
 

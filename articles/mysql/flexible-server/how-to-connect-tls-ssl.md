@@ -6,14 +6,14 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2e66b27f7f0c731e17bb9811e2376bbe09c1bc12
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90940488"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950144"
 ---
-# <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>Titkosított kapcsolat a Transport Layer Security (TLS 1,2) használatával Azure Database for MySQL – rugalmas kiszolgáló
+# <a name="connect-to-azure-database-for-mysql---flexible-server-over-tls12ssl"></a>Kapcsolódás Azure Database for MySQL – rugalmas kiszolgáló TLS 1.2/SSL protokollon keresztül
 
 > [!IMPORTANT]
 > Azure Database for MySQL rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el
@@ -22,8 +22,10 @@ Azure Database for MySQL rugalmas kiszolgáló támogatja az ügyfélalkalmazás
 
 Azure Database for MySQL a rugalmas kiszolgáló csak a titkosított kapcsolatokat támogatja Transport Layer Security (TLS 1,2) használatával, és a TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata meg lesz tagadva. A TLS-kapcsolatok kényszerítését engedélyező rugalmas kiszolgálók esetében a TLS/SSL nem tiltható le a rugalmas kiszolgálóhoz való csatlakozáshoz.
 
-## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>A TLS/SSL-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások
-Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl által létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. Azure Database for MySQL rugalmas kiszolgáló a *DigiCert globális legfelső szintű hitelesítésszolgáltatóját* használja. Töltse le ezt a tanúsítványt az SSL protokollon keresztüli kommunikációhoz a [DigiCert globális legfelső szintű hitelesítésszolgáltatótól](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) , és mentse a tanúsítványt a kívánt helyre. Ez az oktatóanyag például a következőt használja: `c:\ssl` .
+## <a name="download-the-public-ssl-certificate"></a>Nyilvános SSL-tanúsítvány letöltése
+A alkalmazással való használathoz töltse le a [nyilvános SSL-tanúsítványt](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem).
+
+Mentse a tanúsítványfájl a kívánt helyre. Ez az oktatóanyag például a `c:\ssl` vagy a `\var\www\html\bin` helyi környezetét, vagy az alkalmazás által üzemeltetett ügyfél-környezetet használja. Ez lehetővé teszi az alkalmazások számára az SSL-kapcsolaton keresztüli biztonságos kapcsolódást az adatbázishoz. 
 
 ### <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>Kapcsolat a MySQL parancssori ügyféllel a TLS/SSL használatával
 
@@ -58,6 +60,16 @@ Néhány alkalmazás-keretrendszer, amely a MySQL-t használja az adatbázis-szo
 A (z) Azure Portal kiszolgálója számára elérhető "kapcsolati karakterláncok" lapon előre definiált kapcsolati karakterláncok tartalmazzák az adatbázis-kiszolgálóhoz TLS/SSL használatával való csatlakozáshoz szükséges paramétereket. A TLS/SSL-paraméter az összekötőtől függően változik. Például: "useSSL = true", "sslmode = Required" vagy "ssl_verify_cert = true" és más változatok.
 
 Ha az alkalmazásból TLS/SSL protokollon keresztül titkosított kapcsolatot szeretne létesíteni a rugalmas kiszolgálóval, tekintse át az alábbi kódrészleteket:
+
+### <a name="wordpress"></a>WordPress
+Töltse le az [SSL nyilvános tanúsítványát](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) , és adja hozzá a következő sorokat a wp-config. php fájlhoz a sor után ```// ** MySQL settings - You can get this info from your web host ** //``` .
+
+```php
+//** Connect with SSL** //
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+//** SSL CERT **//
+define('MYSQL_SSL_CERT','/FULLPATH/on-client/to/DigiCertGlobalRootCA.crt.pem');
+```
 
 ### <a name="php"></a>PHP
 

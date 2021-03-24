@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 keywords: kognitív szolgáltatások, kognitív intelligencia, kognitív megoldások, AI-szolgáltatások
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
-ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472103"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868171"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure Command-Line Interface (CLI) használatával
 
@@ -196,7 +196,8 @@ az group delete --name cognitive-services-resource-group
 
 ## <a name="see-also"></a>Lásd még
 
-* [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
-* [Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Természetes nyelvi támogatás](language-support.md)
-* [Docker-tárolók támogatása](cognitive-services-container-support.md)
+* Lásd: **[kérelmek hitelesítése az Azure-Cognitive Services](authentication.md)** a Cognitive Services biztonságos kezeléséhez.
+* Ismerje meg, **[Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)** a különböző kategóriák listájának lekéréséhez Cognitive Serviceson belül.
+* A Cognitive Services által támogatott természetes nyelvek listájának megjelenítéséhez tekintse meg a **[természetes nyelvi támogatás](language-support.md)** című témakört.
+* Lásd: a **[Cognitive Services használata tárolóként](cognitive-services-container-support.md)** a Cognitive Services helyszíni használatának megismeréséhez.
+* A Cognitive Services használatának költségeinek **[kiszámításához tekintse meg a Cognitive Services költségeinek tervezése és kezelése](plan-manage-costs.md)** című témakört.

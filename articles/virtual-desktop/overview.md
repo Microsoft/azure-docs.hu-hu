@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26d6b258c1e22d5d28353486378acc9aa0bbd5d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98730785"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889637"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
 
@@ -124,7 +124,7 @@ Ha többet szeretne megtudni az URL-címekről, fel kell oldania az ügyfelek ha
 A Windows rendszerű virtuális asztali szolgáltatás a következő x64 operációsrendszer-lemezképeket támogatja:
 
 * Windows 10 Enterprise multi-session, 1809-es vagy újabb verzió
-* Windows 10 Enterprise, 1809-es vagy újabb verzió
+* Windows 10 Enterprise, 1809-es vagy újabb verzió (csak féléves csatorna)
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
@@ -136,13 +136,13 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 
 |Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (több munkamenet), 2004-es verzió|Igen|Igen|Igen|Yes|
-|Windows 10 Enterprise (több munkamenet), 1909-es verzió|Igen|Igen|Igen|Yes|
+|Windows 10 Enterprise (több munkamenet), 2004-es verzió|Igen|Igen|Igen|Igen|
+|Windows 10 Enterprise (több munkamenet), 1909-es verzió|Igen|Igen|Igen|Igen|
 |Windows 10 Enterprise (több munkamenet), 1903-es verzió|Igen|Igen|Nem|Nem|
 |Windows 10 Enterprise (több munkamenet), 1809-es verzió|Igen|Igen|Nem|Nem|
 |Windows 7 Enterprise|Igen|Igen|Nem|Nem|
 |Windows Server 2019|Igen|Igen|Nem|Nem|
-|Windows Server 2016|Igen|Igen|Igen|Yes|
+|Windows Server 2016|Igen|Igen|Igen|Igen|
 |Windows Server 2012 R2|Igen|Igen|Nem|Nem|
 
 ## <a name="next-steps"></a>Következő lépések

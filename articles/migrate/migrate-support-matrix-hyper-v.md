@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bdd8fd336da12b5549875cf53f9e221cc431c2b9
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 8531d0b2252e6ddff75509046b5a4576b99d339f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773215"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870789"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 
-Ez a cikk az előfeltételeket és a támogatási követelményeket összegzi a Hyper-V környezetben futó helyszíni kiszolgálók felderítésére és értékelésére az Azure-ba való Migrálás során a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool használatával. Ha a Hyper-V-n futó kiszolgálókat át szeretné telepíteni az Azure-ra, tekintse át az [áttelepítési támogatási mátrixot](migrate-support-matrix-hyper-v-migration.md).
+Ez a cikk az előfeltételeket és a támogatási követelményeket összegzi a Hyper-V környezetben futó helyszíni kiszolgálók felderítésére és értékelésére az Azure-ba való Migrálás során a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool használatával. Ha a Hyper-V-n futó kiszolgálókat át szeretné telepíteni az Azure-ra, tekintse át az [áttelepítési támogatási mátrixot](migrate-support-matrix-hyper-v-migration.md).
 
 A Hyper-V-n futó kiszolgálók felderítésének és értékelésének beállításához létre kell hoznia egy projektet, és hozzá kell adnia a Azure Migrate: Discovery and Assessment eszközt a projekthez. Az eszköz hozzáadása után üzembe helyezi a [Azure Migrate berendezést](migrate-appliance.md). A készülék folyamatosan felfedi a helyszíni kiszolgálókat, és kiszolgálói metaadatokat és teljesítményadatokat küld az Azure-nak. A felderítés befejezése után a felderített kiszolgálókat csoportokba gyűjtheti, és értékelést futtathat egy csoport számára.
 
@@ -23,7 +23,7 @@ A Hyper-V-n futó kiszolgálók felderítésének és értékelésének beállí
 
 **Támogatás** | **Részletek**
 --- | ---
-**Értékelési korlátok** | Egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000-kiszolgálót is felderítheti és felbecsülheti.
+**Értékelési korlátok** | Egyetlen [projektben](migrate-support-matrix.md#project)akár 35 000-kiszolgálót is felderítheti és felbecsülheti.
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A Hyper-V-kiszolgálókon kívül a projektek a VMware és a fizikai kiszolgálókon is tartalmazhatnak kiszolgálókat, az egyes eszközökre vonatkozó értékelési korlátokig.
 **Felderítés** | A Azure Migrate berendezés a Hyper-V-n futó, akár 5000-es kiszolgálót is képes észlelni.<br/><br/> A készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 **Értékelés** | Egyetlen csoportban akár 35 000-kiszolgálót is hozzáadhat.<br/><br/> Egy csoportra vonatkozóan akár 35 000-kiszolgálót is megvizsgálhat egyetlen értékeléssel.

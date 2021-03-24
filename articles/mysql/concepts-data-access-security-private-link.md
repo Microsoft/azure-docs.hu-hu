@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 1ae35d1ac35dacfab2690980d57973dce050382b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 438ef806f6c59c6f23877a3d3110f22f08ca8713
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93242857"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863564"
 ---
-# <a name="private-link-for-azure-database-for-mysql"></a>Privát hivatkozás a Azure Database for MySQL
+# <a name="private-link-for-azure-database-for-mysql"></a>Private Link az Azure Database for MySQL-hez
 
 A privát kapcsolat lehetővé teszi, hogy privát végponton keresztül csatlakozzon az Azure különböző PaaS-szolgáltatásaihoz. Az Azure Private Link lényegében elérhetővé teszi az Azure-szolgáltatásokat a virtuális magánhálózaton belül. A PaaS-erőforrások a magánhálózati IP-cím használatával érhetők el, ugyanúgy, mint a virtuális hálózat más erőforrásai.
 
@@ -84,7 +84,7 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>Privát hivatkozás használata Azure Database for MySQL esetén
 
-Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymással azonos régióban lévő VNet, illetve a régiók közötti VNet-VNet kapcsolaton keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
+Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, azonos régióban vagy régiókban található [VNet](../virtual-network/virtual-network-peering-overview.md) , illetve a régiók közötti [VNet-VNet kapcsolaton](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Válassza ki a privát végpont áttekintését":::
 

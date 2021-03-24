@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943407"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863377"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -37,7 +37,7 @@ Ezek a konfigurációk a következő viselkedést teszik lehetővé:
 
 A következő ábrán a zöld vonalak a virtuális hálózat DNS-utótagjának végét képező erőforrásokra vonatkozó kérések. A kék vonalak a helyszíni hálózaton vagy a nyilvános interneten található erőforrásokra vonatkozó kérések.
 
-![A DNS-kérelmek konfigurációban való feloldásának ábrája](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+:::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="A DNS-kérelmek konfigurációban való feloldásának ábrája" border="false":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,7 +64,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
   
 1. A felső menüben válassza az **+ erőforrás létrehozása** lehetőséget.
 
-    ![Ubuntu rendszerű virtuális gép létrehozása](./media/connect-on-premises-network/azure-portal-create-resource.png)
+    :::image type="content" source="./media/connect-on-premises-network/azure-portal-create-resource.png" alt-text="Ubuntu rendszerű virtuális gép létrehozása":::
 
 1.   >  A **virtuális gép létrehozása** lapon válassza a számítási **virtuális gép** lehetőséget.
 
@@ -83,7 +83,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
     |Jelszó vagy nyilvános SSH-kulcs | A rendelkezésre álló mező meghatározása a **hitelesítési típus** alapján történik.  Adja meg a megfelelő értéket.|
     |Nyilvános bejövő portok|Válassza a **kiválasztott portok engedélyezése** lehetőséget. Ezután válassza az **SSH (22)** lehetőséget a **bejövő portok kiválasztása** legördülő listából.|
 
-    ![Virtuális gép alapszintű konfigurációja](./media/connect-on-premises-network/virtual-machine-basics.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-machine-basics.png" alt-text="Virtuális gép alapszintű konfigurációja":::
 
     Hagyja meg az egyéb bejegyzéseket az alapértelmezett értékeken, majd válassza a **hálózatkezelés** lapot.
 
@@ -95,7 +95,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
     |Alhálózat | Válassza ki a korábban létrehozott virtuális hálózat alapértelmezett alhálózatát. Ne __válassza ki__ a VPN-átjáró által használt alhálózatot.|
     |Nyilvános IP-cím | Használja az automatikusan feltöltött értéket.  |
 
-    ![HDInsight virtuális hálózati beállításai](./media/connect-on-premises-network/virtual-network-settings.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-network-settings.png" alt-text="HDInsight virtuális hálózati beállításai":::
 
     Hagyja meg az egyéb bejegyzéseket az alapértelmezett értékeken, majd válassza a **felülvizsgálat + létrehozás** elemet.
 
@@ -109,7 +109,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
 
 2. Jegyezze fel a **nyilvános IP-cím/DNS-név címke** és a **MAGÁNHÁLÓZATI IP-cím** értékét későbbi használatra.
 
-   ![Nyilvános és magánhálózati IP-címek](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
+   :::image type="content" source="./media/connect-on-premises-network/virtual-machine-ip-addresses.png" alt-text="Nyilvános és magánhálózati IP-címek":::
 
 ### <a name="install-and-configure-bind-dns-software"></a>Kötés telepítése és konfigurálása (DNS-szoftver)
 
@@ -245,7 +245,7 @@ Ha úgy szeretné konfigurálni a virtuális hálózatot, hogy az egyéni DNS-ki
 
 5. Kattintson a __Mentés__ gombra.  <br />  
 
-    ![A hálózat egyéni DNS-kiszolgálójának beállítása](./media/connect-on-premises-network/configure-custom-dns.png)
+    :::image type="content" source="./media/connect-on-premises-network/configure-custom-dns.png" alt-text="A hálózat egyéni DNS-kiszolgálójának beállítása":::
 
 ## <a name="configure-on-premises-dns-server"></a>Helyszíni DNS-kiszolgáló konfigurálása
 

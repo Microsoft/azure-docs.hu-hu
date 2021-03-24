@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/18/2021
 ms.author: wieastbu
 ms.custom: fasttrack-new, fasttrack-update, devx-track-js
-ms.openlocfilehash: 812b54d10ea3cc3c405f534e36ac66abf3466808
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: baa6a0a6995e206924d14de25b98700e450f3a0c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449288"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954921"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
 
@@ -193,7 +193,7 @@ Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő l�
 1. Illessze be a jól ismert Open-ID konfigurációs végpontot a regisztrációs és bejelentkezési szabályzatba a kiállító URL-címe mezőbe (ezt a konfigurációt korábban rögzítették).
 1. Kattintson a "titok megjelenítése" gombra, és illessze be a háttérbeli alkalmazás ügyfelének titkos kódját a megfelelő mezőbe.
 1. Válassza az OK gombot, amely visszaadja az identitás-szolgáltató kijelölési paneljét vagy képernyőjét.
-1. Hagyja engedélyezve a [jogkivonat-tárolót](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#token-store) a speciális beállítások területen (alapértelmezett).
+1. Hagyja engedélyezve a [jogkivonat-tárolót](../app-service/overview-authentication-authorization.md#token-store) a speciális beállítások területen (alapértelmezett).
 1. Kattintson a Save (Mentés) gombra a panel bal felső részén.
 
    > [!IMPORTANT]

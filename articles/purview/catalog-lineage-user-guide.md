@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: 47c5ad18f50bd25dd3bf351090ffc9ef5d54f0b2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8b08a60d484aa3d52600b8aef2f53d6ca8a04f9b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202909"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952167"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Az Azure hatáskörébe Data Catalog Lineage felhasználói útmutatója
 
@@ -50,7 +50,7 @@ Adatrendszerek, például az Azure ML és a Power BI jelentés-lefordítás az A
 
 ## <a name="get-started-with-lineage"></a>Ismerkedés a lineagevel
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE1XVQS]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWxTAK]
 
 A hatáskörébe tartozó vonal adatkészleteket és folyamatokat tartalmaz. Az adatkészleteket csomópontoknak is nevezik, a folyamatok pedig élek:
 

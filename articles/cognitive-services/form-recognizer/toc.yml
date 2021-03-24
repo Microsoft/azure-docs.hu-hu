@@ -7,40 +7,20 @@
       href: overview.md
     - name: Újdonságok
       href: whats-new.md
-- name: Bevezetés a Form Recognizer használatába
-  expanded: true
+- name: Rövid útmutatók
   items:
-    - name: Az ügyfélkódtár vagy a REST API használata
+    - name: Az ügyféloldali kódtár vagy REST API első lépései
       href: quickstarts/client-library.md
-    - name: Mintacímkézési eszköz használata
+    - name: A minta feliratozási eszköz használata
       href: quickstarts/label-tool.md
-- name: Oktatóanyagok
+- name: Példák
   items:
-    - name: A Form Recognizer használata a Cognitive Searchcsel
-      href: ../../search/cognitive-search-custom-skill-form.md
-    - name: A Form Recognizer használata AI Builderrel
-      href: tutorial-ai-builder.md
-    - name: Űrlap-felismerő használata Azure Functions
-      href: tutorial-azure-function.md
-    - name: Űrlapadatok tömeges kinyerése
-      href: tutorial-bulk-processing.md
-- name: Alapelvek
-  items:
-    - name: Elrendezési API
-      expanded: true
-      items:
-        - name: Űrlapadatok kinyerése
-          href: concept-layout.md
-    - name: Egyéni modellek
-      href: concept-custom.md
-    - name: Nyugták
-      href: concept-receipts.md
-    - name: Névjegykártyák
-      href: concept-business-cards.md
-    - name: Számlák
-      href: concept-invoices.md
-    - name: Azonosító kártyák
-      href: concept-identification-cards.md
+    - name: 'C# kódon: űrlap-felismerő ügyféloldali kódtár SDK'
+      href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
+    - name: 'Java: űrlap-felismerő ügyféloldali kódtár SDK'
+      href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
+    - name: 'Python: űrlap-felismerő ügyféloldali kódtár SDK'
+      href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
 - name: Útmutatók
   items:
     - name: Betanítási adathalmaz létrehozása
@@ -64,6 +44,33 @@
           href: ../containers/index.yml
     - name: Modellek biztonsági mentése és helyreállítása
       href: disaster-recovery.md
+- name: Alapelvek
+  items:
+    - name: Elrendezési API
+      expanded: true
+      items:
+        - name: Űrlapadatok kinyerése
+          href: concept-layout.md
+    - name: Egyéni modellek
+      href: concept-custom.md
+    - name: Nyugták
+      href: concept-receipts.md
+    - name: Névjegykártyák
+      href: concept-business-cards.md
+    - name: Számlák
+      href: concept-invoices.md
+    - name: Azonosító kártyák
+      href: concept-identification-cards.md
+- name: Oktatóanyagok
+  items:
+    - name: Űrlapadatok tömeges kinyerése
+      href: tutorial-bulk-processing.md
+    - name: A Form Recognizer használata a Cognitive Searchcsel
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: A Form Recognizer használata AI Builderrel
+      href: tutorial-ai-builder.md
+    - name: Űrlap-felismerő használata Azure Functions
+      href: tutorial-azure-function.md
 - name: Referencia
   items:
     - name: Űrlap-felismerő API v 2.1 előzetes verzió. 3

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2216eb5893b77761f4d31c5819d152ceeb985abc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933028"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869650"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Azure Kubernetes szolgáltatás használata a HDInsight-mel való Apache Kafka
 
@@ -42,7 +42,7 @@ Mind a HDInsight, mind az AK egy Azure-Virtual Network használ a számítási e
 
 A következő ábra a dokumentumban használt hálózati topológiát szemlélteti:
 
-![HDInsight egy virtuális hálózatban (ak) egy másikban, a társítás használatával](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+:::image type="content" source="./media/apache-kafka-azure-container-services/kafka-aks-architecture.png" alt-text="HDInsight egy virtuális hálózatban (ak) egy másikban, a társítás használatával" border="false":::
 
 > [!IMPORTANT]  
 > A névfeloldás nincs engedélyezve a megosztott hálózatok között, ezért az IP-címzést használja a rendszer. Alapértelmezés szerint a Kafka on HDInsight úgy van konfigurálva, hogy az IP-címek helyett a gazdagépek nevét állítsa vissza, amikor az ügyfelek csatlakoznak. A jelen dokumentumban ismertetett lépések a Kafka-t úgy módosítják, hogy helyette az IP-hirdetéseket használják.
@@ -109,15 +109,15 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
 
 2. A Kafka-adatok megtekintéséhez válassza a __Kafka__ lehetőséget a bal oldali listából.
 
-    ![Szolgáltatások listája a Kafka kiemelésével](./media/apache-kafka-azure-container-services/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-service.png" alt-text="Szolgáltatások listája a Kafka kiemelésével" border="true":::
 
 3. A Kafka-konfiguráció megtekintéséhez válassza a __konfigurációk__ lehetőséget a felső középső listából.
 
-    ![Apache Ambari Services-konfiguráció](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-config1.png" alt-text="Apache Ambari Services-konfiguráció" border="true":::
 
 4. A __Kafka-env__ konfiguráció megkereséséhez írja be a `kafka-env` jobb felső sarokban található __szűrő__ mezőt.
 
-    ![Kafka-konfiguráció, Kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/search-for-kafka-env.png" alt-text="Kafka-konfiguráció, Kafka-env" border="true":::
 
 5. Ha a Kafka-t IP-címekre szeretné reklámozni, adja hozzá a következő szöveget a __Kafka-env-template__ mező aljához:
 
@@ -135,15 +135,15 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
 
 8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
 
-    ![Apache Ambari-mentési konfiguráció](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/save-configuration-button.png" alt-text="Apache Ambari-mentési konfiguráció" border="true":::
 
 9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__ lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
 
-    ![Szolgáltatási műveletek, a karbantartás bekapcsolásával](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png" alt-text="Szolgáltatási műveletek, a karbantartás bekapcsolásával" border="true":::
 
 10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza az __összes érintett újraindítása__ lehetőséget. Erősítse meg az újraindítást, majd használja az __OK__ gombot a művelet befejeződése után.
 
-    ![Újraindítás gomb az összes érintett Kiemelt újraindítással](./media/apache-kafka-azure-container-services/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/restart-required-button.png" alt-text="Újraindítás gomb az összes érintett Kiemelt újraindítással" border="true":::
 
 11. A karbantartási mód letiltásához használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód kikapcsolása__ lehetőséget. A művelet befejezéséhez kattintson **az OK gombra** .
 
@@ -213,7 +213,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
 
 11. Nyisson meg egy webböngészőt, és adja meg a szolgáltatás külső IP-címét. A következő képhez hasonló oldal érkezik:
 
-    ![Apache Kafka weblap képe](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/test-web-page-image1.png" alt-text="Apache Kafka weblap képe" border="true":::
 
 12. Írja be a szöveget a mezőbe, majd kattintson a __Küldés__ gombra. Az adatküldés a Kafka szolgáltatásba történik. Az alkalmazásban a Kafka-fogyasztó beolvassa az üzenetet, és hozzáadja azt a Kafka-szakasz __üzeneteihez__ .
 

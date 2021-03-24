@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 649c5805c600b6282be6d05fefb59cecaf249f4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3877134f8a00cd627909d7f889fd5b104ccbd8b1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92526161"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863622"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN Gateway SKU-n támogatott a BGP?
 A BGP az alapszintű SKU kivételével az összes Azure VPN Gateway SKU esetében támogatott.
@@ -108,3 +108,8 @@ Adja hozzá a VPN-eszközön az Azure BGP-társ IP-címének gazdagépi útvonal
 Nem. A kétirányú továbbítási észlelés (BFD) egy olyan protokoll, amellyel a BGP használatával gyorsabban észlelheti a szomszéd-állásidőt, mint a Standard BGP "Keepalives" használatával. A BFD olyan másodlagos időzítőket használ, amelyek LAN-környezetekben működnek, de nem a nyilvános interneten vagy a nagykiterjedésű hálózati kapcsolatokon keresztül.
 
 A nyilvános interneten keresztül létesített kapcsolatok esetében, hogy bizonyos csomagok késleltetve vagy akár eldobása nem szokatlan, az agresszív időzítők bevezetésével instabillá teheti a stabilitást. Ez a bizonytalanság azt eredményezheti, hogy az útvonalakat a BGP fogja megnedvesíteni. Alternatív megoldásként konfigurálhatja a helyszíni eszközt az alapértelmezettnél alacsonyabb időzítővel, 60 – másodperces "életben tartási" intervallummal és a 180-másodperces időzítővel. Ez gyorsabb konvergencia-időt eredményez.
+
+### <a name="do-azure-vpn-gateways-initiate-bgp-peering-sessions-or-connections"></a>Az Azure VPN Gateway-átjárók BGP-társas munkameneteket vagy kapcsolatokat kezdeményeznek?
+
+Az átjáró a VPN-átjárók magánhálózati IP-címeivel a helyi hálózati átjáró erőforrásaiban megadott helyszíni BGP-társ IP-címekre vonatkozó BGP-társi munkameneteket fog kezdeményezni. Ez attól függetlenül, hogy a helyszíni BGP IP-címei az APIPA-tartományhoz vagy a hagyományos magánhálózati IP-címekhez tartoznak-e. Ha a helyszíni VPN-eszközök az APIPA-IP-címeket használják, a BGP-hangszórót a kapcsolatok elindításához kell konfigurálnia.
+

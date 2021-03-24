@@ -163,6 +163,9 @@
         - name: Felügyelt identitások konfigurálása
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: Tanúsítvány elforgatásának engedélyezése
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: Virtuális fájlrendszer csatlakoztatása
           href: virtual-file-mount.md
         - name: Azure-fájlmegosztás csatlakoztatása

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 97a8dd2476642e693b589b4046f612c5569b9c0b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945685"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865128"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>A Hue telepítése és használata a HDInsight Hadoop-fürtökön
 
@@ -80,17 +80,17 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
    > [!NOTE]  
    > Amikor első alkalommal jelentkezik be, a rendszer felszólítja, hogy hozzon létre egy fiókot a Hue Portalra való bejelentkezéshez. Az itt megadott hitelesítő adatokat a rendszer a portálra korlátozza, és nem kapcsolódik a fürt kiépítésekor megadott rendszergazdai vagy SSH-felhasználói hitelesítő adatokhoz.
 
-    ![HDInsight Hue Portal bejelentkezési ablak](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Hitelesítő adatok megadása a Hue Portalhoz")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png" alt-text="HDInsight Hue Portal bejelentkezési ablak":::
 
 ### <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
 1. A Hue Portalon válassza a **lekérdezési szerkesztők** lehetőséget, majd válassza a **kaptár** elemet a kaptár-szerkesztő megnyitásához.
 
-    ![HDInsight Hue-portál a kaptár-szerkesztő használatával](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Struktúra használata")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png" alt-text="HDInsight Hue-portál a kaptár-szerkesztő használatával":::
 
 2. Az **assziszt** lapon az **adatbázis** területen tekintse meg a **hivesampletable**. Ez egy minta tábla, amely a HDInsight összes Hadoop-fürtjével együtt kapható. Adjon meg egy minta lekérdezést a jobb oldali ablaktáblán, és tekintse meg az alábbi ablaktábla **eredmények** lapján látható kimenetet, ahogy az a képernyőfelvételen látható.
 
-    ![HDInsight Hue-portál struktúrájának lekérdezése](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Struktúra-lekérdezés futtatása")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png" alt-text="HDInsight Hue-portál struktúrájának lekérdezése":::
 
     A **diagram** lapon megtekintheti az eredmény vizuális ábrázolását is.
 
@@ -99,7 +99,7 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
 1. A Hue Portalon válassza a menüsáv jobb felső sarkában található **fájlkezelő** elemet.
 2. Alapértelmezés szerint a fájlkezelő a **/User/myuser** könyvtárban nyílik meg. A fürthöz társított Azure Storage-tároló gyökeréhez való ugráshoz válassza a perjel közvetlenül az elérési úton lévő felhasználói könyvtárat.
 
-    ![HDInsight Hue-portál fájljának böngészője](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "A fájl böngésző használata")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png" alt-text="HDInsight Hue-portál fájljának böngészője":::
 
 3. Kattintson a jobb gombbal egy fájlra vagy mappára az elérhető műveletek megtekintéséhez. A jobb oldali sarokban található **feltöltés** gomb használatával fájlokat tölthet fel az aktuális könyvtárba. Új fájlok vagy könyvtárak létrehozásához használja az **új** gombot.
 
@@ -118,7 +118,7 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
 
 1. A Linux-fürtök esetében lehet olyan forgatókönyv, amelyben a szolgáltatások az elsődleges átjárócsomóponthoz futnak, miközben a Resource Manager a másodlagos gépen is fut. Egy ilyen forgatókönyv hibákat eredményezhet (alább látható), ha a Hue használatával megtekinti a fürtön futó feladatok részleteit. Megtekintheti azonban a feladatok részleteit a feladatok befejeződése után.
 
-   ![Hue Portal – hiba minta üzenet](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue-portál hibája")
+   :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png" alt-text="Hue Portal – hiba minta üzenet":::
 
    Ezt egy ismert probléma okozza. Áthidaló megoldásként módosítsa a Ambari, hogy az Active Resource Manager is az elsődleges átjárócsomóponthoz fusson.
 

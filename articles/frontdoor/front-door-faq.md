@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de6a94b36dab9dd5662062be99f4515d78558b5e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212450"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889654"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -102,7 +102,7 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
 
 - Keresse meg az `Front Door ID` értéket az első ajtós portál oldal Áttekintés szakaszában. Ezt követően szűrheti az "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott értékkel annak érdekében, hogy csak a saját konkrét ajtós példánya legyen engedélyezve (mivel a fenti IP-címtartományok más ügyfelek más bejárati példányaival is megoszthatók).
 
-- Alkalmazzon szabály-szűrést a háttérbeli webkiszolgálón a forgalom korlátozásához az eredményül kapott X-Azure-FDID fejléc értéke alapján. Vegye figyelembe, hogy egyes szolgáltatások, például a Azure App Service biztosítják ezt a [fejléc-alapú szűrési](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview) funkciót anélkül, hogy módosítani kellene az alkalmazást vagy a gazdagépet.
+- Alkalmazzon szabály-szűrést a háttérbeli webkiszolgálón a forgalom korlátozásához az eredményül kapott X-Azure-FDID fejléc értéke alapján. Vegye figyelembe, hogy egyes szolgáltatások, például a Azure App Service biztosítják ezt a [fejléc-alapú szűrési](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance) funkciót anélkül, hogy módosítani kellene az alkalmazást vagy a gazdagépet.
 
   Íme egy példa a [Microsoft Internet Information Services (IIS)](https://www.iis.net/)szolgáltatásra:
 

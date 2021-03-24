@@ -11,12 +11,12 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: e2b5a3322f633ca8301357c2186d78d3ac437ae2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 2a92fa8fd242482585ab3785e99f8239548ce369
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521968"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868341"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Gépi tanulási folyamatok definiálása a YAML-ben
 
@@ -26,23 +26,23 @@ A következő táblázat felsorolja, hogy mi az, és jelenleg nem támogatott a 
 
 | Lépés típusa | Támogatott? |
 | ----- | :-----: |
-| PythonScriptStep | Yes |
-| ParallelRunStep | Yes |
-| AdlaStep | Yes |
-| AzureBatchStep | Yes |
-| DatabricksStep | Yes |
-| DataTransferStep | Yes |
-| AutoMLStep | No |
-| HyperDriveStep | No |
-| ModuleStep | Yes |
-| MPIStep | No |
-| EstimatorStep | No |
+| PythonScriptStep | Igen |
+| ParallelRunStep | Igen |
+| AdlaStep | Igen |
+| AzureBatchStep | Igen |
+| DatabricksStep | Igen |
+| DataTransferStep | Igen |
+| AutoMLStep | Nem |
+| HyperDriveStep | Nem |
+| ModuleStep | Igen |
+| MPIStep | Nem |
+| EstimatorStep | Nem |
 
 ## <a name="pipeline-definition"></a>Folyamat definíciója
 
 A folyamat definíciója a következő kulcsokat használja, amelyek megfelelnek a [folyamatok](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline) osztálynak:
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `name` | A folyamat leírása. |
 | `parameters` | Paraméter (ek) a folyamathoz. |
@@ -54,7 +54,7 @@ A folyamat definíciója a következő kulcsokat használja, amelyek megfelelnek
 
 A `parameters` szakasz a következő kulcsokat használja, amelyek megfelelnek a [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter) osztálynak:
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ---- | ---- |
 | `type` | A paraméter értéktípus. Az érvényes típusok:,,, `string` `int` `float` `bool` vagy `datapath` . |
 | `default` | Az alapértelmezett érték. |
@@ -82,7 +82,7 @@ pipeline:
 
 A `data_references` szakasz a következő kulcsokat használja, amelyek megfelelnek a [DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference):
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `datastore` | Az adattár, amelyre hivatkozni kell. |
 | `path_on_datastore` | Az adathivatkozáshoz tartozó tárolt tároló relatív elérési útja. |
@@ -106,7 +106,7 @@ pipeline:
 
 A lépések meghatározzák a számítási környezetet, valamint a környezetben futtatandó fájlokat. A lépés típusának meghatározásához használja a következő `type` kulcsot:
 
-| Lépés típusa | Description |
+| Lépés típusa | Leírás |
 | ----- | ----- |
 | `AdlaStep` | Egy U-SQL-szkriptet futtat Azure Data Lake Analytics. Megfelel a [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep) osztálynak. |
 | `AzureBatchStep` | A feladatokat Azure Batch használatával futtatja. Megfelel a [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) osztálynak. |
@@ -117,10 +117,10 @@ A lépések meghatározzák a számítási környezetet, valamint a környezetbe
 
 ### <a name="adla-step"></a>ADLA lépés
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `script_name` | Az U-SQL-parancsfájl neve (a értékhez viszonyítva `source_directory` ). |
-| `compute_target` | Az ehhez a lépéshez használt Azure Data Lake számítási cél. |
+| `compute` | Az ehhez a lépéshez használt Azure Data Lake számítási cél. |
 | `parameters` | A folyamathoz tartozó [Paraméterek](#parameters) . |
 | `inputs` | A bemenetek lehetnek [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [adatkészlet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)vagy [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
 | `outputs` | A kimenetek lehetnek [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) vagy [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
@@ -168,9 +168,9 @@ pipeline:
 
 ### <a name="azure-batch-step"></a>Azure Batch lépés
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
-| `compute_target` | Az ehhez a lépéshez használt Azure Batch számítási cél. |
+| `compute` | Az ehhez a lépéshez használt Azure Batch számítási cél. |
 | `inputs` | A bemenetek lehetnek [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [adatkészlet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)vagy [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
 | `outputs` | A kimenetek lehetnek [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) vagy [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `source_directory` | A modul bináris fájljait, végrehajtható fájlját és szerelvényeit tartalmazó könyvtár. |
@@ -222,9 +222,9 @@ pipeline:
 
 ### <a name="databricks-step"></a>Databricks lépés
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
-| `compute_target` | Az ehhez a lépéshez használt Azure Databricks számítási cél. |
+| `compute` | Az ehhez a lépéshez használt Azure Databricks számítási cél. |
 | `inputs` | A bemenetek lehetnek [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [adatkészlet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)vagy [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
 | `outputs` | A kimenetek lehetnek [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) vagy [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `run_name` | A Databricks tartozó név ehhez a futtatáshoz. |
@@ -276,9 +276,9 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>Adatátviteli lépés
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
-| `compute_target` | Az ehhez a lépéshez használt Azure Data Factory számítási cél. |
+| `compute` | Az ehhez a lépéshez használt Azure Data Factory számítási cél. |
 | `source_data_reference` | Bemeneti kapcsolatok, amely adatátviteli műveletek forrásaként szolgál. A támogatott értékek a következők: [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)vagy [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
 | `destination_data_reference` | Az adatátviteli műveletek céljaként szolgáló bemeneti kapcsolatok. A támogatott értékek a következők: [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) és [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `allow_reuse` | Meghatározza, hogy a lépés újra fel kell-e használni az előző eredményeket, ha ugyanazokkal a beállításokkal futnak újra. |
@@ -320,7 +320,7 @@ pipeline:
 
 ### <a name="python-script-step"></a>Python-parancsfájl lépései
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `inputs` | A bemenetek lehetnek [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [adatkészlet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)vagy [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
 | `outputs` | A kimenetek lehetnek [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) vagy [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
@@ -367,7 +367,7 @@ pipeline:
 
 ### <a name="parallel-run-step"></a>Párhuzamos futtatási lépés
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `inputs` | A bemenetek [adatkészlet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)vagy [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset)lehet. |
 | `outputs` | A kimenetek lehetnek [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) vagy [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
@@ -419,7 +419,7 @@ pipeline:
 
 ### <a name="pipeline-with-multiple-steps"></a>Több lépésből álló folyamat 
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `steps` | Egy vagy több PipelineStep-definíció sorszáma. Vegye figyelembe, hogy az `destination` egyik lépés kulcsai a `outputs` `source` `inputs` következő lépéshez tartozó kulcsok lesznek.| 
 
@@ -480,7 +480,7 @@ pipeline:
 
 Egy folyamat ütemtervének meghatározásakor az adattárolók által aktivált vagy ismétlődő érték lehet egy adott időintervallum alapján. Az alábbi kulcsok az ütemterv definiálásához használhatók:
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `description` | Az ütemterv leírása. |
 | `recurrence` | Ismétlődési beállításokat tartalmaz, ha az ütemezése ismétlődő. |
@@ -511,7 +511,7 @@ Schedule:
 
 **Ismétlődő ütemterv** definiálásakor használja a következő kulcsokat a alatt `recurrence` :
 
-| YAML kulcs | Description |
+| YAML kulcs | Leírás |
 | ----- | ----- |
 | `frequency` | Az ütemezett ismétlődések gyakorisága. Az érvényes értékek:,,, `"Minute"` `"Hour"` `"Day"` `"Week"` vagy `"Month"` . |
 | `interval` | Milyen gyakran következik be az ütemterv. Az egész érték azon időegységek száma, ameddig az ütemezés újra be nem következik. |

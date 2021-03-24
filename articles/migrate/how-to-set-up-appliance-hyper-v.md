@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 85ab07e0b81bf258a56956f5f0f7e80bad6a32fe
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775221"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863683"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Berendezések beállítása a Hyper-V-kiszolgálókon
 
-Ez a cikk a Hyper-V-kiszolgálók felderítésére és értékelésére szolgáló Azure Migrate berendezés beállítását ismerteti a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool eszközzel.
+Ez a cikk a Hyper-V-kiszolgálók felderítésére és értékelésére szolgáló Azure Migrate berendezés beállítását ismerteti a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool eszközzel.
 
 A [Azure Migrate készülék](migrate-appliance.md)  egy könnyű berendezés, amelyet a Azure Migrate használ: felderítés és értékelés/áttelepítés a helyszíni kiszolgálók felderítéséhez a Hyper-V-n, valamint a kiszolgálói metaadatok/teljesítményadatok küldését az Azure-ba.
 
@@ -24,31 +24,31 @@ A készüléket néhány módszerrel is üzembe helyezheti:
 - Beállítás a Hyper-V-kiszolgálón a letöltött VHD használatával. A jelen cikkben ismertetett módszer.
 - Beállítás a Hyper-V vagy a fizikai kiszolgálón lévő kiszolgálón PowerShell-telepítő parancsfájl használatával. [Ezt a módszert](deploy-appliance-script.md) akkor kell használni, ha nem tud virtuális merevlemezt használó kiszolgálót beállítani, vagy ha Azure Government.
 
-A berendezés létrehozása után győződjön meg róla, hogy tud csatlakozni Azure Migrate: felderítéshez és értékeléshez, az első konfigurálásához és a Azure Migrate projekthez való regisztrálásához.
+A berendezés létrehozása után győződjön meg róla, hogy tud csatlakozni Azure Migrate: felderítéshez és értékeléshez, az első konfigurálásához és a projekthez való regisztrálásához.
 
 ## <a name="appliance-deployment-vhd"></a>Berendezés üzembe helyezése (VHD)
 
 A készülék beállítása VHD-sablon használatával:
 
-- Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
+- Adja meg a készülék nevét, és állítson be egy Project-kulcsot a portálon.
 - Töltsön le egy tömörített Hyper-V virtuális merevlemezt a Azure Portal.
 - Hozza létre a készüléket, és győződjön meg arról, hogy tud csatlakozni Azure Migrate: felderítéshez és értékeléshez.
-- Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel a Azure Migrate Project Key használatával.
+- Konfigurálja a készüléket első alkalommal, és regisztrálja a projekttel a Project Key használatával.
 
-### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
+### <a name="generate-the-project-key"></a>A projekt kulcsának előállítása
 
 1. Az **áttelepítési céloknál** a  >  **Windows, a Linux és az SQL Server**  >  **Azure Migrate: felderítés és értékelés** **területen** válassza a felderítés lehetőséget.
 2. A **felderítési kiszolgálók** a  >  **kiszolgálók virtualizáltak?** területen válassza **az igen, a Hyper-V** lehetőséget.
 3. **1.: hozzon létre egy projektfájlt**, adja meg a Hyper-V-kiszolgálók felderítéséhez beállítani kívánt Azure Migrate-berendezés nevét. a névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárjuk be a felderítési kiszolgálók lapot.
-1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
+1. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy **projekt-kulcsot** .
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="download-the-vhd"></a>A VHD letöltése
 
 **2.: töltse le Azure Migrate készüléket**, és válassza a (z) elemet. VHD-fájl, majd kattintson a **Letöltés** gombra.
 
-   ![A felderítési gépek kiválasztása](./media/tutorial-assess-hyper-v/servers-discover.png)
+   ![A felderítési kiszolgálók kijelölése](./media/tutorial-assess-hyper-v/servers-discover.png)
 
 
    ![A kulcs létrehozásának kiválasztása](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)

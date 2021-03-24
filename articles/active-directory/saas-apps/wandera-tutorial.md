@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 383b49a7363fdca9327d419f5bed092d489a95d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181390"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951810"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>Oktatóanyag: a Wander RADAR-rendszergazda integrálása a Azure Active Directory
 
@@ -82,7 +82,8 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez vegye fel a kapcsolatot a [Wanda radar rendszergazdai](https://www.wandera.com/about-wandera/contact/#supportsection) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez vegye fel a kapcsolatot a [Wanda radar rendszergazdai](https://www.wandera.com/about-wandera/contact/#supportsection) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti. Gondosan cserélje le a <tenant id> fenti URL-cím részét a Wander-fiókban található **Beállítások**  >  **Adminisztráció**  >  **egyszeri bejelentkezési** oldalán látható bérlői azonosítóra.
+
 
 1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 

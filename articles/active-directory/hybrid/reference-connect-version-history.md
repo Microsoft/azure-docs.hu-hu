@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71eaccd615f5c3460e7b48b2e92d5f874c8de12e
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 7269a2435715834a2c1e6723de3fdc6e72eaad5f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772110"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955448"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -82,6 +82,7 @@ Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kap
      - Ha a klónozott egyéni szinkronizálási szabály nem hajt végre valamilyen levelezést és Exchange-attribútumot, akkor az új Exchange Sync-szabály hozzáadja ezeket az attribútumokat.
  - További támogatás a [szelektív jelszó-kivonatok szinkronizálásához](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization)
  - Az új [Egyobjektumú szinkronizálási parancsmag](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync)hozzáadva. Ezzel a parancsmaggal elháríthatja az Azure AD Connect szinkronizálási konfigurációját. 
+ -  A Azure AD Connect mostantól támogatja a hibrid identitás-rendszergazdai szerepkört a szolgáltatás konfigurálásához.
  - Frissített AADConnectHealth-ügynök 3.1.83.0
  - A [ADSyncTools PowerShell-modul](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools)új verziója, amely számos új vagy továbbfejlesztett parancsmaggal rendelkezik. 
  

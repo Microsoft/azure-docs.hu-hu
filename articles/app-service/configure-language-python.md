@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577612"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953510"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -114,7 +114,7 @@ A meglévő webalkalmazások a következőképpen helyezhetők üzembe az Azure-
 
 1. **Alkalmazás indítása**: a cikk későbbi részében tekintse át a [tároló indítási folyamatát](#container-startup-process) , hogy megtudja, hogyan app Service próbálja futtatni az alkalmazást. A App Service alapértelmezés szerint a Gunicorn webkiszolgálót használja, amely képesnek kell lennie az alkalmazás-objektum vagy a *WSGI.py* mappa megkeresésére. Ha szükséges, testre is [szabhatja az indítási parancsot](#customize-startup-command).
 
-1. **Folyamatos üzembe helyezés**: állítsa be a folyamatos üzembe helyezést a folyamatos üzembe [helyezésről Azure app Service](deploy-continuous-deployment.md) ha Azure-folyamatokat vagy kudu üzembe helyezést használ, vagy ha GitHub-műveleteket használ a GitHub-műveletek használatával [történő app Service](deploy-github-actions.md) .
+1. **Folyamatos üzembe helyezés**: állítsa be a folyamatos üzembe helyezést a folyamatos üzembe [helyezésről Azure app Service](deploy-continuous-deployment.md) ha Azure-folyamatokat vagy kudu üzembe helyezést használ, vagy ha GitHub-műveleteket használ a GitHub-műveletek használatával [történő app Service](./deploy-continuous-deployment.md) .
 
 1. **Egyéni műveletek**: az alkalmazást futtató app Service tárolón belüli műveletek végrehajtásához, például a Django-adatbázis áttelepítéséhez, SSH-n [keresztül csatlakozhat a tárolóhoz](configure-linux-open-ssh-session.md). A Django-adatbázis áttelepítésének futtatására példát a következő témakörben talál [: oktatóanyag: Django-webalkalmazás üzembe helyezése PostgreSQL-ben – adatbázis-áttelepítés futtatása](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - Folyamatos üzembe helyezés esetén ezeket a műveleteket a [Build Automation testreszabása](#customize-build-automation)című szakaszban leírtak szerint végezheti el a létrehozás utáni parancsokkal.
