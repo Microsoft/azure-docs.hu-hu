@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: f33e5717cd5556e72d996e7e943867c16805e71b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e3db4b9c9b4a05142f1327f681b067748cb1a2f9
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705177"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951640"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>A modellátalakító REST API használata
 
@@ -18,9 +18,9 @@ A [modell-átalakítási](model-conversion.md) szolgáltatást egy [REST API](ht
 
 ## <a name="rest-api-reference"></a>REST API-referencia
 
-A távoli renderelés REST API dokumentációja [itt](/rest/api/mixedreality/2021-01-01preview/remoterendering)található, és a hencegő definíciók [itt](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)találhatók.
+A távoli renderelés REST API dokumentációja [itt](/rest/api/mixedreality/2021-01-01/remoterendering)található, és a hencegő definíciók [itt](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)találhatók.
 
-Biztosítunk egy PowerShell-szkriptet az [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) a *Scripts* mappában, amelyet a *Conversion.ps1* nevezünk, amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../../samples/powershell-example-scripts.md). A [.net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering), a Java és a Python SDK-kat is biztosítunk.
+Biztosítunk egy PowerShell-szkriptet az [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) a *Scripts* mappában, amelyet a *Conversion.ps1* nevezünk, amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../../samples/powershell-example-scripts.md). A [.net](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/remoterendering/Azure.MixedReality.RemoteRendering/README.md) és a [Java]( https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/remoterendering/azure-mixedreality-remoterendering/README.md)SDK-kat is biztosítunk.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: b9c5db14bec87b30e51d39b1430ecc1f3cbef855
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: b5add466a60bc855e08917d02fecaf60a35deeb1
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798289"
+ms.locfileid: "104889569"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL-alapú üzemelő példányok figyelése SQL-ellenőrzésekkel (előzetes verzió)
 Az SQL-áttekintések az SQL-környezetek teljesítményét és állapotát figyelik.  A teljesítménnyel kapcsolatos szűk keresztmetszetek és problémák azonosításával segítheti az SQL-háttérrendszer által létrehozott létfontosságú számítási feladatok kiszámítható teljesítményét és rendelkezésre állását. Az SQL-elemzések [Azure monitor naplókban](../logs/data-platform-logs.md)tárolják az adattárakat, ami lehetővé teszi, hogy hatékony összesítést és szűrést nyújtson, és az adattrendeket az idő múlásával elemezze. Ezek az adatok a Azure Monitorban tekinthetők meg az ajánlat részeként szállított nézetekben, és a lekérdezések futtatásához és a trendek elemzéséhez közvetlenül is elvégezheti a naplózási adatok megtekintését.
@@ -59,7 +59,12 @@ A hibaelhárítás lépésein felül tekintse meg az SQL-információk [engedél
 
 
 ## <a name="data-collected-by-sql-insights"></a>SQL-elemzések által összegyűjtött adatok
-A nyilvános előzetes verzióban az SQL-adatvizsgálatok csak a távoli figyelési módszert támogatják. A [Graf ügynök](https://www.influxdata.com/time-series-platform/telegraf/) nincs telepítve a SQL Server. A szolgáltatás a [SQL Server bemeneti beépülő modulját](https://www.influxdata.com/integration/microsoft-sql-server/) használja a (z)-hez, és három különböző típusú SQL-figyelő lekérdezéseit használja: Azure SQL db, Azure SQL felügyelt példány, Azure-beli virtuális GÉPEN futó SQL Server. 
+
+Az SQL-adatvizsgálatok csak az SQL-figyelés távoli módszerét támogatják. A SQL Server rendszert futtató virtuális gépeken nem telepítünk ügynököt. Egy vagy több dedikált figyelő virtuális gép szükséges, amelyet az SQL-erőforrások adatainak távoli gyűjtésére használunk. 
+
+Ezeknek a figyelési virtuális gépeknek a [Azure monitor ügynöke](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) telepítve lesz a számítási feladatok beolvasása (WLI) bővítménnyel együtt. 
+
+A WLI-bővítmény tartalmazza a nyílt forráskódú- [Graf Agent ügynököt](https://www.influxdata.com/time-series-platform/telegraf/).  Az [adatgyűjtési szabályok](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) segítségével konfiguráljuk a [SQLServer bemeneti beépülő modulját](https://www.influxdata.com/integration/microsoft-sql-server/) az Azure SQL db, az Azure SQL felügyelt példánya és az Azure-beli virtuális gépen futó SQL Server által gyűjtött adatok megadásához. 
 
 A következő táblázatok összefoglalják a következőket:
 

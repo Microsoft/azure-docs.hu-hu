@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596025"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871197"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>App Service példányok figyelése állapot-ellenőrzés használatával
 
@@ -48,7 +48,7 @@ Ez a cikk az App Service példányok figyelésére használja a Azure Portal ál
 
 Az állapot-ellenőrzési beállítások konfigurálása mellett a következő [Alkalmazásbeállítások](configure-common.md)is megadhatók:
 
-| Alkalmazás-beállítás neve | Megengedett értékek | Description |
+| Alkalmazás-beállítás neve | Megengedett értékek | Leírás |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | A pingelési hibák maximális száma. Ha például a értékre van állítva `2` , a rendszer eltávolítja a példányokat a `2` sikertelen pingelések után. Emellett, ha a vertikális felskálázást végzi, App Service Pingeli az állapot-ellenőrzési útvonalat, hogy az új példányok készen álljanak. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Ha el szeretné kerülni, hogy az egészséges példányok ne legyenek túlterhelve, a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag négy példányra van méretezve, és a három nem kifogástalan állapotú, akkor a legtöbb kettő kizárja. A másik két példány (egy kifogástalan és egy sérült) továbbra is fogadja a kérelmeket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. A viselkedés felülbírálásához állítsa a és a közötti értéket `0` `100` . A magasabb érték azt jelenti, hogy A rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50). |
@@ -57,7 +57,7 @@ Az állapot-ellenőrzési beállítások konfigurálása mellett a következő [
 
 Az állapot-ellenőrzési funkció a App Service hitelesítési és engedélyezési funkcióival integrálódik. Ha ezek a biztonsági funkciók engedélyezve vannak, nincs szükség további beállításokra. Ha azonban saját hitelesítési rendszerét használja, az állapot-ellenőrzési útvonalnak engedélyeznie kell a névtelen hozzáférést. Ha a hely csak HTTP **-alapú**, akkor a rendszer az állapot-ellenőrzési kérelmet a http-**s** protokollon keresztül küldi el.
 
-A nagyméretű nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a feltehetően elérhető API-k biztonsági követelményeinek. Az állapot-ellenőrzési végpont biztonságossá tételéhez először olyan szolgáltatásokat kell használnia, mint például az [IP-korlátozások](app-service-ip-restrictions.md#set-an-ip-address-based-rule), az [ügyféltanúsítványok](app-service-ip-restrictions.md#set-an-ip-address-based-rule)vagy a Virtual Network az alkalmazások hozzáférésének korlátozásához. Az állapot-ellenőrzési végpontot a `User-Agent` bejövő kérelem egyezésének megkövetelésével biztonságossá teheti `ReadyForRequest/1.0` . A User-Agent nem lehet meghamisítani, mert a kérést a korábbi biztonsági funkciók már biztosítják.
+A nagyméretű nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a feltehetően elérhető API-k biztonsági követelményeinek. Az állapot-ellenőrzési végpont biztonságossá tételéhez először olyan szolgáltatásokat kell használnia, mint például az [IP-korlátozások](app-service-ip-restrictions.md#set-an-ip-address-based-rule), az [ügyféltanúsítványok](app-service-ip-restrictions.md#set-an-ip-address-based-rule)vagy a Virtual Network az alkalmazások hozzáférésének korlátozásához. Az állapot-ellenőrzési végpontot a `User-Agent` bejövő kérelem egyezésének megkövetelésével biztonságossá teheti `HealthCheck/1.0` . A User-Agent nem lehet meghamisítani, mert a kérést a korábbi biztonsági funkciók már biztosítják.
 
 ## <a name="monitoring"></a>Figyelés
 

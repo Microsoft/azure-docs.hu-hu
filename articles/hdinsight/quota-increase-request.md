@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98935831"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863173"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Kvóta-növelés az Azure HDInsight
 
@@ -34,7 +34,7 @@ A kvóta növeléséhez hajtsa végre a következő lépéseket:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A lap bal alsó részén kattintson a **Súgó és támogatás** elemre.
 
-    ![Súgó és támogatás gomb](./media/quota-increase-request/help-support-button.png)
+    :::image type="content" source="./media/quota-increase-request/help-support-button.png" alt-text="Súgó és támogatás gomb" border="true":::
 
 1. Válassza az **Új támogatási kérelem** lehetőséget.
 1. Az **Alapvető beállítások** lapon található **Új támogatási kérelem** oldalon válassza ki a következő beállításokat:
@@ -43,20 +43,20 @@ A kvóta növeléséhez hajtsa végre a következő lépéseket:
    - **Előfizetés**: a módosítani kívánt előfizetés
    - **Kvóta típusa**: **HDInsight**
 
-     ![Támogatási kérelem létrehozása az HDInsight Core-kvóta növeléséhez](./media/quota-increase-request/hdinsight-quota-support-request.png)
+     :::image type="content" source="./media/quota-increase-request/hdinsight-quota-support-request.png" alt-text="Támogatási kérelem létrehozása az HDInsight Core-kvóta növeléséhez" border="true":::
 
 1. Válassza a **tovább lehetőséget: megoldások >>**.
 1. A **részletek** lapon adja meg a probléma leírását, válassza ki a probléma súlyosságát, az előnyben részesített kapcsolattartási módszert és az egyéb kötelező mezőket. Az alább felsorolt sablonnal biztosíthatja a szükséges információk megadását. A kvóta-növelési kérelmeket az Azure Capacity csapat értékeli ki, nem pedig a HDInsight termék csapata. Minél több teljes információt ad meg, annál valószínűbb, hogy a kérést jóvá fogja hagyni.
 
-    ```
-    I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
-    
-    My current quota on this subscription is [CURRENT QUOTA AMOUNT].
-    
-    I would like to use the extra cores for [DETAIL REASON].
-    ```
+   ```text
+   I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
+   
+   My current quota on this subscription is [CURRENT QUOTA AMOUNT].
+   
+   I would like to use the extra cores for [DETAIL REASON].
+   ```
 
-    ![probléma részletei](./media/quota-increase-request/problem-details.png)
+   :::image type="content" source="./media/quota-increase-request/problem-details.png" alt-text="probléma részletei" border="true":::
 
 1. Válassza a **Tovább: Áttekintés + >>létrehozása** elemet.
 1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.

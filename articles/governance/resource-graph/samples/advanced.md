@@ -1,14 +1,14 @@
 ---
 title: Összetett lekérdezési példák
 description: Az Azure Resource Graph használatával speciális lekérdezéseket futtathat, beleértve az oszlopok használatát, a használt címkék felsorolását és az erőforrások reguláris kifejezésekkel való egyeztetését.
-ms.date: 01/27/2021
+ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: 5a87d63e597622ae5c0d8c8f48bc37281d4fd530
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99560354"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949855"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Speciális Resource Graph lekérdezési minták
 
@@ -28,7 +28,6 @@ A következő speciális lekérdezéseken vezetjük végig:
 - [A virtuális gépre telepített összes bővítmény felsorolása](#join-vmextension)
 - [Adott címkével rendelkező Storage-fiókok keresése az erőforráscsoporthoz](#join-findstoragetag)
 - [Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](#unionresults)
-- [Bérlői és előfizetési nevek belefoglalása a DisplayName paraméterrel](#displaynames)
 - [A virtuális gép összefoglalása a Power States Extended tulajdonsággal](#vm-powerstate)
 - [Nem megfelelő vendég-konfigurációs hozzárendelések száma](#count-gcnoncompliant)
 - [A vendég konfiguráció-hozzárendelési jelentések részleteinek lekérdezése](#query-gcreports)
@@ -559,26 +558,6 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 - Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com</a>
 - Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">Portal.Azure.us</a>
 - Azure China 21Vianet-portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">Portal.Azure.cn</a>
-
----
-
-## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>Bérlői és előfizetési nevek belefoglalása a DisplayName paraméterrel
-
-Ez a lekérdezés a **include** paramétert használja a _displaynames_ kapcsolóval, hogy hozzáadja a **hosszúnak** , és **tenantDisplayName** az eredményekhez. Ez a paraméter csak az Azure CLI és a Azure PowerShell esetében érhető el.
-
-```azurecli-interactive
-az graph query -q "limit 1" --include displayNames
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "limit 1" -Include DisplayNames
-```
-
-Az előfizetés nevének beszerzésére szolgáló alternatíva az operátor használata, `join` és a **ResourceContainers** táblához és a `Microsoft.Resources/subscriptions` típushoz való kapcsolódás. `join` Az Azure CLI, a Azure PowerShell, a portál és az összes támogatott SDK használatával működik. Példaként tekintse meg a [minta-Key Vault előfizetés nevét](#join).
-
-> [!NOTE]
-> Ha a lekérdezés nem a **Project** használatával adja meg a visszaadott tulajdonságokat, a **hosszúnak** és a **tenantDisplayName** automatikusan belekerül az eredmények közé.
-> Ha a lekérdezés a **projectet** használja, a _DisplayName_ mezők mindegyikének explicit módon szerepelnie kell a **projektben** , vagy nem lesznek visszaadva az eredmények között még akkor sem, ha a **include** paramétert használja. A **include** paraméter nem működik a [táblákkal](../concepts/query-language.md#resource-graph-tables).
 
 ---
 

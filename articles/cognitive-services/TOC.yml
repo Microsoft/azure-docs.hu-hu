@@ -32,7 +32,7 @@
       items:
         - name: Tárolók
           items:
-            - name: Tárolótámogatás
+            - name: Cognitive Services tárolók
               href: cognitive-services-container-support.md
             - name: Tárolórendszerképek címkéi és kibocsátási megjegyzései
               href: ./containers/container-image-tags.md

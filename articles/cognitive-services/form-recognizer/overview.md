@@ -11,12 +11,12 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizált adatfeldolgozás, dokumentumok feldolgozása, automatizált adatbevitel, űrlapok feldolgozása
-ms.openlocfilehash: fdd482a6b0d6ca53d99cd17076ccd9a3545f7879
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 4465f88e3b0ccab8eace1936f426af8dd32af27b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467293"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872251"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -26,7 +26,16 @@ Az Azure Form-felismerő egy olyan kognitív szolgáltatás, amely lehetővé te
 
 Az űrlap-felismerő egyéni dokumentum-feldolgozási modellekből, előre elkészített modellből áll, számlákhoz, bevételezésekhez, azonosítóhoz és üzleti kártyákhoz, valamint az elrendezési modellhez. Az űrlap-felismerő modelleket meghívhatja egy REST API-vagy ügyféloldali függvénytár-SDK használatával, így csökkentheti a bonyolultságot, és integrálhatja azt a munkafolyamatba vagy alkalmazásba.
 
-Az űrlap-felismerő a következő szolgáltatásokból áll:
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:  
+
+* [**A gyors**](quickstarts/client-library.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.  
+* A [**útmutatók**](build-training-data-set.md) útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
+* A [**fogalmak**](concept-layout.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.  
+* Az [**oktatóanyagok**](tutorial-bulk-processing.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.  
+
+## <a name="form-recognizer-features"></a>Űrlap-felismerő funkciók
+
+Az űrlap-felismerő használatával könnyedén kinyerheti és elemezheti az űrlapadatokat az alábbi funkciókkal:
 
 * **[Layout API](#layout-api)** – szöveg-, kiválasztási és táblázatos struktúrák kinyerése, valamint a hozzájuk tartozó mezők koordinátái a dokumentumokból.
 * **[Egyéni modellek](#custom-models)** – szöveg, kulcs/érték párok, kiválasztási jelek és táblák adatainak kinyerése űrlapokból. Ezek a modellek a saját adataival vannak betanítva, így az űrlapokra vannak szabva.
@@ -38,11 +47,10 @@ Az űrlap-felismerő a következő szolgáltatásokból áll:
   * [Névjegykártyák](./concept-business-cards.md)
   * [Azonosító kártyák](./concept-identification-cards.md)
 
-## <a name="try-it-out"></a>Próbálja ki
 
-Az űrlap-felismerő szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
-<!-- markdownlint-disable MD025 -->
-<!-- markdownlint-disable MD024 -->
+## <a name="get-started"></a>Bevezetés
+
+A minta űrlap-felismerő eszköz használatával kipróbálhatja az elrendezést, az előre elkészített modelleket, és betaníthatja a dokumentumaihoz tartozó egyéni modellt. Az űrlap-felismerő szolgáltatás kipróbálásához szüksége lesz egy Azure-előfizetésre ([**hozzon létre egyet ingyen**](https://azure.microsoft.com/free/cognitive-services)) és egy [**űrlap-felismerő erőforrás**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) -végpontot és kulcsot.
 
 ### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 
@@ -55,8 +63,45 @@ Az űrlap-felismerő szolgáltatás kipróbálásához nyissa meg az online mint
 > [Az űrlap-felismerő kipróbálása](https://fott.azurewebsites.net/)
 
 ---
+A dokumentumokból származó adatok kinyerésének megkezdéséhez kövesse az [ügyféloldali kódtár/REST API](./quickstarts/client-library.md) rövid útmutatóját. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
-Az űrlap-felismerő szolgáltatás kipróbálásához szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)) és egy [űrlap-felismerő erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) -végpontot és kulcsot.
+Az első lépésekhez használhatja a REST-mintákat (GitHub) is 
+
+* Szöveg, kiválasztási jelek és tábla szerkezetének kinyerése dokumentumokból
+  * [Elrendezési adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
+* Egyéni modellek betanítása és űrlapadatok kinyerése
+  * [Betanítás címkék nélkül – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+  * [Betanítás címkékkel – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
+* Adatok kinyerése a számlákból
+  * [Számlázási adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
+* Adatok kinyerése az értékesítési visszaigazolásokból
+  * [Bevételezési adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
+* Adatok kinyerése névjegykártyákból
+  * [Névjegykártya-adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
+
+### <a name="review-the-rest-apis"></a>A REST API-k áttekintése
+
+A következő API-kat fogja használni a modellek betanításához és a strukturált adatok űrlapokból való kinyeréséhez.
+
+|Név |Leírás |
+|---|---|
+| **Elrendezés elemzése** | Az átadott dokumentum elemzése a szöveg, a kiválasztási jelek, a táblák és a struktúra kinyeréséhez a dokumentumból |
+| **Egyéni modell betanítása**| Egy új modell betanításával elemezheti az űrlapokat öt azonos típusú űrlap használatával. A _useLabelFile_ paramétert beállíthatja úgy, hogy a `true` manuálisan címkézett adatként legyen betanítva. |
+| **Űrlap elemzése** |Egy adatfolyamként átadott űrlap elemzése szöveg, kulcs/érték párok és táblák az egyéni modellel való kinyeréséhez.  |
+| **Számla elemzése** | Egy számla elemzése a legfontosabb információk, táblák és egyéb számlázási szövegek kinyeréséhez.|
+| **Visszaigazolás elemzése** | Egy bevételezési dokumentum elemzése a legfontosabb információk kinyeréséhez és a más bevételezési szövegekhez.|
+| **Elemzési azonosító** | Egy azonosító kártya dokumentumának elemzése a legfontosabb információk kinyeréséhez és más azonosító kártya szövegéhez.|
+| **Névjegykártya elemzése** | Egy névjegykártya elemzése a legfontosabb információk és szövegek kinyeréséhez.|
+
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
+További információért olvassa el a [REST API dokumentációját](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+További információért olvassa el a [REST API dokumentációját](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
+
+---
 
 ## <a name="layout-api"></a>Elrendezési API
 
@@ -113,61 +158,6 @@ Az azonosító kártyák modellje lehetővé teszi a legfontosabb információk 
 A Business Cards modell lehetővé teszi olyan információk kinyerését, mint például a személy neve, a beosztás, a cím, az e-mail, a vállalat és a telefonszámok az üzleti kártyáról angol nyelven. További információért lásd a [Business Cards](./concept-business-cards.md) fogalmi útmutatóját.
 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="névjegykártya minta" lightbox="./media/overview-business-card.jpg":::
-
-## <a name="get-started"></a>Bevezetés
-
-A minta űrlap-felismerő eszköz használatával kipróbálhatja az elrendezést, az előre elkészített modelleket, és betaníthatja a dokumentumok egyéni modelljét:  
-
-### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
-
-> [!div class="nextstepaction"]
-> [Az űrlap-felismerő kipróbálása](https://fott-preview.azurewebsites.net/)
-
-### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
-
-> [!div class="nextstepaction"]
-> [Az űrlap-felismerő kipróbálása](https://fott.azurewebsites.net/)
-
----
-A dokumentumokból származó adatok kinyerésének megkezdéséhez kövesse az [ügyféloldali kódtár/REST API](./quickstarts/client-library.md) rövid útmutatóját. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
-
-Az első lépésekhez használhatja a REST-mintákat (GitHub) is 
-
-* Szöveg, kiválasztási jelek és tábla szerkezetének kinyerése dokumentumokból
-  * [Elrendezési adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
-* Egyéni modellek betanítása és űrlapadatok kinyerése
-  * [Betanítás címkék nélkül – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
-  * [Betanítás címkékkel – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
-* Adatok kinyerése a számlákból
-  * [Számlázási adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
-* Adatok kinyerése az értékesítési visszaigazolásokból
-  * [Bevételezési adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
-* Adatok kinyerése névjegykártyákból
-  * [Névjegykártya-adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
-
-### <a name="review-the-rest-apis"></a>A REST API-k áttekintése
-
-A következő API-kat fogja használni a modellek betanításához és a strukturált adatok űrlapokból való kinyeréséhez.
-
-|Név |Leírás |
-|---|---|
-| **Elrendezés elemzése** | Az átadott dokumentum elemzése a szöveg, a kiválasztási jelek, a táblák és a struktúra kinyeréséhez a dokumentumból |
-| **Egyéni modell betanítása**| Egy új modell betanításával elemezheti az űrlapokat öt azonos típusú űrlap használatával. A _useLabelFile_ paramétert beállíthatja úgy, hogy a `true` manuálisan címkézett adatként legyen betanítva. |
-| **Űrlap elemzése** |Egy adatfolyamként átadott űrlap elemzése szöveg, kulcs/érték párok és táblák az egyéni modellel való kinyeréséhez.  |
-| **Számla elemzése** | Egy számla elemzése a legfontosabb információk, táblák és egyéb számlázási szövegek kinyeréséhez.|
-| **Visszaigazolás elemzése** | Egy bevételezési dokumentum elemzése a legfontosabb információk kinyeréséhez és a más bevételezési szövegekhez.|
-| **Elemzési azonosító** | Egy azonosító kártya dokumentumának elemzése a legfontosabb információk kinyeréséhez és más azonosító kártya szövegéhez.|
-| **Névjegykártya elemzése** | Egy névjegykártya elemzése a legfontosabb információk és szövegek kinyeréséhez.|
-
-### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
-
-További információért olvassa el a [REST API dokumentációját](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
-
-### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
-
-További információért olvassa el a [REST API dokumentációját](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
-
----
 
 ## <a name="input-requirements"></a>Bemeneti követelmények
 

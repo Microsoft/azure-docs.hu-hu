@@ -2,13 +2,13 @@
 title: Az erőforrás nem található hibák
 description: Ismerteti, Hogyan oldhatók meg a hibák, ha egy erőforrás nem található. A hiba akkor fordulhat elő, ha Azure Resource Manager sablont telepít, vagy a felügyeleti műveletek végrehajtásakor.
 ms.topic: troubleshooting
-ms.date: 06/10/2020
-ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: b80c32683190167d5c0d6e0a7f75acce8bbdb833
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99526246"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950875"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Nem található az erőforrás hibáinak elhárítása
 
@@ -133,3 +133,9 @@ Sablon telepítésekor keresse meg azokat a kifejezéseket, amelyek a [hivatkoz�
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
+
+## <a name="solution-6---after-deleting-resource"></a>6. megoldás – erőforrás törlése után
+
+Ha töröl egy erőforrást, akkor előfordulhat, hogy az erőforrás továbbra is megjelenik a portálon, de valójában nem érhető el. Ha kijelöli az erőforrást, hibaüzenet jelenik meg, amely szerint az erőforrás nem található. Frissítse a portált a legújabb nézet beszerzéséhez.
+
+Ha a probléma rövid várakozás után is fennáll, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).

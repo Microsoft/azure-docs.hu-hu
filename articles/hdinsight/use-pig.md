@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4cbb7b96610a56f3b6049038bb5c9c6bc0870b57
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944610"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871363"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a Apache Hadoop on HDInsight
 
@@ -70,7 +70,7 @@ DUMP RESULT;
 
 Az alábbi képen egy Összegzés látható, hogy az egyes átalakítások mit tesznek az adatokon.
 
-![Az átalakítások grafikus ábrázolása][image-hdi-pig-data-transformation]
+:::image type="content" source="./media/use-pig/hdi-data-transformation.gif" alt-text="Az átalakítások grafikus ábrázolása" border="false":::
 
 ## <a name="run-the-pig-latin-job"></a><a id="run"></a>A Pig Latin-feladatok futtatása
 
@@ -86,7 +86,7 @@ A Pig-feladatok futtatásához SQL Server Integration Services (SSIS) használha
 
 További információ [a SSIS készült][ssispack]Azure Feature Packről.
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Következő lépések
+## <a name="next-steps"></a><a id="nextsteps"></a>További lépések
 
 Most, hogy megtanulta, hogyan használhatja a Pigt a HDInsight-mel, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight használatát.
 
@@ -113,4 +113,3 @@ Most, hogy megtanulta, hogyan használhatja a Pigt a HDInsight-mel, az alábbi h
 [powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 
 
-[image-hdi-pig-data-transformation]: ./media/use-pig/hdi-data-transformation.gif

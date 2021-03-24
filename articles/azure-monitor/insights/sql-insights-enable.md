@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 5ab51fc4ea64dfd678f5c9acfc80b5e380782153
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609408"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889620"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL-ismeretek engedélyezése (előzetes verzió)
 Ez a cikk bemutatja, hogyan engedélyezheti az SQL- [információkat](sql-insights-overview.md) az SQL-környezetek figyeléséhez. A figyelés egy olyan Azure-beli virtuális gépről történik, amely kapcsolódik az SQL-környezetekhez, és dinamikus felügyeleti nézeteket (DMV) használ a figyelési adatok gyűjtéséhez. Megadhatja, hogy milyen adatkészleteket gyűjtsön, és a gyűjtés gyakoriságát figyelési profil használatával.
@@ -92,13 +92,16 @@ A figyelési virtuális gép minden egyes típusú SQL-típust biztosít az SQL 
 
 ### <a name="azure-sql-databases"></a>Azure SQL Databases  
 
-[Oktatóanyag – Azure SQL Serverhez való kapcsolódás Azure Private-végponttal – Azure Portal](../../private-link/tutorial-private-endpoint-sql-portal.md) példa arra, hogyan lehet beállítani egy privát végpontot, amelyet az adatbázis eléréséhez használhat.  Ha ezt a módszert használja, gondoskodnia kell arról, hogy a figyelési virtuális gépek ugyanabban a VNET és alhálózatban legyenek, mint amelyet a privát végponthoz használni fog.  Ezután létrehozhatja a privát végpontot az adatbázison, ha még nem tette meg. 
+Az SQL-információk a Azure SQL Database nyilvános végpontján, valamint a virtuális hálózatán keresztül is támogatják a hozzáférést.
 
-Ha [tűzfal-beállítást](../../azure-sql/database/firewall-configure.md) használ a SQL Databasehoz való hozzáférés biztosításához, hozzá kell adnia egy tűzfalszabály használatát a figyelési virtuális gép nyilvános IP-címéről való hozzáférés biztosításához. A tűzfal beállításait a portál **Azure SQL Database áttekintés** lapjáról érheti el. 
+A nyilvános végponton keresztüli hozzáféréshez vegyen fel egy szabályt a **tűzfalbeállítások** lapon és az [IP-tűzfal beállításai](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-firewall-rules) szakaszban.  A virtuális hálózatról való hozzáférés megadásához beállíthatja a [virtuális hálózati tűzfalszabályok beállításait](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#virtual-network-firewall-rules) , és beállíthatja a [Azure monitor ügynök által igényelt szolgáltatási címkéket](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking).  [Ez a cikk](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-vs-virtual-network-firewall-rules) a tűzfalszabályok két típusa közötti különbségeket ismerteti.
 
 :::image type="content" source="media/sql-insights-enable/set-server-firewall.png" alt-text="Kiszolgálói tűzfal beállítása" lightbox="media/sql-insights-enable/set-server-firewall.png":::
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Tűzfalbeállítások." lightbox="media/sql-insights-enable/firewall-settings.png":::
+
+> [!NOTE]
+> Az SQL-eredmények jelenleg nem támogatják a Azure SQL Database Azure Private-végpontját.  Javasoljuk, hogy a hálózati biztonsági csoporton vagy a [Azure monitor ügynök által támogatott](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking)virtuális hálózati tűzfalakon használja a [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) .
 
 ### <a name="azure-sql-managed-instances"></a>Felügyelt Azure SQL-példányok 
 

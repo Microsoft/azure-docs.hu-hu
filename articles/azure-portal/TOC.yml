@@ -11,7 +11,7 @@
 - name: Rövid útmutatók
   items:
     - name: Virtuális gép létrehozása a portálon
-      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+      href: ../virtual-machines/windows/quick-create-portal.md?context=/azure/azure-portal/context/context
     - name: Irányítópult létrehozása
       items:
         - name: Azure CLI
@@ -97,3 +97,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Azure-videók
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'
+    - name: Az Azure és a Power BI
+      href: /power-bi/connect-data/service-azure-and-power-bi?context=/azure/azure-portal/context/context

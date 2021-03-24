@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180052"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987850"
 ---
 A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
 
@@ -62,11 +62,7 @@ A mikrofonból való beszéd felismerése **nem támogatott a Node.jsban**, és 
 
 ## <a name="recognize-from-file"></a>Felismerés fájlból 
 
-Ha Node.js hangfájlból szeretné felismerni a beszédet, a leküldéses adatfolyamot használó alternatív kialakítási mintát kell használni, mivel a JavaScript `File` -objektum nem használható Node.js futtatókörnyezetben. A következő kód:
-
-* Leküldéses adatfolyamot hoz létre a `createPushStream()`
-* A `.wav` fájl megnyitása olvasási adatfolyam létrehozásával, majd a leküldéses adatfolyamba való írásával
-* Hangkonfiguráció létrehozása a leküldéses adatfolyam használatával
+Egy hangfájlból származó beszéd felismeréséhez hozzon létre egy olyan `AudioConfig` alkalmazást, `fromWavFileInput()` amely egy objektumot fogad el `Buffer` . Ezután inicializálja a t [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) , és adja át a `audioConfig` és a `speechConfig` .
 
 ```javascript
 const fs = require('fs');
@@ -74,6 +70,31 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+## <a name="recognize-from-in-memory-stream"></a>Felismerés a memóriában lévő adatfolyamból
+
+Sok felhasználási eset esetében valószínű, hogy a hangadatok a blob Storage-ból fognak származni, vagy más módon már a memóriában van, [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) vagy hasonló nyers adatstruktúra. A következő kód:
+
+* Létrehoz egy leküldéses adatfolyamot a használatával `createPushStream()` .
+* Bemutató célra beolvas egy `.wav` fájlt `fs.createReadStream` , de ha már rendelkezik hangadatokkal `ArrayBuffer` , kihagyhatja közvetlenül a tartalmat a bemeneti adatfolyamba.
+* Létrehoz egy hang-konfigurációt a leküldéses adatfolyam használatával.
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+
+function fromStream() {
     let pushStream = sdk.AudioInputStream.createPushStream();
 
     fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
@@ -89,7 +110,7 @@ function fromFile() {
         recognizer.close();
     });
 }
-fromFile();
+fromStream();
 ```
 
 A leküldéses adatfolyamok bemenetként való használata azt feltételezi, hogy a hangadatok egy nyers PCM, például a fejlécek kihagyása.

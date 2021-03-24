@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95016751"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950739"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Az idősor-azonosító kiválasztásának ajánlott eljárásai
 
@@ -24,6 +24,11 @@ Ez a cikk összefoglalja a Azure Time Series Insights Gen2-környezet idősoroza
 ## <a name="choose-a-time-series-id"></a>Time Series-azonosító kiválasztása
 
 A megfelelő idősorozat-azonosító kiválasztása kritikus. Az idősorozat-azonosító kiválasztása olyan, mint egy adatbázis partíciós kulcsának kiválasztása. Azure Time Series Insights Gen2-környezet létrehozásakor szükséges.
+
+Tekintse meg a környezet üzembe helyezési oktatóanyagát az idősorozat-azonosító részletes ismertetéséhez. Megtekintheti két különböző JSON telemetria hasznos adatot, valamint a megfelelő idősorozat-azonosítót.</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
+
 
 > [!IMPORTANT]
 > Az idősorozat-azonosítók a következők:

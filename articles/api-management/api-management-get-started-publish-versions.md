@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc3d3b4658bd9a26363b6d41377d448059e30c0f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100546652"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889671"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Oktatóanyag: az API több verziójának közzététele 
 
@@ -105,7 +105,7 @@ az apim api versionset list --resource-group apim-hello-word-resource-group \
 
 Ha a Azure Portal létrehoz egy beállított verziót, az egy alfanumerikus nevet rendel hozzá, amely megjelenik a lista Name ( **név** ) oszlopában. Használja ezt a nevet más Azure CLI-parancsokban.
 
-Ha meg szeretné tekinteni a verziószám részleteit, futtassa az az [APIM API versionset show](/api/versionset#az_apim_api_versionset_show) parancsot:
+Ha meg szeretné tekinteni a verziószám részleteit, futtassa az az [APIM API versionset show](/cli/azure/apim/api/versionset#az_apim_api_versionset_show) parancsot:
 
 ```azurecli
 az apim api versionset show --resource-group apim-hello-word-resource-group \
