@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13862e642c6a91fe6f3c635df2efde91672ecbad
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946707"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866811"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Az Excel és a Apache Hadoop összekötése Power Query használatával
 
@@ -42,13 +42,13 @@ Az Excelhez készült Power Query beépülő modul megkönnyíti az adatok impor
 
      * Válassza ki > **adatok**  >  **beolvasása**  >  **Az Azure**  >  **-ból Azure HDInsight-ből (HDFS)**.
 
-       ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png" alt-text="HDI. PowerQuery. SelectHdiSource. 2016" border="true":::
 
    * Excel 2013/2010
 
      * Válassza ki a **Power Query**  >  **Az Azure**  >  **-ból Microsoft Azure HDInsightból**.
 
-       ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png" alt-text="HDI. PowerQuery. SelectHdiSource" border="true":::
 
        **Megjegyzés:** Ha nem látja a **Power Query** menüt, lépjen a **file**  >  **Options**  >  **bővítmények** menüpontra, majd a lap alján található legördülő lista **kezelés** mezőjében válassza a **com-bővítmények** lehetőséget. Kattintson a **Go... (ugrás)** gombra, és ellenőrizze, hogy az Excel-bővítményhez tartozó Power Query jelölőnégyzet be van-e jelölve.
 
@@ -62,11 +62,11 @@ Az Excelhez készült Power Query beépülő modul megkönnyíti az adatok impor
 
 1. Keresse meg **HiveSampleData.txt** a **Name (név** ) oszlopban (a mappa elérési útja: **.. /Hive/Warehouse/hivesampletable/**), majd a HiveSampleData.txt bal oldalán válassza a **Binary (bináris** ) lehetőséget. HiveSampleData.txt az összes fürthöz tartozik. Igény szerint saját fájlt is használhat.
 
-    ![HDI Excel Power Query – adatimportálás](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png" alt-text="HDI Excel Power Query – adatimportálás" border="true":::
 
 1. Ha szeretné, átnevezheti az oszlopnevek nevét. Ha elkészült, válassza a **bezárás & betöltés** lehetőséget.  A rendszer betöltötte az adatait a munkafüzetbe:
 
-    ![HDI Excel Power Query importált táblázat](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png" alt-text="HDI Excel Power Query importált táblázat" border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493526"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864890"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gép biztonsági mentéséből
 
@@ -35,7 +35,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
 3. A biztonsági mentés irányítópult menüjében válassza a **fájl-helyreállítás** lehetőséget.
 
-    ![Fájl helyreállításának kiválasztása](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Fájl helyreállításának kiválasztása](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)32
 
     Megnyílik a **Fájl-helyreállítási** menü.
 
@@ -81,6 +81,7 @@ Lásd: a fájlok biztonsági mentésének követelményei a nagyméretű lemezze
 [Windows operációs rendszer](#for-backed-up-vms-with-large-disks-windows)<br>
 [Linux operációs rendszer](#for-backed-up-vms-with-large-disks-linux)
 
+Miután kiválasztotta a megfelelő gépet a ILR parancsfájl futtatásához, ellenőrizze, hogy az megfelel-e az [operációsrendszer-követelményeknek](#step-3-os-requirements-to-successfully-run-the-script) és a [hozzáférési követelményeknek](#step-4-access-requirements-to-successfully-run-the-script). 
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>3. lépés: az operációs rendszerre vonatkozó követelmények a parancsfájl sikeres futtatásához
 
@@ -126,6 +127,8 @@ A parancsfájlnak a Python és a bash összetevők futtatására is szükség va
 | .NET | 4.6.2 és újabb verziók |
 | TLS | a 1,2 támogatottnak kell lennie  |
 
+Továbbá győződjön meg arról, hogy rendelkezik a [megfelelő géppel a ILR-szkript végrehajtásához](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) , és megfelel a [hozzáférési követelményeknek](#step-4-access-requirements-to-successfully-run-the-script).
+
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>4. lépés: a parancsfájl sikeres futtatásához szükséges hozzáférési követelmények
 
 Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancsfájlt, ellenőrizze, hogy van-e hozzáférése a következőhöz:
@@ -148,12 +151,13 @@ Linux esetén a parancsfájl "Open-iSCSI" és "lshw" összetevőket igényel a h
 
 A hozzáférés `download.microsoft.com` szükséges a biztonságos csatorna létrehozásához használt összetevők letöltéséhez, amely a parancsfájl futtatására szolgáló gép és a helyreállítási pontban lévő információ között található.
 
+Továbbá győződjön meg arról, hogy rendelkezik a [megfelelő géppel a ILR-szkript végrehajtásához](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) , és megfelel az [operációs rendszer követelményeinek](#step-3-os-requirements-to-successfully-run-the-script).
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>5. lépés: a parancsfájl futtatása és a kötetek azonosítása
 
 ### <a name="for-windows"></a>Windows esetén
 
-A 2. lépésben felsorolt követelmények teljesítése után másolja a szkriptet a letöltött helyről (általában a letöltések mappába), kattintson a jobb gombbal a végrehajtható fájlra vagy parancsfájlra, és futtassa a rendszergazdai hitelesítő adatokkal. Ha a rendszer kéri, írja be a jelszót, vagy illessze be a jelszót a memóriából, és nyomja le az ENTER billentyűt. Az érvényes jelszó megadása után a parancsfájl csatlakozik a helyreállítási ponthoz.
+A [2. lépésben](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)felsorolt összes követelménynek, a [3](#step-3-os-requirements-to-successfully-run-the-script) . lépésnek és a [4](#step-4-access-requirements-to-successfully-run-the-script). lépésnek megfelelően másolja a parancsfájlt a letöltött helyről (általában a letöltések mappából), [és Ismerje meg, hogyan hozhatja ki és töltheti le a parancsfájlt](#step-1-generate-and-download-script-to-browse-and-recover-files). Kattintson a jobb gombbal a végrehajtható fájlra, és futtassa a rendszergazdai hitelesítő adatokkal. Ha a rendszer kéri, írja be a jelszót, vagy illessze be a jelszót a memóriából, és nyomja le az ENTER billentyűt. Az érvényes jelszó megadása után a parancsfájl csatlakozik a helyreállítási ponthoz.
 
   ![Végrehajtható fájl kimenete](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -180,7 +184,7 @@ Ha a fájl-helyreállítási folyamat a fájl-visszaállítási parancsfájl fut
 
 ### <a name="for-linux"></a>Linux esetén
 
-Linux rendszerű gépeken Python-szkript jön létre. Töltse le a szkriptet, és másolja a megfelelő/kompatibilis Linux-kiszolgálóra. Előfordulhat, hogy módosítania kell az engedélyeket a futtatásához ```chmod +x <python file name>``` . Ezután futtassa a Python-fájlt a rel ```./<python file name>``` .
+A [2. lépésben](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)felsorolt összes követelménynek, a [3](#step-3-os-requirements-to-successfully-run-the-script) . lépésnek és a [4](#step-4-access-requirements-to-successfully-run-the-script). lépésnek megfelelően a Linux rendszerű gépekhez készült Python-szkript létrehozása után. Az [1. lépésből megtudhatja, hogyan hozhatja ki és töltheti le a parancsfájlokat](#step-1-generate-and-download-script-to-browse-and-recover-files). Töltse le a szkriptet, és másolja a megfelelő/kompatibilis Linux-kiszolgálóra. Előfordulhat, hogy módosítania kell az engedélyeket a futtatásához ```chmod +x <python file name>``` . Ezután futtassa a Python-fájlt a rel ```./<python file name>``` .
 
 
 A Linux rendszerben a helyreállítási pont kötetei ahhoz a mappához vannak csatlakoztatva, amelyben a parancsfájl fut. Ennek megfelelően megjelennek a csatolt lemezek, kötetek és a hozzájuk tartozó csatlakoztatási útvonalak. Ezek a csatlakoztatási útvonalak a root szintű hozzáféréssel rendelkező felhasználók számára láthatók. Tallózzon a szkript kimenetében említett kötetek között.

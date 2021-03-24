@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: 6c020153d5c5cb5aad593c5b15e60e67951b89d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d061832022b983e4d5fd55e72c1d4789b82f6633
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945184"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863224"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-titkosítás és-hitelesítés beállítása Apache Kafkahoz az Azure HDInsight
 
@@ -128,11 +128,11 @@ A konfiguráció módosításának befejezéséhez hajtsa végre a következő l
 1. A **Kafka-közvetítő** alatt állítsa be a **figyelők** tulajdonságot a következőre `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. A **speciális Kafka-Broker** területen állítsa be a **Security. Inter. Broker. Protocol** tulajdonságot a következőre: `SSL`
 
-    ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png" alt-text="A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben" border="true":::
 
 1. Az **Egyéni Kafka-Broker** területen állítsa be az **SSL. Client. auth** tulajdonságot a következőre: `required` . Ez a lépés csak akkor szükséges, ha a hitelesítést és a titkosítást állítja be.
 
-    ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png" alt-text="A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben" border="true":::
 
 1. A HDI 3,6-es verziójában nyissa meg a Ambari felhasználói felületét, és adja hozzá a következő konfigurációkat a **speciális Kafka-env** és a **Kafka-env sablon** tulajdonsághoz.
 
@@ -153,11 +153,11 @@ A konfiguráció módosításának befejezéséhez hajtsa végre a következő l
 
     A HDI 3,6-es verziójában:
 
-    ![Kafka-env template tulajdonság szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png" alt-text="Kafka-env template tulajdonság szerkesztése a Ambari-ben" border="true":::
 
     A HDI 4,0-es verziójában:
 
-     ![Kafka-env template tulajdonság szerkesztése a Ambari Four-ban](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
+     :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png" alt-text="Kafka-env template tulajdonság szerkesztése a Ambari Four-ban" border="true":::
 
 1. Indítsa újra az összes Kafka-közvetítőt.
 

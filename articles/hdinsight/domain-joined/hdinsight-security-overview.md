@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: f4fa1e64e00f2ae027d80960072da7d73d3a89cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 713559a747b58e65d04c8310755baedc93db929e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946844"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863156"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -66,7 +66,7 @@ Az Azure megfelelőségi ajánlatai különféle típusú biztosítékokon alapu
 
 Az alábbi ábra összefoglalja a főbb rendszerbiztonsági területeket és az egyes eszközökön elérhető biztonsági megoldásokat. Emellett kiemeli, hogy mely biztonsági területek felelnek meg az ügyfélnek. A HDInsight pedig a szolgáltató feladata.
 
-![HDInsight – megosztott felelősségi diagram](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
+:::image type="content" source="./media/hdinsight-security-overview/hdinsight-shared-responsibility.png" alt-text="HDInsight – megosztott felelősségi diagram" border="false":::
 
 Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó erőforrásokra mutató hivatkozásokat tartalmaz.
 

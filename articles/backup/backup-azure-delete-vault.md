@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 8df2528edebbb654e501b8aaaac91c24d932604c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670562"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864958"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -48,6 +48,7 @@ A tárolók megfelelő törléséhez az alábbi lépéseket kell követnie:
   - **MABS vagy DPM felügyeleti kiszolgálók**: lépjen a tár irányítópult menüjébe > **biztonsági mentési infrastruktúra** biztonsági  >  **mentési felügyeleti kiszolgálók** elemre. Ha DPM vagy Azure Backup Server (MABS) rendelkezik, akkor az itt felsorolt összes elemet törölni kell, vagy a biztonsági mentési adatokkal együtt meg kell szüntetni a regisztrációt. A felügyeleti kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
 
 - **4. lépés**: Győződjön meg arról, hogy az összes regisztrált Storage-fiók törölve van. Lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**  >  **Storage-fiókok** elemre. Ha az itt felsorolt Storage-fiókokkal rendelkezik, törölje az összes regisztrációját. További információ a fiók regisztrációjának megszüntetéséről: [Storage-fiók regisztrációjának törlése](manage-afs-backup.md#unregister-a-storage-account).
+- **5. lépés**: Győződjön meg arról, hogy nincsenek létrehozott privát végpontok a tárolóhoz. Nyissa meg a tároló irányítópultjának menü > **privát végponti kapcsolatok** menüpontot, > ha a tárolóban létrehozott vagy létrehozott magánhálózati végponti kapcsolatok vannak, akkor a tár törlésének folytatása előtt győződjön meg róla, hogy el lesznek távolítva. 
 
 A lépések elvégzése után továbbra is [törölheti a](#delete-the-recovery-services-vault)tárolót.
 

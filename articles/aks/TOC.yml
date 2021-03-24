@@ -270,7 +270,7 @@
           href: use-pod-security-policies.md
         - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása
           href: api-server-authorized-ip-ranges.md
-        - name: Központi telepítések ellenőrzése az Azure Policy használatával (előzetes verzió)
+        - name: Központi telepítések szabályozása Azure Policy
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Fürt hitelesítő adatainak frissítése
           href: update-credentials.md

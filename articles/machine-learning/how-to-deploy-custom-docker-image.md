@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 440723167ded15933ba46a3a58f9a873496bd6a7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: fb6d9a1a1ad341763c205a11b7a6a9acafda1ac4
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609362"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889739"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
@@ -72,7 +72,7 @@ Az ebben a szakaszban található információk azt feltételezik, hogy Azure Co
 A Azure Machine Learning csak a következő szoftvereket biztosító Docker-rendszerképeket támogatja:
 * Ubuntu 16,04 vagy újabb.
 * Conda 4.5. # vagy nagyobb.
-* Python 3.5 +.
+* Python 3.6 +.
 
 Az adatkészletek használatához telepítse a libfuse-dev csomagot. Győződjön meg arról is, hogy minden szükséges felhasználói tárterület-csomagot telepít.
 
@@ -216,7 +216,7 @@ Egyéni rendszerkép használatához a következő információk szükségesek:
 
 A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető adattáron, amely az ebben a szakaszban ismertetett lépésekkel használható:
 
-| Kép | Description |
+| Kép | Leírás |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning alaprendszerképe |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | A CPU-következtetések ONNX-futtatókörnyezetét tartalmazza |

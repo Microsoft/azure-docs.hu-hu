@@ -8,17 +8,17 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 7b7e29b6e2ebb3b229045df439848264540b59b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/18/2021
+ms.openlocfilehash: ec41f7503ec179cb1fa6172e94e613933f719c93
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461623"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953617"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-esemény forrásai
 
- Az Azure Time Series Insights Gen2-környezet akár két folyamatos átviteli erőforrással is rendelkezhet. Az Azure-erőforrások két típusa támogatott bemenetként:
+Az Azure Time Series Insights Gen2-környezet akár két folyamatos átviteli erőforrással is rendelkezhet. Az Azure-erőforrások két típusa támogatott bemenetként:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
@@ -27,15 +27,37 @@ Az eseményeket UTF-8 kódolású JSON-ként kell elküldeni.
 
 ## <a name="create-or-edit-event-sources"></a>Eseményforrás létrehozása vagy szerkesztése
 
-Az eseményforrás-erőforrás (ok) ugyanabban az Azure-előfizetésben is elérhetők, mint a Azure Time Series Insights Gen2-környezet vagy egy másik előfizetés. A környezete eseményforrás létrehozásához, szerkesztéséhez és eltávolításához használhatja a [Azure Portal](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment), az [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), az [ARM-sablonokat](time-series-insights-manage-resources-using-azure-resource-manager-template.md)és a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
+Az eseményforrás a hub és a Azure Time Series Insights Gen2-környezet közötti kapcsolat, és az erőforráscsoport egy külön típusú erőforrást `Time Series Insights event source` hoz létre. A IoT Hub vagy az Event hub-erőforrás (ok) ugyanabban az Azure-előfizetésben használható, mint a Azure Time Series Insights Gen2-környezet vagy egy másik előfizetés. Azonban ajánlott a Azure Time Series Insights-környezet és a IoT Hub vagy az Event hub egyazon Azure-régión belüli bekapcsolódása.
 
-Egy eseményforrás összekapcsolásakor a Azure Time Series Insights Gen2-környezete a legrégebbi eseménytől kezdve beolvassa az IOT vagy az Event hub-ban jelenleg tárolt összes eseményt.
+Használhatja a [Azure Portalt](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), az [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source)-t, a [Azure Resource Manager sablonokat](time-series-insights-manage-resources-using-azure-resource-manager-template.md), valamint a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) a környezete eseményforrás létrehozásához, szerkesztéséhez vagy eltávolításához.
+
+## <a name="start-options"></a>Indítási beállítások
+
+Egy eseményforrás létrehozásakor lehetősége van megadnia, hogy milyen előre meglévő adatokat kell gyűjteni. Ez a beállítás nem kötelező. A következő lehetőségek érhetők el:
+
+| Név   |  Leírás  |  Példa Azure Resource Manager sablonra |
+|----------|-------------|------|
+| EarliestAvailable | A IoT vagy az Event hub-ban tárolt összes már meglévő adatot betöltheti | `"ingressStartAt": {"type": "EarliestAvailable"}` |
+| EventSourceCreationTime |  Az eseményforrás létrehozása után megjelenő adatmennyiség megkezdése. A rendszer figyelmen kívül hagyja az eseményforrás létrehozása előtt továbbított összes korábbi adatmennyiséget. Ez az alapértelmezett beállítás a Azure Portal   |   `"ingressStartAt": {"type": "EventSourceCreationTime"}` |
+| CustomEnqueuedTime | Az Ön környezete az egyéni várólistán lévő idő (UTC) alapján tölti le az adatait. Minden olyan esemény betöltése és tárolása történik, amely az egyéni várólistán lévő idején vagy után várólistán lévő be a IoT vagy az Event hub-ba. A rendszer figyelmen kívül hagyja az egyéni várólistán lévő idő előtti összes eseményt. Vegye figyelembe, hogy a "várólistán lévő Time" kifejezés arra az időre vonatkozik (UTC szerint), amelyet az esemény a IoT vagy az Event hub esetében megérkezett. Ez eltér az esemény törzsében található egyéni [timestamp tulajdonságtól](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp) . |     `"ingressStartAt": {"type": "CustomEnqueuedTime", "time": "2021-03-01T17:00:00.20Z"}` |
 
 > [!IMPORTANT]
 >
-> - Előfordulhat, hogy magas kezdeti késést tapasztal, amikor egy eseményforrás az Azure Time Series Insights Gen2-környezethez van csatolva.
-> - Az eseményforrás késése az IoT Hub vagy az Event hub aktuális eseményeinek számától függ.
-> - A magas késleltetés az eseményforrás-adat első betöltését követően fog megjelenni. Ha folyamatos, magas késést tapasztal, küldjön támogatási jegyet a Azure Portalon keresztül.
+> - Ha a EarliestAvailable lehetőséget választja, és sok már meglévő adattal rendelkezik, akkor magas kezdeti késést tapasztalhat, mivel az Azure Time Series Insights Gen2-környezet az összes adatait feldolgozza.
+> - Ezt a nagy késést végül az adat indexelésének megfelelően kell ellátni. Ha folyamatos, magas késést tapasztal, küldjön támogatási jegyet a Azure Portalon keresztül.
+
+* EarliestAvailable
+
+![EarliestAvailable diagram](media/concepts-streaming-event-sources/event-source-earliest-available.png)
+
+* EventSourceCreationTime
+
+![EventSourceCreationTime diagram](media/concepts-streaming-event-sources/event-source-creation-time.png)
+
+* CustomEnqueuedTime
+
+![CustomEnqueuedTime diagram](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
+
 
 ## <a name="streaming-ingestion-best-practices"></a>Az adatfolyamok betöltésének ajánlott eljárásai
 
@@ -53,11 +75,14 @@ Egy eseményforrás összekapcsolásakor a Azure Time Series Insights Gen2-körn
 
 - Az eseményforrás-kapcsolati karakterláncok megadásakor kövesse a legalacsonyabb jogosultsági szint elvét. Event Hubs esetében csak a *küldési* jogcímet konfigurálja, és a IoT hub csak a *szolgáltatás csatlakozási* engedélyét használja.
 
+> [!CAUTION] 
+> Ha törli a IoT Hub vagy az Event hub-t, és újra létrehoz egy új erőforrást ugyanazzal a névvel, létre kell hoznia egy új eseményforrás, és csatolnia kell az új IoT Hub vagy az Event hub-t. A rendszer addig nem tölti be az adatot, amíg el nem végzi ezt a lépést.
+
 ## <a name="production-workloads"></a>Éles számítási feladatok
 
 A fenti ajánlott eljárások mellett azt javasoljuk, hogy az üzleti szempontból kritikus fontosságú számítási feladatokhoz a következőket alkalmazza.
 
-- Növelje a IoT Hub vagy az Event hub adatmegőrzési idejét legfeljebb 7 napig.
+- Növelje IoT Hub vagy az Event hub adatmegőrzési idejét legfeljebb hét napig.
 
 - Hozzon létre környezeti riasztásokat a Azure Portal. A platform [metrikái](./how-to-monitor-tsi-reference.md#metrics) alapján történő riasztások lehetővé teszik a végpontok közötti folyamat működésének ellenőrzését. A riasztások létrehozásával és kezelésével kapcsolatos utasítások [itt](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)találhatók. Javasolt riasztási feltételek:
 
@@ -76,7 +101,7 @@ Azure Time Series Insights Gen2 jelenleg nem támogatja az adatfolyam-továbbít
 
 ## <a name="event-source-timestamp"></a>Eseményforrás időbélyege
 
-Az eseményforrás konfigurálásakor a rendszer megkéri, hogy adjon meg egy időbélyeg-azonosító tulajdonságot. A timestamp tulajdonság az események időbeli nyomon követésére szolgál. Ez az idő lesz a $event. $ts a [lekérdezési API](/rest/api/time-series-insights/dataaccessgen2/query/execute) -k és az adatábrázolási adatsorozatok számára a Azure Time Series Insights Explorerben. Ha nem ad meg tulajdonságot a létrehozási időben, vagy ha egy eseményből hiányzik az időbélyegző tulajdonság, akkor az esemény IoT Hub vagy Events hub-várólistán lévő ideje lesz alapértelmezettként használva. Az időbélyegző-tulajdonságok értékeit a rendszer UTC szerint tárolja.
+Az eseményforrás konfigurálásakor a rendszer megkéri, hogy adjon meg egy időbélyeg-azonosító tulajdonságot. A timestamp tulajdonság az események időbeli nyomon követésére szolgál. Ez az idő lesz a lekérdezési API-k időbélyegként való használata, `$ts` valamint a Azure Time Series Insights Explorerben ábrázolt adatsorozatok. [](/rest/api/time-series-insights/dataaccessgen2/query/execute) Ha nem ad meg tulajdonságot a létrehozási időben, vagy ha egy eseményből hiányzik az időbélyegző tulajdonság, akkor az esemény IoT Hub vagy Events hub-várólistán lévő ideje lesz alapértelmezettként használva. Az időbélyegző-tulajdonságok értékeit a rendszer UTC szerint tárolja.
 
 Általánosságban elmondható, hogy a felhasználók testreszabják az időbélyegző tulajdonságot, és azt az időpontot használják, amikor az érzékelő vagy a címke az olvasást az alapértelmezett hub-várólistán lévő idejének használata helyett használja. Ez különösen akkor szükséges, ha az eszközök időszakos kapcsolati adatvesztéssel rendelkeznek, és a késleltetett üzenetek kötegét továbbítják Azure Time Series Insights Gen2.
 

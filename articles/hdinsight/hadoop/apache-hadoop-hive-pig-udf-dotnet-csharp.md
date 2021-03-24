@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5682ff58ad827f5a165342f11f03fb49bbe6d2d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946543"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867882"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Felhasználó által definiált C#-függvények használata Apache Hive és Apache Pig használatával a HDInsight-on Apache Hadoop
 
@@ -171,7 +171,7 @@ Ezután töltse fel a kaptár és a Pig UDF alkalmazásokat a Storage-ba egy HDI
 
 1. Bontsa ki azt a HDInsight-fürtöt, amelyre telepíteni kívánja az alkalmazást. Megjelenik egy bejegyzés a szöveggel **(alapértelmezett Storage-fiók)** .
 
-    ![Alapértelmezett Storage-fiók, HDInsight-fürt, Server Explorer](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
+    :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png" alt-text="Alapértelmezett Storage-fiók, HDInsight-fürt, Server Explorer" border="true":::
 
     * Ha ezt a bejegyzést ki lehet bővíteni, az **Azure Storage-fiókot** használja alapértelmezett tárolóként a fürt számára. Ha meg szeretné tekinteni a fürt alapértelmezett tárolójában lévő fájlokat, bontsa ki a bejegyzést, majd kattintson duplán a **(alapértelmezett tároló)** elemre.
 
@@ -181,7 +181,7 @@ Ezután töltse fel a kaptár és a Pig UDF alkalmazásokat a Storage-ba egy HDI
 
     * Ha **Azure Storage-fiókot** használ, válassza a **blob feltöltése** ikont.
 
-        ![HDInsight feltöltés ikonja új projekthez](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png" alt-text="HDInsight feltöltés ikonja új projekthez" border="true":::
 
         Az **új fájl feltöltése** párbeszédpanel **fájlnév** területén válassza a **Tallózás** lehetőséget. A **blob feltöltése** párbeszédpanelen lépjen a *HiveCSharp* projekt *bin\debug* mappájába, majd válassza ki a *HiveCSharp.exe* fájlt. Végül kattintson a **Megnyitás** elemre, majd az **OK gombra** a feltöltés befejezéséhez.
 

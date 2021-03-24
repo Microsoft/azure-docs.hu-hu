@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 824ba2c3316ccb34b59a9e435b9a6e582f137090
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fe5b2a1f083e246ea61854c9cbe03932e6655fdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945924"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866590"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight
 
@@ -82,15 +82,15 @@ Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi l�
 
 2. A bal oldali lista használatával válassza ki a módosítani kívánt szolgáltatási területét. Például: **HDFS**. A középső területen válassza a **konfigurációk** lapot.
 
-    ![A Ambari web képe a HDFS configs lapon kiválasztva](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png" alt-text="A Ambari web képe a HDFS configs lapon kiválasztva":::
 
 3. A **szűrő...** bejegyzés **használatával adja meg** a kilépést. Csak a szöveget tartalmazó elemek jelennek meg.
 
-    ![Apache Ambari-konfiguráció szűrt listája](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png" alt-text="Apache Ambari-konfiguráció szűrt listája":::
 
 4. Keresse meg azt a szolgáltatást, amely számára engedélyezni szeretné a heap-memóriaképeket, és adja meg az engedélyezni kívánt beállításokat. **\* \_** Az alábbi ábrán a `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ NAMENODE \_** :
 
-    ![Apache Ambari Hadoop-namenode – dönt](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png" alt-text="Apache Ambari Hadoop-namenode – dönt":::
 
    > [!NOTE]  
    > Ha a térképhez vagy a gyermek-feldolgozási folyamat csökkentéséhez a heap-memóriaképek engedélyezve vannak, keresse meg a **MapReduce. admin. map. Child. Java. eldöntés** és a **MapReduce. admin. csökkentse. Child. Java. dönt**.
@@ -99,15 +99,15 @@ Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi l�
 
 5. A módosítások alkalmazása után az **Újraindítás kötelező** ikon egy vagy több szolgáltatás mellett jelenik meg.
 
-    ![újraindítás szükséges ikon és Újraindítás gomb](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png" alt-text="újraindítás szükséges ikon és Újraindítás gomb":::
 
 6. Válassza ki az összes olyan szolgáltatást, amely újraindítást igényel, és a **szolgáltatási műveletek** gomb használatával **kapcsolja be a karbantartási módot**. A karbantartási mód megakadályozza, hogy a riasztások a szolgáltatásból való indításkor legyenek generálva.
 
-    ![A HDI karbantartási mód menüjének bekapcsolása](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png" alt-text="A HDI karbantartási mód menüjének bekapcsolása":::
 
 7. Miután engedélyezte a karbantartási módot, a szolgáltatás **Újraindítási gombjának** használatával **indítsa újra az összes érvényben** lévőt
 
-    ![Apache Ambari – az összes érintett bejegyzés újraindítása](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png" alt-text="Apache Ambari – az összes érintett bejegyzés újraindítása":::
 
    > [!NOTE]  
    > Az **Újraindítási** gomb bejegyzései eltérőek lehetnek más szolgáltatások esetében.

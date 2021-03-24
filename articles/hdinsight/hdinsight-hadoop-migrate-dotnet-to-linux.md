@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e626d08e7fd315ca70765477c5dae56030521c6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945592"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866403"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET-megoldások migrálása Windows-alapú HDInsight Linux-alapú HDInsight
 
@@ -33,7 +33,7 @@ A [.net-hordozhatósági elemző](https://marketplace.visualstudio.com/items?ite
 
 2. A Visual Studio 2015-ból válassza  >  a __hordozhatósági elemző beállításainak__ elemzése lehetőséget, és győződjön meg arról, hogy a __4,5__ be van jelölve a __mono__ szakaszban.
 
-    ![4,5 az analizátor beállításainál a Mono szakaszban be van jelölve](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png" alt-text="4,5 az analizátor beállításainál a Mono szakaszban be van jelölve":::
 
     A konfiguráció mentéséhez kattintson __az OK gombra__ .
 
@@ -41,7 +41,7 @@ A [.net-hordozhatósági elemző](https://marketplace.visualstudio.com/items?ite
 
 4. Az elemzések befejezése után válassza az  >  __elemzés megtekintése jelentések__ elemzése lehetőséget. A __hordozhatósági elemzés eredményei__ között válassza a __jelentés megnyitása__ lehetőséget a jelentés megnyitásához.
 
-    ![A hordozhatósági elemző eredményei párbeszédpanel](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png" alt-text="A hordozhatósági elemző eredményei párbeszédpanel":::
 
 > [!IMPORTANT]  
 > Az analizátor nem tud minden problémát megfogni a megoldásával. A fájl elérési útja például az `c:\temp\file.txt` OK, ha a Mono a Windows rendszeren fut. Ugyanez az elérési út nem érvényes Linux platformon.

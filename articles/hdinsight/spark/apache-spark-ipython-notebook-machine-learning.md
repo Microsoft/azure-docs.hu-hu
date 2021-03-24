@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 88a71eb5a8ca9a6f2bf1d17fc4eaf9780527d2cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13e5609c965a28405804b8a993280b13755b2d3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930550"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866067"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Oktatóanyag: Apache Spark Machine learning-alkalmazás létrehozása az Azure HDInsight
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az alkalmazás alapértelmezés szerint az összes fürtön elérhető minta **HVAC.csv** -adatelemzést használja. A fájl a következő helyen található: `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Az adatok néhány HVAC-rendszerrel felszerelt épület célhőmérsékletét és jelenlegi hőmérsékletét mutatják. A **System** (Rendszer) oszlop tartalmazza a rendszer-azonosítót, míg a **SystemAge** (Rendszer kora) oszlop azt mutatja, hogy az épületben hány éve működik a HVAC-rendszer. Megjósolhatja, hogy egy adott épületben melegebb vagy hidegebb állapotú-e a megcélzott hőmérséklet, a rendszerazonosító és a rendszer kora alapján.
 
-![A Spark Machine learning-példához használt adatok pillanatképe](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "A Spark Machine learning-példához használt adatok pillanatképe")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png " alt-text="A Spark Machine learning-példához használt adatok pillanatképe" border="true":::
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Egy Spark Machine Learning-alkalmazás fejlesztése a Spark MLlib segítségével
 
@@ -138,7 +138,7 @@ Ez az alkalmazás egy Spark [ml](https://spark.apache.org/docs/2.2.0/ml-pipeline
 
     Hasonlítsa össze a kimenetet a nyers CSV-fájllal. Például a CSV-fájl első sora a következő adatokat tartalmazza:
 
-    ![Kimeneti adatok pillanatképe a Spark Machine learninghez – példa](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Kimeneti adatok pillanatképe a Spark Machine learninghez – példa")
+    :::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png " alt-text="Kimeneti adatok pillanatképe a Spark Machine learninghez – példa" border="true":::
 
     Figyelje meg, hogy a tényleges hőmérséklet alacsonyabb, mint a célhőmérséklet, ami arra utal, hogy az épület hideg. Az első sorban lévő **címke** értéke **0,0**, ami azt jelenti, hogy az épület nem meleg.
 
@@ -199,7 +199,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 1. Válassza a **Törlés** elemet. Válassza az **Igen** lehetőséget.
 
-![Azure Portal töröl egy HDInsight-fürtöt](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure Portal töröl egy HDInsight-fürtöt" border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 

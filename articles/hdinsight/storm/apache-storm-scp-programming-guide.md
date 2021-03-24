@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932646"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864108"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP programozási útmutató az Azure HDInsight Apache Storm
 
@@ -28,7 +28,7 @@ Az SCP-ben lévő adatmennyiség a rekordok folytonos adatfolyamként van modell
 1. A rendszer a Storm-topológián belül üzemeltetett üzleti logika átveszi és átalakítja azokat.
 1. Vagy a kimenetét egy másik SCP-rendszerbe rekordok, vagy elkötelezettek lesznek a (z), például elosztott fájlrendszerek és adatbázisok (például SQL Server) tárolására.
 
-![Egy üzenetsor diagramja, amely a feldolgozásra szánt adatmennyiséget táplálja, ami viszont adattárakat táplál](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png" alt-text="Egy üzenetsor diagramja, amely a feldolgozásra szánt adatmennyiséget táplálja, ami viszont adattárakat táplál" border="false":::
 
 A Storm-ben egy alkalmazás-topológia definiál egy számítási diagramot. A topológia minden csomópontja feldolgozási logikát tartalmaz. A csomópontok közötti kapcsolatok jelzik az adatfolyamot.
 
@@ -431,7 +431,7 @@ A **runSpec** parancs használatával a topológiai specifikációkat közvetlen
 
 A SCP.NET a következő függvényeket adta hozzá a tranzakciós topológiák definiálásához:
 
-| Új függvény | Paraméterek | Description |
+| Új függvény | Paraméterek | Leírás |
 | --- | --- | --- |
 | **TX – topolopy** |*topológia – név*<br />*kiöntő – Térkép*<br />*bolt – Térkép* |Egy tranzakciós topológiát határoz meg a topológia nevével, a kiöntő definíciók leképezésével és a csavarok definíciós térképével. |
 | **SCP – TX-kiöntő** |*exec-név*<br />*args*<br />*mezők* |Egy tranzakciós kiöntőt határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok* által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a kiöntő kimeneti mezőit. |
@@ -443,7 +443,7 @@ A SCP.NET a következő függvényeket adta hozzá a tranzakciós topológiák d
 
 A SCP.NET a következő kulcsszavakat definiálja:
 
-| Kulcsszó | Description |
+| Kulcsszó | Leírás |
 | --- | --- |
 | **: név** |A topológia neve |
 | **: topológia** |Az előző táblázat függvényeit használó topológia és beépített függvények |
@@ -570,7 +570,7 @@ Itt a a `examples\HybridTopology\java\target\` Java kiöntő/bolt jar-fájlt tar
 
 Az SCP-összetevők a javát és a C#-oldalt is tartalmazzák. A Java-kiöntő/-csavarokkal való kommunikációhoz, a szerializáláshoz és a deszerializáláshoz a Java oldal és a C# oldal között kell történnie, ahogyan az a következő ábrán látható:
 
-![Az SCP-összetevőnek küldött Java-összetevők ábrája, amelyet aztán egy másik Java-összetevőnek küld.](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png" alt-text="Az SCP-összetevőnek küldött Java-összetevők ábrája, amelyet aztán egy másik Java-összetevőnek küld." border="false":::
 
 #### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>Szerializálás a Java oldalon és a deszerializálás a C# oldalon
 

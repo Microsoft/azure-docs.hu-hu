@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5360057ec2dfbd2b40c6f086f5e910103c544b62
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929161"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865451"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topológiák fejlesztése a Apache Stormhez a Data Lake Tools for Visual Studio használatával
 
@@ -128,7 +128,7 @@ C#-topológiai projekt létrehozása a Visual Studióban:
 
 1. Az **új projekt konfigurálása** ablakban adja meg az *WordCount* **projekt nevét** , vagy a projekt **hely** könyvtárának elérési útját, majd kattintson a **Létrehozás** gombra.
 
-    ![Storm-alkalmazás, az új projekt konfigurálása párbeszédpanel, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png" alt-text="Storm-alkalmazás, az új projekt konfigurálása párbeszédpanel, Visual Studio" border="true":::
 
 A projekt létrehozása után a következő fájlokkal kell rendelkeznie:
 
@@ -333,7 +333,7 @@ Most hozzon létre két Storm-csavart a következő példában:
 
 A kiöntő és a csavarok egy gráfba vannak rendezve, amely meghatározza, hogy az adatáramlás Hogyan zajlik az összetevők között. Ehhez a topológiához a gráf a következő:
 
-![Kiöntő és bolt összetevő-elrendezési diagram, Storm-topológia](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png" alt-text="Kiöntő és bolt összetevő-elrendezési diagram, Storm-topológia" border="false":::
 
 A kiöntő kibocsátja azokat a mondatokat, amelyeket a rendszer az elosztói bolt példányain terjeszt. Az osztó-csavar a mondatokat szavakba bontja, amelyek el vannak osztva a Counter-boltba.
 
@@ -413,7 +413,7 @@ Most már készen áll arra, hogy elküldje a topológiát a HDInsight-fürtön.
 
     A topológia sikeres elküldését követően meg kell jelennie a fürt **Storm-topológiák nézetének** ablakának. Válassza ki a **WordCount** -topológiát a listából a futó topológiával kapcsolatos információk megtekintéséhez.
 
-    ![Storm topológia nézet ablak, HDInsight-fürt, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png" alt-text="Storm topológia nézet ablak, HDInsight-fürt, Visual Studio" border="true":::
 
     > [!NOTE]  
     > A **Storm-topológiákat** a **Server Explorerben** is megtekintheti. Bontsa ki az **Azure**  >  **HDInsight** csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése** parancsot.
@@ -567,7 +567,7 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
 
 1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Tulajdonságok** lehetőséget. A projekt tulajdonságai között. Ezután módosítsa a **kimeneti típust** a **Console alkalmazásba**.
 
-   ![HDInsight Storm-alkalmazás, projekt tulajdonságai, kimenet típusa](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png" alt-text="HDInsight Storm-alkalmazás, projekt tulajdonságai, kimenet típusa" border="true":::
 
    > [!NOTE]
    > Ne felejtse el módosítani a **kimeneti típust** az **osztály-tárba** , mielőtt telepítené a topológiát a fürtön.

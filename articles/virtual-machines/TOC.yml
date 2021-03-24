@@ -101,6 +101,8 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: Nagyszámítógépes áthelyezés
       href: ./workloads/mainframe-rehosting/overview.md
+    - name: Azure bizalmas számítás
+      href: ../confidential-computing/overview.md
     - name: SQL on Virtual Machines
       href: ../azure-sql/virtual-machines/index.yml
     - name: Nagy teljesítményű számítástechnika (HPC)

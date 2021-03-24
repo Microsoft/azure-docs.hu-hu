@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 03/12/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 67341fcc7be21e4fa62c6e52a921fe397c8ffeb6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a5224aab8db65cf22e952185d07147f6f007e088
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417620"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956281"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>A munkaterület használata egyéni DNS-kiszolgálóval
 
@@ -43,7 +43,10 @@ Az alábbi lista tartalmazza a munkaterület által használt teljes tartományn
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
+
+    > [!NOTE]
+    > A teljes tartománynévhez tartozó munkaterület neve csonkolt lehet. A csonkítás úgy történik, hogy a teljes tartománynév 63 karakternél kisebb vagy azzal egyenlő legyen.
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]

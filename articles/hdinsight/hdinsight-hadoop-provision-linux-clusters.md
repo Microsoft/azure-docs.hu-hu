@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04da79509ac40ba870014995d8318a49c98e1ce5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741837"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863411"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
 
@@ -42,7 +42,7 @@ Ez a cikk végigvezeti a telepítőn a [Azure Portalon](https://portal.azure.com
 
 ## <a name="basics"></a>Alapvető beállítások
 
-![hdinsight-létrehozási beállítások egyéni gyors](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png" alt-text="hdinsight-létrehozási beállítások egyéni gyors":::
 
 ### <a name="project-details"></a>Projekt részletei
 
@@ -107,7 +107,7 @@ Az SSH-Felhasználónév a következő korlátozásokkal rendelkezik:
 
 ## <a name="storage"></a>Tárolás
 
-![Fürt tárolási beállításai: HDFS-kompatibilis végpontok](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png" alt-text="Fürt tárolási beállításai: HDFS-kompatibilis végpontok":::
 
 Bár a Hadoop helyszíni telepítése a elosztott fájlrendszer Hadoop (HDFS) használja a fürtön lévő tároláshoz, a felhőben a fürthöz csatlakozó tárolási végpontokat használja. A felhőalapú tárolás eszközzel biztonságosan törölheti a számításhoz használt HDInsight-fürtöket, miközben továbbra is megőrizheti az adatait.
 
@@ -165,7 +165,7 @@ A Ambari a HDInsight-fürtök figyelésére, a konfiguráció módosítására, 
 
 ## <a name="security--networking"></a>Biztonság és hálózatkezelés
 
-![hdinsight-létrehozási beállítások válassza a vállalati biztonsági csomag lehetőséget](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png" alt-text="hdinsight-létrehozási beállítások válassza a vállalati biztonsági csomag lehetőséget":::
 
 ### <a name="enterprise-security-package"></a>Vállalati biztonsági csomag
 
@@ -201,7 +201,7 @@ További információ: [felügyelt identitások az Azure HDInsight-ben](./hdinsi
 
 ## <a name="configuration--pricing"></a>Konfiguráció és díjszabás
 
-![HDInsight válassza ki a csomópont méretét](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png" alt-text="HDInsight válassza ki a csomópont méretét":::
 
 A csomópont-használatért díjat számítunk fel, amíg a fürt létezik. A számlázás akkor kezdődik, amikor létrejön egy fürt, és leáll, amikor a fürt törlődik. A fürtöket nem lehet kiosztani vagy lefoglalni.
 
@@ -211,10 +211,10 @@ Mindegyik fürt típusa saját számú csomóponttal, csomópontok terminológi�
 
 | Típus | Csomópontok | Ábra |
 | --- | --- | --- |
-| Hadoop |Fő csomópont (2), munkavégző csomópont (1 +) |![HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |![HDInsight HBase-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus csomópont (2), felügyeleti kiszolgáló (1 +), ZooKeeper csomópont (3) |![HDInsight Storm-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Fő csomópont (2), munkavégző csomópont (1 +), ZooKeeper-csomópont (3) (az A1-es ZooKeeper VM-mérethez ingyenes) |![HDInsight Spark-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Hadoop |Fő csomópont (2), munkavégző csomópont (1 +) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png" alt-text="HDInsight Hadoop" border="false"::: |
+| HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png" alt-text="HDInsight HBase-fürt típusának beállítása" border="false"::: |
+| Storm |Nimbus csomópont (2), felügyeleti kiszolgáló (1 +), ZooKeeper csomópont (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png" alt-text="HDInsight Storm-fürt típusának beállítása" border="false"::: |
+| Spark |Fő csomópont (2), munkavégző csomópont (1 +), ZooKeeper-csomópont (3) (az A1-es ZooKeeper VM-mérethez ingyenes) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png" alt-text="HDInsight Spark-fürt típusának beállítása" border="false"::: |
 
 További információ: az [alapértelmezett csomópont-konfiguráció és a fürtök virtuálisgép-mérete](hdinsight-supported-node-configuration.md) a "mi a Hadoop-összetevők és-verziók a HDInsight-ben?"
 
@@ -222,7 +222,7 @@ A HDInsight-fürtök költségeit a csomópontok száma és a csomópontok virtu
 
 A különböző típusú fürtök eltérő csomópont-típusokkal, csomópont-számokkal és csomópont-méretekkel rendelkeznek:
 * Hadoop-fürt típusának alapértelmezett értéke:
-    * Két *fő csomópont*  
+    * Két *fő csomópont*
     * Négy *munkavégző csomópont*
 * Storm-fürt típusa alapértelmezett:
     * Két *Nimbus-csomópont*

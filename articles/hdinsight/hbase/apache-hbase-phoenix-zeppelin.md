@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ff963e661a2b258c1eb452ed63f41f4e7d84c6a0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944766"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867780"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Az Apache Zeppelin használatával Apache Phoenix lekérdezéseket futtathat az Apache HBase az Azure HDInsight
 
@@ -30,68 +30,68 @@ Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](
 
 1. A Zeppelin lapon válassza az **új Megjegyzés létrehozása** lehetőséget.
 
-    ![HDInsight interaktív lekérdezés Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png" alt-text="HDInsight interaktív lekérdezés Zeppelin" border="true":::
 
 1. Az **új Megjegyzés létrehozása** párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    - Megjegyzés neve: adja meg a jegyzet nevét.
-    - Alapértelmezett értelmező: válassza a **JDBC** elemet a legördülő listából.
+   - Megjegyzés neve: adja meg a jegyzet nevét.
+   - Alapértelmezett értelmező: válassza a **JDBC** elemet a legördülő listából.
 
-    Ezután válassza a **Megjegyzés létrehozása** lehetőséget.
+   Ezután válassza a **Megjegyzés létrehozása** lehetőséget.
 
 1. Győződjön meg arról, hogy a jegyzetfüzet fejléce csatlakoztatott állapotot mutat. Ezt a jobb felső sarokban található zöld pont jelöli.
 
-    ![Zeppelin notebook állapota](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin notebook állapota")
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png" alt-text="Zeppelin notebook állapota" border="true":::
 
 1. Hozzon létre egy HBase táblát. Adja meg a következő parancsot, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt:
 
-    ```sql
-    %jdbc(phoenix)
-    CREATE TABLE Company (
-        company_id INTEGER PRIMARY KEY,
-        name VARCHAR(225)
-    );
-    ```
+   ```sql
+   %jdbc(phoenix)
+   CREATE TABLE Company (
+       company_id INTEGER PRIMARY KEY,
+       name VARCHAR(225)
+   );
+   ```
 
-    Az első sorban található **% JDBC (Phoenix)** utasítás azt jelzi, hogy a jegyzetfüzet a Phoenix JDBC tolmácsot használja.
+   Az első sorban található **% JDBC (Phoenix)** utasítás azt jelzi, hogy a jegyzetfüzet a Phoenix JDBC tolmácsot használja.
 
 1. Létrehozott táblák megtekintése
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT DISTINCT table_name
-    FROM SYSTEM.CATALOG
-    WHERE table_schem is null or table_schem <> 'SYSTEM';
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT DISTINCT table_name
+   FROM SYSTEM.CATALOG
+   WHERE table_schem is null or table_schem <> 'SYSTEM';
+   ```
 
 1. Értékek beszúrása a táblába.
 
-    ```sql
-    %jdbc(phoenix)
-    UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
-    UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
-    ```
+   ```sql
+   %jdbc(phoenix)
+   UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
+   UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
+   ```
 
 1. A tábla lekérdezése.
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT * FROM dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT * FROM dbo.Company;
+   ```
 
 1. Rekord törlése.
 
-    ```sql
-    %jdbc(phoenix)
-    DELETE FROM dbo.Company WHERE COMPANY_ID=1;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DELETE FROM dbo.Company WHERE COMPANY_ID=1;
+   ```
 
 1. A tábla eldobása.
 
-    ```sql
-    %jdbc(phoenix)
-    DROP TABLE dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DROP TABLE dbo.Company;
+   ```
 
 ## <a name="next-steps"></a>Következő lépések
 

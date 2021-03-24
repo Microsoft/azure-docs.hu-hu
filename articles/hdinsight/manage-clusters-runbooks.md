@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944035"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864788"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Oktatóanyag: Azure HDInsight-fürtök létrehozása Azure Automation
 
@@ -38,16 +38,16 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 1. Írja be a **AzureRM. profil** kifejezést a mezőbe, és nyomja le az ENTER billentyűt a kereséshez. Válassza ki a rendelkezésre álló találatokat.
 1. Az **AzureRM. profil** képernyőn válassza az **Importálás** lehetőséget. Jelölje be a jelölőnégyzetet az Azure-modulok frissítéséhez, majd kattintson **az OK gombra**.
 
-    ![AzureRM. Profile modul importálása](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermprofile-module.png" alt-text="AzureRM. Profile modul importálása" border="false":::
 
 1. Térjen vissza a modulok galériához a **megosztott erőforrások** területen a **modulok gyűjtemény** kiválasztásával.
 1. Írja be a következőt: **HDInsight**. Válassza a **AzureRM. HDInsight** elemet.
 
-    ![HDInsight-modulok tallózása](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/browse-modules-hdinsight.png" alt-text="HDInsight-modulok tallózása" border="true":::
 
 1. Az **AzureRM. HDInsight** panelen válassza az **Importálás** és **az OK** elemet.
 
-    ![AzureRM. HDInsight modul importálása](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermhdinsight-module.png" alt-text="AzureRM. HDInsight modul importálása" border="true":::
 
 ## <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
@@ -65,7 +65,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 1. Válassza a **Létrehozás** lehetőséget.
 1. Ismételje meg ugyanezt a folyamatot egy új hitelesítő adathoz a `ssh-password` felhasználónévvel `sshuser` és az Ön által választott jelszóval. Válassza a **Létrehozás** lehetőséget. Ez a hitelesítő adat a fürt SSH-jelszavának tárolása.
 
-    ![hitelesítő adat létrehozása](./media/manage-clusters-runbooks/create-credentials.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-credentials.png" alt-text="hitelesítő adat létrehozása" border="true":::
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Runbook létrehozása fürt létrehozásához
 
@@ -74,11 +74,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 1. A **Runbook létrehozása** panelen adja meg a runbook nevét, például: `hdinsight-cluster-create` . Válassza a **PowerShell** lehetőséget a **Runbook típusa** legördülő listából.
 1. Válassza a **Létrehozás** lehetőséget.
 
-    ![runbook létrehozása](./media/manage-clusters-runbooks/create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-runbook.png" alt-text="runbook létrehozása" border="true":::
 
 1. Adja meg a következő kódot a **PowerShell-Runbook szerkesztése** képernyőn, és válassza a **Közzététel** lehetőséget:
 
-    ![runbook közzététele](./media/manage-clusters-runbooks/publish-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/publish-runbook.png" alt-text="runbook közzététele" border="true":::
 
     ```powershell
     Param
@@ -154,7 +154,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 1. Válassza az **Indítás** lehetőséget a runbook azonnali végrehajtásához. A runbookok rendszeres időközönként is ütemezhetők. Lásd: [Runbook ütemezése Azure Automationban](../automation/shared-resources/schedules.md)
 1. Adja meg a parancsfájl kötelező paramétereit, majd kattintson **az OK gombra**. Ez egy új HDInsight-fürtöt hoz létre a **CLUSTERNAME** paraméterben megadott névvel.
 
-    ![fürt létrehozási runbook végrehajtása](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/execute-create-runbook.png" alt-text="fürt létrehozási runbook végrehajtása" border="true":::
 
 ### <a name="delete-a-cluster"></a>Fürt törlése
 

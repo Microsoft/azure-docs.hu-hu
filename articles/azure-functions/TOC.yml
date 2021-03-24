@@ -55,6 +55,10 @@
         - name: ARM-sablon
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
+    - name: Kapcsolódás adatbázishoz
+      items:
+        - name: Visual Studio Code
+          href: functions-add-output-binding-cosmos-db-vs-code.md
     - name: Csatlakozás a tárolóhoz
       items:
         - name: Visual Studio Code

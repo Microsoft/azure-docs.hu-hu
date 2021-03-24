@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: eae5b5e1430f4e9bf1db62a4413e3b7abe3744cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 660c80a471739f7dc0163e915f45e3a067e1e4b2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699317"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871962"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy HDInsight-fürt lassú vagy meghibásodott feladatának hibaelhárítása
 
@@ -51,7 +51,7 @@ A fürt fontos adatai a következők:
 
 A Azure Portal megadhatja ezeket az információkat:
 
-![HDInsight Azure Portal információk](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png" alt-text="HDInsight Azure Portal információk":::
 
 Használhatja az [Azure CLI](/cli/azure/)-t is:
 
@@ -77,7 +77,7 @@ Minden HDInsight-fürt különböző Azure-szolgáltatásokra támaszkodik, vala
 
 Az Apache Ambari egy HDInsight-fürt felügyeletét és figyelését teszi lehetővé webes felhasználói felületen és REST API. A Ambari a Linux-alapú HDInsight-fürtökön található. Válassza ki a **fürt irányítópultjának** paneljét a Azure Portal HDInsight oldalon.  A **HDInsight-fürt irányítópultja** ablaktáblán kattintson a Ambari felhasználói felületének megnyitásához, és adja meg a fürt bejelentkezési hitelesítő adatait.  
 
-![Apache Ambari-irányítópult – áttekintés](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png" alt-text="Apache Ambari-irányítópult – áttekintés":::
 
 A szolgáltatási nézetek listájának megnyitásához válassza a **Ambari nézetek** elemet a Azure Portal oldalon.  Ez a lista a telepített könyvtáraktól függ. Például megtekintheti a FONALak üzenetsor-kezelőjét, a kaptár nézetet és a TEZ nézetet.  Válasszon ki egy szolgáltatási hivatkozást a konfiguráció és a szolgáltatás adatainak megtekintéséhez.
 
@@ -124,7 +124,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 A Ambari megjelenít egy riasztást, amely megjeleníti azokat a gazdagépeket, amelyeken a Webhcaten szolgáltatás le van kapcsolva. A Webhcaten szolgáltatás biztonsági mentését úgy teheti meg, hogy újraindítja a szolgáltatást a gazdagépén.
 
-![Apache Ambari – Webhcaten-kiszolgáló újraindítása](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png" alt-text="Apache Ambari – Webhcaten-kiszolgáló újraindítása":::
 
 Ha a Webhcaten-kiszolgáló továbbra sem jelenik meg, akkor ellenőrizze az operatív naplóban a hibaüzeneteket. További részletekért lásd a `stderr` `stdout` csomóponton hivatkozott és fájlokat.
 
@@ -173,7 +173,7 @@ A fonal szintjén két típusú időkorlát létezik:
 
     Az alábbi képen a joblauncher-várólista a 714,4%-os túlhasználatú helyen látható. Ez akkor fogadható el, ha az alapértelmezett várólistában továbbra is szabad kapacitás áll rendelkezésre a kölcsönzéshez. Ha azonban a fürt teljes mértékben használatban van, és a szál memóriája 100%-os kapacitású, az új feladatoknak várniuk kell, ami végül időtúllépéseket okoz.
 
-    ![HDInsight Job Launcher üzenetsor nézet](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png" alt-text="HDInsight Job Launcher üzenetsor nézet":::
 
     A probléma kétféleképpen oldható meg: csökkentse a beküldött új feladatok sebességét, vagy növelje a régi feladatok felhasználásának sebességét a fürt skálázásával.
 
@@ -205,7 +205,7 @@ A problémák diagnosztizálásához:
 
 A Ambari felhasználói felületi **verem és verziója** lapon információkat biztosít a fürtszolgáltatás-konfigurációról és a szolgáltatás korábbi verzióiról.  A Hadoop nem megfelelő verziója lehet a fürt meghibásodásának oka.  A Ambari felhasználói felületén válassza a **rendszergazda** menüt, majd a  **Stacks és a Versions** elemet.  A szolgáltatás verziószámával kapcsolatos információk megtekintéséhez válassza a **verziók** fület a lapon:
 
-![Apache Ambari stack és verziók](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png" alt-text="Apache Ambari stack és verziók":::
 
 ## <a name="step-5-examine-the-log-files"></a>5. lépés: a naplófájlok vizsgálata
 
@@ -229,7 +229,7 @@ A HDInsight Ambari felhasználói felülete számos **gyors hivatkozás** szakas
 
 A HDFS-naplók esetében például:
 
-![Ambari gyors hivatkozásai](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png" alt-text="Ambari gyors hivatkozásai":::
 
 ### <a name="view-hadoop-generated-log-files"></a>Hadoop által generált naplófájlok megtekintése
 

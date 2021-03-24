@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648050"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952643"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Samsung Knox és az üzleti szolgáltatásokkal
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen közvetlenül a [SamsungKnox.com](https://samsungknox.com/) , és indítsa el innen a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Samsung Knox és Business Services csempére kattint, a rendszer átirányítja a [SamsungKnox.com](https://samsungknox.com/). A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Samsung Knox és Business Services csempére kattint, a rendszer átirányítja a [SamsungKnox.com](https://samsungknox.com/). A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -4,12 +4,12 @@ description: Válaszok a Apache Hadoop-fonal és az Azure-HDInsight használatá
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0cd2571276992812327e286ba9b935fcbf6fbbaf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931405"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871809"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Apache Hadoop YARN hibaelhárítása az Azure HDInsighttal
 
@@ -31,27 +31,27 @@ Ebben a példában két meglévő várólista (**alapértelmezett** és **thrift
 
 1. Válassza a **Ambari nézetek** ikont, majd válassza ki a rács mintát. Ezután válassza a **fonál üzenetsor-kezelő** elemet.
 
-    ![Apache Ambari irányítópult-szál üzenetsor-kezelője](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png" alt-text="Apache Ambari irányítópult-szál üzenetsor-kezelője" border="false":::
 2. Válassza ki az **alapértelmezett** várólistát.
 
-    ![Apache Ambari-fonal – alapértelmezett üzenetsor kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png" alt-text="Apache Ambari-fonal – alapértelmezett üzenetsor kiválasztása" border="false":::
 3. Az **alapértelmezett** várólista esetében módosítsa a **kapacitást** 50%-ról 25%-ra. A **thriftsvr** -várólista esetében módosítsa a **kapacitást** 25%-ra.
 
-    ![Módosítsa a kapacitást 25%-ra az alapértelmezett és a thriftsvr várólisták esetében](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png" alt-text="Módosítsa a kapacitást 25%-ra az alapértelmezett és a thriftsvr várólisták esetében" border="false":::
 4. Új várólista létrehozásához válassza a **várólista hozzáadása** lehetőséget.
 
-    ![Apache Ambari-FONÁL irányítópult-várólista hozzáadása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png" alt-text="Apache Ambari-FONÁL irányítópult-várólista hozzáadása" border="false":::
 
 5. Nevezze el az új várólistát.
 
-    ![Apache Ambari-szál irányítópultjának neve üzenetsor](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png" alt-text="Apache Ambari-szál irányítópultjának neve üzenetsor" border="false":::  
 
 6. Hagyja meg a **kapacitás** értékeit 50%-ban, majd kattintson a **műveletek** gombra.
 
-    ![Apache Ambari-fonal kiválasztása művelet](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png" alt-text="Apache Ambari-fonal kiválasztása művelet" border="false":::  
 7. Válassza **a Mentés és frissítés várólisták** lehetőséget.
 
-    ![A várólisták mentése és frissítése lehetőség kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png" alt-text="A várólisták mentése és frissítése lehetőség kiválasztása" border="false":::  
 
 Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felületén.
 

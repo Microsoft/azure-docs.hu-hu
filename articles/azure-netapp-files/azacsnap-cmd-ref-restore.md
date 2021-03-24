@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1c6b7ec6c4ef24ec00fbfc55a65a968e00561c2e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 793b4da8fcf46ba4d5618f8ada86f9c3c8026ffd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632720"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865264"
 ---
 # <a name="restore-using-azure-application-consistent-snapshot-tool-preview"></a>Visszaállítás az Azure Application konzisztens pillanatkép-eszköz használatával (előzetes verzió)
 
@@ -41,7 +41,7 @@ A `-c restore` parancs a következő beállításokkal rendelkezik:
 - `--restore revertvolume` A legutóbbi pillanatkép alapján visszaállít egy korábbi állapotba a célként megadott kötetet.  A parancs használata a DR feladatátvétel részeként a párosított DR régióban. Ez a parancs **leállítja** a tárolási replikációt az elsődleges helyről a másodlagos helyre, és visszaállítja a CÉLKÉNT megadott Dr kötet (eke) t a Dr köteteken lévő legújabb elérhető pillanatképre, valamint a visszaállított Dr kötetek ajánlott fájlrendszer-csatolási. Ezt a parancsot a **Dr régióban** (azaz a cél feladatátvételi rendszeren) található Azure nagyméretű példányrendszer-rendszeren kell futtatni.
     > [!NOTE]
     > A sub-Command ( `--restore revertvolume` ) csak az Azure nagyméretű példányai esetében érhető el, és nem érhető el Azure NetApp Files számára.
-- `--hanasid <SAP HANA SID>` a konfigurációs fájlból a SAP HANA SID van kiválasztva, hogy alkalmazza a kötet-visszaállítási parancsokat a következőre:.
+- `--dbsid <SAP HANA SID>` a konfigurációs fájlból a SAP HANA SID van kiválasztva, hogy alkalmazza a kötet-visszaállítási parancsokat a következőre:.
 
 - `[--configfile <config filename>]` a (z) egy opcionális paraméter, amely lehetővé teszi az egyéni konfigurációs fájlnevek nevét.
 
@@ -64,7 +64,7 @@ A konfigurációs fájlnak (például `DR.json` :) csak a Dr köteteket kell tar
 ### <a name="output-of-the-azacsnap--c-restore---restore-snaptovol-command-for-single-node-scenario"></a>A parancs kimenete `azacsnap -c restore --restore snaptovol` (Single-Node forgatókönyv esetén)
 
 ```output
-> azacsnap --configfile DR.json -c restore --restore snaptovol --hanasid H80
+> azacsnap --configfile DR.json -c restore --restore snaptovol --dbsid H80
 * This program is designed for those customers who have previously installed the
   Production HANA instance in the Disaster Recovery Location either as a
   stand-alone instance or as part of a multi-purpose environment.

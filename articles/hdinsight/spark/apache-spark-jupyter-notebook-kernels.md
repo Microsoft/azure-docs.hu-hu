@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef2bc5e00779200e5447c8829a437824657a2227
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930394"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865978"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernelek Jupyter Notebook Apache Spark-fürtökön az Azure HDInsight
 
@@ -32,7 +32,7 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
 
 2. Az **Áttekintés** nézet **fürt irányítópultok** mezőjében válassza a **Jupyter notebook** lehetőséget. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
-    ![Jupyter Notebook on Apache Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook a Sparkban")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="Jupyter Notebook on Apache Spark" border="true":::
   
    > [!NOTE]  
    > Az Jupyter Notebook a Spark-fürtön is elérheti, ha megnyitja a következő URL-címet a böngészőben. Cserélje le a **CLUSTERNAME** nevet a fürt nevére:
@@ -41,7 +41,7 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
 
 3. Válassza az **új** lehetőséget, majd válassza ki a **Pyspark**, a **PySpark3** vagy a **Spark** elemet egy jegyzetfüzet létrehozásához. Használja a PySpark kernelt a Scala-alkalmazásokhoz, a Python2-alkalmazásokhoz és a PySpark3 kernelhez a Python3-alkalmazásokhoz.
 
-    ![Kernelek Jupyter Notebook a Sparkban](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernelek Jupyter Notebook a Sparkban")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png " alt-text="Kernelek Jupyter Notebook a Sparkban" border="true":::
 
 4. Megnyílik egy jegyzetfüzet a kiválasztott kernelrel.
 

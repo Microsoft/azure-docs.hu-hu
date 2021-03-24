@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942634"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863768"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
@@ -70,10 +70,10 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 
 | Verzió | Spark | Hive | Interaktív lekérdezés | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 ESP nélkül | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
-| HDInsight 4,0 ESP nélkül | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
-| HDInsight 3,6, ESP-vel | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
-| HDInsight 4,0, ESP-vel | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
+| HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 3,6, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 
 \* A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 
@@ -91,7 +91,7 @@ Ha az automatikus skálázási funkciót terheléselosztásos skálázással sze
     * A munkavégző csomópontok **minimális** száma.
     * A munkavégző csomópontok **maximális** száma.
 
-    ![Munkavégző csomópont terheléses automatikus méretezésének engedélyezése](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png" alt-text="Munkavégző csomópont terheléses automatikus méretezésének engedélyezése":::
 
 A munkavégző csomópontok kezdeti számának a minimális és a maximális érték közé kell esnie. Ez az érték határozza meg a fürt kezdeti méretét a létrehozáskor. A munkavégző csomópontok minimális számát három vagy több értékre kell beállítani. Ha a fürtöt kevesebb mint három csomópontra szeretné méretezni, azt eredményezheti, hogy a fájlreplikációs szolgáltatás nem elegendő a biztonságos módban.  További információ: [beragadás csökkentett módban](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
 
@@ -108,7 +108,7 @@ Ha az automatikus skálázási funkciót ütemezett méretezéssel szeretné eng
 1. Szerkessze a feltétel érvénybe léptetésének időpontját, valamint azt, hogy a fürt hány csomópontra legyen méretezhető.
 1. Szükség esetén további feltételek is felvehetők.
 
-    ![Munkavégző csomópont ütemezett létrehozásának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png" alt-text="Munkavégző csomópont ütemezett létrehozásának engedélyezése":::
 
 A csomópontok számának 3 és a feltételek hozzáadása előtt a munkavégző csomópontok maximális száma között kell lennie.
 
@@ -116,7 +116,7 @@ A csomópontok számának 3 és a feltételek hozzáadása előtt a munkavégző
 
 Válassza ki a virtuális gép típusát a munkavégző csomópontok számára egy virtuális gép kiválasztásával a legördülő listából a **csomópont mérete** alatt. Miután kiválasztotta a virtuálisgép-típust az egyes csomópont-típusokhoz, a teljes fürt becsült hatókörét láthatja. Állítsa be úgy a virtuális gépek típusait, hogy illeszkedjenek a költségkerethez.
 
-![Munkavégző csomópont ütemezett méretezési csomópontjának engedélyezése](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png" alt-text="Munkavégző csomópont ütemezett méretezési csomópontjának engedélyezése":::
 
 Az előfizetéshez tartozik egy kapacitási kvóta az egyes régiókban. A fő csomópontok és a maximális munkavégző csomópontok teljes száma nem haladhatja meg a kapacitási kvótát. Ez a kvóta azonban egy enyhe korlát; bármikor létrehozhat egy támogatási jegyet, hogy könnyebben megnövelhető legyen.
 
@@ -193,7 +193,7 @@ HDInsight-fürtöt úgy hozhat létre, `autoscale` hogy a `computeProfile`  >  s
 
 Ha egy futó fürtön engedélyezni szeretné az autoskálázást, a **Beállítások** területen válassza a **fürt méretét** . Ezután válassza az **autoskálázás engedélyezése** lehetőséget. Válassza ki a kívánt automatikus méretezési típust, és adja meg a terhelés vagy az ütemterv szerinti skálázás beállításait. Végül válassza a **Mentés** lehetőséget.
 
-![Munkavégző csomópont ütemezett méretezésének engedélyezése](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png" alt-text="Munkavégző csomópont ütemezett méretezésének engedélyezése":::
 
 #### <a name="using-the-rest-api"></a>A REST API használata
 
@@ -217,11 +217,11 @@ Tekintse meg az előző szakaszt a [betöltési alapú automatikus skálázás e
 
 A Azure Portalban felsorolt fürt állapota segíthet az autoskálázási tevékenységek figyelésében.
 
-![Munkavégző csomópont terheléses automatikus méretezési fürt állapotának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png" alt-text="Munkavégző csomópont terheléses automatikus méretezési fürt állapotának engedélyezése":::
 
 Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet látni fog.
 
-| Fürt állapota | Description |
+| Fürt állapota | Leírás |
 |---|---|
 | Futó | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
 | Frissítés  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
@@ -237,7 +237,7 @@ A fürt metrikáinak részeként megtekintheti a fürt vertikális felskálázá
 
 A **figyelés** területen válassza a **metrikák** lehetőséget. Ezután válassza a metrika **hozzáadása** és az **aktív feldolgozók száma** elemet a **metrika** legördülő listából. Kattintson a jobb felső sarokban lévő gombra az időtartomány módosításához.
 
-![A feldolgozói csomópont Schedule-alapú autoskálázási metrikájának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png" alt-text="A feldolgozói csomópont Schedule-alapú autoskálázási metrikájának engedélyezése":::
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

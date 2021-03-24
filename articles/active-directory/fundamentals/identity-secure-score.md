@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: tilarso
+ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90705486"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952281"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Mi az a Azure Active Directory identitások biztonságos pontszáma?
 
@@ -24,7 +24,7 @@ Mennyire biztonságos az Ön Azure AD-bérlője? Ha nem tudja, hogyan válaszolj
 
 ## <a name="what-is-an-identity-secure-score"></a>Mi az az identitásbiztonsági pontszám?
 
-Az identitások biztonságos pontszáma 1 és 223 közötti szám, amely indikátorként működik a Microsoft által a biztonságra vonatkozó ajánlott eljárások alapján. Az identitások biztonságos pontszámának minden fejlesztési művelete az adott konfigurációra van szabva.  
+Az identitás biztonságos pontszáma olyan százalék, amely kijelzőként működik, és a Microsoft ajánlott eljárása a biztonságra vonatkozó ajánlott eljárások. Az identitások biztonságos pontszámának minden fejlesztési művelete az adott konfigurációra van szabva.  
 
 ![Biztonsági pontszám](./media/identity-secure-score/identity-secure-score-overview.png)
 
@@ -78,7 +78,7 @@ Az identitásbiztonság pontszámot a következő szerepkörök használhatják:
 
 ### <a name="how-are-controls-scored"></a>Hogyan történik a vezérlők pontozása?
 
-A vezérlőket kétféleképpen lehet kimutatni. Néhányat bináris módon kell kiszolgálni – a pontszám 100%-a, ha a funkció vagy a beállítás a javaslat alapján van konfigurálva. A többi pontszám a teljes konfiguráció százalékában számítható ki. Ha például a fejlesztési javaslat szerint 30 pontot kell védenie, ha az összes felhasználót az MFA-val védi, és Ön csak 5 100 teljes védett felhasználóval rendelkezik, akkor a részleges pontszám körülbelül 2 pont (5 védett/100 összesen * 30 Max PTS = 2 PTS részleges pontszám).
+A vezérlőket kétféleképpen lehet kimutatni. Néhányat bináris módon kell kiszolgálni – a pontszám 100%-a, ha a funkció vagy a beállítás a javaslat alapján van konfigurálva. A többi pontszám a teljes konfiguráció százalékában számítható ki. Ha például a javításra vonatkozó javaslat azt állítja be, hogy legfeljebb 10,71%-ot biztosít, ha az összes felhasználója számára védelmet nyújt az MFA-ban, és Ön csak 5 100 összes védett felhasználóval rendelkezik, akkor egy részleges pontszám fog megjelenni a 0,53%-ban (5 védett/100 Total * 10,71% maximum = 0,53% részleges pontszám).
 
 ### <a name="what-does-not-scored-mean"></a>Mit jelent a [Not Scored]?
 
@@ -98,7 +98,7 @@ Röviden: nem. A biztonságos pontszám nem fejez ki abszolút mértéket arra v
 
 ### <a name="how-should-i-interpret-my-score"></a>Hogyan értelmezendő a pontszám?
 
-Akkor kap pontokat, ha a javasolt módon konfigurálja a biztonsági funkciókat, vagy a biztonsághoz kötődő műveleteket végez (például jelentéseket olvas). Egyes műveletek részleges végrehajtása is pontot ér – ilyen például a többtényezős hitelesítés (MFA) engedélyezése a felhasználók számára. A biztonságos pontszám közvetlenül a használt Microsoft-biztonsági szolgáltatásokra jellemző. Ne feledje, hogy a biztonságnak egyensúlyban kell lennie a használhatósággal. Minden biztonsági vezérlő hatással van a felhasználókra is. A kis felhasználói hatású vezérlők elenyésző hatással vannak a felhasználók mindennapi műveleteire.
+A pontszám javítja az ajánlott biztonsági funkciók konfigurálását vagy a biztonsággal kapcsolatos feladatok elvégzését (például a jelentések olvasását). Egyes műveletek részleges végrehajtása is pontot ér – ilyen például a többtényezős hitelesítés (MFA) engedélyezése a felhasználók számára. A biztonságos pontszám közvetlenül a használt Microsoft-biztonsági szolgáltatásokra jellemző. Ne feledje, hogy a biztonságnak egyensúlyban kell lennie a használhatósággal. Minden biztonsági vezérlő hatással van a felhasználókra is. A kis felhasználói hatású vezérlők elenyésző hatással vannak a felhasználók mindennapi műveleteire.
 
 A pontszám előzményeinek megtekintéséhez lépjen a [Microsoft 365 Security Center](https://security.microsoft.com/) webhelyére, és tekintse át a Microsoft biztonsági pontszámának teljes körét. A teljes biztonsági pontszám módosításait az előzmények megtekintése lehetőségre kattintva tekintheti át. Egy adott dátumot kiválasztva megtekintheti, mely vezérlők voltak engedélyezve az adott napon, és hány pontot kapott ezekre.
 
