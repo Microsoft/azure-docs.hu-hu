@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3d5e25df68bbf793535b22602ad581db24a1426f
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008722"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022908"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -53,13 +53,22 @@ Az egyszerű HTTP-hitelesítés az [RFC 2617](https://tools.ietf.org/html/rfc261
 > [!IMPORTANT]
 > Ez a funkció előzetes verzióban érhető el, és szolgáltatói szerződés nélkül is elérhető. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az ügyféltanúsítvány-alapú hitelesítés kölcsönös tanúsítványalapú hitelesítés, amelyben az ügyfél egy ügyféltanúsítványt biztosít a kiszolgálónak az identitásának igazolásához. Ebben az esetben a Azure Active Directory az API-összekötő konfigurációjának részeként feltöltött tanúsítványt fogja használni. Ez az SSL-kézfogás részeként történik. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API szolgáltatáshoz. Az ügyféltanúsítvány egy X. 509 digitális tanúsítvány. Éles környezetekben a tanúsítványt egy hitelesítésszolgáltatónak kell aláírnia. 
+Az ügyféltanúsítvány-alapú hitelesítés egy kölcsönös tanúsítványalapú hitelesítési módszer, amelyben az ügyfél egy ügyféltanúsítványt biztosít a kiszolgálónak az identitásának igazolásához. Ebben az esetben a Azure Active Directory az API-összekötő konfigurációjának részeként feltöltött tanúsítványt fogja használni. Ez az SSL-kézfogás részeként történik. Az API-szolgáltatás ezután csak a megfelelő tanúsítvánnyal rendelkező szolgáltatásokhoz korlátozza a hozzáférést. Az ügyféltanúsítvány egy PKCS12/pfx-profil (PFX) X. 509 digitális tanúsítvány. Éles környezetekben a tanúsítványt egy hitelesítésszolgáltatónak kell aláírnia. 
 
-Tanúsítvány létrehozásához használhatja a [Azure Key Vault](../../key-vault/certificates/create-certificate.md), amely az aláírt tanúsítványokhoz tartozó tanúsítvány-kiállítói szolgáltatókkal rendelkező önaláírt tanúsítványok és integrációs lehetőségeket is tartalmaz. Ezután [exportálhatja a tanúsítványt](../../key-vault/certificates/how-to-export-certificate.md) , és feltöltheti az API-összekötők konfigurációjában való használatra. Vegye figyelembe, hogy a jelszó csak jelszóval védett tanúsítványfájl esetén szükséges. Önaláírt tanúsítvány létrehozásához a PowerShell [New-SelfSignedCertificate parancsmagját](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) is használhatja.
+Tanúsítvány létrehozásához használhatja a [Azure Key Vault](../../key-vault/certificates/create-certificate.md), amely az aláírt tanúsítványokhoz tartozó tanúsítvány-kiállítói szolgáltatókkal rendelkező önaláírt tanúsítványok és integrációs lehetőségeket is tartalmaz. Az ajánlott beállítások a következők:
+- **Tárgy**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Tartalom típusa**: `PKCS #12`
+- A **Lifetime Acton típusa**: `Email all contacts at a given percentage lifetime` vagy`Email all contacts a given number of days before expiry`
+- **Exportálható titkos kulcs**: `Yes` (a pfx-fájl exportálásának lehetővé tétele érdekében)
 
-Azure App Service és Azure Functions esetén tekintse meg a [TLS kölcsönös hitelesítés beállítása](../../app-service/app-service-web-configure-tls-mutual-auth.md) című témakört, amelyből megtudhatja, hogyan engedélyezheti és érvényesítheti a tanúsítványt az API-végpontból.
+Ezután [exportálhatja a tanúsítványt](../../key-vault/certificates/how-to-export-certificate.md). Használhatja a PowerShell [New-SelfSignedCertificate parancsmagját](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) is egy önaláírt tanúsítvány létrehozásához.
 
-Javasoljuk, hogy emlékeztető riasztásokat állítson be, amikor a tanúsítvány lejár. Új tanúsítvány meglévő API-összekötőbe való feltöltéséhez válassza ki az API-összekötőt az **összes API** -összekötő területen, majd kattintson az **új tanúsítvány feltöltése** elemre. A legutóbb feltöltött tanúsítvány, amely nem járt le, és a Azure Active Directory automatikusan a kezdő dátumot fogja használni.
+A tanúsítvány létrehozása után feltöltheti azt az API-összekötő konfigurációjának részeként. Vegye figyelembe, hogy a jelszó csak jelszóval védett tanúsítványfájl esetén szükséges.
+
+Az API-végpontok biztosításához az API-nak az elküldött Ügyféltanúsítványok alapján kell megvalósítania az engedélyt. Azure App Service és Azure Functions esetén tekintse meg a [TLS kölcsönös hitelesítés beállítása](../../app-service/app-service-web-configure-tls-mutual-auth.md) című témakört, amelyből megtudhatja, hogyan engedélyezheti és *érvényesítheti a tanúsítványt az API-kódból*.  Az Azure API Management használatával biztosíthatja az API-t, és [megtekintheti az ügyféltanúsítvány tulajdonságait](
+../../api-management/api-management-howto-mutual-certificates-for-clients.md) a kívánt értékekkel a házirend-kifejezések használatával.
+ 
+Javasoljuk, hogy emlékeztető riasztásokat állítson be, amikor a tanúsítvány lejár. Új tanúsítványt kell létrehoznia, és újra meg kell ismételni a fenti lépéseket. Az API-szolgáltatás átmenetileg továbbra is elfogadhatja a régi és az új tanúsítványokat az új tanúsítvány telepítésekor. Új tanúsítvány meglévő API-összekötőbe való feltöltéséhez válassza ki az API-összekötőt az **összes API** -összekötő területen, majd kattintson az **új tanúsítvány feltöltése** elemre. A legutóbb feltöltött tanúsítvány, amely nem járt le, és a Azure Active Directory automatikusan a kezdő dátumot fogja használni.
 
 ### <a name="api-key"></a>API-kulcs
 Egyes szolgáltatások "API-kulcs" mechanizmust használnak a HTTP-végpontokhoz való hozzáféréshez a fejlesztés során. A [Azure functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)a `code` **végpont URL-címében** a as a lekérdezési paraméterrel is elvégezhető. Például: `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
@@ -257,10 +266,10 @@ Content-type: application/json
 
 | Paraméter                                          | Típus              | Kötelező | Leírás                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                            | Sztring            | Yes      | Az API verziója.                                                                                                                                                                                                                                                                |
-| művelet                                             | Sztring            | Yes      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | Az értékeket a címtárban tárolhatja, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumaiban** való **fogadásra vonatkozó jogcímként** van kijelölve. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként** van kiválasztva.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | A visszaadott jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. Ha az alkalmazás részeként van konfigurálva, a tokenben is visszaadhatók.  |
+| version                                            | Sztring            | Igen      | Az API verziója.                                                                                                                                                                                                                                                                |
+| művelet                                             | Sztring            | Igen      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nem       | Az értékeket a címtárban tárolhatja, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumaiban** való **fogadásra vonatkozó jogcímként** van kijelölve. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként** van kiválasztva.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A visszaadott jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. Ha az alkalmazás részeként van konfigurálva, a tokenben is visszaadhatók.  |
 
 ### <a name="example-of-a-blocking-response"></a>Blokkoló válasz – példa
 
@@ -278,9 +287,9 @@ Content-type: application/json
 
 | Paraméter   | Típus   | Kötelező | Leírás                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| version     | Sztring | Yes      | Az API verziója.                                                    |
-| művelet      | Sztring | Yes      | Az értéknek szerepelnie kell `ShowBlockPage`                                              |
-| userMessage | Sztring | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
+| version     | Sztring | Igen      | Az API verziója.                                                    |
+| művelet      | Sztring | Igen      | Az értéknek szerepelnie kell `ShowBlockPage`                                              |
+| userMessage | Sztring | Igen      | A felhasználónak megjelenítendő üzenet.                                            |
 
 **Végfelhasználói élmény blokkoló válaszokkal**
 
@@ -302,10 +311,10 @@ Content-type: application/json
 
 | Paraméter   | Típus    | Kötelező | Leírás                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| version     | Sztring  | Yes      | Az API verziója.                                                    |
-| művelet      | Sztring  | Yes      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
-| status      | Egész szám | Yes      | ValidationError-válasz értékének kell lennie `400` .                        |
-| userMessage | Sztring  | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
+| version     | Sztring  | Igen      | Az API verziója.                                                    |
+| művelet      | Sztring  | Igen      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
+| status      | Egész szám | Igen      | ValidationError-válasz értékének kell lennie `400` .                        |
+| userMessage | Sztring  | Igen      | A felhasználónak megjelenítendő üzenet.                                            |
 
 > [!NOTE]
 > A válasz törzsében szereplő "status" érték mellett a HTTP-állapotkód "400" értékűnek kell lennie.

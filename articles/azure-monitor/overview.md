@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fe8714f38c6a04b311a748f3eb081be82eb86635
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047162"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024132"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – áttekintés
 
@@ -144,7 +144,7 @@ Több API áll rendelkezésre a metrikák és a naplók olvasására és írás�
 ## <a name="next-steps"></a>Következő lépések
 További információk:
 
-* A Azure Monitor által gyűjtött adatok [metrikái és naplói](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) .
+* A Azure Monitor által gyűjtött adatok [metrikái és naplói](./data-platform.md#metrics) .
 * [Adatforrások](agents/data-sources.md) az alkalmazás különböző összetevőinek telemetria küldéséhez.
 * [Naplók lekérdezése](logs/log-query-overview.md) az összegyűjtött adatok elemzéséhez.
 * [Ajánlott eljárások](/azure/architecture/best-practices/monitoring) a felhőalapú alkalmazások és szolgáltatások monitorozásához.

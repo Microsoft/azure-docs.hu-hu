@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721528"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022976"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
 
@@ -89,10 +89,10 @@ Tekintse meg az [xpath 1,0 korlátozásait](/windows/win32/wes/consuming-events#
 
 A következő táblázat példákat mutat be az események egyéni XPath használatával történő szűrésére.
 
-| Description |  XPath |
+| Leírás |  XPath |
 |:---|:---|
 | Csak a rendszeresemények összegyűjtése a következő azonosítójú eseménnyel: eseményazonosító = 4648 |  `System!*[System[EventID=4648]]`
-| Csak olyan rendszeresemények gyűjtése, amelyeknek az eseményazonosító = 4648 és a consent.exe folyamat neve |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Csak olyan rendszeresemények gyűjtése, amelyeknek az eseményazonosító = 4648 és a consent.exe folyamat neve | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
 | Az összes kritikus, hiba, figyelmeztetés és információs esemény összegyűjtése a rendszer eseménynaplójában, kivéve az Event ID = 6 (az illesztőprogram betöltve) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
 | Az összes sikeres és sikertelen biztonsági esemény gyűjtése a 4624-es azonosítójú esemény kivételével (sikeres bejelentkezés) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
 

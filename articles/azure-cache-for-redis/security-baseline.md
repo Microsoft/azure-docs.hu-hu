@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 516a66ef64512cbe4fa4c3589e651c14ddf18550
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38b6251c4b464214d66f7240dab9d5d23812f946
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101647625"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023214"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure-beli biztonsági alaptervek az Azure cache-hez a Redis
 
@@ -34,7 +34,7 @@ A tűzfalszabályok a kezdő és a záró IP-címtartomány is megadhatók. A t�
 
 - [A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez](cache-how-to-premium-vnet.md)
 
-- [Az Azure cache konfigurálása Redis tűzfalszabályok esetén](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Az Azure cache konfigurálása Redis tűzfalszabályok esetén](./cache-configure.md#firewall)
 
 **Felelősség**: Ügyfél
 
@@ -68,7 +68,7 @@ A Redis-példányok esetében az elosztott szolgáltatásmegtagadási (DDoS) tá
 
 - [A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez](cache-how-to-premium-vnet.md)
 
-- [Azure DDoS Protection standard kezelése a Azure Portal használatával](/azure/virtual-network/manage-ddos-protection)
+- [Azure DDoS Protection standard kezelése a Azure Portal használatával](../ddos-protection/manage-ddos-protection.md)
 
 **Felelősség**: Ügyfél
 
@@ -118,7 +118,7 @@ Az alkalmazás biztonsági csoportjai (ASG-EK) is használhatók az összetett b
 
 - [Virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md)
 
-- [Alkalmazás biztonsági csoportjai](/azure/virtual-network/security-overview#application-security-groups)
+- [Alkalmazás biztonsági csoportjai](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Felelősség**: Ügyfél
 
@@ -145,7 +145,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 **Útmutató**: a Redis üzembe helyezéséhez az Azure cache-hez társított hálózati erőforrásokhoz használjon címkéket, hogy logikailag szervezze őket a besorolásba.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -155,9 +155,9 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 **Útmutató**: az Azure-tevékenység naplójának használatával figyelheti a hálózati erőforrás-konfigurációkat, és azonosíthatja a Redis-példányok Azure cache-hez kapcsolódó hálózati erőforrásainak változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -171,7 +171,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak az Azure-gyorsítótárban végrehajtott műveletekre a Redis-példányok szintjén. Az Azure-tevékenység naplójának adatai segítségével meghatározhatja a "mi, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az Azure cache Redis-példányok esetében végzett vezérlési sík szintjén.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -183,7 +183,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 Bár a mérőszámok elérhetők a diagnosztikai beállítások engedélyezésével, a naplózás az adatsíkon még nem érhető el az Azure cache for Redis számára.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -195,7 +195,7 @@ Bár a mérőszámok elérhetők a diagnosztikai beállítások engedélyezésé
 
 Vegye figyelembe, hogy az adatsíkon végzett naplózás még nem érhető el az Azure cache for Redis számára.
 
-- [Napló-megőrzési paraméterek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -207,9 +207,9 @@ Vegye figyelembe, hogy az adatsíkon végzett naplózás még nem érhető el az
 
 Vegye figyelembe, hogy az adatsíkon végzett naplózás még nem érhető el az Azure cache for Redis számára.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](/azure/azure-monitor/platform/activity-log-collect)
+- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -221,7 +221,7 @@ Vegye figyelembe, hogy az adatsíkon végzett naplózás még nem érhető el az
 
 Bár a mérőszámok elérhetők a diagnosztikai beállítások engedélyezésével, a naplózás az adatsíkon még nem érhető el az Azure cache for Redis számára.
 
-- [Riasztások konfigurálása az Azure cache-hez a Redis-hez](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts)
+- [Riasztások konfigurálása az Azure cache-hez a Redis-hez](./cache-how-to-monitor.md#alerts)
 
 **Felelősség**: Ügyfél
 
@@ -235,9 +235,9 @@ Bár a mérőszámok elérhetők a diagnosztikai beállítások engedélyezésé
 
 **Útmutató**: Azure Active Directory (Azure ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Felelősség**: Ügyfél
 
@@ -251,7 +251,7 @@ Az Azure cache Redis-hez való hozzáférését hozzáférési kulcsok vezérlik
 
 Nem ajánlott alapértelmezett jelszavakat létrehozni az alkalmazásba. Ehelyett a jelszavakat Azure Key Vault, majd az Azure AD használatával is tárolhatja.
 
-- [Az Azure cache újragenerálása a Redis hozzáférési kulcsaihoz](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
+- [Az Azure cache újragenerálása a Redis hozzáférési kulcsaihoz](./cache-configure.md#settings)
 
 **Felelősség**: Megosztott
 
@@ -323,7 +323,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 - [Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Az Azure AD kockázati észlelések ismertetése](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Felelősség**: Ügyfél
 
@@ -353,7 +353,7 @@ Az Azure AD-hitelesítés nem használható az Azure cache Redis adatsíkon val�
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -367,7 +367,7 @@ Az Azure AD-hitelesítés nem használható az Azure cache Redis adatsíkon val�
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics belül is konfigurálhatja a kívánt naplózási riasztásokat.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a fiókok bejelentkezésének viselkedése a vezérlési síkon a Azure Active Directory (Azure ad) Identity Protection és a kockázatkezelési funkciók használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -397,7 +397,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -407,15 +407,15 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. A Redis példányok Azure cache-t virtuális hálózat/alhálózat szerint kell elválasztani. Igény szerint a Redis tűzfal Azure cache szolgáltatásával definiálhat szabályokat úgy, hogy csak a megadott IP-címtartományok kapcsolatai kapcsolódhatnak a gyorsítótárhoz.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Az Azure cache üzembe helyezése a Redis egy vnet](cache-how-to-premium-vnet.md)
 
-- [Az Azure cache konfigurálása Redis tűzfalszabályok esetén](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Az Azure cache konfigurálása Redis tűzfalszabályok esetén](./cache-configure.md#firewall)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -439,7 +439,7 @@ A Microsoft kezeli az Azure cache mögöttes infrastruktúráját a Redis szám�
 
 - [Az Azure cache Redis való továbbításának ismertetése](cache-best-practices.md)
 
-- [A vnet cache-forgatókönyvekben használt szükséges portok ismertetése](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet#outbound-port-requirements)
+- [A vnet cache-forgatókönyvekben használt szükséges portok ismertetése](./cache-how-to-premium-vnet.md#outbound-port-requirements)
 
 **Felelősség**: Megosztott
 
@@ -493,7 +493,7 @@ Az Azure Storage-ban tárolt adatai a 256 bites AES-titkosítással vannak titko
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a Redis és egyéb kritikus vagy kapcsolódó erőforrások esetében az Azure cache éles példányain végezheti el a módosításokat.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -527,7 +527,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -539,7 +539,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -557,11 +557,11 @@ Emellett a Azure Policy használatával korlátozásokat állíthat be az ügyf�
 
 További információkat az alábbi hivatkozásokon találhat:
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Felügyeleti csoportok létrehozása](/azure/governance/management-groups/create)
+- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Erőforrás-Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erőforrás-Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -596,7 +596,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -624,7 +624,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 További információkat az alábbi hivatkozásokon találhat:
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -648,9 +648,9 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Útmutató**: Ha a Redis-példányok és a kapcsolódó erőforrások esetében egyéni Azure Policy definíciókat vagy Azure Resource Manager sablonokat használ az Azure cache-hez, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -684,7 +684,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 - [Key Vault létrehozása](../key-vault/general/quick-create-portal.md)
 
-- [Hitelesítés Key Vault](/azure/key-vault/managed-identity)
+- [Hitelesítés Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 **Felelősség**: Ügyfél
 
@@ -772,7 +772,7 @@ Rendszeresen tesztelje a Azure Key Vault titkos kódok adatvisszaállítását.
 
 - [Az Azure cache használata a Redis-importáláshoz](cache-how-to-import-export-data.md)
 
-- [Key Vault titkos kódok visszaállítása](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault titkos kódok visszaállítása](/powershell/module/az.keyvault/restore-azkeyvaultsecret?preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -868,5 +868,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bcf28fbc0d2f4ec9eeac5bcb8f0b2c9b65a62b6b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 876564934b1ccbffa19c318a2d2c8393e5dca54e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775031"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023979"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos kulcsszolgáltató proxy konfigurálása (előzetes verzió)
 
@@ -70,6 +70,6 @@ A KDC-proxy konfigurálása:
 
 ## <a name="next-steps"></a>Következő lépések
 
-A KDC-proxy Távoli asztali szolgáltatások oldalának és a RD-átjáró szerepkör hozzárendelésének megismeréséhez tekintse meg [a RD-átjáró szerepkör üzembe helyezése](/windows-server/remote/rd-gateway-role)című témakört.
+A KDC-proxy Távoli asztali szolgáltatások oldalának és a RD-átjáró szerepkör hozzárendelésének megismeréséhez tekintse meg [a RD-átjáró szerepkör üzembe helyezése](rd-gateway-role.md)című témakört.
 
 Ha szeretné átméretezni a KDC-proxykiszolgálók méretezését, Ismerje meg, hogyan állíthatja be a magas rendelkezésre állást a KDC-proxy számára [a magas rendelkezésre állás biztosítása érdekében a távoli asztali webes és átjáró webes](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha)felületén.

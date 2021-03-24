@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 826759907bfe5ec3359bf5c9125909466372c68f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608146"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023078"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Az Azure Percept DK (dev Kit) hibaelhárítása
 
@@ -45,7 +45,7 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 ```[local host file path]``` arra a helyre hivatkozik a gazdagépen lévő számítógépen, amelyre másolni szeretné a. txt fájlt. ```[remote username]``` a [telepítési élmény](./quickstart-percept-dk-set-up.md)során kiválasztott SSH-Felhasználónév. Ha nem állított be SSH-bejelentkezést az OOBE során, a távoli Felhasználónév ```root``` .
 
-További információ a Azure IoT Edge parancsokról: [Azure IoT Edge eszköz hibaelhárítási dokumentációja](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
+További információ a Azure IoT Edge parancsokról: [Azure IoT Edge eszköz hibaelhárítási dokumentációja](../iot-edge/troubleshoot.md).
 
 |Kategória:         |Parancs                    |Függvény                  |
 |------------------|----------------------------|---------------------------|
@@ -105,5 +105,3 @@ Három kisméretű LED van a Carrier Board-ház tetején. A LED 1 ikon mellett m
 |2. LED (Wi-Fi)   |Gyors villogás |A hitelesítés sikeres volt, az eszköz társítása folyamatban van. |
 |2. LED (Wi-Fi)   |Bekapcsolva (Solid) |A hitelesítés és a társítás sikeres volt; az eszköz Wi-Fi hálózathoz csatlakozik. |
 |3. LED           |NA         |A LED nem használatban van. |
-
-

@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea7cdfbd30cf698cecbb14a1d70916764ad3247a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466592"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023112"
 ---
-# <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>Java-webalkalmazások tárolóba helyezése és migrálása az Azure Kubernetes Service-be
+# <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Java-webalkalmazások tárolókra bontás és migrálása az Azure Kubernetes Service-be
 
 Ebből a cikkből megtudhatja, hogyan tárolóba helyezése Java-webalkalmazásokat (az Apache Tomcat használatával), és hogyan telepítheti át azokat az [Azure Kubernetes szolgáltatásba (ak)](https://azure.microsoft.com/services/kubernetes-service/) a Azure Migrate: app tárolókra bontás eszközzel. A tárolókra bontás folyamat nem igényli a kód elérését, és egyszerű módszert kínál a meglévő alkalmazások tárolóba helyezése. Az eszköz a kiszolgálókon futó alkalmazások futtatási állapotának használatával határozza meg az alkalmazás-összetevőket, és segít a tárolók rendszerképében való csomagolásban. A tároló alkalmazás ezután üzembe helyezhető az Azure Kubernetes szolgáltatásban (ak).
 
@@ -59,7 +59,7 @@ Az oktatóanyag elkezdése előtt:
 
 **Követelmény** | **Részletek**
 --- | ---
-**Számítógép azonosítása az eszköz telepítéséhez** | Egy Windows rendszerű gép, amely a Azure Migrate: app tárolókra bontás eszközt telepíti és futtatja. A Windows rendszerű gép lehet egy kiszolgáló (Windows Server 2016 vagy újabb) vagy ügyfél (Windows 10) operációs rendszer, ami azt jelenti, hogy az eszköz futtatható az asztalon is. <br/><br/> Az eszközt futtató Windows rendszerű gépnek hálózati kapcsolattal kell rendelkeznie a ASP.NET-alkalmazásokat tároló kiszolgálók/virtuális gépek számára.<br/><br/> Győződjön meg arról, hogy a (z) Azure Migrate: app tárolókra bontás eszközt futtató Windows-gépen 6 GB szabad terület áll rendelkezésre az alkalmazás-összetevők tárolásához. <br/><br/> A Windows rendszerű gépnek közvetlenül vagy proxyn keresztül kell internet-hozzáférése. <br/> <br/>Telepítse a Microsoft Web Deploy eszközt azon a gépen, amelyen az App tárolókra bontás Helper eszköz és az alkalmazáskiszolgáló még nincs telepítve. Az eszközt [innen](https://aka.ms/webdeploy3.6) töltheti le
+**Számítógép azonosítása az eszköz telepítéséhez** | Egy Windows rendszerű gép, amely a Azure Migrate: app tárolókra bontás eszközt telepíti és futtatja. A Windows rendszerű gép lehet egy kiszolgáló (Windows Server 2016 vagy újabb) vagy ügyfél (Windows 10) operációs rendszer, ami azt jelenti, hogy az eszköz futtatható az asztalon is. <br/><br/> Az eszközt futtató Windows-gépnek hálózati kapcsolattal kell rendelkeznie a konténerizálni kívánt ASP.NET-alkalmazásokat üzemeltető kiszolgálókhoz/virtuális gépekhez.<br/><br/> Győződjön meg arról, hogy a (z) Azure Migrate: app tárolókra bontás eszközt futtató Windows-gépen 6 GB szabad terület áll rendelkezésre az alkalmazás-összetevők tárolásához. <br/><br/> A Windows-gépnek közvetlen vagy proxyn keresztüli internetkapcsolattal kell rendelkeznie. <br/> <br/>Telepítse a Microsoft Web Deploy eszközt azon a gépen, amelyen az App tárolókra bontás Helper eszköz és az alkalmazáskiszolgáló még nincs telepítve. Az eszközt [innen](https://aka.ms/webdeploy3.6) töltheti le
 **Alkalmazáskiszolgálók** | – Engedélyezze a Secure Shell-(SSH-) kapcsolatokat a 22-es porton a Java-alkalmazás (ok) at tároló kiszolgáló (k) et futtató kiszolgálón. <br/>
 **Java-webalkalmazás** | Az eszköz jelenleg támogatja <br/><br/> – A Tomcat 8-as vagy újabb verzióján futó alkalmazások.<br/> -Alkalmazáskiszolgáló Ubuntu Linux 16.04/18.04/20.04, Debian 7/8, CentOS 6/7, Red Hat Enterprise Linux 5/6/7. <br/> – A Java 7-es vagy újabb verzióját használó alkalmazások.  <br/><br/> Az eszköz jelenleg nem támogatott <br/><br/> – Több tomcat-példányt futtató alkalmazások kiszolgálói <br/>  
 
@@ -104,7 +104,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 3. A telepítési parancsfájl futtatása a parancs használatával
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Az alkalmazás tárolókra bontás eszközének elindítása

@@ -7,18 +7,18 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098026"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023163"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Hangsegéd létrehozása az Azure Percept DK és az Azure Percept audio használatával
 
 Ebben az oktatóanyagban létre fog hozni egy hangsegédet egy sablonból, amelyet az Azure Percept DK és az Azure Percept hang használatával használhat. A hangsegéd bemutatója az [Azure Percept Studióban](https://go.microsoft.com/fwlink/?linkid=2135819) fut, és a hang által vezérelt virtuális objektumokat is tartalmazza. Egy objektum vezérléséhez tegyük fel a kulcsszót, amely egy szó vagy rövid kifejezés, amely felébreszti az eszközt, majd egy parancs után. Minden sablon adott parancsokra válaszol.
 
-Ebből az útmutatóból megtudhatja, hogyan állíthatja be az eszközöket, hogyan hozhat létre hangsegédet és a szükséges [Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) -erőforrásokat, hogyan tesztelheti a hangsegédet, hogyan konfigurálhatja a kulcsszót, és hogyan hozhat létre egyéni kulcsszavakat.
+Ebből az útmutatóból megtudhatja, hogyan állíthatja be az eszközöket, hogyan hozhat létre hangsegédet és a szükséges [Speech Services](../cognitive-services/speech-service/overview.md) -erőforrásokat, hogyan tesztelheti a hangsegédet, hogyan konfigurálhatja a kulcsszót, és hogyan hozhat létre egyéni kulcsszavakat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -172,7 +172,7 @@ Miután létrehozta az egyéni parancsot, további fejlesztésért lépjen a [Sp
 
     :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Képernyőkép a Speech Studio kezdőképernyő képernyőjéről.":::
 
-Az egyéni parancsok fejlesztésével kapcsolatos további információkért tekintse meg a [Speech Service dokumentációját](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands).
+Az egyéni parancsok fejlesztésével kapcsolatos további információkért tekintse meg a [Speech Service dokumentációját](../cognitive-services/speech-service/custom-commands.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

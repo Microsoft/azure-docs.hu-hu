@@ -6,23 +6,22 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 03d3093f14d97b2cc64d91e0d1b7adf34204a021
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 17979bd548ca0d7b704ebdeb4d060bf35973b319
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962519"
+ms.locfileid: "105024146"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>Mintavételi felülbírálások (előzetes verzió) – Azure Monitor Application Insights Javához
 
 > [!NOTE]
-> A mintavételi felülbírálások funkciója előzetes verzióban érhető el.
+> A mintavételi felülbírálások funkciója előzetes verzióban érhető el, a 3.0.3-BETA. 2.
 
-Íme néhány felhasználási eset a mintavételezési felülbírálásokhoz:
- * Az telemetria gyűjtésének mellőzése.
- * A zajos függőségi hívások telemetria gyűjtésének mellőzése.
- * Csökkentse az állapot-ellenőrzés vagy a zajos függőségi hívások okozta zajt anélkül, hogy teljesen letiltsa őket.
- * A telemetria 100%-át egy fontos kérelem típusához (pl.) gyűjti, `/login` még akkor is, ha az alapértelmezett mintavételezés egy alacsonyabb értékre van konfigurálva.
+A mintavételi felülbírálások segítségével felülbírálhatja az [alapértelmezett mintavételi százalékot](./java-standalone-config.md#sampling), például:
+ * A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos állapot-ellenőrzésekhez.
+ * A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos függőségi hívásokhoz.
+ * Állítsa be a mintavételezési százalékot 100-re egy fontos kérelem típusához (például `/login` ), még akkor is, ha az alapértelmezett mintavételezés valami alacsonyabbra van konfigurálva.
 
 ## <a name="terminology"></a>Terminológia
 
@@ -79,7 +78,7 @@ Csak az első mintavételezési felülbírálás van használatban.
 
 Ha a mintavételi felülbírálások nem egyeznek:
 
-* Ha ez a nyomkövetés első tartománya, akkor a rendszer a [normál mintavételi százalékot](./java-standalone-config.md#sampling) használja.
+* Ha ez a nyomkövetés első tartománya, akkor a rendszer az [alapértelmezett mintavételi százalékot](./java-standalone-config.md#sampling) használja.
 * Ha ez nem a nyomkövetés első tartománya, akkor a rendszer a szülő mintavételezési döntését használja.
 
 > [!IMPORTANT]
