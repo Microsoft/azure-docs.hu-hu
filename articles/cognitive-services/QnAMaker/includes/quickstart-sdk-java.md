@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: 68f2e9894bf5b431140796b734886927395fb744
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6460c8c6d9ffb868d7ac6640c19608f2c10e4d4b
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583160"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105891"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -96,10 +96,11 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 > [!IMPORTANT]
 > Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók.
 
-- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
-- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Miután közzétette a tudásbázist a QnA Maker-portálon, megkeresheti a futásidejű végpontot az alábbi ábrán látható módon.
+- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Nyissa meg a Azure Portal QnA Maker erőforrását, és kattintson a **kulcsok és végpont** elemre a szerzői műveletek (előfizetés) kulcsának és QnA Maker végpontjának megkereséséhez.
 
-  ![QnA Maker futtatókörnyezet végpontja](../media/endpoint.png)
+ ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
+ 
+- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` .
    
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 
@@ -110,7 +111,10 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 > [!IMPORTANT]
 > Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók.
 
-- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
+- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` .  Nyissa meg a Azure Portal QnA Maker erőforrását, és kattintson a **kulcsok és végpont** elemre a szerzői műveletek (előfizetés) kulcsának és QnA Maker végpontjának megkereséséhez.
+
+ ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
+ 
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 
 [!code-java[Resource variables](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=resourceKeys)]
@@ -200,7 +204,7 @@ A következő kód utolsó sora a Tudásbázis AZONOSÍTÓját adja vissza.
 A tudásbázist a Tudásbázis-AZONOSÍTÓban és egy [UpdateKbOperationDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/UpdateKbOperationDTO.java) objektumban a [frissítés](https://github.com/Azure/azure-sdk-for-java/blob/b455a61f4c6daece13590a0f4136bab3c4f30546/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Knowledgebases.java#L150) és az átadás meghívásával frissítheti. Ez az objektum a következőket tartalmazhatja:
 - [add](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/UpdateKbOperationDTOAdd.java)
 - [frissítése](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/UpdateKbOperationDTOUpdate.java)
-- [törlése](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/UpdateKbOperationDTODelete.java)
+- [delete](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/UpdateKbOperationDTODelete.java)
 
 Adja át a `operationId` visszaadott művelet tulajdonságát a [getDetails](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez.
 

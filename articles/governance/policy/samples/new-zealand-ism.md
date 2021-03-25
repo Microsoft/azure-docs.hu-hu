@@ -1,15 +1,15 @@
 ---
 title: Az új-zélandi ISM korlátozásokkal kapcsolatos szabályok megfelelőségi részletei
 description: Az új-zélandi ISM korlátozott szabályozási megfelelőség beépített kezdeményezésének részletei. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f72ca23e2c2237efcf19b629c2759a1ad5d0f879
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e7d5f298864b0fdc4d3a8856a192d6184d3abe19
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590313"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034418"
 ---
 # <a name="details-of-the-new-zealand-ism-restricted-regulatory-compliance-built-in-initiative"></a>Az új-zélandi, korlátozott szabályozási megfelelőséggel kapcsolatos beépített kezdeményezés részletei
 
@@ -19,9 +19,11 @@ További információ erről a megfelelőségi szabványról: [új-zélandi ISM 
 A következő leképezések az **új-zélandi ISM korlátozott** vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott **megfelelőségi tartományra** ugorhat. Számos vezérlő [Azure Policy](../overview.md) kezdeményezési definícióval van implementálva. A teljes kezdeményezési definíció áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot.
 Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabályozási megfelelőség beépített kezdeményezési definícióját.
 
+Ez a beépített kezdeményezés az [új-zélandi ISM korlátozott terv](../../blueprints/samples/new-zealand-ism.md)keretében lett üzembe helyezve.
+
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../overview.md) -definícióhoz vannak társítva.
-> Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a szabályzat-definícióknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tartományok, a vezérlők és a Azure Policy-definíciók közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/nz_ism.json).
+> Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../how-to/get-compliance-data.md) ; azonban gyakran nem egy-az-egyhez vagy egy teljes egyezés egy vezérlőelem és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a szabályzat-definícióknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tartományok, a vezérlők és a Azure Policy-definíciók közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/nz_ism.json).
 
 ## <a name="information-security-monitoring"></a>Információbiztonság figyelése
 
@@ -29,7 +31,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt ISM-3 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Naplózza a virtuális gépeket annak észlelésére, hogy támogatott sebezhetőségi felmérési megoldást futtatnak-e. A biztonsági rések azonosítása és elemzése minden számítógépes kockázati és biztonsági program alapvető összetevője. A Azure Security Center Standard díjszabási szintje a virtuális gépek sebezhetőségi vizsgálatát is magában foglalja, többletköltség nélkül. Emellett a Security Center automatikusan üzembe helyezheti ezt az eszközt. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |
 |[A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad) |Az elavult, tulajdonosi engedélyekkel rendelkező fiókokat el kell távolítani az előfizetésből.  Az elavult fiókok olyan fiókok, amelyek nem tudnak bejelentkezni. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccountsWithOwnerPermissions_Audit.json) |
@@ -47,7 +49,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági TELJESÍTMÉNYTESZT (PRS-5) **tulajdonjoga**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az elavult fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474) |Az elavult fiókokat el kell távolítani az előfizetésből.  Az elavult fiókok olyan fiókok, amelyek nem tudnak bejelentkezni. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccounts_Audit.json) |
 |[A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad) |Az elavult, tulajdonosi engedélyekkel rendelkező fiókokat el kell távolítani az előfizetésből.  Az elavult fiókok olyan fiókok, amelyek nem tudnak bejelentkezni. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccountsWithOwnerPermissions_Audit.json) |
@@ -62,7 +64,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági TELJESÍTMÉNYTESZT, SS-2 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Üzembe helyezés – a függőségi ügynök konfigurálása a Windows rendszerű virtuálisgép-méretezési csoportokban való engedélyezéshez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3be22e3b-d919-47aa-805e-8985dbeb0ad9) |Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó függőségi ügynök telepítése, ha a virtuális gép lemezképe szerepel a listában, és az ügynök nincs telepítve. Ha a méretezési csoport upgradePolicy manuális értékre van állítva, a bővítményt a készletben lévő összes virtuális gépre alkalmaznia kell a frissítéssel. |DeployIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VMSS_Deploy.json) |
 |[Az Endpoint Protection-megoldást a virtuálisgép-méretezési csoportokra kell telepíteni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |Az Endpoint Protection-megoldás létezésének és állapotának naplózása a virtuális gépek méretezési csoportjain, a fenyegetésektől és a sebezhetőségtől való védelem érdekében. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
@@ -73,7 +75,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt SS-4 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Biztonságos alkalmazások definiálására szolgáló adaptív alkalmazás-vezérlőelemeket engedélyezni kell a gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Az alkalmazás-vezérlőelemek lehetővé teszik a gépen futó ismert, biztonságos alkalmazások listájának meghatározását, és riasztást küld, ha más alkalmazások futnak. Ez segít megerősíteni a gépeket a kártevők ellen. A szabályok konfigurálásának és karbantartásának egyszerűbbé tétele érdekében Security Center a gépi tanulás segítségével elemzi az egyes gépeken futó alkalmazásokat, és javaslatot tesz az ismert alkalmazások listájára. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveApplicationControls_Audit.json) |
 
@@ -81,7 +83,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági TELJESÍTMÉNYTESZT, SS-8 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az API-alkalmazás csak HTTPS protokollon keresztül érhető el](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb7ddfbdc-1260-477d-91fd-98bd9be789a6) |A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban. |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceApiApp_AuditHTTP_Audit.json) |
 |[A CORS nem engedélyezheti minden erőforrásnak, hogy hozzáférjen a webalkalmazásokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5744710e-cc2f-4ee8-8809-3b11e89f4bc9) |A több eredetű erőforrás-megosztás (CORS) nem teszi lehetővé az összes tartomány számára a webalkalmazás elérését. Csak a szükséges tartományokat engedélyezze a webalkalmazással való kommunikációhoz. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RestrictCORSAccess_WebApp_Audit.json) |
@@ -95,7 +97,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-2 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f11b553-d42e-4e3a-89be-32ca364cad4c) |Javasoljuk, hogy legfeljebb 3 előfizetés-tulajdonost jelöljön ki, hogy csökkentse a feltört tulajdonos általi illetéktelen behatolás lehetőségét. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateLessThanXOwners_Audit.json) |
 |[A jelszavak nélküli fiókok távoli kapcsolatait engedélyező linuxos gépek naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea53dbee-c6c9-4f0e-9f9e-de0039b78023) |Megköveteli, hogy az előfeltételek telepítve legyenek a szabályzat-hozzárendelési hatókörben. Részletekért keresse fel a következőt: [https://aka.ms/gcpol](https://aka.ms/gcpol) . A gépek nem megfelelőek, ha olyan linuxos gépek, amelyek engedélyezik a távoli kapcsolatokat a jelszavak nélküli fiókoktól |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_AINE.json) |
@@ -113,7 +115,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-3 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9297c21d-2ed6-4474-b48f-163f75654ce3) |A fiókok vagy erőforrások megszegésének megelőzése érdekében minden írási jogosultsággal rendelkező előfizetési fiók esetében engedélyezni kell a Multi-Factor Authentication (MFA) használatát. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForWritePermissions_Audit.json) |
 |[Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faa633080-8b72-40c4-a2d7-d00c03e80bed) |Az Multi-Factor Authentication (MFA) minden tulajdonosi engedélyekkel rendelkező előfizetési fiók esetében engedélyezni kell a fiókok vagy erőforrások megszegésének megakadályozására. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForOwnerPermissions_Audit.json) |
@@ -123,7 +125,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-4 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Üzembe helyezés – a függőségi ügynök konfigurálása a Windows rendszerű virtuális gépeken való engedélyezéshez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c210e94-a481-4beb-95fa-1571b434fb04) |Windows rendszerű virtuális gépekhez tartozó függőségi ügynök telepítése, ha a virtuális gép lemezképe szerepel a listában, és az ügynök nincs telepítve. |DeployIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VM_Deploy.json) |
 |[A Windows rendszerű gépeknek meg kell felelniük a "biztonsági beállítások – fiókok házirendjei" követelményeinek](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff2143251-70de-4e81-87a8-36cee5a2f29d) |A Windows rendszerű gépeken a jelszó-előzmények, az életkor, a hossz, a bonyolultság és a jelszavak tárolása visszafejthető titkosítás használatával a megadott Csoportházirend beállítások szerepelnek a "biztonsági beállítások – fiók házirendek" kategóriában. Ehhez a Szabályzathoz az szükséges, hogy a vendég konfigurációjának előfeltételei telepítve legyenek a szabályzat-hozzárendelési hatókörben. Részletekért keresse fel a következőt: [https://aka.ms/gcpol](https://aka.ms/gcpol) . |AuditIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecuritySettingsAccountPolicies_AINE.json) |
@@ -132,7 +134,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-5 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Üzembe helyezés – a függőségi ügynök konfigurálása a Windows rendszerű virtuális gépeken való engedélyezéshez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c210e94-a481-4beb-95fa-1571b434fb04) |Windows rendszerű virtuális gépekhez tartozó függőségi ügynök telepítése, ha a virtuális gép lemezképe szerepel a listában, és az ügynök nincs telepítve. |DeployIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VM_Deploy.json) |
 |[Az elavult fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474) |Az elavult fiókokat el kell távolítani az előfizetésből.  Az elavult fiókok olyan fiókok, amelyek nem tudnak bejelentkezni. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccounts_Audit.json) |
@@ -142,7 +144,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-7 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A virtuális gépek felügyeleti portjait az igény szerinti hálózati hozzáférés-vezérléssel kell védeni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0f33259-77d7-4c9e-aac6-3aabcfae693c) |A lehető legrövidebb időn belül (JIT) való hozzáférést a Azure Security Center a javaslatok szerint figyeli |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_JITNetworkAccess_Audit.json) |
 |[A távoli hibakeresést ki kell kapcsolni API Apps](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e) |A távoli hibakereséshez a bejövő portok megnyitására van szükség az API-alkalmazásokban. A távoli hibakeresést ki kell kapcsolni. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_ApiApp_Audit.json) |
@@ -153,7 +155,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-9 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A rendszergazdák csoport megadott tagjaiból hiányzó Windows-gépek naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f71ea1-ac77-4f26-9fc5-2d926bbd4ba7) |Megköveteli, hogy az előfeltételek telepítve legyenek a szabályzat-hozzárendelési hatókörben. Részletekért keresse fel a következőt: [https://aka.ms/gcpol](https://aka.ms/gcpol) . A gépek nem megfelelőek, ha a helyi Rendszergazdák csoport nem tartalmaz egy vagy több olyan tagot, amely szerepel a házirend-paraméterben. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude_AINE.json) |
 |[A rendszergazdák csoportba tartozó további fiókkal rendelkező Windows-gépek naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d2a3320-2a72-4c67-ac5f-caa40fbee2b2) |Megköveteli, hogy az előfeltételek telepítve legyenek a szabályzat-hozzárendelési hatókörben. Részletekért keresse fel a következőt: [https://aka.ms/gcpol](https://aka.ms/gcpol) . A gépek nem megfelelőek, ha a helyi Rendszergazdák csoport olyan tagokat tartalmaz, amelyek nem szerepelnek a házirend-paraméterben. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembers_AINE.json) |
@@ -165,7 +167,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-13 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az Azure-előfizetéseknek log-profillal kell rendelkezniük a műveletnapló számára](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |Ez a szabályzat biztosítja, hogy a naplózási profil engedélyezve legyen-e a tevékenység naplófájljainak exportálásához. Ha nincs olyan napló-profil, amely a naplók egy Storage-fiókba vagy egy Event hubhoz való exportálására van létrehozva. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
 
@@ -173,7 +175,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-14 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Diagnosztikai beállítás naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása |AuditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
 |[Log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff47b5582-33ec-4c5c-87c0-b010a6b2e917) |Nem megfelelőként jelenti a virtuális gépeket, ha nem jelentkeznek be a házirend/kezdeményezés-hozzárendelésben megadott Log Analytics munkaterületre. |ellenőrzési |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_WorkspaceMismatch_VM_Audit.json) |
@@ -184,7 +186,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-15 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A tevékenység naplóját legalább egy évig meg kell őrizni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Ez a házirend naplózza a tevékenységet, ha az adatmegőrzés nincs 365 vagy örökre értékre beállítva (a megőrzési napok értéke 0). |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
 
@@ -192,7 +194,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-17 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9297c21d-2ed6-4474-b48f-163f75654ce3) |A fiókok vagy erőforrások megszegésének megelőzése érdekében minden írási jogosultsággal rendelkező előfizetési fiók esetében engedélyezni kell a Multi-Factor Authentication (MFA) használatát. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForWritePermissions_Audit.json) |
 |[Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faa633080-8b72-40c4-a2d7-d00c03e80bed) |Az Multi-Factor Authentication (MFA) minden tulajdonosi engedélyekkel rendelkező előfizetési fiók esetében engedélyezni kell a fiókok vagy erőforrások megszegésének megakadályozására. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForOwnerPermissions_Audit.json) |
@@ -204,7 +206,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt CR-2 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A lemezes titkosítást a virtuális gépeken kell alkalmazni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Az engedélyezett lemezes titkosítás nélküli virtuális gépeket javaslatokként Azure Security Center figyeli. |AuditIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
@@ -212,7 +214,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt CR-6 **tulajdonos**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A Windows vendég konfigurációs bővítményének üzembe helyezése a vendég konfigurációs hozzárendeléseinek a Windows rendszerű virtuális gépeken való engedélyezéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F385f5831-96d4-41db-9a3c-cd3af78aaae6) |Ez a szabályzat telepíti a Windows vendég konfigurációs bővítményét az Azure-ban üzemeltetett, a vendég konfigurációja által támogatott Windows rendszerű virtuális gépekre. A Windows vendég konfigurációs bővítmény előfeltétele az összes Windows vendég konfigurációs hozzárendelésnek, és telepíteni kell a gépekre a Windows vendég konfigurációs házirendjének definíciójának használata előtt. A vendég konfigurációval kapcsolatos további információkért látogasson el a következő webhelyre: [https://aka.ms/gcpol](https://aka.ms/gcpol) . |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionWindows_Prerequisite.json) |
 |[A legújabb TLS-verziót kell használni az API-alkalmazásban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e) |Frissítés a legújabb TLS-verzióra |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RequireLatestTls_ApiApp_Audit.json) |
@@ -226,7 +228,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt NS-2 **tulajdonjoga**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az adaptív hálózatokra vonatkozó kötési javaslatokat az internetre irányuló virtuális gépeken kell alkalmazni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F08e6af2d-db70-460a-bfe9-d5bd474ba9d6) |Azure Security Center elemzi az internetre irányuló virtuális gépek forgalmi mintáit, és hálózati biztonsági csoportokra vonatkozó ajánlásokat biztosít a lehetséges támadási felület csökkentése érdekében. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveNetworkHardenings_Audit.json) |
 |[Az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff6de0be7-9a8a-4b8a-b349-43cf02d22f7c) |A hálózati biztonsági csoportokkal (NSG) való hozzáférés korlátozásával védi a virtuális gépeket a lehetséges fenyegetésekkel szemben. További információ a forgalom szabályozásáról a NSG-on [https://aka.ms/nsg-doc](https://aka.ms/nsg-doc) |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnInternetFacingVirtualMachines_Audit.json) |
@@ -237,7 +239,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM Security benchmark NS-5 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure DDoS Protection a standardot engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |A DDoS Protection standardot a nyilvános IP-címmel rendelkező Application Gateway részét képező alhálózattal rendelkező összes virtuális hálózat esetében engedélyezni kell. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
 
@@ -245,7 +247,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt NS-7 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az összes internetes forgalmat az üzembe helyezett Azure Firewall keresztül kell átirányítani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Security Center azonosította, hogy egyes alhálózatok nem védik a következő generációs tűzfallal. Az alhálózatok elleni védelem a lehetséges fenyegetésekkel szemben, ha korlátozza a hozzáférést Azure Firewall vagy egy támogatott következő generációs tűzfallal |AuditIfNotExists, letiltva |[3.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
 |[A webalkalmazási tűzfalat (WAF) engedélyezni kell Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |Az Azure webalkalmazási tűzfal (WAF) üzembe helyezése a nyilvános webes alkalmazások előtt a bejövő forgalom további ellenőrzéséhez. A webalkalmazási tűzfal (WAF) a webalkalmazások központosított védelmét nyújtja a gyakori biztonsági rések és sebezhetőségek, például az SQL-injektálások, a helyek közötti parancsfájlok, a helyi és a távoli fájlok végrehajtásához. A webalkalmazásokhoz való hozzáférést az egyes országok, IP-címtartományok és más http-(s-) paraméterek alapján is korlátozhatja egyéni szabályok segítségével. |Naplózás, megtagadás, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
@@ -259,7 +261,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt DM-4 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Üzembe helyezés – a függőségi ügynök konfigurálása a Windows rendszerű virtuálisgép-méretezési csoportokban való engedélyezéshez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3be22e3b-d919-47aa-805e-8985dbeb0ad9) |Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó függőségi ügynök telepítése, ha a virtuális gép lemezképe szerepel a listában, és az ügynök nincs telepítve. Ha a méretezési csoport upgradePolicy manuális értékre van állítva, a bővítményt a készletben lévő összes virtuális gépre alkalmaznia kell a frissítéssel. |DeployIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VMSS_Deploy.json) |
 |[Az Endpoint Protection-megoldást a virtuálisgép-méretezési csoportokra kell telepíteni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |Az Endpoint Protection-megoldás létezésének és állapotának naplózása a virtuális gépek méretezési csoportjain, a fenyegetésektől és a sebezhetőségtől való védelem érdekében. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
@@ -270,7 +272,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt DM-6 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Minden felügyelt SQL-példány naplózása speciális adatbiztonság nélkül. |AuditIfNotExists, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
 |[A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |SQL serverek naplózása speciális adatbiztonság nélkül |AuditIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
@@ -288,7 +290,7 @@ Ezután keresse meg és válassza ki az **új-zélandi ISM korlátozott** szabá
 
 **Azonosító**: NZISM biztonsági teljesítményteszt ESS-3 **tulajdonjog**: ügyfél
 
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Virtuális gépek naplózása vész-helyreállítás nélkül konfigurálva](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Olyan virtuális gépek naplózása, amelyek nem rendelkeznek a vész-helyreállítási beállításokkal. A vész-helyreállítással kapcsolatos további információkért látogasson el a következő oldalra: [https://aka.ms/asr-doc](https://aka.ms/asr-doc) . |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json) |
 

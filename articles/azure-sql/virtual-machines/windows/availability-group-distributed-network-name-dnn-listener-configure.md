@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c3950b1aeae2b4e90b1ae4acfb9439c2cb159ca
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: bf5c4c39ea8f5705cc9788fdcf2cddd01dcb4087
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026002"
+ms.locfileid: "105034707"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>DNN-figyelő konfigurálása rendelkezésre állási csoporthoz
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -145,7 +145,7 @@ A for érték `1` `is_distributed_network_name` azt jelzi, hogy a figyelő egy e
 
 ## <a name="update-connection-string"></a>A kapcsolatok karakterláncának frissítése
 
-Frissítse a kapcsolati karakterláncokat az alkalmazásokhoz, hogy csatlakozzanak a DNN-figyelőhöz. A feladatátvétel gyors elérésének biztosításához adja hozzá `MultiSubnetFailover=True` a kapcsolati sztringet, ha az SQL-ügyfél támogatja azt.
+Frissítse a kapcsolati karakterláncokat az alkalmazásokhoz, hogy csatlakozzanak a DNN-figyelőhöz. A DNN-figyelőkhöz tartozó kapcsolatok karakterláncának meg kell adnia a DNN portszámát. A feladatátvétel gyors elérésének biztosításához adja hozzá `MultiSubnetFailover=True` a kapcsolati sztringet, ha az SQL-ügyfél támogatja azt.
 
 ## <a name="test-failover"></a>Feladatátvétel tesztelése
 

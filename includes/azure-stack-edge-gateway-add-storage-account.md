@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c7e011cf8445164e0931f71e390813c9134dd89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf67ea58c4c13756fdc6e437883f12124ca47eb9
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200934"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105754"
 ---
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés** elemre. Az eszköznek online állapotban kell lennie. Nyissa meg a **Cloud Storage-átjáró > Storage-fiókok** lapot.
 
@@ -35,4 +35,4 @@ ms.locfileid: "103200934"
 
     ![2. Storage-fiók hozzáadása](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
-    A hozzáférési kulcsokat úgy érheti el, ha [a Azure Resource Manager használatával csatlakozik az eszköz helyi API-](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)khoz. 
+    A hozzáférési kulcsokat úgy érheti el, ha [a Azure Resource Manager használatával csatlakozik az eszköz helyi API-](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)khoz.

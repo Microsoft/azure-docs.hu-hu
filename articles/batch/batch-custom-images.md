@@ -3,12 +3,12 @@ title: Felügyelt rendszerkép használata egyéni rendszerkép-készlet létreh
 description: Hozzon létre egy batch egyéni rendszerkép-készletet egy felügyelt rendszerképből, hogy kiépítse a számítási csomópontokat az alkalmazás szoftverével és adataival.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9baa65c0f1c1844ea10e3d5b4f0b48924912d233
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94916576"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023877"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Felügyelt rendszerkép használata egyéni rendszerkép-készlet létrehozásához
 
@@ -43,7 +43,7 @@ A Batch-készletek felügyelt képpel való megbízható méretezéséhez javaso
 Ha új virtuális gépet hoz létre a rendszerképhez, használja a Batch által támogatott első féltől származó Azure Marketplace-rendszerképet a felügyelt rendszerkép alaprendszerképének megfelelően. Alaprendszerképként csak az első féltől származó képek használhatók. Az Azure Batch által támogatott Azure Marketplace-rendszerkép-referenciák teljes listájának megjelenítéséhez tekintse meg a [csomópont-ügynök SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) -azonosítóinak listázása műveletet.
 
 > [!NOTE]
-> Alaprendszerképként nem használhat olyan külső gyártótól származó rendszerképet, amely további licenccel és vásárlási feltételekkel rendelkezik. További információ ezekről a Piactéri lemezképekről: [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) vagy [Windows rendszerű](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) virtuális gépek útmutatója.
+> Alaprendszerképként nem használhat olyan külső gyártótól származó rendszerképet, amely további licenccel és vásárlási feltételekkel rendelkezik. További információ ezekről a Piactéri lemezképekről: [Linux](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information) vagy [Windows rendszerű](../virtual-machines/windows/cli-ps-findimage.md#view-purchase-plan-properties)virtuális gépek útmutatója.
 
 - Győződjön meg arról, hogy a virtuális gép felügyelt lemezzel lett létrehozva. A virtuális gép létrehozásakor ez az alapértelmezett tárolási beállítás.
 - Ne telepítse az Azure-bővítményeket, például az egyéni szkriptek bővítményét a virtuális gépen. Ha a lemezkép előre telepített bővítményt tartalmaz, az Azure problémákba ütközhet a Batch-készlet telepítésekor.

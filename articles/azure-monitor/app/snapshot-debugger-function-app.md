@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 12/18/2020
-ms.openlocfilehash: ac25962cac36a149807b67a44b3b88a4f40c954a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48eb3cf81384446a07fea69572ac16e0b80cee38
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211940"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025628"
 ---
 # <a name="enable-snapshot-debugger-for-net-and-net-core-apps-in-azure-functions"></a>.NET-és .NET Core-alkalmazások Snapshot Debuggerének engedélyezése Azure Functions
 
@@ -126,7 +126,7 @@ Gazda fájl
 
 ## <a name="enable-snapshot-debugger-for-other-clouds"></a>Snapshot Debugger engedélyezése más felhők számára
 
-Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
+Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) és az [Azure China](/azure/china/resources-developer-guide).
 
 Alább látható egy példa az `host.json` Egyesült államokbeli kormányzati Felhőbeli ügynök végpontjának frissítésére:
 ```json
