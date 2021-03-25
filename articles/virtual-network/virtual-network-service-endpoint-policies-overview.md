@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633d0b9e454fe2906d98624ac2cdbcc9a8b6c7fa
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216648"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022262"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok létrehozása az Azure Storage-hez
 
@@ -109,6 +109,8 @@ Szolgáltatásvégpont-szabályzatokhoz a központi naplózás nem érhető el. 
   - Győződjön meg arról, hogy a fiókok nem **klasszikus tárolási fiókok** az alhálózaton szolgáltatási végponti házirendekkel.
 - Egy felügyelt Azure-szolgáltatás leállt a szolgáltatás-végponti házirendnek az alhálózaton való alkalmazása után.
   - A felügyelt szolgáltatások jelenleg nem támogatottak a szolgáltatás-végponti házirendekkel. *Tekintse meg ezt a helyet a frissítésekhez*.
+- A felügyelt Storage-fiókokhoz való hozzáférés a szolgáltatás-végponti házirend alhálózaton való alkalmazása után leáll.
+  - A felügyelt Storage-fiókok nem támogatottak a szolgáltatás-végponti házirendekkel. Ha be van állítva, a házirendek alapértelmezés szerint megtagadják a hozzáférést az összes felügyelt Storage-fiókhoz. Ha az alkalmazásnak hozzá kell férnie a felügyelt Storage-fiókokhoz, a végpont-házirendeket nem szabad használni ehhez a forgalomhoz.
 
 ## <a name="provisioning"></a>Kiépítés
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 551374824610c0257aaf52c45768d31849026524
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034608"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047541"
 ---
 # <a name="runtime-sdk-overview"></a>Futásidejű SDK – áttekintés
 
@@ -25,59 +25,59 @@ Az alábbi típusok mindegyike megtalálható a **Microsoft. MixedReality. Objec
 
 ### <a name="objectmodel"></a>ObjectModel
 
-A [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) a fizikai objektum geometriáját jelöli, és az észleléshez és a becsléshez szükséges paramétereket kódolja. Az [objektum-horgonyok szolgáltatás](../quickstarts/get-started-model-conversion.md)használatával kell létrehozni. Ezután az alkalmazás betöltheti a generált modellt az objektum-horgonyok API-val, és lekérdezheti a modellbe ágyazott rácsvonalat a vizualizációhoz.
+A [ObjectModel](/dotnet/api/microsoft.azure.objectanchors.objectmodel) a fizikai objektum geometriáját jelöli, és az észleléshez és a becsléshez szükséges paramétereket kódolja. Az [objektum-horgonyok szolgáltatás](../quickstarts/get-started-model-conversion.md)használatával kell létrehozni. Ezután az alkalmazás betöltheti a generált modellt az objektum-horgonyok API-val, és lekérdezheti a modellbe ágyazott rácsvonalat a vizualizációhoz.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
-A [ObjectSearchArea](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) meghatározza az egy vagy több objektum keresésének a területét. Ezt a térbeli gráf csomópont-AZONOSÍTÓja és térbeli határai határozzák meg a térbeli gráf csomópont-azonosítója által jelölt koordináta-rendszeren. Az objektum-horgonyok futtatókörnyezetének SDK négyféle típusú határt támogat, például a **mező nézet**, a **határolókeret**, a **gömb** és egy **hely** között.
+A [ObjectSearchArea](/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) meghatározza az egy vagy több objektum keresésének a területét. Ezt a térbeli gráf csomópont-AZONOSÍTÓja és térbeli határai határozzák meg a térbeli gráf csomópont-azonosítója által jelölt koordináta-rendszeren. Az objektum-horgonyok futtatókörnyezetének SDK négyféle típusú határt támogat, például a **mező nézet**, a **határolókeret**, a **gömb** és egy **hely** között.
 
 ### <a name="objectquery"></a>ObjectQuery
 
-Egy [ObjectQuery](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery) azt jelzi, hogy egy **objektum megfigyelője** egy adott modell objektumainak megkeresésére. A következő hangolt paramétereket biztosítja, amelyek alapértelmezett értékeit lekérheti egy objektummodellből.
+Egy [ObjectQuery](/dotnet/api/microsoft.azure.objectanchors.objectquery) azt jelzi, hogy egy **objektum megfigyelője** egy adott modell objektumainak megkeresésére. A következő hangolt paramétereket biztosítja, amelyek alapértelmezett értékeit lekérheti egy objektummodellből.
 
 #### <a name="minsurfacecoverage"></a>MinSurfaceCoverage
 
-A [MinSurfaceCoverage](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) tulajdonság azt az értéket jelzi, amelyet a rendszer észlelt.
+A [MinSurfaceCoverage](/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) tulajdonság azt az értéket jelzi, amelyet a rendszer észlelt.
 
 Az egyes objektumokhoz tartozó jelöltek esetében a **megfigyelő** kiszámítja az átfedő felületek arányát az átalakított objektummodell és a jelenet között, majd csak akkor jelenti azt, ha a lefedettségi arány meghaladja az adott küszöbértéket.
 
 #### <a name="isexpectedtobestandingongroundplane"></a>IsExpectedToBeStandingOnGroundPlane
 
-A [IsExpectedToBeStandingOnGroundPlane](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) tulajdonság azt jelzi, hogy a célként megadott objektumnak a talajközeli síkon kell állnia.
+A [IsExpectedToBeStandingOnGroundPlane](/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) tulajdonság azt jelzi, hogy a célként megadott objektumnak a talajközeli síkon kell állnia.
 
 A terepi sík a keresési terület legalacsonyabb vízszintes padlója. Ez jó korlátozást biztosít a lehetséges objektumra vonatkozóan. A jelző bekapcsolásával a **megfigyelő** megbecsüli a pózolt egy korlátozott térben, és javíthatja a pontosságot. A rendszer figyelmen kívül hagyja ezt a paramétert, ha a modell nem állhat a talajközeli síkon.
 
 #### <a name="expectedmaxverticalorientationindegrees"></a>ExpectedMaxVerticalOrientationInDegrees
 
-A [ExpectedMaxVerticalOrientationInDegrees](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) tulajdonság azt jelzi, hogy az objektum-példány és a gravitáció iránya között a várt maximális szög fokban van megadva.
+A [ExpectedMaxVerticalOrientationInDegrees](/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) tulajdonság azt jelzi, hogy az objektum-példány és a gravitáció iránya között a várt maximális szög fokban van megadva.
 
 Ez a paraméter egy újabb korlátozást biztosít egy becsült érték felfelé irányuló irányához. Ha például egy objektum jobbra van, ez a paraméter lehet 0. Az objektum-Horgonyoknak nem kell a modelltől eltérő objektumokat felismerniük. Ha a modell jobbra van, akkor nem fogja felderíteni a leválasztott példányt. A rendszer egy új modellt használ a párhuzamos elrendezéshez. Ugyanez a szabály vonatkozik az artikulációra.
 
 #### <a name="maxscalechange"></a>MaxScaleChange
 
-A [MaxScaleChange](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) tulajdonság azt jelzi, hogy a térbeli leképezésre vonatkozó maximális objektum-méretezési változás (0 ~ 1). A rendszer a becsült skálát alkalmazza az átalakított objektumok csúcspontokra a forrás és a tengely igazításával. A becsült skála nem lehet a CAD-modell és annak fizikai ábrázolása közötti tényleges skála, de néhány olyan érték, amely lehetővé teszi, hogy az alkalmazás egy objektummodell számára a térbeli leképezéshez a fizikai objektumon legyen megközelítve.
+A [MaxScaleChange](/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) tulajdonság azt jelzi, hogy a térbeli leképezésre vonatkozó maximális objektum-méretezési változás (0 ~ 1). A rendszer a becsült skálát alkalmazza az átalakított objektumok csúcspontokra a forrás és a tengely igazításával. A becsült skála nem lehet a CAD-modell és annak fizikai ábrázolása közötti tényleges skála, de néhány olyan érték, amely lehetővé teszi, hogy az alkalmazás egy objektummodell számára a térbeli leképezéshez a fizikai objektumon legyen megközelítve.
 
 #### <a name="searchareas"></a>SearchAreas
 
-A [SearchAreas](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) tulajdonság térbeli korlátok tömbjét jelöli, ahol az objektum (ok) található.
+A [SearchAreas](/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) tulajdonság térbeli korlátok tömbjét jelöli, ahol az objektum (ok) található.
 
 A **megfigyelő** megkeresi az objektumokat az Unió területén a lekérdezésben megadott összes keresési terület tekintetében. Ebben a kiadásban a késés csökkentése érdekében legfeljebb egy olyan objektumot adunk vissza, amely a legmagasabb megbízhatósággal rendelkezik.
 
 ### <a name="objectinstance"></a>Objectinstance példányt használ
 
-A [objectinstance példányt használ](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectinstance) olyan feltételezett pozíciót jelöl, amelyben egy adott modell egy példánya a HoloLens koordináta-rendszeren belül lehet. Minden példányhoz tartozik egy `SurfaceCoverage` tulajdonság, amely jelzi, hogy mennyire jó a becsült érték.
+A [objectinstance példányt használ](/dotnet/api/microsoft.azure.objectanchors.objectinstance) olyan feltételezett pozíciót jelöl, amelyben egy adott modell egy példánya a HoloLens koordináta-rendszeren belül lehet. Minden példányhoz tartozik egy `SurfaceCoverage` tulajdonság, amely jelzi, hogy mennyire jó a becsült érték.
 
 A példányok hívási `ObjectObserver.DetectAsync` metódussal jönnek létre, majd a háttérben automatikusan frissülnek, amikor életben van. Egy alkalmazás megfigyelheti az állapot változásának eseményét egy adott példányon, vagy megváltoztathatja a nyomkövetési módot a frissítés szüneteltetéséhez/folytatásához. A rendszer automatikusan eltávolítja egy példányt a **megfigyelőből** a követés elvesztésekor.
 
 ### <a name="objectobserver"></a>ObjectObserver
 
-Az [ObjectObserver](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectobserver) betölti az objektumok modelljeit, észleli a példányaikat, és a 6 – DOF jelent jelentéseket az egyes példányok HoloLens koordináta-rendszeren.
+Az [ObjectObserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver) betölti az objektumok modelljeit, észleli a példányaikat, és a 6 – DOF jelent jelentéseket az egyes példányok HoloLens koordináta-rendszeren.
 
 Bár minden objektummodell vagy példány egy **megfigyelőből** jön létre, az élettartamuk független. Egy alkalmazás megtekintheti a megfigyelőt, és folytathatja az objektummodell vagy a példány használatát.
 
 ### <a name="objectdiagnosticssession"></a>ObjectDiagnosticsSession
 
-A [ObjectDiagnosticSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) rögzíti a diagnosztikát, és adatokat ír az archívumba.
+A [ObjectDiagnosticSession](/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) rögzíti a diagnosztikát, és adatokat ír az archívumba.
 
 A diagnosztikai Archívum magában foglalja a jelenet pont felhőjét, a megfigyelő állapotát és a modellekkel kapcsolatos információkat. Ezek az információk hasznosak lehetnek a lehetséges futásidejű problémák azonosításához. További információt a [Gyakori kérdések](../faq.md)című témakörben talál.
 

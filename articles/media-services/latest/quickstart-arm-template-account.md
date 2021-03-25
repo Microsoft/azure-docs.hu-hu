@@ -2,7 +2,7 @@
 title: Media Services fiók ARM-sablon: Azure Media Services Leírás: Ez a cikk bemutatja, hogyan hozhat létre Media Services-fiókot ARM-sablon használatával.
 szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. Service: Media-Services MS. munkaterhelés: MS. topic: gyors üzembe helyezés MS. Date: 11/24/2020 MS. Author: inhenkel MS. Custom: subject-armqs
+MS. Service: Media-Services MS. munkaterhelés: MS. topic: gyors üzembe helyezés MS. Date: 03/23/2021 MS. Author: inhenkel MS. Custom: subject-armqs
 
 ---
 
@@ -18,10 +18,9 @@ Ez a cikk bemutatja, hogyan használható egy Azure Resource Manager sablon (ARM
 
 Az ARM-sablonokkal rendelkező olvasók továbbra is használhatják az [üzembe helyezés szakaszt](#deploy-the-template).
 
-<!-- this section will be added when the template is merged. If your environment meets the prerequisites and you're familiar with using ARM templates, select the **Deploy to Azure** button. The template will open in the Azure portal.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
-[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/<template's URI>)
--->
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-media-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,81 +30,16 @@ Ha korábban még soha nem telepített ARM-sablont, hasznos lehet az [Azure ARM-
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-<!-- this will be added when the template is merged. The template used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/101-media-services-account-create/).
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-media-services-create/) közül származik.
 
-The syntax for the JSON code fence is:
+A JSON-kód kerítésének szintaxisa a következő:
 
-:::code language="json" source="~/quickstart-templates/101-media-services-account-create/azuredeploy.json"::: -->
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mediaServiceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Media Services account. A Media Services account name is unique in a given region, all lowercase letters or numbers with no spaces."
-      }
-    }
-  },
-  "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "name": "[parameters('mediaServiceName')]",
-      "type": "Microsoft.Media/mediaServices",
-      "apiVersion": "2018-07-01",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
-      ],
-      "properties": {
-        "storageAccounts": [
-          {
-            "id": "[resourceId('microsoft.storage/storageaccounts/', variables('storageName'))]",
-            "type": "Primary"
-          }
-        ]
-      }
-    },
-    {
-      "name": "[variables('storageName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
-      },
-      "kind": "StorageV2",
-      "apiVersion": "2017-10-01",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "scale": null,
-      "properties": {
-          "encryption": {
-              "services": {
-                  "file": {
-                      "enabled": true
-                  },
-                  "blob": {
-                      "enabled": true
-                  }
-              },
-              "keySource": "Microsoft.Storage"
-          },
-          "accessTier": "Hot"
-      }
-    }
-  ]
-}
-
-```
+:::code language="json" source="~/quickstart-templates/101-media-services-create/azuredeploy.json":::
 
 Három Azure-erőforrástípus van definiálva a sablonban:
 
-- [Microsoft. Media/Mediaservices](/azure/templates/microsoft.media/mediaservices): Media Services fiók létrehozása
 - [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Storage-fiók létrehozása
+- [Microsoft. Media/Mediaservices](/azure/templates/microsoft.media/mediaservices): Media Services fiók létrehozása
 
 ## <a name="set-the-account"></a>A fiók beállítása
 

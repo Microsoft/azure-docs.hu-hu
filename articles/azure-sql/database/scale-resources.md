@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 453d7e118b946d60eb3d84c6a66abdbea7db2410
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499220"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035642"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Adatbázis-erőforrások dinamikus méretezése minimális állásidővel
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,6 +60,9 @@ Az Azure SQL felügyelt példánya lehetővé teszi a méretezést is:
 - Az [SQL felügyelt példánya](../managed-instance/sql-managed-instance-paas-overview.md) [virtuális mag](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) módot használ, és lehetővé teszi a maximális CPU-magok és a példányhoz lefoglalt maximális tárterület meghatározását. A felügyelt példányon belüli összes adatbázis osztozik a példányhoz lefoglalt erőforrásokon.
 
 A vertikális fel-vagy leskálázási műveletek kezdeményezése bármely aroma esetében újraindítja az adatbázismotor folyamatát, és szükség esetén áthelyezi egy másik virtuális gépre. Ha az adatbázismotor folyamatát egy új virtuális gépre helyezi át, az **online folyamat** , ahol továbbra is használhatja a meglévő Azure SQL Database szolgáltatást, miközben a folyamat folyamatban van. Ha a célként megadott adatbázis-motor teljesen inicializálva van, és készen áll a lekérdezések feldolgozására, a rendszer a [forrásról a célként megadott adatbázis-motorra vált](single-database-scale.md#impact).
+
+> [!NOTE]
+> A felügyelt példány skálázása nem ajánlott, ha egy hosszan futó tranzakció, például az adatimportálás, az adatfeldolgozási feladatok, az index-Újraépítés stb. fut, vagy ha a példányon aktív a kapcsolódás. Annak megakadályozása érdekében, hogy a skálázás a szokásosnál hosszabb időt vesz igénybe, érdemes a példányt az összes hosszan futó művelet befejezésekor méretezni.
 
 > [!NOTE]
 > A vertikális Felskálázási/skálázási folyamat befejeződése után rövid kapcsolódási szünet várható. Ha implementálta az [újrapróbálkozási logikát a normál átmeneti hibákhoz](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors), akkor nem fogja észrevenni a feladatátvételt.

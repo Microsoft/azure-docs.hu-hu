@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36dfc8c906c52c6822e583db3a08c891306f7e78
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108398"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047932"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Az Azure API Management használata az Azure Kubernetes Service-ben üzembe helyezett Service-szolgáltatásokkal
 
@@ -95,7 +95,7 @@ Az API-k eléréséhez szükséges előfizetési kulcs beszerzéséhez előfizet
 
 ### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>3. lehetőség: a APIM üzembe helyezése a fürt VNet belül
 
-Bizonyos esetekben a jogszabályi korlátozásokkal vagy szigorú biztonsági követelményekkel rendelkező ügyfelek az 1. és a 2. lehetőséget a nyilvánosan elérhető végpontok miatt nem életképes megoldásoknak tekinthetik meg. Másokban előfordulhat, hogy az AK-fürt és a-szolgáltatásokat használó alkalmazások ugyanabban a VNet belül vannak, ezért nincs ok arra, hogy nyilvánosan elérhetővé tegye a fürtöt, mivel az összes API-forgalom a VNet belül marad. Ezekben a forgatókönyvekben a API Management üzembe helyezését a fürt VNet végezheti el. A [prémium szintű API Management](https://aka.ms/apimpricing) támogatja a VNet-telepítést. 
+Bizonyos esetekben a jogszabályi korlátozásokkal vagy szigorú biztonsági követelményekkel rendelkező ügyfelek az 1. és a 2. lehetőséget a nyilvánosan elérhető végpontok miatt nem életképes megoldásoknak tekinthetik meg. Másokban előfordulhat, hogy az AK-fürt és a-szolgáltatásokat használó alkalmazások ugyanabban a VNet belül vannak, ezért nincs ok arra, hogy nyilvánosan elérhetővé tegye a fürtöt, mivel az összes API-forgalom a VNet belül marad. Ezekben a forgatókönyvekben a API Management üzembe helyezését a fürt VNet végezheti el. [API Management fejlesztői és prémium szintű](https://aka.ms/apimpricing) csomagok támogatják a VNet-telepítést. 
 
 A [API Management kétféleképpen helyezhetők üzembe VNet](./api-management-using-with-vnet.md) – külső és belső. 
 

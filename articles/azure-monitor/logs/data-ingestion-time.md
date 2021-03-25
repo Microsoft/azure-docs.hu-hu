@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 56ef6563982c315d34cfeb87070b9ebfa3d27a30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49122421f04ee6eef8828ca305cfb235aceee3fb
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500427"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035693"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplóadatok feldolgozási ideje az Azure Monitorban
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
@@ -81,8 +81,8 @@ A betöltési idő különböző körülmények között eltérő lehet. A napl�
 | Lépés | Tulajdonság vagy függvény | Megjegyzések |
 |:---|:---|:---|
 | Rekord létrehozva az adatforrásban | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived-val megegyező időpontra lesz beállítva. |
-| Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
-| A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
+| Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](./log-standard-columns.md#_timereceived) | Ez a mező nem a tömeges feldolgozásra van optimalizálva, és nem használható nagy adatkészletek szűrésére. |
+| A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | A ingestion_time () használata ajánlott, ha csak olyan rekordokat kell szűrnie, amelyek egy adott időablakban vannak betöltve. Ilyen esetben javasolt a TimeGenerated-szűrő nagyobb tartománnyal való hozzáadása is. |
 
 ### <a name="ingestion-latency-delays"></a>Betöltési késés késése
 Egy adott rekord késését mérhetővé teheti, ha összehasonlítja a [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) függvény eredményét a _TimeGenerated_ tulajdonsággal. Ezeket az adatmennyiségeket különböző összesítésekkel lehet használni, hogy megtudja, hogyan viselkedik a betöltési késés. Vizsgálja meg a betöltési idő néhány százalékos arányát, hogy nagy mennyiségű adatot kapjon. 
