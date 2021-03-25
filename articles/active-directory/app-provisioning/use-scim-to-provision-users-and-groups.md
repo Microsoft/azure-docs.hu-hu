@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652096"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022942"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
 
@@ -198,6 +198,7 @@ Az [SCIM 2,0 protokoll specifikációja](http://www.simplecloud.info/#Specificat
 |A Filter [excludedAttributes = tag](#get-group) a csoport erőforrásának lekérdezésekor|szakasz 3.4.2.5|
 |Fogadjon el egyetlen tulajdonosi jogkivonatot a hitelesítéshez és a HRE engedélyezéséhez az alkalmazáshoz.||
 |Felhasználó törlése `active=false` és a felhasználó visszaállítása `active=true`|A felhasználói objektumot egy kérelemben kell visszaadnia, függetlenül attól, hogy a felhasználó aktív-e. Az egyetlen alkalommal, amikor a felhasználót nem lehet visszaadni, ha az alkalmazásból nehezen törlődik.|
+|A/schemas-végpont támogatása|[7. szakasz](https://tools.ietf.org/html/rfc7643#page-30) A rendszer a séma-felderítési végpontot használja a további attribútumok felderítésére.|
 
 Az általános irányelvek használatával SCIM-végpontok implementálása biztosítja a HRE való kompatibilitást:
 
@@ -210,7 +211,12 @@ Az általános irányelvek használatával SCIM-végpontok implementálása bizt
 * A Microsoft HRE egy véletlenszerűen kiválasztott felhasználó és csoport beolvasását kéri a végpont és a hitelesítő adatok érvényességének biztosításához. Emellett a [Azure Portal](https://portal.azure.com) **tesztelési kapcsolati** folyamatának részeként is megtörténik. 
 * Azt az attribútumot, amely alapján az erőforrásokat le lehet kérdezni, a [Azure Portalban](https://portal.azure.com)található alkalmazásban egyező attribútumként kell beállítani, lásd: a [felhasználó kiépítési attribútum-hozzárendelésének testreszabása](customize-application-attributes.md).
 * HTTPS-támogatás a SCIM-végponton
-
+* [Séma felderítése](#schema-discovery)
+  * A séma-felderítés jelenleg nem támogatott az egyéni alkalmazáson, de bizonyos katalógus-alkalmazásokban van használatban. A későbbiekben a rendszer a séma felderítését fogja használni elsődleges módszerként, hogy további attribútumokat adjon hozzá egy összekötőhöz. 
+  * Ha nincs megadva érték, ne küldjön null értékeket.
+  * A tulajdonság értékének a Camel tokozásának kell lennie (pl. readWrite).
+  * Egy lista választ kell visszaadnia.
+  
 ### <a name="user-provisioning-and-deprovisioning"></a>Felhasználók kiépítése és megszüntetése
 
 A következő ábra azokat az üzeneteket mutatja be, amelyeket a HRE küld egy SCIM szolgáltatásnak az alkalmazás identitás-tárolójában lévő felhasználó életciklusának kezeléséhez.  
@@ -252,6 +258,9 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
   - [Frissítési csoport [Tagok hozzáadása]](#update-group-add-members) ([kérelem](#request-11)  /  [válasza](#response-11))
   - [Csoport frissítése [tagok eltávolítása]](#update-group-remove-members) ([kérelem](#request-12)  /  [válasza](#response-12))
   - [Csoport törlése](#delete-group) ([Válasz kérése](#request-13)  /  [](#response-13))
+
+[Séma felderítése](#schema-discovery)
+  - [Séma felderítése](#discover-schema) (válasz[kérése](#request-15)  /  [](#response-15))
 
 ### <a name="user-operations"></a>Felhasználói műveletek
 
@@ -749,6 +758,105 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 ##### <a name="response"></a><a name="response-13"></a>Reagálás
 
 *HTTP/1.1 204 nincs tartalom*
+
+### <a name="schema-discovery"></a>Séma felderítése
+#### <a name="discover-schema"></a>Séma felderítése
+
+##### <a name="request"></a><a name="request-15"></a>Kérés
+*/Schemas beolvasása* 
+##### <a name="response"></a><a name="response-15"></a>Reagálás
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "itemsPerPage": 50,
+    "startIndex": 1,
+    "totalResults": 3,
+    "Resources": [
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:User",
+    "name" : "User",
+    "description" : "User Account",
+    "attributes" : [
+      {
+        "name" : "userName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Unique identifier for the User, typically
+used by the user to directly authenticate to the service provider.
+Each User MUST include a non-empty userName value.  This identifier
+MUST be unique across the service provider's entire set of Users.
+REQUIRED.",
+        "required" : true,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "server"
+      },                
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "name" : "Group",
+    "description" : "Group",
+    "attributes" : [
+      {
+        "name" : "displayName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "A human-readable name for the Group.
+REQUIRED.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+    "name" : "EnterpriseUser",
+    "description" : "Enterprise User",
+    "attributes" : [
+      {
+        "name" : "employeeNumber",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Numeric or alphanumeric identifier assigned
+to a person, typically based on order of hire or association with an
+organization.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+"/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+    }
+  }
+]
+}
+```
 
 ### <a name="security-requirements"></a>Biztonsági követelmények
 **TLS protokoll verziói**

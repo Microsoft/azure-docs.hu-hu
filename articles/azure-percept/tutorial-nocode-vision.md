@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e661dbbe31e7624cba0a3d5421b81de16d0a5363
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608197"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023129"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Kód nélküli jövőkép megoldás létrehozása az Azure Percept Studióban
 
@@ -106,7 +106,7 @@ A modell betanítása előtt adjon hozzá címkéket a képekhez.
 
 1. A **Custom Vision** lap bal **oldalán kattintson a** **címkék** elemre az előző lépésben összegyűjtött rendszerképek megtekintéséhez. Válasszon ki egy vagy több címkézetlen lemezképet.
 
-1. A **rendszerkép részletei** ablakban kattintson a képre a címkézés megkezdéséhez. Ha a projekt típusaként az objektum észlelése lehetőséget választotta, akkor a címkével ellátni kívánt objektumok köré is meg kell rajzolni egy [határoló mezőt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#upload-and-tag-images) . Szükség szerint módosítsa a határoló mezőt. Írja be az Object címkét, és kattintson a **+** címke alkalmazásához. Ha például olyan víziós megoldást hozott létre, amely értesíti Önt, ha egy áruházi polc újrakészletezésre szorul, adja hozzá az "üres polc" címkét az üres polcok képeihez, és adja hozzá a "teljes polc" címkét a teljes értékű polcokhoz tartozó képekhez. Ismételje meg az összes címkézetlen lemezképet.
+1. A **rendszerkép részletei** ablakban kattintson a képre a címkézés megkezdéséhez. Ha a projekt típusaként az objektum észlelése lehetőséget választotta, akkor a címkével ellátni kívánt objektumok köré is meg kell rajzolni egy [határoló mezőt](../cognitive-services/custom-vision-service/get-started-build-detector.md#upload-and-tag-images) . Szükség szerint módosítsa a határoló mezőt. Írja be az Object címkét, és kattintson a **+** címke alkalmazásához. Ha például olyan víziós megoldást hozott létre, amely értesíti Önt, ha egy áruházi polc újrakészletezésre szorul, adja hozzá az "üres polc" címkét az üres polcok képeihez, és adja hozzá a "teljes polc" címkét a teljes értékű polcokhoz tartozó képekhez. Ismételje meg az összes címkézetlen lemezképet.
 
     :::image type="content" source="./media/tutorial-nocode-vision/image-tagging.png" alt-text="Képcímkéző képernyő a Custom Visionban.":::
 
@@ -116,7 +116,7 @@ A modell betanítása előtt adjon hozzá címkéket a képekhez.
 
     :::image type="content" source="./media/tutorial-nocode-vision/train-model.png" alt-text="Betanítási Képválasztás a betanítás gomb kijelölve.":::
 
-1. A képzés befejezését követően a képernyő megjeleníti a modell teljesítményét. Az eredmények kiértékelésével kapcsolatos további információkért tekintse meg a [modell értékelési dokumentációját](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#evaluate-the-detector). A képzés után szükség esetén további rendszerképeken is [tesztelheti a modelljét](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model) . Minden alkalommal, amikor betanítja a modellt, új iterációként lesz mentve. A modell teljesítményének növelésével kapcsolatos további információkért a [Custom Vision dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) talál további információt.
+1. A képzés befejezését követően a képernyő megjeleníti a modell teljesítményét. Az eredmények kiértékelésével kapcsolatos további információkért tekintse meg a [modell értékelési dokumentációját](../cognitive-services/custom-vision-service/get-started-build-detector.md#evaluate-the-detector). A képzés után szükség esetén további rendszerképeken is [tesztelheti a modelljét](../cognitive-services/custom-vision-service/test-your-model.md) . Minden alkalommal, amikor betanítja a modellt, új iterációként lesz mentve. A modell teljesítményének növelésével kapcsolatos további információkért a [Custom Vision dokumentációjában](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) talál további információt.
 
     :::image type="content" source="./media/tutorial-nocode-vision/iteration.png" alt-text="Modellek képzésének eredményei.":::
 
@@ -143,7 +143,7 @@ Az ablak bezárása után bármikor visszatérhet és szerkesztheti a víziós p
 
 ## <a name="improve-your-model-by-setting-up-retraining"></a>Fejlessze modelljét az átképzés beállításával
 
-Miután betanítja a modellt, és üzembe helyezte az eszközön, javíthatja a modell teljesítményét úgy, hogy átképzési paramétereket állít be a további betanítási adatok rögzítéséhez. Ez a funkció a betanított modell teljesítményének javítására szolgál azáltal, hogy lehetővé teszi a lemezképek valószínűségi tartományon alapuló rögzítését. Beállíthatja például, hogy az eszköz csak akkor rögzítsen betanítási képeket, ha a valószínűség alacsony. Itt talál [további útmutatást](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) további képek hozzáadásához és a betanítási információk kiegyensúlyozásához.
+Miután betanítja a modellt, és üzembe helyezte az eszközön, javíthatja a modell teljesítményét úgy, hogy átképzési paramétereket állít be a további betanítási adatok rögzítéséhez. Ez a funkció a betanított modell teljesítményének javítására szolgál azáltal, hogy lehetővé teszi a lemezképek valószínűségi tartományon alapuló rögzítését. Beállíthatja például, hogy az eszköz csak akkor rögzítsen betanítási képeket, ha a valószínűség alacsony. Itt talál [további útmutatást](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) további képek hozzáadásához és a betanítási információk kiegyensúlyozásához.
 
 1. Az átképzés beállításához lépjen vissza a **projektbe**, majd a **projekt összegzése** elemre.
 1. A **rendszerkép rögzítése** lapon válassza az **automatikus rendszerkép-rögzítés** lehetőséget, és **állítsa be az átképzést**.

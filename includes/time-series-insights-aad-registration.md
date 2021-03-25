@@ -9,14 +9,14 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22411e5a80f555a3ead05d39466a7a175923d9bc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724173"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104003"
 ---
-* Miután kiválasztotta a megfelelő platformot a [platform beállításainak konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) szakasz 4. lépésében, konfigurálja az **átirányítási URI-ket** és a **hozzáférési jogkivonatokat** az oldalsó panelen a felhasználói felület jobb oldalán.
+* Miután kiválasztotta a megfelelő platformot a [platform beállításainak konfigurálása](../articles/active-directory/develop/quickstart-register-app.md#configure-platform-settings) szakasz 4. lépésében, konfigurálja az **átirányítási URI-ket** és a **hozzáférési jogkivonatokat** az oldalsó panelen a felhasználói felület jobb oldalán.
 
     * Az **átirányítási URI-azonosítóknak** meg kell egyezniük a hitelesítési kérelem által megadott címtől:
 
@@ -41,4 +41,4 @@ ms.locfileid: "101724173"
 
     [![Adja meg az alkalmazás által igényelt API-engedély típusát](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
 
-* [Adja meg a hitelesítő adatokat](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials) , ha az alkalmazás saját maga fogja hívni a környezet API-jait. A hitelesítő adatok lehetővé teszik az alkalmazás számára, hogy önmagát hitelesítse magát, ami nem igényel interakciót a felhasználótól futásidőben.
+* [Adja meg a hitelesítő adatokat](../articles/active-directory/develop/quickstart-register-app.md#add-credentials) , ha az alkalmazás saját maga fogja hívni a környezet API-jait. A hitelesítő adatok lehetővé teszik az alkalmazás számára, hogy önmagát hitelesítse magát, ami nem igényel interakciót a felhasználótól futásidőben.

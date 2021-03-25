@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c52e141ed2d93f89c9d7c1426a9d7cbbbd47f5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684593"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023928"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -350,7 +350,7 @@ Bizonyos tulajdonságok megváltoztathatók, és az aktuális értéktől függ�
 
 - **singlePlacementGroup** – ha a singlePlacementGroup értéke TRUE (igaz), akkor előfordulhat, hogy hamis értékre módosul. Ha azonban a singlePlacementGroup hamis, akkor előfordulhat, hogy **nem** módosítható igaz értékre.
 - **alhálózat** – a méretezési csoport alhálózata akkor módosítható, ha az eredeti alhálózat és az új alhálózat ugyanabban a virtuális hálózatban van.
-- **imageReferenceSku** – a képhivatkozási SKU a támogatott Linux- [disztribúciók](../virtual-machines/linux/endorsed-distros.md), a Windows Server-/ügyfél-lemezképek és a [megtervezési információk](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)nélkül is frissíthető. 
+- **imageReferenceSku** – a képhivatkozási SKU a támogatott Linux- [disztribúciók](../virtual-machines/linux/endorsed-distros.md), a Windows Server-/ügyfél-lemezképek és a [megtervezési információk](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information)nélkül is frissíthető. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>A módosítás felszabadítását igénylő tulajdonságok
 Néhány tulajdonság csak akkor módosítható bizonyos értékekre, ha a méretezési csoportba tartozó virtuális gépek fel vannak szabadítva. Ezek a tulajdonságok a következők:

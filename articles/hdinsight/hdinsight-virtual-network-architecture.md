@@ -4,12 +4,12 @@ description: Ismerje meg a HDInsight-fürt Azure-Virtual Network való létrehoz
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931161"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871673"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight virtuális hálózati architektúra
 
@@ -19,7 +19,7 @@ Ez a cikk ismerteti azokat az erőforrásokat, amelyek akkor jelennek meg, amiko
 
 Az Azure HDInsight-fürtök különböző típusú virtuális gépekkel vagy csomópontokkal rendelkeznek. Minden csomópont-típus a rendszer működésében játszik szerepet. A következő táblázat összefoglalja ezeket a csomópont-típusokat és azok szerepköreit a fürtben.
 
-| Típus | Description |
+| Típus | Leírás |
 | --- | --- |
 | Átjárócsomópont |  Az Apache Storm kivételével az összes fürtjénél a fő csomópontok futtatják az elosztott alkalmazás végrehajtását kezelő folyamatokat. A fő csomópont egyben a csomópont is, amelyből SSH-ba helyezheti és végrehajthatja azokat az alkalmazásokat, amelyek a fürt erőforrásai között futnak. A fő csomópontok száma a fürt összes típusa esetében kettőnél van rögzítve. |
 | ZooKeeper csomópont | A Zookeeper az adatfeldolgozást végző csomópontok között koordinálja a feladatokat. Emellett a fő csomópontot is vezeti, és nyomon követi, hogy melyik főcsomóponton fut egy adott főkiszolgáló. A ZooKeeper-csomópontok száma három helyen van rögzítve. |
@@ -43,7 +43,7 @@ Ha csak az állomásnévre van szüksége, csak a teljes tartománynév első r�
 
 A következő ábra a HDInsight-csomópontok és hálózati erőforrások elhelyezését mutatja be az Azure-ban.
 
-![Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png" alt-text="Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája" border="false":::
 
 Az Azure-Virtual Network alapértelmezett erőforrásai tartalmazzák az előző táblázatban említett fürtcsomópontok típusait. A virtuális hálózat és a külső hálózatok közötti kommunikációt támogató hálózati eszközök.
 

@@ -1,15 +1,15 @@
 ---
 title: Tároló rendszerképének tárolója
 description: A tároló rendszerképeinek és egyéb összetevőinek Azure Container Registry, például a biztonsággal, a redundanciával és a kapacitással való tárolásának részletei.
-ms.topic: article
-ms.date: 03/03/2021
+ms.topic: conceptual
+ms.date: 03/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a9c8ec877ddb17603e82b763223278a2e5e36714
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183267"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047745"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Tároló képtárolója Azure Container Registry
 
@@ -21,11 +21,9 @@ A beállításjegyzékben található összes tároló-lemezkép és egyéb öss
 
 ## <a name="regional-storage"></a>Regionális tárterület
 
-Azure Container Registry tárolja az adatait abban a régióban, ahol a beállításjegyzék létre lett hozva, hogy az ügyfelek megfeleljenek az adattárolási és megfelelőségi követelményeknek.
+Azure Container Registry tárolja az adatait abban a régióban, ahol a beállításjegyzék létre lett hozva, hogy az ügyfelek megfeleljenek az adattárolási és megfelelőségi követelményeknek. Az Azure a Dél-és Délkelet-ázsiai régió kivételével minden régióban tárolhatja a beállításjegyzék-adatait egy párosított régióban is ugyanazon a földrajzi helyen. A Dél-és Délkelet-ázsiai régiókban a beállításjegyzék adatai mindig a régióra korlátozódnak, hogy megfeleljenek az adott régiókban tárolt adattárolási követelményeknek.
 
-Az adatközpont-kimaradások elleni védelem érdekében egyes régiókban a [zónák redundancia](zone-redundancy.md)áll fenn, ahol az adatok replikálása egy adott régió több adatközpontjában történik.
-
-Azok az ügyfelek, akik több régióban szeretnék tárolni az adataikat a különböző földrajzi területeken való jobb teljesítmény érdekében, vagy ha regionális kimaradás esetén rugalmasságot kívánnak biztosítani, a [földrajzi replikálást](container-registry-geo-replication.md)engedélyezni kell.
+Regionális leállás esetén előfordulhat, hogy a beállításjegyzék-adatvesztés elérhetetlenné válik, és nem lesz automatikusan helyreállítva. Azok az ügyfelek, akik több régióban szeretnék tárolni a regisztrációs adataikat, a különböző földrajzi területeken jobb teljesítményt és a regionális kimaradás esetén rugalmasságot kívánnak biztosítani, lehetővé kell tenniük a [földrajzi replikálást](container-registry-geo-replication.md).
 
 ## <a name="geo-replication"></a>Georeplikáció
 
@@ -33,7 +31,7 @@ Magas rendelkezésre állású garanciát igénylő forgatókönyvek esetén ér
 
 ## <a name="zone-redundancy"></a>Zónaredundancia
 
-Rugalmas és magas rendelkezésre állású Azure Container Registry létrehozásához opcionálisan engedélyezze a [zóna-redundanciát](zone-redundancy.md) az Azure-régiók kiválasztása területen. A prémium szintű szolgáltatási csomag egyik funkciója, a Zone redundancia az Azure [rendelkezésre állási zónákat](../availability-zones/az-overview.md) használja a beállításjegyzék legalább három különálló zónába való replikálásához az egyes engedélyezett régiókban. A földrajzi replikálás és a zóna redundancia kombinációja a beállításjegyzék megbízhatóságának és teljesítményének növelése érdekében. 
+A rugalmas és magas rendelkezésre állású Azure Container Registry létrehozásához szükség esetén engedélyezze a [zóna redundanciát](zone-redundancy.md) az Azure-régiók kiválasztása területen. A prémium szintű szolgáltatási csomag egyik funkciója, a Zone redundancia az Azure [rendelkezésre állási zónákat](../availability-zones/az-overview.md) használja a beállításjegyzék legalább három különálló zónába való replikálásához az egyes engedélyezett régiókban. A földrajzi replikálás és a zóna redundancia kombinációja a beállításjegyzék megbízhatóságának és teljesítményének növelése érdekében. 
 
 ## <a name="scalable-storage"></a>Skálázható tároló
 

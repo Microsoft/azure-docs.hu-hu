@@ -9,26 +9,27 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: ff7b2115b396bf42cdeffa9c58bffb1802e980d1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 14b2c1f98ae977548edb635b8a8a7a956b3f2dd7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721885"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023775"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Áttelepítési útmutató: MySQL – Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 Ez az útmutató a MySQL-adatbázis migrálása Azure SQL Database a MySQL-hez készült SQL Server Migration Assistant (SSMA for MySQL) használatával. 
 
-Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://datamigration.microsoft.com/). 
+Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha át szeretné telepíteni a MySQL-adatbázist Azure SQL Databasere, a következőkre lesz szüksége:
 
-- annak ellenőrzéséhez, hogy a forrás-környezet támogatott-e. Jelenleg a MySQL 5,6 és a 5,7 támogatott. 
-- [MySQL-SQL Server Migration Assistant](https://www.microsoft.com/download/confirmation.aspx?id=54257)
+- Annak ellenőrzéséhez, hogy a forrás-környezet támogatott-e. Jelenleg a MySQL 5,6 és a 5,7 támogatott. 
+- [MySQL-SQL Server Migration Assistant](https://www.microsoft.com/download/details.aspx?id=54257)
+- Kapcsolat és megfelelő engedélyek a forrás és a cél eléréséhez. 
 
 
 ## <a name="pre-migration"></a>A migrálás előtt 
@@ -37,32 +38,29 @@ Az előfeltételek teljesítése után készen áll a környezet topológiáján
 
 ### <a name="assess"></a>Kiértékelés 
 
-A [MySQL SQL Server Migration Assistant](https://www.microsoft.com/download/confirmation.aspx?id=54257)használatával áttekintheti az adatbázis-objektumokat és-adatforrásokat, és kiértékelheti az áttelepítéshez szükséges adatbázisokat.
+A MySQL-hez SQL Server Migration Assistant (SSMA) használatával tekintheti meg az adatbázis-objektumokat és az adatforrásokat, valamint értékelheti az adatbázisok áttelepítését. 
 
-Értékelés létrehozásához hajtsa végre az alábbi lépéseket.
+Értékelés létrehozásához hajtsa végre a következő lépéseket: 
 
-1. Nyissa meg SQL Server Migration Assistant a MySQL-hez. 
-1. Válassza a menüben a **fájl** lehetőséget, majd válassza az **új projekt** lehetőséget. Adja meg a projekt nevét, a projekt mentéséhez szükséges helyet. Az áttelepítési célként válassza a **Azure SQL Database** lehetőséget. 
+1. Nyissa meg [SQL Server Migration Assistant a MySQL-hez](https://www.microsoft.com/download/details.aspx?id=54257). 
+1. Válassza a menüben a **fájl** lehetőséget, majd válassza az **új projekt** lehetőséget. 
+1. Adja meg a projekt nevét, a projekt mentéséhez szükséges helyet. Az áttelepítési célként válassza a **Azure SQL Database** lehetőséget. Válassza **az OK gombot**:
 
    ![Új projekt](./media/mysql-to-sql-database-guide/new-project.png)
 
-1. Válassza a **Kapcsolódás a MySQL** -hez lehetőséget, és adja meg a kapcsolati adatokat a MySQL-kiszolgáló csatlakoztatásához. 
+1. Válassza a **Kapcsolódás a MySQL** -hez lehetőséget, és adja meg a kapcsolati adatokat a MySQL-kiszolgáló csatlakoztatásához:
 
    ![Kapcsolódás a MySQL-hez](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
 
-1. Kattintson a jobb gombbal a MySQL-sémára a **MySQL metadata Explorerben** , és válassza a **jelentés létrehozása** lehetőséget. Azt is megteheti, hogy a felső vonal navigációs sávján kiválasztja a **jelentés létrehozása** lehetőséget. 
+1. Kattintson a jobb gombbal a MySQL-sémára a **MySQL metadata Explorerben** , és válassza a **jelentés létrehozása** lehetőséget. Azt is megteheti, hogy a felső vonal navigációs sávján a **jelentés létrehozása** lehetőséget választja:
 
    ![Jelentés létrehozása](./media/mysql-to-sql-database-guide/create-report.png)
 
-1. Tekintse át az átalakítási statisztikák HTML-jelentését, valamint a hibákat és a figyelmeztetéseket. Elemezze, hogy megértse az átalakítási problémákat és a megoldásokat. 
-
-   Ez a jelentés a SSMA projects mappából is elérhető az első képernyőn kiválasztott módon. A fenti példában keresse meg a report.xml fájlt a következő helyről:
+1. A HTML-jelentés áttekintésével megismerheti a konverziós statisztikákat és az esetleges hibákat vagy figyelmeztetéseket. A jelentés az Excelben is megnyitható a MySQL-objektumok leltárának beszerzéséhez, valamint a séma átalakításának végrehajtásához szükséges erőfeszítésekhez. A jelentés alapértelmezett helye a SSMAProjects belüli jelentési mappában található.
  
-   `drive:\Users\<username>\Documents\SSMAProjects\MySQLMigration\report\report_2016_11_12T02_47_55\`
+   Például: `drive:\Users\<username>\Documents\SSMAProjects\MySQLMigration\report\report_2016_11_12T02_47_55\`
  
-   és nyissa meg az Excelben a MySQL-objektumok leltárának beszerzéséhez és a séma átalakításának végrehajtásához szükséges erőfeszítésekhez.
-
-    ![Átalakítási jelentés](./media/mysql-to-sql-database-guide/conversion-report.png)
+   ![Átalakítási jelentés](./media/mysql-to-sql-database-guide/conversion-report.png)
 
 ### <a name="validate-data-types"></a>Adattípusok ellenőrzése
 
@@ -70,7 +68,7 @@ A [MySQL SQL Server Migration Assistant](https://www.microsoft.com/download/conf
 
 1. Válassza az **eszközök** lehetőséget a menüből. 
 1. Válassza a **projekt beállításai** lehetőséget. 
-1. Válassza a **típus-hozzárendelések** lapot. 
+1. Válassza a **típus-hozzárendelések** fület:
 
    ![Típus-hozzárendelések](./media/mysql-to-sql-database-guide/type-mappings.png)
 
@@ -81,23 +79,29 @@ A [MySQL SQL Server Migration Assistant](https://www.microsoft.com/download/conf
 A séma konvertálásához kövesse az alábbi lépéseket: 
 
 1. Választható Dinamikus vagy alkalmi lekérdezések konvertálásához kattintson a jobb gombbal a csomópontra, majd válassza az **utasítás hozzáadása** parancsot. 
-1. A legfelső szintű navigációs sávon válassza a **kapcsolódás Azure SQL Database** lehetőséget, és adja meg a kapcsolat részleteit. Választhat, hogy meglévő adatbázishoz csatlakozik, vagy új nevet ad meg, ebben az esetben a rendszer létrehoz egy adatbázist a célkiszolgálón.
+1. Válassza **a kapcsolódás Azure SQL Database** lehetőséget. 
+    1. Adja meg a kapcsolat adatait az adatbázis Azure SQL Database-ben való összekapcsolásához.
+    1. Válassza ki a cél SQL Database a legördülő listából, vagy adjon meg egy új nevet, amely esetben a rendszer létrehoz egy adatbázist a célkiszolgálón. 
+    1. Adja meg a hitelesítés részleteit. 
+    1. Válassza a **kapcsolat** elemet:
 
    ![Kapcsolódás az SQL-hez](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
  
-1. Kattintson a jobb gombbal a sémára, és válassza a **séma konvertálása** lehetőséget. 
+1. Kattintson a jobb gombbal a sémára, és válassza a **séma konvertálása** lehetőséget. Azt is megteheti, hogy az adatbázis kiválasztása után kiválasztja a **séma konvertálása** a felső sorban navigációs sávon:
 
    ![Séma konvertálása](./media/mysql-to-sql-database-guide/convert-schema.png)
 
-1. Miután a séma elkészült, hasonlítsa össze az átalakított kódot az eredeti kóddal a lehetséges problémák azonosításához. 
+1. Az átalakítás befejezése után hasonlítsa össze és tekintse át az átalakított objektumokat az eredeti objektumokra a lehetséges problémák azonosításához és a javaslatok alapján történő kezeléséhez:
 
-   Konvertált objektumok összehasonlítása az eredeti objektumokkal: 
+   ![A konvertált objektumokat a forrással lehet összehasonlítani](./media/mysql-to-sql-database-guide/table-comparison.png)
 
-   ![ Objektum összehasonlítása és áttekintése ](./media/mysql-to-sql-database-guide/table-comparison.png)
+   Hasonlítsa össze a konvertált Transact-SQL-szöveget az eredeti kóddal, és tekintse át a következő javaslatokat:
 
-   Átalakított eljárások összehasonlítása az eredeti eljárásokkal: 
+   ![A konvertált lekérdezések összehasonlíthatók a forráskód használatával](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
-   ![Objektum kódjának összehasonlítása és áttekintése](./media/mysql-to-sql-database-guide/procedure-comparison.png)
+1. Válassza az **eredmények áttekintése** lehetőséget a kimenet ablaktáblán, és tekintse át a hibákat a hibák **listája** ablaktáblán. 
+1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. Ez lehetőséget nyújt arra, hogy a forrás-és a célként megadott sémákat offline állapotba hozza, és szervizelést végezzen, mielőtt közzé tudja tenni a sémát a SQL Database.
+
 
 
 ## <a name="migrate"></a>Migrate 
@@ -106,7 +110,7 @@ Miután elvégezte az adatbázisok értékelését és az eltérések kezelésé
 
 A séma közzétételéhez és az adatáttelepítés végrehajtásához kövesse az alábbi lépéseket: 
 
-1. Kattintson a jobb gombbal az adatbázisra a **Azure SQL Database metadata Explorerben** , majd válassza az **adatbázissal való szinkronizálás** lehetőséget. Ez a művelet közzéteszi a MySQL-sémát a Azure SQL Database.
+1. Tegye közzé a sémát: kattintson a jobb gombbal az adatbázisra a **Azure SQL Database metaadat-kezelőben** , majd válassza az **adatbázissal való szinkronizálás** lehetőséget. Ez a művelet közzéteszi a MySQL-sémát a Azure SQL Database:
 
    ![Szinkronizálás adatbázissal](./media/mysql-to-sql-database-guide/synchronize-database.png)
 
@@ -114,7 +118,7 @@ A séma közzétételéhez és az adatáttelepítés végrehajtásához kövesse
 
    ![Szinkronizálás adatbázis-ellenőrzéssel](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
 
-1. Kattintson a jobb gombbal a MySQL-sémára a **MySQL metadata Explorerben** , és válassza az **adatok áttelepíteni** lehetőséget. Azt is megteheti, hogy az **adatok áttelepíthetők** a legfelső szintű navigációs sávon. 
+1. Migrálja az adatokat: kattintson a jobb gombbal arra az adatbázisra vagy objektumra, amelyet át szeretne telepíteni a **MySQL metaadat-kezelőben**, majd válassza az **adatok áttelepíteni** lehetőséget. Választhatja azt is, hogy az **adatok áttelepíthetők** a legfelső szintű navigációs sávon. Ha egy teljes adatbázisra szeretné áttelepíteni az adatátvitelt, jelölje be az adatbázis neve melletti jelölőnégyzetet. Ha az adatok áttelepíthetők az egyes táblákból, bontsa ki az adatbázist, majd a táblák csomópontot, és jelölje be a tábla melletti jelölőnégyzetet. Ha az adatok kihagyása az egyes táblákból, törölje a jelet a jelölőnégyzetből:
 
    ![Adatok áttelepítése](./media/mysql-to-sql-database-guide/migrate-data.png)
 
@@ -122,7 +126,7 @@ A séma közzétételéhez és az adatáttelepítés végrehajtásához kövesse
 
    ![Adatáttelepítési jelentés](./media/mysql-to-sql-database-guide/data-migration-report.png)
 
-1.  Ellenőrizze az áttelepítést úgy, hogy az SQL Server Management Studio (SSMS) használatával áttekinti Azure SQL Database az adatai és sémáját.
+1. Kapcsolódjon a Azure SQL Databasehoz [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával, és ellenőrizze az áttelepítést az adatai és a séma áttekintésével:
 
     ![Érvényesítés a SSMA](./media/mysql-to-sql-database-guide/validate-in-ssms.png)
 
@@ -158,7 +162,7 @@ További információ ezekről a problémákról és az azok enyhítésére szol
 
 Ha további segítségre van az áttelepítési forgatókönyv végrehajtásával kapcsolatban, tekintse meg a következő forrásokat, amelyek a valós idejű migrációs projektek támogatásában lettek kifejlesztve.
 
-| Cím/hivatkozás     | Description    |
+| Cím/hivatkozás     | Leírás    |
 | ---------------------------------------------- | ---------------------------------------------------- |
 | [Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely nagy mértékben segíti a nagyméretű ingatlanok értékelését azáltal, hogy biztosítja és automatizálja a célzott platformra vonatkozó döntési folyamatokat. |
 

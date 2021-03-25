@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: dcb82e6cc50a2ff3291d5a900ec9367d69dcdde6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e99e8ff25d895ba2248ddd1ba2520e9f14871a7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224911"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022806"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow és a PKCE használatával 
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban egy olyan kódrészletet tölt le és futtat, amely
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
-Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folyamatával. A MSAL.js 1,0-et az implicit folyamattal használó gyors útmutató: gyors üzembe helyezés a [felhasználók között JavaScript egyoldalas alkalmazásokban](./quickstart-v2-javascript.md).
+Ez a rövid útmutató az engedélyezési kód MSAL.js v2 verzióját használja. A MSAL.js v1-et az implicit folyamattal együtt használó gyors útmutató: gyors üzembe helyezés a [felhasználók között JavaScript egyoldalas alkalmazásokban](./quickstart-v2-javascript.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
