@@ -3,12 +3,12 @@ title: A partner bevezetésének áttekintése (Azure Event Grid)
 description: Áttekintést nyújt arról, hogyan lehet Event Grid partnerként bevezetni.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 2a2e33395cabd368d5d5d870dd0461e4cbd37e0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d16337eada829a817110abf7842f763972d0718f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93081195"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109339"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>A partner bevezetésének áttekintése (Azure Event Grid)
 
@@ -152,7 +152,7 @@ A partneri névtér végpontján való közzététel után választ kap. A vála
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sablon](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-sablon sémája](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API-k](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [REST API-k](/azure/templates/microsoft.eventgrid/2020-04-01-preview/partnernamespaces)
   * [CLI-bővítmény](/cli/azure/ext/eventgrid/)
 
 ### <a name="sdks"></a>SDK-k

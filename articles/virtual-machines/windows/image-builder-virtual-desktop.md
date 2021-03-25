@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
-ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 69718b219d239ac13e5d932b05a7dd29619adaa3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103602018"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045586"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Windows rendszerű virtuális asztali rendszerkép létrehozása az Azure VM rendszerkép-készítő és a PowerShell használatával
 
@@ -22,11 +22,11 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Windows rendszerű virtuális aszt
 
 * A [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1)telepítése.
 * Windows rendszerű [virtuális asztali optimalizálási parancsfájl](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) futtatása a közösségi tárházból.
-* Telepítse a [Microsoft Teams](https://docs.microsoft.com/azure/virtual-desktop/teams-on-wvd)programot.
-* [Újraindítás](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-restart-customizer)
-* [Windows Update](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-update-customizer) futtatása
+* Telepítse a [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md)programot.
+* [Újraindítás](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
+* [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer) futtatása
 
-Bemutatjuk, hogyan automatizálhatja ezt az Azure virtuálisgép-rendszerkép-készítővel, és hogyan terjesztheti a rendszerképet egy [megosztott](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)képkatalógusba, ahol más régiókba replikálhat, szabályozhatja a méretezést, és megoszthatja a rendszerképet a szervezeten belül és kívül is.
+Bemutatjuk, hogyan automatizálhatja ezt az Azure virtuálisgép-rendszerkép-készítővel, és hogyan terjesztheti a rendszerképet egy [megosztott](../shared-image-galleries.md)képkatalógusba, ahol más régiókba replikálhat, szabályozhatja a méretezést, és megoszthatja a rendszerképet a szervezeten belül és kívül is.
 
 
 A rendszerkép-készítő konfiguráció üzembe helyezésének egyszerűbbé tétele érdekében a példa egy Azure Resource Manager sablont használ, amely a rendszerkép-készítő sablonnal van beágyazva. Ez számos más előnyt biztosít, például a változókat és a paraméterek bemeneteit. A paramétereket a parancssorból is átadhatja.
@@ -73,7 +73,7 @@ Ez a cikk egy másolási és beillesztési gyakorlat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Telepítenie kell a legújabb Azure PowerShell parancsmagokat, lásd [itt](https://docs.microsoft.com/powershell/azure/overview) a telepítés részleteit.
+Telepítenie kell a legújabb Azure PowerShell parancsmagokat, lásd [itt](/powershell/azure/overview) a telepítés részleteit.
 
 ```PowerShell
 # Register for Azure Image Builder Feature
@@ -279,7 +279,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
-Most, hogy elkészült a létrehozás, létrehozhat egy virtuális gépet a rendszerképből, a példákat [itt](https://docs.microsoft.com/powershell/module/az.compute/new-azvm#examples)tekintheti meg.
+Most, hogy elkészült a létrehozás, létrehozhat egy virtuális gépet a rendszerképből, a példákat [itt](/powershell/module/az.compute/new-azvm#examples)tekintheti meg.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

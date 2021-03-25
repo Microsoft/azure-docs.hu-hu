@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 668b987dd8b367c143a91dc5adb11848321a9d5a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96339608"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044413"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára az Azure Cognitive Search használatával
 
-A keresési típus egy gyakori módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen* keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A második felhasználói élmény *javaslatok*, vagy a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely a könyv részletes oldalára hivatkozik). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
+A keresési típus a gyakori módszer a lekérdezési hatékonyság javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen* keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A második felhasználói élmény *javaslatok*, vagy a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely a könyv részletes oldalára hivatkozik). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
 
 A tapasztalatok Azure Cognitive Search-ban való megvalósításához a következőkre lesz szüksége:
 
@@ -63,13 +63,16 @@ Kövesse az alábbi hivatkozásokat a REST és a .NET SDK-referenciák oldalaiho
 
 Az automatikus kiegészítésre és a javaslatokra adott válaszok a következő mintában számíthatnak: az [automatikus kiegészítés](/rest/api/searchservice/autocomplete#response) a feltételek listáját adja vissza, a [javaslatok](/rest/api/searchservice/suggestions#response) pedig egy dokumentum azonosítóját, így a dokumentum beolvasása érdekében (a [keresési dokumentum](/rest/api/searchservice/lookup-document) API-val lekérheti az adott dokumentumot egy részletes oldalhoz).
 
-A válaszokat a kérés paraméterei alakítják ki. Az automatikus kiegészítés beállításnál állítsa be a [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) annak megállapítására, hogy a szöveg befejezése egy vagy két kifejezésen történik-e. Javaslatok esetén a kiválasztott mező határozza meg a válasz tartalmát.
+A válaszok a kérelem paramétereinek alapján vannak formázva:
 
-A javaslatok esetében tovább pontosíthatja a választ, hogy elkerülje a duplikált elemeket, vagy hogy mi úgy tűnik, hogy a nem kapcsolódó eredmények. Az eredmények ellenőrzéséhez adjon meg több paramétert a kéréshez. A következő paraméterek mind az automatikus kiegészítésre, mind a javaslatokra érvényesek, de a javaslatok esetében talán több szükséges, különösen akkor, ha egy javaslat több mezőt is tartalmaz.
++ Az automatikus kiegészítés beállításnál állítsa be a [**autocompleteMode**](/rest/api/searchservice/autocomplete#query-parameters) annak megállapítására, hogy a szöveg befejezése egy vagy két kifejezésen történik-e. 
+
++ A javaslatok beállításnál állítsa be a [**$Select**](/rest/api/searchservice/suggestionse#query-parameters) értéket, amely egyedi vagy megkülönböztető értékeket (például neveket és leírást) tartalmazó mezőket ad vissza. Kerülje az ismétlődő értékeket (például kategóriát vagy várost) tartalmazó mezőket.
+
+A következő további paraméterek is érvényesek az automatikus kiegészítésre és a javaslatokra, de talán a javaslatoknál nagyobb szükség van rá, különösen akkor, ha egy javaslat több mezőt is tartalmaz.
 
 | Paraméter | Használat |
 |-----------|-------|
-| **$select** | Ha egy javaslat több **sourceFields** rendelkezik, akkor a **$Select** használatával kiválaszthatja, hogy melyik mező járul hozzá az értékekhez ( `$select=GameTitle` ). |
 | **searchFields** | A lekérdezés korlátozása adott mezőkre. |
 | **$filter** | Egyezési feltételek alkalmazása az eredményhalmaz () értékre `$filter=Category eq 'ActionAdventure'` . |
 | **$top** | Korlátozza az eredményeket egy adott számra ( `$top=5` ).|

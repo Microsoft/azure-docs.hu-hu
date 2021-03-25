@@ -144,6 +144,8 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: Figyelés
       items:
+        - name: Network Insights
+          href: expressroute-network-insights.md
         - name: 'Az ExpressRoute monitorozása, mérőszámai és riasztásai'
           href: expressroute-monitoring-metrics-alerts.md
         - name: Network Performance Monitor for ExpressRoute konfigurálása

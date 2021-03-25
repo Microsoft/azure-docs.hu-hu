@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 7d58a8239c728f70efe3584c2649e196dffd791f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1def60843df55a80e8b7d28d7eb61e262a560111
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501090"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044150"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Custom Vision projektek másolása és áthelyezése
 
@@ -31,7 +31,7 @@ Ha az alkalmazás vagy az üzlet egy Custom Vision-projekttől függ, javasoljuk
 - Két Azure Custom Vision-erőforrás. Ha nem rendelkezik ezekkel, lépjen a Azure Portalra, és [hozzon létre egy új Custom Vision-erőforrást](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - A Custom Vision erőforrások betanítási kulcsainak és végpontjának URL-címei. Ezek az értékek az erőforrás **Áttekintés** lapján találhatók a Azure Portal.
 - Létrehozott Custom Vision projekt. Ehhez útmutatást az [osztályozó](./getting-started-build-a-classifier.md) létrehozása című cikkben talál.
-* A [PowerShell 6.0](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)-s vagy újabb verziója, vagy egy hasonló parancssori segédprogram.
+* A [PowerShell 6.0](/powershell/scripting/install/installing-powershell-core-on-windows)-s vagy újabb verziója, vagy egy hasonló parancssori segédprogram.
 
 ## <a name="process-overview"></a>Folyamat áttekintése
 

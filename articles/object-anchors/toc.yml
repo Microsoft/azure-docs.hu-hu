@@ -31,15 +31,15 @@
 - name: Hivatkozások
   items:
     - name: Futásidejű SDK az Unity számára
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+      href: /dotnet/api/Microsoft.Azure.ObjectAnchors/
     - name: Futásidejű SDK a HoloLens C++/WinRT
-      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+      href: /cpp/api/object-anchors/winrt/
 - name: További források
   items:
     - name: Kibocsátási megjegyzések
       href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Azure Mixed Reality Resource Management REST API
-      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+      href: /rest/api/mixedreality/
     - name: GYIK
       href: faq.md
     - name: Stack Overflow

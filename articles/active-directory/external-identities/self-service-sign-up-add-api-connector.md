@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d5e25df68bbf793535b22602ad581db24a1426f
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 0c9bbdb831df9c51c6d80e6c441ac7bdd2778428
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105022908"
+ms.locfileid: "105044549"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -59,6 +59,8 @@ Tanúsítvány létrehozásához használhatja a [Azure Key Vault](../../key-vau
 - **Tárgy**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
 - **Tartalom típusa**: `PKCS #12`
 - A **Lifetime Acton típusa**: `Email all contacts at a given percentage lifetime` vagy`Email all contacts a given number of days before expiry`
+- **Kulcs típusa**: `RSA`
+- **Kulcs mérete**: `2048`
 - **Exportálható titkos kulcs**: `Yes` (a pfx-fájl exportálásának lehetővé tétele érdekében)
 
 Ezután [exportálhatja a tanúsítványt](../../key-vault/certificates/how-to-export-certificate.md). Használhatja a PowerShell [New-SelfSignedCertificate parancsmagját](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) is egy önaláírt tanúsítvány létrehozásához.

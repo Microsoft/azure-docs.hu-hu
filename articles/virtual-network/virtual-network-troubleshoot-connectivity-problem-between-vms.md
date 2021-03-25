@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e602f8bbdf6ad92acacac6688326a555a0420b6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219198"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042866"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure-beli virtuális gépek közötti kapcsolatok hibaelhárítása
 
@@ -49,7 +49,7 @@ A probléma elhárításához kövesse az alábbi lépéseket. Az egyes lépése
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>1. lépés: Győződjön meg arról, hogy a hálózati adapter helytelenül van-e konfigurálva
 
-Kövesse az [Azure-beli Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása](../virtual-machines/troubleshooting/reset-network-interface.md)című témakör lépéseit. 
+Kövesse az [Azure-beli Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása](/troubleshoot/azure/virtual-machines/reset-network-interface)című témakör lépéseit. 
 
 Ha a probléma a hálózati adapter (NIC) módosítása után következik be, kövesse az alábbi lépéseket:
 
@@ -62,8 +62,8 @@ További információ: [hálózati adapterek hozzáadása vagy eltávolítása a
 
 **Egyetlen hálózati adapteres virtuális gép** 
 
-- [Windows rendszerű virtuális gép újbóli üzembe helyezése](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
-- [Linux rendszerű virtuális gép újbóli üzembe helyezése](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
+- [Windows rendszerű virtuális gép újbóli üzembe helyezése](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows)
+- [Linux rendszerű virtuális gép újbóli üzembe helyezése](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-linux)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>2. lépés: Győződjön meg arról, hogy a NSG vagy a UDR blokkolja-e a hálózati forgalmat
 
@@ -107,7 +107,7 @@ Az Azure-ban a klasszikus üzemi modell használatával létrehozott összes vir
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>8. lépés: próbáljon meg csatlakozni egy virtuálisgép-hálózati megosztáshoz
 
-Ha nem tud kapcsolódni egy virtuálisgép-hálózati megosztáshoz, a problémát a virtuális gép nem elérhető hálózati adapterei okozzák. A nem elérhető hálózati adapterek törlését lásd: [a nem elérhető hálózati adapterek törlése](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
+Ha nem tud kapcsolódni egy virtuálisgép-hálózati megosztáshoz, a problémát a virtuális gép nem elérhető hálózati adapterei okozzák. A nem elérhető hálózati adapterek törlését lásd: [a nem elérhető hálózati adapterek törlése](/troubleshoot/azure/virtual-machines/reset-network-interface#delete-the-unavailable-nics)
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>9. lépés: Inter-Vnet kapcsolat ellenőrzése
 

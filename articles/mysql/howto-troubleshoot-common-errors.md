@@ -7,14 +7,16 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 546f29330b76548ea553cfb7e4e31ac35b19cb1c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 3bfcfee0f5dab2d978eb1856bdc915c270d43ed6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105037546"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109794"
 ---
-# <a name="common-errors"></a>Gyakori hibák
+# <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql-service"></a>Gyakori hibák történtek a Azure Database for MySQL szolgáltatásba való áttelepítés során vagy után
+
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 A Azure Database for MySQL egy teljes körűen felügyelt szolgáltatás, amelyet a MySQL közösségi verziója működtet. A felügyelt szolgáltatási környezetekben a MySQL-élmény eltérhet a saját környezetében futó MySQL-től. Ebből a cikkből megtudhatja, hogy a felhasználók milyen gyakori hibákba ütköznek a Azure Database for MySQL szolgáltatásba való Migrálás vagy fejlesztés során.
 
@@ -84,6 +86,14 @@ A fenti hiba akkor fordulhat elő, ha egy memóriaképfájl importálásával va
 
 > [!Tip] 
 > A sed vagy a Perl használatával módosítsa a memóriaképfájl vagy az SQL-szkriptet a definomabb = utasítás helyére.
+
+#### <a name="error-1227-42000-at-line-18-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation"></a>1227-es hiba (42000) a 18. sorban: hozzáférés megtagadva; szüksége van a művelethez tartozó SUPER jogosultság (ok) ra (legalább az egyikre)
+
+A fenti hiba akkor fordulhat elő, ha a MySQL-kiszolgálóról próbálja meg importálni a memóriakép-fájlt a GTID-t használó Azure Database for MySQL-kiszolgálón. A mysqldump @SESSION.sql_log_bin egy olyan kiszolgálóról adja hozzá a @ = 0 utasítást, amelyben a GTIDs használatban van, ami letiltja a bináris naplózást, miközben a memóriakép betöltése folyamatban van.
+
+**Megoldás**: a hiba elhárítása az importálás során, a mysqldump-fájl alábbi sorainak eltávolítása vagy megjegyzése, majd az importálás ismételt futtatása a sikeres végrehajtás érdekében. 
+
+SET @MYSQLDUMP_TEMP_LOG_BIN = @ @SESSION.SQL_LOG_BIN ; A @ @SESSION.SQL_LOG_BIN = 0; beállítása A következő beállítása: @ @GLOBAL.GTID_PURGED = ' '; A @ @SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN ; beállítása
 
 ## <a name="common-connection-errors-for-server-admin-login"></a>A kiszolgáló-rendszergazdai bejelentkezés gyakori hálózati hibái
 

@@ -67,6 +67,8 @@
           href: deploy-nextjs.md
         - name: Nuxt.js
           href: deploy-nuxtjs.md
+    - name: Közzététel az Azure DevOps
+      href: publish-devops.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

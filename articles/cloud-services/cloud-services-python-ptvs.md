@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2822f719928515efc70eeed3d7c182e347627418
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743287"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045518"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
 
@@ -28,7 +28,7 @@ Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual
 * [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] vagy  
 [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] vagy  
 [Azure SDK Tools for VS 2017][Azure SDK Tools for VS 2017]
-* [Python 2.7 32 bites][Python 2.7 32-bit] vagy [Python 3.5 32 bites][Python 3.5 32-bit]
+* [Python 2,7 32-bit][Python 2.7 32-bit] vagy [Python 3,8 32-bit][Python 3.8 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -71,7 +71,7 @@ A felhőszolgáltatás tartalmazhat különböző nyelveken kialakított szerepk
 
 A telepítési szkriptek fő problémája, hogy nem telepítik a Pythont. Először határozzon meg két [indítási feladatot](cloud-services-startup-tasks.md) a [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) fájlban. Az első feladat (**PrepPython.ps1**) letölti és telepíti a Python-futtatókörnyezetet. A második feladat (**PipInstaller.ps1**) a pipet futtatja a vonatkozó függőségek telepítéséhez.
 
-Az alábbi parancsfájlok a Python 3.5-ös verziójára vonatkoznak. Ha a Python 2.x verzióját szeretné használni, állítsa a **PYTHON2** változófájlt **be** értékre a két indítási és a futtatókörnyezeti feladathoz: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+A következő parancsfájlok lettek megírva a Python 3,8-es verziójára. Ha a Python 2.x verzióját szeretné használni, állítsa a **PYTHON2** változófájlt **be** értékre a két indítási és a futtatókörnyezeti feladathoz: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -167,7 +167,7 @@ A **PYTHON2** és a **PYPATH** változókat hozzá kell adnia a feldolgozó ind�
 Ezután hozza létre a **PrepPython.ps1** és a **PipInstaller.ps1** fájlokat a szerepkör **./bin** mappájában.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó értéke **on**, akkor a rendszer a Python 2.7-et telepíti. Egyéb esetben a Python 3.5 lesz telepítve.
+Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó **be értékre van állítva, akkor** a Python 2,7 telepítve van, ellenkező esetben a Python 3,8 telepítve van.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
@@ -186,12 +186,12 @@ if (-not $is_emulated){
 
     if (-not $?) {
 
-        $url = "https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe"
-        $outFile = "${env:TEMP}\python-3.5.2-amd64.exe"
+        $url = "https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe"
+        $outFile = "${env:TEMP}\python-3.8.8-amd64.exe"
 
         if ($is_python2) {
-            $url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
-            $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
+            $url = "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi"
+            $outFile = "${env:TEMP}\python-2.7.18.amd64.msi"
         }
 
         Write-Output "Not found, downloading $url to $outFile$nl"
@@ -214,7 +214,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Ez a parancsfájl meghívja a pipet, és telepíti a **requirements.txt** fájlban található összes függőséget. Ha a **PYTHON2** környezeti változó értéke **on**, akkor a rendszer a Python 2.7-et használja, egyéb esetben pedig a Python 3.5-öt.
+Ez a parancsfájl meghívja a pipet, és telepíti a **requirements.txt** fájlban található összes függőséget. Ha a **PYTHON2** környezeti változó be értékre van állítva, akkor a rendszer **a** Python 2,7-et használja, ellenkező esetben a Python 3,8-et használja.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -249,7 +249,7 @@ if (-not $is_emulated){
 
 A **bin\LaunchWorker.ps1** eredetileg azért jött létre, hogy előkészítési munkákat végezzen, de nem igazán működik. Cserélje le a fájl tartalmát a következő parancsfájllal.
 
-A parancsfájl meghívja a **worker.py** fájlt a Python-projektből. Ha a **PYTHON2** környezeti változó értéke **on**, akkor a rendszer a Python 2.7-et használja, egyéb esetben pedig a Python 3.5-öt.
+A parancsfájl meghívja a **worker.py** fájlt a Python-projektből. Ha a **PYTHON2** környezeti változó be értékre van állítva, akkor a rendszer **a** Python 2,7-et használja, ellenkező esetben a Python 3,8-et használja.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -364,4 +364,4 @@ Ha további részletekre kíváncsi az Azure-szolgáltatások webes és feldolgo
 [Azure SDK Tools for VS 2015]: https://go.microsoft.com/fwlink/?LinkId=746481
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
 [Python 2.7 32-bit]: https://www.python.org/downloads/
-[Python 3.5 32-bit]: https://www.python.org/downloads/
+[Python 3.8 32-bit]: https://www.python.org/downloads/

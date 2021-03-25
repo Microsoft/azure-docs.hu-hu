@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: b2c-support
+ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652130"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043597"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
 
@@ -36,7 +37,8 @@ A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő szá
 
 Új munkahelyi fiók hozzáadásakor figyelembe kell vennie a következő konfigurációs beállításokat:
 
-- **Név** és **Felhasználónév** – a **Name (név** ) tulajdonság a felhasználó megadott és vezetéknevét tartalmazza. A **Felhasználónév** annak az azonosítónak a neve, amelyet a felhasználó be kell jelentkeznie. A Felhasználónév tartalmazza a teljes tartományt. A Felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynév *Your-Domain.onmicrosoft.com* vagy egy ellenőrzött, nem összevont [Egyéni tartománynévnek](../active-directory/fundamentals/add-custom-domain.md) (például *contoso.com*) kell lennie.
+- **Név** és **Felhasználónév** – a **Name (név** ) tulajdonság a felhasználó megadott és vezetéknevét tartalmazza. A **Felhasználónév** annak az azonosítónak a neve, amelyet a felhasználó be kell jelentkeznie. A Felhasználónév tartalmazza a teljes tartományt. A Felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynév *Your-Domain.onmicrosoft.com* vagy egy ellenőrzött, nem összevont [Egyéni tartománynévnek](../active-directory/fundamentals/add-custom-domain.md) (például *contoso.com*) kell lennie. 
+- **E-mail** – az új felhasználó egy e-mail-cím használatával is bejelentkezhet. Nem támogatunk speciális karaktereket vagy többbájtos karaktereket az e-mailekben, például Japán karaktereket.
 - **Profil** – a fiók felhasználói adatprofillal van beállítva. Lehetősége van megadnia az utónév, a vezetéknév, a beosztás és a részleg nevét. A profilt a fiók létrehozása után módosíthatja.
 - **Csoportok** – a csoportok használatával olyan felügyeleti feladatokat hajthat végre, mint például licencek vagy engedélyek kiosztása sok felhasználóhoz vagy eszközhöz. Az új fiókot egy meglévő [csoportba](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) helyezheti a bérlőben.
 - **Directory-szerepkör** – meg kell adnia azt a hozzáférési szintet, amelyet a felhasználói fióknak a bérlő erőforrásaihoz kell használnia. A következő jogosultsági szintek érhetők el:

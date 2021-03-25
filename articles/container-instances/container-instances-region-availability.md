@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás számítási és memóri
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4decf29be23c2f1ed51f422052869e99abe4a511
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b1783204ae416412579e63654ff236fbc6cf1a18
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573608"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046011"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -88,21 +88,21 @@ A következő régiók és maximális erőforrások elérhetők a [támogatott �
 | Dél-Brazília | 4 | 16 | 4 | 16 | 20 |
 | Közép-Kanada | 2 | 8 | 2 | 3.5 | 20 |
 | Közép-India | 2 | 3.5 | 2 | 3.5 | 20 |
-| Az USA középső régiója | 2 | 3.5 | 2 | 3.5 | 20 |
+| Az USA középső régiója | 2 | 8 | 2 | 3.5 | 20 |
 | Kelet-Ázsia | 2 | 3.5 | 2 | 3.5 | 20 |
-| USA keleti régiója | 4 | 16 | 2 | 8 | 20 |
-| USA 2. keleti régiója | 2 | 3.5 | 4 | 16 | 20 |
+| USA keleti régiója | 2 | 8 | 2 | 8 | 20 |
+| USA 2. keleti régiója | 2 | 8 | 4 | 16 | 20 |
 | Kelet-Japán | 4 | 16 | 4 | 16 | 20 |
 | Dél-Korea középső régiója | 4 | 16 | 4 | 16 | 20 |
-| USA északi középső régiója | 4 | 16 | 4 | 16 | 20 |
+| USA északi középső régiója | 2 | 8 | 4 | 16 | 20 |
 | Észak-Európa | 2 | 8 | 2 | 8 | 20 |
-| USA déli középső régiója | 2 | 3.5 | 2 | 8 | 20 |
+| USA déli középső régiója | 2 | 8 | 2 | 8 | 20 |
 | Délkelet-Ázsia | N.A. | N.A. | 2 | 3.5 | 20 |
 | Dél-India | 2 | 3.5 | 2 | 3.5 | 20 |
 | Az Egyesült Királyság déli régiója | 2 | 8 | 2 | 3.5 | 20 |
-| USA nyugati középső régiója | 4 | 16 | 2 | 8 | 20 |
+| USA nyugati középső régiója | 2 | 8 | 2 | 8 | 20 |
 | Nyugat-Európa | 4 | 16 | 4 | 16 | 20 |
-| USA nyugati régiója | 4 | 16 | 2 | 8 | 20 |
+| USA nyugati régiója | 2 | 8 | 2 | 8 | 20 |
 | USA 2. nyugati régiója | 2 | 8 | 2 | 3.5 | 20 |
 
 

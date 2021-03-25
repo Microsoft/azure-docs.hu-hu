@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: a9ef74c04c1f709348ae1d6dd97558ee6bedccf3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 39c35bc90986126d099e68023e15b97c58d0ac26
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654968"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108183"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Gyors útmutató: a hívó alkalmazás csatlakoztatása egy Teams-értekezlethez
 
 > [!IMPORTANT]
 > A [csapat bérlői együttműködésének](../../concepts/teams-interop.md)engedélyezéséhez vagy letiltásához fejezze be [ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u).
 
-Ismerkedjen meg az Azure kommunikációs szolgáltatásaival, ha a JavaScript ügyféloldali kódtár használatával csatlakoztatja a hívó megoldást a Microsoft Teams szolgáltatáshoz.
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal, ha a JavaScript SDK használatával csatlakoztatja a hívó megoldását a Microsoft Teams szolgáltatáshoz.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/teams-interop-javascript.md)]
@@ -43,5 +43,5 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 További információért tekintse át a következő cikkeket:
 
 - Tekintse meg a [Calling Hero-mintát](../../samples/calling-hero-sample.md)
-- Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](./calling-client-samples.md)
+- További információ az [SDK-képességek meghívásáról](./calling-client-samples.md)
 - További információ a [hívás működéséről](../../concepts/voice-video-calling/about-call-types.md)

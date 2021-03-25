@@ -9,20 +9,20 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e71917d917491037100b4ee666cbeb030b0a4786
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e05bf1df503a13efc8e4ca30b3341216e01e678e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656141"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110831"
 ---
 # <a name="chat-concepts"></a>Csevegéssel kapcsolatos alapfogalmak 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Az Azure kommunikációs szolgáltatások csevegési ügyfélszoftverei valós idejű SMS-beszélgetések hozzáadására használhatók az alkalmazásokhoz. Ez az oldal a legfontosabb csevegési fogalmakat és képességeket foglalja össze.    
+Az Azure kommunikációs szolgáltatások csevegési SDK-k használatával valós idejű szöveges csevegést adhat hozzá az alkalmazásaihoz. Ez az oldal a legfontosabb csevegési fogalmakat és képességeket foglalja össze.    
 
-Tekintse meg a [kommunikációs szolgáltatások csevegési függvénytárának áttekintését](./sdk-features.md) , hogy többet tudjon meg az adott ügyféloldali függvénytár-nyelvekről és-képességekről.    
+További információ az adott SDK-nyelvekről és-képességekről: a [kommunikációs szolgáltatások csevegési SDK áttekintése](./sdk-features.md) .  
 
 ## <a name="chat-overview"></a>Csevegés – áttekintés    
 
@@ -117,7 +117,7 @@ A kommunikációs szolgáltatások csevegés megosztja a felhasználó által l�
 
 ## <a name="real-time-signaling"></a>Valós idejű jelzés  
 
-A csevegés JavaScript-ügyféloldali könyvtára valós idejű jelzéseket tartalmaz. Ez lehetővé teszi az ügyfeleknek, hogy valós idejű frissítéseket és beérkező üzeneteket hallgassanak egy csevegési szálra anélkül, hogy le kellene kérdezni az API-kat. Az elérhető események a következők:
+A csevegés JavaScript SDK valós idejű jelzéseket tartalmaz. Ez lehetővé teszi az ügyfeleknek, hogy valós idejű frissítéseket és beérkező üzeneteket hallgassanak egy csevegési szálra anélkül, hogy le kellene kérdezni az API-kat. Az elérhető események a következők:
 
  - `ChatMessageReceived` – új üzenet küldése csevegési szálba. Ezt az eseményt a rendszer nem küldi el automatikusan generált rendszerüzenetek számára, amelyeket az előző témakörben tárgyaltak.   
  - `ChatMessageEdited` – Ha egy üzenet egy csevegési szálban van szerkesztve. 
@@ -136,9 +136,9 @@ A csevegés JavaScript-ügyféloldali könyvtára valós idejű jelzéseket tart
 A valós idejű jelzések lehetővé teszik, hogy a felhasználók valós időben beszélgessenek. A szolgáltatások a Azure Event Grid segítségével előfizethetnek a csevegéssel kapcsolatos eseményekre. További részletek: Event- [kezelés fogalma](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
 
 
-## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Cognitive Services használata a csevegő ügyféloldali kódtár használatával az intelligens funkciók engedélyezéséhez 
+## <a name="using-cognitive-services-with-chat-sdk-to-enable-intelligent-features"></a>A Cognitive Services használata a csevegő SDK-val az intelligens funkciók engedélyezéséhez    
 
-Az [Azure kognitív API](../../../cognitive-services/index.yml) -k és a csevegési ügyféloldali kódtár segítségével intelligens funkciókat adhat az alkalmazásaihoz. Megteheti például a következőt:  
+Az [Azure kognitív API-kat](../../../cognitive-services/index.yml) a csevegési SDK-val használhatja intelligens funkciók hozzáadásához az alkalmazásaihoz. Megteheti például a következőt: 
 
 - Lehetővé teheti a felhasználók számára, hogy különböző nyelveken beszélgessenek egymással.  
 - Egy támogatási ügynök rangsorolhatja a jegyeket úgy, hogy kideríti az ügyféltől beérkező problémák negatív véleményét.   
@@ -156,4 +156,4 @@ Ezt úgy érheti el, ha a megbízható szolgáltatás egy csevegési szál rész
 > [Ismerkedés a csevegéssel](../../quickstarts/chat/get-started.md)    
 
 A következő dokumentumok érdekesek lehetnek:  
-- Ismerkedjen meg a [csevegési ügyfél könyvtárával](sdk-features.md)
+- Ismerkedjen meg a [csevegési SDK](sdk-features.md) -val

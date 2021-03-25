@@ -4,23 +4,23 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: bf00b0829868b7099579c1a35113dbca1741cfe3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 443595a52458d7ff7c168f4c120257cfb60fad2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495884"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110889"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/dotnet/).
-- Az operációs rendszerhez tartozó legújabb [.net Core ügyféloldali kódtár](https://dotnet.microsoft.com/download/dotnet-core) .
-- Szerezze be a [.net Identity Client Library](/dotnet/api/azure.identity)legújabb verzióját.
-- Szerezze be a [.net Management ügyféloldali kódtár](../../concepts/sdk-options.md)legújabb verzióját.
+- Az operációs rendszer legújabb verziója [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) .
+- Szerezze be a [.net Identity SDK](/dotnet/api/azure.identity)legújabb verzióját.
+- Szerezze be a [.net Management SDK](../../concepts/sdk-options.md)legújabb verzióját.
 
-## <a name="installing-the-client-library"></a>Az ügyféloldali kódtár telepítése
+## <a name="installing-the-sdk"></a>Az SDK telepítése
 
-Először is vegye fel a kommunikációs szolgáltatások kezelési ügyféloldali függvénytárát a C#-projektbe:
+Először is vegye fel a kommunikációs szolgáltatások Management SDK-t a C#-projektbe:
 
 ```csharp
 using Azure.ResourceManager.Communication;
@@ -121,11 +121,11 @@ Most, hogy hitelesítve van, használhatja a felügyeleti ügyfelet, hogy API-h�
 
 A következő példák mindegyike esetében a kommunikációs szolgáltatások erőforrásai egy meglévő erőforráscsoporthoz vannak rendelve.
 
-Ha létre kell hoznia egy erőforráscsoportot, ezt a [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) vagy a [Azure Resource Manager ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)használatával teheti meg.
+Ha létre kell hoznia egy erőforráscsoportot, ezt a [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) vagy a [Azure Resource Manager SDK](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)használatával teheti meg.
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Kommunikációs szolgáltatások erőforrásának létrehozása és kezelése
 
-A kommunikációs szolgáltatások kezelésének ügyféloldali függvénytár-ügyfelének () példánya a ``Azure.ResourceManager.Communication.CommunicationManagementClient`` kommunikációs szolgáltatások erőforrásain végzett műveletek végrehajtásához használható.
+A Communication Services Management SDK-ügyfél () példánya a ``Azure.ResourceManager.Communication.CommunicationManagementClient`` kommunikációs szolgáltatások erőforrásain végzett műveletek végrehajtásához használható.
 
 #### <a name="create-a-communication-services-resource"></a>Communication Services-erőforrás létrehozása
 
@@ -173,7 +173,7 @@ await acsClient.CommunicationService.StartDeleteAsync(resourceGroupName, resourc
 
 ## <a name="managing-keys-and-connection-strings"></a>Kulcsok és a kapcsolatok karakterláncának kezelése
 
-Minden kommunikációs szolgáltatás erőforráshoz tartozik egy pár hozzáférési kulcs és a megfelelő kapcsolati karakterláncok. Ezek a kulcsok elérhetők a felügyeleti ügyféloldali kódtár használatával, majd más kommunikációs szolgáltatások ügyféloldali kódtárai az Azure kommunikációs szolgáltatásokban való hitelesítéshez.
+Minden kommunikációs szolgáltatás erőforráshoz tartozik egy pár hozzáférési kulcs és a megfelelő kapcsolati karakterláncok. Ezek a kulcsok elérhetők a Management SDK-val, majd más kommunikációs szolgáltatások SDK-k használatával hitelesítik magukat az Azure kommunikációs szolgáltatásokban.
 
 #### <a name="get-access-keys-for-a-communication-services-resource"></a>Kommunikációs szolgáltatások erőforrásaihoz tartozó hozzáférési kulcsok beolvasása
 

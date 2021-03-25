@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 7a196ff8c80a6f92e1205f5553a54913e281b52b
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: f74a242db2686eb4571ebbea80b88a75dda205d4
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025883"
+ms.locfileid: "105044067"
 ---
 # <a name="get-facial-pose-events"></a>Arc póz-események beolvasása
 
@@ -31,7 +31,7 @@ A visemes és a fonémák között nincs egy-az-egyhez levelezés.
 Gyakran több fonémák felel meg egyetlen viseme, mivel több fonémák is ugyanúgy néz ki az arcon, mint például a és a `s` `z` .
 Tekintse meg a [leképezési táblázatot a visemes és a fonémák között](#map-phonemes-to-visemes).
 
-A visemes használatával több természetes és intelligens hírszolgáltatási asszisztenst, interaktív játékokat és rajzfilmfigurát hozhat létre, és intuitív nyelvi tanítási videókat is használhat. A hallás miatt nem párosított hangok vizuálisan és "LIP-Read" beszéd tartalmakat is választhatnak, amelyek egy animált arc visemes jelenítenek meg.
+A visemes használatával több természetes és intelligens hírszolgáltatási asszisztenst, interaktív játékokat és rajzfilmfigurát hozhat létre, és intuitív nyelvi tanítási videókat is használhat. Az olyan személyek, akiknél a halláskárosodás is szerepel, vizuálisan és "LIP-Read" beszéd tartalmakat is választhatnak, amelyek egy animált felületen jelenítik meg a visemes.
 
 ## <a name="get-viseme-events-with-the-speech-sdk"></a>Viseme-események beolvasása a Speech SDK-val
 

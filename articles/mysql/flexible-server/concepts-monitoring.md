@@ -1,17 +1,17 @@
 ---
 title: Monitorozás – Azure Database for MySQL – rugalmas kiszolgáló
 description: Ez a cikk a Azure Database for MySQL rugalmas kiszolgáló figyelési és riasztási mérőszámait ismerteti, beleértve a CPU-t, a tárolást és a kapcsolatok statisztikáit.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: c2883a2ddba9a322c09a318aa9f232de5f4704b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100595163"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110474"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Beépített metrikákkal rendelkező rugalmas kiszolgálók figyelése Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Description|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Leírás|
 |---|---|---|---|
 |Gazda CPU-százaléka|cpu_percent|Százalék|A kiszolgálón a CPU-kihasználtság százalékos aránya, beleértve a processzor kihasználtságát és az Azure MySQL folyamatait is|
 |Gazdagép hálózata |network_bytes_ingress|Bájt|Bejövő hálózati forgalom a kiszolgálón, beleértve az ügyfél-adatbázis és az Azure MySQL-funkciók (például replikálás, monitorozás, naplók stb.) forgalmát.|

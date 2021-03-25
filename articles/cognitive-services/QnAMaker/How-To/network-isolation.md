@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467544"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043359"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
 
@@ -60,7 +60,7 @@ A Cognitive Search példány egy privát végponton keresztül különíthető e
 
 Ha a QnA Maker App Service App Service Environment használatával van korlátozva, használja ugyanazt a VNet, és hozzon létre egy privát végponti kapcsolódást az Cognitive Search-példánnyal. Hozzon létre egy új DNS-bejegyzést a VNet, hogy az Cognitive Search végpontot a Cognitive Search magánhálózati végpont IP-címére képezze. 
 
-Ha nem használ App Service Environment a QnAMaker App Servicehoz, először hozzon létre egy új VNet-erőforrást, majd hozza létre a Cognitive Search példányhoz tartozó magánhálózati végponti kapcsolódást. Ebben az esetben a QnA Maker App Service [integrálni kell a VNet](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) az Cognitive Search-példányhoz való kapcsolódáshoz. 
+Ha nem használ App Service Environment a QnAMaker App Servicehoz, először hozzon létre egy új VNet-erőforrást, majd hozza létre a Cognitive Search példányhoz tartozó magánhálózati végponti kapcsolódást. Ebben az esetben a QnA Maker App Service [integrálni kell a VNet](../../../app-service/web-sites-integrate-with-vnet.md) az Cognitive Search-példányhoz való kapcsolódáshoz. 
 
 #  <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 

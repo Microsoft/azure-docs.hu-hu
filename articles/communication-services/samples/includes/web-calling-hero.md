@@ -10,16 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f3da6fd75ac485a3e22a428934928795f1feae28
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07aa1cb361f5f1853dbf93e5f4e064b1ed14f1de
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487927"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152807"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Az Azure kommunikációs szolgáltatások **csoportos hívása a Hero minta** azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg a webes ügyféloldali kódtárat csoportos hívási élmény létrehozásához.
+Az Azure kommunikációs szolgáltatások **csoport a Hero minta meghívásával** bemutatja, hogyan használható a webes SDK-t hívó kommunikációs szolgáltatás a csoportos hívási élmény létrehozására.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta helyi gépen való futtatása előtt. Ezután üzembe helyezzük a mintát az Azure-ban a saját Azure kommunikációs szolgáltatások erőforrásaival.
 
@@ -96,7 +96,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 További információért tekintse át a következő cikkeket:
 
-- Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- Ismerkedjen meg [a Calling SDK használatával](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>További információ

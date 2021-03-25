@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18d0a24de6f0775fdb35799512f9796a323d353a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010405"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045484"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
 
@@ -31,7 +31,7 @@ Network Performance Monitor (NPM) teszteit áttelepítheti az új, továbbfejles
 
 Az áttelepítés a következő eredményeket segíti elő:
 
-* A helyszíni ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. Log Analytics Azure-beli virtuális gépekre telepített ügynököket a [Network Watcher bővítménnyel](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)kell helyettesíteni.
+* A helyszíni ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. Log Analytics Azure-beli virtuális gépekre telepített ügynököket a [Network Watcher bővítménnyel](../virtual-machines/extensions/network-watcher-windows.md)kell helyettesíteni.
 * A meglévő tesztek le vannak képezve a Csatlakozáskezelő > a tesztelési csoport > tesztelési formátumára. A **Szerkesztés** lehetőség kiválasztásával megtekintheti és módosíthatja az új kapcsolat figyelője tulajdonságait, letöltheti a sablonokat, és elküldheti a sablont Azure Resource Manager használatával.
 * Az ügynökök az Log Analytics munkaterületre és a metrikára is küldenek adatokat.
 * Adatfigyelés:

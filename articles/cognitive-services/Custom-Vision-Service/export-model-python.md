@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7422b88aa2f9c4894d550ee2bf7e397cd163f870
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736425"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046028"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: TensorFlow-modell futtatása Python nyelven
 
@@ -29,7 +29,7 @@ Miután [exportálta a TensorFlow-modellt](./export-your-model.md) a Custom Visi
 
 Az oktatóanyag használatához a következőket kell tennie:
 
-- Vagy Python 2.7 + vagy Python 3.5+ telepítése.
+- Telepítse a Python 2.7 + vagy a Python 3.6 + programot.
 - Telepítse a pipet.
 
 Ezután telepítenie kell a következő csomagokat:

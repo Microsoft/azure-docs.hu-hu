@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: 14048494c6fb3a0bf5b96f2e03824b47c5cc318c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4f542970db5cf7015df4e0f276fccd8782d7beee
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104672"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152782"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t. Ha csak azt szeretné, hogy a csomag neve a saját számára legyen megkezdve, futtassa a parancsot `pip install azure-cognitiveservices-speech` .
 
@@ -49,7 +49,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
 > - A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 - Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez. Vegye figyelembe, hogy az első telepítéskor szükség lehet a Windows újraindítására az útmutató folytatása előtt.
-- Végül pedig a [Python 3.6 +](https://www.python.org/downloads/)-ra lesz szüksége. A telepítés ellenőrzéséhez nyisson meg egy parancssort, és írja be a parancsot, `python --version` és vizsgálja meg az eredményt. Ha megfelelően van telepítve, a következőhöz hasonló választ kaphat: "Python 3.8.8".
+- Végül pedig [a Python 3,6 és a 3,9](https://www.python.org/downloads/)között kell lennie. A telepítés ellenőrzéséhez nyisson meg egy parancssort, és írja be a parancsot, `python --version` és vizsgálja meg az eredményt. Ha megfelelően van telepítve, a következőhöz hasonló választ kaphat: "Python 3.8.8".
 
 ## <a name="install-the-speech-sdk-from-pypi"></a>A Speech SDK telepítése a PyPI-ből
 

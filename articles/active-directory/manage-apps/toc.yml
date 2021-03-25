@@ -47,7 +47,39 @@
         - name: A titkok és tanúsítványok exportálása a szükséges dátum után lejár
           href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: Az App proxy PowerShell-mintái
-      href: application-proxy-powershell-samples.md
+      items:
+        - name: Az App proxy-minták áttekintése
+          href: application-proxy-powershell-samples.md
+        - name: Az alkalmazásokkal kapcsolatos alapvető információk listázása
+          href: ./scripts/powershell-get-all-app-proxy-apps-basic.md
+        - name: Az alkalmazásokra vonatkozó részletes információk listázása
+          href: ./scripts/powershell-get-all-app-proxy-apps-extended.md
+        - name: Alkalmazások listázása összekötő csoport szerint
+          href: ./scripts/powershell-get-all-app-proxy-apps-by-connector-group.md
+        - name: Alkalmazások listázása a token élettartama házirenddel
+          href: ./scripts/powershell-get-all-app-proxy-apps-with-policy.md
+        - name: Összekötő-csoportok és összekötők listázása
+          href: ./scripts/powershell-get-all-connectors.md
+        - name: Alkalmazások áthelyezése összekötő csoportok között
+          href: ./scripts/powershell-move-all-apps-to-connector-group.md
+        - name: Az alkalmazáshoz rendelt felhasználók és csoportok listázása
+          href: ./scripts/powershell-display-users-group-of-app.md
+        - name: Felhasználó kiosztása egy alkalmazáshoz
+          href: ./scripts/powershell-assign-user-to-app.md
+        - name: Csoport társítása egy alkalmazáshoz
+          href: ./scripts/powershell-assign-group-to-app.md
+        - name: Az alapértelmezett tartományokat használó alkalmazások listázása
+          href: ./scripts/powershell-get-all-default-domain-apps.md
+        - name: Alkalmazások listázása helyettesítő karakteres közzététel használatával
+          href: ./scripts/powershell-get-all-wildcard-apps.md
+        - name: Az összes egyéni tartomány és tanúsítvány listázása
+          href: ./scripts/powershell-get-all-custom-domains-and-certs.md
+        - name: Alkalmazások listázása tanúsítványok nélkül
+          href: ./scripts/powershell-get-all-custom-domain-no-cert.md
+        - name: Azonos tanúsítványokkal rendelkező alkalmazások listázása
+          href: ./scripts/powershell-get-custom-domain-identical-cert.md
+        - name: Azonos tanúsítványok cseréje
+          href: ./scripts/powershell-get-custom-domain-replace-cert.md
 - name: Alapelvek
   expanded: true
   items:

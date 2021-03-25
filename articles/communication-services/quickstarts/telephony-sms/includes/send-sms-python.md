@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: f064e0c3ac00b4ab7aeb23356dd24fd89c91021e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 727e2166bad7f0d8980ffe4fa18c292a206c37d7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104441"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110349"
 ---
-Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Python SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
+Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Python SMS SDK használatával SMS-üzenetek küldéséhez.
 
 A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
@@ -62,7 +62,7 @@ except Exception as ex:
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Még az alkalmazás könyvtára alatt telepítse az Azure kommunikációs szolgáltatások SMS-ügyféloldali kódtárat a Python-csomaghoz a `pip install` parancs használatával.
+Még az alkalmazás könyvtára alatt telepítse az Azure kommunikációs szolgáltatások SMS SDK for Python-csomagot a `pip install` paranccsal.
 
 ```console
 pip install azure-communication-sms --pre
@@ -70,7 +70,7 @@ pip install azure-communication-sms --pre
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek a Pythonhoz készült Azure kommunikációs szolgáltatások SMS ügyféloldali kódtárajának főbb funkcióit kezelik.
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások SMS SDK for Python számos főbb funkcióját kezelik.
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -79,16 +79,14 @@ A következő osztályok és felületek a Pythonhoz készült Azure kommunikáci
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-**SmsClient** -példány létrehozása a kapcsolatok karakterláncával. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
+**SmsClient** -példány létrehozása a kapcsolatok karakterláncával. Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
 
 ```python
-# This code demonstrates how to fetch your connection string
-# from an environment variable.
-connection_string = os.getenv('COMMUNICATION_SERVICES_CONNECTION_STRING')
-
 # Create the SmsClient object which will be used to send SMS messages
-sms_client = SmsClient.from_connection_string(connection_string)
+sms_client = SmsClient.from_connection_string(<connection_string>)
 ```
+Az egyszerűség kedvéért ehhez a rövid útmutatóhoz a kapcsolatok karakterláncait használjuk, de éles környezetekben javasoljuk, hogy [felügyelt identitásokat](../../../quickstarts/managed-identity.md) használjanak, mivel azok biztonságosabbak és kezelhetők a nagy léptékben.
+
 
 ## <a name="send-a-11-sms-message"></a>1:1 SMS-üzenet küldése
 
@@ -107,6 +105,9 @@ sms_responses = sms_client.send(
 ```
 
 `<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number>` azt a telefonszámot, amelyhez üzenetet kíván küldeni. 
+
+> [!WARNING]
+> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 12223334444).
 
 ## <a name="send-a-1n-sms-message"></a>1: N SMS-üzenet küldése
 
@@ -133,9 +134,31 @@ A `enable_delivery_report` paraméter egy opcionális paraméter, amely a kézbe
 A `tag` paraméter egy nem kötelező paraméter, amely az egyéni címkézés konfigurálására használható.
 
 ## <a name="run-the-code"></a>A kód futtatása
-
 Futtassa az alkalmazást az alkalmazás könyvtárából a `python` paranccsal.
 
 ```console
 python send-sms.py
+```
+
+A teljes Python-szkriptnek valahogy így kell kinéznie:
+
+```python
+
+import os
+from azure.communication.sms import SmsClient
+
+try:
+    # Create the SmsClient object which will be used to send SMS messages
+    sms_client = SmsClient.from_connection_string("<connection string>")
+    # calling send() with sms values
+    sms_responses = sms_client.send(
+       from_="<from-phone-number>",
+       to="<to-phone-number>",
+       message="Hello World via SMS",
+       enable_delivery_report=True, # optional property
+       tag="custom-tag") # optional property
+
+except Exception as ex:
+    print('Exception:')
+    print(ex)
 ```

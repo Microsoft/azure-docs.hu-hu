@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: c291bb701aca385a11631504f1a312b25cced633
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889535"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045671"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -370,4 +370,6 @@ Ellenőrizze, hogy a Windows Linux rendszerhez készült IoT Edge telepítése �
 
 ## <a name="next-steps"></a>Következő lépések
 
-Folytassa a [IoT Edge-modulok üzembe](how-to-deploy-modules-portal.md) helyezésével, hogy megtudja, hogyan helyezhet üzembe modulokat az eszközön.
+* Folytassa a [IoT Edge-modulok üzembe](how-to-deploy-modules-portal.md) helyezésével, hogy megtudja, hogyan helyezhet üzembe modulokat az eszközön.
+* Megtudhatja, hogyan [kezelheti a Windows rendszerű virtuális gépeken a Linux rendszerhez készült IoT Edge tanúsítványait](how-to-manage-device-certificates.md) , és hogyan vihet át fájlokat a gazdagép operációs rendszeréről a linuxos virtuális gépre.
+* Megtudhatja, hogyan [konfigurálhatja IoT Edge eszközeit egy proxykiszolgálón keresztüli kommunikációra](how-to-configure-proxy-support.md).

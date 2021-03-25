@@ -7,17 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: ea647591194dfd6ba0bf818f4ce4d3a2005f0bc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 03/25/2021
+ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630782"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045246"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>SaaS-ajánlat tesztelése és közzététele a kereskedelmi piactéren
 
 Ez a cikk azt ismerteti, hogyan használhatja a partner centert az SaaS-ajánlat közzétételre való küldéséhez, az ajánlat előzetes megtekintéséhez, teszteléshez, majd a kereskedelmi piactéren való közzétételéhez. Már létre kell hoznia egy ajánlatot, amelyet közzé szeretne tenni.
+
+> [!NOTE]
+> Javasoljuk, hogy hozzon létre egy külön tesztelési és fejlesztési (DEV) ajánlatot alacsony kockázatú módszerként az éles üzemi (Production) ajánlat közzététele előtt. Az alábbi lépéseket követve hozhatja létre és tesztelheti a fejlesztői ajánlatot, mielőtt közzéteszi a (PROD) ajánlatot.
 
 ## <a name="submit-your-offer-for-publishing"></a>Ajánlatának elküldése közzétételre
 
@@ -48,7 +51,7 @@ A következő lépésekkel tekintheti meg az ajánlatát.
 
 1. Az **ajánlat áttekintése** lapon válassza ki a **Go Live (ugrás** ) gomb alatti előnézeti hivatkozást.
 
-1. A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először is értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat.
+1. A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg az ajánlat csomagjait, amíg az előzetes verzióban van. Először is értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat.
 
 1. Ha az SaaS-ajánlat [a kereskedelmi Piactéri mérési szolgáltatással támogatja a mért számlázást](./partner-center-portal/saas-metered-billing.md), tekintse át és kövesse a [piactéren mért számlázási API](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices)-k által részletezett ajánlott eljárásokat.
 
@@ -60,10 +63,10 @@ A következő lépésekkel tekintheti meg az ajánlatát.
 
 ## <a name="publish-your-offer-live"></a>Ajánlat élő közzététele
 
-Az előzetes verzióra vonatkozó összes teszt befejezése után válassza az élő adás lehetőséget, hogy az ajánlat élőben **elérhető** legyen a kereskedelmi piactéren.
+Az előzetes verzióra vonatkozó összes teszt befejezése után válassza az élő adás lehetőséget, hogy az ajánlat élőben **elérhető** legyen a kereskedelmi piactéren. Ha az ajánlata már elérhető a kereskedelmi piactéren, az Ön által végzett frissítések csak akkor lépnek életbe, ha a **Go Live** lehetőséget választja.
 
-   > [!TIP]
-   > Ha az ajánlata már elérhető a kereskedelmi piactéren, az Ön által végzett frissítések csak akkor lépnek életbe, ha a **Go Live** lehetőséget választja.
+> [!IMPORTANT]
+> Soha ne válassza a **Go Live** lehetőséget [fejlesztési/tesztelési ajánlathoz](create-saas-dev-test-offer.md).
 
 Most, hogy az ajánlatot elérhetővé teszi a kereskedelmi piactéren, egy sor végső ellenőrzési ellenőrzést végzünk, hogy az élő ajánlat ugyanúgy legyen konfigurálva, mint az ajánlat előzetes verziója. Az ellenőrzési ellenőrzésekkel kapcsolatos további információkért lásd: [közzétételi fázis](review-publish-offer.md#publish-phase).
 

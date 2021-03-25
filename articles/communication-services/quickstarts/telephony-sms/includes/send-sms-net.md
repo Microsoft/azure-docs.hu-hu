@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: caca5f5a05a136248f7453337629fdd2b22f956a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622108"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110351"
 ---
-Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
+Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS SDK használatával SMS-üzenetek küldéséhez.
 
 A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
@@ -28,13 +28,13 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Az operációs rendszerhez tartozó legújabb [.net Core ügyféloldali kódtár](https://dotnet.microsoft.com/download/dotnet-core) .
+- Az operációs rendszer legújabb verziója [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) .
 - Aktív kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
 - SMS-kompatibilis telefonszám. [Telefonszám beolvasása](../get-phone-number.md).
 
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 
-- A terminál vagy a parancssorablakban futtassa a `dotnet` parancsot a .net Ügyféloldali kódtár telepítésének megadásához.
+- A terminál vagy a parancssori ablakban futtassa a `dotnet` parancsot a .net SDK telepítésének megadásához.
 - A kommunikációs szolgáltatások erőforrásához tartozó telefonszámok megtekintéséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), keresse meg a kommunikációs szolgáltatások erőforrását, és nyissa meg a **telefonszámok** lapot a bal oldali navigációs ablaktáblán.
 
 ## <a name="setting-up"></a>Beállítás
@@ -56,7 +56,7 @@ dotnet build
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Miközben az alkalmazás könyvtára továbbra is elérhető, telepítse az Azure Communication Services SMS ügyféloldali kódtárat a .NET-csomaghoz a `dotnet add package` parancs használatával.
+Még az alkalmazás könyvtára alatt telepítse az Azure kommunikációs szolgáltatások SMS SDK for .NET-csomagot a `dotnet add package` paranccsal.
 
 ```console
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
@@ -77,7 +77,7 @@ using Azure.Communication.Sms;
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek a C#-hoz készült Azure kommunikációs szolgáltatások SMS ügyféloldali függvénytárának főbb funkcióit kezelik.
+A következő osztályok és felületek kezelik a C#-hoz készült Azure Communication Services SMS SDK főbb funkcióit.
 
 | Név                                       | Leírás                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |

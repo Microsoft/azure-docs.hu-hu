@@ -3,12 +3,12 @@ title: A tároló-bepillantást a Prometheus-integráció konfigurálása | Micr
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Container bepillantást biztosító ügynök a Prometheus-metrikák és a Kubernetes-fürt között.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731731"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109641"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>A Prometheus-metrikák leselejtezésének konfigurálása a Container bepillantást
 
@@ -48,7 +48,7 @@ Ha meg van adva egy URL-cím, a tárolók csak a végpontot kaparják le. Ha a K
 |------|-----|-----------|-------|-------------|
 | Fürtre kiterjedő | | | | Az alábbi három módszer egyikének megadásával adhatja meg a metrikák végpontjait. |
 | | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Példa: `urls=[$NODE_IP/metrics]`. ($NODE _IP egy adott Container bepillantást megadó paraméter, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
-| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Itt teljes tartományneveket kell használni. Például: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace.svc.cluster.local:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Logikai | true (igaz) vagy false (hamis) | Ha `true` a fürtre kiterjedő beállításokban van beállítva, a Container bepillantást nyerhet a Kubernetes hüvelyek között a teljes fürtön a következő Prometheus-megjegyzésekhez:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Logikai | true (igaz) vagy false (hamis) | Engedélyezi a hüvely leselejtezését. `monitor_kubernetes_pods` értékre kell állítani `true` . |
 | | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa a következőre: `https` . | 

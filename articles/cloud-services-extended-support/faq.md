@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 4db23982dfaed1447023edb417a3732dac94bdc4
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025237"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107516"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Az Azure Cloud Services (kiterjesztett támogatás) szolgáltatással kapcsolatos gyakori kérdések
 Ez a cikk az Azure Cloud Servicesokkal kapcsolatos gyakori kérdéseket ismerteti (kiterjesztett támogatás).
@@ -93,7 +93,7 @@ Nem, a Cloud Service (bővített támogatás) üzemelő példányok olyan fürth
 ### <a name="when-do-i-need-to-migrate"></a>Mikor kell migrálni? 
 A szükséges idő becslése és a bonyolultsági áttelepítés számos változótól függ. A tervezés a leghatékonyabb lépés a munka, a blokkolók és a Migrálás összetettségének megismeréséhez.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózatkezelés 
 
 ### <a name="why-cant-i-create-a-deployment-without-virtual-network"></a>Miért nem hozható létre virtuális hálózat nélküli központi telepítés?
 A virtuális hálózatok a Azure Resource Manager összes telepítéséhez szükséges erőforrások. A Cloud Services (kiterjesztett támogatás) telepítésének virtuális hálózaton belül kell lennie. 
@@ -112,6 +112,9 @@ Az ügyfelek számlázása az IP-cím Cloud Services (kiterjesztett támogatás)
 
 ### <a name="can-i-use-a-dns-name-with-cloud-services-extended-support"></a>Használhatok DNS-nevet Cloud Services (kiterjesztett támogatással)? 
 Igen. A Cloud Services (kiterjesztett támogatás) DNS-nevet is kaphat. A Azure Resource Manager a DNS-címke a felhőalapú szolgáltatáshoz hozzárendelt nyilvános IP-cím opcionális tulajdonsága. A Azure Resource Manager alapú központi telepítések DNS-nevének formátuma a következő: `<userlabel>.<region>.cloudapp.azure.com`
+
+### <a name="can-i-update-or-change-the-virtual-network-reference-for-an-existing-cloud-service-extended-support"></a>Frissíthetem vagy módosíthatom egy meglévő felhőalapú szolgáltatás (kiterjesztett támogatás) virtuális hálózati referenciáját? 
+Nem. A virtuális hálózat referenciája a felhőalapú szolgáltatás létrehozásakor kötelező. Egy meglévő felhőalapú szolgáltatás esetében a virtuális hálózatra vonatkozó hivatkozás nem módosítható. A virtuális hálózati címterület VNet API-kkal is módosítható. 
 
 ## <a name="certificates--key-vault"></a>Tanúsítványok & Key Vault
 

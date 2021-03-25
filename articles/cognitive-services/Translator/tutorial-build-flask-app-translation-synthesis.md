@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172079"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043733"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -49,7 +49,7 @@ Azok számára, akik részletesen szeretnék eljutni az oktatóanyag után, néh
 
 Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kulcsokat.
 
-* [Python 3.5.2 vagy újabb](https://www.python.org/downloads/)
+* [Python 3,6 vagy újabb](https://www.python.org/downloads/)
 * [Git-eszközök](https://git-scm.com/downloads)
 * IDE-vagy szövegszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) vagy [Firefox](https://www.mozilla.org/firefox)
@@ -62,7 +62,7 @@ Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kul
 Ahogy korábban említettük, három előfizetési kulcsra lesz szüksége ehhez az oktatóanyaghoz. Ez azt jelenti, hogy létre kell hoznia egy erőforrást az Azure-fiókjában a következőkhöz:
 * Translator
 * Text Analytics
-* Beszédszolgáltatások
+* Beszédfelismerési szolgáltatások
 
 Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](../cognitive-services-apis-create-account.md) című témakört.
 
