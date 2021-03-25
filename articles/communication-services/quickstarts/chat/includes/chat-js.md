@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612267"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107033"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -43,7 +43,7 @@ npm init -y
 
 ### <a name="install-the-packages"></a>A csomagok telepítése
 
-A `npm install` paranccsal telepítse az alábbi kommunikációs szolgáltatások ügyféloldali kódtárait a javascripthez.
+A `npm install` parancs használatával telepítse az alábbi kommunikációs szolgáltatások SDK-kat a javascripthez.
 
 ```console
 npm install @azure/communication-common --save
@@ -87,7 +87,7 @@ Adjon hozzá egy `start` szkriptet a `package.json` -hoz, ezt az alkalmazás fut
 }
 ```
 
-Hozzon létre egy **index.html** fájlt a projekt gyökérkönyvtárában. Ezt a fájlt sablonként használjuk a csevegési funkció hozzáadásához az Azure kommunikációs csevegési ügyféloldali kódtár használatával a JavaScripthez.
+Hozzon létre egy **index.html** fájlt a projekt gyökérkönyvtárában. Ezt a fájlt sablonként használjuk a csevegési funkció hozzáadásához a JavaScripthez készült Azure kommunikációs csevegési SDK használatával.
 
 ```html
 <!DOCTYPE html>
@@ -111,7 +111,7 @@ Ha csevegési ügyfelet szeretne létrehozni a webalkalmazásban, használja a k
 
 A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Ez a rövid útmutató nem vonatkozik a csevegési alkalmazás jogkivonatait kezelő szolgáltatási rétegek létrehozására. A hozzáférési jogkivonatokkal kapcsolatos további információkért tekintse meg a [csevegési](../../../concepts/chat/concepts.md) architektúrával és a [felhasználói hozzáférési jogkivonatokkal](../../access-tokens.md) kapcsolatos további információkat.
 
-**client.js** az alábbi kódban a végpont és a hozzáférési token használatával adja hozzá a csevegési képességet az Azure kommunikációs csevegési ügyféloldali kódtár használatával a javascripthez.
+**client.js** belül az alábbi kódban a végpont és a hozzáférési token használatával adhat hozzá csevegési képességet a javascripthez készült Azure kommunikációs csevegési SDK használatával.
 
 ```JavaScript
 
@@ -144,7 +144,7 @@ Azure Communication Chat client created!
 ```
 
 ## <a name="object-model"></a>Objektummodell
-A következő osztályok és felületek az Azure kommunikációs szolgáltatások csevegési függvénytárának főbb funkcióit kezelik a JavaScripthez.
+A következő osztályok és felületek a JavaScripthez készült Azure Communication Services csevegő SDK főbb funkcióit kezelik.
 
 | Név                                   | Leírás                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

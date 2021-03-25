@@ -8,12 +8,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f3b6bd19d47658e5ad079f0b731cbafc866bb333
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200276"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045773"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
@@ -67,9 +67,18 @@ Ha szeretné megtekinteni a tanúsítványok példáját, tekintse át a bemutat
 
 Telepítse a tanúsítványláncot a IoT Edge eszközre, és konfigurálja a IoT Edge futtatókörnyezetet az új tanúsítványokra való hivatkozáshoz.
 
-Másolja a három tanúsítvány-és kulcsfájl-fájlt a IoT Edge eszközre. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](../key-vault/index.yml) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
+Másolja a három tanúsítvány-és kulcsfájl-fájlt a IoT Edge eszközre. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](../key-vault/index.yml) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez. Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
 
-Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok létrehozásához](how-to-create-test-certificates.md), másolja a következő fájlokat a IoT-Edge eszközre:
+Ha Windows rendszeren használja a Linux rendszerhez készült IoT Edge, akkor az Azure IoT Edge fájlban található SSH-kulcsot kell használnia a `id_rsa` gazda operációs rendszer és a Linux virtuális gép közötti fájlátvitel hitelesítéséhez. A következő parancs használatával elvégezheti a hitelesített SCP használatát:
+
+   ```powershell-interactive
+   C:\WINDOWS\System32\OpenSSH\scp.exe -i 'C:\Program Files\Azure IoT Edge\id_rsa' <PATH_TO_SOURCE_FILE> iotedge-user@<VM_IP>:<PATH_TO_FILE_DESTINATION>
+   ```
+
+   >[!NOTE]
+   >A linuxos virtuális gép IP-címe a parancs használatával kérdezhető le `Get-EflowVmAddr` .
+
+Ha a minta parancsfájlokat használta a [bemutató tanúsítványok létrehozásához](how-to-create-test-certificates.md), másolja a következő fájlokat a IoT-Edge eszközre:
 
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓjának titkos kulcsa: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -80,21 +89,13 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
 
 1. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját.
 
-   * Windows: `C:\ProgramData\iotedge\config.yaml`
-   * Linux: `/etc/iotedge/config.yaml`
+   * Linux-és Linux-IoT Edge Windows rendszeren: `/etc/iotedge/config.yaml`
+
+   * Windows-tárolók használata: `C:\ProgramData\iotedge\config.yaml`
 
 1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
 
-   * Windows:
-
-      ```yaml
-      certificates:
-        device_ca_cert: "file:///C:/<path>/<device CA cert>"
-        device_ca_pk: "file:///C:/<path>/<device CA key>"
-        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
-      ```
-
-   * Linux:
+   * Linux-és Linux-IoT Edge Windows rendszeren:
 
       ```yaml
       certificates:
@@ -103,13 +104,23 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
         trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
+   * Windows-tárolók használata:
+
+      ```yaml
+      certificates:
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
+      ```
+
 1. Linux-eszközökön ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e olvasási engedéllyel a tanúsítványokat tároló címtárhoz.
 
 1. Ha korábban más tanúsítványokat használt IoT Edgehoz az eszközön, a IoT Edge elindítása vagy újraindítása előtt törölje a fájlokat a következő két könyvtárban:
 
-   * Windows: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys`
+   * Linux-és Linux-IoT Edge Windows rendszeren: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
 
-   * Linux: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
+   * Windows-tárolók használatával: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys`
+
 :::moniker-end
 <!-- end 1.1 -->
 
@@ -177,34 +188,36 @@ A megadott számú nap lejárata után IoT Edget újra kell indítani az eszköz
 
 1. Törölje a mappa tartalmát a `hsm` korábban létrehozott tanúsítványok eltávolításához.
 
-   Windows: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
+   * Linux-és Linux-IoT Edge Windows rendszeren: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
+
+   * Windows-tárolók használatával: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys`
 
 1. Indítsa újra a IoT Edge szolgáltatást.
 
-   Windows:
-
-   ```powershell
-   Restart-Service iotedge
-   ```
-
-   Linux:
+   * Linux-és Linux-IoT Edge Windows rendszeren:
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-1. Erősítse meg az élettartam beállítást.
-
-   Windows:
+   * Windows-tárolók használata:
 
    ```powershell
-   iotedge check --verbose
+   Restart-Service iotedge
    ```
 
-   Linux:
+1. Erősítse meg az élettartam beállítást.
+
+   * Linux-és Linux-IoT Edge Windows rendszeren:
 
    ```bash
    sudo iotedge check --verbose
+   ```
+
+   * Windows-tárolók használata:
+
+   ```powershell
+   iotedge check --verbose
    ```
 
    Tekintse meg az **éles készültségi** egység kimenetét: tanúsítványok ellenőrzését, amely felsorolja, hogy hány nap elteltével járjon le az automatikusan létrehozott hitelesítésszolgáltatói tanúsítványok érvényessége.

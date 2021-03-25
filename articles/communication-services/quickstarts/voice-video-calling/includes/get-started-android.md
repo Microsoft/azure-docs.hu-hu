@@ -1,22 +1,22 @@
 ---
 title: Gyors útmutató – VOIP-hívás hozzáadása Android-alkalmazáshoz az Azure Communication Services használatával
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure kommunikációs szolgáltatásokat az ügyféloldali kódtár meghívásához az Androidhoz
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Android rendszerhez készült Azure kommunikációs szolgáltatások Meghívási SDK-t
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 094dbd090b5f2d68a9961f2fb9b8b611e486e7bc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b68d3a92015a8add2dd97313f9971cf896f8e77e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719949"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108275"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Android rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
+Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Android rendszerhez készült Azure kommunikációs szolgáltatások meghívásával.
 
 > [!NOTE]
-> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 8 verzióját használja.
+> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 8 verziót használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Válassza a "üres tevékenység" projekt sablont a "telefon és a tábla" alatt
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Képernyőfelvétel: a Project Template (üres tevékenység) lehetőség van kiválasztva.":::
 
-Válassza ki az "API 26: Android 8,0 (Oreo)" minimális ügyféloldali kódtárat.
+Válassza az "API 26: Android 8,0 (Oreo)" minimális SDK-t vagy a nagyobb lehetőséget.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az &quot;üres tevékenység&quot; lehetőség van kiválasztva a Project template 2. képernyőn.":::
 
@@ -110,8 +110,8 @@ A híváshoz szükséges engedélyek kéréséhez először deklarálni kell ők
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--Our calling client library depends on the Apache HTTP client library.
-When targeting Android client library 28+, this library needs to be explicitly referenced.
+        <!--Our Calling SDK depends on the Apache HTTP SDK.
+When targeting Android SDK 28+, this library needs to be explicitly referenced.
 See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apache-p-->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".MainActivity">
@@ -260,11 +260,11 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>Objektummodell
 
-Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások ügyfél-függvénytárának főbb funkcióit kezelik:
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.|
+| CallClient| A CallClient a hívó SDK fő belépési pontja.|
 | CallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
 | CommunicationUserCredential | A rendszer a CommunicationUserCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.|
 | CommunicationIdentifier | A CommunicationIdentifier olyan különböző típusú résztvevőként szolgál, amely egy hívás része lenne.|

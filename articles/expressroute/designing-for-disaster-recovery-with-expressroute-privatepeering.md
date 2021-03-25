@@ -5,20 +5,20 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 05/25/2019
+ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92202413"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044600"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Vészhelyzeti helyreállítás tervezése ExpressRoute-alapú privát partnerekkel
 
-A ExpressRoute magas rendelkezésre állású, hogy a szolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Más szóval, a Microsoft hálózaton belüli ExpressRoute útvonalon nem létezik egyetlen meghibásodási pont. A ExpressRoute áramkör rendelkezésre állásának maximalizálására szolgáló tervezési szempontokat lásd: [a magas rendelkezésre állás tervezése a ExpressRoute][HA].
+A ExpressRoute magas rendelkezésre állású, hogy a szolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Ez azt jelenti, hogy a Microsoft hálózaton belül nem található egyetlen meghibásodási pont a ExpressRoute útvonalon. A ExpressRoute áramkör rendelkezésre állásának maximalizálására szolgáló tervezési szempontokat lásd: [a magas rendelkezésre állás tervezése a ExpressRoute][HA].
 
-Azonban a Murphy népszerű példabeszédének betartása –*Ha bármi rosszat tud,* ez a cikk figyelembe veszi, hogy olyan megoldásokra koncentrálunk, amelyek túlmutatnak az egyetlen ExpressRoute áramkörrel kapcsolatos hibákon. Más szóval, ebben a cikkben megvizsgáljuk a hálózati architektúra szempontjait a robusztus háttérbeli hálózati kapcsolat kiépítéséhez a vész-helyreállításhoz a Geo-redundáns ExpressRoute-áramkörök használatával.
+Azonban a Murphy népszerű példabeszédének betartása –*Ha bármi rosszat tud,* ez a cikk figyelembe veszi, hogy olyan megoldásokra koncentrálunk, amelyek túlmutatnak az egyetlen ExpressRoute áramkörrel kapcsolatos hibákon. A hálózati architektúra szempontjait figyelembe vesszük a robusztus háttérbeli hálózati kapcsolatok kiépítéséhez a vész-helyreállításhoz a Geo-redundáns ExpressRoute-áramkörök használatával.
 
 >[!NOTE]
 >Az ebben a cikkben ismertetett fogalmak akkor is érvényesek, ha egy ExpressRoute-áramkör virtuális WAN vagy azon kívül jön létre.
@@ -26,7 +26,7 @@ Azonban a Murphy népszerű példabeszédének betartása –*Ha bármi rosszat 
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Redundáns csatlakozási megoldásra van szükség
 
-Vannak olyan lehetőségek és példányok, ahol a teljes regionális szolgáltatás (a Microsoft, a hálózati szolgáltatók, az ügyfél vagy más felhőalapú szolgáltatók) csökkentett teljesítményű. Az ilyen regionális szolgáltatások hatásának alapvető oka a természetes szerencsétlenség. Ezért az üzletmenet folytonossága és a kritikus fontosságú alkalmazások esetében fontos, hogy megtervezze a vész-helyreállítási feladatait.   
+Vannak olyan lehetőségek és példányok, ahol a teljes regionális szolgáltatás (a Microsoft, a hálózati szolgáltatók, az ügyfél vagy más felhőalapú szolgáltatók) csökkentett teljesítményű. Az ilyen regionális szolgáltatások hatásának alapvető oka a természetes szerencsétlenség. Ezért fontos, hogy az üzletmenet folytonossága és a kritikus fontosságú alkalmazások szempontjából fontos, hogy megtervezze a vész-helyreállítási feladatait.   
 
 Függetlenül attól, hogy az üzleti szempontból kritikus fontosságú alkalmazásokat egy Azure-régióban vagy a helyszínen, vagy bárhol máshol futtatja, egy másik Azure-régiót is használhat feladatátvételi helyként. A következő cikkek az alkalmazások és a előtér-hozzáférési perspektívák vész-helyreállítását tárgyalják:
 
@@ -37,9 +37,19 @@ Ha a helyszíni hálózat és a Microsoft közötti ExpressRoute kapcsolatot a k
 
 ## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Több ExpressRoute-áramkör használatának kihívásai
 
-Ha ugyanazokat a hálózatokat több kapcsolattal is összekapcsolja, a hálózatok közötti párhuzamos útvonalakat is be kell vezetnie. A párhuzamos elérésű útvonalak, ha nincsenek megfelelően összeállítva, aszimmetrikus útválasztáshoz vezethetnek. Ha a PATH-ban állapot-nyilvántartó entitások (például NAT, tűzfal) vannak, akkor az aszimmetrikus útválasztás blokkolhatja a forgalom áramlását.  A ExpressRoute privát társítási útvonala általában nem az állapot-nyilvántartó entitásokon, például a NAT-ban vagy a tűzfalakon keresztül nem fog megjelenni. Ezért a ExpressRoute-alapú privát kapcsolaton keresztüli aszimmetrikus útválasztás nem feltétlenül blokkolja a forgalom áramlását.
+Ha ugyanazokat a hálózatokat több kapcsolattal is összekapcsolja, a hálózatok közötti párhuzamos útvonalakat is be kell vezetnie. A párhuzamos elérésű útvonalak, ha nincsenek megfelelően összeállítva, aszimmetrikus útválasztáshoz vezethetnek. Ha a PATH-ban állapot-nyilvántartó entitások (például NAT, tűzfal) vannak, akkor az aszimmetrikus útválasztás blokkolhatja a forgalom áramlását.  A ExpressRoute privát társítási útvonala általában nem az állapot-nyilvántartó entitásokon, például a NAT-ban vagy a tűzfalakon keresztül nem fog megjelenni. Ezért a ExpressRoute-alapú privát kapcsolat aszimmetrikus útválasztása nem feltétlenül blokkolja a forgalom áramlását.
  
-Azonban, ha terheléselosztást végez a földrajzilag redundáns párhuzamos elérési utak között, függetlenül attól, hogy van-e állapot-nyilvántartó entitása, vagy sem, akkor inkonzisztens hálózati teljesítményt tapasztalhat. Ebből a cikkből megtudhatja, hogyan lehet kezelni ezeket a kihívásokat.
+Ha azonban a földrajzilag redundáns párhuzamos elérési utak között terheléselosztási forgalmat végez, függetlenül attól, hogy rendelkezik-e állapot-nyilvántartó entitásokkal, vagy sem, akkor inkonzisztens hálózati teljesítményt fog tapasztalni. Ezek a Geo-redundáns párhuzamos elérési utak a [szolgáltatók helye](expressroute-locations-providers.md#partners) lapon megjelenő metrón vagy más metrón is megtalálhatók. 
+
+### <a name="same-metro"></a>Ugyanaz a Metro
+
+Ha ugyanazt a metrót használja, a konfiguráció második elérési útjához a másodlagos helyet kell használnia. Ugyanez a Metro a következő: *Amszterdam* és *Amsterdam2*. Ugyanazon metró kiválasztásának előnye, ha az alkalmazás feladatátvétele zajlik, a helyszíni alkalmazások és a Microsoft közötti végpontok közötti késés változatlan marad. Ha azonban természeti katasztrófa van, előfordulhat, hogy mindkét elérési útra való kapcsolat már nem érhető el. 
+
+### <a name="different-metros"></a>Különböző metrók
+
+Ha a standard SKU-áramkörökhöz különböző metrókat használ, a másodlagos helynek ugyanabban a [geo-politikai régióban](expressroute-locations-providers.md#locations)kell lennie. A geo-politikai régión kívüli hely kiválasztásához a Parallel paths mindkét áramköréhez prémium SKU-t kell használnia. Ennek a konfigurációnak az az előnye, hogy a természeti katasztrófák okozta kimaradás miatt a kapcsolatok sokkal alacsonyabbak, de a késés növelésének költségeit.
+
+Ebből a cikkből megtudhatja, hogyan kezelheti a Geo-redundáns útvonalak konfigurálásakor felmerülő kihívásokat.
 
 ## <a name="small-to-medium-on-premises-network-considerations"></a>Kis-és közepes helyszíni hálózati megfontolások
 
@@ -100,13 +110,13 @@ Ha az Azure-t a különböző módszerek egyikével szeretné használni, akkor 
 
 ## <a name="large-distributed-enterprise-network"></a>Nagyméretű elosztott vállalati hálózat
 
-Ha nagyméretű elosztott vállalati hálózattal rendelkezik, valószínűleg több ExpressRoute-áramkört használ. Ebből a szakaszból megtudhatja, hogyan tervezheti meg a vész-helyreállítást az aktív-aktív ExpressRoute-áramkörökkel anélkül, hogy további készenléti áramköröket kellene használnia. 
+Ha nagyméretű elosztott vállalati hálózattal rendelkezik, valószínűleg több ExpressRoute-áramkört használ. Ebből a szakaszból megtudhatja, hogyan tervezheti meg a vész-helyreállítást az aktív-aktív ExpressRoute-áramkörökkel anélkül, hogy más készenléti áramköröket kellene használnia. 
 
 Tekintsük át a következő ábrán látható példát. A példában a contoso két helyszíni hellyel rendelkezik két különböző Azure-régióban két különböző Azure-régióban, két különböző, egymástól eltérő helyen található ExpressRoute-IaaS. 
 
 [![6]][6]
 
-A vész-helyreállítási felépítésének módja hatással van arra, hogy a régiók közötti (terület1/region2-location2/location1-) forgalom hogyan legyen átirányítva. Vegyünk két különböző katasztrófa-architektúrát, amely eltérő módon irányítja a régiók közötti forgalmat.
+A vész-helyreállítási felépítésének módja hatással van arra, hogy a régiók közötti (terület1/region2-location2/location1) forgalom hogyan legyen átirányítva. Vegyünk két különböző katasztrófa-architektúrát, amely eltérő módon irányítja a régiók közötti forgalmat.
 
 ### <a name="scenario-1"></a>1\. példa
 

@@ -10,21 +10,21 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91383ecba119959213804e0432f612c3f1ff636c
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495885"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110890"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Gyors útmutató: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management ügyféloldali kódtáran keresztül is kiterjeszthetők. A felügyeleti ügyféloldali kódtár és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az ügyféloldali kódtárakban elérhető összes funkció elérhető a Azure Portal. 
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management SDK-val is kiterjeszthetők. A Management SDK és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az SDK-ban elérhető összes funkció elérhető a Azure Portal. 
 
 
-Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management ügyféloldali kódtáran keresztül is kiterjeszthetők. A felügyeleti ügyféloldali kódtár és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az ügyféloldali kódtárakban elérhető összes funkció elérhető a Azure Portal.
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management SDK-val is kiterjeszthetők. A Management SDK és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az SDK-ban elérhető összes funkció elérhető a Azure Portal.
 
 > [!WARNING]
 > Vegye figyelembe, hogy míg a kommunikációs szolgáltatások több földrajzi régióban is elérhetők, a telefonszám beszerzéséhez az erőforrásnak rendelkeznie kell egy "US" értékkel rendelkező adathellyel. Azt is vegye figyelembe, hogy a kommunikációs erőforrások nem vihetők át másik előfizetésre a nyilvános előzetes verzió során.
@@ -43,9 +43,9 @@ Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommuniká
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>A kapcsolati karakterláncok és a szolgáltatási végpontok elérése
 
-A kapcsolati karakterláncok lehetővé teszik a kommunikációs szolgáltatások ügyféloldali kódtárainak kapcsolódását és hitelesítését az Azure-ban. A kommunikációs szolgáltatáshoz tartozó kapcsolati karakterláncok és szolgáltatási végpontok a Azure Portal vagy programozott módon, Azure Resource Manager API-kkal érhetők el.
+A kapcsolati karakterláncok lehetővé teszik a kommunikációs szolgáltatások SDK-k számára a kapcsolódást és a hitelesítést az Azure-ban. A kommunikációs szolgáltatáshoz tartozó kapcsolati karakterláncok és szolgáltatási végpontok a Azure Portal vagy programozott módon, Azure Resource Manager API-kkal érhetők el.
 
-A kommunikációs szolgáltatások erőforráshoz való navigálás után válassza a navigációs menü **kulcsok** elemét, és másolja a **kapcsolati karakterláncot** vagy a **végponti** értékeket a kommunikációs szolgáltatások ügyféloldali kódtárai általi használathoz. Vegye figyelembe, hogy van hozzáférése az elsődleges és a másodlagos kulcsokhoz. Ez olyan esetekben lehet hasznos, amikor ideiglenes hozzáférést szeretne biztosítani a kommunikációs szolgáltatások erőforrásaihoz egy harmadik fél vagy átmeneti környezet számára.
+A kommunikációs szolgáltatások erőforráshoz való navigálás után válassza a navigációs menü **kulcsok** elemét, és másolja a **kapcsolati karakterláncot** vagy a **végpontok** értékeit a kommunikációs szolgáltatások SDK-k általi használathoz. Vegye figyelembe, hogy van hozzáférése az elsődleges és a másodlagos kulcsokhoz. Ez olyan esetekben lehet hasznos, amikor ideiglenes hozzáférést szeretne biztosítani a kommunikációs szolgáltatások erőforrásaihoz egy harmadik fél vagy átmeneti környezet számára.
 
 :::image type="content" source="./media/key.png" alt-text="A kommunikációs szolgáltatások kulcs oldalának képernyőképe.":::
 
@@ -59,7 +59,7 @@ az communication list-key --name "<communicationName>" --resource-group "<resour
 
 ## <a name="store-your-connection-string"></a>A kapcsolatok karakterláncának tárolása
 
-A kommunikációs szolgáltatások ügyféloldali kódtárai a kapcsolati karakterláncokat használják a kommunikációs szolgáltatásokhoz intézett kérések engedélyezésére. A következő több lehetőség áll rendelkezésre a kapcsolatok karakterláncának tárolásához:
+A kommunikációs szolgáltatások SDK-k kapcsolati karakterláncokat használnak a kommunikációs szolgáltatásokhoz intézett kérések engedélyezéséhez. A következő több lehetőség áll rendelkezésre a kapcsolatok karakterláncának tárolásához:
 
 * Az asztalon vagy eszközön futó alkalmazás a kapcsolati karakterláncot egy **app.config** vagy **web.config** fájlban tárolja. Adja hozzá a kapcsolódási karakterláncot a **appSettings** szakaszhoz ezekben a fájlokban.
 * Egy Azure App Service futó alkalmazás a [app Service alkalmazás beállításaiban](../../app-service/configure-common.md)tárolhatja a kapcsolatok karakterláncát. Adja hozzá a kapcsolódási karakterláncot a portál Alkalmazásbeállítások lapján található **kapcsolódási karakterláncok** szakaszhoz.

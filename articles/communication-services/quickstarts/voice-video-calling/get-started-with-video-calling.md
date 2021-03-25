@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: e7f74298b8bf8209a6b1473880b33d64bd17cfd9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048085"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108094"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Gyors útmutató: az alkalmazáshoz való 1:1-videohívás hozzáadása (JavaScript)
 
@@ -33,9 +33,11 @@ Nyissa meg a terminált vagy a parancssorablakot, hozzon létre egy új könyvt�
 mkdir calling-quickstart && cd calling-quickstart
 ```
 ### <a name="install-the-package"></a>A csomag telepítése
-A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat a JavaScript-hez készült ügyféloldali kódtár meghívásával.
+A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat HÍVÓ SDK-t a javascripthez.
 
-Ez a rövid útmutató az Azure-kommunikációt hívja meg az ügyféloldali kódtár használatával `1.0.0.beta-6` . 
+> [!IMPORTANT]
+> Ez a rövid útmutató az Azure kommunikációs szolgáltatások Meghívási SDK-verzióját használja `1.0.0.beta-10` . 
+
 
 ```console
 npm install @azure/communication-common --save
@@ -105,7 +107,7 @@ A kód a következő:
 Hozzon létre egy fájlt a projekt gyökérkönyvtárában, `client.js` amely tartalmazza az alkalmazás logikáját ehhez a rövid útmutatóhoz. Adja hozzá az alábbi kódot a hívó ügyfél importálásához és a DOM-elemekre mutató hivatkozások beszerzéséhez.
 
 ```JavaScript
-import { CallClient, CallAgent, Renderer, LocalVideoStream } from "@azure/communication-calling";
+import { CallClient, CallAgent, VideoStreamRenderer, LocalVideoStream } from "@azure/communication-calling";
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
@@ -124,18 +126,18 @@ let rendererRemote;
 ```
 ## <a name="object-model"></a>Objektummodell
 
-Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások ügyfél-függvénytárának főbb funkcióit kezelik:
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
 
 | Név      | Leírás | 
 | :---        |    :----   |
-| CallClient  | A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.      |
+| CallClient  | A CallClient a hívó SDK fő belépési pontja.      |
 | CallAgent  | A CallAgent a hívások indításához és kezeléséhez használatos.        |
 | DeviceManager | A DeviceManager a média eszközök kezelésére szolgál.    |
 | AzureCommunicationTokenCredential | A AzureCommunicationTokenCredential osztály az CommunicationTokenCredential felületet valósítja meg, amely a CallAgent létrehozásához használatos.        |
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>Az ügyfél hitelesítése és a DeviceManager elérése
 
-Az erőforráshoz tartozó érvényes felhasználói hozzáférési jogkivonattal kell helyettesítenie <USER_ACCESS_TOKEN>. Ha még nem áll rendelkezésre jogkivonat, tekintse meg a felhasználói hozzáférési jogkivonat dokumentációját. A CallClient használatával inicializáljon egy CallAgent-példányt egy CommunicationUserCredential, amely lehetővé teszi a hívások kezdeményezését és fogadását. A DeviceManager eléréséhez először létre kell hozni egy callAgent-példányt. Ezután a példány metódusával kérheti le a következőt: `getDeviceManager` `CallClient` `DeviceManager` .
+Az erőforráshoz tartozó érvényes felhasználói hozzáférési jogkivonattal kell helyettesítenie <USER_ACCESS_TOKEN>. Ha még nem áll rendelkezésre jogkivonat, tekintse meg a felhasználói hozzáférési jogkivonat dokumentációját. A használatával `CallClient` inicializáljon egy `CallAgent` példányt egy példánnyal, `CommunicationUserCredential` amely lehetővé teszi a hívások kezdeményezését és fogadását. A callAgent- `DeviceManager` példány eléréséhez először létre kell hozni. Ezután a példány metódusával kérheti le a következőt: `getDeviceManager` `CallClient` `DeviceManager` .
 
 Szúrja be a következő kódot az `client.js` fájlba:
 
@@ -154,7 +156,7 @@ init();
 
 Esemény-figyelő hozzáadásával kezdeményezheti a hívását, ha a `callButton` gombra kattint:
 
-Először a deviceManager getCameraList API használatával kell enumerálnia a helyi kamerákat. Ebben a rövid útmutatóban a gyűjtemény első kameráját használjuk. A kívánt kamera kijelölése után a rendszer létrehoz egy LocalVideoStream-példányt, és átadja a videoOptions-en belül a localVideoStream-tömbben lévő elemnek a Call metódusnak. A hívása után a rendszer automatikusan elkezdi elküldeni a videót a másik résztvevőnek. 
+Először fel kell sorolnia a helyi kamerákat a deviceManager `getCameraList` API használatával. Ebben a rövid útmutatóban a gyűjtemény első kameráját használjuk. Miután kiválasztotta a kívánt kamerát, a rendszer létrehoz egy LocalVideoStream-példányt, és `videoOptions` a LocalVideoStream tömbben lévő elemként továbbítja a hívást metódusnak. A hívása után a rendszer automatikusan elkezdi elküldeni a videót a másik résztvevőnek. 
 
 ```JavaScript
 callButton.addEventListener("click", async () => {
@@ -179,40 +181,40 @@ callButton.addEventListener("click", async () => {
     callButton.disabled = true;
 });
 ```  
-A megjelenítéséhez `LocalVideoStream` létre kell hoznia egy új példányt `Renderer` , majd létre kell hoznia egy új RendererView-példányt az aszinkron `createView` metódus használatával. Ezután csatolhat `view.target` bármilyen felhasználóifelület-elemet. 
+A megjelenítéséhez `LocalVideoStream` létre kell hoznia egy új példányt `VideoStreamRenderer` , majd létre kell hoznia egy új `VideoStreamRendererView` példányt az aszinkron `createView` metódus használatával. Ezután csatolhat `view.target` bármilyen felhasználóifelület-elemet. 
 
 ```JavaScript
 async function localVideoView() {
-    rendererLocal = new Renderer(localVideoStream);
+    rendererLocal = new VideoStreamRenderer(localVideoStream);
     const view = await rendererLocal.createView();
     document.getElementById("myVideo").appendChild(view.target);
 }
 ```
-Az összes távoli résztvevő a `remoteParticipants` hívási példányon keresztül érhető el a gyűjteményen keresztül. Elő kell fizetnie az aktuális hívás távoli résztvevőinek, és figyelnie kell az eseményre, `remoteParticipantsUpdated` hogy feliratkozik a hozzáadott távoli résztvevőkre.
+Az összes távoli résztvevő a `remoteParticipants` hívási példányon keresztül érhető el a gyűjteményen keresztül. Meg kell hallgatni az eseményt `remoteParticipantsUpdated` , hogy értesítést kapjon, amikor új távoli résztvevőt adnak hozzá a híváshoz. Emellett meg kell ismételni a `remoteParticipants` gyűjteményt, hogy előfizessen a videó streamekre való előfizetéshez. 
 
 ```JavaScript
 function subscribeToRemoteParticipantInCall(callInstance) {
-    callInstance.remoteParticipants.forEach( p => {
-        subscribeToRemoteParticipant(p);
-    })
     callInstance.on('remoteParticipantsUpdated', e => {
         e.added.forEach( p => {
-            subscribeToRemoteParticipant(p);
+            subscribeToParticipantVideoStreams(p);
         })
-    });   
+    }); 
+    callInstance.remoteParticipants.forEach( p => {
+        subscribeToParticipantVideoStreams(p);
+    })
 }
 ```
-Előfizethet az `remoteParticipants` aktuális hívás gyűjteményére, és megvizsgálhatja a `videoStreams` gyűjteményeket az egyes résztvevői streamek listázásához. Az remoteParticipantsUpdated eseményre is elő kell fizetnünk a hozzáadott távoli résztvevők kezelésére. 
+Elő kell fizetnie az `videoStreamsUpdated` eseményre, hogy kezelni tudja a távoli résztvevők felvett videó streamjét. Megvizsgálhatja a `videoStreams` gyűjteményeket, és listázhatja az egyes résztvevők streamjét, miközben az `remoteParticipants` aktuális hívás gyűjteménye zajlik.
 
 ```JavaScript
-function subscribeToRemoteParticipant(remoteParticipant) {
-    remoteParticipant.videoStreams.forEach(v => {
-        handleVideoStream(v);
-    });
+function subscribeToParticipantVideoStreams(remoteParticipant) {
     remoteParticipant.on('videoStreamsUpdated', e => {
         e.added.forEach(v => {
             handleVideoStream(v);
         })
+    });
+    remoteParticipant.videoStreams.forEach(v => {
+        handleVideoStream(v);
     });
 }
 ```
@@ -231,11 +233,11 @@ function handleVideoStream(remoteVideoStream) {
     }
 }
 ```
-A megjelenítéséhez `RemoteVideoStream` létre kell hoznia egy új példányt `Renderer` , majd létre kell hoznia egy új `RendererView` példányt az aszinkron `createView` metódus használatával. Ezután csatolhat `view.target` bármilyen felhasználóifelület-elemet. 
+A megjelenítéséhez `RemoteVideoStream` létre kell hoznia egy új példányt `VideoStreamRenderer` , majd létre kell hoznia egy új `VideoStreamRendererView` példányt az aszinkron `createView` metódus használatával. Ezután csatolhat `view.target` bármilyen felhasználóifelület-elemet. 
 
 ```JavaScript
 async function remoteVideoView(remoteVideoStream) {
-    rendererRemote = new Renderer(remoteVideoStream);
+    rendererRemote = new VideoStreamRenderer(remoteVideoStream);
     const view = await rendererRemote.createView();
     document.getElementById("remoteVideo").appendChild(view.target);
 }
@@ -259,7 +261,7 @@ callAgent.on('incomingCall', async e => {
     const addedCall = await e.incomingCall.accept({videoOptions: {localVideoStreams:[localVideoStream]}});
     call = addedCall;
 
-    subscribeToRemoteParticipantInCall(addedCall);   
+    subscribeToRemoteParticipantInCall(addedCall);  
 });
 ```
 ## <a name="end-the-current-call"></a>Az aktuális hívás befejezése
@@ -334,6 +336,8 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 ## <a name="next-steps"></a>Következő lépések
 További információért tekintse át a következő cikkeket:
-- Tekintse meg a [web Calling mintát](../../samples/web-calling-sample.md)
-- Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](./calling-client-samples.md?pivots=platform-web)
-- További információ a [hívás működéséről](../../concepts/voice-video-calling/about-call-types.md)
+
+- Tekintse meg a [web Calling mintát](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
+- További információ az [SDK-képességek meghívásáról](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
+- További információ a [hívás működéséről](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)
+

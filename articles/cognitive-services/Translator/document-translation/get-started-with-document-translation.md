@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 70c8bce840bca6f2e99b29dc32f5e71bbad8d379
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773045"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047235"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
 
@@ -272,7 +272,7 @@ A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekbe
 
 > [!IMPORTANT]
 >
-> Az alábbi kódrészletek esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) című témakört.
+> Az alábbi kódrészletek esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](../../cognitive-services-security.md?tabs=command-line%2ccsharp) című témakört.
 >
 > Előfordulhat, hogy a művelettől függően frissítenie kell a következő mezőket:
 >>>

@@ -1,7 +1,7 @@
 ---
-title: Csevegő ügyféloldali kódtár – áttekintés az Azure kommunikációs szolgáltatásokhoz
+title: A csevegő SDK áttekintése az Azure kommunikációs szolgáltatásokhoz
 titleSuffix: An Azure Communication Services concept document
-description: Ismerje meg az Azure kommunikációs szolgáltatások csevegési ügyfelének könyvtárát.
+description: Ismerje meg az Azure kommunikációs szolgáltatások csevegési SDK-t.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,22 +9,22 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 705bd926c2ac6f414464254969b5c511c88891f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b275c3af2e92dc5af677120b5082751d19676b2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656107"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110814"
 ---
-# <a name="chat-client-library-overview"></a>A csevegési ügyfélkódtár áttekintése  
+# <a name="chat-sdk-overview"></a>A csevegési SDK áttekintése 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Az Azure kommunikációs szolgáltatások csevegési ügyfélszoftverei gazdag, valós idejű csevegést vehetnek igénybe az alkalmazásaihoz.
+Az Azure kommunikációs szolgáltatások csevegési SDK-k használatával gazdag, valós idejű csevegést adhat hozzá az alkalmazásaihoz.
     
-## <a name="chat-client-library-capabilities"></a>Csevegési ügyféloldali kódtár képességei 
+## <a name="chat-sdk-capabilities"></a>Csevegési SDK-képességek    
 
-A következő lista a kommunikációs szolgáltatások csevegési ügyféloldali könyvtáraiban jelenleg elérhető funkciókat mutatja be.  
+A következő lista a kommunikációs szolgáltatások csevegési SDK-ban jelenleg elérhető funkciók készletét mutatja be.  
 
 | Szolgáltatások csoportja | Képesség | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
@@ -51,13 +51,13 @@ A következő lista a kommunikációs szolgáltatások csevegési ügyféloldali
 
 * * A tulajdonosi jelző csomag webes szoftvercsatornák használatával valósítható meg. Ha a webes szoftvercsatornák nem támogatottak, a rendszer visszaküldi a hosszú lekérdezést.  
 
-## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>JavaScript csevegő ügyféloldali függvénytár-támogatás az operációs rendszer és a böngésző számára 
+## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>A JavaScript csevegési SDK támogatása az operációs rendszer és a böngésző használatával    
 
 A következő táblázat a jelenleg elérhető támogatott böngészők és verziók készletét tartalmazza.
     
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad operációs rendszer|
 |--------------------------------|----------------|--------------|-------|------|------|------|-------|
-| **Csevegési ügyféloldali kódtár** | Firefox *, Chrome*, új Edge | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
+| **Csevegési SDK** | Firefox *, Chrome*, új Edge | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
 
 * Vegye figyelembe, hogy az előző két kiadáson felül a legújabb verzió is támogatott.<br/>   
 

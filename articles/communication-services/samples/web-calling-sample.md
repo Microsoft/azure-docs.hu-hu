@@ -9,16 +9,16 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0f456581e14f17b0ea3ebbd54d0768d419e800b3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496235"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110644"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
-A web Calling Sample egy webalkalmazás, amely a kommunikációs szolgáltatások webes hívási ügyféloldali kódtár által nyújtott különböző képességek lépésenkénti bemutatója.
+A web Calling Sample egy webalkalmazás, amely a kommunikációs szolgáltatások web Calling SDK által nyújtott különféle funkciók lépésenkénti bemutatójának részeként szolgál.
 
 Ez a minta fejlesztők számára készült, és nagyon egyszerűvé teszi a kommunikációs szolgáltatások megkezdését. A felhasználói felülete több szakaszra oszlik, amelyek mindegyike egy "show code" (kód megjelenítése) gombot tartalmaz, amely lehetővé teszi, hogy közvetlenül a böngészőjéből másoljon kódot a saját kommunikációs szolgáltatások alkalmazásba.
 
@@ -86,7 +86,7 @@ Ez a minta kódrészleteket is biztosít a következő képességekhez:
 
 További információért tekintse át a következő cikkeket:
 
-- Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
+- Ismerkedjen meg [a Calling SDK használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../concepts/voice-video-calling/about-call-types.md)
 - Az [API-referenciák dokumentációjának](/javascript/api/azure-communication-services/@azure/communication-calling/) áttekintése
 - A [contoso Med-alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-med-app) mintájának áttekintése

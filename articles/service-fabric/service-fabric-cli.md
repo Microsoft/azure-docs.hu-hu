@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: a1b0598f34fe894e078dc647149cff4ac74e1fea
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ff322cb3633616e9004bc8fa25b048b6f1263008
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802148"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046334"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -58,11 +58,11 @@ Sokféleképpen telepítheti a pipet és a Pythont a platformra. Itt találja a 
 
 Windows 10, Windows Server 2016 és Windows Server 2012 R2 esetén használja a normál telepítési utasításokat. A Python telepítője alapértelmezés szerint a pipet is telepíti.
 
-1. Látogasson el a hivatalos [Python letöltési oldalra](https://www.python.org/downloads/), és töltse le a Python 3,7 legújabb kiadását.
+1. Látogasson el a hivatalos [Python letöltési oldalra](https://www.python.org/downloads/), és töltse le a Python 3. x legújabb kiadását.
 
 2. Indítsa el a telepítőt.
 
-3. A parancssor alján válassza a **Python 3,7 hozzáadása az elérési útra** lehetőséget.
+3. A parancssor alján válassza a **Python 3. x hozzáadása az elérési útra** lehetőséget.
 
 4. Válassza az **Install Now** (Telepítés) lehetőséget, és fejezze be a telepítést.
 
@@ -118,8 +118,8 @@ sudo pip3 install sfctl
 A következő parancsok futtatásával telepítheti Service Fabric CLI-t a Red Hat-on:
 
 ```bash
-sudo yum install -y python34
-sudo yum install python34-setuptools
+sudo yum install -y python38
+sudo yum install python38-setuptools
 sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
@@ -135,7 +135,7 @@ MacOS rendszeren javasoljuk, hogy a [HomeBrew csomagkezelőt](https://brew.sh) h
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Ezután a terminálról telepítse a Python 3,7, a pip és a Service Fabric parancssori felületet a következő parancsok futtatásával:
+Ezután a terminálból telepítse a legújabb Python 3. x, Pip és a Service Fabric CLI-t a következő parancsok futtatásával:
 
 ```bash
 brew install python3

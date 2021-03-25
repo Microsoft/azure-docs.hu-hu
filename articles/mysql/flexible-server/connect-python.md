@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: kapcsolat a Python-Azure Database for MySQL-rugalmas kiszolgáló használatával'
 description: Ez a rövid útmutató számos Python-kódrészletet tartalmaz, amelyekkel csatlakozhat, és lekérdezheti Azure Database for MySQL-rugalmas kiszolgáló adatait.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: ff14bb1daeef6fc54ee5d11632ad98a29db2a172
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e99beb024690bf888d0acbb747e98252eced7e06
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90947092"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110134"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rövid útmutató: a Python használata a Azure Database for MySQL rugalmas kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
