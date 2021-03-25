@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/23/2021
-ms.openlocfilehash: 22653b54e53e181d27c8abe966acb91cb8c84214
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: fa21acc09858f4468e53788428e4928dc381a94e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023851"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107856"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Tárolási típus|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS/készletben <sup>2</sup>|2800|3200|3600|4000|6400|9600|
-|Maximális naplózási arány (MB/s)|42|48|48|48|48|48|
+|Maximális naplózási arány (MB/s)|42|48|54|60|62,5|62,5|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Egyidejű bejelentkezések maximális száma (kérelmek) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -120,7 +120,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Tárolási típus|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS/készletben <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
-|Maximális naplózási arány (MB/s)|12|24|36|48|48|48|48|
+|Maximális naplózási arány (MB/s)|12|24|36|48|60|62,5|62,5|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -152,7 +152,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Tárolási típus|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS/készletben <sup>2</sup> |6 400|7 200|8,000|9600|12 800|16000|16000|
-|Maximális naplózási arány (MB/s)|48|48|48|48|48|48|48|
+|Maximális naplózási arány (MB/s)|62,5|62,5|62,5|62,5|62,5|62,5|62,5|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -186,7 +186,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS/készletben <sup>2</sup>|2560|3200|3840|4480|5120|
-|Maximális naplózási arány (MB/s)|48|48|48|48|48|
+|Maximális naplózási arány (MB/s)|48|60|62,5|62,5|62,5|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|400|500|600|700|800|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|800|1000|1200|1400|1600|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
@@ -195,7 +195,6 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
-
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
 
@@ -219,7 +218,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS/készletben <sup>2</sup>|5760|6400|7680|10240|11520|12800|
-|Maximális naplózási arány (MB/s)|48|48|48|48|48|48|
+|Maximális naplózási arány (MB/s)|62,5|62,5|62,5|62,5|62,5|62,5|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -234,7 +233,6 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 <sup>2</sup> az i/o-méretek maximális értéke 8 kb és 64 kb között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
 
 <sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
-
 
 ## <a name="general-purpose---provisioned-compute---dc-series"></a>Általános célú kiépített számítás – DC sorozat
 
@@ -252,7 +250,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Tárolási típus|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS/készletben <sup>2</sup>|800|1600|2400|3200|
-|Maximális naplózási arány (MB/s)|9,4|18,8|28,1|32,8|
+|Maximális naplózási arány (MB/s)|12|24|36|48|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|168|336|504|672|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|168|336|504|672|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
@@ -446,12 +444,12 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 |Számítási generáció|M sorozat|M sorozat|M sorozat|M sorozat|M sorozat|
 |Virtuális mag|20|24|32|64|128|
 |Memória (GB)|588,6|706,3|941,8|1883,5|3767,0|
-|Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
+|Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
 |Memóriában tárolt OLTP-tároló (GB)|172|216|304|704|1768|
 |Maximális adatméret (GB)|1280|1536|2048|4096|4096|
 |Napló maximális mérete (GB)|427|512|683|1024|1024|
-|TempDB maximális adatméret (GB)|4096|2048|1024|768|640|
+|TempDB maximális adatméret (GB)|640|768|1024|2048|4096|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
 |Maximális adatmennyiség IOPS/készletben <sup>2</sup>|31 248|37 497|49 996|99 993|160 000|

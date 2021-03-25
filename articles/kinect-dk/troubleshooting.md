@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: hibaelhárítás, frissítés, hiba, Kinect, visszajelzés, helyreállítás, naplózás, tippek
-ms.openlocfilehash: 32a86deb0b6ab70e42ae3d659504256baae76202
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b83e2952a9039a52aa3b905e376e5d3beccaf8c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654764"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026589"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure-beli Kinect ismert problémák és hibaelhárítás
 
@@ -189,11 +189,17 @@ A Body Tracking SDK C# dokumentációja [itt](https://microsoft.github.io/Azure-
 
 A Body Tracking SDK támogatja a CPU-t, a CUDA-t, a DirectML-t (csak Windows) és a TensorRT végrehajtási környezeteket, hogy következtetni lehessen a pózolás becslésére Az `K4ABT_TRACKER_PROCESSING_MODE_GPU` alapértelmezett érték a CUDA-végrehajtás a Linuxon és a DirectML a Windowson. Három további mód lett hozzáadva az adott végrehajtási környezetek kiválasztásához: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA` , `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` és `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` .
 
+> [!NOTE]  
+> A ONNX Runtime figyelmeztetéseket jelenít meg a nem gyorsított műveleti kód esetében. Ezek nyugodtan figyelmen kívül hagyhatók.
+
 Az ONNX Runtime környezeti változókat tartalmaz a TensorRT-modell gyorsítótárazásának szabályozásához. Az ajánlott értékek a következők:
-- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
-- ORT_TENSORRT_ENGINE_CACHE_PATH = "elérési_út"
+- ORT_TENSORRT_CACHE_ENABLE = 1 
+- ORT_TENSORRT_CACHE_PATH = "elérési_út"
 
 A törzs követésének megkezdése előtt létre kell hozni a mappát.
+
+> [!IMPORTANT]  
+> A TensorRT előre feldolgozza a modellt a következtetés előtt, ami kiterjesztett indítási időt eredményezett a többi végrehajtási környezethez képest. A motor gyorsítótárazása ezt az első végrehajtásra korlátozza, azonban kísérleti jellegű, és a modellre, a ONNX Runtime verziójára, a TensorRT-verzióra és a GPU-modellre vonatkozik.
 
 A TensorRT végrehajtási környezet a FP32 (alapértelmezett) és a FP16 egyaránt támogatja. A FP16 mesterségek ~ 2x teljesítménybeli növekedés a minimális pontosság csökkentése érdekében. FP16 megadásához:
 - ORT_TENSORRT_FP16_ENABLE = 1

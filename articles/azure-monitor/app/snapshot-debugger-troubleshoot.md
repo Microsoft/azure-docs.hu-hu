@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217414"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026453"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
 Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő utasításokat követve elháríthatja a hibát.
@@ -20,7 +20,7 @@ Számos különböző oka lehet annak, hogy a pillanatképek miért nem hozható
 
 ## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>Győződjön meg arról, hogy a megfelelő Snapshot Debugger végpontot használja
 
-Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
+Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) és az [Azure China](/azure/china/resources-developer-guide).
 
 A Application Insights SDK-t használó App Service és alkalmazásokhoz a következő módon kell frissítenie a kapcsolódási karakterláncot a Snapshot Debugger támogatott felülbírálásai alapján:
 
@@ -28,7 +28,7 @@ A Application Insights SDK-t használó App Service és alkalmazásokhoz a köve
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-További információ az egyéb kapcsolatok felülbírálásáról: [Application Insights dokumentáció](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+További információ az egyéb kapcsolatok felülbírálásáról: [Application Insights dokumentáció](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 Függvényalkalmazás a következő `host.json` támogatott felülbírálások használatával kell frissítenie:
 

@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: d3077878dc02066b8ca5dd4441217e584f961725
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 2bdb6a085bd9fa0e9967d723db63f2310a8e02db
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782265"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023095"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Oktatóanyag: SQL-példányok felmérése az Azure SQL-re való áttelepítéshez
 
@@ -32,6 +32,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
 - Mielőtt ezt az oktatóanyagot elvégezte az Azure SQL-re való áttelepítéshez szükséges SQL Server-példányok értékeléséhez, győződjön meg arról, hogy felderítette az Azure Migrate berendezés használatával felmérni kívánt SQL-példányokat, [kövesse az oktatóanyagot](tutorial-discover-vmware.md)
+- Ha egy meglévő projektben szeretné kipróbálni ezt a funkciót, győződjön meg arról, hogy végrehajtotta a jelen cikkben ismertetett [előfeltételeket](how-to-discover-sql-existing-project.md) .
+
 
 ## <a name="run-an-assessment"></a>Értékelés futtatása
 Az értékelést a következőképpen futtathatja:

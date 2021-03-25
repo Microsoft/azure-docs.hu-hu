@@ -1,25 +1,25 @@
 ---
 title: Ismerkedés a Teams együttműködésével az Azure kommunikációs szolgáltatásokban
 titleSuffix: An Azure Communication Services quickstart
-description: Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy csapathoz az Azure kommunikációs csevegési ügyféloldali kódtár használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy csapathoz az Azure Communication chat SDK-val
 author: askaur
 ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 75580931b2df33b02b9759b6faaa5bec548daaae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d7ea3b67c3ce85ce104d16785e4e5f4d45b138f6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496174"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106792"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Gyors útmutató: csatlakozás a csevegési alkalmazáshoz egy csapat-értekezleten
 
 > [!IMPORTANT]
 > A [csapat bérlői együttműködésének](../../concepts/teams-interop.md)engedélyezéséhez vagy letiltásához fejezze be [ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u).
 
-Ismerkedés az Azure kommunikációs szolgáltatásokkal a csevegési megoldás Microsoft Teams-hez való csatlakoztatásával a JavaScript ügyféloldali kódtár használatával. 
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal, ha a JavaScript SDK használatával csatlakoztatja a csevegési megoldását a Microsoft Teams szolgáltatáshoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 

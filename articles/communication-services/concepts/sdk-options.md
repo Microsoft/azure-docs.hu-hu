@@ -1,7 +1,7 @@
 ---
 title: Ügyféloldali kódtárak és REST API-k az Azure kommunikációs szolgáltatásokhoz
 titleSuffix: An Azure Communication Services concept document
-description: További információ az Azure kommunikációs szolgáltatások ügyféloldali könyvtárairól és a REST API-król.
+description: További információ az Azure Communication Services SDK-król és a REST API-król.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,37 +9,37 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 01a5f4a947f0b89b5881eddb3c743b9a9b184b19
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: effd7658bbfe7359e1f99f9452857824c2c45c2f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495640"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107890"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Ügyfélkódtárak és REST API-k
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat területre szervezték. Egyes területek teljesen nyílt forráskódú ügyféloldali kódtárakkal rendelkeznek. A hívó ügyféloldali függvénytár saját hálózati adaptereket használ, és jelenleg zárt forrású, a csevegési függvénytár pedig zárt forráskódú függőséget tartalmaz. Az ügyféloldali kódtárak mintáit és további technikai részleteit az [Azure kommunikációs szolgáltatások GitHub](https://github.com/Azure/communication)-tárházában tesszük közzé.
+Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat területre szervezték. Néhány területen teljesen nyílt forráskódú SDK-k találhatók. A hívó SDK saját hálózati adaptereket használ, és jelenleg zárt forrású, a csevegési függvénytár pedig zárt forrású függőséget tartalmaz. Az SDK-k mintáit és további technikai részleteit az [Azure kommunikációs szolgáltatások GitHub](https://github.com/Azure/communication)-tárházában tesszük közzé.
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 
 | Szerelvény               | Protokollok             |Nyitott és lezárt forrás| Névterek                          | Képességek                                                      |
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Megnyitás            | Azure. erőforráskezelő. Communication | Kommunikációs szolgáltatások erőforrásainak kiépítése és kezelése             |
-| Közös                 | REST | Megnyitás               | Azure. Communication. Common          | Alaptípusokat biztosít más ügyféloldali kódtárak számára |
+| Közös                 | REST | Megnyitás               | Azure. Communication. Common          | Alaptípusokat biztosít más SDK-k számára |
 | Identitás         | REST | Megnyitás               | Azure. Communication. Identity  | Felhasználók kezelése, hozzáférési tokenek |
 | Telefonszámok         | REST | Megnyitás               | Azure. Communication. PhoneNumbers  | Telefonszámok kezelése |
 | Csevegés                   | PIHENÉS saját jelzéssel | Megnyitás zárt forrású jelző csomaggal    | Azure. Communication. chat            | Valós idejű szöveg-alapú csevegés hozzáadása az alkalmazásokhoz  |
 | SMS                    | REST | Megnyitás              | Azure. Communication. SMS             | SMS-üzenetek küldése és fogadása |
 | Hívó                | Saját szállítás | Lezárt |Azure. Communication. Calling         | A hang-, videó-, képernyő-megosztási és egyéb valós idejű adatkommunikációs képességek kihasználása          |
 
-Vegye figyelembe, hogy a Azure Resource Manager-, identitás-és SMS-ügyfél-kódtárak a szolgáltatás-integrációra összpontosítanak, és sok esetben biztonsági problémák merülnek fel, ha a funkciókat végfelhasználói alkalmazásokba integrálja. A gyakori és a csevegési ügyféloldali kódtárak alkalmasak a szolgáltatás-és ügyfélalkalmazások számára. A hívó ügyféloldali kódtár ügyfélalkalmazások számára készült. A szolgáltatási forgatókönyvekre összpontosító ügyféloldali függvénytár fejlesztés alatt áll.
+Vegye figyelembe, hogy a Azure Resource Manager, az identitás és az SMS SDK-k a szolgáltatások integrálására összpontosítanak, és sok esetben biztonsági problémák merülnek fel, ha a funkciókat végfelhasználói alkalmazásokba integrálja. A gyakori és csevegési SDK-k alkalmasak a szolgáltatás-és ügyfélalkalmazások számára. A hívó SDK ügyfélalkalmazások számára készült. A szolgáltatási forgatókönyvekre összpontosító SDK fejlesztés alatt áll.
 
 ### <a name="languages-and-publishing-locations"></a>Nyelvek és közzétételi helyszínek
 
-Az egyes ügyféloldali függvénytár-csomagok közzétételi helyei alább láthatók.
+Az egyes SDK-csomagok közzétételi helyei alább láthatók.
 
 | Terület           | JavaScript | .NET | Python | Java SE | iOS | Android | Egyéb                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
@@ -60,8 +60,8 @@ A kommunikációs szolgáltatások API-jai a [docs.microsoft.com](/rest/api/azur
 
 ### <a name="ios-and-android-support-details"></a>az iOS és az Android támogatásának részletei
 
-- A kommunikációs szolgáltatások iOS-ügyféloldali kódtárai az iOS-es és a Xcode 11 + verzióját célozzák meg.
-- Android Java ügyféloldali kódtárak cél Android API Level 21 + és Android Studio 4.0 +
+- A kommunikációs szolgáltatások iOS SDK-k az iOS 13 + és a Xcode 11 + verzióját célozzák meg.
+- Androidos Java SDK-k cél Android API Level 21 + és Android Studio 4.0 +
 
 ### <a name="net-support-details"></a>.NET-támogatás részletei
 
@@ -82,9 +82,9 @@ Támogatás a .NET Core 2,0-on keresztül:
 - Xamarin iOS 10,14
 - Xamarin Mac 3,8
 
-## <a name="calling-client-library-timeouts"></a>Ügyféloldali kódtár időtúllépésének meghívása
+## <a name="calling-sdk-timeouts"></a>Az SDK időtúllépésének meghívása
 
-A következő időtúllépések érvényesek a kommunikációs szolgáltatások ügyfél-kódtárainak meghívásakor:
+A következő időtúllépések érvényesek az SDK-kat hívó kommunikációs szolgáltatásokra:
 
 | Művelet           | Időtúllépés hossza másodpercben |
 | -------------- | ---------- |
@@ -100,30 +100,30 @@ A következő időtúllépések érvényesek a kommunikációs szolgáltatások 
 ## <a name="api-stability-expectations"></a>API-stabilitási elvárások
 
 > [!IMPORTANT]
-> Ez a szakasz útmutatást nyújt a REST API-kkal és az ügyfél-kódtárak **stabil** jelöléssel. A előzetes kiadást, előzetes verziót vagy bétaverziót jelölt API-k **értesítés nélkül** módosíthatók vagy elavulttá válhatnak.
+> Ez a szakasz a REST API-k és az SDK-k **stabil** jelölését ismerteti. A előzetes kiadást, előzetes verziót vagy bétaverziót jelölt API-k **értesítés nélkül** módosíthatók vagy elavulttá válhatnak.
 
-A jövőben előfordulhat, hogy kivonják a kommunikációs szolgáltatások ügyféloldali kódtárainak verzióit, és a REST API-k és a kiadott ügyféloldali kódtárak feltörési változásait is bevezetjük. Az Azure kommunikációs szolgáltatásai *általában* két támogatási szabályzatot követnek a szolgáltatási verziók kivonásához:
+A jövőben előfordulhat, hogy kivonják a kommunikációs szolgáltatások SDK-jai verzióit, és a REST API-kon és a kiadott SDK-kon is bevezetjük a módosításokat. Az Azure kommunikációs szolgáltatásai *általában* két támogatási szabályzatot követnek a szolgáltatási verziók kivonásához:
 
-- A kommunikációs szolgáltatások felületének változása miatt legalább három évig értesítést kap a kód módosításának szükségességéről. Az összes dokumentált REST API és ügyféloldali függvénytár API általában legalább három éves figyelmeztetést biztosít a felületek leszerelése előtt.
-- Legalább egy évig értesítést kap, mielőtt frissítenie kell az ügyféloldali függvénytár-szerelvényeket a legújabb alverzióra. Ezeknek a szükséges frissítéseknek semmilyen programkód-módosításra sincs szükségük, mert ugyanazon a főverzión vannak. Ez különösen igaz a hívó és a csevegési kódtárak esetében, amelyek olyan valós idejű összetevőkkel rendelkeznek, amelyek gyakran igényelnek biztonsági és teljesítménybeli frissítéseket. Javasoljuk, hogy frissítse a kommunikációs szolgáltatások ügyféloldali kódtárait.
+- A kommunikációs szolgáltatások felületének változása miatt legalább három évig értesítést kap a kód módosításának szükségességéről. Az összes dokumentált REST API és SDK API általában legalább három éves figyelmeztetést biztosít a felületek leszerelése előtt.
+- Legalább egy évig értesítést kap, mielőtt frissítenie kell az SDK-szerelvényeket a legújabb alverzióra. Ezeknek a szükséges frissítéseknek semmilyen programkód-módosításra sincs szükségük, mert ugyanazon a főverzión vannak. Ez különösen igaz a hívó és a csevegési kódtárak esetében, amelyek olyan valós idejű összetevőkkel rendelkeznek, amelyek gyakran igényelnek biztonsági és teljesítménybeli frissítéseket. Javasoljuk, hogy frissítse a kommunikációs szolgáltatások SDK-kat.
 
-### <a name="api-and-client-library-decommissioning-examples"></a>Példák az API és az ügyféloldali kódtár leszerelésére
+### <a name="api-and-sdk-decommissioning-examples"></a>Példák az API és az SDK leszerelésére
 
 **Integrálta az SMS-REST API V24 verzióját az alkalmazásba. Az Azure kommunikációs kiadásai v25.**
 
 Az API-k futtatása előtt 3 év figyelmeztetést kap, és a v25-ra való frissítésre kényszerülnek. A frissítéshez szükség lehet a kód módosítására.
 
-**Integrálta a hívó ügyféloldali kódtár v 2.02 verzióját az alkalmazásba. Az Azure kommunikációs kiadásai: v 2.05.**
+**Integrálta a hívó SDK v 2.02 verzióját az alkalmazásba. Az Azure kommunikációs kiadásai: v 2.05.**
 
-Előfordulhat, hogy frissítenie kell a Called Client Library v 2.05 verziójára a v 2.05 kiadásának 12 hónapon belül. Ez az összetevő egyszerű helyettesítése a kód módosítása nélkül, mert a v 2.05 a v2 főverzióban van, és nem változik a változások megszakítása.
+Előfordulhat, hogy frissítenie kell a hívó SDK v 2.05 verziójára a v 2.05 kiadásának 12 hónapon belül. Ez az összetevő egyszerű helyettesítése a kód módosítása nélkül, mert a v 2.05 a v2 főverzióban van, és nem változik a változások megszakítása.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkért tekintse meg a következő ügyféloldali függvénytár-áttekintéseket:
+További információkért tekintse meg a következő SDK-áttekintéseket:
 
-- [Az ügyféloldali kódtár meghívása – áttekintés](../concepts/voice-video-calling/calling-sdk-features.md)
-- [Csevegő ügyféloldali kódtár – áttekintés](../concepts/chat/sdk-features.md)
-- [SMS ügyféloldali kódtár – áttekintés](../concepts/telephony-sms/sdk-features.md)
+- [Az SDK meghívása – áttekintés](../concepts/voice-video-calling/calling-sdk-features.md)
+- [A csevegési SDK áttekintése](../concepts/chat/sdk-features.md)
+- [SMS SDK – áttekintés](../concepts/telephony-sms/sdk-features.md)
 
 Ismerkedés az Azure kommunikációs szolgáltatásokkal:
 

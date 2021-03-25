@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 6d31bd0911b5cf765215e6a482a39b2458c4ba0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e00332eca076b55a884682240ef26ea3a4546d1
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101696148"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046062"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source-preview"></a>SAP S/4HANA-forrás regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -25,7 +25,7 @@ Az SAP S/4HANA forrás támogatja a **teljes vizsgálatot** , amellyel kinyerhet
 ## <a name="prerequisites"></a>Előfeltételek
 
 1.  Állítsa be a legújabb [saját üzemeltetésű integrációs](https://www.microsoft.com/download/details.aspx?id=39717)modult.
-    További információ: saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    További információ: saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Győződjön meg arról, hogy a [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) telepítve van a virtuális gépen, ahol a saját üzemeltetésű Integration Runtime telepítve van.
 
@@ -78,7 +78,7 @@ A **források regisztrálása (SAP S/4HANA)** képernyőn tegye a következőket
 
 Új vizsgálat létrehozásához és futtatásához tegye a következőket:
 
-1.  A felügyeleti központban kattintson az Integration Runtimes elemre. Győződjön meg arról, hogy a saját üzemeltetésű integrációs modul van beállítva. Ha nincs beállítva, kövesse az [itt](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) leírt lépéseket a saját üzemeltetésű integrációs modul létrehozásához.
+1.  A felügyeleti központban kattintson az Integration Runtimes elemre. Győződjön meg arról, hogy a saját üzemeltetésű integrációs modul van beállítva. Ha nincs beállítva, kövesse az [itt](./manage-integration-runtimes.md) leírt lépéseket a saját üzemeltetésű integrációs modul létrehozásához.
 
 2.  Navigáljon a **forrásokhoz.**
 

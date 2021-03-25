@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87323502"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024744"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>A Application Insights felhasználói viselkedési elemzési eszközeinek hibáinak megoldása
 Kérdése van a [felhasználói viselkedést elemző eszközökkel kapcsolatban Application Insights](usage-overview.md): [felhasználók, munkamenetek, események](usage-segmentation.md), [tölcsérek](usage-funnels.md), [Felhasználókövetés](usage-flows.md), [megőrzés](usage-retention.md)vagy kohorszok? Íme néhány válasz.
@@ -23,7 +23,7 @@ A Application Insights összes telemetria-eseményében szerepel egy [névtelen 
 
 Ha webalkalmazást figyel, a legegyszerűbb megoldás a [Application Insights JavaScript SDK](./javascript.md) hozzáadása az alkalmazáshoz, és győződjön meg arról, hogy a parancsfájl-kódrészlet be van töltve minden figyelni kívánt oldalon. A JavaScript SDK automatikusan létrehoz névtelen felhasználói és munkamenet-azonosítókat, majd feltölti a telemetria-eseményeket az alkalmazásból elküldett azonosítókkal.
 
-Ha webszolgáltatást figyel (nincs felhasználói felülete), [hozzon létre egy telemetria-inicializáló, amely feltölti a névtelen felhasználói azonosító és a munkamenet-azonosító tulajdonságait](usage-send-user-context.md) a szolgáltatás egyedi felhasználók és munkamenetek fogalmai alapján.
+Ha webszolgáltatást figyel (nincs felhasználói felülete), [hozzon létre egy telemetria-inicializáló, amely feltölti a névtelen felhasználói azonosító és a munkamenet-azonosító tulajdonságait](./usage-overview.md) a szolgáltatás egyedi felhasználók és munkamenetek fogalmai alapján.
 
 Ha az alkalmazás [hitelesített felhasználói azonosítókat](./api-custom-events-metrics.md#authenticated-users)küld, akkor a felhasználók eszközön a hitelesített felhasználói azonosítók alapján számíthat. A "Megjelenítés" legördülő menüben válassza a "hitelesített felhasználók" lehetőséget.
 
@@ -50,4 +50,3 @@ Ha az alkalmazás túl sok egyéni eseményazonosító küldését küldi el, m�
 
 ## <a name="get-help"></a>Segítség kérése
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-

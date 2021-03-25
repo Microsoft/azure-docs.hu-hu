@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cc8e0edd1109162f0b426be31eb875ba8465d091
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8f7bfd63d858fb409286268c318c9f66474e3d53
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490772"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110916"
 ---
 # <a name="call-flow-basics"></a>Folyamat alapjai
 
@@ -26,7 +26,7 @@ Az alábbi szakasz áttekintést nyújt az Azure kommunikációs szolgáltatáso
 
 Társ-társ vagy csoportos hívás létrehozásakor a rendszer két protokollt használ a színfalak mögött – HTTP (REST) az adathordozók jelzéséhez és SRTP.
 
-Az ügyféloldali kódtárak vagy az ügyféloldali kódtárak és a kommunikációs szolgáltatások jelzői közötti jelzések a HTTP REST (TLS) protokollal kezelhetők. A Real-Time Media Traffic (RTP) esetében a User Datagram Protocol (UDP) használata javasolt. Ha a tűzfal megakadályozza az UDP használatát, az ügyféloldali kódtár a Transmission Control Protocol (TCP) adathordozót fogja használni.
+Az SDK-k vagy az SDK-k, valamint a kommunikációs szolgáltatások jelzői közötti jelzések a HTTP REST (TLS) protokollal kezelhetők. A Real-Time Media Traffic (RTP) esetében a User Datagram Protocol (UDP) használata javasolt. Ha a tűzfal megakadályozza az UDP használatát, az SDK a Transmission Control Protocol (TCP) adathordozót fogja használni.
 
 Vizsgáljuk meg a jeleket és a média protokollokat különböző forgatókönyvekben.
 
@@ -34,21 +34,21 @@ Vizsgáljuk meg a jeleket és a média protokollokat különböző forgatóköny
 
 ### <a name="case-1-voip-where-a-direct-connection-between-two-devices-is-possible"></a>1. eset: az a VoIP, amelyben két eszköz közötti közvetlen kapcsolat lehetséges
 
-Az egy-az-egyhez típusú VoIP-vagy videohívások esetén a forgalom a legközvetlenebb útvonalat részesíti előnyben. A "közvetlen elérési út" azt jelenti, hogy ha két ügyfél-függvénytár közvetlenül elér egymással, közvetlen kapcsolatot létesít. Ez általában akkor fordulhat elő, ha két ügyféloldali függvénytár ugyanabban az alhálózatban van (például egy alhálózatban 192.168.1.0/24), vagy kettőt, ha az egyes alhálózatokban élő eszközök látják egymást (az 10.10.0.0/16 és a 192.168.1.0/24 alhálózatban található ügyféloldali kódtárak).
+Az egy-az-egyhez típusú VoIP-vagy videohívások esetén a forgalom a legközvetlenebb útvonalat részesíti előnyben. A "közvetlen elérési út" azt jelenti, hogy ha két SDK közvetlenül is elérhet egymással, közvetlen kapcsolatot létesít. Ez általában akkor fordulhat elő, ha két SDK ugyanabban az alhálózatban található (például egy alhálózatban 192.168.1.0/24), vagy kettőt, ha az egyes alhálózatokban élő eszközök képesek egymásnak megtekinteni (az 10.10.0.0/16 és a 192.168.1.0/24 alhálózatban található SDK-k is elérhetők egymástól).
 
 :::image type="content" source="./media/call-flows/about-voice-case-1.png" alt-text="A felhasználók és a kommunikációs szolgáltatások közötti közvetlen VOIP-hívást bemutató ábra.":::
 
 ### <a name="case-2-voip-where-a-direct-connection-between-devices-is-not-possible-but-where-connection-between-nat-devices-is-possible"></a>2. eset: az eszközök közötti közvetlen kapcsolat nem lehetséges, de a NAT-eszközök közötti kapcsolat lehetséges
 
-Ha két eszköz olyan alhálózatokban található, amelyek nem tudnak megérkezni egymáshoz (például Alice működik egy kávézóból, és Bob működik a saját otthoni irodájában), de a NAT-eszközök közötti kapcsolat lehetséges, az ügyféloldali kódtár kapcsolatot létesít a NAT-eszközök használatával.
+Ha két eszköz olyan alhálózatokban található, amelyek nem tudnak elérni egymáshoz (például Alice működik egy kávézóból, és Bob működik a saját otthoni irodájában), de a NAT-eszközök közötti kapcsolat lehetséges, akkor az ügyféloldali SDK-k NAT-eszközökön keresztül csatlakoznak a kapcsolathoz.
 
-Alice számára a Coffee Shop NAT-je lesz, és Bob számára a hazai iroda NAT-je lesz. Alice eszköze elküldi a NAT külső címeit, és Bob is ugyanezt teszi. Az ügyfél-kódtárak megtudhatják a külső címeket egy olyan KÁBÍTó (munkamenet-bejárási segédprogramok a NAT-hoz) szolgáltatáshoz, amelyet az Azure kommunikációs szolgáltatásai ingyenesen biztosítanak. Az Alice és Bob közötti kézfogást kezelő logika beágyazva van az Azure kommunikációs szolgáltatásokban biztosított ügyféloldali kódtárak közé. (Nincs szükség további konfigurációra)
+Alice számára a Coffee Shop NAT-je lesz, és Bob számára a hazai iroda NAT-je lesz. Alice eszköze elküldi a NAT külső címeit, és Bob is ugyanezt teszi. Az SDK-k az Azure kommunikációs szolgáltatások által ingyenesen elérhető, elkábító (munkamenet-bejárási segédprogramok: NAT) szolgáltatás külső címeit tanulják meg. Az Alice és Bob közötti kézfogást kezelő logika beágyazva van az Azure kommunikációs szolgáltatások által biztosított SDK-k közé. (Nincs szükség további konfigurációra)
 
 :::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="A KÁBÍTÁSi kapcsolatokat használó VOIP-hívást ábrázoló ábra.":::
 
 ### <a name="case-3-voip-where-neither-a-direct-nor-nat-connection-is-possible"></a>3. eset: VoIP, ahol sem a közvetlen, sem a NAT-kapcsolatok nem lehetségesek
 
-Ha egy vagy mindkét ügyfél egy szimmetrikus NAT mögött található, egy külön felhőalapú szolgáltatás szükséges az adathordozó továbbításához a két ügyfél kódtára között. Ezt a szolgáltatást kapcsolja be (a NAT-kapcsolaton keresztüli átjárással), és a kommunikációs szolgáltatások is biztosítanak. A kommunikációs szolgáltatások által meghívott ügyféloldali függvénytár automatikusan az észlelt hálózati feltételek alapján kapcsolja be a szolgáltatásokat. A Microsoft TURN Service használatát külön kell fizetni.
+Ha az ügyféleszközök egyike szimmetrikus NAT mögött van, egy különálló felhőalapú szolgáltatásra van szükség, amely továbbítja az adathordozót a két SDK között. Ezt a szolgáltatást kapcsolja be (a NAT-kapcsolaton keresztüli átjárással), és a kommunikációs szolgáltatások is biztosítanak. A kommunikációs szolgáltatások által meghívott SDK automatikusan az észlelt hálózati feltételek alapján kapcsolja be a szolgáltatásokat. A Microsoft TURN Service használatát külön kell fizetni.
 
 :::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="A KAPCSOLÁSi kapcsolatokat használó VOIP-hívást ábrázoló ábra.":::
 
@@ -72,15 +72,15 @@ A csoportos hívások alapértelmezett valós idejű protokollja a User Datagram
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="A kommunikációs szolgáltatásokon belüli UDP-adatfolyamok folyamatát ábrázoló diagram.":::
 
-Ha az ügyféloldali kódtár nem tud az UDP protokollt használni a tűzfal korlátozásai miatt, a rendszer kísérletet tesz a Transmission Control Protocol (TCP) használatára. Vegye figyelembe, hogy a Media Processor összetevőhöz UDP szükséges, így ha ez történik, a kommunikációs szolgáltatások bekapcsolják a szolgáltatást, hogy a rendszer a TCP-t UDP-re fordítja. Ebben az esetben a díjak kiváltására akkor kerül sor, ha a funkciók kézi letiltására nem kerül sor.
+Ha az SDK tűzfal korlátozásai miatt nem tud az UDP protokollt használni az adathordozón, a rendszer kísérletet tesz a Transmission Control Protocol (TCP) használatára. Vegye figyelembe, hogy a Media Processor összetevőhöz UDP szükséges, így ha ez történik, a kommunikációs szolgáltatások bekapcsolják a szolgáltatást, hogy a rendszer a TCP-t UDP-re fordítja. Ebben az esetben a díjak kiváltására akkor kerül sor, ha a funkciók kézi letiltására nem kerül sor.
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="A kommunikációs szolgáltatások TCP-feldolgozási folyamatát ábrázoló diagram.":::
 
-### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>5. eset: a kommunikációs szolgáltatások ügyféloldali könyvtára és a Microsoft Teams egy ütemezett csapat ülésén
+### <a name="case-5-communication-services-sdk-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>5. eset: a kommunikációs Services SDK és a Microsoft Teams egy ütemezett csapat ülésén
 
 A riasztás a jelző vezérlőn keresztül zajlik. Az adathordozó a média processzorán keresztül áramlik. A jelző vezérlő és a média processzora a kommunikációs szolgáltatások és a Microsoft Teams között van megosztva.
 
-:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="A kommunikációs szolgáltatások ügyféloldali függvénytárát és a Teams-ügyfelet bemutató diagram egy ütemezett csapat ülésén.":::
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Diagram, amely a kommunikációs szolgáltatások SDK-t és a Teams-ügyfelet mutatja egy ütemezett csapat ülésén.":::
 
 
 

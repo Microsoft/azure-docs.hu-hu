@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952456"
+ms.locfileid: "105024234"
 ---
-# <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Eszközök tömeges szerkesztése Szószedet-kifejezések címkézéséhez
+# <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>Eszközök tömeges szerkesztése a jegyzetekkel való besoroláshoz, Szószedet feltételei és névjegyek módosítása
 
-Ez a cikk azt ismerteti, hogyan lehet több Szószedet-kifejezést felcímkézni a kiválasztott eszközök listájára egyetlen műveletben.
+Ez a cikk azt ismerteti, hogyan lehet több szószedetet, besorolást, tulajdonost és szakértőt felcímkézni egyetlen művelettel a kiválasztott eszközök listájára.
 
 ### <a name="add-assets-to-view-selected-list-using-search"></a>Eszközök hozzáadása a kiválasztott lista megtekintéséhez a keresés használatával
 

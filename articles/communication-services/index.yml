@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: ec491509c80f69e000a67e40288b6e298ba9fb85
-  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+  ms.openlocfilehash: b2aec44f3e80267d18844d887f5e2607192ea208
+  ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104655784"
+  ms.lasthandoff: 03/25/2021
+  ms.locfileid: "105108077"
 landingContent:
 - title: Az Azure Communication Services ismertetése
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: Ügyfélkódtár beállításai
+    - text: SDK-beállítások
       url: concepts/sdk-options.md
     - text: Csapatok együttműködése
       url: concepts/teams-interop.md
@@ -52,13 +52,13 @@ landingContent:
     links:
     - text: Hang- és videóhívás hozzáadása az alkalmazáshoz
       url: quickstarts/voice-video-calling/getting-started-with-calling.md
-    - text: A hívási ügyfélkódtár használata
+    - text: A hívó SDK használata
       url: quickstarts/voice-video-calling/calling-client-samples.md
   - linkListType: concept
     links:
     - text: A hang- és videóhívással kapcsolatos alapfogalmak
       url: concepts/voice-video-calling/about-call-types.md
-    - text: Hívási ügyfélkódtár áttekintése
+    - text: Az SDK meghívása – áttekintés
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: Hívási folyamatok
       url: concepts/call-flows.md
@@ -76,7 +76,7 @@ landingContent:
     links:
     - text: SMS-sel kapcsolatos alapfogalmak
       url: concepts/telephony-sms/concepts.md
-    - text: Az SMS-ügyfélkódtár áttekintése
+    - text: SMS SDK – áttekintés
       url: concepts/telephony-sms/sdk-features.md
     - text: Hívások áttekintése
       url: concepts/voice-video-calling/calling-sdk-features.md
@@ -92,7 +92,7 @@ landingContent:
     links:
     - text: Csevegéssel kapcsolatos alapfogalmak
       url: concepts/chat/concepts.md
-    - text: A csevegési ügyfélkódtár áttekintése
+    - text: A csevegési SDK áttekintése
       url: concepts/chat/sdk-features.md
 - title: Példák
   linkLists:

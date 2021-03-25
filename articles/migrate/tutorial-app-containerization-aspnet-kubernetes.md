@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 422a911c2c0bb6aa1252ebb649368b61aa350b6e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780735"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025577"
 ---
-# <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>Tárolóba helyezése ASP.NET-alkalmazások és Migrálás az Azure Kubernetes Service-be
+# <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET az alkalmazások tárolókra bontás és migrálása az Azure Kubernetes Service-be
 
 Ebből a cikkből megtudhatja, hogyan tárolóba helyezése ASP.NET alkalmazásokat, és hogyan telepítheti át azokat az [Azure Kubernetes szolgáltatásba (ak)](https://azure.microsoft.com/services/kubernetes-service/) a Azure Migrate: app tárolókra bontás eszközzel. A tárolókra bontás folyamat nem igényli a kód elérését, és egyszerű módszert kínál a meglévő alkalmazások tárolóba helyezése. Az eszköz a kiszolgálókon futó alkalmazások futtatási állapotának használatával határozza meg az alkalmazás-összetevőket, és segít a tárolók rendszerképében való csomagolásban. A tároló alkalmazás ezután üzembe helyezhető az Azure Kubernetes szolgáltatásban (ak).
 

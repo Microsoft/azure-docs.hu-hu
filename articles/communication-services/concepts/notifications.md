@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9bf3067737ee1f4e15deaf31677513e5ac99cbd1
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657042"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108128"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Az Azure kommunikációs szolgáltatások csevegési és Meghívási ügyfélszoftvere olyan valós idejű üzenetkezelési csatornát hoz létre, amely lehetővé teszi, hogy a rendszer hatékony, megbízható módon továbbítsa az üzeneteket a csatlakoztatott ügyfeleknek. Ez lehetővé teszi, hogy a bonyolult HTTP-lekérdezési logika megvalósítása nélkül hozzon létre gazdag és valós idejű kommunikációs funkciókat az alkalmazásaiba. A mobil alkalmazásokban azonban ez a jelző csatorna csak akkor marad csatlakoztatva, ha az alkalmazás az előtérben van aktív. Ha azt szeretné, hogy a felhasználók fogadják a bejövő hívásokat vagy csevegési üzeneteket, amíg az alkalmazása a háttérben van, akkor leküldéses értesítéseket kell használnia.
+Az Azure kommunikációs szolgáltatások csevegése és meghívása olyan valós idejű üzenetkezelési csatornát hoz létre, amely lehetővé teszi, hogy a rendszer hatékony, megbízható módon továbbítsa az üzeneteket a csatlakoztatott ügyfeleknek. Ez lehetővé teszi, hogy a bonyolult HTTP-lekérdezési logika megvalósítása nélkül hozzon létre gazdag és valós idejű kommunikációs funkciókat az alkalmazásaiba. A mobil alkalmazásokban azonban ez a jelző csatorna csak akkor marad csatlakoztatva, ha az alkalmazás az előtérben van aktív. Ha azt szeretné, hogy a felhasználók fogadják a bejövő hívásokat vagy csevegési üzeneteket, amíg az alkalmazása a háttérben van, akkor leküldéses értesítéseket kell használnia.
 
 A leküldéses értesítések segítségével adatokat küldhet az alkalmazásból a felhasználók mobileszközökön. Leküldéses értesítések segítségével megjelenítheti a párbeszédpanelt, hanglejátszást készíthet, vagy megjelenítheti a bejövő hívás felhasználói felületét. Az Azure kommunikációs szolgáltatásai [Azure Event Grid](../../event-grid/overview.md) -és Azure- [Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md) integrációs szolgáltatásokat biztosítanak, amelyek lehetővé teszik leküldéses értesítések hozzáadását az alkalmazásokba.
 
