@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/30/2020
-ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581303"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046504"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -37,7 +37,7 @@ A következő táblázat az SaaS-ajánlatok kereskedelmi piactéren való listá
 
 További információ ezekről a listaelem-lehetőségekről: [kereskedelmi Piactéri Transact-képességek](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-Az ajánlat közzététele után az ajánlathoz választott listaelem az ajánlat listázási oldalának bal felső sarkában jelenik meg. Az alábbi képernyőfelvételen az Azure piactéren elérhető ajánlat-listaelemek láthatók, a **Contact me** és a **Test Drive** gombokkal.
+Az ajánlat közzététele után az ajánlathoz választott listaelem az ajánlat listázási oldalának bal felső sarkában jelenik meg. Az alábbi képernyőfelvételen az Azure piactéren elérhető ajánlatok listája látható, a **Letöltés most** és a **Test Drive** gombokkal.
 
 ![Az online áruházban található ajánlati listát ábrázolja.](./media/listing-options.png)
 
@@ -68,9 +68,9 @@ Ha Transact-ajánlatot hoz létre, az alábbi információkat kell összegyűjte
 
 - Kezdőlap **URL-címe**: a SaaS-webhely URL-címe (például: `https://contoso.com/signup` ) a felhasználók az ajánlatnak a kereskedelmi piactérről való beszerzését követően lesznek átirányítva, és az újonnan létrehozott SaaS-előfizetésből aktiválják a konfigurációs folyamatot. Ez az URL-cím olyan tokent kap, amely a teljesítési API-k meghívására használható az interaktív regisztrációs oldal kiépítési részleteinek beszerzéséhez.
 
-  Ezt az URL-címet a piactér-vásárlási azonosító jogkivonat paraméterrel hívja meg a rendszer, amely egyedileg azonosítja az adott ügyfél SaaS-megvásárlását. Ezt a tokent a megfelelő SaaS-előfizetés részleteire kell cserélnie az [API feloldása](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)paranccsal. Ezeket az adatokat és minden más összegyűjteni kívánt ügyfelet a felhasználói regisztráció befejezéséhez és a vásárlásuk aktiválásához használt felhasználói interaktív weblap részeként kell használni. Ezen az oldalon a felhasználónak az Azure Active Directory (Azure AD) használatával egy kattintással történő hitelesítéssel kell regisztrálnia.
+  Ezt az URL-címet a piactér-vásárlási azonosító jogkivonat paraméterrel hívja meg a rendszer, amely egyedileg azonosítja az adott ügyfél SaaS-megvásárlását. Ezt a tokent a megfelelő SaaS-előfizetés részleteire kell cserélnie az [API feloldása](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)paranccsal. Ezek az adatok és bármely más, az ügyfél interaktív weblapjának részeként gyűjtött adatokat felhasználhatják az ügyfél bevezetési élményének elindítására, amelynek végül az API-val kell megkötnie az előfizetési időszak megkezdéséhez szükséges aktiválási hívást. Ezen az oldalon a felhasználónak az Azure Active Directory (Azure AD) használatával egy kattintással történő hitelesítéssel kell regisztrálnia.
 
-  Ez az URL-cím a piactér-beli vásárlási azonosító jogkivonat paraméterrel is meghívható, ha az ügyfél felügyelt SaaS-élményt indít a Azure Portal vagy a M365 felügyeleti központból. Mindkét folyamatot kezelni kell: Ha a jogkivonatot az új ügyfél vásárlása után első alkalommal adták meg, és ha a felhasználó az SaaS-megoldást kezelő meglévő ügyfelek számára is elérhetővé válik.
+  Ez az URL-cím a piactér-beli vásárlási azonosító jogkivonat paraméterrel is meghívható, ha az ügyfél felügyelt SaaS-élményt indít a Azure Portal vagy Microsoft 365 felügyeleti központból. Mindkét folyamatot kezelni kell: Ha a jogkivonatot az új ügyfél vásárlása után első alkalommal adták meg, és ha a felhasználó az SaaS-megoldást kezelő meglévő ügyfelek számára is elérhetővé válik.
 
     Az Ön által konfigurált Kezdőlap 24/7-at kell futtatnia. Ez az egyetlen módszer, ha értesítést kap a SaaS-ajánlatok kereskedelmi piactéren végzett új vásárlásáról, vagy az ajánlat aktív előfizetésére vonatkozó konfigurációs kérelmekről.
 
@@ -79,7 +79,7 @@ Ha Transact-ajánlatot hoz létre, az alábbi információkat kell összegyűjte
   Az Ön által megadott webhooknak 24/7-et kell futtatnia. Ez az egyetlen módja, ha értesítést kap a kereskedelmi Piactéren keresztül megvásárolt ügyfelei SaaS-előfizetésével kapcsolatos frissítésekről.
 
   > [!NOTE]
-  > A Azure Portalon belül létre kell hoznia egy egybérlős [Azure Active Directory (Azure ad) alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md) , amely lehetővé teszi egy Azure-alkalmazás azonosítójának használatát a két szolgáltatás közötti kapcsolat hitelesítéséhez. A [bérlő azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok** lehetőséget, majd keresse meg a felsorolt címtár-azonosító számát. Például: `50c464d3-4930-494c-963c-1e951d15360e`.
+  > A Azure Portalon belül létre kell hoznia egy egybérlős [Azure Active Directory (Azure ad) alkalmazás regisztrációját](../active-directory/develop/howto-create-service-principal-portal.md). A piactér API-k meghívásakor a megoldás hitelesítéséhez használja az alkalmazás regisztrációjának adatait. A [bérlő azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok** lehetőséget, majd keresse meg a felsorolt címtár-azonosító számát. Például: `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **Azure Active Directory bérlő azonosítója**: (más néven CÍMTÁR-azonosító). A Azure Portalon belül [regisztrálnia kell egy Azure Active Directory (ad-) alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md) , hogy hozzá lehessen adni az API hozzáférés-vezérlési listájához (ACL), hogy megbizonyosodjon róla, hogy Ön jogosult a meghívására. A Azure Active Directory (AD) alkalmazáshoz tartozó bérlői azonosító megkereséséhez nyissa meg a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) panelt Azure Active Directory. A **megjelenítendő név** oszlopban válassza ki az alkalmazást. Ezután keresse meg a felsorolt **címtár (bérlő) azonosítószámát** (például `50c464d3-4930-494c-963c-1e951d15360e` ).
 
@@ -88,7 +88,7 @@ Ha Transact-ajánlatot hoz létre, az alábbi információkat kell összegyűjte
   Az Azure AD-alkalmazás azonosítója a partner Center-fiókban található közzétevői AZONOSÍTÓhoz van társítva. Ugyanezt az azonosítót kell használnia az adott fiókban lévő összes ajánlathoz.
 
   > [!NOTE]
-  > Ha a közzétevő két vagy több különböző fiókkal rendelkezik a partner Centerben, akkor az egyik fiókhoz két vagy több különböző Azure AD-alkalmazás-azonosítót kell használni. A fiókpartner minden fiókpartner-fiókjának egyedi Azure AD-alkalmazás-azonosítót kell használnia a fiókon keresztül közzétett SaaS-ajánlatok számára.
+  > Ha a közzétevő két vagy több különböző fiókkal rendelkezik a partner Centerben, akkor az Azure AD-alkalmazás regisztrációs adatai csak egyetlen fiókban használhatók. Ha ugyanazt a bérlői azonosítót használja, az alkalmazás-azonosító pár nem támogatott egy másik közzétevői fiókban.
 
 ## <a name="test-drives"></a>Tesztverziók
 Dönthet úgy, hogy engedélyezi a tesztelési meghajtót az SaaS-alkalmazáshoz. A tesztelési meghajtók adott számú óráig biztosítanak hozzáférést egy előre konfigurált környezethez. Engedélyezheti a tesztelési meghajtókat bármilyen közzétételi lehetőséghez, azonban ez a funkció további követelményekkel is rendelkezik. További információ a tesztelési meghajtókról: [Mi az a test Drive?](what-is-test-drive.md). A különböző típusú tesztelési meghajtók konfigurálásával kapcsolatos információkért lásd: a tesztvezetés [technikai konfigurációjának tesztelése](test-drive-technical-configuration.md).
@@ -114,7 +114,7 @@ Ha az SaaS-ajánlat *az IT* -megoldás (Azure Marketplace) és egy üzleti megol
 | Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
 |---|---|---|---|
 | Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
-| Igen             | Igen         | Yes          | Azure Marketplace és Azure Portal * |
+| Igen             | Igen         | Igen          | Azure Marketplace és Azure Portal * |
 | Igen             | Nem          | Igen          | Csak Azure Portal |
 | Nem              | Nem          | Igen          | Csak Azure Portal |
 |||||
@@ -150,7 +150,7 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Description
+9. Leírás
 10. Képernyőképek/videók
 11. Dokumentumok
 
@@ -209,9 +209,6 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
 > [!Note]
 > Ajánlatának meg kell felelnie a kereskedelmi piactéren közzétenni kívánt általános [kereskedelmi Piactéri minősítési házirendeknek](/legal/marketplace/certification-policies#100-general) és a [szoftvereknek](/legal/marketplace/certification-policies#1000-software-as-a-service-saas) .
 
-## <a name="preview-audience"></a>Előnézet célközönsége
-Az előzetes verzió célközönsége az online áruházakban élő közzététel előtt is elérheti az ajánlatát, hogy az élő közzététel előtt tesztelje a végpontok közötti funkcionalitást. A **célközönség előnézete** lapon megadhatja az előzetes verziójú célközönséget. Ez a beállítás nem érhető el, ha úgy dönt, hogy a tranzakciókat egymástól függetlenül dolgozza fel, ahelyett, hogy az ajánlatot a Microsofton keresztül eladja. Ha igen, kihagyhatja ezt a szakaszt, és [további értékesítési lehetőségekhez](#additional-sales-opportunities)juthat.
-
 > [!NOTE]
 > Az előzetes verzió célközönsége különbözik egy privát csomagtól. Egy privát csomag csak a kiválasztott célközönség számára érhető el. Ez lehetővé teszi, hogy egy egyéni csomagot adott ügyfelekkel egyeztesse. További információt a következő szakaszban talál: csomagok.
 
@@ -251,6 +248,50 @@ Az alábbi példa a költségek és a kifizetések mintájának részletezését
 |||
 
 **`*` Csökkentett Piactéri szolgáltatási díj** – a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Piactéri szolgáltatási díjat. Ha a jogosultság teljesül, a csökkentett szolgáltatási díjat az összes tranzakció a következő hónap első napján érvényes, és továbbra is érvényben marad, amíg az Azure-beli IP-címek közös értékesítésének incentivized állapota elvész. Az IP-címek közös értékesítésének támogathatóságával kapcsolatos további információkért lásd: [a közös értékesítésre vonatkozó követelmények](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). A csökkentett Piactéri szolgáltatási díj az Azure IP-incentivized virtuális gépekre, a felügyelt alkalmazásokra és minden más, a kereskedelmi piactéren elérhetővé tett IaaS-ajánlatra is vonatkozik.
+
+## <a name="preview-audience"></a>Előnézet célközönsége
+
+Az előzetes verzió célközönsége az online áruházakban élő közzététel előtt is elérheti az ajánlatát. Megtekinthetik, hogy az ajánlat hogyan fog megjelenni a kereskedelmi piactéren, és az élő közzététel előtt tesztelje a végpontok közötti funkciókat. 
+
+A **célközönség előnézete** lapon megadhatja az előzetes verziójú célközönséget. Ez a beállítás nem érhető el, ha úgy dönt, hogy a tranzakciókat egymástól függetlenül dolgozza fel, ahelyett, hogy az ajánlatot a Microsofton keresztül eladja. Ha igen, kihagyhatja ezt a szakaszt, és [további értékesítési lehetőségekhez](#additional-sales-opportunities)juthat.
+
+## <a name="test-offer"></a>Tesztelési ajánlat
+
+Mielőtt közzéteszi az ajánlatát, az előzetes verzió funkciójának használatával fejlesztheti technikai megvalósítását, tesztelheti és kísérletezheti a különböző díjszabási modellekkel.
+
+Ha az SaaS-ajánlatot a legalacsonyabb kockázattal kívánja fejleszteni és tesztelni, javasoljuk, hogy hozzon létre egy tesztelési és fejlesztési (DEV) ajánlatot a kísérletezéshez és teszteléshez. A fejlesztői ajánlat külön lesz az éles üzemi (Production) ajánlattól.
+
+A fejlesztői ajánlat véletlen megvásárlásának megelőzése érdekében soha nem fogja leküldeni a **Go Live** gombot a fejlesztői ajánlat élő közzétételéhez.
+
+![A partneri központban elérhető ajánlat áttekintés lapját mutatja be. Megjelenik a Go Live gomb és az előzetes verzió hivatkozásai. Az ellenőrzési jelentés megtekintése hivatkozás az automatikus ellenőrzés alatt is látható.](./media/review-publish-offer/publish-status-saas.png)
+
+Íme néhány ok arra, hogy hozzon létre egy külön fejlesztői ajánlatot a fejlesztési csapat számára, amely a PROD-ajánlat fejlesztéséhez és teszteléséhez használható:
+
+- A véletlen ügyfelek költségeinek elkerülése
+- Árképzési modellek kiértékelése
+- Nem ad hozzá olyan terveket, amelyek nem célozzák meg a tényleges ügyfeleket
+
+### <a name="avoid-accidental-customer-charges"></a>A véletlen ügyfelek költségeinek elkerülése
+
+Ha a PROD-ajánlat helyett fejlesztői ajánlatot használ, és fejlesztési és éles környezetként kezeli őket, elkerülheti a véletlen díjakat az ügyfeleknek.
+
+Javasoljuk, hogy két különböző Azure AD-alkalmazást regisztráljon a Marketplace API-k meghívásához. A fejlesztők egy Azure AD-alkalmazást fognak használni a fejlesztői ajánlat beállításaival, és az operatív csapat a PROD alkalmazás regisztrációját fogja használni. Ezzel elkülönítheti a fejlesztői csapatot a véletlen hibák kijavításával, például az API meghívásával, hogy megszakítsa az ügyfél előfizetését, amely havonta 100 000 USD-t fizet. Azt is elkerülheti, hogy az ügyfél nem a felhasznált mért használatot használja.
+
+### <a name="evaluate-pricing-models"></a>Árképzési modellek kiértékelése
+
+A fejlesztői ajánlaton belüli tesztelési modellek csökkentik a kockázatokat, amikor a fejlesztők különböző díjszabási modellekkel kísérleteznek.
+
+A kiadók a fejlesztői ajánlatban létrehozhatják a szükséges terveket annak meghatározásához, hogy melyik díjszabási modell a legmegfelelőbb az ajánlathoz. Előfordulhat, hogy a fejlesztők több csomagot kívánnak létrehozni a fejlesztői ajánlatban a különböző díjszabási kombinációk teszteléséhez. Előfordulhat például, hogy az egyéni mért dimenziók különböző csoportjaival hoz létre terveket. Létrehozhat egy másik csomagot, amely az átalány és az egyéni mért dimenziók kombinációját is létrehozhatja.
+
+Több díjszabási lehetőség teszteléséhez létre kell hoznia egy csomagot az egyes egyedi díjszabási modellekhez. További információért lásd: [csomagok](#plans).
+
+### <a name="not-adding-plans-that-do-not-target-actual-customers"></a>Nem ad hozzá olyan terveket, amelyek nem célozzák meg a tényleges ügyfeleket
+
+Fejlesztési és tesztelési célú fejlesztői ajánlatunk segítségével csökkentheti a nem megfelelő adatmennyiséget a gyártási ajánlatban. Nem törölhet például olyan terveket, amelyeket a különböző díjszabási modellek vagy technikai konfigurációk tesztelésére hozott létre (támogatási jegy bejelentése nélkül). Így a fejlesztői ajánlatban tesztelési terveket hozhat létre, így csökkentheti a gyártási ajánlat zsúfoltságát.
+
+A termék-és marketing csapatok a PROD-ajánlatban lévő rendetlenséget okoznak, mivel a tényleges ügyfelek megcélzásához szükséges összes csomagra számíthatnak. Különösen a nagy csapatok esetében, akik az összes különböző munkaterületet szeretnének használni, két ajánlat létrehozása két különböző környezetet biztosít a fejlesztéshez és a gyártási környezetekhez. Bizonyos esetekben előfordulhat, hogy több fejlesztői ajánlatot szeretne létrehozni egy nagyobb csapat támogatásához, amely különböző tesztelési forgatókönyveket futtató személyekkel rendelkezik. A különböző csapattagok számára a fejlesztési ajánlatban elkülönítve dolgozhatnak, és a termelési terveket a lehető leghamarabb megtarthatja az éles környezetben.
+
+A fejlesztői ajánlat tesztelése segít elkerülni a 30 egyéni mért méretet. A fejlesztők különböző mérési kombinációkat kipróbálhatnak a fejlesztői ajánlatban anélkül, hogy ez hatással lenne az egyéni mért dimenzióra a PROD-ajánlatban.
 
 ## <a name="additional-sales-opportunities"></a>További értékesítési lehetőségek
 

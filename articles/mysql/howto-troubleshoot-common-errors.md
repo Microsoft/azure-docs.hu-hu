@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 546f29330b76548ea553cfb7e4e31ac35b19cb1c
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98631367"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105037546"
 ---
 # <a name="common-errors"></a>Gyakori hibák
 
@@ -48,7 +48,7 @@ BEGIN
 END;
 ```
 
-**Megoldás**: a hiba elhárításához állítsa a portálon a log_bin_trust_function_creators [](howto-server-parameters.md) 1 értékre, majd a kívánt objektumok létrehozásához HAJTsa végre a DDL-utasításokat, vagy importálja a sémát, hogy létrehozza a kívánt objektumokat, majd visszaállítja a log_bin_trust_function_creators paramétert az előző értékre a létrehozás után.
+**Megoldás**: a hiba elhárításához állítsa a portálon a log_bin_trust_function_creators 1 értéket a [kiszolgáló paraméterek](howto-server-parameters.md) paneljére, HAJTsa végre a DDL-utasításokat, vagy importálja a sémát a kívánt objektumok létrehozásához. Továbbra is megtarthatja log_bin_trust_function_creators 1-re, hogy a kiszolgáló elkerülje a hibát a jövőben. Javasoljuk, hogy log_bin_trust_function_creators, mivel a [MySQL közösségi dokumentációjában](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) kiemelt biztonsági kockázat van kiemelve a MySQL-hez készült Azure db for MySQL szolgáltatásban, mivel a bin-napló nem érhető el a fenyegetések ellen.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>1227-es hiba (42000) a következő 101 sorban: hozzáférés megtagadva; Ehhez a művelethez szükség van a SUPER jogosultság (ok) ra (legalább az egyikre). A művelet nem sikerült az 1. ExitCode
 

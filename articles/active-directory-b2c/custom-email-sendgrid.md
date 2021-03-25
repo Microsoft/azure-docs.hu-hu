@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 86f40944af9fb49b0402a33e5009b99d60be61f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489185"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031307"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Egyéni e-mail-ellenőrzés a SendGrid
 
@@ -43,7 +43,7 @@ Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C házirend-kulcsban a sz
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 1. A **Beállítások** területen válassza a **manuális** lehetőséget.
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `SendGridSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
-1. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
+1. A **Secret (titkos** kulcs) mezőben adja meg a korábban rögzített SendGrid API-kulcsot.
 1. A **kulcshasználat** beállításnál válassza az **aláírás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 

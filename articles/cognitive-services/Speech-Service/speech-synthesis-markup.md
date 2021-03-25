@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ffa8528da454fd29c937a2d49accdda617fe62dd
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: aa5e499df976c08fef8f0b81eff1e189eebb5503
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869021"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026308"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -876,7 +876,7 @@ Nem fogjuk beolvasni a könyvjelző elemeit.
 A Bookmark (könyvjelző) elem használatával egy adott helyre hivatkozhat a szöveg vagy a címke sorrendjében.
 
 > [!NOTE]
-> `bookmark` az elem jelenleg csak az `en-US-AriaNeural` USA nyugati régiójában () található hangra működik `westus` .
+> `bookmark` az elem jelenleg csak az `en-US-AriaNeural` USA 2. nyugati régiójában () található hangra működik `westus2` .
 
 **Syntax**
 

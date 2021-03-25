@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/11/2021
-ms.openlocfilehash: bd91c29ca97c2096c4d8f3df19dbb9eab306b8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149749"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047252"
 ---
 # <a name="maintenance-window-preview"></a>Karbantartási időszak (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,14 +27,14 @@ A karbantartási időszak funkció lehetővé teszi a karbantartási ütemterv k
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure rendszeres időközönként végrehajtja SQL Database és az SQL felügyelt példányok erőforrásának [tervezett karbantartását](planned-maintenance.md) . Az Azure SQL karbantartási eseménye során az adatbázisok teljes mértékben elérhetők, de a megfelelő rendelkezésre állási SLA-n belüli rövid feladatátvételek is vonatkozhatnak [SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) és az [SQL felügyelt példányára](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance), mivel bizonyos esetekben erőforrás-újrakonfigurálásra van szükség.
+Az Azure rendszeres időközönként végrehajtja SQL Database és az SQL felügyelt példányok erőforrásának [tervezett karbantartását](planned-maintenance.md) . Az Azure SQL karbantartási eseménye során az adatbázisok teljes mértékben elérhetők, de a megfelelő rendelkezésre állási SLA-n belüli rövid újrakonfigurálások is vonatkozhatnak [SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) és az [SQL felügyelt példányaira](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance).
 
-A karbantartási időszak olyan éles számítási feladatokhoz készült, amelyek nem rugalmasak az adatbázis vagy a példány feladatátvételéhez, és nem képesek felvenni a tervezett karbantartási események által okozott rövid kapcsolódási megszakításokat. A kívánt karbantartási időszak kiválasztásával csökkentheti a tervezett karbantartás hatását, mivel az a maximális munkaidőn kívül történik. A rugalmas munkaterhelések és a nem éles munkaterhelések az Azure SQL alapértelmezett karbantartási házirendjén alapulnak.
+A karbantartási időszak olyan éles számítási feladatokhoz készült, amelyek nem rugalmasak az adatbázis vagy a példány újrakonfigurálásához, és nem tudják felvenni a tervezett karbantartási események által okozott rövid kapcsolódási megszakításokat. A kívánt karbantartási időszak kiválasztásával csökkentheti a tervezett karbantartás hatását, mivel az a maximális munkaidőn kívül történik. A rugalmas munkaterhelések és a nem éles munkaterhelések az Azure SQL alapértelmezett karbantartási házirendjén alapulnak.
 
 A karbantartási időszak a létrehozáskor vagy a meglévő Azure SQL-erőforrásoknál konfigurálható. Konfigurálható a Azure Portal, a PowerShell, a CLI vagy az Azure API használatával.
 
 > [!Important]
-> A karbantartási időszak konfigurálása hosszú ideig futó aszinkron művelet, hasonlóan az Azure SQL-erőforrás szolgáltatási rétegének módosításához. Az erőforrás a művelet során elérhető, kivéve a művelet végén előforduló rövid feladatátvételt, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. A feladatátvétel hatásának csökkentése érdekében a műveletet a csúcsidőben kívül kell végrehajtania.
+> A karbantartási időszak konfigurálása hosszú ideig futó aszinkron művelet, hasonlóan az Azure SQL-erőforrás szolgáltatási rétegének módosításához. Az erőforrás a művelet során elérhető, kivéve a művelet végén előforduló rövid újrakonfigurálást, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. Az újrakonfigurálás hatásának csökkentése érdekében a műveletet a csúcsidőben kívül kell végrehajtania.
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>A karbantartási időszak további kiszámíthatósága
 
@@ -98,7 +98,7 @@ Az alapértelmezetttől eltérő karbantartási időszak jelenleg a következő 
 
 A karbantartási időszakok maximális előnyének lekéréséhez győződjön meg arról, hogy az ügyfélalkalmazások használják az átirányítás kapcsolódási házirendjét. Az átirányítás a javasolt kapcsolati házirend, amelyben az ügyfelek közvetlenül az adatbázist üzemeltető csomóponthoz csatlakoznak, ami csökkenti a késést és a jobb teljesítményt.  
 
-* Azure SQL Database a proxy kapcsolati házirendjét használó kapcsolatokat a kiválasztott karbantartási időszak és az átjáró-csomópont karbantartási időszaka is befolyásolhatja. Az átjáró-csomópontok karbantartási feladatátvétele azonban nem érinti a javasolt átirányítási kapcsolati házirendet használó ügyfélkapcsolatokat. 
+* Azure SQL Database a proxy kapcsolati házirendjét használó kapcsolatokat a kiválasztott karbantartási időszak és az átjáró-csomópont karbantartási időszaka is befolyásolhatja. Az átjáró-csomópontok karbantartási újrakonfigurálása azonban nem érinti a javasolt átirányítási kapcsolati házirendet használó ügyfélkapcsolatokat. 
 
 * Az Azure SQL felügyelt példányaiban az átjáró-csomópontok a [virtuális fürtön](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) futnak, és a felügyelt példányokkal megegyező karbantartási időszaktal rendelkeznek, de az átirányítás kapcsolati házirendjének használata továbbra is ajánlott a karbantartási esemény során felmerülő fennakadások számának csökkentése érdekében.
 
@@ -115,7 +115,7 @@ A virtuális fürtben üzemeltetett összes példány a karbantartási időszako
 A karbantartási időszak felügyelt példányon történő konfigurálásának várható időtartama a [példány-felügyeleti műveletek becsült időtartama](/azure/azure-sql/managed-instance/management-operations-overview#duration)alapján számítható ki.
 
 > [!Important]
-> Egy rövid feladatátvétel a karbantartási művelet végén történik, és általában akár 8 másodpercig is tart, akár megszakított, hosszan futó tranzakciók esetén is. A feladatátvétel hatásának minimalizálásához a műveletet a csúcsidőben kívül kell ütemezni.
+> Rövid újrakonfigurálás történik a karbantartási művelet végén, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. Az újrakonfigurálás hatásának minimalizálásához a műveletet a csúcsidőben kívül kell ütemezni.
 
 ### <a name="ip-address-space-requirements"></a>Az IP-címtartomány követelményei
 Az alhálózatban minden új virtuális fürthöz további IP-címek szükségesek a [virtuális fürt IP-címének kiosztása](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)alapján. A meglévő felügyelt példány karbantartási [időszakának módosításakor ideiglenes további IP-kapacitásra](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) is szükség van, mint a megfelelő szolgáltatási réteg virtuális mag-forgatókönyvének skálázásához.

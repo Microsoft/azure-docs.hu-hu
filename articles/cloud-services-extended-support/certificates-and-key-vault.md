@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 7357703af41afc913ef63dff6ecae3d230c9eca0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d771e77fcca05b090e5d47d70ae93ece8f79e3e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583292"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865703"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Tanúsítványok használata az Azure Cloud Services (bővített támogatás)
 
@@ -27,9 +27,8 @@ A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett tám
 
     :::image type="content" source="media/certs-and-key-vault-1.png" alt-text="A rendszerkép a Key Vault paneljén található hozzáférési szabályzatok kiválasztását mutatja be.":::
 
-3. Győződjön meg arról, hogy a hozzáférési házirendek a következő tulajdonságokat tartalmazzák:
+3. Győződjön meg arról, hogy a hozzáférési házirendek a következő tulajdonságot tartalmazzák:
     - **Azure-Virtual Machines való hozzáférés engedélyezése az üzembe helyezéshez**
-    - **Azure Resource Manager hozzáférésének engedélyezése a sablonok üzembe helyezéséhez** 
 
     :::image type="content" source="media/certs-and-key-vault-2.png" alt-text="A rendszerkép a Azure Portal hozzáférési szabályzatok ablakát jeleníti meg.":::
  
@@ -50,6 +49,9 @@ A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett tám
     ```json
     <Certificate name="<your cert name>" thumbprint="<thumbprint in key vault" thumbprintAlgorithm="sha1" /> 
     ```
+6.  Az ARM-sablonon keresztül történő üzembe helyezéshez a certificateUrl a titkos azonosítóként megjelölt kulcstartóban található tanúsítványhoz való navigálással érhető el.
+
+    :::image type="content" source="media/certs-and-key-vault-6.png" alt-text="A rendszerkép a Key Vault titkos azonosító mezőjét jeleníti meg.":::
 
 ## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).

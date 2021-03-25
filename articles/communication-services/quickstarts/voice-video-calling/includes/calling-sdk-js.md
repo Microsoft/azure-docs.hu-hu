@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: dee692dc6c82ae91272b39093398eba6ad908c1c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fee393b694bf761cf052702a975239d6dff9a9c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104611998"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104770"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,7 +69,7 @@ A hívás létrehozása és a kezdés szinkronban van. A hívási példány lehe
 
 ### <a name="place-a-1n-call-to-a-user-or-pstn"></a>Helyezzen egy 1: n hívást egy felhasználónak vagy PSTN-nek
 
-Egy másik kommunikációs szolgáltatás felhasználójának meghívásához használja a `startCall` metódust, `callAgent` és adja át a címzettet, `CommunicationUserIdentifier` amelyet a [kommunikációs szolgáltatások felügyeleti könyvtárával hozott létre](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+Egy másik kommunikációs szolgáltatás felhasználójának meghívásához használja a `startCall` metódust, `callAgent` és adja át a címzettet, `CommunicationUserIdentifier` amelyet a [kommunikációs szolgáltatások felügyeleti könyvtárával hozott létre](../../access-tokens.md).
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }

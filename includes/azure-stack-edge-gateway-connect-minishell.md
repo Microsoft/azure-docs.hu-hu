@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5e2ab0b9d7f61539a16fc685134bef6c9047229d
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0ad760caedffa97599548b8dd1b59a887b5690af
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987744"
+ms.locfileid: "105105585"
 ---
 Az ügyfél operációs rendszertől függően az eszközhöz való távoli kapcsolódás eljárásai eltérőek.
 
@@ -21,7 +21,7 @@ Az ügyfél operációs rendszertől függően az eszközhöz való távoli kapc
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 - A Windows-ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja.
-- A Windows-ügyfél rendelkezik az eszközön telepített csomópont-tanúsítványhoz tartozó aláíró lánctal (főtanúsítvánnyal). Részletes útmutatás: a [tanúsítvány telepítése a Windows-ügyfélen](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- A Windows-ügyfél rendelkezik az eszközön telepített csomópont-tanúsítványhoz tartozó aláíró lánctal (főtanúsítvánnyal). Részletes útmutatás: a [tanúsítvány telepítése a Windows-ügyfélen](../articles/databox-online/azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
 - A `hosts` Windows-ügyfélen található fájl a `C:\Windows\System32\drivers\etc` csomópont-tanúsítványnak megfelelő bejegyzést tartalmaz a következő formátumban:
 
     `<Device IP>    <Node serial number>.<DNS domain of the device>`

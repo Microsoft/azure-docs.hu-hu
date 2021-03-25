@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: bca4eb7f5f266a639916c0f8e520f025d259c39b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9a8ecf65426dfe92b84582ff98b567ea400c9209
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577359"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027176"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Mi az Azure Cosmos DB analitikus tároló?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -110,9 +110,10 @@ A következő megkötések alkalmazhatók a Azure Cosmos DB lévő operatív ada
 
 * Jelenleg nem támogatjuk az Azure szinapszis Spark olvasási oszlopának nevét, amely üres karaktereket (szóközöket) tartalmaz.
 
-* Eltérő viselkedés várható az értékek tekintetében `NULL` :
-  * Az Azure Szinapszisban található Spark-készletek ezeket az értékeket 0 (nulla) értékként fogják beolvasni.
-  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az értékeket fogják beolvasni `NULL` .
+* Eltérő viselkedést vár a explicit `null` értékek tekintetében:
+  * Az Azure Szinapszisban található Spark-készletek ezeket az értékeket `0` (nulla) fogják beolvasni.
+  * Az Azure Szinapszisban az SQL Server nélküli készletek beolvassák ezeket az értékeket, mintha a `NULL` gyűjtemény első dokumentuma ugyanazzal a tulajdonsággal, egy olyan értékkel, amely eltér az adattípustól `integer` .
+  * Az Azure Szinapszisban található SQL Server nélküli készletek ezeket az értékeket `0` (nulla) fogják beolvasni, ha a gyűjtemény első dokumentuma ugyanazon tulajdonsághoz tartozik, amely egy érték `integer` .
 
 * A hiányzó oszlopok tekintetében eltérő viselkedés várható:
   * Az Azure Szinapszisban található Spark-készletek ezeket az oszlopokat jelölik `undefined` .
@@ -144,6 +145,11 @@ A jól definiált séma-ábrázolás egy egyszerű táblázatos ábrázolást ho
 
 > [!NOTE]
 > Ha a Azure Cosmos DB analitikus tároló a jól definiált séma-ábrázolást követi, és a fenti specifikációt bizonyos elemek megszegik, akkor ezek az elemek nem lesznek felszámítva az analitikai tárolóba.
+
+* Eltérő viselkedést vár a jól definiált sémák különböző típusaira vonatkozóan:
+  * Az Azure Szinapszisban található Spark-készletek ezeket az értékeket jelölik `undefined` .
+  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az értékeket jelölik `NULL` .
+
 
 **Teljes hűségű séma ábrázolása**
 

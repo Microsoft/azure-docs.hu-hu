@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704412"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047422"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -19,7 +19,7 @@ Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metr
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-- Python-telepítés. Ez a cikk a [Python 3.7.0](https://www.python.org/downloads/release/python-370/)használja, bár más verziók valószínűleg kisebb módosításokkal fognak működni. Az SDK csak a Python v 2.7 és a v 3.4-v 3.7-es verziókat támogatja.
+- Python-telepítés. Ez a cikk a [Python 3.7.0](https://www.python.org/downloads/release/python-370/)használja, bár más verziók valószínűleg kisebb módosításokkal fognak működni. Az SDK csak a 2,7-es és a 3.6-os Python-verziókat támogatja.
 - Hozzon létre egy Application Insights [erőforrást](./create-new-resource.md). Ehhez hozzá kell rendelnie saját Instrumentation-kulcsát (rendszerállapotkulcsot) az erőforráshoz.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Eszköz a OpenCensus Python SDK-val Azure Monitor

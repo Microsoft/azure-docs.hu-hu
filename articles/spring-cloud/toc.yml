@@ -77,20 +77,30 @@
           href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Azure Spring Cloud üzembe helyezése az Azure PowerShell-lel
           href: how-to-deploy-powershell.md
-    - name: Konfigurálás
+    - name: Kezelés
       items:
         - name: 'Alkalmazás indítása, leállítása és törlése'
           href: how-to-start-stop-delete.md
         - name: Állandó tárolók használata
           href: how-to-persistent-storage.md
+        - name: Nyilvános kimenő IP-címek azonosítása
+          href: how-to-outbound-public-ip.md
     - name: Méretezés
       items:
         - name: Alkalmazás manuális skálázása
           href: how-to-scale-manual.md
         - name: Alkalmazások automatikus skálázása
           href: how-to-setup-autoscale.md
-        - name: Nyilvános kimenő IP-címek azonosítása
-          href: how-to-outbound-public-ip.md
+    - name: Integrálás
+      items:
+        - name: Alkalmazás kötése az Azure Cosmos DB-hez
+          href: how-to-bind-cosmos.md
+        - name: Alkalmazás kötése az Azure Cache for Redishez
+          href: how-to-bind-redis.md
+        - name: Alkalmazás kötése az Azure MySQL-hez
+          href: how-to-bind-mysql.md
+        - name: Integrálás az Azure Load Balance-megoldásokkal
+          href: how-to-integrate-azure-load-balancers.md
     - name: Figyelés
       items:
         - name: Elosztott nyomkövetés és az App Insights
@@ -123,16 +133,6 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Szerepkörök és engedélyek létrehozása
           href: how-to-permissions.md
-    - name: Integrálás
-      items:
-        - name: Alkalmazás kötése az Azure Cosmos DB-hez
-          href: how-to-bind-cosmos.md
-        - name: Alkalmazás kötése az Azure Cache for Redishez
-          href: how-to-bind-redis.md
-        - name: Alkalmazás kötése az Azure MySQL-hez
-          href: how-to-bind-mysql.md
-        - name: Integrálás az Azure Load Balance-megoldásokkal
-          href: how-to-integrate-azure-load-balancers.md
     - name: Automatizálás
       items:
         - name: CI/CD az Azure DevOps használatával
