@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 03/03/2021
-ms.openlocfilehash: a04e53c8444a01bc42f3ce71393fc842f3419e74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a3f44f3d0cdf024bca12b0023891f21175f52b47
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102193474"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026938"
 ---
 # <a name="known-issues"></a>Ismert problémák
 
@@ -30,7 +30,7 @@ Ha ezekkel a problémákkal találkozik, nem kell megnyitnia egy hibát. Ha prob
 | Eszköz frissítése | A felhasználók egy üzenetet kaphatnak arról, hogy a frissítés sikertelen volt, még akkor is, ha az sikeres volt. | Erősítse meg az eszköz frissítését úgy, hogy az eszközhöz tartozó Twin eszközre navigál IoT Hub. Ez az első frissítés után megoldódott. |
 | Eszköz frissítése | Az első frissítés után a felhasználók elveszítik Wi-Fi kapcsolati beállításait. | A Wi-Fi-kapcsolatok beállításához a frissítés után futtassa a helyszíni élményt. Ez az első frissítés után megoldódott. |
 | Eszköz frissítése | Az OTA-frissítés végrehajtása után a felhasználók már nem jelentkezhetnek be SSH-n keresztül a korábban létrehozott felhasználói fiókokkal, és az új SSH-felhasználók nem hozhatók létre a helyszíni kezelőfelületen keresztül. Ez a probléma a következő előre telepített rendszerkép-verzióktól származó, az OTA-frissítéseket végrehajtó rendszereket érinti: 2020.110.114.105 és 2020.109.101.105. | A felhasználói profilok helyreállításához hajtsa végre az alábbi lépéseket az OTA-frissítés után: <br> Az [SSH-t a fejlesztői készlet](./how-to-ssh-into-percept-dk.md) a "root" névvel használja felhasználónévként. Ha letiltotta az SSH "root" felhasználói bejelentkezést a helyszíni kezelőfelületen keresztül, újra engedélyeznie kell azt. A sikeres csatlakozás után futtassa ezt a parancsot: <br> ```mkdir -p /var/custom-configs/home; chmod 755 /var/custom-configs/home``` <br> A korábbi felhasználói otthoni adatok helyreállításához futtassa a következő parancsot: <br> ```mkdir -p /tmp/prev-rootfs && mount /dev/mmcblk0p3 /tmp/prev-rootfs && [ ! -L /tmp/prev-rootfs/home ] && cp -a /tmp/prev-rootfs/home/* /var/custom-configs/home/. && echo "User home migrated!"; umount /tmp/prev-rootfs``` |
-| Eszköz frissítése | Az OTA-frissítés megkezdése után a frissítési csoportok elvesznek. | Az [utasításokat](https://docs.microsoft.com/azure/azure-percept/how-to-update-over-the-air#create-a-device-update-group)követve frissítse az eszköz címkéjét. |
+| Eszköz frissítése | Az OTA-frissítés megkezdése után a frissítési csoportok elvesznek. | Az [utasításokat](./how-to-update-over-the-air.md#create-a-device-update-group)követve frissítse az eszköz címkéjét. |
 | Dev Tools Pack telepítő | Az opcionális Cafe-telepítés meghiúsulhat, ha a Docker nem fut megfelelően a rendszeren. | Győződjön meg arról, hogy a Docker telepítve van és fut, majd próbálja megismételni a Cafe telepítését. |
 | Dev Tools Pack telepítő | Nem kötelező a CUDA telepítése a nem kompatibilis rendszereken. | Ellenőrizze, hogy a rendszer kompatibilis-e a CUDA-sel a telepítő futtatása előtt. |
 | Docker, hálózat, IoT Edge | Ha a belső hálózata 172. x. x. x protokollt használ, a Docker-tárolók nem fognak tudni csatlakozni az Edge-hez. | Adjon hozzá egy speciális bip szakaszt a/etc/Docker/daemon.jsa következőhöz hasonló fájlban: `{    "bip": "192.168.168.1/24"}` |

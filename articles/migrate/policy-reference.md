@@ -1,18 +1,18 @@
 ---
 title: A Azure Migrate beépített szabályzat-definíciói
 description: A Azure Migrate Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: reference
 ms.service: azure-migrate
 author: rayne-wiselman
 ms.author: raynew
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ed95b8afb783fedb9af97506958ad827f30b3c02
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: e7349d388d4474505d90292973257574e5c961a0
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104776238"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036849"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-migrate"></a>A Azure Migrate beépített definíciói Azure Policy
 

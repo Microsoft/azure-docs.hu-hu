@@ -3,16 +3,16 @@ title: Azure Monitor riasztásokra vonatkozó műveleti szabályok
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorban szereplő műveleti szabályokat.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471675"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036781"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
-A műveleti szabályok segítségével meghatározhatja vagy letilthatja a műveleteket bármely Azure Resource Manager hatókörön (Azure-előfizetés, erőforráscsoport vagy cél-erőforrás). Számos szűrővel rendelkeznek, amelyek segítségével leszűkítheti az eljárni kívánt riasztási példányok meghatározott részhalmazát.
+A műveleti szabályok lehetővé teszik a felgyújtott riasztásokban lévő műveleti csoportok hozzáadását vagy letiltását. Egyetlen szabály a cél erőforrásainak különböző hatóköreit fedi le, például az adott erőforrásra vonatkozó riasztásokat (például egy adott virtuális gépet), vagy bármely, az előfizetésben lévő erőforrással kapcsolatos riasztást. Hozzáadhat különböző szűrőket is, amelyekkel szabályozhatja, hogy mely riasztások tartoznak egy szabályhoz, és hogyan határozhat meg egy ütemtervet, például úgy, hogy csak a munkaidőn kívül vagy egy tervezett karbantartási időszakban legyen érvényben.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -31,7 +31,7 @@ Bár a riasztási szabályok segítenek meghatározni a riasztás előállítás
 A műveleti szabályok segítenek leegyszerűsíteni ezt a folyamatot. A skálázási műveletek megadásával a konfigurált hatókörön létrehozott összes riasztás esetében aktiválható egy műveleti csoport. Az előző példában a csapat egyetlen műveleti szabályt is meghatározhat a **ContosoRG** , amely ugyanazt a műveleti csoportot fogja kiváltani a benne létrehozott összes riasztáshoz.
 
 > [!NOTE]
-> A műveleti szabályok jelenleg nem vonatkoznak Azure Service Health riasztásokra.
+> A műveleti szabályok nem vonatkoznak Azure Service Health riasztásokra.
 
 ## <a name="configuring-an-action-rule"></a>Műveleti szabály konfigurálása
 
@@ -118,7 +118,7 @@ Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon h
 Utolsó lépésként adja meg a következő adatokat a műveleti szabályhoz:
 * Name
 * Az erőforráscsoport, amelyben mentve van
-* Description
+* Leírás
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -308,7 +308,7 @@ A [riasztások listája oldalon](./alerts-managing-alert-instances.md)kiválaszt
 
 A Mellőzés mindig elsőbbséget élvez ugyanazon a hatókörön.
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha két külön műveleti szabályban megfigyelt erőforrással rendelkezem? Kapok egy vagy két értesítést? A **VM2** például a következő esetben:
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha olyan erőforrással rendelkezem, amelyre két műveleti szabály vonatkozik? Kapok egy vagy két értesítést? A **VM2** például a következő esetben:
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 
