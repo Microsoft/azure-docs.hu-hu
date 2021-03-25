@@ -551,6 +551,8 @@
           href: vs-active-directory-error.md
     - name: Alkalmazás regisztrációjának eltávolítása
       href: quickstart-remove-app.md
+    - name: Törölt alkalmazások regisztrációjának visszaállítása vagy eltávolítása
+      href: quickstart-restore-app.md
 - name: Referencia
   items:
     - name: Szószedet

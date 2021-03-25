@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91f72117fdbcdbeda1d906a9760243e66404920c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934465"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104504"
 ---
 | Erőforrás |[Használatalapú csomag](../articles/azure-functions/consumption-plan.md)|[Prémium szintű csomag](../articles/azure-functions/functions-premium-plan.md)|[Dedikált terv](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ ms.locfileid: "97934465"
 | Kérelem maximális URL-címének maximális hossza<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | A fürttől függ |
 |[ACU](../articles/virtual-machines/acu.md) -példányok száma | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [AK-díjszabás](https://azure.microsoft.com/pricing/details/container-service/) |
 | Maximális memória (GB/példány) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Bármely csomópont támogatott |
+| Példányok maximális száma | 200 | 100<sup>9</sup> | változó: SKU<sup>10</sup> | 100<sup>10</sup> | A fürttől függ |   
 | Function Apps/csomag |100 |100 |nem kötött<sup>4</sup> | unbounded | unbounded |
 | [App Service-csomagok](../articles/app-service/overview-hosting-plans.md) | 100 [régiónként](https://azure.microsoft.com/global-infrastructure/regions/) |100/erőforráscsoport |100/erőforráscsoport | - | - |
 | <sup>5</sup> . tárterület |5 TB |250 GB |50-1000 GB | 1 TB | n.a. |
@@ -34,4 +35,6 @@ ms.locfileid: "97934465"
 <sup>5</sup> a tárolási korlát a teljes tartalom mérete az ideiglenes tárolóban, az összes alkalmazás között, ugyanabban a app Service csomagban. A felhasználási terv az ideiglenes tároláshoz Azure Files használ.  
 <sup>6</sup> ha a Function alkalmazás egy [felhasználási](../articles/azure-functions/consumption-plan.md)csomagban található, csak a CNAME beállítás támogatott. A [prémium](../articles/azure-functions/functions-premium-plan.md) szintű csomagban vagy [app Service](../articles/azure-functions/dedicated-plan.md)csomagban található Function apps esetében egy egyéni tartományt egy CNAME vagy egy rekord használatával képezhető le.  
 <sup>7</sup> 60 percig garantált.  
-<sup>8</sup> a feldolgozók az ügyfelek által üzemeltetett szerepkörök. A feldolgozók három rögzített méretben érhetők el: egy vCPU/3,5 GB RAM; Két vCPU/7 GB RAM; Négy vCPU/14 GB RAM.
+<sup>8</sup> a feldolgozók az ügyfelek által üzemeltetett szerepkörök. A feldolgozók három rögzített méretben érhetők el: egy vCPU/3,5 GB RAM; Két vCPU/7 GB RAM; Négy vCPU/14 GB RAM.   
+<sup>9</sup> ha Linuxon fut prémium szintű csomagban, jelenleg legfeljebb 20 példánya lehet.  
+<sup>10</sup> a részletekért tekintse meg [app Service korlátot](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits) .

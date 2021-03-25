@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 127031479d7ef414298d3096ebef814df1fe9a18
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495411"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027928"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -115,6 +115,17 @@ string threadId = "<THREAD_ID>";
 ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
+## <a name="list-all-chat-threads"></a>Az összes csevegési szál listázása
+Ezzel a paranccsal `GetChatThreads` lekérheti az összes olyan csevegési szálat, amelyhez a felhasználó tartozik.
+
+```csharp
+AsyncPageable<ChatThreadItem> chatThreadItems = chatClient.GetChatThreadsAsync();
+await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
+{
+    Console.WriteLine($"{ chatThreadItem.Id}");
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
 
 `SendMessage`Üzenet küldése egy szálnak.
@@ -125,16 +136,6 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: thr
 
 ```csharp
 var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
-```
-## <a name="get-a-message"></a>Üzenet beszerzése
-
-A használatával `GetMessage` kérhet le üzenetet a szolgáltatásból.
-`messageId` az üzenet egyedi azonosítója.
-
-`ChatMessage` a válasz visszakapott egy üzenetet, amely tartalmaz egy azonosítót, amely az üzenet egyedi azonosítója a többi mező között. Tekintse meg az Azure. Communication. chat. ChatMessage
-
-```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása csevegési szálból
@@ -167,25 +168,6 @@ await foreach (ChatMessage message in allMessages)
 
 További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="update-a-message"></a>Üzenet frissítése
-
-A következő meghívásával frissítheti a már elküldött üzeneteket `UpdateMessage` `ChatThreadClient` .
-
-```csharp
-string id = "id-of-message-to-edit";
-string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
-```
-
-## <a name="deleting-a-message"></a>Üzenet törlése
-
-Az üzenetet úgy törölheti, hogy meghívja a következőt: `DeleteMessage` `ChatThreadClient` .
-
-```csharp
-string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(messageId: id);
-```
-
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
 Miután létrehozta a szálat, hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldhessen a szálnak, illetve más résztvevőt vegyen fel/távolítson el. A hívás előtt `AddParticipants` Győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
@@ -209,14 +191,6 @@ var participants = new[]
 
 await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
-## <a name="remove-user-from-a-chat-thread"></a>Felhasználó eltávolítása csevegési szálból
-
-A felhasználók egy szálhoz való hozzáadásához hasonlóan a csevegési szálból is eltávolíthat felhasználókat. Ehhez nyomon kell követnie a felvett résztvevő identitását `CommunicationUser` .
-
-```csharp
-var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
-```
 
 ## <a name="get-thread-participants"></a>Hozzászóláslánc résztvevőinek beolvasása
 
@@ -230,14 +204,6 @@ await foreach (ChatParticipant participant in allParticipants)
 }
 ```
 
-## <a name="send-typing-notification"></a>Begépelési értesítés küldése
-
-A használatával `SendTypingNotification` jelezheti, hogy a felhasználónak választ kell beírnia a szálra.
-
-```csharp
-await chatThreadClient.SendTypingNotificationAsync();
-```
-
 ## <a name="send-read-receipt"></a>Olvasási visszaigazolás küldése
 
 A használatával `SendReadReceipt` értesítheti a többi résztvevőt, hogy a felhasználó beolvassa az üzenetet.
@@ -246,17 +212,6 @@ A használatával `SendReadReceipt` értesítheti a többi résztvevőt, hogy a 
 await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
-## <a name="get-read-receipts"></a>Olvasási visszaigazolások beolvasása
-
-Az `GetReadReceipts` üzenetek állapotának ellenőrzéséhez használja a csevegési szál többi résztvevője által olvasott üzeneteket.
-
-```csharp
-AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
-await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
-{
-    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
-}
-```
 ## <a name="run-the-code"></a>A kód futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
