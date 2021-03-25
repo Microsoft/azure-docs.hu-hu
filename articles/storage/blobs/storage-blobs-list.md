@@ -1,26 +1,24 @@
 ---
-title: Blobok listázása a .NET-Azure Storage használatával
-description: Megtudhatja, hogyan listázhat blobokat egy tárolóban az Azure Storage-fiókban a .NET ügyféloldali kódtár használatával. A példák a Blobok listázására, illetve a Blobok hierarchikus listázására szolgálnak, mintha könyvtárakba vagy mappákba vannak rendezve.
+title: Blobok listázása az Azure Storage API-kkal
+description: Megtudhatja, hogyan listázhat blobokat a Storage-fiókban az Azure Storage ügyféloldali kódtárainak használatával. A példák a Blobok listázására, illetve a Blobok hierarchikus listázására szolgálnak, mintha könyvtárakba vagy mappákba vannak rendezve.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/24/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff20b8bd0aab94cadadddbb7a4b7b32b1db1ee85
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95543068"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046942"
 ---
-# <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
+# <a name="list-blobs-with-azure-storage-client-libraries"></a>Blobok listázása az Azure Storage ügyféloldali kódtárakkal
 
 Ha a kódból listázza a blobokat, megadhatja az eredmények Azure Storage-ból való visszaadásának módját. Megadhatja az egyes eredményekben visszaadott eredmények számát, majd beolvashatja a következő készleteket. Megadhat egy előtagot olyan Blobok visszaadásához, amelyek neve megegyezik a karakterrel vagy karakterlánccal. Emellett a blobokat egy egyszerű felsorolási struktúrában vagy hierarchikusan is listázhatja. A hierarchikus lista a blobokat úgy adja vissza, mintha mappákba vannak rendezve.
-
-Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage)használatával.  
 
 ## <a name="understand-blob-listing-options"></a>A Blobok listázási beállításainak ismertetése
 
@@ -45,7 +43,9 @@ A tárolóban lévő Blobok listázásához hívja a következő módszerek egyi
 - [CloudBlobContainer. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
 - [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-Ezeknek a módszereknek a túlterhelései további beállításokat biztosítanak a Blobok a listázási művelet által történő visszaadásához. Ezeket a beállításokat a következő szakaszokban ismertetjük.
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+- [ContainerClient.list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)
 
 ---
 
@@ -61,13 +61,25 @@ A Blobok listájának szűréséhez a paraméterhez meg kell adni egy karakterl�
 
 A blob metaadatait az eredményekkel adhatja vissza.
 
-- Ha a .NET V12 SDK-t használja, akkor a [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) enumerálás **metaadat** értékét kell megadnia.
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-- Ha a .NET v11 SDK-t használja, akkor a [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadat** értékét kell megadnia. Az Azure Storage tartalmazza az összes visszaadott blob metaadatait, így nem kell meghívnia a kontextus egyik **FetchAttributes** metódusát a blob metaadatainak lekéréséhez.
+A [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) enumerálás **metaadat** -értékének megadása.
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
+A [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadat** -értékének megadása. Az Azure Storage tartalmazza az összes visszaadott blob metaadatait, így nem kell meghívnia a kontextus egyik **FetchAttributes** metódusát a blob metaadatainak lekéréséhez.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+`metadata` `include=` [List_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)hívásakor a paraméter megadása.
+
+---
 
 ### <a name="list-blob-versions-or-snapshots"></a>BLOB-verziók vagy-Pillanatképek listázása
 
-Ha a .NET V12-ügyfél függvénytárával szeretné kilistázni a blob-verziókat vagy pillanatképeket, a [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) paramétert a **verzió** vagy a **Pillanatkép** mezővel kell megadni. A verziók és a pillanatképek a legrégebbitől a legújabbig vannak felsorolva. A verziók listázásával kapcsolatos további információkért lásd: [blob-verziók listázása](versioning-enable.md#list-blob-versions).
+- Ha a .NET V12-ügyfél függvénytárával szeretné kilistázni a blob-verziókat vagy pillanatképeket, a [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) paramétert a **verzió** vagy a **Pillanatkép** mezővel kell megadni. A verziók és a pillanatképek a legrégebbitől a legújabbig vannak felsorolva. A verziók listázásával kapcsolatos további információkért lásd: [blob-verziók listázása](versioning-enable.md#list-blob-versions).
+
+- A Python V12 ügyféloldali kódtár által készített Pillanatképek számának listázásához `num_snapshots` a `include=` [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)meghívásakor a paramétert kell megadni.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>A lapos Listázás és a hierarchikus Listázás
 
@@ -135,11 +147,15 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_ListBlobs":::
+
 ---
 
 A minta kimenete a következőhöz hasonló:
 
-```
+```console
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt
 Blob name: FolderA/blob3.txt
@@ -153,7 +169,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="use-a-hierarchical-listing"></a>Hierarchikus lista használata
 
-Ha hierarchikusan hívja meg a listázási műveletet, az Azure Storage a hierarchia első szintjén adja vissza a virtuális könyvtárakat és blobokat. Az egyes virtuális könyvtárak [előtag](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) tulajdonsága úgy van beállítva, hogy egy rekurzív hívásban továbbítsa az előtagot a következő könyvtár lekéréséhez.
+Ha hierarchikusan hívja meg a listázási műveletet, az Azure Storage a hierarchia első szintjén adja vissza a virtuális könyvtárakat és blobokat.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
@@ -164,6 +180,8 @@ Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy hierarch
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
+Az egyes virtuális könyvtárak [előtag](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) tulajdonsága úgy van beállítva, hogy egy rekurzív hívásban továbbítsa az előtagot a következő könyvtár lekéréséhez.
 
 A Blobok hierarchikus listázásához állítsa a `useFlatBlobListing` listázási metódus paraméterét **hamis** értékre.
 
@@ -222,11 +240,19 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Ha hierarchikusan szeretné kilistázni a blobokat, hívja meg a [walk_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#walk-blobs-name-starts-with-none--include-none--delimiter--------kwargs-) metódust.
+
+Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy hierarchikus lista használatával, egy választható szegmens méretének megadása mellett, és a blob nevét a konzol ablakba írja.
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_WalkHierarchy":::
+
 ---
 
 A minta kimenete a következőhöz hasonló:
 
-```
+```console
 Virtual directory prefix: FolderA/
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt

@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d872dd7c94a0b3ab23623bb246ff7ae81609779
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100654894"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047167"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>Gyors útmutató: telemetria küldése az eszközről az Azure IoT Centralba (Python)
 
@@ -266,5 +266,5 @@ Ebben a rövid útmutatóban egy alapszintű Azure IoT-alkalmazás munkafolyamat
 A következő lépésként Fedezze fel az Azure IoT Python SDK-t az Application Samples használatával.
 
 - [Aszinkron minták](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): Ez a könyvtár aszinkron Python-mintákat tartalmaz a további IoT hub forgatókönyvekhez.
-- [Szinkron minták](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Ez a könyvtár a Python 2,7-es vagy a Python 3.5 +-hez készült szinkron kompatibilitási forgatókönyvekkel használható Python-mintákat tartalmaz.
+- [Szinkron minták](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Ez a könyvtár a Python 2,7-es vagy a Python 3.6 +-hoz készült szinkron kompatibilitási forgatókönyvekkel használható Python-mintákat tartalmaz.
 - [IoT Edge minták](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): Ez a könyvtár Python-mintákat tartalmaz az Edge-modulok és az alsóbb rétegbeli eszközök használatához.

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175082"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048102"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Teradata-forrás regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -25,7 +25,7 @@ A Teradata forrás támogatja a **teljes vizsgálatot** a metaadatok Teradata-ad
 ## <a name="prerequisites"></a>Előfeltételek
 
 1.  Állítsa be a legújabb [saját üzemeltetésű integrációs](https://www.microsoft.com/download/details.aspx?id=39717)modult.
-    További információ: saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    További információ: saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Győződjön meg arról, hogy a [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) telepítve van a virtuális gépen, ahol a saját üzemeltetésű Integration Runtime telepítve van.
 
@@ -70,7 +70,7 @@ A **források regisztrálása (Teradata)** képernyőn tegye a következőket:
 
 Új vizsgálat létrehozásához és futtatásához tegye a következőket:
 
-1.  A felügyeleti központban kattintson az **Integration Runtimes** elemre. Győződjön meg arról, hogy a saját üzemeltetésű integrációs modul van beállítva. Ha nincs beállítva, kövesse az [itt](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) leírt lépéseket a saját üzemeltetésű integrációs modul beállításához.
+1.  A felügyeleti központban kattintson az **Integration Runtimes** elemre. Győződjön meg arról, hogy a saját üzemeltetésű integrációs modul van beállítva. Ha nincs beállítva, kövesse az [itt](./manage-integration-runtimes.md) leírt lépéseket a saját üzemeltetésű integrációs modul beállításához.
 
 2.  Navigáljon a **forrásokhoz**
 
@@ -90,7 +90,7 @@ A **források regisztrálása (Teradata)** képernyőn tegye a következőket:
     -   Adja meg az adatbázis-kiszolgálóhoz való kapcsolódáshoz használandó felhasználónevet a Felhasználónév beviteli mezőben.
     -   Tárolja az adatbázis-kiszolgáló jelszavát a titkos kulcsban.
 
-        Ha többet szeretne megtudni a hitelesítő adatokról, tekintse meg az [itt](https://docs.microsoft.com/azure/purview/manage-credentials) található hivatkozást
+        Ha többet szeretne megtudni a hitelesítő adatokról, tekintse meg az [itt](./manage-credentials.md) található hivatkozást
 
 6.  **Séma**: az importálandó sémák részhalmazának listázása pontosvesszővel tagolt listaként. például: Schema1; schema2. A rendszer minden felhasználói sémát importál, ha a lista üres. Alapértelmezés szerint a rendszer minden rendszersémát (például SysAdmin) és objektumot figyelmen kívül hagy. Ha a lista üres, a rendszer az összes elérhető sémát importálja.
 

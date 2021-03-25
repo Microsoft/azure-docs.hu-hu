@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589165"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048204"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Hibaelhárítási útmutató az Azure Signaler szolgáltatás gyakori problémáira
 
@@ -348,7 +348,7 @@ A ASP.NET-jelző esetében az SDK-1.6.0 rögzített egy ismert probléma. Friss�
 
 ## <a name="thread-pool-starvation"></a>Szál készletének éhezése
 
-Ha a kiszolgáló éhezik, ez azt jelenti, hogy egyetlen szál sem működik az üzenetek feldolgozásakor. Az összes szál egy bizonyos módon van felakasztva.
+Ha a kiszolgáló éhezik, ez azt jelenti, hogy egyetlen szál sem működik az üzenetek feldolgozásakor. Az összes szál nem válaszol egy adott metódusban.
 
 Ezt a forgatókönyvet általában a szinkronizálás vagy `Task.Result` / `Task.Wait()` aszinkron metódusok okozzák.
 

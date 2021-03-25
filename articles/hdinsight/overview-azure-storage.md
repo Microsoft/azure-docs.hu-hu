@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 419b4939c19ee03651a406db44244897e17087f2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98938947"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865468"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Az Azure Storage áttekintése a HDInsight-ben
 
@@ -24,7 +24,7 @@ Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális h�
 
 Az alábbi ábra az Azure Storage HDInsight architektúrájának absztrakt nézetét tartalmazza:
 
-!["HDInsight-tár architektúra"](./media/overview-azure-storage/storage-architecture.png "HDInsight-tár architektúra")
+:::image type="content" source="./media/overview-azure-storage/storage-architecture.png" alt-text="HDInsight-tár architektúra" border="false":::
 
 A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csatlakozó elosztott fájlrendszerhez. Ez a fájlrendszer a teljes URI használatával érhető el, például:
 
@@ -40,7 +40,7 @@ HDInsight-fürtökkel rendelkező Azure Storage-fiók használata esetén vegye 
 
 * **Nyilvános tárolók vagy nyilvános Blobok olyan Storage-fiókokban, amelyek nem csatlakoznak a fürthöz:** Csak olvasási jogosultsággal rendelkezik a tárolóban lévő blobokhoz.
   
-  > [!NOTE]  
+  > [!NOTE]
   > A nyilvános tárolók lehetővé teszik az adott tárolóban elérhető Blobok listájának lekérését és a tároló metaadatainak beolvasását. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../storage/blobs/anonymous-read-access-configure.md).
 
 * A **fürthöz nem kapcsolódó Storage-fiókokban lévő privát tárolók:** A tárolóban lévő Blobok csak akkor érhetők el, ha a Webhcaten-feladatok elküldésekor a Storage-fiókot definiálja.

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 104e6503ba47d17c17cfec2b4e62ec3f69f18330
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f7463b6234c03a9ed79f1c4a9fb310db7067a428
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200016"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043563"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
 Ez a cikk ismerteti a Azure Database for PostgreSQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for PostgreSQL adatbázis-példányára az Azure-on belüli és kívüli ügyfelektől.
@@ -99,7 +99,7 @@ Csak az átjáró csomópontjai lesznek leszerelve. Amikor a felhasználók csat
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Hogyan ellenőrizheti, hogy a kapcsolatok a régi átjáró-csomópontok vagy az új átjáró-csomópontok?
 Pingelje a kiszolgáló teljes tartománynevét, például:  ``ping xxx.postgres.database.azure.com`` . Ha a visszaadott IP-cím az átjáró IP-címei (leszerelése) alatt felsorolt IP-címek egyike a fenti dokumentumban, az azt jelenti, hogy a kapcsolatok a régi átjárón keresztül mennek keresztül. Tervezőrendszer, ha a visszaadott IP-cím az átjáró IP-címei területen felsorolt IP-címek egyike, akkor a kapcsolatok az új átjárón keresztül fognak haladni.
 
-Azt is megteheti, hogy [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) vagy TCPPing az adatbázis-kiszolgálót az ügyfélalkalmazás az 3306-as porton keresztül, és gondoskodik arról, hogy a VISSZATÉRÉSi IP-cím ne legyen a leszerelési IP-címek egyike
+Azt is megteheti, hogy [PSPing](/sysinternals/downloads/psping) vagy TCPPing az adatbázis-kiszolgálót az ügyfélalkalmazás az 3306-as porton keresztül, és gondoskodik arról, hogy a VISSZATÉRÉSi IP-cím ne legyen a leszerelési IP-címek egyike
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Hogyan tudni, hogy mikor történik a karbantartás, és kapok egy másik értesítést a régi IP-címek leszerelése után?
 Egy e-mailt fog kapni, amely tájékoztatja Önt, amikor elkezdjük a karbantartási munkát. A karbantartás akár egy hónapig is eltarthat attól függően, hogy hány kiszolgálót kell migrálni az Al-régiókban. Készítse elő az ügyfelet az adatbázis-kiszolgálóhoz való csatlakozásra a teljes tartománynév használatával vagy az új IP-cím használatával a fenti táblázatból. 

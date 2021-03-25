@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 285c6c05a1a216303ee9d8019093c963cad60aa0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a688f47e11e76f573ba2b99816e1fb402f4c50d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946483"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870551"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Apache Spark-adatelemzés a HDInsight Power BI használatával
 
@@ -43,7 +43,7 @@ Az [előző oktatóanyagban](apache-spark-load-data-run-query.md) létrehozott [
 
     A kimenet a következőképpen fog kinézni:
 
-    ![Táblák megjelenítése a Sparkban](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-show-tables.png" alt-text="Táblák megjelenítése a Sparkban" border="true":::
 
     Ha az oktatóanyag elindítása előtt már bezárta a notebookot, a `hvactemptable` törlődik, így az nem szerepel a kimenetben.  A BI-eszközökkel csak a metaadattárban tárolt Hive-táblákhoz (ezeket **Hamis** érték jelzi az **isTemporary** oszlopban) lehet hozzáférni. Ebben az oktatóanyagban kapcsolatot létesít az Ön által létrehozott **HVAC**-táblával.
 
@@ -56,7 +56,7 @@ Az [előző oktatóanyagban](apache-spark-load-data-run-query.md) létrehozott [
 
     A kimenet a következőképpen fog kinézni:
 
-    ![A HVAC-tábla sorainak megjelenítése a Sparkban](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-select-limit.png" alt-text="A HVAC-tábla sorainak megjelenítése a Sparkban" border="true":::
 
 3. A notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Állítsa le a notebookot az erőforrások felszabadításához.
 
@@ -72,11 +72,11 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 
 2. A **Kezdőlap** lapon navigáljon az **adatok lekérése**  >  **továbbiak..**.
 
-    ![Adatok beolvasása Power BI Desktop a HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Adatok beolvasása Power BI Apache Spark BI-ból")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png " alt-text="Adatok Beolvasása Power bi Desktop a HDInsight Apache Spark" border="true":::er = "true":::
 
 3. `Spark`A keresőmezőbe írja be a **Azure HDInsight Spark**, majd válassza a **kapcsolat** lehetőséget.
 
-    ![Adatok beolvasása Power BI Apache Spark BI-ból](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Adatok beolvasása Power BI Apache Spark BI-ból")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png " alt-text="Adatok Beolvasása Power BI Apache Spark bi" border="true":::er = "true":::
 
 4. Adja meg a fürt URL-címét (az űrlapon `mysparkcluster.azurehdinsight.net` ) a **kiszolgáló** szövegmezőben.
 
@@ -88,7 +88,7 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 
 7. Válassza ki a `hvac` táblázatot, várjon, amíg megtekinti az adatelőnézetet, majd válassza a **Betöltés** lehetőséget.
 
-    ![Spark-fürt felhasználóneve és jelszava](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark-fürt felhasználóneve és jelszava")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png " alt-text="Spark-fürt felhasználóneve és jelszava" border="true":::d "Border =" true ":::
 
     A Power BI Desktop rendelkezik a Spark-fürthöz való csatlakozáshoz és adatok a `hvac`-táblából való letöltéséhez szükséges információkkal. A tábla és annak oszlopai a **Mezők** panelen jelennek meg.
 
@@ -98,21 +98,21 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 
     2. Húzza a **BuildingID** mezőt a **Tengely** területre, az **ActualTemp** és a **TargetTemp** mezőket pedig az **Érték** területre.
 
-        ![érték oszlopok hozzáadása](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "érték oszlopok hozzáadása")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png " alt-text="érték oszlopok hozzáadása" border="true":::t = "érték oszlopok hozzáadása" Border = "true":::
 
         A diagram a következőképpen fog kinézni:
 
-        ![körzeti gráf összege](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "körzeti gráf összege")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png " alt-text="terület gráf Sum" border="true":::lt-text = "terület gráf összege" Border = "true":::
 
         Alapértelmezés szerint a vizualizáció az **ActualTemp** és a **TargetTemp** mezők összegét jeleníti meg. Válassza ki a **ActualTemp** és a **TragetTemp** melletti lefelé mutató nyilat a vizualizációk ablaktáblán, amelyen a **Sum (összeg** ) lehetőség van kiválasztva.
 
     3. Válassza ki a **ActualTemp** és a **TragetTemp** melletti lefelé mutató nyilat a vizualizációk ablaktáblán, és válassza az **átlag** lehetőséget az egyes épületek tényleges és megcélzott hőmérsékletének lekéréséhez.
 
-        ![értékek átlaga](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "értékek átlaga")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png " alt-text="értékek átlaga" border="true":::t = "az értékek átlaga" Border = "true":::
 
         Az adatok vizualizációjának a képernyőképen láthatóhoz hasonlóan kell kinéznie. Ha az egérmutatót a vizualizáció fölé viszi, megtekintheti a kapcsolódó adatokhoz tartozó eszköztippeket.
 
-        ![körzeti gráf](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "körzeti gráf")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png " alt-text="terület gráf" border="true":::. png "Alt-text =" terület gráf "Border =" true ":::
 
 9. Navigáljon a **fájl**  >  **mentése** mezőbe, írja be a `BuildingTemperature` fájl nevét, majd kattintson a Mentés gombra.
 
@@ -124,31 +124,31 @@ A Power BI szolgáltatás segítségével jelentéseket és irányítópultokat 
 
 1. A **Kezdőlap** lapon válassza a **Közzététel** lehetőséget.
 
-    ![Közzététel a Power BI Desktopból](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Közzététel a Power BI Desktopból")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png " alt-text="Közzététel Power bi Desktop" border="true"::: Asztal "Border =" true ":::
 
 1. Válasszon ki egy munkaterületet, és tegye közzé az adatkészletet, majd válassza a **kiválasztás** lehetőséget. A következő képen az alapértelmezett **Saját munkaterület** mező van kiválasztva.
 
-    ![Válassza ki a munkaterületet az adatkészlet és a jelentés közzétételéhez](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Válassza ki a munkaterületet az adatkészlet és a jelentés közzétételéhez")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png " alt-text="Válassza ki a munkaterületet, és tegye közzé az adatkészletet és jelentést az" border="true":::UE ":::
 
 1. A közzététel sikeres végrehajtása után válassza a **Power bi BuildingTemperature. Pbix megnyitása** lehetőséget.
 
-    ![Sikeres közzététel, kattintson ide a hitelesítő adatok megadásához](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Sikeres közzététel, kattintson ide a hitelesítő adatok megadásához")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png " alt-text="Sikeres közzététel, kattintson ide a hitelesítő adatok megadásához" border="true":::er = "true":::
 
 1. A Power BI szolgáltatás válassza a **hitelesítő adatok megadása** lehetőséget.
 
-    ![Hitelesítő adatok megadása Power BI szolgáltatás](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Hitelesítő adatok megadása Power BI szolgáltatás")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png " alt-text="Adja meg a hitelesítő adatokat Power bi szolgáltatás" border="true":::"Border =" true ":::
 
 1. Válassza a **hitelesítő adatok szerkesztése** lehetőséget.
 
-    ![Hitelesítő adatok szerkesztése a Power BI szolgáltatásban](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Hitelesítő adatok szerkesztése a Power BI szolgáltatásban")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png " alt-text="Hitelesítő adatok szerkesztése az Power bi szolgáltatás" border="true":::e "Border =" true ":::
 
 1. Adja meg a HDInsight bejelentkezési fiókjának adatait, majd válassza a **Bejelentkezés** lehetőséget. Az alapértelmezett fióknév az *admin*.
 
-    ![Bejelentkezés a Spark-fürtbe](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Bejelentkezés a Spark-fürtbe")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png " alt-text="Bejelentkezés a Spark-fürtbe" border="true"::: Spark-fürt "Border =" true ":::
 
 1. A bal oldali ablaktáblán válassza a **munkaterületek**  >  **saját munkaterület**-  >  **jelentések** elemet, majd kattintson a **BuildingTemperature** elemre.
 
-    ![Jelentés a bal oldali ablaktábla jelentések területén](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Jelentés a bal oldali ablaktábla jelentések területén")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png " alt-text="Jelentés a bal oldali ablaktábla" border="true":::Order = "true":::
 
     A **BuildingTemperature** elemnek a bal oldali ablaktábla **ADATKÉSZLETEK** területén is meg kell jelennie.
 
@@ -156,11 +156,11 @@ A Power BI szolgáltatás segítségével jelentéseket és irányítópultokat 
 
 1. Vigye a kurzort a vizualizáció fölé, majd válassza a jobb felső sarokban található rögzítés ikont.
 
-    ![Jelentés a Power BI szolgáltatás](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Jelentés a Power BI szolgáltatás")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png " alt-text="Jelentés az Power bi szolgáltatás" border="true":::szolgáltatásban "Border =" true ":::
 
 1. Válassza az új irányítópult lehetőséget, írja be a nevet `Building temperature` , majd válassza a **PIN-kód** lehetőséget.
 
-    ![Rögzítés új irányítópultra](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Rögzítés új irányítópultra")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png " alt-text="Rögzítés az új irányítópultra" border="true"::: "Border =" true ":::
 
 1. A jelentésben válassza az **Ugrás az irányítópultra** lehetőséget.
 
