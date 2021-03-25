@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e8641cada03577cf22e6627bdf53b2a8a0e836ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4550be7ae8c543eea1bdfa085db6f23fe668a121
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216383"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025696"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -547,7 +547,7 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `HttpTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **típusa** | n.a.| Kötelező – a következőre kell beállítani: `httpTrigger` . |
 | **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
@@ -596,7 +596,7 @@ Ennek a konfigurációnak a használatával a függvény mostantól a következ�
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-Ez a konfiguráció lehetővé teszi, hogy a függvény programkódja támogassa a címben, a _kategóriában_ és az _azonosítóban_ szereplő két paramétert. További információ arról, hogy az útválasztási paraméterek hogyan legyenek jogkivonatban az URL-címekben: [útválasztás ASP.net Coreban](https://docs.microsoft.com/aspnet/core/fundamentals/routing#route-constraint-reference).
+Ez a konfiguráció lehetővé teszi, hogy a függvény programkódja támogassa a címben, a _kategóriában_ és az _azonosítóban_ szereplő két paramétert. További információ arról, hogy az útválasztási paraméterek hogyan legyenek jogkivonatban az URL-címekben: [útválasztás ASP.net Coreban](/aspnet/core/fundamentals/routing#route-constraint-reference).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

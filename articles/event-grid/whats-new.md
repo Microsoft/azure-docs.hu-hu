@@ -3,12 +3,12 @@ title: Újdonságok Kibocsátási megjegyzések – Azure Event Grid
 description: Ismerje meg a Azure Event Grid újdonságait, például a legújabb kibocsátási megjegyzéseket, ismert problémákat, hibajavításokat, elavult funkciókat és a közelgő változásokat.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96350007"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107533"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>A Azure Event Grid újdonságai
 
@@ -73,14 +73,14 @@ Azure Event Grid folyamatosan fejleszti a fejlesztéseket. A legújabb fejlemén
 - Ez a kiadás az `2019-06-01` API-verziónak felel meg.
 - Támogatást nyújt a következő új funkciókhoz:
     * [Tartományok](event-domains.md)
-    * Tördelés és keresési szűrő az erőforrások listája műveleteihez. Példaként tekintse meg a [témakörök-lista előfizetés alapján](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription)című témakört.
+    * Tördelés és keresési szűrő az erőforrások listája műveleteihez. Példaként tekintse meg a [témakörök-lista előfizetés alapján](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)című témakört.
     * [Service Bus várólista célhelyként](handler-service-bus.md)
     * [Speciális szűrés](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0 – előzetes verzió (2019-03)
 - Ez a kiadás a 2019-02-01-Preview API-verziónak felel meg.
 - Támogatást nyújt a következő új funkciókhoz:
-    * Tördelés és keresési szűrő az erőforrások listája műveleteihez. Példaként tekintse meg a [témakörök-lista előfizetés alapján](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription)című témakört.
+    * Tördelés és keresési szűrő az erőforrások listája műveleteihez. Példaként tekintse meg a [témakörök-lista előfizetés alapján](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)című témakört.
     * [Tartományi témakörök manuális létrehozása/törlése](how-to-event-domains.md)
     * [Service Bus várólista célhelyként](handler-service-bus.md)
 

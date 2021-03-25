@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91363205"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035802"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory használatával az Azure API Managementben
 
@@ -47,7 +47,15 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
     A panelen megjelenő egyéb szükséges információk megadását lehetővé tevő vezérlők. A vezérlőelemek közé tartozik az **ügyfél-azonosító** és az **ügyfél titka**. (Ezen vezérlőkről a cikk későbbi részében talál információt.)
 9. Jegyezze fel az **átirányítási URL-cím** tartalmát.
     
-   ![Az identitás-szolgáltató hozzáadásának lépései a Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
+
+    :::image type="content" source="media/api-management-howto-aad/api-management-with-aad001.png" alt-text="Identitás-szolgáltató hozzáadása Azure Portal":::
+    > [!NOTE]
+    > Két átirányítási URL-cím létezik:<br/>
+    > **Átirányítási URL** – a API Management legújabb fejlesztői portálra mutat.<br/>
+    > **Átirányítási URL-cím (elavult portál)** – a API Management elavult fejlesztői portálra mutat.
+    >
+    > Javasoljuk, hogy használja a fejlesztői portál legújabb átirányítási URL-címét.
+   
 10. Nyisson meg egy másik lapot a böngészőben. 
 11. A [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) gombra kattintva regisztrálhat egy alkalmazást a Active Directoryban.
 12. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.

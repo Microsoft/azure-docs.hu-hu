@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5d5aaf84482dae6786ac7fd9f9ee837efca71b34
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947234"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104856"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Python-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
@@ -21,9 +21,9 @@ Szeretné most rögtön megtekinteni a kódot? A [Pythonhoz készült Bing Searc
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Bing Web Search SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös, és 3.6-os verziójával kompatibilis. Jelen rövid útmutatóhoz ajánlott egy virtuális környezet használata.
+A Bing Web Search SDK kompatibilis a Python 2,7 vagy a 3.6 + verzióval. Jelen rövid útmutatóhoz ajánlott egy virtuális környezet használata.
 
-* Python 2.7, 3.3, 3.4, 3.5 vagy 3.6
+* Python 2,7 vagy 3.6 +
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) a Python 2.7 esetében
 * [venv](https://pypi.python.org/pypi/virtualenv) a Python 3.x esetében
 

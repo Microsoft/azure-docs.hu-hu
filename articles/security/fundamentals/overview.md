@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: 1159736d59e15fa36c0feb7e5d5b5553953fb6b9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564511"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047779"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 
@@ -204,11 +204,11 @@ Az Azure Networking különböző biztonságos távelérési forgatókönyveket 
 
 ### <a name="azure-private-link"></a>Azure Private Link
 
-Az [Azure Private link](https://azure.microsoft.com/services/private-link/) lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure-beli üzemeltetett ügyfél-szolgáltatások elérését privát [végponton](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)keresztül a virtuális hálózaton. Az Azure Private link használatával történő beállítás és felhasználás konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között. A virtuális hálózatról az Azure-szolgáltatásra irányuló forgalom mindig a Microsoft Azure gerinc hálózatán marad.
+Az [Azure Private link](https://azure.microsoft.com/services/private-link/) lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure-beli üzemeltetett ügyfél-szolgáltatások elérését privát [végponton](../../private-link/private-endpoint-overview.md)keresztül a virtuális hálózaton. Az Azure Private link használatával történő beállítás és felhasználás konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között. A virtuális hálózatról az Azure-szolgáltatásra irányuló forgalom mindig a Microsoft Azure gerinc hálózatán marad.
 
-A [privát végpontok](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) lehetővé teszik a kritikus Azure-szolgáltatási erőforrások védelmét csak a virtuális hálózatok számára. Az Azure Private Endpoint egy magánhálózati IP-címet használ a VNet, hogy egy privát és biztonságos kapcsolatot létesítsen az Azure privát kapcsolaton keresztül, és hatékonyan hozza a szolgáltatást a VNet. A virtuális hálózatnak a nyilvános internethez való kimutatása már nem szükséges az Azure-szolgáltatások használatához. 
+A [privát végpontok](../../private-link/private-endpoint-overview.md) lehetővé teszik a kritikus Azure-szolgáltatási erőforrások védelmét csak a virtuális hálózatok számára. Az Azure Private Endpoint egy magánhálózati IP-címet használ a VNet, hogy egy privát és biztonságos kapcsolatot létesítsen az Azure privát kapcsolaton keresztül, és hatékonyan hozza a szolgáltatást a VNet. A virtuális hálózatnak a nyilvános internethez való kimutatása már nem szükséges az Azure-szolgáltatások használatához. 
 
-Saját privát kapcsolati szolgáltatást is létrehozhat a virtuális hálózatában. Az [Azure Private link Service](https://docs.microsoft.com/azure/private-link/private-link-service-overview) a saját szolgáltatására vonatkozik, amelyet az Azure privát kapcsolata működtet. Az Azure standard Load Balancer mögött futó szolgáltatás engedélyezhető a magánjellegű kapcsolatokhoz való hozzáféréshez, így a szolgáltatás felhasználóinak saját virtuális hálózatról férhetnek hozzá. Ügyfelei létrehozhatnak egy privát végpontot a virtuális hálózaton belül, és leképezhetők a szolgáltatásba. A szolgáltatásnak a nyilvános internethez való kimutatása már nem szükséges az Azure-szolgáltatások megjelenítéséhez. 
+Saját privát kapcsolati szolgáltatást is létrehozhat a virtuális hálózatában. Az [Azure Private link Service](../../private-link/private-link-service-overview.md) a saját szolgáltatására vonatkozik, amelyet az Azure privát kapcsolata működtet. Az Azure standard Load Balancer mögött futó szolgáltatás engedélyezhető a magánjellegű kapcsolatokhoz való hozzáféréshez, így a szolgáltatás felhasználóinak saját virtuális hálózatról férhetnek hozzá. Ügyfelei létrehozhatnak egy privát végpontot a virtuális hálózaton belül, és leképezhetők a szolgáltatásba. A szolgáltatásnak a nyilvános internethez való kimutatása már nem szükséges az Azure-szolgáltatások megjelenítéséhez. 
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

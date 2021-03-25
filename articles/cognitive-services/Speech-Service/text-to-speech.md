@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
-ms.openlocfilehash: 7722c9387e8d6475c6da4c771e9a0e355a4ac0af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e42f81ce0f06b3782972dbf4322f0590763d8704
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654849"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026325"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
@@ -41,7 +41,10 @@ Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgál
 
 * A beszédfelismerési stílusok a SSML-hangszintézis Markup Language (SSML) nyelvvel való beállítása egy XML-alapú Markup-nyelv, amely a beszéd-szöveg kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [útmutató](speech-synthesis-markup.md) a beszéd stílusainak módosításához.
 
-* Visemes – a [Visemes](how-to-speech-synthesis-viseme.md) a megfigyelt beszédben jelent meg, beleértve az ajkak, az állkapocs és a nyelv pozícióját, amikor egy adott fonéma hoz létre. A Visemes erős korrelációt mutat a hang-és fonémák. Az viseme-események a Speech SDK-ban való használatával az arc-animálási információk is létrehozhatók, amelyekkel animálható az arcok az ajak-olvasási kommunikáció, az oktatás, a szórakoztatás és az ügyfélszolgálat számára. 
+* Visemes – a [Visemes](how-to-speech-synthesis-viseme.md) a megfigyelt beszédben jelent meg, beleértve az ajkak, az állkapocs és a nyelv pozícióját, amikor egy adott fonéma hoz létre. A Visemes erős korrelációt mutat a hang-és fonémák. Az viseme-események a Speech SDK-ban való használatával az arc-animálási információk is létrehozhatók, amelyekkel animálható az arcok az ajak-olvasási kommunikáció, az oktatás, a szórakoztatás és az ügyfélszolgálat számára.
+
+> [!NOTE]
+> A Viseme jelenleg csak az `en-US-AriaNeural` USA 2. nyugati régiójában () található hangra működik `westus2` .
 
 ## <a name="get-started"></a>Bevezetés
 

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 146053ffd72b24216bfa86577787727257da2516
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495410"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107032"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +48,7 @@ Az alkalmazás POM-fájljának frissítése a Java 8 vagy újabb verzió haszná
 </properties>
 ```
 
-### <a name="add-the-package-references-for-the-chat-client-library"></a>A csevegési ügyféloldali függvénytárhoz tartozó csomagok hivatkozásainak hozzáadása
+### <a name="add-the-package-references-for-the-chat-sdk"></a>A csevegő SDK-hoz tartozó csomagok hivatkozásainak hozzáadása
 
 A POM-fájlban hivatkozzon a `azure-communication-chat` csomagra a csevegési API-kkal:
 
@@ -72,7 +72,7 @@ A hitelesítéshez az ügyfélnek a csomagra kell hivatkoznia `azure-communicati
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek kezelik az Azure kommunikációs szolgáltatások csevegő ügyféloldali függvénytárának főbb funkcióit a Javához.
+A következő osztályok és felületek a Javához készült Azure Communication Services csevegő SDK főbb funkcióit kezelik.
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -82,7 +82,7 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 | ChatThreadAsyncClient | Ez az osztály szükséges az aszinkron csevegési szál működéséhez. A példányokat a ChatAsyncClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére |
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A CommunicationTokenCredential osztályt kell használnia a közös ügyféloldali függvénytárban, hogy átadja a tokent a csevegési ügyfelének. 
+Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A Common SDK CommunicationTokenCredential osztályát kell használnia, hogy átadja a tokent a csevegési ügyfelének. 
 
 További információ a [csevegési architektúráról](../../../concepts/chat/concepts.md)
 

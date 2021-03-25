@@ -258,9 +258,11 @@
               href: create-new-saas-offer-technical.md
             - name: Csomagok létrehozása
               href: create-new-saas-offer-plans.md
+            - name: Tesztelési ajánlat létrehozása
+              href: create-saas-dev-test-offer.md
             - name: SaaS-ajánlat tesztelése és közzététele
               href: test-publish-saas-offer.md
-        - name: SaaS-ajánlat értékesítése
+        - name: Az SaaS-ajánlat értékesítése
           href: create-new-saas-offer-marketing.md
     - name: Ajánlatok felülvizsgálata és közzététele
       href: review-publish-offer.md

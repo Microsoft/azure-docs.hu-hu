@@ -3,12 +3,12 @@ title: Fogalmak – identitás és hozzáférés
 description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: f3a79c79acef07721bd0883fa70c835bee14ef0d
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799275"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026904"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
@@ -101,11 +101,11 @@ Az NSX-T kezelőjének eléréséhez használja a *rendszergazdai* fiókot. Telj
 
 Most, hogy lefedette az Azure VMware-megoldás hozzáférési és identitási fogalmait, érdemes megismernie az alábbiakat:
 
-- [Saját Felhőbeli frissítési fogalmak](concepts-upgrades.md).
-- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
-- [Az egyes jogosultságok részletei](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
-- [Hogyan figyeli és javítja az Azure VMware-megoldás a privát felhőket](concepts-monitor-repair-private-cloud.md).
-- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
+- [Saját Felhőbeli frissítési fogalmak](concepts-upgrades.md)
+- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md)
+- [Az egyes jogosultságok részletei](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
+- [Privát felhők figyelése és javítása az Azure VMware-megoldással](concepts-monitor-repair-private-cloud.md)
+- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md)
 
 
 <!-- LINKS - external-->

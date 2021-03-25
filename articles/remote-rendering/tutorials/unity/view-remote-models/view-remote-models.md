@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3370aac242fb47a133a5f7d6dc9b3444c65e3691
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: dd3596dd7b2cd01e80d9cf4db9bbc179048e7fcf
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573115"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035965"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -33,10 +33,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 * Windows SDK 10.0.18362.0 [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * A Visual Studio 2019 legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * GIT [(letöltés)](https://git-scm.com/downloads)
-* Az Unity, a legújabb 2019,3-as verzió, javasoljuk, hogy használja az Unity hub-t [(letöltés)](https://unity3d.com/get-unity/download)
-  * Telepítse ezeket a modulokat az Unity-ben:
-    * **UWP** – univerzális Windows-platform-Build támogatása
-    * **IL2CPP** – Windows Build-támogatás (IL2CPP)
+* Unity (lásd a támogatott verziók [rendszerkövetelményeit](../../../overview/system-requirements.md#unity) )
 * Az Unity és a C# nyelv közbenső ismerete (például parancsfájlok és objektumok létrehozása panelekkel, az egység eseményeinek konfigurálása stb.)
 
 ## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Azure-beli távoli renderelés (ARR) példányának kiépítése

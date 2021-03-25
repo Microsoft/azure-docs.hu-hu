@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 913f2bc5569dc9bdd058c38902ad0c99acee5d48
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 3ff31c5dd99e347805ad69018909137294d27c34
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104803313"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107131"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +49,7 @@ ms.locfileid: "104803313"
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Miközben továbbra is az alkalmazás könyvtárában van, telepítse az Azure kommunikációs szolgáltatások Identity ügyféloldali függvénytárát a Python-csomaghoz az `pip install` paranccsal.
+Még az alkalmazás könyvtára alatt telepítse a Python-csomaghoz készült Azure kommunikációs szolgáltatások Identity SDK-t a `pip install` paranccsal.
 
 ```console
 pip install azure-communication-identity

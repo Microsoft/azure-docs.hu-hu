@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492693"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107227"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Hibaelhárítás az Azure kommunikációs szolgáltatásokban
 
@@ -33,11 +33,11 @@ Bizonyos típusú problémák elhárítása érdekében a következő informáci
 
 ## <a name="access-your-ms-cv-id"></a>Hozzáférés az MS-CV-AZONOSÍTÓhoz
 
-Az MS-CV AZONOSÍTÓját a diagnosztika konfigurálásával érheti el az `clientOptions` Object példányban az ügyféloldali kódtárak inicializálásakor. A diagnosztika bármely Azure-ügyfél kódtára számára konfigurálható, beleértve a csevegést, az identitást és a VoIP-hívást is.
+Az MS-CV azonosító az SDK-k `clientOptions` inicializálásakor az Object példányban a diagnosztika konfigurálásával érhető el. A diagnosztika konfigurálható bármely Azure SDK-hoz, beleértve a csevegést, az identitást és a VoIP-hívást is.
 
 ### <a name="client-options-example"></a>Ügyfél-beállítások – példa
 
-A következő kódrészletek szemléltetik a diagnosztika konfigurációját. Ha az ügyféloldali kódtárakat a diagnosztika engedélyezve van, a rendszer a diagnosztikai adatokat a beállított esemény-figyelőhöz fogja kiadni:
+A következő kódrészletek szemléltetik a diagnosztika konfigurációját. Ha az SDK-kat a diagnosztika engedélyezve van, a rendszer a diagnosztikai adatokat a beállított esemény-figyelőhöz fogja kiadni:
 
 # <a name="c"></a>[C#](#tab/csharp)
 ```
@@ -79,7 +79,7 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>Hozzáférés a hívási AZONOSÍTÓhoz
 
-Ha egy támogatási kérést a hívási problémákkal kapcsolatos Azure Portal küld, a rendszer megkérheti, hogy adja meg a hivatkozott hívás AZONOSÍTÓját. Ez a hívó ügyféloldali könyvtárán keresztül érhető el:
+Ha egy támogatási kérést a hívási problémákkal kapcsolatos Azure Portal küld, a rendszer megkérheti, hogy adja meg a hivatkozott hívás AZONOSÍTÓját. Ez a hívó SDK-val érhető el:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
@@ -127,7 +127,7 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő kód használatával konfigurálhatja a `AzureLogger` naplófájlokat a konzolon a JavaScript ügyféloldali kódtár segítségével:
+A következő kód használatával konfigurálhatja a `AzureLogger` naplófájlokat a konzolon a JavaScript SDK segítségével:
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
@@ -157,16 +157,16 @@ Android Studioon navigáljon az eszköz Fájlkezelőhöz úgy, hogy kijelöli a 
 
 ---
 
-## <a name="calling-client-library-error-codes"></a>Ügyféloldali függvénytár-hibakódok hívása
+## <a name="calling-sdk-error-codes"></a>SDK-hibakódok hívása
 
-Az ügyféloldali függvénytárat hívó Azure kommunikációs szolgáltatások a következő hibakódokat használják a hívási problémák elhárításához. Ezek a hibakódok a tulajdonságon keresztül jelennek meg a `call.callEndReason` hívás befejeződése után.
+Az Azure kommunikációs szolgáltatások meghívása SDK a következő hibakódokat használja a hívási problémák elhárításához. Ezek a hibakódok a tulajdonságon keresztül jelennek meg a `call.callEndReason` hívás befejeződése után.
 
-| Hibakód | Description | Elvégzendő művelet |
+| Hibakód | Leírás | Elvégzendő művelet |
 | -------- | ---------------| ---------------|
 | 403 | Tiltott/hitelesítési hiba. | Győződjön meg arról, hogy a kommunikációs szolgáltatások jogkivonata érvényes, és nem járt le. |
 | 404 | A hívás nem található. | Ellenőrizze, hogy létezik-e a hívott szám (vagy hívja meg az összekötőt). |
 | 408 | A hívási vezérlő időkorlátja lejárt. | A hívási vezérlő időtúllépést várt a felhasználói végpontok protokoll üzeneteire való várakozás közben. Győződjön meg arról, hogy az ügyfelek csatlakoztatva vannak és elérhetők. |
-| 410 | A helyi média verem vagy a média-infrastruktúra hibája. | Győződjön meg arról, hogy a legújabb ügyféloldali kódtárat használja egy támogatott környezetben. |
+| 410 | A helyi média verem vagy a média-infrastruktúra hibája. | Győződjön meg arról, hogy a legújabb SDK-t használja egy támogatott környezetben. |
 | 430 | Nem lehet kézbesíteni az üzenetet az ügyfélalkalmazás számára. | Győződjön meg arról, hogy az ügyfélalkalmazás fut és elérhető. |
 | 480 | A távoli ügyfél-végpont nincs regisztrálva. | Győződjön meg arról, hogy a távoli végpont elérhető. |
 | 481 | Nem sikerült kezelni a bejövő hívást. | Támogatási kérelem nyújtása a Azure Portalon keresztül. |
