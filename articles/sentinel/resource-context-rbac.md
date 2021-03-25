@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 26124f8f650e1006244b4871e26962d417d90fd4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054822"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044175"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>Az Azure Sentinel-adatforrásokhoz való hozzáférés kezelése
 
@@ -36,7 +36,7 @@ Ha a felhasználók az Azure Sentinel munkaterület helyett az általa elérhet�
 
 - **Azure monitoron keresztül**. Ezt a módszert akkor használja, ha több erőforrást és/vagy erőforráscsoportot érintő lekérdezéseket szeretne létrehozni. Amikor Azure Monitorban lévő naplókra és munkafüzetekre navigál, definiálja a hatókört egy vagy több konkrét erőforráscsoport vagy erőforrás számára.
 
-Az erőforrás-környezet RBAC engedélyezése a Azure Monitorban. További információ: [a hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez Azure monitor](/azure/azure-monitor/logs/manage-access).
+Az erőforrás-környezet RBAC engedélyezése a Azure Monitorban. További információ: [a hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez Azure monitor](../azure-monitor/logs/manage-access.md).
 
 > [!NOTE]
 > Ha az adatok nem Azure-erőforrások, például syslog-, CEF-vagy HRE-adatok, vagy egy egyéni gyűjtő által összegyűjtött adatok, manuálisan kell konfigurálnia az adatok azonosításához és a hozzáférés engedélyezéséhez használt erőforrás-azonosítót.
@@ -66,7 +66,7 @@ Az alábbi lista azokat a forgatókönyveket ismerteti, amelyekben az adatokhoz 
 |---------|---------|
 |**A leányvállalat egy SoC-csapattal rendelkezik, amelyhez teljes körű Azure Sentinel-élmény szükséges**.     |  Ebben az esetben a több munkaterületet használó architektúrával elkülönítheti az adatengedélyeit. <br><br>További információkért lásd: <br>- [Az Azure Sentinel bővítése munkaterületeken és bérlők között](extend-sentinel-across-workspaces-tenants.md)<br>    - [Incidensek használata egyszerre sok munkaterületen](multiple-workspace-view.md)          |
 |**Egy adott típusú eseményhez szeretne hozzáférést biztosítani**.     |  Adjon meg például egy Windows-rendszergazdát, amely hozzáférést biztosít a Windows biztonsági eseményeihez az összes rendszerben. <br><br>Ilyen esetekben a [táblázat szintű RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) használatával határozhatja meg az egyes táblák engedélyeit.       |
-| **Korlátozza a hozzáférést egy részletesebb szintre, vagy nem az erőforrás alapján, vagy egy esemény mezőinek egy részhalmazára.**   |   Előfordulhat például, hogy egy felhasználó leányvállalata alapján szeretné korlátozni az Office 365-naplók elérését. <br><br>Ebben az esetben az [Power bi irányítópultokkal és jelentésekkel](/azure/azure-monitor/platform/powerbi)való beépített integráció használatával biztosíthatja az adathozzáférést.      |
+| **Korlátozza a hozzáférést egy részletesebb szintre, vagy nem az erőforrás alapján, vagy egy esemény mezőinek egy részhalmazára.**   |   Előfordulhat például, hogy egy felhasználó leányvállalata alapján szeretné korlátozni az Office 365-naplók elérését. <br><br>Ebben az esetben az [Power bi irányítópultokkal és jelentésekkel](../azure-monitor/visualize/powerbi.md)való beépített integráció használatával biztosíthatja az adathozzáférést.      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>Az erőforrás-környezet RBAC explicit konfigurálása
@@ -77,11 +77,11 @@ Például az Azure Sentinel-munkaterületen található, nem Azure-erőforrások
 
 **Az erőforrás-környezet RBAC explicit konfigurálása**:
 
-1. Győződjön meg arról, hogy [engedélyezte az erőforrás-környezet RBAC](/azure/azure-monitor/platform/manage-access) a Azure monitorban. 
+1. Győződjön meg arról, hogy [engedélyezte az erőforrás-környezet RBAC](../azure-monitor/logs/manage-access.md) a Azure monitorban. 
 
-1. [Hozzon létre egy erőforráscsoportot](/azure/azure-resource-manager/management/manage-resource-groups-portal) minden olyan felhasználói csapat számára, akiknek a teljes Azure Sentinel-környezet nélkül hozzá kell férniük az erőforrásokhoz.
+1. [Hozzon létre egy erőforráscsoportot](../azure-resource-manager/management/manage-resource-groups-portal.md) minden olyan felhasználói csapat számára, akiknek a teljes Azure Sentinel-környezet nélkül hozzá kell férniük az erőforrásokhoz.
 
-    A csapattagok összes tagjához tartozó [log Reader-engedélyek](/azure/azure-monitor/platform/manage-access#resource-permissions) kiosztása.
+    A csapattagok összes tagjához tartozó [log Reader-engedélyek](../azure-monitor/logs/manage-access.md#resource-permissions) kiosztása.
 
 1. Rendeljen erőforrásokat a létrehozott erőforráscsoport-csoportokhoz, és címkézse az eseményeket a megfelelő erőforrás-azonosítókkal.
 
@@ -110,7 +110,7 @@ Ha több csapattal rendelkezik, győződjön meg arról, hogy külön naplózás
 A virtuális gépek elválasztása például biztosítja, hogy az A csapathoz tartozó syslog-eseményeket az A gyűjtő virtuális gép használatával gyűjti a rendszer.
 
 > [!TIP]
-> - Helyszíni virtuális gép vagy más Felhőbeli virtuális gép (például AWS) használatakor a napló-továbbítóként ellenőrizze, hogy rendelkezik-e erőforrás-AZONOSÍTÓval az [Azure arc](/azure/azure-arc/servers/overview)megvalósításával.
+> - Helyszíni virtuális gép vagy más Felhőbeli virtuális gép (például AWS) használatakor a napló-továbbítóként ellenőrizze, hogy rendelkezik-e erőforrás-AZONOSÍTÓval az [Azure arc](../azure-arc/servers/overview.md)megvalósításával.
 > - A naplók továbbítására szolgáló virtuálisgép-környezet skálázásához érdemes létrehozni egy virtuálisgép- [méretezési készletet](https://techcommunity.microsoft.com/t5/azure-sentinel/scaling-up-syslog-cef-collection/ba-p/1185854) , amely ÖSSZEGYŰJTI a CEF és a Sylog naplókat.
 
 
@@ -145,7 +145,7 @@ Az alábbi kód például egy minta Logstash-konfigurációs fájlt mutat be:
 >
 ### <a name="resource-ids-with-the-log-analytics-api-collection"></a>Erőforrás-azonosítók a Log Analytics API-gyűjteménysel
 
-A [log Analytics adatgyűjtő API](/azure/azure-monitor/platform/data-collector-api)-val való összegyűjtéskor a http [*x-MS-erőforrásazonosító*](/azure/azure-monitor/platform/data-collector-api#request-headers) kérelem fejlécével hozzárendelhet ESEMÉNYEKET egy erőforrás-azonosítóval.
+A [log Analytics adatgyűjtő API](../azure-monitor/logs/data-collector-api.md)-val való összegyűjtéskor a http [*x-MS-erőforrásazonosító*](../azure-monitor/logs/data-collector-api.md#request-headers) kérelem fejlécével hozzárendelhet ESEMÉNYEKET egy erőforrás-azonosítóval.
 
 Ha erőforrás-környezeti RBAC használ, és azt szeretné, hogy az API által összegyűjtött események elérhetők legyenek bizonyos felhasználók számára, használja a [felhasználók számára létrehozott](#explicitly-configure-resource-context-rbac)erőforráscsoport erőforrás-azonosítóját.
 

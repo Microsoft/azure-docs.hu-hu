@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7cfc8fc24aea938b997fead4ca762ce7178e3386
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eb44987dca033ecdac9ef2ca63fb1da97dc9678
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490619"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109182"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Oktatóanyag: webalkalmazás előkészítése az Azure kommunikációs szolgáltatásokhoz (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "103490619"
 
 Az Azure kommunikációs szolgáltatások segítségével valós idejű kommunikációt adhat hozzá alkalmazásaihoz. Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy olyan webalkalmazást, amely támogatja az Azure kommunikációs szolgáltatásokat. Ez egy bevezető oktatóanyag olyan új fejlesztőknek, akik szeretnének megkezdeni a valós idejű kommunikációt.
 
-Az oktatóanyag végére egy, az Azure kommunikációs szolgáltatások ügyféloldali kódtárakkal konfigurált alapterv-webalkalmazással fog rendelkezni. Ezt követően az alkalmazás használatával megkezdheti a valós idejű kommunikációs megoldás felépítését.
+Az oktatóanyag végére egy, az Azure Communication Services SDK-val konfigurált alapterv-webalkalmazás fog rendelkezni. Ezt követően az alkalmazás használatával megkezdheti a valós idejű kommunikációs megoldás felépítését.
 
 Ha visszajelzést szeretne kapni, látogasson el az [Azure Communication Services GitHub oldalára](https://github.com/Azure/communication) .
 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - Aktív előfizetéssel rendelkező Azure-fiók. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört. Az ingyenes fiók $200 az Azure-kreditekben, hogy kipróbálja a szolgáltatások bármely kombinációját.
 - [Visual Studio Code](https://code.visualstudio.com/) a kód szerkesztéséhez a helyi fejlesztési környezetben.
 - a [webpack](https://webpack.js.org/) a kód megadásához és helyi üzemeltetéséhez szükséges.
-- [Node.js](https://nodejs.org/en/) olyan függőségek telepítéséhez és kezeléséhez, mint az Azure kommunikációs szolgáltatások ügyféloldali kódtárai és a webpack.
+- [Node.js](https://nodejs.org/en/) olyan függőségek telepítéséhez és kezeléséhez, mint például az Azure kommunikációs szolgáltatások SDK-k és a webpack.
 - [NVM és NPM](/windows/nodejs/setup-on-windows) kezelése.
 - A Visual Studio Code-hoz készült [Azure Storage-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) . Erre a bővítményre szüksége lesz az alkalmazás Azure Storage-ban való közzétételéhez. [További információ a statikus webhelyek Azure Storage-beli üzemeltetéséről](../../storage/blobs/storage-blob-static-website.md).
 - A [Azure app Service bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). A bővítmény lehetővé teszi a webhelyek üzembe helyezését a teljes körűen felügyelt folyamatos integráció és folyamatos teljesítés (CI/CD) beállításával.
@@ -293,7 +293,7 @@ A kiszolgáló leállításához futtassa a parancsot `Ctrl+C` a terminálon. A 
 
 ## <a name="add-the-azure-communication-services-packages"></a>Az Azure kommunikációs szolgáltatások csomagjainak hozzáadása
 
-A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat a JavaScript-hez készült ügyféloldali kódtár meghívásával.
+A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat HÍVÓ SDK-t a javascripthez.
 
 ```Console
 npm install @azure/communication-common --save

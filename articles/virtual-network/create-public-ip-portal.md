@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1ac3f2fa1ef3f1a24077064ad3ad3f3c30c5f3f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694869"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048357"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Nyilvános IP-cím létrehozása a Azure Portal használatával
 
@@ -52,7 +52,7 @@ A következő lépések végrehajtásával hozzon létre egy **myStandardZRPubli
 
 > [!NOTE]
 > Ezek a beállítások a [Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)-vel rendelkező régiókban érvényesek. </br>
-Kiválaszthat egy adott zónát ezekben a régiókban, de nem lesz rugalmas a zóna meghibásodása miatt. </br> További információ a rendelkezésre állási zónákról: a [rendelkezésre állási zónák áttekintése](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Kiválaszthat egy adott zónát ezekben a régiókban, de nem lesz rugalmas a zóna meghibásodása miatt. </br> További információ a rendelkezésre állási zónákról: a [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md).
 
 \* = A réteg a [régión belüli terheléselosztó](../load-balancer/cross-region-overview.md) funkcióra vonatkozik, amely jelenleg előzetes verzióban érhető el.
 

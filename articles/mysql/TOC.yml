@@ -151,7 +151,7 @@
           items:
             - name: GitHub Actions
               href: quickstart-mysql-github-actions.md
-    - name: Hálózat
+    - name: Hálózatkezelés
       items:
         - name: Virtuális hálózati szolgáltatásvégpontok
           items:
@@ -387,23 +387,6 @@
           displayName: application
         - name: Ajánlott üzemeltetési eljárások
           href: concept-operation-excellence-best-practices.md
-    - name: Hibaelhárítás
-      items:
-        - name: Lekérdezési teljesítmény hibaelhárítása
-          href: howto-troubleshoot-query-performance.md
-          displayName: 'debug, performance issues, query performance'
-        - name: Nézetek használata a rendszersémában
-          href: howto-troubleshoot-sys-schema.md
-          displayName: 'sys schema, views'
-        - name: Adattitkosítás hibaelhárítása
-          href: howto-data-encryption-troubleshoot.md
-          displayName: 'encryption, security'
-        - name: Replikáció késésének hibaelhárítása
-          href: howto-troubleshoot-replication-latency.md
-          displayName: 'replication, latency, monitor'
-        - name: Adatbázis-sérülés mérséklése
-          href: how-to-fix-corrupt-database.md
-          displayName: corrupt data
 - name: Rugalmas kiszolgáló (előzetes verzió)
   items:
     - name: Rugalmas kiszolgáló dokumentációja
@@ -483,7 +466,7 @@
           href: flexible-server/how-to-stop-start-server-portal.md
         - name: Kiszolgáló újraindítása Azure Portal használatával
           href: flexible-server/how-to-restart-server-portal.md
-    - name: Hálózat
+    - name: Hálózatkezelés
       items:
         - name: Alapelvek
           href: flexible-server/concepts-networking.md
@@ -567,6 +550,26 @@
     - name: Gyakori hibák elhárítása
       href: howto-troubleshoot-common-errors.md
       displayName: 'SUPER privilege, DBA role, Access is denied'
+- name: Hibaelhárítás
+  items:
+    - name: Áttelepítési hibák elhárítása
+      href: howto-troubleshoot-common-errors.md
+      displayName: 'SUPER privilege, DBA role, Access is denied'
+    - name: Lekérdezési teljesítmény hibaelhárítása
+      href: howto-troubleshoot-query-performance.md
+      displayName: 'debug, performance issues, query performance'
+    - name: Nézetek használata a rendszersémában
+      href: howto-troubleshoot-sys-schema.md
+      displayName: 'sys schema, views'
+    - name: Adattitkosítás hibaelhárítása
+      href: howto-data-encryption-troubleshoot.md
+      displayName: 'encryption, security'
+    - name: Replikáció késésének hibaelhárítása
+      href: howto-troubleshoot-replication-latency.md
+      displayName: 'replication, latency, monitor'
+    - name: Adatbázis-sérülés hibáinak megoldása
+      href: how-to-fix-corrupt-database.md
+      displayName: corrupt data
 - name: Referencia
   items:
     - name: Azure CLI

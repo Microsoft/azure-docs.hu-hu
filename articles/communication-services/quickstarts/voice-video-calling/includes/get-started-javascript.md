@@ -1,22 +1,23 @@
 ---
 title: Rövid útmutató – VOIP-hívás hozzáadása egy webalkalmazáshoz az Azure kommunikációs szolgáltatásokkal
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure kommunikációs szolgáltatásokat az ügyféloldali kódtár meghívásához a JavaScripthez
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a JavaScripthez készült Azure kommunikációs szolgáltatásokat hívó SDK-t
 author: ddematheu
 ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8dc59250e3c00d161446e7361db0c085e12ab4cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0c70e01aa4f27e40a2de5cddf329cae9ffe261bc
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598810"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108277"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el egy hívást az Azure kommunikációs szolgáltatásokkal a JavaScript-hez készült ügyféloldali kódtár meghívásával.
+Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást a JavaScripthez készült Azure kommunikációs szolgáltatások meghívásával.
 
 > [!NOTE]
-> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 6 verzióját használja.
+> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 10 verziót használja.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,11 +75,11 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="object-model"></a>Objektummodell
 
-Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások ügyfél-függvénytárának főbb funkcióit kezelik:
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
 
 | Név                             | Leírás                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.                                                                       |
+| CallClient                       | A CallClient a hívó SDK fő belépési pontja.                                                                       |
 | CallAgent                        | A CallAgent a hívások indításához és kezeléséhez használatos.                                                                                            |
 | AzureCommunicationTokenCredential | A AzureCommunicationTokenCredential osztály az CommunicationTokenCredential felületet valósítja meg, amely a CallAgent létrehozásához használatos. |
 

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan engedélyezheti az előfizetésében már üzem
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fba12fb8dd5c6c91883a88d4acfdca6c6d332c24
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101717672"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109624"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -21,6 +21,8 @@ Engedélyezheti a már üzembe helyezett AK-fürtök figyelését a támogatott 
 * Terraform
 * [Azure monitor](#enable-from-azure-monitor-in-the-portal) vagy közvetlenül a Azure Portal [AK-fürtjéből](#enable-directly-from-aks-cluster-in-the-portal)
 * A [megadott Azure Resource Manager sablonnal](#enable-using-an-azure-resource-manager-template) a Azure PowerShell parancsmaggal vagy az `New-AzResourceGroupDeployment` Azure CLI használatával.
+
+Ha egy meglévő AK-fürtöt egy másik előfizetésben lévő Azure Log Analytics-munkaterülethez csatlakoztat, a Microsoft. Tárolószolgáltatás erőforrás-szolgáltatót regisztrálni kell ahhoz az előfizetéshez, amelyben a Log Analytics munkaterület létrejött. További információ: az [erőforrás-szolgáltató regisztrálása](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

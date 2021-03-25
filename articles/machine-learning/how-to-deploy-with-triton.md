@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519197"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107839"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
 
@@ -31,6 +31,9 @@ A Triton egy *következtetésre optimalizált* keretrendszer. A GPU-k jobb kihas
 
 > [!TIP]
 > A dokumentumban szereplő kódrészletek szemléltető célokat szolgálnak, és nem mutatnak teljes megoldást. A következő példában a [Triton végpontok közötti mintáit Azure Machine Learningban](https://aka.ms/triton-aml-sample)tekintheti meg.
+
+> [!NOTE]
+> Az [NVIDIA Triton következtetési kiszolgáló](https://aka.ms/nvidia-triton-docs) egy olyan nyílt forráskódú, külső gyártótól származó szoftver, amely Azure Machine Learningbe van integrálva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -97,7 +100,7 @@ models
         - model_1
             - model_version
                 - model_file
-                - config_file
+            - config_file
         - model_2
             ...
 ```
@@ -114,6 +117,11 @@ az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
 A szolgáltatással kapcsolatos további információkért `az ml model register` olvassa el a [dokumentációt](/cli/azure/ext/azure-cli-ml/ml/model).
+
+A modell Azure Machine Learning-ben való regisztrálása során a paraméter értékének `--model-path  -p` a Triton szülőjének mappájának kell lennie.  
+A fenti példában a  `--model-path` "models".
+
+A példában szereplő `--name  -n` "my_triton_model" paraméter értéke a Azure Machine learning-munkaterület ismert modell neve lesz. 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -364,13 +372,17 @@ local_service.delete()
 
 
 ---
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+* [Sikertelen üzembe helyezés hibáinak elhárítása](how-to-troubleshoot-deployment.md), a modell üzembe helyezése során felmerülő gyakori hibák elhárítása és megoldása.
+
+* Ha a telepítési naplók azt mutatják, hogy a **TritonServer nem indult el**, tekintse meg az [NVIDIA nyílt forráskódú dokumentációját.](https://github.com/triton-inference-server/server)
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Lásd: a Triton végpontok közötti mintái Azure Machine Learning](https://aka.ms/aml-triton-sample)
 * Ismerje meg a [Triton-ügyfelek példáit](https://aka.ms/nvidia-client-examples)
 * A Triton-beli [következtetési kiszolgáló dokumentációjának](https://aka.ms/nvidia-triton-docs) beolvasása
-* [Sikertelen üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

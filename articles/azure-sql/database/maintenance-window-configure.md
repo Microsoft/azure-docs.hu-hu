@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/04/2021
-ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183199"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047351"
 ---
 # <a name="configure-maintenance-window-preview"></a>Karbantartási időszak konfigurálása (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ A *rendszer alapértelmezett* karbantartási időszaka napi 5 – 08:00 (az erő
 A másik karbantartási időszakra való váltás nem minden szolgáltatási szinthez vagy régióhoz érhető el. A rendelkezésre állással kapcsolatos részletekért lásd a [karbantartási időszak elérhetőségét](maintenance-window.md#availability)ismertető témakört.
 
 > [!Important]
-> A karbantartási időszak konfigurálása hosszú ideig futó aszinkron művelet, hasonlóan az Azure SQL-erőforrás szolgáltatási rétegének módosításához. Az erőforrás a művelet során elérhető, kivéve a művelet végén előforduló rövid feladatátvételt, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. A feladatátvétel hatásának csökkentése érdekében a műveletet a csúcsidőben kívül kell végrehajtania.
+> A karbantartási időszak konfigurálása hosszú ideig futó aszinkron művelet, hasonlóan az Azure SQL-erőforrás szolgáltatási rétegének módosításához. Az erőforrás a művelet során elérhető, kivéve a művelet végén előforduló rövid újrakonfigurálást, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. Az újrakonfigurálás hatásának csökkentése érdekében a műveletet a csúcsidőben kívül kell végrehajtania.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Karbantartási időszak konfigurálása az adatbázisok létrehozásakor 
 
@@ -257,7 +257,7 @@ Az alábbi példa egy új felügyelt példányt hoz létre, és beállítja a ka
 ## <a name="configure-maintenance-window-for-existing-databases"></a>A meglévő adatbázisok karbantartási időszakának konfigurálása
 
 
-Amikor a karbantartási időszakot egy adatbázisra alkalmazza, a rövid feladatátvétel (több másodperc) bizonyos esetekben előfordulhat, hogy az Azure a szükséges módosításokat alkalmazza.
+Amikor a karbantartási időszakot egy adatbázisra alkalmazza, előfordulhat, hogy egy rövid újrakonfigurálás (több másodperc) is előfordulhatnak bizonyos esetekben, ahogy az Azure alkalmazza a szükséges módosításokat.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 

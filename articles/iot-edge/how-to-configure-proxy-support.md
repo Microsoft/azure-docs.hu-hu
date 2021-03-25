@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9f2ca089a6d885227bd61940d71ec7bb7960fbd6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200056"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043155"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
 
@@ -69,7 +69,11 @@ Azt jelzi, hogy a IoT Edge-eszköz Windows vagy Linux rendszeren fut-e, a proxyk
 
 Ha Linux rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, konfigurálja a csomagkezelő szolgáltatást a proxykiszolgáló eléréséhez a telepítési csomaghoz való hozzáféréshez. Tegyük fel például, [hogy az apt-get http-proxy használatára van beállítva](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). A csomagkezelő konfigurálása után kövesse a [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md) a szokásos módon című témakör utasításait.
 
-### <a name="windows-devices"></a>Windows rendszerű eszközök
+### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>Windows rendszerű eszközök IoT Edge Linux rendszeren
+
+Ha a IoT Edge futtatókörnyezetet az IoT Edge for Linux használatával telepíti Windows rendszeren, a IoT Edge alapértelmezés szerint telepítve van a linuxos virtuális gépen. Nincs szükség további telepítési vagy frissítési lépésekre.
+
+### <a name="windows-devices-using-windows-containers"></a>Windows-eszközök Windows-tárolók használatával
 
 Ha Windows rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, kétszer kell megadnia a proxykiszolgálót. Az első csatlakozás letölti a telepítő parancsfájlt, a második pedig a telepítés során a szükséges összetevők letöltéséhez. A proxybeállításokat a Windows beállításaiban konfigurálhatja, vagy közvetlenül a PowerShell-parancsokban is megadhatja a proxy adatait.
 
@@ -206,7 +210,17 @@ systemctl show --property=Environment aziot-identityd
 :::moniker-end
 <!--end 1.2-->
 
-#### <a name="windows"></a>Windows
+#### <a name="windows-using-iot-edge-for-linux-on-windows"></a>Windows IoT Edge Linux rendszeren
+
+Jelentkezzen be a IoT Edge for Linux rendszerű virtuális gépen:
+
+```azurepowershell-interactive
+Ssh-EflowVm
+```
+
+A IoT Edge démon konfigurálásához kövesse a fenti Linux-szakaszt.
+
+#### <a name="windows-using-windows-containers"></a>Windows-tárolók használatával
 
 Nyisson meg egy PowerShell-ablakot rendszergazdaként, és futtassa a következő parancsot a beállításjegyzék új környezeti változóval való szerkesztéséhez. Cserélje le a helyére a **\<proxy url>** proxykiszolgáló-címe és portját.
 
@@ -249,13 +263,13 @@ Ez a lépés a IoT Edge eszközön a kezdeti eszköz beállításakor kerül meg
 
 5. Mentse a változtatásokat a config. YAML fájlba, és zárjuk be a szerkesztőt. A módosítások érvénybe léptetéséhez indítsa újra IoT Edge.
 
-   * Linux:
+   * Linux-és Linux-IoT Edge Windows rendszeren:
 
       ```bash
       sudo systemctl restart iotedge
       ```
 
-   * Windows:
+   * Windows-tárolók használata:
 
       ```powershell
       Restart-Service iotedge

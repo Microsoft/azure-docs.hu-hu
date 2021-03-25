@@ -4,12 +4,12 @@ description: Ismerteti, hogyan használható a szabályozás Azure Resource Mana
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563126"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024625"
 ---
 # <a name="throttling-resource-manager-requests"></a>Erőforrás-kezelő kéréseinek szabályozása
 
@@ -58,7 +58,7 @@ A Microsoft. Network erőforrás-szolgáltató a következő szabályozási korl
 
 ### <a name="compute-throttling"></a>Számítási szabályozás
 
-További információ a számítási műveletek korlátozásáról: [API-szabályozási hibák elhárítása – számítás](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
+További információ a számítási műveletek korlátozásáról: [API-szabályozási hibák elhárítása – számítás](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors).
 
 Virtuálisgép-méretezési csoporton belüli virtuálisgép-példányok ellenőrzéséhez használja a [Virtual Machine Scale sets műveleteket](/rest/api/compute/virtualmachinescalesetvms). Használja például a virtuálisgép [-méretezési csoport virtuális gépek-lista](/rest/api/compute/virtualmachinescalesetvms/list) paramétereit a virtuálisgép-példányok energiagazdálkodási állapotának vizsgálatához. Ez az API csökkenti a kérelmek számát.
 
@@ -87,7 +87,7 @@ Egyes erőforrás-szolgáltatók a 429-et egy ideiglenes probléma jelentésére
 
 A hátralévő kérések számát a válasz fejlécek vizsgálatával határozhatja meg. Az olvasási kérelmek egy értéket adnak vissza a fejlécben a hátralévő olvasási kérelmek számának megfelelően. Az írási kérelmek tartalmazzák a fennmaradó írási kérések számát. A következő táblázat ismerteti azokat a válasz-fejléceket, amelyeket megvizsgálhat az értékekhez:
 
-| Válasz fejléce | Description |
+| Válasz fejléce | Leírás |
 | --- | --- |
 | x-MS-ratelimit – hátralévő előfizetés – olvasás |Az előfizetés hatókörön belüli olvasása megmaradt. A rendszer ezt az értéket adja vissza olvasási műveletekben. |
 | x-MS-ratelimit – hátralévő előfizetés – írások |Az előfizetés hatókörön belüli írása megmaradt. A rendszer ezt az értéket adja vissza az írási műveletekhez. |
@@ -98,7 +98,7 @@ A hátralévő kérések számát a válasz fejlécek vizsgálatával határozha
 | x-MS-ratelimit-fennmaradó-bérlő-erőforrás-kérelmek |A bérlői hatókörön belüli erőforrás-kérelmek száma megmaradt.<br /><br />Ezt a fejlécet csak a bérlői szintű kérésekhez adja hozzá a rendszer, és csak akkor, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. A Resource Manager hozzáadja ezt az értéket a bérlői olvasások vagy írások helyett. |
 | x-MS-ratelimit-fennmaradó-bérlő-erőforrás-entitások – olvasás |A bérlői hatókörrel rendelkező erőforrástípus-gyűjtési kérések megmaradnak.<br /><br />Ezt a fejlécet csak a bérlői szintű kérésekhez adja hozzá a rendszer, és csak akkor, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. |
 
-Az erőforrás-szolgáltató a válasz fejléceit is visszaküldheti a fennmaradó kérelmekkel kapcsolatos információkkal. A számítási erőforrás-szolgáltató által visszaadott válasz fejlécekkel kapcsolatos információkért tekintse meg a [hívási sebességre vonatkozó tájékoztatási fejléceket](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
+Az erőforrás-szolgáltató a válasz fejléceit is visszaküldheti a fennmaradó kérelmekkel kapcsolatos információkkal. A számítási erőforrás-szolgáltató által visszaadott válasz fejlécekkel kapcsolatos információkért tekintse meg a [hívási sebességre vonatkozó tájékoztatási fejléceket](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors#call-rate-informational-response-headers).
 
 ## <a name="retrieving-the-header-values"></a>A fejléc értékeinek beolvasása
 

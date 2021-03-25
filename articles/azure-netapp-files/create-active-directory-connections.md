@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/24/2021
 ms.author: b-juche
-ms.openlocfilehash: add907923cc2284939acd972237fd4ec74ee2d12
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864006"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048374"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Active Directory kapcsolatok létrehozása és kezelése Azure NetApp Files
 
@@ -86,6 +86,8 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 * A Azure NetApp Files támogatja az [LDAP-aláírást](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), ami lehetővé teszi az LDAP-forgalom biztonságos átvitelét a Azure NetApp Files szolgáltatás és a megcélozt [Active Directory tartományvezérlők](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)között. Ha az LDAP-aláíráshoz a Microsoft tanácsadói [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) útmutatását követi, akkor a Azure NetApp Files LDAP-aláírási funkciójának engedélyezéséhez a [Csatlakozás Active Directory](#create-an-active-directory-connection) ablakban jelölje be az **LDAP** -aláírás jelölőnégyzetet. 
 
     Az [LDAP-csatorna kötési](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) konfigurációja önmagában nincs hatással a Azure NetApp Files szolgáltatásra. Ha azonban az LDAP-csatorna kötését és a Secure LDAP-t (például LDAPs vagy `start_tls` ) használja, akkor az SMB-kötet létrehozása sikertelen lesz.
+
+* A nem AD integrált DNS esetében adjon hozzá egy DNS A/PTR típusú rekordot, amely lehetővé teszi, hogy a Azure NetApp Files "felhasználóbarát név" használatával működjön. 
 
 ## <a name="decide-which-domain-services-to-use"></a>A használni kívánt tartományi szolgáltatások kiválasztása 
 

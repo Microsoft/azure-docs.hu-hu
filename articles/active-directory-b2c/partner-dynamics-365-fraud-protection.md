@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b725b7fcde8ad24934d74d3ce849260312d2f5f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101646554"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043614"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Oktatóanyag: a Microsoft Dynamics 365 csalások elleni védelem konfigurálása Azure Active Directory B2C
 
@@ -56,7 +56,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A kép a Microsoft dynamics365 csalások elleni védelmi architektúra diagramját mutatja](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C felhasználói attribútumokat gyűjt.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -102,8 +102,8 @@ Konfigurálja az alkalmazás beállításait az [Azure app Service-](../app-serv
 | :-------- | :------------| :-----------|
 |FraudProtectionSettings: InstanceId | Microsoft DFP-konfiguráció |     |
 |FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft-eszköz ujjlenyomat-ügyfél-azonosítója |     |
-| FraudProtectionSettings:ApiBaseUrl |  A Microsoft DFP portál alap URL-címe   | A "-int" eltávolítása a termelési API meghívásához
-|  TokenProviderConfig: erőforrás | https://api.dfp.dynamics-int.com |   A "-int" eltávolítása a termelési API meghívásához  |
+| FraudProtectionSettings:ApiBaseUrl |  A Microsoft DFP portál alap URL-címe   | A "-int" eltávolítása a termelési API meghívásához|
+|  TokenProviderConfig: erőforrás  |     | A "-int" eltávolítása a termelési API meghívásához|
 |   TokenProviderConfig: ClientId       |A csalás elleni védelem kereskedelmi Azure AD ügyfélalkalmazás-azonosítója      |       |
 | TokenProviderConfig: szolgáltató | https://login.microsoftonline.com/<directory_ID> | A csalások elleni védelem az Azure AD bérlői szolgáltatója |
 | TokenProviderConfig: CertificateThumbprint * | A kereskedelmi Azure AD-ügyfélalkalmazás hitelesítéséhez használt tanúsítvány ujjlenyomata |

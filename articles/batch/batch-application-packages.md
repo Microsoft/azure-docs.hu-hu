@@ -2,17 +2,17 @@
 title: Alkalmazáscsomag üzembe helyezése számítási csomópontokon
 description: A Azure Batch alkalmazáscsomag funkciójának használatával egyszerűen kezelhet több alkalmazást és verziót a Batch számítási csomópontokon történő telepítéshez.
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 03/24/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033731"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045790"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -59,6 +59,9 @@ Az alkalmazáscsomag esetében a készlet indítási feladatának nem kell megad
 ## <a name="upload-and-manage-applications"></a>Alkalmazások feltöltése és kezelése
 
 A Batch-fiókban lévő alkalmazáscsomag kezeléséhez használhatja a [Azure Portal](https://portal.azure.com) vagy a Batch Management API-kat. A következő szakasz ismerteti a Storage-fiókok összekapcsolását, valamint az alkalmazások és alkalmazáscsomag hozzáadását és kezelését a Azure Portal.
+
+> [!NOTE]
+> Egy [ARM-sablon](quick-create-template.md) [Microsoft.BatCH/batchAccounts](/templates/microsoft.batch/batchaccounts) -erőforrásában megadhatja az alkalmazás értékeit, de jelenleg nem lehet ARM-sablonnal felvenni a Batch-fiókban használni kívánt alkalmazáscsomag-csomagokat. Fel kell töltenie őket a társított Storage-fiókba az [alább](#add-a-new-application)leírtak szerint.
 
 ### <a name="link-a-storage-account"></a>Storage-fiók csatolása
 

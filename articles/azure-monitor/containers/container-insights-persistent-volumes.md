@@ -3,12 +3,12 @@ title: PV-figyelés konfigurálása a Container bepillantásokkal | Microsoft Do
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az állandó kötetekkel rendelkező Kubernetes-fürtöket a tároló-felismerések használatával.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 578cfe128b7445f8b09771999d1e653e92c4befa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 16c87177a8911a7b88284606f54f7bf6e0e0daa3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200699"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026104"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>PV-figyelés konfigurálása a Container bepillantást
 
@@ -19,7 +19,7 @@ A tároló-felismerések automatikusan elindítják az PV-használat monitorozá
 
 | Metrika neve | Metrikus dimenzió (címkék) | Metrika leírása | | `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, clusterName | Az adott Pod által használt jogcímet tartalmazó adott állandó kötethez felhasznált lemezterület bájtban megadva. `capacityBytes` egy dimenzióként van behajtva a címkék mezőben az adatfeldolgozási díjak csökkentése és a lekérdezések egyszerűsítése érdekében. |
 
-További információ az összegyűjtött PV-metrikák [konfigurálásáról.](https://aka.ms/ci/pvconfig)
+További információ az összegyűjtött PV-metrikák [konfigurálásáról.](./container-insights-agent-config.md)
 
 ## <a name="pv-inventory"></a>PV-leltár
 
@@ -48,7 +48,7 @@ Tekintse át az állandó kötetek leltárát az **állandó kötet részletei**
 :::image type="content" source="./media/container-insights-persistent-volumes/pv-details-workbook-example.PNG" alt-text="Azure Monitor PV részletei munkafüzet – példa":::
 
 ### <a name="persistent-volume-usage-recommended-alert"></a>Állandó mennyiségi használat javasolt riasztása
-Engedélyezheti a javasolt riasztást, hogy riasztást küldjön, ha egy Pod átlagos PV-használata meghaladja a 80%-ot. További információ a riasztásokról [itt](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts) , valamint az alapértelmezett küszöbérték felülbírálása [itt](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts#configure-alertable-metrics-in-configmaps).
+Engedélyezheti a javasolt riasztást, hogy riasztást küldjön, ha egy Pod átlagos PV-használata meghaladja a 80%-ot. További információ a riasztásokról [itt](./container-insights-metric-alerts.md) , valamint az alapértelmezett küszöbérték felülbírálása [itt](./container-insights-metric-alerts.md#configure-alertable-metrics-in-configmaps).
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az összegyűjtött PV-mérőszámokról [.](./container-insights-agent-config.md)

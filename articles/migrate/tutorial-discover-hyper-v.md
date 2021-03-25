@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/10/2021
 ms.custom: mvc
-ms.openlocfilehash: ff83b488a6e3193eee8cb12af7de0a60b42e4c75
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: d108774aea2d7ac7773dab06efc977dd9e501eb5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771396"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108774"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: a Hyper-V-n futó kiszolgálók felderítése Azure Migrateekkel: felderítés és Értékelés
 
@@ -101,7 +101,7 @@ Hitelesítő adatok delegálása, ha a kiszolgálói lemezek távoli SMB-megoszt
     ```powershell
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
-3. A parancsfájl integritásának ellenőrzése után futtassa a parancsfájlt minden Hyper-V-gazdagépen a következő PowerShell-paranccsal:
+3. A parancsfájl integritásának ellenőrzése után futtassa a parancsfájlt minden Hyper-V-gazdagépen a következő PowerShell-paranccsal emelt szintű engedélyekkel:
 
     ```powershell
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1

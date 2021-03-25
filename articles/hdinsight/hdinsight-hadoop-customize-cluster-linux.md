@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: 0b0fc1062f9e57ab716aa0fa88f90924f0485b08
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: efd145732ecc119e2fdf9b73ca59729232a37d4c
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864873"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109522"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
@@ -22,27 +22,32 @@ A parancsfájlok műveletei az Azure Marketplace-en is HDInsight-alkalmazáskén
 
 A parancsfájl művelete egy HDInsight-fürt csomópontjain futó bash-parancsfájl. A parancsfájl-műveletek jellemzői és funkciói a következők:
 
-- Olyan URI-n kell tárolni, amely elérhető a HDInsight-fürtből. A következő tárolási helyszínek lehetségesek:
+- A bash parancsfájl URI-ja (a fájl elérési helye) elérhetőnek kell lennie a HDInsight erőforrás-szolgáltatótól és a fürttől.
+- A következő tárolási helyszínek lehetségesek:
 
-  - Normál (nem ESP) fürtök esetén:
-    - Data Lake Storage Gen1/Gen2: az egyszerű szolgáltatásnév által a Data Lake Storage eléréséhez olvasási hozzáféréssel kell rendelkeznie a parancsfájlhoz. A Data Lake Storage Gen1ban tárolt parancsfájlok URI-formátuma `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` .
-    - Egy Azure Storage-fiókban található blob, amely a HDInsight-fürthöz tartozó elsődleges vagy további Storage-fiók. A HDInsight mindkét típusú Storage-fiókhoz hozzáférést kap a fürt létrehozása során.
+   - Normál (nem ESP) fürtök esetén:
+     - Egy Azure Storage-fiókban található blob, amely a HDInsight-fürthöz tartozó elsődleges vagy további Storage-fiók. A HDInsight mindkét típusú Storage-fiókhoz hozzáférést kap a fürt létrehozása során.
+    
+       > [!IMPORTANT]  
+       > Ne forgassa el ezen az Azure Storage-fiókon a Storage-kulcsot, mert az azt követő parancsfájl-műveleteket nem sikerül.
 
-    > [!IMPORTANT]  
-    > Ne forgassa el ezen az Azure Storage-fiókon a Storage-kulcsot, mert az azt követő parancsfájl-műveleteket nem sikerül.
+     - Data Lake Storage Gen1: az egyszerű szolgáltatásnak a HDInsight által használt Data Lake Storage eléréséhez olvasási hozzáféréssel kell rendelkeznie a parancsfájlhoz. A bash-parancsfájl URI-formátuma: `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` . 
 
-    - A nyilvános fájlmegosztás szolgáltatás `http://` elérési utakon keresztül érhető el. Ilyenek például az Azure Blob, a GitHub vagy a OneDrive. Az URI-k például a [parancsfájl műveleti parancsfájljai](#example-script-action-scripts)című részben olvashatók.
+     - Parancsfájl-műveletekhez nem ajánlott Data Lake Storage Gen2 használni. `abfs://` a bash-parancsfájl URI azonosítója nem támogatott. `https://` Az URI-k lehetségesek, de az olyan tárolók esetében, amelyek nyilvános hozzáféréssel rendelkeznek, és a tűzfal meg van nyitva a HDInsight erőforrás-szolgáltató számára, ezért nem ajánlott.
+
+     - A nyilvános fájlmegosztás szolgáltatás `https://` elérési utakon keresztül érhető el. Ilyenek például az Azure Blob, a GitHub vagy a OneDrive. Az URI-k például a [parancsfájl műveleti parancsfájljai](#example-script-action-scripts)című részben olvashatók.
+
   - Az ESP-vel rendelkező fürtök esetén a vagy a vagy az `wasb://` `wasbs://` URI- `http[s]://` k támogatottak.
 
-- Csak bizonyos csomópont-típusok futtatására korlátozható. Ilyenek például a fő csomópontok vagy a munkavégző csomópontok.
-- Maradhat *vagy alkalmi*.
+- A parancsfájl műveletei csak bizonyos csomópont-típusok futtatására korlátozhatók. Ilyenek például a fő csomópontok vagy a munkavégző csomópontok.
+- A parancsfájl műveletei megmaradhatnak *vagy alkalmi* jellegűek lehetnek.
 
   - A megőrzött parancsfájl-műveleteknek egyedi névvel kell rendelkezniük. A megőrzött parancsfájlok a fürthöz a skálázási műveletekkel hozzáadott új munkavégző csomópontok testreszabására szolgálnak. A megőrzött parancsfájlok a skálázási műveletek végrehajtásakor is alkalmazhatják a másik csomópont-típus módosításait. Ilyen például egy fő csomópont.
   - Az *alkalmi* parancsfájlok nem maradnak meg. A fürt létrehozásakor használt parancsfájl-műveleteket a rendszer automatikusan megőrzi. Nem vonatkoznak a fürthöz a parancsfájl futtatása után hozzáadott munkavégző csomópontokra. Ezután előléptetheti az *ad hoc* parancsfájlt egy megőrzött parancsfájlba, vagy lefokozni lehet a megőrzött szkriptet egy *ad hoc* parancsfájlba. A meghiúsult parancsfájlok nem maradnak meg, még akkor is, ha kifejezetten arra utalnak, hogy legyenek.
 
-- Elfogadhatja a parancsfájl által a végrehajtás során használt paramétereket.
-- A fürt csomópontjain gyökérszintű jogosultságokkal futtassa a parancsot.
-- A Azure Portal, Azure PowerShell, Azure CLI vagy HDInsight .NET SDK használatával használható.
+- A parancsfájlok műveletei elfogadják a parancsfájl által a végrehajtás során használt paramétereket.
+- A parancsfájl műveletei gyökérszintű jogosultságokkal futnak a fürtcsomópontokon.
+- A parancsfájl-műveletek a Azure Portal, az Azure PowerShell, az Azure CLI vagy a HDInsight .NET SDK használatával használhatók.
 - A virtuális gépen lévő szolgáltatási fájlokat eltávolító vagy módosító parancsfájl-műveletek befolyásolhatják a szolgáltatás állapotát és rendelkezésre állását.
 
 A fürt megőrzi a futtatott összes parancsfájl előzményeit. Az előzmények segítenek az előléptetési vagy lefokozási műveletekhez szükséges parancsfájlok AZONOSÍTÓjának megkeresésében.

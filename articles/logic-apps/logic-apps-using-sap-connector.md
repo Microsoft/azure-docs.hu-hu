@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102489837"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048765"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -125,9 +125,6 @@ A felügyelt SAP-összekötő a helyszíni [adatátjárón](../logic-apps/logic-
 ### <a name="ise-prerequisites"></a>ISE előfeltételek
 
 Ezek az előfeltételek akkor lépnek érvénybe, ha a logikai alkalmazást a prémium szintű ISE-ban futtatja. Azonban nem vonatkoznak a fejlesztői szintű ISE-ben futó logikai alkalmazásokra. Az ISE hozzáférést biztosít az Azure Virtual Network által védett erőforrásokhoz, és más ISE-natív összekötőket biztosít, amelyek lehetővé teszik a Logic apps számára, hogy a helyszíni adatátjáró használata nélkül közvetlenül hozzáférhessenek a helyszíni erőforrásokhoz.
-
-> [!NOTE]
-> Míg az SAP ISE-összekötő a fejlesztői szintű ISE-ben látható, az összekötő telepítése sikertelen lesz.
 
 1. Ha még nem rendelkezik blob-tárolóval rendelkező Azure Storage-fiókkal, hozzon létre egy tárolót a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) vagy a [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)használatával.
 

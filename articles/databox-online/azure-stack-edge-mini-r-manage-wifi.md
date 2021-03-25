@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: f00be43d023d912d4b0b6e825dfe9d3e0ca2d250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a2cc0707c344c3ca537795666a3f60f648026596
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96466861"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043767"
 ---
 # <a name="use-the-local-web-ui-to-manage-wireless-connectivity-on-your-azure-stack-edge-mini-r"></a>A helyi webes felhasználói felület használata a vezeték nélküli kapcsolat kezeléséhez az Azure Stack Edge mini R-vel
 
@@ -55,6 +55,8 @@ Az eszköz helyi felhasználói felületén hajtsa végre az alábbi lépéseket
     ![Helyi webes felhasználói felület "Port WiFi hálózati beállításai" 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
     
     A vezeték nélküli hálózati profil a vezeték nélküli hálózathoz való kapcsolódáshoz szükséges SSID-t (hálózati nevet), jelszót és biztonsági információt tartalmazza. A környezet Wi-Fi profilját a hálózati rendszergazdától kérheti le.
+
+    További információ a Wi-Fi profilok előkészítéséről: [Wi-Fi profilok használata Azure stack Edge mini R-eszközökkel](azure-stack-edge-mini-r-use-wifi-profiles.md).
 
     ![Helyi webes felhasználói felület "Port WiFi hálózati beállításai" 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 

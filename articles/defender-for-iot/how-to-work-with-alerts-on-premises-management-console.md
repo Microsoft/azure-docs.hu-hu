@@ -3,12 +3,12 @@ title: Riasztások kezelése a helyszíni felügyeleti konzolon
 description: A helyszíni felügyeleti konzol segítségével vállalati nézetet kaphat a hálózat legutóbbi fenyegetésekről, és jobban megismerheti, hogyan kezelik az érzékelőket a felhasználók.
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a99c489c54b2671a463c0c3dad1909c74b4fa203
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 604650f0cb08eac4a3ab1cfd3fdcbf2e7ff0d19e
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781466"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032140"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Riasztások kezelése a helyszíni felügyeleti konzolon 
 
@@ -242,6 +242,7 @@ Az API használatával létrehozott szabályok a **kizárási szabály** ablakba
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Képernyőkép a kizárási szabály szerkesztése nézetről.":::
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
-[Riasztások használata az érzékelőn](how-to-work-with-alerts-on-your-sensor.md)
+[Riasztások használata az érzékelőn](how-to-work-with-alerts-on-your-sensor.md).
+Tekintse át a [Defender for IoT motor riasztásait](alert-engine-messages.md).

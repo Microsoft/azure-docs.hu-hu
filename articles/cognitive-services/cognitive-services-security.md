@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425294"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043874"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -29,13 +29,13 @@ A HTTP-n keresztül elérhető összes Cognitive Services-végpont TLS 1,2. A k�
 * A HTTP-híváshoz használt nyelv (és platform) a kérelem részeként meg kell határoznia a TLS 1,2-as értéket.
   * A nyelvtől és a platformtól függően a TLS meghatározása implicit módon vagy explicit módon történik
 
-.NET-felhasználók esetén vegye figyelembe a <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott eljárásokat </a>.
+.NET-felhasználók esetén vegye figyelembe a <a href="/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott eljárásokat </a>.
 
 ## <a name="authentication"></a>Hitelesítés
 
 A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. A Cognitive Services számos ajánlata tartalmaz Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC). Az Azure RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével foglalkozó néhány ünnepség leegyszerűsítésére. További részletek: [Azure szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
 
-Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban</a>.
+Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Környezeti változók és alkalmazás konfigurációja
 
@@ -113,7 +113,7 @@ Környezeti változó beszerzéséhez a memóriába kell beolvasni. A használt 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-További információ: <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
+További információ: <a href="/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-További információ: <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
+További információ: <a href="/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
 
 ```cpp
 #include <stdlib.h>

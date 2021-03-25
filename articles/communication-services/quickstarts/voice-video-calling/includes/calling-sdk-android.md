@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 40d9f03526e5232c0a7b33f64ff35a8501702609
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103621979"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107734"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,9 +23,8 @@ ms.locfileid: "103621979"
 ### <a name="install-the-package"></a>A csomag telepítése
 
 > [!NOTE]
-> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 8 verzióját használja.
+> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 8 verziót használja.
 
-<!-- TODO: update with instructions on how to download, install and add package to project -->
 Keresse meg a projekt szintjének Build. gradle, és ügyeljen arra, hogy `mavenCentral()` a `buildscript` és a `allprojects`
 ```groovy
 buildscript {
@@ -59,11 +58,11 @@ dependencies {
 
 ## <a name="object-model"></a>Objektummodell
 
-Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások ügyfél-függvénytárának főbb funkcióit kezelik:
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.|
+| CallClient| A CallClient a hívó SDK fő belépési pontja.|
 | CallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
 | CommunicationTokenCredential | A rendszer a CommunicationTokenCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.|
 | CommunicationIdentifier | A CommunicationIdentifier olyan különböző típusú résztvevőként szolgál, amely egy hívás része lenne.|
@@ -224,10 +223,10 @@ Az Android-alkalmazáshoz engedélyekre van szükség ahhoz, hogy fogadni tudja 
 
 A leküldéses értesítések regisztrálásához az alkalmazásnak meg kell hívnia `registerPushNotification()` egy *CallAgent* -példányt egy eszköz regisztrációs jogkivonattal.
 
-Az eszköz regisztrációs jogkivonatának beszerzéséhez adja hozzá a Firebase ügyféloldali függvénytárát az alkalmazás moduljának *Build. gradle* fájlhoz, ha a következő sorokat adja hozzá a `dependencies` szakaszhoz, ha még nem létezik:
+Az eszköz regisztrációs jogkivonatának beszerzéséhez adja hozzá a Firebase SDK-t az alkalmazás moduljának *Build. gradle* fájlhoz a következő sorok hozzáadásával a `dependencies` szakaszban, ha még nem létezik:
 
 ```
-    // Add the client library for Firebase Cloud Messaging
+    // Add the SDK for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
@@ -244,7 +243,7 @@ Ha még nem létezik, adja hozzá a következő beépülő modult a fájl elejé
 apply plugin: 'com.google.gms.google-services'
 ```
 
-Kattintson a *szinkronizálás most* elemre az eszköztáron. Adja hozzá a következő kódrészletet a Firebase Cloud Messaging ügyféloldali kódtár által generált eszköz regisztrációs jogkivonat létrehozásához az ügyfélalkalmazás példányához. ügyeljen arra, hogy az alábbi importálásokat hozzáadja a példány fő tevékenységének fejlécébe. Szükségük van arra, hogy a kódrészlet beolvassa a jogkivonatot:
+Kattintson a *szinkronizálás most* elemre az eszköztáron. Adja hozzá a következő kódrészletet a Firebase Cloud Messaging SDK által generált eszköz regisztrációs jogkivonat létrehozásához az ügyfélalkalmazás példányához. ügyeljen arra, hogy az alábbi importálásokat hozzáadja a példány fő tevékenységének fejlécébe. Szükségük van arra, hogy a kódrészlet beolvassa a jogkivonatot:
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -272,7 +271,7 @@ Adja hozzá ezt a kódrészletet a jogkivonat lekéréséhez:
                     }
                 });
 ```
-Regisztrálja az eszköz regisztrációs tokenjét a Calling Services ügyféloldali függvénytárában a bejövő hívások leküldéses értesítéseihez:
+Regisztrálja az eszköz regisztrációs jogkivonatát a Calling Services SDK-val a bejövő hívások leküldéses értesítéseihez:
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -288,7 +287,7 @@ catch(Exception e) {
 
 Ha fogadni szeretné a bejövő hívások leküldéses értesítéseit, hívja a *handlePushNotification ()* függvényt egy adattartalommal rendelkező *CallAgent* -példányra.
 
-A Firebase Cloud Messaging szolgáltatásból származó hasznos adatok beszerzéséhez először hozzon létre egy új szolgáltatást (fájl > új > Service > Service), amely kibővíti a *FirebaseMessagingService* Firebase ügyféloldali függvénytár osztályát, és felülbírálja a `onMessageReceived` metódust. Ez a módszer az eseménykezelő, ha a Firebase Cloud Messaging kézbesíti a leküldéses értesítést az alkalmazásnak.
+A Firebase Cloud Messaging szolgáltatásból származó hasznos adatok beszerzéséhez először hozzon létre egy új szolgáltatást (fájl > új > Service > Service), amely kibővíti a *FirebaseMessagingService* Firebase SDK osztályt, és felülbírálja a `onMessageReceived` metódust. Ez a módszer az eseménykezelő, ha a Firebase Cloud Messaging kézbesíti a leküldéses értesítést az alkalmazásnak.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -318,7 +317,7 @@ Adja hozzá a következő szolgáltatási definíciót a `AndroidManifest.xml` f
         </service>
 ```
 
-- A hasznos adatok lekérése után a rendszer átadhatja a *kommunikációs szolgáltatások* ügyféloldali függvénytárának, hogy egy olyan belső *IncomingCallInformation* -objektumba elemezze, amelyet a *handlePushNotification* metódusnak a *CallAgent* -példányon való meghívásával fog kezelni. A `CallAgent` példány létrehozásához hívja meg a `createCallAgent(...)` metódust az `CallClient` osztályban.
+- A hasznos adatok lekérése után a rendszer átadhatja a *kommunikációs szolgáltatások* SDK-nak egy belső *IncomingCallInformation* objektumba, amelyet a *handlePushNotification* metódus hívásával fog kezelni egy *CallAgent* -példányon. A `CallAgent` példány létrehozásához hívja meg a `createCallAgent(...)` metódust az `CallClient` osztályban.
 
 ```java
 try {
