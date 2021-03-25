@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c068b9fcccff680e9e13e29f3f5e47df3498e0d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 111518d13cccb135541b9fedf167edd53d75a00e
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605590"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033405"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az Azure Cognitive Search szolgáltatásnak olyan SKU-t kell használnia, amely támogatja a privát hivatkozást](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa049bf77-880b-470f-ba6d-9f21c530cf83) |Az Azure Cognitive Search támogatott SKU-ában az Azure Private link lehetővé teszi, hogy a virtuális hálózatot az Azure-szolgáltatásokhoz nyilvános IP-cím nélkül csatlakoztatja a forráson vagy a célhelyen. A privát kapcsolati platform kezeli a fogyasztó és a szolgáltatások közötti kapcsolatot az Azure gerinc hálózaton. Ha privát végpontokat rendel a keresési szolgáltatáshoz, a rendszer csökkenti az adatszivárgás kockázatait. További információ: [https://aka.ms/azure-cognitive-search/inbound-private-endpoints](https://aka.ms/azure-cognitive-search/inbound-private-endpoints) . |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePrivateLinkSupportedResource_Deny.json) |
 |[Az Azure Cognitive Search Services szolgáltatásnak le kell tiltania a nyilvános hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fee980b6d-0eca-4501-8d54-f6290fd512c3) |A nyilvános hálózati hozzáférés letiltása javítja a biztonságot, mivel biztosítja, hogy az Azure Cognitive Search szolgáltatás ne legyen elérhető a nyilvános interneten. A privát végpontok létrehozásával korlátozható a keresési szolgáltatás kockázata. További információ: [https://aka.ms/azure-cognitive-search/inbound-private-endpoints](https://aka.ms/azure-cognitive-search/inbound-private-endpoints) . |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePublicNetworkAccessDisabled_Deny.json) |

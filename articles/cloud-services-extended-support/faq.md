@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3338f7b6bd418cea2bfdbbcd40692b9342f48cfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4db23982dfaed1447023edb417a3732dac94bdc4
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744566"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025237"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Az Azure Cloud Services (kiterjesztett támogatás) szolgáltatással kapcsolatos gyakori kérdések
 Ez a cikk az Azure Cloud Servicesokkal kapcsolatos gyakori kérdéseket ismerteti (kiterjesztett támogatás).
@@ -60,7 +60,7 @@ Cloud Services (kiterjesztett támogatás) központi telepítések nem méretezh
 
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Van-e díjszabási különbség a Cloud Services (klasszikus) és a Cloud Services (bővített támogatás) között?
 Cloud Services (kiterjesztett támogatás) Azure Key Vault és alapszintű (ARM) nyilvános IP-címeket használ.A tanúsítványokat igénylő ügyfeleknek Azure Key Vault kell használniuk a Tanúsítványkezelők[számára (További információ a](https://azure.microsoft.com/pricing/details/key-vault/) Azure Key Vault díjszabásáról.)   A Cloud Services (kiterjesztett támogatás) minden nyilvános IP-címét külön számítjuk[fel (További információ a](https://azure.microsoft.com/pricing/details/ip-addresses/) nyilvános IP-címek díjszabásáról.) 
-## <a name="resources"></a>Erőforrások 
+## <a name="resources"></a>Források 
 
 ### <a name="what-resources-linked-to-a-cloud-services-extended-support-deployment-need-to-live-in-the-same-resource-group"></a>Milyen erőforrásokhoz kell kapcsolódnia egy Cloud Serviceshoz (kiterjesztett támogatás)?
 A terheléselosztó, a hálózati biztonsági csoportok és az útválasztási tábláknak ugyanabban a régióban és erőforráscsoporthoz kell rendelkezniük. 
@@ -82,8 +82,10 @@ A sablon és a paraméter fájljai csak az üzembe helyezés automatizálásáho
 ### <a name="how-does-my-application-code-change-on-cloud-services-extended-support"></a>Hogyan változik az alkalmazás kódja Cloud Services (kiterjesztett támogatás)
 A cspkg-ben csomagolt alkalmazás kódjában nincs szükség módosításra. A meglévő alkalmazásai továbbra is ugyanúgy működnek, mint korábban. 
 
+### <a name="does-cloud-services-extended-support-allow-ctp-package-format"></a>Cloud Services (kiterjesztett támogatás) engedélyezi a CTP-csomagok formátumát?
+A CTP-csomag formátuma Cloud Services (kiterjesztett támogatás) nem támogatott. Ez azonban lehetővé teszi a 800 MB-os bővített csomag méretének korlátozását
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 ### <a name="will-cloud-services-extended-support-mitigate-the-failures-due-to-allocation-failures"></a>A Cloud Services (kiterjesztett támogatás) csökkenti a foglalási hibák miatti hibákat?
 Nem, a Cloud Service (bővített támogatás) üzemelő példányok olyan fürthöz vannak kötve, mint a Cloud Services (klasszikus). Ezért a foglalási hibák továbbra is fennállnak, ha a fürt megtelt. 

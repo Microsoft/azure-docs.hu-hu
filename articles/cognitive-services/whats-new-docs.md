@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 03/08/2021
-ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4334166f435612370e7e0b7b380814fe85075f78
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631370"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046623"
 ---
 # <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services docs: Újdonságok február 1-től, 2021 – február 28., 2021
 
@@ -28,25 +28,25 @@ ms.locfileid: "102631370"
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)](/azure/cognitive-services/containers/container-faq)
+- [Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)](./containers/container-faq.yml)
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések](/azure/cognitive-services/containers/container-image-tags)
+- [Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések](./containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [A mintacímkézési eszköz üzembe helyezése](/azure/cognitive-services/form-recognizer/deploy-label-tool)
-- [Mi a Form Recognizer?](/azure/cognitive-services/form-recognizer/overview)
-- [Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [A mintacímkézési eszköz üzembe helyezése](./form-recognizer/deploy-label-tool.md)
+- [Mi a Form Recognizer?](./form-recognizer/overview.md)
+- [Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával](./form-recognizer/quickstarts/label-tool.md)
 
 ## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Text Analytics API v3 nyelvi támogatás](/azure/cognitive-services/text-analytics/language-support)
-- [A Text Analytics meghívása REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Text Analytics API v3 nyelvi támogatás](./text-analytics/language-support.md)
+- [A Text Analytics meghívása REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

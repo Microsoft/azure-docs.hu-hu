@@ -3,17 +3,17 @@ title: Azure-költségek felosztása
 description: Ez a cikk a költségfelosztási szabályok létrehozását ismerteti az előfizetések, erőforráscsoportok és címkék költségeinek másokkal való megosztásához.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/11/2020
+ms.date: 03/23/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 414ce626d76c9b7a7d073d6cbfa5a5f4446c3073
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131088"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025526"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure-beli költségfelosztási szabályok létrehozása és kezelése (előzetes verzió)
 
@@ -58,7 +58,7 @@ Ha a költségeket a számítási, tárolási vagy hálózati költségek szerin
 
 Ha a költségeket a teljes költség arányában osztja fel, a százalékos arány a kiválasztott célok teljes költségeinek összege alapján lesz meghatározva az aktuális számlázási hónapban.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Szabálynév létrehozását szemléltető példa" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="A felosztás százalékos arányát szemléltető példa" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 A beállítás után az előre megadott százalékos arányok rögzítettek. Minden folyamatban lévő felosztás ezeken fog alapulni. A százalékos arányok csak akkor változnak, ha a szabályt manuálisan frissíti.
 
@@ -84,7 +84,7 @@ Ha a költségfelosztási szabály aktív, a kiválasztott forrásokból szárma
 
 A költségfelosztási szabály hatását a költségelemzésben tekintheti meg. Az Azure Portalon lépjen az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oldalra. Válasszon ki a listáról egy olyan előfizetést, amely egy aktív költségfelosztási szabály célja. Ezután válassza ki a **Költségelemzés** menüpontot. A költségelemzésben válassza a **Csoportosítás**, majd a **Költségfelosztás** lehetőséget. Az eredményül kapott nézet az előfizetés költségeinek gyors lebontását mutatja. Az előfizetéshez rendelt költségek is megjelennek az alábbi ábrán látható módon.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Szabálynév létrehozását szemléltető példa" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="A költséglebontást szemléltető példa" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Erőforráscsoport költségfelosztásának megtekintése
 
@@ -94,7 +94,12 @@ Hasonló módszerrel ellenőrizheti a költségfelosztási szabály hatását eg
 
 Az Azure Portalon keresse meg a **Költségkezelés + Számlázás** > **Cost Management** > **Költségelemzés** lehetőséget. A költségelemzésben válassza a **Szűrő hozzáadása** lehetőséget. Válassza a **Címke** lehetőséget, és válassza ki a címkekulcsot és címkeértékeket, amelyekhez költséget rendelt.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Szabálynév létrehozását szemléltető példa" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="A címkézett elemek költségeit bemutató példa" lightbox="./media/allocate-costs/tagged-costs.png" :::
+
+Íme egy videó, amely bemutatja, hogyan hozhat létre egy Cost foglalási szabályt.
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Meglévő költségfelosztási szabály szerkesztése
 

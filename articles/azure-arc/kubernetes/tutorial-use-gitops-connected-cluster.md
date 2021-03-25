@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1459d4a0f15595c6f658d73fcb9cb533023f0eb8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121473"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025717"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Oktatóanyag: konfigurációk üzembe helyezése a GitOps használatával egy Azure arc-kompatibilis Kubernetes-fürtön 
 
@@ -141,7 +141,7 @@ A titkos kulcsokhoz hasonlóan a known_hosts tartalmat közvetlenül vagy egy f�
 >[!NOTE]
 >* A Helm operátor diagramjának 1.2.0 + verziója támogatja a HTTPS Helm kiadás privát hitelesítését.
 >* Az AK által felügyelt fürtök esetében a HTTPS Helm kiadás nem támogatott.
->* Ha a Flux segítségével szeretné elérni a git-tárházat a proxyn keresztül, frissítenie kell az Azure arc-ügynököket a proxybeállítások alapján. További információ: [Csatlakozás kimenő proxykiszolgáló használatával](./connect-cluster.md#connect-using-an-outbound-proxy-server).
+>* Ha a Flux segítségével szeretné elérni a git-tárházat a proxyn keresztül, frissítenie kell az Azure arc-ügynököket a proxybeállítások alapján. További információ: [Csatlakozás kimenő proxykiszolgáló használatával](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server).
 
 
 ## <a name="additional-parameters"></a>További paraméterek
@@ -235,7 +235,7 @@ Egy konfiguráció létrehozásakor vagy frissítésekor néhány dolog történ
 
 A kiépítési folyamat során a konfigurációs erőforrás átkerül néhány állapotba. A folyamat figyelése a `az k8s-configuration show ...` fenti paranccsal:
 
-| Szakasz módosítása | Description |
+| Szakasz módosítása | Leírás |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | A kezdeti és a folyamatban lévő állapotot jelöli. |
 | `complianceStatus` -> `Installed`  | `config-agent` sikeresen konfigurálta a fürtöt, és `flux` hiba nélkül telepítette. |

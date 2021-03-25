@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 182271a69a073ccca6e05f9a7bc26443d9ed58fb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ac46d531cda0a9ab352ba43b5bd1b873b9e256c1
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605171"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033433"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az Azure Signaler szolgáltatásnak le kell tiltania a nyilvános hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |Az Azure Signaler Service-erőforrások biztonságának javításához győződjön meg arról, hogy az nem a nyilvános internethez van kitéve, és csak privát végpontról érhető el. Tiltsa le a nyilvános hálózati hozzáférés tulajdonságot a következő témakörben leírtak szerint: [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) . Ez a beállítás letiltja az Azure IP-tartományon kívüli nyilvános címtartomány elérését, és minden olyan bejelentkezést megtagad, amely megfelel az IP-vagy a virtuális hálózatra épülő tűzfalszabályok szabályainak. Ez csökkenti az adatszivárgás kockázatait. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
 |[Az Azure Signaler szolgáltatásnak rendelkeznie kell egy magánhálózati kapcsolattal kompatibilis SKU-val](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Az Azure Private link használatával a virtuális hálózatot az Azure-szolgáltatásokhoz nyilvános IP-cím nélkül csatlakoztathatja a forráson vagy a célhelyen, amely védelmet biztosít az erőforrásoknak a nyilvános adatszivárgási kockázatokkal szemben. A házirend korlátozza az Azure Signaler szolgáltatáshoz tartozó magánhálózati kapcsolatra vonatkozó SKU-t. További információ a privát hivatkozásról: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |

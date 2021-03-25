@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7d71820db3d58931f2fcd8d18441534ad36183c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab54243eb7109965941cf60edd9358133550c7d3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711994"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046640"
 ---
 # <a name="azure-operational-security"></a>Azure-beli működési biztonság
 ## <a name="introduction"></a>Introduction (Bevezetés)
@@ -165,7 +165,7 @@ Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóri
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-A [Azure monitor naplózza a biztonsági](../../security-center/security-center-monitoring.md) és auditálási megoldást, amely lehetővé teszi, hogy aktívan figyelje az összes erőforrást, ami csökkentheti a biztonsági incidensek hatását. Azure Monitor naplókat Security and Audit az erőforrások figyelésére használható biztonsági tartományokkal. A biztonsági tartomány gyors hozzáférést biztosít a beállításokhoz a biztonsági monitorozáshoz a következő tartományokban található további részletek:
+A [Azure monitor naplózza a biztonsági](../../security-center/security-center-remediate-recommendations.md) és auditálási megoldást, amely lehetővé teszi, hogy aktívan figyelje az összes erőforrást, ami csökkentheti a biztonsági incidensek hatását. Azure Monitor naplókat Security and Audit az erőforrások figyelésére használható biztonsági tartományokkal. A biztonsági tartomány gyors hozzáférést biztosít a beállításokhoz a biztonsági monitorozáshoz a következő tartományokban található további részletek:
 
 -   Kártevőfelmérés
 -   Frissítések felmérése
