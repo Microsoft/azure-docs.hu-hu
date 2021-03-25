@@ -3,19 +3,14 @@ title: Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgálta
 description: Ismerje meg, hogy miként lehet elhárítani a biztonsági mentési hibákat az Azure Disk Backup szolgáltatásban
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737727"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107244"
 ---
-# <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgáltatásban (előzetes verzió)
-
->[!IMPORTANT]
->Az Azure Disk Backup előzetes verzióban érhető el, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A régió elérhetőségét a [támogatási mátrixban](disk-backup-support-matrix.md)tekintheti meg.
->
->[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
+# <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgáltatásban
 
 Ez a cikk az Azure Disk szolgáltatással kapcsolatos biztonsági mentési és visszaállítási problémákra vonatkozó hibaelhárítási információkat tartalmaz. Az [Azure Disk Backup](disk-backup-overview.md) -régiók rendelkezésre állásával, a támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos további információkért tekintse meg a [támogatási mátrixot](disk-backup-support-matrix.md).
 
@@ -157,7 +152,7 @@ Javasolt művelet: érdemes lehet egy másik helyreállítási pontot használni
 
 Hibaüzenet: a lemezes biztonsági mentés még nem érhető el a Backup-tároló azon régiójában, amelyben a védelem konfigurálása folyamatban van.
 
-Javasolt művelet: a Backup-tárolónak az előzetes verzióban támogatott régióban kell lennie. A régió elérhetőségét lásd a [támogatási mátrixban](disk-backup-support-matrix.md).
+Javasolt művelet: a Backup-tárolónak támogatott régióban kell lennie. A régió elérhetőségét lásd a [támogatási mátrixban](disk-backup-support-matrix.md).
 
 ### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Hibakód: UserErrorDppDatasourceAlreadyHasBackupInstance
 

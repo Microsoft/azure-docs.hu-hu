@@ -3,19 +3,14 @@ title: Az Azure Disk Backup szolgáltatással kapcsolatos gyakori kérdések
 description: Válaszok az Azure Disk Backup szolgáltatással kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7729bc1120fc0e2f4361739a8e05f3a82ccb4268
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98734562"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107312"
 ---
-# <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Az Azure Disk Backup szolgáltatással kapcsolatos gyakori kérdések (előzetes verzió)
-
->[!IMPORTANT]
->Az Azure Disk Backup előzetes verzióban érhető el, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A régió elérhetőségét a [támogatási mátrixban](disk-backup-support-matrix.md)tekintheti meg.
->
->[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
+# <a name="frequently-asked-questions-about-azure-disk-backup"></a>Az Azure Disk Backup szolgáltatással kapcsolatos gyakori kérdések
 
 Ez a cikk az Azure Disk Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ. Az [Azure Disk Backup](disk-backup-overview.md) -régiók rendelkezésre állásával, a támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos további információkért tekintse meg a [támogatási mátrixot](disk-backup-support-matrix.md).
 

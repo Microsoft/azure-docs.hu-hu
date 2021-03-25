@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103422171"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043070"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Az egyéni képességek hatékony felskálázása
 
@@ -42,7 +42,7 @@ Az [egyéni képességek](cognitive-search-custom-skill-web-api.md) beállítás
 
 3. Állítsa `timeout` olyan értékre, amely elegendő ahhoz, hogy a képesség érvényes válaszra válaszoljon.
 
-4. A `indexer` definícióban állítsa be [`batchSize`](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) az adatforrásból beolvasni kívánt dokumentumok számát, és bővítse egyidejűleg.
+4. A `indexer` definícióban állítsa be [`batchSize`](/rest/api/searchservice/create-indexer#indexer-parameters) az adatforrásból beolvasni kívánt dokumentumok számát, és bővítse egyidejűleg.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -106,5 +106,5 @@ Gratulálunk! Az egyéni képesség mostantól az indexelő teljesítményének 
 
 + [Energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
-+ [Azure Machine Learning-képesség hozzáadása](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)
-+ [A módosítások teszteléséhez használjon hibakeresési munkameneteket](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)
++ [Azure Machine Learning-képesség hozzáadása](./cognitive-search-aml-skill.md)
++ [A módosítások teszteléséhez használjon hibakeresési munkameneteket](./cognitive-search-debug-session.md)
