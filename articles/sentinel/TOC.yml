@@ -320,7 +320,7 @@
         - name: Kusto lekérdezési nyelv rövid leírása
           href: /azure/data-explorer/kql-quick-reference
         - name: Azure Monitor log-lekérdezések optimalizálása
-          href: /azure/azure-monitor/logs/query-optimization
+          href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA-bővítések
       href: ueba-enrichments.md
     - name: CEF naplózási mező leképezése

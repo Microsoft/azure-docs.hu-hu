@@ -3,12 +3,12 @@ title: A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 description: Ez a cikk azt ismerteti, hogyan használható a nyilvános IP-funkció az Azure Virtual WAN-ban.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 794e24e531d464adf58d5a06b5a411ada18c4a60
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99581380"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023656"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 
@@ -47,6 +47,9 @@ A webkiszolgáló fogadja a kérést, és a kért információkat vagy oldalt v�
 
 ## <a name="test-case"></a>Teszteset
 Ebben az esetben közzé fogja tenni az IIS webkiszolgálót az interneten. Az Azure VMware-megoldás nyilvános IP-funkciója segítségével közzéteheti a webhelyet egy nyilvános IP-címen.  A NAT-szabályokat a tűzfalon is konfigurálhatja, és a nyilvános IP-címmel elérheti az Azure VMware megoldás erőforrását (virtuális gépek webkiszolgálóval).
+
+>[!TIP]
+>A kimenő forgalom engedélyezéséhez be kell állítania a biztonsági konfigurációt, > az internetes forgalom **Azure Firewall**.
 
 ## <a name="deploy-virtual-wan"></a>A Virtual WAN üzembe helyezése
 
@@ -152,7 +155,7 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
 ## <a name="limitations"></a>Korlátozások
 
-SDDCs legfeljebb 100 nyilvános IP-cím adható meg.
+Saját felhőben 100 nyilvános IP-cím adható meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 52b5aca1e7de87e6decb4152f5e09c4d04988b10
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 067c81d4292f46fcc36a9a9f7033fce93ff30b4b
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584973"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034823"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A Kubernetes-fürtök processzor-és memória-erőforrásainak korlátai nem haladhatják meg a megadott határértékeket](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |A tároló CPU-és memória-erőforrás-korlátainak betartatásával megakadályozhatja az erőforrás-kimerülési támadásokat egy Kubernetes-fürtben. Ez a szabályzat általánosan elérhető a Kubernetes Service (ak) szolgáltatáshoz, valamint az AK-motor és az Azure arc-kompatibilis Kubernetes előzetes verziója. További információ: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |naplózás, megtagadás, letiltva |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerResourceLimits.json) |
 |[A Kubernetes nem oszthatják meg a gazdagépi folyamat AZONOSÍTÓját vagy a gazdagép IPC-névterét](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |Blokkolja a pod-tárolókat, hogy megosszák a gazdagép folyamat-azonosító névterét és a gazdagép IPC-névterét egy Kubernetes-fürtben. Ez a javaslat része a CIS 5.2.2-nek és a CIS 5.2.3-nek, amelyek célja a Kubernetes-környezetek biztonságának javítása. Ez a szabályzat általánosan elérhető a Kubernetes Service (ak) szolgáltatáshoz, valamint az AK-motor és az Azure arc-kompatibilis Kubernetes előzetes verziója. További információ: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |naplózás, megtagadás, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockHostNamespace.json) |

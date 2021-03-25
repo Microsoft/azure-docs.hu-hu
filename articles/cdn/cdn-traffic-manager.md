@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a003becba0bc1e42d8fe0c0c5b199402a430a8e1
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92777741"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034758"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Feladatátvétel több végpont között az Azure Traffic Manager
 
@@ -94,7 +94,10 @@ A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lé
     > [!NOTE]
     > Ha a tartomány jelenleg élő, és nem lehet megszakítani, akkor hajtsa végre ezt a lépést. Győződjön meg arról, hogy a CDN-végpontok és a Traffic Manager-tartományok élőben vannak, mielőtt frissíti az egyéni tartomány DNS-ét Traffic Managerra.
     >
-
+   
+    > [!NOTE]
+    > Ahhoz, hogy ez a feladatátvétel implemeting, mindkét végpontnak különböző profilokban kell lennie, és a különböző profiloknak különböző CDN-szolgáltatóknak kell lenniük a tartománynevek ütközésének elkerülése érdekében.
+    > 
 
 2.  Az Azure CDN-profilban válassza ki az első CDN-végpontot (Akamai). Válassza az **egyéni tartomány hozzáadása** és a bemeneti **cdndemo101.dustydogpetcare.online** lehetőséget. Győződjön meg arról, hogy az egyéni tartomány érvényesítése zöld színnel történik. 
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b558d4b3be64f82775eb9caf2f3ea8c5a8f95c6d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185869"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025220"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Beszédfelismerés automatikus nyelvfelismerés a szöveghez
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat `AutoDetectSourceLanguageConfig` l�
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatikus nyelvfelismerés a Speech SDK-val
 
-Az automatikus nyelvfelismerés jelenleg legfeljebb négy nyelvet tartalmaz. Tartsa szem előtt ezt a korlátozást az `AudoDetectSourceLanguageConfig` objektum építésekor. Az alábbi mintákban létre fog hozni egy `AutoDetectSourceLanguageConfig` -t, majd felhasználhatja azt a létrehozásához `SpeechRecognizer` .
+Az automatikus nyelvfelismerés jelenleg legfeljebb négy nyelvet tartalmaz. Tartsa szem előtt ezt a korlátozást az `AutoDetectSourceLanguageConfig` objektum építésekor. Az alábbi mintákban létre fog hozni egy `AutoDetectSourceLanguageConfig` -t, majd felhasználhatja azt a létrehozásához `SpeechRecognizer` .
 
 > [!TIP]
 > Megadhat egy egyéni modellt is, amelyet a beszéd szövegre való elvégzéséhez használhat. További információ: [Egyéni modell használata automatikus nyelvfelismerés esetén](#use-a-custom-model-for-automatic-language-detection).

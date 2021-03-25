@@ -4,12 +4,12 @@ ms.service: databox
 ms.author: alkohli
 ms.topic: include
 ms.date: 03/23/2021
-ms.openlocfilehash: 34d0d55ba6eb403055be96758b57b7bd0c2ab704
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0d912d0ac3f0fcf4c52116e67909038a1973304b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104988352"
+ms.locfileid: "105103986"
 ---
 A számítási feladatokkal kapcsolatos hibák elhárításához használja a IoT Edge ügynök futásidejű válaszait. Itt látható a lehetséges válaszok listája:
 
@@ -32,7 +32,7 @@ Az eszközön lévő összes modul ismeretlen állapotot mutat, és nem használ
 
 #### <a name="suggested-solution"></a>Javasolt megoldás
 
-Törölje a IoT Edge szolgáltatást, majd telepítse újra a modul (oka) t. További információ: [Remove IoT Edge Service](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+Törölje a IoT Edge szolgáltatást, majd telepítse újra a modul (oka) t. További információ: [Remove IoT Edge Service](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#remove-iot-edge-service).
 
 
 ### <a name="modules-show-as-running-but-are-not-working"></a>A modulok fut, de nem működnek
@@ -65,7 +65,7 @@ Az eszköz helyi webes FELÜLETén hajtsa végre a következő lépéseket:
 1. Adja meg a **Kubernetes külső szolgáltatási IP**-címeinek statikus, összefüggő IP-tartományát. A szolgáltatáshoz 1 IP-cím szükséges `edgehub` . Emellett minden IoT Edge-modulhoz és minden üzembe helyezni kívánt virtuális géphez egy IP-címmel kell rendelkeznie. 
 1. Kattintson az **Alkalmaz** gombra. A módosított IP-címtartomány azonnal érvénybe lép.
 
-További információ: [külső szolgáltatás IP-címeinek módosítása tárolók számára](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+További információ: [külső szolgáltatás IP-címeinek módosítása tárolók számára](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#change-external-service-ips-for-containers).
 
 ### <a name="configure-static-ips-for-iot-edge-modules"></a>Statikus IP-címek konfigurálása IoT Edge modulokhoz
 

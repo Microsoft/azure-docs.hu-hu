@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5309fd60640c45ade42bab4c5727cf1f0a8d9d70
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93397950"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025475"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure-ból Azure-ba történő vészhelyreállítás
 
@@ -73,7 +73,7 @@ Igen, az Azure-beli virtuális gépeket egyetlen Azure AD-bérlőn belüli előf
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>Replikálhat virtuális gépeket egy rendelkezésre állási zónában egy másik régióba?
 
-Igen, a rendelkezésre állási zónákban lévő virtuális gépeket egy másik Azure-régióba is replikálhatja. A célként megadott virtuális gép egyetlen példányként, egy rendelkezésre állási csoporton vagy egy rendelkezésre állási zónában is üzembe helyezhető, ha a cél régióban támogatott. 
+Igen, a rendelkezésre állási zónákban lévő virtuális gépeket egy másik Azure-régióba is replikálhatja. 
 
 ### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>Replikálhatók a nem zónás virtuális gépeket ugyanazon a régión belüli zónába? 
 
