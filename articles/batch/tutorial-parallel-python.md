@@ -5,12 +5,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 48df2cb6ac103d1f03d2d64fce0d10a8f2f128e2
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97106512"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043410"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a Python API használatával
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A Python 2.7-es, 3.3-as vagy újabb verziója](https://www.python.org/downloads/)
+* [Python 2,7 vagy 3.6 +](https://www.python.org/downloads/)
 
 * [pip](https://pip.pypa.io/en/stable/installing/) Package Manager
 

@@ -8,12 +8,12 @@ author: tcare
 ms.author: tcare
 description: Ez a cikk a CI/CD-munkafolyamatok GitOps használatával történő fogalmi áttekintését tartalmazza
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, arc, AK, Azure Kubernetes szolgáltatás, tárolók, CI, CD, Azure DevOps
-ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121779"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025866"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>CI/CD-munkafolyamat GitOps használatával – Azure arc-kompatibilis Kubernetes
 
@@ -30,7 +30,7 @@ Vegyünk egy vagy több Kubernetes-környezetbe telepített alkalmazást.
 ### <a name="application-repo"></a>Alkalmazás-tárház
 Az alkalmazás-tárház tartalmazza azt az programkódot, amelyet a fejlesztők a belső hurok során dolgoznak. Az alkalmazás üzembe helyezési sablonjai ebben a tárházban jelennek meg egy általános formában, például Helm vagy Kustomize. A környezetre jellemző értékeket nem tárolja a rendszer. A tárház módosításai egy olyan PR-vagy CI-folyamatot indítanak, amely elindítja a telepítési folyamatot.
 ### <a name="container-registry"></a>Container Registry
-A Container Registry tartalmazza a Kubernetes-környezetekben használt összes első és harmadik féltől származó rendszerképet. Az első féltől származó alkalmazás-lemezképek címkézése emberi olvasási címkékkel és a kép felépítéséhez használt git-véglegesít. A harmadik féltől származó rendszerképek gyorsítótárazása a biztonság, a gyorsaság és a rugalmasság érdekében. Tervezze meg a biztonsági frissítések időben történő tesztelését és integrálását. További információkért tekintse meg a [nyilvános tartalmi útmutató az ACR használatáról és karbantartásáról](https://docs.microsoft.com/azure/container-registry/tasks-consume-public-content) szóló útmutatót.
+A Container Registry tartalmazza a Kubernetes-környezetekben használt összes első és harmadik féltől származó rendszerképet. Az első féltől származó alkalmazás-lemezképek címkézése emberi olvasási címkékkel és a kép felépítéséhez használt git-véglegesít. A harmadik féltől származó rendszerképek gyorsítótárazása a biztonság, a gyorsaság és a rugalmasság érdekében. Tervezze meg a biztonsági frissítések időben történő tesztelését és integrálását. További információkért tekintse meg a [nyilvános tartalmi útmutató az ACR használatáról és karbantartásáról](../../container-registry/tasks-consume-public-content.md) szóló útmutatót.
 ### <a name="pr-pipeline"></a>PR-folyamat
 Az alkalmazás-tárházhoz tartozó lekéréses kérelmeket a PR-folyamat sikeres futtatásával kezdeményezték. Ez a folyamat az alapszintű minőségi kapukat futtatja, például az alkalmazás kódjában a kivonást és az egység teszteket. A folyamat a Kubernetes-környezetbe való központi telepítéshez használt alkalmazás-és Dockerfiles és Helm-sablonokat teszteli. A Docker-rendszerképeket fel kell építeni és tesztelni kell, de nem kell leküldeni. Tartsa meg viszonylag rövid ideig a folyamat időtartamát, hogy a gyors iteráció lehetővé váljon.
 ### <a name="ci-pipeline"></a>CI-folyamat

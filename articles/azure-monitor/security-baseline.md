@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 39dff9b48fb292d8a1c145ae3e592786ddb027a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 86d660ef6133231172684f18ad3250392df5f509
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198829"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026121"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor Azure biztonsági alapterve
 
@@ -36,9 +36,9 @@ A virtuális hálózati szabályok lehetővé teszik, hogy a Azure Monitor csak 
 
 Log Analytics átjáró használata az adatLog Analytics-munkaterületre való adatküldéshez Azure Monitor azon számítógépek nevében, amelyek nem tudnak közvetlenül csatlakozni az internethez, ami megakadályozza, hogy a számítógépek csatlakozni tudjanak az internethez. 
 
-- [Privát hivatkozás beállítása Azure Monitorhoz](/azure/azure-monitor/platform/private-link-security)
+- [Privát hivatkozás beállítása Azure Monitorhoz](./logs/private-link-security.md)
 
-- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](/azure/azure-monitor/platform/gateway)
+- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](./agents/gateway.md)
 
 **Felelősség**: Ügyfél
 
@@ -50,9 +50,9 @@ Log Analytics átjáró használata az adatLog Analytics-munkaterületre való a
 
 Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati naplózáshoz, például a privát végpont által feldolgozott (vagy kimenő) adatkapcsolathoz férhet hozzá.
 
-- [Azure Monitor ügynökök hálózati követelményei](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
+- [Azure Monitor ügynökök hálózati követelményei](./agents/log-analytics-agent.md#network-requirements)
 
-- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](/azure/azure-monitor/platform/gateway)
+- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](./agents/gateway.md)
 
 - [Hálózati biztonsági csoport folyamatábráinak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -78,11 +78,11 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 **Útmutató**: a Azure monitor az Azure alapszolgáltatások részét képezi, és nem telepíthető külön szolgáltatásként. Azure Monitor összetevőket, beleértve az Azure Monitor ügynököt, és a Application Insights SDK üzembe helyezhető az erőforrásaival, és ez hatással lehet az erőforrások biztonsági helyzetére.
 
-- [Azure Monitor ügynökök hálózati követelményei](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
+- [Azure Monitor ügynökök hálózati követelményei](./agents/log-analytics-agent.md#network-requirements)
 
-- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](/azure/azure-monitor/platform/gateway) 
+- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](./agents/gateway.md) 
 
-- [Lásd: a Application Insights első lépései](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
+- [Lásd: a Application Insights első lépései](./app/app-insights-overview.md#get-started)
 
 - [Rendelkezésre állási webes tesztek beállítása](app/monitor-web-app-availability.md)
 
@@ -94,9 +94,9 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 **Útmutató**: az Azure-tevékenység naplójának használatával figyelheti az erőforrás-konfigurációkat, és azonosíthatja a Azure monitorhoz kapcsolódó hálózati erőforrások módosításait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrások módosításai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](./essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](./alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -112,9 +112,9 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](./essentials/diagnostic-settings.md)
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](./vm/quick-collect-azurevm.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -132,9 +132,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a Azure monitor tevékenység-naplókat használ, a tevékenység naplója automatikusan engedélyezve van, és naplózza Azure monitor erőforrásokon végrehajtott műveleteket, például: a művelet elindítását, a művelet állapotát és egyéb hasznos naplózási információt. 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](./essentials/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](/azure/azure-monitor/platform/platform-logs-overview)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](./essentials/platform-logs-overview.md)
 
 **Felelősség**: Ügyfél
 
@@ -148,9 +148,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: Azure monitor a szervezet megfelelőségi szabályainak megfelelően állítsa be a log Analytics munkaterület megőrzési időszakát. Használja az Azure Storage-fiókokat a naplók hosszú távú/archiválási tárolására.
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](./logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Felelősség**: Ügyfél
 
@@ -164,9 +164,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics lekérdezések első lépései](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics lekérdezések első lépései](./logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](./logs/get-started-queries.md)
 
 **Felelősség**: Ügyfél
 
@@ -180,7 +180,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](./alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -194,9 +194,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre meghatározott beépített szerepkörök tartoznak, és ezek a szerepkörök olyan eszközökkel leltározhatók vagy kérdezhetők le, mint az Azure CLI, az Azure PowerShell vagy az Azure Portal.
 
-- [Címtárbeli szerepkör beszerzése Azure Active Directoryban (Azure AD) a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör beszerzése Azure Active Directoryban (Azure AD) a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Felelősség**: Ügyfél
 
@@ -284,7 +284,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-s
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -296,7 +296,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-s
 
 **Útmutató**: hozzáférhet Azure Active Directory (Azure ad) bejelentkezési tevékenységhez, a naplózási és a kockázati Eseménynapló-forrásokhoz, amelyek lehetővé teszik bármely Siem/monitoring eszköz integrálását. Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Felelősség**: Ügyfél
 
@@ -326,7 +326,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-s
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-- [Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban](/azure/azure-monitor/platform/manage-access)
+- [Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban](./logs/manage-access.md)
 
 **Felelősség**: Ügyfél
 
@@ -352,7 +352,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-s
 
 Application Insights és Log Analytics mindkettő továbbra is engedélyezi a TLS 1,1-és TLS 1,0-adatmennyiséget. Az adat a TLS 1,2-re korlátozható az ügyféloldali oldalon való konfigurálással.
 
-- [Adatküldés biztonságos továbbítása a TLS 1,2 használatával](/azure/azure-monitor/platform/data-security#sending-data-securely-using-tls-12)
+- [Adatküldés biztonságos továbbítása a TLS 1,2 használatával](./logs/data-security.md#sending-data-securely-using-tls-12)
 
 **Felelősség**: Megosztott
 
@@ -373,7 +373,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használata a Azure monitorhoz való hozzáférés kezelésére.
 
-- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](/azure/azure-monitor/platform/roles-permissions-security)
+- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](./roles-permissions-security.md)
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
@@ -385,9 +385,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját Azure Key Vault tárolt és a rendszer által hozzárendelt felügyelt identitás-hitelesítéssel hozzáférő saját kulcs használatával is lehetőséget nyújt a titkosításra. Ez az ügyfél által felügyelt kulcs (CMK) lehet szoftveres vagy hardveres HSM-védelemmel ellátott.
 
-- [Ügyfél által felügyelt kulcsok Azure Monitor](/azure/azure-monitor/platform/customer-managed-keys)
+- [Ügyfél által felügyelt kulcsok Azure Monitor](./logs/customer-managed-keys.md)
 
-- [Adatbiztonság Log Analytics](/azure/azure-monitor/platform/data-security)
+- [Adatbiztonság Log Analytics](./logs/data-security.md)
 
 - [Adatgyűjtés, -megőrzés és -tárolás az Application Insightsban](app/data-retention-privacy.md)
 
@@ -401,7 +401,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure monitor és kapcsolódó erőforrásokban lépnek életbe.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](./alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -431,13 +431,13 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az Azure CLI használatával kérdezheti le és derítheti fel Azure monitor erőforrásait az előfizetéseken belül. Győződjön meg arról, hogy a bérlőben a megfelelő (olvasási) engedélyek szerepelnek, valamint az összes Azure-előfizetés, valamint az előfizetésekben lévő erőforrások számbavétele.
 
-- [Azure Monitor parancssori felület](https://docs.microsoft.com/cli/azure/monitor)
+- [Azure Monitor parancssori felület](/cli/azure/monitor)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](/azure/azure-monitor/platform/roles-permissions-security)
+- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](./roles-permissions-security.md)
 
 **Felelősség**: Ügyfél
 
@@ -493,7 +493,7 @@ Az Azure Resource Graph használatával lekérdezheti és felderítheti az előf
 
 **Útmutató**: a leltár rendszeres összeegyeztetése és a jogosulatlan Azure monitor kapcsolódó erőforrások törlésének biztosítása az előfizetésből időben.  
 
-- [Azure Log Analytics-munkaterület törlése](/azure/azure-monitor/platform/delete-workspace)
+- [Azure Log Analytics-munkaterület törlése](./logs/delete-workspace.md)
 
 **Felelősség**: Ügyfél
 
@@ -505,7 +505,7 @@ Az Azure Resource Graph használatával lekérdezheti és felderítheti az előf
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -535,9 +535,9 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mellett tegye biztonságossá a csatornát egy titkos API-kulccsal.
 
-- [Biztonságos APM-Élő metrikastream](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)
+- [Biztonságos APM-Élő metrikastream](./app/live-stream.md#secure-the-control-channel)
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
 
@@ -567,7 +567,7 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 **Útmutató**: az Azure DevOps használatával biztonságosan tárolhatók és kezelhetők a kódok, például az egyéni Azure-házirendek és Azure Resource Manager-sablonok. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
 - [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -581,7 +581,7 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Aliasok Azure Policy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Aliasok Azure Policy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Felelősség**: Ügyfél
 
@@ -661,7 +661,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a Azure Resource Manager használatával exportálhatja a Azure monitor és a kapcsolódó erőforrásokat egy JavaScript Object Notation (JSON) sablonban, amely biztonsági mentésként használható a Azure monitor és a kapcsolódó konfigurációkhoz.  A Azure Automation használatával automatikusan futtathatja a biztonsági mentési parancsfájlokat. 
 
-- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](/azure/azure-monitor/samples/resource-manager-workspace)
+- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./logs/resource-manager-workspace.md)
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -675,11 +675,11 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a Azure Resource Manager használatával exportálhatja a Azure monitor és a kapcsolódó erőforrásokat egy JavaScript Object Notation (JSON) sablonban, amely biztonsági mentésként használható a Azure monitor és a kapcsolódó konfigurációkhoz. Az ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vault, ha Azure Monitor kapcsolódó erőforrások ügyfél által felügyelt kulcsokat használnak,
 
-- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](/azure/azure-monitor/platform/template-workspace-configuration)
+- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./logs/resource-manager-workspace.md)
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -689,9 +689,9 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a helyreállítás rendszeres végrehajtásának lehetősége Azure Resource Manager támogatott sablonfájlok használatával. Tesztelje az ügyfél által felügyelt kulcsok biztonsági mentésének visszaállítását.
 
-- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](/azure/azure-monitor/samples/resource-manager-workspace)
+- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./logs/resource-manager-workspace.md)
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -703,7 +703,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 Emellett engedélyezze a Soft-Delete és a védelem kiürítését Key Vault a kulcsok véletlen vagy rosszindulatú Törlés elleni védelme érdekében. Ha az Azure Storage Azure Resource Manager sablonok biztonsági mentéseit tárolja, engedélyezze a Soft delete-et az adatok mentéséhez és helyreállításához, amikor blobokat vagy blob-pillanatképeket törölnek.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
 - [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -807,5 +807,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

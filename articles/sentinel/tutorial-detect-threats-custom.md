@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f0a94daef8c5db820a17fe8cb50eda616bcf260
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453935"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042798"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Oktatóanyag: egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez
 
@@ -64,7 +64,7 @@ A **szabály logikájának beállítása** lapon közvetlenül is írhat egy lek
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-1-new.png" alt-text="A lekérdezési szabály logikájának és beállításainak konfigurálása" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-1-new.png":::
 
-- Íme egy másik példa a lekérdezésre, amely riasztást küld, ha rendellenes számú erőforrás jön létre az [Azure-tevékenységben](../azure-monitor/platform/activity-log.md).
+- Íme egy másik példa a lekérdezésre, amely riasztást küld, ha rendellenes számú erőforrás jön létre az [Azure-tevékenységben](../azure-monitor/essentials/activity-log.md).
 
     ```kusto
     AzureActivity

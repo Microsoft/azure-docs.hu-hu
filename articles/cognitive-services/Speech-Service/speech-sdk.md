@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: afba973570d75eace8cae8d1ed6ed470db21ef0e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434526"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043221"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -114,7 +114,7 @@ A **Call Center átirata** a Batch Speech szolgáltatáson keresztül érhető e
 
 ### <a name="codec-compressed-audio-input"></a>Codec tömörített hangbemenet
 
-A Speech SDK programozási nyelvei közül több is támogatja a kodekkel tömörített hangbemeneti streameket. További információ: <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tömörített hangformátumok használata </a>.
+A Speech SDK programozási nyelvei közül több is támogatja a kodekkel tömörített hangbemeneti streameket. További információ: <a href="/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tömörített hangformátumok használata </a>.
 
 A **kodek tömörített hangbemenete** a következő platformokon érhető el:
 

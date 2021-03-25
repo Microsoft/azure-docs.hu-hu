@@ -3,18 +3,18 @@ title: Oktatóanyag – Az Azure Cost Managementből exportált adatok létrehoz
 description: Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az Azure Cost Managementből exportált adatokat külső rendszerekkel való használat céljából.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/7/2020
+ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: HT
+ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400352"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043461"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -80,6 +80,8 @@ Az új exportálás megjelenik az exportálások listájában. Alapértelmezés 
 Kezdetben 12–24 óra is eltelhet az exportálási feladat lefutásáig. Azonban több időt igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ha programozott módon hoz létre exportálást, manuálisan kell regisztrálnia az `Microsoft.CostManagementExports` erőforrás-szolgáltatót azzal az előfizetéssel, amelyben a Storage-fiók található. A regisztráció automatikusan megtörténik az Exportálás Azure Portal használatával történő létrehozásakor. Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: az [erőforrás-szolgáltató regisztrálása](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Először készítse elő a környezetet az Azure CLI-hez:
 
@@ -148,6 +150,8 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Ha programozott módon hoz létre exportálást, manuálisan kell regisztrálnia az `Microsoft.CostManagementExports` erőforrás-szolgáltatót azzal az előfizetéssel, amelyben a Storage-fiók található. A regisztráció automatikusan megtörténik az Exportálás Azure Portal használatával történő létrehozásakor. Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: az [erőforrás-szolgáltató regisztrálása](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Először készítse elő a környezetet az Azure PowerShellhez:
 

@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 4f6eeb5265d99a17ed18ace91fa5f2d2f744dbb2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: db63d763da8cfe13a07cab15f7f18ad6e2e73eb7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100627558"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026291"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 
@@ -38,7 +38,7 @@ Az oktatóanyag elvégzéséhez:
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
 - Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../app/asp-net.md)-t. 
 - [Küldjön telemetriát az alkalmazásból](../app/usage-overview.md#send-telemetry-from-your-app) egyéni események/oldalmegtekintések hozzáadásához
-- Küldjön [felhasználói környezetet](../app/usage-send-user-context.md) a felhasználók tevékenységeinek időbeli nyomon követéséhez és a használati funkciók teljes körű kiaknázásához.
+- Küldjön [felhasználói környezetet](./usage-overview.md) a felhasználók tevékenységeinek időbeli nyomon követéséhez és a használati funkciók teljes körű kiaknázásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
@@ -165,4 +165,3 @@ Most, hogy elsajátította, hogyan elemezheti a felhasználókat, térjen át a 
 
 > [!div class="nextstepaction"]
 > [Egyéni irányítópultok létrehozása](./tutorial-app-dashboards.md)
-

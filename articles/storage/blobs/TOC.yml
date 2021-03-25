@@ -287,7 +287,7 @@
               href: storage-blob-container-properties-metadata.md
         - name: Blobok létrehozása és kezelése
           items:
-            - name: Blobok listázása (.NET)
+            - name: Blobok listázása (SDK)
               href: storage-blobs-list.md
             - name: Blobtulajdonságok és metaadatok kezelése (.NET)
               href: storage-blob-properties-metadata.md

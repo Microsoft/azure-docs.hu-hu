@@ -3,14 +3,14 @@ title: Gyakori kérdések
 description: A Azure Container Registry szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
 author: sajayantony
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8d5e161a0a663542142081c61bf1ad08be1be484
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97606283"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026240"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -260,11 +260,23 @@ A kép karanténba helyezése jelenleg az ACR előzetes verziójú funkciója. E
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Hogyan engedélyezze a névtelen lekéréses hozzáférést?
 
-Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés beállítása jelenleg előzetes verziójú szolgáltatás. Ha a beállításjegyzékben bármely [hatókör-hozzárendelési (felhasználó) vagy token-erőforrás](./container-registry-repository-scoped-permissions.md) szerepel, törölje őket a támogatási jegy előléptetése előtt (a rendszer-hatóköri térképek figyelmen kívül hagyhatók). A nyilvános hozzáférés engedélyezéséhez nyisson meg egy támogatási jegyet a következő címen: https://aka.ms/acr/support/create-ticket . Részletekért tekintse meg az [Azure visszajelzési fórumát](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+A névtelen (nem hitelesített) Azure Container Registry szolgáltatás beállítása jelenleg előzetes verzióként érhető el, amely a standard és a prémium [szintű szolgáltatási](container-registry-skus.md)szinten érhető el. 
+
+A névtelen lekéréses hozzáférés engedélyezéséhez frissítsen egy beállításjegyzéket az Azure CLI használatával (2.21.0 vagy újabb verzió), és adja át a `--anonymous-pull-enabled` paramétert az az [ACR Update](/cli/azure/acr#az_acr_update) parancsnak:
+
+```azurecli
+az acr update --name myregistry --anonymous-pull-enabled
+``` 
+
+A következő beállítással bármikor letilthatja a névtelen lekéréses hozzáférést `--anonymous-pull-enabled` `false` .
 
 > [!NOTE]
-> * Névtelenül csak az ismert rendszerképek lekéréséhez szükséges API-k érhetők el. Nem érhetők el más API-k olyan műveletekhez, mint a címkék vagy a Tárházak listája.
 > * A névtelen lekérési művelet megkísérlése előtt futtassa `docker logout` a parancsot, és győződjön meg arról, hogy a meglévő Docker-hitelesítő adatok törlődnek.
+> * Csak az adatsík műveletek érhetők el a nem hitelesített ügyfelek számára.
+> * A beállításjegyzék nagy mértékben szabályozhatja a nem hitelesített kérelmeket.
+
+> [!WARNING]
+> A névtelen lekéréses hozzáférés jelenleg a beállításjegyzék összes tárházára érvényes. Ha [adattár-hatókörű jogkivonatokkal](container-registry-repository-scoped-permissions.md)kezeli a tárház-hozzáférést, vegye figyelembe, hogy az összes felhasználó lehívhatja ezeket a tárházait egy olyan beállításjegyzékből, amely engedélyezve van a névtelen lekéréshez. Ajánlott törölni a jogkivonatokat, ha a névtelen lekéréses hozzáférés engedélyezve van.
 
 ### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>A nem terjeszthető rétegek leküldése a beállításjegyzékbe Hogyan
 
@@ -537,8 +549,8 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 
 | Git szolgáltatás | Forrás kontextus | Manuális létrehozás | Automatikus létrehozás a commit trigger használatával |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Yes |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Igen | Yes |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Igen |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Igen | Igen |
 | GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Nem |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Igen | Nem |
 

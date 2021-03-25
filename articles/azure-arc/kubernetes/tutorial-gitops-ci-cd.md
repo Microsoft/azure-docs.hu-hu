@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121609"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025815"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Oktatóanyag: CI/CD implementálása az Azure arc-kompatibilis Kubernetes-fürtöket használó GitOps
 
@@ -37,12 +37,12 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 Ez az oktatóanyag feltételezi az Azure DevOps, az Azure Repos és a folyamatok, valamint az Azure CLI megismerését.
 
 * Jelentkezzen be az [Azure DevOps servicesbe](https://dev.azure.com/).
-* Fejezze be az [előző oktatóanyagot](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) , amelyből megtudhatja, hogyan telepítheti a GitOps-t a CI/CD-környezetbe.
-* Ismerje meg a szolgáltatás [előnyeit és architektúráját](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-configurations) .
+* Fejezze be az [előző oktatóanyagot](./tutorial-use-gitops-connected-cluster.md) , amelyből megtudhatja, hogyan telepítheti a GitOps-t a CI/CD-környezetbe.
+* Ismerje meg a szolgáltatás [előnyeit és architektúráját](./conceptual-configurations.md) .
 * Ellenőrizze, hogy rendelkezik-e:
-  * Egy [csatlakoztatott Azure arc-kompatibilis Kubernetes-fürt](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#connect-an-existing-kubernetes-cluster) **arc-vel-cluster** néven.
-  * Csatlakoztatott Azure Container Registry (ACR) [AK-integrációs](https://docs.microsoft.com/azure/aks/cluster-container-registry-integration) vagy [nem ak-alapú fürt-hitelesítéssel](https://docs.microsoft.com/azure/container-registry/container-registry-auth-kubernetes).
-  * Az [Azure Repos](https://docs.microsoft.com/azure/devops/repos/get-started/what-is-repos) és az [Azure-folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-get-started)"admin" és "projekt rendszergazdája" engedélyei.
+  * Egy [csatlakoztatott Azure arc-kompatibilis Kubernetes-fürt](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster) **arc-vel-cluster** néven.
+  * Csatlakoztatott Azure Container Registry (ACR) [AK-integrációs](../../aks/cluster-container-registry-integration.md) vagy [nem ak-alapú fürt-hitelesítéssel](../../container-registry/container-registry-auth-kubernetes.md).
+  * Az [Azure Repos](/azure/devops/repos/get-started/what-is-repos) és az [Azure-folyamatok](/azure/devops/pipelines/get-started/pipelines-get-started)"admin" és "projekt rendszergazdája" engedélyei.
 * Telepítse a következő Azure arc-kompatibilis Kubernetes CLI-bővítményeit >= 1.0.0:
 
   ```azurecli
@@ -67,7 +67,7 @@ Egy [alkalmazás](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptu
    * URL https://github.com/Azure/arc-cicd-demo-gitops
    * Az Azure vote alkalmazást kiadó fürterőforrás alapjaként működik.
 
-További információ a [git-repók importálásáról](https://docs.microsoft.com/azure/devops/repos/git/import-git-repository).
+További információ a [git-repók importálásáról](/azure/devops/repos/git/import-git-repository).
 
 >[!NOTE]
 > Az alkalmazás-és GitOps-repók két különálló tárházának importálása és használata javíthatja a biztonságot és az egyszerűséget. Az alkalmazás-és GitOps adattárházak engedélyei és láthatósága egyenként is beállítható.
@@ -86,7 +86,7 @@ A létrehozott GitOps-kapcsolatok automatikusan elvégzik a következőket:
 A CI/CD munkafolyamat további jegyzékfájlokkal tölti fel a jegyzékfájlt az alkalmazás üzembe helyezéséhez.
 
 
-1. [Hozzon létre egy új GitOps-kapcsolódást](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) az újonnan importált **arc-vel-demo-GitOps** adattárhoz az Azure reposban.
+1. [Hozzon létre egy új GitOps-kapcsolódást](./tutorial-use-gitops-connected-cluster.md) az újonnan importált **arc-vel-demo-GitOps** adattárhoz az Azure reposban.
 
    ```azurecli
    az k8sconfiguration create \
@@ -119,7 +119,7 @@ Most, hogy szinkronizálta a GitOps-kapcsolatokat, importálnia kell a jegyzéke
 
 Az alkalmazás-tárház tartalmaz egy `.pipeline` mappát, amely a PRs, CI és CD-hez használni kívánt folyamatokat tartalmazza. A példában szereplő három folyamat importálása és átnevezése:
 
-| Folyamat fájljának neve | Description |
+| Folyamat fájljának neve | Leírás |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | Az alkalmazás PR-folyamata, named **arc-vel-demo-src PR** |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | Az Application CI-folyamat, named **arc-vel-demo-src CI** |
@@ -172,7 +172,7 @@ kubectl create secret docker-registry <secret-name> \
 ## <a name="create-environment-variable-groups"></a>Környezeti változó csoportok létrehozása
 
 ### <a name="app-repo-variable-group"></a>Alkalmazás-tárház változó csoport
-[Hozzon létre egy](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups) , **az-vote-app-dev** nevű változó csoportot. Állítsa be a következő értékeket:
+[Hozzon létre egy](/azure/devops/pipelines/library/variable-groups) , **az-vote-app-dev** nevű változó csoportot. Állítsa be a következő értékeket:
 
 | Változó | Érték |
 | -------- | ----- |
@@ -182,13 +182,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | A GitOps-tárház git-kapcsolatok karakterlánca |
-| PAT | Egy [létrehozott Pat-jogkivonat](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?#create-a-pat) olvasási/írási forrás engedéllyel. Mentse el, hogy később használhassa a `stage` változót a csoport létrehozásakor. |
+| PAT | Egy [létrehozott Pat-jogkivonat](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat) olvasási/írási forrás engedéllyel. Mentse el, hogy később használhassa a `stage` változót a csoport létrehozásakor. |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
 > [!IMPORTANT]
-> Adja meg a PAT titkos típusként való megjelölését. Az alkalmazásaiban érdemes lehet az [Azure](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)kulcstartóból összekapcsolni a titkokat.
+> Adja meg a PAT titkos típusként való megjelölését. Az alkalmazásaiban érdemes lehet az [Azure](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)kulcstartóból összekapcsolni a titkokat.
 >
 ### <a name="stage-environment-variable-group"></a>Fázis környezeti változójának csoportja
 
@@ -255,7 +255,7 @@ Ha a fejlesztői környezet az üzembe helyezést követően feltörést mutat, 
 1. Adja meg a jóváhagyókat és egy opcionális üzenetet.
 1. Válassza a **Létrehozás** újra lehetőséget a manuális jóváhagyási vizsgálat hozzáadásának befejezéséhez.
 
-További részletekért tekintse [meg a jóváhagyás és ellenőrzés meghatározása](https://docs.microsoft.com/azure/devops/pipelines/process/approvals) című oktatóanyagot.
+További részletekért tekintse [meg a jóváhagyás és ellenőrzés meghatározása](/azure/devops/pipelines/process/approvals) című oktatóanyagot.
 
 A CD-folyamat következő futtatásakor a folyamat a GitOps PR létrehozása után szünetel. Ellenőrizze, hogy a módosítás megfelelően van-e szinkronizálva, és átadja-e az alapszintű funkciókat. Hagyja jóvá a folyamat ellenőrzését, hogy a változás a következő környezetbe lépjen.
 
@@ -291,7 +291,7 @@ A folyamat végrehajtása során észlelt hibák a Futtatás tesztelési eredmé
 A folyamat futásának befejeződése után az alkalmazás kódjának és a telepíteni kívánt sablonnak a minősége biztosított. Most már jóváhagyhatja és elvégezheti a lekéréses kérelmet. A CI újra futni fog, majd újragenerálja a sablonokat és a jegyzékeket a CD-folyamat elindítása előtt.
 
 > [!TIP]
-> Valós környezetben ne felejtsen el ág-házirendeket beállítani, hogy a PR ellenőrizze a minőségi ellenőrzéseket. További információkért lásd a [fiókirodai szabályzatok beállítása](https://docs.microsoft.com/azure/devops/repos/git/branch-policies) című cikket.
+> Valós környezetben ne felejtsen el ág-házirendeket beállítani, hogy a PR ellenőrizze a minőségi ellenőrzéseket. További információkért lásd a [fiókirodai szabályzatok beállítása](/azure/devops/repos/git/branch-policies) című cikket.
 
 ## <a name="cd-process-approvals"></a>CD-folyamat jóváhagyásai
 

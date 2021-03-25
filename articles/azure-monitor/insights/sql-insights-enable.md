@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889620"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025033"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL-ismeretek engedélyezése (előzetes verzió)
 Ez a cikk bemutatja, hogyan engedélyezheti az SQL- [információkat](sql-insights-overview.md) az SQL-környezetek figyeléséhez. A figyelés egy olyan Azure-beli virtuális gépről történik, amely kapcsolódik az SQL-környezetekhez, és dinamikus felügyeleti nézeteket (DMV) használ a figyelési adatok gyűjtéséhez. Megadhatja, hogy milyen adatkészleteket gyűjtsön, és a gyűjtés gyakoriságát figyelési profil használatával.
@@ -40,7 +40,7 @@ Ellenőrizze, hogy létrejött-e a felhasználó.
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="Győződjön meg arról, hogy a felhasználó parancsfájlt ellenőriz." lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
 ### <a name="azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány
-Jelentkezzen be az Azure SQL felügyelt példányára, és használja a [SSMS](../../azure-sql/database/connect-query-ssms.md) vagy hasonló eszközt a következő parancsfájl futtatásához a figyelési felhasználó létrehozásához a szükséges engedélyekkel. Cserélje le a *felhasználót* a felhasználónévvel és a *mystrongpassword* jelszóval.
+Jelentkezzen be az Azure SQL felügyelt példányára, és [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) vagy hasonló eszköz használatával futtassa a következő szkriptet a figyelő felhasználó létrehozásához a szükséges engedélyekkel. Cserélje le a *felhasználót* a felhasználónévvel és a *mystrongpassword* jelszóval.
 
  
 ```
@@ -85,7 +85,7 @@ Az Azure-beli virtuális gépekre az alábbi követelmények vonatkoznak.
 > [!NOTE]
 > A Standard_B2s (2 processzor, 4 GiB memória) virtuális gép mérete legfeljebb 100 kapcsolódási karakterláncot fog támogatni. Egyetlen virtuális géphez legfeljebb 100 kapcsolatot kell kiosztania.
 
-A virtuális gépeket az SQL-rendszerekkel megegyező VNET kell helyezni, hogy hálózati kapcsolatokon keresztül is összegyűjtsék a figyelési adatokat. Ha a figyelési virtuális gépet az Azure-beli virtuális gépeken futó SQL figyelésére vagy Azure-beli felügyelt példányra használja, érdemes lehet a figyelési virtuális gépet egy alkalmazás-biztonsági csoportba vagy ugyanazon virtuális hálózatba helyezni, mint az erőforrásokat, így nem szükséges nyilvános hálózati végpontot biztosítani az SQL Server figyeléséhez. 
+Az SQL-erőforrások hálózati beállításaitól függően előfordulhat, hogy a virtuális gépeket ugyanabba a virtuális hálózatba kell helyeznie, mint az SQL-erőforrásokat, hogy a hálózati kapcsolatokkal összegyűjtsék a figyelési adatokat.  
 
 ## <a name="configure-network-settings"></a>A hálózati beállítások konfigurálása
 A figyelési virtuális gép minden egyes típusú SQL-típust biztosít az SQL biztonságos eléréséhez.  Az alábbi részekben a beállítások az SQL típusa alapján jelennek meg.
@@ -100,8 +100,6 @@ A nyilvános végponton keresztüli hozzáféréshez vegyen fel egy szabályt a 
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Tűzfalbeállítások." lightbox="media/sql-insights-enable/firewall-settings.png":::
 
-> [!NOTE]
-> Az SQL-eredmények jelenleg nem támogatják a Azure SQL Database Azure Private-végpontját.  Javasoljuk, hogy a hálózati biztonsági csoporton vagy a [Azure monitor ügynök által támogatott](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking)virtuális hálózati tűzfalakon használja a [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) .
 
 ### <a name="azure-sql-managed-instances"></a>Felügyelt Azure SQL-példányok 
 
@@ -213,12 +211,16 @@ Egy olvasható másodlagos elem figyeléséhez adja meg a kulcs-érték értéke
 
 
 
-## <a name="profile-created"></a>Profil létrehozva 
-Válassza a **figyelés virtuális gép hozzáadása** lehetőséget, hogy a virtuális GÉPET az SQL-környezetből származó adatok gyűjtésére konfigurálja. Ne térjen vissza az **Áttekintés** lapra.  Néhány percen belül az állapot oszlopnak a "gyűjtés" értékre kell váltania, meg kell jelennie a figyelni kívánt rendszerek adatának.
+## <a name="monitoring-profile-created"></a>A figyelési profil létrehozva 
+
+Válassza a **figyelés virtuális gép hozzáadása** lehetőséget a virtuális gép SQL-erőforrások adatainak gyűjtéséhez való konfigurálásához. Ne térjen vissza az **Áttekintés** lapra.  Néhány percen belül az Állapot oszlopban az "adatgyűjtés" értékre kell váltania, meg kell jelennie a figyelni kívánt SQL-erőforrások adatának.
 
 Ha nem látja az információkat, tekintse meg az SQL-elemzések [hibaelhárítása](sql-insights-troubleshoot.md) című témakört a probléma azonosításához. 
 
 :::image type="content" source="media/sql-insights-enable/profile-created.png" alt-text="Profil létrehozva" lightbox="media/sql-insights-enable/profile-created.png":::
+
+> [!NOTE]
+> Ha frissítenie kell a figyelési profilt vagy a figyelési virtuális gépeken a kapcsolódási karakterláncokat, ezt az SQL-adatáttekintési **profil kezelése** lapon teheti meg.  A frissítések mentése után a módosítások körülbelül 5 percen belül érvénybe lépnek.
 
 ## <a name="next-steps"></a>Következő lépések
 

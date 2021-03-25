@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a431060be380952940bdb99c65abc7a9740091de
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212756"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105038158"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Videofájlok kódolása és továbbítása Node.JS
 
@@ -71,7 +71,7 @@ A minta a következő műveleteket hajtja végre:
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. Az alkalmazás letölti a kódolt fájlokat. Hozzon létre egy mappát, ahol szeretné, hogy a kimeneti fájlok meglépjenek, és frissítse a **outputFolder** változó értékét az [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) fájlban. Alapértelmezés szerint "Temp" értékre van állítva.
+1. Az alkalmazás letölti a kódolt fájlokat. Hozzon létre egy mappát, ahol szeretné, hogy a kimeneti fájlok meglépjenek, és frissítse a **outputFolder** változó értékét az [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/StreamFilesSample/index.ts#L59) fájlban. Alapértelmezés szerint "Temp" értékre van állítva.
 1. Nyisson meg egy **parancssort**, és keresse meg a minta címtárát.
 1. Módosítsa a könyvtárat a AMSv3Samples mappába.
 

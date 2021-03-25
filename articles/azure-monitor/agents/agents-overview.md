@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551470"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026172"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -97,7 +97,7 @@ Ha a következőkre van szüksége, használja az Azure diagnosztikai bővítmé
 - Adatküldés az Azure Storage-ba archiválásra vagy elemzésre olyan eszközökkel, mint például a [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 - Adatokat küldhet [Azure monitor mérőszámoknak](../essentials/data-platform-metrics.md) , hogy elemezze a [metrikák Explorerrel](../essentials/metrics-getting-started.md) , és kihasználja az olyan funkciók előnyeit, mint a közel valós idejű [metrikus riasztások](../alerts/alerts-metric-overview.md) és az [autoscale](../autoscale/autoscale-overview.md) (csak Windows).
 - Adatküldés harmadik féltől származó eszközökre az [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md)használatával.
-- [Rendszerindítási diagnosztika](../../virtual-machines/troubleshooting/boot-diagnostics.md) gyűjtése a virtuális gépek rendszerindítási problémáinak vizsgálatához.
+- [Rendszerindítási diagnosztika](/troubleshoot/azure/virtual-machines/boot-diagnostics) gyűjtése a virtuális gépek rendszerindítási problémáinak vizsgálatához.
 
 Az Azure Diagnostics bővítmény korlátai a következők:
 
