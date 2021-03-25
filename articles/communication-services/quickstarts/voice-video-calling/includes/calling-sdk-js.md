@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 7fee393b694bf761cf052702a975239d6dff9a9c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9aaaece7d60ceead80e51bdc2a1bb342d9a4d237
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104770"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107735"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -18,12 +18,12 @@ ms.locfileid: "105104770"
 - Felhasználói hozzáférési jogkivonat a hívó ügyfél engedélyezéséhez. További információ: [hozzáférési tokenek létrehozása és kezelése](../../access-tokens.md).
 - Nem kötelező: fejezze be a gyors üzembe helyezést, és [adja hozzá a hanghívást az alkalmazásához](../getting-started-with-calling.md).
 
-## <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
+## <a name="install-the-sdk"></a>Az SDK telepítése
 
 > [!NOTE]
-> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 6 verzióját használja.
+> Ez a dokumentum a Calling SDK-ból származó 1.0.0-Beta. 6 verziót használja.
 
-A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat hívó és a javascripthez közös ügyféloldali kódtárakat.
+A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat hívó és gyakori SDK-kat a JavaScript használatára.
 Ez a dokumentum hivatkozik a következő típusokra: 1.0.0-Beta. 5, hívó könyvtár.
 
 ```console
@@ -34,11 +34,11 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>Objektummodell
 
-Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások ügyfél-függvénytárának főbb funkcióit kezelik:
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
 
 | Név                             | Leírás                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CallClient`                      | A fő belépési pont a hívó ügyféloldali függvénytárához.                                                                       |
+| `CallClient`                      | A hívó SDK fő belépési pontja.                                                                       |
 | `CallAgent`                        | A hívások indításához és kezeléséhez használatos.                                                                                            |
 | `DeviceManager`                    | A média eszközök kezelésére szolgál.                                                                                           |
 | `AzureCommunicationTokenCredential` | Implementálja a `CommunicationTokenCredential` felületet, amely a létrehozásához használatos `callAgent` . |
@@ -63,7 +63,7 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-a-call"></a>Hívás elhelyezése
 
-Hívás létrehozásához és elindításához használja az egyik API-t, `callAgent` és adjon meg egy felhasználót, amelyet a kommunikációs szolgáltatások Identity ügyféloldali kódtár használatával hozott létre.
+Hívás létrehozásához és elindításához használja az API-k egyikét, `callAgent` és adja meg a kommunikációs szolgáltatások Identity SDK használatával létrehozott felhasználót.
 
 A hívás létrehozása és a kezdés szinkronban van. A hívási példány lehetővé teszi a hívási eseményekre való előfizetést.
 

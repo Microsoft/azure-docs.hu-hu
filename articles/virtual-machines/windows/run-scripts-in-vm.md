@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: ab7d20a83c4cb8cb7a36c4603a5b0b2e69b0662f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 24ff0d8089055f83c76156cf5fb163313faf9492
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102560667"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043478"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Parancsfájlok futtatása a Windows rendszerű virtuális gépen
 
@@ -58,7 +58,7 @@ A [hibrid Runbook](../../automation/automation-hybrid-runbook-worker.md) -feldol
 
 ## <a name="serial-console"></a>Soros konzol
 
-A [Serial Console](../troubleshooting/serial-console-windows.md) közvetlen hozzáférést biztosít egy virtuális géphez, hasonlóan ahhoz, hogy a billentyűzet csatlakoztatva legyen a virtuális géphez.
+A [Serial Console](/troubleshoot/azure/virtual-machines/serial-console-windows) közvetlen hozzáférést biztosít egy virtuális géphez, hasonlóan ahhoz, hogy a billentyűzet csatlakoztatva legyen a virtuális géphez.
 
 * Parancsok futtatása az Azure Virtual Machines szolgáltatásban.
 * Egy szöveges konzol használatával futtatható a Azure Portal számítógépén.
@@ -72,4 +72,4 @@ További információ a virtuális gépeken belüli parancsfájlok és parancsok
 * [Egyéni szkriptbővítmény](../extensions/custom-script-windows.md)
 * [Parancs futtatása](run-command.md)
 * [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md)
-* [Serial console](../troubleshooting/serial-console-windows.md)
+* [Serial console](/troubleshoot/azure/virtual-machines/serial-console-windows)

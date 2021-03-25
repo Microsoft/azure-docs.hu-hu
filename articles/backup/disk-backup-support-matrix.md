@@ -4,25 +4,20 @@ description: Összefoglalja a támogatási beállításokat és az Azure Disk Ba
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707217"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107278"
 ---
-# <a name="azure-disk-backup-support-matrix-in-preview"></a>Az Azure Disk Backup támogatási mátrixa (előzetes verzió)
-
->[!IMPORTANT]
->Az Azure Disk Backup előzetes verzióban érhető el, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
+# <a name="azure-disk-backup-support-matrix"></a>Az Azure Disk Backup támogatási mátrixa
 
 Az Azure-lemezek védelme [Azure Backup](./backup-overview.md) használatával biztosítható. Ez a cikk a régiók rendelkezésre állását, a támogatott forgatókönyveket és korlátozásokat foglalja össze.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az Azure Disk Backup előzetes verzióban érhető el a következő régiókban: USA nyugati régiója, USA nyugati középső régiója, Kelet-RÉGIÓJA, Közép-Kanada, Egyesült Királyság nyugati régiója, Észak-Svájc, Nyugat-Svájc, Ausztrália középső régiója, Ausztrália középső régiója, Korea középső régiója, Dél-Korea, Japán Kelet-Ázsia nyugati régiója, Egyesült Arab Emírségek, Dél-Brazília, Közép-India 
+Az Azure Disk Backup a következő régiókban érhető el: USA nyugati régiója, USA 2. nyugati régiója, USA nyugati középső régiója, USA keleti régiója, Kelet-RÉGIÓJA, USA középső régiója, az USA déli középső régiója, az USA északi középső régiója, Észak-európa, közép-Brazília, Dél-Afrika északi régió Középnyugat-Németország Nyugat-Svájc Észak-Svájcja, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, Észak-Ausztrália, Közép-Ausztrália , Kelet-Ausztrália, Korea középső régiója, Dél-Korea, Kelet-Japán, Nyugat-Japán, Kelet-Ázsia, Délkelet-Ázsia, Közép-India. 
 
 További régiók lesznek bejelentve, amikor elérhetővé válnak.
 

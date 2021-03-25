@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048233"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044147"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
@@ -39,7 +39,7 @@ Az Azure Sentinel Azure Monitor Log Analytics Kusto lekérdezési nyelvét (KQL)
 
 Hozzon létre automatizálást az Azure Sentinelben Azure Logic Apps használatával, a beépített forgatókönyvek egyre bővülő gyűjteményével. 
 
-További információ: Azure Logic Apps- [Összekötők](https://docs.microsoft.com/connectors/).
+További információ: Azure Logic Apps- [Összekötők](/connectors/).
 
 ## <a name="comment-on-our-blogs-and-forums"></a>A blogok és fórumok megjegyzései
 
@@ -67,4 +67,3 @@ Töltse le a saját közösségi GitHub-adattárból származó minta tartalmaka
 
 > [!div class="nextstepaction"]
 > [Ügyfelek használati eseteinek beolvasása](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
-

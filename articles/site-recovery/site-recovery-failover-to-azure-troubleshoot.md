@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8fe21ce5b92d672a2e025e0b45b8cbaea5951a8b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92371987"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043903"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware virtuális gépről vagy fizikai gépről az Azure-ba irányuló feladatátvétel hibaelhárítása
 
@@ -78,9 +78,9 @@ A **Windows vendég operációs rendszerhez** tartozó illesztőprogramok indít
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni/RDP/SSH-kapcsolatot létesíteni a feladatátvételi virtuális géppel a virtuális gép szürke kikapcsolási gombja miatt
 
-Az RDP-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+Az RDP-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection).
 
-Az SSH-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md).
+Az SSH-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection).
 
 Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csatlakozás** ) gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz az expressz útvonalon vagy a helyek közötti VPN-kapcsolaton keresztül, akkor
 
@@ -94,7 +94,7 @@ Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csa
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nem lehet csatlakozni/RDP/SSH-VM-csatlakozás gomb elérhető
 
-Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Csatlakozás** gomb elérhető (nem szürkén jelenik meg), akkor ellenőrizze a **rendszerindítási diagnosztikát** a virtuális gépen, és ellenőrizze a hibákat a [jelen cikkben](../virtual-machines/troubleshooting/boot-diagnostics.md)leírtak szerint.
+Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Csatlakozás** gomb elérhető (nem szürkén jelenik meg), akkor ellenőrizze a **rendszerindítási diagnosztikát** a virtuális gépen, és ellenőrizze a hibákat a [jelen cikkben](/troubleshoot/azure/virtual-machines/boot-diagnostics)leírtak szerint.
 
 1. Ha a virtuális gép nem indult el, próbálja meg a feladatátvételt egy régebbi helyreállítási pontra.
 2. Ha a virtuális gépen belüli alkalmazás nem működik, próbálja meg végrehajtani a feladatátvételt egy alkalmazás-konzisztens helyreállítási pontra.
@@ -182,7 +182,7 @@ A hiba megoldása érdekében:
 
 
 ## <a name="next-steps"></a>Következő lépések
-- [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) hibáinak megoldása
-- Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
+- [Windows rendszerű virtuális gép RDP-kapcsolatának](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection) hibáinak megoldása
+- Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](/troubleshoot/azure/virtual-machines/detailed-troubleshoot-ssh-connection) hibáinak megoldása
 
 Ha további segítségre van szüksége, tegye közzé a lekérdezését a [Microsoft Q&egy kérdés oldalát, site Recovery](/answers/topics/azure-site-recovery.html) vagy hagyjon megjegyzést a dokumentum végén. Van egy aktív közösségünk, amelynek segítenie kell a segítségét.

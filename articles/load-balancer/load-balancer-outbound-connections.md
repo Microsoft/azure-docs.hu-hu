@@ -1,6 +1,7 @@
 ---
-title: SNAT a kimenő kapcsolatokhoz
-description: Azt ismerteti, hogyan használhatók a Azure Load Balancer a kimenő internetkapcsolat SNAT végrehajtásához
+title: A kimenő kapcsolatok forrás hálózati címfordítása (SNAT)
+titleSuffix: Azure Load Balancer
+description: Megtudhatja, hogyan használja a rendszer a kimenő internetkapcsolatot (SNAT) Azure Load Balancer.
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,21 +9,21 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 99f15afdab917fe28e22df8cb0e372b6c30c8526
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99052822"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027329"
 ---
-# <a name="using-snat-for-outbound-connections"></a>SNAT használata a kimenő kapcsolatokhoz
+# <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>A forrás hálózati címfordítás (SNAT) használata a kimenő kapcsolatokhoz
 
 Az Azure nyilvános terheléselosztó előtérbeli IP-címei használhatók a háttérbeli példányok számára az internet felé irányuló kimenő kapcsolat biztosításához. Ez a konfiguráció a **forrás hálózati címfordítást (SNAT)** használja. A SNAT újraírja a háttér IP-címét a terheléselosztó nyilvános IP-címére. 
 
-A SNAT lehetővé teszi a háttér **-példány IP-címének maszkolását** . Ez a maszkolás megakadályozza, hogy a külső források közvetlenül a háttérbeli példányokhoz legyenek letiltva. A háttérbeli példányok közötti IP-cím megosztása csökkenti a statikus nyilvános IP-címek költségeit, és olyan forgatókönyveket támogat, mint például az IP-címek engedélyezése az ismert nyilvános IP-címekről érkező forgalomhoz. 
+A SNAT lehetővé teszi a háttér **-példány IP-címének maszkolását** . Ez a maszkolás megakadályozza, hogy a külső források közvetlenül a háttérbeli példányokhoz legyenek letiltva. A háttérbeli példányok között megosztott IP-cím csökkenti a statikus nyilvános IP-címek költségeit. Egy ismert IP-cím olyan forgatókönyveket támogat, mint például az IP-engedélyezési egyszerűsítése az ismert nyilvános IP-címekről érkező forgalom esetében. 
 
 >[!Note]
-> Azon alkalmazások esetében, amelyekben nagy számú kimenő kapcsolat vagy nagyvállalati ügyfél használatára van szükség egy adott virtuális hálózatról, [Virtual Network NAT](../virtual-network/nat-overview.md) a javasolt megoldás. A dinamikus foglalás lehetővé teszi az egyszerű konfigurálást, és > a SNAT-portok leghatékonyabb használatát az egyes IP-címekről. Azt is lehetővé teszi, hogy a virtuális hálózat összes erőforrása megossza az IP-címek egy halmazát anélkül, hogy meg kellene osztania őket a terheléselosztó >.
+> Azon alkalmazások esetében, amelyekben nagy számú kimenő kapcsolat vagy nagyvállalati ügyfél használatára van szükség egy adott virtuális hálózatról, [Virtual Network NAT](../virtual-network/nat-overview.md) a javasolt megoldás. A dinamikus foglalás lehetővé teszi az egyszerű konfigurálást és a SNAT-portok leghatékonyabb használatát az egyes IP-címekről. Lehetővé teszi, hogy a virtuális hálózat összes erőforrása olyan IP-címeket osszon meg, amelyek nem szükségesek a terheléselosztó megosztásához.
 
 >[!Important]
 > Még a kimenő SNAT konfigurálása nélkül is, az azonos régióban található Azure Storage-fiókok továbbra is elérhetők lesznek, és a háttérbeli erőforrások továbbra is hozzáférhetnek a Microsoft-szolgáltatásokhoz, például Windows-frissítésekhez.
@@ -41,101 +42,97 @@ Az öt rekord a következőkből áll:
 * Forrás IP-címe
 * A forrás portszáma és a protokoll a különbségtétel biztosításához.
 
-Ha a bejövő kapcsolatokhoz portot használ, akkor a bejövő kapcsolatokra vonatkozó kérelmeket **figyelő** a porton, és nem használható kimenő kapcsolatokhoz. A kimenő kapcsolatok létrehozásához egy **ideiglenes portot** kell használni, amely lehetővé teszi, hogy a cél egy olyan porton keresztül legyen elérhető, amelyen keresztül kommunikálni és karbantartani kell a különböző forgalmi folyamatokat. Ha ezek az ideiglenes portok a SNAT elvégzéséhez használatosak, **SNAT-portok** 
+Ha a bejövő kapcsolatokhoz portot használ, a porton bejövő csatlakozási kérelmek **figyelője** van. Ez a port nem használható kimenő kapcsolatokhoz. A kimenő kapcsolatok létrehozásához egy **ideiglenes portot** kell használni, amely egy olyan portot biztosít a célhelynek, amelyen keresztül kommunikálni és karbantartani lehet a különböző forgalmi folyamatokat. Ha ezek az ideiglenes portok használatban vannak a SNAT, a rendszer a **SNAT-portokat** hívja meg 
 
-Definíció szerint minden IP-címnek 65 535-as portja van. Minden port használható a TCP (Transmission Control Protocol) és az UDP (User Datagram Protocol) bejövő vagy kimenő kapcsolataihoz. Ha nyilvános IP-címet adnak hozzá a betöltési IP-címhez egy terheléselosztó számára, az Azure 64 000-as SNAT-portként való használatát teszi lehetővé. 
+Definíció szerint minden IP-címnek 65 535-as portja van. Minden port használható a TCP (Transmission Control Protocol) és az UDP (User Datagram Protocol) bejövő vagy kimenő kapcsolataihoz. 
+
+Ha nyilvános IP-címet adnak hozzá a betöltési IP-címhez egy terheléselosztó számára, az Azure 64 000-es portot biztosít, amely jogosult a SNAT.
 
 >[!NOTE]
-> Az egyes terheléselosztási vagy bejövő NAT-szabályokhoz használt portok a 64 000-es portokból származó nyolc portból állnak, így csökkentve a SNAT jogosult portok számát. Ha egy terhelési > terheléselosztási vagy NAT-szabály ugyanabban a nyolc tartományban van, mint egy másik, akkor nem fog további portokat használni. 
+> Az egyes terheléselosztási vagy bejövő NAT-szabályokhoz használt portok a 64 000-es portokból származó nyolc portból állnak, így csökkentve a SNAT jogosult portok számát. Ha egy terheléselosztási vagy NAT-szabály ugyanabban a nyolc tartományban van, mint egy másik, akkor nem fog további portokat használni. 
 
 A [kimenő](./outbound-rules.md) és a terheléselosztási szabályok révén ezek a SNAT-portok a háttérbeli példányok számára terjeszthetők, így a terheléselosztó nyilvános IP-címei megoszthatók a kimenő kapcsolatok számára.
 
-Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-példányok gazdagépe a kimenő kapcsolat részét képező csomagok SNAT fogja végrehajtani. Ha a SNAT a háttérbeli példány kimenő kapcsolatain futtatja, a gazdagép átírja a forrás IP-címet az egyik előtérbeli IP-címhez. Az egyedi folyamatok fenntartása érdekében a gazdagép átírja az egyes kimenő csomagok forrás portját a háttér-példányhoz lefoglalt SNAT-portok egyikére.
+Ha a lenti [2. forgatókönyv](#scenario2) konfigurálva van, az egyes backend-példányokhoz tartozó gazdagép a kimenő kapcsolat részét képező csomagokat SNAT. 
+
+Ha a SNAT egy háttérbeli példány kimenő kapcsolatain végez, a gazdagép átírja a forrás IP-címet az egyik előtérbeli IP-címhez. 
+
+Az egyedi folyamatok fenntartása érdekében a gazdagép átírja az egyes kimenő csomagok forrás portját egy SNAT-portra a háttér-példányon.
 
 ## <a name="outbound-connection-behavior-for-different-scenarios"></a>A kimenő kapcsolatok viselkedése különböző forgatókönyvek esetén
   * A virtuális gép nyilvános IP-címmel rendelkezik.
   * Virtuális gép nyilvános IP-cím nélkül.
   * Virtuális gép nyilvános IP-cím nélkül, standard Load Balancer nélkül.
         
-
  ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> 1. forgatókönyv: virtuális gép nyilvános IP-címmel
-
 
  | Szövetségek | Metódus | IP-protokollok |
  | ---------- | ------ | ------------ |
  | Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
-
- #### <a name="description"></a>Description
-
+ #### <a name="description"></a>Leírás
 
  Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. 
 
-
  Egy virtuális géphez hozzárendelt nyilvános IP-cím 1:1-kapcsolat (nem 1: sok), és állapot nélküli 1:1 NAT-ként lett megvalósítva.
 
-
  ### <a name="scenario-2-virtual-machine-without-public-ip-and-behind-standard-public-load-balancer"></a><a name="scenario2"></a>2. forgatókönyv: virtuális gép nyilvános IP-cím nélkül és standard nyilvános Load Balancer mögött
-
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
  | Standard nyilvános Load Balancer | A terheléselosztó felületi IP-címeinek használata a [SNAT](#snat).| TCP </br> UDP |
 
+ #### <a name="description"></a>Leírás
 
- #### <a name="description"></a>Description
-
-
- A terheléselosztó erőforrás egy kimenő szabállyal vagy egy terheléselosztási szabállyal van konfigurálva, amely engedélyezi az alapértelmezett SNAT. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
-
+ A terheléselosztó erőforrás egy kimenő szabállyal vagy egy terheléselosztási szabállyal van konfigurálva, amely engedélyezi a SNAT. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
 
  Ha nem hajtja végre ezt a szabályt, a viselkedés a 3. forgatókönyvben leírtak szerint történik. 
 
-
  Az állapot-mintavétel sikerességéhez nincs szükség figyelőhöz tartozó szabályra.
-
 
  Amikor egy virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet a nyilvános terheléselosztó előtérbeli felületének nyilvános IP-címére. Ezt a fordítást a [SNAT](#snat)-on keresztül teheti meg. 
 
-
  A terheléselosztó nyilvános IP-címének ideiglenes portjai a virtuális gép által kezdeményezett egyes folyamatok megkülönböztetésére szolgálnak. A SNAT dinamikusan használja az [előlefoglalt ideiglenes portokat](#preallocatedports) a kimenő folyamatok létrehozásakor. 
 
+ Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok. Erősen ajánlott, hogy egy [Kimenő szabály](./outbound-rules.md) explicit módon legyen konfigurálva. Ha az alapértelmezett SNAT egy terheléselosztási szabályon keresztül használja, az SNAT-portok előre le vannak foglalva az [alapértelmezett SNAT-portok kiosztási táblájában](#snatporttable)leírtak szerint.
 
- Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok. Erősen ajánlott, hogy a [Kimenő szabályok](./outbound-rules.md) explicit módon legyenek konfigurálva. Ha az alapértelmezett SNAT egy terheléselosztási szabályon keresztül használja, az SNAT-portok előre le vannak foglalva az [alapértelmezett SNAT-portok kiosztási táblájában](#snatporttable)leírtak szerint.
+> [!NOTE]
+> Az **Azure Virtual Network NAT** a terheléselosztó szükségessége nélkül biztosíthatja a kimenő kapcsolatot a virtuális gépek számára. További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
 
  ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>3. forgatókönyv: a virtuális gép nyilvános IP-cím nélküli és a szabványos belső Load Balancer mögött
-
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
  | Standard belső terheléselosztó | Nincs internetkapcsolat.| Nincsenek |
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Leírás
  
-Standard belső terheléselosztó használata esetén a SNAT nem használ ideiglenes IP-címeket. Ez alapértelmezés szerint támogatja a biztonságot, és gondoskodik arról, hogy az erőforrás által használt összes IP-cím konfigurálható legyen, és le legyen foglalva. Ha standard belső terheléselosztó használatakor szeretne kimenő kapcsolatot létesíteni az internettel, állítson be egy példány szintű nyilvános IP-címet, hogy kövesse a viselkedését (1. forgatókönyv) [#scenario1], vagy vegye fel a háttérbeli példányokat egy standard nyilvános Load balancerbe egy olyan kimenő szabállyal, amely a belső terheléselosztó additon van konfigurálva a (2. forgatókönyv) [#scenario2] működésének követéséhez. 
+Standard belső terheléselosztó használata esetén a SNAT nem használ ideiglenes IP-címeket. Ez a funkció alapértelmezés szerint támogatja a biztonságot. Ez a funkció biztosítja, hogy az erőforrások által használt összes IP-cím konfigurálható legyen, és lefoglalható legyen. 
+
+Ha standard belső terheléselosztó használata esetén szeretné elérni az internet felé irányuló kimenő kapcsolatot, állítson be egy példány-szintű nyilvános IP-címet az [1. forgatókönyv](#scenario1)viselkedésének követéséhez. 
+
+Egy másik lehetőség, hogy hozzáadja a háttérbeli példányokat egy standard nyilvános Load Balancerhez egy konfigurált kimenő szabállyal. A belső terheléselosztáshoz a háttérbeli példányok egy belső terheléselosztó számára lesznek hozzáadva. Ez a központi telepítés a [2. forgatókönyv](#scenario2)viselkedését követi. 
+
+> [!NOTE]
+> Az **Azure Virtual Network NAT** a terheléselosztó szükségessége nélkül biztosíthatja a kimenő kapcsolatot a virtuális gépek számára. További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
 
  ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>4. forgatókönyv: nyilvános IP nélküli virtuális gép és az alapszintű Load Balancer mögött
-
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
  |Nincsenek </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Leírás
 
+ Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy dinamikusan adott nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
 
- Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy dinamikusan lefoglalt nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
-
-
- A nyilvános IP-cím fel lesz szabadítva, és új nyilvános IP-címet igényel, ha újra telepíti a következőket: 
-
+A nyilvános IP-cím fel lesz szabadítva, és új nyilvános IP-címet igényel, ha újra telepíti a következőket: 
 
  * Virtuális gép
  * Rendelkezésre állási csoport
  * Virtuálisgép-méretezési csoport 
 
-
- Ne használja ezt a forgatókönyvet az IP-címek engedélyezési listához való hozzáadásához. Használja az 1. vagy a 2. forgatókönyvet, ahol explicit módon deklarálja a kimenő viselkedést. Az [SNAT](#snat) -portok az [alapértelmezett SNAT-portok kiosztási táblájában](#snatporttable)leírt módon vannak lefoglalva.
+ Ne használja ezt a forgatókönyvet az IP-címek engedélyezési való hozzáadásához. Használja az 1. vagy a 2. forgatókönyvet, ahol explicit módon deklarálja a kimenő viselkedést. Az [SNAT](#snat) -portok az [alapértelmezett SNAT-portok kiosztási táblájában](#snatporttable)leírt módon vannak lefoglalva.
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Kimerített portok
 
