@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 07828e7faff61086ea982b8017bc3c590e386be1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7aeaeeb07a0b08ae4a142ef147f25ae03c0daac2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444306"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027922"
 ---
 Ismerkedés az Azure Content Moderator Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a PiPy csomagot, és próbálja ki az alapszintű feladatok példáját. 
 
@@ -347,12 +347,13 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+## <a name="source-code"></a>Forráskód
+
+* A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)található.
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator Python-függvénytárat moderálási feladatokra. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 
 > [!div class="nextstepaction"]
 >[Képek moderálási fogalmai](../../image-moderation-api.md)
-
-* [Mi az az Azure Content Moderator?](../../overview.md)
-* A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)található.
