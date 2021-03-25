@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735777"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044753"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -278,7 +278,7 @@ A [kényszerített bújtatás](https://www.petri.com/azure-forced-tunneling) oly
 
 Az Azure támogatja a dedikált WAN-kapcsolatot a helyszíni hálózattal és egy Azure-Virtual Network a [ExpressRoute](../../expressroute/expressroute-introduction.md). Az Azure és a webhely közötti kapcsolat olyan dedikált kapcsolatot használ, amely nem a nyilvános interneten keresztül érhető el. Ha az Azure-alkalmazás több adatközpontban fut, az [azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) segítségével a felhasználóktól érkező kéréseket intelligens módon irányíthatja át az alkalmazás példányai között. Az Azure-ban nem futó szolgáltatásokra is átirányíthatja a forgalmat, ha azok elérhetők az internetről.
 
-Az Azure a saját és biztonságos kapcsolatait is támogatja a Pásti-erőforrásokhoz (például Azure Storage és SQL Database) az Azure-Virtual Network az [Azure Private link](https://docs.microsoft.com/azure/private-link/private-link-overview)használatával. A Pásti erőforrás a virtuális hálózatában lévő [privát végpontra](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) van leképezve. A virtuális hálózatban található privát végpont és a Péter-erőforrás közötti kapcsolat a Microsoft gerinc hálózatát használja, és nem a nyilvános interneten keresztül érhető el. A szolgáltatás nyilvános internetre való kimutatása már nem szükséges. Az Azure Private link használatával is elérheti az Azure-ban üzemeltetett felhasználói és partneri szolgáltatásokat a virtuális hálózaton.  Emellett az Azure Private link használatával saját [privát kapcsolati szolgáltatást](https://docs.microsoft.com/azure/private-link/private-link-service-overview) hozhat létre a virtuális hálózatban, és a virtuális hálózatában saját ügyfelei számára is elérhetővé teheti azt. Az Azure Private link használatával történő beállítás és felhasználás konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
+Az Azure a saját és biztonságos kapcsolatait is támogatja a Pásti-erőforrásokhoz (például Azure Storage és SQL Database) az Azure-Virtual Network az [Azure Private link](../../private-link/private-link-overview.md)használatával. A Pásti erőforrás a virtuális hálózatában lévő [privát végpontra](../../private-link/private-endpoint-overview.md) van leképezve. A virtuális hálózatban található privát végpont és a Péter-erőforrás közötti kapcsolat a Microsoft gerinc hálózatát használja, és nem a nyilvános interneten keresztül érhető el. A szolgáltatás nyilvános internetre való kimutatása már nem szükséges. Az Azure Private link használatával is elérheti az Azure-ban üzemeltetett felhasználói és partneri szolgáltatásokat a virtuális hálózaton.  Emellett az Azure Private link használatával saját [privát kapcsolati szolgáltatást](../../private-link/private-link-service-overview.md) hozhat létre a virtuális hálózatban, és a virtuális hálózatában saját ügyfelei számára is elérhetővé teheti azt. Az Azure Private link használatával történő beállítás és felhasználás konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
 
 ## <a name="virtual-machine-security"></a>Virtuális gépek biztonsága
 

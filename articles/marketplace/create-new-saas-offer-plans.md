@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746437"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044719"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>Csomagok létrehozása SaaS-ajánlathoz
 
@@ -149,6 +149,10 @@ A **terv áttekintés** lapjának **művelet** oszlopában elérhető műveletek
 
 - Ha a terv állapota **Piszkozat**, a **művelet** oszlopban szereplő hivatkozás a **delete piszkozatot** fogja mondani.
 - Ha a terv állapota **élő**, a **művelet** oszlopban található hivatkozás **vagy a** **saját célközönség szinkronizálása vagy a privát közönség szinkronizálása** nem történik meg. A **privát célközönség szinkronizálása** hivatkozás csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni az ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
+
+## <a name="before-you-publish-your-offer"></a>Az ajánlat közzététele előtt
+
+Ha még nem tette meg, hozzon létre egy fejlesztési és tesztelési (fejlesztői) ajánlatot az ajánlat teszteléséhez, mielőtt közzéteszi az éles üzemi ajánlatot. További információt a [fejlesztési és tesztelési ajánlat létrehozása](create-saas-dev-test-offer.md)című témakörben talál.
 
 ## <a name="next-steps"></a>Következő lépések
 

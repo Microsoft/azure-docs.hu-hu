@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b243fa18b17fdd15f3c39545b7d81f5796bd8429
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 218810183f547d4e90043364a318615a204df9d8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699861"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044855"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Cognitive Services Azure biztonsági alapterve
 
@@ -32,7 +32,7 @@ Ha szeretné megtekinteni, hogyan Cognitive Services teljes mértékben leképez
 
 A virtuális hálózat és a szolgáltatás végpontjának támogatása Cognitive Services a régiók egy meghatározott készletére korlátozódik.
 
-- [Az Azure Cognitive Services virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)
+- [Az Azure Cognitive Services virtuális hálózatok konfigurálása](./cognitive-services-virtual-networks.md?tabs=portal)
 
 - [Az Azure Virtual Networks áttekintése](../virtual-network/virtual-networks-overview.md)
 
@@ -63,7 +63,7 @@ Vegye figyelembe, hogy Cognitive Services tárolóra van szükség a mérési ad
 
 Azt is vegye figyelembe, hogy a Cognitive Services tárolók Microsoft-kiszolgálókra való létrehozásához szükséges biztonságos csatornákon le kell tiltania a részletes csomagok vizsgálatát a tűzfal megoldásához. Ennek elmulasztása megakadályozza, hogy a tároló megfelelően működjön.
 
-- [Az Azure Cognitive Services tárolók biztonságának megismerése](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Az Azure Cognitive Services tárolók biztonságának megismerése](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Felelősség**: Ügyfél
 
@@ -83,7 +83,7 @@ Ha Cognitive Servicest használ egy tárolón belül, a tároló üzembe helyez�
 
 - [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
-- [Az Azure Cognitive Services tárolók biztonságának megismerése](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Az Azure Cognitive Services tárolók biztonságának megismerése](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Felelősség**: Ügyfél
 
@@ -112,7 +112,7 @@ Vegye figyelembe, hogy Cognitive Services tárolóra van szükség a mérési ad
 
 Azt is vegye figyelembe, hogy a Cognitive Services tárolók Microsoft-kiszolgálókra való létrehozásához szükséges biztonságos csatornákon le kell tiltania a részletes csomagok vizsgálatát a tűzfal megoldásához. Ennek elmulasztása megakadályozza, hogy a tároló megfelelően működjön.
 
-- [Az Azure Cognitive Services tárolók biztonságának megismerése](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Az Azure Cognitive Services tárolók biztonságának megismerése](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
@@ -131,7 +131,7 @@ Vegye figyelembe, hogy Cognitive Services tárolóra van szükség a mérési ad
 
 Azt is vegye figyelembe, hogy a Cognitive Services tárolók Microsoft-kiszolgálókra való létrehozásához szükséges biztonságos csatornákon le kell tiltania a részletes csomagok vizsgálatát a tűzfal megoldásához. Ennek elmulasztása megakadályozza, hogy a tároló megfelelően működjön.
 
-- [Az Azure Cognitive Services tárolók biztonságának megismerése](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Az Azure Cognitive Services tárolók biztonságának megismerése](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Felelősség**: Ügyfél
 
@@ -145,7 +145,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 - [Virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md)
 
-- [Alkalmazás biztonsági csoportjai](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#application-security-groups)
+- [Alkalmazás biztonsági csoportjai](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Felelősség**: Ügyfél
 
@@ -179,9 +179,9 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 **Útmutató**: az Azure-tevékenység naplójának használatával figyelheti a hálózati erőforrás-konfigurációkat, és azonosíthatja a Cognitive Services tárolóval kapcsolatos hálózati erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -195,7 +195,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Cognitive Services tárolón végrehajtott műveletekre a vezérlési sík szintjén. Az Azure-tevékenység naplójának adatai segítségével meghatározhatja a "mi, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az Azure cache Redis-példányok esetében végzett vezérlési sík szintjén.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -207,7 +207,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 Emellett a Cognitive Services diagnosztikai eseményeket küld, amelyeket az elemzés, a riasztás és a jelentéskészítés céljából gyűjthet és használhat fel. Cognitive Services tároló diagnosztikai beállításait a Azure Portal használatával konfigurálhatja. Egy vagy több diagnosztikai eseményt is elküldhet egy Storage-fiókba, az Event hub-ba vagy egy Log Analytics-munkaterületre.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Diagnosztikai beállítások használata az Azure Cognitive Services](diagnostic-logging.md)
 
@@ -219,7 +219,7 @@ Emellett a Cognitive Services diagnosztikai eseményeket küld, amelyeket az ele
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -229,9 +229,9 @@ Emellett a Cognitive Services diagnosztikai eseményeket küld, amelyeket az ele
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics munkaterületre. Ezek a naplók részletes és gyakori információkat biztosítanak egy olyan erőforrás működéséről, amely az azonosításhoz és a hibakereséshez használatos. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez, valamint számos más elemzéshez az Azure-Cognitive Services összegyűjtött tevékenységi napló adatai alapján.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -245,7 +245,7 @@ A Cognitive Services tároló diagnosztikai beállításainak konfigurálása é
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-log)
+- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -259,9 +259,9 @@ A Cognitive Services tároló diagnosztikai beállításainak konfigurálása é
 
 **Útmutató**: Azure Active Directory (Azure ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Felelősség**: Ügyfél
 
@@ -275,7 +275,7 @@ Az adatsík Cognitive Serviceshoz való hozzáférését hozzáférési kulcsok 
 
 Nem ajánlott alapértelmezett jelszavakat létrehozni az alkalmazásba. Ehelyett a jelszavakat Azure Key Vault, majd az Azure AD használatával is tárolhatja.
 
-- [Az Azure cache újragenerálása a Redis hozzáférési kulcsaihoz](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
+- [Az Azure cache újragenerálása a Redis hozzáférési kulcsaihoz](../azure-cache-for-redis/cache-configure.md#settings)
 
 **Felelősség**: Ügyfél
 
@@ -365,7 +365,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 Jelenleg csak a Computer Vision API, a Face API, a Text Analytics API, a teljes olvasó, az űrlap-felismerő, a anomália-detektor és az összes Bing-szolgáltatás, kivéve Bing Custom Search az Azure AD-vel való hitelesítés támogatása.
 
-- [Kérelmek hitelesítése Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-azure-active-directory)
+- [Kérelmek hitelesítése Cognitive Services](./authentication.md#authenticate-with-azure-active-directory)
 
 **Felelősség**: Ügyfél
 
@@ -379,7 +379,7 @@ Az ügyfél a API Management felhasználói fiókok leltárának fenntartásáho
 
 - [Felhasználói fiókok kezelése az Azure API Managementben](../api-management/api-management-howto-create-or-invite-developers.md)
 
-- [API Management-felhasználók listájának beolvasása](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-4.8.0&amp;preserve-view=true)
+- [API Management-felhasználók listájának beolvasása](/powershell/module/az.apimanagement/get-azapimanagementuser?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -419,7 +419,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: Cognitive Serviceshoz nem érhető el. Cognitive Services esetében Ügyfélszéf még nem támogatott.
 
-- [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -514,7 +514,7 @@ A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat
 
 Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vault is használhatja. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához.
 
-- [A REST-adatokat titkosító szolgáltatások listája](/azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal)
+- [A REST-adatokat titkosító szolgáltatások listája](./encryption/cognitive-services-encryption-keys-portal.md)
 
 **Felelősség**: Ügyfél
 
@@ -524,7 +524,7 @@ Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vault is használ
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Cognitive Services és más kritikus vagy kapcsolódó erőforrások éles példányain lépnek életbe.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -542,7 +542,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -604,7 +604,7 @@ Emellett az Azure Resource Graph használatával kérdezheti le vagy derítheti 
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -628,7 +628,7 @@ Emellett az Azure Resource Graph használatával kérdezheti le vagy derítheti 
 
 **Útmutató**: a Cognitive Services-tároló szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. CognitiveServices" névtérben egyéni szabályzatok létrehozásához az Azure cache Redis-példányok konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -652,9 +652,9 @@ Emellett az Azure Resource Graph használatával kérdezheti le vagy derítheti 
 
 **Útmutató**: ha az Cognitive Services tárolók és a kapcsolódó erőforrások számára egyéni Azure Policy definíciókat vagy Azure Resource Manager sablonokat használ, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -686,7 +686,7 @@ Emellett az Azure Resource Graph használatával kérdezheti le vagy derítheti 
 
 - [Integráció az Azure felügyelt identitásokkal](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Key Vault létrehozása](/azure/key-vault/quick-create-portal)
+- [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md)
 
 - [Hitelesítés Key Vault](../key-vault/general/authentication.md)
 
@@ -760,7 +760,7 @@ Az életciklus-kezelési szolgáltatással is elvégezheti az adatok biztonsági
 
 - [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md)
 
-- [Cognitive Services-erőforrás létrehozása Azure Resource Manager sablon használatával](https://docs.microsoft.com/azure/cognitive-services/resource-manager-template?tabs=portal)
+- [Cognitive Services-erőforrás létrehozása Azure Resource Manager sablon használatával](./create-account-resource-manager-template.md?tabs=portal)
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -768,7 +768,7 @@ Az életciklus-kezelési szolgáltatással is elvégezheti az adatok biztonsági
 
 - [Bevezetés a Azure Automationba](../automation/automation-intro.md)
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -780,7 +780,7 @@ Az életciklus-kezelési szolgáltatással is elvégezheti az adatok biztonsági
 
 - [Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -792,7 +792,7 @@ Az életciklus-kezelési szolgáltatással is elvégezheti az adatok biztonsági
 
 Az Azure szerepköralapú hozzáférés-vezérlés használatával biztosíthatja az ügyfél által felügyelt kulcsok használatát. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze Soft-Delete és törölje a védelmet a Key Vaultban. 
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
 - [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -890,5 +890,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)
