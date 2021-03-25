@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 40f8f5b234a6aecb1b44e4c565873b3badbd139a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4f8a66034990cd3e105759b9a5dad721ad3cb0a9
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96183894"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987766"
 ---
-| Erőforrás | Korlát |
+| Munkaterhelés típusa * | Korlát * * |
 | --- | --- |
-| Egyidejű RDP-kapcsolatok |25 |
-| Egyidejű SSH-kapcsolatok |50 * * |
+| Világos |100 |
+| Közepes |50 |
+| Magas szintű |5 |
 
-* Más, folyamatban lévő RDP-munkamenetek vagy más, folyamatban lévő SSH-munkamenetek miatt változhat.<br>
-A * * változó lehet, ha meglévő RDP-kapcsolatok vagy más, folyamatban lévő SSH-munkamenetek használata történik.
+* Ezek a munkaterhelés-típusok itt vannak definiálva: [Távoli asztal számítási feladatok](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/remote-desktop-workloads)<br>
+* * Ezek a korlátok az Azure Bastion-re vonatkozó RDP-teljesítményteszteken alapulnak. A számok változhatnak más folyamatos RDP-munkamenetek vagy más, folyamatban lévő SSH-munkamenetek miatt. 

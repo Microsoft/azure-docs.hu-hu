@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1ee13a464002a2e1503541964cd96957da3c651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a0fafad208d97e2a4d24036e226b4044764bccb4
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879186"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047082"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Oktatóanyag: meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 
@@ -156,7 +156,7 @@ Nyissa meg a DNS-szolgáltatót, és adjon hozzá egy CNAME-rekordot a tartomán
 ![DNS-rekordok oldala](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Egyéni tartomány leképezése az Azure Spring Cloud-alkalmazásra
-Ha nem rendelkezik alkalmazással az Azure Spring Cloud-ban, kövesse a rövid útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)című témakör utasításait.
+Ha nem rendelkezik alkalmazással az Azure Spring Cloud-ban, kövesse a rövid útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](./spring-cloud-quickstart.md)című témakör utasításait.
 
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
 Ugrás az alkalmazás oldalra.

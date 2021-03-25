@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6bcfbc19cbaa078373d6857bdac74eaf86eca104
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712215"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048051"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Számítási és tárolási lehetőségek Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -121,7 +121,7 @@ Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával f
 A (a) jelölésű \* IOPS a kiválasztott VM-típus korlátozza. Ellenkező esetben a IOPS a kiválasztott tárolási méret korlátozza.
 
 >[!NOTE]
-> A metrikák nagyobb IOPS jelenhetnek meg a lemezek szintjének kitörése miatt. További részletekért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) . 
+> A metrikák nagyobb IOPS jelenhetnek meg a lemezek szintjének kitörése miatt. További részletekért tekintse meg a [dokumentációt](../../virtual-machines/disk-bursting.md#disk-level-bursting) . 
 
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Maximális I/O-sávszélesség (MiB/s) a konfigurációhoz
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: a31fb48443cf760186faad705b8be21a62846a44
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019503"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048419"
 ---
 # <a name="features"></a>Funkciók
 
@@ -29,22 +29,22 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 
 | API                            | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| olvasás                           | Igen       | Igen       | Yes       |                                                     |
-| vread                          | Igen       | Igen       | Yes       |                                                     |
-| update                         | Igen       | Igen       | Yes       |                                                     |
-| frissítés optimista zárolással | Igen       | Igen       | Yes       |                                                     |
-| frissítés (feltételes)           | Igen       | Igen       | Yes       |                                                     |
+| olvasás                           | Igen       | Igen       | Igen       |                                                     |
+| vread                          | Igen       | Igen       | Igen       |                                                     |
+| update                         | Igen       | Igen       | Igen       |                                                     |
+| frissítés optimista zárolással | Igen       | Igen       | Igen       |                                                     |
+| frissítés (feltételes)           | Igen       | Igen       | Igen       |                                                     |
 | javítás                          | Nem        | Nem        | Nem        |                                                     |
-| delete                         | Igen       | Igen       | Yes       |  Lásd az alábbi megjegyzést                                                   |
+| delete                         | Igen       | Igen       | Igen       |  Lásd az alábbi megjegyzést.                                   |
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
-| előzmények                        | Igen       | Igen       | Yes       |                                                     |
-| létrehozás                         | Igen       | Igen       | Yes       | Mind a POST, mind a PUT támogatása                               |
-| létrehozás (feltételes)           | Igen       | Igen       | Yes       | Probléma [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| keresés                         | Részleges   | Részleges   | Részleges   | Lásd lent                                           |
-| láncolt keresés                 | Nem        | Igen       | Nem        |                                                     |
-| fordított láncolt keresés         | Nem        | Igen       | Nem        |                                                     |
-| képességek                   | Igen       | Igen       | Yes       |                                                     |
-| kötegelt                          | Igen       | Igen       | Yes       |                                                     |
+| előzmények                        | Igen       | Igen       | Igen       |                                                     |
+| létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
+| létrehozás (feltételes)           | Igen       | Igen       | Igen       | Probléma [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
+| keresés                         | Részleges   | Részleges   | Részleges   | Lásd az alábbi keresési szakaszt.                           |
+| láncolt keresés                 | Igen       | Igen       | Részleges   | Lásd az alábbi 2. megjegyzést.                                   |
+| fordított láncolt keresés         | Igen       | Igen       | Részleges   | Lásd az alábbi 2. megjegyzést.                                   |
+| képességek                   | Igen       | Igen       | Igen       |                                                     |
+| kötegelt                          | Igen       | Igen       | Igen       |                                                     |
 | tranzakció                    | Nem        | Igen       | Nem        |                                                     |
 | lapozófájl                         | Részleges   | Részleges   | Részleges   | `self` és `next` támogatottak                     |
 | közvetítők                 | Nem        | Nem        | Nem        |                                                     |
@@ -52,20 +52,26 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 > [!Note]
 > A FHIR specifikáció által definiált törléshez a törlés után az erőforrás későbbi, nem adott olvasási művelete egy 410 HTTP-állapotkódot ad vissza, és az erőforrás már nem található meg a keresésen keresztül. A FHIR készült Azure API lehetővé teszi az erőforrás teljes törlését (az összes előzményt is beleértve). Az erőforrás teljes törléséhez átadhatja a paraméter beállításait `hardDelete` true () értékre `DELETE {server}/{resource}/{id}?hardDelete=true` . Ha nem adja át ezt a paramétert, vagy hamis értékre állítja, akkor az `hardDelete` erőforrás korábbi verziói továbbra is elérhetők lesznek.
 
+
+ **2. Megjegyzés**
+* MVP-támogatást biztosít a láncolt és fordított láncú FHIR kereséshez a CosmosDB-ben. 
+
+  A FHIR-hez készült Azure API-ban és a Cosmos által támogatott nyílt forráskódú FHIR-kiszolgálón a láncolt keresés és a fordított láncú keresés egy MVP-implementáció. A láncolt keresés a Cosmos DBon való elvégzéséhez a megvalósítás végigvezeti a keresési kifejezésen, és allekérdezéseket bocsát ki a megfeleltetett erőforrások feloldásához. Ez a kifejezés minden szintjén megtörténik. Ha bármelyik lekérdezés több mint 100 eredményt ad vissza, a rendszer hibát jelez. Alapértelmezés szerint a láncolt keresés a szolgáltatás jelölője mögött van. A Cosmos DB láncolt keresésének használatához használja a fejlécet `x-ms-enable-chained-search: true` . További részletekért lásd: [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
+
 ## <a name="search"></a>Keresés
 
 Az összes keresési paraméter típusa támogatott. 
 
 | Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-----------------------|-----------|-----------|-----------|---------|
-| Szám                | Igen       | Igen       | Yes       |         |
+| Szám                | Igen       | Igen       | Igen       |         |
 | Dátum/dátum/idő         | Igen       | Igen       | Igen       |         |
-| Sztring                | Igen       | Igen       | Yes       |         |
-| Jogkivonat                 | Igen       | Igen       | Yes       |         |
-| Referencia             | Igen       | Igen       | Yes       |         |
-| Kompozit             | Igen       | Igen       | Yes       |         |
-| Mennyiség              | Igen       | Igen       | Yes       |         |
-| URI                   | Igen       | Igen       | Yes       |         |
+| Sztring                | Igen       | Igen       | Igen       |         |
+| Jogkivonat                 | Igen       | Igen       | Igen       |         |
+| Referencia             | Igen       | Igen       | Igen       |         |
+| Kompozit             | Igen       | Igen       | Igen       |         |
+| Mennyiség              | Igen       | Igen       | Igen       |         |
+| URI                   | Igen       | Igen       | Igen       |         |
 | Speciális               | Nem        | Nem        | Nem        |         |
 
 
@@ -74,10 +80,10 @@ Az összes keresési paraméter típusa támogatott.
 |`:missing`             | Igen       | Igen       | Igen       |         |
 |`:exact`               | Igen       | Igen       | Igen       |         |
 |`:contains`            | Igen       | Igen       | Igen       |         |
-|`:text`                | Igen       | Igen       | Yes       |         |
+|`:text`                | Igen       | Igen       | Igen       |         |
 |`:[type]` referencia  | Igen       | Igen       | Igen       |         |
-|`:not`                 | Igen       | Igen       | Yes       |         |
-|`:below` URI         | Igen       | Igen       | Yes       |         |
+|`:not`                 | Igen       | Igen       | Igen       |         |
+|`:below` URI         | Igen       | Igen       | Igen       |         |
 |`:above` URI         | Nem        | Nem        | Nem        | Probléma [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 |`:in` jogkivonat          | Nem        | Nem        | Nem        |         |
 |`:below` jogkivonat       | Nem        | Nem        | Nem        |         |
@@ -90,8 +96,8 @@ Az összes keresési paraméter típusa támogatott.
 | `_lastUpdated`          | Igen       | Igen       | Igen       |         |
 | `_tag`                  | Igen       | Igen       | Igen       |         |
 | `_list`                 | Igen       | Igen       | Igen       |         |
-| `_type`                 | Igen       | Igen       | Yes       | Probléma [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
-| `_security`             | Igen       | Igen       | Yes       |         |
+| `_type`                 | Igen       | Igen       | Igen       | Probléma [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
+| `_security`             | Igen       | Igen       | Igen       |         |
 | `_profile`              | Részleges   | Részleges   | Részleges   | A STU3 támogatja. Ha az adatbázist 2021 február 20. **után** hozta létre, akkor az R4-t is támogatja. Azon dolgozunk, hogy engedélyezzük a _profile a 2021. február 20. előtt létrehozott adatbázisokon. |
 | `_text`                 | Nem        | Nem        | Nem        |         |
 | `_content`              | Nem        | Nem        | Nem        |         |
@@ -101,10 +107,10 @@ Az összes keresési paraméter típusa támogatott.
 
 | Keresési eredmények paraméterei | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_elements`             | Igen       | Igen       | Yes       | Probléma [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | Igen       | Igen       | Yes       | `_count` legfeljebb 1000 karakter hosszú lehet. Ha 1000-nél magasabbra van állítva, akkor a rendszer csak 1000 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
-| `_include`              | Igen       | Igen       | Yes       |A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
-| `_revinclude`           | Igen       | Igen       | Yes       | A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn [: iteráció támogatása](https://github.com/microsoft/fhir-server/issues/1313). Probléma [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
+| `_elements`             | Igen       | Igen       | Igen       | Probléma [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
+| `_count`                | Igen       | Igen       | Igen       | `_count` legfeljebb 1000 karakter hosszú lehet. Ha 1000-nél magasabbra van állítva, akkor a rendszer csak 1000 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
+| `_include`              | Igen       | Igen       | Igen       |A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
+| `_revinclude`           | Igen       | Igen       | Igen       | A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn [: iteráció támogatása](https://github.com/microsoft/fhir-server/issues/1313). Probléma [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
 | `_total`                | Részleges   | Részleges   | Részleges   | `_total=none` és `_total=accurate`      |
 | `_sort`                 | Részleges   | Részleges   | Részleges   |   `_sort=_lastUpdated` támogatott       |
@@ -118,10 +124,10 @@ A REST API-t kiterjesztő összes támogatott művelet.
 
 | Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |------------------------|-----------|-----------|-----------|---------|
-| $export (teljes rendszeren) | Igen       | Igen       | Yes       |         |
-| Beteg/$export        | Igen       | Igen       | Yes       |         |
-| Csoport/$export          | Igen       | Igen       | Yes       |         |
-| $convert – adatkezelés          | Igen       | Igen       | Yes       |         |
+| $export (teljes rendszeren) | Igen       | Igen       | Igen       |         |
+| Beteg/$export        | Igen       | Igen       | Igen       |         |
+| Csoport/$export          | Igen       | Igen       | Igen       |         |
+| $convert – adatkezelés          | Igen       | Igen       | Igen       |         |
 
 
 ## <a name="persistence"></a>Kitartás

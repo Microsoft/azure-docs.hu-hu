@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6de027f317072512bd9893303d3a79d0f34f3e3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101748813"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047575"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Az Azure Object-Horgonyokkal kapcsolatos gyakori kérdések
 
@@ -78,7 +78,7 @@ Az egység a modell mértékegységét jelöli. A támogatott egységek a **Micr
  1. A szem kalibrálásával pontos renderelést érhet el.
  2. Győződjön meg arról, hogy a helyiség gazdag vizuális textúrával és jó világítással rendelkezik.
  3. Ha lehetséges, tartsa a zűrzavart az objektumon.
- 4. Szükség esetén törölje a [térbeli leképezési](https://docs.microsoft.com/windows/mixed-reality/spatial-mapping) gyorsítótárat a HoloLens-eszközön.
+ 4. Szükség esetén törölje a [térbeli leképezési](/windows/mixed-reality/spatial-mapping) gyorsítótárat a HoloLens-eszközön.
  5. Vizsgálja meg az objektumot a körülötte lévő lépésekkel. Győződjön meg arról, hogy a legtöbb objektum megfigyelhető.
  6. Az objektum lefedéséhez elég nagy méretű keresőmezőt kell beállítania.
  7. Az objektumnak az észlelés során a helynek kell maradnia.

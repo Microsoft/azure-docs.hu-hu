@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 03/24/2021
 ms.author: banders
-ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b88a5bc10afeffe7e15ad7a90e28bd8b8ff28688
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363049"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046555"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure-előfizetések átvitele az előfizetők és a CSP-k között
 
@@ -21,7 +21,7 @@ Ez a cikk magas szintű lépéseket mutat be az Azure-előfizetések felhőszolg
 
 Az átviteli kérés elindítása előtt töltse le vagy exportálja a megőrizni kívánt költség- és számlázási adatokat. A számlázási és használati adatok átvitele nem történik meg az előfizetéssel együtt. További információ a költségkezelési adatok exportálásáról: [Exportált adatok létrehozása és kezelése](../costs/tutorial-export-acm-data.md). További információ a számla- és használati adatok letöltéséről: [Az Azure számlázási és napi használati adatainak letöltése vagy megtekintése](download-azure-invoice-daily-usage-date.md).
 
-Ha rendelkezik meglévő foglalásokkal, azok az előfizetés átvitelét követően már nem lesznek érvényesek. Az előfizetés átvitele előtt mindenképpen [törölje a foglalásokat, és kérjen értük visszatérítést](../reservations/exchange-and-refund-azure-reservations.md).
+Ha már van meglévő foglalása, akkor a 90 nappal az előfizetés átvitelét követően abbahagyja az alkalmazás alkalmazását. Ügyeljen arra, hogy [megszakítsa a foglalásokat, és visszafizesse azokat](../reservations/exchange-and-refund-azure-reservations.md) az előfizetés átvitele előtt, hogy elkerülje a 90 napos türelmi időszak után felszámított díjakat.
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Nagyvállalati szerződés átvitele CSP-partner részére
 

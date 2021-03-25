@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/19/2021
+ms.openlocfilehash: f652858f22e26eb7167a0cc7a2cfb8ef4b600ace
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130068"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047300"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -22,6 +22,9 @@ Kereskedelmi Piactéri közzétevőként létrehozhat egy szolgáltatott szoftve
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ha még nem tette meg, olvassa el [a következőt: Saas-ajánlat megtervezése a kereskedelmi piactéren](plan-saas-offer.md). Ismerteti a SaaS-alkalmazás technikai követelményeit, valamint az ajánlat létrehozásakor szükséges információkat és eszközöket. Hacsak nem tervezi egy egyszerű lista közzétételét (**Kapcsolatfelvétel** a listában) a kereskedelmi piactéren, az SaaS-alkalmazásnak meg kell felelnie a hitelesítés technikai követelményeinek.
+
+> [!IMPORTANT]
+> Javasoljuk, hogy hozzon létre egy külön fejlesztési/tesztelési (DEV) ajánlatot és egy külön éles üzemi (Production) ajánlatot. Ez a cikk azt ismerteti, hogyan hozható létre GYÁRTÁSIRENDELÉS-ajánlat. A fejlesztői ajánlat létrehozásával kapcsolatos részletekért tekintse meg [a fejlesztési és tesztelési ajánlat létrehozása](create-saas-dev-test-offer.md)című témakört.
 
 ## <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 

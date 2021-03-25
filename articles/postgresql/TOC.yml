@@ -602,6 +602,8 @@
               displayName: 'hyperscale, ssl'
             - name: Biztonsági alapkonfiguráció
               href: postgresql-hyperscale-security-baseline.md
+        - name: Ütemezett karbantartás
+          href: concepts-hyperscale-maintenance.md
         - name: Az üzletmenet folytonossága
           items:
             - name: Biztonsági mentés és visszaállítás
