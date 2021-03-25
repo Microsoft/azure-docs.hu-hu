@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2fd0d9d2b6e80d54bdd45b7a13fab7bfa33841c9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889467"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950593"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -39,7 +39,7 @@ Ez a útmutató ismerteti, hogyan küldhet üzeneteket IoT Hubról Azure digitá
 
 Ha a termosztátos eszköz egy hőmérséklet-telemetria eseményt küld, a függvény feldolgozza a telemetria és a digitális Twin *hőmérséklet* tulajdonságát. Ezt a forgatókönyvet az alábbi ábrán ismertetjük:
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hub az Azure-ban egy függvénynek, amely egy, az Azure-beli digitális Ikrekben lévő Twin értékre frissíti a hőmérséklet-tulajdonságot." border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Ábrája IoT Hub eszköz küldési hőmérsékleti IoT Hub telemetria az Azure-ban egy függvényre, amely frissíti az Azure-beli digitális Twins-n belül egy adott hőmérséklet-tulajdonságot." border="false":::
 
 ## <a name="add-a-model-and-twin"></a>Modell és ikerpéldány felvétele
 
@@ -47,14 +47,7 @@ Ebben a szakaszban egy [Digital Twin](concepts-twins-graph.md) -et állít be az
 
 A következő típusú termosztát létrehozásához először fel kell töltenie a termosztát [modelljét](concepts-models.md) a példányba, amely leírja a termosztát tulajdonságait, és később a Twin létrehozásához lesz használva. 
 
-A modell így néz ki:
-:::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
-
-A **modell az ikrek-példányba való feltöltéséhez** futtassa az alábbi Azure CLI-parancsot, amely a fenti MODELLT beágyazott JSON-ként tölti fel. A (z) [Azure Cloud Shell](/cloud-shell/overview.md) a böngészőben futtathatja a parancsot, vagy a gépen, ha a CLI telepítve van a [helyi](/cli/azure/install-azure-cli)számítógépen.
-
-```azurecli-interactive
-az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
-```
+[!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
 Ezután **létre kell hoznia egy IKeret a modell használatával**. A következő parancs használatával hozzon létre egy **thermostat67** nevű termosztátot, és állítsa be a 0,0 értéket kezdeti hőmérsékletként.
 
@@ -62,13 +55,8 @@ Ezután **létre kell hoznia egy IKeret a modell használatával**. A következ�
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
->[!NOTE]
-> Ha Cloud Shellt használ a PowerShell-környezetben, akkor előfordulhat, hogy el kell kerülnie az idézőjelek karaktereit a beágyazott JSON-mezőkben az értékek megfelelő elemzéséhez. A következő parancsokkal töltheti fel a modellt, és létrehozhatja a Twin-et ezzel a módosítással:
->
-> Modell feltöltése:
-> ```azurecli-interactive
-> az dt model create --models '{  \"@id\": \"dtmi:contosocom:DigitalTwins:Thermostat;1\",  \"@type\": \"Interface\",  \"@context\": \"dtmi:dtdl:context;2\",  \"contents\": [    {      \"@type\": \"Property\",      \"name\": \"Temperature\",      \"schema\": \"double\"    }  ]}' -n {digital_twins_instance_name}
-> ```
+> [!Note]
+> Ha Cloud Shellt használ a PowerShell-környezetben, akkor előfordulhat, hogy el kell kerülnie az idézőjelek karaktereit a beágyazott JSON-mezőkben az értékek megfelelő elemzéséhez. Az alábbi paranccsal hozhatja létre a Twin-et ezzel a módosítással:
 >
 > Dupla létrehozás:
 > ```azurecli-interactive
@@ -117,7 +105,7 @@ Mentse a függvény kódját.
 
 #### <a name="step-3-publish-the-function-app-to-azure"></a>3. lépés: a Function alkalmazás közzététele az Azure-ban
 
-A projekt közzététele egy Azure-beli Function alkalmazásban.
+Tegye közzé a projektet a *IoTHubtoTwins. cs* függvénnyel egy Azure-beli Function alkalmazásban.
 
 Ennek módjával kapcsolatos útmutatásért tekintse meg a [**Function alkalmazás közzététele az Azure**](how-to-create-azure-function.md#publish-the-function-app-to-azure) -ban című szakaszt az *útmutató: funkció beállítása az adat feldolgozásához* című cikkben.
 

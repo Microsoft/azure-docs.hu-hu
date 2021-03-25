@@ -1,17 +1,17 @@
 ---
 title: Hálózatkezelés áttekintése – Azure Database for MySQL rugalmas kiszolgáló
 description: A kapcsolati és hálózati beállítások ismertetése a rugalmas kiszolgáló üzembe helyezési beállításában Azure Database for MySQL
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec835073a1fe447490f6965fe41478319a47f503
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96906148"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106836"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Kapcsolati és hálózatkezelési fogalmak a Azure Database for MySQL rugalmas kiszolgálóhoz (előzetes verzió)
 
@@ -29,9 +29,9 @@ A Azure Database for MySQL rugalmas kiszolgálójának két hálózati lehetős�
 * **Privát hozzáférés (VNet-integráció)** – a rugalmas kiszolgálót üzembe helyezheti az [Azure-Virtual Network](../../virtual-network/virtual-networks-overview.md). Az Azure Virtual Network privát és biztonságos hálózati kommunikációt biztosít. A virtuális hálózatok erőforrásai privát IP-címeken keresztül kommunikálhatnak.
 
    Ha a következő képességeket szeretné használni, válassza a VNet-integráció lehetőséget:
-   * Kapcsolódás az azonos virtuális hálózatban lévő Azure-erőforrásokhoz a rugalmas kiszolgálóhoz magánhálózati IP-címek használatával
+   * Kapcsolódás Azure-erőforrásokhoz ugyanazon a virtuális hálózaton vagy a virtuális [hálózatban](../../virtual-network/virtual-network-peering-overview.md) a rugalmas kiszolgálóhoz
    * A VPN vagy a ExpressRoute használatával csatlakozhat a nem Azure-erőforrásokról a rugalmas kiszolgálóhoz
-   * A rugalmas kiszolgálónak nincs nyilvános végpontja
+   * Nincs nyilvános végpont
 
 * **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgáló nyilvános végponton keresztül érhető el. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok** nevezzük. 
 
@@ -57,13 +57,32 @@ Az alábbiakban néhány, a MySQL-hez rugalmas kiszolgálókkal rendelkező virt
 
     A virtuális hálózatnak ugyanabban az Azure-régióban kell lennie, mint a rugalmas kiszolgálónak.
 
-
 * **Delegált alhálózat** – A virtuális hálózat alhálózatokat (alhálózatokat) tartalmaz. Az alhálózatok lehetővé teszik, hogy a virtuális hálózatot kisebb címterület-területekre ossza. Az Azure-erőforrások üzembe helyezése egy adott alhálózaton történik egy virtuális hálózaton belül. 
 
    A MySQL rugalmas kiszolgálójának olyan alhálózaton kell lennie, amely csak a MySQL rugalmas kiszolgáló számára van **delegálva** . Ez a delegálás azt jelenti, hogy csak a rugalmas Azure Database for MySQL-kiszolgálók használhatják az alhálózatot. Az alhálózatra semmilyen más típusú Azure-erőforrás nem delegálható. Egy alhálózatot delegálhat úgy, hogy hozzárendeli a delegálási tulajdonságát a Microsoft. DBforMySQL/flexibleServers.
 
 * **Hálózati biztonsági csoportok (NSG)** A hálózati biztonsági csoportokban található biztonsági szabályok lehetővé teszik a virtuális hálózati alhálózatok és hálózati adapterek közötti és onnan kimenő hálózati forgalom típusának szűrését. További információkért tekintse át a [hálózati biztonsági csoport áttekintését](../../virtual-network/network-security-groups-overview.md) .
 
+* **Virtuális hálózati** társítás A virtuális hálózatok közötti kapcsolat lehetővé teszi két vagy több virtuális hálózat zökkenőmentes összekapcsolását az Azure-ban. A kapcsolódó virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az ügyfélalkalmazás és a rugalmas kiszolgáló közötti adatforgalom a Microsoft magánhálózati hálózatán keresztül történik, és csak az adott hálózathoz van elkülönítve.
+
+A rugalmas kiszolgáló támogatja a virtuális hálózatok egymáshoz való társítását ugyanazon az Azure-régión belül. A különböző régiók közötti virtuális hálózatok **nem támogatott**. További információkért tekintse át a [Virtual Network-peering fogalmait](../../virtual-network/virtual-network-peering-overview.md) .
+
+### <a name="connecting-from-peered-vnets-in-same-azure-region"></a>Csatlakozás az azonos Azure-régióban található, egyenrangú virtuális hálózatok
+Ha a rugalmas kiszolgálóhoz csatlakozni próbáló ügyfélalkalmazás a (z) rendszerű virtuális hálózaton található, előfordulhat, hogy nem tud kapcsolódni a (z) kiszolgálónév rugalmas kiszolgáló használatával, mert nem tudja feloldani a rugalmas kiszolgáló DNS-nevét a VNet. A probléma megoldásához két lehetőség közül választhat:
+* Magánhálózati IP-cím használata (fejlesztéshez és teszteléshez ajánlott) – Ez a beállítás fejlesztési vagy tesztelési célokra is használható. Az nslookup használatával visszafordíthatja a rugalmas servername (teljes tartománynév) magánhálózati IP-címét, és magánhálózati IP-címet is használhat az ügyfélalkalmazás használatával történő kapcsolódáshoz. A magánhálózati IP-cím használata a rugalmas kiszolgálóhoz való kapcsolódáshoz nem ajánlott éles használatra, mert a tervezett vagy nem tervezett esemény során változhat.
+* Saját DNS zóna használata (éles környezetben ajánlott) – Ez a beállítás éles célokra használható. Kiépít egy [magánhálózati DNS-zónát](../../dns/private-dns-getstarted-portal.md) , és csatolja az ügyfél virtuális hálózatához. A magánhálózati DNS-zónában a saját magánhálózati IP-címével adhat hozzá egy [-rekordot](../../dns/dns-zones-records.md#record-types) a rugalmas kiszolgálóhoz. Ezután az a-Record használatával kapcsolódhat az ügyfélalkalmazás és a virtuális hálózat között a rugalmas kiszolgálóra.
+
+### <a name="connecting-from-on-premises-to-flexible-server-in-virtual-network-using-expressroute-or-vpn"></a>Csatlakozás a helyszíni környezetből a rugalmas kiszolgálóra Virtual Network ExpressRoute vagy VPN használatával
+A helyszíni hálózatról a virtuális hálózatban található, rugalmas kiszolgálóhoz hozzáférést igénylő munkaterhelések esetén [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute/) vagy [VPN](/azure/architecture/reference-architectures/hybrid-networking/vpn/) -t, illetve [a](/azure/architecture/reference-architectures/hybrid-networking/)helyszíni hálózathoz csatlakoztatott virtuális hálózatot kell megadnia. Ha ezt a beállítást használja, DNS-továbbítót kell megkövetelni a rugalmas kiszolgálónév feloldásához, ha a helyszíni virtuális hálózaton futó ügyfélalkalmazás (például a MySQL Workbench) használatával szeretne csatlakozni. A DNS-továbbító feladata az összes DNS-lekérdezés feloldása egy kiszolgálói szintű továbbítón keresztül az Azure által biztosított DNS-szolgáltatás [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+
+A megfelelő konfigurálásához a következő erőforrásokra van szükség:
+
+- Helyszíni hálózat
+- MySQL-hez rugalmas kiszolgáló kiépítve privát hozzáféréssel (VNet-integráció)
+- A helyszíni környezethez [csatlakoztatott](/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- Az Azure-ban üzembe helyezett DNS-továbbító [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md) használata
+
+Ezután a rugalmas servername (FQDN) használatával kapcsolódhat az ügyfélalkalmazás és a helyszíni hálózat között a rugalmas kiszolgálóra.
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nem támogatott virtuális hálózati forgatókönyvek
 * Nyilvános végpont (vagy nyilvános IP-cím vagy DNS) – a virtuális hálózatra központilag telepített rugalmas kiszolgáló nem rendelkezhet nyilvános végponttal
@@ -119,11 +138,10 @@ Példa
 * Ha lehetséges, kerülje a `hostname = 10.0.0.4` (privát cím) vagy `hostname = 40.2.45.67` a (nyilvános IP) használatát
 
 
-
 ## <a name="tls-and-ssl"></a>TLS és SSL
 Azure Database for MySQL rugalmas kiszolgáló a Transport Layer Security (TLS) használatával támogatja az ügyfélalkalmazások a MySQL szolgáltatáshoz való csatlakoztatását. A TLS egy iparági szabványnak megfelelő protokoll, amely biztosítja az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti titkosított hálózati kapcsolatokat. A TLS a SSL (SSL) frissített protokollja.
 
-Azure Database for MySQL rugalmas kiszolgáló csak a titkosított kapcsolatokat támogatja Transport Layer Security használatával (TLS 1,2). A TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata meg lesz tagadva. A TLS verziója nem tiltható le vagy nem módosítható Azure Database for MySQL rugalmas kiszolgálóhoz való csatlakozáshoz.
+Azure Database for MySQL rugalmas kiszolgáló csak a titkosított kapcsolatokat támogatja Transport Layer Security használatával (TLS 1,2). A TLS 1.0-s és a TLS 1.1-es verziójú bejövő kapcsolatokat elutasítja a rendszer. A TLS verziója nem tiltható le vagy nem módosítható Azure Database for MySQL rugalmas kiszolgálóhoz való csatlakozáshoz. További információkért tekintse át az [SSL/TLS használatával történő kapcsolódást](how-to-connect-tls-ssl.md) ismertető témakört. 
 
 
 ## <a name="next-steps"></a>Következő lépések

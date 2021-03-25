@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 55440c3bec940e0cd5fd4c4d644801e7012b5e95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6ab310681ae7b63cb4e9f4e07984983727ae5ff2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101701475"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953918"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -40,7 +40,7 @@ A runbookok további elkülönítéséhez használhatja az Azure Virtual Machine
 
 - [Azure Firewall üzembe helyezése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Runbook végrehajtási környezet](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-execution-environment)
+- [Runbook végrehajtási környezet](./automation-runbook-execution.md#runbook-execution-environment)
 
 **Felelősség**: Ügyfél
 
@@ -132,7 +132,7 @@ Az Azure-tervrajzok segítségével a nagy léptékű Azure-környezeteket is le
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
@@ -162,9 +162,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti az erőforrás-konfigurációkat, és felderítheti a hálózati erőforrások módosításait. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Felelősség**: Ügyfél
 
@@ -182,7 +182,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -202,9 +202,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a Azure monitor engedélyezése a naplózási és a tevékenységi naplók eléréséhez, beleértve az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célhelyek és más hasznos elemeket. 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Felelősség**: Ügyfél
 
@@ -214,9 +214,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Az Automation-fiókok adatmegőrzési részletei](https://docs.microsoft.com/azure/automation/automation-managing-data#data-retention)
+- [Az Automation-fiókok adatmegőrzési részletei](./automation-managing-data.md#data-retention)
 
 **Felelősség**: Ügyfél
 
@@ -230,9 +230,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [A Azure Monitor naplózási lekérdezéseinek ismertetése](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [A Azure Monitor naplózási lekérdezéseinek ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Felelősség**: Ügyfél
 
@@ -248,7 +248,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a Azure Monitor naplózási információi alapján](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a Azure Monitor naplózási információi alapján](../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -296,7 +296,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-szolgáltatásokhoz és a Azure Resource Managerokhoz igénybe vehet egy igény szerinti és elég hozzáférési jogosultságot is.
 
-- [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [Futtató fiók vagy klasszikus futtató fiók törlése](delete-run-as-account.md)
 
@@ -352,7 +352,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-s
 
 - [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](/azure/azure-monitor/platform/action-groups)
+- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../azure-monitor/alerts/action-groups.md)
 
 **Felelősség**: Ügyfél
 
@@ -374,7 +374,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-s
 
 - [Azure AD-példány létrehozása és konfigurálása](../active-directory-domain-services/tutorial-create-instance.md)
 
-- [Runbook-hitelesítés használata felügyelt identitásokkal](https://docs.microsoft.com/azure/automation/automation-hrw-run-runbooks#runbook-auth-managed-identities)
+- [Runbook-hitelesítés használata felügyelt identitásokkal](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
 **Felelősség**: Ügyfél
 
@@ -384,7 +384,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-s
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá. Ha Automation-fiók futtató fiókokat használ a runbookok, gondoskodjon arról, hogy ezeket a szolgáltatásokat a leltárban is nyomon kövessék, mivel ezek gyakran megemelt jogosultságokkal rendelkeznek. Törölje a nem használt futtató fiókokat a kitett támadási felület minimalizálásához.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -412,7 +412,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure Active Directory (Azure ad) kockázati és Identity Protection-funkciókkal automatizált válaszokat konfigurálhat a hálózati erőforrás felhasználói identitásával kapcsolatos gyanús műveletekre. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -488,7 +488,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
 
-- [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 - [Azure Automation TLS 1,2 kényszerítés](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
@@ -510,7 +510,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
-- [Runbook engedélyek a hibrid Runbook-feldolgozók számára](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#runbook-permissions-for-a-hybrid-runbook-worker)
+- [Runbook engedélyek a hibrid Runbook-feldolgozók számára](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
 - [Szerepköri engedélyek és biztonság kezelése](automation-role-based-access-control.md)
 
@@ -538,7 +538,7 @@ Hibrid Runbook-feldolgozók használata esetén a virtuális gépek virtuális l
 
 - [Azure Disk Encryption Windows rendszerű virtuális gépekhez](../virtual-machines/windows/disk-encryption-overview.md)
 
-- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [Felügyelt változók a Azure Automationban](shared-resources/variables.md)
 
@@ -554,9 +554,9 @@ Hibrid Runbook-feldolgozók használata esetén a virtuális gépek virtuális l
 
 **Útmutató**: a Azure monitor és az Azure Activity log használatával riasztásokat hozhat létre, amelyekkel a kritikus Azure-erőforrások, például a hálózati összetevők, a Azure Automation-fiókok és a runbookok változásaira kerül sor. 
 
-- [Hálózati biztonsági csoport diagnosztikai naplózása](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
+- [Hálózati biztonsági csoport diagnosztikai naplózása](../private-link/private-link-overview.md#logging-and-monitoring)
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -689,7 +689,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -771,7 +771,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Aliasok használata](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
 
 - [Azure Policy minta beépített Azure Automation](policy-reference.md)
 
@@ -831,7 +831,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 - [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [Verziókövetés-integrálás használata](source-control-integration.md)
 
@@ -857,9 +857,9 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 - [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-- [Azure-beli adatbiztonsági mentés Automation-fiókokhoz](https://docs.microsoft.com/azure/automation/automation-managing-data#data-backup)
+- [Azure-beli adatbiztonsági mentés Automation-fiókokhoz](./automation-managing-data.md#data-backup)
 
 **Felelősség**: Ügyfél
 
@@ -873,7 +873,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 - [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
-- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 **Felelősség**: Ügyfél
 
@@ -987,5 +987,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

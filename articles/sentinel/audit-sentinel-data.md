@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a8ea32d84da521c8a1af926c6cb5e26bc2738de2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054758"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044838"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Azure Sentinel-lekérdezések és-tevékenységek naplózása
 
@@ -132,7 +132,7 @@ Az alábbi táblázat például felsorolja az Azure-tevékenység naplófájljai
 |Beállítások frissítése    |Microsoft. SecurityInsights/beállítások|
 | | |
 
-További információ: [Azure Activity log esemény sémája](/azure/azure-monitor/essentials/activity-log-schema).
+További információ: [Azure Activity log esemény sémája](../azure-monitor/essentials/activity-log-schema.md).
 
 
 ## <a name="auditing-with-laquerylogs"></a>Naplózás a LAQueryLogs
@@ -157,7 +157,7 @@ A LAQueryLogs-adatok olyan információkat tartalmaznak, mint például a követ
 
 1. A **LAQueryLogs** tábla alapértelmezés szerint nincs engedélyezve a log Analytics munkaterületen. Ha **LAQueryLogs** -adatait szeretné használni az Azure Sentinel szolgáltatásban való vizsgálat során, először engedélyezze a **LAQueryLogs** a log Analytics munkaterület **diagnosztikai beállítások** területén.
 
-    További információ: [Azure monitor-naplókban található lekérdezések naplózása](/azure/azure-monitor/logs/query-audit).
+    További információ: [Azure monitor-naplókban található lekérdezések naplózása](../azure-monitor/logs/query-audit.md).
 
 
 1. Ezt követően az KQL használatával kérdezheti le az adatlekérdezéseket, mint bármely más táblát.

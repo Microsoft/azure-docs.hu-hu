@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: f2e4bf603fa4cfb93c7ca51f64029ccaedcff727
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce575a67552c89b17ff4ed9b44ab43a4bd12d67f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103021060"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110741"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Felügyelt identitás hozzáadása a kommunikációs szolgáltatások megoldásához (Java)
 
-### <a name="install-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak telepítése
+### <a name="install-the-sdk-packages"></a>Az SDK-csomagok telepítése
 A pom.xml fájlban adja hozzá az alábbi függőségi elemeket a függőségek csoportjához.
 
 ```xml
@@ -29,9 +29,9 @@ A pom.xml fájlban adja hozzá az alábbi függőségi elemeket a függőségek 
 </dependency>
 ```
 
-### <a name="use-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak használata
+### <a name="use-the-sdk-packages"></a>Az SDK-csomagok használata
 
-Adja hozzá a következő `import` irányelveket a kódhoz az Azure Identity és az Azure kommunikációs ügyféloldali kódtárainak használatához.
+Adja hozzá a következő `import` irányelveket a kódhoz az Azure-identitás és az Azure kommunikációs SDK-k használatához.
 
 ```java
 import com.azure.communication.common.*;

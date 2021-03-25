@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 58649e9a864e64ab5781cff3b663e190dac50cb6
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: dbf284305aa3201faeb77668af4198bafbf578b5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105050667"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110542"
 ---
 # <a name="create-a-test-offer"></a>Tesztelési ajánlat létrehozása
 
@@ -80,7 +80,7 @@ A fejlesztői ajánlat használatával kísérletezzen az árképzési modellekk
 A fejlesztői ajánlatnak nulla vagy nagyon alacsony díjszabású csomagokkal kell rendelkeznie a csomagokban. A PROD-ajánlat árait az ügyfeleknek felszámítani kívánt árak teszik elérhetővé.
 
 > [!NOTE]
-> A felhasználó értesítése akkor is, ha az előzetes verzióban megjelenő skimmingPurchases a fejlesztői és a gyártási ajánlatokat is feldolgozzuk. Ha egy ajánlat 100 USD/hó árával rendelkezik, a vállalata $100 díjat számít fel. Ha ez történik, megnyithatja a [támogatási jegyet](support.md) , és a teljes összegért kifizetünk egy kifizetést (és nem kell fizetnie az Ügynökségnek).
+> Az előzetes verzióban megvásárolt vásárlások mind a fejlesztői, mind a PROD-ajánlatok esetében feldolgozva lesznek. Ha egy ajánlat 100 USD/hó árával rendelkezik, a vállalata $100 díjat számít fel. Ha ez történik, megnyithatja a [támogatási jegyet](support.md) , és a teljes összegért kifizetünk egy kifizetést (és nem kell fizetnie az Ügynökségnek).
 
 #### <a name="pricing-model"></a>Díjszabási modell
 

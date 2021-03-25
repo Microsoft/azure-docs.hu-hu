@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130017"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048340"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
@@ -48,7 +48,7 @@ Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni 
 Az **Azure ad-alkalmazás azonosítója** a KÖZZÉTEVŐ-azonosítóhoz van társítva, ezért győződjön meg arról, hogy ugyanazt az *alkalmazás-azonosítót* használja az összes ajánlatban.
 
 >[!Note]
->Ha egy közzétevő két különböző fiókkal rendelkezik a partner Centerben, két különböző Azure AD-alkalmazás-azonosítót kell használnia.  A fiókpartner minden fiókpartner-fiókjának egyedi Azure AD-alkalmazás-azonosítót kell használnia az ezen a fiókon keresztül közzétett SaaS-ajánlatok esetében.
+>Ha a közzétevő két vagy több különböző fiókkal rendelkezik a partner Centerben, akkor az Azure AD-alkalmazás regisztrációs adatai csak egyetlen fiókban használhatók. Ha ugyanazt a bérlői azonosítót használja, az alkalmazás-azonosító pár nem támogatott egy másik közzétevői fiókban.
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>A közzétevő engedélyezési jogkivonatának beszerzése
 
@@ -89,7 +89,7 @@ Közzététel<br>
 
 ##### <a name="response"></a>*Válasz*
 
-|  Név     |  Típus         |  Description |
+|  Név     |  Típus         |  Leírás |
 |  ------   |  ---------------  | ------------ |
 |  200 OK   |  TokenResponse    |  A kérelem sikeres volt. |
 

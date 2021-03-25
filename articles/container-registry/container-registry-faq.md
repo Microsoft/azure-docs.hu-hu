@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 8d5e161a0a663542142081c61bf1ad08be1be484
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 5550c53289228f154fab485b4b7bbff17555aad7
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026240"
+ms.locfileid: "105045739"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -268,7 +268,7 @@ A névtelen lekéréses hozzáférés engedélyezéséhez frissítsen egy beáll
 az acr update --name myregistry --anonymous-pull-enabled
 ``` 
 
-A következő beállítással bármikor letilthatja a névtelen lekéréses hozzáférést `--anonymous-pull-enabled` `false` .
+A (z) beállítással bármikor letilthatja a névtelen lekéréses hozzáférést `--anonymous-pull-enabled` `false` .
 
 > [!NOTE]
 > * A névtelen lekérési művelet megkísérlése előtt futtassa `docker logout` a parancsot, és győződjön meg arról, hogy a meglévő Docker-hitelesítő adatok törlődnek.

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199166"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044957"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépeken
 Ez a cikk részletesen ismerteti a Log Analytics-ügynök Linux rendszerű számítógépekre történő telepítését a következő módszerekkel:
@@ -86,12 +86,12 @@ Más korlátozási és testreszabási módszerek nem támogatottak és nem terve
 
 A következő táblázat a [támogatott Linux-disztribúciók](#supported-operating-systems) számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
 
-|Szükséges csomag |Description |Minimális verzió |
+|Szükséges csomag |Leírás |Minimális verzió |
 |-----------------|------------|----------------|
 |Glibc |    GNU C könyvtár | 2.5-12 
 |Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
 |Curl | cURL webes ügyfél | 7.15.5 |
-|Python | | 2.6 + vagy 3.3 +
+|Python | | 2,7 vagy 3.6 +
 |Python – ctypes | | 
 |PAM | Cserélhető hitelesítési modulok | | 
 

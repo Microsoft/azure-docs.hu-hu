@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e9069b5d43044ef0d0341717a12fcce7c4a72dc7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 5ac4c53550468d33e9ed533303749d29e772d766
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804004"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108475"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat a Teams Meeting szolgáltatáshoz az Azure kommunikációs szolgáltatások csapatának az Androidhoz készült beágyazási könyvtárával.
 
@@ -34,7 +34,7 @@ Válassza a "üres tevékenység" projekt sablont a "telefon és a tábla" alatt
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Képernyőfelvétel: a Project Template (üres tevékenység) lehetőség van kiválasztva.":::
 
-Nevezze el a projektet `TeamsEmbedAndroidGettingStarted` , állítsa a nyelvet a javára, és válassza az "API 21: Android 5,0 (nyalóka)" vagy újabb verziójának minimális ügyféloldali függvénytárát.
+Nevezze el a projektet `TeamsEmbedAndroidGettingStarted` , állítsa a nyelvet a javára, és válassza az "API 21: Android 5,0 (nyalóka)" minimális SDK-t.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az &quot;üres tevékenység&quot; lehetőség van kiválasztva a Project template 2. képernyőn.":::
 
@@ -299,7 +299,7 @@ public String fetchToken() {
 ## <a name="get-the-teams-meeting-link"></a>A Teams Meeting-hivatkozás beszerzése
 
 A Teams Meeting hivatkozás a Graph API-k használatával kérhető le. Ez részletesen szerepel a [Graph dokumentációjában](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true).
-A kommunikációs szolgáltatások meghívójának ügyféloldali könyvtára fogadja a teljes Teams Meeting-hivatkozást. Ez a hivatkozás az erőforrás részeként `onlineMeeting` érhető el, a [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) alatt elérhető módon, a Teams Meeting Meeting (összevont **értekezlet** ) URL-címéhez tartozó szükséges értekezlet-információkat is lekérheti.
+A kommunikációs szolgáltatások meghívója SDK egy teljes csapatot tárgyaló hivatkozást fogad el. Ez a hivatkozás az erőforrás részeként `onlineMeeting` érhető el, a [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) alatt elérhető módon, a Teams Meeting Meeting (összevont **értekezlet** ) URL-címéhez tartozó szükséges értekezlet-információkat is lekérheti.
 
 ## <a name="start-a-meeting-using-the-meeting-client"></a>Értekezlet elindítása az értekezlet-ügyfél használatával
 

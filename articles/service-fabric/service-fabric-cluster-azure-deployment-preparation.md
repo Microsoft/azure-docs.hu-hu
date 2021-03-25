@@ -3,19 +3,19 @@ title: Azure Service Fabric-fürt üzembe helyezésének megtervezése
 description: Ismerje meg, hogyan tervezheti meg és készítse elő az Azure-beli üzemi Service Fabric-fürtök üzembe helyezését.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109623"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046317"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>A fürt üzembe helyezésének megtervezése és előkészítése
 
 Éles fürtök üzembe helyezésének tervezése és előkészítése nagyon fontos.  Számos szempontot figyelembe kell venni.  Ez a cikk végigvezeti a fürt üzembe helyezésének előkészítésének lépésein.
 
 ## <a name="read-the-best-practices-information"></a>Az ajánlott eljárásokat ismertető információk
-Az Azure Service Fabric-alkalmazások és-fürtök sikeres kezeléséhez olyan műveletekre van szükség, amelyeket kifejezetten ajánlott elvégezni az éles környezet megbízhatóságának optimalizálása érdekében.  További információért olvassa el [Service Fabric alkalmazás-és fürt ajánlott eljárásait](service-fabric-best-practices-overview.md).
+Az Azure Service Fabric-alkalmazások és-fürtök sikeres kezeléséhez olyan műveletekre van szükség, amelyeket kifejezetten ajánlott elvégezni az éles környezet megbízhatóságának optimalizálása érdekében.  További információért olvassa el [Service Fabric alkalmazás-és fürt ajánlott eljárásait](./service-fabric-best-practices-security.md).
 
 ## <a name="select-the-os-for-the-cluster"></a>Válassza ki a fürt operációs rendszerét
 Service Fabric lehetővé teszi Service Fabric-fürtök létrehozását a Windows Servert vagy Linuxot futtató virtuális gépeken vagy számítógépeken.  A fürt üzembe helyezése előtt ki kell választania az operációs rendszert: Windows vagy Linux.  A fürt minden csomópontja (virtuális gép) ugyanazt az operációs rendszert futtatja, nem keverheti össze a Windows-és Linux-alapú virtuális gépeket ugyanabban a fürtben.
@@ -117,7 +117,7 @@ A magas rendelkezésre állás megvalósításának kritikus része annak biztos
 Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Mielőtt üzembe helyezné a fürtöt az éles környezetben, futtassa az [éles készültségi ellenőrzőlistát](service-fabric-production-readiness-checklist.md). Az alkalmazás és a fürt zökkenőmentesen működik az ellenőrzőlista elemeinek használatával. Erősen ajánlott az összes ilyen elemet kijelölni az éles környezetben való üzembe helyezés előtt.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Windows rendszerű Service Fabric-fürt létrehozása](service-fabric-best-practices-overview.md)
+* [Windows rendszerű Service Fabric-fürt létrehozása](./service-fabric-best-practices-security.md)
 * [Linux rendszerű Service Fabric-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints

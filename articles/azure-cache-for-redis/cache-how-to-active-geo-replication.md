@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: fe777c3aa7b314dc56a42cc64712d18281a6ea7d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fe3131263d3cf1984eae1692854d8d6bcd2746a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121167"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109488"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Az aktív geo-replikáció konfigurálása a Redis-példányok Enterprise Azure cache-hez (előzetes verzió)
 
@@ -26,9 +26,11 @@ Az aktív geo-replikációs csoportok két vagy több Enterprise Azure cache-t R
 >
 >
 
-1. Az **új Redis cache** LÉTREHOZÁSI felhasználói felületén kattintson a **Konfigurálás** elemre az **aktív geo-replikálás** beállításához a **speciális** lapon.
+1. Az **új Redis cache** LÉTREHOZÁSI felhasználói felület **speciális** lapján válassza a **vállalat** lehetőséget a **fürtözési házirendhez**.
 
     ![Aktív georeplikáció konfigurálása](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-not-configured.png)
+
+1. Az **aktív földrajzi replikálás** beállításához kattintson a **Konfigurálás** elemre.
 
 1. Hozzon létre egy új replikációs csoportot az első gyorsítótár-példányhoz, vagy válasszon ki egy meglévőt a listából.
 
@@ -38,7 +40,7 @@ Az aktív geo-replikációs csoportok két vagy több Enterprise Azure cache-t R
 
     ![Aktív geo-replikáció konfigurálva](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
-1. Ismételje meg a fenti lépéseket a Geo-replikáció csoportban található minden további gyorsítótár-példánynál.
+1. Várjon, amíg az első gyorsítótár sikeresen létrejött. Ismételje meg a fenti lépéseket a Geo-replikáció csoportban található minden további gyorsítótár-példánynál.
 
 ## <a name="remove-from-an-active-geo-replication-group"></a>Eltávolítás aktív geo-replikálási csoportból
 

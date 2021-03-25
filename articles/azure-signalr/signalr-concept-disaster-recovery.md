@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 996fa53aa105c0bcc27db7134c25d6d00e542a78
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90976492"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110287"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Rugalmasság és vész-helyreállítás az Azure Signaler szolgáltatásban
 
@@ -44,13 +44,16 @@ Alább látható egy diagram, amely a következő topológiát szemlélteti:
 
 ![A diagram két olyan régiót mutat be, amelyek mindegyike egy alkalmazás-kiszolgálóval és egy Signaler szolgáltatással rendelkezik, ahol az egyes kiszolgálók a régiójában elsődlegesként és a másik régióban lévő szolgáltatással társítva vannak.](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Az alkalmazások kiszolgálóinak konfigurálása több Signaler szolgáltatás-példányokkal
+## <a name="configure-multiple-signalr-service-instances"></a>Több Signaler szolgáltatás példányának konfigurálása
 
-Miután az egyes régiókban létrehozta a Signaler szolgáltatást és az alkalmazás-kiszolgálókat, beállíthatja, hogy az alkalmazás-kiszolgálók az összes Signaler szolgáltatás példányaihoz csatlakozzanak.
+Az App-kiszolgálókon és a Azure Functionson több szignáló szolgáltatási példány is támogatott.
 
+Miután létrehozta a Signaler szolgáltatást és az App Servers/Azure Functions az egyes régiókban, beállíthatja, hogy az alkalmazás-kiszolgálók/Azure Functions az összes Signaler szolgáltatás példányaihoz kapcsolódjon.
+
+### <a name="configure-on-app-servers"></a>Konfigurálás az alkalmazás-kiszolgálókon
 Kétféle módon teheti meg:
 
-### <a name="through-config"></a>Konfiguráción keresztül
+#### <a name="through-config"></a>Konfiguráción keresztül
 
 Meg kell tudnia, hogyan állíthatja be a Signal Service-kapcsolati karakterláncot a környezeti változók/Alkalmazásbeállítások/web. cofig használatával egy nevű konfigurációs bejegyzésben `Azure:SignalR:ConnectionString` .
 Ha több végponttal rendelkezik, a következő formátumban állíthatja be őket több konfigurációs bejegyzésbe:
@@ -62,7 +65,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 Itt `<name>` látható a végpont neve, és a `<role>` szerepköre (elsődleges vagy másodlagos).
 A név nem kötelező, de akkor is hasznos, ha tovább szeretné testreszabni az útválasztási viselkedést több végpont között.
 
-### <a name="through-code"></a>Kód használatával
+#### <a name="through-code"></a>Kód használatával
 
 Ha a kapcsolódási karakterláncokat inkább valahol máshol szeretné tárolni, akkor a kódban is elolvashatja őket, és paraméterként használhatja őket a `AddAzureSignalR()` (ASP.net Core) vagy `MapAzureSignalR()` (ASP.net) hívásakor.
 
@@ -93,6 +96,9 @@ Több elsődleges vagy másodlagos példányt is beállíthat. Ha több elsődle
 
 1. Ha legalább egy elsődleges példány online állapotban van, egy véletlenszerű elsődleges online példányt ad vissza.
 2. Ha az összes elsődleges példány nem érhető el, egy véletlenszerű másodlagos online példányt ad vissza.
+
+### <a name="configure-on-azure-functions"></a>Konfigurálás Azure Functions
+Tekintse meg [ezt a cikket](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md#configuration-method).
 
 ## <a name="failover-sequence-and-best-practice"></a>Feladatátvételi folyamat és ajánlott eljárás
 
@@ -137,3 +143,5 @@ Ezeket az eseteket az ügyféloldali oldalon kell kezelnie ahhoz, hogy transzpar
 Ebben a cikkben megtanulta, hogyan konfigurálhatja az alkalmazást, hogy rugalmasságot biztosítson a Signaler szolgáltatás számára. Ha többet szeretne megtudni a kiszolgálóról/az ügyfél kapcsolatáról és a kapcsolati útválasztásról a Signaler szolgáltatásban, olvassa el [ezt a cikket](signalr-concept-internals.md) a signaler szolgáltatás belső szolgáltatásaihoz.
 
 Olyan méretezési forgatókönyvek esetében, mint például a horizontális skálázás, amely több példányt használ a nagy számú kapcsolat kezelésére, olvassa el [a több példány skálázása című témakört](signalr-howto-scale-multi-instances.md).
+
+További információ a Azure Functions több szignáló szolgáltatásbeli példányokkal való konfigurálásáról: az [Azure signaler szolgáltatás példányainak támogatása Azure functions](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md).

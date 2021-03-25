@@ -4,12 +4,12 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 02/18/2021
 ms.author: crtreasu
-ms.openlocfilehash: 4345810292896cf88de19baf419eee025ba5853f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ada83d6263ef033208200d810c53c5f045acc9a7
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044795"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105537"
 ---
 A következő lépés az Azure Object-horgonyok csomagjának letöltése az Unity számára.
 
@@ -38,6 +38,6 @@ Az Azure Object-horgonyok csomagja le lesz töltve arra a mappába, ahová a par
 
 # <a name="install-with-mixed-reality-feature-tool-beta"></a>[Telepítés vegyes valóság funkciós eszközzel (bétaverzió)](#tab/unity-package-mixed-reality-feature-tool)
 
-Folytassa a következő lépéssel. A <a a href="https://aka.ms/MRFeatureToolDocs" target="_blank">vegyes valóság funkció eszközt</a> egy későbbi lépésben fogja használni.
+Folytassa a következő lépéssel. A <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">vegyes valóság funkció eszközt</a> egy későbbi lépésben fogja használni.
 
 ---

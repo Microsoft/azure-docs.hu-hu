@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865230"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110508"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Berendezések beállítása a VMware-környezetben található kiszolgálókhoz
 
@@ -29,6 +29,7 @@ A berendezés létrehozása után győződjön meg róla, hogy tud csatlakozni A
 ## <a name="deploy-with-ova"></a>Üzembe helyezés PETESEJTekkel
 
 Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
+
 1. Adja meg a készülék nevét, és állítson be egy Project-kulcsot a portálon.
 1. Töltse le a petesejtek sablon fájlját, és importálja vCenter Serverba. Ellenőrizze, hogy a petesejtek biztonságosak-e.
 1. Hozza létre a berendezés virtuális gépet a petesejtek fájlból, és győződjön meg arról, hogy tud kapcsolódni Azure Migratehoz.
@@ -39,8 +40,8 @@ Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
 1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: felderítés és értékelés**, majd **a felderítés** elemre.
 2. A **felderítési kiszolgálók** a  >  **kiszolgálók virtualizáltak?** területen válassza **az igen, VMware vSphere Hypervisort**.
 3. **1.: hozzon létre egy projektfájlt**, adja meg a VMware-környezetben található kiszolgálók felderítéséhez beállított Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
-1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Ne zárja be a felderítés oldalt az erőforrások létrehozása során.
-1. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy **projekt-kulcsot** .
+1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Ne zárjuk be a felderítés lapot az erőforrások létrehozása során.
+1. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy projekt-kulcsot * *.
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="2-download-the-ova-template"></a>2. a petesejtek sablon letöltése
@@ -101,7 +102,7 @@ Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azur
 1. Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
 1. A Configuration Manager > **Előfeltételek beállítása** területen tegye a következőket:
    - **Kapcsolat**: a készülék ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
-     - A proxy **beállítása** elemre kattintva adja meg a proxy címeit az űrlapon `http://ProxyIPAddress` vagy a `http://ProxyFQDN` figyelési porton.
+     - Kattintson a **telepítő proxy** elemre, hogy megadja a proxy címeit az űrlapon `http://ProxyIPAddress` vagy a `http://ProxyFQDN` figyelő porton.
      - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
      - Csak a HTTP-proxyk használata támogatott.
      - Ha hozzáadta a proxy részleteit, vagy letiltotta a proxyt és/vagy a hitelesítést, kattintson a **Save (Mentés** ) gombra a kapcsolat ismételt elindításához.
@@ -144,13 +145,13 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a kiszolgálók konfigur�
     - Ha a hatókör-felderítést meghatározott VMware-objektumokra (vCenter Server adatközpontok, fürtök, fürtök, gazdagépek, gazdagépek vagy különálló kiszolgálók mappára) szeretné használni, tekintse át az [ebben a cikkben](set-discovery-scope.md) szereplő utasításokat a Azure Migrate által használt fiók korlátozásához.
 1. A **2. lépés: adja meg a vCenter Server részleteket** lehetőségnél kattintson a **felderítési forrás hozzáadása** elemre, hogy a legördülő listából válassza ki a hitelesítő adatok rövid nevét, adja meg a vCenter Server **IP-címét/teljes tartománynevét** . A **portot** meghagyhatja az alapértelmezett értékre (443), vagy megadhat egy egyéni portot, amelyen vCenter Server figyeli, és kattintson a **Save (Mentés**) gombra.
 1. A **Save (Mentés**) gombra kattintva a készülék megpróbálja ellenőrizni a vCenter Serverhoz való kapcsolódást a megadott hitelesítő adatokkal, és megjeleníti az **ellenőrzési állapotot** a táblában a vCenter Server IP-cím/FQDN használatával.
-1. A felderítés elindítása előtt bármikor **újraérvényesítheti** vCenter Server a kapcsolatot.
+1. A felderítés megkezdése előtt bármikor **újraérvényesítheti** vCenter Server a kapcsolatot.
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="3. panel a készülék Configuration Managerben vCenter Server részletekért":::
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="vCenter Server részletek a készülék Configuration Manager paneljén":::
 
 ### <a name="provide-server-credentials"></a>Kiszolgáló hitelesítő adatainak megadása
 
-A **3. lépés: adja meg a kiszolgálói hitelesítő adatokat a szoftverek leltározásához, az ügynök nélküli függőségek elemzéséhez és a SQL Server példányok és adatbázisok felderítéséhez**, dönthet úgy, hogy több kiszolgáló hitelesítő adatait is megadja, vagy ha nem szeretné használni ezeket a funkciókat, kihagyhatja a lépést, és folytathatja a vCenter Server felderítést. Később bármikor módosíthatja a szándékot.
+A **3. lépés: adja meg a kiszolgálói hitelesítő adatokat a szoftverek leltározásához, az ügynök nélküli függőségek elemzéséhez és a SQL Server példányok és adatbázisok felderítéséhez**, dönthet úgy, hogy több kiszolgáló hitelesítő adatait is megadja, vagy ha nem szeretné használni ezeket a funkciókat, kihagyhatja a lépést, és folytathatja a vCenter Server felderítést. A szándékot később bármikor megváltoztathatja.
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="3. panel a készülék Configuration Manager kiszolgáló adataihoz":::
 
@@ -166,7 +167,7 @@ Ha ezeket a funkciókat szeretné használni, az alábbi lépésekkel megadhatja
 - Ha a **Mentés** vagy a **Hozzáadás** lehetőségre kattint, a készülék érvényesíti a tartomány hitelesítő adatait a tartomány Active Directory a hitelességük tekintetében. Ezzel elkerülhető, hogy a rendszer ne zárolja a fiókokat, amikor a berendezés több iterációt hajt végre a hitelesítő adatoknak a megfelelő kiszolgálókhoz való leképezéséhez.
 - A hitelesítő adatok táblában megtekintheti az összes tartományi hitelesítő adat **érvényesítési állapotát** . Csak a tartományi hitelesítő adatok lesznek érvényesítve.
 - Ha az ellenőrzés sikertelen, a **sikertelen** állapotra kattintva megtekintheti a hiba előfordulását, és a probléma kijavítása után kattintson a **hitelesítő adatok** újbóli ellenőrzése lehetőségre, hogy ismét érvényesítse a sikertelen tartományi hitelesítő adatokat.
-
+    :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="3. panel a készülék Configuration Managerben több hitelesítő adat biztosításához":::
 
 ### <a name="start-discovery"></a>Felderítés indítása
 
@@ -176,6 +177,7 @@ Ha ezeket a funkciókat szeretné használni, az alábbi lépésekkel megadhatja
 1. A szoftver leltározása során a hozzáadott kiszolgálók hitelesítő adatai a kiszolgálókon lesznek megerősítve, és az ügynök nélküli függőségek elemzéséhez vannak érvényesítve. Engedélyezheti a kiszolgálók ügynök nélküli függőségi elemzését a portálon. Csak azok a kiszolgálók választhatók ki, amelyeken az érvényesítés sikeres, így az ügynök nélküli függőségek elemzése is engedélyezhető.
 
 A felderítés a következőképpen működik:
+
 - Körülbelül 15 percet vesz igénybe, hogy a felderített kiszolgálók leltározása megjelenjen a portálon.
 - A telepített alkalmazások felderítése hosszabb időt is igénybe vehet. Az időtartam a felderített kiszolgálók számától függ. 500-kiszolgálók esetében körülbelül egy óra elteltével a felderített leltár megjelenik a Azure Migrate-portálon.
 - A kiszolgálók felderítését követően a portálon engedélyezheti az ügynök nélküli függőségek elemzését a kiszolgálókon.

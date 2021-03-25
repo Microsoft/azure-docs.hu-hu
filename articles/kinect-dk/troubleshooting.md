@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: hibaelhárítás, frissítés, hiba, Kinect, visszajelzés, helyreállítás, naplózás, tippek
-ms.openlocfilehash: 6b83e2952a9039a52aa3b905e376e5d3beccaf8c
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: da5242a09934a756093a9e02b6d474e6c75fecda
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026589"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108740"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure-beli Kinect ismert problémák és hibaelhárítás
 
@@ -193,7 +193,7 @@ A Body Tracking SDK támogatja a CPU-t, a CUDA-t, a DirectML-t (csak Windows) é
 > A ONNX Runtime figyelmeztetéseket jelenít meg a nem gyorsított műveleti kód esetében. Ezek nyugodtan figyelmen kívül hagyhatók.
 
 Az ONNX Runtime környezeti változókat tartalmaz a TensorRT-modell gyorsítótárazásának szabályozásához. Az ajánlott értékek a következők:
-- ORT_TENSORRT_CACHE_ENABLE = 1 
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
 - ORT_TENSORRT_CACHE_PATH = "elérési_út"
 
 A törzs követésének megkezdése előtt létre kell hozni a mappát.

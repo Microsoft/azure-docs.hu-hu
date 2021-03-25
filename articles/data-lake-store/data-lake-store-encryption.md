@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92109153"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108944"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1ban lévő adattitkosítás
 
@@ -135,4 +135,4 @@ Vegye figyelembe, hogy ha az alapértelmezett titkosítási beállításokat has
 Ez a művelet kevesebb mint két percet vehet igénybe, és a kulcsrotálás nem jár várt leállással. A művelet befejezését követően a kulcs új verziója lesz használatban.
 
 > [!IMPORTANT]
-> A kulcsrotáció után a rendszer nem használja tovább aktívan a kulcs régi verzióját az adatok titkosítására.  Az olyan ritka esetekben, amikor a váratlan meghibásodások az adatok redundáns másolatait is érinthetik, lehetséges, hogy az adatokat egy olyan biztonsági másolatból kell visszaállítani, amely továbbra is a régi kulcsot használja. Annak érdekében, hogy az adatok az ilyen ritka esetekben is elérhetők maradjanak, őrizze meg a titkosítási kulcsa előző verzióját. A vész-helyreállítási tervezéssel kapcsolatos ajánlott eljárásokért tekintse meg a vész [-helyreállítási útmutatót Data Lake Storage Gen1ban](data-lake-store-disaster-recovery-guidance.md) .
+> A kulcs-elforgatási művelet befejezése után a kulcs régi verziója már nem használható aktívan az új adatmennyiségek titkosításához. Előfordulhatnak olyan esetek, amikor a régebbi adatokhoz való hozzáféréshez szükség lehet a régi kulcsra. Az ilyen régebbi típusú adatolvasások engedélyezéséhez ne törölje a régi kulcsot

@@ -1,7 +1,7 @@
 ---
 title: A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan indíthatja el, tekintse át és kezelje a Machine learning-kísérletet a Azure Machine Learning Python SDK-val.
+description: Megtudhatja, hogyan indíthatja el, figyelheti és követheti a Machine learning-kísérleteket a Azure Machine Learning Python SDK-val.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,24 +12,24 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634790"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110270"
 ---
-# <a name="start-monitor-and-track-runs"></a>Indítás, figyelés és a futtatások nyomon követése 
+# <a name="start-monitor-and-track-run-history"></a>Futtatási előzmények indítása, figyelése és nyomon követése 
 
-A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro), [Machine learning parancssori](reference-azure-machine-learning-cli.md)felület és a [Azure Machine learning Studio](https://ml.azure.com) különböző módszereket biztosít a futtatások monitorozásához, rendszerezéséhez és kezeléséhez a képzés és kísérletezés érdekében.
+A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro), [Machine learning parancssori](reference-azure-machine-learning-cli.md)felület és a [Azure Machine learning Studio](https://ml.azure.com) különböző módszereket biztosít a futtatások figyelésére, rendszerezésére és nyomon követésére. A ML-futtatási előzmények fontos részét képezik egy megmagyarázható és ismételhető ML-es fejlesztési folyamatnak.
 
-Ez a cikk a következő feladatokra mutat be példákat:
+Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 
 * A futtatási teljesítmény figyelése.
 * A futtatási állapot figyelése e-mailben értesítéssel.
 * Címke és keresés futtatása.
 * Adjon hozzá egy futtatási leírást. 
-* A keresés futtatása. 
+* Futtassa a keresést a futtatási előzmények között. 
 * Megszakítás vagy sikertelen Futtatás.
 * Gyermek-futtatások létrehozása.
  
@@ -134,7 +134,7 @@ A következő elemekre lesz szüksége:
         print(notebook_run.get_status())
         ```
     
-    * A futtatási azonosító, a végrehajtási idő és a Futtatás további részleteinek beszerzéséhez használja a [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) metódust.
+    * A futtatási azonosító, a végrehajtási idő és a Futtatás egyéb részleteinek beszerzéséhez használja a [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) metódust.
     
         ```python
         print(notebook_run.get_details())
@@ -225,7 +225,7 @@ A következő elemekre lesz szüksége:
 
 Egy futtatási Leírás hozzáadható egy futtatáshoz, amely további kontextust és információkat biztosít a futtatáshoz. Ezeket a leírásokat a Runs (futtatások) listában is megkeresheti, és a Futtatás leírását oszlopként is hozzáadhatja a futtatások listájában. 
 
-Navigáljon a Futtatás **részletei** lapra, és válassza a Szerkesztés vagy a ceruza ikont a futtatásához szükséges leírások hozzáadásához, szerkesztéséhez vagy törléséhez. A futtatások listájának módosításához mentse a módosításokat a meglévő egyéni nézetbe vagy egy új egyéni nézetbe. A Markdown formátuma támogatott a futtatási leírások esetében, amelyek lehetővé teszik a képek beágyazását és mély összekapcsolását az alább látható módon.
+Navigáljon a Futtatás **részletei** lapra, és válassza a Szerkesztés vagy a ceruza ikont a futtatási leírások hozzáadásához, szerkesztéséhez vagy törléséhez. A futtatások listájának módosításához mentse a módosításokat a meglévő egyéni nézetbe vagy egy új egyéni nézetbe. A Markdown formátuma támogatott a futtatási leírások esetében, ami lehetővé teszi a képek beágyazását és mély összekapcsolását az alább látható módon.
 
 :::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Képernyőkép: Futtatás leírásának létrehozása"::: 
 
@@ -285,9 +285,9 @@ Azure Machine Learning a tulajdonságok és címkék segítségével rendszerezh
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    Hozzáadhat, szerkeszthet vagy törölhet címkéket a studióból. Navigáljon a Futtatás **részletei** lapra, és válassza a Szerkesztés vagy a ceruza ikont a futtatott címkék hozzáadásához, szerkesztéséhez vagy törléséhez. A címkéket a futtatások listája lapról is megkeresheti és szűrheti.
+    Hozzáadhat, szerkeszthet vagy törölhet címkéket a studióból. Navigáljon a Futtatás **részletei** lapra, és válassza a Szerkesztés, vagy a ceruza ikont, ha címkéket szeretne felvenni, szerkeszteni vagy törölni a futtatásokhoz. A címkéket a futtatások listája lapról is megkeresheti és szűrheti.
     
-    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Képernyőkép: a futtatási Címkék hozzáadása, szerkesztése vagy törlése":::
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Képernyőkép: futtatási Címkék hozzáadása, szerkesztése vagy törlése":::
     
     ---
 
@@ -403,11 +403,11 @@ Sok gyermek hatékony futtatásához használja a [`create_children()`](/python/
 
 ### <a name="submit-child-runs"></a>Alárendelt futtatások küldése
 
-Alárendelt futtatásokat is el lehet küldeni egy szülő futtatásból. Ez lehetővé teszi a szülő-és gyermek-futtatási hierarchiák létrehozását. Nem hozható létre szülő nélküli gyermekobjektum: még akkor is, ha a szülő futtatása nem sikerül, de a gyermek-futtatások indítása nem lehetséges, a hierarchia létrehozásához továbbra is szükség van. Az összes Futtatás állapota független: a szülő lehet `"Completed"` sikeres állapotban, még akkor is, ha egy vagy több alárendelt Futtatás megszakadt vagy sikertelen volt.  
+Alárendelt futtatásokat is el lehet küldeni egy szülő futtatásból. Ez lehetővé teszi a szülő-és gyermek-futtatási hierarchiák létrehozását. Nem hozható létre szülő nélküli gyermekobjektum: még akkor is, ha a szülő futtatása nem sikerül, de a gyermek-futtatások elindítását is végrehajtja, a hierarchiát is létre kell hoznia. Az összes Futtatás állapota független: a szülő lehet `"Completed"` sikeres állapotban, még akkor is, ha egy vagy több alárendelt Futtatás megszakadt vagy sikertelen volt.  
 
-Előfordulhat, hogy a gyermeke más futtatási konfigurációt használ, mint a szülő Futtatás. Előfordulhat például, hogy egy kevésbé hatékony, CPU-alapú konfigurációt használ a szülő számára, miközben GPU-alapú konfigurációkat használ a gyermekei számára. Egy másik gyakori vágy, hogy minden gyermek különböző argumentumokat és adatátvitelt adjon át. Gyermek futtatásának testreszabásához hozzon létre egy `ScriptRunConfig` objektumot a gyermek futtatásához. Az alábbi kód a következő műveleteket végzi el:
+Előfordulhat, hogy a gyermeke más futtatási konfigurációt használ, mint a szülő Futtatás. Előfordulhat például, hogy egy kevésbé hatékony, CPU-alapú konfigurációt használ a szülő számára, miközben GPU-alapú konfigurációkat használ a gyermekei számára. Egy másik gyakori kívánság, hogy minden gyermek különböző argumentumokat és adatértékeket adjon át. Gyermek futtatásának testreszabásához hozzon létre egy `ScriptRunConfig` objektumot a gyermek futtatásához. Az alábbi kód:
 
-- A munkaterületről elnevezett számítási erőforrás beolvasása `"gpu-cluster"``ws`
+- Egy nevű számítási erőforrás lekérése `"gpu-cluster"` a munkaterületről `ws`
 - A gyermek objektumok számára átadandó különböző argumentumok értékének megismétlése `ScriptRunConfig`
 - Új gyermek futtatásának létrehozása és elküldése az egyéni számítási erőforrás és argumentum használatával
 - Blokkok, amíg az összes gyermek futtatása befejeződött
@@ -455,7 +455,7 @@ print(parent_run.get_children())
 
 ### <a name="log-to-parent-or-root-run"></a>Napló a szülő vagy a gyökér futtatásához
 
-A `Run.parent` mezővel elérheti az aktuális gyermek futtatását elindító futtatást. Általános használati eset, ha egyetlen helyen szeretné összevonni a napló eredményeit. Vegye figyelembe, hogy a gyermekeket a rendszer aszinkron módon futtatja, és nincs garancia arra, hogy a szülő nem tudja megvárni a gyermek futásának befejeződését.
+A `Run.parent` mezővel elérheti az aktuális gyermek futtatását elindító futtatást. A használatának gyakori használati esete, `Run.parent` Ha egyetlen helyen egyesíti a naplózási eredményeket. Vegye figyelembe, hogy a gyermekeket a rendszer aszinkron módon futtatja, és nincs garancia arra, hogy a szülő nem tudja megvárni a gyermek futásának befejeződését.
 
 ```python
 # in child (or even grandchild) run

@@ -11,13 +11,14 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97618753"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043750"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Regisztrációs és bejelentkezési folyamat beállítása Azure Active Directory B2C
 
@@ -66,6 +67,7 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
     ![Attribútumok és jogcímek kiválasztása lap három jogcímek kiválasztásával](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
 1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. A *B2C_1* előtagja automatikusan előtagértéke a nevet.
+2. Kövesse az ["elfelejtette jelszavát?" folyamat kezelésére szolgáló](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) lépéseket a regisztrálási vagy bejelentkezési szabályzaton belül.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
@@ -73,7 +75,7 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása** elemre, majd válassza a **regisztráció most** lehetőséget.
 
-    ![Felhasználói folyamat futtatása lap a portálon a felhasználói folyamat futtatása gomb kiemelve](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.PNG)
+    ![Felhasználói folyamat futtatása lap a portálon a felhasználói folyamat futtatása gomb kiemelve](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.png)
 
 1. Adjon meg egy érvényes e-mail-címet, kattintson az **ellenőrző kód küldése** elemre, adja meg a kapott ellenőrző kódot, majd válassza a **kód ellenőrzése** lehetőséget.
 1. Adjon meg egy új jelszót, és erősítse meg a jelszót.

@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492608"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044294"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Oktatóanyag: a Poster aláírása és a kérelmek küldése
 Ebben az oktatóanyagban a Poster-t fogjuk beállítani és használni, hogy a HTTP-t használó Azure kommunikációs szolgáltatások (ACS) szolgáltatásokra vonatkozó kérést hozzon létre. Az oktatóanyag végén az ACS és a Poster használatával sikeresen elküldte az SMS-üzenetet, és a Poster használatával más API-kat is megvizsgálhat az ACS-n belül.
@@ -68,7 +68,7 @@ A változókról a [Poster dokumentációjában](https://learning.postman.com/do
 
 ### <a name="creating-a-pre-request-script"></a>Előkérési parancsfájl létrehozása
 
-A következő lépés egy előkérési parancsfájl létrehozása a postán belül. Az előkérési parancsfájl egy olyan parancsfájl, amely a Poster minden kérelme előtt fut, és az Ön nevében módosíthatja vagy megváltoztathatja a kérelmek paramétereit. Ezt a HTTP-kérések aláírására fogjuk használni, hogy az ACS szolgáltatásai hitelesíthetők legyenek. Az aláírási követelményekkel kapcsolatos további információkért [olvassa el az útmutatót a hitelesítéshez](https://docs.microsoft.com/rest/api/communication/authentication).
+A következő lépés egy előkérési parancsfájl létrehozása a postán belül. Az előkérési parancsfájl egy olyan parancsfájl, amely a Poster minden kérelme előtt fut, és az Ön nevében módosíthatja vagy megváltoztathatja a kérelmek paramétereit. Ezt a HTTP-kérések aláírására fogjuk használni, hogy az ACS szolgáltatásai hitelesíthetők legyenek. Az aláírási követelményekkel kapcsolatos további információkért [olvassa el az útmutatót a hitelesítéshez](/rest/api/communication/authentication).
 
 Ezt a szkriptet a gyűjteményen belül fogjuk létrehozni úgy, hogy az a gyűjteményen belül bármilyen kérelemre fusson. Ehhez a gyűjtemény lapon kattintson a "pre-Request script" Sub-Tab elemre.
 
@@ -186,7 +186,7 @@ Most, hogy minden be van állítva, készen áll egy ACS-kérelem létrehozásá
 
 :::image type="content" source="media/postman/create-request.png" alt-text="A Poster plusz gombja.":::
 
-Ez egy új fület hoz létre a postán belüli kérelemhez. A létrehozásához konfigurálni kell azt. A rendszer az SMS Send API-val kapcsolatos kérést küld, ezért segítségért tekintse meg az [API dokumentációját](https://docs.microsoft.com/rest/api/communication/sms/send). Adja meg a Poster kérelmét.
+Ez egy új fület hoz létre a postán belüli kérelemhez. A létrehozásához konfigurálni kell azt. A rendszer az SMS Send API-val kapcsolatos kérést küld, ezért segítségért tekintse meg az [API dokumentációját](/rest/api/communication/sms/send). Adja meg a Poster kérelmét.
 
 Kezdés: beállítás, a kérelem típusa `POST` és beírása `{{endpoint}}/sms?api-version=2021-03-07` a kérelem URL-mezőjébe. Ez az URL-cím a korábban létrehozott `endpoint` változó használatával automatikusan elküldi az ACS-erőforrásnak.
 
@@ -238,8 +238,8 @@ A "to" értékben megadott számot birtokló mobiltelefonnak SMS-üzenetet is ke
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> Az [ACS API](https://docs.microsoft.com/rest/api/communication/) 
->  -k megismerése [További információ a hitelesítésről](https://docs.microsoft.com/rest/api/communication/authentication) 
+> Az [ACS API](/rest/api/communication/) 
+>  -k megismerése [További információ a hitelesítésről](/rest/api/communication/authentication) 
 >  [További információ a Poster-ról](https://learning.postman.com/)
 
 A következőket is érdemes lehet:

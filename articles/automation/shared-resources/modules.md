@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 57dfc388dcba926706a695c93d2afa1956432be8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503419"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953935"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
 
@@ -142,10 +142,10 @@ Az az modul az Automation-fiókba való importálása nem importálja automatiku
 
 * Amikor egy runbook meghívja a parancsmagot egy modulból.
 * Amikor egy runbook explicit módon importálja a modult az [import-Module](/powershell/module/microsoft.powershell.core/import-module) parancsmaggal.
-* Amikor egy runbook explicit módon importálja a modult a [using Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) utasítással. A using utasítás a Windows PowerShell 5,0-től kezdve támogatott, és támogatja az osztályok és az enumerálási típusok importálását.
+* Amikor egy runbook explicit módon importálja a modult a [using Module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) utasítással. A using utasítás a Windows PowerShell 5,0-től kezdve támogatott, és támogatja az osztályok és az enumerálási típusok importálását.
 * Ha egy runbook egy másik függő modult importál.
 
-Az az modulokat a Azure Portal importálhatja. Ne feledje, hogy csak a szükséges modulokat importálja, nem a teljes az. Automation-modult. Mivel az [az. accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) a többi az modultól való függőség, ügyeljen arra, hogy a modult minden más előtt importálja.
+Az az modulokat az Automation-fiókba importálhatja a Azure Portalból. Ne feledje, hogy csak az az általa igényelt modulokat importálja, nem minden az elérhető modul. Mivel az [az. accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) a többi az modultól való függőség, ügyeljen arra, hogy a modult minden más előtt importálja.
 
 1. Az Automation-fiókban a **megosztott erőforrások** területen válassza a **modulok** elemet.
 2. Válassza a **Tallózás** katalógus lehetőséget.  
