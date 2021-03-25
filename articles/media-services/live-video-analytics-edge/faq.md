@@ -3,12 +3,12 @@ title: Élő videó-elemzés IoT Edge GYIK-ban – Azure
 description: Ez a cikk a IoT Edge élő videó-elemzésekkel kapcsolatos gyakori kérdésekre ad választ.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 661b6155ce2d95e2111a1fa338fd5df438e61e7d
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702249"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032796"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Élő video Analytics IoT Edge GYIK
 
@@ -129,7 +129,7 @@ A megoldások attól függően változnak, hogy milyen kommunikációs protokoll
    
 *Használja az gRPC protokollt*: 
 
-* Az 1,0-as Live Video Analytics-modul használata esetén, ha általános célú távoli eljáráshívás (gRPC) protokollt használ, az egyetlen módszer erre, ha a gRPC-kiszolgáló különböző AI-modelleket tesz elérhetővé különböző portokon keresztül. [Ebben a kódban például](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json)egy 44000-es port teszi elérhetővé az összes Yolo-modellt. Elméletileg a Yolo gRPC-kiszolgáló újraírható, hogy a 44000-es porton és másokon is elérhetők legyenek egyes modellek a 45000-es porton. 
+* Az 1,0-as Live Video Analytics-modul használata esetén, ha általános célú távoli eljáráshívás (gRPC) protokollt használ, az egyetlen módszer erre, ha a gRPC-kiszolgáló különböző AI-modelleket tesz elérhetővé különböző portokon keresztül. [Ebben a kódban például](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json)egy 44000-es port teszi elérhetővé az összes Yolo-modellt. Elméletileg a Yolo gRPC-kiszolgáló újraírható, hogy a 44000-es porton és másokon is elérhetők legyenek egyes modellek a 45000-es porton. 
 
 * Az 2,0-es Live Video Analytics-modul használatával új tulajdonságot ad hozzá a gRPC-bővítmény csomóponthoz. Ez a tulajdonság, a **extensionConfiguration** egy opcionális karakterlánc, amelyet a gRPC-szerződés részeként használhat. Ha egyetlen következtetési kiszolgálón több AI-modell van csomagolva, az összes AI-modellhez nem szükséges csomópontot kitenni. Ehelyett a Graph-példányok esetében a **extensionConfiguration** tulajdonsággal határozhatja meg, hogyan válassza ki a különböző ai-modelleket. A végrehajtás során a Live Video Analytics átadja ezt a karakterláncot a következtetésben lévő kiszolgálónak, amely a kívánt AI-modell meghívására használható. 
 

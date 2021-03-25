@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/24/2021
 ms.author: mjbrown
-ms.openlocfilehash: 52fa5957cdbc3ae73ebc4b36e04582741199414a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7163658024d150a7c5d75c3b3ac0b6b6b29cd3cb
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93340600"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105037308"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager-sablonok az Azure Cosmos DB-hez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,6 +27,7 @@ Ez a cikk csak az alapszintű (SQL) API-fiókok Azure Resource Manager sablonjá
 |[Azure Cosmos-fiók, adatbázis, tároló létrehozása analitikus tárolóval](manage-with-templates.md#create-analytical-store) | Ez a sablon létrehoz egy core (SQL) API-fiókot az egyik régióban egy olyan tárolóval, amelyen engedélyezve van az analitikai TTL, valamint a manuális vagy automatikus méretezési sebesség használata. |
 |[Hozzon létre egy Azure Cosmos-fiókot, egy adatbázist, egy standard (manuális) átviteli sebességgel rendelkező tárolót](manage-with-templates.md#create-manual) | Ez a sablon létrehoz egy core (SQL) API-fiókot két régióban, egy adatbázist és egy standard átviteli sebességgel rendelkező tárolót. |
 |[Azure Cosmos-fiók, adatbázis és tároló létrehozása tárolt eljárással, triggerrel és UDF-vel](manage-with-templates.md#create-sproc) | Ez a sablon egy alapszintű (SQL-) API-fiókot hoz létre két régióban egy tárolóhoz tárolt eljárással, triggerrel és UDF-vel. |
+|[Azure Cosmos-fiók létrehozása az Azure AD-identitással, a szerepkör-definíciókkal és a szerepkör-hozzárendeléssel](manage-with-templates.md#create-rbac) | Ez a sablon egy alapszintű (SQL-) API-fiókot hoz létre az Azure AD-identitással, a szerepkör-definíciókkal és a szerepkör-hozzárendeléssel. |
 |[Privát végpont létrehozása meglévő Azure Cosmos-fiókhoz](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Ez a sablon egy meglévő virtuális hálózat meglévő Azure Cosmos Core-(SQL-) API-fiókjához hoz létre privát végpontot. |
 |[Ingyenes szintű Azure Cosmos-fiók létrehozása](manage-with-templates.md#free-tier) |  Ez a sablon egy Azure Cosmos DB Core (SQL) API-fiókot hoz létre a szabad szintű szinten. |
 

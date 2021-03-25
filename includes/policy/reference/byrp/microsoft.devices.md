@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 82c61910696162e3707f477454c97fb3b70e54a5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 06fc1c9a6ad9b6bcdc768897646df48c05aec34d
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596899"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031740"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az Azure IoT Hub ügyfél által felügyelt kulccsal kell használnia az adatok titkosítását](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Az ügyfél által felügyelt kulccsal IoT Hub tárolt adatok titkosítása egy második titkosítási réteget ad hozzá az alapértelmezett szolgáltatás által felügyelt kulcsokhoz, lehetővé teszi a kulcsok, az egyéni rotációs házirendek és az adatokhoz való hozzáférés kezelését a Key Access Control használatával. Az ügyfél által felügyelt kulcsokat IoT Hub létrehozásakor kell konfigurálni. Az ügyfél által felügyelt kulcsok konfigurálásával kapcsolatos további információkért lásd: [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Naplózás, megtagadás, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[IoT Hub Device kiépítési szolgáltatási példányok konfigurálása a nyilvános hálózati hozzáférés letiltásához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F859dfc91-ea35-43a6-8256-31271c363794) |Tiltsa le a nyilvános hálózati hozzáférést a IoT Hub eszköz kiépítési példányához, hogy az ne legyen elérhető a nyilvános interneten keresztül. Ez csökkentheti az adatszivárgás kockázatait. További információ: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |Módosítás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DisablePublicNetworkAccess_Modify.json) |

@@ -3,12 +3,12 @@ title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
 description: Ismerkedjen meg a hibaelhárítási tippekkel és javaslatokkal néhány olyan problémával kapcsolatban, amelyet a Azure Service Bus használatakor láthat.
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179697"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031290"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 
@@ -52,7 +52,7 @@ A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/id�
     ```
     Ha más eszközöket (például `tnc` , stb.) használ, használhatja az egyenértékű parancsokat `ping` . 
 - Szerezze be a hálózati nyomkövetést, ha az előző lépések nem segítenek és nem elemzik olyan eszközökkel, mint például a [Wireshark](https://www.wireshark.org/). Ha szükséges, forduljon a [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . 
-- Ha szeretné megkeresni a kapcsolatok listájához hozzáadandó megfelelő IP-címeket, tekintse meg az [engedélyezési listához hozzáadni kívánt IP-címeket](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+- Ha szeretné megkeresni a kapcsolatok engedélyezési hozzáadandó megfelelő IP-címeket, tekintse meg, hogy [milyen IP-címeket kell hozzáadni a engedélyezési-](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list)hez. 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>A szolgáltatás verziófrissítése/újraindítása esetén felmerülő problémák
@@ -98,6 +98,25 @@ Az üzenetek küldésére és fogadására használt tokenek száma korlátozott
 
 ### <a name="resolution"></a>Feloldás
 További üzenetek küldéséhez nyisson meg egy új kapcsolódást a Service Bus névtérhez.
+
+## <a name="adding-virtual-network-rule-using-powershell-fails"></a>Virtuális hálózati szabály hozzáadása a PowerShell használatával sikertelen
+
+### <a name="symptoms"></a>Hibajelenségek
+Két alhálózatot konfigurált egyetlen virtuális hálózatból egy virtuális hálózati szabályban. Ha a [Remove-AzServiceBusVirtualNetworkRule](/powershell/module/az.servicebus/remove-azservicebusvirtualnetworkrule) parancsmaggal próbál meg eltávolítani egy alhálózatot, nem távolítja el az alhálózatot a virtuális hálózat szabályból. 
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName $resourceGroupName -Namespace $serviceBusName -SubnetId $subnetId
+```
+
+### <a name="cause"></a>Ok
+Lehetséges, hogy az alhálózathoz megadott Azure Resource Manager-azonosító érvénytelen. Ez akkor fordulhat elő, ha a virtuális hálózat egy másik erőforráscsoporthoz tartozik, amely a Service Bus névtérrel rendelkezik. Ha nem explicit módon megadja a virtuális hálózat erőforráscsoportot, a CLI-parancs létrehozza a Azure Resource Manager azonosítót a Service Bus névtér erőforráscsoport használatával. Ezért nem távolítja el az alhálózatot a hálózati szabályból. 
+
+### <a name="resolution"></a>Feloldás
+Adja meg az alhálózat teljes Azure Resource Manager AZONOSÍTÓját, amely tartalmazza a virtuális hálózattal rendelkező erőforráscsoport nevét. Például:
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName myRG -Namespace myNamespace -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/myOtherRG/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet"
+```
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
