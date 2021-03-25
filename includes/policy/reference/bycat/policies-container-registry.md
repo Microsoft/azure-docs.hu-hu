@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 41840d7d6ab289cf6aec92c145ce98aced17e867
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1b9adc9728df1d5f680c82c2863ba3b45b02e5da
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605467"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033282"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A tároló-beállításjegyzékek konfigurálása a nyilvános hálózati hozzáférés letiltásához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Tiltsa le a nyilvános hálózati hozzáférést a Container Registry erőforráshoz, hogy az ne legyen elérhető a nyilvános interneten keresztül. Ez csökkentheti az adatszivárgás kockázatait. További információ: [https://aka.ms/acr/portal/public-network](https://aka.ms/acr/portal/public-network) és [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |Módosítás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |
 |[A tároló-beállításjegyzékek konfigurálása saját DNS-zónák használatára](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9585a95-5b8c-4d03-b193-dc7eb5ac4c32) |Privát DNS-zónák használatával felülbírálhatja egy privát végpont DNS-feloldását. A privát DNS-zónák a virtuális hálózatra mutató hivatkozásokat tartalmaznak a Container Registry való feloldáshoz. További információ: [https://aka.ms/privatednszone](https://aka.ms/privatednszone) és [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |DeployIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateDNSZone_DeployIfNotExists.json) |

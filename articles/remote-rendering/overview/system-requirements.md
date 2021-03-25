@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705160"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032792"
 ---
 # <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
@@ -90,7 +90,7 @@ A távoli renderelési virtuális gépek megosztott IP-címeket használnak a k�
 
 Győződjön meg arról, hogy a tűzfalak (az eszközökön belül, az útválasztók stb.) nem blokkolja a következő portokat:
 
-| Port              | Protokoll | Engedélyezés    | Description |
+| Port              | Protokoll | Engedélyezés    | Leírás |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | Kimenő | Kezdeti kapcsolat (HTTP-kézfogás) |
 | 8266              | UDP      | Kimenő | Adatátvitel |
@@ -111,12 +111,10 @@ A következő szoftvereket kell telepíteni:
 
 ## <a name="unity"></a>Unity
 
-Az egységgel való fejlesztéshez telepítse a következőt:
-
-* Unity 2019.3.1 [(letöltés)](https://unity3d.com/get-unity/download)
-* Telepítse ezeket a modulokat az Unity-ben:
-  * **UWP** – univerzális Windows-platform-Build támogatása
-  * **IL2CPP** – Windows Build-támogatás (IL2CPP)
+Az Unity-vel való fejlesztéshez telepítse az Unity 2019,3 vagy a 2019,4 LTS [(letöltés)](https://unity3d.com/get-unity/download)aktuális verzióját. Az Unity hub használatát javasoljuk a telepítések kezeléséhez.
+Ügyeljen arra, hogy a következő modulokat foglalja bele az Unity-telepítésbe:
+* **UWP** – univerzális Windows-platform-Build támogatása
+* **IL2CPP** – Windows Build-támogatás (IL2CPP)
 
 ## <a name="next-steps"></a>Következő lépések
 

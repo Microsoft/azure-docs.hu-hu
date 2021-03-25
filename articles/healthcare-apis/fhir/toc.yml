@@ -137,6 +137,8 @@
       href: fhir-faq.md
     - name: Támogatott funkciók
       href: fhir-features-supported.md
+    - name: GitHub-projektek
+      href: fhir-github-projects.md
     - name: Partneri ökoszisztéma
       href: partner-ecosystem.md
 - name: Referencia

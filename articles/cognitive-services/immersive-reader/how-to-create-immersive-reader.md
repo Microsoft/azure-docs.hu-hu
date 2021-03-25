@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: d7a8a598ab2d0c873cf07510cf40a08c22c0f1d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 369905ed5ee0ce9a93ec2be879b5e40114b0a380
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608597"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048663"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
@@ -198,7 +198,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
 ## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Node.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) rövid útmutatót, amelyből megtudhatja, hogy mit tehet a magától az olvasói SDK-val a Node.js használatával
-* Tekintse meg az [Android-oktatóanyagot](./tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
-* Tekintse meg az [iOS-oktatóanyagot](./tutorial-ios.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
-* Tekintse meg a [Python-oktatóanyagot](./tutorial-python.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
+* Tekintse meg az [Android-oktatóanyagot](./how-to-launch-immersive-reader.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
+* Tekintse meg az [iOS-oktatóanyagot](./how-to-launch-immersive-reader.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
+* Tekintse meg a [Python-oktatóanyagot](./how-to-launch-immersive-reader.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 458c93fd3e13a958137c762a0979af918a70d930
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 3132ec8fb3cb123653887d92a2f33788f40564c0
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023060"
+ms.locfileid: "105033823"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
 
@@ -117,7 +117,7 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
 
     Az **Event hub** **centralexport**-ként jelenik meg.
 
-    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Az adatexportálás célhelyét ábrázoló képernyőfelvétel":::
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Az adatexportálás célhelyét ábrázoló képernyőfelvétel.":::
 
 1. Kattintson a **Mentés** gombra.
 
@@ -136,7 +136,7 @@ Az exportálási definíció létrehozása:
 
 1. Kattintson a **Mentés** gombra.
 
-    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Az adatexportálási definíciót ábrázoló képernyőfelvétel":::
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Az adatexportálási definíciót ábrázoló képernyőfelvétel.":::
 
 A folytatás előtt várjon, amíg az Exportálás állapota **kifogástalan** állapotú az **adatexportálási** lapon.
 
