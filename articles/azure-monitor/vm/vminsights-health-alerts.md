@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c4b15fa2a8be32aa7397ae425f28f1deaac6b71
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052262"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024608"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>A virtuális gépekkel kapcsolatos vendég állapottal kapcsolatos riasztások (előzetes verzió)
 A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Egy riasztás akkor hozható létre, ha egy virtuális gép vagy a figyelő nem Kifogástalan állapotra vált. Ezeket a riasztásokat megtekintheti és kezelheti a [riasztási szabályok által létrehozott Azure monitorban](../alerts/alerts-overview.md) , és beállíthatja, hogy proaktívan értesítse az új riasztások létrehozásakor.
@@ -35,7 +35,7 @@ Minden egyes virtuális géphez létrejön egy [Azure-riasztás](../alerts/alert
 Ha egy riasztás már folyamatban van **, a** virtuális gép állapotának megváltozásakor a rendszer nem hoz létre második riasztást, de az azonos riasztás súlyossága a virtuális gép állapotának megfelelően módosul. Ha például a virtuális gép **kritikus** állapotra vált, ha egy **figyelmeztető** riasztás már **kilőtt** állapotban van, a riasztás súlyossága a **Sev1** értékre változik. Ha a virtuális gép **Figyelmeztetési** állapotba vált, ha egy **Sev1** -riasztás már **tüzelt** állapotban van, akkor a riasztás súlyossága a **Sev2** értékre változik. Ha a virtuális gép **kifogástalan** állapotba kerül, a riasztás súlyossága a **Sev4** értékre módosul.
 
 ## <a name="viewing-alerts"></a>Riasztások megtekintése
-Megtekintheti a virtuális gépek által [a Azure Portalban található egyéb riasztásokkal](../platform/alerts-overview.md#alerts-experience)létrehozott riasztásokat. A **Azure monitor** menüben a **riasztások** elemre kattintva megtekintheti az összes figyelt erőforráshoz tartozó riasztásokat, vagy a virtuális gép menüjében a **riasztások** lehetőségre kattintva megtekintheti a virtuális gép riasztásait.
+Megtekintheti a virtuális gépek által [a Azure Portalban található egyéb riasztásokkal](../alerts/alerts-overview.md#alerts-experience)létrehozott riasztásokat. A **Azure monitor** menüben a **riasztások** elemre kattintva megtekintheti az összes figyelt erőforráshoz tartozó riasztásokat, vagy a virtuális gép menüjében a **riasztások** lehetőségre kattintva megtekintheti a virtuális gép riasztásait.
 
 ## <a name="alert-properties"></a>Riasztás tulajdonságai
 

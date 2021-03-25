@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 590ad577f3648ea9214ec4dcb6b6cab59dd5a3f1
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102245031"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104219"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Gyors útmutató: Face ügyféloldali kódtár a JavaScripthez
 
@@ -79,7 +79,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 > [!IMPORTANT]
 > Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Face erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
 >
-> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) cikkben talál.
+> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
 
 ```javascript
 key = "<paste-your-face-key-here>"
@@ -114,7 +114,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő f
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials)** objektumot a kulccsal, és használja a végpontján egy **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient)** objektum létrehozásához.
+Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy **[ApiKeyCredentials](/javascript/api/@azure/ms-rest-js/apikeycredentials)** objektumot a kulccsal, és használja a végpontján egy **[FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient)** objektum létrehozásához.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -216,7 +216,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Face ügyféloldali függvénytárat a JavaScripthez, hogy elvégezzék az Arcfelismerés feladatait. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 
 > [!div class="nextstepaction"]
-> [Face API referenciája (JavaScript)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/)
+> [Face API referenciája (JavaScript)](/javascript/api/@azure/cognitiveservices-face/)
 
 * [Mi az a Face szolgáltatás?](../../overview.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js)található.

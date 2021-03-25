@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e7b25315aaadffe7f34b28195c25b77a36fa5f8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705653"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872149"
 ---
 # <a name="archived-release-notes"></a>Archivált kibocsátási megjegyzések
 
@@ -385,7 +385,7 @@ A szolgáltatási címkék egyszerűbbé teszik az Azure-beli virtuális gépek 
 #### <a name="custom-ambari-db"></a>Egyéni Ambari-adatbázis
 A HDInsight mostantól lehetővé teszi saját SQL-adatbázis használatát az Apache Ambari. Ezt az egyéni Ambari-adatbázist a Azure Portal vagy a Resource Manager-sablon használatával konfigurálhatja.  Ez a funkció lehetővé teszi a megfelelő SQL-adatbázis kiválasztását a feldolgozási és a kapacitási igényekhez. Az üzleti növekedési követelményeknek való megfelelést is könnyedén frissítheti. További információ: HDInsight- [fürtök beállítása egyéni Ambari-adatbázissal](hdinsight-custom-ambari-db.md).
 
-![Egyéni Ambari-adatbázis](./media/hdinsight-release-notes/custom-ambari-db.png)
+:::image type="content" source="./media/hdinsight-release-notes/custom-ambari-db.png" alt-text="Egyéni Ambari-adatbázis":::
 
 ### <a name="deprecation"></a>Elavulás
 Nincs elavultság ehhez a kiadáshoz. A közelgő elavulás elkezdéséhez tekintse meg a [közelgő változásokat](#upcoming-changes).

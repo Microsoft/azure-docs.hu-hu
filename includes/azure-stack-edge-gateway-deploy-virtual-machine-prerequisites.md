@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 71d5a910e36762d096763c4f45a13cbdad47414d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e459ea1e9d8d7d51a62ba3ed1d2de8815a1b4222
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730625"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104918"
 ---
-Mielőtt üzembe helyezi a virtuális gépeket az Azure Stack Edge-eszközön, konfigurálnia kell az ügyfelet, hogy Azure Resource Manageron keresztül kapcsolódjon az eszközhöz Azure PowerShellon keresztül. Részletes útmutatásért lásd: [kapcsolódás Azure Resource Managerhoz az Azure stack Edge-eszközön](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md).
+Mielőtt üzembe helyezi a virtuális gépeket az Azure Stack Edge-eszközön, konfigurálnia kell az ügyfelet, hogy Azure Resource Manageron keresztül kapcsolódjon az eszközhöz Azure PowerShellon keresztül. Részletes útmutatásért lásd: [kapcsolódás Azure Resource Managerhoz az Azure stack Edge-eszközön](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md).
 
 Győződjön meg arról, hogy a következő lépésekkel fér hozzá az eszközhöz az ügyfélről. Ezt a konfigurációt már elvégezte a Azure Resource Managerhoz való csatlakozáskor, és most ellenőrzi, hogy a konfiguráció sikeres volt-e. 
 
@@ -38,5 +38,3 @@ Győződjön meg arról, hogy a következő lépésekkel fér hozzá az eszközh
 
     > [!NOTE]
     > Ha GPU-alapú virtuális gépeket hoz létre, válasszon ki egy, az internethez csatlakozó hálózati adaptert. Ez lehetővé teszi a GPU-bővítmények telepítését az eszközön.
-
-

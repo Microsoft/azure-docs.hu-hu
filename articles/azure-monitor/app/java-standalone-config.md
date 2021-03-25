@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91ad5a6d95c634300db83d66df8f0407b4544cde
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224656"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024166"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
@@ -122,6 +122,17 @@ A mintavételezési százalékot a környezeti változóval is beállíthatja `A
 > [!NOTE]
 > A mintavételezési százaléknál válasszon egy olyan százalékot, amely a 100/N értéknél közelebb van, ahol N egész szám. A mintavétel jelenleg nem támogatja a többi értéket.
 
+## <a name="sampling-overrides-preview"></a>Mintavételi felülbírálások (előzetes verzió)
+
+Ez a funkció előzetes verzióban érhető el, a 3.0.3-BETA. 2.
+
+A mintavételi felülbírálások segítségével felülbírálhatja az [alapértelmezett mintavételi százalékot](#sampling), például:
+* A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos állapot-ellenőrzésekhez.
+* A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos függőségi hívásokhoz.
+* Állítsa be a mintavételezési százalékot 100-re egy fontos kérelem típusához (például `/login` ), még akkor is, ha az alapértelmezett mintavételezés valami alacsonyabbra van konfigurálva.
+
+További információkért tekintse meg a [mintavételi felülbírálások](./java-standalone-sampling-overrides.md) dokumentációját.
+
 ## <a name="jmx-metrics"></a>JMX metrikák
 
 Ha további JMX-metrikákat szeretne gyűjteni:
@@ -176,9 +187,13 @@ Ez a funkció előzetes verzióban érhető el.
 Lehetővé teszi olyan szabályok konfigurálását, amelyek a kérelemre, a függőségre és a nyomkövetési telemetria lesznek alkalmazva, például:
  * Bizalmas adatok maszkolása
  * Egyéni dimenziók feltételes hozzáadása
- * Az összesítéshez és a megjelenítéshez használt telemetria-név frissítése
+ * Frissítse a span nevet, amely a Azure Portal hasonló telemetria összesítésére szolgál.
+ * Adott span-attribútumok eldobása a betöltési költségek szabályozásához.
 
 További információkért tekintse meg a [telemetria-feldolgozó](./java-standalone-telemetry-processors.md) dokumentációját.
+
+> [!NOTE]
+> Ha a betöltési költségek szabályozására a konkrét (teljes) átnyúló mennyiségeket szeretné eldobni, tekintse meg a [mintavétel felülbírálását](./java-standalone-sampling-overrides.md)ismertető témakört.
 
 ## <a name="auto-collected-logging"></a>Automatikusan összegyűjtött naplózás
 
