@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5960238893ae1e4dc307db98f9dc73889a2fa5b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487827"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108893"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -30,7 +30,7 @@ ms.locfileid: "103487827"
 > [Ez a minta a GitHubon érhető el.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
-Az Azure kommunikációs szolgáltatások **csoport csevegési hőse minta** azt mutatja be, hogyan használható a kommunikációs szolgáltatások csevegési webügyfél-függvénytára csoportos hívási élmény létrehozására.
+Az Azure kommunikációs szolgáltatások **csoport csevegési hőse minta** azt mutatja be, hogyan használható a kommunikációs szolgáltatások csevegési web SDK egy csoportos hívási élmény létrehozásához.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta helyi gépen való futtatása előtt. Ezután üzembe helyezzük a mintát az Azure-ban a saját Azure kommunikációs szolgáltatások erőforrásaival.
 
@@ -111,7 +111,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 További információért tekintse át a következő cikkeket:
 
 - Tudnivalók a [csevegési fogalmakról](../concepts/chat/concepts.md)
-- Ismerkedjen meg a [csevegő ügyféloldali függvénytárával](../concepts/chat/sdk-features.md)
+- Ismerkedjen meg a [csevegő SDK](../concepts/chat/sdk-features.md) -val
 - A [contoso Med-alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-med-app) mintájának áttekintése
 
 ## <a name="additional-reading"></a>További információ

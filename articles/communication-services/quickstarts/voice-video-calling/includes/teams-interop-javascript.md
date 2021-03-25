@@ -1,19 +1,19 @@
 ---
 title: Gyors útmutató – csapatokhoz való csatlakozás egy webalkalmazásból
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat a Teams Meeting szolgáltatáshoz az Azure kommunikációs szolgáltatások használatával, amely a JavaScript-ügyfél függvénytárát hívja meg.
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat a Teams Meeting szolgáltatáshoz az Azure kommunikációs szolgáltatások Meghívási SDK for JavaScript használatával
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 43f6241f0da0ecc9c68cf60e9f1a0482509374f3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b6cf48c577bb6f22f497007c4b1c1b57ab6f187
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487994"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108186"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat a Teams Meeting szolgáltatáshoz az Azure kommunikációs szolgáltatások használatával, amely az ügyféloldali függvénytárat hívja meg a JavaScripthez.
+Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy Teams-találkozóhoz az Azure kommunikációs szolgáltatások a JavaScripthez készült Calling SDK használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

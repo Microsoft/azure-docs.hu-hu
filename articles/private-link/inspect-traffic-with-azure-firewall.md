@@ -1,5 +1,5 @@
 ---
-title: A Azure Firewall használata a privát végpontoknak szánt forgalom vizsgálatára
+title: Egy privát végpontra irányuló forgalom vizsgálata az Azure Firewall használatával
 titleSuffix: Azure Private Link
 description: Ebből a témakörből megtudhatja, hogyan vizsgálhatja meg Azure Firewall használatával a privát végpontoknak szánt forgalmat.
 services: private-link
@@ -8,14 +8,14 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4fe43ec7661cfad25c48819183742c3f33951d92
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575129"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108145"
 ---
-# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>A Azure Firewall használata a privát végpontoknak szánt forgalom vizsgálatára
+# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Egy privát végpontra irányuló forgalom vizsgálata az Azure Firewall használatával
 
 Az Azure Private-végpont az Azure privát kapcsolatának alapvető építőeleme. A privát végpontok lehetővé teszik, hogy a virtuális hálózaton üzembe helyezett Azure-erőforrások magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
@@ -25,8 +25,8 @@ Előfordulhat, hogy meg kell vizsgálnia vagy le kell tiltania az ügyfelektől 
 
 Az alábbi korlátozások érvényesek:
 
-* A hálózati biztonsági csoportok (NSG) nem vonatkoznak a privát végpontokra
-* A felhasználó által megadott útvonalak (UDR-EK) nem vonatkoznak a privát végpontokra
+* A hálózati biztonsági csoportokat (NSG) a magánhálózati végpontokból érkező forgalom figyelmen kívül hagyja.
+* A felhasználó által megadott útvonalakat (UDR) a privát végpontokból érkező forgalom figyelmen kívül hagyja.
 * Egyetlen útválasztási tábla csatlakoztatható egy alhálózathoz
 * Az útválasztási táblázat legfeljebb 400 útvonalat támogat
 
@@ -35,7 +35,8 @@ A Azure Firewall a következők egyikével szűri a forgalmat:
 * A TCP-és UDP [-protokollok hálózati szabályainak teljes tartományneve](../firewall/fqdn-filtering-network-rules.md)
 * FQDN a HTTP-, HTTPS-és MSSQL [-alkalmazási szabályokban](../firewall/features.md#application-fqdn-filtering-rules) . 
 
-A privát végpontokon keresztül elérhető szolgáltatások többsége HTTPS protokollt használ. Az Azure SQL használata esetén ajánlott az alkalmazási szabályok használata a hálózati szabályokon keresztül.
+> [!IMPORTANT] 
+> Az alkalmazási szabályok hálózati szabályokon keresztül történő használata ajánlott a privát végpontokra irányuló forgalom vizsgálatakor a flow-szimmetria fenntartása érdekében. Ha a rendszer hálózati szabályokat használ, vagy Azure Firewall helyett NVA használ, a SNAT a privát végpontok felé irányuló forgalomra kell konfigurálni.
 
 > [!NOTE]
 > Az SQL FQDN-szűrés csak [proxy módban](../azure-sql/database/connectivity-architecture.md#connection-policy) támogatott (1433-es port). A **proxy** mód több késést eredményezhet az *átirányításhoz* képest. Ha továbbra is az átirányítási módot szeretné használni, amely az Azure-on keresztül csatlakozó ügyfelek esetében az alapértelmezett, akkor a hozzáférést a tűzfal hálózati szabályok teljes tartománynevével szűrheti.
@@ -46,12 +47,9 @@ A privát végpontokon keresztül elérhető szolgáltatások többsége HTTPS p
 
 Ez a forgatókönyv a legátfogóbb architektúra, amely privát végpontok használatával több Azure-szolgáltatáshoz is csatlakozhat. Létrejön egy útvonal, amely arra a hálózati címtartományre mutat, ahol a magánhálózati végpontok telepítve vannak. Ez a konfiguráció csökkenti az adminisztratív terhelést, és megakadályozza a futtatást a 400 útvonalon.
 
-Ha a virtuális hálózatok egymáshoz kapcsolódnak, az ügyfél virtuális hálózata és a központi virtuális hálózat Azure Firewall közötti kapcsolat díjköteles lesz.
+Ha a virtuális hálózatok egymáshoz kapcsolódnak, az ügyfél virtuális hálózata és a központi virtuális hálózat Azure Firewall közötti kapcsolat díjköteles lesz. A hub virtuális hálózatban lévő Azure Firewall és a társ virtuális hálózatban lévő magánhálózati végpontok közötti kapcsolatok nem számítanak fel díjat.
 
 A társ virtuális hálózatokkal létesített kapcsolatokkal kapcsolatos díjakról további információt a [díjszabási](https://azure.microsoft.com/pricing/details/private-link/) oldal gyakori kérdések szakasza tartalmaz.
-
->[!NOTE]
-> Ez a forgatókönyv bármely harmadik féltől származó NVA vagy Azure Firewall hálózati szabály használatával valósítható meg az alkalmazási szabályok helyett.
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>2. forgatókönyv: hub és küllős architektúra – megosztott virtuális hálózat magánhálózati végpontok és virtuális gépek számára
 
@@ -69,21 +67,15 @@ Az útválasztási táblázat fenntartásának adminisztratív terhelése növek
 
 A teljes architektúrától függően lehetséges, hogy az 400-es útvonalakra vonatkozó korlátot futtatja. Ajánlott az 1. esetet használni, amikor csak lehetséges.
 
-Ha a virtuális hálózatok egymáshoz kapcsolódnak, az ügyfél virtuális hálózata és a központi virtuális hálózat Azure Firewall közötti kapcsolat díjköteles lesz.
+Ha a virtuális hálózatok egymáshoz kapcsolódnak, az ügyfél virtuális hálózata és a központi virtuális hálózat Azure Firewall közötti kapcsolat díjköteles lesz. A hub virtuális hálózatban lévő Azure Firewall és a társ virtuális hálózatban lévő magánhálózati végpontok közötti kapcsolatok nem számítanak fel díjat.
 
 A társ virtuális hálózatokkal létesített kapcsolatokkal kapcsolatos díjakról további információt a [díjszabási](https://azure.microsoft.com/pricing/details/private-link/) oldal gyakori kérdések szakasza tartalmaz.
-
->[!NOTE]
-> Ez a forgatókönyv bármely harmadik féltől származó NVA vagy Azure Firewall hálózati szabály használatával valósítható meg az alkalmazási szabályok helyett.
 
 ## <a name="scenario-3-single-virtual-network"></a>3. forgatókönyv: egyetlen virtuális hálózat
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Egyetlen virtuális hálózat" border="true":::
 
-Bizonyos korlátozások vonatkoznak a megvalósításra: a központba való Migrálás és a küllős architektúra nem lehetséges. Ugyanazok a szempontok, mint a 2. forgatókönyv esetében. Ebben a forgatókönyvben a virtuális hálózati társítási díjak nem érvényesek.
-
->[!NOTE]
-> Ha ezt a forgatókönyvet harmadik féltől származó NVA vagy Azure Firewall használatával szeretné megvalósítani, akkor az alkalmazási szabályok helyett hálózati szabályokra van szükség ahhoz, hogy SNAT a titkos végpontokra irányuló forgalmat. Ellenkező esetben a virtuális gépek és a magánhálózati végpontok közötti kommunikáció sikertelen lesz.
+Akkor használja ezt a mintát, ha a központra és a küllő architektúrára való Migrálás nem lehetséges. Ugyanazok a szempontok, mint a 2. forgatókönyv esetében. Ebben a forgatókönyvben a virtuális hálózati társítási díjak nem érvényesek.
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>4. forgatókönyv: a helyszíni forgalom magánhálózati végpontokra
 
@@ -97,9 +89,6 @@ Ez az architektúra akkor valósítható meg, ha a következővel konfigurálta 
 Ha a biztonsági követelmények megkövetelik, hogy az ügyfél a privát végpontokon keresztül elérhető szolgáltatásokra legyen továbbítva egy biztonsági berendezésen keresztül, akkor ezt a forgatókönyvet kell telepíteni.
 
 Ugyanazokat a szempontokat kell figyelembe venni, mint a fenti 2. forgatókönyvben. Ebben a forgatókönyvben nincsenek virtuális hálózati társítási díjak. További információ arról, hogyan konfigurálhatja a DNS-kiszolgálókat, hogy a helyszíni számítási feladatok hozzáférjenek a privát végpontokhoz, lásd: helyszíni [munkaterhelések DNS-továbbító használatával](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).
-
->[!NOTE]
-> Ha ezt a forgatókönyvet harmadik féltől származó NVA vagy Azure Firewall használatával szeretné megvalósítani, akkor az alkalmazási szabályok helyett hálózati szabályokra van szükség ahhoz, hogy SNAT a titkos végpontokra irányuló forgalmat. Ellenkező esetben a virtuális gépek és a magánhálózati végpontok közötti kommunikáció sikertelen lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

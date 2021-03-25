@@ -4,12 +4,12 @@ description: Ismerje meg a Visual Studióban létrehozott alkalmazás-projektet.
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d162918644727d4c79ad606f1ed34816f543d81
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97760435"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044379"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Az Service Fabric alkalmazás és a következő lépések
 Az Azure Service Fabric-alkalmazás létrejött. Ez a cikk számos erőforrást tartalmaz, néhány további információt és a lehetséges [következő lépéseket](#next-steps).
@@ -59,7 +59,7 @@ Az alkalmazás olyan bizalmas adatokat is tartalmazhat, mint például a tárol�
 Más platformokhoz hasonlóan a Service Fabric alkalmazások általában a következő fázisokon haladnak át: tervezés, fejlesztés, tesztelés, üzembe helyezés, frissítés, karbantartás és eltávolítás. [Ez a cikk](service-fabric-application-lifecycle.md) áttekintést nyújt az API-król, valamint arról, hogyan használják a különböző szerepkörök a Service Fabric alkalmazás életciklusának fázisaiban.
 
 ## <a name="learn-about-best-practices"></a>További információ az ajánlott eljárásokról
-Service Fabric számos cikket tartalmaz az [ajánlott eljárásokkal](./service-fabric-best-practices-overview.md)kapcsolatban. Használja ki ezt az információt, hogy biztosítsa a fürt és az alkalmazás futtatását, valamint a lehetséges műveleteket.
+Service Fabric számos cikket tartalmaz az [ajánlott eljárásokkal](./service-fabric-best-practices-security.md)kapcsolatban. Használja ki ezt az információt, hogy biztosítsa a fürt és az alkalmazás futtatását, valamint a lehetséges műveleteket.
 A témakörök a következőket foglalják magukban:
 * [Biztonság](./service-fabric-best-practices-security.md)
 * [Hálózat](./service-fabric-best-practices-networking.md)

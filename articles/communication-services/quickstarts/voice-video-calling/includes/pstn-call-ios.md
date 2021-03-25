@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: 1bdbfa0966f274d6c026110d7c50bf73266b1189
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 43e3463a3284f57825073888146b38fa14cbf5d3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "104729464"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109036"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Előfeltételek
@@ -23,7 +23,7 @@ ms.locfileid: "104729464"
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 
 - A kommunikációs szolgáltatások erőforrásához tartozó telefonszámok megtekintéséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), keresse meg a kommunikációs szolgáltatások erőforrását, és nyissa meg a **telefonszámok** lapot a bal oldali navigációs ablaktáblán.
-- Az alkalmazást az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatások segítségével hozhatja létre és futtathatja:
+- Az alkalmazást az iOS rendszerhez készült Azure kommunikációs szolgáltatások meghívásával hozhatja létre és futtathatja:
 
 ## <a name="setting-up"></a>Beállítás
 

@@ -147,6 +147,8 @@
       href: /azure/templates/microsoft.netapp/allversions
     - name: Azure-beli alkalmazáskonzisztens pillanatkép-készítési eszköz (AzAcSnap)
       items:
+        - name: A AzAcSnap kibocsátási megjegyzései
+          href: azacsnap-release-notes.md
         - name: Bevezetés az AzAcSnap használatába
           href: azacsnap-get-started.md
         - name: Az AzAcSnap telepítése

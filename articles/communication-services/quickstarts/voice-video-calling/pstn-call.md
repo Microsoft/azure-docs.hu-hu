@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a861ed27414ed407d00e8e886f20fb952a8ac95e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729515"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109037"
 ---
 # <a name="quickstart-call-to-phone"></a>Gyors útmutató: telefonos hívás
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások meghívásával az ügyféloldali kódtár használatával az alkalmazáshoz való PSTN-hívás hozzáadásához.
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Meghívási SDK-val az alkalmazáshoz való PSTN-hívás hozzáadásához.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -42,5 +42,5 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 További információért tekintse át a következő cikkeket:
 
-- Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](./calling-client-samples.md)
+- További információ az [SDK-képességek meghívásáról](./calling-client-samples.md)
 - További információ a [hívás működéséről](../../concepts/voice-video-calling/about-call-types.md)

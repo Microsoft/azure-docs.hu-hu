@@ -8,18 +8,18 @@ ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: 0de4bb6424fe8fa87d1e6e8628dcfc394c6369c8
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 5f173411726283b86cad7706d10743ef62943e46
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804010"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108476"
 ---
 # <a name="quickstart-add-joining-a-teams-meeting-to-your-app"></a>Gyors útmutató: az alkalmazáshoz való csatlakozás hozzáadása csapathoz
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatásokat használó csapatok beágyazásával, hogy csapat-értekezleteket vegyen fel az alkalmazásba. 
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások csapatának beágyazási SDK használatával, hogy csapat-értekezleteket vegyen fel az alkalmazásba. 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 

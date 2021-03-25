@@ -1,7 +1,7 @@
 ---
-title: SMS ügyféloldali kódtár – áttekintés az Azure kommunikációs szolgáltatásokhoz
+title: SMS SDK – áttekintés az Azure kommunikációs szolgáltatásokhoz
 titleSuffix: An Azure Communication Services concept document
-description: Áttekintést nyújt az SMS-ügyfél könyvtáráról és ajánlatáról.
+description: Áttekintést nyújt az SMS SDK-ról és annak ajánlatáról.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,25 +9,25 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11ab634ed4b25c5fd8c0079263094c393e9dcbe6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 25a5befab6ef141b059caaac7b1784d47f2f93cf
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496592"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108111"
 ---
-# <a name="sms-client-library-overview"></a>Az SMS-ügyfélkódtár áttekintése
+# <a name="sms-sdk-overview"></a>SMS SDK – áttekintés
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Az Azure kommunikációs szolgáltatások SMS-ügyfél-kódtárak használatával SMS-üzenetküldést adhat az alkalmazásaihoz.
+Az Azure kommunikációs szolgáltatások SMS SDK-k használatával SMS-üzenetküldést adhat az alkalmazásaihoz.
 
-## <a name="sms-client-library-capabilities"></a>Az SMS ügyféloldali kódtár képességei
+## <a name="sms-sdk-capabilities"></a>SMS SDK-képességek
 
-Az alábbi lista az ügyféloldali kódtárakban jelenleg elérhető funkciók készletét mutatja be.
+Az alábbi lista az SDK-k jelenleg elérhető funkcióit mutatja be.
 
 | Szolgáltatások csoportja | Képesség                                                                            | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------- | --- | ---- | ---- | ------ |

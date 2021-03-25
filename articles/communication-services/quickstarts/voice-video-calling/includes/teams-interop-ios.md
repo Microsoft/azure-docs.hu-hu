@@ -1,19 +1,19 @@
 ---
 title: Gyors útmutató – csapatokhoz való csatlakozás egy iOS-alkalmazásból
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat egy Teams-értekezlethez az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatásokkal
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat egy Teams Meeting szolgáltatáshoz az iOS-hez készült Azure Communication Services SDK-val
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 68f1abb5335386634874d9696738a8e552ebbe9c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8ff85dc5571f549027e208409db3f4e80c68b205
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487993"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108184"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat a Teams Meeting szolgáltatáshoz az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatások használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy Teams Meeting szolgáltatáshoz az iOS-hez készült Azure Communication Services SDK-val.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -178,7 +178,7 @@ struct ContentView_Previews: PreviewProvider {
 ## <a name="get-the-teams-meeting-link"></a>A Teams Meeting-hivatkozás beszerzése
 
 A Teams Meeting hivatkozás a Graph API-k használatával kérhető le. Ez részletesen szerepel a [Graph dokumentációjában](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-A kommunikációs szolgáltatások meghívójának ügyféloldali könyvtára fogadja a teljes Teams Meeting-hivatkozást. Ezt a hivatkozást a `onlineMeeting` [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta)alatt elérhető erőforrás részeként adja vissza a rendszer. A szükséges értekezlet-információkat a **JOIN Meeting** URL-címében is lekérheti a csapatok Értekezletének meghívásához.
+A kommunikációs szolgáltatások meghívója SDK egy teljes csapatot tárgyaló hivatkozást fogad el. Ezt a hivatkozást a `onlineMeeting` [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta)alatt elérhető erőforrás részeként adja vissza a rendszer. A szükséges értekezlet-információkat a **JOIN Meeting** URL-címében is lekérheti a csapatok Értekezletének meghívásához.
 
 ## <a name="launch-the-app-and-join-teams-meeting"></a>Indítsa el az alkalmazást, és csatlakozzon a csapatok Értekezletéhez
 

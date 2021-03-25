@@ -341,13 +341,15 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Videók másolása kódolás nélkül a REST-tel
           href: how-to-create-copy-video-audio-transform.md
-        - name: Feladatok létrehozása
+        - name: Feladatok létrehozása a .NET-tel
           href: cli-create-jobs.md
         - name: Feladatbemenet létrehozása helyi fájllal és .NET-tel
           displayName: upload
           href: job-input-from-local-file-how-to.md
         - name: Feladatok egyszerre több transzformált adattal
           href: job-multiple-transform-outputs.md
+        - name: Két vagy több videofájl összefűzése a .NET-tel
+          href: stitch-howto.md
     - name: Tartalom kódolása
       items:
         - name: HTTPS mint feladatbemenet

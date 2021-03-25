@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: eea54be9d159c6aacbbc24e2fe8edf874f8e2d83
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ecc7033007361e27908e0881b80091ac660398e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492336"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108390"
 ---
 # <a name="voice-and-video-concepts"></a>A hang- és videóhívással kapcsolatos alapfogalmak
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Az Azure kommunikációs szolgáltatásaival egy vagy több hang-és videohívásokat indíthat és fogadhat. A hívások más internethez csatlakoztatott eszközökre és a régi telefonokra is felhasználhatók. A kommunikációs szolgáltatások JavaScript-, Android-vagy iOS-alapú ügyféloldali kódtárai segítségével olyan alkalmazásokat hozhat létre, amelyek lehetővé teszik a felhasználók számára, hogy privát beszélgetésekben vagy csoportos megbeszéléseken beszéljenek egymással. Az Azure kommunikációs szolgáltatások támogatják a szolgáltatásokból vagy a robotoktól érkező hívásokat.
+Az Azure kommunikációs szolgáltatásaival egy vagy több hang-és videohívásokat indíthat és fogadhat. A hívások más internethez csatlakoztatott eszközökre és a régi telefonokra is felhasználhatók. A kommunikációs szolgáltatások JavaScript, Android vagy iOS SDK-k használatával olyan alkalmazásokat hozhat létre, amelyek lehetővé teszik a felhasználók számára, hogy privát beszélgetésekben vagy csoportos megbeszéléseken beszéljenek egymással. Az Azure kommunikációs szolgáltatások támogatják a szolgáltatásokból vagy a robotoktól érkező hívásokat.
 
 ## <a name="call-types-in-azure-communication-services"></a>Hívások típusai az Azure kommunikációs szolgáltatásokban
 
@@ -37,7 +37,7 @@ Minden alkalommal, amikor a felhasználók hagyományos telefonszámmal működn
 
 ### <a name="one-to-one-call"></a>Egy-az-egyhez hívás
 
-Az Azure kommunikációs szolgáltatások egy az egyhez típusú hívása akkor történik meg, amikor az egyik felhasználó egy másik felhasználóhoz csatlakozik az egyik ügyfél-kódtár használatával. A hívás akár VoIP vagy PSTN is lehet.
+Az Azure kommunikációs szolgáltatások egy az egyhez típusú hívása akkor történik meg, amikor az egyik felhasználó egy másik felhasználóhoz csatlakozik az egyik SDK-val. A hívás akár VoIP vagy PSTN is lehet.
 
 ### <a name="group-call"></a>Csoportos hívás
 
@@ -61,4 +61,4 @@ Az előzetes verzió ideje alatt a csoport azonosítója segítségével csatlak
 További információért tekintse át a következő cikkeket:
 - Ismerkedjen meg az általános [hívási folyamatokkal](../call-flows.md)
 - [Telefonszám-típusok](../telephony-sms/plan-solution.md)
-- További információ az [ügyféloldali kódtár funkcióinak meghívásáról](../voice-video-calling/calling-sdk-features.md)
+- Tudnivalók a [HÍVÓ SDK képességeiről](../voice-video-calling/calling-sdk-features.md)

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 33212f14faa0e7c201c13474af981790c01284f3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4a493d5f0d34cd4621d55c0371036c03e267c466
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "104598783"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108276"
 ---
 ## <a name="setting-up"></a>Beállítás
 
@@ -29,7 +29,7 @@ npm init -y
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat a JavaScript-hez készült ügyféloldali kódtár meghívásával.
+A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat HÍVÓ SDK-t a javascripthez.
 
 ```console
 npm install @azure/communication-common --save

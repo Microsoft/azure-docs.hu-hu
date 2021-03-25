@@ -7,16 +7,18 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dd67a4f1a005abc7319723efcc3f2944b18c4f5f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92123337"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109233"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central-beli adatPower BI-irányítópulton tárolt adatai megjelenítése és elemzése
 
 *Ez a témakör a rendszergazdákra és a megoldás-fejlesztőre vonatkozik.*
+
+[!Note] Ez a megoldás [örökölt adatexportálási funkciókat](./howto-export-data-legacy.md)használ. A legfrissebb adatexportálással tájékozódhat arról, hogyan csatlakozhat a Power BIhoz.
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI megoldási folyamat":::
 
@@ -27,7 +29,7 @@ Az Azure IoT Central v3 Power BI megoldásával hatékony Power BI irányítópu
 - Szűrés adott eszközök által elküldve
 - Egy táblázat legutóbbi telemetria-adatnézetének megtekintése
 
-Ez a megoldás olyan folyamatot állít be, amely beolvassa az adatokat a [folyamatos adatexportálási](./howto-export-data.md) Azure Blob Storage-fiókból. A folyamat Azure Functions, Azure Data Factory és Azure SQL Database használatával dolgozza fel és alakítja át az adatfeldolgozást. megjelenítheti és elemezheti az PBIX-fájlként letöltött Power BI-jelentésekben lévő összes adathalmazt. Az összes erőforrás az Azure-előfizetésében jön létre, így az egyes összetevők igényei szerint testreszabhatók.
+Ez a megoldás olyan folyamatot állít be, amely beolvassa az adatokat a [folyamatos adatexportálási](./howto-export-data-legacy.md) Azure Blob Storage-fiókból. A folyamat Azure Functions, Azure Data Factory és Azure SQL Database használatával dolgozza fel és alakítja át az adatfeldolgozást. megjelenítheti és elemezheti az PBIX-fájlként letöltött Power BI-jelentésekben lévő összes adathalmazt. Az összes erőforrás az Azure-előfizetésében jön létre, így az egyes összetevők igényei szerint testreszabhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

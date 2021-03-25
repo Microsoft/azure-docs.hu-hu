@@ -1,7 +1,7 @@
 ---
-title: Az ügyféloldali függvénytárat hívó Azure kommunikációs szolgáltatások – áttekintés
+title: Az SDK-t hívó Azure kommunikációs szolgáltatások áttekintése
 titleSuffix: An Azure Communication Services concept document
-description: Áttekintést nyújt a hívó ügyféloldali függvénytáráról.
+description: Áttekintést nyújt a hívó SDK-ról.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,25 +9,25 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598881"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108391"
 ---
-# <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
+# <a name="calling-sdk-overview"></a>Az SDK meghívása – áttekintés
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Az *ügyfelek* és szolgáltatások esetében két különálló család hívható meg az ügyféloldali kódtárak meghívásával *.* A jelenleg elérhető ügyféloldali kódtárak a végfelhasználói élményekhez készültek: webhelyek és natív alkalmazások.
+Az SDK-k meghívása két különálló családtal történik az *ügyfelek* és *szolgáltatások számára.* A jelenleg elérhető SDK-k végfelhasználói élményekhez készültek: webhelyek és natív alkalmazások.
 
-A szolgáltatás ügyféloldali kódtárai még nem érhetők el, és hozzáférést biztosítanak a robotokkal és más szolgáltatásokkal való integrációhoz alkalmas nyers hang-és video-adatsíkokhoz.
+A szolgáltatási SDK-k még nem érhetők el, és hozzáférést biztosítanak a robotokkal és más szolgáltatásokkal való integrációhoz alkalmas nyers hang-és video-adatsíkokhoz.
 
-## <a name="calling-client-library-capabilities"></a>Ügyféloldali kódtár képességeinek meghívása
+## <a name="calling-sdk-capabilities"></a>Az SDK képességeinek meghívása
 
-Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők az Azure kommunikációs szolgáltatásokban az ügyféloldali kódtárak meghívásakor.
+Az alábbi lista az SDK-kat hívó Azure kommunikációs szolgáltatásokban jelenleg elérhető funkciókat mutatja be.
 
 | Szolgáltatások csoportja | Képesség                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
@@ -74,7 +74,7 @@ Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők a
 
 
 
-## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>A JavaScript az operációs rendszer és a böngésző ügyféloldali függvénytárának támogatását hívja meg
+## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>Az operációs rendszer és a böngésző SDK-támogatását meghívó JavaScript
 
 A következő táblázat a jelenleg elérhető támogatott böngészők készletét tartalmazza. A böngésző legújabb három verzióját támogatjuk, hacsak másként nincs jelezve.
 
@@ -115,8 +115,8 @@ Ez az IFRAME például a kamera és a mikrofon elérését is lehetővé teszi:
 <iframe allow="camera *; microphone *">
 ```
 
-## <a name="calling-client-library-streaming-support"></a>Az ügyféloldali kódtár streaming-támogatásának meghívása
-A kommunikációs szolgáltatások az ügyféloldali kódtárat a következő folyamatos átviteli konfigurációkat támogatják:
+## <a name="calling-sdk-streaming-support"></a>Az SDK streaming támogatásának meghívása
+A kommunikációs szolgáltatások hívó SDK a következő folyamatos átviteli konfigurációkat támogatja:
 
 |           |Webes | Android/iOS|
 |-----------|----|------------|

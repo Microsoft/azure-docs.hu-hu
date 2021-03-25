@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ee8a192bcfe20c77e47ee9c89dfc3286a979e358
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722293"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108060"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -33,24 +33,22 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="basics-tab--project-details"></a>Alapismeretek lap > projekt részletei
-1. Az **alapbeállítások** lap **projekt részletei** területén adja meg a következő mezőket:
-      1. **Előfizetés** – válasszon ki egy előfizetést.
-      2. **Erőforráscsoport** – bármely erőforráscsoport használata.
-      3. **Erőforráscsoport** – hagyja üresen ezt a mezőt.
+Töltse ki az alábbi mezőket:
+    1. **Előfizetés** – válasszon ki egy előfizetést.
+    1. **Erőforráscsoport** – bármely erőforráscsoport használata.
+    1. **Erőforráscsoport** – hagyja üresen ezt a mezőt.
 
 
 ## <a name="basics-tab--workspace-details"></a>Alapismeretek lap > munkaterület részletei
-1. Az **alapok** lap **munkaterület részletei** területén adja meg a következő mezőket:
-      1. **Munkaterület neve** – tetszőleges globálisan egyedi nevet választhat. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
-      1. **Régió** – válasszon régiót.
-      1. **2. generációs Data Lake Storage kiválasztása**
-        1. Kattintson az **előfizetéshez** tartozó gombra.
-        1. A **fiók neve** területen kattintson az **új létrehozása** elemre, és nevezze el az új Storage-fiókot **contosolake** , vagy ehhez hasonló névnek kell lennie.
-        1. A **fájlrendszer neve** területen kattintson az **új létrehozása** elemre, és nevezze el a **felhasználók** nevet. Ekkor létrejön egy **felhasználó** nevű tároló. A munkaterület ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók a Spark-táblák és a Spark-alkalmazások naplói számára.
-        1. Jelölje be a "a Storage blob adatközreműködői szerepkör kiosztása a Data Lake Storage Gen2 fiókhoz" jelölőnégyzetet. 
+Töltse ki a következő mezőket: 1. **Munkaterület neve** – tetszőleges globálisan egyedi nevet választhat. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
+1. **Régió** – válasszon régiót.
+1. **2. generációs Data Lake Storage kiválasztása** 1. Kattintson az **előfizetéshez** tartozó gombra.
+1. A **fiók neve** területen kattintson az **új létrehozása** elemre, és nevezze el az új Storage-fiókot **contosolake** , vagy ehhez hasonló névnek kell lennie.
+1. A **fájlrendszer neve** területen kattintson az **új létrehozása** elemre, és nevezze el a **felhasználók** nevet. Ekkor létrejön egy **felhasználó** nevű tároló. A munkaterület ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók a Spark-táblák és a Spark-alkalmazások naplói számára.
+1. Jelölje be a "a Storage blob adatközreműködői szerepkör kiosztása a Data Lake Storage Gen2 fiókhoz" jelölőnégyzetet. 
 
-### <a name="completing-the-process"></a>A folyamat befejezése
-5. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
+## <a name="completing-the-process"></a>A folyamat befejezése
+Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
 
 > [!NOTE]
 > Ha egy meglévő dedikált SQL-készletből (korábban SQL DW) kívánja engedélyezni a munkaterület-szolgáltatásokat, tekintse át a [munkaterület engedélyezése a DEDIKÁLT SQL-készlethez (korábban SQL DW) című témakört](./sql-data-warehouse/workspace-connected-create.md).
