@@ -10,16 +10,16 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 8262b0c9abc4911c1e5c039eb02920c18e7de90b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f71f394f190c5de1c3d64d02fd6113817ecda1ea
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104783569"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152789"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Az Azure kommunikációs szolgáltatások **csoport az Androidhoz készült Hero-minta** azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg az androidos ügyféloldali kódtárat a hangvételt és a videót tartalmazó csoportos hívás létrehozásához. Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be és futtathatja a mintát. A minta áttekintése a kontextusban.
+Az Azure kommunikációs szolgáltatások **csoport az Androidhoz készült Hero-minta** azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg az Android SDK-t, hogy a hangvételt és a videót is tartalmazó csoportos hívást hozzon létre. Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be és futtathatja a mintát. A minta áttekintése a kontextusban.
 
 ## <a name="download-code"></a>Kód letöltése
 
@@ -27,7 +27,7 @@ A gyors útmutatóhoz tartozó véglegesített kód megkeresése a [githubon](ht
 
 ## <a name="overview"></a>Áttekintés
 
-A minta egy natív Android-alkalmazás, amely az Azure kommunikációs szolgáltatások Android-ügyféloldali kódtárait használja a hang-és videohívás-hívások funkcióinak meghívásához. Az alkalmazás kiszolgálóoldali összetevő használatával kiépíti azokat a hozzáférési jogkivonatokat, amelyek az Azure kommunikációs szolgáltatások ügyféloldali kódtár inicializálásához használatosak. A kiszolgálóoldali összetevő konfigurálásához nyugodtan kövesse a [megbízható szolgáltatást Azure functions](../../tutorials/trusted-service-tutorial.md) oktatóanyaggal.
+A minta egy natív Android-alkalmazás, amely az Azure kommunikációs szolgáltatások Android SDK-kat használja a hang-és videohívás-hívások funkcióinak kiépítéséhez. Az alkalmazás kiszolgálóoldali összetevő használatával kiépíti az Azure Communication Services SDK inicializálásához használt hozzáférési jogkivonatokat. A kiszolgálóoldali összetevő konfigurálásához nyugodtan kövesse a [megbízható szolgáltatást Azure functions](../../tutorials/trusted-service-tutorial.md) oktatóanyaggal.
 
 A minta így néz ki:
 
@@ -133,7 +133,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 További információért tekintse át a következő cikkeket:
 
-- Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- Ismerkedjen meg [a Calling SDK használatával](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>További információ

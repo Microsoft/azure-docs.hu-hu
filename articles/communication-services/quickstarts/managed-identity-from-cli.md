@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: b49ee61f3ee4ea8e8a177bca6aa566a07b7ef113
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044736"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110678"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Felügyelt identitással való hozzáférés engedélyezése a kommunikációs erőforráshoz a fejlesztési környezetben
 
-Az Azure Identity ügyféloldali kódtár Azure Active Directory (Azure AD) jogkivonat-hitelesítési támogatást biztosít az Azure SDK-hoz. Az Azure kommunikációs szolgáltatások ügyféloldali kódtárainak legújabb verziói a .NET, a Java, a Python és a JavaScript és az Azure Identity Library integrálásával egyszerű és biztonságos eszközöket biztosítanak ahhoz, hogy OAuth 2,0-tokent szerezzenek az Azure kommunikációs szolgáltatások kéréseinek engedélyezéséhez.
+Az Azure Identity SDK Azure Active Directory (Azure AD) jogkivonat-hitelesítési támogatást biztosít az Azure SDK-hoz. Az Azure kommunikációs szolgáltatások SDK-k legújabb verziói a .NET, a Java, a Python és a JavaScript integrálására az Azure Identity Library használatával egyszerű és biztonságos eszközöket biztosítanak ahhoz, hogy OAuth 2,0-tokent szerezzenek az Azure kommunikációs szolgáltatások kéréseinek engedélyezéséhez.
 
-Az Azure Identity ügyféloldali kódtár előnye, hogy lehetővé teszi, hogy ugyanazt a kódot használja több szolgáltatás hitelesítéséhez, akár az alkalmazás a fejlesztői környezetben, akár az Azure-ban fut. Az Azure Identity Client Library egy rendszerbiztonsági tag hitelesítésére szolgál. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz. A fejlesztői környezetben a felügyelt identitás nem létezik, így az ügyfél-függvénytár tesztelési célból hitelesíti a felhasználót vagy a regisztrált alkalmazást.
+Az Azure Identity SDK előnye, hogy lehetővé teszi, hogy ugyanazt a kódot használja több szolgáltatás hitelesítésére is, függetlenül attól, hogy az alkalmazás a fejlesztői környezetben vagy az Azure-ban fut-e. Az Azure Identity SDK egy rendszerbiztonsági tag hitelesítésére szolgál. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz. A fejlesztői környezetben a felügyelt identitás nem létezik, így az SDK tesztelési célból hitelesíti a felhasználót vagy a regisztrált alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ A felügyelt identitásokat engedélyezni kell az Ön által engedélyezett Azur
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure Resource Manager ügyféloldali kódtárak](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [SDK-k Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 - [App Services](../../app-service/overview-managed-identity.md)
 
 ## <a name="authenticate-a-registered-application-in-the-development-environment"></a>Regisztrált alkalmazás hitelesítése a fejlesztői környezetben
@@ -68,7 +68,7 @@ A `az ad sp create-for-rbac` parancs egy egyszerű szolgáltatásnév-tulajdons�
 
 #### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-Az Azure Identity ügyféloldali függvénytár három környezeti változóból olvassa be az értékeket az alkalmazás hitelesítéséhez. A következő táblázat az egyes környezeti változókhoz beállított értéket ismerteti.
+Az Azure Identity SDK három környezeti változóból olvassa be az értékeket az alkalmazás hitelesítéséhez. A következő táblázat az egyes környezeti változókhoz beállított értéket ismerteti.
 
 |Környezeti változó|Érték
 |-|-

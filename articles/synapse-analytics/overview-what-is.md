@@ -6,15 +6,15 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 03/27/2021
+ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 316a78f4725aa3c33a78b00c6de3b8419aea717e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a7dcd630b0d5987c796ebb5a02657af9130221e6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600207"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045620"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
@@ -46,7 +46,7 @@ Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQ
 * Az SQL és a Spark közvetlenül képes felderíteni és elemezni az adattóban tárolt Parquet, CSV-, TSV-és JSON-fájlokat.
 * Gyors skálázható betöltés és eltávolítás az SQL és a Spark adatbázisok közötti adattároláshoz
 
-## <a name="built-in-data-integration-via-pipelines"></a>Beépített Adatintegráció az adatcsatornákon keresztül
+## <a name="built-in-data-integration"></a>Beépített Adatintegráció
 
 Az Azure szinapszis ugyanazokat az adatintegrációs motort és tapasztalatokat tartalmazza, mint a Azure Data Factory, ami lehetővé teszi, hogy az Azure szinapszis Analytics elhagyása nélkül hozzon létre gazdag mennyiségű ETL-folyamatot.
 
