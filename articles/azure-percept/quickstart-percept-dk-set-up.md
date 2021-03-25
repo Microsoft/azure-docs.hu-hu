@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 9567ec2458a01825568cb853728f71db10228ee3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8cecd1b57395fa51fd95c824e88885d9c3ae3f09
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608278"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023299"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Az Azure Percept DK beállítása és az első AI-modell üzembe helyezése
 
@@ -30,7 +30,7 @@ Ha a folyamat során bármilyen problémát tapasztal, tekintse meg a lehetsége
 - Egy Azure Percept DK (fejlesztői csomag).
 - Windows, Linux vagy OS X rendszerű gazdagép, Wi-Fi-képességgel és egy webböngészővel.
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Az Azure-fióknak **tulajdonos** vagy **közreműködő** szerepkörrel kell rendelkeznie az előfizetésen belül. Az Azure-fiók szerepkörének vizsgálatához kövesse az alábbi lépéseket. Az Azure szerepkör-definíciókkal kapcsolatos további információkért tekintse meg az [Azure szerepköralapú hozzáférés-vezérlési dokumentációját](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles).
+- Az Azure-fióknak **tulajdonos** vagy **közreműködő** szerepkörrel kell rendelkeznie az előfizetésen belül. Az Azure-fiók szerepkörének vizsgálatához kövesse az alábbi lépéseket. Az Azure szerepkör-definíciókkal kapcsolatos további információkért tekintse meg az [Azure szerepköralapú hozzáférés-vezérlési dokumentációját](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles).
 
     > [!CAUTION]
     > Ha több Azure-fiókkal rendelkezik, a böngésző egy másik fiókból is gyorsítótárazhatja a hitelesítő adatokat. A félreértések elkerülése érdekében javasoljuk, hogy zárja be az összes nem használt böngészőablakot, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a telepítési élmény megkezdése előtt. A megfelelő fiókkal való bejelentkezéssel kapcsolatos további információkért tekintse meg a [telepítési hibaelhárítási útmutatót](./how-to-troubleshoot-setup.md) .
@@ -43,7 +43,7 @@ Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy az Azure-fiókja "
 
 1. Kattintson az **előfizetések** ikonra (a sárga kulcshoz hasonlóan néz ki).
 
-1. Válassza ki az előfizetését a listából. Ha nem látja az előfizetést, győződjön meg arról, hogy a megfelelő Azure-fiókkal van bejelentkezve. Ha új előfizetést szeretne létrehozni, kövesse [az alábbi lépéseket](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription).
+1. Válassza ki az előfizetését a listából. Ha nem látja az előfizetést, győződjön meg arról, hogy a megfelelő Azure-fiókkal van bejelentkezve. Ha új előfizetést szeretne létrehozni, kövesse [az alábbi lépéseket](../cost-management-billing/manage/create-subscription.md).
 
 1. Az előfizetés menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 1. Kattintson **a saját hozzáférés megtekintése** elemre.

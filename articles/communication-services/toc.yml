@@ -92,6 +92,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: A hang- és videóhívással kapcsolatos alapfogalmak
           href: concepts/voice-video-calling/about-call-types.md
+        - name: A hálózatra vonatkozó követelmények
+          href: concepts/voice-video-calling/network-requirements.md
         - name: Hívási folyamatok
           href: concepts/call-flows.md
         - name: Folyamat-topológiák hívása

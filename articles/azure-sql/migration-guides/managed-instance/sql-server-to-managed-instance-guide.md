@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server a felügyelt SQL-példányhoz: áttelepítési útmutató'
+title: 'Az Azure SQL felügyelt példányának SQL Servere: áttelepítési útmutató'
 description: Ez az útmutató bemutatja, hogyan telepítheti át SQL Server adatbázisait az Azure SQL felügyelt példányaira.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1dcb72c30268dd82052e29232e79a485d86f72d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564490"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025305"
 ---
-# <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Áttelepítési útmutató: SQL Server a felügyelt SQL-példányhoz
+# <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>Áttelepítési útmutató: SQL Server a felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Ez az útmutató segítséget nyújt SQL Server példányának az Azure SQL felügyelt példányra való átirányításához. 
@@ -30,7 +30,7 @@ A helyszíni vagy a szolgáltatásban futó SQL Server áttelepíthetők:
 - Számítási motor (Google Cloud Platform-GCP)  
 - Felhőbeli SQL a SQL Serverhoz (Google Cloud Platform – GCP) 
 
-További áttelepítési információkért tekintse meg az [áttelepítés áttekintését](sql-server-to-managed-instance-overview.md). Más forgatókönyvek esetén tekintse meg az [adatbázis áttelepítési Útmutatóját](https://datamigration.microsoft.com/).
+További áttelepítési információkért tekintse meg az [áttelepítés áttekintését](sql-server-to-managed-instance-overview.md). Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="Áttelepítési folyamat folyamatábrája":::
 
@@ -40,6 +40,8 @@ A SQL Server Azure SQL felügyelt példányra való áttelepítéséhez mindenk�
 
 - Válassza ki az [áttelepítési módszert](sql-server-to-managed-instance-overview.md#compare-migration-options) , valamint a kiválasztott módszerhez szükséges megfelelő eszközöket.
 - Telepítse a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) szolgáltatást egy olyan gépre, amely képes csatlakozni a forráshoz SQL Server
+- Kapcsolat és megfelelő engedélyek a forrás és a cél eléréséhez. 
+
 
 
 ## <a name="pre-migration"></a>A migrálás előtt

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4fc14083b0912cf18f98c229adcb297b89bc8971
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4732abacc80a24d268f0e5cb7d100079e5a8d90b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95553727"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104017"
 ---
 Hozzon létre egy Távoli asztali kapcsolat a VNet üzembe helyezett virtuális géphez való kapcsolódáshoz. A virtuális géphez való kapcsolódás legjobb módja, ha a számítógép neve helyett a magánhálózati IP-címével csatlakozik. Így teszteli, hogy tud-e csatlakozni, hogy a névfeloldás megfelelően van-e konfigurálva. 
 
@@ -32,4 +32,4 @@ Ha nem sikerül csatlakoznia egy virtuális géphez a VPN-kapcsolaton keresztül
 - Ha a magánhálózati IP-cím használatával tud csatlakozni a virtuális géphez, de a számítógép neve nem, ellenőrizze, hogy megfelelően konfigurálta-e a DNS-t. A virtuális gépek névfeloldásának működésével kapcsolatos további információkért lásd [a virtuális gépek névfeloldásával](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) foglakozó cikket.
 - A VNet DNS-kiszolgáló IP-címeinek megadása után ellenőrizze, hogy a VPN-ügyfél konfigurációs csomagja létrejött-e. Ha frissíti a DNS-kiszolgáló IP-címeit, létrehoz és telepít egy új VPN-ügyfél-konfigurációs csomagot.
 
-A hibaelhárítással kapcsolatos további információkért lásd [a virtuális gép távoli asztali kapcsolatainak hibaelhárításával](../articles/virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) foglalkozó cikket.
+A hibaelhárítással kapcsolatos további információkért lásd [a virtuális gép távoli asztali kapcsolatainak hibaelhárításával](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection) foglalkozó cikket.

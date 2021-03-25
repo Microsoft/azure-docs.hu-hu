@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: jamesfit
 author: jimmyfit
 ms.date: 01/29/2021
-ms.openlocfilehash: 096d16bb2c7249ec99f37fbee9d8ffc8f0e45db2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73135d95a56dc03790b3b7368a276ebfc99275fd
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050766"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025067"
 ---
 # <a name="collecting-event-tracing-for-windows-etw-events-for-analysis-azure-monitor-logs"></a>Windows esemény-nyomkövetés (ETW) események gyűjtése elemzési Azure Monitor naplókhoz
 
@@ -71,7 +71,7 @@ A megfelelő események generálása után meg kell jelennie az Azure Storage **
 
 ### <a name="step-4-configure-log-analytics-storage-account-collection"></a>4. lépés: a Log Analytics Storage-fiók gyűjtésének konfigurálása
 
-Kövesse [ezeket az utasításokat](https://docs.microsoft.com/azure/azure-monitor/essentials/diagnostics-extension-logs#collect-logs-from-azure-storage) a naplók Azure Storage-ból való összegyűjtéséhez. A konfigurálást követően a ETW-eseménynek meg kell jelennie a Log Analytics a **ETWEvent** tábla alatt.
+Kövesse [ezeket az utasításokat](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) a naplók Azure Storage-ból való összegyűjtéséhez. A konfigurálást követően a ETW-eseménynek meg kell jelennie a Log Analytics a **ETWEvent** tábla alatt.
 
 ## <a name="next-steps"></a>Következő lépések
 - [Egyéni mezők](../logs/custom-fields.md) használatával létrehozhat struktúrát a ETW-eseményekben

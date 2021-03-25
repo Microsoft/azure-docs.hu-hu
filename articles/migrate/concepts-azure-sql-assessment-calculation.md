@@ -5,16 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: e4e726f742d46a4b63563f55c191cf21e49d06fc
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 2bb68c8c183e3de132bc7cf4504714a260ea2683
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778321"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025118"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Értékelés áttekintése (Migrálás az Azure SQL-be)
 
-Ez a cikk áttekintést nyújt a helyszíni SQL Server-példányok VMware-környezetből Azure SQL Database-be vagy felügyelt példányokra való áttelepítésének értékeléséről a [Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool)használatával.
+Ez a cikk áttekintést nyújt a helyszíni SQL Server-példányok VMware-környezetből Azure SQL Database-be vagy felügyelt példányokra való áttelepítésének értékeléséről a [Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-discovery-and-assessment-tool)használatával.
 
 ## <a name="whats-an-assessment"></a>Mi az értékelés?
 A felderítési és értékelési eszközzel végzett értékelés az adatok időbeli pillanatfelvétele, amely a felkészültséget méri, és a helyszíni kiszolgálók Azure-ba történő áttelepítésének hatását becsüli.

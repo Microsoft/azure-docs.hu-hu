@@ -146,6 +146,8 @@
               href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
         - name: Wi-Fi kezelése
           href: azure-stack-edge-mini-r-manage-wifi.md
+        - name: Wi-Fi profilok használata
+          href: azure-stack-edge-mini-r-use-wifi-profiles.md
 - name: 'Közös Pro GPU, Pro R, mini R'
   items:
     - name: Közös alapelvek

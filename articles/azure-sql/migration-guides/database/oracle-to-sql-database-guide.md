@@ -1,5 +1,5 @@
 ---
-title: 'Oracle – SQL Database: áttelepítési útmutató'
+title: 'Oracle – Azure SQL Database: áttelepítési útmutató'
 description: Ez az útmutató bemutatja, hogyan telepítheti át Oracle-sémáját Azure SQL Database az Oracle-SQL Server Migration Assistant (SSMA for Oracle) használatával.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: f00740de5a327858fd250a0cb561b07c32f3b726
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655488"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022279"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Áttelepítési útmutató: Oracle – Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 Ez az útmutató bemutatja, hogyan migrálhatja Oracle-sémáit Azure SQL Database az Oracle-SQL Server Migration Assistant használatával.
 
-Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://datamigration.microsoft.com/). 
+Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,18 +44,15 @@ Az előfeltételek teljesítése után készen áll a környezet topológiáján
 
 Az Oracle SQL Server Migration Assistant (SSMA) segítségével áttekintheti az adatbázis-objektumokat és-adatforrásokat, kiértékelheti az áttelepítéshez szükséges adatbázisokat, áttelepítheti az adatbázis-Azure SQL Database objektumokat, és végül áttelepítheti az adatbázisba. 
 
-
 Az értékelés létrehozásához kövesse az alábbi lépéseket: 
-
 
 1. [Az Oracle SQL Server Migration Assistant](https://www.microsoft.com/en-us/download/details.aspx?id=54258)megnyitása. 
 1. Válassza a **fájl** , majd az **új projekt** lehetőséget. 
-1. Adja meg a projekt nevét, a kívánt helyet a projekt mentéséhez, majd válassza a Azure SQL Database az áttelepítési célként lehetőséget a legördülő menüből. Válassza az **OK** lehetőséget.
+1. Adja meg a projekt nevét, a kívánt helyet a projekt mentéséhez, majd válassza a Azure SQL Database az áttelepítési célként lehetőséget a legördülő menüből. Válassza **az OK gombot**:
 
    ![Új projekt](./media/oracle-to-sql-database-guide/new-project.png)
 
-
-1. Válassza **a Kapcsolódás az Oracle-hoz** lehetőséget. Adja meg az Oracle-kapcsolat adatainak értékét a **Kapcsolódás az Oracle** -hez párbeszédpanelen.
+1. Válassza **a Kapcsolódás az Oracle-hoz** lehetőséget. Adja meg az Oracle-kapcsolat adatainak értékét a **Kapcsolódás az Oracle** -hez párbeszédpanelen:
 
    ![Kapcsolódás az Oracle-hoz](./media/oracle-to-sql-database-guide/connect-to-oracle.png)
 
@@ -63,7 +60,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
    ![Oracle-séma kiválasztása](./media/oracle-to-sql-database-guide/select-schema.png)
 
-1. Kattintson a jobb gombbal az áttelepíteni kívánt Oracle-sémára az **Oracle metadata Explorerben**, majd válassza a **jelentés létrehozása** lehetőséget. Ekkor létrejön egy HTML-jelentés. Azt is megteheti, hogy az adatbázis kiválasztása után kiválasztja a **jelentés létrehozása** lehetőséget a navigációs sávon.
+1. Kattintson a jobb gombbal az áttelepíteni kívánt Oracle-sémára az **Oracle metadata Explorerben**, majd válassza a **jelentés létrehozása** lehetőséget. Ekkor létrejön egy HTML-jelentés. Azt is megteheti, hogy az adatbázis kiválasztása után kiválasztja a **jelentés létrehozása** lehetőséget a navigációs sávon:
 
    ![Jelentés létrehozása](./media/oracle-to-sql-database-guide/create-report.png)
 
@@ -81,7 +78,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. Válassza az **eszközök** lehetőséget a menüből. 
 1. Válassza a **projekt beállításai** lehetőséget. 
-1. Válassza a **típus-hozzárendelések** lapot. 
+1. Válassza a **típus-hozzárendelések** fület: 
 
    ![Típus-hozzárendelések](./media/oracle-to-sql-database-guide/type-mappings.png)
 
@@ -94,25 +91,27 @@ A séma konvertálásához kövesse az alábbi lépéseket:
 1. Választható Dinamikus vagy alkalmi lekérdezéseket adhat az utasításokhoz. Kattintson a jobb gombbal a csomópontra, majd válassza az **utasítások hozzáadása** parancsot.
 1. Válassza **a kapcsolódás Azure SQL Database** lehetőséget. 
     1. Adja meg a kapcsolat adatait az adatbázis Azure SQL Database-ben való összekapcsolásához.
-    1. Válassza ki a cél SQL Database a legördülő menüből.
-    1. Válassza a **Kapcsolódás** lehetőséget.
+    1. Válassza ki a cél SQL Database a legördülő listából, vagy adjon meg egy új nevet, amely esetben a rendszer létrehoz egy adatbázist a célkiszolgálón. 
+    1. Adja meg a hitelesítés részleteit. 
+    1. Válassza a **kapcsolat** elemet:
 
     ![Csatlakozás SQL Database-adatbázishoz](./media/oracle-to-sql-database-guide/connect-to-sql-database.png)
 
 
-1. Kattintson a jobb gombbal az Oracle-sémára az **Oracle metadata Explorerben** , majd válassza a **séma konvertálása** parancsot. Azt is megteheti, hogy a séma kiválasztása után kiválasztja a **séma konvertálása** lehetőséget a felső navigációs sávon.
+1. Kattintson a jobb gombbal az Oracle-sémára az **Oracle metadata Explorerben** , majd válassza a **séma konvertálása** parancsot. Választhatja a **séma konvertálása** lehetőséget is a felső navigációs sávon a séma kiválasztása után:
 
    ![Séma konvertálása](./media/oracle-to-sql-database-guide/convert-schema.png)
 
-1. Az átalakítás befejezése után hasonlítsa össze és tekintse át az átalakított objektumokat az eredeti objektumokra a lehetséges problémák azonosítása érdekében, és a javaslatok alapján foglalkozzon velük.
+1. Az átalakítás befejezése után hasonlítsa össze és tekintse át az átalakított objektumokat az eredeti objektumokra a lehetséges problémák azonosításához és a javaslatok alapján történő kezeléséhez:
 
    ![Az ajánlások sémájának áttekintése](./media/oracle-to-sql-database-guide/table-mapping.png)
 
-   Hasonlítsa össze a konvertált Transact-SQL-szöveget az eredeti tárolt eljárásokkal, és tekintse át a javaslatokat. 
+   Hasonlítsa össze a konvertált Transact-SQL-szöveget az eredeti tárolt eljárásokkal, és tekintse át a javaslatokat:
 
    ![Javaslatok áttekintése](./media/oracle-to-sql-database-guide/procedure-comparison.png)
 
-1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből.
+1. Válassza az **eredmények áttekintése** lehetőséget a kimenet ablaktáblán, és tekintse át a hibákat a hibák **listája** ablaktáblán. 
+1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. Ez lehetőséget nyújt arra, hogy a forrás-és a célként megadott sémákat offline állapotba hozza, és szervizelést végezzen, mielőtt közzé tudja tenni a sémát a SQL Database.
 
 ## <a name="migrate"></a>Migrate
 
@@ -120,7 +119,7 @@ Miután elvégezte az adatbázisok értékelését és az eltérések kezelésé
 
 A séma közzétételéhez és az adatáttelepítés elvégzéséhez kövesse az alábbi lépéseket:
 
-1. Tegye közzé a sémát: kattintson a jobb gombbal az adatbázisra az **Azure SQL Database metadata Explorer** **adatbázisok** csomópontjában, majd válassza az **adatbázissal való szinkronizálás** lehetőséget.
+1. Tegye közzé a sémát: kattintson a jobb gombbal az adatbázisra az **Azure SQL Database metadata Explorer** **adatbázisok** csomópontjában, majd válassza a **szinkronizálás az adatbázissal** lehetőséget:
 
    ![Szinkronizálás adatbázissal](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
 
@@ -129,22 +128,21 @@ A séma közzétételéhez és az adatáttelepítés elvégzéséhez kövesse az
    ![Szinkronizálás adatbázis-ellenőrzéssel](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
 
-1. Migrálja az adatokat: kattintson a jobb gombbal a sémára az **Oracle metadata Explorerben** , és válassza az **adatok áttelepíteni** lehetőséget. Választhatja azt is, hogy az **adatok áttelepíthetők** a felső vonal navigációs sávján a séma kiválasztása után. 
+1. Migrálja az adatokat: kattintson a jobb gombbal arra az adatbázisra vagy objektumra, amelyet az **Oracle metadata Explorerben** szeretne áttelepíteni, majd válassza az **adatok áttelepíteni** lehetőséget. Választhatja azt is, hogy az **adatok áttelepíthetők** a legfelső szintű navigációs sávon. Ha egy teljes adatbázisra szeretné áttelepíteni az adatátvitelt, jelölje be az adatbázis neve melletti jelölőnégyzetet. Ha az adatok áttelepíthetők az egyes táblákból, bontsa ki az adatbázist, majd a táblák csomópontot, és jelölje be a tábla melletti jelölőnégyzetet. Ha az adatok kihagyása az egyes táblákból, törölje a jelet a jelölőnégyzetből:
 
    ![Az adatáttelepítés](./media/oracle-to-sql-database-guide/migrate-data.png)
 
 1. Adja meg az Oracle és a Azure SQL Database kapcsolati adatait.
-1. Tekintse meg az **adatáttelepítési jelentést**.
+1. Az áttelepítés befejezése után tekintse meg az **adatáttelepítési jelentést**:  
 
    ![Adatáttelepítési jelentés](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
-1. Kapcsolódjon a Azure SQL Databasehoz a [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával, és ellenőrizze az áttelepítést az adatelemzés és a séma áttekintésével.
+1. Kapcsolódjon a Azure SQL Databasehoz [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával, és ellenőrizze az áttelepítést az adatai és a séma áttekintésével:
 
    ![Érvényesítés a SSMA](./media/oracle-to-sql-database-guide/validate-data.png)
 
 Azt is megteheti, hogy a SQL Server Integration Services (SSIS) használatával hajtja végre az áttelepítést. További információ: 
 
-- [SQL Server Migration Assistant: a nem a Microsofttól származó adatplatformokról származó adatok felmérése és áttelepítése SQL Server](https://blogs.msdn.microsoft.com/datamigration/2016/11/16/sql-server-migration-assistant-how-to-assess-and-migrate-databases-from-non-microsoft-data-platforms-to-sql-server/)
 - [Első lépések a SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS az Azure-hoz és a hibrid adatáthelyezéshez](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 18b43a99eb561cbfa340e0b3f318782bef2ca17c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952779"
+ms.locfileid: "105023435"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
 
@@ -33,6 +33,7 @@ A **minden eszköz** oldal a következőket teszi lehetővé:
 - Adja meg az eszköz identitásának beállításait.
 - Enterprise State Roaming engedélyezése vagy letiltása.
 - Az eszközhöz kapcsolódó naplók áttekintése
+- Eszközök letöltése (előzetes verzió)
 
 [![A Azure Portal összes eszköz nézete](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -144,6 +145,14 @@ Az előnézet szűrési funkciójának engedélyezése a **minden eszköz** néz
 1. Válassza ki a szalagcímet, amely szerint **kipróbálhatja az új eszközök szűrésének újdonságait. Ide kattintva engedélyezheti az előzetes verziót.**
 
 Mostantól lehetősége lesz **szűrők hozzáadására** a **minden eszköz** nézethez.
+
+### <a name="download-devices-preview"></a>Eszközök letöltése (előzetes verzió)
+
+A Cloud Device Administrators, az Intune-rendszergazdák és a globális rendszergazdák az **eszközök letöltése (előzetes verzió)** lehetőséget is használhatják az eszközök CSV-fájljának exportálására az alkalmazott szűrők alapján. Ha nem alkalmaz szűrőket a listára, akkor minden eszköz exportálva lesz. Az Exportálás akár egy óráig is futhat a következőtől függően: 
+
+Az exportált lista a következő eszköz-identitási attribútumokat tartalmazza:
+
+`accountEnabled, approximateLastLogonTimeStamp, deviceOSType, deviceOSVersion, deviceTrustType, dirSyncEnabled, displayName, isCompliant, isManaged, lastDirSyncTime, objectId, profileType, registeredOwners, systemLabels, registrationTime, mdmDisplayName`
 
 ## <a name="configure-device-settings"></a>Eszközbeállítások megadása
 

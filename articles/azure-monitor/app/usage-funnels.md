@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: d0e5cb5097a2f8833b10fec16a99b67c5c109fc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c09667e0493fc39e8a2679a698f06301bab6ba45
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100583464"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024948"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Ismerje meg, hogy az ügyfelek hogyan használják az alkalmazást Application Insights Tölcsérekkel
 
@@ -47,6 +47,5 @@ Az előző képernyőképen öt kiemelt terület szerepel. Ezek a tölcsérek fu
   * [Felhasználók, munkamenetek és események](usage-segmentation.md)
   * [Visszatartás](usage-retention.md)
   * [Munkafüzetek](../visualize/workbooks-overview.md)
-  * [Felhasználói környezet hozzáadása](usage-send-user-context.md)
+  * [Felhasználói környezet hozzáadása](./usage-overview.md)
   * [Power BI-exportálás](./export-power-bi.md)
-
