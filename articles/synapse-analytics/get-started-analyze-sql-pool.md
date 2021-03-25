@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 03/18/2020
-ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a1f15330a912c8a8a93fe1f74e88ef8d117441c2
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654628"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047898"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
@@ -112,9 +112,6 @@ A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg akt
     Ez a lekérdezés azt mutatja be, hogy a teljes utazási távolság és az átlagos utazási távolság az utasok számával függ.
 1. Az SQL-parancsfájl eredményének ablakában módosítsa  a nézetet **diagramra** , hogy megjelenítse az eredmények vonal diagramként való megjelenítését.
     
-    > [!NOTE]
-    > Egy dedikált SQL-készletet (korábban SQL DW) engedélyező munkaterület az adatközpontban található elemleírás segítségével azonosítható.
-
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]

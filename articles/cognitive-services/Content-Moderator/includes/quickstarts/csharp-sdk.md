@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: d6f27ca3635ff1efb80e5261b7a5a07269304dfd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: bdf49f16b003c25da9fe8972a3fb7e3837d62819
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444136"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104038"
 ---
 Ismerkedés az Azure Content Moderator .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a NuGet csomagot, és próbálja ki az alapszintű feladatok példáját. 
 
@@ -52,7 +52,7 @@ Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat 
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `content-moderator-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `content-moderator-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -87,7 +87,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using`-utasításokat:
+A projekt könyvtárában nyissa meg a *program. cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using`-utasításokat:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
 
@@ -297,6 +297,3 @@ Ebből a rövid útmutatóból megtudhatta, hogyan használhatja a Content Moder
 
 > [!div class="nextstepaction"]
 > [Képek moderálási fogalmai](../../image-moderation-api.md)
-
-* [Mi az az Azure Content Moderator?](../../overview.md)
-* A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs)található.

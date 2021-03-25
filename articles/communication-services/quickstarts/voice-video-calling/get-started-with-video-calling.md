@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487870"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048085"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Gyors útmutató: az alkalmazáshoz való 1:1-videohívás hozzáadása (JavaScript)
 
@@ -23,8 +23,8 @@ A rövid útmutatóhoz tartozó véglegesített kód megkeresése a [githubon](h
 ## <a name="prerequisites"></a>Előfeltételek
 - Azure-fiók beszerzése aktív előfizetéssel. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/) Aktív LTS-és karbantartási LTS-verziók (8.11.1 és 10.14.1)
-- Hozzon létre egy aktív kommunikációs szolgáltatások erőforrást. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp).
-- Hozzon létre egy felhasználói hozzáférési jogkivonatot a hívási ügyfél létrehozásához. [Megtudhatja, hogyan hozhat létre és kezelhet felhasználói hozzáférési jogkivonatokat](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
+- Hozzon létre egy aktív kommunikációs szolgáltatások erőforrást. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../create-communication-resource.md?pivots=platform-azp&tabs=windows).
+- Hozzon létre egy felhasználói hozzáférési jogkivonatot a hívási ügyfél létrehozásához. [Megtudhatja, hogyan hozhat létre és kezelhet felhasználói hozzáférési jogkivonatokat](../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Beállítás
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
@@ -330,10 +330,10 @@ Nyissa meg a böngészőt, és navigáljon a gombra http://localhost:8080/ . A k
 A mintaalkalmazást a [GitHubról](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) töltheti le.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources).
+Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../create-communication-resource.md?pivots=platform-azp&tabs=windows#clean-up-resources).
 
 ## <a name="next-steps"></a>Következő lépések
 További információért tekintse át a következő cikkeket:
-- Tekintse meg a [web Calling mintát](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
-- Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
-- További információ a [hívás működéséről](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)
+- Tekintse meg a [web Calling mintát](../../samples/web-calling-sample.md)
+- Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](./calling-client-samples.md?pivots=platform-web)
+- További információ a [hívás működéséről](../../concepts/voice-video-calling/about-call-types.md)

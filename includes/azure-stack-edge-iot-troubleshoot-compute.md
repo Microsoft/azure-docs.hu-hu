@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 03/02/2021
-ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 34d0d55ba6eb403055be96758b57b7bd0c2ab704
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622047"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104988352"
 ---
 A számítási feladatokkal kapcsolatos hibák elhárításához használja a IoT Edge ügynök futásidejű válaszait. Itt látható a lehetséges válaszok listája:
 
@@ -66,3 +66,43 @@ Az eszköz helyi webes FELÜLETén hajtsa végre a következő lépéseket:
 1. Kattintson az **Alkalmaz** gombra. A módosított IP-címtartomány azonnal érvénybe lép.
 
 További információ: [külső szolgáltatás IP-címeinek módosítása tárolók számára](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+
+### <a name="configure-static-ips-for-iot-edge-modules"></a>Statikus IP-címek konfigurálása IoT Edge modulokhoz
+
+#### <a name="problem-description"></a>A probléma leírása
+
+A Kubernetes dinamikus IP-címeket rendel hozzá minden IoT Edge modulhoz az Azure Stack Edge Pro GPU-eszközön. A modulok statikus IP-címeinek konfigurálásához metódusra van szükség.
+
+#### <a name="suggested-solution"></a>Javasolt megoldás
+
+Megadhatja a IoT Edge modulok rögzített IP-címeit a K8s – kísérleti szakaszban leírtak szerint: 
+
+```yaml
+{
+  "k8s-experimental": {
+    "serviceOptions" : {
+      "loadBalancerIP" : "100.23.201.78",
+      "type" : "LoadBalancer"
+    }
+  }
+}
+```
+### <a name="expose-kubernetes-service-as-cluster-ip-service-for-internal-communication"></a>Kubernetes-szolgáltatás közzététele fürt IP-szolgáltatásként belső kommunikációhoz
+
+#### <a name="problem-description"></a>A probléma leírása
+
+Alapértelmezés szerint a IoT-szolgáltatás típusa terheléselosztó típusú, és a rendszer külsőleg felé irányuló IP-címeket rendel hozzá. Előfordulhat, hogy nem szeretne külső IP-címet használni az alkalmazáshoz. Előfordulhat, hogy a KUbernetes-fürtön belül ki kell töltenie a hüvelyeket a többi hüvelyhez való hozzáféréshez, és nem külsőleg elérhető terheléselosztó szolgáltatásként. 
+
+#### <a name="suggested-solution"></a>Javasolt megoldás
+
+A létrehozási beállítások a K8s-experimented szakaszban használhatók. A következő szolgáltatási beállításnak a port kötéseivel kell működnie.
+
+```yaml
+{
+"k8s-experimental": {
+  "serviceOptions" : {
+    "type" : "ClusterIP"
+    }
+  }
+}
+```

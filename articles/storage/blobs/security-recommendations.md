@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 40067815ad582191606ad5a53cf06c9584d83350
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 389d3507c3406743e14324c7b4667e045cfdb3b5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618015"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048034"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
-Ez a cikk a blob Storage szolgáltatással kapcsolatos biztonsági javaslatokat tartalmaz. A javaslatok megvalósítása a közös felelősségi modellben leírtaknak megfelelően segíti a biztonsági kötelezettségek teljesítését. További információ arról, hogy a Microsoft hogyan teljesíti a szolgáltatói feladatokat: [megosztott felelősség a felhőben](/azure/security/fundamentals/shared-responsibility).
+Ez a cikk a blob Storage szolgáltatással kapcsolatos biztonsági javaslatokat tartalmaz. A javaslatok megvalósítása a közös felelősségi modellben leírtaknak megfelelően segíti a biztonsági kötelezettségek teljesítését. További információ arról, hogy a Microsoft hogyan teljesíti a szolgáltatói feladatokat: [megosztott felelősség a felhőben](../../security/fundamentals/shared-responsibility.md).
 
 A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikusan nyomon követheti. A Azure Security Center az Azure-beli erőforrások védelmének első védelmi vonala. További információ a Azure Security Centerről: [Mi az Azure Security Center?](../../security-center/security-center-introduction.md)
 

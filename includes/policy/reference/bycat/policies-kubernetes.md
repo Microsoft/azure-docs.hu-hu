@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c57db8f55eb831f2da1b839c4dc5d4a7287ac6b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b2b9bad685bc26b0da4ba6eabe0785b112ff0a20
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605560"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033354"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[\[Előzetes \] verzió: az Azure arc-kompatibilis Kubernetes-fürtökön telepítve kell lennie az Azure Defender bővítményének](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Az Azure Defender Azure arc-bővítménye biztosítja az arc-kompatibilis Kubernetes-fürtök veszélyforrások elleni védelmét. A bővítmény a fürt összes vezérlő síkja (fő) csomópontjának adatait gyűjti, és további elemzés céljából elküldi azt az Azure Defender for Kubernetes háttérbe a felhőben. További információ: [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |AuditIfNotExists, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Az Azure Kubernetes Service privát fürtöket engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F040732e8-d947-40b8-95d6-854c95024bf8) |Engedélyezze az Azure Kubernetes Service-fürthöz tartozó privát fürt funkciót, hogy az API-kiszolgáló és a csomópont-készletek közötti hálózati forgalom csak a magánhálózaton maradjon. Ez egy gyakori követelmény számos szabályozási és iparági megfelelőségi szabványban. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_PrivateCluster_Deny.json) |
 |[A Kubernetes szolgáltatás (ak) Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |A (z) Azure Policy bővítmény a Kubernetes szolgáltatáshoz (ak) kibővíti a forgalomirányító v3-t, egy, az Open Policy Agent (OPA) beléptetési vezérlőt, amely központosított, konzisztens módon alkalmazható a fürtökön. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Az Azure Kubernetes Service-fürtökben az operációs rendszer és az adatlemezek titkosítása az ügyfél által felügyelt kulcsok használatával történik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Az operációs rendszer és az adatlemezek az ügyfél által felügyelt kulcsokkal történő titkosítása nagyobb mértékű szabályozást és nagyobb rugalmasságot biztosít a kulcskezelő szolgáltatásban. Ez egy gyakori követelmény számos szabályozási és iparági megfelelőségi szabványban. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |

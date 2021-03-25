@@ -8,18 +8,18 @@ ms.author: pamistel
 ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 43273ccd7c882bbac6cbc68d359db4ecb100800e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 13aa12be5a336363bbe3bcbf3e3fb354a8fa3074
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102617403"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048476"
 ---
 # <a name="understanding-the-anchorlocatecriteria-class"></a>A AnchorLocateCriteria osztály ismertetése
 Ebben a cikkben megismerheti a horgonyok lekérdezéséhez használható különböző lehetőségeket. A AnchorLocateCriteria osztályt, annak lehetőségeit és érvényes kombinációit fogjuk megtenni.
 
 ## <a name="anchor-locate-criteria"></a>Horgony megkeresésének feltételei
-A [AnchorLocateCriteria osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) segítségével lekérdezheti a korábban létrehozott horgonyok szolgáltatását. Egy AnchorLocateCriteria-objektum bármikor felhasználható egy figyelőre. Minden AnchorLocateCriteria objektumnak pontosan a következő tulajdonságok **egyikét** kell tartalmaznia: [azonosítók](#identifiers), [NearAnchor](#nearanchor)vagy [NearDevice](#neardevice). Szükség esetén további tulajdonságok is megadhatók, például a [stratégia](#strategy), a [BypassCache](#bypasscache)és a [RequestedCategories](#requestedcategories) . 
+A [AnchorLocateCriteria osztály](/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) segítségével lekérdezheti a korábban létrehozott horgonyok szolgáltatását. Egy AnchorLocateCriteria-objektum bármikor felhasználható egy figyelőre. Minden AnchorLocateCriteria objektumnak pontosan a következő tulajdonságok **egyikét** kell tartalmaznia: [azonosítók](#identifiers), [NearAnchor](#nearanchor)vagy [NearDevice](#neardevice). Szükség esetén további tulajdonságok is megadhatók, például a [stratégia](#strategy), a [BypassCache](#bypasscache)és a [RequestedCategories](#requestedcategories) . 
 
 ### <a name="properties"></a>Tulajdonságok
 Adja meg pontosan az alábbi tulajdonságok **egyikét** a figyelőben:
@@ -37,7 +37,7 @@ Ez a tulajdonság egy NearAnchorCriteria objektummal van megadva.
 #### <a name="neardevice"></a>NearDevice
 *Alapértelmezett érték: nincs beállítva*
 
-A NearDevice segítségével megadhatja, hogy a AnchorLocateCriteria korlátozza a kért horgonyok készletét az eszköz fizikai helyére közel lévő értékekre. Az eszközön található horgonyok felderítéséhez az összes engedélyezett érzékelőt fogja használni a rendszer. Ahhoz, hogy a legjobb eséllyel megtalálják a horgonyokat, konfigurálnia kell a SensorCapabilities, hogy a munkamenet hozzáférjen az összes megfelelő érzékelőkhöz. A tulajdonság beállításával és használatával kapcsolatos további információkért lásd: [durva újrahonosítás – Azure térbeli horgonyok | Microsoft docs](https://docs.microsoft.com/azure/spatial-anchors/concepts/coarse-reloc) , és hogyan hozhatók létre és találhatók az olyan horgonyok, amelyek [a C#](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), az [Objective-C](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), a [Swift](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-swift), a [Java](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-java), a [c++/NDK](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-ndk)és a [c++/WinRT](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-winrt) *használatával történő durva újrahonosítást használnak* .
+A NearDevice segítségével megadhatja, hogy a AnchorLocateCriteria korlátozza a kért horgonyok készletét az eszköz fizikai helyére közel lévő értékekre. Az eszközön található horgonyok felderítéséhez az összes engedélyezett érzékelőt fogja használni a rendszer. Ahhoz, hogy a legjobb eséllyel megtalálják a horgonyokat, konfigurálnia kell a SensorCapabilities, hogy a munkamenet hozzáférjen az összes megfelelő érzékelőkhöz. A tulajdonság beállításával és használatával kapcsolatos további információkért lásd: [durva újrahonosítás – Azure térbeli horgonyok | Microsoft docs](./coarse-reloc.md) , és hogyan hozhatók létre és találhatók az olyan horgonyok, amelyek [a C#](../how-tos/set-up-coarse-reloc-unity.md), az [Objective-C](../how-tos/set-up-coarse-reloc-unity.md), a [Swift](../how-tos/set-up-coarse-reloc-swift.md), a [Java](../how-tos/set-up-coarse-reloc-java.md), a [c++/NDK](../how-tos/set-up-coarse-reloc-cpp-ndk.md)és a [c++/WinRT](../how-tos/set-up-coarse-reloc-cpp-winrt.md) *használatával történő durva újrahonosítást használnak* .
 Ez a tulajdonság egy NearDeviceCriteria objektummal van megadva.
 
 ### <a name="additional-properties"></a>További tulajdonságok
@@ -62,11 +62,11 @@ Térbeli| A rendszer a horgonyra vonatkozó térbeli adatokat adja vissza.
 
 A stratégia részletesebben határozza meg a horgonyok elhelyezkedését. A stratégia tulajdonságot LocateStrategy Enum használatával lehet megadni.
 
-LocateStrategy enumerálási értéke | Description
+LocateStrategy enumerálási értéke | Leírás
 ---------------|------------
 AnyStrategy | Ez a stratégia lehetővé teszi, hogy a rendszerek a VisualInformation és a kapcsolati stratégiák kombinációit használják a horgonyok kereséséhez. 
 VisualInformation|Ez a stratégia megkísérli megtalálni a horgonyokat az aktuális környezetből származó vizualizációs információk alapján a horgony vizualizációs lábnyomának megfelelő értékekkel. A horgony vizualizációs lábnyoma a horgonyhoz jelenleg kapcsolódó vizualizációs információkra utal. Ez a vizualizációs információ általában azonban nem gyűjti össze kizárólag a horgony létrehozásakor. Ez a stratégia jelenleg csak a NearDevice vagy az azonosítók tulajdonságaival együtt engedélyezett.
-Kapcsolat|Ez a stratégia a meglévő [csatlakoztatott horgonyok](https://docs.microsoft.com/azure/spatial-anchors/concepts/anchor-relationships-way-finding#connect-anchors)használatával megkísérli megtalálni a horgonyokat. Ez a stratégia jelenleg csak a NearAnchor vagy az azonosítók tulajdonságaival együtt engedélyezett. Az azonosítók tulajdonság használata esetén szükség van arra, hogy ugyanabban a munkamenetben a felhasználónak előzőleg olyan horgony (ka) t kell megadnia, amelyen már létrejöttek az azonosítók tömbben megadott azonosítók. 
+Kapcsolat|Ez a stratégia a meglévő [csatlakoztatott horgonyok](./anchor-relationships-way-finding.md#connect-anchors)használatával megkísérli megtalálni a horgonyokat. Ez a stratégia jelenleg csak a NearAnchor vagy az azonosítók tulajdonságaival együtt engedélyezett. Az azonosítók tulajdonság használata esetén szükség van arra, hogy ugyanabban a munkamenetben a felhasználónak előzőleg olyan horgony (ka) t kell megadnia, amelyen már létrejöttek az azonosítók tömbben megadott azonosítók. 
 
 
 ### <a name="valid-combinations-of-locatestrategy-and-anchorlocatecriteria-properties"></a>A LocateStrategy és a AnchorLocateCriteria tulajdonságainak érvényes kombinációi 
@@ -86,4 +86,4 @@ NearDevice  | &check;    |   | &check;
 
 ## <a name="next-steps"></a>Következő lépések
 
-A AnchorLocateCriteria osztály használatával további példákat talál az [Azure térbeli horgonyokat használó horgonyok létrehozásához és megkereséséhez](https://docs.microsoft.com/azure/spatial-anchors/create-locate-anchors-overview) .
+A AnchorLocateCriteria osztály használatával további példákat talál az [Azure térbeli horgonyokat használó horgonyok létrehozásához és megkereséséhez](../create-locate-anchors-overview.md) .
