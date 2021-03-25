@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b5db9f3766bdd7d754f49403665a371f9d10afd7
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049634"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047609"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure Object-Horgonyokkal, C++/WinRT és DirectX-ben
 
@@ -34,7 +34,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 * Egy Windows rendszerű gép, amelyen telepítve van a következő:
   * <a href="https://git-scm.com" target="_blank">Git for Windows</a>
   * <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> a **univerzális Windows-platform fejlesztési** munkaterhelés és a **Windows 10 SDK (10.0.18362.0 vagy újabb)** összetevővel
-* Egy naprakész HoloLens 2 eszköz, amelyen engedélyezve van a [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio#enabling-developer-mode) .
+* Egy naprakész HoloLens 2 eszköz, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio#enabling-developer-mode) .
   * A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság** elemre, majd válassza a **frissítések keresése** lehetőséget.
 
 ## <a name="open-the-sample-project"></a>A minta projekt megnyitása

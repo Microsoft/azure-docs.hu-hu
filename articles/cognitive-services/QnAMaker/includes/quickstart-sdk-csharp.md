@@ -3,12 +3,12 @@ title: 'Rövid útmutató: a .NET-hez készült ügyféloldali kódtár QnA Make
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a QnA Maker .NET-hez készült ügyféloldali kódtárat. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 0f1e779fea0fe4f3f3a88b91091d11442e2f958b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 86c4f5c0633a2e547071cbf102d34e385391570e
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104803245"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105559"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -145,7 +145,7 @@ Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létr
 
 - A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Nyissa meg a Azure Portal QnA Maker erőforrását, és kattintson a **kulcsok és végpont** elemre a szerzői műveletek (előfizetés) kulcsának és QnA Maker végpontjának megkereséséhez.
 
- ![QnA Maker futtatókörnyezet végpontja](../media/keys-endpoint.png)
+ ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
 
 - A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` .  
       
@@ -162,7 +162,7 @@ Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létr
 
 - A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Nyissa meg a Azure Portal QnA Maker erőforrását, és kattintson a **kulcsok és végpont** elemre a szerzői műveletek (előfizetés) kulcsának és QnA Maker végpontjának megkereséséhez.
 
- ![QnA Maker futtatókörnyezet végpontja](../media/keys-endpoint.png)
+ ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
 
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 
