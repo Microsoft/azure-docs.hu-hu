@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: c1b74b43c6ef884c68282dcaaae8dfc9a5541453
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 52c5c0d9d13eba29e6f9cb6d50725d51b6877d47
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622192"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110744"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-net"></a>Felügyelt identitás hozzáadása a kommunikációs szolgáltatások megoldásához (.NET)
 
-### <a name="install-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak telepítése
+### <a name="install-the-sdk-packages"></a>Az SDK-csomagok telepítése
 
 ```console
 dotnet add package Azure.Communication.Identity  --version 1.0.0-beta.5
@@ -16,9 +16,9 @@ dotnet add package Azure.Communication.Sms  --version 1.0.0-beta.4
 dotnet add package Azure.Identity
 ```
 
-### <a name="use-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak használata
+### <a name="use-the-sdk-packages"></a>Az SDK-csomagok használata
 
-Adja hozzá a következő `using` irányelveket a kódhoz az Azure Identity és az Azure Storage ügyféloldali kódtárainak használatához.
+Adja hozzá a következő `using` irányelveket a kódjához az Azure Identity és az Azure Storage SDK-k használatához.
 
 ```csharp
 using Azure.Identity;

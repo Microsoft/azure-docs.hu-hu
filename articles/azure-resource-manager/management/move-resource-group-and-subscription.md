@@ -2,14 +2,14 @@
 title: Erőforrások áthelyezése új előfizetésbe vagy erőforráscsoporthoz
 description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja a Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 31710354d39c5c74fcbd3ce1bfb2917d79dfd670
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670205"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108638"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -18,6 +18,12 @@ Ebből a cikkből megtudhatja, hogyan helyezheti át az Azure-erőforrásokat eg
 A forrásoldali csoport és a célcsoport is zárolva van az áthelyezési művelet során. Az írási és törlési műveletek le vannak tiltva az erőforráscsoportok között, amíg az áthelyezés be nem fejeződik. Ez a zárolás azt jelenti, hogy nem lehet erőforrásokat felvenni, frissíteni vagy törölni az erőforráscsoportok között. Nem jelenti azt, hogy az erőforrások zárolva vannak. Ha például egy Azure SQL logikai kiszolgálót és az adatbázisait egy új erőforráscsoporthoz vagy előfizetésbe helyezi át, az adatbázisokat használó alkalmazások nem rendelkeznek állásidővel. Továbbra is olvashatnak és írhatnak az adatbázisokat. A zárolás legfeljebb négy órán át tarthat, de a legtöbb lépés sokkal kevesebb időt vehet igénybe.
 
 Az erőforrás az áthelyezése során csak egy új erőforráscsoportba vagy előfizetésbe kerül. Az erőforrás helyét az áthelyezési művelet nem módosítja.
+
+## <a name="changed-resource-id"></a>Módosított erőforrás-azonosító
+
+Amikor áthelyez egy erőforrást, megváltoztatja az erőforrás-AZONOSÍTÓját. Az erőforrás-azonosító szabványos formátuma `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` . Amikor egy erőforrást új erőforráscsoporthoz vagy előfizetésbe helyez át, egy vagy több értéket kell módosítania az adott útvonalon.
+
+Ha bárhol használja az erőforrás-azonosítót, módosítania kell ezt az értéket. Ha például egy [Egyéni irányítópult](../../azure-portal/quickstart-portal-dashboard-azure-cli.md) található a portálon, amely egy erőforrás-azonosítóra hivatkozik, akkor frissítenie kell ezt az értéket. Keressen olyan parancsfájlokat vagy sablonokat, amelyeket frissíteni kell az új erőforrás-AZONOSÍTÓhoz.
 
 ## <a name="checklist-before-moving-resources"></a>Ellenőrzőlista az erőforrások áthelyezése előtt
 
@@ -36,7 +42,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
    * [Útmutató Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
    * Ha egy Azure-előfizetést egy új felügyeleti csoportba szeretne áthelyezni, tekintse meg az [előfizetések áthelyezése](../../governance/management-groups/manage.md#move-subscriptions)című
 
-1. Ha olyan erőforrást helyez át, amely közvetlenül az erőforráshoz (vagy egy alárendelt erőforráshoz) van hozzárendelve egy Azure-szerepkörrel, a szerepkör-hozzárendelés nem kerül át, és nem lesz árva. Az áthelyezés után újra létre kell hoznia a szerepkör-hozzárendelést. Végül a rendszer automatikusan eltávolítja az árva szerepkör-hozzárendelést, de ez az ajánlott eljárás a szerepkör-hozzárendelés eltávolítására az erőforrás áthelyezése előtt.
+1. Ha olyan erőforrást helyez át, amely közvetlenül az erőforráshoz (vagy egy alárendelt erőforráshoz) van hozzárendelve egy Azure-szerepkörrel, a szerepkör-hozzárendelés nem kerül át és nem lesz árva. Az áthelyezés után újra létre kell hoznia a szerepkör-hozzárendelést. Végül az árva szerepkör-hozzárendelés automatikusan törlődik, de javasoljuk, hogy az áthelyezés előtt távolítsa el a szerepkör-hozzárendelést.
 
     A szerepkör-hozzárendelések kezelésével kapcsolatos információkért tekintse meg az [Azure szerepkör-hozzárendelések listázása](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) és az [Azure-szerepkörök hozzárendelése](../../role-based-access-control/role-assignments-portal.md)című témakört.
 
@@ -260,7 +266,7 @@ Az erőforrások áthelyezése egy összetett művelet, amely különböző fáz
 
 **Kérdés: Miért van zárolva az erőforráscsoport az erőforrás-áthelyezés során négy órán keresztül?**
 
-Az áthelyezési kérelem legfeljebb négy órát vehet igénybe. Az áthelyezett erőforrások módosításának megakadályozásához a forrás és a cél erőforráscsoport is zárolva lesz az erőforrás-áthelyezés időtartamára.
+Az áthelyezési kérelem legfeljebb négy órát vehet igénybe. Az áthelyezett erőforrások módosításának megakadályozásához a forrás-és a célként megadott erőforráscsoportok is zárolva lesznek az erőforrás áthelyezése során.
 
 Az áthelyezési kérelemnek két fázisa van. Az első fázisban az erőforrás át lesz helyezve. A második fázisban az értesítéseket a rendszer az áthelyezett erőforrástól függő más erőforrás-szolgáltatóknak küldi el. Egy erőforráscsoport zárolható a teljes négy órán keresztül, ha az erőforrás-szolgáltató egyik fázisa meghibásodik. Az engedélyezett idő alatt a Resource Manager újrapróbálkozik a sikertelen lépéssel.
 
