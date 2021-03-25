@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 996159f7014e735c8a4b3e5975c2716ce1ab6910
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cca60ba9948299f4e9557f26097d4a23e4ebea12
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728487"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025339"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure Resource Manager Azure biztonsági alapterve
 
@@ -32,9 +32,9 @@ Ha szeretné megtekinteni, hogyan Azure Resource Manager teljes mértékben lek�
 
 - [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md) 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm) 
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -50,9 +50,9 @@ Ha szeretné megtekinteni, hogyan Azure Resource Manager teljes mértékben lek�
 
 **Útmutató**: a Azure Resource Manager a tevékenység naplóit használja, amelyek automatikusan engedélyezve vannak az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célhelyek és más hasznos elemek belefoglalásához.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](/azure/azure-monitor/platform/platform-logs-overview)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Felelősség**: Ügyfél
 
@@ -66,9 +66,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics lekérdezések első lépései](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics lekérdezések első lépései](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/logs/get-started-queries.md)
 
 **Felelősség**: Megosztott
 
@@ -82,7 +82,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Riasztások kezelése Azure Security Centerban](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Riasztás a Log Analytics naplózási információi alapján](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a Log Analytics naplózási információi alapján](../../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -119,7 +119,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 Az igény szerinti hozzáférést Azure Active Directory (Azure AD) Privileged Identity Management és Azure Resource Manager használatával is engedélyezheti.
 
-- [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [További információ a Privileged Identity Management](../../active-directory/privileged-identity-management/index.yml)
 
 - [A Azure Policy használata](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -205,7 +205,7 @@ Az igény szerinti hozzáférést Azure Active Directory (Azure AD) Privileged I
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD identitás-és hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../../active-directory/governance/access-reviews-overview.md)
 
@@ -223,7 +223,7 @@ Az igény szerinti hozzáférést Azure Active Directory (Azure AD) Privileged I
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Felelősség**: Ügyfél
 
@@ -275,7 +275,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a kiszolgálóoldali titkosításhoz a Azure Resource Manager támogatja a Microsoft által felügyelt kulcsokat.
 
-- [A Azure Resource Manager adatvédelem ismertetése](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-resource-manager-security-controls#data-protection)
+- [A Azure Resource Manager adatvédelem ismertetése](#data-protection)
 
 **Felelősség**: Ügyfél
 
@@ -285,7 +285,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -319,7 +319,7 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 **Útmutató**: a szabályzat nevének, leírásának és kategóriájának használata, amelyekkel logikailag rendezheti az eszközöket a besorolások alapján.
 
-- [További információ az eszközök címkézéséről: erőforrás-elnevezési és címkézési döntési útmutató](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [További információ az eszközök címkézéséről: erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Felelősség**: Ügyfél
 
@@ -379,7 +379,7 @@ További kapcsolódó részleteket az alábbi,
 
 - [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -463,7 +463,7 @@ Emellett előfordulhat, hogy rendszergazdaként le kell zárnia egy előfizetés
 
 - [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Aliasok használata](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Aliasok használata](../../governance/policy/concepts/definition-structure.md#aliases)
 
 **Felelősség**: Ügyfél
 
@@ -587,5 +587,5 @@ Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításáho
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../../security/benchmarks/security-baselines-overview.md)

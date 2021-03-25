@@ -1,5 +1,5 @@
 ---
-title: 'Oracle – SQL felügyelt példány: áttelepítési útmutató'
+title: 'Oracle – Azure SQL felügyelt példány: áttelepítési útmutató'
 description: Ez az útmutató azt ismerteti, hogy Oracle-sémáit áttelepítheti az Azure SQL felügyelt példányára az Oracle SQL Server Migration Assistant használatával.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: c54ec2cc6e17d9693e25f1471922da8c7c023e36
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1c2fbc90d3956ab831e6d9fac4e1e2d3540e1c6d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602864"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025424"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>Áttelepítési útmutató: Oracle – Azure SQL felügyelt példány
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Ez az útmutató azt ismerteti, hogy Oracle-sémáit áttelepítheti az Azure SQL felügyelt példányára az Oracle SQL Server Migration Assistant használatával. 
 
-Más forgatókönyvek esetén tekintse meg az [adatbázis áttelepítési Útmutatóját](https://datamigration.microsoft.com/).
+Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,11 +49,11 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. [Az Oracle SQL Server Migration Assistant](https://www.microsoft.com/en-us/download/details.aspx?id=54258)megnyitása. 
 1. Válassza a **fájl** , majd az **új projekt** lehetőséget. 
-1. Adja meg a projekt nevét, egy helyet a projekt mentéséhez, majd válassza az Azure SQL felügyelt példány áttelepítési célként lehetőséget a legördülő menüből. Válassza az **OK** lehetőséget.
+1. Adja meg a projekt nevét, egy helyet a projekt mentéséhez, majd válassza az Azure SQL felügyelt példány áttelepítési célként lehetőséget a legördülő menüből. Válassza **az OK gombot**:
 
    ![Új projekt](./media/oracle-to-managed-instance-guide/new-project.png)
 
-1. Válassza **a Kapcsolódás az Oracle-hoz** lehetőséget. Adja meg az Oracle-kapcsolat adatainak értékét a **Kapcsolódás az Oracle** -hez párbeszédpanelen.
+1. Válassza **a Kapcsolódás az Oracle-hoz** lehetőséget. Adja meg az Oracle-kapcsolat adatainak értékét a **Kapcsolódás az Oracle** -hez párbeszédpanelen:
 
    ![Kapcsolódás az Oracle-hoz](./media/oracle-to-managed-instance-guide/connect-to-oracle.png)
 
@@ -61,7 +61,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
    ![Oracle-séma kiválasztása](./media/oracle-to-managed-instance-guide/select-schema.png)
 
-1. Kattintson a jobb gombbal az áttelepíteni kívánt Oracle-sémára az **Oracle metadata Explorerben**, majd válassza a **jelentés létrehozása** lehetőséget. Ekkor létrejön egy HTML-jelentés. Azt is megteheti, hogy az adatbázis kiválasztása után kiválasztja a **jelentés létrehozása** lehetőséget a navigációs sávon.
+1. Kattintson a jobb gombbal az áttelepíteni kívánt Oracle-sémára az **Oracle metadata Explorerben**, majd válassza a **jelentés létrehozása** lehetőséget. Ekkor létrejön egy HTML-jelentés. Azt is megteheti, hogy az adatbázis kiválasztása után kiválasztja a **jelentés létrehozása** lehetőséget a navigációs sávon:
 
    ![Jelentés létrehozása](./media/oracle-to-managed-instance-guide/create-report.png)
 
@@ -78,7 +78,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. Válassza az **eszközök** lehetőséget a menüből. 
 1. Válassza a **projekt beállításai** lehetőséget. 
-1. Válassza a **típus-hozzárendelések** lapot. 
+1. Válassza a **típus-hozzárendelések** fület:
 
    ![Típus-hozzárendelések](./media/oracle-to-managed-instance-guide/type-mappings.png)
 
@@ -91,24 +91,26 @@ A séma konvertálásához kövesse az alábbi lépéseket:
 1. Választható Dinamikus vagy alkalmi lekérdezéseket adhat az utasításokhoz. Kattintson a jobb gombbal a csomópontra, majd válassza az **utasítások hozzáadása** parancsot.
 1. Válassza **a Kapcsolódás az Azure SQL felügyelt példányhoz** lehetőséget. 
     1. Adja meg a kapcsolat adatait az adatbázis az Azure SQL felügyelt példányban való összekapcsolásához.
-    1. Válassza ki a célként szolgáló adatbázist a legördülő menüből.
-    1. Válassza a **Kapcsolódás** lehetőséget.
+    1. Válassza ki a célként megadott adatbázist a legördülő listából, vagy adjon meg egy új nevet, amely esetben a rendszer létrehoz egy adatbázist a célkiszolgálón. 
+    1. Adja meg a hitelesítés részleteit. 
+    1. Válassza a **kapcsolat** elemet:
 
     ![Csatlakozás felügyelt SQL-példányhoz](./media/oracle-to-managed-instance-guide/connect-to-sql-managed-instance.png)
 
-1. Kattintson a jobb gombbal az Oracle-sémára az **Oracle metadata Explorerben** , majd válassza a **séma konvertálása** parancsot. Azt is megteheti, hogy a séma kiválasztása után kiválasztja a **séma konvertálása** lehetőséget a felső navigációs sávon.
+1. Kattintson a jobb gombbal az Oracle-sémára az **Oracle metadata Explorerben** , majd válassza a **séma konvertálása** parancsot. Választhatja a **séma konvertálása** lehetőséget is a felső navigációs sávon a séma kiválasztása után:
 
    ![Séma konvertálása](./media/oracle-to-managed-instance-guide/convert-schema.png)
 
-1. Az átalakítás befejezése után hasonlítsa össze és tekintse át az átalakított objektumokat az eredeti objektumokra a lehetséges problémák azonosítása érdekében, és a javaslatok alapján foglalkozzon velük.
+1. Az átalakítás befejezése után hasonlítsa össze és tekintse át az átalakított objektumokat az eredeti objektumokra a lehetséges problémák azonosításához és a javaslatok alapján történő kezeléséhez:
 
    ![Táblázat javaslatainak összehasonlítása](./media/oracle-to-managed-instance-guide/table-comparison.png)
 
-   Hasonlítsa össze a konvertált Transact-SQL-szöveget az eredeti tárolt eljárásokkal, és tekintse át a javaslatokat: 
+   Hasonlítsa össze a konvertált Transact-SQL-szöveget az eredeti kóddal, és tekintse át a következő javaslatokat: 
 
    ![Eljárási javaslatok összehasonlítása](./media/oracle-to-managed-instance-guide/procedure-comparison.png)
 
-1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből.
+1. Válassza az **eredmények áttekintése** lehetőséget a kimenet ablaktáblán, és tekintse át a hibákat a hibák **listája** ablaktáblán. 
+1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. Ez lehetőséget biztosít a forrás-és a célként megadott sémák offline állapotba helyezésére és szervizelésre, mielőtt közzéteszi a sémát az SQL által felügyelt példányon.
 
 ## <a name="migrate"></a>Migrate
 
@@ -116,7 +118,7 @@ Miután elvégezte az adatbázisok értékelését és az eltérések kezelésé
 
 A séma közzétételéhez és az adatáttelepítés elvégzéséhez kövesse az alábbi lépéseket:
 
-1. Tegye közzé a sémát: kattintson a jobb gombbal az adatbázisra az **Azure SQL felügyelt példány metaadatainak Explorer** **adatbázis csomópontjában** , és válassza az **adatbázissal való szinkronizálás** lehetőséget.
+1. Tegye közzé a sémát: kattintson a jobb gombbal arra a sémára vagy objektumra, amelyet az **Oracle metadata Explorerben** szeretne áttelepíteni, majd válassza az **adatok áttelepíteni** lehetőséget. Választhatja azt is, hogy az **adatok áttelepíthetők** a legfelső szintű navigációs sávon. Ha egy teljes adatbázisra szeretné áttelepíteni az adatátvitelt, jelölje be az adatbázis neve melletti jelölőnégyzetet. Ha az adatok áttelepíthetők az egyes táblákból, bontsa ki az adatbázist, majd a táblák csomópontot, és jelölje be a tábla melletti jelölőnégyzetet. Ha az adatok kihagyása az egyes táblákból, törölje a jelet a jelölőnégyzetből:
 
    ![Szinkronizálás adatbázissal](./media/oracle-to-managed-instance-guide/synchronize-with-database.png)
 
@@ -129,18 +131,17 @@ A séma közzétételéhez és az adatáttelepítés elvégzéséhez kövesse az
    ![Az adatáttelepítés](./media/oracle-to-managed-instance-guide/migrate-data.png)
 
 1. Adja meg az Oracle és az Azure SQL felügyelt példányának kapcsolati adatait.
-1. Tekintse meg az **adatáttelepítési jelentést**.
+1. Az áttelepítés befejezése után tekintse meg az **adatáttelepítési jelentést**:  
 
    ![Adatáttelepítési jelentés](./media/oracle-to-managed-instance-guide/data-migration-report.png)
 
-1. Kapcsolódjon az Azure SQL felügyelt példányához [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) segítségével, és ellenőrizze az áttelepítést az adatelemzés és a séma áttekintésével.
+1. Kapcsolódjon az Azure SQL felügyelt példányához [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) segítségével, és ellenőrizze az áttelepítést az adatelemzés és a séma áttekintésével:
 
    ![Érvényesítés a SSMA](./media/oracle-to-managed-instance-guide/validate-data.png)
 
 
 Azt is megteheti, hogy a SQL Server Integration Services (SSIS) használatával hajtja végre az áttelepítést. További információ: 
 
-- [SQL Server Migration Assistant: a nem a Microsofttól származó adatplatformokról származó adatok felmérése és áttelepítése SQL Server](https://blogs.msdn.microsoft.com/datamigration/2016/11/16/sql-server-migration-assistant-how-to-assess-and-migrate-databases-from-non-microsoft-data-platforms-to-sql-server/)
 - [Első lépések a SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS az Azure-hoz és a hibrid adatáthelyezéshez](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 
@@ -187,7 +188,7 @@ Ha további segítségre van az áttelepítési forgatókönyv végrehajtásáva
 | [Oracle Inventory parancsfájl-összetevők](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Ez az objektum olyan PL/SQL-lekérdezést tartalmaz, amely megkeresi az Oracle rendszertáblázatokat, és az objektumok számát a séma típusa, az Objektumtípus és az állapot szerint adja meg. Emellett az egyes sémákban a "nyers adatmennyiség", valamint az egyes sémákban lévő táblázatok méretezése is durva becslést ad, a CSV-formátumban tárolt eredményekkel együtt.                                                                                                               |
 | [SSMA Oracle Assessment Collection &-összevonás automatizálása](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Ez az erőforrás egy. csv-fájlt használ belépésként (sources.csv a projekt mappáiban) a SSMA-értékelés konzolos módban való futtatásához szükséges XML-fájlok létrehozásához. A source.csv az ügyfél a meglévő Oracle-példányok leltára alapján kapja meg. A kimeneti fájlok AssessmentReportGeneration_source_1.xml, ServersConnectionFile.xml és VariableValueFile.xml.|
 | [SSMA általános Oracle-hibákhoz és azok javításához](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Az Oracle használatával a WHERE záradékban nem skaláris feltételt rendelhet hozzá. A SQL Server azonban nem támogatja ezt a típusú feltételt. Ennek eredményeképpen az Oracle SQL Server Migration Assistant (SSMA) nem konvertálja a WHERE záradékban nem skaláris feltétellel rendelkező lekérdezéseket, hanem hiba-O2SS0001 generál. Ez a tanulmány további részleteket tartalmaz a problémáról és annak megoldási módjairól.          |
-| [Oracle – SQL Server áttelepítési kézikönyv](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Ez a dokumentum az Oracle-sémák az SQL serverbase legújabb verziójára való áttelepítésével kapcsolatos feladatokra koncentrál. Ha az áttelepítéshez a funkciók/funkciók módosítása szükséges, akkor az adatbázist használó alkalmazások változásainak lehetséges hatását körültekintően kell figyelembe venni.                                                     |
+| [Oracle – SQL Server áttelepítési kézikönyv](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Ez a dokumentum az Oracle-sémák a SQL Server Base legújabb verziójára való áttelepítésével kapcsolatos feladatokra koncentrál. Ha az áttelepítéshez a funkciók/funkciók módosítása szükséges, akkor az adatbázist használó alkalmazások változásainak lehetséges hatását körültekintően kell figyelembe venni.                                                     |
 
 Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
 
@@ -196,7 +197,7 @@ Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egy olyan mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, tekintse meg a cikk [szolgáltatás és eszközök az adatok áttelepítéséhez](https://docs.microsoft.com/azure/dms/dms-tools-matrix)című témakört.
 
 - Az Azure SQL felügyelt példányával kapcsolatos további tudnivalókért tekintse meg a következőt: 
-  - [Az Azure SQL felügyelt példányának áttekintése](../../database/sql-database-paas-overview.md)
+  - [Az Azure SQL felügyelt példányának áttekintése](../../managed-instance/sql-managed-instance-paas-overview.md)
   - [Azure teljes tulajdonlási költség (TCO) – kalkulátor](https://azure.microsoft.com/en-us/pricing/tco/calculator/)
 
 

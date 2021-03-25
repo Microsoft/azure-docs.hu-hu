@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 69c600384a7877f3534bae0b57f862187feb32ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a43f95ad65e95db2b69b32c3fe8d62db71a98a17
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581507"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025203"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -42,8 +42,8 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- |
 | **Ausztrália kormányzati** | Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 |
-| **Európa** | Közép-Franciaország, Dél-Franciaország, Észak-Németország, Középnyugat-Németország, Észak-Európa, Kelet-Norvégia, Norvégia nyugati régiója, Észak-Svájc, Nyugat-Svájc, Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Nyugat-Európa |Amszterdam, Amsterdam2, Berlin, Koppenhága, Dublin, Frankfurt, Genf, London, London2, Marseille, Milánó, München, Newport (Wales), Oslo, Párizs, Stavanger, Stockholm, Zürich |
-| **Észak-Amerika** | USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Québec város, Queretaro (Mexikó), Quincy, San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Toronto, Vancouver, Washington, Washington DC2 |
+| **Európa** | Közép-Franciaország, Dél-Franciaország, Észak-Németország, Középnyugat-Németország, Észak-Európa, Kelet-Norvégia, Norvégia nyugati régiója, Észak-Svájc, Nyugat-Svájc, Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Nyugat-Európa |Amszterdam, Amsterdam2, Berlin, Koppenhága, Dublin, Frankfurt, Frankfurt2, Genf, London, London2, Madrid, Marseille, Milánó, München, Newport (Wales), Oslo, Párizs, Stavanger, Stockholm, Zürich |
+| **Észak-Amerika** | USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Mexikó), Quincy, San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Toronto, Toronto2, Vancouver, Washington, D.C., Washington DC2 |
 | **Ázsia** | Kelet-Ázsia, Délkelet-Ázsia | Bangkok, Hongkong, Hong Kong2, Jakarta, Kuala Lumpur, Szingapúr, Szingapúr2, Taipei |
 | **India** | Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
 | **Japán** | Nyugat-Japán, Kelet-Japán |Osaka, Tokió, Tokyo2 |
@@ -51,7 +51,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **Dél-Korea** | Dél-Korea középső régiója, Korea déli régiója |Busan, Szöul|
 | **EAE** | UAE Central, Észak-Egyesült Arab | Dubai, Dubai2 |
 | **Dél-afrikai Köztársaság** | Dél-Afrika nyugati régiója, Dél-Afrika északi régiója |Fokváros, Johannesburg |
-| **Dél-Amerika** | Dél-Brazília |Bogota, Sao Paulo |
+| **Dél-Amerika** | Dél-Brazília |Bogota, Rio de Janeiro, Sao Paulo |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Az Azure-régiók és az országos felhők geopolitikai határai
 Az alábbi tábla a régiók és az országos felhők geopolitikai határainak információit tartalmazza.
@@ -167,7 +167,7 @@ Az Azure nemzeti felhők el vannak különítve egymástól és a globális kere
 | **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | n.a. | 10G, 100G | Equinix, Megaport, Verizon |
 | **New York** | [Equinix NY5](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny5/) | n.a. | 10G, 100G | Equinix, CenturyLink Cloud Connect, Verizon |
 | **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | USA-beli államigazgatás – Arizona | 10G, 100G | &T NetBond, CenturyLink Cloud-kapcsolat, Megaport |
-| **San Antonio** | [CyrusOne SA2](https://cyrusone.com/locations/texas/san-antonio-texas-ii/) | USA-beli államigazgatás – Texas | n.a. | CenturyLink Cloud Connect, Megaport |
+| **San Antonio** | [CyrusOne SA2](https://cyrusone.com/locations/texas/san-antonio-texas-ii/) | USA-beli államigazgatás – Texas | 10G, 100G | CenturyLink Cloud Connect, Megaport |
 | **Szilícium-völgy** | [Equinix SV4](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv4/) | n.a. | 10G, 100G | A következő címen:&T, Equinix, level 3 Communications, Verizon |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | n.a. | 10G, 100G | Equinix, Megaport |
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | US DoD – keleti régió, US Gov Virginia | 10G, 100G | &T NetBond, CenturyLink Cloud-kapcsolat, Equinix, level 3 Communications, Megaport, Verizon |

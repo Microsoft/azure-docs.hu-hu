@@ -37,7 +37,7 @@
         - name: Hitelesítés és engedélyezés
           href: relay-authentication-and-authorization.md
         - name: Beépített biztonsági vezérlők
-          href: service-bus-relay-security-controls.md
+          href: ../service-bus-messaging/security-baseline.md
         - name: Hálózati biztonság
           href: network-security.md
     - name: Hibrid kapcsolatok protokollja

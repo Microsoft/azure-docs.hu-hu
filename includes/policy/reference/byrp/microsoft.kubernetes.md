@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bd66044e0b5ac2be592d18dbadfe948793cf6062
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21b3f13691b5453abf355149f72bc2a8c1f46d83
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591221"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036193"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[Az Azure arc-kompatibilis Kubernetes-fürtökön telepítve kell lennie az Azure Defender bővítményének](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Az Azure Defender Azure arc-bővítménye biztosítja az arc-kompatibilis Kubernetes-fürtök veszélyforrások elleni védelmét. A bővítmény a fürt összes vezérlő síkja (fő) csomópontjának adatait gyűjti, és további elemzés céljából elküldi azt az Azure Defender for Kubernetes háttérbe a felhőben. További információ: [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |AuditIfNotExists, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Kubernetes-fürtök konfigurálása a megadott GitOps-konfigurációval HTTPS-titok használatával](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6f560f4-f582-4b67-b123-a37dcd1bf7ea) |Helyezzen üzembe egy "sourceControlConfiguration" Kubernetes-fürtöket annak biztosítása érdekében, hogy a fürtök a definiált git-tárházból származó számítási feladatokhoz és konfigurációkhoz kapják meg az igazság forrását. Ehhez a definícióhoz HTTPS-felhasználók és a Key Vaultban tárolt fő titkos kulcsok szükségesek. Útmutatásért tekintse meg a következőt: [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, auditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-HTTPS-secrets_DINE.json) |
 |[Kubernetes-fürtök konfigurálása megadott GitOps-konfigurációval a titkok nélkül](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Helyezzen üzembe egy "sourceControlConfiguration" Kubernetes-fürtöket annak biztosítása érdekében, hogy a fürtök a definiált git-tárházból származó számítási feladatokhoz és konfigurációkhoz kapják meg az igazság forrását. Ehhez a definícióhoz nem szükséges titkos kulcs. Útmutatásért tekintse meg a következőt: [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, auditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-no-secrets_DINE.json) |
 |[Kubernetes-fürtök konfigurálása megadott GitOps-konfigurációval SSH-titkok használatával](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc050047b-b21b-4822-8a2d-c1e37c3c0c6a) |Helyezzen üzembe egy "sourceControlConfiguration" Kubernetes-fürtöket annak biztosítása érdekében, hogy a fürtök a definiált git-tárházból származó számítási feladatokhoz és konfigurációkhoz kapják meg az igazság forrását. Ehhez a definícióhoz egy titkos SSH-kulcs szükséges a Key Vaultban. Útmutatásért tekintse meg a következőt: [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, auditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-SSH-secrets_DINE.json) |

@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server a felügyelt SQL-példányhoz: áttelepítési áttekintés'
+title: 'Az Azure SQL felügyelt példányának SQL Servere: áttelepítési áttekintés'
 description: Ismerje meg a SQL Server-adatbázisok Azure SQL felügyelt példányra való átadásához rendelkezésre álló különböző eszközöket és lehetőségeket.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102562010"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024897"
 ---
-# <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
+# <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server az Azure SQL felügyelt példányához
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Ismerje meg a különböző áttelepítési lehetőségeket és szempontokat a SQL Server Azure SQL felügyelt példányra való áttelepítéséhez. 
@@ -30,7 +30,7 @@ A helyszíni vagy a szolgáltatásban futó SQL Server áttelepíthetők:
 - Számítási motor (Google Cloud Platform-GCP)  
 - Felhőbeli SQL a SQL Serverhoz (Google Cloud Platform – GCP) 
 
-Más forgatókönyvek esetén tekintse meg az [adatbázis áttelepítési Útmutatóját](https://datamigration.microsoft.com/). 
+Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -60,7 +60,7 @@ Néhány általános útmutató, amely segítséget nyújt az SQL felügyelt pé
 - Használja a fájlrendszer alapértékének i/o-késleltetését, hogy kiválassza a általános célú (az 5 MS-nál nagyobb késést) és a üzletileg kritikus (a 3 MS-nál kisebb késés). 
 - A várt i/o-teljesítmény eléréséhez használja az alapértéket az adatok és naplófájlok méretének előfoglalásához. 
 
-Az üzembe helyezés során kiválaszthatja a számítási és tárolási erőforrásokat, majd a [Azure Portal](../../database/scale-resources.md) használata után megváltoztathatja azokat anélkül, hogy állásidőt kellene használni az alkalmazáshoz. 
+Az üzembe helyezés során kiválaszthatja a számítási és tárolási erőforrásokat, majd [a Azure Portal használata után megváltoztathatja azokat](../../database/scale-resources.md) anélkül, hogy állásidőt kellene használni az alkalmazáshoz. 
 
 > [!IMPORTANT]
 > A [felügyelt példányok virtuális hálózati követelményeinek](../../managed-instance/connectivity-architecture-overview.md#network-requirements) bármilyen eltérése megakadályozhatja, hogy új példányokat hozzon létre vagy meglévőket használjon. További információ a meglévő hálózatok [létrehozásáról](../../managed-instance/virtual-network-subnet-create-arm-template.md)   és [konfigurálásáról](../../managed-instance/vnet-existing-add-subnet.md)   . 
@@ -100,9 +100,9 @@ A következő táblázat a javasolt áttelepítési eszközöket sorolja fel:
 
 Az alábbi táblázat az alternatív áttelepítési eszközöket sorolja fel: 
 
-|Technológia |Leírás  |
+|**Technológia** |**Leírás**  |
 |---------|---------|
-|[Tranzakciós replikáció](../../managed-instance/replication-transactional-overview.md) | Az adatok replikálása a forrás SQL Server adatbázis-táblájából az SQL felügyelt példányára, a tranzakciós konzisztencia fenntartása mellett biztosítva a közzétevő-előfizető típusú áttelepítési lehetőséget. |  |
+|[Tranzakciós replikáció](../../managed-instance/replication-transactional-overview.md) | Az adatok replikálása a forrás SQL Server adatbázis-táblájából az SQL felügyelt példányára, a tranzakciós konzisztencia fenntartása mellett biztosítva a közzétevő-előfizető típusú áttelepítési lehetőséget. | 
 |[Tömeges másolás](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| A [tömeges másolási program (BCP) segédprogram](/sql/tools/bcp-utility) SQL Server egy adatfájlba másolja az adatok másolását. A BCP segédprogram használatával exportálja az adatait a forrásból, és importálja az adatfájlt a célként szolgáló SQL felügyelt példányba.</br></br> A nagy sebességű tömeges másolási műveletek esetében az adatok Azure SQL Databaseba való áthelyezéséhez az [intelligens tömeges másolási eszköz](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) használható a párhuzamos másolási feladatok kihasználásával az átviteli sebesség maximalizálása érdekében. | 
 |[Exportálási varázsló/BACPAC importálása](../../database/database-import.md?tabs=azure-powershell)| A [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) egy olyan Windows-fájl, `.bacpac` amely egy adatbázis sémájának és adatfájljainak beágyazására szolgáló bővítménnyel rendelkezik. A BACPAC használhatók a forrásokból származó adatok exportálására is SQL Server és a fájlnak az Azure SQL felügyelt példányba való újbóli importálására.  |  
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| A [másolási tevékenység](../../../data-factory/copy-activity-overview.md) Azure Data Factory áttelepíti a forrás SQL Server adatbázis (ok) ról az SQL felügyelt példányra a beépített összekötők és egy [Integration Runtime](../../../data-factory/concepts-integration-runtime.md)használatával.</br> </br> Az ADF számos [összekötőt](../../../data-factory/connector-overview.md) támogat az adatok SQL Server forrásokból az SQL felügyelt példányba való áthelyezéséhez. |
@@ -228,7 +228,7 @@ Egyes szolgáltatások csak akkor érhetők el, ha az [adatbázis kompatibilitá
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Description  |
+|Objektum  |Leírás  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve az Azure SQL MI-t is.|
@@ -241,7 +241,7 @@ Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az SQL Server Azure SQL felügyelt példányra való áttelepítésének megkezdéséhez tekintse meg a [SQL Server az SQL felügyelt példány áttelepítési Útmutatóját](sql-server-to-managed-instance-guide.md).
+Az SQL Server Azure SQL felügyelt példányra való áttelepítésének megkezdéséhez tekintse meg a [SQL Server az Azure SQL felügyelt példányok áttelepítési Útmutatóját](sql-server-to-managed-instance-guide.md).
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, lásd: [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 

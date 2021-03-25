@@ -6,12 +6,12 @@ ms.date: 03/23/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 91d27ce0d6f999ac5d13b079c877e49cdf3fcd61
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962830"
+ms.locfileid: "105023248"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>Azure Functions összekötése a Visual Studio Code használatával Azure Cosmos DB
 
@@ -20,11 +20,11 @@ ms.locfileid: "104962830"
 Ez a cikk bemutatja, hogyan használható a Visual Studio Code a [Azure Cosmos db](../cosmos-db/introduction.md) az előző rövid útmutató cikkében létrehozott függvényhez való összekapcsolásához. Az ehhez a függvényhez hozzáadott kimeneti kötés adatokat ír a HTTP-kérelemből egy Azure Cosmos DB tárolóban tárolt JSON-dokumentumba. 
 
 ::: zone pivot="programming-language-csharp"
-Mielőtt elkezdené, be kell fejeznie a cikket, gyors [útmutató: Azure functions projekt létrehozása a parancssorból](create-first-function-cli-csharp.md). Ha a cikk végén már megtisztította az erőforrásokat, folytassa újra a Function app és a kapcsolódó erőforrások Azure-ban való újbóli létrehozásához szükséges lépéseket.
+Mielőtt elkezdené, el kell végeznie a rövid útmutató [: C#-függvény létrehozása az Azure-ban a Visual Studio Code használatával](create-first-function-vs-code-csharp.md). Ha a cikk végén már megtisztította az erőforrásokat, folytassa újra a Function app és a kapcsolódó erőforrások Azure-ban való újbóli létrehozásához szükséges lépéseket.
 ::: zone-end
 ::: zone pivot="programming-language-javascript"  
-Mielőtt elkezdené, be kell fejeznie a cikket, gyors [útmutató: Azure functions projekt létrehozása a parancssorból](create-first-function-cli-node.md). Ha a cikk végén már megtisztította az erőforrásokat, folytassa újra a Function app és a kapcsolódó erőforrások Azure-ban való újbóli létrehozásához szükséges lépéseket.  
-::: zone-end   
+Mielőtt elkezdené, el kell végeznie a rövid útmutató [: JavaScript-függvény létrehozása az Azure-ban a Visual Studio Code használatával](create-first-function-vs-code-node.md). Ha a cikk végén már megtisztította az erőforrásokat, folytassa újra a Function app és a kapcsolódó erőforrások Azure-ban való újbóli létrehozásához szükséges lépéseket.  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>A környezet konfigurálása
 
