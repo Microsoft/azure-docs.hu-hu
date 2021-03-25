@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4da685c247427e78297df1753779ee9b5c7866b8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774932"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023197"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Útmutató a függvények futtatásához a .NET 5,0-ben az Azure-ban
 
@@ -147,15 +147,17 @@ Ha kimeneti kötést szeretne írni, egy kimeneti kötési attribútumot kell al
 
 ### <a name="multiple-output-bindings"></a>Több kimeneti kötés
 
-A kimeneti kötésbe írt adat mindig a függvény visszatérési értéke. Ha egynél több kimeneti kötést kell írnia, egyéni visszatérési típust kell létrehoznia. Ennek a visszatérési típusnak az osztály egy vagy több tulajdonságára alkalmazott kimeneti kötési attribútummal kell rendelkeznie. A következő példa a HTTP-válaszra és egy üzenetsor-kimeneti kötésre ír adatokat:
+A kimeneti kötésbe írt adat mindig a függvény visszatérési értéke. Ha egynél több kimeneti kötést kell írnia, egyéni visszatérési típust kell létrehoznia. Ennek a visszatérési típusnak az osztály egy vagy több tulajdonságára alkalmazott kimeneti kötési attribútummal kell rendelkeznie. Az alábbi példa egy HTTP-triggert ír a HTTP-válaszra és egy üzenetsor-kimeneti kötésre:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
+
+A HTTP-triggerekre adott válasz mindig kimenetnek minősül, ezért nincs szükség visszatérési érték attribútumra.
 
 ### <a name="http-trigger"></a>HTTP-eseményindító
 
 A HTTP-eseményindítók lefordítják a bejövő HTTP-kérési üzenetet egy [HttpRequestData] objektumba, amely át lett adva a függvénynek. Ez az objektum a kérelemből származó adatokkal szolgál, beleértve a következőket:,,, `Headers` `Cookies` `Identities` `URL` és opcionálisan egy üzenetet `Body` . Ez az objektum a HTTP-kérelem objektumának ábrázolása, és nem maga a kérelem. 
 
-Hasonlóképpen, a függvény egy [HttpReponseData] objektumot ad vissza, amely a HTTP-válasz létrehozásához, beleértve az üzenetet `StatusCode` , `Headers` és opcionálisan egy üzenetet is tartalmaz `Body` .  
+Hasonlóképpen, a függvény egy [HttpResponseData] objektumot ad vissza, amely a http-válasz létrehozásához használt adatokkal, például az üzenettel `StatusCode` `Headers` és opcionálisan egy üzenettel rendelkezik `Body` .  
 
 A következő kód egy HTTP-trigger 
 

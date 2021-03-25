@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102498897"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048867"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>A SharePoint Online indexelés konfigurálása a Cognitive Searchban (előzetes verzió)
 
@@ -147,7 +147,7 @@ api-key: [admin key]
 
 ```
 
-További információ: [create index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+További információ: [create index (REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-5-create-an-indexer"></a>5. lépés: indexelő létrehozása
 Az indexelő egy adatforrást hoz létre a cél keresési indexszel, és az Adatfrissítés automatizálására szolgáló ütemtervet biztosít. Miután létrehozta az indexet és az adatforrást, készen áll az indexelő létrehozására.
@@ -226,7 +226,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-Az indexelő állapotáról további információt itt talál: [Indexelő állapotának beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Az indexelő állapotáról további információt itt talál: [Indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status).
 
 ## <a name="updating-the-data-source"></a>Az adatforrás frissítése
 Ha nincsenek frissítések az adatforrás-objektumhoz, az indexelő az ütemezett felhasználói beavatkozás nélkül is futtatható. Az Azure Cognitive Search adatforrás-objektum frissítésekor azonban minden alkalommal újra be kell jelentkeznie, hogy az indexelő fusson. Ha például megváltoztatja az adatforrás-lekérdezést, akkor újra be kell jelentkeznie a `https://microsoft.com/devicelogin` és egy új kód használatával.
@@ -241,7 +241,7 @@ Az adatforrás frissítése után kövesse az alábbi lépéseket:
     api-key: [admin key]
     ```
 
-    Az indexelő futtatására vonatkozó kéréssel kapcsolatos további információkért tekintse meg a következőt: [Run indexelő](https://docs.microsoft.com/rest/api/searchservice/run-indexer).
+    Az indexelő futtatására vonatkozó kéréssel kapcsolatos további információkért tekintse meg a következőt: [Run indexelő](/rest/api/searchservice/run-indexer).
 
 1.  Az indexelő állapotának megtekintése. Ha az utolsó indexelő futtatása során hiba történt `https://microsoft.com/devicelogin` , lépjen a lapra, és adja meg az új kódot. 
 
@@ -251,7 +251,7 @@ Az adatforrás frissítése után kövesse az alábbi lépéseket:
     api-key: [admin key]
     ```
 
-    Az indexelő állapotáról további információt itt talál: [Indexelő állapotának beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+    Az indexelő állapotáról további információt itt talál: [Indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status).
 
 1.  Bejelentkezés
 
@@ -263,7 +263,7 @@ Ha úgy állította be az indexelő, hogy indexelje a dokumentum metaadatait, a 
 > [!NOTE]
 > Az előzetes verzió aktuális verziója nem tartalmazza az egyéni metaadatokat.
 
-| Azonosító | Típus | Description | 
+| Azonosító | Típus | Leírás | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | A hely AZONOSÍTÓjának, a kódtár AZONOSÍTÓjának és az elem AZONOSÍTÓjának kombinációs kulcsa, amely egyedileg azonosít egy adott helyet a dokumentumtárban egy adott helyhez. |
 | metadata_spo_site_id | Edm.String | A SharePoint Online-webhely azonosítója. |
@@ -359,7 +359,7 @@ Egyes dokumentumok esetében az Azure Cognitive Search nem tudja meghatározni a
 "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Az Azure Cognitive Search korlátozza az indexelt dokumentumok méretét. Ezek a korlátok az [Azure Cognitive Search szolgáltatási korlátaiban](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)vannak dokumentálva. A túlméretezett dokumentumokat alapértelmezés szerint hibaként kezeli a rendszer. Ha azonban `indexStorageMetadataOnlyForOversizedDocuments` a konfigurációs paraméter igaz értékre van állítva, továbbra is indexelheti a túlméretezett dokumentumok tárolási metaadatait:
+Az Azure Cognitive Search korlátozza az indexelt dokumentumok méretét. Ezek a korlátok az [Azure Cognitive Search szolgáltatási korlátaiban](./search-limits-quotas-capacity.md)vannak dokumentálva. A túlméretezett dokumentumokat alapértelmezés szerint hibaként kezeli a rendszer. Ha azonban `indexStorageMetadataOnlyForOversizedDocuments` a konfigurációs paraméter igaz értékre van állítva, továbbra is indexelheti a túlméretezett dokumentumok tárolási metaadatait:
 
 ```http
 "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfb383a7079e98db1db1f9b5077558c187bcea96
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720824"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047728"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>A Unity Remote Rendering-csomagjának telepítése
 
@@ -22,11 +22,11 @@ A Unity csomag telepítéséhez a következő lehetőségek közül választhat:
 
 ## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Távoli renderelési csomag telepítése a kevert valóság funkció eszköz használatával
 
-[A vegyes valóság funkciós eszköz](https://aka.ms/MRFeatureToolDocs) ([Letöltés](https://aka.ms/mrfeaturetool)) egy olyan eszköz, amellyel a vegyes valóság funkcióinak egységes projektjeibe integrálhatók. A csomag nem része az [ARR Samples adattárnak](https://github.com/Azure/azure-remote-rendering), és nem érhető el az egység belső csomagjának beállításjegyzékében.
+[A vegyes valóság funkciós eszköz](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) ([Letöltés](https://aka.ms/mrfeaturetool)) egy olyan eszköz, amellyel a vegyes valóság funkcióinak egységes projektjeibe integrálhatók. A csomag nem része az [ARR Samples adattárnak](https://github.com/Azure/azure-remote-rendering), és nem érhető el az egység belső csomagjának beállításjegyzékében.
 
 A csomag egy projekthez való hozzáadásához a következőket kell tennie:
 1. [A vegyes valóság funkció eszköz letöltése](https://aka.ms/mrfeaturetool)
-1. Kövesse az eszköz használatának [teljes utasításait](https://aka.ms/MRFeatureToolDocs) .
+1. Kövesse az eszköz használatának [teljes utasításait](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) .
 1. A **szolgáltatások felderítése** lapon jelölje be a **Microsoft Azure távoli renderelési** csomaghoz tartozó jelölőnégyzetet, és válassza ki a projekthez hozzáadni kívánt csomag verzióját.
 
 ![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d6aa8aee3c4f6060f987b201a941f0f24fe76506
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2241bc422720be7768f1f948854f670617ce6bd5
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605544"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033342"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[Előzetes verzió \] : az Azure IoT hub ügyfél által felügyelt kulccsal kell használnia az adatok titkosítását](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Az ügyfél által felügyelt kulccsal IoT Hub tárolt adatok titkosítása egy második titkosítási réteget ad hozzá az alapértelmezett szolgáltatás által felügyelt kulcsokhoz, lehetővé teszi a kulcsok, az egyéni rotációs házirendek és az adatokhoz való hozzáférés kezelését a Key Access Control használatával. Az ügyfél által felügyelt kulcsokat IoT Hub létrehozásakor kell konfigurálni. Az ügyfél által felügyelt kulcsok konfigurálásával kapcsolatos további információkért lásd: [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Naplózás, megtagadás, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[IoT Hub eszköz kiépítési példányainak konfigurálása privát DNS-zónák használatára](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |Privát DNS-zónák használatával felülbírálhatja egy privát végpont DNS-feloldását. A magánhálózati DNS-zónák a virtuális hálózatra mutató hivatkozásokat tartalmaznak IoT Hub Device kiépítési szolgáltatási példányának feloldásához. További információ: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |DeployIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |
