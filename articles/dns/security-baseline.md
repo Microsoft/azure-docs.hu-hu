@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b870a0325646b01ae3a72bdd28d3ae33cba45b09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 64a93cfea9d470ba45e59a56d4855e374f7fb704
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101733125"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559927"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS Azure biztonsági alapterve
 
@@ -34,7 +34,7 @@ Naplók betöltése Azure Monitor használatával a végponti eszközök, a hál
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Felelősség**: Ügyfél
 
@@ -52,9 +52,9 @@ Naplók betöltése Azure Monitor használatával a végponti eszközök, a hál
 
 **Útmutató**: Azure monitor a szervezet megfelelőségi szabályainak megfelelően állítsa be a log Analytics munkaterület megőrzési időszakát. Azure Storage-fiókokat használhat hosszú távú és archiválási tároláshoz.
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Felelősség**: Ügyfél
 
@@ -68,9 +68,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatoka
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics lekérdezések első lépései](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Felelősség**: Ügyfél
 
@@ -86,7 +86,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel sz
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -102,11 +102,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel sz
 
 A Azure DNSban létezik a DNS-zóna közreműködői szerepköre, valamint a zóna szintje és a Record set szintű Azure-RBAC. Saját egyéni Azure-szerepköröket is létrehozhat, így finomabb szabályozást is biztosíthat. Vegye figyelembe, hogy a saját DNS-zóna erőforrásai eltérő szerepkör-nevet használnak, saját DNS zóna közreműködője.
 
-- [Címtárbeli szerepkör beszerzése Azure Active Directoryban (Azure AD) a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör beszerzése Azure Active Directoryban (Azure AD) a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Az Azure-RBAC megismerése Azure DNS](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Az Azure-RBAC megismerése Azure DNS](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Felelősség**: Ügyfél
 
@@ -131,7 +131,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 Az Azure Active Directory (Azure AD) Privileged Identity Management és a Azure Resource Manager használatával is engedélyezheti az igény szerinti hozzáférést a rendszergazdai fiókokhoz.
 
-- [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [A Azure Policy használata](../governance/policy/tutorials/create-and-manage.md)
 
@@ -213,7 +213,7 @@ Az Azure Active Directory (Azure AD) Privileged Identity Management és a Azure 
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD Identity and Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,7 +227,7 @@ Az Azure Active Directory (Azure AD) Privileged Identity Management és a Azure 
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Felelősség**: Ügyfél
 
@@ -271,7 +271,7 @@ Saját egyéni Azure-szerepköröket is létrehozhat, így finomabb szabályozá
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md) 
 
-- [Az Azure-RBAC megismerése Azure DNS](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Az Azure-RBAC megismerése Azure DNS](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Az Azure-RBAC megismerése az Azure saját DNS](dns-protect-private-zones-recordsets.md)
 
@@ -283,7 +283,7 @@ Saját egyéni Azure-szerepköröket is létrehozhat, így finomabb szabályozá
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure DNS, valamint más kritikus vagy kapcsolódó erőforrások esetében is megtörténik.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -301,7 +301,7 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -368,7 +368,7 @@ Az Azure Resource Graph használatával kérdezheti le vagy derítheti fel az el
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -392,7 +392,7 @@ Az Azure Resource Graph használatával kérdezheti le vagy derítheti fel az el
 
 **Útmutató**: a Azure Policy Azure DNS szabványos biztonsági konfigurációinak meghatározása és implementálása. Használjon Azure Policy aliasokat a "Microsoft. Network" névtérben egyéni szabályzatok létrehozásához a Recovery Services-tárolók konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -422,9 +422,9 @@ Emellett a Azure Resource Manager támogatja a biztonsági vezérlők egy másik
 
 **Útmutató**: ha egyéni Azure Policy-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -566,5 +566,5 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

@@ -6,14 +6,15 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cba9615a8c76387b593109bc2174ab4718f1750a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100006853"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609309"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>A Azure Database for MySQL-kompatibilis MySQL-illesztőprogramok és-felügyeleti eszközök
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Ez a cikk a Azure Database for MySQL kompatibilis illesztőprogramokat és felügyeleti eszközöket ismerteti.
 
 ## <a name="mysql-drivers"></a>MySQL-illesztőprogramok

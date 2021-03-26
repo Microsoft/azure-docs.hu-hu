@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: afba973570d75eace8cae8d1ed6ed470db21ef0e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043221"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608085"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -67,17 +67,17 @@ A **hangsegéd** támogatása a következő platformokon érhető el:
   - Java/Windows & Linux & macOS & Android (Speech Devices SDK)
   - Go
 
-#### <a name="keyword-spotting"></a>Kulcsszavas bepecsételés
+#### <a name="keyword-recognition"></a>Kulcsszó-felismerés
 
-[A beszédfelismerés](./custom-keyword-basics.md) fogalma támogatott a Speech SDK-ban. A kulcsszó-bepecsételés a kulcsszónak a beszédben való azonosítására szolgáló művelet, amelyet a kulcsszó meghallgatása után kell végezni. A "Hey Cortana" például aktiválja a Cortana Segédet.
+A kulcsszó- [felismerés](./custom-keyword-basics.md) fogalma támogatott a Speech SDK-ban. A kulcsszó-felismerés a kulcsszónak a beszédben való azonosítására szolgáló művelet, amelyet a kulcsszó meghallgatása után kell végezni. A "Hey Cortana" például aktiválja a Cortana Segédet.
 
-A következő platformokon érhető el a **(z) kulcsszó-Felpecsételés (KWS)** :
+A **kulcsszavas felismerés** a következő platformokon érhető el:
 
   - C++/Windows & Linux rendszerhez
   - C#/Windows & Linux rendszerhez
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (Speech Devices SDK)
-  - A "a" kulcsszó-bepecsételés (KWS) funkció bármilyen mikrofonos típussal működhet, a hivatalos KWS-támogatás azonban jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
+  - A kulcsszó-felismerési funkció bármilyen mikrofonos típussal működhet, a hivatalos kulcsszavas felismerés támogatása azonban jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
 
 ### <a name="meeting-scenarios"></a>Értekezleti forgatókönyvek
 

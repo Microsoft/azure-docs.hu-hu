@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221014"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605212"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -96,6 +96,36 @@ Felhasználó által megadott útvonal létrehozásakor az alábbi következő u
 
 Felhasználó által megadott útvonalak esetén nem adhat meg **Virtuális hálózatok közötti társviszonyt** vagy **VirtualNetworkServiceEndpoint** típust a következő ugrás típusaként. **Virtuális hálózatok közötti társviszony** vagy **VirtualNetworkServiceEndpoint** következő ugrási típusú útvonalakat az Azure csak akkor hoz létre, ha virtuális hálózati társviszonyt vagy szolgáltatásvégpontot konfigurál.
 
+### <a name="service-tags-for-user-defined-routes-public-preview"></a>A felhasználó által megadott útvonalakhoz tartozó szolgáltatási címkék (nyilvános előzetes verzió)
+
+Mostantól megadhat egy [szolgáltatási címkét](service-tags-overview.md) , amely egy explicit IP-címtartomány helyett egy felhasználó által megadott útvonalhoz tartozó cím előtag. A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címeket, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a felhasználó által megadott útvonalak gyakori frissítéseinek összetettségét, és csökkenti a létrehozandó útvonalak számát. Az egyes útválasztási táblákban jelenleg 25 vagy kevesebb útvonalat lehet létrehozni a szolgáltatási címkékkel. </br>
+
+
+#### <a name="exact-match"></a>Pontos egyezés
+Ha a pontos előtag egyezik egy explicit IP-előtaggal rendelkező útvonal és egy szolgáltatási címkével rendelkező útvonal között, akkor a rendszer a explicit előtaggal adja meg az útvonalat. Ha a szolgáltatási címkékkel rendelkező több útvonal megfelel az IP-ELŐTAGOKNAK, az útvonalak a következő sorrendben lesznek kiértékelve: 
+
+   1. Regionális címkék (például Storage. EastUS, AppService. AustraliaCentral)
+   2. Legfelső szintű címkék (például Storage, AppService)
+   3. AzureCloud regionális címkék (például AzureCloud. canadacentral, AzureCloud. eastasia)
+   4. A AzureCloud címke </br></br>
+
+Ennek a szolgáltatásnak a használatához adja meg az útválasztási táblázat parancsainál az előtag paraméterhez tartozó szolgáltatási címke nevét. A PowerShellben például létrehozhat egy új útvonalat, amely egy Azure Storage-beli IP-előtagnak a virtuális készülékre való küldését teszi elérhetővé a következő használatával: </br>
+
+```azurepowershell-interactive
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix “Storage” -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+```
+
+A CLI-vel azonos parancs a következő lesz: </br>
+
+```azurecli-interactive
+az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
+```
+</br>
+
+
+> [!NOTE] 
+> Nyilvános előzetes verzióban több korlátozás is létezik. A szolgáltatás jelenleg nem támogatott az Azure Portalon, és csak a PowerShell és a parancssori felület használatával érhető el. A tárolók használata nem támogatott. 
+
 ## <a name="next-hop-types-across-azure-tools"></a>A következő ugrás típusai az Azure-eszközökben
 
 A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az Azure Portal és a parancssori eszközök között, valamint az Azure Resource Manager és a klasszikus üzemi modellek között. A következő táblázat felsorolja a neveket, amelyekkel a különféle eszközök és az [üzembehelyezési modellek](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a következő ugrások típusaira hivatkoznak:
@@ -109,6 +139,8 @@ A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az A
 |Nincsenek                            |Nincsenek                                            |Null (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
 |Társviszony létesítése virtuális hálózatok között         |Virtuális hálózatok közötti társviszony                                    |Nem alkalmazható|
 |Virtuális hálózati szolgáltatásvégpont|VirtualNetworkServiceEndpoint                   |Nem alkalmazható|
+
+
 
 ### <a name="border-gateway-protocol"></a>Border Gateway Protocol
 

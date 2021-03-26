@@ -63,6 +63,54 @@ Ajánlott használat |A folyamatos átviteli forgatókönyvek túlnyomó többs�
 
 <sup>1</sup> csak akkor használható közvetlenül a folyamatos átviteli végponton, ha a CDN nincs engedélyezve a végponton.<br/>
 
+### <a name="versions"></a>Verziók
+
+|Típus|StreamingEndpointVersion|ScaleUnits|CDN|Számlázás|
+|--------------|----------|-----------------|-----------------|-----------------|
+|Klasszikus|1.0|0|NA|Ingyenes|
+|Standard streaming Endpoint (előzetes verzió)|2.0|0|Yes|Fizetős|
+|prémium streamelési egység|1.0|>0|Yes|Fizetős|
+|prémium streamelési egység|2.0|>0|Yes|Fizetős|
+
+### <a name="features"></a>Funkciók
+
+Szolgáltatás|Standard|Prémium
+---|---|---
+Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
+CDN|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
+A számlázás arányosan történik| Napi|Napi
+Dinamikus titkosítás|Igen|Yes
+Dinamikus csomagolás|Igen|Yes
+Méretezés|Automatikus méretezés a célként megadott átviteli sebességgel.|További folyamatos átviteli egységek.
+IP-szűrés/G20/egyéni gazdagép <sup>1</sup>|Igen|Yes
+Progresszív letöltés|Igen|Yes
+Ajánlott használat |A folyamatos átviteli forgatókönyvek túlnyomó többségét ajánljuk.|Professzionális használat. 
+
+<sup>1</sup> csak akkor használható közvetlenül a folyamatos átviteli végponton, ha a CDN nincs engedélyezve a végponton.<br/>
+
+SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/details/media-services/).
+
+## <a name="migration-between-types"></a>Áttelepítés típusok között
+
+Forrás | Művelet | Művelet
+---|---|---
+Klasszikus|Standard|Be kell jelentkeznie
+Klasszikus|Prémium| Skála (további folyamatos átviteli egységek)
+Standard/prémium|Klasszikus|Nem érhető el (ha a streaming Endpoint verziója 1,0. A klasszikusra való váltás a "0" scaleunits beállítással lehetséges.
+Standard (CDN-vel/anélkül)|Prémium ugyanazzal a konfigurációval|**Elindítva** állapotban engedélyezett. (Azure Portal használatával)
+Prémium (CDN-vel/anélkül)|Standard ugyanazzal a konfigurációval|Elindított állapotban  engedélyezett (Azure Portalon keresztül)
+Standard (CDN-vel/anélkül)|Prémium különböző konfigurációval|Leállított állapotban  engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
+Prémium (CDN-vel/anélkül)|Standard különböző konfigurációval|Leállított állapotban  engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
+1,0-es verzió, SU >= 1 és CDN|Standard/prémium szintű CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett.
+1,0-es verzió, SU >= 1 és CDN|Standard/CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett. A 1,0-es verziójú CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
+1,0-es verzió, SU >= 1 és CDN|Prémium/CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett. A klasszikus CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
+
+
+
+
+
+
+
 ## <a name="streaming-endpoint-properties"></a>Adatfolyam-végpont tulajdonságai
 
 Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdonságait. Az új adatfolyam-végpontok és az összes tulajdonság leírásának ismertetését példákat a [streaming Endpoint (adatfolyam-végpont](/rest/api/media/streamingendpoints/create)) című témakörben talál.
@@ -83,7 +131,7 @@ Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdons�
 - `crossSiteAccessPolicies`: A különböző ügyfelekhez tartozó helyek közötti hozzáférési házirendek megadására használatos. További információkért lásd: tartományok [közötti házirend fájljának specifikációja](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [egy szolgáltatás elérhetővé tétele a tartomány határain belül](/previous-versions/azure/azure-services/gg185950(v=azure.100)). A beállítások csak Smooth Streamingra vonatkoznak.
 - `customHostNames`: Egy adatfolyam-végpont konfigurálására szolgál az egyéni állomásnévre irányuló forgalom fogadásához. Ez a tulajdonság a standard és a prémium szintű streaming végpontok esetében érvényes, és a következő esetekben állítható be `cdnEnabled` : false.
 
-    Media Servicesnak meg kell erősítenie a tartománynév tulajdonjogát. Media Services ellenőrzi a tartománynevek tulajdonjogát úgy, hogy egy olyan rekordot igényel, `CName` amely a Media Services fiók azonosítóját tartalmazza a használatban lévő tartományhoz hozzáadandó összetevőként. Ha például az "sports.contoso.com" nevet szeretné használni a streaming végpont egyéni állomásneveként, akkor egy rekordot úgy kell `<accountId>.contoso.com` konfigurálni, hogy az Media Services ellenőrző állomásnév egyikére mutasson. Az ellenőrző gazdagép neve verifydns. \<mediaservices-dns-zone> .
+    Media Servicesnak meg kell erősítenie a tartománynév tulajdonjogát. Media Services ellenőrzi a tartománynevek tulajdonjogát úgy, hogy egy olyan rekordot igényel, `CName` amely a Media Services fiók azonosítóját tartalmazza a használatban lévő tartományhoz hozzáadandó összetevőként. Ha például az "sports.contoso.com" nevet szeretné használni a streaming végpont egyéni állomásneveként, akkor egy rekordot úgy kell `<accountId>.contoso.com` konfigurálni, hogy az Media Services ellenőrző állomásnév egyikére mutasson. Az ellenőrző gazdagép neve verifydns. `\<mediaservices-dns-zone>` .
 
     A következő, a különböző Azure-régiókra vonatkozó ellenőrzési rekordban használandó DNS-zónák a következők:
   

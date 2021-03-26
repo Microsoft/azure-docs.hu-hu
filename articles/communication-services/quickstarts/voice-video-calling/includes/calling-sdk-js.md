@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 9aaaece7d60ceead80e51bdc2a1bb342d9a4d237
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: af5ec07a8fb2db0bd4b9b8f1af556ef54199400d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107735"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609422"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -123,6 +123,12 @@ const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 Ha a hívása csatlakozik, a automatikusan elindít egy video streamet a kiválasztott kameráról a másik résztvevőhöz. Ez a `Call.Accept()` videó beállításaira és a `CallAgent.join()` videó lehetőségeire is vonatkozik.
 
 ### <a name="join-a-group-call"></a>Csatlakozás csoportos híváshoz
+
+> [!NOTE]
+> A `groupId` paraméter rendszermetaadatoknak minősül, és a Microsoft a rendszer futtatásához szükséges műveletekhez használhatja azokat. Az értékben ne szerepeljenek személyes értékek `groupId` . A Microsoft nem kezeli ezt a paramétert személyes adatként, és annak tartalma látható lesz a Microsoft alkalmazottai számára, vagy hosszú távon tárolható.
+>
+> A `groupId` paraméterhez GUID formátumú érték szükséges. Azt javasoljuk, hogy véletlenszerűen generált GUID azonosítókat használjon, amelyek nem számítanak személyes adatként a rendszerekben.
+>
 
 Új csoportos hívás indításához vagy egy folyamatos csoportos híváshoz való csatlakozáshoz használja a `join` metódust, és adjon át egy objektumot egy `groupId` tulajdonsággal. Az `groupId` értéknek GUID azonosítónak kell lennie.
 

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704327"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567402"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Erőforráscsoportok figyelése Azure Monitorvel (előzetes verzió)
 
@@ -43,7 +43,7 @@ Alapértelmezés szerint az erőforrások az alkalmazási réteg és az erőforr
 
 Az erőforráscsoport-elemzések oldal számos más eszközt is tartalmaz, amelyek a problémák diagnosztizálásához nyújtanak segítséget
 
-   |         |          |
+   | Eszköz | Leírás |
    | ---------------- |:-----|
    | [**Riasztások**](../alerts/alerts-overview.md)      |  A riasztások megtekintése, létrehozása és kezelése. |
    | [**Mérőszámok**](../data-platform.md) | Jelenítse meg és vizsgálja meg a metrika-alapú adatokat.    |

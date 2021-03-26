@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/23/2021
-ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047252"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565886"
 ---
 # <a name="maintenance-window-preview"></a>Karbantartási időszak (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,7 +55,7 @@ Miután kiválasztotta a karbantartási időszakot, és a szolgáltatás konfigu
 A karbantartási időszak konfigurálása és használata ingyenesen használható az összes jogosult [ajánlati típushoz](https://azure.microsoft.com/support/legal/offer-details/): utólagos elszámolású, felhőalapú megoldás-szolgáltató (CSP), Microsoft nagyvállalati szerződés vagy Microsoft ügyfél-szerződés.
 
 > [!Note]
-> Az Azure-ajánlat az Ön Azure-előfizetésének típusa. Például az utólagos elszámolású előfizetések [, a](https://azure.microsoft.com/offers/ms-azr-0003p/) [Azure in Open Licencprogram](https://azure.microsoft.com/offers/ms-azr-0111p/)és a [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) minden Azure-ajánlat. Minden ajánlat vagy csomag eltérő feltételekkel és előnyökkel rendelkezik. Ajánlatát vagy tervét az előfizetés áttekintése mutatja be. Az előfizetés egy másik ajánlatra váltásával kapcsolatos további információkért lásd: [Azure-előfizetés módosítása egy másik ajánlatra](/azure/cost-management-billing/manage/switch-azure-offer).
+> Az Azure-ajánlat az Ön Azure-előfizetésének típusa. Például az utólagos elszámolású előfizetések [, a](https://azure.microsoft.com/offers/ms-azr-0003p/) [Azure in Open Licencprogram](https://azure.microsoft.com/offers/ms-azr-0111p/)és a [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) minden Azure-ajánlat. Minden ajánlat vagy csomag eltérő feltételekkel és előnyökkel rendelkezik. Ajánlatát vagy tervét az előfizetés áttekintése mutatja be. Az előfizetés egy másik ajánlatra váltásával kapcsolatos további információkért lásd: [Azure-előfizetés módosítása egy másik ajánlatra](../../cost-management-billing/manage/switch-azure-offer.md).
 
 ## <a name="advance-notifications"></a>Előzetes értesítések
 
@@ -108,17 +108,17 @@ Az Azure SQL felügyelt példányának ügyfélkapcsolati házirendjével kapcso
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányával kapcsolatos megfontolások
 
-Az Azure SQL felügyelt példánya olyan szolgáltatás-összetevőkből áll, amelyek az ügyfél virtuális hálózati alhálózatán belül futó elkülönített virtuális gépek dedikált készletén futnak. Ezek a virtuális gépek olyan [virtuális fürtöket](/azure/azure-sql/managed-instance/connectivity-architecture-overview#high-level-connectivity-architecture) alkotnak, amelyek több felügyelt példányt tárolhatnak. Az egyik alhálózat példányain konfigurált karbantartási időszak befolyásolhatja az alhálózaton belüli virtuális fürtök számát, és a példányok elosztását a virtuális fürtök között. Ehhez néhány effektusra lehet szükség.
+Az Azure SQL felügyelt példánya olyan szolgáltatás-összetevőkből áll, amelyek az ügyfél virtuális hálózati alhálózatán belül futó elkülönített virtuális gépek dedikált készletén futnak. Ezek a virtuális gépek olyan [virtuális fürtöket](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture) alkotnak, amelyek több felügyelt példányt tárolhatnak. Az egyik alhálózat példányain konfigurált karbantartási időszak befolyásolhatja az alhálózaton belüli virtuális fürtök számát, és a példányok elosztását a virtuális fürtök között. Ehhez néhány effektusra lehet szükség.
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>A karbantartási időszak konfigurálása hosszú ideig futó művelet 
 A virtuális fürtben üzemeltetett összes példány a karbantartási időszakot használja. Alapértelmezés szerint a rendszer az összes felügyelt példányt a virtuális fürtön tárolja az alapértelmezett karbantartási időszakkal. Egy másik karbantartási időszak megadása a felügyelt példányhoz a létrehozásakor vagy azt követően azt jelenti, hogy azt a megfelelő karbantartási időszaktal rendelkező virtuális fürtbe kell helyezni. Ha az alhálózat nem rendelkezik ilyen virtuális fürttel, először létre kell hoznia egy újat a példány befogadásához. Ha további példányokat kíván elhelyezni a meglévő virtuális fürtben, szükség lehet a fürt átméretezésére. Mindkét művelet hozzájárul a felügyelt példány karbantartási időszakának konfigurálásához.
-A karbantartási időszak felügyelt példányon történő konfigurálásának várható időtartama a [példány-felügyeleti műveletek becsült időtartama](/azure/azure-sql/managed-instance/management-operations-overview#duration)alapján számítható ki.
+A karbantartási időszak felügyelt példányon történő konfigurálásának várható időtartama a [példány-felügyeleti műveletek becsült időtartama](../managed-instance/management-operations-overview.md#duration)alapján számítható ki.
 
 > [!Important]
 > Rövid újrakonfigurálás történik a karbantartási művelet végén, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. Az újrakonfigurálás hatásának minimalizálásához a műveletet a csúcsidőben kívül kell ütemezni.
 
 ### <a name="ip-address-space-requirements"></a>Az IP-címtartomány követelményei
-Az alhálózatban minden új virtuális fürthöz további IP-címek szükségesek a [virtuális fürt IP-címének kiosztása](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)alapján. A meglévő felügyelt példány karbantartási [időszakának módosításakor ideiglenes további IP-kapacitásra](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) is szükség van, mint a megfelelő szolgáltatási réteg virtuális mag-forgatókönyvének skálázásához.
+Az alhálózatban minden új virtuális fürthöz további IP-címek szükségesek a [virtuális fürt IP-címének kiosztása](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size)alapján. A meglévő felügyelt példány karbantartási [időszakának módosításakor ideiglenes további IP-kapacitásra](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios) is szükség van, mint a megfelelő szolgáltatási réteg virtuális mag-forgatókönyvének skálázásához.
 
 ### <a name="ip-address-change"></a>IP-cím módosítása
 A karbantartási időszak beállítása és módosítása miatt a példány IP-címének módosítása az alhálózat IP-címének tartományán belül történik.
@@ -137,8 +137,3 @@ A karbantartási időszak beállítása és módosítása miatt a példány IP-c
 * [Azure SQL Database](sql-database-paas-overview.md) 
 * [SQL felügyelt példány](../managed-instance/sql-managed-instance-paas-overview.md)
 * [Az Azure karbantartási eseményeinek megtervezése Azure SQL Database és az Azure SQL felügyelt példányain](planned-maintenance.md)
-
-
-
-
-

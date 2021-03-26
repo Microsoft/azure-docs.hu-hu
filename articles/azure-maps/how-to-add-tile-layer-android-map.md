@@ -3,18 +3,18 @@ title: Csempe réteg hozzáadása Android-térképekhez | Microsoft Azure térk�
 description: Megtudhatja, hogyan adhat hozzá egy csempe réteget egy térképhez. Egy olyan példát láthat, amely a Azure Maps Android SDK-t használja egy időjárási radar átfedésének egy térképhez való hozzáadásához.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 2/26/2021
+ms.date: 3/25/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ac37a4e6d68decdf6780560963a0c534689e8dbb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047502"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608983"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Csempe réteg hozzáadása térképhez (Android SDK)
 
@@ -24,12 +24,12 @@ Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a képeket
 
 * X, Y, nagyítási jelölés – a nagyítási szint alapján az x az oszlop, az Y pedig a csempén lévő csempe sor pozíciója.
 * Quadkey jelölés – x, y és nagyítási információ egyetlen karakterlánc-értékre, amely egy csempe egyedi azonosítója.
-* A határoló mezőhöz kötött koordinátákkal megadható, hogy milyen formátumú képet kell megadni `{west},{south},{east},{north}` , amelyet általában a [web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms)használ.
+* A határoló mezőhöz kötött koordinátákat a rendszer a képformátum megadására használhatja `{west},{south},{east},{north}` , amelyet általában a [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)használnak.
 
 > [!TIP]
 > A TileLayer nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, de a vektoros adatok csempe rétegként is megjeleníthető. A vektoros adattároló rétegként való megjelenítésével a Térkép vezérlőelem csak a csempék betöltését igényli, ami sokkal kisebb lehet a fájlméretnél, mint az általuk képviselt adatmennyiség. Ezt a technikát sokan használják, akiknek több millió sornyi adatsort kell megjeleníteniük a térképen.
 
-A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
+A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja:
 
 * `{x}` -A csempe X pozíciója `{y}`A és a is szükséges `{z}` .
 * `{y}` -A csempe Y pozíciója `{x}`A és a is szükséges `{z}` .
@@ -82,6 +82,82 @@ map.layers.add(layer, "labels")
 Az alábbi képernyőfelvételen a fenti kód látható, amely egy sötét szürkeárnyalatos stílusú térképen jeleníti meg a hajózási adatok csempe rétegét.
 
 ![Az Android-Térkép csempét megjelenítő réteg](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
+
+## <a name="add-an-ogc-web-mapping-service-wms"></a>OGC webes leképezési szolgáltatás (WMS) hozzáadása
+
+A webes leképezési szolgáltatás (WMTS) egy Nyílt térinformatikai konzorcium (OGC) szabvány a térképes adatképek kiszolgálásához. Ebben a formátumban számos nyitott adatkészletet lehet használni, amelyeket az Azure Maps használatával használhat. Ez a típusú szolgáltatás használható csempe réteggel, ha a szolgáltatás támogatja a `EPSG:3857` koordináta-hivatkozási rendszer (CRS) használatát. A WMS szolgáltatás használatakor a szélességi és a magassági paramétereket a szolgáltatás által támogatott értékre állítsa be, ügyeljen arra, hogy ugyanazt az értéket adja meg a `tileSize` beállításban. A formázott URL-címben állítsa be a `BBOX` szolgáltatás paraméterét a `{bbox-epsg-3857}` helyőrzővel.
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+TileLayer layer = new TileLayer(
+    tileUrl("https://mrdata.usgs.gov/services/gscworld?FORMAT=image/png&HEIGHT=1024&LAYERS=geology&REQUEST=GetMap&STYLES=default&TILED=true&TRANSPARENT=true&WIDTH=1024&VERSION=1.3.0&SERVICE=WMS&CRS=EPSG:3857&BBOX={bbox-epsg-3857}"),
+    tileSize(1024)
+);
+
+map.layers.add(layer, "labels");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://mrdata.usgs.gov/services/gscworld?FORMAT=image/png&HEIGHT=1024&LAYERS=geology&REQUEST=GetMap&STYLES=default&TILED=true&TRANSPARENT=true&WIDTH=1024&VERSION=1.3.0&SERVICE=WMS&CRS=EPSG:3857&BBOX={bbox-epsg-3857}"),
+    tileSize(1024)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
+Az alábbi képernyőfelvételen a fenti kód látható, amely a Földtani adatok webes leképezési szolgáltatását fedi le az [Egyesült államokbeli geológiai felmérésből (USGS)](https://mrdata.usgs.gov/) , a címkék alatt.
+
+![A WMS csempe réteget megjelenítő Android-Térkép](media/how-to-add-tile-layer-android-map/android-tile-layer-wms.jpg)
+
+## <a name="add-an-ogc-web-mapping-tile-service-wmts"></a>OGC web-Mapping csempe szolgáltatás (WMTS) hozzáadása
+
+A web-Mapping csempe szolgáltatás (WMTS) egy Nyílt térinformatikai konzorcium (OGC) szabvány, amely csempe alapú átfedéseket szolgál a Maps-hez. Ebben a formátumban számos nyitott adatkészletet lehet használni, amelyeket az Azure Maps használatával használhat. Ez a típusú szolgáltatás használható csempe réteggel, ha a szolgáltatás támogatja a `EPSG:3857` vagy `GoogleMapsCompatible` koordináta hivatkozási rendszerét (CRS). WMTS szolgáltatás használata esetén a szélességi és a magassági paramétereket a szolgáltatás által támogatott értékre állítsa be, ügyeljen arra, hogy ugyanazt az értéket adja meg a `tileSize` beállításban. A formázott URL-címben cserélje le a következő helyőrzőket ennek megfelelően:
+
+* `{TileMatrix}` => `{z}`
+* `{TileRow}` => `{y}`
+* `{TileCol}` => `{x}`
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+TileLayer layer = new TileLayer(
+    tileUrl("https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/WMTS/tile/1.0.0/USGSImageryOnly/default/GoogleMapsCompatible/{z}/{y}/{x}"),
+    tileSize(256),
+    bounds(-173.25000107492872, 0.0005794121990209753, 146.12527718104752, 71.506811402077),
+    maxSourceZoom(18)
+);
+
+map.layers.add(layer, "transit");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/WMTS/tile/1.0.0/USGSImageryOnly/default/GoogleMapsCompatible/{z}/{y}/{x}"),
+    tileSize(256),
+    bounds(-173.25000107492872, 0.0005794121990209753, 146.12527718104752, 71.506811402077),
+    maxSourceZoom(18)
+)
+
+map.layers.add(layer, "transit")
+```
+
+::: zone-end
+
+Az alábbi képernyőfelvételen látható, hogy a fenti kód egy webes leképezési csempe-szolgáltatást ábrázol, amely az [Egyesült államokbeli geológiai felmérés (USGS) országos térképe](https://viewer.nationalmap.gov/services/) , amely az utak és a címkék alatt található.
+
+![Az Android-Térkép WMTS csempe-rétegét jeleníti meg](media/how-to-add-tile-layer-android-map/android-tile-layer-wmts.jpg)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 7796b94609a9be05fdb72900d0725747440f8042
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 821746856cb37781c8f6a2e58659ce7db43e1479
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582561"
+ms.locfileid: "105609390"
 ---
 A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
@@ -74,7 +74,7 @@ A szolgáltatás teljes mértékben támogatott Windows-és Linux-alkalmazásokh
 
 ### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-A regionális VNet-integráció lehetővé teszi a szolgáltatási végpontok használatát. A szolgáltatásnak az alkalmazásból szolgáltatásbeli végpontokon keresztüli eléréséhez szükséges alapszintű lépések a következők:
+A regionális VNet-integráció lehetővé teszi a szolgáltatás-végpontokkal védett Azure-szolgáltatások elérését. A szolgáltatás-végpontok által biztosított szolgáltatások eléréséhez a következőket kell tennie:
 
 1. Konfigurálja a regionális VNet-integrációt a webalkalmazással egy adott alhálózathoz való csatlakozáshoz az integrációhoz.
 1. Lépjen a cél szolgáltatáshoz, és konfigurálja a szolgáltatási végpontokat az integrációs alhálózaton.
@@ -101,9 +101,6 @@ Miután az alkalmazás integrálva van a VNet, ugyanazt a DNS-kiszolgálót hasz
 1. `WEBSITE_VNET_ROUTE_ALL` értékkel `1`
 
 Ezek a beállítások elküldik az alkalmazásból a kimenő hívásokat az VNet, és lehetővé teszik, hogy az alkalmazás hozzáférjen egy Azure DNS privát zónához. Ezekkel a beállításokkal az alkalmazás használhatja a Azure DNSt a DNS privát zónájának a munkavégző szinten történő lekérdezésével.  
-
-> [!NOTE]
-> Ha egyéni tartományt szeretne hozzáadni egy webalkalmazáshoz egy DNS privát zónával, nem lehetséges a VNET-integráció. Az egyéni tartomány érvényesítése a vezérlő szintjén, nem pedig a munkavégző szinten történik, ami megakadályozza a DNS-rekordok észlelését. Ha egyéni tartományt szeretne használni egy DNS privát zónából, el kell kerülnie az érvényesítést egy [Application Gateway](../articles/app-service/networking/app-gateway-with-service-endpoints.md) vagy [ILB app Service Environment](../articles/app-service/environment/create-ilb-ase.md)használatával.
 
 ### <a name="private-endpoints"></a>Privát végpontok
 

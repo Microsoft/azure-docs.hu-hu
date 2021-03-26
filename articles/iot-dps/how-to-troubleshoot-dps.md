@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73a785ee3975245ecd97f8c8aab77acc796a4e36
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709886"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568018"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
 
@@ -44,7 +44,7 @@ Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a
 
 7. Válassza a **feltétel hozzáadása** lehetőséget, majd a kérdésekkel válassza ki a kívánt metrikát és küszöbértéket.
 
-További információ: [Azure monitor riasztások](../azure-monitor/platform/alerts-overview.md).
+További információ: [Azure monitor riasztások](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>A log Analytics használata a hibák megtekintéséhez és megoldásához
 

@@ -10,22 +10,22 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348619"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606147"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA
 
-Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vonatkoznak a különböző típusú adatforrások metrikai TANÁCSADÓBA való csatlakoztatására. Olvassa el az adatok előkészítését ismertető témakört [, amelyből](how-tos/onboard-your-data.md) megtudhatja, hogyan használhatók az adatok a metrikus tanácsadóval való használatával kapcsolatos főbb fogalmak. 
+Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vonatkoznak a különböző típusú adatforrások metrikai TANÁCSADÓBA való csatlakoztatására. Olvassa el az adatok előkészítését ismertető témakört [, amelyből](how-tos/onboard-your-data.md) megtudhatja, hogyan használhatók az adatok a metrikus tanácsadóval való használatával kapcsolatos főbb fogalmak. \
 
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
 
 | Hitelesítési típusok | Description |
 | ---------------------|-------------|
-|**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok sztringjét vagy kulcsát. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
+|**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok karakterlánca vagy kulcsa. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
 | **AzureManagedIdentity** | Az Azure-erőforrások [felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) a Azure Active Directory egyik funkciója. Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure AD-ben. Az identitás használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést.|
 | **AzureSQLConnectionString**| Tárolja a AzureSQL-alapú kapcsolódási karakterláncot **hitelesítő entitásként** a metrikai tanácsadóban, és használja közvetlenül a metrikák adatainak bevezetéséhez. Csak a hitelesítőadat-entitás rendszergazdái tudják megtekinteni ezeket a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára, hogy adatcsatornákat hozzon létre anélkül, hogy ismerniük kellene a hitelesítő adatok részleteit. |
 | **DataLakeGen2SharedKey**| A adat-Lake-fiók kulcsát **hitelesítő entitásként** tárolja a metrikai tanácsadóban, és közvetlenül a metrikák adatainak bevezetéséhez használja fel. Csak a hitelesítőadat-entitás rendszergazdái tudják megtekinteni ezeket a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára az adatcsatorna létrehozását anélkül, hogy ismerniük kellene a hitelesítő adatok részleteit.|
@@ -51,7 +51,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 |[**MySQL**](#mysql) | Alapszintű |
 |[**PostgreSQL**](#pgsql)| Alapszintű|
 
-Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatforrásokhoz való hitelesítéshez. A következő részekben az *alapszintű* hitelesítéshez szükséges paramétereket kell megadni. 
+Hozzon létre egy hitelesítőadat-entitást * *, és használja az adatforrásokhoz való hitelesítéshez. A következő részekben az *alapszintű* hitelesítéshez szükséges paramétereket kell megadni. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure-Application Insights</span>
 
@@ -159,7 +159,7 @@ JSON-fájlokban csak egy időbélyeg engedélyezett.
   * `%h` az óra a következőképpen van formázva `HH`
   * `%M` a perc a következőképpen van formázva `mm`
 
-A jelenleg mérőszámok tanácsadója a következő módon támogatja a JSON-fájlokban lévő adatsémát. Például:
+Az aktuális metrikai tanácsadó a következő módon támogatja a JSON-fájlokban lévő adatsémát. Például:
 
 ``` JSON
 [
@@ -212,15 +212,14 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure-Table Storage</span>
 
-* **Kapcsolódási karakterlánc**: a kapcsolódási sztringnek az Azure Table Storageból való beolvasásával kapcsolatos információkért tekintse meg a [kapcsolódási karakterlánc megtekintése és másolása](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys) című témakört.
+* **Kapcsolati karakterlánc**: hozzon létre egy sas (közös hozzáférésű aláírás) URL-címet, és töltse ki itt. SAS URL-cím létrehozásának legegyszerűbb módja az Azure Portal használata. A Azure Portal használatával grafikusan is navigálhat. Ha a Azure Portal segítségével szeretne SAS URL-címet létrehozni, először keresse meg azt a Storage-fiókot, amelyet el szeretne érni a beállítások szakaszban, majd kattintson a megosztott elérési aláírás elemre. Jelölje be legalább a "Table" és az "Object" jelölőnégyzetet, majd kattintson a SAS létrehozása és a kapcsolatok sztringje gombra. Table service SAS URL-cím a metrikák Advisor munkaterületen a szövegmezőbe másolás és kitöltés.
 
 * **Táblanév**: adjon meg egy táblát a lekérdezéshez. Ez az Azure Storage-fiók példányában található. A Table **szolgáltatás** szakaszban kattintson a **táblák** elemre.
 
-* **Lekérdezés** Használhatja a t a `@StartTime` lekérdezésben. `@StartTime` lecserélve egy éééé-hh-NNTóó: PP: mm formátumú karakterláncot a szkriptben.
+* **Lekérdezés** Használhatja a t a `@StartTime` lekérdezésben. `@StartTime` lecserélve egy éééé-hh-NNTóó: PP: mm formátumú karakterláncot a szkriptben. Tipp: az Azure Storage Explorer használatával hozzon létre egy lekérdezést egy adott időtartományon belül, és győződjön meg arról, hogy az megfelelően fut, majd végezze el a cserét.
 
     ``` mssql
-    let StartDateTime = datetime(@StartTime); let EndDateTime = StartDateTime + 1d; 
-    SampleTable | where Timestamp >= StartDateTime and Timestamp < EndDateTime | project Timestamp, Market, RPM
+    date ge datetime'@StartTime' and date lt datetime'@EndTime'
     ```
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">Elasticsearch</span>
@@ -232,7 +231,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP-kérelem</span>
 
-* **Kérelem URL-** címe: egy HTTP URL-cím, amely egy JSON-t adhat vissza. A (z)% Y,% m,% d,% h,% M helyőrzők támogatottak:% Y = év a (z) éééé,% m = hónap formátumban,% d = nap a (z) HH formátumban,% h = óra a (z) óó,% M = perc formátumban, mm-ben. Példa: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
+* **Kérelem URL-** címe: egy olyan HTTP URL-cím, amely JSON-t adhat vissza. A (z)% Y,% m,% d,% h,% M helyőrzők támogatottak:% Y = év a (z) éééé,% m = hónap formátumban,% d = nap a (z) HH formátumban,% h = óra a (z) óó,% M = perc formátumban, mm-ben. Példa: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
 * **Http-metódus kérése**: a Get vagy a post használata.
 * **Kérelem fejléce**: hozzáadhat egyszerű hitelesítést. 
 * **Kérelem tartalma**: csak a JSON-adattartalom támogatott. A hasznos adatok helyőrzője @StartTime támogatott. A válasznak a következő JSON formátumúnak kell lennie: [{"Timestamp": "2018-01-01T00:00:00Z", "piac": "en-us", "Count": 11, "bevétel": 1.23}, {"Timestamp": "2018-01-01T00:00:00Z", "piac": "zh-CN", "Count": 22, "bevétel": 4,56}]. (például a 2020-06-21T00:00:00Z betöltését, @StartTime = 2020-06-21T00:00:00.0000000 + 00:00)

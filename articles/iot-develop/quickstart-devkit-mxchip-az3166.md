@@ -7,17 +7,19 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 03/17/2021
-ms.openlocfilehash: 4926aa40831056556060cbf564022fa7f5e3aa7a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 367f527180a310f2cbc74b1ccdc1102e1e53d1cf
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962845"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605984"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>Gyors útmutató: MXCHIP AZ3166 fejlesztői készlet összekötése IoT Central
 
 **A** következőkre vonatkozik: [beágyazott eszközök fejlesztése](about-iot-develop.md#embedded-device-development)<br>
 **Teljes befejezési idő**: 30 perc
+
+[![Kód tallózása](media/common/browse-github-code.png)](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)
 
 Ebben az oktatóanyagban az Azure RTOS használatával csatlakozik egy MXCHIP AZ3166 IoT fejlesztői készlet (a továbbiakban MXCHIP fejlesztői készlet) az Azure IoT-hoz. A cikk része az [Azure IoT Embedded-eszközök fejlesztésének első lépéseinek](quickstart-device-development.md). A sorozat bevezeti az eszközök fejlesztői az Azure RTOS, és bemutatja, hogyan csatlakoztatható több eszköz-értékelési készlet az Azure IoT-hoz.
 
@@ -26,9 +28,6 @@ Az alábbi feladatokat fogja elvégezni:
 * Beágyazott fejlesztői eszközök telepítése a MXCHIP-fejlesztői készlet programozásához C-ben
 * Hozzon létre egy rendszerképet, és villogjon a MXCHIP fejlesztői készlet
 * Az Azure IoT Central használatával Felhőbeli összetevőket hozhat létre, tulajdonságokat tekinthet meg, megtekintheti az eszközök telemetria, és közvetlen parancsokat hívhat meg
-
-> [!NOTE]
-> Ha inkább csak a kódot szeretné megtekinteni, és nem fejezi be ezt a cikket, tekintse meg a következőt: [MXCHIP AZ3166 összekötése az Azure IoT-be](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166). Ha azt tervezi, hogy elvégzi ezt a cikket, a GitHub-tárházat egy későbbi lépésben fogja klónozott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

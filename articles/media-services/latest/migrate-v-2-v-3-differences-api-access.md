@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 831bc737fbd54685cdc8358642bc37e7b2df2c42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5f3c6526139389da3bfdbc3c43cf8b6d2a1dbccf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98953716"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567967"
 ---
 # <a name="api-access-differences-between-azure-media-services-v2-to-v3-api"></a>API-hozzáférési különbségek Azure Media Services v2 és V3 API között
 
@@ -36,6 +36,8 @@ Továbbra is használhatja a meglévő fiókokat, ha nem keveri össze a v2 és 
 
 A v2 API-hoz való hozzáférés addig lesz elérhető, amíg az 2024-es verzióban megszűnik.
 
+## <a name="create-a-v3-account"></a>V3-fiók létrehozása
+
 Az áttelepítés során létrehozhat egy v3-fiókot, amely továbbra is hozzáfér a v2-hez.  A fiók létrehozása a következőket teheti:
 
 - A REST API és a régebbi verzió
@@ -48,7 +50,3 @@ Az összes .NET, CLI és más SDK a legújabb 2020-05-01 API-t célozza meg, íg
 
 > [!NOTE]
 > A 2020-05-01 API-val létrehozott új fiókok nem használhatják a v2 API-kat.
-
-## <a name="next-steps"></a>Következő lépések
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

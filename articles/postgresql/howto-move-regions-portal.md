@@ -1,18 +1,18 @@
 ---
 title: Azure-régiók áthelyezése – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Egy Azure Database for PostgreSQL-kiszolgáló áthelyezése egyik Azure-régióból a másikba egy olvasási replika és a Azure Portal használatával.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 204815d36baf9fe6e7fe8c0e194ac7acc14f72e4
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92489744"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606470"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure-adatbázis áthelyezése Azure Database for PostgreSQL – egyetlen kiszolgáló egy másik régióba a Azure Portal használatával
 

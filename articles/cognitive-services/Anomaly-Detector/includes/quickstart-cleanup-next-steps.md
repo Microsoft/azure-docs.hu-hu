@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: mbullwin
-ms.openlocfilehash: fcf46e46d540826c6affdf9acb15c1cfe2783e71
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fb43cf302603dc4703262b595c8da522bd574cc6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018461"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582262"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -33,4 +33,4 @@ Fogalmak:
 Oktatóanyagok:
 
 * [Rendellenességek vizualizálása kötegként a Power BI használatával](../tutorials/batch-anomaly-detection-powerbi.md)
-* [Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával](../tutorials/anomaly-detection-streaming-databricks.md)
+* [Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával](../overview.md)

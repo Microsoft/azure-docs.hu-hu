@@ -6,17 +6,18 @@ ms.author: inhenkel
 manager: femila
 ms.topic: reference
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 866b2faf473f06fc3f85cdb434d6555504a7f6a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598184"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609088"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services adathivatkozás figyelése
 
-Ez a cikk a Media Services figyeléséhez hasznos információkat ismerteti. A Azure Monitor által támogatott összes platform metrikával kapcsolatos további információkért tekintse át [a támogatott mérőszámokat Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+Ez a cikk a Media Services figyeléséhez hasznos információkat ismerteti. A Azure Monitor által támogatott összes platform metrikával kapcsolatos további információkért tekintse át [a támogatott mérőszámokat Azure monitor](../../../azure-monitor/essentials/metrics-supported.md).
 
 ## <a name="media-services-metrics"></a>Media Services metrikák
 
@@ -59,7 +60,7 @@ A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/s
 
 ## <a name="metric-dimensions"></a>Metrikus méretek
 
-A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 <!--**PLACEHOLDER** for dimensions table.-->
 
@@ -67,7 +68,7 @@ A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdim
 
 ## <a name="media-services-diagnostic-logs"></a>Diagnosztikai naplók Media Services
 
-A diagnosztikai naplók részletes és gyakori információkat biztosítanak az Azure-erőforrások működéséről. További információkért lásd: az [Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md).
+A diagnosztikai naplók részletes és gyakori információkat biztosítanak az Azure-erőforrások működéséről. További információkért lásd: az [Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 A Media Services a következő diagnosztikai naplókat támogatja:
 
@@ -81,7 +82,7 @@ A Media Services a következő diagnosztikai naplókat támogatja:
 
 ## <a name="schemas"></a>Sémák
 
-A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs-schema.md).
+A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../../azure-monitor/essentials/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema-properties"></a>Kulcs kézbesítési naplójának sémájának tulajdonságai
 

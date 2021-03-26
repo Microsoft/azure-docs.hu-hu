@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c46ccbda35936ed94079a21e3e9c72405875b961
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567260"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608867"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure dedikált HSM – magas rendelkezésre állás
 
@@ -25,7 +25,7 @@ Az Azure dedikált HSM-et a Microsoft által biztosított, magasan elérhető ad
 
 ## <a name="high-availability-example"></a>Magas rendelkezésre állási példa
 
-A HSM-eszközök magas rendelkezésre álláshoz való konfigurálásáról a szoftver szintjén a "Thales Luna 7 HSM felügyeleti útmutató" című cikk nyújt tájékoztatást. Ez a dokumentum a  [Thales HSM lapon](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm)érhető el.
+A HSM-eszközök magas rendelkezésre álláshoz való konfigurálásáról a szoftver szintjén a "Thales Luna 7 HSM felügyeleti útmutató" című cikk nyújt tájékoztatást. Ez a dokumentum a  [Thales HSM lapon](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)érhető el.
 
 A következő ábra egy magasan elérhető architektúrát mutat be. Több eszközt használ a régióban, és több eszköz is párosítva van egy külön régióban. Ez az architektúra legalább négy HSM-eszközt és virtuális hálózatkezelési összetevőt használ.
 
@@ -42,4 +42,4 @@ További fogalmi szintű témakörök:
 * [Támogatási lehetőségek](supportability.md)
 * [Figyelés](monitoring.md)
 
-A HSM-eszközök magas rendelkezésre állásra való konfigurálásával kapcsolatos részletes információkért tekintse meg a Thales ügyfélszolgálati portálját a rendszergazdai útmutatókhoz, és tekintse meg a 6. szakaszt.
+A HSM-eszközök magas rendelkezésre állásra való konfigurálásával kapcsolatos részletes információkért tekintse meg a [Thales ügyfélszolgálati portálját](https://supportportal.thalesgroup.com/csm) a rendszergazdai útmutatókhoz, és tekintse meg a 6. szakaszt.

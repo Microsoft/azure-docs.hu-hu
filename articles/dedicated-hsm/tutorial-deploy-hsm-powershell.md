@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108602"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606878"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Oktatóanyag – a HSM üzembe helyezése meglévő virtuális hálózaton a PowerShell használatával
 
@@ -68,7 +68,7 @@ A parancsnak "regisztrált" állapotot kell visszaadnia, mielőtt továbblépne.
 
 ### <a name="creating-hsm-resources"></a>HSM-erőforrások létrehozása
 
-A HSM-eszközök egy ügyfél virtuális hálózatán vannak kiépítve. Ez egy alhálózat követelményét jelenti. A HSM-függőség, amely lehetővé teszi a virtuális hálózat és a fizikai eszköz közötti kommunikációt, egy ExpressRoute-átjáró, és végül egy virtuális gépnek kell hozzáférnie a HSM-eszközhöz a Gemalto-ügyfélszoftver használatával. Ezeket az erőforrásokat a rendszer egy, a megfelelő paramétert tartalmazó fájlba gyűjtötte a könnyű használat érdekében. A fájlok elérhetőségét közvetlenül a Microsofthoz fordulva érheti el HSMrequest@Microsoft.com .
+A HSM-eszközök egy ügyfél virtuális hálózatán vannak kiépítve. Ez egy alhálózat követelményét jelenti. A HSM-függőség, amely lehetővé teszi a virtuális hálózat és a fizikai eszköz közötti kommunikációt, egy ExpressRoute-átjáró, és végül egy virtuális gépnek kell hozzáférnie a HSM-eszközhöz a Thales-ügyfélszoftver használatával. Ezeket az erőforrásokat a rendszer egy, a megfelelő paramétert tartalmazó fájlba gyűjtötte a könnyű használat érdekében. A fájlok elérhetőségét közvetlenül a Microsofthoz fordulva érheti el HSMrequest@Microsoft.com .
 
 Miután megtörtént a fájlok használata, szerkesztenie kell a paramétert, hogy beszúrja az erőforrások előnyben részesített nevét. Ez azt jelenti, hogy a sorokat "value": "" értékkel kell szerkeszteni.
 
@@ -235,14 +235,14 @@ A kimenetnek az alábbi képen láthatóhoz hasonlóan kell kinéznie:
 
 ![Képernyőkép, amely a HSM show parancs kimenetét jeleníti meg.](media/tutorial-deploy-hsm-powershell/output.png)
 
-Ezen a ponton az összes erőforrást lefoglalta egy nagy rendelkezésre állású, két HSM üzembe helyezési és érvényesített hozzáférés és működési állapot számára. Minden további konfiguráció vagy tesztelés több munkát is magában foglal a HSM-eszközzel. Ehhez kövesse a Gemalto Luna hálózati HSM 7 felügyeleti útmutató 7. fejezetének utasításait a HSM inicializálásához és a partíciók létrehozásához. Az összes dokumentáció és szoftver közvetlenül a Gemalto érhető el, ha a Gemalto ügyfélszolgálati portálon regisztrálva van, és rendelkezik ügyfél-AZONOSÍTÓval. Töltse le az ügyfélszoftver 7,2-es verzióját az összes szükséges összetevő lekéréséhez.
+Ezen a ponton az összes erőforrást lefoglalta egy nagy rendelkezésre állású, két HSM üzembe helyezési és érvényesített hozzáférés és működési állapot számára. Minden további konfiguráció vagy tesztelés több munkát is magában foglal a HSM-eszközzel. Ehhez kövesse a Thales Luna 7 HSM felügyeleti útmutató 7. fejezetének utasításait a HSM inicializálásához és a partíciók létrehozásához. Az összes dokumentáció és szoftver közvetlenül a Thales érhető el, ha a [Thales ügyfélszolgálati portálon](https://supportportal.thalesgroup.com/csm) regisztrálva van, és rendelkezik ügyfél-azonosítóval. Töltse le az ügyfélszoftver 7,2-es verzióját az összes szükséges összetevő lekéréséhez.
 
 ## <a name="delete-or-clean-up-resources"></a>Erőforrások törlése vagy eltávolítása
 
 Ha csak a HSM-eszközzel fejeződött be, akkor azt erőforrásként is törölheti, és visszaküldheti az ingyenes készletbe. Ha ezt a problémát tapasztalja, az eszközön található bizalmas vásárlói adatok is megtalálhatók. A legjobb módszer a "zeroize", hogy az eszköz a HSM-rendszergazda jelszavának rossz 3 alkalommal való beszerzését kéri (Megjegyzés: ez nem a berendezés rendszergazdája, hanem a tényleges HSM-rendszergazda). A kulcsfontosságú anyagok védelme érdekében az eszköz nem törölhető Azure-erőforrásként, amíg a nulla állapotba nem kerül.
 
 > [!NOTE]
-> Ha bármilyen Gemalto-eszköz konfigurációval kapcsolatos problémát tapasztal, vegye fel a kapcsolatot a [Gemalto ügyfélszolgálatával](https://safenet.gemalto.com/technical-support/).
+> Ha bármilyen Thales-eszköz konfigurációval kapcsolatos problémát tapasztal, vegye fel a kapcsolatot a [Thales ügyfélszolgálatával](https://supportportal.thalesgroup.com/csm).
 
 Ha el szeretné távolítani a HSM-erőforrást az Azure-ban, a következő parancs használatával cserélje le a "$" változókat az egyedi paraméterekre:
 

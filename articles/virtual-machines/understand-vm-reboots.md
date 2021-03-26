@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: af371a8f7da5ef32e95d4096b69c5d52ce3e3700
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9342e0c39b558cf8b6ff5773d623ce55062f9ab5
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510531"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607473"
 ---
 # <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításainak ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -34,7 +34,7 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 
 * Az adatközpont-hibák elleni védelem [Availability Zones](../availability-zones/az-overview.md) használata
 * Több virtuális gép konfigurálása [rendelkezésre állási csoportba](availability-set-overview.md) a redundancia érdekében
-* A Linux vagy ütemezett események [ütemezett eseményeinek](/linux/scheduled-events.md) használata a [Windows](/windows/scheduled-events.md) számára, hogy proaktív módon válaszoljanak a virtuális gépeket érintő eseményekre
+* A Linux vagy ütemezett események [ütemezett eseményeinek](/azure/virtual-machines/linux/scheduled-events) használata a [Windows](/azure/virtual-machines/windows/scheduled-events) számára, hogy proaktív módon válaszoljanak a virtuális gépeket érintő eseményekre
 * Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása
 * [Terheléselosztó](../load-balancer/load-balancer-overview.md) kombinálása rendelkezésre állási zónákkal vagy készletekkel
 

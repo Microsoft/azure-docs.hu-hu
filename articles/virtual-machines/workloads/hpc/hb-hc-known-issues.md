@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 297bc24c570298dddf10a101a0c0c528bddecc10
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889824"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604838"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>A H- és N-sorozatú virtuális gépek ismert problémái
 
@@ -24,9 +24,18 @@ Az Ubuntu-18,04-es verzióban a Mellanox OFED a kernelek és újabb verziók ink
 Az ideiglenes megoldás a **Canonical: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290 Marketplace-** rendszerkép vagy régebbi verzió használata, és nem lehet frissíteni a kernelt.
 Ezt a problémát várhatóan egy újabb MOFED kell feloldani.
 
-## <a name="known-issues-on-hbv3"></a>A HBv3 ismert problémái
-- A InfiniBand jelenleg csak az 120-Core virtuális gépen (Standard_HB120rs_v3) támogatott.
-- Az Azure gyorsított hálózatkezelés jelenleg minden régióban nem támogatott a HBv3 sorozatokban.
+## <a name="mpi-qp-creation-errors"></a>MPI QP-létrehozási hibák
+Ha bármely MPI-alapú számítási feladat futtatása közben a InfiniBand QP-létrehozási hibák, például az alább láthatók, a rendszer a virtuális gép újraindítását és a számítási feladat újbóli kipróbálását javasolja. Ezt a problémát később rögzíti a rendszer.
+
+```bash
+ib_mlx5_dv.c:150  UCX  ERROR mlx5dv_devx_obj_create(QP) failed, syndrome 0: Invalid argument
+```
+
+A következő módon ellenőrizheti a várólista-párok maximális számának értékét, ha a problémát a következőképpen észleli.
+```bash
+[user@azurehpc-vm ~]$ ibv_devinfo -vv | grep qp
+max_qp: 4096
+```
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Gyorsított hálózatkezelés a HB, a HC, a HBv2 és a NDv2
 

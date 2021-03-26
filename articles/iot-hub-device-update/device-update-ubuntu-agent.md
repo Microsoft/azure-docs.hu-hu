@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9468b3b53e0f7c435bf84b6ef99eb1e0f85d0c8e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418640"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560267"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz az Ubuntu Server 18,04 x64-es csomag ügynökének használatával
 
@@ -32,13 +32,9 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Csomag frissítésének központi telepítése
 > * A frissítés központi telepítésének figyelése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzáférés egy IoT Hubhoz. Javasoljuk, hogy S1 (standard) vagy újabb szintet használjon.
-* Egy eszköz frissítési példánya és a IoT Hubhoz társított fiók.
-  * Ha korábban még nem tette meg, kövesse az útmutatót az [eszköz frissítési fiókjának létrehozásához és összekapcsolásához](create-device-update-account.md) .
+* Ha még nem tette meg, hozzon létre egy [eszköz-frissítési fiókot és-példányt](create-device-update-account.md), beleértve a IoT hub konfigurálását.
 * [IoT Edge eszközhöz tartozó kapcsolatok karakterlánca](../iot-edge/how-to-register-device.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-connection-strings).
 
 ## <a name="prepare-a-device"></a>Eszköz előkészítése

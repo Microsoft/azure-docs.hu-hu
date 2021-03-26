@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: b-juche
-ms.openlocfilehash: f7d1e3bebf2fbdea3075d97e3829e38a3930909b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3ca4938d8666fd60ebac9e75bb2da1780e0914d3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566132"
+ms.locfileid: "105608000"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -208,9 +208,9 @@ Nem. Azure Storage Explorer nem támogatja a Azure NetApp Files.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Hogyan megállapítja, hogy egy könyvtár eléri-e a korlát méretét?
 
-A `stat` parancs használatával megtekintheti, hogy egy címtár eléri-e a maximális méretkorlátot a könyvtár metaadatainak számára (320 MB).
+A `stat` parancs használatával megtekintheti, hogy egy címtár eléri-e a maximális méretkorlátot a könyvtár metaadatainak számára (320 MB).   
 
-320 MB-os könyvtár esetén a blokkok száma 655360, és minden blokk mérete 512 bájt.  (Ez a 320x1024x1024/512.)  
+320 MB-os könyvtár esetén a blokkok száma 655360, és minden blokk mérete 512 bájt.  (Ez a 320x1024x1024/512.)  Ez a szám egy 320 MB-os könyvtár esetében körülbelül 4 000 000 fájlra van lefordítva. A maximális fájlok tényleges száma azonban alacsonyabb lehet, attól függően, hogy mely tényezők, például a nem ASCII karaktereket tartalmazó fájlok száma szerepel a címtárban. Ezért az `stat` alábbi parancs használatával határozza meg, hogy a címtár eléri-e a korlátot.  
 
 Angol nyelvű Példák:
 

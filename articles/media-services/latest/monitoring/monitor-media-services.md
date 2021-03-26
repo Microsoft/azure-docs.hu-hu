@@ -6,13 +6,14 @@ ms.author: inhenkel
 manager: femilia
 ms.topic: how-to
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 783d9e1b4ab86f6580cf3418a0676921aef2db6a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 90ca92dc19c588d0b19adf009301cf844e0cdbde
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598201"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609045"
 ---
 # <a name="monitor-media-services"></a>Figyelő Media Services
 
@@ -37,9 +38,9 @@ robb@microsoft.com -->
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 
-A Media Services a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)használatával hoz létre figyelési adatokkal, amely az Azure teljes verem-figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrásokon kívül.
+A Media Services a [Azure monitor](../../../azure-monitor/overview.md)használatával hoz létre figyelési adatokkal, amely az Azure teljes verem-figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrásokon kívül.
 
-Először olvassa el az [Azure-erőforrások monitorozása Azure monitorokkal](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)című cikket, amely a következő fogalmakat ismerteti:
+Először olvassa el az [Azure-erőforrások monitorozása Azure monitorokkal](../../../azure-monitor/essentials/monitor-azure-resource.md)című cikket, amely a következő fogalmakat ismerteti:
 
 - Mi az Azure Monitor?
 - A figyeléshez kapcsolódó költségek
@@ -49,7 +50,7 @@ Először olvassa el az [Azure-erőforrások monitorozása Azure monitorokkal](h
 
 ## <a name="monitoring-data"></a>Adatok monitorozása
 
-Media Services ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)kapcsolatos további Azure-erőforrások.
+Media Services ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások.
 
 Az Azure Monitor által összegyűjtött adatok két alapvető típusba sorolhatók: metrikák és naplók. A következő két típussal rendelkezhet:
 
@@ -69,13 +70,13 @@ A *platform metrikáit* és a *tevékenység naplóját* a rendszer automatikusa
 
 Az *erőforrás-naplók* Gyűjtése és tárolása addig nem történik meg, amíg létre **nem** hozza a diagnosztikai beállításokat, és egy vagy több helyre irányítja őket.
 
-A diagnosztikai beállítások létrehozásához a Azure Portal, a CLI vagy a PowerShell használatával olvassa el a [diagnosztikai beállítás létrehozása a platform-naplók és-mérőszámok létrehozásához az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) című cikket.
+A diagnosztikai beállítások létrehozásához a Azure Portal, a CLI vagy a PowerShell használatával olvassa el a [diagnosztikai beállítás létrehozása a platform-naplók és-mérőszámok létrehozásához az Azure-ban](../../../azure-monitor/essentials/diagnostic-settings.md) című cikket.
 
 Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. A Media Services kategóriái [Media Services figyelési adatreferenciában](monitor-media-services-data-reference.md)vannak felsorolva.
 
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
-A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítségével elemezheti az Media Services metrikáit más Azure-szolgáltatásoktól származó metrikákkal. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) .
+A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítségével elemezheti az Media Services metrikáit más Azure-szolgáltatásoktól származó metrikákkal. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../../../azure-monitor/essentials/metrics-getting-started.md) .
 
 A Media Services gyűjtött metrikák listáját lásd: [Media Services adathivatkozás figyelése](monitor-media-services-data-reference.md).
 
@@ -83,11 +84,11 @@ A Media Services gyűjtött metrikák listáját lásd: [Media Services adathiva
 
 Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajdonságokkal rendelkező táblázatokban tárolt adathalmazok.  
 
-Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema)szerepel.
+Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../../../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)szerepel.
 
 A Media Services erőforrás-naplók sémája a [figyelés Media Services Adathivatkozásban](monitor-media-services-data-reference.md)található.
 
-A [műveletnapló](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log) egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Megtekintheti egymástól függetlenül, vagy átirányíthatja Azure Monitor naplókba, ahol a Log Analytics használatával jóval összetettebb lekérdezéseket végezhet.
+A [műveletnapló](../../../azure-monitor/essentials/activity-log.md) egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Megtekintheti egymástól függetlenül, vagy átirányíthatja Azure Monitor naplókba, ahol a Log Analytics használatával jóval összetettebb lekérdezéseket végezhet.
 
 A Media Serviceshoz gyűjtött erőforrás-naplók típusai listáját az [adatMedia Services monitorozása](monitor-media-services-data-reference.md)című témakörben találhatja meg.
 
@@ -102,7 +103,7 @@ Néhány dolog, amit megvizsgálhat a diagnosztikai naplók használatával:
 
 ## <a name="alerts"></a>Riasztások
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview), [naplók](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)és a [tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts).
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](../../../azure-monitor/alerts/alerts-metric-overview.md), [naplók](../../../azure-monitor/alerts/alerts-unified-log.md)és a [tevékenység naplójában](../../../azure-monitor/alerts/activity-log-alerts.md).
 
 Media Services a metrikákat rendszeres időközönként gyűjti, függetlenül attól, hogy az érték módosul-e. Ezek a riasztások akkor hasznosak, ha gyakran mintákat vesznek fel. A riasztások gyorsan és viszonylag egyszerű logikával is elindíthatók.
 

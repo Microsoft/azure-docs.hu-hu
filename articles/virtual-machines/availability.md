@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102507874"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604532"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Az Azure Virtual Machines rendelkezésre állási lehetőségei
 Ez a cikk áttekintést nyújt az Azure Virtual Machines (VM) rendelkezésre állási lehetőségeiről.
@@ -57,6 +57,6 @@ A Site Recovery a következők replikációját képes kezelni:
 - Helyszíni virtuális gépek, Azure Stack virtuális gépek és fizikai kiszolgálók.
 
 ## <a name="next-steps"></a>Következő lépések
-- [Virtuális gép létrehozása rendelkezésre állási zónában](/linux/create-cli-availability-zone.md)
-- [Virtuális gép létrehozása rendelkezésre állási készletben](/linux/tutorial-availability.md)
+- [Virtuális gép létrehozása rendelkezésre állási zónában](/azure/virtual-machines/linux/create-cli-availability-zone)
+- [Virtuális gép létrehozása rendelkezésre állási készletben](/azure/virtual-machines/linux/tutorial-availability-sets)
 - [Virtuálisgép-méretezési csoport létrehozása](../virtual-machine-scale-sets/quick-create-portal.md)

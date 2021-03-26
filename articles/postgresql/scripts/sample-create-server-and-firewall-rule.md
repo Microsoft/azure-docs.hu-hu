@@ -1,19 +1,19 @@
 ---
 title: Azure CLI-szkript – Azure Database for PostgreSQL létrehozása
 description: Azure CLI-példaszkript – Létrehoz egy Azure Database for PostgreSQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 959873d68f8812acb08ef0c7194f53b61404c918
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e20e9481c86db639a1e68b3e3d7d5c2146605afb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94660491"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608476"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure Database for PostgreSQL-kiszolgáló létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
 Ez a CLI-példaszkript létrehoz egy Azure Database for PostgreSQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. Miután a szkript sikeresen futott, a PostgreSQL-kiszolgáló elérhető lesz az összes Azure-szolgáltatásból és a konfigurált IP-címről.

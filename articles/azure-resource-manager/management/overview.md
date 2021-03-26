@@ -2,14 +2,14 @@
 title: Az Azure Resource Manager áttekintése
 description: Ismerteti, hogyan használja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure portálon.
 ms.topic: overview
-ms.date: 09/01/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.custom: contperf-fy21q1,contperf-fy21q3-portal
+ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97858518"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608544"
 ---
 # <a name="what-is-azure-resource-manager"></a>Mi az Azure Resource Manager?
 
@@ -91,7 +91,7 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 
 * Egy erőforráscsoport törlésekor a rendszer az erőforráscsoport összes erőforrását is törli. További információ arról, hogy a Azure Resource Manager hogyan hangolja össze ezeket a törléseket: [Azure Resource Manager erőforráscsoport és erőforrás törlése](delete-resource-group.md).
 
-* Minden erőforráscsoport esetében akár 800 példányt is üzembe helyezhet. Bizonyos erőforrástípusok [mentesülnek az 800-es példány korlátján](resources-without-resource-group-limit.md).
+* Minden erőforráscsoport esetében akár 800 példányt is üzembe helyezhet. Bizonyos erőforrástípusok [mentesülnek az 800-es példány korlátján](resources-without-resource-group-limit.md). További információ: [erőforráscsoport korlátai](azure-subscription-service-limits.md#resource-group-limits).
 
 * Bizonyos erőforrások létezhetnek egy erőforráscsoporton kívül is. Ezeket az erőforrásokat az [előfizetés](../templates/deploy-to-subscription.md), a [felügyeleti csoport](../templates/deploy-to-management-group.md)vagy a [bérlő](../templates/deploy-to-tenant.md)telepíti. Ezen hatókörök esetében csak bizonyos erőforrástípusok támogatottak.
 
@@ -112,6 +112,8 @@ A Azure Resource Manager szolgáltatás a rugalmasság és a folyamatos rendelke
 Ez a rugalmasság olyan szolgáltatásokra vonatkozik, amelyek a Resource Manageren keresztül kapják meg a kérelmeket. Például Key Vault a rugalmasság előnyeit.
 
 ## <a name="next-steps"></a>Következő lépések
+
+* Az Azure-szolgáltatásokon alkalmazott korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetés és-szolgáltatás korlátai, kvótái és megkötései](azure-subscription-service-limits.md).
 
 * További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

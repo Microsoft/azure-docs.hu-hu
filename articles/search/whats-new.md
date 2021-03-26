@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8e78fa46125b8aca378598c673ba76829e11d70e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 99a7f08b6d366f2f928b99caba2424c2fae0d625
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600428"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559519"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -23,7 +23,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
-| [Szemantikus keresés](semantic-search-overview.md) | A lekérdezésekkel kapcsolatos olyan funkciók gyűjteménye, amelyek jelentősen javítják a keresési eredmények jelentőségét nagyon kevés erőfeszítéssel. </br></br>A [szemantikai rangsorolás](semantic-ranking.md) a szavak és a tartalom mögötti szemantikai jelentésekkel számítja ki a releváns pontszámokat. </br></br>A [szemantikai feliratok](semantic-how-to-query-request.md) a dokumentum legjobban összefoglaló, a legfontosabb kifejezésekre vagy kifejezésekre vonatkozó részei. </br></br>A [szemantikai válaszok](semantic-answers.md) a keresési dokumentumokból kinyert kulcsfontosságú részek, amelyek közvetlen választ adnak egy olyan lekérdezésnek, amely egy adott kérdésre hasonlít. | Nyilvános előzetes verzió ([kérés szerint](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Használja a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview és a [search Explorert](search-explorer.md) a Azure Portal. </br></br>A régió és a rétegek korlátozásai érvényesek. |
+| [Szemantikus keresés](semantic-search-overview.md) | Lekérdezésekkel kapcsolatos szolgáltatások gyűjteménye, amely jelentősen javítja a keresési eredmények helytállóságát a lekérdezési kérelem minimális módosításaival. </br></br>A [szemantikai rangsorolás](semantic-ranking.md) a szavak és a tartalom mögötti szemantikai jelentésekkel számítja ki a releváns pontszámokat. </br></br>A [szemantikai feliratok](semantic-how-to-query-request.md) a dokumentum legfontosabb összefoglaló dokumentumait adják vissza, és kiemelik a legfontosabb kifejezéseket vagy kifejezéseket. </br></br>A [szemantikai válaszok](semantic-answers.md) visszaküldik a keresési dokumentumból kinyert kulcsfontosságú részeket, amelyek egy kérdésnek megfelelő lekérdezésre közvetlen válaszként vannak kialakítva. | Nyilvános előzetes verzió ([kérés szerint](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Használja a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview vagy a [search Explorert](search-explorer.md) a Azure Portal. </br></br>A régió és a rétegek korlátozásai érvényesek. |
 | [Helyesírás-ellenőrzés lekérdezési feltételei](speller-how-to-add.md) | Mielőtt a lekérdezési feltételek elérnék a keresőmotort, megadhatja őket a helyesírási hibák ellenőrzéséhez. A `speller` beállítás bármilyen típusú lekérdezéssel használható (egyszerű, teljes vagy szemantikai). |  Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió|
 | [SharePoint Online-indexelő](search-howto-index-sharepoint-online.md) | Ez az indexelő egy SharePoint Online-webhelyhez kapcsolódik, így a tartalom indexelhető egy dokumentumtárból. | Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
 | [Normalizálók](search-normalizers.md) | A normalizálók egyszerű szöveges előfeldolgozást biztosítanak, például burkolatot, ékezetes eltávolítást, asciifolding és így tovább, anélkül, hogy a teljes elemzési láncon át kellene haladnia.| Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |

@@ -5,25 +5,22 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: c9c62ec07873272b956877ec51d8765ae0bbd100
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023078"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605637"
 ---
-# <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Az Azure Percept DK (dev Kit) hibaelhárítása
+# <a name="azure-percept-dk-troubleshooting"></a>Azure Percept DK – hibaelhárítás
 
 Az Azure Percept DK általános hibaelhárítási tippekért tekintse meg az alábbi útmutatást.
 
 ## <a name="general-troubleshooting-commands"></a>Általános hibaelhárítási parancsok
 
-A parancsok futtatásához 
-1. Kapcsolódás a [fejlesztői csomag Wi-Fi AP](./quickstart-percept-dk-set-up.md) -hez
-1. [SSH a fejlesztői csomagba](./how-to-ssh-into-percept-dk.md)
-1. Adja meg az SSH-terminál parancsait
+A parancsok futtatásához [SSH-t a fejlesztői készletbe](./how-to-ssh-into-percept-dk.md) , és írja be a PARANCSOKAT az SSH-ügyfél parancssorba.
 
 Ha további elemzés céljából át szeretné irányítani a kimenetet egy. txt fájlba, használja a következő szintaxist:
 
@@ -43,7 +40,7 @@ Ha a kimenetet egy. txt fájlba irányítja át, másolja a fájlt a gazdagép S
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-```[local host file path]``` arra a helyre hivatkozik a gazdagépen lévő számítógépen, amelyre másolni szeretné a. txt fájlt. ```[remote username]``` a [telepítési élmény](./quickstart-percept-dk-set-up.md)során kiválasztott SSH-Felhasználónév. Ha nem állított be SSH-bejelentkezést az OOBE során, a távoli Felhasználónév ```root``` .
+```[local host file path]``` arra a helyre hivatkozik a gazdagépen lévő számítógépen, amelyre másolni szeretné a. txt fájlt. ```[remote username]``` a [telepítési élmény](./quickstart-percept-dk-set-up.md)során kiválasztott SSH-Felhasználónév.
 
 További információ a Azure IoT Edge parancsokról: [Azure IoT Edge eszköz hibaelhárítási dokumentációja](../iot-edge/troubleshoot.md).
 
@@ -88,11 +85,11 @@ sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u 
 |```sudo docker image prune``` |[az összes lógó kép eltávolítása](https://docs.docker.com/engine/reference/commandline/image_prune/) |
 |```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker-tároló letöltési állapotának keresése |
 
-## <a name="usb-updating"></a>USB-frissítés
+## <a name="usb-updates"></a>USB-frissítések
 
 |Hiba:                                    |Megoldás:                                               |
 |------------------------------------------|--------------------------------------------------------|
-|LIBUSB_ERROR_XXX USB flash-n keresztül a UUU-on keresztül |Ez a hiba az USB-kapcsolat meghibásodásának eredménye a UUU frissítése során. Ha az USB-kábel nincs megfelelően csatlakoztatva a számítógép USB-portjához vagy a PE-10X-hez, az űrlap egy hibával fog történni. Próbálja meg leválasztani és újracsatlakoztatni az USB-kábel mindkét végét, és az orsós kábelt a biztonságos kapcsolat biztosítása érdekében. Ez szinte mindig megoldja a problémát. |
+|LIBUSB_ERROR_XXX USB flash-n keresztül a UUU-on keresztül |Ez a hiba az USB-kapcsolat meghibásodásának eredménye a UUU frissítése során. Ha az USB-kábel nincs megfelelően csatlakoztatva a számítógép USB-portjához vagy a Percept DK-szállítói táblához, akkor az űrlap hibát jelez. Próbálja meg leválasztani és újracsatlakoztatni az USB-kábel mindkét végét, és az orsós kábelt a biztonságos kapcsolat biztosítása érdekében. Ez szinte mindig megoldja a problémát. |
 
 ## <a name="azure-percept-dk-carrier-board-led-states"></a>Az Azure Percept DK Carrier Board VEZETTE állapotai
 

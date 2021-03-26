@@ -1,25 +1,25 @@
 ---
-title: HBv3 sorozatú VM-méret teljesítmény
-description: A HBv3 sorozatú virtuálisgép-méretek teljesítmény-tesztelési eredményeinek megismerése az Azure-ban.
+title: HBv3 sorozatú VM-méretek teljesítmény és méretezhetőség
+description: Ismerje meg a HBv3-sorozatú virtuálisgép-méretek teljesítményét és méretezhetőségét az Azure-ban.
 services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 87c3e4e9b509589624a228ea2e1f4b68e86e3fa8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bf64cfc8ad00fc7f761019ed2fa66089434a96ba
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721133"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604770"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>HBv3 sorozatú virtuális gépek teljesítménye
 
-A HBv3 virtuális gépek korai hozzáférésű felhasználói a következő teljesítménybeli számadatokat várhatják a gyakori HPC-teljesítménymutatók esetén
+A gyakori HPC-referenciaértékeket használó teljesítménybeli elvárások a következők:
 
 | Számítási feladat                                        | HBv3                                                              |
 |-------------------------------------------------|-------------------------------------------------------------------|
@@ -30,7 +30,7 @@ A HBv3 virtuális gépek korai hozzáférésű felhasználói a következő telj
 
 ## <a name="process-pinning"></a>Folyamat-rögzítés
 
-A folyamat rögzítése jól működik a HBv3 sorozatú virtuális gépeken, mert a mögöttes szilíciumot elérhetővé tesszük a vendég virtuális gép számára. Erősen ajánlott az optimális teljesítmény és konzisztencia érdekében feldolgozni a rögzítést.
+A [folyamat](compiling-scaling-applications.md#process-pinning) rögzítése jól működik a HBv3 sorozatú virtuális gépeken, mert a mögöttes szilíciumot elérhetővé tesszük a vendég virtuális gép számára. Erősen ajánlott az optimális teljesítmény és konzisztencia érdekében feldolgozni a rögzítést.
 
 ## <a name="mpi-latency"></a>MPI-késés
 
@@ -45,11 +45,12 @@ Az OSU-es teljesítményteszt-csomag MPI-sávszélesség-tesztje az alábbiak sz
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
-A [Mellanox Perftest-csomag](https://community.mellanox.com/s/article/perftest-package) számos InfiniBand-teszttel rendelkezik, például a késés (ib_send_lat) és a sávszélesség (ib_send_bw). Az alábbi parancs egy példát mutat be. 
+A [Mellanox Perftest-csomag](https://community.mellanox.com/s/article/perftest-package) számos InfiniBand-teszttel rendelkezik, például a késés (ib_send_lat) és a sávszélesség (ib_send_bw). Az alábbi parancs egy példát mutat be.
 ```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 ## <a name="next-steps"></a>Következő lépések
 - További információ az [MPI-alkalmazások méretezéséről](compiling-scaling-applications.md).
+- Tekintse át a HPC-alkalmazások teljesítmény-és méretezhetőségi eredményeit a HBv3 virtuális gépeken a [TechCommunity cikkben](https://techcommunity.microsoft.com/t5/azure-compute/hpc-performance-and-scalability-results-with-azure-hbv3-vms/bc-p/2235843).
 - Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti nézetét lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

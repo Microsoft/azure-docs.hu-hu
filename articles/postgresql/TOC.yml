@@ -126,14 +126,14 @@
           href: concepts-supported-versions.md
         - name: PostgreSQL-bővítmények
           href: concepts-extensions.md
+        - name: Korlátok
+          href: concepts-limits.md
         - name: A tarifacsomagok ismertetése
           items:
             - name: Árképzési szintek
               href: concepts-pricing-tiers.md
             - name: Előre fizetés fenntartott kapacitásért
               href: concept-reserved-pricing.md
-            - name: Korlátok
-              href: concepts-limits.md
         - name: Biztonság
           items:
             - name: Biztonsági áttekintés

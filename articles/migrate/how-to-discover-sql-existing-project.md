@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2021
-ms.openlocfilehash: 8caac0a111c3a1bdd88e0d5f43a4629ad4221496
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 2de60880b511e43ffb2949a15fec2cf2a94f62fa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888940"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567152"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>SQL Server példányok felderítése meglévő projektekben 
 
@@ -41,7 +41,7 @@ SQL Server példányok és a helyszíni gépeken futó adatbázisok felderítés
     - Ellenőrizze, hogy a készüléken futó szolgáltatások frissítve vannak-e a legújabb verzióra. Ehhez indítsa el a készülék Configuration Managert a berendezés-kiszolgálóról, és válassza a berendezés-szolgáltatások megtekintése lehetőséget a telepítési előfeltételek panelen.
         - A készülék és annak összetevői automatikusan frissülnek :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="a készülék verziójának vizsgálatával"::: .
     - A készülék Configuration Manager hitelesítő adatok kezelése és felderítési források paneljén adja meg azokat a tartományi vagy SQL Server hitelesítő adatokat, amelyek rendszergazdai hozzáféréssel rendelkeznek a SQL Server példányon és a felderített adatbázisokon.
-    Kihasználhatja a készülék automatikus hitelesítő adatok leképezése szolgáltatását, vagy manuálisan is leképezheti a hitelesítő adatokat a megfelelő kiszolgálóra az [itt](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery)kijelölt módon.
+    Kihasználhatja a készülék automatikus hitelesítő adatok leképezése szolgáltatását, vagy manuálisan is leképezheti a hitelesítő adatokat a megfelelő kiszolgálóra az [itt](./tutorial-discover-vmware.md#start-continuous-discovery)kijelölt módon.
 
     Néhány Megjegyzés:
     - Győződjön meg arról, hogy a szoftver leltározása már engedélyezve van, vagy adjon meg tartományi vagy nem tartományi hitelesítő adatokat az engedélyezéshez. SQL Server példányok felderítéséhez a szoftver leltározását kell elvégezni.
