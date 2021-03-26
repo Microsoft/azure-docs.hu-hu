@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d992961fc165ce643bd0d6aba4d8a9bda1d38e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b641ec37d134303ae6b31c092cd3c50811477a7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495589"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108417"
 ---
 # <a name="teams-interoperability"></a>Teams-együttműködés
 
@@ -29,7 +29,7 @@ A csapatok együttműködési képessége lehetővé teszi, hogy egyéni alkalma
 1. Az értekezlet részletei az egyéni alkalmazáson keresztül vannak megosztva a külső felhasználókkal.
    * **Graph API használata** Az egyéni kommunikációs szolgáltatási alkalmazás a Microsoft Graph API-kat használja az értekezlet részleteinek megosztásához. 
    * **Egyéb beállítások használata** Az értekezletre mutató hivatkozás például átmásolható a naptárból a Microsoft Teams-ben.
-1. A külső felhasználók az egyéni alkalmazással csatlakozhatnak a Teams Meeting szolgáltatáshoz (a kommunikációs szolgáltatások meghívásával és a csevegési ügyféloldali kódtárak használatával)
+1. A külső felhasználók az egyéni alkalmazással csatlakozhatnak a Teams Meeting szolgáltatáshoz (a kommunikációs szolgáltatások hívási és csevegési SDK-k használatával)
 
 Az ehhez a célra használt magas szintű architektúra a következőképpen néz ki: 
 
@@ -37,7 +37,7 @@ Az ehhez a célra használt magas szintű architektúra a következőképpen né
 
 Noha bizonyos csapatok olyan funkciókat is biztosítanak, mint a Kiemelt Hand, a közös üzemmód, és a breakout-szobák csak a csapatok felhasználói számára lesznek elérhetők, az egyéni alkalmazás az alapvető hang-, videó-, csevegési és képernyőfelvételi képességekhez fog hozzáférni. A Meeting chat elérhetővé válik az egyéni alkalmazás felhasználója számára, amíg a hívása folyamatban van. Nem tudnak üzeneteket küldeni vagy fogadni a csatlakozás előtt vagy a hívás elhagyása után. 
 
-Amikor a kommunikációs szolgáltatások felhasználója összekapcsolja a csapatok értekezletét, a hívó ügyfél függvénytárában megadott megjelenítendő név jelenik meg a csapatok felhasználói számára. A kommunikációs szolgáltatások felhasználója más módon lesz kezelve, mint a Teams névtelen felhasználója.  Az egyéni alkalmazásnak meg kell fontolnia a felhasználók hitelesítését és más biztonsági intézkedéseket a csapatok üléseinek védelme érdekében. Vegye figyelembe, hogy a névtelen felhasználók hogyan csatlakozhatnak értekezletekhez, és a [csapatok biztonsági útmutató](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) segítségével konfigurálhatják a névtelen felhasználók számára elérhető képességeket.
+Amikor a kommunikációs szolgáltatások felhasználója összekapcsolja a csapatok értekezletét, a hívó SDK-n keresztül megadott megjelenítendő név jelenik meg a csapatok felhasználói számára. A kommunikációs szolgáltatások felhasználója más módon lesz kezelve, mint a Teams névtelen felhasználója.  Az egyéni alkalmazásnak meg kell fontolnia a felhasználók hitelesítését és más biztonsági intézkedéseket a csapatok üléseinek védelme érdekében. Vegye figyelembe, hogy a névtelen felhasználók hogyan csatlakozhatnak értekezletekhez, és a [csapatok biztonsági útmutató](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) segítségével konfigurálhatják a névtelen felhasználók számára elérhető képességeket.
 
 A kommunikációs szolgáltatások csapatának együttműködési szolgáltatása jelenleg privát előzetes verzióban érhető el. Ha általánosan elérhető, a kommunikációs szolgáltatások felhasználói a "külső hozzáférésű felhasználók"-ként lesznek kezelve. További információ a külső hozzáférésről a [szervezeten kívüli személyekkel a Microsoft Teams szolgáltatásban, csevegéssel és együttműködéssel](/microsoftteams/communicate-with-users-from-other-organizations).
 

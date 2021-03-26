@@ -5,20 +5,20 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496175"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106793"
 ---
 ## <a name="joining-the-meeting-chat"></a>Az értekezlet csevegésének csatlakoztatása 
 
-A csapatok együttműködési képességének engedélyezése után a kommunikációs szolgáltatások felhasználója külső felhasználóként hívhatja a csapatokat a hívó ügyféloldali kódtár használatával. A híváshoz való csatlakozáskor a rendszer résztvevőként hozzáadja őket az értekezlet csevegéséhez, ahol üzeneteket küldhet és fogadhat a hívás más felhasználóival. A felhasználó nem férhet hozzá a híváshoz való csatlakozás előtt küldött csevegési üzenetekhez. Az értekezlethez való csatlakozáshoz és a csevegés megkezdéséhez kövesse a következő lépéseket.
+A csapatok együttműködési képességének engedélyezése után a kommunikációs szolgáltatások felhasználója a hívó SDK használatával külső felhasználóként hívhatja meg a csapatokat. A híváshoz való csatlakozáskor a rendszer résztvevőként hozzáadja őket az értekezlet csevegéséhez, ahol üzeneteket küldhet és fogadhat a hívás más felhasználóival. A felhasználó nem férhet hozzá a híváshoz való csatlakozás előtt küldött csevegési üzenetekhez. Az értekezlethez való csatlakozáshoz és a csevegés megkezdéséhez kövesse a következő lépéseket.
 
 ## <a name="install-the-chat-packages"></a>A csevegési csomagok telepítése
 
-A `npm install` parancs használatával telepítse a szükséges kommunikációs szolgáltatások ügyféloldali kódtárait a javascripthez.
+A `npm install` parancs használatával telepítse a szükséges kommunikációs szolgáltatások SDK-kat a javascripthez.
 
 ```console
 npm install @azure/communication-common --save

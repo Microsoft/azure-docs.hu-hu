@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 8559bd0a354a64872e58d014d1027ed971773b60
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655342"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108332"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -37,9 +37,10 @@ A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy eg
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>NYC-taxi-adatelemzés a blob Storage-ban a Spark használatával
 
 1. A szinapszis Studióban nyissa meg a **fejlesztés** hubot
-2. Hozzon létre egy newnNotebook az alapértelmezett Language **PySpark (Python)** értékre állítva.
+2. Hozzon létre egy új jegyzetfüzetet, amely az alapértelmezett nyelvet **PySpark (Python)** állítja be.
 3. Hozzon létre egy új kódlapot, és illessze be a következő kódot a cellába.
-    ```
+    ```py
+    %%pyspark
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
@@ -62,6 +63,7 @@ Az dataframe az elnevezett **adathalmazon** keresztül érhető el. Töltse be e
 1. Vegyen fel egy újat a jegyzetfüzetbe, majd írja be a következő kódot:
 
     ```py
+    spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>A New York-i taxi-adat elemzése a Spark és a notebook használatával
@@ -76,16 +78,16 @@ Az dataframe az elnevezett **adathalmazon** keresztül érhető el. Töltse be e
    ```
 
 1. Futtassa a cellát, hogy megjelenjenek a **nyctaxi** Spark-adatbázisba betöltött NYC-taxik adatai.
-1. Hozzon létre egy új kódlapot, és adja meg a következő kódot. Ezután futtassa a cellát ugyanazzal az elemzéssel, amelyet korábban a dedikált SQL Pool- **SQLPOOL1** adott meg. Ez a kód menti és megjeleníti az elemzés eredményeit egy **nyctaxi. passengercountstats** nevű táblába.
+1. Hozzon létre egy új kódlapot, és adja meg a következő kódot. Ezeket az adatelemzéseket elemezzük, és az eredményeket egy **nyctaxi. passengercountstats** nevű táblába mentjük.
 
    ```py
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistanceMiles) as SumTripDistance,
-          AVG(TripDistanceMiles) as AvgTripDistance
+          SUM(TripDistance) as SumTripDistance,
+          AVG(TripDistance) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
+      WHERE TripDistance > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 

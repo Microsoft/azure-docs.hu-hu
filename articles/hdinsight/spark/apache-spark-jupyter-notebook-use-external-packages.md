@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: a3d787059345b5971d99ebd7a1e26a9135b61bed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ddfdfdfe10d5b6ea7c2d5cd99d325564163c0dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930341"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866012"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookokkal Apache Spark-fürtökben a HDInsight-ben
 
@@ -34,11 +34,11 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
 1. Hozzon létre új notebookot. Válassza az **új**, majd a **Spark** lehetőséget.
 
-    ![Új Spark-Jupyter Notebook létrehozása](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Új Jupyter Notebook létrehozása")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png " alt-text="Új Spark-Jupyter Notebook létrehozása" border="true":::
 
 1. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. Válassza ki a jegyzetfüzet nevét a tetején, és adjon meg egy rövid nevet.
 
-    ![A notebook elnevezése](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "A notebook elnevezése")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png " alt-text="A notebook elnevezése" border="true":::
 
 1. A Magic használatával úgy `%%configure` konfigurálhatja a jegyzetfüzetet, hogy külső csomagot használjon. Külső csomagokat használó jegyzetfüzetekben ügyeljen arra, hogy az `%%configure` első kód cellájában hívja meg a magict. Ez biztosítja, hogy a kernel a csomag használatára legyen konfigurálva a munkamenet elindítása előtt.
 
@@ -56,7 +56,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
     b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId** és a **verzió** értékeit. Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a Scala 2,11 és a Spark 1.5.0 csomagot használjuk, de előfordulhat, hogy a fürt megfelelő Scala vagy Spark verziójának különböző verzióit kell kiválasztania. A Scala verzióját a fürtön a `scala.util.Properties.versionString` Spark Jupyter kernelen vagy a Spark beküldésen futtatva találja meg. A Spark-verziót a fürtön a Jupyter notebookokon futtatva találja meg `sc.version` .
 
-    ![Külső csomagok használata Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Külső csomagok használata Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png " alt-text="Külső csomagok használata Jupyter Notebook" border="true":::
 
     c. Összefűzi a három értéket kettősponttal elválasztva (**:**).
 

@@ -1,9 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Kötelező mezők. További információ: aka.ms/skyeye/meta.
-title: átalakítások és feladatok Media Servicesban: Azure Media Services Leírás: megtudhatja, hogyan hozhat létre átalakítókat a videók feldolgozásához szükséges szabályok leírásához Azure Media Servicesban.
-szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 03/17/2021 MS. Author: inhenkel
+title: átalakítások és feladatok Media Servicesban: Azure Media Services Leírás: a átalakítja a videók feldolgozásának szabályait Azure Media Services.
+szolgáltatások: Media Services Author: IngridAtMicrosoft Manager: femila MS. Service: Media-Services MS. topic: konceptuális MS. Date: 03/22/2021 MS. Author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
@@ -90,12 +88,6 @@ A következő ábrán a **feladatütemezés** és az általa hivatkozott objektu
 Kattintson a képre a teljes méretű megjelenítéshez.  
 
 [![A feladattípust és az általa hivatkozott objektumokat bemutató diagram, beleértve az objektumok közötti osztály-származtató kapcsolatokat.](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
-
-## <a name="configure-media-reserved-units"></a>Media szolgáltatás számára fenntartott egységek konfigurálása
-
-A Media Services v3 vagy Video Indexer által aktivált hangelemzési és videó-elemzési feladatokhoz kifejezetten ajánlott 10 S3-as Media szolgáltatás számára fenntartott egységekkel (MRUs) ellátni a fiókját. Ha több mint 10 S3 MRUs van szüksége, nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com/)használatával.
-
-Részletekért lásd: [a médiafájlok feldolgozásának skálázása a CLI-vel](media-reserved-units-cli-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 

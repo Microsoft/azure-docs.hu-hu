@@ -2,13 +2,13 @@
 title: Bevezetés
 description: Ismerje meg az Azure VMware-megoldás funkcióit és előnyeit a VMware-alapú számítási feladatok Azure-beli üzembe helyezéséhez és kezeléséhez.
 ms.topic: overview
-ms.date: 11/11/2020
-ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a75c04cf6b51068ef9867e3f9438b2820da703fe
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579287"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048816"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
@@ -19,6 +19,11 @@ Az Azure VMware-megoldás egy VMware-alapú ellenőrzött megoldás, amely a fej
 Az ábrán látható a privát felhők és a virtuális hálózatok közötti érintkezés az Azure-ban, az Azure-szolgáltatások és a helyszíni környezetek között. A privát felhőktől az Azure-szolgáltatásokhoz vagy virtuális hálózatok való hálózati hozzáférés az Azure szolgáltatási végpontok SLA-alapú integrálását teszi lehetővé. A ExpressRoute Global Reach összekapcsolja a helyszíni környezetet az Azure VMware-megoldás saját felhővel. 
 
 ![Az Azure VMware-megoldás saját felhővel való érintkezésének képe az Azure-ba és a helyszínen](./media/adjacency-overview-drawing-final.png)
+
+## <a name="customer-communication"></a>Ügyfél-kommunikáció
+A szolgáltatással kapcsolatos problémák, a tervezett karbantartás, az állapot-tanácsadók, a biztonsági tanácsadók értesítései a Azure Portal **Service Healthon** keresztül jelennek meg. Az értesítésekhez tartozó műveletnapló-riasztások beállításakor időben hajthat végre műveleteket. További információ: [szolgáltatás állapotára vonatkozó riasztások létrehozása a Azure Portal használatával](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+
+:::image type="content" source="media/service-health.png" alt-text="Képernyőkép Service Health értesítésekről":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Gazdagépek, fürtök és privát felhők
 

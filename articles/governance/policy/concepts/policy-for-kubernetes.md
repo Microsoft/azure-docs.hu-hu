@@ -1,14 +1,14 @@
 ---
 title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
-ms.date: 12/01/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577092"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868154"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -68,9 +68,9 @@ A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bőv�
 
 Az alábbi általános javaslatok a Azure Policy bővítmény használatára:
 
-- A Azure Policy bővítmény 3 forgalomirányító-összetevő futtatását igényli: 1 naplózási Pod és 2 webhook Pod-replika. Ezek az összetevők több erőforrást használnak, mint a Kubernetes erőforrások száma és a házirend-hozzárendelések a fürtben, amely naplózási és kényszerítési műveleteket igényelnek.
+- A Azure Policy-bővítmény három forgalomirányító-összetevő futtatását igényli: 1 naplózási Pod és 2 webhook Pod-replika. Ezek az összetevők több erőforrást használnak, mint a Kubernetes erőforrások száma, és a házirend-hozzárendelések a fürtben növekednek, és ehhez naplózási és kényszerítési műveletek szükségesek.
 
-  - Ha kevesebb mint 500 hüvely van egyetlen fürtben, legfeljebb 20 megkötést biztosítunk: 2 vCPU és 350 MB memória/összetevő.
+  - Kevesebb mint 500 hüvelyt egyetlen fürtben, legfeljebb 20 korlátozással: 2 vCPU és 350 MB memória/összetevő.
   - Több mint 500 hüvelyre egyetlen fürtben, legfeljebb 40 korlátozással: 3 vCPU és 600 MB memória/összetevő.
 
 - A Windows-hüvelyek [nem támogatják a biztonsági környezeteket](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods).
@@ -85,7 +85,7 @@ A következő javaslat csak az AK-ra és a Azure Policy bővítményre vonatkozi
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>Azure Policy bővítmény telepítése az AK-hoz
 
-A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatót.
+A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat.
 
 1. Szüksége lesz az Azure CLI-verzió 2.12.0 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -93,15 +93,12 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
    - Azure Portal:
 
-     Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+     Regisztrálja a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Azure CLI:
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-
-     # Provider register: Register the Azure Kubernetes Service provider
-     az provider register --namespace Microsoft.ContainerService
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
@@ -440,14 +437,13 @@ Egyéb megfontolások:
 
 - Ha a fürt előfizetése Azure Security Center van regisztrálva, akkor Azure Security Center Kubernetes szabályzatokat a rendszer automatikusan alkalmazza a fürtön.
 
-- Ha a meglévő Kubernetes-erőforrásokkal rendelkező fürtön megtagadási házirend van érvényben, az új szabályzatnak nem megfelelő összes meglévő erőforrás továbbra is fut. Ha a nem megfelelő erőforrás egy másik csomóponton lesz átütemezett, a forgalomirányító blokkolja az erőforrás-létrehozást.
+- Ha egy megtagadási házirendet alkalmaznak a fürtön meglévő Kubernetes-erőforrásokkal, akkor az új szabályzatnak nem megfelelő, már meglévő erőforrások továbbra is futnak. Ha a nem megfelelő erőforrás egy másik csomóponton lesz átütemezett, a forgalomirányító blokkolja az erőforrás-létrehozást.
 
 - Ha egy fürt olyan megtagadási házirenddel rendelkezik, amely érvényesíti az erőforrásokat, a felhasználó nem fog elutasítási üzenetet látni a központi telepítés létrehozásakor. Vegyünk például egy olyan Kubernetes-telepítést, amely replicasets és hüvelyeket tartalmaz. Amikor a felhasználó végrehajtja a műveleteket `kubectl describe deployment $MY_DEPLOYMENT` , nem küld visszautasítási üzenetet az események részeként. `kubectl describe replicasets.apps $MY_DEPLOYMENT`A visszautasításhoz tartozó eseményeket azonban visszaadja.
 
 ## <a name="logging"></a>Naplózás
 
-Kubernetes-vezérlőként/tárolóként az _Azure-Policy_ és a _forgalomirányító_ hüvelyek is megőrzik a naplókat a Kubernetes-fürtben. A naplók elérhetők a Kubernetes-fürt elemzések **lapján.**
-További információ: [a Kubernetes-fürt teljesítményének figyelése a Azure monitor for containers szolgáltatással](../../../azure-monitor/containers/container-insights-analyze.md).
+Kubernetes-vezérlőként/tárolóként az _Azure-Policy_ és a _forgalomirányító_ hüvelyek is megőrzik a naplókat a Kubernetes-fürtben. A naplók elérhetők a Kubernetes-fürt elemzések **lapján.** További információ: [a Kubernetes-fürt teljesítményének figyelése a Azure monitor for containers szolgáltatással](../../../azure-monitor/containers/container-insights-analyze.md).
 
 A bővítmények naplófájljainak megtekintéséhez használja a következőt `kubectl` :
 

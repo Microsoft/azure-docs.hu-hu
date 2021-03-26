@@ -5,12 +5,12 @@ description: Ez a cikk az Azure HDInsight-fürtökön tárolt adatok számára e
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988625"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867117"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
@@ -76,25 +76,25 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 1. Az új kulcstartóban navigáljon a **Beállítások**  >  **kulcsok**  >  **+ Létrehozás/importálás** elemre.
 
-    ![Új kulcs létrehozása a Azure Key Vaultban](./media/disk-encryption/create-new-key.png "Új kulcs létrehozása a Azure Key Vaultban")
+    :::image type="content" source="./media/disk-encryption/create-new-key.png" alt-text="Új kulcs létrehozása a Azure Key Vaultban":::
 
 1. Adjon meg egy nevet, majd válassza a **Létrehozás** lehetőséget. Őrizze meg az **RSA** alapértelmezett **kulcs típusát** .
 
-    ![kulcs nevének generálása](./media/disk-encryption/create-key.png "Kulcs nevének előállítása")
+    :::image type="content" source="./media/disk-encryption/create-key.png" alt-text="kulcs nevének generálása":::
 
 1. Amikor visszatér a **kulcsok** lapra, válassza ki a létrehozott kulcsot.
 
-    ![Key Vault-kulcsok listája](./media/disk-encryption/key-vault-key-list.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-key-list.png" alt-text="Key Vault-kulcsok listája":::
 
 1. Válassza ki a verziót, és nyissa meg a **kulcs verziója** lapot. Ha saját kulcsot használ a HDInsight-fürt titkosításához, meg kell adnia a kulcs URI-JÁT. Másolja a **kulcs azonosítóját** , és mentse valahova, amíg készen nem áll a fürt létrehozására.
 
-    ![kulcs azonosítójának beolvasása](./media/disk-encryption/get-key-identifier.png)
+    :::image type="content" source="./media/disk-encryption/get-key-identifier.png" alt-text="kulcs azonosítójának beolvasása":::
 
 ### <a name="create-access-policy"></a>Hozzáférési szabályzat létrehozása
 
 1. Az új kulcstartóban navigáljon a **Beállítások**  >  **hozzáférési szabályzatok**  >  **+ hozzáférési házirend hozzáadása** elemre.
 
-    ![Új Azure Key Vault hozzáférési szabályzat létrehozása](./media/disk-encryption/key-vault-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-access-policy.png" alt-text="Új Azure Key Vault hozzáférési szabályzat létrehozása":::
 
 1. A **hozzáférési szabályzat hozzáadása** lapon adja meg a következő információkat:
 
@@ -104,13 +104,13 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
     |Titkos engedélyek|Válassza a **beolvasás**, **beállítás** és **Törlés** lehetőséget.|
     |Rendszerbiztonsági tag kiválasztása|Válassza ki a korábban létrehozott felhasználó által hozzárendelt felügyelt identitást.|
 
-    ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/disk-encryption/azure-portal-add-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/azure-portal-add-access-policy.png" alt-text="A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez":::
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Kattintson a **Mentés** gombra.
 
-    ![Azure Key Vault hozzáférési szabályzat mentése](./media/disk-encryption/add-key-vault-access-policy-save.png)
+    :::image type="content" source="./media/disk-encryption/add-key-vault-access-policy-save.png" alt-text="Azure Key Vault hozzáférési szabályzat mentése":::
 
 ### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Fürt létrehozása az ügyfél által felügyelt kulcs lemezének titkosításával
 
@@ -129,7 +129,7 @@ A fürt létrehozása során a következő módon használhat egy verziószámma
 
 A felügyelt identitást is hozzá kell rendelnie a fürthöz.
 
-![Új fürt létrehozása](./media/disk-encryption/create-cluster-portal.png)
+:::image type="content" source="./media/disk-encryption/create-cluster-portal.png" alt-text="Új fürt létrehozása":::
 
 #### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
@@ -367,7 +367,7 @@ A futó fürtön használt titkosítási kulcsokat a Azure Portal vagy az Azure 
 
 A kulcs elforgatásához szüksége lesz az alapkulcs tárolójának URI-ra. Ha ezt megtette, nyissa meg a HDInsight-fürt tulajdonságai szakaszt a portálon, majd kattintson a **kulcs módosítása** elemre a **lemez titkosítási kulcsának URL-címe** alatt. Adja meg az új kulcs URL-címét, és küldje el a kulcs elforgatásához.
 
-![lemez titkosítási kulcsának elforgatása](./media/disk-encryption/change-key.png)
+:::image type="content" source="./media/disk-encryption/change-key.png" alt-text="lemez titkosítási kulcsának elforgatása":::
 
 #### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
@@ -400,7 +400,7 @@ Nem, az összes felügyelt lemezt és erőforrás-lemezt ugyanazzal a kulccsal t
 
 Ha a fürt elveszti a kulcs elérését, a figyelmeztetések az Apache Ambari portálon jelennek meg. Ebben az állapotban a **kulcs módosítása** művelet sikertelen lesz. A kulcs-hozzáférés visszaállítása után a Ambari figyelmeztetései elindulnak, és a műveletek, például a kulcsok elforgatása sikeresen elvégezhető.
 
-![kulcs-hozzáférés Ambari riasztása](./media/disk-encryption/ambari-alert.png)
+:::image type="content" source="./media/disk-encryption/ambari-alert.png" alt-text="kulcs-hozzáférés Ambari riasztása":::
 
 **Hogyan állíthatom helyre a fürtöt a kulcsok törlésekor?**
 

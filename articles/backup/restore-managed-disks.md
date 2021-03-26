@@ -3,19 +3,14 @@ title: Azure-Managed Disks visszaállítása
 description: Ismerje meg, hogyan állíthatja vissza az Azure Managed Diskst a Azure Portalból.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94adc8512987b50a8df07d295215ffcff873162f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101703749"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108587"
 ---
-# <a name="restore-azure-managed-disks-in-preview"></a>Az Azure Managed Disks visszaállítása (előzetes verzió)
-
->[!IMPORTANT]
->Az Azure Disk Backup előzetes verzióban érhető el, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A régió elérhetőségét a [támogatási mátrixban](disk-backup-support-matrix.md)tekintheti meg.
->
->[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
+# <a name="restore-azure-managed-disks"></a>Azure-Managed Disks visszaállítása
 
 Ez a cikk azt ismerteti, hogyan állíthatja vissza az [Azure Managed Diskst](../virtual-machines/managed-disks-overview.md) egy Azure Backup által létrehozott visszaállítási pontról.
 

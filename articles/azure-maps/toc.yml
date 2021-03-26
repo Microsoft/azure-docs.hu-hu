@@ -238,6 +238,8 @@
               href: spatial-io-supported-data-format-details.md
         - name: A webes SDK által támogatott böngészők
           href: supported-browsers.md
+        - name: Ajánlott eljárások
+          href: web-sdk-best-practices.md
     - name: Fejlesztés az Android SDK-val
       items:
         - name: Az androidos térképvezérlő használatának első lépései

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4512c9d9fdb66713ba24fbf30278e5d5dbb2ae23
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943160"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863751"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive-lekérdezések futtatása a Data Lake Tools for Visual Studióval
 
@@ -49,11 +49,11 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
 5. Válassza a **Végrehajtás** lehetőséget. A végrehajtási mód alapértelmezett értéke az **interaktív**.
 
-    ![Interaktív kaptár-lekérdezés végrehajtása, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png" alt-text="Interaktív kaptár-lekérdezés végrehajtása, Visual Studio" border="true":::
 
 6. Ha ugyanezt a lekérdezést **Batch** módban szeretné futtatni, a legördülő listát az **Interaktívról** a **kötegbe** kapcsolhatja. A végrehajtási gomb **a végrehajtásról** a **küldésre** változik.
 
-    ![Batch-struktúra beküldése – lekérdezés, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png" alt-text="Batch-struktúra beküldése – lekérdezés, Visual Studio" border="true":::
 
     A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) értéket adja meg `SELECT * FROM` , az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják. Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
 
@@ -61,7 +61,7 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
 8. Ha a speciális küldés lehetőséget választotta, a **parancsfájl elküldése** párbeszédpanelen konfigurálja a **feladatok nevét**, az **argumentumokat**, a **további konfigurációkat** és az **állapot könyvtárat** . Ezután válassza a **Submit (Küldés**) lehetőséget.
 
-    ![Parancsfájl elküldése párbeszédpanel, HDInsight Hadoop-struktúra lekérdezése](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png" alt-text="Parancsfájl elküldése párbeszédpanel, HDInsight Hadoop-struktúra lekérdezése" border="true":::
 
 ### <a name="create-a-hive-application"></a>Hive alkalmazás létrehozása
 
@@ -109,7 +109,7 @@ Ha kaptár-lekérdezést szeretne futtatni egy kaptár-alkalmazás létrehozás�
 
    Megjelenik a **kaptár-feladatok összegzése** , és megjeleníti a futó feladattal kapcsolatos információkat. A **frissítés** hivatkozásra kattintva frissítse a feladatokat, amíg a **feladatok állapota** **Befejezve** nem változik.
 
-   ![Befejezett struktúra-feladatok összefoglalása, struktúra alkalmazása, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
+   :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png" alt-text="Befejezett struktúra-feladatok összefoglalása, struktúra alkalmazása, Visual Studio" border="true":::
 
 7. A feladatok kimenetének megtekintéséhez válassza a **feladatok kimenete** elemet. Ekkor megjelenik `[ERROR] 3` a lekérdezés által visszaadott érték.
 

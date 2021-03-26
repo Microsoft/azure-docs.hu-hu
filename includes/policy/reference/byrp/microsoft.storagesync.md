@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b830d3d9143bb5b15292d1c0b14b04d8fee9b2ba
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b3939094b4299ccf75e4953443f8ce9d0075c59
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588321"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031697"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure File Sync a magánhálózati hivatkozást kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |A megadott Storage Sync Service-erőforráshoz tartozó magánhálózati végpont létrehozása lehetővé teszi a Storage-szinkronizálási szolgáltatás erőforrásának a szervezet hálózatának magánhálózati IP-címén belüli, nem pedig az internetről elérhető nyilvános végponton keresztüli elérését. A privát végpontok önmagukban történő létrehozása nem tiltja le a nyilvános végpontot. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
 |[Azure File Sync konfigurálása magánhálózati végpontokkal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb35dddd9-daf7-423b-8375-5a5b86806d5a) |A rendszer egy privát végpontot telepít a jelzett Storage Sync Service-erőforráshoz. Ez lehetővé teszi, hogy a Storage Sync Service-erőforrást a szervezete hálózatának magánhálózati IP-címén belül, az internetről elérhető nyilvános végponton keresztül foglalkozzon. Egy vagy több magán-végpont létezése önmagában nem tiltja le a nyilvános végpontot. |DeployIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_DeployIfNotExists.json) |

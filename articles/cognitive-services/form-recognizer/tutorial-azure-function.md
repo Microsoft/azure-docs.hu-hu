@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8c72a018f03b5284d3fc53be02d9eb526cdfcf28
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bf455d9401593b5c09fa295e492368a2a5bee240
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722242"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048692"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>Oktatóanyag: tárolt dokumentumok feldolgozásához használja az Azure-függvényt
 
@@ -40,9 +40,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * Az elemezni kívánt helyi PDF-dokumentum. Ezt a [dokumentumtípust](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout.pdf) letöltheti a használatra.
 * A [Python 3.8. x](https://www.python.org/downloads/) telepítve van.
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) telepítve.
-* [Azure functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools) telepítve.
+* [Azure functions Core Tools](../../azure-functions/functions-run-local.md?tabs=windows%2ccsharp%2cbash#install-the-azure-functions-core-tools) telepítve.
 * A Visual Studio Code a következő bővítményekkel van telepítve:
-  * [Azure Functions bővítmény](https://docs.microsoft.com/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
+  * [Azure Functions bővítmény](/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
   * [Python-bővítmény](https://code.visualstudio.com/docs/python/python-tutorial#_install-visual-studio-code-and-the-python-extension)
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása

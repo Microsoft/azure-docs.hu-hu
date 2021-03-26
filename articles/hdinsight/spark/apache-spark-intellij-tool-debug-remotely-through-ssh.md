@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: ccd642578c8c35ac6b5f23397788ad1e7f83a1f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de838e094c8a37d375aa6c7649ee5717705ad33c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942613"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866352"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ SSH-n keresztül
 
@@ -45,7 +45,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
     * **Maven** a Scala projekt-létrehozás varázsló támogatásához.
     * A **SBT** kezelése és a Scala-projekt kiépítése.
 
-     ![IntelliJ – új projekt létrehozása Spark](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png" alt-text="IntelliJ – új projekt létrehozása Spark" border="true":::
 
 1. Kattintson a **Tovább** gombra.
 
@@ -58,7 +58,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
     |Projekt SDK|Ha üres, válassza az **új...** lehetőséget, és navigáljon a JDK-hez.|
     |Spark-verzió|A létrehozás varázsló a Spark SDK és a Scala SDK megfelelő verzióját integrálja. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Ellenkező esetben válassza a **Spark 2. x.** elemet. Ez a példa a **Spark 2.3.0 (Scala 2.11.8)** használja.|
 
-   ![Új IntelliJ-projekt kiválasztása Spark-verzió](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png" alt-text="Új IntelliJ-projekt kiválasztása Spark-verzió" border="true":::
 
 1. Válassza a **Befejezés** gombot. A projekt elérhetővé válása néhány percet igénybe vehet. Tekintse meg a jobb alsó sarokban a folyamat előrehaladását.
 
@@ -70,11 +70,11 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 1. A helyi Futtatás befejezése után a kimeneti fájl mentése a jelenlegi **Project Explorer-**  >  **__adatalapértelmezett__** értékre.
 
-    ![IntelliJ projekt helyi futtatásának eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png" alt-text="IntelliJ projekt helyi futtatásának eredménye" border="true":::
 
 1. Az eszközök a helyi Futtatás és a helyi hibakeresés végrehajtásakor automatikusan beállították az alapértelmezett helyi futtatási konfigurációt. A jobb felső sarokban található **[Spark on HDInsight] XXX** megnyitásával megtekintheti a **[Spark on HDInsight] XXX** -t, amelyet a **HDInsight**-ben már Apache Spark létrehoztak. Váltson a **helyi Futtatás** lapra.
 
-    ![IntelliJ helyi futtatású hibakeresési konfigurációk futtatása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png" alt-text="IntelliJ helyi futtatású hibakeresési konfigurációk futtatása" border="true":::
 
     - [Környezeti változók](#prerequisites): Ha már beállította a rendszerkörnyezeti változót a **C:\WinUtils** **HADOOP_HOME** , akkor az automatikusan felismeri, hogy nincs szükség a manuális hozzáadására.
     - [WinUtils.exe hely](#prerequisites): Ha nem állította be a rendszerkörnyezeti változót, akkor a gombra kattintva megkeresheti a helyet.
@@ -94,35 +94,35 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 1. A **Futtatás/hibakeresés konfiguráció** párbeszédpanelen válassza a pluszjelet ( **+** ). Ezután válassza ki a **Apache Spark a HDInsight** beállításnál.
 
-   ![IntelliJ új konfiguráció hozzáadása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png" alt-text="IntelliJ új konfiguráció hozzáadása" border="true":::
 
 1. Váltson **távoli futtatásra a fürt** lapon. Adja meg a **név**, a **Spark-fürt** és a **fő osztály nevét**. Ezután kattintson a **Speciális konfiguráció (távoli hibakeresés)** elemre. Eszközeink támogatják a **végrehajtókkal** való hibakeresést. A **numExectors** az alapértelmezett érték 5. Nagyobb, mint 3.
 
-   ![Hibakeresési konfigurációk futtatása IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png" alt-text="Hibakeresési konfigurációk futtatása IntelliJ" border="true":::
 
 1. A **Speciális konfiguráció (távoli hibakeresés)** részben válassza a **Spark távoli hibakeresés engedélyezése** lehetőséget. Adja meg az SSH-felhasználónevet, majd írjon be egy jelszót, vagy használjon titkos kulcsot tartalmazó fájlt. Ha távoli hibakeresést szeretne végezni, be kell állítania azt. Ha csak a távoli futtatást szeretné használni, nem kell beállítania.
 
-   ![IntelliJ speciális konfiguráció a Spark távoli hibakeresésének engedélyezése](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png" alt-text="IntelliJ speciális konfiguráció a Spark távoli hibakeresésének engedélyezése" border="true":::
 
 1. A konfiguráció mostantól a megadott névvel lett mentve. A konfiguráció részleteinek megtekintéséhez válassza ki a konfiguráció nevét. A módosítások elvégzéséhez válassza a **konfigurációk szerkesztése** lehetőséget.
 
 1. A konfigurációk beállításainak elvégzése után futtathatja a projektet a távoli fürtön, vagy távoli hibakeresést végezhet.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatok távoli Futtatás gombja](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatok távoli Futtatás gombja" border="true":::
 
 1. Kattintson a **Leválasztás** gombra, hogy a beküldési naplók ne jelenjenek meg a bal oldali panelen. Azonban továbbra is fut a háttérön.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatok távoli futtatásának eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatok távoli futtatásának eredménye" border="true":::
 
 ## <a name="perform-remote-debugging"></a>Távoli hibakeresés végrehajtása
 
 1. Állítsa be a törési pontokat, majd kattintson a **távoli hibakeresés** ikonra. A távoli beküldéssel való különbség az, hogy az SSH-felhasználónevet/jelszót be kell állítani.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatok hibakeresési ikonja](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatok hibakeresési ikonja" border="true":::
 
 1. Amikor a program végrehajtása eléri a feltörési pontot, megjelenik egy **illesztőprogram** lap és két **végrehajtó** lap a **hibakereső** ablaktáblán. Válassza a **program folytatása** ikont a kód futtatásának folytatásához, amely ezután eléri a következő töréspontot. A hibakereséshez a megfelelő **végrehajtó** lapra kell váltania. A végrehajtási naplókat a megfelelő **konzol** lapon tekintheti meg.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatok hibakeresése lap](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatok hibakeresése lap" border="true":::
 
 ### <a name="perform-remote-debugging-and-bug-fixing"></a>Távoli hibakeresés és hibajavítás
 
@@ -132,21 +132,21 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 1. A folytatáshoz válassza a **program folytatása** ikont. A kód a második ponton leáll. A kivételt a rendszer a várt módon kapja meg.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatokkal – hiba](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatokkal – hiba" border="true":::
 
 1. Válassza újra a **program folytatása** ikont. A **HDInsight Spark beküldési** ablakában a "sikertelen feladatok futtatása" hibaüzenet jelenik meg.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatokkal kapcsolatos hibák elküldése](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatokkal kapcsolatos hibák elküldése" border="true":::
 
 1. Ha a IntelliJ hibakeresési funkciójával szeretné dinamikusan frissíteni a változó értékét, válassza a **hibakeresés** újra lehetőséget. A **változók** ablaktábla ismét megjelenik.
 
 1. Kattintson a jobb gombbal a cél elemre a **hibakeresés** lapon, majd válassza az **érték beállítása** lehetőséget. Ezután adjon meg egy új értéket a változóhoz. Ezután válassza az **ENTER billentyűt** az érték mentéséhez.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatütemezés értéke](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatütemezés értéke" border="true":::
 
 1. Válassza a **program folytatása** ikont a program futtatásának folytatásához. Ezúttal egyetlen kivétel sem kerül kifogásra. Láthatja, hogy a projekt kivételek nélkül fut sikeresen.
 
-   ![IntelliJ hibakeresése távoli Spark-feladatokhoz kivétel nélkül](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png" alt-text="IntelliJ hibakeresése távoli Spark-feladatokhoz kivétel nélkül" border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 

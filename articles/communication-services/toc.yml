@@ -42,7 +42,7 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: Videohívás hozzáadása az alkalmazáshoz (JavaScript)
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: A hívási ügyfélkódtár használata
+        - name: A hívó SDK használata
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Hívási alkalmazás csatlakoztatása Teams-értekezlethez
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
@@ -70,13 +70,13 @@
   items:
     - name: Csevegés
       items:
-        - name: A csevegési ügyfélkódtár áttekintése
+        - name: A csevegési SDK áttekintése
           href: concepts/chat/sdk-features.md
         - name: Csevegéssel kapcsolatos alapfogalmak
           href: concepts/chat/concepts.md
     - name: Telefonos funkciók és SMS
       items:
-        - name: Az SMS-ügyfélkódtár áttekintése
+        - name: SMS SDK – áttekintés
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS-sel kapcsolatos alapfogalmak
           href: concepts/telephony-sms/concepts.md
@@ -88,7 +88,7 @@
           href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: Hang- és videóhívás
       items:
-        - name: Hívási ügyfélkódtár áttekintése
+        - name: Az SDK meghívása – áttekintés
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: A hang- és videóhívással kapcsolatos alapfogalmak
           href: concepts/voice-video-calling/about-call-types.md

@@ -3,12 +3,12 @@ title: Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natí
 description: Állítsa be a Windows Server feladatátvevő fürtöt (WSFC) az Azure VMware-megoldáson, és használja ki a WSFC-képességet igénylő megoldások előnyeit.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518993"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025968"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natív megosztott lemezekkel
 
@@ -49,10 +49,10 @@ Az alábbi ábra az Azure VMware-megoldás saját Felhőbeli WSFC virtuális cso
 
 Jelenleg a következő konfigurációk támogatottak:
 
-- Microsoft Windows Server 2012 vagy újabb.
-- Legfeljebb öt feladatátvételi fürtszolgáltatási csomópont egy fürtön.
-- Legfeljebb négy PVSCSI adapter virtuális gépenként.
-- Legfeljebb 64 lemez/PVSCSI adapter.
+- Microsoft Windows Server 2012 vagy újabb
+- Legfeljebb öt feladatátvételi fürtszolgáltatási csomópont/fürt
+- Legfeljebb négy PVSCSI adapter virtuális gépenként
+- Akár 64 lemez/PVSCSI adapter
 
 ## <a name="virtual-machine-configuration-requirements"></a>A virtuális gép konfigurációs követelményei
 
