@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan használhatja a függőségi befecskendezést a
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955088"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608119"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -21,6 +21,11 @@ A Azure Functions támogatja a függőségi injektálás (DI) szoftver kialakít
 - A függőség injekciója Azure Functions a .NET Core függőségi injekciós funkciókra épül. A [.net Core-függőségek injektálásának](/aspnet/core/fundamentals/dependency-injection) ismerete ajánlott. A függőségek felülbírálása és a konfigurációs értékek beolvasása a Azure Functions a használati tervben eltéréseket mutat.
 
 - A függőségi befecskendezés támogatása Azure Functions 2. x-vel kezdődik.
+
+- A függőségek befecskendezési mintái eltérnek attól függően, hogy a C# függvények [folyamaton](functions-dotnet-class-library.md) vagy [folyamaton kívül](dotnet-isolated-process-guide.md)futnak-e.  
+
+> [!IMPORTANT]
+> A jelen cikkben található útmutatás csak a [C# osztálybeli függvénytár-funkciókra](functions-dotnet-class-library.md)vonatkozik, amelyek folyamaton belül futnak a futtatókörnyezettel. Ez az egyéni függőségi befecskendezési modell nem vonatkozik a .NET-alapú [elkülönített függvényekre](dotnet-isolated-process-guide.md), így a .net 5,0-függvények folyamaton kívüli futtatását is lehetővé teszi. A .NET elkülönített folyamat modellje rendszeres ASP.NET Core függőségi befecskendezési mintákra támaszkodik. További információ: [függőségi befecskendezés](dotnet-isolated-process-guide.md#dependency-injection) a .net elkülönített folyamat útmutatójában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

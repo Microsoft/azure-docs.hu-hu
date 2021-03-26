@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d80caf767d923ce2539ca254a8312371155a3104
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553731"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607592"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Megosztott rendszerkép-galériák az Azure-ban – problémamegoldás
 
@@ -52,7 +52,7 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **OK**: olyan katalógust próbált törölni, amely legalább egy meglévő rendszerkép-definíciót tartalmaz. A katalógusnak üresnek kell lennie ahhoz, hogy törölni lehessen.  
 **Áthidaló megoldás**: törölje az összes rendszerkép-definíciót a katalógusban, majd folytassa a katalógus törlésével. Ha a rendszerkép definíciója rendszerkép-verziókat tartalmaz, törölnie kell a rendszerkép verzióit, mielőtt törölné a rendszerkép-definíciókat.
 
-**Üzenet**: *a (z) "<galleryName" katalógus neve \> nem egyedi a (z) "" előfizetésen belül <subscriptionId> . Válasszon egy másik katalógus nevét.*  
+**Üzenet**: *a (z) "<galleryName" katalógus neve \> nem egyedi a (z) "" előfizetésen belül <subscriptionID> . Válasszon egy másik katalógus nevét.*  
 **OK**: van egy már meglévő katalógusa ugyanazzal a névvel, és egy azonos nevű gyűjteményt próbált meg létrehozni.  
 **Megkerülő megoldás**: válasszon másik nevet a gyűjteménynek.
 
@@ -127,7 +127,7 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **OK**: olyan rendszerkép-definíciót próbált meg törölni, amely tartalmazza a rendszerkép verzióját. A rendszerkép definíciójának üresnek kell lennie ahhoz, hogy törölni lehessen.  
 **Áthidaló megoldás**: törölje az összes rendszerkép-verziót a rendszerkép-definícióban, majd folytassa a rendszerkép definíciójának törlésével.
 
-**Üzenet**: *nem köthető a (z) paraméter <tulajdonságához \> . Az érték <érték nem konvertálható \> <propertyType típusra \> . Az azonosító neve <érték nem egyezhet \> meg egy érvényes enumerálási névvel. Adjon meg egyet a következő enumerálási nevek közül, majd próbálkozzon újra: <choice1 \> , <choice2 \> ,...*  
+**Üzenet**: *nem köthető a (z) paraméter <tulajdonságához \> . Az érték <érték nem konvertálható \> <propertyType típusra \> . Az azonosító neve <érték nem egyezhet \> meg egy érvényes enumerálási névvel. Adjon meg egyet a következő enumerálási nevek közül, majd próbálkozzon újra: <Choice \_ 1 \> , <Choice \_ 2 \> ,..* .  
 **OK**: a tulajdonság a lehetséges értékek korlátozott listáját tartalmazza, és <érték \> nem tartozik ezek közé.  
 **Áthidaló megoldás**: válassza ki az egyik lehetséges <választási \> értéket.
 
@@ -185,7 +185,7 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **OK**: Ha lemezkép-verziót hoz létre lemezek és/vagy lemezes Pillanatképek listájának használatával, két vagy több lemez vagy lemez pillanatképe ugyanazzal az erőforrás-azonosítóval rendelkezik.  
 **Áthidaló megoldás**: távolítsa el vagy módosítsa az ismétlődő lemezes források azonosítóit.
 
-**Üzenet**: *a (z) resourceID <tulajdonság azonosítójának \> tulajdonságai. storageProfile. <diskimages \> . Source.id) érvénytelen. A "/subscriptions/{subscriptionId}" vagy a "/providers/{resourceProviderNamespace}/" kezdetű teljes erőforrás-azonosító várható.*  
+**Üzenet**: *a (z) resourceID <tulajdonság azonosítójának \> tulajdonságai. storageProfile. <diskimages \> . Source.id) érvénytelen. A "/Subscriptions/ <subscriptionID> " vagy a "/Providers/ <resourceProviderNamespace> /" értékkel kezdődő teljes erőforrás-azonosító várható.*  
 **OK**: a <resourceID \> értéke helytelen formátumú.  
 **Áthidaló megoldás**: Győződjön meg arról, hogy az erőforrás-azonosító helyes.
 
@@ -303,7 +303,7 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **OK**: a virtuális gép üzembe helyezéséhez használt rendszerkép-definíció nem tartalmaz a legújabb verziókban található lemezkép-verziókat.  
 **Megkerülő megoldás**: Győződjön meg arról, hogy van legalább egy olyan rendszerkép-verzió, amelynek a "kizárás a legújabbból" beállítás értéke hamis. 
 
-**Üzenet**: *az ügyfél rendelkezik engedéllyel a (z) "Microsoft. számítás/galériák/lemezképek/verziók/olvasás" művelet végrehajtásához a hatókör <resourceID \> , de a jelenlegi bérlő <tenantId1 \> nem jogosult a csatolt előfizetés <a subscriptionId2 elérésére \> .*  
+**Üzenet**: *az ügyfél rendelkezik engedéllyel a (z) "Microsoft. számítás/galériák/lemezképek/verziók/olvasás" művelet végrehajtásához a hatókör <resourceID \> , de a jelenlegi bérlő <tenantID \> nem jogosult a csatolt előfizetés <a subscriptionID elérésére \> .*  
 **OK**: a virtuális gép vagy a méretezési csoport egy másik bérlőben található SIG-lemezképpel lett létrehozva. Megpróbálta módosítani a virtuális gépet vagy a méretezési készletet, de nincs hozzáférése a képet birtokló előfizetéshez.  
 **Megkerülő megoldás**: lépjen kapcsolatba a rendszerkép-verzió előfizetésének tulajdonosával, hogy olvasási hozzáférést biztosítson a rendszerkép verziójához.
 
@@ -327,12 +327,17 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **OK**: a méretezési csoport aktuális forrásának képe egy általánosított forrás rendszerkép, de a frissítése egy speciális forrás-lemezképpel történik. A méretezési csoport aktuális forrásának és az új forrás rendszerképének azonos állapotban kell lennie.  
 **Áthidaló megoldás**: a méretezési csoport frissítéséhez használjon általánosított rendszerkép-verziót.
 
-**Üzenet**: a *lemezes titkosítási készlet <diskEncryptionSetId \> a megosztott rendszerkép-katalógusban <VersionId az \> előfizetés <subscriptionId1 tartozik, \> és nem használható a (z) \> "" erőforrással az előfizetésben <subscriptionId2*  
+**Üzenet**: a *lemezes titkosítási készlet <diskEncryptionSetID \> a megosztott rendszerkép-katalógusban <a versionID az \> előfizetés <1. subscriptionID tartozik, és nem használható a (z) \_ \> "" erőforrással az előfizetésben <subscriptionID \_ 2 \>*  
 **OK**: a lemezkép verziójának titkosításához használt lemezes titkosítási készlet egy másik előfizetésben található, mint a lemezkép verziójának futtatásához szükséges előfizetés.  
 **Megkerülő megoldás**: használja ugyanazt az előfizetést a lemezkép verziója és a lemez titkosítási készlete számára.
 
 **Üzenet**: *a virtuális gép vagy a virtuálisgép-méretezési csoport létrehozása hosszú időt vesz igénybe.*  
 **Megkerülő megoldás**: Ellenőrizze, hogy a virtuális gép vagy virtuálisgép-méretezési csoport létrehozásához használni kívánt **OSType** azonos **OSType** rendelkezik-e a rendszerkép verziójának létrehozásához használt forrással. 
+
+**Üzenet**: *a (z) <vmID azonosítójú erőforrásnak \> van egy másik csomagja [{ \" name \" : \" <name> \" , \" Publisher \" : \" <publisher> \" , \" termék \" : \" <product> \" , \" promotionCode \" : \" <promotionCode> \" }], mint a (z) ["NULL"].*  
+**OK**: az üzembe helyezett lemezkép verziójának szülő lemezkép-definíciója nem rendelkezik a vásárlási terv adataival.  
+**Áthidaló megoldás**: hozzon létre egy rendszerkép-definíciót ugyanazzal a vásárlási terv részleteivel a hibaüzenetben, és a rendszerkép definíciójában hozza létre a rendszerkép verzióját.
+
 
 ## <a name="creating-a-disk-from-an-image-version"></a>Lemez létrehozása lemezkép-verzióból ##
 

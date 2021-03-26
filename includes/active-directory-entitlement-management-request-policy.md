@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98698087"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582677"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
@@ -27,7 +27,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 
 1. Válasszon az alábbi lehetőségek közül:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Adott felhasználók és csoportok** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy csak a címtárban lévő felhasználók és csoportok férhessenek hozzá a hozzáférési csomaghoz. |
     | **Minden tag (a vendégek kivételével)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtárban lévő összes tag felhasználó kérje ezt a hozzáférési csomagot. Ez a lehetőség nem tartalmazza a címtárban esetleg meghívott vendég felhasználókat. |
@@ -62,7 +62,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lév
 
 1. Válasszon az alábbi lehetőségek közül:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Adott csatlakoztatott szervezetek** | Akkor válassza ezt a lehetőséget, ha ki szeretné választani a rendszergazda által korábban hozzáadott szervezetek listáját. A kiválasztott szervezetek összes felhasználója kérheti ezt a hozzáférési csomagot. |
     | **Minden csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója ezt a hozzáférési csomagot kéri. |

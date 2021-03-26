@@ -1,14 +1,14 @@
 ---
 title: A csatlakoztatott számítógép ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 03/15/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470489"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609231"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -18,6 +18,8 @@ Az Azure arc-kompatibilis kiszolgálókhoz csatlakoztatott gépi ügynök lehet�
 >Az Azure arc-kompatibilis kiszolgálók általános kiadásával kezdődően a 2020-es verzióban az Azure-beli csatlakoztatott gépi ügynök (a 1,0-nál kevesebb verziót használó ügynökök) összes előzetes verziójának **2021** **elavultnak** kell lennie.  Ebben az időkeretben a 1,0-es vagy újabb verzióra frissíthet, mielőtt az előzetesen kiadott ügynökök már nem tudnak kommunikálni az Azure arc-kompatibilis kiszolgálók szolgáltatással.
 
 ## <a name="agent-component-details"></a>Ügynök-összetevő részletei
+
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Az ív használatára képes kiszolgálók ügynökének áttekintése." border="false":::
 
 Az Azure-beli csatlakoztatott gépi ügynök csomag számos logikai összetevőt tartalmaz, amelyek együtt vannak csomagolva.
 

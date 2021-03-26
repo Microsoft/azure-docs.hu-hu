@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 54ce9438f768e347e306432a1874ab1816a1ae95
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719962"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607089"
 ---
 [Durable functions](../articles/azure-functions/durable/durable-functions-overview.md)konfigurációs beállításai.
 
@@ -121,7 +121,7 @@ A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számok
 |eventGridPublishRetryInterval|5 perc|A Event Grid az újrapróbálkozási időközt a *óó: PP: SS* formátumban teszi közzé.|
 |eventGridPublishEventTypes||Az Event Grid közzétenni kívánt eseménytípus listája. Ha nincs megadva, az összes eseménytípus közzé lesz téve. Az engedélyezett értékek a következők:,, `Started` `Completed` `Failed` , `Terminated` .|
 |useAppLease|true|Ha a értékre `true` van állítva, az alkalmazásoknak egy alkalmazás szintű blob bérlet beszerzését kell megadniuk a Task hub-üzenetek feldolgozása előtt. További információt a vész [-helyreállítási és a Geo-terjesztési](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md) dokumentációban talál. A szolgáltatás a v 2.3.0 kezdődően érhető el.
-|useLegacyPartitionManagement|true|Ha a értékre `false` van állítva, a egy particionálási algoritmust használ, amely csökkenti az ismétlődő függvények végrehajtásának lehetőségét a horizontális felskálázáskor.  A szolgáltatás a v 2.3.0 kezdődően érhető el. Az alapértelmezett érték `false` egy későbbi kiadásban lesz módosítva.|
+|useLegacyPartitionManagement|hamis|Ha a értékre `false` van állítva, a egy particionálási algoritmust használ, amely csökkenti az ismétlődő függvények végrehajtásának lehetőségét a horizontális felskálázáskor.  A szolgáltatás a v 2.3.0 kezdődően érhető el.|
 |useGracefulShutdown|hamis|Előnézet A zökkenőmentes leállítás lehetővé teszi, hogy a gazdagépek leállításának esélyét a folyamaton kívüli függvények végrehajtása okozza.|
 
 Ezeknek a beállításoknak a nagy része a teljesítmény optimalizálása. További információ: [teljesítmény és skálázás](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).

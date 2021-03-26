@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76cb2f94c949217c36fdccb8c64a53555bab227c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89002708"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606334"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Frissítés a Azure Search .NET SDK 9-es verziójára
 
@@ -40,7 +40,7 @@ A Azure Search .NET SDK 9-es verziója a Azure Search REST API 2019-05-06 verzi�
 
 * Az [AI](cognitive-search-concept-intro.md) -bővítés lehetővé teszi a képek, blobok és egyéb strukturálatlan adatforrások szövegének kinyerését – a tartalom gazdagítása, hogy egy Azure Search indexben jobban kereshető legyen.
 * Az [összetett típusok](search-howto-complex-data-types.md) támogatása lehetővé teszi szinte bármilyen beágyazott JSON-struktúra modellezését egy Azure Search indexben.
-* Az [automatikus kiegészítés](search-autocomplete-tutorial.md) lehetővé teszi a **javasolt** API alternatíváját a keresési típus működésének megvalósításához. Az automatikus kiegészítés "befejezi" a felhasználó által jelenleg begépelt szót vagy kifejezést.
+* Az [automatikus kiegészítés](search-add-autocomplete-suggestions.md) lehetővé teszi a **javasolt** API alternatíváját a keresési típus működésének megvalósításához. Az automatikus kiegészítés "befejezi" a felhasználó által jelenleg begépelt szót vagy kifejezést.
 * A [JsonLines-elemzési mód](search-howto-index-json-blobs.md), amely az Azure Blob-indexelés részét képezi, egyetlen keresési dokumentumot hoz létre, amely egy sortöréssel elválasztott JSON-entitáson alapul.
 
 ### <a name="new-preview-features-in-version-80-preview"></a>Új előzetes verziójú funkciók az 8,0-es verzióban – előzetes verzió

@@ -3,12 +3,12 @@ title: 'Rövid útmutató: a .NET-hez készült ügyféloldali kódtár QnA Make
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a QnA Maker .NET-hez készült ügyféloldali kódtárat. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 292d0ee4f7462f9c49a08e35bb44822b7a317cfa
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: aac57f4ca173a7ac94c64884fa1d2db4a478c3f3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582636"
+ms.locfileid: "105609512"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -138,13 +138,13 @@ Az alkalmazás `Main` metódusában adja hozzá a következő szakaszban láthat
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
-Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
+- Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
 
-- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Kattintson a **kulcsok és végpontok** lapra, majd az **Erőforrás-kezelés** elemre, és keresse meg a szerzői (előfizetési) kulcsot és a QnA Maker végpontot.
+- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker-erőforrást. Kattintson a **kulcsok és végpontok** lapra, majd az **Erőforrás-kezelés** elemre, és keresse meg a szerzői (előfizetési) kulcsot és a QnA Maker végpontot.
 
  ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
 
-- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker-erőforrást. Kattintson a **sablon exportálása** az **Automation** alatt elemre a futásidejű kulcs megkereséséhez.
+- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker-erőforrást. Kattintson a **sablon exportálása** lap **automatizálás** területén a futásidejű végpont megkereséséhez.
 
  ![QnA Maker futtatókörnyezet végpontja](../media/runtime-endpoint.png)
       
@@ -154,12 +154,9 @@ Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létr
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/version-2)
 
-> [!IMPORTANT]
-> Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók. 
+- Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
 
-Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
-
-- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Nyissa meg a Azure Portal QnA Maker erőforrását, és kattintson a **kulcsok és végpont** elemre a szerzői műveletek (előfizetés) kulcsának és QnA Maker végpontjának megkereséséhez.
+- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker-erőforrást. Kattintson a **kulcsok és végpontok** lapra, majd az **Erőforrás-kezelés** elemre, és keresse meg a szerzői (előfizetési) kulcsot és a QnA Maker végpontot.
 
  ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
 

@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604406"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606215"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy *javaslaton* keresztül érhető el. A javaslatok egy belső adatstruktúra, amely egy mező gyűjteményből áll. A mezők további jogkivonatok létrehozása vesznek részt, és előtagokat generálnak, amelyek támogatják a részleges feltételeken alapuló egyezéseket.
+Az Azure Cognitive Search, a typeahead vagy a "keresési típus" lehetőséget egy *javaslaton* keresztül engedélyezheti. A javaslatok egy belső adatstruktúra, amely egy mező gyűjteményből áll. A mezők további jogkivonatok létrehozása vesznek részt, és előtagokat generálnak, amelyek támogatják a részleges feltételeken alapuló egyezéseket. Egy város mezőt tartalmazó javaslat például a "Sea", az "Seat", a "seatt" és a "seattl" előtag-kombinációkkal rendelkezik a "Seattle" kifejezéshez.
 
-Ha például egy javaslat tartalmaz egy város mezőt, a "Sea", az "Seat", a "seatt" és a "seattl" előtag-kombinációt hozza létre a "Seattle" kifejezéshez. Az előtagokat a rendszer invertált indexekben tárolja, egyet a javaslatok mezőinek gyűjteményében megadott mezőkhöz.
+A részleges kifejezésekre való egyezés lehet egy autocompleted lekérdezés vagy egy javasolt egyezés. Ugyanez a javaslat mindkét élményt támogatja.
 
 ## <a name="typeahead-experiences-in-cognitive-search"></a>Typeahead-tapasztalatok Cognitive Search
 
-A javaslat két szolgáltatást támogat: az *automatikus kiegészítést*, amely egy teljes kifejezéssel rendelkező lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre kattintson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
+A typeahead lehet az *automatikus kiegészítés*, amely egy teljes kifejezéssel végzett lekérdezés részleges bemenetét fejezi be *, vagy egy* adott egyezésre kattintva meghívja a kattintást. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
 
 A következő képernyőkép az [első alkalmazás létrehozása a C#-ban](tutorial-csharp-type-ahead-and-suggestions.md) című ábrán látható. Az automatikus kiegészítés egy lehetséges kifejezést is felhasznál, amely a "tw"-t "a" értékkel fejezi ki. A javaslatok a mini keresési eredmények, ahol a Hotel neve a megfelelő szállodai keresési dokumentumot jelöli az indexből. A javaslatok esetében bármilyen olyan mezőt felvehet, amely leíró információkat biztosít.
 
@@ -40,11 +40,11 @@ A keresési típust támogató támogatás engedélyezett a karakterlánc típus
 
 ## <a name="how-to-create-a-suggester"></a>Javaslatok létrehozása
 
-A javaslatok létrehozásához vegyen fel egyet egy [index-definícióba](/rest/api/searchservice/create-index). A javaslat lekéri a nevet és azon mezők gyűjteményét, amelyeken a typeahead-élmény engedélyezve van. és [állítsa be az egyes tulajdonságokat](#property-reference). A javaslatok létrehozásához a legjobb idő az, amikor azt a mezőt is meghatározza, amelyik azt fogja használni.
+A javaslatok létrehozásához vegyen fel egyet egy [index-definícióba](/rest/api/searchservice/create-index). A javaslatok olyan nevet és mezőket vesznek fel, amelyeken a typeahead-élmény engedélyezve van. A javaslatok létrehozásához a legjobb idő az, amikor azt a mezőt is meghatározza, amelyik azt fogja használni.
 
 + Csak karakterlánc-mezőket használjon.
 
-+ Ha a karakterlánc mező egy összetett típus része (például a címen belüli város mező), vegye fel a szülőt a következő mezőbe: `"Address/City"` (REST, C# és Python) vagy `["Address"]["City"]` (JavaScript).
++ Ha a karakterlánc mező egy összetett típus része (például a címen belüli város mező), vegye fel a szülőt a mező elérési útjába: `"Address/City"` (REST, C# és Python), vagy `["Address"]["City"]` (JavaScript).
 
 + Használja az alapértelmezett standard Lucene-elemzőt ( `"analyzer": null` ) vagy egy [nyelvi elemzőt](index-add-language-analyzers.md) (például `"analyzer": "en.Microsoft"` ) a mezőn.
 
@@ -58,7 +58,7 @@ Az automatikus kiegészítés kihasználja a mezők nagyobb készletének előny
 
 A javaslatok azonban jobb eredményeket eredményeznek, ha a kiválasztott mező szelektív. Ne feledje, hogy a javaslat egy keresési dokumentum proxyja, ezért olyan mezőket szeretne használni, amelyek a legjobban egyetlen eredményt képviselnek. Azok a nevek, címek vagy más egyedi mezők, amelyek megkülönböztetik a többszörös egyezések közül a legmegfelelőbbet. Ha a mezők ismétlődő értékekből állnak, a javaslatok azonos eredményekből állnak, és a felhasználók nem tudják, melyikre kattintanak.
 
-Ahhoz, hogy mindkét keresési típust kielégítse, adja hozzá az automatikus kiegészítéshez szükséges összes mezőt, majd **$Select**, **$Top**, **$Filter** és **searchFields** használatával irányítsa a javaslatok eredményeit.
+Ahhoz, hogy mindkét keresési típust kielégítse, adja hozzá az automatikus kiegészítéshez szükséges összes mezőt, majd használja a "$select", a "$top", a "$filter" és a "searchFields" kifejezést a javaslatok eredményeinek szabályozásához.
 
 ### <a name="choose-analyzers"></a>Elemzők kiválasztása
 
@@ -142,9 +142,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |Tulajdonság      |Leírás      |
 |--------------|-----------------|
-|`name`        | A javaslat definíciójában van megadva, de egy automatikus kiegészítési vagy javaslati kérelemre is meghívva. |
-|`sourceFields`| A javaslat definíciójában van megadva. Az index egy vagy több mezőjének listája, amely a javaslatok tartalmának forrása. A mezőknek Type és típusúnak kell lenniük `Edm.String` `Collection(Edm.String)` . Ha a mezőben egy analizátor van megadva, akkor a [listán szereplő](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) lexikális analizátornak kell lennie (nem egyéni elemző).<p/> Ajánlott eljárásként csak azokat a mezőket kell megadnia, amelyek a várt és a megfelelő választ adják meg, legyen szó egy keresési sávon vagy egy legördülő listában szereplő befejezett sztringről.<p/>A Hotel neve jó jelölt, mert pontossággal rendelkezik. A részletes mezők, például a leírások és a megjegyzések túl sűrűk. Ehhez hasonlóan az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban bemutatjuk a "kategória" kifejezést is, amely azt mutatja be, hogy több mezőt is tartalmazhat. |
-|`searchMode`  | Csak REST paraméter, de a portálon is látható. Ez a paraméter nem érhető el a .NET SDK-ban. Ez jelzi a jelölt kifejezésekre való kereséshez használt stratégiát. Az egyetlen jelenleg támogatott mód a (z `analyzingInfixMatching` ), amely jelenleg a kifejezés kezdetének felel meg.|
+| name        | A javaslat definíciójában van megadva, de egy automatikus kiegészítési vagy javaslati kérelemre is meghívva. |
+| sourceFields | A javaslat definíciójában van megadva. Az index egy vagy több mezőjének listája, amely a javaslatok tartalmának forrása. A mezőknek Type és típusúnak kell lenniük `Edm.String` `Collection(Edm.String)` . Ha a mezőben egy analizátor van megadva, akkor a [listán szereplő](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) lexikális analizátornak kell lennie (nem egyéni elemző). </br></br>Ajánlott eljárásként csak azokat a mezőket kell megadnia, amelyek a várt és a megfelelő választ adják meg, legyen szó egy keresési sávon vagy egy legördülő listában szereplő befejezett sztringről. </br></br>A Hotel neve jó jelölt, mert pontossággal rendelkezik. A részletes mezők, például a leírások és a megjegyzések túl sűrűk. Ehhez hasonlóan az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban bemutatjuk a "kategória" kifejezést is, amely azt mutatja be, hogy több mezőt is tartalmazhat. |
+| searchMode  | Csak REST paraméter, de a portálon is látható. Ez a paraméter nem érhető el a .NET SDK-ban. Ez jelzi a jelölt kifejezésekre való kereséshez használt stratégiát. Az egyetlen jelenleg támogatott mód a (z `analyzingInfixMatching` ), amely jelenleg a kifejezés kezdetének felel meg.|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -157,9 +157,9 @@ A rendszer egy lekérdezést használ. A javaslat létrehozása után hívja meg
 + [SuggestAsync metódus](/dotnet/api/azure.search.documents.searchclient.suggestasync)
 + [AutocompleteAsync metódus](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
-Egy keresési alkalmazásban az ügyfél kódjának egy olyan könyvtárat kell kihasználnia, mint a [jQuery felhasználói felületének automatikus kiegészítése](https://jqueryui.com/autocomplete/) a részleges lekérdezés összegyűjtéséhez és a egyezés biztosításához. További információ erről a feladatról: [automatikus kiegészítés hozzáadása vagy javasolt eredmények az ügyfél kódjához](search-autocomplete-tutorial.md).
+Egy keresési alkalmazásban az ügyfél kódjának egy olyan könyvtárat kell kihasználnia, mint a [jQuery felhasználói felületének automatikus kiegészítése](https://jqueryui.com/autocomplete/) a részleges lekérdezés összegyűjtéséhez és a egyezés biztosításához. További információ erről a feladatról: [automatikus kiegészítés hozzáadása vagy javasolt eredmények az ügyfél kódjához](search-add-autocomplete-suggestions.md).
 
-Az API-használat a következő, az automatikus kiegészítési REST APIra irányuló hívásban látható. Ebből a példából két elvihetőség van. Először is, ahogy az összes lekérdezés esetében, a művelet egy index dokumentumainak gyűjteményén alapul, és a lekérdezés tartalmaz egy **keresési** paramétert, amely ebben az esetben a részleges lekérdezést biztosítja. Másodszor, **suggesterName** kell hozzáadnia a kéréshez. Ha egy javaslat nincs definiálva az indexben, az automatikus kiegészítés vagy a javaslatok sikertelenek lesznek.
+Az API-használat a következő, az automatikus kiegészítési REST APIra irányuló hívásban látható. Ebből a példából két elvihetőség van. Először is, ahogy az összes lekérdezés esetében, a művelet egy index dokumentumainak gyűjteményén alapul, és a lekérdezés tartalmaz egy "Search" paramétert, amely ebben az esetben a részleges lekérdezést biztosítja. Másodszor, a kérelemhez hozzá kell adnia a "suggesterName" kifejezést. Ha egy javaslat nincs definiálva az indexben, az automatikus kiegészítés vagy a javaslatok sikertelenek lesznek.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
@@ -178,4 +178,4 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 A kérelmek létrehozásával kapcsolatban a következő cikkből tájékozódhat.
 
 > [!div class="nextstepaction"]
-> [Automatikus kiegészítés és javaslatok hozzáadása az ügyfél kódjához](search-autocomplete-tutorial.md)
+> [Automatikus kiegészítés és javaslatok hozzáadása az ügyfél kódjához](search-add-autocomplete-suggestions.md)

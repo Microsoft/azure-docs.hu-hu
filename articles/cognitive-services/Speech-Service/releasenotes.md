@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: d3d10eb496899287e93a96f0cbb06dedf83c601d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 86a656630f6c41e2cf6682d0160cce345d1f564d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048629"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606623"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -711,13 +711,13 @@ Ez egy hibajavítási kiadás, amely csak a natív/felügyelt SDK-t érinti. Ez 
 **Hibajavítások**
 
 - Javítsa a FromSubscription, ha a beszélgetési átirattal együtt használja.
-- Javítsa ki a kulcsszót a hangsegédek esetében.
+- Javítsa ki a kulcsszó-felismerés hibáját a hangsegédek számára.
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0:2019 – májusi kiadás
 
 **Új funkciók**
 
-- Mostantól elérhető a Windows és a Linux rendszerhez készült kulcsszó-észrevétel (KWS). A KWS funkció bármilyen mikrofonos típussal működhet, a hivatalos KWS-támogatás azonban jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
+- A kulcsszavas felismerés már elérhető a Windows és a Linux rendszerekhez. Ez a funkció bármilyen mikrofonos típussal működhet, de a hivatalos támogatás jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
 - A kifejezésre mutató funkció az SDK-n keresztül érhető el. További információ: [itt](./get-started-speech-to-text.md).
 - A társalgási átirat funkció az SDK-n keresztül érhető el. Lásd [itt](./conversation-transcription.md).
 - Adja hozzá a hangsegédek támogatását a közvetlen vonalas beszéd csatornán keresztül.

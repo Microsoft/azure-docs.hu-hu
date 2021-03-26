@@ -343,7 +343,7 @@
             - name: Javaslattevő létrehozása
               href: index-add-suggesters.md
             - name: Automatikus kitöltés és javaslatok hozzáadása
-              href: search-autocomplete-tutorial.md
+              href: search-add-autocomplete-suggestions.md
         - name: Lapozás és darabszámok
           href: search-pagination-page-layout.md
         - name: Szintaxisreferencia

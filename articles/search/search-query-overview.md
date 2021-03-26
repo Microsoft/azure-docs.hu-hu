@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600802"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609275"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Lekérdezés az Azure Cognitive Searchban
 
@@ -77,7 +77,7 @@ Ha a logikai operátorok nagy mennyiségű használatát tervezi, ami nagyobb va
 
 ## <a name="autocomplete-and-suggested-queries"></a>Automatikus kiegészítés és javasolt lekérdezések
 
-Az [automatikus kiegészítés vagy a javasolt eredmények](search-autocomplete-tutorial.md) olyan alternatívák, **`search`** amelyekkel egy adott keresési élményben a részleges karakterlánc-bemeneteken (az egyes karakterek után) alapuló, egymást követő lekérdezési kérések is elérhetők. A és a **`autocomplete`** **`suggestions`** paraméter együtt vagy külön is használható az [oktatóanyagban](tutorial-csharp-type-ahead-and-suggestions.md)leírtak szerint, de nem használhatja őket a következővel: **`search`** . A befejezett feltételek és a javasolt lekérdezések a tárgymutató tartalmából származnak. A motor soha nem ad vissza olyan karakterláncot vagy javaslatot, amely nem létezik az indexben. További információ: [automatikus kiegészítés (REST API)](/rest/api/searchservice/autocomplete) és [javaslatok (REST API)](/rest/api/searchservice/suggestions).
+Az [automatikus kiegészítés vagy a javasolt eredmények](search-add-autocomplete-suggestions.md) olyan alternatívák, **`search`** amelyekkel egy adott keresési élményben a részleges karakterlánc-bemeneteken (az egyes karakterek után) alapuló, egymást követő lekérdezési kérések is elérhetők. A és a **`autocomplete`** **`suggestions`** paraméter együtt vagy külön is használható az [oktatóanyagban](tutorial-csharp-type-ahead-and-suggestions.md)leírtak szerint, de nem használhatja őket a következővel: **`search`** . A befejezett feltételek és a javasolt lekérdezések a tárgymutató tartalmából származnak. A motor soha nem ad vissza olyan karakterláncot vagy javaslatot, amely nem létezik az indexben. További információ: [automatikus kiegészítés (REST API)](/rest/api/searchservice/autocomplete) és [javaslatok (REST API)](/rest/api/searchservice/suggestions).
 
 ## <a name="filter-search"></a>Keresés szűrése
 

@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b5115355133bdcf33825a05d4baa16408cb3fccd
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 92324d68eabfb1885a482a7f539140f93be77596
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562443"
+ms.locfileid: "105605195"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK-k és REST API-k
 
-Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat területre szervezték. A legtöbb területen a közzétett REST API-kkal programozott, teljesen nyílt forráskódú ügyféloldali kódtárak vannak, amelyeket közvetlenül az interneten keresztül használhat. A hívó ügyféloldali függvénytár saját hálózati adaptereket használ, és jelenleg zárt forrású. Az SDK-k mintáit és további technikai részleteit az [Azure kommunikációs szolgáltatások GitHub](https://github.com/Azure/communication)-tárházában tesszük közzé.
+Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat területre szervezték. A legtöbb terület teljes mértékben nyílt forráskódú SDK-kkal rendelkezik, amelyek olyan közzétett REST API-kkal vannak beprogramozva, amelyeket közvetlenül az interneten keresztül használhat. A hívó SDK saját hálózati adaptereket használ, és jelenleg zárt forrású. Az SDK-k mintáit és további technikai részleteit az [Azure kommunikációs szolgáltatások GitHub](https://github.com/Azure/communication)-tárházában tesszük közzé.
 
 ## <a name="rest-apis"></a>REST API-k
 A kommunikációs szolgáltatások API-jai a [docs.microsoft.com](/rest/api/azure/)egyéb Azure REST API-jai mellett is dokumentálva vannak. A dokumentációból megtudhatja, hogyan strukturálhatja HTTP-üzeneteit, és útmutatást nyújt a Poster használatához. Ez a dokumentáció a [githubon](https://github.com/Azure/azure-rest-api-specs)is elérhető a hencegés formátumában.
@@ -29,14 +29,14 @@ A kommunikációs szolgáltatások API-jai a [docs.microsoft.com](/rest/api/azur
 | Szerelvény | Névterek| Protokollok | Képességek |
 |------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
 | Azure Resource Manager | Azure. erőforráskezelő. Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Kommunikációs szolgáltatások erőforrásainak kiépítése és kezelése|
-| Közös | Azure. Communication. Common| REST | Alaptípusokat biztosít más ügyféloldali kódtárak számára |
+| Közös | Azure. Communication. Common| REST | Alaptípusokat biztosít más SDK-k számára |
 | Identitás | Azure. Communication. Identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| Felhasználók kezelése, hozzáférési tokenek|
 | Telefonszámok _(bétaverzió)_| Azure. Communication. PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| Telefonszámok beolvasása és kezelése |
 | Csevegés | Azure. Communication. chat| [Pihenés](https://docs.microsoft.com/rest/api/communication/) saját jelzéssel | Valós idejű szöveg-alapú csevegés hozzáadása az alkalmazásokhoz |
 | SMS| Azure. Communication. SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| SMS-üzenetek küldése és fogadása|
 | Hívó| Azure. Communication. Calling | Saját szállítás | Hang-, videó-, képernyő-megosztási és egyéb valós idejű adatkommunikációs képességek használata |
 
-A Azure Resource Manager-, identitás-és SMS-ügyfél kódtárai a szolgáltatás-integrációra összpontosítanak, és sok esetben biztonsági probléma merül fel, ha a funkciókat végfelhasználói alkalmazásokba integrálja. A gyakori és a csevegési ügyféloldali kódtárak alkalmasak a szolgáltatás-és ügyfélalkalmazások számára. A hívó ügyféloldali kódtár ügyfélalkalmazások számára készült. A szolgáltatási forgatókönyvekre összpontosító ügyféloldali függvénytár fejlesztés alatt áll.
+A Azure Resource Manager, identitás és SMS SDK-k a szolgáltatások integrálására összpontosítanak, és sok esetben biztonsági probléma merül fel, ha a funkciókat végfelhasználói alkalmazásokba integrálja. A gyakori és csevegési SDK-k alkalmasak a szolgáltatás-és ügyfélalkalmazások számára. A hívó SDK ügyfélalkalmazások számára készült. A szolgáltatási forgatókönyvekre összpontosító SDK fejlesztés alatt áll.
 
 
 ### <a name="languages-and-publishing-locations"></a>Nyelvek és közzétételi helyszínek
@@ -61,7 +61,7 @@ Bizonyos REST API-k és a hozzájuk tartozó SDK-módszerek szabályozási korl�
 | API                                                                                                                          | Szabályozás            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | [Az összes keresés a telefonszámon csomag API-k](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 kérelem/nap      |
-| [Telefonszám vásárlása](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 kérelem/nap       |
+| [Telefonszám vásárlása](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 hónap vásárlása  |
 | [SMS küldése](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 kérelem/perc |
 
 

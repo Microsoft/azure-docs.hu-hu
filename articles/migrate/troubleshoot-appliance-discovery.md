@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: c952fe33b434aac972be6a1eb03b63698eb64fc6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 995914fab0e7112327ebf6ab8e32fb67181f481e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782316"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608918"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -260,6 +260,34 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 | 10007: nem sikerült feldolgozni a felderített metaadatokat. | Hiba történt a JSON deszerializálására tett kísérlet során. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 | 10008: nem hozható létre fájl a kiszolgálón. | A probléma belső hiba miatt előfordulhat. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 | 10009: nem lehet felderített metaadatokat írni a-kiszolgálón található fájlba. | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+
+## <a name="common-sql-server-instances-and-database-discovery-errors"></a>Gyakori SQL Server példányok és adatbázis-felderítési hibák
+
+Azure Migrate támogatja a helyszíni gépeken futó SQL Server példányok és adatbázisok felderítését a Azure Migrate használatával: felderítés és Értékelés. Az SQL-felderítés jelenleg csak VMware esetén támogatott. Az első lépésekhez tekintse meg a [felderítési](tutorial-discover-vmware.md) oktatóanyagot.
+
+A szokásos SQL-felderítési hibák a táblázatban vannak összegezve.
+
+| **Hiba** | **Ok** | **Művelet** |
+|--|--|--|
+|30000: a SQL Server társított hitelesítő adatok nem működnek.|A manuálisan társított hitelesítő adatok érvénytelenek, vagy az automatikusan társított hitelesítő adatok már nem férnek hozzá a SQL Serverhoz.|Adja hozzá a SQL Serverhoz tartozó hitelesítő adatokat a készülékhez, és várjon, amíg a következő SQL-felderítési ciklus vagy kényszerített frissítés nem lesz.|
+|30001: nem lehet csatlakozni a készülékről a SQL Serverhoz.|1. a berendezés nem rendelkezik hálózati vonallal a SQL Server.<br/>2. a tűzfal blokkolja a SQL Server és a berendezés közötti kapcsolatot.|1. SQL Server elérhetővé tétele a készülékről.<br/>2. engedélyezze a készülékről érkező bejövő kapcsolatokat a SQL Server.|
+|30003: a tanúsítvány nem megbízható.|Nincs telepítve megbízható tanúsítvány a SQL Server rendszert futtató számítógépen.|Állítson be egy megbízható tanúsítványt a kiszolgálón. [További információ](https://go.microsoft.com/fwlink/?linkid=2153616)|
+|30004: nem megfelelő engedélyek.|Ez a hiba a SQL Server példányok vizsgálatához szükséges engedélyek hiánya miatt fordulhat elő. |Adja meg a sysadmin szerepkört a készüléken megadott hitelesítő adatoknak/fióknak SQL Server példányok és adatbázisok felfedéséhez. [További információ](https://go.microsoft.com/fwlink/?linkid=2153511)|
+|30005: SQL Server bejelentkezés nem sikerült a kapcsolódáshoz, mert az alapértelmezett főadatbázissal kapcsolatos probléma merült fel.|Vagy maga az adatbázis érvénytelen, vagy a bejelentkezéshez nincs kapcsolat engedélye az adatbázison.|Az ALTER LOGIN paranccsal állíthatja be az alapértelmezett adatbázist a Master adatbázisra.<br/>Adja meg a sysadmin szerepkört a készüléken megadott hitelesítő adatoknak/fióknak SQL Server példányok és adatbázisok felfedéséhez. [További információ](https://go.microsoft.com/fwlink/?linkid=2153615)|
+|30006: SQL Server bejelentkezés nem használható Windows-hitelesítéssel.|1. Előfordulhat, hogy a bejelentkezés SQL Server bejelentkezés, de a kiszolgáló csak Windows-hitelesítést fogad el.<br/>2. a SQL Server hitelesítés használatával próbál csatlakozni, de a használt bejelentkezési adatok nem léteznek SQL Server.<br/>3. Előfordulhat, hogy a Bejelentkezés Windows-hitelesítést használ, de a bejelentkezés egy ismeretlen Windows rendszerbiztonsági tag. Az ismeretlen Windows-rendszerbiztonsági tag azt jelenti, hogy a Windows nem tudja ellenőrizni a bejelentkezést. Ennek oka az lehet, hogy a Windows-bejelentkezés nem megbízható tartományból származik.|Ha SQL Server hitelesítéssel próbál csatlakozni, ellenőrizze, hogy a SQL Server vegyes hitelesítési módban van-e konfigurálva, és SQL Server bejelentkezési azonosító létezik-e.<br/>Ha Windows-hitelesítéssel próbál csatlakozni, ellenőrizze, hogy megfelelően van-e bejelentkezve a megfelelő tartományba. [További információ](https://go.microsoft.com/fwlink/?linkid=2153421)|
+|30007: a jelszó lejárt.|A fiók jelszava lejárt.|Előfordulhat, hogy a SQL Server bejelentkezési jelszó lejárt, állítsa be újra a jelszót, és/vagy bővítse a jelszó lejárati dátumát. [További információ](https://go.microsoft.com/fwlink/?linkid=2153419)|
+|30008: a jelszót módosítani kell.|A fiók jelszavát módosítani kell.|Módosítsa SQL Server felderítéshez megadott hitelesítő adat jelszavát. [További információ](https://go.microsoft.com/fwlink/?linkid=2153318)|
+|30009: belső hiba történt.|Belső hiba történt SQL Server példányok és adatbázisok felfedése során. |Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.|
+|30010: nem található adatbázis.|Nem található adatbázis a kiválasztott kiszolgálópéldány közül.|Adja meg a sysadmin szerepkört a készüléken az SQL-adatbázisok felfedéséhez megadott hitelesítő adatoknak/fióknak.|
+|30011: belső hiba történt egy SQL-példány vagy-adatbázis értékelésekor.|Belső hiba történt az értékelés végrehajtása során.|Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.|
+|30012: az SQL-kapcsolatok sikertelenek.|1. a kiszolgáló tűzfala elutasította a-kapcsolatokat.<br/>2. a SQL Server Browser szolgáltatás (lévő sqlbrowser szolgáltatásból) nincs elindítva.<br/>3. SQL Server nem válaszolt az ügyfél-kérelemre, mert a kiszolgáló valószínűleg nem indult el.<br/>4. a SQL Server ügyfél nem tud csatlakozni a kiszolgálóhoz. Ez a hiba akkor fordulhat elő, ha a kiszolgáló nincs konfigurálva távoli kapcsolatok fogadására.<br/>5. a SQL Server ügyfél nem tud csatlakozni a kiszolgálóhoz. A hiba akkor fordulhat elő, ha az ügyfél nem tudja feloldani a kiszolgáló nevét, vagy a kiszolgáló neve helytelen.<br/>6. a TCP vagy nevesített pipe protokollok nincsenek engedélyezve.<br/>7. a megadott SQL Server példány neve érvénytelen.|A kapcsolódási [probléma megoldásához használja az interaktív felhasználói](https://go.microsoft.com/fwlink/?linkid=2153317) útmutatót. Várjon, amíg a rendszer a szolgáltatásban frissíteni kívánt adatkezelési útmutató után 24 órát követ. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához.|
+|30013: hiba történt az SQL Server-példányhoz való kapcsolódás létrehozása közben.|1. SQL Server neve nem oldható fel a készülékről.<br/>2. SQL Server nem engedélyezi a távoli kapcsolatokat.|Ha az SQL Servert pingelheti a készülékről, várjon 24 órát, és ellenőrizze, hogy a probléma automatikusan feloldódik-e. Ha nem, forduljon a Microsoft ügyfélszolgálatához. [További információ](https://go.microsoft.com/fwlink/?linkid=2153316)|
+|30014: a Felhasználónév vagy a jelszó érvénytelen.| Ez a hiba olyan hitelesítési hiba miatt fordulhat elő, amely helytelen jelszót vagy felhasználónevet is magában foglal.|Adjon meg egy érvényes felhasználónevet és jelszót tartalmazó hitelesítő adatot. [További információ](https://go.microsoft.com/fwlink/?linkid=2153315)|
+|30015: belső hiba történt az SQL-példány felfedése közben.|Belső hiba történt az SQL-példány felfedése közben.|Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.|
+|30016: a (z) "% instance;" példányhoz való kapcsolódás időtúllépés miatt meghiúsult.| Ez akkor fordulhat elő, ha a kiszolgáló tűzfala elutasítja a kapcsolatokat.|Ellenőrizze, hogy a SQL Server tűzfala konfigurálva van-e a kapcsolatok fogadására. Ha a hiba továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához. [További információ](https://go.microsoft.com/fwlink/?linkid=2153611)|
+|30017: belső hiba történt.|Kezeletlen kivétel.|Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.|
+|30018: belső hiba történt.|Belső hiba történt az adatok (például a temp DB méret, az SQL-példány fájlmérete stb.) gyűjtése során.|Várjon 24 órát, és ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához.|
+|30019: belső hiba történt.|Belső hiba történt egy adatbázis vagy példány teljesítmény-metrikáinak (például memóriahasználat stb.) gyűjtése során.|Várjon 24 órát, és ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához.|
 
 ## <a name="next-steps"></a>Következő lépések
 

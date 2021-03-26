@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8c8024a2083d09fcbd53a37f0d391c4589748eea
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579144"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605076"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -31,7 +31,7 @@ A felhőalapú alkalmazások vagy műveletek a feltételes hozzáférési szabá
 
 Számos meglévő Microsoft Cloud-alkalmazás szerepel azon alkalmazások listáján, amelyek közül választhat. 
 
-A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Microsoft következő felhőalapú alkalmazásaihoz. Egyes alkalmazások, például az Office 365 és a Microsoft Azure Management több kapcsolódó alárendelt alkalmazást vagy szolgáltatást tartalmaznak. A következő lista nem teljes, és változhat.
+A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Microsoft következő felhőalapú alkalmazásaihoz. Egyes alkalmazások, például az Office 365 és a Microsoft Azure Management több kapcsolódó alárendelt alkalmazást vagy szolgáltatást tartalmaznak. Folyamatosan bővítünk további alkalmazásokat, így az alábbi lista nem teljes, és változhat.
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -66,6 +66,8 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 - Skype Vállalati online verzió
 - Virtuális magánhálózat (VPN)
 - Windows Defender ATP
+
+A feltételes hozzáféréshez elérhető alkalmazások a bevezetési és érvényesítési folyamaton keresztül mentek keresztül. Ez nem tartalmazza az összes Microsoft-alkalmazást, mivel a háttér-szolgáltatások közül sokan nem azt jelentik, hogy a szabályzatot közvetlenül alkalmazták. Ha egy hiányzó alkalmazást keres, vegye fel a kapcsolatot az adott alkalmazás csapatával, vagy hozzon igénybe egy kérelmet a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259).
 
 ### <a name="office-365"></a>Office 365
 

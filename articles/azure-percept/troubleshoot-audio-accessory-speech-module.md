@@ -5,14 +5,14 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4fc7d7564ecd30326fbec832639b2a81d55e6d5
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102635569"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605654"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Az Azure Percept hang-és beszédfelismerési moduljának hibaelhárítása
 
@@ -20,7 +20,9 @@ Használja az alábbi irányelveket a hangsegéd alkalmazással kapcsolatos prob
 
 ## <a name="collecting-speech-module-logs"></a>Beszédfelismerési modul naplóinak gyűjtése
 
-A parancsok futtatásához [csatlakozzon az Azure PERCEPT DK Wi-Fi hozzáférési ponthoz, és csatlakozzon SSH-kapcsolaton keresztül a fejlesztői csomaghoz](./how-to-ssh-into-percept-dk.md) , és adja meg az SSH-terminálban található parancsokat.
+A parancsok futtatásához [SSH-t a fejlesztői készletbe](./how-to-ssh-into-percept-dk.md) , és írja be a PARANCSOKAT az SSH-ügyfél parancssorba.
+
+A beszédfelismerési modul naplóinak gyűjtése:
 
 ```console
 sudo iotedge logs azureearspeechclientmodule
@@ -32,17 +34,23 @@ Ha további elemzés céljából át szeretné irányítani a kimenetet egy. txt
 sudo [command] > [file name].txt
 ```
 
+Módosítsa a. txt fájl engedélyeit a másoláshoz:
+
+```console
+sudo chmod 666 [file name].txt
+```
+
 Ha a kimenetet egy. txt fájlba irányítja át, másolja a fájlt a gazdagép SZÁMÍTÓGÉPére SCP használatával:
 
 ```console
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-[a helyi gazdagép fájljának elérési útja] arra a helyre hivatkozik, amelyre a. txt fájlt át szeretné másolni. [távoli Felhasználónév] a beléptetési [élmény](./quickstart-percept-dk-set-up.md)során kiválasztott SSH-Felhasználónév. Ha nem állított be SSH-bejelentkezést az Azure Percept DK beléptetési felületén, akkor a távoli Felhasználónév a root.
+[a helyi gazdagép fájljának elérési útja] arra a helyre hivatkozik, amelyre a. txt fájlt át szeretné másolni. [távoli Felhasználónév] a [telepítési élményben](./quickstart-percept-dk-set-up.md)kiválasztott SSH-Felhasználónév.
 
 ## <a name="checking-runtime-status-of-the-speech-module"></a>A beszédfelismerési modul futtatókörnyezeti állapotának ellenőrzése
 
-Ellenőrizze, hogy **fut**-e a **azureearspeechclientmodule** futásidejű állapota. Az eszköz moduljainak futtatókörnyezeti állapotának megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com/) , és navigáljon az **összes erőforráshoz**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Kattintson a **modulok** lapra az összes telepített modul futtatókörnyezeti állapotának megtekintéséhez.
+Ellenőrizze, hogy **fut**-e a **azureearspeechclientmodule** futásidejű állapota. Az eszköz moduljainak futtatókörnyezeti állapotának megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com/) , és keresse meg az **összes erőforrást**  ->  **[az IoT hub]**  ->  **IoT Edge**  ->  **[az eszköz azonosítóját]**. Kattintson a **modulok** lapra az összes telepített modul futtatókörnyezeti állapotának megtekintéséhez.
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="A Azure Portal peremhálózati eszköz lapja.":::
 
@@ -50,10 +58,10 @@ Ha a **azureearspeechclientmodule** futásidejű állapota nem **futként** van 
 
 ## <a name="understanding-ear-som-led-indicators"></a>A EAR SoM LED-indikátorok ismertetése
 
-A LED-mutatók segítségével megtudhatja, milyen állapotban van az eszköz. Általában körülbelül 2 percet vesz igénybe, hogy a modul teljesen inicializáljon a *bekapcsolás* után. Ahogy halad az inicializálás lépésein, látni fogja a következőket:
+A LED-mutatók segítségével megtudhatja, milyen állapotban van az eszköz. Általában körülbelül 2 percet vesz igénybe, hogy a modul teljesen inicializáljon, miután az eszköz bekapcsolta a jogosultságokat. Az inicializálási lépések elvégzése során a következőt fogja látni:
 
-1. 1 Közép fehér LED – az eszköz be van kapcsolva.
-2. 1 Közép-fehér LED-alapú villogás – a hitelesítés folyamatban van.
+1. Középen fehér LED (statikus): az eszköz be van kapcsolva.
+2. Közép-fehér LED bekapcsolva (villogó): a hitelesítés folyamatban van.
 3. Mindhárom LED kéken változik, ha az eszköz hitelesítése megtörtént, és használatra kész.
 
 |VEZETETT|LED-állapot|EAR SoM állapota|

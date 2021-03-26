@@ -3,12 +3,12 @@ title: 'Rövid útmutató: QnA Maker a Pythonhoz készült ügyféloldali kódt�
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a QnA Maker a Pythonhoz készült ügyféloldali kódtárat.
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: 39eeb00ba8b59219054c7743f19f6f378d941d5d
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 7c897b524f7038f4ff7b18e273202bd02886c0e8
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105310"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609521"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -104,14 +104,15 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
-> [!IMPORTANT]
-> Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók.
+- Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
 
-- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Nyissa meg a Azure Portal QnA Maker erőforrását, és kattintson a **kulcsok és végpont** elemre a szerzői műveletek (előfizetés) kulcsának és QnA Maker végpontjának megkereséséhez.
+- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker-erőforrást. Kattintson a **kulcsok és végpontok** lapra, majd az **Erőforrás-kezelés** elemre, és keresse meg a szerzői (előfizetési) kulcsot és a QnA Maker végpontot.
 
  ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
- 
-- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` .
+
+- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker-erőforrást. Kattintson a **sablon exportálása** lap **automatizálás** területén a futásidejű végpont megkereséséhez.
+
+ ![QnA Maker futtatókörnyezet végpontja](../media/runtime-endpoint.png)
    
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 
@@ -119,10 +120,9 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/version-2)
 
-> [!IMPORTANT]
-> Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók.
+- Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
 
-- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Nyissa meg a Azure Portal QnA Maker erőforrását, és kattintson a **kulcsok és végpont** elemre a szerzői műveletek (előfizetés) kulcsának és QnA Maker végpontjának megkereséséhez.
+- A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker-erőforrást. Kattintson a **kulcsok és végpontok** lapra, majd az **Erőforrás-kezelés** elemre, és keresse meg a szerzői (előfizetési) kulcsot és a QnA Maker végpontot.
 
  ![QnA Maker szerzői végpont](../media/keys-endpoint.png)
  

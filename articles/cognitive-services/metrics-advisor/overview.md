@@ -10,49 +10,48 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0de93eff0fc422bc28fe7b2c42c295c8d8b1acc4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 901d86b5569be61f89178dac460b8750bce9ea73
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344470"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605535"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Mi a mérőszámok tanácsadója (előzetes verzió)? 
 
-A metrikai tanácsadó az Azure Cognitive Services része, amely a mesterséges intelligencia-adatelemzést és a anomáliák észlelését használja az idősorozat-adatokban. A szolgáltatás automatizálja a modellek alkalmazásának folyamatát, és az API-k webes munkaterületét biztosítja az adatfeldolgozás, a rendellenességek észlelése és a diagnosztika számára – anélkül, hogy ismernie kellene a gépi tanulást. Metrikai tanácsadó használata a következőhöz:
+A metrikai tanácsadó az Azure Cognitive Services része, amely az AI használatával végzi az adatelemzést és a rendellenességek észlelését az idősorozat-adatokban. A szolgáltatás automatizálja a modellek alkalmazásának folyamatát, és API-kat és webes munkaterületet biztosít az adatfeldolgozáshoz, a rendellenességek észleléséhez és a diagnosztikahez – anélkül, hogy ismernie kellene a gépi tanulást. A fejlesztők AIOps, predicative karbantartást és üzleti figyelő alkalmazásokat hozhatnak létre a szolgáltatás felett. Metrikai tanácsadó használata a következőhöz:
 
-* Több dimenziós adatok elemzése több adatforrásból 
+* Több dimenziós adatok elemzése több adatforrásból
 * Rendellenességek azonosítása és korrelációja
 * Az adatain használt anomália-észlelési modell konfigurálása és finomhangolása
-* Rendellenességek diagnosztizálása és Súgó a kiváltó okok elemzéséhez. 
+* Anomáliák diagnosztizálása és Súgó a kiváltó okok elemzéséhez
 
 :::image type="content" source="media/metrics-advisor-overview.png" alt-text="A metrikai tanácsadó áttekintése":::
 
 ## <a name="connect-to-a-variety-of-data-sources"></a>Kapcsolódás különféle adatforrásokhoz
 
-A metrikai tanácsadó képes a több adattárolóból származó [többdimenziós metrikai](how-tos/onboard-your-data.md) adatokhoz való kapcsolódásra, többek között a következőkre: SQL Server, Azure Blob Storage, MongoDB stb. 
+A metrikai tanácsadó képes a több adattárolóból származó [többdimenziós metrikai](how-tos/onboard-your-data.md) adatokhoz való kapcsolódásra, többek között a következőkre: SQL Server, Azure Blob Storage, MongoDB stb.
 
 ## <a name="easy-to-use-and-customizable-anomaly-detection"></a>Könnyen használható és testreszabható anomáliák észlelése
 
-* A metrikai tanácsadó automatikusan kiválasztja a legjobb modellt az adatokhoz, anélkül, hogy ismernie kellene a gépi tanulást. 
+* A metrikai tanácsadó automatikusan kiválasztja a legjobb modellt az adatokhoz, anélkül, hogy ismernie kellene a gépi tanulást.
 * A [többdimenziós mérőszámokban](glossary.md#multi-dimensional-metric)lévő minden idősorozat automatikus figyelése.
 * A [Paraméterek finomhangolása](how-tos/configure-metrics.md) és az [interaktív visszajelzések](how-tos/anomaly-feedback.md) segítségével testre szabhatja az adatain alkalmazott modellt, valamint a jövőbeli anomáliák észlelésének eredményét.
 
-
 ## <a name="real-time-alerts-through-multiple-channels"></a>Valós idejű riasztások több csatornán keresztül
 
-Ha rendellenességek észlelhetők, a metrikai tanácsadó több csatornán keresztül tud [valós idejű riasztásokat küldeni](how-tos/alerts.md) , például: e-mail-hookok, webhookok és az Azure DevOps hookok. A rugalmas riasztási szabályok lehetővé teszik a riasztások küldését, és hol.
+Ha rendellenességek észlelhetők, a metrikai tanácsadó több csatornán keresztül tud [valós idejű riasztásokat küldeni](how-tos/alerts.md) , például: e-mail-hookok, webhookok és az Azure DevOps hookok. A rugalmas riasztási szabályok lehetővé teszik a riasztások küldésének és céljának testreszabását.
 
 ## <a name="smart-diagnostic-insights-by-analyzing-anomalies"></a>Intelligens diagnosztikai adatok rendellenességek elemzésével
 
-Elemezheti a többdimenziós metrikákban észlelt rendellenességeket, és [intelligens diagnosztikai](how-tos/diagnose-incident.md) elemzéseket készíthet, beleértve a legvalószínűbb kiváltó okot, a diagnosztikai fákat, a metrikus fúrást és egyebeket. A [metrikák diagramjának](how-tos/metrics-graph.md)konfigurálásával a kereszthivatkozások elemzése lehetővé teszi az incidensek megjelenítésének megkönnyítését.
+Elemezheti a többdimenziós metrikákban észlelt rendellenességeket, és [intelligens diagnosztikai](how-tos/diagnose-incident.md) elemzéseket készíthet, beleértve a legvalószínűbb kiváltó okot, a diagnosztikai fákat, a metrikus fúrást és egyebeket. A [metrikai gráf](how-tos/metrics-graph.md)konfigurálásával lehetővé teheti a kereszthivatkozások elemzését az incidensek megjelenítésének megkönnyítésére.
 
 
 ## <a name="typical-workflow"></a>Jellemző munkafolyamat
 
 A munkafolyamat egyszerű: az adatfeldolgozás után finomíthatja a rendellenességek észlelését, és létrehozhat konfigurációkat, hogy illeszkedjenek a forgatókönyvhöz.
 
-1. [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) a metrikák tanácsadójának. 
+1. [Hozzon létre egy Azure-erőforrást](https://go.microsoft.com/fwlink/?linkid=2142156) a metrikák tanácsadójának. 
 2. Hozza létre első figyelőjét a webes portál használatával.
     1. Az adatok előkészítése
     2. Az anomáliák finomhangolása
@@ -60,7 +59,7 @@ A munkafolyamat egyszerű: az adatfeldolgozás után finomíthatja a rendellenes
     4. Diagnosztikai ismeretek megtekintése
 3. A példány testreszabásához használja a REST API.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a gyors útmutatóval: [Figyelje meg az első mérőszámot a weben](quickstarts/web-portal.md).
 * Ismerkedés a gyors üzembe helyezéssel: [a REST API-k segítségével testre szabhatja a megoldást](./quickstarts/rest-api-and-client-library.md).

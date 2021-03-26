@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65ee741ee928a4883def68a5c0b6d20beee441c7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99538907"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609207"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Az Azure Cognitive Search funkciói
 
@@ -43,7 +43,7 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 | Relevancia | Az [**egyszerű pontozás**](index-add-scoring-profiles.md) az Azure Cognitive Search egyik legfőbb előnye. A pontozási profilok segítségével a relevancia magukban a dokumentumokban lévő értékeknek a függvényeként modellezhető. Beállíthatja például, hogy az újabb termékek vagy az akciós termékek magasabb prioritással jelenjenek meg a keresési eredményben. Emellett hozhat létre pontozási profilokat címkékkel, ha a külön nyomon követett és tárolt felhasználói keresési beállítások alapján személyre szabott pontozást szeretne nyújtani. |
 | Földrajzi keresés | Az Azure Cognitive Search dolgozza fel, szűri és megjeleníti a földrajzi helyeit. Ez lehetővé teszi a felhasználóknak, hogy az adatokat a keresési eredménynek egy fizikai helyhez való közelsége alapján tárják fel. További információért [nézze meg ezt a videót](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) vagy [tekintse át ezt a mintát](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
 | Szűrők és dimenziók | A [**jellemzőalapú navigáció**](search-faceted-navigation.md) egy lekérdezési paraméterrel engedélyezhető. Az Azure Cognitive Search egy sokoldalú navigációs struktúrát ad vissza, amelyet a kategóriák listájának kódolásához használhat a saját irányítású szűréshez (például a katalógus elemeinek árlista alapján történő szűréséhez). <br/><br/> A [**szűrők**](query-odata-filter-orderby-syntax.md) segítségével építhet be jellemzőalapú navigációt az alkalmazása felhasználói felületébe, továbbfejlesztheti a lekérdezésírást, valamint szűrhet felhasználó vagy fejlesztő által megadott feltételek alapján. Szűrőket OData-szintaxissal tud létrehozni. |
-| Felhasználó felület | Az [**automatikus kiegészítés**](search-autocomplete-tutorial.md) engedélyezhető a keresősáv típusú lekérdezésekhez. <br/><br/>A [**Keresési javaslatok**](/rest/api/searchservice/suggesters) részben bevitt szövegeket is feldolgoz a keresősávban, de eredményként nem lekérdezési kifejezéseket, hanem tényleges dokumentumokat ad ki az indexben. <br/><br/>A [**Szinonimák**](search-synonyms.md) egyenértékű, a lekérdezés hatókörét implicit módon bővítő kifejezéseket társít a kereséshez, hogy ne a felhasználónak kelljen megadnia az alternatívákat. <br/><br/>A [**találatok kiemelése**](/rest/api/searchservice/Search-Documents) szövegformázást alkalmaz a keresési találatok egyező kulcsszavaira. Megadhatja, hogy mely mezők adjanak vissza kiemelt részeket.<br/><br/>A [**rendezés**](/rest/api/searchservice/Search-Documents) több mezőhöz is elérhető az indexsémán keresztül, majd a lekérdezéskor be- és kikapcsolható egyetlen keresési paraméter használatával.<br/><br/> A keresési eredmények [**lapozása**](search-pagination-page-layout.md) és szabályozása egyszerű, az Azure Cognitive Search által a keresési eredmények között kínált részletes szabályozással.  <br/><br/>|
+| Felhasználó felület | Az [**automatikus kiegészítés**](search-add-autocomplete-suggestions.md) engedélyezhető a keresősáv típusú lekérdezésekhez. <br/><br/>A [**Keresési javaslatok**](/rest/api/searchservice/suggesters) részben bevitt szövegeket is feldolgoz a keresősávban, de eredményként nem lekérdezési kifejezéseket, hanem tényleges dokumentumokat ad ki az indexben. <br/><br/>A [**Szinonimák**](search-synonyms.md) egyenértékű, a lekérdezés hatókörét implicit módon bővítő kifejezéseket társít a kereséshez, hogy ne a felhasználónak kelljen megadnia az alternatívákat. <br/><br/>A [**találatok kiemelése**](/rest/api/searchservice/Search-Documents) szövegformázást alkalmaz a keresési találatok egyező kulcsszavaira. Megadhatja, hogy mely mezők adjanak vissza kiemelt részeket.<br/><br/>A [**rendezés**](/rest/api/searchservice/Search-Documents) több mezőhöz is elérhető az indexsémán keresztül, majd a lekérdezéskor be- és kikapcsolható egyetlen keresési paraméter használatával.<br/><br/> A keresési eredmények [**lapozása**](search-pagination-page-layout.md) és szabályozása egyszerű, az Azure Cognitive Search által a keresési eredmények között kínált részletes szabályozással.  <br/><br/>|
 
 ## <a name="security-features"></a>Biztonsági funkciók
 

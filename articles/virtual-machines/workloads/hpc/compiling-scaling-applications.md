@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721296"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606776"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
 
@@ -43,6 +43,9 @@ A következő javaslatok alkalmazhatók az alkalmazások optimális méretezés�
    ```bash
    Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
    ```
+
+## <a name="adaptive-routing"></a>Adaptív Útválasztás
+Az adaptív útválasztás (AR) lehetővé teszi a EDR és a HDR InfiniBand futtató Azure Virtual Machines (VM-EK) számára a hálózati torlódások automatikus észlelését és elkerülését azáltal, hogy dinamikusan kiválasztja az optimális hálózati útvonalakat. Ennek eredményeképpen az AR továbbfejlesztett késést és sávszélességet biztosít a InfiniBand-hálózaton, ami nagyobb teljesítményt és méretezési hatékonyságot eredményez. További részletekért tekintse meg a [TechCommunity című cikket](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217).
 
 ## <a name="process-pinning"></a>Folyamat-rögzítés
 

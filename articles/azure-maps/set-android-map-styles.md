@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aef8fbacf8302fb5dd4b5fe28afc615c6bf56090
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100984"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604787"
 ---
 # <a name="set-map-style-android-sdk"></a>Térkép stílusának beállítása (Android SDK)
 
@@ -26,7 +26,7 @@ Győződjön meg arról, hogy a gyors útmutató [: Android-alkalmazás létreho
 
 ## <a name="set-map-style-in-the-layout"></a>Térkép stílusának beállítása az elrendezésben
 
-A Térkép vezérlőelem hozzáadásakor megadhat egy térképi stílust a tevékenység osztályának elrendezési fájljában. A következő kód a középpont helyét, a nagyítási szint és a Térkép stílusát állítja be.
+A Térkép vezérlőelem hozzáadásakor megadhat egy térképi stílust a tevékenység osztályának elrendezési fájljában. A következő kód a középpont helyét, a nagyítási szintet és a Térkép stílusát állítja be.
 
 ```XML
 <com.microsoft.azure.maps.mapcontrol.MapControl
@@ -83,7 +83,7 @@ Az alábbi képernyőfelvételen a fenti kód látható, amely a műholdas útje
 
 ## <a name="setting-the-map-camera"></a>A Térkép kamera beállítása
 
-A Térkép kamera azt szabályozza, hogy a Térkép milyen része jelenjen meg a térképen. A kamera lehet elrendezésben programozott módon a kódban. A kód beállításakor két fő módszer áll rendelkezésre a Térkép pozíciójának beállításához; középre és nagyításra, vagy egy határoló mezőben való továbbításra. A következő kód bemutatja, hogyan állíthatja be az összes opcionális kamera beállítást a és a használatakor `center` `zoom` .
+A térképi kamera meghatározza, hogy a világ mely része jelenik meg a Térkép nézőpontjában. A kamera lehet elrendezésben programozott módon a kódban. A kód beállításakor két fő módszer áll rendelkezésre a Térkép pozíciójának beállításához; középre és nagyításra, vagy egy határoló mezőben való továbbításra. A következő kód bemutatja, hogyan állíthatja be az összes opcionális kamera beállítást a és a használatakor `center` `zoom` .
 
 ::: zone pivot="programming-language-java-android"
 
@@ -104,7 +104,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -130,7 +130,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
@@ -162,7 +162,7 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -192,14 +192,14 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
 
 ::: zone-end
 
-Vegye figyelembe, hogy a határolókeret oldalaránya nem egyezhet meg a Térkép méretarányával, mivel a Térkép gyakran a teljes határolókeret területét jeleníti meg, de gyakran csak függőlegesen vagy vízszintesen lesz látható.
+A határolókeret oldalaránya nem egyezhet meg a Térkép méretarányával, mivel a Térkép gyakran a teljes határolókeret területét jeleníti meg, de gyakran csak függőlegesen vagy vízszintesen lesz látható.
 
 ## <a name="next-steps"></a>Következő lépések
 

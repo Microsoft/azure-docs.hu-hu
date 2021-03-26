@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587848"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604702"
 ---
 # <a name="securing-service-principals"></a>Az egyszerű szolgáltatások biztonságossá tétele
 
@@ -96,6 +96,7 @@ További információ: [Get-azureadserviceprincipal parancsmagot](/powershell/mo
 Az egyszerű szolgáltatások biztonságának felméréséhez győződjön meg arról, hogy kiértékeli a jogosultságokat és a hitelesítő adatokat.
 
 A következő információk segítségével csökkentheti a lehetséges kihívásokat.
+
 |Problémák | Kezelési lehetőségek|
 | - | - |
 | A több-bérlős alkalmazásnak eljuttatott felhasználó észlelése és a tiltott beleegyezési támogatások észlelése egy több-bérlős alkalmazás számára | Futtassa a következő PowerShell-t a több-bérlős alkalmazások kereséséhez.<br>`Get-AzureADServicePrincipal -All:$true ? {$_.Tags -eq WindowsAzureActiveDirectoryIntegratedApp"}`<br>Felhasználói engedély letiltása. <br>Hitelesített közzétevők felhasználói jóváhagyásának engedélyezése a kijelölt engedélyekhez (ajánlott) <br> A feltételes hozzáférés használatával blokkolhatja az egyszerű szolgáltatásokat a nem megbízható helyekről. Konfigurálja azokat a felhasználói környezetben, és a jogkivonatokat az egyszerű szolgáltatásnév elindításához kell használni.|

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2f12f33bf6108784b2eec252fb12d03eebd2a45c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046504"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604937"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -37,9 +37,9 @@ A következő táblázat az SaaS-ajánlatok kereskedelmi piactéren való listá
 
 További információ ezekről a listaelem-lehetőségekről: [kereskedelmi Piactéri Transact-képességek](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-Az ajánlat közzététele után az ajánlathoz választott listaelem az ajánlat listázási oldalának bal felső sarkában jelenik meg. Az alábbi képernyőfelvételen az Azure piactéren elérhető ajánlatok listája látható, a **Letöltés most** és a **Test Drive** gombokkal.
+Az ajánlat közzététele után az ajánlathoz választott listaelem az ajánlat listázási oldalának bal felső sarkában jelenik meg. Az alábbi képernyőfelvételen az Azure piactéren elérhető ajánlatok listája látható az azonnali **Letöltés** gombbal.
 
-![Az online áruházban található ajánlati listát ábrázolja.](./media/listing-options.png)
+![Az online áruházban található ajánlati listát ábrázolja.](./media/saas/listing-options-saas-full.png)
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
@@ -114,7 +114,7 @@ Ha az SaaS-ajánlat *az IT* -megoldás (Azure Marketplace) és egy üzleti megol
 | Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
 |---|---|---|---|
 | Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
-| Igen             | Igen         | Igen          | Azure Marketplace és Azure Portal * |
+| Igen             | Igen         | Yes          | Azure Marketplace és Azure Portal * |
 | Igen             | Nem          | Igen          | Csak Azure Portal |
 | Nem              | Nem          | Igen          | Csak Azure Portal |
 |||||
@@ -138,7 +138,7 @@ Ha úgy dönt, hogy a normál szerződést használja, lehetősége van arra, ho
 
 Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Centerben, a szöveg, a képek, a választható videók és az egyéb információk megadására kerül az **ajánlati lista** oldalán. Ez az információ, amelyet az ügyfelek látni fognak, amikor a kereskedelmi piactéren észlelik az ajánlatát, ahogy az a következő példában is látható.
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+:::image type="content" source="./media/saas/example-saas-1.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
 
 **Lehívási leírások**
 
@@ -150,7 +150,7 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 11. Dokumentumok
 

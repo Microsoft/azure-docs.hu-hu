@@ -2,21 +2,22 @@
 title: Feladatok futtatása a felhasználói fiókokban
 description: Ismerje meg a felhasználói fiókok típusait és azok konfigurálásának módját.
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88719359"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606606"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
 
 > [!NOTE]
 > A cikkben tárgyalt felhasználói fiókok nem egyeznek meg a biztonsági okokból a RDP protokoll (RDP) vagy a Secure Shell (SSH) esetében használt felhasználói fiókokkal.
 >
-> Ha SSH-n keresztül szeretne csatlakozni egy linuxos virtuálisgép-konfigurációt futtató csomóponthoz, tekintse meg a Távoli asztal használata Linux rendszerű virtuális gépre [Az Azure-ban](../virtual-machines/linux/use-remote-desktop.md)című témakört. Ha RDP-n keresztül szeretne csatlakozni a Windows-csomópontokhoz, tekintse meg [a Kapcsolódás Windows Server rendszerű virtuális géphez](../virtual-machines/windows/connect-logon.md)című témakört.<br /><br />
+> Ha SSH-n keresztül szeretne csatlakozni a linuxos virtuális gép konfigurációját futtató csomóponthoz, tekintse meg a [Xrdp telepítése és konfigurálása az Ubuntu használatával távoli asztal használatához](../virtual-machines/linux/use-remote-desktop.md)című témakört. Ha RDP-kapcsolaton keresztül szeretne csatlakozni a Windows rendszerű csomópontokhoz, tekintse meg a következő témakört: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](../virtual-machines/windows/connect-logon.md).
+>
 > Ha a felhőalapú szolgáltatás konfigurációját RDP protokollon keresztül futtató csomóponthoz szeretne csatlakozni, tekintse meg a [Távoli asztali kapcsolat engedélyezése az Cloud Services Azure-beli szerepkörökhöz](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)című témakört.
 
 Egy feladat Azure Batch mindig egy felhasználói fiók alatt fut. Alapértelmezés szerint a feladatok a normál felhasználói fiókok alatt, rendszergazdai jogosultságok nélkül futnak. Bizonyos esetekben előfordulhat, hogy konfigurálni szeretné azt a felhasználói fiókot, amelyben a feladatot futtatni kívánja. Ez a cikk a felhasználói fiókok típusait és a forgatókönyvhöz való konfigurálását ismerteti.
@@ -30,7 +31,7 @@ A Azure Batch két típusú felhasználói fiókot biztosít a feladatok futtat�
 - **Névvel ellátott felhasználói fiók.** A készlet létrehozásakor megadhat egy vagy több elnevezett felhasználói fiókot a készlethez. Minden felhasználói fiók létrejön a készlet minden egyes csomópontján. A fiók neve mellett adja meg a felhasználói fiók jelszavát, a jogosultságszint-emelési szintet, valamint a Linux-készletek esetében az SSH titkos kulcsot. Feladat hozzáadásakor megadhatja azt a elnevezett felhasználói fiókot, amely alatt a feladat futni fog.
 
 > [!IMPORTANT]
-> A Batch Service 2017 -01-01.4.0 verziója bevezet egy olyan megszakítási változást, amely megköveteli, hogy frissítse a kódot a verzió meghívásához. Ha a Batch egy régebbi verziójából telepíti át a kódot, vegye figyelembe, hogy a **runElevated** tulajdonság már nem támogatott a REST API vagy a Batch ügyféloldali kódtárakban. Jogosultságszint-emelési szint megadásához használja a feladat új **userIdentity** tulajdonságát. A Batch-kód frissítésével kapcsolatos gyors útmutatásért lásd: [a kód frissítése a legújabb batch-ügyféloldali függvénytárba](#update-your-code-to-the-latest-batch-client-library) .
+> A Batch szolgáltatás 2017-es -01-01.4.0 egy olyan megszakítási változást vezetett be, amely megköveteli a kód frissítését, hogy az adott verziót vagy újabbat hívjon fel. A Batch-kód régebbi verzióról történő frissítésével kapcsolatos gyors útmutatásért lásd: [a kód frissítése a legújabb batch ügyféloldali kódtár](#update-your-code-to-the-latest-batch-client-library) .
 
 ## <a name="user-account-access-to-files-and-directories"></a>Felhasználói fiókhoz való hozzáférés a fájlokhoz és könyvtárakhoz
 
@@ -77,6 +78,7 @@ Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus fe
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
+
 #### <a name="batch-java"></a>Batch Java
 
 ```java
@@ -278,7 +280,7 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>A kód frissítése a Batch-ügyfél legújabb könyvtárába
 
-A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecseréli a korábbi verziókban elérhető **runElevated** tulajdonságot a **userIdentity** tulajdonsággal. Az alábbi táblázatok egy egyszerű leképezést biztosítanak, amely segítségével frissítheti a kódot az ügyféloldali kódtárak korábbi verzióiból.
+A Batch szolgáltatás 2017-es -01-01.4.0 bevezette a megszakítási változást, és lecseréli a korábbi verziókban elérhető **runElevated** tulajdonságot a **userIdentity** tulajdonsággal. Az alábbi táblázatok egy egyszerű leképezést biztosítanak, amely segítségével frissítheti a kódot az ügyféloldali kódtárak korábbi verzióiból.
 
 ### <a name="batch-net"></a>Batch .NET
 

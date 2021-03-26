@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6383c0fa3aad15da8abaea79136a75732ce9ea01
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96452432"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605756"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése az SQL Database-hez, a felügyelt SQL-példányhoz és az Azure Synapse Analyticshez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -142,7 +142,7 @@ Miután létrehozott egy felhasználói fiókot egy adatbázisban, vagy egy beje
   - Felhasználó hozzáadása rögzített adatbázis-szerepkörhöz:
 
     - Azure SQL Database használja az [Alter role](/sql/t-sql/statements/alter-role-transact-sql) utasítást. Példák: a [szerepkör-példák módosítása](/sql/t-sql/statements/alter-role-transact-sql#examples)
-    - Azure szinapszis, használja a [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) utasítást. Példák: [sp_addrolemember példák](/sql/t-sql/statements/alter-role-transact-sql).
+    - Azure szinapszis, használja a [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) utasítást. Példák: [sp_addrolemember példák](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql#examples).
 
 - **Egyéni adatbázis-szerepkör**
 
