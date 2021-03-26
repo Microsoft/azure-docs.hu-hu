@@ -4,12 +4,12 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 61a306cd36c55a005ee9ebd897fcfc9a6c88d7c9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cb2b611e694c6b72e063f3d8ab05b7667a34e29
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98696396"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888855"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -203,7 +203,7 @@ Beágyazott sablon hibakeresési információinak naplózásához használja a *
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2016-09-01",
+  "apiVersion": "2020-10-01",
   "name": "nestedTemplate",
   "properties": {
     "mode": "Incremental",

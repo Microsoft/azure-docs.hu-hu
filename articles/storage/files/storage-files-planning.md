@@ -4,16 +4,16 @@ description: Azure Files központi telepítés tervezésének megismerése. Köz
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 267b68fbdae6d894acc3222a8d74a8e15e865dbc
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879847"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023520"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -65,7 +65,7 @@ Bár a technikai szempontból jóval egyszerűbb az Azure-fájlmegosztás nyilv�
 
 - **Hálózati bújtatás ExpressRoute, helyek közötti vagy pont – hely típusú VPN használatával**: a virtuális hálózatba való bújtatás lehetővé teszi az Azure-fájlmegosztás helyszíni elérését, még akkor is, ha az 445-es port le van tiltva.
 - **Privát végpontok**: a magánhálózati végpontok dedikált IP-címet biztosítanak a Storage-fióknak a virtuális hálózat címterület területén. Ez lehetővé teszi a hálózati bújtatást anélkül, hogy az Azure Storage-fürtök által birtokolt összes IP-címtartományt meg kellene nyitni a helyszíni hálózatokat. 
-- **DNS-továbbítás**: konfigurálja a helyszíni DNS-t úgy, hogy feloldja a Storage-fiók (azaz `storageaccount.file.core.windows.net` a nyilvános felhő régiói) nevét a privát végpontok IP-címére való feloldáshoz.
+- **DNS-továbbítás**: konfigurálja a helyszíni DNS-t úgy, hogy feloldja a Storage-fiók ( `storageaccount.file.core.windows.net` a nyilvános felhő régiói) nevét a privát végpontok IP-címének feloldásához.
 
 Az Azure-fájlmegosztás üzembe helyezéséhez kapcsolódó hálózatkezelés megtervezéséhez tekintse meg [Azure Files hálózatkezelési megfontolásokat](storage-files-networking-overview.md).
 
@@ -94,7 +94,7 @@ A Azure Files többrétegű megközelítést biztosít az adatok biztonsági men
 ### <a name="soft-delete"></a>Helyreállítható törlés
 A fájlmegosztás (előzetes verzió) helyreállítható törlése olyan tárolási fiók szintű beállítás, amely lehetővé teszi a fájlmegosztás helyreállítását véletlenül törölt állapotba. Egy fájlmegosztás törlésekor a rendszer a véglegesen törölt állapotba helyezi az átmeneti törlés helyett. Beállíthatja, hogy a rendszer a véglegesen törölt adatok mennyiségét helyreállítsa, és bármikor törölje a megosztást a megőrzési időszak alatt. 
 
-Javasoljuk, hogy a legtöbb fájlmegosztás esetében a Soft delete bekapcsolását javasolja. Ha olyan munkafolyamattal rendelkezik, amelyben a megosztás törlése gyakori és várt, akkor dönthet úgy, hogy nagyon rövid megőrzési időtartammal rendelkezik, vagy ha egyáltalán nem engedélyezte a törlést.
+Javasoljuk, hogy a legtöbb fájlmegosztás esetében a Soft delete bekapcsolását javasolja. Ha olyan munkafolyamattal rendelkezik, amelyben a megosztás törlése gyakori és várható, dönthet úgy, hogy egy rövid megőrzési időtartammal rendelkezik, vagy ha a törlés nem engedélyezett.
 
 A helyreállítható törléssel kapcsolatos további információkért lásd: a [véletlen adattörlés megakadályozása](./storage-files-prevent-file-share-deletion.md).
 
@@ -107,10 +107,10 @@ A Azure Portalban elemszintű és megosztási szintű visszaállításokat is v�
 
 További információ a biztonsági mentésről: [Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="advanced-threat-protection-for-azure-files-preview"></a>A Azure Files komplex veszélyforrások elleni védelme (előzetes verzió)
-Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely riasztásokat biztosít, amikor rendellenes tevékenységeket észlel a Storage-fiókjában, például szokatlan kísérletet tesz a Storage-fiók elérésére. Az ATP a kártevő-kivonatok hírnevének elemzését is futtatja, és az ismert kártevő szoftver riasztást küld. Az ATP-t az előfizetések vagy a Storage-fiókok szintjén Azure Security Center használatával konfigurálhatja. 
+### <a name="azure-defender-for-azure-files"></a>Azure Files Azure Defender 
+Az Azure Defender for Azure Storage (korábban az Azure Storage-hoz készült komplex veszélyforrások elleni védelem) egy további biztonsági intelligenciát biztosít, amely riasztásokat biztosít, amikor rendellenes tevékenységeket észlel a Storage-fiókban, például szokatlan hozzáférési kísérleteket. Emellett a kártevő-kivonatok hírnevének elemzését is futtatja, és riasztást küld az ismert kártevők ellen. Az Azure Defender-t az előfizetések vagy a Storage-fiókok szintjén is konfigurálhatja Azure Security Centeron keresztül. 
 
-További információ: [Az Azure Storage komplex veszélyforrások elleni védelme](../common/azure-defender-storage-configure.md).
+További információ: Bevezetés az [Azure Defender for Storage szolgáltatásba](../../security-center/defender-for-storage-introduction.md).
 
 ## <a name="storage-tiers"></a>Tárolási szintek
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
@@ -124,7 +124,7 @@ További információ: [Az Azure Storage komplex veszélyforrások elleni védel
 ## <a name="redundancy"></a>Redundancia
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Migrálás sikerességéhez fontos a megfelelő áttelepítési stratégia és eszköz kiválogatása a forgatókönyvhöz. 
 
 Az [áttelepítést áttekintő cikk](storage-files-migration-overview.md) röviden ismerteti az alapokat, és tartalmaz egy táblázatot, amely a forgatókönyvét valószínűleg magában foglaló áttelepítési útmutatókba vezet.

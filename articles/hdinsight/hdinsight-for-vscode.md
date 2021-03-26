@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946133"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865791"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -40,7 +40,7 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
 4. Válassza ki a **Spark & struktúra eszközöket** a keresési eredmények közül, majd válassza a **telepítés** lehetőséget:
 
-   ![Spark & struktúra a Visual Studio Code Python telepítéséhez](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-hdInsight-plugin.png" alt-text="Spark & struktúra a Visual Studio Code Python telepítéséhez":::
 
 5. Szükség esetén válassza az **Újratöltés** lehetőséget.
 
@@ -52,7 +52,7 @@ Az alábbi lépéseket követve nyisson meg egy munkahelyi mappát, és hozzon l
 
 2. A **Explorer** nézetben válassza ki a **HDexample** mappát, majd válassza az **új fájl** ikont a munkahelyi mappa mellett:
 
-   ![Visual Studio Code új fájl ikon](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/visual-studio-code-new-file.png" alt-text="Visual Studio Code új fájl ikon":::
 
 3. Nevezze el az új fájlt a `.hql` (kaptár-lekérdezések) vagy a `.py` (Spark script) fájlkiterjesztés használatával. Ez a példa a **HelloWorld. HQL**-t használja.
 
@@ -64,7 +64,7 @@ A nemzeti Felhőbeli felhasználók számára az alábbi lépéseket követve á
 2. Keressen rá a következő sztringre: **Azure: felhő**.
 3. Válassza ki a nemzeti felhőt a listából:
 
-   ![Bejelentkezési bejegyzés alapértelmezett konfigurációjának beállítása](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-login-entry-configuration.png" alt-text="Bejelentkezési bejegyzés alapértelmezett konfigurációjának beállítása":::
 
 ## <a name="connect-to-an-azure-account"></a>Kapcsolódás Azure-fiókhoz
 
@@ -72,7 +72,7 @@ Ahhoz, hogy parancsfájlokat küldhessen a fürtökhöz a Visual Studio Code-bó
 
 1. A menüsávban navigáljon a   >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés**:
 
-   ![A Spark & struktúra eszközei a Visual Studio Code-beli bejelentkezéshez](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png" alt-text="A Spark & struktúra eszközei a Visual Studio Code-beli bejelentkezéshez":::
 
 2. Az Azure-ba való bejelentkezéshez kövesse a bejelentkezési utasításokat. A csatlakozás után az Azure-fiók neve megjelenik a Visual Studio Code ablak alján található állapotsorban.  
 
@@ -84,7 +84,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 1. A menüsávban navigáljon a   >  **parancs paletta megtekintése...** elemre, és írja be a **Spark/kaptár: fürt csatolása** elemet.
 
-   ![A Command paletta link cluster parancsa](./media/hdinsight-for-vscode/link-cluster-command.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/link-cluster-command.png" alt-text="A Command paletta link cluster parancsa":::
 
 2. Válassza a csatolt fürt típusa **Azure HDInsight** elemet.
 
@@ -127,7 +127,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 3. Tekintse át a **kimeneti** nézetet. Ez a nézet megjeleníti a társított fürtöt (vagy fürtöket) és az Azure-előfizetéshez tartozó összes fürtöt:
 
-   ![Alapértelmezett fürtkonfiguráció beállítása](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="Alapértelmezett fürtkonfiguráció beállítása":::
 
 ## <a name="set-the-default-cluster"></a>Az alapértelmezett fürt beállítása
 
@@ -141,7 +141,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 5. Válasszon ki egy fürtöt az aktuális parancsfájl alapértelmezett fürtjéként. Az eszközök automatikusan frissítik a **.VSCode\settings.jsa** konfigurációs fájlban:
 
-   ![A fürtkonfiguráció alapértelmezett konfigurációjának beállítása](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-cluster-configuration.png" alt-text="A fürtkonfiguráció alapértelmezett konfigurációjának beállítása":::
 
 ## <a name="submit-interactive-hive-queries-and-hive-batch-scripts"></a>Interaktív struktúra-lekérdezések és a kaptár batch-parancsfájlok beküldése
 
@@ -163,7 +163,7 @@ A Spark & kaptár Tools for Visual Studio Code használatával interaktív kapt�
 
 6. Ha nem adott meg alapértelmezett fürtöt, válasszon ki egy fürtöt. Az eszközök lehetővé teszik a teljes parancsfájl helyett a kód egy blokkjának beküldését a helyi menü használatával. Néhány pillanat elteltével a lekérdezés eredménye megjelenik egy új lapon:
 
-   ![Interaktív Apache Hive lekérdezés eredménye](./media/hdinsight-for-vscode/interactive-hive-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/interactive-hive-result.png" alt-text="Interaktív Apache Hive lekérdezés eredménye":::
 
    - **Eredmények** panel: a teljes eredményt CSV-, JSON-vagy Excel-fájlként mentheti a helyi elérési útra, vagy csak több sort választhat.
 
@@ -198,57 +198,57 @@ A PySpark interaktív parancs használatával küldje el a lekérdezéseket, kö
 
 4. A PySpark/szinapszis Pyspark kernel telepítéséhez szükséges üzenet az ablak jobb alsó sarkában jelenik meg. A **telepítés** gombra kattintva folytathatja a PySpark/szinapszis PySpark telepítését; vagy kattintson a **kihagyás** gombra a lépés kihagyásához.
 
-   ![A képernyőképen a PySpark telepítésének kihagyására szolgáló lehetőség látható.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-the-pyspark-kernel.png" alt-text="A képernyőképen a PySpark telepítésének kihagyására szolgáló lehetőség látható.":::
 
 5. Ha később is telepítenie kell, navigáljon a fájl beállításait **tartalmazó**  >    >  **Beállítások** területére, majd törölje a jelet a **HDInsight: a Pyspark kihagyása** jelölőnégyzet bejelölésének engedélyezése lehetőségre. 
     
-    ![A képernyőképen a Pyspark-telepítés kihagyásának engedélyezése látható.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png" alt-text="A képernyőképen a Pyspark-telepítés kihagyásának engedélyezése látható.":::
 
 6. Ha a telepítés sikeres volt a 4. lépésben, a "PySpark telepítése sikeres" üzenet jelenik meg az ablak jobb alsó sarkában. Az ablak újratöltéséhez kattintson az **Újratöltés** gombra.
 
-   ![a pyspark telepítése sikerült](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png" alt-text="a pyspark telepítése sikerült":::
 
 
 7. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és írja be a **Python: Select tolmács elemet a Jupyter-kiszolgáló indításához**.
 
-   ![a jupyter-kiszolgáló indításához válassza a tolmács elemet.](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png" alt-text="a jupyter-kiszolgáló indításához válassza a tolmács elemet.":::
 
 8. Válassza ki az alábbi Python-beállítást.
 
-   ![Válassza az alábbi lehetőséget](./media/hdinsight-for-vscode/choose-the-below-option.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/choose-the-below-option.png" alt-text="Válassza az alábbi lehetőséget":::
     
 9. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és adja meg a **fejlesztő: újratöltési ablak** elemet.
 
-    ![ablak újratöltése](./media/hdinsight-for-vscode/reload-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/reload-window.png" alt-text="ablak újratöltése":::
 
 10. [Kapcsolódjon](#connect-to-an-azure-account) az Azure-fiókjához, vagy kapcsolja össze a fürtöt, ha még nem tette meg.
 
 11. Válassza ki az összes kódot, kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **Spark: PySpark Interactive/szinapszis: PySpark Interactive** parancsot a lekérdezés elküldéséhez. 
 
-    ![pyspark interaktív helyi menü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-right-click.png" alt-text="pyspark interaktív helyi menü":::
 
 12. Ha nem adott meg alapértelmezett fürtöt, válassza ki a fürtöt. Néhány pillanat elteltével a **Python interaktív** eredményei egy új lapon jelennek meg. Kattintson a PySpark elemre a kernel **PySpark/szinapszis PySpark** való átváltásához, és a kód futtatása sikeresen megtörténik. Ha a szinapszis Pyspark kernelre szeretne váltani, tiltsa le az Azure Portal automatikus beállításait. Ellenkező esetben hosszú időt vehet igénybe a fürt felébresztése és a szinapszis-kernel első használatba vételének beállítása. Ha az eszközök azt is lehetővé teszik, hogy a teljes parancsfájl helyett programkódot küldjön a helyi menü használatával:
 
-    ![pyspark interaktív Python interaktív ablak](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png" alt-text="pyspark interaktív Python interaktív ablak":::
 
 13. Adja meg a **%% info** értéket, majd nyomja le a SHIFT + ENTER billentyűkombinációt a feladatok adatainak megtekintéséhez (nem kötelező):
 
-    ![pyspark interaktív megtekintési feladatának adatai](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png" alt-text="pyspark interaktív megtekintési feladatának adatai":::
 
 Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
-  ![pyspark interaktív nézet eredménye](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png" alt-text="pyspark interaktív nézet eredménye":::
 
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>Interaktív lekérdezés végrehajtása a (z) #%% comment használatával
 
 1. **#%%** A notebook-élmény beszerzéséhez vegye fel a következőt:
 
-   ![#%% hozzáadása](./media/hdinsight-for-vscode/run-cell.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell.png" alt-text="#%% hozzáadása":::
 
 2. Kattintson a **Futtatás cellára**. Néhány pillanat elteltével a Python interaktív eredményei egy új lapon jelennek meg. Kattintson a PySpark elemre a kernel PySpark/szinapszis PySpark való átváltásához, majd kattintson ismét a **cella futtatása** elemre, és a kód futtatása sikeresen megtörténik.
 
-   ![cella eredményeinek futtatása](./media/hdinsight-for-vscode/run-cell-get-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell-get-results.png" alt-text="cella eredményeinek futtatása":::
 
 ## <a name="leverage-ipynb-support-from-python-extension"></a>IPYNB-támogatás kihasználása a Python-bővítményből
 
@@ -256,11 +256,11 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
 2. Kattintson a **cella futtatása** gombra, és kövesse a megjelenő utasításokat az **alapértelmezett Spark-készlet beállításához** (az alapértelmezett fürtöt/készletet minden alkalommal meg kell határoznia a jegyzetfüzet megnyitása előtt), majd **újra kell tölteni** az ablakot.
 
-   ![az alapértelmezett Spark-készlet beállítása és újratöltése](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png" alt-text="az alapértelmezett Spark-készlet beállítása és újratöltése":::
 
 3. Kattintson a PySpark elemre a kernel **PySpark/szinapszis PySpark** való átváltásához, majd a **futtatási cella** lehetőségre egy idő elteltével az eredmény megjelenik.
 
-   ![ipynb-eredmények futtatása](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-ipynb-file-results.png" alt-text="ipynb-eredmények futtatása":::
 
 
 > [!NOTE]
@@ -302,7 +302,7 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
 6. Válasszon ki egy olyan fürtöt vagy Spark-készletet, amely a PySpark-feladatot a következőre küldi:
 
-   ![A Python-feladatok eredményének kimenete](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/submit-pythonjob-result.png" alt-text="A Python-feladatok eredményének kimenete":::
 
 Miután elküldte a Python-feladatot, a küldési naplók a Visual Studio Code **kimenet** ablakában jelennek meg. A Spark felhasználói felület URL-címe és a fonal felhasználói felületének URL-címe is megjelenik. Ha Apache Spark készletbe küldi a Batch-feladatot, a Spark-előzmények felhasználói felületének URL-címe és a Spark-alkalmazás felhasználói felületének URL-címe is megjelenik. A feladatok állapotának nyomon követéséhez megnyithatja az URL-címet egy böngészőben.
 
@@ -338,7 +338,7 @@ Küldje el a fájlt, és figyelje meg, hogy a `.vscode` rendszer automatikusan h
 
 - A projekt beállításai:
 
-  ![HDInsight Apache Livy-konfiguráció](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/hdi-apache-livy-config.png" alt-text="HDInsight Apache Livy-konfiguráció":::
 
   >[!NOTE]
   >A **driverMemory** és a **executorMemory** beállításnál állítsa be az értéket és az egységet. Például: 1g vagy 1024m.
@@ -395,11 +395,11 @@ Az **Azure HDInsight** Explorer segítségével közvetlenül megtekintheti a f�
 
 5. Kattintson a jobb gombbal a kaptár táblára. Például: **hivesampletable**. Válassza az **előnézet** lehetőséget.
 
-   ![Spark & struktúra a Visual Studio Code előzetes struktúra-táblájához](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png" alt-text="Spark & struktúra a Visual Studio Code előzetes struktúra-táblájához":::
 
 6. Megnyílik az **előnézet eredményei** ablak:
 
-   ![A Spark & struktúra a Visual Studio Code előzetes verziójának eredményei ablak](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png" alt-text="A Spark & struktúra a Visual Studio Code előzetes verziójának eredményei ablak":::
 
 - EREDMÉNYEK panel
 
@@ -415,7 +415,7 @@ Az **Azure HDInsight** Explorer segítségével közvetlenül megtekintheti a f�
      >
      >A Linux rendszerben telepítse a xclip-t a másolási tábla adatkezelésének engedélyezéséhez.
      >
-     >![Spark & struktúra a Visual Studio Code-hoz Linux rendszerben](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
+     >:::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png" alt-text="Spark & struktúra a Visual Studio Code-hoz Linux rendszerben":::
 
 ## <a name="additional-features"></a>További funkciók
 
@@ -423,12 +423,12 @@ A Spark & kaptár a Visual Studio Code-hoz a következő funkciókat is támogat
 
 - **IntelliSense automatikus kiegészítése**. Javaslatok a kulcsszavakra, a metódusokra, a változókra és az egyéb programozási elemekre. A különböző ikonok különböző típusú objektumokat jelölnek:
 
-    ![Spark &-struktúra eszközei a Visual Studio Code IntelliSense-objektumokhoz](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png" alt-text="Spark &-struktúra eszközei a Visual Studio Code IntelliSense-objektumokhoz":::
 
 - **IntelliSense-hiba jelölője**. A nyelvi szolgáltatás a struktúra parancsfájljában a szerkesztési hibákat aláhúzza.     
 - A **szintaxis kiemeli**. A nyelvi szolgáltatás különböző színeket használ a változók, kulcsszavak, adattípus, függvények és egyéb programozási elemek megkülönböztetéséhez:
 
-    ![A Spark & a kaptár Tools for Visual Studio Code szintaxisának főbb jellemzői](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png" alt-text="A Spark & a kaptár Tools for Visual Studio Code szintaxisának főbb jellemzői":::
 
 ## <a name="reader-only-role"></a>Csak olvasó szerepkör
 
@@ -447,15 +447,15 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
 1. Érvényes Ambari-felhasználónevet adjon meg.
 2. Adjon meg egy érvényes jelszót.
 
-   ![Spark &-struktúra eszközei a Visual Studio Code felhasználónévhez](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png" alt-text="Spark &-struktúra eszközei a Visual Studio Code felhasználónévhez":::
 
-   ![A Spark &-struktúra eszközei a Visual Studio Code Passwordhez](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png" alt-text="A Spark &-struktúra eszközei a Visual Studio Code Passwordhez":::
 
    > [!NOTE]
    >
    >A következő paranccsal `Spark / Hive: List Cluster` ellenőrizhető a csatolt fürt:
    >
-   >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   >:::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt":::
 
 ## <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
 
@@ -467,7 +467,7 @@ Válassza ki az Azure HDInsight Explorert Data Lake Storage Gen2 fiók kibontás
 
 A HDInsight-fürthöz Data Lake Storage Gen2 használatával küldhet el feladatot. Ha az Azure-fiókja nem rendelkezik írási hozzáféréssel a Gen2-tárolóhoz, a rendszer kéri, hogy adja meg a tárolási hozzáférési kulcsot. A hozzáférési kulcs érvényesítése után a rendszer sikeresen elküldi a feladatot.
 
-![Spark &-struktúra eszközei a Visual Studio Code AccessKey](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
+:::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png" alt-text="Spark &-struktúra eszközei a Visual Studio Code AccessKey":::
 
 > [!NOTE]
 >

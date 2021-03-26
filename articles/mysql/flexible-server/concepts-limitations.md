@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543085"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034520"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-rugalmas kiszolgáló korlátozásai (előzetes verzió)
 
@@ -89,8 +89,12 @@ A következők nem támogatottak:
 - Az időponthoz tartozó visszaállítással a rendszer az új kiszolgálókat ugyanazzal a számítási és tárolási konfigurációval hozza létre, mint a forráskiszolgálón. Az újonnan visszaállított kiszolgáló számítási felskálázása a kiszolgáló létrehozása után is lehetséges.
 - A törölt kiszolgáló visszaállítása nem támogatott.
 
+## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>Az egykiszolgálós és a rugalmas kiszolgáló által még nem támogatott szolgáltatások 
+A Azure Database for MySQL egyetlen kiszolgálón elérhető összes funkció még nem érhető el a rugalmas kiszolgálókon. Az egykiszolgálós és a rugalmas kiszolgálók közötti szolgáltatások összehasonlításának teljes listájáért tekintse [meg a megfelelő MySQL-kiszolgáló beállítását az Azure dokumentációjában.](../select-right-deployment-type.md#comparing-the-mysql-deployment-options-in-azure)
+
 ## <a name="next-steps"></a>Következő lépések
 
-- [A számítási és tárolási lehetőségek elérhetővé tételének](concepts-compute-storage.md) ismertetése
+- [A megfelelő MySQL-kiszolgáló beállításának megismerése az Azure dokumentációjában](../select-right-deployment-type.md)
+- [A rugalmas kiszolgálók számítási és tárolási lehetőségeinek](concepts-compute-storage.md) megismerése
 - A [támogatott MySQL-verziók](concepts-supported-versions.md) ismertetése
-- A [kiszolgálók biztonsági mentésének és visszaállításának áttekintése a Azure Portal használatával](how-to-restore-server-portal.md)
+- Gyors útmutató: [Azure Database for MySQL rugalmas kiszolgáló létrehozásához használja a Azure Portal](quickstart-create-server-portal.md)

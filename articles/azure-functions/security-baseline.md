@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4fd53067309f83b284da25040f9f6534936cead9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8f19e25e01e0c5fcdb5b2aa4db29ebe29fd7b5e3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704637"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025390"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions Azure biztonsági alapterve
 
@@ -72,7 +72,7 @@ Továbbá győződjön meg arról, hogy a távoli hibakeresés le van tiltva az 
 
 A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalkalmazási tűzfal (WAF) üzembe helyezését a hálózati konfiguráció részeként. Diagnosztikai beállítás engedélyezése a WAF és a naplók betöltéséhez egy Storage-fiókba, az Event hub-ba vagy a Log Analytics-munkaterületre. 
 
-- [Azure Functions végpontok biztonságossá tétele az éles környezetben](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Azure Functions végpontok biztonságossá tétele az éles környezetben](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Az Azure WAF üzembe helyezése](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -132,7 +132,7 @@ Azt is megteheti, hogy több Piactéri lehetőség áll rendelkezésre, példáu
 
 - [Privát végpontok használata Azure Functionshoz](../app-service/networking/private-endpoint.md)
 
-- [A Barracuda WAF Cloud Service ismertetése](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [A Barracuda WAF Cloud Service ismertetése](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Felelősség**: Ügyfél
 
@@ -208,9 +208,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a hálózati erőforrás-konfigurációkat, és felderítheti a Azure functions üzemelő példányokhoz kapcsolódó hálózati beállítások és erőforrások változásait. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor aktiválódnak, ha a kritikus hálózati beállítások vagy erőforrások változása zajlik. 
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -230,7 +230,7 @@ Ha beépített egyéni biztonsági/naplózási naplózást végez a Function alk
 
 Opcionálisan engedélyezheti és elvégezheti a fedélzeti adatokat az Azure Sentinel vagy egy harmadik féltől származó Rendszerinformáció és rendezvényszervezés megoldás számára. 
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Functions beállítása az Azure Application Insights](functions-monitoring.md)
 
@@ -248,7 +248,7 @@ Opcionálisan engedélyezheti és elvégezheti a fedélzeti adatokat az Azure Se
 
 Ha beépített egyéni biztonsági/naplózási naplózást végez a Function alkalmazásban, engedélyezze a "FunctionAppLogs" diagnosztikai beállítást, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. 
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Diagnosztikai beállítások (felhasználó által generált naplók) engedélyezése Azure Functions számára](functions-monitor-log-analytics.md)
 
@@ -272,7 +272,7 @@ Ha beépített egyéni biztonsági/naplózási naplózást végez a Function alk
 
 **Útmutató**: Azure monitorban a szervezet megfelelőségi előírásai szerint állítsa be a függvények alkalmazásaihoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát.
 
-- [Napló-megőrzési paraméterek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -288,7 +288,7 @@ Ha beépített egyéni biztonsági/naplózási naplózást végez a Function alk
 
 Opcionálisan engedélyezheti és elvégezheti a fedélzeti adatokat az Azure Sentinel vagy egy harmadik féltől származó Rendszerinformáció és rendezvényszervezés megoldás számára.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [A Azure Functions diagnosztikai beállításainak engedélyezése](functions-monitor-log-analytics.md)
 
@@ -308,11 +308,11 @@ Engedélyezze Application Insights a Function apps számára a naplók, a teljes
 
 Opcionálisan engedélyezheti és elvégezheti a fedélzeti adatokat az Azure Sentinel vagy egy harmadik féltől származó Rendszerinformáció és rendezvényszervezés megoldás számára.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [A Azure Functions diagnosztikai beállításainak engedélyezése](functions-monitor-log-analytics.md)
 
-- [A Azure Functions Application Insights engedélyezése](https://docs.microsoft.com/azure/azure-functions/configure-monitoring#enable-application-insights-integration)
+- [A Azure Functions Application Insights engedélyezése](./configure-monitoring.md#enable-application-insights-integration)
 
 **Felelősség**: Ügyfél
 
@@ -326,9 +326,9 @@ Opcionálisan engedélyezheti és elvégezheti a fedélzeti adatokat az Azure Se
 
 **Útmutató**: Azure Active Directory (Azure ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Felelősség**: Ügyfél
 
@@ -342,9 +342,9 @@ Az adatsíkok hozzáférése több módon is szabályozható, beleértve az enge
 
 Több üzembe helyezési módszer is elérhető az alkalmazások működéséhez, amelyek némelyike generált hitelesítő adatok készletét is kihasználhatja. Tekintse át az alkalmazáshoz használt üzembe helyezési módszereket.
 
-- [HTTP-végpont biztonságossá tétele](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [HTTP-végpont biztonságossá tétele](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [Engedélyezési kulcsok beszerzése és újragenerálása](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#obtaining-keys)
+- [Engedélyezési kulcsok beszerzése és újragenerálása](./functions-bindings-http-webhook-trigger.md?tabs=csharp#obtaining-keys)
 
 - [Üzembe helyezési technológiák Azure Functions](functions-deployment-technologies.md)
 
@@ -378,7 +378,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 **Útmutató**: ha lehetséges, használja a Azure Active Directory (Azure ad) SSO-t ahelyett, hogy egyéni, különálló hitelesítő adatokat konfiguráljon a Function alkalmazáshoz való hozzáféréshez. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata. A functions-alkalmazások egyszeri bejelentkezésének megvalósítása a App Service hitelesítés/engedélyezés funkció használatával.
 
-- [A hitelesítés és az engedélyezés ismertetése Azure Functions](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [A hitelesítés és az engedélyezés ismertetése Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
 - [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -450,7 +450,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -468,7 +468,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 - [A Function app konfigurálása az Azure AD-bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md)
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
@@ -532,7 +532,7 @@ A hálózati elkülönítés végrehajtásához privát végpontokat is használ
 
 **Útmutató**: a function apps Azure Portal a "platform szolgáltatások: HÁLÓZATKEZELÉS: SSL" területen engedélyezze a "csak https" beállítást, és állítsa be a minimális TLS-verziót 1,2-re.
 
-- [HTTPS megkövetelése a Function-alkalmazásokban](https://docs.microsoft.com/azure/azure-functions/security-concepts#require-https)
+- [HTTPS megkövetelése a Function-alkalmazásokban](./security-concepts.md#require-https)
 
 **Felelősség**: Ügyfél
 
@@ -592,7 +592,7 @@ A Microsoft kezeli a Azure Functions alapjául szolgáló infrastruktúrát, és
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a termelési funkció alkalmazásaiban, valamint egyéb kritikus vagy kapcsolódó erőforrásokban is érvényben vannak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -608,7 +608,7 @@ A Microsoft kezeli a Azure Functions alapjául szolgáló infrastruktúrát, és
 
 Emellett a Azure Security Center javaslatainak követésével biztonságosabbá teheti a Function-alkalmazásokat.
 
-- [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -638,7 +638,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -712,7 +712,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -744,7 +744,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -772,9 +772,9 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 - [Szabályzat tervezése kód-munkafolyamatként](../governance/policy/concepts/policy-as-code.md)
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -854,11 +854,11 @@ Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos 
 
 - [Adatok biztonsági mentése az Azure-ban](../app-service/manage-backup.md)
 
-- [Az adatelérhetőség ismertetése az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Az adatelérhetőség ismertetése az Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -874,11 +874,11 @@ Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos 
 
 - [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Az adatelérhetőség ismertetése az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Az adatelérhetőség ismertetése az Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -892,7 +892,7 @@ Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos 
 
 - [Azure-beli alkalmazás visszaállítása pillanatképből](../app-service/app-service-web-restore-snapshots.md)
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -1002,5 +1002,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

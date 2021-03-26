@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e2b76fbc2afaad465773860ff45f18261edad138
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bcf2f39423f033ccd5bfdb6bf51ebc89e254f802
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933427"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867814"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként
 
@@ -20,7 +20,7 @@ A beérkező adatbevitelt általában úgy kell megtisztítani és átalakítani
 
 Az alábbi ábra az ETL Automation használati eseteit és modelljét mutatja be. A bemeneti adatok át lettek alakítva a megfelelő kimenet létrehozásához.  Az átalakítás során az adatváltozások alakja, adattípusa és akár nyelve is megváltozik.  Az ETL-folyamatok átalakítják az Imperial-t metrikára, módosíthatja az időzónákat, és javíthatják a pontosságot, hogy megfelelően illeszkedjenek a cél meglévő adataihoz. Az ETL-folyamatok az új adatok meglévő adatokkal való összevonásával naprakészen tarthatják a jelentéseket, vagy további információkat biztosíthatnak a meglévő adatokról. Az olyan alkalmazások, mint a Jelentéskészítő eszközök és szolgáltatások, a kívánt formátumban használhatják ezeket az adatfájlokat.
 
-![Apache Hive ETL-architektúra](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+:::image type="content" source="./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png" alt-text="Apache Hive ETL-architektúra" border="false":::
 
 A Hadoop jellemzően olyan ETL-folyamatokban használják, amelyek nagy mennyiségű szövegfájlt (például CSV) importálnak. Vagy kisebb, de gyakran változó számú szövegfájl vagy mindkettő.  A kaptár egy nagyszerű eszköz, amellyel előkészítheti az adatfeldolgozást, mielőtt betölti azt az adatcélhelybe.  A struktúra lehetővé teszi, hogy létrehoz egy sémát a CSV-fájlon keresztül, és SQL-szerű nyelven hozzon létre MapReduce-programokat, amelyek az adatkezeléssel működnek együtt.
 

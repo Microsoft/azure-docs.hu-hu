@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: nitinme
 ms.custom: devx-track-js
-ms.openlocfilehash: 02901e6b4a75257b2cda8dee84dbe3438dc15c18
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b0a1f4a948aa6fec565130acb5267476a1d4401
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91332372"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048646"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>A cookie-szabályzat beállítása a magától megjelenő olvasóhoz
 
@@ -47,7 +47,7 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 ## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Node.js](../quickstarts/client-libraries.md?pivots=programming-language-nodejs) rövid útmutatót, amelyből megtudhatja, hogy mit tehet a magától az olvasói SDK-val a Node.js használatával
-* Tekintse meg az [Android-oktatóanyagot](../tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
-* Tekintse meg az [iOS-oktatóanyagot](../tutorial-ios.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
-* Tekintse meg a [Python-oktatóanyagot](../tutorial-python.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
+* Tekintse meg az [Android-oktatóanyagot](../how-to-launch-immersive-reader.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
+* Tekintse meg az [iOS-oktatóanyagot](../how-to-launch-immersive-reader.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
+* Tekintse meg a [Python-oktatóanyagot](../how-to-launch-immersive-reader.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../reference.md)

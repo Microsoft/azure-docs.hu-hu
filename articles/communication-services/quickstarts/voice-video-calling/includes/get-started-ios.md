@@ -1,22 +1,22 @@
 ---
 title: Rövid útmutató – hívás hozzáadása iOS-alkalmazáshoz az Azure Communication Services használatával
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatásokat.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az iOS rendszerhez készült Azure kommunikációs szolgáltatásokat.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d3a282d108d197ea0c5c616e9ee84fb7b952026
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719757"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108279"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
+Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el egy hívást az iOS rendszerhez készült Azure Communication Services SDK-val.
 
 > [!NOTE]
-> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 8 verzióját használja.
+> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 8 verziót használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -119,11 +119,11 @@ struct ContentView: View {
 
 ## <a name="object-model"></a>Objektummodell
 
-Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások ügyfél-függvénytárának főbb funkcióit kezelik:
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.|
+| CallClient | A CallClient a hívó SDK fő belépési pontja.|
 | CallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
 | CommunicationTokenCredential | A rendszer a CommunicationTokenCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.| 
 | CommunicationUserIdentifier | A CommunicationUserIdentifier a felhasználó identitásának jelölésére szolgál, amely a következők egyike lehet: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |

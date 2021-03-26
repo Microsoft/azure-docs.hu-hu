@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vagy egy bicep-fájlban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1fc3397409634f29690af05ca2a85e67c30b6d89
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521696"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954972"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel
 
@@ -85,7 +85,7 @@ Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik 
 ## <a name="deploy-remote-template"></a>Távoli sablon üzembe helyezése
 
 > [!NOTE]
-> Az Azure CLI jelenleg nem támogatja a távoli bicep-fájlok telepítését. Távoli bicep-fájl üzembe helyezéséhez használja a CLI bicep a bicep-fájl egy JSON-sablonhoz való fordításához.
+> Az Azure CLI jelenleg nem támogatja a távoli bicep-fájlok telepítését. A [BICEP CLI](./bicep-install.md#development-environment) használatával fordítsa le a bicep-fájlt egy JSON-sablonba, majd töltse be a JSON-fájlt a távoli helyre.
 
 Az ARM-sablonok helyi gépen való tárolása helyett érdemes lehet őket külső helyen tárolni. Sablonokat tárolhat egy olyan verziókövetési rendszer adattárában is, mint a GitHub. Tárolhatja azokat egy Azure-tárfiókban is, ahol megosztva érhető el a vállalat számára.
 

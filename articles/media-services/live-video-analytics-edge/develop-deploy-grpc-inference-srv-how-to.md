@@ -3,12 +3,12 @@ title: GRPC-alapú következtetési kiszolgáló fejlesztése és üzembe helyez
 description: Ez a cikk útmutatást nyújt egy gRPC következtetési kiszolgáló fejlesztéséhez és üzembe helyezéséhez.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881652"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034860"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Útmutató: gRPC-következtetési kiszolgáló fejlesztése és üzembe helyezése
 
@@ -242,7 +242,7 @@ Most, hogy létrehozta a gRPC-bővítmény modult, most létrehozjuk és üzembe
         * A GraphInstanceSet alatt szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:<br/>`"topologyName": "InferencingWithGrpcExtension"`
         * A GraphTopologyDelete alatt szerkessze a nevet:<br/>`"name": "InferencingWithGrpcExtension"`
 
-            A topológiának (például `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json` ) meg kell határoznia a kiterjesztési címeket:
+            A topológiának (például `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json` ) meg kell határoznia a kiterjesztési címeket:
     * Bővítmény címe paraméter
 
         ```
@@ -308,4 +308,4 @@ Ebben a szakaszban az Edge-modulok üzembe helyezése a IoT Edge eszközön megk
 
 ## <a name="next-steps"></a>Következő lépések
 
-A minta futtatásához és az eredmények értelmezéséhez kövesse a felkészülés az [élő videók elemzése a modell](use-your-model-quickstart.md) rövid útmutatója című témakörben említett **események figyelése** című szakaszát. Tekintse meg a példaként szolgáló gRPC-topológiákat is: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension és [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
+A minta futtatásához és az eredmények értelmezéséhez kövesse a felkészülés az [élő videók elemzése a modell](use-your-model-quickstart.md) rövid útmutatója című témakörben említett **események figyelése** című szakaszát. Tekintse meg a példaként szolgáló gRPC-topológiákat is: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension és [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).

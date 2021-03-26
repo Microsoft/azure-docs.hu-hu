@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan engedélyezheti az Azure-fájlmegosztás helyre
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 77381700f4257006b50e56ab7ffc037ef99d297c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 13e6668337b82ea4be86eadcbc6f7797a72771c6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218553"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023483"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>A Soft delete engedélyezése az Azure-fájlmegosztás esetében
 
@@ -26,16 +26,16 @@ A következő részekben bemutatjuk, hogyan engedélyezheti és használhatja a 
 ## <a name="getting-started"></a>Első lépések
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Navigáljon a Storage-fiókjához, és válassza a **Soft delete** elemet a **file Service** lehetőségnél.
-1. Válassza az **engedélyezve** lehetőséget a fájlmegosztás helyreállítható **törléséhez**.
+1. Navigáljon a Storage-fiókjához, **és válassza a fájlmegosztás lehetőséget** a **file Service** alatt.
+1. Az **összes fájlmegosztás esetében** válassza az **engedélyezve** lehetőséget a helyreállítható törléshez.
 1. Válassza ki a **fájlmegosztás megőrzési időtartamát napokban** , és adja meg a választott számot.
 1. A **Mentés** gombra kattintva erősítse meg az adatmegőrzési beállításokat.
 
-:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Képernyőfelvétel a Storage-fiók Soft delete Settings panelről. A fájlmegosztás kiemelése szakasz, a váltás engedélyezése, a megőrzési időtartam beállítása és a mentés. Ezzel a megoldással engedélyezheti a Storage-fiókban lévő összes fájlmegosztás helyreállítható törlését.":::
+:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Képernyőfelvétel a Storage-fiók Soft delete Settings panelről. A fájlmegosztás Soft delete szakaszának kiemelése, a váltás engedélyezése, a megőrzési időtartam beállítása és a mentés. Ezzel a megoldással engedélyezheti a Storage-fiókban lévő összes fájlmegosztás helyreállítható törlését.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A Soft delete parancsmagok az [Azure CLI-moduljának](/cli/azure/install-azure-cli)2.1.3-es és újabb verzióiban érhetők el.
+A Soft delete parancsmagok az [Azure CLI-moduljának](/cli/azure/install-azure-cli?view=azure-cli-latest)2.1.3-es és újabb verzióiban érhetők el.
 
 ## <a name="getting-started-with-cli"></a>Első lépések a CLI-vel
 
@@ -125,12 +125,12 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 ## <a name="disable-soft-delete"></a>Nem kötelező törlés letiltása
 
-Ha szeretné leállítani a Soft delete használatát, vagy véglegesen törölni szeretne egy fájlmegosztást, kövesse az alábbi utasításokat:
+Ha szeretné leállítani a Soft delete használatát, kövesse az alábbi utasításokat. Ha véglegesen törölni szeretne egy olyan fájlmegosztást, amely már törölve lett, törölje a törlést, tiltsa le a Soft delete parancsot, majd törölje újra. 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Navigáljon a Storage-fiókjához, és válassza a **Beállítások** alatt a **Soft Delete (Törlés** ) lehetőséget.
-1. A **fájlmegosztás területen válassza a** **Letiltva** lehetőséget a fájlmegosztás helyreállítható **törléséhez**.
+1. Navigáljon a Storage-fiókjához, **és válassza a fájlmegosztás lehetőséget** a **file Service** alatt.
+1. Válassza a **Letiltva** lehetőséget az **összes fájlmegosztás törléséhez**.
 1. A **Mentés** gombra kattintva erősítse meg az adatmegőrzési beállításokat.
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="A Soft delete letiltásával azonnal és véglegesen törölheti a Storage-fiókban lévő összes fájlmegosztást a szabadidőben.":::

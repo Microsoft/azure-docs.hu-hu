@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96466597"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109165"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R műszaki specifikációk
 
@@ -26,7 +26,7 @@ Az Azure Stack Edge Pro R-eszköz a következő specifikációkkal rendelkezik a
 
 | Specifikáció       | Érték                  |
 |---------------------|------------------------|
-| CPU    | 2 X 10 mag CPU, Intel Xeon Silver 4114 |
+| CPU    | 2 X Intel Xeon Silver 4114 processzor<br>20 phsyical mag (10/CPU)<br>40 logikai mag (vCPU) (20 processzor)  |
 | Memória              | 256 GB RAM (2666 MT/s)     |
 
 
@@ -48,14 +48,14 @@ Az Azure Stack Edge Pro R-eszköz két 100-240 V-os tápegységgel (PSUs) rendel
 | Hő elszóródása (maximum)                   | 2891 BTU/HR                |
 | Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 115-230 V AC |
-| Gyors csatlakoztatás           | Yes                        |
+| Gyors csatlakoztatás           | Igen                        |
 
 ## <a name="network-specifications"></a>Hálózati specifikációk
 
 Az Azure Stack Edge Pro R-eszközhöz négy hálózati adapter tartozik, a PORT1-PORT4. 
 
 
-|Specifikáció  |Description                              |
+|Specifikáció  |Leírás                              |
 |----------------------|----------------------------------|
 |Hálózati adapterek    |**2 x 1 GbE RJ45** <br> Az 1-es PORTOT a rendszer felügyeleti felületként használja a kezdeti beállításhoz, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. PORT a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP.     |
 |Hálózati adapterek    |**2 x 25 GbE SFP28** <br> Ezek az adatillesztők 3. és 4. PORT konfigurálható DHCP (alapértelmezett) vagy statikusként.            |

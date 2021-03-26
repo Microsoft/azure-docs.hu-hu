@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d0b2ccc0bf5d38e9a72bf780875d3b6f29733189
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100535236"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026751"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása
 
@@ -112,7 +112,7 @@ A következő oktatóanyagban megtarthatja az erőforrásait. Ha már nincs rá 
 A DDoS-védelem letiltása virtuális hálózat esetén: 
 
 1. Adja meg annak a virtuális hálózatnak a nevét, amelyre le szeretné tiltani a DDoS Protection-szabványt a portál tetején található **erőforrások, szolgáltatások és dokumentumok keresése mezőbe** . Ha a virtuális hálózat neve megjelenik a keresési eredmények között, válassza ki.
-2. Válassza **a DDoS Protection standard**, majd a **Letiltás** lehetőséget.
+2. A **DDoS Protection standard** területen válassza a **Letiltás** lehetőséget.
 
 Ha törölni szeretné a DDoS Protection-csomagot, először el kell távolítania az összes virtuális hálózatot. 
 

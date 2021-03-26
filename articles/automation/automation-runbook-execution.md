@@ -3,14 +3,14 @@ title: Runbook végrehajtása az Azure Automationben
 description: Ez a cikk áttekintést nyújt a runbookok feldolgozásáról a Azure Automationban.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100586039"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954343"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -34,7 +34,8 @@ Az alábbi ábrán a [PowerShell-runbookok](automation-runbook-types.md#powershe
 
 Azure Automation runbookok Azure-beli vagy [hibrid Runbook-feldolgozón](automation-hybrid-runbook-worker.md)is futtathatók. 
 
-Ha a runbookok az Azure-ban lévő erőforrásokkal történő hitelesítésre és futtatásra tervezték, akkor egy Azure-beli homokozóban futnak, amely egy megosztott környezet, amelyet több feladat használhat. Az azonos Sandboxot használó feladatokat a rendszer a sandbox erőforrás-korlátaihoz köti. Az Azure-beli homokozó környezet nem támogatja az interaktív műveleteket. Megakadályozza az összes folyamaton kívüli COM-kiszolgáló elérését. Emellett a Win32-hívásokat használó runbookok helyi MOF-fájlok használatát is szükségessé teszi.
+Ha a runbookok az Azure-ban lévő erőforrásokkal történő hitelesítésre és futtatásra tervezték, akkor egy Azure-beli homokozóban futnak, amely egy megosztott környezet, amelyet több feladat használhat. Az azonos Sandboxot használó feladatokat a rendszer a sandbox erőforrás-korlátaihoz köti. Az Azure-beli homokozó környezet nem támogatja az interaktív műveleteket. Ez megakadályozza az összes folyamaton kívüli COM-kiszolgáló elérését, és nem támogatja a [WMI-hívásokat](/windows/win32/wmisdk/wmi-architecture) a Runbook lévő Win32-szolgáltatóhoz.  Ezek a forgatókönyvek csak a runbook Windows hibrid Runbook-feldolgozón való futtatásával támogatottak.
+
 
 A [hibrid Runbook-feldolgozók](automation-hybrid-runbook-worker.md) a runbookok futtatására is használhatók közvetlenül azon a számítógépen, amely a szerepkört üzemelteti, valamint a helyi erőforrásokat a környezetben. Azure Automation tárolja és kezeli a runbookok, majd egy vagy több hozzárendelt számítógéphez továbbítja azokat.
 
@@ -65,7 +66,7 @@ Ha ideiglenes fájlokat kell létrehoznia a runbook logikájának részeként, a
 
 A hibrid homokozóval a `C:\temp` hibrid Runbook-feldolgozók tárterületének rendelkezésre állása alapján lehet használni. Az Azure-beli virtuális gépekre vonatkozó javaslatok azonban nem használhatják az [ideiglenes lemezt](../virtual-machines/managed-disks-overview.md#temporary-disk) Windows vagy Linux rendszeren a megőrizni kívánt adatmennyiséghez.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 
 A runbookok tartalmaznia kell a logikai [erőforrásokat](/rest/api/resources/resources), például a virtuális gépeket, a hálózatot és az erőforrásokat a hálózaton. Az erőforrások egy Azure-előfizetéshez vannak kötve, és a megfelelő hitelesítő adatok megkövetelése az erőforrásokhoz való runbookok. A runbook erőforrásainak kezelésével kapcsolatos példát az [erőforrások kezelése](manage-runbooks.md#handle-resources)című témakörben talál.
 

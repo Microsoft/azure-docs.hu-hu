@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 9c6e57d45cb5647053283da687659cc5ff0217e9
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 8389ce008531e8bf295b2f863dad1ab2c3eb825c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802182"
+ms.locfileid: "104870653"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Azure Files és Azure NetApp Files összehasonlítása
 
@@ -26,7 +26,7 @@ A Cloud file Storage-t igénylő legtöbb számítási feladat Azure Files vagy 
 | Kategória | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
 | Leírás | A [Azure Files](https://azure.microsoft.com/services/storage/files/) egy teljes körűen felügyelt, magasan elérhető szolgáltatás, amely a helyi adatfrissítésekkel rendelkező, véletlenszerű hozzáférésű számítási feladatokhoz van optimalizálva.<br><br> Azure Files ugyanarra az Azure Storage platformra épül, mint az Azure-Blobok, mint más szolgáltatások. | A [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) egy teljes körűen felügyelt, magas rendelkezésre állású, nagyvállalati szintű NAS szolgáltatás, amely képes kezelni a speciális adatkezelési képességeket igénylő legigényesebb, nagy teljesítményű, kis késleltetésű számítási feladatokat. Lehetővé teszi a munkaterhelések áttelepítését, amelyek "nem áttelepíthető" állapotnak minősülnek.<br><br>  A ANF a NetApp operációs rendszer nélküli számítógépére épül, amely az Azure-adatközpontban futó ONTAP Storage operációs rendszert használja egységes Azure-élményhez és helyszíni, például teljesítményhez. |
-| Protokollok | Prémium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (előzetes verzió)</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> További információ: [elérhető fájlmegosztási protokollok](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Minden szintje<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Kettős protokollos hozzáférés (NFSv3/SMB)</li></ul><br> További információ: [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)-, [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)-vagy [kettős protokollú](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) kötetek létrehozása. |
+| Protokollok | Prémium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (előzetes verzió)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> További információ: [elérhető fájlmegosztási protokollok](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Minden szintje<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Kettős protokollos hozzáférés (NFSv3/SMB)</li></ul><br> További információ: [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)-, [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)-vagy [kettős protokollú](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) kötetek létrehozása. |
 | Régió elérhetősége | Prémium<br><ul><li>30 + régió</li></ul><br>Standard<br><ul><li>Minden régió</li></ul><br> További információért tekintse meg a [régiónként elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=storage). | Minden szintje<br><ul><li>25 + régió</li></ul><br> További információért tekintse meg a [régiónként elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=storage). |
 | Redundancia | Prémium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> További információk: [redundancia](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy). | Minden szintje<br><ul><li>Beépített helyi HA</li><li>[Régiók közötti replikáció](https://docs.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction)</li></ul> |
 | Service-Level szerződés (SLA)<br><br> Vegye figyelembe, hogy a Azure Files és a Azure NetApp Files SLA-kat eltérő módon számítjuk ki. | [SLA a Azure Files](https://azure.microsoft.com/support/legal/sla/storage/) | [SLA a Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp) |  

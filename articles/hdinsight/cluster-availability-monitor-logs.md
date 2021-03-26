@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja Azure Monitor naplókat a fürt �
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 299a17e23ca3eb2d954bae7335571ae1f645152e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100571905"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867151"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>A fürt rendelkezésre állásának figyelése Azure Monitor naplókkal a HDInsight-ben
 
@@ -25,7 +25,7 @@ Előfeltételként szükség lesz egy Log Analytics munkaterületre az összegy�
 
 A portál HDInsight-fürterőforrás lapján válassza a **Azure monitor** lehetőséget. Ezután válassza az **Engedélyezés** lehetőséget, majd válassza ki a log Analytics munkaterületet a legördülő menüből.
 
-![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/azure-portal-monitoring.png" alt-text="HDInsight Operations Management Suite":::
 
 Alapértelmezés szerint a OMS-ügynököt az összes fürtcsomóponton telepíti az Edge-csomópontok kivételével. Mivel a OMS-ügynök nem lett telepítve a fürt peremhálózati csomópontjain, alapértelmezés szerint nincs Log Analytics az Edge-csomópontok telemetria.
 
@@ -33,11 +33,11 @@ Alapértelmezés szerint a OMS-ügynököt az összes fürtcsomóponton telepít
 
 Azure Monitor naplózási integráció engedélyezése után (ez eltarthat néhány percig), navigáljon a **log Analytics munkaterület** -erőforráshoz, és válassza a **naplók** lehetőséget.
 
-![Log Analytics munkaterület naplófájljai](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdinsight-portal-logs.png" alt-text="Log Analytics munkaterület naplófájljai":::
 
 A naplók számos példa típusú lekérdezést listáznak, például:
 
-| Lekérdezés neve                      | Description                                                               |
+| Lekérdezés neve                      | Leírás                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | A számítógépek rendelkezésre állása ma    | A naplókat küldő számítógépek számának diagramja óránként                     |
 | Szívverések listázása                 | Az összes számítógép szívverésének listázása az elmúlt órában                           |
@@ -47,7 +47,7 @@ A naplók számos példa típusú lekérdezést listáznak, például:
 
 Futtassa például a **rendelkezésre állási arány** mintájának lekérdezését a lekérdezés **futtatásának** kiválasztásával, ahogy az a fenti képernyőképen is látható. Ez a fürt egyes csomópontjainak rendelkezésre állási arányát fogja megjeleníteni százalékban. Ha több HDInsight-fürtön is engedélyezte a metrikák küldését ugyanarra a Log Analytics munkaterületre, akkor a megjelenő fürtökben megjelenik az összes csomópont (az Edge-csomópontok kivételével) rendelkezésre állási sebessége.
 
-![Log Analytics munkaterület "rendelkezésre állási arány" mintájának lekérdezése](media/cluster-availability-monitor-logs/portal-availability-rate.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-availability-rate.png" alt-text="Log Analytics munkaterület &quot;rendelkezésre állási arány&quot; mintájának lekérdezése":::
 
 > [!NOTE]  
 > A rendelkezésre állási sebességet 24 órás időszakra mérjük, így a fürtnek legalább 24 órán át futnia kell, mielőtt a pontos rendelkezésre állási díjakat látni fogja.
@@ -60,16 +60,16 @@ Beállíthat Azure Monitor riasztásokat is, amelyek akkor aktiválódnak, ha eg
 
 A **naplókból** futtassa a nem **elérhető számítógépek** minta lekérdezést úgy, hogy a lekérdezés **Futtatás** parancsát választja, az alább látható módon.
 
-![Log Analytics munkaterület "nem elérhető számítógépek" mintát naplóz](media/cluster-availability-monitor-logs/portal-unavailable-computers.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-unavailable-computers.png" alt-text="Log Analytics munkaterület &quot;nem elérhető számítógépek&quot; mintát naplóz":::
 
 Ha az összes csomópont elérhető, a lekérdezésnek most nulla eredményt kell visszaadnia. Kattintson az **új riasztási szabály** elemre a lekérdezéshez tartozó riasztás konfigurálásának megkezdéséhez.
 
-![Log Analytics munkaterület új riasztási szabálya](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png" alt-text="Log Analytics munkaterület új riasztási szabálya":::
 
 A riasztásnak három összetevője van: az *erőforrás* , amelyhez létre kell hozni a szabályt (ebben az esetben a log Analytics munkaterület), a riasztás aktiválásának *feltételét* , valamint azokat a *műveleti csoportokat* , amelyek meghatározzák, hogy mi fog történni a riasztás indításakor.
 Az alább látható **feltétel címére** kattintva fejezze be a jel logikájának konfigurálását.
 
-![Portál riasztás létrehozása szabály feltétele](media/cluster-availability-monitor-logs/portal-condition-title.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-condition-title.png" alt-text="Portál riasztás létrehozása szabály feltétele":::
 
 Ekkor megnyílik a **jel logikájának konfigurálása**.
 
@@ -85,11 +85,11 @@ Ennek a riasztásnak a kihasználása érdekében meg kell győződnie arról, h
 
 Ha befejezte a jel logikájának konfigurálását, válassza a **kész** lehetőséget.
 
-![Riasztási szabály konfigurálja a jel logikáját](media/cluster-availability-monitor-logs/portal-configure-signal-logic.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-configure-signal-logic.png" alt-text="Riasztási szabály konfigurálja a jel logikáját":::
 
 Ha még nem rendelkezik meglévő műveleti csoporttal, kattintson az **új létrehozása** elemre a **műveleti csoportok** szakaszban.
 
-![Riasztási szabály új műveleti csoportot hoz létre](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-new-action-group.png" alt-text="Riasztási szabály új műveleti csoportot hoz létre":::
 
 Ekkor megnyílik a **Hozzáadás műveleti csoport**. Válassza ki a **műveleti csoport nevét**, a **rövid nevet**, az **előfizetést** és az **erőforráscsoportot.** A **műveletek** szakaszban válassza ki a **művelet nevét** , és válassza az **E-mail/SMS/leküldés/hang** lehetőséget a **művelet típusaként.**
 
@@ -98,26 +98,26 @@ Ekkor megnyílik a **Hozzáadás műveleti csoport**. Válassza ki a **műveleti
 
 Ekkor megnyílik az **e-mail/SMS/leküldés/hang**. Válassza ki a címzett **nevét** , **jelölje be** az **e-mail** szövegmezőt, és írjon be egy e-mail-címet, amelyre a riasztást el szeretné juttatni. Válassza az **OK gombot**  **e-mailben, SMS-ben/leküldés/hangban**, majd a **műveleti csoport hozzáadása** elemnél a műveleti csoport konfigurálásának befejezéséhez.
 
-![Riasztási szabály – hozzáadási műveleti csoport létrehozása](media/cluster-availability-monitor-logs/portal-add-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-add-action-group.png" alt-text="Riasztási szabály – hozzáadási műveleti csoport létrehozása":::
 
 Miután ezek a pengék bezárultak, a műveleti **csoportok** szakaszban szereplő műveleti csoportnak kell megjelennie. Végül fejezze be a **riasztás részletei** szakaszt a **riasztási szabály nevének** és **leírásának** beírásával és a **Súlyosság** kiválasztásával. A befejezéshez kattintson a **riasztási szabály létrehozása** elemre.
 
-![A portál riasztási szabályt hoz létre Befejezés](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png" alt-text="A portál riasztási szabályt hoz létre Befejezés":::
 
 > [!TIP]
 > A **Súlyosság** meghatározásának lehetősége egy hatékony eszköz, amely több riasztás létrehozásakor is használható. Létrehozhat például egy riasztást egy figyelmeztetés (1. pont) létrehozásához, ha egy fő csomópont leáll, és egy másik riasztás, amely kritikus (a 0. szint) állapotot eredményez abban a valószínűtlen eseményben, amelyet a főcsomópontok leállnak.
 
 Ha a riasztás feltétele teljesül, a riasztás tüzet fog kapni, és e-mailben megkapja a riasztás részleteit, például a következőt:
 
-![Azure Monitor riasztási e-mail példa](media/cluster-availability-monitor-logs/portal-oms-alert-email.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alert-email.png" alt-text="Azure Monitor riasztási e-mail példa":::
 
 Megtekintheti az összes kilőtt riasztást, súlyosság szerint csoportosítva, a **log Analytics munkaterületen** lévő **riasztások** megadásával.
 
-![Log Analytics munkaterület riasztásai](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png" alt-text="Log Analytics munkaterület riasztásai":::
 
 A súlyossági csoportosítás (például az **1.,** a fenti Kiemelt) kiválasztásakor az adott súlyosságú riasztásokra vonatkozó rekordok jelennek meg, amelyek az alábbihoz hasonlóak:
 
-![Log Analytics munkaterület – egyetlen riasztás](media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png" alt-text="Log Analytics munkaterület – egyetlen riasztás":::
 
 ## <a name="next-steps"></a>Következő lépések
 

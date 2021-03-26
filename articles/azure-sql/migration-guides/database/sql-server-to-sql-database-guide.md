@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server a SQL Databasehoz: áttelepítési útmutató'
+title: 'SQL Server a Azure SQL Databasehoz: áttelepítési útmutató'
 description: Ezt az útmutatót követve áttelepítheti SQL Server adatbázisait Azure SQL Databasere.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce155015373a096595dc61d75c876633e2e4f00a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563844"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027193"
 ---
-# <a name="migration-guide-sql-server-to-sql-database"></a>Áttelepítési útmutató: SQL Server SQL Database
+# <a name="migration-guide-sql-server-to-azure-sql-database"></a>Áttelepítési útmutató: SQL Server Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Ez az útmutató segítséget nyújt a SQL Server-példány átirányításához Azure SQL Databasere. 
@@ -30,7 +30,7 @@ A helyszíni vagy a szolgáltatásban futó SQL Server áttelepíthetők:
 - Számítási motor (Google Cloud Platform-GCP)  
 - Felhőbeli SQL a SQL Serverhoz (Google Cloud Platform – GCP) 
 
-További áttelepítési információkért tekintse meg az [áttelepítés áttekintését](sql-server-to-sql-database-overview.md). Más forgatókönyvek esetén tekintse meg az [adatbázis áttelepítési Útmutatóját](https://datamigration.microsoft.com/).
+További áttelepítési információkért tekintse meg az [áttelepítés áttekintését](sql-server-to-sql-database-overview.md). Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="Áttelepítési folyamat folyamatábrája":::
 
@@ -38,9 +38,11 @@ További áttelepítési információkért tekintse meg az [áttelepítés átte
 
 A SQL Server Azure SQL Databasere való áttelepítéséhez ellenőrizze, hogy rendelkezik-e az alábbi előfeltételekkel: 
 
-- A kiválasztott [áttelepítési módszer](sql-server-to-sql-database-overview.md#compare-migration-options) és a hozzá tartozó eszközök 
-- [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) olyan gépre van telepítve, amely képes a forráshoz való kapcsolódásra SQL Server
-- Cél [Azure SQL Database](../../database/single-database-create-quickstart.md)
+- A kiválasztott [áttelepítési módszer](sql-server-to-sql-database-overview.md#compare-migration-options) és a hozzá tartozó eszközök.
+- [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) olyan gépre van telepítve, amely képes csatlakozni a forrás SQL Serverhoz.
+- A cél [Azure SQL Database](../../database/single-database-create-quickstart.md). 
+- Kapcsolat és megfelelő engedélyek a forrás és a cél eléréséhez. 
+
 
 
 ## <a name="pre-migration"></a>A migrálás előtt
