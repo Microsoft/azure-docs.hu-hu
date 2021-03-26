@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94654983"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566026"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Az Azure Firewall használata üzemelő Windows Virtual Desktop-példányok védelmére
 
@@ -54,7 +54,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 - Hozzon létre egy hálózati szabálygyűjtemény-gyűjteményt, és adja hozzá a következő szabályokat:
 
    - DNS engedélyezése – a 53-es TCP-és UDP-portok esetében engedélyezze a magánhálózati IP-cím hozzáadását.
-   - KMS engedélyezése – a Windows rendszerű virtuális asztali virtuális gépek forgalmának engedélyezése a Windows aktiválási szolgáltatás 1688-es TCP-portjára. További információ a cél IP-címekről: a [Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution).
+   - KMS engedélyezése – a Windows rendszerű virtuális asztali virtuális gépek forgalmának engedélyezése a Windows aktiválási szolgáltatás 1688-es TCP-portjára. További információ a cél IP-címekről: a [Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution).
 
 > [!NOTE]
 > Előfordulhat, hogy egyes központi telepítések nem igényelnek DNS-szabályokat, például Azure Active Directory tartományvezérlők továbbítják a DNS-lekérdezéseket Azure DNS a következő helyen: 168.63.129.16.

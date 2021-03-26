@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: b8f5fbc076859be9f5ff5a215f92811d543ed7e4
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800108"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558006"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>SAS URI létrehozása virtuálisgép-rendszerképhez
 
 > [!NOTE]
-> A virtuális gép közzétételéhez nincs szükség SAS URI-ra. Egyszerűen megoszthat egy rendszerképet a parter Centerben. Lásd: [virtuális gép létrehozása jóváhagyott alap használatával](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) vagy [virtuális gép létrehozása saját rendszerkép](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) -utasítások használatával.
+> A virtuális gép közzétételéhez nincs szükség SAS URI-ra. Egyszerűen megoszthat egy rendszerképet a parter Centerben. Lásd: [virtuális gép létrehozása jóváhagyott alap használatával](./azure-vm-create-using-approved-base.md) vagy [virtuális gép létrehozása saját rendszerkép](./azure-vm-create-using-own-image.md) -utasítások használatával.
 
 Az SAS URI-k létrehozása a VHD-k számára a következő követelményekkel rendelkezik:
 

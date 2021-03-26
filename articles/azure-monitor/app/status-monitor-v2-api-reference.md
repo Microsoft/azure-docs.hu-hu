@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7c5c2f1d055ec6270892873548872b20b17b4158
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587518"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566897"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Agent API-referenciája
 
@@ -100,6 +100,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ```
 
+> [!NOTE]
+> Az ebben a kontextusban található AppFilter elnevezése zavaró lehet, `AppFilter` Beállítja az alkalmazásnév regex-szűrőt (üzemeltetési. sitename a .net-on az IIS-ben). `VirtualPathFilter` beállítja a virtuális elérési út regex-szűrőjét (üzemeltetési. ApplicationVirtualPath az IIS-ben .net esetén). Egyetlen alkalmazás esetében a következőképpen használhatja a VirtualPathFilter: `Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap @(@{VirtualPathFilter="^/MyAppName$"; InstrumentationSettings=@{InstrumentationKey='<your ikey>'}})`
 
 ### <a name="parameters"></a>Paraméterek
 

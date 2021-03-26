@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa91644eab9d28ffb20de8ec8c0fe00488922b67
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606956"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563378"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -80,7 +80,7 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hogyan beolvasni az adatnaplót?
 Az összes adatok beolvasása egy Log Analytics munkaterületről a Kusto Query Language (KQL) használatával írt napló lekérdezés használatával. Írhat saját lekérdezéseket, vagy használhat olyan megoldásokat és bepillantást, amelyek egy adott alkalmazáshoz vagy szolgáltatáshoz tartozó naplózási lekérdezéseket tartalmaznak. Lásd: [Azure monitorban található naplók áttekintése](logs/log-query-overview.md).
-P
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Törölhetek adatok Log Analytics munkaterületről?
 Az adatok el lettek távolítva a munkaterületről a [megőrzési időtartamnak](logs/manage-cost-storage.md#change-the-data-retention-period)megfelelően. A megadott adatokat adatvédelmi vagy megfelelőségi okokból is törölheti. További információkért lásd: [privát adatok exportálása és törlése](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
@@ -828,26 +828,27 @@ Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehet
 ## <a name="sql-insights-preview"></a>SQL-áttekintések (előzetes verzió)
 
 ### <a name="what-versions-of-sql-server-are-supported"></a>A SQL Server mely verziói támogatottak?
-Lásd: támogatott [verziók](insights/sql-insights-overview.md#supported-versions) az SQL támogatott verzióihoz.
+A SQL Server 2012-es és újabb verzióit támogatjuk. További részletekért tekintse meg a [támogatott verziók](insights/sql-insights-overview.md#supported-versions) című témakört.
 
 ### <a name="what-sql-resource-types-are-supported"></a>Milyen SQL-erőforrástípusok támogatottak?
+- Azure SQL Database
+- Felügyelt Azure SQL-példány
+- SQL Server az Azure Virtual Machines-on (az SQL-alapú [virtuális gép](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) szolgáltatójának regisztrált virtuális gépeken futó SQL Server)
+- Azure-beli virtuális gépek (SQL Server az SQL-alapú [virtuálisgép](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) -szolgáltatónál nem regisztrált virtuális gépeken futnak)
 
-- Azure SQL Database. Csak egyetlen adatbázis, nem adatbázisok egy rugalmas készletban.
-- Felügyelt Azure SQL-példány 
-- Olyan Azure SQL-alapú virtuális gépek ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) és Azure-beli virtuális gépek, amelyekre SQL Server telepítve van.
+További részletekért tekintse meg a [támogatott verziókat](insights/sql-insights-overview.md#supported-versions) , valamint a támogatás vagy a korlátozott támogatás nélküli forgatókönyvek részleteit.
 
-### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>Milyen operációs rendszereket támogat a SQL Server rendszert futtató gép?
-Bármely operációs rendszer, amely támogatja az SQL támogatott verzióját.
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>Milyen operációs rendszereket támogat a SQL Server rendszert futtató virtuális gép?
+Az Azure Virtual Machines SQL Server a [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) és [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create) dokumentációjában megadott összes operációs rendszert támogatjuk.
 
-### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>A távoli figyelési kiszolgáló milyen operációs rendszert támogat?
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>A figyelési virtuális gép operációs rendszere támogatott?
+Az Ubuntu 18,04 jelenleg az egyetlen operációs rendszer, amely támogatja a figyelési virtuális gépet.
 
-Az Ubuntu 18,04 jelenleg az egyetlen támogatott operációs rendszer.
-
-### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Hol lesznek tárolva a figyelési adatgyűjtés Log Analytics 
-Az összes megfigyelési adatmennyiséget a **InsightsMetrics** táblában tárolja a rendszer. A **Origin** oszlop értéke *Solutions.AzM.MS/Telegraf/SqlInsights*. A **névtér** oszlopban szerepelnek a *sqlserver_* kezdetű értékek.
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Hol lesznek tárolva a figyelési adattárolók Log Analytics?
+Az összes megfigyelési adatmennyiséget a **InsightsMetrics** táblában tárolja a rendszer. A **Origin** oszlop értéke: `solutions.azm.ms/telegraf/SqlInsights` . A **névtér** oszlopban a kezdetű értékek szerepelnek `sqlserver_` .
 
 ### <a name="how-often-is-data-collected"></a>Milyen gyakran történik az adatgyűjtés? 
-Tekintse meg az SQL-elemzések [által gyűjtött adatokat](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) a különböző adatgyűjtési gyakorisággal kapcsolatos részletekért.
+Az adatgyűjtés gyakorisága testreszabható. Tekintse meg az [SQL-elemzések által gyűjtött adatokat](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) az alapértelmezett gyakorisággal kapcsolatos részletekért, és tekintse meg az [SQL-figyelési profil létrehozása](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile) című témakört a gyakoriságok testreszabásához 
 
 ## <a name="next-steps"></a>Következő lépések
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.

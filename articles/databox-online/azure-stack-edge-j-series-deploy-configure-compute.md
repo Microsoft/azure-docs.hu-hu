@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4962216612bde8adc69f332f17c35cee0ecd17e6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935462"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568154"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Oktatóanyag: az adatátalakítás Azure Stack Edge Pro-val
 
@@ -116,9 +116,9 @@ Az oktatóanyag egyszerű üzembe helyezéséhez két megosztásra lesz szüksé
 
 ## <a name="add-a-module"></a>Modul hozzáadása
 
-Hozzáadhat egy egyéni vagy egy előre elkészített modult. Ezen a peremhálózati eszközön nincsenek egyéni modulok. Ha szeretné megismerni, hogyan hozhat létre egyéni modult, ugorjon a [C# modul fejlesztése a Azure stack Edge Pro-eszközhöz](azure-stack-edge-j-series-create-iot-edge-module.md)című témakörre.
+Hozzáadhat egy egyéni vagy egy előre elkészített modult. Ezen a peremhálózati eszközön nincsenek egyéni modulok. Ha szeretné megismerni, hogyan hozhat létre egyéni modult, ugorjon a [C# modul fejlesztése a Azure stack Edge Pro-eszközhöz](./azure-stack-edge-gpu-create-iot-edge-module.md)című témakörre.
 
-Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet a [C# modul fejlesztése a Azure stack Edge Pro](azure-stack-edge-j-series-create-iot-edge-module.md)-hoz című témakörben hozott létre. Ez az egyéni modul a peremhálózati eszköz peremhálózati helyi megosztásának fájljait veszi át, és áthelyezi őket egy peremhálózati (Felhőbeli) megosztásra az eszközön. A felhőalapú megosztás ezután leküldi a fájlokat a Felhőbeli megosztáshoz társított Azure Storage-fiókba.
+Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet a [C# modul fejlesztése a Azure stack Edge Pro](./azure-stack-edge-gpu-create-iot-edge-module.md)-hoz című témakörben hozott létre. Ez az egyéni modul a peremhálózati eszköz peremhálózati helyi megosztásának fájljait veszi át, és áthelyezi őket egy peremhálózati (Felhőbeli) megosztásra az eszközön. A felhőalapú megosztás ezután leküldi a fájlokat a Felhőbeli megosztáshoz társított Azure Storage-fiókba.
 
 1. Ugrás az **Edge-számításra > első lépések**. A **modulok hozzáadása** csempén válassza ki a forgatókönyv típusát **egyszerűként**. Válassza a **Hozzáadás** lehetőséget.
 2. A **modul konfigurálása és hozzáadása panelen adja** meg a következő értékeket:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a05a4692bb4a09213532ed29b2501f6b8056857
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63b99cdeb7606798caa1b1d997dbb9f609c033b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721990"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562188"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box Azure biztonsági alapterve
 
@@ -88,7 +88,7 @@ Megadhatja, hogy ki férhet hozzá a rendeléshez a rendelés első létrehozás
 
 - [Az Azure RBAC konfigurálása a munkafüzetek számára](../sentinel/quickstart-get-visibility.md)
 
-- [Ismerje meg, hogyan állíthatja be a hozzáférés-vezérlést a rendelésen](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Ismerje meg, hogyan állíthatja be a hozzáférés-vezérlést a rendelésen](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Felelősség**: Ügyfél
 
@@ -172,7 +172,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 A Data Box készülék esetében ez valós időben nem támogatott. A naplókat a feladatok végén tekintheti át.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -190,7 +190,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkaterületre.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
@@ -216,7 +216,7 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 **Útmutató**: hamarosan elérhető lesz; Azure Data Box esetében Ügyfélszéf még nem támogatott. 
 
-- [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -254,7 +254,7 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 - [Ismerje meg, hogyan kezdheti el a Azure Data Box](data-box-quickstart-portal.md)
 
-- [A hozzáférés-vezérlés beállításának ismertetése](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [A hozzáférés-vezérlés beállításának ismertetése](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Felelősség**: Ügyfél
 
@@ -281,7 +281,7 @@ Emellett a Azure Data Box védi az eszköz zárolási kulcsát (más néven eszk
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure Data Box, valamint más kritikus vagy kapcsolódó erőforrások esetében is megtörténik.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -459,5 +459,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

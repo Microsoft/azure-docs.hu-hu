@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d423a8aaf3ace78ccb4b2eb1d8424c6a1dfb61bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a804b6d6840b25993ad6e249305f531a818be32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705976"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559451"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure biztonsági alapkonfiguráció Azure-beli adatmegosztáshoz
 
@@ -34,7 +34,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti ezeket az adattábl�
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -48,11 +48,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti ezeket az adattábl�
 
 Engedélyezze a diagnosztikai naplókat az Azure-adatmegosztáshoz, pontosabban a diagnosztikai naplókat a MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Ezek a naplók lehetővé teszik a legfontosabb információk, például a szinkronizálás kezdési idejének, a befejezési idő, az állapot és az egyéb részletek rögzítését. Ezek a naplók kritikus fontosságúak lehetnek a biztonsági incidensek kivizsgálásához és a kriminalisztikai gyakorlatok végrehajtásához.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](/azure/azure-monitor/platform/platform-logs-overview)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](/azure/azure-monitor/platform/activity-log)
+- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -62,9 +62,9 @@ Engedélyezze a diagnosztikai naplókat az Azure-adatmegosztáshoz, pontosabban 
 
 **Útmutató**: gondoskodjon arról, hogy az Azure-adatmegosztási naplók tárolására használt összes Storage-fiók vagy log Analytics-munkaterület a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időtartamát.
 
-- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Erőforrás-naplók tárolása Azure Storage-fiókban](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Felelősség**: Ügyfél
 
@@ -78,9 +78,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics lekérdezések első lépései](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Felelősség**: Ügyfél
 
@@ -94,7 +94,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -144,7 +144,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Az Azure-adatmegosztás az általános Azure-beli beépített szerepkörökkel működik ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Az Azure-adatmegosztás az általános Azure-beli beépített szerepkörökkel működik ](../role-based-access-control/built-in-roles.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -154,11 +154,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: az Azure ad olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD identitás-és hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/) 
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml) 
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md) 
 
-- [Az Azure-adatmegosztás az általános Azure-beli beépített szerepkörökkel működik ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Az Azure-adatmegosztás az általános Azure-beli beépített szerepkörökkel működik ](../role-based-access-control/built-in-roles.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -170,7 +170,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Felelősség**: Ügyfél
 
@@ -208,7 +208,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata Azure monitor riasztások létrehozásához, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -291,7 +291,7 @@ Az Azure Resource Graph segítségével lekérdezheti és felderítheti az előf
 
 **Útmutató**: távolítsa el az Azure-erőforrásokat, ha már nincs rájuk szükség, ez a Azure Portal, a PowerShell vagy a CLI használatával végezhető el.
 
-- [Azure-erőforráscsoport és erőforrás-törlés](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+- [Azure-erőforráscsoport és erőforrás-törlés](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)
 
 Az Azure-beli adatmegosztás nem teszi elérhetővé az operációs rendszert, vagy lehetővé teszi harmadik féltől származó szoftverek telepítését az erőforrásaira.
 
@@ -305,7 +305,7 @@ Az Azure-beli adatmegosztás nem teszi elérhetővé az operációs rendszert, v
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -343,7 +343,7 @@ Az Azure-beli adatmegosztás nem teszi elérhetővé az operációs rendszert, v
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Aliasok használata](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Felelősség**: Ügyfél
 
@@ -361,5 +361,5 @@ Az Azure-beli adatmegosztás nem teszi elérhetővé az operációs rendszert, v
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

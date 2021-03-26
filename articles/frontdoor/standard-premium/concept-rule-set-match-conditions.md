@@ -5,25 +5,25 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.author: yuajia
-ms.openlocfilehash: 4c65d0e7f80fab59ca7df4849df7117d482352c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 039effb885463c1c53085535a6980601be890340
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101099193"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561438"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-match-conditions"></a>Azure bejárati ajtó standard/prémium (előzetes verzió) szabályának beállítása egyeztetési feltételek
 
 > [!Note]
 > Ez a dokumentáció az Azure bejárati ajtó standard/Premium (előzetes verzió) verziójához készült. Információt keres az Azure bejárati ajtóról? Megtekintés [itt](../front-door-overview.md).
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy szabályt a Azure Portalban az első szabálykészlet alapján. Az Azure-beli bejárati ajtó standard/prémium [szabálykészlet beállításban](concept-rule-set.md)egy szabály nulla vagy több egyeztetési feltételből és egy műveletből áll. Ez a cikk részletesen ismerteti az Azure-beli előtérben szabványos/prémium szabálykészlet által használható egyezési feltételeket.
+Az Azure-beli bejárati ajtó standard/prémium [szabálykészlet beállításban](concept-rule-set.md)egy szabály nulla vagy több egyeztetési feltételből és egy műveletből áll. Ez a cikk részletesen ismerteti az Azure-beli előtérben szabványos/prémium szabálykészlet által használható egyezési feltételeket.
 
-A szabály első része az egyeztetési feltétel vagy az egyeztetési feltételek halmaza. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez meghatározott műveleteket végeztek. Ha több egyeztetési feltételt használ, az egyeztetési feltételek a és a Logic használatával vannak csoportosítva. A több értéket támogató összes egyeztetési feltétel ("szóközzel tagolt") esetén a "vagy" operátor feltételezett.
+A szabály első része az egyeztetési feltétel vagy az egyeztetési feltételek halmaza. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez meghatározott műveleteket végeztek. Ha több egyeztetési feltételt használ, az egyeztetési feltételek a és a Logic használatával vannak csoportosítva. A több értéket támogató egyezési feltételek vagy a logika használata.
 
-Az egyeztetési feltételt például a következőre használhatja:
+Az egyeztetési feltételt a következőre használhatja:
 
 * Kérelmek szűrése adott IP-cím, ország vagy régió alapján.
 * Kérelmek szűrése fejléc-információk alapján.
@@ -36,195 +36,767 @@ Az egyeztetési feltételt például a következőre használhatja:
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A következő egyeztetési feltételek használhatók az Azure bejárati ajtó standard/prémium szabályainak beállításakor:
+## <a name="device-type"></a><a name="IsDevice"></a> Eszköz típusa
 
-## <a name="device-type"></a>Eszköz típusa
+A mobileszköz vagy asztali eszköz által készített kérelmek azonosításához használja az **eszköz típusának** egyeztetése feltételt.  
 
-A mobileszköz vagy asztali eszköz által küldött kérelmeket azonosítja.  
+### <a name="properties"></a>Tulajdonságok
 
-#### <a name="required-fields"></a>Kötelező mezők
+| Tulajdonság | Támogatott értékek |
+|-------|------------------|
+| Operátor | <ul><li>A Azure Portal: `Equal` , `Not Equal`</li><li>Az ARM-sablonokban: `Equal` ; a `negateCondition` tulajdonsággal adhatja meg, hogy _ne legyen egyenlő_ |
+| Érték | `Mobile`, `Desktop` |
 
-Operátor | Támogatott értékek
----------|----------------
-Egyenlő, nem egyenlő | Mobil, asztali
+### <a name="example"></a>Példa
 
-## <a name="post-argument"></a>Bejegyzés argumentuma
+Ebben a példában a mobileszköz alapján észlelt összes kérelem megfelel.
 
-A kérésben használt POST kérelem metódusa által megadott argumentumok alapján azonosítja a kérelmeket.
+# <a name="portal"></a>[Portál](#tab/portal)
 
-#### <a name="required-fields"></a>Kötelező mezők
+:::image type="content" source="../media/concept-rule-set-match-conditions/device-type.png" alt-text="A portál képernyőképe az eszköz típusának egyeztetése feltételt mutatja.":::
 
-Argumentum neve | Operátor | Argumentum értéke | Eset átalakítása
---------------|----------|----------------|---------------
-Sztring | [Operátorok listája](#operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs
+# <a name="json"></a>[JSON](#tab/json)
 
-## <a name="query-string"></a>Lekérdezési sztring
+```json
+{
+  "name": "IsDevice",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "Mobile"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleIsDeviceConditionParameters"
+  }
+}
+```
 
-A megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azonosítja. Ez a paraméter olyan értékre van beállítva, amely megfelel egy adott mintának. A kérelem URL-címében szereplő lekérdezési karakterlánc paraméterei (például **paraméter = érték**) határozzák meg, hogy ez a feltétel teljesül-e. Ez a megfeleltetési feltétel a lekérdezési karakterlánc paraméterét azonosítja a nevével, és egy vagy több értéket fogad el a paraméter értékeként.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-#### <a name="required-fields"></a>Kötelező mezők
+```bicep
+{
+  name: 'IsDevice'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'Mobile'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleIsDeviceConditionParameters'
+  }
+}
+```
 
-Operátor | Lekérdezési sztring | Eset átalakítása
----------|--------------|---------------
-[Operátorok listája](#operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs
+---
 
-## <a name="remote-address"></a>Távoli címek
+## <a name="post-args"></a><a name="PostArgs"></a> Argumentumok közzététele
 
-A kérelmező helye vagy IP-címe alapján azonosítja a kérelmeket.
+A **post argumentumok** egyeztetési feltételével azonosíthatja a kérelmeket a post kérelem törzsében megadott argumentumok alapján. Egyetlen egyeztetési feltétel egyezik a POST kérelem törzsének egyetlen argumentumával. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
 
-#### <a name="required-fields"></a>Kötelező mezők
+> [!NOTE]
+> A **post argumentumok** egyeztetése feltétel a `application/x-www-form-urlencoded` tartalomtípussal működik.
 
-Operátor | Támogatott értékek
----------|-----------------
-Földrajzi egyezés | Országkód
-IP-egyeztetés | IP-cím (szóközzel tagolt)
-Nem földrajzi egyezés | Országkód
-Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
+### <a name="properties"></a>Tulajdonságok
 
-#### <a name="key-information"></a>Legfontosabb információk
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Argumentumok közzététele | A POST argumentum nevét jelölő karakterlánc-érték. |
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Érték | Egy vagy több karakterlánc-vagy egész érték, amely a POST argumentum értékének megfelelő értéket jelöli. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
 
-* CIDR-jelölés használata.
-* Több IP-cím és IP-címterület esetén a "vagy a" logika működik.
-    * **IPv4-példa**: Ha a *1.2.3.4* és a *10.20.30.40* két IP-címet ad hozzá, akkor a feltételt a rendszer a 1.2.3.4 vagy a 10.20.30.40 címről érkező kérelmek esetén egyezteti.
-    * **IPv6-példa**: ha a *1:2:3:4:5:6:7:8* -es és a *10:20:30:40:50:60:70:80*-as két IP-címet ad hozzá, akkor a feltételt akkor kell egyeztetni, ha a 1:2:3:4:5:6:7:8-tól vagy 10:20:30:40:50:60:70:80-tól érkező összes kérelem
-* Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
-    * **IPv4-példa**: a *5.5.5.64/26* a 5.5.5.64-en keresztül a 5.5.5.127-on keresztül érkező kérésekre illeszkedik.
-    * **IPv6-példa**: a *1:2:3:/48* a 1:2:3:0:0:0:0:0 és 1:2:3 közötti címekről érkező összes kérelemre illeszkedik: FFFF: FFFF: FFFF: FFFF: FFFF.
+### <a name="example"></a>Példa
 
-## <a name="request-body"></a>A kérés törzse
+Ebben a példában az összes olyan POST-kérést egyeztetjük, amelyben `customerName` argumentum van megadva a kérelem törzsében, és ahol az érték a `customerName` betűvel kezdődik `J` `K` . A bemeneti értékeket nagybetűvé alakítjuk, hogy az a, a, a és a értékkel kezdődő értékek `J` `j` `K` `k` mindegyike illeszkedjen a kis-és nagybetűkre.
 
-A kérések törzsében megjelenő megadott szöveg alapján azonosítja a kérelmeket.
+# <a name="portal"></a>[Portál](#tab/portal)
 
-#### <a name="required-fields"></a>Kötelező mezők
+:::image type="content" source="../media/concept-rule-set-match-conditions/post-args.png" alt-text="A portál képernyőképe az argumentumok egyeztetése feltételt mutatja.":::
 
-Operátor | A kérés törzse | Eset átalakítása
----------|--------------|---------------
-[Operátorok listája](#operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs
+# <a name="json"></a>[JSON](#tab/json)
 
-## <a name="request-header"></a>Kérelem fejléce
+```json
+{
+  "name": "PostArgs",
+  "parameters": {
+    "selector": "customerName",
+    "operator": "BeginsWith",
+    "negateCondition": false,
+    "matchValues": [
+        "J",
+        "K"
+    ],
+    "transforms": [
+        "Uppercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRulePostArgsConditionParameters"
+}
+```
 
-A kérelemben megadott fejlécet használó kérelmeket azonosítja.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-#### <a name="required-fields"></a>Kötelező mezők
+```bicep
+{
+  name: 'PostArgs'
+  parameters: {
+    selector: 'customerName'
+    operator: 'BeginsWith'
+    negateCondition: false
+    matchValues: [
+      'J'
+      'K'
+    ]
+    transforms: [
+      'Uppercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRulePostArgsConditionParameters'
+  }
+}
+```
 
-Fejléc neve | Operátor | Fejléc értéke | Eset átalakítása
-------------|----------|--------------|---------------
-Sztring | [Operátorok listája](#operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs
+---
 
-## <a name="request-method"></a>Kérelem metódusa
+## <a name="query-string"></a><a name="QueryString"></a> Lekérdezési karakterlánc
 
-A megadott kérési módszert használó kérelmeket azonosítja.
+A **lekérdezési karakterlánc** egyeztetési feltételével azonosíthatja azokat a kérelmeket, amelyek egy adott lekérdezési karakterláncot tartalmaznak. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
 
-#### <a name="required-fields"></a>Kötelező mezők
+> [!NOTE]
+> A teljes lekérdezési karakterlánc egyetlen karakterláncként van kialakítva, a sortávolság nélkül `?` .
 
-Operátor | Támogatott értékek
----------|----------------
-Egyenlő, nem egyenlő | LETÖLTÉS, KÖZZÉTÉTEL, PUT, TÖRLÉS, FEJ, BEÁLLÍTÁSOK, NYOMKÖVETÉS
+### <a name="properties"></a>Tulajdonságok
 
-#### <a name="key-information"></a>Legfontosabb információk
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Lekérdezési sztring | Egy vagy több karakterlánc-vagy egész érték, amely a lekérdezési karakterláncnak megfelelő értéket jelöli. A `?` lekérdezési karakterlánc elején ne adja meg a következőt:. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
 
-Csak a GET kérési módszer tud gyorsítótárazott tartalmat előállítani az Azure-beli bejárati ajtón. Minden más kérelmezési módszer a hálózaton keresztül történik.
+### <a name="example"></a>Példa
 
-## <a name="request-protocol"></a>Kérelem protokollja
+Ebben a példában az összes olyan kérést egyeztetjük, amelyben a lekérdezési karakterlánc tartalmazza a karakterláncot `language=en-US` . Az egyeztetési feltételt a kis-és nagybetűk megkülönböztetésére szeretnénk használni, ezért nem alakítjuk át az esetet.
 
-Azokat a kérelmeket azonosítja, amelyek a megadott protokollt használják.
+# <a name="portal"></a>[Portál](#tab/portal)
 
-#### <a name="required-fields"></a>Kötelező mezők
+:::image type="content" source="../media/concept-rule-set-match-conditions/query-string.png" alt-text="A lekérdezési karakterlánc egyeztetési feltételét ábrázoló portál képernyőképe.":::
 
-Operátor | Támogatott értékek
----------|----------------
-Egyenlő, nem egyenlő | HTTP, HTTPS
+# <a name="json"></a>[JSON](#tab/json)
 
-## <a name="request-url"></a>URL-cím kérése
+```json
+{
+  "name": "QueryString",
+  "parameters": {
+    "operator": "Contains",
+    "negateCondition": false,
+    "matchValues": [
+      "language=en-US"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleQueryStringConditionParameters"
+  }
+}
+```
 
-A megadott URL-címnek megfelelő kérelmeket azonosítja.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-#### <a name="required-fields"></a>Kötelező mezők
+```bicep
+{
+  name: 'QueryString'
+  parameters: {
+    operator: 'Contains'
+    negateCondition: false
+    matchValues: [
+      'language=en-US'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleQueryStringConditionParameters'
+  }
+}
+```
 
-Operátor | URL-cím kérése | Eset átalakítása
----------|-------------|---------------
-[Operátorok listája](#operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs
+---
 
-#### <a name="key-information"></a>Legfontosabb információk
+## <a name="remote-address"></a><a name="RemoteAddress"></a> Távoli címek
 
-A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: *https://www . \<yourdomain\> . com*.
+A **távoli cím** egyeztetése feltétel azonosítja a kérelmeket a kérelmező helye vagy IP-címe alapján. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
 
-## <a name="request-file-extension"></a>Fájl kiterjesztésének kérése
+* IP-CIDR megadásakor használja a jelölést. Ez azt jelenti, hogy az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
+    * **IPv4-példa**: a `5.5.5.64/26` 5.5.5.127-en keresztül 5.5.5.64-címekről érkező kérelmekre illeszkedik.
+    * **IPv6-példa**: a `1:2:3:/48` 1:2:3:0:0:0:0:0-tól 1:2:3: FFFF: FFFF: FFFF: FFFF: FFFF címről érkező kérelmekre illeszkedik.
+* Ha több IP-címet és IP-címtartományt ad meg, a "vagy a" logikát alkalmazza a rendszer.
+    * **IPv4-példa**: Ha két IP-címet ad hozzá `1.2.3.4` `10.20.30.40` , és a feltétel megfelel a 1.2.3.4 vagy 10.20.30.40 érkező kéréseknek.
+    * **IPv6-példa**: Ha két IP-címet ad hozzá `1:2:3:4:5:6:7:8` `10:20:30:40:50:60:70:80` , és a feltételt a 1:2:3:4:5:6:7:8 vagy a 10:20:30:40:50:60:70:80 címről érkező kérések esetén egyezteti.
 
-Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlkiterjesztést a kérelem URL-címében található fájlnévben.
+### <a name="properties"></a>Tulajdonságok
 
-#### <a name="required-fields"></a>Kötelező mezők
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | <ul><li>A Azure Portal:, `Geo Match` `Geo Not Match` ,, `IP Match` vagy `IP Not Match`</li><li>Az ARM-sablonokban: `GeoMatch` , `IPMatch` ; a `negateCondition` tulajdonság használatával megadásával megadhatók a _földrajzi nem egyezés_ vagy az _IP-cím nem egyezik_ .</li></ul> |
+| Érték | <ul><li>A `IP Match` vagy `IP Not Match` operátorok esetében: egy vagy több IP-címtartományt ad meg. Ha több IP-címtartományt is meg van adva, azok kiértékelése a vagy a Logic használatával történik.</li><li>A `Geo Match` vagy `Geo Not Match` operátorok esetében: válasszon egy vagy több helyet az országkód alapján.</li></ul> |
 
-Operátor | Mellék | Eset átalakítása
----------|-----------|---------------
-[Operátorok listája](#operator-list)  | Karakterlánc, int | Kisbetűs, nagybetűs
+### <a name="example"></a>Példa
 
-#### <a name="key-information"></a>Legfontosabb információk
+Ebben a példában minden olyan kérésnek megfelel, amelyben a kérelem nem a Egyesült Államok származik.
 
-A bővítményhez ne adjon meg egy kezdő időszakot; a *. html* helyett például *HTML* -t használjon.
+# <a name="portal"></a>[Portál](#tab/portal)
 
-## <a name="request-file-name"></a>Kérelem fájljának neve
+:::image type="content" source="../media/concept-rule-set-match-conditions/remote-address.png" alt-text="A távoli címek egyeztetési feltételét ábrázoló portál képernyőképe.":::
 
-Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlnevet a kérelmező URL-címében.
+# <a name="json"></a>[JSON](#tab/json)
 
-#### <a name="required-fields"></a>Kötelező mezők
+```json
+{
+  "name": "RemoteAddress",
+  "parameters": {
+    "operator": "GeoMatch",
+    "negateCondition": true,
+    "matchValues": [
+      "US"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRemoteAddressConditionParameters"
+  }
+}
+```
 
-Operátor | Fájlnév | Eset átalakítása
----------|-----------|---------------
-[Operátorok listája](#operator-list)| Karakterlánc, int | Kisbetűs, nagybetűs
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-## <a name="request-path"></a>Kérés útvonala
+```bicep
+{
+  name: 'RemoteAddress'
+  parameters: {
+    operator: 'GeoMatch'
+    negateCondition: true
+    matchValues: [
+      'US'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRemoteAddressConditionParameters'
+  }
+}
+```
 
-Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott elérési utat a kérelem URL-címében.
+---
 
-#### <a name="required-fields"></a>Kötelező mezők
+## <a name="request-body"></a><a name="RequestBody"></a> Kérelem törzse
 
-Operátor | Érték | Eset átalakítása
----------|-------|---------------
-[Operátorok listája](#operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs
+A **kérelem törzsének** egyeztetési feltétele a kérés törzsében megjelenő konkrét szöveg alapján azonosítja a kérelmeket. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
 
-## <a name="operator-list"></a><a name = "operator-list"></a>Operátorok listája
+> [!NOTE]
+> Ha egy kérelem törzse meghaladja a 64 kb méretét, csak az első 64 kb fogja figyelembe venni a **kérelem törzsének** egyeztetési feltételéhez.
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Érték | Egy vagy több olyan karakterlánc-vagy egész érték, amely a kérelem szövegtörzsének megfelelő értéket jelöli. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Példa
+
+Ebben a példában minden olyan kérés megfelel, amelyben a kérelem törzse tartalmazza a karakterláncot `ERROR` . Az egyezés kiértékelése előtt átalakítja a kérés törzsét nagybetűvé, így a `error` többi eset variáció is elindítja ezt a megfeleltetési feltételt.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-body.png" alt-text="A kérelem törzsének egyeztetési feltételét bemutató portál képernyőképe.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestBody",
+  "parameters": {
+    "operator": "Contains",
+    "negateCondition": false,
+    "matchValues": [
+      "ERROR"
+    ],
+    "transforms": [
+      "Uppercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestBodyConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestBody'
+  parameters: {
+    operator: 'Contains'
+    negateCondition: false
+    matchValues: [
+      'ERROR'
+    ]
+    transforms: [
+      'Uppercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestBodyConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-file-name"></a><a name="UrlFileName"></a> Kérelem fájljának neve
+
+A **kérelem fájlnevének** egyeztetése feltétel azonosítja azokat a kérelmeket, amelyek tartalmazzák a megadott fájlnevet a kérelem URL-címében. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Érték | Egy vagy több karakterlánc-vagy egész érték, amely a kérelem fájlnevének megfelelő értéket jelöli. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Példa
+
+Ebben a példában minden olyan kérés megfelel, amelyben a kérelem fájlneve szerepel `media.mp4` . Az egyezés kiértékelése előtt átalakítja a fájlnevet kisbetűs értékre, így a `MEDIA.MP4` többi eset variáció is elindítja ezt a megfeleltetési feltételt.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-file-name.png" alt-text="A Portal képernyőképe, amely a kérelem fájlnevének egyeztetési feltételét mutatja.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlFileName",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "media.mp4"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFilenameConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlFileName'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'media.mp4'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFilenameConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-file-extension"></a><a name="UrlFileExtension"></a> Fájl kiterjesztésének kérése
+
+A **kérelem fájlkiterjesztés** egyeztetése feltétel azonosítja azokat a kérelmeket, amelyek tartalmazzák a megadott fájlkiterjesztést a kérelem URL-címében a fájlnévben. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
+
+> [!NOTE]
+> Ne adja meg a kezdő időszakot. Használja például az `html` értéket az `.html` érték helyett.
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Érték | Egy vagy több karakterlánc-vagy egész érték, amely a kérelem kiterjesztésének megfelelő értéket jelöli. Ne adja meg a kezdő időszakot. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Példa
+
+Ebben a példában az összes olyan kérést egyeztetjük, amelyben a kérelem fájlkiterjesztés `pdf` vagy `docx` . A kérelem kiterjesztését kisbetűsre alakítjuk, mielőtt kiértékeljük a egyezést, így a `PDF` `DocX` , és más esetekben az egyeztetési feltétel is aktiválódik.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-file-extension.png" alt-text="Portál képernyőképe, amely a kérelem fájlkiterjesztés egyeztetési feltételét mutatja.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlFileExtension",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "pdf",
+      "docx"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFileExtensionMatchConditionParameters"
+  }
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlFileExtension'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'pdf'
+      'docx'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFileExtensionMatchConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-header"></a><a name="RequestHeader"></a> Kérelem fejléce
+
+A **kérelem fejlécének** egyeztetése feltétel azonosítja azokat a kérelmeket, amelyek egy adott fejlécet tartalmaznak a kérelemben. Ezzel a megfeleltetési feltétellel ellenőrizhető, hogy egy fejléc létezik-e az értékével, vagy annak ellenőrzéséhez, hogy a fejléc megfelel-e a megadott értéknek. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Fejléc neve | A POST argumentum nevét jelölő karakterlánc-érték. |
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Érték | Egy vagy több karakterlánc-vagy egész érték, amely a kérelem fejlécének megfelelő értéket jelöli. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Példa
+
+Ebben a példában az összes olyan kérést egyeztetjük, amelyben a kérelem egy nevű fejlécet tartalmaz `MyCustomHeader` , az értéktől függetlenül.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-header.png" alt-text="A kérelem fejlécének egyeztetési feltételét bemutató portál képernyőképe.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestHeader",
+  "parameters": {
+    "selector": "MyCustomHeader",
+    "operator": "Any",
+    "negateCondition": false,
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestHeaderConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestHeader'
+  parameters: {
+    selector: 'MyCustomHeader',
+    operator: 'Any'
+    negateCondition: false
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestHeaderConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-method"></a><a name="RequestMethod"></a> Kérelem metódusa
+
+A **kérelem metódusának** egyeztetése feltétel azonosítja a megadott HTTP-kérelem módszert használó kérelmeket. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | <ul><li>A Azure Portal: `Equal` , `Not Equal`</li><li>Az ARM-sablonokban: `Equal` ; a `negateCondition` tulajdonsággal adhatja meg, hogy _ne legyen egyenlő_ |
+| Kérelem metódusa | Egy vagy több HTTP-metódus a következők közül:,,,,, `GET` `POST` `PUT` `DELETE` `HEAD` `OPTIONS` , `TRACE` . Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+
+### <a name="example"></a>Példa
+
+Ebben a példában minden olyan kérés megfelel, amelyben a kérelem a `DELETE` metódust használja.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-method.png" alt-text="A kérelem metódusának egyeztetési feltételét bemutató portál képernyőképe.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestMethod",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "DELETE"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestMethodConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestMethod'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'DELETE
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestMethodConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-path"></a><a name="UrlPath"></a> Kérelem elérési útja
+
+A **kérelem útvonalának** egyeztetése feltétel azonosítja azokat a kérelmeket, amelyek tartalmazzák a megadott elérési utat a kérelem URL-címében. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
+
+> [!NOTE]
+> Az elérési út az URL-cím része az állomásnév és a perjel után. Az URL-címben például `https://www.contoso.com/files/secure/file1.pdf` az elérési út `files/secure/file1.pdf` .
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Érték | Egy vagy több olyan karakterlánc-vagy egész érték, amely a kérelem útvonalának megfelelő értéket jelöli. Ne adja meg a kezdő perjelet. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Példa
+
+Ebben a példában minden olyan kérésnek megfelel, amelyben a kérelem fájljának elérési útja a következővel kezdődik: `files/secure/` . Az egyezés kiértékelése előtt átalakítja a fájl kiterjesztését a kisbetűsre, ezért a kérések `files/SECURE/` és más esetekben a változás is elindítja ezt a megfeleltetési feltételt.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-path.png" alt-text="A kérelem elérési útjának egyeztetési feltételét bemutató portál képernyőképe":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlPath",
+  "parameters": {
+    "operator": "BeginsWith",
+    "negateCondition": false,
+    "matchValues": [
+      "files/secure/"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlPathMatchConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlPath'
+  parameters: {
+    operator: 'BeginsWith'
+    negateCondition: false
+    matchValues: [
+      'files/secure/'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlPathMatchConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-protocol"></a><a name="RequestScheme"></a> Kérelem protokollja
+
+A **kérelem protokolljának** egyeztetése feltétel azonosítja a megadott PROTOKOLLT (http vagy https) használó kérelmeket.
+
+> [!NOTE]
+> A *protokollt* más néven *sémának* is nevezzük.
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | <ul><li>A Azure Portal: `Equal` , `Not Equal`</li><li>Az ARM-sablonokban: `Equal` ; a `negateCondition` tulajdonsággal adhatja meg, hogy _ne legyen egyenlő_ |
+| Kérelem metódusa | `HTTP`, `HTTPS` |
+
+### <a name="example"></a>Példa
+
+Ebben a példában minden olyan kérés megfelel, amelyben a kérelem a `HTTP` protokollt használja.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-protocol.png" alt-text="A portál képernyőképe a kérelem protokolljának egyeztetési feltételét mutatja.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestScheme",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "HTTP"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestSchemeConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestScheme'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'HTTP
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestSchemeConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-url"></a><a name="RequestUrl"></a> Kérelem URL-címe
+
+A megadott URL-címnek megfelelő kérelmeket azonosítja. A rendszer kiértékeli a teljes URL-címet. Több értéket is megadhat az egyeztetéshez, amely kombinálva lesz a vagy a Logic használatával.
+
+> [!TIP]
+> A szabály feltételének használatakor ügyeljen arra, hogy tartalmazza a protokollt. Például `https://www.contoso.com` a helyett használja a parancsot `www.contoso.com` .
+
+### <a name="properties"></a>Tulajdonságok
+
+| Tulajdonság | Támogatott értékek |
+|-|-|
+| Operátor | A [normál operátorok listájáról](#operator-list)származó bármely operátor. |
+| Érték | Egy vagy több karakterlánc-vagy egész érték, amely a kérelem URL-címének megfelelő értéket jelöli. Ha több érték van megadva, azok kiértékelése a vagy a Logic használatával történik. |
+| Eset átalakítása | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Példa
+
+Ebben a példában a kérelem URL-címének megkezdéséhez tartozó összes kérelem megfelel `https://api.contoso.com/customers/123` . Az egyezés kiértékelése előtt átalakítja a fájl kiterjesztését a kisbetűsre, ezért a kérések `https://api.contoso.com/Customers/123` és más esetekben a változás is elindítja ezt a megfeleltetési feltételt.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-url.png" alt-text="Portál képernyőképe – a kérelem URL-címének egyeztetése.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestUri",
+  "parameters": {
+    "operator": "BeginsWith",
+    "negateCondition": false,
+    "matchValues": [
+      "https://api.contoso.com/customers/123"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestUriConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestUri'
+  parameters: {
+    operator: 'BeginsWith'
+    negateCondition: false
+    matchValues: [
+      'https://api.contoso.com/customers/123'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestUriConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="operator-list"></a><a name = "operator-list"></a> Operátorok listája
 
 Azok a szabályok, amelyek a normál operátorok listájából fogadnak értékeket, a következő operátorok érvényesek:
 
-* Bármelyik
-* Egyenlő
-* Contains
-* Kezdete
-* Végződik
-* Kisebb, mint
-* Kisebb vagy egyenlő
-* Nagyobb, mint
-* Nagyobb vagy egyenlő
-* Nem
-* Nem tartalmazza
-* Nem kezdődik
-* Nem végződik
-* Nem kisebb, mint
-* Nem kisebb vagy egyenlő
-* Nem nagyobb, mint
-* Nem nagyobb vagy egyenlő
-* Reguláris kifejezés
+| Operátor                   | Leírás                                                                                                                    | ARM-sablon támogatása                                            |
+|----------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| Bármelyik                        | Egyezés, ha bármilyen érték van, függetlenül attól, hogy mi ez.                                                                     | `operator`: `Any`                                               |
+| Egyenlő                      | Megfelel, ha az érték pontosan megfelel a megadott sztringnek.                                                                   | `operator`: `Equal`                                             |
+| Contains                   | Megfelel, ha az érték a megadott karakterláncot tartalmazza.                                                                          | `operator`: `Contains`                                          |
+| Kisebb, mint                  | Akkor egyezik, ha az érték hossza kisebb, mint a megadott egész szám.                                                       | `operator`: `LessThan`                                          |
+| Nagyobb, mint               | Akkor egyezik, ha az érték hossza nagyobb, mint a megadott egész szám.                                                    | `operator`: `GreaterThan`                                       |
+| Kisebb vagy egyenlő         | Akkor egyezik, ha az érték hossza kisebb vagy egyenlő, mint a megadott egész szám.                                           | `operator`: `LessThanOrEqual`                                   |
+| Nagyobb vagy egyenlő      | Akkor egyezik, ha az érték hossza nagyobb vagy egyenlő, mint a megadott egész szám.                                        | `operator`: `GreaterThanOrEqual`                                |
+| Ezzel kezdődik                | Egyezés, ha az érték a megadott karakterlánccal kezdődik.                                                                       | `operator`: `BeginsWith`                                        |
+| Erre végződik                  | Egyezés, ha az érték a megadott karakterlánccal végződik.                                                                         | `operator`: `EndsWith`                                          |
+| RegEx                      | Megfelel, ha az érték megfelel a megadott reguláris kifejezésnek. [További részletekért lásd alább.](#regular-expressions)        | `operator`: `RegEx`                                             |
+| Nem                    | Egyezés, ha nincs érték.                                                                                                | `operator`: `Any` és `negateCondition` : `true`                |
+| Nem egyenlő                  | Egyezés, ha az érték nem felel meg a megadott karakterláncnak.                                                                    | `operator`: `Equal` és `negateCondition` : `true`              |
+| Nem tartalmazza               | Egyezés, ha az érték nem tartalmazza a megadott karakterláncot.                                                                  | `operator`: `Contains` és `negateCondition` : `true`           |
+| Nem kisebb, mint              | Akkor egyezik, ha az érték hossza nem kisebb a megadott egész számnál.                                                   | `operator`: `LessThan` és `negateCondition` : `true`           |
+| Nem nagyobb, mint           | Akkor egyezik, ha az érték hossza nem nagyobb a megadott egész számnál.                                                | `operator`: `GreaterThan` és `negateCondition` : `true`        |
+| Nem kisebb vagy egyenlő     | Akkor felel meg, ha az érték hossza nem kisebb a megadott egész számnál vagy azzal egyenlő.                                       | `operator`: `LessThanOrEqual` és `negateCondition` : `true`    |
+| Nem nagyobb vagy egyenlő | Akkor egyezik, ha az érték hossza nem nagyobb vagy egyenlő a megadott egész számmal.                                    | `operator`: `GreaterThanOrEqual` és `negateCondition` : `true` |
+| Nem kezdődik            | Egyezés, ha az érték nem a megadott karakterlánccal kezdődik.                                                               | `operator`: `BeginsWith` és `negateCondition` : `true`         |
+| Nem végződik              | Egyezés, ha az érték nem a megadott karakterlánccal végződik.                                                                 | `operator`: `EndsWith` és `negateCondition` : `true`           |
+| Nem RegEx                  | Egyezés, ha az érték nem felel meg a megadott reguláris kifejezésnek. [További részletekért lásd alább.](#regular-expressions) | `operator`: `RegEx` és `negateCondition` : `true`              |
 
-A (z) *vagy* annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amely megegyezik az összehasonlítani kívánt hosszsal.
+> [!TIP]
+> A (z) *vagy* annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Az egyeztetési feltételben szereplő értéknek egész számnak kell lennie, amely meghatározza az összehasonlítani kívánt hosszúságot.
 
-## <a name="regular-expression"></a>Reguláris kifejezés
+### <a name="regular-expressions"></a><a name="regular-expressions"></a> Reguláris kifejezések
 
-A regex nem támogatja a következő műveleteket:
+A reguláris kifejezések nem támogatják a következő műveleteket:
 
-* Alkifejezések Backreferences és rögzítése
-* Tetszőleges nulla szélességű kijelentések
-* Alrutin-hivatkozások és rekurzív mintázatok
-* Feltételes minták
-* A vezérlési műveletek visszautasítása
-* A \C egybájtos irányelve
-* A \R sortörési egyeztetési direktíva
-* A Match reset utasítás \K kezdete
-* Képfeliratok és beágyazott kód
-* Atomic grouping és a birtokosi számszerűsítő
+* Alkifejezések Backreferences és rögzítése.
+* Tetszőleges nulla szélességű állítások.
+* Alrutin-hivatkozások és rekurzív mintázatok.
+* Feltételes minták.
+* A vezérlési műveletek visszautasítása.
+* Az `\C` egybájtos direktíva.
+* A `\R` sortörési egyeztetési direktíva.
+* A `\K` Match reset utasítás kezdete.
+* Képfeliratok és beágyazott kód.
+* Atomi csoportosítás és a birtokosi számszerűsítés.
+
+## <a name="arm-template-support"></a>ARM-sablon támogatása
+
+A szabálykészlet Azure Resource Manager sablonok használatával konfigurálhatók. [Példa sablonra](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). A fenti példákban szereplő JSON-vagy bicep-kódrészletek használatával is hozzáadhat egyezési feltételeket.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a [szabálykészlet beállításáról](concept-rule-set.md).
-* Ismerje meg, hogyan [konfigurálhatja az első szabályokat](how-to-configure-rule-set.md).
+* Megtudhatja, hogyan [konfigurálhatja az első szabálykészlet](how-to-configure-rule-set.md)beállítását.
 * További információ a [szabálykészlet műveleteiről](concept-rule-set-actions.md).

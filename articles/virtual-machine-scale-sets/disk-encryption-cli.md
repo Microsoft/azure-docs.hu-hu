@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215952"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565571"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Operációs rendszer és csatlakoztatott adatlemezek titkosítása virtuálisgép-méretezési csoportokban az Azure CLI-vel
 
@@ -61,7 +61,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 
 A Azure Key Vault képes tárolni a kulcsokat, titkokat vagy jelszavakat, amelyek lehetővé teszik az alkalmazások és szolgáltatások biztonságos megvalósítását. A titkosítási kulcsokat a szoftveres védelem Azure Key Vault tárolja, vagy importálhatja vagy létrehozhatja a kulcsokat az FIPS 140-2 2. szintű standard minősítésű hardveres biztonsági modulokban (HSM). Ezek a titkosítási kulcsok a virtuális GÉPHEZ csatolt virtuális lemezek titkosítására és visszafejtésére szolgálnak. Megőrzi a titkosítási kulcsok felügyeletét, és naplózhatja a használatukat.
 
-Saját egyedi *keyvault_name* definiálása. Ezután hozzon létre egy kulcstartót az az Key [Vault Create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) paranccsal ugyanabban az előfizetésben és régióban, mint a méretezési csoport, és állítsa be a *-enabled-for-Disk-Encryption* hozzáférési házirendet.
+Saját egyedi *keyvault_name* definiálása. Ezután hozzon létre egy kulcstartót az az Key [Vault Create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) paranccsal ugyanabban az előfizetésben és régióban, mint a méretezési csoport, és állítsa be a *-enabled-for-Disk-Encryption* hozzáférési házirendet.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 Ez a lépés csak akkor szükséges, ha rendelkezik egy meglévő Key Vault, amelyet lemezes titkosítással szeretne használni. Hagyja ki ezt a lépést, ha az előző szakaszban létrehozott egy Key Vault.
 
-Saját egyedi *keyvault_name* definiálása. Ezután frissítse a kulcstartót az [az Key Vault Update paranccsal](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) , és állítsa be az *--enabled-a-Disk-Encryption* hozzáférési szabályzatot.
+Saját egyedi *keyvault_name* definiálása. Ezután frissítse a kulcstartót az [az Key Vault Update paranccsal](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) , és állítsa be az *--enabled-a-Disk-Encryption* hozzáférési szabályzatot.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Titkosítás engedélyezése
 
-A méretezési csoportokban lévő virtuálisgép-példányok titkosításához először szerezzen be néhány információt az Key Vault erőforrás-AZONOSÍTÓval az [az kulcstartó show](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show)paranccsal. A rendszer ezeket a változókat használja a titkosítási folyamat elindításához az [az vmss encryption Enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
+A méretezési csoportokban lévő virtuálisgép-példányok titkosításához először szerezzen be néhány információt az Key Vault erőforrás-AZONOSÍTÓval az [az kulcstartó show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show)paranccsal. A rendszer ezeket a változókat használja a titkosítási folyamat elindításához az [az vmss encryption Enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault

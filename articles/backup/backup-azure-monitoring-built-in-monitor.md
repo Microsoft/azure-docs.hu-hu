@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101713371"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559213"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -130,7 +130,7 @@ Ez a funkció jelenleg elérhető a PostgreSQL-kiszolgáló, az Azure-blobok és
 - Sikertelen biztonsági mentés (a biztonsági mentési hibákra vonatkozó riasztások beszerzéséhez regisztrálnia kell a **EnableAzureBackupJobFailureAlertsToAzureMonitor** nevű AFEC-jelzőt a betekintő portálon keresztül)
 - Visszaállítási hiba (ha riasztásokat szeretne kapni a visszaállítási hibákhoz, regisztrálnia kell a **EnableAzureBackupJobFailureAlertsToAzureMonitor** nevű AFEC-jelzőt a betekintő portálon keresztül)
 
-Az Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [a riasztások áttekintése az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
+Az Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [a riasztások áttekintése az Azure-ban](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,12 +3,12 @@ title: Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natí
 description: Állítsa be a Windows Server feladatátvevő fürtöt (WSFC) az Azure VMware-megoldáson, és használja ki a WSFC-képességet igénylő megoldások előnyeit.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025968"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562239"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natív megosztott lemezekkel
 
@@ -30,7 +30,7 @@ Fontos, hogy telepítsen egy támogatott WSFC-konfigurációt. Érdemes támogat
 
 Ez a cikk a Windows Server 2016 és a Windows Server 2019 WSFC foglalkozik. A régebbi Windows Server-verziók nem rendelkeznek [általános támogatással](https://support.microsoft.com/lifecycle/search?alpha=windows%20server) , ezért nem vesszük figyelembe őket.
 
-Először [létre kell hoznia egy WSFC](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster). További információ a WSFC: [feladatátvételi fürtszolgáltatás a Windows Serveren](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview). Az ebben a cikkben ismertetett információk az Azure VMware-megoldás WSFC-telepítésének sajátosságait ismertetik.
+Először [létre kell hoznia egy WSFC](/windows-server/failover-clustering/create-failover-cluster). További információ a WSFC: [feladatátvételi fürtszolgáltatás a Windows Serveren](/windows-server/failover-clustering/failover-clustering-overview). Az ebben a cikkben ismertetett információk az Azure VMware-megoldás WSFC-telepítésének sajátosságait ismertetik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -150,7 +150,7 @@ A következő tevékenységek nem támogatottak, és a WSFC csomópont feladatá
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-- [Feladatátvételi fürtszolgáltatás a Windows Serverben](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Feladatátvételi fürtszolgáltatás a Windows Serverben](/windows-server/failover-clustering/failover-clustering-overview)
 - [Irányelvek a Microsoft fürtözéshez a vSphere (1037959) (vmware.com)](https://kb.vmware.com/s/article/1037959)
 - [A feladatátvételi fürtszolgáltatás és a Microsoft fürtszolgáltatás (vmware.com) beállítása](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-1A2476C0-CA66-4B80-B6F9-8421B6983808.html)
 - [vSAN 6,7 U3 – WSFC megosztott lemezekkel, &amp; SCSI-3 állandó foglalások (VMware.com)](https://blogs.vmware.com/virtualblocks/2019/08/23/vsan67-u3-wsfc-shared-disksupport/)
@@ -162,5 +162,5 @@ Most, hogy az Azure VMware-megoldásban beállított egy WSFC, érdemes megismer
 
 - Új WSFC beállítása további alkalmazások hozzáadásával, amelyekhez szükség van a WSFC képességre. Például SQL Server és SAP ASCS.
 - Biztonsági mentési megoldás beállítása.
-  - [Azure Backup Server beállítása Azure VMware-megoldáshoz](https://docs.microsoft.com/azure/azure-vmware/set-up-backup-server-for-azure-vmware-solution)
-  - [Azure VMware-megoldás virtuális gépekre vonatkozó biztonsági mentési megoldások](https://docs.microsoft.com/azure/azure-vmware/ecosystem-back-up-vms)
+  - [Azure Backup Server beállítása Azure VMware-megoldáshoz](./set-up-backup-server-for-azure-vmware-solution.md)
+  - [Azure VMware-megoldás virtuális gépekre vonatkozó biztonsági mentési megoldások](./ecosystem-back-up-vms.md)

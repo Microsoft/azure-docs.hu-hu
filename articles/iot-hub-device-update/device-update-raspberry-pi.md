@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74709d970f624f2d4cefaab77e8466361e4102cc
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443454"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563429"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz a málna PI 3 B és a Reference kép használatával
 
@@ -30,10 +30,8 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Lemezkép frissítésének központi telepítése
 > * A frissítés központi telepítésének figyelése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-
 ## <a name="prerequisites"></a>Előfeltételek
-* Hozzáférés egy IoT Hubhoz. Javasoljuk, hogy S1 (standard) vagy újabb szintet használjon.
+* Ha még nem tette meg, hozzon létre egy [eszköz-frissítési fiókot és-példányt](create-device-update-account.md), beleértve a IoT hub konfigurálását.
 
 ## <a name="download-image"></a>Rendszerkép letöltése
 

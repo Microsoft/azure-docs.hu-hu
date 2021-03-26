@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 801d810a82e4e484ca1ab30c5c6d510860dbab6b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103017358"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566013"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -64,7 +64,7 @@ A 3. verzió a következőket biztosítja:
 
 #### <a name="action-required"></a>Szükséges művelet:
 
-A munkaterhelések megszakadásának minimalizálásához tekintse át az [áttelepítési útmutatót](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a kód 2 API-ról és SDK-ról a 3-as verziójú API-ra és SDK-ra való átváltásához a 2024. február 29. előtt.
+A munkaterhelések megszakadásának minimalizálásához tekintse át az [áttelepítési útmutatót](../latest/migrate-v-2-v-3-migration-introduction.md) a kód 2 API-ról és SDK-ról a 3-as verziójú API-ra és SDK-ra való átváltásához a 2024. február 29. előtt.
 **2024. február 29**-én a Azure Media Services a továbbiakban nem fogadja el a forgalmat a 2-es verziójú REST API, a ARM Management API-verzió 2015-10-01 vagy a 2. verziójú .net-ügyfél SDK-k használatával. Ez magában foglalja a harmadik féltől származó nyílt forráskódú ügyfél SDK-kat, amelyek meghívják a 2. verziójú API-t.  
 
 Tekintse meg a hivatalos [Azure-frissítések bejelentését](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).

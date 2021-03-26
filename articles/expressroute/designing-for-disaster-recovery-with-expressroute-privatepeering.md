@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 3da044057784763df8d071af6c101f7baffbefc6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044600"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562307"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Vészhelyzeti helyreállítás tervezése ExpressRoute-alapú privát partnerekkel
 
@@ -43,11 +43,11 @@ Ha azonban a földrajzilag redundáns párhuzamos elérési utak között terhel
 
 ### <a name="same-metro"></a>Ugyanaz a Metro
 
-Ha ugyanazt a metrót használja, a konfiguráció második elérési útjához a másodlagos helyet kell használnia. Ugyanez a Metro a következő: *Amszterdam* és *Amsterdam2*. Ugyanazon metró kiválasztásának előnye, ha az alkalmazás feladatátvétele zajlik, a helyszíni alkalmazások és a Microsoft közötti végpontok közötti késés változatlan marad. Ha azonban természeti katasztrófa van, előfordulhat, hogy mindkét elérési útra való kapcsolat már nem érhető el. 
+[Számos metró](expressroute-locations-providers.md#global-commercial-azure) két ExpressRoute-hellyel rendelkezik. Ilyen például az *amszterdami* és a *Amsterdam2*. A redundancia tervezésekor két párhuzamos elérési utat építhet ki az Azure-ba mindkét helyen ugyanazon a metrón. Ennek a kialakításnak az az előnye, hogy ha az alkalmazás feladatátvétele zajlik, a helyszíni alkalmazások és a Microsoft közötti végpontok közötti késések nagyjából azonosak maradnak. Ha azonban egy természeti katasztrófa, például egy földrengés van, akkor a két útvonal kapcsolata már nem érhető el.
 
 ### <a name="different-metros"></a>Különböző metrók
 
-Ha a standard SKU-áramkörökhöz különböző metrókat használ, a másodlagos helynek ugyanabban a [geo-politikai régióban](expressroute-locations-providers.md#locations)kell lennie. A geo-politikai régión kívüli hely kiválasztásához a Parallel paths mindkét áramköréhez prémium SKU-t kell használnia. Ennek a konfigurációnak az az előnye, hogy a természeti katasztrófák okozta kimaradás miatt a kapcsolatok sokkal alacsonyabbak, de a késés növelésének költségeit.
+Ha különböző metrókat használ a redundancia érdekében, a másodlagos helynek ugyanabban a [geo-politikai régióban](expressroute-locations-providers.md#locations)kell lennie. A geo-politikai régión kívüli hely kiválasztásához a Parallel paths mindkét áramköréhez prémium SKU-t kell használnia. Ennek a konfigurációnak az az előnye, hogy a természeti katasztrófák okozta kimaradás miatt a kapcsolatok sokkal alacsonyabbak, de a késés növelésének költségeit.
 
 Ebből a cikkből megtudhatja, hogyan kezelheti a Geo-redundáns útvonalak konfigurálásakor felmerülő kihívásokat.
 

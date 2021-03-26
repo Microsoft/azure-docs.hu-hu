@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 33408c65fdc09972807aaa8afdf123f1c39cfff5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0530baf5c198b5d82527cfb02c66765ec885bd94
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700260"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566710"
 ---
 # <a name="azure-security-baseline-for-azure-backup"></a>Azure Backup Azure biztonsági alapterve
 
@@ -30,7 +30,7 @@ Ha szeretné megtekinteni, hogyan Azure Backup teljes mértékben leképezni az 
 
 **Útmutató**: az Azure Backup által használt végpontokat (beleértve az Microsoft Azure Recovery Services ügynököt is) a Microsoft felügyeli. Ön felelős minden olyan további ellenőrzésért, amelyet telepíteni kíván a helyszíni rendszerekre.
 
-- [A MARS-ügynök hálózatkezelési és hozzáférés-támogatásának ismertetése](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [A MARS-ügynök hálózatkezelési és hozzáférés-támogatásának ismertetése](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Felelősség**: Ügyfél
 
@@ -58,9 +58,9 @@ Ha szeretné megtekinteni, hogyan Azure Backup teljes mértékben leképezni az 
 
 **Útmutató**: Ha a Mars-ügynököt egy hálózati biztonsági csoport vagy Azure Firewall által védett Azure-beli virtuális gépen használja, az Azure-Tevékenységnaplók segítségével figyelheti a NSG vagy a tűzfal konfigurációját. Előfordulhat, hogy olyan Azure Monitoron belül riasztásokat hoz létre, amelyek elindítják az erőforrások módosításait.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-activity-log)
+- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -76,7 +76,7 @@ Ha szeretné megtekinteni, hogyan Azure Backup teljes mértékben leképezni az 
 
 Emellett betöltheti a naplókat a Azure Monitor segítségével a Azure Backup által generált biztonsági adatokat összesítve. Azure Monitor a Log Analytics-munkaterületek használatával kérdezheti le és végezheti el az elemzéseket, és használhat tárolási fiókokat a hosszú távú/archiválási tároláshoz. Azt is megteheti, hogy az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események kezelése (SIEM) számára is felhasználhatja a táblát.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Diagnosztikai beállítások használata Recovery Services-tárolók számára](backup-azure-diagnostic-events.md)
 
@@ -92,7 +92,7 @@ Emellett betöltheti a naplókat a Azure Monitor segítségével a Azure Backup 
 
 Emellett a Azure Backup diagnosztikai eseményeket küld, amelyeket az elemzés, a riasztás és a jelentéskészítés céljából gyűjthet és használhat fel. A Recovery Services-tároló diagnosztikai beállításait a Azure Portal használatával konfigurálhatja. Egy vagy több diagnosztikai eseményt is elküldhet egy Storage-fiókba, az Event hub-ba vagy egy Log Analytics-munkaterületre.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Diagnosztikai beállítások használata Recovery Services-tárolók számára](backup-azure-diagnostic-events.md)
 
@@ -104,7 +104,7 @@ Emellett a Azure Backup diagnosztikai eseményeket küld, amelyeket az elemzés,
 
 **Útmutató**: a Azure monitor az Azure Recovery Services-tárolóhoz társított log Analytics-munkaterületek naplózási megőrzési időszakának beállítása a szervezet megfelelőségi előírásai szerint.
 
-- [Napló-megőrzési paraméterek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -118,9 +118,9 @@ Engedélyezze az Azure-tevékenység naplójának diagnosztikai beállításait,
 
 - [Azure Backup munkaterhelések figyelése](backup-azure-monitoring-built-in-monitor.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -138,7 +138,7 @@ Egy Log Analytics munkaterületet is felvehet az Azure Sentinel szolgáltatásba
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-log)
+- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -268,7 +268,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure AD hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -284,7 +284,7 @@ Hozzáférése van az Azure AD bejelentkezési tevékenységeihez, a naplózási
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics belül is konfigurálhatja a kívánt naplózási riasztásokat.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
@@ -310,7 +310,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: jelenleg nem érhető el; Azure Backup esetében Ügyfélszéf még nem támogatott.
 
-- [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -402,7 +402,7 @@ Ha a MARS-ügynökkel készít biztonsági mentést, vagy egy ügyfél által fe
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure Recovery Services-tárolók, valamint más kritikus vagy kapcsolódó erőforrások változásai zajlanak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -418,7 +418,7 @@ Ha a MARS-ügynökkel készít biztonsági mentést, vagy egy ügyfél által fe
 
 A Microsoft által beolvasott és javított mögöttes platform. Tekintse át az Azure Backup számára elérhető biztonsági vezérlőket a szolgáltatás konfigurálásával kapcsolatos biztonsági rések csökkentése érdekében.
 
-- [A Azure Backup számára elérhető biztonsági vezérlők ismertetése](/azure/backup/backup-security-controls)
+- [A Azure Backup számára elérhető biztonsági vezérlők ismertetése]()
 
 **Felelősség**: Ügyfél
 
@@ -446,7 +446,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -520,7 +520,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -544,7 +544,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 **Útmutató**: a Recovery Services-tár szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. Recoveryservices szolgáltatónál" névtérben egyéni szabályzatok létrehozásához a Recovery Services-tárolók konfigurációjának naplózásához vagy érvényesítéséhez.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -656,7 +656,7 @@ Az ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vaulton bel
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -csomagra a kapcsolódó szolgáltatásokhoz.
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
 
 **Azure Policy beépített definíciók – Microsoft. recoveryservices szolgáltatónál**:
 
@@ -676,7 +676,7 @@ Az ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vaulton bel
 
 **Útmutató**: a helyszíni biztonsági mentéshez a titkosítást az Azure-ba történő biztonsági mentéshez megadott hozzáférési kód használatával biztosítjuk. Azure-beli virtuális gépek esetén a rendszer Storage Service Encryption (SSE) használatával titkosítja az inaktív adatokat. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezheti a Key Vault törlését.
 
-- [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Felelősség**: Ügyfél
 
@@ -772,5 +772,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket, és létrehozhat egy 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

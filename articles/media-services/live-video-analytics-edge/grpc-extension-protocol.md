@@ -3,16 +3,16 @@ title: gRPC-bővítményi protokoll – Azure
 description: Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő video Analytics-modul és az AI-vagy CV egyéni bővítménye között a gRPC-bővítmény protokoll használatával.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f7b5be859702199b07dfa0d6a43a09ca8ff0c42f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8d153b472e54b221b60a2b584043ffaf68e8ff82
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455856"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565809"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC-bővítmény-protokoll
 
-A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy [gráf kiterjesztésű csomóponton](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept)keresztül. Ha a gRPC bővítmény processzorát használja bővítményként, akkor a Live Video Analytics modul és az AI-vagy CV-modul közötti kommunikáció a gRPC-alapú, nagy teljesítményű strukturált protokollon keresztül történik.
+A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy [gráf kiterjesztésű csomóponton](./media-graph-extension-concept.md)keresztül. Ha a gRPC bővítmény processzorát használja bővítményként, akkor a Live Video Analytics modul és az AI-vagy CV-modul közötti kommunikáció a gRPC-alapú, nagy teljesítményű strukturált protokollon keresztül történik.
 
 Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő video Analytics-modul és az AI-vagy CV egyéni bővítménye között a gRPC-bővítmény protokoll használatával.
 
@@ -25,7 +25,7 @@ A gRPC-munkamenetek a gRPC-ügyfél és a gRPC-kiszolgáló közötti egyetlen k
 
 Egyetlen munkamenetben: az ügyfél egy Media stream-leírót küld a kiszolgálónak, amelyet [protopuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) üzenetként a gRPC stream-munkamenetben. A kiszolgáló érvényesíti az adatfolyam-leírót, elemzi a videó keretét, és visszaadja az eredményeket protopuf üzenetként. 
 
-Erősen ajánlott, hogy a válaszokat érvényes JSON-dokumentumok használatával adja vissza a rendszer, amely a [következtetési metaadatok séma-objektummodell](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)alapján meghatározott, előre meghatározott sémát követi. Így jobban biztosítható a más összetevőkkel való együttműködés, valamint az élő video Analytics modulhoz hozzáadott lehetséges jövőbeli képességek.
+Erősen ajánlott, hogy a válaszokat érvényes JSON-dokumentumok használatával adja vissza a rendszer, amely a [következtetési metaadatok séma-objektummodell](./inference-metadata-schema.md)alapján meghatározott, előre meghatározott sémát követi. Így jobban biztosítható a más összetevőkkel való együttműködés, valamint az élő video Analytics modulhoz hozzáadott lehetséges jövőbeli képességek.
 
 ![gRPC-kiterjesztési szerződés](./media/grpc-extension-protocol/grpc.png)
 

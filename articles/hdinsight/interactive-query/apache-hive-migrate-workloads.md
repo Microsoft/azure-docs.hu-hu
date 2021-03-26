@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742194"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566070"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -71,7 +71,7 @@ Ez a lépés a [`Hive Schema Tool`](https://cwiki.apache.org/confluence/display/
     > [!NOTE]
     > Ez a segédprogram ügyfél használatával `beeline` hajtja végre az SQL-parancsfájlokat a alkalmazásban `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql` .
     >
-    > A parancsfájlok SQL-szintaxisa nem feltétlenül kompatibilis más ügyféleszközök. Az [Azure Portalon](../../azure-sql/database/connect-query-portal.md) az [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és a Query Editor használatához például `GO` minden parancs után kulcsszó szükséges.
+    > A parancsfájlok SQL-szintaxisa nem feltétlenül kompatibilis más ügyféleszközök. Az [Azure Portalon](../../azure-sql/database/connect-query-portal.md) az [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) és a Query Editor használatához például `GO` minden parancs után kulcsszó szükséges.
     >
     > Ha az erőforrás kapacitása vagy a tranzakció időtúllépése miatt bármelyik parancsfájl meghibásodik, a SQL Database vertikális felskálázása.
 

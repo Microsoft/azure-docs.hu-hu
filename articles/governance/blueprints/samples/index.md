@@ -1,14 +1,14 @@
 ---
 title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
-ms.date: 03/11/2021
+ms.date: 03/24/2021
 ms.topic: sample
-ms.openlocfilehash: 06dc65ca601c938f6610df3ed22b4ea0f3826208
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 1758c684dca93089c69c1a06ed77b60a09f6579c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799462"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558040"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -24,6 +24,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Védőkorlátokat biztosít a Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM) szabványnak való megfeleléshez. |
 | [CIS Microsoft Azure alapítványok teljesítményteszt v 1.3.0](./cis-azure-1-3-0.md)| Olyan szabályzatokat biztosít, amelyek segítenek megfelelni a CIS Microsoft Azure alapítványok teljesítményteszt v 1.3.0 ajánlásainak. |
 | [CIS Microsoft Azure Foundations Benchmark 1.1.0-s verzió](./cis-azure-1-1-0.md)| Olyan szabályzatokat biztosít, amelyek segítenek megfelelni a CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0 ajánlásainak. |
+| [3. CMMC szint](./cmmc-l3.md)| A guardrails biztosítja a CMMC 3. szintű megfelelőségét. |
 | [DoD Impact Level 4](./dod-impact-level-4/index.md) | Szabályzatkészletet biztosít, amely segít megfelelni a DoD Impact Level 4 előírásainak. |
 | [DoD Impact Level 5](./dod-impact-level-5/index.md) | Szabályzatkészletet biztosít, amely segít megfelelni a DoD Impact Level 5 előírásainak. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Szabályzatkészletet biztosít a FedRAMP Moderate előírásainak való megfeleléshez. |

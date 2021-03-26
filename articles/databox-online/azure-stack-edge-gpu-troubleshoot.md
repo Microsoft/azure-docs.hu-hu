@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 696faaecd2227c9b9ef74f20763e36661991ff67
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62767898b52ef9d8c0a61fb5025dc59d06a00bd5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438983"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568188"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Stack Edge Pro GPU-eszköz problémáinak elhárítása 
 
@@ -144,9 +144,9 @@ Az itt látható hibák a Azure Resource Manager konfigurációjában jelenhetne
 |------------|-----------------|
 |Általános problémák|<li>[Ellenőrizze, hogy a peremhálózati eszköz megfelelően van](#verify-the-device-is-configured-properly)-e konfigurálva.<li> [Ellenőrizze, hogy az ügyfél megfelelően van-e konfigurálva](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment: hiba történt a kérelem elküldésekor.<br>At. sor: 1 karakter: 1<br>+ Add-AzureRmEnvironment-Name AZ3-ARMEndpoint " https://management.dbe ...|Ez a hiba azt jelenti, hogy az Azure Stack Edge Pro-eszköz nem érhető el vagy nem megfelelően van konfigurálva. Ellenőrizze, hogy a peremhálózati eszköz és az ügyfél megfelelően van-e konfigurálva. Útmutatásért tekintse meg a táblázat **általános problémák** sorát.|
-|A szolgáltatás hibát adott vissza. További részletekért tekintse meg a InnerException: az alapul szolgáló kapcsolat bezárult: nem hozható létre megbízhatósági kapcsolat az SSL/TLS biztonságos csatorna számára. |   Ennek a hibának az a valószínűsége, hogy egy vagy több saját tanúsítványa helytelenül lett végrehajtva. [Itt](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)talál útmutatást. |
+|A szolgáltatás hibát adott vissza. További részletekért tekintse meg a InnerException: az alapul szolgáló kapcsolat bezárult: nem hozható létre megbízhatósági kapcsolat az SSL/TLS biztonságos csatorna számára. |   Ennek a hibának az a valószínűsége, hogy egy vagy több saját tanúsítványa helytelenül lett végrehajtva. [Itt](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)talál útmutatást. |
 |A művelet érvénytelen állapotkódot adott vissza: "ServiceUnavailable". <br> A válasz állapotkód nem jelzi a sikert: 503 (a szolgáltatás nem érhető el). | Ez a hiba a fenti feltételek bármelyikének következménye lehet.<li>A ArmStsPool leállított állapotban van.</li><li>A Azure Resource Manager-vagy biztonsági jogkivonat-szolgáltatások webhelyei nem állnak le.</li><li>A Azure Resource Manager fürterőforrás nem található.</li><br><strong>Megjegyzés:</strong> Előfordulhat, hogy a készülék újraindítása megoldhatja a problémát, de a támogatási csomagot össze kell gyűjtenie, hogy tovább lehessen a hibakereséshez.|
-|AADSTS50126: Érvénytelen felhasználónév vagy jelszó.<br>Nyomkövetési azonosító: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelációs azonosító: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Timestamp: 2019-11-15 09:21:57Z: a távoli kiszolgáló hibát adott vissza: (400) hibás kérés.<br>At. sor: 1 karakter: 1 |Ez a hiba a fenti feltételek bármelyikének következménye lehet.<li>Az érvénytelen Felhasználónév és jelszó beállításnál ellenőrizze, hogy az ügyfél módosította-e a jelszót Azure Portal az [itt](./azure-stack-edge-j-series-set-azure-resource-manager-password.md) leírt lépéseket követve, majd a megfelelő jelszó használatával.<li>Érvénytelen bérlői azonosító esetén a bérlő azonosítója rögzített GUID, és a következőre kell beállítani: `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126: Érvénytelen felhasználónév vagy jelszó.<br>Nyomkövetési azonosító: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelációs azonosító: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Timestamp: 2019-11-15 09:21:57Z: a távoli kiszolgáló hibát adott vissza: (400) hibás kérés.<br>At. sor: 1 karakter: 1 |Ez a hiba a fenti feltételek bármelyikének következménye lehet.<li>Az érvénytelen Felhasználónév és jelszó beállításnál ellenőrizze, hogy az ügyfél módosította-e a jelszót Azure Portal az [itt](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password) leírt lépéseket követve, majd a megfelelő jelszó használatával.<li>Érvénytelen bérlői azonosító esetén a bérlő azonosítója rögzített GUID, és a következőre kell beállítani: `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |összekapcsolás-AzureRmAccount: AADSTS90056: az erőforrás le van tiltva, vagy nem létezik. Ellenőrizze az alkalmazás kódjában, hogy megadta-e az elérni kívánt erőforrás URL-címét.<br>Nyomkövetési azonosító: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Korrelációs azonosító: 75c8ef5a-830e-48b5-B039-595a96488ff9 timestamp: 2019-11-18 07:00:51Z: a távoli kiszolgáló hibát adott vissza: (400) rossz |A parancsban használt erőforrás-végpontok `Add-AzureRmEnvironment` helytelenek.|
 |Nem lehet lekérni a végpontokat a felhőből.<br>Gondoskodjon arról, hogy legyen hálózati kapcsolatban. Hiba részletei: HTTPSConnectionPool (host = "Management. dbg-of4k6suvm.microsoftdatabox.com", Port = 30005): a maximális újrapróbálkozások száma túllépte az URL-címet:/metadata/endpoints? API-Version = 2015-01-01 (SSLError okozta (SSLError ("hibás kézfogás: hiba ([) (SSL-rutinok," tls_process_server_certificate, "tanúsítvány ellenőrzése sikertelen")],) ",") |Ez a hiba többnyire egy Mac-/Linux-környezetben jelenik meg, és az alábbi problémák miatt fordul elő:<li>Nem adtak hozzá PEM formátumú tanúsítványt a Python tanúsítványtárolóhoz.</li> |
 
@@ -154,7 +154,7 @@ Az itt látható hibák a Azure Resource Manager konfigurációjában jelenhetne
 
 1. A helyi felhasználói felületen ellenőrizze, hogy az eszköz hálózata megfelelően van-e konfigurálva.
 
-2. Ellenőrizze, hogy a tanúsítványok frissültek-e az összes végpontra vonatkozóan, az [itt](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)említettek szerint.
+2. Ellenőrizze, hogy a tanúsítványok frissültek-e az összes végpontra vonatkozóan, az [itt](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)említettek szerint.
 
 3. Kérje le a Azure Resource Manager felügyeleti és bejelentkezési végpontot az **eszköz** oldaláról a helyi felhasználói felületen.
 
@@ -163,18 +163,18 @@ Az itt látható hibák a Azure Resource Manager konfigurációjában jelenhetne
 
 ### <a name="verify-the-client-is-configured-properly"></a>Ellenőrizze, hogy az ügyfél megfelelően van-e konfigurálva
 
-1. Ellenőrizze, hogy a PowerShell megfelelő verziója telepítve van-e az [itt](azure-stack-edge-j-series-connect-resource-manager.md#step-3-install-powershell-on-the-client)említettek szerint.
+1. Ellenőrizze, hogy a PowerShell megfelelő verziója telepítve van-e az [itt](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client)említettek szerint.
 
-2. Ellenőrizze, hogy a megfelelő PowerShell-modulok telepítve vannak-e az [itt](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)említettek szerint.
+2. Ellenőrizze, hogy a megfelelő PowerShell-modulok telepítve vannak-e az [itt](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)említettek szerint.
 
 3. Ellenőrizze, hogy a Azure Resource Manager és a bejelentkezési végpontok elérhetők-e. A végpontok pingelése is megpróbálkozhat. Például:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
    
-   Ha nem érhetők el, adja hozzá a DNS/Host-fájlok bejegyzéseit az [itt](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)említettek szerint.
+   Ha nem érhetők el, adja hozzá a DNS/Host-fájlok bejegyzéseit az [itt](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)említettek szerint.
    
-4. Ellenőrizze, hogy az Ügyféltanúsítványok telepítve vannak-e az [itt](azure-stack-edge-j-series-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell)említettek szerint.
+4. Ellenőrizze, hogy az Ügyféltanúsítványok telepítve vannak-e az [itt](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell)említettek szerint.
 
 5. Ha az ügyfél a PowerShellt használja, engedélyeznie kell a hibakeresési előnyt, hogy a PowerShell-parancs futtatásával részletes üzeneteket lásson. 
 

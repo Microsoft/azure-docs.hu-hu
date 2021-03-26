@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471745"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562222"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -56,9 +56,9 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio notebookok felülete (február Update)
 + **Új funkciók**
-  + [Natív terminál (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az integrált terminálon keresztül is.
+  + [Natív terminál (GA)](./how-to-access-terminal.md). A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az integrált terminálon keresztül is.
   + [Jegyzetfüzet-kódrészletek (előzetes verzió)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). A Common Azure ML Code-részletek mostantól elérhetők. Navigáljon a kódrészletek panelre, amely az eszköztáron keresztül érhető el, vagy aktiválja a kódban szereplő kódrészleteket a CTRL + szóköz billentyűkombinációval.  
-  + [Billentyűparancsok](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Teljes paritás a Jupyter-ben elérhető billentyűparancsokkal. 
+  + [Billentyűparancsok](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Teljes paritás a Jupyter-ben elérhető billentyűparancsokkal. 
   + Adja meg a cella paramétereit. Azokat a felhasználókat jeleníti meg, akik egy jegyzetfüzetben lévő cellák paraméter-cellák, és a számítási példányon [Papermill](https://github.com/nteract/papermill) keresztül futtathatnak paraméteres jegyzetfüzeteket.
   + A terminál és a kernel munkamenet-kezelője: a felhasználók a számítási folyamaton futó összes kernelt és terminál-munkamenetet kezelhetik.
   + Megosztás gomb. A felhasználók mostantól megoszthatnak bármilyen fájlt a jegyzetfüzet fájlkezelőben, ha a jobb gombbal a fájlra kattintanak, és a megosztás gombot használják.
@@ -68,7 +68,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
   + Továbbfejlesztett oldal betöltési ideje
   + Jobb teljesítmény 
   + Továbbfejlesztett sebesség és kernel megbízhatóság
-  + Az összes folyamatban lévő [számítási példány műveletének](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)előrehaladását a forgó kerék hozzáadásával jeleníti meg.
+  + Az összes folyamatban lévő [számítási példány műveletének](./how-to-run-jupyter-notebooks.md#status-indicators)előrehaladását a forgó kerék hozzáadásával jeleníti meg.
   + Kattintson a jobb gombbal a fájlkezelőben. Kattintson a jobb gombbal bármelyik fájlra, majd nyissa meg a fájlok műveleteit. 
 
 
@@ -79,7 +79,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
   + **azureml-core**
     + [Kísérleti funkció] Támogatás hozzáadása a szinapszis-munkaterület a pénzmosás-hez társított szolgáltatásként való összekapcsolásához
     + [Kísérleti funkció] Támogatás hozzáadása a szinapszis Spark-készlet a pénzmosás-hez való csatlakoztatásához számítási feladatokhoz
-    + [Kísérleti funkció] Adja meg az identitás-alapú adathozzáférés támogatását. A felhasználók a hitelesítő adatok megadása nélkül regisztrálhatják az adattárt vagy az adatkészleteket. Ilyen esetben a rendszer a felhasználó HRE tokenjét vagy a számítási cél felügyelt identitását fogja használni a hitelesítéshez. További információ [itt](https://aka.ms/data-access).
+    + [Kísérleti funkció] Adja meg az identitás-alapú adathozzáférés támogatását. A felhasználók a hitelesítő adatok megadása nélkül regisztrálhatják az adattárt vagy az adatkészleteket. Ilyen esetben a rendszer a felhasználó HRE tokenjét vagy a számítási cél felügyelt identitását fogja használni a hitelesítéshez. További információ [itt](./how-to-identity-based-data-access.md).
   + **azureml-pipeline-steps**
     + [Kísérleti funkció] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) -támogatás hozzáadása
   + **azureml-synapse**

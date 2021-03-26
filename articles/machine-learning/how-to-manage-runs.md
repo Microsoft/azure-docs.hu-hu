@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110270"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566285"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Futtatási előzmények indítása, figyelése és nyomon követése 
 
@@ -211,7 +211,7 @@ A következő elemekre lesz szüksége:
     1. A **célhely részletei** között válassza a **Küldés log Analytics munkaterületre**  lehetőséget, és adja meg az **előfizetést** és **log Analytics munkaterületet**. 
 
     > [!NOTE]
-    > Az **azure log Analytics munkaterület** más típusú Azure-erőforrás, mint a **Azure Machine learning szolgáltatás munkaterülete**. Ha a listában nincsenek beállítások, [létrehozhat egy log Analytics munkaterületet](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    > Az **azure log Analytics munkaterület** más típusú Azure-erőforrás, mint a **Azure Machine learning szolgáltatás munkaterülete**. Ha a listában nincsenek beállítások, [létrehozhat egy log Analytics munkaterületet](../azure-monitor/logs/quick-create-workspace.md). 
     
     ![Az e-mail-értesítések mentése](./media/how-to-manage-runs/log-location.png)
 
@@ -219,7 +219,7 @@ A következő elemekre lesz szüksége:
 
     ![Új riasztási szabály](./media/how-to-manage-runs/new-alert-rule.png)
 
-1. Lásd: [naplózási riasztások létrehozása és kezelése Azure monitor használatával](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
+1. Lásd: [naplózási riasztások létrehozása és kezelése Azure monitor használatával](../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="run-description"></a>Futtatás leírása 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cb85bc1da7d98d3e2ad46229588a91d971ce014
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707999"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567290"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor-naplók – áttekintés
 Azure Monitor naplók a Azure Monitor szolgáltatása, amely összegyűjti és rendszerezi a napló-és teljesítményadatokat a [figyelt erőforrásokból](../monitor-reference.md). A különböző forrásokból származó adatok, például az Azure-szolgáltatásokból származó [platformok naplói](../essentials/platform-logs-overview.md) , a [Virtual Machines-ügynökökből](../agents/agents-overview.md)származó naplók és teljesítményadatok, valamint az [alkalmazásokból](../app/app-insights-overview.md) származó használati és teljesítményadatokat összevonható egyetlen munkaterületre, így az elemzésük olyan kifinomult lekérdezési nyelv használatával végezhető el, amely képes több millió rekord elemzésére. Egy egyszerű lekérdezést is végrehajthat, amely csak egy adott rekordhalmazt kér le, vagy kifinomult adatelemzést végez a megfigyelési adatokban található kritikus minták azonosításához. A naplózási lekérdezésekkel és azok eredményeivel interaktív módon, Log Analytics használatával dolgozhat, a riasztási szabályok segítségével proaktívan értesítheti a problémákat, vagy megjelenítheti az eredményeket egy munkafüzetben vagy irányítópulton.
@@ -23,7 +23,7 @@ Azure Monitor naplók a Azure Monitor szolgáltatása, amely összegyűjti és r
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>Mire használhatók Azure Monitor naplók?
 A következő táblázat ismerteti az Azure Monitorban található naplók különböző módszereit:
 
-|  |  |
+|  | Description |
 |:---|:---|
 | **Elemzés** | A Azure Portal [log Analytics](./log-analytics-tutorial.md) használata a [naplók](./log-query-overview.md) írásához és interaktív módon történő elemzéséhez egy hatékony elemzési motor használatával |
 | **Riasztás** | Olyan [naplózási riasztási szabályt](../alerts/alerts-log.md) konfigurálhat, amely értesítést küld, vagy [automatikus műveletet hajt végre](../alerts/action-groups.md) , ha a lekérdezés eredményei egy adott eredménynek felelnek meg. |

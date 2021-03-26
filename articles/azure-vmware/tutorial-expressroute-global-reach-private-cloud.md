@@ -3,12 +3,12 @@ title: Oktatóanyag – helyszíni környezetek saját felhőbe
 description: Megtudhatja, hogyan hozhat létre ExpressRoute Global Reach-társítást egy Azure VMware-megoldásban található privát felhőbe.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786906"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564500"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Oktatóanyag: helyszíni helyszíni környezetek egy privát felhőhöz
 
@@ -71,7 +71,7 @@ Most, hogy létrehozott egy engedélyezési kulcsot a saját felhőalapú Expres
 A [CLI-parancsokat](../expressroute/expressroute-howto-set-global-reach-cli.md) speciális részletekkel és példákkal bővítettük, így könnyebben konfigurálható a ExpressRoute Global REACH a helyszíni környezetek között egy Azure VMware-megoldás saját felhőbe.
 
 >[!TIP]
->Az Azure CLI-parancs kimenetének rövidített eléréséhez ezek az utasítások egy [ `–query` argumentumot](https://docs.microsoft.com/cli/azure/query-azure-cli) használhatnak egy JMESPath-lekérdezés végrehajtásához, hogy csak a szükséges eredményeket jelenítsék meg.
+>Az Azure CLI-parancs kimenetének rövidített eléréséhez ezek az utasítások egy [ `–query` argumentumot](/cli/azure/query-azure-cli) használhatnak egy JMESPath-lekérdezés végrehajtásához, hogy csak a szükséges eredményeket jelenítsék meg.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) ugyanazzal az előfizetéssel, mint a helyszíni ExpressRoute áramkörrel. 
 

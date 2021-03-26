@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9e5a6737d2e37392efd305910ff5370adc84940f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9fe49f44e157708c3083e2c73757988877fbfcb5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596739"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563463"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -88,7 +88,7 @@ A 3. verzió a következőket biztosítja:
 
 #### <a name="action-required"></a>Beavatkozás szükséges
 
-A munkaterhelések megszakadásának minimalizálásához tekintse át az [áttelepítési útmutatót](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a kód 2 API-ról és SDK-ról a 3-as verziójú API-ra és SDK-ra való átváltásához a 2024. február 29. előtt.
+A munkaterhelések megszakadásának minimalizálásához tekintse át az [áttelepítési útmutatót](./migrate-v-2-v-3-migration-introduction.md) a kód 2 API-ról és SDK-ról a 3-as verziójú API-ra és SDK-ra való átváltásához a 2024. február 29. előtt.
 **2024. február 29**-én a Azure Media Services a továbbiakban nem fogadja el a forgalmat a 2-es verziójú REST API, a ARM Management API-verzió 2015-10-01 vagy a 2. verziójú .net-ügyfél SDK-k használatával. Ez magában foglalja a harmadik féltől származó nyílt forráskódú ügyfél SDK-kat, amelyek meghívják a 2. verziójú API-t.  
 
 Tekintse meg a hivatalos [Azure-frissítések bejelentését](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
@@ -134,11 +134,11 @@ Tekintse meg a legújabb mintákat a **[Media-Services-v3-Node-oktatóanyagok](h
 
 Az élő események mostantól egy alacsonyabb díjszabású számlázási módot is támogatnak a "készenléti" állapothoz. Ez lehetővé teszi, hogy az ügyfelek a "forró készletek" létrehozásához alacsonyabb áron előre foglalják el az élő eseményeket. Az ügyfelek ezután a készenléti állapotú élő események használatával gyorsabban válthatnak a futó állapotba, mint a létrehozáskor.  Ez csökkenti a csatorna jelentős elindításának idejét, és lehetővé teszi a gyors, alacsonyabb díjszabású gépek lefoglalását.
 Tekintse meg a legfrissebb [díjszabási részleteket.](https://azure.microsoft.com/pricing/details/media-services)
-A készenléti állapottal és az élő események más állapotával kapcsolatos további információkért tekintse meg a cikk [élő esemény állapotait és számlázását](https://docs.microsoft.com/azure/media-services/latest/live-event-states-billing) ismertető cikket.
+A készenléti állapottal és az élő események más állapotával kapcsolatos további információkért tekintse meg a cikk [élő esemény állapotait és számlázását](./live-event-states-billing.md) ismertető cikket.
 
 ## <a name="december-2020"></a>2020. december
 
-### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+### <a name="regional-availability"></a>Regionális elérhetőség
 
 A Azure Media Services mostantól elérhető az Azure Portal Norvégia keleti régiójában.  Ebben a régióban nincs restV2.
 
@@ -228,9 +228,9 @@ Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatás
 
 |HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
-|CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
-|CDN – forrás – assziszt – prefektus – kérelem|1 (kirendelési kérelem) vagy 0 (normál kérelem)|Tartalomkézbesítési hálózat (CDN)|Forrás|A CDN kérelmének jelzése|
+|CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |CDN|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
+|CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|CDN|A CDN elérési útjának biztosítása|
+|CDN – forrás – assziszt – prefektus – kérelem|1 (kirendelési kérelem) vagy 0 (normál kérelem)|CDN|Forrás|A CDN kérelmének jelzése|
 
 A következő lépésekkel tekintheti meg a fejléc-Exchange működés közbeni részét:
 

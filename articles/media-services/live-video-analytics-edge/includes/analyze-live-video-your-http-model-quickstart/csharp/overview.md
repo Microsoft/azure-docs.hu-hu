@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: c4c58724f8ba2accd827e1a1b3819e40210aa9c0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a58ae0e6b0b1c12e8789ef0fb714d456f906db32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97486883"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582471"
 ---
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="../../../media/quickstarts/overview-qs5.svg" alt-text="A jelek folyamata":::
 
 Ez az ábra azt mutatja be, hogyan áramlik be a gyors útmutatóban szereplő jelek. Az [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) szimulál egy Real-Time Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](../../../media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a [http-bővítmény processzor](../../../media-graph-concept.md#http-extension-processor) -csomópontjára küldi a videó kereteket. 
 
-A HTTP-bővítmény csomópont egy proxy szerepét játssza le. Megtekinti az Ön által beállított beérkező képkockákat, `samplingOptions` és átalakítja a képkockákat a megadott képtípusra. Ezt követően továbbítja a képet a REST-ben egy másik Edge-modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modell használatával készült, amely számos típusú objektumot képes érzékelni. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](../../../media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../../../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+A HTTP-bővítmény csomópont egy proxy szerepét játssza le. Megtekinti az Ön által beállított beérkező képkockákat, `samplingOptions` és átalakítja a képkockákat a megadott képtípusra. Ezt követően továbbítja a képet a REST-ben egy másik Edge-modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modell használatával készült, amely számos típusú objektumot képes érzékelni. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](../../../media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../../../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
 Ebben a rövid útmutatóban a következőket fogja megtekinteni:
 
