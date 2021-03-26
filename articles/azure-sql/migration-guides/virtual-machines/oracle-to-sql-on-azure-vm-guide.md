@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d24e056d397617c95a7ba301b58efc3631f40dd
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 4173fe34c6966514ef4f150527cd712c9d95ab7e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026521"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561712"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Áttelepítési útmutató: Oracle SQL Server Azure-beli virtuális gépen
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -199,7 +199,7 @@ A séma közzétételéhez és az adatáttelepítés végrehajtásához kövesse
 
 
 A SSMA használata mellett a SQL Server Integration Services (SSIS) használatával is áttelepítheti az adatok áttelepíthetők. További információ: 
-- A cikk a [SQL Server Integration Services első lépések](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
+- A cikk a [SQL Server Integration Services első lépések](//sql/integration-services/sql-server-integration-services).
 - A tanulmány [SQL Server Integration Services: SSIS for Azure és hibrid adatáthelyezés](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
 
 
@@ -271,4 +271,3 @@ Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált 
 
 - Az alkalmazás-hozzáférési réteg értékeléséhez lásd: [adathozzáférés áttelepítési eszközkészlete (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
 - Az A/B típusú adatelérési réteg végrehajtásával kapcsolatos további információkért lásd: [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).
-

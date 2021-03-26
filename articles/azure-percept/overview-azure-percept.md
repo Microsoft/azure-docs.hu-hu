@@ -1,18 +1,18 @@
 ---
 title: Az Azure Percept áttekintése
 description: További információ az Azure Percept platformról
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953592"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567661"
 ---
 # <a name="introduction-to-azure-percept"></a>Az Azure Percept bemutatása
 
@@ -28,21 +28,21 @@ Az integrációs kihívások az egyik arca, amikor az Edge AI-megoldások nagy l
 
 Az Azure Percept fő összetevői a következők:
 
-1. [Azure Percept DK.](./overview-azure-percept-dk.md)
+- [Azure Percept DK.](./overview-azure-percept-dk.md)
 
     - Az eszköz-építők, a megoldás-építők és az ügyfelek számára a prototípus-forgatókönyvek széles skáláját támogató fejlesztői csomag.
 
         > [!div class="nextstepaction"]
         > [Vásárlás most](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-1. Olyan szolgáltatások és munkafolyamatok, amelyek felgyorsítják az Edge AI-modellt és a megoldások fejlesztését.
+- Olyan szolgáltatások és munkafolyamatok, amelyek felgyorsítják az Edge AI-modellt és a megoldások fejlesztését.
 
     - Az [Azure Percept studióból](https://go.microsoft.com/fwlink/?linkid=2135819)elérhető fejlesztői munkafolyamatok és előre elkészített modellek.
     - Modell-fejlesztési szolgáltatások.
     - Eszközkezelés a skálázáshoz.
     - Végpontok közötti biztonság.
 
-1. AI hardver-referenciák tervezési és minősítési programjai.
+- AI hardver-referenciák tervezési és minősítési programjai.
 
     - Az Azure AI-és IoT-szolgáltatásokkal egyszerűen integrálható, az Edge AI-hardverek fejlesztésére szolgáló mintázatokkal és ajánlott eljárásokkal biztosítja a hardveres fejlesztők ökoszisztémáját.
 

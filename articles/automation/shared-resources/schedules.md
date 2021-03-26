@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a829cd946f36fb5996405ba00945e9f9cb65d162
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669559"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544230"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Ütemtervek kezelése Azure Automation
 
@@ -123,7 +123,7 @@ New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th
 
 ## <a name="create-a-schedule-with-a-resource-manager-template"></a>Ütemterv létrehozása Resource Manager-sablonnal
 
-Ebben a példában egy Automation Resource Manager-(ARM-) sablont használunk, amely létrehoz egy új feladatütemezés-munkatervet. A sablonnal kapcsolatos általános információk az Automation-feladatok ütemtervének kezeléséhez: [Microsoft. Automation automationAccounts/jobSchedules sablon referenciája](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates).
+Ebben a példában egy Automation Resource Manager-(ARM-) sablont használunk, amely létrehoz egy új feladatütemezés-munkatervet. A sablonnal kapcsolatos általános információk az Automation-feladatok ütemtervének kezeléséhez: [Microsoft. Automation automationAccounts/jobSchedules sablon referenciája](/azure/templates/microsoft.automation/2015-10-31/automationaccounts/jobschedules#quickstart-templates).
 
 Sablon másolása egy szövegszerkesztőbe:
 

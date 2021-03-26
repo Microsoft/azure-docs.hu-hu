@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan segítheti a Azure Hybrid Benefit az Azure-on f
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
-manager: westonh
+manager: rochakm
 ms.service: virtual-machines
 ms.subservice: azure-hybrid-benefit
 ms.collection: linux
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73747222b9131fa85ae6ac01c9dedd5b0bbe1d63
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695481"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543405"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>A Linux rendszerű virtuális gépekre vonatkozó Azure Hybrid Benefit alkalmazása
 
@@ -39,7 +39,7 @@ Azt is megteheti, hogy olyan virtuális gépet alakít át, amelynek az előnye 
 
 Azure Hybrid Benefit elérhető az Azure Marketplace-ről származó összes RHEL és SLES TB-lemezképhez. Az előny még nem érhető el RHEL vagy SLES BYOS-lemezképekhez vagy egyéni rendszerképekhez az Azure Marketplace-en.
 
-A fenntartott példányok, az Azure dedikált gazdagép példányai és az SQL Hybrid előnyök nem jogosultak Azure Hybrid Benefitre, ha már használja a Linux rendszerű virtuális gépek előnyeit.
+Az Azure dedikált gazdagép példányai és az SQL Hybrid előnyök nem jogosultak Azure Hybrid Benefitre, ha már használja a Linux rendszerű virtuális gépek előnyeit.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -90,11 +90,8 @@ Engedélyezheti a meglévő virtuális gépek előnyét, ha a bal oldalon meglá
 1. Válassza a bal oldali **konfigurációs** lehetőséget. Ekkor megjelenik a licencelés szakasz. A AHB átalakításának engedélyezéséhez jelölje be az "igen" választógombot, és jelölje be a megerősítő jelölőnégyzetet.
 ![AHB-konfiguráció panel létrehozása a létrehozás után](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
-
 >[!NOTE]
 > Ha létrehozott egy **Egyéni pillanatképet** vagy egy RHEL vagy SLES TB-piactér rendszerképét, akkor **csak az Azure** CLI-t használhatja Azure Hybrid Benefit engedélyezéséhez. Ez ismert korlátozás, és jelenleg nincs olyan ütemterv, amely az Azure Portalon is elérhetővé teszi ezt a képességet.
-
-
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Az előny engedélyezése és letiltása az Azure CLI-ben
 
@@ -179,6 +176,15 @@ A Red Hat-előfizetések megfelelőségével, a szoftverfrissítések és a Azur
 
 Ha a SLES-alapú virtuális gépekhez Azure Hybrid Benefit szeretne használni, és a SLES-TB a BYOS-re vagy a SLES BYOS-re való áttéréssel kapcsolatos információkért lásd: [SUSE Linux Enterprise és Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
+## <a name="azure-hybrid-benefit-on-reserved-instances-is-in-preview"></a>A fenntartott példányok Azure Hybrid Benefit előzetes verzióban érhető el
+
+Azure Reservations (Azure Reserved Virtual Machine Instances) segítségével pénzt takaríthat meg, ha egy vagy több termékre vonatkozó egyéves vagy hároméves terveket végez. A [fenntartott példányokról itt](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)talál további információt. A Azure Hybrid Benefit a [fenntartott virtuálisgép-példány (RIs)](https://review.docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation)előzetes verziójában érhető el. Ez azt jelenti, hogy ha kedvezményes díjszabással vásárolt számítási költségeket a RI használatával, a RHEL és a SUSE licencelési költségeihez AHB kedvezményt is alkalmazhat. Az AHB juttatás egy RI-példányra való alkalmazásának lépései pontosan ugyanazok maradnak, mint a normál virtuális gépek esetében.
+![AHB a RIs számára](./media/azure-hybrid-benefit/reserved-instances.png)
+
+>[!NOTE]
+>Ha már megvásárolta a RHEL vagy a SUSE TB szoftver foglalását az Azure Marketplace-en, várjon, amíg a foglalás befejeződik a Azure Hybrid Benefit használata előtt.
+
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 *K: használhatok `RHEL_BYOS` SLES-lemezképpel rendelkező licencet, vagy fordítva?*
 
@@ -206,11 +212,11 @@ Válasz: igen. A `RHEL_BYOS` RHEL virtuális gépekhez és az `SLES_BYOS` Azure 
 
 *K: használhatom a Azure Hybrid Benefitt a virtuálisgép-méretezési csoportokban a RHEL és a SLES?*
 
-A: nem. A virtuálisgép-méretezési csoportok jelenleg nem a RHEL és a SLES Azure Hybrid Benefit hatókörében vannak.
+A: igen, Azure Hybrid Benefit a RHEL és SLES virtuálisgép-méretezési csoportjaiban előzetes verzióban érhető el. Erről [a kedvezményről és annak használatáról itt](https://docs.microsoft.com/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux-vmss)tájékozódhat. 
 
 *K: használhatom Azure Hybrid Benefit a RHEL és a SLES fenntartott példányain?*
 
-A: nem. A fenntartott példányok jelenleg nem a RHEL és a SLES Azure Hybrid Benefit hatókörében vannak.
+A: igen, Azure Hybrid Benefit a RHEL és a SLES fenntartott példányán előzetes verzióban érhető el. Erről [a kedvezményről és annak használatáról itt](#azure-hybrid-benefit-on-reserved-instances-is-in-preview)tájékozódhat.
 
 *K: használhatom a Azure Hybrid Benefitt a RHEL-lemezképeken SQL Server üzembe helyezett virtuális gépen?*
 

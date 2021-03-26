@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 929463e346311d58da5ac75b28c774bcfe258f08
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102119773"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557530"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
@@ -72,12 +72,12 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | {OIDC: LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
 | {OIDC: MaxAge} | `max_age`. | N/A |
 | {OIDC: alkalom} |A `Nonce`  lekérdezési karakterlánc paraméter. | defaultNonce |
-| {OIDC: Password}| Az [erőforrás-tulajdonos jelszava hitelesíti](ropc-custom.md) a felhasználói jelszót.| jelszó1| 
+| {OIDC: Password}| Az [erőforrás-tulajdonos jelszava hitelesíti](add-ropc-policy.md) a felhasználói jelszót.| jelszó1| 
 | {OIDC: prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
 | {OIDC: RedirectUri} |A `redirect_uri`  lekérdezési karakterlánc paraméter. | https://jwt.ms |
 | {OIDC: erőforrás} |A `resource`  lekérdezési karakterlánc paraméter. | N/A |
 | {OIDC: hatókör} |A `scope`  lekérdezési karakterlánc paraméter. | OpenID |
-| {OIDC: username}| Az [erőforrás-tulajdonos jelszavának hitelesítő adatai folyamat](ropc-custom.md) felhasználójának felhasználóneve.| emily@contoso.com| 
+| {OIDC: username}| Az [erőforrás-tulajdonos jelszavának hitelesítő adatai folyamat](add-ropc-policy.md) felhasználójának felhasználóneve.| emily@contoso.com| 
 
 ### <a name="context"></a>Környezet
 

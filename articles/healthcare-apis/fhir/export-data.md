@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: aefb2b4a70fae4ad082243529c8eaf877fb35f22
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: a5b3daa499546f3a30b5a4d133d77786a1916b6a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045304"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559196"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
@@ -47,8 +47,7 @@ Emellett az exportálási állapot ellenőrzése a hely fejléce által visszaad
 
 Jelenleg a következő korlátozásokkal támogatjuk a ADLS Gen2 engedélyezett Storage-fiókok $exportét:
 
-- A felhasználó nem tudja kihasználni a [hierarchikus névtereket](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace), de nincs lehetőség arra, hogy a tárolón belül egy adott alkönyvtárba exportálja az exportálást. Csak egy adott tárolót célozunk meg (ahol minden egyes exportáláshoz új mappát hozunk létre).
-
+- A felhasználó nem tudja kihasználni a [hierarchikus névtereket](../../storage/blobs/data-lake-storage-namespace.md), de nincs lehetőség arra, hogy a tárolón belül egy adott alkönyvtárba exportálja az exportálást. Csak egy adott tárolót célozunk meg (ahol minden egyes exportáláshoz új mappát hozunk létre).
 - Az Exportálás befejezése után még soha nem exportálunk semmit erre a mappára, mert az ugyanazon tárolóba való későbbi exportálás egy újonnan létrehozott mappába kerül.
 
 
@@ -62,13 +61,13 @@ Két kötelező fejléc-paraméternek kell megadnia $export feladatokhoz. Az ér
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 A FHIR készült Azure API a következő lekérdezési paramétereket támogatja. A paraméterek mindegyike opcionális:
 
-|Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Leírás|
+|Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Description|
 |------------------------|---|------------|
-| \_outputFormat | Igen | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
-| \_mivel | Igen | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
-| \_típusa | Igen | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
-| \_typefilter | Igen | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
-| \_tároló | Nem |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
+| \_outputFormat | Yes | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
+| \_mivel | Yes | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
+| \_típusa | Yes | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
+| \_typefilter | Yes | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
+| \_tároló | No |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
 
 > [!Note]
 > Csak a FHIR-hez készült Azure API-hoz tartozó Storage-fiókok regisztrálhatók a $export műveletek célhelye.

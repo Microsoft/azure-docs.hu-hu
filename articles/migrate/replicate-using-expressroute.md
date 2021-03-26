@@ -6,19 +6,19 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448783"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558618"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Adatreplikálás ExpressRoute keresztül a Azure Migrate: kiszolgáló áttelepítése
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja [Azure Migrate: a kiszolgáló áttelepítését](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool) , hogy ExpressRoute áramkörön keresztül replikálja az információkat a kiszolgálók Azure-ba való áttelepítése során.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja [Azure Migrate: a kiszolgáló áttelepítését](./migrate-services-overview.md#azure-migrate-server-migration-tool) , hogy ExpressRoute áramkörön keresztül replikálja az információkat a kiszolgálók Azure-ba való áttelepítése során.
 
 ## <a name="understand-azure-expressroute-circuits"></a>Az Azure ExpressRoute-áramkörök ismertetése
-A ExpressRoute (ER) áramkör csatlakoztatja a helyszíni infrastruktúrát a Microsofthoz egy kapcsolati szolgáltatón keresztül. A ExpressRoute-áramköröket úgy lehet konfigurálni, hogy privát, Microsoft-társas vagy mindkettőt használjanak. Tekintse át a [ExpressRoute-áramkörökről](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare) szóló cikket, és ismerkedjen meg a ExpressRoute-mel elérhető különböző társ-beállítási lehetőségekkel.
+A ExpressRoute (ER) áramkör csatlakoztatja a helyszíni infrastruktúrát a Microsofthoz egy kapcsolati szolgáltatón keresztül. A ExpressRoute-áramköröket úgy lehet konfigurálni, hogy privát, Microsoft-társas vagy mindkettőt használjanak. Tekintse át a [ExpressRoute-áramkörökről](../expressroute/expressroute-circuit-peerings.md#peeringcompare) szóló cikket, és ismerkedjen meg a ExpressRoute-mel elérhető különböző társ-beállítási lehetőségekkel.
 
 A Azure Migrate kiszolgáló áttelepítési eszköze segíti a helyszíni kiszolgálók és kiszolgálók áttelepítését más felhőből az Azure Virtual Machines szolgáltatásba. Az eszköz úgy működik, hogy egy folyamatos replikálási adatfolyamot állít be, amely az Azure-előfizetésben lévő felügyelt lemezekre áttelepíteni kívánt kiszolgálók adatait replikálja. Amikor készen áll a kiszolgálók áttelepítésére, a rendszer az Azure-ban replikált, a kiszolgálók áttelepítésére szolgáló adatfájlokat használja.
 
@@ -104,7 +104,7 @@ Saját végpontokat csak általános célú v2 (GPv2) Storage-fiókban hozhat l�
     > [!Note]
     > A virtuális hálózatnak tartalmaznia kell az ExpressRoute-átjáró végpontját, vagy csatlakoznia kell a virtuális hálózathoz a ExpressRoute-átjáróval. 
 
-    Az **saját DNS integráció** szakaszban válassza az **Igen** lehetőséget, és INTEGRÁLJA a saját DNS-zónával. Az **Igen** lehetőség kiválasztásával automatikusan összekapcsolja a DNS-zónát a kiválasztott virtuális hálózattal, és hozzáadja azokat a DNS-rekordokat, amelyek szükségesek az új IP-címek és a magánhálózati végponthoz létrehozott teljes tartománynevek DNS-feloldásához. További információ a [privát DNS-zónákról.](https://docs.microsoft.com/azure/dns/private-dns-overview)
+    Az **saját DNS integráció** szakaszban válassza az **Igen** lehetőséget, és INTEGRÁLJA a saját DNS-zónával. Az **Igen** lehetőség kiválasztásával automatikusan összekapcsolja a DNS-zónát a kiválasztott virtuális hálózattal, és hozzáadja azokat a DNS-rekordokat, amelyek szükségesek az új IP-címek és a magánhálózati végponthoz létrehozott teljes tartománynevek DNS-feloldásához. További információ a [privát DNS-zónákról.](../dns/private-dns-overview.md)
 
     ![privatednszone](./media/replicate-using-expressroute/private-dns-zone.png)
 
@@ -144,14 +144,14 @@ Ha nem jelölte be a magánhálózati DNS-zónával való integráció lehetős�
     b. A **rekordazonosító hozzáadása** lapon adjon hozzá egy bejegyzést a teljes tartománynév és a magánhálózati IP-cím típusú rekordként.
 
 > [!Important]
-> További DNS-beállításokat igényelhet a Storage-fiók privát végpontjának magánhálózati IP-címének feloldásához a forrás környezetből. [Tekintse át ezt a cikket](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder) a szükséges DNS-konfiguráció megismeréséhez.
+> További DNS-beállításokat igényelhet a Storage-fiók privát végpontjának magánhálózati IP-címének feloldásához a forrás környezetből. [Tekintse át ezt a cikket](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) a szükséges DNS-konfiguráció megismeréséhez.
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>Adatreplikálás ExpressRoute-áramkör használatával Microsoft-partneri kapcsolattal
 
 Az alábbi ábrán látható módon a Microsoft-társ vagy egy meglévő nyilvános tartomány (az új ExpressRoute-kapcsolatok esetében elavult) használatával irányíthatja át a replikációs forgalmat egy ExpressRoute-áramkörön keresztül.
 ![replicationwithmicrosoftpeering](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-Még a Microsoft által kezelt áramkörön áthaladó replikációs adatokkal is szüksége lesz az internetkapcsolatra a helyszíni helyről más kommunikációhoz (vezérlési síkon) a Azure Migrate szolgáltatással. Vannak olyan további URL-címek, amelyek nem érhetők el a ExpressRoute-on keresztül, hogy a replikációs berendezésnek/Hyper-V-gazdagépnek hozzá kell férnie a replikálási folyamat előkészítéséhez. Az URL-követelményeket áttekintheti az áttelepítési forgatókönyv, a [VMware ügynök nélküli áttelepítés](https://docs.microsoft.com/azure/migrate/migrate-appliance#public-cloud-urls) vagy az [ügynök-alapú áttelepítés](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance)alapján.  
+Még a Microsoft által kezelt áramkörön áthaladó replikációs adatokkal is szüksége lesz az internetkapcsolatra a helyszíni helyről más kommunikációhoz (vezérlési síkon) a Azure Migrate szolgáltatással. Vannak olyan további URL-címek, amelyek nem érhetők el a ExpressRoute-on keresztül, hogy a replikációs berendezésnek/Hyper-V-gazdagépnek hozzá kell férnie a replikálási folyamat előkészítéséhez. Az URL-követelményeket áttekintheti az áttelepítési forgatókönyv, a [VMware ügynök nélküli áttelepítés](./migrate-appliance.md#public-cloud-urls) vagy az [ügynök-alapú áttelepítés](./migrate-replication-appliance.md)alapján.  
 
 Ha a helyszíni telephelyen proxyt használ, és a ExpressRoute szeretné használni a replikálási forgalomhoz, konfigurálnia kell egy proxy megkerülést a kapcsolódó URL-címekhez a helyszíni készüléken. 
 
@@ -172,7 +172,7 @@ Ha a helyszíni telephelyen proxyt használ, és a ExpressRoute szeretné haszn�
 
 Kövesse az alábbi lépéseket a proxy-megkerülési lista konfigurálásához a konfigurációs kiszolgálón és a folyamat-kiszolgálókon:
 
-1. [Töltse le a PsExec eszközt](https://docs.microsoft.com/sysinternals/downloads/psexec) a rendszer felhasználói környezetének eléréséhez.
+1. [Töltse le a PsExec eszközt](/sysinternals/downloads/psexec) a rendszer felhasználói környezetének eléréséhez.
 2. Nyissa meg az Internet Explorert a rendszerfelhasználó környezetben a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" parancs futtatásával
 3. Proxybeállítások megadása az IE-ben.
 4. A Mellőzés listából adja hozzá az Azure Storage URL-címét. *. blob. Core. Windows. net.  
@@ -185,10 +185,10 @@ Emellett a következő BGP-Közösségek útvonal-szűrőben lévő útvonalakat
 - Regionális BGP-Közösség a cél Azure-régióhoz (Migrálás régiója)
 - BGP-Közösség Azure Active Directory (12076:5060)
 
-További információ az [útválasztási szűrőkről](https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal) és a [ExpressRoute BGP-Közösségek](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)listájáról. 
+További információ az [útválasztási szűrőkről](../expressroute/how-to-routefilter-portal.md) és a [ExpressRoute BGP-Közösségek](../expressroute/expressroute-routing.md#bgp)listájáról. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [ExpressRoute-áramkörökről](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings).
-- További információ az [ExpressRoute-útválasztási tartományokról](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare).
-- További információ a [privát végpontokról](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+- További információ az [ExpressRoute-áramkörökről](../expressroute/expressroute-circuit-peerings.md).
+- További információ az [ExpressRoute-útválasztási tartományokról](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+- További információ a [privát végpontokról](../private-link/private-endpoint-overview.md).

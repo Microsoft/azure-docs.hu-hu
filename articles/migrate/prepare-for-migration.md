@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614887"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558227"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -86,7 +86,7 @@ A szükséges módosításokat a táblázat összegzi.
 --- | --- | --- | ---
 **A TÁROLÓHÁLÓZATI házirend konfigurálása online állapotként**<br/><br/> Ez biztosítja, hogy az Azure virtuális gépen futó Windows-kötetek ugyanazt a meghajtóbetűjel-hozzárendelést használják, mint a helyszíni virtuális gép. | Automatikus beállítás a Windows Server 2008 R2 vagy újabb rendszert futtató gépeken.<br/><br/> Konfigurálja manuálisan a korábbi operációs rendszerekhez. | A legtöbb esetben a rendszer automatikusan beállítja. | Konfigurálja manuálisan.
 **A Hyper-V vendég integrációjának telepítése** | [Telepítse manuálisan](prepare-windows-server-2003-migration.md#install-on-vmware-vms) a Windows Server 2003 rendszert futtató gépeken. | [Telepítse manuálisan](prepare-windows-server-2003-migration.md#install-on-vmware-vms) a Windows Server 2003 rendszert futtató gépeken. | [Telepítse manuálisan](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) a Windows Server 2003 rendszert futtató gépeken.
-**Engedélyezze az Azure soros konzolt**.<br/><br/>[Engedélyezze a konzolt az](../virtual-machines/troubleshooting/serial-console-windows.md) Azure virtuális gépeken a hibaelhárításhoz. Nem kell újraindítani a virtuális gépet. Az Azure-beli virtuális gép a lemezkép használatával fog elindulni. A lemezkép rendszerindítási értéke megegyezik az új virtuális gép újraindításával. | Manuális engedélyezés | Manuális engedélyezés | Manuális engedélyezés
+**Engedélyezze az Azure soros konzolt**.<br/><br/>[Engedélyezze a konzolt az](/troubleshoot/azure/virtual-machines/serial-console-windows) Azure virtuális gépeken a hibaelhárításhoz. Nem kell újraindítani a virtuális gépet. Az Azure-beli virtuális gép a lemezkép használatával fog elindulni. A lemezkép rendszerindítási értéke megegyezik az új virtuális gép újraindításával. | Manuális engedélyezés | Manuális engedélyezés | Manuális engedélyezés
 **Kapcsolat az áttelepítés után**<br/><br/> A Migrálás utáni kapcsolódáshoz számos lépést kell végrehajtani az áttelepítés előtt. | [Állítsa be](#prepare-to-connect-to-azure-windows-vms) manuálisan. | [Állítsa be](#prepare-to-connect-to-azure-windows-vms) manuálisan. | [Állítsa be](#prepare-to-connect-to-azure-windows-vms) manuálisan.
 
 
@@ -126,7 +126,7 @@ Más verziók esetében készítse elő a gépeket a táblázatban foglaltak sze
 **Művelet** | **Részletek** | **Linux-verzió**
 --- | --- | ---
 **A Hyper-V Linux Integration Services telepítése** | Építse újra a Linux init-rendszerképet, hogy tartalmazza a szükséges Hyper-V-illesztőprogramokat. Az init-rendszerkép újraépítése biztosítja, hogy a virtuális gép az Azure-ban induljon el. | Alapértelmezés szerint a Linux-disztribúciók legtöbb új verziója szerepel.<br/><br/> Ha nem tartalmazza, telepítse manuálisan az összes verzióra, kivéve a fentiekben leírtakat.
-**Az Azure soros konzol naplózásának engedélyezése** | A konzol naplózásának engedélyezése segít a hibakeresésben. Nem kell újraindítani a virtuális gépet. Az Azure-beli virtuális gép a lemezkép használatával fog elindulni. A lemezkép rendszerindítási értéke megegyezik az új virtuális gép újraindításával.<br/><br/> Az engedélyezéshez kövesse az [alábbi utasításokat](../virtual-machines/troubleshooting/serial-console-linux.md) .
+**Az Azure soros konzol naplózásának engedélyezése** | A konzol naplózásának engedélyezése segít a hibakeresésben. Nem kell újraindítani a virtuális gépet. Az Azure-beli virtuális gép a lemezkép használatával fog elindulni. A lemezkép rendszerindítási értéke megegyezik az új virtuális gép újraindításával.<br/><br/> Az engedélyezéshez kövesse az [alábbi utasításokat](/troubleshoot/azure/virtual-machines/serial-console-linux) .
 **Eszköz-hozzárendelési fájl frissítése** | Frissítse az eszköz-hozzárendelési fájlt az eszköz név – kötet társításával, így állandó eszköz-azonosítókat használhat. | Telepítse manuálisan az összes verzióra a fentiekben leírtak kivételével. (Csak ügynök-alapú VMware-forgatókönyv esetén alkalmazható)
 **Fstab-bejegyzések frissítése** |  Frissítse a bejegyzéseket az állandó kötet-azonosítók használatára.    | A fentiekben leírtak kivételével az összes verzióhoz manuálisan frissítse a frissítést.
 **Udev-szabály eltávolítása** | Távolítson el minden olyan udev-szabályt, amely Mac-címeken alapuló kapcsolati neveket foglal le, stb. | Távolítsa el manuálisan az összes verziót, a fentiekben leírtak kivételével.
@@ -148,7 +148,7 @@ A következő táblázat összefoglalja a fent felsorolt operációs rendszerek 
 
 További információ a [Linux rendszerű virtuális gépek Azure-beli futtatásáról](../virtual-machines/linux/create-upload-generic.md), valamint a népszerű Linux-disztribúciók használati lépéseiről.
 
-Tekintse át a Linux rendszerű virtuális gép ügynökének telepítéséhez [szükséges csomagok](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) listáját. Azure Migrate a Linux rendszerű virtuális gép ügynökét automatikusan telepíti a 64 bites RHEL6, a RHEL7, a CentOS7 (6), az Ubuntu 14,04, az Ubuntu 16,04, az Ubuntu 18.04 pedig a VMware-áttelepítés ügynök nélküli módszerének használata esetén.
+Tekintse át a Linux rendszerű virtuális gép ügynökének telepítéséhez [szükséges csomagok](../virtual-machines/extensions/agent-linux.md#requirements) listáját. Azure Migrate a Linux rendszerű virtuális gép ügynökét automatikusan telepíti a 64 bites RHEL6, a RHEL7, a CentOS7 (6), az Ubuntu 14,04, az Ubuntu 16,04, az Ubuntu 18.04 pedig a VMware-áttelepítés ügynök nélküli módszerének használata esetén.
 
 ## <a name="check-azure-vm-requirements"></a>Az Azure-beli virtuális gépekre vonatkozó követelmények keresése
 
@@ -187,7 +187,7 @@ Az áttelepítés után hajtsa végre a következő lépéseket a létrehozott A
 
 1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információ](../virtual-network/virtual-network-public-ip-address.md).
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
-3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
+3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) .
 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -200,4 +200,4 @@ A VMware virtuális gépek esetében a kiszolgáló áttelepítése az [ügynök
 
 - **VMWare virtuális gépek**: Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-vmware-migration.md) a VMWare virtuális gépek támogatását.
 - **Hyper-v virtuális gépek**: Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-hyper-v-migration.md) a Hyper-v virtuális gépek támogatását.
-- **Fizikai gépek**: Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-physical-migration.md) a helyszíni fizikai gépek és más virtualizált kiszolgálók támogatását. 
+- **Fizikai gépek**: Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-physical-migration.md) a helyszíni fizikai gépek és más virtualizált kiszolgálók támogatását.

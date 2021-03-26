@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0201882b74d2acf57c246d2dc63530ca8b1f010
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5956b7b74d27a4f9a2b79ee3950c8ac765610c70
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101692604"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558482"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>Eszközfrissítés az IoT Hub-erőforrások kezeléséhez
 
@@ -127,7 +127,11 @@ Ahhoz, hogy más felhasználók hozzáférhessenek az eszköz frissítéséhez, 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Frissítés importálása a IoT Hub eszköz frissítésével.](import-update.md)
+Próbálja meg frissíteni az eszközt az alábbi rövid útmutatók egyikével:
+
+ - [Eszköz frissítése szimulátoron](device-update-simulator.md)
+ - [Eszköz frissítése a málna PI-ban](device-update-raspberry-pi.md)
+ - [Eszköz frissítése Ubuntu Server 18,04 x64 Package Agent-ügynökön](device-update-ubuntu-agent.md)
 
 [Az eszköz frissítési fiókjának és példányának megismerése.](device-update-resources.md) 
 

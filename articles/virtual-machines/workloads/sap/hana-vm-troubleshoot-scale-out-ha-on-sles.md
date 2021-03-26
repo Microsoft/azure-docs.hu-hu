@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f4c1de484ce2659a7e84a1546a7c49c1d77a7d56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e64abc008433c895e21690ccab8cc532ec1b34b1
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674486"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543856"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
 
@@ -29,9 +29,9 @@ ms.locfileid: "101674486"
 [suse-cloud-netconfig]:https://www.suse.com/c/multi-nic-cloud-netconfig-ec2-azure/
 [sap-list-port-numbers]:https://help.sap.com/viewer/ports
 [sles-12-ha-paper]:https://www.suse.com/documentation/sle-ha-12/pdfdoc/book_sleha/book_sleha.pdf
-[sles-zero-downtime-paper]:https://www.suse.com/media/presentation/TUT90846_towards_zero_downtime%20_how_to_maintain_sap_hana_system_replication_clusters.pdf
+[sles-zero-downtime-paper]:https://www.youtube.com/embed/0FW3J6GbxOk
 [sap-nw-ha-guide-sles]:high-availability-guide-suse.md
-[sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
+[sles-12-for-sap]:https://www.scribd.com/document/377847444/Suse-Linux-Enterprise-Server-for-Sap-Applications-12-Sp1
 
 
 Ebből a cikkből megtudhatja, hogy az Azure Virtual Machines (VM) szolgáltatásban futó SAP HANA kibővíthető-e a pacemaker-fürt konfigurációja. A fürt beállítása SAP HANA rendszerreplikációval (HSR) és a SUSE RPM-csomaggal (SAPHanaSR-horizontális felskálázás) együtt valósult meg. Az összes teszt csak a SUSE SLES 12 SP3 szervizcsomaggal lett végrehajtva. A cikk fejezetei különböző területekre terjednek ki, és a konfigurációs fájlokból származó minta parancsokat és kivonatokat tartalmaznak. Ezeket a mintákat ajánlott módszerként beállítani a teljes fürtkonfiguráció ellenőrzéséhez és ellenőrzéséhez.

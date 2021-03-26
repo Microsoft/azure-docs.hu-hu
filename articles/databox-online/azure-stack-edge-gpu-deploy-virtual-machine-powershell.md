@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 28988af0c1b3b5e4e5ce359abb617a66af816d69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439816"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568324"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge-eszközön Azure PowerShell használatával
 
@@ -127,7 +127,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Azure Resource Manager használatával csak helyi Storage-fiókokat hozhat létre, például a helyileg redundáns tárolást (standard vagy prémium). A többplatformos tárolási fiókok létrehozásával kapcsolatban lásd [: oktatóanyag: adatok átvitele a Storage-fiókokkal Azure stack Edge Pro és GPU](azure-stack-edge-j-series-deploy-add-storage-accounts.md)használatával.
+> Azure Resource Manager használatával csak helyi Storage-fiókokat hozhat létre, például a helyileg redundáns tárolást (standard vagy prémium). A többplatformos tárolási fiókok létrehozásával kapcsolatban lásd [: oktatóanyag: adatok átvitele a Storage-fiókokkal Azure stack Edge Pro és GPU](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)használatával.
 
 Íme néhány példa a kimenetre:
 
@@ -179,7 +179,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>Adja hozzá a blob URI-JÁT a gazdagép fájlhoz
 
-Már hozzáadta a blob URI-t a Hosts fájlban ahhoz az ügyfélhez, amelyet az Azure-Blob Storagehoz való kapcsolódáshoz használ az [Azure stack Edge-beli virtuális gépek Azure PowerShell használatával történő üzembe helyezéséhez](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). 5. lépés: a végpont neve feloldása Ez a bejegyzés a blob URI-azonosító hozzáadására szolgál:
+Már hozzáadta a blob URI-t a Hosts fájlban ahhoz az ügyfélhez, amelyet az Azure-Blob Storagehoz való kapcsolódáshoz használ az [Azure stack Edge-beli virtuális gépek Azure PowerShell használatával történő üzembe helyezéséhez](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). 5. lépés: a végpont neve feloldása Ez a bejegyzés a blob URI-azonosító hozzáadására szolgál:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> .\<dnsdomain\>
 

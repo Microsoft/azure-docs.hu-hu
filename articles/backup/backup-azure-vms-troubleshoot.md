@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97831550"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559366"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -139,7 +139,7 @@ Az ellenőrzéshez keresse meg a ***rendszer-és Eseménynapló az alkalmazás n
 
 Megoldás:
 
-* Győződjön meg arról, hogy a virtuális gépek lemezein át kell osztani a terhelést. Ez csökkenti az egyes lemezek terhelését. [A IOPs szabályozását a diagnosztikai metrikák tárolási szinten való engedélyezésével](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)tekintheti meg.
+* Győződjön meg arról, hogy a virtuális gépek lemezein át kell osztani a terhelést. Ez csökkenti az egyes lemezek terhelését. [A IOPs szabályozását a diagnosztikai metrikák tárolási szinten való engedélyezésével](/troubleshoot/azure/virtual-machines/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)tekintheti meg.
 * Módosítsa a biztonsági mentési szabályzatot a biztonsági mentések elvégzéséhez a csúcsidőben, amikor a virtuális gép terhelése a legalacsonyabb szinten van.
 * Frissítse az Azure-lemezeket a magasabb IOPs támogatásához. [További információ](../virtual-machines/disks-types.md)
 
@@ -371,12 +371,12 @@ A virtuálisgép-ügynök általában már jelen van az Azure Galleryből létre
 #### <a name="windows-vms---set-up-the-agent"></a>Windows rendszerű virtuális gépek – az ügynök beállítása
 
 * Töltse le és telepítse az [ügynök MSI-t](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságok szükségesek.
-* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) , hogy jelezze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges Azure Resource Manager virtuális gépekhez.
+* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) , hogy jelezze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges Azure Resource Manager virtuális gépekhez.
 
 #### <a name="linux-vms---set-up-the-agent"></a>Linux rendszerű virtuális gépek – az ügynök beállítása
 
 * Telepítse az ügynök legújabb verzióját a terjesztési tárházból. A csomag nevével kapcsolatos részletekért tekintse meg a [Linux-ügynök tárházát](https://github.com/Azure/WALinuxAgent).
-* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) , és ellenőrizze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges a Resource Manager virtuális gépekhez.
+* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) , és ellenőrizze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges a Resource Manager virtuális gépekhez.
 
 ### <a name="update-the-vm-agent"></a>A virtuálisgép-ügynök frissítése
 

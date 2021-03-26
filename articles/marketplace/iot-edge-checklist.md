@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608257"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562698"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>A IoT Edge-modulok előzetes tanúsítási ellenőrzőlistája
 
@@ -55,7 +55,7 @@ A minősítési csapat a következő hardvert használja a rendszerképek külö
 #### <a name="steps"></a>Lépések
 
 1. Győződjön meg arról, hogy az eszközök/virtuális gép létre van hozva a PuTTY használatával.
-1. Töltse le [IoT Edge futtatókörnyezetet](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge) az eszközre.
+1. Töltse le [IoT Edge futtatókörnyezetet](../iot-edge/how-to-install-iot-edge.md) az eszközre.
 1. Frissítse az 5. lépésben a config. YAML fájlba másolt kapcsolódási karakterláncot.
 1. Indítsa újra az Edge-modult a rel `sudo systemctl restart iotedge` .
 1. Ellenőrizze, hogy a modul telepítve van-e az eszközön a szolgáltatással, ezért `sudo iotedge list` futó állapotban kell lennie.
@@ -78,6 +78,6 @@ Ellenőrizze a következőket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Modulok üzembe helyezése a kereskedelmi piactéren](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [Az Edge-modul közzététele a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
-- [IoT Edge modul üzembe helyezése](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  
+- [Modulok üzembe helyezése a kereskedelmi piactéren](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
+- [Az Edge-modul közzététele a partner Centerben](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [IoT Edge modul üzembe helyezése](../iot-edge/quickstart-linux.md)

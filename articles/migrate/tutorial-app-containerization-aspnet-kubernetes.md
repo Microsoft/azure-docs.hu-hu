@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 422a911c2c0bb6aa1252ebb649368b61aa350b6e
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025577"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561797"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET az alkalmazások tárolókra bontás és migrálása az Azure Kubernetes Service-be
 
@@ -60,7 +60,7 @@ Az oktatóanyag elkezdése előtt:
 **Követelmény** | **Részletek**
 --- | ---
 **Számítógép azonosítása az eszköz telepítéséhez** | Egy Windows rendszerű gép, amely a Azure Migrate: app tárolókra bontás eszközt telepíti és futtatja. A Windows rendszerű gép lehet egy kiszolgáló (Windows Server 2016 vagy újabb) vagy ügyfél (Windows 10) operációs rendszer, ami azt jelenti, hogy az eszköz futtatható az asztalon is. <br/><br/> Az eszközt futtató Windows-gépnek hálózati kapcsolattal kell rendelkeznie a konténerizálni kívánt ASP.NET-alkalmazásokat üzemeltető kiszolgálókhoz/virtuális gépekhez.<br/><br/> Győződjön meg arról, hogy a (z) Azure Migrate: app tárolókra bontás eszközt futtató Windows-gépen 6 GB szabad terület áll rendelkezésre az alkalmazás-összetevők tárolásához. <br/><br/> A Windows-gépnek közvetlen vagy proxyn keresztüli internetkapcsolattal kell rendelkeznie. <br/> <br/>Telepítse a Microsoft Web Deploy eszközt azon a gépen, amelyen az App tárolókra bontás Helper eszköz és az alkalmazáskiszolgáló még nincs telepítve. Az eszközt [innen](https://aka.ms/webdeploy3.6) töltheti le
-**Alkalmazáskiszolgálók** | Engedélyezze a PowerShell távelérést az alkalmazás-kiszolgálókon: Jelentkezzen be az alkalmazáskiszolgáló felé, és kövesse az [alábbi](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) utasításokat a PowerShell távelérés bekapcsolásához. <br/><br/> Ha az alkalmazáskiszolgáló a 2008 R2 rendszert futtatja, győződjön meg arról, hogy a PowerShell 5,1 telepítve van az alkalmazáskiszolgáló számára. Kövesse az [alábbi](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure) utasításokat a PowerShell 5,1 letöltéséhez és telepítéséhez az alkalmazáskiszolgáló kiszolgálón. <br/><br/> Telepítse a Microsoft Web Deploy eszközt azon a gépen, amelyen az App tárolókra bontás Helper eszköz és az alkalmazáskiszolgáló még nincs telepítve. Az eszközt [innen](https://aka.ms/webdeploy3.6) töltheti le
+**Alkalmazáskiszolgálók** | Engedélyezze a PowerShell távelérést az alkalmazás-kiszolgálókon: Jelentkezzen be az alkalmazáskiszolgáló felé, és kövesse az [alábbi](/powershell/module/microsoft.powershell.core/enable-psremoting) utasításokat a PowerShell távelérés bekapcsolásához. <br/><br/> Ha az alkalmazáskiszolgáló a 2008 R2 rendszert futtatja, győződjön meg arról, hogy a PowerShell 5,1 telepítve van az alkalmazáskiszolgáló számára. Kövesse az [alábbi](/powershell/scripting/windows-powershell/wmf/setup/install-configure) utasításokat a PowerShell 5,1 letöltéséhez és telepítéséhez az alkalmazáskiszolgáló kiszolgálón. <br/><br/> Telepítse a Microsoft Web Deploy eszközt azon a gépen, amelyen az App tárolókra bontás Helper eszköz és az alkalmazáskiszolgáló még nincs telepítve. Az eszközt [innen](https://aka.ms/webdeploy3.6) töltheti le
 **ASP.NET-alkalmazás** | Az eszköz jelenleg támogatja <br/><br/> – A Microsoft .NET Framework 3,5-es vagy újabb verzióját használó alkalmazások ASP.NET.<br/> – Windows Server 2008 R2 vagy újabb rendszerű alkalmazás-kiszolgálók (az alkalmazáskiszolgáló a PowerShell 5,1-es verziójának kell futnia). <br/> – Internet Information Services (IIS) 7,5-es vagy újabb verzióját futtató alkalmazások. <br/><br/> Az eszköz jelenleg nem támogatott <br/><br/> – Windows-hitelesítést igénylő alkalmazások (az AK jelenleg nem támogatja a gMSA-t). <br/> – Az IIS-en kívül futtatott egyéb Windows-szolgáltatásoktól függő alkalmazások.
 
 
@@ -180,7 +180,7 @@ A konfiguráció Parameterizing elérhetővé teszi a központi telepítési id�
 
 ### <a name="externalize-file-system-dependencies"></a>Externalize-fájlrendszer függőségei
 
- Az alkalmazás által használt egyéb mappákat is hozzáadhat. Adja meg, hogy a tároló rendszerképének részét képezik-e, vagy az Azure-fájlmegosztás állandó kötetein keresztül kell-e külsőleg lenni. Az állandó kötetek használatával a tárolón kívüli állapotot tároló, vagy a fájlrendszeren tárolt egyéb statikus tartalommal rendelkező állapot-nyilvántartó alkalmazások esetében kiválóan használható. [További információ](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Az alkalmazás által használt egyéb mappákat is hozzáadhat. Adja meg, hogy a tároló rendszerképének részét képezik-e, vagy az Azure-fájlmegosztás állandó kötetein keresztül kell-e külsőleg lenni. Az állandó kötetek használatával a tárolón kívüli állapotot tároló, vagy a fájlrendszeren tárolt egyéb statikus tartalommal rendelkező állapot-nyilvántartó alkalmazások esetében kiválóan használható. [További információ](../aks/concepts-storage.md)
 
 1. Az észlelt alkalmazás-mappák áttekintéséhez kattintson az alkalmazás mappái alatt található **Szerkesztés** elemre. Az észlelt alkalmazás mappái az alkalmazás által igényelt kötelező összetevőkként vannak meghatározva, és a rendszer a tároló képére másolja.
 
@@ -195,7 +195,7 @@ A konfiguráció Parameterizing elérhetővé teszi a központi telepítési id�
 ## <a name="build-container-image"></a>Tárolórendszerkép összeállítása
 
 
-1. **Azure Container Registry kiválasztása**: a legördülő listából válassza ki az alkalmazáshoz tartozó tároló-lemezképek létrehozásához és tárolásához használni kívánt [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) . Meglévő Azure Container Registry is használhat, vagy létrehozhat egy újat az új beállításjegyzék létrehozása lehetőség használatával.
+1. **Azure Container Registry kiválasztása**: a legördülő listából válassza ki az alkalmazáshoz tartozó tároló-lemezképek létrehozásához és tárolásához használni kívánt [Azure Container Registry](../container-registry/index.yml) . Meglévő Azure Container Registry is használhat, vagy létrehozhat egy újat az új beállításjegyzék létrehozása lehetőség használatával.
 
     ![Képernyőfelvétel az alkalmazás ACR kiválasztásáról.](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 

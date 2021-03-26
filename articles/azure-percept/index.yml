@@ -3,19 +3,19 @@ title: Az Azure Percept dokumentációja
 summary: Az Azure Percept egy teljes körű megoldás, amely az érzékelésen alapuló mesterséges intelligencia kialakítására és üzembe helyezésére használható.
 metadata:
   title: Az Azure Percept dokumentációja
-  description: Az Azure Percept egy végpontok közötti Edge-platform.
+  description: Az Azure Percept egy teljes körű élvonalbeli AI platform és fejlesztői csomag.
   services: azure-percept
   ms.service: azure-percept
   ms.topic: landing-page
-  author: elqu20
-  ms.author: v-elqu
-  ms.date: 02/11/2021
-  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
-  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  author: mimcco
+  ms.author: mimcco
+  ms.date: 03/25/2021
+  ms.openlocfilehash: 61e9d784d899cb8f0741f27aee0bdb7031bb37d1
+  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102097495"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105562545"
 landingContent:
 - title: Mi az Azure Percept?
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
       url: overview-azure-percept-studio.md
     - text: Az Azure Percept biztonsági áttekintése
       url: overview-percept-security.md
+    - text: 80/20 integráció
+      url: overview-8020-integration.md
 - title: Ismerkedés az Azure Percept DK-mel
   linkLists:
   - linkListType: quickstart

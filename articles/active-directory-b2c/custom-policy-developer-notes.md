@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095799"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557275"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -68,7 +68,7 @@ Az egyéni házirend-képességek állandó fejlesztés alatt állnak. A követk
 | [OAuth2-engedélyezési kód](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 engedélyezési kód a PKCE |  |  | X | [Nyilvános ügyfelek és egyoldalas alkalmazások](authorization-code-flow.md)  |
 | [OAuth2 implicit folyamat](implicit-flow-single-page-application.md) |  |  | X |  |
-| [OAuth2 erőforrás-tulajdonos jelszavas hitelesítő adatai](ropc-custom.md) |  | X |  |  |
+| [OAuth2 erőforrás-tulajdonos jelszavas hitelesítő adatai](add-ropc-policy.md) |  | X |  |  |
 | [OIDC-kapcsolat](openid-connect.md) |  |  | X |  |
 | [EGY SAML2](saml-service-provider.md)  |  |  |X  | Kötések közzététele és átirányítása. |
 | OAuth1 |  |  |  | Nem támogatott. |

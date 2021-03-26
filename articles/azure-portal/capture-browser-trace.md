@@ -1,14 +1,14 @@
 ---
 title: Böngésző-nyomkövetés rögzítése hibaelhárításhoz
 description: Hálózati információk rögzítése böngésző-nyomkövetésből a Azure Portal problémáinak elhárítása érdekében.
-ms.date: 05/11/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745995"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563487"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Böngésző-nyomkövetés rögzítése hibaelhárításhoz
 
@@ -190,13 +190,13 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
     ![A böngésző nyomkövetési eredményeinek képernyőképe](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. A váratlan portál viselkedésének reprodukálása után válassza a **har Exportálás/Importálás** lehetőséget, majd **mentse az összes** elemet.
+1. A váratlan portál viselkedésének reprodukálása után válassza az **összes mentése a har-ként** lehetőséget.
 
     ![Képernyőkép a "HAR exportálása"](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Állítsa le a Windows vagy a képernyő rögzítését a Mac számítógépen, és mentse a rögzítést.
 
-1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** fülre. Kattintson a jobb gombbal az egyik üzenetre, majd válassza a **látható üzenet exportálása a** következőre lehetőséget, majd mentse a konzol kimenetét egy szövegfájlba.
+1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** fülre. Kattintson a jobb gombbal az egyik üzenetre, majd válassza a **látható üzenetek exportálása a** következőre lehetőséget, majd mentse a konzol kimenetét egy szövegfájlba.
 
     ![A konzol kimenetének képernyőképe](media/capture-browser-trace/firefox-console-select.png)
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108391"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562409"
 ---
 # <a name="calling-sdk-overview"></a>Az SDK meghívása – áttekintés
 
@@ -72,13 +72,33 @@ Az alábbi lista az SDK-kat hívó Azure kommunikációs szolgáltatásokban jel
 |                   | Skálázási mód beállítása/frissítése                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Távoli video stream megjelenítése                                                                                          | ✔️   | ✔️            | ✔️
 
+## <a name="calling-client-library-streaming-support"></a>Az ügyféloldali kódtár streaming-támogatásának meghívása
+A kommunikációs szolgáltatások az ügyféloldali kódtárat a következő folyamatos átviteli konfigurációkat támogatják:
 
+| Korlát          |Webes | Android/iOS|
+|-----------|----|------------|
+|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó + 1 képernyő megosztása | 1 videó + 1 képernyő megosztása|
+|**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó + 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
+
+## <a name="calling-client-library-timeouts"></a>Ügyféloldali kódtár időtúllépésének meghívása
+
+A következő időtúllépések érvényesek a kommunikációs szolgáltatások ügyfél-kódtárainak meghívásakor:
+
+| Művelet           | Időtúllépés hossza másodpercben |
+| -------------- | ---------- |
+| Újracsatlakozási/eltávolítási résztvevő | 120 |
+| Új modális hívás hozzáadása vagy eltávolítása (videó vagy képernyőfelvétel indítása/leállítása) | 40 |
+| Hívási átviteli művelet időtúllépése | 60 |
+| 1:1 hívási idő időtúllépése | 85 |
+| Csoportos hívás létesítésének időtúllépése | 85 |
+| PSTN-hívás létesítésének időtúllépése | 115 |
+| 1:1-hívások előléptetése egy csoportos hívás időkorlátja számára | 115 |
 
 ## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>Az operációs rendszer és a böngésző SDK-támogatását meghívó JavaScript
 
 A következő táblázat a jelenleg elérhető támogatott böngészők készletét tartalmazza. A böngésző legújabb három verzióját támogatjuk, hacsak másként nincs jelezve.
 
-|                                  | Chrome | Safari  | Edge (króm) | 
+| Platform                         | Chrome | Safari  | Edge (króm) | 
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
@@ -114,15 +134,6 @@ Ez az IFRAME például a kamera és a mikrofon elérését is lehetővé teszi:
 ```html
 <iframe allow="camera *; microphone *">
 ```
-
-## <a name="calling-sdk-streaming-support"></a>Az SDK streaming támogatásának meghívása
-A kommunikációs szolgáltatások hívó SDK a következő folyamatos átviteli konfigurációkat támogatja:
-
-|           |Webes | Android/iOS|
-|-----------|----|------------|
-|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó vagy 1 képernyő megosztása | 1 videó + 1 képernyő megosztása|
-|**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó vagy 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
-
 
 ## <a name="next-steps"></a>Következő lépések
 

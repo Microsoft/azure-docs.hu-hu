@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 3/08/2021
-ms.openlocfilehash: 1a1d415b374818d9a51c87e78e7ac422fa374bc5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 47ef56a770ca9965cef3e50630be4b69342a038d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509594"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559859"
 ---
 # <a name="media-players-for-media-services"></a>Media Services médialejátszók
 
@@ -21,7 +21,7 @@ Media Services használatával több multimédia-lejátszót is használhat.
 
 Azure Media Player egy videolejátszó a böngészők és az eszközök széles köréhez. A Azure Media Player az iparági szabványokat, például a HTML5-t, a Media Source Extensions (MSE) és a titkosított adathordozó-bővítményeket (EME) használja a dúsított Adaptív átviteli élmény biztosításához. Ha ezek a szabványok nem érhetők el egy eszközön vagy böngészőben, Azure Media Player a Flash és a Silverlight protokollt használja tartalék technológiaként. A fejlesztők az API-k elérésére szolgáló egységes JavaScript-felülettel rendelkeznek a használt lejátszási technológiától függetlenül. A Azure Media Services által kiszolgált tartalom számos eszközön és böngészőben is játszható, külön erőfeszítés nélkül.
 
-Tekintse meg a [Azure Media Player dokumentációját](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview).
+Tekintse meg a [Azure Media Player dokumentációját](../azure-media-player/azure-media-player-overview.md).
 
 ## <a name="shaka"></a>Shaka
 

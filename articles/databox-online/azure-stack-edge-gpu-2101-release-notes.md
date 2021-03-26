@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 84bf14caeec163c31004a430fa954fc36f4be68b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562783"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 kibocsátási megjegyzései
 
@@ -49,7 +49,7 @@ Az alábbi táblázat összefoglalja az 2101 kiadás ismert problémáit.
 |**3.**|Kubernetes |Az Edge Container Registry nem működik, ha a webproxy engedélyezve van.|A funkciók egy későbbi kiadásban lesznek elérhetők. |
 |**4.**|Kubernetes |Az Edge Container Registry nem működik IoT Edge modulokkal.| |
 |**5.**|Kubernetes |A Kubernetes nem támogatja a (z) ":" környezetet a .NET-alkalmazások által használt környezeti változók neveiben. Ez az Event Grid IoT Edge moduljának Azure Stack Edge-eszközön és más alkalmazásokban való működéséhez is szükséges. További információ: a [ASP.net Core dokumentációja](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|A ":" kifejezést dupla aláhúzással cserélje le. További információ: [Kubernetes probléma](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**6.** |Azure arc + Kubernetes-fürt |Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből.  |Ha engedélyezni szeretné a git-tárházból törölt erőforrások törlését, állítsa `--sync-garbage-collection` az ív OperatorParams. További információ: [konfiguráció törlése](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**6.** |Azure arc + Kubernetes-fürt |Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből.  |Ha engedélyezni szeretné a git-tárházból törölt erőforrások törlését, állítsa `--sync-garbage-collection` az ív OperatorParams. További információ: [konfiguráció törlése](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters). |
 |**7.**|NFS |Az NFS-megosztást használó alkalmazások, amelyek az eszközön az adatírást használják, kizárólagos írást kell használniuk. Ezzel biztosítható, hogy a rendszer a lemezre írja a írásokat.| |
 |**8.**|Számítási konfiguráció |A számítási konfiguráció nem sikerül olyan hálózati konfigurációknál, amelyekben az átjárók, illetve kapcsolók vagy útválasztók válaszolnak a hálózaton nem létező rendszerekre vonatkozó ARP-kérelmekre.| |
 |**9.**|Számítás és Kubernetes |Ha a Kubernetes először van beállítva az eszközön, az az összes rendelkezésre álló GPU-t kéri. Ezért a Kubernetes beállítása után nem hozhatók létre Azure Resource Manager virtuális gépek a GPU-k használatával. |Ha az eszköz 2 GPU-val rendelkezik, hozzon létre 1 virtuális gépet, amely a GPU-t használja, majd konfigurálja a Kubernetes. Ebben az esetben a Kubernetes a fennmaradó elérhető 1 GPU-t fogja használni. |

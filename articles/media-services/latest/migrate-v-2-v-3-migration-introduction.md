@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3514a7c809e939ea2c45afa5ab60539232b8781f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32e502ff175a9222faa0eb79fb53f2cc3f76bfb7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98953291"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559740"
 ---
 # <a name="migrate-from-media-services-v2-to-v3-introduction"></a>Migrálás Media Services v2-ről v3-be – bevezetés
 
@@ -79,7 +79,3 @@ Media Services v2 alkalmazása egyedi lehet. Ezért olyan forgatókönyv-alapú 
 - [Csomagolás és kézbesítés](migrate-v-2-v-3-migration-scenario-based-publishing.md)
 - [Tartalomvédelem](migrate-v-2-v-3-migration-scenario-based-content-protection.md)
 - [Media szolgáltatás számára fenntartott egységek (MRU)](migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md)
-
-## <a name="next-steps"></a>Következő lépések
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

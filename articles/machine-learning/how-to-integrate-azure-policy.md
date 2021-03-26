@@ -4,27 +4,30 @@ titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhatja a Azure Policy a beépített szabályzatok használatára Azure Machine Learning annak biztosítására, hogy a munkaterületei megfeleljenek a követelményeknek.
 author: aashishb
 ms.author: aashishb
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 21b07130e99ad4fac9a0a9b2d11aca852a1f205f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584312"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544366"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Machine Learning naplózása és kezelése Azure Policy használatával
 
 A [Azure Policy](../governance/policy/index.yml) egy irányítási eszköz, amely lehetővé teszi, hogy az Azure-erőforrások megfeleljenek a szabályzatoknak. A Azure Machine Learning használatával a következő házirendeket rendelheti hozzá:
 
-* **Ügyfél által felügyelt kulcs**: naplózás vagy betartatás, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk.
-* **Privát hivatkozás**: annak naplózása vagy érvényesítése, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz.
-* **Privát végpont**: konfigurálja az Azure Virtual Network alhálózatot, amelyben létre kell hozni a magánhálózati végpontot.
-* **Saját DNS zóna**: konfigurálja a privát DNS-zónát, amelyet a privát hivatkozáshoz kíván használni.
+| Szabályzat | Description |
+| ----- | ----- |
+| **Ügyfél által felügyelt kulcs** | Annak naplózása vagy betartatása, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk. |
+| **Privát hivatkozás** | Annak naplózása vagy betartatása, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz. |
+| **Privát végpont** | Konfigurálja az Azure Virtual Network alhálózatot, amelyben létre kell hozni a magánhálózati végpontot. |
+| **saját DNS zóna** | Konfigurálja a magánhálózati DNS-zónát a privát hivatkozáshoz. |
+| **Felhasználó által hozzárendelt felügyelt identitás** | Annak naplózása vagy betartatása, hogy a munkaterületek felhasználó által hozzárendelt felügyelt identitást használnak-e. |
 
 A házirendek különböző hatókörökön állíthatók be, például az előfizetés vagy az erőforráscsoport szintjén. További információ: [Azure Policy dokumentáció](../governance/policy/overview.md).
 
@@ -68,6 +71,14 @@ A szabályzat konfigurálásához állítsa a Effect paramétert __DeployIfNotEx
 A munkaterületet egy privát DNS-zóna használatára konfigurálja, felülbírálva a magánhálózati végpont alapértelmezett DNS-feloldását.
 
 A szabályzat konfigurálásához állítsa a Effect paramétert __DeployIfNotExists__ értékre. Állítsa a __privateDnsZoneId__ a használni kívánt magánhálózati DNS-zóna Azure Resource Manager azonosítójára. 
+
+## <a name="workspace-should-use-user-assigned-managed-identity"></a>A munkaterületnek felhasználó által hozzárendelt felügyelt identitást kell használnia
+
+Azt szabályozza, hogy a munkaterületet rendszerhez rendelt felügyelt identitás (alapértelmezett) vagy felhasználó által hozzárendelt felügyelt identitás használatával hozza-e létre. A munkaterület felügyelt identitása a társított erőforrások, például az Azure Storage, a Azure Container Registry, a Azure Key Vault és az Azure Application Insights elérésére szolgál. További információ: [felügyelt identitások használata a Azure Machine learning használatával](how-to-use-managed-identities.md).
+
+A szabályzat konfigurálásához állítsa a Effect paramétert __naplózás__, __Megtagadás__ vagy __Letiltva__ értékre. Ha __naplózásra__ van beállítva, létrehozhat egy munkaterületet a felhasználó által hozzárendelt felügyelt identitás megadása nélkül is. A rendszer hozzárendelt identitást használ, és egy figyelmeztetési eseményt hoz létre a tevékenység naplójában.
+
+Ha a házirend a __Megtagadás__ értékre van állítva, akkor nem hozhat létre munkaterületet, ha a létrehozási folyamat során nem ad meg felhasználó által hozzárendelt identitást. Egy munkaterületet felhasználó által hozzárendelt identitás megadása nélkül próbál meg létrehozni egy hibát. A hibát a tevékenység naplójában is naplózza a rendszer. A rendszer ennek a hibának a részeként visszaadja a házirend-azonosítót.
 
 ## <a name="next-steps"></a>Következő lépések
 

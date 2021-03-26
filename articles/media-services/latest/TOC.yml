@@ -329,6 +329,8 @@
           href: how-to-create-asset.md
         - name: Adathordozók feltöltése
           href: how-to-upload-media.md
+        - name: Több Storage-fiók kezelése
+          href: media-services-managing-multiple-storage-accounts.md
     - name: Átalakítások és feladatok létrehozása
       items:
         - name: Átalakítások létrehozása
@@ -367,6 +369,8 @@
                   href: how-to-create-overlay.md
                 - name: Miniatűrök létrehozása .NET használatával
                   href: media-services-generate-thumbnails-dotnet.md
+                - name: Videók körülvágása a .NET-tel
+                  href: crop-howto.md
             - name: Parancssori felülettel
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -417,6 +421,12 @@
           href: offline-widevine-for-android.md
         - name: Offline PlayReady Windows 10-hez
           href: offline-plaready-streaming-for-windows-10.md
+    - name: Az Azure Functions használata
+      items:
+        - name: .NET-tel
+          items:
+            - name: Azure Functions .NET használata
+              href: media-services-dotnet-how-to-use-azure-functions.md
     - name: Szűrők létrehozása
       items:
         - name: .NET-tel
@@ -440,6 +450,10 @@
           href: download-results-howto.md
         - name: Leíró hang jelzése
           href: signal-descriptive-audio-howto.md
+    - name: Biztonság
+      items:
+        - name: Roll Storage-hozzáférési kulcsok
+          href: media-services-roll-storage-access-keys.md
     - name: Médialejátszók használata
       items:
         - name: Az Azure Media Player teljes telepítése
@@ -448,6 +462,8 @@
           href: how-to-video-js-player.md
         - name: A Shaka videólejátszó használata
           href: how-to-shaka-player.md
+        - name: Hitelesítési tokenek továbbítása
+          href: media-services-pass-authentication-tokens.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)

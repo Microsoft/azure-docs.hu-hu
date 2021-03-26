@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dec29dc92f70a3f02f3fb598659aa86477fb59bf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99094556"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558244"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Az Azure SQL Azure Active Directory Directory-olvasói szerepköre
 
@@ -25,7 +25,7 @@ ms.locfileid: "99094556"
 
 Azure Active Directory (Azure AD) bevezetést kapott a [felhőalapú csoportok használatával a szerepkör-hozzárendelések Azure Active Directory (előzetes verzió) kezeléséhez](../../active-directory/roles/groups-concept.md). Ez lehetővé teszi, hogy az Azure AD-szerepkörök hozzá legyenek rendelve a csoportokhoz.
 
-Ha [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) engedélyez a Azure SQL Database, az Azure SQL felügyelt példányának vagy az Azure szinapszis Analyticsnek, az Azure ad [**Directory-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) szerepkört hozzá kell rendelni ahhoz az identitáshoz, amely lehetővé teszi az [Azure ad-Graph API](../../active-directory/develop/active-directory-graph-api.md)olvasási hozzáférését. A SQL Database és az Azure szinapszis felügyelt identitását kiszolgáló identitásának nevezzük. Az SQL felügyelt példány felügyelt identitását felügyelt példány identitásának nevezzük, és a rendszer automatikusan hozzárendeli a példány létrehozásakor. A kiszolgáló identitásának SQL Database vagy az Azure Szinapszishoz való hozzárendelésével kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév engedélyezése az Azure ad-felhasználók létrehozásához](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
+Ha [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) engedélyez a Azure SQL Database, az Azure SQL felügyelt példányának vagy az Azure szinapszis Analyticsnek, az Azure ad [**Directory-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) szerepkört hozzá kell rendelni ahhoz az identitáshoz, amely lehetővé teszi az [Azure ad-Graph API](/graph/migrate-azure-ad-graph-planning-checklist)olvasási hozzáférését. A SQL Database és az Azure szinapszis felügyelt identitását kiszolgáló identitásának nevezzük. Az SQL felügyelt példány felügyelt identitását felügyelt példány identitásának nevezzük, és a rendszer automatikusan hozzárendeli a példány létrehozásakor. A kiszolgáló identitásának SQL Database vagy az Azure Szinapszishoz való hozzárendelésével kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév engedélyezése az Azure ad-felhasználók létrehozásához](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
 
 A **címtár-olvasók** szerepkör a következőhöz szükséges:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d88284f3b9759ce04af9e44ae591c4796dde4e84
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452373"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565197"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Az Azure biztonsági alapterve Azure Stack Edge-hez
 
@@ -38,7 +38,7 @@ A belső forgalom védelmét az alábbiak biztosítják:
 
 A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
  
-- [A TLS 1,2 konfigurálása Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken](azure-stack-edge-j-series-configure-tls-settings.md)
+- [A TLS 1,2 konfigurálása Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Gyors útmutató – Ismerkedés a Azure Stack Edge Pro és a GPU szolgáltatással](azure-stack-edge-gpu-quickstart.md)
 
@@ -54,7 +54,7 @@ Az ügyfelek a Azure Stack peremhálózati eszközön a Azure Portal vagy a Azur
 
 - [Azure VPN konfigurálása Azure PowerShell szkripttel Azure Stack Edge Pro R és Azure Stack Edge mini R-hez](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [A TLS 1,2 konfigurálása Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken](azure-stack-edge-j-series-configure-tls-settings.md)
+- [A TLS 1,2 konfigurálása Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Oktatóanyag: tanúsítványok konfigurálása a Azure Stack Edge Pro R-hez](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -68,7 +68,7 @@ Az ügyfelek a Azure Stack peremhálózati eszközön a Azure Portal vagy a Azur
 
 - [Azure VPN konfigurálása Azure PowerShell szkripttel Azure Stack Edge Pro R és Azure Stack Edge mini R-hez](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [A TLS 1,2 konfigurálása Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken](azure-stack-edge-j-series-configure-tls-settings.md)
+- [A TLS 1,2 konfigurálása Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Oktatóanyag: tanúsítványok konfigurálása a Azure Stack Edge Pro R-hez](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -298,7 +298,7 @@ Vegye figyelembe, hogy további engedélyekre lehet szükség a számítási fel
 
 **Útmutató**: csak a jogosult felhasználók, például a "EdgeArmUser" érhetik el a Azure stack Edge-eszköz API-jait a helyi Azure Resource Manager keresztül. A felhasználói fiókok jelszavait csak a Azure Portal lehet felügyelni. 
 
-- [Azure Resource Manager-jelszó beállítása](azure-stack-edge-j-series-set-azure-resource-manager-password.md)
+- [Azure Resource Manager-jelszó beállítása](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 

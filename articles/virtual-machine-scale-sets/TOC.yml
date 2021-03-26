@@ -411,16 +411,11 @@
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: További források
+- name: példányszám
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Díjszabás
+    - name: Vásárlási lehetőségek
+      items: null
+    - name: Azure Hybrid Benefit
       items:
         - name: Linux
-          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
-        - name: Windows
-          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'
+          href: azure-hybrid-benefit-linux.md

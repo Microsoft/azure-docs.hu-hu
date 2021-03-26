@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 description: Ez a cikk egy támogatási mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amelyet Azure Backup Server véd.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d8f2a38db468ec57cdc0a4f0813fe7ae8e341d52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfdd227135a2124e22a604bad4bd41594a38fb37
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609770"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561270"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 
@@ -127,7 +127,7 @@ A Azure Backup Server a MABS-kiszolgálóval azonos tartományban található, i
   * Fájlkiszolgáló
   * Hyper-V
 
-  A munkaterhelések futhatnak önálló kiszolgálón vagy egy fürtkonfiguráción. A nem megbízható tartományba tartozó munkaterhelések elleni védelemért lásd: a [munkacsoportokban és](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm) a nem megbízható tartományokban lévő számítógépek előkészítése a támogatott és a szükséges hitelesítés pontos részleteiért.
+  A munkaterhelések futhatnak önálló kiszolgálón vagy egy fürtkonfiguráción. A nem megbízható tartományba tartozó munkaterhelések elleni védelemért lásd: a [munkacsoportokban és](/system-center/dpm/prepare-environment-for-dpm) a nem megbízható tartományokban lévő számítógépek előkészítése a támogatott és a szükséges hitelesítés pontos részleteiért.
 
 ## <a name="unsupported-data-types"></a>Nem támogatott adattípusok
 

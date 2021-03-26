@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: efe5d0171463668bda19a0d0445fc67f3734aaee
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679597"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561236"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>Eszközfrissítő az IoT Hub-ügynökhöz – áttekintés
 
 Az eszköz frissítési ügynöke két fogalmi rétegből áll:
 
-* Az interfész réteg az [Azure IoT Plug and Play (PNP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) fölé épít, amely lehetővé teszi az üzenetküldést az eszköz frissítési ügynöke és az eszköz frissítési szolgáltatásai között.
+* Az interfész réteg az [Azure IoT Plug and Play (PNP)](../iot-pnp/overview-iot-plug-and-play.md) fölé épít, amely lehetővé teszi az üzenetküldést az eszköz frissítési ügynöke és az eszköz frissítési szolgáltatásai között.
 * A platform réteg a letöltés, a telepítés és az alkalmazás által meghatározott magas szintű frissítési műveletért felelős, amely platform vagy eszköz lehet.
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Ügynök-implementációk." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -72,8 +72,7 @@ Az APT Update kezelője egy APT-specifikus frissítési jegyzékfájlt dolgoz fe
 
 ## <a name="self-update-device-update-agent"></a>Az eszköz frissítési ügynökének önkiszolgáló frissítése
 
-Az eszköz frissítési ügynöke és a hozzá tartozó függőségek a IoT Hubi folyamat eszközének frissítésével frissíthetők. Ha lemezkép-alapú frissítést használ, az új rendszerképben adja meg a legújabb eszköz-frissítési ügynököt. Ha csomag alapú frissítést használ, vegye fel az eszköz frissítési ügynökét és a kívánt verzióját az apt manifest-be, például bármely más csomagba. [További](device-update-apt-manifest.md) információ az apt manifestről. Az eszköz frissítési ügynökének és a kézbesítési optimalizálási ügynöknek a telepített verzióját az [IoT Device Twin](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)eszköz tulajdonságok szakaszában tekintheti meg. [További információ az eszközök tulajdonságairól: adu Core Interface](device-update-plug-and-play.md#device-properties).
+Az eszköz frissítési ügynöke és a hozzá tartozó függőségek a IoT Hubi folyamat eszközének frissítésével frissíthetők. Ha lemezkép-alapú frissítést használ, az új rendszerképben adja meg a legújabb eszköz-frissítési ügynököt. Ha csomag alapú frissítést használ, vegye fel az eszköz frissítési ügynökét és a kívánt verzióját az apt manifest-be, például bármely más csomagba. [További](device-update-apt-manifest.md) információ az apt manifestről. Az eszköz frissítési ügynökének és a kézbesítési optimalizálási ügynöknek a telepített verzióját az [IoT Device Twin](../iot-hub/iot-hub-devguide-device-twins.md)eszköz tulajdonságok szakaszában tekintheti meg. [További információ az eszközök tulajdonságairól: adu Core Interface](device-update-plug-and-play.md#device-properties).
 
 ## <a name="next-steps"></a>Következő lépések
 [Az eszköz frissítési ügynökének konfigurációs fájljának ismertetése](device-update-configuration-file.md)
-

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 62b1924a1aeb1c1e5bc06ec0783d83d6918d162c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105022279"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557921"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Áttelepítési útmutató: Oracle – Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -143,7 +143,7 @@ A séma közzétételéhez és az adatáttelepítés elvégzéséhez kövesse az
 
 Azt is megteheti, hogy a SQL Server Integration Services (SSIS) használatával hajtja végre az áttelepítést. További információ: 
 
-- [Első lépések a SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
+- [Első lépések a SQL Server Integration Services](/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS az Azure-hoz és a hibrid adatáthelyezéshez](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 
 
@@ -196,7 +196,7 @@ Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egy olyan mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, tekintse meg a cikk [szolgáltatás és eszközök az adatok áttelepítéséhez](https://docs.microsoft.com/azure/dms/dms-tools-matrix)című témakört.
+- A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egy olyan mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, tekintse meg a cikk [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md)című témakört.
 
 - A Azure SQL Databaseról további információt a következő témakörben talál: 
   - [A Azure SQL Database áttekintése](../../database/sql-database-paas-overview.md)
@@ -209,5 +209,3 @@ Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált 
 
 - A videó tartalma: 
     - [Az áttelepítési út és a szükséges eszközök/szolgáltatások áttekintése az értékelés és a Migrálás elvégzéséhez](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
-
-

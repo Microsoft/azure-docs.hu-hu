@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1e1a8cb24b47277b38bd2d64b733a6f28ee8acff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 57862a450d313f5d8850b14047ecc3d25d6ba5c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742499"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563684"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs Azure biztonsági alapterve
 
@@ -44,7 +44,7 @@ Az Azure Event Hubs névteret tűzfalak használatával is biztonságossá tehet
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -csomagra a kapcsolódó szolgáltatásokhoz.
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
 
 **Azure Policy beépített definíciók – Microsoft. EventHub**:
 
@@ -68,7 +68,7 @@ Az Azure Event Hubs névteret tűzfalak használatával is biztonságossá tehet
 
 - [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
-- [További információ az Azure Security Center integrált veszélyforrások felderítéséről](/azure/security-center/security-center-alerts-service-layer)
+- [További információ az Azure Security Center integrált veszélyforrások felderítéséről](../security-center/azure-defender.md)
 
 **Felelősség**: Ügyfél
 
@@ -112,9 +112,9 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure beépített szabályzat Event Hubs névtérhez](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Azure beépített szabályzat Event Hubs névtérhez](../governance/policy/samples/built-in-policies.md#event-hub)
 
-- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
@@ -126,7 +126,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 **Útmutató**: a virtuális hálózatok és az Event hub-hoz társított hálózati biztonsággal és adatforgalommal kapcsolatos egyéb erőforrások címkéit használhatja.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -136,9 +136,9 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és az Azure Event Hubs-hoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -154,7 +154,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 - [Az Azure Event Hubs diagnosztikai beállításainak konfigurálása](event-hubs-diagnostic-logs.md)
 
-- [Az Azure-tevékenység naplójának ismertetése](/azure/azure-monitor/platform/platform-logs-overview)
+- [Az Azure-tevékenység naplójának ismertetése](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Felelősség**: Ügyfél
 
@@ -168,11 +168,11 @@ Emellett engedélyezheti az Azure-műveletnapló diagnosztikai beállításait, 
 
 - [Az Azure Event Hubs diagnosztikai beállításainak engedélyezése](event-hubs-diagnostic-logs.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -csomagra a kapcsolódó szolgáltatásokhoz.
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
 
 **Azure Policy beépített definíciók – Microsoft. EventHub**:
 
@@ -182,7 +182,7 @@ Emellett engedélyezheti az Azure-műveletnapló diagnosztikai beállításait, 
 
 **Útmutató**: a Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi szabályainak megfelelően, hogy rögzítse és áttekintse az Event hub-hoz kapcsolódó incidenseket.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -192,9 +192,9 @@ Emellett engedélyezheti az Azure-műveletnapló diagnosztikai beállításait, 
 
 **Útmutató**: elemezze és figyelje a rendellenes viselkedésre vonatkozó naplókat, és rendszeresen tekintse át az Event hub-hoz kapcsolódó eredményeket. A naplók áttekintéséhez és a naplózási adatok lekérdezéséhez használja a Azure Monitor Log Analytics. Azt is megteheti, hogy az Azure Sentinel vagy egy külső gyártótól származó Rendszerinformáció-és eseménykezelő megoldás számára engedélyezheti és elvégezheti a fedélzeti adatokat.
 
-- [További információ a Log Analytics munkaterületről](/azure/azure-monitor/log-query/get-started-portal)
+- [További információ a Log Analytics munkaterületről](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -208,11 +208,11 @@ Emellett engedélyezheti az Azure-műveletnapló diagnosztikai beállításait, 
 
 Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfeldolgozást az Azure Sentinel szolgáltatásban. 
 
-- [Az Azure-tevékenység naplójának ismertetése](/azure/azure-monitor/platform/platform-logs-overview)
+- [Az Azure-tevékenység naplójának ismertetése](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Az Azure Event Hubs diagnosztikai beállításainak konfigurálása](event-hubs-diagnostic-logs.md)
 
-- [Riasztás Log Analytics-munkaterület naplófájljainak adatvédelme](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás Log Analytics-munkaterület naplófájljainak adatvédelme](../azure-monitor/alerts/tutorial-response.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -310,9 +310,9 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 **Útmutató**: a naplók és riasztások generálásához Azure Active Directory (Azure AD) Privileged Identity Management használata, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg. További naplózáshoz küldje el Azure Security Center kockázatkezelési riasztásokat a Azure Monitorba, és konfigurálja az egyéni riasztásokat/értesítéseket a műveleti csoportok használatával.
 
-- [Az Azure AD kockázati észlelések ismertetése](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](/azure/azure-monitor/platform/action-groups)
+- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../azure-monitor/alerts/action-groups.md)
 
 **Felelősség**: Ügyfél
 
@@ -346,7 +346,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 Emellett rendszeresen elforgatja Event Hubs megosztott hozzáférési aláírásait.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -362,7 +362,7 @@ Emellett rendszeresen elforgatja Event Hubs megosztott hozzáférési aláírás
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics belül is konfigurálhatja a kívánt naplózási riasztásokat.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Hozzáférés engedélyezése Event Hubs erőforrásokhoz az Azure AD használatával](authorize-access-azure-active-directory.md)
 
@@ -374,7 +374,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: az Azure Active Directory (Azure ad) identitás-és kockázati észlelési funkcióinak használatával konfigurálhatja az Event Hubs-kompatibilis erőforrásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával.
 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -388,7 +388,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: jelenleg nem érhető el; Event Hubs esetében Ügyfélszéf még nem támogatott.
 
-- [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -402,7 +402,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: címkék használata a Event Hubshoz kapcsolódó erőforrásokon a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követésében.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -414,13 +414,13 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 Az Azure Event Hubs-névteret tűzfalak használatával is biztonságossá teheti. Az Azure Event Hubs támogatja az IP-alapú hozzáférés-vezérlést a bejövő tűzfalak támogatásához. A tűzfalszabályok a Azure Portal, Azure Resource Manager sablonok vagy az Azure CLI vagy a Azure PowerShell használatával állíthatók be.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Az IP-tűzfalszabályok konfigurálása az Azure Event Hubs-névterekhez](event-hubs-ip-filtering.md)
 
-- [Címkék létrehozása és felhasználása](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és felhasználása](../azure-resource-manager/management/tag-resources.md)
 
 - [Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
@@ -440,7 +440,7 @@ A Microsoft felügyeli az Azure Event Hubs mögöttes infrastruktúráját, és 
 
 - [Az Azure Event Hubs integrálása az Azure Private-hivatkozással](private-link-service.md)
 
-- [A hálózati biztonsági csoportok és a szolgáltatási címkék ismertetése](/azure/virtual-network/security-overview)
+- [A hálózati biztonsági csoportok és a szolgáltatási címkék ismertetése](../virtual-network/network-security-groups-overview.md)
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
@@ -484,7 +484,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure Event Hubs és más kritikus vagy kapcsolódó erőforrások éles példányain végezheti el a módosításokat.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -512,7 +512,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -522,11 +522,11 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: címkézés, felügyeleti csoportok és külön előfizetések használata, ahol szükséges, az Azure Event Hubs névterek és a kapcsolódó erőforrások rendszerezése és nyomon követése. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -562,7 +562,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -592,7 +592,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
-- [Azure beépített szabályzat Event Hubs névtérhez](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Azure beépített szabályzat Event Hubs névtérhez](../governance/policy/samples/built-in-policies.md#event-hub)
 
 - [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias)
 
@@ -639,15 +639,15 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 **Útmutató**: az Azure-beli virtuális gépek vagy a Azure app Serviceon futó webalkalmazások használata az Event hub-eszközök elérésére használatos, Managed Service Identity az Azure Key Vaultekkel együtt egyszerűsítheti és biztonságossá teheti az Azure-beli Event Hubs üzemelő példányok közös hozzáférésű aláírás-kezelését. Győződjön meg arról, Key Vault konfigurálva van a helyreállítható törlés engedélyezve beállítással.
 
-- [Felügyelt identitás hitelesítése Azure Active Directory (Azure AD) használatával Event Hubs erőforrások eléréséhez](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Felügyelt identitás hitelesítése Azure Active Directory (Azure AD) használatával Event Hubs erőforrások eléréséhez](./authenticate-managed-identity.md?tabs=latest)
 
 - [Ügyfél által felügyelt kulcsok konfigurálása Event Hubshoz](configure-customer-managed-key.md)
 
 - [Integráció az Azure felügyelt identitásokkal](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Key Vault létrehozása](/azure/key-vault/quick-create-portal)
+- [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md)
 
-- [Key Vault hitelesítés biztosítása felügyelt identitással](/azure/key-vault/managed-identity)
+- [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/assign-access-policy-portal.md)
 
 **Felelősség**: Ügyfél
 
@@ -659,7 +659,7 @@ A hivatkozott hivatkozásokon további információk is rendelkezésre állnak.
 
 Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (Azure AD). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Azure Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
-- [Felügyelt identitás hitelesítése az Azure AD-vel Event Hubs erőforrások eléréséhez](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Felügyelt identitás hitelesítése az Azure AD-vel Event Hubs erőforrások eléréséhez](./authenticate-managed-identity.md?tabs=latest)
 
 - [Ügyfél által felügyelt kulcsok konfigurálása Event Hubshoz](configure-customer-managed-key.md)
 
@@ -703,7 +703,7 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 **Útmutató**: az Azure Event Hubs geo-vész-helyreállításának konfigurálása. Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban rendelkezésre állási zónák) a tapasztalatok leállását tapasztalják, kritikus fontosságú, hogy az adatfeldolgozás továbbra is egy másik régióban vagy adatközpontban működjön. Így a Geo-vész-helyreállítás és a Geo-replikáció minden vállalat számára fontos funkció. Az Azure Event Hubs a Geo-vész-helyreállítást és a Geo-replikációt is támogatja a névtér szintjén. 
 
-- [Az Azure-Event Hubs földrajzi katasztrófa-helyreállításának megismerése](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)
+- [Az Azure-Event Hubs földrajzi katasztrófa-helyreállításának megismerése](./event-hubs-geo-dr.md#availability-zones)
 
 **Felelősség**: Ügyfél
 
@@ -739,11 +739,11 @@ Gondoskodjon arról, hogy a Key Vault titkos kódok rendszeres automatikus bizto
 
 Állítsa be az Event Hubs-adatrögzítéshez használt Azure Storage-fiókhoz tartozó helyreállítható törlést. Vegye figyelembe, hogy ez a funkció még nem támogatott Azure Data Lake Storage Gen 2 esetében.
 
-- [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Key Vault beállítása kulcsokkal](configure-customer-managed-key.md)
 
-- [Az Azure Storage-blobok helyreállítható törlése](https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Az Azure Storage-blobok helyreállítható törlése](//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Felelősség**: Ügyfél
 
@@ -831,5 +831,5 @@ Gondoskodjon arról, hogy a Key Vault titkos kódok rendszeres automatikus bizto
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

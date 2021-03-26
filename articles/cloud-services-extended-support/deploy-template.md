@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 6cb4abd536cc0d4177df424ac6a774e4e2e328d7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865587"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564755"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
@@ -29,15 +29,15 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
 
 1. Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozza létre a kapcsolódó erőforrásokat.
 
-2. Hozzon létre egy új erőforráscsoportot a [Azure Portal](/azure/azure-resource-manager/management/manage-resource-groups-portal) vagy a [PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell)használatával. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ.
+2. Hozzon létre egy új erőforráscsoportot a [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) vagy a [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md)használatával. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ.
  
-3. Hozzon létre egy új Storage-fiókot a [Azure Portal](/azure/storage/common/storage-account-create?tabs=azure-portal) vagy a [PowerShell](/azure/storage/common/storage-account-create?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ.
+3. Hozzon létre egy új Storage-fiókot a [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) vagy a [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ.
 
-4. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob), a [AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) vagy a [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz.
+4. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy a [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz.
 
 5. Választható Hozzon létre egy kulcstartót, és töltse fel a tanúsítványokat.
 
-    -  A tanúsítványok a szolgáltatással és a szolgáltatásba való biztonságos kommunikáció lehetővé tételéhez csatolhatók a Cloud Serviceshez. A tanúsítványok használatához a ujjlenyomatai megfelelnek meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában, és fel kell tölteni a kulcstartóba. Kulcstartó hozható létre a [Azure Portal](/azure/key-vault/general/quick-create-portal) vagy a [PowerShell](/azure/key-vault/general/quick-create-powershell)használatával.
+    -  A tanúsítványok a szolgáltatással és a szolgáltatásba való biztonságos kommunikáció lehetővé tételéhez csatolhatók a Cloud Serviceshez. A tanúsítványok használatához a ujjlenyomatai megfelelnek meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában, és fel kell tölteni a kulcstartóba. Kulcstartó hozható létre a [Azure Portal](../key-vault/general/quick-create-portal.md) vagy a [PowerShell](../key-vault/general/quick-create-powershell.md)használatával.
     - A társított Key vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service.
     - A társított Key vaultnak engedélyezve kell lennie ahhoz, hogy a Cloud Services (kiterjesztett támogatás) erőforrás beolvassa a tanúsítványokat a Key Vaultból. További információ: [tanúsítványok és Key Vault](certificates-and-key-vault.md)
     - A Key vaultot az alábbi lépésekben bemutatott ARM-sablon OsProfile szakaszában kell hivatkozni.

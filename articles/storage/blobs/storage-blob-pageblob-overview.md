@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 88c0d88a1d3119ef2fa00eb49da447749fde3221
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97629357"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543839"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
@@ -141,7 +141,7 @@ Az alábbi ábrán két különálló írási művelet látható:
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Lapok olvasásához használja a [PageBlobClient. download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) metódust, hogy az oldal blobján belül beolvassa a bájtok egy tartományát. 
+Lapok olvasásához használja a [PageBlobClient. download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadto) metódust, hogy az oldal blobján belül beolvassa a bájtok egy tartományát. 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721157"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558708"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -620,11 +620,10 @@ A közzétételi folyamat befejezéséhez tekintse meg az [ajánlatok áttekint�
 * Python-verzió 2,8 felett 
 
 
-További információért látogasson el a [VM-bővítményre](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+További információért látogasson el a [VM-bővítményre](../virtual-machines/extensions/diagnostics-linux.md).
      
 ## <a name="next-steps"></a>Következő lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)
 - Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center ügyfélszolgálatához](https://aka.ms/marketplacepublishersupport).
- 

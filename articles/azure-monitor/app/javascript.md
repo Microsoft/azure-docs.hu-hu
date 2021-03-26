@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485486"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565265"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -107,7 +107,7 @@ Az összes konfigurációs beállítás mostantól a szkript végére került, �
 Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szeretné felülbírálni a felsorolt elemek alapértelmezett értékét [nem kötelező] értékkel, eltávolíthatja ezt a sort a visszaadott oldal méretének csökkentése érdekében.
 
 Az elérhető konfigurációs lehetőségek a következők
-
+ 
 | Név | Típus | Description
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
@@ -171,52 +171,87 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Name | Alapértelmezett | Description |
-|------|---------|-------------|
-| instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
-| accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
-| sessionRenewalMs | 1800000 | A rendszer naplózza a munkamenetet, ha a felhasználó ennél az időtartamnál ezredmásodpercben inaktív. Az alapértelmezett érték 30 perc |
-| sessionExpirationMs | 86400000 | A rendszer naplózza a munkamenetet, ha ez az időtartam ezredmásodpercben továbbra is fennáll. Az alapértelmezett érték 24 óra |
-| maxBatchSizeInBytes | 10000 | A telemetria-köteg maximális mérete. Ha egy köteg túllépi ezt a korlátot, a rendszer azonnal elküldi, és új köteget indít el |
-| maxBatchInterval | 15 000 | Mennyi ideig kell a Batch telemetria a küldés előtt (ezredmásodperc) |
-| disableExceptionTracking | hamis | Ha az értéke igaz, a rendszer nem gyűjti össze a kivételeket. Az alapértelmezett érték a false (hamis). |
-| disableTelemetry | hamis | Ha az értéke igaz, a rendszer nem gyűjti és nem továbbítja a telemetria. Az alapértelmezett érték a false (hamis). |
-| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>**_Megjegyzés:_** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . |
-| loggingLevelConsole | 0 | **Belső** Application Insights hibák naplózása a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
-| loggingLevelTelemetry | 1 | **Belső** Application Insights hibákat küld a telemetria. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
-| diagnosticLogInterval | 10000 | belső A belső naplózási várólista lekérdezési időköze (MS) |
-| samplingPercentage | 100 | Az elküldeni kívánt események százalékos aránya. Az alapértelmezett érték 100, ami azt jelenti, hogy az összes esemény el lesz küldve. Állítsa be ezt, ha nagy méretű alkalmazásokhoz szeretné megőrizni az adatkorlátot. |
-| autoTrackPageVisitTime | hamis | Ha az értéke igaz, a rendszer nyomon követi az előző műszeres lap megtekintési idejét, és telemetria, és új időzítőt indít el az aktuális oldalmegtekintéshez. Az alapértelmezett érték a false (hamis). |
-| disableAjaxTracking | hamis | Ha az értéke igaz, a rendszer nem gyűjti az Ajax-hívásokat. Az alapértelmezett érték a false (hamis). |
-| disableFetchTracking | true | Ha az értéke igaz, a rendszer nem gyűjti be a kérelmeket. Az alapértelmezett érték TRUE (igaz) |
-| overridePageViewDuration | hamis | Ha az értéke TRUE (igaz), a rendszer a trackPageView alapértelmezett viselkedését az oldal nézet időtartamának végére rögzíti, amikor a trackPageView hívása történik. Ha hamis, és nem ad meg egyéni időtartamot a trackPageView, a rendszer a navigációs időzítési API használatával számítja ki az oldal nézetének teljesítményét. Az alapértelmezett érték a false (hamis). |
-| maxAjaxCallsPerView | 500 | Alapértelmezett 500 – meghatározza, hogy hány AJAX-hívást fog figyelni az oldal nézetében. Az-1 értékre állítva az összes (korlátlan) AJAX-hívást a lapon figyelheti. |
-| disableDataLossAnalysis | true | Hamis érték esetén a rendszer a belső telemetria-küldő puffereket a még el nem küldött elemek indításakor ellenőrzi. |
-| disableCorrelationHeaders | hamis | Hamis érték esetén az SDK két fejlécet ("Request-id" és "kérés-környezet") hoz létre az összes függőségi kérelemhez, hogy azok összekapcsolják őket a kiszolgálói oldalon található megfelelő kérelmekkel. Az alapértelmezett érték a false (hamis). |
-| correlationHeaderExcludedDomains |  | A korrelációs fejlécek letiltása adott tartományokban |
-| correlationHeaderDomains |  | Korrelációs fejlécek engedélyezése adott tartományokhoz |
-| disableFlushOnBeforeUnload | hamis | Alapértelmezett hamis érték. Ha az értéke TRUE (igaz), a flush metódus nem lesz meghívva, ha a onBeforeUnload esemény-eseményindítók |
-| enableSessionStorageBuffer | true | Alapértelmezett érték: true (igaz). Ha az értéke igaz, a rendszer az összes el nem juttatott telemetria rendelkező puffert tárolja a munkamenet-tárolóban. A rendszer visszaállítja a puffert az oldal betöltésekor |
-| isCookieUseDisabled | hamis | Alapértelmezett hamis érték. Ha az érték TRUE (igaz), az SDK nem tárol és nem olvas be semmilyen cookie-t. Vegye figyelembe, hogy ez letiltja a felhasználói és munkamenet-cookie-kat, és használhatatlanná teszi a használati lapokat és a tartalmakat. |
-| cookieDomain | null | Egyéni cookie-tartomány. Ez akkor hasznos, ha Application Insights cookie-kat szeretne megosztani altartományokon keresztül. |
-| isRetryDisabled | hamis | Alapértelmezett hamis érték. Ha hamis, próbálkozzon újra 206 (részleges siker), 408 (időtúllépés), 429 (túl sok kérés), 500 (belső kiszolgálóhiba), 503 (a szolgáltatás nem érhető el) és 0 (offline, csak ha észlelhető) |
-| isStorageUseDisabled | hamis | Ha az érték TRUE (igaz), az SDK nem tárolja és nem olvassa be a helyi és munkamenet-tárolóból származó összes adatforrást. Az alapértelmezett érték a false (hamis). |
-| isBeaconApiDisabled | true | Ha hamis, az SDK az összes telemetria elküldi a [Beacon API](https://www.w3.org/TR/beacon) használatával |
-| onunloadDisableBeacon | hamis | Alapértelmezett hamis érték. Ha a TAB be van zárva, az SDK az összes fennmaradó telemetria elküldi a [Beacon API](https://www.w3.org/TR/beacon) használatával. |
-| sdkExtension | null | Beállítja az SDK-bővítmény nevét. Csak alfabetikus karakterek engedélyezettek. A bővítmény neve előtagként szerepel az "Ai. internal. sdkVersion" címkében (például "ext_javascript: 2.0.0"). Az alapértelmezett érték null. |
-| isBrowserLinkTrackingEnabled | hamis | Az alapértelmezett érték a false (hamis). Ha az érték TRUE (igaz), az SDK nyomon fogja követni az összes [böngészőbeli hivatkozás](/aspnet/core/client-side/using-browserlink) kérését. |
-| appId | null | A AppId az AJAX-függőségek közötti korrelációt használja a kiszolgálóoldali kérelmekkel az ügyfélen. Ha a Beacon API engedélyezve van, nem használható automatikusan, de manuálisan is beállítható a konfigurációban. Az alapértelmezett érték null |
-| enableCorsCorrelation | hamis | Ha az értéke igaz, az SDK két fejlécet ("Request-id" és "Request-Context") ad hozzá az összes CORS-kérelemhez a kimenő AJAX-függőségek összekapcsolásához a kiszolgálói oldalon található megfelelő kérelmekkel. Az alapértelmezett érték false (hamis) |
-| namePrefix | nem definiált | Egy nem kötelezően megadandó érték, amely a localStorage és a cookie neveként a Postfix nevet fogja használni.
-| enableAutoRouteTracking | hamis | Az útvonalak változásainak automatikus követése egyoldalas alkalmazásokban (SPA). Ha az érték TRUE (igaz), akkor minden útvonal változása egy új oldalmegtekintést küld Application Insightsnak. A kivonatoló útvonalak változásai ( `example.com/foo#bar` ) új oldalletöltésekként is rögzítve lesznek.
-| enableRequestHeaderTracking | hamis | Igaz értéke esetén az AJAX & a lekérési kérelmek fejlécének nyomon követése, az alapértelmezett érték a false.
-| enableResponseHeaderTracking | hamis | Igaz értéke esetén a rendszer az AJAX & beolvasási kérelem válaszának fejléceit nyomon követi, az alapértelmezett érték a false.
-| distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással. Lásd [itt](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)a példát.
-| enableAjaxErrorStatusText | hamis | Alapértelmezett hamis érték. Ha az értéke TRUE (igaz), a nem a sikertelen AJAX-kérelmekhez tartozó függőségi esemény szövege
-| enableAjaxPerfTracking | hamis | Alapértelmezett hamis érték. A felkeresett és a további böngészőablakokat is tartalmazó jelző. a jelzett `ajax` (x/óra és Fetch) teljesítménybeli időzítések jelentettek mérőszámokat.
-| maxAjaxPerfLookupAttempts | 3 | Az alapértelmezett érték 3. Az ablak keresésének maximális száma. a teljesítmény időzítése (ha elérhető), ez azért szükséges, mert nem minden böngésző tölti ki az ablakot. a teljesítmény az x/h-kérelem végének bejelentése előtt, valamint a beolvasási kérelmeknél ez a befejezés után lesz hozzáadva.
-| ajaxPerfLookupDelay | 25 | Az alapértelmezett érték 25 MS. Az a várakozási idő, ameddig a rendszer újra megkísérli megkeresni a Windowst. a kérelmek teljesítményének időzítése `ajax` ezredmásodpercben történik, és közvetlenül a setTimeout () függvénynek lesz átadva.
-| enableUnhandledPromiseRejectionTracking | hamis | Ha az értéke igaz, a nem kezelt ígéretek elutasítása automatikusan történik, és JavaScript-hibaként fog jelenteni. Ha a disableExceptionTracking értéke igaz (ne kövesse nyomon a kivételeket), a rendszer figyelmen kívül hagyja a konfigurációs értéket, és nem kezeli az ígéretek elutasítását.
+| Név | Leírás | Alapértelmezett |
+|------|-------------|---------|
+| instrumentationKey | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. | sztring<br/>null |
+| accountId | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok | sztring<br/>null |
+| sessionRenewalMs | A rendszer naplózza a munkamenetet, ha a felhasználó ennél az időtartamnál ezredmásodpercben inaktív. | numerikus<br/>1800000<br/>(30 perc) |
+| sessionExpirationMs | A rendszer naplózza a munkamenetet, ha ez az időtartam ezredmásodpercben továbbra is fennáll. | numerikus<br/>86400000<br/>(24 óra) |
+| maxBatchSizeInBytes | A telemetria-köteg maximális mérete. Ha egy köteg túllépi ezt a korlátot, a rendszer azonnal elküldi, és új köteget indít el | numerikus<br/>10000 |
+| maxBatchInterval | Mennyi ideig kell a Batch telemetria a küldés előtt (ezredmásodperc) | numerikus<br/>15 000 |
+| &#8203;ExceptionTracking letiltása | Ha az értéke igaz, a rendszer nem gyűjti össze a kivételeket. | boolean<br/> hamis |
+| disableTelemetry | Ha az értéke igaz, a rendszer nem gyűjti és nem továbbítja a telemetria. | boolean<br/>hamis |
+| enableDebug | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>**_Megjegyzés:_** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . | boolean<br/>hamis |
+| loggingLevelConsole | **Belső** Application Insights hibák naplózása a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) | numerikus<br/> 0 |
+| loggingLevelTelemetry | **Belső** Application Insights hibákat küld a telemetria. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) | numerikus<br/> 1 |
+| diagnosticLogInterval | belső A belső naplózási várólista lekérdezési időköze (MS) | numerikus<br/> 10000 |
+| samplingPercentage | Az elküldeni kívánt események százalékos aránya. Az alapértelmezett érték 100, ami azt jelenti, hogy az összes esemény el lesz küldve. Állítsa be ezt, ha nagy méretű alkalmazásokhoz szeretné megőrizni az adatkorlátot. | numerikus<br/>100 |
+| autoTrackPageVisitTime | Ha az értéke igaz, a rendszer nyomon követi az előző műszeres lap megtekintési idejét, és telemetria, és új időzítőt indít el az aktuális oldalmegtekintéshez. | boolean<br/>hamis |
+| disableAjaxTracking | Ha az értéke igaz, a rendszer nem gyűjti az Ajax-hívásokat. | boolean<br/> hamis |
+| disableFetchTracking | Ha az értéke igaz, a rendszer nem gyűjti be a kérelmeket.|boolean<br/>true |
+| overridePageViewDuration | Ha az értéke TRUE (igaz), a rendszer a trackPageView alapértelmezett viselkedését az oldal nézet időtartamának végére rögzíti, amikor a trackPageView hívása történik. Ha hamis, és nem ad meg egyéni időtartamot a trackPageView, a rendszer a navigációs időzítési API használatával számítja ki az oldal nézetének teljesítményét. |boolean<br/>
+| maxAjaxCallsPerView | Alapértelmezett 500 – meghatározza, hogy hány AJAX-hívást fog figyelni az oldal nézetében. Az-1 értékre állítva az összes (korlátlan) AJAX-hívást a lapon figyelheti. | numerikus<br/> 500 |
+| disableDataLossAnalysis | Hamis érték esetén a rendszer a belső telemetria-küldő puffereket a még el nem küldött elemek indításakor ellenőrzi. | boolean<br/> true |
+| &#8203;CorrelationHeaders letiltása | Hamis érték esetén az SDK két fejlécet ("Request-id" és "kérés-környezet") hoz létre az összes függőségi kérelemhez, hogy azok összekapcsolják őket a kiszolgálói oldalon található megfelelő kérelmekkel. | boolean<br/> hamis |
+| correlationHeader&#8203;ExcludedDomains | A korrelációs fejlécek letiltása adott tartományokban | karakterlánc []<br/>nem definiált |
+| correlationHeader&#8203;ExcludePatterns | Korrelációs fejlécek letiltása reguláris kifejezések használatával | regex []<br/>nem definiált |
+| correlationHeader&#8203;tartományok | Korrelációs fejlécek engedélyezése adott tartományokhoz | karakterlánc []<br/>nem definiált |
+| disableFlush&#8203;OnBeforeUnload | Ha az értéke TRUE (igaz), a flush metódus nem lesz meghívva, ha a onBeforeUnload esemény-eseményindítók | boolean<br/> hamis |
+| enableSessionStorageBuffer | Ha az értéke igaz, a rendszer az összes el nem juttatott telemetria rendelkező puffert tárolja a munkamenet-tárolóban. A rendszer visszaállítja a puffert az oldal betöltésekor | boolean<br />true |
+| cookieCfg | A cookie-használat alapértelmezett értéke a teljes alapértelmezett beállítások [ICookieCfgConfig](#icookiemgrconfig) beállítása. | [ICookieCfgConfig](#icookiemgrconfig)<br>(A 2.6.0 óta)<br/>nem definiált |
+| ~~isCookieUseDisabled~~<br>disableCookiesUsage | Ha az érték TRUE (igaz), az SDK nem tárol és nem olvas be semmilyen cookie-t. Vegye figyelembe, hogy ez letiltja a felhasználói és munkamenet-cookie-kat, és használhatatlanná teszi a használati lapokat és a tartalmakat. a isCookieUseDisable a disableCookiesUsage javára elavult, ha mindkettő biztosított, a disableCookiesUsage elsőbbséget élvez.<br>(A v 2.6.0 óta) És ha `cookieCfg.enabled` az is meg van adva, akkor elsőbbséget élvez ezekkel az értékekkel szemben, a cookie-használat az alapszintű. getCookieMgr (). setEnabled (true) használatával történő inicializálás után újra engedélyezhető. | alias a következőhöz: [`cookieCfg.enabled`](#icookiemgrconfig)<br>hamis |
+| cookieDomain | Egyéni cookie-tartomány. Ez akkor hasznos, ha Application Insights cookie-kat szeretne megosztani altartományokon keresztül.<br>(A v 2.6.0 óta) Ha `cookieCfg.domain` meg van adva, akkor az érték elsőbbséget élvez. | alias a következőhöz: [`cookieCfg.domain`](#icookiemgrconfig)<br>null |
+| cookiePath | Egyéni cookie elérési útja Ez akkor hasznos, ha meg szeretné osztani Application Insights cookie-kat az Application Gateway mögött.<br>Ha `cookieCfg.path` meg van adva, akkor az érték elsőbbséget élvez. | alias a következőhöz: [`cookieCfg.path`](#icookiemgrconfig)<br>(A 2.6.0 óta)<br/>null |
+| isRetryDisabled | Ha hamis, próbálkozzon újra 206 (részleges siker), 408 (időtúllépés), 429 (túl sok kérés), 500 (belső kiszolgálóhiba), 503 (a szolgáltatás nem érhető el) és 0 (offline, csak ha észlelhető) | boolean<br/>hamis |
+| isStorageUseDisabled | Ha az érték TRUE (igaz), az SDK nem tárolja és nem olvassa be a helyi és munkamenet-tárolóból származó összes adatforrást. | boolean<br/> hamis |
+| isBeaconApiDisabled | Ha hamis, az SDK az összes telemetria elküldi a [Beacon API](https://www.w3.org/TR/beacon) használatával | boolean<br/>true |
+| onunloadDisableBeacon | Ha a TAB be van zárva, az SDK az összes fennmaradó telemetria elküldi a [Beacon API](https://www.w3.org/TR/beacon) használatával. | boolean<br/> hamis |
+| sdkExtension | Beállítja az SDK-bővítmény nevét. Csak alfabetikus karakterek engedélyezettek. A bővítmény neve előtagként szerepel az "Ai. internal. sdkVersion" címkében (például "ext_javascript: 2.0.0"). | sztring<br/> null |
+| isBrowserLink&#8203;TrackingEnabled | Ha az érték TRUE (igaz), az SDK nyomon fogja követni az összes [böngészőbeli hivatkozás](/aspnet/core/client-side/using-browserlink) kérését. | boolean<br/>hamis |
+| appId | A AppId az AJAX-függőségek közötti korrelációt használja a kiszolgálóoldali kérelmekkel az ügyfélen. Ha a Beacon API engedélyezve van, nem használható automatikusan, de manuálisan is beállítható a konfigurációban. |sztring<br/> null |
+| &#8203;CorsCorrelation engedélyezése | Ha az értéke igaz, az SDK két fejlécet ("Request-id" és "Request-Context") ad hozzá az összes CORS-kérelemhez a kimenő AJAX-függőségek összekapcsolásához a kiszolgálói oldalon található megfelelő kérelmekkel. | boolean<br/>hamis |
+| namePrefix | Egy nem kötelezően megadandó érték, amely a localStorage és a cookie neveként a Postfix nevet fogja használni. | sztring<br/>nem definiált |
+| &#8203;AutoRoute&#8203;követésének engedélyezése | Az útvonalak változásainak automatikus követése egyoldalas alkalmazásokban (SPA). Ha az érték TRUE (igaz), akkor minden útvonal változása egy új oldalmegtekintést küld Application Insightsnak. A kivonatoló útvonalak változásai ( `example.com/foo#bar` ) új oldalletöltésekként is rögzítve lesznek.| boolean<br/>hamis |
+| enableRequest&#8203;HeaderTracking | Ha az értéke igaz, a rendszer nyomon követi az AJAX & Fetch kérelem fejléceit. | boolean<br/> hamis |
+| enableResponse&#8203;HeaderTracking | Igaz értéke esetén a rendszer nyomon követi az AJAX & beolvasási kérelem válaszának fejlécét. | boolean<br/> hamis |
+| distributedTracingMode | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással. Lásd [itt](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)a példát.| `DistributedTracingModes`vagy<br/>numerikus<br/>(A v 2.6.0 óta) `DistributedTracingModes.AI_AND_W3C`<br />(v 2.5.11 vagy korábbi) `DistributedTracingModes.AI` |
+| &#8203;AjaxErrorStatusText engedélyezése | Ha az értéke TRUE (igaz), a nem a sikertelen AJAX-kérelmekhez tartozó függőségi esemény szövege | boolean<br/> hamis |
+| &#8203;AjaxPerfTracking engedélyezése |A felkeresett és a további böngészőablakokat is tartalmazó jelző. a jelzett `ajax` (x/óra és Fetch) teljesítménybeli időzítések jelentettek mérőszámokat. | boolean<br/> hamis |
+| maxAjaxPerf&#8203;LookupAttempts | Az ablak keresésének maximális száma. a teljesítmény időzítése (ha elérhető), ez azért szükséges, mert nem minden böngésző tölti ki az ablakot. a teljesítmény az x/h-kérelem végének bejelentése előtt, valamint a beolvasási kérelmeknél ez a befejezés után lesz hozzáadva.| numerikus<br/> 3 |
+| ajaxPerfLookupDelay | Az a várakozási idő, ameddig a rendszer újra megkísérli megkeresni a Windowst. a kérelmek teljesítményének időzítése `ajax` ezredmásodpercben történik, és közvetlenül a setTimeout () függvénynek lesz átadva. | numerikus<br/> 25 MS |
+| enableUnhandled&#8203;PromiseRejection&#8203;követése | Ha az értéke igaz, a nem kezelt ígéretek elutasítása automatikusan történik, és JavaScript-hibaként fog jelenteni. Ha a disableExceptionTracking értéke igaz (ne kövesse nyomon a kivételeket), a rendszer figyelmen kívül hagyja a konfigurációs értéket, és nem kezeli az ígéretek elutasítását. | boolean<br/> hamis |
+| &#8203;InstrumentationKey&#8203;érvényesítésének letiltása | Ha az értéke igaz, a rendszer kihagyja a rendszerállapot-kulcs érvényesítésének ellenőrzését. | boolean<br/>hamis |
+| enablePerfMgr | Ha engedélyezve van (igaz), a rendszer helyi perfEvents hoz létre a kód számára, amely a perfEvents (doPerf () segítő használatával) bocsát ki. Ezzel azonosíthatja a teljesítménnyel kapcsolatos problémákat az SDK-n belül a használat alapján, vagy opcionálisan a saját műszeres kódján belül is. [További részletek az alapszintű dokumentációban](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md)olvashatók. A v 2.5.7 óta | boolean<br/>hamis |
+| perfEvtsSendAll | Ha a _enablePerfMgr_ engedélyezve van, és a [IPerfManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) a [INotificationManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts). perfEvent () értéket adja meg, ez a jelző határozza meg, hogy az esemény (és az összes figyelőnek elküldve) az összes esemény (true), vagy csak a "Parent" eseményekre (false default) vonatkozik-e &lt; &gt; .<br />A szülő [IPerfEvent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) olyan esemény, amelyben még nem fut más IPerfEvent az esemény létrehozásakor, és a _szülő_ tulajdonsága nem null értékű vagy nincs definiálva. A v 2.5.7 óta |  boolean<br />hamis |
+| idLength | Meghatározza az új véletlenszerű munkamenet és a felhasználói azonosító értékek létrehozásához használt alapértelmezett hosszt. Alapértelmezés szerint 22, a korábbi alapértelmezett érték 5 (v 2.5.8 vagy kevesebb), ha meg kell őriznie az előző maximális hosszt, 5-re kell állítania ezt az értéket. |  numerikus<br />22 |
+
+## <a name="cookie-handling"></a>Cookie-kezelési
+
+A 2.6.0-től kezdve a cookie-kezelés mostantól közvetlenül a példányból érhető el, és az inicializálást követően le lehet tiltani és újra engedélyezhető.
+
+Ha a vagy a konfigurációkon keresztül le van tiltva az inicializálás során `disableCookiesUsage` `cookieCfg.enabled` , most újra engedélyezheti a [ICookieMgr](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts) `setEnabled` függvény használatával.
+
+A példány-alapú cookie-felügyelet a, a és a korábbi CoreUtils globális funkcióit is lecseréli `disableCookies()` `setCookie(...)` `getCookie(...)` `deleteCookie(...)` . Továbbá a 2.6.0-es verzió részeként bevezetett fa-megrázó fejlesztések előnyeit a továbbiakban nem használja a globális függvények.
+
+### <a name="icookiemgrconfig"></a>ICookieMgrConfig
+
+Cookie-konfiguráció a példány-alapú cookie-kezeléshez a 2.6.0 verzióban.
+
+| Név | Leírás | Típus és alapértelmezett |
+|------|-------------|------------------|
+| engedélyezve | Logikai érték, amely jelzi, hogy az aktuális példány engedélyezi-e a cookie-k használatát az SDK-ban. Hamis érték esetén a konfiguráció által inicializált SDK példánya nem tárolja vagy nem olvassa be a cookie-k adatait. | boolean<br/> true |
+| domain | Egyéni cookie-tartomány. Ez akkor hasznos, ha Application Insights cookie-kat szeretne megosztani altartományokon keresztül. Ha nincs megadva, a rendszer a gyökérszintű `cookieDomain` érték értékét használja. | sztring<br/>null |
+| path | Megadja a cookie-hoz használandó elérési utat, ha nincs megadva, a rendszer a legfelső szintű értékből származó értéket fogja használni `cookiePath` . | sztring <br/> / |
+| getCookie | Az elnevezett cookie értékének beolvasására szolgáló függvény, ha nincs megadva, a belső cookie-elemzést/gyorsítótárazást fogja használni. | `(name: string) => string` <br/> null |
+| setCookie | A megnevezett cookie a megadott értékkel való beállítására szolgáló függvény, amely csak cookie hozzáadásakor vagy frissítésekor hívható meg. | `(name: string, value: string) => void` <br/> null |
+| delCookie | Az a függvény, amely törli a névvel ellátott cookie-t a megadott értékkel, a setCookie elválasztva, így nem kell elemezni az értéket annak megállapítása érdekében, hogy a cookie hozzáadása vagy eltávolítása megtörtént-e. Ha nincs megadva, a belső cookie-elemzést/gyorsítótárazást fogja használni. | `(name: string, value: string) => void` <br/> null |
+
+### <a name="simplified-usage-of-new-instance-cookie-manager"></a>Az új példányok cookie-kezelőjének egyszerűsített használata
+
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). setEnabled (TRUE/FALSE);
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). set ("MyCookie", "% 20encoded% 20value");
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). Get ("MyCookie");
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). del ("MyCookie");
 
 ## <a name="enable-time-on-page-tracking"></a>Időbeli nyomon követés engedélyezése
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 16cd14aa447fb56af4cd9dd809696aecdc0c47a5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587831"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557836"
 ---
 # <a name="securing-managed-identities"></a>Felügyelt identitások biztonságossá tétele
 
@@ -38,7 +38,7 @@ A felügyelt identitások leginkább az Azure AD-hitelesítést támogató szolg
 
 A forrásoldali rendszer hozzáférést kér a célhoz tartozó szolgáltatáshoz. Bármely Azure-erőforrás lehet egy forrásoldali rendszer. Például egy Azure-beli virtuális gép, az Azure Function példány és az Azure App Services-példányok támogatják a felügyelt identitásokat.
 
-[!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+   > [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
 
 ### <a name="how-authentication-and-authorization-work"></a>A hitelesítés és az engedélyezés működése
 
@@ -86,7 +86,7 @@ A felügyelt identitások többféleképpen is megtalálhatók:
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-1. Az Azure AD-ben válassza a vállalati alkalmazás lehetőséget.
+1. A Azure Active Directory területen válassza a vállalati alkalmazások lehetőséget.
 
 2. A "felügyelt identitások" szűrő kiválasztása 
 
@@ -120,7 +120,7 @@ Ezt a magas jogosultsági szintű csoportok tagjainak a PowerShell-lel való enu
 
 ## <a name="move-to-managed-identities"></a>Áthelyezés a felügyelt identitásokra
 
-Ha egyszerű szolgáltatásnevet vagy Azure AD-felhasználói fiókot használ, akkor kiértékelheti, hogy a felügyelt használatával nem szükséges-e a hitelesítő adatok védetté, elforgatását és kezelését végezni. 
+Ha egyszerű szolgáltatást vagy Azure AD-felhasználói fiókot használ, akkor értékelje ki, hogy egy felügyelt identitás használatával nem szükséges-e a hitelesítő adatok védetté, elforgatását és kezelését végezni. 
 
 ## <a name="next-steps"></a>Következő lépések
 

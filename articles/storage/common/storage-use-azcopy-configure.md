@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c699cd865746bf430193eba38ec6fa79575692e
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596940"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543448"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -103,14 +103,16 @@ Mielőtt beállítja ezt a változót, javasoljuk, hogy futtasson egy teljesítm
 
 ### <a name="optimize-memory-use"></a>Memória használatának optimalizálása
 
-Állítsa be a `AZCOPY_BUFFER_GB` környezeti változót a fájlok letöltésekor és feltöltésekor használni kívánt AzCopy maximális mennyiségének megadásához.
-Ez az érték gigabájtban (GB) kifejezve.
+A `AZCOPY_BUFFER_GB` környezeti változó beállításával megadhatja, hogy a rendszer mennyi memóriát kíván használni a AzCopy a fájlok letöltésekor és feltöltésekor. Ez az érték gigabájtban (GB) kifejezve.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+> [!NOTE]
+> A feladatok nyomon követése mindig további terhelést jelent a memóriahasználat esetében. Az összeg a feladatokban lévő átvitelek számától függően változhat. A pufferek a memóriahasználat legnagyobb részét képezik. A terhelést a használatával `AZCOPY_BUFFER_GB` közelítheti meg a követelmények teljesítése érdekében, de a teljes memória-használatot szigorúan nem lehet megjelölni.
 
 ### <a name="optimize-file-synchronization"></a>Fájlok szinkronizálásának optimalizálása
 

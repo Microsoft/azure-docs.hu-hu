@@ -4,12 +4,12 @@ description: A támogatási beállítások és korlátozások összefoglalása a
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: ade43350bbe3fa1bcf58f47e93b948db3a5b21bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12d289fdc3f84e7cbb3489a3ece283179e51772c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101745528"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561899"
 ---
 # <a name="support-matrix-for-azure-blobs-backup-in-preview"></a>Azure-Blobok biztonsági mentésének támogatási mátrixa (előzetes verzió)
 
@@ -27,9 +27,9 @@ A Blobok működési biztonsági mentése a blob-alapú visszaállítást, a blo
 
 **Egyéb korlátozások:**
 
-- Ha törölt egy tárolót a megőrzési időszak alatt, a tároló nem állítható vissza az időponthoz tartozó visszaállítási művelettel. Ha olyan Blobok egy tartományát kísérli meg visszaállítani, amelyek blobokat tartalmaznak egy törölt tárolóban, az időponthoz tartozó visszaállítási művelet sikertelen lesz. További információ a tárolók törlésből való védelméről: [tárolók törlésének törlése (előzetes verzió)](https://docs.microsoft.com/azure/storage/blobs/soft-delete-container-overview).
-- Ha egy blob a jelen pillanatban és a visszaállítási pont közötti időszakban a gyors és a lassú elérési szint között mozgott, a blob vissza lesz állítva az előző szintjére. A blokk-Blobok archiválási szinten való visszaállítása nem támogatott. Ha például a forró rétegben lévő blobot két nappal ezelőtt áthelyezték az archiválási rétegbe, és a visszaállítási művelet három nappal ezelőtt visszaállítja a-t, a blob nem állítható vissza a gyors szintre. Archivált blob visszaállításához először helyezze át az archiválási szintről. További információkért lásd: [Blobok adatainak rehidratálása az archív szintről](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration).
-- Olyan blokk, amely egy [put blokkon](https://docs.microsoft.com/rest/api/storageservices/put-block) keresztül lett feltöltve, vagy az [URL-címről](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url), de nem a [put blokkon](https://docs.microsoft.com/rest/api/storageservices/put-block-list)keresztül véglegesítve lett elvégezve, nem egy blob része, ezért nem állítható vissza visszaállítási művelet részeként.
+- Ha törölt egy tárolót a megőrzési időszak alatt, a tároló nem állítható vissza az időponthoz tartozó visszaállítási művelettel. Ha olyan Blobok egy tartományát kísérli meg visszaállítani, amelyek blobokat tartalmaznak egy törölt tárolóban, az időponthoz tartozó visszaállítási művelet sikertelen lesz. További információ a tárolók törlésből való védelméről: [tárolók törlésének törlése (előzetes verzió)](../storage/blobs/soft-delete-container-overview.md).
+- Ha egy blob a jelen pillanatban és a visszaállítási pont közötti időszakban a gyors és a lassú elérési szint között mozgott, a blob vissza lesz állítva az előző szintjére. A blokk-Blobok archiválási szinten való visszaállítása nem támogatott. Ha például a forró rétegben lévő blobot két nappal ezelőtt áthelyezték az archiválási rétegbe, és a visszaállítási művelet három nappal ezelőtt visszaállítja a-t, a blob nem állítható vissza a gyors szintre. Archivált blob visszaállításához először helyezze át az archiválási szintről. További információkért lásd: [Blobok adatainak rehidratálása az archív szintről](../storage/blobs/storage-blob-rehydration.md).
+- Olyan blokk, amely egy [put blokkon](/rest/api/storageservices/put-block) keresztül lett feltöltve, vagy az [URL-címről](/rest/api/storageservices/put-block-from-url), de nem a [put blokkon](/rest/api/storageservices/put-block-list)keresztül véglegesítve lett elvégezve, nem egy blob része, ezért nem állítható vissza visszaállítási művelet részeként.
 - Az aktív bérlettel rendelkező Blobok nem állíthatók vissza. Ha egy aktív bérlettel rendelkező blob szerepel a visszaállítani kívánt Blobok tartományában, a visszaállítási művelet automatikusan meghiúsul. A visszaállítási művelet megkezdése előtt szüntesse meg az aktív címbérletek megadását.
 - A pillanatképek létrehozása vagy törlése a visszaállítási művelet részeként nem történt meg. A rendszer csak az alap blobot állítja vissza az előző állapotába.
 

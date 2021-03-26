@@ -1,18 +1,18 @@
 ---
 title: Az Azure Percept Studio áttekintése
 description: További információ az Azure Percept Studio-ról
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8aae976e94ebbef22a86e19f00bfe6248338c4d0
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: e6f9641179a9c2490dcb65316a80b4ba7fd4b639
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953672"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567695"
 ---
 # <a name="azure-percept-studio-overview"></a>Az Azure Percept Studio áttekintése
 
@@ -23,6 +23,8 @@ A Studióban megtekintheti az Edge AI-kompatibilis eszközeit a kezdeti és foly
 Az Azure Percept Studióban található munkafolyamatok számos Azure AI-és IoT-szolgáltatást integrálnak, például az Azure IoT Hub, a Custom Vision, a Speech Studio és az Azure ML-t, így ezekkel a szolgáltatásokkal jelentős, korábban már meglévő ismeret nélkül hozhat létre teljes körű megoldást. Ha már ismeri ezeket az Azure-szolgáltatásokat, az Azure Percept studión kívül is csatlakozhat a meglévő Azure-szolgáltatások erőforrásaihoz, és módosíthatja azokat.
 
 Függetlenül attól, hogy Ön kezdő vagy fejlett AI-modell-és megoldás-fejlesztő, prototípuson dolgozik, vagy éles megoldásra vált, az Azure Percept Studio hozzáférést biztosít olyan munkafolyamatokhoz, amelyekkel csökkenthető az Edge AI-megoldások kiépítése.
+
+## <a name="video-walkthrough"></a>Bemutató videó
 
 </br>
 

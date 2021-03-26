@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3fcc4f01d926f5c624adabd51e6215e0106af1fa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454617"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557870"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Újdonságok
 
@@ -73,7 +73,7 @@ ms.locfileid: "102454617"
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [Felhasználói folyamat létrehozása Azure Active Directory B2C](create-user-flow.md)
+- [Felhasználói folyamat létrehozása Azure Active Directory B2C](add-sign-up-and-sign-in-policy.md)
 - [Telefonos regisztráció és bejelentkezés beállítása felhasználói folyamatokhoz (előzetes verzió)](phone-authentication-user-flows.md)
 
 ### <a name="updated-articles"></a>Frissített cikkek
@@ -114,7 +114,7 @@ ms.locfileid: "102454617"
 ### <a name="updated-articles"></a>Frissített cikkek
 - [Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C](b2clogin.md)
 - [OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben](openid-connect-technical-profile.md)
-- [A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C](phone-authentication.md)
+- [A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C](phone-authentication-user-flows.md)
 
 
 ## <a name="august-2020"></a>2020. augusztus

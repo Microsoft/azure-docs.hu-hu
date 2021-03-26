@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573276"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566404"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Számítási feladatok migrálása Azure Stack Edge Pro-FPGA egy Azure Stack Edge Pro GPU-ra
 
@@ -173,7 +173,7 @@ A helyi megosztásokból származó adatok helyreállításához kövesse az al�
 
 1. [Állítsa be a számítást az eszközön](azure-stack-edge-gpu-deploy-configure-compute.md).
 1. Adja hozzá az összes helyi megosztást a céleszköz. Tekintse meg a [helyi megosztás hozzáadása](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)című témakör részletes lépéseit.
-1. Ha hozzáfér az SMB-megosztásokhoz a forrásoldali eszközön, akkor az IP-címeket fogja használni, a céleszköz pedig az eszköz nevét fogja használni. Lásd: [Kapcsolódás SMB-megosztáshoz Azure stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share)-val. A céleszköz NFS-megosztásokhoz való kapcsolódáshoz az eszközhöz társított új IP-címeket kell használnia. Lásd: [Kapcsolódás NFS-megosztáshoz Azure stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share)-val. 
+1. Ha hozzáfér az SMB-megosztásokhoz a forrásoldali eszközön, akkor az IP-címeket fogja használni, a céleszköz pedig az eszköz nevét fogja használni. Lásd: [Kapcsolódás SMB-megosztáshoz Azure stack Edge Pro GPU](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-smb-share)-val. A céleszköz NFS-megosztásokhoz való kapcsolódáshoz az eszközhöz társított új IP-címeket kell használnia. Lásd: [Kapcsolódás NFS-megosztáshoz Azure stack Edge Pro GPU](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-nfs-share)-val. 
 
     Ha a megosztási adatait egy közbenső kiszolgálóra másolta az SMB vagy az NFS protokollon keresztül, a köztes kiszolgáló adatait átmásolhatja a célként megadott eszközön található megosztásokra. Ha a forrás és a cél eszköz is *online állapotban* van, az adatok közvetlenül a forrás eszközről is másolhatók.
 

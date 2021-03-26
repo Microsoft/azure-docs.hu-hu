@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 3b109048be4a94990c26e31aa5bc2ad36fdd0211
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102583813"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563820"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Az elemzési adatszolgáltatások programozott elérésének előfeltételei
 
@@ -24,7 +24,7 @@ A kereskedelmi Piactéri elemzési adatszolgáltatások programozott módon val�
 
 ## <a name="create-azure-active-directory-application"></a>Azure Active Directory alkalmazás létrehozása
 
-A rendszeres felhasználói hitelesítő adatok nem használhatók a kereskedelmi piactér elemzési adatainak programozott eléréséhez. Létre kell hozni egy Azure Active Directory (Azure AD) alkalmazást az elemzési API-k eléréséhez szükséges titkos kulccsal együtt. Az Azure AD-alkalmazások és-titkos kódok létrehozásával kapcsolatos információkért lásd a gyors útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)című témakört.
+A rendszeres felhasználói hitelesítő adatok nem használhatók a kereskedelmi piactér elemzési adatainak programozott eléréséhez. Létre kell hozni egy Azure Active Directory (Azure AD) alkalmazást az elemzési API-k eléréséhez szükséges titkos kulccsal együtt. Az Azure AD-alkalmazások és-titkos kódok létrehozásával kapcsolatos információkért lásd a gyors útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](../active-directory/develop/quickstart-register-app.md)című témakört.
 
 ## <a name="associate-the-azure-ad-application-to-the-partner-center-tenant"></a>Az Azure AD-alkalmazás hozzárendelése a partner Center-bérlőhöz
 
@@ -41,7 +41,7 @@ A Azure Portalban létrehozott Azure AD-alkalmazást össze kell kapcsolni a par
 
 ## <a name="generate-an-azure-ad-token"></a>Azure AD-jogkivonat létrehozása
 
-Az alkalmazás (ügyfél) azonosítójával kell létrehoznia egy Azure AD-jogkivonatot. Ez az azonosító segítséget nyújt az ügyfélalkalmazás egyedi azonosításához a Microsoft Identity platformon, valamint az előző lépésben az ügyfél titkos kulcsát. Az Azure AD-token létrehozásának lépéseiért lásd: [szolgáltatások közötti hívások ügyfél-hitelesítő adatok használatával (közös titok vagy tanúsítvány)](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow).
+Az alkalmazás (ügyfél) azonosítójával kell létrehoznia egy Azure AD-jogkivonatot. Ez az azonosító segítséget nyújt az ügyfélalkalmazás egyedi azonosításához a Microsoft Identity platformon, valamint az előző lépésben az ügyfél titkos kulcsát. Az Azure AD-token létrehozásának lépéseiért lásd: [szolgáltatások közötti hívások ügyfél-hitelesítő adatok használatával (közös titok vagy tanúsítvány)](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md).
 
 > [!NOTE]
 > A jogkivonat egy órára érvényes.

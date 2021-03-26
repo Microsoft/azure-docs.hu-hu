@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1cbd314861a4d5079a5c8e5213f45c7164344f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a21ae2ce79c500455c5735f4d82e7852e8474ad1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204167"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559145"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -157,9 +157,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Data Factory-példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -175,7 +175,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletének (SIEM) engedélyezését. A git használatával Azure Data Factory is integrálhat, így több verziókövetés előnyeit is kihasználhatja, például nyomon követheti és naplózhatja a módosításokat, és visszaállíthatja a hibákat tartalmazó módosításokat.
 
-- [Diagnosztikai beállítások konfigurálása](/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)
+- [Diagnosztikai beállítások konfigurálása](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -193,7 +193,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Diagnosztikai beállításokkal konfigurálhatja a Azure Data Factory nem számítási erőforrásaihoz tartozó diagnosztikai naplókat, például a mérőszámokat és a folyamat által futtatott adatokat. A Azure Data Factory 45 napig tárolja a folyamat által futtatott adatfeldolgozást. Ha hosszabb ideig szeretné megőrizni az adatok mennyiségét, mentse a diagnosztikai naplókat egy Storage-fiókba a naplózáshoz vagy a manuális vizsgálathoz, és adja meg a megőrzési időt napokban.  A naplókat átirányíthatja az Azure Event Hubsba, vagy elküldheti a naplókat egy Log Analytics-munkaterületre elemzés céljából.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Data Factory diagnosztikai naplók ismertetése](monitor-using-azure-monitor.md)
 
@@ -207,9 +207,9 @@ Diagnosztikai beállításokkal konfigurálhatja a Azure Data Factory nem szám�
 
 Ha a szervezete meg szeretné őrizni a biztonsági eseménynapló adatait, az egy adatgyűjtési szinten tárolható, amelyen Log Analytics lehet lekérdezni.
 
-- [Adatok gyűjtése az Azure Virtual Machinesról Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Adatok gyűjtése az Azure Virtual Machinesról Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
-- [Adatgyűjtés engedélyezése a Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Adatgyűjtés engedélyezése a Azure Security Centerban](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Felelősség**: Ügyfél
 
@@ -221,7 +221,7 @@ Ha a szervezete meg szeretné őrizni a biztonsági eseménynapló adatait, az e
 
 - [Diagnosztikai naplók engedélyezése Azure Data Factory](monitor-using-azure-monitor.md)
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -235,9 +235,9 @@ Ha a Integration Runtime egy Azure-beli virtuális gépen (VM) futtatja, akkor a
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-- [Log Analytics séma](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)
+- [Log Analytics séma](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-- [Adatok gyűjtése Azure-beli virtuális gépekről Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Adatok gyűjtése Azure-beli virtuális gépekről Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -253,11 +253,11 @@ Azure Data Factory diagnosztikai beállításainak konfigurálása és naplók e
 
 Továbbá győződjön meg arról, hogy engedélyezte az adattárakhoz kapcsolódó szolgáltatások diagnosztikai beállításait. Az egyes szolgáltatások biztonsági alapterveit a következő témakörben találja: útmutatás.
 
-- [Riasztások Azure Data Factory](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)
+- [Riasztások Azure Data Factory](./monitor-visually.md#alerts)
 
-- [Az összes támogatott metrika lap](/azure/azure-monitor/platform/metrics-supported)
+- [Az összes támogatott metrika lap](../azure-monitor/essentials/metrics-supported.md)
 
-- [Riasztások konfigurálása Log Analytics munkaterületen](/azure/azure-monitor/platform/alerts-log)
+- [Riasztások konfigurálása Log Analytics munkaterületen](../azure-monitor/alerts/alerts-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -279,7 +279,7 @@ Továbbá győződjön meg arról, hogy engedélyezte az adattárakhoz kapcsoló
 
 **Útmutató**: ha a Integration Runtime egy Azure-beli virtuális GÉPEN (VM) futtatja, akkor engedélyezheti a parancssori naplózás naplózását. A Azure Security Center az Azure-beli virtuális gépek biztonsági eseménynaplóinak figyelését teszi lehetővé.  Security Center kiépíti a Microsoft monitoring agentet az összes támogatott Azure-beli virtuális gépre, valamint az automatikus kiépítés engedélyezése esetén létrehozott újakra, vagy manuálisan is telepítheti az ügynököt.  Az ügynök engedélyezi a 4688-es folyamat-létrehozási eseményt és a 4688-es eseményen belüli parancssori mezőt. A virtuális gépen létrehozott új folyamatokat az eseménynapló rögzíti, és a Security Center észlelési szolgáltatásai figyelik.
 
-- [Adatgyűjtés az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Adatgyűjtés az Azure Security Centerben](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Felelősség**: Ügyfél
 
@@ -305,7 +305,7 @@ Míg az Azure AD az ajánlott módszer a felhasználói hozzáférések adminisz
 
 - [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-- [Helyi fiókok adatai](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
+- [Helyi fiókok adatai](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
 **Felelősség**: Ügyfél
 
@@ -434,7 +434,7 @@ Ha egy Azure-beli virtuális gépen futtatja a futtatókörnyezet-integrációt,
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -448,7 +448,7 @@ Ha egy Azure-beli virtuális gépen futtatja a futtatókörnyezet-integrációt,
 
 Ha a Integration Runtimet egy Azure-beli virtuális gépen (VM) futtatja, akkor az Azure Sentinel-be a virtuális gépre. A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, biztonsági információkkal kapcsolatos esemény-felügyeleti (SIEM) és biztonsági előkészítési (felszárnyaló) megoldás. Az Azure Sentinel intelligens biztonsági elemzési és fenyegetésekkel kapcsolatos intelligenciát biztosít a vállalaton belül, így egyetlen megoldást kínál a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Hozzáférés engedélyezése Event Hubs erőforrásokhoz az Azure AD használatával](../event-hubs/authorize-access-azure-active-directory.md)
 
@@ -468,7 +468,7 @@ Ha a Integration Runtimet egy Azure-beli virtuális gépen (VM) futtatja, akkor 
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Azure AD-hitelesítés konfigurálása és kezelése SQL-sel](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell)
+- [Azure AD-hitelesítés konfigurálása és kezelése SQL-sel](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)
 
 - [Azure AD-hitelesítés engedélyezése Azure-SSIS Integration Runtimehoz](enable-aad-authentication-azure-ssis-ir.md)
 
@@ -620,9 +620,9 @@ A hitelesítő adatokat vagy a titkos értékeket egy Azure Key Vault tárolhatj
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure Data Factory és kapcsolódó erőforrásokra vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Storage Analytics-naplózás](../storage/common/storage-analytics-logging.md)
 
@@ -1019,7 +1019,7 @@ A hitelesítő adatokat és a titkos értékeket egy Azure Key Vault is tárolha
 
 - [Integráció az Azure felügyelt identitásokkal](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Key Vault létrehozása](/azure/key-vault/quick-create-portal)
+- [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md)
 
 - [Hitelesítés Key Vault](../key-vault/general/authentication.md)
 
@@ -1243,5 +1243,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd: az [Azure Security teljesítményteszt v2 áttekintése](/azure/security/benchmarks/overview)
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd: az [Azure Security teljesítményteszt v2 áttekintése](../security/benchmarks/overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt a IoT Edge élő videó-elemzések monitorozásáról és naplózásáról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730242"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564483"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -312,7 +312,7 @@ A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő 
    Ebben az esetben a Azure Portalban nyissa meg az IoT hubot, és válassza a **metrikák** lehetőséget a bal oldali ablaktáblán. Itt kell látnia a metrikákat.
 
 ### <a name="log-analytics-metrics-collection"></a>Log Analytics metrikák gyűjteménye
-A [Prometheus-végpont](https://prometheus.io/docs/practices/naming/) és a [log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)használatával olyan metrikákat hozhatja ki és [figyelheti](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , mint például a felhasznált CPUPercent, a MemoryUsedPercent stb.   
+A [Prometheus-végpont](https://prometheus.io/docs/practices/naming/) és a [log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md)használatával olyan metrikákat hozhatja ki és [figyelheti](../../azure-monitor/essentials/metrics-supported.md) , mint például a felhasznált CPUPercent, a MemoryUsedPercent stb.   
 
 > [!NOTE]
 > Az alábbi konfiguráció nem gyűjt naplókat, **csak metrikákat**. A gyűjtő modul kiterjeszthető a naplók összegyűjtésére és feltöltésére is.

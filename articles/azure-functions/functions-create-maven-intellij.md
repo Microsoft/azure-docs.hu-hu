@@ -1,17 +1,17 @@
 ---
 title: Java-függvény létrehozása Azure Functions a IntelliJ használatával
 description: Ebből a témakörből megtudhatja, hogyan hozhat létre egy egyszerű HTTP-triggert használó Java-függvényt a IntelliJ használatával, amelyet aztán az Azure-beli kiszolgáló nélküli környezetben való futtatásra tehet közzé.
-author: jeffhollan
+author: yucwan
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: yucwan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45fb62b446e6b589dc0cb9287a8aebe7f4e699b1
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708815"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543642"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>Az első Java-függvény létrehozása az Azure-ban a IntelliJ használatával
 
@@ -104,17 +104,9 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
 
     ![Projekt üzembe helyezése az Azure-ban](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. Ha még nincs függvényalkalmazás, kattintson *a nem elérhető függvény lehetőségre, és kattintson az új létrehozása* elemre.
+1. Ha még nem rendelkezik függvényalkalmazásval, kattintson *+* a *függvény* sorra. Írja be a Function alkalmazás nevét, és válassza a megfelelő platform lehetőséget, itt egyszerűen elfogadhatja az alapértelmezett értéket. Kattintson az *OK* gombra, és az imént létrehozott új Function alkalmazás automatikusan ki lesz választva. A függvények telepítéséhez kattintson a *Futtatás* gombra.
 
     ![Function-alkalmazás létrehozása az Azure-ban](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
-
-1. Írja be a Function alkalmazás nevét, és válassza a megfelelő előfizetés/platform/erőforráscsoport/App Service terv lehetőséget, itt létrehozhat egy erőforráscsoport/App Service tervet is. Ezután az Alkalmazásbeállítások változatlanok maradnak, kattintson az *OK* gombra, és várjon néhány percet az új Function alkalmazás létrehozásához. Az *új Függvényalkalmazás létrehozása* után a folyamatjelző sáv eltűnik.
-
-    ![Function alkalmazás üzembe helyezése az Azure-alkalmazás létrehozása varázsló](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
-
-1. Válassza ki azt a Function alkalmazást, amelyet központilag telepíteni szeretne, (az imént létrehozott új Function alkalmazás automatikusan ki lesz választva). A függvények telepítéséhez kattintson a *Futtatás* gombra.
-
-    ![A képernyőképen a Azure Functions központi telepítése párbeszédpanel látható.](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Function alkalmazás üzembe helyezése az Azure log-ben](media/functions-create-first-java-intellij/deploy-functions-log.png)
 

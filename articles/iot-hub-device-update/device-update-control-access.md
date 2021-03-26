@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca55b1df347b47a6eb82557658d59a3de666b703
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101662276"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558397"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC) és eszköz frissítése
 
@@ -39,7 +39,7 @@ Az eszköz frissítése az Azure AD-t is használja a hitelesítéshez a tartalo
 
 ### <a name="create-client-azure-ad-app"></a>Ügyfél létrehozása Azure AD alkalmazás
 
-Egy alkalmazás vagy szolgáltatás Azure AD-val való integrálásához [először regisztráljon](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) egy alkalmazást az Azure ad-ben. Az ügyfélalkalmazás beállítása a használt engedélyezési folyamattól függően változhat.  Az alábbi konfiguráció útmutatást nyújt az eszköz frissítése REST API-k használata esetén.
+Egy alkalmazás vagy szolgáltatás Azure AD-val való integrálásához [először regisztráljon](../active-directory/develop/quickstart-register-app.md) egy alkalmazást az Azure ad-ben. Az ügyfélalkalmazás beállítása a használt engedélyezési folyamattól függően változhat.  Az alábbi konfiguráció útmutatást nyújt az eszköz frissítése REST API-k használata esetén.
 
 * Ügyfél-hitelesítés beállítása: "a natív vagy webes ügyfélhez tartozó URI-k átirányítása".
 * API-engedélyek beállítása – IoT Hub elérhető eszköz frissítése:

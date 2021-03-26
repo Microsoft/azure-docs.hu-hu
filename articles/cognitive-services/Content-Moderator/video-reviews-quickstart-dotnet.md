@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d9f80de5a18e27de4a9f8e85613e3c2eee6c111c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 55802b04e10f06c7e362033f97d24c4e20c12c62
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96853475"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566489"
 ---
 # <a name="create-video-reviews-using-net"></a>Videós felülvizsgálatok létrehozása a .NET használatával
 
@@ -58,7 +58,7 @@ A képkockák (képek) esetében használja a következő képeket:
 
 ![Videó keretének miniatűrje 1](images/ams-video-frame-thumbnails-1.PNG) | ![Videó keretének miniatűrje 2](images/ams-video-frame-thumbnails-2.PNG) | ![Videó keretének miniatűrje 3](images/ams-video-frame-thumbnails-3.PNG) |
 | :---: | :---: | :---: |
-[1. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [2. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [3. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
+1. keret | 2. keret | 3. keret |
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio-projekt létrehozása
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: af6234a81e8f79424cc3b1ec4178a175d9ff0146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98706458"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564568"
 ---
 # <a name="repairing-an-import-job"></a>Importálási feladat javítása
 Előfordulhat, hogy a Microsoft Azure Import/Export szolgáltatás néhány fájlt vagy egy fájl részeit nem tudja átmásolni a Windows Azure Blob szolgáltatásba. A hibák néhány lehetséges okát jelenthetik például:  
@@ -30,7 +30,7 @@ A Microsoft Azure Import/Export eszközt futtathatja az importálási feladatok 
 
 A következő paraméterek megadhatók a **RepairImport**: 
   
-|||  
+| Paraméter | Leírás |  
 |-|-|  
 |**/r:**<RepairFile\>|**Szükséges.** A javítási fájl elérési útja, amely nyomon követi a javítás állapotát, és lehetővé teszi egy megszakított javítás folytatását. Minden meghajtónak rendelkeznie kell egy javítási fájllal. Amikor elindít egy javítást egy adott meghajtón, a helyreállítási fájl elérési útját adja meg, amely még nem létezik. Egy megszakított javítás folytatásához át kell adni egy meglévő javítási fájl nevét. Mindig a célként megadott meghajtóhoz tartozó javítási fájlt határozza meg.|  
 |**/logdir:**<LogDirectory\>|**Választható.** A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva naplózási könyvtár, a rendszer az aktuális könyvtárat fogja használni a napló könyvtáraként.|  

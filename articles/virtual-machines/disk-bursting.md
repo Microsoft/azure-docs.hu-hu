@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4024d2b1357f3dda8216e9ebdd2055b28b064d33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9758b026ef205e6608f7fc4110219dc5f267369e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677473"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568715"
 ---
 # <a name="managed-disk-bursting"></a>Felügyelt lemez kitörése
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -27,10 +27,10 @@ Emellett a [felügyelt lemezek teljesítményi szintje is módosítható](disks-
 
 |  |Kredit-alapú kitörés  |Igény szerinti kitörés  |Teljesítményszint módosítása  |
 |---------|---------|---------|---------|
-| Forgatókönyvek|Ideális a rövid távú skálázáshoz (30 perc vagy kevesebb).|Ideális a rövid távú skálázáshoz (nem korlátozott időtartamú).|Ideális, ha a számítási feladat egyébként folyamatosan fut a burst folyamat során.|
-|Költségek     |Ingyenes         |A Cost változó, a részletekért tekintse meg a [Számlázási](#billing) szakaszt.        |Az egyes teljesítményszint díja rögzített, a részletekért tekintse meg [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) .         |
-|Rendelkezésre állás     |Csak a prémium szintű SSD-512 GiB és kisebb méretekben érhető el.         |Csak a 512 GiB-nál nagyobb prémium SSD-k esetén érhető el.         |A prémium szintű SSD-méretek számára elérhető.         |
-|Engedélyezés     |Alapértelmezés szerint engedélyezve van a jogosult lemezeken.         |A felhasználónak engedélyezve kell lennie.         |A felhasználónak manuálisan kell módosítania a szintet.         |
+| **Forgatókönyvek**|Ideális a rövid távú skálázáshoz (30 perc vagy kevesebb).|Ideális a rövid távú skálázáshoz (nem korlátozott időtartamú).|Ideális, ha a számítási feladat egyébként folyamatosan fut a burst folyamat során.|
+|**Költségek**     |Ingyenes         |A Cost változó, a részletekért tekintse meg a [Számlázási](#billing) szakaszt.        |Az egyes teljesítményszint díja rögzített, a részletekért tekintse meg [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) .         |
+|**Rendelkezésre állás**     |Csak a prémium szintű SSD-512 GiB és kisebb méretekben érhető el.         |Csak a 512 GiB-nál nagyobb prémium SSD-k esetén érhető el.         |A prémium szintű SSD-méretek számára elérhető.         |
+|**Engedélyezés**     |Alapértelmezés szerint engedélyezve van a jogosult lemezeken.         |A felhasználónak engedélyezve kell lennie.         |A felhasználónak manuálisan kell módosítania a szintet.         |
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:

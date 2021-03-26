@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/03/2021
-ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1362d8c1f15b64b9d76b28fd354cdae8919504b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042521"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558278"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -120,7 +120,7 @@ Ha az automatikus ajánlás-kezelési szolgáltatás le van tiltva, vagy egyszer
 - A lekérdezési tároló leállt, mert a lefoglalt tárolóhelyet használta.
 
 A probléma kijavításához a következő lépéseket kell figyelembe venni:
-- Törölje a lekérdezési tárolót, vagy módosítsa az adatmegőrzési időszakot az "Auto" értékre a T-SQL használatával. Lásd: a [lekérdezési tároló ajánlott megőrzési és rögzítési szabályzatának konfigurálása](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy).
+- Törölje a lekérdezési tárolót, vagy módosítsa az adatmegőrzési időszakot az "Auto" értékre a T-SQL használatával. Lásd: a [lekérdezési tároló ajánlott megőrzési és rögzítési szabályzatának konfigurálása](./query-performance-insight-use.md#recommended-retention-and-capture-policy).
 - Használja a SQL Server Management Studio (SSMS), és kövesse az alábbi lépéseket:
   - Kapcsolódás a Azure SQL Databasehoz
   - Kattintson a jobb gombbal az adatbázisra

@@ -4,14 +4,14 @@ description: Ismerkedjen meg Azure Data Factory felügyelt identitásával.
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 89da1a22bb3fd0eff22a7bed7ed70b72f220fbf9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 65512f8e46b5545929a798392ac5f19ddeab39ed
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888991"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562460"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -28,8 +28,7 @@ Az adatok előállítójának létrehozásakor a rendszer felügyelt identitást
 A Data Factory felügyelt identitása a következő funkciókat nyújtja:
 
 - [Tárolja a hitelesítő adatokat Azure Key Vaultban](store-credentials-in-key-vault.md), amelyekben a rendszer az adat-előállító felügyelt identitását használja Azure Key Vault hitelesítéshez.
-- Összekötők, többek között az [Azure Blob Storage](connector-azure-blob-storage.md), a [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), a [Azure SQL Database](connector-azure-sql-database.md)és az [Azure szinapszis Analytics](connector-azure-sql-data-warehouse.md).
-- [Webes tevékenység](control-flow-web-activity.md).
+- A felügyelt identitásos hitelesítéssel fér hozzá az adattárakhoz vagy a számítási feladatokhoz, például az Azure Blob Storage, az Azure Adatkezelő, a Azure Data Lake Storage Gen1, a Azure Data Lake Storage Gen2, a Azure SQL Database, az Azure SQL felügyelt példánya, az Azure szinapszis Analytics, a REST, a Databricks-tevékenység Részletekért olvassa el az összekötő és a tevékenységgel kapcsolatos cikkeket.
 
 ## <a name="generate-managed-identity"></a>Felügyelt identitás előállítása
 
@@ -157,11 +156,10 @@ A felügyelt identitás adatait a Azure Portal-> a adat-előállító > tulajdon
 
 - Felügyelt identitás objektumának azonosítója
 - Felügyelt identitás bérlője
-- Felügyelt identitás alkalmazásának azonosítója
 
 A felügyelt identitás adatai is megjelennek, ha társított szolgáltatást hoz létre, amely támogatja a felügyelt identitások hitelesítését, például az Azure Blob, a Azure Data Lake Storage, a Azure Key Vault stb.
 
-Az engedélyek megadásakor használja az objektumazonosító vagy a adat-előállító nevét (felügyelt identitás neve) az identitás megkereséséhez.
+Az engedélyek megadásakor az Azure-erőforrás Access Control (IAM) lapján > szerepkör-hozzárendelés hozzáadása – > hozzáférés hozzárendelése a következőhöz: > Select Data Factory a rendszer által hozzárendelt felügyelt identitás alatt – > a gyári név alapján válassza a kiválasztás lehetőséget. vagy Általánosságban elmondható, hogy az objektumazonosító vagy az adatok előállítójának neve (felügyelt identitás neve) segítségével megkeresi ezt az identitást. Ha be kell szereznie a felügyelt identitás alkalmazás-AZONOSÍTÓját, használhatja a PowerShellt.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Felügyelt identitás beolvasása a PowerShell használatával
 

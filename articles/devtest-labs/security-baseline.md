@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13585173b54c79158161da54f968ba66eb018f6a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27a0d5b809480b2ce4aff36c5acd43c149ed5bb3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705738"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562834"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -78,11 +78,11 @@ Azure Firewall üzembe helyezése minden szervezet hálózati határain, a fenye
 
 - [Virtuális hálózat konfigurálása Azure DevTest Labshoz](devtest-lab-configure-vnet.md)
 
-- [A DDoS Protection konfigurálása](/azure/virtual-network/manage-ddos-protection)
+- [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](/azure/security-center/threat-protection)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 - [Azure Security Center adaptív hálózat megerősítésének ismertetése](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -144,7 +144,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 - [A szolgáltatási címkék megismerése és használata](../virtual-network/service-tags-overview.md)
 
-- [Az alkalmazás biztonsági csoportjai megismerése és használata](/azure/virtual-network/security-overview#application-security-groups)
+- [Az alkalmazás biztonsági csoportjai megismerése és használata](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Felelősség**: Ügyfél
 
@@ -158,7 +158,7 @@ Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
@@ -188,9 +188,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti az erőforrás-konfigurációkat, és felderítheti az Azure-erőforrások módosításait. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -214,7 +214,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-beli tevékenység naplójának adatai alapján meghatározhatja, hogy a DevTest Labs-példányok felügyeleti síkon milyen műveleteket hajtson végre az írási műveletekhez (PUT, POST, DELETE).
 
-- [Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez](/azure/azure-monitor/platform/diagnostic-settings)
+- [Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Felelősség**: Ügyfél
 
@@ -224,7 +224,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-tevékenység naplójának adatai alapján meghatározhatja a "mi, ki és mikor" minden írási művelethez (PUT, POST, DELETE) a DevTest Labs-példányok felügyeleti síkja szintjén.
 
-- [Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez](/azure/azure-monitor/platform/diagnostic-settings)
+- [Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Felelősség**: Ügyfél
 
@@ -236,7 +236,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 További információért tekintse át a következő cikkeket:
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Az Azure Security Center adatgyűjtés ismertetése](../security-center/security-center-enable-data-collection.md)
 
@@ -248,7 +248,7 @@ További információért tekintse át a következő cikkeket:
 
 **Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai alapján a Azure DevTest Labs példányokhoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát állíthatja be.
 
-- [További információkért tekintse meg a következő cikket:](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [További információkért tekintse meg a következő cikket:](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -260,9 +260,9 @@ További információért tekintse át a következő cikkeket:
 
 További információért tekintse át a következő cikkeket:
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -272,7 +272,7 @@ További információért tekintse át a következő cikkeket:
 
 **Útmutató**: az Azure log Analytics munkaterület használata a rendellenes tevékenységekkel kapcsolatos, a biztonsági naplókban és a Azure DevTest Labs kapcsolódó eseményeken való figyeléshez és riasztáshoz.
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -333,7 +333,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 - Erőforrás-kezelés: hozzáférést biztosít a Azure Portal az erőforrások kezeléséhez (virtuális gépek létrehozásához, környezetek létrehozásához, elindításához, leállításához, újraindításához, törléséhez és összetevők alkalmazásához stb.). Az erőforrás-kezelés az Azure-ban az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával végezhető el. Szerepköröket rendelhet a felhasználókhoz, és beállíthatja az erőforrás-és hozzáférési szintű engedélyeket.
 - Virtual Machines (hálózati szintű): az alapértelmezett konfigurációban a virtuális gépek helyi rendszergazdai fiókot használnak. Ha van elérhető tartomány (Azure Active Directory Domain Services (Azure AD DS), helyszíni tartomány vagy felhőalapú tartomány), a gépek csatlakoztathatók a tartományhoz. A felhasználók ezután használhatják a tartományon alapuló identitásokat a tartományhoz való csatlakozás használatával a gépekhez való csatlakozáshoz.
 
-- [A DevTest Labs hivatkozási architektúrája](https://docs.microsoft.com/azure/devtest-labs/devtest-lab-reference-architecture#architecture)
+- [A DevTest Labs hivatkozási architektúrája](./devtest-lab-reference-architecture.md#architecture)
 
 - [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -463,7 +463,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a DevTest Labs-példányok és egyéb kritikus vagy kapcsolódó erőforrások módosíthatók.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Riasztások létrehozása a DevTest Labs tevékenység-naplózási eseményeihez](create-alerts.md)
 
@@ -481,7 +481,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -595,7 +595,7 @@ Referenciaanyagok:
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -625,7 +625,7 @@ Referenciaanyagok:
 
 **Útmutató**: a parancsfájlok típusától függően az operációs rendszerre jellemző konfigurációk vagy harmadik féltől származó erőforrások segítségével korlátozhatja, hogy a felhasználók képesek-e parancsfájlokat végrehajtani a DevTest Labs szolgáltatásban üzemeltetett virtuális gépeken belül. Azure Security Center adaptív alkalmazás-vezérlőelemekkel biztosíthatja, hogy csak a hitelesített szoftverek fussanak, és az összes jogosulatlan szoftver le legyen tiltva az alapul szolgáló Azure-beli virtuális gépeken.
 
-- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 - [Azure Security Center adaptív alkalmazás-vezérlők használata](../security-center/security-center-adaptive-application.md)
 
@@ -665,7 +665,7 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure Security Center javaslatokat is alkalmazhat.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
 
@@ -721,7 +721,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 
 - [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
 
-- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
+- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 - [Rendszerkép-előállító létrehozása a DevTest Labs szolgáltatásban](image-factory-create.md)
 
@@ -735,7 +735,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 
 - [Az Azure Repos git oktatóanyaga](/azure/devops/repos/git/gitworkflow)
 
-- [Az engedélyek és a csoportok](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&amp;tabs=preview-page&amp;preserve-view=true)
+- [Az engedélyek és a csoportok](/azure/devops/organizations/security/about-permissions?preserve-view=true&tabs=preview-page&view=azure-devops)
 
 - [Integráció a Azure DevTest Labs és az Azure DevOps munkafolyamat között](devtest-lab-dev-ops.md)
 
@@ -765,7 +765,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Aliasok használata](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Felelősség**: Ügyfél
 
@@ -853,7 +853,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 
 - [Az Azure-hoz készült Microsoft antimalware konfigurálása](../security/fundamentals/antimalware.md) 
 
-- [Fenyegetésvédelem az Azure Security Centerben](/azure/security-center/threat-protection)
+- [Fenyegetésvédelem az Azure Security Centerben](../security-center/azure-defender.md)
 
 **Felelősség**: Ügyfél
 
@@ -869,7 +869,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 - [Az Azure-hoz készült Microsoft antimalware megismerése](../security/fundamentals/antimalware.md) 
 
-- [Az adatszolgáltatások fenyegetés-észlelésének megismerése Azure Security Center](/azure/security-center/security-center-alerts-data-services)
+- [Az adatszolgáltatások fenyegetés-észlelésének megismerése Azure Security Center](../security-center/azure-defender.md)
 
 **Felelősség**: Ügyfél
 
@@ -913,7 +913,7 @@ Engedélyezze Azure Backup a célként megadott Azure-beli virtuális gépeken, 
 
 - [Az Azure virtuális gépek biztonsági mentésének áttekintése](../backup/backup-azure-vms-introduction.md)
 
-- [Key Vault kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -929,7 +929,7 @@ Ha az Azure Disk Encryption szolgáltatást használja, visszaállíthatja az Az
 
 - [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../backup/backup-azure-restore-files-from-vm.md)
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 - [Titkosított virtuális gépek biztonsági mentése és visszaállítása](../backup/backup-azure-vms-encryption.md)
 
@@ -975,7 +975,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md) 
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -1041,5 +1041,5 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

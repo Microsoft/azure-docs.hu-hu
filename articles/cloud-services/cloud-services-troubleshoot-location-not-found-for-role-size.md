@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: b11aedb52be3c263c781c2ac68d1d5197ba4def2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101745720"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558958"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>A LocationNotFoundForRoleSize hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor
 
@@ -47,7 +47,7 @@ Ebben a forgatókönyvben egy másik régiót vagy SKU-t kell kiválasztania a C
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Az Azure CLI-t használó régióban található SKU-lista listázása
 
-Használhatja az az [VM List-SKUs](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) parancsot.
+Használhatja az az [VM List-SKUs](/cli/azure/vm.html#az_vm_list_skus) parancsot.
 
 - A `--location` paraméter használatával szűrheti a kimenetet a használt helyre.
 - A paraméter használatával a `--size` részleges méret neve alapján kereshet.
@@ -63,7 +63,7 @@ Használhatja az az [VM List-SKUs](https://docs.microsoft.com/cli/azure/vm.html#
 
 #### <a name="list-skus-in-region-using-powershell"></a>Az SKU listázása a régióban a PowerShell használatával
 
-Használhatja a [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) parancsot.
+Használhatja a [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) parancsot.
 
 - Az eredmények kiszűrése hely szerint.
 - Ehhez a parancshoz a PowerShell legújabb verzióját kell megadnia.
@@ -91,7 +91,7 @@ Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.Res
 
 #### <a name="list-skus-in-region-using-rest-api"></a>A régióban található SKU-ket REST API használatával listázhatja
 
-Használhatja a [Resource SKU-List](https://docs.microsoft.com/rest/api/compute/resourceskus/list) műveletet. Az elérhető SKU-ket és régiókat a következő formátumban adja vissza:
+Használhatja a [Resource SKU-List](/rest/api/compute/resourceskus/list) műveletet. Az elérhető SKU-ket és régiókat a következő formátumban adja vissza:
 
 ```json
 {

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 114635722a0a131fc146eb2ab69984effb211a88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598388"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559757"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>1. lépés – a Media Services API v3-re való Migrálás előnyeinek megismerése
 
@@ -23,6 +23,8 @@ ms.locfileid: "104598388"
 <hr color="#5ea0ef" size="10">
 
 ![2. áttelepítési lépések](./media/migration-guide/steps-1.svg)
+
+## <a name="use-the-latest-api"></a>A legújabb API használata
 
 Javasoljuk, hogy a Azure Media Services V3 API 2020-05-01-es verzióját használja most az előnyök kinyeréséhez, mivel az új funkciók, funkciók és teljesítmény-optimalizálás csak az aktuális V3 API-ban érhető el.
 
@@ -60,7 +62,3 @@ A v3-as Media Services jelentős mértékben javult.
 | **Figyelés** | |
 | [Azure EventGrid](monitoring/reacting-to-media-services-events.md) Notification-támogatás | A EventGrid-értesítések több funkciója is gazdag. Több típusú értesítés is létezik, szélesebb körű SDK-támogatás az értesítések saját alkalmazásban való fogadásához, valamint a meglévő Azure-szolgáltatások, amelyek eseménykezelőként működhetnek. |
 | [Azure Monitor támogatás és integráció a Azure Portal](monitoring/monitor-events-portal-how-to.md) | Ez lehetővé teszi az ügyfeleknek, hogy megjelenítsék Media Services fiók kvótájának felhasználását, a valós idejű statisztikát a folyamatos átviteli végpontokról, valamint az élő események betöltésére és archiválására vonatkozó statisztikát. Az ügyfelek mostantól riasztásokat állíthatnak be, és valós idejű metrikus adatokon alapuló szükséges műveleteket hajthatnak végre. |
-
-## <a name="next-steps"></a>Következő lépések
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

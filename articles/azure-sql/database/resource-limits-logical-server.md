@@ -10,42 +10,42 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 02/02/2021
-ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691229"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543516"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Ez a cikk áttekintést nyújt a Azure SQL Database és az Azure szinapszis Analytics által használt logikai kiszolgáló erőforrás-korlátairól. Információkkal szolgál arról, hogy mi történik, ha az adott erőforrás korlátai elérik vagy túllépik a korlátot, és ismerteti a korlátok kikényszeríthető erőforrás-irányítási mechanizmusait.
+Ez a cikk áttekintést nyújt a Azure SQL Database és az Azure szinapszis Analytics által használt [logikai kiszolgáló](logical-servers.md) erőforrás-korlátairól. Információkkal szolgál arról, hogy mi történik, ha az adott erőforrás korlátai elérik vagy túllépik a korlátot, és ismerteti a korlátok kikényszeríthető erőforrás-irányítási mechanizmusait.
 
 > [!NOTE]
-> Az Azure SQL felügyelt példányokra vonatkozó korlátaival kapcsolatban lásd: [SQL Database erőforrás-korlátok a felügyelt példányok számára](../managed-instance/resource-limits.md).
+> Az Azure SQL felügyelt példányokra vonatkozó korlátaival kapcsolatban lásd: [a felügyelt példányok erőforrás-korlátai](../managed-instance/resource-limits.md).
 
 ## <a name="maximum-resource-limits"></a>Erőforrás-korlátok maximális száma
 
 | Erőforrás | Korlát |
 | :--- | :--- |
-| Adatbázisok száma kiszolgálónként | 5000 |
-| Az előfizetéshez tartozó kiszolgálók alapértelmezett száma bármely régióban | 20 |
-| Kiszolgálók maximális száma előfizetésenként bármely régióban | 200 |  
-| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54 000 |  
-| Virtuális mag-kvóta kiszolgálónkénti/példányon | 540 |
-| Készletek maximális száma kiszolgálónként | Korlátozott számú DTU vagy virtuális mag. Ha például az egyes készletek 1000 DTU, akkor a kiszolgáló támogatja az 54-es készleteket.|
+| Adatbázisok/logikai kiszolgálók | 5000 |
+| Logikai kiszolgálók alapértelmezett száma előfizetésben egy régióban | 20 |
+| Logikai kiszolgálók maximális száma előfizetésben egy régióban | 200 |  
+| DTU/eDTU kvóta/logikai kiszolgáló | 54 000 |  
+| Virtuális mag kvóta/logikai kiszolgáló | 540 |
+| Készletek maximális száma logikai kiszolgálónként | Korlátozott számú DTU vagy virtuális mag. Ha például az egyes készletek 1000 DTU, akkor a kiszolgáló támogatja az 54-es készleteket.|
 |||
 
 > [!IMPORTANT]
-> Mivel az adatbázisok száma a korlátot a kiszolgálón közelíti meg, a következő műveletek végezhetők el:
+> Mivel az adatbázisok száma a logikai kiszolgálókon beállított korlátot közelíti meg, a következő műveletek végezhetők el:
 >
-> - Növekvő késés a főadatbázison futó lekérdezések futtatásakor.  Ide tartoznak az erőforrás-kihasználtsági statisztikák, például a sys.resource_stats nézetei.
+> - Növekvő késés a főadatbázison futó lekérdezések futtatásakor.  Ebbe beletartozik az erőforrás-kihasználtsági statisztikák (például: `sys.resource_stats` ) nézetei.
 > - Növekvő késés a felügyeleti műveletekben és a portálon olyan nézőpontok, amelyek a kiszolgáló adatbázisainak számbavételét foglalják magukban.
 
 > [!NOTE]
-> Ha további DTU/eDTU kvótát, virtuális mag kvótát vagy több kiszolgálót szeretne beszerezni az alapértelmezett értéknél, küldjön egy új támogatási kérelmet a Azure Portal. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](quota-increase-request.md).
+> Ha további DTU/eDTU kvótát, virtuális mag kvótát vagy több logikai kiszolgálót szeretne beszerezni az alapértelmezett értéknél, küldjön új támogatási kérelmet a Azure Portal. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Tárterület mérete
 

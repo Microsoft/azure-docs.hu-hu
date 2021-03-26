@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4a159f7fa384a6899fb3cbb4db3bba9e0ed02d52
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 47a6d3bbebdf3b2b14b1c40d7ea8fc93b4d19c6f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102638564"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565333"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>A TLS 1,2 konfigurálása Azure Stack Edge Pro-eszközt elérő Windows-ügyfeleken
 
@@ -74,4 +74,4 @@ Ha a környezethez az egész rendszerre kiterjedő TLS 1,2-et kívánja beállí
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Kapcsolódás Azure Resource Managerhoz](azure-stack-edge-j-series-connect-resource-manager.md)
+[Kapcsolódás Azure Resource Managerhoz](./azure-stack-edge-gpu-connect-resource-manager.md)

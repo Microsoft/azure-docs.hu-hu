@@ -18,7 +18,7 @@
       href: overview-percept-security.md
     - name: 80/20 integráció
       href: overview-8020-integration.md
-    - name: Percept-eszközök frissítése
+    - name: Eszközfrissítések
       href: overview-update-experience.md
 - name: Rövid útmutatók
   items:
@@ -44,6 +44,10 @@
       items:
         - name: A LED és a gomb viselkedése
           href: audio-button-led-behavior.md
+    - name: Biztonság
+      items:
+        - name: Tűzfal-konfiguráció és biztonsági javaslatok
+          href: concept-security-configuration.md
 - name: Útmutatók
   items:
     - name: Látási megoldások fejlesztése az Azure Percept DK-mel

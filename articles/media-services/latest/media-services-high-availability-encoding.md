@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 81feb5b95578cedea7bf368aa1e0d6c2e9117077
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b0158c3b1bbee37fdb10c8fc0131be580ad6fc0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102456011"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562613"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Magas rendelkezésre állás a Media Services és a videó igény szerint (VOD)
 
@@ -39,7 +39,7 @@ A példában használt szolgáltatások a következők:
 | Ikon | Név | Leírás |
 | :--: | ---- | ----------- |
 |![Ez a Media Services-fiók ikonja.](media/media-services-high-availability-encoding/azure-media-services.svg)| Media Services-fiók | **Leírás:**<br>A Media Services fiók az Azure-ban a médiatartalom kezelésére, titkosítására, kódolására, elemzésére és továbbítására szolgáló kiindulópont. Egy Azure Storage-fiók erőforráshoz van társítva. A fióknak és az összes társított tárterületnek ugyanahhoz az Azure-előfizetéshez kell tartoznia.<br><br>**VOD használata:**<br>Ezek a szolgáltatások a videó-és hangeszközök kódolására és továbbítására használhatók.  A magas rendelkezésre állás érdekében legalább két Media Services fiókot kell beállítania, amelyek mindegyike egy másik régióban található. [További információ a Azure Media Servicesról](media-services-overview.md). |
-|![Ez a Storage-fiók ikonja.](media/media-services-high-availability-encoding/storage-account.svg)| A(z) | **Leírás:**<br>Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: Blobok, fájlok, várólisták, táblák és lemezek. Az adatok a világon bárhonnan elérhetők HTTP-n vagy HTTPS-en keresztül.<br><br>Az egyes régiókban minden Media Services fióknak ugyanabban a régióban kell lennie.<br><br>**VOD használata:**<br>A bemeneti és kimeneti adatokat a VOD-feldolgozáshoz és a folyamatos átvitelhez is tárolhatja. [További információ az Azure Storage-ról](../../storage/common/storage-introduction.md). |
+|![Ez a Storage-fiók ikonja.](media/media-services-high-availability-encoding/storage-account.svg)| Tárfiók | **Leírás:**<br>Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: Blobok, fájlok, várólisták, táblák és lemezek. Az adatok a világon bárhonnan elérhetők HTTP-n vagy HTTPS-en keresztül.<br><br>Az egyes régiókban minden Media Services fióknak ugyanabban a régióban kell lennie.<br><br>**VOD használata:**<br>A bemeneti és kimeneti adatokat a VOD-feldolgozáshoz és a folyamatos átvitelhez is tárolhatja. [További információ az Azure Storage-ról](../../storage/common/storage-introduction.md). |
 |![Ez az Azure Storage üzenetsor ikonja.](media/media-services-high-availability-encoding/storage-account-queue.svg)| Azure Storage Queue | **Leírás:**<br>Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők.<br><br>**VOD használata:**<br>A várólisták segítségével üzeneteket küldhet és fogadhat, hogy a különböző modulok között összehangolja a tevékenységeket. A minta egy Azure Storage-várólistát használ, de az Azure más típusú várólistákat is biztosít, például a Service Bus és Service Fabric megbízható várólistákat, amelyek jobban illeszkednek az igényeihez. [További információ az Azure üzenetsorről](../../storage/queues/storage-queues-introduction.md). |
 |![Ez a Azure Cosmos DB ikon.](media/media-services-high-availability-encoding/azure-cosmos-db.svg)| Azure Cosmos DB  | **Leírás:**<br>A Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása, amely egymástól függetlenül méretezi az átviteli sebességet és a tárterületet a globálisan tetszőleges számú Azure-régióban.<br><br>**VOD használata:**<br>A táblák a feladatok kimeneti állapotára vonatkozó rekordok tárolására és az egyes Media Services-példányok állapotának nyomon követésére használhatók. Az Media Services API-nak az egyes hívások állapotát is nyomon követheti/rögzítheti. [További információ a Azure Cosmos DBról](../../cosmos-db/introduction.md).  |
 |![Ez a felügyelt identitás ikonja.](media/media-services-high-availability-encoding/managed-identity.svg)| Felügyelt identitás | **Leírás:**<br>A felügyelt identitás az Azure AD egyik funkciója, amely automatikusan felügyelt identitást biztosít az Azure AD-ben. A hitelesítés bármely olyan szolgáltatáshoz használható, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vaultt is, a hitelesítő adatok kódban való tárolása nélkül.<br><br>**VOD használata:**<br>Azure Functions a felügyelt identitás használatával hitelesítheti Media Services példányokat a Key Vaulthoz való kapcsolódáshoz. [További információ a felügyelt identitásról](../../active-directory/managed-identities-azure-resources/overview.md). |
@@ -59,23 +59,23 @@ Ez a magas szintű diagram a rendelkezésre álló minta architektúráját muta
 
 ### <a name="regions"></a>Régiók
 
-* [Hozzon létre](/azure/media-services/latest/create-account-cli-how-to) két (vagy több) Azure Media Services fiókot. A két fióknak különböző régiókban kell lennie. További információ: [a Azure Media Services szolgáltatást telepítő régiók](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
-* Töltse fel az adathordozót ugyanabba a régióba, ahonnan el szeretné küldeni a feladatot. A kódolás megkezdésével kapcsolatos további információkért lásd: [a feladatok bevitele HTTPS URL-](/azure/media-services/latest/job-input-from-http-how-to) címről vagy egy [helyi fájlból származó feladatok létrehozása](/azure/media-services/latest/job-input-from-local-file-how-to).
-* Ha ezt követően újra el kell küldenie a [feladatot](/azure/media-services/latest/transforms-jobs-concept) egy másik régióba, használhatja `JobInputHttp` vagy használhatja az `Copy-Blob` adatok másolását a forrásként szolgáló tárolóból a másik régióban lévő eszköz-tárolóba.
+* [Hozzon létre](./create-account-howto.md) két (vagy több) Azure Media Services fiókot. A két fióknak különböző régiókban kell lennie. További információ: [a Azure Media Services szolgáltatást telepítő régiók](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
+* Töltse fel az adathordozót ugyanabba a régióba, ahonnan el szeretné küldeni a feladatot. A kódolás megkezdésével kapcsolatos további információkért lásd: [a feladatok bevitele HTTPS URL-](./job-input-from-http-how-to.md) címről vagy egy [helyi fájlból származó feladatok létrehozása](./job-input-from-local-file-how-to.md).
+* Ha ezt követően újra el kell küldenie a [feladatot](./transforms-jobs-concept.md) egy másik régióba, használhatja `JobInputHttp` vagy használhatja az `Copy-Blob` adatok másolását a forrásként szolgáló tárolóból a másik régióban lévő eszköz-tárolóba.
 
 ### <a name="monitoring"></a>Figyelés
 
 * Fizessen elő az `JobStateChange` egyes fiókokban lévő üzenetekre Azure Event Gridon keresztül.
-    * Az [események regisztrálása](/azure/media-services/latest/reacting-to-media-services-events) a Azure Portal vagy a CLI használatával (ezt a Event Grid Management SDK-val is elvégezheti)
+    * Az [események regisztrálása](./reacting-to-media-services-events.md) a Azure Portal vagy a CLI használatával (ezt a Event Grid Management SDK-val is elvégezheti)
     * Használja a [Microsoft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) -t (amely natív módon támogatja az Media Services eseményeket).
     * Azure Functions használatával Event Grid eseményeket is felhasználhat.
 
     További információk:
 
-    * Tekintse meg a [Hangelemzési mintát](/azure/media-services/latest/transforms-jobs-concept) , amely bemutatja, hogyan figyelheti meg a feladatokat a Azure Event Grid, beleértve a tartalék hozzáadását abban az esetben, ha a Azure Event Grid üzenetek valamilyen okból késleltetve vannak.
-    * Tekintse meg [Media Services események Azure Event Grid sémáit](/azure/media-services/latest/media-services-event-schemas).
+    * Tekintse meg a [Hangelemzési mintát](./transforms-jobs-concept.md) , amely bemutatja, hogyan figyelheti meg a feladatokat a Azure Event Grid, beleértve a tartalék hozzáadását abban az esetben, ha a Azure Event Grid üzenetek valamilyen okból késleltetve vannak.
+    * Tekintse meg [Media Services események Azure Event Grid sémáit](./media-services-event-schemas.md).
 
-* A [feladatok](/azure/media-services/latest/transforms-jobs-concept)létrehozásakor:
+* A [feladatok](./transforms-jobs-concept.md)létrehozásakor:
     * Véletlenszerűen válasszon ki egy fiókot a jelenleg használt fiókok listájából (ez a lista általában mindkét fiókot tartalmazza, de ha problémát észlel, akkor csak egy fiókot tartalmazhat). Ha a lista üres, riasztást küld, hogy az operátor megvizsgálja.
     * Hozzon létre egy rekordot, amellyel nyomon követheti az egyes fedélzeti feladatokat, valamint a használt régiót/fiókot.
 * Ha a `JobStateChange` kezelő értesítést kap arról, hogy egy adott tevékenység elérte az ütemezett állapotot, jegyezze fel az ütemezett állapotba és a használt régióba/fiókba való belépés időpontját.

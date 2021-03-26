@@ -1062,18 +1062,26 @@
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
                 - name: Rendelkezésre állási csoport (AG)
                   href: virtual-machines/windows/availability-group-overview.md
-                - name: Feladatátvevőfürt-példány
+                - name: Feladatátvevőfürt-példány (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
             - name: Ajánlott eljárások
               items:
-                - name: Teljesítmény
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
                 - name: Biztonság
                   href: virtual-machines/windows/security-considerations-best-practices.md
                 - name: Fürtkonfiguráció
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                 - name: Alkalmazásminták
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: Teljesítmény
+                  items:
+                    - name: Gyors ellenőrzőlista
+                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                    - name: Virtuális gép mérete
+                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                    - name: Tárolás
+                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
+                    - name: Alapterv összegyűjtése
+                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: Kezelés
               items:
                 - name: Az SQL IaaS-ügynök bővítmény

@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: c81e40f769ab9eefdd919f3336591dc065d6cfc9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048765"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564113"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -568,7 +568,7 @@ Az átjáró [konfigurációjának és szolgáltatásának összes naplóját ex
 
 #### <a name="capture-etw-events"></a>ETW események rögzítése
 
-Igény szerint a haladó felhasználók közvetlenül is rögzíthetik a ETW eseményeket. Ezután felhasználhatja az [adatokat Event Hubs Azure Diagnosticsban,](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) vagy [adatokat gyűjthet Azure monitor naplókba](/azure/azure-monitor/agents/diagnostics-extension-logs). További információ: az [adatok gyűjtésével és tárolásával kapcsolatos ajánlott eljárások](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). A [perfview eszköz](https://github.com/Microsoft/perfview/blob/master/README.md) használatával dolgozhat a létrejövő ETL-fájlokkal, vagy írhat saját programot is. Ez az útmutató az Perfview eszköz-t használja:
+Igény szerint a haladó felhasználók közvetlenül is rögzíthetik a ETW eseményeket. Ezután felhasználhatja az [adatokat Event Hubs Azure Diagnosticsban,](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) vagy [adatokat gyűjthet Azure monitor naplókba](../azure-monitor/agents/diagnostics-extension-logs.md). További információ: az [adatok gyűjtésével és tárolásával kapcsolatos ajánlott eljárások](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). A [perfview eszköz](https://github.com/Microsoft/perfview/blob/master/README.md) használatával dolgozhat a létrejövő ETL-fájlokkal, vagy írhat saját programot is. Ez az útmutató az Perfview eszköz-t használja:
 
 1. Az események rögzítéséhez a perfview eszköz **menüben válassza a gyűjtés összegyűjtése lehetőséget** &gt;  .
 
@@ -763,7 +763,7 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDocs egy csomagból
 
    ![SAP-trigger hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. [Adjon hozzá egy Response műveletet a logikai alkalmazáshoz](/azure/connectors/connectors-native-reqres#add-a-response-action) , hogy azonnal válaszoljon az SAP-kérelem állapotával. Ajánlott ezt a műveletet azonnal felvenni az trigger után, hogy felszabadítsa a kommunikációs csatornát az SAP-kiszolgálóval. Válassza ki a következő állapotkódok () egyikét a `statusCode` Válasz műveletben való használathoz:
+1. [Adjon hozzá egy Response műveletet a logikai alkalmazáshoz](../connectors/connectors-native-reqres.md#add-a-response-action) , hogy azonnal válaszoljon az SAP-kérelem állapotával. Ajánlott ezt a műveletet azonnal felvenni az trigger után, hogy felszabadítsa a kommunikációs csatornát az SAP-kiszolgálóval. Válassza ki a következő állapotkódok () egyikét a `statusCode` Válasz műveletben való használathoz:
 
     * **202 elfogadva**, ami azt jelenti, hogy a kérelem feldolgozásra lett elfogadva, de a feldolgozás még nem fejeződött be.
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: dbf284305aa3201faeb77668af4198bafbf578b5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 893d38d7dcf2ef0910bc46d3e9bfd168c2a89162
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110542"
+ms.locfileid: "105543363"
 ---
 # <a name="create-a-test-offer"></a>Tesztelési ajánlat létrehozása
 
@@ -27,7 +27,7 @@ A következő szakaszok ismertetik a fejlesztői és a gyártási ajánlatok kö
 
 Javasoljuk, hogy ugyanazt az aliast használja mindkét ajánlat **alias** mezőjében, de fűzze hozzá a "_test" kifejezést a fejlesztői ajánlat aliasához. Ha például a PROD-ajánlat aliasa "contososolution", akkor a fejlesztői ajánlat aliasának "contososolution_test"-nek kell lennie. Így könnyedén azonosíthatja, hogy melyik fejlesztői ajánlata legyen a PROD-ajánlatból.
 
-Az **ügyfél-érdeklődők** szakaszban a fejlesztői ajánlathoz használja a és az Azure Table vagy a test CRM-környezetet. Használja a tervezett ólom felügyeleti rendszerét a PROD ajánlathoz.
+Az **ügyfél-érdeklődők** szakaszban a fejlesztői ajánlathoz használjon egy Azure-táblázatot vagy egy TESZTELÉSi CRM-környezetet. Használja a tervezett ólom felügyeleti rendszerét a PROD ajánlathoz.
 
 ## <a name="properties-page"></a>Tulajdonságok lap
 
@@ -39,7 +39,7 @@ Ugyanezt a lapot konfigurálja a fejlesztői és a PROD-ajánlatokban is.
 
 ## <a name="preview-audience"></a>Előnézet célközönsége
 
-A fejlesztői ajánlatban adja meg a fejlesztők és tesztelők Azure Active Directory (HRE) egyszerű felhasználónevét vagy Microsoft-fiók (MSA) e-mail-címét, beleértve a saját magát is. Vegye figyelembe, hogy a HRE felhasználó egyszerű felhasználóneve a felhasználó e-mail-címétől eltérő lehet. Például jane.doe@contoso.com nem fog működni, de janedoe@contoso.com működni fog. Ezek azok a felhasználók, akik hozzáférhetnek a fejlesztői ajánlathoz, amikor megosztják az **előzetes** verzió hivatkozását a fejlesztési és tesztelési fázisban.
+A fejlesztői ajánlatban adja meg a fejlesztők és tesztelők Azure Active Directory (HRE) egyszerű felhasználóneveit vagy Microsoft-fiók (MSA) e-mail-címét, beleértve a saját magát is. A HRE felhasználó egyszerű felhasználóneve eltérő lehet az adott felhasználó e-mail-címével. Például jane.doe@contoso.com nem fog működni, de a következő janedoe@contoso.com lesz:. A kijelölt felhasználók hozzáférhetnek a fejlesztői ajánlathoz, amikor megosztják az **előzetes** verzió hivatkozását a fejlesztési és tesztelési fázisban.
 
 A PROD ajánlatban adja meg az Azure AD egyszerű felhasználónevet vagy a Microsoft-fiók e-mail-címét azon felhasználók számára, akik érvényesíteni fogják az ajánlatot, mielőtt a **Go Live (élő) gombra kattint** az ajánlat közzétételéhez.
 
@@ -77,10 +77,10 @@ Válassza ki ugyanazt a piacot a DEV és a PROD ajánlatok számára.
 
 A fejlesztői ajánlat használatával kísérletezzen az árképzési modellekkel. Miután meggyőződött arról, hogy melyik díjszabási modell vagy modellek működnek a legjobban, a kívánt díjszabási modellekkel és árakkal hozza létre a terveket a PROD-ajánlatban.
 
-A fejlesztői ajánlatnak nulla vagy nagyon alacsony díjszabású csomagokkal kell rendelkeznie a csomagokban. A PROD-ajánlat árait az ügyfeleknek felszámítani kívánt árak teszik elérhetővé.
+A fejlesztői ajánlatnak nulla vagy alacsony díjszabású csomagokkal kell rendelkeznie a csomagokban. A PROD-ajánlat árait az ügyfeleknek felszámítani kívánt árak teszik elérhetővé.
 
-> [!NOTE]
-> Az előzetes verzióban megvásárolt vásárlások mind a fejlesztői, mind a PROD-ajánlatok esetében feldolgozva lesznek. Ha egy ajánlat 100 USD/hó árával rendelkezik, a vállalata $100 díjat számít fel. Ha ez történik, megnyithatja a [támogatási jegyet](support.md) , és a teljes összegért kifizetünk egy kifizetést (és nem kell fizetnie az Ügynökségnek).
+> [!IMPORTANT]
+> Az előzetes verzióban megvásárolt vásárlások mind a fejlesztői, mind a PROD-ajánlatok esetében feldolgozva lesznek. Ha egy ajánlat 100 USD/hó árával rendelkezik, a vállalata $100 díjat számít fel. Ha ez történik, nyisson meg egy [támogatási jegyet](support.md) , és a teljes összegért (és az áruházi szolgáltatási díj nélkül) ki kell fizetnie a kifizetést.
 
 #### <a name="pricing-model"></a>Díjszabási modell
 
@@ -97,7 +97,7 @@ Ha csökkenteni szeretné a díjszabási modellek tesztelésének költségeit, 
 | $50,00 és újabb verziók | A kifizetés teszteléséhez használja ezt az árat. A fizetési ütemtervről a [kifizetési ütemtervek és folyamatok](/partner-center/payout-policy-details)című témakörben olvashat bővebben. |
 |||
 
-Ha el szeretné kerülni, hogy a teszt során felszámoljon egy feldolgozási díjat, nyisson meg egy [támogatási jegyet](support.md).
+Ha el szeretné kerülni, hogy egy áruházi szolgáltatási díjat ne kelljen fizetnie a teszten, nyisson meg egy [támogatási jegyet](support.md).
 
 #### <a name="free-trial"></a>Ingyenes próbaidőszak
 

@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 73b2e8e59774e12ddb9aa684382510d1f2c151b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100156"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564585"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Gyorsítótárazás az Azure-előtérben standard/prémium (előzetes verzió)
 
@@ -26,6 +26,10 @@ Ebből a cikkből megtudhatja, hogy a bejárati ajtó standard/prémium (előzet
 > Az Azure bejárati ajtó standard/Premium (előzetes verzió) jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="request-methods"></a>Kérelmek módszerei
+
+Csak a GET kérési módszer tud gyorsítótárazott tartalmat előállítani az Azure-beli bejárati ajtón. Minden más kérelmezési módszer mindig a hálózaton keresztül történik.
 
 ## <a name="delivery-of-large-files"></a>Nagyméretű fájlok kézbesítése
 

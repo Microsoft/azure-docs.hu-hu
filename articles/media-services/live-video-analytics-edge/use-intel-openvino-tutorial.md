@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kis
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5751184493fffeeaf647507e9e9b00834f63ab5e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702215"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557258"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
@@ -51,7 +51,7 @@ Ebben a rövid útmutatóban élő videó-elemzéseket fog használni a IoT Edge
 
 Ez az ábra azt mutatja be, hogyan áramlik be a gyors útmutatóban szereplő jelek. Az [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) szimulál egy Real-Time Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontjára küldi a videó kereteket. 
 
-A HTTP-bővítmény csomópont egy proxy szerepét játssza le. Az IT-csoport az Ön által beállított beérkező képkockákat is felveszi, `samplingOptions` és a képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a képet a REST-ben egy másik peremhálózati modulba, amely egy HTTP-végpont mögötti AI-modelleket futtat. Ebben a példában ez az Edge-modul a OpenVINO™ Model Server – AI bővítmény az Inteltől. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+A HTTP-bővítmény csomópont egy proxy szerepét játssza le. Az IT-csoport az Ön által beállított beérkező képkockákat is felveszi, `samplingOptions` és a képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a képet a REST-ben egy másik peremhálózati modulba, amely egy HTTP-végpont mögötti AI-modelleket futtat. Ebben a példában ez az Edge-modul a OpenVINO™ Model Server – AI bővítmény az Inteltől. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
 Az oktatóanyagban a következőket végezheti el:
 

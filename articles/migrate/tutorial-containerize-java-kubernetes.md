@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ea7cdfbd30cf698cecbb14a1d70916764ad3247a
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 2c1a0ee78e866a12105eca77653b1063943d06db
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023112"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561066"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Java-webalkalmazások tárolókra bontás és migrálása az Azure Kubernetes Service-be
 
@@ -59,7 +59,7 @@ Az oktatóanyag elkezdése előtt:
 
 **Követelmény** | **Részletek**
 --- | ---
-**Számítógép azonosítása az eszköz telepítéséhez** | Egy Windows rendszerű gép, amely a Azure Migrate: app tárolókra bontás eszközt telepíti és futtatja. A Windows rendszerű gép lehet egy kiszolgáló (Windows Server 2016 vagy újabb) vagy ügyfél (Windows 10) operációs rendszer, ami azt jelenti, hogy az eszköz futtatható az asztalon is. <br/><br/> Az eszközt futtató Windows-gépnek hálózati kapcsolattal kell rendelkeznie a konténerizálni kívánt ASP.NET-alkalmazásokat üzemeltető kiszolgálókhoz/virtuális gépekhez.<br/><br/> Győződjön meg arról, hogy a (z) Azure Migrate: app tárolókra bontás eszközt futtató Windows-gépen 6 GB szabad terület áll rendelkezésre az alkalmazás-összetevők tárolásához. <br/><br/> A Windows-gépnek közvetlen vagy proxyn keresztüli internetkapcsolattal kell rendelkeznie. <br/> <br/>Telepítse a Microsoft Web Deploy eszközt azon a gépen, amelyen az App tárolókra bontás Helper eszköz és az alkalmazáskiszolgáló még nincs telepítve. Az eszközt [innen](https://aka.ms/webdeploy3.6) töltheti le
+**Számítógép azonosítása az eszköz telepítéséhez** | Egy Windows rendszerű gép, amely a Azure Migrate: app tárolókra bontás eszközt telepíti és futtatja. A Windows rendszerű gép lehet egy kiszolgáló (Windows Server 2016 vagy újabb) vagy ügyfél (Windows 10) operációs rendszer, ami azt jelenti, hogy az eszköz futtatható az asztalon is. <br/><br/> Az eszközt futtató Windows rendszerű számítógépnek hálózati kapcsolattal kell rendelkeznie azokkal a kiszolgálókkal/virtuális gépekkel, amelyek a Java-webalkalmazások tárolóba kerülnek.<br/><br/> Győződjön meg arról, hogy a (z) Azure Migrate: app tárolókra bontás eszközt futtató Windows-gépen 6 GB szabad terület áll rendelkezésre az alkalmazás-összetevők tárolásához. <br/><br/> A Windows-gépnek közvetlen vagy proxyn keresztüli internetkapcsolattal kell rendelkeznie.
 **Alkalmazáskiszolgálók** | – Engedélyezze a Secure Shell-(SSH-) kapcsolatokat a 22-es porton a Java-alkalmazás (ok) at tároló kiszolgáló (k) et futtató kiszolgálón. <br/>
 **Java-webalkalmazás** | Az eszköz jelenleg támogatja <br/><br/> – A Tomcat 8-as vagy újabb verzióján futó alkalmazások.<br/> -Alkalmazáskiszolgáló Ubuntu Linux 16.04/18.04/20.04, Debian 7/8, CentOS 6/7, Red Hat Enterprise Linux 5/6/7. <br/> – A Java 7-es vagy újabb verzióját használó alkalmazások.  <br/><br/> Az eszköz jelenleg nem támogatott <br/><br/> – Több tomcat-példányt futtató alkalmazások kiszolgálói <br/>  
 
@@ -178,7 +178,7 @@ A konfiguráció Parameterizing elérhetővé teszi a központi telepítési id�
 
 ### <a name="externalize-file-system-dependencies"></a>Externalize-fájlrendszer függőségei
 
- Az alkalmazás által használt egyéb mappákat is hozzáadhat. Adja meg, hogy a tároló rendszerképének részét képezik-e, vagy az Azure-fájlmegosztás állandó kötetein keresztül kell-e külsőleg lenni. Az állandó kötetek használatával a tárolón kívüli állapotot tároló, vagy a fájlrendszeren tárolt egyéb statikus tartalommal rendelkező állapot-nyilvántartó alkalmazások esetében kiválóan használható. [További információ](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Az alkalmazás által használt egyéb mappákat is hozzáadhat. Adja meg, hogy a tároló rendszerképének részét képezik-e, vagy az Azure-fájlmegosztás állandó kötetein keresztül kell-e külsőleg lenni. Az állandó kötetek használatával a tárolón kívüli állapotot tároló, vagy a fájlrendszeren tárolt egyéb statikus tartalommal rendelkező állapot-nyilvántartó alkalmazások esetében kiválóan használható. [További információ](../aks/concepts-storage.md)
 
 1. Az észlelt alkalmazás-mappák áttekintéséhez kattintson az alkalmazás mappái alatt található **Szerkesztés** elemre. Az észlelt alkalmazás mappái az alkalmazás által igényelt kötelező összetevőkként vannak meghatározva, és a rendszer a tároló képére másolja.
 
@@ -194,7 +194,7 @@ A konfiguráció Parameterizing elérhetővé teszi a központi telepítési id�
 ## <a name="build-container-image"></a>Tárolórendszerkép összeállítása
 
 
-1. **Azure Container Registry kiválasztása**: a legördülő listából válassza ki az alkalmazáshoz tartozó tároló-lemezképek létrehozásához és tárolásához használni kívánt [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) . Meglévő Azure Container Registry is használhat, vagy létrehozhat egy újat az új beállításjegyzék létrehozása lehetőség használatával.
+1. **Azure Container Registry kiválasztása**: a legördülő listából válassza ki az alkalmazáshoz tartozó tároló-lemezképek létrehozásához és tárolásához használni kívánt [Azure Container Registry](../container-registry/index.yml) . Meglévő Azure Container Registry is használhat, vagy létrehozhat egy újat az új beállításjegyzék létrehozása lehetőség használatával.
 
     ![Képernyőfelvétel az alkalmazás ACR kiválasztásáról.](./media/tutorial-containerize-apps-aks/build-java-app.png)
 

@@ -3,12 +3,12 @@ title: Archiválási szint támogatása (előzetes verzió)
 description: Tudnivalók az archiválási szint támogatásáról Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609852"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563973"
 ---
 # <a name="archive-tier-support-preview"></a>Archiválási szint támogatása (előzetes verzió)
 
@@ -46,7 +46,7 @@ Támogatott ügyfelek:
     install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
     ```
 
-1. Kapcsolódjon az Azure-hoz a [Kapcsolódás-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
+1. Kapcsolódjon az Azure-hoz a [Kapcsolódás-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
 1. Jelentkezzen be az előfizetésbe:
 
    `Set-AzContext -Subscription "SubscriptionName"`
@@ -128,7 +128,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 Az archív helyreállítási pontok esetében Azure Backup egy integrált visszaállítási módszertant biztosít.
 
-Az integrált visszaállítás egy kétlépéses folyamat. Az első lépés magában foglalja az archívumban tárolt helyreállítási pontok újraszárítását, és ideiglenesen a tároló standard csomagjában tárolja az időtartamot (más néven a rehidratálás időtartamát), amely egy 10 – 30 napos időszakra terjed ki. Az alapértelmezett érték 15 nap. A rehidratálás két különböző prioritással rendelkezik – standard és magas prioritású. További információ a [rehidratálás prioritásáról](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration#rehydrate-an-archived-blob-to-an-online-tier).
+Az integrált visszaállítás egy kétlépéses folyamat. Az első lépés magában foglalja az archívumban tárolt helyreállítási pontok újraszárítását, és ideiglenesen a tároló standard csomagjában tárolja az időtartamot (más néven a rehidratálás időtartamát), amely egy 10 – 30 napos időszakra terjed ki. Az alapértelmezett érték 15 nap. A rehidratálás két különböző prioritással rendelkezik – standard és magas prioritású. További információ a [rehidratálás prioritásáról](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier).
 
 >[!NOTE]
 >
