@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524668"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109012"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -52,6 +52,9 @@ A folyamatos hozzáférés kiértékelése úgy történik, hogy a szolgáltatá
 
 Ez a folyamat lehetővé teszi, hogy a felhasználók ne férhessenek hozzá a szervezeti SharePoint Online-fájlokhoz, e-mailekhez, naptárhoz vagy feladatokhoz, illetve a Microsoft 365 ügyfélalkalmazások tagjaihoz, a kritikus események egyike után. 
 
+> [!NOTE] 
+> A csapatok még nem támogatják a felhasználói kockázati eseményeket.
+
 ### <a name="conditional-access-policy-evaluation-preview"></a>Feltételes hozzáférési szabályzat kiértékelése (előzetes verzió)
 
 Az Exchange és a SharePoint képes szinkronizálni a feltételes hozzáférési házirendeket, hogy azok a szolgáltatáson belül is kiértékelhető legyenek.
@@ -59,11 +62,11 @@ Az Exchange és a SharePoint képes szinkronizálni a feltételes hozzáférési
 Ez a folyamat lehetővé teszi, hogy a felhasználók a hálózati hely megváltozása után azonnal hozzáférjenek a szervezeti fájlokhoz, e-mailekhez, naptárhoz vagy feladatokhoz Microsoft 365 ügyfélalkalmazások vagy a SharePoint Online számára.
 
 > [!NOTE]
-> Nem minden alkalmazás-és erőforrás-szolgáltató kombináció támogatott. Lásd az alábbi táblázatot. Az Office a Word, az Excel és a PowerPoint alkalmazásra hivatkozik
+> Nem minden alkalmazás-és erőforrás-szolgáltató kombináció támogatott. Lásd az alábbi táblázatot. Az Office a Word, az Excel és a PowerPoint alkalmazásra hivatkozik.
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **szabályozásáról** | Támogatott | Támogatott | Nem támogatott | Nem támogatott | Támogatott |
+| **szabályozásáról** | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
 | **Exchange Online** | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
 
 | | Office Web Apps | Office Win32-alkalmazások | IOS-es Office | Androidos Office | Mac-iroda |
@@ -71,23 +74,20 @@ Ez a folyamat lehetővé teszi, hogy a felhasználók a hálózati hely megvált
 | **szabályozásáról** | Nem támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
 | **Exchange Online** | Nem támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
 
+| | OneDrive web | OneDrive Win32 | OneDrive iOS | OneDrive Android rendszerhez | OneDrive Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **szabályozásáról** | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
+
 ### <a name="client-side-claim-challenge"></a>Ügyféloldali jogcímek kihívása
 
 A folyamatos hozzáférés kiértékelése előtt az ügyfelek mindig megpróbálják visszajátszani a hozzáférési tokent a gyorsítótárból mindaddig, amíg nem járt le. A CAE-vel új esetet vezetünk be, hogy egy erőforrás-szolgáltató akkor is elutasíthatja a tokent, ha az nem járt le. Ahhoz, hogy tájékoztassa az ügyfeleket a gyorsítótár megkerüléséről annak ellenére, hogy a gyorsítótárazott tokenek nem jártak le, bevezetünk egy **jogcím-kihívás** nevű mechanizmust, amely jelzi, hogy a jogkivonat el lett utasítva, és az Azure ad új hozzáférési jogkivonatot kell kiállítania. A CAE-nek szüksége van egy ügyfél frissítésére a jogcím-kihívás megismerése érdekében. A következő alkalmazások legújabb verziója támogatja a jogcím kihívását:
 
-- Outlook Windows
-- Outlook iOS
-- Outlook Android
-- Outlook Mac
-- Outlook Web App
-- Windows-csapatok (csak a csapatok erőforrásához)
-- Csapatok iOS (csak a csapatok erőforrásához)
-- Csapatok Android (csak a csapatok erőforrásához)
-- Csapatok Mac (csak a csapatok erőforrásához)
-- Word/Excel/PowerPoint Windows rendszerhez
-- Word/Excel/PowerPoint iOS rendszerhez
-- Word/Excel/PowerPoint Android rendszerhez
-- Word/Excel/PowerPoint Mac rendszerhez
+| | Webes | Win32 | iOS | Android | Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Outlook** | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
+| **Teams** | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
+| **Office** | Nem támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
+| **OneDrive** | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
 
 ### <a name="token-lifetime"></a>Jogkivonat élettartama
 
@@ -165,9 +165,9 @@ Az Office frissítési csatornáinak ismertetését lásd: [Microsoft 365 alkalm
 
 ### <a name="policy-change-timing"></a>Házirend-módosítás időzítése
 
-Az Azure AD és az erőforrás-szolgáltatók közötti replikációs késés lehetősége miatt a rendszergazdák által végrehajtott házirend-módosítások akár 2 órát is igénybe vehetnek az Exchange Online-hoz.
+A rendszergazdák által végrehajtott módosítások akár egy napot is igénybe vehetnek. Némi optimalizálás történt a késleltetés két órára való csökkentése érdekében. Azonban még nem fedi le az összes forgatókönyvet. 
 
-Példa: a rendszergazda egy olyan házirendet hoz létre, amely letiltja az IP-címek tartományát az e-mailek eléréséhez a 11:00 ÓRAKOR, egy olyan felhasználót, aki ebből az IP-tartományból származik, és így valószínűleg továbbra is hozzáférhet 1:00 e-mailekhez
+Ha vészhelyzet van, és a frissített szabályzatokat bizonyos felhasználók számára azonnal alkalmazni kell, a felhasználói munkamenet visszavonásához használja ezt a [PowerShell-parancsot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) vagy a "munkamenet visszavonása" lehetőséget, amely lehetővé teszi, hogy a frissített szabályzatokat azonnal alkalmazza a rendszer.
 
 ### <a name="coauthoring-in-office-apps"></a>Az Office-alkalmazások társszerzője
 

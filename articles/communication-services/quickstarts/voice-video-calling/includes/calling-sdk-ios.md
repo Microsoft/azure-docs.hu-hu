@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: e9c889dcffe42fde244f8a35ce42032e84d78fff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d36bf92a1b1bdef4e45b22b934728b3e8c46c3da
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488104"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107732"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,7 +23,7 @@ ms.locfileid: "103488104"
 ### <a name="creating-the-xcode-project"></a>A Xcode projekt létrehozása
 
 > [!NOTE]
-> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 8 verzióját használja.
+> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 8 verziót használja.
 
 A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézetes alkalmazás** sablonját. Ez a rövid útmutató a [SwiftUI keretrendszert](https://developer.apple.com/xcode/swiftui/)használja, ezért állítsa be a **nyelvet** a **Swift** értékre, és a **felhasználói felületet** **SwiftUI**. Ebben a rövid útmutatóban nem hozhat létre egység-vagy felhasználói felületi teszteket. Nyugodtan szüntesse meg az **egységek tesztelését** , és törölje a **felhasználói felületi tesztek belefoglalását** is.
 
@@ -68,12 +68,12 @@ import AVFoundation
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek kezelik az Azure kommunikációs szolgáltatások az iOS-hez készült ügyféloldali függvénytárának főbb funkcióit.
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások az iOS-hez készült SDK-val kapcsolatos főbb funkcióit kezelik.
 
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.|
+| CallClient | A CallClient a hívó SDK fő belépési pontja.|
 | CallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
 | CommunicationTokenCredential | A rendszer a CommunicationTokenCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.| 
 | CommunicationIdentifier | A CommunicationIdentifier a felhasználó identitásának jelölésére szolgál, amely a következők egyike lehet: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
@@ -131,7 +131,7 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>Kimenő hívás elhelyezése
 
-Egy hívás létrehozásához és elindításához meg kell hívnia az egyik API `CallAgent` -t, és meg kell adnia a kommunikációs szolgáltatások identitását, amelyet a kommunikációs szolgáltatások kezelési ügyféloldali kódtár használatával kiépített.
+Egy hívás létrehozásához és elindításához meg kell hívnia az egyik API `CallAgent` -t, és meg kell adnia egy olyan felhasználó kommunikációs szolgáltatásbeli identitását, amelyet a kommunikációs szolgáltatások kezelési SDK használatával kiépített.
 
 A hívás létrehozása és a kezdés szinkronban van. Ekkor megjelenik a hívási példány, amely lehetővé teszi a hívás összes eseményére való előfizetést.
 

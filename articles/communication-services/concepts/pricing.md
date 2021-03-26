@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ad88a7a6c91128bb863eeb51cc7f26c8d71b9eed
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495793"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107907"
 ---
 # <a name="pricing-scenarios"></a>Díjszabási forgatókönyvek
 
@@ -25,7 +25,7 @@ Az Azure kommunikációs szolgáltatások díjszabása általában az utólagos 
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Hang/videó hívása és a képernyő megosztása
 
-Az Azure kommunikációs szolgáltatások lehetővé teszik hang-és videohívások hozzáadását az alkalmazásokhoz. A felhasználói élményt a JavaScript, Objective-C (Apple), Java (Android) vagy .NET ügyféloldali kódtárak használatával ágyazhatja be alkalmazásaiba. Tekintse meg az [elérhető ügyféloldali kódtárak teljes listáját](./sdk-options.md).
+Az Azure kommunikációs szolgáltatások lehetővé teszik hang-és videohívások hozzáadását az alkalmazásokhoz. A felhasználói élményt JavaScript, Objective-C (Apple), Java (Android) vagy .NET SDK-k használatával ágyazhatja be alkalmazásaiba. Tekintse meg az [elérhető SDK-k teljes listáját](./sdk-options.md).
 
 ### <a name="pricing"></a>Díjszabás
 
@@ -33,9 +33,9 @@ A hívási és a képernyő-megosztási szolgáltatásokat felhasználónként p
 
 A hívás minden résztvevője a meghíváshoz kapcsolódó percenkénti számlázással fog számolni. Ez attól függetlenül igaz, hogy a felhasználó videohívás, hanghívás vagy képernyő-megosztás.
 
-### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-client-libraries"></a>Díjszabási példa: hang/videó hívásának csoportosítása JS-és iOS-ügyféloldali kódtárak használatával
+### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-sdks"></a>Díjszabási példa: hang/videó hívásának csoportosítása JS és iOS SDK-k használatával
 
-Alice csoportos hívást készített a kollégáival, Bob és Charlie-val. Alice és Bob használta a JS ügyféloldali kódtárakat, Charlie iOS ügyféloldali kódtárakat.
+Alice csoportos hívást készített a kollégáival, Bob és Charlie-val. Alice és Bob használta a JS SDK-kat, Charlie iOS SDK-kat.
 
 - A hívás összesen 60 percig tart.
 - Alice és Bob részt vett a teljes hívásban. Alice öt percen belül bekapcsolta a videóját, és 23 percen keresztül megosztotta a képernyőjét. Bob megkapta a videót a teljes híváshoz (60 perc), és 12 percig megosztva a képernyőt.
@@ -48,9 +48,9 @@ Alice csoportos hívást készített a kollégáival, Bob és Charlie-val. Alice
 
 **A csoportos hívás teljes költsége**: $0,48 + $0,172 = $0,652
 
-### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Díjszabási példa: a kommunikációs szolgáltatások JS ügyféloldali kódtár felhasználója egy ütemezett Microsoft Teams-találkozóhoz csatlakozik
+### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>Díjszabási példa: a kommunikációs szolgáltatások JavaScript SDK-felhasználója egy ütemezett Microsoft Teams-találkozóhoz csatlakozik
 
-Alice egy orvos, aki a betegével találkozott, Bob. Alice csatlakozik a csapat asztali alkalmazásban található látogatáshoz. Bob kap egy hivatkozást az egészségügyi szolgáltató webhelyéről való csatlakozásra, amely a kommunikációs szolgáltatások JS ügyféloldali kódtár használatával csatlakozik az értekezlethez. Bob a mobiltelefonnal fogja használni az értekezletet egy webböngészővel (iPhone Safari használatával). A csevegés a virtuális látogatás során lesz elérhető.
+Alice egy orvos, aki a betegével találkozott, Bob. Alice csatlakozik a csapat asztali alkalmazásban található látogatáshoz. Bob a kommunikációs szolgáltatások JavaScript SDK-val való összekapcsolására szolgáló hivatkozást kap, amely az egészségügyi szolgáltató webhelyét használja. Bob a mobiltelefonnal fogja használni az értekezletet egy webböngészővel (iPhone Safari használatával). A csevegés a virtuális látogatás során lesz elérhető.
 
 - A hívás összesen 30 percet vesz igénybe.
 - Alice és Bob részt vesz a teljes hívásban. Alice bekapcsolja a videót öt perccel a hívás elindítása után, és megosztja a képernyőjét 13 percig. Bob a teljes híváshoz tartozó videóval rendelkezik.
@@ -67,13 +67,13 @@ Alice egy orvos, aki a betegével találkozott, Bob. Alice csatlakozik a csapat 
 * Alice részvételét a csapatának licence szabályozza. Az Azure-számlán megtekintheti azokat a perceket és csevegéseket, amelyeket a felhasználók a kommunikációs szolgáltatásokat használó felhasználók számára biztosítanak az Ön kényelme érdekében, de ezek a percek és a Teams-ügyféltől származó üzenetek nem kerülnek be
 
 **A látogatás teljes költsége**:
-- Felhasználói csatlakozás a kommunikációs szolgáltatások JS-ügyféloldali kódtár használatával: $0,12 + $0,0024 = $0,1224
+- Felhasználói csatlakozás a kommunikációs szolgáltatások JavaScript SDK használatával: $0,12 + $0,0024 = $0,1224
 - Felhasználói csatlakozás a Teams Desktop alkalmazáshoz: $0 (a csapat licence vonatkozik rájuk)
 
 
 ## <a name="chat"></a>Csevegés
 
-A kommunikációs szolgáltatások segítségével javíthatja az alkalmazást, hogy két vagy több felhasználó között küldjön és fogadhat csevegési üzeneteket. A csevegési ügyféloldali kódtárak a JavaScript, a .NET, a Python és a Java esetében érhetők el. Tekintse meg [ezt a lapot az ügyféloldali kódtárak megismeréséhez](./sdk-options.md)
+A kommunikációs szolgáltatások segítségével javíthatja az alkalmazást, hogy két vagy több felhasználó között küldjön és fogadhat csevegési üzeneteket. A csevegési SDK-k JavaScript, .NET, Python és Java rendszerekhez érhetők el. Az [SDK-k megismeréséhez](./sdk-options.md) tekintse meg ezt a lapot
 
 ### <a name="price"></a>Ár
 

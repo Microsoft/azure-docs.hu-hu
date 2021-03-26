@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 3626ca4cc3e7377f1c6778bc77e5e48ef0dcad0c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3ec650f82b95cdfabc923e92325959c63f2846de
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103439105"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110740"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Felügyelt identitás hozzáadása a kommunikációs szolgáltatások megoldásához (JS)
 
-### <a name="install-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak telepítése
+### <a name="install-the-sdk-packages"></a>Az SDK-csomagok telepítése
 
 ```console
 npm install @azure/communication-identity
@@ -17,9 +17,9 @@ npm install @azure/communication-sms
 npm install @azure/identity
 ```
 
-### <a name="use-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak használata
+### <a name="use-the-sdk-packages"></a>Az SDK-csomagok használata
 
-Adja hozzá a következő `import` irányelveket a kódhoz az Azure Identity és az Azure Storage ügyféloldali kódtárainak használatához.
+Adja hozzá a következő `import` irányelveket a kódjához az Azure Identity és az Azure Storage SDK-k használatához.
 
 ```typescript
 import { DefaultAzureCredential } from "@azure/identity";
