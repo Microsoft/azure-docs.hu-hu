@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 31b8e2e9a8e69fd730edb2c826005104f5f82bdc
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562409"
+ms.locfileid: "105609190"
 ---
 # <a name="calling-sdk-overview"></a>Az SDK meghívása – áttekintés
 
@@ -72,17 +72,17 @@ Az alábbi lista az SDK-kat hívó Azure kommunikációs szolgáltatásokban jel
 |                   | Skálázási mód beállítása/frissítése                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Távoli video stream megjelenítése                                                                                          | ✔️   | ✔️            | ✔️
 
-## <a name="calling-client-library-streaming-support"></a>Az ügyféloldali kódtár streaming-támogatásának meghívása
-A kommunikációs szolgáltatások az ügyféloldali kódtárat a következő folyamatos átviteli konfigurációkat támogatják:
+## <a name="calling-sdk-streaming-support"></a>Az SDK streaming támogatásának meghívása
+A kommunikációs szolgáltatások hívó SDK a következő folyamatos átviteli konfigurációkat támogatja:
 
 | Korlát          |Webes | Android/iOS|
 |-----------|----|------------|
 |**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó + 1 képernyő megosztása | 1 videó + 1 képernyő megosztása|
 |**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó + 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
 
-## <a name="calling-client-library-timeouts"></a>Ügyféloldali kódtár időtúllépésének meghívása
+## <a name="calling-sdk-timeouts"></a>Az SDK időtúllépésének meghívása
 
-A következő időtúllépések érvényesek a kommunikációs szolgáltatások ügyfél-kódtárainak meghívásakor:
+A következő időtúllépések érvényesek az SDK-kat hívó kommunikációs szolgáltatásokra:
 
 | Művelet           | Időtúllépés hossza másodpercben |
 | -------------- | ---------- |
