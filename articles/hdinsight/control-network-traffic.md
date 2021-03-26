@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan vezérelheti a bejövő és a kimenő adatforga
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 66b078e8dfa1daa100978f04283e9bba7158bddf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943374"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867032"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Hálózati forgalom szabályozása az Azure HDInsight
 
@@ -21,7 +21,7 @@ Az Azure-beli virtuális hálózatok hálózati forgalmát a következő módsze
 
 Felügyelt szolgáltatásként a HDInsight a HDInsight állapot-és felügyeleti szolgáltatásokhoz való korlátlan hozzáférést igényel mind a VNET érkező bejövő, mind kimenő forgalmához. A NSG használatakor biztosítania kell, hogy ezek a szolgáltatások továbbra is kommunikálhatnak a HDInsight-fürttel.
 
-![Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája](./media/control-network-traffic/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/control-network-traffic/hdinsight-vnet-diagram.png" alt-text="Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája" border="false":::
 
 ## <a name="hdinsight-with-network-security-groups"></a>HDInsight hálózati biztonsági csoportokkal
 

@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan hozhat létre RDP-kapcsolatokat az Azure Kubern
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 4cfac73c66969148927897de7ed6da0c56aa276a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4b6ccc05d1cb49a77a2867dfc1c5fe5f45134dd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173817"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951912"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás RDP-vel az Azure Kubernetes Service (ak) fürthöz Windows Server-csomópontok karbantartáshoz vagy hibaelhárításhoz
 
@@ -20,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan hozható létre RDP-kapcsolat egy AK-csom�
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel egy Windows Server-csomóponttal. Ha AK-fürtre van szüksége, tekintse meg a következő cikket: [AK-fürt létrehozása Windows-tárolóval az Azure CLI használatával][aks-windows-cli]. Szüksége lesz a Windows Server-csomópontra, amelyet a hibakereséshez használni szeretne. Ha nem ismeri őket, visszaállíthatja őket a [Távoli asztali szolgáltatások vagy annak rendszergazdai jelszavának alaphelyzetbe állítása után egy Windows rendszerű virtuális gépen ](../virtual-machines/troubleshooting/reset-rdp.md). Szüksége lesz egy RDP-ügyfélre is, például a [Microsoft távoli asztalra][rdp-mac].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel egy Windows Server-csomóponttal. Ha AK-fürtre van szüksége, tekintse meg a következő cikket: [AK-fürt létrehozása Windows-tárolóval az Azure CLI használatával][aks-windows-cli]. Szüksége lesz a Windows Server-csomópontra, amelyet a hibakereséshez használni szeretne. Ha nem ismeri őket, visszaállíthatja őket a [Távoli asztali szolgáltatások vagy annak rendszergazdai jelszavának alaphelyzetbe állítása után egy Windows rendszerű virtuális gépen ](/troubleshoot/azure/virtual-machines/reset-rdp). Szüksége lesz egy RDP-ügyfélre is, például a [Microsoft távoli asztalra][rdp-mac].
 
 Szüksége lesz az Azure CLI 2.0.61 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 

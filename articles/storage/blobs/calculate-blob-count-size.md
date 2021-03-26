@@ -8,12 +8,12 @@ ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 92e5b00cd655677cdc3096bc2142dfe1b704adf2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1aa91ea0f698e609e786d87a0072e6a07c143a3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102638165"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047317"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Blobok számának és a tárolók teljes méretének kiszámítása az Azure Storage-leltár használatával
 
@@ -43,7 +43,7 @@ Ha van egy leltári jelentés az elemzéshez, adja meg a blob olvasási hozzáf�
 
 ## <a name="create-an-azure-synapse-workspace"></a>Azure Synapse-munkaterület létrehozása
 
-Ezután [hozzon létre egy Azure szinapszis-munkaterületet](/azure/synapse-analytics/get-started-create-workspace) , ahol SQL-lekérdezést fog végrehajtani a leltár eredményeinek jelentéséhez.
+Ezután [hozzon létre egy Azure szinapszis-munkaterületet](../../synapse-analytics/get-started-create-workspace.md) , ahol SQL-lekérdezést fog végrehajtani a leltár eredményeinek jelentéséhez.
 
 ## <a name="create-the-sql-query"></a>SQL-lekérdezés létrehozása
 
@@ -58,7 +58,7 @@ Miután létrehozta az Azure szinapszis-munkaterületét, hajtsa végre a követ
 
 ## <a name="run-the-sql-query"></a>SQL-lekérdezés futtatása
 
-1. Adja hozzá a következő SQL-lekérdezést az Azure szinapszis-munkaterületen a [készlet CSV-fájljának olvasásához](/azure/synapse-analytics/sql/query-single-csv-file#read-a-csv-file).
+1. Adja hozzá a következő SQL-lekérdezést az Azure szinapszis-munkaterületen a [készlet CSV-fájljának olvasásához](../../synapse-analytics/sql/query-single-csv-file.md#read-a-csv-file).
 
     A `bulk` paraméter esetében használja az elemezni kívánt leltári jelentés CSV-fájljának URL-címét.
 

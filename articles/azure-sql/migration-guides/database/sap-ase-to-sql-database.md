@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 81956a16142f314f54afd9d5a1b9055a559e906c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fd03ebc87a1c0ef0a55b0e6ac0be6d841fee4b0a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565082"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027295"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Áttelepítési útmutató: SAP-Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 Ez az útmutató bemutatja, hogyan telepítheti át az SAP-Azure SQL Database az SAP-adapterek Server Enterprise SQL Server Migration Assistant használatával.
 
-Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://datamigration.microsoft.com/). 
+Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -29,6 +29,8 @@ Ha az SAP SE-adatbázist át szeretné telepíteni Azure SQL Databasere, a köve
 
 - annak ellenőrzéséhez, hogy a forrás-környezet támogatott-e. 
 - [SQL Server Migration Assistant az SAP adaptív Server Enterprise (korábbi nevén SAP Sybase-központú)](https://www.microsoft.com/en-us/download/details.aspx?id=54256). 
+- Kapcsolat és megfelelő engedélyek a forrás és a cél eléréséhez. 
+
 
 ## <a name="pre-migration"></a>A migrálás előtt
 
@@ -44,10 +46,10 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 1. Válassza a **fájl** , majd az **új projekt** lehetőséget. 
 1. Adja meg a projekt nevét, a kívánt helyet a projekt mentéséhez, majd válassza a Azure SQL Database az áttelepítési célként lehetőséget a legördülő menüből. Válassza az **OK** lehetőséget.
 1. A **Kapcsolódás a Sybase-hoz** párbeszédpanelen adja meg az SAP-kapcsolat részleteinek értékét. 
-1. Kattintson a jobb gombbal az áttelepíteni kívánt SAP-adatbázisra, majd válassza a **jelentés létrehozása** parancsot. Ez HTML-jelentést hoz létre.
-1. A HTML-jelentés áttekintésével megismerheti a konverziós statisztikákat és az esetleges hibákat vagy figyelmeztetéseket. A jelentés az Excelben is megnyitható a DB2-objektumok leltárának beszerzéséhez, valamint a séma átalakításához szükséges erőfeszítésekhez. A jelentés alapértelmezett helye a SSMAProjects belüli jelentési mappában található.
+1. Kattintson a jobb gombbal az áttelepíteni kívánt SAP-adatbázisra, majd válassza a **jelentés létrehozása** parancsot. Ez HTML-jelentést hoz létre. Azt is megteheti, hogy az adatbázis kiválasztása után kiválasztja a **jelentés létrehozása** lehetőséget a navigációs sávon:
+1. A HTML-jelentés áttekintésével megismerheti a konverziós statisztikákat és az esetleges hibákat vagy figyelmeztetéseket. A jelentést az Excelben is megnyithatja, hogy beolvassa az SAP bevezetési objektumok leltárát és a séma átalakításához szükséges erőfeszítéseket. A jelentés alapértelmezett helye a SSMAProjects belüli jelentési mappában található.
 
-   Példa: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Példa: `drive:\<username>\Documents\SSMAProjects\MySAPMigration\report\report_<date>`. 
 
 
 ### <a name="validate-type-mappings"></a>Típus-hozzárendelések ellenőrzése
@@ -66,8 +68,8 @@ A séma konvertálásához kövesse az alábbi lépéseket:
 
    A séma átalakítása után a projekt helyileg menthető egy offline séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. Ez lehetőséget nyújt arra, hogy a forrás-és a célként megadott sémákat offline állapotba hozza, és szervizelést végezzen, mielőtt közzé tudja tenni a sémát a Azure SQL Database.
 
-További információ: [séma konvertálása](/sql/ssma/sybase/converting-sybase-ase-database-objects-sybasetosql)
-
+1. Válassza az **eredmények áttekintése** lehetőséget a kimenet ablaktáblán, és tekintse át a hibákat a hibák **listája** ablaktáblán. 
+1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. Ez lehetőséget nyújt arra, hogy a forrás-és a célként megadott sémákat offline állapotba hozza, és szervizelést végezzen, mielőtt közzé tudja tenni a sémát a SQL Database.
 
 ## <a name="migrate"></a>Migrate 
 
@@ -75,10 +77,10 @@ Miután elvégezte a szükséges előfeltételeket, és végrehajtotta az **átt
 
 A séma közzétételéhez és az adatáttelepítés végrehajtásához kövesse az alábbi lépéseket: 
 
-1. Kattintson a jobb gombbal az adatbázisra **Azure SQL Database metaadat-kezelőben** , majd válassza az **adatbázissal való szinkronizálás** lehetőséget.  Ez a művelet közzéteszi az SAP-t a Azure SQL Database példányon.
-1. Kattintson a jobb gombbal az SAP-alapú adatközponti séma elemre az **SAP** -ben, és válassza az **adatok áttelepíteni** lehetőséget.  Választhatja azt is, hogy az **adatok áttelepíthetők** a legfelső szintű navigációs sávon.  
+1. Tegye közzé a sémát: kattintson a jobb gombbal az adatbázisra **Azure SQL Database metaadat-kezelőben** , majd válassza az **adatbázissal való szinkronizálás** lehetőséget.  Ez a művelet közzéteszi az SAP-t a Azure SQL Database példányon.
+1. Migrálja az adatokat: kattintson a jobb gombbal arra az adatbázisra vagy objektumra, amelyet az SAP-t tartalmazó **metaadat-kezelőben** szeretne áttelepíteni, majd válassza az **adatok áttelepíteni** lehetőséget Választhatja azt is, hogy az **adatok áttelepíthetők** a legfelső szintű navigációs sávon. Ha egy teljes adatbázisra szeretné áttelepíteni az adatátvitelt, jelölje be az adatbázis neve melletti jelölőnégyzetet. Ha az adatok áttelepíthetők az egyes táblákból, bontsa ki az adatbázist, majd a táblák csomópontot, és jelölje be a tábla melletti jelölőnégyzetet. Ha az adatok kihagyása az egyes táblákból, törölje a jelet a jelölőnégyzetből: 
 1. Az áttelepítés befejezése után tekintse meg az **adatáttelepítési jelentést**: 
-1. Ellenőrizze az áttelepítést úgy, hogy áttekinti a Azure SQL Database példányon található adatnézetet és sémát Azure SQL Database Management Studio (SSMS) használatával.
+1. Kapcsolódjon a Azure SQL Databasehoz a [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával, és ellenőrizze az áttelepítést az adatelemzés és a séma áttekintésével. 
 
 
 ## <a name="post-migration"></a>A migrálás után 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929824"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868715"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -104,7 +104,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     1. Nyissa meg a Ambari felhasználói felületét, lépjen a Spark2 lapra, és válassza a konfigurációk lapot.
 
-        ![A Spark és a Livy konfiguráció módosítása a Ambari használatával](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png" alt-text="A Spark és a Livy konfiguráció módosítása a Ambari használatával" border="true":::
 
     2. Bontsa ki a speciális livy2-env elemet, majd a lenti utasításokat. Ha egy másik előtaggal telepítette a virtuális környezetet, módosítsa az elérési utat megfelelően.
 
@@ -113,7 +113,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Livy-konfiguráció módosítása a Ambari használatával](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-livy-config.png" alt-text="Livy-konfiguráció módosítása a Ambari használatával" border="true":::
 
     3. Bontsa ki a speciális spark2 – env elemet, cserélje le a meglévő export PYSPARK_PYTHON utasítást alulra. Ha egy másik előtaggal telepítette a virtuális környezetet, módosítsa az elérési utat megfelelően.
 
@@ -121,11 +121,11 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Spark-konfiguráció módosítása a Ambari használatával](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-config.png" alt-text="Spark-konfiguráció módosítása a Ambari használatával" border="true":::
 
     4. Mentse a módosításokat, és indítsa újra az érintett szolgáltatásokat. Ezeknek a változásoknak a Spark2 szolgáltatás újraindítására van szükségük. A Ambari felhasználói felülete kérni fogja a szükséges újraindítási emlékeztetőt, majd kattintson az Újraindítás gombra az összes érintett szolgáltatás újraindításához.
 
-        ![Szolgáltatások újraindítása](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-restart-services.png" alt-text="Szolgáltatások újraindítása" border="true":::
 
     5. Állítsa be a Spark-munkamenet két tulajdonságát, és győződjön meg arról, hogy a feladattípus a frissített Spark-konfigurációra mutat: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` és `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
 
@@ -153,7 +153,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     Az alábbi kód futtatásával megerősítheti Jupyter Notebook Python-környezetét:
 
-    ![Python-verzió keresése Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="Python-verzió keresése Jupyter Notebook" border="true":::
 
 ## <a name="known-issue"></a>Ismert probléma
 

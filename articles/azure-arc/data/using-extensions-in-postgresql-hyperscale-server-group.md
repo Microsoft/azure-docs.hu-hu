@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6586375d7db71274f40eb62aeb24f9daad0d7c2e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688297"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949787"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>PostgreSQL-bővítmények használata az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportban
 
@@ -55,7 +55,7 @@ Ez az útmutató a következő két bővítmény használatát teszi elérhetőv
 ## <a name="add-extensions-to-the-shared_preload_libraries"></a>Bővítmények hozzáadása a shared_preload_librarieshoz
 További részletekért shared_preload_libraries kérjük, olvassa el a PostgreSQL-dokumentációt [itt](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES):
 - Ez a lépés nem szükséges a következő részét képező bővítményekhez: `contrib`
-- Ez a lépés nem szükséges olyan bővítményekhez, amelyek nem szükségesek shared_preload_librarieshoz való előzetes betöltéshez. Ezekben a bővítményekben a következő, [bővítmények létrehozása](https://docs.microsoft.com/azure/azure-arc/data/using-extensions-in-postgresql-hyperscale-server-group#create-extensions)lehetőségre ugorhat.
+- Ez a lépés nem szükséges olyan bővítményekhez, amelyek nem szükségesek shared_preload_librarieshoz való előzetes betöltéshez. Ezekben a bővítményekben a következő, [bővítmények létrehozása](#create-extensions)lehetőségre ugorhat.
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>Bővítmény hozzáadása egy kiszolgálócsoport létrehozási időpontjában
 ```console

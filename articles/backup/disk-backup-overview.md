@@ -3,19 +3,14 @@ title: Az Azure Disk Backup áttekintése
 description: További információ az Azure Disk Backup megoldásról.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915508"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107295"
 ---
-# <a name="overview-of-azure-disk-backup-in-preview"></a>Az Azure Disk Backup áttekintése (előzetes verzió)
-
->[!IMPORTANT]
->Az Azure Disk Backup előzetes verzióban érhető el, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A régió elérhetőségét a [támogatási mátrixban](disk-backup-support-matrix.md)tekintheti meg.
->
->[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
+# <a name="overview-of-azure-disk-backup"></a>Az Azure Disk Backup áttekintése
 
 Az Azure Disk Backup egy natív, felhőalapú biztonsági mentési megoldás, amely megvédi az adatait a felügyelt lemezeken. Ez egy egyszerű, biztonságos és költséghatékony megoldás, amely néhány lépésben lehetővé teszi a felügyelt lemezek védelmének konfigurálását. Gondoskodik arról, hogy az adatok vészhelyzeti helyzetben is helyreállíthatók legyenek.
 

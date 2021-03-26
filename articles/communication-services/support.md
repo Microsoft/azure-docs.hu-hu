@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 204a7ff77b4dd32ef62e1a06c66d50d7b30fcfc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e403fb8bcd25d1274eda287bc62465bacdb9b613
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496133"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045467"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Súgó és támogatás lehetőségek az Azure kommunikációs szolgáltatásokhoz
 
@@ -24,9 +24,9 @@ Az Azure-ban számos [támogatási lehetőség és csomag](https://azure.microso
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Kérdés közzététele a Microsoft Q&A
 
-Ha szeretne gyorsan és megbízhatóan választ adni a termékre vagy technikai kérdésekre, előfordulhat, hogy a Microsoft-mérnököktől, az Azure-ban a legértékesebb szakemberektől (MVP) vagy a Közösségtől származó Azure kommunikációs szolgáltatásokkal foglalkozunk, a [Microsoft Q&a](https://docs.microsoft.com/answers/products/azure). 
+Ha szeretne gyorsan és megbízhatóan választ adni a termékre vagy technikai kérdésekre, előfordulhat, hogy a Microsoft-mérnököktől, az Azure-ban a legértékesebb szakemberektől (MVP) vagy a Közösségtől származó Azure kommunikációs szolgáltatásokkal foglalkozunk, a [Microsoft Q&a](/answers/products/azure). 
 
-Ha nem talál választ a problémára a kereséssel, küldjön új kérdést a Microsoft Q&A alkalmazásnak. Kérdés létrehozásakor ügyeljen arra, hogy az [Azure kommunikációs szolgáltatások címkét](https://docs.microsoft.com/answers/topics/azure-communication-services.html)használja.
+Ha nem talál választ a problémára a kereséssel, küldjön új kérdést a Microsoft Q&A alkalmazásnak. Kérdés létrehozásakor ügyeljen arra, hogy az [Azure kommunikációs szolgáltatások címkét](/answers/topics/azure-communication-services.html)használja.
 
 ## <a name="post-a-question-on-stack-overflow"></a>Kérdés közzététele Stack Overflow
 

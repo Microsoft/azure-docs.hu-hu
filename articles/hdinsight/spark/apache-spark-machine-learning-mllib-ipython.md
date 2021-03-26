@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 224ebae58a5688f81d1b64b4a9c81d5abd8a9690
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930042"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868851"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
 
@@ -175,7 +175,7 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
     A kimenet a következő:
 
-    ![SQL-lekérdezés kimenete](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-lekérdezés kimenete")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png " alt-text="SQL-lekérdezés kimenete" border="true":::
 
 3. A Matplotlib-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** dataframe kell létrehozni, a kódrészletnek a mágia kell kezdődnie `%%local` . Ez a művelet biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
 
@@ -348,7 +348,7 @@ Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményein
 
     A következő kimenetnek kell megjelennie:
 
-    ![Spark Machine learning-alkalmazás kimenete – kördiagram százaléka a sikertelen élelmiszer-ellenőrzésekhez.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "A Spark Machine learning eredményének kimenete")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png " alt-text="Spark Machine learning-alkalmazás kimenete – kördiagram százaléka a sikertelen élelmiszer-ellenőrzésekhez." border="true":::
 
     Ebben a diagramban a "pozitív" eredmény a sikertelen élelmiszer-ellenőrzésre utal, míg a negatív eredmény egy átadott vizsgálatra utal.
 

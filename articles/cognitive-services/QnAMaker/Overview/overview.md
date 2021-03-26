@@ -7,18 +7,20 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA-készítő, alacsony kódú csevegési robotok, több fordulatos beszélgetések
-ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 8df9daa213156fc38ed08bced44ea919da95e6a4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919561"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869208"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 
 A QnA Maker egy felhőalapú, természetes nyelvi feldolgozó (NLP) szolgáltatás, amely lehetővé teszi, hogy az adatain alapuló természetes beszélgetési réteget hozzon létre. A rendszer a legmegfelelőbb választ keresi az egyéni Tudásbázis (KB) adataiból származó adatokhoz.
 
 A QnA Maker általában olyan társalgási ügyfélalkalmazások készítésére használják, mint például a közösségi média alkalmazásai, a csevegési robotok és a beszédfelismerést támogató asztali alkalmazások.
+
+QnA Maker nem tárolja az ügyféladatokat. A rendszer az összes ügyféladatokat (kérdéses választ és chatlogs) tárolja abban a régióban, ahol az ügyfél telepíti a függő szolgáltatási példányokat a alkalmazásban. A függő szolgáltatásokkal kapcsolatos további részletekért [tekintse meg a következőt](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/plan?tabs=v1):.
 
 ## <a name="when-to-use-qna-maker"></a>Mikor kell használni a QnA Maker
 

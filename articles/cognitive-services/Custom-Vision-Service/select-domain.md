@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8aba6f13957d37f843114572f001029baf41ded6
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095663"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889348"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Tartomány kiválasztása Custom Vision projekthez
 
@@ -25,12 +25,17 @@ A Custom Vision projekt beállítások lapján választhat egy tartományt a pro
 
 |Tartomány|Cél|
 |---|---|
-|__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy ha nem biztos abban, hogy melyik tartományt kell választania, válassza az általános tartományt. ID `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi megadott tartomány sem megfelelő, vagy ha nem biztos abban, hogy melyik tartományt szeretné kiválasztani, válasszon egyet az általános tartományok közül. ID `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
 |__Általános [a1]__| A jobb pontosság érdekében az általános tartományhoz hasonló következtetési idő van optimalizálva. Nagyobb adatkészletekhez vagy nehezebb felhasználói forgatókönyvekhez ajánlott. Ehhez a tartományhoz több betanítási idő szükséges. ID `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
+|__Általános [a2]__| Nagyobb pontosságra optimalizált, gyorsabb következtetéssel, mint az általános [a1] és az általános tartományoknál. A legtöbb adatkészlet esetében ajánlott. Ez a tartomány kevesebb tanítási időt igényel, mint az általános és az általános [a1] tartomány. ID `2e37d7fb-3a54-486a-b4d6-cfc369af0018` |
 |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt. ID `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Arcrészek__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák. ID `ca455789-012d-4b50-9fec-5bb63841c793`|
 |__Retail__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha magas pontosságú osztályozást szeretne a ruhák, nadrágok és ingek között, használja ezt a tartományt. ID `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Kompakt tartományok__| Az Edge-eszközök valós idejű besorolásának korlátaira optimalizált.|
+
+
+> [!NOTE]
+> Az általános [a1] és az általános [a2] tartományok számos különböző forgatókönyvhöz használhatók, és pontosságra vannak optimalizálva. Az általános [a2] modellt használva jobb következtetési sebességet és rövidebb betanítási időt használhat. Nagyobb adatkészletek esetében érdemes az általános [a1] értéket használni az általános [a2]-nél nagyobb pontosság megjelenítéséhez, de a képzés és a következtetések időbeli kihasználása szükséges. Az általános modell több következtetni is igényel, mint az általános [a1] és az általános [a2].
 
 ## <a name="object-detection"></a>Objektumészlelés
 

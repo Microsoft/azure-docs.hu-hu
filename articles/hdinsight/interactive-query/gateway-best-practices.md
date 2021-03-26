@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan navigálhat a kaptár-lekérdezések Azure HDIn
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 549eab1547b75eb9461b23df2c157290943b4ed9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933111"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869786"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive az átjáró részletes ismertetése és ajánlott eljárásai
 
@@ -21,7 +21,7 @@ Az HDInsight-átjáró a HDInsight-fürt egyetlen része, amely nyilvánosan el�
 
 Az alábbi ábrán egy durva ábrán látható, hogy az átjáró hogyan nyújt absztrakciót a HDInsight belüli különböző gazdagép-feloldási lehetőségek előtt.
 
-![Gazdagép-feloldási diagram](./media/gateway-best-practices/host-resolution-diagram.png "Gazdagép-feloldási diagram")
+:::image type="content" source="./media/gateway-best-practices/host-resolution-diagram.png " alt-text="Gazdagép-feloldási diagram" border="true":::
 
 ## <a name="motivation"></a>Motiváció
 
@@ -39,7 +39,7 @@ A nagy méretű lekérdezéseknél az átjáró teljesítménybeli romlása azé
 
 A következő ábra a SELECT lekérdezés lépéseit szemlélteti.
 
-![Eredmény diagram](./media/gateway-best-practices/result-retrieval-diagram.png "Eredmény diagram")
+:::image type="content" source="./media/gateway-best-practices/result-retrieval-diagram.png " alt-text="Eredmény diagram" border="true":::
 
 A Apache Hive egy HDFS-kompatibilis fájlrendszerhez kapcsolódó összevont absztrakció. Ez az absztrakció azt jelenti, hogy a struktúra **Select** utasításai a fájlrendszerben lévő **olvasási** műveleteknek felelnek meg. Az **olvasási** műveleteket a rendszer a megfelelő sémára fordítja, mielőtt a jelentést a felhasználónak. A folyamat késése az adatmérettel és a végfelhasználók eléréséhez szükséges összes ugrással nő.
 
