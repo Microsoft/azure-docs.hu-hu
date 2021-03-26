@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511014"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046810"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Gyors útmutató: Azure Batch feladatok futtatása a Python API használatával
 
@@ -28,7 +28,7 @@ A rövid útmutató elvégzése után megismerheti a Batch szolgáltatás legfon
 
 - Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
-- [Python](https://python.org/downloads) 2,7 vagy 3,3 vagy újabb verzió, beleértve a [pip](https://pip.pypa.io/en/stable/installing/) Package Managert
+- [Python](https://python.org/downloads) 2,7-es vagy 3,6-es verzió, beleértve a [pip](https://pip.pypa.io/en/stable/installing/) Package Managert
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

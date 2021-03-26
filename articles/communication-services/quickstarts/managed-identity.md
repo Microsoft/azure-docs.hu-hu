@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: ffda88da451e25b79112a7adf85026158bd27acc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e4b71cc889615fd4784f11c9edd77b44ef421d9e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492353"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110742"
 ---
 # <a name="use-managed-identities"></a>Felügyelt identitások használata
-Az Azure kommunikációs szolgáltatások használatának első lépései felügyelt identitások használatával. A kommunikációs szolgáltatások identitás-és SMS-ügyféloldali kódtárai támogatják a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/overview.md).
+Az Azure kommunikációs szolgáltatások használatának első lépései felügyelt identitások használatával. A kommunikációs szolgáltatások identitása és az SMS SDK-k támogatják a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Ebből a rövid útmutatóból megtudhatja, hogyan engedélyezheti az identitás-és SMS-ügyféloldali kódtárak hozzáférését egy olyan Azure-környezetből, amely támogatja a felügyelt identitásokat. Azt is leírja, hogyan tesztelheti a kódot egy fejlesztési környezetben.
+Ebből a rövid útmutatóból megtudhatja, hogyan engedélyezheti a hozzáférést a felügyelt identitásokat támogató Azure-környezetből származó identitáshoz és SMS SDK-hoz. Azt is leírja, hogyan tesztelheti a kódot egy fejlesztési környezetben.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/managed-identity-net.md)]

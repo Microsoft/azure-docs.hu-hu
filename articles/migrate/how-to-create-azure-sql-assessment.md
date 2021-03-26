@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 21553adf81d5b34813785db7cd6bbe3caf71c210
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e9243fc750843c83b7ca8c295655853d20dcd083
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780487"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024984"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Azure SQL-Értékelés létrehozása
 
@@ -18,7 +18,7 @@ Az Azure-ba való Migrálás részeként felméri a helyszíni számítási fela
 Ez a cikk bemutatja, hogyan értékelheti fel a felderített SQL-példányokat az Azure SQL-re való áttelepítésre való felkészülés során a Azure Migrate: Discovery and Assessment Tool használatával.
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. 
+> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. Ismerkedjen meg az [oktatóanyaggal](tutorial-discover-vmware.md). Ha egy meglévő projektben szeretné kipróbálni ezt a funkciót, győződjön meg arról, hogy végrehajtotta a jelen cikkben ismertetett [előfeltételeket](how-to-discover-sql-existing-project.md) .
 
 ## <a name="before-you-start"></a>Előkészületek
 

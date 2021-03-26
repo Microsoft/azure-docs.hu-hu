@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622191"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110352"
 ---
-Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások JavaScript SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
+Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások JavaScript SMS SDK használatával SMS-üzenetek küldéséhez.
 
 A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
@@ -57,7 +57,7 @@ Szövegszerkesztő használatával hozzon létre egy **send-sms.js** nevű fájl
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatások SMS ügyféloldali kódtárat a javascripthez.
+Az `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatások SMS SDK-t a javascripthez.
 
 ```console
 npm install @azure/communication-sms --save
@@ -67,7 +67,7 @@ A (z `--save` ) lehetőség a könyvtárat listázza a **package.js** fájlon be
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek kezelik az Azure kommunikációs szolgáltatások SMS ügyféloldali kódtár főbb funkcióit a Node.jshoz.
+A következő osztályok és felületek a Node.js Azure Communication Services SMS SDK főbb funkcióit kezelik.
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Importálja a **SmsClient** az ügyfél-függvénytárból, és hozza létre azt a kapcsolatok karakterláncával. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
+Importálja a **SmsClient** az SDK-ból, és hozza létre azt a kapcsolatok karakterláncával. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
 
 Adja hozzá a következő kódot a **send-sms.jshoz**:
 

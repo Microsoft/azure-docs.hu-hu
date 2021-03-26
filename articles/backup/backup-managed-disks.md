@@ -3,19 +3,14 @@ title: Azure-Managed Disks biztonsági mentése
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure Managed Disksról a Azure Portalról.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e234495eb483d6d0cc6ca556ca418138c61a99f5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98738152"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110627"
 ---
-# <a name="back-up-azure-managed-disks-in-preview"></a>Azure Managed Disks biztonsági mentése (előzetes verzió)
-
->[!IMPORTANT]
->Az Azure Disk Backup előzetes verzióban érhető el, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A régió elérhetőségét a [támogatási mátrixban](disk-backup-support-matrix.md)tekintheti meg.
->
->[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
+# <a name="back-up-azure-managed-disks"></a>Azure-Managed Disks biztonsági mentése
 
 Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az [Azure felügyelt lemezről](../virtual-machines/managed-disks-overview.md) a Azure Portalról.
 

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d7d4888c17ffe46340aa85b8d2a1cc4fa7ed34
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3200dc6ad7756f77dc0d74df83a33c7e89d4bedb
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581830"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044566"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átmenő hitelesítés: gyors útmutató
 
@@ -73,7 +73,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
      
      Ha a tűzfal a felhasználók helye szerint érvényesíti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futó Windows-szolgáltatások adatforgalma számára.
    - Ha a tűzfal vagy a proxy lehetővé teszi, hogy DNS-bejegyzéseket adjon hozzá egy engedélyezési, vegyen fel kapcsolatokat a **\* . msappproxy.net** és a **\* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
-   - Ha kimenő HTTP-proxyval rendelkezik, győződjön meg róla, hogy ez az URL-cím (autologon.microsoftazuread-sso.com) engedélyezve van az engedélyezési listán. Explicit módon meg kell adnia ezt az URL-címet, mert a helyettesítő karakterek nem fogadhatók el. 
+   - Ha kimenő HTTP-proxyval rendelkezik, győződjön meg arról, hogy az URL-cím (autologon.microsoftazuread-sso.com) szerepel az engedélyezett listán. Explicit módon meg kell adnia ezt az URL-címet, mert a helyettesítő karakterek nem fogadhatók el. 
    - A hitelesítési ügynököknek hozzá kell férniük a **login.Windows.net** és a **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
     - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **crl3.Digicert.com:80**, **crl4.Digicert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-Ca2-2009.OCSP.d-Trust.net:80**, **CRL.microsoft.com:80**, **oneocsp.microsoft.com:80** és **OCSP.msocsp.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 

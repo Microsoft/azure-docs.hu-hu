@@ -190,6 +190,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: Az Apache Pig optimalizálása
                   href: ./optimize-pig-ambari.md
+            - name: Fürtcsomópontok állomásneve
+              href: ./find-host-name.md
             - name: Fürtcsomópontok újraindítása
               href: ./cluster-reboot-vm.md
             - name: Az Apache Ambari REST API használata

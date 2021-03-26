@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 1a76f79f31d1f4518c069afb7fccbad5bd22d4e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101745293"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046351"
 ---
 # <a name="manage-the-datadog-resource"></a>A Datadoggal-erőforrás kezelése
 
@@ -61,7 +61,7 @@ Az erőforrások listáját az erőforrástípus, az erőforráscsoport neve, a 
 A **datadoggal** lévő oszlopok azt jelzik, hogy az erőforrás naplókat küld a datadoggal. Ha az erőforrás nem küld naplókat, ez a mező jelzi, hogy a naplók miért nem lesznek elküldve a Datadoggal. Ennek okai a következőket jelenthetik:
 
 - Az erőforrás nem támogatja a naplók küldését. A naplók Datadoggal való elküldéséhez csak a figyelési naplók kategóriáit tartalmazó erőforrások állíthatók be.
-- Elérte az öt diagnosztikai beállítás korlátját. Minden Azure-erőforráshoz legfeljebb öt diagnosztikai beállítás tartozhat. További információ: [diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-settings.md).
+- Elérte az öt diagnosztikai beállítás korlátját. Minden Azure-erőforráshoz legfeljebb öt diagnosztikai beállítás tartozhat. További információ: [diagnosztikai beállítások](../../azure-monitor/essentials/diagnostic-settings.md).
 - HIba. Az erőforrás úgy van konfigurálva, hogy naplókat küldjön a Datadoggal, de egy hiba miatt blokkolva van.
 - Nincsenek konfigurálva a naplók. Csak a megfelelő erőforrás-címkékkel rendelkező Azure-erőforrások vannak konfigurálva a naplók Datadoggal való elküldésére.
 - A régió nem támogatott. Az Azure-erőforrás olyan régióban található, amely jelenleg nem támogatja a naplók küldését a Datadoggal.

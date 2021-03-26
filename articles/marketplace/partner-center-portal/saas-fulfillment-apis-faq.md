@@ -4,15 +4,15 @@ description: Ismerje meg a Microsoft kereskedelmi piactér integrációs követe
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 03/19/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 760e7210d054e44dfec6d6a6e480baecd04d6807
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88606804"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044124"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS-megvalósítási API-kkal kapcsolatos gyakori kérdések
 
@@ -40,7 +40,10 @@ A SaaS-ajánlatra való feliratkozáskor a felhasználó beleegyezett, hogy a Mi
 
 Az ajánlatra való feliratkozás után az Azure-felhasználó felderítheti és kezelheti az összes ajánlatát az Azure-ban. Alapértelmezés szerint az újonnan előfizetett SaaS-ajánlatok állapota **kiépítés, beteljesülés függőben**. Ebben az állapotban az Azure-felhasználót a rendszer a **fiók konfigurálására** szolgáló művelettel fogja kérni, hogy megkeresse a Azure Portal a SaaS-előfizetés kezelési felületét.
 
-Amikor a felhasználó kiválasztja a **fiók konfigurálása** lehetőséget, a rendszer átirányítja az SaaS szolgáltatás webhelyére. A közzétevő az ajánlat közzétételének időpontjában konfigurálta az URL-címet. Ezt a lapot a közzétevő kezdőlapjának nevezzük. Az Azure-felhasználók az Azure-ban meglévő HRE hitelesítő adataik alapján jelentkeznek be az SaaS-kezdőlapra.
+Amikor a felhasználó kiválasztja a **fiók konfigurálása** lehetőséget, a rendszer átirányítja az SaaS szolgáltatás webhelyére. A közzétevő az ajánlat közzétételének időpontjában konfigurálta az URL-címet. Ezt a lapot a közzétevő kezdőlapjának nevezzük. Az Azure-felhasználók az Azure-beli meglévő Azure Active Directory (Azure AD) hitelesítő adataik alapján jelentkeznek be az SaaS-kezdőlapra.
+
+> [!IMPORTANT]
+> Be kell jelentkeznie a vásárlás felhasználójának Azure Active Directory, egyszeri bejelentkezés (Azure AD SSO) használatával a [szabályzat](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)utasítása alapján. A `mail` Microsoft Graph API-ból beolvasott felhasználói erőforrás tulajdonsága az Azure ad-hez és a MSA tartozó kapcsolattartási adatokat adja meg `userPrincipalName` . Előfordulhat, hogy a "mail" mező üres az Azure AD-ben, és a felhasználó nem rendelkezik rögzített e-mail-címmel. Ha ez a helyzet, javasoljuk, hogy érzékelje, és kérjen meg egy kapcsolattartási e-mailt. Ez az egyetlen esélye annak, hogy kapcsolattartási e-mail-címet kapjon az ügyfélnek a beléptetési folyamat során vagy azt követően.
 
 Ha az Azure-felhasználót átirányítják a kezdőlapra, a rendszer tokent ad hozzá a lekérdezési URL-címhez. Ez a jogkivonat rövid életű, és 24 óra időtartamra érvényes. Ezt követően észlelhető a jogkivonat jelenléte, és meghívhatja a Microsoft API-ját, hogy a tokenhez több környezet legyen társítva.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9a8ecf65426dfe92b84582ff98b567ea400c9209
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027176"
+ms.locfileid: "105046212"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Mi az Azure Cosmos DB analitikus tároló?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -112,8 +112,8 @@ A következő megkötések alkalmazhatók a Azure Cosmos DB lévő operatív ada
 
 * Eltérő viselkedést vár a explicit `null` értékek tekintetében:
   * Az Azure Szinapszisban található Spark-készletek ezeket az értékeket `0` (nulla) fogják beolvasni.
-  * Az Azure Szinapszisban az SQL Server nélküli készletek beolvassák ezeket az értékeket, mintha a `NULL` gyűjtemény első dokumentuma ugyanazzal a tulajdonsággal, egy olyan értékkel, amely eltér az adattípustól `integer` .
-  * Az Azure Szinapszisban található SQL Server nélküli készletek ezeket az értékeket `0` (nulla) fogják beolvasni, ha a gyűjtemény első dokumentuma ugyanazon tulajdonsághoz tartozik, amely egy érték `integer` .
+  * Az Azure Szinapszisban az SQL Server nélküli készletek beolvassák ezeket az értékeket, mintha a `NULL` gyűjtemény első dokumentuma ugyanazzal a tulajdonsággal, egy adattípussal rendelkező értékkel is rendelkezik `non-numeric` .
+  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az értékeket `0` (nulla) fogják beolvasni, ha a gyűjtemény első dokumentuma ugyanazon tulajdonság esetében egy `numeric` adattípussal rendelkező érték.
 
 * A hiányzó oszlopok tekintetében eltérő viselkedés várható:
   * Az Azure Szinapszisban található Spark-készletek ezeket az oszlopokat jelölik `undefined` .

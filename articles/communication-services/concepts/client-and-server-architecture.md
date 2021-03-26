@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 74a48b05e7e3b00d331da4fcf66092490ae70374
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f52d907c36c7900d5f5eada3ca4a7328e42f9729
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490670"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110848"
 ---
 # <a name="client-and-server-architecture"></a>Ügyfél és kiszolgáló architektúrája
 
@@ -34,7 +34,7 @@ Minden Azure Communication Services-alkalmazáshoz olyan **ügyfélalkalmazások
 
 ## <a name="user-access-management"></a>Felhasználói hozzáférés kezelése
 
-Az Azure kommunikációs szolgáltatások ügyféloldali kódtárainak `user access tokens` biztonságosan kell elérniük a kommunikációs szolgáltatások erőforrásait. `User access tokens` egy megbízható szolgáltatásnak kell létrehoznia és felügyelni a jogkivonat bizalmas jellege és a létrehozásához szükséges kapcsolati karakterlánc miatt. A hozzáférési tokenek megfelelő kezelésének elmulasztása további díjakat eredményezhet az erőforrásokkal való visszaélés miatt. Javasoljuk, hogy használjon megbízható szolgáltatást a felhasználók felügyeletéhez. A megbízható szolgáltatás létrehozza a jogkivonatokat, és a megfelelő titkosítás használatával továbbítja azokat az ügyfélnek. A minta architektúra folyamata az alábbiakban található:
+Az Azure kommunikációs szolgáltatások SDK `user access tokens` -k a kommunikációs szolgáltatások erőforrásainak biztonságos elérését igénylik. `User access tokens` egy megbízható szolgáltatásnak kell létrehoznia és felügyelni a jogkivonat bizalmas jellege és a létrehozásához szükséges kapcsolati karakterlánc miatt. A hozzáférési tokenek megfelelő kezelésének elmulasztása további díjakat eredményezhet az erőforrásokkal való visszaélés miatt. Javasoljuk, hogy használjon megbízható szolgáltatást a felhasználók felügyeletéhez. A megbízható szolgáltatás létrehozza a jogkivonatokat, és a megfelelő titkosítás használatával továbbítja azokat az ügyfélnek. A minta architektúra folyamata az alábbiakban található:
 
 :::image type="content" source="../media/scenarios/archdiagram-access.png" alt-text="A felhasználói hozzáférési jogkivonat architektúráját bemutató ábra.":::
 
@@ -42,7 +42,7 @@ További információkért tekintse át a [legjobb Identitáskezelés-kezelési 
 
 ## <a name="browser-communication"></a>Böngészőalapú kommunikáció
 
-Az Azure Communications JavaScript-ügyféloldali kódtárai lehetővé teszik a webes alkalmazások gazdag szöveg-, hang-és videó-interakcióval való kezelését. Az alkalmazás közvetlenül kommunikál az Azure kommunikációs szolgáltatásokkal az ügyfél-függvénytáron keresztül az adatsíkon való hozzáféréshez és valós idejű szöveg-, hang-és videó-kommunikációhoz. A minta architektúra folyamata az alábbiakban található:
+Az Azure Communications JavaScript SDK-k lehetővé teszik a webes alkalmazások gazdag szöveg-, hang-és videó-interakcióval való kezelését. Az alkalmazás közvetlenül az Azure kommunikációs szolgáltatásokkal kommunikál az SDK-ban az adatsíkon való hozzáféréshez és valós idejű szöveg-, hang-és videó-kommunikációhoz. A minta architektúra folyamata az alábbiakban található:
 
 :::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="A kommunikációs szolgáltatások böngésző-architektúráját bemutató ábra.":::
 
@@ -54,7 +54,7 @@ Számos forgatókönyv a legalkalmasabb a natív alkalmazásokhoz. Az Azure komm
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>Hang és SMS a nyilvános kapcsolóval rendelkező telefonos hálózaton (PSTN) keresztül
 
-A telefonos rendszeren keresztüli kommunikáció jelentősen növelheti az alkalmazás elérhetőségét. A PSTN hang-és SMS-forgatókönyvek támogatásához az Azure kommunikációs szolgáltatásokkal közvetlenül a Azure Portal, illetve a REST API-k és az ügyféloldali kódtárak használatával [szerezhetők be telefonszámok](../quickstarts/telephony-sms/get-phone-number.md) . A telefonszámok beszerzése után a rendszer felhasználhatja az ügyfeleket a PSTN-hívással és az SMS-sel együtt a bejövő és kimenő helyzetekben is. A minta architektúra folyamata az alábbiakban található:
+A telefonos rendszeren keresztüli kommunikáció jelentősen növelheti az alkalmazás elérhetőségét. A PSTN hang-és SMS-forgatókönyvek támogatásához az Azure kommunikációs szolgáltatásokkal közvetlenül a Azure Portal, illetve a REST API-k és SDK-k használatával [szerezhetők be telefonszámok](../quickstarts/telephony-sms/get-phone-number.md) . A telefonszámok beszerzése után a rendszer felhasználhatja az ügyfeleket a PSTN-hívással és az SMS-sel együtt a bejövő és kimenő helyzetekben is. A minta architektúra folyamata az alábbiakban található:
 
 > [!Note]
 > A nyilvános előzetes verzióban az Egyesült államokbeli telefonszámok kiosztása az Egyesült Államokban és Kanadában található számlázási címmel rendelkező ügyfelek számára érhető el.
@@ -65,7 +65,7 @@ A PSTN-telefonszámokkal kapcsolatos további információkért lásd: [telefons
 
 ## <a name="humans-communicating-with-bots-and-other-services"></a>A botokkal és más szolgáltatásokkal kommunikáló emberek
 
-Az Azure kommunikációs szolgáltatások az Azure kommunikációs szolgáltatások adatsíkjával közvetlenül hozzáférő szolgáltatásokkal támogatják az emberi és a rendszer közötti kommunikációt, de szöveges és hangcsatornákat is. Lehet például, hogy a bot megválaszolja a bejövő telefonhívásokat, vagy részt vesz egy webes csevegésben. Az Azure kommunikációs szolgáltatások olyan ügyféloldali kódtárakat biztosít, amelyek lehetővé teszik ezen forgatókönyvek meghívását és csevegését. A minta architektúra folyamata az alábbiakban található:
+Az Azure kommunikációs szolgáltatások az Azure kommunikációs szolgáltatások adatsíkjával közvetlenül hozzáférő szolgáltatásokkal támogatják az emberi és a rendszer közötti kommunikációt, de szöveges és hangcsatornákat is. Lehet például, hogy a bot megválaszolja a bejövő telefonhívásokat, vagy részt vesz egy webes csevegésben. Az Azure kommunikációs szolgáltatások olyan SDK-kat biztosít, amelyek lehetővé teszik ezen forgatókönyvek meghívását és csevegését. A minta architektúra folyamata az alábbiakban található:
 
 :::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="A kommunikációs szolgáltatások bot architektúráját bemutató ábra.":::
 
@@ -73,7 +73,7 @@ Az Azure kommunikációs szolgáltatások az Azure kommunikációs szolgáltatá
 
 Előfordulhat, hogy tetszőleges adatokat kell cserélnie a felhasználók között, például szinkronizálnia kell a közös, vegyes valóságot vagy játékélményt. A szöveg-, hang-és videó-kommunikációhoz használt valós idejű adatsíkok kétféleképpen érhetők el:
 
-- **Ügyféloldali függvénytár meghívása** – az eszközök hívási csatornán keresztüli küldéséhez és fogadásához az API-k hozzáférhetnek. Ez a legegyszerűbb módszer arra, hogy adatkommunikációt vegyen fel egy meglévő interakcióba.
+- Az **SDK meghívása** egy hívásban az API-k számára az adatok hívási csatornán keresztül történő küldéséhez és fogadásához is hozzáférnek. Ez a legegyszerűbb módszer arra, hogy adatkommunikációt vegyen fel egy meglévő interakcióba.
 - A **kábító/turn** -Azure kommunikációs szolgáltatások szabványoknak megfelelő kábítást tesznek lehetővé, és a szolgáltatások elérhetővé válnak. Ez lehetővé teszi egy nagy mértékben testreszabott átviteli réteg létrehozását ezen szabványosított primitívek felett. Létrehozhat saját szabványoknak megfelelő ügyfelet, vagy használhat nyílt forráskódú kódtárakat, például a [WinRTC](https://github.com/microsoft/winrtc)-t.
 
 ## <a name="next-steps"></a>Következő lépések

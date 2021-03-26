@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e41e9af418b08210f5f0f40de9951d03711dc8e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c3d1dfc5d6ea16a128f5f3bc1129f5f50bc9cb61
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616116"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954673"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation-adatok kezelése
 
@@ -56,7 +56,7 @@ A következő táblázat összefoglalja a különböző erőforrások adatmegőr
 | Csomópont-jelentések |Az adott csomópontra vonatkozó új jelentés létrehozása után a Node-jelentés 90 nappal véglegesen törlődik. |
 | Runbookok |Egy runbook véglegesen el lett távolítva 30 nappal azután, hogy egy felhasználó törli az erőforrást, vagy 30 nappal azután, hogy egy felhasználó törli az<sup>1</sup>. erőforrást tartalmazó fiókot. |
 
-<sup>1</sup> A runbook a 30 napos időszakon belül helyreállítható egy Microsoft Azure támogatással rendelkező Azure támogatási incidens bejelentésével. Nyissa meg az [Azure támogatási webhelyét](/support/options) , és válassza a **támogatási kérelem küldése** lehetőséget.
+<sup>1</sup> A runbook a 30 napos időszakon belül helyreállítható egy Microsoft Azure támogatással rendelkező Azure támogatási incidens bejelentésével. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatási kérelem küldése** lehetőséget.
 
 ## <a name="data-backup"></a>Az adatbiztonsági mentés
 

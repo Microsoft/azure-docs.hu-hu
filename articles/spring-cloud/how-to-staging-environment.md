@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0a8536deac0103215cf362c07eb54bbf84701a6b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 9b3a5659e91ca90d31500b10526e3e2179d4e7da
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878001"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046113"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
 
@@ -185,4 +185,4 @@ az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [CI/CD az Azure Spring Cloud-hoz](/azure/spring-cloud/spring-cloud-howto-cicd?pivots=programming-language-java)
+* [CI/CD az Azure Spring Cloud-hoz](./spring-cloud-howto-cicd.md?pivots=programming-language-java)

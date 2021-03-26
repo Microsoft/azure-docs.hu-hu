@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 32b41c1c4446ba34e3bfad52f1d3cbd7ed72096d
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878194"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108809"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Az Azure Spring Cloud VNET való futtatásának felhasználói feladatai
 Ez a dokumentum az Azure Spring Cloud virtuális hálózatban való használatának specifikációit tartalmazza.
@@ -54,7 +54,8 @@ A Azure Firewall teljes tartománynevet (FQDN) tartalmazó **AzureKubernetesServ
   | *. cdn.mscr.io | HTTPS: 443 | A Azure CDN által támogatott MCR-tároló. |
   | *. data.mcr.microsoft.com | HTTPS: 443 | A Azure CDN által támogatott MCR-tároló. |
   | <i>management.azure.com</i> | HTTPS: 443 | A mögöttes Kubernetes-fürt kezelése. |
-  | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory hitelesítés. |
+  | <i>* login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory hitelesítés. |
+  | <i>* login.microsoft.com</i> | HTTPS: 443 | Azure Active Directory hitelesítés. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft-csomagok tárháza. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | A szükséges bináris fájlok, például a kubenet és az Azure CNI telepítéséhez szükséges tárház. |
   | *mscrl.microsoft.com* | HTTPS: 80 | A Microsoft tanúsítványlánc szükséges elérési útjai. |
@@ -62,5 +63,5 @@ A Azure Firewall teljes tartománynevet (FQDN) tartalmazó **AzureKubernetesServ
   | *crl3.digicert.com* | HTTPS: 80 | harmadik féltől származó SSL-tanúsítványlánc elérési útjai. |
 
 ## <a name="see-also"></a>Lásd még
-* [Hozzáférés az alkalmazáshoz egy magánhálózati hálózaton](spring-cloud-access-app-virtual-network.md)
-* [Alkalmazások közzététele Application Gateway és Azure Firewall használatával](spring-cloud-expose-apps-gateway-azure-firewall.md)
+* [Hozzáférés az alkalmazáshoz egy magánhálózati hálózaton](access-app-virtual-network.md)
+* [Alkalmazások közzététele Application Gateway és Azure Firewall használatával](expose-apps-gateway-azure-firewall.md)
