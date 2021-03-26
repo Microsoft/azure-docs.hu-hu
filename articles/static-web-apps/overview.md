@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f4e900c8bcdcb5febec39421e098b19ad10b8b00
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92320494"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558890"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure statikus Web Apps előzetes verzió?
 
@@ -24,7 +24,7 @@ Az Azure statikus Web Apps munkafolyamata egy fejlesztői napi munkafolyamatra v
 
 Amikor létrehoz egy Azure Static Web Apps-erőforrást, az Azure beállít egy GitHub Actions-munkafolyamatot az alkalmazás forráskódjának adattárában, amely figyeli a kiválasztott ágat. Minden alkalommal, amikor leküldi vagy fogadja a lekéréses kérelmeket a figyelt ágra, a GitHub-művelet automatikusan létrehozza és telepíti az alkalmazást és az API-ját az Azure-ba.
 
-A statikus webalkalmazások általában könyvtárak és keretrendszerek használatával készültek, mint például a szögletes, a reakciós, a karcsú, a Vue vagy a Blazer. Ezek az alkalmazások HTML-, CSS-, JavaScript- és képobjektumokat tartalmaznak, és ezek alkotják az alkalmazást. A hagyományos webkiszolgálókkal ezeket az eszközöket a szükséges API-végpontok mellett egyetlen kiszolgáló szolgálja ki.
+A statikus webalkalmazások általában olyan könyvtárak és keretrendszerek használatával készültek, mint például a szögletes, a reakciós, a karcsú, a Vue vagy a Blazer, ahol a kiszolgálóoldali megjelenítés nem szükséges. Ezek az alkalmazások HTML-, CSS-, JavaScript- és képobjektumokat tartalmaznak, és ezek alkotják az alkalmazást. A hagyományos webkiszolgálókkal ezeket az eszközöket a szükséges API-végpontok mellett egyetlen kiszolgáló szolgálja ki.
 
 A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól választja el, és helyette a világ földrajzilag elosztott pontjairól szolgálnak. Ez az elosztás a fájlok sokkal gyorsabb szolgáltatását teszi lehetővé, mivel a fájlok fizikailag közelebb vannak a végfelhasználókhoz. Emellett az API-végpontok [kiszolgáló nélküli architektúrával](../azure-functions/functions-overview.md)vannak tárolva, így elkerülhető, hogy a teljes háttér-kiszolgálót egyszerre kelljen használni.
 

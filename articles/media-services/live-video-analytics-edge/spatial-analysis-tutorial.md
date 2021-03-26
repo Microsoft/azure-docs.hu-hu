@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698756"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561015"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -56,7 +56,7 @@ Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-
 
 A MediaGraphCognitiveServicesVisionExtension csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a rendszerképet a **megosztott memórián** keresztül egy másik peremhálózati modulhoz, amely egy gRPC-végpont MÖGÖTTi AI-műveleteket futtat. Ebben a példában ez a peremhálózati modul a térbeli elemzési modul. A MediaGraphCognitiveServicesVisionExtension processzor csomópontja két dolgot tesz:
 
-* Összegyűjti az eredményeket, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
+* Összegyűjti az eredményeket, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../iot-fundamentals/iot-glossary.md#iot-edge-hub). 
 * Egy 30 másodperces videoklipet is rögzít az RTSP-forrásról a [Signal Gate-processzor](media-graph-concept.md#signal-gate-processor) használatával, és Media Services eszközként tárolja azt.
 
 ## <a name="create-the-computer-vision-resource"></a>A Computer Vision erőforrás létrehozása

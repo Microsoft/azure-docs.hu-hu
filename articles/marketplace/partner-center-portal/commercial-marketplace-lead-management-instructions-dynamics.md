@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 067a30d8f16b06b1b29ad494363d180886d1ab8b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98199774"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560080"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
 
@@ -32,7 +32,7 @@ A cikk lépéseinek végrehajtásához a következő felhasználói engedélyek 
 
 ## <a name="install-the-solution"></a>A megoldás telepítése
 
-1. Töltse le a [Microsoft Marketplace vezető író megoldását](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip), és mentse helyileg a számítógépre.
+1. Töltse le a [Microsoft Marketplace vezető író megoldását](https://referralsflowpackages.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip), és mentse helyileg a számítógépre.
 
 1. Nyissa meg a Dynamics 365 Customer Engagementt a Dynamics-példány URL-címére, például: `https://tenant.crm.dynamics.com` .
 

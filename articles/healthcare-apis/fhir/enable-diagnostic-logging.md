@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
 ms.date: 03/03/2021
-ms.openlocfilehash: d8f7a2b2f31fb192147c1950866cff77064a3671
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a884dac90273e98868fed6bfe1cbed23b939d286
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019158"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557700"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Diagnosztikai naplózás engedélyezése a FHIR készült Azure API-ban
 
@@ -42,7 +42,7 @@ A mérőszámokat a Figyelés területen tekintheti meg | Metrikák a portálró
     2. **Adatfolyam küldése az Event hub** -nak egy harmadik féltől származó szolgáltatás vagy egyéni analitikai megoldás betöltéséhez. Ennek a lépésnek a konfigurálásához létre kell hoznia egy Event hub-névteret és egy Event hub-házirendet.
     3. **Stream a Azure Monitor log Analytics** munkaterületére. Ennek a lehetőségnek a kiválasztásához létre kell hoznia a naplók Analytics-munkaterületet.
 
-6. Válassza a **AuditLogs** és/vagy a **AllMetrics** lehetőséget. A metrikák közé tartozik a szolgáltatás neve, a rendelkezésre állás, az adatok mérete, a teljes késés, a kérelmek teljes száma, az összes hiba és az időbélyeg. A [támogatott mérőszámokról](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)részletesebben is tájékozódhat. 
+6. Válassza a **AuditLogs** és/vagy a **AllMetrics** lehetőséget. A metrikák közé tartozik a szolgáltatás neve, a rendelkezésre állás, az adatok mérete, a teljes késés, a kérelmek teljes száma, az összes hiba és az időbélyeg. A [támogatott mérőszámokról](../../azure-monitor/essentials/metrics-supported.md#microsofthealthcareapisservices)részletesebben is tájékozódhat. 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Az Azure FHIR diagnosztikai beállításai. Válassza a AuditLogs és/vagy a AllMetrics lehetőséget." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 18956948a32a79c1435bf4fc1554b09480c9010c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 175fb82a5fdf300915f89c3d8cdc238638a742e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100869"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565129"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>Gyors útmutató: Azure-beli bejárati ajtó standard/prémium szintű profiljának létrehozása – Azure Portal
 
@@ -58,7 +58,7 @@ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingye
     | **Végpont neve** | Adjon meg egy globálisan egyedi nevet a végpont számára. |
     | **Forrás típusa** | Válassza ki az erőforrás típusát a forráshoz. Ebben a példában egy olyan app Service-t választunk ki, amelyben a saját hivatkozás engedélyezve van. |
     | **Forrás állomásneve** | Adja meg a forráshoz tartozó állomásnevet. |
-    | **Privát hivatkozás engedélyezése** | Ha privát kapcsolattal szeretne rendelkezni az Azure bejárati ajtaja és a forrás között. További részletekért tekintse meg a [Private link útmutatót](concept-private-link.md) , és [engedélyezze a privát hivatkozásokat](how-to-enable-private-link.md).
+    | **Privát hivatkozás engedélyezése** | Ha privát kapcsolattal szeretne rendelkezni az Azure bejárati ajtaja és a forrás között. További részletekért tekintse meg a [Private link útmutatót](concept-private-link.md) , és [engedélyezze a privát hivatkozásokat](./how-to-enable-private-link-web-app.md).
     | **Gyorsítótárazás** | Jelölje be a jelölőnégyzetet, ha a tartalmakat globálisan szeretné gyorsítótárazni a felhasználók számára az Azure bejárati ajtó peremhálózati pop-i és Microsoft Network használatával. |
     | **WAF szabályzat** | Válassza az **új létrehozása** lehetőséget, vagy válasszon egy meglévő WAF-szabályzatot a legördülő listából, ha engedélyezni szeretné ezt a funkciót. |
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5e01c8d1ac16e5e8be405660a0726796789e645
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad8968fdb6548da29a031f0e44bd3671f67b5553
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738973"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557717"
 ---
 # <a name="azure-security-baseline-for-azure-resource-graph"></a>Azure-beli biztonsági alapterv Azure Resource Graph-hoz
 
@@ -30,7 +30,7 @@ Ha szeretné megtekinteni, hogy az Azure Resource Graph hogyan térképezi fel t
 
 **Útmutató**: az Azure Resource Graph az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján biztosít hozzáférést az erőforrás-típusokhoz és a tulajdonságokhoz. Rendszeresen naplózza és áttekintheti a rendszerbiztonsági tag (felhasználók, csoportok és szolgáltatásfiókok) számára biztosított hozzáférést, így biztosítva, hogy a lekérdezések a megfelelő erőforrások eredményét adják vissza.
 
-- [Engedélyek az Azure Resource Graphban](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Engedélyek az Azure Resource Graphban](../overview.md#permissions-in-azure-resource-graph)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../../../active-directory/governance/access-reviews-overview.md)
 
@@ -46,7 +46,7 @@ Ha szeretné megtekinteni, hogy az Azure Resource Graph hogyan térképezi fel t
 
 **Útmutató**: az Azure RBAC használatával szabályozhatja az adathozzáférést és az erőforrásokat. Az Azure Resource Graph használatához megfelelő hozzáféréssel kell rendelkeznie a lekérdezni kívánt erőforrásokhoz is. Ennek a hozzáférésnek csak olvashatónak kell lennie, és csak a szükséges személyzet számára adható meg.
 
-- [Engedélyek az Azure Resource Graphban](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Engedélyek az Azure Resource Graphban](../overview.md#permissions-in-azure-resource-graph)
 
 - [Az Azure RBAC konfigurálása](../../../role-based-access-control/role-assignments-rest.md)
 
@@ -96,5 +96,5 @@ Ha szeretné megtekinteni, hogy az Azure Resource Graph hogyan térképezi fel t
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../../../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../../../security/benchmarks/security-baselines-overview.md)

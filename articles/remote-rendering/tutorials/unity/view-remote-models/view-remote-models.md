@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd3596dd7b2cd01e80d9cf4db9bbc179048e7fcf
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: b98f5253cc60edc8949c06a645d81849dff2de7c
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105035965"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543686"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -753,7 +753,7 @@ A fenti kód a következő lépéseket hajtja végre:
 1. Hozzon létre egy [távoli entitást](../../../concepts/entities.md).
 1. Hozzon létre egy helyi GameObject, amely a távoli entitást jelöli.
 1. Konfigurálja úgy a helyi GameObject, hogy szinkronizálja az állapotát (azaz átalakítja) a távoli entitásba minden keretben.
-1. Állítson be egy nevet, és adjon hozzá egy [**WorldAnchor**](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) a stabilizáció támogatásához.
+1. Állítson be egy nevet, és adjon hozzá egy [**WorldAnchor**](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) a stabilizáció támogatásához.
 1. Blob Storage modell adatainak betöltése a távoli entitásba.
 1. A fölérendelt entitás visszaküldése a későbbi hivatkozáshoz.
 

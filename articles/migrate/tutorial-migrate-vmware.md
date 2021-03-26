@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604542"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567118"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül)
 
@@ -91,7 +91,7 @@ A replikációt a következők szerint engedélyezheti:
     - Dupla titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal
 
    > [!NOTE]
-   > A virtuális gépek CMK-vel való replikálásához létre kell [hoznia egy lemezes titkosítási](https://go.microsoft.com/fwlink/?linkid=2151800) csoportot a cél erőforráscsoport alatt. A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza.
+   > A virtuális gépek CMK-vel való replikálásához létre kell [hoznia egy lemezes titkosítási](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) csoportot a cél erőforráscsoport alatt. A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza.
   
 10. Az **Azure Hybrid Benefit** területen:
 
@@ -189,7 +189,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="complete-the-migration"></a>Az áttelepítés befejezése
 
 1. Az áttelepítés befejezése után kattintson a jobb gombbal a virtuális gépre > a **replikáció leállítása** elemre. Ez leállítja a helyszíni gép replikálását, és megtisztítja a virtuális gép replikációs állapotával kapcsolatos információkat.
-2. Az áttelepítés során a rendszer automatikusan telepíti a virtuálisgép-ügynököt a Windows-alapú virtuális gépekhez és Linuxra. Tekintse át az Azure-beli virtuális gép Linux-ügynökének [követelményeit](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) az áttelepített gépeken, ha a gép Linux operációs rendszerrel rendelkezik a linuxos virtuális gép ügynökének telepítésének biztosításához. 
+2. Az áttelepítés során a rendszer automatikusan telepíti a virtuálisgép-ügynököt a Windows-alapú virtuális gépekhez és Linuxra. Tekintse át az Azure-beli virtuális gép Linux-ügynökének [követelményeit](../virtual-machines/extensions/agent-linux.md#requirements) az áttelepített gépeken, ha a gép Linux operációs rendszerrel rendelkezik a linuxos virtuális gép ügynökének telepítésének biztosításához. 
 3. Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása).
 4. Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.
 5. Az áttelepített Azure virtuálisgép-példány felé irányuló forgalom kivágása.

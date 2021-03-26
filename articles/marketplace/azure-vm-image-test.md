@@ -7,12 +7,12 @@ ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 9ffba221625c57332cd695125651d92adc11cf60
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200381"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558295"
 ---
 # <a name="test-a-virtual-machine-image"></a>Virtuális gép rendszerképének tesztelése
 
@@ -28,7 +28,7 @@ Virtuális gép üzembe helyezése a megosztott rendszerkép-katalógus rendszer
 1. Kattintson a felülvizsgálat + Létrehozás gombra. Az érvényesítés átadása után kattintson a Létrehozás gombra.
 
 > [!NOTE]
-> Ha virtuális GÉPET kell létrehoznia egy VHD-fájlból, kövesse az alábbi cikk utasításait, [készítse elő Azure Resource Manager sablont](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#prepare-an-azure-resource-manager-template) , vagy [helyezzen üzembe egy Azure-beli virtuális gépet a PowerShell használatával](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#deploy-an-azure-vm-using-powershell).
+> Ha virtuális GÉPET kell létrehoznia egy VHD-fájlból, kövesse az alábbi cikk utasításait, [készítse elő Azure Resource Manager sablont](#connect-the-certification-tool-to-a-vm-image) , vagy [helyezzen üzembe egy Azure-beli virtuális gépet a PowerShell használatával](#how-to-use-powershell-to-consume-the-self-test-api).
 
 Ez a cikk azt ismerteti, hogyan lehet tesztelni és elküldeni a virtuális gép (VM) lemezképét a kereskedelmi piactéren, hogy az megfeleljen az Azure Marketplace legújabb közzétételi követelményeinek.
 

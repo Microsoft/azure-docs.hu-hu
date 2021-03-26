@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a993a4ad4c709a3736f5d5f577741c82c95af83f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: fe580848e3bbea701718463123a6bbcd4848a9f3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107261"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564602"
 ---
 # <a name="what-is-azure-communication-services"></a>Az Azure Communication Services bemutatása
 
@@ -42,26 +42,30 @@ A vegyes forgatókönyvek támogatottak. A kommunikációs szolgáltatások alka
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
-Az alábbi források nagyszerű kiindulópontot jelentenek, ha most ismerkedik az Azure kommunikációs szolgáltatásokkal:
+Az alábbi források nagyszerű helyet biztosítanak az Azure kommunikációs szolgáltatásainak megkezdéséhez. 
 <br>
 
 | Erőforrás                               |Leírás                           |
 |---                                    |---                                   |
-|**[Hívási alkalmazás csatlakoztatása Teams-értekezlethez](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Az Azure kommunikációs szolgáltatásaival egyéni Meeting-élmények hozhatók létre, amelyek a Microsoft csapatait használják. A kommunikációs szolgáltatási megoldás (ok) felhasználóinak interakcióba léphetnek a csapat résztvevőinek hang-, videó-, csevegési és nyomtatómegosztást.|
-|**[Communication Services-erőforrás létrehozása](./quickstarts/create-communication-resource.md)**|Az Azure kommunikációs szolgáltatások használatának megkezdéséhez használja a Azure Portal vagy a Communication Services SDK-t az első kommunikációs szolgáltatások erőforrásának kiépítéséhez. A kommunikációs szolgáltatások erőforrás-kapcsolati karakterlánca után kiépítheti az első felhasználói hozzáférési jogkivonatait.|
-|**[Az első felhasználói hozzáférési jogkivonat létrehozása](./quickstarts/access-tokens.md)**|A felhasználói hozzáférési jogkivonatok segítségével hitelesítheti szolgáltatásait az Azure kommunikációs szolgáltatások erőforrásán. Ezek a tokenek a kommunikációs szolgáltatások SDK-val lettek kiépítve és kibocsátva.|
+|**[Communication Services-erőforrás létrehozása](./quickstarts/create-communication-resource.md)**|Az Azure kommunikációs szolgáltatások használatának megkezdéséhez használja a Azure Portal vagy a kommunikációs szolgáltatások ügyféloldali függvénytárát az első kommunikációs szolgáltatások erőforrásának kiépítéséhez. A kommunikációs szolgáltatások erőforrás-kapcsolati karakterlánca után kiépítheti az első felhasználói hozzáférési jogkivonatait.|
 |**[Telefonszám beszerzése](./quickstarts/telephony-sms/get-phone-number.md)**|Az Azure kommunikációs szolgáltatásokkal telefonszámokat helyezhet üzembe és szabadíthat fel. Ezeket a telefonszámokat a kimenő hívások kezdeményezésére és SMS kommunikációs megoldások létrehozására lehet használni.|
-|**[SMS küldése az alkalmazásból](./quickstarts/telephony-sms/send.md)**|Az Azure Communication Services SMS SDK lehetővé teszi, hogy SMS-üzeneteket küldjön és fogadjon .NET-és JavaScript-alkalmazásaiból.|
-|**[Ismerkedés a hang-és videohívások meghívásával](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Az Azure kommunikációs szolgáltatások lehetővé teszik hang-és videohívás hozzáadását az alkalmazásokhoz a hívó SDK használatával. Ezt a kódtárat a WebRTC működteti, és lehetővé teszi, hogy az alkalmazásokon belül társközi, multimédia és valós idejű kommunikációt hozzon létre.|
-|**[Ismerkedés a csevegéssel](./quickstarts/chat/get-started.md)**|Az Azure Communication Services csevegési SDK használatával valós idejű csevegést építhet be alkalmazásaiba.|
+|**[SMS küldése az alkalmazásból](./quickstarts/telephony-sms/send.md)**|Az Azure kommunikációs szolgáltatások SMS ügyféloldali kódtára lehetővé teszi SMS-üzenetek küldését és fogadását a .NET-és JavaScript-alkalmazásokból.|
 
+A kommunikációs szolgáltatások erőforrásának létrehozása után megkezdheti az ügyfél-forgatókönyvek, például a hang-és videohívás-hívások vagy a szöveges csevegés létrehozását.
+
+| Erőforrás                               |Leírás                           |
+|---                                    |---                                   |
+|**[Az első felhasználói hozzáférési jogkivonat létrehozása](./quickstarts/access-tokens.md)**|A felhasználói hozzáférési jogkivonatok segítségével hitelesítheti szolgáltatásait az Azure kommunikációs szolgáltatások erőforrásán. Ezek a tokenek a kommunikációs szolgáltatások ügyféloldali kódtár használatával lettek kiépítve és kibocsátva.|
+|**[Ismerkedés a hang-és videohívások meghívásával](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Az Azure kommunikációs szolgáltatások lehetővé teszik hang-és videohívás hozzáadását az alkalmazásokhoz a hívó ügyféloldali kódtár használatával. Ezt a kódtárat a WebRTC működteti, és lehetővé teszi, hogy az alkalmazásokon belül társközi, multimédia és valós idejű kommunikációt hozzon létre.|
+|**[Hívási alkalmazás csatlakoztatása Teams-értekezlethez](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Az Azure kommunikációs szolgáltatásaival egyéni Meeting-élmények hozhatók létre, amelyek a Microsoft csapatait használják. A kommunikációs szolgáltatási megoldás (ok) felhasználóinak interakcióba léphetnek a csapat résztvevőinek hang-, videó-, csevegési és nyomtatómegosztást.|
+|**[Ismerkedés a csevegéssel](./quickstarts/chat/get-started.md)**|Az Azure kommunikációs szolgáltatások csevegési ügyfelének könyvtára használható a valós idejű csevegés alkalmazásba való integrálásához.|
 
 ## <a name="samples"></a>Példák
 
 Az alábbi példák az Azure kommunikációs szolgáltatások SDK-k végpontok közötti kihasználtságát szemléltetik. Nyugodtan használhatja ezeket a mintákat a saját kommunikációs szolgáltatások megoldásának elindításához.
 <br>
 
-| Minta neve                               | Leírás                           |
+| Minta neve                               | Description                           |
 |---                                    |---                                   |
 |**[A Hero-mintát hívó csoport](./samples/calling-hero-sample.md)**|Ismerje meg, hogyan használható a kommunikációs szolgáltatások SDK-k egy csoportos hívási élmény létrehozására.|
 |**[A csoportos csevegési hős mintája](./samples/chat-hero-sample.md)**|Ismerje meg, hogy a kommunikációs szolgáltatások SDK-k hogyan használhatók csoportos csevegési élmény létrehozásához.|
@@ -82,7 +86,7 @@ Az alábbi források segítséget nyújtanak az Azure kommunikációs szolgálta
 
 Két másik Microsoft kommunikációs termék közül választhat, amelyek a kommunikációs szolgáltatásokkal közvetlenül nem működnek együtt:
 
- - [Microsoft Graph a felhőalapú kommunikációs API](/graph/cloud-communications-concept-overview) -k lehetővé teszik a szervezetek számára, hogy a M365-licencekkel Azure Active Directory felhasználókhoz kötött kommunikációs élményt hozzanak létre. Ez ideális a Azure Active Directoryhoz kötött alkalmazások számára, illetve a termelékenységi tapasztalatok kibővítésére a Microsoft Teams szolgáltatásban. Emellett API-k is létrehozhatnak alkalmazásokat és testreszabásokat a [csapatok felhasználói felületén belül.](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)
+ - [Microsoft Graph a Felhőbeli kommunikációs API](/graph/cloud-communications-concept-overview) -k lehetővé teszik a szervezetek számára, hogy Microsoft 365 licenccel rendelkező Azure Active Directory felhasználókhoz kötődő kommunikációs élményt hozzanak létre. Ez ideális a Azure Active Directoryhoz kötött alkalmazások számára, illetve a termelékenységi tapasztalatok kibővítésére a Microsoft Teams szolgáltatásban. Emellett API-k is létrehozhatnak alkalmazásokat és testreszabásokat a [csapatok felhasználói felületén belül.](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)
 
  - Az [Azure PlayFab fél](/gaming/playfab/features/multiplayer/networking/) leegyszerűsíti az alacsony késésű csevegés és az adatkommunikáció hozzáadását a játékokhoz. A kommunikációs szolgáltatásokkal rendelkező Power Gaming chat-és hálózatkezelési rendszerek esetében a PlayFab egy testre szabott lehetőség, és az Xbox-on is ingyenes.
 

@@ -3,12 +3,12 @@ title: Az Azure-Blobok működési biztonsági mentésének áttekintése
 description: Ismerje meg az Azure-Blobok működés közbeni biztonsági mentését (előzetes verzió).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101745097"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558754"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Azure-Blobok operatív biztonsági mentésének áttekintése (előzetes verzió)
 
@@ -22,7 +22,7 @@ A Blobok operatív biztonsági mentése egy **helyi biztonsági mentési** megol
 
 Az operatív biztonsági mentés blob platform-képességeket használ az adatai védelme érdekében, és szükség esetén lehetővé teszi a helyreállítást:
 
-- **Időponthoz tartozó visszaállítás**: a [blob-időponthoz tartozó visszaállítás](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview) lehetővé teszi a blob-Adathelyreállítás korábbi állapotba való visszaállítását. Ez viszont a **Soft delete** használatával **módosítja a hírcsatornák** és a **Blobok verziószámozását** , hogy megőrizze az adatmennyiséget a megadott időtartamra. Az üzemeltetési biztonsági mentés gondoskodik az időponthoz való visszaállítás engedélyezéséről, valamint az alapul szolgáló képességekről, hogy biztosítsa az adatmegőrzést a megadott időtartamra.
+- **Időponthoz tartozó visszaállítás**: a [blob-időponthoz tartozó visszaállítás](../storage/blobs/point-in-time-restore-overview.md) lehetővé teszi a blob-Adathelyreállítás korábbi állapotba való visszaállítását. Ez viszont a **Soft delete** használatával **módosítja a hírcsatornák** és a **Blobok verziószámozását** , hogy megőrizze az adatmennyiséget a megadott időtartamra. Az üzemeltetési biztonsági mentés gondoskodik az időponthoz való visszaállítás engedélyezéséről, valamint az alapul szolgáló képességekről, hogy biztosítsa az adatmegőrzést a megadott időtartamra.
 
 - **Zárolás törlése**: a törlési zárolás megakadályozza a Storage-fiók törlését véletlenül vagy jogosulatlan felhasználóktól. A konfigurált működési biztonsági mentés automatikusan törli a törlési zárolást is, hogy csökkentse a Storage-fiókok törlése miatti adatvesztés lehetőségét.
 
@@ -63,9 +63,9 @@ Az Operational Backup lehetővé teszi a Storage-fiókban lévő összes blokk b
 
 A Blobok működés közbeni biztonsági mentésének használatakor nem számítunk fel semmilyen felügyeleti díjat vagy használati díjat. Azonban a következő díjakat kell fizetnie:
 
-- A visszaállítja a blob időponthoz való visszaállítását, és a feldolgozott adatok mennyisége alapján felszámított díjakat. További információ: [az időponthoz tartozó visszaállítás díjszabása](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing).
+- A visszaállítja a blob időponthoz való visszaállítását, és a feldolgozott adatok mennyisége alapján felszámított díjakat. További információ: [az időponthoz tartozó visszaállítás díjszabása](../storage/blobs/point-in-time-restore-overview.md#pricing-and-billing).
 
-- Az adatok megőrzése a [Blobok helyreállított törlésével](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview), a [hírcsatornák támogatásának módosításával az Azure Blob Storageban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-change-feed)és a [blob verziószámozása](https://docs.microsoft.com/azure/storage/blobs/versioning-overview).
+- Az adatok megőrzése a [Blobok helyreállított törlésével](../storage/blobs/soft-delete-blob-overview.md), a [hírcsatornák támogatásának módosításával az Azure Blob Storageban](../storage/blobs/storage-blob-change-feed.md)és a [blob verziószámozása](../storage/blobs/versioning-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

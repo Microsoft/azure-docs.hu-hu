@@ -3,12 +3,12 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ba3cee2ecd7efcbb33c19d7ed159083e843c84a8
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: a774eb08989e8fc45a117d83d81a5b510e8202b4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952116"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559910"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -56,8 +56,8 @@ A legtöbb feladat és szolgáltatás elvégezhető a delegált erőforrásokon,
   - Győződjön meg arról, hogy ugyanazokat a szabályzatokat alkalmazza az ügyfelek hibrid környezetei között
   - Azure Security Center használata az ügyfelek hibrid környezetei közötti megfelelés figyeléséhez
 - Hibrid Kubernetes-fürtök kezelése a skálán – [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../../azure-arc/kubernetes/overview.md):
-  - Az Azure-ban delegált előfizetésekhez és/vagy erőforráscsoportokhöz [kapcsolódó Kubernetes-fürtök kezelése](../../azure-arc/kubernetes/connect-cluster.md)
-  - [GitOps használata](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) csatlakoztatott fürtökhöz
+  - Az Azure-ban delegált előfizetésekhez és/vagy erőforráscsoportokhöz [kapcsolódó Kubernetes-fürtök kezelése](../../azure-arc/kubernetes/quickstart-connect-cluster.md)
+  - [GitOps használata](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) csatlakoztatott fürtökhöz
   - Házirendek betartatása a csatlakoztatott fürtök között
 
 [Azure Automation](../../automation/index.yml):

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5184639d8c34be705aeeb691f1cf38486f850673
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645467"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543958"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Az alkalmazások konfigurációjának megtervezése Azure Active Directory
 
@@ -74,31 +74,19 @@ A rendszergazdák a következőket konfigurálhatják:
 
 ## <a name="plan-consent-configuration"></a>A engedélyezési konfiguráció megtervezése
 
-Kétféle beleegyezik: felhasználói beleegyezett és beleegyezik az adatokhoz hozzáférő alkalmazások.
-
-![A beleegyezés konfigurációjának képernyőképe](./media/my-apps-deployment-plan/my-apps-consent.png)
-
 ### <a name="user-consent-for-applications"></a>Felhasználói beleegyező alkalmazások 
 
-A felhasználóknak vagy a rendszergazdáknak hozzá kell járulniuk bármely alkalmazás használati feltételeihez és adatvédelmi szabályzatához. El kell döntenie, hogy a felhasználók vagy csak a rendszergazdák adhatnak-e hozzá alkalmazásokat. **Javasoljuk, hogy ha az üzleti szabályok engedélyezik, a rendszergazda beleegyezik, hogy megőrizze a bérlőben lévő alkalmazások felügyeletét**.
+Ahhoz, hogy egy felhasználó be tudja jelentkezni egy alkalmazásba, és az alkalmazás hozzáférhessen a szervezet adataihoz, egy felhasználónak vagy rendszergazdának meg kell adnia az alkalmazás engedélyeit. Megadhatja, hogy engedélyezett-e a felhasználói beleegyezettség, és hogy milyen feltételek mellett. **A Microsoft azt javasolja, hogy csak az ellenőrzött közzétevők alkalmazásai számára engedélyezze a felhasználói jóváhagyást.**
 
-A rendszergazdai engedély használatához a szervezet globális rendszergazdájának kell lennie, és az alkalmazásoknak a következőknek kell lenniük:
-
-* Regisztrálva van a szervezetben.
-
-* Regisztrálva van egy másik Azure AD-szervezetben, és korábban legalább egy felhasználó beleegyezett hozzá.
-
-Ha engedélyezni szeretné a felhasználók számára a hozzájárulásukat, el kell döntenie, hogy szeretne-e beleegyezni bármely alkalmazással, vagy csak bizonyos körülmények között.
-
-További információkért lásd: [a végfelhasználók beleegyezett az alkalmazásba Azure Active Directory.](../manage-apps/configure-user-consent.md)
+További információ: a [végfelhasználók beleegyezett az alkalmazásokkal való megadásának beállítása](../manage-apps/configure-user-consent.md)
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Az adatokhoz hozzáférő alkalmazások csoportjának tulajdonosi engedélye
 
-Annak megállapítása, hogy az Azure AD biztonsági csoportok vagy M365-csoportok tulajdonosai képesek-e beleegyezni az alkalmazásokkal a saját csoportokba tartozó adathozzáféréshez. Letilthatja, engedélyezheti az összes csoport tulajdonosát, vagy engedélyezheti a csoport tulajdonosainak csak egy részhalmazát.
+A csoport-és csapat tulajdonosai engedélyezhetik az alkalmazások, például a külső gyártók által közzétett alkalmazások számára, hogy hozzáférjenek a szervezet adataihoz a csoporthoz társítva. További információ: [erőforrás-specifikus beleegyezett a Microsoft Teams-ben](https://docs.microsoft.com/microsoftteams/resource-specific-consent) . 
+
+Beállíthatja, hogy engedélyezi vagy letiltja ezt a funkciót.
 
 További információ: csoporttagság- [engedélyezési engedélyek konfigurálása](../manage-apps/configure-user-consent-groups.md).
-
-Ezután konfigurálja a [felhasználó és a csoport tulajdonosának beleegyező beállításait](https://portal.azure.com/) a Azure Portal.
 
 ### <a name="plan-communications"></a>A kommunikáció tervezése
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d965ec2f846f09dd61342b3961e7ea8106f6a19f
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 6f54bd88e58ccfef068900fc3c7b249cde1c233d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104954887"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558550"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
 
@@ -1002,9 +1002,9 @@ A API Management szolgáltatás biztonsági mentési és visszaállítási funkc
 
 - [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-- [A API Management biztonsági mentési művelet meghívása](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
+- [A API Management biztonsági mentési művelet meghívása](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
-- [A API Management visszaállítási műveletének meghívása](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+- [A API Management visszaállítási műveletének meghívása](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 **Felelősség**: Ügyfél
 

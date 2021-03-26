@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 634eb2d22e3fa570ac9412d4fb8afd917b5c2eaa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607653"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564007"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>A VMware virtuális gépek ügynök nélküli áttelepítésének méretezése az Azure-ba
 
@@ -176,4 +176,4 @@ Ebben a cikkben megtanulta a következőket:
 - Virtuális gépek replikálása kibővíthető készülék használatával
 
 
-[További](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) információ a kiszolgálók Azure-ba való áttelepítéséről a Azure Migrate: Server Migration Tool használatával.
+[További](./tutorial-migrate-vmware.md) információ a kiszolgálók Azure-ba való áttelepítéséről a Azure Migrate: Server Migration Tool használatával.

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf66723f878f8b277d71577c068afdad56708ad6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598405"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563271"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Kódolási forgatókönyv-alapú áttelepítési útmutató
 
@@ -43,7 +43,7 @@ Az alábbi képre kattintva megtekintheti a nagyobb verziót.
 
 [![A v2 ](./media/migration-guide/V2-pretty.svg) kódolási munkafolyamata ](./media/migration-guide/V2-pretty.svg#lightbox)
 
-1. Telepítés
+1. Beállítás
     1. Hozzon létre egy eszközt, vagy használja a és a meglévő eszközt. Ha új eszközt használ, töltse fel a tartalmat az adott eszközre. Ha meglévő eszközt használ, az objektumban már létező fájlokat kell kódolnia.
     2. A következő elemek értékeinek lekérése:
         - Adathordozó-feldolgozó azonosítója vagy objektum
@@ -143,7 +143,3 @@ A v2 API-ban indexelő v1 processzort használó ügyfelek számára létre kell
 ## <a name="samples"></a>Példák
 
 A [v2 és v3 kód is összehasonlítható a kódban szereplő mintákkal](migrate-v-2-v-3-migration-samples.md).
-
-## <a name="next-steps"></a>Következő lépések
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

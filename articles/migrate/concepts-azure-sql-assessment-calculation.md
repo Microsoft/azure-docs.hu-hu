@@ -5,16 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: 2bb68c8c183e3de132bc7cf4504714a260ea2683
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: c2e739a45c7915c957ca89e5b01b98afa945d03e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025118"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557190"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Értékelés áttekintése (Migrálás az Azure SQL-be)
 
-Ez a cikk áttekintést nyújt a helyszíni SQL Server-példányok VMware-környezetből Azure SQL Database-be vagy felügyelt példányokra való áttelepítésének értékeléséről a [Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-discovery-and-assessment-tool)használatával.
+Ez a cikk áttekintést nyújt a helyszíni SQL Server-példányok VMware-környezetből Azure SQL Database-be vagy felügyelt példányokra való áttelepítésének értékeléséről a [Azure Migrate: Discovery and Assessment Tool](./migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)használatával.
 
 ## <a name="whats-an-assessment"></a>Mi az értékelés?
 A felderítési és értékelési eszközzel végzett értékelés az adatok időbeli pillanatfelvétele, amely a felkészültséget méri, és a helyszíni kiszolgálók Azure-ba történő áttelepítésének hatását becsüli.
@@ -80,7 +80,7 @@ Itt látható az Azure SQL Assessment tulajdonságai:
 **Százalékos kihasználtság** | A percentilis kihasználtsága meghatározza a megadásában használt teljesítmény mintájának százalékos értékét.
 **Kényelmi faktor** | Az értékelés során használt puffer. A szolgáltatás olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat valószínű növekedése.<br/><br/> Például a 20%-os kihasználtságú 10 Magos példány általában egy kétmagos példányt eredményez. A 2,0-es kényelmi tényezővel az eredmény egy négy Magos példány.
 **Ajánlat/licencelési program** | Az [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/) , amelyben regisztrálva van. Jelenleg csak az utólagos elszámolású és az utólagos elszámolású fejlesztési/tesztelési lehetőség közül választhat. Vegye figyelembe, hogy további kedvezményt is igénybe vehet, ha foglalt kapacitást alkalmaz, és az utólagos elszámolású ajánlaton Azure Hybrid Benefit.
-**Szolgáltatási szint** | A legmegfelelőbb szolgáltatási szintű lehetőség a Azure SQL Database és/vagy az Azure SQL felügyelt példányának áttelepítéséhez szükséges üzleti igények kielégítésére:<br/><br/>**Ajánlott** , ha azt szeretné, hogy a Azure Migrate javasolja a kiszolgálók számára legmegfelelőbb szolgáltatási szintet. Ez lehet általános célú vagy üzleti szempontból kritikus. <br/><br/> **Általános célú** Ha olyan Azure SQL-konfigurációt szeretne, amely költségvetés-alapú számítási feladatokhoz készült. [További információ](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> **Üzletileg kritikus** Ha olyan Azure SQL-konfigurációt szeretne használni, amely kis késleltetésű számítási feladatokhoz készült, nagy rugalmassággal és gyors feladatátvételsel. [További információ](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**Szolgáltatási szint** | A legmegfelelőbb szolgáltatási szintű lehetőség a Azure SQL Database és/vagy az Azure SQL felügyelt példányának áttelepítéséhez szükséges üzleti igények kielégítésére:<br/><br/>**Ajánlott** , ha azt szeretné, hogy a Azure Migrate javasolja a kiszolgálók számára legmegfelelőbb szolgáltatási szintet. Ez lehet általános célú vagy üzleti szempontból kritikus. <br/><br/> **Általános célú** Ha olyan Azure SQL-konfigurációt szeretne, amely költségvetés-alapú számítási feladatokhoz készült. [További információ](../azure-sql/database/service-tier-general-purpose.md) <br/><br/> **Üzletileg kritikus** Ha olyan Azure SQL-konfigurációt szeretne használni, amely kis késleltetésű számítási feladatokhoz készült, nagy rugalmassággal és gyors feladatátvételsel. [További információ](../azure-sql/database/service-tier-business-critical.md)
 **Pénznem** | A fiók számlázási pénzneme.
 **Kedvezmény (%)** | Az Azure-ajánlaton felül kapott előfizetés-specifikus kedvezmények. Az alapértelmezett beállítás 0%.
 **Azure Hybrid Benefit** | Megadja, hogy már rendelkezik-e SQL Server licenccel. <br/><br/> Ha így tesz, és a SQL Server-előfizetések aktív frissítési garanciája van érvényben, akkor a licencek az Azure-ba való beszerzése után a Azure Hybrid Benefit is alkalmazható.
@@ -110,11 +110,11 @@ Ha a cél központi telepítési típust az Azure SQL Assessment tulajdonságaib
 
  **Azure SQL DB-készültség** | **Azure SQL MI készültség** | **Ajánlott központi telepítési típus** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
  --- | --- | --- | --- |
- Kész | Kész | Azure SQL DB vagy <br/>Azure SQL MI | Igen
- Kész | Nem áll készen, vagy<br/> Ismeretlen | Azure SQL DB | Igen
- Nem áll készen, vagy<br/>Ismeretlen | Kész | Azure SQL MI | Igen
- Nem áll készen | Nem áll készen | Potenciálisan készen áll az Azure-beli virtuális gépekre | Nem
- Nem áll készen, vagy<br/>Ismeretlen | Nem áll készen, vagy<br/>Ismeretlen | Ismeretlen | Nem
+ Kész | Kész | Azure SQL DB vagy <br/>Azure SQL MI | Yes
+ Kész | Nem áll készen, vagy<br/> Ismeretlen | Azure SQL DB | Yes
+ Nem áll készen, vagy<br/>Ismeretlen | Kész | Azure SQL MI | Yes
+ Nem áll készen | Nem áll készen | Potenciálisan készen áll az Azure-beli virtuális gépekre | No
+ Nem áll készen, vagy<br/>Ismeretlen | Nem áll készen, vagy<br/>Ismeretlen | Ismeretlen | No
 
 > [!NOTE]
 > Ha az ajánlott központi telepítési típus az értékelés tulajdonságainál **javasolt** , és ha a forrás SQL Server jól illeszkedik az Azure SQL db önálló adatbázisához és az Azure SQL felügyelt példányaihoz, az értékelés egy adott lehetőséget javasol, amely optimalizálja a költségeket, és a méret és a teljesítmény határain belül elfér.
@@ -124,7 +124,7 @@ Ha a cél központi telepítési típust az Azure SQL Assessment tulajdonságaib
 Ha az SQL-példány nem áll készen a Azure SQL Database és az Azure SQL felügyelt példányára, az ajánlott központi telepítési típus az Azure-beli *virtuális gép számára potenciálisan készként* van megjelölve.
 - A felhasználónak javasoljuk, hogy hozzon létre egy értékelést Azure Migrate az "Azure VM" kifejezéssel, amely meghatározza, hogy a példányt futtató kiszolgáló készen áll-e az Azure-beli virtuális gépekre való áttelepítésre. Vegye figyelembe:
     - Az Azure-beli virtuális gépek felmérései a Azure Migrate jelenleg nem összpontosítanak, és nem fogják figyelembe venni az SQL-példányok és-adatbázisok Azure-beli virtuális gépen való futtatásának adott teljesítmény-mérőszámait. 
-    - Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
+    - Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
 
 
 ## <a name="calculate-sizing"></a>Méretezés kiszámítása

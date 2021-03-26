@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c1fbaf9be4cb128f0e4390a8c97c6f0b9330ce2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705398"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559876"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminológia és entitások változása Media Services v2 és v3 között
 
@@ -90,7 +90,3 @@ Tekintse át Media Services v3 erőforrásokra alkalmazott elnevezési konvenci�
 | Élő esemény készenléti módja <!--new row --> | Nem volt készenléti mód a v2-hez. | A készenléti üzemmód egy új v3-szolgáltatás, amely megkönnyíti az élő események meleg készletének kezelését. A futó állapotba való áttérés előtt az ügyfelek mostantól alacsonyabb áron indíthatják el az élő eseményeket a készenléti módban. Ez javítja a csatorna indítási időpontját, és csökkenti a gyors üzembe helyezéshez szükséges, meleg készletek működési költségeit. |
 | Élő esemény számlázása <!--new row --> | <!-- empty-->| Az élő események számlázása az élő csatorna mérőszámán alapul. |
 | Élő kimenetek <!--new row --> | A programokat a létrehozás után kell elindítani. | Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak. |
-
-## <a name="next-steps"></a>Következő lépések
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

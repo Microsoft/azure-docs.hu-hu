@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 76678a5695fdffd5325543a28398e867ab3ab6f5
+  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101665761"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105560386"
 landingContent:
 - title: Az eszköz frissítése
   linkLists:
@@ -24,6 +24,18 @@ landingContent:
     links:
     - text: Mi az IoT Hub eszköz frissítése?
       url: understand-device-update.md
+- title: Tudjon meg többet
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Eszköz-frissítési fiók létrehozása
+      url: create-device-update-account.md
+    - text: Frissítés importálása
+      url: import-update.md
+    - text: Frissítési csoport létrehozása
+      url: create-update-group.md
+    - text: Frissítés központi telepítése
+      url: deploy-update.md
   - linkListType: concept
     links:
     - text: Az eszköz frissítésének módja Plug and Play
@@ -36,41 +48,19 @@ landingContent:
       url: import-concepts.md
     - text: Az eszköz frissítési csoportjainak ismertetése
       url: device-update-groups.md
-- title: Ismerkedés az oktatóanyagokkal
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Eszköz frissítése a málna PI-ban
-      url: device-update-raspberry-pi.md
-  - linkListType: tutorial
-    links:
-    - text: Eszköz frissítése szimulátoron
-      url: device-update-simulator.md
-  - linkListType: tutorial
-    links:
-    - text: Eszköz frissítése Ubuntu Server 18,04 x64 Package Agent-ügynökön
-      url: device-update-ubuntu-agent.md
-- title: Útmutató az eszközök frissítéséhez
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Eszköz-frissítési fiók létrehozása
-      url: create-device-update-account.md
-  - linkListType: how-to-guide
-    links:
-    - text: Frissítés importálása
-      url: import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: Frissítési csoport létrehozása
-      url: create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: Frissítés központi telepítése
-      url: deploy-update.md
 - title: Fejlesztői útmutató
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Az eszköz frissítési ügynökének létrehozása, futtatása és módosítása
       url: device-update-agent-provisioning.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Eszköz frissítése szimulátoron
+      url: device-update-simulator.md
+    - text: Eszköz frissítése a málna PI-ban
+      url: device-update-raspberry-pi.md
+    - text: Eszköz frissítése Ubuntu Server 18,04 x64 Package Agent-ügynökön
+      url: device-update-ubuntu-agent.md

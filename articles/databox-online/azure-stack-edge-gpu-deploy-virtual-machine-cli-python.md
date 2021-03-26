@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 43853f2eba05794540a72fe64e748fcafd9073d2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 16dc95d4e32c683634aa2d96fc2af281612346e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102638156"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568307"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön az Azure CLI és a Python használatával
 
@@ -355,7 +355,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
    A Azure Resource Manager Ügyfél-azonosítója nem rögzített. Az Azure Resource Manager-bérlő azonosítója és Azure Resource Manager előfizetés-azonosítója egyaránt megtalálható a `az login` korábban futtatott parancs kimenetében. A Azure Resource Manager-ügyfél titkos kulcsa a beállított Azure Resource Manager jelszó.
 
-   További információ: [Azure Resource Manager Password](azure-stack-edge-j-series-set-azure-resource-manager-password.md).
+   További információ: [Azure Resource Manager Password](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password).
 
 5. Módosítsa a profilt az 2019-03-01-Hybrid verzióra. A profil verziójának módosításához futtassa a következő parancsot:
 

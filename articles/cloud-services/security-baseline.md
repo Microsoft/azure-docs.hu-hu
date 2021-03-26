@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 105fd185900692669fdc40e0c47a03474524e250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c389cfd2af6fe83ec232e5f205041676ba46bd2a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731102"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558193"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure biztonsági alapkonfiguráció az Azure Cloud Services
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (klasszikus) nem helyezhető el Azure Resource Ma
 
 - [Hálózati biztonsági csoport áttekintése](../virtual-network/network-security-groups-overview.md)
 
-- [Társviszony létesítése virtuális hálózatok között](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [Társviszony létesítése virtuális hálózatok között](./cloud-services-connectivity-and-networking-faq.md#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Felelősség**: Ügyfél
 
@@ -89,11 +89,11 @@ A bejövő adatforgalom megakadályozása a Cloud Services alapértelmezett URL-
 
 Megtagadási szabály konfigurálása a klasszikus előfizetés-rendszergazdai hozzárendelések esetében. Alapértelmezés szerint a belső végpontok meghatározása után a kommunikáció bármely szerepkörről a szerepkör belső végpontja számára korlátozás nélkül elvégezhető. A kommunikáció korlátozásához hozzá kell adnia egy NetworkTrafficRules elemet a ServiceDefinition elemhez a szolgáltatás definíciós fájljában.
 
-- [Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére](./cloud-services-connectivity-and-networking-faq.md#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS Protection](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS Protection](./cloud-services-connectivity-and-networking-faq.md#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
-- [Adott IP-cím blokkolása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common#block-a-specific-ip-address)
+- [Adott IP-cím blokkolása](./cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
 **Felelősség**: Ügyfél
 
@@ -175,9 +175,9 @@ Betekintést nyerhet az Azure-ba, az előfizetési szintű eseményekbe. Ilyen i
 
 Hozzon létre egy diagnosztikai beállítást, amely elküldi a műveletnapló Azure Monitor, Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba archiválásra. Az értesítési riasztások Azure Monitor konfigurálása, ha az Azure-Cloud Services kritikus erőforrásai módosulnak. 
 
-- [Azure-tevékenység naplója](/azure/azure-monitor/platform/activity-log)
+- [Azure-tevékenység naplója](../azure-monitor/essentials/activity-log.md)
 
-- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-activity-log)
+- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager figyelés](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -193,7 +193,7 @@ Hozzon létre egy diagnosztikai beállítást, amely elküldi a műveletnapló A
 
 **Útmutató**: az azure-Cloud Services Azure-erőforrásainak időforrásait a Microsoft fenntartja. Előfordulhat, hogy az ügyfeleknek olyan hálózati szabályt kell létrehozniuk, amely lehetővé teszi a környezetében használt időkiszolgálóhoz való hozzáférést az 123-as porton keresztül az UDP protokollal.
 
-- [NTP-kiszolgáló elérése](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
+- [NTP-kiszolgáló elérése](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
 
 **Felelősség**: Megosztott
 
@@ -233,7 +233,7 @@ Az Azure Cloud Services a rendelkezésre állás, a teljesítmény, a hibák és
 
 - [A diagnosztika bekapcsolása a Visual Studióban az üzembe helyezés előtt](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Változási előzmények megtekintése](/azure/azure-monitor/platform/activity-log#view-change-history)
+- [Változási előzmények megtekintése](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Azure Cloud Service Application Insights (klasszikus)](../azure-monitor/app/cloudservices.md)
 
@@ -269,7 +269,7 @@ Az Azure diagnosztikai bővítmény egy Azure Storage-fiókban gyűjti és táro
 
 - [Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával](cloud-services-diagnostics-powershell.md)
 
-- [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](https://docs.microsoft.com/azure/cloud-services/diagnostics-extension-to-storage?&amp;preserve-view=true)
+- [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](./diagnostics-extension-to-storage.md?preserve-view=)
 
 **Felelősség**: Ügyfél
 
@@ -289,7 +289,7 @@ Az Azure diagnosztikai bővítmény egy Azure Storage-fiókban gyűjti és táro
 
 **Útmutató**: az Azure-hoz készült Microsoft antimalware védi az azure-Cloud Servicesokat és a virtuális gépeket. Lehetősége van harmadik féltől származó biztonsági megoldások üzembe helyezésére is, például a webalkalmazási tűzoltó falakra, a hálózati tűzfalakra, az antimalware-ra, a behatolás észlelésére és megelőzésére szolgáló rendszerekre (AZONOSÍTÓk vagy IP-címek) és egyebekre.
 
-- [Mik azok a funkciók és képességek, amelyeket az Azure alapszintű IP-címei/azonosítója és a DDOS biztosít](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Mik azok a funkciók és képességek, amelyeket az Azure alapszintű IP-címei/azonosítója és a DDOS biztosít](./cloud-services-configuration-and-management-faq.md#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Felelősség**: Ügyfél
 
@@ -315,7 +315,7 @@ Get-AzRoleAssignment – IncludeClassicAdministrators
 
 Tekintse át a klasszikus előfizetés felügyeleti szerepkörei közötti különbségeket. 
 
-- [Három klasszikus előfizetés felügyeleti szerepkör közötti különbségek](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [Három klasszikus előfizetés felügyeleti szerepkör közötti különbségek](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Felelősség**: Ügyfél
 
@@ -325,7 +325,7 @@ Tekintse át a klasszikus előfizetés felügyeleti szerepkörei közötti kül�
 
 **Útmutató**: javasoljuk, hogy hozzon létre szabványos működési eljárásokat a dedikált rendszergazdai fiókok használata során, a rendelkezésre álló szerepkörök alapján, valamint az Azure-Cloud Services erőforrásainak üzemeltetéséhez és kezeléséhez szükséges engedélyekkel.
 
-- [A klasszikus előfizetés felügyeleti szerepkörei közötti különbségek](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [A klasszikus előfizetés felügyeleti szerepkörei közötti különbségek](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Felelősség**: Ügyfél
 
@@ -389,7 +389,7 @@ Az Azure Cloud Service Certificate elem "permissionLevel" tulajdonságát is sze
 
 - [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [WebRole-séma](https://docs.microsoft.com/azure/cloud-services/schema-csdef-webrole#Certificate)
+- [WebRole-séma](./schema-csdef-webrole.md#Certificate)
 
 **Felelősség**: Ügyfél
 
@@ -465,9 +465,9 @@ Az ideiglenes lemezekben tárolt alkalmazásadatok nem titkosítottak. Az ügyf�
 
 Emellett a Application Insights képes figyelni az Azure Cloud Services-alkalmazásokat a rendelkezésre állás, a teljesítmény, a hibák és a használat tekintetében. Ez a Application Insights SDK-k összesített adatait használja az Azure-Cloud Services Azure Diagnostics adataival.
 
-- [Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-classic-portal)
+- [Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Metrikus riasztások áttekintése](/azure/azure-monitor/platform/alerts-metric-overview) 
+- [Metrikus riasztások áttekintése](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Azure Cloud Service Application Insights (klasszikus)](../azure-monitor/app/cloudservices.md)
 
@@ -493,7 +493,7 @@ Amikor egy ügyfél egy adott operációsrendszer-verziót választ az Azure Clo
 
 - [A Cloud Service konfigurálása (klasszikus)](cloud-services-how-to-configure-portal.md)
 
-- [Vendég operációs rendszer verziójának kezelése](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal#manage-guest-os-version)
+- [Vendég operációs rendszer verziójának kezelése](./cloud-services-how-to-configure-portal.md#manage-guest-os-version)
 
 **Felelősség**: Megosztott
 
@@ -523,7 +523,7 @@ Javasoljuk a következő forgatókönyvek megvalósítását:
 
 Támogató dokumentáció:
 
-- [Az Azure-erőforrások kockázati kiértékelése](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices#risk-evaluation-of-your-azure-resources)
+- [Az Azure-erőforrások kockázati kiértékelése](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
 
 **Felelősség**: Ügyfél
 
@@ -805,7 +805,7 @@ A titkos kulcsokat, például az Azure Cloud Services használt hitelesítő ada
 
 Emellett ajánlott a titkos kulcsok tárolása az Azure Cloud Services-ban használt tanúsítványokhoz egy biztonságos tárolóban.
 
-- [Távoli asztal konfigurálása a PowerShellből](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Távoli asztal konfigurálása a PowerShellből](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Felelősség**: Ügyfél
 
@@ -820,7 +820,7 @@ A kezdéshez egy egyszerű szöveges jelszót kell megadnia, amely a ConvertTo-S
 
 Tárolja a titkos kulcsokat az Azure Cloud Servicesban használt tanúsítványokhoz egy biztonságos tárolási helyre.
 
-- [Távoli asztal konfigurálása a PowerShellből](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Távoli asztal konfigurálása a PowerShellből](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Felelősség**: Ügyfél
 
@@ -840,9 +840,9 @@ Engedélyezze a antimalware bővítményt egy PowerShell-parancsfájllal az Azur
 
 Válassza ki az adaptív alkalmazás-vezérlés funkciót Azure Security Center, egy intelligens, automatizált, teljes körű megoldás. Segít megerősíteni a gépeket a kártevők ellen, és lehetővé teszi a kártékony alkalmazások futtatására tett kísérletek letiltását vagy riasztását, beleértve azokat is, amelyeket antimalware-megoldások okozhatnak.
 
-- [Hogyan adhatok hozzá antimalware-bővítményt az Azure-Cloud Services automatizált módon](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Hogyan adhatok hozzá antimalware-bővítményt az Azure-Cloud Services automatizált módon](./cloud-services-configuration-and-management-faq.md#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
-- [Kártevő szoftverek üzembe helyezésének forgatókönyvei](https://docs.microsoft.com/azure/security/fundamentals/antimalware#antimalware-deployment-scenarios)
+- [Kártevő szoftverek üzembe helyezésének forgatókönyvei](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
@@ -940,5 +940,5 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199900"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564942"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -157,7 +157,7 @@ A következő lépésben környezeti változókat kell beállítania a Function 
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Time Series Insights-példány létrehozása és összekapcsolása
 
-Ezután állítson be egy Time Series Insights-példányt, amely a második (ÁME) Event hub adatait fogja fogadni. Kövesse az alábbi lépéseket, és a folyamattal kapcsolatos további információkért tekintse [*meg az oktatóanyag: Azure Time Series Insights GEN2 TB-környezet beállítása*](../time-series-insights/tutorials-set-up-tsi-environment.md)című témakört.
+Ezután állítson be egy Time Series Insights-példányt, amely a második (ÁME) Event hub adatait fogja fogadni. Kövesse az alábbi lépéseket, és a folyamattal kapcsolatos további információkért tekintse [*meg az oktatóanyag: Azure Time Series Insights GEN2 TB-környezet beállítása*](../time-series-insights/tutorial-set-up-environment.md)című témakört.
 
 1. A Azure Portal a Time Series Insights-környezet létrehozásának megkezdéséhez. 
     1. Válassza ki a **Gen2 (L1)** árképzési szintet.
@@ -201,7 +201,7 @@ Az adatforgalom az Time Series Insights-példányba kerül, és készen áll az 
 
 A digitális ikreket alapértelmezés szerint a rendszer a Time Series Insightsban lévő, lapos hierarchiában tárolja, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. A folyamattal kapcsolatos további információkért olvassa el a következőt: 
 
-* [*Oktatóanyag: modell meghatározása és alkalmazása*](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [*Oktatóanyag: modell meghatározása és alkalmazása*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Egyéni logikát írhat arra, hogy automatikusan megadja ezeket az adatokat az Azure digitális Twins-ban már tárolt modell-és gráf-adatok használatával. Az alábbi hivatkozásokat követve további információkat olvashat az ikrek gráf információinak kezelésével, frissítésével és lekérésével kapcsolatban:
 

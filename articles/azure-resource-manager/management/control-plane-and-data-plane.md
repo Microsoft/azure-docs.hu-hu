@@ -3,12 +3,12 @@ title: A sík és az adatsík műveletek vezérlése
 description: Leírja a vezérlési sík és az adatsík műveletek közötti különbséget. A vezérlési sík műveleteit Azure Resource Manager kezeli. Az adatsík-műveleteket egy szolgáltatás kezeli.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91371269"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544094"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure-vezérlési sík és adatsík
 
@@ -52,7 +52,7 @@ A vezérlő síkja két forgatókönyvet tartalmaz a kérelmek kezeléséhez –
 
 ## <a name="data-plane"></a>Adatsík
 
-Az adatsík-műveletekre vonatkozó kéréseket a rendszer a példányra jellemző végpontra küldi. Például az [észlelési nyelv művelet](/rest/api/cognitiveservices/textanalytics/detect%20language/detect%20language) Cognitive Services egy adatsík-művelet, mert a kérelem URL-címe:
+Az adatsík-műveletekre vonatkozó kéréseket a rendszer a példányra jellemző végpontra küldi. Például az [észlelési nyelv művelet](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection) Cognitive Services egy adatsík-művelet, mert a kérelem URL-címe:
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bf2360bda55735aa8ef4258da5ae47f673f4d71b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5ffdecf768be0962950bb3691dbb11fb0e70120
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738922"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565010"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure biztonsági alapkonfiguráció a HDInsight-hez
 
@@ -58,9 +58,9 @@ A kiszűrése-on keresztüli adatvesztés kockázatának csökkentése érdekéb
 
 **Útmutató**: a DDOS-támadások elleni védelem érdekében engedélyezze az Azure DDoS standard Protectiont azon a virtuális hálózaton, amelyen az Azure-HDInsight üzembe lett helyezve. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-- [A DDoS Protection konfigurálása](/azure/virtual-network/manage-ddos-protection)
+- [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
-- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](/azure/security-center/security-center-alerts-service-layer)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 **Felelősség**: Ügyfél
 
@@ -100,7 +100,7 @@ A kiszűrése-on keresztüli adatvesztés kockázatának csökkentése érdekéb
 
 **Útmutató**: virtuális hálózati szolgáltatás-címkék használata az Azure HDInsight-fürt üzembe helyezéséhez használt hálózati biztonsági csoportok (NSG) hálózati hozzáférés-vezérlésének definiálásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-- [Az Azure HDInsight szolgáltatásbeli címkék megismerése és használata](/azure/virtual-network/security-overview#service-tags)
+- [Az Azure HDInsight szolgáltatásbeli címkék megismerése és használata](../virtual-network/network-security-groups-overview.md#service-tags)
 
 **Felelősség**: Ügyfél
 
@@ -130,7 +130,7 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával felkeresheti vagy végrehajthatja az erőforrásokon végzett műveleteket a címkék alapján.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 - [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
@@ -144,9 +144,9 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a hálózati erőforrás-konfigurációkat, és felderítheti az Azure HDInsight üzemelő példányokhoz kapcsolódó hálózati erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -186,7 +186,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 - [Azure HDInsight-fürt előkészítése Azure Monitor](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
-- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
 **Felelősség**: Ügyfél
 
@@ -198,7 +198,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 - [Azure HDInsight-fürt előkészítése Azure Monitor](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
-- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
 **Felelősség**: Ügyfél
 
@@ -220,7 +220,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -230,7 +230,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: az Azure HDInsight előzetesen telepített és engedélyezett ClamScan tartalmaz, azonban felügyelni kell a szoftvereket, és manuálisan kell összesíteni/figyelnie a naplók ClamScan.
 
-- [A ClamScan ismertetése](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [A ClamScan ismertetése](./hdinsight-faq.md#security-and-certificates)
 
 **Felelősség**: Ügyfél
 
@@ -300,7 +300,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: az Azure HDInsight ID Broker használatával többtényezős hitelesítéssel jelentkezhet be Enterprise Security Package (ESP) fürtökbe anélkül, hogy jelszót kellene biztosítania. Ha már bejelentkezett más Azure-szolgáltatásokba, például a Azure Portalba, bejelentkezhet az Azure HDInsight-fürtbe egyszeri bejelentkezéses (SSO) felhasználói élményben.
 
-- [Az Azure HDInsight ID Broker engedélyezése](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker#enable-hdinsight-id-broker)
+- [Az Azure HDInsight ID Broker engedélyezése](./domain-joined/identity-broker.md#enable-hdinsight-id-broker)
 
 **Felelősség**: Ügyfél
 
@@ -334,7 +334,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: az Azure HDInsight-fürtöket a konfigurált Enterprise Security Package lehet csatlakoztatni egy tartományhoz, hogy a tartományi felhasználók a hitelesítéshez a tartományi hitelesítő adataikat használják. A naplók és a riasztások generálásához Azure Active Directory (Azure AD) biztonsági jelentéseket használhat, ha az Azure AD-környezetben gyanús vagy nem biztonságos tevékenység történik. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -392,7 +392,7 @@ Ezt a folyamatot leegyszerűsítheti az Azure AD felhasználói fiókok diagnosz
 
 **Útmutató**: a konfigurált Enterprise Security Package (ESP)-vel rendelkező Azure HDInsight-fürtök csatlakozni tudnak egy tartományhoz, így a tartományi felhasználók a fürthöz való hitelesítéshez használhatják a tartományi hitelesítő adataikat. Használja a Azure Active Directory (Azure AD) kockázati Észleléseit és az Identity Protection szolgáltatást a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatikus válaszok konfigurálásához. Emellett további vizsgálatot is betöltheti az Azure Sentinelbe.
 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -404,7 +404,7 @@ Ezt a folyamatot leegyszerűsítheti az Azure AD felhasználói fiókok diagnosz
 
 **Útmutató**: nem érhető el; Ügyfélszéf az Azure HDInsight még nem támogatott.
 
-- [Ügyfélszéf támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -418,7 +418,7 @@ Ezt a folyamatot leegyszerűsítheti az Azure AD felhasználói fiókok diagnosz
 
 **Útmutató**: az Azure HDInsight üzemelő példányokhoz kapcsolódó erőforrásokon használható címkék használata a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követéséhez.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -432,7 +432,7 @@ Ezt a folyamatot leegyszerűsítheti az Azure AD felhasználói fiókok diagnosz
 
 - [A Azure Data Lake Storage biztonságossá tétele](../data-lake-store/data-lake-store-security-overview.md)
 
-- [Azure Storage-fiókok biztonságossá tétele](/azure/storage/common/storage-security-guide)
+- [Azure Storage-fiókok biztonságossá tétele](../storage/blobs/security-recommendations.md)
 
 **Felelősség**: Ügyfél
 
@@ -506,13 +506,13 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutatás**: ha a Azure SQL Database használatával tárolja a Apache Hive és az Apache Oozie-metaadatokat, az SQL-adatok mindig titkosítva maradnak. Az Azure Storage-fiókok és a Data Lake Storage (Gen1 vagy Gen2) esetében ajánlott engedélyezni a Microsoft számára a titkosítási kulcsok kezelését, azonban lehetősége van a saját kulcsainak kezelésére.
 
-- [Az Azure Storage-fiókok titkosítási kulcsainak kezelése](/azure/storage/common/storage-encryption-keys-portal)
+- [Az Azure Storage-fiókok titkosítási kulcsainak kezelése](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Azure Data Lake Storage létrehozása az ügyfél által felügyelt titkosítási kulcsok használatával](../data-lake-store/data-lake-store-get-started-portal.md)
 
-- [A Azure SQL Database titkosításának megismerése](/azure/sql-database/sql-database-technical-overview#data-encryption)
+- [A Azure SQL Database titkosításának megismerése](../azure-sql/database/sql-database-paas-overview.md#data-encryption)
 
-- [A SQL Database transzparens adattitkosítás konfigurálása az ügyfél által felügyelt kulcsok használatával](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal)
+- [A SQL Database transzparens adattitkosítás konfigurálása az ügyfél által felügyelt kulcsok használatával](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)
 
 **Felelősség**: Megosztott
 
@@ -522,7 +522,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az Azure HDInsight-fürtökhöz társított Azure Storage-fiókok diagnosztikai beállításainak konfigurálása a fürt adatain végzett összes szifilisz-művelet figyeléséhez és naplózásához. Az Azure HDInsight-fürthöz társított összes Storage-fiók vagy Data Lake-tároló naplózásának engedélyezése.
 
-- [További naplózás/naplózás engedélyezése egy Azure Storage-fiókhoz](/azure/storage/common/storage-monitor-storage-account)
+- [További naplózás/naplózás engedélyezése egy Azure Storage-fiókhoz](../storage/common/manage-storage-analytics-logs.md)
 
 - [További naplózás/naplózás engedélyezése Azure Data Lake Storage](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md)
 
@@ -614,7 +614,7 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -624,11 +624,11 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -697,7 +697,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -823,9 +823,9 @@ Az Azure HDInsight összes felügyelt lemeze Azure Storage Service Encryption (S
 
 A Key Vault az Azure HDInsight üzemelő példányokkal is használható a fürtözött tárolók (Azure Storage-fiókok és Azure Data Lake Storage) kulcsainak kezeléséhez
 
-- [Saját kulcs használata az Azure HDInsight Apache Kafka](/azure/hdinsight/kafka/apache-kafka-byok)
+- [Saját kulcs használata az Azure HDInsight Apache Kafka](./disk-encryption.md)
 
-- [Az Azure Storage-fiókok titkosítási kulcsainak kezelése](/azure/storage/common/storage-encryption-keys-portal)
+- [Az Azure Storage-fiókok titkosítási kulcsainak kezelése](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **Felelősség**: Ügyfél
 
@@ -859,7 +859,7 @@ A Key Vault az Azure HDInsight üzemelő példányokkal is használható a fürt
 
 **Útmutató**: az Azure HDInsight előzetesen telepített és engedélyezett ClamScan tartalmaz, azonban felügyelni kell a szoftvereket, és manuálisan kell összesíteni/figyelnie a naplók ClamScan.
 
-- [Az Azure HDInsight ClamScan ismertetése](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [Az Azure HDInsight ClamScan ismertetése](./hdinsight-faq.md#security-and-certificates)
 
 **Felelősség**: Ügyfél
 
@@ -881,7 +881,7 @@ Az Azure HDInsight-fürt üzembe helyezéséhez (például Data Lake Storage, Bl
 
 **Útmutató**: az Azure HDInsight előre telepített és engedélyezve van a ClamScan lemezképekhez. A ClamScan automatikusan végrehajtja a motor-és a definíciók frissítéseit, azonban a naplók összesítését és kezelését manuálisan kell elvégezni.
 
-- [Az Azure Azure HDInsight ClamScan ismertetése](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [Az Azure Azure HDInsight ClamScan ismertetése](./hdinsight-faq.md#security-and-certificates)
 
 **Felelősség**: Ügyfél
 
@@ -897,7 +897,7 @@ Az Azure HDInsight-fürt üzembe helyezéséhez (például Data Lake Storage, Bl
 
 - [Tárolási redundancia konfigurálása Azure Storage-fiókokhoz](../storage/common/storage-redundancy.md)
 
-- [Redundancia konfigurálása Azure SQL Databasehoz](/azure/sql-database/sql-database-active-geo-replication)
+- [Redundancia konfigurálása Azure SQL Databasehoz](../azure-sql/database/active-geo-replication-overview.md)
 
 **Felelősség**: Ügyfél
 
@@ -921,7 +921,7 @@ Az Azure HDInsight-fürt üzembe helyezéséhez (például Data Lake Storage, Bl
 
 **Útmutató**: Ha Azure Key Vault használja az Azure HDInsight üzemelő példányát, tesztelje az ügyfél által felügyelt kulcsok biztonsági másolatának visszaállítását.
 
-- [Saját kulcs használata az Azure HDInsight Apache Kafka](/azure/hdinsight/kafka/apache-kafka-byok)
+- [Saját kulcs használata az Azure HDInsight Apache Kafka](./disk-encryption.md)
 
 - [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
@@ -933,7 +933,7 @@ Az Azure HDInsight-fürt üzembe helyezéséhez (például Data Lake Storage, Bl
 
 **Útmutató**: Ha Azure Key Vault használja az Azure HDInsight üzemelő példányát, engedélyezze a helyreállítható törlést Key Vault a kulcsok véletlen vagy rosszindulatú Törlés elleni védelemmel való ellátásához.
 
-- [A Soft delete Azure Key Vault engedélyezése](/azure/key-vault/key-vault-ovw-soft-delete)
+- [A Soft delete Azure Key Vault engedélyezése](../key-vault/general/soft-delete-overview.md)
 
 **Felelősség**: Ügyfél
 
@@ -1025,5 +1025,5 @@ Az Azure HDInsight-fürt üzembe helyezéséhez (például Data Lake Storage, Bl
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

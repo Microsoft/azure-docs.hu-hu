@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071374"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568658"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
 
@@ -292,7 +292,7 @@ Ez a probléma akkor fordul elő, ha vCenter Server felügyeleti ügynökök nem
 
 ### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Hibaüzenet: belső hiba történt. [A pillanatkép lemezének mérete érvénytelen]
 
-Ez egy ismert VMware-probléma, amelyben a pillanatkép által jelzett lemez mérete nulla lesz. Kövesse a [VMware kb](https://go.microsoft.com/fwlink/?linkid=2138972)-ban megadott felbontást.
+Ez egy ismert VMware-probléma, amelyben a pillanatkép által jelzett lemez mérete nulla lesz. Kövesse a [VMware kb](https://kb.vmware.com/s/)-ban megadott felbontást.
 
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hibaüzenet: belső hiba történt. [A memória kiosztása nem sikerült. Nincs elég memória.]
 

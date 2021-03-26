@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93289901"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557207"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Key Vault kezelése az Azure CLI használatával 
 
@@ -147,7 +147,7 @@ Ha van meglévő kulcsa egy. PEM-fájlban, feltöltheti Azure Key Vaultba. Dönt
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Most már hivatkozhat arra a kulcsra, amelyet az Ön által létrehozott vagy a Azure Key Vaultba töltött fel az URI használatával. **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** A használatával mindig megkapja az aktuális verziót. A megadott verzió beszerzéséhez használja a https://[kulcstartó-név]. Vault. Azure. net/Keys/[kulcsnév]/[Key-Unique-id] értéket. Például: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Most már hivatkozhat arra a kulcsra, amelyet az Ön által létrehozott vagy a Azure Key Vaultba töltött fel az URI használatával. `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey`A használatával mindig megkapja az aktuális verziót. A megadott verzió beszerzéséhez használja a https://[kulcstartó-név]. Vault. Azure. net/Keys/[kulcsnév]/[Key-Unique-id] értéket. Például: `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87`. 
 
 Adjon hozzá egy titkos kulcsot a tárolóhoz, amely egy SQLPassword nevű jelszó, amely a "hVFkk965BuUv" értékkel rendelkezik az Azure Key Vaults szolgáltatásban. 
 

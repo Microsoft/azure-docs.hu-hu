@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 29384457f946eff5708c319e14161d670adf6ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5fe539521213a6c25804c5c0db1e6b18646cceea
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98729890"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563837"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció okosan
 
@@ -118,7 +118,7 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
 ## <a name="configure-clever-sso"></a>Intelligens egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés okos oldalon való konfigurálásához kövesse a [hivatkozás](https://support.clever.com/hc/articles/205889768-Single-Sign-On-SSO-Log-in-with-Office-365-Azure-) utasításait.
+Az egyszeri bejelentkezés okos oldalon való konfigurálásához kövesse a [hivatkozás](https://support.clever.com/hc/s/articles/205889768) utasításait.
 
 ### <a name="create-clever-test-user"></a>Intelligens tesztelési felhasználó létrehozása
 

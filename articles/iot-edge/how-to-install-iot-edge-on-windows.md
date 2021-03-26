@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c291bb701aca385a11631504f1a312b25cced633
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9eeb30d8d3ab0c884472a001149021c4d5cc362c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045671"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558720"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -42,8 +42,8 @@ Ez a cikk a IoT Edge Windows-eszközökön való beállításának lépéseit so
 
   * Windows 10 1809-es vagy újabb verzió; Build 17763 vagy újabb
   * Professional, Enterprise vagy Server kiadás
-  * Minimális RAM: 4 GB (ajánlott 8 GB)
-  * Minimális tárterület: 10 GB
+  * Minimális szabad memória: 2 GB
+  * Minimális szabad lemezterület: 10 GB
   * Ha Windows 10 rendszerű új központi telepítést hoz létre, győződjön meg arról, hogy engedélyezi a Hyper-V használatát. További információ: a [Hyper-V telepítése Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)rendszeren.
   * Ha a Windows Serverrel új központi telepítést hoz létre, akkor győződjön meg arról, hogy telepíti a Hyper-V szerepkört. További információ: [a Hyper-V szerepkör telepítése a Windows Serveren](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md).
   * Ha virtuális géppel hoz létre új központi telepítést, győződjön meg arról, hogy megfelelően konfigurálta a beágyazott virtualizálás szolgáltatást. További információ: [beágyazott virtualizációs](nested-virtualization.md) útmutató.

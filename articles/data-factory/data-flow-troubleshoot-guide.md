@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/18/2021
-ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 77007f0d9ffac39ecb6f21957dd8cd1bf7a0b945
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593850"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565707"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
@@ -302,7 +302,7 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 
 ### <a name="error-code-df-excel-invalidrange"></a>Hibakód: DF-Excel-InvalidRange
 - **Üzenet**: érvénytelen tartomány van megadva.
-- **Javaslat**: a paraméter értékének megadásához és az érvényes tartományt a következő hivatkozással kell megadnia: [Excel-formátum az Azure-beli adatFactory-Dataset tulajdonságaiban](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+- **Javaslat**: a paraméter értékének megadásához és az érvényes tartományt a következő hivatkozással kell megadnia: [Excel-formátum az Azure-beli adatFactory-Dataset tulajdonságaiban](./format-excel.md#dataset-properties).
 
 ### <a name="error-code-df-excel-worksheetnotexist"></a>Hibakód: DF-Excel-WorksheetNotExist
 - **Üzenet**: az Excel-munkalap nem létezik.
@@ -369,4 +369,3 @@ A hibaelhárítással kapcsolatos további segítségért tekintse meg a követk
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Data Factory Stack Overflow fóruma](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
-

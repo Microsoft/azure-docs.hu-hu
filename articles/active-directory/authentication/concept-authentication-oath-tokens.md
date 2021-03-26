@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568048597f83616ed07954af744c94761250b5c0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b535d59376de455962d367a8ad6f02a037649d9d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471614"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557887"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Hitelesítési módszerek a Azure Active Directory-eskü-tokenekben 
 
@@ -51,7 +51,7 @@ Helga@contoso.com,1234567,2234567abcdef1234567abcdef,60,Contoso,HardwareKey
 > [!NOTE]
 > Ügyeljen rá, hogy a fejlécsor szerepeljen a CSV-fájlban. Ha egy egyszerű felhasználónév egyetlen idézettel rendelkezik, akkor egy másik idézőjelbe kell kerülnie. Ha például az egyszerű felhasználónév a " user@domain.com , akkor módosítsa a saját" "értékre user@domain.com a fájl feltöltésekor.
 
-Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megnyithatja **Azure Active Directory > biztonsági > MFA > eskü-tokeneket**, és feltöltheti az eredményül kapott CSV-fájlt.
+Miután megfelelően formázott CSV-fájlként, a globális rendszergazda ezután bejelentkezhet a Azure Portalba, navigáljon **Azure Active Directory > biztonsági > MFA > eskü-tokeneket**, és töltse fel az eredményül kapott CSV-fájlt.
 
 A CSV-fájl méretétől függően a folyamat eltarthat néhány percig. Kattintson a **frissítés** gombra az aktuális állapot lekéréséhez. Ha bármilyen hiba van a fájlban, letöltheti azt a CSV-fájlt, amely felsorolja a feloldható hibákat. A letöltött CSV-fájl mezőinek neve eltér a feltöltött verziótól.  
 

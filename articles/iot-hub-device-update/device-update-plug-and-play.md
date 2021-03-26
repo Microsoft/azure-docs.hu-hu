@@ -6,22 +6,22 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101663401"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561814"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub-és IoT tartozó eszköz frissítése Plug and Play
 
-A IoT Hub eszköz frissítése a [IoT-Plug and Play](https://docs.microsoft.com/azure/iot-pnp/) használatával észleli és felügyeli az olyan eszközöket, amelyek a hálózaton kívüli frissítésre képesek. Az eszköz frissítési szolgáltatása PnP-felületek használatával küldi el és fogadja az eszközökre irányuló és onnan érkező tulajdonságokat és üzeneteket. A IoT Hub eszköz-frissítéséhez a IoT-eszközöknek az alább leírtak szerint a következő csatolókat és modell-azonosítót kell alkalmazniuk.
+A IoT Hub eszköz frissítése a [IoT-Plug and Play](../iot-pnp/index.yml) használatával észleli és felügyeli az olyan eszközöket, amelyek a hálózaton kívüli frissítésre képesek. Az eszköz frissítési szolgáltatása PnP-felületek használatával küldi el és fogadja az eszközökre irányuló és onnan érkező tulajdonságokat és üzeneteket. A IoT Hub eszköz-frissítéséhez a IoT-eszközöknek az alább leírtak szerint a következő csatolókat és modell-azonosítót kell alkalmazniuk.
 
 ## <a name="adu-core-interface"></a>ADU Core interfész
 
 Az "ADUCoreInterface" interfész a frissítési műveletek és metaadatok küldésére szolgál az eszközökre, és frissítési állapotot fogad az eszközökről. Az "ADU mag" illesztőfelület két objektum tulajdonságaira van felosztva.
 
-A modellben a várt összetevő neve **"azureDeviceUpdateAgent"** a csatoló megvalósításakor. [További információ az Azure IoT PnP-összetevőiről](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+A modellben a várt összetevő neve **"azureDeviceUpdateAgent"** a csatoló megvalósításakor. [További információ az Azure IoT PnP-összetevőiről](../iot-pnp/concepts-components.md)
 
 ### <a name="agent-metadata"></a>Ügynök metaadatai
 
@@ -81,9 +81,9 @@ A szolgáltatás metaadatai olyan mezőket tartalmaznak, amelyeket az eszköz fr
 
 ## <a name="device-information-interface"></a>Eszköz információs felülete
 
-Az eszköz információi felülete a [IoT Plug and Play architektúrán](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)belül használt fogalom. Az eszközről a felhő tulajdonságaira vonatkozó adatokat tartalmaz, amelyek információkat biztosítanak az eszköz hardveréről és operációs rendszeréről. A IoT Hub eszköz frissítése a DeviceInformation. manufactur és a DeviceInformation. Model tulajdonságot használja a telemetria és a diagnosztika számára. Az eszköz információs felületével kapcsolatos további tudnivalókért tekintse meg ezt a [példát](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
+Az eszköz információi felülete a [IoT Plug and Play architektúrán](../iot-pnp/overview-iot-plug-and-play.md)belül használt fogalom. Az eszközről a felhő tulajdonságaira vonatkozó adatokat tartalmaz, amelyek információkat biztosítanak az eszköz hardveréről és operációs rendszeréről. A IoT Hub eszköz frissítése a DeviceInformation. manufactur és a DeviceInformation. Model tulajdonságot használja a telemetria és a diagnosztika számára. Az eszköz információs felületével kapcsolatos további tudnivalókért tekintse meg ezt a [példát](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
 
-A modellben a várt összetevő neve **deviceInformation** a csatoló implementálása során. [További tudnivalók az Azure IoT PnP-összetevőiről](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+A modellben a várt összetevő neve **deviceInformation** a csatoló implementálása során. [További tudnivalók az Azure IoT PnP-összetevőiről](../iot-pnp/concepts-components.md)
 
 |Név|Típus|Séma|Irány|Leírás|Példa|
 |----|----|------|---------|-----------|-----------|
@@ -98,6 +98,6 @@ A modellben a várt összetevő neve **deviceInformation** a csatoló implement�
 
 ## <a name="model-id"></a>Modellazonosító 
 
-A Model ID azt mutatja be, hogy az intelligens eszközök hogyan reklámozzák képességeiket az Azure IoT-alkalmazásokban a IoT Plug and Play.To [Plug and Play](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c)használatával
+A Model ID azt mutatja be, hogy az intelligens eszközök hogyan reklámozzák képességeiket az Azure IoT-alkalmazásokban a IoT Plug and Play.To [Plug and Play](../iot-pnp/concepts-developer-guide-device.md)használatával
 
-A IoT Hub eszköz frissítése megköveteli, hogy a IoT Plug and Play intelligens eszköz bejelentsen egy **"dtmi: AzureDeviceUpdate; 1"** értékű modell-azonosítót az eszköz kapcsolatának részeként. [Megtudhatja, hogyan jelentheti be a modell azonosítóját](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c#model-id-announcement).
+A IoT Hub eszköz frissítése megköveteli, hogy a IoT Plug and Play intelligens eszköz bejelentsen egy **"dtmi: AzureDeviceUpdate; 1"** értékű modell-azonosítót az eszköz kapcsolatának részeként. [Megtudhatja, hogyan jelentheti be a modell azonosítóját](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement).

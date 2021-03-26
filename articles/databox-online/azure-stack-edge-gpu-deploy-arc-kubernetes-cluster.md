@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d75986880075f6eb07aa31b9322bdae15535802
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437604"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567525"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge Pro GPU-eszközön
 
@@ -74,7 +74,7 @@ Mielőtt engedélyezi az Azure arc-t a Kubernetes-fürtön, engedélyeznie kell 
     
     ![Kubernetes-erőforrás-szolgáltatók regisztrálása 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` . További információ: [a két szolgáltató regisztrálása az Azure arc használatára képes Kubernetes](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
+Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` . További információ: [a két szolgáltató regisztrálása az Azure arc használatára képes Kubernetes](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 
 ## <a name="create-service-principal-assign-role"></a>Egyszerű szolgáltatásnév létrehozása, szerepkör kiosztása
 
@@ -226,7 +226,7 @@ Az Azure arc-felügyelet eltávolításához kövesse az alábbi lépéseket:
 
 
 > [!NOTE]
-> Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből. Az arc OperatorParams kell beállítania, `--sync-garbage-collection`  hogy lehetővé váljon az erőforrások törlése a git-tárházból való törléskor. További információ: [konfiguráció törlése](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)
+> Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből. Az arc OperatorParams kell beállítania, `--sync-garbage-collection`  hogy lehetővé váljon az erőforrások törlése a git-tárházból való törléskor. További információ: [konfiguráció törlése](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 092078a79124682f7ee5c7824d4f7906c6e35475
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232375"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558499"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>A IoT Hub eszköz frissítése (előzetes verzió) – áttekintés
 
@@ -82,7 +82,7 @@ Ha egy eszközön egy frissítési parancs érkezik, a rendszer végrehajtja a f
 
 Az importálás módja, hogy a frissítések hogyan kerülnek be az eszköz frissítéseibe, hogy azok üzembe helyezhetők legyenek az eszközökön. Az eszköz frissítése minden eszközön egyetlen frissítést támogat. Ez ideális olyan teljes képfrissítésekhez, amelyek egy teljes operációsrendszer-partíciót egyszerre frissítenek, vagy egy olyan apt-jegyzékfájlt, amely az eszközön frissíteni kívánt összes csomagot leírja. A frissítések eszköz frissítésbe való importálásához először létre kell hoznia egy, a frissítést leíró importálási jegyzékfájlt, majd fel kell töltenie a frissítési fájl (oka) t és az importálási jegyzékfájlt egy internetről elérhető helyre. Ezt követően használhatja a Azure Portal vagy az [eszköz frissítésének importálási REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) az importálás aszinkron folyamatának elindításához. Az eszköz frissítése feltölti a fájlokat, feldolgozza őket, és elérhetővé teszi azokat a IoT-eszközök számára történő terjesztéshez.
 
-Bizalmas tartalom esetén a letöltést egy közös hozzáférési aláírás (SAS) használatával, például az Azure Blob Storage ad-hoc SAS-vel kell ellátni. [További információ az SAS-ról](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+Bizalmas tartalom esetén a letöltést egy közös hozzáférési aláírás (SAS) használatával, például az Azure Blob Storage ad-hoc SAS-vel kell ellátni. [További információ az SAS-ról](../storage/common/storage-sas-overview.md)
 
 :::image type="content" source="media/understand-device-update/import-update.png" alt-text="Az eszköz frissítésének diagramja IoT Hub importálási munkafolyamat." lightbox="media/understand-device-update/import-update.png":::
 

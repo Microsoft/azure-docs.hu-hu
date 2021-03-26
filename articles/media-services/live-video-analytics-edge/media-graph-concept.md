@@ -3,12 +3,12 @@ title: Media Graph-koncepció – Azure
 description: A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ez a cikk részletes leírást nyújt a Media Graph-koncepcióról.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97401100"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557666"
 ---
 # <a name="media-graph"></a>Médiagrafikon
 
@@ -74,7 +74,7 @@ Az RTSP-forrás csomópont lehetővé teszi az adathordozók betöltését egy [
 
 #### <a name="iot-hub-message-source"></a>IoT Hub üzenet forrása 
 
-A többi [IoT Edge-modulhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-module)hasonlóan az élő videó Analytics IoT Edge modulban az [IoT Edge hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)használatával fogadhat üzeneteket. Ezek az üzenetek elküldhetők más modulokból, vagy a peremhálózati eszközön futó alkalmazásokból, illetve a felhőből is. Az ilyen üzenetek továbbítása (átirányítva) egy [elnevezett bemenetre](../../iot-edge/module-composition.md#sink) történik a modulban. Egy IoT Hub Message Source csomópont lehetővé teszi, hogy az ilyen üzenetek elérjék a Media Graphot. Ezek az üzenetek vagy jelek ezután a Media Graph-ban belső használatra használhatók, jellemzően a Signal Gates aktiválásához (lásd a [Signal Gates](#signal-gate-processor) szakaszt alább). 
+A többi [IoT Edge-modulhoz](../../iot-fundamentals/iot-glossary.md#iot-edge)hasonlóan az élő videó Analytics IoT Edge modulban az [IoT Edge hub](../../iot-fundamentals/iot-glossary.md#iot-edge-hub)használatával fogadhat üzeneteket. Ezek az üzenetek elküldhetők más modulokból, vagy a peremhálózati eszközön futó alkalmazásokból, illetve a felhőből is. Az ilyen üzenetek továbbítása (átirányítva) egy [elnevezett bemenetre](../../iot-edge/module-composition.md#sink) történik a modulban. Egy IoT Hub Message Source csomópont lehetővé teszi, hogy az ilyen üzenetek elérjék a Media Graphot. Ezek az üzenetek vagy jelek ezután a Media Graph-ban belső használatra használhatók, jellemzően a Signal Gates aktiválásához (lásd a [Signal Gates](#signal-gate-processor) szakaszt alább). 
 
 Rendelkezhet például egy olyan IoT Edge modullal, amely egy ajtó megnyitásakor üzenetet hoz létre. A modulból érkező üzenet átirányítható IoT Edge központba, ahonnan továbbítható a Media Graph IoT hub-üzenet forrása. A Media Graphban az IoT hub-üzenet forrása továbbíthatja az eseményt egy Signal Gate-feldolgozónak, amely Ezután bekapcsolhatja a videó rögzítését egy RTSP-forrásból egy fájlba. 
 

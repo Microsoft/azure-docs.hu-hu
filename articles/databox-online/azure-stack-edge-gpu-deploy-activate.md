@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c3989b3d4b148dcffccb03fb5b4279c89e5c686d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91938354"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562392"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro aktiválása GPU-val
 
@@ -105,4 +105,4 @@ Ebben az oktatóanyagban megismerte a következőket:
 Ha szeretné megismerni, hogyan vihetők át adatok az Azure Stack Edge Pro-eszközével, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Adatok átvitele Azure Stack Edge Pro-val](./azure-stack-edge-j-series-deploy-add-shares.md)
+> [Adatok átvitele Azure Stack Edge Pro-val](./azure-stack-edge-gpu-deploy-add-shares.md)

@@ -3,12 +3,12 @@ title: E-mail-Azure Backup jelentések
 description: Automatizált feladatok létrehozása az időszakos jelentések e-mailben történő fogadásához
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 8c18d4c7a3c7a9ba343296961fa9a44614366405
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510471"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561338"
 ---
 # <a name="email-azure-backup-reports"></a>E-mail-Azure Backup jelentések
 
@@ -30,7 +30,7 @@ Az e-mail-feladatok biztonsági mentési jelentésekkel történő konfigurálá
 
 ## <a name="authorize-connections-to-azure-monitor-logs-and-office-365"></a>Kapcsolatok engedélyezése Azure Monitor naplókhoz és az Office 365-hez
 
-A logikai alkalmazás az [azuremonitorlogs](https://docs.microsoft.com/connectors/azuremonitorlogs/) -összekötőt használja a La munkaterület lekérdezéséhez, és a [Office 365 Outlook](https://docs.microsoft.com/connectors/office365connector/) Connectort használja az e-mailek küldéséhez. Ehhez a két összekötőhöz egyszeri hitelesítést kell végrehajtania. 
+A logikai alkalmazás az [azuremonitorlogs](/connectors/azuremonitorlogs/) -összekötőt használja a La munkaterület lekérdezéséhez, és a [Office 365 Outlook](/connectors/office365connector/) Connectort használja az e-mailek küldéséhez. Ehhez a két összekötőhöz egyszeri hitelesítést kell végrehajtania. 
  
 Az engedélyezés végrehajtásához kövesse az alábbi lépéseket:
 
@@ -79,4 +79,4 @@ A probléma megoldásához:
 Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.
 
 ## <a name="next-steps"></a>Következő lépések
-[További információ a biztonsági mentési jelentésekről](https://docs.microsoft.com/azure/backup/configure-reports)
+[További információ a biztonsági mentési jelentésekről](./configure-reports.md)

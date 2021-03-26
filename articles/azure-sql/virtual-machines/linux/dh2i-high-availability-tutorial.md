@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 0500f4143ad7cbdaaa8406af2b242e0d40b1caa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07752eb5c7f18a8952c43e77afed78b06432aca6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102227398"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568534"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>Oktatóanyag – három csomópontos always on rendelkezésre állási csoport beállítása Linux-alapú Azure-Virtual Machines futó DH2i-DxEnterprise
 
@@ -39,22 +39,22 @@ Ebben az oktatóanyagban egy DxEnterprise-fürtöt fogunk beállítani a DxAdmin
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Hozzon létre négy virtuális gépet az Azure-ban. A Linux-alapú virtuális gépek létrehozásához kövesse a következő rövid útmutatót [: Linux rendszerű virtuális gép létrehozása Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) cikkben. Hasonlóképpen, a Windows-alapú virtuális gép létrehozásához kövesse a rövid útmutató [: Windows rendszerű virtuális gép létrehozása a Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) cikkben.
-- Telepítse a .NET 3,1-et minden olyan Linux-alapú virtuális gépre, amely a fürt részét képezi majd. Kövesse az [itt](https://docs.microsoft.com/dotnet/core/install/linux) megjelenő utasításokat a Linux operációs rendszer kiválasztása alapján.
+- Hozzon létre négy virtuális gépet az Azure-ban. A Linux-alapú virtuális gépek létrehozásához kövesse a következő rövid útmutatót [: Linux rendszerű virtuális gép létrehozása Azure Portal](../../../virtual-machines/linux/quick-create-portal.md) cikkben. Hasonlóképpen, a Windows-alapú virtuális gép létrehozásához kövesse a rövid útmutató [: Windows rendszerű virtuális gép létrehozása a Azure Portal](../../../virtual-machines/windows/quick-create-portal.md) cikkben.
+- Telepítse a .NET 3,1-et minden olyan Linux-alapú virtuális gépre, amely a fürt részét képezi majd. Kövesse az [itt](/dotnet/core/install/linux) megjelenő utasításokat a Linux operációs rendszer kiválasztása alapján.
 - A rendelkezésre állási csoport felügyeleti funkcióit engedélyező érvényes DxEnterprise-licencre lesz szükség. További információkért tekintse meg a [DxEnterprise ingyenes](https://dh2i.com/trial/) próbaverzióját, amelyből megtudhatja, hogyan szerezhet be ingyenes próbaverziót.
 
 ## <a name="install-sql-server-on-all-the-azure-vms-that-will-be-part-of-the-availability-group"></a>Telepítse a SQL Servert az összes olyan Azure-beli virtuális gépre, amely a rendelkezésre állási csoport része lesz
 
-Ebben az oktatóanyagban egy három csomópontos Linux-alapú fürtöt állítunk be, amely a rendelkezésre állási csoportot futtatja. A Linux-platformon alapuló [SQL Server Linux-telepítés](https://docs.microsoft.com/sql/linux/sql-server-linux-overview#install) dokumentációját követheti. Javasoljuk továbbá, hogy telepítse az oktatóanyag [SQL Server eszközeit](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) .
+Ebben az oktatóanyagban egy három csomópontos Linux-alapú fürtöt állítunk be, amely a rendelkezésre állási csoportot futtatja. A Linux-platformon alapuló [SQL Server Linux-telepítés](/sql/linux/sql-server-linux-overview#install) dokumentációját követheti. Javasoljuk továbbá, hogy telepítse az oktatóanyag [SQL Server eszközeit](/sql/linux/sql-server-linux-setup-tools) .
  
 > [!NOTE]
-> Győződjön meg arról, hogy a választott Linux operációs rendszer közös disztribúció, amelyet mindkét [DH2i DxEnterprise támogat (lásd a minimális rendszerkövetelmények szakaszt)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) és a [Microsoft SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
+> Győződjön meg arról, hogy a választott Linux operációs rendszer közös disztribúció, amelyet mindkét [DH2i DxEnterprise támogat (lásd a minimális rendszerkövetelmények szakaszt)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) és a [Microsoft SQL Server](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
 >
 > Ebben a példában az Ubuntu 18,04-et használjuk, amelyet a DH2i DxEnterprise és a Microsoft SQL Server is támogat.
 
 Ebben az oktatóanyagban nem fogunk SQL Server telepíteni a Windows rendszerű virtuális gépre, mivel ez a csomópont nem lesz a fürt része, és csak a fürt DxAdmin használatával történő kezeléséhez használatos.
 
-Miután elvégezte ezt a lépést, SQL Server és [SQL Server eszközöket](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) kell telepítenie a rendelkezésre állási csoportban szereplő mindhárom Linux-alapú virtuális gépre.
+Miután elvégezte ezt a lépést, SQL Server és [SQL Server eszközöket](/sql/linux/sql-server-linux-setup-tools) kell telepítenie a rendelkezésre állási csoportban szereplő mindhárom Linux-alapú virtuális gépre.
  
 ## <a name="install-dxenterprise-on-all-the-vms-and-configure-the-cluster"></a>Telepítse a DxEnterprise-t az összes virtuális gépre, és konfigurálja a fürtöt.
 
@@ -84,7 +84,7 @@ Ha csak a DxAdmin-ügyfél eszközt szeretné telepíteni a Windows rendszerű v
 Ennek a lépésnek a megkezdése után a DxEnterprise-fürtöt létre kell hozni a linuxos virtuális gépeken, és telepíteni kell a Windows DxAdmin-ügyfelet. 
 
 > [!NOTE]
-> Létrehozhat egy három csomópontot tartalmazó fürtöt is, amelyben az egyik csomópontot *csak konfigurációs módban* adja [hozzá a rendszer az automatikus](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) feladatátvétel engedélyezéséhez. 
+> Létrehozhat egy három csomópontot tartalmazó fürtöt is, amelyben az egyik csomópontot *csak konfigurációs módban* adja [hozzá a rendszer az automatikus](/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) feladatátvétel engedélyezéséhez. 
 
 ## <a name="create-the-virtual-hosts-to-provide-failover-support-and-high-availability"></a>A virtuális gazdagépek létrehozása a feladatátvételi támogatás és a magas rendelkezésre állás biztosításához
 
@@ -100,7 +100,7 @@ Kapcsolódjon a DxAdmin-t futtató Windows-ügyfélszámítógéphez a fenti lé
 
 ## <a name="create-the-internal-azure-load-balancer-for-listener-optional"></a>A belső Azure Load Balancer létrehozása a figyelőhöz (nem kötelező)
 
-Ebben a választható lépésben létrehozhatja és konfigurálhatja az Azure Load balancert, amely a rendelkezésre állási csoport figyelők IP-címeit tárolja. A Azure Load Balancerről a [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)című témakörben olvashat bővebben. Az Azure Load Balancer és a rendelkezésre állási csoport figyelője DxAdmin használatával történő konfigurálásához kövesse a DxEnterprise [Azure Load Balancer rövid útmutató](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/).
+Ebben a választható lépésben létrehozhatja és konfigurálhatja az Azure Load balancert, amely a rendelkezésre állási csoport figyelők IP-címeit tárolja. A Azure Load Balancerről a [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md)című témakörben olvashat bővebben. Az Azure Load Balancer és a rendelkezésre állási csoport figyelője DxAdmin használatával történő konfigurálásához kövesse a DxEnterprise [Azure Load Balancer rövid útmutató](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/).
 
 Ennek a lépésnek a megkezdése után létre kell hoznia egy rendelkezésre állási csoport figyelőt, amely a belső Azure Load Balancerhez van rendelve.
 
@@ -121,7 +121,7 @@ A DxEnterprise-en belüli további műveletekkel kapcsolatos további informáci
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Linuxon rendelkezésre állási csoportokról](https://docs.microsoft.com/sql/linux/sql-server-linux-availability-group-overview)
-- [Gyors útmutató: linuxos virtuális gép létrehozása Azure Portalban](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
-- [Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure Portalon](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
-- [Támogatott platformok a SQL Server 2019 Linux rendszeren](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)
+- További információ a [Linuxon rendelkezésre állási csoportokról](/sql/linux/sql-server-linux-availability-group-overview)
+- [Gyors útmutató: linuxos virtuális gép létrehozása Azure Portalban](../../../virtual-machines/linux/quick-create-portal.md)
+- [Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure Portalon](../../../virtual-machines/windows/quick-create-portal.md)
+- [Támogatott platformok a SQL Server 2019 Linux rendszeren](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)

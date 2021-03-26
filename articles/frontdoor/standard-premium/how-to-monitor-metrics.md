@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: bb10fb337972db2696960b530f2d7538bd36a2fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72388eb8006ff1b9628db5066dc63e6a0811f3d5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101098846"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557326"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Valós idejű figyelés az Azure-beli előtérben standard/prémium szintű
 
@@ -22,11 +22,11 @@ ms.locfileid: "101098846"
 
 Az Azure bejárati ajtó standard/Premium integrálva van Azure Monitor, és 11 mérőszámmal rendelkezik, amelyekkel az Azure bejárati ajtó standard/prémium szintű monitorozását valós időben követheti nyomon, hibaelhárítási és hibakeresési problémák esetén.  
 
-Az Azure bejárati ajtó standard/prémium szintű mértékeit, és 60 másodperces időközönként elküldi a metrikákat. A metrikák akár 3 percet is igénybe vehetnek, hogy megjelenjenek a portálon. A metrikák a választott diagramokban vagy rácsban jeleníthetők meg, és a portálon, a PowerShellen, a parancssori felületen és az API-n keresztül érhetők el. További információ: [Azure monitor mérőszámok](../../azure-monitor/platform/data-platform-metrics.md).  
+Az Azure bejárati ajtó standard/prémium szintű mértékeit, és 60 másodperces időközönként elküldi a metrikákat. A metrikák akár 3 percet is igénybe vehetnek, hogy megjelenjenek a portálon. A metrikák a választott diagramokban vagy rácsban jeleníthetők meg, és a portálon, a PowerShellen, a parancssori felületen és az API-n keresztül érhetők el. További információ: [Azure monitor mérőszámok](../../azure-monitor/essentials/data-platform-metrics.md).  
 
 Az alapértelmezett mérőszámok díjmentesek. Felárért további mérőszámokat is engedélyezhet. 
 
-Beállíthat riasztásokat az egyes mérőszámokhoz, például a 4XXErrorRate vagy a 5XXErrorRate küszöbértékét. Ha a hiba mértéke meghaladja a küszöbértéket, a rendszer a konfigurált módon aktiválja a riasztást. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md). 
+Beállíthat riasztásokat az egyes mérőszámokhoz, például a 4XXErrorRate vagy a 5XXErrorRate küszöbértékét. Ha a hiba mértéke meghaladja a küszöbértéket, a rendszer a konfigurált módon aktiválja a riasztást. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/alerts/alerts-metric.md). 
 
 > [!IMPORTANT]
 > Az Azure bejárati ajtó standard/Premium (előzetes verzió) jelenleg nyilvános előzetes verzióban érhető el.
@@ -75,7 +75,7 @@ Beállíthat riasztásokat az egyes mérőszámokhoz, például a 4XXErrorRate v
 
 1. Válassza a metrikák szakaszban felsorolt metrikák **új riasztási szabályát** .
 
-A riasztások Azure Monitor alapján lesznek felszámítva. További információ a riasztásokról: [Azure monitor riasztások](../../azure-monitor/platform/alerts-overview.md).
+A riasztások Azure Monitor alapján lesznek felszámítva. További információ a riasztásokról: [Azure monitor riasztások](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

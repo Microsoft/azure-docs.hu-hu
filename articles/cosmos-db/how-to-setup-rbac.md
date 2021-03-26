@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: thweiss
-ms.openlocfilehash: ec12deb5a7c77674026b849585552fd873aee5c1
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f8028d69e376e2b71549be52267e2f6cbdb1f8ce
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045994"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568647"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos DB-fiókhoz Azure Active Directoryhoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -323,9 +323,9 @@ Ha a Azure Cosmos DB RBAC szeretné használni az alkalmazásban, frissítenie k
 
 A példány létrehozásának módja `TokenCredential` meghaladja a jelen cikk hatókörét. Számos módon hozhat létre ilyen példányt a használni kívánt HRE-identitás típusától függően (felhasználói tag, egyszerű szolgáltatásnév, csoport stb.). Ami a legfontosabb, hogy a `TokenCredential` példánynak fel kell oldania az identitást (a résztvevő azonosítóját), amelyhez hozzárendelte a szerepköröket. Példákat talál egy `TokenCredential` osztály létrehozására:
 
-- [a .NET-ben](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [Java-ban](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
-- [a JavaScriptben](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
+- [a .NET-ben](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [Java-ban](/java/api/overview/azure/identity-readme#credential-classes)
+- [a JavaScriptben](/javascript/api/overview/azure/identity-readme#credential-classes)
 
 Az alábbi példák egy egyszerű szolgáltatást használnak egy `ClientSecretCredential` példánnyal.
 

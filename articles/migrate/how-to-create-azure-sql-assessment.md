@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: e9243fc750843c83b7ca8c295655853d20dcd083
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 9acc6de84c3e5bc43f482d36ade242d2315a2a4f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024984"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565112"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Azure SQL-Értékelés létrehozása
 
@@ -135,27 +135,27 @@ A havi költségbecslés magában foglalja az ajánlott Azure SQL Database és/v
 
         **Azure SQL DB-készültség** | **Azure SQL MI készültség** | **Ajánlott központi telepítési típus** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
          --- | --- | --- | --- |
-        Kész | Kész | [További információ](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) az Azure SQL dB-ben vagy az Azure SQL-ben | Igen
-        Kész | Nem üzemkész vagy ismeretlen | Azure SQL DB | Igen
-        Nem üzemkész vagy ismeretlen | Kész | Azure SQL MI | Igen
-        Nem áll készen | Nem áll készen | Lehetséges, hogy az Azure-beli virtuális gép [még többet szeretne megtudni](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | Nem
-        Nem üzemkész vagy ismeretlen | Nem üzemkész vagy ismeretlen | Ismeretlen | Nem
+        Kész | Kész | [További információ](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) az Azure SQL dB-ben vagy az Azure SQL-ben | Yes
+        Kész | Nem üzemkész vagy ismeretlen | Azure SQL DB | Yes
+        Nem üzemkész vagy ismeretlen | Kész | Azure SQL MI | Yes
+        Nem áll készen | Nem áll készen | Lehetséges, hogy az Azure-beli virtuális gép [még többet szeretne megtudni](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | No
+        Nem üzemkész vagy ismeretlen | Nem üzemkész vagy ismeretlen | Ismeretlen | No
     
     - **Cél központi telepítési típus** (az értékelés tulajdonságaiban kiválasztva): **Azure SQL db**
     
         **Azure SQL DB-készültség** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
         --- | --- |
-        Kész | Igen
+        Kész | Yes
         Nem áll készen | Nem
-        Ismeretlen | Nem
+        Ismeretlen | No
     
     - **Cél központi telepítési típus** (az értékelés tulajdonságaiban kiválasztva): **Azure SQL mi**
     
         **Azure SQL MI készültség** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
          --- | --- |
-        Kész | Igen
+        Kész | Yes
         Nem áll készen | Nem
-        Ismeretlen | Nem
+        Ismeretlen | No
 
 4. A példány neve részletezés elemre kattintva megtekintheti a felhasználói adatbázisok számát, a példányok részleteit, például a példány tulajdonságait, a számítást (a példány hatókörét) és a forrás-adatbázis tárolási részleteit.
 5. Kattintson a felhasználói adatbázisok számára az adatbázisok listájának és a hozzájuk tartozó adatok áttekintéséhez. Példa (csak becslések és költségek például): :::image type="content" source="./media/tutorial-assess-sql/assessment-db.png" alt-text="SQL-példány részletei":::
@@ -192,4 +192,4 @@ A megbízhatósági minősítés segít megbecsülni a méretre vonatkozó aján
 ## <a name="next-steps"></a>Következő lépések
 
 - [További](concepts-azure-sql-assessment-calculation.md) információ az Azure SQL-értékelések kiszámításáról.
-- Megkezdheti az SQL-példányok és-adatbázisok áttelepítését [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)használatával.
+- Megkezdheti az SQL-példányok és-adatbázisok áttelepítését [Azure Database Migration Service](../dms/dms-overview.md)használatával.

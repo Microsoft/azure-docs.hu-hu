@@ -3,12 +3,12 @@ title: A bicep fejlesztési és üzembe helyezési környezetek beállítása
 description: A bicep fejlesztési és üzembe helyezési környezetek konfigurálása
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd3721aca83488de61494a94826bfcd0b6acc26
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594393"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543737"
 ---
 # <a name="setup-bicep-development-and-deployment-environment"></a>A bicep fejlesztési és üzembe helyezési környezet beállítása
 
@@ -31,7 +31,7 @@ A bicep-fájlokat az Azure CLI vagy a Azure PowerShell használatával helyezhet
 - [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)
 
 > [!NOTE]
-> Jelenleg az Azure CLI és a Azure PowerShell is csak helyi bicep-fájlokat telepíthet. A bicep-fájlok Azure CLI használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-CLI](/deploy-cli.md#deploy-remote-template). A bicep-fájlok Azure PowerShell használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-PowerShell](/deploy-powershell.md#deploy-remote-template).
+> Jelenleg az Azure CLI és a Azure PowerShell is csak helyi bicep-fájlokat telepíthet. A bicep-fájlok Azure CLI használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-CLI](./deploy-cli.md#deploy-remote-template). A bicep-fájlok Azure PowerShell használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
 
 A Azure PowerShell vagy az Azure CLI támogatott verziójának telepítése után a következővel telepíthet egy bicep-fájlt:
 

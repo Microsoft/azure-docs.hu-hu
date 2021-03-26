@@ -3,12 +3,12 @@ title: A hibrid infrastruktúra kezelése az Azure arc skálával
 description: Ismerje meg, hogyan kezelheti hatékonyan az ügyfelek számítógépeit és a Kubernetes-fürtöket az Azure-on kívül.
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: da7f016b507f8f876d27f6924f87f078a7806563
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419320"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563599"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>A hibrid infrastruktúra kezelése az Azure arc skálával
 
@@ -35,11 +35,11 @@ Megadhatja például, hogy [ugyanazok a házirendek legyenek alkalmazva az ügyf
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Hibrid Kubernetes-fürtök kezelése az Azure arc-kompatibilis Kubernetes
 
-Olyan Kubernetes-fürtöket kezelhet, amelyek az [Azure arc használatával csatlakoztak az ügyfél előfizetéséhez](../../azure-arc/kubernetes/connect-cluster.md), ugyanúgy, mintha az Azure-ban futnak.
+Olyan Kubernetes-fürtöket kezelhet, amelyek az [Azure arc használatával csatlakoztak az ügyfél előfizetéséhez](../../azure-arc/kubernetes/quickstart-connect-cluster.md), ugyanúgy, mintha az Azure-ban futnak.
 
 Ha az ügyfél létrehozta a [Kubernetes-fürtöket az Azure arc szolgáltatásba](../../azure-arc/kubernetes/create-onboarding-service-principal.md), akkor ehhez a egyszerű szolgáltatásnév-fiókhoz férhet hozzá, és kezelheti a fürtöket. Ezt olyan felhasználók is elvégezhetik, akik a "Kubernetes-fürt – Azure arc bevezetése" Azure beépített szerepkört kaptak, ha a szolgáltatásnevet tartalmazó előfizetést az [Azure Lighthouse-be állították be](onboard-customer.md).
 
-A GitOps használatával konfigurálhatja a [konfigurációkat](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) és a [Helm-diagramokat](../../azure-arc/kubernetes/use-gitops-with-helm.md) a csatlakoztatott fürtökhöz.
+A GitOps használatával konfigurálhatja a [konfigurációkat](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) és a [Helm-diagramokat](../../azure-arc/kubernetes/use-gitops-with-helm.md) a csatlakoztatott fürtökhöz.
 
 A csatlakoztatott fürtöket Azure Monitor is figyelheti, és a [Azure Policy használatával méretezhetővé teheti a fürt konfigurációját](../../azure-arc/kubernetes/use-azure-policy.md).
 

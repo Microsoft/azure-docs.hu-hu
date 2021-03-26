@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e893216eb8e2d7e44e3f272f6b965b84c6253f7f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7a9ac98a9566986767016720fda245712197b27f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870330"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566540"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>IPv6-támogatás hozzáadása a Azure PowerShell (előzetes verzió) használatával a privát partnerek számára
 
 Ez a cikk azt ismerteti, hogyan adhat hozzá IPv6-támogatást a ExpressRoute-on keresztül az Azure-beli erőforrásokhoz való kapcsolódáshoz Azure PowerShell használatával.
 
 > [!Note]
-> Ez a funkció jelenleg előzetes verzióként érhető el az [Azure-régiókban Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones). Az ExpressRoute-áramkör ezért bármely egymással létrehozott hely használatával hozható létre, de a csatlakozáshoz használt IPv6-alapú központi telepítéseknek Availability Zones-vel rendelkező régiókban kell lenniük.
+> Ez a funkció jelenleg előzetes verzióként érhető el az [Azure-régiókban Availability Zones](../availability-zones/az-region.md#azure-regions-with-availability-zones). Az ExpressRoute-áramkör ezért bármely egymással létrehozott hely használatával hozható létre, de a csatlakozáshoz használt IPv6-alapú központi telepítéseknek Availability Zones-vel rendelkező régiókban kell lenniük.
 
 ## <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
@@ -46,7 +46,7 @@ A kérést a ExpressRoute csapata 2-3 munkanapon belül jóváhagyja.
 
 ## <a name="add-ipv6-private-peering-to-your-expressroute-circuit"></a>IPv6-alapú privát társak hozzáadása a ExpressRoute-áramkörhöz
 
-1. [Hozzon létre egy ExpressRoute áramkört](https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-arm) , vagy használjon egy meglévő áramkört. Az áramkör beolvasása a **Get-AzExpressRouteCircuit** parancs futtatásával:
+1. [Hozzon létre egy ExpressRoute áramkört](./expressroute-howto-circuit-arm.md) , vagy használjon egy meglévő áramkört. Az áramkör beolvasása a **Get-AzExpressRouteCircuit** parancs futtatásával:
 
     ```azurepowershell-interactive
     $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -150,7 +150,7 @@ Kövesse az alábbi lépéseket, ha az Azure-erőforrások meglévő környezete
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
 
-4. Ha van egy már meglévő zóna – redundáns átjáró, futtassa az alábbi parancsot az IPv6-kapcsolat engedélyezéséhez. Ellenkező esetben [hozza létre a virtuális hálózati átjárót](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager) egy felesleges SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) használatával.
+4. Ha van egy már meglévő zóna – redundáns átjáró, futtassa az alábbi parancsot az IPv6-kapcsolat engedélyezéséhez. Ellenkező esetben [hozza létre a virtuális hálózati átjárót](./expressroute-howto-add-gateway-resource-manager.md) egy felesleges SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) használatával.
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -161,13 +161,13 @@ Kövesse az alábbi lépéseket, ha az Azure-erőforrások meglévő környezete
 
 Kövesse az alábbi lépéseket, ha azt tervezi, hogy új Azure-erőforrás-készlethez szeretne csatlakozni egy olyan régióban, ahol az IPv6-alapú privát társas kapcsolaton keresztül Availability Zones.
 
-1. Hozzon létre egy kettős veremből álló virtuális hálózatot IPv4-és IPv6-címtartomány mellett. További információt a [virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network)című témakörben talál.
+1. Hozzon létre egy kettős veremből álló virtuális hálózatot IPv4-és IPv6-címtartomány mellett. További információt a [virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md#create-a-virtual-network)című témakörben talál.
 
-2. [Hozza létre a kettős verem átjárójának alhálózatát](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
+2. [Hozza létre a kettős verem átjárójának alhálózatát](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway).
 
-3. [Hozza létre a virtuális hálózati átjárót](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) egy zóna – redundáns SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) használatával. Ha azt tervezi, hogy FastPath használ, használja a ErGw3AZ (vegye figyelembe, hogy ez csak a ExpressRoute Direct-t használó áramkörök esetén érhető el).
+3. [Hozza létre a virtuális hálózati átjárót](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway) egy zóna – redundáns SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) használatával. Ha azt tervezi, hogy FastPath használ, használja a ErGw3AZ (vegye figyelembe, hogy ez csak a ExpressRoute Direct-t használó áramkörök esetén érhető el).
 
-4. [Csatolja a virtuális hálózatot a ExpressRoute-áramkörhöz](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm).
+4. [Csatolja a virtuális hálózatot a ExpressRoute-áramkörhöz](./expressroute-howto-linkvnet-arm.md).
 
 ## <a name="limitations"></a>Korlátozások
 Míg az IPv6-támogatás elérhető az Availability Zones-vel rendelkező régiókban üzemelő példányokhoz való kapcsolódáshoz, nem támogatja a következő használati eseteket:

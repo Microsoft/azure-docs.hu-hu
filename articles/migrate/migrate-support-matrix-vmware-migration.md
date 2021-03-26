@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576781"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557564"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-migrálás támogatási mátrixa
 
@@ -68,7 +68,7 @@ A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttel
 **IPv6** | Nem támogatott.
 **Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
 **Egyidejű replikáció** | Legfeljebb 300 virtuális gép egyidejű replikálása vCenter Server 1 berendezéssel. Legfeljebb 500 virtuális gép replikálása vCenter Server egy további [kibővítő berendezés](./how-to-scale-out-for-migration.md) telepítésekor. 
-**Azure VM-ügynök automatikus telepítése (Windows és Linux rendszerű ügynök)** | A Windows Server 2008 R2 és újabb verziók esetében támogatott. <br/> 64 bites RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 esetén támogatott. Tekintse át a [szükséges csomagok](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)listáját) a Linux operációs rendszerekhez.
+**Azure VM-ügynök automatikus telepítése (Windows és Linux rendszerű ügynök)** | A Windows Server 2008 R2 és újabb verziók esetében támogatott. <br/> 64 bites RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 esetén támogatott. Tekintse át a [szükséges csomagok](../virtual-machines/extensions/agent-linux.md#requirements)listáját) a Linux operációs rendszerekhez.
 
 > [!TIP]
 >  A Azure Portal használatával egyszerre legfeljebb 10 virtuális gépet választhat a replikálás konfigurálásához. Több virtuális gép replikálásához használhatja a portált, és hozzáadhatja a virtuális gépeket több kötegben 10 virtuális gépen, vagy használhatja a Azure Migrate PowerShell-felületet a replikáció konfigurálásához. Győződjön meg arról, hogy egyidejű replikáció esetén nem kell egyidejű replikációt konfigurálnia a maximális támogatott számú virtuális gépen.

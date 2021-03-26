@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: af44912edf3ce98ceb71bd34388543f7652c2181
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438199"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568460"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>GPU-t támogató IoT-modul üzembe helyezése Azure Stack Edge Pro GPU-eszközön
 
@@ -166,4 +166,4 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ arról, hogyan [konfigurálhatja a GPU-t modul használatára](azure-stack-edge-j-series-configure-gpu-modules.md).
+- További információ arról, hogyan [konfigurálhatja a GPU-t modul használatára](./azure-stack-edge-gpu-configure-gpu-modules.md).

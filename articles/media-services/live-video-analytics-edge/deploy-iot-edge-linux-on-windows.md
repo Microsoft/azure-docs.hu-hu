@@ -3,16 +3,16 @@ title: Üzembe helyezés egy IoT Edge Linuxon a Windows rendszeren – Azure
 description: Ez a cikk útmutatást nyújt a Windows-eszközök Linux rendszerű IoT Edge való üzembe helyezéséhez.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618134"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561083"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Üzembe helyezés egy IoT Edge for Linux on Windows (EFLOW) eszközön
 
-Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az élő videók elemzését egy olyan peremhálózati eszközön, amelyen [IoT Edge Linux rendszeren (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows). Miután végzett a jelen dokumentumban ismertetett lépésekkel, futtathat egy olyan [adathordozó-diagramot](media-graph-concept.md) , amely észleli a videón való mozgást, és ilyen eseményeket bocsát ki a felhőben lévő IoT hubhoz. Ezt követően a speciális forgatókönyvek esetében kikapcsolhatja a Media Graphot, és a Windows-alapú IoT Edge eszközön elérhetővé teheti az élő video-elemzési lehetőségeket.
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az élő videók elemzését egy olyan peremhálózati eszközön, amelyen [IoT Edge Linux rendszeren (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md). Miután végzett a jelen dokumentumban ismertetett lépésekkel, futtathat egy olyan [adathordozó-diagramot](media-graph-concept.md) , amely észleli a videón való mozgást, és ilyen eseményeket bocsát ki a felhőben lévő IoT hubhoz. Ezt követően a speciális forgatókönyvek esetében kikapcsolhatja a Media Graphot, és a Windows-alapú IoT Edge eszközön elérhetővé teheti az élő video-elemzési lehetőségeket.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az élő videók elemz�
     > [!NOTE]
     > Szüksége lesz egy Azure-előfizetésre, amely az egyszerű szolgáltatások létrehozásához szükséges engedélyekkel rendelkezik (ez a **tulajdonosi szerepkör** ). Ha nem rendelkezik a megfelelő engedélyekkel, forduljon a fiók rendszergazdájához, és adja meg a megfelelő engedélyeket.
 * A [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen. Győződjön meg arról, hogy rendelkezik az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Olvassa el [a mi az EFLOW](https://aka.ms/AzEFLOW-docs).
+* Olvassa el [a mi az EFLOW](../../iot-edge/iot-edge-for-linux-on-windows.md).
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
 
@@ -29,9 +29,9 @@ A következő ábra a dokumentum teljes folyamatát ábrázolja, és 5 egyszerű
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="IoT Edge Linux-on Windows (EFLOW) diagramon":::
 
-1. [Telepítse a EFLOW](https://aka.ms/AzEFLOW-install) a Windows-eszközre. 
+1. [Telepítse a EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md) a Windows-eszközre. 
 
-    1. Ha Windows rendszerű SZÁMÍTÓGÉPét használja, akkor a [Windows felügyeleti központ](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview) kezdőlapján, a kapcsolatok listájában megjelenik egy helyi gazdagép-kapcsolat, amely a Windows felügyeleti központot futtató számítógépet jelképezi. 
+    1. Ha Windows rendszerű SZÁMÍTÓGÉPét használja, akkor a [Windows felügyeleti központ](/windows-server/manage/windows-admin-center/overview) kezdőlapján, a kapcsolatok listájában megjelenik egy helyi gazdagép-kapcsolat, amely a Windows felügyeleti központot futtató számítógépet jelképezi. 
     1. Az Ön által kezelt további kiszolgálók, számítógépek vagy fürtök itt is megjelennek.
     1. A Windows felügyeleti központ használatával telepítheti és kezelheti az Azure-EFLOW a helyi eszközön vagy a távoli felügyelt eszközökön. Ebben az útmutatóban a helyi gazdagép-kapcsolatok a Windows rendszerű Linux rendszerhez készült Azure IoT Edge központi telepítéséhez célként használt eszközként szolgálnak. Ezért láthatja, hogy a localhost IoT Edge eszközként is szerepel.
 
@@ -59,7 +59,7 @@ A következő ábra a dokumentum teljes folyamatát ábrázolja, és 5 egyszerű
     :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/azure-iot-edge-manager-analysis.png" alt-text="Elemzés":::
 1. Most, hogy beállította a peremhálózati eszközt, regisztrálva van a központban, és sikeresen fut a megfelelő mappastruktúrát, a következő lépés az Azure-erőforrások alábbi további erőforrásainak beállítása és a LVA modul üzembe helyezése. 
 
-    * A(z)
+    * Tárfiók
     * Azure Media Services fiók
 
     Ezért javasoljuk, hogy az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) használva telepítse a szükséges erőforrásokat az Azure-előfizetésében. Ehhez kövesse az alábbi lépéseket:
@@ -110,4 +110,3 @@ A következő ábra a dokumentum teljes folyamatát ábrázolja, és 5 egyszerű
 * [AI futtatása élő videón](use-your-model-quickstart.md#overview) (kihagyhatja az előfeltételként megadott beállítást, mert már a fentiekben is megtörtént)
 * A [vs Code bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) használatával további adathordozó-diagramokat jeleníthet meg.
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera)  , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az RTSP-t támogató IP-kamerákat a [ONVIF-megfelelőségi termékek](https://www.onvif.org/conformant-products/) lapon találja. Keresse meg azokat az eszközöket, amelyek megfelelnek a G, S vagy T profiloknak.
-

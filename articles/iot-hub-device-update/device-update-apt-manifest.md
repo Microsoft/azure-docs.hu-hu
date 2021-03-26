@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0b68b78499aa3bf0d84d8bd0fa5ab55d1f969113
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 878748fcfc9b096e340b53c06969962af99f603f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679587"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561168"
 ---
 # <a name="device-update-apt-manifest"></a>Eszköz frissítése APT-jegyzékfájl
 
@@ -103,7 +103,7 @@ Ha a verzió nincs megadva, a rendszer a megadott csomag legújabb elérhető ve
 > Az APT Package Manager figyelmen kívül hagyja a csomagok verziószámozási követelményeit, ha a telepítendő függő csomagok automatikusan fel lesznek oldva. Ha a függő csomagok explicit verzióit nem adják meg, a rendszer a legújabbat fogja használni, annak ellenére, hogy maga a csomag is megadhat egy szigorú követelményt (=) egy adott verzióra vonatkozóan. Ez az automatikus megoldás hibákat okozhat a nem teljesített függőségekkel kapcsolatban. [További információ](https://unix.stackexchange.com/questions/350192/apt-get-not-properly-resolving-a-dependency-on-a-fixed-version-in-a-debian-ubunt)
 
 Ha frissíti a Azure IoT Edge biztonsági démon egy adott verzióját, akkor a csomag és a függő csomag kívánt verzióját is fel kell vennie az `iotedge` `libiothsm-std` apt-jegyzékbe.
-[További információ](https://docs.microsoft.com/azure/iot-edge/how-to-update-iot-edge#update-the-security-daemon)
+[További információ](../iot-edge/how-to-update-iot-edge.md#update-the-security-daemon)
 
 > [!NOTE]
 > Az eszköz frissítési ügynökének és függőségeinek frissítéséhez egy apt-jegyzékfájlt is használhat. Sorolja fel az eszköz frissítési ügynökének nevét és a kívánt verziót az apt-jegyzékfájlban, mint bármely más csomag esetében. Ezt az apt-jegyzékfájlt Ezután importálhatja és telepítheti az eszköz frissítésével IoT Hub folyamathoz. 
@@ -202,4 +202,3 @@ Ez a frissítés tartalmazza a foo-csomagot, és tartalmazza a sáv csomagját i
 
 > [!div class="nextstepaction"]
 > [Új frissítés importálása](import-update.md)
-

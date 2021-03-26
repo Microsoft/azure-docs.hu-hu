@@ -7,18 +7,18 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615380"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568817"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>A Microsoft csatlakoztatott gyorsítótár előzetes telepítési forgatókönyvének mintája: kétszintű beágyazott Azure IoT Edge átjáró kimenő, nem hitelesített proxyval
 
 Az alábbi ábrának megfelelően ebben a forgatókönyvben van egy Azure IoT Edge átjáró és egy alsóbb rétegbeli Azure IoT Edge-eszköz, egy Azure IoT Edge-átjáró egy másik Azure IoT Edge átjáróhoz, és egy proxykiszolgáló az informatikai DMZ-ben. Alább látható egy példa arra, hogy a Microsoft csatlakoztatott gyorsítótár-környezeti változói hogyan lesznek beállítva a Azure Portal UX-ben a Azure IoT Edge-átjárók számára telepített MCC-modulok esetében. A példában látható példa Azure IoT Edge átjárók kétszintű konfigurációját mutatja be, de nincs korlátozva a Microsoft által csatlakoztatott gyorsítótár által támogatott felsőbb szintű gazdagépek mélysége. Az előző példákban nincs különbség az MCC-tároló létrehozási beállításai között.
 
-A Azure IoT Edge-átjárók rétegzett központi telepítésének konfigurálásával kapcsolatos további részletekért tekintse meg a következő dokumentációt: az alsóbb rétegbeli [IoT Edge eszközök csatlakoztatása Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-connect-downstream-iot-edge-device?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true) . Emellett vegye figyelembe, hogy a Azure IoT Edge, a Microsoft csatlakoztatott gyorsítótára és az egyéni modulok telepítésekor minden modulnak ugyanabban a tároló-beállításjegyzékben kell lennie.
+A Azure IoT Edge-átjárók rétegzett központi telepítésének konfigurálásával kapcsolatos további részletekért tekintse meg a következő dokumentációt: az alsóbb rétegbeli [IoT Edge eszközök csatlakoztatása Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11) . Emellett vegye figyelembe, hogy a Azure IoT Edge, a Microsoft csatlakoztatott gyorsítótára és az egyéni modulok telepítésekor minden modulnak ugyanabban a tároló-beállításjegyzékben kell lennie.
 
 Az alábbi ábra azt a forgatókönyvet ismerteti, amelyben az egyik Azure IoT Edge átjáró a CDN-erőforrásokhoz való közvetlen hozzáférésként viselkedik, mint egy másik Azure IoT Edge átjáró, amely szülőként működik egy Azure IoT Leaf-eszköz, például egy málna PI számára. Csak az Azure IoT Edge átjáró szülője rendelkezik internetkapcsolattal a CDN-erőforrásokhoz, és mind a Azure IoT Edge gyermek, mind az Azure IoT-eszköz internetes elkülönítésben van. 
 
@@ -70,7 +70,7 @@ Az alábbi ábra azt a forgatókönyvet ismerteti, amelyben az egyik Azure IoT E
 ## <a name="child-gateway-configuration"></a>Alárendelt átjáró konfigurációja
 
 >[!Note]
->Ha a saját privát beállításjegyzékében a konfigurációban használt replikált tárolók vannak, akkor módosítani kell a config. toml beállításait és a futásidejű beállításokat a modul üzembe helyezésében. További információkért tekintse meg az [oktatóanyag – IoT Edge eszközök hierarchiájának létrehozása – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) további részleteket.
+>Ha a saját privát beállításjegyzékében a konfigurációban használt replikált tárolók vannak, akkor módosítani kell a config. toml beállításait és a futásidejű beállításokat a modul üzembe helyezésében. További információkért tekintse meg az [oktatóanyag – IoT Edge eszközök hierarchiájának létrehozása – Azure IoT Edge](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device) további részleteket.
 
 1. Módosítsa a peremhálózati ügynök rendszerképének elérési útját az alábbi példában bemutatott módon:
 

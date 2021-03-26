@@ -3,12 +3,12 @@ title: Terv üzembe helyezésének szakaszai
 description: Ismerje meg a biztonsági és az összetevővel kapcsolatos lépéseket, amelyekkel az Azure tervrajz-szolgáltatásai áthaladnak a tervrajz-hozzárendelés létrehozása során.
 ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: e686dec1c9d79e42dafee17d8a937284aac4fdd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 473f8c7957994401ea6000ecc0d8023a89f8c349
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918551"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560148"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Terv üzembe helyezésének szakaszai
 
@@ -27,7 +27,7 @@ A terv üzembe helyezése egy tervnek egy előfizetéshez rendelésével vagy [e
 
 Az Azure BluePrints egyszerű szolgáltatás tulajdonosi jogosultságokat kap a hozzárendelt előfizetéshez vagy előfizetésekhez, ha a [rendszerhez hozzárendelt felügyelt identitású](../../../active-directory/managed-identities-azure-resources/overview.md) felügyelt identitás van használatban. A megadott szerepkör lehetővé teszi, hogy az Azure tervrajzai létrehozzák és később visszavonják a **rendszer által hozzárendelt** felügyelt identitást. Ha **felhasználó által hozzárendelt** felügyelt identitást használ, az Azure BluePrints egyszerű szolgáltatás nem kap, és nincs szüksége tulajdonosi jogosultságokra az előfizetésben.
 
-A jogosultságok automatikusan megadhatók, ha a hozzárendelés a portálon keresztül történik. Ha azonban a hozzárendelés a REST APIon keresztül történik, a jogokat külön API-hívással kell megadnia. Az Azure-tervezetek AppId `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` , de az egyszerű szolgáltatásnév a bérlőtől függ. Az egyszerű szolgáltatás beszerzéséhez használja a [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) és a REST-végpont [servicePrincipals](/graph/api/resources/serviceprincipal) . Ezután adja meg az Azure a _tulajdonosi_ szerepkört a [portálon](../../../role-based-access-control/role-assignments-portal.md), az [azure CLI](../../../role-based-access-control/role-assignments-cli.md)-n, [Azure PowerShellon](../../../role-based-access-control/role-assignments-powershell.md), [Rest APIn](../../../role-based-access-control/role-assignments-rest.md)vagy egy [Azure Resource Manager sablonon](../../../role-based-access-control/role-assignments-template.md)keresztül.
+A jogosultságok automatikusan megadhatók, ha a hozzárendelés a portálon keresztül történik. Ha azonban a hozzárendelés a REST APIon keresztül történik, a jogokat külön API-hívással kell megadnia. Az Azure-tervezetek AppId `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` , de az egyszerű szolgáltatásnév a bérlőtől függ. Az egyszerű szolgáltatás beszerzéséhez használja a [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) és a REST-végpont [servicePrincipals](/graph/api/resources/serviceprincipal) . Ezután adja meg az Azure a _tulajdonosi_ szerepkört a [portálon](../../../role-based-access-control/role-assignments-portal.md), az [azure CLI](../../../role-based-access-control/role-assignments-cli.md)-n, [Azure PowerShellon](../../../role-based-access-control/role-assignments-powershell.md), [Rest APIn](../../../role-based-access-control/role-assignments-rest.md)vagy egy [Azure Resource Manager sablonon](../../../role-based-access-control/role-assignments-template.md)keresztül.
 
 Az Azure BluePrints szolgáltatás nem közvetlenül helyezi üzembe az erőforrásokat.
 

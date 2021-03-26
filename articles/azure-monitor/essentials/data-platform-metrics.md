@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 68e947a6e13ba5195815fe966ec69ec6a2f4b8e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700974"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562970"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor mérőszámok áttekintése
 Azure Monitor mérőszámok olyan Azure Monitor szolgáltatása, amely a [figyelt erőforrások](../monitor-reference.md) numerikus adatait egy idősorozat-adatbázisba gyűjti. A metrikák olyan numerikus értékek, amelyeket rendszeres időközönként gyűjtenek, és egy adott rendszer bizonyos aspektusait egy adott időpontban írják le. A Azure Monitor metrikái nagyon egyszerűek, és a közel valós idejű forgatókönyvek támogatása révén különösen hasznosak lehetnek a riasztások és a problémák gyors észlelése érdekében. A mérőszámok Explorerrel interaktív módon elemezheti őket, és proaktívan értesítheti a riasztást, ha egy érték átlép egy küszöbértéket, vagy egy munkafüzetben vagy irányítópulton jeleníti meg őket.
@@ -27,7 +27,7 @@ Azure Monitor mérőszámok olyan Azure Monitor szolgáltatása, amely a [figyel
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Mit tehet a Azure Monitor metrikákkal?
 A következő táblázat felsorolja a Azure Monitor metrikáinak különböző módszereit.
 
-|  |  |
+|  | Description |
 |:---|:---|
 | **Elemzés** | A [metrikák](metrics-charts.md) segítségével elemezheti a diagramon összegyűjtött mérőszámokat, és összehasonlíthatja a különböző erőforrások metrikáit. |
 | **Riasztás** | Olyan [metrikai riasztási szabályt](../alerts/alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](../alerts/action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |

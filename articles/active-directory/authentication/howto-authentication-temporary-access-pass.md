@@ -7,23 +7,23 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: justinha
-author: inbarckms
+author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0805ac84318a4fee98c30127ac80c0dac2b96309
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579382"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558261"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Ideiglenes hozzáférési pass beállítása az Azure AD-ben a jelszóval nem rendelkező hitelesítési módszerek regisztrálásához (előzetes verzió)
 
 A jelszó nélküli hitelesítési módszerek, például a FIDO2 és a jelszó nélküli telefonos bejelentkezés a Microsoft Authenticator alkalmazáson keresztül, lehetővé teszi a felhasználók számára, hogy jelszó nélkül biztonságosan jelentkezzenek be. A felhasználók a jelszóval nem rendelkező metódusok kétféleképpen jelentkezhetnek be:
 
-- Meglévő Azure AD multi-Factor Authentication módszerek használata 
-- Ideiglenes hozzáférési pass használata 
+- Meglévő Azure AD-Multi-Factor Authentication metódusok használata 
+- Ideiglenes hozzáférési pass használata (KOPPINTÁS) 
 
 Az ideiglenes hozzáférési pass egy olyan időkorlátos PIN-kód, amelyet egy olyan rendszergazda állít ki, amely megfelel az erős hitelesítési követelményeknek, és használható más hitelesítési módszerek bevezetésére, beleértve a jelszó nélkülieket is. Az ideiglenes hozzáférési pass is megkönnyíti a helyreállítást, ha egy felhasználó elvesztette vagy elfelejtette az erős hitelesítési tényezőt, például egy FIDO2 biztonsági kulcsot vagy Microsoft Authenticator alkalmazást, de be kell jelentkeznie az új erős hitelesítési módszerek regisztrálásához.
 
@@ -49,13 +49,13 @@ Az ideiglenes hozzáférési pass hitelesítési módszer házirendjének konfig
    Az alapértelmezett értéket és az engedélyezett értékek tartományát az alábbi táblázat ismerteti.
 
 
-   | Beállítás          | Alapértelmezett értékek | Megengedett értékek               | Megjegyzések                                                                                                                                                                                                                                                                 |   |
-   |------------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    Minimális élettartam | 1 óra         | 10 – 43200 perc (30 nap) | Az ideiglenes hozzáférési továbbítás érvényes minimális száma percben.                                                                                                                                                                                                                         |   |
-   | Maximális élettartam | 24 óra       | 10 – 43200 perc (30 nap) | Az ideiglenes hozzáférési továbbítás érvényességi idejének maximális száma percben.                                                                                                                                                                                                                         |   |
-   | Alapértelmezett élettartam | 1 óra         | 10 – 43200 perc (30 nap) | Az alapértelmezett értékeket felülbírálhatja az egyes fázisok, a házirend által beállított minimális és maximális élettartamon belül.                                                                                                                                                |   |
-   | Egyszeri használat     | Hamis          | Igaz/hamis                 | Ha a házirend hamis értékre van állítva, akkor a bérlőben lévő átadások az érvényessége során egyszer vagy többször is használhatók (maximális élettartam). Ha az ideiglenes hozzáférési szabályzatban egyszeri használatot alkalmaz, a bérlőben létrehozott összes hágó egyszeri használatra lesz létrehozva. |   |
-   | Hossz           | 8              | 8-48 karakter              | Meghatározza a PIN-kód hosszát.                                                                                                                                                                                                                                      |   |
+   | Beállítás | Alapértelmezett értékek | Megengedett értékek | Megjegyzések |
+   |---|---|---|---|
+   | Minimális élettartam | 1 óra | 10 – 43200 perc (30 nap) | Az ideiglenes hozzáférési továbbítás érvényes minimális száma percben. |
+   | Maximális élettartam | 24 óra | 10 – 43200 perc (30 nap) | Az ideiglenes hozzáférési továbbítás érvényességi idejének maximális száma percben. |
+   | Alapértelmezett élettartam | 1 óra | 10 – 43200 perc (30 nap) | Az alapértelmezett értékeket felülbírálhatja az egyes fázisok, a házirend által beállított minimális és maximális élettartamon belül. |
+   | Egyszeri használat | Hamis | Igaz/hamis | Ha a házirend hamis értékre van állítva, akkor a bérlőben lévő átadások az érvényessége során egyszer vagy többször is használhatók (maximális élettartam). Ha az ideiglenes hozzáférési szabályzatban egyszeri használatot alkalmaz, a bérlőben létrehozott összes hágó egyszeri használatra lesz létrehozva. |
+   | Hossz | 8 | 8-48 karakter | Meghatározza a PIN-kód hosszát. |
 
 ## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Ideiglenes hozzáférési menet létrehozása az Azure AD-portálon
 

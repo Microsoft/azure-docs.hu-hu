@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2922e9620f558e072cfc1264f7e661efd11a90fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf236396f080af9676f211c42178ddda6a794420
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437008"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568341"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Virtuális gépek üzembe helyezése a Azure Stack Edge Pro GPU-eszközön sablonok használatával
 
@@ -110,7 +110,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> A Azure Resource Manager használatával csak a helyi Storage-fiókok, például a helyileg redundáns tárolás (Standard_LRS vagy Premium_LRS) hozhatók létre. A többplatformos tárolási fiókok létrehozásához tekintse [meg a Hozzáadás, kapcsolódás a Storage-fiókokhoz a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md)-ban című témakör lépéseit.
+> A Azure Resource Manager használatával csak a helyi Storage-fiókok, például a helyileg redundáns tárolás (Standard_LRS vagy Premium_LRS) hozhatók létre. A többplatformos tárolási fiókok létrehozásához tekintse [meg a Hozzáadás, kapcsolódás a Storage-fiókokhoz a Azure stack Edge Pro](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)-ban című témakör lépéseit.
 
 Az alábbiakban egy példa látható a kimenetre.
 

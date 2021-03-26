@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: b5b33007f71cfc2a29005ce84f1fedba90dd1bf1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888906"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561967"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Szemantikai keresés az Azure Cognitive Search
 
@@ -44,7 +44,7 @@ A szemantikai keresés javítja a pontosságot, és felidézi a következő kép
 
 ### <a name="order-of-operations"></a>Műveletek sorrendje
 
-A szemantikai keresés összetevői mindkét irányban kiterjesztik a meglévő lekérdezés-végrehajtási folyamatot. Ha engedélyezi a helyesírás-javítást, a [helyesírás](speller-how-to-add.md) -ellenőrző azonnal korrigálja az elírásokat, mielőtt a lekérdezési feltételek elérnék a keresőmotort.
+A szemantikai keresés összetevői mindkét irányban kiterjesztik a meglévő lekérdezés-végrehajtási folyamatot. Ha engedélyezi a helyesírás-javítást, a helyesírás-ellenőrző [kifejti](speller-how-to-add.md) az elírásokat a lekérdezés kialakulásakor, mielőtt a feltételek elérnék a keresőmotort.
 
 :::image type="content" source="media/semantic-search-overview/semantic-workflow.png" alt-text="Szemantikai összetevők a lekérdezés-végrehajtásban" border="true":::
 

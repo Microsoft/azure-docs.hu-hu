@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465759"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562851"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Oktatóanyag: élő videó elemzése Intel OpenVINO™ DL stream – Edge AI bővítmény használatával 
 
@@ -66,7 +66,7 @@ Az oktatóanyagban a következőket végezheti el:
 
 A OpenVINO™ DL streaming-Edge AI bővítmény modul egy, az Intel videó-elemzési szolgáltatásán alapuló, a OpenVINO™ DL Streamtel létrehozott video Analytics-folyamatokat kiszolgáló (VA-kiszolgáló). A fejlesztők dekódolású képkockákat küldhetnek az AI bővítmény modulba, amely az észlelést, besorolást vagy nyomon követést végzi, és visszaadja az eredményeket. Az AI bővítmény modul olyan gRPC API-kat tesz elérhetővé, amelyek kompatibilisek a video Analytics-platformokkal, például a Microsoft IoT Edge élő video Analytics szolgáltatásával. 
 
-Összetett, nagy teljesítményű élő videós elemzési megoldások létrehozásához a IoT Edge modul élő videó-elemzését egy olyan hatékony következtetési motorral kell párosítani, amely képes kihasználni a skálát a peremen. Ebben az oktatóanyagban a következtetési kérelmeket a rendszer elküldi az [Intel OpenVINO™ DL streaming – Edge AI-bővítménynek](https://aka.ms/lva-intel-openvino-dl-streamer), amely egy Edge-modul, amely a IoT Edge élő video Analytics szolgáltatással való működésre lett tervezve. 
+Összetett, nagy teljesítményű élő videós elemzési megoldások létrehozásához a IoT Edge modul élő videó-elemzését egy olyan hatékony következtetési motorral kell párosítani, amely képes kihasználni a skálát a peremen. Ebben az oktatóanyagban a következtetési kérelmeket a rendszer elküldi az [Intel OpenVINO™ DL streaming – Edge AI-bővítménynek](), amely egy Edge-modul, amely a IoT Edge élő video Analytics szolgáltatással való működésre lett tervezve. 
 
 A következtetési kiszolgáló kezdeti kiadásában a következő [modellek](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options)érhetők el:
 

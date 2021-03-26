@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 0701ff53202d53131ceac8ceabb148fb5ff4f2b2
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 629459d22b18b326307b45bb512d16622808b533
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025152"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562630"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
@@ -143,7 +143,7 @@ Ha a példány az Azure SQL-adatbázissal és a felügyelt Azure SQL-példánnya
 Ez akkor fordulhat elő, ha az értékelés tulajdonságai között kiválasztott cél üzembehelyezési típus értéke **Ajánlott**, és az SQL-példány nem kompatibilis az Azure SQL-adatbázissal és felügyelt Azure SQL-példánnyal. A felhasználónak azt javasoljuk, hogy hozzon létre egy értékelést az Azure Migrate-ben **Azure VM** értékelési típussal annak meghatározásához, hogy a példányt futtató kiszolgáló migrálható-e Azure-beli virtuális gépre.
 A felhasználónak javasoljuk, hogy hozzon létre egy értékelést Azure Migrate az értékelés típusaként Azure-beli **virtuális gépet** annak megállapításához, hogy a példányt futtató kiszolgáló készen áll-e az Azure-beli virtuális gépekre való áttelepítésre:
 - Az Azure-beli virtuális gépek felmérései jelenleg a Azure Migrateban vannak, és nem veszik figyelembe az SQL-példányok és-adatbázisok Azure-beli virtuális gépen való futtatásának adott teljesítmény-mérőszámait. 
-- Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
+- Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Nem látok néhány adatbázist az értékelésben, pedig a példány az értékelés részét képezi
 
@@ -151,7 +151,7 @@ Az Azure SQL-értékelés csak az online állapotú adatbázisokat tartalmazza. 
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Szeretném összehasonlítani az SQL-példányok futtatásának költségeit az Azure-beli virtuális gépen vagy Azure SQL Database/Azure SQL felügyelt példányon
 
-Létrehozhat egy értékelést **Azure-beli virtuális gép** típussal ugyanarra a csoportra vonatkozóan, amelyet az **Azure SQL**-értékelésben is használt. Ezután összehasonlíthatja a két jelentést egymás mellett. Az Azure-beli virtuális gépek értékelése az Azure Migrate-ben ugyanakkor jelenleg az átemeléses migrálásra összpontosít, és nem veszi figyelembe az SQL-példányok és -adatbázisok Azure-beli virtuális gépen történő futtatásához szükséges teljesítménymetrikákat. Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
+Létrehozhat egy értékelést **Azure-beli virtuális gép** típussal ugyanarra a csoportra vonatkozóan, amelyet az **Azure SQL**-értékelésben is használt. Ezután összehasonlíthatja a két jelentést egymás mellett. Az Azure-beli virtuális gépek értékelése az Azure Migrate-ben ugyanakkor jelenleg az átemeléses migrálásra összpontosít, és nem veszi figyelembe az SQL-példányok és -adatbázisok Azure-beli virtuális gépen történő futtatásához szükséges teljesítménymetrikákat. Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Az Azure SQL Assessment szolgáltatás tárolási díja nulla
 Az Azure SQL felügyelt példányai esetében az első 32 GB/példány/hónap tárterülethez nem vehető igénybe tárterület, és a tárterülethez további tárolási díj is hozzáadódik 32GB-onként. [További információ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)

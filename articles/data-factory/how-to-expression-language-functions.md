@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783387"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566659"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Paraméterek, kifejezések és függvények használata a Azure Data Factoryban
 
@@ -25,7 +25,7 @@ Ebben a dokumentumban elsősorban a különböző példákkal foglalkozó alapfo
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Azure-beli adatok gyári felhasználói felülete és paraméterei
 
-Ha még nem ismeri az Azure-beli adat-előállító paramétert az ADF felhasználói felületén, tekintse át a [adat-előállító felhasználói felületét](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui)  a társított szolgáltatások paramétereit és a [adat-előállító felhasználói felületét a metaadatok vezérelt folyamatához](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) , a vizualizációs magyarázattal.
+Ha még nem ismeri az Azure-beli adat-előállító paramétert az ADF felhasználói felületén, tekintse át a [adat-előállító felhasználói felületét](./parameterize-linked-services.md#data-factory-ui)  a társított szolgáltatások paramétereit és a [adat-előállító felhasználói felületét a metaadatok vezérelt folyamatához](./how-to-use-trigger-parameterization.md#data-factory-ui) , a vizualizációs magyarázattal.
 
 ## <a name="parameter-and-expression-concepts"></a>Paraméterek és kifejezések fogalmak 
 
@@ -313,11 +313,11 @@ Ez az [Azure-beli adatfeldolgozó másolási folyamata az oktatóanyag](https://
 
 ### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Részletes leképezési adatfolyam-folyamat paraméterekkel 
 
-A paraméterek az adatfolyamban való használatának módjával kapcsolatban kövesse az [adatforgalom leképezése](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) az átfogó példa paraméterekkel című szakaszát.
+A paraméterek az adatfolyamban való használatának módjával kapcsolatban kövesse az [adatforgalom leképezése](./parameters-data-flow.md) az átfogó példa paraméterekkel című szakaszát.
 
 ### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Részletes metaadatok vezérelt folyamat paraméterekkel
 
-Adja meg a [metaadatok vezérelt folyamatát paraméterekkel](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) , és tudjon meg többet arról, hogyan használhatók paraméterek a metaadatokat használó folyamatok kialakításához. Ez egy népszerű használati eset a paraméterekhez.
+Adja meg a [metaadatok vezérelt folyamatát paraméterekkel](./how-to-use-trigger-parameterization.md) , és tudjon meg többet arról, hogyan használhatók paraméterek a metaadatokat használó folyamatok kialakításához. Ez egy népszerű használati eset a paraméterekhez.
 
 
 ## <a name="next-steps"></a>Következő lépések

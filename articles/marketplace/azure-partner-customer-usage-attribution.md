@@ -8,12 +8,12 @@ author: cpercy737
 ms.author: camper
 ms.date: 03/22/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ed7f27b0b8fde902f4ae9b65b9f6b4ada78f79c6
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799190"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558414"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure Customer használati jóváírás
 
@@ -34,7 +34,7 @@ A [jelen cikk későbbi részében](#other-use-cases)ismertetett, a kereskedelmi
 
 ## <a name="commercial-marketplace-azure-apps"></a>Kereskedelmi piactér – Azure-alkalmazások
 
-A kereskedelmi piactéren közzétett Azure-alkalmazások Azure-használatának nyomon követése nagyrészt automatikusan történik. Ha egy Resource Manager-sablont tölt fel a [Marketplace Azure-alkalmazás csomagjának technikai konfigurációjának](https://docs.microsoft.com/azure/marketplace/create-new-azure-apps-offer-solution#define-the-technical-configuration)részeként, a Partner Center Azure Resource Manager által olvasható követési azonosítót ad hozzá.
+A kereskedelmi piactéren közzétett Azure-alkalmazások Azure-használatának nyomon követése nagyrészt automatikusan történik. Ha egy Resource Manager-sablont tölt fel a [Marketplace Azure-alkalmazás csomagjának technikai konfigurációjának](./create-new-azure-apps-offer-solution.md#define-the-technical-configuration)részeként, a Partner Center Azure Resource Manager által olvasható követési azonosítót ad hozzá.
 
 Ha Azure Resource Manager API-kat használ, hozzá kell adnia a követési AZONOSÍTÓját az [alábbi utasítások](#use-resource-manager-apis) alapján, hogy átadja azt a Azure Resource Managernak, mivel a kód üzembe helyezi az erőforrásokat. Ez az azonosító a csomag technikai konfiguráció oldalán, a partner Centerben látható. 
 

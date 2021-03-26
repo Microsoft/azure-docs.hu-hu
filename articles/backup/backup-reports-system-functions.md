@@ -3,34 +3,34 @@ title: Azure Monitor naplók rendszerfunkciói
 description: Egyéni lekérdezések írása Azure Monitor naplókon a rendszerfunkciók használatával
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb45e6ad0250a1f8d10377fdd509e40051f25b9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510551"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564908"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>Azure Monitor naplók rendszerfunkciói
 
 A Azure Backup a Log Analytics (LA) munkaterületeken alapértelmezés szerint elérhető, System functions vagy Solution függvények nevű függvényeket biztosít.
  
-Ezek a függvények a (z) LA [nyers Azure Backup tábláiban](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model) található adatokon működnek, és olyan formázott adatokat adnak vissza, amelyek segítségével egyszerűen lekérheti az összes biztonsági mentéssel kapcsolatos entitás információit egyszerű lekérdezések használatával. A felhasználók paramétereket adhatnak át ezen függvények számára a függvények által visszaadott adatok szűréséhez. 
+Ezek a függvények a (z) LA [nyers Azure Backup tábláiban](./backup-azure-reports-data-model.md) található adatokon működnek, és olyan formázott adatokat adnak vissza, amelyek segítségével egyszerűen lekérheti az összes biztonsági mentéssel kapcsolatos entitás információit egyszerű lekérdezések használatával. A felhasználók paramétereket adhatnak át ezen függvények számára a függvények által visszaadott adatok szűréséhez. 
 
 Az egyéni jelentések létrehozásához a System functions használata ajánlott a biztonsági mentési adatok lekérdezéséhez az LA munkaterületeken, mivel ezek számos előnnyel rendelkeznek, ahogy az alábbi szakaszban is talál.
 
 ## <a name="benefits-of-using-system-functions"></a>A System functions használatának előnyei
 
-* **Egyszerűbb lekérdezések**: a függvények használata segít csökkenteni a lekérdezésekben szükséges illesztések számát. Alapértelmezés szerint a függvények "összeolvasztott" sémákat adnak vissza, amelyek az entitásra (a biztonsági mentési példányra, a feladatra, a tárolóra stb.) vonatkozó összes adatot tartalmazzák. Ha például a biztonsági mentési elem neve és a hozzá tartozó tároló alapján kell lekérnie a sikeres biztonsági mentési feladatok listáját, akkor a **_AzureBackup_getJobs ()** függvény egyszerű hívása megadja az összes feladatra vonatkozó információt. Másfelől a nyers táblák lekérdezéséhez a [AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) és a [CoreAzureBackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) táblák között több illesztést is el kell végeznie.
+* **Egyszerűbb lekérdezések**: a függvények használata segít csökkenteni a lekérdezésekben szükséges illesztések számát. Alapértelmezés szerint a függvények "összeolvasztott" sémákat adnak vissza, amelyek az entitásra (a biztonsági mentési példányra, a feladatra, a tárolóra stb.) vonatkozó összes adatot tartalmazzák. Ha például a biztonsági mentési elem neve és a hozzá tartozó tároló alapján kell lekérnie a sikeres biztonsági mentési feladatok listáját, akkor a **_AzureBackup_getJobs ()** függvény egyszerű hívása megadja az összes feladatra vonatkozó információt. Másfelől a nyers táblák lekérdezéséhez a [AddonAzureBackupJobs](./backup-azure-reports-data-model.md#addonazurebackupjobs) és a [CoreAzureBackup](./backup-azure-reports-data-model.md#coreazurebackup) táblák között több illesztést is el kell végeznie.
 
-* **Simább áttérés az örökölt diagnosztikai eseményről**: a System functions segítségével zökkenőmentesen áttérhet az [örökölt diagnosztikai eseménytől](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) (AzureBackupReport AzureDiagnostics módban) az [erőforrás-specifikus eseményekre](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users). A Azure Backup által biztosított összes rendszerfunkció lehetővé teszi egy olyan paraméter megadását, amely lehetővé teszi, hogy a függvény csak az erőforrás-specifikus táblákból kérdezze le az adatokat, vagy az örökölt táblából és az erőforrás-specifikus táblákból (a rekordok deduplikálása) adatokat is lekérdezzen.
+* **Simább áttérés az örökölt diagnosztikai eseményről**: a System functions segítségével zökkenőmentesen áttérhet az [örökölt diagnosztikai eseménytől](./backup-azure-diagnostic-events.md#legacy-event) (AzureBackupReport AzureDiagnostics módban) az [erőforrás-specifikus eseményekre](./backup-azure-diagnostic-events.md#diagnostics-events-available-for-azure-backup-users). A Azure Backup által biztosított összes rendszerfunkció lehetővé teszi egy olyan paraméter megadását, amely lehetővé teszi, hogy a függvény csak az erőforrás-specifikus táblákból kérdezze le az adatokat, vagy az örökölt táblából és az erőforrás-specifikus táblákból (a rekordok deduplikálása) adatokat is lekérdezzen.
     * Ha sikeresen áttelepítette az erőforrás-specifikus táblákat, dönthet úgy, hogy kizárja az örökölt táblát a függvény által lekérdezve.
     * Ha jelenleg az áttelepítés folyamatában van, és vannak olyan adatai az örökölt táblákban, amelyekhez szükség van az elemzéshez, dönthet úgy, hogy az örökölt táblát is tartalmazza. Ha az áttérés befejeződött, és már nincs szüksége az örökölt táblából származó adatokra, egyszerűen frissítheti a lekérdezésekben a függvénynek átadott paraméter értékét, hogy kizárja az örökölt táblát.
-    * Ha továbbra is csak az örökölt táblázatot használja, akkor a függvények továbbra is működni fognak, ha úgy dönt, hogy az örökölt táblát ugyanazon a paraméteren keresztül adja meg. Ajánlott azonban a legkorábbi [erőforrás-specifikus táblákra váltani](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) .
+    * Ha továbbra is csak az örökölt táblázatot használja, akkor a függvények továbbra is működni fognak, ha úgy dönt, hogy az örökölt táblát ugyanazon a paraméteren keresztül adja meg. Ajánlott azonban a legkorábbi [erőforrás-specifikus táblákra váltani](./backup-azure-diagnostic-events.md#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) .
 
 * **Csökkenti az egyéni lekérdezések feltörésének lehetőségét**: Ha Azure Backup bevezeti a mögöttes La táblák sémájának fejlesztéseit a jövőbeli jelentési forgatókönyvek kielégítéséhez, a függvények definíciója is frissül, hogy figyelembe vegye a séma módosításait. Így ha rendszerfunkciókat használ az egyéni lekérdezések létrehozásához, a lekérdezések nem lesznek megszakítva, még akkor is, ha a táblák mögöttes sémája módosul.
 
 > [!NOTE]
-> A rendszerfunkciókat a Microsoft tartja karban, és a definíciók nem szerkeszthetők a felhasználók számára. Ha szerkeszthető függvények szükségesek, a [mentett függvények](https://docs.microsoft.com/azure/azure-monitor/logs/functions) a La-ben is létrehozhatók.
+> A rendszerfunkciókat a Microsoft tartja karban, és a definíciók nem szerkeszthetők a felhasználók számára. Ha szerkeszthető függvények szükségesek, a [mentett függvények](../azure-monitor/logs/functions.md) a La-ben is létrehozhatók.
 
 ## <a name="types-of-system-functions-offered-by-azure-backup"></a>A Azure Backup által kínált rendszerfunkciók típusai
 
@@ -390,4 +390,4 @@ Az alábbiakban néhány példa olvasható, amely segítséget nyújt a System f
     ````
 
 ## <a name="next-steps"></a>Következő lépések
-[További információ a biztonsági mentési jelentésekről](https://docs.microsoft.com/azure/backup/configure-reports)
+[További információ a biztonsági mentési jelentésekről](./configure-reports.md)

@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008562"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565639"
 ---
 # <a name="import-new-update"></a>Új frissítés importálása
 Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében. Ha még nem tette meg, mindenképpen ismerkedjen meg az alapszintű [importálási fogalmakkal](import-concepts.md).
@@ -21,7 +21,7 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
 * [Hozzáférés egy IoT hubhoz az eszköz frissítésével IoT hub engedélyezve](create-device-update-account.md). Javasoljuk, hogy a IoT Hub S1 (standard) vagy újabb verzióját használja. 
 * Az eszköz frissítéséhez kiépített IoT-eszköz (vagy szimulátor) IoT Hubon belül.
    * Ha valódi eszközt használ, szüksége lesz a rendszerkép frissítése vagy az [apt manifest-fájl](device-update-apt-manifest.md) frissítése a csomagok frissítéséhez.
-* [PowerShell 5](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) vagy újabb.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) vagy újabb.
 * Támogatott böngészők:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome
@@ -57,8 +57,8 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
 
     | Paraméter | Leírás |
     | --------- | ----------- |
-    | deviceManufacturer | Az eszköz gyártója, amelyen a frissítés kompatibilis, például: contoso. Meg kell egyeznie a _gyártó_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
-    | deviceModel | Az eszköz modellje, amely kompatibilis a frissítéssel, például kenyérpirítóval. Egyeznie kell a _modell_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
+    | deviceManufacturer | Az eszköz gyártója, amelyen a frissítés kompatibilis, például: contoso. Meg kell egyeznie a _gyártó_ [eszköz tulajdonságával](./device-update-plug-and-play.md#device-properties).
+    | deviceModel | Az eszköz modellje, amely kompatibilis a frissítéssel, például kenyérpirítóval. Egyeznie kell a _modell_ [eszköz tulajdonságával](./device-update-plug-and-play.md#device-properties).
     | updateProvider | A frissítéshez létrehozott vagy közvetlenül felelős entitás. Ez gyakran a vállalat neve lesz.
     | updateName | A frissítések osztályának azonosítója. Az osztály tetszőlegesen kiválasztható. Ez gyakran az eszköz vagy a modell neve lesz.
     | updateVersion | A frissítést megkülönbözteti a többitől, és ugyanazzal a szolgáltatóval és névvel. Nem felel meg az eszközön lévő egyes szoftver-összetevők verziójának (de ha Ön is választhatja).
@@ -135,7 +135,7 @@ Az alábbi utasítások bemutatják, hogyan importálhat egy frissítést a Azur
 
 6. Válassza a mappa ikont vagy a szövegmezőt a "Storage-tároló kiválasztása" területen. Ezután válassza ki a megfelelő Storage-fiókot. A tárolási tároló a frissítési fájlok ideiglenes előkészítésére szolgál.
 
-   :::image type="content" source="media/import-update/storage-account.png" alt-text="Tárfiók" lightbox="media/import-update/storage-account.png":::
+   :::image type="content" source="media/import-update/storage-account.png" alt-text="Storage-fiók" lightbox="media/import-update/storage-account.png":::
 
 7. Ha már létrehozott egy tárolót, újra használhatja azt. (Ellenkező esetben válassza a "+ tároló" lehetőséget a frissítések új tárolójának létrehozásához.).  Válassza ki a használni kívánt tárolót, és kattintson a Kiválasztás gombra.
 

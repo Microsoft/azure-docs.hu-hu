@@ -2,13 +2,13 @@
 title: Üzembe helyezés az Azure-ban gomb
 description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe helyezéséhez használja a gombot.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: e25d49571347bb5ed27dbd52bb60c68cbeb4360d
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028743"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543778"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával
 
@@ -76,7 +76,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 A hivatkozás teljes URL-címe.
 
-A sablont általában nyilvános tárházban kell üzemeltetni. Ha privát tárházat használ, meg kell adnia egy jogkivonatot a sablon nyers tartalmának eléréséhez. A GitHub által generált jogkivonat csak rövid ideig érvényes. Gyakran frissítenie kell a hivatkozást.
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 Ha a git-t egy GitHub-tárház helyett az [Azure Repos](/azure/devops/repos/git/) használatával használja, továbbra is használhatja az **üzembe helyezés az Azure** -ban gombot. Győződjön meg arról, hogy a tárház nyilvános. A sablon beszerzéséhez használja az [Items műveletet](/rest/api/azure/devops/git/items/get) . A kérelemnek a következő formátumúnak kell lennie:
 

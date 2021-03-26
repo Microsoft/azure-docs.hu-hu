@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 695aa760d554946883f72692f0bed1babad933b1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798850"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568800"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Interaktív jelentések készítése a virtuális gépekről a munkafüzetekből
 
@@ -25,7 +25,7 @@ A munkafüzetek hasznosak a következő forgatókönyvekhez:
 
 A következő táblázat összefoglalja azokat a munkafüzeteket, amelyekkel a virtuális gépek bepillantást nyerhet a kezdéshez.
 
-| Munkafüzet | Leírás | Hatókör |
+| Munkafüzet | Description | Hatókör |
 |----------|-------------|-------|
 | Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Több virtuális gép |
 | Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Több virtuális gép |
@@ -103,13 +103,13 @@ Mindegyik szakasz saját speciális beállításokat tartalmaz, amelyek a ![ ](m
 
 ![Képernyőkép a Azure Monitor Virtual Machines munkafüzet szakaszának speciális beállítások párbeszédpaneléről. A párbeszédpanelt megnyitó ikon ki van emelve.](media/vminsights-workbooks/007-settings-expanded.png)
 
-|         |          |
+| Beállítás | Leírás |
 | ---------------- |:-----|
-| **Egyéni szélesség**    | Az elem tetszőleges méretűvé válik, így több elem is elfér egyetlen sorban, így jobban rendszerezheti a diagramokat és a táblákat gazdag interaktív jelentésekben.  |
-| **Feltételesen látható** | Itt adhatja meg, hogy az olvasási módban megadott paraméterek alapján elrejtse a lépéseket. |
-| **Paraméter exportálása**| A rács vagy a diagram kiválasztott sora számára lehetővé teheti, hogy későbbi lépéseket okozzon az értékek módosításához vagy láthatóvá váljon.  |
-| **Lekérdezés megjelenítése nem szerkesztéskor** | Megjeleníti a diagram vagy a tábla feletti lekérdezést még olvasási módban is.
-| **Megnyitás az Analyticsben gomb megjelenítése nem szerkesztéskor** | Hozzáadja a kék elemzési ikont a diagram jobb oldali sarkához az egykattintásos hozzáférés engedélyezéséhez.|
+| Egyéni szélesség    | Az elem tetszőleges méretűvé válik, így több elem is elfér egyetlen sorban, így jobban rendszerezheti a diagramokat és a táblákat gazdag interaktív jelentésekben.  |
+| Feltételesen látható | Itt adhatja meg, hogy az olvasási módban megadott paraméterek alapján elrejtse a lépéseket. |
+| Paraméter exportálása| A rács vagy a diagram kiválasztott sora számára lehetővé teheti, hogy későbbi lépéseket okozzon az értékek módosításához vagy láthatóvá váljon.  |
+| Lekérdezés megjelenítése nem szerkesztéskor | Megjeleníti a diagram vagy a tábla feletti lekérdezést még olvasási módban is.
+| Megnyitás az Analyticsben gomb megjelenítése nem szerkesztéskor | Hozzáadja a kék elemzési ikont a diagram jobb oldali sarkához az egykattintásos hozzáférés engedélyezéséhez.|
 
 Ezeknek a beállításoknak a nagy része meglehetősen intuitív, de a **Paraméterek exportálásának** megismeréséhez érdemes megvizsgálni egy olyan munkafüzetet, amely használja ezt a funkciót.
 
@@ -152,12 +152,12 @@ A paraméterek lineárisak, a munkafüzetek elejétől kezdve, és a későbbi l
  
 Négy különböző típusú paraméter létezik, amelyek jelenleg támogatottak:
 
-|                  |      |
+| Paraméter | Leírás |
 | ---------------- |:-----|
-| **Szöveg**    | Lehetővé teszi a felhasználó számára a szövegmező szerkesztését, és opcionálisan megadhat egy lekérdezést az alapértelmezett érték kitöltéséhez. |
-| **Legördülő lista** | Lehetővé teszi a felhasználó számára az értékek egy halmazának kiválasztását. |
-| **Időtartomány-választó**| Lehetővé teszi a felhasználó számára, hogy kiválassza az időtartomány-értékek előre meghatározott készletét, vagy válasszon egy egyéni időtartományból.|
-| **Erőforrás-választó** | Lehetővé teszi a felhasználó számára a munkafüzethez kiválasztott erőforrások kiválasztását.|
+| Szöveg    | Lehetővé teszi a felhasználó számára a szövegmező szerkesztését, és opcionálisan megadhat egy lekérdezést az alapértelmezett érték kitöltéséhez. |
+| Legördülő lista | Lehetővé teszi a felhasználó számára az értékek egy halmazának kiválasztását. |
+| Időtartomány-választó| Lehetővé teszi a felhasználó számára, hogy kiválassza az időtartomány-értékek előre meghatározott készletét, vagy válasszon egy egyéni időtartományból.|
+| Erőforrás-választó | Lehetővé teszi a felhasználó számára a munkafüzethez kiválasztott erőforrások kiválasztását.|
 
 ### <a name="using-a-text-parameter"></a>Szöveges paraméter használata
 

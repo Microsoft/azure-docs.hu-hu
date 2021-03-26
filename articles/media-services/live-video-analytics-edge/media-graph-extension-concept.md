@@ -3,12 +3,12 @@ title: Mi az a Media Graph Extension – Azure
 description: A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy gráf kiterjesztésű csomóponton keresztül.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4a7aea7cc60a67603d8a0376cf84228072659d6c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455839"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557615"
 ---
 # <a name="media-graph-extension"></a>Médiagrafikon bővítmény
 
@@ -19,11 +19,11 @@ Az élő videó-elemzés a Media Graph bővítmények két típusát támogatja:
 * [HTTP-bővítmény processzora](media-graph-concept.md#http-extension-processor)
 * [gRPC-bővítmény processzora](media-graph-concept.md#grpc-extension-processor)
 
-A Graph-bővítmény csomópontja arra vár, hogy az Analytics bővítmény beépülő modulja JSON formátumban küldje vissza az eredményeket. Ideális esetben az eredmények követéséhez kövesse a [metaadatok séma-objektummodell-modelljét](/azure/media-services/live-video-analytics-edge/inference-metadata-schema).
+A Graph-bővítmény csomópontja arra vár, hogy az Analytics bővítmény beépülő modulja JSON formátumban küldje vissza az eredményeket. Ideális esetben az eredmények követéséhez kövesse a [metaadatok séma-objektummodell-modelljét](./inference-metadata-schema.md).
 
 ## <a name="http-extension-processor"></a>HTTP-bővítmény processzora
 
-A HTTP-bővítmény processzora a [http protokollt](/azure/media-services/live-video-analytics-edge/http-extension-protocol)használó bővíthetőségi forgatókönyveket tesz lehetővé, ahol a teljesítmény és/vagy az optimális erőforrás-használat nem az elsődleges szempont. A saját AI-t egy HTTP REST-végponton keresztül teheti elérhetővé a Media Graph-ban. 
+A HTTP-bővítmény processzora a [http protokollt](./http-extension-protocol.md)használó bővíthetőségi forgatókönyveket tesz lehetővé, ahol a teljesítmény és/vagy az optimális erőforrás-használat nem az elsődleges szempont. A saját AI-t egy HTTP REST-végponton keresztül teheti elérhetővé a Media Graph-ban. 
 
 HTTP-bővítmény processzor-csomópontjának használata:
 
@@ -33,7 +33,7 @@ HTTP-bővítmény processzor-csomópontjának használata:
 
 ## <a name="grpc-extension-processor"></a>gRPC-bővítmény processzora
 
-a gRPC-bővítmény processzora gRPC-alapú, nagy teljesítményű [strukturált protokollt](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol)használó bővíthetőségi forgatókönyveket tesz lehetővé. Ideális olyan helyzetekben, ahol a teljesítmény és/vagy az optimális erőforrás-használat prioritás. A gRPC bővítmény-feldolgozó lehetővé teszi a strukturált adatdefiníciók teljes előnyeit. a gRPC a következőket kínálja a tartalom átviteléhez:
+a gRPC-bővítmény processzora gRPC-alapú, nagy teljesítményű [strukturált protokollt](./grpc-extension-protocol.md)használó bővíthetőségi forgatókönyveket tesz lehetővé. Ideális olyan helyzetekben, ahol a teljesítmény és/vagy az optimális erőforrás-használat prioritás. A gRPC bővítmény-feldolgozó lehetővé teszi a strukturált adatdefiníciók teljes előnyeit. a gRPC a következőket kínálja a tartalom átviteléhez:
 
 * [beépített megosztott memória](https://en.wikipedia.org/wiki/Shared_memory) vagy 
 * a tartalom közvetlen beágyazása a gRPC-üzenetek törzsébe. 
@@ -57,7 +57,7 @@ Az alábbi ábra a magas szintű adatfolyamot ábrázolja:
 
 ## <a name="samples"></a>Példák
 
-Megkezdheti az első lépések egyikét, amely bemutatja az élő videók elemzését az előre elkészített bővítési szolgáltatással alacsony képarányú, [http-bővítményi processzorral](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp) vagy nagy képarányú [gRPC-bővítmény processzorral](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp)
+Megkezdheti az első lépések egyikét, amely bemutatja az élő videók elemzését az előre elkészített bővítési szolgáltatással alacsony képarányú, [http-bővítményi processzorral](./use-your-model-quickstart.md?pivots=programming-language-csharp) vagy nagy képarányú [gRPC-bővítmény processzorral](./analyze-live-video-use-your-grpc-model-quickstart.md?pivots=programming-language-csharp)
 
 A haladó felhasználók számára kioszthatja a [Jupyter notebook](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) -mintákat az élő videók elemzéséhez. Ezek a jegyzetfüzetek részletes útmutatást nyújtanak **a Media Graph bővítményeivel** kapcsolatban:
 

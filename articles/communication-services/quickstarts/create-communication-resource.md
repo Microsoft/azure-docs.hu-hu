@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 91383ecba119959213804e0432f612c3f1ff636c
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: a1bdb1b8ac1f545933a92e78fd13b745606f1da3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110890"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563777"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Gyors útmutató: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése
 
@@ -49,12 +49,25 @@ A kommunikációs szolgáltatások erőforráshoz való navigálás után válas
 
 :::image type="content" source="./media/key.png" alt-text="A kommunikációs szolgáltatások kulcs oldalának képernyőképe.":::
 
-A legfontosabb információkat az Azure CLI használatával is elérheti:
+Az Azure CLI használatával is elérheti a kulcsokra vonatkozó információkat, például az erőforráscsoportot vagy egy adott erőforrás kulcsait. 
 
+Telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) -t, és a következő parancs használatával jelentkezzen be. Meg kell adnia a hitelesítő adatait az Azure-fiókkal való kapcsolódáshoz.
+```azurecli
+az login
+```
+
+Most már elérheti az erőforrásaival kapcsolatos fontos információkat.
 ```azurecli
 az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
+```
+
+Ha ki szeretne választani egy adott előfizetést, megadhatja a ```--subscription``` jelzőt is, és megadhatja az előfizetés azonosítóját.
+```
+az communication list --resource-group  "resourceGroup>"  --subscription "<subscriptionID>"
+
+az communication list-key --name "<communicationName>" --resource-group "resourceGroup>" --subscription "<subscriptionID>"
 ```
 
 ## <a name="store-your-connection-string"></a>A kapcsolatok karakterláncának tárolása

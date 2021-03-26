@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 24a538686e101d40daba008f30a72ffc5078047a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104674520"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559128"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO beépülő modul Apple-eszközökhöz (előzetes verzió)
 
@@ -52,14 +52,14 @@ A Microsoft Enterprise SSO beépülő modul használata Apple-eszközökhöz:
 - Az eszközt regisztrálni kell a *Mdm-ben*, például Microsoft Intuneon keresztül.
 - A vállalati egyszeri bejelentkezés beépülő modul engedélyezéséhez le kell *küldeni a konfigurációt az eszközre* . Az Apple megköveteli ezt a biztonsági korlátozást.
 
-iOS-követelmények:
+### <a name="ios-requirements"></a>iOS-követelmények:
 - az iOS 13,0-es vagy újabb verziójának telepítve kell lennie az eszközön.
-- Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modult biztosító Microsoft-alkalmazásnak telepítve kell lennie az eszközön. A nyilvános előzetes verzióban ez az alkalmazás a [Microsoft Authenticator alkalmazás](/intune/user-help/user-help-auth-app-overview.md).
+- Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modult biztosító Microsoft-alkalmazásnak telepítve kell lennie az eszközön. A nyilvános előzetes verzióban ezek az alkalmazások a [Microsoft Authenticator alkalmazás](/azure/active-directory/user-help/user-help-auth-app-overview).
 
 
-macOS-követelmények:
+### <a name="macos-requirements"></a>macOS-követelmények:
 - a macOS 10,15-es vagy újabb verziójának telepítve kell lennie az eszközön. 
-- Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modult biztosító Microsoft-alkalmazásnak telepítve kell lennie az eszközön. A nyilvános előzetes verzióban ez az alkalmazás a [Intune céges portál alkalmazás](/intune/user-help/enroll-your-device-in-intune-macos-cp.md).
+- Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modult biztosító Microsoft-alkalmazásnak telepítve kell lennie az eszközön. A nyilvános előzetes verzióban ezek az alkalmazások a [Intune céges portál alkalmazást](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)tartalmazzák.
 
 ## <a name="enable-the-sso-plug-in"></a>Egyszeri bejelentkezéses beépülő modul engedélyezése
 
