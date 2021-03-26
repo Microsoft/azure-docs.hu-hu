@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: 1a0ad751a216e8da772fd5fdc96a0dc67cb27d01
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109852"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562732"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: VMware környezetben futó kiszolgálók felderítése Azure Migrateokkal: felderítés és Értékelés
 
@@ -106,7 +106,7 @@ A vSphere webes ügyfélprogramban az alábbiak szerint állítson be egy fióko
 
 Szüksége van egy olyan felhasználói fiókra, amely rendelkezik a szükséges jogosultságokkal a kiszolgálókon a telepített alkalmazások felderítéséhez, az ügynök nélküli függőségek elemzéséhez, valamint SQL Server példányok és adatbázisok felderítéséhez. A felhasználói fiókot megadhatja a készülék Configuration Managerben. A készülék nem telepít ügynököket a kiszolgálókon.
 
-1. Windows-kiszolgálók esetén hozzon létre egy fiókot (helyi vagy tartományi) rendszergazdai engedélyekkel a kiszolgálókon. SQL Server példányok és adatbázisok felderítéséhez a sysadmin (rendszergazda) kiszolgálói szerepkör tagjának kell lennie a Windows vagy SQL Server fióknak. [További információ](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) a szükséges szerepkör a felhasználói fiókhoz való hozzárendeléséről.
+1. Windows-kiszolgálók esetén hozzon létre egy fiókot (helyi vagy tartományi) rendszergazdai engedélyekkel a kiszolgálókon. SQL Server példányok és adatbázisok felderítéséhez a sysadmin (rendszergazda) kiszolgálói szerepkör tagjának kell lennie a Windows vagy SQL Server fióknak. [További információ](/sql/relational-databases/security/authentication-access/server-level-roles) a szükséges szerepkör a felhasználói fiókhoz való hozzárendeléséről.
 2. Linux-kiszolgálók esetében hozzon létre egy rendszergazdai jogosultságokkal rendelkező fiókot. Másik lehetőségként létrehozhat egy fiókot ezekkel az engedélyekkel a/bin/netstat-és/bin/ls-fájlokon: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
 
 > [!NOTE]
@@ -292,8 +292,8 @@ Ha ezeket a funkciókat szeretné használni, az alábbi lépésekkel megadhatja
 1. A szoftver leltározása során a hozzáadott kiszolgálók hitelesítő adatai a kiszolgálókon lesznek megerősítve, és az ügynök nélküli függőségek elemzéséhez vannak érvényesítve. Engedélyezheti a kiszolgálók ügynök nélküli függőségi elemzését a portálon. Csak azok a kiszolgálók választhatók ki, amelyeken az érvényesítés sikeres, így az ügynök nélküli függőségek elemzése is engedélyezhető.
 
 > [!Note]
->A Azure Migrate titkosítja Azure Migrate berendezés és a forrás SQL Server példányok közötti kommunikációt (a kapcsolat titkosítása tulajdonság értéke TRUE). Ezek a kapcsolatok a [**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) -mel vannak titkosítva (igaz értékre állítva); az átviteli réteg az SSL használatával titkosítja a csatornát, és megkerüli a tanúsítványláncot a megbízhatóság ellenőrzéséhez. A berendezés-kiszolgálót úgy kell beállítani, hogy [**megbízzon a tanúsítvány legfelső szintű hitelesítésszolgáltatóján**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
-Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amelyet a rendszer a bejelentkezési csomagok titkosítására használ. [**További információ**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+>A Azure Migrate titkosítja Azure Migrate berendezés és a forrás SQL Server példányok közötti kommunikációt (a kapcsolat titkosítása tulajdonság értéke TRUE). Ezek a kapcsolatok a [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) -mel vannak titkosítva (igaz értékre állítva); az átviteli réteg az SSL használatával titkosítja a csatornát, és megkerüli a tanúsítványláncot a megbízhatóság ellenőrzéséhez. A berendezés-kiszolgálót úgy kell beállítani, hogy [**megbízzon a tanúsítvány legfelső szintű hitelesítésszolgáltatóján**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
+Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amelyet a rendszer a bejelentkezési csomagok titkosítására használ. [**További információ**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 A felderítés a következőképpen működik:
 

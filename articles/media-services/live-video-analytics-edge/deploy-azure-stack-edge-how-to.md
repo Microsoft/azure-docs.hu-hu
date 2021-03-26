@@ -3,12 +3,12 @@ title: Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videók elemzésének üzembe helyezéséhez az Azure Stack Edge-ben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5be85e93b81f5cf50284533f21e688384558494
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730269"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561151"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 
@@ -28,7 +28,7 @@ Az élő videós elemzések esetében IoT Hubon keresztül fogjuk telepíteni, d
 * Az élő videó elemzési moduljának [egyszerű szolgáltatása](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) .
 
    Használja az alábbi régiók egyikét, ahol elérhető IoT Hub: USA 2. keleti régiója, az USA középső régiója, az USA északi középső régiója, az USA 2. nyugati régiója, az USA nyugati középső régiója, Kelet-Kanada, Egyesült Királyság déli régiója, Közép-Franciaország, Dél-Németország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
-* A(z)
+* Tárfiók
 
     Javasoljuk, hogy az általános célú v2-(GPv2-) tárolási fiókokat használja.  
     További információ az [általános célú v2-alapú Storage-fiókról](../../storage/common/storage-account-upgrade.md?tabs=azure-portal).
@@ -236,7 +236,7 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
 
 * **Kubernetes API-hozzáférés (kubectl)**
 
-    * Kövesse a dokumentációt, és konfigurálja a gépet [a Kubernetes-fürthöz való hozzáféréshez](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster).
+    * Kövesse a dokumentációt, és konfigurálja a gépet [a Kubernetes-fürthöz való hozzáféréshez](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md).
     * Az összes telepített IoT Edge modul a `iotedge` névteret használja. Ügyeljen arra, hogy a kubectl használatakor is szerepeljen.  
 
 * **Modulok naplói**

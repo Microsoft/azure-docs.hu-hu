@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc2667dfddf4442acaf39f6783190e8640b22a89
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430598"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561729"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával
 
@@ -175,4 +175,4 @@ Színeket alkalmazhat a diagramra úgy, hogy a **Formátum** eszközre és az **
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
->[Adatfolyam-rendellenességek észlelése Azure Databricks](anomaly-detection-streaming-databricks.md)
+>[Adatfolyam-rendellenességek észlelése Azure Databricks](../overview.md)
