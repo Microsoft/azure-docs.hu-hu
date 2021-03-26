@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 785567685b77183df0f212897b923d911ac045f6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962280"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567307"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
 
@@ -102,7 +102,7 @@ Amikor az Azure Database Migration Service projektvarázslóban próbál csatlak
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
-| A [ExpressRoute](https://azure.microsoft.com/services/expressroute/)használatakor Azure Database Migration Service a szolgáltatáshoz társított Virtual Network alhálózaton három szolgáltatási végpontot [kell](./tutorial-sql-server-azure-sql-online.md) kiépíteni:<br> – Service Bus végpont<br> – Tárolási végpont<br> – Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont)<br><br><br><br><br> | [Engedélyezze](./tutorial-sql-server-azure-sql-online.md) a szükséges szolgáltatási végpontokat a forrás-és a Azure Database Migration Service közötti ExpressRoute-kapcsolathoz. <br><br><br><br><br><br><br><br> |
+| A [ExpressRoute](https://azure.microsoft.com/services/expressroute/)használatakor Azure Database Migration Service a szolgáltatáshoz társított Virtual Network alhálózaton három szolgáltatási végpontot [kell](./tutorial-sql-server-to-azure-sql.md) kiépíteni:<br> – Service Bus végpont<br> – Tárolási végpont<br> – Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont)<br><br><br><br><br> | [Engedélyezze](./tutorial-sql-server-to-azure-sql.md) a szükséges szolgáltatási végpontokat a forrás-és a Azure Database Migration Service közötti ExpressRoute-kapcsolathoz. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Zárolási várakozási időtúllépési hiba történt a MySQL-adatbázis MySQL-adatbázisba való áttelepítésekor
 
@@ -126,7 +126,7 @@ Ha egy vagy több elnevezett példányon vagy dinamikus porton futó SQL Server-
 
 ## <a name="additional-known-issues"></a>További ismert problémák
 
-* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure SQL Database](./known-issues-azure-sql-online.md)
+* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure SQL Database](./index.yml)
 * [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for MySQL](./known-issues-azure-mysql-online.md)
 * [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 

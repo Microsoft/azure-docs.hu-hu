@@ -3,12 +3,12 @@ title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
 ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 4a6ca7fb5086401cab58d4bfb6a412089c11ef05
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868154"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564305"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -61,7 +61,7 @@ A következő általános korlátozások érvényesek a Kubernetes-fürtök Azur
 
 A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
 
-- Az [AK Pod biztonsági házirend](../../../aks/use-pod-security-policies.md) és az AK Azure Policy bővítménye nem engedélyezhető egyszerre. További információ: [AK Pod biztonsági korlátozás](../../../aks/use-pod-security-on-azure-policy.md#limitations).
+- Az [AK Pod biztonsági házirend](../../../aks/use-pod-security-policies.md) és az AK Azure Policy bővítménye nem engedélyezhető egyszerre. További információ: [AK Pod biztonsági korlátozás](../../../aks/use-azure-policy.md).
 - A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_, _forgalomirányító-System_ és _AK-periszkóp_.
 
 ## <a name="recommendations"></a>Javaslatok
@@ -201,7 +201,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
 1. Telepítse a [Helm 3](https://v3.helm.sh/docs/intro/install/)programot.
 
-1. A Kubernetes-fürt engedélyezve van az Azure arc számára. További információ: [Kubernetes-fürt előkészítése az Azure-](../../../azure-arc/kubernetes/connect-cluster.md)ba.
+1. A Kubernetes-fürt engedélyezve van az Azure arc számára. További információ: [Kubernetes-fürt előkészítése az Azure-](../../../azure-arc/kubernetes/quickstart-connect-cluster.md)ba.
 
 1. Az Azure arc-kompatibilis Kubernetes-fürt teljes Azure-erőforrás-azonosítója.
 

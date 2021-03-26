@@ -1,20 +1,21 @@
 ---
 title: Az Azure-számla megtekintése és letöltése
-description: A cikk az Azure-számlák megtekintését és letöltését mutatja be.
+description: Ismerje meg, hogyan tekintheti meg és töltheti le Azure-számláját. A számlát letöltheti a Azure Portalban, vagy elküldheti e-mailben.
 keywords: számlázás,számla,számla letöltése,azure-számla,azure-használat
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4e77b167f00e2cfa3838439143c6074bd4122976
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: 37ce1a292b6ff2efe0abecdb2ab934f096689f87
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191274"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "105560659"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
 
@@ -25,6 +26,20 @@ A számláját letöltheti az [Azure Portalról](https://portal.azure.com/), de 
 A rendszer a számlázási fiók típusa alapján állítja ki a számlát. Ez lehet a Microsoft Online Services Program (MOSP), Microsoft-ügyfélszerződés (MCA) vagy Microsoft-partnerszerződés (MPA) számlázási fiókja. A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek számára is létrejönnek számlák. A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek számlái azonban nem jelennek meg az Azure Portalon.
 
 A számlázási fiókokkal és a saját fiókja típusával kapcsolatos további információkért lásd [a számlázási fiókoknak az Azure Portalon történő megtekintését](../manage/view-all-accounts.md) ismertető cikket.
+
+### <a name="invoice-status"></a>Számla állapota
+
+Amikor áttekinti a számla állapotát a Azure Portalban, minden egyes számla a következő állapot-szimbólumok valamelyikével rendelkezik.
+
+|  Állapot szimbóluma | Description  |
+|---|---|
+| ![Esedékes állapot szimbóluma](./media/download-azure-invoice/due.svg) | Az *esedékesség* a számla generálása után jelenik meg, de még nem fizették ki. |
+| ![Lejárt állapot szimbóluma](./media/download-azure-invoice/past-due.svg)  | A *korábbi esedékesség* akkor jelenik meg, ha az Azure megpróbálta felszámítani a fizetési módot, de a fizetés elutasítása megtörtént. |
+| ![Fizetős állapot szimbóluma](./media/download-azure-invoice/paid.svg)  | A *fizetős* állapot akkor jelenik meg, ha az Azure sikeresen felszámolta a fizetési módot. |
+
+Számla létrehozásakor a Azure Portal a *megfelelő* állapottal jelenik meg. Az esedékes állapot normális és várható.  
+
+Ha a számla nem lett kifizetve, az állapota *lejárt*. A lejárt előfizetés letiltásra kerül, ha a számla nem díjköteles.
 
 ## <a name="invoices-for-mosp-billing-accounts"></a>Az MOSP számlázási fiókokhoz tartozó számlák
 
@@ -55,12 +70,12 @@ Egy számla letöltéséhez fiókadminisztrátori szerepkörrel kell rendelkezni
 1. Válassza ki az előfizetését az Azure Portal [Előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. A számlázási szakaszban válassza a **Számlák** elemet.  
     ![Az előfizetés számlázási lehetőségének kiválasztását megjelenítő képernyőkép](./media/download-azure-invoice/select-subscription-invoice.png)
-1. A PDF formátumú számla letöltéséhez válassza a **Letöltés** gombot, majd válassza a **Letöltés** lehetőséget a számlázási szakaszban.  
-    ![A számlázási időszakokat, a letöltési lehetőséget és az egyes számlázási időszakok teljes díját ábrázoló képernyőkép](./media/download-azure-invoice/downloadinvoice-subscription.png)
-1. Letöltheti a felhasznált mennyiségek és a díjak napi bontását is, ha a **Letöltés** lehetőséget választja a használati adatok szakaszban. A CSV-fájl létrehozása eltarthat néhány percig.  
+1. Válassza ki a letölteni kívánt számlát, majd kattintson a **számlák letöltése** elemre.  
+    ![Képernyőkép arról, hogy a MOSP-számla letöltési lehetősége](./media/download-azure-invoice/downloadinvoice-subscription.png)
+1. Letöltheti a felhasznált mennyiségek és díjak napi bontását is, ha a letöltés ikonra kattint, majd az **Azure-használati fájl előkészítése** gombra kattint a használati adatok szakaszban. A CSV-fájl létrehozása eltarthat néhány percig.  
     ![Képernyőkép a Számlák és használati adatok letöltése oldalról](./media/download-azure-invoice/usage-and-invoice-subscription.png)
 
-A számlájára vonatkozó további információért lásd [a Microsoft Azure-számla ismertetését](../understand/review-individual-bill.md). A költségek kezelésével kapcsolatos segítségért lásd [az Azure-számlázással és -költségkezeléssel kapcsolatos váratlan költségek megelőzését](../manage/getting-started.md) ismertető szakaszt.
+A számlájára vonatkozó további információért lásd [a Microsoft Azure-számla ismertetését](../understand/review-individual-bill.md). A szokatlan költségek azonosításához lásd: [váratlan díjak elemzése](analyze-unexpected-charges.md).
 
 ## <a name="download-your-mosp-support-plan-invoice"></a>MOSP támogatási csomag számlájának letöltése
 
@@ -72,12 +87,12 @@ Egy számla letöltéséhez fiókadminisztrátori szerepkörrel kell rendelkezni
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
     ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/download-azure-invoice/search-cmb.png)
 1. A bal oldalon válassza a **Számlák** elemet.
-1. Jelölje ki a támogatási csomaghoz tartozó előfizetést, majd válassza a **Letöltés** lehetőséget.  
-    [![Képernyőkép a számlázási profilok listájáról](./media/download-azure-invoice/cmb-invoices.png)](./media/download-azure-invoice/cmb-invoices-zoomed-in.png#lightbox)
-1. A PDF formátumú számla letöltéséhez válassza a **Letöltés** gombot.  
-    ![A számlázási időszakokat, a letöltési lehetőséget és az egyes számlázási időszakok teljes díját ábrázoló képernyőkép](./media/download-azure-invoice/download-invoice-support-plan.png)
+1. Válassza ki a támogatási csomag előfizetését.  
+    [![A MOSP támogatási csomag számlázási profiljának listáját megjelenítő képernyőkép](./media/download-azure-invoice/cmb-invoices.png)](./media/download-azure-invoice/cmb-invoices-zoomed-in.png#lightbox)
+1. Válassza ki a letölteni kívánt számlát, majd kattintson a **számlák letöltése** elemre.  
+    ![A MOSP támogatási csomagjának letöltési lehetőségét bemutató képernyőkép ](./media/download-azure-invoice/download-invoice-support-plan.png)
 
-## <a name="allow-others-to-download-the-your-subscription-invoice"></a>Előfizetéshez tartozó számlák letöltésének engedélyezése mások számára
+## <a name="allow-others-to-download-your-subscription-invoice"></a>Előfizetés-számla letöltésének engedélyezése mások számára
 
 A számla letöltése:
 
@@ -92,8 +107,12 @@ A számla letöltése:
 4.  Válassza ki Azure-előfizetését, majd kattintson a **Számla letöltésének engedélyezése mások számára** elemre.
 
     [![A számlához való hozzáférés megadását megjelenítő képernyőkép](./media/download-azure-invoice/cmb-select-access-to-invoice.png)](./media/download-azure-invoice/cmb-select-access-to-invoice-zoomed-in.png#lightbox)
-1.  Válassza a **Be** lehetőséget, majd kattintson az oldal tetején lévő **Mentés** elemre.  
+
+5.  Válassza a **Be** lehetőséget, majd kattintson az oldal tetején lévő **Mentés** elemre.  
     ![A számlához való hozzáférés megadásának engedélyezését megjelenítő képernyőkép](./media/download-azure-invoice/cmb-access-to-invoice.png)
+    
+> [!NOTE]
+> A Microsoft nem javasolja bizalmas vagy személyes azonosításra alkalmas adatok megosztását harmadik felekkel. Ez az ajánlás az Azure-számla vagy-számla megosztására vonatkozik egy harmadik féllel a Cost optimizations szolgáltatásban. További információ: https://azure.microsoft.com/support/legal/ és https://www.microsoft.com/trust-center.
 
 ## <a name="get-mosp-subscription-invoice-in-email"></a>Az MOSP-előfizetés számláinak fogadása e-mailben
 
@@ -103,18 +122,18 @@ Az előfizetésnél fiókadminisztrátori szerepkörrel vagy támogatási csomag
 2.  Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
 3.  A bal oldalon válassza a **Számlák** elemet.
 4.  Jelölje ki az Azure-előfizetést vagy a támogatási csomaghoz tartozó előfizetést, majd válassza a **Számla fogadása e-mailben** lehetőséget.  
-    [![Képernyőkép a számlázási profilok listájáról](./media/download-azure-invoice/cmb-email-invoice.png)](./media/download-azure-invoice/cmb-email-invoice-zoomed-in.png#lightbox)
+    [![Képernyőfelvétel a fogadási számláról e-mailben lehetőséggel](./media/download-azure-invoice/cmb-email-invoice.png)](./media/download-azure-invoice/cmb-email-invoice-zoomed-in.png#lightbox)
 5. Kattintson a **Számla elküldése e-mailben** elemre, és fogadja el a feltételeket.  
     ![A jóváhagyási folyamat második lépését ábrázoló képernyőkép](./media/download-azure-invoice/invoicearticlestep02.png)
 6. A rendszer elküldi a számlát a kívánt kapcsolattartási e-mail-címre. Az e-mail-cím frissítéséhez válassza **Profil frissítése** lehetőséget.  
     ![A jóváhagyási folyamat harmadik lépését ábrázoló képernyőkép](./media/download-azure-invoice/invoicearticlestep03-verifyemail.png)
 
-## <a name="share-subscription-and-support-plan-invoices"></a>Előfizetés és támogatási csomag számláinak megosztása
+## <a name="share-subscription-and-support-plan-invoice"></a>Előfizetés és támogatási csomag megosztási számlájának megosztása
 
-Érdemes lehet havonta megosztani az előfizetési és támogatási csomag számláit a számviteli csoporttal, vagy elküldeni őket egy másik saját e-mail-címére.
+Előfordulhat, hogy az előfizetés és a támogatási csomag számláját havonta szeretné megosztani a nyilvántartási csapattal, vagy egy másik e-mail-címre küldi el azokat.
 
 1. Kövesse [Az előfizetés és a támogatási csomag számláinak fogadása e-mailben](#get-mosp-subscription-invoice-in-email) című szakaszban leírt lépéseket, és válassza a **Címzettek konfigurálása** lehetőséget.  
-    ![A címzettek konfigurálásának kiválasztását megjelenítő képernyőkép](./media/download-azure-invoice/invoice-article-step03.png)
+    [![A címzettek konfigurálását kiválasztó felhasználót bemutató képernyőkép](./media/download-azure-invoice/invoice-article-step03.png)](./media/download-azure-invoice/invoice-article-step03-zoomed.png#lightbox)
 1. Adjon meg egy e-mail-címet, majd válassza a **Címzett hozzáadása** elemet. Több e-mail-címet is hozzáadhat.  
     ![A további címzettek hozzáadását megjelenítő képernyőkép](./media/download-azure-invoice/invoice-article-step04.png)
 1. Az összes e-mail-cím hozzáadása után kattintson a képernyő alján található **Kész** gombra.
@@ -123,7 +142,7 @@ Az előfizetésnél fiókadminisztrátori szerepkörrel vagy támogatási csomag
 
 Az MCA számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy [használatalapú fizetést használó fiókot](https://azure.microsoft.com/offers/ms-azr-0003p/) vagy egy [ingyenes Azure-fiókot](https://azure.microsoft.com/offers/ms-azr-0044p/), külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez is. További információ: [Az MCA számlázási fiók használatának első lépései](../understand/mca-overview.md).
 
-A Microsoft-partnerszerződés (MPA) számlázási fiókjai a felhőszolgáltatói partnerek (CSP-k) számára készülnek az új kereskedelmi felületen történő ügyfélkezeléshez. A partnereknek legalább egy [Azure-csomaggal](https://docs.microsoft.com/partner-center/purchase-azure-plan) rendelkező ügyfélre van szükségük ahhoz, hogy számlázási fiókjukat az Azure Portalon kezelhessék. További információ: [Az MPA számlázási fiók használatának első lépései](../understand/mpa-overview.md).
+A Microsoft-partnerszerződés (MPA) számlázási fiókjai a felhőszolgáltatói partnerek (CSP-k) számára készülnek az új kereskedelmi felületen történő ügyfélkezeléshez. A partnereknek legalább egy [Azure-csomaggal](/partner-center/purchase-azure-plan) rendelkező ügyfélre van szükségük ahhoz, hogy számlázási fiókjukat az Azure Portalon kezelhessék. További információ: [Az MPA számlázási fiók használatának első lépései](../understand/mpa-overview.md).
 
 A hónap elején a fiókhoz tartozó összes számlázási profilhoz létrejön egy havi számla. A számla az Azure-előfizetések és egyéb vásárlások előző havi díjait tartalmazza. Például John *01-es számú Azure-előfizetését* március 5-én, *02-es számú Azure-előfizetését* pedig március 10-én hozta létre. A *01-es számú Azure támogatási* előfizetést március 28-án vásárolta meg a *01-es számú számlázási profillal*. John április elején egyetlen, az Azure-előfizetések és a támogatási csomag díjait összesítő számlát fog kapni.
 
@@ -155,50 +174,37 @@ A számlázási profil vagy a számlázási fiók e-mailes számlaküldési beá
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1.  Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
-1.  A bal oldalon válassza a **Számlák** lehetőséget, majd a lap tetején található **Számla küldése e-mailben** elemet.  
-    [![Az MCA számlázási fiók számlázási oldalát megjelenítő képernyőkép](./media/download-azure-invoice/mca-billing-profile-select-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
-1.  Ha több számlázási profilja van, válasszon ki egy számlázási profilt, majd kattintson a **Jóváhagyás** elemre.  
-    ![Az MCA számlázási fiók számlázási oldalát megjelenítő képernyőkép](./media/download-azure-invoice/mca-billing-profile-email-invoice.png)
-1.  Válassza a **Frissítés** lehetőséget.
-
-2.  Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/download-azure-invoice/search-cmb.png)
-
-3.  A bal oldalon válassza a **Számlák** lehetőséget, majd a lap tetején található **Számla küldése e-mailben** elemet.
-
-    [![Az MCA számlázási fiók számlázási oldalát megjelenítő képernyőkép](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice.png)](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice-zoomed-in.png)
-
-4.  Ha több számlázási profilja van, válasszon ki egy számlázási profilt, majd kattintson a **Jóváhagyás** elemre.
+1.  A bal oldali oldalon válassza a **számlák** lehetőséget, majd válassza a **számla e-mail** -címe lehetőséget az oldal tetején.  
+    [![A számlákhoz tartozó e-mail-számla lehetőséget megjelenítő képernyőkép](./media/download-azure-invoice/mca-billing-profile-select-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
+1.  Ha több számlázási profillal rendelkezik, válasszon ki egy számlázási profilt, majd válassza az **Igen** lehetőséget.  
+    [![A opt-in kapcsolót bemutató képernyőkép](./media/download-azure-invoice/mca-billing-profile-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
+1.  Kattintson a **Mentés** gombra.
 
 Engedélyezheti másoknak a számlák megtekintését, letöltését és befizetését, ha számlakezelő szerepkört rendel hozzájuk az MCA vagy az MPA számlázási profilra vonatkozóan. Ha a számlák e-mailben való fogadását választotta, akkor a felhasználók is megkapják a számlákat e-mailben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
 1. Válassza a **Számlázási profilok** lehetőséget a bal oldalon. A számlázási profilok listájában válassza ki azt a számlázási profilt, amelyhez számlakezelő szerepkört szeretne rendelni.  
-   ![Képernyőkép a számlázási profilok listájáról](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
+   ![Képernyőfelvétel a számlázási profilok listájáról, ahol kiválaszthatja a számlázási profilt](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
 1. A bal oldalon válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, majd a lap tetején található **Hozzáadás** elemet.  
     ![Képernyőkép a hozzáférés-vezérlési lapról](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png)
 1. A Szerepkör legördülő listában válassza a **Számlakezelő** elemet. Adja meg annak a felhasználónak az e-mail-címét, aki számára hozzáférést kíván biztosítani. A szerepkör hozzárendeléséhez válassza a **Mentés** lehetőséget.  
-   ![Képernyőkép egy felhasználó számlakezelőként való hozzáadásáról](./media/download-azure-invoice/mca-added-invoice-manager.png)
-
-1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-
-   ![Képernyőkép az előfizetés kifejezés kereséséről a portálon](./media/download-azure-invoice/search-cmb.png)
-
-1. Válassza a **Számlázási profilok** lehetőséget a bal oldalon. A számlázási profilok listájában válassza ki azt a számlázási profilt, amelyhez számlakezelő szerepkört szeretne rendelni.
-
-   ![Képernyőkép a számlázási profilok listájáról](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
-
-1. A bal oldalon válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, majd a lap tetején található **Hozzáadás** elemet.
-
-   [![Képernyőkép a hozzáférés-vezérlési lapról](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png)
-
-1. A Szerepkör legördülő listában válassza a **Számlakezelő** elemet. Adja meg annak a felhasználónak az e-mail-címét, aki számára hozzáférést kíván biztosítani. A szerepkör hozzárendeléséhez válassza a **Mentés** lehetőséget.
-
-   [![Képernyőkép egy felhasználó számlakezelőként való hozzáadásáról](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+    [![Képernyőkép egy felhasználó számlakezelőként való hozzáadásáról](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
    
-   
+
+## <a name="share-your-billing-profiles-invoice"></a>Számlázási profil számlájának megosztása
+
+Előfordulhat, hogy havonta meg kell osztania a számláját a könyvelési csapattal, vagy egy másik e-mail-címre kell elküldeni, anélkül, hogy a könyvelési csapatnak vagy más e-mail-jogosultságot adna a számlázási profiljához.
+
+1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1.  Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
+1.  A bal oldali oldalon válassza a **számlák** lehetőséget, majd válassza a **számla e-mail** -címe lehetőséget az oldal tetején.  
+    [![A számlákhoz tartozó e-mail-számla lehetőséget megjelenítő képernyőkép](./media/download-azure-invoice/mca-billing-profile-select-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
+1.  Ha több számlázási profillal rendelkezik, válasszon ki egy számlázási profilt.
+1.  A további címzettek szakaszban adja hozzá az e-mail-címeket a számlák fogadásához.
+    [![A számla e-mail-címére további címzetteket bemutató képernyőkép](./media/download-azure-invoice/mca-billing-profile-add-invoice-recipients.png)](./media/download-azure-invoice/mca-billing-profile-add-invoice-recipients-zoomed.png#lightbox)
+1.  Kattintson a **Mentés** gombra.
+
 ##  <a name="why-you-might-not-see-an-invoice"></a>Lehetséges okok, amiért nem láthatja a számlát
 
 <a name="noinvoice"></a>
@@ -231,9 +237,9 @@ Számos oka lehet annak, hogy nem jelenik meg számla:
 
     - Egyes ügyfeleknek két, ugyanazt az e-mail-címet használó identitásuk van: egy munkahelyi fiókjuk és egy Microsoft-fiókjuk. Jellemzően ezek közül csak az egyik rendelkezik engedéllyel a számlák megtekintéséhez. Ha azzal az identitással jelentkeznek be, amely nem rendelkezik engedéllyel, akkor nem látják a számlákat. Győződjön meg arról, hogy a megfelelő identitással jelentkezik be.
 
-- Nem megfelelő Azure Active Directory- (AAD-) bérlőbe jelentkezett be. 
+- Bejelentkezett a helytelen Azure Active Directory (Azure AD) bérlőbe. 
 
-    - A számlázási fiók egy AAD-bérlőhöz van társítva. Ha nem a megfelelő bérlőbe jelentkezik be, a számlázási fiókjában nem jelennek meg az előfizetéséhez tartozó számlák. Ellenőrizze, hogy a megfelelő Azure Active Directory- (AAD-) bérlőbe jelentkezett-e be. Ha nem a megfelelő bérlőbe van bejelentkezve, a következő lépésekkel válthat másik bérlőre az Azure Portalon:
+    - A Számlázási fiók egy Azure AD-bérlőhöz van társítva. Ha nem a megfelelő bérlőbe jelentkezik be, a számlázási fiókjában nem jelennek meg az előfizetéséhez tartozó számlák. Ellenőrizze, hogy be van-e jelentkezve a megfelelő Azure AD-bérlőbe. Ha nem a megfelelő bérlőbe van bejelentkezve, a következő lépésekkel válthat másik bérlőre az Azure Portalon:
 
         1. A lap jobb felső sarkában válassza ki az e-mail-címét.
 

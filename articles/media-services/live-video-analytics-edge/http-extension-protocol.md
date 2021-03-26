@@ -3,16 +3,16 @@ title: HTTP-bővítményi protokoll – Azure
 description: Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő videó elemzési modulja és az AI-vagy CV-modulja között a HTTP-bővítmény protokoll használatával.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: c3a9b5b70467479fdb9b1473a1f6738eaa8a7e1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455890"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565741"
 ---
 # <a name="http-extension-protocol"></a>HTTP-bővítmény-protokoll
 
-A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy [gráf kiterjesztésű csomóponton](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept)keresztül. Ha a HTTP-bővítményt a bővítmény csomópontként használja, akkor az élő videó elemzési modulja és az AI-vagy CV-modul közötti kommunikáció HTTP-n keresztül történik.
+A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy [gráf kiterjesztésű csomóponton](./media-graph-extension-concept.md)keresztül. Ha a HTTP-bővítményt a bővítmény csomópontként használja, akkor az élő videó elemzési modulja és az AI-vagy CV-modul közötti kommunikáció HTTP-n keresztül történik.
 
 Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő videó elemzési modulja és az AI-vagy CV-modulja között a HTTP-bővítmény protokoll használatával. 
 
@@ -87,11 +87,11 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-Erősen ajánlott, hogy a válaszokat érvényes JSON-dokumentumok használatával adja vissza a rendszer, amely a [következtetési metaadatok séma-objektummodell](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)alapján meghatározott, előre meghatározott sémát követi. Így jobban biztosítható a más összetevőkkel való együttműködés, valamint az élő video Analytics modulhoz hozzáadott lehetséges jövőbeli képességek.
+Erősen ajánlott, hogy a válaszokat érvényes JSON-dokumentumok használatával adja vissza a rendszer, amely a [következtetési metaadatok séma-objektummodell](./inference-metadata-schema.md)alapján meghatározott, előre meghatározott sémát követi. Így jobban biztosítható a más összetevőkkel való együttműködés, valamint az élő video Analytics modulhoz hozzáadott lehetséges jövőbeli képességek.
 
 Ha a modul olyan választ ad vissza, amelyben a tartalomtípus nem "Application/JSON", a Live Video Analytics az üzenetet az 64-es alapszintű tartalomként kódolja, és az átlátszatlan JSON-adattartalmat fogja szerializálni.
 
-Ha a modul "Application/JSON" típusú választ ad vissza, de a JSON-séma nem követi az alább vázolt hivatkozási metaadatok sémáját, akkor az üzenet tartalma a folyamaton keresztül továbbítódik, az együttműködési képesség pedig csökken. Tekintse meg az [itt](/azure/media-services/live-video-analytics-edge/inference-metadata-schema) található részletes és naprakész adatokat, amelyek a következtetési metaadatokat tartalmazó sémára vonatkoznak.
+Ha a modul "Application/JSON" típusú választ ad vissza, de a JSON-séma nem követi az alább vázolt hivatkozási metaadatok sémáját, akkor az üzenet tartalma a folyamaton keresztül továbbítódik, az együttműködési képesség pedig csökken. Tekintse meg az [itt](./inference-metadata-schema.md) található részletes és naprakész adatokat, amelyek a következtetési metaadatokat tartalmazó sémára vonatkoznak.
 
 > [!NOTE]
 > Ha a modul nem eredményez eredményt, akkor a HTTP 204 állapotkódot (nincs tartalom) üres válasz törzstel kell visszaadnia. Az élő videó Analytics ezt az üres eredményt fogja érteni, és nem továbbítja az eseményt a folyamat során.

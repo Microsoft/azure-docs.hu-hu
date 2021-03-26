@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562324"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -148,7 +148,7 @@ A házirend-betartási nézetek két típusa érhető el:
 
 * **Házirend betartásának időtartama**: ebben a nézetben meghatározhatja, hogy hány elemnek volt legalább egy sikeres biztonsági másolata egy adott napon, és hányan nem volt sikeres biztonsági mentés az adott napon. Egy sorra kattintva megtekintheti a kiválasztott napon aktivált összes biztonsági mentési feladat részleteit. Vegye figyelembe, hogy ha nagyobb értékre (például az utolsó 60 napra) emeli az időtartományt, a rács hetente jelenik meg, és megjeleníti az összes olyan elem számát, amelynek legalább egy sikeres biztonsági másolata volt az adott hét minden napján. Hasonlóképpen, a nagyobb időtartományok havi nézete is rendelkezésre áll.
 
-Ha hetente készít biztonsági mentést, ez a rács segít azonosítani az adott héten legalább egy sikeres biztonsági mentést tartalmazó elemet. Nagyobb időtartománynál, például az elmúlt 120 napban a rács a havi nézetben jelenik meg, és megjeleníti az összes olyan elem számát, amelynek legalább egy sikeres biztonsági másolata volt minden héten az adott hónapban. A napi, heti és havi megtekintéssel kapcsolatos további részletekért tekintse [meg a biztonsági mentési jelentésekben használt konvenciókat](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) .
+Ha hetente készít biztonsági mentést, ez a rács segít azonosítani az adott héten legalább egy sikeres biztonsági mentést tartalmazó elemet. Nagyobb időtartománynál, például az elmúlt 120 napban a rács a havi nézetben jelenik meg, és megjeleníti az összes olyan elem számát, amelynek legalább egy sikeres biztonsági másolata volt minden héten az adott hónapban. A napi, heti és havi megtekintéssel kapcsolatos további részletekért tekintse [meg a biztonsági mentési jelentésekben használt konvenciókat](#conventions-used-in-backup-reports) .
 
 ![Házirend betartásának időtartama](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
@@ -166,7 +166,7 @@ A logikai alkalmazás létrehozása után engedélyeznie kell a kapcsolatokat Az
 
 A biztonsági mentési jelentések [rendszerfunkciókat használnak Azure monitor naplókon](backup-reports-system-functions.md). Ezek a függvények a (z) LA nyers Azure Backup tábláiban található adatokon működnek, és olyan formázott adatokat adnak vissza, amelyek segítségével egyszerűen lekérheti az összes biztonsági mentéssel kapcsolatos entitás információit egyszerű lekérdezések használatával. 
 
-Ha saját jelentéskészítési munkafüzeteket kíván létrehozni a biztonsági mentési jelentésekkel, akkor navigáljon a biztonsági mentési jelentésekhez, kattintson a jelentés tetején található **Szerkesztés** gombra, és tekintse meg/szerkessze a jelentésekben használt lekérdezéseket. Az egyéni jelentések létrehozásával kapcsolatos további információkért tekintse meg az [Azure-munkafüzetek dokumentációját](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) . 
+Ha saját jelentéskészítési munkafüzeteket kíván létrehozni a biztonsági mentési jelentésekkel, akkor navigáljon a biztonsági mentési jelentésekhez, kattintson a jelentés tetején található **Szerkesztés** gombra, és tekintse meg/szerkessze a jelentésekben használt lekérdezéseket. Az egyéni jelentések létrehozásával kapcsolatos további információkért tekintse meg az [Azure-munkafüzetek dokumentációját](../azure-monitor/visualize/workbooks-overview.md) . 
 
 ## <a name="export-to-excel"></a>Exportálás Excelbe
 

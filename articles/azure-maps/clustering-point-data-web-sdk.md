@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044187"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608357"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 
@@ -26,7 +26,7 @@ Ha sok adatpontot jelenít meg a térképen, az adatpontok átfedésben lehetnek
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Az adatforrások fürtözésének engedélyezése
 
-Engedélyezze a fürtözést a `DataSource` osztályban úgy, hogy a beállítást igaz értékre állítja `cluster` . Állítsa be `clusterRadius` a közeli pontok kiválasztását és a fürtbe való egyesítését. A értéke `clusterRadius` képpontban megadva. Ezzel a `clusterMaxZoom` beállítással adható meg egy nagyítási szint, amelyen le kell tiltani a fürtszolgáltatási logikát. Íme egy példa arra, hogyan engedélyezhető a fürtözés egy adatforrásban.
+Engedélyezze a fürtözést a `DataSource` osztályban a beállítás értékének megadásával `cluster` `true` . Állítsa be `clusterRadius` a közeli pontok kiválasztását és a fürtbe való egyesítését. A értéke `clusterRadius` képpontban megadva. Ezzel a `clusterMaxZoom` beállítással adható meg egy nagyítási szint, amelyen le kell tiltani a fürtszolgáltatási logikát. Íme egy példa arra, hogyan engedélyezhető a fürtözés egy adatforrásban.
 
 ```javascript
 //Create a data source and enable clustering.

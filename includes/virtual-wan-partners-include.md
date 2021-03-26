@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7374c2727048e323ce0483dd42c574134e7315bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1d3223114e9f691bfb3802a65abea003a7aec6e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040540"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582811"
 ---
 Az ebben a szakaszban található hivatkozásokat a partnerek által kínált szolgáltatásokkal kapcsolatos további információkért tekintheti meg. Ha az alábbi szakaszban nem szerepel az ág-eszköz partnere, vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e-mailt küldenek a címre azurevirtualwan@microsoft.com .
 
@@ -26,7 +26,7 @@ Az ebben a szakaszban található hivatkozásokat a partnerek által kínált sz
 | [Cloudgenix](https://www.cloudgenix.com/microsoft-azure/) |[CloudGenix Azure Virtual WAN CloudBlade üzembe helyezési útmutató](https://sd-wan.cloudgenix.com/Q319ConfigurationGuide_Registration.html)|
 | [Fortinet](https://www.fortinet.com/azure-vwan) |[FortiGate és Microsoft Azure virtuális WAN-integráció telepítési útmutatója](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf),[útválasztási forgatókönyv blog ](https://www.fortinet.com/blog/business-and-technology/fortinet-secure-sd-wan-enhances-azure-virtual-wan-integrations)|
 |[HPE Aruba]( https://www.arubanetworks.com/microsoft-vwan/)|[Aruba SD-WAN és Microsoft Azure Virtual WAN telepítési útmutató](https://www.arubanetworks.com/assets/tg/DG_Using-Aruba-SD-WAN-with-Microsoft-Azure-Virtual-WAN.pdf)|
-| [NetFoundry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Netfoundry támogatási központ: Azure Virtual WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
+| [NetFoundry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Netfoundry támogatási központ: Azure Virtual WAN](https://support.netfoundry.io/hc/articles/360054527871-Configure-NetFoundry-Network-for-Azure-Windows-Virtual-Desktop-Short-Path)|
 |[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[A Nuage és az Azure Virtual WAN telepítési útmutatója](https://onestore.nokia.com/asset/210073)|
 |[Nyitott rendszerek]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[A nyílt rendszerek és az Azure Virtual WAN üzembe helyezési útmutatója](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[A Palo Alto Networks Azure Virtual WAN üzembe helyezési útmutatója](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|

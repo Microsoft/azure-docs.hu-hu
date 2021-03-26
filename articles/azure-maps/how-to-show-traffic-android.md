@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098536"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604515"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Forgalmi adatok megjelenítése a térképen (Android SDK)
 
@@ -63,7 +63,7 @@ map.setTraffic(
 
 ::: zone-end
 
-Az alábbi képernyőfelvételen a fenti kódot tépő valós idejű forgalmi információk láthatók a térképen.
+Az alábbi képernyőfelvételen a fenti kódot ábrázoló valós idejű forgalmi információk láthatók a térképen.
 
 ![Valós idejű forgalmi adatokat megjelenítő Térkép](media/how-to-show-traffic-android/android-show-traffic.png)
 
@@ -179,7 +179,7 @@ map.events.add(OnFeatureClick { features: List<Feature>? ->
 
 ::: zone-end
 
-Az alábbi képernyőfelvételen a tépő valós idejű forgalmi információi láthatók a térképen, és egy Toast üzenet jeleníti meg az incidens részleteit.
+Az alábbi képernyőfelvételen a fenti kód a valós idejű forgalomra vonatkozó információkat jeleníti meg a térképen egy olyan, az incidensek megjelenítését jelző üzenettel.
 
 ![A valós idejű forgalmi információk megjelenítése egy Toast üzenet megjelenítésével – incidens részletei](media/how-to-show-traffic-android/android-traffic-details.png)
 

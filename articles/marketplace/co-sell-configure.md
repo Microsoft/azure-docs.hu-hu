@@ -8,16 +8,16 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e8019a30d4f5bf24814d88fc749cefd6b529b73b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609269"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563395"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Közös értékesítés konfigurálása kereskedelmi Piactéri ajánlathoz
 
-Ez a cikk azt ismerteti, hogyan konfigurálható a **közös értékesítés a Microsoft** lapján a kereskedelmi Piactéri ajánlathoz. Az ezen a lapon található információk megadása teljes mértékben nem kötelező, de a [közös értékesítésre kész és az IP-incentivized állapot](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Ez az információ nem érhető el közvetlenül az ügyfeleknek. További információ a közös értékesítéssel kapcsolatban: [közös értékesítés a Microsoft-értékesítők és-partnerek áttekintése](marketplace-co-sell.md) és [a Microsoft együttes értékesítése](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Ez a cikk azt ismerteti, hogyan konfigurálható a **közös értékesítés a Microsoft** lapján a kereskedelmi Piactéri ajánlathoz. Az ezen a lapon található információk megadása teljes mértékben nem kötelező, de a [közös értékesítésre kész és az IP-incentivized állapot](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Ez az információ nem érhető el közvetlenül az ügyfeleknek. További információ a közös értékesítéssel kapcsolatban: [közös értékesítés a Microsoft-értékesítők és-partnerek áttekintése](marketplace-co-sell.md) és [a Microsoft együttes értékesítése](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 A közös értékesítés lehetőség a következő típusú ajánlatokhoz érhető el.
 

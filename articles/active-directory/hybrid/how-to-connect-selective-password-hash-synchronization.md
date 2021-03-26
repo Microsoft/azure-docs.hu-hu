@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 248d5e163eb046edd130d69307a1c553d434b92d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103603028"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604668"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Szelektív jelszó kivonatának szinkronizálási konfigurációja Azure AD Connect
 
@@ -36,6 +36,9 @@ A konfiguráció felügyeleti tevékenységének csökkentése érdekében elős
 
 > [!Important]
 > A kiválasztott konfigurációs beállítással a módosítások alkalmazásához szükséges kezdeti szinkronizálás (teljes szinkronizálás) automatikusan elvégzi a következő szinkronizálási ciklust.
+
+> [!Important]
+> A szelektív jelszavas kivonatok szinkronizálásának konfigurálása közvetlenül befolyásolja a jelszó visszaírási. A jelszó-változtatások vagy a jelszó-ÁTÁLLÍTÁSOK, amelyeket a rendszer kezdeményez Azure Active Directory a helyszíni Active Directoryre való visszaíráskor, ha a felhasználó a jelszó-kivonatolási szinkronizálás hatókörében van. 
 
 ### <a name="the-admindescription-attribute"></a>A adminDescription attribútum
 Mindkét forgatókönyv arra támaszkodik, hogy a felhasználók adminDescription-attribútumát egy adott értékre állítja be.  Ez lehetővé teszi, hogy a szabályok alkalmazhatók legyenek, és mi teszi a szelektív PHS munkát.
@@ -134,6 +137,9 @@ Ha az összes konfiguráció elkészült, akkor az összes olyan felhasználóho
    
   ![Attribútum szerkesztése](media/how-to-connect-selective-password-hash-synchronization/exclude-11.png)
 
+A felhasználó **adminDescription** -attribútumának szerkesztéséhez a következő PowerShell-parancsot is használhatja:
+
+```Set-ADUser myuser -Replace @{adminDescription="PHSFiltered"}```
 
 ## <a name="excluded-users-is-larger-than-included-users"></a>A kizárt felhasználók nagyobb méretűek, mint a tartalmazott felhasználók
 A következő szakasz azt ismerteti, hogyan engedélyezhető a szelektív jelszó-kivonatok szinkronizálása, ha a **kizárni** kívánt felhasználók száma **nagyobb** , mint a **felvenni** kívánt felhasználók száma.
@@ -202,7 +208,9 @@ Az összes konfiguráció befejezését követően szerkesztenie kell a **adminD
 
   ![Attribútumok szerkesztése](media/how-to-connect-selective-password-hash-synchronization/include-11.png)
  
- 
+ A felhasználó **adminDescription** -attribútumának szerkesztéséhez a következő PowerShell-parancsot is használhatja:
+
+ ```Set-ADUser myuser -Replace @{adminDescription="PHSIncluded"}``` 
 
 ## <a name="next-steps"></a>Következő lépések
 - [Mi az a jelszókivonat-szinkronizálás?](whatis-phs.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1506ce311fe443247050a36e1b9fa4600360ac6e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546551"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604141"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Az Azure Database for PostgreSQL egykiszolgálós üzemének csatlakozási és lekérdezési áttekintése
 
@@ -44,7 +44,6 @@ A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a
 - [Postgres 11 bővítmény](./concepts-extensions.md#postgres-11-extensions)
 - [Postgres 10 bővítmény](./concepts-extensions.md#postgres-10-extensions)
 - [Postgres 9,6-bővítmények](./concepts-extensions.md#postgres-96-extensions)
-- [Postgres 9,5-bővítmények](./concepts-extensions.md#postgres-95-extensions)
 
 További részletek: a [PostgreSQL-bővítmények használata egyetlen kiszolgálón](concepts-extensions.md).
 

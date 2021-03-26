@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 529bc5468c74ac9d50f64decad29fd070a7bda83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024897"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566931"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server az Azure SQL felügyelt példányához
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,7 +90,7 @@ A következő táblázat a javasolt áttelepítési eszközöket sorolja fel:
 
 |Technológia | Leírás|
 |---------|---------|
-| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Az Azure SQL Azure Migrate lehetővé teszi, hogy az SQL-adatkészletet a VMware platformon Fedezze fel és mérje fel, így biztosítva az Azure SQL-telepítésre vonatkozó javaslatokat, a cél méretezését és a havi becsléseket. | 
+| [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | Az Azure SQL Azure Migrate lehetővé teszi, hogy az SQL-adatkészletet a VMware platformon Fedezze fel és mérje fel, így biztosítva az Azure SQL-telepítésre vonatkozó javaslatokat, a cél méretezését és a havi becsléseket. | 
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Az első fél Azure-szolgáltatás, amely támogatja az offline módban való áttelepítést az áttelepítési folyamat során állásidőt biztosító alkalmazások esetében. Az online módban való folyamatos áttelepítéstől eltérően az offline módú áttelepítés a teljes adatbázis biztonsági másolatának egyszeri visszaállítását futtatja a forrásról a célra. | 
 |[Natív biztonsági mentés és visszaállítás](../../managed-instance/restore-sample-database-quickstart.md) | A felügyelt SQL-példány támogatja a natív SQL Server adatbázis biztonsági másolatainak (. bak fájlok) VISSZAÁLLÍTÁSát, így a legkönnyebb áttelepítési lehetőség azon ügyfelek számára, akik teljes adatbázis-biztonsági mentést biztosíthatnak az Azure Storage-ba. A teljes és a különbözeti biztonsági másolatok is támogatottak és dokumentálva vannak az [áttelepítési eszközök szakaszban](#migration-assets) , a cikk későbbi részében.| 
 |[A log Replay szolgáltatás (LRS)](../../managed-instance/log-replay-service-migrate.md) | Ez egy felhőalapú szolgáltatás, amely a SQL Server naplózási technológia alapján engedélyezve van a felügyelt példányok számára, így áttelepítési lehetőséget biztosít azon ügyfelek számára, akik teljes, differenciált és naplózási adatbázist tudnak készíteni az Azure Storage-ba. A LRS az Azure Blob Storageról az SQL felügyelt példányra történő biztonsági mentési fájlok visszaállítására szolgál.| 
@@ -212,7 +212,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-A memórián belüli technológiákkal kapcsolatos további információkért lásd: [a teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
+A memórián belüli technológiákkal kapcsolatos további információkért lásd: [a teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain](../../in-memory-oltp-overview.md) .
 
 ## <a name="leverage-advanced-features"></a>Speciális funkciók kihasználása 
 
@@ -228,7 +228,7 @@ Egyes szolgáltatások csak akkor érhetők el, ha az [adatbázis kompatibilitá
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Leírás  |
+|Objektum  |Description  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve az Azure SQL MI-t is.|

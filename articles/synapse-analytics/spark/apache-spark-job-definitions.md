@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176620"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608770"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Oktatóanyag: Apache Spark feladatdefiníció létrehozása a szinapszis Studióban
 
@@ -25,8 +25,11 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > - Apache Spark feladatdefiníció létrehozása a PySpark (Python)
 > - Apache Spark feladatdefiníció létrehozása a Sparkhoz (Scala)
 > - Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#/F #)
+> - Feladatdefiníció létrehozása JSON-fájl importálásával
+> - Apache Spark Job definition-fájl exportálása a helyi rendszerbe
 > - Apache Spark feladatdefiníció beküldése batch-feladatokként
 > - Apache Spark feladatdefiníció hozzáadása a folyamathoz
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,6 +39,7 @@ Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következ�
 * Kiszolgáló nélküli Apache Spark készlet.
 * Egy ADLS Gen2 Storage-fiók. A szolgáltatáshoz használni kívánt ADLS Gen2 fájlrendszer **tárolási blob-Adatközreműködőinek** kell lennie. Ha nem, manuálisan kell hozzáadnia az engedélyt.
 * Ha nem szeretné használni a munkaterület alapértelmezett tárolóját, kapcsolja össze a szükséges ADLS Gen2 Storage-fiókot a szinapszis Studióban. 
+
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Apache Spark feladatdefiníció létrehozása a PySpark (Python)
 
@@ -160,6 +164,57 @@ Ebben a szakaszban létre fog hozni egy Apache Spark feladatdefiníció a .NET S
 
       ![DotNet-definíció közzététele](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
+## <a name="create-apache-spark-job-definition-by-importing-a-json-file"></a>Apache Spark feladatdefiníció létrehozása JSON-fájl importálásával
+
+ Egy meglévő helyi JSON-fájlt importálhat az Azure szinapszis munkaterületre a Apache Spark Job definition Explorer **műveletek** (...) menüjéből egy új Apache Spark-feladatdefiníció létrehozásához.
+
+ ![importálási definíció létrehozása](./media/apache-spark-job-definitions/create-import-definition.png)
+
+ 
+ A Spark-feladatok definíciója teljes mértékben kompatibilis a Livy API-val. A helyi JSON-fájlban további paramétereket is hozzáadhat a többi Livy tulajdonsághoz [(Livy docs-REST API (Apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html) . A Spark-konfigurációhoz kapcsolódó paramétereket a konfiguráció tulajdonságban is megadhatja az alább látható módon. Ezután importálhatja a JSON-fájlt a Batch-feladatokhoz tartozó új Apache Spark-feladatdefiníció létrehozásához. Példa a Spark definition importálására szolgáló JSON-ra:
+ 
+```Scala
+   {
+  "targetBigDataPool": {
+    "referenceName": "socdemolarge",
+    "type": "BigDataPoolReference"
+  },
+  "requiredSparkVersion": "2.3",
+  "language": "scala",
+  "jobProperties": {
+    "name": "robinSparkDefinitiontest",
+    "file": "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/wordcount.jar",
+    "className": "WordCount",
+    "args": [
+      "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/shakespeare.txt"
+    ],
+    "jars": [],
+    "files": [],
+    "conf": {
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.dynamicAllocation.minExecutors": "2",
+      "spark.dynamicAllocation.maxExecutors": "2"
+    },
+    "numExecutors": 2,
+    "executorCores": 8,
+    "executorMemory": "24g",
+    "driverCores": 8,
+    "driverMemory": "24g"
+  }
+}
+
+```
+
+![egyéb Livy tulajdonságok](./media/apache-spark-job-definitions/other-livy-properties.png)
+
+## <a name="export-an-existing-apache-spark-job-definition-file"></a>Meglévő Apache Spark Job definition-fájl exportálása
+
+ A Fájlkezelőben a meglévő Apache Spark feladatdefiníció fájljait is exportálhatja a helyi **műveletek** (...) menüjéből. A JSON-fájl további Livy-tulajdonságokat is frissítheti, és szükség esetén importálhatja újra új feladatdefiníció létrehozásához.
+
+ ![exportálási definíció létrehozása](./media/apache-spark-job-definitions/create-export-definition.png)
+
+ ![2. exportálási definíció létrehozása](./media/apache-spark-job-definitions/create-export-definition-2.png)
+
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark feladatdefiníció beküldése batch-feladatokként
 
 Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache Spark készletbe. Győződjön meg arról, hogy a **tároló blob-Adatközreműködője** a használni kívánt ADLS Gen2 fájlrendszer. Ha nem, manuálisan kell hozzáadnia az engedélyt.
@@ -202,6 +257,7 @@ Ebben a szakaszban egy Apache Spark feladatdefiníció hozzáadása a folyamatho
      ![Hozzáadás a pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![Hozzáadás a pipeline2](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 11118c9bd745480dc88380e718a9ab348ab1a3e3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97508271"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606946"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Az Azure dedikált HSM szolgáltatás hibaelhárítása
 
-Az Azure dedikált HSM szolgáltatásnak két különböző aspektusa van. Először is a HSM-eszközök regisztrációját és üzembe helyezését a mögöttes hálózati összetevőkkel. Másodszor, a HSM-eszközök konfigurációja az adott számítási feladathoz vagy alkalmazáshoz való használatra/integrációra készül. Bár a Thales Luna hálózati HSM-eszközök ugyanazok az Azure-ban, mint amikor közvetlenül a Thales vásárolnak, az a tény, hogy az Azure-beli erőforrások egyedi szempontokat hoznak létre. Ezeket a szempontokat és az esetlegesen felmerülő hibaelhárítási információkat és ajánlott eljárásokat itt dokumentáljuk, hogy magas szintű láthatóságot és a kritikus információkhoz való hozzáférést lehessen biztosítani. Ha a szolgáltatás használatban van, a végleges információk a Microsoft vagy a Thales támogatási kérésein keresztül érhetők el közvetlenül. 
+Az Azure dedikált HSM szolgáltatásnak két különböző aspektusa van. Először is a HSM-eszközök regisztrációját és üzembe helyezését a mögöttes hálózati összetevőkkel. Másodszor, a HSM-eszközök konfigurációja az adott számítási feladathoz vagy alkalmazáshoz való használatra/integrációra készül. Bár a [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) -eszközök ugyanazok az Azure-ban, mint amikor közvetlenül a Thales vásárolnak, az a tény, hogy az Azure-beli erőforrások egyedi szempontokat hoznak létre. Ezeket a szempontokat és az esetlegesen felmerülő hibaelhárítási információkat és ajánlott eljárásokat itt dokumentáljuk, hogy magas szintű láthatóságot és a kritikus információkhoz való hozzáférést lehessen biztosítani. Ha a szolgáltatás használatban van, a végleges információk a Microsoft vagy a Thales támogatási kérésein keresztül érhetők el közvetlenül. 
 
 > [!NOTE]
 > Meg kell jegyezni, hogy az újonnan telepített HSM-eszközök konfigurációjának megkezdése előtt minden kapcsolódó javítással frissíteni kell azt. A Thales-támogatási portálon egy adott szükséges javítást is [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) , amely egy olyan hibával foglalkozik, amelyben a rendszer a rendszerindítás során nem válaszol.
 
 ## <a name="hsm-registration"></a>HSM-regisztráció
 
-A dedikált HSM nem szabadon használható, mert hardveres erőforrásokat szolgáltat a felhőben, ezért egy értékes erőforrás, amelynek védelmet kell biztosítania. Ezért a használatával e-mailben használjuk a allowlisting folyamatot HSMrequest@microsoft.com . 
+A dedikált HSM nem szabadon használható, mert hardveres erőforrásokat szolgáltat a felhőben, ezért egy értékes erőforrás, amelynek védelmet kell biztosítania. Ezért a használatával e-mailben használjuk a allowlisiting folyamatot HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Hozzáférés a dedikált HSM-hez
 
-Ha úgy véli, hogy a dedikált HSM megfelel a kulcs tárolási követelményeinek, akkor az e-mailt HSMrequest@microsoft.com kell kérnie a hozzáférés kéréséhez. Vázolja az alkalmazást, a régiókat, amelyeket szeretne HSM, és a keresett HSM mennyiségét. Ha például Microsoft-képviselővel dolgozik, például egy Account Executive-vagy felhőalapú megoldás-tervezővel, akkor bármely kérelembe belefoglalhatja őket.
+Először Kérdezzen rá, hogy milyen használati esetek vannak, amelyeket [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) vagy az [Azure Managed HSM](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/overview)nem tud kezelni. Ha ezt követően úgy gondolja, hogy csak a dedikált HSM fér hozzá a legfontosabb tárterület-követelményekhez, akkor az e-mail-cím lesz a HSMrequest@microsoft.com hozzáférés Az alkalmazás és a használati esetek körvonalazása, a HSM kívánt régiók és a keresett HSM mennyisége. Ha például Microsoft-képviselővel dolgozik, például egy Account Executive-vagy felhőalapú megoldás-tervezővel, akkor bármely kérelembe belefoglalhatja őket.
 
 ## <a name="hsm-provisioning"></a>HSM-kiépítés
 
@@ -56,7 +56,7 @@ Az üzembe helyezéshez megadott standard ARM-sablon HSM-és ExpressRoute-átjá
 
 ### <a name="hsm-deployment-using-terraform"></a>HSM-telepítés a Terraform használatával
 
-Néhány ügyfél a szolgáltatás regisztrálásakor megadott Terraform helyett Automation-környezetként használta az ARM-sablonokat. A HSM nem telepíthető így, de a függő hálózati erőforrások is. A Terraform egy olyan modult tartalmaz, amely egy minimális ARM-sablont hív meg, amelyet a kiugrik a HSM üzembe helyezésével.  Ebben az esetben ügyelni kell arra, hogy a hálózati erőforrások, például a szükséges ExpressRoute-átjárók teljes mértékben telepítve legyenek a HSM telepítése előtt. A következő CLI-parancs használatával tesztelheti a befejezett telepítést, és szükség szerint integrálhatja azokat. Cserélje le a szögletes zárójelet a megadott elnevezési helyére. Meg kell keresnie a "provisioningState sikeres" eredményét.
+Néhány ügyfél a szolgáltatás regisztrálásakor megadott Terraform helyett Automation-környezetként használta az ARM-sablonokat. A HSM nem telepíthető így, de a függő hálózati erőforrások is. A Terraform egy olyan modult tartalmaz, amely egy minimális ARM-sablont hív meg, amely csak a HSM-telepítést végzi.  Ebben az esetben ügyelni kell arra, hogy a hálózati erőforrások, például a szükséges ExpressRoute-átjárók teljes mértékben telepítve legyenek a HSM telepítése előtt. A következő CLI-parancs használatával tesztelheti a befejezett telepítést, és szükség szerint integrálhatja azokat. Cserélje le a szögletes zárójelet a megadott elnevezési helyére. Meg kell keresnie a "provisioningState sikeres" eredményét.
 
 ```azurecli
 az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/providers/Microsoft.Network/virtualNetworkGateways/<myergateway>
@@ -66,7 +66,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 A központi telepítések sikertelenek lehetnek, ha a stampnél 2 HSM és régiónként 4 HSM-t használ. Ennek elkerüléséhez győződjön meg arról, hogy a korábban sikertelen központi telepítések erőforrásainak törlése előtt törölte az erőforrásokat. Az erőforrások megtekintéséhez tekintse meg az alábbi "Hogyan lásd a HSM" című szakaszt. Ha úgy véli, hogy meg kell haladnia ezt a kvótát, amely elsősorban védelem alatt áll, akkor kérjük, küldjön e-mailt HSMrequest@microsoft.com a részletekkel.
 
 ### <a name="deployment-failure-based-on-capacity"></a>Üzembe helyezési hiba a kapacitás alapján
-Ha egy adott bélyegző vagy régió megtelt, azaz szinte minden ingyenes HSM kiépítve, akkor ez üzembe helyezési hibákhoz vezethet. Minden bélyegző 11 HSM érhető el az ügyfelek számára, ami 22/régiót jelent. Az egyes bélyegzők 3 tartalékot és 1 tesztelési eszközt is kapnak. Ha úgy gondolja, hogy elérte a határértéket, akkor az HSMrequest@microsoft.com adott bélyegzők kitöltési szintjével kapcsolatos információkat az e-mailben tekintheti meg.
+Ha egy adott bélyegző vagy régió megtelt, azaz szinte minden ingyenes HSM kiépítve, akkor ez üzembe helyezési hibákhoz vezethet. Az egyes bélyegzők esetében 12 HSM érhető el az ügyfelek számára, ami 24 régiónként is jelent. Az egyes bélyegzők 2 tartalékot és 1 tesztelési eszközt is kapnak. Ha úgy gondolja, hogy elérte a határértéket, akkor az HSMrequest@microsoft.com adott bélyegzők kitöltési szintjével kapcsolatos információkat az e-mailben tekintheti meg.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Hogyan tekintse meg a HSM a kiépítés során?
 Mivel a dedikált HSM egy allowlisted szolgáltatás, a Azure Portal rejtett típusnak minősül. A HSM-erőforrások megtekintéséhez a "rejtett típusok megjelenítése" jelölőnégyzetet kell bejelölnie az alább látható módon. A NIC-erőforrás mindig a HSM-et követi, és jó kiindulópont a HSM IP-címének megkereséséhez, mielőtt az SSH-t használja a kapcsolódáshoz.
@@ -112,7 +112,7 @@ A helytelen hitelesítő adatok megadásával a HSM romboló következményei le
 A következő elemek olyan helyzetek, amikor a konfigurációs hibák vagy gyakoriak, vagy amelyek a felhívásra érdemesek:
 
 ### <a name="hsm-documentation-and-software"></a>HSM-dokumentáció és szoftver
-A Thales SafeNet Luna 7 HSM-eszközök szoftvere és dokumentációja nem érhető el a Microsofttól, és közvetlenül a Thales-ből kell letölteni. A regisztráció a regisztrációs folyamat során kapott Thales ügyfél-azonosító használatával kötelező. A Microsoft által biztosított eszközök rendelkeznek a 7,2-es és a belső vezérlőprogram-verzió 7.0.3. A 2020-es korai Thales dokumentáció nyilvános, és [itt](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)található.  
+A [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) -eszközök szoftvere és dokumentációja nem érhető el a Microsofttól, és közvetlenül a Thales-ből kell letölteni. A regisztráció a regisztrációs folyamat során kapott Thales ügyfél-azonosító használatával kötelező. A Microsoft által biztosított eszközök rendelkeznek a 7,2-es és a belső vezérlőprogram-verzió 7.0.3. A 2020-es korai Thales dokumentáció nyilvános, és [itt](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)található.  
 
 ### <a name="hsm-networking-configuration"></a>HSM hálózati konfiguráció
 
@@ -120,7 +120,7 @@ A Thales SafeNet Luna 7 HSM-eszközök szoftvere és dokumentációja nem érhet
 
 ### <a name="hsm-device-reboot"></a>HSM-eszköz újraindítása
 
-Néhány konfigurációs módosításhoz a HSM-nek be kell vezetnie vagy újra kell indítania a rendszert. Az Azure-beli HSM Microsoft általi tesztelése azt állapította meg, hogy az újraindítás bizonyos esetekben nem válaszol. Ennek a következménye, hogy egy támogatási kérést kell létrehozni a merevlemez-újraindítás kérésének Azure Portal, amely akár 48 órát is igénybe vehet, figyelembe véve az Azure-adatközpontok manuális folyamatát.  Ennek elkerüléséhez győződjön meg arról, hogy a Thales közvetlenül elérhető az újraindítási javítás. Tekintse meg a [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) -t a Thales Luna hálózati HSM 7,2-es verziójának letöltéséhez egy olyan probléma esetén, amelyben a rendszer nem válaszol az újraindítás során (Megjegyzés: a letöltéshez regisztrálnia kell a Thales támogatási portálon).
+Néhány konfigurációs módosításhoz a HSM-nek be kell vezetnie vagy újra kell indítania a rendszert. Az Azure-beli HSM Microsoft általi tesztelése azt állapította meg, hogy az újraindítás bizonyos esetekben nem válaszol. Ennek a következménye, hogy egy támogatási kérést kell létrehozni a merevlemez-újraindítás kérésének Azure Portal, amely akár 48 órát is igénybe vehet, figyelembe véve az Azure-adatközpontok manuális folyamatát.  Ennek elkerüléséhez győződjön meg arról, hogy a Thales közvetlenül elérhető az újraindítási javítás. Tekintse meg a [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) -t a Thales Luna 7 HSM 7,2-es verziójában, amely egy olyan hibára vonatkozik, amelyben a rendszer nem válaszol az újraindításkor (Megjegyzés: a letöltéshez regisztrálnia kell a [Thales ügyfél-támogatási portálon](https://supportportal.thalesgroup.com/csm) ).
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS-tanúsítványok szinkronizálása
 Előfordulhat, hogy egy ügyfél elveszti a kapcsolatot egy HSM-kapcsolattal, amikor egy tanúsítvány lejár vagy felül lett írva a konfigurációs frissítésekkel. A tanúsítvány-Exchange-ügyfél konfigurációját újra kell alkalmazni az egyes HSM-sel.

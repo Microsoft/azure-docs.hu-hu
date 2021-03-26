@@ -1,44 +1,43 @@
 ---
 title: Az Azure Percept hanggombja és a LED viselkedése
 description: További információ a gombról és az Azure Percept hangjának LED-állapotáról
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.custom: template-concept
-ms.openlocfilehash: 1d956e33a84b5509c16400c8f5f8e813d116411a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: fa919acb527084d19ab88b2e7895d4e6ab0b72d3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095748"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609071"
 ---
 # <a name="azure-percept-audio-button-and-led-behavior"></a>Az Azure Percept hanggombja és a LED viselkedése
 
-Az alábbi útmutatást követve megtekintheti az Azure Percept hangjának gombját és a LED állapotait.
+Az alábbi útmutatást követve tájékozódhat az Azure Percept audioeszköz gomb és LED állapotáról.
 
 ## <a name="button-behavior"></a>Gomb viselkedése
 
-A gombok segítségével szabályozhatja az eszköz viselkedését.
+Az eszköz működésének vezérléséhez használja a gombokat.
 
-|Gomb állapota|  Működés|
+|Gomb állapota|Működés|
 |------------|----------|
-|Némító|  Nyomja meg a gombot a MIC-Array némításához/felnémításához. A gomb eseménye lenyomáskor aktiválódik.|
-|ADÓVEVÕ/PTS|   Nyomja le az ADÓVEVÕ gombot a Kulcsszóválasztó állapot megkerüléséhez, és aktiválja a parancs figyelési állapotát. Nyomja meg ismét az ügynök aktív párbeszédének leállításához és a kulcsszó-bepecsételés állapotának visszavonásához. A gomb eseménye lenyomáskor aktiválódik. A PTS csak akkor működik, ha az ügynök beszéde közben megnyomja a gombot, nem pedig az ügynök figyeli vagy gondolja.|
+|Némító|Nyomja meg a gombot a MIC-tömb némításához/felnémításához. A gomb eseménye lenyomáskor aktiválódik.|
+|ADÓVEVÕ/PTS|Nyomja le az ADÓVEVÕ gombot a Kulcsszóválasztó állapot megkerüléséhez, és aktiválja a parancs figyelési állapotát. Nyomja meg újra az ügynök aktív párbeszédének leállítását, és térjen vissza a Kulcsszóválasztó állapotba. A gomb eseménye lenyomáskor aktiválódik. A PTS csak akkor működik, ha az ügynök beszéd közben megnyomja a gombot, nem pedig az ügynök figyeli vagy gondolja.|
 
 ## <a name="led-behavior"></a>LED-viselkedés
 
-A LED-mutatók segítségével megtudhatja, milyen állapotban van az eszköz.
+A LED-mutatók segítségével megtudhatja, melyik állapotban van az eszköz.
 
-|VEZETETT|   LED-állapot|  EAR SoM állapota|
-|---|------------|----------------| 
-|L02|   1x fehér, statikus bekapcsolás |Bekapcsolás |
-|L02|   1x fehér, 0,5 Hz-es villogás|  Hitelesítés folyamatban |
-|L01 & L02 & L03|   3x kék, statikus bekapcsolva|     Várakozás a kulcsszóra|
-|L01 & L02 & L03|   LED-tömb villogása, 20fps | Figyelés vagy beszéd|
-|L01 & L02 & L03|   LED array Racing, 20fps|    Gondolkodás|
-|L01 & L02 & L03|   3x piros, statikus bekapcsolva | Némító|
+|VEZETETT|LED-állapot|EAR SoM állapota|
+|---|------------|----------------|
+|L02|1x fehér, statikus bekapcsolás|Bekapcsolás |
+|L02|1x fehér, 0,5 Hz-es villogás|Hitelesítés folyamatban |
+|L01 & L02 & L03|3x kék, statikus bekapcsolva|Várakozás a kulcsszóra|
+|L01 & L02 & L03|LED-tömb villogása, 20fps |Figyelés vagy beszéd|
+|L01 & L02 & L03|LED array Racing, 20fps|Gondolkodás|
+|L01 & L02 & L03|3x piros, statikus bekapcsolva |Némító|
 
 ## <a name="next-steps"></a>Következő lépések
 

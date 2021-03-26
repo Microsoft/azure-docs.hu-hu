@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e7f74298b8bf8209a6b1473880b33d64bd17cfd9
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 5b7fd8e8cd5bd3ab0f15115365ed057fc67f1204
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108094"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604430"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Gyors útmutató: az alkalmazáshoz való 1:1-videohívás hozzáadása (JavaScript)
 
@@ -221,7 +221,7 @@ function subscribeToParticipantVideoStreams(remoteParticipant) {
 Elő kell fizetnie egy `isAvailableChanged` eseményre a megjelenítéséhez `remoteVideoStream` . Ha a `isAvailable` tulajdonság módosul `true` , a távoli résztvevő egy streamet küld. Ha a távoli adatfolyamok változásai elérhetők, eldöntheti, hogy az egészet `Renderer` , egy adott `RendererView` vagy megtartja-e, de ez az üres videó keretének megjelenítését eredményezi.
 ```JavaScript
 function handleVideoStream(remoteVideoStream) {
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             remoteVideoView(remoteVideoStream);
         } else {

@@ -9,19 +9,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1b2a3f018b16258622b817648cb00e230313bf49
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199849"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564517"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Adatbázisok migrálása SQL Serverról SQL felügyelt példányra a log Replay szolgáltatás (előzetes verzió) használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet manuálisan konfigurálni az adatbázis-áttelepítést SQL Server 2008-2019-ről az Azure SQL felügyelt példányára a log Replay szolgáltatás (LRS) használatával, jelenleg nyilvános előzetes verzióban. A LRS egy felhőalapú szolgáltatás, amely engedélyezve van az SQL felügyelt példányán, és SQL Server naplózási technológián alapul. 
 
-A [Azure Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance) és a LRS ugyanazt a mögöttes áttelepítési technológiát és ugyanazokat az API-kat használják. A LRS kiadásával továbbra is lehetővé tesszük az összetett egyéni áttelepítéseket és a hibrid architektúrát a helyszíni SQL Server és az SQL felügyelt példánya között.
+A [Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) és a LRS ugyanazt a mögöttes áttelepítési technológiát és ugyanazokat az API-kat használják. A LRS kiadásával továbbra is lehetővé tesszük az összetett egyéni áttelepítéseket és a hibrid architektúrát a helyszíni SQL Server és az SQL felügyelt példánya között.
 
 ## <a name="when-to-use-log-replay-service"></a>Mikor kell használni a log Replay szolgáltatást
 
@@ -66,7 +66,7 @@ A LRS leállítása után automatikusan, automatikus kiegészítéssel vagy manu
     
 | Művelet | Részletek |
 | :----------------------------- | :------------------------- |
-| **1. másolja az adatbázis biztonsági másolatait SQL Serverról blob Storagera**. | A [Azcopy](/azure/storage/common/storage-use-azcopy-v10) vagy [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használatával teljes, különbözeti és naplózott biztonsági másolatokat másolhat SQL Serverről egy blob Storage-tárolóba. <br /><br />Használjon fájlneveket. A LRS nem igényel konkrét fájl-elnevezési konvenciót.<br /><br />Több adatbázis áttelepítése esetén minden adatbázishoz külön mappára van szükség. |
+| **1. másolja az adatbázis biztonsági másolatait SQL Serverról blob Storagera**. | A [Azcopy](../../storage/common/storage-use-azcopy-v10.md) vagy [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használatával teljes, különbözeti és naplózott biztonsági másolatokat másolhat SQL Serverről egy blob Storage-tárolóba. <br /><br />Használjon fájlneveket. A LRS nem igényel konkrét fájl-elnevezési konvenciót.<br /><br />Több adatbázis áttelepítése esetén minden adatbázishoz külön mappára van szükség. |
 | **2. Indítsa el a LRS a felhőben**. | A szolgáltatást a következő parancsmagok közül választhatja újra: PowerShell ([Start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_start parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> A LRS külön kell elindítania minden olyan adatbázis esetében, amely Blob Storage biztonsági mentési mappájára mutat. <br /><br /> A szolgáltatás elindítása után a Blob Storage tárolóról készít biztonsági másolatokat, és megkezdi a visszaállítást az SQL felügyelt példányán.<br /><br /> Ha a LRS folyamatos módban indult el, az összes eredetileg feltöltött biztonsági mentés visszaállítása után a szolgáltatás a mappába feltöltött összes új fájlt megtekinti. A szolgáltatás a napló sorszáma (LSN) lánc alapján folyamatosan alkalmazza a naplókat a Leállításig. |
 | **2,1. a művelet előrehaladásának figyelése**. | A visszaállítási művelet előrehaladását a következő parancsmagok közül választhatja: PowerShell ([Get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_show parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2,2. szükség esetén állítsa le a műveletet**. | Ha le kell állítania az áttelepítési folyamatot, a következő parancsmagok közül választhat: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> A művelet leállítása törli azt az adatbázist, amelyet a felügyelt SQL-példányon kíván visszaállítani. A művelet leállítása után nem folytathatja az adatbázisok LRS. Újra kell indítania az áttelepítési folyamatot. |
@@ -164,7 +164,7 @@ Az Azure Blob Storage a SQL Server és az SQL felügyelt példánya közötti bi
 
 Az adatbázisok felügyelt példányra történő áttelepítése a LRS használatával a következő módszerekkel tölthetők fel a biztonsági másolatok Blob Storageba:
 - Natív [biztonsági mentés használata az URL-](/sql/relational-databases/backup-restore/sql-server-backup-to-url) funkciók SQL Server
-- A [Azcopy](/azure/storage/common/storage-use-azcopy-v10) vagy a [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) használata a biztonsági másolatok blob-tárolóba való feltöltéséhez
+- A [Azcopy](../../storage/common/storage-use-azcopy-v10.md) vagy a [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) használata a biztonsági másolatok blob-tárolóba való feltöltéséhez
 - Storage Explorer használata a Azure Portal
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Biztonsági másolatok SQL Server közvetlenül a Blob Storage

@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706151"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568035"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Biztonsági és hozzáférés-vezérlési problémák elhárítása Azure Data Factory
 
@@ -182,7 +182,7 @@ Például: az Azure Blob Storage fogadó Azure IR (nyilvános, nem felügyelt VN
 
 #### <a name="cause"></a>Ok
 
-Az ADF továbbra is használhatja a felügyelt VNet IR-t, de ilyen hiba merülhet fel, mivel az Azure Blob Storage felügyelt VNet való nyilvános végpontja nem megbízható a tesztelési eredmény alapján, és az Azure Blob Storage és Azure Data Lake Gen2 nem támogatott nyilvános Virtual Network végponton keresztül a felügyelt [virtuális hálózatok & felügyelt privát végpontok](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)alapján történő csatlakoztatására.
+Az ADF továbbra is használhatja a felügyelt VNet IR-t, de ilyen hiba merülhet fel, mivel az Azure Blob Storage felügyelt VNet való nyilvános végpontja nem megbízható a tesztelési eredmény alapján, és az Azure Blob Storage és Azure Data Lake Gen2 nem támogatott nyilvános Virtual Network végponton keresztül a felügyelt [virtuális hálózatok & felügyelt privát végpontok](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)alapján történő csatlakoztatására.
 
 #### <a name="solution"></a>Megoldás
 

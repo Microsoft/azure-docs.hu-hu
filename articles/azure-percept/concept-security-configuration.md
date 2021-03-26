@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 086d7ec9d2bcae96ee64745a4382c4748aea291e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: cfc20a30104e24a3950c71bdd8377544803d2f25
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105572392"
+ms.locfileid: "105604413"
 ---
 # <a name="azure-percept-firewall-configuration-and-security-recommendations"></a>Az Azure Percept tűzfal konfigurációs és biztonsági javaslatai
 
@@ -38,3 +38,8 @@ Az Azure Percept DK számos biztonsági képességgel rendelkezik a dobozból. A
 - Győződjön meg arról, hogy az inaktív adatok titkosítása engedélyezve van
 - Folyamatosan figyelje az eszköz testtartását, és gyorsan reagáljon a riasztásokra
 - Az eszközhöz hozzáférő rendszergazdák számának korlátozása
+
+## <a name="next-steps"></a>Következő lépések
+
+> [!div class="nextstepaction"]
+> [További információ az Azure Percept biztonságáról](./overview-percept-security.md)

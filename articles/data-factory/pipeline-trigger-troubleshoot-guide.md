@@ -7,12 +7,12 @@ ms.date: 03/13/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: f5039e5a49da202b2dbfa20e56639365ed597c79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461997"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563412"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
 
@@ -95,7 +95,7 @@ Azure Data Factory kiértékeli az összes levél szintű tevékenység eredmén
 
 * Tevékenység szintű ellenőrzések végrehajtása a [folyamat hibáinak és hibáinak kezelésével](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 * A Azure Logic Apps használatával rendszeres időközönként figyelheti a folyamatokat a [gyár lekérdezését](/rest/api/datafactory/pipelineruns/querybyfactory)követően.
-* [Folyamat vizuális monitorozása](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Folyamat vizuális monitorozása](./monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Folyamat-meghibásodások figyelése rendszeres időközönként
 
@@ -105,7 +105,7 @@ Előfordulhat, hogy a sikertelen Data Factory folyamatokat nem kell figyelnie, p
 
 **Resolution** (Osztás)
 * Beállíthat egy Azure logikai alkalmazást, amely 5 percenként lekérdezi az összes meghiúsult folyamatot a következő témakörben leírtak szerint: [query by Factory](/rest/api/datafactory/pipelineruns/querybyfactory). Ezt követően az incidenseket bejelenthetjük a jegyrendszer rendszerébe.
-* [Folyamat vizuális monitorozása](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Folyamat vizuális monitorozása](./monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>A párhuzamossági fok növekedése nem eredményez nagyobb átviteli sebességet
 
@@ -146,8 +146,8 @@ Ez akkor fordulhat elő, ha az adatforgalom vagy az optimalizált, ha nem alkalm
 
 **Resolution** (Osztás)
 
-* Ha az egyes másolási tevékenységek elindítása akár 2 percet is igénybe vehet, és a probléma elsősorban egy virtuális hálózat csatlakozásánál fordul elő (szemben az Azure IR esetével), ez a másolási teljesítménnyel kapcsolatos hiba lehet. A hibaelhárítási lépések áttekintéséhez lépjen a [teljesítmény javítása](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) elemre.
-* Az élő szolgáltatással időt is igénybe vehet, hogy csökkentse a fürt indítási idejét az adatfolyam-tevékenységek esetében. Tekintse át [az Adatáramlási Integration Runtime.](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity#data-flow-integration-runtime)
+* Ha az egyes másolási tevékenységek elindítása akár 2 percet is igénybe vehet, és a probléma elsősorban egy virtuális hálózat csatlakozásánál fordul elő (szemben az Azure IR esetével), ez a másolási teljesítménnyel kapcsolatos hiba lehet. A hibaelhárítási lépések áttekintéséhez lépjen a [teljesítmény javítása](./copy-activity-performance-troubleshooting.md) elemre.
+* Az élő szolgáltatással időt is igénybe vehet, hogy csökkentse a fürt indítási idejét az adatfolyam-tevékenységek esetében. Tekintse át [az Adatáramlási Integration Runtime.](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>Megtalálhatja a kapacitással kapcsolatos problémákat a (saját üzemeltetésű Integration Runtime)
  
@@ -157,7 +157,7 @@ Ez akkor fordulhat elő, ha a számítási feladatnak megfelelően nem méreteze
 
 **Resolution** (Osztás)
 
-* Ha a rendszer kapacitással kapcsolatos problémát tapasztal a-ről, frissítse a virtuális gépet, és növelje a csomópontot a tevékenységek kiegyensúlyozásához. Ha egy saját üzemeltetésű IR általános hibával vagy hibával kapcsolatos hibaüzenet jelenik meg, a saját üzemeltetésű IR-frissítés vagy a saját üzemeltetésű IR-kapcsolat problémái, amelyek hosszú üzenetsor létrehozását eredményezik, ugorjon a saját üzemeltetésű [integrációs modul hibaelhárítása](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) című lépésre.
+* Ha a rendszer kapacitással kapcsolatos problémát tapasztal a-ről, frissítse a virtuális gépet, és növelje a csomópontot a tevékenységek kiegyensúlyozásához. Ha egy saját üzemeltetésű IR általános hibával vagy hibával kapcsolatos hibaüzenet jelenik meg, a saját üzemeltetésű IR-frissítés vagy a saját üzemeltetésű IR-kapcsolat problémái, amelyek hosszú üzenetsor létrehozását eredményezik, ugorjon a saját üzemeltetésű [integrációs modul hibaelhárítása](./self-hosted-integration-runtime-troubleshoot-guide.md) című lépésre.
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>Hibaüzenetek a hosszú várólisták miatt az ADF másolásához és az adatfolyamhoz
 
@@ -166,10 +166,10 @@ Ez akkor fordulhat elő, ha a számítási feladatnak megfelelően nem méreteze
 A hosszú várólistával kapcsolatos hibaüzenetek számos okból megjelenhetnek. 
 
 **Resolution** (Osztás)
-* Ha az összekötőn keresztül hibaüzenetet kap bármilyen forrástól vagy célhelytől, amely hosszú üzenetsor létrehozását eredményezheti, ugorjon az [összekötő hibaelhárítási útmutatója](https://docs.microsoft.com/azure/data-factory/connector-troubleshoot-guide) elemre.
-* Ha hibaüzenet jelenik meg a leképezési folyamatról, amely hosszú várólistát tud előállítani, ugorjon az [adatforgalom hibaelhárítási útmutatója](https://docs.microsoft.com/azure/data-factory/data-flow-troubleshoot-guide) elemre.
-* Ha hibaüzenetet kap más tevékenységekről, például a Databricks, az egyéni tevékenységekről vagy a HDI-ről, amely hosszú üzenetsor létrehozását eredményezheti, lépjen a [tevékenység hibaelhárítási útmutatója](https://docs.microsoft.com/azure/data-factory/data-factory-troubleshoot-guide) elemre.
-* Ha a SSIS-csomagok futtatásával kapcsolatos hibaüzenet jelenik meg, amely hosszú várólistát tud előállítani, ugorjon az [Azure-SSIS-csomag végrehajtásával kapcsolatos hibaelhárítási útmutatóra](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-ssis-activity-faq) , és [Integration Runtime felügyeleti hibaelhárítási útmutatót.](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)
+* Ha az összekötőn keresztül hibaüzenetet kap bármilyen forrástól vagy célhelytől, amely hosszú üzenetsor létrehozását eredményezheti, ugorjon az [összekötő hibaelhárítási útmutatója](./connector-troubleshoot-guide.md) elemre.
+* Ha hibaüzenet jelenik meg a leképezési folyamatról, amely hosszú várólistát tud előállítani, ugorjon az [adatforgalom hibaelhárítási útmutatója](./data-flow-troubleshoot-guide.md) elemre.
+* Ha hibaüzenetet kap más tevékenységekről, például a Databricks, az egyéni tevékenységekről vagy a HDI-ről, amely hosszú üzenetsor létrehozását eredményezheti, lépjen a [tevékenység hibaelhárítási útmutatója](./data-factory-troubleshoot-guide.md) elemre.
+* Ha a SSIS-csomagok futtatásával kapcsolatos hibaüzenet jelenik meg, amely hosszú várólistát tud előállítani, ugorjon az [Azure-SSIS-csomag végrehajtásával kapcsolatos hibaelhárítási útmutatóra](./ssis-integration-runtime-ssis-activity-faq.md) , és [Integration Runtime felügyeleti hibaelhárítási útmutatót.](./ssis-integration-runtime-management-troubleshoot.md)
 
 
 ## <a name="next-steps"></a>Következő lépések

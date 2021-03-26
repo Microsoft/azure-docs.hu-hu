@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: ef2823b870f76922dd0dc157341aea9b502fb4bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565539"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565905"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>Több adatbázis közötti adatszinkronizálás REST API használata 
 
@@ -31,7 +31,7 @@ A SQL-adatszinkronizálás áttekintését lásd: az [adatszinkronizálás több
 
 ## <a name="create-sync-group"></a>Szinkronizálási csoport létrehozása
 
-Szinkronizálási csoport létrehozásához használja a [create vagy a Update](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) sablont.
+Szinkronizálási csoport létrehozásához használja a [create vagy a Update](/rest/api/sql/syncgroups/createorupdate) sablont.
  
 A szinkronizálási csoport létrehozásakor ne adja át a szinkronizálási sémát (table\column), és ne adja át a masterSyncMemberName, mert ebben az időben a szinkronizálási csoportban még nincs table\column információ.
 
@@ -91,7 +91,7 @@ Példa a szinkronizálási csoport létrehozására:
 
 ## <a name="create-sync-member"></a>Szinkronizálási tag létrehozása
 
-Szinkronizált tag létrehozásához használja a [create vagy a Update](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) sablont.
+Szinkronizált tag létrehozásához használja a [create vagy a Update](/rest/api/sql/syncmembers/createorupdate) sablont.
 
 A szinkronizálási tag létrehozásához szükséges mintavételi kérelem:
 
@@ -151,7 +151,7 @@ Példa a szinkronizálási tag létrehozására:
 
 A szinkronizálási csoport sikeres létrehozása után frissítse a sémát a következő sablonok használatával.
 
-A hub-adatbázis sémájának frissítéséhez használja a [központi séma frissítése](https://docs.microsoft.com/rest/api/sql/syncgroups/refreshhubschema)  sablont. 
+A hub-adatbázis sémájának frissítéséhez használja a [központi séma frissítése](/rest/api/sql/syncgroups/refreshhubschema)  sablont. 
 
 Példa központi adatbázis-séma frissítésére: 
 
@@ -165,17 +165,17 @@ Példa a hub adatbázis-sémájának frissítésére:
 
 Állapotkód: 202
 
-A hub-adatbázis sémájának listázásához használja a [List hub-sémák](https://docs.microsoft.com/rest/api/sql/syncgroups/listhubschemas) sablont. 
+A hub-adatbázis sémájának listázásához használja a [List hub-sémák](/rest/api/sql/syncgroups/listhubschemas) sablont. 
 
-A tag adatbázis-sémájának frissítéséhez használja a [tag frissítése](https://docs.microsoft.com/rest/api/sql/syncmembers/refreshmemberschema) sablont. 
+A tag adatbázis-sémájának frissítéséhez használja a [tag frissítése](/rest/api/sql/syncmembers/refreshmemberschema) sablont. 
 
-A tagsági [séma](https://docs.microsoft.com/rest/api/sql/syncmembers/listmemberschemas) sablonjának használata a tag adatbázis-sémájának listázásához. 
+A tagsági [séma](/rest/api/sql/syncmembers/listmemberschemas) sablonjának használata a tag adatbázis-sémájának listázásához. 
 
 A séma sikeres frissítése után csak folytassa a következő lépéssel. 
 
 ## <a name="update-sync-group"></a>Szinkronizálási csoport frissítése 
 
-A [create vagy a Update](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) sablon használatával frissítse a szinkronizálási csoportot.
+A [create vagy a Update](/rest/api/sql/syncgroups/createorupdate) sablon használatával frissítse a szinkronizálási csoportot.
 
 Szinkronizálási csoport frissítése a szinkronizálási séma megadásával. Adja meg a séma-és masterSyncMemberName, amely a használni kívánt sémát tartalmazó név. 
 
@@ -232,7 +232,7 @@ Válasz a szinkronizálási csoport frissítésére:
 ```
 ## <a name="update-sync-member"></a>Szinkronizálási tag frissítése
 
-A szinkronizálási tag frissítéséhez használja a [create vagy a Update](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) sablont.
+A szinkronizálási tag frissítéséhez használja a [create vagy a Update](/rest/api/sql/syncmembers/createorupdate) sablont.
 
 Példa szinkronizálási tag frissítésére: 
 
@@ -291,7 +291,7 @@ Válasz a szinkronizálási tag frissítésére:
 
 ## <a name="trigger-sync"></a>Trigger szinkronizálása
 
-Szinkronizálási művelet elindításához használja a [trigger Sync](https://docs.microsoft.com/rest/api/sql/syncgroups/triggersync) sablont.
+Szinkronizálási művelet elindításához használja a [trigger Sync](/rest/api/sql/syncgroups/triggersync) sablont.
 
 A szinkronizálási művelet elindítására szolgáló mintavételi kérelem: 
 

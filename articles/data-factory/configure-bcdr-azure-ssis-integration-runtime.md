@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 2744d51b6d68ed494050be10a9f0e4d1f59cdc49
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a426ee39ba3c0f50b9a6c1fb9c7de1ef8e7291b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204065"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566353"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>Az Azure SSIS integrációs modul konfigurálása az üzletmenet folytonossága és a vész-helyreállítás érdekében (BCDR) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102204065"
 
 Azure Data Factory (ADF) Azure SQL Database/felügyelt példánya és SQL Server Integration Services (SSIS) kombinálható a SQL Server áttelepítéshez javasolt, teljes körű szolgáltatásként szolgáló megoldásként (Pásti). A SSIS-projekteket üzembe helyezheti Azure SQL Database/felügyelt példány által üzemeltetett SSIS Catalog Database-ben (SSISDB), és az Azure SSIS Integration Runtime (IR)-ben futtathatja a SSIS-csomagokat az ADF-ben.
 
-Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) esetében a Azure SQL Database/felügyelt példányok [földrajzi replikálási/feladatátvételi csoporttal](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)konfigurálhatók, ahol a SSISDB egy elsődleges Azure-régióban, amely olvasási és írási hozzáféréssel rendelkezik (elsődleges szerepkör), a rendszer folyamatosan replikálja egy másodlagos régióba, csak olvasási hozzáféréssel (másodlagos szerepkörrel). Ha az elsődleges régióban katasztrófa következik be, a rendszer elindítja a feladatátvételt, ahol az elsődleges és másodlagos SSISDBs a szerepköröket fogja felcserélni.
+Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) esetében a Azure SQL Database/felügyelt példányok [földrajzi replikálási/feladatátvételi csoporttal](../azure-sql/database/auto-failover-group-overview.md)konfigurálhatók, ahol a SSISDB egy elsődleges Azure-régióban, amely olvasási és írási hozzáféréssel rendelkezik (elsődleges szerepkör), a rendszer folyamatosan replikálja egy másodlagos régióba, csak olvasási hozzáféréssel (másodlagos szerepkörrel). Ha az elsődleges régióban katasztrófa következik be, a rendszer elindítja a feladatátvételt, ahol az elsődleges és másodlagos SSISDBs a szerepköröket fogja felcserélni.
 
 A BCDR olyan kettős készenléti Azure SSIS IR-párokat is beállíthat, amelyek szinkronban vannak Azure SQL Database/felügyelt példányok feladatátvételi csoportjának használatával. Ez lehetővé teszi, hogy az Azure-SSIS IRs-t egy pár alkalommal futtassuk, és a csomagok beolvasására és végrehajtására, valamint a csomag végrehajtási naplói (elsődleges szerepkör) írására csak az elsődleges SSISDB lehessen hozzáférni, míg a másik nem ugyanaz, mint a máshol üzembe helyezett csomagok esetében, például Azure Files (másodlagos szerepkör). A SSISDB feladatátvétel esetén az elsődleges és a másodlagos Azure-SSIS IRs is felcseréli a szerepköröket, és ha mindkettő fut, akkor a közel nulla állásidőt fogja tartalmazni.
 
@@ -39,7 +39,7 @@ Ha olyan kettős készenléti Azure-SSIS IR szeretne konfigurálni, amely Azure 
 
    Ha a [SSISDB használatát választja](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) az **Integration Runtime telepítése** ablaktábla **központi telepítési beállítások** lapján, jelölje be a **kettős készenléti Azure-SSIS Integration Runtime pár használata SSISDB feladatátvételsel** jelölőnégyzetet is. A **kettős készenléti páros neve** mezőben adjon meg egy nevet az elsődleges és másodlagos Azure-SSIS IRs-példány azonosításához. Az elsődleges Azure-SSIS IR létrehozásának befejezése után a rendszer elindít egy elsődleges SSISDB, amelyet az Ön nevében az írási és olvasási hozzáféréssel fog létrehozni. Ha most újrakonfigurálta, újra kell indítania.
 
-1. Azure Portal használatával megtekintheti, hogy az elsődleges SSISDB létrejött-e az elsődleges Azure SQL Database-kiszolgáló **Áttekintés** lapján. A létrehozása után [létrehozhat egy feladatátvételi csoportot az elsődleges és másodlagos Azure SQL Database-kiszolgálókhoz, és HOZZÁADHAT SSISDB](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#2---create-the-failover-group) a **feladatátvételi csoportok** lapon. A feladatátvételi csoport létrehozása után megtekintheti, hogy az elsődleges SSISDB replikálva lett-e a másodlagos Azure SQL Database-kiszolgáló **Áttekintés** lapján található írásvédett hozzáféréssel.
+1. Azure Portal használatával megtekintheti, hogy az elsődleges SSISDB létrejött-e az elsődleges Azure SQL Database-kiszolgáló **Áttekintés** lapján. A létrehozása után [létrehozhat egy feladatátvételi csoportot az elsődleges és másodlagos Azure SQL Database-kiszolgálókhoz, és HOZZÁADHAT SSISDB](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#2---create-the-failover-group) a **feladatátvételi csoportok** lapon. A feladatátvételi csoport létrehozása után megtekintheti, hogy az elsődleges SSISDB replikálva lett-e a másodlagos Azure SQL Database-kiszolgáló **Áttekintés** lapján található írásvédett hozzáféréssel.
 
 1. Azure Portal/ADF felhasználói felület használatával létrehozhat egy másik Azure-SSIS IR a másodlagos Azure SQL Database-kiszolgálóval a másodlagos régió SSISDB üzemeltetéséhez. Ez lesz a másodlagos Azure-SSIS IR. A teljes BCDR győződjön meg arról, hogy az összes, az általa használt erőforrás a másodlagos régióban is létrejön, például az Azure Storage az egyéni telepítési parancsfájlok/fájlok tárolásához, az ADF előkészítéséhez és az ütemezési csomagok végrehajtásához stb.
 
@@ -51,13 +51,13 @@ Ha olyan kettős készenléti Azure-SSIS IR szeretne konfigurálni, amely Azure 
 
 1. Ha az [ADF-t az előkészítési/ütemezési csomagok végrehajtásához használja](./how-to-invoke-ssis-package-ssis-activity.md), győződjön meg arról, hogy az összes kapcsolódó ADF-folyamat a végrehajtás SSIS csomag tevékenységeivel és a hozzájuk tartozó eseményindítók a másodlagos ADF-be van másolva az eredetileg letiltott eseményindítókkal. SSISDB feladatátvétel esetén engedélyeznie kell azokat.
 
-1. [Tesztelheti Azure SQL Database feladatátvételi csoportját](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#3---test-failover) , és megtekintheti az [ADF-portál Azure-SSIS IR figyelés lapján](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , hogy az elsődleges és másodlagos Azure-SSIS IRs felcserélte-e a szerepköröket. 
+1. [Tesztelheti Azure SQL Database feladatátvételi csoportját](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#3---test-failover) , és megtekintheti az [ADF-portál Azure-SSIS IR figyelés lapján](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , hogy az elsődleges és másodlagos Azure-SSIS IRs felcserélte-e a szerepköröket. 
 
 ## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-managed-instance-failover-group"></a>Kettős készenléti Azure-SSIS IR pár beállítása az Azure SQL felügyelt példányának feladatátvételi csoportjához
 
 Az Azure SQL felügyelt példányok feladatátvételi csoportjának szinkronizálásával működő kettős készenléti Azure-SSIS IR-párok konfigurálásához hajtsa végre az alábbi lépéseket.
 
-1. A Azure Portal használatával [létrehozhat egy feladatátvételi csoportot az elsődleges és másodlagos Azure SQL felügyelt példányaihoz](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal) az elsődleges Azure SQL felügyelt példány **feladatátvételi csoportok** lapján.
+1. A Azure Portal használatával [létrehozhat egy feladatátvételi csoportot az elsődleges és másodlagos Azure SQL felügyelt példányaihoz](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal) az elsődleges Azure SQL felügyelt példány **feladatátvételi csoportok** lapján.
 
 1. Azure Portal/ADF felhasználói felület használatával új Azure-SSIS IR hozhat létre az elsődleges Azure SQL felügyelt példányával az elsődleges régióban lévő SSISDB üzemeltetéséhez. Ha van olyan meglévő Azure-SSIS IR, amely már az elsődleges Azure SQL felügyelt példánya által üzemeltetett SSIDB van csatolva, és továbbra is fut, előbb le kell állítania az újrakonfigurálást. Ez lesz az elsődleges Azure-SSIS IR.
 
@@ -112,7 +112,7 @@ Az Azure SQL felügyelt példányok feladatátvételi csoportjának szinkronizá
 
 1. Ha az [ADF-t az előkészítési/ütemezési csomagok végrehajtásához használja](./how-to-invoke-ssis-package-ssis-activity.md), győződjön meg arról, hogy az összes kapcsolódó ADF-folyamat a végrehajtás SSIS csomag tevékenységeivel és a hozzájuk tartozó eseményindítók a másodlagos ADF-be van másolva az eredetileg letiltott eseményindítókkal. SSISDB feladatátvétel esetén engedélyeznie kell azokat.
 
-1. [Tesztelheti az Azure SQL felügyelt példányának feladatátvételi csoportját](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal#test-failover) , és ELLENŐRIZHETI az [ADF-portál Azure-SSIS IR figyelés lapján](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , hogy az elsődleges és másodlagos Azure-SSIS IRs felcserélte-e a szerepköröket. 
+1. [Tesztelheti az Azure SQL felügyelt példányának feladatátvételi csoportját](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal#test-failover) , és ELLENŐRIZHETI az [ADF-portál Azure-SSIS IR figyelés lapján](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , hogy az elsődleges és másodlagos Azure-SSIS IRs felcserélte-e a szerepköröket. 
 
 ## <a name="attach-a-new-azure-ssis-ir-to-existing-ssisdb-hosted-by-azure-sql-databasemanaged-instance"></a>Új Azure-SSIS IR csatolása Azure SQL Database/felügyelt példány által üzemeltetett meglévő SSISDB
 

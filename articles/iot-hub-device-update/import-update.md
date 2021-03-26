@@ -6,22 +6,22 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565639"
+ms.locfileid: "105608527"
 ---
 # <a name="import-new-update"></a>Új frissítés importálása
 Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében. Ha még nem tette meg, mindenképpen ismerkedjen meg az alapszintű [importálási fogalmakkal](import-concepts.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Hozzáférés egy IoT hubhoz az eszköz frissítésével IoT hub engedélyezve](create-device-update-account.md). Javasoljuk, hogy a IoT Hub S1 (standard) vagy újabb verzióját használja. 
+* [Hozzáférés egy IoT hubhoz az eszköz frissítésével IoT hub engedélyezve](create-device-update-account.md). 
 * Az eszköz frissítéséhez kiépített IoT-eszköz (vagy szimulátor) IoT Hubon belül.
    * Ha valódi eszközt használ, szüksége lesz a rendszerkép frissítése vagy az [apt manifest-fájl](device-update-apt-manifest.md) frissítése a csomagok frissítéséhez.
-* [PowerShell 5](/powershell/scripting/install/installing-powershell) vagy újabb.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) vagy újabb verzió (beleértve a Linux, MacOS és Windows rendszerű telepítéseket is)
 * Támogatott böngészők:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome

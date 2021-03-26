@@ -7,12 +7,12 @@ ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597385"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565979"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365-be (Common Data Service/Microsoft Dataverse) vagy a Dynamics CRM-be a Azure Data Factory használatával
 
@@ -370,7 +370,7 @@ A **writeBatchSize** és a **parallelCopies** optimális kombinációja az entit
 
 A Dynamics nézetekben tárolt adatok lekéréséhez le kell kérnie a nézet mentett lekérdezését, és az adatok lekérdezéséhez a lekérdezést kell használnia.
 
-Két olyan entitás létezik, amely különböző típusú nézeteket tárol: a "mentett lekérdezés" tárolja a rendszernézetet, és a "felhasználói lekérdezés" a felhasználói nézetet tárolja. A nézetek információinak beszerzéséhez tekintse meg a következő FetchXML-lekérdezést, és cserélje le a "TARGETENTITY" kifejezést a vagy a használatával `savedquery` `userquery` . Minden entitás típusa több elérhető attribútummal rendelkezik, amelyeket igény szerint adhat hozzá a lekérdezéshez. További információ az [SavedQuery entitásról](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) és a [userquery entitásról](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery).
+Két olyan entitás létezik, amely különböző típusú nézeteket tárol: a "mentett lekérdezés" tárolja a rendszernézetet, és a "felhasználói lekérdezés" a felhasználói nézetet tárolja. A nézetek információinak beszerzéséhez tekintse meg a következő FetchXML-lekérdezést, és cserélje le a "TARGETENTITY" kifejezést a vagy a használatával `savedquery` `userquery` . Minden entitás típusa több elérhető attribútummal rendelkezik, amelyeket igény szerint adhat hozzá a lekérdezéshez. További információ az [SavedQuery entitásról](/dynamics365/customer-engagement/web-api/savedquery) és a [userquery entitásról](/dynamics365/customer-engagement/web-api/userquery).
 
 ```xml
 <fetch top="5000" >

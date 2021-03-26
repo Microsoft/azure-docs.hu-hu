@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40fff49aa3ed46417cdd9a6190f928707e41accb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018324"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608612"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: gyakori kérdések
 
@@ -58,6 +58,10 @@ Ha a szolgáltatás használatának megszakítása nélkül szeretné frissíten
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Menti a Storage-fiók kulcsait?
 A Storage-fiók kulcsa rövid távú hozzáférési jogkivonatok létrehozására szolgál a Microsoft Genomics szolgáltatás számára a bemeneti fájlok olvasásához és a kimeneti fájlok írásához. Az alapértelmezett jogkivonat időtartama 48 óra. A jogkivonat időtartama a `-sas/--sas-duration` Submit parancs beállításával módosítható; az érték órában van.
+
+## <a name="does-microsoft-genomics-store-customer-data"></a>A Microsoft Genomics tárolja az ügyféladatokat?
+
+Nem. A Microsoft Genomics nem tárol ügyféladatokat.
 
 ## <a name="what-genome-references-can-i-use"></a>Milyen genom-referenciákat használhatok?
 

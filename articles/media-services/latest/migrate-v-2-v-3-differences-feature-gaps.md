@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07e43bdb0969c26120231013cc0c0354e6968ceb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702453"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567950"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>A szolgáltatások Azure Media Services v2 és v3 közötti hézagok
 
@@ -48,6 +48,6 @@ A V3 API a következő funkciókkal rendelkezik a v2 API-val. A v2 API-k Media E
 
 - A rendszer eltávolította a (z) "rest" adategységek védelmére szolgáló ügyféloldali tároló-titkosítást a V3 API-ban, és a tárolási szolgáltatás titkosítása váltotta fel a nyugalmi állapotra. A V3 API-k továbbra is együttműködnek a meglévő tárolók titkosított eszközeivel, de nem teszik lehetővé újak létrehozását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="terminology-and-entity-changes"></a>Terminológia és entitások módosításai
 
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]
+Az API további módosításaihoz lásd: [terminológia és entitások](migrate-v-2-v-3-differences-terminology.md) változásai.

@@ -3,12 +3,12 @@ title: 'Gyors útmutató: terv létrehozása REST API'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a REST API használatával.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915624"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558975"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API
 
@@ -329,7 +329,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
 - `{YourMG}` -Csere a felügyeleti csoportjának azonosítójával
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
-1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. A AppId statikus ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), de a szolgáltatás egyszerű azonosítója a bérlőtől függ. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Más engedélyekkel rendelkező [Azure Active Directory Graph APIt](../../active-directory/develop/active-directory-graph-api.md)használ.
+1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. A AppId statikus ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), de a szolgáltatás egyszerű azonosítója a bérlőtől függ. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Más engedélyekkel rendelkező [Azure Active Directory Graph APIt](/graph/migrate-azure-ad-graph-planning-checklist)használ.
 
    - REST API URI
 
@@ -337,7 +337,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. A tervpéldányt a futtatásához rendelje hozzá egy előfizetéshez. Mivel a **contributors** és az **owners** paraméterben a szerepkör-hozzárendelésben részesülő szolgáltatásnevek objektumazonosítóinak egy tömbjét kell megadni, az [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) használatával gyűjtse össze a **kérelemtörzsben** a saját felhasználókra, csoportokra vagy szolgáltatásnevekre használni kívánt objektumazonosítókat.
+1. A tervpéldányt a futtatásához rendelje hozzá egy előfizetéshez. Mivel a **contributors** és az **owners** paraméterben a szerepkör-hozzárendelésben részesülő szolgáltatásnevek objektumazonosítóinak egy tömbjét kell megadni, az [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) használatával gyűjtse össze a **kérelemtörzsben** a saját felhasználókra, csoportokra vagy szolgáltatásnevekre használni kívánt objektumazonosítókat.
 
    - REST API URI
 

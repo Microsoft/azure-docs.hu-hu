@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 257fc6544061c2ef9c3fdbfb8c33bc06ed2db6e3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518721"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566335"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -273,7 +273,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 * Ha nem tud jegyzetfüzethez csatlakozni, győződjön meg arról, hogy a webes szoftvercsatorna- **kommunikáció nincs letiltva** . A számítási példányok Jupyter működéséhez engedélyezni kell a webes szoftvercsatorna-kommunikációt. Győződjön meg arról, hogy a hálózat engedélyezi a WebSocket-kapcsolatokat a *. instances.azureml.net és a *. instances.azureml.ms. 
 
-* Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a [virtuális hálózaton belülről lehet hozzáférni](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Ha egyéni DNS-vagy hosts fájlt használ, vegyen fel egy bejegyzést a < instance-Name >. < régió >. instances.azureml.ms a munkaterület privát végpontjának magánhálózati IP-címével. További információ az [Egyéni DNS-](./how-to-custom-dns.md?tabs=azure-cli) cikkben található.
+* Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a [virtuális hálózaton belülről lehet hozzáférni](./how-to-secure-training-vnet.md#compute-instance). Ha egyéni DNS-vagy hosts fájlt használ, vegyen fel egy bejegyzést a < instance-Name >. < régió >. instances.azureml.ms a munkaterület privát végpontjának magánhálózati IP-címével. További információ az [Egyéni DNS-](./how-to-custom-dns.md?tabs=azure-cli) cikkben található.
     
 ## <a name="next-steps"></a>Következő lépések
 

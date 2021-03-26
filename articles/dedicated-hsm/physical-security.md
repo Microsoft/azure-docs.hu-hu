@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 8437d12075a148a3e8062f62e195bc019d89a85b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "70881023"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606963"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure dedikált HSM fizikai biztonság
 
@@ -25,7 +25,7 @@ Az Azure dedikált HSM a legfontosabb tárterület speciális biztonsági követ
 
 ## <a name="security-through-procurement"></a>Biztonság a beszerzéseken keresztül
 
-A Microsoft biztonságos beszerzési folyamatot követ. Felügyeljük a felügyeleti láncot, és biztosítjuk, hogy az adott eszköz az adatközpontokban legyen elküldve. Az eszközök az illetéktelen hozzáférést jelző műanyag biztonsági másolatokban találhatók. Ezeket biztonságos tárolóhelyen tárolják addig, amíg az adatközpont adatgalériájában üzembe nem kerül.  A HSM-eszközöket tartalmazó állványok nagy üzleti hatásnak számítanak (HBI). Az eszközök zárolása és a videó-megfigyelés alatt minden alkalommal elölről és vissza történik.
+A Microsoft biztonságos beszerzési folyamatot követ. Felügyeljük a felügyeleti láncot, és biztosítjuk, hogy az adott eszköz az adatközpontokban legyen elküldve. Az eszközök szerializált illetéktelenek, műanyag zacskókban és tárolókban találhatók. Ezeket biztonságos tárolóhelyen tárolják addig, amíg az adatközpont adatgalériájában üzembe nem kerül.  A HSM-eszközöket tartalmazó állványok nagy üzleti hatásnak számítanak (HBI). Az eszközök zárolása és a videó-megfigyelés alatt minden alkalommal elölről és vissza történik.
 
 ## <a name="security-through-deployment"></a>Biztonság az üzembe helyezéssel
 
@@ -49,7 +49,7 @@ Ha egy Microsoft-mérnöknek hozzá kell férnie a HSM-eszközök által haszná
 
 ## <a name="logical-level-security-considerations"></a>Logikai szintű biztonsági megfontolások
 
-A HSM az ügyfél által létrehozott virtuális hálózatra vannak kiépítve. Ez az ügyfél privát IUP-címterület.  Ez a konfiguráció értékes logikai hálózati szintű elkülönítést biztosít, és biztosítja, hogy csak az ügyfél férhessen hozzá. Ez azt jelenti, hogy az összes logikai szintű biztonsági ellenőrzés az ügyfél felelőssége.
+A HSM egy ügyfél által létrehozott virtuális hálózatra vannak kiépítve az ügyfél magánhálózati IP-címén belül.  Ez a konfiguráció értékes logikai hálózati szintű elkülönítést biztosít, és biztosítja, hogy csak az ügyfél férhessen hozzá. Ez azt jelenti, hogy az összes logikai szintű biztonsági ellenőrzés az ügyfél felelőssége.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fda34a7ee06d35846bcec571e904297d0421c38f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cdf016d7de66c33973ec7818fa92df28c4639dd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565114"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566955"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrálás az Azure Machine Learningbe
 
@@ -46,7 +46,7 @@ A Azure Machine Learningra való Migrálás során a következő módszert javas
 
 3. Ellenőrizze, hogy a kritikus Studio (klasszikus) modulok támogatottak-e a Azure Machine Learning Designerben. További információkért lásd a [Studio (klasszikus) és a Designer modul-leképezési](#studio-classic-and-designer-module-mapping) táblázatot alább.
 
-4. [Hozzon létre egy Azure Machine learning munkaterületet](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace?tabs=azure-portal).
+4. [Hozzon létre egy Azure Machine learning munkaterületet](../how-to-manage-workspace.md?tabs=azure-portal).
 
 ## <a name="step-2-create-a-migration-plan"></a>2. lépés: áttelepítési terv létrehozása
 
@@ -162,9 +162,3 @@ Ebben a cikkben megtanulta, hogy milyen magas szintű követelményeket kell át
 1. [Építse újra a Studio (klasszikus) webszolgáltatást](migrate-rebuild-web-service.md).
 1. [Azure Machine learning webszolgáltatások integrálása az ügyfélalkalmazások alkalmazásával](migrate-rebuild-integrate-with-client-app.md).
 1. [Telepítse át az R-szkriptet](migrate-execute-r-script.md).
-
-
-
-
-
-
