@@ -206,6 +206,8 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Előfizetés lemondása
               href: manage/cancel-azure-subscription.md
+            - name: Előfizetési házirendek kezelése
+              href: manage/manage-azure-subscription-policy.md
         - name: Előfizetések programozott létrehozása
           items:
             - name: Előfizetések programozott létrehozása

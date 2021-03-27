@@ -1,17 +1,15 @@
 ---
 title: Állapot jelentése és állapota az Azure Service Fabric
 description: Ismerje meg, hogyan küldhet állapot-jelentéseket a szolgáltatás kódjából, és hogyan ellenőrizhető a szolgáltatás állapota az Azure Service Fabric által biztosított állapotfigyelő eszköz használatával.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dc15ea7f062d3912c297050ffac755990fdd3b7a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998243"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625942"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 Ha a szolgáltatásai problémákba ütköznek, az incidensek és az kimaradások kijavításának lehetősége a problémák gyors észlelésére is függ. Ha az Azure Service Fabric Health Managerrel kapcsolatos problémákat és hibákat jelent a szolgáltatás kódjában, a Service Fabric által biztosított szabványos állapot-figyelési eszközöket használhatja az állapot ellenőrzéséhez.

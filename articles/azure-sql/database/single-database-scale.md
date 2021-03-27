@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 5852899175f9cc9f2725b875c6e1ce9fd682768d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773249"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625264"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis erőforrásainak skálázása az Azure SQL Database-ben
 
@@ -61,7 +61,10 @@ A szolgáltatási réteg módosításának becsült késése, az önálló adatb
 > Emellett a standard (S2-S12) és a általános célú-adatbázisok esetében a rugalmas készletből vagy a rugalmas készletekből származó adatbázisok áthelyezésének késése az adatbázis méretétől függ, ha az adatbázis a prémium szintű fájlmegosztás ([PFS](../../storage/files/storage-files-introduction.md)) tárolót használja.
 >
 > Annak megállapításához, hogy egy adatbázis PFS-tárolót használ-e, hajtsa végre a következő lekérdezést az adatbázis környezetében. Ha a AccountType oszlop értéke `PremiumFileStorage` vagy `PremiumFileStorage-ZRS` , az adatbázis PFS-tárolót használ.
- 
+
+[!NOTE]
+ A zóna redundáns tulajdonsága alapértelmezés szerint változatlan marad a üzletileg kritikus általános célú szintjére való skálázáskor. A visszalépés késése, ha a zóna-redundancia engedélyezve van, és a általános célúi szinten a zóna redundanciára való áttérés késése az adatbázis méretétől függ.
+
 ```sql
 SELECT s.file_id,
        s.type_desc,

@@ -2,38 +2,42 @@
 title: A bicep fejlesztési és üzembe helyezési környezetek beállítása
 description: A bicep fejlesztési és üzembe helyezési környezetek konfigurálása
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: 9a35355d1035943081ac58b36623af772fb8d547
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.date: 03/26/2021
+ms.openlocfilehash: 0e62e6a4633bee09fcbe8b783118cc95ccd5702e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612585"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626101"
 ---
 # <a name="install-bicep-preview"></a>A bicep (előzetes verzió) telepítése
 
-Megtudhatja, hogyan lehet beállítani a bicep fejlesztési és üzembe helyezési környezeteket.
+Megtudhatja, hogyan állíthatja be a bicep fejlesztési és üzembe helyezési környezeteket.
 
 ## <a name="development-environment"></a>Fejlesztési környezet
 
 A legjobb bicep-szerzői élmény eléréséhez két összetevőre van szükség:
 
 - **A bicep bővítmény a Visual Studio Code**-hoz. A bicep-fájlok létrehozásához jó bicep szerkesztőre van szükség. Javasoljuk, hogy a [Visual Studio Code](https://code.visualstudio.com/) -ot a [bicep kiterjesztéssel](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Ezek az eszközök nyelvi támogatást és erőforrás-újratöltést biztosítanak. Segítenek létrehozni és érvényesíteni a bicep-fájlokat. További információ a Visual Studio Code és a bicep bővítménnyel kapcsolatban: gyors útmutató [: a bicep-fájlok létrehozása a Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md)használatával.
-- **BICEP parancssori** felület. A bicep parancssori felület használatával lefordíthatja a bicep-fájlokat az ARM JSON-sablonokba, és visszafordíthatja az ARM JSON-sablonokat a bicep-fájlokba. További információ: a [BICEP CLI telepítése](#install-bicep-cli).
+- **BICEP parancssori** felület. A bicep parancssori felület használatával lefordíthatja a bicep-fájlokat az ARM JSON-sablonokba, és visszafordíthatja az ARM JSON-sablonokat a bicep-fájlokba. A telepítési utasításokért lásd: a [BICEP CLI telepítése](#install-manually).
 
 ## <a name="deployment-environment"></a>Üzembehelyezési környezet
 
-A bicep-fájlokat az Azure CLI vagy a Azure PowerShell használatával helyezheti üzembe. Az Azure CLI esetén a 2.20.0 vagy újabb verzióra van szükség; Azure PowerShell esetén a 5.6.0 vagy újabb verzióra van szükség. A telepítési utasításokért lásd:
+Helyi bicep-fájlok telepítéséhez két összetevő szükséges:
 
-- [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
-- [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
-- [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
-- [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)
+- **Az Azure CLI verziója 2.20.0 vagy újabb, vagy Azure PowerShell 5.6.0 vagy újabb verziójú**. A telepítési utasításokért lásd:
 
-> [!NOTE]
-> Jelenleg az Azure CLI és a Azure PowerShell is csak helyi bicep-fájlokat telepíthet. A bicep-fájlok Azure CLI használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-CLI](./deploy-cli.md#deploy-remote-template). A bicep-fájlok Azure PowerShell használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
+  - [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
+  - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
+  - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
+  - [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)
 
-A Azure PowerShell vagy az Azure CLI támogatott verziójának telepítése után a következővel telepíthet egy bicep-fájlt:
+  > [!NOTE]
+  > Jelenleg az Azure CLI és a Azure PowerShell is csak helyi bicep-fájlokat telepíthet. A bicep-fájlok Azure CLI használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-CLI](./deploy-cli.md#deploy-remote-template). A bicep-fájlok Azure PowerShell használatával történő telepítésével kapcsolatos további információkért lásd: [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
+
+- **BICEP parancssori** felület. A bicep parancssori felület szükséges a bicep-fájlok JSON-sablonokhoz való fordításához az üzembe helyezés előtt. A telepítési utasításokért lásd: a [BICEP CLI telepítése](#install-bicep-cli).
+
+Az összetevők telepítése után a következővel telepíthet egy bicep-fájlt:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -59,11 +63,23 @@ az deployment group create \
 
 ## <a name="install-bicep-cli"></a>A bicep CLI telepítése
 
-A bicep CLI-t az Azure CLI használatával Azure PowerShell vagy manuálisan is telepítheti.
+- Ha a bicep CLI-t a bicep-fájlok fordítására és defordítására szeretné használni, olvassa el a [telepítés manuálisan](#install-manually)című témakört.
+- Ha az Azure CLI-t használja a bicep-fájlok üzembe helyezéséhez, tekintse meg [a használat az Azure CLI-vel](#use-with-azure-cli)
+- Ha a bicep-fájlok telepítéséhez Azure PowerShellt szeretne használni, tekintse meg [a használat a](#use-with-azure-powershell)következővel: Azure PowerShell.
 
-### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+### <a name="use-with-azure-cli"></a>Használat az Azure CLI-vel
 
-Az az CLI Version 2.20.0 vagy újabb verziója esetén a rendszer automatikusan telepíti a bicep CLI-t, amikor egy olyan parancs fut, amely attól függ, hogy végrehajtja-e az alkalmazást. Például `az deployment ... -f *.bicep` vagy `az bicep ...`.
+Az Azure CLI 2.20.0 vagy újabb verziójának telepítése esetén a rendszer automatikusan telepíti a bicep CLI-t, amikor egy olyan parancs fut, amelytől függ. Például:
+
+```azurecli
+az deployment group create --template-file azuredeploy.bicep --resource-group myResourceGroup
+```
+
+vagy
+
+```azurecli
+az bicep ...
+```
 
 Manuálisan is telepítheti a CLI-t a beépített parancsok használatával:
 
@@ -80,17 +96,11 @@ az bicep upgrade
 Adott verzió telepítése:
 
 ```bash
-az bicep install --version v0.2.212
+az bicep install --version v0.3.126
 ```
 
-> [!NOTE]
-> Az az CLI telepíti a bicep CLI egy külön verzióját, amely nem ütközik az esetlegesen használt többi bicep-telepítéssel, és az az CLI nem adja hozzá a Bicept az elérési úthoz.
-
-A telepített verziók megjelenítése:
-
-```bash
-az bicep version
-```
+> [!IMPORTANT]
+> Az Azure CLI telepíti a bicep CLI egy külön verzióját, amely nem ütközik a többi bicep-telepítéssel, és az Azure CLI nem adja hozzá a bicep CLI-t az elérési úthoz. Ha a bicep CLI-t a bicep-fájlok fordítására/kifordítására, illetve a bicep-fájlok telepítéséhez Azure PowerShell használatára szeretné használni, lásd: [manuális telepítés](#install-manually) vagy az [Azure PowerShell használata](#use-with-azure-powershell).
 
 A bicep CLI összes elérhető verziójának listázásához:
 
@@ -98,9 +108,30 @@ A bicep CLI összes elérhető verziójának listázásához:
 az bicep list-versions
 ```
 
-### <a name="use-azure-powershell"></a>Azure PowerShell használatával
+A telepített verziók megjelenítése:
 
-A Azure PowerShell nem tudja telepíteni a bicep CLI-t. Azure PowerShell (v 5.6.0 vagy újabb) azt várja, hogy a bicep CLI már telepítve van, és elérhető az elérési úton. Kövesse az egyik [kézi telepítési módszert](#install-manually). Miután telepítette a bicep CLI-t, a rendszer akkor hívja a bicep CLI-t, amikor szükséges egy telepítési parancsmaghoz. Például: `New-AzResourceGroupDeployment ... -TemplateFile main.bicep`.
+```bash
+az bicep version
+```
+
+### <a name="use-with-azure-powershell"></a>Használat Azure PowerShell
+
+A Azure PowerShell nem tudja telepíteni a bicep CLI-t. Azure PowerShell (v 5.6.0 vagy újabb) azt várja, hogy a bicep CLI már telepítve van, és elérhető az elérési úton. Kövesse az egyik [kézi telepítési módszert](#install-manually).
+
+A bicep-fájlok telepítéséhez a bicep CLI-verzió 0.3.1 vagy újabb verziója szükséges. A bicep CLI-verziójának ellenõrzése:
+
+```cmd
+bicep --version
+```
+
+> [!IMPORTANT]
+> Az Azure CLI a bicep CLI saját, önálló verzióját telepíti. Azure PowerShell telepítés meghiúsul, még akkor is, ha az Azure CLI-hez telepítve van a szükséges verzió.
+
+Miután telepítette a bicep CLI-t, a rendszer akkor hívja a bicep CLI-t, amikor szükséges egy telepítési parancsmaghoz. Például:
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName myResourceGroup -TemplateFile azuredeploy.bicep
+```
 
 ### <a name="install-manually"></a>Manuális telepítés
 

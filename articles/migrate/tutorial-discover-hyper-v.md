@@ -5,18 +5,18 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: d108774aea2d7ac7773dab06efc977dd9e501eb5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108774"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612517"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: a Hyper-V-n futó kiszolgálók felderítése Azure Migrateekkel: felderítés és Értékelés
 
-Az Azure-ba való Migrálás részeként felderítheti a helyszíni leltárt és munkaterheléseket. 
+Az Azure-ba való Migrálás részeként felderítheti a helyszíni leltárt és munkaterheléseket.
 
 Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel a helyszíni kiszolgálókat a Hyper-V-gazdagépeken a Azure Migrate: felderítési és értékelési eszközzel, egy egyszerű Azure Migrate berendezés használatával. A készüléket a Hyper-V-gazdagépen lévő kiszolgálóként helyezi üzembe a gép és a teljesítmény metaadatainak folyamatos felderítése érdekében.
 
@@ -42,7 +42,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 --- | ---
 **Hyper-V gazdagép** | Azok a Hyper-V-gazdagépek, amelyeken a kiszolgálók találhatók, önállóak vagy fürtben is.<br/><br/> A gazdagépen a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszernek kell futnia.<br/><br/> Ellenőrizze, hogy a bejövő kapcsolatok engedélyezve vannak-e a WinRM 5985-es portján (HTTP), hogy a készülék csatlakozni tud-e a lekérési kiszolgáló metaadatainak és teljesítményadatait a CIM (CIM) munkamenet használatával.
 **Berendezések üzembe helyezése** | A Hyper-V-gazdagépnek erőforrásokra van szüksége ahhoz, hogy lefoglaljon egy kiszolgálót a készülék számára:<br/><br/> -16 GB RAM, 8 vCPU, és körülbelül 80 GB lemezes tárterület.<br/><br/> – Egy külső virtuális kapcsolót és internet-hozzáférést a készüléken közvetlenül vagy egy proxyn keresztül.
-**Kiszolgálók** | A kiszolgálók bármely Windows-vagy Linux-alapú operációs rendszert futtatnak. 
+**Kiszolgálók** | A kiszolgálók bármely Windows-vagy Linux-alapú operációs rendszert futtatnak.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
@@ -56,7 +56,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
     ![Az Azure-előfizetés kereséséhez használt keresőmező](./media/tutorial-discover-hyper-v/search-subscription.png)
 
-2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben létre kíván hozni egy projektet. 
+2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben létre kíván hozni egy projektet.
 3. Az előfizetésben válassza a hozzáférés- **vezérlés (iam)**  >  **jelölőnégyzetet**.
 4. A **hozzáférés-ellenőrzési** területen keresse meg a megfelelő felhasználói fiókot.
 5. A **szerepkör-hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzáadás** gombra.
@@ -176,7 +176,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
         **Forgatókönyv** | **Letöltés** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,91 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
+        Hyper-V (8,91 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - Azure Government esetén:
 
@@ -293,5 +293,3 @@ A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjele
 
 - A [Hyper-V környezetben található kiszolgálók értékelése](tutorial-assess-hyper-v.md) az Azure-beli virtuális gépekre való áttelepítéshez.
 - [Tekintse át a](migrate-appliance.md#collected-data---hyper-v) berendezés által a felderítés során gyűjtött adatokat.
-
-

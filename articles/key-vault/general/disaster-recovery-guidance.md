@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27184e267bb0472dad6fc9176dfdeee68d5eae58
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518447"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611820"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állása és redundanciája
 
@@ -23,7 +23,7 @@ Azure Key Vault több réteget is tartalmaz, így biztosíthatja, hogy a kulcsok
 > [!NOTE]
 > Ez az útmutató a tárolók esetében érvényes. A felügyelt HSM-készletek eltérő magas rendelkezésre állású és vész-helyreállítási modellt használnak. További információkért lásd: [felügyelt HSM vész-helyreállítási útmutató](../managed-hsm/disaster-recovery-guide.md) .
 
-A Key Vault tartalmát a régión belül, illetve legalább 150 mérfölddel arrébb egy másodlagos régióba replikálja a rendszer, de ugyanazon a földrajzon belül a kulcsok és titkok magas tartósságának fenntartása érdekében. Az adott régió párokkal kapcsolatos részletekért lásd: [Azure párosított régiók](../../best-practices-availability-paired-regions.md). A párosított régiók modelljének kivétele Brazília déli régiója, amely csak a Dél-Brazíliában található tárolt adatmegőrzési lehetőséget teszi lehetővé. Dél-Brazília a Zone redundáns Storage (ZRS) használatával háromszor replikálja az adatait az adott helyen/régióban.   
+A Key Vault tartalmát a régión belül, illetve legalább 150 mérfölddel arrébb egy másodlagos régióba replikálja a rendszer, de ugyanazon a földrajzon belül a kulcsok és titkok magas tartósságának fenntartása érdekében. Az adott régió párokkal kapcsolatos részletekért lásd: [Azure párosított régiók](../../best-practices-availability-paired-regions.md). A párosított régiók modelljének kivétele Brazília déli régiója, amely csak a Dél-Brazíliában található tárolt adatmegőrzési lehetőséget teszi lehetővé. Dél-Brazília a Zone redundáns Storage (ZRS) használatával háromszor replikálja az adatait az adott helyen/régióban. A AKV Premium esetében a HSM-ből származó adatok replikálásához a 3 régió közül csak 2 van használatban.  
 
 Ha a Key Vault szolgáltatásban lévő egyes összetevők meghibásodnak, a régión belüli alternatív összetevők, hogy kiszolgálják a kérést, hogy a rendszer ne csökkentse a funkciók romlását. A folyamat elindításához semmilyen műveletet nem kell végrehajtania, automatikusan megtörténik, és transzparens lesz.
 

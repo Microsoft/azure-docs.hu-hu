@@ -1,17 +1,15 @@
 ---
 title: Az Azure Service Fabric-entitások összesített állapotának megtekintése
 description: Ismerteti, hogyan lehet lekérdezni, megtekinteni és kiértékelni az Azure Service Fabric entitások összesített állapotát, az állapot lekérdezéseit és az általános lekérdezéseket.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7127d9906cfe1ba87241bd3810a9567e77bf0391
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 261343537b6d18c98c27c9cc9453d2a64f064216
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98785498"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628067"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric állapottal kapcsolatos jelentések megtekintése
 Az Azure Service Fabric olyan egészségügyi [modelleket](service-fabric-health-introduction.md) vezet be, amelyekben a rendszerösszetevők és a watchdogok jelenthetik a figyelt helyi feltételeket. Az állapotfigyelő az összes [állapotadatok összesítésével](service-fabric-health-introduction.md#health-store) megállapítja, hogy az entitások állapota Kifogástalan-e.

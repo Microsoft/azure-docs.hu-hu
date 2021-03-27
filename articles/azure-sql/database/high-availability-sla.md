@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: a14f8e0ba3ae5cca75cf6518320023703a6d1700
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889059"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626384"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,22 +48,22 @@ Ha az adatbázismotor vagy az operációs rendszer frissítése megtörtént, va
 
 ## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Általános célú a szolgáltatási szintek zónájának redundáns elérhetősége (előzetes verzió)
 
-Az általános célú szolgáltatási szint zóna redundáns konfigurációja [Azure Availability Zones](../../availability-zones/az-overview.md)   az adatbázisok replikálását az Azure-régión belüli több fizikai helyszín között.A zóna redundancia lehetőség kiválasztásával az új és meglévő általános célú önálló adatbázisok és rugalmas készletek rugalmasan kezelhetők a hibák sokkal nagyobb készletével, beleértve a katasztrofális adatközpont leállását az alkalmazás logikájának módosítása nélkül.
+Az általános célú szolgáltatási szinten a zóna redundáns konfigurációja a kiszolgáló nélküli és a kiosztott számításokhoz egyaránt elérhető. Ez a konfiguráció [Azure Availability Zones](../../availability-zones/az-overview.md) használ   az adatbázisok replikálására az Azure-régión belüli több fizikai helyszín között.A zóna redundancia lehetőség kiválasztásával az új és meglévő serverlesss és kiépített általános célú önálló adatbázisok és rugalmas készletek rugalmasan kezelhetők a hibák sokkal nagyobb készletével, beleértve a katasztrofális adatközpontok kiesését az alkalmazás logikájának módosítása nélkül.
 
 Az általános célú réteg zónájának redundáns konfigurációja két réteget tartalmaz:  
 
-- Egy állapot-nyilvántartó adatréteget, amely a ZRS PFS-ben (. MDF/. ldf) tárolt adatbázis-fájlokat (a zóna redundáns [tárolási prémium fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md)) tárolja. A [zóna-redundáns tárolás](../../storage/common/storage-redundancy.md) használatával az adatfájlok és a naplófájlok szinkronban vannak másolva három fizikailag elkülönített Azure rendelkezésre állási zónában.
-- Az sqlservr.exe folyamatot futtató állapot nélküli számítási réteg, amely csak átmeneti és gyorsítótárazott adatokból áll, például a TempDB, a csatolt SSD modell-adatbázisainak, valamint a gyorsítótár, a puffer-készlet és a oszlopcentrikus-készletnek a memóriában történő megtervezésére. Ezt az állapot nélküli csomópontot az Azure Service Fabric üzemelteti, amely inicializálja sqlservr.exe, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik csomóponton. A felesleges általános célú adatbázisok esetében a tartalék kapacitású csomópontok más Availability Zonesban azonnal elérhetők a feladatátvételhez.
+- Egy állapot-nyilvántartó adatréteget, amely a ZRS-ben (. MDF/. ldf) tárolt adatbázisfájlok (zóna – redundáns tároló). Az [ZRS](../../storage/common/storage-redundancy.md) használatával az adatfájlok és a naplófájlok szinkron módon, három fizikailag elkülönített Azure-beli rendelkezésre állási zónában másolhatók.
+- Az sqlservr.exe folyamatot futtató állapot nélküli számítási réteg, amely csak átmeneti és gyorsítótárazott adatokból áll, például a TempDB, a csatolt SSD modell-adatbázisainak, valamint a gyorsítótár, a puffer-készlet és a oszlopcentrikus-készletnek a memóriában történő megtervezésére. Ezt az állapot nélküli csomópontot az Azure Service Fabric üzemelteti, amely inicializálja sqlservr.exe, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik csomóponton. A kiszolgáló nélküli és a kiosztott általános célú adatbázisok esetében a tartalék kapacitású csomópontok azonnal elérhetők más Availability Zones a feladatátvételhez.
 
 Az általános célú szolgáltatási rétegek magas rendelkezésre állású architektúrájának zóna redundáns verzióját az alábbi ábra szemlélteti:
 
 ![Zóna redundáns konfigurációja általános célú](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> A zóna redundáns konfigurációja csak akkor érhető el, ha a Gen5 számítási hardver van kiválasztva. Ez a funkció nem érhető el az SQL felügyelt példányában. Az általános célú zóna redundáns konfigurációja csak a következő régiókban érhető el: USA keleti régiója, USA 2. keleti régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Kelet-Ausztrália, Kelet-Japán, Egyesült Királyság déli régiója és Közép-Németország.
+> A zóna redundáns konfigurációja csak akkor érhető el, ha a Gen5 számítási hardver van kiválasztva. Ez a funkció nem érhető el az SQL felügyelt példányában. A kiszolgáló nélküli és az általános célú üzembe helyezési szint zóna redundáns konfigurációja csak a következő régiókban érhető el: USA keleti régiója, USA 2. keleti régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Kelet-Ausztrália, Kelet-Japán, Egyesült Királyság déli régiója és Közép-Németország.
 
 > [!NOTE]
-> A 80 virtuális mag méretű adatbázisok általános célú a zóna redundáns konfigurációjával a teljesítmény romlását tapasztalhatja. Emellett az olyan műveletek, mint például a biztonsági mentés, a visszaállítás, az adatbázis-másolás és a Geo-DR kapcsolatok beállítása, az 1 TB-nál nagyobb méretű önálló adatbázisok esetében lassabb teljesítményt tapasztalhatnak. 
+> A 80 virtuális mag méretű adatbázisok általános célú a zóna redundáns konfigurációjával a teljesítmény romlását tapasztalhatja. Emellett az olyan műveletek, mint például a biztonsági mentés, a visszaállítás, az adatbázis-másolás, a Geo-DR kapcsolatok beállítása és a zóna redundáns adatbázisának visszaminősítése üzletileg kritikusról általános célúre az 1 TB-nál nagyobb méretű önálló adatbázisok esetében lassabb teljesítményt eredményezhet. További információkért tekintse [meg az adatbázis skálázásával kapcsolatos késési dokumentációt](single-database-scale.md) .
 > 
 > [!NOTE]
 > Az előzetes verzió nem vonatkozik a fenntartott példányra

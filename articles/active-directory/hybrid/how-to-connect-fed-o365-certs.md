@@ -16,22 +16,29 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101686869"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611888"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 és Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
 Az Azure Active Directory (Azure AD) és a Active Directory összevonási szolgáltatások (AD FS) (AD FS) közötti sikeres összevonáshoz a biztonsági jogkivonatok Azure AD-be való aláírásához a AD FS által használt tanúsítványoknak meg kell egyezniük az Azure AD-ben konfigurált beállításokkal. Az eltérések megszakadó megbízhatóságot okozhatnak. Az Azure AD biztosítja, hogy ezek az információk szinkronban legyenek a AD FS és a webalkalmazás-proxy telepítésekor (extranetes hozzáférés esetén).
+
+> [!NOTE]
+> Ez a cikk az összevonási cerficates részletes ismertetését ismerteti.  Vészhelyzeti rotáció esetén: [a AD FS tanúsítványok vészhelyzeti rotációja](how-to-connect-emergency-ad-fs-certificate-rotation.md)
 
 Ez a cikk további információkat tartalmaz a jogkivonat-aláíró tanúsítványok kezeléséhez és az Azure AD-vel való szinkronizálás megtartásához a következő esetekben:
 
 * Nem telepíti a webalkalmazás-proxyt, ezért az összevonási metaadatok nem érhetők el az extraneten.
 * Nem az AD FS alapértelmezett konfigurációját használja a jogkivonat-aláíró tanúsítványokhoz.
 * Külső gyártótól származó identitás-szolgáltatót használ.
+
+> [!IMPORTANT]
+> A Microsoft nyomatékosan javasolja a hardveres biztonsági modul (HSM) használatát a tanúsítványok védelméhez és biztonságossá tételéhez.
+> További információ: a [hardveres biztonsági modul](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) a AD FS biztonságossá tételéhez ajánlott eljárások alatt.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>AD FS alapértelmezett konfigurációja a jogkivonat-aláíró tanúsítványokhoz
 A jogkivonat-aláírás és a jogkivonat-visszafejtő tanúsítványok általában önaláírt tanúsítványok, és egy évig jók. Alapértelmezés szerint a AD FS tartalmaz egy **autocertificaterollover beállítást** nevű automatikus megújítási folyamatot. Ha AD FS 2,0-es vagy újabb verziót használ, Microsoft 365 és az Azure AD automatikusan frissíti a tanúsítványt a lejárat előtt.

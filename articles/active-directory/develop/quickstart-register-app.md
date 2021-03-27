@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 413f0be32b54ee6da39934cf3f8753246fbce924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa5ecd19863e8a37efdf533e68aeaed053c552f8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578804"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625679"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -56,7 +56,10 @@ Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépé
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Képernyőfelvétel a webböngészőben lévő Azure Portalről, amely az alkalmazás regisztrálása ablaktáblát mutatja.":::
 
-A regisztráció befejeződése után a Azure Portal megjeleníti az alkalmazás regisztrációjának **Áttekintés** paneljét. Megjelenik az **alkalmazás (ügyfél) azonosítója**. Az ügyfél- *azonosítónak* is nevezik, ez az érték egyedileg azonosítja az alkalmazást a Microsoft Identity platformon.
+A regisztráció befejeződése után a Azure Portal megjeleníti az alkalmazás regisztrációjának **Áttekintés** paneljét. Megjelenik az **alkalmazás (ügyfél) azonosítója**. Az ügyfél- *azonosítónak* is nevezik, ez az érték egyedileg azonosítja az alkalmazást a Microsoft Identity platformon. 
+
+> [!IMPORTANT]
+> Az új alkalmazás-regisztrációk alapértelmezés szerint rejtve vannak a felhasználók számára. Ha készen áll arra, hogy a felhasználók láthassák az alkalmazást a saját [alkalmazások lapon](../user-help/my-apps-portal-end-user-access.md) , engedélyezheti azt. Az alkalmazás engedélyezéséhez a Azure Portal navigáljon az **Azure Active** Directory  >  **vállalati alkalmazások** elemre, és válassza ki az alkalmazást. Ezután a **Tulajdonságok** lapon a **felhasználók láthatók?** Igen értékre.
 
 Az alkalmazás kódja vagy az alkalmazásban használt hitelesítési tár általában az ügyfél-azonosítót is használja. Az azonosító az Identity platform által fogadott biztonsági jogkivonatok érvényesítésének részeként használatos.
 

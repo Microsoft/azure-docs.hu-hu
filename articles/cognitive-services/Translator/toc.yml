@@ -148,6 +148,22 @@
       items:
         - name: Dokumentumok fordítása REST API
           href: /rest/api/cognitiveservices/translator/documenttranslation
+        - name: Dokumentumok formátumának beolvasása
+          href: document-translation/reference/get-document-formats.md
+        - name: Szószedet formátumának beolvasása
+          href: document-translation/reference/get-glossary-formats.md
+        - name: Dokumentum tárolási forrásának beolvasása
+          href: document-translation/reference/get-document-storage-source.md
+        - name: Batch-kérelem elküldése
+          href: document-translation/reference/submit-batch-request.md
+        - name: Műveleti dokumentumok állapotának beolvasása
+          href: document-translation/reference/get-operation-documents-status.md
+        - name: Dokumentumok állapotának beolvasása
+          href: document-translation/reference/get-document-status.md
+        - name: Műveletek beolvasása
+          href: document-translation/reference/get-operations.md
+        - name: Művelet megszakítása
+          href: document-translation/reference/cancel-operation.md
 - name: Fordítói erőforrások
   items:
     - name: Támogatási lehetőségek

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.custom: references_regions
-ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232358"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625908"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Helyesírás-ellenőrzés hozzáadása a lekérdezésekhez Cognitive Search
 
@@ -25,7 +25,7 @@ A keresőmotor megkezdése előtt az egyes keresési lekérdezési kifejezések 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Egy meglévő keresési index, amely angol nyelvű tartalmat tartalmaz
++ Egy meglévő keresési index, amely angol nyelvű tartalmat tartalmaz. A helyesírás-javítás jelenleg nem működik a [szinonimákkal](search-synonyms.md). Ne használja olyan indexeken, amelyekben szinonimákat kell megadnia bármely mező definíciójában.
 
 + Lekérdezések küldésére szolgáló keresési ügyfél
 

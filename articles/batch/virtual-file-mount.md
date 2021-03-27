@@ -3,30 +3,30 @@ title: Virtuális fájlrendszer csatlakoztatása egy készlethez
 description: Megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert egy batch-készlethez.
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.date: 08/13/2019
-ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: dc5fbdf9ca0df8362a8999856c3f7163dd5e59b9
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89145484"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626027"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
 
-Azure Batch mostantól támogatja a Mount Cloud Storage vagy egy külső fájlrendszer használatát a Batch-készletekben lévő Windows-vagy Linux-alapú számítási csomópontokon. Ha egy számítási csomópont egy készlethez csatlakozik, a rendszer csatlakoztatja a virtuális fájlrendszert, és az adott csomóponton helyi meghajtóként kezeli őket. Olyan fájlrendszerek csatlakoztatására van lehetőség, mint például a Azure Files, az Azure Blob Storage, a hálózati fájlrendszer (NFS), beleértve a [avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)-t vagy a Common Internet File System (CIFS) rendszert.
+A Azure Batch a Batch-készletekben lévő Windows-vagy Linux-alapú számítási csomópontokon támogatja a felhőalapú tárolást vagy külső fájlrendszert. Ha egy számítási csomópont egy készlethez csatlakozik, a rendszer csatlakoztatja a virtuális fájlrendszert, és az adott csomóponton helyi meghajtóként kezeli őket. Olyan fájlrendszerek csatlakoztatására van lehetőség, mint például a Azure Files, az Azure Blob Storage, a hálózati fájlrendszer (NFS), beleértve a [avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)-t vagy a Common Internet File System (CIFS) rendszert.
 
 Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert a számítási csomópontok készletéhez a [.net-hez készült batch Management Library](/dotnet/api/overview/azure/batch)használatával.
 
 > [!NOTE]
-> A virtuális fájlrendszer csatlakoztatása támogatott a 2019-08-19-on vagy azt követően létrehozott batch-készleteken. A 2019-08-19-et megelőzően létrehozott batch-készletek nem támogatják ezt a funkciót.
-> 
-> A számítási csomópontokon a fájlrendszerek csatlakoztatására szolgáló API-k a [Batch .net](/dotnet/api/microsoft.azure.batch) -könyvtár részét képezik.
+> A virtuális fájlrendszer csatlakoztatása csak 2019. augusztus 8-án vagy azt követően létrehozott batch-készleteken támogatott. Az ezen dátum előtt létrehozott batch-készletek nem támogatják ezt a funkciót.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>A készlethez való csatlakoztatás előnyei
 
 A fájlrendszer a készlethez való csatlakoztatása ahelyett, hogy a feladatok egy nagyméretű adatkészletből beolvassák a saját adataikat, egyszerűbbé és hatékonyabbá teszi a szükséges adatok elérését.
 
-Vegyünk például egy olyan forgatókönyvet, amelynek több feladata is van, amely hozzáférést igényel egy közös adathalmazhoz, például a mozgóképek megjelenítéséhez. Minden feladat egyszerre egy vagy több keretet jelenít meg a jelenet fájljaiból. A jelenet fájljait tartalmazó meghajtó csatlakoztatásával a számítási csomópontok könnyebben férhetnek hozzá a megosztott adatokhoz. Emellett az alapul szolgáló fájlrendszert egymástól függetlenül is kiválaszthatja és méretezheti, az adatokhoz egyidejűleg hozzáférő számítási csomópontok száma és mérete (átviteli és IOPS) alapján. Például egy avere- [vFXT](../avere-vfxt/avere-vfxt-overview.md) elosztott memórián belüli gyorsítótára használható több ezer egyidejű renderelési csomóponttal rendelkező nagyméretű mozgókép-méretezési renderelés támogatására, amely a helyszíni forrásokhoz fér hozzá. Azt is megteheti, hogy a felhőalapú blob-tárolóban már tárolt adat esetében az [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) helyi fájlrendszerként csatlakoztatható. A Blobfuse csak Linux-csomópontokon érhető el, azonban a [Azure Files](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) hasonló munkafolyamatot biztosít, és Windows és Linux rendszeren is elérhető.
+Vegyünk például egy olyan forgatókönyvet, amelynek több feladata is van, amely hozzáférést igényel egy közös adathalmazhoz, például a mozgóképek megjelenítéséhez. Minden feladat egyszerre egy vagy több keretet jelenít meg a jelenet fájljaiból. A jelenet fájljait tartalmazó meghajtó csatlakoztatásával a számítási csomópontok könnyebben férhetnek hozzá a megosztott adatokhoz.
+
+Emellett az alapul szolgáló fájlrendszert egymástól függetlenül is kiválaszthatja és méretezheti, az adatokhoz egyidejűleg hozzáférő számítási csomópontok száma és mérete (átviteli és IOPS) alapján. Például egy avere- [vFXT](../avere-vfxt/avere-vfxt-overview.md) elosztott memórián belüli gyorsítótára használható több ezer egyidejű renderelési csomóponttal rendelkező nagyméretű mozgókép-méretezési renderelés támogatására, amely a helyszíni forrásokhoz fér hozzá. Azt is megteheti, hogy a felhőalapú blob-tárolóban már tárolt adat esetében az [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) helyi fájlrendszerként csatlakoztatható. A Blobfuse csak Linux-csomópontokon érhető el, bár a [Azure Files](../storage/files/storage-files-introduction.md) hasonló munkafolyamatot biztosít, és Windows és Linux rendszeren is elérhető.
 
 ## <a name="mount-a-virtual-file-system-on-a-pool"></a>Virtuális fájlrendszer csatlakoztatása egy készlethez  
 
@@ -78,9 +78,11 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure-Blob fájlrendszer
 
-Egy másik lehetőség az Azure Blob Storage használata a [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)-on keresztül. A blob-fájlrendszer csatlakoztatásához a `AccountKey` vagy `SasKey` a Storage-fiók szükséges. A kulcsok beszerzésével kapcsolatos információkért lásd: a [Storage-fiók hozzáférési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md)vagy [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-sas-overview.md). A blobfuse használatával kapcsolatos további információkért tekintse meg a blobfuse- [hibákkal kapcsolatos gyakori kérdések](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)című témakört. A blobfuse csatlakoztatott könyvtár alapértelmezett hozzáférésének lekéréséhez futtassa **rendszergazdaként** a feladatot. A Blobfuse csatlakoztatja a könyvtárat a felhasználói tárhelyen, a készlet létrehozásakor pedig root-ként van csatlakoztatva. A Linux rendszerben minden **rendszergazdai** feladat a root. A biztosítéki modul összes beállítását a [biztosítéki útmutató lapon](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)találja.
+Egy másik lehetőség az Azure Blob Storage használata a [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)-on keresztül. A blob-fájlrendszer csatlakoztatásához a `AccountKey` vagy `SasKey` a Storage-fiók szükséges. A kulcsok beszerzésével kapcsolatos információkért lásd: a [Storage-fiók hozzáférési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md) , vagy [korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../storage/common/storage-sas-overview.md). A blobfuse használatával kapcsolatos további információkért és tippekért tekintse meg a blobfuse.
 
-A hibaelhárítási útmutatón kívül a blobfuse-tárház GitHub-problémái is hasznosak lehetnek az aktuális blobfuse problémák és megoldások kereséséhez. További információ: blobfuse- [problémák](https://github.com/Azure/azure-storage-fuse/issues).
+A blobfuse csatlakoztatott könyvtár alapértelmezett hozzáférésének lekéréséhez futtassa **rendszergazdaként** a feladatot. A Blobfuse csatlakoztatja a könyvtárat a felhasználói tárhelyen, a készlet létrehozásakor pedig root-ként van csatlakoztatva. A Linux rendszerben minden **rendszergazdai** feladat a root. A biztosítéki modul összes beállítását a [biztosítéki útmutató lapon](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)találja.
+
+A blobfuse használatával kapcsolatos további információkért és tippekért tekintse át a [hibákkal kapcsolatos gyakori kérdéseket](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) . [A GitHub-problémákat a blobfuse-tárházban](https://github.com/Azure/azure-storage-fuse/issues) is áttekintheti, hogy ellenőrizze az aktuális blobfuse kapcsolatos problémákat és megoldásokat.
 
 ```csharp
 new PoolAddParameter
@@ -106,7 +108,7 @@ new PoolAddParameter
 
 ### <a name="network-file-system"></a>Hálózati fájlrendszer
 
-A hálózati fájlrendszer (NFS) olyan készlet-csomópontokhoz is csatlakoztatható, amelyek lehetővé teszik, hogy a hagyományos fájlrendszerek könnyen hozzáférhessenek Azure Batch csomópontok számára. Ez lehet a felhőben üzembe helyezett egyetlen NFS-kiszolgáló, vagy egy virtuális hálózaton keresztül elért helyszíni NFS-kiszolgáló. Azt is megteheti, hogy kihasználja a [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) elosztott memóriabeli gyorsítótárazási megoldását, amely zökkenőmentesen kapcsolódik a helyszíni tárolóhoz, az adatok igény szerinti beolvasása a gyorsítótárba, valamint nagy teljesítményű és méretezhető felhőalapú számítási csomópontokra.
+A hálózati fájlrendszerek (NFS) csatlakoztathatók a készlet csomópontjaihoz, így a hagyományos fájlrendszerek Azure Batch érhetők el. Ez lehet a felhőben üzembe helyezett egyetlen NFS-kiszolgáló, vagy egy virtuális hálózaton keresztül elért helyszíni NFS-kiszolgáló. Azt is megteheti, hogy a [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) elosztott memóriabeli gyorsítótárazási megoldását használja az adatigényes nagy teljesítményű számítástechnikai (HPC) feladatokhoz
 
 ```csharp
 new PoolAddParameter
@@ -129,7 +131,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-A Common Internet File Systems (CIFS) olyan készlet-csomópontokhoz is csatlakoztatható, amelyek lehetővé teszik, hogy a hagyományos fájlrendszerek könnyen hozzáférhessenek Azure Batch csomópontok számára. A CIFS egy fájlmegosztási protokoll, amely egy nyílt és platformfüggetlen mechanizmust biztosít a hálózati kiszolgáló fájljainak és szolgáltatásainak igényléséhez. A CIFS a Microsoft kiszolgáló-üzenetblokk (SMB) protokolljának továbbfejlesztett verziója az internetes és az intranetes fájlmegosztás számára, és a külső fájlrendszerek csatlakoztatására szolgál a Windows-csomópontokon. További információ az SMB-ről: [fájlkiszolgáló és SMB](/windows-server/storage/file-server/file-server-smb-overview).
+A [Common Internet File Systems (CIFS)](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a Pool-csomópontokhoz való csatlakoztatása egy másik módszer a hagyományos fájlrendszerek elérésének biztosítására. A CIFS egy fájlmegosztási protokoll, amely egy nyílt és platformfüggetlen mechanizmust biztosít a hálózati kiszolgáló fájljainak és szolgáltatásainak igényléséhez. A CIFS az internetes és az intranetes fájlmegosztás [SMB](/windows-server/storage/file-server/file-server-smb-overview) protokolljának továbbfejlesztett verziójára épül, és a külső fájlrendszerek csatlakoztatására használható a Windows-csomópontokon.
 
 ```csharp
 new PoolAddParameter
@@ -154,7 +156,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Csatlakoztatási hibák diagnosztizálása
 
-Ha a csatlakoztatási konfiguráció meghiúsul, a készlet számítási csomópontja sikertelen lesz, és a csomópont állapota használhatatlanná válik. A csatlakoztatási konfigurációs hibák diagnosztizálásához tekintse [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) meg a tulajdonságot a hibával kapcsolatos részletekért.
+Ha a csatlakoztatási konfiguráció meghiúsul, a készlet számítási csomópontja sikertelen lesz, és a csomópont állapota lesz `unusable` . A csatlakoztatási konfigurációs hibák diagnosztizálásához tekintse [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) meg a tulajdonságot a hibával kapcsolatos részletekért.
 
 A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles](batch-task-output-files.md) a `*.log` fájlok feltöltéséhez. A `*.log` fájlok a helyhez tartozó fájlrendszer csatlakoztatásával kapcsolatos információkat tartalmaznak `AZ_BATCH_NODE_MOUNTS_DIR` . A csatlakoztatási naplófájlok formátuma a `<type>-<mountDirOrDrive>.log` következő: minden egyes csatlakoztatáshoz. Például egy nevű csatlakoztatási `cifs` könyvtárhoz a következő `test` nevű csatlakozási naplófájl lesz: `cifs-test.log` .
 
@@ -176,9 +178,25 @@ A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles]
 | Oracle | Oracle-Linux | 7.6 | x | x | x | x |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | x | x | x |
 
+## <a name="networking-requirements"></a>Hálózati követelmények
+
+Ha Azure Batch készletekkel rendelkező virtuális fájlokat csatlakoztat [egy virtuális hálózatban](batch-virtual-network.md), tartsa szem előtt az alábbi követelményeket, és győződjön meg arról, hogy nincs letiltva a szükséges forgalom.
+
+- **Azure Files**:
+  - Az 445-as TCP-port megnyitását igényli a "Storage" szolgáltatás címkéjére irányuló forgalom számára. További információ: Azure- [fájlmegosztás használata Windows rendszeren](../storage/files/storage-how-to-use-files-windows.md#prerequisites).
+- **Blobfuse**:
+  - Az 443-as TCP-port megnyitását igényli a "Storage" szolgáltatás címkéjére irányuló forgalom számára.
+  - https://packages.microsoft.comA blobfuse és a GPG-csomagok letöltéséhez a virtuális gépeknek hozzáféréssel kell rendelkezniük. A konfigurációtól függően előfordulhat, hogy más URL-címekhez is hozzá kell férnie további csomagok letöltéséhez.
+- **Hálózati fájlrendszer (NFS)**:
+  - Hozzáférést igényel a 2049-as porthoz (alapértelmezés szerint a konfiguráció más követelményekkel rendelkezhet).
+  - A virtuális gépeknek hozzáféréssel kell rendelkezniük a megfelelő csomagkezelő ahhoz, hogy le lehessen tölteni az NFS-Common (Debian vagy Ubuntu esetén) vagy az NFS-utils (CentOS) csomagot. Ez az URL-cím az operációs rendszer verziójától függően változhat. A konfigurációtól függően előfordulhat, hogy más URL-címekhez is hozzá kell férnie további csomagok letöltéséhez.
+- **Common Internet File System (CIFS)**:
+  - Hozzáférést igényel a 445-es TCP-porthoz.
+  - A CIFS-utils csomag letöltéséhez a virtuális gépeknek hozzáféréssel kell rendelkezniük a megfelelő csomagkezelő (k) hez. Ez az URL-cím az operációs rendszer verziójától függően változhat.
+
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a Azure Files-megosztás Windows vagy Linux [rendszeren](../storage/files/storage-how-to-use-files-windows.md) való [](../storage/files/storage-how-to-use-files-linux.md)csatlakoztatásáról.
+- További információ a Azure Files-megosztás Windows vagy [Linux](../storage/files/storage-how-to-use-files-linux.md) [rendszeren](../storage/files/storage-how-to-use-files-windows.md) való csatlakoztatásáról.
 - Tudnivalók a [blobfuse](https://github.com/Azure/azure-storage-fuse) virtuális fájlrendszerek használatáról és csatlakoztatásáról.
 - A [hálózati fájlrendszer áttekintése](/windows-server/storage/nfs/nfs-overview) című témakörben MEGISMERHETI az NFS-t és annak alkalmazásait.
 - A CIFS-vel kapcsolatos további tudnivalókért tekintse meg a [Microsoft SMB protokoll és a CIFS protokoll áttekintése](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) című témakört.

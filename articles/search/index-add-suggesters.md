@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a03ca4bcad9bb577db68e2728ff9dbebb5779a7a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606215"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626826"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Search, a typeahead vagy a "keresési típus" lehetőséget egy *javaslaton* keresztül engedélyezheti. A javaslatok egy belső adatstruktúra, amely egy mező gyűjteményből áll. A mezők további jogkivonatok létrehozása vesznek részt, és előtagokat generálnak, amelyek támogatják a részleges feltételeken alapuló egyezéseket. Egy város mezőt tartalmazó javaslat például a "Sea", az "Seat", a "seatt" és a "seattl" előtag-kombinációkkal rendelkezik a "Seattle" kifejezéshez.
+Az Azure Cognitive Search, a typeahead vagy a "keresési típus" lehetőséget egy *javaslaton* keresztül engedélyezheti. A javaslatok egy listát biztosítanak a további jogkivonatok létrehozása tartozó mezőkről, és előtagokat generálnak a részleges feltételekhez tartozó egyezések támogatásához. A "Seattle" értékkel rendelkező város mezőt tartalmazó javaslat például a "Sea", az "Seat", a "seatt" és a "seattl" előtag-kombinációkat tartalmazza a typeahead támogatásához.
 
 A részleges kifejezésekre való egyezés lehet egy autocompleted lekérdezés vagy egy javasolt egyezés. Ugyanez a javaslat mindkét élményt támogatja.
 
@@ -171,11 +171,13 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>Mintakód
 
-+ [Hozza létre első alkalmazását C# nyelven (3. lecke – keresési típus hozzáadása)](tutorial-csharp-type-ahead-and-suggestions.md) minta bemutatja a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt. Ez a mintakód egy sandbox Azure Cognitive Search Service-ben fut, és egy előre betöltött Hotel-indexet használ egy már létrehozott javaslattal, így mindössze annyit kell tennie, hogy az alkalmazás futtatásához nyomja le az F5 billentyűt. Nincs szükség előfizetésre vagy bejelentkezésre.
++ A [Keresés hozzáadása egy webhelyhez (JavaScript)](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) egy nyílt forráskódú javaslatokat tartalmazó csomagot használ a részleges kifejezés befejezéséhez az ügyfélalkalmazás számára.
+
++ [Hozza létre első alkalmazását C# nyelven (3. lecke – keresési típus hozzáadása)](tutorial-csharp-type-ahead-and-suggestions.md) minta bemutatja a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt. Ez a kód a typeahead natív támogatását biztosítja a widget használata helyett.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A kérelmek létrehozásával kapcsolatban a következő cikkből tájékozódhat.
+További információ a kérelmek \ fogalmazásról.
 
 > [!div class="nextstepaction"]
 > [Automatikus kiegészítés és javaslatok hozzáadása az ügyfél kódjához](search-add-autocomplete-suggestions.md)

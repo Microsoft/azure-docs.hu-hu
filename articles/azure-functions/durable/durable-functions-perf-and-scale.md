@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d41b06bb0c2b26776f9d9c195c3a713e4dae9f82
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98572799"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626628"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés a Durable Functionsben (Azure Functions)
 
@@ -40,7 +40,7 @@ A Durable Functionsben egy munkaelem-várólista (Task hub) van. Ez egy alapszin
 
 ### <a name="control-queues"></a>Vezérlési várólista (ok)
 
-A Durable Functionsban több *ellenőrzési várólista* található. A *vezérlő üzenetsor* sokkal kifinomultabb, mint az egyszerűbb munkaelem-várólista. A vezérlési várólisták az állapot-nyilvántartó Orchestrator és az entitás funkcióinak aktiválására szolgálnak. Mivel a Orchestrator és az Entity függvény példányainak állapota egyedi, nem lehetséges versengő fogyasztói modellt használni a terhelés elosztásához a virtuális gépek között. Ehelyett a Orchestrator és az entitás-üzenetek terheléselosztása a vezérlési várólisták között történik. Ennek a viselkedésnek a további részletei a következő részekben olvashatók.
+A Durable Functionsban több *ellenőrzési várólista* található. A *vezérlő üzenetsor* sokkal kifinomultabb, mint az egyszerűbb munkaelem-várólista. A vezérlési várólisták az állapot-nyilvántartó Orchestrator és az entitás funkcióinak aktiválására szolgálnak. Mivel a Orchestrator és az Entity függvény példányai az állapot-nyilvántartó példányok, fontos, hogy az egyes feldolgozókat vagy entitásokat egyszerre csak egy feldolgozó dolgozza fel. Ennek eléréséhez minden egyes összehangoló példány vagy entitás egyetlen vezérlő várólistához van rendelve. Ezeket a vezérlési várólistákat a feldolgozók terheléselosztással biztosítják, hogy az egyes várólistákat egyszerre csak egy feldolgozó dolgozza fel. Ennek a viselkedésnek a további részletei a következő részekben olvashatók.
 
 A vezérlési várólisták számos különböző előkészítési életciklus-típusú üzenetet tartalmaznak. Ilyenek például a [Orchestrator-vezérlési üzenetek](durable-functions-instance-management.md), a tevékenység- *visszajelzési* üzenetek és az időzítő üzenetek. Az 32-as számú üzenetek egy lekérdezési sorból lesznek elküldve egyetlen lekérdezésben. Ezek az üzenetek hasznos adatokat és metaadatokat tartalmaznak, beleértve a kívánt előkészítési példányt is. Ha ugyanahhoz a hangelőkészítési példányhoz több elküldött üzenetet kíván, a rendszer kötegként dolgozza fel őket.
 
@@ -56,7 +56,7 @@ A maximális lekérdezési késleltetés a `maxQueuePollingInterval` [ fájlhost
 ### <a name="orchestration-start-delays"></a>Előkészítési kezdési késések
 Az előkészítési példányok elkezdődnek, ha egy üzenetet helyeznek el `ExecutionStarted` a tevékenység központja egyik vezérlő-várólistáján. Bizonyos körülmények között megfigyelheti a több másodperces késleltetést, ha a rendszer futtatásakor ütemezi a futtatást, és amikor ténylegesen elindul. Ebben az időintervallumban a koordináló példány az állapotban marad `Pending` . Ennek a késleltetésnek két lehetséges oka van:
 
-1. **Várakozó-vezérlési várólisták**: Ha a példányhoz tartozó vezérlő-várólista nagy mennyiségű üzenetet tartalmaz, akkor az `ExecutionStarted` üzenet fogadása és a futtatókörnyezet általi feldolgozása előtt időbe telik. Üzenetben várakozó üzenetek akkor fordulnak elő, ha az előkészítés során a rendszer egyszerre sok eseményt dolgoz fel. A vezérlési várólistába bejelentkező események közé tartoznak az előkészítési események, a tevékenységek befejezése, a tartós időzítők, a megszakítások és a külső események. Ha ez a késés normális körülmények között történik, érdemes lehet egy új, nagyobb számú partícióval rendelkező feladatot létrehozni. A további partíciók konfigurálásával a futtatókörnyezet további vezérlési várólistákat hoz létre a terhelés elosztásához.
+1. **Várakozó-vezérlési várólisták**: Ha a példányhoz tartozó vezérlő-várólista nagy mennyiségű üzenetet tartalmaz, akkor az `ExecutionStarted` üzenet fogadása és a futtatókörnyezet általi feldolgozása előtt időbe telik. Üzenetben várakozó üzenetek akkor fordulnak elő, ha az előkészítés során a rendszer egyszerre sok eseményt dolgoz fel. A vezérlési várólistába bejelentkező események közé tartoznak az előkészítési események, a tevékenységek befejezése, a tartós időzítők, a megszakítások és a külső események. Ha ez a késés normális körülmények között történik, érdemes lehet egy új, nagyobb számú partícióval rendelkező feladatot létrehozni. A további partíciók konfigurálásával a futtatókörnyezet további vezérlési várólistákat hoz létre a terhelés elosztásához. Az egyes partíciók a 1:1-as számú vezérlővel rendelkeznek, legfeljebb 16 partícióval.
 
 2. A **lekérdezési késések** visszakeresése: egy másik gyakori ok, hogy az előkészítési késések a [vezérlési várólisták korábban leírt visszatartási lekérdezési viselkedését](#queue-polling)jelentik. Ez a késleltetés azonban csak akkor várható, ha egy alkalmazás két vagy több példányra van kibővítve. Ha csak egy alkalmazás példánya van, vagy ha a koordinálást elindító alkalmazás is ugyanaz a példány, amely lekérdezi a cél vezérlőelem-várólistát, akkor nem lesz várólista-lekérdezési késleltetés. A lekérdezési késések visszautasítása a korábban leírtaknak megfelelően a beállítások **host.js** frissítésével csökkenthető.
 
@@ -94,7 +94,12 @@ Ha nincs megadva, a rendszer az alapértelmezett `AzureWebJobsStorage` Storage-f
 
 ## <a name="orchestrator-scale-out"></a>Orchestrator kibővíthető
 
-A tevékenységi funkciók állapot nélküliek, és a virtuális gépek hozzáadásával automatikusan méretezhetők. A Orchestrator függvények és entitások viszont egy vagy több vezérlő várólistán vannak *particionálva* . A vezérlő-várólisták száma a fájl **host.jsban** van definiálva. Az alábbi példában szereplő host.jsa (z `durableTask/storageProvider/partitionCount` ) tulajdonságot (vagy `durableTask/partitionCount` Durable functions 1. x) a (z) értékre állítja be `3` .
+Habár a tevékenység-funkciók a lehető leghatékonyabban méretezhetők a további virtuális gépek hozzáadásával, az egyes Orchestrator-példányok és entitások csak egyetlen partícióra vannak korlátozva, és a partíciók maximális száma a `partitionCount` beállításban van kötve `host.json` . 
+
+> [!NOTE]
+> Általánosságban elmondható, hogy a Orchestrator függvények egyszerűek, és nem igényelnek nagy mennyiségű számítási teljesítményt. Ezért nem szükséges nagy számú vezérlési várólista-partíciót létrehozni, hogy nagyszerű teljesítményt kapjon a feladatokhoz. A nagy részét az állapot nélküli tevékenységek függvényében kell elvégezni, ami a végtelen méretekben méretezhető.
+
+A vezérlő-várólisták száma a fájl **host.jsban** van definiálva. Az alábbi példában szereplő host.jsa (z `durableTask/storageProvider/partitionCount` ) tulajdonságot (vagy `durableTask/partitionCount` Durable functions 1. x) a (z) értékre állítja be `3` . Vegye figyelembe, hogy a partíciók számának több vezérlő várólistája van.
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
@@ -124,11 +129,25 @@ A tevékenységi funkciók állapot nélküliek, és a virtuális gépek hozzáa
 
 A feladatok központja 1 és 16 partíciót is konfigurálhat. Ha nincs megadva, az alapértelmezett partíciók száma **4**.
 
-Ha több Function Host-példányra (jellemzően különböző virtuális gépeken) végez skálázást, az egyes példányok a vezérlési várólisták egyikén zárolják a zárolást. Ezek a zárolások a blob Storage-bérletekben belsőleg valósulnak meg, és gondoskodnak arról, hogy egy előkészítési példány vagy entitás egyszerre csak egyetlen gazdagép-példányon fusson. Ha egy feladatsor három vezérlési várólistával van konfigurálva, akkor a bevezetési példányok és az entitások több mint három virtuális gép között is betölthetők. További virtuális gépek is hozzáadhatók a tevékenységi funkciók végrehajtásának kapacitásának növeléséhez.
+Az alacsony forgalmú forgatókönyvek során az alkalmazás skálázásra kerül, így a partíciók kis számú feldolgozóval lesznek kezelve. Vegyük például az alábbi diagramot.
+
+![Skálázási diagram](./media/durable-functions-perf-and-scale/scale-progression-1.png)
+
+Az előző ábrán azt láthatjuk, hogy az 1 – 6. Összehangolók terheléselosztást használnak a partíciók között. Hasonlóképpen, a partíciók, mint például a tevékenységek, terheléselosztást végeznek a feldolgozók között. A partíciók terheléselosztása a munkavégzők között, függetlenül az első lépések elsajátításának számától.
+
+Ha a Azure Functions vagy a rugalmas prémium csomagokon fut, vagy ha már konfigurálta a terheléses automatikus méretezést, a rendszer több feldolgozót kap a forgalom növekedésével, és a partíciók végül terheléselosztást végeznek az összes feldolgozón. Ha továbbra is kibővítjük a méretezést, az egyes partíciókat végül egyetlen feldolgozó fogja felügyelni. A tevékenységek viszont továbbra is terheléselosztást végeznek az összes feldolgozón belül. Ez az alábbi képen látható.
+
+![Első Felskálázási előkészítési diagram](./media/durable-functions-perf-and-scale/scale-progression-2.png)
+
+Az egyidejű _aktív_ Összehangolók maximális száma a *megadott időpontnál* egyenlő _az alkalmazás_ időpontjára kiosztott munkavégzők számával `maxConcurrentOrchestratorFunctions` . Ez a felső határ pontosabban végezhető el, ha a partíciók teljes mértékben méretezhetők a feldolgozók között. Ha teljes mértékben felskálázást végez, és mivel minden feldolgozó csak egyetlen functions Host-példánnyal fog rendelkezni, az _aktív_ egyidejű Orchestrator-példányok maximális száma egyenlő lesz _a partíciók_ számával `maxConcurrentOrchestratorFunctions` . Az alábbi ábrán egy teljes mértékben kibővíthető forgatókönyv látható, ahol további hangvezéreltség adódik hozzá, de néhány inaktív, szürke színnel.
+
+![Második Felskálázási előkészítési diagram](./media/durable-functions-perf-and-scale/scale-progression-3.png)
+
+A méretezési folyamat során a rendszer a vezérlési várólista zárolásait újra elosztja a functions Host-példányok között, így biztosítva a partíciók egyenletes eloszlását. Ezek a zárolások a blob Storage-bérletekben belsőleg valósulnak meg, és gondoskodnak arról, hogy az egyes előkészítési példányok vagy entitások egyszerre csak egy gazdagép-példányon fussanak. Ha egy feladatsor három partícióval van konfigurálva (és így három vezérlési sor van), a rendszer-előkészítési példányok és entitások mind a három címbérleti tárolási példányban elosztott terhelésű lehetnek. További virtuális gépek is hozzáadhatók a tevékenységi funkciók végrehajtásának kapacitásának növeléséhez.
 
 Az alábbi ábra azt szemlélteti, hogy a Azure Functions gazdagép hogyan kommunikál a tárolási entitásokkal egy kibővíthető környezetben.
 
-![Diagram méretezése](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Diagram méretezése](./media/durable-functions-perf-and-scale/scale-interactions-diagram.png)
 
 Ahogy az előző ábrán is látható, az összes virtuális gép versenyez a munkaelem-várólistán lévő üzenetekkel. Azonban csak három virtuális gép kaphat üzeneteket a vezérlési várólistákból, és mindegyik virtuális gép egyetlen vezérlő várólistát zárol.
 

@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863683"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612024"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Berendezések beállítása a Hyper-V-kiszolgálókon
 
@@ -39,9 +39,9 @@ A készülék beállítása VHD-sablon használatával:
 
 1. Az **áttelepítési céloknál** a  >  **Windows, a Linux és az SQL Server**  >  **Azure Migrate: felderítés és értékelés** **területen** válassza a felderítés lehetőséget.
 2. A **felderítési kiszolgálók** a  >  **kiszolgálók virtualizáltak?** területen válassza **az igen, a Hyper-V** lehetőséget.
-3. **1.: hozzon létre egy projektfájlt**, adja meg a Hyper-V-kiszolgálók felderítéséhez beállítani kívánt Azure Migrate-berendezés nevét. a névnek legfeljebb 14 karakterből kell állnia.
+3. **1.: hozzon létre egy projektfájlt**, adja meg annak a Azure Migrate készüléknek a nevét, amelyet a Hyper-V-kiszolgálók felderítéséhez fog beállítani. A névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárjuk be a felderítési kiszolgálók lapot.
-1. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy **projekt-kulcsot** .
+1. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy **Project-kulcsot** .
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="download-the-vhd"></a>A VHD letöltése
@@ -53,7 +53,6 @@ A készülék beállítása VHD-sablon használatával:
 
    ![A kulcs létrehozásának kiválasztása](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
-
 ### <a name="verify-security"></a>Biztonság ellenőrzése
 
 A telepítése előtt győződjön meg arról, hogy a tömörített fájl biztonságos.
@@ -63,9 +62,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-
-
-
+A fenti parancs eredményének összehasonlításával ellenőrizze a legutóbbi kivonat értékét az [itt](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security) leírt értékkel.
 
 ## <a name="create-the-appliance"></a>A berendezés létrehozása
 
@@ -85,7 +82,6 @@ Importálja a letöltött fájlt, és hozzon létre egy készüléket.
 5. A **hálózat kiválasztása** területen adja meg a kiszolgáló által használt virtuális kapcsolót. A kapcsolónak internetkapcsolattal kell rendelkeznie az Azure-ba való adatküldéshez.
 6. Az **Összefoglalás** területen tekintse át a beállításokat. Ezután kattintson a **Befejezés** gombra.
 7. A Hyper-V kezelőjében > **Virtual Machines** indítsa el a virtuális gépet.
-
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
@@ -128,8 +124,6 @@ Győződjön meg arról, hogy a készülék tud csatlakozni az Azure URL-címekh
 1. Miután sikeresen bejelentkezett, lépjen vissza az előző lapra a készülék Configuration Managerrel.
 4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
 1. A készülék sikeres regisztrálása után a **részletek megtekintése** lehetőségre kattintva megtekintheti a regisztráció részleteit.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Az SMB virtuális merevlemezek hitelesítő adatainak delegálása
 

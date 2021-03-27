@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b9ea447b0204ad91065f27d265584c8787167fc2
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: af0b8a4d3dfbce32e412f5294fb19ade61fd7661
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870721"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628169"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -44,7 +44,7 @@ Azure Migrate: kiszolgáló áttelepítése | N/A | Telepítse át a [VMWare vir
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| Felmérje a VMware virtuális gépeket, a Hyper-V virtuális gépeket, a fizikai kiszolgálókat és az egyéb Felhőbeli számítási feladatokat. | N/A
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | Felmérje a VMware virtuális gépeket, a Hyper-V virtuális gépeket, a fizikai kiszolgálókat más Felhőbeli számítási feladatokkal. |  VMware virtuális gépek, Hyper-V virtuális gépek, fizikai kiszolgálók, nyilvános Felhőbeli számítási feladatok migrálása.
 [Eszköz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Felmérje a VMware virtuális gépeket, a Hyper-V virtuális gépeket, a fizikai kiszolgálókat és az egyéb Felhőbeli számítási feladatokat.| N/A
-[DMA](/sql/dma/dma-overview?view=sql-server-2017) | SQL Server adatbázisok értékelése. | N/A
+[DMA](/sql/dma/dma-overview) | SQL Server adatbázisok értékelése. | N/A
 [DMS](../dms/dms-overview.md) | N/A | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB migrálása. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | A virtuális asztali infrastruktúra (VDI) felmérése | N/A
 [Movere](https://www.movere.io/) | A VMware virtuális gépek, a Hyper-V virtuális gépek, a Xen virtuális gépek, a fizikai kiszolgálók, a munkaállomások (beleértve a VDI-t) és más Felhőbeli számítási feladatok Értékelés | N/A
