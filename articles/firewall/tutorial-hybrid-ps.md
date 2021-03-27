@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/26/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: db60c26ed50dae3b4b28a6c44d152a921eb96a69
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94658638"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627557"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -61,9 +61,9 @@ Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv me
 Tekintse meg a jelen cikk [útvonalak létrehozása](#create-the-routes) című szakaszát, amelyből megtudhatja, hogyan jönnek létre ezek az útvonalak.
 
 >[!NOTE]
->Az Azure Firewallnak közvetlen internetkapcsolatra van szüksége. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
+>Az Azure Firewallnak közvetlen internetkapcsolatra van szüksége. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a Azure Firewall kényszerített bújtatási módban kell konfigurálnia. Ha ez egy meglévő Azure Firewall, amely kényszerített bújtatási módban nem konfigurálható újra, javasoljuk, hogy adjon hozzá egy 0.0.0.0/0 UDR a AzureFirewallSubnet, amely a közvetlen internetkapcsolat **fenntartása érdekében a** **NextHopType** értékre van beállítva.
 >
->A Azure Firewall konfigurálható úgy, hogy támogassa a kényszerített bújtatást. További információ: [Azure Firewall kényszerített bújtatás](forced-tunneling.md).
+>További információ: [Azure Firewall kényszerített bújtatás](forced-tunneling.md).
 
 >[!NOTE]
 >A közvetlenül összekapcsolt virtuális hálózatok közötti forgalom közvetlenül akkor is átirányítva van, ha egy UDR az alapértelmezett átjáróként való Azure Firewallre mutat. Ha ebben a forgatókönyvben az alhálózatot alhálózati forgalomra szeretné küldeni a tűzfalra, a UDR mindkét alhálózaton explicit módon tartalmaznia kell a célként megadott alhálózat hálózati előtagot.

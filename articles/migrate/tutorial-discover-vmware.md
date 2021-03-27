@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 2e9dafc111478f35263dc9db0cc07d913327c936
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562732"
+ms.locfileid: "105612058"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: VMware környezetben futó kiszolgálók felderítése Azure Migrateokkal: felderítés és Értékelés
 
@@ -34,11 +34,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfeltételek teljesülnek.
-
 
 **Követelmény** | **Részletek**
 --- | ---
@@ -97,7 +95,6 @@ A vSphere webes ügyfélprogramban az alábbiak szerint állítson be egy fióko
 6. Ha a telepített alkalmazások és az ügynök nélküli függőségek elemzését is el szeretné végezni, lépjen a **szerepkörök** > válassza ki a **csak olvasási** szerepkört, és a **jogosultságok** területen válassza a **vendég műveletek** lehetőséget. A jogosultságokat a vCenter Server alatt lévő összes objektumra propagálhatja a "propagálás gyermekeknek" jelölőnégyzet bejelölésével.
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Jelölőnégyzet a vendég műveleteknek a csak olvasási szerepkörön való engedélyezéséhez":::
-
 
 > [!NOTE]
 > A felderítést korlátozhatja meghatározott vCenter Server adatközpontokra, fürtökre, fürtökre, gazdagépekre, a gazdagépek mappájára vagy az egyes kiszolgálókra, a vCenter Server fiók hatókörével. [**További információ**](set-discovery-scope.md) a vCenter Server felhasználói fiók hatóköréről.
@@ -197,11 +194,9 @@ Importálja a letöltött fájlt, és hozzon létre egy kiszolgálót a VMware-k
 8. A **hálózati megfeleltetés** területen válassza ki azt a hálózatot, amelyhez a kiszolgáló csatlakozni fog. A hálózatnak internetkapcsolatra van szüksége, hogy metaadatokat küldjön a Azure Migratenak.
 9. Tekintse át és hagyja jóvá a beállításokat, majd kattintson a **Finish** (Befejezés) gombra.
 
-
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
 Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkhöz.
-
 
 ### <a name="4-configure-the-appliance"></a>4. a berendezés konfigurálása
 

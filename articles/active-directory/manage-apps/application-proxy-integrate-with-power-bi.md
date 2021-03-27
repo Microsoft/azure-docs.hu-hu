@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f0959ff51714e8a7e69f58a3e3abeab71e8359
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9b0cce11abe1076d26ac8d4c4dc57c9b57c4737
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99259372"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625581"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>A Power BI Mobile távoli elérésének engedélyezése Azure AD-alkalmazásproxyval
 
@@ -84,7 +84,7 @@ Most már készen áll az Azure AD-alkalmazásproxy konfigurálására.
 1. Jelentéskészítési szolgáltatások közzététele az Application proxyn keresztül a következő beállításokkal. Az alkalmazások alkalmazásproxyval történő közzétételével kapcsolatos részletes utasításokért tekintse meg az [Alkalmazások közzététele az Azure AD-alkalmazásproxyval](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) szakaszt.
    - **Belső URL-cím**: adja meg annak a jelentéskészítő kiszolgálónak az URL-címét, amelyet az összekötő elérhet a vállalati hálózaton. Győződjön meg arról, hogy az URL-cím elérhető arról a kiszolgálóról, amelyre az összekötő telepítve van. Az ajánlott eljárásnak megfelelően legfelső szintű tartományt használjon (például a `https://servername/` tartományt) az alkalmazásproxyval közzétett alútvonalakkal kapcsolatos problémák elkerülése érdekében. Például használja a `https://servername/` URL-címet a `https://servername/reports/` vagy a `https://servername/reportserver/` helyett.
      > [!NOTE]
-     > A jelentéskészítő kiszolgálóhoz biztonságos HTTPS-kapcsolat használatát javasoljuk. Útmutatásért tekintse meg [az SSL-kapcsolatok natív módú jelentéskészítő kiszolgálón való konfigurálását](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) ismertető szakaszt.
+     > A jelentéskészítő kiszolgálóhoz biztonságos HTTPS-kapcsolat használatát javasoljuk. Útmutatásért tekintse meg [az SSL-kapcsolatok natív módú jelentéskészítő kiszolgálón való konfigurálását](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server) ismertető szakaszt.
    - **Külső URL-cím**: adja meg a nyilvános URL-címet, amelyhez a Power bi Mobile alkalmazás csatlakozni fog. Ha egyéni tartományt használ, akkor például így nézhet ki: `https://reports.contoso.com`. Egyéni tartomány használatához töltse fel a tartomány tanúsítványát, és irányítson át egy DNS-rekordot az alkalmazás alapértelmezett msappproxy.net tartományára. A részletes lépésekért tekintse meg [az egyéni tartományok Azure AD-alkalmazásproxyban történő használatát](application-proxy-configure-custom-domain.md) ismertető szakaszt.
 
    - **Előhitelesítési módszer**: Azure Active Directory

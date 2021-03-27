@@ -9,17 +9,18 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7dcd630b0d5987c796ebb5a02657af9130221e6
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 78b31cb32e3df9b0d8e198d8c2122e492e609283
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045620"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625813"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
 Az **Azure szinapszis** egy nagyvállalati elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis összefoglalja a nagyvállalati adattárházak, a big data **használt Spark** **-technológiák,** az adatintegrációs és az ETL/elt, valamint az egyéb Azure-szolgáltatásokkal **(például** a **Power bi**, a **CosmosDB** és a **AzureML**) való mélyebb integrációt.
 
+![Az Azure szinapszis analitikai architektúrájának ábrája.](./media/overview-what-is/synapse-architecture.png)
 
 ## <a name="industry-leading-sql"></a>Piacvezető SQL
 
@@ -66,7 +67,7 @@ Az Azure szinapszis egyetlen lehetőséget biztosít a vállalatok számára az 
 
 A **szinapszis Studio** a felhasználói élmény, amely az adatmérnökökkel együtt mindent összekapcsol. Lehetővé teszi, hogy a teljes elemzési megoldás létrehozásához szükséges összes feladatot elvégezzék.
 
-* A legfontosabb adatok engingeer feladatok egy helyen: betöltés, vizsgálat, előkészítés, hangolás, megjelenítés
+* Kulcsfontosságú adatmérnöki feladatok az egyik helyen: betöltés, felfedezés, előkészítés, hangolás, megjelenítés
 * Piacvezető termelékenység az SQL vagy a Spark-kód írásához: szerzői műveletek, hibakeresés és teljesítmény optimalizálása
 * Integrálás a vállalati CI/CD-folyamattal
 

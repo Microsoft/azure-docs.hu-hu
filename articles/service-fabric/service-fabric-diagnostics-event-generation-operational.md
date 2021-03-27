@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric-események listája
 description: Az Azure Service Fabric által biztosított események átfogó listája a fürtök figyeléséhez.
-author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
-ms.author: srrengar
-ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3f65d7c3ddec8263ff6f115df9616b48814afc93
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85846654"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628883"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric események listája 
 
@@ -55,6 +53,13 @@ A fürt frissítéseivel kapcsolatos további részletek [itt](service-fabric-cl
 | 25622 | NodeOpenFailed | Statetransition sablontípus |  Egy csomópont nem tudott elindulni és csatlakoztatni a gyűrűt | FabricNode | Hiba | 
 | 25624 | NodeClosed | Statetransition sablontípus |  Egy csomópont leállítása sikerült | FabricNode | Tájékoztató | 
 | 25626 | NodeAborted | Statetransition sablontípus |  Egy csomópontot nem sikerült leállítani | FabricNode | Hiba | 
+
+**KTL naplózó csomópont eseményei** 
+
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level |
+| --- | --- | --- | --- | --- | --- | 
+| 50187 | SharedLogWriteThrottled | Egészségügy | A megosztott naplóba való írások szabályozása folyamatban van | KtlLoggerNode | Tájékoztató | 
+| 50188 | SharedLogWriteUnthrottled | Egészségügy | A megosztott naplóba való írások nem szabályozottak | KtlLoggerNode | Tájékoztató | 
 
 ## <a name="application-events"></a>Alkalmazás eseményei
 
@@ -117,17 +122,17 @@ Az alkalmazások frissítéseiről [itt](service-fabric-application-upgrade.md)t
 | 61687 | TStoreError | Hiba | A megbízható gyűjtemény váratlan hibát kapott | TStore | Hiba |
 | 63831 | PrimaryFullCopyInitiated | Életciklus | Az elsődleges replika teljes másolatot kezdeményezett | TReplicator | Tájékoztató |
 | 63832 | PrimaryPartialCopyInitiated | Életciklus | Az elsődleges replika részleges másolatot kezdeményezett | TReplicator | Tájékoztató |
-| 16831 | BuildIdleReplicaStarted | Életciklus | Az elsődleges replika megkezdte a tétlen replika kiépítése | Replikáció | Tájékoztató |
-| 16832 | BuildIdleReplicaCompleted | Életciklus | Az elsődleges replika befejezte az üresjárati replika kiépítése | Replikáció | Tájékoztató |
-| 16833 | BuildIdleReplicaFailed | Életciklus | Az elsődleges replika nem tudta felépíteni a tétlen replikát | Replikáció | Figyelmeztetés |
-| 16834 | PrimaryReplicationQueueFull | Egészségügy | Az elsődleges replika replikációs várólistája megtelt | Replikáció | Figyelmeztetés |
-| 16835 | PrimaryReplicationQueueWarning | Egészségügy | Az elsődleges replika replikációs várólistája majdnem megtelt | Replikáció | Figyelmeztetés |
-| 16836 | PrimaryReplicationQueueWarningMitigated | Egészségügy | Az elsődleges replika replikációs várólistája rendben van | Replikáció | Tájékoztató |
-| 16837 | SecondaryReplicationQueueFull | Egészségügy | A másodlagos replika replikációs várólistája megtelt | Replikáció | Figyelmeztetés |
-| 16838 | SecondaryReplicationQueueWarning | Egészségügy | A másodlagos replika replikációs várólistája majdnem megtelt | Replikáció | Figyelmeztetés |
-| 16839 | SecondaryReplicationQueueWarningMitigated | Egészségügy | A másodlagos replika replikációs várólistája rendben van | Replikáció | Tájékoztató |
-| 16840 | PrimaryFaultedSlowSecondary | Egészségügy | Az elsődleges replika meghibásodott egy lassú másodlagos replika | Replikáció | Figyelmeztetés |
-| 16841 | ReplicatorFaulted | Egészségügy | A replika hibát jelzett | Replikáció | Figyelmeztetés |
+| 16831 | BuildIdleReplicaStarted | Életciklus | Az elsődleges replika megkezdte a tétlen replika kiépítése | Replikálás | Tájékoztató |
+| 16832 | BuildIdleReplicaCompleted | Életciklus | Az elsődleges replika befejezte az üresjárati replika kiépítése | Replikálás | Tájékoztató |
+| 16833 | BuildIdleReplicaFailed | Életciklus | Az elsődleges replika nem tudta felépíteni a tétlen replikát | Replikálás | Figyelmeztetés |
+| 16834 | PrimaryReplicationQueueFull | Egészségügy | Az elsődleges replika replikációs várólistája megtelt | Replikálás | Figyelmeztetés |
+| 16835 | PrimaryReplicationQueueWarning | Egészségügy | Az elsődleges replika replikációs várólistája majdnem megtelt | Replikálás | Figyelmeztetés |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Egészségügy | Az elsődleges replika replikációs várólistája rendben van | Replikálás | Tájékoztató |
+| 16837 | SecondaryReplicationQueueFull | Egészségügy | A másodlagos replika replikációs várólistája megtelt | Replikálás | Figyelmeztetés |
+| 16838 | SecondaryReplicationQueueWarning | Egészségügy | A másodlagos replika replikációs várólistája majdnem megtelt | Replikálás | Figyelmeztetés |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Egészségügy | A másodlagos replika replikációs várólistája rendben van | Replikálás | Tájékoztató |
+| 16840 | PrimaryFaultedSlowSecondary | Egészségügy | Az elsődleges replika meghibásodott egy lassú másodlagos replika | Replikálás | Figyelmeztetés |
+| 16841 | ReplicatorFaulted | Egészségügy | A replika hibát jelzett | Replikálás | Figyelmeztetés |
 
 ## <a name="container-events"></a>Tároló eseményei
 

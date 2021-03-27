@@ -2,19 +2,21 @@
 title: Bicep-fájlok létrehozása – Visual Studio Code
 description: Az Azure-erőforrások üzembe helyezéséhez használja a Visual Studio Code és a bicep-bővítményt a bicep-fájlok számára
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504150"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612889"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Rövid útmutató: bicep-fájlok létrehozása a Visual Studio Code-ban
 
 A Visual Studio Code-hoz készült bicep bővítmény nyelvi támogatást és erőforrás-újratöltést biztosít. Ezek az eszközök segítenek létrehozni és érvényesíteni a [bicep](./bicep-overview.md) -fájlokat. Ebben a rövid útmutatóban a bővítmény használatával hozhat létre teljesen új bicep-fájlt. Ennek során a bővítmények képességeit, például az ellenőrzést és a befejezést is megtapasztalhatja.
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 A rövid útmutató elvégzéséhez szüksége lesz a [Visual Studio Code](https://code.visualstudio.com/)-ra, amelyen telepítve van a [bicep bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) . Szüksége lesz a legújabb [Azure CLI](/cli/azure/) -re vagy a legújabb Azure PowerShell telepített és hitelesített [modulra](/powershell/azure/new-azureps-module-az) is.
 

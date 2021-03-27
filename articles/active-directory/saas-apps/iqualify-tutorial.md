@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bdd68a4f0dafd3b336bf5a3fb34399d725c9ff5c
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999161"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Oktatóanyag: Azure Active Directory Integration with iQualify LMS
 
@@ -88,44 +88,41 @@ Az Azure AD egyszeri bejelentkezés az iQualify LMS-sel való konfigurálásáho
 
 1. A [Azure Portal](https://portal.azure.com/) **iQualify LMS** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+   ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
 2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+   ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
+   ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
+   
+   1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    | |
-    |--|--|
-    | Éles környezet: `https://<yourorg>.iqualify.com/`|
-    | Tesztkörnyezet: `https://<yourorg>.iqualify.io`|
+      * Éles környezet: `https://<yourorg>.iqualify.com/`
+      * Tesztkörnyezet: `https://<yourorg>.iqualify.io`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    | |
-    |--|--|
-    | Éles környezet: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Tesztkörnyezet: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
+   2. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
+
+      * Éles környezet: `https://<yourorg>.iqualify.com/auth/saml2/callback` 
+      * Tesztkörnyezet: `https://<yourorg>.iqualify.io/auth/saml2/callback`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
+   ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    | |
-    |--|--|
-    | Éles környezet: `https://<yourorg>.iqualify.com/login` |
-    | Tesztkörnyezet: `https://<yourorg>.iqualify.io/login` |
+   A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [IQUALIFY LMS ügyfél-támogatási csapatához](https://www.iqualify.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+      * Éles környezet: `https://<yourorg>.iqualify.com/login`
+      * Tesztkörnyezet: `https://<yourorg>.iqualify.io/login`
+
+   > [!NOTE]
+   > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [IQUALIFY LMS ügyfél-támogatási csapatához](https://www.iqualify.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 6. A iQualify LMS-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 

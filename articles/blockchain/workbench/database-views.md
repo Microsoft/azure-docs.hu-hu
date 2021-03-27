@@ -4,16 +4,16 @@ description: Az elérhető Azure Blockchain Workbench előzetes verziójú SQL D
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c7fba590c9c8951e1862c28cb24dbde52c8da8d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87003321"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625534"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Az Azure Blockchain Workbench adatbázis-nézetei
 
-Az Azure Blockchain Workbench előzetes verziója elosztott főkönyvből származó adatokon *kívüli* SQL db-adatbázisba kézbesíti az adatait. A láncon kívüli adatbázis lehetővé teszi az SQL és a meglévő eszközök, például a [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)használatát a blockchain-alapú adatkezeléshez.
+Az Azure Blockchain Workbench előzetes verziója elosztott főkönyvből származó adatokon *kívüli* SQL db-adatbázisba kézbesíti az adatait. A láncon kívüli adatbázis lehetővé teszi az SQL és a meglévő eszközök, például a [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)használatát a blockchain-alapú adatkezeléshez.
 
 Az Azure Blockchain Workbench olyan adatbázis-nézeteket biztosít, amelyek hozzáférést biztosítanak a lekérdezések végrehajtásakor hasznos adatokhoz. Ezek a nézetek nagy mértékben normalizálva vannak, így könnyen megkezdheti a jelentések létrehozását, elemzését és más módon történő felhasználását a meglévő eszközökkel, és anélkül, hogy blockchain az adatbázis-munkatársakat.
 

@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztal előzetes verziójának figyelése
 description: A Windows rendszerű virtuális asztalok Azure Monitorével kapcsolatos hibák elhárítása.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a07d7536d3d71b121c1dde761d8c290b8be01fe7
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709172"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628458"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>A Windows rendszerű virtuális asztali számítógép (előzetes verzió) Azure Monitor hibáinak megoldása
 
@@ -25,28 +25,26 @@ Ez a cikk a Windows rendszerű virtuális asztalok (előzetes verzió) Azure Mon
 Ha a konfigurációs munkafüzet nem működik megfelelően a telepítő automatizálásához, ezeket az erőforrásokat használhatja a környezet manuális beállításához:
 
 - A diagnosztika manuális engedélyezéséhez vagy a Log Analytics munkaterület eléréséhez lásd: [a Windows rendszerű virtuális asztali diagnosztika küldése log Analytics](diagnostics-log-analytics.md).
-- Ha manuálisan szeretné telepíteni a Log Analytics-bővítményt egy gazdagépre, tekintse meg [log Analytics virtuálisgép-bővítményt a Windowshoz](../virtual-machines/extensions/oms-windows.md).
+- Ha manuálisan szeretné telepíteni a Log Analytics-bővítményt egy munkamenet-állomáson, Log Analytics tekintse meg a [Windows rendszerhez készült virtuálisgép-bővítményt](../virtual-machines/extensions/oms-windows.md).
 - Új Log Analytics munkaterület beállításához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/logs/quick-create-workspace.md)című témakört.
-- Teljesítményszámlálók hozzáadásához vagy eltávolításához tekintse meg a [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md)című témakört.
-- Log Analytics munkaterület eseményeinek konfigurálásához lásd: a [Windows Eseménynapló adatforrásainak összegyűjtése log Analytics ügynökkel](../azure-monitor/agents/data-sources-windows-events.md).
+- Teljesítményszámlálók hozzáadásához, eltávolításához vagy szerkesztéséhez tekintse meg a teljesítményszámlálók [konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md)című témakört.
+- Log Analytics munkaterület Windows-eseménynaplóinak konfigurálásával kapcsolatban lásd: a [Windows Eseménynapló adatforrásainak összegyűjtése log Analytics ügynökkel](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Az adataim nem megfelelően jelennek meg
 
-Ha az adatai nem megfelelően jelennek meg, ellenőrizze a konfigurációt, az engedélyeket, és ellenőrizze, hogy a szükséges IP-címek blokkolva vannak-e. 
+Ha az adatai nem megfelelően jelennek meg, tekintse meg a következő gyakori megoldásokat:
 
-- Először is győződjön meg róla, hogy kitöltötte az összes mezőt a konfigurációs munkafüzetben az [Azure monitor használata a Windows rendszerű virtuális asztalhoz](azure-monitor.md)című témakörben leírtak szerint az üzemelő példány figyeléséhez. Ha hiányoznak a számlálók vagy események, a hozzájuk társított adatai nem jelennek meg a Azure Portalban.
-
+- Először is győződjön meg arról, hogy helyesen állította be a konfigurációs munkafüzetet, ahogy az a [Windows rendszerű virtuális asztali környezet Azure monitor használata az üzembe helyezés figyeléséhez](azure-monitor.md)című témakörben leírtak szerint. Ha hiányoznak a számlálók vagy események, a hozzájuk társított adatai nem jelennek meg a Azure Portalban.
 - Győződjön meg arról, hogy a hozzáférési engedélyei & a hiányzó engedélyek kéréséhez forduljon az erőforrás-tulajdonoshoz. a Windows rendszerű virtuális asztali számítógépek figyeléséhez a következő engedélyek szükségesek:
-
     - Olvasási hozzáférés a Windows rendszerű virtuális asztali erőforrásokkal rendelkező Azure-előfizetésekhez
     - Olvasási hozzáférés az előfizetés azon csoportjaihoz, amelyek a Windows rendszerű virtuális asztali munkamenet-gazdagépeket tárolják 
-    - Olvasási hozzáférés a Log Analytics munkaterülethez
-
-- Előfordulhat, hogy a kiszolgáló tűzfalán meg kell nyitnia a kimenő portokat, hogy Azure Monitor az adatküldést a portálra, lásd: [kimenő portok](../azure-monitor/app/ip-addresses.md). 
-
+    - Olvasási hozzáférés az Ön által használt Log Analytics-munkaterületekhez
+- Előfordulhat, hogy a kiszolgáló tűzfalán meg kell nyitnia a kimenő portokat, hogy Azure Monitor és Log Analytics az adatküldés a portálra. Ennek megismeréséhez tekintse meg a következő cikkeket:
+      - [Kimenő portok Azure Monitor](../azure-monitor/app/ip-addresses.md)
+      - [Log Analytics a tűzfalra vonatkozó követelményeket](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements). 
 - Nem látja a legutóbbi tevékenységek adatait? Érdemes 15 percet várni, és frissíteni a hírcsatornát. A naplózási adatok feltöltéséhez a Azure Monitor 15 perces késési időszakot biztosít. További információ: [adatfeldolgozási idő naplózása Azure monitorban](../azure-monitor/logs/data-ingestion-time.md).
 
-Ha nem ad meg semmilyen információt, de az adatai még nem jelennek meg megfelelően, előfordulhat, hogy probléma van a lekérdezésben vagy az adatforrásokban. Tekintse át az ismert problémákat és korlátozásokat. 
+Ha nem ad meg semmilyen információt, de az adatai még nem jelennek meg megfelelően, előfordulhat, hogy probléma van a lekérdezésben vagy az adatforrásokban. Tekintse át [az ismert problémákat és korlátozásokat](#known-issues-and-limitations). 
 
 ## <a name="i-want-to-customize-azure-monitor-for-windows-virtual-desktop"></a>Szeretném testreszabni a Windows rendszerű virtuális asztali Azure Monitor
 
@@ -60,7 +58,7 @@ További információ az adatkifejezésekről: [Azure monitor for Window Virtual
 
 ## <a name="the-data-i-need-isnt-available"></a>A szükséges adatértékek nem érhetők el
 
-Ha több teljesítményszámlálókat vagy eseményt szeretne figyelni, engedélyezheti őket a Log Analytics munkaterületre való küldéshez, és megfigyelheti őket a gazdagép diagnosztika szolgáltatásában: böngésző. 
+Ha több teljesítményszámlálókat vagy Windows-eseménynaplókat szeretne figyelni, engedélyezheti, hogy diagnosztikai adatokat küldjön a Log Analytics munkaterületre, és figyelje azokat a **gazdagép diagnosztika szolgáltatásában: böngésző**. 
 
 - Teljesítményszámlálók hozzáadásával kapcsolatban lásd: [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)
 - Windows-események hozzáadásával kapcsolatban lásd: [Windows-eseménynaplók konfigurálása](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
@@ -68,26 +66,19 @@ Ha több teljesítményszámlálókat vagy eseményt szeretne figyelni, engedél
 Nem található olyan adatpont, amely segít a probléma diagnosztizálásában? Küldje el nekünk visszajelzését!
 
 - A visszajelzések elküldésével kapcsolatos további információkért lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás a Windows rendszerű virtuális asztalokhoz](troubleshoot-set-up-overview.md).
-- A Windows rendszerű virtuális asztali Windows Virtual Desktop [visszajelzési központ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) vagy [a UserVoice fórum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)visszajelzéseit is elhagyhatja.
+- A Windows rendszerű virtuális asztalok visszajelzéseit a [Windows Virtual Desktop visszajelzési központja](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)is elhagyhatja.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
-Ezek a problémák és korlátozások jelenleg a következőkkel kapcsolatosak:
+A következő problémák és korlátozások észlelhetők, és a javításra dolgozunk:
 
 - Egyszerre csak egy gazdagépet tud figyelni. 
-
 - Kedvenc beállítások mentéséhez mentenie kell a munkafüzet egyéni sablonját. Az egyéni sablonok nem fogadnak el automatikusan frissítéseket a termék csoportjából.
-
-- Bizonyos hibaüzenetek nem a felhasználóbarát módon jelennek meg, és nem minden hibaüzenetet ismertetnek a dokumentációban.
-
+- A konfigurációs munkafüzet időnként a "lekérdezés sikertelen" hibákat jeleníti meg a beállítások betöltésekor. Frissítse a lekérdezést, ha szükséges, adja meg újból a kijelölést, és a hibát fel kell oldania. 
+- Bizonyos hibaüzenetek nem jelennek meg felhasználóbarát módon, és nem minden hibaüzenetet ismertetnek a dokumentációban.
 - A munkamenetek teljes teljesítményszámlálói egy kis számú munkamenetet is tartalmazhatnak, és előfordulhat, hogy a munkamenetek maximális száma túllépi a munkamenetek maximális számát.
-
-- Az elérhető munkamenetek száma nem tükrözi a gazdagép skálázási házirendjeit. 
-    
-- Ritka esetben a kapcsolat befejezési eseménye hiányzik, és ez hatással lehet bizonyos vizualizációk, például a kapcsolatok időbeli és a felhasználó kapcsolati állapotára.  
-    
-- A konfigurációs munkafüzet csak az adott régióban található gazdagépek konfigurálását támogatja. 
-
+- Az elérhető munkamenetek száma nem tükrözi a gazdagép skálázási házirendjeit.   
+- Ellentmond vagy váratlan kapcsolatfelvételi időt lát? Ritka esetben a kapcsolat befejezési eseménye hiányzik, és hatással lehet bizonyos vizualizációra és mérőszámokra.
 - A kapcsolódás ideje magában foglalja a felhasználóknak a hitelesítő adatok megadásához szükséges időt. Ez összefügg a gyakorlattal, de bizonyos esetekben hamis csúcsokat is megjeleníthet. 
     
 

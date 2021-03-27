@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 42e263a47c6c771d2b1fef6586468cfc5a698e28
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047915"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628577"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ A felügyelt példányok a számítási és a tárolási méretnél ugyanazok a 
 
 Az egyik lehetőség, hogy [exportál egy adatbázist a BACPAC](../database/database-export.md) -be, majd [importálja a BACPAC-fájlt](../database/database-import.md). Ez az ajánlott módszer, ha az adatbázis 100 GB-nál kisebb.
 
-A [tranzakciós replikáció](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) akkor használható, ha az adatbázis minden táblája rendelkezik *elsődleges* kulccsal, és nincsenek memóriában tárolt OLTP objektumok az adatbázisban.
+A [tranzakciós replikáció](replication-two-instances-and-sql-server-configure-tutorial.md) akkor használható, ha az adatbázis minden táblája rendelkezik *elsődleges* kulccsal, és nincsenek memóriában tárolt OLTP objektumok az adatbázisban.
 
 A felügyelt példányból származó natív COPY_ONLY biztonsági másolatok nem állíthatók vissza SQL Server, mert a felügyelt példány magasabb verziójú adatbázis-verzióval rendelkezik, mint SQL Server. További részletekért lásd: [csak másolatot tartalmazó biztonsági mentés](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).
 
@@ -171,7 +171,7 @@ Tekintse meg [az SQL felügyelt példány és a SQL Server közötti teljesítm�
 
 A felügyelt példány teljesítményének optimalizálása a alábbiak szerint végezhető el:
 - [Automatikus hangolás](../database/automatic-tuning-overview.md) , amely az AI és a gépi tanulás alapján biztosítja a teljesítményt és a stabil munkaterheléseket a folyamatos teljesítmény-hangolással.
--   [Memóriabeli OLTP](../in-memory-oltp-overview.md) , amely javítja a tranzakciós feldolgozási számítási feladatok átviteli sebességét és késését, és gyorsabb üzleti eredményeket biztosít. 
+-    [Memóriabeli OLTP](../in-memory-oltp-overview.md) , amely javítja a tranzakciós feldolgozási számítási feladatok átviteli sebességét és késését, és gyorsabb üzleti eredményeket biztosít. 
 
 Ha még tovább szeretné hangolni a teljesítményt, érdemes lehet az [alkalmazás-és adatbázis-hangolás](../database/performance-guidance.md#tune-your-database) *ajánlott eljárásait* alkalmaznia.
 Ha a munkaterhelés sok kis tranzakcióból áll, érdemes lehet [átváltani a proxyról átirányítani a kapcsolódási típust](connection-types-overview.md#changing-connection-type) az alacsonyabb késés és a nagyobb átviteli sebesség érdekében.
@@ -263,9 +263,9 @@ Igen. Egy felügyelt példány üzembe helyezése után beállíthat olyan NSG, 
 **Beállítható a NVA vagy a helyszíni tűzfal a kimenő felügyeleti forgalom szűrésére a teljes tartománynevek alapján?**
 
 Nem. Ez számos okból nem támogatott:
--   A bejövő felügyeleti kérelemre válaszként szolgáló útválasztási forgalom aszimmetrikus, és nem működik.
--   A tárterületre kerülő útválasztási forgalmat a rendszer az átviteli korlátok és a késés miatt befolyásolja, így a várt szolgáltatás minősége és rendelkezésre állása nem lesz elérhető.
--   A tapasztalatok alapján ezek a konfigurációk a hibás és nem támogatottak.
+-    A bejövő felügyeleti kérelemre válaszként szolgáló útválasztási forgalom aszimmetrikus, és nem működik.
+-    A tárterületre kerülő útválasztási forgalmat a rendszer az átviteli korlátok és a késés miatt befolyásolja, így a várt szolgáltatás minősége és rendelkezésre állása nem lesz elérhető.
+-    A tapasztalatok alapján ezek a konfigurációk a hibás és nem támogatottak.
 
 **Megadhatom a NVA vagy a tűzfalat a kimenő nem felügyeleti forgalomhoz?**
 
@@ -416,9 +416,9 @@ Az SQL felügyelt példánya [virtuális mag-alapú vásárlási modellt](sql-ma
 **Milyen költségadatok érhetők el az SQL felügyelt példányaihoz?**
 
 A költségeket az alábbi módokon mentheti az Azure SQL-előnyökkel:
--   Maximalizálja a meglévő beruházásokat a helyszíni licencekben, és akár 55%-ot is megtakaríthat [Azure Hybrid Benefit](../azure-hybrid-benefit.md?tabs=azure-powershell). 
--   Véglegesítse a számítási erőforrások foglalását, és akár 33%-ot is megtakaríthat a [fenntartott példányok előnyeivel](../database/reserved-capacity-overview.md). Az Azure Hybrid benefittel akár 82%-os megtakarítást is használhat. 
--   Az [Azure dev/test díjszabási juttatásával](https://azure.microsoft.com/pricing/dev-test/) akár 55%-ot is megtakaríthat, amely kedvezményes díjszabást biztosít a folyamatos fejlesztési és tesztelési feladatokhoz.
+-    Maximalizálja a meglévő beruházásokat a helyszíni licencekben, és akár 55%-ot is megtakaríthat [Azure Hybrid Benefit](../azure-hybrid-benefit.md?tabs=azure-powershell). 
+-    Véglegesítse a számítási erőforrások foglalását, és akár 33%-ot is megtakaríthat a [fenntartott példányok előnyeivel](../database/reserved-capacity-overview.md). Az Azure Hybrid benefittel akár 82%-os megtakarítást is használhat. 
+-    Az [Azure dev/test díjszabási juttatásával](https://azure.microsoft.com/pricing/dev-test/) akár 55%-ot is megtakaríthat, amely kedvezményes díjszabást biztosít a folyamatos fejlesztési és tesztelési feladatokhoz.
 
 **Ki jogosult a fenntartott példányokra?**
 

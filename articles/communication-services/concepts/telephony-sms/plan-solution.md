@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6ec0b32e487739c33b1b2b49bd0645130fc88581
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7b295c6dabfce6a624d93d75991163f464cfd46e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729532"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625228"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
 
@@ -31,7 +31,7 @@ Az Azure kommunikációs szolgáltatások lehetővé teszik a telefonszámok has
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure-előfizetések jogosultsága
 
-Telefonszám beolvasásához fizetős Azure-előfizetésre van szükség. A telefonszámok nem szerezhetők be próbaverziós fiókokon vagy Azure ingyenes kreditekkel. 
+Telefonszám beolvasásához fizetős Azure-előfizetésre van szükség. A telefonszámok nem szerezhetők be próbaverziós fiókokon vagy Azure ingyenes kreditekkel.
 
 A telefonszám rendelkezésre állása jelenleg olyan Azure-előfizetésekre korlátozódik, amelyek számlázási címükkel rendelkeznek az USA-beli adatterülettel rendelkező Egyesült Államok és kommunikációs szolgáltatások erőforrásaiban.
 
@@ -59,13 +59,13 @@ Az alábbi táblázat összefoglalja a következő telefonszámokat:
 | Toll-Free         | + 1 (díjmentes terület *kódja*) xxx XX XX | USA                      | Calling (kimenő), SMS (bejövő/kimenő)| Telefonszámok kiosztása interaktív hangválaszi (IVR) rendszerekhez/robotokhoz, SMS-alkalmazásokhoz                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Az Azure kommunikációs szolgáltatások telefonszám-szolgáltatásai
+### <a name="phone-number-capabilities-in-azure-communication-services"></a>Telefonszám-képességek az Azure kommunikációs szolgáltatásokban
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-A legtöbb telefonszám esetében lehetővé tesszük a "a la carte" szolgáltatások beállításának konfigurálását. Ezek a funkciók kiválaszthatók, ha az Azure kommunikációs szolgáltatásokban adhatja meg a telefonszámokat.
+A legtöbb telefonszám esetében lehetővé tesszük, hogy a "a la carte" készletet konfigurálja a képességek közül. Ezek a képességek kiválaszthatók, ha a telefonszámokat az Azure kommunikációs szolgáltatásokban adhatja bérbe.
 
-Az Ön számára elérhető funkciók attól függnek, hogy melyik országban működik, a használati eset és a kiválasztott telefonszám típusa. Ezek a szolgáltatások országonként változnak, a szabályozási követelmények miatt. Az Azure kommunikációs szolgáltatások a következő telefonszám-funkciókat kínálja:
+Az Ön számára elérhető képességek attól függnek, hogy milyen országban dolgozik, a használati eset és a kiválasztott telefonszám típusa. Ezek a képességek országonként változnak, a szabályozási követelmények miatt. Az Azure kommunikációs szolgáltatás a következő telefonszám-képességeket kínálja:
 
 - **Egyirányú kimenő SMS** Ez a beállítás lehetővé teszi, hogy SMS-üzeneteket küldjön a felhasználóknak. Ez az értesítési és a kétfaktoros hitelesítési helyzetekben lehet hasznos.
 - **Kétirányú bejövő és kimenő SMS** Ez a beállítás lehetővé teszi üzenetek küldését és fogadását a felhasználóktól a telefonszámok használatával. Ez az ügyfél-szolgáltatási forgatókönyvek esetében hasznos lehet.

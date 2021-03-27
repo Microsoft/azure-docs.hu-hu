@@ -2,15 +2,15 @@
 title: Bicep modulok
 description: Leírja, hogyan lehet definiálni és használni egy modult, és hogyan használhatók a modul-hatókörök.
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 2edeb5c96f771867f964963b2d27768291ae2d4a
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/25/2021
+ms.openlocfilehash: 7a680e8aa0fa4d5ef9cac7f9e7ba07a3aa4ee1e2
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889705"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611735"
 ---
-# <a name="use-bicep-modules"></a>Bicep modulok használata
+# <a name="use-bicep-modules-preview"></a>Bicep modulok használata (előzetes verzió)
 
 A bicep lehetővé teszi egy összetett megoldás modulokra bontását. A bicep modul egy vagy több, együtt üzembe helyezhető erőforrás készlete. A modulok elvonták a nyers erőforrás deklarációjának összetett részleteit, ami növelheti az olvashatóságot. Újra felhasználhatja ezeket a modulokat, és megoszthatja azokat más személyekkel. A [sablon specifikációinak](./template-specs.md)együttes használata lehetővé teszi a modularitás és a kód újbóli használatának módját. Oktatóanyagért lásd [: oktatóanyag: a bicep modulok hozzáadása](./bicep-tutorial-add-modules.md).
 

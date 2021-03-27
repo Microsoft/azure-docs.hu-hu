@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric esemény összesítése a EventFlow segítségével
 description: Ismerje meg, hogy az Azure Service Fabric-fürtök monitorozásához és diagnosztizálásához a EventFlow segítségével használatával hogyan összesítheti és gyűjtheti az eseményeket.
-author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
-ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5a502fe05a862893d2c4879a6976d8d8d1044cbf
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96006336"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627761"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Események összesítése és gyűjtése a EventFlow segítségével használatával
 

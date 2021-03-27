@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 692033e323880db1699d7265a991775d41b05f7f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f84dc66828f2ebf13316b3348fd93933a2223b5a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656005"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612279"
 ---
 # <a name="what-is-document-translation-preview"></a>Mi a dokumentum fordítása (előzetes verzió)?
 
@@ -52,7 +52,7 @@ A dokumentumok fordítása a következő dokumentum-fájltípusokat támogatja:
 |Microsoft Outlook|. msg|A Microsoft Outlookban létrehozott vagy mentett e-mail-üzenet.|
 |Microsoft PowerPoint|.pptx| Egy bemutató fájl, amely a tartalmak diavetítéses formátumban való megjelenítésére szolgál.|
 |Microsoft Word|.docx| Egy szöveges dokumentum fájlja.|
-|Tabulátorral tagolt értékek/TAB|. TSV/. TAB| tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|
+|Tabulátorral tagolt értékek/TAB|. TSV/. TAB| Tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|
 |Szöveg|.txt| Formázatlan szöveges dokumentum.|
 |Fordítási memória cseréje|. TMX|Nyílt XML-szabvány, amely a számítógéppel segített fordítás (CAT) és a honosítási alkalmazások által létrehozott fordítási memória (TM)-adatcseréhez használatos.|
 
@@ -63,7 +63,7 @@ A dokumentumok fordítása a következő Szószedet-fájltípusokat támogatja:
 | Fájl típusa| Fájlkiterjesztés|Description|
 |---|---|--|
 |Honosítási adatcsere fájlformátuma|XLF. , xliff| Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.|
-|Tabulátorral tagolt értékek/TAB|. TSV/. TAB| tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|
+|Tabulátorral tagolt értékek/TAB|. TSV/. TAB| Tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|
 
 ## <a name="next-steps"></a>Következő lépések
 

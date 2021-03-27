@@ -2,13 +2,13 @@
 title: Sablon szerkezete és szintaxisa
 description: Ismerteti Azure Resource Manager sablonok (ARM-sablonok) szerkezetét és tulajdonságait a deklaratív JSON szintaxis használatával.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/26/2021
+ms.openlocfilehash: 42b893e25155bb3ebe66e0deac180698446a2c9b
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120416"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612177"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM-sablonok struktúrájának és szintaxisának megismerése
 
@@ -163,7 +163,7 @@ A felhasználói függvények meghatározásakor bizonyos korlátozások vonatko
 
 Az egyéni függvények használatáról az [ARM-sablon felhasználó által definiált függvények](template-user-defined-functions.md)című részében talál példákat.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 
 A `resources` szakaszban megadhatja a telepített vagy frissített erőforrásokat.
 
@@ -193,6 +193,7 @@ Az erőforrásokat az alábbi struktúrával definiálhatja:
           "capacity": <sku-capacity>
       },
       "kind": "<type-of-resource>",
+      "scope": "<target-scope-for-extension-resources>",
       "copy": {
           "name": "<name-of-copy-loop>",
           "count": <number-of-iterations>,
@@ -235,6 +236,7 @@ Az erőforrásokat az alábbi struktúrával definiálhatja:
 | tags |No |Az erőforráshoz társított címkék. Címkék alkalmazása az erőforrások logikai rendszerezéséhez az előfizetésen belül. |
 | SKU | No | Egyes erőforrások lehetővé teszik a telepítendő SKU-t meghatározó értékek használatát. Megadhatja például, hogy milyen típusú redundancia van egy Storage-fiókhoz. |
 | típusú | No | Egyes erőforrások lehetővé teszik egy olyan érték használatát, amely meghatározza a telepített erőforrás típusát. Megadhatja például a létrehozandó Cosmos DB típusát. |
+| scope | No | A hatókör tulajdonság csak a [kiterjesztési erőforrástípusok](../management/extension-resource-types.md)esetében érhető el. Akkor használja, ha olyan hatókört ad meg, amely eltér a központi telepítési hatókörtől. Lásd: [hatókör beállítása a bővítmény erőforrásaihoz az ARM-sablonokban](scope-extension-resources.md). |
 | másolás |No |Ha több példányra van szükség, a létrehozandó erőforrások száma. Az alapértelmezett üzemmód párhuzamos. Ha nem szeretné, hogy az összes vagy az erőforrások egyszerre legyenek telepítve, akkor a soros módot kell megadnia. További információ: az [erőforrások több példányának létrehozása Azure Resource Managerban](copy-resources.md). |
 | csomag | No | Egyes erőforrások lehetővé teszik az olyan értékek használatát, amelyek meghatározzák az üzembe helyezési tervet. Megadhatja például a virtuális gép Marketplace-rendszerképét. |
 | properties |No |Erőforrás-specifikus konfigurációs beállítások. A tulajdonságok értékei megegyeznek a REST API művelet (PUT metódus) által a kérelem törzsében megadott értékekkel az erőforrás létrehozásához. Egy másolási tömböt is megadhat egy tulajdonság több példányának létrehozásához. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). |

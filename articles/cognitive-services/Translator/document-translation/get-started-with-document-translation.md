@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 70c8bce840bca6f2e99b29dc32f5e71bbad8d379
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047235"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612381"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
 
@@ -37,8 +37,8 @@ A kezdéshez a következőkre lesz szüksége:
 
 > [!IMPORTANT]
 >
-> * Nem fogja használni a végpontot a Azure Portal erőforrás _kulcsainak és a végpontok_ lapján, sem a globális Translator végponton –, `api.cognitive.microsofttranslator.com` hogy http-kéréseket lehessen felvenni a dokumentumok fordítására.
 > * **A dokumentum-fordítási szolgáltatáshoz tartozó összes API-kérelemhez egyéni tartományi végpont szükséges**.
+> * Nem fogja használni a végpontot a Azure Portal erőforrás _kulcsainak és a végpontok_ lapján, sem a globális Translator végponton –, `api.cognitive.microsofttranslator.com` hogy http-kéréseket lehessen felvenni a dokumentumok fordítására.
 
 ### <a name="what-is-the-custom-domain-endpoint"></a>Mi az egyéni tartomány végpontja?
 
@@ -93,7 +93,7 @@ A `sourceUrl` , `targetUrl` , és opcionálisan `glossaryUrl`  tartalmaznia kell
 
 * Új projekt létrehozása.
 * Cserélje le a program. cs programot az alább látható C#-kódra.
-* Állítsa be a végpontot. az előfizetési kulcs és a tároló URL-értékei a program. cs-ban.
+* Állítsa be a végpontot, az előfizetési kulcsot és a tároló URL-értékeit a program. cs-ban.
 * A JSON-adatfeldolgozáshoz vegyen fel [Newtonsoft.Jsa csomagba a .net CLI használatával](https://www.nuget.org/packages/Newtonsoft.Json/).
 * Futtassa a programot a projekt könyvtárából.
 
@@ -101,7 +101,7 @@ A `sourceUrl` , `targetUrl` , és opcionálisan `glossaryUrl`  tartalmaznia kell
 
 * Hozzon létre egy új Node.js projektet.
 * Telepítse a Axios könyvtárat a-val `npm i axios` .
-* Másolja be az alábbi kódot a projektbe.
+* Másolja és illessze be az alábbi kódot a projektbe.
 * Állítsa be a végpontot, az előfizetési kulcsot és a tároló URL-értékeit.
 * Futtassa a programot.
 
@@ -174,7 +174,7 @@ gradle run
 * Állítsa be a végpontot, az előfizetési kulcsot és a tároló URL-értékeit.
 * Mentse a fájlt „.go” kiterjesztéssel.
 * Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-* Hozza létre a fájlt, például: "Go Build example-code. go".
+* Hozza létre a fájlt. Például: "Go Build példa-code. go".
 * Futtassa a fájlt, például: "example-code".
 
  ---
@@ -187,7 +187,7 @@ A Batch-dokumentumok fordítására vonatkozó kérelmet POST kérelem útján k
 
 A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekben:
 
-|HTTP-fejléc|Leírás|
+|HTTP-fejléc|Description|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Kötelező**: az érték a fordítóhoz vagy Cognitive Services erőforráshoz tartozó Azure-előfizetési kulcs.|
 |Content-Type|**Kötelező**: az adattartalom tartalomtípusát adja meg. Az elfogadott értékek az Application/JSON vagy a charset = UTF-8.|
@@ -207,26 +207,49 @@ A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekbe
 ## <a name="post-a-translation-request"></a>Fordítási kérelem közzététele
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>POST kérelem törzse opcionális glossaryURL nélkül
+### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>Egy tárolóban lévő összes dokumentum fordítása POST kérelem törzse
 
 ```json
 {
     "inputs": [
         {
             "source": {
-                "sourceUrl": "<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-                "storageSource": "AzureBlob",
-                "filter": {
-                    "prefix": "News",
-                    "suffix": ".txt"
-                },
-                "language": "en"
+                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
             },
             "targets": [
                 {
-                    "targetUrl": "<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-                    "storageSource": "AzureBlob",
-                    "category": "general",
+                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>Egy adott dokumentum egy tárolóban való fordítására szolgáló POST kérelem törzse
+
+* Győződjön meg arról, hogy a "storageType": "file" értéket adta meg
+* Győződjön meg arról, hogy létrehozta a forrás URL-címet & SAS-tokent az adott blobhoz/dokumentumhoz (nem a tárolóhoz). 
+* Győződjön meg arról, hogy a cél URL-cím részeként adta meg a cél fájlnevét – bár a SAS-token még mindig a tárolóhoz tartozik.
+* Az alábbi minta-kérelemben egyetlen dokumentum jelenik meg, amely két cél nyelvre van lefordítva
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+            },
+            "targets": [
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "language": "es"
+                },
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
                     "language": "de"
                 }
             ]
@@ -235,44 +258,10 @@ A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekbe
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>POST kérelem törzse opcionális glossaryURL
-
-```json
-{
-  "inputs":[
-    {
-      "source":{
-        "sourceUrl":"<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-        "storageSource":"AzureBlob",
-        "filter":{
-          "prefix":"News",
-          "suffix":".txt"
-        },
-        "language":"en"
-      },
-      "targets":[
-        {
-          "targetUrl":"<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-          "storageSource":"AzureBlob",
-          "category":"general",
-          "language":"de",
-          "glossaries":[
-            {
-              "glossaryUrl":"<https://YOUR-GLOSSARY-URL-WITH-READ-LIST-ACCESS-SAS>",
-              "format":"xliff",
-              "version":"1.2"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
 
 > [!IMPORTANT]
 >
-> Az alábbi kódrészletek esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](../../cognitive-services-security.md?tabs=command-line%2ccsharp) című témakört.
+> Az alábbi kódrészletek esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) című témakört.
 >
 > Előfordulhat, hogy a művelettől függően frissítenie kell a következő mezőket:
 >>>
@@ -1247,7 +1236,7 @@ func main() {
 
 ## <a name="content-limits"></a>Tartalmi korlátok
 
-Az alábbi táblázat felsorolja a dokumentumok fordítására küldött adatkorlátokat.
+Az alábbi táblázat a dokumentumok fordítására (előzetes verzió) küldött adatkorlátokat sorolja fel.
 
 |Attribútum | Korlát|
 |---|---|

@@ -2,143 +2,30 @@
 title: Esemény-kézbesítés, felügyelt szolgáltatás identitása és privát hivatkozás
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolgáltatás identitása egy Azure Event Grid-témakörben. Használatával továbbíthatja az eseményeket a támogatott célhelyekre.
 ms.topic: how-to
-ms.date: 01/28/2021
-ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: 76f10b4627dc9578b1e616a868eab03431b59b69
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100007771"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625276"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Esemény kézbesítése felügyelt identitással
-Ez a cikk azt ismerteti, hogyan engedélyezhető a [felügyelt szolgáltatás identitása](../active-directory/managed-identities-azure-resources/overview.md) az Azure Event Grid egyéni témaköreihez vagy tartományokhoz. Használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
-
-A cikk részletesen ismerteti a következő lépéseket:
-1. Hozzon létre egy egyéni témakört vagy tartományt egy rendszer által hozzárendelt identitással, vagy frissítsen egy meglévő egyéni témakört vagy tartományt az identitás engedélyezéséhez. 
-1. Adja hozzá az identitást egy megfelelő szerepkörhöz (például Service Bus adatfeladóhoz) a célhelyen (például egy Service Bus üzenetsor).
-1. Esemény-előfizetések létrehozásakor engedélyezze az identitás használatát, hogy az eseményeket a célhelyre kézbesítse. 
-
-> [!NOTE]
-> Jelenleg nem lehet eseményeket kézbesíteni [privát végpontok](../private-link/private-endpoint-overview.md)használatával. További információt a cikk végén, a [privát végpontok](#private-endpoints) című szakaszban talál. 
-
-## <a name="create-a-custom-topic-or-domain-with-an-identity"></a>Egyéni témakör vagy tartomány létrehozása identitással
-Először nézzük meg, hogyan hozható létre egy témakör vagy egy, a rendszer által felügyelt identitással rendelkező tartomány.
-
-### <a name="use-the-azure-portal"></a>Az Azure Portal használata
-Engedélyezheti a rendszerhez rendelt identitást egy egyéni témakörhöz vagy tartományhoz, miközben a Azure Portalban hozza létre. Az alábbi képen bemutatjuk, hogyan engedélyezhető a rendszer által felügyelt identitás egy egyéni témakörhöz. Alapvetően a létrehozási varázsló **speciális** lapján jelölje be a **rendszerhez rendelt identitás engedélyezése** jelölőnégyzetet. Ezt a lehetőséget a tartomány-létrehozási varázsló **speciális** oldalán fogja látni. 
-
-![Identitás engedélyezése egyéni témakör létrehozásakor](./media/managed-service-identity/create-topic-identity.png)
-
-### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-Az Azure CLI-vel egyéni témakört vagy tartományt is létrehozhat egy rendszer által hozzárendelt identitással. Használja a parancsot a következőhöz `az eventgrid topic create` `--identity` beállított paraméterrel: `systemassigned` . Ha nem ad meg értéket ehhez a paraméterhez, a rendszer az alapértelmezett értéket `noidentity` használja. 
-
-```azurecli-interactive
-# create a custom topic with a system-assigned identity
-az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCATION>  --identity systemassigned
-```
-
-Hasonlóképpen a `az eventgrid domain create` paranccsal is létrehozható egy rendszer által felügyelt identitással rendelkező tartomány.
-
-## <a name="enable-an-identity-for-an-existing-custom-topic-or-domain"></a>Identitás engedélyezése meglévő egyéni témakörhöz vagy tartományhoz
-Az előző szakaszban megtanulta, hogyan engedélyezheti a rendszer által felügyelt identitásokat egyéni témakör vagy tartomány létrehozásakor. Ebből a szakaszból megtudhatja, hogyan engedélyezheti a rendszer által felügyelt identitásokat egy meglévő egyéni témakörhöz vagy tartományhoz. 
-
-### <a name="use-the-azure-portal"></a>Az Azure Portal használata
-Az alábbi eljárás bemutatja, hogyan engedélyezheti a rendszer által felügyelt identitást egy egyéni témakörhöz. A tartomány identitásának engedélyezésének lépései hasonlóak. 
-
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-2. Keresse meg az **Event Grid-témaköröket** a felül található keresési sávon.
-3. Válassza ki azt az **Egyéni témakört** , amelyhez engedélyezni kívánja a felügyelt identitást. 
-4. Váltson az **Identity (identitás** ) lapra. 
-5. Kapcsolja **be a** kapcsolót az identitás engedélyezéséhez. 
-1. A beállítás mentéséhez válassza az eszköztár **Mentés** elemét. 
-
-    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Egyéni témakör Identity lapja"::: 
-
-Az Event Grid-tartomány identitásának engedélyezéséhez hasonló lépések használhatók.
-
-### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-Használja az parancsot a következőre `az eventgrid topic update` `--identity` : beállítással `systemassigned` engedélyezheti a rendszerhez rendelt identitást egy meglévő egyéni témakörhöz. Ha le szeretné tiltani az identitást, állítsa be `noidentity` értékként. 
-
-```azurecli-interactive
-# Update the topic to assign a system-assigned identity. 
-az eventgrid topic update -g $rg --name $topicname --identity systemassigned --sku basic 
-```
-
-Egy meglévő tartomány frissítésére szolgáló parancs hasonló ( `az eventgrid domain update` ).
-
-## <a name="supported-destinations-and-azure-roles"></a>Támogatott célhelyek és Azure-szerepkörök
-Az egyéni Event Grid-témakör vagy-tartomány identitásának engedélyezése után az Azure automatikusan létrehoz egy identitást Azure Active Directory. Adja hozzá ezt az identitást a megfelelő Azure-szerepkörökhöz, hogy az egyéni témakör vagy tartomány továbbítsa az eseményeket a támogatott célhelyekre. Adja hozzá például az identitást az **azure Event Hubs Adatfeladói** szerepkörhöz egy Azure Event Hubs-névtérhez, hogy az Event Grid egyéni témaköre az eseményeket az adott névtérben lévő Event hubokba továbbítsa. 
-
-Az Azure Event Grid jelenleg a rendszer által hozzárendelt felügyelt identitással konfigurált egyéni témákat vagy tartományokat támogatja az események továbbításához a következő célhelyekre. Ez a táblázat az identitáshoz tartozó szerepköröket is megadja, hogy az egyéni témakör továbbítsa az eseményeket.
-
-| Cél | Azure-szerepkör | 
-| ----------- | --------- | 
-| Várólisták és témakörök Service Bus | [Adatfeladó Azure Service Bus](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
-| Azure Event Hubs | [Azure Event Hubs adatfeladó](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob Storage | [Storage-blobadatok közreműködője](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
-| Azure Queue Storage |[Tárolási várólista adatüzenetének küldője](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
-
-## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Identitás hozzáadása az Azure-szerepkörökhöz célhelyeken
-Ez a szakasz azt ismerteti, hogyan adható hozzá az egyéni témakörhöz vagy tartományhoz tartozó identitás egy Azure-szerepkörhöz. 
-
-### <a name="use-the-azure-portal"></a>Az Azure Portal használata
-A Azure Portal használatával az egyéni témakört vagy a tartományi identitást hozzárendelheti egy megfelelő szerepkörhöz, hogy az egyéni témakör vagy tartomány továbbítsa az eseményeket a célhelyre. 
-
-Az alábbi példa egy **msitesttopic** nevű Event Grid egyéni témakörhöz tartozó felügyelt identitást hoz létre egy olyan Service Bus névtérhez, amely üzenetsor-vagy témakör-erőforrást tartalmaz **Azure Service Bus adatfeladói** szerepkörhöz. Ha a szerepkört a névtér szintjén adja hozzá, az Event Grid egyéni témaköre a névtérben lévő összes entitáshoz továbbíthatja az eseményeket. 
-
-1. Nyissa meg a **Service Bus névteret** a [Azure Portalban](https://portal.azure.com). 
-1. A bal oldali ablaktáblán válassza a **Access Control** lehetőséget. 
-1. A **szerepkör-hozzárendelés hozzáadása** szakaszban válassza a **Hozzáadás** lehetőséget. 
-1. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket:
-    1. Válassza ki a szerepkört. Ebben az esetben **Azure Service Bus az adatfeladó**. 
-    1. Válassza ki az Event Grid egyéni témakörének vagy tartományának **identitását** . 
-    1. A konfiguráció mentéséhez kattintson a **Mentés** gombra.
-
-A lépések hasonlóak az identitásnak a táblázatban említett más szerepkörökhöz való hozzáadásához. 
-
-### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-Az ebben a szakaszban szereplő példa bemutatja, hogyan adhat identitást Azure-szerepkörhöz az Azure CLI használatával. A minta parancsok az Event Grid egyéni témaköreire vonatkoznak. Az Event Grid-tartományok parancsai hasonlóak. 
-
-#### <a name="get-the-principal-id-for-the-custom-topics-system-identity"></a>Az egyéni témakör rendszeridentitásának elsődleges AZONOSÍTÓjának beolvasása 
-Először kérje le az egyéni témakör rendszerfelügyelt identitásának elsődleges AZONOSÍTÓját, és rendelje hozzá az identitást a megfelelő szerepkörökhöz.
-
-```azurecli-interactive
-topic_pid=$(az ad sp list --display-name "$<TOPIC NAME>" --query [].objectId -o tsv)
-```
-
-#### <a name="create-a-role-assignment-for-event-hubs-at-various-scopes"></a>Szerepkör-hozzárendelés létrehozása az Event hubokhoz különböző hatókörökben 
-Az alábbi CLI-példa azt szemlélteti, hogyan adhat hozzá egyéni témakör identitását az **Azure Event Hubs Adatfeladói** szerepkörhöz a névtér vagy az Event hub szintjén. Ha a szerepkör-hozzárendelést a névtér szintjén hozza létre, az egyéni témakör az adott névtérben lévő összes esemény-hubhoz továbbítja az eseményeket. Ha az Event hub szintjén hoz létre szerepkör-hozzárendelést, akkor az egyéni témakör csak az adott Event hub-ra továbbíthatja az eseményeket. 
+Ez a cikk azt ismerteti, hogyan használható a [felügyelt szolgáltatás identitása](../active-directory/managed-identities-azure-resources/overview.md) egy Azure Event grid rendszer-témakörhöz, egyéni témakörhöz vagy tartományhoz. Használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
 
 
-```azurecli-interactive
-role="Azure Event Hubs Data Sender" 
-namespaceresourceid=$(az eventhubs namespace show -n $<EVENT HUBS NAMESPACE NAME> -g <RESOURCE GROUP of EVENT HUB> --query "{I:id}" -o tsv) 
-eventhubresourceid=$(az eventhubs eventhub show -n <EVENT HUB NAME> --namespace-name <EVENT HUBS NAMESPACE NAME> -g <RESOURCE GROUP of EVENT HUB> --query "{I:id}" -o tsv) 
 
-# create role assignment for the whole namespace 
-az role assignment create --role "$role" --assignee "$topic_pid" --scope "$namespaceresourceid" 
+## <a name="prerequisites"></a>Előfeltételek
+1. Rendeljen hozzá egy rendszerhez rendelt identitást egy rendszertémakörhöz, egy egyéni témakörhöz vagy egy tartományhoz. 
+    - Egyéni témakörök és tartományok esetén tekintse meg az [Egyéni témakörök és tartományok felügyelt identitásának engedélyezése](enable-identity-custom-topics-domains.md)című témakört. 
+    - Rendszertémakörök: [felügyelt identitás engedélyezése a rendszertémakörökhöz](enable-identity-system-topics.md)
+1. Adja hozzá az identitást egy megfelelő szerepkörhöz (például Service Bus adatfeladóhoz) a célhelyen (például egy Service Bus üzenetsor). A részletes lépésekért lásd: [identitás hozzáadása az Azure-szerepkörökhöz célhelyeken](add-identity-roles.md)
 
-# create role assignment scoped to just one event hub inside the namespace 
-az role assignment create --role "$role" --assignee "$topic_pid" --scope "$eventhubresourceid" 
-```
-
-#### <a name="create-a-role-assignment-for-a-service-bus-topic-at-various-scopes"></a>Szerepkör-hozzárendelés létrehozása Service Bus témakörhöz különböző hatókörökben 
-Az alábbi CLI-példa azt szemlélteti, hogyan adhat hozzá egy Event Grid egyéni témakör identitását a **Azure Service Bus Adatfeladói** szerepkörhöz a névtér szintjén vagy a Service Bus témakör szintjén. Ha a szerepkör-hozzárendelést a névtér szintjén hozza létre, az Event Grid-témakör a névtérben lévő összes entitásra (Service Bus várólistákra vagy témakörökre) továbbíthatja az eseményeket. Ha a Service Bus üzenetsor vagy a témakör szintjén hoz létre szerepkör-hozzárendelést, akkor az Event Grid egyéni témaköre csak az adott Service Bus-várólistára vagy-témakörre továbbíthatja az eseményeket. 
-
-```azurecli-interactive
-role="Azure Service Bus Data Sender" 
-namespaceresourceid=$(az servicebus namespace show -n $RG\SB -g "$RG" --query "{I:id}" -o tsv 
-sbustopicresourceid=$(az servicebus topic show -n topic1 --namespace-name $RG\SB -g "$RG" --query "{I:id}" -o tsv) 
-
-# create role assignment for the whole namespace 
-az role assignment create --role "$role" --assignee "$topic_pid" --scope "$namespaceresourceid" 
-
-# create role assignment scoped to just one hub inside the namespace 
-az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbustopicresourceid" 
-```
+    > [!NOTE]
+    > Jelenleg nem lehet eseményeket kézbesíteni [privát végpontok](../private-link/private-endpoint-overview.md)használatával. További információt a cikk végén, a [privát végpontok](#private-endpoints) című szakaszban talál. 
 
 ## <a name="create-event-subscriptions-that-use-an-identity"></a>Identitást használó esemény-előfizetések létrehozása
-Miután az Event Grid egyéni témakörét vagy egy rendszer által felügyelt identitással rendelkező tartományt adott hozzá, és hozzáadta az identitást a megfelelő szerepkörhöz a célhelyen, készen áll az identitást használó előfizetések létrehozására. 
+Miután egy, a rendszer által felügyelt identitással rendelkező egyéni témakört vagy rendszertémakört vagy tartományt adott meg, és az identitást hozzáadta a megfelelő szerepkörhöz a célhelyen, készen áll az identitást használó előfizetések létrehozására. 
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 Ha létrehoz egy esemény-előfizetést, a végpont **részletei** szakaszban megtekintheti a rendszer által hozzárendelt identitások használatának engedélyezését. 
@@ -291,4 +178,4 @@ Ebben a konfigurációban a forgalom a nyilvános IP-cím/Internet Event Gridró
 
 
 ## <a name="next-steps"></a>Következő lépések
-A felügyelt szolgáltatás identitásával kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása](../active-directory/managed-identities-azure-resources/overview.md). 
+A felügyelt identitások megismeréséhez tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md)című témakört.

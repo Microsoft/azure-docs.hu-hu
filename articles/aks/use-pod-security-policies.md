@@ -3,27 +3,20 @@ title: A pod biztonsági szabályzatok használata az Azure Kubernetes szolgált
 description: Megtudhatja, hogyan vezérelheti a pod-felvételeket az Azure Kubernetes Service (ak) PodSecurityPolicy használatával
 services: container-service
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: cf520f4b0dc2f51e6431d65ef178b6635d7fd857
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.date: 03/25/2021
+ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105544247"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611769"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
 
 > [!WARNING]
-> **A jelen dokumentumban ismertetett szolgáltatás, a pod biztonsági szabályzat (előzetes verzió), az elavultság beállítására van beállítva, és a továbbiakban nem lesz elérhető 2021. június 30. után,** [Azure Policy az AK](use-azure-policy.md)-ban. Az Érvénytelenítési dátum az előző dátummal bővült, 2020. október 15-ig.
+> **A jelen dokumentumban ismertetett funkció, a pod biztonsági szabályzat (előzetes verzió), a 1,21-es Kubernetes-verzióval kezdődően a 1,25-es verzió eltávolításával kezdődik.** Ahogy a Kubernetes, a Kubernetes-Közösség az életképes alternatívák dokumentálására fog dolgozni. Az előző elavult bejelentést abban az időben hozták létre, mert nem volt életképes lehetőség az ügyfelek számára. Most, hogy a Kubernetes-Közösség egy másik rendszeren dolgozik, már nem kell lenyomnia a Kubernetes előtt.
 >
 > Miután a pod biztonsági házirend (előzetes verzió) elavult, le kell tiltania a szolgáltatást minden meglévő fürtön az elavult funkcióval a későbbi fürtök frissítéséhez és az Azure-támogatáson belüli tartózkodáshoz.
->
-> Erősen ajánlott megkezdeni a tesztelési forgatókönyvek megkezdését az AK-val való Azure Policyekkel, amely beépített szabályzatokat biztosít a hüvelyek és a beépített kezdeményezések számára, amelyek a pod biztonsági szabályzatokat képezik le. A pod biztonsági házirendből való Migrálás esetén a következő műveleteket kell végrehajtania egy fürtön.
-> 
-> 1. A [Pod biztonsági szabályzat letiltása](#clean-up-resources) a fürtön
-> 1. A [Azure Policy bővítmény][azure-policy-add-on] engedélyezése
-> 1. A kívánt Azure-szabályzatok [elérhetővé tétele a beépített szabályzatok][policy-samples] közül
-> 1. [A pod biztonsági házirend és a Azure Policy közötti viselkedés változásainak](#behavior-changes-between-pod-security-policy-and-azure-policy) áttekintése
 
 Az AK-fürt biztonságának növelése érdekében korlátozhatja, hogy a hüvelyek hogyan ütemezhetők. A nem engedélyezett erőforrásokat kérő hüvelyek nem futhatnak az AK-fürtben. Ezt a hozzáférést a pod biztonsági szabályzatok használatával határozhatja meg. Ez a cikk bemutatja, hogyan használhatja a pod biztonsági házirendeket a hüvelyek AK-ban való üzembe helyezésének korlátozására.
 

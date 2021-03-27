@@ -1,16 +1,14 @@
 ---
 title: Hibaelhárítás rendszerállapot-jelentések segítségével
 description: Az Azure Service Fabric Components által elküldett, a fürthöz vagy az alkalmazásokkal kapcsolatos problémák elhárítására szolgáló állapotjelentést ismerteti
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
-ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 483483746b2cce66588e9481bca7e0de391070b8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96000657"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625891"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Az Azure Service Fabric-összetevők rendszerállapot-jelentéseket biztosítanak a fürtben lévő összes entitáshoz, közvetlenül a jelölőnégyzetből. A [Health Store](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hozza létre és törli az entitásokat. Azt is megszervezi egy hierarchiában, amely rögzíti az entitások interakcióit.

@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 634eb2d22e3fa570ac9412d4fb8afd917b5c2eaa
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564007"
+ms.locfileid: "105611973"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>A VMware virtuális gépek ügynök nélküli áttelepítésének méretezése az Azure-ba
 
@@ -43,8 +43,8 @@ A fenti műveletek elvégzéséhez tekintse át a [VMWare virtuális gépek Azur
 
 A kibővíthető berendezések hozzáadásához kövesse az alábbi lépéseket:
 
-1. A **felderítés** lehetőségre kattintva  >  **virtualizált a gépek?** 
-1. Válassza **az igen, a VMware vSphere hypervisor lehetőséget.**
+1. Kattintson a **felderítés** lehetőségre a  >  **gépek virtualizálva?** 
+1. Válassza **az igen, VMware vSphere Hypervisort.**
 1. Válassza az ügynök nélküli replikáció lehetőséget a következő lépésben.
 1. Válasszon ki **egy meglévő elsődleges készüléket** a készülék típusának kiválasztása menüben.
 1. Válassza ki a kibővíteni kívánt elsődleges berendezést (az azt használó berendezést, amely a felderítést végezte).
@@ -54,7 +54,7 @@ A kibővíthető berendezések hozzáadásához kövesse az alábbi lépéseket:
 ### <a name="1-generate-the-azure-migrate-project-key"></a>1. a Azure Migrate projekt kulcsának előállítása
 
 1. A **Azure Migrate-projekt létrehozása kulcsban** adja meg a kibővíthető berendezés utótagjának nevét. Az utótag csak alfanumerikus karaktereket tartalmazhat, és legfeljebb 14 karakter hosszúságú lehet.
-2. A szükséges Azure-erőforrások létrehozásának elindításához kattintson a **kulcs létrehozása** elemre. Ne zárja be a felderítés oldalt az erőforrások létrehozása során.
+2. A szükséges Azure-erőforrások létrehozásának elindításához kattintson a **kulcs létrehozása** elemre. Ne zárjuk be a felderítés lapot az erőforrások létrehozása során.
 3. Másolja a generált kulcsot. A kibővíthető berendezés regisztrációjának befejezéséhez később szüksége lesz a kulcsra.
 
 ### <a name="2-download-the-installer-for-the-scale-out-appliance"></a>2. a kibővíthető készülék telepítőjének letöltése
@@ -68,8 +68,8 @@ A **Azure Migrate készülék letöltése** területen kattintson a  **Letölté
 > 1. Rendszergazdaként nyissa meg a parancssort
 > 2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Példa a nyilvános felhő használatára: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Töltse le a kibővíthető készülék telepítőjének legújabb verzióját a portálról, ha a számított kivonatoló érték nem egyezik a következő karakterlánccal: e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+    - Példa a nyilvános felhő használatára: ```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
+> 3. Töltse le a kibővíthető készülék telepítőjének legújabb verzióját a portálról, ha a számított kivonatoló érték nem egyezik a következő karakterlánccal: 1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Futtassa a Azure Migrate telepítő parancsfájlt
 A telepítő parancsfájl a következő műveleteket végzi el:
@@ -108,7 +108,7 @@ Mielőtt megkezdené, hogy [ezek az Azure-végpontok](migrate-appliance.md#publi
 - Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
 - A Configuration Manager > **Előfeltételek beállítása** területen tegye a következőket:
    - **Kapcsolat**: a készülék ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
-     1. A proxy **beállítása** elemre kattintva adja meg a proxy címe (az űrlapon http://ProxyIPAddress vagy a http://ProxyFQDN) figyelési porton.
+     1. Kattintson a **telepítő proxy** elemre a proxy-címek megadásához (az űrlapon http://ProxyIPAddress vagy a http://ProxyFQDN) figyelési porton.
      2. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
      3. Csak a HTTP-proxyk használata támogatott.
      4. Ha hozzáadta a proxy részleteit, vagy letiltotta a proxyt és/vagy a hitelesítést, kattintson a **Save (Mentés** ) gombra a kapcsolat ismételt elindításához.
@@ -150,7 +150,7 @@ A kibővített berendezés regisztrációjának befejezéséhez kattintson az **
 A fájlok sikeres importálása után a kibővített berendezés regisztrálása befejeződik, és az utolsó sikeres importálás időbélyegét fogja megjeleníteni. A regisztráció részleteit a **részletek megtekintése** lehetőségre kattintva is megtekintheti.
 :::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="A képernyőfelvételen a kibővíthető berendezések regisztrálása Azure Migrate projekttel látható.":::
 
-Ezen a ponton újra ellenőriznie kell, hogy a kibővíthető berendezés képes-e csatlakozni a vCenter-kiszolgálóhoz. Kattintson az **újraellenőrzés** gombra a kibővíthető berendezés vCenter Server kapcsolatának ellenőrzéséhez.
+Ekkor újra ellenőriznie kell, hogy a kibővíthető berendezés képes-e kapcsolódni a vCenter-kiszolgálóhoz. Kattintson az **újraellenőrzés** gombra a kibővíthető berendezés vCenter Server kapcsolatának ellenőrzéséhez.
 :::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="A képernyőképen az érvényesíteni kívánt hitelesítő adatok és felderítési források láthatók.":::
 
 > [!IMPORTANT]

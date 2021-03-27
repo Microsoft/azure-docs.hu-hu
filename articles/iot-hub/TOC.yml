@@ -84,6 +84,22 @@
       href: tutorial-firmware-update.md
     - name: Eszközkapcsolatok tesztelése
       href: tutorial-connectivity.md
+    - name: X. 509 tanúsítványok használata
+      items:
+        - name: Bevezetés
+          href: tutorial-x509-introduction.md
+        - name: Tanúsítvány mezői
+          href: tutorial-x509-certificates.md
+        - name: A megadott parancsfájlok használata
+          href: tutorial-x509-scripts.md
+        - name: OpenSSL használata
+          href: tutorial-x509-openssl.md
+        - name: Önaláírt tanúsítványok létrehozása
+          href: tutorial-x509-self-sign.md
+        - name: Birtoklás bizonyítása
+          href: tutorial-x509-prove-possession.md
+        - name: Hitelesítés tesztelése
+          href: tutorial-x509-test-certificate.md
 - name: Alapelvek
   items:
     - name: TLS-támogatás
@@ -319,8 +335,6 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Az Azure parancssori felület használatával
               href: iot-hub-configure-file-upload-cli.md
-        - name: A központ védelmének biztosítása X.509-tanúsítvánnyal
-          href: iot-hub-security-x509-get-started.md
         - name: IoT Hub frissítése
           href: iot-hub-upgrade.md
         - name: IP-szűrés konfigurálása

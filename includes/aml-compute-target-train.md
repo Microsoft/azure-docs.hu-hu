@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
-ms.openlocfilehash: 7c89527218e34bea0819a1e2446441216cde45ae
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 3eb5ea468a234aea228539c2390ab6cae9352948
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104443"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105630239"
 ---
 **A számítási célok az egyik betanítási feladatokból a következőre használhatók.** Ha például egy távoli virtuális gépet csatlakoztat a munkaterülethez, újra felhasználhatja azt több feladathoz is. Gépi tanulási folyamatokhoz használja az egyes számítási célkitűzések megfelelő [folyamatának lépéseit](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) .
 
@@ -22,14 +22,14 @@ A legtöbb feladathoz a következő források bármelyikét használhatja egy k�
 
 |Képzési &nbsp; célok|[Automatizált gépi tanulás](../articles/machine-learning/concept-automated-ml.md) | [Machine Learning-folyamatok](../articles/machine-learning/concept-ml-pipelines.md) | [Azure Machine Learning Designer](../articles/machine-learning/concept-designer.md)
 |----|:----:|:----:|:----:|
-|[Helyi számítógép](../articles/machine-learning/how-to-attach-compute-targets.md#local)| Igen | &nbsp; | &nbsp; |
-|[Számítási fürt Azure Machine Learning](../articles/machine-learning/how-to-create-attach-compute-cluster.md)| Igen | Igen | Igen |
-|[Azure Machine Learning számítási példány](../articles/machine-learning/how-to-create-manage-compute-instance.md) | Igen (az SDK-n keresztül)  | Igen |  |
-|[Távoli virtuális gép](../articles/machine-learning/how-to-attach-compute-targets.md#vm) | Igen  | Igen | &nbsp; |
-|[Azure- &nbsp; Databricks](../articles/machine-learning/how-to-attach-compute-targets.md#databricks)| Igen (csak SDK helyi mód) | Igen | &nbsp; |
-|[Azure Data Lake Analytics](../articles/machine-learning/how-to-attach-compute-targets.md#adla) | &nbsp; | Igen | &nbsp; |
-|[Azure HDInsight](../articles/machine-learning/how-to-attach-compute-targets.md#hdinsight) | &nbsp; | Igen | &nbsp; |
-|[Azure Batch](../articles/machine-learning/how-to-attach-compute-targets.md#azbatch) | &nbsp; | Igen | &nbsp; |
+|[Helyi számítógép](../articles/machine-learning/how-to-attach-compute-targets.md#local)| Yes | &nbsp; | &nbsp; |
+|[Számítási fürt Azure Machine Learning](../articles/machine-learning/how-to-create-attach-compute-cluster.md)| Igen | Igen | Yes |
+|[Azure Machine Learning számítási példány](../articles/machine-learning/how-to-create-manage-compute-instance.md) | Igen (az SDK-n keresztül)  | Yes |  |
+|[Távoli virtuális gép](../articles/machine-learning/how-to-attach-compute-targets.md#vm) | Igen  | Yes | &nbsp; |
+|[Azure- &nbsp; Databricks](../articles/machine-learning/how-to-attach-compute-targets.md#databricks)| Igen (csak SDK helyi mód) | Yes | &nbsp; |
+|[Azure Data Lake Analytics](../articles/machine-learning/how-to-attach-compute-targets.md#adla) | &nbsp; | Yes | &nbsp; |
+|[Azure HDInsight](../articles/machine-learning/how-to-attach-compute-targets.md#hdinsight) | &nbsp; | Yes | &nbsp; |
+|[Azure Batch](../articles/machine-learning/how-to-attach-compute-targets.md#azbatch) | &nbsp; | Yes | &nbsp; |
 
 > [!TIP]
-> A számítási példány 120 GB-OS operációsrendszer-lemezzel rendelkezik. Ha elfogyott a lemezterület, törölje a megfelelő területet a számítási példány leállítása/újraindítása előtt.
+> A számítási példány 120 GB-OS operációsrendszer-lemezzel rendelkezik. Ha elfogyott a szabad lemezterület, a [terminál használatával](../articles/machine-learning/how-to-access-terminal.md) törölje legalább 1-2 GB-ot a számítási példány [leállítása vagy újraindítása](../articles/machine-learning/how-to-create-manage-compute-instance.md#manage) előtt.

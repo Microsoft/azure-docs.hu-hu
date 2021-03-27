@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 520a36a0896cc2b4b14366350f66d365ea04a557
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879278"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612796"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -349,6 +349,7 @@ Kezdje a [Spring inicializáló](https://start.spring.io/#!type=maven-project&la
 ```url
 https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
+Vegye figyelembe, hogy ez a példa a Java 8-as verzióját használja.  Ha a Java 11-es verzióját szeretné használni, módosítsa a beállítást a **projekt metaadatai** területen.
 
   ![Inicializálás lap](media/spring-cloud-quickstart-java/initializr-page.png)
 
@@ -413,7 +414,7 @@ Az alábbi eljárás az Azure CLI használatával hozza létre és telepíti az 
     az extension add --name spring-cloud
     ```
     
-1. Hozza létre az alkalmazást a hozzárendelt nyilvános végponttal:
+1. Hozza létre az alkalmazást a hozzárendelt nyilvános végponttal. Ha a Java 11-et használja, adja meg a `--runtime-version=Java_11` kapcsolót.
 
     ```azurecli
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true

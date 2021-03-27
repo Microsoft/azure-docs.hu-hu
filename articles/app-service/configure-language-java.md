@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc532c5ac6babb8378860ac5049e931cc7657932
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97804003"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629257"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -417,7 +417,7 @@ Ezek az utasítások az összes adatbázis-kapcsolatra érvényesek. A helyőrz�
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Letöltés](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Letöltés](https://dev.mysql.com/downloads/connector/j/) (válassza a "platform független" lehetőséget) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Letöltés](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Letöltés](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)                                                           |
 
 Ha a Tomcat-t a Java Database Connectivity (JDBC) vagy a Java perzisztencia API (közös parlamenti) használatára szeretné konfigurálni, először testre kell szabnia a `CATALINA_OPTS` tomcat által az indításkor beolvasott környezeti változót. Adja meg ezeket az értékeket a [app Service Maven beépülő modul](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)alkalmazás-beállításán keresztül:
 
@@ -495,7 +495,7 @@ Ezek az utasítások az összes adatbázis-kapcsolatra érvényesek. A helyőrz�
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Letöltés](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Letöltés](https://dev.mysql.com/downloads/connector/j/) (válassza a "platform független" lehetőséget) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Letöltés](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Letöltés](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)                                                           |
 
 Ha a Tomcat-t a Java Database Connectivity (JDBC) vagy a Java perzisztencia API (közös parlamenti) használatára szeretné konfigurálni, először testre kell szabnia a `CATALINA_OPTS` tomcat által az indításkor beolvasott környezeti változót. Adja meg ezeket az értékeket a [app Service Maven beépülő modul](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)alkalmazás-beállításán keresztül:
 

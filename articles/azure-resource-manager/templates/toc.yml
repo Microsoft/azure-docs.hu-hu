@@ -8,13 +8,13 @@
       href: bicep-overview.md
 - name: Rövid útmutatók
   items:
-    - name: Sablonok létrehozása – portál
-      href: quickstart-create-templates-use-the-portal.md
-    - name: Sablonok létrehozása – VS Code
+    - name: JSON-sablonok létrehozása – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: A bicep-VS Code létrehozása
+    - name: Bicep-sablonok létrehozása – VS Code
       href: quickstart-create-bicep-use-visual-studio-code.md
-    - name: Sablonspecifikációk létrehozása és üzembe helyezése
+    - name: JSON-sablonok létrehozása – portál
+      href: quickstart-create-templates-use-the-portal.md
+    - name: Sablon létrehozása – specifikációk
       href: quickstart-create-template-specs.md
 - name: Oktatóanyagok
   items:
@@ -43,24 +43,34 @@
     - name: Kezdő bicep
       items:
         - name: 1 – Az első sablon létrehozása
+          displayName: Bicep
           href: bicep-tutorial-create-first-bicep.md
         - name: 2 – paraméterek hozzáadása
+          displayName: Bicep
           href: bicep-tutorial-add-parameters.md
         - name: 3 – sablon funkcióinak hozzáadása
+          displayName: Bicep
           href: bicep-tutorial-add-functions.md
         - name: 4 – változók hozzáadása
+          displayName: Bicep
           href: bicep-tutorial-add-variables.md
         - name: 5 – kimenetek hozzáadása
+          displayName: Bicep
           href: bicep-tutorial-add-outputs.md
         - name: 6 – exportált sablon használata
+          displayName: Bicep
           href: bicep-tutorial-export-template.md
         - name: 7 – gyors üzembe helyezési sablon használata
+          displayName: Bicep
           href: bicep-tutorial-quickstart-template.md
         - name: 8 – Címkék hozzáadása
+          displayName: Bicep
           href: bicep-tutorial-add-tags.md
         - name: 9 – paraméter fájljának használata
+          displayName: Bicep
           href: bicep-tutorial-use-parameter-file.md
         - name: 10 – modulok hozzáadása
+          displayName: Bicep
           href: bicep-tutorial-add-modules.md
     - name: Üzembe helyezés
       items:

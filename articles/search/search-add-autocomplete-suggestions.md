@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a46c7f35e30b2dda7b4800ed553447cef5bb5d33
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609353"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626707"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára az Azure Cognitive Search használatával
 
@@ -81,13 +81,15 @@ A következő további paraméterek is érvényesek az automatikus kiegészíté
 
 Egy lekérdezési kifejezés automatikus kitöltésével vagy a megfelelő hivatkozások listájának lebontásával a felhasználói interakciós kód (jellemzően JavaScript) szükséges a külső forrásokból érkező kérések, például az automatikus kiegészítés vagy a javaslatok lekérdezése Azure Search kognitív indexen keresztül.
 
-Bár ezt a kódot natív módon is megírhatja, sokkal egyszerűbb a függvények használata a meglévő JavaScript-kódtár használatával. Ez a cikk két, egy javaslatot és egy másikat említ az automatikus kiegészítéshez. 
+Bár ezt a kódot natív módon is megírhatja, sokkal könnyebb használni a függvényeket a meglévő JavaScript-könyvtárból, például a következők egyikét. 
 
 + Az [automatikus kiegészítés widget (JQUERY UI)](https://jqueryui.com/autocomplete/) megjelenik a javaslati kódrészletben. Létrehozhat egy keresőmezőt, majd hivatkozhat arra egy JavaScript-függvényben, amely az automatikus kiegészítés widgetet használja. A widget tulajdonságai a forrást (automatikus kiegészítés vagy javaslatok függvény), a művelet végrehajtása előtt a bemeneti karakterek minimális hosszát és a pozicionálást is beállítják.
 
 + A [XDSoft automatikus kiegészítés beépülő modulja](https://xdsoft.net/jqplugins/autocomplete/) megjelenik az automatikus kiegészítési kódrészletben.
 
-Ezeket a kódtárakat a javaslatok és az automatikus kiegészítések támogatását támogató keresőmező létrehozásához használjuk. A keresőmezőbe gyűjtött bemenetek a javaslatokkal és az automatikus kiegészítési műveletekkel vannak párosítva.
++ a [javaslatok](https://www.npmjs.com/package/suggestions) a [JavaScript-oktatóanyagban](tutorial-javascript-overview.md) és a kód mintában jelennek meg.
+
+Ezeket a kódtárakat az ügyfélen a javaslatok és az automatikus kiegészítést támogató keresőmező létrehozásához használhatja. A keresőmezőbe gyűjtött bemenetek a keresési szolgáltatás javaslataival és automatikus kiegészítési műveleteivel párosítva lesznek.
 
 ## <a name="suggestions"></a>Javaslatok
 
@@ -249,5 +251,5 @@ Az automatikus kiegészítési függvény a keresési kifejezés bemenetét vesz
 
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. A minta a javaslatok és az automatikus kiegészítések hibrid megvalósítását mutatja be együtt.
 
-+ [Oktatóanyag: az első alkalmazás létrehozása C# nyelven (3. lecke)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C#-kód minta: Azure-Search-DotNet-Samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
++ A [Keresés hozzáadása egy webhelyhez (JavaScript)](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) egy nyílt forráskódú javaslatokat tartalmazó csomagot használ a részleges kifejezés befejezéséhez az ügyfélalkalmazás számára.
++ [Oktatóanyag: az első alkalmazás létrehozása a c#-ban (3. lecke)](tutorial-csharp-type-ahead-and-suggestions.md) és a hozzá tartozó  [c#-kód mintája: Azure-Search-DotNet-Samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead) a typeahead natív támogatásának bemutatása.

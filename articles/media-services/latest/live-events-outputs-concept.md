@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: a66532856263d31e9070bc99f297ae105ca48312
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454787"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625296"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
 
@@ -117,47 +117,68 @@ Lásd még: [adatfolyam-végpontok elnevezési konvenciói](streaming-endpoint-c
 Az élő esemény létrejötte után betöltheti az élő helyszíni kódolóhoz megadható betöltési URL-címeket. Az élő kódoló ezekre az URL-címekre küldi a bemeneti élő streamet. További információ: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md).
 
 >[!NOTE]
-> A 2020-05-01 API-kiadástól kezdve a hiúság URL-címeinek neve statikus állomásnév
+> A 2020-05-01 API-kiadástól kezdve a "Vanity" URL-címek statikus állomásnevek (useStaticHostname: true) néven ismertek.
 
-Kreatív vagy nem kreatív URL-címeket is használhat.
 
 > [!NOTE]
-> Ahhoz, hogy a betöltési URL-cím prediktív, állítsa a "Vanity" módot.
+> Ahhoz, hogy egy betöltési URL-cím statikus és kiszámítható legyen a hardveres kódoló telepítésekor, állítsa a **useStaticHostname** tulajdonságot True értékre, és állítsa az **accessToken** TULAJDONSÁGot ugyanarra a GUID-ra az egyes létrehozásokban. 
 
-* Nem hiúság URL-címe
+### <a name="example-liveevent-and-liveeventinput-configuration-settings-for-a-static-non-random-ingest-rtmp-url"></a>Példa a statikus (nem véletlenszerű) LiveEvent és LiveEventInput konfigurációs beállításaira a RTMP URL-címének betöltéséhez.
 
-    A nem hiúságos URL-cím az alapértelmezett mód a Media Services v3-ban. Előfordulhat, hogy az élő esemény gyors, de a betöltési URL-cím csak az élő esemény indításakor ismert. Az URL-cím akkor változik meg, ha leállítja/elindítja az élő eseményt. A nem hiúság olyan helyzetekben hasznos, amikor a végfelhasználó egy olyan alkalmazással szeretne adatfolyamot használni, ahol az alkalmazás egy élő eseményt szeretne kapni, és a dinamikus betöltési URL-cím nem jelent problémát.
+```csharp
+             LiveEvent liveEvent = new LiveEvent(
+                    location: mediaService.Location,
+                    description: "Sample LiveEvent from .NET SDK sample",
+                    // Set useStaticHostname to true to make the ingest and preview URL host name the same. 
+                    // This can slow things down a bit. 
+                    useStaticHostname: true,
+
+                    // 1) Set up the input settings for the Live event...
+                    input: new LiveEventInput(
+                        streamingProtocol: LiveEventInputProtocol.RTMP,  // options are RTMP or Smooth Streaming ingest format.
+                                                                         // This sets a static access token for use on the ingest path. 
+                                                                         // Combining this with useStaticHostname:true will give you the same ingest URL on every creation.
+                                                                         // This is helpful when you only want to enter the URL into a single encoder one time for this Live Event name
+                        accessToken: "acf7b6ef-8a37-425f-b8fc-51c2d6a5a86a",  // Use this value when you want to make sure the ingest URL is static and always the same. If omitted, the service will generate a random GUID value.
+                        accessControl: liveEventInputAccess, // controls the IP restriction for the source encoder.
+                        keyFrameIntervalDuration: "PT2S" // Set this to match the ingest encoder's settings
+                    ),
+```
+
+* Nem statikus állomásnév
+
+    A nem statikus állomásnév a **liveevent** létrehozásakor Media Services v3 alapértelmezett módja. Az élő esemény kiosztása valamivel gyorsabban elvégezhető, de a betöltési URL-cím, amelyre az élő kódolási hardverhez vagy szoftverhez szüksége lesz, véletlenszerűen fog megjelenni. Az URL-cím akkor változik meg, ha leállítja/elindítja az élő eseményt. A nem statikus állomásnevek csak olyan esetekben hasznosak, amikor a végfelhasználók egy olyan alkalmazással szeretnének adatfolyamot továbbítani, amely nagyon gyorsan és dinamikus betöltési URL-címmel rendelkezik, és nem jelent problémát.
 
     Ha egy ügyfélalkalmazás nem kell előkészítenie a betöltési URL-címet az élő esemény létrehozása előtt, Media Services automatikusan hozza létre az élő esemény hozzáférési jogkivonatát.
 
-* A hiúság URL-címe
+* Statikus állomásnevek 
 
-    A hiúság üzemmódot a hardveres szórásos kódolókat használó nagyméretű média-műsorszolgáltatók használják, és nem szeretnék újrakonfigurálni a kódolókat az élő esemény indításakor. Ezek a műsorszolgáltatók olyan prediktív betöltési URL-címet szeretnének használni, amely idővel nem változik.
+    A statikus állomásnév üzemmódot a legtöbb operátor előnyben részesítette, akik előre be szeretnék állítani az élő kódolási hardvert vagy szoftvert egy RTMP betöltési URL-címmel, amely soha nem változik egy adott élő esemény létrehozásakor vagy leállításakor/elindításában. Ezek az operátorok egy prediktív RTMP betöltési URL-címet szeretnének használni, amely nem változik az idő múlásával. Ez akkor is hasznos, ha egy statikus RTMP betöltési URL-címet kell leküldenie egy hardveres kódolási eszköz konfigurációs beállításaiba, mint például a BlackMagic Atem Mini Pro vagy hasonló hardveres kódolási és üzemi eszközök. 
 
     > [!NOTE]
-    > A Azure Portal a Vanity URL-cím neve "*statikus állomásnév előtagja*".
+    > A Azure Portal a statikus állomásnév URL-címét "*statikus állomásnév-előtagnak*" nevezzük.
 
     Ha ezt a módot az API-ban szeretné megadni, állítsa a következőre `useStaticHostName` `true` : létrehozás időpontja (alapértelmezett érték `false` ). Ha a `useStaticHostname` értéke TRUE (igaz), a `hostnamePrefix` Megadja az állomásnév első részét az élő esemény előnézetéhez, és betölti a végpontokat. Az utolsó állomásnév ezen előtag kombinációja lenne, a Media Service-fiók neve és egy rövid kód a Azure Media Services adatközponthoz.
 
     Ha el szeretné kerülni az URL-cím véletlenszerű tokenjét, a létrehozáskor is át kell adnia a saját hozzáférési tokenjét ( `LiveEventInput.accessToken` ).  A hozzáférési jogkivonatnak érvényes GUID-karakterláncnak kell lennie (kötőjelekkel vagy anélkül). A mód beállítása után nem frissíthető.
 
-    A hozzáférési tokennek egyedinek kell lennie az adatközpontban. Ha az alkalmazásnak a Vanity URL-címet kell használnia, akkor azt javasoljuk, hogy mindig hozzon létre egy új GUID-példányt a hozzáférési jogkivonathoz (a meglévő GUID-azonosítók újbóli használata helyett).
+    A hozzáférési tokennek egyedinek kell lennie az Azure-régióban és a Media Services fiókban. Ha az alkalmazásnak statikus állomásnév betöltési URL-címét kell használnia, akkor azt javasoljuk, hogy mindig hozzon létre egy friss GUID-példányt, amely a régió, a Media Services-fiók és az élő esemény adott kombinációjának megfelelően használható.
 
-    A következő API-k használatával engedélyezheti a hiúság URL-címét, és a hozzáférési tokent érvényes GUID azonosítóra (például:) állíthatja be `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` .  
+    A következő API-k használatával engedélyezheti a statikus állomásnév URL-címét, és beállíthatja a hozzáférési tokent egy érvényes GUID azonosítóra (például: `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ).  
 
-    |Nyelv|A hiúság URL-címének engedélyezése|Hozzáférési jogkivonat beállítása|
+    |Nyelv|Statikus állomásnév URL-címének engedélyezése|Hozzáférési jogkivonat beállítása|
     |---|---|---|
-    |REST|[Properties. vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
-    |parancssori felület|[--Vanity-URL](/cli/azure/ams/live-event#az-ams-live-event-create)|[--Access-Token](/cli/azure/ams/live-event#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[Properties. useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
+    |parancssori felület|[--a-static-állomásnév használata](/cli/azure/ams/live-event#az-ams-live-event-create)|[--Access-Token](/cli/azure/ams/live-event#optional-parameters)|
+    |.NET|[LiveEvent.useStaticHostname](/dotnet/api/microsoft.azure.management.media.models.liveevent.usestatichostname?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_UseStaticHostname)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Élő bemeneti URL-címek elnevezési szabályai
 
 * Az alábbi *véletlenszerű* sztring egy 128 bites hexadecimális szám (amely 32 karakterből áll 0-9-ig és a-f-ig).
-* *hozzáférési jogkivonat*: a Vanity mód használatakor beállított érvényes GUID-karakterlánc. Például: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *a hozzáférési jogkivonat*: a statikus állomásnév beállításának használatakor beállított érvényes GUID-karakterlánc. Például: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
 * *stream neve*: megadja az adott kapcsolatok adatfolyamának nevét. Az adatfolyam-név értékét általában a használt élő kódoló adja hozzá. Az élő kódoló úgy is beállítható, hogy bármilyen nevet használjon a kapcsolódás leírásához, például: "video1_audio1", "video2_audio1", "Stream".
 
-#### <a name="non-vanity-url"></a>Nem hiúság URL-címe
+#### <a name="non-static-hostname-ingest-url"></a>Nem statikus állomásnév betöltésének URL-címe
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -171,7 +192,7 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>A hiúság URL-címe
+#### <a name="static-hostname-ingest-url"></a>Statikus állomásnév betöltésének URL-címe
 
 A következő elérési utakban az `<live-event-name>` eseménynek vagy az élő esemény létrehozásához használt egyéni névnek a nevét jelenti.
 

@@ -3,12 +3,12 @@ title: Események kézbesítése a Private link Service használatával
 description: Ez a cikk azt ismerteti, hogyan lehet megkerülni a korlátozást, hogy az események ne legyenek kézbesítve a Private link Service használatával.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722327"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629291"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Események kézbesítése a Private link Service használatával
 Jelenleg nem lehet eseményeket kézbesíteni [privát végpontok](../private-link/private-endpoint-overview.md)használatával. Ez azt eredményezi, hogy nincs támogatás, ha szigorú hálózati elkülönítési követelmények vannak, amelyekben a továbbított események forgalma nem hagyhatja el a magánhálózati IP-területet. 
@@ -27,7 +27,7 @@ Ebben a konfigurációban a forgalom a nyilvános IP-cím/Internet Event Gridró
 ## <a name="deliver-events-to-event-hubs-using-managed-identity"></a>Események továbbítása Event Hubs felügyelt identitás használatával
 Ha a Event Hubs névtérben lévő esemény-központhoz felügyelt identitás használatával szeretne eseményeket küldeni, kövesse az alábbi lépéseket:
 
-1. [A rendszer által hozzárendelt identitás engedélyezése egy témakörhöz vagy tartományhoz](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
+1. Rendszer által hozzárendelt identitás engedélyezése: [rendszertémakörök](enable-identity-system-topics.md), [Egyéni témakörök és tartományok](enable-identity-custom-topics-domains.md).  
 1. [Adja hozzá az identitást az **Azure Event Hubs adatfeladói** szerepkörhöz a Event Hubs névtérben](../event-hubs/authenticate-managed-identity.md#to-assign-azure-roles-using-the-azure-portal).
 1. [Engedélyezze a **megbízható Microsoft-szolgáltatások számára, hogy megkerüljék ezt a tűzfal-** beállítást a Event Hubs névtérben](../event-hubs/event-hubs-service-endpoints.md#trusted-microsoft-services). 
 1. [Konfigurálja azt az esemény-előfizetést](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) , amely az Event hub-t használja végpontként a rendszer által hozzárendelt identitás használatára.
@@ -35,16 +35,16 @@ Ha a Event Hubs névtérben lévő esemény-központhoz felügyelt identitás ha
 ## <a name="deliver-events-to-service-bus-using-managed-identity"></a>Események továbbítása Service Bus felügyelt identitás használatával
 Az alábbi lépéseket követve továbbíthatja az eseményeket Service Bus várólistákba vagy témakörökbe Service Bus névterében a felügyelt identitás használatával:
 
-1. [A rendszer által hozzárendelt identitás engedélyezése egy témakörhöz vagy tartományhoz](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
-1. Az identitás hozzáadása a [Azure Service Bus Adatfeladói](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) szerepkörhöz a Service Bus névtérben
+1. Rendszer által hozzárendelt identitás engedélyezése: [rendszertémakörök](enable-identity-system-topics.md), [Egyéni témakörök és tartományok](enable-identity-custom-topics-domains.md). 
+1. [Az identitás hozzáadása a **Azure Service Bus adatfeladói**](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) szerepkörhöz a Service Bus névtérben
 1. [Engedélyezze a **megbízható Microsoft-szolgáltatások számára, hogy megkerüljék ezt a tűzfal-** beállítást a Service Bus névtérben](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
-1. Konfigurálja az Service Bus üzenetsor vagy témakört használó [esemény-előfizetést](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) végpontként a rendszer által hozzárendelt identitás használatára.
+1. Konfigurálja az Service Bus üzenetsor vagy témakört használó [esemény-előfizetést](managed-service-identity.md) végpontként a rendszer által hozzárendelt identitás használatára.
 
 ## <a name="deliver-events-to-storage"></a>Események kézbesítése a tárolóba 
 Ha felügyelt identitással szeretne eseményeket kézbesíteni a tárolási várólistákba, kövesse az alábbi lépéseket:
 
-1. [A rendszer által hozzárendelt identitás engedélyezése egy témakörhöz vagy tartományhoz](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity).
-1. Adja hozzá az identitást a [Storage üzenetsor adatüzenet-küldő](../storage/common/storage-auth-aad-rbac-portal.md) szerepköréhez az Azure Storage-várólistán.
+1. Rendszer által hozzárendelt identitás engedélyezése: [rendszertémakörök](enable-identity-system-topics.md), [Egyéni témakörök és tartományok](enable-identity-custom-topics-domains.md). 
+1. [Adja hozzá az identitást a **Storage üzenetsor adatüzenet-küldő**](../storage/common/storage-auth-aad-rbac-portal.md) szerepköréhez az Azure Storage-várólistán.
 1. Konfigurálja az Service Bus üzenetsor vagy témakört használó [esemény-előfizetést](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) végpontként a rendszer által hozzárendelt identitás használatára.
 
 

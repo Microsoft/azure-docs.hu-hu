@@ -4,12 +4,12 @@ description: Összefoglalja a támogatási beállításokat és az Azure Disk Ba
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 88ec26837cc8f69c1e84c77ea6b57ce16e462e0a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107278"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612857"
 ---
 # <a name="azure-disk-backup-support-matrix"></a>Az Azure Disk Backup támogatási mátrixa
 
@@ -51,7 +51,7 @@ További régiók lesznek bejelentve, amikor elérhetővé válnak.
 
 - Jelenleg a lemezek biztonsági mentésének konfigurálásához szükséges Azure Portal-élmény az azonos előfizetésből legfeljebb 20 lemezre korlátozódik.
 
-- Jelenleg (az előzetes verzió alatt) a PowerShell és az Azure CLI használata a lemezek biztonsági mentésének és visszaállításának konfigurálásához nem támogatott.
+- Az Azure Disk Backup támogatja a PowerShellt. Az Azure CLI jelenleg nem támogatott.
 
 - A biztonsági mentés konfigurálásakor a rendszer biztonsági mentésre kijelölt lemezt és a pillanatképek tárolására szolgáló pillanatkép-erőforráscsoportot ugyanahhoz az előfizetéshez kell tartoznia. Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez. További információ a felügyelt lemez [növekményes pillanatképekről](../virtual-machines/disks-incremental-snapshots.md#restrictions) . A pillanatképek erőforráscsoport kiválasztásával kapcsolatos további információkért lásd:  [biztonsági mentés konfigurálása](backup-managed-disks.md#configure-backup).
 
@@ -61,7 +61,7 @@ További régiók lesznek bejelentve, amikor elérhetővé válnak.
 
 - A felügyelt lemezek [privát hivatkozásai](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) lehetővé teszik a felügyelt lemezek exportálásának és importálásának korlátozását úgy, hogy az csak az Azure-beli virtuális hálózaton belül történjen. Az Azure Disk Backup támogatja a privát végpontokkal rendelkező lemezek biztonsági mentését. Ez nem tartalmazza a privát végponton keresztül elérhető biztonsági mentési vagy Pillanatképek elérését.
 
-- Az előzetes verzió ideje alatt nem tilthatja le a biztonsági mentést, így a biztonsági mentés **leállítása és a biztonsági mentési adat megőrzése** nem támogatott. Törölhet egy biztonsági mentési példányt, amely nem csak leállítja a biztonsági mentést, hanem törli az összes biztonsági mentési adatkészletet is.
+- Törölhet egy biztonsági mentési példányt, amely leállítja a biztonsági mentést, és törli az összes biztonsági mentési adatkészletet is. Jelenleg nem lehet letiltani a biztonsági mentést, mert a biztonsági mentés **leállítása és a biztonsági mentési adat megőrzése** beállítás nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 

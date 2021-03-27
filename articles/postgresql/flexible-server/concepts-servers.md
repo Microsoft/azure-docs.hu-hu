@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: e3b04563b0da3255c63208b73c9ecdbd62ff0cf7
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 60edbcf97b43747246e84517cc65bb0dca4ff546
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609293"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626843"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>Kiszolgálók – Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -42,8 +42,8 @@ Egy Azure Database for PostgreSQL-kiszolgálón belül létrehozhat egy vagy tö
 
 A következő elemek segítenek biztosítani az adatbázis biztonságos elérését:
 
-|||
-|:--|:--|
+| Biztonsági koncepció | Description |
+| :-- | :-- |
 | **Hitelesítés és engedélyezés** | Az Azure Database for PostgreSQL-kiszolgáló támogatja a natív PostgreSQL-hitelesítést. A kiszolgálóhoz történő csatlakozás és a hitelesítés rendszergazdai bejelentkezéssel végezhető el. |
 | **Protokoll** | A szolgáltatás támogatja a PostgreSQL által használt Message-alapú protokollt. |
 | **TCP/IP** | A protokoll több mint TCP/IP-cím, illetve UNIX-tartományú szoftvercsatorna esetén támogatott. |

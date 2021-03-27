@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 5286362369e0c4881cdf0c56bc13d1d340056be1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 41827c5db58f3d4755fb34e46067357cd0255676
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562511"
+ms.locfileid: "105612772"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-parancsfájlok IoT Edge Linux rendszerhez Windows rendszeren
 
@@ -46,12 +46,15 @@ Az **Deploy-eFlow** parancs a fő telepítési módszer. Az üzembe helyezési p
 | vmSizeDefintion | Legfeljebb 30 karakter hosszú lehet | A virtuális gép magok számának és a rendelkezésre álló RAM-nak a meghatározása. **Alapértelmezett érték**: Standard_K8S_v1. |
 | vmDiskSize | 8 GB és 256 GB között | A dinamikusan bővülő virtuális merevlemez maximális mérete. **Alapértelmezett érték**: 16 GB. |
 | vmUser | Legfeljebb 30 karakter hosszú lehet | A virtuális gépre való bejelentkezéshez használt Felhasználónév. |
-| vnetType | **Transzparens** vagy **ICS** | A virtuális kapcsoló típusa. **Alapértelmezett érték**: transzparens. |
+| vnetType | **Transzparens** vagy **ICS** | A virtuális kapcsoló típusa. **Alapértelmezett érték**: transzparens. Az átlátszó külső kapcsolóra hivatkozik, az internetkapcsolat megosztása pedig egy belső kapcsolóra hivatkozik. |
 | vnetName | Nem 64 karakternél hosszabb | A virtuális kapcsoló neve. **Alapértelmezett érték**: External. |
 | enableVtpm | Nincsenek | **Kapcsoló paraméter**. Hozza létre a virtuális gépet, amelyen engedélyezve van a TPM, vagy le van tiltva. |
 | mobyPackageVersion | Legfeljebb 30 karakter hosszú lehet |  A virtuális gépen ellenőrizni vagy telepíteni kívánt Moby-csomag verziója.  **Alapértelmezett érték:** 19.03.11. |
 | iotedgePackageVersion | Legfeljebb 30 karakter hosszú lehet | A virtuális gépen ellenőrizni vagy telepíteni kívánt IoT Edge-csomag verziója. **Alapértelmezett érték:** 1.1.0. |
 | installPackages | Nincsenek | **Kapcsoló paraméter**. Ha be van jelölve, a parancsfájl megkísérli telepíteni a Moby és IoT Edge csomagokat ahelyett, hogy csak a csomagok ellenőrzése megtörtént. |
+
+>[!NOTE]
+>Alapértelmezés szerint, ha a folyamat nem talál külső kapcsolót a névvel `External` , akkor megkeresi a meglévő külső kapcsolót, amelyen keresztül az IP-címet beszerezheti. Ha nincs elérhető külső kapcsoló, a rendszer egy belső kapcsolót keres. Ha nincs elérhető belső kapcsoló, akkor megkísérli létrehozni az alapértelmezett kapcsolót, amelyen keresztül az IP-címet beszerezni.
 
 ## <a name="verify-eflowvm"></a>Verify-EflowVm
 

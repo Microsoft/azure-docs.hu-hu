@@ -3,42 +3,41 @@ title: A Windows rendszerű virtuális asztali monitor előzetes verziójának h
 description: A Azure Monitor használata a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c87763cb2ca482fc8ee15588d7287f0d9275fff
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594455"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627166"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Az üzembe helyezés figyelése a Windows rendszerű virtuális asztali Azure Monitor használatával (előzetes verzió)
 
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali Azure Monitor jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A Windows rendszerű virtuális asztali Azure Monitor (előzetes verzió) egy olyan irányítópult, amely Azure Monitor-munkafüzetekre épül, és az informatikai szakemberek megismerhetik a Windows rendszerű virtuális asztali környezeteket. Ebből a témakörből megtudhatja, hogyan állíthatja be Azure Monitor a Windows rendszerű virtuális asztal számára a Windows rendszerű virtuális asztali környezetek figyeléséhez.
+A Windows rendszerű virtuális asztali Azure Monitor (előzetes verzió) egy olyan irányítópult, amely Azure Monitor-munkafüzetekre épül, és az informatikai szakemberek megismerhetik a Windows rendszerű virtuális asztali környezeteket. Ebből a cikkből megtudhatja, hogyan állíthatja be Azure Monitor a Windows rendszerű virtuális asztal számára a Windows rendszerű virtuális asztali környezetek figyeléséhez.
 
 ## <a name="requirements"></a>Követelmények
 
 Mielőtt megkezdené a Windows rendszerű virtuális asztali Azure Monitor használatát, be kell állítania a következő dolgokat:
 
 - Az összes Windows rendszerű virtuális asztali környezetnek a Azure Resource Manager rendszerrel kompatibilis Windows-alapú virtuális asztal legújabb kiadásán kell alapulnia.
-
-- Legalább egy konfigurált Log Analytics munkaterület.
-
+- Legalább egy konfigurált Log Analytics munkaterület. A Windows rendszerű virtuális asztali munkamenet-gazdagépek kijelölt Log Analytics munkaterületének használatával biztosíthatja, hogy a teljesítményszámlálók és az események csak a Windows rendszerű virtuális asztali környezetben lévő munkamenet-gazdagépekről legyenek gyűjtve.
 - Az adatgyűjtés engedélyezése a Log Analytics munkaterületen a következő dolgokhoz:
-    - A szükséges teljesítményszámlálók
-    - A Windows rendszerű virtuális asztali Azure Monitorban használt teljesítményszámlálók és események
-    - A diagnosztikai eszközről származó adatok a környezetben található összes objektumra vonatkozóan.
-    - A környezetben figyelni kívánt virtuális gépek (VM-EK).
+    - Diagnosztika a Windows rendszerű virtuális asztali környezetből
+    - Ajánlott teljesítményszámlálók a Windows rendszerű virtuális asztali munkamenet-gazdagépekről
+    - Ajánlott Windows-eseménynaplók a Windows rendszerű virtuális asztali munkamenet-gazdagépekről
+
+ Az ebben a cikkben ismertetett adatbeállítási folyamat az egyetlen, amelyet figyelnie kell a Windows rendszerű virtuális asztalon. A költségek megtakarítása érdekében letilthatja az adatokat küldő összes többi elemet a Log Analytics munkaterületen.
 
 A Windows rendszerű virtuális asztali környezethez tartozó Azure Monitor figyeléséhez a következő olvasási hozzáférési engedélyekre is szüksége lesz:
 
-- Olvasási hozzáférés az erőforráscsoporthoz, ahol a környezet erőforrásai találhatók.
-
-- Olvasási hozzáférés azon erőforráscsoport (ok) hoz, ahol a környezet munkamenet-gazdagépei találhatók
+- Olvasási hozzáférés a Windows rendszerű virtuális asztali erőforrásokkal rendelkező Azure-előfizetésekhez
+- Olvasási hozzáférés az előfizetés azon csoportjaihoz, amelyek a Windows rendszerű virtuális asztali munkamenet-gazdagépeket tárolják
+- Olvasási hozzáférés a Log Analytics munkaterülethez vagy munkaterületekhez
 
 >[!NOTE]
 > Az olvasási hozzáférés csak a rendszergazdák számára teszi lehetővé az adatmegjelenítést. A Windows rendszerű virtuális asztali portál erőforrásainak kezeléséhez eltérő engedélyekre van szükségük.
@@ -48,130 +47,138 @@ A Windows rendszerű virtuális asztali környezethez tartozó Azure Monitor fig
 A Windows rendszerű virtuális asztali Azure Monitor a következő módszerek egyikével nyitható meg:
 
 - Nyissa meg a [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks).
-
 - Keresse meg **és válassza ki** a **Windows rendszerű virtuális asztal** elemet a Azure Portal, majd válassza az eredmények lehetőséget.
-
-- Keresse meg és válassza ki **Azure monitor** a Azure Portal. Az **Áttekintés területen válassza** az adatellenőrzési **központ** **lehetőséget,** majd a **Windows rendszerű virtuális asztal** területen nyissa meg az irányítópultot a Azure monitor oldalon.
-
-Miután megnyitotta Azure Monitor a Windows rendszerű virtuális asztal megnyitásához, jelölje be az **előfizetés**, az **erőforráscsoport**, a **címkészlet** és az **időtartomány** címkével ellátott jelölőnégyzetek egyikét a figyelni kívánt környezet alapján.
+- Keresse meg és válassza ki **Azure monitor** a Azure Portal. Az Áttekintés területen válassza az **ininsight hub** **lehetőséget, majd válassza a** **Windows virtuális asztal** lehetőséget.
+Miután megnyitotta a lapot, adja meg a figyelni kívánt környezet **előfizetését**, **erőforráscsoportját**, **állomásnevét** és **időtartományát** .
 
 >[!NOTE]
 >A Windows rendszerű virtuális asztali szolgáltatás jelenleg csak egy előfizetés, erőforráscsoport és címkészlet figyelését támogatja. Ha nem találja a figyelni kívánt környezetet, tekintse meg a [hibaelhárítási dokumentációt](troubleshoot-azure-monitor.md) az ismert funkciókra vonatkozó kérések és problémák megoldásához.
 
-## <a name="set-up-with-the-configuration-workbook"></a>Beállítás a konfigurációs munkafüzettel
+## <a name="log-analytics-settings"></a>Log Analytics beállítások
 
-Ha első alkalommal nyit Azure Monitor a Windows rendszerű virtuális asztalhoz, konfigurálnia kell Azure Monitor a Windows rendszerű virtuális asztali erőforrásokhoz. Az erőforrások konfigurálása:
+A Windows rendszerű virtuális asztalok Azure Monitor használatának megkezdéséhez legalább egy Log Analytics-munkaterületre szüksége lesz. A Windows rendszerű virtuális asztali munkamenet-gazdagépek kijelölt Log Analytics munkaterületének használatával biztosíthatja, hogy a teljesítményszámlálók és az események csak a Windows rendszerű virtuális asztali környezetből származó űrlapos munkamenet-gazdagépeket gyűjtsék. Ha már beállított egy munkaterületet, ugorjon előre a [konfigurációs munkafüzet használatával történő beállításhoz](#set-up-using-the-configuration-workbook). A beállításhoz lásd: [log Analytics munkaterület létrehozása a Azure Portalban](../azure-monitor/logs/quick-create-workspace.md).
 
-1. Nyissa meg a munkafüzetet a Azure Portalban.
-2. Válassza **a konfigurációs munkafüzet megnyitása** lehetőséget.
+>[!NOTE]
+>A Log Analytics szabványos adattárolási díjait fogja alkalmazni. A kezdéshez azt javasoljuk, hogy válassza az utólagos elszámolású modellt, és állítsa be az üzembe helyezés méretezését, és vegyen fel több adatmennyiséget. További információ: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
 
-A konfigurációs munkafüzet beállítja a figyelési környezetet, és lehetővé teszi a konfiguráció ellenőrzését a telepítési folyamat befejezése után. Fontos, hogy ellenőrizze a konfigurációt, ha az irányítópulton található elemek nem jelennek meg megfelelően, vagy ha a termékcsoport további adatpontokat igénylő frissítéseket tesz közzé.
+## <a name="set-up-using-the-configuration-workbook"></a>Beállítás a konfigurációs munkafüzet használatával
 
-## <a name="host-pool-diagnostic-settings"></a>Gazdagépkészlet diagnosztikai beállításai
+Ha első alkalommal nyit Azure Monitor a Windows rendszerű virtuális asztali számítógépeken, be kell állítania Azure Monitor a Windows rendszerű virtuális asztali környezethez. Az erőforrások konfigurálása:
 
-A szolgáltatást támogató Windowsos virtuális asztali környezetben lévő összes objektumon engedélyeznie kell Azure Monitor diagnosztikai beállításait.
+1. Nyissa meg a Windows rendszerű virtuális asztali Azure Monitor a [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)-on található Azure Portal, majd válassza a **konfigurációs munkafüzet** lehetőséget.
+2. Válassza ki az **előfizetés**, az **erőforráscsoport** és az **alkalmazáskészlet** területen konfigurálni kívánt környezetet.
 
-1. Nyissa meg Azure Monitor a Windows rendszerű virtuális asztalnál a következő helyen: [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks), majd válassza a **konfigurációs munkafüzet** elemet.
+A konfigurációs munkafüzet beállítja a figyelési környezetet, és lehetővé teszi a konfiguráció ellenőrzését a telepítési folyamat befejezése után. Fontos, hogy ellenőrizze a konfigurációt, ha az irányítópulton lévő elemek nem jelennek meg megfelelően, vagy ha a termékcsoport olyan frissítéseket tesz közzé, amelyek új beállításokat igényelnek.
 
-2. Válasszon ki egy, az **előfizetés**, az **erőforráscsoport** és az **alkalmazáskészlet** területen figyelni kívánt környezetet.
+### <a name="resource-diagnostic-settings"></a>Erőforrás-diagnosztikai beállítások
 
-3. Ellenőrizze, hogy engedélyezve van-e a Windows rendszerű virtuális asztali diagnosztika a gazdagép-készlet **diagnosztikai beállításai** területen. Ha nem, a rendszer hibaüzenetet jelenít meg, amely szerint a kiválasztott gazdagéphez nem található létező diagnosztikai konfiguráció. 
-   
-   A következő táblákat kell engedélyezni:
+A Windows rendszerű virtuális asztali infrastruktúrával kapcsolatos információk gyűjtéséhez engedélyeznie kell több diagnosztikai beállítást a Windows rendszerű virtuális asztali gazdagépeken és munkaterületeken (ez a Windows virtuális asztal munkaterülete, nem az Log Analytics-munkaterület). További információ a gazdagép-készletekről, a munkaterületekről és az egyéb Windows rendszerű virtuális asztali erőforrás-objektumokról: [környezeti útmutató](environment-setup.md).
+
+További információt a Windows rendszerű virtuális asztali diagnosztika és a támogatott diagnosztikai táblázatok a [Windows rendszerű virtuális asztali diagnosztika küldése log Analyticsre](diagnostics-log-analytics.md)című témakörben olvashat.
+
+Az erőforrás-diagnosztikai beállítások beállítása a konfigurációs munkafüzetben: 
+
+1. Válassza ki a konfigurációs munkafüzet **erőforrás-diagnosztikai beállítások** lapját. 
+2. Válassza **log Analytics munkaterületet** a Windows rendszerű virtuális asztali diagnosztika elküldéséhez. 
+
+#### <a name="host-pool-diagnostic-settings"></a>Gazdagépkészlet diagnosztikai beállításai
+
+A gazdagép-diagnosztika beállítása a konfigurációs munkafüzet erőforrás diagnosztikai beállítások szakaszának használatával:
+
+1. Az **alkalmazáskészlet** területen ellenőrizze, hogy engedélyezve van-e a Windows rendszerű virtuális asztali diagnosztika. Ha nem, a rendszer hibaüzenetet jelenít meg, amely szerint a kiválasztott gazdagéphez nem található létező diagnosztikai konfiguráció. A következő támogatott diagnosztikai táblákat kell engedélyeznie:
 
     - Checkpoint
     - Hiba
     - Kezelés
     - Kapcsolat
     - Gazdagép regisztrációja
-
+    - AgentHealthStatus
+    
     >[!NOTE]
-    > Ha nem látja a hibaüzenetet, nem kell végrehajtania a 4. lépést.
+    > Ha nem látja a hibaüzenetet, nem kell végrehajtania a 2 – 4. lépést.
 
-4. Válassza az **alkalmazáskészlet konfigurálása** lehetőséget.
+2. Válassza az **alkalmazáskészlet konfigurálása** lehetőséget.
+3. Válassza az **Üzembe helyezés** lehetőséget.
+4. Frissítse a konfigurációs munkafüzetet.
 
-5. Válassza az **Üzembe helyezés** lehetőséget.
+#### <a name="workspace-diagnostic-settings"></a>Munkaterület diagnosztikai beállításai 
 
-6. Frissítse a munkafüzetet.
+A munkaterület-diagnosztika beállítása a konfigurációs munkafüzet erőforrás-diagnosztikai beállítások szakaszának használatával:
 
-Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztika szolgáltatást a Windows rendszerű virtuális asztali környezetben lévő összes objektumon, vagy elérheti a Log Analytics munkaterületet a [Windows rendszerű virtuális asztali diagnosztika küldése a log Analytics](diagnostics-log-analytics.md).
+ 1. A **munkaterület** területen ellenőrizze, hogy engedélyezve van-e a Windows rendszerű virtuális asztali diagnosztika a Windows rendszerű virtuális asztal munkaterületen. Ha nem, hibaüzenet jelenik meg, amely szerint a kiválasztott munkaterülethez nem található létező diagnosztikai konfiguráció. A következő támogatott diagnosztikai táblákat kell engedélyeznie:
+ 
+    - Checkpoint
+    - Hiba
+    - Kezelés
+    - Adatcsatorna
+    
+    >[!NOTE]
+    > Ha nem látja a hibaüzenetet, nem kell végrehajtania a 2-4. lépést.
 
-## <a name="configure-log-analytics"></a>A Log Analytics konfigurálása
+2. Válassza a **munkaterület konfigurálása** lehetőséget.
+3. Válassza az **Üzembe helyezés** lehetőséget.
+4. Frissítse a konfigurációs munkafüzetet.
 
-A Windows rendszerű virtuális asztalok Azure Monitor használatának megkezdéséhez szüksége lesz legalább egy Log Analytics-munkaterületre, hogy adatokat gyűjtsön a figyelni kívánt környezetből, és megadja azt a munkafüzetnek. Ha már van egy beállított beállítása, ugorjon előre a [teljesítményszámlálók beállítása](#set-up-performance-counters)elemre. Ha új Log Analytics munkaterületet szeretne beállítani a Windows rendszerű virtuális asztali környezetet tartalmazó Azure-előfizetéshez, tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/logs/quick-create-workspace.md)című témakört.
+### <a name="session-host-data-settings"></a>Munkamenet-gazdagép adatbeállításai
 
->[!NOTE]
->A Log Analytics szabványos adattárolási díjait fogja alkalmazni. A kezdéshez azt javasoljuk, hogy válassza az utólagos elszámolású modellt, és állítsa be az üzembe helyezés méretezését, és vegyen fel több adatmennyiséget. További információ: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
+Ha információkat szeretne gyűjteni a Windows rendszerű virtuális asztali munkamenet-gazdagépekről, telepítenie kell a Log Analytics ügynököt a gazdagép összes munkamenet-gazdagépére, győződjön meg arról, hogy a munkamenet-gazdagépek elküldve Log Analytics munkaterületre, és konfigurálja a Log Analytics-ügynök beállításait a Teljesítményadatok és a Windows-eseménynaplók összegyűjtéséhez.
 
-### <a name="set-up-performance-counters"></a>Teljesítményszámlálók beállítása
+A munkamenet-gazdagépek adatküldési Log Analytics munkaterületének nem kell megegyeznie a diagnosztikai adatküldéshez. Ha a Windows rendszerű virtuális asztali környezeten kívüli Azure-munkamenetek is vannak, javasoljuk, hogy a Windows rendszerű virtuális asztali munkamenet-gazdagépek számára kijelölt Log Analytics munkaterülettel rendelkezzen. 
 
-A Log Analytics munkaterületen a megfelelő mintavételi intervallumban engedélyeznie kell a gyűjteményhez megadott teljesítményszámlálókat. Ezek a teljesítményszámlálók csak a Windows virtuális asztal figyeléséhez szükséges számlálók. Letilthatja az összes többiet a költségek megtakarítása érdekében.
+Az Log Analytics munkaterület beállítása, amelyben a munkamenet-gazdagép adatait össze szeretné gyűjteni: 
 
-Ha már engedélyezve vannak a teljesítményszámlálók, és el szeretné távolítani őket, kövesse a teljesítményszámlálók [konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md) a teljesítményszámlálók újrakonfigurálásához című témakör útmutatását. Míg a cikk leírja, hogyan adhat hozzá számlálókat, de ugyanazon a helyen is eltávolíthatja őket.
+1. Válassza ki a **munkamenet-gazdagép adatbeállítások** lapját a konfigurációs munkafüzetben. 
+2. Válassza ki azt a **log Analytics munkaterületet** , amelyhez munkamenet-gazdagépet szeretne küldeni. 
 
-Ha még nem állított be teljesítményszámlálókat, a következő módon konfigurálhatja őket a Windows rendszerű virtuális asztali Azure Monitorhoz:
+#### <a name="session-hosts"></a>Munkamenet-gazdagépek
 
-1. Nyissa meg a [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks), majd válassza ki a **konfigurációs munkafüzetet** az ablak alján.
-
-2. A **log Analytics konfigurálása** területen válassza ki az előfizetéséhez beállított munkaterületet.
-
-3. A **munkaterület teljesítményszámlálói** esetében megjelenik a figyeléshez szükséges számlálók listája. A lista jobb oldalán tekintse meg a **hiányzó számlálók** listán szereplő elemeket, hogy engedélyezze a számlálók figyelését a munkaterületen.
-
-4. Válassza a **teljesítményszámlálók konfigurálása** lehetőséget.
-
-5. Válassza a **konfiguráció alkalmazása** lehetőséget.
-
-6. Frissítse a konfigurációs munkafüzetet, és folytassa a környezet beállítását.
-
-Új teljesítményszámlálókat is hozzáadhat a kezdeti konfigurálás után, amikor a szolgáltatás frissül, és új figyelési eszközöket igényel. A **hiányzó számlálók** listában kiválasztva ellenőrizheti, hogy az összes szükséges számláló engedélyezve van-e.
-
->[!NOTE]
->A bemeneti késleltetési teljesítményszámlálók csak a Windows 10 RS5 és újabb, illetve a Windows Server 2019-es és újabb verzióival kompatibilisek.
-
-További információ a gyűjteményhez még nem engedélyezett teljesítményszámlálók manuális hozzáadásáról: [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md).
-
-### <a name="set-up-windows-events"></a>Windows-események beállítása
-
-Ezután engedélyeznie kell bizonyos Windows-eseményeket a gyűjteményhez a Log Analytics munkaterületen. Az ebben a szakaszban ismertetett események az egyetlenek, Azure Monitor a Windows rendszerű virtuális asztali igényekhez. Letilthatja az összes többiet a költségek megtakarítása érdekében.
-
-Windows-események beállítása:
-
-1. Ha a Windows-események már engedélyezve vannak, és el szeretné távolítani őket, távolítsa el a nem kívánt eseményeket, mielőtt a konfigurációs munkafüzetet használja a figyeléshez szükséges beállítás engedélyezéséhez.
-
-2. Nyissa meg a Azure Monitor a Windows rendszerű virtuális asztali gépen a [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)címen, majd válassza a **konfigurációs munkafüzet** elemet az ablak alján.
-
-3. A **Windows-események konfigurációjában** a figyeléshez szükséges Windows-események listája látható. A lista jobb oldalán a **hiányzó események** lista látható, ahol megtalálhatja a munkaterülethez jelenleg nem engedélyezett kötelező események nevét és esemény-típusait. Jegyezze fel ezeket a neveket később.
-
-4. Válassza a **munkaterület-konfiguráció megnyitása** lehetőséget.
-
-5. Válassza **az** adatelemet.
-
-6. Válassza a **Windows-eseménynaplók** lehetőséget.
-
-7. Adja hozzá a hiányzó események nevét a 3. lépésben és a szükséges eseménytípus mindegyikhez.
-
-8. Frissítse a konfigurációs munkafüzetet, és folytassa a környezet beállítását.
-
-Új Windows-eseményeket adhat hozzá a kezdeti konfigurálás után, ha a figyelési eszköz frissítései új események engedélyezését igénylik. Győződjön meg arról, hogy az összes szükséges esemény engedélyezve van, lépjen vissza a **hiányzó események** listájára, és engedélyezze az ott látható hiányzó eseményeket.
-
-## <a name="install-the-log-analytics-agent-on-all-hosts"></a>A Log Analytics-ügynök telepítése minden gazdagépre
-
-Végezetül telepítenie kell a Log Analytics ügynököt a gazdagép összes gazdagépére, hogy az adatok a gazdagépekről a kiválasztott munkaterületre legyenek küldve.
-
-A Log Analytics-ügynök telepítése:
-
-1. Nyissa meg a Azure Monitor a Windows rendszerű virtuális asztali gépen a [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)címen, majd válassza a **konfigurációs munkafüzet** elemet az ablak alján.
-
-2. Ha a Log Analytics nincs konfigurálva a gazdagép összes gazdagépén, hibaüzenet jelenik meg a Log Analytics konfigurációs szakasz alján, a következő üzenettel: "a gazdagép egyes gazdagépei nem küldenek adatokat a kijelölt Log Analytics munkaterületre." Válassza a **gazdagépek hozzáadása munkaterülethez** lehetőséget a kiválasztott gazdagépek hozzáadásához. Ha nem látja a hibaüzenetet, itt állíthatja le.
-
-3. Frissítse a konfigurációs munkafüzetet.
+Telepítenie kell a Log Analytics ügynököt a gazdagép összes munkamenet-gazdagépére, és el kell küldenie azokat az adott gazdagépekről a kiválasztott Log Analytics-munkaterületre. Ha a Log Analytics nincs konfigurálva a gazdagép összes munkamenet-gazdagépéhez, megjelenik egy **munkamenet** -gazdagépek szakasz a **munkamenet-állomás adatbeállításainak** tetején a "néhány gazdagép a gazdagépen, amely nem küld adatokat a kiválasztott log Analytics munkaterületre."
 
 >[!NOTE]
->A Log Analytics-bővítmény telepítéséhez a gazdagépnek futnia kell. Ha az automatikus központi telepítés sikertelen a gazdagépen, a bővítményt mindig manuálisan is telepítheti egy gazdagépre. A bővítmény manuális telepítésével kapcsolatos további információkért lásd: [log Analytics virtuálisgép-bővítmény a Windowshoz](../virtual-machines/extensions/oms-windows.md).
+> Ha nem látja a **munkamenet-gazdagépek** szakaszt vagy hibaüzenetet, a rendszer minden munkamenet-gazdagépet helyesen állít be. Ugorjon előre a [munkaterület](#workspace-performance-counters)-teljesítményszámlálók útmutatásának beállításához.
+
+A fennmaradó munkamenet-gazdagépek beállítása a konfigurációs munkafüzet használatával:
+
+1. Válassza **a gazdagépek hozzáadása munkaterülethez** lehetőséget. 
+2. Frissítse a konfigurációs munkafüzetet.
+
+>[!NOTE]
+>A Log Analytics-bővítmény telepítéséhez a gazdagépnek futnia kell. Ha az automatikus központi telepítés nem működik, manuálisan is telepítheti a bővítményt egy gazdagépre. A bővítmény manuális telepítésével kapcsolatos további információkért lásd: [log Analytics virtuálisgép-bővítmény a Windowshoz](../virtual-machines/extensions/oms-windows.md).
+
+#### <a name="workspace-performance-counters"></a>Munkaterület teljesítményszámlálói
+
+A teljesítményadatok a munkamenet-gazdagépekről való összegyűjtéséhez és a Log Analytics munkaterületre való elküldéséhez engedélyeznie kell az adott teljesítményszámlálók számára.
+
+Ha már engedélyezve vannak a teljesítményszámlálók, és el szeretné távolítani őket, kövesse a [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md)című témakör útmutatását. A teljesítményszámlálók ugyanabban a helyen adhatók hozzá és távolíthatók el.
+
+Teljesítményszámlálók beállítása a konfigurációs munkafüzet használatával: 
+
+1. A konfigurációs munkafüzet **munkaterület teljesítményszámlálói** területén tekintse meg a **konfigurált számlálókat** , és tekintse meg a már engedélyezett számlálókat a log Analytics munkaterületre való küldéshez. Ellenőrizze a **hiányzó számlálókat** , és győződjön meg arról, hogy engedélyezte az összes szükséges számlálót.
+2. Ha hiányoznak a számlálók, válassza a **teljesítményszámlálók konfigurálása** lehetőséget.
+3. Válassza a **konfiguráció alkalmazása** lehetőséget.
+4. Frissítse a konfigurációs munkafüzetet.
+5. Győződjön meg arról, hogy az összes szükséges számláló engedélyezve van a **hiányzó számlálók** listájának ellenőrzésével. 
+
+#### <a name="configure-windows-event-logs"></a>Windows-eseménynaplók konfigurálása
+
+Az egyes Windows-eseménynaplókat is engedélyeznie kell a hibák, figyelmeztetések és információk összegyűjtéséhez a munkamenet-gazdagépekről, és elküldeni őket a Log Analytics munkaterületre.
+
+Ha már engedélyezte a Windows-eseménynaplókat, és el szeretné távolítani őket, kövesse a [Windows-eseménynaplók konfigurálása](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)című témakör útmutatását.  Windows-eseménynaplókat is hozzáadhat és eltávolíthat ugyanazon a helyen.
+
+Windows-eseménynaplók beállítása a konfigurációs munkafüzet használatával:
+
+1. A **Windows-eseménynaplók konfigurálása** területen ellenőrizze, hogy **vannak** -e olyan eseménynaplók, amelyekkel már engedélyezte az log Analytics munkaterületre való küldést. Ellenőrizze, hogy vannak-e a **hiányzó eseménynaplók** , és győződjön meg arról, hogy engedélyezte az összes Windows eseménynaplót.
+2. Ha hiányoznak a Windows-eseménynaplók, válassza az **események konfigurálása** lehetőséget.
+3. Válassza az **Üzembe helyezés** lehetőséget.
+4. Frissítse a konfigurációs munkafüzetet.
+5. Győződjön meg arról, hogy a szükséges Windows-eseménynaplók engedélyezve vannak a **hiányzó eseménynaplók** listájának ellenőrzésével. 
+
+>[!NOTE]
+>Ha az automatikus esemény üzembe helyezése sikertelen, válassza az **ügynök konfigurációjának megnyitása** lehetőséget a konfigurációs munkafüzetben a hiányzó Windows-eseménynaplók manuális hozzáadásához. 
 
 ## <a name="optional-configure-alerts"></a>Nem kötelező: riasztások konfigurálása
 
-A Windows rendszerű virtuális asztali számítógép Azure Monitor konfigurálható úgy, hogy értesítést kapjon, ha a kiválasztott előfizetésen belül bármilyen súlyos Azure Monitor riasztás történik. Ehhez kövesse a [válasz az eseményekre Azure monitor riasztásokkal](../azure-monitor/alerts/tutorial-response.md)című témakör utasításait.
+A Windows rendszerű virtuális asztali Azure Monitor lehetővé teszi a kiválasztott előfizetésen belüli Azure Monitor riasztások figyelését a Windows rendszerű virtuális asztali adatai környezetében. Azure Monitor a riasztások az Azure-előfizetések választható funkciói, és külön kell beállítani azokat a Windows rendszerű virtuális asztali Azure Monitor. A Azure Monitor riasztások keretrendszer használatával egyéni riasztásokat állíthat be a Windows rendszerű virtuális asztali eseményekre, diagnosztikare és erőforrásokra vonatkozóan. A Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [az eseményekre való reagálás Azure monitor riasztásokkal](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnosztikai és használati adatok
 
@@ -186,7 +193,7 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy konfigurálta a Windows rendszerű virtuális asztali Azure Portal, néhány olyan erőforrást tartalmaz, amelyek segíthetnek a következőkben:
+Most, hogy konfigurálta Azure Monitor a Windows rendszerű virtuális asztali környezethez, az alábbiakban néhány olyan erőforrást talál, amelyek segíthetnek a környezet figyelésének megkezdésében:
 
 - Tekintse meg a [szószedetet](azure-monitor-glossary.md) , és ismerkedjen meg a Windows rendszerű virtuális asztalok Azure Monitorával kapcsolatos feltételekkel és fogalmakkal.
-- Ha probléma merül fel, segítségért tekintse meg a [hibaelhárítási útmutatót](troubleshoot-azure-monitor.md) .
+- Ha problémába ütközik, tekintse meg a Súgó és az ismert problémák [hibaelhárítási útmutatóját](troubleshoot-azure-monitor.md) .

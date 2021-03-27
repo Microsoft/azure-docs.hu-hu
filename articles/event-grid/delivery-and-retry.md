@@ -3,12 +3,12 @@ title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98247369"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629274"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -25,8 +25,8 @@ Event Grid alapértelmezett értéke az egyes események küldése az előfizet�
 
 A kötegelt kézbesítésnek két beállítása van:
 
-* **Események másodpercenkénti** maximális száma – a rendszer a kötegben Event Grid által kézbesített események maximális számát adja meg. A rendszer soha nem lépi túl ezt a számot, azonban kevesebb esemény jelenhet meg, ha a közzétételkor nem áll rendelkezésre más esemény. Event Grid nem késlelteti az eseményeket, ha kevesebb esemény áll rendelkezésre. 1 és 5 000 közöttinek kell lennie.
-* Az **előnyben részesített köteg mérete (kilobájtban** ) – a Batch méretének felső határa kilobájtban. A maximális eseményekhez hasonlóan a köteg mérete is kisebb lehet, ha a közzétételkor több esemény nem érhető el. Lehetséges, hogy egy köteg nagyobb, mint az előnyben részesített köteg mérete, *Ha* egyetlen esemény nagyobb az előnyben részesített méretnél. Ha például az előnyben részesített méret 4 KB, a 10 KB-os eseményt pedig Event Grid küldi el a rendszer, akkor a 10 KB-os esemény továbbra is a saját kötegében fog megjelenni az eldobása helyett.
+* **Események másodpercenkénti** maximális száma – a rendszer a kötegben Event Grid által kézbesített események maximális számát adja meg. A rendszer soha nem lépi túl ezt a számot, azonban kevesebb esemény jelenhet meg, ha a közzétételkor nem áll rendelkezésre más esemény. Event Grid nem késlelteti az eseményeket egy köteg létrehozásához, ha kevesebb esemény áll rendelkezésre. 1 és 5 000 közöttinek kell lennie.
+* Az **előnyben részesített köteg mérete (kilobájtban** ) – a Batch méretének felső határa kilobájtban. A maximális eseményekhez hasonlóan a köteg mérete is kisebb lehet, ha a közzététel időpontjában további események nem érhetők el. Lehetséges, hogy egy köteg nagyobb, mint az előnyben részesített köteg mérete, *Ha* egyetlen esemény nagyobb az előnyben részesített méretnél. Ha például az előnyben részesített méret 4 KB, a 10 KB-os eseményt pedig Event Grid küldi el a rendszer, akkor a 10 KB-os esemény továbbra is a saját kötegében fog megjelenni az eldobása helyett.
 
 A kötegelt kézbesítés a portálon, a CLI-n, a PowerShellen vagy az SDK-n keresztül, az esemény-előfizetések alapján konfigurálva van.
 
@@ -57,7 +57,7 @@ Az Azure CLI és a Event Grid használatával kapcsolatos további információk
 
 Ha a EventGrid hibaüzenetet kap egy esemény kézbesítési kísérlete során, a EventGrid eldönti, hogy újra kell-e próbálkoznia a kézbesítéssel vagy a kézbesítetlen levelekkel, vagy el kell dobnia az eseményt a hiba típusa alapján. 
 
-Ha az előfizetett végpont által visszaadott hiba olyan konfigurációval kapcsolatos hiba, amely nem oldható fel az újrapróbálkozásokkal (például ha a végpont törölve van), akkor a EventGrid elküldheti az eseményt vagy eldobja az eseményt, ha a kézbesítetlen levél nincs konfigurálva.
+Ha az előfizetett végpont által visszaadott hiba olyan konfigurációval kapcsolatos hiba, amely nem oldható fel az újrapróbálkozásokkal (például ha a végpont törölve van), a EventGrid elküldheti az eseményt, vagy eldobja az eseményt, ha a kézbesítetlen levél nincs konfigurálva.
 
 A következő típusú végpontok típusai nem történnek újra:
 
@@ -97,7 +97,7 @@ Alapértelmezés szerint a Event Grid minden olyan eseményt lejár, amely 24 ó
 
 A végpontok kézbesítési meghibásodások esetén a Event Grid megkezdi a kézbesítést, és az események ismételt megismétlését az adott végpontra. Ha például egy végponton közzétett első 10 esemény meghiúsul, Event Grid feltételezi, hogy a végpont problémákba ütközik, és az összes további újrapróbálkozást *és új* kézbesítést késlelteti, néhány esetben akár több óráig is eltarthat.
 
-A késleltetett kézbesítés funkcionális célja a nem megfelelő állapotú végpontok, valamint a Event Grid rendszer megóvása. A nem kifogástalan állapotú végpontokra történő kézbesítés nélkül, Event Grid az újrapróbálkozási szabályzat és a mennyiségi képességek könnyedén elérhetik a rendszereket.
+A késleltetett kézbesítés funkcionális célja a nem megfelelő állapotú végpontok és a Event Grid rendszer megóvása. A nem kifogástalan állapotú végpontokra történő kézbesítés nélkül, Event Grid az újrapróbálkozási szabályzat és a mennyiségi képességek könnyedén elérhetik a rendszereket.
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen levelek eseményei
 Ha Event Grid egy adott időszakon belül nem tud eseményt kézbesíteni, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt egy Storage-fiókba küldheti. Ezt a folyamatot **Kézbesítetlen levélnek** nevezzük. **A következő feltételek valamelyikének** teljesülése esetén Event Grid a kézbesítetlen leveleket. 
@@ -109,7 +109,7 @@ Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása
 
 Event Grid küld egy eseményt a kézbesítetlen levelek helyére, amikor megpróbálta az összes újrapróbálkozási kísérletet. Ha a Event Grid 400 (hibás kérés) vagy 413 (kérelem entitás túl nagy) választ kap, a rendszer azonnal a kézbesítetlen levelekre vonatkozó eseményt ütemezhet. Ezek a hibakódok jelzik, hogy az esemény kézbesítése soha nem fog sikerülni.
 
-Az élettartam lejáratát csak a következő ütemezett kézbesítési kísérletnél ellenőrzi a rendszer. Ezért annak ellenére, hogy a következő ütemezett kézbesítési kísérlet előtt lejárnak az események, az esemény lejárati idejét csak a következő kézbesítéskor kell ellenőrizni, majd ezt követően kézbesíteni kell. 
+Az élettartam lejáratát csak a következő ütemezett kézbesítési kísérletnél ellenőrzi a rendszer. Tehát akkor is, ha a következő ütemezett kézbesítési kísérlet előtt lejár az esemény, akkor a lejárati idő csak a következő kézbesítéskor van bejelölve, majd ezt követően kézbesítve lesz. 
 
 Az utolsó kísérlet az esemény kézbesítése és a kézbesítetlen levél helyére való továbbítása között öt perc késéssel jár. Ez a késleltetés a blob Storage-műveletek számának csökkentésére szolgál. Ha a kézbesítetlen levelek helye négy órán keresztül nem érhető el, a rendszer elveti az eseményt.
 
@@ -288,6 +288,15 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 | 503 A szolgáltatás nem érhető el | Újrapróbálkozás 30 másodperc vagy több után |
 | Minden más | Újrapróbálkozás 10 másodperc vagy több után |
 
+## <a name="delivery-with-custom-headers"></a>Kézbesítés egyéni fejlécekkel
+Az esemény-előfizetések lehetővé teszik a kézbesített események részét képező HTTP-fejlécek beállítását. Ez a funkció lehetővé teszi, hogy egyéni fejléceket állítson be, amelyekre a célhelynek szüksége van. Esemény-előfizetés létrehozásakor akár 10 fejlécet is beállíthat. Minden fejléc értéke nem lehet nagyobb, mint 4 096 (4K) bájt. Egyéni fejléceket állíthat be a következő célhelyekre küldött eseményeken:
+
+- Webhookok
+- Témakörök és várólisták Azure Service Bus
+- Azure Event Hubs
+- Továbbító Hibrid kapcsolatok
+
+További információ: [kézbesítés egyéni fejlécekkel](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Következő lépések
 
