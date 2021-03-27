@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: error-reference
-ms.date: 02/12/2020
+ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7c30649fe3486f812569cb51f609356a6cbfd58f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581082"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627540"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services élő események hibakódja
 
@@ -83,7 +83,8 @@ A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](mo
 >| Description|A kódoló túl gyorsan küldi az adatokat. |
 >| Javasolt megoldás|Ez akkor történik meg, amikor a kódoló rövid idő alatt kirobban a töredékek nagy készletét.  Ez elméletileg akkor fordulhat elő, ha a kódoló hálózati probléma miatt nem tud leküldeni egy adott adatforrást, és a hálózat elérhetővé válik. A kódoló naplójának vagy rendszernaplójának okának megkeresése. |
 >|**Ismeretlen hibakódok** |
->| Description| Ezek a hibakódok a kivonatoló leképezésben a memóriából a duplikált bejegyzések között lehetnek. |
+>| Description| Ezek a hibakódok a kivonatoló leképezésben a memóriából a duplikált bejegyzések között lehetnek. Ez akkor fordulhat elő, ha a kódoló rövid idő alatt nagy mennyiségű töredéket küld el.  Ez akkor is előfordulhat, ha a kódoló hálózati hiba miatt nem tudott adatokat leküldeni, majd az összes késleltetett töredéket elküldi, amikor a hálózat elérhetővé válik. |
+>|Javasolt megoldás| Keresse meg a kódoló naplóit.|
 
 ## <a name="other-error-codes"></a>Egyéb hibakódok
 
@@ -95,13 +96,13 @@ A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](mo
 >|Javasolt megoldás| Nincsenek.||
 >|**MPI_SYSTEM_MAINTENANCE** ||Yes|
 >| Description|A kódoló a szolgáltatás frissítése vagy a rendszer karbantartása miatt megszakadt. ||
->|Javasolt megoldás|Győződjön meg arról, hogy a kódoló engedélyezi az automatikus összekapcsolást. Ez a kódoló szolgáltatás a váratlan munkamenetek leválasztásának helyreállításához. ||
+>|Javasolt megoldás|Győződjön meg arról, hogy a kódoló engedélyezi az automatikus összekapcsolást. Lehetővé teszi, hogy a kódoló újra csatlakozhasson a nem karbantartás alatt álló redundáns élő esemény-végponthoz. ||
 >|**MPE_BAD_URL_SYNTAX** ||Yes|
 >| Description|A betöltési URL-cím formátuma helytelen. ||
 >|Javasolt megoldás|Győződjön meg arról, hogy a betöltési URL-cím megfelelően van formázva. RTMP esetén a következőnek kell lennie: `rtmp[s]://hostname:port/live/GUID_APPID/streamname` ||
 >|**MPE_CLIENT_TERMINATED_SESSION** ||Yes|
 >| Description|A kódoló leválasztotta a munkamenetet.  ||
->|Javasolt megoldás|Ez nem hiba. Ez a helyzet, amikor a kódoló kezdeményezte a leválasztást, beleértve a biztonságos leválasztást is. Ha ez nem várt kapcsolat, ellenőrizze a kódoló naplóját vagy a rendszernaplót. |
+>|Javasolt megoldás|Ez nem hiba. A kódoló kezdeményezte a leválasztást, beleértve a biztonságos leválasztást is. Ha ez egy váratlan kapcsolat, ellenőrizze a kódoló naplóit. |
 >|**MPE_INGEST_BITRATE_NOT_MATCH** ||Nem|
 >| Leírás|A bejövő adatforgalom nem felel meg a várt bitráta értéknek. ||
 >|Javasolt megoldás|Ez egy figyelmeztetés, amely akkor fordul elő, ha a bejövő adatforgalom túl lassú vagy gyors. A kódoló naplójának vagy rendszernaplójának beolvasása.||

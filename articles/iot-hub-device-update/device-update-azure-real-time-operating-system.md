@@ -1,17 +1,17 @@
 ---
-title: Azure IoT Hub-oktatóanyag az Azure-hoz – valós idejű-operációs rendszer | Microsoft Docs
-description: Ismerkedés az Azure IoT Hub eszköz frissítésével az Azure-valós idejű operációs rendszer használatával
+title: Az Azure valós idejű eszközének frissítése – operációs rendszer | Microsoft Docs
+description: Első lépések az Azure valós idejű operációs rendszerhez készült eszköz frissítésével
 author: valls
 ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: aaf954642fb276e16dfe4581c2675f817a708f3b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 66da860a5cdae1f5c7c18e4136b1f2d960492ca8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105572618"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629053"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>Azure IoT Hub-oktatóanyag az Azure valós idejű operációs rendszer (RTOS) használatával
 

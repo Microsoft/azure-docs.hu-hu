@@ -100,7 +100,7 @@ A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény
         "language": "en-US"
       }
     ],
-    "vanityUrl": false,
+    "useStaticHostname": false,
     "streamOptions": [
       "Default"
     ]
@@ -161,7 +161,7 @@ JAVÍTÁS ```https://management.azure.com/subscriptions/:subscriptionId/resource
         "language": "en-US"
       }
     ],
-    "vanityUrl": false,
+    "useStaticHostname": false,
     "streamOptions": [
       "Default"
     ]

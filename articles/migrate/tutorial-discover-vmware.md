@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 2e9dafc111478f35263dc9db0cc07d913327c936
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 09b04c67519bfa920a3781612823c5755cbc6d2d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612058"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627795"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: VMware környezetben futó kiszolgálók felderítése Azure Migrateokkal: felderítés és Értékelés
 
@@ -115,7 +115,7 @@ Szüksége van egy olyan felhasználói fiókra, amely rendelkezik a szükséges
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
-3. Az **Áttekintés** területen válassza a **projekt létrehozása** lehetőséget.
+3. Az **áttekintés** > válassza az áttelepítési célok alapján lehetőséget: **Windows, Linux és SQL Server** vagy **SQL Server (csak)** , vagy **ismerkedjen meg a további forgatókönyvekkel** > válassza a **create Project (projekt létrehozása**) lehetőséget.
 5. A **projekt létrehozása** lapon válassza ki az Azure-előfizetést és az erőforráscsoportot. Ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
 6. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
 

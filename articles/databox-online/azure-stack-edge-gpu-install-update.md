@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 8bb858bc29ac18d110f2679c3681fd4d27b72baa
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ac5ed0e5941c6251d632d029fe4c9f80bbcf12df
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607695"
+ms.locfileid: "105612551"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>A Azure Stack Edge Pro GPU frissítése 
 
@@ -112,7 +112,7 @@ Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az es
 
 8. Ekkor megjelenik egy értesítési szalagcím, amely jelzi, hogy az eszköz frissítései elérhetők. Válassza ezt a szalagcímet a Kubernetes szoftver frissítésének megkezdéséhez az eszközön. 
 
-    ![A 13-as frissítés utáni szoftververzió](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
+    ![Szoftver verziója a 13a-es frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
 
 
     ![A szoftver verziója a 14. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-14-a.png) 

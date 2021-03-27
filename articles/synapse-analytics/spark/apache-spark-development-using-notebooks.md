@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671593"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612316"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Szinapszis Studio-jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -41,9 +41,6 @@ A szinapszis csapata az új jegyzetfüzetek összetevőt a szinapszis studióba 
 |%% HTML| Nem támogatott |&#9745;|
 |Egy cella mozgatása húzással| Nem támogatott |&#9745;|
 |Állandó Display () kimenet|&#9745;| Nem elérhető |
-|Összes megszakítása| &#9745;| Nem elérhető|
-|Az összes fenti cella futtatása|&#9745;| Nem elérhető |
-|Az összes alábbi cella futtatása|&#9745;| Nem elérhető |
 |Szöveg cellájának formázása eszköztár gombjaival|&#9745;| Nem elérhető |
 |Cella visszavonása művelet| &#9745;| Nem elérhető |
 
@@ -273,28 +270,38 @@ Az **összes futtatása** gomb kiválasztásával az aktuális jegyzetfüzet ös
    ![Futtatás – összes cella](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
-# <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
-
 ### <a name="run-all-cells-above-or-below"></a>Az összes fenti vagy alatti cella futtatása
+
+# <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
 A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot (**..**.). Ezután válassza a **fenti cellák futtatása** lehetőséget, hogy az összes cellát az aktuálisan futó sorban futtassa. Válassza az **alábbi cellák futtatása** lehetőséget az összes cella az aktuális szakasz alatti futtatásához.
 
    ![futtatási cellák – fent vagy lent](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
+# <a name="preview-notebook"></a>[Előnézeti jegyzetfüzet](#tab/preview)
+
+Bontsa ki a legördülő listát az **összes futtatása** gombról, majd válassza a **fenti cellák futtatása** lehetőséget, hogy az összes cellát az aktuális szakasz fölé futtassa. Válassza az **alábbi cellák futtatása** lehetőséget az összes cella az aktuális szakasz alatti futtatásához.
+
+   ![Azure-notebook-Run-Cells-Above-vagy-lent](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+
+---
 
 ### <a name="cancel-all-running-cells"></a>Az összes futó cella megszakítása
+
+# <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 Az **összes megszakítása** gomb megnyomásával szakíthatja meg a várólistán várakozó futó cellákat vagy cellákat. 
    ![összes cella megszakítása](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[Előnézeti jegyzetfüzet](#tab/preview)
 
-Az összes futó cella megszakítása még nem érhető el az előzetes verziójú jegyzetfüzetek esetében. 
+Az **összes megszakítása** gomb megnyomásával szakíthatja meg a várólistán várakozó futó cellákat vagy cellákat. 
+   ![Azure-jegyzetfüzet – összes cella törlése](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
 
 
-### <a name="reference-notebook"></a>Hivatkozás notebook
+### <a name="notebook-reference"></a>Jegyzetfüzet-dokumentáció
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
@@ -305,6 +312,11 @@ Nem támogatott.
 ```%run <notebook path>```A Magic paranccsal hivatkozhat egy másik jegyzetfüzetre az aktuális jegyzetfüzet környezetében. A hivatkozási jegyzetfüzetben definiált összes változó elérhető az aktuális jegyzetfüzetben. ```%run``` a Magic parancs támogatja a beágyazott hívásokat, de nem támogatja a rekurzív hívásokat. Kivételt fog kapni, ha az utasítás mélysége ötnél nagyobb. ```%run``` a parancs jelenleg csak a támogatja a jegyzetfüzet elérési útjának paraméterként való továbbítását. 
 
 Példa: ``` %run /path/notebookA ```.
+
+> [!NOTE]
+> A rendszer nem támogatja a jegyzetfüzet-referenciát a szinapszis-folyamatokban.
+>
+>
 
 ---
 
@@ -346,7 +358,10 @@ A Spark-munkamenet beállításait a **(z)%% configure** paranccsal is megadhatj
     }
 }
 ```
-
+> [!NOTE]
+> A Spark munkamenet-konfiguráció Magic parancsa nem támogatott a szinapszis-folyamatokban.
+>
+>
 
 ## <a name="bring-data-to-a-notebook"></a>Adat beolvasása egy jegyzetfüzetbe
 
@@ -420,6 +435,11 @@ A jegyzetfüzet tulajdonságainál beállíthatja, hogy a cella kimenete megjele
 ## <a name="magic-commands"></a>Mágikus parancsok
 Az Azure szinapszis Studio notebookjában ismerős Jupyter Magic-parancsokat is használhat. Tekintse át az alábbi listát az aktuálisan elérhető Magic-parancsokkal. Ismertesse [a githubon a használati eseteit](https://github.com/MicrosoftDocs/azure-docs/issues/new) , hogy továbbra is felépíthetjük az igényeinek megfelelő Magic-parancsokat.
 
+> [!NOTE]
+> A szinapszis-folyamat csak a következő mágikus parancsokat támogatja:%% pyspark,%% Spark,%% csharp,%% SQL. 
+>
+>
+
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
 Elérhető sorok varázsa: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time),% [timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
@@ -430,7 +450,7 @@ Elérhető cella-varázslatok: [%% idő](https://ipython.readthedocs.io/en/stabl
 
 # <a name="preview-notebook"></a>[Előnézeti jegyzetfüzet](#tab/preview)
 
-Elérhető sorok varázsa: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time),% [timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% History](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [% Run](#reference-notebook),% [Load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+Elérhető sorok varázsa: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time),% [timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% History](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [% Run](#notebook-reference),% [Load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 Elérhető cella-varázslatok: [%% idő](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% csharp](#use-multiple-languages), [%% HTML](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html), [%% configure](#spark-session-config-magic-command)
 

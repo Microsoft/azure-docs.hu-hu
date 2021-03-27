@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric Event Analysis Azure Monitor-naplókkal
 description: Ismerje meg, hogyan jelenítheti meg és elemezheti az eseményeket Azure Monitor naplók használatával az Azure Service Fabric-fürtök monitorozásához és diagnosztizálásához.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: srrengar
-ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1e22213c857b400cc36c51cefb90e2379352893
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581552"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628968"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Események elemzése és vizualizáció Azure Monitor naplókkal
  Azure Monitor naplók gyűjti és elemzi a felhőben üzemeltetett alkalmazások és szolgáltatások telemetria, és elemzési eszközöket biztosít a rendelkezésre állás és a teljesítmény maximalizálása érdekében. Ez a cikk azt ismerteti, hogyan futtathat lekérdezéseket Azure Monitor-naplókban, hogy betekintést nyerjen, és hárítsa el, mi történik a fürtben. A következő gyakori kérdéseket tárgyaljuk:

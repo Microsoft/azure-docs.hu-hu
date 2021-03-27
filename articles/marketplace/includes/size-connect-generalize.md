@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630110"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629852"
 ---
 ## <a name="generalize-the-image"></a>A rendszerkép általánosítása
 
@@ -52,7 +52,9 @@ Miután a virtuális gép elkészült, rögzítheti azt egy Azure-beli megosztot
 8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez.
 9. Az érvényesítés után válassza a **Létrehozás** lehetőséget.
 
-A közzétételhez a közzétevő fióknak tulajdonosi hozzáféréssel kell rendelkeznie a SIG-hoz. Hozzáférés biztosítása:
+A SIG-t tartalmazó Azure-előfizetésnek ugyanannak a Bérlőnek kell lennie, mint a közzétevő fióknak a közzétételhez. Emellett a közzétevő fióknak tulajdonosi hozzáféréssel kell rendelkeznie a SIG-hoz. 
+
+Hozzáférés biztosítása:
 
 1. Nyissa meg a megosztott képtárat.
 2. A bal oldali panelen válassza a **hozzáférés-vezérlés** (iam) lehetőséget.

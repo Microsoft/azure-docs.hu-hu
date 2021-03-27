@@ -4,12 +4,12 @@ description: Áttekintést nyújt a Azure Backup szolgáltatásról, valamint ar
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07fc6ee0afb29f9d6c701c7eb2c65be988971eaf
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101725356"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612636"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi az az Azure App Service?
 
@@ -21,7 +21,7 @@ Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony me
 
 - **Helyszíni biztonsági** mentés fájlok, mappák, rendszerállapotok a [Microsoft Azure Recovery Services (MARS) ügynök](backup-support-matrix-mars-agent.md)használatával. Vagy használja a DPM vagy a Azure Backup Server (MABS) ügynököt a helyszíni virtuális gépek ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) és [VMware](backup-azure-backup-server-vmware.md)) és más helyszíni [munkaterhelések](backup-mabs-protection-matrix.md) elleni védelemhez
 - **Azure-beli virtuális gépek**  -  [Készítsen biztonsági másolatot a teljes Windows/Linux rendszerű virtuális gépekről](backup-azure-vms-introduction.md) (a biztonsági mentési bővítményekkel), vagy készítsen biztonsági másolatot a fájlokról, mappákról és rendszerállapotról a [Mars-ügynök](backup-azure-manage-mars.md)
-- **Azure-Managed Disks**  -  [Azure Managed Disks biztonsági mentése (előzetes verzió)](backup-managed-disks.md)
+- **Azure-Managed Disks**  -  [Azure-Managed Disks biztonsági mentése](backup-managed-disks.md)
 - **Azure Files megosztások**  -  [Azure-fájlmegosztás biztonsági mentése egy Storage-fiókba](backup-afs.md)
 - **SQL Server Azure-beli virtuális gépeken**  -   [Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentése](backup-azure-sql-database.md)
 - **Adatbázisok SAP HANA Azure-beli virtuális gépeken**  -  [Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentése](backup-azure-sap-hana-database.md)

@@ -2,14 +2,14 @@
 title: Készlet kiépítése egy virtuális hálózatban
 description: Batch-készlet létrehozása egy Azure-beli virtuális hálózatban, hogy a számítási csomópontok biztonságosan kommunikálhassanak a hálózaton lévő más virtuális gépekkel, például a fájlkiszolgálón.
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561913"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629308"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -56,6 +56,8 @@ Annak biztosítása érdekében, hogy a készlet csomópontjai olyan VNet műkö
 - A Batch szolgáltatásnak kommunikálnia kell a csomópontokkal az ütemezési feladatokhoz. A kommunikáció engedélyezéséhez adjon hozzá egy UDR a Batch szolgáltatás által használt összes IP-címhez abban a régióban, ahol a Batch-fiók létezik. A Batch szolgáltatás IP-címeinek listájának beszerzéséhez lásd: [szolgáltatás-címkék a helyszínen](../virtual-network/service-tags-overview.md).
 
 - Győződjön meg arról, hogy a helyszíni hálózat nem blokkolja az Azure Storage-ba irányuló kimenő adatforgalmat (pontosabban az űrlap URL-címét, `<account>.table.core.windows.net` `<account>.queue.core.windows.net` és `<account>.blob.core.windows.net` ).
+
+- Ha a virtuális fájl csatlakoztatásait használja, tekintse át a [hálózati követelményeket](virtual-file-mount.md#networking-requirements) , és győződjön meg arról, hogy nincs letiltva a szükséges forgalom.
 
 UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjához, és állítsa be a **következő ugrás típusát** az **internetre**.
 

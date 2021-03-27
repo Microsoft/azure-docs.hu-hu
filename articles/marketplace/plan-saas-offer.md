@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: 2f12f33bf6108784b2eec252fb12d03eebd2a45c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.date: 03/26/2021
+ms.openlocfilehash: 7d421cf20aa054fb3e1e4877ee610a284eeff7c9
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105604937"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627054"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -39,7 +39,7 @@ További információ ezekről a listaelem-lehetőségekről: [kereskedelmi Piac
 
 Az ajánlat közzététele után az ajánlathoz választott listaelem az ajánlat listázási oldalának bal felső sarkában jelenik meg. Az alábbi képernyőfelvételen az Azure piactéren elérhető ajánlatok listája látható az azonnali **Letöltés** gombbal.
 
-![Az online áruházban található ajánlati listát ábrázolja.](./media/saas/listing-options-saas-full.png)
+![Az online áruházban található ajánlati listát ábrázolja.](./media/saas/listing-options-saas.png)
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 9eeb30d8d3ab0c884472a001149021c4d5cc362c
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105558720"
+ms.locfileid: "105612117"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -117,7 +117,16 @@ Ha a helyi eszköz helyett egy távoli céleszköz kíván üzembe helyezni, és
 
    ![Válassza ki az eszközt, hogy az ellenőrizze, hogy támogatott-e](./media/how-to-install-iot-edge-on-windows/evaluate-supported-device.png)
 
-1. Fogadja el az alapértelmezett beállításokat a **2,2 beállítások** lapon.
+1. Az **2,2-beállítások** lapon tekintse át az üzemelő példány konfigurációs beállításait. Ha elégedett a beállításokkal, válassza a **tovább** lehetőséget.
+
+   ![Tekintse át az üzemelő példány konfigurációs beállításait](./media/how-to-install-iot-edge-on-windows/default-deployment-configuration-settings.png)
+
+   >[!NOTE]
+   >Ha Windows rendszerű virtuális gépet használ, azt javasoljuk, hogy egy külső kapcsoló helyett egy alapértelmezett kapcsolót használjon, amely biztosítja, hogy az üzembe helyezés során létrehozott linuxos virtuális gép IP-címet szerezzen.
+   >
+   >Az alapértelmezett kapcsoló használatával egy belső IP-cím rendelhető hozzá a linuxos virtuális géphez. Ez a belső IP-cím nem érhető el a Windows rendszerű virtuális gépen kívülről, de a Windows rendszerű virtuális gépre való bejelentkezéskor helyileg is csatlakoztatható.
+   >
+   >Ha Windows Servert használ, vegye figyelembe, hogy a Windows rendszerhez készült linuxos Azure IoT Edge nem támogatja automatikusan az alapértelmezett kapcsolót. Helyi Windows Server rendszerű virtuális gép esetén győződjön meg arról, hogy a linuxos virtuális gép a külső kapcsolón keresztül tud IP-címet szerezni. Az Azure-ban futó Windows Server-alapú virtuális gépek esetében hozzon létre egy belső kapcsolót a Linux rendszerhez készült IoT Edge telepítése előtt Windows rendszeren.
 
 1. Az 2,3-es **telepítés** lapon megtekintheti az üzemelő példány állapotát. A teljes folyamat magában foglalja a Linux Azure IoT Edge letöltését a Windows-csomagban, a csomag telepítését, a gazdagép eszközének konfigurálását és a linuxos virtuális gép beállítását. A folyamat végrehajtása több percet is igénybe vehet. A sikeres üzembe helyezés az alábbi képen látható.
 
@@ -168,7 +177,7 @@ Ha még nem tette meg, telepítse a Windows rendszerhez készült Linux-IoT Edge
    ```
 
    > [!NOTE]
-   > Ezt a parancsot paraméterek nélkül is futtathatja, vagy opcionálisan testreszabhatja az üzembe helyezést paraméterekkel. A jelentések megjelenítéséhez tekintse meg [a Linux rendszerhez készült IoT Edge a Windows PowerShell parancsfájl-hivatkozását](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) .
+   > Ezt a parancsot paraméterek nélkül is futtathatja, vagy opcionálisan testreszabhatja az üzembe helyezést paraméterekkel. [A Linux rendszerhez készült IoT Edge a Windows PowerShell parancsfájl-referenciával](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) a paraméterek jelentése és az alapértelmezett értékek megjelenítéséhez tekintheti meg.
 
 1. A licencfeltételek elfogadásához írja be az "Y" kifejezést.
 

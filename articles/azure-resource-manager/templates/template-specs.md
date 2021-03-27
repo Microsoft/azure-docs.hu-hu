@@ -2,15 +2,15 @@
 title: Sablonspecifikációk létrehozása és üzembe helyezése
 description: Leírja, hogyan lehet létrehozni a sablon specifikációit, és megoszthatja őket a szervezet más felhasználóival.
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043898"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626084"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
 
@@ -25,9 +25,16 @@ A sablon specifikációjának üzembe helyezéséhez szabványos Azure-eszközö
 
 ## <a name="why-use-template-specs"></a>Miért érdemes használni a sablon specifikációit?
 
-Ha jelenleg a sablonok egy GitHub-tárházban vagy egy Storage-fiókban vannak, a sablonok megosztásának és használatának megkísérlése során több kihívást is jelent. Ahhoz, hogy egy felhasználó telepíteni tudja, a sablonnak helyinek kell lennie, vagy a sablon URL-címének nyilvánosan elérhetőnek kell lennie. Ennek a korlátozásnak a megszerzéséhez megoszthatja a sablon példányait azokkal a felhasználókkal, akiknek telepíteniük kell, vagy meg kell nyitnia a hozzáférést a tárházhoz vagy a Storage-fiókhoz. Ha a felhasználók egy sablon helyi példányait futtatják, akkor ezek a másolatok végül az eredeti sablontól eltérőek lehetnek. Ha a tárház vagy a Storage-fiók nyilvánosan elérhetővé válik, lehetővé teheti, hogy a nem kívánt felhasználók hozzáférjenek a sablonhoz.
+A sablon specifikációi a következő előnyöket nyújtják:
 
-A sablon specifikációinak használatának előnye, hogy kanonikus sablonokat hozhat létre, és megoszthatja őket a szervezet munkacsoportjaival. A sablon specifikációi biztonságosak, mert elérhetők Azure Resource Manager számára a központi telepítéshez, de az Azure RBAC engedélye nélkül nem hozzáférhetők a felhasználók számára. A felhasználóknak csak olvasási hozzáférésre van szükségük a sablon specifikációhoz a sablon üzembe helyezéséhez, így a sablon megosztható anélkül, hogy mások is módosíthassák.
+* Szabványos ARM-sablonokat használ a sablonhoz.
+* Az Azure RBAC-en keresztüli hozzáférést a SAS-tokenek helyett kezelheti.
+* A felhasználók a sablon specifikációjának írása nélkül is üzembe helyezhetik a sablont.
+* A sablon specifikációját integrálhatja meglévő üzembe helyezési folyamatba, például PowerShell-parancsfájlba vagy DevOps folyamatba.
+
+A sablon specifikációi lehetővé teszik, hogy kanonikus sablonokat hozzon létre, és megossza őket a szervezet munkacsoportjaival. A sablon specifikációi biztonságosak, mert elérhetők Azure Resource Manager számára a telepítéshez, de a megfelelő engedély nélkül nem hozzáférhetők a felhasználók számára. A felhasználóknak csak olvasási hozzáférésre van szükségük a sablon specifikációhoz a sablon üzembe helyezéséhez, így a sablon megosztható anélkül, hogy mások is módosíthassák.
+
+Ha jelenleg a sablonok egy GitHub-tárházban vagy egy Storage-fiókban vannak, a sablonok megosztásának és használatának megkísérlése során több kihívást is jelent. A sablon üzembe helyezéséhez nyilvánosan elérhetővé kell tennie a sablont, vagy az SAS-tokenekkel kell kezelnie a hozzáférést. A korlátozás megkerüléséhez a felhasználók helyi másolatokat hozhatnak létre, amelyek végül az eredeti sablontól eltérőek lehetnek. A sablonra vonatkozó specifikációk egyszerűbbé teszik a sablonok megosztását.
 
 A sablonban szerepeltetni kívánt sablonokat a szervezet rendszergazdáinak ellenőriznie kell a szervezet követelményeinek és útmutatásának követése érdekében.
 

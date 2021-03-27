@@ -3,12 +3,12 @@ title: Az Azure Backup újdonságai
 description: Ismerkedjen meg a Azure Backup új szolgáltatásaival.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5e6734c6a962fa43d79fc90fdfaa85923b6339f
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095714"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612483"
 ---
 # <a name="whats-new-in-azure-backup"></a>Az Azure Backup újdonságai
 
@@ -19,6 +19,7 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
 ## <a name="updates-summary"></a>Frissítések összegzése
 
 - Március 2021
+  - [Az Azure Disk Backup már általánosan elérhető](#azure-disk-backup-is-now-generally-available)
   - [A Backup Center már általánosan elérhető](#backup-center-is-now-generally-available)
   - [A Azure Backup archiválási szintjeinek támogatása (előzetes verzió)](#archive-tier-support-for-azure-backup-in-preview)
 - 2021. február
@@ -39,6 +40,12 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
   - [Backup SAP HANA a RHEL Azure Virtual Machines (előzetes verzió)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [A zóna redundáns tárolója (ZRS) a biztonsági mentési adatként (előzetes verzió)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Az Azure-beli virtuális gépek SQL Server és SAP HANA számítási feladatainak törlése](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-is-now-generally-available"></a>Az Azure Disk Backup már általánosan elérhető
+
+A Azure Backup a pillanatképek életciklusának felügyeletét az Azure Managed Diskshoz a pillanatképek rendszeres létrehozásának automatizálásával és a beállított időtartamok megőrzésével a biztonsági mentési szabályzat használatával.
+
+További információ: [Az Azure Disk Backup áttekintése](disk-backup-overview.md).
 
 ## <a name="backup-center-is-now-generally-available"></a>A Backup Center már általánosan elérhető
 

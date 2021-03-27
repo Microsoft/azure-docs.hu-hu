@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 590f221b0a4980d462267dd8c3a73ca7d02583fd
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636538"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625517"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Oktatóanyag: dinamikus konfiguráció használata Java Spring-alkalmazásokban
 
@@ -89,6 +89,7 @@ Ezután nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, és adjon hozz�
     ```
 
 1. A dinamikus konfiguráció teszteléséhez nyissa meg az alkalmazáshoz társított Azure app Configuration Portalt. Válassza a **Configuration Explorer** lehetőséget, és frissítse a megjelenített kulcs értékét, például:
+
     | Kulcs | Érték |
     |---|---|
     | alkalmazás/config. Message | Hello – frissítve |

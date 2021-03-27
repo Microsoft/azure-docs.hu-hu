@@ -2,13 +2,13 @@
 title: A tárolók beszerzése – problémamegoldás | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a tároló-felismeréssel kapcsolatos problémákat.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: b7618e9073308da67a8e17c82375a0f05925a542
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708305"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627115"
 ---
 # <a name="troubleshooting-container-insights"></a>A tároló-felismerés hibaelhárítása
 
@@ -113,6 +113,54 @@ A Container bepillantást nyerhet a cAdvisor végpontot a csomópont-ügynökön
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>A nem Azure-beli Kubernetes-fürt nem jelenik meg a tárolók bepillantást
 
 Ha meg szeretné tekinteni a nem Azure-beli Kubernetes-fürtöt a tároló-elemzésekben, olvasási hozzáférésre van szükség az ezen betekintést támogató Log Analytics munkaterületen, valamint a Container betekintési megoldás erőforrás- **ContainerInsights (*munkaterület*)**.
+
+## <a name="metrics-arent-being-collected"></a>A metrikák gyűjtése nem történik meg
+
+1. Ellenőrizze, hogy a fürt támogatott régióban van-e az [Egyéni metrikák esetében](../essentials/metrics-custom-overview.md#supported-regions).
+
+2. Győződjön meg arról, hogy a **figyelési metrikák közzétevői** szerepkör-hozzárendelése létezik a következő CLI-parancs használatával:
+
+    ``` azurecli
+    az role assignment list --assignee "SP/UserassignedMSI for omsagent" --scope "/subscriptions/<subid>/resourcegroups/<RG>/providers/Microsoft.ContainerService/managedClusters/<clustername>" --role "Monitoring Metrics Publisher"
+    ```
+    Az MSI-vel rendelkező fürtök esetében a omsagent által hozzárendelt ügyfél-azonosító a figyelés engedélyezése és letiltása minden alkalommal megtörténik, így a szerepkör-hozzárendelésnek léteznie kell az aktuális MSI-ügyfél-azonosítóban. 
+
+3. Azure Active Directory Pod-identitást engedélyező és MSI-t használó fürtök esetén:
+
+   - Győződjön meg arról, hogy a kötelező címke **kubernetes.Azure.com/managedby: AK**  szerepel a omsagent-hüvelyben a következő parancs használatával:
+
+        `kubectl get pods --show-labels -n kube-system | grep omsagent`
+
+    - Ellenőrizze, hogy a kivételek engedélyezve vannak-e, amikor a pod Identity engedélyezve van az egyik támogatott módszer használatával https://github.com/Azure/aad-pod-identity#1-deploy-aad-pod-identity .
+
+        Az ellenőrzéshez futtassa a következő parancsot:
+
+        `kubectl get AzurePodIdentityException -A -o yaml`
+
+        A következőhöz hasonló kimenetnek kell megjelennie:
+
+        ```
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: mic-exception
+        namespace: default
+        spec:
+        podLabels:
+        app: mic
+        component: mic
+        ---
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: aks-addon-exception
+        namespace: kube-system
+        spec:
+        podLabels:
+        kubernetes.azure.com/managedby: aks
+        ```
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

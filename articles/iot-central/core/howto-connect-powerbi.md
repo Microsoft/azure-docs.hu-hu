@@ -7,18 +7,19 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: dd67a4f1a005abc7319723efcc3f2944b18c4f5f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: ea4a47f1ba3eac39820e839a10330840f57afe42
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109233"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629070"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central-beli adatPower BI-irányítópulton tárolt adatai megjelenítése és elemzése
 
 *Ez a témakör a rendszergazdákra és a megoldás-fejlesztőre vonatkozik.*
 
-[!Note] Ez a megoldás [örökölt adatexportálási funkciókat](./howto-export-data-legacy.md)használ. A legfrissebb adatexportálással tájékozódhat arról, hogyan csatlakozhat a Power BIhoz.
+> [!Note] 
+> Ez a megoldás [örökölt adatexportálási funkciókat](./howto-export-data-legacy.md)használ. A legfrissebb adatexportálással tájékozódhat arról, hogyan csatlakozhat a Power BIhoz.
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI megoldási folyamat":::
 
@@ -29,7 +30,7 @@ Az Azure IoT Central v3 Power BI megoldásával hatékony Power BI irányítópu
 - Szűrés adott eszközök által elküldve
 - Egy táblázat legutóbbi telemetria-adatnézetének megtekintése
 
-Ez a megoldás olyan folyamatot állít be, amely beolvassa az adatokat a [folyamatos adatexportálási](./howto-export-data-legacy.md) Azure Blob Storage-fiókból. A folyamat Azure Functions, Azure Data Factory és Azure SQL Database használatával dolgozza fel és alakítja át az adatfeldolgozást. megjelenítheti és elemezheti az PBIX-fájlként letöltött Power BI-jelentésekben lévő összes adathalmazt. Az összes erőforrás az Azure-előfizetésében jön létre, így az egyes összetevők igényei szerint testreszabhatók.
+Ez a megoldás olyan folyamatot állít be, amely beolvassa az adatokat az [örökölt adatexportálási](./howto-export-data-legacy.md) Azure Blob Storage-fiókból. A folyamat Azure Functions, Azure Data Factory és Azure SQL Database használatával dolgozza fel és alakítja át az adatfeldolgozást. megjelenítheti és elemezheti az PBIX-fájlként letöltött Power BI-jelentésekben lévő összes adathalmazt. Az összes erőforrás az Azure-előfizetésében jön létre, így az egyes összetevők igényei szerint testreszabhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +39,7 @@ A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre v
 A megoldás beállításához a következő erőforrások szükségesek:
 
 - 3. verziójú IoT Central alkalmazás. Az alkalmazás verziószámának megismeréséhez tekintse meg [az alkalmazásról szóló](./howto-get-app-info.md)témakört. IoT Central alkalmazások létrehozásával kapcsolatos további információkért lásd: [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md).
-- Folyamatos adatexportálás a telemetria, eszközök és eszközök Azure Blob Storage-ba való exportálására konfigurálva. További információ: [IoT-információk exportálása az Azure-ba célhelyekre](howto-export-data.md).
+- Örökölt folyamatos adatexportálás, amely úgy van konfigurálva, hogy telemetria, eszközöket és eszközöket exportáljon az Azure Blob Storage szolgáltatásba. További információ: [örökölt adatexportálási dokumentáció](howto-export-data-legacy.md).
   - Győződjön meg arról, hogy csak a IoT Central alkalmazás exportálja az adatait a blob-tárolóba.
   - Az [eszközöknek JSON-kódolású üzeneteket kell küldeniük](../../iot-hub/iot-hub-devguide-messages-d2c.md). Az eszközöknek meg kell adniuk `contentType:application/JSON` és vagy `contentEncoding:utf-8` `contentEncoding:utf-16` vagy vagy `contentEncoding:utf-32` az üzenetrendszer tulajdonságait.
 - Power BI Desktop (legújabb verzió). Lásd: [Power bi letöltések](https://powerbi.microsoft.com/downloads/).

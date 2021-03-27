@@ -1,16 +1,14 @@
 ---
 title: Események összesítése Windows Azure Diagnostics
 description: Ismerje meg, hogy az Azure Service Fabric-fürtök monitorozásához és diagnosztizálásához a WAD használatával hogyan összesítheti és gyűjtheti az eseményeket.
-author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
-ms.author: srrengar
-ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bbc8efcb2600e1832ad8a37560ab231a4a7f3185
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613459"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626728"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és gyűjtése a Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]

@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 408e972eb5950baa75fa1bdf33fb2cd507154bcb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89279414"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612840"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 A Azure Active Directory csapat rendszeresen frissíti Azure AD Connect Health új szolgáltatásokkal és funkciókkal. Ez a cikk felsorolja a kiadott verziókat és szolgáltatásokat.  
@@ -32,12 +32,25 @@ A Azure Active Directory csapat rendszeresen frissíti Azure AD Connect Health �
 
 A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect telepítéssel. További információ a szolgáltatással kapcsolatos visszajelzések [Azure ad Connect kiadási előzményeiről](./reference-connect-version-history.md) , szavazás a [kapcsolat állapota felhasználói hangcsatornán](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="march-2021"></a>Március 2021
+**Ügynök frissítése**
+
+- AD FS-ügynök Azure AD Connect Health (verzió: 3.1.95.0)
+
+  - Javítsa az NT4 formátumú felhasználónevek feloldását egy egyszerű felhasználónévre a bejelentkezési események során.
+  - Javítsa ki a helytelen alkalmazás-azonosító forgatókönyveket egy dedikált hibakód alapján.
+  - Új tulajdonság hozzáadása a OAuth ügyfél-azonosítóhoz.
+  - Javítsa ki a megfelelő értékeket a **protokoll** és a **Hitelesítés típusa** mezőkben az Azure ad Sign-In jelentésében bizonyos bejelentkezési forgatókönyvek esetében.
+  - Javítsa ki az IP-címek megjelenítését az Azure AD Sign-In jelentés IP-lánc mezőjében a kérelem sorrendjében.
+  - Változások egy új mező bevezetéséhez, amely megkülönbözteti a másodlagos hitelesítést a bejelentkezés során.
+  - Javítsa AD FS Application Identifier tulajdonságot az Azure AD Sign-In jelentésben való megjelenítéshez.
+
 ## <a name="april-2020"></a>2020. április
 **Ügynök frissítése**
 
 - AD FS-ügynök Azure AD Connect Health (verzió: 3.1.77.0)
 
-   1.   A (z) AD FS szolgáltatáshoz tartozó egyszerű szolgáltatásnév (SPN) hibajavítása "riasztás, amely esetében a riasztás helytelenül lett bejelentve.
+   - A (z) AD FS szolgáltatáshoz tartozó egyszerű szolgáltatásnév (SPN) hibajavítása "riasztás, amely esetében a riasztás helytelenül lett bejelentve.
 
 
 ## <a name="july-2019"></a>2019. július

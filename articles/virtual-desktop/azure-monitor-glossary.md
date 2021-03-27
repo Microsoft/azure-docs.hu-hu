@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 3/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576629"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627132"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Azure Monitor a Windows rendszerű virtuális asztali (előzetes verzió) szószedethez
 
@@ -24,7 +24,7 @@ Ez a cikk a Windows rendszerű virtuális asztalok (előzetes verzió) Azure Mon
 
 ## <a name="alerts"></a>Riasztások
 
-Az előfizetésre konfigurált és az [1. súlyossággal](#severity-1-alerts) rendelkező aktív Azure monitor riasztások az Áttekintés lapon jelennek meg. A riasztások beállításával kapcsolatos további információkért tekintse meg a [Azure monitor riasztásokkal kapcsolatos események megválaszolásával foglalkozó](../azure-monitor/alerts/tutorial-response.md)témakört.
+Az előfizetésben konfigurált és a [súlyossági szint 0](#severity-0-alerts) besorolású aktív Azure monitor riasztások az Áttekintés lapon jelennek meg. A riasztások beállításával kapcsolatos további információkért tekintse meg a [Azure monitor riasztásokkal kapcsolatos események megválaszolásával foglalkozó](../azure-monitor/alerts/tutorial-response.md)témakört.
 
 ## <a name="available-sessions"></a>Elérhető munkamenetek
 
@@ -40,7 +40,7 @@ A munkamenetet elindító felhasználók teljes száma az elmúlt 24 órában.
 
 ## <a name="daily-alerts"></a>Napi riasztások
 
-Az elmúlt 24 órában kiváltott [Súlyosság 1 riasztások](#severity-1-alerts) teljes száma.
+Az egyes napokon kiváltott riasztások teljes száma.
 
 ## <a name="daily-connections-and-reconnections"></a>Napi csatlakozások és újracsatlakozások
 
@@ -78,7 +78,7 @@ Minden diagnosztikai probléma vagy hiba tartalmaz egy üzenetet, amely elmagyar
 
 ## <a name="input-delay"></a>Bemeneti késés
 
-A Windows rendszerű virtuális asztali Azure Monitorban a "bemeneti késleltetés" érték azt jelenti, hogy az egyes munkamenetek esetében az összes folyamat teljesítményszámláló a bemeneti késleltetés. A gazdagép teljesítmény lapján <aka.ms/azmonwvdi>, ez a teljesítményszámláló úgy van konfigurálva, hogy 30 másodpercenként egyszer küldjön jelentést a szolgáltatásnak. A 30 másodperces intervallumok neve "Samples", és a jelentés az adott ablakban a legrosszabb ESET. A medián és a p95 érték az összes minta középértékét és 95. százalékát tükrözi.
+A Windows rendszerű virtuális asztali Azure Monitorban a "bemeneti késleltetés" érték azt jelenti, hogy az egyes munkamenetek esetében az összes folyamat teljesítményszámláló a bemeneti késleltetés. A [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)címen található gazdagép teljesítmény lapján ez a teljesítményszámláló úgy van konfigurálva, hogy 30 másodpercenként egyszer küldjön jelentést a szolgáltatásnak. A 30 másodperces intervallumok neve "Samples", és a jelentés az adott ablakban a legrosszabb ESET. A medián és a p95 érték az összes minta középértékét és 95. százalékát tükrözi.
 
 A **gazdagép által megadott bemeneti késleltetés** alatt kiválaszthat egy munkamenet-gazdagépet, amely a lapon lévő összes többi vizualizációt szűrni tudja. Azt is megteheti, hogy a folyamat nevét kiválasztva kiszűri a medián bemeneti késleltetését az idődiagramon.
 
@@ -114,16 +114,11 @@ A következő táblázat a Windows rendszerű virtuális asztali Azure Monitor �
 |Fizikai \* lemez () \\ átlagos olvasási idő (mp/olvasás)|30 másodperc|
 |Fizikai lemez () átlagos műveleti idő ( \* \\ mp/átvitel)|30 másodperc|
 |Fizikai lemez ( \* ) \\ átlagos írási idő (mp/írás)|30 másodperc|
-|Folyamat ( \* ) \\ processzoridő (%)|20 másodperc|
-|Folyamat ( \* ) \\ % felhasználói idő|30 másodperc|
-|Folyamat ( \* ) \\ szálak száma|30 másodperc|
-|Folyamat ( \* ) \\ IO írási művelet/mp|30 másodperc|
-|Folyamat ( \* ) \\ IO olvasási művelet/mp|30 másodperc|
 |Processzor adatai (_Total) \\ processzoridő%-ban|30 másodperc|
 |Terminal Services ( \* ) \\ aktív munkamenetek|60 másodperc|
 |Terminal Services ( \* ) \\ inaktív munkamenetek|60 másodperc|
 |Terminal Services ( \* ) \\ összes munkamenete|60 másodperc|
-|\*Felhasználói bevitel késleltetése folyamat szerint ( \* ) \\ maximális bemeneti Dela|30 másodperc|
+|\*Felhasználói bevitel késleltetése folyamat szerint ( \* ) \\ maximális bemeneti késleltetés|30 másodperc|
 |\*Felhasználói bemeneti késleltetés/munkamenet ( \* ) \\ maximális bemeneti késleltetése|30 másodperc|
 |Távoli hálózat ( \* ) \\ jelenlegi TCP-RTT|30 másodperc|
 |Távoli hálózat ( \* ) \\ jelenlegi UDP-sávszélesség|30 másodperc|
@@ -149,13 +144,13 @@ A bejegyzéseket a további információk megtekintéséhez is kiválaszthatja. 
 
 ## <a name="round-trip-time-rtt"></a>Oda-és visszaút ideje (RTT)
 
-Az oda-és visszautazási idő (RTT) a kapcsolat időkorlátja a végfelhasználó helye és a virtuális gép Azure-régiója között. Ha szeretné megtekinteni, hogy mely helyek rendelkeznek a legjobb késéssel, keresse meg a kívánt helyet a [Windows rendszerű virtuális asztali élmény kalkulátor eszközben](https://azure.microsoft.com/services/virtual-desktop/assessment/).
+Az oda-és visszautazási idő (RTT) a kapcsolat időkorlátja a végfelhasználó helye és a munkamenet-állomás Azure-régiója között. Ha szeretné megtekinteni, hogy mely helyek rendelkeznek a legjobb késéssel, keresse meg a kívánt helyet a [Windows rendszerű virtuális asztali élmény kalkulátor eszközben](https://azure.microsoft.com/services/virtual-desktop/assessment/).
 
 ## <a name="session-history"></a>Munkamenet előzményei
 
 A **munkamenetek** elem megjeleníti az összes munkamenet állapotát, a csatlakoztatott és a leválasztott kapcsolatot. Az **üresjárati munkamenetek** csak a leválasztott munkameneteket jelenítik meg.
 
-## <a name="severity-1-alerts"></a>1. súlyossági szintű riasztások
+## <a name="severity-0-alerts"></a>0 súlyosságú riasztások
 
 A legsürgősebb elemek, amelyekre azonnal ügyelnie kell. Ha nem oldja meg ezeket a problémákat, előfordulhat, hogy a Windows rendszerű virtuális asztali környezet működése leáll.
 
@@ -171,11 +166,11 @@ A felhasználói jelentés lapon megtekintheti egy adott felhasználó kapcsolat
 
 Az egyes virtuálisgép-mag felhasználóinak száma. Ha nyomon szeretné követni a felhasználók maximális számát az idő múlásával, akkor könnyebben azonosíthatja, hogy a környezet konzisztensen fut-e magas, alacsony vagy ingadozó számú felhasználó számára egy mag alapján. Annak ismerete, hogy az aktív felhasználók száma milyen mértékben segíti a környezet hatékony erőforrás-és méretezését.
 
-## <a name="windows-events"></a>Windows-események
+## <a name="windows-event-logs"></a>Windows-eseménynaplók
 
 A Windows-eseménynaplók olyan adatforrások, amelyeket Log Analytics ügynökök gyűjtenek a Windows rendszerű virtuális gépeken. Eseményeket gyűjthet a szabványos naplókból, például a rendszerből és az alkalmazásból, valamint a figyelni kívánt alkalmazások által létrehozott egyéni naplókból.
 
-A következő táblázat a Windows rendszerű virtuális asztali Azure Monitor szükséges Windows-eseményeket sorolja fel:
+A következő táblázat felsorolja a Windows rendszerű virtuális asztali Azure Monitorhoz szükséges Windows-eseménynaplókat:
 
 |Esemény neve|Eseménytípus|
 |---|---|
@@ -186,7 +181,7 @@ A következő táblázat a Windows rendszerű virtuális asztali Azure Monitor s
 | Microsoft-FSLogix – alkalmazások/működési|Hiba, figyelmeztetés és információ|
 |Microsoft-FSLogix-alkalmazások/rendszergazda|Hiba, figyelmeztetés és információ|
 
-További információ a Windows-eseményekről: [Windows-események rekordjainak tulajdonságai](../azure-monitor/agents/data-sources-windows-events.md).
+A Windows-eseménynaplókkal kapcsolatos további tudnivalókért tekintse meg a [Windows-események rekordjainak tulajdonságai](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -203,4 +198,4 @@ Ha segítségre van szüksége, vagy kérdése van, tekintse meg a közösségi 
    
 - A visszajelzések elküldésével kapcsolatos további információkért lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás a Windows rendszerű virtuális asztalokhoz](troubleshoot-set-up-overview.md#report-issues).
 
-- A Windows rendszerű virtuális asztali Windows Virtual Desktop [visszajelzési központ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) vagy [a UserVoice fórum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)visszajelzéseit is elhagyhatja.
+- A Windows rendszerű virtuális asztal visszajelzéseit is elhagyhatja a [Windows rendszerű virtuális asztali visszajelzési központban](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: a0fafad208d97e2a4d24036e226b4044764bccb4
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 7aa1982fc880ac5733cc4453808c18956969572f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047082"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627013"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Oktatóanyag: meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 
@@ -27,6 +27,14 @@ A tanúsítványok titkosítják a webes forgalmat. Ezek a TLS/SSL-tanúsítván
 * Egy tartománynév, amely hozzáféréssel rendelkezik a tartományi szolgáltató DNS-beállításjegyzékéhez, például a GoDaddyhez.
 * Privát tanúsítvány (azaz önaláírt tanúsítvány) egy harmadik féltől származó szolgáltatótól. A tanúsítványnak meg kell egyeznie a tartománnyal.
 * [Azure Key Vault](../key-vault/general/overview.md) üzembe helyezett példánya
+
+## <a name="keyvault-private-link-considerations"></a>A kulcstartó privát hivatkozásának szempontjai
+
+Az Azure Spring Cloud Management IP-címei nem részei az Azure megbízható Microsoft-szolgáltatásainak. Ezért ahhoz, hogy az Azure Spring Cloud betöltsön tanúsítványokat egy privát végponti kapcsolattal védett Key Vault, a következő IP-címeket kell hozzáadnia Azure Key Vault tűzfalhoz:
+
+```
+20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243
+```
 
 ## <a name="import-certificate"></a>Tanúsítvány importálása
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>A tanúsítványfájl előkészítése PFX-formátumban (nem kötelező)

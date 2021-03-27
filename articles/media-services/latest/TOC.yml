@@ -146,11 +146,14 @@
           href: content-aware-encoding.md
         - name: Fenntartott médiaegységek
           href: concept-media-reserved-units.md
-    - name: Tartalomelemzés (Video Indexer)
+    - name: Elemzés és kivonás
       items:
         - name: Áttekintés
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
+        - name: Arcok észlelése és kivonása (életlenítés)
+          href: analyze-face-redaction-concept.md
+          displayName: 'analyze, redact, face, detect, presets, jobs, blur, faces, redaction'
     - name: Átalakítások és feladatok
       href: transforms-jobs-concept.md
     - name: Live streaming (Élő adatfolyam)
@@ -159,9 +162,9 @@
           href: live-streaming-overview.md
         - name: Élő események és élő kimenetek
           href: live-events-outputs-concept.md
-          displayName: 'vanity, ingest'
+          displayName: 'vanity, ingest, static, hostname, rtmp, ingest'
         - name: Tesztelt helyszíni élő kódolók
-          displayName: recommended
+          displayName: 'recommended, on-premises, live, encoder, OBS, FFMPEG, Wirecast'
           href: recommended-on-premises-live-encoders.md
         - name: Időeltolás és élő adásból igény szerinti videó készítése
           displayName: 'archive, dvr'

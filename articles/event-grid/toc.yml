@@ -188,6 +188,8 @@
           href: delivery-and-retry.md
         - name: Webhook-eseménykézbesítés
           href: webhook-event-delivery.md
+        - name: Kézbesítési tulajdonságok
+          href: delivery-properties.md
     - name: Vészhelyreállítás
       items:
         - name: Földrajzi vészhelyreállítás
@@ -271,7 +273,15 @@
         - name: Események biztonságos közzététele privát kapcsolaton keresztül
           href: configure-private-endpoints.md
         - name: Események kézbesítése felügyelt identitás használatával
-          href: managed-service-identity.md
+          items:
+            - name: Felügyelt identitás engedélyezése egyéni témakörhöz vagy tartományhoz
+              href: enable-identity-custom-topics-domains.md
+            - name: Felügyelt identitás engedélyezése a rendszer témakörében
+              href: enable-identity-system-topics.md
+            - name: Identitás hozzáadása az Azure-szerepkörökhöz célhelyeken
+              href: add-identity-roles.md
+            - name: Identitást használó esemény-előfizetések létrehozása
+              href: managed-service-identity.md
         - name: Események biztonságos kézbesítése privát kapcsolaton keresztül
           href: consume-private-endpoints.md
         - name: IP-tűzfal konfigurálása

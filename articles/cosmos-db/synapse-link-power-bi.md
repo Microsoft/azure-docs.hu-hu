@@ -1,18 +1,18 @@
 ---
 title: Power BI és kiszolgáló nélküli SQL-készlet a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással
 description: Megtudhatja, hogyan hozhat létre kiszolgáló nélküli SQL Pool-adatbázist és-nézeteket a szinapszis-kapcsolaton keresztül a Azure Cosmos DBhoz, lekérdezheti a Azure Cosmos DB tárolókat, majd felépítheti a modelleket Power BI a nézetek fölé.
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.author: acomet
+ms.author: rosouz
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: 7a9324923164d6d5cbbdc48bfa60fc444bdc4fb1
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d84508a7629481a7138f1080c86f4a203d35894d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868970"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626248"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet használata az Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]

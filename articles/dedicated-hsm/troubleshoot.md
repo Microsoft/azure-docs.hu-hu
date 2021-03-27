@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 11118c9bd745480dc88380e718a9ab348ab1a3e3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606946"
+ms.locfileid: "105611650"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Az Azure dedikált HSM szolgáltatás hibaelhárítása
 
@@ -33,7 +33,7 @@ A dedikált HSM nem szabadon használható, mert hardveres erőforrásokat szolg
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Hozzáférés a dedikált HSM-hez
 
-Először Kérdezzen rá, hogy milyen használati esetek vannak, amelyeket [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) vagy az [Azure Managed HSM](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/overview)nem tud kezelni. Ha ezt követően úgy gondolja, hogy csak a dedikált HSM fér hozzá a legfontosabb tárterület-követelményekhez, akkor az e-mail-cím lesz a HSMrequest@microsoft.com hozzáférés Az alkalmazás és a használati esetek körvonalazása, a HSM kívánt régiók és a keresett HSM mennyisége. Ha például Microsoft-képviselővel dolgozik, például egy Account Executive-vagy felhőalapú megoldás-tervezővel, akkor bármely kérelembe belefoglalhatja őket.
+Először Kérdezzen rá, hogy milyen használati esetek vannak, amelyeket [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) vagy az [Azure Managed HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview)nem tud kezelni. Ha ezt követően úgy gondolja, hogy csak a dedikált HSM fér hozzá a legfontosabb tárterület-követelményekhez, akkor az e-mail-cím lesz a HSMrequest@microsoft.com hozzáférés Az alkalmazás és a használati esetek körvonalazása, a HSM kívánt régiók és a keresett HSM mennyisége. Ha például Microsoft-képviselővel dolgozik, például egy Account Executive-vagy felhőalapú megoldás-tervezővel, akkor bármely kérelembe belefoglalhatja őket.
 
 ## <a name="hsm-provisioning"></a>HSM-kiépítés
 

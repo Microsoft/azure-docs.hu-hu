@@ -2,24 +2,19 @@
 title: Azure-szerepkör-definíciók listázása – Azure RBAC
 description: Ismerje meg, hogyan listázhatja az Azure beépített és egyéni szerepköreit Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 03/26/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555950"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629156"
 ---
 # <a name="list-azure-role-definitions"></a>Azure-szerepkör-definíciók listázása
 
@@ -33,6 +28,10 @@ A Azure Active Directory rendszergazdai szerepköreinek megtekintéséhez tekint
 
 Kövesse az alábbi lépéseket a Azure Portal összes szerepkörének listázásához.
 
+Ha érdekli a frissített szerepkörök megtekintése, tekintse meg a jelenleg nyilvános előzetes verzióban elérhető **szerepkörök (előzetes verzió)** lapot. A **szerepkörök (előzetes verzió)** lapon ugyanazok a szerepkörök jelennek meg, mint a **szerepkörök lap,** néhány további funkcióval. Használhatja a szerepkörök fület is a szerepkörökkel való együttműködéshez, azonban ha egyéni szerepköröket hoz létre vagy töröl, előfordulhat, hogy manuálisan kell frissítenie a lapot a legutóbbi módosítások megtekintéséhez.
+
+#### <a name="roles"></a>[Szerepkörök](#tab/roles/)
+
 1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válasszon ki egy hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
@@ -43,7 +42,29 @@ Kövesse az alábbi lépéseket a Azure Portal összes szerepkörének listázá
 
    Az aktuális hatókörben az egyes szerepkörökhöz hozzárendelt felhasználók és csoportok számát láthatja.
 
-   ![Szerepkörök listája](./media/role-definitions-list/roles-list.png)
+   ![Szerepkörök listája](./media/role-definitions-list/roles-list-current.png)
+
+#### <a name="roles-preview"></a>[Szerepkörök (előzetes verzió)](#tab/roles-preview/)
+
+1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válasszon ki egy hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
+
+1. Kattintson az adott erőforrásra.
+
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
+
+1. A beépített és az egyéni szerepkörök listájának megtekintéséhez kattintson a **szerepkörök (előzetes verzió)** fülre.
+
+   ![Szerepkörök listája az előzetes verzió használatával](./media/role-definitions-list/roles-list.png)
+
+1. Egy adott szerepkör engedélyeinek megtekintéséhez kattintson a **nézet** hivatkozásra a **részletek** oszlopban.
+
+    Megjelenik az engedélyek panel.
+
+1. Kattintson az **engedélyek** lapra a kiválasztott szerepkör engedélyeinek megtekintéséhez és kereséséhez.
+
+   ![Szerepkör-engedélyek az előzetes verzió használatával](./media/role-definitions-list/role-permissions.png)
+
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

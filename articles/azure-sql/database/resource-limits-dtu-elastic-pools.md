@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: d87c5d162b96209c0ce3d3276dc518f42373590f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa520b7d77a283e7dda883e99475947a8ccfa862
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92780812"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625623"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -154,7 +154,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 Ha egy rugalmas készlet minden DTU-ja használatban van, akkor a készletben található minden adatbázis ugyanannyi erőforrást kap a lekérdezések feldolgozásához. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet egyenlő erőforrás-megosztása hozzáadódik az egyes adatbázisok számára máshonnan garantált erőforrások mennyiségéhez, ha a minimális DTU/adatbázis érték nem 0-ra van állítva.
 
 > [!NOTE]
-> A `tempdb` korlátokat lásd: [tempdb korlátok](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
+> A `tempdb` korlátokat lásd: [tempdb korlátok](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).
 
 ### <a name="database-properties-for-pooled-databases"></a>A készletezett adatbázisok adatbázis-tulajdonságai
 

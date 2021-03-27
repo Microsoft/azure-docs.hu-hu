@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009963"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628951"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 
@@ -127,6 +127,9 @@ Az adattudós elindíthatja, leállíthatja és újraindíthatja a számítási 
 
 Számítási példány elindítása, leállítása, újraindítása és törlése. A számítási példányok nem méretezhetők le automatikusan, ezért ügyeljen arra, hogy a folyamatos költségek elkerülése érdekében állítsa le az erőforrást.
 
+> [!TIP]
+> A számítási példány 120 GB-OS operációsrendszer-lemezzel rendelkezik. Ha elfogyott a szabad lemezterület, a [terminál használatával](how-to-access-terminal.md) törölje legalább 1-2 GB-ot a számítási példány leállítása vagy újraindítása előtt.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példákban a számítási példány neve **példány**
@@ -225,6 +228,7 @@ A munkaterületen létrehozott minden számítási példányhoz (vagy az Ön sz�
 * Egy adott számítási példány, például az IP-cím és a régió részletes adatainak beolvasása.
 
 ---
+
 
 Az [Azure RBAC](../role-based-access-control/overview.md) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le, indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója, vagy a felhasználó nevében létrejött, a Jupyter, a JupyterLab és a RStudio hozzáférése engedélyezett a számítási példányon. A számítási példányok egyetlen, rendszergazdai hozzáféréssel rendelkező felhasználóhoz vannak hozzárendelve, és a Jupyter/JupyterLab/RStudio-en keresztül is csatlakozhatnak. A számítási példánynak egyfelhasználós bejelentkezéssel kell rendelkeznie, és minden művelet a felhasználó identitását fogja használni az Azure RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
 

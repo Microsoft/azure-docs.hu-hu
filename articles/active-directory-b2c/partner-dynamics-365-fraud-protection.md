@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8b725b7fcde8ad24934d74d3ce849260312d2f5f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 24fe28eafc1d1da90b6a7b7f9d41b7e645e62855
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043614"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625772"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Oktatóanyag: a Microsoft Dynamics 365 csalások elleni védelem konfigurálása Azure Active Directory B2C
 
-Ebben a példában útmutatást adunk a [Microsoft Dynamics 365 csalások elleni védelem](/dynamics365/fraud-protection/overview) (DFP) a Azure Active Directory (ad) B2C-vel való integrálásához.
+Ebben a példában útmutatást adunk a [Microsoft Dynamics 365 csalások elleni védelem](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) a Azure Active Directory (ad) B2C-vel való integrálásához.
 
 A Microsoft DFP lehetővé teszi az ügyfeleknek, hogy felmérjék, hogy az új fiókok létrehozására és az ügyfél ökoszisztémába való bejelentkezésre tett kísérletek kockázata csalárd-e. A Microsoft DFP Assessment segítségével az ügyfél blokkolhatja vagy megkérdőjelezheti a gyanús kísérleteket új hamis fiókok létrehozásához vagy a meglévő fiókok megtámadásához. A fiókok védelme magában foglalja a mesterséges intelligencia által felhatalmazott eszközök ujjlenyomatát, API-kat a valós idejű kockázatértékelés, a szabályok és a lista számára a kockázati stratégia optimalizálásához az ügyfél üzleti igényei szerint, valamint egy scorecardot, amely a csalások elleni védelem hatékonyságát és az ügyfél ökoszisztémájában felmerülő trendeket figyeli.
 
@@ -56,7 +56,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A kép a Microsoft dynamics365 csalások elleni védelmi architektúra diagramját mutatja](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C felhasználói attribútumokat gyűjt.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -103,7 +103,7 @@ Konfigurálja az alkalmazás beállításait az [Azure app Service-](../app-serv
 |FraudProtectionSettings: InstanceId | Microsoft DFP-konfiguráció |     |
 |FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft-eszköz ujjlenyomat-ügyfél-azonosítója |     |
 | FraudProtectionSettings:ApiBaseUrl |  A Microsoft DFP portál alap URL-címe   | A "-int" eltávolítása a termelési API meghívásához|
-|  TokenProviderConfig: erőforrás  |     | A "-int" eltávolítása a termelési API meghívásához|
+|  TokenProviderConfig: erőforrás  | Az alap URL-cím – https://api.dfp.dynamics-int.com     | A "-int" eltávolítása a termelési API meghívásához|
 |   TokenProviderConfig: ClientId       |A csalás elleni védelem kereskedelmi Azure AD ügyfélalkalmazás-azonosítója      |       |
 | TokenProviderConfig: szolgáltató | https://login.microsoftonline.com/<directory_ID> | A csalások elleni védelem az Azure AD bérlői szolgáltatója |
 | TokenProviderConfig: CertificateThumbprint * | A kereskedelmi Azure AD-ügyfélalkalmazás hitelesítéséhez használt tanúsítvány ujjlenyomata |

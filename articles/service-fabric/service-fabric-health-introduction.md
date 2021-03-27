@@ -1,16 +1,14 @@
 ---
 title: Állapot-figyelés Service Fabric
 description: Bevezetés az Azure Service Fabric Health monitoring modellbe, amely a fürt és az alkalmazásai és szolgáltatásai figyelését teszi lehetővé.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
-ms.openlocfilehash: 6c96651fa48acc2f88658148c7e60be2f3fa09da
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: a1c545048739182e3baba3e3d94da1accca227d1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800159"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627415"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy olyan egészségügyi modellt vezet be, amely gazdag, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést tesz lehetővé. A modell lehetővé teszi a fürt állapotának és a rajta futó szolgáltatásoknak a közel valós idejű figyelését. Egyszerűen beszerezhet egészségügyi információkat, és kiválaszthatja a potenciális problémákat, mielőtt lépcsőzetesen kiesést okoz. A tipikus modellben a szolgáltatások a helyi nézeteik alapján küldenek jelentéseket, és ezek az információk összesítve biztosítják a teljes fürt szintű nézetet.

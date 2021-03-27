@@ -3,12 +3,12 @@ title: PV-figyelés konfigurálása a Container bepillantásokkal | Microsoft Do
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az állandó kötetekkel rendelkező Kubernetes-fürtöket a tároló-felismerések használatával.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 16c87177a8911a7b88284606f54f7bf6e0e0daa3
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 7c6ddd62bf06d313987289e444962378cea43fc8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026104"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627897"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>PV-figyelés konfigurálása a Container bepillantást
 
@@ -17,7 +17,9 @@ Az ügynök verziójának *ciprod10052020* kezdődően az Azure monitor for cont
 
 A tároló-felismerések automatikusan elindítják az PV-használat monitorozását a következő metrikák 60-s és a **InsightMetrics** táblában való tárolásával.
 
-| Metrika neve | Metrikus dimenzió (címkék) | Metrika leírása | | `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, clusterName | Az adott Pod által használt jogcímet tartalmazó adott állandó kötethez felhasznált lemezterület bájtban megadva. `capacityBytes` egy dimenzióként van behajtva a címkék mezőben az adatfeldolgozási díjak csökkentése és a lekérdezések egyszerűsítése érdekében. |
+| Metrika neve | Metrikus dimenzió (címkék) | Metrika leírása |
+|-----|-----------|----------|
+| `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, clusterName| Az adott Pod által használt jogcímet tartalmazó adott állandó kötethez felhasznált lemezterület bájtban megadva. `capacityBytes` egy dimenzióként van behajtva a címkék mezőben az adatfeldolgozási díjak csökkentése és a lekérdezések egyszerűsítése érdekében.|
 
 További információ az összegyűjtött PV-metrikák [konfigurálásáról.](./container-insights-agent-config.md)
 
@@ -27,7 +29,7 @@ A tárolók Azure Monitor automatikusan elindítja a figyelési PVs azáltal, ho
 
 |Adatok |Adatforrás| Adattípus| Mezők|
 |-----|-----------|----------|-------|
-|Állandó kötetek leltára egy Kubernetes-fürtben |Kube API |`KubePVInventory` | PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, ClusterId, ClusterName, _ResourceId |
+|Állandó kötetek leltára egy Kubernetes-fürtben |Kube API |`KubePVInventory` |    PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, ClusterId, ClusterName, _ResourceId |
 
 ## <a name="monitor-persistent-volumes"></a>Állandó kötetek figyelése
 

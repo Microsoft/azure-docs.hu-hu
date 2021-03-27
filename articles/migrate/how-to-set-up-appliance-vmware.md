@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 685d7f0a0aaab2f38967e0eb6c32c3fb4067dbe3
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110508"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612823"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Berendezések beállítása a VMware-környezetben található kiszolgálókhoz
 
@@ -67,7 +67,6 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
         --- | --- | ---
         VMware (11,9 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
-
 ### <a name="3-create-the-appliance-server"></a>3. a berendezés-kiszolgáló létrehozása
 
 Importálja a letöltött fájlt, és hozzon létre egy kiszolgálót a VMware-környezetben
@@ -81,11 +80,9 @@ Importálja a letöltött fájlt, és hozzon létre egy kiszolgálót a VMware-k
 8. A **hálózati megfeleltetés** területen válassza ki azt a hálózatot, amelyhez a kiszolgáló csatlakozni fog. A hálózatnak internetkapcsolatra van szüksége, hogy metaadatokat küldjön a Azure Migratenak.
 9. Tekintse át és hagyja jóvá a beállításokat, majd kattintson a **Finish** (Befejezés) gombra.
 
-
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
 Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkhöz.
-
 
 ### <a name="4-configure-the-appliance"></a>4. a berendezés konfigurálása
 
@@ -114,7 +111,6 @@ Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azur
 1. Ha szeretné, bármikor újrafuttathatja az **előfeltételeket** a berendezés konfigurálása során annak ellenőrzéséhez, hogy a berendezés teljesíti-e az összes előfeltételt.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="1. panel a készülék Configuration Managerben":::
-
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 

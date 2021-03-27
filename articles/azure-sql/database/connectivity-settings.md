@@ -9,17 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c45a48e6cafa722945400554f2f81916da13775
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691926"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627608"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-kapcsolati beállítások
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics-kiszolgálóhoz való kapcsolódást szabályozó beállításokat ismerteti. Ezek a beállítások a kiszolgálóhoz társított összes SQL Database és Azure szinapszis Analytics-adatbázisra érvényesek.
+Ez a cikk azokat a beállításokat ismerteti, amelyek a kiszolgálóhoz való kapcsolódást vezérlik Azure SQL Database és [DEDIKÁLT SQL-készlet (korábban SQL DW)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) számára az Azure szinapszis Analyticsben. Ezek a beállítások a kiszolgálóhoz társított összes SQL Database és dedikált SQL-készlet (korábban SQL DW) adatbázisra érvényesek.
 
 > [!IMPORTANT]
 > Ez a cikk nem vonatkozik az Azure SQL felügyelt példányaira.

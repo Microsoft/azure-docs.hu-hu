@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a05037505c122bb974e6da3d11a6f25a715a6843
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: cb8394de49c2c5daeae156a9316466928eded148
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869429"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628475"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>A kiszolgálói fogalmak a Azure Database for MySQL
 
@@ -38,7 +38,7 @@ A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbáz
 
 A következő elemek segítenek biztosítani az adatbázis biztonságos elérését.
 
-|     |     |
+| Biztonsági koncepció | Description     |
 | :-- | :-- |
 | **Hitelesítés és engedélyezés** | Azure Database for MySQL-kiszolgáló támogatja a natív MySQL-hitelesítést. A kiszolgáló rendszergazdai felhasználónevével csatlakozhat és hitelesítheti a kiszolgálókat. |
 | **Protokoll** | A szolgáltatás támogatja a MySQL által használt Message-alapú protokollt. |

@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 215b7e908b21b1843b36a1e55972038c49ee101a
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 1d1751ed56f63105ce7775ceaed9ea2dcca1f8bf
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605314"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628135"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Önálló kiszolgáló
 Ez a cikk a Azure Database for PostgreSQL egyetlen kiszolgálóval való használattal kapcsolatos szempontokat és irányelveket ismerteti.
@@ -36,7 +36,7 @@ Egy Azure Database for PostgreSQL-kiszolgálón belül létrehozhat egy vagy tö
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Hogyan a kapcsolódást és a hitelesítést egy Azure Database for PostgreSQL-kiszolgálón?
 A következő elemek segítenek biztosítani az adatbázis biztonságos elérését:
 
-|||
+|Biztonsági koncepció|Description|
 |:--|:--|
 | **Hitelesítés és engedélyezés** | Az Azure Database for PostgreSQL-kiszolgáló támogatja a natív PostgreSQL-hitelesítést. A kiszolgálóhoz történő csatlakozás és a hitelesítés rendszergazdai bejelentkezéssel végezhető el. |
 | **Protokoll** | A szolgáltatás támogatja a PostgreSQL által használt Message-alapú protokollt. |
