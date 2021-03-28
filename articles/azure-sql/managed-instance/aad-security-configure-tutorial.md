@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92788621"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639855"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Oktatóanyag: az Azure SQL felügyelt példányának biztonsága Azure AD Server-rendszerbiztonsági tag használatával (bejelentkezések)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -106,7 +106,7 @@ Az SQL felügyelt példányhoz való kapcsolódásra vonatkozó példákat a kö
 
     ![Képernyőkép az "s" M s Object Explorer Results (eredmények) lapjáról, amely az újonnan hozzáadott bejelentkezés nevét, principal_idát, SID-azonosítóját, típusát és type_desc mutatja.](./media/aad-security-configure-tutorial/native-login.png)
 
-További információ: [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)).
+További információ: [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)).
 
 ## <a name="grant-permissions-to-create-logins"></a>Engedélyek megadása bejelentkezések létrehozásához
 
@@ -182,7 +182,7 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
     GO
     ```
 
-1. Hozzon létre egy adatbázist a felügyelt példányban az [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) szintaxis használatával. Ezt az adatbázist fogjuk használni a felhasználói bejelentkezések teszteléséhez a következő szakaszban.
+1. Hozzon létre egy adatbázist a felügyelt példányban az [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) szintaxis használatával. Ezt az adatbázist fogjuk használni a felhasználói bejelentkezések teszteléséhez a következő szakaszban.
     1. A **Object Explorerban** kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés** elemet.
     1. A lekérdezési ablakban használja a következő szintaxist egy **MyMITestDB** nevű adatbázis létrehozásához.
 
@@ -264,7 +264,7 @@ További információ az adatbázis-engedélyek megadásáról: [első lépések
     > [!IMPORTANT]
     > Amikor egy **felhasználót** egy Azure ad-kiszolgáló rendszerbiztonsági tagja (login) alapján hoz létre, a **bejelentkezéshez** ugyanazt a login_name kell megadnia a user_name.
 
-    További információt a [felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)című témakörben talál.
+    További információt a [felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true)című témakörben talál.
 
 1. Egy új lekérdezési ablakban hozzon létre egy teszt táblát a következő T-SQL parancs használatával:
 

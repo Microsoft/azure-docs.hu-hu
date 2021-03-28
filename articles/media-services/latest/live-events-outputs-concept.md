@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 0eff5b13a79f64de1863e82a2c9285788accf6fc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625296"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641531"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
 
@@ -225,14 +225,6 @@ Ha a stream az élő eseménybe áramlik, megkezdheti a folyamatos átviteli ese
 
 Az élő kimenetekkel kapcsolatos részletes információkért lásd: [FELHŐALAPÚ DVR használata](live-event-cloud-dvr.md).
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
+## <a name="live-event-output-questions"></a>Élő esemény kimeneti kérdései
 
-Tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#live-streaming) című cikket.
-
-## <a name="ask-questions-and-get-updates"></a>Kérdések és frissítések kérése
-
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
-
-## <a name="next-steps"></a>Következő lépések
-
-[Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
+Tekintse meg az [élő esemény kimeneti kérdéseit](questions-collection.md#live-streaming) ismertető cikket.

@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 727e2166bad7f0d8980ffe4fa18c292a206c37d7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: aba9b71ec2fbfedecf08577c7bd2eae7a28a5588
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110349"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644343"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Python SMS SDK használatával SMS-üzenetek küldéséhez.
 
@@ -107,7 +107,7 @@ sms_responses = sms_client.send(
 `<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number>` azt a telefonszámot, amelyhez üzenetet kíván küldeni. 
 
 > [!WARNING]
-> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 12223334444).
+> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
 
 ## <a name="send-a-1n-sms-message"></a>1: N SMS-üzenet küldése
 
@@ -125,13 +125,16 @@ sms_responses = sms_client.send(
 
 ```
 
-`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number-1>` `<to-phone-number-2>` azokat a telefonszámokat, amelyekről üzenetet szeretne küldeni. 
+`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number-1>` `<to-phone-number-2>` olyan telefonszám (oka) t, amelyhez üzenetet szeretne küldeni. 
+
+> [!WARNING]
+> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
 
 ## <a name="optional-parameters"></a>Opcionális paraméterek
 
 A `enable_delivery_report` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
 
-A `tag` paraméter egy nem kötelező paraméter, amely az egyéni címkézés konfigurálására használható.
+A `tag` paraméter egy opcionális paraméter, amelynek használatával címkét alkalmazhat a kézbesítési jelentésre.
 
 ## <a name="run-the-code"></a>A kód futtatása
 Futtassa az alkalmazást az alkalmazás könyvtárából a `python` paranccsal.

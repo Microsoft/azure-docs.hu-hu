@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató – SMS-események kezelése
+title: Gyors útmutató – SMS-események kezelése kézbesítési jelentésekhez és bejövő üzenetekhez
 titleSuffix: An Azure Communication Services quickstart
 description: Ismerje meg, hogyan kezelheti az SMS-eseményeket az Azure kommunikációs szolgáltatásokkal.
 author: mikben
@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d16a4d9ecd2e9246933b2543da3b05239ac2f7f
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655988"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644650"
 ---
-# <a name="quickstart-handle-sms-events"></a>Gyors útmutató: SMS-események kezelése
+# <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>Gyors útmutató: SMS-események kezelése kézbesítési jelentésekhez és bejövő üzenetekhez
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -117,6 +117,7 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhat SMS-eseményeket. SM
 > [SMS küldése](../telephony-sms/send.md)
 
 A következőket is érdemes elvégezheti:
+
 
  - [További tudnivalók az események kezelésére vonatkozó fogalmakról](../../../event-grid/event-schema-communication-services.md)
  - [Tudnivalók a Event Grid](../../../event-grid/overview.md)

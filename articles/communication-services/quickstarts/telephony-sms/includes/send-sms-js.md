@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110352"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644371"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások JavaScript SMS SDK használatával SMS-üzenetek küldéséhez.
 
@@ -72,15 +72,15 @@ A következő osztályok és felületek a Node.js Azure Communication Services S
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Ez az osztály minden SMS-funkcióhoz szükséges. Létrehozhatja az előfizetési adataival, és SMS-üzenetek küldéséhez használhatja azt. |
-| SmsSendResult               | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
-| SmsSendOptions | Ez az interfész lehetőséget biztosít a kézbesítési jelentéskészítés konfigurálására. Ha `enableDeliveryReport` a értéke `true` , akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres. |
 | SmsSendRequest | Ez az interfész az SMS-kérelem létrehozási modellje (például adja meg a telefonszámokat és az SMS-tartalmat. |
+| SmsSendOptions | Ez az interfész lehetőséget biztosít a kézbesítési jelentéskészítés konfigurálására. Ha `enableDeliveryReport` a értéke `true` , akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres. |
+| SmsSendResult               | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 Importálja a **SmsClient** az SDK-ból, és hozza létre azt a kapcsolatok karakterláncával. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
 
-Adja hozzá a következő kódot a **send-sms.jshoz**:
+Hozzon létre és nyisson meg egy **send-sms.js** nevű fájlt, és adja hozzá a következő kódot:
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -118,7 +118,10 @@ async function main() {
 
 main();
 ```
-A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` azon telefonszámhoz kell cserélni, amelyhez üzenetet szeretne küldeni.
+A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number-1>` `<to-phone-number-2>` azokhoz a telefonszám (ok) hoz, amelyekről üzenetet kíván küldeni.
+
+> [!WARNING]
+> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>1: N SMS-üzenet küldése a következő beállításokkal
 
@@ -127,12 +130,12 @@ Egy Options objektum is megadható annak megadásához, hogy a kézbesítési je
 ```javascript
 
 async function main() {
-  await smsClient.send({
+  const sendResults = await smsClient.send({
     from: "<from-phone-number>",
     to: ["<to-phone-number-1>", "<to-phone-number-2>"],
     message: "Weekly Promotion!"
   }, {
-    //Optional parameter
+    //Optional parameters
     enableDeliveryReport: true,
     tag: "marketing"
   });
@@ -150,6 +153,11 @@ async function main() {
 
 main();
 ```
+
+A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number-1>` `<to-phone-number-2>` azon telefonszám (ok) hoz, amelyhez üzenetet szeretne küldeni.
+
+> [!WARNING]
+> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
 
 A `enableDeliveryReport` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
 `tag` a egy opcionális paraméter, amelynek használatával címkét alkalmazhat a kézbesítési jelentésre.

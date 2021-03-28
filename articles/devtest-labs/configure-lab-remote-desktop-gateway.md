@@ -3,12 +3,12 @@ title: Tesztkörnyezet konfigurálása Távoli asztali átjáró használatára 
 description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy távoli asztali átjáróval, hogy biztosítsa a laboratóriumi virtuális gépek biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b15d4d39199c1a30eae292ece67f4553b656f530
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695682"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639599"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
 Azure DevTest Labs egy távoli asztali átjárót konfigurálhat a laborhoz, így biztosíthatja a labor virtuális gépek (VM-EK) biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni. A labor központi helyet biztosít a labor felhasználói számára az összes olyan virtuális gép megtekintésére és a hozzájuk való kapcsolódásra, amelyhez hozzáférése van. A **virtuális gép** oldalon a **Kapcsolódás** gomb egy, a géphez való kapcsolódáshoz megnyitható RDP-fájlt hoz létre. Az RDP-kapcsolatot tovább testreszabhatja és biztonságossá teheti úgy, hogy a labort egy távoli asztali átjáróhoz csatlakoztatja. 
@@ -36,7 +36,7 @@ A DevTest Labs-jogkivonat hitelesítési funkciójának használatakor az átjá
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>A távoli asztali átjáró gépekre vonatkozó követelmények
 - A HTTPS-forgalom kezeléséhez a TLS/SSL-tanúsítványt telepíteni kell az átjáró számítógépre. A tanúsítványnak meg kell egyeznie az átjáró-Farm terheléselosztó vagy a gép teljes TARTOMÁNYNEVÉnek teljes tartománynevével (FQDN), ha csak egy gép van. A Wild-Card TLS/SSL-tanúsítványok nem működnek.  
 - Az átjárót futtató számítógép (ek) re telepített aláíró tanúsítvány. Hozzon létre egy aláíró tanúsítványt [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) parancsfájl használatával.
-- Telepítse a távoli asztali átjáró jogkivonat-hitelesítését támogató [csatlakoztatható hitelesítési](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modult. Ilyen modul például `RDGatewayFedAuth.msi` [System Center Virtual Machine Manager (VMM) rendszerképekből](/system-center/vmm/install-console?view=sc-vmm-1807)áll. A System centerrel kapcsolatos további információkért lásd: a [System Center dokumentációja](/system-center/) és [díjszabása](https://www.microsoft.com/cloud-platform/system-center-pricing).  
+- Telepítse a távoli asztali átjáró jogkivonat-hitelesítését támogató [csatlakoztatható hitelesítési](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modult. Ilyen modul például `RDGatewayFedAuth.msi` [System Center Virtual Machine Manager (VMM) rendszerképekből](/system-center/vmm/install-console?view=sc-vmm-1807&preserve-view=true)áll. A System centerrel kapcsolatos további információkért lásd: a [System Center dokumentációja](/system-center/) és [díjszabása](https://www.microsoft.com/cloud-platform/system-center-pricing).  
 - Az átjárókiszolgáló kezelheti a rendszerre irányuló kérelmeket `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` .
 
     Az átjáró-állomásnév az átjáró-Farm vagy a számítógép teljes tartománynevének teljes TARTOMÁNYNEVE, ha csak egy gép van. A annak a tesztkörnyezet-gépnek a neve, amelyhez `{lab-machine-name}` csatlakozni próbál, és az a `{port-number}` port, amelyen a kapcsolat létrejön.  Alapértelmezés szerint ez a port 3389.  Ha azonban a virtuális gép a DevTest Labs [megosztott IP-](devtest-lab-shared-ip.md) szolgáltatását használja, a port eltérő lesz.
@@ -105,14 +105,14 @@ Kövesse az alábbi lépéseket a távoli asztali átjáró farmhoz tartozó min
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
-    $cer.Import(‘path-to-certificate’);
+    $cer.Import('path-to-certificate');
     $hash = $cer.GetCertHashString()
     ```
 
     A Base64-kódolás PowerShell használatával történő lekéréséhez használja a következő parancsot.
 
     ```powershell
-    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
+    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes('path-to-certificate'))
     ```
 3. Fájlok letöltése innen: [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway) .
 

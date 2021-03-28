@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 6383c0fa3aad15da8abaea79136a75732ce9ea01
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605756"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639469"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése az SQL Database-hez, a felügyelt SQL-példányhoz és az Azure Synapse Analyticshez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ Ezen a ponton a kiszolgáló vagy a felügyelt példány csak egyetlen SQL-bejel
 
   - Hozzon létre egy további SQL-bejelentkezést a Master adatbázisban.
   - Adja hozzá a bejelentkezést a [sysadmin rögzített kiszolgálói szerepkörhöz](/sql/relational-databases/security/authentication-access/server-level-roles) az [Alter Server role](/sql/t-sql/statements/alter-server-role-transact-sql) utasítás használatával. Ez a bejelentkezés teljes rendszergazdai jogosultságokkal fog rendelkezni.
-  - Másik lehetőségként hozzon létre egy [Azure ad-bejelentkezést](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) a [bejelentkezési szintaxis létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) paranccsal.
+  - Másik lehetőségként hozzon létre egy [Azure ad-bejelentkezést](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) a [bejelentkezési szintaxis létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) paranccsal.
 
 - **A SQL Database-ban hozzon létre SQL-bejelentkezéseket korlátozott rendszergazdai engedélyekkel**
 
@@ -122,9 +122,9 @@ A nem rendszergazda felhasználók számára a következő két módszer egyiké
 
 A bejelentkezések és a felhasználók létrehozásának módját bemutató Példákért lásd:
 
-- [Azure SQL Database-bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [Bejelentkezés létrehozása az Azure SQL felügyelt példányához](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [Azure Szinapszishoz való bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Azure SQL Database-bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)
+- [Bejelentkezés létrehozása az Azure SQL felügyelt példányához](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true#examples-2)
+- [Azure Szinapszishoz való bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-3)
 - [Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Azure AD-beli felhasználók létrehozása](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 

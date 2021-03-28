@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201204"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643416"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -115,7 +115,7 @@ Az SQL felügyelt példány Azure AD olvasási engedélyének a Azure Portal has
 
     A rendszergazda módosításának folyamata több percet is igénybe vehet. Ezután megjelenik az új rendszergazda a Active Directory admin mezőben.
 
-Miután kiépített egy Azure AD-rendszergazdát az SQL felügyelt példányához, megkezdheti az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozását a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">bejelentkezési szintaxis létrehozásával</a> . További információ: [SQL felügyelt példányának áttekintése](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
+Miután kiépített egy Azure AD-rendszergazdát az SQL felügyelt példányához, megkezdheti az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozását a [bejelentkezési szintaxis létrehozásával](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) . További információ: [SQL felügyelt példányának áttekintése](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
 
 > [!TIP]
 > Ha később el szeretné távolítani a rendszergazdát, a Active Directory-rendszergazda lap tetején válassza a **rendszergazda eltávolítása** lehetőséget, majd kattintson a **Mentés** gombra.
@@ -345,8 +345,8 @@ A következő szoftvereket kell telepítenie minden olyan ügyfélszámítógép
 - A .NET-keretrendszer 4,6-es vagy újabb verziója [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) .
 - SQL Server (*ADAL.DLL*) Azure Active Directory hitelesítési könyvtára. Az alábbi letöltési hivatkozások segítségével telepítheti a *ADAL.DLL* könyvtárat tartalmazó legújabb SSMS, ODBC és OLE DB illesztőprogramot.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC-illesztő, 17 SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
-  - [OLE DB 18. illesztőprogram SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
+  - [ODBC-illesztő, 17 SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [OLE DB 18. illesztőprogram SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 Ezeket a követelményeket az alábbiak szerint teljesítheti:
 
@@ -357,7 +357,7 @@ Ezeket a követelményeket az alábbiak szerint teljesítheti:
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Az Azure AD-identitásokhoz hozzárendelt, tartalmazott felhasználók létrehozása
 
-Mivel az SQL felügyelt példánya támogatja az Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) használatát, a tárolt adatbázis-felhasználók használata nem kötelező. Az Azure AD kiszolgálói rendszerbiztonsági tagok (bejelentkezések) lehetővé teszik bejelentkezések létrehozását Azure AD-felhasználókból, -csoportokból vagy -alkalmazásokból. Ez azt jelenti, hogy az SQL felügyelt példányát az Azure AD-kiszolgáló bejelentkezésével, nem pedig egy tárolt adatbázis-felhasználó használatával lehet hitelesíteni. További információ: [SQL felügyelt példányának áttekintése](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Az Azure AD Server-rendszerbiztonsági tag (Logins) létrehozásával kapcsolatos szintaxisért lásd: <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">create login (bejelentkezés létrehozása</a>).
+Mivel az SQL felügyelt példánya támogatja az Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) használatát, a tárolt adatbázis-felhasználók használata nem kötelező. Az Azure AD kiszolgálói rendszerbiztonsági tagok (bejelentkezések) lehetővé teszik bejelentkezések létrehozását Azure AD-felhasználókból, -csoportokból vagy -alkalmazásokból. Ez azt jelenti, hogy az SQL felügyelt példányát az Azure AD-kiszolgáló bejelentkezésével, nem pedig egy tárolt adatbázis-felhasználó használatával lehet hitelesíteni. További információ: [SQL felügyelt példányának áttekintése](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Az Azure AD Server-rendszerbiztonsági tag (Logins) létrehozásával kapcsolatos szintaxisért lásd: [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)).
 
 Azonban a Azure Active Directory hitelesítés használata a SQL Database és az Azure szinapszis használatához az Azure AD-identitáson alapuló, tárolt adatbázis-felhasználókat kell használnia. Egy tárolt adatbázis-felhasználó nem rendelkezik bejelentkezéssel a főadatbázisban, és az adatbázishoz társított Azure AD-beli identitáshoz társítja az adatokat. Az Azure AD-identitás lehet egyéni felhasználói fiók vagy csoport is. További információ a tárolt adatbázis-felhasználókról: [tárolt adatbázis-felhasználók – az adatbázis hordozhatóvé tétele](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 

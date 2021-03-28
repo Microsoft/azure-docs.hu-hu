@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96017049"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644884"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Oktatóanyag: Adatok elfogadása és fogadása az Azure Data Share használatával  
 
@@ -42,23 +42,10 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 Ha úgy dönt, hogy befogadja az Azure SQL Databaseba az Azure szinapszis Analyticset, az alábbi lista tartalmazza az előfeltételek listáját. 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Az Adatfogadás előfeltételei a Azure SQL Database vagy az Azure szinapszis Analytics szolgáltatásba (korábban Azure SQL DW)
-Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](https://youtu.be/aeGISgK1xro) lépéseit.
 
 * Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW).
 * A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi. 
-* Az adatmegosztási erőforrás felügyelt identitására vonatkozó engedély a Azure SQL Database vagy az Azure szinapszis Analytics eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
-    1. A Azure Portalban navigáljon az SQL Serverre, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
-    1. Kapcsolódjon a Azure SQL Database/adattárházhoz a [Lekérdezés-szerkesztő](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) használatával, vagy SQL Server Management Studio Azure Active Directory hitelesítéssel. 
-    1. A következő szkript végrehajtásával adja hozzá az adatmegosztás felügyelt identitását "db_datareader, db_datawriter, db_ddladmin" értékre. Active Directory használatával kell kapcsolódnia, nem SQL Server a hitelesítéshez. 
-
-        ```sql
-        create user "<share_acc_name>" from external provider; 
-        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-        ```      
-        Vegye figyelembe, hogy a *<share_acc_name>* az adatmegosztási erőforrás neve. Ha még nem hozott létre adatmegosztási erőforrást, később is visszatérhet ehhez az előfeltételhöz.         
-
+* Az SQL Server **Azure Active Directory rendszergazdája**
 * SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portal található SQL Serverben navigáljon a *tűzfalak és a virtuális hálózatok* területére.
     1. Az **Igen** gombra kattintva *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz*.
@@ -92,7 +79,6 @@ Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](ht
 
 * Azure Adatkezelő-fürt ugyanabban az Azure-adatközpontban, mint az adatszolgáltató Adatkezelő-fürtje: Ha még nem rendelkezik ilyennel, létrehozhat egy [azure adatkezelő-fürtöt](/azure/data-explorer/create-cluster-database-portal). Ha nem ismeri az adatszolgáltató fürtje Azure-adatközpontját, később a folyamat során is létrehozhatja a fürtöt.
 * Engedély az Azure Adatkezelő-fürtbe való írásra, amely megtalálható a *Microsoft. Kusto/fürtök/írás* szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi. 
-* Jogosultság a szerepkör-hozzárendelés hozzáadásához az Azure Adatkezelő-fürthöz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -175,13 +161,13 @@ Az alábbi lépésekkel konfigurálhatja, hogy hová kívánja fogadni az adatgy
 
    ![Leképezés célhelyre](./media/dataset-map-target.png "Leképezés célhelyre") 
 
-1. Válassza ki azt a célként megadott adattár-típust, amelybe az adatterületet szeretné. A célként megadott adattárban lévő adatfájlokat vagy táblákat ugyanazzal az elérési úttal és névvel írja felül a rendszer. 
+1. Válassza ki azt a célként megadott adattár-típust, amelybe az adatterületet szeretné. A célként megadott adattárban lévő adatfájlokat vagy táblákat ugyanazzal az elérési úttal és névvel írja felül a rendszer. Ha Azure SQL Databaseba vagy Azure szinapszis Analyticsbe (korábban Azure SQL DW) fogadja az adatgyűjtést, jelölje be az **adatmegosztás engedélyezése a fenti "felhasználó létrehozása" szkript futtatása a saját nevében** jelölőnégyzetet.
 
    A helyi megosztáshoz válasszon egy adattárat a megadott helyen. A hely az az Azure-adatközpont, ahol az adatszolgáltató forrás-adattára található. Ha az adatkészlet le van képezve, a cél elérési úton található hivatkozásra kattintva érheti el az adatokat.
 
    ![Cél Storage-fiók](./media/dataset-map-target-sql.png "Cél tárterülete") 
 
-1. A pillanatkép-alapú megosztáshoz, ha az adatszolgáltató pillanatkép-ütemtervet hozott létre az adatok rendszeres frissítéséhez, **akkor a pillanatkép-ütemterv** kiválasztásával is engedélyezheti a pillanatkép-ütemtervet. Jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet, majd válassza a **+ Engedélyezés** lehetőséget.
+1. A pillanatkép-alapú megosztáshoz, ha az adatszolgáltató pillanatkép-ütemtervet hozott létre az adatok rendszeres frissítéséhez, **akkor a pillanatkép-ütemterv** kiválasztásával is engedélyezheti a pillanatkép-ütemtervet. Jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet, majd válassza a **+ Engedélyezés** lehetőséget. Vegye figyelembe, hogy az első ütemezett pillanatkép az ütemezési idő egy percén belül indul el, és az azt követő Pillanatképek az ütemezett időponttól számított másodperceken belül kezdődnek.
 
    ![Pillanatkép-ütemterv engedélyezése](./media/enable-snapshot-schedule.png "Pillanatkép-ütemterv engedélyezése")
 

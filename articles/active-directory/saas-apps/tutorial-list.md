@@ -12,12 +12,12 @@ ms.date: 03/09/2021
 ms.author: jeedes
 ms.custom: contperf-fy21q3-portal
 ms.reviewer: celested
-ms.openlocfilehash: 7f19546472c869c8f55499c18afe1b280ce1a500
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: eda1ad058bf969351122cb9df1b528341067a186
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "102566685"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640904"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához
 
@@ -63,6 +63,7 @@ További oktatóanyagokat a bal oldali tartalomjegyzékben talál.
 | ![embléma – ArcGIS Enterprise](./media/tutorial-list/active-directory-saas-arcgisenterprise-tutorial.png)| [ArcGIS Enterprise](arcgisenterprise-tutorial.md)|
 | ![embléma – AskYourTeam](./media/tutorial-list/active-directory-saas-askyourteam-tutorial.png)| [AskYourTeam](askyourteam-tutorial.md)|
 | ![embléma – Atlassian felhő](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
+| ![embléma – AWS egyszeri Sign-On](./media/tutorial-list/active-directory-saas-aws-single-sign-on-tutorial.png)| [AWS egyszeri bejelentkezés](aws-single-sign-on-tutorial.md)|
 | ![embléma – Box](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [Box](box-tutorial.md)|
 | ![embléma – CakeHR](./media/tutorial-list/active-directory-saas-cakehr-tutorial.png)| [CakeHR](cakehr-tutorial.md)|
 | ![embléma – Carbonite-végpont biztonsági mentése](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|

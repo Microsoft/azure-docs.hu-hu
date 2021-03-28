@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fb1b9e3458d08b8387c7f3978ff83c097fad2375
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659709"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644025"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Tesztkörnyezet beállítása a SQL Server kezeléséhez és fejlesztéséhez
 
 Ez a cikk azt ismerteti, hogyan állíthat be egy labort egy alapszintű SQL Server felügyeleti és fejlesztési osztályhoz a Azure Lab Servicesban.  Az adatbázis-fogalmak az egyik bevezető tanfolyam, amelyet a főiskolán a Computer Science tanszékek többségében tanítanak. A Structured Query Language (SQL) egy nemzetközi szabvány.  Az SQL a kapcsolatok adatbázis-kezelésének szabványos nyelve, beleértve az adatbázisok tartalmának hozzáadását, elérését és kezelését.  A legtöbb esetben a gyors feldolgozás, a bevált megbízhatóság, a könnyű használat és a rugalmasság jellemzi.
 
-Ebben a cikkben bemutatjuk, hogyan állíthat be egy virtuálisgép-sablont egy tesztkörnyezetben a [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)és [Azure Data Studio](https://github.com/microsoft/azuredatastudio)használatával.  Ehhez a laborhoz egy megosztott [SQL Server adatbázist](../azure-sql/database/sql-database-paas-overview.md) fogunk használni a teljes laborhoz. A [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) az Azure-ból származó szolgáltatásként nyújtott platformként szolgáló adatbázismotor.
+Ebben a cikkben bemutatjuk, hogyan állíthat be egy virtuálisgép-sablont egy tesztkörnyezetben a [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)és [Azure Data Studio](https://github.com/microsoft/azuredatastudio)használatával.  Ehhez a laborhoz egy megosztott [SQL Server adatbázist](../azure-sql/database/sql-database-paas-overview.md) fogunk használni a teljes laborhoz. A [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) az Azure-ból származó szolgáltatásként nyújtott platformként szolgáló adatbázismotor.
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
@@ -82,9 +82,9 @@ Most, hogy létrehozta a labort, módosítsa a sablon számítógépét a szüks
 
 ## <a name="visual-studio"></a>Visual Studio
 
-A fenti képen a [Visual Studio 2019 közössége](https://visualstudio.microsoft.com/vs/community/)szerepel.  Az összes számítási feladat és eszközkészlet már telepítve van a rendszerképre.  A Visual Studio telepítőjének használatával [bármilyen opcionális eszközt telepíthet](/visualstudio/install/modify-visual-studio?view=vs-2019) , amelyre szüksége lehet.  A Community Edition zárolásának feloldásához [Jelentkezzen be a Visual studióba](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019#how-to-sign-in-to-visual-studio) .
+A fenti képen a [Visual Studio 2019 közössége](https://visualstudio.microsoft.com/vs/community/)szerepel.  Az összes számítási feladat és eszközkészlet már telepítve van a rendszerképre.  A Visual Studio telepítőjének használatával [bármilyen opcionális eszközt telepíthet](/visualstudio/install/modify-visual-studio?view=vs-2019&preserve-view=true) , amelyre szüksége lehet.  A Community Edition zárolásának feloldásához [Jelentkezzen be a Visual studióba](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019&preserve-view=true#how-to-sign-in-to-visual-studio) .
 
-A Visual Studio tartalmazza az **adattárolási és-feldolgozási** eszközkészletet, amely SQL Server Data Tools (SSDT) tartalmaz.  További információ a SSDT képességeiről: [SQL Server Data Tools Overview (áttekintés](/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)).  Ha ellenőrizni szeretné, hogy az osztály megosztott SQL Server kapcsolata sikeres-e, tekintse meg az [adatbázishoz való kapcsolódást és a meglévő objektumok tallózását](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)ismertető témakört. Ha a rendszer kéri, adja hozzá a sablon-számítógép IP-címét az SQL Server-példányhoz csatlakozni képes [számítógépek listájához](../azure-sql/database/firewall-configure.md) .
+A Visual Studio tartalmazza az **adattárolási és-feldolgozási** eszközkészletet, amely SQL Server Data Tools (SSDT) tartalmaz.  További információ a SSDT képességeiről: [SQL Server Data Tools Overview (áttekintés](/sql/ssdt/sql-server-data-tools)).  Ha ellenőrizni szeretné, hogy az osztály megosztott SQL Server kapcsolata sikeres-e, tekintse meg az [adatbázishoz való kapcsolódást és a meglévő objektumok tallózását](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects)ismertető témakört. Ha a rendszer kéri, adja hozzá a sablon-számítógép IP-címét az SQL Server-példányhoz csatlakozni képes [számítógépek listájához](../azure-sql/database/firewall-configure.md) .
 
 A Visual Studio számos számítási feladatot támogat, többek között a **Web & Cloud** és az **asztali & mobil** munkaterheléseket.  Mindkét számítási feladat támogatja az SQL Server adatforrásként. További információ a SQL Server ASP.NET Core használatával kapcsolatban: [ASP.net Core és SQL Database alkalmazás létrehozása Azure app Service](../app-service/tutorial-dotnetcore-sqldb-app.md) oktatóanyagban.  A [System. SqlClient](/dotnet/api/system.data.sqlclient) függvénytár használatával kapcsolódjon SQL Database egy [Xamarin](/xamarin) -alkalmazáshoz.
 
@@ -113,7 +113,7 @@ Most, hogy Azure Data Studio telepítve van, állítsuk be a Azure SQL Databaseh
 
 ## <a name="install-sql-server-management-studio"></a>SQL Server Management Studio telepítése
 
-A [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) egy integrált környezet, amely bármely SQL-infrastruktúra kezelésére alkalmas.  A SSMS egy olyan eszköz, amelyet az adatbázis-rendszergazdák használnak az adatinfrastruktúra üzembe helyezéséhez, figyeléséhez és frissítéséhez.
+A [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) egy integrált környezet, amely bármely SQL-infrastruktúra kezelésére alkalmas.  A SSMS egy olyan eszköz, amelyet az adatbázis-rendszergazdák használnak az adatinfrastruktúra üzembe helyezéséhez, figyeléséhez és frissítéséhez.
 
 1. [Töltse le az SQL Server Management Studio](https://aka.ms/ssmsfullsetup). A letöltés után indítsa el a telepítőt.
 2. Az **Üdvözöljük** lapon kattintson a **telepítés** gombra.

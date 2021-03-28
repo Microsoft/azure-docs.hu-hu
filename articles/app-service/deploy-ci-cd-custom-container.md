@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bc36325b55f049eebef823d836768fccc39a7615
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 654b0f842a3165926242d1ef03f2dfe4e5bacfdc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472181"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643350"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Folyamatos üzembe helyezés egyéni tárolókkal Azure App Service
 
@@ -32,7 +32,7 @@ A bal oldali menüben kattintson a **központi telepítési központ**  >  **be�
 **Válassza ki** a telepítési forrást a forgatókönyvtől függően:
 - A **Container Registry** BEÁLLÍTJA a CI/CD-t a tároló-beállításjegyzék és a app Service között.
 - Ha a githubon tartja karban a tároló képét, akkor a **GitHub-műveletek** beállítással megtarthatja a forráskódot. Új véglegesíti a GitHub-tárházban, az üzembe helyezési művelet futtatható `docker build` és `docker push` közvetlenül a tároló-beállításjegyzékbe, majd az új rendszerkép futtatásához frissítse a app Service alkalmazást. További információ: [how CI/CD a GitHub-műveletekkel működik](#how-cicd-works-with-github-actions).
-- A CI/CD **Azure-folyamatokkal** való beállításával kapcsolatban lásd: [Azure webalkalmazás-tároló üzembe helyezése az Azure-folyamatokból](/devops/pipelines/targets/webapp-on-container-linux).
+- A CI/CD **Azure-folyamatokkal** való beállításával kapcsolatban lásd: [Azure webalkalmazás-tároló üzembe helyezése az Azure-folyamatokból](/azure/devops/pipelines/targets/webapp-on-container-linux).
 
 > [!NOTE]
 > Docker-összeállítási alkalmazás esetén válassza a **Container Registry** lehetőséget.

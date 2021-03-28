@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 8a76a637c4862032b100308d8b02bced76af38fe
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: e27e7e0bb4616508c8f137260bde68de9420f9cf
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023401"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644959"
 ---
 # <a name="migrating-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Adattárház áttelepítése dedikált SQL-készletbe az Azure szinapszis Analyticsben 
 A következő szakaszokban áttekintheti, hogy mi a teendő egy meglévő adattárház-megoldás Azure szinapszis Analytics dedikált SQL-készletbe való áttelepítésével kapcsolatban.
@@ -89,14 +89,14 @@ A sikeres áttelepítés végrehajtásához át kell telepítenie a tábla sém�
 ## <a name="migration-assets-from-real-world-engagements"></a>Áttelepítési eszközök a valós idejű engagements szolgáltatásból
 Ha további segítségre van az áttelepítési forgatókönyv végrehajtásával kapcsolatban, tekintse meg a következő forrásokat, amelyek a valós idejű migrációs projektek támogatásában lettek kifejlesztve.
 
-| Cím/hivatkozás                              | Leírás                                                                                                                       |
+| Cím/hivatkozás                              | Description                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely nagy mértékben segíti a nagyméretű ingatlanok értékelését azáltal, hogy biztosítja és automatizálja a célzott platformra vonatkozó döntési folyamatokat. |
 | [Adatkódolási problémák kezeléséhez az Azure szinapszis Analytics szolgáltatásba való betöltés során](https://azure.microsoft.com/en-us/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | Ez a blog arra szolgál, hogy betekintést nyújtson néhány olyan adatkódolási problémára, amely akkor fordulhat elő, amikor az adatok SQL Data Warehouseba való betöltéséhez használhat. Ez a cikk néhány olyan lehetőséget is kínál, amelyek segítségével elháríthatja az ilyen problémákat, és betöltheti az adatgyűjtést. |
 | [Táblázatok méretének beolvasása az Azure szinapszis Analytics dedikált SQL-készletében](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | Az egyik kulcsfontosságú feladat, amelyet az építésznek végre kell hajtania, hogy metrikákat kapjon egy új környezetről a Migrálás után: a helyszíni rendszerből a felhőbe betöltött betöltési idő gyűjtése, a számláló betöltésének időpontja stb. Ezen feladatok közül az egyik legfontosabb az, hogy meghatározza a tárterület méretét SQL Data Warehouse az ügyfél aktuális platformjának megfelelően. |
 | [A helyszíni SQL Server bejelentkezések az Azure szinapszis Analytics szolgáltatásba való áthelyezésére szolgáló segédprogram](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | Egy olyan PowerShell-parancsfájl, amely létrehoz egy T-SQL-parancsfájlt a bejelentkezések újbóli létrehozásához és az adatbázis-felhasználók kiválasztásához a "helyszíni" SQL Server egy Azure SQL Péter szolgáltatásba. Az eszköz lehetővé teszi a Windows AD-fiókok automatikus hozzárendelését az Azure AD-fiókokhoz, vagy az egyes bejelentkezésekhez UPN-keresést végezhet a helyszíni Windows Active Directory. Az eszköz opcionálisan áthelyezi SQL Server natív bejelentkezéseket is. Az egyéni kiszolgáló-és adatbázis-szerepkörök parancsfájlokkal, valamint a szerepkör-tagsággal és az adatbázis-szerepkörrel és a felhasználói engedélyekkel rendelkeznek. A foglalt adatbázisok még nem támogatottak, és csak a lehetséges SQL Server engedélyek egy részhalmaza van parancsfájlban. az engedélyek megadása a támogatással nem támogatott (összetett engedélyekkel rendelkező fák). További részletek a támogatási dokumentumban olvashatók, és a parancsfájlnak megjegyzésekkel kell rendelkeznie a könnyű megértéshez. |
 
-Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
+Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat alapszintű alapokmánya az adatplatform-áttelepítési projektek a Microsoft Azure-beli adatplatformra való feltiltásának és felgyorsításának feloldása.
 
 ## <a name="videos"></a>Videók
 - Figyelje meg, hogyan [telepítette a Walgreens a kiskereskedelmi leltározási rendszerét](https://www.youtube.com/watch?v=86dhd8N1lH4) a Netezza és az Azure szinapszis Analytics (korábban SQL DW) 100 TB származó adatok rögzítési időpontjában. 

@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: b41f894a7e4742b75ea06684a960221d4a5b7641
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 1a20ffd7150ac75721b2affc2f4375301c4754c8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024761"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643567"
 ---
 # <a name="migrate-oracle-to-azure-database-for-postgresql"></a>Oracle migrálása Azure Database for PostgreSQLre
 
@@ -324,7 +324,7 @@ Ha további segítségre van az áttelepítési forgatókönyv végrehajtásáva
 | [Oracle – Azure PostgreSQL áttelepítési megkerülő megoldások](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf) | Ennek a dokumentumnak a célja az, hogy az építészek, a tanácsadók, a Adattervezők és a kapcsolódó szerepkörök segítséget nyújtsanak az Oracle-ből a Azure Database for PostgreSQLba történő áttelepítése során felmerülő feladatok gyors javításához/megoldásához. |
 | [A ora2pg Windows vagy Linux rendszeren való telepítésének lépései](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)                       | Ez a dokumentum olyan gyors telepítési útmutatóként használható, amely lehetővé teszi a séma-& adatok Oracle-ből Azure Database for PostgreSQL való áttelepítését Windows vagy Linux rendszerű ora2pg eszközzel. Az eszköz részletes adatai a következő címen találhatók: http://ora2pg.darold.net/documentation.html . |
 
-Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
+Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat alapszintű alapokmánya az adatplatform-áttelepítési projektek a Microsoft Azure-beli adatplatformra való feltiltásának és felgyorsításának feloldása.
 
 
 ### <a name="contact-support"></a>Kapcsolatfelvétel a támogatási szolgáltatással

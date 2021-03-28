@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/24/2021
-ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef8c1a50cd3568c6cec9bdb053b02e6e14741eb0
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740375"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644670"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
 
@@ -36,7 +36,20 @@ Ha az SQL-táblába beérkeznek az adatforrások, és ha a céltábla még nem l
 Az alábbi lista tartalmazza az SQL-forrásokból származó adatok megosztásának előfeltételeit. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>A Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) megosztásának előfeltételei
-Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](https://youtu.be/hIE-TjJD8Dc) lépéseit.
+
+
+Az Azure Active Directory hitelesítéssel történő adatmegosztáshoz itt találja az előfeltételek listáját:
+
+* Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW) a megosztani kívánt táblázatokkal és nézetekkel.
+* A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* SQL Server **Azure Active Directory-rendszergazda**
+* SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
+    1. A Azure Portalban navigáljon az SQL Server elemre. A bal oldali navigációs sávon válassza a *tűzfalak és virtuális hálózatok* lehetőséget.
+    1. Az **Igen** gombra kattintva *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz*.
+    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
+    1. Kattintson a **Mentés** gombra. 
+
+Az SQL-hitelesítés használatával az alábbi lista tartalmazza az előfeltételek listáját. Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](https://youtu.be/hIE-TjJD8Dc) lépéseit.
 
 * Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW) a megosztani kívánt táblázatokkal és nézetekkel.
 * A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi.
@@ -132,7 +145,9 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
     ![AddDatasets](./media/add-datasets.png "Adatkészletek hozzáadása")    
 
-1. Válassza ki az SQL Server vagy a szinapszis munkaterületet, adja meg a hitelesítő adatokat, ha a rendszer kéri, majd a **tovább** gombra kattintva navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. Kiválaszthatja a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW), illetve az Azure szinapszis Analytics (munkaterület) dedikált SQL-készletből származó táblákat és nézeteket. 
+1. Válassza ki az SQL Server vagy a szinapszis munkaterületet. Ha HRE hitelesítést használ, és a jelölőnégyzet **lehetővé teszi, hogy az adatmegosztás a fenti "felhasználó létrehozása" SQL-szkriptet futtassa a saját nevében** , jelölje be a jelölőnégyzetet. Ha SQL-hitelesítést használ, adja meg a hitelesítő adatokat, és kövesse a parancsfájl futtatásához szükséges előfeltételek című részt a képernyőn. Ez lehetővé teszi az adatmegosztási erőforrás számára az SQL-ADATBÁZISból való olvasást. 
+
+   A **tovább** gombra kattintva navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. Kiválaszthatja a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW), illetve az Azure szinapszis Analytics (munkaterület) dedikált SQL-készletből származó táblákat és nézeteket. 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Adatkészletek kiválasztása")    
 
@@ -176,7 +191,18 @@ Ha úgy dönt, hogy az Azure Storage-ba fogadja az adatgyűjtést, az alábbi li
 Ha úgy dönt, hogy befogadja az Azure SQL Databaseba az Azure szinapszis Analyticset, az alábbi lista tartalmazza az előfeltételek listáját. 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Az Adatfogadás előfeltételei a Azure SQL Database vagy az Azure szinapszis Analytics szolgáltatásba (korábban Azure SQL DW)
-Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](https://youtu.be/aeGISgK1xro) lépéseit.
+
+Ha olyan SQL Server-kiszolgálóra szeretne adatfogadást kapni, amely az SQL Server **Azure Active Directory rendszergazdája** , itt látható az előfeltételek listája:
+
+* Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW).
+* A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
+    1. A Azure Portalban navigáljon az SQL Server elemre. A bal oldali navigációs sávon válassza a *tűzfalak és virtuális hálózatok* lehetőséget.
+    1. Az **Igen** gombra kattintva *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz*.
+    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
+    1. Kattintson a **Mentés** gombra. 
+    
+Ha olyan SQL Server-kiszolgálóra szeretne adatfogadást kapni, amely nem a **Azure Active Directory-rendszergazda**, az alábbi lista tartalmazza az előfeltételeket. Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](https://youtu.be/aeGISgK1xro) lépéseit.
 
 * Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW).
 * A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi. 
@@ -264,11 +290,11 @@ Az alábbi lépésekkel konfigurálhatja, hogy hová kívánja fogadni az adatgy
 
    ![Leképezés célhelyre](./media/dataset-map-target.png "Leképezés célhelyre") 
 
-1. Válassza ki azt a cél adattárat, amelybe az adatterületet szeretné kijelölni. A célként megadott adattárban lévő adatfájlokat vagy táblákat ugyanazzal az elérési úttal és névvel írja felül a rendszer. 
+1. Válassza ki azt a cél adattárat, amelybe az adatterületet szeretné kijelölni. A célként megadott adattárban lévő adatfájlokat vagy táblákat ugyanazzal az elérési úttal és névvel írja felül a rendszer. Ha az SQL-célhelyre küldi az információt, és az **adatmegosztás engedélyezése a fenti "felhasználó létrehozása" SQL-parancsfájl futtatása a saját nevében** jelölőnégyzet jelenik meg, jelölje be a jelölőnégyzetet. Ellenkező esetben kövesse a parancsfájl futtatásához szükséges előfeltételek című témakör utasításait a képernyőn. Ez megadja az adatmegosztási erőforrás írási engedélyét a cél SQL-ADATBÁZIShoz.
 
    ![Cél Storage-fiók](./media/dataset-map-target-sql.png "Célként megadott adattár") 
 
-1. A pillanatkép-alapú megosztáshoz, ha az adatszolgáltató pillanatkép-ütemtervet hozott létre az adatok rendszeres frissítéséhez, **akkor a pillanatkép-ütemterv** kiválasztásával is engedélyezheti a pillanatkép-ütemtervet. Jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet, majd válassza a **+ Engedélyezés** lehetőséget.
+1. A pillanatkép-alapú megosztáshoz, ha az adatszolgáltató pillanatkép-ütemtervet hozott létre az adatok rendszeres frissítéséhez, **akkor a pillanatkép-ütemterv** kiválasztásával is engedélyezheti a pillanatkép-ütemtervet. Jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet, majd válassza a **+ Engedélyezés** lehetőséget. Vegye figyelembe, hogy az első ütemezett pillanatkép az ütemezési idő egy percén belül indul el, és az azt követő Pillanatképek az ütemezett időponttól számított másodperceken belül kezdődnek.
 
    ![Pillanatkép-ütemterv engedélyezése](./media/enable-snapshot-schedule.png "Pillanatkép-ütemterv engedélyezése")
 

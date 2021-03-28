@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 057a284f99dd7c3713249b19e8fc39212d9e6003
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101092431"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640276"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése
 
@@ -53,7 +53,7 @@ Az alábbi táblázat összefoglalja a natív DRM-támogatást a különböző p
 | **Windows 10** | PlayReady | Microsoft Edge/IE11 a PlayReady|
 | **Android-eszközök (telefon, Tablet, TV)** |Widevine |Widevine-hez készült Chrome |
 | **iOS** | FairPlay | Safari for FairPlay (iOS 11,2 óta) |
-| **macOS** | FairPlay | Safari for FairPlay (mivel a Safari 9 + Mac OS X 10.11 + el Capitan)|
+| **macOS** | FairPlay | Safari for FairPlay (mivel a Safari 9 + macOS X 10.11 + el Capitan)|
 | **tvOS** | FairPlay | |
 
 Az egyes DRM-eszközök üzembe helyezésének aktuális állapotát figyelembe véve a szolgáltatás általában két vagy három DRMs kíván megvalósítani, hogy a lehető legjobb megoldást biztosítsa a végpontok összes típusának kezeléséhez.
@@ -357,9 +357,3 @@ Az alábbi képernyőképen egy olyan forgatókönyv látható, amely aszimmetri
 ![Egyéni STS aszimmetrikus kulccsal](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
 
 Mindkét előző esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül zajlik. Az egyetlen különbség, hogy a JWTs az Azure AD helyett az egyéni STS állítja ki. A dinamikus CENC-védelem konfigurálásakor a licenc-kézbesítési szolgáltatási korlátozás meghatározza a JWT típusát (szimmetrikus vagy aszimmetrikus kulcs).
-
-## <a name="next-steps"></a>Következő lépések
-
-* [Gyakori kérdések](frequently-asked-questions.md)
-* [Tartalomvédelem – áttekintés](content-protection-overview.md)
-* [A tartalmak DRM-védelemmel való ellátása](protect-with-drm.md)

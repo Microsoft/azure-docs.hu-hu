@@ -7,19 +7,19 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 03/17/2021
-ms.openlocfilehash: 367f527180a310f2cbc74b1ccdc1102e1e53d1cf
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: dbe5ebaef7821299dc871adfd1000a999ff6b995
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605984"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639516"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>Gyors útmutató: MXCHIP AZ3166 fejlesztői készlet összekötése IoT Central
 
 **A** következőkre vonatkozik: [beágyazott eszközök fejlesztése](about-iot-develop.md#embedded-device-development)<br>
 **Teljes befejezési idő**: 30 perc
 
-[![Kód tallózása](media/common/browse-github-code.png)](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)
+[![Kód tallózása](media/common/browse-code-github.svg)](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)
 
 Ebben az oktatóanyagban az Azure RTOS használatával csatlakozik egy MXCHIP AZ3166 IoT fejlesztői készlet (a továbbiakban MXCHIP fejlesztői készlet) az Azure IoT-hoz. A cikk része az [Azure IoT Embedded-eszközök fejlesztésének első lépéseinek](quickstart-device-development.md). A sorozat bevezeti az eszközök fejlesztői az Azure RTOS, és bemutatja, hogyan csatlakoztatható több eszköz-értékelési készlet az Azure IoT-hoz.
 

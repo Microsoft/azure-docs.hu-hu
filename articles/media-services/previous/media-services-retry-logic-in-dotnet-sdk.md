@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: feda0ccfa1dc6d02153b98ad084bd775a055e9e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fe37c9f7727535a292b029c342aa0e85ce0a86ec
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103012904"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644118"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Újrapróbálkozási logika a .NET-hez készült Media Services SDK-ban
 
@@ -52,7 +52,7 @@ A következő táblázat azokat a kivételeket ismerteti, amelyek miatt a .NET-h
 | IOException |Nem |Igen |Nem |Nem |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> Webkivételi állapotkódok
-A következő táblázat azt mutatja be, hogy az újrapróbálkozási logikát milyen webkivételi hibakódok implementálják. A [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) enumerálás meghatározza az állapotkódot.  
+A következő táblázat azt mutatja be, hogy az újrapróbálkozási logikát milyen webkivételi hibakódok implementálják. A [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus) enumerálás meghatározza az állapotkódot.  
 
 | Állapot | Webes kérelem | Tárolás | Lekérdezés | SaveChanges |
 | --- | --- | --- | --- | --- |

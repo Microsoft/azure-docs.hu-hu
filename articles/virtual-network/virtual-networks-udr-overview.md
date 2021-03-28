@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/26/2017
+ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: c8d188c7bb7034cda450049c3d4912cc1517dae5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605212"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645277"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -96,10 +96,12 @@ Felhasználó által megadott útvonal létrehozásakor az alábbi következő u
 
 Felhasználó által megadott útvonalak esetén nem adhat meg **Virtuális hálózatok közötti társviszonyt** vagy **VirtualNetworkServiceEndpoint** típust a következő ugrás típusaként. **Virtuális hálózatok közötti társviszony** vagy **VirtualNetworkServiceEndpoint** következő ugrási típusú útvonalakat az Azure csak akkor hoz létre, ha virtuális hálózati társviszonyt vagy szolgáltatásvégpontot konfigurál.
 
-### <a name="service-tags-for-user-defined-routes-public-preview"></a>A felhasználó által megadott útvonalakhoz tartozó szolgáltatási címkék (nyilvános előzetes verzió)
+### <a name="service-tags-for-user-defined-routes-preview"></a>A felhasználó által megadott útvonalakhoz tartozó szolgáltatási címkék (előzetes verzió)
 
 Mostantól megadhat egy [szolgáltatási címkét](service-tags-overview.md) , amely egy explicit IP-címtartomány helyett egy felhasználó által megadott útvonalhoz tartozó cím előtag. A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címeket, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a felhasználó által megadott útvonalak gyakori frissítéseinek összetettségét, és csökkenti a létrehozandó útvonalak számát. Az egyes útválasztási táblákban jelenleg 25 vagy kevesebb útvonalat lehet létrehozni a szolgáltatási címkékkel. </br>
 
+> [!IMPORTANT]
+> A felhasználó által megadott útvonalakhoz tartozó szolgáltatási címkék jelenleg előzetes verzióban érhetők el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 #### <a name="exact-match"></a>Pontos egyezés
 Ha a pontos előtag egyezik egy explicit IP-előtaggal rendelkező útvonal és egy szolgáltatási címkével rendelkező útvonal között, akkor a rendszer a explicit előtaggal adja meg az útvonalat. Ha a szolgáltatási címkékkel rendelkező több útvonal megfelel az IP-ELŐTAGOKNAK, az útvonalak a következő sorrendben lesznek kiértékelve: 

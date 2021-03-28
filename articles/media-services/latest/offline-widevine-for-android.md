@@ -2,25 +2,19 @@
 title: Stream Widevine Android offline
 description: Ez a témakör bemutatja, hogyan konfigurálhatja a Azure Media Services v3-fiókját a Widevine által védett tartalmak offline folyamatos átviteléhez.
 services: media-services
-keywords: DASH, DRM, Widevine offline üzemmód, ExoPlayer, Android
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
+manager: femila
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: c19a8dd4f9a4b715b5f81a5a349edbffc2f7dea2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955207"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640692"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming az Androidhoz Media Services v3
 
@@ -47,7 +41,7 @@ A cikk a Widevine által védett tartalom offline adatfolyamával kapcsolatos gy
 > [!NOTE]
 > Az offline DRM-t csak akkor számítjuk fel, ha egy licencre vonatkozó kérést készítenek a tartalom letöltésekor. A hibák számlázása nem történik meg.
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt offline DRM-t implementál a Widevine Android-eszközökön, először a következőket kell tennie:
 
@@ -158,14 +152,8 @@ A fenti nyílt forráskódú PWA alkalmazás szerzője Node.js. Ha Ubuntu-kiszol
     - A tanúsítványnak megbízható HITELESÍTÉSSZOLGÁLTATÓval kell rendelkeznie, és az önaláírt fejlesztési tanúsítvány nem működik.
     - A tanúsítványnak rendelkeznie kell egy, a webkiszolgáló vagy az átjáró DNS-nevével egyező KN-névvel.
 
-## <a name="faqs"></a>Gyakori kérdések
+## <a name="more-information"></a>További információ
 
-További információ: [Widevine gyakori kérdések](frequently-asked-questions.md#widevine-streaming-for-android).
-
-## <a name="additional-notes"></a>További megjegyzések
+További információ: [Widevine a kérdések gyűjteményében](questions-collection.md#widevine-streaming-for-android).
 
 A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
-
-## <a name="summary"></a>Összefoglalás
-
-Ez a cikk azt ismerteti, hogyan lehet az Android-eszközökön a Widevine által védett DASH-tartalmak offline módú lejátszását megvalósítani.  Emellett a Widevine által védett tartalom offline adatfolyamával kapcsolatos gyakori kérdésekre is válaszolt.

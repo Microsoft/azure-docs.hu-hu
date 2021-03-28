@@ -3,14 +3,14 @@ title: CreateUiDefinition.jsa fájl a portálon panel
 description: Útmutatás a Azure Portal felhasználói felületi definícióinak létrehozásához. Azure Managed Applications definiálásakor használatos.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 03/26/2021
 ms.author: tomfitz
-ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 586237c6dd909312780163cf316220d2f3fddd8c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89319567"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641644"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json az Azure-beli felügyelt példány létrehozási felületéhez
 
@@ -63,25 +63,29 @@ A `config` tulajdonság megadása nem kötelező. Használja az alapszintű lép
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
+                        "isValid": "[not(contains(subscription().displayName, 'Test'))]",
+                        "message": "Can't use test subscription."
                     },
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
+                        "permission": "Microsoft.Compute/virtualmachines/write",
+                        "message": "Must have write permission for the virtual machine."
+                    },
+                    {
+                        "permission": "Microsoft.Compute/virtualMachines/extensions/write",
+                        "message": "Must have write permission for the extension."
                     }
                 ]
             },
             "resourceProviders": [
-                "<Resource Provider>"
+                "Microsoft.Compute"
             ]
         },
         "resourceGroup": {
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
+                        "isValid": "[not(contains(resourceGroup().name, 'test'))]",
+                        "message": "Resource group name can't contain 'test'."
                     }
                 ]
             },
@@ -103,6 +107,8 @@ A `config` tulajdonság megadása nem kötelező. Használja az alapszintű lép
 },
 ```
 
+A `isValid` tulajdonság esetében írjon egy kifejezést, amely az igaz vagy a hamis értéket oldja fel. A tulajdonság esetében az `permission` [erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md)egyikét kell megadnia.
+
 ### <a name="wizard"></a>Varázsló
 
 A `isWizard` tulajdonság lehetővé teszi az egyes lépések sikeres érvényesítését, mielőtt továbblép a következő lépésre. Ha a `isWizard` tulajdonság nincs megadva, az alapértelmezett érték a **false**, és a lépésenkénti ellenőrzés nem szükséges.
@@ -117,7 +123,7 @@ Az alapvető beállítások lehetőséggel testreszabhatja az alapvető lépése
 
 A (z) esetében `description` adjon meg egy Markdown-kompatibilis karakterláncot, amely leírja az erőforrást. A többsoros formátum és hivatkozások támogatottak.
 
-A `subscription` és `resourceGroup` elemek lehetővé teszik további érvényesítések megadását. Az érvényesítések megadásának szintaxisa megegyezik a [szövegmező](microsoft-common-textbox.md)egyéni ellenőrzésével. `permission`Az előfizetés vagy az erőforráscsoport érvényességét is megadhatja.  
+A `subscription` és `resourceGroup` elemek lehetővé teszik több érvényesítés megadását. Az érvényesítések megadásának szintaxisa megegyezik a [szövegmező](microsoft-common-textbox.md)egyéni ellenőrzésével. `permission`Az előfizetés vagy az erőforráscsoport érvényességét is megadhatja.  
 
 Az előfizetés vezérlőelem elfogadja az erőforrás-szolgáltatói névterek listáját. Megadhatja például a **Microsoft. számítást**. Hibaüzenet jelenik meg, amikor a felhasználó olyan előfizetést választ ki, amely nem támogatja az erőforrás-szolgáltatót. A hiba akkor fordul elő, ha az erőforrás-szolgáltató nincs regisztrálva az adott előfizetésen, és a felhasználónak nincs engedélye az erőforrás-szolgáltató regisztrálására.  
 
@@ -150,7 +156,7 @@ Az alábbi példa egy olyan szövegmezőt mutat be, amely az alapértelmezett el
 
 ## <a name="steps"></a>Lépések
 
-A Steps tulajdonság nulla vagy több további lépést tartalmaz az alapvető beállítások megjelenítéséhez. Minden lépés egy vagy több elemet tartalmaz. Vegye fontolóra az üzembe helyezett alkalmazás szerepköreinek vagy szintjeinek hozzáadását. Adjon meg például egy lépést a főcsomópont bemenetei számára, valamint egy lépést a fürt munkavégző csomópontjaihoz.
+A Steps tulajdonság nulla vagy több olyan lépést tartalmaz, amelyek az alapok után jelennek meg. Minden lépés egy vagy több elemet tartalmaz. Vegye fontolóra az üzembe helyezett alkalmazás szerepköreinek vagy szintjeinek hozzáadását. Adjon meg például egy lépést az elsődleges csomópont bemenetei számára, valamint egy lépést a fürt munkavégző csomópontjaihoz.
 
 ```json
 "steps": [

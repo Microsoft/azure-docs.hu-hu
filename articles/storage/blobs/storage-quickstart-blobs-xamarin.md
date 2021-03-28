@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5d7b512601d066000f1f64bf99d1fd4be3532b7a
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.openlocfilehash: c6b502bbc56d6c9521ec736150fbc0046ff78125
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105544128"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642491"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Gyors útmutató: Azure Blob Storage Client Library V12 és Xamarin
 
@@ -40,7 +40,7 @@ Hivatkozásokra mutató hivatkozások:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
-* A Visual Studio és a [Mobile Development for .net](/xamarin/get-started/installation/?pivots=windows) számítási feladat telepítve vagy [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019)
+* A Visual Studio és a [Mobile Development for .net](/xamarin/get-started/installation/?pivots=windows) számítási feladat telepítve vagy [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
 
 ## <a name="setting-up"></a>Beállítás
     

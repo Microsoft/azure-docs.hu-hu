@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 70ad5d6d88dabb51e022a1fc5c011341b06f02fd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100366963"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640687"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning használata a Fairlearn nyílt forráskódú csomaggal, amellyel mérhető az ML-modellek tisztasága (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ebben a útmutatóban megtudhatja, hogyan használhatja a [Fairlearn](https://fa
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning méltányos SDK 
 
-A Azure Machine Learning méltányos SDK, amely `azureml-contrib-fairness` a Azure Machine Learningon belül integrálja a nyílt forráskódú Python-csomagot, a [Fairlearn](http://fairlearn.github.io)-t. Ha többet szeretne megtudni a Fairlearn Azure Machine Learningon belüli integrálásáról, tekintse meg ezeket a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). A Fairlearn kapcsolatos további információkért tekintse meg a [példa útmutató](https://fairlearn.github.io/master/auto_examples/) és a [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)című részt. 
+A Azure Machine Learning méltányos SDK, amely `azureml-contrib-fairness` a Azure Machine Learningon belül integrálja a nyílt forráskódú Python-csomagot, a [Fairlearn](http://fairlearn.github.io)-t. Ha többet szeretne megtudni a Fairlearn Azure Machine Learningon belüli integrálásáról, tekintse meg ezeket a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). A Fairlearn kapcsolatos további információkért tekintse meg a [példa útmutató](https://fairlearn.org/v0.6.0/auto_examples/) és a [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)című részt. 
 
 A és a csomagok telepítéséhez használja az alábbi parancsokat `azureml-contrib-fairness` `fairlearn` :
 ```bash
@@ -227,7 +227,7 @@ Az alábbi példa bemutatja, hogyan használható a méltányos csomag. Azure Ma
     1. Ha az előző lépések követésével regisztrálta az eredeti modellt, akkor a bal oldali ablaktáblán kiválaszthatja a **modelleket** .
     1. Válasszon ki egy modellt, majd a **tisztesség** lapon tekintse meg a magyarázó vizualizáció irányítópultját.
 
-    Ha többet szeretne megtudni a vizualizációs irányítópultról és arról, hogy mit tartalmaz, tekintse meg a Fairlearn [felhasználói útmutatóját](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard).
+    Ha többet szeretne megtudni a vizualizációs irányítópultról és arról, hogy mit tartalmaz, tekintse meg a Fairlearn [felhasználói útmutatóját](https://fairlearn.org/v0.6.0/user_guide/assessment.html#fairlearn-dashboard).
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>Több modell méltányos bepillantást tölthet fel
 
@@ -338,9 +338,9 @@ Ha több modellt szeretne összehasonlítani, és látni szeretné, hogy a tiszt
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Nem enyhített és enyhített tisztasági adatok feltöltése
 
-Használhatja a Fairlearn [enyhítő algoritmusait](https://fairlearn.github.io/master/user_guide/mitigation.html), összehasonlíthatja a létrehozott, kinyert modell (eke) t az eredeti, nem enyhített modellel, és megtekintheti a teljesítmény/méltányosság elleni kompromisszumokat az összehasonlított modellek között.
+Használhatja a Fairlearn [enyhítő algoritmusait](https://fairlearn.org/v0.6.0/user_guide/mitigation.html), összehasonlíthatja a létrehozott, kinyert modell (eke) t az eredeti, nem enyhített modellel, és megtekintheti a teljesítmény/méltányosság elleni kompromisszumokat az összehasonlított modellek között.
 
-Ha meg szeretné tekinteni egy példát, amely bemutatja a [Grid Search](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) -enyhítő algoritmus használatát (amely a különböző tisztességgel és teljesítményű adatforgalommal rendelkező, csökkenthető modellek gyűjteményét hozza létre), tekintse meg ezt a [minta jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
+Ha meg szeretné tekinteni egy példát, amely bemutatja a [Grid Search](https://fairlearn.org/v0.6.0/user_guide/mitigation.html#grid-search) -enyhítő algoritmus használatát (amely a különböző tisztességgel és teljesítményű adatforgalommal rendelkező, csökkenthető modellek gyűjteményét hozza létre), tekintse meg ezt a [minta jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
 
 Több modell kimutatása egyetlen futtatásban – lehetővé teszi a modellek összehasonlítását a méltányosság és a teljesítmény tekintetében. A modell összehasonlító diagramján megjelenő modellekre kattintva megtekintheti az adott modell részletes információit.
 

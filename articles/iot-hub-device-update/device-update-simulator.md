@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8b2a8ae76c79e4d3ff151334defe7f966c60f032
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 8cbc101ec9b5608574b93ea17022a3b0ef02ce4b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559247"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644415"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz az Ubuntu (18,04 x64) szimulátor hivatkozási ügynök használatával
 
@@ -102,7 +102,7 @@ Az ügynöknek két verziója van. Ha rendszerkép-alapú forgatókönyvet haszn
   ```
 Az Azure IoT Hub szoftverhez tartozó eszköz frissítése a következő licencfeltételeket illeti:
    * [IoT Hub licenccel rendelkező eszköz frissítése](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [Kézbesítési optimalizálási ügyféllicenc](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [Kézbesítési optimalizálási ügyféllicenc](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 Olvassa el az ügynök használata előtti licencfeltételeket. A telepítés és a használat a jelen feltételek elfogadását jelenti. Ha nem fogadja el a licencfeltételeket, ne használja az eszköz frissítését IoT Hub ügynökhöz.
 

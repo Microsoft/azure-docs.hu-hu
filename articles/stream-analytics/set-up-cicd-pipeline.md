@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 82a2c3047f851c9fbc273cd13e730572c38b6bcd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775935"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640380"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Az Azure DevOps használata CI/CD-folyamat létrehozásához Stream Analytics feladatokhoz
 
@@ -26,21 +26,21 @@ A cikkben ismertetett lépések egy Stream Analytics Visual Studio Code-projekte
 
 ## <a name="create-a-build-pipeline"></a>Buildelési folyamat létrehozása
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta [automatikus létrehozási és tesztelési folyamatát](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) az Azure DevOps is hivatkozhatjuk.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. 
 
 1. Nyisson meg egy webböngészőt, és navigáljon a projekthez az Azure DevOps.  
 
-1. A bal oldali navigációs menü **folyamatok** területén válassza a **buildek** lehetőséget. Ezután válassza az **új folyamat** lehetőséget.
+2. A bal oldali navigációs menü **folyamatok** területén válassza a **buildek** lehetőséget. Ezután válassza az **új folyamat** lehetőséget.
 
    :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="Új Azure-folyamat létrehozása":::
 
-1. Válassza **a klasszikus szerkesztő használata** lehetőséget a YAML nélküli folyamat létrehozásához.
+3. Válassza **a klasszikus szerkesztő használata** lehetőséget a YAML nélküli folyamat létrehozásához.
 
-1. Válassza ki a forrás típusát, a csapat projektjét és a tárházat. Ezután válassza a **Folytatás** lehetőséget.
+4. Válassza ki a forrás típusát, a csapat projektjét és a tárházat. Ezután válassza a **Folytatás** lehetőséget.
 
    :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Azure Stream Analytics projekt kiválasztása":::
 
-1. A **sablon választása** lapon válassza az **üres feladatot**.
+5. A **sablon választása** lapon válassza az **üres feladatot**.
 
 ## <a name="install-npm-package"></a>NPM-csomag telepítése
 
@@ -155,7 +155,7 @@ A tesztelési összesítő fájl és a Azure Resource Manager sablonfájlok a **
 
 ## <a name="release-with-azure-pipelines"></a>Kiadás Azure-folyamatokkal
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre kiadási folyamatokat. Hivatkozhat erre a minta [kiadási folyamatra](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) az Azure DevOps-ben.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre kiadási folyamatokat. 
 
 Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual Studio Code projekthez.
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739262"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644662"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Adatok megosztása és fogadása az Azure Blob Storage-ból és az Azure Data Lake Storage-ból
 
@@ -178,7 +178,7 @@ Az ebben a szakaszban ismertetett lépéseket követve konfigurálhatja az Adatf
 
    ![A cél Storage-fiók kiválasztásának helyét bemutató képernyőkép.](./media/map-target.png "Cél tárterület.") 
 
-1. Pillanatkép-alapú megosztás esetén, ha az adatszolgáltató egy pillanatkép-ütemtervet használ az adatok rendszeres frissítéséhez, akkor a **Pillanatkép-ütemterv** lapon engedélyezheti az ütemtervet. Jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet. Ezután válassza az **Engedélyezés** lehetőséget.
+1. Pillanatkép-alapú megosztás esetén, ha az adatszolgáltató egy pillanatkép-ütemtervet használ az adatok rendszeres frissítéséhez, akkor a **Pillanatkép-ütemterv** lapon engedélyezheti az ütemtervet. Jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet. Ezután válassza az **Engedélyezés** lehetőséget. Vegye figyelembe, hogy az első ütemezett pillanatkép az ütemezési idő egy percén belül indul el, és az azt követő Pillanatképek az ütemezett időponttól számított másodperceken belül kezdődnek.
 
    ![A pillanatkép-ütemterv engedélyezését bemutató képernyőkép.](./media/enable-snapshot-schedule.png "Pillanatkép-ütemterv engedélyezése.")
 

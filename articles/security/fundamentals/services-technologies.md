@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585411"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641966"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
 
@@ -59,8 +59,8 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure &nbsp; SQL &nbsp; tűzfal](../../azure-sql/database/firewall-configure.md)|Egy hálózati hozzáférés-vezérlési funkció, amely védelmet biztosít a hálózati alapú támadásokkal szemben az adatbázison. |
 |[Azure &nbsp; SQL &nbsp; Cell &nbsp; szintű titkosítás](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)| Adatbázis-biztonsági technológia, amely részletességi szinten biztosítja a titkosítást.  |
 | [Azure &nbsp; SQL- &nbsp; kapcsolatok titkosítása](../../azure-sql/database/logins-create-manage.md)|A biztonság garantálása érdekében az SQL Database IP-cím alapján történő kapcsolatkorlátozást érvényesítő tűzfalszabályokkal, a felhasználói identitás igazolását megkövetelő hitelesítési mechanizmusokkal, illetve csak bizonyos műveletek és adatok elérését lehetővé tévő engedélyezési mechanizmusokkal vezérli a hozzáférést. |
-| [Az Azure SQL Always encryption](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Védi a bizalmas adatokat, például a hitelkártya-számokat vagy a nemzeti azonosító számokat (például az Egyesült államokbeli társadalombiztosítási számokat), Azure SQL Database vagy SQL Server adatbázisokban tárolva.  |
-| [Azure &nbsp; SQL &nbsp; transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Adatbázis-biztonsági szolgáltatás, amely egy teljes adatbázis tárterületét titkosítja. |
+| [Az Azure SQL Always encryption](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|Védi a bizalmas adatokat, például a hitelkártya-számokat vagy a nemzeti azonosító számokat (például az Egyesült államokbeli társadalombiztosítási számokat), Azure SQL Database vagy SQL Server adatbázisokban tárolva.  |
+| [Azure &nbsp; SQL &nbsp; transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)| Adatbázis-biztonsági szolgáltatás, amely egy teljes adatbázis tárterületét titkosítja. |
 | [Azure SQL Database naplózás](../../azure-sql/database/auditing-overview.md)|Adatbázis-naplózási funkció, amely nyomon követi az adatbázis-eseményeket, és az Azure Storage-fiókban lévő naplóba írja azokat.  |
 
 

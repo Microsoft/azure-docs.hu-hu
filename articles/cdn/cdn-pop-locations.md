@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: b2c191c508aaa613d6846aebdc5a15a213918e52
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ba6710629f52abd13ef84f2a814c10c6dca18837
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567270"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641733"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Lefedettség Azure CDN Metro szerint 
 > [!div class="op_single_selector"]
@@ -49,4 +49,5 @@ Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földraj
 
 
 ## <a name="next-steps"></a>Következő lépések
-* Az engedélyezési lista legújabb IP-címeinek lekéréséhez tekintse meg az [Azure CDN Edge API](/rest/api/cdn/edgenodes)-t.
+
+* Az engedélyezési lista legújabb IP-címeinek lekéréséhez tekintse meg az [Azure CDN Edge API](/rest/api/cdn/cdn/edgenodes)-t.

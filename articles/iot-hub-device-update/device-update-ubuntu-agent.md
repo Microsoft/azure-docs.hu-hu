@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 9468b3b53e0f7c435bf84b6ef99eb1e0f85d0c8e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105560267"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644439"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz az Ubuntu Server 18,04 x64-es csomag ügynökének használatával
 
@@ -44,7 +44,7 @@ Ez az oktatóanyag egy [Cloud-init](../virtual-machines/linux/using-cloud-init.m
 
 1. A kezdéshez kattintson az alábbi gombra:
 
-   [![Az iotedge-vm-deploy sablon Üzembe helyezés az Azure-ban gombja](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0-rc4%2FedgeDeploy.json)
+   [![Az iotedge-vm-deploy sablon Üzembe helyezés az Azure-ban gombja](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fdevice-update-tutorial%2FedgeDeploy.json)
 
 1. Az újonnan elindított ablakban töltse ki a rendelkezésre álló űrlapmezők mezőket:
 
@@ -126,9 +126,9 @@ A licencfeltételek elolvasása a csomag használata előtt. A csomagok telepít
 
 1. Nyissa meg az [eszköz frissítési kiadásait](https://github.com/Azure/iot-hub-device-update/releases) a githubon, és kattintson az "eszközök" legördülő listára.
 
-3. A letöltéséhez `apt-update-import-samples.zip` kattintson rá.
+3. A letöltéséhez `Edge.package.update.samples.zip` kattintson rá.
 
-5. Bontsa ki a mappa tartalmát a különböző frissítési minták és a hozzájuk tartozó importálási jegyzékfájlok felderítéséhez. 
+5. Bontsa ki a mappa tartalmát, hogy felderítse a frissítési mintát és a hozzá tartozó importálási jegyzékeket. 
 
 2. Azure Portal válassza ki az eszközök frissítései lehetőséget az automatikus eszközkezelés lehetőségnél a IoT Hub bal oldali navigációs sávján.
 
@@ -136,10 +136,8 @@ A licencfeltételek elolvasása a csomag használata előtt. A csomagok telepít
 
 4. Válassza az "+ új frissítés importálása" lehetőséget.
 
-5. Válassza ki a mappa ikont vagy szövegmezőt a "Select a manifest file List" (fájl importálása) elem alatt. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki az `sample-package-update-1.0.1-importManifest.json` importálási jegyzékfájlt a korábban letöltött mappából. Ezután válassza a mappa ikont vagy a szövegmezőt a "válasszon ki egy vagy több frissítési fájlt" területen. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki az `sample-1.0.1-libcurl4-doc-apt-manifest.json` apt manifest Update fájlt a korábban letöltött mappából.
-A frissítés a legújabb elérhető verziót telepíti az `libcurl4-doc package` eszközre.
-
-   Azt is megteheti, hogy kijelöli a `sample-package-update-2-2.0.1-importManifest.json` jegyzékfájl importálása és `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` az apt jegyzékfájl frissítése fájlt a korábban letöltött mappából. Ezzel telepíti az eszközre az adott verziójú v `libcurl4-doc package` -7.58.0.
+5. Válassza ki a mappa ikont vagy szövegmezőt a "Select a manifest file List" (fájl importálása) elem alatt. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki az `sample-1.0.1-aziot-edge-importManifest.json` importálási jegyzékfájlt a korábban letöltött mappából. Ezután válassza a mappa ikont vagy a szövegmezőt a "válasszon ki egy vagy több frissítési fájlt" területen. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki az `sample-1.0.1-aziot-edge-apt-manifest.json` apt manifest Update fájlt a korábban letöltött mappából.
+Ez a frissítés frissíti a `aziot-identity-service` és a `aziot-edge` csomagokat az eszközön az 1.2.0 ~ RC4-1 verzióra.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="A frissítési fájl kijelölését bemutató képernyőkép." lightbox="media/import-update/select-update-files.png":::
 
@@ -211,12 +209,6 @@ A frissítés a legújabb elérhető verziót telepíti az `libcurl4-doc package
 1. Kattintson a frissítés elemre a legutóbbi állapot részleteinek megtekintéséhez. Folytassa ezt a folyamatot, amíg az állapot sikeresen nem változik.
 
 Sikeresen befejezte a teljes csomag frissítését az eszköz frissítésével IoT Hub egy Ubuntu Server 18,04 x64-es eszközön. 
-
-## <a name="bonus-steps"></a>Bónusz lépései
-
-1. Ismételje meg a "frissítés importálása" és a "frissítés központi telepítése" szakaszt.
-
-3. A "frissítés importálása" lépésben válassza a `sample-package-update-1.0.2-importManifest.json` jegyzékfájl importálása és az `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt manifest-frissítési fájl elemet a korábban letöltött mappából. Ezzel a frissítéssel törlődik a telepített `libcurl4-doc package` eszközről.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

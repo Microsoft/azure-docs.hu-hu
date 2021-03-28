@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889110"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640834"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Az Azure szinapszis Analytics és Azure Machine Learning munkaterületek (előzetes verzió) összekapcsolása
 
@@ -35,9 +35,9 @@ Emellett munkaterületeket is csatolhat, és egy szinapszis Spark-készletet is 
 
 * [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md?tabs=python).
 
-* [Hozzon létre egy szinapszis-munkaterületet Azure Portal](/synapse-analytics/quickstart-create-workspace.md).
+* [Hozzon létre egy szinapszis-munkaterületet Azure Portal](/azure/synapse-analytics/quickstart-create-workspace).
 
-* [Apache Spark-készlet létrehozása a Azure Portal, a web Tools vagy a szinapszis Studio használatával](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+* [Apache Spark-készlet létrehozása a Azure Portal, a web Tools vagy a szinapszis Studio használatával](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
 
 * A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro) telepítése
 

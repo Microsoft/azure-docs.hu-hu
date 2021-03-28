@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 785567685b77183df0f212897b923d911ac045f6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567307"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639795"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
 
@@ -132,7 +132,7 @@ Ha egy vagy több elnevezett példányon vagy dinamikus porton futó SQL Server-
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg a [Azure Database Migration Service PowerShellt](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)ismertető cikket.
+* Tekintse meg a [Azure Database Migration Service PowerShellt](/powershell/module/azurerm.datamigration#data_migration)ismertető cikket.
 * A Azure Portal használatával megtekintheti a [kiszolgáló paramétereinek konfigurálása Azure Database for MySQLben](../mysql/howto-server-parameters.md)című cikket.
 * Tekintse meg a [Azure Database Migration Service használatának előfeltételeit ismertető](./pre-reqs.md)cikket.
 * Tekintse meg a [Azure Database Migration Service használatának gyakori kérdéseit](./faq.md).

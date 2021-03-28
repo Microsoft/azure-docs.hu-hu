@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043070"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641145"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Az egyéni képességek hatékony felskálázása
 
@@ -26,7 +26,7 @@ Az egyéni képességek olyan webes API-k, amelyek egy adott felületet implemen
 
 + Tekintse át az [Egyéni ügyességi felületet](cognitive-search-custom-skill-interface.md) az egyéni képességek megvalósításához szükséges bemeneti/kimeneti interfész bevezetéséhez.
 
-+ Állítsa be a környezetet. [Ebből az oktatóanyagból](/python/tutorial-vs-code-serverless-python-01) megkezdheti a kiszolgáló nélküli Azure-függvények beállítását a Visual Studio Code és a Python Extensions használatával.
++ Állítsa be a környezetet. [Ebből az oktatóanyagból](/azure/azure-functions/create-first-function-vs-code-python) megkezdheti a kiszolgáló nélküli Azure-függvények beállítását a Visual Studio Code és a Python Extensions használatával.
 
 ## <a name="skillset-configuration"></a>Készségkészlet-konfiguráció
 

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: af5ec07a8fb2db0bd4b9b8f1af556ef54199400d
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609422"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645432"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,10 +21,10 @@ ms.locfileid: "105609422"
 ## <a name="install-the-sdk"></a>Az SDK telepítése
 
 > [!NOTE]
-> Ez a dokumentum a Calling SDK-ból származó 1.0.0-Beta. 6 verziót használja.
+> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 10 verziót használja.
 
 A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat hívó és gyakori SDK-kat a JavaScript használatára.
-Ez a dokumentum hivatkozik a következő típusokra: 1.0.0-Beta. 5, hívó könyvtár.
+Ez a dokumentum a a hívó könyvtárának a 1.0.0-Beta. 10 verziójában található típusokra hivatkozik.
 
 ```console
 npm install @azure/communication-common --save
@@ -54,6 +54,10 @@ A `createCallAgent` metódus `CommunicationTokenCredential` argumentumként hasz
 A példányok létrehozása után használhatja a `callAgent` `getDeviceManager` példányon a metódust a `CallClient` hozzáféréshez `deviceManager` .
 
 ```js
+// Set the logger's log level
+setLogLevel('verbose');
+// Redirect logger output to wherever desired. By default it logs to console
+AzureLogger.log = (...args) => { console.log(...args) };
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationTokenCredential(userToken);
@@ -113,8 +117,8 @@ A kamera kiválasztása után egy példány létrehozásához használhatja azt 
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const cameras = await deviceManager.getCameras();
-videoDeviceInfo = cameras[0];
-localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const camera = cameras[0]
+localVideoStream = new LocalVideoStream(camera);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
 const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
@@ -168,14 +172,26 @@ A `callAgent` példány olyan `incomingCall` eseményt bocsát ki, amikor a beje
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-    //Get information about caller
+
+    //Get incoming call ID
+    var incomingCallId = incomingCall.id
+
+    // Get information about caller
     var callerInfo = incomingCall.callerInfo
 
-    //Accept the call
+    // Accept the call
     var call = await incomingCall.accept();
 
-    //Reject the call
+    // Reject the call
     incomingCall.reject();
+
+    // Subscribe to callEnded event and get the call end reason
+     incomingCall.on('callEnded', args => {
+        console.log(args.callEndReason);
+    });
+
+    // callEndReason is also a property of IncomingCall
+    var callEndReason = incomingCall.callEndReason;
 };
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
@@ -194,7 +210,7 @@ A hívás egyedi AZONOSÍTÓjának (karakterláncának) beolvasása:
     const callId: string = call.id;
    ```
 
-Ismerje meg a hívás többi résztvevőjét a gyűjtemény vizsgálatával `remoteParticipant` :
+Ismerje meg a hívás többi résztvevőjét a `remoteParticipants` "hívás" példányon található gyűjtemény vizsgálatával:
 
    ```js
    const remoteParticipants = call.remoteParticipants;
@@ -217,7 +233,6 @@ Hívás állapotának beolvasása:
    Ez egy olyan sztringet ad vissza, amely a hívás aktuális állapotát jelöli:
 
   - `None`: Kezdeti hívás állapota.
-  - `Incoming`: Azt jelzi, hogy a hívás bejövő. Elfogadva vagy elutasítva kell lennie.
   - `Connecting`: Kezdeti átmeneti állapot, ha a rendszer hívást helyez el vagy fogad el.
   - `Ringing`: Kimenő hívás esetén azt jelzi, hogy a hívás a távoli résztvevők számára csörög. Ez `Incoming` a saját oldalán van.
   - `EarlyMedia`: Azt az állapotot jelzi, amelyben a rendszer meghívja a bejelentést a hívás csatlakoztatása előtt.
@@ -231,8 +246,8 @@ Megtudhatja, miért ért véget a hívás a tulajdonság vizsgálatával `callEn
 
    ```js
    const callEndReason = call.callEndReason;
-   // callEndReason.code (number) code associated with the reason
-   // callEndReason.subCode (number) subCode associated with the reason
+   const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+   const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
    ```
 
 Megtudhatja, hogy az aktuális hívás bejövő vagy kimenő a tulajdonság vizsgálatával `direction` . Visszaadja `CallDirection` .
@@ -245,7 +260,7 @@ Megtudhatja, hogy az aktuális hívás bejövő vagy kimenő a tulajdonság vizs
 Ellenőrizze, hogy az aktuális mikrofon el van-e némítva. Visszaadja `Boolean` .
 
    ```js
-   const muted = call.isMicrophoneMuted;
+   const muted = call.isMuted;
    ```
 
 Annak megállapítása, hogy a képernyő-megosztási adatfolyamot egy adott végponton küldik-e el a tulajdonság ellenőrzésével `isScreenSharingOn` . Visszaadja `Boolean` .
@@ -291,7 +306,10 @@ await call.unmute();
 A videók elindításához meg kell adnia a kamerákat az `getCameras` objektum metódusának használatával `deviceManager` . Ezután hozzon létre egy új példányt a `LocalVideoStream` metódusban a kívánt kamera argumentumként való átadásával `startVideo` :
 
 ```js
-const localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const deviceManager = await callClient.getDeviceManager();
+const cameras = await deviceManager.getCameras();
+const camera = cameras[0]
+const localVideoStream = new LocalVideoStream(camera);
 await call.startVideo(localVideoStream);
 ```
 
@@ -311,12 +329,13 @@ await call.stopVideo(localVideoStream);
 
 ```js
 const cameras = await callClient.getDeviceManager().getCameras();
-localVideoStream.switchSource(cameras[1]);
+const camera = cameras[1];
+localVideoStream.switchSource(camera);
 ```
 
 ## <a name="manage-remote-participants"></a>Távoli résztvevők kezelése
 
-Az összes távoli résztvevőt a (z `remoteParticipant` ) képviseli, és a `remoteParticipants` hívási példányon keresztül érhetők el.
+Az összes távoli résztvevő típus szerint jelenik `RemoteParticipant` meg, és a gyűjteményen keresztül érhető el a `remoteParticipants` hívási példányon.
 
 ### <a name="list-the-participants-in-a-call"></a>Egy hívás résztvevőinek listázása
 
@@ -341,6 +360,7 @@ A távoli résztvevők a társított tulajdonságokat és gyűjteményeket is ma
   - `{ communicationUserId: '<ACS_USER_ID'> }`: Az ACS-felhasználót jelképező objektum.
   - `{ phoneNumber: '<E.164>' }`: Az E. 164 formátumú telefonszámot képviselő objektum.
   - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: A csapat felhasználót jelképező objektum.
+  - `{ id: string }`: az Object repredenting azonosítója, amely nem felel meg a többi azonosító típusának sem
 
 - `state`: Távoli résztvevő állapotának beolvasása.
 
@@ -362,8 +382,8 @@ A távoli résztvevők a társított tulajdonságokat és gyűjteményeket is ma
 
   ```js
   const callEndReason = remoteParticipant.callEndReason;
-  // callEndReason.code (number) code associated with the reason
-  // callEndReason.subCode (number) subCode associated with the reason
+  const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+  const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
   ```
 
 - `isMuted` állapot: Ha meg szeretné tudni, hogy a távoli résztvevő el van-e némítva, ellenőrizze a `isMuted` tulajdonságot. Visszaadja `Boolean` .
@@ -382,6 +402,11 @@ A távoli résztvevők a társított tulajdonságokat és gyűjteményeket is ma
 
   ```js
   const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  ```
+- `displayName`: A távoli résztvevő megjelenítendő nevének beolvasásához vizsgálja meg a tulajdonságot, amely a `displayName` karakterláncot adja vissza. 
+
+  ```js
+  const displayName = remoteParticipant.displayName;
   ```
 
 ### <a name="add-a-participant-to-a-call"></a>Résztvevő hozzáadása egy híváshoz
@@ -415,22 +440,22 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-A megjelenítéshez `RemoteVideoStream` elő kell fizetnie egy `isAvailableChanged` eseményre. Ha a `isAvailable` tulajdonság módosul `true` , a távoli résztvevő egy streamet küld. Ezután hozzon létre egy új példányt a alkalmazásban `Renderer` , majd hozzon létre egy új `RendererView` példányt az aszinkron `createView` metódus használatával.  Ezután csatolhat `view.target` bármely felhasználóifelület-elemhez.
+A megjelenítéshez `RemoteVideoStream` elő kell fizetnie egy `isAvailableChanged` eseményre. Ha a `isAvailable` tulajdonság módosul `true` , a távoli résztvevő egy streamet küld. Ezután hozzon létre egy új példányt a alkalmazásban `VideoStreamRenderer` , majd hozzon létre egy új `VideoStreamRendererView` példányt az aszinkron `createView` metódus használatával.  Ezután csatolhat `view.target` bármely felhasználóifelület-elemhez.
 
-A távoli adatfolyamok megváltozásakor megsemmisítheti `Renderer` , megsemmisítheti egy adott `RendererView` példányt, vagy megtarthatja az egészet. A nem elérhető adatfolyamhoz csatolt renderelések üres képkeretet eredményeznek.
+Ha a távoli adatfolyamok változásai elérhetők, eldöntheti, hogy az egészet `VideoStreamRenderer` , egy adott `VideoStreamRendererView` vagy megtartja-e, de ez az üres videó keretének megjelenítését eredményezi.
 
 ```js
 function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
-    let renderer: Renderer = new Renderer(remoteVideoStream);
+    let videoStreamRenderer: VideoStreamRenderer = new VideoStreamRenderer(remoteVideoStream);
     const displayVideo = () => {
-        const view = await renderer.createView();
+        const view = await videoStreamRenderer.createView();
         htmlElement.appendChild(view.target);
     }
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             displayVideo();
         } else {
-            renderer.dispose();
+            videoStreamRenderer.dispose();
         }
     });
     if (remoteVideoStream.isAvailable) {
@@ -449,12 +474,6 @@ A távoli videó streamek a következő tulajdonságokkal rendelkeznek:
   const id: number = remoteVideoStream.id;
   ```
 
-- `Stream.size`: Egy távoli video stream magassága és szélessége.
-
-  ```js
-  const size: {width: number; height: number} = remoteVideoStream.size;
-  ```
-
 - `mediaStreamType`: Lehet `Video` vagy `ScreenSharing` .
 
   ```js
@@ -467,32 +486,32 @@ A távoli videó streamek a következő tulajdonságokkal rendelkeznek:
   const type: boolean = remoteVideoStream.isAvailable;
   ```
 
-### <a name="renderer-methods-and-properties"></a>Megjelenítési metódusok és tulajdonságok
+### <a name="videostreamrenderer-methods-and-properties"></a>VideoStreamRenderer metódusok és tulajdonságok
 
-Hozzon létre egy `rendererView` példányt, amely csatolható az alkalmazás felhasználói felületén a távoli video stream megjelenítéséhez:
-
-  ```js
-  renderer.createView()
-  ```
-
-A és az `renderer` összes társított `rendererView` példány:
+Hozzon létre egy olyan `VideoStreamRendererView` példányt, amely csatolható az alkalmazás felhasználói felületén a távoli video stream megjelenítéséhez, aszinkron `createView()` módszerrel, amely akkor oldódik fel, ha a stream készen áll a megjelenítésre, és egy olyan objektumot ad vissza, amely egy, `target` `video` a DOM-fában tetszőlegesen hozzáfűzhető elemet jelképező tulajdonságot képvisel.
 
   ```js
-  renderer.dispose()
+  videoStreamRenderer.createView()
   ```
 
-### <a name="rendererview-methods-and-properties"></a>RendererView metódusok és tulajdonságok
+A és az `videoStreamRenderer` összes társított `VideoStreamRendererView` példány:
 
-A létrehozásakor `rendererView` megadhatja a `scalingMode` és a `isMirrored` tulajdonságokat. `scalingMode` lehet `Stretch` , `Crop` , vagy `Fit` . Ha meg `isMirrored` van adva, a megjelenített adatfolyam függőlegesen van tükrözve.
+  ```js
+  videoStreamRenderer.dispose()
+  ```
+
+### <a name="videostreamrendererview-methods-and-properties"></a>VideoStreamRendererView metódusok és tulajdonságok
+
+A létrehozásakor `VideoStreamRendererView` megadhatja a és a `scalingMode` `isMirrored` tulajdonságokat. `scalingMode` lehet `Stretch` , `Crop` , vagy `Fit` . Ha meg `isMirrored` van adva, a megjelenített adatfolyam függőlegesen van tükrözve.
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
+const videoStreamRendererView: VideoStreamRendererView = await videoStreamRenderer.createView({ scalingMode, isMirrored });
 ```
 
-Minden `RendererView` példány rendelkezik egy `target` tulajdonsággal, amely a renderelési felületet jelképezi. Csatolja ezt a tulajdonságot az alkalmazás felhasználói felületén:
+Minden `VideoStreamRendererView` példány rendelkezik egy `target` tulajdonsággal, amely a renderelési felületet jelképezi. Csatolja ezt a tulajdonságot az alkalmazás felhasználói felületén:
 
 ```js
-document.body.appendChild(rendererView.target);
+htmlElement.appendChild(view.target);
 ```
 
 `scalingMode`A módszert a metódus meghívásával frissítheti `updateScalingMode` :
@@ -506,9 +525,6 @@ view.updateScalingMode('Crop')
 A alkalmazásban `deviceManager` megadhatja azokat a helyi eszközöket, amelyek továbbítják a hang-és video-adatfolyamokat egy hívásban. Emellett segítséget nyújt egy másik felhasználó mikrofonjának és kamerájának a natív böngésző API használatával való eléréséhez.
 
 `deviceManager`A metódus meghívásával érheti el a `callClient.getDeviceManager()` következőket:
-
-> [!IMPORTANT]
-> Ahhoz, hogy hozzáférhessen a szolgáltatáshoz, rendelkeznie kell egy `callAgent` objektummal `deviceManager` .
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -538,26 +554,26 @@ A alkalmazásban beállíthat `deviceManager` egy alapértelmezett eszközt, ame
 const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.selectMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(localMicrophones[0]);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.selectSpeaker(AudioDeviceInfo);
+await deviceManager.selectSpeaker(localSpeakers[0]);
 ```
 
 ### <a name="local-camera-preview"></a>Helyi kamera előzetes verziója
 
-A `deviceManager` és `Renderer` a segítségével megkezdheti a streamek megjelenítését a helyi kameráról. Ezt a streamet nem lehet elküldeni a többi résztvevőnek; Ez egy helyi előnézeti hírcsatorna.
+A `deviceManager` és `VideoStreamRenderer` a segítségével megkezdheti a streamek megjelenítését a helyi kameráról. Ezt a streamet nem lehet elküldeni a többi résztvevőnek; Ez egy helyi előnézeti hírcsatorna.
 
 ```js
 const cameras = await deviceManager.getCameras();
-const localVideoDevice = cameras[0];
-const localCameraStream = new LocalVideoStream(localVideoDevice);
-const renderer = new Renderer(localCameraStream);
-const view = await renderer.createView();
-document.body.appendChild(view.target);
+const camera = cameras[0];
+const localCameraStream = new LocalVideoStream(camera);
+const videoStreamRenderer = new VideoStreamRenderer(localCameraStream);
+const view = await videoStreamRenderer.createView();
+htmlElement.appendChild(view.target);
 
 ```
 

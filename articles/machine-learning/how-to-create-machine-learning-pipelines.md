@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 188df9564905443b8f975eb743b24885b5d03c32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618202"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642268"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-A közbenső adatokat (vagy egy lépés kimenetét) egy [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) objektum jelképezi. `output_data1` egy lépés kimenete. Opcionálisan az adatokat adatkészletként is regisztrálhatja a hívásával `register_on_complete` . Ha `OutputFileDatasetConfig` egy lépésben létrehoz egy lépést, és bemenetként használja egy másik lépéshez, a lépések közötti függőségek egy implicit végrehajtási sorrendet hoznak létre a folyamatban.
+A közbenső adatokat (vagy egy lépés kimenetét) egy [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) objektum jelképezi. `output_data1` egy lépés kimenete. Opcionálisan az adatokat adatkészletként is regisztrálhatja a hívásával `register_on_complete` . Ha `OutputFileDatasetConfig` egy lépésben létrehoz egy lépést, és bemenetként használja egy másik lépéshez, a lépések közötti függőségek egy implicit végrehajtási sorrendet hoznak létre a folyamatban.
 
 `OutputFileDatasetConfig` az objektumok egy könyvtárat adnak vissza, és alapértelmezés szerint a munkaterülethez tartozó alapértelmezett adattárba írja a kimenetet.
 
@@ -106,7 +106,7 @@ output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_
 > Ha programozott módon törölni kívánja a közbenső adatok egy folyamat futásának végén, használjon egy rövid adatmegőrzési szabályzattal rendelkező adattárat, vagy rendszeresen végezzen manuális karbantartást.
 
 > [!TIP]
-> Csak az adott feladathoz kapcsolódó fájlokat töltsön fel. A rendszer az adatkönyvtárban található fájlok változásait úgy tekinti meg, hogy a folyamat következő futtatásakor még akkor is futtassa a lépést, ha az újbóli használat meg van adva. 
+> Csak az adott feladathoz kapcsolódó fájlokat töltsön fel. Az adatkönyvtárban található fájlok minden változása okként jelenik meg a lépés ismételt futtatásához a folyamat következő futtatásakor még akkor is, ha az ismételt használat meg lett adva. 
 
 ## <a name="set-up-a-compute-target"></a>Számítási cél beállítása
 
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>Adatkészlet használata 
 
-Az Azure Blob Storage-ból, Azure Filesból, Azure Data Lake Storage Gen1ból, Azure Data Lake Storage Gen2ból, Azure SQL Databaseból és Azure Database for PostgreSQLból létrehozott adatkészletek a folyamat bármely lépéséhez bemenetként is használhatók. Kimenetet írhat egy [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep), vagy ha adatokat szeretne írni egy adott adattárhoz, használja a [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig). 
+Az Azure Blob Storage-ból, Azure Filesból, Azure Data Lake Storage Gen1ból, Azure Data Lake Storage Gen2ból, Azure SQL Databaseból és Azure Database for PostgreSQLból létrehozott adatkészletek a folyamat bármely lépéséhez bemenetként is használhatók. Kimenetet írhat egy [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep), vagy ha adatokat szeretne írni egy adott adattárhoz, használja a [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.outputfiledatasetconfig). 
 
 > [!IMPORTANT]
 > A kimeneti adatokat az adattár használatával való visszaírás `OutputFileDatasetConfig` csak az Azure Blob, az Azure file share, a ADLS Gen 1 és a Gen 2 adattárolók esetében támogatott. 

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6fe1e092e1db4ad283f9d0096ea431a1e983f87c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107033"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645443"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -250,7 +250,7 @@ Message sent!, message id:<number>
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása csevegési szálból
 
-A valós idejű jelzésekkel előfizethet az új bejövő üzenetek figyelésére, és ennek megfelelően frissítheti az aktuális üzeneteket a memóriában. Az Azure kommunikációs szolgáltatások olyan [események listáját támogatják, amelyek előfizethetnek a szolgáltatásra](../../../concepts/chat/concepts.md#real-time-signaling).
+A valós idejű jelzésekkel előfizethet az új bejövő üzenetek figyelésére, és ennek megfelelően frissítheti az aktuális üzeneteket a memóriában. Az Azure kommunikációs szolgáltatások olyan [események listáját támogatják, amelyek előfizethetnek a szolgáltatásra](../../../concepts/chat/concepts.md#real-time-notifications).
 
 ```JavaScript
 // open notifications channel
@@ -286,17 +286,6 @@ Frissítse a fület a konzolon, és keresse meg az ebben a csevegési szálban k
 `listMessages` az üzenet legújabb verzióját adja vissza, beleértve a és a használatával az üzenettel történt módosításokat és törléseket `updateMessage` is `deleteMessage` .
 A törölt üzenetek esetében `chatMessage.deletedOn` egy DateTime értéket ad vissza, amely azt jelzi, hogy az üzenet törölve lett. A szerkesztett üzenetek esetében `chatMessage.editedOn` egy DateTime értéket ad vissza, amely azt jelzi, hogy mikor lett szerkesztve az üzenet. Az üzenetek létrehozásának eredeti időpontja elérhető a használatával `chatMessage.createdOn` , amely az üzenetek rendezésére használható.
 
-`listMessages` a által azonosítható különböző típusú üzeneteket ad vissza `chatMessage.type` . Ezek a típusok a következők:
-
-- `Text`: Egy szál résztvevője által küldött normál csevegési üzenet.
-
-- `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett.
-
-- `ThreadActivity/AddParticipant`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz.
-
-- `ThreadActivity/RemoveParticipant`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból.
-
-További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 

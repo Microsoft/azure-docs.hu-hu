@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6b7b298e7e4d18e68985ec3cf536c90ef773608
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499135"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644372"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba
 
@@ -26,7 +26,7 @@ Ez a cikk a Bing Speech API-k és a beszédfelismerési szolgáltatás közötti
 Egyetlen Speech Service-előfizetési kulcs biztosítja az alábbi funkciók elérését. Mindegyik funkció forgalmi díját külön állapítjuk meg, így csak a használt funkciókért kell fizetnie.
 
 * [Diktálás](speech-to-text.md)
-* [Egyéni beszédfelismerés](https://cris.ai)
+* [Egyéni beszédfelismerés](/azure/cognitive-services/speech-service/custom-speech-overview)
 * [Szövegfelolvasás](text-to-speech.md)
 * [Egyéni szövegfelolvasási hangok](./how-to-custom-voice-create-voice.md)
 * [Tolmácsolás](speech-translation.md) (nem tartalmaz [szövegfordítást](../translator/translator-info-overview.md))

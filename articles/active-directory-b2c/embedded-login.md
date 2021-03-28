@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4fbb09a2687673ef96252d8bdb0523d0c5f235ae
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772025"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639912"
 ---
 # <a name="embedded-sign-in-experience"></a>Beágyazott bejelentkezési élmény
 
@@ -45,7 +45,7 @@ A beágyazott keret elem a `<iframe>` dokumentumok HTML5-weblapokon való beágy
 IFrame használatakor vegye figyelembe a következőket:
 
 - A beágyazott bejelentkezés csak a helyi fiókokat támogatja. A legtöbb közösségi identitás-szolgáltató (például a Google és a Facebook) blokkolja a bejelentkezési oldalaikat a beágyazott keretek között.
-- Mivel az IFRAME-en belüli Azure AD B2C munkamenet-cookie-k harmadik féltől származó cookie-k, bizonyos böngészők (például a Safari vagy a Chrome inkognitóban módban), vagy letilthatják vagy törölhetik ezeket a cookie-kat, ami nem kívánatos felhasználói élményt eredményez. A probléma elkerülése érdekében győződjön meg arról, hogy az alkalmazás tartományneve és a Azure AD B2C tartománya *azonos eredetű*. Ha ugyanazt a forrást szeretné használni, [engedélyezze az egyéni tartományokat](custom-domain.md) Azure ad B2C bérlő számára, majd konfigurálja a webalkalmazást ugyanazzal a forrással. Például a on futtatott alkalmazásnak https://app.contoso.com ugyanaz a forrása, mint a Azure ad B2C fut https://login.contoso.com .
+- Mivel az IFRAME-en belüli Azure AD B2C munkamenet-cookie-k harmadik féltől származó cookie-k, bizonyos böngészők (például a Safari vagy a Chrome inkognitóban módban), vagy letilthatják vagy törölhetik ezeket a cookie-kat, ami nem kívánatos felhasználói élményt eredményez. A probléma elkerülése érdekében győződjön meg arról, hogy az alkalmazás tartományneve és a Azure AD B2C tartománya *azonos eredetű*. Ha ugyanazt a forrást szeretné használni, [engedélyezze az egyéni tartományokat](custom-domain.md) Azure ad B2C bérlő számára, majd konfigurálja a webalkalmazást ugyanazzal a forrással. Például a (z) "" on tárolt alkalmazásnak https://app.contoso.com ugyanaz a forrása, mint a (z) "" rendszeren futó Azure ad B2C https://login.contoso.com .
 
 ## <a name="prerequisites"></a>Előfeltételek
 

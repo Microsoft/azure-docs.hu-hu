@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1626dfa739df6b7cf971aa570f14d36ac6c532e7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 874b59b7439621c9d2777a55065cd769a5434567
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022615"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641332"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Xamarin Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -37,7 +37,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
     - <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
     - <a href="https://git-lfs.github.com/">Git-LFS</a>.
   - MacOS használata esetén:
-    - A <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 +</a>verziójának naprakész verziója.
+    - A <a href="/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true" target="_blank">Visual Studio for Mac 8.1 +</a>verziójának naprakész verziója.
     - <a href="https://git-scm.com/download/mac" target="_blank">Git MacOS rendszerhez</a>.
     - <a href="https://git-lfs.github.com/">Git-LFS</a>.
 - A Xamarin. Android legújabb verziója telepítve van és fut a választott platformon. A Xamarin. Android telepítésével kapcsolatos útmutatóért tekintse meg a [Xamarin. Android telepítési](/xamarin/android/get-started/installation/index) útmutatóit.
@@ -75,13 +75,13 @@ Kapcsolja be az androidos eszközt, jelentkezzen be, és csatlakoztassa a szám�
 
 ![Képernyőkép, amely megjeleníti a menüt a projekt és az eszköz kiválasztásához a Windowsban.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-**Debug**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a hibakeresés **megkezdése** lehetőséget.
+  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a hibakeresés **megkezdése** lehetőséget.
 
 # <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio-konfiguráció](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-**Run**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás **indításkor hibakeresés nélkül** lehetőséget.
+  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás **indításkor hibakeresés nélkül** lehetőséget.
 
 ---
 

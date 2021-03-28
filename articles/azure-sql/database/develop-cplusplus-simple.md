@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92674758"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643278"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Kapcsolódás SQL Database C és C++ használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). A minta létrehozásához és futtatásához telepítenie kell a C++ nyelvi összetevőit.
-* A [Visual Studio Linux fejlesztése](/cpp/linux/?view=vs-2019). Ha Linux rendszeren fejleszt, a Visual Studio Linux-bővítményt is telepítenie kell.
+* A [Visual Studio Linux fejlesztése](/cpp/linux/). Ha Linux rendszeren fejleszt, a Visual Studio Linux-bővítményt is telepítenie kell.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database és SQL Server virtuális gépeken
 

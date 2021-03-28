@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e2fa09ac8609310d4579590214bc25e5d7ee309f
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94841648"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641572"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Kapcsolódás Azure SQL Database az Azure AD-vel Multi-Factor Authentication
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,7 +113,7 @@ A C# példa a [`System.Data.SqlClient`](/dotnet/api/system.data.sqlclient) névt
   Használja ezt az értéket olyan hitelesítéshez, amelyhez Azure AD-Felhasználónév és-jelszó szükséges. Azure SQL Database a hitelesítést. Ez a metódus nem támogatja a Multi-Factor Authentication.
 
 > [!NOTE]
-> Ha a .NET Core-t használja, a [Microsoft. SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) névteret kell használnia. További információkért tekintse meg a következő [blogot](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
+> Ha a .NET Core-t használja, a [Microsoft. SqlClient](/dotnet/api/microsoft.data.sqlclient) névteret kell használnia. További információkért tekintse meg a következő [blogot](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>C#-paraméterek értékének beállítása a Azure Portalból
 
@@ -148,7 +148,7 @@ További információ: [multi-Factor Authentication konfigurálása a SSMS és a
 ## <a name="c-code-example"></a>C#-kód – példa
 
 > [!NOTE]
-> Ha a .NET Core-t használja, a [Microsoft. SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) névteret kell használnia. További információkért tekintse meg a következő [blogot](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
+> Ha a .NET Core-t használja, a [Microsoft. SqlClient](/dotnet/api/microsoft.data.sqlclient) névteret kell használnia. További információkért tekintse meg a következő [blogot](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
 
 A példában szereplő C#-program a [*Microsoft. IdentityModel. clients. ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) dll-szerelvényre támaszkodik.
 

@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a52931b69187d18984b9b6938832dafe64111ffe
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495708"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641053"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionális elérhetőség és adattárolási hely
 
@@ -58,10 +58,12 @@ Az Azure kommunikációs szolgáltatások fenntartják a kommunikációs szolgá
 
 ### <a name="chat"></a>Csevegés
 
-A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. A rendszer 30 nap után automatikusan törli A teljesen üresjáratban lévő szálat. Üzenetek beolvasása, listázása, frissítése és törlése [csevegési API](/rest/api/communication/chat/chatthread) -k használatával.
+A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. 30 nap elteltével a rendszer automatikusan törli a résztvevőket nem tartalmazó teljes mértékben tétlen szálat. Üzenetek beolvasása, listázása, frissítése és törlése [csevegési API](/rest/api/communication/chat/chatthread) -k használatával.
 
 - `Get Thread`
 - `Get Message`
+- `List Messages`
+- `Update Message`
 - `Delete Thread`
 - `Delete Message`
 

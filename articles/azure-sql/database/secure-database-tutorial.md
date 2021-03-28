@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 306a8d78caf36291573d021ed1d814aa4f7a2164
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102563812"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642766"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -109,7 +109,7 @@ Adatbázis szintű tűzfalszabály beállítása:
 1. Az eszköztáron kattintson az **Execute (végrehajtás** ) elemre a tűzfalszabály létrehozásához.
 
 > [!NOTE]
-> A SSMS-ben a [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) parancs használatával is létrehozhat egy kiszolgálói szintű tűzfalszabály-szabályt, de a *Master* adatbázishoz kell csatlakoznia.
+> A SSMS-ben a [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current&preserve-view=true) parancs használatával is létrehozhat egy kiszolgálói szintű tűzfalszabály-szabályt, de a *Master* adatbázishoz kell csatlakoznia.
 
 ## <a name="create-an-azure-ad-admin"></a>Azure AD-rendszergazda létrehozása
 
