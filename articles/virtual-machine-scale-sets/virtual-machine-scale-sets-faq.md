@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc394550cf5eb28ce3a30af4afcb3deca4223fe3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587943"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642443"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -304,7 +304,7 @@ Ha létrehoz egy virtuális gépet, majd a Key vaultban frissíti a titkos kulcs
 
 Ha a. cer nyilvános kulcsait egy virtuálisgép-méretezési csoportba kívánja telepíteni, létrehozhat egy. pfx fájlt, amely csak. cer fájlokat tartalmaz. Ehhez használja a következőt: `X509ContentType = Pfx` . Töltse be például a. cer fájlt X509certificate2)-objektumként a C# vagy a PowerShell használatával, majd hívja meg a metódust.
 
-További információ: [x509. export metódus (X509ContentType, string)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
+További információ: [x509. export metódus (X509ContentType, string)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>A tanúsítványokat Base64-karakterláncként Hogyan továbbítani?
 

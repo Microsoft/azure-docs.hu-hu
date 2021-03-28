@@ -2,23 +2,18 @@
 title: Az élő közvetítés áttekintése
 description: Ez a cikk áttekintést nyújt az élő közvetítésről Azure Media Services v3 használatával.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b552dcc0e6766316e55e9cdda6e462b2d4abfd2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c82c646e4befef9d409bb8e59a442642913ada22
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955919"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641509"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -123,16 +118,6 @@ Az az objektum, amelyet az élő kimenet archivál, automatikusan egy igény sze
 - [Állapotok és számlázás](live-event-states-billing.md)
 - [Késés](live-event-latency.md)
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
+## <a name="live-streaming-questions"></a>Élő közvetítéssel kapcsolatos kérdések
 
-Tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#live-streaming) című cikket.
-
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
-
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
-
-## <a name="next-steps"></a>Következő lépések
-
-* [Élő közvetítés – gyors üzembe helyezés](live-events-wirecast-quickstart.md)
-* [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
-* [Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez](migrate-v-2-v-3-migration-introduction.md)
+Tekintse meg az [élő közvetítéssel kapcsolatos kérdések](questions-collection.md#live-streaming) című cikket.

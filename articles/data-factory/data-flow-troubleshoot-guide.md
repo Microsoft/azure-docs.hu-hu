@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/18/2021
-ms.openlocfilehash: a475441a845300d74014924415a4e48ae4de16df
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 7678d0fde21cefc950e0ac64a58563425c606298
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105628288"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640231"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
@@ -317,24 +317,6 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 ### <a name="error-code-df-excel-invalidfile"></a>Hibakód: DF-Excel-InvalidFile
 - **Üzenet**: érvénytelen Excel-fájl van megadva, amíg csak az. xlsx és az. xls támogatott.
 
-### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Hibakód: DF-AdobeIntegration-InvalidMapToFilter
-- **Üzenet**: az egyéni erőforrás csak egy, a szűréshez hozzárendelt kulcs/azonosítóval rendelkezhet.
-
-### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Hibakód: DF-AdobeIntegration-InvalidPartitionConfiguration
-- **Üzenet**: csak egyetlen partíció támogatott. A partíciós séma lehet RoundRobin vagy hash.
-- **Javaslat**: a AdobeIntegration beállításaiban ellenőrizze, hogy csak egyetlen partícióval rendelkezik-e. Lehet, hogy a partíciós séma RoundRobin vagy kivonat.
-
-### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Hibakód: DF-AdobeIntegration-KeyColumnMissed
-- **Üzenet**: a kulcsot meg kell adni a nem beszúrt műveletekhez.
-- **Javaslat**: adja meg a kulcs oszlopait a AdobeIntegration-beállításokban nem beilleszthető műveletekhez.
-
-### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Hibakód: DF-AdobeIntegration-InvalidPartitionType
-- **Üzenet**: a partíció típusának roundRobin kell lennie.
-- **Javaslat**: Ellenőrizze, hogy a partíció típusa roundRobin-e a AdobeIntegration-beállításokban.
-
-### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Hibakód: DF-AdobeIntegration-InvalidPrivacyRegulation
-- **Üzenet**: jelenleg csak az GDPR támogatott adatvédelmi szabályozás érhető el.
-- **Javaslat**: erősítse meg, hogy a AdobeIntegration-beállítások adatvédelmi rendelete **"GDPR"**.
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Egyéb hibaelhárítási tippek
 - **Probléma**: váratlan kivétel történt, és a végrehajtás nem sikerült.

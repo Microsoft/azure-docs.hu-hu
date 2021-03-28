@@ -9,13 +9,13 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: a1bdb1b8ac1f545933a92e78fd13b745606f1da3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+zone_pivot_groups: acs-plat-azp-azcli-net-ps
+ms.openlocfilehash: bdfd4dfef57721a24b4c6981ae653ab4f17562fa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563777"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644745"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Gyors útmutató: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése
 
@@ -23,8 +23,6 @@ ms.locfileid: "105563777"
 
 Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management SDK-val is kiterjeszthetők. A Management SDK és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az SDK-ban elérhető összes funkció elérhető a Azure Portal. 
 
-
-Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management SDK-val is kiterjeszthetők. A Management SDK és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az SDK-ban elérhető összes funkció elérhető a Azure Portal.
 
 > [!WARNING]
 > Vegye figyelembe, hogy míg a kommunikációs szolgáltatások több földrajzi régióban is elérhetők, a telefonszám beszerzéséhez az erőforrásnak rendelkeznie kell egy "US" értékkel rendelkező adathellyel. Azt is vegye figyelembe, hogy a kommunikációs erőforrások nem vihetők át másik előfizetésre a nyilvános előzetes verzió során.
@@ -40,6 +38,11 @@ Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommuniká
 ::: zone pivot="platform-net"
 [!INCLUDE [.NET](./includes/create-resource-net.md)]
 ::: zone-end
+
+::: zone pivot="platform-powershell"
+[!INCLUDE [PowerShell](./includes/create-resource-powershell.md)]
+::: zone-end
+
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>A kapcsolati karakterláncok és a szolgáltatási végpontok elérése
 

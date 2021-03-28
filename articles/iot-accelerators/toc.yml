@@ -7,12 +7,24 @@
     - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
     - name: Ipari IoT
+      href: overview-iot-industrial.md
+      items:
+        - name: Mi az az OPC-iker?
+          href: overview-opc-twin.md
+        - name: Mi az az OPC-tároló?
+          href: overview-opc-vault.md
+        - name: Mi az az OPC Publisher?
+          href: overview-opc-publisher.md
+        - name: Mi az a csatlakoztatott gyár?
+          href: iot-accelerators-connected-factory-features.md
     - name: Eszközszimuláció
       href: iot-accelerators-device-simulation-overview.md
 - name: Rövid útmutatók
   items:
     - name: Az eszközszimulációs megoldástámogató üzembe helyezése
       href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
+    - name: Csatlakoztatottgyár-megoldás kipróbálása
+      href: quickstart-connected-factory-deploy.md
   expanded: true
 - name: Oktatóanyagok
   items:
@@ -25,14 +37,47 @@
 - name: Fogalmak
   items:
     - name: Ipari IoT
+      items:
+        - name: OPC Twin architektúra
+          href: overview-opc-twin-architecture.md
+        - name: OPC-tár architektúrája
+          href: overview-opc-vault-architecture.md
 - name: Útmutatók
   items:
     - name: Ipari IoT
       items:
         - name: Csatlakoztatott gyár
+          items:
+            - name: Az irányítópult használata
+              href: iot-accelerators-connected-factory-dashboard.md
+            - name: A megoldásgyorsító konfigurálása
+              href: iot-accelerators-connected-factory-configure.md
+            - name: A megoldásgyorsító testreszabása
+              href: iot-accelerators-connected-factory-customize.md
         - name: OPC-iker
+          items:
+            - name: OPC-ikerszolgáltatások üzembe helyezése
+              href: howto-opc-twin-deploy-existing.md
+            - name: OPC-ikermodul üzembe helyezése IoT Edge-en
+              href: howto-opc-twin-deploy-modules.md
+            - name: Csak OPC-ikerfüggőségek központi telepítése
+              href: howto-opc-twin-deploy-dependencies.md
         - name: OPC-tároló
+          items:
+            - name: OPC-tárolószolgáltatás üzembe helyezése
+              href: howto-opc-vault-deploy.md
+            - name: OPC-tárolószolgáltatás kezelése
+              href: howto-opc-vault-manage.md
+            - name: Az OPC UA-eszköz és az OPC-tároló közötti kommunikáció védelme
+              href: howto-opc-vault-secure.md
+            - name: Az OPC-tárolószolgáltatás biztonságos működtetése
+              href: howto-opc-vault-secure-ca.md
         - name: OPC Publisher
+          items:
+            - name: Az OPC Publisher konfigurálása
+              href: howto-opc-publisher-configure.md
+            - name: Az OPC Publisher futtatása
+              href: howto-opc-publisher-run.md
     - name: Eszközszimuláció
       items:
         - name: Meglévő IoT Hub használata
@@ -89,6 +134,10 @@
         - name: Letöltés
           href: /azure/architecture/reference-architectures/iot
     - name: GYIK
-      href: iot-accelerators-faq.md
+      items:
+        - name: Megoldás-gyorssegédek – gyakori kérdések
+          href: iot-accelerators-faq.md
+        - name: Csatlakoztatott gyár – GYIK
+          href: iot-accelerators-faq-cf.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

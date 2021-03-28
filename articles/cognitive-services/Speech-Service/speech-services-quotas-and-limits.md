@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564422"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645112"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
 
@@ -39,7 +39,7 @@ A [beszédfelismerési SDK](speech-sdk.md) -val és/vagy [beszéd-szöveg REST A
 #### <a name="batch-transcription"></a>Kötegelt átírás
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| REST API korlát | A Batch-átírás nem érhető el a F0 | 300 kérelem percenként |
+| [Beszéd – szöveg REST API v 2.0 és v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) korlát | A Batch-átírás nem érhető el a F0 | 300 kérelem percenként |
 | Hangbeviteli fájl maximális mérete | N/A | 1 GB |
 | A bemeneti Blobok maximális mérete (több fájlt is tartalmazhat, például egy ZIP-archívumban), ügyeljen arra, hogy a fenti fájlméretre vonatkozó korlátot jegyezze fel. | N/A | 2,5 GB |
 | BLOB-tároló maximális mérete | N/A | 5 GB |

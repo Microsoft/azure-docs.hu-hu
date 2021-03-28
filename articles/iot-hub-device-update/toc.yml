@@ -12,7 +12,7 @@
       href: device-update-simulator.md
     - name: 'Csomag frissítése Ubuntu Server 18,04 x64 rendszeren'
       href: device-update-ubuntu-agent.md
-    - name: Azure IoT Hub-oktatóanyag az Azure valós idejű operációs rendszerhez
+    - name: Az Azure valós idejű eszközének frissítése – operációs rendszer
       href: device-update-azure-real-time-operating-system.md
 - name: Alapelvek
   items:

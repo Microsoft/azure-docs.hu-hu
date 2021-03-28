@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 065127fbeaabc415dd9a5fbe74f90d5060909d5d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097227"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641040"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Erőforrás-modell a Azure Cosmos DB időponthoz tartozó visszaállítási szolgáltatáshoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -128,7 +128,7 @@ Ez az erőforrás egy visszaállítható adatbázis-fiók-példányt tartalmaz. 
 | restorableLocations: creationTime | A regionális fiók létrehozásának időpontja (UTC).|
 | restorableLocations: deletionTime | A regionális fiók törlésének időpontja (UTC). Ez az érték üres, ha a regionális fiók él.|
 
-Az összes helyreállítható fiók listájának lekéréséhez lásd: [helyreállítható adatbázis-fiókok – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/list) vagy [helyreállítható adatbázis-fiókok – helyek listázása](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/listbylocation) .
+Az összes helyreállítható fiók listájának lekéréséhez lásd: [helyreállítható adatbázis-fiókok – lista](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/list) vagy [helyreállítható adatbázis-fiókok – helyek listázása](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/listbylocation) .
 
 ### <a name="restorable-sql-database"></a>Helyreállítható SQL-adatbázis
 
@@ -142,7 +142,7 @@ Minden erőforrás egy mutációs eseményről tartalmaz információkat, péld�
 | operationType | Az adatbázis-esemény műveletének típusa. A lehetséges értékek a következők:<br/><ul><li>Létrehozás: adatbázis-létrehozási esemény</li><li>Törlés: adatbázis-törlési esemény</li><li>Csere: adatbázis-módosítási esemény</li><li>SystemOperation: adatbázis-módosítási esemény, amelyet a rendszeren aktiváltak. Ezt az eseményt a felhasználó nem indítja el</li></ul> |
 | adatbázis |Az esemény időpontjában az SQL Database tulajdonságai|
 
-Az adatbázis-mutációk listájának lekéréséhez lásd: [helyreállítható SQL-adatbázisok – cikk listázása](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqldatabases/list) .
+Az adatbázis-mutációk listájának lekéréséhez lásd: [helyreállítható SQL-adatbázisok – cikk listázása](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqldatabases/list) .
 
 ### <a name="restorable-sql-container"></a>Helyreállítható SQL-tároló
 
@@ -156,7 +156,7 @@ Mindegyik erőforrás olyan mutációs eseményről tartalmaz információkat, m
 | operationType | A tároló eseményének Művelettípus. A lehetséges értékek a következők: <br/><ul><li>Létrehozás: tároló-létrehozási esemény</li><li>Törlés: tároló törlési eseménye</li><li>Csere: tároló módosításának eseménye</li><li>SystemOperation: a szolgáltatás által aktivált tároló-módosítási esemény. Ezt az eseményt a felhasználó nem indítja el</li></ul> |
 | tároló | Az esemény időpontjában az SQL-tároló tulajdonságai.|
 
-Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható SQL-tárolók listája](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlcontainers/list) .
+Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható SQL-tárolók listája](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlcontainers/list) .
 
 ### <a name="restorable-sql-resources"></a>Helyreállítható SQL-erőforrások
 
@@ -167,7 +167,7 @@ Az egyes erőforrások egyetlen adatbázist és az adatbázis alatti összes tá
 | databaseName  | Az SQL-adatbázis neve.
 | collectionNames   | Az adatbázishoz tartozó SQL-tárolók listája.|
 
-Az SQL Database és a Container combok listájának lekéréséhez, amelyek a megadott időbélyegen és helyen találhatók a fiókban, tekintse meg a [helyreállítható SQL-erőforrások – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlresources/list) cikket.
+Az SQL Database és a Container combok listájának lekéréséhez, amelyek a megadott időbélyegen és helyen találhatók a fiókban, tekintse meg a [helyreállítható SQL-erőforrások – lista](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlresources/list) cikket.
 
 ### <a name="restorable-mongodb-database"></a>Helyreállítható MongoDB-adatbázis
 
@@ -180,7 +180,7 @@ Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, 
 | ownerResourceId   | A MongoDB-adatbázis erőforrás-azonosítója. |
 | operationType |   Az adatbázis-esemény műveletének típusa. A lehetséges értékek a következők:<br/><ul><li> Létrehozás: adatbázis-létrehozási esemény</li><li> Törlés: adatbázis-törlési esemény</li><li> Csere: adatbázis-módosítási esemény</li><li> SystemOperation: adatbázis-módosítási esemény, amelyet a rendszeren aktiváltak. Ezt az eseményt a felhasználó nem indítja el </li></ul> |
 
-Az adatbázis-mutációk listájának lekéréséhez tekintse meg a visszaállítható [Mongodb adatbázisok – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbdatabases/list) cikket.
+Az adatbázis-mutációk listájának lekéréséhez tekintse meg a visszaállítható [Mongodb adatbázisok – lista](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbdatabases/list) cikket.
 
 ### <a name="restorable-mongodb-collection"></a>Helyreállítható MongoDB-gyűjtemény
 
@@ -193,7 +193,7 @@ Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, 
 | ownerResourceId   | A MongoDB-gyűjtemény erőforrás-azonosítója. |
 | operationType |A gyűjteményi esemény Művelettípus. A lehetséges értékek a következők:<br/><ul><li>Létrehozás: gyűjtemény-létrehozási esemény</li><li>Törlés: gyűjtemény törlési eseménye</li><li>Csere: gyűjtemény módosítási eseménye</li><li>SystemOperation: a gyűjtemény módosítási eseménye, amelyet a rendszeren aktiváltak. Ezt az eseményt a felhasználó nem indítja el</li></ul> |
 
-Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható Mongodb-gyűjtemények – cikk listázása](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbcollections/list) .
+Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható Mongodb-gyűjtemények – cikk listázása](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbcollections/list) .
 
 ### <a name="restorable-mongodb-resources"></a>Helyreállítható MongoDB-erőforrások
 
@@ -204,7 +204,7 @@ Mindegyik erőforrás egyetlen adatbázist és az adatbázis alatti összes gyű
 | databaseName  |A MongoDB-adatbázis neve. |
 | collectionNames | A MongoDB-gyűjtemények listája ebben az adatbázisban. |
 
-Az adott időbélyegzőn és helyen található fiókon létező összes MongoDB-adatbázis és-gyűjtemény kombinációjának megtekintéséhez tekintse meg a visszaállítható [MongoDB-erőforrások – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbresources/list) cikket.
+Az adott időbélyegzőn és helyen található fiókon létező összes MongoDB-adatbázis és-gyűjtemény kombinációjának megtekintéséhez tekintse meg a visszaállítható [MongoDB-erőforrások – lista](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbresources/list) cikket.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6f91adf499c62fef56a30c5f2945ba7a90a0b29
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644827"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640071"
 ---
 # <a name="securing-group-managed-service-accounts"></a>Csoportosan felügyelt szolgáltatásfiókok biztonságossá tétele
 
@@ -41,7 +41,7 @@ a csoportosan felügyelt szolgáltatásfiókokat egyetlen identitási megoldást
 A csoportosan felügyelt szolgáltatásfiókokat-t használja előnyben részesített fióktípusként a helyszíni szolgáltatásokhoz, kivéve, ha egy szolgáltatás (például a feladatátvételi fürtszolgáltatás) nem támogatja azt.
 
 > [!IMPORTANT]
-> A szolgáltatás éles környezetben történő üzembe helyezése előtt tesztelni kell a szolgáltatást a csoportosan felügyelt szolgáltatásfiókokat. Ehhez állítson be egy tesztkörnyezet-környezetet, és győződjön meg arról, hogy az alkalmazás használhatja a gMSA, és hozzáférhet az elérni kívánt erőforrásokhoz. További információ: [csoportosan felügyelt szolgáltatásfiókok támogatása](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
+> A szolgáltatás éles környezetben történő üzembe helyezése előtt tesztelni kell a szolgáltatást a csoportosan felügyelt szolgáltatásfiókokat. Ehhez állítson be egy tesztkörnyezet-környezetet, és győződjön meg arról, hogy az alkalmazás használhatja a gMSA, és hozzáférhet az elérni kívánt erőforrásokhoz. További információ: [csoportosan felügyelt szolgáltatásfiókok támogatása](/system-center/scom/support-group-managed-service-accounts).
 
 
 Ha egy szolgáltatás nem támogatja a csoportosan felügyelt szolgáltatásfiókokat használatát, a következő legjobb lehetőség egy önálló felügyelt szolgáltatásfiók (önállóan felügyelt szolgáltatásfiókot) használata. a sMSAs ugyanazokat a funkciókat biztosítja, mint a gMSA, de csak egyetlen kiszolgálón való üzembe helyezésre szolgálnak.
@@ -86,7 +86,7 @@ Get-ADServiceAccount -Filter *
 
 # To filter results to only gMSAs:
 
-Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount”}
+Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
 ```
 
 ## <a name="manage-gmsas"></a>Csoportosan felügyelt szolgáltatásfiókokat kezelése

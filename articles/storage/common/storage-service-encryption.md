@@ -4,17 +4,17 @@ description: Az Azure Storage védi az adatait úgy, hogy automatikusan titkosí
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0688e14b77d885132d6c3fbaa44bed117cc7cf9d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180360"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641119"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok Azure Storage-titkosítása
 
@@ -65,50 +65,9 @@ A szolgáltatási szintű titkosítás támogatja a Microsoft által felügyelt 
 
 Az infrastruktúra-titkosítást lehetővé tevő Storage-fiókok létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása infrastruktúra-titkosítással, amely lehetővé teszi az adatok kettős titkosítását](infrastructure-encryption-enable.md).
 
-## <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB Storage titkosítási hatókörök (előzetes verzió)
-
-Alapértelmezés szerint a Storage-fiók egy olyan kulccsal van titkosítva, amely a Storage-fiókra terjed ki. Dönthet úgy, hogy a Microsoft által felügyelt kulcsokat vagy az ügyfél által felügyelt kulcsokat használja Azure Key Vaultban, hogy megvédje és vezérelje az adatait titkosító kulcshoz való hozzáférést.
-
-A titkosítási hatókörök lehetővé teszik a titkosítás beállítását a tároló szintjén vagy egy egyedi blobon. A titkosítási hatókörök használatával biztonságos határokat hozhat létre az azonos Storage-fiókban található, de különböző ügyfelekhez tartozó adategységek között.
-
-Az Azure Storage erőforrás-szolgáltató használatával létrehozhat egy vagy több titkosítási hatókört egy Storage-fiókhoz. Titkosítási hatókör létrehozásakor meg kell adnia, hogy a hatókör védett-e egy Microsoft által felügyelt kulccsal, vagy egy ügyfél által felügyelt kulccsal, amelyet a Azure Key Vault tárol. Ugyanazon a Storage-fiókon belül a különböző titkosítási hatókörök a Microsoft által felügyelt vagy az ügyfél által felügyelt kulcsokat egyaránt használhatják.
-
-Miután létrehozott egy titkosítási hatókört, megadhatja a titkosítási hatókört egy tároló vagy blob létrehozásához szükséges kérelemben. A titkosítási hatókör létrehozásával kapcsolatos további információkért lásd: [titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](../blobs/encryption-scope-manage.md).
-
-> [!NOTE]
-> A titkosítási hatókörök nem támogatottak olvasási hozzáférésű geo-redundáns tárolással (RA-GRS) és olvasási hozzáférésű geo-Zone-redundáns tárolási (RA-GZRS) fiókokkal az előzetes verzió során.
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> A titkosítási hatókörök előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
->
-> A váratlan költségek elkerülése érdekében ügyeljen arra, hogy letiltsa a jelenleg nem szükséges titkosítási hatóköröket.
-
-### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Tároló vagy blob létrehozása titkosítási hatókörrel
-
-A titkosítási hatókörben létrehozott Blobok titkosítva vannak az adott hatókörhöz megadott kulccsal. A blob létrehozásakor megadhat egy egyéni blob titkosítási hatókörét, vagy megadhat egy alapértelmezett titkosítási hatókört is, ha tárolót hoz létre. Ha egy tároló szintjén egy alapértelmezett titkosítási hatókör van megadva, a tárolóban lévő összes blob titkosítva lesz az alapértelmezett hatókörhöz társított kulccsal.
-
-Ha olyan tárolóban hoz létre blobot, amely rendelkezik alapértelmezett titkosítási hatókörrel, megadhat egy titkosítási hatókört, amely felülbírálja az alapértelmezett titkosítási hatókört, ha a tároló úgy van konfigurálva, hogy engedélyezze az alapértelmezett titkosítási hatókör felülbírálását. Az alapértelmezett titkosítási hatókör felülbírálásának megakadályozásához konfigurálja úgy a tárolót, hogy megtagadja az egyes Blobok felülbírálásait.
-
-A titkosítási hatókörhöz tartozó Blobok olvasási műveletei transzparens módon történnek, feltéve, hogy a titkosítási hatókör nincs letiltva.
-
-### <a name="disable-an-encryption-scope"></a>Titkosítási hatókör letiltása
-
-Ha letilt egy titkosítási hatókört, a titkosítási hatókörön végrehajtott összes további olvasási vagy írási művelet sikertelen lesz a 403-as HTTP-hibakódnál (tiltott). Ha újra engedélyezi a titkosítási hatókört, az olvasási és írási műveletek általában újra bekerülnek.
-
-Ha a titkosítási hatókör le van tiltva, már nem számítunk fel díjat. Tiltsa le azokat a titkosítási hatóköröket, amelyek nem szükségesek a szükségtelen költségek elkerülése érdekében.
-
-Ha a titkosítási hatókör védett a Azure Key Vault ügyfél által felügyelt kulcsaival, akkor a titkosítási hatókör letiltásához a kulcstartóban is törölheti a társított kulcsot. Ne feledje, hogy a Azure Key Vault ügyfél által felügyelt kulcsait a rendszer a Soft delete és a Purge Protection védi, és a törölt kulcsra a tulajdonságok által meghatározott viselkedés vonatkozik. További információkért tekintse meg a következő témakörök egyikét az Azure Key Vault dokumentációjában:
-
-- [A Soft delete használata a PowerShell-lel](../../key-vault/general/key-vault-recovery.md)
-- [A Soft delete használata a parancssori felülettel](../../key-vault/general/key-vault-recovery.md)
-
-> [!NOTE]
-> Titkosítási hatókört nem lehet törölni.
-
 ## <a name="next-steps"></a>Következő lépések
 
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 - [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)
-- [BLOB Storage titkosítási hatókörök (előzetes verzió)](../blobs/encryption-scope-overview.md)
+- [BLOB Storage titkosítási hatókörök](../blobs/encryption-scope-overview.md)
+- [Titkosítási kulcs megadása a blob Storage-kérelemben](../blobs/encryption-customer-provided-keys.md)

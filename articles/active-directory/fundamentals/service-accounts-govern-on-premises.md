@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557369"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642380"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Helyszíni szolgáltatásfiókok szabályozása
 
@@ -60,7 +60,7 @@ Fontos, hogy a szolgáltatásfiókok az alábbiakhoz legyenek szorosan irányít
 
 A következő beállításokat használhatja szolgáltatásfiókokként használt felhasználói fiókokkal:
 
-* [**Fiók lejárata**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): állítsa be, hogy a szolgáltatásfiók a felülvizsgálati időszak után automatikusan lejárjon egy meghatározott időtartamot, kivéve, ha megállapítható, hogy folytatni kell
+* [**Fiók lejárata**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): állítsa be, hogy a szolgáltatásfiók a felülvizsgálati időszak után automatikusan lejárjon egy meghatározott időtartamot, kivéve, ha megállapítható, hogy folytatni kell
 
 *  **LogonWorkstations**: korlátozza azokat az engedélyeket, amelyekre a szolgáltatásfiók be tud jelentkezni. Ha helyileg fut a gépen, és csak az adott gépen lévő erőforrásokhoz fér hozzá, korlátozza azt a bejelentkezést bárhol máshol.
 
@@ -149,7 +149,7 @@ A kockázatértékelés, miután végzett és dokumentált, hatással lehet a k�
 
 Csak azt követően hozzon létre szolgáltatásfiókot a CMDB, hogy dokumentálja a megfelelő információkat, és elvégzi a kockázatértékelést. A fiókra vonatkozó korlátozásokat a kockázatértékeléshez kell igazítani. Az értékeléshez kapcsolódóan vegye figyelembe a következő korlátozásokat:
 
-* [Fiók lejárata](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Fiók lejárata](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
    * A szolgáltatásfiókokként használt összes felhasználói fiók esetében adjon meg egy reális és határozott záró dátumot a használathoz. Ezt a "fiók lejárata" jelzővel állíthatja be. További részletekért tekintse[ meg a set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration)című témakört. 
 
@@ -193,7 +193,7 @@ Az összes engedély eltávolítása után ezt a folyamatot használhatja a fió
 
 3. A szolgáltatási fiók törlése a maradó letiltott házirend betartása után. 
 
-   * A MSAs a felügyelt szolgáltatásfiók-tárolóból [eltávolíthatja](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) a PowerShell használatával, vagy manuálisan is törölheti azt.
+   * A MSAs a felügyelt szolgáltatásfiók-tárolóból [eltávolíthatja](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true) a PowerShell használatával, vagy manuálisan is törölheti azt.
 
    * A számítógép-vagy felhasználói fiókok esetében manuálisan is törölheti a fiókot Active Directory.
 

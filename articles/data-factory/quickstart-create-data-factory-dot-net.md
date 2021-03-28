@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/16/2021
+ms.date: 03/27/2021
 ms.author: jingwang
-ms.openlocfilehash: 12f7a87ce166be516d070b66b069f7a584a386c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 59cd364e5568b3509d0c06d439d39b132b202df6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563504"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641752"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a .NET SDK használatával
 
@@ -105,6 +105,9 @@ Következő lépésként hozzon létre egy C# .NET-konzol alkalmazást a Visual 
    string blobDatasetName = "BlobDataset";
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
+> [!NOTE]
+> Az USA-beli Azure gov-fiókok esetében a helyett a BaseUri kell használnia  *https://management.usgovcloudapi.net* *https://management.azure.com/* , majd létre kell hoznia az adatgyár-felügyeleti ügyfelet. 
+> 
 
 3. Adja hozzá a következő kódot a **Main** metódushoz, amely létrehozza a **datapipelinemanagementclient** osztály egy példányát. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és adatcsatornát is létrehozhat. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható.
 
@@ -118,6 +121,7 @@ Következő lépésként hozzon létre egy C# .NET-konzol alkalmazást a Visual 
    var client = new DataFactoryManagementClient(cred) {
        SubscriptionId = subscriptionId };
    ```
+
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 

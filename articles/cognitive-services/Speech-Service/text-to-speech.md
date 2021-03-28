@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
-ms.openlocfilehash: e42f81ce0f06b3782972dbf4322f0590763d8704
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 45977faec9ab54fed0c1e7054c567b4d18b11f50
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026325"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645022"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
@@ -44,7 +44,7 @@ Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgál
 * Visemes – a [Visemes](how-to-speech-synthesis-viseme.md) a megfigyelt beszédben jelent meg, beleértve az ajkak, az állkapocs és a nyelv pozícióját, amikor egy adott fonéma hoz létre. A Visemes erős korrelációt mutat a hang-és fonémák. Az viseme-események a Speech SDK-ban való használatával az arc-animálási információk is létrehozhatók, amelyekkel animálható az arcok az ajak-olvasási kommunikáció, az oktatás, a szórakoztatás és az ügyfélszolgálat számára.
 
 > [!NOTE]
-> A Viseme jelenleg csak az `en-US-AriaNeural` USA 2. nyugati régiójában () található hangra működik `westus2` .
+> A Viseme `en-US-AriaNeural` most már csak hangra működik.
 
 ## <a name="get-started"></a>Bevezetés
 

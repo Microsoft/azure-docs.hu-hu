@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581982"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643682"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -93,7 +93,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 
 ### <a name="clone-the-source-code-and-initialize"></a>A forráskód klónozása és az inicializálás
 
-1. Telepítse az ["asztali fejlesztés C++](/cpp/build/vscpp-step-0-installation?view=vs-2019) -ban" számítási feladatot a Visual Studio 2019-es verzióra. A Visual Studio 2017 és a 2015 is támogatott.
+1. Telepítse az ["asztali fejlesztés C++](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) -ban" számítási feladatot a Visual Studio 2019-es verzióra. A Visual Studio 2017 és a 2015 is támogatott.
 
 1. Telepítse a [cmakt](https://cmake.org/). Győződjön meg arról, hogy a `PATH` parancs beírásával írja be a `cmake -version` parancssorba.
 

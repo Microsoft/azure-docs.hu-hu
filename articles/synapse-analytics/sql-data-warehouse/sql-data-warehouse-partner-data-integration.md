@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ba03fe86c126c76faf91a06a96aaea6d1ffeddc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eecacef7f678001c9d65da540432154305549e2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594911"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645135"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Az Azure szinapszis Analytics adatintegrációs partnerei
 
@@ -27,6 +27,7 @@ Az adattárház-megoldás az Azure szinapszis Analytics dedikált SQL-készlette
 | Partner | Description | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Ab initio](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**Ab initio**<br> Az ab initio agilis digitális mérnöki platformja segítségével megoldhatja a vállalati számítástechnika legszigorúbb adatfeldolgozási és adatkezelési problémáit. Az ab initio Felhőbeli natív platformja lehetővé teszi, hogy az Azure-ban vagy a helyszíni környezetben bárhol hozzáférjen a vállalati ökoszisztémához, beleértve az örökölt rendszereken tárolt adatait is. A hatékony automatizálással, adatminőséggel, adatszabályozással és aktív metaadatokkal rendelkező intuitív interfészek kombinációja lehetővé teszi a gyors fejlesztést és a valódi adatszolgáltatások önkiszolgálását, így az elemzők gyorsan és hatékonyan végezhetik el a munkájukat. Csatlakozzon a világ legnagyobb vállalkozásaihoz az ab initio használatával, hogy bekapcsolja big data az értelmes adatba. |[Termék lap](https://www.abinitio.com/) |
+| ![Aecorsoft](./media/sql-data-warehouse-partner-data-integration/aecorsoft-logo.png) |**Aecorsoft**<br> A AecorSoft gyors, méretezhető és valós idejű ELT/ETL szoftveres megoldást kínál az SAP-ügyfelek számára, hogy összetett SAP-adatelemzést nyújtson az Azure szinapszis Analytics és az Azure adatplatform számára. Az SAP Application Layer Security teljes megfelelőségének megfelelően a AecorSoft-megoldás az SAP-alkalmazások integrálására hivatalosan SAP Premium minősítéssel rendelkezik. A AecorSoft egyedi és változó adatrögzítési funkciói lehetővé teszik az SAP-felhasználók számára, hogy az SAP transzparens, a készlet és a fürt tábláiból származó különbözeti adatok streamjét CSV-, parketta-, Avro-, ork-vagy GZIP-formátumban továbbítsák az Azure-ba. Az SAP táblázatos adatokat és sok más üzleti szabálynak számító SAP-objektumot, például a BW-lekérdezéseket és az S/4HANA CDS-nézeteket teljes mértékben támogatja. |[Termék lap](https://www.aecorsoft.com/products/dataintegrator)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aecorsoftinc1588038796343.aecorsoftintegrationservice_adf)<br>|
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> A Alooma egy kinyerési, átalakítási és betöltési (ETL) megoldás, amely lehetővé teszi, hogy az adatcsapatok valós időben integrálják, gazdagítsák és továbbítsák a különböző adatsilók adatait egy Azure szinapszis-adattárházba. |[Termék lap](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> A Alteryx Designer egy ismételhető munkafolyamatot biztosít az önkiszolgáló adatelemzéshez, amely több órán keresztül mélyebb elemzéseket eredményez, nem pedig a hagyományos megközelítésekre jellemző heteket! A Alteryx Designer lehetővé teszi az adatelemzők számára az adatelőkészítés, az adatkeverés és az elemzés – prediktív, statisztikai és térbeli – használatát ugyanazzal az intuitív felhasználói felülettel. |[Termék lap](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>A Attunity CloudBeam automatizált megoldást kínál az Azure szinapszis-adattárházba való adattöltésre. Leegyszerűsíti a kötegelt betöltést és a több forrásból származó adatok növekményes replikálását – SQL Server, Oracle, DB2, Sybase, MySQL és sok más. |[Termék lap](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |

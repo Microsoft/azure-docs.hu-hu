@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09ae46ec6455b6998bcf4da5648d2ceaef4d5b19
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472235"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644800"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>Adatok betöltése CSV-fájlból Azure SQL Database vagy SQL felügyelt példányba (egyszerű fájlok)
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ A cikkben szereplő lépések végrehajtásához a következőkre lesz szükség
 * Telepített bcp parancssori segédprogram
 * Telepített sqlcmd parancssori segédprogram
 
-A BCP és a Sqlcmd segédprogramot a [Microsoft Sqlcmd dokumentációjában] [] töltheti le https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 .
+A BCP és a Sqlcmd segédprogramot a [Microsoft Sqlcmd dokumentációjában](/sql/tools/sqlcmd-utility?view=sql-server-ver15&preserve-view=true)töltheti le.
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Adatok ASCII vagy UTF-16 formátumban
 

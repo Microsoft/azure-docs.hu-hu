@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d83f6585500316515139f937a56889dfc1f8fac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459672"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642711"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ A központi Identitáskezelés a következő előnyöket kínálja:
 - Hozzáférési jogosultságok hozzárendelése az erőforrásokhoz az Azure AD résztvevői számára csoportos hozzárendelés használatával: Azure AD-csoportok létrehozása, hozzáférés biztosítása a csoportokhoz, és az egyes tagok hozzáadása a csoportokhoz. Az adatbázisban hozzon létre olyan tárolt adatbázis-felhasználókat, akik leképezik az Azure AD-csoportokat. Az adatbázison belüli engedélyek kiosztásához helyezze azokat a felhasználókat, akik az Azure AD-csoportokhoz vannak társítva az adatbázis-szerepkörökben a megfelelő engedélyekkel.
   - Tekintse meg a cikkeket, [konfigurálja és kezelje Azure Active Directory hitelesítést az SQL](authentication-aad-configure.md) -sel, és [használja az Azure ad-t az SQL-hitelesítéshez](authentication-aad-overview.md).
   > [!NOTE]
-  > A felügyelt SQL-példányokban olyan bejelentkezéseket is létrehozhat, amelyek az Azure AD-rendszerbiztonsági tag számára a Master adatbázisban képezhetők le. Lásd: [create login (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+  > A felügyelt SQL-példányokban olyan bejelentkezéseket is létrehozhat, amelyek az Azure AD-rendszerbiztonsági tag számára a Master adatbázisban képezhetők le. Lásd: [create login (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Az Azure AD-csoportok használata leegyszerűsíti az engedélyek kezelését és a csoport tulajdonosát, és az erőforrás tulajdonosa hozzáadhat/eltávolíthat tagokat a csoporthoz/csoportba.
 
@@ -136,7 +136,7 @@ Az Azure AD Multi-Factor Authentication további biztonságot nyújt azáltal, h
 
 - Az Azure AD interaktív hitelesítési mód használata a Azure SQL Database és az Azure SQL felügyelt példányai esetében, ha a jelszót interaktívan kérik, majd Multi-Factor Authentication:
   - Használjon univerzális hitelesítést a SSMS-ben. Tekintse meg a [többtényezős Azure ad-hitelesítés Azure SQL Database, SQL felügyelt példánnyal, az Azure szinapszis (SSMS-támogatás multi-Factor Authentication)](authentication-mfa-ssms-overview.md)című cikket.
-  - SQL Server Data Tools (SSDT) által támogatott interaktív hitelesítés használata. Tekintse meg a [SQL Server Data Tools (SSDT) Azure Active Directory támogatását](/sql/ssdt/azure-active-directory?view=azuresqldb-current)ismertető cikket.
+  - SQL Server Data Tools (SSDT) által támogatott interaktív hitelesítés használata. Tekintse meg a [SQL Server Data Tools (SSDT) Azure Active Directory támogatását](/sql/ssdt/azure-active-directory?view=azuresqldb-current&preserve-view=true)ismertető cikket.
   - Használjon más, Multi-Factor Authentication támogató SQL-eszközöket.
     - A SSMS varázsló támogatja az adatbázis exportálását/kinyerését és üzembe helyezését  
     - [sqlpackage.exe](/sql/tools/sqlpackage): "/ua" kapcsoló
@@ -196,7 +196,7 @@ Olyan esetekben, amikor a jelszavak nem elkerülhetők, győződjön meg róla, 
 
 - Ha nem sikerül elkerülni a jelszavakat vagy a titkos kulcsokat, a felhasználói jelszavakat és az alkalmazás titkos kulcsait a Azure Key Vault és Key Vault hozzáférési házirendeken keresztül kezelheti.
 
-- A különböző alkalmazásfejlesztés-keretrendszerek olyan keretrendszer-specifikus mechanizmusokat is kínálnak, amelyek védik a titkokat az alkalmazásban. Például: [ASP.net Core alkalmazás](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1).
+- A különböző alkalmazásfejlesztés-keretrendszerek olyan keretrendszer-specifikus mechanizmusokat is kínálnak, amelyek védik a titkokat az alkalmazásban. Például: [ASP.net Core alkalmazás](/aspnet/core/security/app-secrets?tabs=windows).
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>SQL-hitelesítés használata örökölt alkalmazásokhoz
 

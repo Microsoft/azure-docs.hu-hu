@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601372"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644913"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -139,7 +139,7 @@ A felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási sz
 ### <a name="logins-and-users"></a>Bejelentkezések és felhasználók
 
 - A, a és a használatával létrehozott SQL-bejelentkezések `FROM CERTIFICATE` `FROM ASYMMETRIC KEY` `FROM SID` támogatottak. Lásd: [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql)).
-- A [bejelentkezési szintaxissal](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) létrehozott Azure Active Directory (Azure ad) kiszolgálói rendszerbiztonsági tag (bejelentkezések) vagy a [felhasználó létrehozása a bejelentkezéshez [Azure ad login]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) szintaxis támogatott. Ezek a bejelentkezések a kiszolgálói szinten jönnek létre.
+- A [bejelentkezési szintaxissal](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) létrehozott Azure Active Directory (Azure ad) kiszolgálói rendszerbiztonsági tag (bejelentkezések) vagy a [felhasználó létrehozása a bejelentkezéshez [Azure ad login]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true) szintaxis támogatott. Ezek a bejelentkezések a kiszolgálói szinten jönnek létre.
 
     Az SQL felügyelt példánya a szintaxissal támogatja az Azure AD adatbázis-rendszerbiztonsági tagokat `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` . Ez a szolgáltatás az Azure AD-ben tárolt adatbázis-felhasználók néven is ismert.
 
@@ -525,7 +525,7 @@ A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport 
 ### <a name="tempdb"></a>TEMPDB
 - A maximális fájlméret `tempdb` nem lehet nagyobb, mint 24 GB általános célú szinten. Üzletileg kritikus szinten a maximális `tempdb` méretet az SQL felügyelt példányának tárolási mérete korlátozza. `Tempdb` a naplófájl mérete általános célú szinten legfeljebb 120 GB lehet. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha legalább 24 GB-nál több adatra van szükségük, `tempdb` vagy ha több mint 120 GB adatnaplót hoznak létre.
 - `Tempdb` a mindig 12 adatfájlra van felosztva: 1 elsődleges, más néven Master, adatfájl és 11 nem elsődleges adatfájl. A fájl szerkezete nem módosítható, és az új fájlok nem adhatók hozzá a következőhöz: `tempdb` . 
-- A [memóriára optimalizált `tempdb` metaadatok](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), egy új SQL Server 2019 memóriabeli adatbázis-szolgáltatás, nem támogatott.
+- A [memóriára optimalizált `tempdb` metaadatok](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15&preserve-view=true#memory-optimized-tempdb-metadata), egy új SQL Server 2019 memóriabeli adatbázis-szolgáltatás, nem támogatott.
 - A modell adatbázisban létrehozott objektumok nem hozhatók létre automatikusan az `tempdb` újraindítást vagy feladatátvételt követően, mert `tempdb` nem kapják meg a kezdeti objektumok listáját a modell adatbázisából. Az `tempdb` egyes újraindítások vagy feladatátvételek után manuálisan kell létrehoznia az objektumokat.
 
 ### <a name="msdb"></a>MSDB
@@ -534,13 +534,13 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 - Általános szerepkörök
   - TargetServersRole
-- [Rögzített adatbázis-szerepkörök](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Rögzített adatbázis-szerepkörök](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15&preserve-view=true)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail szerepkörök](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail szerepkörök](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15&preserve-view=true#DBProfile):
   - DatabaseMailUserRole
-- [Integrációs szolgáltatások szerepkörei](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Integrációs szolgáltatások szerepkörei](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15&preserve-view=true):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator

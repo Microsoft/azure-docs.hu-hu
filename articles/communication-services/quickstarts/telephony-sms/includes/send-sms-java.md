@@ -10,12 +10,12 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 4a9deded16de6b0de2ef5f88ffebd813b8e5b8c0
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 0a59b18fa2c09cff943dbccd2203027cd72e146a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110350"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644356"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Java SMS SDK használatával SMS-üzenetek küldéséhez.
 
@@ -106,8 +106,8 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | Ez az osztály hozza létre a SmsClient. Ezt a végponttal, a hitelesítő adatokkal és egy http-ügyféllel biztosíthatja. |
 | SmsClient                    | Ez az osztály minden SMS-funkcióhoz szükséges. Az SMS-üzenetek küldésére használható.                |
-| SmsSendResult                | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
 | SmsSendOptions               | Ez az osztály lehetőséget biztosít egyéni címkék hozzáadására és a kézbesítési jelentéskészítés konfigurálására. Ha a deliveryReportEnabled értéke TRUE (igaz), akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres volt.|                           |
+| SmsSendResult                | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -160,6 +160,12 @@ System.out.println("Message Id: " + sendResult.getMessageId());
 System.out.println("Recipient Number: " + sendResult.getTo());
 System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 ```
+
+Egy SMS- `<from-phone-number>` kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatások erőforrásaihoz, és `<to-phone-number>` egy telefonszámot, amelyre üzenetet kíván küldeni.
+
+> [!WARNING]
+> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
+
 ## <a name="send-a-1n-sms-message-with-options"></a>1: N SMS-üzenet küldése a következő beállításokkal
 Ha SMS-üzenetet szeretne küldeni a címzettek listájára, hívja meg a `send` metódust a címzett telefonszámok listájával. A választható paramétereket is megadhatja annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani.
 ```java
@@ -181,13 +187,14 @@ for (SmsSendResult result : sendResults) {
 }
 ```
 
-A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` a telefonszámhoz, illetve azon telefonszámok listájához kell cserélni, amelyekről üzenetet szeretne küldeni.
+A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number-1>` `<to-phone-number-2>` azokhoz a telefonszám (ok) hoz, amelyekről üzenetet kíván küldeni.
 
-## <a name="optional-parameters"></a>Opcionális paraméterek
+> [!WARNING]
+> Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
 
-A `deliveryReportEnabled` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
+A `setDeliveryReportEnabled` metódus a kézbesítési jelentéskészítés konfigurálására szolgál. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
 
-A `tag` paraméter egy opcionális paraméter, amelynek használatával címkét alkalmazhat a kézbesítési jelentésre.
+A `setTag` metódus egy címke kézbesítési jelentésre való alkalmazására szolgál.
 
 ## <a name="run-the-code"></a>A kód futtatása
 

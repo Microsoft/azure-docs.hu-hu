@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100095001"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642103"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján
 
@@ -39,11 +39,12 @@ Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérj
 
 ## <a name="supported-browsers"></a>Támogatott böngészők
 
-A **My apps** portált a következő webböngészőkből érheti el:
+A **My apps** portált a következő webböngészőből érheti el. A Microsoft azt javasolja, hogy az operációs rendszerével kompatibilis legnaprakészebb böngészőt használja.
 
-- Microsoft Edge (a EDGE mobil verziója jelenleg az egyetlen támogatott mobil böngésző)
-- Google Chrome
-- Mozilla Firefox, 26,0-es vagy újabb verzió
+- Microsoft Edge (legújabb verzió, asztali és mobil)
+- Safari (legújabb verzió, Mac és iOS)
+- Chrome (legújabb verzió, asztali és mobil)
+- Firefox (legújabb verzió)
 
 Elérheti és használhatja a saját alkalmazások portált a számítógépén, vagy egy iOS-vagy Android-mobileszközön lévő Edge böngésző mobil verziójából.
 

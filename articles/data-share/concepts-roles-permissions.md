@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a832c8956f7a3d4f8669209d7ed311e7555e1e75
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100558132"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644248"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Az Azure Data Share szerepkörei és követelményei 
 
@@ -19,26 +19,22 @@ Ez a cikk azokat a szerepköröket és engedélyeket ismerteti, amelyek szüksé
 
 ## <a name="roles-and-requirements"></a>Szerepkörök és követelmények
 
-Az Azure adatmegosztási szolgáltatással az adatszolgáltató és a fogyasztó közötti hitelesítő adatok cseréje nélkül is megoszthatja az adatokat. Az Azure adatmegosztási szolgáltatás felügyelt identitásokat (korábbi nevén rendszercsomagok) használ az Azure-adattárba való hitelesítéshez. 
+Az Azure adatmegosztási szolgáltatással az adatszolgáltató és a fogyasztó közötti hitelesítő adatok cseréje nélkül is megoszthatja az adatokat. A pillanatkép-alapú megosztáshoz az Azure adatmegosztási szolgáltatás felügyelt identitásokat (korábbi nevén rendszercsomagok) használ az Azure-adattárba való hitelesítéshez. Az Azure-beli adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítania az Azure-adattárhoz az adatok olvasásához és írásához.
 
-Az Azure-beli adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítani az Azure-adattárhoz. Az Azure adatmegosztási szolgáltatás ezután ezt a felügyelt identitást használja az adatok olvasására és írására a pillanatkép-alapú megosztáshoz, valamint a szimbolikus hivatkozás létrehozásához a helyi megosztáshoz. 
-
-Az Azure-adattárból származó adatok megosztásához vagy fogadásához a felhasználónak legalább a következő engedélyekkel kell rendelkeznie. Az SQL-alapú megosztáshoz további engedélyek szükségesek.
+Az Azure-adattárból származó adatok megosztásához vagy fogadásához a felhasználónak legalább a következő engedélyekkel kell rendelkeznie. 
 
 * Engedély az Azure-adattárba való íráshoz. Ez az engedély általában a **közreműködő** szerepkörben található.
-* Engedély a szerepkör-hozzárendelés létrehozásához az Azure-adattárban. A szerepkör-hozzárendelések létrehozásához általában a **tulajdonosi** szerepkör, a felhasználói hozzáférés rendszergazdai szerepköre, vagy a Microsoft. Authorization/szerepkör-hozzárendelés/írási engedély hozzárendelésére vonatkozó engedély van rendelve. Ez az engedély nem szükséges, ha az adatmegosztási erőforrás felügyelt identitása már hozzáférést kap az Azure-adattárhoz. Az alábbi táblázatban találja a szükséges szerepkört.
 
-Az alábbiakban az adatmegosztási erőforrás felügyelt identitásához rendelt szerepkörök összegzése látható:
+A Storage és a adat-Lake pillanatkép-alapú megosztáshoz a szerepkör-hozzárendelés Azure-adattárban való létrehozásához is szükséges engedély. A szerepkör-hozzárendelések létrehozásához általában a **tulajdonosi** szerepkör, a felhasználói hozzáférés rendszergazdai szerepköre, vagy a *Microsoft. Authorization/szerepkör-hozzárendelés/írási* engedély hozzárendelésére vonatkozó engedély van rendelve. Ez az engedély nem szükséges, ha az adatmegosztási erőforrás felügyelt identitása már hozzáférést kap az Azure-adattárhoz. Az alábbiakban az adatmegosztási erőforrás felügyelt identitásához rendelt szerepkörök összegzése látható:
 
 |**Adattár típusa**|**Adatszolgáltató forrásának adattára**|**Adatfogyasztói célként szolgáló adattár**|
 |---|---|---|
 |Azure Blob Storage| Storage-blobadatok olvasója | Storage-blobadatok közreműködője
 |Azure Data Lake Gen1 | Tulajdonos | Nem támogatott
 |Azure Data Lake Gen2 | Storage-blobadatok olvasója | Storage-blobadatok közreműködője
-|Azure Data Explorer-fürt | Közreműködő | Közreműködő
 |
 
-SQL-alapú megosztás esetén az SQL-felhasználót egy olyan külső szolgáltatóból kell létrehozni, amely az Azure-beli adatmegosztási erőforrással megegyező nevű Azure SQL Databaseban van. A felhasználó létrehozásához Azure Active Directory rendszergazdai engedély szükséges. Az alábbiakban az SQL-felhasználó által megkövetelt engedélyek összegzése látható.
+SQL pillanatkép-alapú megosztás esetén az SQL-felhasználót az Azure-beli adatmegosztási erőforrás nevével megegyező nevű külső szolgáltatóból kell létrehozni Azure SQL Database. A felhasználó létrehozásához Azure Active Directory rendszergazdai engedély szükséges. Az alábbiakban az SQL-felhasználó által megkövetelt engedélyek összegzése látható.
 
 |**SQL Database típusa**|**Adatszolgáltató SQL-felhasználói engedélye**|**Adatfogyasztói SQL-felhasználói engedély**|
 |---|---|---|
@@ -47,14 +43,9 @@ SQL-alapú megosztás esetén az SQL-felhasználót egy olyan külső szolgálta
 |
 
 ### <a name="data-provider"></a>Adatszolgáltató
+A Storage és a adat-Lake pillanatkép-alapú megosztáshoz az adatkészletnek az Azure-adatmegosztásban való hozzáadásához a szolgáltatói adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítania a forrás Azure-adattárhoz. A Storage-fiók esetében például az adatmegosztási erőforrás felügyelt identitása megkapja a *Storage blob Adatolvasói* szerepkört. Ezt az Azure-adatmegosztási szolgáltatás automatikusan elvégzi, ha a felhasználó Azure Portalon keresztül adja hozzá az adatkészletet, és a felhasználó rendelkezik a megfelelő engedélyekkel. Például a felhasználó az Azure-beli adattár tulajdonosa, vagy egy olyan egyéni szerepkör tagja, amely rendelkezik a *Microsoft. Authorization/szerepkör-hozzárendelésekkel/írási* engedéllyel. 
 
-Az adatkészletek Azure-adatmegosztásban való hozzáadásához a szolgáltatói adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítania a forrás Azure-adattárhoz. A Storage-fiók esetében például az adatmegosztási erőforrás felügyelt identitása megkapja a Storage blob adatolvasói szerepkört. 
-
-Ezt az Azure-adatmegosztási szolgáltatás automatikusan elvégzi, ha a felhasználó Azure Portalon keresztül adja hozzá az adatkészletet, és a felhasználó rendelkezik a megfelelő engedélyekkel. Például a felhasználó az Azure-beli adattár tulajdonosa, vagy egy olyan egyéni szerepkör tagja, amely rendelkezik a Microsoft. Authorization/szerepkör-hozzárendelésekkel/írási engedéllyel. 
-
-Azt is megteheti, hogy a felhasználó az Azure adattár tulajdonosaként manuálisan hozzáadja az adatmegosztási erőforrás felügyelt identitását az Azure-adattárban. Ezt a műveletet csak egyszer kell végrehajtani az adatmegosztási erőforráson.
-
-Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt identitásához tartozó szerepkör-hozzárendelést, kövesse az alábbi lépéseket.  
+Azt is megteheti, hogy a felhasználó az Azure adattár tulajdonosaként manuálisan hozzáadja az adatmegosztási erőforrás felügyelt identitását az Azure-adattárban. Ezt a műveletet csak egyszer kell végrehajtani az adatmegosztási erőforráson. Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt identitásához tartozó szerepkör-hozzárendelést, kövesse az alábbi lépéseket.  
 
 1. Navigáljon az Azure-adattárhoz.
 1. Válassza a **Access Control (iam)** lehetőséget.
@@ -65,16 +56,12 @@ Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt i
 
 A szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure-szerepkörök hozzárendelése a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)című témakört. Ha REST API-k használatával oszt meg adatmegosztást, a szerepkör-hozzárendelést az API használatával hozhatja létre [Az Azure-szerepkörök hozzárendelésével a REST API használatával](../role-based-access-control/role-assignments-rest.md). 
 
-SQL-alapú források esetén létre kell hozni egy SQL-felhasználót egy külső szolgáltatótól SQL Database ugyanazzal a névvel, mint az Azure-beli adatmegosztási erőforrással az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader* jogosultsággal kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás a Azure SQL Database vagy az Azure szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
+Az SQL pillanatkép-alapú megosztás esetében egy SQL-felhasználót kell létrehozni egy külső szolgáltatótól SQL Database ugyanazzal a névvel, mint az Azure-beli adatmegosztási erőforrással az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader* jogosultsággal kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás a Azure SQL Database vagy az Azure szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
 
 ### <a name="data-consumer"></a>Adatfogyasztó
-Az adatok fogadásához a fogyasztói adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítania a cél Azure-adattárhoz. A Storage-fiók esetében például az adatmegosztási erőforrás felügyelt identitása megkapja a Storage blob adatközreműködői szerepkört. 
+Az adatok Storage-fiókba való fogadásához a fogyasztói adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítania a cél Storage-fiókhoz. Az adatmegosztási erőforrás felügyelt identitásának meg kell adni a *Storage blob adatközreműködői* szerepkört. Ezt az Azure adatmegosztási szolgáltatás automatikusan elvégzi, ha a felhasználó Azure Portalon keresztül ad meg egy célként megadott Storage-fiókot, és a felhasználó rendelkezik megfelelő engedéllyel. Például a felhasználó a Storage-fiók tulajdonosa, vagy egy olyan egyéni szerepkör tagja, amelynek van hozzárendelve a *Microsoft. Authorization/szerepkör-hozzárendelés/írási* engedély. 
 
-Ezt az Azure-adatmegosztási szolgáltatás automatikusan végzi el, ha a felhasználó a Azure Portalon keresztül határozza meg a cél adattárat, és a felhasználó rendelkezik megfelelő engedéllyel. A felhasználó például az Azure adattár tulajdonosa, vagy egy olyan egyéni szerepkör tagja, amelynek van hozzárendelve a Microsoft. Authorization/szerepkör-hozzárendelés/írás engedélye. 
-
-Azt is megteheti, hogy a felhasználó az Azure adattár tulajdonosaként manuálisan hozzáadja az adatmegosztási erőforrás felügyelt identitását az Azure-adattárban. Ezt a műveletet csak egyszer kell végrehajtani az adatmegosztási erőforráson.
-
-Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt identitásához tartozó szerepkör-hozzárendelést, kövesse az alábbi lépéseket. 
+Azt is megteheti, hogy a felhasználó a Storage-fiók tulajdonosával manuálisan hozzáadja az adatmegosztási erőforrás felügyelt identitását a Storage-fiókhoz. Ezt a műveletet csak egyszer kell végrehajtani az adatmegosztási erőforráson. Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt identitásához tartozó szerepkör-hozzárendelést, kövesse az alábbi lépéseket. 
 
 1. Navigáljon az Azure-adattárhoz.
 1. Válassza a **Access Control (iam)** lehetőséget.

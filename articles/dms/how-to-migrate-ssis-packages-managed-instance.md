@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e3e2aa055baf3dfb4bee0629040fc7c140844637
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6df64a66c0700f3a13a40ea5046515a2bf1a51
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101094009"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643852"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services csomagok migrálása egy felügyelt Azure SQL-példányra
 Ha SQL Server Integration Servicest (SSIS) használ, és szeretné áttelepíteni a SSIS-projekteket/csomagokat a SQL Server által üzemeltetett SSISDB a felügyelt Azure SQL-példányok által üzemeltetett cél SSISDB, használhatja a Azure Database Migration Service.
 
-Ha a használt SSIS-verzió korábbi, mint 2012, vagy ha nem SSISDB-csomag típusú tárolót használ, a SSIS-projektek/csomagok áttelepítése előtt át kell alakítania azokat az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Ha a használt SSIS-verzió korábbi, mint 2012, vagy ha nem SSISDB-csomag típusú tárolót használ, a SSIS-projektek/csomagok áttelepítése előtt át kell alakítania azokat az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert).
 
 > [!NOTE]
 > A Azure Database Migration Service (DMS) jelenleg nem támogatja a Azure SQL Database cél áttelepítési célként. A SSIS-projektek/csomagok Azure SQL Databaseba való újbóli üzembe helyezéséhez tekintse meg [SQL Server Integration Services csomagok újbóli üzembe helyezése Azure SQL Database](./how-to-migrate-ssis-packages.md).
@@ -39,7 +39,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 * Microsoft Azure Virtual Network létrehozása a Azure Database Migration Service számára a Azure Resource Manager üzembe helyezési modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóról a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával. További információkért tekintse meg a [hálózati topológiák az SQL felügyelt példányok áttelepítése Azure Database Migration Service használatával]( https://aka.ms/dmsnetworkformi)című cikket. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](../virtual-network/index.yml), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
 * Annak biztosítása érdekében, hogy a virtuális hálózati hálózati biztonsági csoport szabályai ne tiltsa le a ServiceTag kimenő 443-es portját a ServiceBus, a Storage és a AzureMonitor esetében. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
-* A [Windows tűzfal konfigurálása a forrás-adatbázismotor eléréséhez](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
+* A [Windows tűzfal konfigurálása a forrás-adatbázismotor eléréséhez](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * A Windows tűzfal megnyitásával engedélyezheti a Azure Database Migration Service számára a forrás SQL Server elérését, amely alapértelmezés szerint a 1433-as TCP-port.
 * Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
 * Ha tűzfalberendezést használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz, valamint a fájlokhoz a 445-ös SMB-porton keresztül.

@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 2f34e0bb3c4abcf4efba807f95decd798bbc1f86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bcd45ab1270d478b05b3929d7b8914976612294
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101669061"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645301"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 
@@ -161,7 +161,7 @@ A kapcsolódó információkról a TUDÁSBÁZISCIKK **860340,1** -es cikkében o
 - **Dinamikus fürtözési és terheléselosztási korlátozások.** Tegyük fel, hogy egy dinamikus fürtöt szeretne használni az Oracle WebLogic-kiszolgálón, és egyetlen, nyilvános terheléselosztási végponton keresztül teszi elérhetővé az Azure-ban. Ezt akkor teheti meg, ha rögzített portszámot használ az egyes felügyelt kiszolgálókon (a tartományhoz nem dinamikusan van rendelve), és nem indít el több felügyelt kiszolgálót, mint a rendszergazda által nyomon követett gépek. A virtuális gépen nincs több felügyelt kiszolgáló. Ha a konfigurációban több Oracle WebLogic-kiszolgáló fut, mint a virtuális gépek (azaz ha több Oracle WebLogic Server-példány ugyanazt a virtuális gépet használja), akkor nem lehetséges, hogy az Oracle WebLogic-kiszolgálók több példánya is egy adott portszámhoz kötődik. Az adott virtuális gépen lévő többi nem sikerül.
 
    Ha úgy konfigurálja a felügyeleti kiszolgálót, hogy automatikusan rendeljen hozzá egyedi portszámokat a felügyelt kiszolgálókhoz, akkor a terheléselosztás nem lehetséges, mivel az Azure nem támogatja egyetlen nyilvános portról több privát portra való leképezést, ahogy ezt a konfigurációhoz szükséges lenne.
-- **Az Oracle WebLogic Server több példánya egy virtuális gépen.** Az üzemelő példány követelményeitől függően érdemes lehet több Oracle WebLogic-kiszolgálót futtatni ugyanazon a virtuális gépen, ha a virtuális gép elég nagy méretű. Például egy közepes méretű virtuális gépen, amely két magot tartalmaz, dönthet úgy, hogy az Oracle WebLogic Server két példányát futtatja. Azonban azt javasoljuk, hogy ne vezessen be egyetlen meghibásodási pontot az architektúrába, ami akkor fordulhat elő, ha csak egy olyan virtuális gépet használt, amely az Oracle WebLogic Server több példányát futtatja. Ha legalább két virtuális gépet használ, jobb megközelítés lehet, és minden egyes virtuális gép az Oracle WebLogic Server több példányát futtathatja. Az Oracle WebLogic Server minden példánya továbbra is ugyanahhoz a fürthöz tartozik. Azonban jelenleg nem lehet az Azure-ban olyan terheléselosztási végpontokat használni, amelyeket az Oracle WebLogic Server-példányok ugyanazon a virtuális gépen tesznek elérhetővé, mert az Azure Load Balancer megköveteli a terheléselosztási kiszolgálók elosztását az egyedi virtuális gépek között.
+- **Az Oracle WebLogic Server több példánya egy virtuális gépen.** Az üzemelő példány követelményeitől függően érdemes lehet több Oracle WebLogic-kiszolgálót futtatni ugyanazon a virtuális gépen, ha a virtuális gép elég nagy méretű. Egy olyan közepes méretű virtuális gépen például, amely két magot tartalmaz, dönthet úgy, hogy az Oracle WebLogic Server két példányát futtatja. Azonban azt javasoljuk, hogy ne vezessen be egyetlen meghibásodási pontot az architektúrába, ami akkor fordulhat elő, ha csak egy olyan virtuális gépet használt, amely az Oracle WebLogic Server több példányát futtatja. Ha legalább két virtuális gépet használ, jobb megközelítés lehet, és minden egyes virtuális gép az Oracle WebLogic Server több példányát futtathatja. Az Oracle WebLogic Server minden példánya továbbra is ugyanahhoz a fürthöz tartozik. Azonban jelenleg nem lehet az Azure-ban olyan terheléselosztási végpontokat használni, amelyeket az Oracle WebLogic Server-példányok ugyanazon a virtuális gépen tesznek elérhetővé, mert az Azure Load Balancer megköveteli a terheléselosztási kiszolgálók elosztását az egyedi virtuális gépek között.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK virtuálisgép-rendszerképek
 

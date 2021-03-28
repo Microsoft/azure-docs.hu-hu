@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 54c1b8c189264fb2e127ff04b0fdd9125f4c9aeb
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ef69b8cf0e51c6248862f4cabd4f4ce3598a811
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563140"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640361"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Áttelepítési Áttekintés: SQL Server Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -207,7 +207,7 @@ További segítségért tekintse meg az alábbi, a valós migrációs projektekh
 |[PerfMon-adatgyűjtés automatizálása a Logman használatával](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Olyan eszköz, amely Teljesítményfigyelő adatokat gyűjt az alapkonfigurációk teljesítményének megismeréséhez és az áttelepítési cél javaslatainak támogatásához. Ez az eszköz a logman.exe használatával hozza létre a távoli SQL Serverban beállított teljesítményszámlálók létrehozására, indítására, leállítására és törlésére szolgáló parancsot.|
 |[Tanulmány – adatbázis migrálása az Azure SQL Database-be az BACPAC használatával](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|Ez a tanulmány útmutatást és lépéseket biztosít a SQL Serverról Azure SQL Database BACPAC-fájlok használatával történő áttelepítésének felgyorsításához.|
 
-Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
+Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat alapszintű alapokmánya az adatplatform-áttelepítési projektek a Microsoft Azure-beli adatplatformra való feltiltásának és felgyorsításának feloldása.
 
 
 ## <a name="next-steps"></a>Következő lépések

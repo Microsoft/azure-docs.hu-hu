@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: cffa8d9a0647ff5fe970801d5da98e23be0b2aaf
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: edc420cb1e79ed6d99a55524764cb164bd2edaf5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567325"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641347"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>A forrásadatbázisokhoz való csatlakozás során fellépő DMS-hibák elhárítása
 
@@ -31,7 +31,7 @@ A forrás-SQL Server adatbázishoz való csatlakozáshoz és a velük való kapc
 | ------------- | ------------- |
 | Az SQL-kapcsolatok sikertelenek. Hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Serverhez való kapcsolódás során. A kiszolgáló nem található vagy nem érhető el. Ellenőrizze, hogy a példány neve helyes-e, és hogy a SQL Server távoli kapcsolatok engedélyezésére van-e konfigurálva.<br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem találja a forráskiszolgáló helyét. A probléma megoldásához tekintse meg a [következő cikket: hiba történt a forrás SQL Serverhoz való kapcsolódáskor, ha dinamikus portot vagy nevesített példányt használ](./known-issues-troubleshooting-dms.md#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance). |
 | **53** -es hiba – az SQL-kapcsolatok sikertelenek. (Hibakód: 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud csatlakozni a forráskiszolgálóról. A probléma megoldásához tekintse meg a következő erőforrásokat, majd próbálkozzon újra. <br><br>  [Interaktív felhasználói útmutató a kapcsolódási probléma megoldásához](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server áttelepítésének előfeltételei a Azure SQL Database](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) <br><br> [SQL Server Azure SQL felügyelt példányra való áttelepítésének előfeltételei](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) |
-| **18456** -es hiba – a bejelentkezés sikertelen.<br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud kapcsolódni a forrás-adatbázishoz a megadott T-SQL hitelesítő adatok használatával. A probléma megoldásához ellenőrizze a megadott hitelesítő adatokat. Tekintse meg [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) vagy a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat is, majd próbálkozzon újra. |
+| **18456** -es hiba – a bejelentkezés sikertelen.<br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud kapcsolódni a forrás-adatbázishoz a megadott T-SQL hitelesítő adatok használatával. A probléma megoldásához ellenőrizze a megadott hitelesítő adatokat. Tekintse meg [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error) vagy a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat is, majd próbálkozzon újra. |
 | A (z) "" formázott AccountName érték van {0} megadva. A AccountName várt formátuma tartománynév \ Felhasználónév<br> | Ez a hiba akkor fordul elő, ha a felhasználó a Windows-hitelesítést választja, de a felhasználónevet érvénytelen formátumban adja meg. A probléma megoldásához adja meg a felhasználónevet a Windows-hitelesítés megfelelő formátumában, vagy válassza az **SQL-hitelesítés** lehetőséget. |
 
 ## <a name="aws-rds-mysql"></a>AWS RDS MySQL
@@ -48,8 +48,8 @@ A forrás AWS RDS MySQL-adatbázishoz való csatlakozással kapcsolatos lehetsé
 
 > [!NOTE]
 > A forrás AWS RDS MySQL-adatbázishoz való csatlakozással kapcsolatos hibák elhárításával kapcsolatban tekintse meg a következő forrásokat:
-> * [Az Amazon RDS kapcsolódási problémáinak elhárítása](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Hogyan az Amazon RDS Database-példánnyal való kapcsolódással kapcsolatos problémák megoldásához?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Az Amazon RDS kapcsolódási problémáinak elhárítása](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Hogyan az Amazon RDS Database-példánnyal való kapcsolódással kapcsolatos problémák megoldásához?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-postgresql"></a>AWS RDS PostgreSQL
 
@@ -62,8 +62,8 @@ A forrás AWS RDS PostgreSQL-adatbázishoz való csatlakozással kapcsolatos leh
 
 > [!NOTE]
 > A forrás AWS RDS PostgreSQL-adatbázishoz való csatlakozással kapcsolatos hibák elhárításával kapcsolatban tekintse meg a következő forrásokat:
-> * [Az Amazon RDS kapcsolódási problémáinak elhárítása](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Hogyan az Amazon RDS Database-példánnyal való kapcsolódással kapcsolatos problémák megoldásához?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Az Amazon RDS kapcsolódási problémáinak elhárítása](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Hogyan az Amazon RDS Database-példánnyal való kapcsolódással kapcsolatos problémák megoldásához?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-sql-server"></a>AWS RDS SQL Server
 
@@ -72,15 +72,15 @@ A forráshoz való csatlakozáshoz kapcsolódó lehetséges problémák a követ
 | Hiba         | Ok és hibaelhárítás részletei |
 | ------------- | ------------- |
 | **53** -es hiba – az SQL-kapcsolatok sikertelenek. Hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Serverhez való kapcsolódás során. A kiszolgáló nem található vagy nem volt elérhető. Ellenőrizze, hogy a példány neve helyes-e, és hogy a SQL Server távoli kapcsolatok engedélyezésére van-e konfigurálva. (szolgáltató: Nevesített csövek szolgáltatója, hiba: 40 – nem sikerült megnyitni a kapcsolódást SQL Server | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud csatlakozni a forráskiszolgálóról. A probléma megoldásához tekintse meg a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat, majd próbálkozzon újra. |
-| **18456** -es hiba – a bejelentkezés sikertelen. A (z) {User} felhasználó bejelentkezése sikertelen | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud kapcsolódni a forrás-adatbázishoz a megadott T-SQL hitelesítő adatokkal. A probléma megoldásához ellenőrizze a megadott hitelesítő adatokat. Tekintse meg [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) vagy a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat is, és próbálkozzon újra. |
+| **18456** -es hiba – a bejelentkezés sikertelen. A (z) {User} felhasználó bejelentkezése sikertelen | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud kapcsolódni a forrás-adatbázishoz a megadott T-SQL hitelesítő adatokkal. A probléma megoldásához ellenőrizze a megadott hitelesítő adatokat. Tekintse meg [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error) vagy a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat is, és próbálkozzon újra. |
 | **Hiba 87** – a kapcsolatok karakterlánca érvénytelen. Hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Serverhez való kapcsolódás során. A kiszolgáló nem található vagy nem érhető el. Ellenőrizze, hogy a példány neve helyes-e, és hogy a SQL Server távoli kapcsolatok engedélyezésére van-e konfigurálva. (szolgáltató: SQL hálózati adapterek, hiba: 25 – a kapcsolati sztring érvénytelen) | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud csatlakozni a forráskiszolgálóról egy érvénytelen kapcsolati karakterlánc miatt. A probléma megoldásához ellenőrizze a megadott kapcsolódási karakterláncot. Ha a probléma továbbra is fennáll, tekintse meg a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat, majd próbálkozzon újra. |
 | **Hiba – a kiszolgáló tanúsítványa nem megbízható.** Sikeresen létrejött egy csatlakozás a-kiszolgálóval, de hiba történt a bejelentkezési folyamat során. (szolgáltató: SSL-szolgáltató, hiba: 0 – a tanúsítványláncot olyan szolgáltató adta ki, amely nem megbízható.) | Ez a hiba akkor fordul elő, ha a használt tanúsítvány nem megbízható. A probléma megoldásához meg kell keresnie egy megbízható tanúsítványt, majd engedélyeznie kell azt a kiszolgálón. Azt is megteheti, hogy a kapcsolódáskor a megbízhatósági tanúsítvány lehetőséget választja. Ezt a műveletet csak akkor végezze el, ha már ismeri a használt tanúsítványt, és megbízik benne. <br> Az önaláírt tanúsítvánnyal titkosított TLS-kapcsolatok nem biztosítanak erős biztonságot – ezek az ember általi támadásra fogékonyak. Ne használja a TLS-t az önaláírt tanúsítványok használatával éles környezetben vagy az internethez csatlakozó kiszolgálókon. <br> További információ: az [SSL használata Microsoft SQL Server db-példánnyal](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) vagy [oktatóanyaggal: RDS SQL Server migrálása az Azure-ba a DMS használatával](./index.yml). |
-| **300** -es hiba – a felhasználó nem rendelkezik a szükséges engedélyekkel. A kiszolgáló ÁLLAPOTának megtekintése engedély megtagadva a (z) {Server} objektumon, adatbázis: {Database} | Ez a hiba akkor fordul elő, ha a felhasználó nem rendelkezik az áttelepítés elvégzéséhez szükséges engedéllyel. A probléma megoldásához tekintse meg a következő témakört: [kiszolgáló engedélyeinek megadása – Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) vagy [oktatóanyag: RDS SQL Server migrálása az Azure-ba a DMS használatával](./index.yml) további részletekért. |
+| **300** -es hiba – a felhasználó nem rendelkezik a szükséges engedélyekkel. A kiszolgáló ÁLLAPOTának megtekintése engedély megtagadva a (z) {Server} objektumon, adatbázis: {Database} | Ez a hiba akkor fordul elő, ha a felhasználó nem rendelkezik az áttelepítés elvégzéséhez szükséges engedéllyel. A probléma megoldásához tekintse meg a következő témakört: [kiszolgáló engedélyeinek megadása – Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql) vagy [oktatóanyag: RDS SQL Server migrálása az Azure-ba a DMS használatával](./index.yml) további részletekért. |
 
 > [!NOTE]
 > Ha további információt szeretne a forrás AWS RDS SQL Serverhoz való csatlakozással kapcsolatos hibák elhárításával kapcsolatban, tekintse meg a következő forrásokat:
 >
-> * [Az SQL Server kapcsolódási hibáinak megoldása](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
+> *    [Az SQL Server kapcsolódási hibáinak megoldása](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
 > * [Hogyan az Amazon RDS Database-példánnyal való kapcsolódással kapcsolatos problémák megoldásához?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="known-issues"></a>Ismert problémák
@@ -91,7 +91,7 @@ A forráshoz való csatlakozáshoz kapcsolódó lehetséges problémák a követ
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg a [Azure Database Migration Service PowerShellt](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)ismertető cikket.
+* Tekintse meg a [Azure Database Migration Service PowerShellt](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration)ismertető cikket.
 * A Azure Portal használatával megtekintheti a [kiszolgáló paramétereinek konfigurálása Azure Database for MySQLben](../mysql/howto-server-parameters.md)című cikket.
 * Tekintse meg a [Azure Database Migration Service használatának előfeltételeit ismertető](./pre-reqs.md)cikket.
 * Tekintse meg a [Azure Database Migration Service használatának gyakori kérdéseit](./faq.md).

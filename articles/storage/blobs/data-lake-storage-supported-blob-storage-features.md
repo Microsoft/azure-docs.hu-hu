@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: normesta
-ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c9eb1aa2e88019609f5ab26c2e995e4e43063ca
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516278"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640824"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2-ben elérhető Blob Storage-funkciók
 
@@ -50,7 +50,7 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Névtelen nyilvános hozzáférés |Általánosan elérhető|Általánosan elérhető| Lásd: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok számára](anonymous-read-access-configure.md).|
 |Ügyfél által felügyelt fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Ügyfél által biztosított kulcsok|Még nem támogatott|Még nem támogatott|[Titkosítási kulcs megadása a blob Storage-kérelemben](encryption-customer-provided-keys.md)|
-|Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)|
+|Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése](encryption-scope-manage.md)|
 |Csatorna módosítása|Még nem támogatott|Még nem támogatott|[A hírcsatornák támogatásának módosítása az Azure Blob Storage-ban](storage-blob-change-feed.md)|
 |Objektumreplikáció|Még nem támogatott|Még nem támogatott|[Objektumok replikálásának konfigurálása a blokkos blobokhoz](object-replication-configure.md)|
 |BLOB verziószámozása|Még nem támogatott|Még nem támogatott|[BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)|

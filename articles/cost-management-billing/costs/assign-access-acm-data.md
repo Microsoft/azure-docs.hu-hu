@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: HT
+ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "91371966"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645283"
 ---
 # <a name="assign-access-to-cost-management-data"></a>A Cost Management adataihoz való hozzáférés hozzárendelése
 
@@ -39,9 +39,9 @@ Az Azure EA-előfizetések költségadatainak megtekintéséhez a felhasználók
 | Számlázási fiók<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Vállalati rendszergazda | None | A Nagyvállalati Szerződésben foglalt összes előfizetés |
 | Részleg | [https://ea.azure.com](https://ea.azure.com/) | Részlegszintű rendszergazda | **Díjtételek megtekintése a részlegszintű rendszergazda számára** engedélyezve | A részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetés |
 | Regisztrációs fiók<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Fióktulajdonos | **Díjtételek megtekintése a fióktulajdonos számára** engedélyezve | A regisztrációs fiókhoz tartozó összes előfizetés |
-| Felügyeleti csoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **Díjtételek megtekintése a fióktulajdonos számára** engedélyezve | A felügyeleti csoport alá tartozó összes előfizetés |
-| Előfizetés | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **Díjtételek megtekintése a fióktulajdonos számára** engedélyezve | Az előfizetésben szereplő összes erőforrás/erőforráscsoport |
-| Erőforráscsoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **Díjtételek megtekintése a fióktulajdonos számára** engedélyezve | Az erőforráscsoportban található összes erőforrás |
+| Felügyeleti csoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management olvasó (vagy közreműködő) | **Díjtételek megtekintése a fióktulajdonos számára** engedélyezve | A felügyeleti csoport alá tartozó összes előfizetés |
+| Előfizetés | [https://portal.azure.com](https://portal.azure.com/) | Cost Management olvasó (vagy közreműködő) | **Díjtételek megtekintése a fióktulajdonos számára** engedélyezve | Az előfizetésben szereplő összes erőforrás/erőforráscsoport |
+| Erőforráscsoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management olvasó (vagy közreműködő) | **Díjtételek megtekintése a fióktulajdonos számára** engedélyezve | Az erőforráscsoportban található összes erőforrás |
 
 <sup>1</sup> A számlázási fiókot Nagyvállalati Szerződésnek vagy Beléptetésnek is nevezik.
 
@@ -52,8 +52,8 @@ Az Azure EA-előfizetések költségadatainak megtekintéséhez a felhasználók
 
 Az egyéb Azure-előfizetések költségadatainak megtekintéséhez a felhasználóknak legalább olvasási jogosultsággal kell rendelkezniük az alábbi hatókörök legalább egyikéhez:
 
-- Azure-fiók
 - Felügyeleti csoport
+- Előfizetés
 - Erőforráscsoport
 
 Számos különféle hatókör érhető el, miután a partnerek előkészítik az ügyfeleket egy Microsoft-ügyfélszerződéshez. A CSP-ügyfelek ezután akkor használhatják a Cost Management funkcióit, ha a CSP-partnerük engedélyezte őket. További információ: [Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással](get-started-partners.md).

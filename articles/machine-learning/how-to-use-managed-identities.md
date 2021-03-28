@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521016"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642420"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Felügyelt identitások használata Azure Machine Learning (előzetes verzió)
 
@@ -234,7 +234,7 @@ Miután konfigurálta az ACR-t a korábban leírtaknak megfelelően a rendszerga
 
 Munkaterület létrehozásakor megadhat egy felhasználó által hozzárendelt felügyelt identitást, amelyet a rendszer a társított erőforrások eléréséhez fog használni: ACR, kulcstartó, tárolás és alkalmazás-információk.
 
-Először [létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli]), és jegyezze fel a felügyelt identitás ARM erőforrás-azonosítóját.
+Először [létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli), és jegyezze fel a felügyelt identitás ARM erőforrás-azonosítóját.
 
 Ezután az Azure CLI vagy a Python SDK használatával hozza létre a munkaterületet. A parancssori felület használatakor a paraméter használatával határozza meg az azonosítót `--primary-user-assigned-identity` . Az SDK használatakor használja a t `primary_user_assigned_identity` . Az alábbi példák az Azure CLI és a Python használatával hoznak létre egy új munkaterületet a következő paraméterek használatával:
 

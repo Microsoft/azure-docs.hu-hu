@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3152fe0bf77b73e593ac61efb5f386827bdc96ef
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520659"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643729"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>SQL Server-adatbázis migrálása Azure SQL Databasera a Azure PowerShell használatával
 
@@ -151,7 +151,7 @@ Végül hozza létre és indítsa el az Azure Database áttelepítési feladatot
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Hitelesítőadat-paraméterek létrehozása a forrás és a cél számára
 
-A kapcsolatbiztonsági hitelesítő adatok létrehozhatók [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) objektumként.
+A kapcsolatbiztonsági hitelesítő adatok létrehozhatók [PSCredential](/dotnet/api/system.management.automation.pscredential) objektumként.
 
 Az alábbi példa a *PSCredential* objektumok létrehozását mutatja be mind a forrás-, mind a célként megadott kapcsolatokhoz, és a jelszavakat karakterlánc-változókként *$sourcePassword* és *$targetPassword*.
 
@@ -195,8 +195,8 @@ Az `New-AzDataMigrationTask` áttelepítési feladat létrehozásához és elind
 * *Feladatnév*. A létrehozandó feladat neve. 
 * *SourceConnection*. A forrás-SQL Server kapcsolatokat jelképező AzDmsConnInfo objektum.
 * *TargetConnection*. A célként Azure SQL Database kapcsolatokat jelölő AzDmsConnInfo objektum.
-* *SourceCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) objektum a forráskiszolgálón való csatlakozáshoz.
-* *TargetCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) objektum a célkiszolgálóra való csatlakozáshoz.
+* *SourceCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential) objektum a forráskiszolgálón való csatlakozáshoz.
+* *TargetCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential) objektum a célkiszolgálóra való csatlakozáshoz.
 * *SelectedDatabase*. A forrás-és céladatbázis-leképezést jelképező AzDataMigrationSelectedDB objektum.
 * *SchemaValidation*. (nem kötelező, kapcsoló paraméter) Az áttelepítés után a a séma információinak összehasonlítását végzi a forrás és a cél között.
 * *DataIntegrityValidation*. (nem kötelező, kapcsoló paraméter) Az áttelepítés után a a forrás és a cél között ellenőrzőösszeg-alapú adatintegritás-ellenőrzést hajt végre.

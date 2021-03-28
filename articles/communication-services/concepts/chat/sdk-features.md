@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b275c3af2e92dc5af677120b5082751d19676b2e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 02cfb4abc4f553c8f4353d8488390ed45eb3a7e7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110814"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642230"
 ---
 # <a name="chat-sdk-overview"></a>A csevegési SDK áttekintése 
 
@@ -28,7 +28,7 @@ A következő lista a kommunikációs szolgáltatások csevegési SDK-ban jelenl
 
 | Szolgáltatások csoportja | Képesség | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
-| Alapvető képességek | Csevegési szál létrehozása 2 vagy több felhasználó között (legfeljebb 250 felhasználó)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
+| Alapvető képességek | Csevegési szál létrehozása 2 vagy több felhasználó között                                                     | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
 |                   | Csevegési szál témakörének frissítése                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
 |                   | Résztvevők hozzáadása vagy eltávolítása csevegési szálból                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | Válassza ki, hogy meg szeretné-e osztani a csevegési előzményeket a hozzáadott résztvevővel                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
@@ -37,16 +37,16 @@ A következő lista a kommunikációs szolgáltatások csevegési SDK-ban jelenl
 |                   | Adott kommunikációs felhasználó, a csevegési szálak listájának beolvasása, amelyhez a felhasználó tartozik                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 |                   | Egy adott csevegési szál adatainak beolvasása                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
 |                   | Üzenetek küldése és fogadása csevegési szálban                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
-|                   | Elküldött üzenet tartalmának szerkesztése                                                                                | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Üzenet törlése                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Olvasási visszaigazolás a csevegés más résztvevőinek által olvasott üzenetekhez <br/> *Nem érhető el, ha több mint 20 résztvevő van egy csevegési szálban*    | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Értesítés küldése, ha a résztvevők aktívan beírják az üzenetet egy csevegési szálba <br/> *Nem érhető el, ha több mint 20 tag van egy csevegési szálban*      | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
-|                   | Csevegési szál összes üzenetének beolvasása <br/>                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Az elküldött üzenet tartalmának frissítése                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Korábban elküldött üzenet törlése                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Olvasási visszaigazolás a csevegés más résztvevőinek által olvasott üzenetekhez                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Értesítés küldése, ha a résztvevők aktívan beírják az üzenetet egy csevegési szálba                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Csevegési szál összes üzenetének beolvasása                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | Unicode-hangulatjelek küldése az üzenet tartalmának részeként                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Valós idejű jelzés (a tulajdonosi jelzési csomag * * által engedélyezett)|  Előfizetés a beérkező üzenetek és egyéb műveletek valós idejű frissítéseinek beszerzésére a csevegési alkalmazásban. A valós idejű jelzésekhez támogatott frissítések listájának megtekintéséhez lásd a [csevegési fogalmakat](concepts.md#real-time-signaling) ismertető témakört.                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  |    
-| Event Grid támogatás             | Integráció a Azure Event Grid és a kommunikációs szolgáltatás konfigurálása a csevegési tevékenységen alapuló üzleti logika végrehajtására vagy egy egyéni leküldéses értesítési szolgáltatás csatlakoztatására   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-| Figyelés        | Az Azure Portalban kibocsátott API-kérelmek mérőszámait felhasználva irányítópultokat hozhat létre, figyelheti a csevegési alkalmazás állapotát, és riasztásokat állíthat be a rendellenességek észleléséhez      | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|                   | A kommunikációs szolgáltatások erőforrásának konfigurálása a csevegési operatív naplók fogadásához figyelési és diagnosztikai célokra          | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|Valós idejű értesítések (a tulajdonosi jelzési csomaggal * *)|  A csevegési ügyfelek előfizethetnek a beérkező üzenetek és a csevegési szálban előforduló egyéb műveletek valós idejű frissítéseinek beszerzésére. A valós idejű értesítések támogatott frissítéseinek listáját itt tekintheti meg: [csevegési fogalmak](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+| Integráció a Azure Event Grid             | Az Azure Event Gridban elérhető csevegési események használatával csatlakoztathatja az egyéni értesítési szolgáltatásokat, vagy közzéteheti az eseményt egy webhookba, hogy olyan üzleti logikát hajtson végre, mint a CRM-rekordok frissítése a csevegés befejeződése után.   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+| Jelentéskészítés </br>(Ez az információ a Azure Portal-on lévő kommunikációs szolgáltatások erőforrásának figyelés lapján érhető el)      | A csevegési alkalmazás API-forgalmának megismeréséhez tekintse meg az Azure Metrikaböngésző közzétett mérőszámait, és állítsa be a riasztásokat a rendellenességek észleléséhez     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | A kommunikációs szolgáltatások megoldásának monitorozása és hibakeresése az erőforrás diagnosztikai naplózásának engedélyezésével    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 
 
 * * A tulajdonosi jelző csomag webes szoftvercsatornák használatával valósítható meg. Ha a webes szoftvercsatornák nem támogatottak, a rendszer visszaküldi a hosszú lekérdezést.  
@@ -68,3 +68,4 @@ A következő táblázat a jelenleg elérhető támogatott böngészők és verz
 
 A következő dokumentumok érdekesek lehetnek:  
 - Ismerkedjen meg a [csevegési fogalmakkal](../chat/concepts.md)
+- Ismerje meg, hogyan működik a [díjszabás](../pricing.md#chat) a csevegéshez

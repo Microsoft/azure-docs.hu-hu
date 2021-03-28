@@ -4,11 +4,12 @@
   items:
     - name: A Media Services ismertetése
       href: media-services-overview.md
-    - name: Újdonságok a Media Servicesben
-      displayName: release notes
+    - name: Kibocsátási megjegyzések
       href: release-notes.md
     - name: Media Services-megfelelőség
       href: concept-compliance.md
+    - name: Gyakori kérdések
+      href: frequently-asked-questions.yml
 - name: Rövid útmutatók
   items:
     - name: Saját környezet beállítása
@@ -262,9 +263,8 @@
       href: architectures-concept.md
     - name: Hibaelhárítás
       items:
-        - name: Gyakori kérdések
-          displayName: faqs
-          href: frequently-asked-questions.md
+        - name: Kérdés gyűjteménye
+          href: questions-collection.md
         - name: Hibakódok
           items:
             - name: Streamvégpont-hibakódok
@@ -346,7 +346,7 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Videók másolása kódolás nélkül a REST-tel
           href: how-to-create-copy-video-audio-transform.md
-        - name: Feladatok létrehozása a .NET-tel
+        - name: Feladatok létrehozása a parancssori felülettel
           href: cli-create-jobs.md
         - name: Feladatbemenet létrehozása helyi fájllal és .NET-tel
           displayName: upload

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: edc58ed4af3475a45804e3833424bec79d50ff89
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726053"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641546"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli automatikus skálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -113,6 +113,10 @@ Most már beállíthatja a manuálisan méretezni kívánt példányok számát.
 
 Az **autoskálázás engedélyezése** és a **Mentés** lehetőségre kattintva bármikor visszatérhet az autoscale méretezéshez.
 
+### <a name="cool-down-period-effects"></a>Lehűtési időszak hatásai
+
+Az automatikus skálázás egy lehűtési időszakot használ a "csapkodás" megtiltásához, amely a példányok gyors, repetative fel-és leskálázása.  További információ: az [autoscale kiértékelésének lépései](autoscale-understanding-settings.md#autoscale-evaluation).  További hasznos információk az autoskálázási motor figyeléséről és az azzal kapcsolatos tudnivalókról: az autoscale [ajánlott eljárásai](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types) és az autoscale [hibaelhárítása](autoscale-troubleshoot.md) . 
+
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Forgalom átirányítása kifogástalan állapotú példányokra (App Service)
 
 <a id="health-check-path"></a>
@@ -136,6 +140,7 @@ Ha többet szeretne megtudni az erőforrások régiók közötti áthelyezésér
 ## <a name="next-steps"></a>Következő lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+
 
 <!--Reference-->
 [1]:https://portal.azure.com
