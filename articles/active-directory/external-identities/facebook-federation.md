@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bcacfc8cede0ab91241fd431aace10cbbfbea916
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648618"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709684"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook hozzáadása identitás-szolgáltatóként külső identitásokhoz
 
@@ -82,7 +82,7 @@ Most be kell állítania a Facebook ügyfél-azonosítót és az ügyfél titká
    `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát a fentiekben létrehozott alkalmazásból a Facebook Fejlesztői konzolon. További információt a [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) című cikkben talál. 
+   > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát a fentiekben létrehozott alkalmazásból a Facebook Fejlesztői konzolon. További információt a [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true) című cikkben talál. 
 
 ## <a name="how-do-i-remove-facebook-federation"></a>Hogyan eltávolítja a Facebook-összevonást?
 A Facebook-összevonási telepítőt törölheti. Ha így tesz, a felhasználói folyamatokon keresztül regisztrált felhasználók Facebook-fiókjai többé nem fognak tudni bejelentkezni. 
@@ -103,7 +103,7 @@ A Facebook-összevonási telepítőt törölheti. Ha így tesz, a felhasználói
     `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
 
    > [!NOTE]
-   > További információ: [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > További információ: [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview&preserve-view=true). 
 
 ## <a name="next-steps"></a>Következő lépések
 

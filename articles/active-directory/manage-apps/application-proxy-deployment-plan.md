@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580060"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709752"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD alkalmazás-proxy telepítési útmutató
 
@@ -172,7 +172,7 @@ Ebben az oktatóanyagban az alkalmazásproxy központi telepítésének lépése
 
 A közzétételi alkalmazások feltételezik, hogy az összes előfeltétel teljesült, és az alkalmazásproxy oldalon több összekötő jelenik meg, amelyek regisztrálva és aktívak.
 
-Az alkalmazásokat a [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview)használatával is közzéteheti.
+Az alkalmazásokat a [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)használatával is közzéteheti.
 
 Az alábbi ajánlott eljárások követik az alkalmazások közzétételekor:
 

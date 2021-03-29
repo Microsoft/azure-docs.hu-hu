@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e05bf1df503a13efc8e4ca30b3341216e01e678e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cf500d529eb22cdd333d796f156eedcd284ea20d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110831"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642307"
 ---
 # <a name="chat-concepts"></a>Csevegéssel kapcsolatos alapfogalmak 
 
@@ -26,122 +26,73 @@ További információ az adott SDK-nyelvekről és-képességekről: a [kommunik
 
 ## <a name="chat-overview"></a>Csevegés – áttekintés    
 
-Csevegési beszélgetések a csevegési szálakon belül történnek. Egy csevegési szál Számos üzenetet és számos felhasználót tartalmazhat. Minden üzenet egyetlen szálhoz tartozik, és egy felhasználó egy vagy több szál része lehet. A csevegési szál minden felhasználóját résztvevőnek nevezzük. Csak a szál résztvevői küldhetnek és fogadhatnak üzeneteket, és hozzáadhatnak vagy eltávolíthatnak más felhasználókat egy csevegési szálban. A kommunikációs szolgáltatások addig tárolja a csevegési előzményeket, amíg nem hajt végre törlési műveletet a csevegési szálon vagy az üzeneten, vagy amíg a résztvevő nem marad a csevegési szálban, és ekkor a csevegési szál árva, és a törlésre várólistára kerül. 
-    
-## <a name="service-limits"></a>Szolgáltatási korlátozások   
+Csevegési beszélgetések a csevegési **szálakon** belül történnek. A csevegési szálak a következő tulajdonságokkal rendelkeznek:
 
+- A csevegési szálat egyedileg azonosítják `ChatThreadId` . 
+- A csevegési szálak egy vagy több felhasználóval rendelkezhetnek, akik küldhetnek üzeneteket. 
+- Egy felhasználó egy vagy több csevegési szál része lehet. 
+- Csak a szál résztvevői férhetnek hozzá egy adott csevegési szálhoz, és csak a csevegési szálon végezheti el a műveleteket. Ezek a műveletek magukban foglalják az üzenetek küldését és fogadását, a résztvevők hozzáadását és a résztvevők eltávolítását. 
+- A felhasználókat a rendszer automatikusan felveszi a résztvevőként a létrehozott csevegési Szálakba.
+
+### <a name="user-access"></a>Felhasználói hozzáférés
+Általában a szál létrehozója és résztvevői ugyanolyan szintű hozzáféréssel rendelkeznek a szálhoz, és az SDK-ban elérhető összes kapcsolódó műveletet végrehajtják, beleértve a törlést is. A résztvevők nem rendelkeznek írási hozzáféréssel a többi résztvevő által küldött üzenetekhez, ami azt jelenti, hogy csak az üzenet küldője frissítheti vagy törölheti az elküldött üzeneteket. Ha egy másik résztvevő megpróbál erre, hibaüzenetet kap. 
+
+Ha korlátozni szeretné a csevegési funkciókhoz való hozzáférést egy adott felhasználó számára, a hozzáférést a megbízható szolgáltatás részeként is konfigurálhatja. A megbízható szolgáltatás az a szolgáltatás, amely összehangolja a csevegés résztvevőinek hitelesítését és engedélyezését. Ezt részletesebben is megvizsgáljuk.  
+
+### <a name="chat-data"></a>Csevegési adatgyűjtés 
+A kommunikációs szolgáltatások addig tárolja a csevegési előzményeket, amíg explicit módon nem törli őket. A csevegési szál résztvevői `ListMessages` megtekinthetik egy adott szál üzeneteinek előzményeit. A csevegési szálból eltávolított felhasználók megtekinthetik az előzmények korábbi előzményeit, de nem tudnak majd új üzeneteket küldeni vagy fogadni a csevegési szál részeként. 30 nap elteltével a rendszer automatikusan törli a résztvevőket nem tartalmazó teljes mértékben tétlen szálat. Ha többet szeretne megtudni a kommunikációs szolgáltatások által tárolt adatokról, tekintse meg az [Adatvédelem](../privacy.md)dokumentációját.  
+
+### <a name="service-limits"></a>Szolgáltatási korlátozások  
 - A csevegési szálban engedélyezett résztvevők maximális száma 250.   
 - Az üzenet maximális megengedett mérete körülbelül 28 KB.  
 - A több mint 20 résztvevővel rendelkező csevegési szálak esetén az olvasási visszaigazolások és a beírási mutatók funkciói nem támogatottak.    
-- 
+
 ## <a name="chat-architecture"></a>Csevegési architektúra    
 
 Két fő részből áll a csevegő architektúra: 1) megbízható szolgáltatás és 2) ügyfélalkalmazás.    
 
 :::image type="content" source="../../media/chat-architecture.png" alt-text="A kommunikációs szolgáltatások csevegési architektúráját bemutató ábra."::: 
 
- - **Megbízható szolgáltatás:** A csevegési munkamenetek megfelelő kezeléséhez olyan szolgáltatásra van szükség, amely segítséget nyújt a kommunikációs szolgáltatásokhoz való kapcsolódáshoz az erőforrás-kapcsolati karakterlánc használatával. Ez a szolgáltatás a csevegési szálak létrehozásához, a szálak résztvevői listájainak kezeléséhez és hozzáférési jogkivonatok biztosításához felelős a felhasználók számára. A hozzáférési jogkivonatokkal kapcsolatos további információk a [hozzáférési tokenek](../../quickstarts/access-tokens.md) rövid útmutatójában találhatók.   
- - **Ügyfélalkalmazás:**  Az ügyfélalkalmazás csatlakozik a megbízható szolgáltatáshoz, és fogadja a közvetlenül a kommunikációs szolgáltatásokhoz való csatlakozáshoz használt hozzáférési jogkivonatokat. A kapcsolatfelvétel után az ügyfélalkalmazás küldhet és fogadhat üzeneteket.   
-Javasoljuk, hogy a megbízható szolgáltatási szinten hozza létre a hozzáférési jogkivonatokat. Ebben a forgatókönyvben a kiszolgálói oldal feladata a felhasználók létrehozása és kezelése, valamint a jogkivonatok kiállítása.   
+ - **Megbízható szolgáltatás:** A csevegési munkamenetek megfelelő kezeléséhez olyan szolgáltatásra van szükség, amely segítséget nyújt a kommunikációs szolgáltatásokhoz való kapcsolódáshoz az erőforrás-kapcsolati karakterlánc használatával. Ez a szolgáltatás a csevegési szálak létrehozásához, a résztvevők hozzáadásához és eltávolításához, valamint a hozzáférési tokenek felhasználókhoz való kiállításához felelős. A hozzáférési jogkivonatokkal kapcsolatos további információk a [hozzáférési tokenek](../../quickstarts/access-tokens.md) rövid útmutatójában találhatók.  
+ - **Ügyfélalkalmazás:**  Az ügyfélalkalmazás csatlakozik a megbízható szolgáltatáshoz, és fogadja a felhasználók által a kommunikációs szolgáltatásokhoz való közvetlen csatlakozáshoz használt hozzáférési jogkivonatokat. Miután a megbízható szolgáltatás létrehozta a csevegési szálat, és hozzáadta a felhasználókat a résztvevőkhöz, az ügyfélalkalmazás használatával csatlakozhat a csevegési szálhoz, és üzeneteket küldhet. Használja a valós idejű értesítések funkciót, amelyet az alábbiakban ismertetünk, hogy az ügyfélalkalmazás előfizessen az üzenetekre & a más résztvevőktől származó hozzászóláslánc-frissítéseket.
+    
         
 ## <a name="message-types"></a>Üzenetek típusai    
 
-A kommunikációs szolgáltatások csevegés megosztja a felhasználó által létrehozott üzeneteket, valamint a szál- **tevékenységek** nevű rendszer által generált üzeneteket. A hozzászóláslánc-tevékenységek akkor jönnek létre, amikor egy csevegési szál frissül. `List Messages` `Get Messages` Egy csevegési szál hívásakor az eredmény a felhasználó által generált szöveges üzeneteket, valamint a rendszerüzeneteket is tartalmazza időrendben. Ez segít megállapítani, hogy mikor lett hozzáadva vagy eltávolítva egy résztvevő, vagy mikor frissítették a csevegési szál témakört. A támogatott üzenetek típusai a következők:  
-    
- - `Text`: Egyszerű szöveges üzenet, amelyet egy felhasználó egy csevegési beszélgetés részeként komponál és küld. 
- - `RichText/HTML`: Formázott szöveges üzenet. Vegye figyelembe, hogy a kommunikációs szolgáltatások felhasználói jelenleg nem küldhetnek RichText üzeneteket. Ezt az üzenetet a csapatok felhasználóitól a kommunikációs szolgáltatások felhasználóinak küldött üzenetek támogatják a csapatok együttműködési forgatókönyvekben.   
- - `ThreadActivity/ParticipantAdded`: Olyan Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz. Például: 
+Az üzenetek előzményeinek részeként a csevegés megosztja a felhasználó által létrehozott üzeneteket, valamint a rendszer által létrehozott üzeneteket. A rendszerüzenetek akkor jönnek létre, amikor egy csevegési szál frissül, és segít azonosítani a résztvevő hozzáadását vagy eltávolítását, vagy ha a csevegési szál témakörét frissítették. `List Messages` `Get Messages` Egy csevegési szál hívásakor az eredmény mindkét típusú üzenetet fogja tartalmazni időrendi sorrendben.
+
+A felhasználó által generált üzenetek esetében az üzenet típusa beállítható az `SendMessageOptions` üzenet csevegési szálba küldéséhez. Ha nincs megadva érték, a kommunikációs szolgáltatások alapértelmezés szerint a `text` következőt fogják beírni:. Az érték beállítása a HTML küldésekor fontos. Ha meg `html` van adva, a kommunikációs szolgáltatások megtisztítják a tartalmat, így biztosítva a biztonságos megjelenítését az ügyféleszközök számára.
+ - `text`: Egyszerű szöveges üzenet, amely egy felhasználó által egy csevegési szál részeként van elküldve. 
+ - `html`: Formázott üzenet, amely HTML-t használ, és egy felhasználó a csevegési szál részeként jeleníti meg és küldi el. 
+
+Rendszerüzenetek típusai: 
+ - `participantAdded`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz.
+ - `participantRemoved`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból.
+ - `topicUpdated`: A szál témakörét jelző Rendszerüzenet frissült.
+
+## <a name="real-time-notifications"></a>Valós idejű értesítések  
+
+Bizonyos SDK-k (például a JavaScript csevegő SDK) támogatják a valós idejű értesítéseket. Ez a funkció lehetővé teszi, hogy az ügyfelek a kommunikációs szolgáltatásokat a valós idejű frissítések és a bejövő üzenetek beszélgetési szálra hallgassák anélkül, hogy le kellene kérdezni az API-kat. Az ügyfélalkalmazás a következő eseményekre tud előfizetni:
+ - `chatMessageReceived` – Ha egy résztvevő egy új üzenetet küld egy csevegési szálnak.
+ - `chatMessageEdited` – Ha egy üzenet egy csevegési szálban van szerkesztve. 
+ - `chatMessageDeleted` – Ha üzenetet törölnek egy csevegési szálban.   
+ - `typingIndicatorReceived` – Ha egy másik résztvevő begépelési kijelzőt küld a csevegési szálnak.    
+ - `readReceiptReceived` – Ha egy másik résztvevő olvasási visszaigazolást küld az elolvasott üzenetről.  
+ - `chatThreadCreated` – Ha egy kommunikációs szolgáltatás felhasználója egy csevegési szálat hoz létre.    
+ - `chatThreadDeleted` – Ha egy kommunikációs szolgáltatást használó felhasználó törölte a csevegési szálat.    
+ - `chatThreadPropertiesUpdated` -Ha a csevegési szál tulajdonságai frissülnek; jelenleg csak a szálra vonatkozó témakör frissítése támogatott. 
+ - `participantsAdded` – Ha a felhasználó csevegési szál résztvevőként van hozzáadva.     
+ - `participantsRemoved` – Ha egy meglévő résztvevőt eltávolítanak a csevegési szálból.
+
+A valós idejű értesítések használatával valós idejű csevegést biztosíthat a felhasználóknak. Ha leküldéses értesítéseket szeretne küldeni a felhasználók által kihagyott üzenetekről, a kommunikációs szolgáltatások integrálva vannak Azure Event Gridekkel a csevegéssel kapcsolatos események (post művelet) közzétételéhez, amelyet az egyéni alkalmazás-értesítési szolgáltatáshoz lehet csatlakoztatni. További részletekért tekintse meg a [kiszolgálói események](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcommunication-services%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)című témakört.
 
 
-``` 
-{   
-            "id": "1613589626560",  
-            "type": "participantAdded", 
-            "sequenceId": "7",  
-            "version": "1613589626560", 
-            "content":  
-            {   
-                "participants": 
-                [   
-                    {   
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
-                        "displayName": "Jane",  
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
-                    }   
-                ],  
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:26Z" 
-        }   
-``` 
+## <a name="build-intelligent-ai-powered-chat-experiences"></a>Intelligens, AI-alapú csevegési élmények készítése   
 
-- `ThreadActivity/ParticipantRemoved`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból. Például:  
-
-``` 
-{   
-            "id": "1613589627603",  
-            "type": "participantRemoved",   
-            "sequenceId": "8",  
-            "version": "1613589627603", 
-            "content":  
-            {   
-                "participants": 
-                [   
-                    {   
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
-                        "displayName": "Jane",  
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
-                    }   
-                ],  
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:27Z" 
-        }   
-``` 
-
-- `ThreadActivity/TopicUpdate`: A szál témakörét jelző Rendszerüzenet frissült. Például:   
-``` 
-{   
-            "id": "1613589623037",  
-            "type": "topicUpdated", 
-            "sequenceId": "2",  
-            "version": "1613589623037", 
-            "content":  
-            {   
-                "topic": "New topic",   
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:23Z" 
-        }   
-``` 
-
-## <a name="real-time-signaling"></a>Valós idejű jelzés  
-
-A csevegés JavaScript SDK valós idejű jelzéseket tartalmaz. Ez lehetővé teszi az ügyfeleknek, hogy valós idejű frissítéseket és beérkező üzeneteket hallgassanak egy csevegési szálra anélkül, hogy le kellene kérdezni az API-kat. Az elérhető események a következők:
-
- - `ChatMessageReceived` – új üzenet küldése csevegési szálba. Ezt az eseményt a rendszer nem küldi el automatikusan generált rendszerüzenetek számára, amelyeket az előző témakörben tárgyaltak.   
- - `ChatMessageEdited` – Ha egy üzenet egy csevegési szálban van szerkesztve. 
- - `ChatMessageDeleted` – Ha üzenetet törölnek egy csevegési szálban.   
- - `TypingIndicatorReceived` – Ha egy másik résztvevő üzenetet ír be egy csevegési szálba.   
- - `ReadReceiptReceived` – Ha egy másik résztvevő elolvasta azt az üzenetet, amelyet egy felhasználó küldött egy csevegési szálban.     
- - `ChatThreadCreated` – Ha egy kommunikációs felhasználó létrehoz egy csevegési szálat. 
- - `ChatThreadDeleted` – Ha egy kommunikációs felhasználó törölte a csevegési szálat. 
- - `ChatThreadPropertiesUpdated` -Ha a csevegési szál tulajdonságai frissülnek; jelenleg csak a szálra vonatkozó témakör frissítését támogatjuk.   
- - `ParticipantsAdded` – Ha egy felhasználó egy csevegési szál tagjaként van hozzáadva.  
- - `ParticipantsRemoved` – Ha egy meglévő résztvevőt eltávolítanak a csevegési szálból.
-
-
-## <a name="chat-events"></a>Csevegési események  
-
-A valós idejű jelzések lehetővé teszik, hogy a felhasználók valós időben beszélgessenek. A szolgáltatások a Azure Event Grid segítségével előfizethetnek a csevegéssel kapcsolatos eseményekre. További részletek: Event- [kezelés fogalma](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
-
-
-## <a name="using-cognitive-services-with-chat-sdk-to-enable-intelligent-features"></a>A Cognitive Services használata a csevegő SDK-val az intelligens funkciók engedélyezéséhez    
-
-Az [Azure kognitív API-kat](../../../cognitive-services/index.yml) a csevegési SDK-val használhatja intelligens funkciók hozzáadásához az alkalmazásaihoz. Megteheti például a következőt: 
+Az [Azure kognitív API](../../../cognitive-services/index.yml) -k segítségével a csevegési SDK-val olyan használati eseteket hozhat létre, mint például:
 
 - Lehetővé teheti a felhasználók számára, hogy különböző nyelveken beszélgessenek egymással.  
-- Egy támogatási ügynök rangsorolhatja a jegyeket úgy, hogy kideríti az ügyféltől beérkező problémák negatív véleményét.   
+- Egy támogatási ügynök rangsorolhatja a jegyeket úgy, hogy kideríti az ügyféltől érkező bejövő üzenetek negatív véleményét. 
 - Elemezze a beérkező üzeneteket a kulcs észleléséhez és az entitások felismeréséhez, majd az üzenet tartalma alapján kérje meg az alkalmazás felhasználójának a megfelelő adatokat.
 
 Ezt úgy érheti el, ha a megbízható szolgáltatás egy csevegési szál résztvevője. Tegyük fel, hogy szeretné engedélyezni a nyelvi fordítást. Ennek a szolgáltatásnak a feladata a többi résztvevő által cserélt üzenetek figyelése [1], a kognitív API-k meghívása a tartalom fordítására a kívánt nyelvre [2, 3], és a lefordított eredmény küldése üzenetként a csevegési szálban [4].

@@ -10,47 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/12/2021
+ms.date: 3/28/2021
 ms.author: gunnarc
-ms.openlocfilehash: 8cdec61b971e7028326a22ac7f7bd6046376427b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: c9a4a5229629b2a65b167a80fce8e502612dcf3c
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559111"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709905"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
 
 ## <a name="march-2021-guest-os"></a>Március 2021 vendég operációs rendszer
 
->[!NOTE] 
-
->A márciusi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások a március vendég operációs rendszer részét képezik. A lista módosítása változhat. 
 
 | Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 21-03 |  [5000822]  |  Legújabb összesített frissítés (LCU) | 6,29 | Mar 9, 2021 |
-|  Rel 21-03 |  [4580325]  |  Flash-frissítés | 3,95, 4,88, 5,53, 6,29 | Október 13., 2020 |
-|  Rel 21-03 |  [5000800]  |  IE összesítő frissítések | 2,108, 3,95, 4,88 | Mar 9, 2021 |
-|  Rel 21-03 |  [5000803]  |  Legújabb összesített frissítés (LCU) | 5,53 | Mar 9, 2021 |
-|  Rel 21-03 |  [4578952]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése  | 2,108 | Október 13., 2020 |
-|  Rel 21-03 |  [4578955]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése  | 2,108 | Október 13., 2020 |
-|  Rel 21-03 |  [4578953]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése  | 4,88 | Október 13., 2020 |
-|  Rel 21-03 |  [4578956]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése  | 4,88 | Október 13., 2020 |
-|  Rel 21-03 |  [4578950]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése  | 3,95 | Október 13., 2020 |
-|  Rel 21-03 |  [4578954]  |  . NET Framework 4.5.2 biztonsági és minőségi összesítés  | 3,95 | Október 13., 2020 |
-|  Rel 21-03 |  [4601060]  |  . NET-keretrendszer 3,5-es és 4.7.2 összesített frissítése  | 6,29 | Február 9., 2021 |
-|  Rel 21-03 |  [5000841]  |  Havi összesítés  | 2,108 | Mar 9, 2021 |
-|  Rel 21-03 |  [5000847]  |  Havi összesítés  | 3,95 | Mar 9, 2021 |
-|  Rel 21-03 |  [5000848]  |  Havi összesítés  | 4,88 | Mar 9, 2021 |
-|  Rel 21-03 |  [4566426]  |  Karbantartási verem frissítése  | 3,95 | Július 14., 2020 |
-|  Rel 21-03 |  [4566425]  |  Karbantartási verem frissítése  | 4,88 | Július 14., 2020 |
-|  Rel 21-03 OOB |  [4578013]  |  Önálló biztonsági frissítés  | 4,88 | Augusztus 19., 2020 |
-|  Rel 21-03 |  [4592510]  |  Karbantartási verem frissítése  | 2,108 | Dec. 8, 2020 |
-|  Rel 21-03 |  [5000859]  |  Karbantartási verem frissítése  | 6,29 | Mar 9, 2021 |
-|  Rel 21-03 |  [4494175]  |  Mikrokód  | 5,53 | Sep 1, 2020 |
-|  Rel 21-03 |  [4494174]  |  Mikrokód  | 6,29 | Sep 1, 2020 |
+|  Rel 21-03 |  [5000822]  |  Legújabb összesített frissítés (LCU) | [6,29] | Mar 9, 2021 |
+|  Rel 21-03 |  [4580325]  |  Flash-frissítés | [3,95], [4,88], [5,53], [6,29] | Október 13., 2020 |
+|  Rel 21-03 |  [5000800]  |  IE összesítő frissítések | [2,108], [3,95], [4,88] | Mar 9, 2021 |
+|  Rel 21-03 |  [5000803]  |  Legújabb összesített frissítés (LCU) | [5,53] | Mar 9, 2021 |
+|  Rel 21-03 |  [4578952]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése  | [2,108] | Október 13., 2020 |
+|  Rel 21-03 |  [4578955]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése  | [2,108] | Október 13., 2020 |
+|  Rel 21-03 |  [4578953]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése  | [4,88] | Október 13., 2020 |
+|  Rel 21-03 |  [4578956]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése  | [4,88] | Október 13., 2020 |
+|  Rel 21-03 |  [4578950]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése  | [3,95] | Október 13., 2020 |
+|  Rel 21-03 |  [4578954]  |  . NET Framework 4.5.2 biztonsági és minőségi összesítés  | [3,95] | Október 13., 2020 |
+|  Rel 21-03 |  [4601060]  |  . NET-keretrendszer 3,5-es és 4.7.2 összesített frissítése  | [6,29] | Február 9., 2021 |
+|  Rel 21-03 |  [5000841]  |  Havi összesítés  | [2,108] | Mar 9, 2021 |
+|  Rel 21-03 |  [5000847]  |  Havi összesítés  | [3,95] | Mar 9, 2021 |
+|  Rel 21-03 |  [5000848]  |  Havi összesítés  | [4,88] | Mar 9, 2021 |
+|  Rel 21-03 |  [4566426]  |  Karbantartási verem frissítése  | [3,95] | Július 14., 2020 |
+|  Rel 21-03 |  [4566425]  |  Karbantartási verem frissítése  | [4,88] | Július 14., 2020 |
+|  Rel 21-03 OOB |  [4578013]  |  Önálló biztonsági frissítés  | [4,88] | Augusztus 19., 2020 |
+|  Rel 21-03 |  [4592510]  |  Karbantartási verem frissítése  | [2,108] | Dec. 8, 2020 |
+|  Rel 21-03 |  [5000859]  |  Karbantartási verem frissítése  | [6,29] | Mar 9, 2021 |
+|  Rel 21-03 |  [4494175]  |  Mikrokód  | [5,53] | Sep 1, 2020 |
+|  Rel 21-03 |  [4494174]  |  Mikrokód  | [6,29] | Sep 1, 2020 |
 
 [5000822]: https://support.microsoft.com/kb/5000822
 [4580325]: https://support.microsoft.com/kb/4580325
@@ -73,7 +70,11 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [5000859]: https://support.microsoft.com/kb/5000859
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
-
+[2,108]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,95]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,88]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,53]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,29]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="february-2021-guest-os"></a>Február 2021 vendég operációs rendszer
 

@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566651"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709480"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-példák az Azure AD Application Proxy
 
@@ -32,7 +32,7 @@ A példákban használt parancsmagokkal kapcsolatos további információkért l
 | [Az összes alkalmazásproxy-alkalmazás alapszintű információinak listázása](scripts/powershell-get-all-app-proxy-apps-basic.md) | A címtárban lévő összes alkalmazásproxy-alkalmazás alapvető információit (AppId, DisplayName, ObjId) listázza. |
 | [Az összes alkalmazásproxy-alkalmazás részletes adatainak listázása](scripts/powershell-get-all-app-proxy-apps-extended.md) | Felsorolja a címtárban található alkalmazásproxy-alkalmazásokkal kapcsolatos kiterjesztett információkat (AppId, DisplayName, Alkalmazásazonosítójának, InternalUrl, ExternalAuthenticationType).  |
 | [Az összes alkalmazásproxy-alkalmazás listázása összekötő csoport szerint](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Felsorolja a címtárban található alkalmazásproxy-alkalmazásokkal kapcsolatos információkat, valamint azt, hogy az alkalmazások melyik összekötő csoportokba vannak rendelve. |
-| [Az összes alkalmazásproxy-alkalmazás beolvasása jogkivonat-élettartam-házirenddel](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Felsorolja a címtárban található összes alkalmazásproxy-alkalmazást a token élettartama szabályzattal és annak részleteivel. Ehhez a mintához a [Graph modul előzetes verziójának AzureAD v2 PowerShell-verziója](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)szükséges. |
+| [Az összes alkalmazásproxy-alkalmazás beolvasása jogkivonat-élettartam-házirenddel](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Felsorolja a címtárban található összes alkalmazásproxy-alkalmazást a token élettartama szabályzattal és annak részleteivel. Ehhez a mintához a [Graph modul előzetes verziójának AzureAD v2 PowerShell-verziója](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)szükséges. |
 |**Összekötőcsoportok**||
 | [Az összes összekötő-csoport és összekötő beolvasása a címtárban](scripts/powershell-get-all-connectors.md) | A címtárban lévő összes összekötő-csoportot és összekötőt listázza. |
 | [Összekötő csoporthoz rendelt összes alkalmazás áthelyezése egy másik összekötő csoportba](scripts/powershell-move-all-apps-to-connector-group.md) | Áthelyezi az összes olyan alkalmazást, amely jelenleg hozzá van rendelve egy összekötő-csoporthoz egy másik összekötő csoportba. |

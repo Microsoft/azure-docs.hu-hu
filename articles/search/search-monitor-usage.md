@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa224a09317aafd49ae10c89ae0c50455ddd4602
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592374"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709922"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Az Azure Cognitive Search működésének és tevékenységének figyelése
 
@@ -40,7 +40,7 @@ A következő képernyőfelvétel segít megtalálni a figyelési információka
 * A **tevékenység naplója** a bal oldali navigációs ablaktáblán csatlakozik a Azure Resource Managerhoz. A tevékenység napló jelentéseket készít a Resource Manager által végrehajtott műveletekről: a szolgáltatás rendelkezésre állása és állapota, a kapacitás (replikák és partíciók) változásai, valamint az API-kulcsokkal kapcsolatos tevékenységek.
 * A **figyelési** beállítások – lejjebb – konfigurálható riasztásokat, metrikákat és diagnosztikai naplókat biztosítanak. Ezeket akkor hozza létre, amikor szüksége van rájuk. Az adatok gyűjtése és tárolása után lekérdezheti vagy megjelenítheti az elemzések adatait.
 
-![Azure Monitor integráció egy keresési szolgáltatásban](./media/search-monitor-usage/azure-monitor-search.png
+  ![Azure Monitor integráció egy keresési szolgáltatásban](./media/search-monitor-usage/azure-monitor-search.png
  "Azure Monitor integráció egy keresési szolgáltatásban")
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Azure Monitor saját számlázási struktúrája van, és az ebben a szakaszban 
 
 ## <a name="monitor-user-access"></a>Felhasználói hozzáférés figyelése
 
-Mivel a keresési indexek egy nagyobb ügyfélalkalmazás összetevői, a felhasználónkénti hozzáférés-vezérléshez és-figyeléshez nem áll rendelkezésre beépített módszertan az indexekhez. A rendszer a kérelmeket egy ügyfélalkalmazás, rendszergazdai vagy lekérdezési kérelmek esetében feltételezi. A rendszergazdai írási és olvasási műveletek közé tartozik a teljes szolgáltatáson belüli objektumok létrehozása, frissítése és törlése. A csak olvasási műveletek a dokumentumok gyűjteményére vonatkozó lekérdezések, amelyek hatóköre egyetlen indexre van korlátozva. 
+Mivel a keresési indexek egy nagyobb ügyfélalkalmazás összetevői, a felhasználónkénti hozzáférés-vezérléshez és-figyeléshez nem áll rendelkezésre beépített módszertan az indexekhez. A rendszer feltételezi, hogy a kérelmek olyan ügyfélalkalmazás alapján érkeznek, amely rendszergazdai vagy lekérdezési kérést mutat be. A rendszergazdai írási és olvasási műveletek közé tartozik a teljes szolgáltatáson belüli objektumok létrehozása, frissítése és törlése. A csak olvasási műveletek a dokumentumok gyűjteményére vonatkozó lekérdezések, amelyek hatóköre egyetlen indexre van korlátozva. 
 
 Így a tevékenység naplóiban láthatók a rendszergazdai kulcsokat vagy a lekérdezési kulcsokat használó hívásokra mutató hivatkozások. A megfelelő kulcsot az ügyfél kódjából származó kérelmek tartalmazzák. A szolgáltatás nem alkalmas az identitás-tokenek vagy a megszemélyesítés kezelésére.
 

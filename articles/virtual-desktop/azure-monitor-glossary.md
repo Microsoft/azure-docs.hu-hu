@@ -1,24 +1,21 @@
 ---
-title: A Windows rendszerű virtuális asztali előnézet szószedetének figyelése – Azure
+title: A Windows rendszerű virtuális asztali Szószedet figyelése – Azure
 description: A Windows rendszerű virtuális asztali Azure Monitorhez kapcsolódó feltételek és fogalmak glosszáriuma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 3/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 38f34324a0cda518645f8b9231e08bafbd75cca0
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627132"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709531"
 ---
-# <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Azure Monitor a Windows rendszerű virtuális asztali (előzetes verzió) szószedethez
-
->[!IMPORTANT]
->A Windows rendszerű virtuális asztali Azure Monitor jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Azure Monitor a Windows rendszerű virtuális asztali szószedethez
 
 Ez a cikk a Windows rendszerű virtuális asztalok (előzetes verzió) Azure Monitorával kapcsolatos főbb fogalmakat és fogalmakat sorolja fel és röviden ismerteti.
 

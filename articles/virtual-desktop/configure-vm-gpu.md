@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018341"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709463"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop grafikusprocesszor-gyorsításának (GPU-gyorsításának) konfigurálása
 
@@ -23,10 +23,10 @@ Az ebben a cikkben található utasítások alapján hozzon létre egy GPU-ra op
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>A megfelelő GPU-ra optimalizált Azure-beli virtuális gépek méretének kiválasztása
 
-Válasszon egy Azure-beli [NV-sorozat](../virtual-machines/nv-series.md), [NVv3-sorozat](../virtual-machines/nvv3-series.md)vagy [NVv4-sorozatú](../virtual-machines/nvv4-series.md) VM-méretet. Ezek az alkalmazás-és asztali virtualizálás számára vannak kialakítva, és lehetővé teszik az alkalmazások és a Windows felhasználói felületének a GPU gyorsítását. A gazdagép-készlet megfelelő választása számos tényezőtől függ, többek között az alkalmazás számítási feladataitól, a felhasználói élmény kívánt minőségétől és a költséghatékonyságtól. Általánosságban elmondható, hogy a nagyobb és nagyobb kapacitású GPU-k jobb felhasználói élményt nyújtanak egy adott felhasználói sűrűségben, míg a kisebb és a többtényezős GPU-méretek részletesebben szabályozzák a költségeket és a minőséget.
+Válasszon egy Azure-beli [NV-sorozat](../virtual-machines/nv-series.md), [NVv3-sorozat](../virtual-machines/nvv3-series.md)vagy [NVv4-sorozatú](../virtual-machines/nvv4-series.md) VM-méretet. Ezek az alkalmazások és az asztali virtualizálás számára vannak kialakítva, és lehetővé teszik a legtöbb alkalmazás és a Windows felhasználói felületének a GPU-gyorsítását. A gazdagép-készlet megfelelő választása számos tényezőtől függ, többek között az alkalmazás számítási feladataitól, a felhasználói élmény kívánt minőségétől és a költséghatékonyságtól. Általánosságban elmondható, hogy a nagyobb és nagyobb kapacitású GPU-k jobb felhasználói élményt nyújtanak egy adott felhasználói sűrűségben, míg a kisebb és a többtényezős GPU-méretek részletesebben szabályozzák a költségeket és a minőséget.
 
 >[!NOTE]
->Az Azure NC-, NCv2-, NCv3-, ND-és NDv2-sorozatú virtuális gépek általában nem megfelelőek a Windows rendszerű virtuális asztali munkamenet-gazdagépek számára. Ezek a virtuális gépek speciális, nagy teljesítményű számítási és gépi tanulási eszközökhöz vannak szabva, például NVIDIA CUDA-mel. Az NVIDIA GPU-k általános alkalmazás-és asztali gyorsításához NVIDIA GRID licencelés szükséges; ezt az Azure az ajánlott virtuálisgép-méretekhez nyújtja, de az NC/ND sorozatú virtuális gépekhez külön kell elrendezni.
+>Az Azure NC-, NCv2-, NCv3-, ND-és NDv2-sorozatú virtuális gépek általában nem megfelelőek a Windows rendszerű virtuális asztali munkamenet-gazdagépek számára. Ezek a virtuális gépek speciális, nagy teljesítményű számítási és gépi tanulási eszközökhöz vannak szabva, például NVIDIA CUDA-mel. Nem támogatják a GPU-gyorsítást a legtöbb alkalmazáshoz vagy a Windows felhasználói felületéhez.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Címkészlet létrehozása, a virtuális gép üzembe helyezése és az alkalmazás csoportjának konfigurálása
 
@@ -41,9 +41,10 @@ Az új címkészlet létrehozásakor is konfigurálnia kell egy alkalmazás-csop
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Támogatott grafikus illesztőprogramok telepítése a virtuális gépen
 
-Ahhoz, hogy kihasználhassa az Azure N sorozatú virtuális gépek GPU-képességeit a Windows Virtual Desktopban, telepítenie kell a megfelelő grafikus illesztőprogramokat. A [támogatott operációs rendszerek és illesztőprogramok](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) utasításait követve telepítse a megfelelő grafikus gyártótól származó illesztőprogramokat manuálisan vagy Azure virtuálisgép-bővítmény használatával.
+Ahhoz, hogy kihasználhassa az Azure N sorozatú virtuális gépek GPU-képességeit a Windows Virtual Desktopban, telepítenie kell a megfelelő grafikus illesztőprogramokat. Illesztőprogramok telepítéséhez kövesse a [támogatott operációs rendszerek és illesztőprogramok](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) utasításait. Csak az Azure által terjesztett illesztőprogramok támogatottak.
 
-Csak az Azure által terjesztett illesztőprogramok támogatottak a Windows rendszerű virtuális asztali gépeken. Az NVIDIA GPU-val rendelkező Azure NV sorozatú virtuális gépek esetében csak az [NVIDIA Grid-illesztőprogramok](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers), és nem az NVIDIA Tesla-(CUDA-) illesztőprogramok támogatják az általános célú alkalmazások és asztali számítógépek GPU-gyorsítását.
+* Az Azure NV-sorozat-vagy NVv3-sorozatú virtuális gépek esetében csak az NVIDIA GRID-illesztőprogramok, és nem az NVIDIA CUDA-illesztőprogramok támogatják a GPU-gyorsítást a legtöbb alkalmazáshoz és a Windows felhasználói felületéhez. Ha úgy dönt, hogy manuálisan telepíti az illesztőprogramokat, ügyeljen rá, hogy telepítse a GRID-illesztőprogramokat. Ha az Azure virtuálisgép-bővítmény használatával telepíti az illesztőprogramokat, a rendszer automatikusan telepíti a GRID-illesztőprogramokat ezekhez a virtuálisgép-méretekhez.
+* Az Azure NVv4 sorozatú virtuális gépek esetében telepítse az Azure által biztosított AMD-illesztőprogramokat. Ezeket automatikusan telepítheti az Azure virtuálisgép-bővítmény használatával, vagy manuálisan is telepítheti őket.
 
 Az illesztőprogram telepítése után szükség van egy virtuális gép újraindítására. A fenti utasításokban található ellenőrzési lépések segítségével ellenőrizze, hogy a grafikus illesztőprogramok telepítése sikeres volt-e.
 

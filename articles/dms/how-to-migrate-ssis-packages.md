@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e42b5ab2bbdebb2584b38531bd6458a98563ef42
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962994"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643744"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-csomagok újbóli üzembe helyezése Azure SQL Databasere Azure Database Migration Service
 
 Ha SQL Server Integration Servicest (SSIS) használ, és a SQL Server által a Azure SQL Database által üzemeltetett forrás-SSISDB szeretné áttelepíteni a SSIS-projekteket/csomagokat, akkor az Integration Services Deployment Wizard használatával újra üzembe helyezheti azokat. A varázslót SQL Server Management Studioon (SSMS) belül is elindíthatja.
 
-Ha a használt SSIS-verzió korábbi, mint 2012, a SSIS-projektek/csomagok projekt-telepítési modellbe való újbóli üzembe helyezése előtt először konvertálnia kell őket az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Ha a használt SSIS-verzió korábbi, mint 2012, a SSIS-projektek/csomagok projekt-telepítési modellbe való újbóli üzembe helyezése előtt először konvertálnia kell őket az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert).
 
 > [!NOTE]
 > A Azure Database Migration Service (DMS) jelenleg nem támogatja a forrás-SSISDB áttelepítését Azure SQL Databasere, de a következő folyamat használatával újra üzembe helyezheti a SSIS-projekteket/csomagokat.

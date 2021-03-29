@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176858"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709718"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -98,7 +98,7 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
 Ha tesztelni szeretné a *jelszó-kivonatolási szinkronizálást* a szakaszos bevezetéssel, kövesse a következő szakaszban ismertetett lépéseket.
 
-További információ a használni kívánt PowerShell-parancsmagokról: [Azure AD 2,0 előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzió.
+További információ a használni kívánt PowerShell-parancsmagokról: [Azure AD 2,0 előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout)verzió.
 
 ## <a name="pre-work-for-password-hash-sync"></a>A jelszó-kivonat szinkronizálásának előzetes munkája
 
@@ -251,9 +251,9 @@ A: nem, ez a funkció a felhőalapú hitelesítés tesztelésére szolgál. A si
 
 **K: használhatom a PowerShellt a szakaszos bevezetéshez?**
 
-V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzióját.
+V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout)verzióját.
 
 ## <a name="next-steps"></a>Következő lépések
-- [Azure AD 2,0 előzetes verzió](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2,0 előzetes verzió](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [Bejelentkezési módszer módosítása a jelszó-kivonatolási szinkronizáláshoz](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [Bejelentkezési módszer módosítása átmenő hitelesítéshez](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

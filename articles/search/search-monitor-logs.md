@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592467"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709939"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése
 
-A diagnosztikai vagy működési naplók betekintést nyújtanak az Azure Cognitive Search részletes műveleteibe, és hasznosak a szolgáltatás-és munkaterhelés-folyamatok figyeléséhez. Belsőleg a rendszerinformációk némelyike rövid idő alatt létezik a háttérben, és elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha azonban az operatív adatokra vonatkozó önirányítást szeretne, állítson be egy diagnosztikai beállítást annak megadásához, hogy a naplózási információk hol legyenek gyűjtve.
+A diagnosztikai vagy működési naplók betekintést nyújtanak az Azure Cognitive Search részletes műveleteibe, és hasznosak a szolgáltatás-és munkaterhelés-folyamatok figyeléséhez. Belsőleg a Microsoft megőrzi a rendszerinformációkat a backend-ben egy rövid ideig (körülbelül 30 nap), amely elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha azonban az operatív adatok tulajdonjogát szeretné használni, konfigurálnia kell egy diagnosztikai beállítást annak megadásához, hogy a naplózási információk hol legyenek gyűjtve.
 
 A diagnosztikai naplózás a [Azure monitor](../azure-monitor/index.yml)-vel való integráción keresztül érhető el. 
 
@@ -76,14 +76,14 @@ Két tábla tartalmaz naplókat és mérőszámokat az Azure Cognitive Search: *
 
 1. Táblázatos eredményhalmaz visszaadásához adja meg a következő lekérdezést.
 
-   ```
+   ```kusto
    AzureMetrics
-    | project MetricName, Total, Count, Maximum, Minimum, Average
+   | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
 1. Ismételje meg az előző lépéseket, kezdve a **AzureDiagnostics** az összes oszlop tájékoztatási céllal való visszaküldéséhez, majd egy szelektívebb lekérdezés, amely további érdekes információkat gyűjt.
 
-   ```
+   ```kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search" 
@@ -99,7 +99,7 @@ Ha engedélyezte a diagnosztikai naplózást, a **AzureDiagnostics** lekérdezhe
 
 Visszaküldi a műveletek listáját és az egyes elemek számát.
 
-```
+```kusto
 AzureDiagnostics
 | summarize count() by OperationName
 ```
@@ -108,7 +108,7 @@ AzureDiagnostics
 
 A lekérdezési kérelmek korrelációja az indexelési műveletekkel, valamint az adatpontok megjelenítése az idődiagramokon keresztül, hogy a műveletek egybeessenek.
 
-```
+```kusto
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')

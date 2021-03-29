@@ -420,7 +420,7 @@
           href: search-security-rbac.md
     - name: Figyelés
       items:
-        - name: Alapok
+        - name: Áttekintés
           href: search-monitor-usage.md
         - name: Diagnosztikai naplózás
           href: search-monitor-logs.md

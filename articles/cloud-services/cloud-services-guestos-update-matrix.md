@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/19/2021
+ms.date: 3/28/2021
 ms.author: gunnarc
-ms.openlocfilehash: f60df0c18368af46c5f2946b5668ac404c1fae90
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0bd0257c3b99e343f1aebba31867f687b522c6fb
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124550"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709565"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix
 Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-kiadásairól. Ez az információ segít megtervezni a frissítési útvonalat, mielőtt a vendég operációs rendszer le lenne tiltva. Ha úgy konfigurálja a szerepköröket, hogy az *automatikus* vendég operációs rendszer frissítéseit használják az [Azure vendég operációs rendszer frissítési beállításai][Azure Guest OS Update Settings]részében leírtak szerint, nem létfontosságú, hogy elolvassa ezt a lapot.
@@ -41,6 +41,9 @@ Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-k
 Nem biztos benne, hogy miként lehet frissíteni a vendég operációs rendszert? Tekintse meg [ezt a][cloud updates] kivételt.
 
 ## <a name="news-updates"></a>Hírek frissítései
+
+###### <a name="march-28-2021"></a>**Március 28., 2021**
+A márciusi vendég operációs rendszer megjelent. 
 
 ###### <a name="february-19-2021"></a>**Február 19., 2021**
 A februári vendég operációs rendszer megjelent. 
@@ -158,8 +161,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.29 _202103-01 |  Március 28., 2021  |  6,31 post  |  
 |  WA-GUEST-OS-6.28 _202102-01 |  Február 19., 2021  |  6,30 post  |  
-|  WA-GUEST-OS-6.27 _202101-01 |  Február 5., 2021  |  6,29 post  |  
+|~~WA-GUEST-OS-6.27 _202101-01~~|  Február 5., 2021  |  Március 28., 2021  |  
 |~~WA-GUEST-OS-6.26 _202012-01~~|  Január 15., 2021  |  Február 19., 2021  |  
 |~~WA-GUEST-OS-6.25 _202011-01~~|  December 19., 2020  |  Február 5., 2021  |  
 |~~WA-GUEST-OS-6.24 _202010-02~~|  November 17., 2020  |  Január 15., 2021  |  
@@ -199,8 +203,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.53 _202103-01  |  Március 28., 2021  |  5,55 post  | 
 |  WA-GUEST-OS-5.52 _202102-01  |  Február 19., 2021  |  5,54 post  | 
-|  WA-GUEST-OS-5.51 _202101-01  |  Február 5., 2021  |  5,53 post  | 
+|~~WA-GUEST-OS-5.51 _202101-01~~|  Február 5., 2021  |  Március 28., 2021  | 
 |~~WA-GUEST-OS-5,50 _202012-01~~|  Január 15., 2021  |  Február 19., 2021  | 
 |~~WA-GUEST-OS-5.49 _202011-01~~|  December 19., 2020  |  Február 5., 2021  | 
 |~~WA-GUEST-OS-5.48 _202010-02~~|  November 17., 2020  |  Január 15., 2021  | 
@@ -237,8 +242,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.88 _202103-01  |  Március 28., 2021  |  4,90 post  | 
 |  WA-GUEST-OS-4.87 _202102-01  |  Február 19., 2021  |  4,89 post  | 
-|  WA-GUEST-OS-4.86 _202101-01  |  Február 5., 2021  |  4,88 post  | 
+|~~WA-GUEST-OS-4.86 _202101-01~~|  Február 5., 2021  |  Március 28., 2021  | 
 |~~WA-GUEST-OS-4.85 _202012-01~~|  Január 15., 2021  |  Február 19., 2021  | 
 |~~WA-GUEST-OS-4.84 _202011-01~~|  December 19., 2020  |  Február 5., 2021  | 
 |~~WA-GUEST-OS-4.83 _202010-02~~|  November 17., 2020  |  Január 15., 2021  | 
@@ -275,8 +281,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.95 _202103-01  |  Március 28., 2021  |  3,97 post  |
 |  WA-GUEST-OS-3.94 _202102-01  |  Február 19., 2021  |  3,96 post  |
-|  WA-GUEST-OS-3.93 _202101-01  |  Február 5., 2021  |  3,95 post  |
+|~~WA-GUEST-OS-3.93 _202101-01~~|  Február 5., 2021  |  Március 28., 2021  |
 |~~WA-GUEST-OS-3.92 _202012-01~~|  Január 15., 2021  |  Február 19., 2021  |  
 |~~WA-GUEST-OS-3.91 _202011-01~~|  December 19., 2020  |  Február 5., 2021  |  
 |~~WA-GUEST-OS-3.90 _202010-02~~|  November 17., 2020  |  Január 15., 2021  |  
@@ -313,8 +320,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.108 _202103-01  |  Március 28., 2021  |  2,110 post  |
 |  WA-GUEST-OS-2.107 _202102-01  |  Február 19., 2021  |  2,109 post  |  
-|  WA-GUEST-OS-2.106 _202101-01  |  Február 5., 2021  |  2,108 post  |  
+|~~WA-GUEST-OS-2.106 _202101-01~~|  Február 5., 2021  |  Március 28., 2021  |  
 |~~WA-GUEST-OS-2.105 _202012-01~~|  Január 15., 2021  |  Február 19., 2021  |  
 |~~WA-GUEST-OS-2.104 _202011-01~~|  December 19., 2020  |  Február 5., 2021  |  
 |~~WA-GUEST-OS-2.103 _202010-02~~|  November 17., 2020  |  Január 15., 2021  |  

@@ -1,24 +1,21 @@
 ---
-title: A Windows rendszerű virtuális asztali monitor előzetes verziójának használata – Azure
+title: A Windows rendszerű virtuális asztali monitor figyelése – Azure
 description: A Azure Monitor használata a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1c87763cb2ca482fc8ee15588d7287f0d9275fff
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 1b93e0c0d61eaa390eda66da2a583a4f429ddd79
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627166"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709548"
 ---
-# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Az üzembe helyezés figyelése a Windows rendszerű virtuális asztali Azure Monitor használatával (előzetes verzió)
+# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Az üzembe helyezés figyelése a Windows rendszerű virtuális asztali Azure Monitor használatával
 
->[!IMPORTANT]
->A Windows rendszerű virtuális asztali Azure Monitor jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-A Windows rendszerű virtuális asztali Azure Monitor (előzetes verzió) egy olyan irányítópult, amely Azure Monitor-munkafüzetekre épül, és az informatikai szakemberek megismerhetik a Windows rendszerű virtuális asztali környezeteket. Ebből a cikkből megtudhatja, hogyan állíthatja be Azure Monitor a Windows rendszerű virtuális asztal számára a Windows rendszerű virtuális asztali környezetek figyeléséhez.
+A Windows rendszerű virtuális asztali Azure Monitor egy olyan irányítópult, amely az informatikai szakemberek számára megkönnyíti a Windows rendszerű virtuális asztali környezetek megértését Azure Monitor munkafüzetek számára. Ebből a témakörből megtudhatja, hogyan állíthatja be Azure Monitor a Windows rendszerű virtuális asztal számára a Windows rendszerű virtuális asztali környezetek figyeléséhez.
 
 ## <a name="requirements"></a>Követelmények
 
