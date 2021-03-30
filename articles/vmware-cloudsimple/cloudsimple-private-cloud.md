@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88140717"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple – a privát felhő áttekintése
@@ -75,7 +75,7 @@ Létrehozhat egy privát felhőt a megvásárolt, utólagos elszámolású csom�
 
 A privát felhő a következő kapcsolatok használatával csatlakoztatható a helyszíni környezethez és az Azure-hálózathoz:
 
-* Biztonságos
+* Biztonságossá tétel
 * Privát VPN
 * Azure ExpressRoute
 
