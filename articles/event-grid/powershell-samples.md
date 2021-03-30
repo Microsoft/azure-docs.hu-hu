@@ -4,10 +4,10 @@ description: Ez a cikk egy olyan táblázatot tartalmaz, amely a Azure Event Gri
 ms.topic: sample
 ms.date: 07/07/2020
 ms.openlocfilehash: 89945d9fc3558b8e14303aebe9ef593fbd792761
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86108107"
 ---
 # <a name="azure-powershell-samples-for-event-grid"></a>Azure PowerShell-minták az Event Gridhez
