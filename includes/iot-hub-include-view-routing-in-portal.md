@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67235338"
 ---
 Most, hogy beállította a végpontokat és az üzenetek útvonalait, megtekintheti a konfigurációt a portálon. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforráscsoportok** lehetőséget. Ezután válassza ki az erőforráscsoportot, majd válassza ki a hubot (a hub neve ebben az `ContosoTestHub` oktatóanyagban kezdődik). Megjelenik a IoT Hub panel.

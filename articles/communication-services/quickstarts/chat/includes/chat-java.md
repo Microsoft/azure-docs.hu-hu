@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 800acddcb3527b9ca16d7fc664c2a3c27b528c25
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107032"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105726686"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ A POM-fájlban hivatkozzon a `azure-communication-chat` csomagra a csevegési AP
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.4</version> 
+    <version>1.0.0-beta.7</version> 
 </dependency>
 ```
 
@@ -89,12 +89,17 @@ További információ a [csevegési architektúráról](../../../concepts/chat/c
 Az importálási utasítások hozzáadásakor ügyeljen arra, hogy csak a com. Azure. Communication. chat és a com. Azure. Communication. chat. models névtérből vegyen fel importokat, nem pedig a com. Azure. Communication. chat. implementációs névtérből. A Maven használatával létrehozott app. Java-fájlban a következő kódot használhatja a kezdéshez:
 
 ```Java
+package com.communication.quickstart;
+
 import com.azure.communication.chat.*;
 import com.azure.communication.chat.models.*;
 import com.azure.communication.common.*;
 import com.azure.core.http.HttpClient;
+import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
+import com.azure.core.http.rest.PagedIterable;
 
 import java.io.*;
+import java.util.*;
 
 public class App
 {
@@ -126,36 +131,51 @@ public class App
 }
 ```
 
-
 ## <a name="start-a-chat-thread"></a>Csevegési szál elindítása
 
 `createChatThread`Csevegési szál létrehozásához használja a metódust.
 `createChatThreadOptions` a szál kérelmének leírására szolgál.
 
-- A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` .
+- A `topic` konstruktor paraméterének használatával adjon meg egy témakört a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` .
 - Ezzel a paranccsal `participants` listázhatja a szálhoz hozzáadandó hozzászólásláncok résztvevőit. `ChatParticipant` a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) rövid útmutatójában létrehozott felhasználót hozza létre.
 
-A válasz a `chatThreadClient` létrehozott csevegési szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása a csevegési szálhoz, üzenet küldése, üzenet törlése stb. Egy olyan `chatThreadId` tulajdonságot tartalmaz, amely a csevegési szál egyedi azonosítója. A tulajdonságot a nyilvános metódus. getChatThreadId () teszi elérhetővé.
+`CreateChatThreadResult` a válasz egy csevegési szál létrehozásával tért vissza. Egy olyan `getChatThread()` metódust tartalmaz, amely visszaadja a `ChatThread` szál ügyfelének lekéréséhez használható objektumot, amelyből a `ChatThreadClient` létrehozott szálon végezheti el a műveletek végrehajtását: résztvevők hozzáadása, üzenet küldése stb. Az `ChatThread` objektum tartalmazza azt a `getId()` metódust is, amely lekéri a szál egyedi azonosítóját.
 
 ```Java
-List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
-
 ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
-    
+
 ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions("Topic")
+    .addParticipant(firstThreadParticipant)
+    .addParticipant(secondThreadParticipant);
 
-CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions()
-    .setTopic("Topic")
-    .setParticipants(participants);
-ChatThreadClient chatThreadClient = chatClient.createChatThread(createChatThreadOptions);
-String chatThreadId = chatThreadClient.getChatThreadId();
+CreateChatThreadResult result = chatClient.createChatThread(createChatThreadOptions);
+String chatThreadId = result.getChatThread().getId();
+```
+
+## <a name="list-chat-threads"></a>Csevegési szálak listázása
+
+Használja a `listChatThreads` metódust a meglévő csevegési szálak listájának lekéréséhez.
+
+```java
+PagedIterable<ChatThreadItem> chatThreads = chatClient.listChatThreads();
+
+chatThreads.forEach(chatThread -> {
+    System.out.printf("ChatThread id is %s.\n", chatThread.getId());
+});
+```
+
+## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
+
+A `getChatThreadClient` metódus egy szál-ügyfelet ad vissza egy már létező szálhoz. A létrehozott szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása, üzenet küldése stb. `chatThreadId` a meglévő csevegési szál egyedi azonosítója.
+
+```Java
+ChatThreadClient chatThreadClient = chatClient.getChatThreadClient(chatThreadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
@@ -179,84 +199,66 @@ SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendC
 String chatMessageId = sendChatMessageResult.getId();
 ```
 
-
-## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
-
-A `getChatThreadClient` metódus egy szál-ügyfelet ad vissza egy már létező szálhoz. A létrehozott szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása, üzenet küldése stb. `chatThreadId` a meglévő csevegési szál egyedi azonosítója.
-
-```Java
-String chatThreadId = "Id";
-ChatThread chatThread = chatClient.getChatThread(chatThreadId);
-```
-
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása csevegési szálból
 
 A csevegési üzeneteket lekérheti úgy, hogy a `listMessages` csevegési szál ügyfélprogramjában megadott időközönként lekérdezi a metódust.
 
 ```Java
-chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
-    System.out.printf("Response headers are %s. Url %s  and status code %d %n", resp.getHeaders(),
-        resp.getRequest().getUrl(), resp.getStatusCode());
-    resp.getItems().forEach(message -> {
-        System.out.printf("Message id is %s.", message.getId());
-    });
+chatThreadClient.listMessages().forEach(message -> {
+    System.out.printf("Message id is %s.\n", message.getId());
 });
 ```
 
 `listMessages` az üzenet legújabb verzióját adja vissza, beleértve a. editMessage () és a. deleteMessage () használatával az üzenettel történt módosításokat és törléseket is. A törölt üzenetek esetében `chatMessage.getDeletedOn()` egy DateTime értéket ad vissza, amely azt jelzi, hogy az üzenet törölve lett. A szerkesztett üzenetek esetében `chatMessage.getEditedOn()` egy DateTime értéket ad vissza, amely azt jelzi, hogy mikor lett szerkesztve az üzenet. Az üzenet létrehozásának eredeti időpontja a használatával érhető el `chatMessage.getCreatedOn()` , és az üzenetek rendezésére is használható.
 
-`listMessages` a által azonosítható különböző típusú üzeneteket ad vissza `chatMessage.getType()` . Ezek a típusok a következők:
+További információ az üzenetek típusairól: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
-- `text`: Egy szál résztvevője által küldött normál csevegési üzenet.
+## <a name="send-read-receipt"></a>Olvasási visszaigazolás küldése
 
-- `html`: Egy hozzászóláslánc résztvevője által küldött HTML-csevegési üzenet.
+A `sendReadReceipt` metódussal a felhasználó nevében küldhet egy olvasási beérkezési eseményt egy csevegési szálba.
+`chatMessageId` a beolvasott csevegési üzenet egyedi azonosítója.
 
-- `topicUpdated`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett.
+```Java
+String chatMessageId = message.getId();
+chatThreadClient.sendReadReceipt(chatMessageId);
+```
 
-- `participantAdded`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz.
+## <a name="list-chat-participants"></a>Csevegés résztvevőinek listázása
 
-- `participantRemoved`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból.
+A használatával `listParticipants` lekérheti a chatThreadId által azonosított csevegési szál résztvevőit tartalmazó lapozható gyűjteményt.
 
-További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
+```Java
+PagedIterable<ChatParticipant> chatParticipantsResponse = chatThreadClient.listParticipants();
+chatParticipantsResponse.forEach(chatParticipant -> {
+    System.out.printf("Participant id is %s.\n", ((CommunicationUserIdentifier) chatParticipant.getCommunicationIdentifier()).getId());
+});
+```
 
 ## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
 A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldjön a csevegési szálba, és további résztvevőket vegyen fel/távolítson el. Először új hozzáférési jogkivonatot és identitást kell beszereznie az adott felhasználó számára. A addParticipants metódus meghívása előtt győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
 
-`addParticipants`A metódussal vehet fel résztvevőket a szálazonosító által azonosított szálba.
+A `addParticipants` metódussal vehet fel résztvevőket a szálba.
 
-- A használatával `listParticipants` listázhatja a csevegési szálba felvenni kívánt résztvevőket.
 - `communicationIdentifier`, kötelező, az a CommunicationIdentifier, amelyet a CommunicationIdentityClient hozott létre a [felhasználói hozzáférési jogkivonat rövid útmutatójában](../../access-tokens.md) .
-- `display_name`, nem kötelező, a szál résztvevő megjelenítendő neve.
-- `share_history_time`, nem kötelező, az az idő, amely alapján a csevegési előzmények megoszthatók a résztvevővel. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha a résztvevő hozzáadását megelőzően meg szeretné osztani a korábbi előzményeket, állítsa azt az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a szükséges dátumra.
+- `displayName`, nem kötelező, a szál résztvevő megjelenítendő neve.
+- `shareHistoryTime`, nem kötelező, az az idő, amely alapján a csevegési előzmények megoszthatók a résztvevővel. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha a résztvevő hozzáadását megelőzően meg szeretné osztani a korábbi előzményeket, állítsa azt az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a szükséges dátumra.
 
 ```Java
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity1)
-    .setDisplayName("Display Name 1");
+ChatParticipant thirdThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user3)
+    .setDisplayName("Display Name 3");
 
-ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity2)
-    .setDisplayName("Display Name 2");
+ChatParticipant fourthThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user4)
+    .setDisplayName("Display Name 4");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+participants.add(thirdThreadParticipant);
+participants.add(fourthThreadParticipant);
 
-AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsOptions()
-    .setParticipants(participants);
-chatThreadClient.addParticipants(addChatParticipantsOptions);
-```
-
-## <a name="remove-participant-from-a-chat-thread"></a>Résztvevő eltávolítása csevegési szálból
-
-A résztvevők egy szálhoz való hozzáadásához hasonlóan el lehet távolítani a résztvevőket egy csevegési szálból. Ehhez követnie kell a felvett résztvevők identitásait.
-
-Használja `removeParticipant` , ahol `identifier` a a létrehozott CommunicationIdentifier.
-
-```Java
-chatThreadClient.removeParticipant(identity);
+chatThreadClient.addParticipants(participants);
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása
