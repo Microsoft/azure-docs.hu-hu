@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67179337"
 ---
 Ha olyan közös hozzáférési aláírási (SAS) URL-címmel rendelkezik, amely hozzáférést biztosít egy Storage-fiók erőforrásaihoz, használhatja az SAS-t egy kapcsolati karakterláncban. Mivel az SAS tartalmazza a kérelem hitelesítéséhez szükséges információkat, az SAS-vel rendelkező kapcsolati sztring biztosítja a protokollt, a szolgáltatási végpontot, valamint az erőforrás eléréséhez szükséges hitelesítő adatokat.
