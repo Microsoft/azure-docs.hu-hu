@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: kkrishna
 ms.openlocfilehash: 174946667885debc348370ef2c6f93206890e9c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94628017"
 ---
 A MSAL jogkivonat-gyorsítótárazási implementációja lehetővé teszi, hogy a háttérben futó alkalmazások, API-k és szolgáltatások a hozzáférési jogkivonat gyorsítótárának használatával továbbra is a felhasználók nevében járjanak el a távollétében. Ez különösen akkor hasznos, ha a háttérben futó alkalmazásoknak és szolgáltatásoknak továbbra is működniük kell a felhasználó nevében, miután a felhasználó kilépett az előtér-webalkalmazásból.

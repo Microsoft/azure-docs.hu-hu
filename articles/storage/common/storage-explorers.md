@@ -10,17 +10,17 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "71670946"
 ---
 # <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Microsoft-eszközök az Azure Storage használatához
 
 A Microsoft több grafikus felhasználói felületi eszközt is biztosít az Azure Storage-fiókban lévő adatfeldolgozáshoz. Az alábbi táblázatban ismertetett összes eszköz ingyenes.
 
-| Azure Storage-ügyfél eszköz                 | Támogatott platformok | BLOB letiltása | Oldal Blobja | BLOB hozzáfűzése | Táblák | Üzenetsorok | Fájlok |
+| Azure Storage-ügyfél eszköz                 | Támogatott platformok | BLOB letiltása | Oldal Blobja | BLOB hozzáfűzése | Táblázatok | Üzenetsorok | Fájlok |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
 | [Azure Portal](https://portal.azure.com)                    | Web                 | Igen          | Igen         | Igen           | Igen      | Igen      | Yes     |
 | [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Igen          | Igen         | Igen           | Igen      | Igen      | Yes     |
