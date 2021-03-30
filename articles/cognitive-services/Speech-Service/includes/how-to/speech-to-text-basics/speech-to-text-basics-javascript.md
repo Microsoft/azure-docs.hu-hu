@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 7649f9c13db1a10bdb48d19f1019ec3b31244f45
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 5a8065daca11e5b79f02510f82ab622c8fb1af2d
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104269"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105729776"
 ---
 A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
 
@@ -62,7 +62,7 @@ A mikrofonból való beszéd felismerése **nem támogatott a Node.jsban**, és 
 
 ## <a name="recognize-from-file"></a>Felismerés fájlból 
 
-Egy hangfájlból származó beszéd felismeréséhez hozzon létre egy olyan `AudioConfig` alkalmazást, `fromWavFileInput()` amely egy objektumot fogad el `Buffer` . Ezután inicializálja a t [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) , és adja át a `audioConfig` és a `speechConfig` .
+Egy hangfájlból származó beszéd felismeréséhez hozzon létre egy olyan `AudioConfig` alkalmazást, `fromWavFileInput()` amely egy objektumot fogad el `Buffer` . Ezután inicializálja a t [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) , és adja át a `audioConfig` és a `speechConfig` .
 
 ```javascript
 const fs = require('fs');

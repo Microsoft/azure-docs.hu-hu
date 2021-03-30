@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Active Directory használatával történő Event
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92910797"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Hozzáférés engedélyezése Event Hubs erőforrásokhoz a Azure Active Directory használatával
