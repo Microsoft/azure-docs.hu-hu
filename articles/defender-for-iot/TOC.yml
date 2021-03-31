@@ -172,7 +172,7 @@
           displayName: 'connections, Purdue, zoom, delete device'
         - name: Az érzékelők által észlelt riasztások kezelése
           items:
-            - name: Az érzékelőkkel kapcsolatos riasztások
+            - name: Az érzékelőkkel kapcsolatos riasztások ismertetése
               href: how-to-work-with-alerts-on-your-sensor.md
             - name: Riasztások szűrése és kezelése a riasztások lapról
               href: how-to-view-alerts.md
@@ -181,11 +181,11 @@
               displayName: 'PCAP, metadata, alerts, link, device map,'
             - name: A riasztás típusai és leírása
               href: alert-engine-messages.md
-              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational'
-            - name: A riasztási esemény kezelése
+              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational, severity, minor, major, critical, warning, alerts list, security alerts,'
+            - name: Riasztási események kezelése
               href: how-to-manage-the-alert-event.md
               displayName: 'PCAP, acknowledge, learn, mute, policy'
-            - name: A riasztási eseményekre való válaszadás gyorsítása
+            - name: Riasztási munkafolyamatok felgyorsítása
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
             - name: Riasztási információk továbbítása

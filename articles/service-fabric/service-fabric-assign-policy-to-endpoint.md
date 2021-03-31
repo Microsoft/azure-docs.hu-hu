@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan rendelhet biztonsági hozzáférési házirende
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75614655"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Biztonsági hozzáférési házirend kiosztása HTTP-és HTTPS-végpontokhoz

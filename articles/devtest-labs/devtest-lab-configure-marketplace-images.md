@@ -4,10 +4,10 @@ description: Annak konfigurálása, hogy mely Azure Marketplace-rendszerképek h
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86512435"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure Marketplace-rendszerkép beállításainak konfigurálása Azure DevTest Labs
