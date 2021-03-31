@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
 ms.openlocfilehash: 8b391438d8d6605e7ef493a6552af634db840ad5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96553256"
 ---
 # <a name="understand-business-glossary-features-in-azure-purview"></a>Az üzleti Szószedet funkcióinak megismerése az Azure hatáskörébe
@@ -40,7 +40,7 @@ Az Azure-beli hatáskörébe nyolc beépített attribútum használható bármel
 - Betűszó
 - Szinonimák
 - Kapcsolódó feltételek
-- Erőforrások
+- Források
 
 Ezek az attribútumok nem szerkeszthetők és nem törölhetők. Ezek az attribútumok azonban nem elegendőek ahhoz, hogy teljes mértékben definiálják a kifejezéseket egy szervezetben. A probléma megoldásához a hatáskörébe tartozik egy olyan szolgáltatás, amely egyéni attribútumokat határozhat meg a szószedethez.
 

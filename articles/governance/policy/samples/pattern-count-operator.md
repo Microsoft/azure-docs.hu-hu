@@ -4,10 +4,10 @@ description: Ez a Azure Policy minta azt szemlélteti, hogyan használható a Co
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 1339dff7f8bc92a8e38ec5635690cc2069dd8df4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96005418"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy minta: a Count operátor
