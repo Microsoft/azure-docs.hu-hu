@@ -227,7 +227,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |referenceCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
 |errorCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  

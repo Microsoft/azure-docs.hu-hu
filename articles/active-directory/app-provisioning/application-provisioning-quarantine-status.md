@@ -12,10 +12,10 @@ ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579501"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
@@ -52,7 +52,7 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Miért van a karanténba helyezett alkalmazásom?
 
-|Description|Javasolt művelet|
+|Leírás|Javasolt művelet|
 |---|---|
 |**Scim megfelelőségi probléma:** HTTP/404 nem található válasz lett visszaadva a várt HTTP/200 OK válasz helyett. Ebben az esetben az Azure AD kiépítési szolgáltatása kérelmet küldött a célalkalmazás számára, és váratlan választ kapott.|Keresse meg a rendszergazdai hitelesítő adatok szakaszt. Ellenőrizze, hogy az alkalmazás a bérlői URL-cím megadását igényli-e, és hogy az URL-cím helyes-e. Ha nem jelenik meg a probléma, forduljon az alkalmazás fejlesztői szolgálatához, és győződjön meg arról, hogy a szolgáltatásuk SCIM-kompatibilis. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Érvénytelen hitelesítő adatok:** Ha engedélyezi a hozzáférést a célalkalmazás számára, a rendszer választ kapott a megcélzott alkalmazástól, amely jelzi, hogy a megadott hitelesítő adatok érvénytelenek.|Navigáljon a létesítési konfiguráció felhasználói felületének rendszergazdai hitelesítő adatok szakaszához, és engedélyezze újra a hozzáférést érvényes hitelesítő adatokkal. Ha az alkalmazás szerepel a katalógusban, tekintse át az alkalmazás konfigurálására vonatkozó oktatóanyagot a már szükséges lépések elvégzéséhez.|

@@ -208,7 +208,7 @@ Az [MPEG-DASH] EventStream XML-adattartalom sémája a következőképpen van de
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Beépített támogatott séma azonosító URI-k
-| Séma AZONOSÍTÓjának URI-ja                 | Description                                                                                                                                                                                                                                          |
+| Séma AZONOSÍTÓjának URI-ja                 | Leírás                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/emsg/ID3 | Leírja, hogy a [ID3v2] metaadatok hogyan hajthatók végre időzített metaadatokként egy CMAF-kompatibilis [MPEGCMAF] darabolt MP4-ben. További információért lásd az [időzített metaadatokat a Common Media Application Format (CMAF) alkalmazásban.](https://github.com/AOMediaCodec/id3-emsg) |
 

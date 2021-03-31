@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
 ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895424"
 ---
 # <a name="translator-30-transliterate"></a>Translator 3,0: Átbetűzés
@@ -58,7 +58,7 @@ A kérelem fejlécei a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
     <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
@@ -115,7 +115,7 @@ Példa JSON-válaszra:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>X – kérelemazonosító</td>
     <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
@@ -128,7 +128,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>
