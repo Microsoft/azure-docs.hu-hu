@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94363323"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Kérelmek hitelesítése az Azure Cognitive Services
@@ -34,7 +34,7 @@ A [fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)ut�
 
 Gyorsan áttekintheti az Azure Cognitive Services használható hitelesítési fejléceket.
 
-| Fejléc | Description |
+| Fejléc | Leírás |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Ezt a fejlécet használva hitelesítheti magát egy adott szolgáltatás vagy egy több szolgáltatás előfizetési kulcsának előfizetési kulcsával. |
 | OCP-APIM-előfizetés-régió | Ezt a fejlécet csak akkor kell megadni, ha több szolgáltatást használó előfizetési kulcsot használ a [Translator Service](./Translator/reference/v3-0-reference.md)-ben. Ez a fejléc az előfizetési régió megadására használható. |

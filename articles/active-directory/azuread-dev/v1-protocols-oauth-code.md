@@ -78,7 +78,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &state=12345
 ```
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | Bérlő |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek a bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy a `contoso.onmicrosoft.com` `common` bérlői független tokenek esetében. |
 | client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ez az Azure Portalon található. Kattintson **Azure Active Directory** a szolgáltatások oldalsávban, majd a **Alkalmazásregisztrációk** elemre, és válassza ki az alkalmazást. |
@@ -134,7 +134,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Az engedélyezési végpont hibáinak kódjai
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód | Description | Ügyfél művelete |
+| Hibakód | Leírás | Ügyfél művelete |
 | --- | --- | --- |
 | invalid_request |Protokollhiba, például hiányzó kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet. Ez egy fejlesztési hiba, és általában a kezdeti tesztelés során történik. |
 | unauthorized_client |Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -163,7 +163,7 @@ grant_type=authorization_code
 //NOTE: client_secret only required for web apps
 ```
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | Bérlő |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek a bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy a `contoso.onmicrosoft.com` `common` bérlői független tokenek esetében. |
 | client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ezt a Azure Portalban találja. Az alkalmazás-azonosító az alkalmazás regisztrációjának beállításaiban jelenik meg. |
@@ -240,7 +240,7 @@ A példaként kapott hiba a következőhöz hasonló:
 #### <a name="http-status-codes"></a>HTTP-állapotkódok
 A következő táblázat felsorolja azokat a HTTP-állapotkódok listáját, amelyeket a jogkivonat-kiállítási végpont visszaad. Bizonyos esetekben a hibakód elegendő a válasz leírásához, de ha hibákat észlel, elemezni kell a csatolt JSON-dokumentumot, és meg kell vizsgálnia a hibakódját.
 
-| HTTP-kód | Description |
+| HTTP-kód | Leírás |
 | --- | --- |
 | 400 |Alapértelmezett HTTP-kód. A legtöbb esetben használatos, és általában egy helytelenül formázott kérelem okozza. Javítsa ki és küldje el újra a kérelmet. |
 | 401 |A hitelesítés sikertelen. Például a kérelemből hiányzik a client_secret paraméter. |
@@ -248,7 +248,7 @@ A következő táblázat felsorolja azokat a HTTP-állapotkódok listáját, ame
 | 500 |Belső hiba történt a szolgáltatásban. Próbálja megismételni a kérelmet. |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>Hibakódok jogkivonat-végponti hibákhoz
-| Hibakód | Description | Ügyfél művelete |
+| Hibakód | Leírás | Ügyfél művelete |
 | --- | --- | --- |
 | invalid_request |Protokollhiba, például hiányzó kötelező paraméter. |A kérelem javítása és újraküldése |
 | invalid_grant |Az engedélyezési kód érvénytelen vagy lejárt. |Új kérelem kipróbálása a `/authorize` végpontra |
@@ -290,7 +290,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="bearer-scheme-error-codes"></a>Tulajdonosi séma hibakódai
 Az RFC 6750 specifikációja a következő hibákat definiálja a válaszban a WWW-Authenticate fejlécet és a tulajdonosi sémát használó erőforrásokhoz.
 
-| HTTP-állapotkód | Hibakód | Description | Ügyfél művelete |
+| HTTP-állapotkód | Hibakód | Leírás | Ügyfél művelete |
 | --- | --- | --- | --- |
 | 400 |invalid_request |A kérés nem megfelelően formázott. Előfordulhat például, hogy hiányzik egy paraméter, vagy kétszer ugyanazt a paramétert használja. |Javítsa ki a hibát, majd próbálja megismételni a kérelmet. Ezt a típusú hibát csak a fejlesztés során, a kezdeti tesztelés során kell észlelni. |
 | 401 |invalid_token |A hozzáférési jogkivonat hiányzik, érvénytelen vagy vissza lett vonva. A error_description paraméter értéke további részleteket tartalmaz. |Igényeljen új jogkivonatot az engedélyezési kiszolgálóról. Ha az új jogkivonat meghiúsul, váratlan hiba történt. Küldjön egy hibaüzenetet a felhasználónak, és próbálkozzon újra a véletlenszerű késések után. |

@@ -16,7 +16,7 @@ ms.locfileid: "86257244"
 Service Fabric Mesh-alkalmazások törlése és kezelése.
 
 ## <a name="subgroups"></a>Alcsoportok
-|Alcsoport|Description|
+|Alcsoport|Leírás|
 | --- | --- |
 | [App](service-fabric-sfctl-mesh-app.md) | Alkalmazás erőforrásainak beolvasása és törlése. |
 | [Code-Package-log](service-fabric-sfctl-mesh-code-package-log.md) | Szerezze be a naplófájlokat az adott szolgáltatás replikájának megadott csomagjának tárolójában. |

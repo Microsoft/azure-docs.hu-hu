@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: fc41d2904d5a6676f1e9e1e2d178985bef0a9aa3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101095546"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Szerepköralapú hozzáférés-vezérlés használata az Azure API Managementben
@@ -32,7 +32,7 @@ API Management jelenleg három beépített szerepkört biztosít, és a közelj�
 
 A következő táblázat a beépített szerepkörök rövid leírását tartalmazza. Ezeket a szerepköröket a Azure Portal vagy más eszközök, például az Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md), az [Azure CLI](../role-based-access-control/role-assignments-cli.md)és a [REST API](../role-based-access-control/role-assignments-rest.md)használatával rendelheti hozzá. A beépített szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [Azure-szerepkörök társítása az Azure-előfizetési erőforrások elérésének kezeléséhez](../role-based-access-control/role-assignments-portal.md).
 
-| Szerepkör          | Olvasási hozzáférés<sup>[1]</sup> | Írási hozzáférés<sup>[2]</sup> | Szolgáltatás létrehozása, törlése, skálázás, VPN és egyéni tartomány konfigurálása | Hozzáférés a régi közzétevői portálhoz | Description
+| Szerepkör          | Olvasási hozzáférés<sup>[1]</sup> | Írási hozzáférés<sup>[2]</sup> | Szolgáltatás létrehozása, törlése, skálázás, VPN és egyéni tartomány konfigurálása | Hozzáférés a régi közzétevői portálhoz | Leírás
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | API Management szolgáltatás közreműködői | ✓ | ✓ | ✓ | ✓ | Felügyelői rendszergazda. Teljes körű, API Management szolgáltatásokhoz és entitásokhoz (például API-khoz és házirendekhez) való hozzáférése. Hozzáfér a régi közzétevői portálhoz. |
 | API Management szolgáltatás-olvasó | ✓ | | || Csak olvasási hozzáféréssel rendelkezik API Management szolgáltatásokhoz és entitásokhoz. |

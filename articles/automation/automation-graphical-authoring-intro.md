@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102501228"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
@@ -34,7 +34,7 @@ A vászon vezérlőelem lehetővé teszi a runbook megtervezését. Hozzáadhat 
 
 A könyvtár vezérlőelem lehetővé teszi, hogy kiválassza a runbook hozzáadni kívánt [tevékenységeket](#use-activities) . Hozzáadja őket a vászonhoz, ahol más tevékenységekhez is csatlakozhat. A könyvtár vezérlőelem a következő táblázatban definiált szakaszt tartalmazza.
 
-| Section | Description |
+| Section | Leírás |
 |:--- |:--- |
 | Parancsmagok |Az összes olyan parancsmag, amely használható a runbook. A parancsmagok modul szerint vannak rendszerezve. Az Automation-fiókba telepített összes modul elérhető. |
 | Runbookok |Az Automation-fiók runbookok. Ezeket a runbookok felveheti a vászonra, hogy gyermek runbookok lehessen használni. Csak a szerkesztett runbook azonos alaptípusú runbookok jelennek meg. Grafikus runbookok csak a PowerShell-alapú runbookok jelennek meg. A grafikus PowerShell-munkafolyamat runbookok csak a PowerShell munkafolyamat-alapú runbookok jelennek meg. |
@@ -69,7 +69,7 @@ A következő példában a [Get-AzVM](/powershell/module/az.compute/get-azvm) pa
 
 Egy paraméter értékének megadásakor ki kell választania egy adatforrást, amely meghatározza, hogy az érték hogyan legyen megadva. Egy adott paraméter számára elérhető adatforrások az adott paraméter érvényes értékeitől függenek. A Null érték például nem érhető el egy olyan paraméter számára, amely nem engedélyezi null értékek használatát.
 
-| Adatforrás | Description |
+| Adatforrás | Leírás |
 |:--- |:--- |
 | Konstans érték |Adja meg a paraméter értékét. Ez az adatforrás csak a következő adattípusokhoz érhető el: Int32, Int64, string, Boolean, DateTime, Switch. |
 | Tevékenység kimenete |Olyan tevékenység kimenetét használja, amely megelőzi az aktuális tevékenységet a munkafolyamatban. Minden érvényes tevékenység megjelenik. A paraméter értékeként csak a kimenetet előállító tevékenységet használja. Ha a tevékenység több tulajdonsággal rendelkező objektumot ad eredményül, a tevékenység kiválasztása után megadhatja egy adott tulajdonság nevét. |
@@ -151,7 +151,7 @@ A két tevékenység között úgy hozhat létre kapcsolatot, hogy kiválasztja 
 
 Válassza ki a hivatkozást a tulajdonságainak konfigurálásához a konfiguráció panelen. A tulajdonságok közé tartozik a hivatkozás típusa, amelyet az alábbi táblázat ismertet.
 
-| Hivatkozás típusa | Description |
+| Hivatkozás típusa | Leírás |
 |:--- |:--- |
 | Folyamat |A célként megadott tevékenység a forrás tevékenység minden objektumának kimenetén egyszer fut. A célként megadott tevékenység nem fut, ha a forrásoldali tevékenység nem eredményez kimenetet. A forrás tevékenység kimenete objektumként érhető el. |
 | Sequence |A célként megadott tevékenység csak egyszer fut le, amikor megkapja a kimenetet a forrás tevékenységtől. A forrás tevékenység kimenete objektumok tömbje érhető el. |
@@ -257,7 +257,7 @@ Az egyes bemeneti paramétereket az alábbi táblázat tulajdonságai határozz�
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Név | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbook belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzást tartalmazhat. A név nem tartalmazhat szóközt. |
-| Description |Választható. A bemeneti paraméter céljának leírása. |
+| Leírás |Választható. A bemeneti paraméter céljának leírása. |
 | Típus | Választható. A paraméter értékének várt adattípus. A Azure Portal minden paraméter esetében megfelelő vezérlést biztosít az adattípushoz, amikor rákérdez a bemenetre. A támogatott paraméterek a következők: string, Int32, Int64, decimális, Boolean, DateTime és Object. Ha nincs kiválasztva adattípus, a rendszer az alapértelmezett karakterláncot adja meg.|
 | Kötelező | Választható. Ez a beállítás határozza meg, hogy meg kell-e adni egy értéket a paraméterhez. Ha úgy dönt `yes` , a runbook indításakor meg kell adni egy értéket. Ha úgy dönt `no` , nincs szükség értékre a runbook indításakor, és az alapértelmezett érték is használható. A runbook nem indítható el, ha nem ad meg értéket minden olyan kötelező paraméterhez, amelyhez nincs megadva alapértelmezett érték. |
 | Alapértelmezett érték | Választható. Egy paraméterhez használt érték, ha az egyiket nem adja át a rendszer a runbook indításakor. Alapértelmezett érték beállításához válassza a elemet `Custom` . Válassza ki, `None` hogy nem szeretne-e alapértelmezett értéket megadni. |

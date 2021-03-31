@@ -30,13 +30,13 @@ Törli a névvel azonosított alkalmazás-erőforrást.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-n [kötelező] | Az alkalmazás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -51,7 +51,7 @@ Egy adott erőforráscsoport összes alkalmazás-erőforrásával kapcsolatos in
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -66,13 +66,13 @@ Az alkalmazás-erőforrással kapcsolatos információk beolvasása a megadott n
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-n [kötelező] | Az alkalmazás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |

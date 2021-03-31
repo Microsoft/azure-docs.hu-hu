@@ -108,7 +108,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | Bérlő |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek a bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy a `contoso.onmicrosoft.com` `common` bérlői független tokenek esetében. |
 | client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ezt a Azure Portalban találja. Kattintson a **Azure Active Directory**, majd az alkalmazás **regisztrálása** elemre, válassza ki az alkalmazást, és keresse meg az alkalmazás azonosítóját az alkalmazás lapon. |
@@ -161,7 +161,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód | Description | Ügyfél művelete |
+| Hibakód | Leírás | Ügyfél művelete |
 | --- | --- | --- |
 | invalid_request |Protokollhiba, például hiányzó kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet. Ez egy fejlesztési hiba, és általában a kezdeti tesztelés során történik. |
 | unauthorized_client |Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -197,7 +197,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | post_logout_redirect_uri |ajánlott |Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után.  Ennek az URL-címnek meg kell egyeznie az alkalmazás regisztrációs portálján az alkalmazáshoz regisztrált átirányítási URI-k egyikével.  Ha *post_logout_redirect_urit* nem tartalmaz, a felhasználó általános üzenetet jelenít meg. |
 

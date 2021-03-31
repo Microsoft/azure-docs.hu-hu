@@ -76,19 +76,19 @@ A gyorsjavítási módszer a következő három lépést foglalja magában:
 
 A következő gyorsjavításokat le kell töltenie és telepítenie kell az előírt sorrendben és a javasolt mappákban:
 
-| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Sorrend | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4037264 |Szoftverfrissítés<br> _HcsSoftwareUpdate.exe_ és _CisMSDAgent.exe_ letöltése |Szabályos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
 
 Ha a 4. frissítést futtató eszközről frissít, csak az operációs rendszer összegző frissítéseit kell második sorrendi frissítésként telepíteni.
 
-| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Sorrend | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 2a. |KB4025336 |Operációs rendszer összegző frissítései csomag <br> A Windows Server 2012 R2 verziójának letöltése |Szabályos <br></br>Nem zavaró |- |SecondOrderUpdate|
 
 Ha a telepítést a 3-as vagy korábbi frissítést futtató eszközről végzi, a kumulatív frissítések mellett telepítse a következőt is.
 
-| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Sorrend | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 2b. |KB4011841 <br> KB4011842 |LSI-illesztőprogram és belső vezérlőprogram frissítései <br> USM belső vezérlőprogram frissítése (3,38-es verzió) |Szabályos <br></br>Nem zavaró |~ 3 óra <br> (tartalmazza a következőt: 2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Operációs rendszer biztonsági frissítései csomag <br> A Windows Server 2012 R2 verziójának letöltése |Szabályos <br></br>Nem zavaró |- |SecondOrderUpdate|
@@ -97,7 +97,7 @@ Ha a telepítést a 3-as vagy korábbi frissítést futtató eszközről végzi,
 
 Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire `Get-HcsFirmwareVersion` . Ha a következő belső vezérlőprogram-verziókat futtatja:,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N003` `0107` akkor nem kell telepítenie ezeket a frissítéseket.
 
-| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
+| Sorrend | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Lemez belső vezérlőprogramja |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
 

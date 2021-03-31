@@ -13,10 +13,10 @@ ms.date: 01/22/2021
 ms.author: nacanuma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
 ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99820320"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Java-konzol alkalmazásból az alkalmazás identitásával
@@ -209,7 +209,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-> | Ahol: |Description |
+> | Ahol: |Leírás |
 > |---------|---------|
 > | `CLIENT_SECRET` | Az Azure Portalon az alkalmazáshoz létrehozott ügyfél-titkos kulcs. |
 > | `CLIENT_ID` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
@@ -249,7 +249,7 @@ IAuthenticationResult result;
      return result;
 ```
 
-> |Ahol:| Description |
+> |Ahol:| Leírás |
 > |---------|---------|
 > | `SCOPE` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében ennek a hasonló formátumot kell használnia, ha `{Application ID URI}/.default` azt jelzi, hogy a kért hatókörök a Azure Portalban beállított alkalmazás-objektumban statikusan vannak meghatározva (Microsoft Graph, `{Application ID URI}` pont – `https://graph.microsoft.com` ). Az egyéni webes API-k esetében az `{Application ID URI}` Azure portalon **ALKALMAZÁSREGISZTRÁCIÓK** az **API közzététele** című részében van definiálva.|
 

@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054093"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
@@ -44,7 +44,7 @@ Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és 
   
 4.  Válasszon egyet a következő engedélyek közül:  
   
-    |Engedély|Description|  
+    |Engedély|Leírás|  
     |----------------|-----------------|  
     |**Nincs**|A tagok nem tudják olvasni vagy módosítani a modell sémáját, és nem tudják lekérdezni az adatlekérdezéseket.|  
     |**Olvasni**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
@@ -73,7 +73,7 @@ Szerepkörök és felhasználók egy központilag telepített modell-adatbázish
 
 3. Válasszon ki egy engedélyt.
 
-   |Engedély|Description|  
+   |Engedély|Leírás|  
    |----------------|-----------------|  
    |**Teljes hozzáférés (rendszergazda)**|A tagok módosíthatják a modell sémáját, feldolgozhatják és lekérhetik az összes adatlekérdezést.| 
    |**Adatbázis feldolgozása**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  

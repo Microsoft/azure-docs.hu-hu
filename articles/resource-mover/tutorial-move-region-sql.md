@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99820229"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Oktatóanyag: Azure SQL Database-erőforrások áthelyezése egy másik régióba
@@ -50,7 +50,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 ## <a name="check-sql-requirements"></a>SQL-követelmények keresése
 
 1. [Győződjön](support-matrix-move-region-sql.md) meg arról, hogy mely adatbázis/rugalmas készlet funkciók támogatottak a másik régióba való áthelyezéshez.
-2. A célként megadott régióban hozzon létre egy célkiszolgáló minden forráskiszolgálón. [További információ](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users).
+2. A célként megadott régióban hozzon létre egy célkiszolgáló minden forráskiszolgálón. [További információk](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users).
 4. Ha az adatbázisok transzparens adattitkosítással (TDE) vannak titkosítva, és a Azure Key Vault saját titkosítási kulcsát használja, [Ismerje meg, hogyan](../key-vault/general/move-region.md) helyezheti át a kulcstartókat egy másik régióba.
 5. Ha az SQL-adatszinkronizálás engedélyezve van, a rendszer a tagok adatbázisainak áthelyezését is támogatja. Az áthelyezést követően be kell állítania az SQL-adatszinkronizálást az új céladatbázis-adatbázisba.
 6. Az áthelyezés előtt távolítsa el a speciális adatbiztonsági beállításokat. Az áthelyezést követően [konfigurálja a beállításokat](../azure-sql/database/azure-defender-for-sql.md) a célként megadott régió SQL Server szintjén.
@@ -101,7 +101,7 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 > 
 > - A SQL Server jelenleg *manuális hozzárendelés függőben* állapotú.
 > - Az egyéb hozzáadott erőforrások *előkészítése függő* állapotban van.
-> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információ](remove-move-resources.md).
+> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információk](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Függőségek feloldása
 

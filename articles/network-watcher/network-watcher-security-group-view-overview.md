@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
 ms.openlocfilehash: 6e330d2595487366ff7b8979490cb8a897f89520
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102503147"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Az Azure Network Watcher hatékony biztonsági szabályok nézetének bemutatása

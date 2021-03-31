@@ -18,6 +18,6 @@ ms.locfileid: "87075452"
 
 Az alábbi táblázat az Azure webalkalmazási tűzfal Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaz.
 
-| Sablon | Description |
+| Sablon | Leírás |
 | -------- | ----------- |
 | [Application Gateway v2 webalkalmazási tűzfallal](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) | Létrehoz egy Application Gateway v2-et a Web Application Firewall V2 használatával.|
