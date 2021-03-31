@@ -9,10 +9,10 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67179089"
 ---
 Az Azure-ban megnyithat egy portot, vagy létrehozhat egy végpontot egy virtuális gépre (VM), ha hálózati szűrőt hoz létre egy alhálózaton vagy egy VM-hálózati adapteren. Ezeket a szűrőket, amelyek a bejövő és a kimenő forgalmat is szabályozzák, a forgalmat fogadó erőforráshoz csatolt hálózati biztonsági csoporton.

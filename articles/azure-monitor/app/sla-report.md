@@ -4,10 +4,10 @@ description: Kiszámíthatja és bejelentheti az SLA-t a webes tesztek számára
 ms.topic: conceptual
 ms.date: 02/8/2021
 ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101714051"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>Állásidő, SLA és kimaradási munkafüzet

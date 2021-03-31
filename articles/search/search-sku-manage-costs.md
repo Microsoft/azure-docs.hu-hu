@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539555"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás költségeinek becslése és kezelése
@@ -27,7 +27,7 @@ A keresési szolgáltatás által használt erőforrások mennyisége, a szolgá
 
 Számlázási célokra két egyszerű képletet kell figyelembe venni:
 
-| Képlet | Description |
+| Képlet | Leírás |
 |---------|-------------|
 | **R x P = SU** | A használt replikák száma, a felhasznált partíciók számával szorozva a szolgáltatás által használt *keresési egységek* (su) mennyiségével egyenlő. A SU erőforrás-egység, amely lehet partíció vagy replika is. |
 | **SU * számlázási arány = havi ráfordítás** | A teljes havi számla elsődleges tényezője, hogy az SUs száma megszorozza a szolgáltatás kiépített szintjének számlázási arányával. Bizonyos funkciók vagy munkaterhelések más Azure-szolgáltatások függőségeivel is rendelkeznek, ami növelheti a megoldás költségeit az előfizetés szintjén. Az alábbi számlázható események szakasz azokat a funkciókat azonosítja, amelyek hozzáadhatók a számlához. |

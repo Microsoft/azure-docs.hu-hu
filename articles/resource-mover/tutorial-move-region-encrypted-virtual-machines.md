@@ -9,10 +9,10 @@ ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361009"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Oktatóanyag: titkosított Azure-beli virtuális gépek áthelyezése régiók között
@@ -183,7 +183,7 @@ Válassza az erőforrások lehetőséget a következők szerint:
 > - A hozzáadott erőforrások *előkészítése függő* állapotba kerülnek.
 > - A virtuális gépek erőforráscsoport hozzáadása automatikusan megtörténik.
 > - Ha módosítja a **célként megadott konfigurációs** bejegyzéseket olyan erőforrás használatára, amely már létezik a célhelyen, az erőforrás állapota *függőben* állapotra van állítva, mert nincs szükség áthelyezésre.
-> - Ha el kívánja távolítani egy hozzáadott erőforrást, akkor az a metódus, amely az áthelyezési folyamat helyétől függ. [További információ](remove-move-resources.md).
+> - Ha el kívánja távolítani egy hozzáadott erőforrást, akkor az a metódus, amely az áthelyezési folyamat helyétől függ. [További információk](remove-move-resources.md).
 
 
 ## <a name="resolve-dependencies"></a>Függőségek feloldása

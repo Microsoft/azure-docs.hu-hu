@@ -7,10 +7,10 @@ ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 4d4bdc4fa15f634b36f12a650b70b9ffd89b40e0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539104"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Hibaelhárítás – áttekintés, visszajelzés és a Windows rendszerű virtuális asztalok támogatása
@@ -32,7 +32,7 @@ Mielőtt bármit végrehajtaná, győződjön meg róla, hogy az Azure-beli szol
 
 A következő táblázat segítségével azonosíthatja és megoldhatja a környezetek Távoli asztal-ügyfél használatával történő beállításakor felmerülő problémákat. A környezet beállítása után az új [diagnosztikai szolgáltatás](diagnostics-role-service.md) segítségével azonosíthatja a gyakori forgatókönyvek problémáit.
 
-| **Kérdés**                                                            | **Javasolt megoldás**  |
+| **Probléma**                                                            | **Javasolt megoldás**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Session Host Pool Azure Virtual Network (VNET) és Express Route-beállítások               | [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), majd válassza ki a megfelelő szolgáltatást (a hálózatkezelés kategóriában). |
 | A munkamenet-gazdagép virtuális gép (VM) létrehozása, ha Azure Resource Manager a Windows rendszerű virtuális asztallal elérhető sablonok nincsenek használatban | [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), majd válassza a **Windows virtuális asztal** lehetőséget a szolgáltatáshoz. <br> <br> A Windows rendszerű virtuális asztal szolgáltatásban elérhető Azure Resource Manager sablonokkal kapcsolatos problémákért lásd: a gazdagép-készletek [létrehozásának](troubleshoot-set-up-issues.md)Azure Resource Manager sablon hibái szakasza. |

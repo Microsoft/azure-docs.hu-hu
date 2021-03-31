@@ -13,10 +13,10 @@ ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99093757"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>A SQL Database és az SQL felügyelt példányának átmeneti csatlakoztatási hibáinak elhárítása
@@ -276,7 +276,7 @@ Az Enterprise Library 6 (EntLib60) .NET által felügyelt osztályokat kínál a
 
 Íme néhány Transact-SQL SELECT utasítás, amely a hibák naplóit és egyéb információkat kérdezi le.
 
-| Napló lekérdezése | Description |
+| Napló lekérdezése | Leírás |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |A [sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) nézet az egyes eseményekkel kapcsolatos információkat tartalmaz, amelyekben átmeneti hibák vagy csatlakozási hibák okozhatnak.<br/><br/>Ideális esetben összekapcsolhatja a **start_time** vagy **end_time** értékeket, ha az ügyfélprogram problémát észlelt.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |A [sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) nézet a további diagnosztikai események összesített számát kínálja.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |

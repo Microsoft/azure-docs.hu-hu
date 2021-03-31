@@ -5,17 +5,17 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: a4c2f444cb821f7979571b9d777895a59450e7c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96309579"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Resource Manager-sablonok az Azure Backuphoz
 
 A következő táblázat a helyreállítási tárakhoz és az Azure Backup funkcióihoz használható Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz. A JSON szintaxisáról és tulajdonságairól a [Microsoft. recoveryservices szolgáltatónál erőforrástípusok](/azure/templates/microsoft.recoveryservices/allversions)című témakörben olvashat bővebben.
 
-| Sablon | Description |
+| Sablon | Leírás |
 |---|---|
 |**Helyreállítási tár** | |
 | [Recovery Services-tároló létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Recovery Services-tároló létrehozása. A tár használható az Azure Backup és az Azure Site Recovery szolgáltatásokkal. |

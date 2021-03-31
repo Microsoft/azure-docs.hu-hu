@@ -4,10 +4,10 @@ description: A Batch-készlet átméretezési indítási eseményének hivatkoz�
 ms.topic: reference
 ms.date: 12/28/2020
 ms.openlocfilehash: be64a2ef30cbe3c404633b29202a4adf1e49ea9e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803612"
 ---
 # <a name="pool-resize-start-event"></a>Készlet átméretezésének indítása esemény

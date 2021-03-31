@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 0961b52ebc7271fabf4cc05ed99eea23d911a2d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103009092"
 ---
 # <a name="streaming-endpoints-overview"></a>Folyamatos átviteli végpontok áttekintése  
@@ -52,7 +52,7 @@ További végpontok esetén: `{EndpointName}-{AccountName}.streaming.mediaservic
 Media Services január 2017-os kiadásával kezdődően két folyamatos átviteli típus érhető el: **standard** (előzetes verzió) és **prémium**. Ezek a típusok az "2,0" streaming Endpoint verzió részét képezik.
 
 
-|Típus|Description|
+|Típus|Leírás|
 |--------|--------|  
 |**Standard**|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely a folyamatos átviteli egységek beállításával módosítható a prémium típusra.|
 |**Prémium** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
