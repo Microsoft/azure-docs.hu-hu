@@ -56,7 +56,7 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Script | Description |
+| Script | Leírás |
 |---|---|
 | [az SQL MidB](/cli/azure/sql/midb) | Felügyelt példány adatbázis-parancsai. |
 

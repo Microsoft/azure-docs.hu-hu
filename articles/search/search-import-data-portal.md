@@ -75,7 +75,7 @@ A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy 
 
 A varázsló a háttérben hozza létre, konfigurálja és hívja meg a következő objektumokat. A varázsló futtatása után megkeresheti a kimenetét a portál oldalain. A szolgáltatás Áttekintés lapja indexek, indexelő, adatforrások és szakértelmével listáját tartalmazza. Az index-definíciók teljes JSON-ben megtekinthetők a portálon. Más definíciók esetén a [REST API](/rest/api/searchservice/) használatával kérhet le konkrét objektumokat.
 
-| Objektum | Description | 
+| Objektum | Leírás | 
 |--------|-------------|
 | [Adatforrás](/rest/api/searchservice/create-data-source)  | Megtartja a kapcsolódási adatokat a forrásadatok, beleértve a hitelesítő adatokat is. Az adatforrás-objektumok kizárólag indexelő alkalmazással használhatók. | 
 | [Index](/rest/api/searchservice/create-index) | A teljes szöveges kereséshez és más lekérdezésekhez használt fizikai adatstruktúra. | 

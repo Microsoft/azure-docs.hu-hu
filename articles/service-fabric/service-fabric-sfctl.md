@@ -18,7 +18,7 @@ Parancsok Service Fabric fürtök és entitások kezeléséhez. Ez a verzió Ser
 A parancsok a főnévi művelet mintáját követik. További információért tekintse meg az alcsoportokat.
 
 ## <a name="subgroups"></a>Alcsoportok
-|Alcsoport|Description|
+|Alcsoport|Leírás|
 | --- | --- |
 | [alkalmazás](service-fabric-sfctl-application.md) | Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelése. |
 | [Chaos](service-fabric-sfctl-chaos.md) | Indítsa el, állítsa le és jelentse a Chaos test Service-t. |
