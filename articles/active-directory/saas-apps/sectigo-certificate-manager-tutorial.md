@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: c589db84b6221aa23868b3b49aea84f33623619f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92673861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Oktatóanyag: Azure Active Directory integráció a Sectigo tanúsítványkezelővel
@@ -125,7 +125,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Sectigo 
     
     1. Válassza az **új jogcím hozzáadása** lehetőséget, és adja hozzá a következő négy jogcímet:
     
-        | Name | Névtér | Forrás | Forrás attribútum | Description |
+        | Name | Névtér | Forrás | Forrás attribútum | Leírás |
         | --- | --- | --- | --- | --- |
         | eduPersonPrincipalName | üres | Attribútum | User. userPrincipalName | Meg kell egyeznie a **identitásszolgáltató személy azonosító** mezőjével a Sectigo Tanúsítványkezelőben a rendszergazdák számára. |
         | Levelezés | üres | Attribútum | User. mail | Kötelező |

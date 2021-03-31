@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 89fa1b542c54fc962f8c12a2142884c677afb259
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104674648"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Adatforrások megjegyzése Azure Data Catalogban
@@ -39,7 +39,7 @@ Data Catalog a következő típusú megjegyzéseket támogatja:
 | Jegyzet | Jegyzetek |
 | --- | --- |
 | Felhasználóbarát név |A felhasználóbarát nevek az adategység szintjén adhatók meg, hogy az adategységek könnyebben érthetőek legyenek. A felhasználóbarát nevek akkor hasznosak, ha az alapul szolgáló objektumnév Crypter, rövidített vagy más módon nem értelmezhető a felhasználók számára. |
-| Description |A leírásokat az adategységek és az attribútumok/oszlopok szintjein lehet megadni. A leírások olyan rövid szöveges megjegyzések, amelyek leírják a felhasználó perspektíváját az adategységen vagy annak használatával. |
+| Leírás |A leírásokat az adategységek és az attribútumok/oszlopok szintjein lehet megadni. A leírások olyan rövid szöveges megjegyzések, amelyek leírják a felhasználó perspektíváját az adategységen vagy annak használatával. |
 | Címkék (felhasználói címkék) |A címkéket az adategység és az attribútum/oszlop szintjein lehet megadni. A felhasználói címkék felhasználó által definiált címkék, amelyek az adategységek vagy attribútumok kategorizálására használhatók. |
 | Címkék (Szószedet-címkék) |A címkéket az adategység és az attribútum/oszlop szintjein lehet megadni. A Szószedet címkék központilag definiált szószedeti kifejezések, amelyek segítségével kategorizálhatja az adategységeket és az attribútumokat egy közös üzleti besorolással. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása) |
 | Szakértők |Szakértőket az adategység szintjén lehet megadni. A szakértők olyan felhasználókat vagy csoportokat azonosítanak az adathoz, amelyek szakértői perspektívával rendelkeznek, és a regisztrált adatforrásokat felderítő felhasználók és a meglévő megjegyzések által nem válaszoló kérdésekre is kiszolgálják. |

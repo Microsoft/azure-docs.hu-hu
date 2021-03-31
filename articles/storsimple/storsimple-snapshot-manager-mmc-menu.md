@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90056003"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Használja az MMC menü műveleteit a StorSimple Snapshot Manager
@@ -30,7 +30,7 @@ A StorSimple Snapshot Manager a következő műveleteket fogja látni az összes
 * Új ablak innen 
 * Frissítés 
 * Exportálási lista 
-* Súgó 
+* Help 
 
 Ezek a műveletek a Microsoft Management Console (MMC) részét képezik, és nem kifejezetten a StorSimple Snapshot Manager. Ez az oktatóanyag ismerteti ezeket a műveleteket, és elmagyarázza, hogyan használhatja őket a StorSimple Snapshot Manager.
 
@@ -91,7 +91,7 @@ A lista **exportálása** művelettel egy vesszővel tagolt (CSV-) fájlba menth
       
       ![Lista exportálása vesszővel elválasztott érték fájlként](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Súgó
+## <a name="help"></a>Help
 A **Súgó** menü használatával megtekintheti a StorSimple Snapshot Manager és az MMC-hez elérhető online súgót.
 
 #### <a name="to-view-available-online-help"></a>Az elérhető online Súgó megtekintése

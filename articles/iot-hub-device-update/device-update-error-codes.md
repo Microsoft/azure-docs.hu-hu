@@ -7,10 +7,10 @@ ms.date: 2/18/2021
 ms.topic: reference
 ms.service: iot-hub-device-update
 ms.openlocfilehash: dbdddc7cee0c3664a83501ba619a38e1cc44e1f3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200341"
 ---
 # <a name="device-update-for-iot-hub-error-codes"></a>IoT Hub hibakódok eszközének frissítése
@@ -38,7 +38,7 @@ A `ExtendedResultCode` PnP-felületen valószínűleg az aláírt egész számot
 
 **Létesítmények kódjai**
 
-| Létesítmény kódja     | Description  |
+| Létesítmény kódja     | Leírás  |
 |-------------------|--------------|
 | T                 | Hiba történt a DO SDK-ból|
 | E                 | Hibakód egy errno |
@@ -61,7 +61,7 @@ A következő táblázat felsorolja az eszköz frissítési ügyfelének kézbes
 
 A DO hibakódot az API-hívásokra adott válaszokban fellépő kivételek vizsgálatával lehet megszerezni. Az összes DO hibakódot a 0x80D0 előtaggal lehet azonosítani.
 
-| Hibakód  | Karakterlánc-hiba                       | Típus                 | Description |
+| Hibakód  | Karakterlánc-hiba                       | Típus                 | Leírás |
 |-------------|------------------------------------|----------------------|-------------|
 | 0x80D01001L | DO_E_NO_SERVICE                    | n.a.                  | A kézbesítési optimalizálás nem tudta biztosítani a szolgáltatást |
 | 0x80D02002L | DO_E_DOWNLOAD_NO_PROGRESS          | Feladatok letöltése         | A fájl letöltése nem történt meg a megadott időszakon belül. |

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93392333"
 ---
 # <a name="configure-azure-sql-edge"></a>Az Azure SQL Edge konfigurálása
@@ -32,7 +32,7 @@ Az Azure SQL Edge számos különböző környezeti változót tesz elérhetőv�
 
 A következő új környezeti változók lettek hozzáadva az Azure SQL Edge-hez. 
 
-| Környezeti változó | Description | Értékek |     
+| Környezeti változó | Leírás | Értékek |     
 |-----|-----| ---------- | 
 | **PlanId** | Megadja az inicializálás során használandó Azure SQL Edge SKU-t. Ez a környezeti változó csak akkor szükséges, ha Azure IoT Edge használatával telepíti az Azure SQL Edge-t. | **asde-Developer-on-IOT-Edge** vagy **asde-Premium-on-IOT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | A használati és diagnosztikai adatok gyűjtésének engedélyezése vagy letiltása. | TRUE (igaz) vagy FALSE (hamis) |  
@@ -42,7 +42,7 @@ A következő új környezeti változók lettek hozzáadva az Azure SQL Edge-hez
 
 Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változót. Ha meg van adva, a rendszer a tároló inicializálása során figyelmen kívül hagyja ezt a környezeti változót.
 
-| Környezeti változó | Description |
+| Környezeti változó | Leírás |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az **1** érték például engedélyezve van, és a **0** le van tiltva. |
 
