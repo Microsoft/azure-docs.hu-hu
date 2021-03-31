@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96005061"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
@@ -324,7 +324,7 @@ Gratulálunk! Elvégezte az oktatóanyagot. A következő szakaszokban részlete
 
 Az alábbi lista tartalmazza a támogatott események tulajdonságait, valamint azok típusait és leírásait. 
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
@@ -337,7 +337,7 @@ Az alábbi lista tartalmazza a támogatott események tulajdonságait, valamint 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | api | sztring | Az eseményt kiváltó művelet. A következő értékek egyike lehet: <ul><li>BlobCreated – az engedélyezett értékek a következők: `PutBlob` és `PutBlockList`</li><li>BlobDeleted – engedélyezett értékek: `DeleteBlob` `DeleteAfterUpload` és `AutoDelete` . <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterUpload kívánt tulajdonság értéke TRUE (igaz). </p><p>`AutoDelete` az esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
 | ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Részletekért lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |

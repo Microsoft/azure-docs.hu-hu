@@ -14,10 +14,10 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96003759"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>A Twilio használata a hang-és SMS-funkciókhoz az Azure-ban
@@ -84,7 +84,7 @@ A Twilio olyan .NET segéd-kódtárakat biztosít, amelyek a Twilio különböz�
 
 A Twilio öt kódtárat biztosít a .NET-fejlesztőknek:
 
-| Kódtár | Description |
+| Kódtár | Leírás |
 | --- | --- |
 | Twilio. API | A Twilio REST API egy felhasználóbarát .NET-könyvtárban lévő központi Twilio könyvtár. Ez a könyvtár a .NET, a Silverlight és a Windows Phone-telefon 7 rendszerhez érhető el. |
 | Twilio. TwiML | .NET-barát módszert biztosít a TwiML-jelölések létrehozásához. |
