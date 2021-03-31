@@ -4,10 +4,10 @@ description: Az Azure Policy által használt szabályzat-hozzárendelési defin
 ms.date: 03/17/2021
 ms.topic: conceptual
 ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104604865"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
@@ -67,7 +67,7 @@ A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, 
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Description |
+|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
 |-|-|-|-|-|-|
 |Engedélyezve |Alapértelmezett |sztring |Igen |Yes |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
 |Disabled (Letiltva) |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |

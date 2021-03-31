@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan hozhat létre egy géppel használható függv�
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: 4470741c8c7f2f6c9832ea73aa9c6207764bc903
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493548"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-typescript-using-visual-studio-code"></a>Gyors útmutató: függvény létrehozása az Azure-ban a Visual Studio Code használatával

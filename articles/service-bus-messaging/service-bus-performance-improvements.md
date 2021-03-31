@@ -5,13 +5,13 @@ ms.topic: article
 ms.date: 03/09/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 10435f74cfb7c87ccb28b64e1b3f136add1dc927
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102561874"
 ---
-# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával
+# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény növeléséhez Service Bus üzenetkezelés használatával
 
 Ez a cikk azt ismerteti, hogyan optimalizálható a teljesítmény a felügyelt üzenetek cseréjekor a Azure Service Bus használatával. A cikk első része a teljesítmény növelésére szolgáló különböző mechanizmusokat ismerteti. A második rész útmutatást nyújt a Service Bus használatáról oly módon, hogy a lehető legjobb teljesítményt nyújtsa egy adott forgatókönyvben.
 
