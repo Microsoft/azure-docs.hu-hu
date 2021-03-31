@@ -54,7 +54,7 @@ A hibakeresési gyorsítótár válaszának fejléceit a következő fejléc és
 ## <a name="cache-status-code-information"></a>Gyorsítótár-állapotkód adatai
 Az X-EC-debug válasz fejléce képes azonosítani a kiszolgálót, és hogyan kezeli a választ a következő irányelvek alapján:
 
-Fejléc | Description
+Fejléc | Leírás
 -------|------------
 X-EC-hibakeresés: x-EC-cache | Ezt a fejlécet akkor kell jelenteni, ha a tartalom a CDN-en keresztül van átirányítva. Azonosítja a kérelmet teljesítő POP-kiszolgálót.
 X-EC-Debug: x-EC-cache-Remote | Ezt a fejlécet csak akkor kell jelenteni, ha a kért tartalom a forrásként szolgáló védelmi kiszolgálón vagy az ADN-átjáró kiszolgálón lett gyorsítótárazva.

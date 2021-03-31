@@ -7,29 +7,29 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664265"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Tervezett karbantartási értesítés Azure Database for MariaDB
 
 Megtudhatja, hogyan készítheti elő a tervezett karbantartási eseményeket a Azure Database for MariaDB.
 
-## <a name="what-is-a-planned-maintenance"></a>Mi a tervezett karbantartás?
+## <a name="what-is-a-planned-maintenance"></a>Mi az a tervezett karbantartás?
 
 A Azure Database for MariaDB szolgáltatás a mögöttes hardver, operációs rendszer és adatbázismotor automatizált javítását végzi. A javítás új szolgáltatás-funkciókat, biztonságot és szoftverfrissítéseket tartalmaz. A MariaDB motor esetében az alverziók frissítése automatikusan megtörténik, és a javítási ciklus részét képezi. Nincs szükség felhasználói műveletre vagy konfigurációs beállításra a javításhoz. A javítást széles körben tesztelik, és a biztonságos üzembe helyezési eljárások használatával végezhető el.
 
 A tervezett karbantartás karbantartási időszak, ha ezek a szolgáltatások egy adott Azure-régióban lévő kiszolgálókra vannak telepítve. A tervezett karbantartás során a rendszer létrehoz egy értesítési eseményt, amely tájékoztatja az ügyfeleket, hogy mikor megy végbe a szolgáltatásfrissítés üzembe helyezése abban az Azure-régióban, amelyben a kiszolgálóik találhatók. A két tervezett karbantartás közötti minimális időtartam 30 nap. A következő karbantartási időszakról 72 órával korábban értesítést kap.
 
-## <a name="planned-maintenance---duration-and-customer-impact"></a>Tervezett karbantartás – időtartam és az ügyfelek hatása
+## <a name="planned-maintenance---duration-and-customer-impact"></a>Tervezett karbantartás – időtartam és az ügyfélre gyakorolt hatás
 
-Egy adott Azure-régió tervezett karbantartása általában 15 órával várható. Ha szükséges, az ablak a visszagörgetési terv végrehajtásához is tartalmaz pufferelési időt. A tervezett karbantartás során az adatbázis-kiszolgáló újraindítása vagy feladatátvétele is lehetséges, ami a végfelhasználók adatbázis-kiszolgálóinak rövid elérhetőségét eredményezheti. Azure Database for MariaDB-kiszolgálók tárolókban futnak, így az adatbázis-kiszolgáló újraindítása általában gyors, és általában 60-120 másodpercen belül várható. A mérnöki csapat gondosan figyeli a teljes tervezett karbantartási eseményt, beleértve az egyes kiszolgálók újraindítását is. A kiszolgáló feladatátvételi ideje függ az adatbázis helyreállításának időpontjától, ami azt eredményezheti, hogy az adatbázis továbbra is online állapotba kerül, ha a feladatátvétel időpontjában nagy tranzakciós tevékenységet végez a kiszolgálón. Ha el szeretné kerülni a hosszabb újraindítási időt, ajánlott elkerülni a hosszú ideig futó tranzakciókat (tömeges terheléseket) a tervezett karbantartási események során.
+Egy adott Azure-régió tervezett karbantartása általában várhatóan 15 órát vesz igénybe. Ha szükséges, az ablak a visszagörgetési terv végrehajtásához is tartalmaz pufferelési időt. A tervezett karbantartás során az adatbázis-kiszolgáló újraindítása vagy feladatátvétele is lehetséges, ami a végfelhasználók adatbázis-kiszolgálóinak rövid elérhetőségét eredményezheti. Azure Database for MariaDB-kiszolgálók tárolókban futnak, így az adatbázis-kiszolgáló újraindítása általában gyors, és általában 60-120 másodpercen belül várható. A mérnöki csapat gondosan figyeli a teljes tervezett karbantartási eseményt, beleértve az egyes kiszolgálók újraindítását is. A kiszolgáló feladatátvételi ideje függ az adatbázis helyreállításának időpontjától, ami azt eredményezheti, hogy az adatbázis továbbra is online állapotba kerül, ha a feladatátvétel időpontjában nagy tranzakciós tevékenységet végez a kiszolgálón. Ha el szeretné kerülni a hosszabb újraindítási időt, ajánlott elkerülni a hosszú ideig futó tranzakciókat (tömeges terheléseket) a tervezett karbantartási események során.
 
 Összefoglalva, míg a tervezett karbantartási esemény 15 óráig fut, az egyes kiszolgálók esetében a kiszolgáló tranzakciós tevékenységeitől függően általában 60 másodpercre van hatással. Az értesítés elküldése 72 naptári óra előtt történik a tervezett karbantartás elindítása előtt, és egy másikat, miközben egy adott régió karbantartását folyamatban van.
 
-## <a name="how-can-i-get-notified-of-planned-maintenance"></a>Hogyan Kérhetek értesítést a tervezett karbantartásról?
+## <a name="how-can-i-get-notified-of-planned-maintenance"></a>Hogyan kaphatok értesítést a tervezett karbantartásról?
 
 A tervezett karbantartási értesítések funkció használatával riasztásokat fogadhat egy közelgő tervezett karbantartási eseményhez. Értesítést kap a közelgő karbantartási 72 naptári órával az esemény előtt, és egy másikat, miközben a karbantartás folyamatban van egy adott régióban.
 
@@ -63,11 +63,11 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 
 A **szolgáltatás állapotára vonatkozó riasztások** létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications-portal.md).
 
-## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Törölhetem vagy elhalasztom a tervezett karbantartást?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Visszavonhatom vagy elhalaszthatom a tervezett karbantartást?
 
 A kiszolgáló biztonságos, stabil és naprakészen tartásához karbantartásra van szükség. A tervezett karbantartási eseményt nem lehet megszakítani vagy elhalasztani. Az értesítésnek az adott Azure-régióba való küldése után a javítási ütemezés módosításai nem hajthatók végre az adott régióban található egyes kiszolgálókon. A javítás a teljes régióra vonatkozóan egyszerre van bevezetve. A Azure Database for MariaDB szolgáltatás olyan felhőalapú natív alkalmazásokhoz lett tervezve, amelyek nem igénylik a szolgáltatás részletes szabályozását vagy testreszabását.
 
-## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>Az összes Azure-régió egyszerre lett kijavítottan?
+## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>A javítás egyszerre történik az összes Azure-régión?
 
 Nem, az összes Azure-régió javítás alatt áll a telepítési Wise-ablak időzítése során. Az üzembe helyezési Wise-ablak általában egy adott Azure-régióban, a következő naptól számítva 5 – 8. helyi idő szerint nyúlik le. A Geo-párosítású Azure-régiók különböző napokon vannak kijavítani. Az adatbázis-kiszolgálók magas rendelkezésre állása és üzletmenet-folytonossága érdekében ajánlott a [régiók közötti olvasási replikák](./concepts-read-replicas.md#cross-region-replication) használata.
 

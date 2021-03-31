@@ -19,9 +19,9 @@ Ez a cikk áttekintést nyújt a virtuális gépek adatváltozási mintáinak fi
 
 ## <a name="for-azure-virtual-machines-windows-or-linux"></a>Azure-beli virtuális gépekhez (Windows vagy Linux)
 
-Ha a gép az Azure-ban üzemel, és felügyelt vagy nem felügyelt lemezt használ a tároláshoz, a lemez metrikáinak nyomon követésével könnyedén nyomon követheti a teljesítményt. Ez lehetővé teszi, hogy az alkalmazás használati mintájának megfelelően gondosan figyelje és kiválassza a megfelelő lemezt. Azt is felhasználhatja, hogy riasztásokat, diagnosztikai és automatizálási felépítést hozzon létre. [További információ](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
+Ha a gép az Azure-ban üzemel, és felügyelt vagy nem felügyelt lemezt használ a tároláshoz, a lemez metrikáinak nyomon követésével könnyedén nyomon követheti a teljesítményt. Ez lehetővé teszi, hogy az alkalmazás használati mintájának megfelelően gondosan figyelje és kiválassza a megfelelő lemezt. Azt is felhasználhatja, hogy riasztásokat, diagnosztikai és automatizálási felépítést hozzon létre. [További információk](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információ](./monitor-log-analytics.md).
+Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információk](./monitor-log-analytics.md).
 
 Vannak olyan operációs rendszerre vonatkozó eszközök is, amelyeket használhat.
 

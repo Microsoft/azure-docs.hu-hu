@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/02/2017
 ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018562"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>A feladatböngésző és a Feladat nézet használata az Azure Data Lake Analyticsben
@@ -155,7 +155,7 @@ A feladatok részletei a feladatok részletes adatait jelenítik meg, beleértve
 * Script
   
     A feladatok U-SQL-szkriptjét a rendszer a lekérdezési tárolóban tárolja. Megtekintheti az eredeti U-SQL-parancsfájlt, és szükség esetén újra elküldheti.
-* Erőforrások
+* Források
   
     A lekérdezési tárolóban tárolt feladatok fordítási kimeneteit erőforrásokon keresztül érheti el. Megtalálhatja például a "algebra.xml" kifejezést, amely a feladatok Gráfjának, a regisztrált szerelvényeknek stb. megjelenítésére szolgál.
 * Csúcspont-végrehajtási nézet

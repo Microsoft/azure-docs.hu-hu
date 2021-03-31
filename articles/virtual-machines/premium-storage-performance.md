@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98882382"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
@@ -119,7 +119,7 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Description | PerfMon | Iostat |
+| Számláló | Leírás | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |

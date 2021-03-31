@@ -8,10 +8,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
 ms.openlocfilehash: ea33eff30e712c1597c3606d74cb6d56683211ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102615584"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
@@ -58,7 +58,7 @@ Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további dí
 
 ## <a name="export-destinations"></a>Célhelyek exportálása
 
-### <a name="storage-account"></a>A(z)
+### <a name="storage-account"></a>Tárfiók
 Az adatküldés a Storage-fiókokba történik, mivel eléri Azure Monitor és óránkénti hozzáfűzési blobokban tárolja azokat. Az adatexportálási konfiguráció egy tárolót hoz létre a Storage *-* fiókban lévő összes táblához a (z) nevű tárolóban, amelyet a tábla neve követ. Például a tábla *SecurityEvent* egy *am-SecurityEvent* nevű tárolóba fog elküldeni.
 
 A Storage-fiók blobjának elérési útja a következő: *WorkspaceResourceId =/Subscriptions/Subscription-ID/resourcegroups/ \<resource-group\> /providers/Microsoft.operationalinsights/workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d =/h =/m = \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js*. Mivel a hozzáfűzési Blobok a Storage-ban lévő 50K-írásokra korlátozódnak, az exportált Blobok száma kiterjeszthető, ha a Hozzáfűzések száma magas. Ilyen esetben a Blobok elnevezési mintája PT1H_ #. JSON lesz, ahol a # a növekményes Blobok száma.

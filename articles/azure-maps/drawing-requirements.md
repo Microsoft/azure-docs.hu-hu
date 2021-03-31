@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98895271"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
@@ -198,7 +198,7 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 ### `directoryInfo`
 
-| Tulajdonság  | Típus | Kötelező | Description |
+| Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
 | `name`      | sztring | true   |  Az építési név. |
 | `streetAddress`|    sztring |    hamis    | Az építési címe. |
@@ -219,7 +219,7 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazza.
 
-| Tulajdonság  | Típus | Kötelező | Description |
+| Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
 |`levelName`    |sztring    |true |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló vagy alagsor.|
 |`ordinal` | egész szám |    true | Meghatározza a szintek függőleges sorrendjét. Minden létesítménynek 0 sorszámú szinten kell lennie. |
@@ -251,7 +251,7 @@ Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazz
 
 Az `unitProperties` objektum az egység tulajdonságainak JSON-tömbjét tartalmazza.
 
-| Tulajdonság  | Típus | Kötelező | Description |
+| Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
 |`unitName`    |sztring    |true    |A rekorddal társítandó egység neve `unitProperty` . Ez a rekord csak akkor érvényes, ha a rétegekben címkével egyező címke `unitName` található `unitLabel` . |
 |`categoryName`|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |

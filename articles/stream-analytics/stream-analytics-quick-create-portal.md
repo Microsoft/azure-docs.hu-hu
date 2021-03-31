@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: c585cedce677599528e036525dead13a85c8b102
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98012376"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
@@ -132,7 +132,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
    |---------|---------|---------|
    |Kimeneti alias |   BlobOutput   |   Adja meg a feladat kimenetének azonosító nevét. |
    |Előfizetés  |  \<Your subscription\>  |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
-   |A(z) |  asaquickstartstorage |   Válassza ki vagy adja meg a tárfiók nevét. Ha a tárfiókok ugyanahhoz az előfizetéshez tartoznak, a rendszer automatikusan észleli a nevüket.       |
+   |Tárfiók |  asaquickstartstorage |   Válassza ki vagy adja meg a tárfiók nevét. Ha a tárfiókok ugyanahhoz az előfizetéshez tartoznak, a rendszer automatikusan észleli a nevüket.       |
    |Tároló |   container1  |  Válassza ki a tárfiókjában létrehozott meglévő tárolót.   |
 
 4. Az egyéb beállításokat hagyja alapértelmezett értéken, és válassza a **Mentés** lehetőséget a beállítások mentéséhez.  

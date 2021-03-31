@@ -363,7 +363,7 @@ A szabályzat kipróbálásához hozzon létre egy kapcsolatokat a Logic app Des
 
 Az üzenet tartalmazza a következő információkat:
 
-| Description | Tartalom |
+| Leírás | Tartalom |
 |-------------|---------|
 | A hiba oka | `"Resource 'instagram' was disallowed by policy."` |
 | Hozzárendelés neve | `"Block Instagram connections"` |

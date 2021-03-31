@@ -69,7 +69,7 @@ A `search.ismatch` függvény egy teljes szöveges keresési lekérdezést ért�
 
 A paraméterek a következő táblázatban vannak meghatározva:
 
-| Paraméter neve | Típus | Description |
+| Paraméter neve | Típus | Leírás |
 | --- | --- | --- |
 | `search` | `Edm.String` | A keresési lekérdezés ( [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) Lucene lekérdezési szintaxis). |
 | `searchFields` | `Edm.String` | A kereshető mezők vesszővel tagolt listája a kereséshez; az alapértelmezett érték az index összes kereshető mezőjénél. Ha a paraméterben a [mezőn belüli keresés](query-lucene-syntax.md#bkmk_fields) szerepel `search` , a Lucene lekérdezés mezőiben szereplő mezők felülbírálják az ebben a paraméterben megadott mezőket. |
