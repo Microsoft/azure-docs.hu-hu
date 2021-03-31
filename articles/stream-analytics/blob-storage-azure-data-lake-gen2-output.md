@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98935142"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>BLOB Storage és Azure Data Lake Gen2 kimenete Azure Stream Analytics
@@ -23,10 +23,10 @@ Az Azure Blob Storage költséghatékony és méretezhető megoldást kínál na
 
 A következő táblázat felsorolja a tulajdonságok nevét, valamint a Blobok vagy ADLS Gen2 kimenetek létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve       | Description                                                                      |
+| Tulajdonság neve       | Leírás                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Kimeneti alias        | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a blob-tárolóba történő irányítására szolgál. |
-| A(z)     | Annak a Storage-fióknak a neve, ahová a kimenetet küldi.               |
+| Tárfiók     | Annak a Storage-fióknak a neve, ahová a kimenetet küldi.               |
 | Storage-fiók kulcsa | A Storage-fiókhoz társított titkos kulcs.                              |
 | Storage-tároló   | Az Azure Blob serviceban tárolt Blobok logikai csoportosítása. Amikor feltölt egy blobot a Blob serviceba, meg kell adnia egy tárolót a blobhoz. |
 | Elérésiút-minta | Választható. A fájl elérési útjának mintája, amely a Blobok megadott tárolón belüli írásához használatos. <br /><br /> Az elérési út mintájában dönthet úgy, hogy a dátum és idő változók egy vagy több példányát használja a Blobok írásának megadásához: <br /> {Date}, {Time} <br /><br />Egyéni blob-particionálással megadhat egy egyéni {Field} nevet az esemény adataiból a Blobok particionálásához. A mező neve alfanumerikus, és tartalmazhat szóközt, kötőjelet és aláhúzást. Az egyéni mezőkre vonatkozó korlátozások a következők: <ul><li>A mezőnevek nem megkülönböztetik a kis-és nagybetűket. A szolgáltatás például nem tud különbséget tenni az "ID" oszlop és az "id" oszlop között.</li><li>Beágyazott mezők használata nem engedélyezett. Ehelyett használjon egy aliast a feladatokhoz a lekérdezésben a mező kisimításához.</li><li>A kifejezések nem használhatók mező neveként.</li></ul> <br />Ez a szolgáltatás lehetővé teszi az egyéni Dátum-/időformátumok megadott beállításainak használatát az elérési úton. Az egyéni dátum-és időformátumokat egyszerre kell megadni, a (z) {datetime: \<specifier> } kulcsszóval elkerítve. Az engedélyezett bemenetek a \<specifier> következők: ÉÉÉÉ, hh, M, DD, d, hh, H, mm, M, SS vagy s. A (z) {datetime: \<specifier> } kulcsszó többször is használható az elérési útban az egyéni dátum/idő konfigurációkhoz. <br /><br />Angol nyelvű Példák: <ul><li>1. példa: cluster1/naplók/{Date}/{Time}</li><li>2. példa: cluster1/naplók/{Date}</li><li>3. példa: cluster1/{client_id}/{Date}/{Time}</li><li>4. példa: cluster1/{datetime: SS}/{myField}, ahol a lekérdezés: válassza az adatok. myField lehetőséget myField a bemenettől;</li><li>5. példa: cluster1/év = {datetime: ÉÉÉÉ}/hónap = {datetime: PP}/nap = {datetime: DD}</ul><br />A létrehozott mappa struktúrájának időbélyegzője az UTC és a helyi idő szerint történik. A [System. timestamp](./stream-analytics-time-handling.md#choose-the-best-starting-time) az időalapú particionáláshoz használt idő.<br /><br />A fájlok elnevezése a következő konvenciót használja: <br /><br />{Path előtag-minta}/schemaHashcode_Guid_Number. bővítmény<br /><br /> Itt a GUID a blob-fájlba íráshoz létrehozott belső író egyedi azonosítóját jelöli. A szám a blob-blokk indexét jelöli. <br /><br /> Példa kimeneti fájlokra:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />További információ erről a szolgáltatásról: [Azure stream Analytics egyéni blob kimeneti particionálás](stream-analytics-custom-path-patterns-blob-storage-output.md). |

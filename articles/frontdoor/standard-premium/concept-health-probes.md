@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: 30a8208babab2991c9d9e86cc419ac50e1530d7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101100085"
 ---
 # <a name="azure-front-door-standardpremium-preview-health-probe-monitoring"></a>Azure bejárati ajtó standard/prémium (előzetes verzió) állapotának monitorozása
@@ -41,7 +41,7 @@ A bejárati ajtó a következő HTTP-metódusokat támogatja az állapot-mintav�
 
 ## <a name="health-probe-responses"></a>Állapot-mintavételi válaszok
 
-| Válaszok  | Description | 
+| Válaszok  | Leírás | 
 | ------------- | ------------- |
 | Állapot meghatározása  |  A 200 OK állapotkód azt jelzi, hogy a háttér állapota Kifogástalan. Minden más hibát jelez. Ha bármilyen okból (a hálózati meghibásodást is beleértve) nem érkezik érvényes HTTP-válasz a mintavételhez, a mintavétel meghibásodásnak számít.|
 | Mérési késés  | A késés az az idő, amelyet a rendszer közvetlenül a mintavételi kérelem elküldése előtt mért, amikor a válasz utolsó bájtját megkaptuk. Minden kérelemhez új TCP-kapcsolatot használunk, így ez a mérés nem torzítja a meglévő, meleg kapcsolatokkal rendelkező háttérrendszer felé.  |

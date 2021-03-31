@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: 9670d8204d04fc770bf3fe98a270a3f6ccbf234b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101100265"
 ---
 # <a name="azure-front-door-standardpremium-preview-reports"></a>Azure bejárati ajtó standard/prémium (előzetes verzió) – jelentések
@@ -247,7 +247,7 @@ A rács megjeleníti a kérések számát, a kérést, az átvitt adatátvitelt 
 
 Ez a jelentés lehetővé teszi, hogy különböző dimenziók alapján grafikus és statisztikai nézetet WAF a mintákról.
 
-| Dimenziók | Description |
+| Dimenziók | Leírás |
 |---------|---------|
 | Áttekintő mérőszámok – egyező WAF-szabályok | Az egyéni WAF-szabályokkal, a felügyelt WAF-szabályokkal és a robot-kezelővel egyező kérelmek. |
 | Áttekintő metrikák – letiltott kérelmek | A WAF-szabályok által letiltott kérelmek százalékos aránya az összes WAF-szabálynak megfelelő kérések között. |
