@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-| Név       | Típus                       | Description                       |
+| Név       | Típus                       | Leírás                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Tulajdonságok | AzurefilesharebackupReques | BackupRequestResource tulajdonságai |
 

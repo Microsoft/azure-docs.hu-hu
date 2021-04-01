@@ -74,7 +74,7 @@ A függvénynek két túlterhelése van `search.in` :
 
 A paraméterek a következő táblázatban vannak meghatározva:
 
-| Paraméter neve | Típus | Description |
+| Paraméter neve | Típus | Leírás |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Egy karakterlánc-mezőre mutató hivatkozás (vagy egy tartománybeli változó egy karakterlánc-gyűjtési mezőn keresztül abban az esetben, ha az `search.in` egy `any` vagy kifejezésen belül használatos `all` ). |
 | `valueList` | `Edm.String` | A paraméternek megfelelő értékek tagolt listáját tartalmazó karakterlánc `variable` . Ha a `delimiters` paraméter nincs megadva, az alapértelmezett határolójelek a szóköz és a vessző. |

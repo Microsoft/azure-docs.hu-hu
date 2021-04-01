@@ -70,7 +70,7 @@ Az azonosítók egy adott mező nevére vagy egy, a szűrőben lévő [gyűjtem�
 
 A következő táblázat példákat mutat be a mezők elérési útjaira:
 
-| Mező elérési útja | Description |
+| Mező elérési útja | Leírás |
 | --- | --- |
 | `HotelName` | Az index legfelső szintű mezőjére hivatkozik. |
 | `Address/City` | Az `City` index összetett mezőjének almezőjét jelöli. `Address` ebben a példában a típus `Edm.ComplexType` |

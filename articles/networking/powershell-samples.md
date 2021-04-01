@@ -25,7 +25,7 @@ ms.locfileid: "87282075"
 
 Az alábbi táblázat a Azure PowerShell használatával létrehozott parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Script | Description |
+| Script | Leírás |
 |-|-|
 |**Az Azure-erőforrások közötti kapcsolat**||
 | [Virtuális hálózat létrehozása többrétegű alkalmazásokhoz](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal. Az előtérbeli alhálózat felé irányuló forgalom HTTP-re, a háttérbeli alhálózat felé irányuló forgalom pedig az SQL-re, az 1433-as portra korlátozódik. |

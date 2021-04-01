@@ -20,7 +20,7 @@ ms.locfileid: "88962706"
 
 A következő táblázat a Terraform parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Script | Description |
+| Script | Leírás |
 |-|-|
 |**Alkalmazás létrehozása**||
 | [Hozzon létre két alkalmazást, és kapcsolódjon biztonságosan a privát végponttal és a VNet-integrációval](./scripts/terraform-secure-backend-frontend.md )| Két App Service alkalmazást hoz létre, és összekapcsolja az alkalmazásokat a privát végponttal és a VNet-integrációval együtt. |

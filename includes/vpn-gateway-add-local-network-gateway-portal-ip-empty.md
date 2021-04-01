@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c538c510eeafacd1596fdeb1b4593919e6236cf0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92487091"
 ---
 1. A [Azure Portal](https://portal.azure.com)a **keresési erőforrások, szolgáltatások és dokumentumok (G +/)** mezőbe írja be a **helyi hálózati átjárót**. Keresse meg a **helyi hálózati átjárót** a **piactér** területen a keresési eredmények között, és jelölje ki. Ekkor megnyílik a **helyi hálózati átjáró létrehozása** lap.

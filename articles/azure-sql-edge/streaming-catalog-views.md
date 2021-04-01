@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 4a8f037cd9923564e2e214e9727ff87d63cca547
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90900526"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>Streaming Catalog-nézetek (Transact-SQL)
@@ -22,7 +22,7 @@ Ez a szakasz a T-SQL streaminghez kapcsolódó elérhető katalógus-nézeteket 
   
 ## <a name="in-this-section"></a>A szakasz tartalma  
   
-|Nézet|Description|  
+|Nézet|Leírás|  
 |:---|:---|
 |[sys.external_streams](sys-external-streams.md) |Az adatbázis hatókörében létrehozott minden külső adatfolyam-objektum sorát adja vissza.|
 |[sys.external_streaming_jobs](sys-external-streaming-jobs.md) |Az adatbázis hatókörében létrehozott összes külső adatfolyam-feladatsor sorát adja vissza.|
