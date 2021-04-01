@@ -72,7 +72,7 @@ Az alábbi táblázat a feladatok összegzését és az egyes feladatok rövid l
 
 ![További feladatok listája](./media/how-to-connect-post-installation/addtasks2.png)
 
-| További feladat | Description |
+| További feladat | Leírás |
 | --- | --- |
 |**Adatvédelmi beállítások**|Megtekintheti, hogy milyen telemetria-adatmegosztások vannak a Microsofttal.|
 |**Aktuális konfiguráció megtekintése**|Tekintse meg az aktuális Azure AD Connect megoldást.  Ide tartozik az általános beállítások, a szinkronizált könyvtárak és a szinkronizálási beállítások. |

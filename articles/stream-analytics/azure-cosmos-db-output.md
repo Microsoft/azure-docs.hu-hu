@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016577"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Cosmos DB kimenete
@@ -25,7 +25,7 @@ Stream Analytics Azure Cosmos DB kimenete jelenleg nem érhető el az Azure Chin
 
 Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságait ismerteti.
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | Az Stream Analytics-lekérdezésben ezt a kimenetet meghívó alias. |
 | Sink (Fogadó) | Azure Cosmos DB. |

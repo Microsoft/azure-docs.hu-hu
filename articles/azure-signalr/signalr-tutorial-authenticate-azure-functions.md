@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92150905"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Azure SignalR Service-hitelesítés az Azure Functions segítségével
@@ -390,7 +390,7 @@ Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott üg
     | Függvényalkalmazás | Válassza ki a **Create New Function App** (Új függvényalkalmazás létrehozása) elemet |
     | Függvényalkalmazás neve | Adjon meg egy egyedi nevet |
     | Erőforráscsoport | Azt az erőforráscsoportot válassza ki, amelyikbe a SignalR Service-példány is tartozik. |
-    | A(z) | Válassza ki a korábban létrehozott Storage-fiókot |
+    | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
 
     Az Azure-ban létrejön egy új függvényalkalmazás, és megindul az üzembehelyezési folyamat. Várjon, amíg az üzembe helyezés befejeződik.
 
@@ -464,7 +464,7 @@ A webalkalmazást az Azure Blob Storage statikuswebhely-szolgáltatásával fogj
     | Name | Érték |
     |---|---|
     | Előfizetés | Az előfizetés kiválasztása |
-    | A(z) | Válassza ki a korábban létrehozott Storage-fiókot |
+    | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
     | Folder to deploy (Üzembe helyezni kívánt mappa) | Válassza a **Tallózás** lehetőséget, és válassza ki a *tartalom* mappát. |
 
 A *tartalom* mappában lévő fájlokat most telepíteni kell a statikus webhelyre.

@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85202993"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Érvényesítési műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -47,7 +47,7 @@ Az önellenőrzött műszaki profilok meghatározhatnak egy érvényesítési m�
 
 A **ValidationTechnicalProfiles** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | A hivatkozó technikai profil kimeneti jogcímeinek érvényesítésére szolgáló technikai profil. |
 
@@ -61,7 +61,7 @@ A **ValidationTechnicalProfile** elem a következő attribútumot tartalmazza:
 
 A **ValidationTechnicalProfile** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Előfeltételei | 0:1 | Azon előfeltételek listája, amelyeknek meg kell felelniük az érvényesítési technikai profil végrehajtásához. |
 
@@ -74,7 +74,7 @@ Az **előfeltétel** elem a következő attribútumot tartalmazza:
 
 Az **előfeltétel** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha ez a jelölőnégyzet be van jelölve `ClaimsExist` , akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus értéke `ClaimEquals` , ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Míg egy másik érték elem tartalmazza az ellenőrizendő értéket.|
 | Művelet | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke a következőre van beállítva: `SkipThisValidationTechnicalProfile` . Megadja, hogy a társított érvényesítési technikai profilt ne lehessen végrehajtani. |

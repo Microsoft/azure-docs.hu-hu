@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954069"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Az 8000 sorozatú eszköz problémáinak elhárításához használja a StorSimple Diagnostics eszközt
@@ -414,7 +414,7 @@ Controller0>
 
 Itt látható egy táblázat, amely leírja, hogy a rendszerinformációk különböző Windows PowerShell-paraméterei hogyan jelennek meg a rendszerben. 
 
-| PowerShell-paraméter    | Description  |
+| PowerShell-paraméter    | Leírás  |
 |-------------------------|------------------|
 | Instance ID             | Minden vezérlő egyedi azonosítóval vagy a hozzá társított GUID azonosítóval rendelkezik.|
 | Name                    | Az eszköz rövid neve, amelyet az eszköz telepítése során a Azure Portal konfigurál. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma. |

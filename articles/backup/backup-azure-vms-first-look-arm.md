@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89667519"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból

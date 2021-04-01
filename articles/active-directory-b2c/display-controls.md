@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97387054"
 ---
 # <a name="display-controls"></a>Vezérlőelemek megjelenítése
@@ -51,7 +51,7 @@ A **DisplayControl** elem a következő attribútumokat tartalmazza:
 
 A **DisplayControl** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Szabályzattípushoz | 0:1 | A **szabályzattípushoz** a felhasználó által összegyűjtött jogcímek értékének előre való feltöltésére szolgálnak. További információ: [szabályzattípushoz](technicalprofiles.md#input-claims) elem. |
 | DisplayClaims | 0:1 | A **DisplayClaims** a felhasználótól gyűjtött jogcímek ábrázolására szolgálnak. További információ: [DisplayClaim](technicalprofiles.md#displayclaim) elem.|
@@ -114,7 +114,7 @@ A **műveleti** elem a következő attribútumot tartalmazza:
 
 A **műveleti** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ValidationClaimsExchange | 1:1 | Azon műszaki profilok azonosítói, amelyek a hivatkozó technikai profil megjelenítési jogcímek egy részének vagy egészének ellenőrzésére szolgálnak. A hivatkozott technikai profil összes bemeneti jogcímének szerepelnie kell a hivatkozó technikai profil megjelenítési jogcímeiben. |
 
@@ -122,7 +122,7 @@ A **műveleti** elem a következő elemet tartalmazza:
 
 A **ValidationClaimsExchange** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | A hivatkozó technikai profil megjelenítési jogcímeinek érvényesítésére szolgáló technikai profil. |
 
@@ -136,7 +136,7 @@ A **ValidationTechnicalProfile** elem a következő attribútumokat tartalmazza:
 
 A **ValidationTechnicalProfile** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Előfeltételei | 0:1 | Azon előfeltételek listája, amelyeknek meg kell felelniük az érvényesítési technikai profil végrehajtásához. |
 
@@ -149,7 +149,7 @@ Az **előfeltétel** elem a következő attribútumokat tartalmazza:
 
 Az **előfeltétel** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha ez a jelölőnégyzet be van jelölve `ClaimsExist` , akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus értéke `ClaimEquals` , ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Itt adhatja meg a másik érték elemben ellenőrizendő értéket.|
 | Művelet | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke `SkipThisValidationTechnicalProfile` , amely megadja, hogy a társított érvényesítési technikai profil nem hajtható végre. |

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 18df480dab90d9ab127bb96971fc19cdc5a361ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016473"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése
@@ -23,7 +23,7 @@ A Stream Analytics feladatok helyi számítógépen való fejlesztésének módj
 
 A következő táblázat környezetei támogatják a helyi fejlesztést:
 
-|Környezet                              |Description    |
+|Környezet                              |Leírás    |
 |-----------------------------------------|------------|
 |[Visual Studio Code](visual-studio-code-explore-jobs.md)| A Visual Studio Code-hoz készült [Azure stream Analytics Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) lehetővé teszi a stream Analytics-feladatok helyi és a felhőben való létrehozását, kezelését, valamint a gazdag IntelliSense és a natív verziókövetés használatát. Támogatja a fejlesztést Linux, MacOS és Windows rendszeren. További információ: [Azure stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md). A bővítmény támogatja a [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) is, amely egy felhőben üzemeltetett fejlesztői környezet.|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |A Stream Analytics-eszközök az Azure fejlesztési és adattárolási és-feldolgozási számítási feladatainak részét képezik a Visual Studióban. A Visual Studióval egyéni C# felhasználó által definiált függvények és deszerializálók írhatók. További információ: Azure Stream Analytics- [feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md).|
