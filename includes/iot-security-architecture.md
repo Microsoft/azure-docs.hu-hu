@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95559341"
 ---
 A rendszer tervezésekor fontos megérteni a rendszer potenciális veszélyforrásait, és ennek megfelelően hozzá kell adnia a megfelelő védelmi lehetőségeket, ahogy a rendszert tervezték és felépíteni. Fontos, hogy megtervezze a terméket a kezdetektől a biztonsággal szem előtt tartva, mert megértette, hogy a támadók hogyan veszélyeztethetik a rendszereket, így biztosítható, hogy a megfelelő enyhítések a kezdetektől fogva megtörténjenek.

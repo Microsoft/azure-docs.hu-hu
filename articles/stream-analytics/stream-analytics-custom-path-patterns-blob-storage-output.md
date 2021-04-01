@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98014036"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
@@ -78,7 +78,7 @@ Az egyéni DateTime elérésiút-minták lehetővé teszik olyan kimeneti formá
 
 A következő formátumú megadási jogkivonatok használhatók önállóan vagy kombinálva egyéni DateTime formátumok eléréséhez:
 
-|Megadási formátum   |Description   |Az eredmények például 2018-01-02T10:06:08|
+|Megadási formátum   |Leírás   |Az eredmények például 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{datetime: ÉÉÉÉ}|Az év egy négyjegyű számként|2018|
 |{datetime: PP}|Hónap, 01 és 12 között|01|

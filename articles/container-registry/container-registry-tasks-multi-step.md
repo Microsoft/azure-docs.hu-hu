@@ -4,10 +4,10 @@ description: A többlépéses feladatok bemutatása, amely a Azure Container Reg
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "78399698"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Több lépésből álló Build-, tesztelési és javítási feladatok futtatása az ACR-feladatokban

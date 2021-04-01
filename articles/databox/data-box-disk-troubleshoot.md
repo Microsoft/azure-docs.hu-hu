@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: fa8a6643f1b7bd60fbf6e5950234e0381666177e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97605224"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk érvényesítési problémáinak elhárítása naplók használatával
@@ -73,7 +73,7 @@ Ha több munkamenetet is futtat az ellenőrzéshez, a rendszer egy naplófájlt 
 
 A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfelelő javasolt műveletekkel.
 
-| Hibakód| Description                       | Ajánlott műveletek               |
+| Hibakód| Leírás                       | Ajánlott műveletek               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Az adatellenőrzés sikeresen megtörtént. | Semmit nem kell tenni. |
 | `InvalidXmlCharsInPath` |Nem sikerült létrehozni a jegyzékfájlt, mert a fájl elérési útja érvénytelen karaktereket tartalmaz. | A folytatáshoz távolítsa el ezeket a karaktereket.  |

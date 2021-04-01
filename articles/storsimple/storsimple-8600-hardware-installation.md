@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91871813"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz kicsomagolása, rack-csatlakoztatása és kábele
@@ -198,7 +198,7 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
    
     **Az eszköz hátoldala, amely az adatportokat mutatja**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE hálózati adapterek |
    |   2, 3 |10 GbE hálózati adapter |
@@ -209,7 +209,7 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
 
 **Az eszköz hálózati kábelezései**
 
-| Címke | Description |
+| Címke | Leírás |
 | --- | --- |
 | A |Helyi Internet-hozzáféréssel rendelkező LAN |
 | B |Vezérlő 0 |

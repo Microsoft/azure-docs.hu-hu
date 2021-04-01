@@ -52,7 +52,7 @@ Két eset attól függően, hogy az ügyfélalkalmazás egy közös titok vagy e
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: hozzáférési jogkivonat-kérelem közös titokkal
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező |Megadja a kért engedélyezési típust. Az ügyfél hitelesítő adatainak megadása esetén a **client_credentials** értéket kell megadni. |
 | client_id |kötelező |Megadja a hívó webszolgáltatás Azure AD-ügyfél-azonosítóját. A hívó alkalmazás ügyfél-AZONOSÍTÓjának megkereséséhez kattintson a [Azure Portal](https://portal.azure.com) **Azure Active Directory**, majd a **Alkalmazásregisztrációk** elemre, majd az alkalmazásra. A client_id az *alkalmazás azonosítója* |
@@ -73,7 +73,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: hozzáférési jogkivonat kérése tanúsítvánnyal
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező |A kért válasz típusát adja meg. Az ügyfél hitelesítő adatainak megadása esetén a **client_credentials** értéket kell megadni. |
 | client_id |kötelező |Megadja a hívó webszolgáltatás Azure AD-ügyfél-azonosítóját. A hívó alkalmazás ügyfél-AZONOSÍTÓjának megkereséséhez kattintson a [Azure Portal](https://portal.azure.com) **Azure Active Directory**, majd a **Alkalmazásregisztrációk** elemre, majd az alkalmazásra. A client_id az *alkalmazás azonosítója* |

@@ -9,10 +9,10 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89652018"
 ---
 # <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>App Service-alkalmazás létrehozása és privát végpont üzembe helyezése Azure Resource Manager-sablon használatával

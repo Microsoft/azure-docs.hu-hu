@@ -8,10 +8,10 @@ ms.date: 1/28/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 8010581667354f2e8484bc7341227ec41713d10f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99072634"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-original-version-2018"></a>Mi az új Azure digitális Twins? Miben különbözik az eredeti verziótól (2018)?
