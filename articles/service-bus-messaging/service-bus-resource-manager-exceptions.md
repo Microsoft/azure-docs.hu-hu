@@ -23,7 +23,7 @@ Alább láthatók a Azure Resource Managerban felszínre kerülő különböző 
 
 A "hibás kérelem" azt jelenti, hogy a Resource Manager által lekért kérelem ellenőrzése sikertelen volt.
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Hibás kérés | 40000 | Alkód = 40000. A *"tulajdonságnév"* tulajdonság nem állítható be várólista létrehozásakor, mert a névtér *neve* az "alapszintű" szintet használja. Ezt a műveletet csak a standard vagy a prémium szint támogatja. | Azure Service Bus alapszintű szinten az alábbi tulajdonságok nem állíthatók be vagy nem frissíthetők – <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> Továbbítás </li> <li> Témakörök </li> </ul> | A funkció használatához érdemes lehet alapszintről standard vagy prémium csomagra frissíteni. |
 | Hibás kérés | 40000 | Alkód = 40000. Egy meglévő várólista (vagy témakör) "requiresDuplicateDetection" tulajdonságának értéke nem módosítható. | Az ismétlődő észlelést engedélyezni/le kell tiltani az entitások létrehozásakor. A duplikált észlelés konfigurációs paramétere a létrehozás után nem módosítható. | Egy korábban létrehozott üzenetsor/témakör ismétlődő észlelésének engedélyezéséhez létrehozhat egy új üzenetsor/témakört ismétlődő észleléssel, majd továbbíthatja az eredeti várólistáról az új üzenetsor/témakörre. |
@@ -41,7 +41,7 @@ A "hibás kérelem" azt jelenti, hogy a Resource Manager által lekért kérelem
 
 Akárcsak a HTTP-ben, a "hibakód 429" kifejezés "túl sok kérést" jelez. Ez azt jelenti, hogy az adott erőforrást (névteret) az erőforráson túl sok kérelem (vagy az ütköző műveletek miatt) szabályozza a rendszer.
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | 50004 | Alkód = 50004. A kérés megszakadt, mert a névteret *a névtér* szabályozza. | Ez a hiba akkor jelenik meg, ha a bejövő kérések száma meghaladja az erőforrás korlátozását. | Várjon néhány másodpercig, és próbálkozzon újra. <br/> <br/> További információ a [kvóták](service-bus-quotas.md) és a [Azure Resource Manager kérelmek korlátairól](../azure-resource-manager/management/request-limits-and-throttling.md)|
 | 429 | 40901 | Alkód = 40901. Egy másik ütköző művelet folyamatban van. | Egy másik ütköző művelet folyamatban van ugyanazon az erőforráson/entitáson. | Várjon, amíg a folyamatban lévő művelet befejeződik, és próbálkozzon újra. |
@@ -55,7 +55,7 @@ Akárcsak a HTTP-ben, a "hibakód 429" kifejezés "túl sok kérést" jelez. Ez 
 
 Ez az osztály azt jelzi, hogy az erőforrás nem található.
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Nem található | Nincs | Az entitás *neve* nem található. | Az entitás, amely ellen a művelet nem található. | Ellenőrizze, hogy az entitás létezik-e, majd próbálja megismételni a műveletet. |
 | Nem található | Nincs | Nem található. A művelet nem létezik. | A végrehajtani kívánt művelet nem létezik. | Tekintse át a műveletet, és próbálkozzon újra. |
@@ -66,7 +66,7 @@ Ez az osztály azt jelzi, hogy az erőforrás nem található.
 
 Ez az osztály azt jelzi, hogy belső kiszolgálóhiba történt.
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Belső kiszolgálóhiba | 50000 | Alkód = 50000. Belső kiszolgálóhiba| Különböző okok miatt fordulhat elő. Néhány tünet: <ul> <li> Az ügyfél kérelme vagy törzse sérült, és hibát okoz. </li> <li> Az ügyfél kérése időtúllépést okozott a szolgáltatással kapcsolatos problémák feldolgozása miatt. </li> </ul> | A megoldás feloldása <ul> <li> Győződjön meg arról, hogy a kérések paramétereinek értéke nem null vagy helytelen formátumú. </li> <li> Próbálja megismételni a kérelmet. </li> </ul> |
 
@@ -74,7 +74,7 @@ Ez az osztály azt jelzi, hogy belső kiszolgálóhiba történt.
 
 Ez az osztály azt jelzi, hogy nincs-e engedélye a parancs futtatására.
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Nem engedélyezett | Nincs | Érvénytelen művelet a másodlagos névtérben. A másodlagos névtér írásvédett. | A művelet a másodlagos névtérre lett elvégezve, amely írásvédett névtérként van beállítva. | Próbálja megismételni a parancsot az elsődleges névtéren. További információ a [másodlagos névtérről](service-bus-geo-dr.md) |
 | Nem engedélyezett | Nincs | MissingToken: az engedélyezési fejléc nem található. | Ez a hiba akkor fordul elő, ha az engedélyezés null vagy helytelen értékű. | Győződjön meg arról, hogy az engedélyezési fejlécben említett jogkivonat értéke helyes, és nem null értékű. |

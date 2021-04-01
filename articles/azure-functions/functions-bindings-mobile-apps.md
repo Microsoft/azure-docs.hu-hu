@@ -135,7 +135,7 @@ További információ a konfigurálható attribútumok tulajdonságairól: [a k�
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `MobileTable` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **típusa**| n.a. | "MobileTable" értékre kell állítani|
 | **irányba**| n.a. |"In" értékre kell állítani|
@@ -293,7 +293,7 @@ Teljes példa: [output-C# példa](#output---c-example).
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `MobileTable` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **típusa**| n.a. | "MobileTable" értékre kell állítani|
 | **irányba**| n.a. |"Out" értékre kell állítani|

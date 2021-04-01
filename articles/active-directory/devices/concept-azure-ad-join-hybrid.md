@@ -29,7 +29,7 @@ A helyszíni lábnyommal rendelkező szervezetek általában az eszközök kiép
 
 Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek az eszközök a helyszíni Active Directoryhoz csatlakoztatott és a Azure Active Directory regisztrált eszközök.
 
-| Hibrid Azure AD-csatlakozás | Description |
+| Hibrid Azure AD-csatlakozás | Leírás |
 | --- | --- |
 | **Definíció** | Csatlakozott a helyszíni AD-hez és az Azure AD-hez, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
 | **Elsődleges célközönség** | Alkalmas a meglévő helyszíni AD-infrastruktúrával rendelkező hibrid szervezetek számára |

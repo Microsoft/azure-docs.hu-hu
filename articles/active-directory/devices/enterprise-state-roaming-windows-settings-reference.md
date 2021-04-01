@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85252967"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
@@ -26,7 +26,7 @@ A következő lista felsorolja azokat a beállításokat, amelyek a Windows 10 r
 
 A Windows 10 szinkronizálási, biztonsági mentési és helyreállítási keretrendszere által támogatott eszközök és fióktípus összefoglalását a következő táblázat tartalmazza.
 
-| Fiók típusa és művelet | Asztal | Mobil |
+| Fiók típusa és művelet | Asztali | Mobil |
 | --- | --- | --- |
 | Azure Active Directory: szinkronizálás |Igen |Nem |
 | Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
@@ -69,7 +69,7 @@ A következő táblázatban a Settings Group (beállítások) csoport oszlopába
 A beállítások csoport oszlop belső bejegyzései olyan beállításokat és alkalmazásokat mutatnak be, amelyek csak az alkalmazáson belüli szinkronizálásból, vagy a teljes eszköz szinkronizálásának a mobileszköz-kezelés (MDM) vagy a Csoportházirend beállítások használatával történő letiltásával érhetők el.
 A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
 
-| Beállítások | Asztal | Mobil | Group |
+| Beállítások | Asztali | Mobil | Group |
 | --- | --- | --- | --- |
 | **Fiókok**: fiók képe |szinkronizálás |X |Téma |
 | **Fiókok**: egyéb Fiókbeállítások |X |X | |

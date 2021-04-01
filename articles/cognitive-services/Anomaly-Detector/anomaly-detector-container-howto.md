@@ -13,10 +13,10 @@ ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló, streaming, algoritmusok
 ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97862316"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Docker-tárolók telepítése és futtatása az anomália-detektor API-hoz 
