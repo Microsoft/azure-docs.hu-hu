@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
 ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575453"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>A Azure CDN valós idejű figyelése, metrikái és hozzáférési naplói
@@ -219,7 +219,7 @@ További információ: [Azure monitor mérőszámok](../azure-monitor/essentials
 
 **A Microsoft által Azure CDN által támogatott metrikák**
 
-| Mérőszámok  | Description | Dimenziók |
+| Mérőszámok  | Leírás | Dimenziók |
 | ------------- | ------------- | ------------- |
 | Találatok aránya * | A CDN-gyorsítótárból kiérkező kimenő forgalom százalékos aránya, a teljes kimenő forgalomra kiszámítva. | Végpont |
 | RequestCount | A CDN által kiszolgált ügyfél-kérelmek száma. | Végpont </br> Ügyfél országa. </br> Ügyfél-régió. </br> A HTTP-állapot. </br> HTTP-állapot csoport. |

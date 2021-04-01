@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2044653673da10de59d5ff125da44ac1f89e22f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861850"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
@@ -265,7 +265,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Name | *Adjon meg egy nevet* | Például az *ad – User UserType* |
-    | Description | *Adja meg a leírást* |  |
+    | Leírás | *Adja meg a leírást* |  |
     | Csatlakoztatott rendszerek | *A helyszíni AD-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
     | Metaverse objektum típusa | **Személy** |  |
@@ -307,7 +307,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
     | Name | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
-    | Description | *Adja meg a leírást* ||
+    | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki a HRE-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
     | Metaverse objektum típusa | **Személy** ||

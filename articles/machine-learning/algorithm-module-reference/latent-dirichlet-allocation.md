@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90907848"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Látens Dirichlet kiosztási modul
@@ -181,7 +181,7 @@ A kiszámított indexek kiszámítása után a távolság-alapú hasonlósági m
 
 ###  <a name="module-parameters"></a>Modul paramétereinek
 
-|Név|Típus|Tartomány|Választható|Alapértelmezett|Description|  
+|Név|Típus|Tartomány|Választható|Alapértelmezett|Leírás|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Cél oszlop (ok)|Oszlop kijelölése||Kötelező|StringFeature|Cél oszlop neve vagy indexe|  
 |A modellhez tartozó témakörök száma|Egész szám|[1; 1000]|Kötelező|5|A dokumentumok terjesztésének modellezése N témákkal.|  

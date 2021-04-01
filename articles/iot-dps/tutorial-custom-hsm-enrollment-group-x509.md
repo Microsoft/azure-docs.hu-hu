@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99052363"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Oktatóanyag: több X. 509 eszköz kiépítése beléptetési csoportok használatával
@@ -235,7 +235,7 @@ A köztes tanúsítvány által aláírt eszköz-tanúsítványok létrehozása 
 
 4. Ismételje meg a 1-3. lépést egy második, eszköz-AZONOSÍTÓval rendelkező eszköz esetében `custom-hsm-device-02` . A következő értékeket használja az eszközhöz:
 
-    |   Description                 |  Érték  |
+    |   Leírás                 |  Érték  |
     | :---------------------------- | :--------- |
     | Tulajdonos neve                  | `custom-hsm-device-02` |
     | Teljes tanúsítványlánc fájlja   | *./certs/new-device-02-full-chain.cert.pem* |
@@ -477,7 +477,7 @@ A következő lépések végrehajtásával frissítheti az egyéni HSM-helyettes
 
 8. Ismételje meg a 1-7. lépést egy második, eszköz-AZONOSÍTÓval rendelkező eszköz esetében `custom-hsm-device-02` . A következő értékeket használja az eszközhöz:
 
-    |   Description                 |  Érték  |
+    |   Leírás                 |  Érték  |
     | :---------------------------- | :--------- |
     | `COMMON_NAME`                 | `"custom-hsm-device-02"` |
     | Teljes tanúsítványlánc        | Szöveg előállítása a használatával `input="./certs/new-device-02-full-chain.cert.pem"` |

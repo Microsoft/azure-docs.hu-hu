@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
 ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575690"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Metrikák feltöltése a Azure Monitorba
@@ -126,7 +126,7 @@ Az Azure arc használatára képes SQL felügyelt példányok és az Azure arc e
    >[!NOTE]
    >Várjon legalább 30 percet, miután az Azure ív használatára jogosult adatpéldányok létre lettek hozva az első feltöltéshez.
    >
-   >Győződjön `upload` meg arról, hogy a metrikák a Azure monitor után azonnal `export` , csak az elmúlt 30 percben fogadják el a metrikákat. [További információ](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting).
+   >Győződjön `upload` meg arról, hogy a metrikák a Azure monitor után azonnal `export` , csak az elmúlt 30 percben fogadják el a metrikákat. [További információk](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting).
 
 
 Ha az exportálás során "nem sikerült beolvasni a mérőszámokat" hibaüzenet jelenik meg, ellenőrizze, hogy az adatgyűjtés a `true` következő parancs futtatásával van-e beállítva:

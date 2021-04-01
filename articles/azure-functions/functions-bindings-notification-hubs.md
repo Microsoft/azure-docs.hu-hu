@@ -248,7 +248,7 @@ Az attribútum konstruktorának paraméterei és tulajdonságai a [konfiguráci�
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `NotificationHub` :
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** |n.a.| Értékre kell állítani `notificationHub` . |
 |**irányba** |n.a.| Értékre kell állítani `out` . | 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98234188"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure hálózati szolgáltatásai – áttekintés
@@ -93,7 +93,7 @@ A [Azure DDoS Protection](../ddos-protection/manage-ddos-protection.md) a legkif
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
-### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private-hivatkozás
+### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
 Az [Azure Private link](../private-link/private-link-overview.md) lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
 A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinc hálózatán halad át. A szolgáltatás nyilvános internetre való kimutatása már nem szükséges. Létrehozhatja saját privát kapcsolati szolgáltatását a virtuális hálózatban, és továbbíthatja az ügyfeleknek.
 

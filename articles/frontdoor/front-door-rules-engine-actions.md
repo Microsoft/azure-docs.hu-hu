@@ -92,14 +92,14 @@ Egyéni továbbítási útvonal | Adja meg a kérések továbbításának elér�
 
 Ezekkel a beállításokkal szabályozhatja, hogy a fájlok hogyan legyenek gyorsítótárazva a lekérdezési karakterláncokat tartalmazó kérelmek esetében. Azt határozza meg, hogy az összes paraméter vagy a kijelölt paraméterek alapján gyorsítótárazza-e a tartalmakat. További beállításokkal írhatja felül az élettartam (TTL) értékét annak szabályozására, hogy a tartalom mennyi ideig marad a gyorsítótárban. A gyorsítótárazás műveletként való kényszerítéséhez állítsa a gyorsítótárazás mezőt "engedélyezve" értékre. A gyorsítótárazás kényszerítése esetén a következő lehetőségek jelennek meg: 
 
-Gyorsítótár viselkedése |  Description              
+Gyorsítótár viselkedése |  Leírás              
 ---------------|----------------
 Lekérdezési sztringek figyelmen kívül hagyása | Az eszköz gyorsítótárba helyezése után az összes további kérelem figyelmen kívül hagyja a lekérdezési karakterláncokat, amíg a gyorsítótárazott eszköz le nem jár.
 Minden egyedi URL gyorsítótárazása | Mindegyik egyedi URL-címmel rendelkező kérelem, beleértve a lekérdezési karakterláncot is, egyedi objektumként kezeli a saját gyorsítótárával.
 Megadott lekérdezési karakterláncok figyelmen kívül hagyása | A "lekérdezési paraméterek" beállításban felsorolt kérelem URL-lekérdezési karakterláncai figyelmen kívül lesznek hagyva a gyorsítótárazáshoz.
 Megadott lekérdezési karakterláncok belefoglalása | A "lekérdezési paraméterek" beállításban felsorolt kérelem URL-lekérdezési karakterláncai a gyorsítótárazáshoz használatosak.
 
-További mezők |  Description 
+További mezők |  Leírás 
 ------------------|---------------
 Dinamikus tömörítés | A bejárati ajtó dinamikusan tömörítheti a tartalmat az Edge-ben, így kisebb és gyorsabb választ kaphat.
 Lekérdezési paraméterek | A gyorsítótárazás alapjául szolgáló engedélyezett (vagy nem engedélyezett) paraméterek vesszővel tagolt listája.
