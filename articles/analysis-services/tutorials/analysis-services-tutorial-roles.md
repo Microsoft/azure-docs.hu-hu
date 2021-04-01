@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92018695"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
@@ -52,7 +52,7 @@ A további feladatokban az SSMS használatával csatlakozhat a kiszolgálóhoz �
 
 1. Az SSMS > **Object Explorerben** kattintson a **Csatlakozás** > **Analysis Services** lehetőségre.
 
-    ![Kapcsolódás](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Csatlakozás](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. A **Csatlakozás kiszolgálóhoz** párbeszédablakban a **Kiszolgálónév** mezőbe illessze be a portálról kimásolt nevet. A **Hitelesítés** mezőben válassza az **Active Directory univerzális, MFA-támogatással** lehetőséget, majd adja meg felhasználói fiókját, és kattintson a **Csatlakozás** gombra.
    

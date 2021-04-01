@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
 ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96499679"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Távoli munka: hálózati virtuális berendezés (NVA) – megfontolások távoli munkához
@@ -35,7 +35,7 @@ Az Azure Marketplace-en az összes jelentős NVA-gyártónak ajánlásokkal kell
 - **Példányok száma** – ha várhatóan nagy számú felhasználó és kapcsolat van, akkor a NVA-példányok méretének növelését is elérheti.  Vegye fontolóra több virtuálisgép-példány üzembe helyezését.
 - **IPSec VPN és SSL VPN** – az általános IPSec VPN-implementációk jobban teljesítik az SSL VPN-implementációkat.  
 - **Licencelés** – győződjön meg arról, hogy a NVA-megoldáshoz megvásárolt szoftverlicenc-szerződés a COVID-19 járvány hirtelen növekedésével fog rendelkezni.  Számos NVA-licencelési program korlátozza a megoldás által képes kapcsolatok vagy sávszélesség mennyiségét.
-- **Gyorsított hálózatkezelés** – vegye fontolóra egy olyan NVA-megoldást, amely támogatja a gyorsított hálózatkezelést.  A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű útvonal megkerüli a gazdagépet az adatelérési útról, csökkenti a késést, a vibrálás és a CPU-kihasználtságot a támogatott virtuálisgép-típusok legnagyobb igényű hálózati munkaterhelésével. A gyorsított hálózatkezelést a legtöbb általános célú és a számítási optimalizált példány mérete támogatja két vagy több vCPU.
+- **Gyorsított hálózatkezelés** – vegye fontolóra egy olyan NVA-megoldást, amely támogatja a gyorsított hálózatkezelést.  A Gyorsított hálózatkezelés engedélyezi az egygyökerű I/O-virtualizálást (SR-IOV) a virtuális gépekre, nagy mértékben javítva a hálózati teljesítményt. Ez a nagy teljesítményű útvonal megkerüli a gazdagépet az adatelérési útról, csökkenti a késést, a vibrálás és a CPU-kihasználtságot a támogatott virtuálisgép-típusok legnagyobb igényű hálózati munkaterhelésével. A gyorsított hálózatkezelést a legtöbb általános célú és a számítási optimalizált példány mérete támogatja két vagy több vCPU.
 
 ## <a name="monitoring-resources"></a>Erőforrások figyelése
 

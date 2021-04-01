@@ -4,10 +4,10 @@ description: Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémá
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 5f43b9d0041fa5842bc2557a61c5145ce588758a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363526"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure-IoT Hub Event Grid forrásként
@@ -302,7 +302,7 @@ Az **eszköz telemetria** IoT hub esemény esetén az adatobjektum tartalmazza a
 
 Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub eseményeket, az adatobjektum a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | `twin` | object | A Twin eszközre vonatkozó információ, amely az alkalmazás-eszköz metaadatainak Felhőbeli ábrázolása. | 
 | `deviceID` | sztring | Az eszköz egyedi azonosítója. | 

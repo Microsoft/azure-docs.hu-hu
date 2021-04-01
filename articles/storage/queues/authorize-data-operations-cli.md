@@ -12,10 +12,10 @@ ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363168"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Válassza ki, hogyan engedélyezze a hozzáférést az üzenetsor-kezeléshez az Azure CLI-vel
@@ -101,7 +101,7 @@ az storage queue create \
 
 A környezeti változókban megadhatja az engedélyezési paramétereket, így elkerülhető, hogy azok az Azure Storage-adatműveletek minden hívásán bekerüljenek. Az alábbi táblázat az elérhető környezeti változókat ismerteti.
 
-| Környezeti változó | Description |
+| Környezeti változó | Leírás |
 |--|--|
 | **AZURE_STORAGE_ACCOUNT** | A tárfiók neve. Ezt a változót a Storage-fiók kulcsával vagy egy SAS-tokenrel együtt kell használni. Ha egyik sincs jelen, az Azure CLI a hitelesített Azure AD-fiók használatával megkísérli lekérni a Storage-fiók hozzáférési kulcsát. Ha egyszerre nagy számú parancs fut, az Azure Storage erőforrás-szolgáltató szabályozási korlátja is elérhető. Az erőforrás-szolgáltatói korlátokkal kapcsolatos további információkért tekintse [meg az Azure Storage erőforrás-szolgáltató skálázhatósági és teljesítménybeli céljait](../common/scalability-targets-resource-provider.md)ismertető témakört. |
 | **AZURE_STORAGE_KEY** | A tárfiókkulcs. Ezt a változót a Storage-fiók nevével együtt kell használni. |

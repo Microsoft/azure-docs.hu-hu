@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96501209"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Bővített események Azure SQL Database 
@@ -73,7 +73,7 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
 
 A kiterjesztett események funkciót számos [katalógus-nézet](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)támogatja. A katalógus nézeteiből megtudhatja, hogy az aktuális adatbázisban a felhasználó által létrehozott esemény-munkamenetek *metaadatai vagy definíciói* szerepelnek-e. A nézetek nem adnak vissza adatokat az aktív esemény-munkamenetek példányairól.
 
-| Neve<br/>Katalógus nézet | Description |
+| Neve<br/>Katalógus nézet | Leírás |
 |:--- |:--- |
 | **sys.database_event_session_actions** |Minden művelet sorát adja vissza egy esemény-munkamenet minden eseményén. |
 | **sys.database_event_session_events** |Egy adott esemény-munkamenetben lévő események sorát adja vissza. |
@@ -87,7 +87,7 @@ A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek,
 
 A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) , amelyek támogatják a kiterjesztett eseményeket. DMV az *aktív* esemény-munkamenetekről.
 
-| DMV neve | Description |
+| DMV neve | Leírás |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
 | **sys.dm_xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |

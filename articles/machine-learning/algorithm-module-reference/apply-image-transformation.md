@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898907"
 ---
 # <a name="apply-image-transformation"></a>Képátalakítás alkalmazása 
@@ -47,20 +47,20 @@ Az átalakítás megadásához kapcsolódnia kell egy [init rendszerkép-transzf
 
 ### <a name="module-parameters"></a>Modul paramétereinek
 
-| Name | Tartomány | Típus | Alapértelmezett                   | Description                              |
+| Name | Tartomány | Típus | Alapértelmezett                   | Leírás                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
 | Mód | Bármelyik   | Mód | (Meg kell adni a felhasználót a megadásához) | Milyen célra használja a bemeneti átalakítást. Érdemes kizárni a "véletlenszerű" átalakítási műveleteket a következtetésekben, de megtarthatja őket a képzésben |
 
 ### <a name="expected-inputs"></a>Várt bemenetek  
 
-| Név                       | Típus                    | Description                       |
+| Név                       | Típus                    | Leírás                       |
 | -------------------------- | ----------------------- | --------------------------------- |
 | Bemeneti rendszerkép átalakítása | TransformationDirectory | Bemeneti rendszerkép átalakítása        |
 | Bemeneti rendszerkép könyvtára      | ImageDirectory          | Átalakítandó Képkönyvtár |
 
 ### <a name="outputs"></a>Kimenetek  
 
-| Név                   | Típus           | Description            |
+| Név                   | Típus           | Leírás            |
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 
