@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
 ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99225343"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Tranzakciós replikáció az Azure SQL felügyelt példányaival (előzetes verzió)
@@ -72,7 +72,7 @@ Az Azure SQL felügyelt példánya a következő SQL Server-verziók előfizető
 
 A replikáció különböző [típusú](/sql/relational-databases/replication/types-of-replication):
 
-| Replikálás | Azure SQL Database | Felügyelt Azure SQL-példány |
+| Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
 | [**Normál tranzakciós**](/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes |
 | [**Pillanatkép**](/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|

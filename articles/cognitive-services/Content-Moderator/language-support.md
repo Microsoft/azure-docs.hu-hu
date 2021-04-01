@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "84310308"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a Content Moderator API-hoz
@@ -28,16 +28,16 @@ ms.locfileid: "84310308"
 | Nyelvfelismerés | Trágár kifejezések   | OCR    | Automatikus javítás     |
 | -------------------- |-------------|--------|---------------------|
 | Arab (római)   | búr   | Arab   | Arab |
-| Balinéz | albán | Kínai (egyszerűsített)    | dán |
+| Balinéz | albán | Kínai (egyszerűsített)    | Dán |
 | bengáli | Amhara | Kínai (hagyományos)     | Holland |
-| Buginese | Arab | cseh                     | Angol |
-| Buhid | örmény | dán                     | finn |
+| Buginese | Arab | Cseh                     | Angol |
+| Buhid | örmény | Dán                     | finn |
 | Carian | Asszámi | Holland                     | Francia |
 | Kínai (egyszerűsített) | Azerbajdzsáni | Angol  | Görög (modern) |
 | Kínai (hagyományos) | Bangla – Banglades | finn  | Olasz |
 | Templom (szláv) | Bangla – India | Francia     | Koreai |
 | Kopt | Baszk | Német                      | Norvég |
-| cseh |  belorusz | Görög (modern)         | Lengyel |
+| Cseh |  belorusz | Görög (modern)         | Lengyel |
 | Dhivehi | Bosnyák – cirill betűs | Magyar      | Portugál |
 | Holland | Bosnyák – latin | Olasz             | Román |
 | Angol (kreol) | Breton [nem GeoPol] | Japán  | Orosz |
@@ -49,8 +49,8 @@ ms.locfileid: "84310308"
 | héber | Kínai (hagyományos) – Hongkong (KKT) | Orosz | |
 | Hindi | Kínai (hagyományos) – Tajvan | Szerb cirill betűs | |
 | Hmong | Horvát | Szerb latin | |
-| Magyar | cseh | Szlovák | |
-| Olasz | dán | Spanyol | |
+| Magyar | Cseh | Szlovák | |
+| Olasz | Dán | Spanyol | |
 | Japán | Dari | svéd | |
 | Koreai | Holland | Török | |
 | Kurd (arab) | Angol | | |

@@ -18,7 +18,7 @@ ms.locfileid: "91322580"
 
 Ez az útmutató példákat mutat be egy Event Grid modul lehetséges protokoll-konfigurációjáról. A Event Grid modul az API-t teszi elérhetővé felügyeleti és futtatókörnyezeti műveleteihez. A következő táblázat rögzíti a protokollokat és a portokat.
 
-| Protokoll | Port | Description |
+| Protokoll | Port | Leírás |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Alapértelmezés szerint ki van kapcsolva. Csak tesztelés során hasznos. Éles számítási feladatokhoz nem alkalmas.
 | HTTPS | 4438 | Alapértelmezett

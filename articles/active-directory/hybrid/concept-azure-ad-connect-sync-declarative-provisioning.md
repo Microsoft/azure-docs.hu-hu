@@ -53,7 +53,7 @@ A kép hatókörét a következőként kell olvasni: (részleg = IT és ország 
 
 A hatókör-modul a következő műveleteket támogatja.
 
-| Művelet | Description |
+| Művelet | Leírás |
 | --- | --- |
 | EGYENLŐ, NOTEQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték egyenlő-e az attribútum értékével. A többértékű attribútumok esetében lásd: ISIN és ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték kisebb-e, mint az attribútumban szereplő érték. |

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthatja vissza az Azure-fájlmegosztás bi
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94562321"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure-fájlmegosztás visszaállítása az Azure CLI-vel
@@ -27,7 +27,7 @@ A cikk végén megtudhatja, hogyan hajthatja végre a következő műveleteket a
 
 Ez a cikk azt feltételezi, hogy már rendelkezik egy Azure-fájlmegosztás Azure Backup által készített biztonsági mentéssel. Ha még nem rendelkezik ilyennel, tekintse meg [Az Azure-fájlmegosztás biztonsági mentése a parancssori](backup-afs-cli.md) felülettel című témakört a fájlmegosztás biztonsági mentésének konfigurálásához. Ebben a cikkben a következő erőforrásokat használja:
 
-| Fájlmegosztás | A(z) | Region | Részletek |
+| Fájlmegosztás | Tárfiók | Region | Részletek |
 |---|---|---|---|
 | *azurefiles* | *afsaccount* | EastUS | Az eredeti forrás biztonsági másolata Azure Backup használatával |
 | *azurefiles1* | *afaccount1* | EastUS | Másodlagos hely helyreállításához használt cél forrás |

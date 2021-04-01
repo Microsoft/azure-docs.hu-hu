@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91317616"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
@@ -71,7 +71,7 @@ Most már láthatja az automatikus frissítés állapotával kapcsolatos esemén
 
 Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az állapotról.
 
-| Eredmény-kód előtagja | Description |
+| Eredmény-kód előtagja | Leírás |
 | --- | --- |
 | Siker |A telepítés frissítése sikeresen megtörtént. |
 | UpgradeAborted |Egy ideiglenes feltétel leállította a frissítést. Újból próbálkozik újra, és a várt érték az, hogy később sikeres lesz. |
@@ -79,7 +79,7 @@ Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az á
 
 Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, de az eredményről tájékoztató üzenetnek Egyértelműnek kell lennie a problémával kapcsolatban.
 
-| Eredmény üzenet | Description |
+| Eredmény üzenet | Leírás |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Nem lehet írni a beállításjegyzékbe. |

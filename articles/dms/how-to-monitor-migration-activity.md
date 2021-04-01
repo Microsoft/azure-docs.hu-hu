@@ -108,7 +108,7 @@ A panel alsó részén láthatók a táblák, és az áttelepítés előrehalad�
 
 Az alábbi táblázat a tábla szintű részletekben látható mezőket ismerteti.
 
-| Mező neve        | Description       |
+| Mező neve        | Leírás       |
 | ------------- | ------------- |
 | **A teljes terhelés befejeződött**      | A táblák száma teljes adatterheléssel fejeződött be. |
 | **Teljes terhelés várólistán**      | A teljes betöltésre váró táblák száma.      |
@@ -129,7 +129,7 @@ Két lap jelenik meg, amelyek az áttelepítés előrehaladását mutatják be a
 
 Az alábbi táblázat a táblázat szintű áttelepítési folyamat során megjelenő mezőket ismerteti.
 
-| Mező neve        | Description       |
+| Mező neve        | Leírás       |
 | ------------- | ------------- |
 | **Állapot – szinkronizálás**      | Folyamatos szinkronizálás fut. |
 | **Insert**      | A célhelyre alkalmazott CDC-beszúrások száma.      |

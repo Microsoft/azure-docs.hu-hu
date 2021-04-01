@@ -108,7 +108,7 @@ A diagramon az alábbi információk találhatóak meg:
 
 A jelentésben az alábbi információk találhatók:
 
-| Jelentéselem | Description |
+| Jelentéselem | Leírás |
 | --- | --- |
 | Felhasználóazonosító |A használt felhasználóazonosítót mutatja. Ez a felhasználó által begépelt érték, ami bizonyos esetekben a rossz felhasználóazonosító. |
 | Sikertelen próbálkozások |A sikertelen bejelentkezések teljes számát mutatja az adott felhasználóazonosítóhoz. A táblázat a sikertelen bejelentkezések mennyisége alapján van rendezve csökkenő sorrendben. |

@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
 ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99096440"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
@@ -149,7 +149,7 @@ Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, é
 
 Adja meg az ajánlat részletesebb leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -236,7 +236,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Name
 7. Összefoglalás
-8. Description
+8. Leírás
 9. Hasznos hivatkozások
 10. Képernyőképek/videók
 

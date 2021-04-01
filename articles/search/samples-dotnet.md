@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: cbb84a4934eed4d258cf07772753315785f98019
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99218162"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>.NET (C#) kód minták az Azure Cognitive Search
@@ -30,7 +30,7 @@ Ismerje meg az Azure Cognitive Search-megoldás funkcióit és munkafolyamatait 
 
 Az Azure SDK Fejlesztői csapatának az API használatának bemutatása. Ezek a minták az [**Azure/Azure-SDK-for-net/Tree/Master/SDK/Search/Azure.Search.Documents/Samples**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/) on githubon találhatók meg.
 
-| Példák | Description |
+| Példák | Leírás |
 |---------|-------------|
 | ["Helló világ", szinkron módon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01a_HelloWorld.md) | Bemutatja, hogyan hozhat létre ügyfelet, hitelesítheti és kezelheti a hibákat szinkron metódusok használatával.|
 | ["Helló világ", aszinkron módon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01b_HelloWorldAsync.md) | Bemutatja, hogyan hozhat létre ügyfelet, hitelesítheti és kezelheti a hibákat aszinkron metódusok használatával.  |
@@ -63,7 +63,7 @@ A Cognitive Search csapata által bemutatott funkciók és munkafolyamatok. Ezen
 
 A Cognitive Search csapata a következő mintákat is közzéteszi, de a dokumentációban nem hivatkozik rá. A kapcsolódó readme-fájlok használati utasításokat tartalmaznak.
 
-| Példák | Description |
+| Példák | Leírás |
 |---------|-------------|
 | [Azure-Search – Power-Skills](https://github.com/Azure-Samples/azure-search-power-skills)  | Forráskód a megnyert megoldásokban felépíthető egyéni képességekhez.  |
 | [Tudásbányászati megoldásgyorsító](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | A sablonokkal, a támogatási fájlokkal és az analitikai jelentésekkel a teljes körű tudás-bányászati megoldás prototípusát segíti.  |
