@@ -74,7 +74,7 @@ A gyorsjavítási módszer a következő három lépést foglalja magában:
 
 A következő gyorsjavításokat le kell töltenie és telepítenie kell az előírt sorrendben és a javasolt mappákban:
 
-| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Sorrend | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Szoftverfrissítés |Szabályos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
 | 2a. |KB4011841 <br> KB4011842 |LSI-illesztőprogram és belső vezérlőprogram frissítései <br> USM belső vezérlőprogram frissítése (3,38-es verzió) |Szabályos <br></br>Nem zavaró |~ 3 óra <br> (tartalmazza a következőt: 2A. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ A következő gyorsjavításokat le kell töltenie és telepítenie kell az elő
 
 Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire `Get-HcsFirmwareVersion` . Ha a következő belső vezérlőprogram-verziókat futtatja:,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` akkor nem kell telepítenie ezeket a frissítéseket.
 
-| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
+| Sorrend | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Lemez belső vezérlőprogramja |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
 

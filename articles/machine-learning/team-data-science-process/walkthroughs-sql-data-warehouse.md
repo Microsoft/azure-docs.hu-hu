@@ -15,7 +15,7 @@ ms.openlocfilehash: 92cd3a9cc82a38cae6a56b7796e22d035979f2d5
 ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "89439850"
 ---
 # <a name="azure-synapse-analytics-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Az Azure szinapszis Analytics adatelemzési útmutatói a T-SQL és a Python használatával az Azure-ban

@@ -35,19 +35,19 @@ Ez a modul különösen akkor hasznos, ha a képadatokat betanítási és teszte
 
 ### <a name="expected-inputs"></a>Várt bemenetek
 
-| Név                  | Típus           | Description              |
+| Név                  | Típus           | Leírás              |
 | --------------------- | -------------- | ------------------------ |
 | Bemeneti rendszerkép könyvtára | ImageDirectory | Felosztható Képkönyvtár |
 
 ### <a name="module-parameters"></a>Modul paramétereinek
 
-| Név                                   | Típus  | Tartomány | Választható | Description                            | Alapértelmezett |
+| Név                                   | Típus  | Tartomány | Választható | Leírás                            | Alapértelmezett |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | Az első kimenetben található rendszerképek töredéke | Float | 0-1   | Kötelező | Az első kimenetben található rendszerképek töredéke | 0,9     |
 
 ### <a name="outputs"></a>Kimenetek
 
-| Név                    | Típus           | Description                              |
+| Név                    | Típus           | Leírás                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Kimeneti rendszerkép directory1 | ImageDirectory | A kijelölt lemezképeket tartalmazó könyvtár |
 | Kimeneti rendszerkép directory2 | ImageDirectory | Az összes többi rendszerképet tartalmazó könyvtár |

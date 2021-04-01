@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96484821"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás egy Storage-fiókhoz egy Azure Private-végpont használatával
@@ -150,7 +150,7 @@ Ebben a szakaszban létrehoz egy Storage-fiókot, és konfigurálja a magánhál
     | Hely | Válassza ki az **USA keleti** régióját |
     | Teljesítmény | Hagyja meg az alapértelmezett **standardot** |
     | Fiók altípusa | Hagyja meg az alapértelmezett **tárolót (általános célú v2)** |
-    | Replikálás| Hagyja meg az alapértelmezett **olvasási hozzáférésű geo-redundáns tárterületet (ra-GRS)** |
+    | Replikáció| Hagyja meg az alapértelmezett **olvasási hozzáférésű geo-redundáns tárterületet (ra-GRS)** |
    
 3. Válassza a **hálózatkezelés** fület, vagy kattintson a **Tovább: hálózatkezelés** gombra.
 

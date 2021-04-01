@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93394730"
 ---
 # <a name="email-notifications-in-pim"></a>E-mail-értesítések a PIM-ben
@@ -68,7 +68,7 @@ Az Azure AD-szerepkörökhöz hetente Privileged Identity Management összefogla
 
 Az e-mail négy csempét tartalmaz:
 
-| Csempe | Description |
+| Csempe | Leírás |
 | --- | --- |
 | **Aktivált felhasználók** | Az a szám, ahányszor a felhasználók aktiválták a jogosult szerepkört a szervezeten belül. |
 | **Felhasználó által állandó** | A jogosult hozzárendeléssel rendelkező felhasználók száma állandó. |
