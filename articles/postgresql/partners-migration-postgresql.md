@@ -8,17 +8,17 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.openlocfilehash: 5c2de10f5fbacd689a9ae92eb1f7295cccea3fb6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87279261"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL áttelepítési partnerek
 A Azure Database for PostgreSQL-megoldás széles körű támogatásához számos piacvezető partner és eszköz közül választhat. Ez a cikk a Azure Database for PostgreSQLt támogató áttelepítési megoldásokkal rendelkező Microsoft-partnereket emeli ki.
 
 ## <a name="migration-partners"></a>Áttelepítési partnerek
-| Partner | Description | Hivatkozások | Videók |
+| Partner | Leírás | Hivatkozások | Videók |
 | --- | --- | --- | --- |
 | ![SNP-technológiák][1] |**SNP-technológiák**<br>Az SNP-technológiák egy felhőalapú szolgáltató, amely biztonságos és megbízható megoldásokat kínál a jövőbe tartozó vállalkozások számára. A vállalat hisz abban, hogy valódi értéket generál a vállalkozása számára. A gondolattól a végrehajtásig az SNP-technológiák közös célt szolgálnak az ügyfelekkel, hogy a befektetésük előnyre legyen kialakítva.|[Webhely][snp_website]<br>[Twitter][snp_twitter]<br>[Kapcsolatfelvétel][snp_contact] | |
 | ![DB legjobb technológiák, LLC][2] |**DB legjobb technológiák, LLC**<br>Az adatbázis a legjobban segíti az ügyfeleket a felügyelt Azure Database-szolgáltatásokból. A vállalat számos lehetőséget kínál az első lépések megtételére, beleértve a [jövőbeli állapotú építészeti kialakítást](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [adatkezelés Microsoft adatplatform-optimalizálást](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure üzembe helyezési tervezési szolgáltatásokat](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)és az [Azure adatplatform-készültségi képzését](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Webhely][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Kapcsolatfelvétel][dbbest_contact] | |
