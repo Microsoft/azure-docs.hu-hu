@@ -67,7 +67,7 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name                    | Tartomány   | Típus    | Alapértelmezett | Description                              |
+| Name                    | Tartomány   | Típus    | Alapértelmezett | Leírás                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Átméretezés                  | Bármelyik     | Logikai | Igaz    | A bemeneti PIL-rendszerkép átméretezése a megadott méretre |
 | Méret                    | >= 1     | Egész szám | 256     | A kívánt kimeneti méret megadása          |
@@ -93,7 +93,7 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="output"></a>Kimenet  
 
-| Név                        | Típus                    | Description                              |
+| Név                        | Típus                    | Leírás                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Kimeneti rendszerkép átalakítása | TransformationDirectory | A rendszerkép- **átalakítási modul alkalmazásához** csatlakoztatható kimeneti képátalakítás. |
 

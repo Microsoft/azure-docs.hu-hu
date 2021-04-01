@@ -254,7 +254,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Interpolációk beállítása  
  Az Interpolációk lehetővé teszik a pontozáshoz használt lejtő alakjának megadását. Mivel a pontozás magas – alacsony, a lejtő mindig csökken, de az interpoláció határozza meg a lefelé lejtő görbe görbéjét. A következő interpolációkat lehet használni:  
 
-| Interpolációs | Description |  
+| Interpolációs | Leírás |  
 |-|-|  
 |`linear`|A maximális és a minimális tartományon belüli elemek esetében az elemre alkalmazott kiemelés folyamatosan csökkenő mennyiségű lesz. A lineáris egy pontozási profil alapértelmezett interpolációja.|  
 |`constant`|A kezdő és a záró tartományba tartozó elemek esetében állandó lökést alkalmaz a rendszer a rangsor eredményeire.|  

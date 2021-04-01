@@ -80,7 +80,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`Paging`|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|Az alkalmazások gyűjteményének lapozási adatai.|  
 |`Applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó számára látható alkalmazások.|  

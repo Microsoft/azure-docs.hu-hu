@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, milyen viszonyítási metaadatok sé
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92019494"
 ---
 # <a name="inference-metadata-schema"></a>Következtetéses metaadatok sémája 
@@ -18,7 +18,7 @@ Minden olyan következtetési objektum, amely HTTP-alapú vagy gRPC-alapú szerz
 
 ![Objektummodell](./media/inference-metadata-schema/object-model.png)
  
-|Típusdefiníció|Description|
+|Típusdefiníció|Leírás|
 |---|---|
 |Címke|Az eredményhez társított címke vagy címke. A címkézéssel való Alng a címkéhez társított megbízhatósági értéket is megkapja.|
 |Attribútum|Az eredményhez tartozó további attribútumok. Hozzáadhat új attribútumokat, amelyeket a rendszer a következtetési motortól kapott, a megbízhatósági értékkel együtt.|

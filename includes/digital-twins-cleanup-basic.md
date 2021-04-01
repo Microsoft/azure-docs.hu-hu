@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
 ms.openlocfilehash: 9a02c4f5c5699b4a6308bfaa519fa9eb776414d6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102244643"
 ---
 * **Ha nincs szüksége az oktatóanyagban létrehozott erőforrásokra**, törölheti az Azure Digital Twins-példányt és a cikk összes többi erőforrását az az [Group delete](/cli/azure/group#az-group-delete) paranccsal. Ezzel törli az összes Azure-erőforrást egy erőforráscsoporthoz, valamint magát az erőforráscsoportot is.

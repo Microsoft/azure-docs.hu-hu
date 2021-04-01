@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96017440"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
@@ -108,7 +108,7 @@ Futtassa a telepítőfájlt a következőképpen:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Típus | Description| Értékek|
+|Paraméter neve| Típus | Leírás| Értékek|
 |-|-|-|-|
 | /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
 |/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|

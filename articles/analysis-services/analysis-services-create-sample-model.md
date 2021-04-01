@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92013610"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
@@ -30,7 +30,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - Egy Azure Analysis Services-kiszolgáló. További tudnivalók: [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md).
 - Kiszolgáló-rendszergazdai engedélyek
-- [Az SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98165824"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB Python-jegyzetfüzetekben (előzetes verzió)

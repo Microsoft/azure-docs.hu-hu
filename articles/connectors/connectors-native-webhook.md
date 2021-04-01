@@ -142,7 +142,7 @@ Ez a beépített művelet meghívja az előfizetési végpontot a célhelyen, é
 
 Itt talál további információt egy HTTP webhook-triggerből vagy-műveletből származó kimenetről, amely a következő információkat adja vissza:
 
-| Tulajdonság neve | Típus | Description |
+| Tulajdonság neve | Típus | Leírás |
 |---------------|------|-------------|
 | fejlécek | object | A kérelemben szereplő fejlécek |
 | body (Törzs) | object | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |

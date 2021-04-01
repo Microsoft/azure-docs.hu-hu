@@ -1,5 +1,5 @@
 ---
-title: A Load Balancer konfigurálása az AG VNN-figyelőhöz
+title: A Load Balancer konfigurálása rendelkezésreállási csoport VNN-figyelőjéhez
 description: Megtudhatja, hogyan konfigurálhat egy Azure Load Balancer, hogy átirányítsa a forgalmat a rendelkezésre állási csoport számára a virtuális hálózat neve (VNN) figyelőhöz, amely a magas rendelkezésre álláshoz és a vész-helyreállításhoz (HADR) SQL Server biztosít.
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,13 +16,13 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359880"
 ---
-# <a name="configure-load-balancer-for-ag-vnn-listener"></a>A Load Balancer konfigurálása az AG VNN-figyelőhöz
+# <a name="configure-load-balancer-for-ag-vnn-listener"></a>A Load Balancer konfigurálása rendelkezésreállási csoport VNN-figyelőjéhez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Az Azure Virtual Machines a fürtök terheléselosztást használnak egy olyan IP-cím tárolására, amely egyszerre egy fürtcsomópont számára szükséges. Ebben a megoldásban a terheléselosztó tárolja az Always On rendelkezésre állási csoport (AG) virtuális hálózat neve (VNN) figyelő IP-címét. 

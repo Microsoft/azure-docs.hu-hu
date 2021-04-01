@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan kezdheti meg a Azure Lab Services haszn
 ms.topic: article
 ms.date: 11/18/2020
 ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98165042"
 ---
 # <a name="get-started-with-lab-services"></a>Ismerkedés a labor Services szolgáltatással 
@@ -98,7 +98,7 @@ Ha egy tanuló nehézségekbe ütközik a virtuális géphez való csatlakozás 
     > [!NOTE]
     > A tanulói virtuális gépek bekapcsolása nem befolyásolja a tanulóra vonatkozó kvótát. A felhasználók kvótái a felhasználó számára az ütemezett osztály időpontján kívül elérhető labor-órák számát határozzák meg.
 
-### <a name="connect-to-vms"></a>Kapcsolódás virtuális gépekhez
+### <a name="connect-to-vms"></a>Csatlakozás virtuális gépekhez
 
 A tanárok képesek csatlakozni a tanulói virtuális géphez, amíg be van kapcsolva, és a tanuló nem csatlakozik a virtuális géphez. A virtuális géphez való csatlakozással hozzáférhet a virtuális gépen található helyi fájlokhoz, és segítséget nyújthat a tanulóknak a problémák elhárításában.
 

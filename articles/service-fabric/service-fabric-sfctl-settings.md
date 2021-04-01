@@ -16,7 +16,7 @@ ms.locfileid: "86245585"
 Konfigurálja a helyi beállításokat a sfctl ezen példánya számára.
 
 ## <a name="subgroups"></a>Alcsoportok
-|Alcsoport|Description|
+|Alcsoport|Leírás|
 | --- | --- |
 | [telemetria](service-fabric-sfctl-settings-telemetry.md) | Konfigurálja a helyi telemetria-beállításokat a sfctl ezen példányára. |
 

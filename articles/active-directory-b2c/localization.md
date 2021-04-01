@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102453121"
 ---
 # <a name="localization-element"></a>Honosítási elem
@@ -46,7 +46,7 @@ A **honosítási** elem a következő attribútumokat tartalmazza:
 
 A **honosítási** elem a következő XML-elemeket tartalmazza
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | A támogatott nyelvek listája. |
 | LocalizedResources | 0: n | A honosított erőforrások listája. |
@@ -64,7 +64,7 @@ A **SupportedLanguages** elem a következő attribútumokat tartalmazza:
 
 A **SupportedLanguages** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Megjeleníti az RFC 5646-címkék nyelvi címkéjének megfelelő tartalmat a nyelvek azonosításához. |
 
@@ -78,7 +78,7 @@ A **LocalizedResources** elem a következő attribútumokat tartalmazza:
 
 A **LocalizedResources** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Meghatározza a különböző kultúrákban található teljes gyűjteményeket. A gyűjtemények különböző számú elemet és különböző sztringeket tartalmazhatnak különböző kultúrákban. Ilyen gyűjtemény például a jogcím-típusokban megjelenő enumerálások. Például egy ország/régió lista jelenik meg a felhasználó számára egy legördülő listában. |
 | LocalizedStrings | 0: n | Meghatározza az összes karakterláncot, kivéve a gyűjteményekben megjelenő karakterláncokat különböző kultúrákban. |
@@ -87,7 +87,7 @@ A **LocalizedResources** elem a következő elemeket tartalmazza:
 
 A **LocalizedCollections** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | A támogatott nyelvek listája. |
 
@@ -103,7 +103,7 @@ A **LocalizedCollection** elem a következő attribútumokat tartalmazza:
 
 A **LocalizedCollection** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Elem | 0: n | Meghatároz egy elérhető lehetőséget, amellyel a felhasználó kiválaszthat egy jogcímet a felhasználói felületen, például egy értéket a legördülő menüben. |
 
@@ -139,7 +139,7 @@ A következő példa a **LocalizedCollections** elem használatát mutatja be. K
 
 A **LocalizedStrings** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Honosított karakterlánc. |
 

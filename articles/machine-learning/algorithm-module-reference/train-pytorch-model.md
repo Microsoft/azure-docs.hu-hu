@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93420665"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-modell betanítása
@@ -58,7 +58,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 ## <a name="technical-notes"></a>Technikai megjegyzések
 ###  <a name="expected-inputs"></a>Várt bemenetek  
 
-| Név               | Típus                    | Description                              |
+| Név               | Típus                    | Leírás                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Nem betanított modell    | UntrainedModelDirectory | Nem betanított modell, pytorch megkövetelése         |
 | Betanítási adatkészlet   | ImageDirectory          | Betanítási adatkészlet                         |
@@ -66,7 +66,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name          | Tartomány            | Típus    | Alapértelmezett | Description                              |
+| Name          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Korszakok        | >0               | Egész szám | 5       | A címke vagy eredmény oszlopot tartalmazó oszlop kiválasztása |
 | Köteg mérete    | >0               | Egész szám | 16      | Egy kötegbe tartozó példányok számának betanítása   |
@@ -76,7 +76,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="outputs"></a>Kimenetek  
 
-| Név          | Típus           | Description   |
+| Név          | Típus           | Leírás   |
 | ------------- | -------------- | ------------- |
 | Betanított modell | ModelDirectory | Betanított modell |
 

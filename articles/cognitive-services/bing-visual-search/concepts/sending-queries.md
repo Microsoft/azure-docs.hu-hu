@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
 ms.openlocfilehash: 37d9352b6384ee2b5e95903f35d531bd672b25b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96490975"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezések küldése a Bing Visual Search API
@@ -89,7 +89,7 @@ Az alábbiakban azok a lekérdezési paraméterek láthatók, amelyeket a kérel
 
 Az alábbiakban azok a fejlécek láthatók, amelyeket a kérelmének meg kell adnia. A `Content-Type` és a `Ocp-Apim-Subscription-Key` fejlécek az egyetlen szükséges fejlécek, de a következőket is tartalmaznia kell:,, `User-Agent` `X-MSEdge-ClientID` `X-MSEdge-ClientIP` és `X-Search-Location` .
 
-| Fejléc | Description |
+| Fejléc | Leírás |
 | --- | --- |
 | <a name="acceptlanguage"></a>Accept-Language  | Választható kérelemfejléc.<br /><br /> Nyelvek vesszővel elválasztott listája a felhasználói felület sztringjeihez. A lista prioritás szerinti csökkenő sorrendben jelenik meg. További információért, például a várt formátummal kapcsolatos részletekért lásd: [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ez a fejléc és a [](#setlang)setLang&mdash; lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt.<br /><br /> Ha beállítja ezt a fejlécet, akkor a [cc](#cc) lekérdezési paramétert is meg kell adnia. A megfelelő piac meghatározásához a Bing a listában talált első támogatott nyelvet használja, és kombinálja azt a `cc` paraméter értékével. Ha a lista nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot, vagy másik lehetőségként egy összesített vagy alapértelmezett piacot használ az eredmények beszerzéséhez. A Bing által használt piac meghatározásához tekintse meg a `BingAPIs-Market` fejlécet.<br /><br /> Csak akkor használja ezt a fejlécet és a `cc` lekérdezési paramétert, ha több nyelvet ad meg. Ellenkező esetben használja az [mkt](#mkt) és a [setLang](#setlang) lekérdezési paramétereket.<br /><br /> A felhasználóifelület-sztring egy olyan sztring, amelyet feliratként használnak a felhasználói felületen. A JSON-válaszobjektumok tartalmaznak néhány felhasználóifelület-sztringet. A válaszobjektumokban található, a Bing.com tulajdonságaira mutató hivatkozások a megadott nyelvet alkalmazzák.  |
 | <a name="contenttype"></a>Content-Type  |     |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89272184"
 ---
 Egy olyan Azure Stack Edge-eszközön, amelyen a számítási szerepkör konfigurálva van, két különböző parancs használatával elháríthatja vagy figyelheti az eszközt.
@@ -36,7 +36,7 @@ Commands:
 
 A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `iotedge` :
 
-|command  |Description |
+|command  |Leírás |
 |---------|---------|
 |`check`     | A gyakori konfigurációs és kapcsolódási problémák automatikus ellenőrzésének elvégzése       |
 |`list`     | Modulok listázása         |
@@ -72,7 +72,7 @@ Commands:
 ```
 A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `dkrdbe` :
 
-|command  |Description |
+|command  |Leírás |
 |---------|---------|
 |`image`     | Lemezképek kezelése. A nem használt képek eltávolításához használja a következőt: `dkrdbe image prune -a -f`       |
 |`images`     | Lemezképek listázása         |

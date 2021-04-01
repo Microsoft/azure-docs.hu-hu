@@ -7,10 +7,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736734"
 ---
 # <a name="time-series-model-variables"></a>Idősorozat-modell változói
@@ -29,7 +29,7 @@ Az alábbi táblázat az egyes változókhoz tartozó tulajdonságokat mutatja b
 
 ## <a name="numeric-variables"></a>Numerikus változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek, vagy az idősorozat-kifejezések használatával alakíthatók át. A numerikus típusú változóknak *dupla* típusúnak kell lenniük.|
@@ -59,7 +59,7 @@ A változók megfelelnek a következő JSON-példának:
 
 ## <a name="categorical-variables"></a>Kategorikus változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek. A kategorikus típus változóinak vagy *hosszúnak* vagy *sztringnek* kell lenniük. |
@@ -99,7 +99,7 @@ A változók megfelelnek a következő JSON-példának:
 
 ## <a name="aggregate-variables"></a>Összesített változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó összesítése | Számításokat hajthat végre a támogatott [összesítési függvényekben az összesített változó típusokhoz](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |

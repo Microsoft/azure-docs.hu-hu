@@ -90,7 +90,7 @@ A feltételek kiértékelése lista:
 
 A szabályzatokban engedélyezett műveletek készletét alább találja.
 
-| Műveleti művelet | Description | A szabályzat azon részei, amelyekre ezek érvényesek |
+| Műveleti művelet | Leírás | A szabályzat azon részei, amelyekre ezek érvényesek |
 |--|--|--|
 | engedélyezés () | A bejövő jogcímek készlete a **issuancerules** számításához használható. A nem igényel jogcímet paraméterként | **engedélyezési szabályok** |
 | megtagadás () | A bejövő jogcímek készlete nem használható a **issuancerules** számításához paraméterként | **engedélyezési szabályok** |
