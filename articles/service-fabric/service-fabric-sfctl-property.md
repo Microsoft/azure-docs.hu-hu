@@ -31,7 +31,7 @@ Törli az adott név alatti megadott Service Fabric tulajdonságot. A törlés e
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --tulajdonság-név [kötelező] | A lekérdezni kívánt tulajdonság nevét adja meg. |
@@ -39,7 +39,7 @@ Törli az adott név alatti megadott Service Fabric tulajdonságot. A törlés e
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -54,7 +54,7 @@ Lekéri a megadott Service Fabric tulajdonságot egy adott név alatt. Ez mindig
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --tulajdonság-név [kötelező] | A lekérdezni kívánt tulajdonság nevét adja meg. |
@@ -62,7 +62,7 @@ Lekéri a megadott Service Fabric tulajdonságot egy adott név alatt. Ez mindig
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -77,7 +77,7 @@ A Service Fabric neve tartalmazhat egy vagy több olyan nevesített tulajdonság
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
@@ -86,7 +86,7 @@ A Service Fabric neve tartalmazhat egy vagy több olyan nevesített tulajdonság
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -101,7 +101,7 @@ Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott n�
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --tulajdonság-név [kötelező] | A Service Fabric tulajdonság neve. |
@@ -111,7 +111,7 @@ Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott n�
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |

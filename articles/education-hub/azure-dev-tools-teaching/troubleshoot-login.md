@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 276ab2cc1d79235c00ce1bb50ff9b648bb1de6ea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87096652"
 ---
 # <a name="troubleshooting-student-login-issues"></a>A tanulói bejelentkezési problémák elhárítása
@@ -51,6 +51,6 @@ Amikor legközelebb bejelentkezik, az egyetemi e-mail-címével férhet hozzá a
     :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="A Microsoftba való bejelentkezés módjának kezelése." border="false":::
 
 ## <a name="next-steps"></a>Következő lépések
-- [GYIK](program-faq.md)
+- [Gyakori kérdések](program-faq.md)
 
 - [Támogatási lehetőségek](program-support.md)

@@ -54,7 +54,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name             | Tartomány | Típus    | Alapértelmezett     | Description                              |
+| Name             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Modell neve       | Bármelyik   | Mód    | densenet201 | Egy bizonyos DenseNet-struktúra neve     |
 | Imagenet       | Bármelyik   | Logikai | Igaz        | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
@@ -62,7 +62,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="output"></a>Kimenet  
 
-| Név            | Típus                    | Description                              |
+| Név            | Típus                    | Leírás                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nem betanított modell | UntrainedModelDirectory | Egy képzetlen DenseNet-modell, amely csatlakoztatható a Pytorch-modellhez. |
 

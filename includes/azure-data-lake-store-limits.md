@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 7098f23e9b5b6f56fbbe761335afc65375aea680
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96509219"
 ---
 **Azure Data Lake Storage Gen2** nem dedikált szolgáltatás-vagy tárolási fióktípus. Ez a big data elemzésekhez dedikált képességek legújabb kiadása.  Ezek a képességek egy általános célú v2-vagy BlockBlobStorage-fiókban érhetők el, és a fiók **hierarchikus névtér** funkciójának engedélyezésével szerezhetők be. A méretezési célokért tekintse meg ezeket a cikkeket. 

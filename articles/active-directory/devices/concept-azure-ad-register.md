@@ -22,7 +22,7 @@ ms.locfileid: "91256438"
 
 Az Azure AD-ban regisztrált eszközök célja, hogy a felhasználók számára támogatást nyújtson a saját eszközök használata (BYOD) vagy a mobileszköz-forgatókönyvek számára. Ezekben a forgatókönyvekben a felhasználók személyes eszköz használatával férhetnek hozzá a szervezet Azure Active Directory felügyelt erőforrásaihoz.
 
-| Azure AD-regisztráció | Description |
+| Azure AD-regisztráció | Leírás |
 | --- | --- |
 | **Definíció** | Regisztrálva van az Azure AD-be anélkül, hogy szervezeti fiókot kellene bejelentkeznie az eszközre |
 | **Elsődleges célközönség** | Az összes felhasználóra érvényes a következő feltételekkel: |

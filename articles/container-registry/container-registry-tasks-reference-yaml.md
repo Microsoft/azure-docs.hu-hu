@@ -75,7 +75,7 @@ az configure --defaults acr=myregistry
 
 A feladat tulajdonságai általában egy fájl tetején jelennek meg `acr-task.yaml` , és globális tulajdonságok, amelyek a feladat lépéseinek teljes végrehajtása során érvényesek. A globális tulajdonságok némelyike felülbírálható egy adott lépésen belül.
 
-| Tulajdonság | Típus | Választható | Description | Felülbírálás támogatott | Alapértelmezett érték |
+| Tulajdonság | Típus | Választható | Leírás | Felülbírálás támogatott | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | sztring | Yes | Az `acr-task.yaml` ACR Tasks szolgáltatás által elemzett fájl verziója. Míg az ACR-feladatok a visszamenőleges kompatibilitás fenntartására törekednek, ez az érték lehetővé teszi az ACR-feladatok számára a kompatibilitás fenntartását egy meghatározott verzión belül. Ha nincs megadva, az alapértelmezett érték a legújabb verzió. | No | Nincsenek |
 | `stepTimeout` | int (másodperc) | Yes | A lépés által futtatható másodpercek maximális száma. Ha a tulajdonság meg van adva egy feladathoz, az az `timeout` összes lépés alapértelmezett tulajdonságát állítja be. Ha a `timeout` tulajdonságot egy lépésben adja meg, a felülbírálja a feladat által megadott tulajdonságot. | Yes | 600 (10 perc) |
@@ -89,7 +89,7 @@ A feladat tulajdonságai általában egy fájl tetején jelennek meg `acr-task.y
 
 A titkos objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Választható | Description | Alapértelmezett érték |
+| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | sztring | No | A titok azonosítója. | Nincsenek |
 | `keyvault` | sztring | Yes | A Azure Key Vault titkos URL-cím. | Nincsenek |
@@ -99,7 +99,7 @@ A titkos objektum a következő tulajdonságokkal rendelkezik.
 
 A hálózati objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Választható | Description | Alapértelmezett érték |
+| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | sztring | No | A hálózat neve. | Nincsenek |
 | `driver` | sztring | Yes | A hálózat kezelésére szolgáló illesztőprogram. | Nincsenek |
@@ -111,7 +111,7 @@ A hálózati objektum a következő tulajdonságokkal rendelkezik.
 
 A kötet objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Választható | Description | Alapértelmezett érték |
+| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | sztring | No | A csatlakoztatni kívánt kötet neve. Csak alfanumerikus karaktereket, "-" és "_" karaktert tartalmazhat. | Nincsenek |
 | `secret` | Térkép [karakterlánc] sztring | No | A Térkép minden kulcsa a köteten létrehozott és kitöltött fájl neve. Minden érték a titok karakterlánc-verziója. A titkos értékeknek Base64 kódolással kell rendelkezniük. | Nincsenek |
@@ -120,7 +120,7 @@ A kötet objektum a következő tulajdonságokkal rendelkezik.
 
 Az ACR-feladatok három lépésből álló típusokat támogatnak. Minden lépés típusa több tulajdonságot is támogat, részletesen az egyes lépésekhez tartozó szakaszban.
 
-| Lépés típusa | Description |
+| Lépés típusa | Leírás |
 | --------- | ----------- |
 | [`build`](#build) | Egy jól ismert szintaxissal hozza létre a tároló képét `docker build` . |
 | [`push`](#push) | Végrehajtja `docker push` az újonnan létrehozott vagy újracímkézett rendszerképeket egy tároló-beállításjegyzékbe. A Azure Container Registry, a többi privát beállításjegyzék és a nyilvános Docker hub is támogatott. |
@@ -381,7 +381,7 @@ az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://gi
 
 Az egyes lépésekhez tartozó típusok több, a típusához megfelelő tulajdonságot is támogatnak. A következő táblázat az összes elérhető lépés tulajdonságait meghatározza. Nem minden lépés típus támogatja az összes tulajdonságot. Ha szeretné megtekinteni, hogy mely tulajdonságok érhetők el az egyes lépésekhez, tekintse meg a [cmd](#cmd), a [Build](#build)és a [leküldéses](#push) lépés típusa hivatkozás szakaszokat.
 
-| Tulajdonság | Típus | Választható | Description | Alapértelmezett érték |
+| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | logikai | Yes | Azt jelzi, hogy a tárolót le kell-e választani a futtatáskor. | `false` |
 | `disableWorkingDirectoryOverride` | logikai | Yes | Meghatározza, hogy le kell-e tiltani a `workingDirectory` felülbírálási funkciót. Ezzel együtt a paranccsal `workingDirectory` teljes mértékben szabályozhatja a tároló munkakönyvtárát. | `false` |
@@ -410,7 +410,7 @@ Az egyes lépésekhez tartozó típusok több, a típusához megfelelő tulajdon
 
 A volumeMount objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Választható | Description | Alapértelmezett érték |
+| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | sztring | No | A csatlakoztatni kívánt kötet neve. Pontosan egyeznie kell a tulajdonság nevével `volumes` . | Nincsenek |
 | `mountPath`   | sztring | nem | A tárolóban lévő fájlok csatlakoztatásának abszolút elérési útja.  | Nincsenek |

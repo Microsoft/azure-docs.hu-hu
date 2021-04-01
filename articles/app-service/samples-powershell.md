@@ -17,7 +17,7 @@ ms.locfileid: "86169425"
 
 Az alábbi táblázat a Azure PowerShell használatával létrehozott PowerShell-szkriptekre mutató hivatkozásokat tartalmaz.
 
-| Script | Description |
+| Script | Leírás |
 |-|-|
 |**Alkalmazás létrehozása**||
 | [Alkalmazás létrehozása a GitHubról történő üzembe helyezéssel](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, amely kódot húz le a GitHubról. |

@@ -115,7 +115,7 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 ## <a name="customize-the-recovery-plan"></a>A helyreállítási terv testreszabása
 
 1. A tárolóban válassza a **helyreállítási tervek (site Recovery) lehetőséget.**
-2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv** elemre. [További információ](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
+2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv** elemre. [További információk](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
 3. A helyreállítási terv lapon kattintson a **Testreszabás** elemre.
 
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/custom-rp.png)
