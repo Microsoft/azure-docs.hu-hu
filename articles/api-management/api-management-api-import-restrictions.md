@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91932634"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
@@ -31,7 +31,7 @@ Az API-k importálásakor előfordulhat, hogy bizonyos korlátozásokkal vagy az
 
 Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg róla, hogy előzetesen ellenőrizte. Ezt megteheti, ha a tervezőt használja a Azure Portalban (OpenAPI-specifikációs szerkesztő), vagy egy harmadik féltől származó eszközzel, például a <a href="https://editor.swagger.io">hencegés szerkesztőjével</a>.
 
-### <a name="general"></a><a name="open-api-general"> </a>Általános kérdések
+### <a name="general"></a><a name="open-api-general"> </a>Általános
 
 -   Az elérési út és a lekérdezés kötelező paramétereinek egyedi névvel kell rendelkezniük. (A OpenAPI csak egyedinek kell lennie egy helyen belül, például elérési út, lekérdezés, fejléc. API Management azonban lehetővé tesszük, hogy a műveletek a két útvonal és a lekérdezési paraméterek (amelyek nem támogatják a OpenAPI) megkülönböztetését. Ezért a paraméterek neveinek egyedinek kell lenniük a teljes URL-sablonon belül.)
 -   `\$ref` a mutatók nem hivatkozhatnak külső fájlokra.
@@ -56,7 +56,7 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI importálási, frissítési és exportálási mechanizmusai
 
-### <a name="general"></a><a name="open-import-export-general"> </a>Általános kérdések
+### <a name="general"></a><a name="open-import-export-general"> </a>Általános
 
 -   A API Management szolgáltatásból exportált API-definíciók elsődlegesen a API Management szolgáltatáson kívüli alkalmazások számára készültek, amelyeknek meg kell hívniuk a API Management szolgáltatásban üzemeltetett API-t. Az exportált API-definíciók nem importálhatók újra ugyanabba vagy a különböző API Management szolgáltatásba. Az API-defiitions különböző többek között webszolgáltatások/envionments keresztüli konfigurálásához tekintse meg a dokumentációt, amely a API Management szolgáltatás és a git használatával történő használatáról nyújt tájékoztatást. 
 

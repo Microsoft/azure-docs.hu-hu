@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92789675"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez
@@ -44,7 +44,7 @@ Az Azure olyan beépített szerepköröket biztosít, amelyek engedélyeket bizt
 
 A tárolási felügyeleti műveletek meghívására engedélyt biztosító beépített szerepkörök közé tartoznak a következő táblázatban ismertetett szerepkörök:
 
-|    Azure-szerepkör    |    Description    |    A fiók kulcsaihoz való hozzáférést is tartalmaz?    |
+|    Azure-szerepkör    |    Leírás    |    A fiók kulcsaihoz való hozzáférést is tartalmaz?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Tulajdonos** | Képes kezelni az összes tárolási erőforrást és az erőforrásokhoz való hozzáférést.  | Igen, a Storage-fiók kulcsainak megtekintésére és újralétrehozására vonatkozó engedélyeket biztosít. |
 | **Közreműködő**  | Kezelheti az összes tárolási erőforrást, de nem kezelheti az erőforrásokhoz való hozzáférést. | Igen, a Storage-fiók kulcsainak megtekintésére és újralétrehozására vonatkozó engedélyeket biztosít. |

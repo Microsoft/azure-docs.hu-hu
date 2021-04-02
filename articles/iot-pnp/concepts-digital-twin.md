@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 99c957e5bf6ffe69c94e109796590f5ab975c3cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97656886"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Az IoT Plug and Play digitális ikreinek ismertetése
@@ -113,7 +113,7 @@ A következő kódrészletben a rendszer JSON-objektumként formázott Digital T
 
 A következő táblázat a digitális Twin JSON-objektum mezőit ismerteti:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$dtId` | Egy felhasználó által megadott karakterlánc, amely az eszköz digitális Twin AZONOSÍTÓját jelöli |
 | `{propertyName}` | A JSON-tulajdonság értéke |
