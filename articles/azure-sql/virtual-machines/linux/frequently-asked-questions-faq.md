@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792548"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>SQL Server on Linux virtuális gépekkel kapcsolatos gyakori kérdések
@@ -93,7 +93,7 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
    Jelenleg nem. Az Always On rendelkezésre állási csoportok és a feladatátvételi fürtszolgáltatás is szükség van egy Linux-alapú fürtözési megoldásra, például a pacemakerre. A SQL Server támogatott Linux-disztribúciói nem támogatják a magas rendelkezésre állású bővítményeket a felhőben.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 
 **Linux rendszerű virtuális gépek**:
 

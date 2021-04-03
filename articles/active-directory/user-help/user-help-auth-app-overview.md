@@ -71,7 +71,7 @@ A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros elle
 
 ## <a name="in-this-section"></a>A szakasz tartalma
 
-| Cikk | Description |
+| Cikk | Leírás |
 | ------ | ------------ |
 | [Az alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) | Leírja, hogy hol és hogyan lehet beolvasni és telepíteni a Microsoft Authenticator alkalmazást az Android és az iOS rendszerű eszközökön. |
 | [Munkahelyi vagy iskolai fiókjainak hozzáadása](user-help-auth-app-add-work-school-account.md) | Ismerteti, hogyan adhat hozzá különböző munkahelyi vagy iskolai és személyes fiókokat a Microsoft Authenticator alkalmazáshoz. |

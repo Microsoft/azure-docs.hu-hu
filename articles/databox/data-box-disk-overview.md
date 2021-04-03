@@ -10,10 +10,10 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: ea9353ed8c1938fa9b33585a0650b4507c671451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92125030"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
@@ -90,7 +90,7 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 
 ## <a name="features-and-specifications"></a>Funkciók és specifikációk
 
-| Specifikációk                                          | Description              |
+| Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Tömeg                                                  | < 2 lb dobozonként. Legfeljebb 5 lemez a dobozban                |
 | Dimenziók                                              | Lemez – 2,5 inch SSD |
