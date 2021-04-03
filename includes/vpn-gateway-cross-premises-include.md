@@ -9,10 +9,10 @@ ms.date: 12/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b283add6cff1400cc3141f4fba3f0f3939ee34aa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97665107"
 ---
 |  | **Pont – hely kapcsolat** | **Helyek közötti** | **ExpressRoute** |
@@ -26,4 +26,4 @@ ms.locfileid: "97665107"
 | **SLA** |[SLA](https://azure.microsoft.com/support/legal/sla/) |[SLA](https://azure.microsoft.com/support/legal/sla/) |[SLA](https://azure.microsoft.com/support/legal/sla/) |
 | **Díjszabás** |[Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[Díjszabás](https://azure.microsoft.com/pricing/details/expressroute/) |
 | **Technikai dokumentáció** |[VPN Gateway dokumentáció](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[VPN Gateway dokumentáció](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[A ExpressRoute dokumentációja](https://azure.microsoft.com/documentation/services/expressroute/) |
-| **GYIK** |[VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[ExpressRoute – Gyakori kérdések](../articles/expressroute/expressroute-faqs.md) |
+| **Gyakori kérdések** |[VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[ExpressRoute – Gyakori kérdések](../articles/expressroute/expressroute-faqs.md) |

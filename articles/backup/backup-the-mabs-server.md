@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan készíthet biztonsági másolatot a Microsoft 
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92172125"
 ---
 # <a name="back-up-the-mabs-server"></a>MABS-kiszolgáló biztonsági mentése
@@ -60,7 +60,7 @@ A MABS biztonsági mentési stratégiájának részeként biztonsági mentést k
 
     Győződjön meg arról, hogy az Azure Recovery Services ügynök telepítése és a MABS-kiszolgáló a Azure Backup-tárolóban való regisztrálása során meg van adva a PIN-kód. Erre a PIN-kódra szüksége lesz a biztonsági mentés visszaállításához.
 
-2. Hozzon létre egy Azure Backup-tárolót, töltse le az Azure Backup-ügynök telepítési fájlját és a tároló hitelesítő adatait. A telepítési fájl futtatásával telepítse az ügynököt a MABS-kiszolgálóra, és a tároló hitelesítő adataival regisztrálja a MABS-kiszolgálót a tárolóban. [További információ](backup-azure-microsoft-azure-backup.md).
+2. Hozzon létre egy Azure Backup-tárolót, töltse le az Azure Backup-ügynök telepítési fájlját és a tároló hitelesítő adatait. A telepítési fájl futtatásával telepítse az ügynököt a MABS-kiszolgálóra, és a tároló hitelesítő adataival regisztrálja a MABS-kiszolgálót a tárolóban. [További információk](backup-azure-microsoft-azure-backup.md).
 
 3. Miután konfigurálta a tárolót, állítson be egy MABS védelmi csoportot, amely tartalmazza a MABS-adatbázist. Válassza ki a lemezre és az Azure-ra történő biztonsági mentést.
 
