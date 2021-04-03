@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 73b9ecd03875b60ed2d9b9d4c8e8a3a0c8de3cfa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94956602"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 sorozat Update 2,2 kibocsátási megjegyzések
@@ -74,11 +74,11 @@ A következő táblázat az ebben a kiadásban található ismert problémák ö
 | 7 |Webproxy |Ha a webproxyt egy regisztrált eszközön konfigurálja és engedélyezi, akkor újra kell indítania az aktív vezérlőt az eszközön. | |Igen |Nem |
 | 8 |Magas Felhőbeli késés és magas I/O-munkaterhelés |Ha a StorSimple-eszköz nagyon magas Felhőbeli késések (másodpercek sorrendje) és magas I/O-munkaterhelések kombinációját tapasztalja, az eszközök mennyisége csökkentett teljesítményű állapotba kerül, és az I/O-művelet meghiúsulhat az "eszköz nem üzemkész" hiba miatt. |Ennek a helyzetnek a helyreállításához manuálisan kell újraindítani az eszközöket, vagy feladatátvételt kell végrehajtani az eszközön. |Igen |Nem |
 | 9 |Azure PowerShell |Ha a **Get-&#124; AzureStorSimpleStorageAccountCredential StorSimple parancsmagot használja Select-Object – első 1 – várja** meg az első objektum kiválasztását, hogy új **volumecontainer tárhoz való** objektumot hozzon létre, a parancsmag az összes objektumot visszaadja. |Zárja be a parancsmagot zárójelben a következő módon: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object – első 1 – várakozás** |Igen |Yes |
-| 10 |Áttelepítés |Ha több mennyiségi tárolót továbbítanak az áttelepítéshez, a legújabb biztonsági mentéshez használt ETA csak az első kötet-tároló esetében pontos. Emellett a párhuzamos áttelepítés az első kötet-tároló első 4 biztonsági mentése után is elindul. |Javasoljuk, hogy egyszerre egy mennyiségi tárolót telepítsen át. |Igen |Nem |
-| 11 |Áttelepítés |A visszaállítást követően a kötetek nincsenek hozzáadva a biztonsági mentési házirendhez vagy a virtuális lemez csoportjához. |A biztonsági másolatok létrehozásához hozzá kell adnia ezeket a köteteket egy biztonsági mentési szabályzathoz. |Igen |Yes |
-| 12 |Áttelepítés |Az áttelepítés befejezése után az 5000/7000 sorozatú eszköz nem fér hozzá az áttelepített adattárolóhoz. |Azt javasoljuk, hogy az áttelepítés befejezése és véglegesítése után törölje az áttelepített adattárolókat. |Igen |Nem |
+| 10 |Migrálás |Ha több mennyiségi tárolót továbbítanak az áttelepítéshez, a legújabb biztonsági mentéshez használt ETA csak az első kötet-tároló esetében pontos. Emellett a párhuzamos áttelepítés az első kötet-tároló első 4 biztonsági mentése után is elindul. |Javasoljuk, hogy egyszerre egy mennyiségi tárolót telepítsen át. |Igen |Nem |
+| 11 |Migrálás |A visszaállítást követően a kötetek nincsenek hozzáadva a biztonsági mentési házirendhez vagy a virtuális lemez csoportjához. |A biztonsági másolatok létrehozásához hozzá kell adnia ezeket a köteteket egy biztonsági mentési szabályzathoz. |Igen |Yes |
+| 12 |Migrálás |Az áttelepítés befejezése után az 5000/7000 sorozatú eszköz nem fér hozzá az áttelepített adattárolóhoz. |Azt javasoljuk, hogy az áttelepítés befejezése és véglegesítése után törölje az áttelepített adattárolókat. |Igen |Nem |
 | 13 |Klón és DR |Az 1. frissítést futtató StorSimple-eszközök nem tudják az 1. frissítés előtti szoftvert futtató eszközön a klónozást vagy a vész-helyreállítást végrehajtani. |A művelet végrehajtásához frissítenie kell a megcélzott eszközt az 1. frissítéshez |Igen |Yes |
-| 14 |Áttelepítés |Az áttelepítésre vonatkozó konfigurációs biztonsági mentés meghiúsulhat egy 5000-7000 sorozatú eszközön, ha nincsenek társított kötetek nélküli kötetek. |Törölje az összes olyan üres kötetet, amely nem rendelkezik társított kötetekkel, majd próbálja megismételni a konfiguráció biztonsági mentését. |Igen |Nem |
+| 14 |Migrálás |Az áttelepítésre vonatkozó konfigurációs biztonsági mentés meghiúsulhat egy 5000-7000 sorozatú eszközön, ha nincsenek társított kötetek nélküli kötetek. |Törölje az összes olyan üres kötetet, amely nem rendelkezik társított kötetekkel, majd próbálja megismételni a konfiguráció biztonsági mentését. |Igen |Nem |
 | 15 |Azure PowerShell parancsmagok és helyileg rögzített kötetek |Helyileg rögzített kötet nem hozható létre Azure PowerShell parancsmagokon keresztül. (Minden Azure PowerShell-n keresztül létrehozott kötetet a rendszer lépcsőzetesen fogja kialakítani.) |A helyileg rögzített kötetek konfigurálásához mindig a StorSimple Manager szolgáltatást használja. |Igen |Nem |
 | 16 |A helyileg rögzített kötetek számára elérhető terület |Ha töröl egy helyileg rögzített kötetet, előfordulhat, hogy az új kötetek számára elérhető terület nem frissül azonnal. A StorSimple Manager szolgáltatás körülbelül óránként frissíti a helyi helyet. |Várjon egy órát, mielőtt megpróbálja létrehozni az új kötetet. |Igen |Nem |
 | 17 |Helyileg rögzített kötetek |A visszaállítási feladatokkal elérhetővé teszi az ideiglenes pillanatkép biztonsági mentését a biztonsági mentési katalógusban, de csak a visszaállítási feladatokhoz. Emellett a **biztonsági mentési házirendek** lapon a **tmpCollection** előtaggal rendelkező virtuális lemezeket is elérhetővé teszi, de csak a visszaállítási feladatokhoz. |Ez akkor fordulhat elő, ha a visszaállítási feladatokhoz csak a helyileg rögzített kötetek vagy a helyileg rögzített és a lépcsőzetes kötetek kombinációja tartozik. Ha a visszaállítási feladatokban csak a lépcsőzetes kötetek szerepelnek, akkor ez a viselkedés nem fog történni. Felhasználói beavatkozásra nincs szükség. |Igen |Nem |

@@ -10,15 +10,15 @@ ms.custom: include file
 ms.topic: include
 ms.date: 12/11/2020
 ms.openlocfilehash: 09dd6e9a9d69797c2c33270d1620e861a052efe2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97505120"
 ---
 A modell üzemeltetéséhez használt számítási cél a telepített végpont költségeit és rendelkezésre állását is befolyásolja. A táblázat segítségével kiválaszthatja a megfelelő számítási célt.
 
-| Számítási cél | Alkalmazási cél | GPU-támogatás | FPGA-támogatás | Description |
+| Számítási cél | Alkalmazási cél | GPU-támogatás | FPGA-támogatás | Leírás |
 | ----- | ----- | ----- | ----- | ----- |
 | [Helyi &nbsp; webszolgáltatás &nbsp;](../articles/machine-learning/how-to-deploy-local-container-notebook-vm.md) | Tesztelés/hibakeresés | &nbsp; | &nbsp; | Korlátozott teszteléshez és hibaelhárításhoz használható. A hardveres gyorsítás a helyi rendszer könyvtárainak használatából függ.
 | [Azure Kubernetes Service (AKS)](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md) | Valós idejű következtetés |  [Igen](../articles/machine-learning/how-to-deploy-inferencing-gpus.md) (webszolgáltatás üzembe helyezése) | [Igen](../articles/machine-learning/how-to-deploy-fpga-web-service.md)   |Nagy léptékű üzembe helyezések esetén használható. Gyors válaszidőt és automatikus skálázást biztosít a telepített szolgáltatás számára. A fürt automatikus skálázása nem támogatott a Azure Machine Learning SDK-n keresztül. Az AK-fürt csomópontjainak módosításához használja a Azure Portalban az AK-fürt felhasználói felületét. <br/><br/> A tervező támogatja. |

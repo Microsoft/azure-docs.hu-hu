@@ -4,10 +4,10 @@ description: Leírja a logikai értékek meghatározásához Azure Resource Mana
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96920470"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
@@ -32,7 +32,7 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e. A `and` függvény nem t
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
@@ -96,7 +96,7 @@ A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
@@ -215,7 +215,7 @@ Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis. A `
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | feltétel |Yes |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
 | trueValue |Yes | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
@@ -341,7 +341,7 @@ Logikai érték konvertálása az ellenkező értékre. A `not` függvény nem t
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |boolean |Az átalakítandó érték. |
 
@@ -436,7 +436,7 @@ Ellenőrzi, hogy a paraméter értéke igaz-e. A `or` függvény nem támogatott
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
