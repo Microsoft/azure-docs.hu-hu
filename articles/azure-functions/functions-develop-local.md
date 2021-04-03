@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan végezheti el a Azure Functions kódolását é
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c37d51abcc8d612b777b845515cf07666369d4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96168134"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Az Azure Functions helyi kódolása és tesztelése
@@ -18,7 +18,7 @@ A [Azure Portal]Azure functions fejlesztése és tesztelése során számos fejl
 
 A funkciók helyi számítógépen való fejlesztésének módja a [nyelvi](supported-languages.md) és az eszközkészletbeli beállításoktól függ. A következő táblázat környezetei támogatják a helyi fejlesztést:
 
-|Környezet                              |Nyelvek         |Description|
+|Környezet                              |Nyelvek         |Leírás|
 |-----------------------------------------|------------|---|
 |[Visual Studio Code](functions-develop-vs-code.md)| [C# (osztály könyvtára)](functions-dotnet-class-library.md), [c# parancsfájl (. CSX)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](./create-first-function-vs-code-powershell.md), [Python](functions-reference-python.md) | A [vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) -hoz készült Azure functions-bővítmény támogatja a vs Code funkciót. Az alapvető eszközöket igényli. Támogatja a Linux, a MacOS és a Windows fejlesztését, ha a Core Tools 2. x verzióját használja. További információért lásd: [az első függvény létrehozása a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md). |
 | [Parancssor vagy terminál](functions-run-local.md) | [C# (osztály könyvtára)](functions-dotnet-class-library.md), [c# parancsfájl (. CSX)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](functions-reference-powershell.md), [Python](functions-reference-python.md) | A [Azure functions Core Tools] az alapszintű futtatókörnyezetet és sablonokat biztosít a függvények létrehozásához, amelyek lehetővé teszik a helyi fejlesztést. A 2. x verzió támogatja a Linux, a MacOS és a Windows fejlesztését. Minden környezet a helyi függvények futtatókörnyezetének alapvető eszközein alapul. |

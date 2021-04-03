@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954086"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>A StorSimple-eszköz 10 GbE hálózati adapterének támogatott hardverei
@@ -73,7 +73,7 @@ A Mellanox a következő kisméretű (SFP) adóvevők, kábelek és kapcsolók t
 ### <a name="cables-and-modules-supported-by-mellanox"></a>A Mellanox által támogatott kábelek és modulok
 A következő táblázat felsorolja a Mellanox által támogatott kábeleket és modulokat. Ezeket a Microsoft nem tesztelte, de valószínűleg működik a StorSimple-eszközzel.
 
-| S. Nem. | Sebesség | Modellezés | Description | Gyártó |
+| S. Nem. | Sebesség | Modellezés | Leírás | Gyártó |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |passzív réz kábel SFP + 10 GB/s 1M |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |passzív réz kábel SFP + 10 GB/s 2m |Arista |
@@ -114,7 +114,7 @@ A következő táblázat felsorolja a Mellanox által támogatott kábeleket és
 ### <a name="switches-supported-by-mellanox"></a>A Mellanox által támogatott kapcsolók
 A következő táblázat felsorolja a Mellanox által támogatott kapcsolókat. Ezeket a Microsoft nem tesztelte, de valószínűleg működik a StorSimple-eszközzel.
 
-| S. Nem. | Sebesség | Modellezés | Description | Gyártó |
+| S. Nem. | Sebesség | Modellezés | Leírás | Gyártó |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733 – B21 |HP-előgörbe 6120XG 10 GbE Ethernet panel kapcsoló |HP |
 | 2. |10 GbE |538113 – B21 |HP 10 GbE Pass-Through modul (PTM) |HP |

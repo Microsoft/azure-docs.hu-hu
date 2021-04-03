@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996627"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
@@ -148,7 +148,7 @@ Mivel ez a szabály egy beépített szabály, a szabály megnyitásakor figyelme
 
 A szinkronizálási szabály négy konfigurációs szakaszt tartalmaz: Leírás, hatókör-szűrő, csatlakozási szabályok és átalakítások.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 Az első szakasz olyan alapvető információkat tartalmaz, mint például a név és a leírás.
 
 ![Leírás lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
