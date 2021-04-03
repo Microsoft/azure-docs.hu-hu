@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: alkohli
 ms.openlocfilehash: 6f01d62d1d11f5ff90661482ffd2db112657eee5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466878"
 ---
 # <a name="azure-stack-edge-mini-r-limits"></a>Azure Stack Edge mini R-korlátok
@@ -28,7 +28,7 @@ Vegye figyelembe ezeket a korlátokat az Azure Stack Edge mini R-megoldás üzem
 
 Az alábbi táblázat az Azure Stack Edge mini R-eszköz korlátozásait ismerteti.
 
-| Description | Korlát|
+| Leírás | Korlát|
 |---|---:|
 |Nem. fájl/eszköz | 100 000 000 <!--check with devs-->|
 |Nem. megosztások száma tárolóban | 1|

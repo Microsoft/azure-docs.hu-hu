@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96603328"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>IoT Hub MQTT 5 – támogatás áttekintése (előzetes verzió)
@@ -410,7 +410,7 @@ Az üzenetek kötegét nem lehet külön formátumban elküldeni. A TLS-és hál
 - A `PUBLISH` kapcsolat első csomagjában adja meg a témakör teljes nevét, és társítsa a témakör aliasát,
 - Helyezze a következő csomagokat ugyanahhoz a témakörhöz, és adjon meg egy üres témakört, valamint a témakör alias tulajdonságát.
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 Ez a szakasz az API változásait sorolja fel a [korábbi MQTT API](iot-hub-mqtt-support.md)-hoz képest.
 

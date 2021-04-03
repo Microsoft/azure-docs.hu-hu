@@ -12,10 +12,10 @@ ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
 ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793177"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
@@ -114,7 +114,7 @@ Az adatbázis méretezési tényezőn alapul. A méretezési tényező (SF-ként
 
 A munkaterhelés kilenc tranzakciós típusból áll, ahogy az alábbi táblázatban is látható. Minden tranzakció úgy van kialakítva, hogy kiemelje a rendszerjellemzők egy adott készletét az adatbázismotor és a rendszer hardverén, nagy kontraszttal a többi tranzakciótól. Ezzel a megközelítéssel könnyebben mérhetővé válik a különböző összetevők hatása a teljes teljesítményre. Például a "READ Heavy" tranzakció jelentős számú olvasási műveletet eredményez a lemezről.
 
-| Transaction Type (Tranzakció típusa) | Description |
+| Transaction Type (Tranzakció típusa) | Leírás |
 | --- | --- |
 | A Lite olvasása |Válassza memóriában tárolt; csak olvasható |
 | Adathordozó olvasása |Válassza többnyire a memóriában; csak olvasható |

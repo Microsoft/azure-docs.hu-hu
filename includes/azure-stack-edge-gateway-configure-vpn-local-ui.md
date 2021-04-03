@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: fa65a7354112a2b220686372459b348d45832dd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466638"
 ---
 Hajtsa végre az alábbi lépéseket az eszköz helyi webes FELÜLETén. Ez a lépés körülbelül 15 percet vesz igénybe, beleértve a VPN-konfigurációs fájl (vagy a szolgáltatási címke fájljának) feltöltését. 
