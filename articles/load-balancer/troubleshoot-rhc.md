@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
 ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97955620"
 ---
 # <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Erőforrás-állapot és a bejövő rendelkezésre állással kapcsolatos problémák elhárítása 
@@ -26,7 +26,7 @@ A terheléselosztó állapotának meghatározásához a Load Balancer Resource H
 
 Az alábbi táblázat ismerteti a terheléselosztó állapotának megállapításához használt RHC logikát.
 
-| Erőforrás állapotának állapota | Description |
+| Erőforrás állapotának állapota | Leírás |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
 | Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. 

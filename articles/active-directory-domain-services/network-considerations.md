@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: justinha
 ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97615817"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure Active Directory Domain Services konfigurációs beállításai
@@ -91,7 +91,7 @@ A névfeloldást engedélyezheti feltételes DNS-továbbítók használatával a
 
 A felügyelt tartomány hálózati erőforrásokat hoz létre az üzembe helyezés során. Ezek az erőforrások a felügyelt tartomány sikeres működéséhez és felügyeletéhez szükségesek, és nem kell manuálisan konfigurálni.
 
-| Azure-erőforrás                          | Description |
+| Azure-erőforrás                          | Leírás |
 |:----------------------------------------|:---|
 | Hálózati csatolókártya                  | Az Azure AD DS üzemelteti a felügyelt tartományt két tartományvezérlőn (DCs), amely Azure-beli virtuális gépekként fut a Windows Serveren. Minden virtuális gépnek van egy virtuális hálózati adaptere, amely csatlakozik a virtuális hálózati alhálózathoz. |
 | Dinamikus normál nyilvános IP-cím      | Az Azure AD DS szabványos SKU nyilvános IP-cím használatával kommunikál a szinkronizálási és a felügyeleti szolgáltatással. A nyilvános IP-címekről további információt az [IP-címek típusai és a kiosztási módszerek az Azure-ban](../virtual-network/public-ip-addresses.md)című témakörben talál. |

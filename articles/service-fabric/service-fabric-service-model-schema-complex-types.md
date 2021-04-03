@@ -355,12 +355,12 @@ A deklaratív leírja az alkalmazás típusát és verzióját. A rendszer egy v
 ```
 ### <a name="content-element-details"></a>Tartalmi elem részletei
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 Az alkalmazást leíró szöveg.
 
 |Attribútum|Érték|
 |---|---|
-|name|Description|
+|name|Leírás|
 |típus|xs: karakterlánc|
 |minOccurs|0|
 
@@ -1080,12 +1080,12 @@ A fürt jegyzékfájlja dokumentum felhasználó által definiált verziója.
 |name|Verzió|
 |használja|kötelező|
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 A fürt jegyzékfájljának leírása.
 
 |Attribútum|Érték|
 |---|---|
-|name|Description|
+|name|Leírás|
 
 ### <a name="content-element-details"></a>Tartalmi elem részletei
 
@@ -6609,12 +6609,12 @@ A szolgáltatás jegyzékfájljának azonosítója, strukturálatlan karakterlá
 
 ### <a name="content-element-details"></a>Tartalmi elem részletei
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 A szolgáltatást leíró szöveg.
 
 |Attribútum|Érték|
 |---|---|
-|name|Description|
+|name|Leírás|
 |típus|xs: karakterlánc|
 |minOccurs|0|
 
@@ -6943,11 +6943,11 @@ Ennek a szervizcsomag-tartalomnak az ellenőrzőösszeg-értéke.
 
 ### <a name="content-element-details"></a>Tartalmi elem részletei
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 |Attribútum|Érték|
 |---|---|
-|name|Description|
+|name|Leírás|
 |típus|xs: karakterlánc|
 |minOccurs|0|
 

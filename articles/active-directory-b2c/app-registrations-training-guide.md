@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98660250"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
@@ -63,7 +63,7 @@ A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásk�
 > [!NOTE]
 > Ez a beállítás ahhoz szükséges, hogy Azure AD B2C felhasználói folyamatokat futtasson az alkalmazás felhasználóinak hitelesítéséhez. Megtudhatja [, hogyan regisztrálhat egy alkalmazást felhasználói folyamatokkal való használatra.](tutorial-register-applications.md)
 
-Ezt a lehetőséget használhatja a Azure AD B2C SAML-szolgáltatóként való használatára is. [További információ](identity-provider-adfs.md).
+Ezt a lehetőséget használhatja a Azure AD B2C SAML-szolgáltatóként való használatára is. [További információk](identity-provider-adfs.md).
 
 ## <a name="applications-for-devops-scenarios"></a>Alkalmazások DevOps-forgatókönyvekhez
 

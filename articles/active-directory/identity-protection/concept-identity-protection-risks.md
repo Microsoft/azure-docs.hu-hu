@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97954485"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
@@ -41,7 +41,7 @@ A felhasználói kockázat azt jelzi, hogy egy adott identitás vagy fiók bizto
 
 Ezeket a kockázatokat a Microsoft belső és külső veszélyforrások elleni intelligenciával, például a biztonsági kutatókkal, bűnüldözési szakemberekkel, a Microsoft biztonsági csoportjaival és más megbízható forrásokkal együtt offline számítjuk ki.
 
-| Kockázati észlelés | Description |
+| Kockázati észlelés | Leírás |
 | --- | --- |
 | Kiszivárgott hitelesítő adatok | Ez a kockázati észlelési típus azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. Ha a kiberbűnözők veszélyezteti a legitim felhasználók érvényes jelszavait, gyakran megosztják ezeket a hitelesítő adatokat. Ezt a megosztást általában nyilvánosan közzétesszük a Dark web, a Sites vagy a Trading szolgáltatásban, és a hitelesítő adatokat a fekete piacon forgalmazzák. Ha a Microsoft által kiszivárgott hitelesítő adatokkal rendelkező szolgáltatás felhasználói hitelesítő adatokat kér a sötét webhelyről, illetve más forrásokból, akkor azokat a rendszer az Azure AD-felhasználók aktuális érvényes hitelesítő adataival ellenőrzi, hogy érvényes egyezéseket keres. A kiszivárgott hitelesítő adatokkal kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](#common-questions). |
 | Azure AD-fenyegetések felderítése | Ez a kockázati észlelési típus azt jelzi, hogy az adott felhasználó számára szokatlan felhasználói tevékenység van, vagy konzisztens a Microsoft belső és külső veszélyforrások elleni hírszerzési forrásaira épülő ismert támadási mintákkal. |
@@ -52,7 +52,7 @@ A bejelentkezési kockázat azt jelzi, hogy egy adott hitelesítési kérelem ne
 
 Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyforrások elleni intelligenciával, például biztonsági kutatókkal, bűnüldöző szakemberekkel, a Microsoft biztonsági csoportjaival és más megbízható forrásokkal is kiszámíthatók.
 
-| Kockázati észlelés | Észlelés típusa | Description |
+| Kockázati észlelés | Észlelés típusa | Leírás |
 | --- | --- | --- |
 | Névtelen IP-cím | Valós idejű | Ez a kockázati észlelési típus a névtelen IP-címről (például Tor-böngésző vagy névtelen VPN) érkező bejelentkezéseket jelzi. Ezeket az IP-címeket jellemzően olyan szereplők használják, akik el szeretnék rejteni a bejelentkezési telemetria (IP-cím, hely, eszköz stb.) a potenciálisan rosszindulatú szándék érdekében. |
 | Szokatlan utazás | Offline | Ez a kockázati észlelési típus két, földrajzilag távoli helyről származó bejelentkezést azonosít, ahol a felhasználók legalább egyike atipikus lehet a felhasználó számára, a múltbeli viselkedés miatt. Ez a gépi tanulási algoritmus számos más tényezőt is figyelembe vesz, és azt, hogy a felhasználó az első helyről a másodikra utazzon, valamint azt, hogy egy másik felhasználó ugyanazokat a hitelesítő adatokat használja. <br><br> Az algoritmus figyelmen kívül hagyja a "hamis pozitív" állapotot, amely hozzájárul a lehetetlen utazási feltételekhez, például a VPN-hez és a szervezet más felhasználói által rendszeresen használt helyekhez. A rendszer kezdeti tanulási időszaka a legkorábbi 14 nap vagy 10 bejelentkezés, amely során egy új felhasználó bejelentkezési viselkedését tanulja meg. |
@@ -69,7 +69,7 @@ Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyfo
 
 ### <a name="other-risk-detections"></a>Egyéb kockázati észlelések
 
-| Kockázati észlelés | Észlelés típusa | Description |
+| Kockázati észlelés | Észlelés típusa | Leírás |
 | --- | --- | --- |
 | További kockázat észlelhető | Valós idejű vagy offline | Ez az észlelés azt jelzi, hogy a rendszer a fenti prémium észlelések egyikét észlelte. Mivel a prémium észlelések csak prémium szintű Azure AD P2-ügyfelek számára láthatók, a "további kockázat észlelhető", prémium szintű Azure AD P2 licencek nélküli ügyfelek számára. |
 
