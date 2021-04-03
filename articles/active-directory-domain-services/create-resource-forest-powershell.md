@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: justinha
 ms.openlocfilehash: ebfc2476b7955b926f86094de03973155386eb8f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619967"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Hozzon létre egy Azure Active Directory Domain Services erőforrás-erdőt és a kimenő erdőszintű megbízhatóságot a helyszíni tartományba Azure PowerShell
@@ -112,7 +112,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
     A `New-AzureAaddsForest` szkript létrehozhatja az Azure-beli virtuális hálózatot és az azure AD DS alhálózatot, ha ezek az erőforrások még nem léteznek. A parancsfájl opcionálisan létrehozhatja a számítási feladatok alhálózatait, ha meg van adva:
 
-    | Name                              | Parancsfájl paramétere                  | Description |
+    | Name                              | Parancsfájl paramétere                  | Leírás |
     |:----------------------------------|:----------------------------------|:------------|
     | Virtuális hálózat neve              | *-aaddsVnetName*                  | A felügyelt tartomány virtuális hálózatának neve.|
     | Címtér                     | *-aaddsVnetCIDRAddressSpace*      | A virtuális hálózat CIDR jelölése (a virtuális hálózat létrehozásakor).|
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Most adja meg a parancsfájlt a következő információkkal:
 
-| Name                               | Parancsfájl paramétere     | Description |
+| Name                               | Parancsfájl paramétere     | Leírás |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS tartomány neve            | *-ManagedDomainFqdn* | A felügyelt tartomány teljes tartományneve, például *aaddscontoso.com* |
 | Helyszíni AD DS tartomány neve      | *-TrustFqdn*         | A megbízható erdő teljes tartományneve, például *onprem.contoso.com* |
