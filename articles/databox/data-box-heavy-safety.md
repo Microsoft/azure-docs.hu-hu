@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021537"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>A Azure Data Box Heavy biztonságos telepítése és működtetése
@@ -27,7 +27,7 @@ A Azure Data Box Heavy használata előtt olvassa el az ebben a cikkben találha
 ## <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciói
 Itt láthatja azokat az ikonokat, amelyekkel megtekintheti a Data Box beállításakor és futtatásakor betartandó biztonsági óvintézkedéseket.
 
-| Ikon | Description |
+| Ikon | Leírás |
 |:--- |:--- |
 | ![Veszélyforrás ikon ](./media/data-box-heavy-safety/warning-icon.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
 | ![Figyelmeztetés ikon ](./media/data-box-heavy-safety/warning-icon.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |

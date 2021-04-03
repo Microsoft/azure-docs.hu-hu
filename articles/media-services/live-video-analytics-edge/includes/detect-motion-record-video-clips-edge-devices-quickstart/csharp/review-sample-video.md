@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: df6137e4e00ebd089ef7fb5efa163a513fb30728
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98061232"
 ---
 Az ehhez a rövid útmutatóhoz tartozó Azure-erőforrások beállítása során a rendszer egy, a IoT Edge eszközként használt Azure-beli linuxos virtuális gépre másolja a parkolót. Ez a videofájl az oktatóanyag élő folyamának szimulálására szolgál.
