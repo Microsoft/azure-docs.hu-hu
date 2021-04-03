@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 74403365fe48584fa5d1db0e349c9dfc3772d874
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97652852"
 ---
 # <a name="system-tables-and-views"></a>Rendszertáblák és nézetek
@@ -33,7 +33,7 @@ Ezeket a táblákat az SQL használatával tekintheti meg és kérdezheti le a k
 
 A PG \_ dist \_ Partition tábla tárolja a metaadatokat arról, hogy az adatbázis mely táblái vannak elosztva. Minden elosztott tábla esetében a terjesztési módszerről és a terjesztési oszlop részletes adatairól is információt tárol.
 
-| Név         | Típus     | Description                                                                                                                                                                                                                                           |
+| Név         | Típus     | Leírás                                                                                                                                                                                                                                           |
 |--------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid | regclass | Az elosztott tábla, amelyhez ez a sor megfelel. Ez az érték a pg_class Rendszerkatalógus tábla relfilenode oszlopára hivatkozik.                                                                                                                   |
 | partmethod   | char     | A particionáláshoz/terjesztéshez használt metódus. A különböző terjesztési módszereknek megfelelő oszlop értékei hozzáfűzése: "a", kivonat: "h", hivatkozási tábla: "n"                                                                          |
@@ -54,7 +54,7 @@ SELECT * from pg_dist_partition;
 A PG \_ dist \_ szegmens táblázat a tábla egyes részeinek metaadatait tárolja. Pg_dist_shard információval rendelkezik arról, hogy az elosztott tábla mely szegmensekre vonatkozik, valamint a szegmensek eloszlás oszlopával kapcsolatos statisztikát.
 Az elosztott táblák hozzáfűzése esetén ezek a statisztikák a terjesztési oszlop min/max értékének felelnek meg. Kivonatoló elosztott táblák esetén ezek a szegmenshez rendelt kivonatoló jogkivonat-tartományok. Ezek a statisztikák a nem kapcsolódó szegmensek törlésére szolgálnak a választó lekérdezések során.
 
-| Név          | Típus     | Description                                                                                                                                                                                  |
+| Név          | Típus     | Leírás                                                                                                                                                                                  |
 |---------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid  | regclass | Az elosztott tábla, amelyhez ez a sor megfelel. Ez az érték a pg_class Rendszerkatalógus tábla relfilenode oszlopára hivatkozik.                                                          |
 | shardid       | bigint   | Globálisan egyedi azonosító társítva ehhez a szegmenshez.                                                                                                                                           |
@@ -77,7 +77,7 @@ SELECT * from pg_dist_shard;
 
 A PG dist szegmens shardstorage oszlopa a szegmenshez \_ \_ használt tárterület típusát jelöli. Az alábbi rövid áttekintést nyújt a különböző szegmens típusú tárolási típusokról és azok ábrázolásáról.
 
-| Tárhelytípusa | Shardstorage érték | Description                                                                        |
+| Tárhelytípusa | Shardstorage érték | Leírás                                                                        |
 |--------------|--------------------|------------------------------------------------------------------------------------|
 | TÁBLA        | nem                | Azt jelzi, hogy a szegmens egy normál elosztott táblához tartozó adattárolót tárol.         |
 | OSZLOPOS     | c                | Azt jelzi, hogy a szegmens oszlopos adattárolást tárol. (Elosztott cstore_fdw-táblázatok használják) |
@@ -87,7 +87,7 @@ A PG dist szegmens shardstorage oszlopa a szegmenshez \_ \_ használt tárterül
 
 A PG \_ dist \_ elhelyezési táblázat a munkavégző csomópontokon lévő szegmens replikák helyét követi nyomon. Egy adott csomóponthoz rendelt szegmens minden replikáját egy szegmens elhelyezésnek nevezzük. Ez a táblázat az egyes szegmensek állapotával és helyével kapcsolatos információkat tárolja.
 
-| Név        | Típus   | Description                                                                                                                               |
+| Név        | Típus   | Leírás                                                                                                                               |
 |-------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | shardid     | bigint | Az elhelyezéshez társított szegmens-azonosító. Ez az érték a pg_dist_shard Catalog tábla shardid oszlopára hivatkozik.             |
 | shardstate  | int    | Az elhelyezés állapotát ismerteti. Az alábbi szakaszban a különböző szegmens állapotokat tárgyaljuk.                                         |
@@ -112,7 +112,7 @@ SELECT * from pg_dist_placement;
 
 A nagy kapacitású (Citus) a szilánkok állapotát az elhelyezési alapon kezeli. Ha egy elhelyezés inkonzisztens állapotba helyezi a rendszerbe, a Citus automatikusan nem elérhetőként jelöli meg azt. Az elhelyezési állapot rögzítése a pg_dist_shard_placement táblában, a shardstate oszlopon belül történik. Íme egy rövid áttekintés a különböző szegmens elhelyezési állapotokról:
 
-| Állapot neve | Shardstate érték | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Állapot neve | Shardstate érték | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | VÉGLEGESÍTETT  | 1                | Az állapot új szegmensek jönnek létre a alkalmazásban. Ebben az állapotban a szegmensek közötti elhelyezések naprakésznek tekintendők, és a lekérdezés tervezése és végrehajtása során használatosak.                                                                                                                                                                                                                                                                                 |
 | INAKTÍV   | 3                | Az ebben az állapotban lévő szilánkok inaktívnak minősülnek, mivel az azonos szegmens más replikáinak szinkronizálása nem történt meg. Az állapot akkor fordulhat elő, ha egy Hozzáfűzés, módosítás (Beszúrás, frissítés, törlés) vagy egy DDL művelet sikertelen ehhez az elhelyezéshez. A lekérdezési tervező figyelmen kívül hagyja az ebben az állapotban lévő elhelyezéseket a tervezés és a végrehajtás során. A felhasználók az ezekben a szegmensekben található adatokat egy véglegesített replikával szinkronizálják háttérbeli tevékenységként. |
@@ -122,7 +122,7 @@ A nagy kapacitású (Citus) a szilánkok állapotát az elhelyezési alapon keze
 
 A PG \_ dist \_ Node tábla a fürt munkavégző csomópontjaival kapcsolatos információkat tartalmaz.
 
-| Név             | Típus    | Description                                                                                                                                                                                |
+| Név             | Típus    | Leírás                                                                                                                                                                                |
 |------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | nodeId           | int     | Egy adott csomóponthoz tartozó automatikusan generált azonosító.                                                                                                                                          |
 | GroupID          | int     | Egy elsődleges kiszolgáló és nulla vagy több másodlagos kiszolgáló csoportjának jelölésére szolgáló azonosító, ha az adatfolyam-replikációs modell használatban van. Alapértelmezés szerint ez ugyanaz, mint a nodeId.         |
@@ -149,7 +149,7 @@ SELECT * from pg_dist_node;
 
 Az citus.pg \_ dist \_ Object tábla olyan objektumok listáját tartalmazza, mint például a koordinátor csomóponton létrehozott és a feldolgozó csomópontokra propagált típusok és függvények. Amikor egy rendszergazda új munkavégző csomópontokat hoz létre a fürthöz, a nagy kapacitású (Citus) automatikusan létrehozza az elosztott objektumok másolatait az új csomópontokon (a megfelelő sorrendben az objektumok függőségeinek kielégítéséhez).
 
-| Név                        | Típus    | Description                                          |
+| Név                        | Típus    | Leírás                                          |
 |-----------------------------|---------|------------------------------------------------------|
 | ClassID                     | OID     | Az elosztott objektum osztálya                      |
 | objid                       | OID     | Az elosztott objektum objektumazonosító                  |
@@ -212,7 +212,7 @@ A PG \_ dist \_ közös elhelyezési táblázata információt tartalmaz arról,
 Ha két tábla ugyanabban a közös helyen található, a nagy kapacitású (Citus) biztosítja, hogy ugyanazokat a feldolgozói csomópontokat tartalmazó szegmensek is ugyanazok legyenek.
 A megosztott elhelyezés lehetővé teszi a csatlakoztatási optimalizációkat, bizonyos elosztott összesítéseket és a külső kulcsok támogatását. A szegmensek közötti közös elhelyezés akkor következtetett, ha a szegmensek száma, a replikálási tényezők és a partíciós oszlopok típusai mind egyeznek két tábla között. az elosztott táblák létrehozásakor azonban szükség esetén egy egyéni csoportos csoport is megadható.
 
-| Név                   | Típus | Description                                                                   |
+| Név                   | Típus | Leírás                                                                   |
 |------------------------|------|-------------------------------------------------------------------------------|
 | colocationid           | int  | A tárolási csoport egyedi azonosítója, amely ebben a sorban a következőnek felel meg:.          |
 | shardcount             | int  | A csoport összes táblájának szilánkok száma                          |
@@ -231,7 +231,7 @@ SELECT * from pg_dist_colocation;
 
 Ez a táblázat azokat a stratégiákat határozza meg, amelyeket a [rebalance_table_shards](reference-hyperscale-functions.md#rebalance_table_shards) használhat a szegmensek áthelyezési helyének meghatározására.
 
-| Név                           | Típus    | Description                                                                                                                                       |
+| Név                           | Típus    | Leírás                                                                                                                                       |
 |--------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | default_strategy               | boolean | Azt határozza meg, hogy rebalance_table_shards válassza ezt a stratégiát alapértelmezetten. Az oszlop frissítése citus_set_default_rebalance_strategy használatával             |
 | shard_cost_function            | regproc | A Cost függvény azonosítója, amelynek shardid bigint kell lennie, és vissza kell adnia egy Cost (valódi típus) fogalmát.                                |
@@ -329,7 +329,7 @@ A nagy kapacitású (Citus) `citus_stat_statements` a lekérdezések végrehajt�
 
 Ez a nézet képes a több-bérlős alkalmazásban lévő bérlők lekérdezéseit nyomon követni, ami segít a bérlői elkülönítés eldöntésében.
 
-| Név          | Típus   | Description                                                                      |
+| Név          | Típus   | Leírás                                                                      |
 |---------------|--------|----------------------------------------------------------------------------------|
 | queryid       | bigint | azonosító (jó pg_stat_statements illesztésekhez)                                   |
 | userid        | OID    | a lekérdezést futtató felhasználó                                                           |

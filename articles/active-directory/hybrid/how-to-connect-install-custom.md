@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92096351"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Azure Active Directory Connect egyéni telepítése
@@ -46,7 +46,7 @@ A szinkronizálási szolgáltatások telepítésekor a választható konfigurác
 
 ![A Azure AD Connect szükséges telepítési összetevők választható kiválasztásait bemutató képernyőkép.](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Választható konfiguráció | Description |
+| Választható konfiguráció | Leírás |
 | --- | --- |
 |Egyéni telepítési hely meghatározása| Lehetővé teszi a Azure AD Connect alapértelmezett telepítési útvonalának módosítását.|
 | Meglévő SQL Server használata |Itt adhatja meg a SQL Server nevét és a példány nevét. Akkor válassza ezt a lehetőséget, ha már rendelkezik egy használni kívánt adatbázis-kiszolgálóval. A **példánynév** mezőben adja meg a példány nevét, a vesszőt és a portszámot, ha a SQL Server-példányon nincs engedélyezve a böngészés.  Ezután adja meg a Azure AD Connect adatbázis nevét.  Az SQL-jogosultságok határozzák meg, hogy létre lehet-e hozni új adatbázist, vagy az SQL-rendszergazdának előre kell létrehoznia az adatbázist.  Ha SQL Server rendszergazdai (SA) engedélyekkel rendelkezik, tekintse meg a [Azure ad Connect telepítése meglévő adatbázis használatával](how-to-connect-install-existing-database.md)című témakört.  Ha delegált engedélyekkel (DBO) rendelkezik, tekintse meg [a Azure ad Connect telepítése SQL meghatalmazott rendszergazdai engedélyekkel](how-to-connect-install-sql-delegation.md)című témakört. |
@@ -59,7 +59,7 @@ A szükséges összetevők telepítése után válassza ki a felhasználók egys
 
 ![A "felhasználói bejelentkezés" oldalt megjelenítő képernyőkép. A "jelszó-kivonat szinkronizálása" beállítás be van jelölve.](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Egyszeri bejelentkezés lehetősége | Description |
+| Egyszeri bejelentkezés lehetősége | Leírás |
 | --- | --- |
 | Jelszókivonat szinkronizálása |A felhasználók a helyszíni hálózaton használt jelszóval jelentkezhetnek be a Microsoft Cloud servicesbe, például a Microsoft 365ba. A felhasználói jelszavak szinkronizálása az Azure AD-vel jelszó-kivonattal történik. A hitelesítés a felhőben történik. További információ: jelszó- [kivonat szinkronizálása](how-to-connect-password-hash-synchronization.md). |
 |Átmenő hitelesítés|A felhasználók a helyszíni hálózaton használt jelszóval jelentkezhetnek be a Microsoft Cloud servicesbe, például a Microsoft 365ba.  A felhasználói jelszavakat a rendszer a helyszíni Active Directory tartományvezérlőre való átadással ellenőrzi.
@@ -205,7 +205,7 @@ A következő oldalon kiválaszthatja a forgatókönyvhöz választható szolgá
 
 
 
-| Választható szolgáltatások | Description |
+| Választható szolgáltatások | Leírás |
 | --- | --- |
 | Hibrid Exchange-telepítés |Az Exchange hibrid üzembe helyezési funkciója lehetővé teszi az Exchange-postaládák párhuzamos használatát a helyszínen és a Microsoft 365. Azure AD Connect szinkronizálja az Azure AD-beli [attribútumok](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) egy adott készletét a helyszíni címtárba. |
 | Exchange-levelezés nyilvános mappái | Az Exchange-levelezés nyilvános mappák funkciója lehetővé teszi, hogy szinkronizálja a levelezésre képes nyilvános mappák objektumait az Active Directory helyszíni példányáról az Azure AD-be. |
