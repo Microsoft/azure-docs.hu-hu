@@ -4,10 +4,10 @@ description: Ismerje meg a feladatokat és a feladatokat, valamint azt, hogyan h
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95808592"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Feladatok és feladatok a Azure Batchban
