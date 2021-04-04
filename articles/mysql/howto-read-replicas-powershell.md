@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94541929"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a PowerShell használatával
@@ -54,7 +54,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 A `New-AzMySqlReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Description  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
 | Name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
@@ -83,7 +83,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 A `Get-AzMySqlReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Description  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | ServerName | mydemoserver | A forráskiszolgáló neve vagy azonosítója. |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
 ms.openlocfilehash: ccb69b4f0dc6090cc96849b09f7830c05aa77b73
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96026175"
 ---
 Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](../articles/key-vault/general/quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](../articles/key-vault/general/quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](../articles/key-vault/general/quick-create-portal.md)a gyors üzembe helyezést. 

@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó f�
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96920466"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM-sablonok Object functions
@@ -33,7 +33,7 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | tároló |Yes |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
 | itemToFind |Yes |karakterlánc vagy int |A keresendő érték. |
@@ -145,7 +145,7 @@ Létrehoz egy objektumot a kulcsok és értékek alapján. A `createObject` bice
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | key1 |No |sztring |A kulcs neve. |
 | érték1 |No |int, Boolean, string, Object vagy Array |A kulcs értéke. |
@@ -219,7 +219,7 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Yes |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
@@ -300,7 +300,7 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek közös elemei
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
 | arg2 |Yes |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
@@ -407,7 +407,7 @@ Egy érvényes JSON-karakterláncot alakít át JSON-adattípusra.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |sztring |A JSON-ra konvertálandó érték. A karakterláncnak megfelelően formázott JSON-karakterláncnak kell lennie. |
 
@@ -538,7 +538,7 @@ Egy tömbben lévő elemek számát, egy karakterláncban szereplő karaktereket
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
@@ -690,7 +690,7 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek összes elemé
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
 | arg2 |Yes |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |

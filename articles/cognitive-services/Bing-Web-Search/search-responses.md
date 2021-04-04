@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94380980"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API a válasz szerkezete és a válaszok típusai  
@@ -309,7 +309,7 @@ A matematikai kifejezések a következő szimbólumokat tartalmazhatják:
 
 A matematikai kifejezések a következő állandókat tartalmazhatják:
 
-|Szimbólum|Description|
+|Szimbólum|Leírás|
 |------------|-----------------|
 |Pi|3,14159...|
 |Fokú|Fokú|
@@ -319,7 +319,7 @@ A matematikai kifejezések a következő állandókat tartalmazhatják:
 
 A matematikai kifejezések a következő függvényeket tartalmazhatják:
 
-|Szimbólum|Description|
+|Szimbólum|Leírás|
 |------------|-----------------|
 |Rendezés|Szögletes gyökér|
 |Sin [x], cos [x], Tan [x]<br />CSC [x], MP [x], gyermekágy [x]|Trigonometriai függvények (radiánban megadott argumentumokkal)|
@@ -440,7 +440,7 @@ Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a v�
 
 A Bing Web Search API által küldött válaszok a következő fejléceket tartalmazhatják:
 
-| Fejléc | Description |
+| Fejléc | Leírás |
 |-|-|
 |`X-MSEdge-ClientID`|A Bing által a felhasználóhoz hozzárendelt egyedi azonosító|
 |`BingAPIs-Market`|A kérelem teljesítéséhez használt piac|
