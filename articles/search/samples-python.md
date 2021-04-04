@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: 0d09851cf8e68cead4a67615aaa792512482f351
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98955122"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Python-kód minták az Azure Cognitive Search
@@ -30,7 +30,7 @@ Ismerje meg a Python-kódrészleteket, amelyek bemutatják az Azure Cognitive Se
 
 Az Azure SDK Fejlesztői csapatának az API használatának bemutatása. Ezeket a mintákat az [**Azure-SDK-for-Python/Tree/Master/SDK/Search/Azure-Search-Documents/Samples**](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) on githubon találja meg.
 
-| Példák | Description |
+| Példák | Leírás |
 |---------|-------------|
 | [Hitelesítés](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_authentication.py) | Bemutatja, hogyan konfigurálhat egy ügyfelet, és hogyan végezhet hitelesítést a szolgáltatásban. | 
 | [Index Create-Read-Update-DELETE művelet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) | Bemutatja a [keresési indexek](search-what-is-an-index.md)létrehozását, frissítését, beolvasását, listázását és törlését. |

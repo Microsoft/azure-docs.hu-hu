@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
 ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98955649"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Élő videó-elemzések frissítése IoT Edge 1,0 – 2,0
@@ -19,7 +19,7 @@ Ez a cikk ismerteti a különbségeket és azokat a különböző szempontokat, 
 ## <a name="change-list"></a>Lista módosítása
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Cím|Élő videó Analytics 1,0|Élő videó Analytics 2,0|Description|
+> |Cím|Élő videó Analytics 1,0|Élő videó Analytics 2,0|Leírás|
 > |-------------|----------|---------|---------|
 > |Tároló képe|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft közzétett Docker-rendszerképek az élő videók elemzéséhez Azure IoT Edge|
 > |**MediaGraph-csomópontok** |    |   |   |

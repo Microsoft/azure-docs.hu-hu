@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: b5ae38a3dc4a9324a4141314106d67c96c06c8e6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98955037"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Java-kódok az Azure Cognitive Search
@@ -30,7 +30,7 @@ Ismerje meg az Azure Cognitive Search-megoldás funkcióit és munkafolyamatait 
 
 Az Azure SDK Fejlesztői csapatának az API használatának bemutatása. Ezek a minták az [**Azure-ban/Azure-SDK-Java/Tree/Master/SDK/Search/Azure-Search-Documents/src/Samples**](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) on githubon találhatók meg.
 
-| Példák | Description |
+| Példák | Leírás |
 |---------|-------------|
 | [Keresési index létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) | Bemutatja, hogyan hozhat létre [keresési indexeket](search-what-is-an-index.md). |
 | [Szinonimák létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SynonymMapsCreateExample.java) | Bemutatja, hogyan hozhatók létre [szinonima térképek](search-synonyms.md).  |
@@ -55,7 +55,7 @@ A Cognitive Search csapata által bemutatott funkciók és munkafolyamatok. Ezen
 
 A Cognitive Search csapata a következő mintákat is közzéteszi, de a dokumentációban nem hivatkozik rá. A kapcsolódó readme-fájlok használati utasításokat tartalmaznak.
 
-| Példák | Description |
+| Példák | Leírás |
 |---------|-------------|
 | [Keresés – Java – első lépések](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-getting-started) | A Java SDK ügyféloldali kódtárat használja a keresési indexek létrehozásához, betöltéséhez és lekérdezéséhez. Ez a minta jelenleg önálló. |
 | [Keresés – Java-indexelő – bemutató](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/search-java-indexer-demo) | Egy Azure Cosmos DB indexelő használatát mutatja be javában. Ez a minta nem frissült a Java SDK-val. Meghívja a REST API-kat.|
