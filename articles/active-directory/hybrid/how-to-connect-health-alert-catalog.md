@@ -16,10 +16,10 @@ ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8637c691f946c02176c441cfcf5ad5abbea10396
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016881"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health riasztási katalógus 
@@ -30,13 +30,13 @@ Azure AD Connect Health riasztások megoldódott a sikeres feltételhez. Azure A
 
 ## <a name="general-alerts"></a>Általános riasztások
 
-| Riasztás neve | Description | Szervizelés |
+| Riasztás neve | Leírás | Szervizelés |
 | --- | --- | ----- |
 | Az állapotfigyelési szolgáltatás adatai nem naprakészek | Egy vagy több kiszolgálón futó állapotfigyelő ügynök (ök) nem csatlakozik a Állapotfigyelő szolgáltatáshoz, és a Állapotfigyelő szolgáltatás nem fogadja el a kiszolgáló legújabb adatait. A Állapotfigyelő szolgáltatás által feldolgozott utolsó adatértékek 2 óránál régebbiek. | Győződjön meg arról, hogy az állapot-ügynökök kimenő kapcsolattal rendelkeznek a szükséges szolgáltatási végpontokhoz. [További információk](how-to-connect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Riasztások Azure AD Connect (szinkronizálás)
 
-| Riasztás neve | Description | Szervizelés |
+| Riasztás neve | Leírás | Szervizelés |
 | --- | --- | ----- |
 | Az Azure AD Connect szinkronizálási szolgáltatás nem fut | A Microsoft Azure AD-szinkronizáló Windows-szolgáltatás nem fut vagy nem lehet elindítani. Ebből kifolyólag az objektumok nem szinkronizálhatók az Azure Active Directoryval. | Kezdés Microsoft Azure Active Directory szinkronizálási szolgáltatások</b> <ol> <li>Kattintson a <b>Start</b>menü <b>Futtatás</b>parancsára, írja be a <b>Services. msc</b>parancsot, majd kattintson <b>az OK</b>gombra.</li> <li>Keresse meg a <b>Microsoft Azure ad Sync szolgáltatást</b>, majd győződjön meg arról, hogy elindult-e a szolgáltatás. Ha a szolgáltatás nincs elindítva, kattintson rá a jobb gombbal, majd kattintson az <b>Indítás</b>parancsra. | 
 | Sikertelen volt az Azure Active Directoryból végzett importálás | Az Active Directory Connector importálási művelete sikertelen volt. |  További részletekért vizsgálja meg az importálási művelethez tartozó hibákat az eseménynaplóban.  |
@@ -51,7 +51,7 @@ Azure AD Connect Health riasztások megoldódott a sikeres feltételhez. Azure A
 | Az Exportálás Azure Active Directory leállt. Elérte a véletlen törlési küszöbértéket | A Azure Active Directory exportálási művelete sikertelen volt. Több objektum is törölve lett a beállított küszöbértéknél. Ennek eredményeképpen egyetlen objektum sem lett exportálva. | <li> A törlésre kijelölt objektumok száma nagyobb a beállított küszöbértéknél. Győződjön meg arról, hogy ez az eredmény szükséges.</li> <li> Az Exportálás folytatásához hajtsa végre a következő lépéseket: <ol type="a"> <li>Küszöbérték letiltása Disable-ADSyncExportDeletionThreshold futtatásával</li> <li>Kezdés Synchronization Service Manager</li> <li>Exportálás futtatása az összekötőn Type = Azure Active Directory</li> <li>Az objektumok sikeres exportálása után a következő futtatásával engedélyezze a küszöbértéket: Enable-ADSyncExportDeletionThreshold</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Riasztások Active Directory összevonási szolgáltatások (AD FS)
-| Riasztás neve | Description | Szervizelés |
+| Riasztás neve | Leírás | Szervizelés |
 | --- | --- | ----- |
 |A teszt hitelesítési kérése (szintetikus tranzakció) nem tudott jogkivonat beszerzése | A kiszolgálóról kezdeményezett hitelesítési kérelmek (szintetikus tranzakciók) nem tudta megszerezni a tokent 5 újrapróbálkozás után. Ennek oka lehet átmeneti hálózati problémák, AD DS tartományvezérlő rendelkezésre állása vagy egy helytelenül konfigurált AD FS-kiszolgáló.  Ennek eredményeképpen az összevonási szolgáltatás által feldolgozott hitelesítési kérések sikertelenek lehetnek. Az ügynök a helyi számítógépfiók környezetét használja a összevonási szolgáltatás-token beszerzéséhez. | Győződjön meg arról, hogy a kiszolgáló állapotának ellenőrzéséhez a következő lépéseket kell végrehajtania.<ol><li>Ellenőrizze, hogy nincsenek-e további megoldatlan riasztások a farm ezen vagy más AD FS kiszolgálóin.</li><li>Ellenőrizze, hogy ez az állapot nem átmeneti hiba-e, ha bejelentkezik a AD FS bejelentkezési oldaláról a https://{your_adfs_server_name}/adfs/ls/idpinitiatedsignon.aspx.</li><li>Nyissa meg az <a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a> "office 365" lapot, és válassza az "office 365 Single Sign-On test" lehetőséget.</li><li>Ellenőrizze, hogy a AD FS szolgáltatás neve feloldható-e a kiszolgálóról a következő parancs parancssorból történő végrehajtásával ezen a kiszolgálón. nslookup your_adfs_server_name</li></ol><p>Ha a szolgáltatás neve nem oldható fel, tekintse meg a gyakori kérdések című szakaszt, amely útmutatást nyújt az AD FS-szolgáltatáshoz tartozó GAZDAGÉP-bejegyzés hozzáadásához a kiszolgáló IP-címével. Ez lehetővé teszi a kiszolgálón futó szintetikus tranzakciós modul számára a jogkivonat igénylését</p> | 
 | A proxykiszolgáló nem tudja elérni az összevonási kiszolgálót | Ez a AD FS proxykiszolgáló nem tud kapcsolódni a AD FS szolgáltatáshoz. Ennek eredményeképpen a kiszolgáló által feldolgozott hitelesítési kérelmek sikertelenek lesznek. | Hajtsa végre a következő lépéseket a kiszolgáló és a AD FS szolgáltatás közötti kapcsolat ellenőrzéséhez. <ol><li> Győződjön meg arról, hogy a kiszolgáló és a AD FS szolgáltatás közötti tűzfal pontosan van konfigurálva. </li><li> Győződjön meg arról, hogy a AD FS szolgáltatásnév DNS-feloldása megfelelő módon mutat a vállalati hálózaton belül található AD FS szolgáltatásra. Ez egy olyan DNS-kiszolgálón keresztül érhető el, amely a peremhálózaton lévő kiszolgálót vagy a AD FS szolgáltatáshoz tartozó GAZDAGÉPek fájljainak bejegyzésein keresztül üzemelteti. </li><li> A hálózati kapcsolat érvényesítéséhez nyissa meg a böngészőt ezen a kiszolgálón, és nyissa meg az összevonási metaadatok végpontját, amely a következő címen érhető el: `https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml` </li> | 
@@ -78,7 +78,7 @@ Azure AD Connect Health riasztások megoldódott a sikeres feltételhez. Azure A
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Riasztások Active Directory Domain Services
 
-| Riasztás neve | Description | Szervizelés |
+| Riasztás neve | Leírás | Szervizelés |
 | --- | --- | ----- |
 | A tartományvezérlő nem érhető el az LDAP ping használatával | A tartományvezérlő nem érhető el az LDAP ping használatával. Ez hálózati problémák vagy gépi problémák miatt fordulhat elő. Ennek eredményeképpen az LDAP-pingelések sikertelenek lesznek. |  <li>Vizsgálja meg a riasztások listáját a kapcsolódó riasztásokhoz, például: a tartományvezérlő nem reklám. </li><li>Győződjön meg arról, hogy az érintett tartományvezérlő elegendő lemezterülettel rendelkezik. A kifogyott lemezterület leállítja a TARTOMÁNYVEZÉRLŐt az LDAP-kiszolgálóként való reklámozásból. </li><li> Kísérlet az elsődleges tartományvezérlő megtalálására: Futtatás <br> <i>NETDOM QUERY FSMO </i> </br> az érintett tartományvezérlőn. <li> Győződjön meg arról, hogy a fizikai hálózat megfelelően van konfigurálva/csatlakoztatva. </li> |
 | Active Directory replikálási hiba történt | Ez a tartományvezérlő replikációs problémákba ütközik, ami a replikálási állapot irányítópulton érhető el. A replikációs hibák oka lehet a helytelen konfiguráció vagy más kapcsolódó probléma. A nem kezelt replikációs hibák inkonzisztenciát okozhatnak. | Tekintse meg az érintett forrás-és cél-tartományvezérlők nevének további részleteit. Navigáljon a replikálás állapota irányítópultra, és keresse meg az érintett tartományvezérlők aktív hibáit. Kattintson a hibára egy panel megnyitásához, ahol további részleteket talál az adott hiba elhárításával kapcsolatban.| 
