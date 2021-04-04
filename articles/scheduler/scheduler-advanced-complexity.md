@@ -160,7 +160,7 @@ Ha egynél több Schedule elemet ad meg, a kiértékelés sorrendje a legnagyobb
 
 A következő táblázat részletesen ismerteti a schedule elemeit:
 
-| JSON-név | Description | Érvényes értékek |
+| JSON-név | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |
 | **perc** |A feladatot futtató óra percben. |Egész számok tömbje. |
 | **óra** |A nap azon órája, amelyben a feladatot futtatják. |Egész számok tömbje. |

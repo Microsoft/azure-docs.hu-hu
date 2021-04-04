@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97654864"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Szöveg fordítása – kognitív képességek
@@ -38,7 +38,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek | Description |
+| Bevitelek | Leírás |
 |---------------------|-------------|
 | defaultToLanguageCode | Szükséges A dokumentumok olyan dokumentumokhoz való fordítására szolgáló nyelvkód, amelyek nem adják meg explicit módon a nyelvet. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/translator/language-support.md)itt tekintheti meg. |
 | defaultFromLanguageCode | Választható A dokumentumok olyan dokumentumokból való fordítására szolgáló nyelvkód, amelyek nem határozzák meg explicit módon a feladó nyelvét.  Ha a defaultFromLanguageCode nincs megadva, a rendszer az Translator Text API által megadott automatikus nyelvfelismerés alapján határozza meg a feladó nyelvét. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/translator/language-support.md)itt tekintheti meg. |
@@ -46,7 +46,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név     | Description |
+| Bemeneti név     | Leírás |
 |--------------------|-------------|
 | szöveg | A lefordítani kívánt szöveg.|
 | toLanguageCode    | Egy karakterlánc, amely azt jelzi, hogy a szöveget milyen nyelven kell lefordítani. Ha nincs megadva ez a bemenet, a rendszer a defaultToLanguageCode fogja használni a szöveg fordításához. <br/>[A támogatott nyelvek teljes listája](../cognitive-services/translator/language-support.md)|
@@ -54,7 +54,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve    | Description |
+| Kimenet neve    | Leírás |
 |--------------------|-------------|
 | translatedText | A translatedFromLanguageCode és a translatedToLanguageCode közötti szöveg-fordítás karakterláncának eredménye.|
 | translatedToLanguageCode  | Egy karakterlánc, amely azt jelzi, hogy a szöveg melyik nyelvkódot lett lefordítva. Akkor hasznos, ha több nyelvre végez fordítást, és szeretné nyomon követni, hogy melyik szöveg milyen nyelven van.|

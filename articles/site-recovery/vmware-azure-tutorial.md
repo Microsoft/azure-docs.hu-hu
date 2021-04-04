@@ -41,7 +41,7 @@ Fejezze be az előző oktatóanyagokat:
 3. Ebben az oktatóanyagban bemutatjuk, hogyan replikálhat egyetlen virtuális gépet. Több VMware virtuális gép üzembe helyezésekor a [Deployment Planner eszközt](https://aka.ms/asr-deployment-planner)kell használnia. [További információ](site-recovery-deployment-planner.md) az eszközről.
 4. Ez az oktatóanyag számos lehetőséget használ, amelyeket érdemes másképpen végrehajtani:
     - Az oktatóanyag egy PETESEJT-sablont használ a konfigurációs kiszolgáló VMware virtuális gép létrehozásához. Ha ezt valamilyen okból nem tudja elvégezni, a konfigurációs kiszolgáló manuális beállításához kövesse az [alábbi utasításokat](physical-manage-configuration-server.md) .
-    - Ebben az oktatóanyagban Site Recovery automatikusan letölti és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, manuálisan is beállíthatja. [További információ](vmware-azure-deploy-configuration-server.md#configure-settings).
+    - Ebben az oktatóanyagban Site Recovery automatikusan letölti és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, manuálisan is beállíthatja. [További információk](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 

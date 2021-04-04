@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: a0b2c9548f9c1289ae0abd61a72d7146a3bbca29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94965161"
 ---
 Töltse ki és küldje el a [Cognitive Services kérelem űrlapját](https://aka.ms/csgate) , hogy hozzáférést kérjen a Text Analytics for Health nyilvános előzetes verziójához.  Ez az alkalmazás a tárolóra és az üzemeltetett webes API nyilvános előzetes verziójára is érvényes.

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 75a7da41e4f0d5356ca135eb3cb4cbe5f29e8116
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92891449"
 ---
 # <a name="connect-to-a-wfs-service"></a>Kapcsolódás WFS-szolgáltatáshoz
@@ -27,7 +27,7 @@ Az osztály a következő funkciókat támogatja `WfsClient` :
 - A kérelmek csak a használatával készültek `HTTP GET` .
 - Támogatott műveletek:
 
-    | Művelet | Description |
+    | Művelet | Leírás |
     | :-- | :-- |
     | GetCapabilities | Metaadat-dokumentum létrehozása érvényes WFS-műveletekkel és-paraméterekkel |
     | GetFeature | Egy adatforrás funkcióinak kiválasztását adja vissza. |
