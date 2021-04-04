@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
 ms.openlocfilehash: 626074940ced57bdb1ae93f494b7a3847ef83a81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96444989"
 ---
-| Tartománynevek                  | Kimenő portok | Description                              |
+| Tartománynevek                  | Kimenő portok | Leírás                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443            | A saját üzemeltetésű integrációs modul szükséges az interaktív létrehozáshoz. |
 | `{datafactory}.{region}.datafactory.azure.net`<br> vagy `*.frontend.clouddatahub.net` | 443            | A saját üzemeltetésű integrációs modul számára szükséges a Data Factory szolgáltatáshoz való csatlakozáshoz. <br>Új létrehozott Data Factory esetén keresse meg a teljes tartománynevet a saját üzemeltetésű Integration Runtime-kulcsból, amely a következő formátumban van: {DataFactory}. {Region}. DataFactory. Azure. net. Ha a régi adatelőállító nem látja a teljes tartománynevet a saját üzemeltetésű integrációs kulcsban, használja a *. frontend.clouddatahub.net helyet. |

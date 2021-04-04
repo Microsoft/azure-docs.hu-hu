@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97932435"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
@@ -419,7 +419,7 @@ Miután előkészített egy stratégiát és egy tervet az Azure AD-vel integrá
 
 Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazdák a hozzáférési csomag aktív hozzárendeléseivel rendelkező felhasználók rendszeres felülvizsgálatát is lehetővé teszik. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Description |
+| Útmutatók| Leírás |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](entitlement-management-access-reviews-create.md)| Hozzáférési csomag felülvizsgálatának engedélyezése. |
 | [Hozzáférési felülvizsgálatok végrehajtása](entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása a hozzáférési csomaghoz rendelt más felhasználók számára. |
@@ -433,7 +433,7 @@ Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazd
 
 Az alkalmazottak és a vendégek számára az idő múlásával valószínűleg változnak a csoportok és az alkalmazások hozzáférése. Az elavult hozzáférési hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében a rendszergazdák hozzáférési felülvizsgálatokat hozhatnak létre a csoporttagok vagy az alkalmazások eléréséhez. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Description |
+| Útmutatók| Leírás |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](create-access-review.md)| Hozzon létre egy vagy több hozzáférési felülvizsgálatot a csoporttagok vagy az alkalmazások eléréséhez. |
 | [Hozzáférési felülvizsgálatok végrehajtása](perform-access-review.md)| Hozzáférési felülvizsgálat végrehajtása egy csoport vagy egy alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára. |
@@ -450,7 +450,7 @@ Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentés
 
 Kövesse az alábbi hivatkozásokon keresztül elérhető utasításokat:
 
-| Útmutatók | Description |
+| Útmutatók | Leírás |
 | - | - |
  [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure AD-szerepkörökhöz a PIM-ben |
 | [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
@@ -465,7 +465,7 @@ Az elavult szerepkör-hozzárendelések kockázatának csökkentése érdekében
 
 Kövesse az alábbi hivatkozásokon keresztül elérhető utasításokat:
 
-| Útmutatók| Description |
+| Útmutatók| Leírás |
 | - | -|
 | [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure-beli erőforrás-szerepkörökhöz a PIM-ben |
 | [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |

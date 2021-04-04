@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: 3a227ac60ed1b3f96cf8bf59c05e5af0955d06a3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96025581"
 ---
 Az Azure Storage-fiók létrehozásának legegyszerűbb módja a [Azure Portal](https://portal.azure.com)használata. További tudnivalókért lásd: [Create a storage account](../articles/storage/common/storage-account-create.md) (Tárfiók létrehozása).

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 27a4d775b8d88e02be69655e5adfc6155f867ef6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96582172"
 ---
 A megfelelő SSL-tanúsítvány biztosítja, hogy a titkosított adatokat a megfelelő kiszolgálóra küldi. A titkosítás mellett a tanúsítvány a hitelesítésre is lehetőséget biztosít. A saját megbízható SSL-tanúsítványát az eszköz PowerShell-felületén keresztül töltheti fel.

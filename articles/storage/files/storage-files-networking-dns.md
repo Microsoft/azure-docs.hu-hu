@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94630192"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>DNS-továbbítás konfigurálása az Azure Fileshoz
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Emellett hasznos/szükséges lehet a további paraméterek biztosításához:
 
-| Paraméter neve | Típus | Description |
+| Paraméter neve | Típus | Leírás |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Alapértelmezés szerint a DNS-kiszolgálók a virtuális hálózattal megegyező erőforráscsoporthoz lesznek telepítve. Ha ez nem megfelelő, ez a paraméter lehetővé teszi, hogy kiválasszon egy másik erőforráscsoportot, amelybe telepíteni kívánja őket. |
 | `DnsForwarderRootName` | `string` | Alapértelmezés szerint az Azure-ban üzembe helyezett DNS-kiszolgálóknak vannak a nevei `DnsFwder-*` , ahol a csillagot egy iteráció tölti ki. Ez a paraméter megváltoztatja a név gyökerét (azaz `DnsFwder` ). |
