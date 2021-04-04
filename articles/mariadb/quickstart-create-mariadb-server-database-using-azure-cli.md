@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98662160"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
@@ -45,7 +45,7 @@ az group create --name myresourcegroup --location westus
 
 Hozzon létre egy Azure Database for MariaDB-kiszolgálót az [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-Beállítás | Mintaérték | Description
+Beállítás | Mintaérték | Leírás
 ---|---|---
 name | **mydemoserver** | Adjon meg egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
 resource-group | **myresourcegroup** | Adja meg az Azure-erőforráscsoport nevét.

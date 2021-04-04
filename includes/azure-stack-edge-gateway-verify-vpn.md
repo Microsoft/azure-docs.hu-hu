@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: efa9e996cbfbc8954c294b4da8900b1d5bcbeeed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466644"
 ---
 A VPN ellenőrzéséhez létrehozhat egy olyan Storage-fiókot, amelyet csak a létrehozott virtuális hálózat érhet el. A következő lépésekkel hozhatja létre és társíthatja ezt a Storage-fiókot a létrehozott virtuális hálózattal:

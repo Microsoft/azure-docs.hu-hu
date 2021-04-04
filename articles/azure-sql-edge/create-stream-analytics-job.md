@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97656342"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Adatátviteli feladatok létrehozása az Azure SQL Edge szolgáltatásban 
@@ -36,7 +36,7 @@ Emellett, ha az Azure SQL Edge, SQL Server vagy Azure SQL Database kimeneti adat
 
 Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-bemenetként és-kimenetként.
 
-| Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
+| Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
 | SQL Database | N | Y | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
