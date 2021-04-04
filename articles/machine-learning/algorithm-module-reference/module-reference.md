@@ -32,7 +32,7 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 ## <a name="data-preparation-modules"></a>Adatelőkészítési modulok
 
 
-| Funkció | Description | Modul |
+| Funkció | Leírás | Modul |
 | --- |--- | --- |
 | Adatok bevitele és kimenete | A Felhőbeli forrásokból származó adatok áthelyezése a folyamatba. Megírhatja az eredményeket vagy köztes adatait az Azure Storage-ba, a SQL Databaseba vagy a kaptárba, egy folyamat futtatása közben, vagy a Felhőbeli tároló használatával átválthatja az adatátviteli folyamatokat.  | [Manuális adatbevitel](enter-data-manually.md) <br/> [Adatexportálás](export-data.md) <br/> [Adatok importálása](import-data.md) |
 | Adatátalakítás | A gépi tanuláshoz egyedi adatokon alapuló műveletek, például a normalizálás vagy a dobozolási, a dimenzióját csökkentése és az adatok konvertálása különböző fájlformátumok között.| [Oszlopok hozzáadása](add-columns.md) <br/> [Sorok hozzáadása](add-rows.md) <br/> [Matematikai művelet alkalmazása](apply-math-operation.md) <br/> [SQL-átalakítás alkalmazása](apply-sql-transformation.md) <br/> [Hiányzó adatok törlése](clean-missing-data.md) <br/> [Értékek levágása](clip-values.md) <br/> [Konvertálás CSV formátumba](convert-to-csv.md) <br/> [Átalakítás adathalmazzá](convert-to-dataset.md) <br/> [Átalakítás mutatóértékekké](convert-to-indicator-values.md) <br/> [Metaadatok szerkesztése](edit-metadata.md) <br/> [Adatok csoportosítása intervallumokba](group-data-into-bins.md) <br/> [Csatlakozás adatokhoz](join-data.md) <br/> [Adatok normalizálása](normalize-data.md) <br/> [Partíció és minta](partition-and-sample.md)  <br/> [Ismétlődő sorok eltávolítása](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Oszlopok kiválasztása átalakításhoz](select-columns-transform.md) <br/> [Adathalmaz oszlopainak kiválasztása](select-columns-in-dataset.md) <br/> [Adatok felosztása](split-data.md) |
@@ -41,7 +41,7 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 
 ## <a name="machine-learning-algorithms"></a>Gépi tanulási algoritmusok
 
-| Funkció | Description | Modul |
+| Funkció | Leírás | Modul |
 | --- |--- | --- |
 | Regresszió | Egy érték előrejelzése. | [Súlyozott döntési fa típusú regresszió](boosted-decision-tree-regression.md) <br/> [Döntési erdő típusú regresszió](decision-forest-regression.md) <br/> [Gyors erdő típusú kvantilis regresszió](fast-forest-quantile-regression.md)  <br/> [Lineáris regresszió](linear-regression.md)  <br/> [Neurális hálózat típusú regresszió](neural-network-regression.md)  <br/> [Poisson-regresszió](poisson-regression.md)  <br/>|
 | Fürtözés | Csoportosítsa az adathalmazokat.| [K-közép csoportosítás](k-means-clustering.md)
@@ -49,7 +49,7 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Modellek létrehozásához és kiértékeléséhez használható modulok
 
-| Funkció | Description | Modul |
+| Funkció | Leírás | Modul |
 | --- |--- | --- |
 | Modell betanítása | Adatfuttatás az algoritmuson keresztül. |  [Csoportosítási modell betanítása](train-clustering-model.md) <br/> [Modell betanítása](train-model.md) <br/> [Pytorch-modell betanítása](train-pytorch-model.md) <br/> [Modell-hiperparaméterek hangolása](tune-model-hyperparameters.md) |
 | Modell pontozása és kiértékelése | Mérje fel a betanított modell pontosságát. | [Átalakítás alkalmazása](apply-transformation.md) <br/> [Adatok hozzárendelése fürtökhöz](assign-data-to-clusters.md) <br/> [Modell keresztellenőrzése](cross-validate-model.md) <br/> [Modell értékelése](evaluate-model.md) <br/> [Képmodell pontozása](score-image-model.md) <br/> [Relevanciamodell](score-model.md) |

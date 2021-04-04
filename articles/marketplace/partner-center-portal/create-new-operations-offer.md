@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 12/02/2020
 ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97355145"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
@@ -129,7 +129,7 @@ Define marketplace details such as offer name, description, and images for each 
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Description
+9. Leírás
 10. Képernyőképek/videók
 
 ### <a name="marketplace-details"></a>Piactér – részletek
