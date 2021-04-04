@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919629"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
@@ -117,7 +117,7 @@ Miután elvégezte a használati feltételekkel kapcsolatos szabályzat dokument
 
     ![Egy házirend-sablon kiválasztására szolgáló feltételes hozzáférés legördülő lista](./media/terms-of-use/conditional-access-templates.png)
 
-   | Sablon | Description |
+   | Sablon | Leírás |
    | --- | --- |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes vendég számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes vendég és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően szükség lehet a kijelentkezésre és a bejelentkezésre. |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie, és be kell jelentkeznie. |

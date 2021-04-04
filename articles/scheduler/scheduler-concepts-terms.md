@@ -27,7 +27,7 @@ ms.locfileid: "92368162"
 
 Az Azure Scheduler REST API az alábbi fő entitásokat (más néven erőforrásokat) használja:
 
-| Entitás | Description |
+| Entitás | Leírás |
 |--------|-------------|
 | **Feladat** | Egyedi, ismétlődő műveletet definiál, egyszerű vagy összetett végrehajtási stratégiákkal. A műveletek HTTP-hez, Storage-üzenetsorhoz, Service Bus-üzenetsorhoz vagy Service Bushoz kapcsolódó témakörkéréseket tartalmazhatnak. | 
 | **Feladatgyűjtemény** | Feladatok egy csoportját tartalmazza, valamint a gyűjteményben lévő feladatok által közösen használt beállításokat, kvótákat és szabályozásokat tartja karban. Azure-előfizetés tulajdonosaként létrehozhat feladatgyűjteményeket és csoportfeladatokat használat vagy alkalmazáshatárok alapján. A feladatgyűjtemények a következő attribútumokkal rendelkeznek: <p>– Egyetlen régióra vannak korlátozva. <br>– Lehetővé teszik a kvóták kényszerítését, így a gyűjtemények összes feladatának használatát korlátozhatja. <br>– Példák a kvótákra: MaxJobs, MaxRecurrence. | 
