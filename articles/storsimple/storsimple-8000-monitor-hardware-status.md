@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 6b750659bf22e856ee8ad7368e3fea64dd7245df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94960359"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>A StorSimple Eszközkezelő szolgáltatás használata a hardver összetevőinek és állapotának figyeléséhez
@@ -79,7 +79,7 @@ A következő lépések végrehajtásával tekintheti meg egy eszköz összetev�
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple-eszköz elsődleges bekerítéséhez tartozó összetevők listája
 Az alábbi táblázat az elsődleges házban található fizikai és logikai összetevőket ismerteti (a helyszíni StorSimple-eszköz 8100-es és 8600-es verziójában egyaránt).
 
-| Összetevő | Modul | Típus | Hely | Mezőre cserélhető egység (cserélhető)? | Description |
+| Összetevő | Modul | Típus | Hely | Mezőre cserélhető egység (cserélhető)? | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | Meghajtó a tárolóhelyen [0-11] |Lemezmeghajtók |Fizikai |Megosztott |Yes |Az egyes SSD-k vagy az elsődleges házban található HDD meghajtók esetében egy sor jelenik meg. |
 | Környezeti hőmérséklet érzékelője |Ház |Fizikai |Megosztott |No |Az alvázon belüli hőmérsékletet méri. |
@@ -120,7 +120,7 @@ Az alábbi táblázat az elsődleges házban található fizikai és logikai ös
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>A StorSimple-eszköz EBOD bekerítéséhez tartozó összetevők listája
 Az alábbi táblázat az EBOD-házban található fizikai és logikai összetevőket ismerteti (csak a 8600 modellben jelennek meg) a helyszíni StorSimple-eszközön.
 
-| Összetevő | Modul | Típus | Hely | FRU? | Description |
+| Összetevő | Modul | Típus | Hely | FRU? | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | Meghajtó a tárolóhelyen [0-11] |Lemezmeghajtók |Fizikai |Megosztott |Yes |Az EBOD-ház elején található HDD-meghajtókon egy sor jelenik meg. |
 | Környezeti hőmérséklet érzékelője |Ház |Fizikai |Megosztott |No |Az alvázon belüli hőmérsékletet méri. |

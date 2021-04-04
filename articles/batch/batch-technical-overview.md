@@ -4,10 +4,10 @@ description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást n
 ms.topic: overview
 ms.date: 07/30/2020
 ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98743100"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
@@ -62,7 +62,7 @@ Az alábbi diagram egy általános Batch-munkafolyamat lépéseit mutatja be, ah
 
 ![A Batch-megoldás lépéseinek ábrája.](./media/batch-technical-overview/tech_overview_03.png)
 
-|Lépés  |Description  |
+|Lépés  |Leírás  |
 |---------|---------|
 |1. Töltse fel a **bemeneti fájlokat** és az **alkalmazásokat** , és dolgozza fel ezeket a fájlokat az Azure Storage-fiókjába.     |A bemeneti fájlok az alkalmazás által feldolgozható bármilyen adatok lehetnek, például pénzügyi modellezési adatok vagy átkódolni kívánt videofájlok. Az alkalmazásfájlok az adatokat feldolgozó szkriptek vagy alkalmazások lehetnek, például adathordozó-átkódolók.|
 |2. hozzon létre egy számítási csomópontokból álló batch- **készletet** a Batch-fiókban, egy **feladatot** a készleten futó munkaterhelés és a feladat **tevékenységeinek** futtatásához.     | A [számítási csomópontok](nodes-and-pools.md) azok a virtuális gépek, amelyek végrehajtják a [feladatokat](jobs-and-tasks.md). Adja meg a készlet tulajdonságait, például a csomópontok számát és méretét, egy Windows-vagy Linux-alapú virtuálisgép-rendszerképet, valamint egy alkalmazást, amelyet akkor kell telepíteni, amikor a csomópontok a készlethez csatlakoznak. Az [alacsony prioritású virtuális gépekkel](batch-low-pri-vms.md) vagy a csomópontok számának [automatikus méretezésével](batch-automatic-scaling.md) kezelheti a készlet költségeit és méretét. <br/><br/>Amikor tevékenységeket ad hozzá egy munkához, a Batch szolgáltatás automatikusan ütemezi a tevékenységeket a készletben lévő számítási csomópontokon. Mindegyik tevékenység a bemeneti fájlok feldolgozásához feltöltött alkalmazást használja. |
