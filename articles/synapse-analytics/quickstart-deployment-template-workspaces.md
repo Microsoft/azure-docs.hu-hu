@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92740374"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása ARM-sablonnal
@@ -37,7 +37,7 @@ A sablon áttekintéséhez válassza a **Megjelenítés** hivatkozást. Ezután 
 
 A sablon két erőforrást határoz meg:
 
-- A(z)
+- Tárfiók
 - Munkaterület
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése

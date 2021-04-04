@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f08a6b3f7abfc79bff6baff2a339053905612535
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96026302"
 ---
 #### <a name="to-attach-the-sas-cables"></a>SAS-kábelek csatolása
@@ -41,7 +41,7 @@ ms.locfileid: "96026302"
       
       **SAS kábelezés**
       
-      | Címke | Description |
+      | Címke | Leírás |
       |:--- |:--- |
       | A |Elsődleges ház |
       | B |EBOD ház |

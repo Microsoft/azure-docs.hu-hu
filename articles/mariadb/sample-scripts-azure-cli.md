@@ -9,16 +9,16 @@ ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 3/18/2020
 ms.openlocfilehash: aa9efba1c49063d40b4df0444fb3bc63b124a0a0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664599"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure CLI-minták a Azure Database for MariaDBhoz 
 Az alábbi táblázat a Azure Database for MariaDB Azure CLI-parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Példa hivatkozás | Description  |
+| Példa hivatkozás | Leírás  |
 |---|---|
 |**A kiszolgáló létrehozása**||
 | [Kiszolgáló és tűzfalszabály létrehozása](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI-szkript, amely egyetlen Azure Database for MariaDB kiszolgálót hoz létre, és egy kiszolgálói szintű tűzfalszabály konfigurálására szolgál. |
