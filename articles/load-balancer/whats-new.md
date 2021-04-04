@@ -40,7 +40,7 @@ Itt megtalálhatja a legújabb Azure Load Balancer frissítéseket, és feliratk
 
 A termékcsoport aktívan dolgozik a következő ismert problémák megoldásán:
 
-|Probléma |Description  |Kockázatcsökkentés  |
+|Probléma |Leírás  |Kockázatcsökkentés  |
 | ---------- |---------|---------|
 | Load Balancer a riasztási esemény és az állapot-mintavételi állapot naplófájljai | A naplózás nem működik Load Balancer riasztási eseményekre az alapszintű és a standard Load Balancer, illetve az alapszintű Load Balancer állapotának eseménynaplói esetében.  | [Használja Azure monitor a többdimenziós metrikák számára a standard Load Balancer](load-balancer-standard-diagnostics.md). Azure Monitor a többdimenziós metrikák olyan gazdag készletét biztosítja, amely naplóként is exportálható. Az előre konfigurált mérőszámok irányítópultot a Load Balancer elemzések alpaneljén keresztül is kihasználhatja. Ha az alapszintű Load Balancer az üzemi szintű mérőszámok figyelése standard szintre való [frissítését](upgrade-basic-standard.md) használja.
 

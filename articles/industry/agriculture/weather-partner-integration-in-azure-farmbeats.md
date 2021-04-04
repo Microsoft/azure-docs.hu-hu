@@ -143,7 +143,7 @@ A művelet részeként a programnak létre kell hoznia egy/WeatherDataLocation a
 WeatherDataModel | Leírás |
 --- | ---
 Név  | Az időjárási adatmodell neve. |
-Description  | A modell értelmes leírása. |
+Leírás  | A modell értelmes leírása. |
 Tulajdonságok  | Az adatszolgáltató által definiált további tulajdonságok. |
 weatherMeasures > neve  | Az időjárási mérték neve. Például humidity_max. |
 weatherMeasures > adattípus  | Dupla vagy enumerálás. Ha Enum, a measureEnumDefinition megadása kötelező. |
@@ -165,12 +165,12 @@ pipelineDetails > paraméterek > leírása | A paraméter leírása. |
 Tulajdonságok  | További tulajdonságok a gyártótól.
 Tulajdonságok > programRunCommand | Docker-futtatási parancs. Ez a parancs akkor fut le, amikor az ügyfél futtatja az időjárási feladatot. |
 
-WeatherDataLocation | Description |
+WeatherDataLocation | Leírás |
 --- | ---
 weatherDataModelId  | A rendszerindítási folyamat során létrehozott megfelelő WeatherDataModel azonosítója.|
 location  | Szélesség, hosszúság és Jogosultságszint-emelés. |
 Name | Az objektum neve. |
-Description | Az időjárási adattárolási hely leírása. |
+Leírás | Az időjárási adattárolási hely leírása. |
 farmId | Választható A farm azonosítója. Az ügyfél ezt az azonosítót a Job paraméter részeként adja meg. |
 Tulajdonságok  | További tulajdonságok a gyártótól.
 
