@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899337"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B&R használatával
@@ -136,7 +136,7 @@ Hozzon létre tűzfalszabályok között a felügyeleti alhálózat és a tartal
 
 A következő táblázat a portok listáját tartalmazza.
 
-| Ikon | Description | Ikon | Description |
+| Ikon | Leírás | Ikon | Leírás |
 | ------------ | ------------- | ------------ | ------------- |
 | Biztonsági mentési kiszolgáló  | vCenter  | HTTPS/TCP  | 443 |
 | Biztonsági mentési kiszolgáló <br> *A Veeam biztonsági mentési & replikációs összetevőinek telepítéséhez szükséges* | Biztonsági mentési proxy  | TCP/UDP  | 135, 137 – 139 és 445 |
