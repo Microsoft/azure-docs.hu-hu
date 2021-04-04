@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752277"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
@@ -24,7 +24,7 @@ A Azure Key Vault kétféle tárolót biztosít a Felhőbeli alkalmazások titka
 |Tároló típusa|Támogatott objektumtípusok|Adatsík végpont|
 |--|--|--|
 | **Kulcstartók**|<ul><li>Szoftveres védelemmel ellátott kulcsok</li><li>HSM által védett kulcsok (prémium SKU-val)</li><li>Tanúsítványok</li><li>Tárfiókkulcsok</li></ul> | https://{Vault-Name}. Vault. Azure. net
-|**Managed HSM** |<ul><li>HSM-védett kulcsok</li></ul> | https://{HSM-Name}. managedhsm. Azure. net
+|**Felügyelt HSM** |<ul><li>HSM-védett kulcsok</li></ul> | https://{HSM-Name}. managedhsm. Azure. net
 
 Az egyes típusú objektumok eléréséhez használt URL-utótagok
 

@@ -10,15 +10,15 @@ ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100390357"
 ---
 # <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
-A Blobok helyreállítható törlésével megvédheti az adatait véletlenül vagy hibásan, vagy törölheti azokat. Ha a Blobok helyreállított törlését engedélyezték a Storage-fiókhoz, a Blobok, a blobok és a pillanatképek a Storage-fiókban való törlése a megadott megőrzési időtartamon belül megtörténik.
+A blobok helyreállítható törlése megvédi az adatokat a véletlen vagy téves módosítástól és törléstől. Ha a blobok helyreállítható törlése engedélyezve van a tárfiókban, a tárfiókban lévő blobok, blobverziók és pillanatképek helyreállíthatók a törlés után a megadott megőrzési időtartamon belül.
 
 Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft a Soft delete bekapcsolását javasolja. További információ a Soft delete engedélyezéséről: a [Blobok Soft delete engedélyezése és kezelése](./soft-delete-blob-enable.md).
 
@@ -87,7 +87,7 @@ A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlés
 
 A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor elvárt viselkedést:
 
-| REST API művelet | Erőforrás típusa | Description | Változás a viselkedésben |
+| REST API művelet | Erőforrás típusa | Leírás | Változás a viselkedésben |
 |--------------------|---------------|-------------|--------------------|
 | [Törlés](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a Storage-fiókot, beleértve a benne található összes tárolót és blobot.                           | Nincs változás. A törölt fiókban lévő tárolók és Blobok nem lesznek helyreállítva. |
 | [Tároló törlése](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve a benne található összes blobot is. | Nincs változás. A törölt tárolóban lévő Blobok nem lesznek helyreállítva. |

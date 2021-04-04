@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97739603"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
@@ -46,7 +46,7 @@ Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalo
 
 A következő az átjáró által használt teljes tartománynevek.
 
-| Tartománynevek | Kimenő portok | Description |
+| Tartománynevek | Kimenő portok | Leírás |
 | --- | --- | --- |
 | *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP-cím. |
 | *.powerbi.com |443 |HTTPS |
