@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97679065"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Oktatóanyag: webszolgáltatás migrálása a Bing Mapsből
@@ -163,7 +163,7 @@ A Azure Maps fordított helymeghatározáshoz API olyan további funkciókat tar
 
 A következő táblázat a Bing Maps entitás típusú értékeket a Azure Mapsban található egyenértékű tulajdonságokra hivatkozik.
 
-| Bing Maps-entitás típusa | Hasonló Azure Maps entitás típusa               | Description                                |
+| Bing Maps-entitás típusa | Hasonló Azure Maps entitás típusa               | Leírás                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Cím*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Környékén*                             |

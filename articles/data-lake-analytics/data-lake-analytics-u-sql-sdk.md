@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92215535"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>A U-SQL futtatása és tesztelése Azure Data Lake U-SQL SDK-val
@@ -63,7 +63,7 @@ A U-SQL-parancsfájlokban relatív elérési utat és helyi abszolút elérési 
 
 Ha a U-SQL-parancsfájlt helyileg futtatja, a rendszer létrehoz egy munkakönyvtárat a fordítás során a jelenlegi futó könyvtár alatt. A fordítási kimeneteken kívül a helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékolva lesznek a munkakönyvtárba. A munkakönyvtár gyökérkönyvtárának neve "ScopeWorkDir", és a munkakönyvtárban található fájlok a következők:
 
-|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Description|
+|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Leírás|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Futtatókörnyezet-verzió kivonatoló karakterlánca|A helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékmásolata|
 | |Script_66AE4909AA0ED06C| |Parancsfájl neve + szkript elérési útjának kivonat-karakterlánca|Fordítási kimenetek és végrehajtási lépés naplózása|
@@ -140,7 +140,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 A **Futtatás** nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Description|
+|Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
 |– CodeBehind|Hamis|A szkript a. CS kód mögött található.|
 |-CppSDK| |CppSDK könyvtár|
@@ -172,7 +172,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 A **fordítás** nem kötelező argumentumai a következők:
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 |--------|-----------|
 | -CodeBehind [alapértelmezett érték: "false"]|A szkript a. CS kód mögött található.|
 | -CppSDK [alapértelmezett érték: ""]|CppSDK könyvtár|
@@ -217,7 +217,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 A **végrehajtás** nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Description|
+|Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
 |– DataRoot | '' |A metaadatok végrehajtásához szükséges adatok gyökerét. Alapértelmezés szerint a **LOCALRUN_DATAROOT** környezeti változót.|
 |-MessageOut | '' |Üzenetek kiírása a konzolon egy fájlba.|
@@ -330,13 +330,13 @@ A LocalRunHelper.exe az U-SQL helyi fordításához, futtatásához stb. program
 
 nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Paraméter|Típus|Description|
+|Paraméter|Típus|Leírás|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|a kimeneti üzenetek esetében állítsa a null értéket a konzol használatához|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Tulajdonság|Típus|Description|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |AlgebraPath|sztring|Az algebra-fájl elérési útja (az algebra-fájl az egyik fordítási eredmény)|
 |CodeBehindReferences|sztring|Ha a parancsfájl további kódokat tartalmaz a hivatkozások mögött, adja meg a ";" karakterrel elválasztott elérési utakat.|

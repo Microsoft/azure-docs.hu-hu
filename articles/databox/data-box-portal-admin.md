@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97678649"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>A Azure Portal használatával felügyelheti Azure Data Box és Azure Data Box Heavy
@@ -206,7 +206,7 @@ Amikor az eszköz állapota megváltozik a portálon, e-mailben értesítjük.
 
 Az importálási rendelés állapotait itt találja.
 
-|Rendelés állapota |Description |
+|Rendelés állapota |Leírás |
 |---------|---------|
 |Megrendelve     | A rendelés sikeresen fel lett adva. <br>Ha az eszköz elérhető, a Microsoft kiválaszt egy eszközt a szállításhoz, és előkészíti. <br> Ha az eszköz nem érhető el azonnal, a rendszer feldolgozza a rendelést, amikor az eszköz elérhetővé válik. A rendelés feldolgozása néhány napot, de akár hónapokat is igénybe vehet. Ha a rendelés nem teljesíthető 90 napon belül, a rendszer megszakítja a sorrendet, és értesítést kap.         |
 |Feldolgozva     | A rendelés feldolgozása befejeződött. Az eszköz szállításra való előkészítése a rendelésnek megfelelően megtörténik az adatközpontban.         |
@@ -225,7 +225,7 @@ Az importálási rendelés állapotait itt találja.
 
 Az exportálási rendelés állapota.
 
-|Rendelés állapota |Description |
+|Rendelés állapota |Leírás |
 |---------|---------|
 |Megrendelve     | Az exportálási sorrend sikeresen elhelyezve. <br>Ha az eszköz elérhető, a Microsoft kiválaszt egy eszközt a szállításhoz, és előkészíti. <br> Ha az eszköz nem érhető el azonnal, a rendelés akkor lesz feldolgozva, amikor az eszköz elérhetővé válik. A rendelés feldolgozása néhány napot, de akár hónapokat is igénybe vehet. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.         |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy megszakította a rendelést (csak a rendelés feldolgozását megelőzően lehet megszakítani), vagy hibát észlelt, és a szolgáltatás megszakította a rendelést. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.     |
@@ -248,7 +248,7 @@ Az exportálási rendelés állapota.
 
 Ha önfelügyelt szállítást használ, a másolás befejeződése után és az eszköz fogadása előtt a következő állapotok jelennek meg (az előző táblázatban említettek helyett):
 
-|Rendelés állapota |Description |
+|Rendelés állapota |Leírás |
 |---------|---------|
 |Készen áll az Azure-adatközpontban való felvételre      |Az eszköz készen áll az Azure-adatközpontba való felvételre.        |
 |Szállítás alatt    |Felvette az eszközt.         |

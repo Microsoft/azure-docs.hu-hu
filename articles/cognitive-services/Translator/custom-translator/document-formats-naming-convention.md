@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895849"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>A dokumentumok formátuma és elnevezési konvenció útmutatója
@@ -22,7 +22,7 @@ Az egyéni fordításhoz használt fájloknak legalább **négy** karakter hossz
 
 Ez a táblázat a fordítási rendszer összeállításához használható összes támogatott fájlformátumot tartalmazza:
 
-| Formátum            | Bővítmények   | Description                                                                                                                                                                                                                                                                    |
+| Formátum            | Bővítmények   | Leírás                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF. XLIFF | Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.                                                                                                                                                              |
 | TMX               | . TMX         | Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.                                                                                                                                                              |

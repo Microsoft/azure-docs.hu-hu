@@ -75,7 +75,7 @@ A Azure Database for MySQL biztonsági funkcióival kapcsolatos további inform�
 
 Az egykiszolgálós szolgáltatás beépített teljesítmény-figyelési és riasztási funkciókkal rendelkezik. Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. A szolgáltatás lehetővé teszi a lassú lekérdezési naplók konfigurálását, és egy eltérő [lekérdezési tárolási](concepts-query-store.md) funkcióval rendelkezik. A Query Store leegyszerűsíti a teljesítménnyel kapcsolatos hibaelhárítást, így gyorsan megtalálhatja a leghosszabb ideig futó és a legtöbb erőforrás-igényes lekérdezést. Ezen eszközök használatával gyorsan optimalizálhatja a számítási feladatokat, és konfigurálhatja a kiszolgálót a legjobb teljesítmény érdekében. További részletek: [figyelés](concepts-monitoring.md) .
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
