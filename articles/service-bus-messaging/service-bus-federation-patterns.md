@@ -4,10 +4,10 @@ description: Ez a cikk részletes útmutatást nyújt az egyes üzenet-replikác
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: d823ee7ccd4f53bfc3e10211a4f44908273a110d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97657502"
 ---
 # <a name="message-replication-tasks-patterns"></a>Az üzenet-replikációs feladatok mintái
@@ -16,7 +16,7 @@ Az [összevonás áttekintése](service-bus-federation-overview.md) és a [repli
 
 Ebben a cikkben részletesen ismertetjük a megvalósítási útmutatót az Áttekintés szakaszban Kiemelt minták közül. 
 
-## <a name="replication"></a>Replikálás 
+## <a name="replication"></a>Replikáció 
 
 A replikációs minta üzeneteket másol egy várólistából vagy témakörből a következőre, vagy egy várólistából vagy témakörből egy másik célhelyre, például egy Event hub-ra. Az üzenetek továbbítása az üzenet tartalmának módosítása nélkül történik. 
 
