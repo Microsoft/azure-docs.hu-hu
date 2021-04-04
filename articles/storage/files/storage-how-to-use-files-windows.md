@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94626894"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
@@ -202,5 +202,5 @@ Miután létrehozta a beállításkulcsot, indítsa újra a kiszolgálót az SMB
 ## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
-- [GYIK](./storage-files-faq.md)
+- [Gyakori kérdések](./storage-files-faq.md)
 - [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)
