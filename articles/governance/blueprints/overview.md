@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet ü
 ms.date: 01/27/2021
 ms.topic: overview
 ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919342"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
@@ -47,7 +47,7 @@ A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ e
 
 A terv összetevőkből áll _._ Az Azure-tervezetek jelenleg a következő erőforrásokat támogatják összetevőkként:
 
-|Erőforrás  | Hierarchialehetőségek| Description  |
+|Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
 |Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezek a helyőrző erőforráscsoportok lehetővé teszik az erőforrások rendszerezését, és a benne foglalt szabályzatok és szerepkör-hozzárendelési összetevők és ARM-sablonok hatókör-korlátozását. |
 |ARM-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
@@ -108,7 +108,7 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 
 A következő beépített szerepkörök érhetők el:
 
-|Azure-szerepkör | Description |
+|Azure-szerepkör | Leírás |
 |-|-|
 |[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | A többi engedélyen kívül minden Azure Blueprint kapcsolódó engedélyt tartalmaz. |
 |[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervrajz-definíciókat, de nem rendelkezik terv-hozzárendelési engedélyekkel. |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
 ms.openlocfilehash: 7c5b4f0d5d4b153684683963c56b7506e76d963e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99575653"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-fejlécek újraírása Application Gateway
@@ -60,7 +60,7 @@ A Application Gateway kiszolgálói változók használatával tárolja a kiszol
 
 Az Application Gateway a következő kiszolgálói változókat támogatja:
 
-| Változó neve | Description                                                  |
+| Változó neve | Leírás                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | Az X-Forwarded-For Client Request fejléc mező a `client_ip` (z) változóval (lásd a táblázat későbbi részében) az IP1, a IP2, a IP3 stb. formátumban. Ha az X-Forwardd-for mező nem szerepel az ügyfél-igénylési fejlécben, `add_x_forwarded_for_proxy` akkor a változó egyenlő a `$client_ip` változóval. Ez a változó különösen akkor hasznos, ha újra szeretné írni az X által továbbított fejlécet a Application Gateway, hogy a fejléc csak az IP-címet tartalmazza a port adatai nélkül. |
 | ciphers_supported          | Az ügyfél által támogatott titkosítások listája.          |

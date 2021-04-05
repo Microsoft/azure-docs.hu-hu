@@ -10,10 +10,10 @@ ms.date: 11/24/2020
 ms.author: procha
 ms.reviewer: jrasnick
 ms.openlocfilehash: 19941963b5200b3ffdb9f2360301d30fe9df4823
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96121848"
 ---
 # <a name="azure-synapse-analytics-system-integration-partners"></a>Azure szinapszis Analytics rendszerintegrációs partnerek
@@ -21,7 +21,7 @@ ms.locfileid: "96121848"
 Ez a cikk kiemeli a Microsoft rendszerintegrációs partner vállalatoknak az Azure szinapszis-nal való megoldását.
 
 ## <a name="system-integration-partners"></a>Rendszerintegrációs partnerek
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>A 45000 + dedikált szakemberek, a Accenture Microsoft üzleti csoport – a Avanade által működtetett – segítségével a vállalatok a digitális zavarás korában is fejlődnek.|[Partner oldal](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>A Adatis olyan szolgáltatásokat kínál, amelyek speciális adatelemzési, adatstratégiai és tanácsadói szolgáltatások, világszínvonalú kézbesítés és felügyelt szolgáltatások számára specializáltak. |[Partner oldal](https://adatis.co.uk/)<br> |

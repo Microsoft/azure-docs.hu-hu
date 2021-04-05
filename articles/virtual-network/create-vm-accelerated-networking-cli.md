@@ -17,15 +17,15 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919952"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Gyorsított hálózatkezeléssel rendelkező, Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy linuxos virtuális gépet (VM) a gyorsított hálózatkezeléssel. A gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gépek létrehozásával kapcsolatban lásd: [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](create-vm-accelerated-networking-powershell.md). A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet a DataPath, csökkenti a késést, a vibrálás és a CPU-kihasználtságot, és a legszigorúbb hálózati számítási feladatokhoz használja a támogatott virtuálisgép-típusoknál. Az alábbi képen a két virtuális gép közötti kommunikáció gyorsított hálózatkezeléssel és anélkül látható:
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy linuxos virtuális gépet (VM) a gyorsított hálózatkezeléssel. A gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gépek létrehozásával kapcsolatban lásd: [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](create-vm-accelerated-networking-powershell.md). A Gyorsított hálózatkezelés engedélyezi az egygyökerű I/O-virtualizálást (SR-IOV) a virtuális gépekre, nagy mértékben javítva a hálózati teljesítményt. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet a DataPath, csökkenti a késést, a vibrálás és a CPU-kihasználtságot, és a legszigorúbb hálózati számítási feladatokhoz használja a támogatott virtuálisgép-típusoknál. Az alábbi képen a két virtuális gép közötti kommunikáció gyorsított hálózatkezeléssel és anélkül látható:
 
 ![Összehasonlítás](./media/create-vm-accelerated-networking/accelerated-networking.png)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
 ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92202548"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute nyilvános társának létrehozása és kezelése
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet nyilvános tár
 >A nyilvános társítás elavult. Az új ExpressRoute-áramkörökben nem hozhatók létre nyilvános társak. Ha egy új ExpressRoute-áramkört használ, használja a [Microsoft-partnert](expressroute-circuit-peerings.md#microsoftpeering) az Azure-szolgáltatásokhoz.
 >
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 A kapcsolat mindig a WAN-ból Microsoft Azure szolgáltatások felé kezdeményezhető. Microsoft Azure szolgáltatás nem tud kapcsolatot létesíteni a hálózattal ezen az útválasztási tartományon keresztül. Ha a ExpressRoute-áramkör engedélyezve van az Azure-beli nyilvános kapcsolatok esetében, az [Azure-ban használt nyilvános IP-tartományokat](../virtual-network/public-ip-addresses.md#public-ip-addresses) az áramkörön keresztül érheti el.
 
@@ -48,7 +48,7 @@ Ez a szakasz a nyilvános társításon keresztül elérhető szolgáltatásokat
 * Az Azure-szolgáltatások többsége támogatott. Jelölje be a közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatást.
 
 **Nem támogatott:**
-  * Tartalomkézbesítési hálózat (CDN)
+  * CDN
   * Azure Front Door
   * Multi-Factor Authentication kiszolgáló (örökölt)
   * Traffic Manager
