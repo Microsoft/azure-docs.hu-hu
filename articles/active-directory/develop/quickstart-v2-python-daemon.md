@@ -13,10 +13,10 @@ ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
 ms.openlocfilehash: 734fad7d3f4fb7a2a816d9ad10fb6b15e2faf9e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99820405"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Python-konzol alkalmazásból az alkalmazás identitásával
@@ -190,7 +190,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Ahol: |Description |
+> | Ahol: |Leírás |
 > |---------|---------|
 > | `config["secret"]` | Az Azure Portalon az alkalmazáshoz létrehozott ügyfél-titkos kulcs. |
 > | `config["client_id"]` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
@@ -211,7 +211,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Ahol:| Description |
+> |Ahol:| Leírás |
 > |---------|---------|
 > | `config["scope"]` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében ennek a hasonló formátumot kell használnia, ha `{Application ID URI}/.default` azt jelzi, hogy a kért hatókörök a Azure Portalban beállított alkalmazás-objektumban statikusan vannak meghatározva (Microsoft Graph, `{Application ID URI}` pont – `https://graph.microsoft.com` ). Az egyéni webes API-k esetében az `{Application ID URI}` Azure portalon **ALKALMAZÁSREGISZTRÁCIÓK** az **API közzététele** című részében van definiálva.|
 

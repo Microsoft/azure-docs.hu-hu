@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014856"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Hardver-összetevő cseréje a StorSimple 8000 Series eszközön
@@ -94,7 +94,7 @@ Az eszközön található beépülőmodul-modulok a következő első és háts�
 
 **1. ábra** Az eszköz előtt
 
-| Címke | Description |
+| Címke | Leírás |
 |:--- |:--- |
 | 0 - 11 |Lemezmeghajtók (összesen 12) |
 

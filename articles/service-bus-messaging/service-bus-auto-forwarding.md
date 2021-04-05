@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/20/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98678988"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entitások láncolása az autoforwarding révén
@@ -68,7 +68,7 @@ Az autoforwarding szolgáltatással kapcsolatos részletes információkért tek
 
 További információ a Service Bus teljesítményének tökéletesítéséről: 
 
-* [Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával](service-bus-performance-improvements.md)
+* [Ajánlott eljárások a teljesítmény növeléséhez Service Bus üzenetkezelés használatával](service-bus-performance-improvements.md)
 * [Particionált üzenetküldési entitások][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
