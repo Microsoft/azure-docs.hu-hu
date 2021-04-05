@@ -9,15 +9,15 @@ ms.date: 04/28/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 7d6718fb25b3743a50c52f11c8e19d80839b485c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95554430"
 ---
 <!-- operation names for the diag logs for IoT Hub -->
 
-|Művelet neve|Level|Description|
+|Művelet neve|Level|Leírás|
 |------------- |-----|-----------|
 |UndefinedRouteEvaluation|Tájékoztatás|Az üzenet nem értékelhető ki a megadott feltétellel. Ha például az útvonal lekérdezési feltételének egyik tulajdonsága hiányzik az üzenetből. További információ az [útválasztási lekérdezés szintaxisáról](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md).|
 |RouteEvaluationError|Hiba|Hiba történt az üzenet kiértékelése során az üzenet formátuma miatt. Ez a hiba például akkor kerül naplózásra, ha a tartalom kódolása nem lett megadva, vagy a tartalomtípus nem érvényes az üzenetben. Ezeket a [Rendszertulajdonságokban](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)kell megadni.|
