@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98933307"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Az Azure HDInsight üzletmenet folytonossága
@@ -119,7 +119,7 @@ Az üzletmenet folytonosságának javítása a régiók közötti magas rendelke
 |Írási minták olvasása |Az elsődleges és a másodlagos olvasási és írási műveletek engedélyezésének megkövetelése |A másodlagos csak olvashatóként való kialakításának megtervezése|
 |Nulla RPO & RTO |Nulla adatvesztés megkövetelése (RPO = 0) és nulla állásidő (RTO = 0) |Tervezze meg a RPO és a RTO, hogy csökkentse a feladatátvételt igénylő összetevők számát.|
 |Üzleti funkciók |Az elsődleges másodlagos üzleti funkciók teljes körű működésének megkövetelése |Értékelje ki, hogy futtatható-e a másodlagos üzleti funkciók minimális kritikus részhalmazával.|
-|Kapcsolat |Az összes felsőbb rétegbeli és alsóbb rétegbeli rendszer megkövetelése az elsődlegestől a másodlagoshoz való kapcsolódáshoz|Korlátozza a másodlagos kapcsolatot egy nem megfelelő minimális kritikus részhalmazra.|
+|Kapcsolatok |Az összes felsőbb rétegbeli és alsóbb rétegbeli rendszer megkövetelése az elsődlegestől a másodlagoshoz való kapcsolódáshoz|Korlátozza a másodlagos kapcsolatot egy nem megfelelő minimális kritikus részhalmazra.|
 
 ## <a name="next-steps"></a>Következő lépések
 
