@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87078147"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Séma-útmutató a munkafolyamat-definíciós nyelvhez Azure Logic Apps
@@ -74,7 +74,7 @@ A paraméterek definíciójának általános szerkezete:
 },
 ```
 
-| Attribútum | Kötelező | Típus | Description |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*paraméter – név*> | Igen | Sztring | A definiálni kívánt paraméter neve |
 | <*paraméter típusa*> | Yes | int, float, string, bool, Array, Object, SecureString, secureobject <p><p>**Megjegyzés**: az összes jelszóhoz, kulcshoz és titokhoz használja a `securestring` vagy a `secureobject` típust, mert a `GET` művelet nem ad vissza ilyen típusokat. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd: [biztonsági javaslatok a műveletekhez és a bemeneti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | A paraméter típusa |
@@ -112,7 +112,7 @@ Az `staticResults` attribútumban Definiáljon egy művelet modelljét, `outputs
 }
 ```
 
-| Attribútum | Kötelező | Típus | Description |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*statikus – eredmény-definíció – név*> | Igen | Sztring | A statikus eredmény definíciójának neve, amelyet a műveleti definíció hivatkozhat egy `runtimeConfiguration.staticResult` objektumon keresztül. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
 | <*output-attributes-and-Values – visszaadott*> | Yes | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` értéke `Succeeded` , az attribútum a `outputs` művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` értéke `Failed` , az `outputs` attribútum tartalmazza az `errors` attribútumot, amely egy vagy több hibás információt tartalmazó tömb `message` . |
@@ -275,7 +275,7 @@ A kimenet definíciójának általános szerkezete:
 }
 ```
 
-| Attribútum | Kötelező | Típus | Description |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*kulcs neve*> | Igen | Sztring | A kimenet visszatérési értékének kulcsa |
 | <*kulcs típusa*> | Yes | int, float, string, SecureString, bool, Array, JSON objektum | A kimenet visszatérési értékének típusa |

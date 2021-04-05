@@ -125,7 +125,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-schema"></a>Kérelem naplózási sémája
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -139,7 +139,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-properties-schema"></a>Kérelem naplójának tulajdonságai sémája
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | HttpMethod |Sztring |A művelethez használt HTTP-metódus. Például: GET. |
 | Elérési út |Sztring |A művelet végrehajtásának elérési útja |
@@ -175,7 +175,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -193,7 +193,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-properties-schema"></a>Naplózási napló tulajdonságai sémája
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | JobId |Sztring |A feladathoz rendelt azonosító |
 | JobName |Sztring |A feladatokhoz megadott név |
