@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92788825"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Választás a virtuális mag és a DTU beszerzési modelljei közül – Azure SQL Database és az SQL felügyelt példánya
@@ -37,7 +37,7 @@ A következő táblázat és diagram hasonlítja össze a virtuális mag-alapú 
 |**Vásárlási modell**|**Leírás**|**A következőkre alkalmas**|
 |---|---|---|
 |DTU-alapú|Ez a modell a számítási, tárolási és I/O-erőforrások kötegelt mérőszámán alapul. A számítási méretek az önálló adatbázisok esetében adatbázis-tranzakciós egységben (DTU), a rugalmas készletek esetében pedig rugalmas adatbázis-tranzakciós egységben (eDTU) vannak megadva. További információ a DTU-kkal és eDTU-kkal kapcsolatban: [Mik azok a DTU-k és eDTU-k?](purchasing-models.md#dtu-based-purchasing-model)|Azok az ügyfelek, akik egyszerű, előre konfigurált erőforrás-beállításokat szeretnének|
-|Virtuális mag-alapú|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását. A virtuálismag-alapú vásárlási modell lehetővé teszi az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) SQL Serverrel való használatát a költségek megtakarítása érdekében.|Rugalmasságot, irányítást és átlátszóságot biztosító ügyfelek|
+|Virtuálismag-alapú|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását. A virtuálismag-alapú vásárlási modell lehetővé teszi az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) SQL Serverrel való használatát a költségek megtakarítása érdekében.|Rugalmasságot, irányítást és átlátszóságot biztosító ügyfelek|
 ||||  
 
 ![Díjszabási modell összehasonlítása](./media/purchasing-models/pricing-model.png)
