@@ -14,10 +14,10 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/01/2021
 ms.openlocfilehash: 11b94ba5bcedf56f0115b8730dc58f808aff5c58
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100371600"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>A Transact-SQL (T-SQL) használata Elastic Database feladatok létrehozásához és kezeléséhez (előzetes verzió)
@@ -393,7 +393,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob';
 
 A következő tárolt eljárások a [feladatok adatbázisban](job-automation-overview.md#elastic-job-database)találhatók.
 
-|Tárolt eljárás  |Description  |
+|Tárolt eljárás  |Leírás  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Új feladatok hozzáadására szolgál.    |
 |[sp_update_job](#sp_update_job)    |      Egy meglévő feladatot frissít.   |
@@ -1208,7 +1208,7 @@ GO
 
 A [feladatok adatbázisban](job-automation-overview.md#elastic-job-database)a következő nézetek érhetők el.
 
-|Nézet  |Description  |
+|Nézet  |Leírás  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  A feladatok végrehajtási előzményeit jeleníti meg.      |
 |[feladatok](#jobs-view)     |   Megjeleníti az összes feladatot.      |
@@ -1346,7 +1346,7 @@ Megjeleníti az összes célcsoport összes tagját.
 |**elastic_pool_name**|nvarchar (128)|A célcsoportban található rugalmas készlet neve. Csak akkor van megadva, ha target_type "SqlElasticPool".|
 |**shard_map_name**|nvarchar (128)|A célcsoportban lévő szegmens térképek neve. Csak akkor van megadva, ha target_type "SqlShardMap".|
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 
 - ![Témakör hivatkozás ikon](/sql/database-engine/configure-windows/media/topic-link.gif "Témakör hivatkozásának ikonja") [Transact-SQL szintaxisának konvenciói](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 

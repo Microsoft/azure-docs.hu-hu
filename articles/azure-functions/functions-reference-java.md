@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96326454"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
@@ -165,7 +165,7 @@ A (z) paraméter használatával szabályozhatja a Maven archetípus által megc
 
 A Maven archetípus egy pom.xml hoz létre, amely a megadott Java-verziót célozza meg. A pom.xml következő elemei a használni kívánt Java-verziót jelölik:
 
-| Elem |  Java 8 érték | Java 11 érték | Description |
+| Elem |  Java 8 érték | Java 11 érték | Leírás |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | A Maven-Compiler-beépülő modul által használt Java-verzió. |
 | **`JavaVersion`** | 8 | 11 | Az Azure-beli Function alkalmazás által üzemeltetett Java-verzió. |

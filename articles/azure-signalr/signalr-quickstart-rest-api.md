@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94874525"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
@@ -202,7 +202,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Válasz állapotkódja | Description
+Válasz állapotkódja | Leírás
 ---|---
 `200` | A felhasználó létezik
 `404` | A felhasználó nem létezik
@@ -252,7 +252,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Válasz állapotkódja | Description
+Válasz állapotkódja | Leírás
 ---|---
 `200` | A szolgáltatás jó
 `5xx` | Szolgáltatáshiba

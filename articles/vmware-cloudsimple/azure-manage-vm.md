@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895189"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Saját CloudSimple-Felhőbeli virtuális gépek kezelése az Azure-ban
@@ -23,7 +23,7 @@ A [CloudSimple saját felhőhöz létrehozott](azure-create-vm.md)virtuális gé
 
 A kiválasztott virtuális gép **Áttekintés** lapján a következő vezérlők érhetők el.
 
-| Szabályozás | Description |
+| Szabályozás | Leírás |
 | ------------ | ------------- |
 | Csatlakozás | Kapcsolódjon a megadott virtuális géphez.  |
 | Indítás | Indítsa el a megadott virtuális gépet.  |

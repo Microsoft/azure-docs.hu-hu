@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861748"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: a userCertificate attribútum által okozott LargeObject hibák kezelésére
@@ -118,7 +118,7 @@ Az új szinkronizálási szabálynak ugyanazzal a **hatókör-szűrővel** és *
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Name | *Adjon meg egy nevet* | Például *: "out to HRE – egyéni felülbírálás a userCertificate"* |
-    | Description | *Adja meg a leírást* | Például: *"Ha a userCertificate attribútum több mint 15 értékkel rendelkezik, akkor a null értéket exportálja."* |
+    | Leírás | *Adja meg a leírást* | Például: *"Ha a userCertificate attribútum több mint 15 értékkel rendelkezik, akkor a null értéket exportálja."* |
     | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* |
     | Csatlakoztatott rendszerobjektum típusa | **felhasználói** | |
     | Metaverse objektum típusa | **személy** | |
