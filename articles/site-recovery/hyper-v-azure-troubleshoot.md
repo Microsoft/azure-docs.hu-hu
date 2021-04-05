@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
 ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96750802"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>A Hyper-V-ről az Azure-ba végzett replikáció és feladatátvétel hibaelhárítása
@@ -144,7 +144,7 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
 
 2. Ha VSS-pillanatképeket szeretne létrehozni a virtuális géphez, győződjön meg arról, hogy a Hyper-V integrációs szolgáltatások telepítve vannak a virtuális gépen, és hogy a biztonsági mentési (VSS) integrációs szolgáltatás engedélyezve van.
     - Győződjön meg arról, hogy az Integration Services VSS szolgáltatás/démonok futnak a vendégen, és **OK** állapotban vannak.
-    - Ezt egy emelt szintű PowerShell-munkamenetből is megtekintheti a Hyper-V-gazdagépen, a **Get-VMIntegrationService-VMName \<VMName> -Name VSS** paranccsal pedig bejelentkezhet a vendég virtuális gépre. [További információ](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Ezt egy emelt szintű PowerShell-munkamenetből is megtekintheti a Hyper-V-gazdagépen, a **Get-VMIntegrationService-VMName \<VMName> -Name VSS** paranccsal pedig bejelentkezhet a vendég virtuális gépre. [További információk](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Győződjön meg arról, hogy a virtuális gépen a biztonsági mentési/VSS-integrációs szolgáltatások futnak és kifogástalan állapotban vannak. Ha nem, indítsa újra ezeket a szolgáltatásokat és a Hyper-v Kötet árnyékmásolata kérelmező szolgáltatást a Hyper-V-gazdagép kiszolgálóján.
 
 ### <a name="common-errors"></a>Gyakori hibák

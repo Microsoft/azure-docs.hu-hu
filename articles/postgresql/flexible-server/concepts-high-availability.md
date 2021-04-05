@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94366723"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Magas rendelkezésre állási fogalmak Azure Database for PostgreSQL – rugalmas kiszolgáló
@@ -97,8 +97,8 @@ A magas rendelkezésre állású rugalmas kiszolgálók esetében a rendszer val
 
 ## <a name="zone-redundant-high-availability---limitations"></a>A zóna redundáns magas rendelkezésre állása – korlátozások
 
--   A magas rendelkezésre állás nem támogatott a feltört számítási szint esetében.
--   A magas rendelkezésre állás csak olyan régiókban támogatott, ahol több zóna is elérhető.
+-   Az átmenetileg fokozható számítási szint esetén nem támogatott a magas rendelkezésre állás.
+-   A magas rendelkezésre állás csak olyan régiókban támogatott, ahol több zóna érhető el.
 -   Egy másik rendelkezésre állási zónához való szinkron replikálás miatt az alkalmazások megemelt írási és végrehajtási késéssel rendelkezhetnek.
 
 -   A készenléti replika nem használható olvasási lekérdezésekhez.
