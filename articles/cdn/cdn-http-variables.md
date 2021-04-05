@@ -92,7 +92,7 @@ Ha egy HTTP-változó a következő hatások bármelyikét elérheti, elválaszt
 
 Az elhatárolókat az alábbi táblázat ismerteti.
 
-| Elválasztó | Description |
+| Elválasztó | Leírás |
 | --------- | ----------- |
 | := | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha a következők valamelyike: <br />-Hiányzó <br />-NULL értékűre van állítva. |
 | :+ | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha hozzá van rendelve egy érték. |
@@ -187,7 +187,7 @@ Ebben a példában a *REQUEST_URI* változó a következőre van beállítva:
 
 A következő táblázat bemutatja, hogyan működik ez a szintaxis.
 
-| Minta szintaxisa | Results (Eredmények) | Description |
+| Minta szintaxisa | Results (Eredmények) | Leírás |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? Language = en-US | Mivel a változó a mintával kezdődik, lecserélték. |
 | % {request_uri% HTML} htm | /800001/myorigin/marketing/product.html? Language = en-US | Mivel a változó nem a mintával végződik, nem történt változás.|

@@ -4,10 +4,10 @@ description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba val�
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97587792"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
@@ -133,7 +133,7 @@ Igen, egyszerűen [módosíthatja a felügyelt lemez típusát](../virtual-machi
 
 Nem. A felügyelt és a nem felügyelt közötti váltás nem támogatott.
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik a replikált virtuális gépekre vonatkozó követelmények?
 
@@ -206,7 +206,7 @@ Site Recovery az N-4 támogatási modellt követi. [További](./service-updates-
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Szükség van-e az egyes verziófrissítésekhez szükséges forrásoldali gépek újraindítására?
 
-Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információ](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
+Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információk](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -334,7 +334,7 @@ A VMware-ből az Azure-ba a legrégebbi helyreállítási pont 72 óra lehet.
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hogyan Azure-beli virtuális gépeket a feladatátvételt követően?
 
-A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>A feladatátvételi feladathoz képest rugalmas?
 
@@ -346,7 +346,7 @@ A [feladatátvétel](site-recovery-failover.md) nem automatikus. A feladatátvé
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Visszatérhetek egy másik helyre?
 
-Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információ](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Miért van szükségem VPN-vagy ExpressRoute-kapcsolatra a feladat-visszavétel érdekében?
 
@@ -357,13 +357,13 @@ Ha az Azure-ból végez feladatátvételt, az Azure-ból származó adatok vissz
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Beállítható a replikáció parancsfájlok futtatásával?
 
-Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információ](vmware-azure-disaster-recovery-powershell.md).
+Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információk](vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="performance-and-capacity"></a>Teljesítmény és kapacitás
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Szabályozható a replikálási sávszélesség?
 
-Igen. [További információ](site-recovery-plan-capacity-vmware.md).
+Igen. [További információk](site-recovery-plan-capacity-vmware.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899303"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-megoldás figyelése CloudSimple-tevékenység alapján
@@ -54,7 +54,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
-| Description | A riasztást kiváltó esemény leírása. |
+| Leírás | A riasztást kiváltó esemény leírása. |
 | Nyugtázva | Annak jelzése, hogy a riasztás igazolva van-e. |
 
 ## <a name="events"></a>Események
@@ -70,7 +70,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Súlyosság | Esemény súlyossága.|
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
-| Description | A riasztást kiváltó esemény leírása. |
+| Leírás | A riasztást kiváltó esemény leírása. |
 
 ## <a name="tasks"></a>Feladatok
 
@@ -90,7 +90,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Befejezés | A feladat befejezési időpontja. |
 | Állapot | Aktuális feladat állapota. |
 | Eltelt idő | Az az idő, ameddig a feladat befejeződik (ha elkészült) vagy éppen folyamatban van (ha folyamatban van). |
-| Description | Feladat leírása. |
+| Leírás | Feladat leírása. |
 
 ## <a name="audit"></a>Naplózás
 
@@ -108,7 +108,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
 | Eredmény | A tevékenység eredménye, például **sikeres**. |
 | Igénybe vett idő | A feladat elvégzéséhez szükséges idő. |
-| Description | A művelet leírása. |
+| Leírás | A művelet leírása. |
 
 ## <a name="next-steps"></a>Következő lépések
 

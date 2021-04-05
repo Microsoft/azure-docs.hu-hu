@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90973708"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
@@ -23,7 +23,7 @@ Az Azure Application Gatewayen túl több piactéri lehetőség is rendelkezésr
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 Ebben a dokumentumban a Barracuda WAF több elosztott terhelésű példánya mögül konfigurálja az App Service Environment környezetet, így csak a WAF-ból érkező forgalom érheti el az App Service Environmentet, a DMZ-ből érkező nem. Ezenkívül Azure Traffic Managert is elhelyezünk a Barracuda WAF példányai előtt, hogy el legyen osztva a terhelés az Azure-adatközpontok és -régiók között. Az összeállítás áttekintő jellegű diagramja az alábbi képen láthatóhoz hasonló:
 
 ![A diagram egy opcionális Azure-Traffic Manager, amely a webalkalmazási tűzfal példányaihoz csatlakozik, és A hálózathoz csatlakozik, és csak egy olyan App Service Environment engedélyezi a tűzfalon keresztüli forgalmat, amely egy webes, P I és Mobile alkalmazást tartalmaz két régióban.][Architecture] 

@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "88815470"
 ---
 Az ügyfél által felügyelt kulcsok beállítása a lemezekhez megköveteli, hogy az erőforrásokat egy adott sorrendben hozzon létre, ha az első alkalommal végzi el. Először létre kell hoznia és be kell állítania egy Azure Key Vault.
