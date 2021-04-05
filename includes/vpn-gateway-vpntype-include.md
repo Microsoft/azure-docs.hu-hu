@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b3907882df09bfae1d6453fbffbd3e7562554f7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010823"
 ---
 * **Házirendalapú:** A házirendalapú VPN-eket korábban statikus útválasztási átjáróknak nevezték a klasszikus üzemi modellben. A házirend-alapú VPN-ek az IPsec-alagutakon keresztül titkosítják és irányítják a csomagokat a helyszíni hálózat és az Azure VNet közötti címtartomány-kombinációkkal konfigurált IPsec-házirendek alapján. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában. A házirendalapú VPN-típus értéke *házirendalapú*. Házirendalapú VPN használata esetén vegye figyelembe a következő korlátozásokat:

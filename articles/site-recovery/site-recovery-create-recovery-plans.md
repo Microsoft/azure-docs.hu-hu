@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre és szabhat testre helyreállít�
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96009721"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Helyreállítási tervek létrehozása és testreszabása
@@ -53,7 +53,7 @@ További csoportokat hoz létre, és különböző csoportokba helyezheti el a g
 
 A helyreállítási tervet parancsfájl vagy manuális művelet hozzáadásával is testreszabhatja. Vegye figyelembe:
 
-- Ha az Azure-ba replikál, integrálhatja az Azure Automation-runbookok a helyreállítási tervbe. [További információ](site-recovery-runbook-automation.md).
+- Ha az Azure-ba replikál, integrálhatja az Azure Automation-runbookok a helyreállítási tervbe. [További információk](site-recovery-runbook-automation.md).
 - Ha a System Center VMM által felügyelt Hyper-V virtuális gépeket replikál, létrehozhat egy parancsfájlt a helyszíni VMM-kiszolgálón, és belefoglalhatja azt a helyreállítási tervbe.
 - Parancsfájl hozzáadásakor a rendszer hozzáad egy új műveletet a csoporthoz. Például az 1. csoport előzetes lépéseinek egy készlete jön létre az 1. nevű *csoporttal: előzetes lépések*. A készleten belül minden előzetes lépés megjelenik. Az elsődleges helyen csak akkor adhat hozzá parancsfájlt, ha a VMM-kiszolgáló telepítve van.
 - Ha manuális műveletet ad hozzá, a helyreállítási terv futtatásakor a manuális művelet beszúrt pontján leáll. Megjelenik egy párbeszédpanel, amelyen megadhatja, hogy a manuális művelet befejeződött-e.

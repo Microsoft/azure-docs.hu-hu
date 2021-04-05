@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
 ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919969"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Gyorsított hálózatkezeléssel rendelkező, Windows rendszerű virtuális gép létrehozása az Azure PowerShell használatával
@@ -28,7 +28,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy gyorsított há
 > [!NOTE]
 > Ha a gyorsított hálózatkezelést Linux rendszerű virtuális géppel szeretné használni, tekintse meg [a Linux rendszerű virtuális gép gyorsított hálózatkezeléssel történő létrehozását](create-vm-accelerated-networking-cli.md)ismertető témakört.
 
-A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet az adatelérési útról, ami csökkenti a legnagyobb igényű hálózati munkaterhelések késését, jitter-és CPU-kihasználtságát a támogatott virtuálisgép-típusoknál. Az alábbi ábra azt szemlélteti, hogyan kommunikálnak két virtuális gép a gyorsított hálózatkezeléssel és anélkül:
+A Gyorsított hálózatkezelés engedélyezi az egygyökerű I/O-virtualizálást (SR-IOV) a virtuális gépekre, nagy mértékben javítva a hálózati teljesítményt. A nagy teljesítményű elérési út megkerüli az adatelérési úton lévő gazdagépet, ami csökkenti a legnagyobb igényű hálózati számítási feladatok késését, jitterét és processzorhasználatát a támogatott virtuálisgép-típusokon. Az alábbi ábra azt szemlélteti, hogyan kommunikálnak két virtuális gép a gyorsított hálózatkezeléssel és anélkül:
 
 ![Azure-beli virtuális gépek közötti kommunikáció gyorsított hálózatkezeléssel és anélkül](./media/create-vm-accelerated-networking/accelerated-networking.png)
 

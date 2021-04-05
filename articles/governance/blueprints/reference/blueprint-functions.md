@@ -4,10 +4,10 @@ description: Ismerteti azokat a funkciókat, amelyek az Azure-tervrajzok és-hoz
 ms.date: 01/27/2021
 ms.topic: reference
 ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919274"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
@@ -34,7 +34,7 @@ Egy olyan objektumot ad vissza, amely az adott tervrajz-összetevők kimenetéve
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | artifactName |Yes |sztring |Egy tervrajz-összetevő neve. |
 
@@ -123,7 +123,7 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | karakterlánc1 |Yes |sztring |Az Összefűzés első értéke. |
 | További argumentumok |No |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
@@ -148,7 +148,7 @@ Egy terv paramétereinek értékét adja vissza. A megadott paraméter nevét me
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
 
@@ -269,7 +269,7 @@ Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | placeholderName |Yes |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
 
