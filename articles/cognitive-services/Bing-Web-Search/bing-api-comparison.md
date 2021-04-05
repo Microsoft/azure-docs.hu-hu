@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96349537"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Mi a Bing Search API-k?
@@ -36,7 +36,7 @@ Vegye fontolóra a Bing Web Search API használatát olyan alkalmazásokban, ame
 
 A következő Bing Search API-k adott tartalmat adnak vissza a webről, például képekből, hírekből, helyi vállalkozásokból és videókból.
 
-| Bing API | Description |
+| Bing API | Leírás |
 | -- | -- |
 | [Entity Search](../Bing-Entities-Search/overview.md) | A Bing Entity Search API az entitásokat tartalmazó keresési eredményeket adja vissza, amelyek lehetnek személyek, helyek vagy dolgok. A lekérdezéstől függően az API egy vagy több olyan entitást ad vissza, amely megfelel a keresési lekérdezésnek. A keresési lekérdezés tartalmazhatja a figyelemreméltó személyeket, a helyi vállalkozásokat, a tereptárgyak, a célhelyeket és egyebeket is. |
 | [Image Search](../Bing-Image-Search/overview.md) | A Bing Image Search API segítségével megkeresheti és megkeresheti a [Bing.com/images](https://www.Bing.com/images)hasonló, magas színvonalú statikus és animált képeket. A keresések pontosításával belefoglalhatja vagy kizárhatja a képeket az attribútumok alapján, beleértve a méretet, a színt, a licencet és a frissességet is. Emellett megkeresheti a trendek képeit, képeket tölthet fel, és megtekintheti őket, és megjelenítheti a miniatűr előnézeteket. |

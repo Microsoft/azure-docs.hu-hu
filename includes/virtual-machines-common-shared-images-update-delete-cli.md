@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
 ms.openlocfilehash: 4392e7f146f13e581f722b94f13038ad8abff0ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102244869"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
@@ -20,12 +20,12 @@ ms.locfileid: "102244869"
 Bizonyos korlátozások vonatkoznak a frissítésre. A következő elemek frissíthetők: 
 
 Megosztott képgyűjtemény:
-- Description
+- Leírás
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Description
+- Leírás
 - Élettartam vége
 
 Rendszerkép verziója:
