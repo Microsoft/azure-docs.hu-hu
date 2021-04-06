@@ -4,10 +4,10 @@ description: Ez a cikk részletes útmutatást nyújt az adott esemény-repliká
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97934611"
 ---
 # <a name="event-replication-tasks-patterns"></a>Esemény-replikációs feladatok mintái
@@ -16,7 +16,7 @@ Az [összevonás áttekintése](event-hubs-federation-overview.md) és a [replik
 
 Ebben a cikkben részletesen ismertetjük a megvalósítási útmutatót az Áttekintés szakaszban Kiemelt minták közül.
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 A replikációs minta az eseményeket egy adott esemény központból a következőre másolja, vagy egy Event hub-ból egy másik célhelyre, például egy Service Bus-várólistára. Az események továbbítása az esemény hasznos adatainak módosítása nélkül történik.
 

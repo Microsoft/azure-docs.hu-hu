@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104654662"
 ---
 # <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Hozzon létre egy lekérdezést a szemantikai feliratok számára Cognitive Search
@@ -98,7 +98,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 A következő táblázat összefoglalja a szemantikai lekérdezésekben használt lekérdezési paramétereket, hogy azok holisztikusan lássák őket. Az összes paraméter listáját itt tekintheti meg: [dokumentumok keresése (REST előzetes verzió)](/rest/api/searchservice/preview-api/search-documents)
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 |-----------|-------|-------------|
 | queryType | Sztring | Az érvényes értékek közé tartozik az egyszerű, a teljes és a szemantikai érték. Szemantikai lekérdezésekhez a "szemantika" érték szükséges. |
 | queryLanguage | Sztring | Szemantikai lekérdezésekhez szükséges. Jelenleg csak az "en-us" van implementálva. |
