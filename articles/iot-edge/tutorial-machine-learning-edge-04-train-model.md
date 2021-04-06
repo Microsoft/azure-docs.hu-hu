@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 16d5fe90be71f39d448e4c1ce10c0373f6bfc86c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103463102"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
@@ -163,7 +163,7 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 1. Ellenőrizze, hogy a következő fájlok lettek-e létrehozva.
 
-    | Fájl | Description |
+    | Fájl | Leírás |
     | --- | --- |
     | ./aml_config/.azureml/config.jsbekapcsolva | A Machine Learning munkaterület létrehozásához használt konfigurációs fájl. |
     | ./aml_config/model_config.jsbekapcsolva | Konfigurációs fájl, amelyre telepíteni kell a modellt az Azure-beli **turbofanDemo** Machine learning munkaterületen. |

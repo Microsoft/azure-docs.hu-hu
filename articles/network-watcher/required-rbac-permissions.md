@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 47418b9c5235255ff7dbf4a1a151e51e4c9aba58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98019669"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Az Azure szerepköralapú hozzáférés-vezérlési engedélyei a Network Watcher képességek használatához
@@ -103,7 +103,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi
 
 Network Watcher képességekhez a következő műveletek is szükségesek:
 
-| Művelet (ek)                                                           | Description                                                    |
+| Művelet (ek)                                                           | Leírás                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Authorization/ \* /READ                                     | Azure-beli szerepkör-hozzárendelések és szabályzat-definíciók beolvasásához használatos          |
 | Microsoft. Resources/Subscriptions/resourceGroups/READ               | Egy előfizetésben lévő összes erőforráscsoport enumerálására használatos    |
