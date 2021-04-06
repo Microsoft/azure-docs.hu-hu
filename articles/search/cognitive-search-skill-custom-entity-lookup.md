@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97844952"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
@@ -47,7 +47,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Description                   |
+| Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | `text`          | Az elemezni kívánt szöveg.          |
 | `languageCode`    | Választható. Az alapértelmezett szint a `"en"`.  |
@@ -56,7 +56,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 
-| Kimenet neve      | Description                   |
+| Kimenet neve      | Leírás                   |
 |---------------|-------------------------------|
 | `entities` | Olyan objektumok tömbje, amelyek tartalmazzák a talált egyezésekre vonatkozó információkat, valamint a kapcsolódó metaadatokat. Az azonosított entitások mindegyike a következő mezőket tartalmazza:  <ul> <li> *Name (név*): a legfelső szintű entitás azonosítva. Az entitás a "normalizált" űrlapot jelöli. </li> <li> *azonosító*: az entitás egyedi azonosítója, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *Leírás*: az entitások leírása a felhasználó által az "egyéni entitás definíciójának formátuma" kifejezésben meghatározott módon. </li> <li> *írja be a következőt:* Az entitás típusa, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *altípus:* Az entitás altípusa a felhasználó által az "egyéni entitás definíciójának formátuma" beállításban meghatározott.</li>  <li> *egyezések*: gyűjtemény, amely leírja az adott entitáshoz tartozó összes egyezést a forrás szövegén. Minden egyezés a következő tagokkal fog rendelkezni: </li> <ul> <li> *text (szöveg*): a forrás dokumentum szövege megegyezik a nyers szöveggel. </li> <li> *eltolás*: az a hely, ahol a egyezés megtalálható a szövegben. </li> <li> *length (hossz*): az egyező szöveg hossza. </li> <li> *matchDistance*: a megfeleltetéstől eltérő karakterek száma az eredeti entitás neve vagy aliasa volt.  </li> </ul> </ul>
   |
@@ -145,7 +145,7 @@ A JSON-definíció összetettebb példája opcionálisan megadhatja az egyes ent
 
 Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs paramétereket, amelyekkel meghatározhatja az entitások egyeztetését:
 
-|  Mező neve  |        Description  |
+|  Mező neve  |        Leírás  |
 |--------------|----------------------|
 | `name` | A legfelső szintű entitás leírója A képzettségi kimenetben szereplő egyezések ezen név szerint vannak csoportosítva, és a talált szöveg "normalizált" formáját jelölik.  |
 | `description`  | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
@@ -160,7 +160,7 @@ Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs 
 | `defaultFuzzyEditDistance` | Választható Megváltoztatja az entitás alapértelmezett homályos szerkesztési távolságának értékét. Az összes alias fuzzyEditDistance alapértelmezett értékének módosítására használható. |
 | `aliases` | Választható Összetett objektumok tömbje, amellyel alternatív helyesírásokat vagy szinonimákat adhat meg a gyökér entitás nevéhez. |
 
-| Alias tulajdonságai | Description |
+| Alias tulajdonságai | Leírás |
 |------------------|-------------|
 | `text`  | Egy megcélzott entitás nevének alternatív helyesírása vagy ábrázolása.  |
 | `caseSensitive` | Választható Ugyanaz, mint a legfelső szintű "caseSensitive" paraméter, de csak erre az aliasra vonatkozik. |

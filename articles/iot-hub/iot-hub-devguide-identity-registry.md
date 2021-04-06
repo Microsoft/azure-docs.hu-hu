@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93146926"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
@@ -188,7 +188,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás iker�
 
 Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Description |
+| Tulajdonság | Beállítások | Leírás |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
@@ -212,7 +212,7 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 
 A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Description |
+| Tulajdonság | Beállítások | Leírás |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

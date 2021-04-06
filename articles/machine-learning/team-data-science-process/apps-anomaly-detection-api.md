@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93305703"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rendellenesség-észlelési API
@@ -115,7 +115,7 @@ Az alábbi ábrán egy példa látható a pontszám API által észlelt rendelle
 ### <a name="detectors"></a>Érzékelők
 Az anomáliák észlelése API három széles kategóriában támogatja az érzékelők használatát. Az egyes detektorok megadott bemeneti paramétereinek és kimenetének részletei a következő táblázatban találhatók.
 
-| Detektor kategóriája | Detektor | Description | Bemeneti paraméterek | Kimenetek |
+| Detektor kategóriája | Detektor | Leírás | Bemeneti paraméterek | Kimenetek |
 | --- | --- | --- | --- | --- |
 | Tüske-érzékelők |TSpike-detektor |A tüskék és a dips értékek észlelése az első és a harmadik quartiles alapján |*tspikedetector. érzékenység:* egész értéket vesz igénybe a 1-10 tartományban, alapértelmezett érték: 3; A magasabb értékek több szélsőséges értéket kapnak, így kevésbé érzékenyek |TSpike: bináris értékek – "1", ha a rendszer nyársat/dip-t észlel, máskülönben "0". |
 | Tüske-érzékelők | ZSpike-detektor |A tüskék és a dipsok észlelése attól függően, hogy a datapoints mennyi ideig tartanak |*zspikedetector. érzékenység:* egész értéket kell megtennie a 1-10 tartományban, alapértelmezett érték: 3; A magasabb értékek több szélsőséges értéket kapnak, ami kevésbé érzékeny |ZSpike: bináris értékek – "1", ha a rendszer nyársat/dip-t észlel, máskülönben "0". |
@@ -125,7 +125,7 @@ Az anomáliák észlelése API három széles kategóriában támogatja az érz�
 ### <a name="parameters"></a>Paraméterek
 A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi táblázat tartalmazza:
 
-| Bemeneti paraméterek | Description | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
+| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
 | érzékelők. historywindow |A anomália pontszám számításához használt előzmények (adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
 | érzékelők. spikesdips | Azt határozza meg, hogy csak tüskék, csak dips vagy mindkettő érzékelhető-e |Mindkettő |felsorolt |Mindkettő, tüskék, dips |Mindkettő |
@@ -138,7 +138,7 @@ A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi 
 ### <a name="output"></a>Kimenet
 Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
-| Kimenetek | Description |
+| Kimenetek | Leírás |
 | --- | --- |
 | Idő |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
 | Adatok |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |
@@ -161,7 +161,7 @@ A szezonális végpontban található érzékelők hasonlók a nem szezonális v
 
 A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi táblázat tartalmazza:
 
-| Bemeneti paraméterek | Description | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
+| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
 | előfeldolgozás. aggregationInterval |Összesítési időköz másodpercben a bemeneti idősorozatok összesítéséhez |0 (nem történt összesítés) |egész szám |0: az Összesítés kihagyása, > 0, máskülönben |5 perc – 1 nap, idősorozat-függő |
 | előfeldolgozás. aggregationFunc |Az adatnak a megadott AggregationInterval való összesítéséhez használt függvény |középérték |felsorolt |középérték, összeg, hossz |N/A |
@@ -181,7 +181,7 @@ A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi 
 ### <a name="output"></a>Kimenet
 Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
-| Kimenetek | Description |
+| Kimenetek | Leírás |
 | --- | --- |
 | Idő |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
 | OriginalData |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |

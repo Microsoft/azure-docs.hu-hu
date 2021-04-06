@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99550742"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Az Azure-alkalmazás konfigurációs eseményeire való reagálás
@@ -29,7 +29,7 @@ Tekintse meg a következőt: [Event Grid használata adatváltozási értesíté
 ## <a name="available-azure-app-configuration-events"></a>Elérhető Azure-alkalmazás konfigurációs eseményei
 Az Event Grid [esemény-előfizetések](../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Az Azure-alkalmazás konfigurációs esemény-előfizetései két típusú eseményt tartalmazhatnak:  
 
-> |Esemény neve|Description|
+> |Esemény neve|Leírás|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Kulcs-érték létrehozásakor vagy cseréjekor|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Kulcs-érték törlése után|
@@ -37,7 +37,7 @@ Az Event Grid [esemény-előfizetések](../event-grid/concepts.md#event-subscrip
 ## <a name="event-schema"></a>Eseményséma
 Az Azure-alkalmazás konfigurációs eseményei tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Azonosíthatja az alkalmazás konfigurációs eseményeit, mert a eventType tulajdonság a "Microsoft. AppConfiguration" karakterlánccal kezdődik. Event Grid esemény tulajdonságainak használatáról további információt [Event Grid Event Schema](../event-grid/event-schema.md)dokumentációban olvashat.  
 
-> |Tulajdonság|Típus|Description|
+> |Tulajdonság|Típus|Leírás|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |témakör|sztring|Az eseményt kibocsátó alkalmazás-konfiguráció teljes Azure Resource Manager azonosítója.|
 > |tárgy|sztring|Az esemény tárgyát képező kulcs-érték URI-ja.|

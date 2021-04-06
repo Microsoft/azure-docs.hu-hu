@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94888538"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
@@ -91,7 +91,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
 1.  A triggerben adja meg a figyelni kívánt riasztásokkal kapcsolatos információkat. További tulajdonságok megjelenítéséhez nyissa meg az **új paraméter hozzáadása** listát, és válasszon egy paramétert a tulajdonság hozzáadásához az triggerhez.
 
-   | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Description |
+   | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Leírás |
    |----------|-----------------|----------|------|-------------|
    | **Intervallum** | `interval` | Yes | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p><p>-Hónap: 1-16 hónap <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
    | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét** vagy **hónap** |

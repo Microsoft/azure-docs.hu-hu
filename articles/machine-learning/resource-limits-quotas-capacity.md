@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
 ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97930803"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Szolgáltatási korlátozások a Azure Machine Learning
@@ -33,7 +33,7 @@ Ez a szakasz az alapszintű kvótákat és a szabályozás küszöbértékeit so
 | RunId/ParentRunId | 256 karakter |
 | DataContainerId | 261 karakter |
 | DisplayName |256 karakter|
-| Description |5 000 karakter|
+| Leírás |5 000 karakter|
 | Tulajdonságok száma |50 |
 | Tulajdonság-kulcs hossza |100 karakter |
 | Tulajdonság értékének hossza |1 000 karakter |

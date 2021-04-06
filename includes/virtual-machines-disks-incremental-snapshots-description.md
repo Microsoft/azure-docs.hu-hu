@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 39750a86ccf781a10109e299e27a55a03173acb6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98900961"
 ---
 A növekményes Pillanatképek olyan felügyelt lemezek időpontos biztonsági mentései, amelyekben a rendszer csak a legutóbbi pillanatkép óta történt változásokat tartalmazza. Ha növekményes pillanatképből állít vissza lemezt, a rendszer újraépíti a teljes lemezt, amely a növekményes pillanatkép készítésekor a lemez időpontra történő biztonsági mentését jelöli. Ez az új képesség a felügyelt lemezes Pillanatképek számára potenciálisan költséghatékony lehet, mivel, ha nem választja ki, nem kell a teljes lemezt az egyes pillanatképekkel együtt tárolnia. A teljes pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemez vagy teljes pillanatkép létrehozásához.
