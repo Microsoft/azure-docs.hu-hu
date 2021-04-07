@@ -8,10 +8,10 @@ ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
 ms.openlocfilehash: 5f393e95a7d468ea2c6130077e42b25b038e839d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100376224"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Saját üzemeltetésű IR konfigurálása proxyként egy Azure-SSIS IRhoz Azure Data Factory
@@ -171,8 +171,8 @@ Az alábbi utasításokat követve engedélyezheti az egyéni/harmadik féltől 
 1. Telepítse az egyéni/külső gyártótól származó összetevőket SQL Server 2017 Azure-SSIS IR [standard/expressz egyéni telepítéssel](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
 1. Hozza létre a következő DTSPath-beállításkulcsokat a saját üzemeltetésű integrációs modulban, ha még nem léteznek:
-   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` beállításban a `C:\Program Files\Microsoft SQL Server\140\DTS\`
-   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` beállításban a `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\`
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` beállítás értéke `C:\Program Files\Microsoft SQL Server\140\DTS\`
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` beállítás értéke `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\`
    
 1. Telepítse az egyéni/külső gyártótól származó összetevőket SQL Server 2017 a saját üzemeltetésű IR-re a fenti DTSPath, és győződjön meg arról, hogy a telepítési folyamat:
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98209831"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
@@ -95,7 +95,7 @@ A teljes szöveges keresési lekérdezések esetében a találatok automatikusan
 
 A keresési eredmények általános jelentőséggel bírnak, ami az egyező eredményhalmaz más dokumentumaihoz viszonyított erősségét tükrözi. A pontszámok azonban nem mindig konzisztensek az egyik lekérdezéstől a következőig, így a lekérdezések használatakor kis eltérések jelenhetnek meg a keresési dokumentumok megrendelése során. A probléma oka több magyarázat is lehet.
 
-| Ok | Description |
+| Ok | Leírás |
 |-----------|-------------|
 | Adatvolatilitás | Az indexelési tartalom a dokumentumok hozzáadása, módosítása vagy törlése során változik. A kifejezés gyakorisága módosul, mert az index frissítései időben lesznek feldolgozva, ami hatással van a megfelelő dokumentumok keresési pontjaira. |
 | Több replika | Több replikát használó szolgáltatások esetén a lekérdezéseket párhuzamosan kell kiadni az egyes replikákkal. A keresési pontszám kiszámításához használt index statisztikáit a rendszer replika alapon számítja ki, a lekérdezési válaszban egyesítve és elrendezve az eredményeket. A replikák többnyire egymást tükrözik, de a statisztikák eltérőek lehetnek az állami különbségek miatt. Előfordulhat például, hogy az egyik replika törölte a statisztikához hozzájáruló dokumentumokat, amelyek más replikából lettek egyesítve. A replikák statisztikái közötti különbségek jellemzően kisebb indexekben figyelhetők meg. |

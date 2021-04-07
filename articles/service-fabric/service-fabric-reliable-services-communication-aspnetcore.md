@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791594"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core az Azure Service Fabric Reliable Services
@@ -472,7 +472,7 @@ Ha az internetre van kitéve, az állapot nélküli szolgáltatásnak olyan jól
 | Típus | Ajánlás | Jegyzetek |
 | ---- | -------------- | ----- |
 | Webkiszolgáló | Vércse | A vércse az előnyben részesített webkiszolgáló, mivel a Windows és a Linux rendszeren is támogatott. |
-| Port konfigurációja | Statikus | Jól ismert statikus portot kell konfigurálni a `Endpoints` ServiceManifest.xml konfigurációjában, például: 80 http vagy 443 for HTTPS. |
+| Portkonfiguráció | Statikus | Jól ismert statikus portot kell konfigurálni a `Endpoints` ServiceManifest.xml konfigurációjában, például: 80 http vagy 443 for HTTPS. |
 | ServiceFabricIntegrationOptions | Nincsenek | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
 | Példányszám | -1 | Tipikus használati esetekben a példányszám beállításának *-1* értékűnek kell lennie. Erre azért van szükség, hogy egy példány minden olyan csomóponton elérhető legyen, amely egy terheléselosztó által forgalmazott forgalmat fogad. |
 
@@ -497,7 +497,7 @@ A csak a fürtön belül hívott állapot nélküli szolgáltatások egyedi URL-
 | Típus | Ajánlás | Jegyzetek |
 | ---- | -------------- | ----- |
 | Webkiszolgáló | Vércse | Habár a belső állapot nélküli szolgáltatások esetében HTTP.sys is használhatja, a vércse a legjobb kiszolgáló, amely lehetővé teszi, hogy több szolgáltatási példány ossza meg a gazdagépet.  |
-| Port konfigurációja | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
+| Portkonfiguráció | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port hozzárendelésével ez a beállítás megakadályozza a korábban ismertetett, téves identitás problémáját. |
 | InstanceCount | bármelyik | A példányok számának beállítása a szolgáltatás üzemeltetéséhez szükséges bármely értékre beállítható. |
 
@@ -507,7 +507,7 @@ A csak a fürtön belül hívott állapot-nyilvántartó szolgáltatásoknak din
 | Típus | Ajánlás | Jegyzetek |
 | ---- | -------------- | ----- |
 | Webkiszolgáló | Vércse | A `HttpSysCommunicationListener` nem olyan állapot-nyilvántartó szolgáltatások általi használatra készült, amelyekben a replikák megosztják a gazdagép folyamatát. |
-| Port konfigurációja | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
+| Portkonfiguráció | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port hozzárendelésével ez a beállítás megakadályozza a korábban ismertetett, téves identitás problémáját. |
 
 ## <a name="next-steps"></a>Következő lépések

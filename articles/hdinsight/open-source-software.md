@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: fec4cff974031982c782c9265a7d3186d6bb0233
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942559"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Nyílt forráskódú szoftverek támogatása az Azure HDInsight
@@ -45,7 +45,7 @@ A fürt felhasználója a munkaterheléshez bármilyen, a Közösségben elérhe
 
 A HDInsight szolgáltatás számos módszert kínál az egyéni összetevők használatára. Ugyanez a támogatási szint érvényes, függetlenül attól, hogy az összetevő hogyan használható vagy van telepítve a fürtön. Az alábbi táblázat az egyéni összetevők HDInsight-fürtökön használt leggyakoribb módszereit ismerteti:
 
-|Használat |Description |
+|Használat |Leírás |
 |---|---|
 |Feladatbeküldés|Az egyéni összetevőket végrehajtó vagy használó Hadoop vagy más típusú feladatok elküldhető a fürtbe.|
 |Fürt testreszabása|A fürt létrehozása során megadhat további beállításokat és a fürtcsomópontokon telepített egyéni összetevőket.|
