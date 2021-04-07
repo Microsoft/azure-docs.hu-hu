@@ -7,10 +7,10 @@ ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c5ad4b21b428f38bbd4d9f7d19fa633c5161b5c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594180"
 ---
 # <a name="sky-reflections"></a>Égbolt tükröződése
@@ -103,7 +103,7 @@ A 2D-mintázatok környezeti térképként való használatakor a képnek [gömb
 
 Az Azure Remote rendering számos beépített környezeti leképezést biztosít, amelyek mindig elérhetők. Az összes beépített környezeti Térkép a cubemaps.
 
-|Azonosító                         | Description                                              | Ábrán                                                      |
+|Azonosító                         | Leírás                                              | Ábrán                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
 |builtin://Autoshop                 | Különféle szalagos fények, világos beltéri alapszintű megvilágítás    | ![Egy objektum megvilágításához használt SkyBox](media/autoshop.png)
 |builtin://BoilerRoom               | Világos beltéri fény beállítása, több ablakos fények      | ![Objektum BoilerRoom SkyBox](media/boiler-room.png)

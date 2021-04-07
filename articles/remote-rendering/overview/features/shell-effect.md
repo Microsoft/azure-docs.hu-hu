@@ -7,10 +7,10 @@ ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594163"
 ---
 # <a name="shell-rendering"></a>Shell-renderelés
@@ -23,7 +23,7 @@ A rendszerhéj által megjelenített objektumok megjelenését a globális álla
 
 `ShellRenderingSettings`Az osztály a globális rendszerhéj-renderelési tulajdonságokkal kapcsolatos beállításokat tartalmazza:
 
-| Paraméter      | Típus    | Description                                             |
+| Paraméter      | Típus    | Leírás                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Desaturation` | float   | Az általános végső objektum színére alkalmazandó detelítettségi mennyiség, a 0. tartomány (nincs kibontás) és 1 (teljes telítettség) között |
 | `Opacity`      | float   | A rendszerhéj által megjelenített objektumok opacitása 0 (láthatatlan) és 1 (teljesen átlátszatlan) közötti tartományban |

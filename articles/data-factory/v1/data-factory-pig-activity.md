@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 85c34bfc306b49bb826a342846bf5e4557e3052f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786362"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatátalakítás a Pig tevékenységgel Azure Data Factory
@@ -79,15 +79,15 @@ A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pi
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |A tevékenység neve |Igen |
-| leírás |A tevékenység által használt szöveg leírása |Nem |
-| típus |HDinsightPig |Igen |
-| bemenetek |A Pig tevékenység által felhasznált egy vagy több bemenet |Nem |
-| kimenetek |A Pig tevékenység által előállított egy vagy több kimenet |Igen |
-| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Igen |
-| parancsfájl |Adja meg a Pig-szkriptet beágyazottként |Nem |
-| scriptPath |Tárolja a Pig-szkriptet egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem |
-| meghatározza |Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz |Nem |
+| name |A tevékenység neve |Yes |
+| leírás |A tevékenység által használt szöveg leírása |No |
+| típus |HDinsightPig |Yes |
+| bemenetek |A Pig tevékenység által felhasznált egy vagy több bemenet |No |
+| kimenetek |A Pig tevékenység által előállított egy vagy több kimenet |Yes |
+| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Yes |
+| parancsfájl |Adja meg a Pig-szkriptet beágyazottként |No |
+| scriptPath |Tárolja a Pig-szkriptet egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |No |
+| meghatározza |Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz |No |
 
 ## <a name="example"></a>Példa
 Vegyünk például egy példa a game logs analyticsre, ahol a játékosok által a vállalat által elindított játékokkal töltött időt szeretné azonosítani.
