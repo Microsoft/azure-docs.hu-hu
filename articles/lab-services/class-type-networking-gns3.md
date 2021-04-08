@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthat be egy labort a Azure Lab Services h
 ms.topic: article
 ms.date: 01/19/2021
 ms.openlocfilehash: dec5dea13d5a89536a06da45fc57d33881a9b3ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99500512"
 ---
 # <a name="set-up-a-lab-to-teach-a-networking-class"></a>Tesztkörnyezet beállítása hálózati osztály tanításához 

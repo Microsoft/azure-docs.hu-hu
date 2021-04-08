@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521169"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Oktatóanyag: Azure Active Directory integráció a TeamSeer
@@ -120,13 +120,13 @@ Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához hajtsa v�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-teamseer-single-sign-on"></a>TeamSeer egyetlen Sign-On konfigurálása
+### <a name="configure-teamseer-single-sign-on&quot;></a>TeamSeer egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a TeamSeer vállalati webhelyre rendszergazdaként.
 
 1. Ugrás a **HR-rendszergazdára**.
 
-    ![A képernyőképen a TeamSeer ablakban kiválasztott H R rendszergazda látható.](./media/teamseer-tutorial/ic789634.png "HR-rendszergazda")
+    ![A képernyőképen a TeamSeer ablakban kiválasztott H R rendszergazda látható.](./media/teamseer-tutorial/ic789634.png &quot;HR-rendszergazda")
 
 1. Kattintson a **telepítés** elemre.
 
@@ -205,7 +205,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-teamseer-test-user"></a>TeamSeer-tesztelési felhasználó létrehozása
+### <a name="create-teamseer-test-user&quot;></a>TeamSeer-tesztelési felhasználó létrehozása
 
 Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a TeamSeer, a ShiftPlanning kell kiépíteni őket. TeamSeer esetén a kiépítés manuális feladat.
 
@@ -215,7 +215,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Te
 
 1. Lépjen a **HR rendszergazda \> felhasználók** elemre, majd kattintson **az új felhasználó varázsló futtatása** lehetőségre.
 
-    ![Képernyőfelvétel: a H R admin lap, amelyen kiválaszthatja a futtatni kívánt varázslót.](./media/teamseer-tutorial/ic789640.png "HR-rendszergazda")
+    ![Képernyőfelvétel: a H R admin lap, amelyen kiválaszthatja a futtatni kívánt varázslót.](./media/teamseer-tutorial/ic789640.png &quot;HR-rendszergazda")
 
 1. A **felhasználó adatai** szakaszban hajtsa végre a következő lépéseket:
 

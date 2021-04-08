@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 9df4c62a65fd133c6ea8dc84e33d7c7b02d94cbf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99494039"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
@@ -39,7 +39,7 @@ Az Azure Functions üzemelő példányok általában az alábbi erőforrásokbó
 > Habár nem kötelező, erősen ajánlott az alkalmazáshoz Application Insights konfigurálni.
 
 <a name="storage"></a>
-### <a name="storage-account"></a>A(z)
+### <a name="storage-account"></a>Tárfiók
 
 Egy Function alkalmazáshoz Azure Storage-fiók szükséges. Olyan általános célú fiókra van szüksége, amely támogatja a blobokat, a táblákat, a várólistákat és a fájlokat. További információ: [Azure functions Storage-fiókra vonatkozó követelmények](storage-considerations.md#storage-account-requirements).
 
@@ -137,7 +137,7 @@ A Function app erőforrás a **Microsoft. Web/Sites** és Kind **functionapp** t
 
 A Function alkalmazásnak tartalmaznia kell ezeket az Alkalmazásbeállítások:
 
-| Beállítás neve                 | Description                                                                               | Példaértékek                        |
+| Beállítás neve                 | Leírás                                                                               | Példaértékek                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Egy olyan Storage-fiókhoz tartozó kapcsolódási karakterlánc, amelyet a functions futtatókörnyezet a belső üzenetsor-kezelést használ | Lásd: [Storage-fiók](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Az Azure Functions futtatókörnyezet verziója                                                | `~3`                                  |
