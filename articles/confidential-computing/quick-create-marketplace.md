@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: aba23b67574fb74b7cd571dc5d4642bb8b991b93
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102566634"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Rövid útmutató: Azure bizalmas számítástechnikai virtuális gép üzembe helyezése a piactéren
@@ -77,7 +77,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fi
 1. A **módosítási méret** beállításnál válasszon egy olyan virtuális gépet, amely a méret választóban bizalmas számítási képességekkel rendelkezik. 
 
     > [!TIP]
-    > Meg kell jelennie a méretek **DC1s_v2**, **DC2s_v2**, **DC4s_V2** és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információ](virtual-machine-solutions.md).
+    > Meg kell jelennie a méretek **DC1s_v2**, **DC2s_v2**, **DC4s_V2** és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információk](virtual-machine-solutions.md).
 
 1. **Operációsrendszer-lemez típusa** esetén válassza ki a lemez típusát.
 

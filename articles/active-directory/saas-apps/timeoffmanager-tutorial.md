@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97608816"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a TimeOffManager
@@ -140,13 +140,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-timeoffmanager-sso"></a>TimeOffManager SSO konfigurálása
+## <a name="configure-timeoffmanager-sso&quot;></a>TimeOffManager SSO konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a TimeOffManager vállalati webhelyre rendszergazdaként.
 
 2. Válassza a **fiókbeállítások \> \> Sign-On beállítások lehetőséget**.
    
-    ![Képernyőfelvétel: a fiók beállításai közül kiválasztott egyszeres Sign-On beállítások.](./media/timeoffmanager-tutorial/ic795917.png "Egyszeres Sign-On beállítások")
+    ![Képernyőfelvétel: a fiók beállításai közül kiválasztott egyszeres Sign-On beállítások.](./media/timeoffmanager-tutorial/ic795917.png &quot;Egyszeres Sign-On beállítások")
 
 3. Az **egyszeres Sign-On beállítások** szakaszban hajtsa végre a következő lépéseket:
    

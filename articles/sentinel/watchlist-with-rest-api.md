@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/11/2021
 ms.author: yelevin
 ms.openlocfilehash: ea571f9b033ba82709a13c6d32649f3228ee04b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98798465"
 ---
 # <a name="manage-watchlists-in-azure-sentinel-using-rest-api"></a>A listák kezelése az Azure Sentinelben REST API használatával
@@ -33,7 +33,7 @@ Az Azure Sentinel a Azure Monitor Log Analytics részeként készült, és lehet
 
 Az összes List API-parancshoz a következő általános URI-paraméterek tartoznak:
 
-| Name | In | Kötelező | Típus | Description |
+| Name | In | Kötelező | Típus | Leírás |
 |-|-|-|-|-|
 | **SubscriptionId** | path | igen | GUID | Az Azure-előfizetés azonosítója |
 | **ResourceGroupName** | path | igen | sztring | az előfizetéshez tartozó erőforráscsoport neve |
@@ -58,7 +58,7 @@ Ezzel a paranccsal a munkaterülethez társított összes listát lekérdezheti 
 
 ### <a name="responses"></a>Válaszok
 
-| Állapotkód | Választörzs | Description |
+| Állapotkód | Választörzs | Leírás |
 |-|-|-|
 | 200/OK | Meglévő listák listája, vagy üres, ha nem található |  |
 | 400/hibás kérelem |  | Helytelen formátumú kérelem szintaxisa, érvénytelen lekérdezési paraméter... |
@@ -78,7 +78,7 @@ Ezzel a paranccsal egy adott, a munkaterülethez társított listát kérdezi le
 
 ### <a name="responses"></a>Válaszok
 
-| Állapotkód | Választörzs | Description |
+| Állapotkód | Választörzs | Leírás |
 |-|-|-|
 | 200/OK | A kért listához |  |
 | 400/hibás kérelem |  | Helytelen formátumú kérelem szintaxisa, érvénytelen lekérdezési paraméter... |
@@ -116,7 +116,7 @@ Az alábbi példa egy listáról szóló Create kérelem törzsét mutat be:
 
 ### <a name="responses"></a>Válaszok
 
-| Állapotkód | Választörzs | Description |
+| Állapotkód | Választörzs | Leírás |
 |-|-|-|
 | 200/OK | A kérelem által létrehozott, elemek nélküli listás |  |
 | 400/hibás kérelem |  | Helytelen formátumú kérelem szintaxisa, érvénytelen lekérdezési paraméter... |
@@ -137,7 +137,7 @@ Ez a parancs törli a listát és annak elemeit.
 
 ### <a name="responses"></a>Válaszok
 
-| Állapotkód | Választörzs | Description |
+| Állapotkód | Választörzs | Leírás |
 |-|-|-|
 | 200/OK | Üres válasz törzse |  |
 | 204/nincs tartalom | Üres válasz törzse | Nincs törölve |
@@ -176,7 +176,7 @@ Az alábbi példa egy listára vonatkozó, a feltételt hozzáadó/frissítő k�
 
 ### <a name="responses"></a>Válaszok
 
-| Állapotkód | Választörzs | Description |
+| Állapotkód | Választörzs | Leírás |
 |-|-|-|
 | 200/OK | A kérelem által létrehozott vagy frissített listához tartozó tétel |  |
 | 400/hibás kérelem |  | Helytelen formátumú kérelem szintaxisa, érvénytelen lekérdezési paraméter... |
@@ -197,7 +197,7 @@ Ez a parancs töröl egy meglévő listát.
 
 ### <a name="responses"></a>Válaszok
 
-| Állapotkód | Választörzs | Description |
+| Állapotkód | Választörzs | Leírás |
 |-|-|-|
 | 200/OK | Üres válasz törzse |  |
 | 204/nincs tartalom | Üres válasz törzse | Nincs törölve |

@@ -7,17 +7,17 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99089342"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player beépülő modul gyűjteménye #
 
 ## <a name="plugins"></a>Beépülő modulok ##
 
-| Beépülő modul neve                         | Bemutató URL-címe                    | Forráskód                | Description    |
+| Beépülő modul neve                         | Bemutató URL-címe                    | Forráskód                | Leírás    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | További funkciók                 | | | |
 | **Új!** AMP360Video                | [Bemutató](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | A beépülő modul lehetővé teszi a 360 videó megjelenítését az amp vagy az asztalon vagy a VR-kompatibilis eszközökön. A teljes dokumentáció [itt](https://doc.babylonjs.com/extensions/amp360video)érhető el: |

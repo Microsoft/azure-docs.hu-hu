@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100548250"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs biztonság
@@ -48,7 +48,7 @@ A **figyelési** hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ü
 
 A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcím esetében is engedélyezettek: **figyelés**, **Küldés** és **felügyelet**.
 
-| Jogcím   | Description                                          | Engedélyezett műveletek |
+| Jogcím   | Leírás                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Figyelés  | Egyszeri regisztrációk létrehozása/frissítése, olvasása és törlése | Regisztráció létrehozása/frissítése<br><br>Regisztráció beolvasása<br><br>Egy leíró összes regisztrációjának olvasása<br><br>Regisztráció törlése |
 | Küldés    | Üzenetek küldése az értesítési központnak                | Üzenet küldése |
