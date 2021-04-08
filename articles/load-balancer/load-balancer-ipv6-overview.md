@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94700689"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Az IPv6 használatának áttekintése Azure Load Balancer
@@ -40,12 +40,12 @@ Az alábbi ábrán a Azure Load Balancer IPv6-funkcióit mutatjuk be.
 
 Az üzembe helyezést követően egy IPv4-vagy IPv6-kompatibilis internetes ügyfél képes kommunikálni az Azure internetre irányuló Load Balancer nyilvános IPv4-vagy IPv6-címeivel (vagy a gazdagépekkel). A terheléselosztó a hálózati címfordítás (NAT) használatával irányítja az IPv6-csomagokat a virtuális gépek magánhálózati IPv6-címeire. Az IPv6-alapú internetes ügyfél nem tud közvetlenül kommunikálni a virtuális gépek IPv6-címeként.
 
-## <a name="features"></a>Funkciók
+## <a name="features&quot;></a>Funkciók
 
 A Azure Resource Manager által üzembe helyezett virtuális gépek natív IPv6-támogatása a következőket biztosítja:
 
 1. Elosztott terhelésű IPv6-szolgáltatások IPv6-ügyfelek számára az interneten
-2. Natív IPv6-és IPv4-végpontok a virtuális gépeken ("kettős halmozott")
+2. Natív IPv6-és IPv4-végpontok a virtuális gépeken (&quot;kettős halmozott")
 3. Bejövő és kimenő irányú natív IPv6-kapcsolatok
 4. A támogatott protokollok, például a TCP, az UDP és a HTTP (S) teljes körű szolgáltatási architektúrát tesznek lehetővé
 

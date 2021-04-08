@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 88496a39b0186cefb7c64e227530b5d73e693094
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92780478"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Egyetlen bérlő visszaállítása adatbázis-bérlői SaaS-alkalmazással
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban két adathelyreállítási mintát tanul:
 > * Adatbázis visszaállítása párhuzamos adatbázisba (egymás mellett).
 > * Állítsa vissza az adatbázist helyben, a meglévő adatbázist lecserélve.
 
-| Mintázat | Description |
+| Mintázat | Leírás |
 |:--|:--|
 | Visszaállítás egy párhuzamos adatbázisba | Ez a minta olyan feladatokhoz használható, mint például a felülvizsgálat, a naplózás és a megfelelőség, hogy a bérlő egy korábbi pontról vizsgálja meg az adataikat. A bérlő aktuális adatbázisa online állapotú és változatlan marad. |
 | Visszaállítás helyben | Ez a minta jellemzően egy bérlő korábbi pontra történő helyreállítására szolgál, miután egy bérlő véletlenül törli vagy megsérült az adatokat. Az eredeti adatbázis ki van kapcsolva a sorban, és a visszaállított adatbázisra vált. |

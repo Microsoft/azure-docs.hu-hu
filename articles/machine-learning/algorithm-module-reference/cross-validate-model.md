@@ -86,7 +86,7 @@ A modul első kimenete tartalmazza az egyes sorokhoz tartozó forrásadatokat, v
 
 Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki a **pontozásos eredmények megjelenítése** elemet.
 
-| Új oszlop neve      | Description                              |
+| Új oszlop neve      | Leírás                              |
 | -------------------- | ---------------------------------------- |
 | Pontozott címkék        | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Az egyes sorok előre jelzett értékét tartalmazza. |
 | Pontozásos valószínűségek | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Azt jelzi, hogy az érték becsült valószínűsége a **pontozásos címkékben**. |
