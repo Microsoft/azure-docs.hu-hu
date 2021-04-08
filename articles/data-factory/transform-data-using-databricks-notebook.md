@@ -159,7 +159,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text("input", "","")
+           dbutils.widgets.text("input&quot;, &quot;&quot;,&quot;")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)
