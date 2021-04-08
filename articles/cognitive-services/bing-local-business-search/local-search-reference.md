@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 9791d99598fe3d043c42a37e2f4993edd6c5b3ba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96487133"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>A Bing helyi üzleti keresési API v7-dokumentációja
@@ -55,7 +55,7 @@ A kérelemnek a HTTPS protokollt kell használnia.
 ## <a name="headers"></a>Fejlécek  
 A következő fejlécek lehetnek a kérések és válaszok.  
   
-|Fejléc|Description|  
+|Fejléc|Leírás|  
 |------------|-----------------|  
 |Elfogadás|Választható kérelemfejléc.<br /><br /> Az alapértelmezett adathordozó-típus az Application/JSON. Annak megadásához, hogy a válasz [JSON-ld-](https://json-ld.org/)t használ, állítsa az elfogadás fejlécet Application/ld + JSON értékre.|  
 |<a name="acceptlanguage"></a>Accept-Language|Választható kérelemfejléc.<br /><br /> Nyelvek vesszővel elválasztott listája a felhasználói felület sztringjeihez. A lista prioritás szerinti csökkenő sorrendben jelenik meg. További információért, például a várt formátummal kapcsolatos részletekért lásd: [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ez a fejléc és a [](#setlang)setLang&mdash; lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt.<br /><br /> Ha beállítja ezt a fejlécet, akkor a cc lekérdezési paramétert is meg kell adnia. A megfelelő piac meghatározásához a Bing a listában talált első támogatott nyelvet használja, és kombinálja azt a `cc` paraméter értékével. Ha a lista nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot, vagy másik lehetőségként egy összesített vagy alapértelmezett piacot használ az eredmények beszerzéséhez. A Bing által használt piac meghatározásához tekintse meg a BingAPIs-Market fejlécet.<br /><br /> Csak akkor használja ezt a fejlécet és a `cc` lekérdezési paramétert, ha több nyelvet ad meg. Ellenkező esetben használja az [mkt](#mkt) és a [setLang](#setlang) lekérdezési paramétereket.<br /><br /> A felhasználóifelület-sztring egy olyan sztring, amelyet feliratként használnak a felhasználói felületen. A JSON-válaszobjektumok tartalmaznak néhány felhasználóifelület-sztringet. A válaszobjektumokban található, a Bing.com tulajdonságaira mutató hivatkozások a megadott nyelvet alkalmazzák.|  
@@ -92,7 +92,7 @@ A kérelem tartalmazhat a következő lekérdezési paramétereket. Tekintse meg
 Az alábbi JSON-válaszok objektumai lehetnek a válaszban. Ha a kérelem sikeres, a válasz legfelső szintű objektuma a [SearchResponse](#searchresponse) objektum. Ha a kérelem meghiúsul, a legfelső szintű objektum a [ErrorResponse](#errorresponse) objektum.
 
 
-|Objektum|Description|  
+|Objektum|Leírás|  
 |------------|-----------------|  
 |[Helyben](#place)|A helyi üzleti adatok, például egy étterem vagy egy Hotel adatainak meghatározása.|  
 
@@ -226,7 +226,7 @@ Vegye figyelembe, hogy ha a szolgáltatás egy szolgáltatásmegtagadási támad
 
 A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:  
   
-|Állapotkód|Description|  
+|Állapotkód|Leírás|  
 |-----------------|-----------------|  
 |200|Sikeres művelet.|  
 |400|A lekérdezési paraméterek egyike hiányzik vagy érvénytelen.|  
@@ -266,7 +266,7 @@ Ha a kérelem sikertelen, a válasz egy [ErrorResponse](#errorresponse) objektum
 
 A lehetséges hibakód és az alhibakódok értéke a következő:
 
-|Code|Alkód|Description
+|Code|Alkód|Leírás
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A HTTP-állapotkód 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolva|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha HTTPS helyett HTTP protokollt használ, a Bing visszaadja a HttpNotAllowed, a HTTP-állapotkód pedig 410.

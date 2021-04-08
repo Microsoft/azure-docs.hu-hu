@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 86e1d74d5e4ab9f6e799c73bcf0d807d0d874f21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92219717"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Az Azure FXT Edge Filer-hardver állapotának figyelése
@@ -60,7 +60,7 @@ A bal oldali állapotjelzők folytonos sárga fényt mutatnak, ha hiba van a ren
 
 Ha a megoldások kipróbálása után is megjelenik a hibaüzenet, [forduljon az ügyfélszolgálathoz](fxt-support-ticket.md) segítségért.
 
-| Ikon | Description | Hibafeltétel | Lehetséges megoldások |
+| Ikon | Leírás | Hibafeltétel | Lehetséges megoldások |
 |----------------|---------------|--------------------|----------------------|
 | ![meghajtó ikonja](media/fxt-monitor/fxt-hd-icon.jpg) | Meghajtó állapota | Meghajtó-hiba | Ellenőrizze a rendszer eseménynaplóját, és állapítsa meg, hogy a meghajtó hibával rendelkezik-e, vagy <br>Futtassa a megfelelő online diagnosztikai tesztet; Indítsa újra a rendszert, és futtassa a beágyazott diagnosztikát (ePSA), vagy <br>Ha a meghajtók RAID-tömbben vannak konfigurálva, indítsa újra a rendszert, és adja meg a gazdagép-adapter konfigurációs segédprogramjának programját |
 |![hőmérséklet ikon](media/fxt-monitor/fxt-temp-icon.jpg) | Hőmérséklet állapota | Termikus hiba – például egy ventilátor meghiúsult, vagy a környezeti hőmérséklet a megengedett tartományon kívül esik. | A következő címezhető feltételek keresése: <br>Egy hűtési ventilátor hiányzik vagy nem sikerült <br>A rendszer fedelét, az Air lepel, a memóriamodul üres vagy a hátsó kitöltő zárójelet eltávolítja <br>A környezeti hőmérséklet túl magas <br>A külső légáram akadályozva van |
