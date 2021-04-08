@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96327508"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
@@ -73,7 +73,7 @@ Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a 
    > Az Exportálás az oldal Blobokkal működik, amelyeket a klasszikus és a Resource Manager-beli Storage-fiókok is támogatnak, de jelenleg nem támogatottak a blob Storage-fiókok. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat.
    >
 
-    ![A(z)](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
+    ![Tárfiók](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
 3. Válassza ki a kívánt BLOB-tárolót, és kattintson a **kiválasztás** gombra. Ha új tárolót szeretne használni, kattintson a **tároló hozzáadása** lehetőségre az első hozzáadásához, majd válassza ki a listából.
 
     ![A contoso55 tárolóban a + Container beállítás ki van emelve. Egy tároló szerepel a listán, a cachesaves, és ki van választva és ki van emelve. A kiválasztási lehetőség ki van választva és ki van emelve.](./media/cache-how-to-import-export-data/cache-export-data-container.png)

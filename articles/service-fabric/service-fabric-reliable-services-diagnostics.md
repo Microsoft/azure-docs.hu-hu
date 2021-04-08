@@ -4,10 +4,10 @@ description: Az Azure állapot-nyilvántartó Reliable Services diagnosztikai fu
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98789330"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
@@ -93,7 +93,7 @@ Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric pa
 
 A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric Transactional Replicator` kategóriába
 
- Számláló neve | Description |
+ Számláló neve | Leírás |
 | --- | --- |
 | Tranzakció művelet/s megkezdése | A másodpercenként létrehozott új írási tranzakciók száma|
 | Tranzakció művelet/mp | A megbízható gyűjteményeken végrehajtott hozzáadási/frissítési/törlési műveletek száma másodpercenként.|
@@ -106,7 +106,7 @@ A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a
 
 A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric TStore` kategóriába
 
- Számláló neve | Description |
+ Számláló neve | Leírás |
 | --- | --- |
 | Elemek száma | Az áruházban lévő elemek száma.|
 | Lemezméret | Az áruházhoz tartozó ellenőrzőpont-fájlok teljes mérete (bájtban).|

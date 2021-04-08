@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: a5db000ad76f23be60d279923a590204c2fcf5e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100377380"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
@@ -22,7 +22,7 @@ Ez a cikk a Azure Migrateával kapcsolatos gyakori kérdésekre ad választ. Ha 
 
 ## <a name="what-is-azure-migrate"></a>Mi az az Azure Migrate?
 
-Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információ](migrate-services-overview.md).
+Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információk](migrate-services-overview.md).
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Mire használhatom a Azure Migrate?
 
