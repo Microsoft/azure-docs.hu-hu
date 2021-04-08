@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104585434"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Táblázatok kialakítása a szinapszis SQL használatával az Azure szinapszis Analyticsben
@@ -206,7 +206,7 @@ A dedikált SQL-készlet esetében az elsődleges kulcs csak akkor támogatott, 
 
 A dedikált SQL-készlet esetében új üres táblaként hozhat létre táblát. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Description |
+| T-SQL-utasítás | Leírás |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storageban tárolódik. |

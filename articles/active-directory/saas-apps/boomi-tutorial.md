@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
 ms.openlocfilehash: c58566c628eedd1dbc3d86ae6a142156cbf31211
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104585196"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Boomi
@@ -155,17 +155,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     f. Kattintson a **Save (Mentés** ) gombra.
 
-### <a name="create-boomi-test-user"></a>Boomi-tesztelési felhasználó létrehozása
+### <a name="create-boomi-test-user&quot;></a>Boomi-tesztelési felhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Boomi, a Boomi-ben kell kiépíteni őket. Boomi esetén a kiépítés manuális feladat.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
+### <a name=&quot;to-provision-a-user-account-perform-the-following-steps&quot;></a>Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a Boomi vállalati webhelyre rendszergazdaként.
 
 1. Bejelentkezés után navigáljon a felhasználók **felügyeletéhez** , és nyissa meg a **felhasználókat**.
 
-    ![Képernyőfelvétel: a felhasználó-felügyeleti oldal, amelyen a felhasználók ki vannak választva.](./media/boomi-tutorial/user.png "Felhasználók")
+    ![Képernyőfelvétel: a felhasználó-felügyeleti oldal, amelyen a felhasználók ki vannak választva.](./media/boomi-tutorial/user.png &quot;Felhasználók")
 
 1. Kattintson **+**  a ikon gombra, és megnyílik a **felhasználói szerepkörök hozzáadása/karbantartása** párbeszédpanel.
 

@@ -1,5 +1,5 @@
 ---
-title: Az elemzési adatszolgáltatások általános kérdéseinek programozott hozzáférése
+title: Gyakori kérdések az elemzési adatokhoz való szoftveres hozzáféréssel kapcsolatban
 description: Az elemzési adatoknak a partner Centerben való programozott elérésével kapcsolatos gyakori kérdések a kereskedelmi Marketplace-ajánlatokhoz.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 393a718632138f4ffcf26e4875eea9ba3d886897
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583812"
 ---
-# <a name="programmatic-access-of-analytics-data-common-questions"></a>Az elemzési adatszolgáltatások általános kérdéseinek programozott hozzáférése
+# <a name="programmatic-access-of-analytics-data-common-questions"></a>Gyakori kérdések az elemzési adatokhoz való szoftveres hozzáféréssel kapcsolatban
 
 Ez a cikk gyakran feltett kérdéseket tárgyal arról, hogy miként lehet programozott módon hozzáférni az elemzési adataihoz a partner Centerben a kereskedelmi piactéren kínált ajánlatokhoz.
 
