@@ -9,10 +9,10 @@ ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93406702"
 ---
 1. Az Azure Signaler szolgáltatás erőforrásának létrehozásához először jelentkezzen be a [Azure Portalba](https://portal.azure.com). Az oldal bal felső részén válassza az **+ erőforrás létrehozása** lehetőséget. A **Keresés a piactéren** szövegmezőbe írja be a **signaler szolgáltatást**.
@@ -21,7 +21,7 @@ ms.locfileid: "93406702"
 
 3. Az új **jelző** beállításai lapon adja hozzá a következő beállításokat az új jelző erőforráshoz:
 
-    | Name | Javasolt érték | Description |
+    | Name | Javasolt érték | Leírás |
     | ---- | ----------------- | ----------- |
     | Erőforrás neve | *testsignalr* | Írja be a SignalR-erőforráshoz használandó egyedi erőforrásnevet. A névnek 1 és 63 karakter közötti sztringnek kell lennie, és csak számokat, betűket és kötőjel ( `-` ) karaktert tartalmazhat. A név nem kezdődhet és nem végződhet a kötőjel karakterrel, és az egymást követő kötőjelek nem érvényesek.|
     | Előfizetés | Válassza ki az előfizetését |  Válassza ki a SignalR teszteléséhez használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, akkor automatikusan ki van választva, és az **előfizetés** legördülő lista nem jelenik meg.|
