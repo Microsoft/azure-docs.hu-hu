@@ -4,10 +4,10 @@ description: Ismerje meg az Azure VMware Solution szoftver által meghatározott
 ms.topic: conceptual
 ms.date: 03/13/2021
 ms.openlocfilehash: aff66e01ae4b056eb082d2000611718b1a5cf66a
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104773920"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak

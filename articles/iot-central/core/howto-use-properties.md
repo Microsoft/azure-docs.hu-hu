@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98119084"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Tulajdonságok használata Azure IoT Central-megoldásokban
@@ -45,7 +45,7 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Unit (Egység)            | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**.                                                                                                                                                              |
 | Megjelenítési egység    | Irányítópultokon és űrlapokon használható megjelenítési egység.                                                                                                                                                                                    |
 | Megjegyzés         | A tulajdonság képességével kapcsolatos megjegyzések.                                                                                                                                                                                        |
-| Description     | A tulajdonság funkciójának leírása.                                                                                                                                                                                          |
+| Leírás     | A tulajdonság funkciójának leírása.                                                                                                                                                                                          |
 
 A tulajdonságok az eszköz sablonjának felületén is meghatározhatók, ahogy az itt látható:
 
@@ -210,7 +210,7 @@ A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező k
 * `av` az eszközre eljuttatott verziószám.
 * `ad` egy paraméter-karakterlánc leírása.
 
-| Érték | Címke | Description |
+| Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202` vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben vagy folyamatban van. |

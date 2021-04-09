@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
 ms.openlocfilehash: e877f775c6a7bc83ce6c4a559c9f74b606c952fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359489"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Alkalmazási minták és fejlesztési stratégiák az Azure-beli SQL Serverhoz Virtual Machines
@@ -42,7 +42,7 @@ Számos különböző típusú n szintű alkalmazást fejleszthet, ha elválaszt
 
 Egy tipikus *n* szintű alkalmazás tartalmazza a megjelenítési szintet, az üzleti szintet és az adatréteget:
 
-| Szint | Description |
+| Szint | Leírás |
 | --- | --- |
 | **Megjelenítés** |A *megjelenítési szint* (webes réteg, előtér-réteg) az a réteg, amelyben a felhasználók egy alkalmazással kommunikálnak. |
 | **Üzleti** |Az *üzleti szint* (középső réteg) az a réteg, amelyet a megjelenítési réteg és az adatréteg használ egymással való kommunikációhoz, és a rendszer alapvető funkcióit tartalmazza. |

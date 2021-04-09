@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b1c8bf5cb8944b990737d557326b2741716bab3d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579756"
 ---
 # <a name="relyingparty"></a>RelyingParty
@@ -75,7 +75,7 @@ A következő példa egy **RelyingParty** elemet mutat be a *B2C_1A_signup_signi
 
 A választható **RelyingParty** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Az RP-alkalmazás alapértelmezett felhasználói útja. |
 | Végpontok | 0:1 | A végpontok listája. További információ: UserInfo- [végpont](userinfo-endpoint.md). |
@@ -86,7 +86,7 @@ A választható **RelyingParty** elem a következő elemeket tartalmazza:
 
 A **végpontok** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Végpont | 1:1 | Egy végpontra mutató hivatkozás.|
 
@@ -138,7 +138,7 @@ A **DefaultUserJourney** elem a következő attribútumot tartalmazza:
 
 A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Az egyszeri bejelentkezés (SSO) munkamenet-viselkedésének hatóköre a felhasználói úton. |
 | SessionExpiryType |0:1 | A munkamenet hitelesítési viselkedése. Lehetséges értékek: `Rolling` vagy `Absolute` . Az `Rolling` érték (alapértelmezett) azt jelzi, hogy a felhasználó addig marad bejelentkezve, amíg a felhasználó folyamatosan aktív az alkalmazásban. Az `Absolute` érték azt jelzi, hogy a felhasználónak az alkalmazás-munkamenet élettartama által megadott időszak után újra hitelesítenie kell magát. |
@@ -184,7 +184,7 @@ A következő példa egy nevű paramétert ad `campaignId` át `hawaii` a lekér
 
 A **ContentDefinitionParameters** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Egy olyan karakterlánc, amely tartalmazza a Content definition URI-azonosító lekérdezési karakterláncához fűzött kulcs érték párt. |
 
@@ -215,10 +215,10 @@ A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
 A **kivonatjogcím** a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | A technikai profil nevét tartalmazó karakterlánc. |
-| Description | 0:1 | A technikai profil leírását tartalmazó karakterlánc. |
+| Leírás | 0:1 | A technikai profil leírását tartalmazó karakterlánc. |
 | Protokoll | 1:1 | Az összevonáshoz használt protokoll. |
 | Metaadatok | 0:1 | A protokoll által a végponttal való kommunikációhoz használt kulcs/érték párokból álló *elemek* gyűjteménye a függő entitás és más közösségi résztvevők közötti interakció konfigurálásához. |
 | OutputClaims | 1:1 | A technikai profilban kimenetként elkészített jogcím-típusok listája. Ezen elemek mindegyike egy olyan **claimType** hivatkozik, amely már definiálva van a **ClaimsSchema** szakaszban vagy egy olyan házirendben, amelyből a házirend-fájl örököl. |
@@ -249,7 +249,7 @@ Ha a protokoll `SAML` , a metaadat elem a következő elemeket tartalmazza. Tov�
 
 A **OutputClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | A várt jogcím-típus neve a támogatott listában ahhoz a Szabályzathoz, amelyre a függő entitás előfizet. Ez a jogcím a technikai profil kimenetét szolgálja. |
 

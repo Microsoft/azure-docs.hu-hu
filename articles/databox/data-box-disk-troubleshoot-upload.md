@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 4b53cf607bdf60c785c7324d9ede526a0983b7e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97605275"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Az adatok feltöltésével kapcsolatos problémák elhárításához szükséges naplók ismertetése Azure Data Box Disk
@@ -156,7 +156,7 @@ A fájl szintjének állapota az, `BlobStatus` amely a Blobok feltöltésére te
 
 Az Azure-ba történő adatfeltöltés során generált hibák a következő táblázatban láthatók.
 
-| Hibakód | Description                   |
+| Hibakód | Leírás                   |
 |-------------|------------------------------|
 |`None` |  A művelet sikeresen befejeződött.           |
 |`Renamed` | Sikerült átnevezni a blobot.   |
