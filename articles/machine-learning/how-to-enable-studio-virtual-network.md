@@ -12,10 +12,10 @@ author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
 ms.openlocfilehash: da8007a651b62430055f263f082fabf2aa4bf610
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103574288"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
@@ -94,7 +94,7 @@ Minden Azure Machine Learning munkaterület két alapértelmezett Storage-fiókk
 
 A következő táblázat azt ismerteti, hogy miért kell engedélyeznie a felügyelt identitások hitelesítését a munkaterület alapértelmezett tárolási fiókjaihoz.
 
-|A(z)  | Jegyzetek  |
+|Tárfiók  | Jegyzetek  |
 |---------|---------|
 |Munkaterület alapértelmezett blob Storage| Modell típusú eszközöket tárol a tervezőtől. A tervezőben a modellek üzembe helyezéséhez engedélyeznie kell a felügyelt identitás hitelesítését ezen a Storage-fiókon. <br> <br> Ha olyan nem alapértelmezett adattárat használ, amely felügyelt identitás használatára lett konfigurálva, megjelenítheti és futtathatja a tervezői folyamatokat. Ha azonban olyan betanított modellt próbál telepíteni, amely nem engedélyezte a felügyelt identitást az alapértelmezett adattáron, akkor a telepítés a használatban lévő többi adattártól függetlenül meghiúsul.|
 |Munkaterület alapértelmezett fájljának tárolója| A AutoML-kísérleti eszközöket tárolja. A AutoML kísérletek elküldéséhez engedélyeznie kell a felügyelt identitások hitelesítését ezen a Storage-fiókon. |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98610784"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>A kombinált biztonsági információk regisztrációjának hibaelhárítása
@@ -30,7 +30,7 @@ A kombinált regisztrációhoz naplózott események az Azure AD-naplók hiteles
 
 A következő táblázat felsorolja a kombinált regisztráció által generált összes naplózási eseményt:
 
-| Tevékenység | Állapot | Ok | Description |
+| Tevékenység | Állapot | Ok | Leírás |
 | --- | --- | --- | --- |
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Siker | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Hiba | A felhasználó megszakította a biztonsági adatok regisztrálását. | Ez az esemény akkor következik be, amikor egy felhasználó megszakítja a regisztrációt a megszakítási módból.|
