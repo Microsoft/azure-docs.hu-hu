@@ -12,10 +12,10 @@ ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97669159"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>AZONOSÍTÓ jogkivonat-útmutató technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -34,7 +34,7 @@ A id_token_hint a jogkivonat kiállítója (egy függő entitás vagy egy identi
 
 A id_token_hintnak érvényes JWT-tokennek kell lennie. A következő táblázat felsorolja a kötelező jogcímeket. További jogcímek megadása nem kötelező.
 
-| Name | Jogcím | Példaérték | Description |
+| Name | Jogcím | Példaérték | Leírás |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Azonosítja a jogkivonat kívánt címzettjét. A célközönség a jogkivonat-kiállító által definiált tetszőleges karakterlánc. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
 | Kiállító | `iss` |`https://localhost` | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). A kiállító a jogkivonat-kiállító által definiált tetszőleges URI. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |

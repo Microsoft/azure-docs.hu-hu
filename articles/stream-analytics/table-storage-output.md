@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 558ddf065d33a552034c5b129ea70bc144c494ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98013889"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Tábla tárolási kimenete Azure Stream Analytics
@@ -19,10 +19,10 @@ Az [Azure Table Storage](../storage/common/storage-introduction.md) kiválóan e
 
 A következő táblázat felsorolja a tulajdonságok nevét és a táblázat kimenetének létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amelyet a lekérdezések a lekérdezés kimenetének a táblázatos tárolóba való irányításához használnak. |
-| A(z) |Annak a Storage-fióknak a neve, ahová a kimenetet küldi. |
+| Tárfiók |Annak a Storage-fióknak a neve, ahová a kimenetet küldi. |
 | Storage-fiók kulcsa |A Storage-fiókhoz társított hozzáférési kulcs. |
 | Table name (Táblázat neve) |A tábla neve. A tábla akkor jön létre, ha nem létezik. |
 | Partíciókulcs |A partíciós kulcsot tartalmazó kimeneti oszlop neve. A partíciós kulcs a partíció egyedi azonosítója egy olyan táblán belül, amely az entitás elsődleges kulcsának első részét képezi. Ez egy olyan karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |

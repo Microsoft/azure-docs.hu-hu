@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: twooley
 ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723796"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a PowerShell és a Azure Data Lake Storage Gen1 használatával
@@ -21,7 +21,7 @@ Ez a cikk azokat a tulajdonságokat ismerteti, amelyekkel jobb teljesítményt �
 
 ## <a name="performance-related-properties"></a>Teljesítménnyel kapcsolatos tulajdonságok
 
-| Tulajdonság            | Alapértelmezett | Description |
+| Tulajdonság            | Alapértelmezett | Leírás |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Ez a paraméter lehetővé teszi a párhuzamos szálak számának megadását az egyes fájlok fel- vagy letöltéséhez. Ez a szám a fájlok számára lefoglalható maximális szálakat jelöli, de előfordulhat, hogy a forgatókönyvtől függően kevesebb szálat kap (például ha egy 1 KB-os fájlt tölt fel, akkor is egy szálat kap, ha 20 szálat kér).  |
 | ConcurrentFileCount | 10      | Ez a paraméter kifejezetten a mappák fel- és letöltéséhez kapcsolódik. Ez a paraméter határozza meg az egyidejűleg fel- vagy letölthető fájlok számát. Ez a szám azt jelenti, hogy legfeljebb hány egyidejű fájl tölthető fel vagy tölthető le egyszerre, de előfordulhat, hogy a forgatókönyvtől függően kisebb a párhuzamosság (például ha két fájlt tölt fel, akkor is két egyidejű fájlt tölt fel, akkor is, ha 15-et kér). |

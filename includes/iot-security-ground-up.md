@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95557376"
 ---
 A eszközök internetes hálózata (IoT) egyedi biztonsági, adatvédelmi és megfelelőségi kihívásokat jelent a vállalkozások számára világszerte. A hagyományos számítógépes technológiától eltérően, ahol ezek a problémák a szoftvereket és azok megvalósítását tárgyalják, IoT, hogy mi történik, ha a Cyber és a fizikai világ konvergál. A IoT-megoldások védelme megköveteli az eszközök biztonságos kihelyezését, az eszközök és a felhő közötti biztonságos csatlakozást, valamint a Felhőbeli adatvédelem védelmét a feldolgozás és a tárolás során. Az ilyen funkciókkal való munka azonban erőforrás-korlátozott eszközök, a központi telepítések földrajzi eloszlása és a megoldáson belüli számos eszköz.

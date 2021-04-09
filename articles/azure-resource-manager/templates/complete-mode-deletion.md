@@ -4,10 +4,10 @@ description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes m�
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: e0c67bfcda81ad128e0018c4ab37c4b0cbe680f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96184025"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
