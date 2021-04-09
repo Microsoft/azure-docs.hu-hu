@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 6bbd7d37418af68065daa194d4ff4bd80f6fd09c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100654365"
 ---
 # <a name="overview-connection-options-for-azure-iot-device-developers"></a>Áttekintés: az Azure IoT-eszközök fejlesztőinek csatlakoztatási lehetőségei
@@ -31,7 +31,7 @@ Miután kiválasztotta IoT Hub vagy IoT Central a IoT-alkalmazás üzemeltetés�
 > [!NOTE]
 > Az alábbi eszközökön kívül a IoT-alkalmazások programozott módon is létrehozhatók és kezelhetők a REST API, az Azure SDK-k vagy a Azure Resource Manager-sablonok használatával. További információt a [IoT hub](../iot-hub/about-iot-hub.md) és [IoT Central](../iot-central/core/overview-iot-central.md) szolgáltatás dokumentációjában talál.
 
-|Eszköz  |Támogatja a IoT platformot &nbsp; &nbsp; &nbsp;&nbsp; |Dokumentáció  |Description  |
+|Eszköz  |Támogatja a IoT platformot &nbsp; &nbsp; &nbsp;&nbsp; |Dokumentáció  |Leírás  |
 |---------|---------|---------|---------|
 |Központi webes felhasználói felület     | Közép | [Központi bevezetés](../iot-central/core/quick-deploy-iot-central.md) | Böngészőalapú portál a IoT Centralhoz. |
 |Azure Portal     | Központ, Közép      | [Hozzon létre egy IoT hubot Azure Portalkal, és](../iot-hub/iot-hub-create-through-portal.md) [kezelje a IoT Central a Azure Portal](../iot-central/core/howto-manage-iot-central-from-portal.md)| Böngészőalapú portál IoT Hub és eszközökhöz. Más Azure-erőforrásokkal is együttműködik, beleértve a IoT Central. |

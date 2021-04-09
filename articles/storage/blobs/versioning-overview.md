@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100380814"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
@@ -191,7 +191,7 @@ A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy r
 
 A következő táblázat bemutatja, hogy mely Azure RBAC-műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
 
-| Description | Blob service művelet | Az Azure RBAC-adatművelet szükséges | Azure beépített szerepkör-támogatás |
+| Leírás | Blob service művelet | Az Azure RBAC-adatművelet szükséges | Azure beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage-blobadatok közreműködője |
 | Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage-blobadatok tulajdonosa |

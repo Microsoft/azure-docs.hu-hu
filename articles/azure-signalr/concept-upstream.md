@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724056"
 ---
 # <a name="upstream-settings"></a>Felsőbb rétegbeli beállítások
@@ -34,7 +34,7 @@ Ha a megadott esemény bekövetkezik, egy elem szabályait egyenként kell ellen
 
 A különböző mintázatok támogatásához parametrizálja az URL-címet. Három előre definiált paraméter létezik:
 
-|Előre definiált paraméter|Description|
+|Előre definiált paraméter|Leírás|
 |---------|---------|
 |hub| A hub az Azure Signaler szolgáltatás fogalma. A hub elkülönítési egység. A felhasználók és az üzenetek kézbesítési köre korlátozott egy hubhoz.|
 |Kategória| A kategória a következő értékek egyike lehet: <ul><li>**kapcsolatok**: kapcsolat élettartamának eseményei. Az ügyfél kapcsolata csatlakoztatva van vagy le van választva. Ide tartozik a csatlakoztatott és a leválasztott események is.</li><li>**üzenetek**: akkor aktiválódik, amikor az ügyfelek egy központi metódust hív meg. Minden egyéb eseményt tartalmaz, kivéve a **kapcsolatok** kategóriájában lévőket.</li></ul>|
@@ -158,7 +158,7 @@ Content-Type: Application/JSON
 
 Content-Type: `application/json`
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |Hiba |sztring |Egy lezárt kapcsolatok hibaüzenete. Üres, ha a kapcsolatok hiba nélkül zárulnak.|
 
@@ -166,7 +166,7 @@ Content-Type: `application/json`
 
 Content-Type: `application/json` vagy `application/x-msgpack`
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |InvocationId |sztring | Egy Meghívási üzenetet jelölő, nem kötelező karakterlánc. Részletek keresése a [hívásokban](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cél |sztring | Ugyanaz, mint a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)szereplő esemény és a cél. |

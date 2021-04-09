@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 96d1a3ed6bfe3fa90cdfa11f1b1081f12e4af990
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95904348"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure szinapszis Analytics üzleti intelligencia-partnerek
@@ -23,7 +23,7 @@ ms.locfileid: "95904348"
 Az adattárház-megoldás létrehozásához különböző piacvezető eszközök közül választhat. Ez a cikk az Azure szinapszis Analytics szolgáltatást hivatalosan támogató, az üzleti intelligencia (BI) megoldásokkal rendelkező Microsoft-partnereket emeli ki.
 
 ## <a name="our-business-intelligence-partners"></a>Üzleti intelligencia partnereink
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>A AtScale egyetlen, biztonságos és szabályozott munkaterületet biztosít az elosztott adatforgalomhoz. A AtScale felhőalapú OLAP-, autonóm adattervezési™ és az univerzális szemantikai réteg™ az üzleti intelligencia eredményeit gyorsabban, pontosabb üzleti döntéseket hozhatja. |[Termék lap](https://www.atscale.com/partners/microsoft/)<br> |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>A Birst a teljes szervezetet összekapcsolja egy közös, közös analitikai hálóra épülő, összeszőtt virtualizált BI-példányok hálózatán.|[Termék lap](https://www.birst.com/)<br> |

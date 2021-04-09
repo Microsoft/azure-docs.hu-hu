@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: e926dcd4b05d137c7927bdfe5221923d25d4670c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100093488"
 ---
 # <a name="full-backup-and-restore"></a>Teljes biztonsági mentés és visszaállítás
@@ -23,16 +23,16 @@ ms.locfileid: "100093488"
 
 A felügyelt HSM támogatja a HSM teljes tartalmának teljes biztonsági mentését, beleértve az összes kulcsot, verziót, attribútumot, címkét és szerepkör-hozzárendelést. A biztonsági mentés a HSM biztonsági tartományához társított titkosítási kulcsokkal van titkosítva.
 
-A Backup egy adatsík-művelet. A biztonsági mentési műveletet kezdeményező hívónak rendelkeznie kell engedéllyel a dataAction **Microsoft. kulcstartó/managedHsm/Backup/Start/művelet** végrehajtásához.
+A biztonsági mentés adatsíkművelet. A biztonsági mentési műveletet kezdeményező hívónak rendelkeznie kell engedéllyel a dataAction **Microsoft. kulcstartó/managedHsm/Backup/Start/művelet** végrehajtásához.
 
 Csak a következő beépített szerepkörök jogosultak teljes biztonsági mentés végrehajtására:
-- Felügyelt HSM-rendszergazda
-- Felügyelt HSM biztonsági mentés
+- Felügyeleti HSM rendszergazdája
+- Felügyelt HSM biztonsági mentése
 
-Teljes biztonsági mentés végrehajtásához a következő információkat kell megadnia:
+Teljes biztonsági mentés végrehajtásához meg kell adnia az alábbi adatokat:
 - HSM neve vagy URL-címe
 - Tárfiók neve
-- Storage-fiók blob Storage-tárolója
+- Tárfiók Blob Storage-tárolója
 - Storage-tároló SAS-jogkivonata engedélyekkel `crdw`
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]

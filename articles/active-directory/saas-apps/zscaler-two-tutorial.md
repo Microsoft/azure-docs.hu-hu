@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726244"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Two-nal
@@ -200,14 +200,14 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     b. Kattintson az **aktiválás** gombra.
 
-## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Proxybeállítások konfigurálása az Internet Explorerben
+## <a name="configuring-proxy-settings&quot;></a>Proxybeállítások konfigurálása
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Proxybeállítások konfigurálása az Internet Explorerben
 
 1. Indítsa el az **Internet Explorert**.
 
 2. **Az Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét.   
     
-     ![Internetbeállítások](./media/zscaler-two-tutorial/ic769492.png "Internetbeállítások")
+     ![Internetbeállítások](./media/zscaler-two-tutorial/ic769492.png &quot;Internetbeállítások")
 
 3. Kattintson a **kapcsolatok** fülre.   
   

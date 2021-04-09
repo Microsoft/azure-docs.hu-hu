@@ -8,10 +8,10 @@ ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
 ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570955"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Az Azure IoT Hub adatreferenciájának monitorozása
@@ -81,7 +81,7 @@ A legtöbb mérőszám esetében az összes összesítési típus érvényes; a 
 
 ### <a name="cloud-to-device-command-metrics"></a>Felhőből az eszközre irányuló parancsok mérőszámai
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |C2D-üzenetek lejárt (előzetes verzió)|C2DMessagesExpired|Darabszám|Összesen|A felhőből az eszközre irányuló lejárt üzenetek száma|Nincsenek|
 |C2D-üzenetek kézbesítésének befejezése|C2D. commands. kimenő. Complete. success|Darabszám|Összesen|Az eszköz által sikeresen befejeződött a felhőből az eszközre küldött üzenetek száma|Nincsenek|
@@ -92,7 +92,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="cloud-to-device-direct-methods-metrics"></a>Felhőből az eszközre irányuló közvetlen módszerek mérőszámai
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Sikertelen közvetlen metódusok meghívása|C2D. Methods. failure|Darabszám|Összesen|A sikertelen közvetlen metódusok összes hívásának száma.|Nincsenek|
 |A közvetlen metódus meghívásának mérete|C2D. Methods. requestSize|Bájt|Átlag|A közvetlen metódusok összes sikeres kérelmének száma.|Nincsenek|
@@ -103,7 +103,7 @@ Az **egységnyi** értékkel rendelkező mérőszámok esetében **a csak össze
 
 ### <a name="cloud-to-device-twin-operations-metrics"></a>Felhőből az eszközre kettős műveleti mérőszámok
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Sikertelen dupla olvasások a háttérből|C2D. Twin. Read. failure|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla olvasás száma.|Nincsenek|
 |Sikertelen dupla frissítések a háttérből|C2D. Twin. Update. failure|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla frissítés száma.|Nincsenek|
@@ -116,7 +116,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="configurations-metrics"></a>Konfigurációk metrikái
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Konfigurációs mérőszámok|konfigurációk|Darabszám|Összesen|Az eszközök konfigurálásához és IoT Edge üzembe helyezéséhez végrehajtott összes szifilisz-művelet száma a céleszköz készletén. Ebbe beletartozik azoknak a műveleteknek a száma is, amelyek az eszköz Twin vagy modulját módosítják ezen konfigurációk miatt.|Nincsenek|
 
@@ -124,7 +124,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="daily-quota-metrics"></a>Napi kvóta mérőszámai
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Az eszköz összes adatfelhasználása|deviceDataUsage|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|Nincsenek|
 |Az eszköz összes adatfelhasználása (előzetes verzió)|deviceDataUsageV2|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|Nincsenek|
@@ -134,7 +134,7 @@ A *felhasznált üzenetek teljes száma* csak a minimális, a maximális és az 
 
 ### <a name="device-metrics"></a>Eszköz metrikái
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Összes eszköz (elavult)|Devices. totalDevices|Darabszám|Összesen|Az IoT hub-ban regisztrált eszközök száma|Nincsenek|
 |Csatlakoztatott eszközök (elavult) |Devices. connectedDevices. allProtocol|Darabszám|Összesen|Az IoT hub-hoz csatlakoztatott eszközök száma|Nincsenek|
@@ -149,7 +149,7 @@ A *csatlakoztatott eszközök (előzetes verzió)* és az *összes eszköz (elő
 
 ### <a name="device-telemetry-metrics"></a>Eszköz telemetria metrikái
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Szabályozási hibák száma|D2C. telemetria. beáramló. sendThrottle|Darabszám|Összesen|Az eszköz átviteli sebessége miatti szabályozási hibák száma|Nincsenek|
 |Telemetria üzenetek küldése|D2C. telemetria. beáramló. allProtocol|Darabszám|Összesen|Az IoT-hubhoz küldendő eszközről a felhőbe irányuló telemetria-üzenetek száma|Nincsenek|
@@ -159,7 +159,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="device-to-cloud-twin-operations-metrics"></a>Eszközről a felhőbe irányuló Twin Operations metrikák
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Sikertelen dupla olvasások az eszközökről|D2C. Twin. Read. failure|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett kettős olvasás száma.|Nincsenek|
 |Sikertelen dupla frissítések az eszközökről|D2C. Twin. Update. failure|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett dupla frissítés száma.|Nincsenek|
@@ -172,7 +172,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="event-grid-metrics"></a>Event Grid-metrikák
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Event Grid kézbesítések (előzetes verzió)|EventGridDeliveries|Darabszám|Összesen|A Event Grid közzétett IoT Hub események száma. Használja az eredmény dimenziót a sikeres és sikertelen kérelmek számának megkereséséhez. A EventType-dimenzió megjeleníti az esemény típusát ( https://aka.ms/ioteventgrid) .|Eredmény,<br/>EventType<br>*További információ: [metrikus dimenziók](#metric-dimensions)*.|
 |Event Grid késés (előzetes verzió)|EventGridLatency|Ezredmásodpercben|Átlag|Az átlagos késés (ezredmásodpercben), amikor az IOT hub-eseményt generálták, amikor az eseményt közzétették Event Grid. Ez a szám az összes eseménytípus közötti átlag. Az EventType dimenzió használatával megtekintheti egy adott típusú esemény késését.|EventType<br>*További információ: [metrikus dimenziók](#metric-dimensions)*.|
@@ -181,7 +181,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="jobs-metrics"></a>Feladatok metrikái
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Befejezett feladatok|feladatok. kész|Darabszám|Összesen|Az összes befejezett feladat száma.|Nincsenek|
 |Sikertelen hívások a feladatok listázásához|feladatok. listJobs. hiba|Darabszám|Összesen|A feladatokat listázó sikertelen hívások száma.|Nincsenek|
@@ -200,7 +200,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="routing-metrics"></a>Útválasztási metrikák
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 | Útválasztási kézbesítési kísérletek (előzetes verzió) |RoutingDeliveries | Darabszám | Összesen |Ez az útválasztási kézbesítési metrika. A méretek segítségével azonosíthatja egy adott végpont vagy egy adott útválasztási forrás kézbesítési állapotát.| Eredmény,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Végpontneve<br>*További információ: [metrikus dimenziók](#metric-dimensions)*. |
 | A kézbesítési adatmennyiség mérete bájtban (előzetes verzió)|RoutingDataSizeInBytesDelivered| Bájt | Összesen |A IoT Hub által az egyéni végponthoz és a beépített végponthoz irányított bájtok teljes száma. A méretek használatával azonosíthatja az adott végponthoz vagy egy adott útválasztási forráshoz irányított adatméretet.| RoutingSource,<br>EndpointType<br>Végpontneve<br>*További információ: [metrikus dimenziók](#metric-dimensions)*.|
@@ -227,7 +227,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 ### <a name="twin-query-metrics"></a>Dupla lekérdezési metrika
 
-|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Sikertelen dupla lekérdezések|twinQueries. hiba|Darabszám|Összesen|Az összes sikertelen dupla lekérdezés száma.|Nincsenek|
 |Sikeres Twin-lekérdezések|twinQueries. success|Darabszám|Összesen|Az összes sikeres dupla lekérdezés száma.|Nincsenek|
@@ -239,7 +239,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 Az Azure IoT Hub a következő, az útválasztási és az Event Grid-metrikákkal társított dimenziókkal rendelkezik.
 
-|Dimenzió neve | Description|
+|Dimenzió neve | Leírás|
 |---|---|
 ||
 |**Végpontneve**| A végpont neve.|
@@ -602,7 +602,7 @@ IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságok
 
 Itt `durationMs` nem számítja ki a számítást, mert előfordulhat, hogy a IoT hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Az `properties` eszközről a felhőbe irányuló késések rögzítése érdekében a szakasz időbélyegei alapján javasolt a logikát írni.
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
 | **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | Az eszköz identitása |
@@ -636,7 +636,7 @@ IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságoka
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Sztring | Igaz vagy hamis érték esetén azt jelzi, hogy engedélyezve van-e az üzenet-útválasztás a IoT Hub |
 | **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely ebben az esetben a D2C-üzenet nyomkövetése lenne |
@@ -668,7 +668,7 @@ IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-message
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Végpontneve** | Sztring | Az útválasztási végpont neve |
 | **endpointType** | Sztring | Az útválasztási végpont típusa |

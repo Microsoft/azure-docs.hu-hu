@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
 ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100097636"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Az Azure Cognitive Search biztonsági áttekintése
@@ -98,7 +98,7 @@ A "sor szintű biztonság" fogalmával egyenértékű, az indexen belüli tartal
 
 A "sor szintű biztonságot" igénylő megoldások megkerülő megoldásai közé tartozik egy olyan mező létrehozása az adatforrásban, amely egy biztonsági csoportot vagy felhasználói identitást jelöl, majd a Cognitive Search szűrők használatával szelektíven metszi a dokumentumok és tartalmak keresési eredményeit az identitások alapján. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
 
-| Módszer | Description |
+| Módszer | Leírás |
 |----------|-------------|
 |[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
 |[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (Azure AD) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
