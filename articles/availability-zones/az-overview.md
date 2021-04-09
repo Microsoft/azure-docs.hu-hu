@@ -9,10 +9,10 @@ ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104596008"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
@@ -23,7 +23,7 @@ Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek
 
 A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segít megérteni a kulcsfontosságú feltételeket vagy fogalmakat.
 
-| Kifejezés vagy fogalom | Description |
+| Kifejezés vagy fogalom | Leírás |
 | --- | --- |
 | régió | A késés által meghatározott kerületben üzembe helyezett adatközpontok halmaza, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. |
 | földrajz | A világ egyik területe, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely megőrizheti az adattárolási és megfelelőségi határokat. A régiócsoportok lehetővé teszik, hogy a speciális adattárolási és megfelelőségi igényekkel rendelkező ügyfelek földrajzilag közel tárolhassák adataikat és alkalmazásaikat. A földrajzi területek hibatűrők, hogy a teljes régió meghibásodása a dedikált nagy kapacitású hálózati infrastruktúrával való kapcsolaton keresztül álljanak. |
@@ -110,7 +110,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Service Fabric                         | Azure Cognitive Services: beszédfelismerési szolgáltatások         | 
 > | Tárolás: gyors/ritka Blob Storage rétegek   | Azure Cognitive Services: Text Analytics          | 
 > | Tárterület: Managed Disks                 | Azure Cognitive Services: fordító              | 
-> | Virtual Machine Scale Sets             | Azure Data Explorer                               | 
+> | Virtual Machine Scale Sets             | Azure Adatkezelő                               | 
 > | Virtual Machines                       | Azure Data Share                                  | 
 > | Virtual Machines: Azure dedikált gazdagép | Azure Database for MySQL                          | 
 > | Virtual Machines: Av2-Series           | Azure Database for PostgreSQL                     | 
@@ -176,7 +176,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Azure HPC Cache                                      |
 > | Azure Lab Services                                   |
 > | Azure NetApp Files                                   |
-> | Azure SignalR szolgáltatás                                |
+> | Azure SignalR Service                                |
 > | Azure Spring Cloud szolgáltatás                           |
 > | Azure Time Series Insights                           |
 > | Azure VMware Solution                                |

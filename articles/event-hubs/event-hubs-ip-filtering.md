@@ -4,10 +4,10 @@ description: A tűzfalszabályok használatával engedélyezheti az adott IP-cí
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100560852"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Azure Event Hubs-névterek elérésének engedélyezése adott IP-címekről vagy tartományokból

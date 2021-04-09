@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1fbe93c93b5ede2c6b031dab53a1450da473f802
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102517803"
 ---
 # <a name="legacy-user-flow-versions-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C korábbi felhasználói flow-verziói
@@ -28,7 +28,7 @@ Az alábbi táblázatban, kivéve, ha a felhasználói folyamat **ajánlottként
 
 ## <a name="v1"></a>1. verzió
 
-| Felhasználói folyamat | Ajánlott | Description |
+| Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
 | Új jelszó létrehozása | Yes | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
 | Profil szerkesztése | Yes | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |
@@ -39,13 +39,13 @@ Az alábbi táblázatban, kivéve, ha a felhasználói folyamat **ajánlottként
 
 ## <a name="v11"></a>1.1-es verzió
 
-| Felhasználói folyamat | Ajánlott | Description |
+| Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
 | Jelszó-visszaállítási v 1.1 | No | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után (az új lapelrendezés elérhető). A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
 
 ## <a name="v2"></a>2. verzió
 
-| Felhasználói folyamat | Ajánlott | Description |
+| Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
 | Jelszó alaphelyzetbe állítása v2 | No | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Korhatáralapú hozzáférés-korlátozás](age-gating.md)</li><li>[jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
 | Profil szerkesztése v2 | Yes | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |

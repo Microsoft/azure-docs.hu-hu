@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100651721"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Firewall veszélyforrások intelligencia-konfigurációja
@@ -26,7 +26,7 @@ Ha beállította a veszélyforrások felderítésére alapuló szűrést, a rend
 
 A veszélyforrások intelligenciát a következő táblázatban ismertetett három mód egyikében konfigurálhatja. Alapértelmezés szerint a fenyegetési intelligencia-alapú szűrés riasztási módban van engedélyezve.
 
-|Mód |Description  |
+|Mód |Leírás  |
 |---------|---------|
 |`Off`     | A veszélyforrások intelligencia szolgáltatása nincs engedélyezve a tűzfalon. |
 |`Alert only`     | A tűzfalon keresztül érkező, illetve az ismert kártékony IP-címekre és tartományokra irányuló adatforgalomra vonatkozóan nagy megbízhatóságú riasztásokat fog kapni. |

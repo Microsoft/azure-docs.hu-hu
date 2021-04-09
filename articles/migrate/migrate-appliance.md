@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778338"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
@@ -83,7 +83,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Projekt korlátai** |  A készülékek csak egyetlen projektben regisztrálhatók.<br/> Egyetlen projekt több regisztrált berendezéssel is rendelkezhet.<br/>
 **Felderítési korlátok** | A berendezések akár 1000 fizikai kiszolgálót is felfedezhetnek.
 **Támogatott központi telepítés** | Üzembe helyezés Windows Server 2016 rendszert futtató meglévő kiszolgálón PowerShell-telepítő parancsfájl használatával.
-**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller.ps1) egy [zip-fájlba](https://go.microsoft.com/fwlink/?linkid=2140334)a projektből vagy innen. [További információ](tutorial-discover-physical.md).<br/><br/> A letöltési méret 85,8 MB.
+**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller.ps1) egy [zip-fájlba](https://go.microsoft.com/fwlink/?linkid=2140334)a projektből vagy innen. [További információk](tutorial-discover-physical.md).<br/><br/> A letöltési méret 85,8 MB.
 **Szkript ellenőrzése** | [Ellenőrizze](tutorial-discover-physical.md#verify-security) a PowerShell telepítőjének a projektből letöltött parancsfájlját a kivonatoló értékek ellenőrzésével.
 **Hardver-és hálózati követelmények** |  A készüléknek a kiszolgálón kell futnia a Windows Server 2016, 16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolással.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a készüléket egy meglévő kiszolgálón futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek.<br/>_(Jelenleg a készülék központi telepítése csak Windows Server 2016 rendszeren támogatott.)_
 

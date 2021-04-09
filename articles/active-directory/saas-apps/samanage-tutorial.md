@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
 ms.openlocfilehash: 6dcd5612bd2c5957ae0a397c3463dbb42445a754
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104956043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Oktatóanyag: Azure Active Directory integráció a SolarWinds Service Desk szolgáltatással (korábban Samanage)
@@ -90,7 +90,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
@@ -102,7 +102,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a SolarWinds.
 
@@ -111,18 +111,18 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a &quot;default Access&quot; szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-<a name="configure-solarwinds-single-sign-on"></a>
+<a name=&quot;configure-solarwinds-single-sign-on&quot;></a>
 
-## <a name="configure-solarwinds-sso"></a>SolarWinds SSO konfigurálása
+## <a name=&quot;configure-solarwinds-sso&quot;></a>SolarWinds SSO konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a SolarWinds vállalati webhelyre rendszergazdaként.
 
 2. Kattintson az **irányítópult** elemre, és válassza a **beállítás** lehetőséget a bal oldali navigációs panelen.
    
-    ![Irányítópult](./media/samanage-tutorial/tutorial-samanage-1.png "Irányítópult")
+    ![Irányítópult](./media/samanage-tutorial/tutorial-samanage-1.png &quot;Irányítópult")
 
 3. Kattintson az **egyszeri bejelentkezés** elemre.
    

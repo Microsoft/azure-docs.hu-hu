@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98733300"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -196,15 +196,15 @@ A következő képernyőkép bemutatja a háttéralkalmazás kimenetét, a kieme
 
 ![Képernyőkép, amely megjeleníti a háttérbeli alkalmazás kimenetét, és kiemeli, hogyan küld egy frissítést.](./media/tutorial-device-twins/BackEnd1.png)
 
-## <a name="receive-state-information"></a>Állapotinformáció fogadása
+## <a name="receive-state-information&quot;></a>Állapotinformáció fogadása
 
 A háttéralkalmazás jelentett tulajdonságok formájában fogadja az eszközök állapotinformációit. Az eszköz beállítja a jelentett tulajdonságokat, és elküldi őket a központnak. A háttéralkalmazás a központban tárolt ikereszközről le tudja olvasni a jelentett tulajdonságok aktuális értékét.
 
-### <a name="send-reported-properties-from-a-device"></a>Jelentett tulajdonságok küldése egy eszközről
+### <a name=&quot;send-reported-properties-from-a-device&quot;></a>Jelentett tulajdonságok küldése egy eszközről
 
 Jelentett tulajdonságokra frissítéseket javítások formájában küldhet. A következő kódrészlet egy szimulált eszköz által küldött javítássablont mutat be. A szimulált eszköz frissíti a javítás mezőit, mielőtt elküldi a központnak:
 
-[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 "Reported properties patches")]
+[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 &quot;Reported properties patches")]
 
 A szimulált eszköz a következő függvény segítségével küldi el a jelentett tulajdonságokból álló javítást a központnak:
 

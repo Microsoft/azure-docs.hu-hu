@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879292"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Azure-alkalmazás ajánlatának megtervezése a kereskedelmi piactéren
@@ -121,7 +121,7 @@ Amikor új Azure-alkalmazást hoz létre a partner Centerben, szöveget, képet,
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
 7. Összefoglalás
-8. Description
+8. Leírás
 9. Képernyőképek/videók
 
 Az alábbi képernyőképen látható, hogyan jelennek meg az ajánlat adatai a Azure Portalban:

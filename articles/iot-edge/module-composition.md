@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103489917"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben
@@ -258,7 +258,7 @@ A fogadó meghatározza az üzenetek küldésének helyét. Csak modulok és IoT
 
 A fogadó tulajdonság a következő értékek bármelyike lehet:
 
-| Sink (Fogadó) | Description |
+| Sink (Fogadó) | Leírás |
 | ---- | ----------- |
 | `$upstream` | Üzenet küldése IoT Hub |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Az üzenet elküldése egy adott modul megadott bemenetére |

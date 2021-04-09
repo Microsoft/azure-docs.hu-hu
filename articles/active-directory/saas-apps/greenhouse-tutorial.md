@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98731920"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Oktatóanyag: Azure Active Directory üvegházhatású integrációval
@@ -146,7 +146,7 @@ Ebben a szakaszban a B. Simon használatával engedélyezheti az Azure egyszeri 
     >[!NOTE]
     >Azt is megteheti, hogy az **összevonási metaadatok XML-** fájlját is feltölti a **fájl kiválasztása** lehetőségre kattintva.
 
-### <a name="create-greenhouse-test-user"></a>Üvegházhatású teszt felhasználó létrehozása
+### <a name="create-greenhouse-test-user&quot;></a>Üvegházhatású teszt felhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az üvegházba, az üvegházban kell kiépíteni őket. Üvegházhatás esetén a kiépítés manuális feladat.
 
@@ -159,7 +159,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az üvegházba, az üveg
 
 2. Ugrás a **> felhasználók konfigurálása új felhasználók >**
    
-    ![Felhasználók](./media/greenhouse-tutorial/create-user-1.png "Felhasználók")
+    ![Felhasználók](./media/greenhouse-tutorial/create-user-1.png &quot;Felhasználók")
 
 4. Az **új felhasználók hozzáadása** szakaszban hajtsa végre a következő lépéseket:
    
