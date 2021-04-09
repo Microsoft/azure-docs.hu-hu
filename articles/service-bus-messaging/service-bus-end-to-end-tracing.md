@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/03/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99539213"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetés és korreláció Service Bus üzenetkezelésen keresztül
@@ -22,7 +22,7 @@ Microsoft Azure Service Bus üzenetkezelés olyan adattartalom-tulajdonságokat 
 A protokoll a [http korrelációs protokollon](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)alapul.
 
 # <a name="azuremessagingservicebus-sdk-latest"></a>[Azure. Messaging. ServiceBus SDK (legújabb)](#tab/net-standard-sdk-2)
-| Tulajdonság neve        | Description                                                 |
+| Tulajdonság neve        | Leírás                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Egy külső hívás egyedi azonosítója a termelőről a várólistára. A logika, a szempontok és a formátum érdekében olvassa el a [HTTP protokollon keresztüli kérelem-azonosítót](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 
@@ -195,7 +195,7 @@ Több figyelő jelenléte `DiagnosticSource` ugyanazon a forrásnál elég ahhoz
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-| Tulajdonság neve        | Description                                                 |
+| Tulajdonság neve        | Leírás                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Egy külső hívás egyedi azonosítója a termelőről a várólistára. A logika, a szempontok és a formátum érdekében olvassa el a [HTTP protokollon keresztüli kérelem-azonosítót](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Correlation-Context | A műveleti környezet, amelyet a rendszer a művelet-feldolgozásban részt vevő összes szolgáltatás között propagál. További információ: [korrelációs környezet a http protokollban](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |

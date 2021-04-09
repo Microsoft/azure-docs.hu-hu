@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95021966"
 ---
 # <a name="speech-service-for-telephony-data"></a>Beszédfelismerési szolgáltatás a telefonos adatkezeléshez
@@ -121,7 +121,7 @@ Egy másik forgatókönyv a közvetlen integráció a munkamenet-kezdeményező 
 
  A beszédfelismerési szolgáltatás a beépített modellekkel jól működik. Azonban érdemes lehet tovább testreszabni és hangolni a termék vagy a környezet élményét. A testreszabási lehetőségek köre az akusztikus modell finomhangolása és a márka egyedi hangbetűkészletei között. Miután létrehozott egy egyéni modellt, a beszédfelismerési szolgáltatás bármelyik szolgáltatásával valós időben vagy batch módban használhatja azt.
 
-| Speech szolgáltatás | Modellezés | Description |
+| Speech szolgáltatás | Modellezés | Leírás |
 | -------------- | ----- | ----------- |
 | Diktálás | [Akusztikai modell](./how-to-custom-speech-train-model.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
 |                | [Nyelvi modell](./how-to-custom-speech-train-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |

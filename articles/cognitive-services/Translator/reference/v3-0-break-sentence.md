@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
 ms.openlocfilehash: 2da614fe829d0aa82bfa57337baf44491993c68f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895543"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3,0: BreakSentence
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
-| Lekérdezési paraméter | Description |
+| Lekérdezési paraméter | Leírás |
 | -------| ----------- |
 | api-verzió <img width=200/>   | **Szükséges lekérdezési paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie `3.0` . |
 | language | **Opcionális lekérdezési paraméter**.<br/>A szövegbeviteli szöveg nyelvét azonosító nyelvi címke. Ha nincs megadva kód, az automatikus nyelvfelismerés lesz alkalmazva. |
@@ -41,7 +41,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 A kérelem fejlécei a következők:
 
-| Fejlécek | Description |
+| Fejlécek | Leírás |
 | ------- | ----------- |
 | Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
 | Content-Type | **Kötelező kérelem fejléce**<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json` . |
@@ -97,7 +97,7 @@ Példa JSON-válaszra:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>X – kérelemazonosító</td>
     <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
@@ -110,7 +110,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>

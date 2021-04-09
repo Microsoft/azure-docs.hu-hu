@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/20/2020
 ms.openlocfilehash: a079504872eaf3840416a99e784c4d33a6828b0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94992029"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Nagyvállalati biztonság és irányítási Azure Machine Learning
@@ -44,7 +44,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt [felügyel
 | Erőforrás | Engedélyek |
 | ----- | ----- |
 | Munkaterület | Közreműködő |
-| A(z) | Storage-blobadatok közreműködője |
+| Tárfiók | Storage-blobadatok közreműködője |
 | Key Vault | Hozzáférés az összes kulcshoz, titokhoz, tanúsítványhoz |
 | Azure Container Registry | Közreműködő |
 | A munkaterületet tartalmazó erőforráscsoport | Közreműködő |

@@ -48,9 +48,9 @@ A SumCost például a fent megosztott példában kiválasztott oszlop neve.
 
 ![Az a kép, amely a PO, a szállító és a gyümölcs oszlopokat mutatja a unipivot átalakítás előtt és után, a Fruit (gyümölcs) oszlop használatával, unipivot kulcsként.](media/data-flow/unpivot3.png)
 
-Ha az oszlop elrendezését a "NORMAL" értékre állítja, akkor az összes új, nem felmutatott oszlop egyetlen értékből lesz csoportosítva. Ha az oszlopok elrendezése az "oldalirányú" értékre van állítva, akkor a rendszer egy meglévő oszlopból generált új, nem felmutatott oszlopokat csoportosítja.
+Ha az oszlop elrendezését a "NORMAL&quot; értékre állítja, akkor az összes új, nem felmutatott oszlop egyetlen értékből lesz csoportosítva. Ha az oszlopok elrendezése az &quot;oldalirányú&quot; értékre van állítva, akkor a rendszer egy meglévő oszlopból generált új, nem felmutatott oszlopokat csoportosítja.
 
-![A képernyőkép a transzformáció eredményét jeleníti meg.](media/data-flow//unpivot7.png "Kibontási beállítások 5")
+![A képernyőkép a transzformáció eredményét jeleníti meg.](media/data-flow//unpivot7.png &quot;Kibontási beállítások 5")
 
 A végleges, nem felváltott adateredményhalmaz azt mutatja, hogy az oszlopok összesítései mostantól külön sorba vannak bontva.
 

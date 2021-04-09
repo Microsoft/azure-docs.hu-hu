@@ -7,10 +7,10 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100389500"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
@@ -152,7 +152,7 @@ dmgcmd ACTION args...
 
 Az itt található információk az alkalmazás műveleteiről és argumentumokról: 
 
-|MŰVELET|args|Description|
+|MŰVELET|args|Leírás|
 |------|----|-----------|
 |`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével.|
 |`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről.|
