@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: e9fd20fd42e9fe1eb0e98766798e5c759c974c97
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92013899"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Aszinkron frissítés a REST API-val
@@ -98,7 +98,7 @@ A törzs a következőhöz hasonló lehet:
 
 Paraméterek megadása nem kötelező. A rendszer az alapértelmezett értéket alkalmazza.
 
-| Név             | Típus  | Description  |Alapértelmezett  |
+| Név             | Típus  | Leírás  |Alapértelmezett  |
 |------------------|-------|--------------|---------|
 | `Type`           | Enumeráció  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](/analysis-services/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   automatikus      |
 | `CommitMode`     | Enumeráció  | Meghatározza, hogy az objektumok kötegekben lesznek-e véglegesítve, vagy csak akkor, ha a művelet befejeződött. A módok a következők: alapértelmezett, tranzakciós, partialBatch.  |  tranzakciós       |
@@ -113,7 +113,7 @@ A CommitMode egyenlő a partialBatch. Ez akkor használatos, ha olyan nagyméret
 
 ### <a name="status-values"></a>Állapotüzenetek
 
-|Állapotérték  |Description  |
+|Állapotérték  |Leírás  |
 |---------|---------|
 |`notStarted`    |   A művelet még nincs elindítva.      |
 |`inProgress`     |   A művelet folyamatban van.      |

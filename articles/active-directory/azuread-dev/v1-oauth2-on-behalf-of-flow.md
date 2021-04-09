@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88117736"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
@@ -105,7 +105,7 @@ Az ügyfélalkalmazás védelmét egy közös titok vagy egy tanúsítvány véd
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem egy JSON Web Token (JWT) használ, ezért az értéknek a következőnek kell lennie: **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke. |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos** lehet. |
 | állítás |kötelező | A kérelemben használt jogkivonat értéke. |
@@ -249,7 +249,7 @@ Néhány OAuth-alapú webszolgáltatásnak hozzá kell férnie más webszolgált
 
 Az SAML-állítások szolgáltatás-szolgáltatásra irányuló kérelme a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos** értékűnek kell lennie. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke.|

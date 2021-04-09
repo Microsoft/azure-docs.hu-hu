@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92124675"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy kapcsolatos problémák elhárítása
@@ -25,12 +25,12 @@ A cikkben szereplő információk nem vonatkoznak a Data Boxhoz létrehozott exp
 
 A Data Box és Data Box Heavy hibáit a következőképpen összegzi:
 
-| Hiba kategóriája *        | Description        | Javasolt művelet    |
+| Hiba kategóriája *        | Leírás        | Javasolt művelet    |
 |----------------------------------------------|---------|--------------------------------------|
-| Tároló vagy megosztás neve | A tároló vagy a megosztás neve nem követi az Azure elnevezési szabályait.  |Töltse le a hibák listáját. <br> Nevezze át a tárolókat vagy a megosztásokat. [További információ](#container-or-share-name-errors).  |
-| Tároló vagy megosztási méretkorlát | A tárolókban vagy megosztásokban lévő teljes adatmennyiség meghaladja az Azure-korlátot.   |Töltse le a hibák listáját. <br> Csökkentse a tárolóban vagy megosztásban lévő összesített adatmennyiséget. [További információ](#container-or-share-size-limit-errors).|
-| Objektum vagy fájlméret korlátja | A tárolókban vagy megosztásokban lévő objektum vagy fájlok mérete meghaladja az Azure-korlátot.|Töltse le a hibák listáját. <br> Csökkentse a fájl méretét a tárolóban vagy a megosztásban. [További információ](#object-or-file-size-limit-errors). |    
-| Adattípusok vagy fájltípusok | Az adatformátum vagy a fájl típusa nem támogatott. |Töltse le a hibák listáját. <br> Az oldal Blobok vagy a felügyelt lemezek esetében ügyeljen arra, hogy az adat 512 – bájt igazított legyen, és az előre létrehozott mappákba legyen másolva. [További információ](#data-or-file-type-errors). |
+| Tároló vagy megosztás neve | A tároló vagy a megosztás neve nem követi az Azure elnevezési szabályait.  |Töltse le a hibák listáját. <br> Nevezze át a tárolókat vagy a megosztásokat. [További információk](#container-or-share-name-errors).  |
+| Tároló vagy megosztási méretkorlát | A tárolókban vagy megosztásokban lévő teljes adatmennyiség meghaladja az Azure-korlátot.   |Töltse le a hibák listáját. <br> Csökkentse a tárolóban vagy megosztásban lévő összesített adatmennyiséget. [További információk](#container-or-share-size-limit-errors).|
+| Objektum vagy fájlméret korlátja | A tárolókban vagy megosztásokban lévő objektum vagy fájlok mérete meghaladja az Azure-korlátot.|Töltse le a hibák listáját. <br> Csökkentse a fájl méretét a tárolóban vagy a megosztásban. [További információk](#object-or-file-size-limit-errors). |    
+| Adattípusok vagy fájltípusok | Az adatformátum vagy a fájl típusa nem támogatott. |Töltse le a hibák listáját. <br> Az oldal Blobok vagy a felügyelt lemezek esetében ügyeljen arra, hogy az adat 512 – bájt igazított legyen, és az előre létrehozott mappákba legyen másolva. [További információk](#data-or-file-type-errors). |
 | Nem kritikus blob-vagy fájl-hibák  | A blob-vagy fájlnevek nem követik az Azure elnevezési szabályait, vagy a fájl típusa nem támogatott. | Előfordulhat, hogy ezek a Blobok vagy fájlok nem másolhatók, vagy a nevek változhatnak. [További információ a hibák kijavításáról](#non-critical-blob-or-file-errors). |
 
 \* Az első négy hiba kategóriája kritikus hibák, és a szállítás előkészítése előtt meg kell oldani.

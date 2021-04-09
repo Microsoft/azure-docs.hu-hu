@@ -4,10 +4,10 @@ description: A Azure Resource Manager és a javasolt műveletek által felszínb
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: cec24696d0d49ba408860f6562c34dd14876c311
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91334208"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs – Resource Manager-kivételek
@@ -20,7 +20,7 @@ A következő szakaszokban különböző kivételek/hibák jelennek meg Azure Re
 
 ## <a name="error-code-conflict"></a>Hibakód: ütközés
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Ütközés | 40300 | Elérte vagy túllépte a EventHub típusú erőforrások maximális számát. Tényleges: #, Max megengedett: # | A névtér elérte a [kvótáját](event-hubs-quotas.md) a benne foglalt Event Hubs számára. | Törölje a fel nem használt vagy idegen típusú esemény-hubokat a névtérből, vagy vegye fontolóra a [dedikált fürtre](event-hubs-dedicated-overview.md)való frissítését. |
 | Ütközés | Nincs | Nem lehet törölni a vész-helyreállítási (DR) konfigurációt, mert a replikáció folyamatban van. A DR-konfiguráció törlésének megkísérlése előtt hajtsa végre a feladatátvételt, vagy szakítsa meg a párosítást. | A [GeoDR replikációja](event-hubs-geo-dr.md) folyamatban van, így a konfiguráció jelenleg nem törölhető. | A konfiguráció törlésének feloldásához várjon, amíg a replikáció befejeződik, indítson el egy feladatátvételt, vagy szüntesse meg a GeoDR párosítását. |
@@ -28,14 +28,14 @@ A következő szakaszokban különböző kivételek/hibák jelennek meg Azure Re
 
 ## <a name="error-code-429"></a>Hibakód: 429
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | Nincs | Névtér kiépítés átmenet alatt | Jelenleg folyamatban van egy másik művelet végrehajtása ezen a névtéren. | Várjon, amíg a jelenlegi művelet befejeződik, majd próbálkozzon újra. |
 | 429 | Nincs | A vész-helyreállítási művelet folyamatban van. | Folyamatban van egy [GeoDR](event-hubs-geo-dr.md) művelet végrehajtása ezen a névtéren vagy párosításon. | Várjon, amíg a jelenlegi GeoDR művelet befejeződik, majd próbálkozzon újra. |
 
 ## <a name="error-code-badrequest"></a>Hibakód: BadRequest
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | BadRequest | 40000 | A PartitionCount nem módosítható az Event hub esetében. | Az Azure Event Hubs alapszintű vagy standard szintje nem támogatja a partíciók módosítását. | Hozzon létre egy új Event hub-t a kívánt számú partícióval az alapszintű vagy standard szintű névtérben. A particionálási felskálázás a [dedikált fürtök](event-hubs-dedicated-overview.md)esetében támogatott. |
 | BadRequest | 40000 | A MessageRetentionInDays "#" értéke nem érvényes az alapszintű csomag esetében. az érték nem lehet nagyobb, mint 1 nap. | Az alapszintű Event Hubs névterek csak legfeljebb 1 napig támogatják az üzenetek megőrzését. | Ha a rendszer több mint egy nappal az üzenetek megőrzését szeretné megtartani, [hozzon létre egy standard Event Hubs névteret](event-hubs-create.md). | 
@@ -50,6 +50,6 @@ A következő szakaszokban különböző kivételek/hibák jelennek meg Azure Re
 
 ## <a name="error-code-internal-server-error"></a>Hibakód: belső kiszolgálóhiba
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Belső kiszolgálóhiba | Nincs | Belső kiszolgálóhiba. | A Event Hubs szolgáltatás belső hibával rendelkezett. | Próbálja megismételni a sikertelen műveletet. Ha a művelet továbbra is sikertelen, forduljon az ügyfélszolgálathoz. |
