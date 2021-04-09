@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200496"
 ---
 # <a name="access-built-in-metrics"></a>Beépített mérőszámok elérése
@@ -54,7 +54,7 @@ Ha a edgeHub és a edgeAgent metrikáinak végpontját is szeretné leképezni, 
 
 A metrikák olyan címkéket tartalmaznak, amelyek segítenek azonosítani a begyűjtött metrika természetét. Az összes metrika a következő címkéket tartalmazza:
 
-| Címke | Description |
+| Címke | Leírás |
 |-|-|
 | iothub | Az az eszköz, amelyre az eszközt beszél |
 | edge_device | Az aktuális eszköz azonosítója |
@@ -66,7 +66,7 @@ A beépített hisztogramhoz és az összegző metrikához megadott quantiles 0,1
 
 A **edgeHub** modul a következő metrikákat állítja elő:
 
-| Name | Dimenziók | Description |
+| Name | Dimenziók | Leírás |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (műveleti forrás)<br> `id` (modul azonosítója) | Típus: számláló<br> GetTwin-hívások száma összesen |
 | `edgehub_messages_received_total` | `route_output` (az üzenetet küldő kimenet)<br> `id` | Típus: számláló<br> Az ügyfelektől fogadott üzenetek teljes száma |
@@ -89,7 +89,7 @@ A **edgeHub** modul a következő metrikákat állítja elő:
 
 A **edgeAgent** modul a következő metrikákat állítja elő:
 
-| Name | Dimenziók | Description |
+| Name | Dimenziók | Leírás |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Típus: mérőműszer<br> Az a mennyiség, ameddig a modul meg lett adva a központi telepítésben, és a futási állapotban volt. |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Típus: mérőműszer<br> A modul az üzemelő példányban megadott időtartamának mennyisége |

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
 ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100381426"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
@@ -196,7 +196,7 @@ Ternáris operátorral () való dupla tesztelés esetén a nem `double ? stateme
 
 Ezeket az előre definiált **függvényeket** használhatja az autoscale-képletek definiálásához.
 
-| Függvény | Visszatérési típus | Description |
+| Függvény | Visszatérési típus | Leírás |
 | --- | --- | --- |
 | átlag (doubleVecList) |double |A doubleVecList lévő összes érték átlagos értékét adja vissza. |
 | Len (doubleVecList) |double |A doubleVecList létrehozott vektor hosszát adja vissza. |

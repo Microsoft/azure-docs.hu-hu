@@ -8,10 +8,10 @@ ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102434066"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
@@ -55,7 +55,7 @@ Ezeket a metrikákat úgy konfigurálhatja, hogy nyomon kövessék a [közzétet
 
 Ennek beállításához használja a Azure Monitor [riasztások](troubleshoot-alerts.md) szolgáltatását. Megadhatja a metrikák küszöbértékeit, hogy riasztást kapjon, ha egy metrika eléri a közzétett korlát egy adott százalékát.
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Description | Dimenziók |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | TwinCount | Twin count (előzetes verzió) | Darabszám | Összesen | Az ikrek teljes száma az Azure Digital Twins-példányban. Ezzel a metrikával meghatározhatja, hogy a [szolgáltatás](reference-service-limits.md#functional-limits) legfeljebb hány ikrek számára engedélyezett. |  Nincsenek |
 | ModelCount | Modellek száma (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins-példány modelljeinek száma összesen. Ezzel a metrikával meghatározhatja, hogy az adott példányon engedélyezett modellek maximális száma eléri-e a [szolgáltatási korlátot](reference-service-limits.md#functional-limits) . | Nincsenek |
@@ -64,7 +64,7 @@ Ennek beállításához használja a Azure Monitor [riasztások](troubleshoot-al
 
 Az API-kérelmekkel rendelkező metrikák:
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Description | Dimenziók |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-kérelmek | Darabszám | Összesen | A digitális ikrek olvasási, írási, törlési és lekérdezési műveleteire vonatkozó API-kérések száma. |  Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege |
 | ApiRequestsFailureRate | API-kérelmek meghibásodási aránya | Százalék | Átlag | A szolgáltatás által a példányhoz kapott API-kérelmek százalékos aránya (500) a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteinek belső hibája (). | Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege
@@ -74,7 +74,7 @@ Az API-kérelmekkel rendelkező metrikák:
 
 A számlázással elvégezhető mérőszámok:
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Description | Dimenziók |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Számlázási API-műveletek | Darabszám | Összesen | Az Azure Digital Twins szolgáltatásban végrehajtott API-kérelmek számának számlázási mérőszáma. | Meter ID |
 | BillingMessagesProcessed | Feldolgozott számlázási üzenetek | Darabszám | Összesen | Számlázási metrika az Azure digitális Twins-ból külső végpontokra küldött üzenetek számának megadásához.<br><br>Ahhoz, hogy csak egyetlen üzenet legyen a számlázási célokra, a hasznos adatok nem lehetnek nagyobbak 1 KB-nál. Az ennél nagyobb hasznos adatok az 1 KB-os növekményekben további üzenetnek számítanak (ezért az 1. és 2. közötti üzenet 2 üzenetnek számít, 2 és 3 KB között 3 üzenet lesz, és így tovább).<br>Ez a korlátozás a válaszokra is vonatkozik – így a válasz törzsében az 1,5 KB értéket visszaadó hívás (például: 2 művelet lesz). | Meter ID |
@@ -86,7 +86,7 @@ Az Azure digitális ikrek számlázásával kapcsolatos további információké
 
 Adatbevitelsel ellátott mérőszámok:
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Description | Dimenziók |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Bejövő események | Darabszám | Összesen | A bejövő telemetria események száma az Azure digitális Twins-ban. | Eredmény |
 | IngressEventsFailureRate | Bejövő események meghibásodási aránya | Százalék | Átlag | Azon bejövő telemetria-események százalékos aránya, amelyek esetében a szolgáltatás belső hibát (500) ad vissza. | Eredmény |
@@ -96,7 +96,7 @@ Adatbevitelsel ellátott mérőszámok:
 
 Az útválasztással elvégezhető mérőszámok:
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Description | Dimenziók |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Átirányított üzenetek | Darabszám | Összesen | Az Azure-szolgáltatásokhoz (például Event hub, Service Bus vagy Event Grid) továbbított üzenetek száma. | Végpont típusa, <br>Eredmény |
 | RoutingFailureRate | Útválasztási hibák aránya | Százalék | Átlag | Az olyan események százalékos aránya, amelyek az Azure digitális Twins-ból egy Endpoint Azure-szolgáltatásba, például az Event hub-ba, a Service Busba vagy a Event Gridra irányítják a hibát. | Végpont típusa, <br>Eredmény |

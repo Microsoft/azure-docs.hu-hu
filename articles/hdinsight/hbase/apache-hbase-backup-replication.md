@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 1d5bcf9c04ad02eaf297f8971aa0f4ff599888c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942990"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>A biztonsági mentés és a replikálás beállítása az Apache HBase és a Apache Phoenix on HDInsight
@@ -20,7 +20,7 @@ Az Apache HBase az adatvesztés elleni védelem számos módszerét támogatja:
 * Exportálás, importálás
 * Táblák másolása
 * Pillanatképek
-* Replikálás
+* Replikáció
 
 > [!NOTE]  
 > Apache Phoenix a metaadatokat a HBase-táblákban tárolja, így a metaadatok biztonsági mentést készítenek a HBase Rendszerkatalógus-tábláiról.
@@ -226,7 +226,7 @@ A Pillanatkép exportálása után az SSH-t a cél fürt fő csomópontjára hel
 
 A pillanatképek a parancs időpontjában teljes biztonsági mentést biztosítanak a tábláról `snapshot` . A pillanatképek nem teszik lehetővé a növekményes Pillanatképek elvégzését a Windowsban, és nem határozzák meg a pillanatképbe foglalandó oszlopok családokat.
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 A [HBase-replikáció](https://hbase.apache.org/book.html#_cluster_replication) automatikusan leküldi a tranzakciókat egy forráskiszolgálóról a célkiszolgálóra, és egy aszinkron mechanizmust használ, amely minimális terheléssel rendelkezik a forrás-fürtön. A HDInsight-ben beállíthatja a fürtök közötti replikációt, ahol:
 

@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
 ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102607611"
 ---
-# <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
+# <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Kimenő SMTP-kapcsolat problémáinak elhárítása az Azure-ban
 
 A (z) 2017. november 15-én kezdődően a virtuális gépről (például outlook.com és gmail.com) közvetlenül küldött kimenő e-mail-üzenetek csak bizonyos előfizetési típusok számára érhetők el az Azure-ban. A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok blokkolva lettek. (A 25-ös portot főleg a nem hitelesített e-mailek kézbesítésére használják.)
 
 Ez a viselkedési változás csak az 2017. november 15. után létrehozott előfizetésekre és központi telepítésekre vonatkozik.
 
-## <a name="recommended-method-of-sending-email"></a>E-mailek küldésének ajánlott módja
+## <a name="recommended-method-of-sending-email"></a>E-mail küldéséhez javasolt módszer
 
 Javasoljuk, hogy hitelesített SMTP Relay-szolgáltatásokat használjon az Azure-beli virtuális gépekről vagy Azure App Serviceról küldött e-mailek küldéséhez. (Ezek a továbbító szolgáltatások jellemzően a 587-es TCP-porton keresztül csatlakoznak, de más portokat is támogatnak.) Ezek a szolgáltatások az IP-címek és a tartományok hírnevének fenntartására szolgálnak, hogy a harmadik féltől származó e-mail-szolgáltatók elutasítsák az üzeneteket. A [SendGrid](https://sendgrid.com/partners/azure/) egy ilyen SMTP-továbbító szolgáltatás, de mások is vannak. Előfordulhat, hogy egy, a helyszínen futó biztonságos SMTP-továbbító szolgáltatást is tartalmaz, amelyet használhat.
 
