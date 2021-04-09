@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100651374"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
@@ -78,7 +78,7 @@ Delegált engedély konfigurálása a Microsoft Graphhoz, hogy az ügyfélalkalm
 1. Válassza a **delegált engedélyek** lehetőséget. Microsoft Graph számos engedélyt tesz elérhetővé a lista tetején leggyakrabban használt módon.
 1. Az **engedélyek kiválasztása** területen válassza ki a következő engedélyeket:
 
-    | Engedély       | Description                                         |
+    | Engedély       | Leírás                                         |
     |------------------|-----------------------------------------------------|
     | `email`          | Felhasználók e-mail-címének megtekintése                           |
     | `offline_access` | Az Ön számára biztosított adathozzáférés fenntartása |

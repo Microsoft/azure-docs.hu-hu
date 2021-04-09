@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/18/2021
-ms.openlocfilehash: 7678d0fde21cefc950e0ac64a58563425c606298
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.date: 03/25/2021
+ms.openlocfilehash: 72ab685b58f7d940fe4d682cacba6212fe80ced8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105640231"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933083"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
@@ -341,6 +341,110 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 1. Keresse meg az adatkészlet kapcsolatainak állapotát. Minden forrás-és fogadó-átalakításban nyissa meg a társított szolgáltatást minden Ön által használt adatkészlethez, majd tesztelje a kapcsolatokat.
 2. Győződjön meg róla, hogy a fájl és a tábla kapcsolatainak állapota az adatfolyam-tervezőben található. Hibakeresési módban válassza az **adatelőnézet** lehetőséget a forrás átalakításokban, hogy hozzáférjen az adataihoz.
 3. Ha úgy tűnik, hogy minden megfelelően megjelenik az adatelőnézetben, ugorjon a folyamat-tervezőbe, és helyezze át az adatfolyamatot egy folyamat tevékenységbe. Egy végpontok közötti teszt folyamatának hibakeresése.
+
+### <a name="improvement-on-csvcdm-format-in-data-flow"></a>A CSV/CDM formátumának fejlesztése az adatfolyamban 
+
+Ha a **tagolt szöveges vagy CDM-formátumot használja a Azure Data Factory v2-ben lévő adatforgalom leképezéséhez**, akkor előfordulhat, hogy az adatforgalomban a tagolt szöveg/CDM változása a **2021**. 
+
+A fejlesztés előtt a következő problémák merülhetnek fel, de a fejlesztés után a problémák kijavítva lettek. A következő tartalom elolvasásával megállapíthatja, hogy ez a javulás befolyásolja-e Önt. 
+
+#### <a name="scenario-1-encounter-the-unexpected-row-delimiter-issue"></a>1. forgatókönyv: a váratlan sor elválasztó hibájának beolvasása
+
+ A következő esetekben kell érintenie:
+ - A tagolt szöveg használata az igaz vagy a CDM értékre állítva forrásként.
+ - Az első sor több mint 128 karakterből áll. 
+ - Az adatfájlokban lévő sorok elválasztója nem `\n` .
+
+ A fejlesztés előtt az alapértelmezett sor elválasztója `\n` váratlanul felhasználható a tagolt szövegfájlok elemzéséhez, mert ha a többsoros beállítás értéke TRUE (igaz), akkor érvényteleníti a sor elválasztó beállítását, és az első 128 karakter alapján automatikusan észleli a sor elválasztóját. Ha nem ismeri fel a tényleges sor elválasztó karakterét, akkor az vissza fog térni a következőre: `\n` .  
+
+ A fejlesztést követően a három sorból álló határolójel közül a következőt kell `\r` `\n` `\r\n` kidolgozni:,.
+ 
+ A következő példa egy folyamat működésének változását mutatja be a fejlesztés után:
+
+ **Példa**:<br/>
+   A következő oszlophoz:<br/>
+    `C1, C2, {long first row}, C128\r\n `<br/>
+    `V1, V2, {values………………….}, V128\r\n `<br/>
+ 
+   A fejlesztés előtt az `\r` oszlop értéke megmarad. Az elemzett oszlop eredménye a következőket eredményezi:<br/>
+   `C1 C2 {long first row} C128`**`\r`**<br/>
+   `V1 V2 {values………………….} V128`**`\r`**<br/> 
+
+   A fejlesztést követően az elemzett oszlop eredményének a következőnek kell lennie:<br/>
+   `C1 C2 {long first row} C128`<br/>
+   `V1 V2 {values………………….} V128`<br/>
+  
+#### <a name="scenario-2-encounter-an-issue-of-incorrectly-reading-column-values-containing-rn"></a>2. forgatókönyv: a "\r\n" értéket tartalmazó oszlop értékeinek helytelen olvasásával kapcsolatos probléma
+
+ A következő esetekben kell érintenie:
+ - A tagolt szöveg és a többsoros beállítás értékeként a True vagy a CDM értéket használja forrásként. 
+ - A sor elválasztója: `\r\n` .
+
+ A fejlesztés előtt az oszlop értékének beolvasása során a `\r\n` nem helyettesíthető `\n` . 
+
+ A fejlesztést követően az `\r\n` oszlop értéke nem lesz lecserélve `\n` .
+
+ A következő példa egy folyamat működésének változását mutatja be a fejlesztés után:
+ 
+ **Példa**:<br/>
+  
+ A következő oszlophoz:<br/>
+  **`"A\r\n"`**`, B, C\r\n`<br/>
+
+ A fejlesztés előtt az elemzett oszlop eredménye a következő:<br/>
+  **`A\n`**` B C`<br/>
+
+ A fejlesztést követően az elemzett oszlop eredményének a következőnek kell lennie:<br/>
+  **`A\r\n`**` B C`<br/>  
+
+#### <a name="scenario-3-encounter-an-issue-of-incorrectly-writing-column-values-containing-n"></a>3. forgatókönyv: a "\n" értéket tartalmazó oszlop értékeinek helytelen írásakor felmerülő hiba
+
+ A következő esetekben kell érintenie:
+ - A tagolt szöveg fogadóként való használata.
+ - Az oszlop értéke tartalmaz `\n` .
+ - A sor elválasztója a következőre van beállítva: `\r\n` .
+ 
+ A fejlesztés előtt az oszlop értékének írásakor a `\n` nem helyettesíthető `\r\n` . 
+
+ A fejlesztést követően az `\n` oszlop értéke nem lesz lecserélve `\r\n` .
+ 
+ A következő példa egy folyamat működésének változását mutatja be a fejlesztés után:
+
+ **Példa**:<br/>
+
+ A következő oszlophoz:<br/>
+ **`A\n`**` B C`<br/>
+
+ A kijavítás előtt a CSV-fogadó a következő:<br/>
+  **`"A\r\n"`**`, B, C\r\n` <br/>
+
+ A fejlesztés után a CSV-gyűjtőnek a következőnek kell lennie:<br/>
+  **`"A\n"`**`, B, C\r\n`<br/>
+
+#### <a name="scenario-4-encounter-an-issue-of-incorrectly-reading-empty-string-as-null"></a>4. forgatókönyv: üres karakterlánc helytelen olvasásának hibája (NULL)
+ 
+ A következő esetekben kell érintenie:
+ - Tagolt szöveg használata forrásként. 
+ - A NULL érték nem üres értékre van állítva. 
+ - Az oszlop értéke üres karakterlánc, és nem jegyzett. 
+ 
+ A fejlesztés előtt a nem jegyzett üres karakterlánc oszlopának értékét a rendszer NULL értékre olvassa. 
+
+ A fejlesztést követően az üres sztringek nem lesznek NULL értékként értelmezve. 
+ 
+ A következő példa egy folyamat működésének változását mutatja be a fejlesztés után:
+
+ **Példa**:<br/>
+
+ A következő oszlophoz:<br/>
+  `A, ,B, `<br/>
+
+ A fejlesztés előtt az elemzett oszlop eredménye a következő:<br/>
+  `A null B null`<br/>
+
+ A fejlesztést követően az elemzett oszlop eredményének a következőnek kell lennie:<br/>
+  `A "" (empty string) B "" (empty string)`<br/>
+
 
 ## <a name="next-steps"></a>Következő lépések
 

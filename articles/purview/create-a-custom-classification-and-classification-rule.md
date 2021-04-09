@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
 ms.openlocfilehash: 2966618619aa40ed60c2f3d0fb2c8e080d34a016
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102617046"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Egyéni besorolások az Azure hatáskörébe
@@ -97,7 +97,7 @@ Egyéni besorolási szabály létrehozása:
    |Mező     |Leírás  |
    |---------|---------|
    |Név   |    Kötelező. A maximális érték 100 karakter.    |
-   |Description      |Választható. A maximális érték 256 karakter.    |
+   |Leírás      |Választható. A maximális érték 256 karakter.    |
    |Besorolás neve    | Kötelező. A legördülő listából válassza ki a besorolás nevét, hogy a rendszer a képolvasót alkalmazza, ha egyezést talál.        |
    |Állapot   |  Kötelező. A beállítások engedélyezve vagy le vannak tiltva. Az alapértelmezés szerint engedélyezve van.    |
 

@@ -6,18 +6,19 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c9ef72241ac62efd8555de59bb52949321364035
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fe12c985f5d9a519380d1d9b5a7d6c2820630c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325179"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932335"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>RDP protokoll (RDP) sávszélességre vonatkozó követelmények
 
 A RDP protokoll (RDP) egy kifinomult technológia, amely különböző technikákat használ a kiszolgáló távoli grafikájának az ügyfél eszközre történő kézbesítésének tökéletesítéséhez. A használati esettől, a számítási erőforrások és a hálózati sávszélességtől függően az RDP dinamikusan módosítja a különböző paramétereket, hogy a lehető legjobb felhasználói élményt nyújtsa.
 
-RDP protokoll a több dinamikus virtuális csatornát (DVCs) egyetlen adatcsatornába, amely különböző hálózati átviteleken keresztül lett elküldve. Külön DVCs a távoli grafikák, a bevitel, az eszközök átirányítása, a nyomtatás és mások számára. A WVD-partnerek a KONKURENS felületet használó bővítményeket is végrehajthatják.
+RDP protokoll a több dinamikus virtuális csatornát (DVCs) egyetlen adatcsatornába, amely különböző hálózati átviteleken keresztül lett elküldve. Külön DVCs a távoli grafikák, a bevitel, az eszközök átirányítása, a nyomtatás és egyebek. A Windows rendszerű virtuális asztali partnerek a KONKURENS felületet használó bővítményeket is használhatják.
+
 Az RDP-kapcsolaton keresztül továbbított adatok mennyisége a felhasználói tevékenységtől függ. Előfordulhat például, hogy egy felhasználó az alapszintű szöveges tartalommal dolgozik a legtöbb munkamenetben, és minimális sávszélességet használ, de ezután kinyomtatja a 200-oldal dokumentumot a helyi nyomtatóba. Ez a nyomtatási feladatok jelentős mennyiségű hálózati sávszélességet fognak használni.
 
 Távoli munkamenet használata esetén a hálózat elérhető sávszélessége jelentősen befolyásolja a felhasználói élmény minőségét. A különböző alkalmazások és megjelenítési felbontások eltérő hálózati konfigurációt igényelnek, ezért elengedhetetlen, hogy a hálózati konfiguráció megfeleljen az igényeinek.

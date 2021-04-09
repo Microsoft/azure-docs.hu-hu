@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563929"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933111"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
 
@@ -143,13 +143,6 @@ Az első nem null értéket adja vissza bemenetek készletében. Minden bemenetn
 * ``coalesce(10, 20) -> 10``  
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``  
 ___
-### <code>collect</code>
-<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-Az összesített csoportban lévő kifejezés összes értékét egy tömbbe gyűjti. A szerkezetek összegyűjthetők és átalakíthatók más struktúrákba a folyamat során. Az elemek száma egyenlő lesz a csoportban lévő sorok számával, és tartalmazhat null értékeket is. Az összegyűjtött elemek számának kicsinek kell lennie.  
-* ``collect(salesPerson)``
-* ``collect(firstName + lastName))``
-* ``collect(@(name = salesPerson, sales = salesAmount) )``
-___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
 Beolvassa egy adatfolyam összes kimeneti oszlopának nevét. A második argumentumként átadhat egy opcionális stream-nevet.  
@@ -277,6 +270,10 @@ ___
 <code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
 Egy karakterláncot egy formátum alapján elmenekül. Az elfogadható formátum literál értékei a következők: "JSON", "XML", "ECMAScript", "HTML", "Java".
 ___
+### <code>expr</code>
+<code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
+Egy karakterlánc kifejezését eredményezi. Ez ugyanaz, mint a kifejezés nem literálos formában való írásakor. Ez a paraméterek karakterlánc-ábrázolásként való továbbítására használható.
+*   kifejezés ("Price * discount") => ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 Kiszámítja egy szám faktoriálisát.  
@@ -856,6 +853,13 @@ ___
 A feltételek alapján egy oszlop értékeinek átlagát kapja meg.  
 * ``avgIf(region == 'West', sales)``  
 ___
+### <code>collect</code>
+<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
+Az összesített csoportban lévő kifejezés összes értékét egy tömbbe gyűjti. A szerkezetek összegyűjthetők és átalakíthatók más struktúrákba a folyamat során. Az elemek száma egyenlő lesz a csoportban lévő sorok számával, és tartalmazhat null értékeket is. Az összegyűjtött elemek számának kicsinek kell lennie.  
+* ``collect(salesPerson)``
+* ``collect(firstName + lastName))``
+* ``collect(@(name = salesPerson, sales = salesAmount) )``
+___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
 Az értékek összesített számának beolvasása. Ha a nem kötelező oszlop (ok) meg van adva, a rendszer figyelmen kívül hagyja a darabszám NULL értékeit.  
@@ -900,6 +904,10 @@ Egy oszlopcsoport első értékének beolvasása. Ha a második paraméter ignor
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+### <code>isDistinct</code>
+<code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+Megkeresi, hogy egy oszlop vagy oszlop halmaza különbözik-e. A null értéket nem számítja fel külön értékként. *   ``isDistinct(custId, custName) => boolean``
+*   ___
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Egy oszlop csúcsosságát beolvasása.  
@@ -1217,6 +1225,14 @@ ___
 
 A konverziós függvények az adatok átalakítására és az adattípusok tesztelésére szolgálnak.
 
+### <code>isBitSet</code>
+<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+Ellenőrzi, hogy van-e beállítva egy kis pozíció ebben a bitset * ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
+___
+### <code>setBitSet</code>
+<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+A bitset lévő bitek beállítása * ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
+___  
 ### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 Ellenőrzi, hogy a karakterlánc értéke logikai érték-e a következő szabályoknak megfelelően ``toBoolean()``
@@ -1431,6 +1447,11 @@ Válassza ki az oszlopok tömbjét név szerint az adatfolyamban. A második arg
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
+### <code>byPath</code>
+<code><b>byPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => any</b></code><br/><br/>
+Az adatfolyamban található név alapján megkeresi a hierarchikus elérési utat. A második argumentumként átadhat egy opcionális stream-nevet. Ha nem található ilyen elérési út, a null értéket ad vissza. A tervezéskor ismert oszlopnevek/elérési utakat csak a nevük vagy a pont jelölési útvonala alapján kell kezelni. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
+* ``byPath('grandpa.parent.child') => column`` 
+___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
 Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1 alapú) alapján. Ha a pozíció kívül esik a határértékeken, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...) A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
@@ -1439,6 +1460,11 @@ Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hasPath</code>
+<code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
+Ellenőrzi, hogy egy adott hierarchikus elérési út létezik-e a streamben név alapján. A második argumentumként átadhat egy opcionális stream-nevet. A tervezéskor ismert oszlopnevek/elérési utakat csak a nevük vagy a pont jelölési útvonala alapján kell kezelni. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
+* ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
 <code><b>hex(<value1>: binary) => string</b></code><br/><br/>

@@ -2,19 +2,19 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466184"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958087"
 ---
-Ebben a kategóriában **64** javaslat található.
+Ebben a kategóriában **65** javaslat található.
 
-|Ajánlás |Description |Súlyosság |
+|Ajánlás |Leírás |Súlyosság |
 |---|---|---|
 |Az összetett veszélyforrások elleni védelem összes típusát engedélyezni kell az SQL felügyelt példány speciális biztonsági beállításainál |Javasoljuk, hogy az összes komplex veszélyforrások elleni védelmi típust engedélyezze az SQL felügyelt példányain. Az összes típus engedélyezése védelmet biztosít az SQL-injektálás, az adatbázis-sebezhetőség és minden más rendellenes tevékenység ellen.<br />(Nincs kapcsolódó házirend) |Közepes |
 |Az összetett veszélyforrások elleni védelem összes típusát engedélyezni kell az SQL Server speciális biztonsági beállításaiban |Javasoljuk, hogy engedélyezze az összes komplex veszélyforrások elleni védelmi típust az SQL-kiszolgálókon. Az összes típus engedélyezése védelmet biztosít az SQL-injektálás, az adatbázis-sebezhetőség és minden más rendellenes tevékenység ellen.<br />(Nincs kapcsolódó házirend) |Közepes |
@@ -24,6 +24,7 @@ Ebben a kategóriában **64** javaslat található.
 |Az SQL serverek naplózási megőrzését legalább 90 napra kell beállítani |A naplózási megőrzési időtartammal konfigurált SQL serverek naplózása 90 napnál rövidebb.<br />(Kapcsolódó házirend: [az SQL-kiszolgálókat 90 napos naplózási vagy magasabb szintű naplózással kell konfigurálni.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |Alacsony |
 |Az SQL Server naplózását engedélyezni kell |A naplózás engedélyezése a SQL Serveron nyomon követheti az adatbázis-tevékenységeket a-kiszolgálón lévő összes adatbázisban, és mentheti őket egy naplóba.<br />(Kapcsolódó szabályzat: [az SQL Server naplózásának engedélyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)szükséges) |Alacsony |
 |Az Log Analytics ügynök automatikus üzembe helyezését engedélyezni kell az előfizetésen |A biztonsági rések és fenyegetések figyeléséhez Azure Security Center adatokat gyűjt az Azure-beli virtuális gépekről. Az adatokat a korábban a Microsoft monitoring Agent (MMA) néven ismert Log Analytics ügynök gyűjti, amely különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat olvas be a gépről, és az adatokat az Log Analytics munkaterületre másolja az elemzéshez. Javasoljuk, hogy az automatikus kiépítés engedélyezésével automatikusan telepítse az ügynököt az összes támogatott Azure-beli virtuális gépre és a létrehozott újakra.<br />(Kapcsolódó szabályzat: [a log Analytics ügynök automatikus kiépítés engedélyezése az előfizetésen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)) |Alacsony |
+|Az Azure arc-kompatibilis Kubernetes-fürtökön telepítve kell lennie az Azure Defender bővítményének |Az Azure Defender Azure arc-bővítménye biztosítja az arc-kompatibilis Kubernetes-fürtök veszélyforrások elleni védelmét. A bővítmény a fürt összes vezérlő síkja (fő) csomópontjának adatait gyűjti, és további elemzés céljából elküldi azt az Azure Defender for Kubernetes háttérbe a felhőben. További információ: https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc .<br />(Nincs kapcsolódó házirend) |Magas |
 |A Redis tartozó Azure cache-nek egy virtuális hálózaton belül kell lennie |Az Azure Virtual Network (VNet) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az Azure cache Redis, valamint az alhálózatok, hozzáférés-vezérlési házirendek és egyéb funkciók számára a hozzáférés további korlátozásához. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el.<br />(Kapcsolódó szabályzat: [Az Azure cache for Redis egy virtuális hálózaton belül kell, hogy legyen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4)) |Közepes |
 |Azure Cosmos DB fiókoknak tűzfalszabályok |A tűzfal szabályait meg kell határozni a Azure Cosmos DB-fiókokon, hogy megakadályozza a jogosulatlan forrásokból érkező forgalmat. Azok a fiókok, amelyeken engedélyezve van a virtuális hálózati szűrővel megadott legalább egy IP-szabály, megfelelőnek tekintendők. A nyilvános hozzáférést letiltó fiókok is megfelelőnek tekintendők.<br />(Kapcsolódó házirend: [Azure Cosmos db fiókoknak tűzfalszabályok szükségesek](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)) |Közepes |
 |Azure Cosmos DB fiókoknak az ügyfelek által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához |Az ügyfél által felügyelt kulcsok segítségével kezelheti a titkosítást a Azure Cosmos DB többi részén. Alapértelmezés szerint az adatok titkosítva vannak a szolgáltatás által felügyelt kulcsokkal, de az ügyfél által felügyelt kulcsokat (CMK) általában a szabályozási megfelelőségi előírások teljesítéséhez szükségesek. A CMKs lehetővé teszi az adattitkosítást egy Ön által létrehozott és birtokolt Azure Key Vault kulccsal. A kulcs életciklusának teljes körű ellenőrzése és felelőssége, beleértve a rotációt és a felügyeletet is. További információ a CMK-titkosításról: https://aka.ms/cosmosdb-cmk .<br />(Kapcsolódó házirend: [Azure Cosmos db fiókoknak az ügyfelek által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f905d99-2ab7-462c-a6b0-f709acca6c8f)) |Magas |

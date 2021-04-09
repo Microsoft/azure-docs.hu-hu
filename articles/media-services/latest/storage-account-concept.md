@@ -32,7 +32,7 @@ A Media Services v3-as verziójában a Storage API-k segítségével tölthet fe
 
 Az adategységek védelméhez az eszközöket a tárolási oldal titkosításával kell titkosítani. A következő táblázat bemutatja, hogyan működik a tárolási oldal titkosítása Media Services v3-ban:
 
-|Titkosítási beállítás|Description|Media Services v3|
+|Titkosítási beállítás|Leírás|Media Services v3|
 |---|---|---|
 |Media Services Storage-titkosítás| AES-256 titkosítás, Media Services által felügyelt kulcs. |Nem támogatott. <sup>1</sup>|
 |[Tárolási szolgáltatás titkosítása inaktív adatok esetén](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott.|

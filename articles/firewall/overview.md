@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
 ms.openlocfilehash: 0982f0293b452c29a1c9fbb46cb24d47e70c0f5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102615567"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
@@ -53,7 +53,7 @@ Az Azure Firewall újdonságait az [Azure Updates](https://azure.microsoft.com/u
 
 Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
-|Probléma  |Description  |Kockázatcsökkentés  |
+|Probléma  |Leírás  |Kockázatcsökkentés  |
 |---------|---------|---------|
 |Ha az IP-címről származó szabályt az IP-csoportra frissíti, vagy fordítva a portálon keresztül, mindkét típus mentésre kerül, de csak egy jelenik meg a portálon.|Ez a probléma klasszikus szabályokkal történik.<br><br>Ha a portál használatával frissíti egy NAT-szabály forrásának típusát az IP-címről az IP-csoportra, vagy fordítva, akkor mindkét típust menti a háttérbe, de csak az újonnan frissített típust jeleníti meg.<br><br>Ugyanez a probléma akkor jelentkezik, ha a hálózat vagy az alkalmazás szabályának típusát IP-címről vagy IP-csoport típusra frissíti, vagy fordítva.|A portál javításának célja a 2021. márciusi.<br><br>Addig is használhatja a Azure PowerShell, az Azure CLI vagy az API-t egy szabály módosításához az IP-címről az IP-csoportra, vagy fordítva.|
 |A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](../load-balancer/load-balancer-overview.md). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|

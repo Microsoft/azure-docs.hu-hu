@@ -7,12 +7,12 @@ ms.author: chpalm
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 99263695aa0842daf59f23cda115dcb5b27b7add
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e55cfb1a4dff7bfda2323e68777d6f50514b1608
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804062"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930234"
 ---
 # <a name="teams-embed"></a>Csoportok beágyazása
 
@@ -21,7 +21,7 @@ ms.locfileid: "104804062"
 
 A Teams beágyazás egy olyan Azure kommunikációs szolgáltatási képesség, amely a közös vállalkozások közötti és a vállalatok közötti telefonálási interakcióra összpontosít. A csapat beágyazási rendszerének lényege a [videó-és hanghívás](../voice-video-calling/calling-sdk-features.md), de a csapatok beágyazási rendszere az Azure-beli egyszerű hívások révén teljes körű felhasználói élményt biztosít a Microsoft Teams-találkozókon alapuló felhasználók számára.
 
-A csoportok beágyazásának ügyféloldali kódtárai lezártak, és elérhetővé teszik ezeket a funkciókat kulcsrakész, összetett formátumban. Eldobni a csapatokat az alkalmazás vászonba, és az ügyféloldali kódtár teljes felhasználói élményt generál. Mivel ez a felhasználói élmény nagyon hasonlít a Microsoft Teams üléseire, a következő előnyöket veheti igénybe:
+Az SDK-k beágyazva vannak, és ezeket a képességeket kulcsrakész, összetett formátumban teszik elérhetővé. Eldobni a csapatokat az alkalmazás vászonba, és az SDK teljes felhasználói élményt generál. Mivel ez a felhasználói élmény nagyon hasonlít a Microsoft Teams üléseire, a következő előnyöket veheti igénybe:
 
 - Csökkentett fejlesztési idő és mérnöki komplexitás
 - A csapatokkal folytatott végfelhasználói ismeretek

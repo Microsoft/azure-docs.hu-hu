@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3fd837a4c547b227147752b03b6a7312c733a5ae
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578021"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057014"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása
 
@@ -370,6 +370,12 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
    - Ok: a kiszolgálóval való csatlakozás rendellenes módon megszakadt.
    - Megoldás: próbálkozzon újra egy kis ideig, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
+
+##### <a name="other-errors"></a>Egyéb hibák
+
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
+   - Ok: a Napszállta 220 megtalálható a felhasználó-eszköz regisztrációs eseménynaplókban. A Windows nem fér hozzá a számítógép-objektumhoz Active Directoryban. Az esemény tartalmazhatja a Windows-hibakódot is. A hibakódok ERROR_NO_SUCH_LOGON_SESSION (1312) és a ERROR_NO_SUCH_USER (1317) esetében ezek a helyszíni AD replikációs problémáival kapcsolatosak.
+   - Megoldás: az AD replikációs problémáinak elhárítása. Előfordulhat, hogy a replikálási problémák átmenetiek, és egy adott idő elteltével elmennek.
 
 ##### <a name="federated-join-server-errors"></a>Összevont kapcsolódási kiszolgáló hibái
 
