@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
 ms.openlocfilehash: 18d4d84462d528b718d784ff6a16ecf990ed0d20
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100094015"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Azure-erőforrások régiók közötti áthelyezésének támogatása
@@ -812,14 +812,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | kiszolgálók | Egy meglévő kiszolgáló áthelyezéséhez a régiók közötti olvasási replikát használhat. [További információ](../../postgresql/howto-move-regions-portal.md).<br/><br/> Ha a szolgáltatás a Geo-redundáns biztonsági mentési tárolóval van kiépítve, a Geo-visszaállítás használatával más régiókban is visszaállítható. [További információ](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage).
+> | kiszolgálók | Egy meglévő kiszolgáló áthelyezéséhez a régiók közötti olvasási replikát használhat. [További információk](../../postgresql/howto-move-regions-portal.md).<br/><br/> Ha a szolgáltatás a Geo-redundáns biztonsági mentési tárolóval van kiépítve, a Geo-visszaállítás használatával más régiókban is visszaállítható. [További információk](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage).
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | kiszolgálók | Egy meglévő kiszolgáló áthelyezéséhez a régiók közötti olvasási replikát használhat. [További információ](../../mysql/howto-move-regions-portal.md).
+> | kiszolgálók | Egy meglévő kiszolgáló áthelyezéséhez a régiók közötti olvasási replikát használhat. [További információk](../../mysql/howto-move-regions-portal.md).
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
@@ -1061,7 +1061,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem. [További információ](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region).
+> | fiókok | Nem. [További információk](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region).
 > | actiongroups |  No | 
 > | activitylogalerts | No | 
 > | alertrules |  No | 

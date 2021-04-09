@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100389110"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Oktatóanyag: webalkalmazás migrálása a Bing Mapsből
@@ -909,7 +909,7 @@ A Azure Mapsban az adatforrások felveszik és kezelik az adatforrásokat. A ré
 
 Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem fürtözött adatpontokat küld a renderelési rétegeknek. Az adatforrás több száz ezer adatpont fürtözésére képes. A fürtözött adatpontok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság neve               | Típus    | Description                                    |
+| Tulajdonság neve               | Típus    | Leírás                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e.     |
 | `cluster_id`                | sztring  | A fürt egyedi azonosítója, amely az `DataSource` osztályokkal `getClusterExpansionZoom` , valamint a függvények használatával használható `getClusterChildren` `getClusterLeaves` . |
@@ -918,7 +918,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Függvény       | Visszatérési típus        | Description     |
+| Függvény       | Visszatérési típus        | Leírás     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyermekek alakzatokat és alfürtöket is tartalmazhatnak. Az alfürtök a fürt tulajdonságaival egyező tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kiszámítja azt a nagyítási szintet, amelyet a fürt elkezd kibővíteni vagy bontani.    |

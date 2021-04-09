@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
 ms.openlocfilehash: 8471983d24cfed39e6521e19366f6023e519adaf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895475"
 ---
 # <a name="translator-30-languages"></a>Translator 3,0: nyelvek
@@ -49,7 +49,7 @@ A kérelem fejlécei:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>Accept-Language</td>
     <td>A *kérelem fejléce nem kötelező*.<br/>A felhasználói felület sztringjeihez használni kívánt nyelv. A válasz mezői a nyelvek nevei vagy a régiók nevei. Ezzel a paraméterrel határozhatja meg, hogy a rendszer milyen nyelven adja vissza ezeket a neveket. A nyelvet úgy kell megadni, hogy megfelelően formázott BCP 47 nyelvi címkét adjon meg. Például a `fr` nevek francia nyelven való meghívásához használja az értéket, vagy használja a `zh-Hant` nevet a hagyományos kínai nyelven.<br/>A nevek az angol nyelven jelennek meg, ha a célként megadott nyelv nincs megadva, vagy ha a honosítás nem érhető el.
@@ -230,7 +230,7 @@ A támogatott nyelvek listája nem változik gyakran. Ha menteni szeretné a há
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>ETag</td>
     <td>A támogatott nyelvek kért csoportjaihoz tartozó entitás címkéje aktuális értéke. A későbbi kérelmek hatékonyabbá tételéhez az ügyfél elküldheti az `ETag` értéket egy `If-None-Match` fejléc mezőjében.
@@ -248,7 +248,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>

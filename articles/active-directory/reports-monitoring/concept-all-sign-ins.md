@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103574560"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory bejelentkezési tevékenységgel kapcsolatos jelentések – előzetes verzió
@@ -102,7 +102,7 @@ A bejelentkezési jelentés panelen válthat a következők közül:
 
 
 
-## <a name="user-sign-ins"></a>Felhasználói bejelentkezések
+## <a name="user-sign-ins&quot;></a>Felhasználói bejelentkezések
 
 A bejelentkezések panel minden lapja az alábbi alapértelmezett oszlopokat jeleníti meg. Egyes lapok további oszlopokkal rendelkeznek:
 
@@ -120,7 +120,7 @@ A bejelentkezések panel minden lapja az alábbi alapértelmezett oszlopokat jel
 
 
 
-### <a name="interactive-user-sign-ins"></a>Interaktív felhasználói bejelentkezések
+### <a name=&quot;interactive-user-sign-ins&quot;></a>Interaktív felhasználói bejelentkezések
 
 
 Az interaktív felhasználói bejelentkezések olyan bejelentkezések, amelyekben a felhasználó hitelesítési tényezőt biztosít az Azure AD-hez, vagy közvetlenül az Azure AD-vel vagy egy segítő alkalmazással, például a Microsoft Authenticator alkalmazással kommunikál. A felhasználók által biztosított tényezők közé tartoznak a jelszavak, az MFA-kihívásokra, a biometrikus tényezőkre, valamint a felhasználók által az Azure AD-be vagy egy segítő alkalmazásba küldött QR-kódokra adott válaszok.
@@ -155,7 +155,7 @@ Az alapértelmezett mezőkön kívül az interaktív bejelentkezési jelentés a
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Interaktív felhasználói bejelentkezési oszlopok](./media/concept-all-sign-ins/columns-interactive.png "Interaktív felhasználói bejelentkezési oszlopok")
+![Interaktív felhasználói bejelentkezési oszlopok](./media/concept-all-sign-ins/columns-interactive.png &quot;Interaktív felhasználói bejelentkezési oszlopok")
 
 
 
