@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 3f825e247aff5c8fc53eb8610f33bd8e0b7fce3d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Oktatóanyag: Azure Active Directory integráció az Zscaler One-nal
@@ -189,14 +189,14 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Kattintson az **aktiválás** gombra.
 
-## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Proxybeállítások konfigurálása az Internet Explorerben
+## <a name="configuring-proxy-settings&quot;></a>Proxybeállítások konfigurálása
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Proxybeállítások konfigurálása az Internet Explorerben
 
 1. Indítsa el az **Internet Explorert**.
 
 2. **Az Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét.   
 
-    ![Internetbeállítások](./media/zscaler-one-tutorial/ic769492.png "Internetbeállítások")
+    ![Internetbeállítások](./media/zscaler-one-tutorial/ic769492.png &quot;Internetbeállítások")
 
 3. Kattintson a **kapcsolatok** fülre.   
 

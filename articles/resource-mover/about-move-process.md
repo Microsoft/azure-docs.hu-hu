@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/01/2021
 ms.author: raynew
 ms.openlocfilehash: facbb30201aa6bde2044ca647383cc32ecd9ba26
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99980558"
 ---
 # <a name="about-the-move-process"></a>Az áthelyezési folyamat
@@ -66,7 +66,7 @@ Az áthelyezési folyamat során előfordulhat, hogy a rendszer a következő f�
 
 ### <a name="remove-resources"></a>Erőforrások eltávolítása
 
-Ha nem szeretne áthelyezni egy erőforrást, távolítsa el az áthelyezési gyűjteményből. Általában az erőforrás törlődik a gyűjteményből, valamint a kapcsolódó műveletekkel vagy objektumokkal, például a replikálással vagy a tárolt sablonokkal együtt. Pontosan mi történik, ha eltávolít egy erőforrást az erőforrás típusától és az erőforrás állapotáról a törléskor. [További információ](remove-move-resources.md).
+Ha nem szeretne áthelyezni egy erőforrást, távolítsa el az áthelyezési gyűjteményből. Általában az erőforrás törlődik a gyűjteményből, valamint a kapcsolódó műveletekkel vagy objektumokkal, például a replikálással vagy a tárolt sablonokkal együtt. Pontosan mi történik, ha eltávolít egy erőforrást az erőforrás típusától és az erőforrás állapotáról a törléskor. [További információk](remove-move-resources.md).
 
 ## <a name="move-impact"></a>Hatás áthelyezése
 

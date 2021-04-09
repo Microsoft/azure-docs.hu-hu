@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382293"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval Azure Logic Apps
@@ -52,7 +52,7 @@ A trigger és a csúszó ablak trigger közötti különbségek, illetve az ism�
 
    ![Az intervallum és a gyakoriság beállítása](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
    |----------|-----------|----------|------|-------------|
    | **Intervallum** | `interval` | Yes | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap <br>Hét: 1-71 hét <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
    | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét** vagy **hónap** |
@@ -72,7 +72,7 @@ A trigger és a csúszó ablak trigger közötti különbségek, illetve az ism�
 
    ![Speciális ütemezési beállítások](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
    |----------|-----------|----------|------|-------------|
    | **Időzóna** | `timeZone` | Nem | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
    | **Kezdési idő** | `startTime` | Nem | Sztring | Adjon meg egy kezdési dátumot és időpontot, amely a jövőben legfeljebb 49 év, és az [ISO 8601 dátum és idő specifikációját](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) az [UTC dátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)és idő formátumban kell követnie, de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül: <p><p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>-vagy- <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Így például, ha a szeptember 18., 2020 at 2:00 PM-t szeretné használni, adja meg a "2020-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2020-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p><p>**Fontos:** Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. Ha kijelöl egy időzóna-értéket, nem kell hozzáadnia "Z" értéket a **Kezdési idő** értékének végéhez. Ha így tesz, Logic Apps figyelmen kívül hagyja az időzóna értékét, mert a "Z" egy UTC-időformátumot jelent. <p><p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
