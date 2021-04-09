@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105611973"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>A VMware virtuális gépek ügynök nélküli áttelepítésének méretezése az Azure-ba
@@ -76,7 +76,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Az átjáró-ügynök és a készülék Configuration Manager telepítése több egyidejű kiszolgáló-replikáció végrehajtásához.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config

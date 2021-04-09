@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586089"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
@@ -31,7 +31,7 @@ Ha az alkalmazás *Alapszintű*, standard vagy *prémium* *szintű* csomagban ta
 
 Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 
-| Kvóta | Description |
+| Kvóta | Leírás |
 | --- | --- |
 | **CPU (rövid)** | Az alkalmazás számára engedélyezett CPU-mennyiség 5 perces intervallumban. Ez a kvóta öt percenként alaphelyzetbe áll. |
 | **CPU (nap)** | Az alkalmazáshoz egy nap alatt engedélyezett CPU teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |

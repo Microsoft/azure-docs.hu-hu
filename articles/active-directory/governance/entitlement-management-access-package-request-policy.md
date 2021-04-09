@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105560488"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelmek beállításainak módosítása az Azure AD-jogosultságok kezelésében
@@ -85,7 +85,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 
 1. Válasszon az alábbi lehetőségek közül:
 
-    |  | Description |
+    |  | Leírás |
     | --- | --- |
     | **Adott felhasználók és csoportok** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy csak a címtárban lévő felhasználók és csoportok férhessenek hozzá a hozzáférési csomaghoz. |
     | **Minden tag (a vendégek kivételével)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtárban lévő összes tag felhasználó kérje ezt a hozzáférési csomagot. Ez a lehetőség nem tartalmazza a címtárban esetleg meghívott vendég felhasználókat. |
@@ -122,7 +122,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lév
 
 1. Válasszon az alábbi lehetőségek közül:
 
-    |  | Description |
+    |  | Leírás |
     | --- | --- |
     | **Adott csatlakoztatott szervezetek** | Akkor válassza ezt a lehetőséget, ha ki szeretné választani a rendszergazda által korábban hozzáadott szervezetek listáját. A kiválasztott szervezetek összes felhasználója kérheti ezt a hozzáférési csomagot. |
     | **Minden konfigurált csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha az összes konfigurált csatlakoztatott szervezet összes felhasználója ezt a hozzáférési csomagot kéri. Csak a konfigurált csatlakoztatott szervezetek felhasználói igényelhetnek olyan hozzáférési csomagokat, amelyek minden konfigurált szervezet felhasználói számára láthatók. |

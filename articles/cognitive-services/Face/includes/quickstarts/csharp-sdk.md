@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b06a35274082e09ec0973c5123b39935a93e354d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102444975"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958406"
 ---
 Ismerkedés az Arcfelismerés szolgáltatással a .NET-hez készült Face ügyféloldali kódtár használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -22,7 +22,7 @@ A .NET-hez készült Face ügyféloldali kódtár a következőhöz használhat�
 
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása](#create-a-person-group)
+* [PersonGroup létrehozása](#create-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 
 [Dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Példák](/samples/browse/?products=azure&term=face)
@@ -124,7 +124,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő f
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása](#create-a-person-group)
+* [PersonGroup létrehozása](#create-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
@@ -186,7 +186,7 @@ A következő kód a megfeleltetés részleteit jeleníti meg a konzolon:
 
 Az azonosítási művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy **PersonGroup**, egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek. Az azonosítási művelet végrehajtásához először létre kell hoznia és be kell tanítania egy **PersonGroup**
 
-### <a name="create-a-person-group"></a>Személy csoport létrehozása
+### <a name="create-a-persongroup"></a>PersonGroup létrehozása
 
 A következő kód egy **PersonGroup** hoz létre hat különböző **személy** objektummal. Az egyes **személyeket** a képek egy halmazával társítja, majd az egyes személyeket az arc jellemzői alapján elismerik. A **személy** -és **PersonGroup** objektumok az ellenőrzési, azonosítási és csoportosítási műveletekben használatosak.
 

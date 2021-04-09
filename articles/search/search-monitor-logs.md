@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
-ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105709939"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése
@@ -120,7 +120,7 @@ AzureDiagnostics
 
 A Azure Monitor által rögzített naplózott események magukban foglalják az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **AzureDiagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
 
-| OperationName | Description |
+| OperationName | Leírás |
 |---------------|-------------|
 | ServiceStats | Ez a művelet egy rutinos hívás a [szolgáltatás statisztikáinak beszerzésére](/rest/api/searchservice/get-service-statistics), vagy közvetlenül vagy implicit módon, a portál áttekintő oldalának feltöltésekor, amikor betöltődik vagy frissül. |
 | Lekérdezés. keresés |  Lekérdezési kérelmek egy indextel kapcsolatban: a naplózott lekérdezésekkel kapcsolatos információk [figyelése](search-monitor-queries.md) .|

@@ -3,12 +3,12 @@ title: Service Fabric felügyelt fürt (előzetes verzió) alkalmazás üzembe h
 description: Alkalmazás üzembe helyezése Azure Service Fabric felügyelt fürtön (előzetes verzió) Azure Resource Manager sablonnal.
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: b2d73180de61f44850b9c52a7ac24b0c23c36db2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100642396"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728011"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>Service Fabric felügyelt fürt (előzetes verzió) alkalmazás üzembe helyezése ARM-sablonnal
 
@@ -94,7 +94,7 @@ A minta alkalmazás az alkalmazás üzembe helyezéséhez használható [Azure R
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Annak a fürtnek a neve, amelyre telepítve van | SF – cluster123                                                |                                                              |
 | alkalmazás            | Az alkalmazás neve                 | Szavazás                                                       |
-| version    | Az alkalmazás erőforrás-azonosítója, típusa és verziója.       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | Meg kell egyeznie ApplicationManifest.xml                 |              |
+| version    | Az alkalmazás erőforrás-azonosítója, típusa és verziója.       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | Meg kell egyeznie ApplicationManifest.xml                 |
 | serviceName            | A szolgáltatás neve         | VotingWeb                                             | ServiceType formátumúnak kell lennie            |
 | serviceTypeName        | A szolgáltatás típusának neve                | VotingWebType                                                    | Meg kell egyeznie ServiceManifest.xml                 |
 | appPackageUrl          | Az alkalmazás blob Storage URL-címe     | https: \/ /servicefabricapps.blob.Core.Windows.net/apps/voting.sfpkg | Az alkalmazáscsomag blob Storage-beli URL-címe (az URL-cím beállításához szükséges eljárást a cikk későbbi részében ismertetjük) |

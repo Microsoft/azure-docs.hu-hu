@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fcb9fd9f0539b42d9253db783fd5da840f358e66
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216428"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960724"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Kapcsolódás Media Services V3 API-hoz – Node.js
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 node.js SDK-h
 - A Visual Studio Code telepítése.
 - Telepítse a [Node.js](https://nodejs.org/en/download/).
 - Telepítse az [írógéppel](https://www.typescriptlang.org/download).
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- [Hozzon létre egy Media Services fiókot](./account-create-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
 - Hozzon létre egy egyszerű szolgáltatásnevet az alkalmazáshoz. Lásd: [hozzáférés API](./access-api-howto.md)-k.<br/>**Pro-tipp!** Tartsa meg az ablak megnyitását, vagy másoljon mindent a JSON lapon a Jegyzettömbbe. 
 - Győződjön meg arról, hogy a [javascripthez készült AZUREMEDIASERVICES SDK](https://www.npmjs.com/package/@azure/arm-mediaservices)legújabb verzióját kapja meg.
 

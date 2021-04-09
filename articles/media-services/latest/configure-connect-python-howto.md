@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: de78008a4645690cfc900f77670204bb892daf51
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 24e2ba4027dc818256dc9572f697fe7ec5a5a56b
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105042968"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960690"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Kapcsolódás Media Services V3 API-hoz – Python
 
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 Python SDK-ho
 
 - A Python letöltése a [Python.org](https://www.python.org/downloads/) -ből
 - Ügyeljen arra, hogy a `PATH` környezeti változót állítsa be
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- [Hozzon létre egy Media Services fiókot](./account-create-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
 - Kövesse a [hozzáférési API](./access-api-howto.md) -k című témakör lépéseit, és válassza ki az egyszerű szolgáltatásnév hitelesítési módszerét. Jegyezze fel az előfizetés-azonosítót ( `SubscriptionId` ), az alkalmazás ügyfél-azonosítóját (), `AadClientId` a hitelesítési kulcsot ( `AadSecret` ) és a bérlői azonosítót ( `AadTenantId` ), amelyre szüksége van a későbbi lépésekben.
 
 > [!IMPORTANT]

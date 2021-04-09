@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
 ms.openlocfilehash: 5d6ea75936383388a57a7822f054e0ea7297471e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101695515"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
@@ -370,7 +370,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információt [Az Azure Resource Manager áttekintésében][resource-group-overview] találhat.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 

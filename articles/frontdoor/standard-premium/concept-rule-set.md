@@ -5,21 +5,21 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 8e6ceebc9e92dabe66baeb9aeff0ae9692e2bdad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101099151"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067554"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>Mi az Azure bejárati ajtó standard/Premium (előzetes verzió) szabályainak beállítása?
 
 > [!Note]
 > Ez a dokumentáció az Azure bejárati ajtó standard/Premium (előzetes verzió) verziójához készült. Információt keres az Azure bejárati ajtóról? Megtekintés [itt](../front-door-overview.md).
 
-A szabálykészlet egy testreszabott szabályrendszer, amely a szabályok kombinációját egyetlen készletbe csoportosítja, amely több útvonalhoz is társítható. A szabálykészlet segítségével testre szabhatja a kérések feldolgozásának folyamatát, és azt, hogy az Azure bejárati ajtó hogyan kezeli ezeket a kéréseket.
+A szabálykészlet egy testreszabott szabályrendszer, amely egyetlen készletbe csoportosítja a szabályok kombinációját. A szabálykészlet több útvonallal is társítható. A szabálykészlet segítségével testre szabhatja a kérések feldolgozásának folyamatát, és azt, hogy az Azure-beli bejárati ajtó hogyan kezeli ezeket a kéréseket.
 
 > [!IMPORTANT]
 > Az Azure bejárati ajtó standard/Premium (előzetes verzió) jelenleg nyilvános előzetes verzióban érhető el.
@@ -60,16 +60,19 @@ Az Azure-beli bejárati szabály beállításával létrehozhat egy szabálykés
 
 További kvóta esetén tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-* *Szabálykészlet: egy* vagy több [útvonalhoz](concept-route.md)társított szabályok halmaza. Mindegyik konfiguráció 25 szabályra van korlátozva. Akár 10 konfigurációt is létrehozhat.
+* *Szabálykészlet*: egy vagy több [útvonalhoz](concept-route.md)társított szabályok halmaza.
 
-* *Szabályok beállítása szabály*: egy legfeljebb 10 egyeztetési feltételből és 5 műveletből álló szabály. A szabályok helyiek egy szabálykészlet számára, és nem exportálhatók a szabálykészlet között. A felhasználók több szabálykészlet esetében is létrehozhatják ugyanazt a szabályt.
+* *Szabálykészlet szabálya*: legfeljebb 10 egyeztetési feltételből és 5 műveletből álló szabály. A szabályok helyiek egy szabálykészlet számára, és nem exportálhatók a szabálykészlet között. A felhasználók több szabálykészlet esetében is létrehozhatják ugyanazt a szabályt.
 
-* *Egyeztetési feltétel*: a beérkező kérések elemzéséhez számos egyezési feltételt lehet használni. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltételek a **és** a operátorral vannak kiértékelve. *A reguláris kifejezés feltételek esetén támogatott*. Az egyeztetési feltételek teljes listája megtalálható a [szabálykészlet feltételében](concept-rule-set-match-conditions.md).
+* *Egyeztetési feltétel*: a beérkező kérések elemzéséhez számos egyezési feltételt lehet használni. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltételek a **és** a operátorral vannak kiértékelve. *A reguláris kifejezés feltételek esetén támogatott*. Az egyeztetési feltételek teljes listája a [szabálykészlet egyeztetési feltételei között](concept-rule-set-match-conditions.md)található.
 
 * *Művelet*: a műveletek azt írják le, hogy a AFD hogyan kezeli a beérkező kéréseket a megfelelő feltételek alapján. Módosíthatja a gyorsítótárazási viselkedéseket, módosíthatja a kérések fejléceit/válaszait, valamint az URL-újraírást és az URL-átirányítást. *A kiszolgálói változók működés közben támogatottak*. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. A műveletek teljes listája megtalálhatja a [szabálykészlet műveleteit](concept-rule-set-actions.md).
+
+## <a name="arm-template-support"></a>ARM-sablon támogatása
+
+A szabálykészlet Azure Resource Manager sablonok használatával konfigurálhatók. [Példa sablonra](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). A viselkedést a feltételek és [műveletek](concept-rule-set-actions.md) [egyeztetésére](concept-rule-set-match-conditions.md) szolgáló dokumentációban található JSON-vagy bicep-kódrészletek segítségével szabhatja testre.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [hozhat létre standard/prémium szintű bejárati ajtót](create-front-door-portal.md).
 * Megtudhatja, hogyan konfigurálhatja az első [szabálykészlet](how-to-configure-rule-set.md)beállítását.
- 

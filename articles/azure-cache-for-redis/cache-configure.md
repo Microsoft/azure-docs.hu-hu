@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100581083"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
@@ -383,7 +383,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 >
 
-| Beállítás | Alapértelmezett érték | Description |
+| Beállítás | Alapértelmezett érték | Leírás |
 | --- | --- | --- |
 | `databases` |16 |Az adatbázisok alapértelmezett száma 16, de az árképzési csomag alapján eltérő számot is beállíthat. <sup>1</sup> az alapértelmezett adatbázis: db 0, a és a közötti kapcsolaton keresztül választhat egy másikat `connection.GetDatabase(dbid)` `dbid` `0` `databases - 1` . |
 | `maxclients` |A<sup>2</sup> . árképzési szinttől függ |Ez az érték a csatlakoztatott ügyfelek által egyszerre engedélyezett maximális szám. Ha elérte a korlátot, a Redis lezárja az összes új kapcsolatot, és "az ügyfelek maximális száma elérte a hibát" hibaüzenetet adja vissza. |

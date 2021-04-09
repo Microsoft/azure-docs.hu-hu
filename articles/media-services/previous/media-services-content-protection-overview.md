@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: edffa2dddd0ec877a4b825a69a76fb158928c89f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2922586d586dbbb98ae85fb86f3f76889a75aa6b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016763"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067401"
 ---
 # <a name="content-protection-overview"></a>Tartalomvédelem – áttekintés
 
@@ -36,7 +36,7 @@ Az alábbi ábra a Media Services tartalomvédelem munkafolyamatát mutatja be:
 
 Ez a cikk ismerteti a Media Servicesokkal való tartalomvédelem megismeréséhez kapcsolódó fogalmakat és terminológiát. A cikk a tartalmak védelemmel kapcsolatos cikkeire mutató hivatkozásokat is tartalmaz. 
 
-## <a name="dynamic-encryption"></a>Dinamikus titkosítás
+## <a name="dynamic-encryption&quot;></a>Dinamikus titkosítás
 
 A Media Services használatával a tartalmakat a PlayReady, Widevine vagy FairPlay használatával dinamikusan titkosíthatja az AES Clear Key vagy a DRM titkosításával. Ha a tartalom titkosítása AES Clear kulccsal történik, és HTTPS-kapcsolaton keresztül történik, nem egyértelmű, amíg el nem éri az ügyfelet. 
 
@@ -55,8 +55,8 @@ Az eszköz kézbesítési házirendjét is konfigurálnia kell. Ha egy Storage-t
 
 Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal dinamikusan titkosítja a tartalmat az AES Clear Key vagy a DRM titkosítás használatával. Az adatfolyam visszafejtéséhez a Player Media Services Key Delivery Service-ből kéri a kulcsot. Annak eldöntéséhez, hogy a felhasználó jogosult-e a kulcs lekérésére, a szolgáltatás kiértékeli a kulcshoz megadott engedélyezési házirendeket.
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128 Clear Key és DRM
-Az ügyfelek gyakran kíváncsiak arra, hogy az AES-titkosítást vagy a DRM-rendszereket használják-e. A két rendszer közötti elsődleges különbség az, hogy az AES-titkosítás a tartalmi kulcsot titkosítatlan formában továbbítja az ügyfélnek ("egyértelmű"). Ennek eredményeképpen a tartalom titkosításához használt kulcs megtekinthető az ügyfél egy egyszerű szövegben lévő hálózati nyomkövetésében. AES-128 – a titkosítatlan kulcsos titkosítás olyan használati esetekben használható, ahol a megjelenítő egy megbízható fél (például a vállalaton belül az alkalmazottak által megtekintett vállalati videók titkosítása).
+## <a name=&quot;aes-128-clear-key-vs-drm&quot;></a>AES-128 Clear Key és DRM
+Az ügyfelek gyakran kíváncsiak arra, hogy az AES-titkosítást vagy a DRM-rendszereket használják-e. A két rendszer közötti elsődleges különbség az, hogy az AES-titkosítás a tartalmi kulcsot titkosítatlan formában továbbítja az ügyfélnek (&quot;egyértelmű"). Ennek eredményeképpen a tartalom titkosításához használt kulcs megtekinthető az ügyfél egy egyszerű szövegben lévő hálózati nyomkövetésében. AES-128 – a titkosítatlan kulcsos titkosítás olyan használati esetekben használható, ahol a megjelenítő egy megbízható fél (például a vállalaton belül az alkalmazottak által megtekintett vállalati videók titkosítása).
 
 A PlayReady, a Widevine és a FairPlay minden nagyobb titkosítási szintet biztosít az AES-128-titkosításhoz képest. A tartalmi kulcsot titkosított formában továbbítja a rendszer. Emellett az operációs rendszer szintjén egy biztonságos környezetben kezeli a visszafejtést, ahol a rosszindulatú felhasználók támadása nehezebbé válik. A DRM használata olyan esetekben ajánlott, amikor a megjelenítő nem megbízható fél, és Önnek a legmagasabb szintű biztonságra van szüksége.
 
@@ -117,7 +117,7 @@ A következő szempontokat kell figyelembe venni:
 A következő cikkek a tartalomvédelem megkezdéséhez szükséges lépéseket ismertetik:
 
 * [Védelem a Storage encryption szolgáltatással](media-services-rest-storage-encryption.md)
-* [Védelem AES-titkosítással](media-services-protect-with-aes128.md)
+* [Védelem AES-titkosítással](media-services-playready-license-template-overview.md)
 * [Védelem PlayReady és/vagy Widevine](media-services-protect-with-playready-widevine.md)
 * [Védelem a FairPlay](media-services-protect-hls-with-FairPlay.md)
 

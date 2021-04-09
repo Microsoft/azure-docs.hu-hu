@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779936"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932454"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
@@ -153,7 +153,9 @@ Ha esemény-útvonal létrehozása közben szeretne hozzáadni egy eseményt, az
 Kiválaszthat néhány alapszintű általános szűrési lehetőséget, vagy a speciális szűrési beállítások használatával írhat saját egyéni szűrőket is.
 
 >[!NOTE]
-> A szűrők **megkülönböztetik a kis-** és nagybetűket, és meg kell egyezniük a hasznos adatokkal (amelyek nem feltétlenül egyeznek a modell esetében).
+> A szűrők **megkülönböztetik a kis-** és nagybetűket, és meg kell egyezniük a hasznos adatokkal. 
+>
+> Az telemetria szűrők esetében ez azt jelenti, hogy a burkolatnak meg kell egyeznie az eszköz által eljuttatott telemetria, nem feltétlenül a Twin modellben definiált burkolattal.
 
 #### <a name="use-the-basic-filters"></a>Az egyszerű szűrők használata
 
