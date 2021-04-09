@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62e2306abc2d3132651fb40aab8c2f5b4d5043f4
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430190"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960877"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,6 +31,9 @@ A legfrissebb információk a [Azure SQL Database átjáró IP-címei](connectiv
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
 
 ## <a name="april-2021"></a>Április 2021
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
+- USA 2. keleti régiója: 40.70.144.193 ez az SQL-átjáró a 2021 április 30-ig kezdi meg az ügyfelek forgalmának elfogadását.
+
 Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 - Kelet-Norvégia: 51.120.96.33
 - Dél-Kelet-Ázsia: 13.67.16.193

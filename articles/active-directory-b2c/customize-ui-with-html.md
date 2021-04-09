@@ -14,10 +14,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104675825"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>A felhasználói felület testreszabása HTML-sablonokkal Azure Active Directory B2C
@@ -59,7 +59,7 @@ Ahelyett, hogy az egyéni oldal tartalmait a semmiből hozza létre, testreszabh
 
 A következő táblázat felsorolja a Azure AD B2C által biztosított alapértelmezett oldal tartalmát. Töltse le a fájlokat, és használja kiindulási pontként a saját egyéni oldalai létrehozásához.
 
-| Alapértelmezett lap | Description | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
+| Alapértelmezett lap | Leírás | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. | *API. error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Saját maga által érvényesített oldal**. Ezt a fájlt egyéni oldalként használhatja a közösségi fiók regisztrálása lap, a helyi fiók regisztrálása oldal, a helyi fiók bejelentkezési oldala, a jelszó alaphelyzetbe állítása és egyebek. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. | *API. localaccountsignin*, API. *localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |

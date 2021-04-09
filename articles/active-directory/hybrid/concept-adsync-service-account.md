@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb23d79caa6964c3f61fbb84c8b8f229f475b8ab
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104722157"
 ---
 # <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
@@ -30,7 +30,7 @@ A ADSync-szolgáltatásfiók kiválasztása fontos tervezési döntés a Azure A
 A szinkronizálási szolgáltatás más fiókokban is futhat. Virtuális szolgáltatásfiókot (VSA), felügyelt szolgáltatásfiókot (gMSA/önállóan felügyelt szolgáltatásfiókot) vagy normál felhasználói fiókot is futtathat. A támogatott beállítások megváltoztak a 2017-es és a 2021-es márciusi kiadásban, Azure AD Connect új telepítés esetén. Ha Azure AD Connect korábbi kiadásáról frissít, ezek a további beállítások nem érhetők el. 
 
 
-|Fiók típusa|Telepítési lehetőség|Description| 
+|Fiók típusa|Telepítési lehetőség|Leírás| 
 |-----|------|-----|
 |Virtual Service-fiók|Express és Custom, 2017 április és újabb| A rendszer minden expressz telepítéshez egy virtuális szolgáltatásfiókot használ, kivéve a tartományvezérlők telepítéseit. Egyéni telepítés használata esetén ez az alapértelmezett beállítás, kivéve, ha egy másik lehetőség van használatban.| 
 |Felügyelt szolgáltatásfiók|Custom, 2017 április és újabb|Ha távoli SQL Server használ, azt javasoljuk, hogy egy csoportosan felügyelt szolgáltatásfiókot használjon. |

@@ -11,10 +11,10 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.openlocfilehash: 86e9b13ce56e1924b0e24a7f4971da18620617de
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105043631"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz (előzetes verzió)
@@ -266,9 +266,9 @@ Content-type: application/json
 
 | Paraméter                                          | Típus              | Kötelező | Leírás                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| művelet                                             | Sztring            | Igen      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nem       | A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként** van kiválasztva.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként** van kiválasztva.  |
+| művelet                                             | Sztring            | Yes      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | No       | A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként** van kiválasztva.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | A jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként** van kiválasztva.  |
 
 ### <a name="example-of-a-blocking-response"></a>Blokkoló válasz – példa
 
@@ -286,9 +286,9 @@ Content-type: application/json
 
 | Paraméter   | Típus   | Kötelező | Leírás                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| version     | Sztring | Igen      | Az API verziója.                                                    |
-| művelet      | Sztring | Igen      | Az értéknek szerepelnie kell `ShowBlockPage`                                              |
-| userMessage | Sztring | Igen      | A felhasználónak megjelenítendő üzenet.                                            |
+| version     | Sztring | Yes      | Az API verziója.                                                    |
+| művelet      | Sztring | Yes      | Az értéknek szerepelnie kell `ShowBlockPage`                                              |
+| userMessage | Sztring | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
 
 **Végfelhasználói élmény blokkoló válaszokkal**
 
@@ -310,10 +310,10 @@ Content-type: application/json
 
 | Paraméter   | Típus    | Kötelező | Leírás                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| version     | Sztring  | Igen      | Az API verziója.                                                    |
-| művelet      | Sztring  | Igen      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
-| status      | Egész szám/sztring | Igen      | Értéknek `400` vagy ValidationError- `"400"` válasznak kell lennie.  |
-| userMessage | Sztring  | Igen      | A felhasználónak megjelenítendő üzenet.                                            |
+| version     | Sztring  | Yes      | Az API verziója.                                                    |
+| művelet      | Sztring  | Yes      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
+| status      | Egész szám/sztring | Yes      | Értéknek `400` vagy ValidationError- `"400"` válasznak kell lennie.  |
+| userMessage | Sztring  | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
 
 > [!NOTE]
 > A válasz törzsében szereplő "status" érték mellett a HTTP-állapotkód "400" értékűnek kell lennie.

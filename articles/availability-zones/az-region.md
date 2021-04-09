@@ -4,16 +4,16 @@ description: Az Azure-ban kiválóan elérhető és rugalmas alkalmazások hozha
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 03/30/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a81f3a3c51ffd0e1e0937c077a07fcbde16f0513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601185"
+ms.locfileid: "105961302"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 
@@ -50,15 +50,15 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | Amerika           | Európa               | Afrika              | Ázsia és a Csendes-óceáni térség   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Dél-Brazília       | Közép-Franciaország       | Dél-Afrika északi régiója * | Kelet-Japán     |
-| Közép-Kanada     | Középnyugat-Németország |                     | Délkelet-Ázsia |
-| Az USA középső régiója         | Észak-Európa         |                     | Kelet-Ausztrália |
-| USA keleti régiója            | Az Egyesült Királyság déli régiója             |                     |                |
+| Dél-Brazília       | Közép-Franciaország       | Dél-Afrika északi régiója * | Kelet-Ausztrália |
+| Közép-Kanada     | Középnyugat-Németország |                     | Kelet-Japán     |
+| Az USA középső régiója         | Észak-Európa         |                     | Korea középső régiója * |
+| USA keleti régiója            | Az Egyesült Királyság déli régiója             |                     | Délkelet-Ázsia |
 | USA 2. keleti régiója          | Nyugat-Európa          |                     |                |
 | USA déli középső régiója |                      |                     |                |
-| USA-beli államigazgatás – Virginia     |                      |                     |                |
+| USA-beli államigazgatás – Virginia    |                      |                     |                |
 | USA 2. nyugati régiója        |                      |                     |                |
-
+| USA nyugati régiója 3 *       |                      |                     |                |
 
 \* Ha többet szeretne megtudni a Availability Zones és az elérhető szolgáltatások támogatásáról ezekben a régiókban, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével. Az Availability Zonest támogató közelgő régiókkal kapcsolatban lásd: [Azure földrajzi](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)területek.
 

@@ -7,12 +7,12 @@ ms.date: 03/09/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a3389408b0942875aa7d760f1c514b995e381f9c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 85888370106f34c723be4e47738114f7df33dcf4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609198"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057473"
 ---
 # <a name="iot-plug-and-play-modeling-guide"></a>IoT Plug and Play modellezési útmutató
 
@@ -415,7 +415,7 @@ Az adattípusok segítségével definiálhatja a telemetria, a tulajdonságokat 
 
 A következő táblázat a használható primitív típusok készletét tartalmazza:
 
-| Primitív típus | Description |
+| Primitív típus | Leírás |
 | --- | --- |
 | `boolean` | Logikai érték |
 | `date` | Az [RFC 3339 5,6-es szakaszában](https://tools.ietf.org/html/rfc3339#section-5.6) meghatározott teljes dátum |

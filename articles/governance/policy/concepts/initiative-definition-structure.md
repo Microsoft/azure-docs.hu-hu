@@ -4,10 +4,10 @@ description: Leírja, hogyan használhatók a házirend-kezdeményezési definí
 ms.date: 03/16/2021
 ms.topic: conceptual
 ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104587219"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy kezdeményezés definíciós szerkezete

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
 ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104586335"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Adatgyűjtés szabályai a Azure Monitorban (előzetes verzió)
@@ -39,7 +39,7 @@ Az alábbi ábrán egy adatgyűjtési szabály és a kapcsolat összetevői lát
 ### <a name="data-source-types"></a>Adatforrástípusok
 Minden adatforrás típusa adatforrással rendelkezik. Mindegyik típus egyedi tulajdonságokat határoz meg, amelyeket minden egyes adatforráshoz meg kell adni. A jelenleg elérhető adatforrás-típusok az alábbi táblázatban láthatók.
 
-| Adatforrás típusa | Description | 
+| Adatforrás típusa | Leírás | 
 |:---|:---|
 | kiterjesztés | Virtuálisgép-bővítmény-alapú adatforrás |
 | performanceCounters | Teljesítményszámlálók Windows és Linux rendszerekhez |

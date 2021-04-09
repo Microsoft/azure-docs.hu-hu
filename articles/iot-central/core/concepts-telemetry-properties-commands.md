@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100535314"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
@@ -723,7 +723,7 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 `ac` egy numerikus mező, amely az alábbi táblázatban szereplő értékeket használja:
 
-| Érték | Címke | Description |
+| Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
