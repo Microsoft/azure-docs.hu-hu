@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 03/25/2021
 ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105543516"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
@@ -97,7 +97,7 @@ A memórián kívüli hibák észlelésekor a megoldás a következőkre terjed 
 - Az adatbázis vagy a rugalmas készlet szolgáltatási szintjeinek vagy számítási méretének növelése. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
 - A lekérdezések és a konfiguráció optimalizálása a memória kihasználtságának csökkentése érdekében. Az alábbi táblázat ismerteti az általános megoldásokat.
 
-|Megoldás|Description|
+|Megoldás|Leírás|
 | :----- | :----- |
 |A memóriabeli támogatások méretének csökkentése|A memória-támogatással kapcsolatos további információkért tekintse meg a [SQL Server memória-engedélyezés](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blogbejegyzésének ismertetése című témakört. A túlzottan nagy memória-támogatás elkerülésére szolgáló közös megoldás a [statisztikák](/sql/relational-databases/statistics/statistics) naprakészen tartása. Ez a lekérdezési motor által a memória-használat pontosabb becslését eredményezi, így elkerülhető a szükségtelenül nagy memória-támogatás.</br></br>Az adatbázis-kezelő a 140-es és újabb kompatibilitási szintet használó adatbázisokban automatikusan megváltoztathatja a memória-engedélyezési méretet a [Batch Mode memória-engedélyezési visszajelzések](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)használatával. Az adatbázis-kezelő a 150-es és újabb kompatibilitási szintet használó adatbázisokban hasonlóan a [sor módú memória-engedélyezési visszajelzéseket](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)is használja a leggyakoribb soros üzemmódú lekérdezéseknél. Ez a beépített funkció segít elkerülni a memórián belüli hibákat a szükségtelenül nagy memória-támogatás miatt.|
 |A lekérdezési terv gyorsítótára méretének csökkentése|Az adatbázismotor gyorsítótárazza a memóriában a lekérdezési terveket, így elkerülhető a lekérdezés-végrehajtás minden lekérdezési tervének fordítása. Ha el szeretné kerülni, hogy a lekérdezési terv gyorsítótára a csak egyszer használt gyorsítótárazási csomagokat okozza, engedélyezze a OPTIMIZE_FOR_AD_HOC_WORKLOADS [adatbázis-hatókörű konfigurációt](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572248"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Az Azure Signaler szolgáltatás erőforrás-naplói
@@ -162,7 +162,7 @@ A és a közötti különbség a `ConnectionAborted` `ConnectionEnded` `Connecti
 
 A megszakítás okai a következő táblázatban láthatók:
 
-Ok | Description
+Ok | Leírás
 ------- | ------- 
 A kapcsolatok száma eléri a korlátot | A kapcsolatok száma eléri a jelenlegi árszint korlátját. A szolgáltatási egység vertikális felskálázása
 Az alkalmazáskiszolgáló lezárta a kapcsolatokat | Az App Server elindítja az abortuszt. A várt abortusznak számít

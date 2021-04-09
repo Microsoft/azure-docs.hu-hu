@@ -8,10 +8,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 18e8965a152deb6393d7e3b63ea22994484e100c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100377244"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
@@ -48,7 +48,7 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 Ebben az oktatóanyagban az alábbi Data Factory-entitásokkal rendelkező adat-előállítót hozza létre:
 
-| Entitás | Description |
+| Entitás | Leírás |
 | --- | --- |
 | Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Az Azure Storage a forrás adattár, a Azure SQL Database pedig az oktatóanyag másolási tevékenységének fogadó adattára. Meghatározza a másolási tevékenység bemeneti adatait tartalmazó tárfiókot. |
 | Azure SQL Database társított szolgáltatás |Összekapcsolja Azure SQL Database adatbázisát az adatgyárban. Meghatározza azt az adatbázist, amely a másolási tevékenység kimeneti adatokat tárolja. |

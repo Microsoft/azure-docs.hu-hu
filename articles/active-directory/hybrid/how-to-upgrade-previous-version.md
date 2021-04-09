@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98729990"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
@@ -57,7 +57,7 @@ Ha módosította a beépített szinkronizálási szabályokat, akkor ezek a szab
 
 A helyben történő frissítés során előfordulhat, hogy a frissítés befejeződése után meghatározott szinkronizálási tevékenységeket (beleértve a teljes importálási lépést és a teljes szinkronizálási lépést) igénylő módosításokat is be kell állítani. Az ilyen tevékenységek elhalasztásához tekintse meg a [teljes szinkronizálás késleltetése a frissítés után](#how-to-defer-full-synchronization-after-upgrade)című szakaszt.
 
-Ha nem szabványos összekötővel (például általános LDAP-összekötővel és általános SQL-összekötővel) használja a Azure AD Connectt, frissítenie kell a megfelelő összekötő-konfigurációt a [synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) a helyben végzett frissítés után. Az összekötő konfigurációjának frissítésével kapcsolatos részletekért tekintse meg a cikk az [összekötő verziójának kiadási előzményei – hibaelhárítás](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting)című szakaszt. Ha nem frissíti a konfigurációt, az importálási és exportálási futtatási lépések nem fognak megfelelően működni az összekötőn. A *(z) "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" aktuális verziója ("x. x. xxx. x") korábbi, mint az alkalmazás eseménynaplójában a következő üzenet jelenik meg: "a HRE-összekötő konfigurálása (" x. x. xxx. x ").*
+Ha nem szabványos összekötővel (például általános LDAP-összekötővel és általános SQL-összekötővel) használja a Azure AD Connectt, frissítenie kell a megfelelő összekötő-konfigurációt a [synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) a helyben végzett frissítés után. Az összekötő konfigurációjának frissítésével kapcsolatos részletekért tekintse meg a cikk az [összekötő verziójának kiadási előzményei – hibaelhárítás](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting)című szakaszt. Ha nem frissíti a konfigurációt, az importálási és exportálási futtatási lépések nem fognak megfelelően működni az összekötőn. A *(z) "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll&quot; aktuális verziója (&quot;x. x. xxx. x") korábbi, mint az alkalmazás eseménynaplójában a következő üzenet jelenik meg: "a HRE-összekötő konfigurálása (" x. x. xxx. x ").*
 
 ## <a name="swing-migration"></a>Párhuzamos migrálás
 Ha összetett vagy sok objektummal rendelkezik, előfordulhat, hogy nem célszerű helyben frissíteni az élő rendszeren. Egyes ügyfelek esetében ez a folyamat több napot is igénybe vehet – és ez idő alatt nem történik változás. Ezt a módszert akkor is használhatja, ha jelentős módosításokat tervez a konfigurációban, és a felhőbe való leküldésük előtt szeretné kipróbálni őket.

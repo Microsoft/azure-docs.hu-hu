@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzato
 ms.date: 03/16/2021
 ms.topic: how-to
 ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104598490"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon

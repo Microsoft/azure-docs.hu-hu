@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
 ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572604"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
@@ -176,7 +176,7 @@ A teljesítmény optimalizálása érdekében a Log Analytics ügynök csak a v�
 
 Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid környezet konfigurációs állapotának változásairól riasztást küld. Számos hasznos művelet aktiválható a riasztásokra adott válaszként. Például az Azure functions, az Automation runbookok, a webhookok és a hasonló műveletek. A **c:\Windows\System32\drivers\etc\hosts** -fájl változásainak riasztása egy adott gépen a riasztások helyes alkalmazása Change Tracking és leltározási adatként. Számos további forgatókönyv is létezik a riasztásokhoz, beleértve a következő táblázatban definiált lekérdezési forgatókönyveket is.
 
-|Lekérdezés  |Description  |
+|Lekérdezés  |Leírás  |
 |---------|---------|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "files" és a FileSystemPath a "c: \\ Windows \\ System32 \\ Drivers \\ " kifejezést tartalmazza|A rendszerkritikus fájlok változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, hogy a FieldsChanged tartalmazza-e a "FileContentChecksum" és a FileSystemPath = = "c: \\ Windows system32 illesztőprogramok, illetve a \\ \\ \\ \\ gazdagépek"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez.|

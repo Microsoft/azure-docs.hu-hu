@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: a7ab48759ac775c1195dedb4143d895bdcdec937
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98956531"
 ---
 # <a name="rest-code-samples-for-azure-cognitive-search"></a>REST-kód minták az Azure Cognitive Search
@@ -47,6 +47,6 @@ A Cognitive Search csapata által bemutatott funkciók és munkafolyamatok. Ezen
 
 A Cognitive Search csapata a következő mintákat is közzéteszi, de a dokumentációban nem hivatkozik rá. A kapcsolódó readme-fájlok használati utasításokat tartalmaznak.
 
-| Példák | Description |
+| Példák | Leírás |
 |---------|-------------|
 | [Lekérdezés – példák](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Query-examples) | A különböző lekérdezési technikákat bemutató posters-gyűjtemények, például a fuzzy Search, a RegEx és a helyettesítő karakteres keresés, az automatikus kiegészítés és így tovább. |
