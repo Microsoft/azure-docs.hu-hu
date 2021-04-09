@@ -11,10 +11,10 @@ ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
 ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200692"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Naplók beolvasása IoT Edge központi telepítésből
@@ -76,7 +76,7 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | sémaverzióval | sztring | Beállítás értéke `1.0` |
 | elemek | JSON-tömb | Egy tömb `id` és egy `filter` rekordok. |
@@ -185,7 +185,7 @@ Ez a metódus a **GetModuleLogs** hasonló JSON-adattartalmat fogad el, a "sas U
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | Sas URL | karakterlánc (URI) | Az [Azure Blob Storage tárolóhoz írási hozzáféréssel rendelkező közös hozzáférés-aláírási URL-cím](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
@@ -199,7 +199,7 @@ A naplók feltöltésére vonatkozó sikeres kérelem **"állapotot" ad vissza: 
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | status | sztring | Az egyik,,,, `NotStarted` `Running` `Completed` `Failed` vagy `Unknown` . |
 | message | sztring | Hibaüzenet, ha hiba, üres karakterlánc. |
@@ -302,7 +302,7 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | sémaverzióval | sztring | Beállítás értéke `1.0` |
 | Sas URL | karakterlánc (URI) | [Az Azure Blob Storage tárolóhoz írási hozzáféréssel rendelkező közös hozzáférés-aláírási URL-cím](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -323,7 +323,7 @@ A naplók feltöltésére vonatkozó sikeres kérelem **"állapotot" ad vissza: 
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | status | sztring | Az egyik,,,, `NotStarted` `Running` `Completed` `Failed` vagy `Unknown` . |
 | message | sztring | Hibaüzenet, ha hiba, üres karakterlánc. |
@@ -381,7 +381,7 @@ A naplók feltöltésére vonatkozó sikeres kérelem **"állapotot" ad vissza: 
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | status | sztring | Az egyik,,,, `NotStarted` `Running` `Completed` `Failed` vagy `Unknown` . |
 | message | sztring | Hibaüzenet, ha hiba, üres karakterlánc. |

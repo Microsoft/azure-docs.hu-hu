@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 tags: connectors
 ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382351"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban (Microsoft Dataverse) a Azure Logic Apps használatával
@@ -90,7 +90,7 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
       ![Válassza ki a feladat rekordban használni kívánt trigger-kimeneteket](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Trigger kimenete | Description |
+      | Trigger kimenete | Leírás |
       |----------------|-------------|
       | **Keresztnév** | Az első név a rekordban, amelyet elsődleges partnerként kíván használni a feladatban. |
       | **Vezetéknév** | A tevékenység rekordjában az elsődleges partnerként használandó utolsó név a vezető rekordban |

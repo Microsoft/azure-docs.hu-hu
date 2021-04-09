@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 44091cda479f2c0ccbe77bb9989ee2eda4c40f9d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109012"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727093"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -167,7 +167,7 @@ Az Office frissítési csatornáinak ismertetését lásd: [Microsoft 365 alkalm
 
 A rendszergazdák által végrehajtott módosítások akár egy napot is igénybe vehetnek. Némi optimalizálás történt a késleltetés két órára való csökkentése érdekében. Azonban még nem fedi le az összes forgatókönyvet. 
 
-Ha vészhelyzet van, és a frissített szabályzatokat bizonyos felhasználók számára azonnal alkalmazni kell, a felhasználói munkamenet visszavonásához használja ezt a [PowerShell-parancsot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) vagy a "munkamenet visszavonása" lehetőséget, amely lehetővé teszi, hogy a frissített szabályzatokat azonnal alkalmazza a rendszer.
+Ha vészhelyzet van, és a frissített szabályzatokat bizonyos felhasználók számára azonnal alkalmazni kell, a felhasználói munkamenet visszavonásához használja ezt a [PowerShell-parancsot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) vagy a "munkamenet visszavonása" lehetőséget, amely lehetővé teszi, hogy a frissített szabályzatokat azonnal alkalmazza a rendszer.
 
 ### <a name="coauthoring-in-office-apps"></a>Az Office-alkalmazások társszerzője
 

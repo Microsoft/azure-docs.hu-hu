@@ -7,10 +7,10 @@ ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100635387"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
@@ -38,7 +38,7 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
 A Key Vault hivatkozás az űrlapra mutat `@Microsoft.KeyVault({referenceString})` , ahol a `{referenceString}` a következő lehetőségek egyikével helyettesíti:
 
 > [!div class="mx-tdBreakAll"]
-> | Hivatkozási sztring                                                            | Description                                                                                                                                                                                 |
+> | Hivatkozási sztring                                                            | Leírás                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | A **SecretUri** a titkos kulcs teljes adatsík URI-ja legyen Key Vaultban, opcionálisan egy verziót is beleértve, például `https://myvault.vault.azure.net/secrets/mysecret/` vagy `https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
 > | VaultName =_VaultName_; SecretName =_SecretName_; Titkoskulcsverziója =_titkoskulcsverziója_ | A **VaultName** kötelező megadni, és meg kell adni a Key Vault erőforrás nevét. A **SecretName** megadása kötelező, és a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** nem kötelező, de ha a jelen esetben a használni kívánt titok verzióját jelzi. |

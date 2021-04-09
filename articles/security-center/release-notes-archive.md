@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b3dd9ae4113c3c9fe4b0547f990dc7e912b99f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634702"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726413"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiválja a Azure Security Center újdonságait?
 
@@ -298,8 +298,8 @@ Ha az összes felhasználó számára egységes felhasználói élményt szeretn
 
 |Egyesített javaslat|Módosítások ismertetése|
 |----|:----|
-|**A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken**|A következő két javaslat helyébe lép:<br> **•** A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (a Qualys (mostantól elavult) a standard szintű csomag részeként)<br> **•** A sebezhetőség-felmérési megoldást telepíteni kell a virtuális gépekre (mostantól elavult) (standard és ingyenes szint)|
-|**A virtuális gépek biztonsági réseit szervizelni kell**|A következő két javaslat helyébe lép:<br>**•** A virtuális gépeken észlelt biztonsági rések szervizelése (Qualys-alapú) (már elavult)<br>**•** A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell kijavítania (mostantól elavult)|
+|**A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken**|A következő két javaslat helyébe lép:<br> A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (a Qualys (mostantól elavult) a standard szintű csomag részeként)<br> A sebezhetőség-felmérési megoldást telepíteni kell a virtuális gépekre (mostantól elavult) (standard és ingyenes szint)|
+|**A virtuális gépek biztonsági réseit szervizelni kell**|A következő két javaslat helyébe lép:<br>A virtuális gépeken észlelt biztonsági rések szervizelése (Qualys-alapú) (már elavult)<br>A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell kijavítania (mostantól elavult)|
 |||
 
 Most ugyanazt a javaslatot fogja használni Security Center sebezhetőségi felmérési bővítményének vagy egy magántulajdonban lévő licenccel rendelkező megoldásnak ("BYOL") a partnertől, például a Qualys vagy a Rapid7.
@@ -312,20 +312,20 @@ Ha olyan parancsfájlokkal, lekérdezésekkel vagy automatizálással rendelkezi
 
 ##### <a name="before-august-2020"></a>Augusztus 2020 előtt
 
-|Ajánlás|Hatókör|
+| Ajánlás|Hatókör|
 |----|:----|
 |**A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (Qualys-alapú)**<br>Kulcs: 550e890b-e652-4d22-8274-60b3bdb24c63|Beépített|
 |**A virtuális gépeken található biztonsági rések szervizelése (Qualys-alapú)**<br>Kulcs: 1195afff-c881-495e-9bc5-1486211ae03f|Beépített|
 |**A sebezhetőség-felmérési megoldást telepíteni kell a virtuális gépekre**<br>Kulcs: 01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
 |**A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni**<br>Kulcs: 71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
+|||
 
 
 |Szabályzat|Hatókör|
 |----|:----|
 |**A biztonsági rések felmérését engedélyezni kell a virtuális gépeken**<br>Házirend-azonosító: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Beépített|
 |**A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni**<br>Házirend-azonosító: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
+|||
 
 
 ##### <a name="from-august-2020"></a>Augusztus 1-től 2020
@@ -334,12 +334,12 @@ Ha olyan parancsfájlokkal, lekérdezésekkel vagy automatizálással rendelkezi
 |----|:----|
 |**A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken**<br>Kulcs: ffff0522-1e88-47fc-8382-2a80ba848f5d|Beépített + BYOL|
 |**A virtuális gépek biztonsági réseit szervizelni kell**<br>Kulcs: 1195afff-c881-495e-9bc5-1486211ae03f|Beépített + BYOL|
-||||
+|||
 
 |Szabályzat|Hatókör|
 |----|:----|
 |[**A biztonsági rések felmérését engedélyezni kell a virtuális gépeken**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Házirend-azonosító: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Beépített + BYOL|
-||||
+|||
 
 
 ### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>A ASC_default kezdeményezéshez hozzáadott új AK biztonsági szabályzatok – csak privát előzetes verzióban elérhető ügyfelek általi használatra
@@ -899,7 +899,7 @@ Az Azure Storage veszélyforrások elleni védelme olyan új észleléseket kín
 
 A központilag felügyelt biztonságot és IT-műveleteket végző szervezetek belső munkafolyamat-folyamatokat vezetnek be a szükséges műveletek elvégzéséhez a szervezeten belül, ha eltérések észlelhetők a környezetében. Sok esetben ezek a munkafolyamatok ismételhető folyamatok, az automatizálás pedig nagy mértékben egyszerűsítheti a szervezeten belüli folyamatokat.
 
-Ma egy új képességet vezetünk be Security Center, amely lehetővé teszi, hogy az ügyfelek automatizálási konfigurációkat hozzanak létre Azure Logic Apps és olyan házirendeket hozzanak létre, amelyek automatikusan elindítják őket az adott ASC-megállapítások, például javaslatok vagy riasztások alapján. Az Azure Logic app beállítható úgy, hogy a logikai alkalmazás-összekötők hatalmas közössége által támogatott egyéni műveleteket hajtsa végre, vagy használja a Security Center által biztosított sablonok valamelyikét, például e-mailek küldését vagy ServiceNow™ jegy megnyitását.
+Ma egy új képességet vezetünk be Security Center, amely lehetővé teszi, hogy az ügyfelek automatizálási konfigurációkat hozzanak létre Azure Logic Apps és olyan házirendeket hozzanak létre, amelyek automatikusan elindítják őket az adott ASC-megállapítások, például javaslatok vagy riasztások alapján. Az Azure Logic app beállítható úgy, hogy a logikai alkalmazás-összekötők hatalmas közössége által támogatott egyéni műveleteket hajtsa végre, vagy használja a Security Center által biztosított sablonok valamelyikét, például e-mailek küldését vagy ServiceNow-jegy megnyitását &trade; .
 
 A munkafolyamatok futtatásának automatikus és manuális Security Center funkcióival kapcsolatos további információkért lásd: [munkafolyamat-automatizálás](workflow-automation.md).
 

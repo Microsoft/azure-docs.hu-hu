@@ -4,12 +4,12 @@ description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a k�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 926516075c7d43e6e800403a69ff3ab8f1233fcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88936503"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726991"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Webalkalmazások kivételeinek diagnosztizálása az Application Insightsszal
 Az élő webalkalmazásban lévő kivételeket [Application Insights](./app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.
@@ -215,7 +215,7 @@ A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszol
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha a Application Insights web SDK 2,5-as (és korábbi) MVC 4 (és korábbi) változatát használja, a kivételek nyomon követéséhez tekintse meg az alábbi példákat.
 
-Ha a [CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) -konfiguráció `Off` , akkor a kivételek lesznek elérhetők a [http-modul](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) összegyűjtéséhez. Ha azonban az `RemoteOnly` (alapértelmezett) vagy `On` a, akkor a rendszer törli a kivételt, és nem lesz elérhető Application Insights számára az automatikus gyűjtéshez. A [System. Web. MVC. HandleErrorAttribute osztály](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)felülbírálásával és a felülbírált osztály alkalmazásával az alábbi, a különböző MVC-verzióknál ([GitHub-forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) látható módon kijavíthatja a következőt:
+Ha a [CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) -konfiguráció `Off` , akkor a kivételek lesznek elérhetők a [http-modul](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) összegyűjtéséhez. Ha azonban az `RemoteOnly` (alapértelmezett) vagy `On` a, akkor a rendszer törli a kivételt, és nem lesz elérhető Application Insights számára az automatikus gyűjtéshez. A [System. Web. MVC. HandleErrorAttribute osztály](/dotnet/api/system.web.mvc.handleerrorattribute)felülbírálásával és a felülbírált osztály alkalmazásával az alábbi, a különböző MVC-verzióknál ([GitHub-forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) látható módon kijavíthatja a következőt:
 
 ```csharp
     using System;

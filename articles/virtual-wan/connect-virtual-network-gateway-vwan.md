@@ -101,7 +101,7 @@ Ebben a szakaszban két Azure VPN Gateway helyi hálózati átjárót hoz létre
    ![Képernyőkép: a "Configuration" (konfiguráció) oldal, amely kiemelt IP-címmel és a "BGP-beállítások konfigurálása" beállítással jelenik meg.](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. Ismételje meg ezeket a lépéseket egy másik helyi hálózati átjáró létrehozásához, de ezúttal használja a "Peldany1" elemet "értékeket a konfigurációs fájl" Instance0 "értékei helyett.
 
-   ![konfigurációs fájl letöltése](./media/connect-virtual-network-gateway-vwan/lng2.png "peldany1 "elemet")
+   ![konfigurációs fájl letöltése](./media/connect-virtual-network-gateway-vwan/lng2.png "peldany1 &quot;elemet")
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. kapcsolatok létrehozása
 

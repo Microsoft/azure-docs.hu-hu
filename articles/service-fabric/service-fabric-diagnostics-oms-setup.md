@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthat be Azure Monitor naplókat az Azure 
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.openlocfilehash: 79dbc38f9d177bc3decf11673a68ce434f9a83bc
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105625959"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor naplók beállítása fürthöz

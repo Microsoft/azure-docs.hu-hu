@@ -7,10 +7,10 @@ author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
 ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101652385"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management Soft-Delete (előzetes verzió)
@@ -27,7 +27,7 @@ A Soft-delete funkció [Rest APIon](/rest/api/apimanagement/2020-06-01-preview/a
 > [!TIP]
 > Az Azure REST API-k meghívására szolgáló tippekkel és eszközökkel kapcsolatban tekintse meg az [azure REST API-referenciát](/rest/api/azure/) .
 
-| Művelet | Description | API Management névtér | API minimális verziója |
+| Művelet | Leírás | API Management névtér | API minimális verziója |
 |--|--|--|--|
 | [Létrehozás vagy frissítés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Létrehoz vagy frissít egy API Management szolgáltatást.  | API Management szolgáltatás | Bármelyik |
 | [Létrehozás vagy frissítés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` **igaz** értékre beállított tulajdonsággal | API Management szolgáltatás törlésének visszavonása, ha korábban már törölve lett. Ha `restore` meg van adva, és az `true` összes többi tulajdonságra van beállítva, figyelmen kívül lesz hagyva.  | API Management szolgáltatás |  2020-06-01 – előzetes verzió |

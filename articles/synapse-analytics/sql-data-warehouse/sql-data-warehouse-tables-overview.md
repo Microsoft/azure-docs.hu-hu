@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: c55edbd24553189c11070999ddc5d3b3516f2d97
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98737931"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Táblák tervezése dedikált SQL-készlettel az Azure szinapszis Analytics szolgáltatásban
@@ -144,7 +144,7 @@ Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZ
 
 Táblát új üres táblaként is létrehozhat. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Description |
+| T-SQL-utasítás | Leírás |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolódik. |

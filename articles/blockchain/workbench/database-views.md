@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: 6c7fba590c9c8951e1862c28cb24dbde52c8da8d
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105625534"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Az Azure Blockchain Workbench adatbázis-nézetei
@@ -27,7 +27,7 @@ Ez a szakasz áttekintést nyújt az adatbázis-nézetekről és az általuk tar
 
 Ez a nézet az Azure Blockchain Workbench szolgáltatásba feltöltött **alkalmazások** részleteit tartalmazza.
 
-| Név                             | Típus          | Lehet null | Description                                                                                                                                                                                                                                                   |
+| Név                             | Típus          | Lehet null | Leírás                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                    | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName                  | nvarchar (50)  | No          | Az alkalmazás neve |
@@ -48,7 +48,7 @@ Ez a nézet az Azure Blockchain Workbench alkalmazásokban definiált szerepkör
 
 Egy *Asset-átadási* alkalmazásban például megadhatók szerepkörök, például a *vásárlói* és az *értékesítői* szerepkörök.
 
-| Név                   | Típus             | Lehet null | Description                                       |
+| Név                   | Típus             | Lehet null | Leírás                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | ApplicationId          | int              | No          | Az alkalmazás egyedi azonosítója           |
 | ApplicationName        | nvarchar (50)     | No          | Az alkalmazás neve                       |
@@ -64,7 +64,7 @@ Ez a nézet részletesen ismerteti az Azure Blockchain Workbench-alkalmazásokba
 
 Egy *Asset-átviteli* alkalmazásban például *John Smith* lehet társítva a *beszerzői* szerepkörhöz.
 
-| Név                       | Típus          | Lehet null | Description                                                                                                                                                                                                                           |
+| Név                       | Típus          | Lehet null | Leírás                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId              | int           | No          | Az alkalmazás egyedi azonosítója                                                                                                                                                                                               |
 | ApplicationName            | nvarchar (50)  | No          | Az alkalmazás neve                                                                                                                                                                                                           |
@@ -87,7 +87,7 @@ Ez a nézet az Azure Blockchain Workbench és a hozzájuk társított felhaszná
 -   Társított Főkönyv részletei
 -   Társított felhasználói adatok
 
-| Név                     | Típus          | Lehet null | Description                                                                                                                                                                                                                           |
+| Név                     | Típus          | Lehet null | Leírás                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId             | int           | No          | A kapcsolatok egyedi azonosítója az Azure Blockchain Workbenchben |
 | ConnectionEndpointUrl    | nvarchar (50)  | No          | A kapcsolatok végponti URL-címe |
@@ -112,7 +112,7 @@ Ez a nézet a központilag telepített szerződések részleteit tartalmazza. Az
 -   A műveletet kezdeményező felhasználó adatai
 -   A blockchain blokkhoz és tranzakcióhoz kapcsolódó részletek
 
-| Név                                     | Típus           | Lehet null | Description                                                                                                                                                                                                                                                   |
+| Név                                     | Típus           | Lehet null | Leírás                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId                             | int            | No          | A kapcsolatok egyedi azonosítója az Azure Blockchain Workbenchben.                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar (50)   | No          | A kapcsolatok végponti URL-címe |
@@ -153,7 +153,7 @@ Ez a nézet a szerződésekben végrehajtott műveletekkel kapcsolatos informác
 -   A műveletet kezdeményező felhasználó adatai
 -   A blockchain blokkhoz és tranzakcióhoz kapcsolódó részletek
 
-| Név                                     | Típus          | Lehet null | Description                                                                                                                                                                                                                                                                                                    |
+| Név                                     | Típus          | Lehet null | Leírás                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                            | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName                          | nvarchar (50)  | No          | Az alkalmazás neve |
@@ -212,7 +212,7 @@ Ez a nézet a szerződéshez kapcsolódó tulajdonságokkal kapcsolatos informá
 -   A tulajdonságok adott példányának értékei
 -   A szerződés State (állapot) tulajdonságának részletei
 
-| Név                               | Típus          | Lehet null | Description                                                                                                                                                                                                                                                                        |
+| Név                               | Típus          | Lehet null | Leírás                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName                    | nvarchar (50)  | No          | Az alkalmazás neve |
@@ -252,7 +252,7 @@ Ez a nézet az adott szerződés állapotával kapcsolatos információk többs�
 -   Társított intelligens szerződés tulajdonságának definíciója
 -   A szerződés State (állapot) tulajdonságának részletei
 
-| Név                               | Típus          | Lehet null | Description                                                                                                                                                                                                                                                                        |
+| Név                               | Típus          | Lehet null | Leírás                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName                    | nvarchar (50)  | No          | Az alkalmazás neve |
@@ -304,7 +304,7 @@ Ez a nézet a részletek központi munkafolyamatának metaadatait, valamint a mu
 -   Társított munkafolyamat-definíció
 -   Társított munkafolyamat indítási állapotának adatai
 
-| Név                              | Típus          | Lehet null | Description                                                                                                                                |
+| Név                              | Típus          | Lehet null | Leírás                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                     | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName                   | nvarchar (50)  | No          | Az alkalmazás neve |
@@ -331,7 +331,7 @@ Ez a nézet a részletek központi munkafolyamatának metaadatait, valamint a mu
 -   Társított munkafolyamat-definíció
 -   Munkafolyamat-függvény részletei
 
-| Név                                 | Típus          | Lehet null | Description                                                                          |
+| Név                                 | Típus          | Lehet null | Leírás                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationId                        | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName                      | nvarchar (50)  | No          | Az alkalmazás neve |
@@ -360,7 +360,7 @@ Ez a nézet a munkafolyamatokhoz definiált tulajdonságokat jelöli. Minden tul
 -   Társított munkafolyamat-definíció
 -   Munkafolyamat-tulajdonság részletei
 
-| Név                         | Típus          | Lehet null | Description                                                                                                                                                                                                                                                   |
+| Név                         | Típus          | Lehet null | Leírás                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName              | nvarchar (50)  | No          | Az alkalmazás neve |
@@ -387,7 +387,7 @@ Ez a nézet a munkafolyamathoz társított tulajdonságokat jelöli. Az egyes sz
 -   Társított munkafolyamat-definíció
 -   Munkafolyamat-állapot adatai
 
-| Név                         | Típus          | Lehet null | Description                                                                                                                                                                                                                                                   |
+| Név                         | Típus          | Lehet null | Leírás                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | No          | Az alkalmazás egyedi azonosítója |
 | ApplicationName              | nvarchar (50)  | No          | Az alkalmazás neve |

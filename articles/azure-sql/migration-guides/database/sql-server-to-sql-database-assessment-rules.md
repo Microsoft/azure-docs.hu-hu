@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
 ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105027210"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>A Migrálás Azure SQL Database SQL Server vonatkozó értékelési szabályok
@@ -25,7 +25,7 @@ Az áttelepítési eszközök számos értékelési szabály futtatásával elle
 Ez a cikk felsorolja azokat a szabályokat, amelyek alapján megállapítható, hogy a SQL Server-adatbázis áttelepítésének megvalósíthatósága Azure SQL Databasera történik-e. 
 
 
-## <a name="bulk-insert"></a>Tömeges beszúrás<a id="BulkInsert"></a>
+## <a name="bulk-insert"></a>Tömeges Beszúrás<a id="BulkInsert"></a>
 
 **Title: a nem Azure Blob-adatforrással rendelkező BULK INSERT Azure SQL Database nem támogatott.**   
 **Kategória**: probléma   
@@ -137,7 +137,7 @@ Az adatbázis-kompatibilitási szint értékes eszköz az adatbázis-modernizác
 **Ajánlás**   
 Értékelje ki, hogy az alkalmazás funkciói sértetlenek-e, ha az adatbázis kompatibilitási szintje 100-re van frissítve az Azure SQL felügyelt példányán. Másik lehetőségként telepítse át SQL Server Azure-beli virtuális gépen
 
-## <a name="database-mail"></a>Adatbázisbeli e-mail<a id="DatabaseMail"></a>
+## <a name="database-mail"></a>Adatbázisbeli levelezés<a id="DatabaseMail"></a>
 
 **Title: a Database Mail Azure SQL Database nem támogatott.**   
 **Kategória**: figyelmeztetés   
