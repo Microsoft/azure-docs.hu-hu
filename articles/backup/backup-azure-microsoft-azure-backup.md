@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környeze
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98987022"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
@@ -361,7 +361,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. A biztonsági mentéseket az üzemi kiszolgálók újraindítása nélkül kell folytatni.
-5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információ](backup-mabs-add-storage.md).
+5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információk](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

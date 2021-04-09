@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724169"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL Database importálása vagy exportálása az Azure-szolgáltatások a kiszolgálóhoz való hozzáférésének engedélyezése nélkül
@@ -132,7 +132,7 @@ Az exportálási sebesség számos tényezőtől függ (például az adatalakzat
 
 A legjobb teljesítmény eléréséhez a következő stratégiákat lehet kipróbálni:
 
-1. Győződjön meg arról, hogy az adatbázison nem fut más munkaterhelés. Hozzon létre egy másolatot az exportálás előtt lehet a legjobb megoldás, hogy más számítási feladatok ne fussanak.
+1. Más számítási feladat ne fusson az adatbázison. Hozzon létre egy másolatot az exportálás előtt lehet a legjobb megoldás, hogy más számítási feladatok ne fussanak.
 2. Növelje az adatbázis-szolgáltatási szint célkitűzését (SLO) az exportálási munkaterhelés jobb kezelése érdekében (elsődleges olvasási I/O). Ha az adatbázis jelenleg GP_Gen5_4, lehet, hogy egy üzletileg kritikus-szinten segítene az olvasási munkaterheléshez.
 3. Győződjön meg arról, hogy vannak fürtözött indexek, különösen a nagyméretű táblákhoz.
 4. A virtuális gépeknek ugyanabban a régióban kell lenniük, mint az adatbázisnak a hálózati megkötések elkerülése érdekében.

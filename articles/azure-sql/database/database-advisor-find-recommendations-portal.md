@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96500886"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
@@ -39,7 +39,7 @@ A teljesítménnyel kapcsolatos javaslatok az alábbi ábrán láthatóhoz hason
 
 A javaslatok a következő kategóriákba sorolhatók a teljesítményre gyakorolt lehetséges hatás szerint:
 
-| Hatás | Description |
+| Hatás | Leírás |
 |:--- |:--- |
 | Magas |A nagy hatású ajánlásoknak meg kell adniuk a legjelentősebb teljesítményre gyakorolt hatást. |
 | Közepes |A közepes hatású javaslatoknak javítaniuk kell a teljesítményt, de lényegében nem. |

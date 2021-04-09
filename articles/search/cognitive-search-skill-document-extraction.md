@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
 ms.openlocfilehash: 144e8058e640f98dc6b0ef60534405525532b00e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102547866"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Dokumentum-extrakciós kognitív képesség
@@ -31,13 +31,13 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek | Megengedett értékek | Description |
+| Bevitelek | Megengedett értékek | Leírás |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Olyan `default` fájlok kibontására van beállítva, amelyek nem tiszta szöveg vagy JSON formátumúak. Állítsa a (z) értékre `text` az egyszerű szövegfájlok teljesítményének növelése érdekében. Állítsa be a `json` elemet a következőre: strukturált tartalom kinyerése JSON-fájlokból Ha `parsingMode` nincs explicit módon definiálva, akkor a következőre lesz beállítva: `default` . |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Állítsa be értékre `contentAndMetadata` az összes metaadat és szöveges tartalom kinyeréséhez minden fájlból. Állítsa be, hogy `allMetadata` csak a [tartalom típusának metaadat-tulajdonságait](search-blob-metadata-properties.md) (például a csak. png fájlokra jellemző metaadatokat) szeretné kibontani. Ha `dataToExtract` nincs explicit módon definiálva, akkor a következőre lesz beállítva: `contentAndMetadata` . |
 | `configuration` | Lásd alább. | A dokumentumok kinyerésének módját módosító választható paraméterek szótára. A támogatott konfigurációs tulajdonságok leírását az alábbi táblázat tartalmazza. |
 
-| Konfigurációs paraméter   | Megengedett értékek | Description |
+| Konfigurációs paraméter   | Megengedett értékek | Leírás |
 |-------------------------|----------------|-------------|
 | `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Állítsa az értékre `none` , hogy figyelmen kívül hagyja az adatkészletben lévő beágyazott képeket vagy képfájlokat. Ez az alapértelmezett beállítás. <br/>Ha a [képelemzést kognitív képességekkel szeretné használni](cognitive-search-concept-image-scenarios.md), úgy állítsa be, hogy `generateNormalizedImages` a készség a dokumentum repedésének részeként normalizált rendszerképekből álló tömböt hozzon létre. Ehhez a művelethez a és a értékre kell állítani `parsingMode` `default` `dataToExtract` `contentAndMetadata` . A normalizált kép olyan további feldolgozásra utal, amely egységes képkimenetet, méretet és elforgatást eredményez, így a konzisztens renderelés elősegítése, ha képeket tartalmaz a vizuális keresési eredményekben (például egy gráf vezérlőelemben a [JFK bemutatóban](https://github.com/Microsoft/AzureSearch_JFK_Files)látható azonos méretű fényképeket). Ez az információ minden rendszerképhez létrejön, ha ezt a beállítást használja.  <br/>Ha a értékre van állítva `generateNormalizedImagePerPage` , a PDF-fájlokat a rendszer a beágyazott képek kibontása helyett eltérően fogja kezelni, és ennek megfelelően a rendszer az egyes lapokat képként jeleníti meg.  A nem PDF típusú fájltípusok ugyanúgy lesznek kezelve, mint ha `generateNormalizedImages` be van állítva.
 | `normalizedImageMaxWidth` | 50-10000 közötti egész szám | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték 2000. | 
@@ -47,7 +47,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 > A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a [képelemzési képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Az [OCR-képesség](cognitive-search-skill-ocr.md) legfeljebb 4200-es szélességet és magasságot támogat a nem angol nyelvű és a 10000 angol nyelv esetén.  Ha csökkenti a maximális korlátot, a feldolgozás a készségkészlet-definíciótól és a dokumentumok nyelvétől függően meghiúsulhat a nagyobb rendszerképeken. 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név     | Description |
+| Bemeneti név     | Leírás |
 |--------------------|-------------|
 | `file_data` | Az a fájl, amelyből a tartalmat ki kell olvasni. |
 
@@ -70,7 +70,7 @@ A fájl hivatkozási objektuma háromféleképpen hozható létre:
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve    | Description |
+| Kimenet neve    | Leírás |
 |--------------|-------------|
 | `content` | A dokumentum szöveges tartalma. |
 | `normalized_images`   | Ha a értéke `imageAction` ettől eltérő értékre van állítva `none` , az új *normalized_images* mező képek tömbjét fogja tartalmazni. Az egyes rendszerképek kimeneti formátumával kapcsolatos további részletekért tekintse meg [a képek kinyerésének dokumentációját](cognitive-search-concept-image-scenarios.md) . |

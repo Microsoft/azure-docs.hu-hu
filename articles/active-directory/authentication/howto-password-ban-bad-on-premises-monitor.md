@@ -13,10 +13,10 @@ ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96741762"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
@@ -240,7 +240,7 @@ A szöveges naplózás alapértelmezés szerint le van tiltva. Az érték érvé
 
 A DC Agent szolgáltatás szoftvere egy **Azure ad jelszavas védelem** nevű teljesítményszámláló objektumot telepít. Jelenleg a következő teljesítményszámláló-számlálók érhetők el:
 
-|Teljesítményszámláló neve | Description|
+|Teljesítményszámláló neve | Leírás|
 | --- | --- |
 |Feldolgozott jelszavak |Ez a számláló a legutóbbi újraindítás óta feldolgozott (elfogadott vagy visszautasított) jelszavak teljes számát jeleníti meg.|
 |Elfogadott jelszavak |Ez a számláló a legutóbbi újraindítás óta elfogadott jelszavak teljes számát jeleníti meg.|

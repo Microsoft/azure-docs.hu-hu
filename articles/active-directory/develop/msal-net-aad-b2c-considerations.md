@@ -14,10 +14,10 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: bdb9e12fdf721204ce98d23e5d5aeea535ddf23d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100574812"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
@@ -190,6 +190,6 @@ A felhasználói folyamatok által visszaadott jogcímek meghatározásával kap
 
 A jogkivonatok interaktív módon való beszerzésével kapcsolatban további részleteket a következő példában talál: Azure AD B2C alkalmazások MSAL.NET.
 
-| Sample | Platform | Description|
+| Sample | Platform | Leírás|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | A MSAL.NET-t használó Xamarin-alkalmazások a felhasználókat a Azure AD B2C használatával hitelesítik, majd a visszaadott tokenekkel rendelkező webes API-kat férnek hozzá.|
