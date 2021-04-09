@@ -7,10 +7,10 @@ ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97797009"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
@@ -53,7 +53,7 @@ A csempék szerkesztéséhez szerkesztési módban kell lennie.  Az elérhető t
 
 A következő táblázat ismerteti az irányítópulthoz felvehető különböző típusú csempéket:
 
-| Csempe             | Description |
+| Csempe             | Leírás |
 | ---------------- | ----------- |
 | Markdown         | A Markdown csempéi olyan csempék, amelyek fejléceket és leírásokat jelenítenek meg a Markdown használatával formázott szövegekben. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|
 | Kép            | A képcsempék egy egyéni rendszerképet jelenítenek meg, és megadhatók. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|

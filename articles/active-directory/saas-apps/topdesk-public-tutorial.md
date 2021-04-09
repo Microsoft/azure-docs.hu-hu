@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Azure Active Directory integráció a TOPdesk-vel – nyilvános
@@ -137,13 +137,13 @@ Az Azure AD egyszeri bejelentkezés az TOPdesk-Public használatával történő
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-topdesk---public-single-sign-on"></a>TOPdesk konfigurálása – egyetlen Sign-On
+### <a name="configure-topdesk---public-single-sign-on&quot;></a>TOPdesk konfigurálása – egyetlen Sign-On
 
 1. Jelentkezzen be a **TOPdesk-nyilvános** vállalati webhelyre rendszergazdaként.
 
 2. A **TOPdesk** menüben kattintson a **Beállítások** elemre.
    
-    ![Beállítások](./media/topdesk-public-tutorial/ic790598.png "Beállítások")
+    ![Beállítások](./media/topdesk-public-tutorial/ic790598.png &quot;Beállítások")
 
 3. Kattintson a **bejelentkezési beállítások** elemre.
    
@@ -247,17 +247,17 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-topdesk---public-test-user"></a>TOPdesk létrehozása – nyilvános teszt felhasználó
+### <a name="create-topdesk---public-test-user&quot;></a>TOPdesk létrehozása – nyilvános teszt felhasználó
 
 Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a TOPdesk-Nyilvánosba, a TOPdesk-nyilvánosságnak kell kiépíteni őket. TOPdesk esetén a kiépítés manuális feladat.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a **TOPdesk-nyilvános** vállalati webhelyre rendszergazdaként.
 
 2. A felső menüben kattintson a **TOPdesk \> új \> támogatási fájlok \> személy** elemre.
    
-    ![Személy](./media/topdesk-public-tutorial/ic790628.png "Személy")
+    ![Személy](./media/topdesk-public-tutorial/ic790628.png &quot;Személy")
 
 3. Az új személy párbeszédpanelen hajtsa végre a következő lépéseket:
    

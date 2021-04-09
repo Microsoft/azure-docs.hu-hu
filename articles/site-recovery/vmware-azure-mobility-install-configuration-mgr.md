@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: 2159ab8c2639f0f87fd53e8559dad518a3daa663
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92544817"
 ---
 # <a name="automate-mobility-service-installation"></a>A mobilitási szolgáltatás telepítésének automatizálása
@@ -374,7 +374,7 @@ cd /tmp
 
    ![Képernyőkép a Configuration Manager-konzolról](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
-1. Válassza ki azokat a terjesztési pontokat, amelyeken a csomagokat át szeretné másolni. [További információ](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
+1. Válassza ki azokat a terjesztési pontokat, amelyeken a csomagokat át szeretné másolni. [További információk](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
 1. Végezze el a varázsló lépéseit. A csomag ezután elindítja a replikálást a megadott terjesztési pontokra.
 1. A csomag terjesztésének befejeződése után kattintson a jobb gombbal a csomagra > az **üzembe helyezés** elemre.
 
@@ -386,7 +386,7 @@ cd /tmp
 
    ![A szoftver központi telepítése varázsló képernyőképe](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. A **központi telepítéshez tartozó ütemterv megadása lapon** állítsa be az ütemtervet. [További információ](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
+1. A **központi telepítéshez tartozó ütemterv megadása lapon** állítsa be az ütemtervet. [További információk](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
 
    - A mobilitási szolgáltatás a megadott ütemtervnek megfelelően települ.
    - A szükségtelen újraindítások elkerülése érdekében ütemezze a csomag telepítését a havi karbantartási időszak vagy a szoftverfrissítések ablakában.

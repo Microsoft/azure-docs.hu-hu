@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954052"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 sorozat Update 4 kibocsátási megjegyzések
@@ -72,7 +72,7 @@ A következő táblázat a 4. frissítésben rögzített problémák összegzés
 | 2 |Helyileg rögzített kötetek |Az előző kiadásban probléma merült fel a kapcsolódó kötetek létrehozásakor a helyileg rögzített kötetek esetében, amelyek mennyiségi létrehozási hibákhoz vezethetnek. Ezt a problémát a jelen kiadásban a gyökér okozta és javítottuk. |Igen |Nem |
 | 3 |Támogatási csomag |A korábbi kiadásokban a támogatási csomaggal kapcsolatos problémák merültek fel, amelyek egy rendszer. OutOfMemory kivételt vagy más hibát eredményeznek, ami a támogatási csomag létrehozásakor meghiúsult. Ezek a hibák ebben a kiadásban vannak kijavítva. |Igen |Yes |
 | 4 |Figyelés |A korábbi kiadásokban a helyileg rögzített kötetekhez kapcsolódó figyelési diagramokkal kapcsolatos probléma merült fel, ahol a felhasználás az EB-ben volt látható. Ez a hiba a jelen kiadásban van feloldva. |Igen |Yes |
-| 5 |Áttelepítés |A korábbi kiadásokban számos probléma merült fel az 5000-7000-es sorozatból a 8000 sorozatú eszközökre való Migrálás megbízhatóságával kapcsolatban. Ezek a problémák ebben a kiadásban lettek feldolgozva. |Igen |Yes |
+| 5 |Migrálás |A korábbi kiadásokban számos probléma merült fel az 5000-7000-es sorozatból a 8000 sorozatú eszközökre való Migrálás megbízhatóságával kapcsolatban. Ezek a problémák ebben a kiadásban lettek feldolgozva. |Igen |Yes |
 | 6 |Frissítés |A korábbi kiadásokban, ha frissítési hiba történt, a vezérlők helyreállítási módba kerülhetnek, így a felhasználó nem folytathatja a frissítést, és kapcsolatba kell lépnie Microsoft ügyfélszolgálataval. <br> Ebben a kiadásban ez a viselkedés megváltozott. Ha a felhasználó olyan frissítési hibát észlelt, hogy mindkét vezérlő ugyanazt a verziót futtatja (4. frissítés), akkor a vezérlők nem kerülnek helyreállítási módba. Ha a felhasználó ezt a hibát tapasztalja, javasoljuk, hogy várjon egy kicsit, majd próbálkozzon újra a frissítéssel. Az újrapróbálkozás sikeres volt. Ha az újrapróbálkozás sikertelen, vegye fel a kapcsolatot a Microsoft ügyfélszolgálatakal. |Igen |Yes |
 
 

@@ -1,5 +1,5 @@
 ---
-title: Gyakori kérdések az Azure Marketplace-en futó virtuális gépekről
+title: A virtuális gépekkel kapcsolatos gyakori kérdések az Azure Marketplace-en
 description: A virtuális gépek az Azure Marketplace-en való létrehozásakor felmerülő gyakori kérdések.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
 ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104593424"
 ---
-# <a name="common-questions-about-vm-in-azure-marketplace"></a>Gyakori kérdések az Azure Marketplace-en futó virtuális gépekről
+# <a name="common-questions-about-vm-in-azure-marketplace"></a>A virtuális gépekkel kapcsolatos gyakori kérdések az Azure Marketplace-en
 
 Ezek a gyakori kérdések (GYIK) olyan gyakori problémákkal foglalkoznak, amelyekkel a virtuális gépek (VM) ajánlatának létrehozásakor találkozhat az Azure piactéren.
 

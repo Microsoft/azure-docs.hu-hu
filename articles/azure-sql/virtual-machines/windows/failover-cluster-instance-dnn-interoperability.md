@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97358214"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>A szolgáltatás együttműködése SQL Server a & DNN
@@ -68,7 +68,7 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 Ha az alapértelmezett 1433-as port, akkor kihagyhatja a portot az URL-címben. Megnevezett példány esetében állítson be egy statikus portot a megnevezett példányhoz, és adja meg azt a csak olvasható útválasztási URL-címben.  
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 A replikáció három összetevőből áll: közzétevő, terjesztő, előfizető. Ezen összetevők bármelyike lehet feladatátvevő fürt példánya. Mivel a VNN-t a replikálási konfigurációban nagy mértékben használják, explicit módon és implicit módon, a replikálás működéséhez szükség lehet egy olyan hálózati aliasra, amely leképezi a VNN a DNN. 
 

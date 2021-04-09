@@ -12,10 +12,10 @@ manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
 ms.openlocfilehash: 058873df989c444ebe06fc20a2f8a40fd2d3c594
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104594546"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
@@ -158,7 +158,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 - [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
-### <a name="azure-data-explorer"></a>Azure Data Explorer
+### <a name="azure-data-explorer"></a>Azure Adatkezelő
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -365,7 +365,7 @@ Tekintse át az alábbi listát az Azure Virtual Machines felügyelt identitás�
 | Felhasználó által hozzárendelt | [Elérhető a támogatott régiókban](../../virtual-machines/image-builder-overview.md#regions) | Nem érhető el | Nem érhető el | Nem érhető el |
 
 Az Azure virtuálisgép-rendszerkép-készítő felügyelt identitásának konfigurálásával kapcsolatos információkért lásd a [rendszerkép-szerkesztő áttekintését](../../virtual-machines/image-builder-overview.md#permissions).
-### <a name="azure-signalr-service"></a>Azure SignalR szolgáltatás
+### <a name="azure-signalr-service"></a>Azure SignalR Service
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -434,7 +434,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 | Azure Germany | `https://database.cloudapi.de/` | ![Elérhető][check] |
 | Azure China 21Vianet | `https://database.chinacloudapi.cn/` | ![Elérhető][check] |
 
-### <a name="azure-data-explorer"></a>Azure Data Explorer
+### <a name="azure-data-explorer"></a>Azure Adatkezelő
 
 | Felhőbeli | Erőforrás-azonosító | Állapot |
 |--------|------------|:-:|

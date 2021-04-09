@@ -10,10 +10,10 @@ ms.date: 03/17/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q3
 ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104577094"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
@@ -41,7 +41,7 @@ Az Azure Stack Edge Pro rendszerkövetelményei a következők:
 
 A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. Az Edge Storage-fiókok az eszközön jönnek létre. További információ: [Edge Storage-fiókok](azure-stack-edge-gpu-manage-storage-accounts.md#about-edge-storage-accounts).
 
-|Típus  |A(z)  |Megjegyzések  |
+|Típus  |Tárfiók  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása         |         |
 
@@ -51,7 +51,7 @@ A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. 
 
 Ezek a Storage-fiókok a helyi Azure Resource Managerhoz való csatlakozáskor az eszköz helyi API-kon keresztül jönnek létre. A következő Storage-fiókok támogatottak:
 
-|Típus  |A(z)  |Megjegyzések  |
+|Típus  |Tárfiók  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása, oldal Blobja        | Az SKU típusa Standard_LRS       |
 |Prémium     |GPv1: blob blokkolása, oldal Blobja        | Az SKU típusa Premium_LRS        |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94965731"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok és-rekordhalmazok kezelése a Azure Portal használatával
@@ -87,13 +87,13 @@ A rekordokat a Azure Portal használatával távolíthatja el. Vegye figyelembe,
 3. Ellenőrizze, hogy a név megegyezik-e a törölni kívánt rekorddal, majd kattintson az **Igen** gombra.
 4. A **DNS-zóna** panelen ellenőrizze, hogy a rekord már nem látható-e.
 
-## <a name="work-with-ns-and-soa-records"></a>NS-és SOA-rekordok használata
+## <a name="work-with-ns-and-soa-records&quot;></a>NS-és SOA-rekordok használata
 
 Az automatikusan létrehozott NS és SOA rekordokat más bejegyzéstípusoktól eltérően kezeli a rendszer.
 
-### <a name="modify-soa-records"></a>SOA-rekordok módosítása
+### <a name=&quot;modify-soa-records&quot;></a>SOA-rekordok módosítása
 
-Nem adhat hozzá és nem távolíthat el rekordokat az automatikusan létrehozott SOA-rekordhalmazból a zóna csúcspontján (név = " \@ "). A SOA-rekordon belül azonban módosíthatja a paramétereket (a "gazdagép" kivételével) és a rekordhalmazt is.
+Nem adhat hozzá és nem távolíthat el rekordokat az automatikusan létrehozott SOA-rekordhalmazból a zóna csúcspontján (név = &quot; \@ "). A SOA-rekordon belül azonban módosíthatja a paramétereket (a "gazdagép" kivételével) és a rekordhalmazt is.
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>NS rekordok módosítása a zóna csúcsán
 

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan alakíthatja át az egyéni sémát
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97109198"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Egyéni mezők leképezése Event Grid-sémára
