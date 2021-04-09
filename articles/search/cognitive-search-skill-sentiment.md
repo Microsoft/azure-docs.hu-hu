@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102547475"
 ---
 # <a name="sentiment-cognitive-skill"></a>Érzelmek kognitív szaktudása
@@ -36,20 +36,20 @@ A rekordok maximális méretének 5000 karakternek kell lennie, a következőké
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve | Description |
+| Paraméter neve | Leírás |
 |----------------|----------------------|
 | `defaultLanguageCode` | választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód. <br/> [A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/language-support.md) |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei 
 
-| Bemeneti név | Description |
+| Bemeneti név | Leírás |
 |--------------------|-------------|
 | `text` | Az elemezni kívánt szöveg.|
 | `languageCode`    |  Választható A rekordok nyelvét jelző sztring. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/>[A támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/language-support.md)itt tekintheti meg.|
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve | Description |
+| Kimenet neve | Leírás |
 |--------------------|-------------|
 | `score` | 0 és 1 közötti érték, amely az elemzett szöveg hangulatát jelöli. A 0 értéknél közelebbi értékek negatív érzelmekkel rendelkeznek, és a 0,5-es számú érték semleges, az 1. pedig pedig pozitív hangulatú.|
 

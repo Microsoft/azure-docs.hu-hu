@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105027397"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Adatok másolása az Azure Adatkezelőba vagy onnan a Azure Data Factory használatával
@@ -79,13 +79,13 @@ Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Igen |
-| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Igen |
-| adatbázis | Az adatbázis neve. | Igen |
-| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen |
-| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
-| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ez az úgynevezett "HRE Application Key" néven ismert a [Kusto-kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [a Azure Key Vault tárolt biztonságos](store-credentials-in-key-vault.md)adattárolásra hivatkozik. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult is használhat, ha az adattár egy magánhálózaton található. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Nem |
+| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Yes |
+| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Yes |
+| adatbázis | Az adatbázis neve. | Yes |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Yes |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Yes |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ez az úgynevezett "HRE Application Key" néven ismert a [Kusto-kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [a Azure Key Vault tárolt biztonságos](store-credentials-in-key-vault.md)adattárolásra hivatkozik. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult is használhat, ha az adattár egy magánhálózaton található. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |No |
 
 **Példa: egyszerű szolgáltatásnév hitelesítésének használata**
 
@@ -126,10 +126,10 @@ Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Igen |
-| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Igen |
-| adatbázis | Az adatbázis neve. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult is használhat, ha az adattár egy magánhálózaton található. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Nem |
+| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Yes |
+| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Yes |
+| adatbázis | Az adatbázis neve. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult is használhat, ha az adattár egy magánhálózaton található. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |No |
 
 **Példa: felügyelt identitásos hitelesítés használata**
 
@@ -156,7 +156,7 @@ A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureDataExplorerTable** értékre kell beállítani. | Igen |
+| típus | A **Type** tulajdonságot **AzureDataExplorerTable** értékre kell beállítani. | Yes |
 | tábla | Annak a táblának a neve, amelyre a társított szolgáltatás hivatkozik. | Igen a fogadó számára; Nem a forráshoz |
 
 **Adatkészlet tulajdonságai – példa:**
@@ -188,10 +188,10 @@ Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus*
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSource** | Igen |
-| lekérdezés | Egy [KQL-formátumban](/azure/kusto/query/)megadott írásvédett kérelem. Hivatkozásként használja az egyéni KQL-lekérdezést. | Igen |
-| queryTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 10 perc (00:10:00); az engedélyezett maximális érték 1 óra (01:00:00). | Nem |
-| nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |Nem |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSource** | Yes |
+| lekérdezés | Egy [KQL-formátumban](/azure/kusto/query/)megadott írásvédett kérelem. Hivatkozásként használja az egyéni KQL-lekérdezést. | Yes |
+| queryTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 10 perc (00:10:00); az engedélyezett maximális érték 1 óra (01:00:00). | No |
+| nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |No |
 
 >[!NOTE]
 >Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Ha az összes rekordot csonkítás nélkül szeretné lekérni, megadhatja a `set notruncation;` lekérdezés elején. További információ: [lekérdezési korlátok](/azure/kusto/concepts/querylimits).
@@ -235,9 +235,9 @@ Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenys�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Igen |
-| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | Nem |
-| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](/azure/data-explorer/ingestion-properties). | Nem |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Yes |
+| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | No |
+| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](/azure/data-explorer/ingestion-properties). | No |
 
 **Példa**
 

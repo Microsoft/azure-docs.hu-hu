@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222343"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
@@ -186,7 +186,7 @@ A hosszú ideig futó lekérdezések azonosítása:
    > Javasoljuk, hogy az egyéni DTU diagram használatával hasonlítsa össze a lekérdezési teljesítmény diagramot.
    >
 
-## <a name="review-top-queries-per-execution-count"></a>Leggyakoribb lekérdezések áttekintése végrehajtások száma alapján
+## <a name="review-top-queries-per-execution-count&quot;></a>Leggyakoribb lekérdezések áttekintése végrehajtások száma alapján
 
 Előfordulhat, hogy az adatbázist használó felhasználói alkalmazás lassú lesz, bár a végrehajtások nagy száma nem befolyásolja magát az adatbázist, és az erőforrások használata alacsony.
 
@@ -194,7 +194,7 @@ Bizonyos esetekben a magas szintű végrehajtások száma több hálózati menet
 
 Például számos adatvezérelt webhely minden felhasználói kérelem esetében jelentősen hozzáfér az adatbázishoz. Bár a kapcsolatok készletezése segít, a megnövekedett hálózati forgalom és a kiszolgáló terhelése is csökkentheti a teljesítményt. Általánosságban a ciklikus utakat minimálisra kell tartani.
 
-A gyakran végrehajtott ("Csevegő") lekérdezések azonosítása:
+A gyakran végrehajtott (&quot;Csevegő") lekérdezések azonosítása:
 
 1. Nyissa meg Lekérdezési terheléselemző **Egyéni** lapját a kiválasztott adatbázishoz.
 2. Módosítsa a mérőszámokat a **végrehajtások számára**.

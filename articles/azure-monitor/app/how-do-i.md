@@ -4,10 +4,10 @@ description: Gyakori kérdések a Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584158"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
@@ -65,7 +65,7 @@ Az e-maileket akkor is megkapja, ha a metrika a küszöbérték fölött és ala
 
 Néhány megfontolandó szempont:
 
-* A riasztások két állapottal rendelkeznek ("riasztás" és "kifogástalan"). Az állapot csak akkor lesz kiértékelve, ha metrika érkezik.
+* A riasztások két állapottal rendelkeznek ("riasztás&quot; és &quot;kifogástalan"). Az állapot csak akkor lesz kiértékelve, ha metrika érkezik.
 * A rendszer csak akkor küld e-mailt, ha az állapot megváltozik. Ezért a magas és az alacsony értékű mérőszámokat is el kell küldenie.
 * A riasztás kiértékeléséhez az átlagot a rendszer az előző időszakban kapott értékek alapján veszi figyelembe. Ez minden alkalommal megtörténik, amikor egy metrika érkezik, így a megadott időszaknál gyakrabban lehet elküldeni az e-maileket.
 * Mivel az e-maileket a "riasztás" és az "kifogástalan" is elküldi, érdemes lehet átgondolni az egyeseményes eseményt egy kétállapotú feltételnek. Például a "feladatok befejezve" esemény helyett a "feladatok folyamatban" állapotot kell megadni, amely a feladatok elején és végén kap e-maileket.

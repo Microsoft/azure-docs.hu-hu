@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105026623"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>A Azure Data Factory és az Azure hatáskörébe való kapcsolódás
@@ -110,26 +110,26 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 | Adattár | Támogatott | 
 | ------------------- | ------------------- | 
 | Azure Blob Storage | Igen |
-| Azure Cognitive Search | Igen | 
-| Azure Cosmos DB (SQL API) \* | Igen | 
-| Azure Cosmos DB API-MongoDB \* | Igen |
+| Azure Cognitive Search | Yes | 
+| Azure Cosmos DB (SQL API) \* | Yes | 
+| Azure Cosmos DB API-MongoDB \* | Yes |
 | Azure-Adatkezelő \* | Igen | 
 | Azure Data Lake Storage Gen1 | Igen | 
 | Azure Data Lake Storage Gen2 | Igen | 
-| Azure Database for Maria DB \* | Igen | 
-| Azure Database for MySQL \* | Igen | 
-| Azure Database for PostgreSQL \* | Igen |
-| Azure File Storage | Igen | 
-| Azure SQL Database \* | Igen | 
-| Felügyelt Azure SQL-példány \* | Igen | 
+| Azure Database for Maria DB \* | Yes | 
+| Azure Database for MySQL \* | Yes | 
+| Azure Database for PostgreSQL \* | Yes |
+| Azure File Storage | Yes | 
+| Azure SQL Database \* | Yes | 
+| Felügyelt Azure SQL-példány \* | Yes | 
 | Azure szinapszis-elemzés \* | Igen | 
 | Azure Table Storage | Igen |
-| Amazon S3 | Igen | 
-| Kaptár \* | Igen | 
-| SAP ECC \* | Igen |
-| SAP-tábla | Igen |
-| SQL Server \* | Igen | 
-| Teradata \* | Igen |
+| Amazon S3 | Yes | 
+| Kaptár \* | Yes | 
+| SAP ECC \* | Yes |
+| SAP-tábla | Yes |
+| SQL Server \* | Yes | 
+| Teradata \* | Yes |
 
 *\* Az Azure hatáskörébe jelenleg nem támogatott a lekérdezés vagy a tárolt eljárás a leszármazás vagy a vizsgálat során. A Lineage csak a táblákra és a források megtekintésére korlátozódik.*
 
@@ -160,8 +160,8 @@ Az adategység sémája (az eszköz – > séma lapon) a következő összeköt�
 | Azure Blob Storage | Igen |
 | Azure Data Lake Storage Gen1 | Igen |
 | Azure Data Lake Storage Gen2 | Igen |
-| Azure SQL Database \* | Igen |
-| Azure szinapszis-elemzés \* | Igen |
+| Azure SQL Database \* | Yes |
+| Azure szinapszis-elemzés \* | Yes |
 
 *\* Az Azure hatáskörébe jelenleg nem támogatott a lekérdezés vagy a tárolt eljárás a leszármazás vagy a vizsgálat során. A Lineage csak a táblákra és a források megtekintésére korlátozódik.*
 
@@ -172,11 +172,11 @@ Az adategység sémája (az eszköz – > séma lapon) a következő összeköt�
 | Azure Blob Storage | Igen |
 | Azure Data Lake Storage Gen1 | Igen |
 | Azure Data Lake Storage Gen2 | Igen |
-| Azure File Storage | Igen |
-| Azure SQL Database \* | Igen |
-| Felügyelt Azure SQL-példány \*| Igen |
-| Azure szinapszis-elemzés \* | Igen |
-| SQL Server \* | Igen |
+| Azure File Storage | Yes |
+| Azure SQL Database \* | Yes |
+| Felügyelt Azure SQL-példány \*| Yes |
+| Azure szinapszis-elemzés \* | Yes |
+| SQL Server \* | Yes |
 
 *\* Az Azure hatáskörébe jelenleg nem támogatott a lekérdezés vagy a tárolt eljárás a leszármazás vagy a vizsgálat során. A Lineage csak a táblákra és a források megtekintésére korlátozódik.*
 

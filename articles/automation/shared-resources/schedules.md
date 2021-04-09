@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 03/19/2021
 ms.topic: conceptual
 ms.openlocfilehash: a829cd946f36fb5996405ba00945e9f9cb65d162
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105544230"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Ütemtervek kezelése Azure Automation
@@ -26,7 +26,7 @@ Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy 
 
 Az alábbi táblázatban található parancsmagok automatizálási ütemterveket hoznak létre és kezelhetnek a PowerShell használatával. Az az [modulok](modules.md#az-modules)részét képezik.
 
-| Parancsmagok | Description |
+| Parancsmagok | Leírás |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Lekéri az ütemtervet. |
 | [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Ütemezett runbookok beolvasása. |

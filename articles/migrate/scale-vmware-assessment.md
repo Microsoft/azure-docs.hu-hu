@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 10b8aaeaa25e49140dbf6f31c064c7f823d23e31
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778253"
 ---
 # <a name="assess-large-numbers-of-servers-in-vmware-environment-for-migration-to-azure"></a>Nagy számú kiszolgáló kiértékelése VMware-környezetben az Azure-ba való Migrálás céljából
@@ -71,7 +71,7 @@ Ha több-bérlős környezetet szeretne tervezni, a felderítést a vCenter Serv
 
 - A berendezés felderítési hatókörét beállíthatja vCenter Server adatközpontokra, fürtökre vagy a fürtök, a gazdagépek vagy az egyes kiszolgálók mappájára, illetve az egyes kiszolgálókra.
 - Ha a környezet a bérlők között van megosztva, és az egyes bérlőket külön szeretné felderíteni, akkor a hatókörhöz való hozzáférést a berendezés által a felderítéshez használt vCenter-fiókhoz is elérheti. 
-    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a kiszolgálókat, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gépek mappái alapján szeretné felderíteni a felderítést, ezt úgy teheti meg, hogy a vCenter-fiókhoz csak olvasási hozzáférés van hozzárendelve a kiszolgáló szintjén. [További információ](set-discovery-scope.md).
+    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a kiszolgálókat, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gépek mappái alapján szeretné felderíteni a felderítést, ezt úgy teheti meg, hogy a vCenter-fiókhoz csak olvasási hozzáférés van hozzárendelve a kiszolgáló szintjén. [További információk](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
 ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103199908"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
@@ -40,7 +40,7 @@ Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat szám�
 
 A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log Analytics munkaterületek összegyűjthetők az összes csatlakoztatott ügynökből. Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az elemzések, megoldások és egyéb olyan megoldások listáját, amelyek a log Analytics-ügynököt használják más típusú adatok gyűjtésére.
 
-| Adatforrás | Description |
+| Adatforrás | Leírás |
 | --- | --- |
 | [Windows-eseménynaplók](../agents/data-sources-windows-events.md) | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | [Syslog](../agents/data-sources-syslog.md)                     | A Linux-eseménynaplózási rendszernek eljuttatott információk. |

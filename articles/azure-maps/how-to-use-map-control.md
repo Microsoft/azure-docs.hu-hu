@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864040"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps-térképvezérlő használata
@@ -200,9 +200,9 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
 
    ![Megjelenített eredményt mutató Térkép képe](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>A Térkép honosítása
+## <a name="localizing-the-map&quot;></a>A Térkép honosítása
 
-A Azure Maps két különböző módszert biztosít a megjelenített Térkép nyelvének és regionális nézetének beállítására. Az első lehetőség, hogy hozzáadja ezt az információt a globális `atlas` névtérhez, ami az alkalmazás összes leképezés-vezérlési példányát az alapértelmezett beállítások alapján fogja eredményezni. A következő nyelvre állítja be a franciát ("fr-FR") és a regionális nézetet az "Auto" értékre:
+A Azure Maps két különböző módszert biztosít a megjelenített Térkép nyelvének és regionális nézetének beállítására. Az első lehetőség, hogy hozzáadja ezt az információt a globális `atlas` névtérhez, ami az alkalmazás összes leképezés-vezérlési példányát az alapértelmezett beállítások alapján fogja eredményezni. A következő nyelvre állítja be a franciát (&quot;fr-FR") és a regionális nézetet az "Auto" értékre:
 
 ```javascript
 atlas.setLanguage('fr-FR');
