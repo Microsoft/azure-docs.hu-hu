@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015400"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple-figyelési mutatók használata az eszköz kezeléséhez
@@ -136,7 +136,7 @@ Az alábbi ábrán az elsődleges vezérlőn lévő LED-ek azonosíthatók. (Az 
 A következő táblázat segítségével meghatározhatja, hogy a vezérlő modul megfelelően működik-e.  
 
 ### <a name="controller-indicator-leds"></a>Vezérlő kijelző LED-EK
-| VEZETETT | Description |
+| VEZETETT | Leírás |
 | --- | --- |
 | AZONOSÍTÓ LED (kék) |Azt jelzi, hogy a modul azonosítva van. Ha a kék LED egy futó vezérlőn villog, akkor a vezérlő az aktív vezérlő, a másik pedig a készenléti vezérlő. További információ: [az aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | Hiba LED (Amber) |A vezérlő hibáját jelzi. |
