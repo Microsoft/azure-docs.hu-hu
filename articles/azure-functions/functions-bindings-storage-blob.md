@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 4ec21086ee94610be1d9cf5da7b64c837b5311a9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100381528"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Blob Storage-kötések Azure Functions – áttekintés
@@ -71,7 +71,7 @@ Ez a szakasz ismerteti a kötéshez elérhető globális konfigurációs beáll�
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |Maxanalyticsunits|8 * (az elérhető magok száma)|Az egyes Blobok által aktivált függvények esetében engedélyezett egyidejű hívások egész számának száma. A minimálisan megengedett érték 1.|
 

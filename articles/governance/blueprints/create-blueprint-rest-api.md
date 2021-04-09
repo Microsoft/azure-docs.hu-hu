@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az ö
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105558975"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API

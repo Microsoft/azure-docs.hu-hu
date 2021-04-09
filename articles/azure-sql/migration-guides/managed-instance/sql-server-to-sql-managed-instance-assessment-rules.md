@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
 ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105026036"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Az Azure SQL felügyelt példányainak áttelepítéséhez SQL Server vonatkozó értékelési szabályok
@@ -67,7 +67,7 @@ Az Azure Blob Storage-ba való Migrálás során helyi fájlokat vagy fájlmegos
 
 További információ: [CLR-beli különbségek az Azure SQL felügyelt példányában ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)
 
-## <a name="bulk-insert"></a>Tömeges beszúrás<a id="BulkInsert"></a>
+## <a name="bulk-insert"></a>Tömeges Beszúrás<a id="BulkInsert"></a>
 
 **Title: a nem Azure-beli blob-adatforrással rendelkező BULK INSERT az Azure SQL felügyelt példányain nem támogatott.**   
 **Kategória**: probléma   

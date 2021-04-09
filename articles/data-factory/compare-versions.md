@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: overview
 ms.date: 04/09/2018
 ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100393717"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
@@ -70,7 +70,7 @@ Az ETL-minták egyik fő használati esete a "különbözeti terhelések", amely
 ### <a name="other-control-flow-activities"></a>Egyéb átvitelvezérlési tevékenységek
 Az alábbiakban néhány további, a Data Factory aktuális verziója által támogatott átvitelvezérlési tevékenység található. 
 
-Vezérlési tevékenység | Description
+Vezérlési tevékenység | Leírás
 ---------------- | -----------
 [ForEach tevékenység](control-flow-for-each-activity.md) | Ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység futtatására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
 [Webes tevékenység](control-flow-web-activity.md) | Meghív egy egyéni REST-végpontot egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára. 

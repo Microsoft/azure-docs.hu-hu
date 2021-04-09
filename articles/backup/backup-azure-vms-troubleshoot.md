@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105559366"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
@@ -331,7 +331,7 @@ Ha van olyan Azure Policy, amely [a környezetében található címkéket szab�
 
 Ha a visszaállítás után észleli, hogy a lemezek offline állapotban vannak:
 
-* Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e az operációs rendszer követelményeinek. [További információ](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).  
+* Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e az operációs rendszer követelményeinek. [További információk](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).  
 * Győződjön meg arról, hogy nem áll helyre visszaállítás ugyanarra a forrásra, [További információ](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound – a visszaállítás nem sikerült, mert a virtuális gép pillanatképe nem található

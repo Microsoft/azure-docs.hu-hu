@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 02/09/2021
 ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100417665"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Adatátalakítás a Delta Lake-ben a leképezési adatforgalom használatával
@@ -68,11 +68,11 @@ Ebben a lépésben olyan folyamatot hoz létre, amely egy adatfolyam-tevékenys�
 
     ![Képernyőfelvétel: az új adatfolyam létrehozásakor az adatfolyamatok nevének megjelenítése.](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Átalakítási logika létrehozása az adatfolyam-vásznon
+## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Átalakítási logika létrehozása az adatfolyam-vásznon
 
 Ebben az oktatóanyagban két adatfolyamatot fog előállítani. Az ököl-adatfolyam egy egyszerű forrás a fogadó számára, amely egy új Delta-tó létrehozásához szükséges a fenti filmek CSV-fájlból. Végül az alábbi folyamat kialakításával is létrehozhatja az adatváltozásokat a Delta Lake-ben.
 
-![Végső folyamat](media/data-flow/data-flow-tutorial-6.png "Végső folyamat")
+![Végső folyamat](media/data-flow/data-flow-tutorial-6.png &quot;Végső folyamat")
 
 ### <a name="tutorial-objectives"></a>Oktatóanyag céljai
 

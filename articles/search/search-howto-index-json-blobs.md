@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.openlocfilehash: 8156966e9a1c000701a5cc1c68a70c4ee048c738
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99259050"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-Blobok indexelése blob indexelő használatával az Azure-ban Cognitive Search
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan [konfigurálhat egy blob-indexelő](search
 
 A blob indexelő egy **`parsingMode`** paramétert biztosít a keresési dokumentum kimenetének optimalizálásához a szerkezet-elemzési üzemmódok alapján a következő lehetőségek közül:
 
-| parsingMode | JSON-dokumentum | Description |
+| parsingMode | JSON-dokumentum | Leírás |
 |--------------|-------------|--------------|
 | **`json`** | Egy blob | alapértelmezett A JSON-blobokat egyetlen darab szövegként elemzi. Minden JSON-blob egyetlen keresési dokumentum lesz. |
 | **`jsonArray`** | Több blobon | Egy JSON-tömböt elemez a blobban, ahol a tömb minden eleme külön keresési dokumentum lesz.  |
