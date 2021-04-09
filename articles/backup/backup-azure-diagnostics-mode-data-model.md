@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics a
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102500988"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
@@ -173,7 +173,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 
 Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információkat.
 
-| Mező | Adattípus | Alkalmazható verziók | Description |
+| Mező | Adattípus | Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
@@ -221,7 +221,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 
 Ez a táblázat a különböző entitásokkal rendelkező házirend-társítások részleteit tartalmazza.
 
-| Mező | Adattípus | Alkalmazható verziók | Description |
+| Mező | Adattípus | Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
@@ -350,7 +350,7 @@ Ez a tábla meghatározza, hogy egy kötet milyen munkaterheléshez van társít
 
 Ez a táblázat az alapszintű védett példányokkal kapcsolatos mezőket tartalmazza.
 
-| Mező | Adattípus |Alkalmazható verziók | Description |
+| Mező | Adattípus |Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a DPM, MABS használatával biztonsági mentést végző virtuális gépek biztonsági mentési elemének azonosítására szolgál.|
 | ProtectedContainerUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a védett tároló azonosítására szolgál a DPM, a MABS-t használó virtuális gépek kivételével.|

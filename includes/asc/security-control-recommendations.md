@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 14655abc403248e0ce22d22aeca342032b930fb4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 635ce116509204726762127210923a408b62ea78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467981"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958339"
 ---
 <table class="tg">
 <thead>
@@ -99,7 +99,7 @@ ms.locfileid: "103467981"
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">0</p></strong></td>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Komplex veszélyforrások elleni védelem engedélyezése</p></strong>Azure Security Center opcionális Azure Defender Threat Protection-csomagok átfogó védelmet biztosítanak a környezet számára. Ha Security Center fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.<br>Minden Azure Defender-csomag egy különálló, opcionális ajánlat, amelyet a jelen biztonsági ellenőrzéshez kapcsolódó javaslat alapján engedélyezhet.<br><a href="/azure/security-center/threat-protection">További információ a veszélyforrások elleni védelemről Security Center</a>.</td>
-    <td class="tg-lboi"; width=55%>- Az Azure Defender for App Service engedélyezése szükséges<br />- Az Azure Defender for Azure SQL Database-kiszolgálókat engedélyezni kell<br />- Engedélyezve kell lennie az Azure Defender for Container nyilvántartójának<br />- Az Azure Defender for Key Vault engedélyezése szükséges<br />- Engedélyezni kell az Azure Defender for Kubernetes<br />- Az Azure Defender for Servers szolgáltatást engedélyezni kell<br />- Engedélyezni kell az Azure Defender for SQL-kiszolgálókat a gépeken.<br />- Engedélyezni kell az Azure Defender for Storage szolgáltatást</td>
+    <td class="tg-lboi"; width=55%>- Az Azure arc-kompatibilis Kubernetes-fürtökön telepítve kell lennie az Azure Defender bővítményének<br />- Az Azure Defender for App Service engedélyezése szükséges<br />- Az Azure Defender for Azure SQL Database-kiszolgálókat engedélyezni kell<br />- Engedélyezve kell lennie az Azure Defender for Container nyilvántartójának<br />- Az Azure Defender for Key Vault engedélyezése szükséges<br />- Engedélyezni kell az Azure Defender for Kubernetes<br />- Az Azure Defender for Servers szolgáltatást engedélyezni kell<br />- Engedélyezni kell az Azure Defender for SQL-kiszolgálókat a gépeken.<br />- Engedélyezni kell az Azure Defender for Storage szolgáltatást</td>
   </tr>
 </tbody>
 </table>

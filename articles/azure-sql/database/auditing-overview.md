@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
 ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104577702"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
@@ -60,7 +60,7 @@ Egy naplózási szabályzat definiálható egy adott adatbázishoz, vagy az Azur
 
 - Ha a naplózási házirend az adatbázis szintjén van definiálva egy Log Analytics munkaterületre vagy egy Event hub-célhelyre, a következő műveletek nem őrzik meg a forrás-adatbázis szintű naplózási házirendet:
     - [Adatbázis-másolat](database-copy.md)
-    - [Időponthoz való visszaállítás](recovery-using-backups.md)
+    - [Adott időpontnak megfelelő helyreállítás](recovery-using-backups.md)
     - [Geo-replikáció](active-geo-replication-overview.md) (a másodlagos adatbázis nem rendelkezik adatbázis szintű naplózással)
 
 - Az adatbázis naplózásának engedélyezése a kiszolgálón való engedélyezésen kívül a nem bírálja felül vagy *nem* módosítja a kiszolgáló naplózásának beállításait. Mindkét naplózás egymás mellett fog létezni. Ez azt jelenti, hogy az adatbázist párhuzamosan, kétszer kell naplózni. egyszer a kiszolgálói házirend és egyszer az adatbázis-házirend alapján.

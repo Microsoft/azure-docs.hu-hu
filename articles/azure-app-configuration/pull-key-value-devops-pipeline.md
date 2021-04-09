@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c01984f6a359c0fd1f5d06d26d97d4a84973f57
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979572"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056787"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások lekérése az alkalmazás konfigurálásához az Azure-folyamatokkal
 
@@ -33,7 +33,10 @@ A [szolgáltatási kapcsolatok](/azure/devops/pipelines/library/service-endpoint
 1. A **folyamatok** területen válassza a **szolgáltatás kapcsolatai** lehetőséget.
 1. Ha nem rendelkezik meglévő szolgáltatási kapcsolatokkal, kattintson a képernyő közepén található **szolgáltatás-kapcsolat létrehozása** gombra. Egyéb esetben kattintson az oldal jobb felső sarkában található **új szolgáltatás-összekötő** elemre.
 1. Válassza a **Azure Resource Manager** lehetőséget.
-1. Válassza ki az **egyszerű szolgáltatásnév (automatikus)** lehetőséget.
+![Képernyőfelvétel: a Azure Resource Manager kiválasztása az új szolgáltatási kapcsolatok legördülő listából.](./media/new-service-connection.png)
+1. A **hitelesítési módszer** párbeszédpanelen válassza az **egyszerű szolgáltatásnév (automatikus)** lehetőséget.
+    > [!NOTE]
+    > A **felügyelt identitások** hitelesítése jelenleg nem támogatott az alkalmazás konfigurációs feladatához.
 1. Töltse ki az előfizetést és az erőforrást. Adjon nevet a szolgáltatásnak.
 
 Most, hogy létrejött a szolgáltatás-Kapcsolódás, keresse meg a hozzá rendelt egyszerű szolgáltatásnév nevét. A következő lépésben új szerepkör-hozzárendelést fog hozzáadni ehhez a szolgáltatáshoz.
@@ -49,9 +52,11 @@ Rendelje hozzá a megfelelő alkalmazás-konfigurációs szerepkört a feladaton
 
 1. Navigáljon a cél alkalmazás konfigurációs tárolójához. Az alkalmazás konfigurációs tárolójának beállításával kapcsolatban lásd: alkalmazás- [konfigurációs tároló létrehozása](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) az Azure app Configuration gyors üzembe helyezési útmutatójában.
 1. A bal oldalon válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
-1. A felső részen válassza a **+ Hozzáadás** és kivét **szerepkör-hozzárendelés hozzáadása** elemet.
+1. A jobb oldalon kattintson a szerepkör- **hozzárendelések hozzáadása** gombra.
+![Képernyőfelvétel: a szerepkör-hozzárendelések hozzáadása ](./media/add-role-assignment-button.png) gomb.
 1. A **szerepkör** területen válassza **az alkalmazás-konfigurációs Adatolvasó** lehetőséget. Ez a szerepkör lehetővé teszi a feladat számára az alkalmazás-konfigurációs tárolóból való olvasást. 
 1. Válassza ki az előző szakaszban létrehozott szolgáltatási kapcsolatban társított szolgáltatásnevet.
+![Képernyőfelvétel: a szerepkör-hozzárendelés hozzáadása párbeszédpanel.](./media/add-role-assignment-reader.png)
 
 > [!NOTE]
 > Az alkalmazás-konfiguráción belüli Azure Key Vault-hivatkozások megoldásához a szolgáltatás kapcsolódásának engedélyt kell adni a titkos kulcsok olvasásához a hivatkozott Azure Key Vaultban.
@@ -61,12 +66,17 @@ Rendelje hozzá a megfelelő alkalmazás-konfigurációs szerepkört a feladaton
 Ez a szakasz bemutatja, hogyan használható az Azure-alkalmazás konfigurációs feladata egy Azure DevOps Build-folyamaton.
 
 1. Navigáljon a folyamat létrehozása lapra a **folyamatok**  >  **folyamatai** elemre kattintva. A folyamat felépítésével kapcsolatos dokumentációért lásd:  [az első folyamat létrehozása](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
-      - Új létrehozási folyamat létrehozásakor kattintson az **új folyamat** elemre, válassza ki a folyamat tárházát. Válassza az **asszisztens megjelenítése** lehetőséget a folyamat jobb oldalán, és keresse meg az **Azure-alkalmazás konfigurációs** feladatát.
-      - Ha meglévő Build-folyamatot használ, válassza a **Szerkesztés** lehetőséget a folyamat szerkesztéséhez. A **feladatok** lapon keresse meg az Azure- **alkalmazás konfigurációs** feladatát.
+      - Ha új Build-folyamatot hoz létre, a folyamat utolsó lépése a **felülvizsgálat** lapon válassza a **Segéd megjelenítése** lehetőséget a folyamat jobb oldalán.
+      ![Képernyőfelvétel: az új folyamathoz tartozó Segéd megjelenítése gomb.](./media/new-pipeline-show-assistant.png)
+      - Ha meglévő Build-folyamatot használ, kattintson a jobb felső sarokban található **Szerkesztés** gombra.
+      ![A képernyőképen egy meglévő folyamat szerkesztés gombja látható.](./media/existing-pipeline-show-assistant.png)
+1. Keresse meg az **Azure-alkalmazás konfigurációs** feladatát.
+![Képernyőfelvétel: a feladat hozzáadása párbeszédpanel az Azure-alkalmazás konfigurációjában a keresőmezőbe.](./media/add-azure-app-configuration-task.png)
 1. Konfigurálja a szükséges paramétereket ahhoz, hogy a feladat lekérje a kulcs-értékeket az alkalmazás konfigurációs tárolójából. A paraméterek leírása az alábbi **Paraméterek** szakaszban és az egyes paraméterek melletti elemleírásokban érhető el.
       - Állítsa be az **Azure-előfizetési** paramétert az előző lépésben létrehozott szolgáltatási kapcsolatok nevére.
       - Állítsa be az **alkalmazás konfigurációjának nevét** az alkalmazás konfigurációs tárolójának az erőforrás nevére.
       - Hagyja meg az alapértelmezett értékeket a többi paraméternél.
+![A képernyőképen az alkalmazás konfigurációs feladatának paraméterei láthatók.](./media/azure-app-configuration-parameters.png)
 1. Hozzon létre egy buildet, és a várólistára. A létrehozási napló megjeleníti a feladat végrehajtása során bekövetkezett hibákat.
 
 ## <a name="use-in-releases"></a>Használat a kiadásokban
@@ -76,8 +86,12 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alkalmazás konfiguráció
 1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  . A kiadási folyamat dokumentációjában tekintse meg a [folyamatok kiadásával](/azure/devops/pipelines/release)foglalkozó témakört.
 1. Válasszon ki egy meglévő kiadási folyamatot. Ha még nem rendelkezik ilyennel, kattintson az **új folyamat** elemre, és hozzon létre egy újat.
 1. A kiadási folyamat szerkesztéséhez kattintson a jobb felső sarokban található **Szerkesztés** gombra.
-1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információ a szakaszokról: [szakaszok, függőségek, & feltételek hozzáadása](/azure/devops/pipelines/release/environments).
-1. Kattintson a **+** "Futtatás ügynökön" lehetőségre, majd adja hozzá az **Azure-alkalmazás konfigurációs** feladatát a **feladatok hozzáadása** lapon.
+1. A **feladatok** legördülő listából válassza ki azt a **szakaszt** , amelyhez hozzá szeretné adni a feladatot. További információt a szakaszokról [itt](/azure/devops/pipelines/release/environments)találhat.
+![Képernyőfelvétel: a feladatok legördülő menüjében a kijelölt szakasz látható.](./media/pipeline-stage-tasks.png)
+1. Kattintson **+** a Tovább gombra ahhoz a feladathoz, amelyhez új feladatot szeretne felvenni.
+![Képernyőfelvétel: a feladatok melletti plusz gomb.](./media/add-task-to-job.png)
+1. Keresse meg az **Azure-alkalmazás konfigurációs** feladatát.
+![Képernyőfelvétel: a feladat hozzáadása párbeszédpanel az Azure-alkalmazás konfigurációjában a keresőmezőbe.](./media/add-azure-app-configuration-task.png)
 1. Konfigurálja a szükséges paramétereket a feladaton belül, hogy lekérje a kulcs-értékeket az alkalmazás konfigurációs tárolójából. A paraméterek leírása az alábbi **Paraméterek** szakaszban és az egyes paraméterek melletti elemleírásokban érhető el.
       - Állítsa be az **Azure-előfizetési** paramétert az előző lépésben létrehozott szolgáltatási kapcsolatok nevére.
       - Állítsa be az **alkalmazás konfigurációjának nevét** az alkalmazás konfigurációs tárolójának az erőforrás nevére.

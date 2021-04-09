@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101690970"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure PowerShell minták a Azure SQL Database és az Azure SQL felügyelt példányaihoz
@@ -32,7 +32,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 A következő táblázat az Azure SQL Database-hez elérhető Azure PowerShell-példaszkriptekre mutató hivatkozásokat tartalmaz.
 
-|Hivatkozás|Description|
+|Hivatkozás|Leírás|
 |---|---|
 |**Önálló adatbázisok és rugalmas készletek létrehozása és konfigurálása**||
 | [Egyetlen adatbázis létrehozása és a kiszolgálói szintű tűzfalszabály konfigurálása](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-parancsfájl egyetlen adatbázist hoz létre, és egy kiszolgálói szintű IP-tűzfalszabály konfigurálását végzi. |
@@ -64,7 +64,7 @@ További információ az [egyadatbázisos Azure POWERSHELL API-](single-database
 
 A következő táblázat az Azure SQL felügyelt példányának Azure PowerShell parancsfájljaira mutató hivatkozásokat tartalmaz.
 
-|Hivatkozás|Description|
+|Hivatkozás|Leírás|
 |---|---|
 |**Felügyelt példányok létrehozása és konfigurálása**||
 | [Felügyelt példány létrehozása és kezelése](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Ez a PowerShell-szkript bemutatja, hogyan hozhat létre és kezelhet felügyelt példányokat Azure PowerShell használatával. |

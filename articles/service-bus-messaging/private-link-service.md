@@ -3,32 +3,30 @@ title: Azure Service Bus integrálása az Azure Private link Service szolgáltat
 description: Ismerje meg, hogyan integrálható Azure Service Bus az Azure Private link Service használatával
 author: spelluru
 ms.author: spelluru
-ms.date: 10/07/2020
+ms.date: 03/29/2021
 ms.topic: article
-ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 833d7e9fb4d517b71aab5039ae9081407eed84cd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94427147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960537"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Azure Service Bus névtér elérésének engedélyezése privát végpontokon keresztül
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Service Bus, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
-
-> [!IMPORTANT]
-> Ez a funkció a Azure Service Bus **Premium** szintjével támogatott. A prémium szintű csomaggal kapcsolatos további információkért tekintse meg a [prémium és standard szintű üzenetkezelési szintek Service Busét](service-bus-premium-messaging.md) ismertető cikket.
 
 A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
 További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
->[!WARNING]
-> A privát végpontok megvalósítása megakadályozhatja, hogy más Azure-szolgáltatások is interakciót Service Bus. Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Service Bus erőforrásaihoz, még akkor is, ha a magánhálózati végpontok engedélyezve vannak. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services).
->
-> A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
-> - Azure App Service
-> - Azure Functions
+## <a name="important-points"></a>Fontos pontok
+- Ez a funkció a Azure Service Bus **Premium** szintjével támogatott. A prémium szintű csomaggal kapcsolatos további információkért tekintse meg a [prémium és standard szintű üzenetkezelési szintek Service Busét](service-bus-premium-messaging.md) ismertető cikket.
+- A privát végpontok megvalósítása megakadályozhatja, hogy más Azure-szolgáltatások is interakciót Service Bus. Kivételként engedélyezheti a hozzáférést bizonyos **megbízható szolgáltatásoktól** Service Bus erőforrásaihoz, még akkor is, ha a magánhálózati végpontok engedélyezve vannak. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services).
 
+    A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
+    - Azure App Service
+    - Azure Functions
+- **Legalább egy IP-szabályt vagy virtuális hálózati szabályt** meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal). 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása a Azure Portal használatával
@@ -51,15 +49,16 @@ Ha már rendelkezik egy meglévő névtérrel, a következő lépések végrehaj
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. A keresősáv mezőbe írja be a következőt: **Service Bus**.
 3. Válassza ki a listából azt a **névteret** , amelyhez privát végpontot szeretne hozzáadni.
-2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget a **Beállítások** területen. 
-
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget a **Beállítások** területen.     Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva.
+ 
     > [!NOTE]
     > A **hálózatkezelés** lap csak a **prémium** szintű névterek esetében jelenik meg.  
-    
-    Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva. Ha nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
-
+   
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Hálózatkezelés lap – alapértelmezett" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
-    
+
+    > [!WARNING]
+    > Ha nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
+   
     Ha a **minden hálózat** lehetőséget választja, a Service Bus névtér minden IP-címről (a hozzáférési kulccsal) fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
 
     ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)

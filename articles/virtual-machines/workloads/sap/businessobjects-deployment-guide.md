@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
 ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102505902"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>SAP BusinessObjects BI platformtervezési és -megvalósítási útmutató az Azure-on
@@ -154,7 +154,7 @@ Az Azure két DBaaS kínál az SAP BOBI platform adatrétegéhez – [Azure SQL 
 
 Azure SQL Database a következő három beszerzési modellt kínálja:
 
-- Virtuális mag-alapú
+- Virtuálismag-alapú
 
   Lehetővé teszi, hogy kiválassza a virtuális mag számát, a memória mennyiségét, valamint a tárterület mennyiségét és sebességét. A virtuális mag-alapú vásárlási modell azt is lehetővé teszi, hogy a megtakarítások megszerzéséhez a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is használja. Ez a modell megfelel a rugalmasságot, a vezérlést és az átláthatóságot biztosító ügyfelek számára.
 

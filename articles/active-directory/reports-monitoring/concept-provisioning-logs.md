@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102500546"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>A naplók kiépítési naplóinak áttekintése a Azure Portalban (előzetes verzió)
@@ -243,7 +243,7 @@ Az alábbi tippek és szempontok a kiépítési jelentésekhez:
 
 A következő táblázat segítségével jobban megismerheti, Hogyan oldhatók meg a kiépítési naplókban talált hibák. A hiányzó hibakódok esetén az oldal alján található hivatkozás használatával küldjön visszajelzést. 
 
-|Hibakód|Description|
+|Hibakód|Leírás|
 |---|---|
 |Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban. Vagy tekintse át az egyező attribútumok konfigurációját, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. A megfeleltetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át a [dokumentációt](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést kapott. Semmit nem kell tennie. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|

@@ -10,10 +10,10 @@ ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 46de182c7acfaf75b2e65fa318717348dd1c4b73
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101667344"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
@@ -164,7 +164,7 @@ A méretek és a hardver típusok régiónként eltérőek. További informáci�
 
 Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok lesznek visszaadva a gazdagép lekérdezésekor:
 
-| Állapot   | Description       |
+| Állapot   | Leírás       |
 |----------|----------------|
 | Gazdagép elérhető     | A gazdagépen nincsenek ismert problémák.   |
 | A vizsgálat alatt álló gazdagép  | Problémák léptek fel a gazdagépen, amit keresünk. Ez egy átmeneti állapot szükséges ahhoz, hogy az Azure kipróbálja és azonosítani tudja az azonosított probléma hatókörét és alapvető okát. A gazdagépen futó virtuális gépek befolyásolhatják a működését. |

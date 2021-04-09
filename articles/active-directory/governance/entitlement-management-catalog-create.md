@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ad10cfc661b80eaac146087d85dc87002f6a455
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592931"
+ms.locfileid: "105960146"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -81,7 +81,7 @@ Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőfo
 
     Ezek az erőforrások mostantól a katalógusban lévő hozzáférési csomagokba is belefoglalhatók.
 
-### <a name="add-a-multi-geo-sharepoint-site"></a>Multi-geo SharePoint-webhely hozzáadása
+### <a name="add-a-multi-geo-sharepoint-site-preview"></a>Multi-geo SharePoint-webhely hozzáadása (előzetes verzió)
 
 1. Ha a SharePointhoz [több földrajzi](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) hely van engedélyezve, válassza ki azt a környezetet, amelyben a helyeket ki szeretné választani.
     

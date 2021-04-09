@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d8a06471129f8d79e1ced150f7410392b91d498b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202165"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728028"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault-tanúsítványok importálása – gyakori kérdések
 
@@ -28,7 +28,7 @@ Ez a cikk a Azure Key Vault tanúsítványok importálásával kapcsolatos gyako
 A tanúsítvány-importálási művelethez Azure Key Vault két tanúsítványfájl-formátumot fogad el: PEM és PFX. Bár a PEM-fájlok csak a nyilvános részből állnak, Key Vault igényel, és csak egy PEM-vagy PFX-fájlt fogad el titkos kulccsal. További információ: [tanúsítvány importálása Key Vaultba](./tutorial-import-certificate.md#import-a-certificate-to-key-vault).
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Miután importáltam egy jelszóval védett tanúsítványt Key Vault, majd letölti, miért nem látom a hozzá társított jelszót?
-    
+     
 A tanúsítvány importálását és védelmét követően Key Vault a hozzá tartozó jelszót nem menti a rendszer. A jelszót csak egyszer kell megadni az importálási művelet során. Ez a kialakítás alapján történik, de mindig titkos kulcsot kaphat a tanúsítványhoz, és a Base64-ről PFX-re alakíthatja a jelszót [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)használatával.
 
 ### <a name="how-can-i-resolve-a-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-to-key-vault"></a>Hogyan oldható fel a "Hibás paraméter" hiba? Melyek a Key Vaultba való importálás támogatott tanúsítványainak formátuma?
@@ -42,8 +42,8 @@ További információ: a [tanúsítványokra vonatkozó követelmények](./certi
 Nem, Azure Resource Manager-(ARM-) sablon használatával nem lehet végrehajtani a tanúsítvány-műveleteket. Ajánlott megkerülő megoldásként használja az Azure API, az Azure CLI vagy a PowerShell tanúsítvány-importálási módszereit. Ha rendelkezik meglévő tanúsítvánnyal, akkor azt titkos fájlként importálhatja.
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Ha a Azure Portal keresztül importálok egy tanúsítványt, "hiba történt" hibaüzenetet kapok. Hogyan lehet további vizsgálatot végezni?
-    
-Ha részletesebben szeretne megtekinteni egy leíró hibát, importálja a tanúsítványt [Az Azure CLI vagy a](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)használatával.
+     
+Ha részletesebben szeretne megtekinteni egy leíró hibát, importálja a tanúsítványt [Az Azure CLI vagy a](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate)használatával.
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hogyan oldható fel a "hiba típusa: hozzáférés megtagadva, vagy a felhasználó nem jogosult a tanúsítvány importálására"?
     

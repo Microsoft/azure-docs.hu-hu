@@ -3,12 +3,12 @@ title: Azure Service Bus geo-vész-helyreállítás | Microsoft Docs
 description: Földrajzi régiók használata a feladatátvételhez és a vész-helyreállításhoz Azure Service Bus
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2aa7ed118d0ba179ffff4f72a4d4df787edc9d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035394"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933755"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-vész-helyreállítás
 
@@ -156,7 +156,7 @@ Vegye figyelembe a következő szempontokat, hogy ne feledje a jelen kiadást:
 
 4. Az entitások szinkronizálása hosszabb időt is igénybe vehet, körülbelül 50-100 entitást percenként. Az előfizetések és a szabályok entitásként is számítanak.
 
-### <a name="availability-zones"></a>Rendelkezésre állási zónák
+## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
 A Service Bus Premium SKU támogatja a [Availability Zones](../availability-zones/az-overview.md), amely az ugyanazon az Azure-régióban található, hibátlanul elszigetelt helyszíneket biztosít. A Service Bus az üzenetküldési tároló három példányát kezeli (1 elsődleges és 2 másodlagos). A Service Bus az adatok és a felügyeleti műveletek szinkronizálásában mindhárom másolatot megtartja. Ha az elsődleges másolat meghiúsul, az egyik másodlagos másolat az elsődleges értékre kerül, az észlelt állásidő nélkül. Ha az alkalmazások átmeneti leválasztást látnak Service Bus, az SDK-ban lévő újrapróbálkozási logika automatikusan újra csatlakozik Service Bushoz. 
 

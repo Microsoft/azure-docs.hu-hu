@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 7fc1822c219c6c881e3d788f6b0e56675cecc466
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102444909"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958380"
 ---
 Ismerkedés az Arcfelismerés a Pythonhoz készült Face ügyféloldali kódtár használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -22,7 +22,7 @@ A Pythonhoz készült Face ügyféloldali kódtár a következőre használható
 
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
+* [PersonGroup létrehozása és betanítása](#create-and-train-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 * [Arcok ellenőrzése](#verify-faces)
 
@@ -86,7 +86,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
+* [PersonGroup létrehozása és betanítása](#create-and-train-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 * [Arcok ellenőrzése](#verify-faces)
 
@@ -133,7 +133,7 @@ A következő kód használatával nyomtassa ki a megfeleltetés részleteit a-k
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Személy csoport létrehozása és betanítása
+## <a name="create-and-train-a-persongroup"></a>PersonGroup létrehozása és betanítása
 
 A következő kód egy **PersonGroup** hoz létre három különböző **személy** objektummal. Az egyes **személyeket** például a lemezképek halmazával társítja, majd az összes személyt felismerheti. 
 
@@ -174,7 +174,7 @@ Az arcok hozzárendelése után be kell tanítania a **PersonGroup** , hogy azon
 Az azonosítási művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy **PersonGroup**, egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek.
 
 > [!IMPORTANT]
-> A példa futtatásához először futtatnia kell a kódot [egy személy csoport létrehozása és betanítása csoportban](#create-and-train-a-person-group).
+> A példa futtatásához először futtatnia kell a kódot a [create (létrehozás) és a Train a PersonGroup](#create-and-train-a-persongroup).
 
 ### <a name="get-a-test-image"></a>Tesztelési rendszerkép beolvasása
 

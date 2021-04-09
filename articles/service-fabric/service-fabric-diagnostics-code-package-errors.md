@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 400651b240f0518a85b9deb7a7293a77a88b0861
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591715"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>A kódok gyakori hibáinak diagnosztizálása Service Fabric használatával
@@ -41,7 +41,7 @@ Előfordulhat, hogy a Service Fabric a különböző okok miatt a kód leállít
 >[!NOTE]
 > Ha a folyamat vagy a tároló a következő táblázatban szereplő kódoktól eltérő kilépési kóddal leáll, Service Fabric nem felelős a megszakításért.
 
-Kilépési kód | Description
+Kilépési kód | Leírás
 --------- | -----------
 7147 | Azt jelzi, hogy Service Fabric szabályosan leállítja a folyamatot vagy a tárolót úgy, hogy a CTRL + C jelet küldi el.
 7148 | Azt jelzi, hogy Service Fabric megszakította a folyamatot vagy a tárolót. Előfordulhat, hogy ez a hibakód azt jelzi, hogy a folyamat vagy a tároló nem válaszolt kellő időben a CTRL + C jel elküldése után, és meg kellett szakítani.

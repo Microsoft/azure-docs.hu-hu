@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: jingwang
 ms.openlocfilehash: 6d9bb17e0e68c563c6d8cc18669d8c298d4f267b
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951827"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása REST-végpontra a és a rendszerből a Azure Data Factory használatával
@@ -54,12 +54,12 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **RestService** értékre kell beállítani. | Igen |
-| url | A REST-szolgáltatás alap URL-címe. | Igen |
-| enableServerCertificateValidation | Azt határozza meg, hogy a rendszer ellenőrizze-e a kiszolgálóoldali TLS/SSL-tanúsítványt a végponthoz való csatlakozáskor. | Nem<br /> (az alapértelmezett érték **igaz**) |
-| authenticationType | A REST-szolgáltatáshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **AadServicePrincipal** és **ManagedServiceIdentity**. A felhasználó-alapú OAuth nem támogatott. Emellett a tulajdonságban konfigurálhatja a hitelesítési fejléceket is `authHeader` . Tekintse meg az alábbi, a további tulajdonságok és példák című szakaszt.| Igen |
-| authHeaders | További HTTP-kérelmek fejlécei a hitelesítéshez.<br/> Az API-kulcsos hitelesítés használatához például válassza a "névtelen" lehetőséget, és adja meg az API-kulcsot a fejlécben. | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A **Type** tulajdonságot **RestService** értékre kell beállítani. | Yes |
+| url | A REST-szolgáltatás alap URL-címe. | Yes |
+| enableServerCertificateValidation | Azt határozza meg, hogy a rendszer ellenőrizze-e a kiszolgálóoldali TLS/SSL-tanúsítványt a végponthoz való csatlakozáskor. | No<br /> (az alapértelmezett érték **igaz**) |
+| authenticationType | A REST-szolgáltatáshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **AadServicePrincipal** és **ManagedServiceIdentity**. A felhasználó-alapú OAuth nem támogatott. Emellett a tulajdonságban konfigurálhatja a hitelesítési fejléceket is `authHeader` . Tekintse meg az alábbi, a további tulajdonságok és példák című szakaszt.| Yes |
+| authHeaders | További HTTP-kérelmek fejlécei a hitelesítéshez.<br/> Az API-kulcsos hitelesítés használatához például válassza a "névtelen" lehetőséget, és adja meg az API-kulcsot a fejlécben. | No |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime használja. |No |
 
 ### <a name="use-basic-authentication"></a>Egyszerű hitelesítés használata
 
@@ -67,8 +67,8 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| userName (Felhasználónév) | A REST-végpont eléréséhez használandó Felhasználónév. | Igen |
-| jelszó | A felhasználó jelszava (a **Felhasználónév** értéke). A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Igen |
+| userName (Felhasználónév) | A REST-végpont eléréséhez használandó Felhasználónév. | Yes |
+| jelszó | A felhasználó jelszava (a **Felhasználónév** értéke). A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Yes |
 
 **Példa**
 
@@ -100,11 +100,11 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| servicePrincipalId | Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓjának megadásához. | Igen |
-| servicePrincipalKey | A Azure Active Directory alkalmazás kulcsának megadásához. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. A Azure Portal jobb felső sarkában lévő egér fölé helyezve lekéri. | Igen |
-| aadResourceId | Itt adhatja meg, hogy milyen HRE-erőforrást kér az engedélyezéshez, például: `https://management.core.windows.net` .| Igen |
-| azureCloudType | Az egyszerű szolgáltatás hitelesítéséhez adja meg a HRE-alkalmazás regisztrálásához használt Azure-beli felhőalapú környezet típusát. <br/> Az engedélyezett értékek a következők: **AzurePublic**, **AzureChina**, **AzureUsGovernment** és **AzureGermany**. Alapértelmezés szerint a rendszer az adatfeldolgozó felhőalapú környezetét használja. | Nem |
+| servicePrincipalId | Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓjának megadásához. | Yes |
+| servicePrincipalKey | A Azure Active Directory alkalmazás kulcsának megadásához. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. A Azure Portal jobb felső sarkában lévő egér fölé helyezve lekéri. | Yes |
+| aadResourceId | Itt adhatja meg, hogy milyen HRE-erőforrást kér az engedélyezéshez, például: `https://management.core.windows.net` .| Yes |
+| azureCloudType | Az egyszerű szolgáltatás hitelesítéséhez adja meg a HRE-alkalmazás regisztrálásához használt Azure-beli felhőalapú környezet típusát. <br/> Az engedélyezett értékek a következők: **AzurePublic**, **AzureChina**, **AzureUsGovernment** és **AzureGermany**. Alapértelmezés szerint a rendszer az adatfeldolgozó felhőalapú környezetét használja. | No |
 
 **Példa**
 
@@ -138,7 +138,7 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| aadResourceId | Itt adhatja meg, hogy milyen HRE-erőforrást kér az engedélyezéshez, például: `https://management.core.windows.net` .| Igen |
+| aadResourceId | Itt adhatja meg, hogy milyen HRE-erőforrást kér az engedélyezéshez, például: `https://management.core.windows.net` .| Yes |
 
 **Példa**
 
@@ -199,8 +199,8 @@ Az adatok REST-ből való másolásához a következő tulajdonságok támogatot
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **RestResource** értékre kell állítani. | Igen |
-| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. A HTTP-összekötő a következő összevont URL-címről másolja az adatait: `[URL specified in linked service]/[relative URL specified in dataset]` . | Nem |
+| típus | Az adatkészlet **Type** tulajdonságát **RestResource** értékre kell állítani. | Yes |
+| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. A HTTP-összekötő a következő összevont URL-címről másolja az adatait: `[URL specified in linked service]/[relative URL specified in dataset]` . | No |
 
 Ha a, a `requestMethod` `additionalHeaders` `requestBody` és az adatkészletben is a beállítást használja, a rendszer `paginationRules` továbbra is támogatja a-t, míg az új modellt a tevékenység előrehaladásával fogja használni.
 
@@ -235,13 +235,13 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **RestSource** értékre kell állítani. | Igen |
-| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
-| additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
-| requestBody | A HTTP-kérelem törzse. | Nem |
-| paginationRules | A következő lapra irányuló kérelmek összeállításához szükséges tördelési szabályok. A részletekért tekintse meg a [tördelés támogatását](#pagination-support) ismertető szakaszt. | Nem |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**.  | Nem |
-| requestInterval | Az a várakozási idő, ameddig a következő lapra küldött kérelem elküldése előtt elküldve. Az alapértelmezett érték **00:00:01** |  Nem |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **RestSource** értékre kell állítani. | Yes |
+| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | No |
+| additionalHeaders | További HTTP-kérelmek fejlécei. | No |
+| requestBody | A HTTP-kérelem törzse. | No |
+| paginationRules | A következő lapra irányuló kérelmek összeállításához szükséges tördelési szabályok. A részletekért tekintse meg a [tördelés támogatását](#pagination-support) ismertető szakaszt. | No |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**.  | No |
+| requestInterval | Az a várakozási idő, ameddig a következő lapra küldött kérelem elküldése előtt elküldve. Az alapértelmezett érték **00:00:01** |  No |
 
 >[!NOTE]
 >A REST-összekötő figyelmen kívül hagyja a ben megadott "elfogadás" fejlécet `additionalHeaders` . Mivel a REST-összekötő csak a JSON-beli választ támogatja, automatikusan létrehozza a fejlécét `Accept: application/json` .
@@ -324,13 +324,13 @@ A másolási tevékenység fogadója szakasz a következő  tulajdonságokat tá
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának **Type** tulajdonságát **RestSink** értékre kell állítani. | Igen |
-| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **post** (alapértelmezett), **put** és **patch**. | Nem |
-| additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem az adatírás időkorlátja. Az alapértelmezett érték a **00:01:40**.  | Nem |
-| requestInterval | A különböző kérelmek közötti időközi idő ezredmásodpercben. A kérelem intervallumának értékének egy [10, 60000] közötti számnak kell lennie. |  Nem |
-| httpCompressionType | A HTTP-tömörítési típus, amelyet az adatok optimális tömörítési szinttel történő küldésekor kell használni. Az engedélyezett értékek a **none** és a **gzip**. | Nem |
-| writeBatchSize | A REST-gyűjtőbe írandó rekordok száma kötegben. Az alapértelmezett érték a 10000. | Nem |
+| típus | A másolási tevékenység fogadójának **Type** tulajdonságát **RestSink** értékre kell állítani. | Yes |
+| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **post** (alapértelmezett), **put** és **patch**. | No |
+| additionalHeaders | További HTTP-kérelmek fejlécei. | No |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem az adatírás időkorlátja. Az alapértelmezett érték a **00:01:40**.  | No |
+| requestInterval | A különböző kérelmek közötti időközi idő ezredmásodpercben. A kérelem intervallumának értékének egy [10, 60000] közötti számnak kell lennie. |  No |
+| httpCompressionType | A HTTP-tömörítési típus, amelyet az adatok optimális tömörítési szinttel történő küldésekor kell használni. Az engedélyezett értékek a **none** és a **gzip**. | No |
+| writeBatchSize | A REST-gyűjtőbe írandó rekordok száma kötegben. Az alapértelmezett érték a 10000. | No |
 
 A REST-összekötő mint fogadó együttműködik a JSON-t elfogadó REST API-kkal. Az adatküldés a JSON-ban a következő mintával történik. Szükség esetén a másolási tevékenység [sémájának leképezésével](copy-activity-schema-and-type-mapping.md#schema-mapping) átalakíthatja a forrásadatokat úgy, hogy azok megfeleljenek a REST API által várt adattartalomnak.
 
