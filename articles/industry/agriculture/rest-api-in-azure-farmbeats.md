@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674507"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats API-k
@@ -29,7 +29,7 @@ A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. Az API-kkal �
 
 A következő táblázat összefoglalja a FarmBeats-Datahub található összes objektumot és erőforrást:
 
-| Objektumok és erőforrások | Description
+| Objektumok és erőforrások | Leírás
 --- | ---|
 Farm | A farm a FarmBeats rendszeren belüli fizikai helynek felel meg. Minden Farm rendelkezik egy farm nevével és egy egyedi Farm-AZONOSÍTÓval. |
 Eszköz  | Az eszköz megfelel a farmon található fizikai eszköznek. Minden eszköz egyedi AZONOSÍTÓval rendelkezik. Az eszközök általában Farm-AZONOSÍTÓval rendelkező farmhoz vannak kiépítve.
@@ -107,7 +107,7 @@ Ha például lekérdezi az eszközök listáját (/Device hívása), a következ
 
 Az Azure FarmBeats Datahub API-jai a szabványos HTTP-hibákat adják vissza. A leggyakoribb hibakódok a következők:
 
- |Hibakód             | Description |
+ |Hibakód             | Leírás |
  |---                    | --- |
  |200                    | Siker |
  |201                    | Sikeres létrehozás (post) |

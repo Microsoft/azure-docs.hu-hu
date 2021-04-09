@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92780954"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikálás Azure SQL Databasere
@@ -52,7 +52,7 @@ A Azure SQL Database összes funkciójának használatához a [SQL Server Manage
 
 A replikáció különböző [típusú](/sql/relational-databases/replication/types-of-replication):
 
-| Replikálás | Azure SQL Database | Felügyelt Azure SQL-példány |
+| Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
 | [**Normál tranzakciós**](/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes | 
 | [**Pillanatkép**](/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|

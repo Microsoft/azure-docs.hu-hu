@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100375204"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
@@ -135,7 +135,7 @@ Két tűzfalat kell figyelembe vennie: a **vállalati tűzfal** a szervezet köz
 
 A vállalati tűzfal szintjén a következő tartományokat és kimenő portokat kell konfigurálnia:
 
-| Tartománynevek | Portok | Description |
+| Tartománynevek | Portok | Leírás |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
 | *.core.windows.net |443 |Szakaszos másoláshoz használatos az Azure Blob használatával (ha be van állítva)|

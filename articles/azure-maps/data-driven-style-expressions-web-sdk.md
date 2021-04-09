@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97680052"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
@@ -41,7 +41,7 @@ A kifejezések JSON-tömbökként jelennek meg. A tömb egyik kifejezésének el
 
 A Azure Maps web SDK számos típusú kifejezést támogat. A kifejezések saját vagy más kifejezésekkel kombinálva is használhatók.
 
-| Kifejezések típusa | Description |
+| Kifejezések típusa | Leírás |
 |---------------------|-------------|
 | [Összesítő kifejezés](#aggregate-expression) | Egy olyan kifejezés, amely egy adathalmazon feldolgozott számítást határoz meg, és a használatával használható `clusterProperties` `DataSource` . |
 | [Logikai kifejezések](#boolean-expressions) | A logikai kifejezések logikai operátorok egy készletét biztosítják a logikai összehasonlítások kiértékeléséhez. |
@@ -86,7 +86,7 @@ A jelen dokumentumban szereplő összes példa a következő funkcióval mutatja
 
 Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található tulajdonság-értékekhez. 
 
-| Expression | Visszatérési típus | Description |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['at', number, array]` | érték | Egy elem lekérése egy tömbből. |
 | `['geometry-type']` | sztring | A szolgáltatás geometriai típusának beolvasása: pont, multipoint, LineString, MultiLineString, sokszög és többsokszög. |
@@ -179,7 +179,7 @@ Hasonlóképpen a sokszögek körvonalai is megjelennek a sorokban. Ha le szeret
 
 A matematikai kifejezések matematikai operátorokat biztosítanak az adatvezérelt számítások végrehajtásához a kifejezés keretrendszerében.
 
-| Expression | Visszatérési típus | Description |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | szám | Kiszámítja a megadott számok összegét. |
 | `['-', number]` | szám | A megadott szám szerinti 0 kivonása. |
@@ -244,7 +244,7 @@ A logikai kifejezések logikai operátorok egy készletét biztosítják a logik
 
 Az értékek összehasonlításakor az összehasonlítás szigorúan be van írva. A különböző típusú értékek mindig egyenlőtlennek számítanak. Azok az esetek, amelyekben a típusok ismertek, hogy az elemzési idő eltérő, és elemzési hibát eredményez. 
 
-| Expression | Visszatérési típus | Description |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['!', boolean]` | boolean | Logikai tagadás. Visszaadja `true` , ha a bemenet `false` , és `false` Ha a bemenet szerepel `true` . |
 | `['!=', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek nem egyenlőek, `false` ellenkező esetben. |
@@ -426,7 +426,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak.
 
-| Expression | Visszatérési típus | Description |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['array', value]` \| `['array', type: "string" | "number" | "boolean", value]` | Objektum [] | Azt állítja be, hogy a bemenet egy tömb. |
 | `['boolean', value]` \| `["boolean", value, fallback: value, fallback: value, ...]` | boolean | Azt állítja be, hogy a bemeneti érték logikai. Ha több érték is meg van határozva, mindegyiket a rendszer a logikai érték beszerzése érdekében kiértékeli. Ha a bemenetek egyike sem logikai érték, a kifejezés hibát jelez. |
@@ -468,7 +468,7 @@ A Type kifejezések a különböző adattípusok (például karakterláncok, sz�
 
 A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését.
 
-| Expression | Visszatérési típus | Description |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld* és *kék* összetevőkből a és a között `0` `255` , és egy alfa-összetevőt `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
 | `['rgba', number, number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld* és *kék* összetevők között, amelyeknek a és a közötti tartományba kell `0` `255` esnie, valamint egy alfa-összetevőt a és a tartományban `0` `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
@@ -885,7 +885,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Változó kötési kifejezések a számítások eredményeit tárolják egy változóban. Így a számítási eredmények több alkalommal is hivatkozhatnak egy kifejezésben máshol. Hasznos optimalizálás olyan kifejezések esetében, amelyek sok számítást tartalmaznak.
 
-| Expression | Visszatérési típus | Description |
+| Expression | Visszatérési típus | Leírás |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Let",<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték1: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték2: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Egy vagy több értéket tárol változóként az `var` eredményt visszaadó gyermek kifejezésben szereplő kifejezés használatával. |
 | `['var', name: string]` | bármelyik | A kifejezés használatával létrehozott változóra hivatkozik `let` . |

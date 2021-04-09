@@ -29,7 +29,7 @@ Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure
 
 A cikkben található képek jelmagyarázata:
 
-| Description | Szimbólum |
+| Leírás | Szimbólum |
 | --- | --- |
 | Helyszíni Active Directory erdő |![Helyszíni Active Directory erdő](./media/plan-connect-topologies/legendad1.png) |
 | Helyszíni Active Directory szűrt importálással |![Active Directory szűrt importálással](./media/plan-connect-topologies/legendad2.png) |

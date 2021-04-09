@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92780835"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Olyan több-bérlős SaaS-alkalmazás üzembe helyezése és feltárása, amely az adatbázis-bérlői mintát használja Azure SQL Database
@@ -128,7 +128,7 @@ A Wingtip alkalmazás az [*Azure Traffic Manager*](../../traffic-manager/traffic
 
     Az előző formátum részeit a következő táblázat ismerteti.
 
-    | URL-cím része        | Description       |
+    | URL-cím része        | Leírás       |
     | :-------------- | :---------------- |
     | events. Wingtip – DPT | A Wingtip alkalmazás eseményeinek részei.<br /><br /> *– a DPT* megkülönbözteti a Wingtip-jegyek *adatbázis-bérlői* implementációját más megvalósításokból. Ilyenek például az *egyetlen* alkalmazás-bérlő (*-sa*) vagy több- *bérlős adatbázis* (*-MT*) implementációk. |
     | . *&lt; felhasználó &gt;* | a példában szereplő *AF1* . |
