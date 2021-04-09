@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700473"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934172"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -599,7 +599,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | központi telepítések | erőforráscsoport | 1-64 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek és időszakok. |
-> | resourcegroups | előfizetést | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek, időszakok és Unicode-karakterek, amelyek megfelelnek a [regex dokumentációjának](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nem végződhet ponttal. |
+> | resourcegroups | előfizetést | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek, időszakok és Unicode-karakterek, amelyek megfelelnek a [regex dokumentációjának](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Nem végződhet ponttal. |
 > | tagNames | erőforrás | 1-512 | Nem használható:<br>`<>%&\?/` |
 > | tagNames / tagValues | címke neve | 1-256 | Minden karakter. |
 > | templateSpecs | erőforráscsoport | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek és időszakok. |

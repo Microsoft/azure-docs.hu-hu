@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 03/29/2021
 ms.author: chrande
 ms.custom: devx-track-python
-ms.openlocfilehash: 342b9c9aae0a523ac770ba78f298c4ba91c434e7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: cef397789d5ebcfa95c01e42dac9a80b9e1564e0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798748"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106942"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Python és a Azure Portal használatával
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -56,16 +56,16 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "./git-samples"
     ```
 
 2. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson a mappára, ahol telepíteni szeretné a mintaalkalmazást.  
 
     ```bash
-    cd "C:\git-samples"
+    cd "./git-samples"
     ```
 
-3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-python-getting-started.git
@@ -73,14 +73,14 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a *C:\git-samples\azure-Cosmos-db-Graph-Python-Getting-Started \\* mappában található *Connect.py* -fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-information) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a *C:\git-samples\azure-Cosmos-db-Graph-Python-Getting-Started \\* mappában található *Connect.py* -fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-information) szakaszra.
 
-* A Gremlin `client` inicializálva van a 104-es sorban a *Connect.py*:
+* A Gremlin `client` inicializálva van az 155-es sorban a *Connect.py*-ben. Ügyeljen rá, hogy a `<YOUR_DATABASE>` és a `<YOUR_CONTAINER_OR_GRAPH>` értékeit a fiókja adatbázisának neve és a gráf neve szerint cserélje le:
 
     ```python
     ...
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
-        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
+        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_CONTAINER_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ...
     ```
@@ -101,7 +101,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán":::
 
-2. Nyissa meg a *Connect.py* fájlt, és az 104. sorban illessze be az URI `<YOUR_ENDPOINT>` -értéket itt:
+2. Nyissa meg a *Connect.py* fájlt, és az 155. sorban illessze be az URI `<YOUR_ENDPOINT>` -értéket itt:
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -145,7 +145,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 1. A git terminálablakban a `cd` paranccsal lépjen az azure-cosmos-db-graph-python-getting-started mappába.
 
     ```git
-    cd "C:\git-samples\azure-cosmos-db-graph-python-getting-started"
+    cd "./git-samples\azure-cosmos-db-graph-python-getting-started"
     ```
 
 2. A git terminálablakában futtassa a következő parancsot a szükséges Python-csomagok telepítéséhez.

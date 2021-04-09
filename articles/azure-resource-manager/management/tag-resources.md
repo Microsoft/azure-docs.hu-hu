@@ -4,12 +4,12 @@ description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások sz�
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e755a378fd71ea2763cc3e43477876fa3e8c5d5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896223"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934189"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -684,10 +684,10 @@ A következő sablon hozzáadja a címkéket egy objektumból egy erőforráscso
 
 Ha az Azure REST API használatával szeretne címkékkel dolgozni, használja a következőt:
 
-* [Címkék – létrehozás vagy frissítés hatókör](/rest/api/resources/tags/createorupdateatscope) (Put művelet)
-* [Címkék – frissítés a hatókörben](/rest/api/resources/tags/updateatscope) (javítási művelet)
-* [Címkék – beolvasás hatóköre](/rest/api/resources/tags/getatscope) (lekérési művelet)
-* [Címkék – törlés a hatókörben](/rest/api/resources/tags/deleteatscope) (törlési művelet)
+* [Címkék – létrehozás vagy frissítés hatókör](/rest/api/resources/resources/tags/createorupdateatscope) (Put művelet)
+* [Címkék – frissítés a hatókörben](/rest/api/resources/resources/tags/updateatscope) (javítási művelet)
+* [Címkék – beolvasás hatóköre](/rest/api/resources/resources/tags/getatscope) (lekérési művelet)
+* [Címkék – törlés a hatókörben](/rest/api/resources/resources/tags/deleteatscope) (törlési művelet)
 
 ## <a name="inherit-tags"></a>Címkék öröklése
 

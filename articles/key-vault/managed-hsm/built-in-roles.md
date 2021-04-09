@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 01e96922d9c0c47eaf4d430e92eafcd9d0964e13
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105557224"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>A felügyelt HSM helyi beépített RBAC-szerepkörei
@@ -23,13 +23,13 @@ A felügyelt HSM helyi RBAC több beépített szerepkörrel rendelkezik. Ezeket 
 
 |Szerepkör neve|Leírás|ID (Azonosító)|
 |---|---|---|
-|Felügyelt HSM-rendszergazda| Engedélyeket biztosít a biztonsági tartományhoz, a teljes biztonsági mentéshez/visszaállításhoz és a szerepkör-kezeléshez kapcsolódó összes művelet elvégzéséhez. Nem engedélyezett a kulcskezelő műveletek végrehajtása.|a290e904-7015-4bba-90c8-60543313cdb4|
+|Felügyeleti HSM rendszergazdája| Engedélyeket biztosít a biztonsági tartományhoz, a teljes biztonsági mentéshez/visszaállításhoz és a szerepkör-kezeléshez kapcsolódó összes művelet elvégzéséhez. Nem engedélyezett a kulcskezelő műveletek végrehajtása.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Felügyelt HSM titkosítási igazgató|Engedélyeket biztosít az összes szerepkör-kezelés végrehajtásához, a törölt kulcsok törléséhez vagy helyreállításához, illetve a kulcsok exportálásához. Nem engedélyezett más kulcskezelő művelet végrehajtása.|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
 |Felügyelt HSM kriptográfiai felhasználó|Engedélyeket biztosít az összes kulcskezelő művelet végrehajtásához, kivéve a törlést vagy a törölt kulcsok helyreállítását, illetve a kulcsok exportálását.|21dbd100-6940-42c2-9190-5d6cb909625b|
 |Felügyelt HSM házirend rendszergazdája| Engedélyt ad a szerepkör-hozzárendelések létrehozására és törlésére|4bd23610-cdcf-4971-bdee-bdc562cc28e4|
 |Felügyelt HSM titkosítási auditor|Olvasási engedélyt ad a kulcs attribútumainak olvasására (de nem használható).|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
 |Felügyelt HSM titkosítási szolgáltatás titkosítása| Engedélyt ad a kulcsok használatára a szolgáltatás titkosításához. |33413926-3206-4cdd-b39a-83574fe37a17|
-|Felügyelt HSM biztonsági mentés| Engedélyt ad egyetlen kulcs vagy teljes HSM biztonsági mentés végrehajtására.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
+|Felügyelt HSM biztonsági mentése| Engedélyt ad egyetlen kulcs vagy teljes HSM biztonsági mentés végrehajtására.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
 
 ## <a name="permitted-operations"></a>Engedélyezett műveletek
 > [!NOTE]  

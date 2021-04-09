@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/04/2021
+ms.date: 03/31/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: c4ab8c9f4e1f9dae8c10e155729c639c089fb77a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727115"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107197"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök
 
@@ -115,7 +115,7 @@ Az Azure-szerepkörök magas szinten szabályozzák az Azure-erőforrások kezel
 | --- | --- |
 | Azure-erőforrásokhoz való hozzáférés kezelése | Az Azure Active Directory-erőforrásokhoz való hozzáférést kezelik. |
 | Támogatják az egyéni szerepköröket. | Támogatják az egyéni szerepköröket. |
-| A hatókör több szinten adható meg (kezelési csoport, előfizetés, erőforráscsoport, erőforrás). | A [hatókör](../active-directory/roles/custom-overview.md#scope) megadható a bérlői szinten (az egész szervezetre kiterjedő) vagy egy adott objektumon (például egy adott alkalmazásban). |
+| A hatókör több szinten adható meg (kezelési csoport, előfizetés, erőforráscsoport, erőforrás). | A [hatókör](../active-directory/roles/custom-overview.md#scope) megadható a bérlői szinten (szervezeti szintű), a felügyeleti egységben vagy egy adott objektumon (például egy adott alkalmazásban). |
 | A szerepkörre vonatkozó információk az Azure Portalon, az Azure CLI-ben, az Azure PowerShellben, az Azure Resource Manager-sablonokban vagy a REST API-n érhetők el. | A szerepkör-információk az Azure felügyeleti portálon, Microsoft 365 felügyeleti központban, Microsoft Graphban, a AzureAD PowerShellben érhetők el. |
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Átfedésben vannak az Azure-szerepkörök és az Azure AD-szerepkörök?

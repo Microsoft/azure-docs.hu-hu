@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e176c0399b191c7a511ea1d26388219b2cef1df8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034897"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107146"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database blokkolási problémák ismertetése és megoldása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -429,3 +429,4 @@ A `wait_type` , a `open_transaction_count` és az oszlopok a `status` [sys.dm_ex
 * [Egyenletes teljesítmény biztosítása az Azure SQL-lel](/learn/modules/azure-sql-performance/)
 * [A kapcsolódási problémák és a Azure SQL Database és az Azure SQL felügyelt példányával kapcsolatos egyéb hibák elhárítása](troubleshoot-common-errors-issues.md)
 * [Átmeneti hibák kezelésére](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)
+* [A maximális párhuzamossági fok (MAXDOP) beállítása Azure SQL Database](configure-max-degree-of-parallelism.md)

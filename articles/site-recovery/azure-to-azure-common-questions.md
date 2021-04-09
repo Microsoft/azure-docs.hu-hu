@@ -6,10 +6,10 @@ manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
 ms.openlocfilehash: 5309fd60640c45ade42bab4c5727cf1f0a8d9d70
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105025475"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure-ból Azure-ba történő vészhelyreállítás
@@ -43,7 +43,7 @@ Igen. Bár a védett példányok első 31 napján Azure Site Recovery ingyenes, 
 
 A Site Recovery csapat és az Azure Capacity Management csapata megtervezi az infrastruktúra megfelelő kapacitását. A feladatátvétel indításakor a csapatok is segítenek biztosítani, hogy a Site Recovery által védett virtuálisgép-példányok a célként megadott régióban legyenek védve.
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 ### <a name="can-i-replicate-vms-with-disk-encryption"></a>Replikálhatók a lemezes titkosítással rendelkező virtuális gépek?
 
@@ -53,7 +53,7 @@ Igen. Site Recovery támogatja a Azure Disk Encryption (ADE)-t használó virtu�
 - Site Recovery a következőket támogatja:
     - Az ADE 0,1-es verziója, amelyhez Azure Active Directory (Azure AD) szükséges séma tartozik.
     - Az ADE 1,1-es verziója, amely nem igényel Azure AD-t. A 1,1-es verzióban a Windows Azure-beli virtuális gépeknek felügyelt lemezekkel kell rendelkezniük.
-    - [További információ](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema). a bővítmény sémái.
+    - [További információk](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema). a bővítmény sémái.
 
 [További](azure-to-azure-how-to-enable-replication-ade-vms.md) információ a titkosított virtuális gépek replikálásának engedélyezéséről.
 
@@ -61,7 +61,7 @@ Igen. Site Recovery támogatja a Azure Disk Encryption (ADE)-t használó virtu�
 
 Ha engedélyezi a Site Recovery számára a replikált Azure-beli virtuális gépeken futó mobilitási szolgáltatás bővítményének frissítését, az Azure Automation-fiók használatával globális runbook (Azure-szolgáltatások által használt) helyez üzembe. Használhatja a Site Recovery által létrehozott Automation-fiókot, vagy választhat, hogy meglévő Automation-fiókot használ-e. 
 
-A portálon jelenleg csak egy Automation-fiókot lehet kijelölni ugyanabban az erőforráscsoportban, mint a tárolót. Az Automation-fiókot egy másik erőforráscsoporthoz is kiválaszthatja a PowerShell használatával. [További információ](azure-to-azure-autoupdate.md#enable-automatic-updates).
+A portálon jelenleg csak egy Automation-fiókot lehet kijelölni ugyanabban az erőforráscsoportban, mint a tárolót. Az Automation-fiókot egy másik erőforráscsoporthoz is kiválaszthatja a PowerShell használatával. [További információk](azure-to-azure-autoupdate.md#enable-automatic-updates).
 
 ### <a name="if-i-use-a-customer-automation-account-thats-not-in-the-vault-resource-group-can-i-delete-the-default-runbook"></a>Ha olyan ügyfél-automatizálási fiókot használok, amely nem a tároló erőforráscsoporthoz van, törölheti az alapértelmezett runbook?
 
@@ -81,11 +81,11 @@ Ez a portálon nem támogatott. Ezt a REST API/PowerShell használatával teheti
 
 ### <a name="can-i-replicate-zoned-vms-to-a-different-zone-in-the-same-region"></a>Replikálható a zónákba tartozó virtuális gépek egy másik zónába ugyanabban a régióban?
 
-Ez a támogatás csak néhány régióra korlátozódik. [További információ](azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+Ez a támogatás csak néhány régióra korlátozódik. [További információk](azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Ki lehet zárni a lemezeket a replikációból?
 
-Igen, kihagyhatja a lemezeket a replikáció beállításakor a PowerShell használatával. [További információ](azure-to-azure-exclude-disks.md).
+Igen, kihagyhatja a lemezeket a replikáció beállításakor a PowerShell használatával. [További információk](azure-to-azure-exclude-disks.md).
 
 ### <a name="can-i-replicate-new-disks-added-to-replicated-vms"></a>Replikálható a replikált virtuális gépekhez hozzáadott új lemezek?
 
@@ -111,7 +111,7 @@ A virtuális gépeket replikálhatja és helyreállíthatja az azonos földrajzi
 
 ### <a name="does-site-recovery-need-internet-connectivity"></a>Szükség van Site Recovery internetkapcsolatra?
 
-Nem, de a virtuális gépeknek hozzá kell férniük Site Recovery URL-címekhez és IP-tartományokhoz. [További információ](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls).
+Nem, de a virtuális gépeknek hozzá kell férniük Site Recovery URL-címekhez és IP-tartományokhoz. [További információk](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls).
 
 ### <a name="can-i-replicate-an-application-tiered-across-resource-groups"></a>Replikálható az alkalmazások az erőforráscsoportok között?
 
@@ -285,7 +285,7 @@ A Site Recovery [helyreállítási terve](site-recovery-create-recovery-plans.md
 
 ### <a name="how-does-sequencing-work"></a>Hogyan működik az előkészítési folyamat?
 
-Egy helyreállítási tervben több virtuális gépet is létrehozhat az előkészítéshez. A csoportok egyidejű feladatátvételt végeznek, így az ugyanahhoz a csoporthoz tartozó virtuális gépek együttesen működnek. [További információ](recovery-plan-overview.md#model-apps).
+Egy helyreállítási tervben több virtuális gépet is létrehozhat az előkészítéshez. A csoportok egyidejű feladatátvételt végeznek, így az ugyanahhoz a csoporthoz tartozó virtuális gépek együttesen működnek. [További információk](recovery-plan-overview.md#model-apps).
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Hogyan találhatom meg a helyreállítási terv RTO?
 
@@ -295,7 +295,7 @@ A helyreállítási terv RTO ellenőrzéséhez végezzen feladatátvételi teszt
 
 ### <a name="can-i-add-automation-runbooks-to-recovery-plans"></a>Hozzáadhatok Automation-runbookok helyreállítási tervekhez?
 
-Igen. [További információ](site-recovery-runbook-automation.md).
+Igen. [További információk](site-recovery-runbook-automation.md).
 
 ## <a name="reprotection-and-failback"></a>Ismételt védelem és feladat-visszavétel
 
@@ -305,7 +305,7 @@ Nem. Ha az egyik régióból a másikba hajtja végre a virtuális gépek felada
 
 ### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>Az ismételt védelem során a rendszer az összes, a másodlagos régióból az elsődlegesre replikált adatforrást? 
 
-Ez a függvénytől függ. Ha a forrásoldali virtuális gép létezik, akkor a rendszer csak a forrásfájl és a céllemez közötti változásokat szinkronizálja. Site Recovery összehasonlítja a lemezeket a különböző értékekkel, majd átviszi az adatátvitelt. Ez a folyamat általában néhány órát vesz igénybe. [További információ](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
+Ez a függvénytől függ. Ha a forrásoldali virtuális gép létezik, akkor a rendszer csak a forrásfájl és a céllemez közötti változásokat szinkronizálja. Site Recovery összehasonlítja a lemezeket a különböző értékekkel, majd átviszi az adatátvitelt. Ez a folyamat általában néhány órát vesz igénybe. [További információk](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
 
 ### <a name="how-long-does-it-take-fail-back"></a>Mennyi ideig tart a feladat-visszavétel?
 

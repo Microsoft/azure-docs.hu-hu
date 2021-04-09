@@ -4,16 +4,16 @@ description: Ismerje meg az Azure-fájlmegosztás helyreállítható törlését
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 0fecc9fc954a1ac648e8f60badf69ad1d2e8f1cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93126940"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937294"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Azure-fájlmegosztás véletlen törlésének megakadályozása
 
@@ -33,7 +33,7 @@ A prémium szintű törölt fájlmegosztás esetén a fájlmegosztás kvótájá
 
 ### <a name="enabling-or-disabling-soft-delete"></a>A Soft delete engedélyezése vagy letiltása
 
-A fájlmegosztás helyreállítható törlésének engedélyezése a Storage-fiók szintjén történik, ezért a törlési beállítások a Storage-fiókban lévő összes fájlmegosztás esetében érvényesek. Bármikor engedélyezheti vagy letilthatja a Soft deletet. Új Storage-fiók létrehozásakor alapértelmezés szerint le van tiltva a fájlmegosztás esetén a Soft DELETE, amelyet az üzembe helyezés során vagy a későbbiekben bármikor engedélyezhet. A Soft delete alapértelmezés szerint le lesz tiltva a meglévő Storage-fiókok esetében. Ha az Azure-fájlmegosztás [biztonsági mentését](../../backup/azure-file-share-backup-overview.md) konfigurálta egy Azure-fájlmegosztás számára, akkor az Azure-fájlmegosztás helyreállítható törlését a rendszer automatikusan engedélyezi a megosztás Storage-fiókjában.
+A fájlmegosztás helyreállítható törlésének engedélyezése a Storage-fiók szintjén történik, ezért a törlési beállítások a Storage-fiókban lévő összes fájlmegosztás esetében érvényesek. A Soft delete alapértelmezés szerint engedélyezve van az új Storage-fiókok esetében, és bármikor letiltható vagy engedélyezhető. A helyreállítható törlés nincs automatikusan engedélyezve a meglévő Storage-fiókokhoz, kivéve, ha az Azure-fájlmegosztás [biztonsági másolata](../../backup/azure-file-share-backup-overview.md) be lett állítva egy Azure-fájlmegosztás számára az adott Storage-fiókban. Ha az Azure-fájlmegosztás biztonsági mentése be lett állítva, akkor a rendszer automatikusan engedélyezi az Azure-fájlmegosztás ideiglenes törlését az adott megosztás Storage-fiókjában.
 
 Ha engedélyezi a fájlmegosztás törlését, töröljön néhány fájlmegosztást, majd tiltsa le a helyreállítható törlést, ha a megosztások ebben az időszakban lettek mentve, akkor továbbra is elérheti és helyreállíthatja a fájlmegosztást. Ha engedélyezi a helyreállítható törlést, a megőrzési időtartamot is konfigurálnia kell.
 

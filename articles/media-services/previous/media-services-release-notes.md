@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 801d810a82e4e484ca1ab30c5c6d510860dbab6b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: fe42b98813f1687c78827b355a707b0147d6d2a4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566013"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067282"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -35,7 +35,7 @@ Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák me
 ## <a name="known-issues"></a><a name="issues"></a>Ismert problémák
 ### <a name="media-services-general-issues"></a><a name="general_issues"></a>Általános problémák Media Services
 
-| Probléma | Description |
+| Probléma | Leírás |
 | --- | --- |
 | A REST APIban több gyakori HTTP-fejléc sincs megadva. |Ha a REST API használatával fejleszt Media Services alkalmazásokat, úgy találja, hogy a HTTP-fejléc néhány gyakori mezője (beleértve az ügyfél-kérelem-azonosító, a kérelem-azonosító és a RETURN-CLIENT-Request-ID) nem támogatott. A fejlécek egy jövőbeli frissítésben lesznek hozzáadva. |
 | Százalék – a kódolás nem engedélyezett. |A Media Services a IAssetFile.Name tulajdonság értékét használja a streaming tartalom URL-címeinek létrehozásakor (például: `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Emiatt a százalékos kódolás nem engedélyezett. A Name (név) tulajdonság értéke nem lehet a következő [százalék-kódolásra fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)egyike:! * ' ();: @ &= + $,/?% # [] ". Emellett a fájlnévkiterjesztés csak egy "." lehet. |
@@ -252,7 +252,7 @@ Az Azure SDK csapata közzétette az [Azure SDK for php](https://github.com/Azur
 További információkért lásd:
 
 * A következő [kódrészletek](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) segítségével gyorsan elsajátíthatja az első lépéseket:
-  * **vodworkflow_aes. php**: Ez a php-fájl bemutatja, hogyan használható az aes-128 Dynamic encryption és a Key Delivery Service. A .NET-minta az [AES-128 dinamikus titkosítás és a Key Delivery szolgáltatás használata](media-services-protect-with-aes128.md)című cikkben ismertetett.
+  * **vodworkflow_aes. php**: Ez a php-fájl bemutatja, hogyan használható az aes-128 Dynamic encryption és a Key Delivery Service. A .NET-minta az [AES-128 dinamikus titkosítás és a Key Delivery szolgáltatás használata](media-services-playready-license-template-overview.md)című cikkben ismertetett.
   * **vodworkflow_aes. php**: Ez a php-fájl bemutatja, hogyan használható a PlayReady Dynamic encryption és a License Delivery Service. A .NET-minta alapján a [PlayReady és/vagy a Widevine dinamikus közös titkosítás használata](media-services-protect-with-playready-widevine.md)című cikkben ismertetett.
   * **scale_encoding_units. php**: Ez a php-fájl bemutatja, hogyan méretezhetők a kódolásra fenntartott egységek.
 

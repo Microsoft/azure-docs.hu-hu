@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 11bee8a36bcf6f5cbf0d16b27c6cff38414d4647
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce6c717892cd2c99e9e2dea851a4385c530f76c2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612780"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106126069"
 ---
 <!--Feature availability in region-->
 
@@ -18,9 +18,9 @@ ms.locfileid: "104612780"
 | Szolgáltatás| Dél-Afrika északi régiója | Dél-Afrika nyugati régiója |
 | --- | --- | --- |
 | [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Észak-afrikai Event Grid – általános elérhetőség](../media/azure-clouds-regions/ga.svg) | ![Dél-afrikai Event Grid – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
-| [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![Afrika video Analyzer Észak-általánosan elérhető](../media/azure-clouds-regions/ga.svg) | ![Afrika déli videó-elemzője – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
-| [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![Észak-Afrika AudioAnalyzerPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika AudioAnalyzerPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
-| [StandardEncoderPreset](../encoding-concept.md) | ![Észak-Afrika StandardEncoderPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika StandardEncoderPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
-| [LiveEvents](../live-streaming-overview.md) | ![Észak-Afrika LiveEvents általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika LiveEvents általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
+| [VideoAnalyzerPreset](../analyze-video-audio-files-concept.md) |  |  |
+| [AudioAnalyzerPreset](../analyze-video-audio-files-concept.md) | |  |
+| [StandardEncoderPreset](../encode-concept.md) | ![Észak-Afrika StandardEncoderPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika StandardEncoderPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
+| [LiveEvents](../stream-live-streaming-concept.md) | ![Észak-Afrika LiveEvents általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika LiveEvents általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
 | [StreamingEndpoints](../streaming-endpoint-concept.md) | ![Észak-Afrika StreamingEndpoints általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika StreamingEndpoints általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
-| [LiveTranscription](../live-transcription.md) | ![Észak-Afrika LiveTranscription általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika LiveTranscription általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
+| [LiveTranscription](../live-event-live-transcription-how-to.md) |  |  |

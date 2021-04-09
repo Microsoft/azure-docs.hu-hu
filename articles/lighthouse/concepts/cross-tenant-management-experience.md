@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 03/23/2021
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: a774eb08989e8fc45a117d83d81a5b510e8202b4
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559910"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934325"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -77,7 +77,7 @@ A legtöbb feladat és szolgáltatás elvégezhető a delegált erőforrásokon,
 
 [Azure Cost Management + számlázás](../../cost-management-billing/index.yml):
 
-- A bérlők felügyelete alatt a CSP-partnerek megtekinthetik, kezelhetik és elemezhetik az előfizetéssel kapcsolatos használati költségeket (nem tartalmazza a vásárlásokat) az Azure-csomag alatti ügyfelek számára. A költségek a kiskereskedelmi díjak és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján érhetők el, amelyhez a partner az ügyfél előfizetéséhez tartozik.
+- A bérlők felügyelete alatt a CSP-partnerek megtekinthetik, kezelhetik és elemezhetik az előfizetéssel kapcsolatos használati költségeket (nem tartalmazza a vásárlásokat) az Azure-csomag alatti ügyfelek számára. A költségek a kiskereskedelmi díjak és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján érhetők el, amelyhez a partner az ügyfél előfizetéséhez tartozik. Jelenleg az Azure RBAC-hozzáférés alapján minden egyes ügyfél-előfizetés esetében megtekintheti a használati költségeket a kiskereskedelmi díjszabás szerint.
 
 [Azure Key Vault](../../key-vault/general/index.yml):
 

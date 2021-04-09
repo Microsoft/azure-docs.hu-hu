@@ -1,5 +1,5 @@
 ---
-title: include file Description: include file Services: Event-hubok Author: spelluru MS. Service: Event-hubok MS. topic: include MS. Date: 02/01/2021 MS. Author: spelluru MS. Custom: "include file", "FastTrack-Edit", "IOT", "Event-hubok"
+title: include file Description: include file Services: Event-hubok Author: spelluru MS. Service: Event-hubok MS. topic: include MS. Date: 03/31/2021 MS. Author: spelluru MS. Custom: "include file", "FastTrack-Edit", "IOT", "Event-hubok"
 
 ---
 
@@ -13,13 +13,12 @@ Az alábbi korlátok az összes szinten gyakoriak.
 | Event Hubs névterek száma/előfizetés |- |100 |
 | Az Event hubok száma névtérben | Az új Event hub létrehozására vonatkozó további kérelmeket a rendszer elutasítja. |10 |
 | Event hub-név mérete |- | 256 karakter |
-| Fogyasztói csoport nevének mérete |- | 256 karakter |
+| Fogyasztói csoport nevének mérete | A Kafka protokollhoz nem szükséges fogyasztói csoportot létrehozni. | <p>Kafka: 256 karakter</p><p>AMQP: 50 karakter |
 | Nem EPOCH-fogadók száma fogyasztói csoportonként |- |5 |
 | Engedélyezési szabályok száma névtérben | Az engedélyezési szabályok létrehozására vonatkozó további kérelmeket a rendszer elutasítja.|12 |
 | A GetRuntimeInformation metódushoz tartozó hívások száma |  - | 50 másodpercenként | 
 | Virtuális hálózatok (VNet) száma | - | 128 | 
 | IP-konfigurációs szabályok száma | - | 128 | 
-
 
 ### <a name="basic-vs-standard-tiers"></a>Alapszintű és standard csomag
 Az alábbi táblázat az alapszintű és a standard szintekhez eltérő korlátozásokat mutat be. 
