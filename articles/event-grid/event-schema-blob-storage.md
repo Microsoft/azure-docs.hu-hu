@@ -4,10 +4,10 @@ description: A blob Storage-eseményekhez megadott tulajdonságokat ismerteti Az
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 893e86ecf220ceb327eed9c6f95be4c7ed1afb1c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363644"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure-Blob Storage Event Grid forrásként
@@ -27,7 +27,7 @@ Ezek az események akkor aktiválódnak, ha egy ügyfél a blob REST API-k megh�
 > [!NOTE]
 > A `$logs` és a `$blobchangefeed` tárolók nincsenek integrálva a Event Gridba, ezért a tárolókban lévő tevékenységek nem hoznak majd fel eseményeket. Emellett az elosztott fájlrendszerbeli végpont használata nem *`(abfss://URI) `* hierarchikus névtérrel rendelkező fiókok esetében nem hoz majd eseményeket, de a blob-végpont *`(wasb:// URI)`* eseményeket fog eredményezni.
 
- |Esemény neve |Description|
+ |Esemény neve |Leírás|
  |----------|-----------|
  |**Microsoft. Storage. BlobCreated** |Egy blob létrehozásakor vagy cseréjekor aktiválódik. <br>Pontosabban ez az esemény akkor aktiválódik, ha az ügyfelek `PutBlob` a `PutBlockList` `CopyBlob` blob Rest APIban elérhető, vagy műveleteket használják.   |
  |**Microsoft. Storage. BlobDeleted** |A blob törlésekor aktiválódik. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `DeleteBlob` Blob Rest APIban elérhető műveletet hívják meg. |
@@ -39,7 +39,7 @@ Ezek az események akkor aktiválódnak, ha egy ügyfél a blob REST API-k megh�
 
 Ezek az események akkor aktiválódnak, ha egy hierarchikus névteret engedélyez a Storage-fiókban, és az ügyfelek Azure Data Lake Storage Gen2 REST API-kat használnak. További információ a Azure Data Lake Storage Gen2ről: a [Azure Data Lake Storage Gen2 bemutatása](../storage/blobs/data-lake-storage-introduction.md).
 
-|Esemény neve|Description|
+|Esemény neve|Leírás|
 |----------|-----------|
 |**Microsoft. Storage. BlobCreated** | Egy blob létrehozásakor vagy cseréjekor aktiválódik. <br>Pontosabban ez az esemény akkor aktiválódik, ha az ügyfelek `CreateFile` a `FlushWithClose` Azure Data Lake Storage Gen2 REST API elérhető műveleteket használják. |
 |**Microsoft. Storage. BlobDeleted** |A blob törlésekor aktiválódik. <br>Ez az esemény akkor is aktiválódik, ha az ügyfelek a `DeleteFile` Azure Data Lake Storage Gen2 REST API elérhető műveletet hívják meg. |

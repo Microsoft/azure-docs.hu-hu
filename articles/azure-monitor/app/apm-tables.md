@@ -4,10 +4,10 @@ description: Ismerkedjen meg a Azure Monitor Application Insights munkaterület-
 ms.topic: conceptual
 ms.date: 05/09/2020
 ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575595"
 ---
 # <a name="workspace-based-resource-changes"></a>Munkaterület-alapú erőforrás-változások
@@ -18,7 +18,7 @@ A munkaterületen alapuló Application Insights erőforrás-adathalmazok egy Log
 
 ## <a name="table-structure"></a>Táblastruktúra
 
-| Örökölt tábla neve | Új táblanév | Description |
+| Örökölt tábla neve | Új táblanév | Leírás |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  A rendelkezésre állási tesztek összesített adatai.|
 | browserTimings | AppBrowserTimings | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő.|

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
 ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93089638"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>A standard (manuális) és az automatikus méretezés kiépített átviteli sebességének kiválasztása 
@@ -27,7 +27,7 @@ Ha kiosztott átviteli sebességet használ, a számítási feladathoz a számí
 
 Az alábbi táblázat a standard (manuális) és az automatikus skálázás közötti magas szintű összehasonlítást mutatja be.
 
-|Description|Standard (manuális)|Automatikus méretezés|
+|Leírás|Standard (manuális)|Automatikus méretezés|
 |-------------|------|-------|
 |Legmegfelelőbb a következőhöz:|Állandó vagy kiszámítható forgalommal rendelkező számítási feladatok|Változó vagy kiszámíthatatlan forgalommal rendelkező számítási feladatok. Lásd: [az autoscale használatának esetei](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Működés|Kiépítheti a statikus RU/s mennyiségét az `T` idő függvényében, hacsak nem módosítja őket manuálisan. Másodpercenként akár `T` ru/s átviteli sebességet is használhat. <br/><br/>Ha például a standard (manuális) 400 RU/s érték van megadva, akkor az átviteli sebesség a 400 RU/s-ben marad.|Állítsa be a legmagasabb vagy a maximális RU/mp értéket, `Tmax` Ha nem szeretné, hogy a rendszeren túllépjek. A rendszer automatikusan méretezi az átviteli sebességet `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Ha például az 4000 RU/s értékre állítja be a maximálisan engedélyezett RU/s értéket, a rendszer a 400-4000 RU/s-t fogja méretezni.|

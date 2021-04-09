@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 7195a126938deabf542e6fa3e52b72c2efdddac2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Oktatóanyag: Azure Active Directory integráció felismeréssel
@@ -219,7 +219,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-recognize-test-user"></a>Felismerési teszt felhasználó létrehozása
+### <a name="create-recognize-test-user&quot;></a>Felismerési teszt felhasználó létrehozása
 
 Annak érdekében, hogy az Azure AD-felhasználók bejelentkezzenek az felismerésbe, fel kell venni őket a felismerésbe. Felismerés esetén a kiépítés manuális feladat.
 
@@ -235,7 +235,7 @@ Ez az alkalmazás nem támogatja a SCIM-létesítést, de a felhasználókra von
 
 4. Hajtsa végre a következő lépéseket a **felhasználói szinkronizálás** szakaszban.
    
-    ![Új felhasználó](./media/recognize-tutorial/tutorial_recognize_005.png "Új felhasználó")
+    ![Új felhasználó](./media/recognize-tutorial/tutorial_recognize_005.png &quot;Új felhasználó")
    
     a. Ha **engedélyezve van a szinkronizálás**, válassza **a be** lehetőséget.
    

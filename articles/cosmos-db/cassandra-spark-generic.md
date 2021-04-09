@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93090511"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás az Azure Cosmos DB Cassandra API-hoz a Sparkból
@@ -54,7 +54,7 @@ A következő táblázat Azure Cosmos DB felsorolja az összekötő által bizto
 
 Módosítsa a paraméterek átviteli sebességét és a párhuzamosság mértékét a Spark-feladatokhoz várható számítási feladatok, valamint a Cosmos DB-fiókhoz kiépített átviteli sebesség alapján.
 
-## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás Azure Cosmos DB Cassandra API a Sparkból
+## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás az Azure Cosmos DB Cassandra API-hoz a Sparkból
 
 ### <a name="cqlsh"></a>cqlsh
 Az alábbi parancsok részletesen ismertetik, hogyan csatlakozhat az Azure CosmosDB Cassandra API a cqlsh-ból.  Ez az ellenőrzéshez hasznos, amikor a Sparkban lévő mintákon futtatja őket.<br>

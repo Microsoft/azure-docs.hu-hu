@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.openlocfilehash: 47e9b80bb25b7ff14695cc67682265fe338ff76f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98119101"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Index újraépítése az Azure Cognitive Searchban
@@ -37,7 +37,7 @@ Ha nem módosítja az index szerkezetét, az indexet az első betöltéséhez ha
 
 Ha a következő feltételek bármelyike teljesül, dobja el és hozza létre újból az indexet. 
 
-| Feltétel | Description |
+| Feltétel | Leírás |
 |-----------|-------------|
 | Mező definíciójának módosítása | Egy mezőnév, adattípus vagy adott [index-attribútum](/rest/api/searchservice/create-index) (kereshető, szűrhető, rendezhető) módosítása teljes újraépítést igényel. |
 | Analizátor kiosztása egy mezőhöz | Az [elemzők](search-analyzers.md) definiálva vannak egy indexben, majd a mezőkhöz vannak rendelve. Bármikor hozzáadhat egy új Analyzer-definíciót egy indexhez, de a mező létrehozásakor csak az analizátort lehet *hozzárendelni* . Ez az **elemző** és a **indexAnalyzer** tulajdonság esetében is igaz. A **searchAnalyzer** tulajdonság kivétel (ezt a tulajdonságot egy meglévő mezőhöz rendelheti hozzá). |

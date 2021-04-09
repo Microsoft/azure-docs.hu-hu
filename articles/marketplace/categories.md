@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
 ms.openlocfilehash: 5042c6801678f94c749454dac28eec56fdcb7559
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94811040"
 ---
 # <a name="categories-and-subcategories-in-the-commercial-marketplace"></a>Kategóriák és alkategóriák a kereskedelmi piactéren
@@ -47,7 +47,7 @@ Ez a táblázat az Azure Marketplace-re leképezett elsődleges kategóriákat �
 | Áttelepítés | Adatok áttelepítése |
 | Vegyes valóság | N/A |
 | & diagnosztika figyelése | N/A |
-| Hálózatkezelés | Berendezések kezelői<br>Kapcsolat<br>Tűzfalak<br>Terheléselosztók |
+| Hálózatkezelés | Berendezések kezelői<br>Kapcsolatok<br>Tűzfalak<br>Terheléselosztók |
 | Biztonság | Identitás & hozzáférés-kezelés<br>Information Protection<br>Veszélyforrások elleni védelem |
 | Tárolás | Biztonsági mentés & helyreállítás<br>Az adatéletciklus-kezelés<br>Vállalati hibrid tárolás<br>Fájlmegosztás |
 | Webes | Blogok & CMS<br>E-kereskedelmi<br>Kezdő Web Apps<br>Web Apps<br>Web Apps keretrendszerek |
