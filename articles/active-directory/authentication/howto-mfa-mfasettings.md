@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 4625b0a750c2b3ff63879bb9ea306bc69b1bb64e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471648"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932913"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Az Azure AD Multi-Factor Authentication beállításainak konfigurálása
 
@@ -231,7 +231,7 @@ A szolgáltatás beállításai a Azure Portal érhetők el, ha megkeresi az  > 
 
 ## <a name="trusted-ips"></a>Megbízható IP-címek
 
-Az Azure AD Multi-Factor Authentication _megbízható IP_ -címei szolgáltatás megkerüli a többtényezős hitelesítési kéréseket a megadott IP-címtartományból bejelentkező felhasználók számára. A helyszíni környezetekhez megbízható IP-címtartományok állíthatók be, ha a felhasználók ezen helyek egyikén vannak, nincs szükség Azure AD-Multi-Factor Authenticationra.
+Az Azure AD Multi-Factor Authentication _megbízható IP_ -címei szolgáltatás megkerüli a többtényezős hitelesítési kéréseket a megadott IP-címtartományból bejelentkező felhasználók számára. A helyszíni környezetekhez beállíthatja a megbízható IP-tartományokat, így ha a felhasználók ezen helyek egyikén vannak, akkor nincs szükség Azure AD-Multi-Factor Authenticationra. Az Azure AD Multi-Factor Authentication _megbízható IP_ -címei funkciójának prémium szintű Azure ad P1 kiadásra van szüksége. 
 
 > [!NOTE]
 > A megbízható IP-címek csak az MFA-kiszolgáló használata esetén tartalmazhatnak privát IP-tartományokat. Felhőalapú Azure AD-Multi-Factor Authentication esetén csak nyilvános IP-címtartományok használhatók.

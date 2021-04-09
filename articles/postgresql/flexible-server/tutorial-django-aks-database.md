@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 8768f7f4ca898f3f1f81cdd2611679e62d999ef8
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 71066fc2e2f87405455a059fe23c20277c4b09fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645195"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726379"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Oktatóanyag: Django-alkalmazás üzembe helyezése az AK-ban Azure Database for PostgreSQL-rugalmas kiszolgálóval
 
@@ -133,9 +133,9 @@ Hozzon létre egy új [Django-alkalmazást](https://docs.djangoproject.com/en/3.
     └───models.py
     └───forms.py
     ├───templates
-        . . . . . . .
+          . . . . . . .
     ├───static
-        . . . . . . .
+         . . . . . . .
 └───my-django-project
     └───settings.py
     └───urls.py
@@ -378,7 +378,7 @@ Quit the server with CONTROL-C.
 
 ## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
+Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name django-project --yes --no-wait

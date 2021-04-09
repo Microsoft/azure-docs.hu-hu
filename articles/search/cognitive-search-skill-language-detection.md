@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 078a9312a7ee1b3b0eafd000928ed74348a540c3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102548053"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Nyelvfelismerés – kognitív képességek
@@ -39,7 +39,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek | Description |
+| Bevitelek | Leírás |
 |---------------------|-------------|
 | `defaultCountryHint` | Választható Ha a nyelv nem egyértelműsítse, az ISO 3166-1 Alpha-2 2 Letter országkód adható meg a nyelvi észlelési modellre mutató tippként. További részletekért tekintse meg a jelen témakör [text Analytics dokumentációját](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) . Pontosabban a `defaultCountryHint` paramétert olyan dokumentumokkal együtt használják, amelyek nem adják meg `countryHint` explicit módon a bemenetet.  |
 | `modelVersion`   | Választható A Text Analytics szolgáltatás meghívásakor használni kívánt modell verziója. Alapértelmezés szerint a legújabb elérhető, ha nincs megadva. Azt javasoljuk, hogy csak akkor válassza ezt az értéket, ha feltétlenül szükséges. További részletekért tekintse meg [a Text Analytics API modell verziószámozását](../cognitive-services/text-analytics/concepts/model-versioning.md) ismertető témakört. |
@@ -48,14 +48,14 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek     | Description |
+| Bevitelek     | Leírás |
 |--------------------|-------------|
 | `text` | Az elemezni kívánt szöveg.|
 | `countryHint` | ISO 3166-1 Alpha-2 2 Letter országkód, amely a nyelvfelismerés-modellre mutató célzásként használható, ha a nyelv nem egyértelműsítse. További részletekért tekintse meg a jelen témakör [text Analytics dokumentációját](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) . |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve    | Description |
+| Kimenet neve    | Leírás |
 |--------------------|-------------|
 | `languageCode` | Az ISO 6391 nyelvi kódja az azonosított nyelvhez. Például: "en". |
 | `languageName` | A nyelv neve. Például: "English". |

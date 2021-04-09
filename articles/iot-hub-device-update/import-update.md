@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608527"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932403"
 ---
 # <a name="import-new-update"></a>Új frissítés importálása
 Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében. Ha még nem tette meg, mindenképpen ismerkedjen meg az alapszintű [importálási fogalmakkal](import-concepts.md).
@@ -35,7 +35,7 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
 
 2. Hozzon létre egy **AduUpdate. psm1** nevű szövegfájlt abban a könyvtárban, ahol a frissítési lemezképfájl vagy az apt manifest fájl található. Ezután nyissa meg a [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell-parancsmagot, másolja a tartalmat a szövegfájlba, majd mentse a szövegfájlt.
 
-3. A PowerShellben navigáljon ahhoz a könyvtárhoz, ahol a 2. lépésben létrehozta a PowerShell-parancsmagot. Majd futtassa ezt:
+3. A PowerShellben navigáljon ahhoz a könyvtárhoz, ahol a 2. lépésben létrehozta a PowerShell-parancsmagot. Használja az alábbi másolási lehetőséget, majd illessze be a PowerShellbe a parancsok futtatásához:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -63,7 +63,7 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
     | updateName | A frissítések osztályának azonosítója. Az osztály tetszőlegesen kiválasztható. Ez gyakran az eszköz vagy a modell neve lesz.
     | updateVersion | A frissítést megkülönbözteti a többitől, és ugyanazzal a szolgáltatóval és névvel. Nem felel meg az eszközön lévő egyes szoftver-összetevők verziójának (de ha Ön is választhatja).
     | Frissítés típusa | <ul><li>`microsoft/swupdate:1`Rendszerkép frissítésének megadása</li><li>`microsoft/apt:1`Csomag frissítésének megadása</li></ul>
-    | installedCriteria | <ul><li>SWVersion értékének megadása a `microsoft/swupdate:1` frissítési típushoz</li><li>Adja meg a `microsoft/apt:1` frissítési típus javasolt értékét.
+    | installedCriteria | <ul><li>SWVersion értékének megadása a `microsoft/swupdate:1` frissítési típushoz</li><li>Adja meg a **név-verziószámot**, ahol a _Name_ az apt manifest neve, és a _verzió_ az apt manifest verziója. Például: contoso-IOT-Edge-1.0.0.0.
     | updateFilePath (ok) | A frissítési fájl (ok) elérési útja a számítógépen
 
 

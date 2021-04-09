@@ -7,10 +7,10 @@ ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
 ms.openlocfilehash: 54ef88e65925ba9c7e9fe2e44ef0c76fbc9ceb04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101717485"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
@@ -30,7 +30,7 @@ A Azure SQL Analytics megoldás használatáról és a tipikus használati forga
 
 A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az összes Azure SQL-adatbázis diagnosztikai telemetria folyamatos átvitelét. Mivel Azure SQL Analytics nem használ ügynököket Azure Monitorhoz való kapcsolódásra, nem támogatja a helyszíni vagy virtuális gépeken üzemeltetett SQL Server figyelését.
 
-| Összekapcsolt forrás | Támogatott | Description |
+| Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
 | [Diagnosztikai beállítások](../essentials/diagnostic-settings.md) | **Igen** | Az Azure metrika és a naplózási adatok közvetlenül az Azure-ban érkeznek Azure Monitor naplókra. |
 | [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor nem olvassa be a Storage-fiók adatait. |
@@ -42,7 +42,7 @@ A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az �
 
 Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának támogatott lehetőségeit ismerteti, amelyek közül az egyiket Azure SQL Database, a másikat pedig az Azure SQL felügyelt példány-adatbázisaihoz.
 
-| Azure SQL Analytics lehetőség | Description | SQL Database támogatás | Az SQL Managed Instance támogatása |
+| Azure SQL Analytics lehetőség | Leírás | SQL Database támogatás | Az SQL Managed Instance támogatása |
 | --- | ------- | ----- | ----- |
 | Erőforrás típus szerint | Az összes figyelt erőforrást megszámoló perspektíva. | Igen | Yes |
 | Insights | Hierarchikus részletezést biztosít a Intelligent Insightsba a teljesítményig. | Igen | Yes |

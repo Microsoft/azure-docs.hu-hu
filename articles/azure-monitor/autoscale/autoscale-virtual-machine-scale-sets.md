@@ -10,10 +10,10 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101717740"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets
@@ -36,7 +36,7 @@ Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforr
 
 3. Mostantól további profilokat és szabályokat adhat hozzá az ütemterv vagy a speciális követelmények alapján. Létrehozunk egy három profillal rendelkező autoskálázási beállítást. Az autoscale-profilok és-szabályok megértéséhez tekintse át az [ajánlott eljárások az autoscale](autoscale-best-practices.md)-ben című témakört.  
 
-    | Profilok & szabályok | Description |
+    | Profilok & szabályok | Leírás |
     |--- | --- |
     | **Profil** |**Teljesítmény/metrika-alapú** |
     | Szabály |Service Bus üzenetsor-üzenetek száma > x |

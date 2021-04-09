@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 71ba82cfd5f0f4166d25983f3f80530da45bdeac
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96017916"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932947"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Oktatóanyag: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével
 
@@ -32,7 +32,9 @@ A virtuális hálózatok közötti társviszony létesítésével virtuális há
 
 Igény szerint az oktatóanyagot az [Azure CLI](tutorial-connect-virtual-networks-cli.md) vagy az [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md) használatával is elvégezheti.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Előfeltételek
+
+Mielőtt elkezdené, egy aktív előfizetéssel rendelkező Azure-fiókra van szükség. Ha még nem rendelkezik ilyennel, [ingyenes fiókot hozhat létre](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -171,6 +173,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megismerhette, hogyan kapcsolhat össze két, ugyanabban az Azure-régióban található virtuális hálózatot virtuális hálózatok közötti társviszony létesítésével. Más [támogatott régiókban](virtual-network-manage-peering.md#cross-region) és [különböző Azure-előfizetésekben](create-peering-different-subscriptions.md#portal) található virtuális hálózatok között is létesíthet társviszonyt, illetve a társviszony létesítésével [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) is létrehozhat. További információ a virtuális hálózatok közötti társviszony létesítéséről: [Virtuális hálózatok közötti társviszony létesítésének áttekintése](virtual-network-peering-overview.md) és[Virtuális hálózatok közötti társviszonyok kezelése](virtual-network-manage-peering.md).
+> [!div class="nextstepaction"]
+> [További információ a virtuális hálózatok társításáról](virtual-network-peering-overview.md)
 
-Ha csatlakoztatni szeretné saját számítógépét egy virtuális hálózathoz VPN-en keresztül, és interakcióba szeretne lépni egy virtuális hálózaton vagy társviszonnyal összekapcsolt virtuális hálózatokon található erőforrásokkal, tekintse meg a [Számítógép csatlakoztatása egy virtuális hálózathoz](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket.
+

@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/29/2021
+ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364239"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726787"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Adatok másolása Azure Databricks Delta-tóból és onnan a Azure Data Factory használatával
 
@@ -42,7 +42,7 @@ A Azure Databricks Delta Lake Connector használatához létre kell hoznia egy f
 
 A Databricks-fürtnek hozzáféréssel kell rendelkeznie az Azure Blobhoz vagy Azure Data Lake Storage Gen2 fiókhoz, valamint a forrás/fogadó/előkészítéshez használt tároló-vagy fájlrendszerhez, valamint a Container/file rendszerhez, ahol a Delta Lake-táblákat szeretné írni.
 
-- **Azure Data Lake Storage Gen2** használatához a Apache Spark konfigurációjának részeként konfigurálhat egy **egyszerű szolgáltatásnevet** vagy egy **Storage-fiók hozzáférési kulcsát** a Databricks-fürtön. Kövesse a [közvetlen hozzáférés az egyszerű szolgáltatással](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) vagy [a közvetlen hozzáférés a Storage-fiók elérési kulcsa használatával](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)című témakör lépéseit.
+- **Azure Data Lake Storage Gen2** használatához a Apache Spark konfigurációjának részeként konfigurálhat egy **egyszerű szolgáltatásnevet** a Databricks-fürtön. Kövesse a [közvetlen hozzáférés az egyszerű szolgáltatással](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20)című témakör lépéseit.
 
 - Az **Azure Blob Storage** használatához a Apache Spark konfigurációjának részeként beállíthat egy **Storage-fiók hozzáférési kulcsát** vagy egy **sas-tokent** a Databricks-fürtön. Kövesse az [Azure Blob Storage elérésének lépései a RDD API használatával](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)című témakör lépéseit.
 
@@ -79,7 +79,7 @@ A következő tulajdonságokat támogatja egy Azure Databricks Delta Lake társ�
 | :---------- | :----------------------------------------------------------- | :------- |
 | típus        | A Type tulajdonságot **AzureDatabricksDeltaLake** értékre kell beállítani. | Yes      |
 | domain      | Itt adhatja meg a Azure Databricks munkaterület URL-címét, például: `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
-| clusterId   | Egy meglévő fürthöz tartozó fürt AZONOSÍTÓjának megadására. Egy már létrehozott interaktív fürtnek kell lennie. <br>Az interaktív fürt Databricks munkaterületen található – > fürtök – > interaktív fürt neve – > Configuration-> címkék. [További információ](/azure/databricks/clusters/configure#cluster-tags). |          |
+| clusterId   | Egy meglévő fürthöz tartozó fürt AZONOSÍTÓjának megadására. Egy már létrehozott interaktív fürtnek kell lennie. <br>Az interaktív fürt Databricks munkaterületen található – > fürtök – > interaktív fürt neve – > Configuration-> címkék. [További információk](/azure/databricks/clusters/configure#cluster-tags). |          |
 | accessToken | A hozzáférési token szükséges ahhoz, hogy a Data Factory hitelesíthető legyen a Azure Databricks. A hozzáférési tokent a databricks munkaterületen kell létrehozni. A hozzáférési token megkeresésének részletes lépései [itt](/azure/databricks/dev-tools/api/latest/authentication#generate-token)találhatók. |          |
 | Connectvia tulajdonsággal  | Az adattárhoz való kapcsolódáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime-t használja. | No       |
 

@@ -4,12 +4,12 @@ description: Az erőforráscsoportok és erőforrások törlését ismerteti. Le
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 244d59ffc096b5e219e27fd376b07baecde3670e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8dd6c3f9ac178a518545a662eb94d33066f7614b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587661"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932726"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Erőforrás-csoport és erőforrás-törlés Azure Resource Manager
 
@@ -130,4 +130,4 @@ Ha rendelkezik a szükséges hozzáféréssel, de a törlési kérelem meghiúsu
 ## <a name="next-steps"></a>Következő lépések
 
 * A Resource Manager-fogalmak megismeréséhez tekintse meg az [Azure Resource Manager áttekintése](overview.md)című témakört.
-* A törlési parancsokért lásd: [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az-group-delete)és [REST API](/rest/api/resources/resourcegroups/delete).
+* A törlési parancsokért lásd: [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az-group-delete)és [REST API](/rest/api/resources/resources/resourcegroups/delete).

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan helyezheti át a privát felhőt az egyik előf
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.openlocfilehash: 608f46dbd84d6bb899a3e7fcd1f8a63b3a5e85fb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103555388"
 ---
 # <a name="move-ea-and-csp-azure-vmware-solution-subscriptions"></a>Az EA és a CSP Azure VMware megoldás-előfizetések áthelyezése

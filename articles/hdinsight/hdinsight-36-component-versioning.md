@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 0180f94109d01443390da363d9e09c5ad0b26d18
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 32b287c3d7b1974db5a079d1ee84aaafad3faed7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496116"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727688"
 ---
 # <a name="hdinsight-36-component-versions"></a>HDInsight 3,6 összetevő-verziók
 
@@ -19,20 +19,22 @@ Ebben a cikkben megismerheti a Apache Hadoop környezeti összetevőit és verzi
 
 ## <a name="support-for-hdinsight-36"></a>A HDInsight 3,6 támogatása
 
+2021. július 1-től a Microsoft alapszintű támogatás biztosít bizonyos HDI 3,6-fürtökhöz.
 Az alábbi táblázat felsorolja a HDInsight 3,6-fürtök támogatási időkeretét.
 
-| Fürt típusa                    | Keretrendszer verziója | Jelenlegi támogatás lejárata        | Új támogatás lejárati dátuma |
-|---------------------------------|-------------------|-----------------------------------|-----------------------------|
-| HDInsight 3,6 Hadoop            | 2.7.3             | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Spark             | 2.3               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Spark             | 2,2               | Kivonulás június 30-ig, 2020          |                             |
-| HDInsight 3,6 Spark             | 2.1               | Kivonulás június 30-ig, 2020          |                             |
-| HDInsight 3,6 Kafka             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Kafka             | 1.0               | 2020. június 30-án megszűnt.         |                             |
-| HDInsight 3,6 HBase             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 interaktív lekérdezés | 2.1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Storm             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 ML-szolgáltatások      | 9,3               | Dec. 31.2020                      | Dec. 31.2020                |
+| Fürt típusa                    | Keretrendszer verziója | Standard szintű támogatás lejárata       | alapszintű támogatás lejárati dátum | Nyugdíjazás dátuma |
+|---------------------------------|-------------------|-----------------------------------|------------------------------|-----------------|
+| HDInsight 3,6 Hadoop            | 2.7.3             | Június 30., 2021                     | 2022. április 3.                | 2022. április 4. |
+| HDInsight 3,6 Spark             | 2.3               | Június 30., 2021                     | 2022. április 3.                | 2022. április 4. |
+| HDInsight 3,6 Kafka             | 1.1               | Június 30., 2021                     | 2022. április 3.                | 2022. április 4. |
+| HDInsight 3,6 HBase             | 1.1               | Június 30., 2021                     | 2022. április 3.                | 2022. április 4. |
+| HDInsight 3,6 interaktív lekérdezés | 2.1               | Június 30., 2021                     | 2022. április 3.                | 2022. április 4. |
+| HDInsight 3,6 Storm             | 1.1               | Június 30., 2021                     | 2022. április 3.                | 2022. április 4. |
+| HDInsight 3,6 ML-szolgáltatások      | 9,3               | -                                 | -                            | December 31., 2020 |
+| HDInsight 3,6 Spark             | 2,2               | -                                 | -                            | Június 30., 2020 |
+| HDInsight 3,6 Spark             | 2.1               | -                                 | -                            | Június 30., 2020 |
+| HDInsight 3,6 Kafka             | 1.0               | -                                 | -                            | Június 30., 2020 |
+
 ## <a name="apache-components-available-with-hdinsight-version-36"></a>Az HDInsight 3,6-es verziójában elérhető Apache-összetevők
 
 A 3,6-es HDInsight társított OSS-összetevők verziói a következő táblázatban láthatók.

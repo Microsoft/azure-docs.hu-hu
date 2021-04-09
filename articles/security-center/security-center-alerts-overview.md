@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 5824457a9f2ce411a871b5e76802ecf2e2f106c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9d917b3682d3b503743e706e8c952854e86fbc5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099505"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727042"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Biztonsági riasztások és incidensek Azure Security Center
 
@@ -73,13 +73,12 @@ A Security Center súlyosságot rendel a riasztásokhoz, így könnyebben rangso
 > [!NOTE]
 > A riasztás súlyossága másképp jelenik meg a portálon, és a 01-01-2019-es dátumot tartalmazó REST API verzióiban. Ha az API egy régebbi verzióját használja, frissítsen az alább ismertetett konzisztens élményre.
 
-| Súlyosság          | Javasolt válasz                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Súlyosság          | Javasolt válasz      |
+|---|---|
 | **Magas**          | Nagy valószínűséggel az erőforrás biztonsága sérül. Azonnal megtekintheti. Security Center a kártékony szándék és a riasztás kibocsátására szolgáló megállapítások terén is nagy megbízhatósággal rendelkezik. Például egy olyan riasztás, amely észleli egy ismert kártékony eszköz, például a Mimikatz végrehajtását, a hitelesítő adatok ellopására szolgáló közös eszköz.                                                                                                               |
 | **Medium**        | Ez valószínűleg egy gyanús tevékenység, amely arra utalhat, hogy az erőforrás biztonsága sérül. Security Center az elemzésben vagy a keresésben a közepes és a rosszindulatú szándék megbízhatósága közepes és magas. Ezek általában gépi tanulás vagy anomália-alapú észlelések. Például egy rendellenes helyről érkező bejelentkezési kísérlet.                                                                                                                |
 | **Alacsony**           | Ez egy jóindulatú pozitív vagy tiltott támadás lehet. Security Center nem eléggé bízik abban, hogy a szándék rosszindulatú, és a tevékenység ártalmatlan lehet. A napló törlése például olyan művelet, amely akkor fordulhat elő, ha egy támadó megpróbálja elrejteni a zeneszámokat, de sok esetben a rendszergazdák által végrehajtott rutin művelet. Security Center általában nem derül ki, ha a támadások blokkolva lettek, kivéve, ha azt javasoljuk, hogy tekintse át a következőt:. |
-| **Tájékoztató** | A biztonsági incidensek részletezése során csak tájékoztató riasztások jelennek meg, vagy ha a REST API egy adott riasztási AZONOSÍTÓval használja. Az incidensek általában számos riasztásból állnak, amelyek némelyike csak tájékoztató jelleggel jelenhet meg, de a többi riasztás kontextusában érdemes lehet alaposabban megtekinteni.                                                                                                                         |  |
-|                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Tájékoztató** | A biztonsági incidensek részletezése során csak tájékoztató riasztások jelennek meg, vagy ha a REST API egy adott riasztási AZONOSÍTÓval használja. Az incidensek általában számos riasztásból állnak, amelyek némelyike csak tájékoztató jelleggel jelenhet meg, de a többi riasztás kontextusában érdemes lehet alaposabban megtekinteni.                                                                                                                         |
 
 ## <a name="export-alerts"></a>Riasztások exportálása
 

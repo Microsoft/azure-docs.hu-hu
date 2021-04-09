@@ -11,17 +11,17 @@ ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105544366"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Machine Learning naplózása és kezelése Azure Policy használatával
 
 A [Azure Policy](../governance/policy/index.yml) egy irányítási eszköz, amely lehetővé teszi, hogy az Azure-erőforrások megfeleljenek a szabályzatoknak. A Azure Machine Learning használatával a következő házirendeket rendelheti hozzá:
 
-| Szabályzat | Description |
+| Szabályzat | Leírás |
 | ----- | ----- |
 | **Ügyfél által felügyelt kulcs** | Annak naplózása vagy betartatása, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk. |
 | **Privát hivatkozás** | Annak naplózása vagy betartatása, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz. |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101722313"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hangminták rögzítése egyéni hang létrehozásához
@@ -112,7 +112,7 @@ A szerzői jogi törvények szerint a szerzői jog által védett szöveg elolva
 
 Szerencsére lehetséges elkerülni ezeket a problémákat. A szöveg számos forrást használhat engedély vagy licenc nélkül.
 
-|Szöveges forrás|Description|
+|Szöveges forrás|Leírás|
 |-|-|
 |[CMU Arctic Corpus](http://festvox.org/cmu_arctic/)|Az out-of-Copyright által kiválasztott 1100 mondatok kifejezetten a beszédfelismerési projektekben használhatók. Kiváló kiindulási pont.|
 |Már nem működik<br>szerzői jog|A általában a 1923-nél korábbi verziókban van közzétéve. Angol nyelven a [Project Gutenberg](https://www.gutenberg.org/) több tízezer ilyen munkát kínál. Érdemes lehet az újabb verzióra összpontosítani, mivel a nyelv közelebb lesz a modern angolhoz.|
@@ -163,14 +163,14 @@ Rekord: 44,1 kHz 16 bites egyszólamú (CD-minőség) vagy jobb. A jelenlegi leg
 
 Ideális esetben a különböző személyek a Director, a Engineering és a Talent szerepköreiben szolgálnak. Ne próbálja meg önállóan. Egy csipetnyi egy személy lehet az igazgató és a mérnök is.
 
-### <a name="before-the-session"></a>A munkamenet előtt
+### <a name="before-the-session&quot;></a>A munkamenet előtt
 
 A Studio-idő pazarlásának elkerülése érdekében a rögzítési munkamenet előtt futtassa a parancsfájlt a hangtehetséggel. Míg a hangtehetségek megismerik a szöveget, megtekinthetik az ismeretlen szavak kiejtését.
 
 > [!NOTE]
 > A legtöbb regisztráló stúdió a szkriptek elektronikus megjelenítését kínálja a rögzítési fülkében. Ebben az esetben közvetlenül a szkript dokumentumában adja meg a futtatási megjegyzéseit. Továbbra is azt szeretné, hogy a dokumentum másolata vegyen fel megjegyzéseket a munkamenet során. A mérnökök többsége is szeretne egy merevlemezt másolni. És továbbra is szeretne egy harmadik nyomtatott másolatot készíteni a tehetségről, ha a számítógép nem áll le.
 
-A hangalapú tehetség megkérdezheti, hogy melyik szót kívánja kiemelni ("operatív szó"). Mondja el nekik, hogy természetes olvasásra van szüksége, amely nem különösebb hangsúlyt mutat. Hangsúlyt adhat hozzá a beszéd szintetizálása során. nem lehet az eredeti rögzítés része.
+A hangalapú tehetség megkérdezheti, hogy melyik szót kívánja kiemelni (&quot;operatív szó"). Mondja el nekik, hogy természetes olvasásra van szüksége, amely nem különösebb hangsúlyt mutat. Hangsúlyt adhat hozzá a beszéd szintetizálása során. nem lehet az eredeti rögzítés része.
 
 A tehetséget elkülönítve kimondhatja a szavakat. A szkript minden szavát írásban kell kiejteni. A hangokat nem szabad kihagyni vagy összekeverni, ahogyan az az alkalmi beszédben gyakori, *kivéve, ha a parancsfájlban nem írták*.
 

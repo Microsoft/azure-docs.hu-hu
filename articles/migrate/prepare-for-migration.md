@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105558227"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
@@ -185,7 +185,7 @@ Helyszíni Linux rendszerű gépeken:
 
 Az áttelepítés után hajtsa végre a következő lépéseket a létrehozott Azure-beli virtuális gépeken:
 
-1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információ](../virtual-network/virtual-network-public-ip-address.md).
+1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információk](../virtual-network/virtual-network-public-ip-address.md).
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) .
 

@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104594784"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
@@ -443,7 +443,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet | Description |
+| Katalógus nézet | Leírás |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Egy sor az egyes oszlopokhoz. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Egy sor az adatbázis minden objektumához. |
@@ -457,7 +457,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény | Description |
+| System függvény | Leírás |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |A statisztikai objektum utolsó frissítésének dátuma. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Összegző szint és részletes információk az értékek eloszlásáról a statisztikai objektum által értelmezett módon. |
@@ -825,7 +825,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet                                                 | Description                                                  |
+| Katalógus nézet                                                 | Leírás                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Egy sor az egyes oszlopokhoz.                                     |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Egy sor az adatbázis minden objektumához.                     |
@@ -839,7 +839,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény                                              | Description                                  |
+| System függvény                                              | Leírás                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | A statisztikai objektum utolsó frissítésének dátuma. |
 

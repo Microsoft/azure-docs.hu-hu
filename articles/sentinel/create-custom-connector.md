@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
 ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101724353"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Erőforrások az Azure Sentinel egyéni összekötők létrehozásához
@@ -93,7 +93,7 @@ Hozzon létre egy [Azure Logic app](../logic-apps/index.yml) -kiszolgálót, ame
 
 1. A **Logic apps elindításához használja a következő eseményindítók egyikét**:
 
-    |Eseményindító  |Description  |
+    |Eseményindító  |Leírás  |
     |---------|---------|
     |**Ismétlődő feladat**     |   Például úgy ütemezze a logikai alkalmazást, hogy az adatok rendszeres lekérdezését meghatározott fájlokból, adatbázisokból vagy külső API-kból olvassa be. <br>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása Azure Logic Appsban](../connectors/connectors-native-recurrence.md).      |
     |**Igény szerinti indítás**     | Igény szerint futtathatja a logikai alkalmazást manuális adatgyűjtés és tesztelés céljából. <br>További információkért lásd:  [logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával](../logic-apps/logic-apps-http-endpoint.md).        |
