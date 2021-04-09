@@ -15,10 +15,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104577971"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
@@ -41,13 +41,13 @@ A szervezet létrehozásakor a kezdeti tartománynév (például "contoso.onmicr
 
 A szervezet elsődleges tartománynevét úgy módosíthatja, hogy bármely ellenőrzött egyéni tartomány legyen, amely nem összevont. A szervezet elsődleges tartományának módosítása nem módosítja a meglévő felhasználók felhasználónevét.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Egyéni tartománynevek hozzáadása az Azure AD-szervezethez
+## <a name="add-custom-domain-names-to-your-azure-ad-organization&quot;></a>Egyéni tartománynevek hozzáadása az Azure AD-szervezethez
 
 Legfeljebb 5000 felügyelt tartománynevet adhat hozzá. Ha az összes tartományt a helyszíni Active Directory segítségével konfigurálja az összevonáshoz, az egyes szervezetekben akár 2500 tartománynevet is hozzáadhat.
 
-## <a name="add-subdomains-of-a-custom-domain"></a>Egyéni tartomány altartományának hozzáadása
+## <a name=&quot;add-subdomains-of-a-custom-domain&quot;></a>Egyéni tartomány altartományának hozzáadása
 
-Ha egy altartománynevet (például "europe.contoso.com") szeretne felvenni a szervezetbe, először fel kell vennie és ellenőriznie kell a legfelső tartományt, például contoso.com. Az altartományt az Azure AD automatikusan ellenőrzi. Ha szeretné látni, hogy a hozzáadott altartomány ellenőrzése megtörtént, frissítse a tartomány listáját a böngészőben.
+Ha egy altartománynevet (például &quot;europe.contoso.com") szeretne felvenni a szervezetbe, először fel kell vennie és ellenőriznie kell a legfelső tartományt, például contoso.com. Az altartományt az Azure AD automatikusan ellenőrzi. Ha szeretné látni, hogy a hozzáadott altartomány ellenőrzése megtörtént, frissítse a tartomány listáját a böngészőben.
 
 Ha már hozzáadott egy contoso.com-tartományt egy Azure AD-szervezethez, akkor azt is ellenőrizheti, hogy egy másik Azure AD-szervezet altartománya is europe.contoso.com. Az altartomány hozzáadásakor a rendszer kéri, hogy adjon hozzá egy TXT-rekordot a DNS-szolgáltatóhoz.
 

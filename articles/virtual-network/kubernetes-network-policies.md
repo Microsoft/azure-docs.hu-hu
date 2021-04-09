@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594969"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati házirendjeinek áttekintése
@@ -112,7 +112,7 @@ A felhasználók korábban csak a parancssorban futtatott paranccsal tudtak megi
 ### <a name="supported-metrics"></a>Támogatott metrikák
 A támogatott metrikák listája a következő:
 
-|Metrika neve |Description  |Prometheus-metrika típusa  |Címkék  |
+|Metrika neve |Leírás  |Prometheus-metrika típusa  |Címkék  |
 |---------|---------|---------|---------|
 |`npm_num_policies`     |hálózati házirendek száma          |Kijelző         |-         |
 |`npm_num_iptables_rules`     | Iptables-szabályok száma     | Kijelző        |-         |         

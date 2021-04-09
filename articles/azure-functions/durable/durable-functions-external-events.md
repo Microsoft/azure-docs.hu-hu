@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti a külső eseményeket a Azure Functi
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7625a6fcd1000595c2c582935c839ba6d26b20d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99576329"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728487"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Külső események Durable Functionsban való feldolgozása (Azure Functions)
 
@@ -20,7 +20,7 @@ A Orchestrator függvények megvárhatják és megfigyelheti a külső eseménye
 
 ## <a name="wait-for-events"></a>Várakozás az eseményekre
 
-A [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.net), `waitForExternalEvent` (JavaScript) és `wait_for_external_event` (Python) metódusok a [hangvezérelt eseményindítóhoz kötés](durable-functions-bindings.md#orchestration-trigger) lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
+A [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy&preserve-view=true) (.net), `waitForExternalEvent` (JavaScript) és `wait_for_external_event` (Python) metódusok a [hangvezérelt eseményindítóhoz kötés](durable-functions-bindings.md#orchestration-trigger) lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,7 +230,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>Események küldése
 
-A [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.net) vagy a `raiseEventAsync` (JavaScript) metódus használatával külső eseményt küldhet egy előkészítési folyamatba. Ezeket a metódusokat a koordináló [ügyfél](durable-functions-bindings.md#orchestration-client) kötése teszi elérhetővé. A beépített [Event http API](durable-functions-http-api.md#raise-event) -t is használhatja, hogy külső eseményt küldjön egy előkészítési folyamatnak.
+A [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy&preserve-view=true) (.net) vagy a `raiseEventAsync` (JavaScript) metódus használatával külső eseményt küldhet egy előkészítési folyamatba. Ezeket a metódusokat a koordináló [ügyfél](durable-functions-bindings.md#orchestration-client) kötése teszi elérhetővé. A beépített [Event http API](durable-functions-http-api.md#raise-event) -t is használhatja, hogy külső eseményt küldjön egy előkészítési folyamatnak.
 
 A kiváltott események közé tartozik egy *példány-azonosító*, egy *EventName* és egy *eventData* paraméterként. A Orchestrator függvények ezeket az eseményeket a `WaitForExternalEvent` (.net) vagy `waitForExternalEvent` (JavaScript) API-k használatával kezelik. A *eventName* meg kell egyeznie a küldő és a fogadó végponttal, hogy az esemény feldolgozható legyen. Az eseménynek is JSON-szerializálható kell lennie.
 

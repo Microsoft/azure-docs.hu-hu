@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9a7028dfaeb94e87366de7acfa8cebc4c2f4c767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac359e73ae71fd2163fb178caab4a2b5f908a008
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98746824"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057456"
 ---
 # <a name="extend-the-iot-plug-and-play-bridge"></a>A IoT Plug and Play-híd kiterjesztése
 A [IoT Plug and Play-híd](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) lehetővé teszi az átjáróhoz csatlakoztatott meglévő eszközök csatlakoztatását az IoT hubhoz. A Bridge használatával képezhető le a csatlakoztatott eszközökre a IoT Plug and Play-adapterek. A IoT Plug and Play felület határozza meg az eszköz által küldött telemetria, az eszköz és a felhő között szinkronizált tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. A nyílt forráskódú híd alkalmazást Windows-vagy Linux-átjárón is telepítheti és konfigurálhatja. Emellett a híd Azure IoT Edge futtatókörnyezeti modulként is futtatható.
