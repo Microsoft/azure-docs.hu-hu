@@ -160,8 +160,6 @@
       href: fslogix-containers-azure-files.md
     - name: FSLogix-profiltárolók tárolási lehetőségei
       href: store-fslogix-profile.md
-    - name: Partnerintegrációk
-      href: partners.md
     - name: Windows Virtual Desktop – gyakori kérdések
       href: faq.md
     - name: A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések

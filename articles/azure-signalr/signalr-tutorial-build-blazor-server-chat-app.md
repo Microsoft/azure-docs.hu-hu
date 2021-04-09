@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: b0059e986b9a6ba8152a1a61f8d696f1caa4646a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1423e8aaf4b50db94cda0b935a7b1658249893e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97755905"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726345"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Oktatóanyag: a blézer-kiszolgáló csevegési alkalmazásának létrehozása
 
@@ -361,7 +361,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure-ban
 
-   Eddig a Blazer-alkalmazás a helyi jelzőn dolgozik, és a Azure App Service való üzembe helyezéskor azt javasoljuk, hogy az [Azure signaler szolgáltatást](/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service) használja, amely lehetővé teszi, hogy a Blaze-kiszolgáló alkalmazások nagy számú egyidejű szignáló kapcsolatra legyenek felskálázása. Emellett a Signaler szolgáltatás globális elérhetősége és a nagy teljesítményű adatközpontok jelentős mértékben segítik a földrajzi elhelyezkedés miatti késés csökkentését.
+   Eddig a Blazer-alkalmazás a helyi jelzőn dolgozik, és a Azure App Service való üzembe helyezéskor azt javasoljuk, hogy az [Azure signaler szolgáltatást](/aspnet/core/signalr/scale#azure-signalr-service) használja, amely lehetővé teszi, hogy a Blaze-kiszolgáló alkalmazások nagy számú egyidejű szignáló kapcsolatra legyenek felskálázása. Emellett a Signaler szolgáltatás globális elérhetősége és a nagy teljesítményű adatközpontok jelentős mértékben segítik a földrajzi elhelyezkedés miatti késés csökkentését.
 
 > [!IMPORTANT]
 > A Blazer Server alkalmazásban a felhasználói felületi állapotok a kiszolgáló oldalon maradnak, ami azt jelenti, hogy ebben az esetben szükség van a kiszolgáló Sticky-ra. Ha van egyetlen app Server-kiszolgáló, a rendszer a kiszolgáló Sticky-ot is biztosítja a tervezéshez. Ha azonban több App-kiszolgáló is van, előfordulhat, hogy az ügyfél-egyeztetés és a kapcsolódás különböző kiszolgálókra mutat, és felhasználói felületi hibákhoz vezet a Blazer alkalmazásban. Ezért a következőhöz hasonlóan kell engedélyeznie a kiszolgálót `appsettings.json` :
@@ -385,7 +385,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
    A szolgáltatás függősége az alábbi műveleteket hajtja végre, hogy az alkalmazás automatikusan váltson az Azure Signaler szolgáltatásra az Azure-ban.
 
-   * Frissítsen [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) Az Azure signaler szolgáltatás használatára.
+   * Frissítsen [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) Az Azure signaler szolgáltatás használatára.
    * Adja hozzá az Azure Signaler szolgáltatás NuGet csomagjának hivatkozását.
    * Módosítsa a profil tulajdonságait a függőségi beállítások mentéséhez.
    * A titkok tárolásának beállítása a választott lehetőségektől függ.
@@ -423,10 +423,10 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    }
    ```
 
-1. Az Azure Signaler szolgáltatás konfigurálása `ConnectionString` a vagy a-ben a `appsetting.json` [Secret Manager](/aspnet/core/security/app-secrets?tabs=visual-studio&view=aspnetcore-3.1#secret-manager) eszközzel
+1. Az Azure Signaler szolgáltatás konfigurálása `ConnectionString` a vagy a-ben a `appsetting.json` [Secret Manager](/aspnet/core/security/app-secrets?tabs=visual-studio#secret-manager) eszközzel
 
 > [!NOTE]
-> A 2. lépés a [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) signaler SDK-val való használatával helyettesíthető.
+> A 2. lépés a [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) signaler SDK-val való használatával helyettesíthető.
 > 
 > 1. Konfiguráció hozzáadása az Azure Signaler szolgáltatás bekapcsolásához `appsetting.json`
 >    ```js

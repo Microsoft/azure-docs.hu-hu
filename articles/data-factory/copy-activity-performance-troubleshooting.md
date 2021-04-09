@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
 ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104584400"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
@@ -48,7 +48,7 @@ A teljesítmény-hangolási tippek jelenleg a következő esetekben nyújtanak j
 
 A másolási tevékenység figyelése nézet alján a végrehajtás részletei és időtartama a másolási tevékenység lépéseit ismerteti (lásd a cikk elején található példát), amely különösen hasznos a másolási teljesítmény hibaelhárításához. A másolási Futtatás szűk keresztmetszete a leghosszabb időtartamú. Tekintse meg az alábbi táblázatot az egyes fázisok definíciójában, és Ismerje meg, hogyan lehet [elhárítani a másolási tevékenységet a Azure IR](#troubleshoot-copy-activity-on-azure-ir) és a [másolási tevékenységet a saját](#troubleshoot-copy-activity-on-self-hosted-ir) üzemeltetésű integrációs modulban az ilyen adatokkal.
 
-| Fázis           | Description                                                  |
+| Fázis           | Leírás                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Üzenetsor           | Az az eltelt idő, amíg a másolási tevékenység ténylegesen nem indul el az integrációs modulban. |
 | Másolás előtti parancsfájl | A másolási tevékenység és a másolási tevékenység közötti eltelt idő a fogadó adattárban lévő előmásolási parancsfájl végrehajtásának befejezése után. Az adatbázis-nyelők előmásolási parancsfájljának konfigurálásakor alkalmazza, például amikor az adatírást Azure SQL Database az új Adatmásolás előtt törli az adatbevitelt. |

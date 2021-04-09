@@ -6,10 +6,10 @@ ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589540"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
@@ -449,13 +449,13 @@ A betöltési mintavételezés nem működik, miközben az adaptív vagy a rögz
 > [!WARNING]
 > A portál csempén megjelenő érték jelzi a betöltési mintavételezéshez beállított értéket. Nem felel meg a tényleges mintavételezési aránynak, ha az SDK-mintavétel (adaptív vagy rögzített arányú mintavétel) folyamatban van.
 
-## <a name="when-to-use-sampling"></a>Mikor kell használni a mintavételezést
+## <a name="when-to-use-sampling&quot;></a>Mikor kell használni a mintavételezést
 
 Általánosságban elmondható, hogy a legtöbb kis-és közepes méretű alkalmazáshoz nem kell mintavételezést végeznie. A leghasznosabb diagnosztikai információk és a legpontosabb statisztikák a felhasználói tevékenységekre vonatkozó adatgyűjtéssel szerezhetők be. 
 
 A mintavétel fő előnyei a következők:
 
-* Application Insights a szolgáltatás elveszíti az adatpontokat ("szabályozások"), amikor az alkalmazás nagyon nagy telemetria rövid idő alatt küldi el. A mintavétel csökkenti annak a valószínűségét, hogy az alkalmazás a szabályozást fogja látni.
+* Application Insights a szolgáltatás elveszíti az adatpontokat (&quot;szabályozások"), amikor az alkalmazás nagyon nagy telemetria rövid idő alatt küldi el. A mintavétel csökkenti annak a valószínűségét, hogy az alkalmazás a szabályozást fogja látni.
 * Az adatpontok [kvótáján](pricing.md) belül megtarthatja az árképzési szintet. 
 * A telemetria-gyűjtemény hálózati forgalmának csökkentése érdekében. 
 

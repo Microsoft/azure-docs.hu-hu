@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 41827c5db58f3d4755fb34e46067357cd0255676
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: a24b39107d8f78c049afa230fe678ec92852eeb0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959687"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-parancsfájlok IoT Edge Linux rendszerhez Windows rendszeren
 
@@ -41,7 +41,7 @@ Az **Deploy-eFlow** parancs a fő telepítési módszer. Az üzembe helyezési p
 | regisztrációban | Meglévő IoT Edge eszköz regisztrációs azonosítója | IoT Edge-eszköz (**X509** vagy **szimmetrikus**) kiépítési regisztrációs azonosítója. |
 | identityCertLocVm | Könyvtár elérési útja; olyan mappában kell lennie, amely a szolgáltatás tulajdonában van `iotedge` | Az IoT Edge eszköz (**X509** vagy **szimmetrikus**) üzembe helyezéséhez használt virtuális gépen található Identity tanúsítvány abszolút célhelyének elérési útja. |
 | identityCertLocWin | Könyvtár elérési útja | Az identitási tanúsítvány abszolút forrásának elérési útja a Windowsban IoT Edge eszköz (**X509** vagy **szimmetrikus**) kiépítés céljából. |
-| identityPkLocVm |  | Könyvtár elérési útja; olyan mappában kell lennie, amely a szolgáltatás tulajdonában van `iotedge` | A IoT Edge eszköz (**X509** vagy **szimmetrikus**) üzembe helyezéséhez használt virtuális gépen található Identity Private-kulcs abszolút célhelyének elérési útja. |
+| identityPkLocVm | Könyvtár elérési útja; olyan mappában kell lennie, amely a szolgáltatás tulajdonában van `iotedge` | A IoT Edge eszköz (**X509** vagy **szimmetrikus**) üzembe helyezéséhez használt virtuális gépen található Identity Private-kulcs abszolút célhelyének elérési útja. |
 | identityPkLocWin | Könyvtár elérési útja | Az identitás titkos kulcsának abszolút forrásának elérési útja a Windowsban IoT Edge eszköz (**X509** vagy **szimmetrikus**) kiépítési állapotához. |
 | vmSizeDefintion | Legfeljebb 30 karakter hosszú lehet | A virtuális gép magok számának és a rendelkezésre álló RAM-nak a meghatározása. **Alapértelmezett érték**: Standard_K8S_v1. |
 | vmDiskSize | 8 GB és 256 GB között | A dinamikusan bővülő virtuális merevlemez maximális mérete. **Alapértelmezett érték**: 16 GB. |
@@ -74,7 +74,7 @@ A **kiépítés-EflowVm** parancs hozzáadja a IoT Edge eszköz kiépítési ada
 | regisztrációban | Meglévő IoT Edge eszköz regisztrációs azonosítója | IoT Edge eszköz (**DPS**) kiépítési regisztrációs azonosítója. |
 | identityCertLocVm | Könyvtár elérési útja; olyan mappában kell lennie, amely a szolgáltatás tulajdonában van `iotedge` | A virtuális gépen lévő Identity tanúsítvány abszolút célhelyének elérési útja egy IoT Edge eszköz kiépítési céljára (**DPS**, **X509**). |
 | identityCertLocWin | Könyvtár elérési útja | A Windows rendszerű identitás-tanúsítvány abszolút forrásának elérési útja IoT Edge eszköz kiépítési céljára (**DPS**, **X509**). |
-| identityPkLocVm |  | Könyvtár elérési útja; olyan mappában kell lennie, amely a szolgáltatás tulajdonában van `iotedge` | A virtuális gépen lévő Identity Private-kulcs abszolút célhelyének elérési útja egy IoT Edge eszköz kiépítési céljára (**DPS**, **X509**). |
+| identityPkLocVm  | Könyvtár elérési útja; olyan mappában kell lennie, amely a szolgáltatás tulajdonában van `iotedge` | A virtuális gépen lévő Identity Private-kulcs abszolút célhelyének elérési útja egy IoT Edge eszköz kiépítési céljára (**DPS**, **X509**). |
 | identityPkLocWin | Könyvtár elérési útja | Az identitás titkos kulcsának abszolút forrásának elérési útja a Windowsban egy IoT Edge eszköz kiépítési (**DPS**, **X509**) létesítéséhez. |
 
 ## <a name="get-eflowvmname"></a>Get-EflowVmName

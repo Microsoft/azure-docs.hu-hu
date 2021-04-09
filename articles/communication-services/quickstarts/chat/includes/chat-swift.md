@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: ddc43d9a030b85f8a1becd4be2573303207ad345
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: b7bf924ba8514aa8da1d466ea4852f3f9caaf646
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107034"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726653"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -275,5 +275,4 @@ Cserélje le az helyére az `<USER ID>` eltávolítandó résztvevő kommunikác
 ## <a name="run-the-code"></a>A kód futtatása
 
 A Xcode nyomja meg a Futtatás gombot a projekt felépítéséhez és futtatásához. A konzolon megtekintheti a kód kimenetét és a ChatClient származó naplózó kimenetet.
-
 

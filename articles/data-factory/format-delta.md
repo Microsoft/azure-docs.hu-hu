@@ -4,14 +4,14 @@ description: Adatok átalakítása és áthelyezése egy Delta-tótól a külön
 author: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 03/26/2020
 ms.author: daperlov
-ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74df809f2206a105b405ba184949ef887096ebc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100386492"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932505"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Különbözeti formátum a Azure Data Factoryban
 
@@ -75,6 +75,8 @@ Az alábbi táblázatban a különbözeti fogadó által támogatott tulajdonsá
 | Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | `Optimal` vagy `Fastest` | compressionLevel |
 | Vacuum | A tábla régebbi verziói esetében a megőrzési küszöbértéket órában kell megadni. 0 vagy kevesebb alapértelmezett érték 30 nap. | igen | Egész szám | vákuum |
 | Frissítési módszer | Itt adhatja meg, hogy mely frissítési műveletek engedélyezettek a Delta-tavon. A nem beszúrt metódusok esetében a sorok megjelöléséhez egy előző módosítási sor átalakítására van szükség. | igen | `true` vagy `false` | törölhető <br> Insertable <br> frissíthető <br> Körlevél |
+| Optimalizált írás | Az írási művelethez nagyobb átviteli sebességet érhet el, a belső Shuffle-t a Spark-végrehajtók optimalizálása révén. Ennek eredményeképpen előfordulhat, hogy kevesebb partíciót és fájlt kell megfigyelni, amely nagyobb méretű | nem | `true` vagy `false` | optimizedWrite: true |
+| Automatikus tömörítés | Az írási műveletek befejezését követően a Spark automatikusan végrehajtja a ```OPTIMIZE``` parancsot az adat újraszervezéséhez, így szükség esetén további partíciókat eredményez, így a jövőben jobb olvasási teljesítményt nyújt. | nem | `true` vagy `false` |   autocompact: igaz |
 
 ### <a name="delta-sink-script-example"></a>Példa a különbözeti fogadó parancsfájlra
 

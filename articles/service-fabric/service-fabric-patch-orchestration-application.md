@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102614411"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer javítása a Service Fabric-fürtben
@@ -370,7 +370,7 @@ Ha meg szeretné ismerni, hogy a frissítések hogyan folytatódnak egy adott cs
 
    Ha további problémák is megtalálhatók, jelentkezzen be a virtuális gépre vagy virtuális gépekre, és ismerkedjen meg velük a Windows-eseménynaplók használatával. A korábban említett javítási feladat csak a következő végrehajtó alállapotokban létezhet:
 
-      ExecutorSubState | Description
+      ExecutorSubState | Leírás
     -- | -- 
       Nincs = 1 |  Azt jelenti, hogy nem volt folyamatban művelet a csomóponton. Lehet, hogy az állapot átmeneti állapotban van.
       DownloadCompleted = 2 | Azt jelenti, hogy a letöltési művelet sikerrel, részleges meghibásodással vagy meghibásodással fejeződött be.

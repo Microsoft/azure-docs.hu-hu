@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 8eaa5c0bee007d9fd253f42bcdccdd31f68bd0f5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 1627ba106ed9a035627f425d1c8fce47e5794762
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107132"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958226"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ dotnet build
 Miközben még mindig az alkalmazás könyvtárában van, telepítse a .NET-csomaghoz készült Azure Communication Services Identity Library-t a `dotnet add package` paranccsal.
 
 ```console
-dotnet add package Azure.Communication.Identity --version 1.0.0-beta.5
+dotnet add package Azure.Communication.Identity --version 1.0.0
 ```
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása

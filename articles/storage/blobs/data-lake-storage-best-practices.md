@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 937048ce14b9b05b55cd8d76e7a8c1fd67c63e4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95913555"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933708"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Ajánlott eljárások Azure Data Lake Storage Gen2 használatához
 
-Ebben a cikkben megismerheti a Azure Data Lake Storage Gen2 használatának ajánlott eljárásait és szempontjait. Ez a cikk a Data Lake Storage Gen2 biztonságával, teljesítményével, rugalmasságával és figyelésével kapcsolatos információkat tartalmaz. Data Lake Storage Gen2 előtt a valóban big data olyan szolgáltatásokkal, mint az Azure HDInsight, összetett volt. Több blob Storage-fiókba kellett átméreteznie az adatmennyiséget, hogy a petabyte tárolás és az optimális teljesítmény legyen elérhető. Data Lake Storage Gen2 támogatja az egyéni fájlméretet olyan magas szintű 5TB, amely a teljesítményre vonatkozó nagy mennyiségű korlátozást eltávolította. Azonban továbbra is vannak olyan megfontolások, amelyeket ez a cikk ismertet, hogy a lehető legjobb teljesítményt kapja Data Lake Storage Gen2.
+Ebben a cikkben megismerheti a Azure Data Lake Storage Gen2 használatának ajánlott eljárásait és szempontjait. Ez a cikk a Data Lake Storage Gen2 biztonságával, teljesítményével, rugalmasságával és figyelésével kapcsolatos információkat tartalmaz. Data Lake Storage Gen2 előtt a valóban big data olyan szolgáltatásokkal, mint az Azure HDInsight, összetett volt. Több blob Storage-fiókba kellett átméreteznie az adatmennyiséget, hogy a petabyte tárolás és az optimális teljesítmény legyen elérhető. Data Lake Storage Gen2 támogatja az egyes fájlméreteket, mint a 190,7 TiB, és a teljesítményük nagy része el lett távolítva. Azonban továbbra is vannak olyan megfontolások, amelyeket ez a cikk ismertet, hogy a lehető legjobb teljesítményt kapja Data Lake Storage Gen2.
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
