@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98019618"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Functions kimenete
@@ -21,7 +21,7 @@ Stream Analytics Azure Functions kimenete nem érhető el az Azure China 21Viane
 
 A Azure Stream Analytics HTTP-eseményindítók használatával hívja meg Azure Functions. A Azure Functions kimeneti adapter a következő konfigurálható tulajdonságokkal érhető el:
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | --- | --- |
 | Függvényalkalmazás |A Azure Functions alkalmazás neve. |
 | Függvény |A függvény neve a Azure Functions alkalmazásban. |

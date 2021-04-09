@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97654030"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -48,7 +48,7 @@ A **claimType** elem a következő attribútumot tartalmazza:
 
 A **claimType** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
 | DataType | 1:1 | A jogcím típusa. |
@@ -66,7 +66,7 @@ PredicateValidationReference| 0:1 | Egy **PredicateValidationsInput** elemre mut
 
 Az **adattípus** elem a következő értékeket támogatja:
 
-| Típus | Description |
+| Típus | Leírás |
 | ------- | ----------- |
 |boolean|Egy logikai ( `true` vagy `false` ) értéket jelöl.|
 |dátum| Egy azonnali időpontot jelöl, amely általában nap dátumként van kifejezve. A dátum értéke az ISO 8601 konvenciót követi.|
@@ -84,7 +84,7 @@ Az **adattípus** elem a következő értékeket támogatja:
 
 A **DefaultPartnerClaimTypes** a következő elemet tartalmazhatja:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Protokoll | 1: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
 
@@ -171,7 +171,7 @@ A **korlátozási** elem a következő attribútumot is tartalmazhatja:
 
 A **korlátozási** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Enumerálás | 1: n | A felhasználó felhasználói felületének elérhető beállításai, amelyek kiválaszthatják a jogcímek, például a legördülő lista értékét. |
 | Mintázat | 1:1 | A használandó reguláris kifejezés. |
@@ -243,7 +243,7 @@ A Azure AD B2C számos felhasználói beviteli típust támogat, például a sz�
 
 A **UserInputType** elem elérhető felhasználói bemeneti típusok:
 
-| UserInputType | Támogatott ClaimType | Description |
+| UserInputType | Támogatott ClaimType | Leírás |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Többszörös kijelölés legördülő lista A jogcím értéke a kijelölt értékek vesszővel elválasztó karakterláncában jelenik meg. |
 |DateTimeDropdown | `date`, `dateTime` |Legördülő menüből kiválaszthatja a napot, a hónapot és az évet. |
