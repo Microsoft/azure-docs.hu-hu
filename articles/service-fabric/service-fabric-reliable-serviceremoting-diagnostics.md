@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791761"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és Teljesítményfigyelés a megbízható szolgáltatás táveléréséhez
@@ -74,7 +74,7 @@ Az előző példában a `ivoicemailboxservice.leavemessageasync` metódus neve a
 
 A megbízható szolgáltatási futtatókörnyezet a szolgáltatási módszerek végrehajtásával kapcsolatos következő teljesítményszámlálók közzétételét teszi közzé.
 
-| Kategória neve | Számláló neve | Description |
+| Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
 | Service Fabric szolgáltatási módszer |Hívás/mp |A szolgáltatás metódusának meghívásakor meghívott idő másodpercenkénti száma |
 | Service Fabric szolgáltatási módszer |Hívás átlagos száma ezredmásodpercben |A szolgáltatás metódusának végrehajtásához szükséges idő ezredmásodpercben |
@@ -83,7 +83,7 @@ A megbízható szolgáltatási futtatókörnyezet a szolgáltatási módszerek v
 ### <a name="service-request-processing-performance-counters"></a>Szolgáltatási kérelmek feldolgozási teljesítményszámlálói
 Ha egy ügyfél Service proxy-objektumon keresztül hív meg egy metódust, akkor a rendszer a hálózaton keresztül küldi el a távelérési szolgáltatásnak küldött kérési üzenetet. A szolgáltatás feldolgozza a kérelem üzenetét, és visszaküldi a választ az ügyfélnek. A megbízható ServiceRemoting-futtatókörnyezet a következő teljesítményszámlálók közzétételét teszi közzé a szolgáltatási kérelmek feldolgozásával kapcsolatban.
 
-| Kategória neve | Számláló neve | Description |
+| Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
 | Service Fabric szolgáltatás |függőben lévő kérelmek száma |A szolgáltatásban feldolgozott kérelmek száma |
 | Service Fabric szolgáltatás |Kérelmek átlagos száma ezredmásodpercben |A szolgáltatás által a kérelem feldolgozásához szükséges idő (ezredmásodpercben) |

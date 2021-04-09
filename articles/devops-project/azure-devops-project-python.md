@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 99ca60f2610d34d194c50e92501c0126a7c80323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102566549"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása a Pythonhoz az Azure DevOps Starter-vel

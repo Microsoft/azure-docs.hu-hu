@@ -12,10 +12,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: a084b8d14acc02c67b0678cd7fa9e5993b629a51
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104578523"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
@@ -137,7 +137,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Ahol: | Description |
+> |Ahol: | Leírás |
 > |---------|---------|
 > | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
@@ -159,7 +159,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Ahol:| Description |
+> |Ahol:| Leírás |
 > |---------|---------|
 > | `_scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 
@@ -174,7 +174,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Ahol: | Description |
+> |Ahol: | Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 > | `firstAccount` | A gyorsítótár első felhasználóját határozza meg (az MSAL több felhasználót támogat egy alkalmazásban). |

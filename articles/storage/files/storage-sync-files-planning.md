@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 85d5d5b484163c4c65e7ec14c5d5ce5aea339669
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104593203"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
@@ -311,7 +311,7 @@ További információ az átvitel közbeni titkosításról: [biztonságos átvi
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>A standard fájlmegosztás engedélyezése akár 100 TiB-re is terjedhet
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+#### <a name="regional-availability"></a>Regionális elérhetőség
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Az Azure file Sync régió rendelkezésre állása
@@ -332,7 +332,7 @@ Ha hozzáférést szeretne kérni ezeknek a régióknak, kövesse a [jelen dokum
 > [!Important]  
 > A Geo-redundáns és a Geo-zónás redundáns tárolás lehetővé tenné a tárolók manuális feladatátvételét a másodlagos régióba. Azt javasoljuk, hogy az adatvesztés nagyobb valószínűsége miatt ne hajtsa végre ezt a katasztrófán kívül, ha Azure File Sync használ. Abban az esetben, ha a tároló manuális feladatátvételét szeretné elindítani, meg kell nyitnia egy támogatási esetet a Microsofttal, hogy Azure File Sync a másodlagos végponttal való szinkronizálás folytatásához.
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 Ha van meglévő Windows Server-2012R2 vagy újabb, Azure File Sync közvetlenül is telepíthető, anélkül, hogy az új kiszolgálóra kellene áthelyeznie az adatátvitelt. Ha a Azure File Sync bevezetésének részeként egy új Windows-fájlkiszolgálón kíván áttelepítést végezni, vagy ha az adatai jelenleg a hálózati csatlakoztatott tárolóban (NAS) találhatók, akkor a rendszer több lehetséges áttelepítési módszert is használ az ilyen típusú adatAzure File Syncek használatára. Milyen áttelepítési megközelítést kell választania, attól függ, hogy az adatok hol találhatók. 
 
 Tekintse meg a [Azure file Sync és az Azure file share áttelepítésének áttekintése című](storage-files-migration-overview.md) cikket, ahol részletes útmutatást talál a forgatókönyvhöz.

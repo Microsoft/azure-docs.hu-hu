@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104772552"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
@@ -36,11 +36,11 @@ Három dedikált beépített Azure Sentinel-szerepkör található.
 
 **Az Azure Sentinel beépített szerepkörei olvasási hozzáférést biztosítanak az Azure Sentinel-munkaterület adataihoz.**
 
-- Az [Azure Sentinel Reader](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) képes megtekinteni az adatforrásokat, az incidenseket, a munkafüzeteket és az egyéb Azure Sentinel-erőforrásokat.
+- Az [Azure Sentinel Olvasó](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) szerepkörhöz tartozó felhasználók megtekintheti az adatokat, incidenseket, munkafüzeteket és más Azure Sentinel-erőforrásokat.
 
-- Az [Azure Sentinel-válaszadó](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) a fentiek mellett az incidensek (hozzárendelés, Elvetés stb.) kezelésére is képes.
+- Az [Azure Sentinel Válaszadó](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) szerepkörhöz tartozó felhasználók a fentieken kívül kezelhetik (hozzárendelhetik, elutasíthatják stb.) is az incidenseket.
 
-- Az [Azure Sentinel közreműködő](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) a fentiek kiegészítéseként létrehozhat és szerkeszthet munkafüzeteket, elemzési szabályokat és más Azure Sentinel-erőforrásokat.
+- Az [Azure Sentinel Közreműködő](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) szerepkörhöz tartozó felhasználók a fentieken kívül létrehozhatnak és szerkeszthetnek munkafüzeteket, elemzési szabályokat és más Azure Sentinel-erőforrásokat is.
 
 - Az [Azure Sentinel Automation közreműködője](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) lehetővé teszi az Azure Sentinel számára az automatizálási szabályokhoz való hozzáadását. Ez a felhasználói fiókok esetében nem jelent meg.
 

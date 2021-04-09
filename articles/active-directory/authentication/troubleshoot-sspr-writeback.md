@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98682237"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Az önkiszolgáló jelszó-visszaállítási visszaírási hibáinak megoldása Azure Active Directory
@@ -155,7 +155,7 @@ Az ajánlott eljárás, ha a jelszó visszaírási kapcsolatos problémák elhá
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Ha az esemény forrása ADSync
 
-| Code | Név vagy üzenet | Description |
+| Code | Név vagy üzenet | Leírás |
 | --- | --- | --- |
 | 6329 | ÓVADÉK: MMS (4924) 0x80230619: "A korlátozás megakadályozza a jelszó módosítását az aktuálisan megadott értékre." | Ez az esemény akkor fordul elő, ha a Password visszaírási szolgáltatás olyan jelszót próbál meg beállítani a helyi címtárban, amely nem felel meg a tartomány jelszavának életkora, előzményei, összetettsége vagy szűrési követelményeinek. <br> <br> Ha a jelszó minimális kora, és a közelmúltban módosította a jelszót az adott időkereten belül, nem tudja újra módosítani a jelszót, amíg el nem éri a megadott kort a tartományban. Tesztelési célból a minimális korhatárt 0-ra kell állítani. <br> <br> Ha engedélyezve van a jelszó-előzményekre vonatkozó követelmények, ki kell választania az utolsó *N* -időpontban nem használt jelszót, ahol *N* a korábbi jelszavakat tartalmazó beállítás. Ha olyan jelszót választ, amelyet az utolsó *N* alkalommal használt, akkor ebben az esetben hiba jelenik meg. Tesztelési célból a korábbi jelszavakat 0-ra kell állítani. <br> <br> Ha a jelszó bonyolultságára vonatkozó követelményekkel rendelkezik, mindegyiket kényszeríti a rendszer, amikor a felhasználó megpróbál változtatni vagy alaphelyzetbe állítani egy jelszót. <br> <br> Ha engedélyezve vannak a jelszavas szűrők, és a felhasználó olyan jelszót választ, amely nem felel meg a szűrési feltételeknek, akkor az Alaphelyzetbe állítás vagy a módosítás művelet meghiúsul. |
 | 6329 | MMS (3040): admaexport. cpp (2837): a kiszolgáló nem tartalmazza az LDAP-jelszó házirendjének vezérlőjét. | Ez a probléma akkor fordul elő, ha LDAP_SERVER_POLICY_HINTS_OID vezérlő (1.2.840.113556.1.4.2066) nincs engedélyezve a tartományvezérlőn. A jelszó-visszaírási funkció használatához engedélyeznie kell a vezérlőt. Ehhez a tartományvezérlőknek Windows Server 2008R2 vagy újabb rendszeren kell lenniük. |
@@ -163,7 +163,7 @@ Az ajánlott eljárás, ha a jelszó visszaírási kapcsolatos problémák elhá
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Ha az esemény forrása PasswordResetService
 
-| Code | Név vagy üzenet | Description |
+| Code | Név vagy üzenet | Leírás |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Ez az esemény azt jelzi, hogy a helyszíni szolgáltatás új jelszó kérését észlelte egy összevont, átmenő hitelesítés vagy jelszó-kivonatoló szinkronizált felhasználó számára, amely a felhőből származik. Ez az esemény az első esemény minden jelszó-visszaállítási visszaírási művelet során. |
 | 31002 | PasswordResetSuccess | Ez az esemény azt jelzi, hogy a felhasználó új jelszót adott meg a jelszó-visszaállítási művelet során. Megállapítottuk, hogy ez a Jelszó megfelel a vállalati jelszó követelményeinek. A jelszót sikerült visszaírni a helyi Active Directory környezetbe. |
