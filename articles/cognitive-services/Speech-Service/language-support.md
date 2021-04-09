@@ -12,10 +12,10 @@ ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
 ms.openlocfilehash: 17511778f63a2d7270178042c4bb414cdd6630c3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104955465"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
@@ -38,8 +38,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Nyelv                 | Területi beállítás (BCP-47) | Testreszabások  | [Nyelvfelismerés](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arab (Bahrein), modern standard  | `ar-BH` | Szöveg                                   | Igen                           | 
-| Arab (Egyiptom)                     | `ar-EG` | Szöveg                                   | Igen                          |
+| Arab (Bahrein), modern standard  | `ar-BH` | Szöveg                                   | Yes                           | 
+| Arab (Egyiptom)                     | `ar-EG` | Szöveg                                   | Yes                          |
 | Arab (Irak)                      | `ar-IQ` | Szöveg                                   |                           |
 | Arab (Izrael)                    | `ar-IL` | Szöveg                                   |                           |
 | Arab (Jordánia)                    | `ar-JO` | Szöveg                                   |                           |
@@ -47,62 +47,62 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arab (Libanon)                   | `ar-LB` | Szöveg                                   |                           |
 | Arab (Omán)                      | `ar-OM` | Szöveg                                   |                           |
 | Arab (Katar)                     | `ar-QA` | Szöveg                                   |                           |
-| Arab (Szaúd-Arábia)              | `ar-SA` | Szöveg                                   | Igen                          |
+| Arab (Szaúd-Arábia)              | `ar-SA` | Szöveg                                   | Yes                          |
 | Arab (palesztin állam)        | `ar-PS` | Szöveg                                   |                           |
-| Arab (Szíria)                     | `ar-SY` | Szöveg                                   | Igen                          |
+| Arab (Szíria)                     | `ar-SY` | Szöveg                                   | Yes                          |
 | Arab (Egyesült Arab Emírségek)      | `ar-AE` | Szöveg                                   |                           |
 | Bolgár (Bulgária)               | `bg-BG` | Szöveg                                   |                           |
-| Katalán (Spanyolország)                    | `ca-ES` | Szöveg                                   | Igen                          |
-| Kínai (kantoni, hagyományos)   | `zh-HK` | Hang (20201015)<br>Szöveg                 |        Igen                   |
-| Kínai (mandarin, egyszerűsített)     | `zh-CN` | Hang (20200910)<br>Szöveg                 |     Igen                      |
-| Kínai (tajvani mandarin)       | `zh-TW` | Hang (20190701, 20201015)<br>Szöveg                 |           Igen                |
+| Katalán (Spanyolország)                    | `ca-ES` | Szöveg                                   | Yes                          |
+| Kínai (kantoni, hagyományos)   | `zh-HK` | Hang (20201015)<br>Szöveg                 |        Yes                   |
+| Kínai (mandarin, egyszerűsített)     | `zh-CN` | Hang (20200910)<br>Szöveg                 |     Yes                      |
+| Kínai (tajvani mandarin)       | `zh-TW` | Hang (20190701, 20201015)<br>Szöveg                 |           Yes                |
 | Horvát (Horvátország)                 | `hr-HR` | Szöveg                                   |                           |
 | Cseh (Cseh Köztársaság)             | `cs-CZ` | Szöveg                                   |                           |
-| Dán (Dánia)                   | `da-DK` | Szöveg                                   | Igen                          |
-| Holland (Hollandia)                | `nl-NL` | Hang (20201015)<br>Szöveg                                   |    Igen                       |
-| Angol (Ausztrália)                | `en-AU` | Hang (20201019)<br>Szöveg                 | Igen                          |
-| Angol (Kanada)                   | `en-CA` | Hang (20201019)<br>Szöveg                 | Igen                          |
+| Dán (Dánia)                   | `da-DK` | Szöveg                                   | Yes                          |
+| Holland (Hollandia)                | `nl-NL` | Hang (20201015)<br>Szöveg                                   |    Yes                       |
+| Angol (Ausztrália)                | `en-AU` | Hang (20201019)<br>Szöveg                 | Yes                          |
+| Angol (Kanada)                   | `en-CA` | Hang (20201019)<br>Szöveg                 | Yes                          |
 | Angol (Ghána)                    | `en-GH` | Szöveg                                   |                           |
 | Angol (Hongkong)                | `en-HK` | Szöveg                                   |                           |
-| Angol (India)                    | `en-IN` | Hang (20200923)<br>Szöveg                 | Igen                          |
+| Angol (India)                    | `en-IN` | Hang (20200923)<br>Szöveg                 | Yes                          |
 | Angol (Írország)                  | `en-IE` | Szöveg                                   |                           |
 | Angol (Kenya)                    | `en-KE` | Szöveg                                   |                           |
-| Angol (Új-Zéland)              | `en-NZ` | Hang (20201019)<br>Szöveg                 |  Igen                         |
+| Angol (Új-Zéland)              | `en-NZ` | Hang (20201019)<br>Szöveg                 |  Yes                         |
 | Angol (Nigéria)                  | `en-NG` | Szöveg                                   |                           |
 | Angol (Fülöp-szigetek)              | `en-PH` | Szöveg                                   |                           |
 | Angol (Szingapúr)                | `en-SG` | Szöveg                                   |                           |
 | Angol (Dél-Afrika)             | `en-ZA` | Szöveg                                   |                           |
 | Angol (Tanzánia)                 | `en-TZ` | Szöveg                                   |                           |
-| angol (Egyesült Királyság)           | `en-GB` | Hang (20201019)<br>Szöveg<br>Kiejtése| Igen                          |
-| angol (Egyesült Államok)            | `en-US` | Hang (20201019, 20210223)<br>Szöveg<br>Kiejtése| Igen                          |
+| angol (Egyesült Királyság)           | `en-GB` | Hang (20201019)<br>Szöveg<br>Kiejtése| Yes                          |
+| angol (Egyesült Államok)            | `en-US` | Hang (20201019, 20210223)<br>Szöveg<br>Kiejtése| Yes                          |
 | Észt (Észtország)                  | `et-EE` | Szöveg                                   |                           |
 | Filippínó (Fülöp-szigetek)             | `fil-PH`| Szöveg                                   |                           |
-| Finn (Finnország)                  | `fi-FI` | Szöveg                                   |     Igen                      |
-| Francia (Kanada)                    | `fr-CA` | Hang (20201015)<br>Szöveg                 |     Igen                      |
-| Francia (Franciaország)                    | `fr-FR` | Hang (20201015)<br>Szöveg<br>Kiejtése|      Igen                     |
+| Finn (Finnország)                  | `fi-FI` | Szöveg                                   |     Yes                      |
+| Francia (Kanada)                    | `fr-CA` | Hang (20201015)<br>Szöveg                 |     Yes                      |
+| Francia (Franciaország)                    | `fr-FR` | Hang (20201015)<br>Szöveg<br>Kiejtése|      Yes                     |
 | Francia (Svájc)               | `fr-CH` | Szöveg                                   |                           |
 | Német (Ausztria)                   | `de-AT` | Szöveg                                   |                           |
-| Német (Németország)                   | `de-DE` | Hang (20190701, 20200619, 20201127)<br>Szöveg<br>Kiejtése|  Igen                         |
+| Német (Németország)                   | `de-DE` | Hang (20190701, 20200619, 20201127)<br>Szöveg<br>Kiejtése|  Yes                         |
 | Görög (Görögország)                     | `el-GR` | Szöveg                                   |                           |
 | Gudzsaráti (indiai)                  | `gu-IN` | Szöveg                                   |                           |
-| Hindi (India)                      | `hi-IN` | Hang (20200701)<br>Szöveg                 |     Igen                      |
+| Hindi (India)                      | `hi-IN` | Hang (20200701)<br>Szöveg                 |     Yes                      |
 | Magyar (Magyarország)                | `hu-HU` | Szöveg                                   |                           |
 | Indonéz (Indonézia)             | `id-ID` | Szöveg                                   |                           |
 | Ír (Írország)                     | `ga-IE` | Szöveg                                   |                           |
-| Olasz (Olaszország)                    | `it-IT` | Hang (20201016)<br>Szöveg<br>Kiejtése|      Igen                     |
-| Japán (Japán)                   | `ja-JP` | Szöveg                                   |      Igen                     |
-| Koreai (Dél-Korea)                     | `ko-KR` | Hang (20201015)<br>Szöveg                 |      Igen                     |
+| Olasz (Olaszország)                    | `it-IT` | Hang (20201016)<br>Szöveg<br>Kiejtése|      Yes                     |
+| Japán (Japán)                   | `ja-JP` | Szöveg                                   |      Yes                     |
+| Koreai (Dél-Korea)                     | `ko-KR` | Hang (20201015)<br>Szöveg                 |      Yes                     |
 | Lett (Lettország)                   | `lv-LV` | Szöveg                                   |                           |
 | Litván (Litvánia)             | `lt-LT` | Szöveg                                   |                           |
 | Maláj (Malajzia)                    | `ms-MY` | Szöveg                                   |                           |
 | Máltai (Málta)                     | `mt-MT` | Szöveg                                   |                           |
 | Marathi (India)                    | `mr-IN` | Szöveg                                   |                           |
-| norvég (bokmål, Norvégia)         | `nb-NO` | Szöveg                                   |     Igen                      |
-| Lengyel (Lengyelország)                    | `pl-PL` | Szöveg                                   |       Igen                    |
-| Portugál (Brazília)                | `pt-BR` | Hang (20190620, 20201015)<br>Szöveg<br>Kiejtése|          Igen                 |
-| Portugál (Portugália)              | `pt-PT` | Szöveg                                   |             Igen              |
+| norvég (bokmål, Norvégia)         | `nb-NO` | Szöveg                                   |     Yes                      |
+| Lengyel (Lengyelország)                    | `pl-PL` | Szöveg                                   |       Yes                    |
+| Portugál (Brazília)                | `pt-BR` | Hang (20190620, 20201015)<br>Szöveg<br>Kiejtése|          Yes                 |
+| Portugál (Portugália)              | `pt-PT` | Szöveg                                   |             Yes              |
 | Román (Románia)                 | `ro-RO` | Szöveg                                   |                           |
-| Orosz (Oroszország)                   | `ru-RU` | Hang (20200907)<br>Szöveg                 |                Igen           |
+| Orosz (Oroszország)                   | `ru-RU` | Hang (20200907)<br>Szöveg                 |                Yes           |
 | Szlovák (Szlovákia)                  | `sk-SK` | Szöveg                                   |                           |
 | Szlovén (Szlovénia)               | `sl-SI` | Szöveg                                   |                           |
 | Spanyol (Argentína)                | `es-AR` | Szöveg                                   |                           |
@@ -117,20 +117,20 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Spanyol (Egyenlítői-Guinea)        | `es-GQ` | Szöveg                                   |                           |
 | Spanyol (Guatemala)                | `es-GT` | Szöveg                                   |                           |
 | Spanyol (Honduras)                 | `es-HN` | Szöveg                                   |                           |
-| Spanyol (Mexikó)                   | `es-MX` | Hang (20200907)<br>Szöveg                 |    Igen                       |
+| Spanyol (Mexikó)                   | `es-MX` | Hang (20200907)<br>Szöveg                 |    Yes                       |
 | Spanyol (Nicaragua)                | `es-NI` | Szöveg                                   |                           |
 | Spanyol (Panama)                   | `es-PA` | Szöveg                                   |                           |
 | Spanyol (Paraguay)                 | `es-PY` | Szöveg                                   |                           |
 | Spanyol (perui)                     | `es-PE` | Szöveg                                   |                           |
 | Spanyol (Puerto Rico)              | `es-PR` | Szöveg                                   |                           |
-| Spanyol (Spanyolország)                    | `es-ES` | Hang (20201015)<br>Szöveg                 |  Igen                         |
+| Spanyol (Spanyolország)                    | `es-ES` | Hang (20201015)<br>Szöveg                 |  Yes                         |
 | Spanyol (Uruguay)                  | `es-UY` | Szöveg                                   |                           |
 | Spanyol (USA)                      | `es-US` | Szöveg                                   |                           |
 | Spanyol (Venezuela)                | `es-VE` | Szöveg                                   |                           |
-| Svéd (Svédország)                   | `sv-SE` | Szöveg                                   |   Igen                        |
+| Svéd (Svédország)                   | `sv-SE` | Szöveg                                   |   Yes                        |
 | Tamil (India)                      | `ta-IN` | Szöveg                                   |                           |
 | Telugu (India)                     | `te-IN` | Szöveg                                   |                           |
-| Thai (Thaiföld)                    | `th-TH` | Szöveg                                   |      Igen                     |
+| Thai (Thaiföld)                    | `th-TH` | Szöveg                                   |      Yes                     |
 | Török (Törökország)                   | `tr-TR` | Szöveg                                   |                           |
 | Vietnámi (Vietnám)               | `vi-VN` | Szöveg                                   |                           |
 
@@ -406,20 +406,20 @@ Az egyéni hang a standard és az neurális szinten érhető el. A támogatott n
 
 | Nyelv | Területi beállítás | Standard | Neurális |
 |--|--|--|--|
-| Kínai (mandarin, egyszerűsített) | `zh-CN` | Igen | Igen |
-| Kínai (mandarin, egyszerűsített), angol nyelven | `zh-CN` kétnyelvű | Igen | Igen |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Igen | Yes |
+| Kínai (mandarin, egyszerűsített), angol nyelven | `zh-CN` kétnyelvű | Igen | Yes |
 | Angol (Ausztrália) | `en-AU` | Nem | Igen |
-| Angol (India) | `en-IN` | Igen | Igen |
-| angol (Egyesült Királyság) | `en-GB` | Igen | Igen |
-| angol (Egyesült Államok) | `en-US` | Igen | Igen |
+| Angol (India) | `en-IN` | Igen | Yes |
+| angol (Egyesült Királyság) | `en-GB` | Igen | Yes |
+| angol (Egyesült Államok) | `en-US` | Igen | Yes |
 | Francia (Kanada) | `fr-CA` | Nem | Igen |
-| Francia (Franciaország) | `fr-FR` | Igen | Igen |
-| Német (Németország) | `de-DE` | Igen | Igen |
-| Olasz (Olaszország) | `it-IT` | Igen | Igen |
+| Francia (Franciaország) | `fr-FR` | Igen | Yes |
+| Német (Németország) | `de-DE` | Igen | Yes |
+| Olasz (Olaszország) | `it-IT` | Igen | Yes |
 | Japán (Japán) | `ja-JP` | Nem | Igen |
 | Koreai (Dél-Korea) | `ko-KR` | Nem | Igen |
-| Portugál (Brazília) | `pt-BR` | Igen | Igen |
-| Spanyol (Mexikó) | `es-MX` | Igen | Igen |
+| Portugál (Brazília) | `pt-BR` | Igen | Yes |
+| Spanyol (Mexikó) | `es-MX` | Igen | Yes |
 | Spanyol (Spanyolország) | `es-ES` | Nem | Igen |
 
 Válassza ki a megfelelő területi beállítást, amely megfelel az egyéni hangmodell betanításához szükséges betanítási adattípusoknak. Ha például a rögzítési adatként angol nyelven beszél angolul, válassza a lehetőséget `en-GB` .

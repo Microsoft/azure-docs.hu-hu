@@ -147,7 +147,7 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
 1. Az **r-szkript** szövegmezőbe írja be vagy illessze be az érvényes R-szkriptet.
 
     > [!NOTE]
-    > A szkript írásakor körültekintően járjon el. Győződjön meg arról, hogy nincsenek szintaktikai hibák, például nem deklarált változók vagy nem importált modulok vagy függvények használata. A cikk végén külön figyelmet kell fordítani az előre telepített csomagok listájára. A nem felsorolt csomagok használatához telepítse őket a parancsfájlba. Például: `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
+    > A szkript írásakor körültekintően járjon el. Győződjön meg arról, hogy nincsenek szintaktikai hibák, például nem deklarált változók vagy nem importált modulok vagy függvények használata. A cikk végén külön figyelmet kell fordítani az előre telepített csomagok listájára. A nem felsorolt csomagok használatához telepítse őket a parancsfájlba. Például: `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")`.
     
     Az első lépésekhez az R- **szkript** szövegmezője előre fel van töltve a mintakód használatával, amely szerkeszthető vagy lecserélhető.
     

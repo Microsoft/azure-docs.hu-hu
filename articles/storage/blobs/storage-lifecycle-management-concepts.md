@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
 ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96005282"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>A költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával
@@ -342,7 +342,7 @@ Az életciklus-kezelés támogatja a Blobok, a korábbi blob-verziók és a blob
 
 A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás időpontját használják, a blob-verziók a verzió létrehozási idejét használják, a blob-Pillanatképek pedig a létrehozási időt használják a kor nyomon követéséhez.
 
-| Művelet futtatási feltétele               | Feltétel értéke                          | Description                                                                      |
+| Művelet futtatási feltétele               | Feltétel értéke                          | Leírás                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Egész számú érték, amely a kora napokat jelzi | Az alap blob-műveletek feltétele                                              |
 | daysAfterCreationGreaterThan       | Egész számú érték, amely a kora napokat jelzi | A blob-verzió és a blob-pillanatkép műveleteinek feltétele                         |
