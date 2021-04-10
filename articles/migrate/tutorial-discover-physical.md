@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 4f6dc61b0e05fcb16a03a1183518069b98aa575f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17740763777372a5eaed6941974c120860839279
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771413"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382709"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: fizikai kiszolgálók felderítése Azure Migrateekkel: felderítés és Értékelés
 
@@ -80,6 +80,9 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 Állítson be egy fiókot, amelyet a készülék használhat a fizikai kiszolgálók eléréséhez.
 
 - **Windows-kiszolgálók** esetén használjon tartományi fiókot tartományhoz csatlakoztatott kiszolgálók esetében, valamint egy helyi fiókot a kiszolgáló számára, amely nincs tartományhoz csatlakoztatva. A felhasználói fiókot ezekhez a csoportokhoz kell hozzáadni: távfelügyeleti felhasználók, teljesítményfigyelő felhasználók és teljesítménynapló-felhasználók.
+    > [!Note]
+    > Windows Server 2008 és 2008 R2 esetén győződjön meg arról, hogy a WMF 3,0 telepítve van a kiszolgálókon, és a kiszolgálók eléréséhez használt tartományi/helyi fiók a következő csoportokhoz lesz hozzáadva: Teljesítményfigyelő felhasználók, Teljesítménynapló felhasználói és WinRMRemoteWMIUsers.
+
 - **Linux-kiszolgálók** esetében a felderíteni kívánt Linux-kiszolgálókon rendszergazdai fiók szükséges. Másik lehetőségként az alábbi parancsokkal állíthatja be a nem gyökérszintű fiókot a szükséges képességekkel:
 
 **Parancs** | **Cél**

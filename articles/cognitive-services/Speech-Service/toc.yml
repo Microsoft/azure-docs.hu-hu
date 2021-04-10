@@ -456,7 +456,84 @@
                   href: windows-voice-assistants-best-practices.md
                 - name: Minták és gyakori kérdések
                   href: windows-voice-assistants-faq.md
+- name: Útmutatók
+  items:
+    - name: Naplózás engedélyezése
+      href: how-to-use-logging.md
+    - name: Memóriahasználat nyomon követése
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Privát végpont engedélyezése
+      href: speech-services-private-link.md
+    - name: Linuxos OpenSSL konfigurálása
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: RHEL/CentOS 7 konfigurálása
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Containers
+      items:
+        - name: Speech-tárolók telepítése és futtatása
+          displayName: 'containers,install container,run container'
+          href: speech-container-howto.md
+        - name: Speech-tárolók konfigurálása
+          displayName: 'containers,configure containers,container config,configuration'
+          href: speech-container-configuration.md
+        - name: Kötegelt feldolgozás Speech-tárolók használatával
+          href: speech-container-batch-processing.md
+        - name: Speech-tárolók a Kubernetesszel és a Helmmel
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+          href: speech-container-howto-on-premises.md
+        - name: Speech-tárolók az Azure Container Instancesben
+          displayName: 'ACI,azure container instances,container instances,containers'
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Tárolók – GYIK
+          href: speech-container-faq.md
+        - name: Cognitive Services-tárolók – dokumentáció
+          href: ../containers/index.yml
+    - name: Migrálás
+      items:
+        - name: A Bing Speechből
+          href: how-to-migrate-from-bing-speech.md
+        - name: A Translator Speech API-ból
+          href: how-to-migrate-from-translator-speech-api.md
 - name: Eszközök
+  items:
+    - name: A Speech Devices dokumentációja
+      href: index-devices.yml
+    - name: Áttekintés
+      items:
+        - name: Mi az a Beszédeszközök SDK?
+          href: speech-devices-sdk.md
+        - name: A Beszédeszközök SDK beszerzése
+          href: get-speech-devices-sdk.md
+        - name: Beszédeszközök SDK-minták (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: Hardver
+      items:
+        - name: Mikrofonsorra vonatkozó javaslatok
+          href: speech-devices-sdk-microphone.md
+        - name: A Roobo v1 részletei
+          href: speech-devices-sdk-roobo-v1.md
+        - name: A Roobo v2 részletei
+          href: speech-devices-sdk-roobo-v2.md
+    - name: Útmutatók
+      items:
+        - name: Mikrofonsor konfigurálásának módja
+          href: how-to-devices-microphone-array-configuration.md
+    - name: Első lépések
+      items:
+        - name: A Beszédeszközök SDK használata
+          href: speech-devices-sdk-quickstart.md
+    - name: További források
+      items:
+        - name: A Beszédeszközök SDK hibaelhárítása
+          href: speech-devices-sdk-troubleshooting.md
+    - name: Referencia
+      items:
+        - name: A Beszédeszközök SDK kibocsátási megjegyzései
+          href: devices-sdk-release-notes.md
+- name: Források
   items:
     - name: Beszéd SDK
       items:
@@ -505,85 +582,6 @@
           href: 'https://speech.microsoft.com'
         - name: Custom Commands-alkalmazás létrehozása a Speech Studióval
           href: ./quickstart-custom-commands-application.md
-- name: Üzembe helyezés
-  items:
-    - name: Naplózás engedélyezése
-      href: how-to-use-logging.md
-    - name: Memóriahasználat nyomon követése
-      href: how-to-track-speech-sdk-memory-usage.md
-    - name: Privát végpont engedélyezése
-      href: speech-services-private-link.md
-    - name: Linuxos OpenSSL konfigurálása
-      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-      href: how-to-configure-openssl-linux.md
-    - name: RHEL/CentOS 7 konfigurálása
-      href: how-to-configure-rhel-centos-7.md
-      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Containers
-      items:
-        - name: Speech-tárolók telepítése és futtatása
-          displayName: 'containers,install container,run container'
-          href: speech-container-howto.md
-        - name: Speech-tárolók konfigurálása
-          displayName: 'containers,configure containers,container config,configuration'
-          href: speech-container-configuration.md
-        - name: Kötegelt feldolgozás Speech-tárolók használatával
-          href: speech-container-batch-processing.md
-        - name: Speech-tárolók a Kubernetesszel és a Helmmel
-          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-          href: speech-container-howto-on-premises.md
-        - name: Speech-tárolók az Azure Container Instancesben
-          displayName: 'ACI,azure container instances,container instances,containers'
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Tárolók – GYIK
-          href: speech-container-faq.md
-        - name: Cognitive Services-tárolók – dokumentáció
-          href: ../containers/index.yml
-- name: Eszközök
-  items:
-    - name: A Speech Devices dokumentációja
-      href: index-devices.yml
-    - name: Áttekintés
-      items:
-        - name: Mi az a Beszédeszközök SDK?
-          href: speech-devices-sdk.md
-        - name: A Beszédeszközök SDK beszerzése
-          href: get-speech-devices-sdk.md
-        - name: Beszédeszközök SDK-minták (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: Hardver
-      items:
-        - name: Mikrofonsorra vonatkozó javaslatok
-          href: speech-devices-sdk-microphone.md
-        - name: A Roobo v1 részletei
-          href: speech-devices-sdk-roobo-v1.md
-        - name: A Roobo v2 részletei
-          href: speech-devices-sdk-roobo-v2.md
-    - name: Útmutatók
-      items:
-        - name: Mikrofonsor konfigurálásának módja
-          href: how-to-devices-microphone-array-configuration.md
-    - name: Első lépések
-      items:
-        - name: A Beszédeszközök SDK használata
-          href: speech-devices-sdk-quickstart.md
-    - name: További források
-      items:
-        - name: A Beszédeszközök SDK hibaelhárítása
-          href: speech-devices-sdk-troubleshooting.md
-    - name: Referencia
-      items:
-        - name: A Beszédeszközök SDK kibocsátási megjegyzései
-          href: devices-sdk-release-notes.md
-- name: Migrálás
-  items:
-    - name: A Bing Speechből
-      href: how-to-migrate-from-bing-speech.md
-    - name: A Translator Speech API-ból
-      href: how-to-migrate-from-translator-speech-api.md
-- name: További források
-  items:
     - name: Támogatási lehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: A Swagger dokumentációja

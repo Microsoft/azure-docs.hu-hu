@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 03/29/2021
 ms.author: victorh
-ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e955c6b760c06ce802dfae0193d34954eab99892
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96490108"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731088"
 ---
 # <a name="what-are-security-partner-providers"></a>Mik azok a biztonságipartner-szolgáltatók?
 
@@ -30,17 +30,22 @@ A támogatott biztonsági partnerek a következők: **Zscaler**, **[ellenőrzés
 
 A biztonsági partnerek az internetes forgalom szűrésére használhatók a következő helyzetekben:
 
-- Virtual Network (VNet) az internetre
+- Virtual Network (VNet) – Internet
 
-   Az Azure-on futó Felhőbeli számítási feladatokhoz speciális, felhasználó által kompatibilis internetes védelmet használhat.
+   Az Azure-on futó Felhőbeli számítási feladatokhoz használjon speciális, felhasználó által kompatibilis internetes védelmet.
 
 - Ág – Internet
 
-   Használja ki az Azure-kapcsolatot és a globális disztribúciót, hogy könnyen hozzá lehessen adni a harmadik féltől származó NSaaS-szűrést a fiókirodában az internetes forgatókönyvekhez. Az Azure Virtual WAN használatával felépítheti a globális átviteli hálózatot és a biztonsági szegélyt.
+   Az Azure-kapcsolat és a globális terjesztés használatával egyszerűen adhat hozzá harmadik féltől származó NSaaS-szűrést a fiókirodák számára az internetes forgatókönyvekhez. Az Azure Virtual WAN használatával felépítheti a globális átviteli hálózatot és a biztonsági szegélyt.
 
 A következő forgatókönyvek támogatottak:
-- VNet/ág az interneten keresztül a biztonsági partner szolgáltatója és a másik forgalom (küllő, küllő, ág, ág, hogy küllős) Azure Firewallon keresztül.
-- VNet/ág az internethez a biztonsági partner szolgáltatóján keresztül
+- Két biztonsági szolgáltató a központban
+
+   VNet/ág – Internet egy biztonsági partner szolgáltatón keresztül, valamint a másik forgalom (küllő, küllő, sugaras, ág – küllő) Azure Firewallon keresztül.
+- Egyetlen szolgáltató a központban
+
+   - Az Azure Firewall által védett összes forgalom (küllős, küllős, ág-küllő, VNet/ág – Internet).
+   - VNet/ág – Internet a biztonsági partner szolgáltatóján keresztül
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Ajánlott eljárások az internetes forgalom szűréséhez a biztonságos virtuális hubokban
 

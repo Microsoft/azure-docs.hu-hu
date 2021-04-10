@@ -11,10 +11,10 @@ ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
 ms.openlocfilehash: e27e7e0bb4616508c8f137260bde68de9420f9cf
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105644959"
 ---
 # <a name="migrating-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Adattárház áttelepítése dedikált SQL-készletbe az Azure szinapszis Analyticsben 
@@ -89,7 +89,7 @@ A sikeres áttelepítés végrehajtásához át kell telepítenie a tábla sém�
 ## <a name="migration-assets-from-real-world-engagements"></a>Áttelepítési eszközök a valós idejű engagements szolgáltatásból
 Ha további segítségre van az áttelepítési forgatókönyv végrehajtásával kapcsolatban, tekintse meg a következő forrásokat, amelyek a valós idejű migrációs projektek támogatásában lettek kifejlesztve.
 
-| Cím/hivatkozás                              | Description                                                                                                                       |
+| Cím/hivatkozás                              | Leírás                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely nagy mértékben segíti a nagyméretű ingatlanok értékelését azáltal, hogy biztosítja és automatizálja a célzott platformra vonatkozó döntési folyamatokat. |
 | [Adatkódolási problémák kezeléséhez az Azure szinapszis Analytics szolgáltatásba való betöltés során](https://azure.microsoft.com/en-us/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | Ez a blog arra szolgál, hogy betekintést nyújtson néhány olyan adatkódolási problémára, amely akkor fordulhat elő, amikor az adatok SQL Data Warehouseba való betöltéséhez használhat. Ez a cikk néhány olyan lehetőséget is kínál, amelyek segítségével elháríthatja az ilyen problémákat, és betöltheti az adatgyűjtést. |

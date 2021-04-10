@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése REST API és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Resource Manager REST API használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: e688d7abfaca442c3de395d25961b4e81e6c7b24
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 90e50598176ddc0327a81df105740f58afd930bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889195"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732567"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure Resource Manager REST API
 
@@ -20,13 +20,13 @@ Megadhatja a sablont a kérelem törzsében, vagy csatolhat egy fájlhoz. Fájl 
 
 Az üzembe helyezést egy erőforráscsoport, egy Azure-előfizetés, egy felügyeleti csoport vagy egy bérlő számára is megcélozhatja. A központi telepítés hatókörének függvényében különböző parancsokat kell használnia.
 
-- Egy **erőforráscsoporthoz** való üzembe helyezéshez használja a [központi telepítések – létrehozás](/rest/api/resources/deployments/createorupdate)lehetőséget. A kérelmet a következő címre küldi a rendszer:
+- Egy **erőforráscsoporthoz** való üzembe helyezéshez használja a [központi telepítések – létrehozás](/rest/api/resources/resources/deployments/createorupdate)lehetőséget. A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
   ```
 
-- Az **előfizetéshez** való üzembe helyezéshez használja a [központi telepítések – létrehozás az előfizetések hatókörében](/rest/api/resources/deployments/createorupdateatsubscriptionscope)lehetőséget. A kérelmet a következő címre küldi a rendszer:
+- Az **előfizetéshez** való üzembe helyezéshez használja a [központi telepítések – létrehozás az előfizetések hatókörében](/rest/api/resources/resources/deployments/createorupdateatsubscriptionscope)lehetőséget. A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
@@ -34,7 +34,7 @@ Az üzembe helyezést egy erőforráscsoport, egy Azure-előfizetés, egy felüg
 
   Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
 
-- Egy **felügyeleti csoportba** történő központi telepítéshez használja a [központi telepítések – létrehozás felügyeleti csoport hatókörét](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). A kérelmet a következő címre küldi a rendszer:
+- Egy **felügyeleti csoportba** történő központi telepítéshez használja a [központi telepítések – létrehozás felügyeleti csoport hatókörét](/rest/api/resources/resources/deployments/createorupdateatmanagementgroupscope). A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
@@ -42,7 +42,7 @@ Az üzembe helyezést egy erőforráscsoport, egy Azure-előfizetés, egy felüg
 
   További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
 
-- Az üzembe helyezéshez **a** bérlői [hatókörben használjon központi telepítéseket – létrehozás vagy frissítés](/rest/api/resources/deployments/createorupdateattenantscope). A kérelmet a következő címre küldi a rendszer:
+- Az üzembe helyezéshez **a** bérlői [hatókörben használjon központi telepítéseket – létrehozás vagy frissítés](/rest/api/resources/resources/deployments/createorupdateattenantscope). A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
@@ -56,7 +56,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
 
 1. [Közös paraméterek és fejlécek](/rest/api/azure/)beállítása, beleértve a hitelesítési jogkivonatokat.
 
-1. Ha nem létező erőforráscsoporthoz végez üzembe helyezést, hozzon létre egy erőforráscsoportot. Adja meg az előfizetés-AZONOSÍTÓját, az új erőforráscsoport nevét és a megoldáshoz szükséges helyet. További információ: Create an [Resource Group (erőforráscsoport létrehozása](/rest/api/resources/resourcegroups/createorupdate)).
+1. Ha nem létező erőforráscsoporthoz végez üzembe helyezést, hozzon létre egy erőforráscsoportot. Adja meg az előfizetés-AZONOSÍTÓját, az új erőforráscsoport nevét és a megoldáshoz szükséges helyet. További információ: Create an [Resource Group (erőforráscsoport létrehozása](/rest/api/resources/resources/resourcegroups/createorupdate)).
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2020-06-01
@@ -189,7 +189,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
    }
    ```
 
-1. A sablon üzembe helyezési állapotának lekéréséhez használja a [Get](/rest/api/resources/deployments/get)lehetőséget.
+1. A sablon üzembe helyezési állapotának lekéréséhez használja a [Get](/rest/api/resources/resources/deployments/get)lehetőséget.
 
    ```HTTP
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01

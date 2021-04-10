@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1695e7aa0a202a5946f9038049b51c6a8fd45ad5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95014832"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934665"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Bérlői és gazdagépi készlet létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -31,11 +31,11 @@ A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg 
 > [!div class="mx-imgBorder"]
 > ![Képernyőkép a Windows 10 Enterprise rendszerű virtuális asztalok, 1809-es verzió kiválasztásáról.](../media/AzureMarketPlace.png)
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Windows rendszerű virtuális asztali bérlő létrehozása
+## <a name="creating-windows-virtual-desktop-tenant&quot;></a>Windows rendszerű virtuális asztali bérlő létrehozása
 
 Ez a szakasz a Windows rendszerű virtuális asztali bérlő létrehozásakor felmerülő esetleges problémákat ismerteti.
 
-### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Hiba: a AADSTS650052 az alkalmazásnak hozzá kell férnie egy szolgáltatáshoz.
+### <a name=&quot;error-aadsts650052-the-app-needs-access-to-a-service&quot;></a>Hiba: a AADSTS650052 az alkalmazásnak hozzá kell férnie egy szolgáltatáshoz.
 
 Nyers hiba – példa:
 
@@ -406,7 +406,7 @@ Ha a GitHub Azure Resource Manager sablont futtatja, adja meg a következő para
 
 ### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Hiba: a alhálózat virtuális hálózatok konfigurálásakor nem érhető el
 
-**OK:** A WVD Marketplace sablonjában a felhasználói felület csak olyan alhálózatokat jelenít meg, amelyek legalább annyi IP-címmel rendelkeznek, mint a sablonban megadott virtuális gépek teljes száma. Az alhálózatban lévő elérhető IP-címek tényleges számának meg kell egyeznie a telepítendő új virtuális gépek számával, de az aktuális felhasználói felület nem számítható ki.
+**OK:** A Windows rendszerű virtuális asztali piactér sablonjában a felhasználói felület csak olyan alhálózatokat jelenít meg, amelyek legalább annyi IP-címmel rendelkeznek, mint a sablonban megadott teljes virtuális gépek száma. Az alhálózatban lévő elérhető IP-címek tényleges számának meg kell egyeznie a telepítendő új virtuális gépek számával, de az aktuális felhasználói felület nem számítható ki.
 
 **Javítás:** Megadhat egy alhálózatot legalább annyi IP-címmel, amely a piactér felhasználói felületének használatával nem használja a hozzáadott virtuális gépek számát. Ez az alhálózat nevének megadásával végezhető el a "**existingSubnetName**" paraméterben, ha újból [üzembe helyez egy meglévő központi telepítést](expand-existing-host-pool-2019.md#redeploy-from-azure) , vagy [üzembe helyezi a GITHUBról a mögöttes ARM-sablonnal](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 

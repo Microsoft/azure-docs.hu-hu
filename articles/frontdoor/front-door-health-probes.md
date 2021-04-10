@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449241"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550743"
 ---
 # <a name="health-probes"></a>Állapotminták
 
@@ -24,6 +24,9 @@ Az egyes háttérrendszer-környezetek állapotának és közelségének meghat�
 
 > [!WARNING]
 > Mivel a bejárati ajtó számos peremhálózati környezettel rendelkezik globálisan, a háttérrendszer állapotának mintavételi mennyisége meglehetősen magas – 25 kérés percenként, akár 1200 kérelem percenként, a beállított állapottól függően. Az alapértelmezett, 30 másodperces mintavételi gyakorisággal a háttérbeli mintavételi mennyiségnek percenként 200 kérésnek kell lennie.
+
+> [!NOTE]
+> A bejárati ajtó HTTP-/HTTPS-mintavételi `User-Agent` feladását a (z) értékkel rendelkező fejléctel kell elküldeni `Edge Health Probes` . 
 
 ## <a name="supported-protocols"></a>Támogatott protokollok
 
@@ -41,7 +44,7 @@ A bejárati ajtó a következő HTTP-metódusokat támogatja az állapot-mintav�
 
 ## <a name="health-probe-responses"></a>Állapot-mintavételi válaszok
 
-| Válaszok  | Leírás | 
+| Válaszok  | Description | 
 | ------------- | ------------- |
 | Állapot meghatározása  |  A 200 OK állapotkód azt jelzi, hogy a háttér állapota Kifogástalan. Minden más hibát jelez. Ha bármilyen okból (a hálózati meghibásodást is beleértve) nem érkezik érvényes HTTP-válasz a mintavételhez, a mintavétel meghibásodásnak számít.|
 | Mérési késés  | A késés az az idő, amelyet a rendszer közvetlenül a mintavételi kérelem elküldése előtt mért, amikor a válasz utolsó bájtját megkaptuk. Minden kérelemhez új TCP-kapcsolatot használunk, így ez a mérés nem torzítja a meglévő, meleg kapcsolatokkal rendelkező háttérrendszer felé.  |

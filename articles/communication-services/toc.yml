@@ -26,8 +26,10 @@
           href: quickstarts/chat/meeting-interop.md
     - name: Telefonos funkciók és SMS
       items:
-        - name: Telefonszámok kezelése
+        - name: Telefonszám lekérése
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Telefonszám behelyezése az Azure-ba
+          href: quickstarts/telephony-sms/port-phone-number.md
         - name: Telefonhívás hozzáadása az alkalmazáshoz
           href: quickstarts/voice-video-calling/pstn-call.md
         - name: SMS küldése
@@ -92,6 +94,8 @@
           href: concepts/telephony-sms/messaging-policy.md
     - name: Hang- és videóhívás
       items:
+        - name: Ismert problémák
+          href: concepts/known-issues.md
         - name: Az SDK meghívása – áttekintés
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: A hang- és videóhívással kapcsolatos alapfogalmak
@@ -135,8 +139,6 @@
       href: concepts/notifications.md
     - name: Teams-együttműködés
       href: concepts/teams-interop.md
-    - name: Ismert problémák
-      href: concepts/known-issues.md
 - name: Példák
   items:
     - name: Áttekintés
@@ -151,6 +153,8 @@
   items:
     - name: A referenciadokumentáció áttekintése
       href: concepts/reference.md
+    - name: Azure CLI
+      href: /cli/azure/ext/communication/communication
     - name: REST API – dokumentáció
       href: /rest/api/communication/
     - name: Hívási kódtárak
@@ -158,7 +162,7 @@
         - name: Hívás (JavaScript)
           href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: Hívás (Android/Java)
-          href: /java/api/com.azure.communication.calling
+          href: /java/api/com.azure.android.communication.calling?view=communication-services-java-android
         - name: Hívás (iOS)
           href: /objectivec/communication-services/calling/
     - name: Csevegési kódtárak
