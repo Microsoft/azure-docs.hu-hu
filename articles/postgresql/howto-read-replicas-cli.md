@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97674514"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Olvasási replikák létrehozása és kezelése az Azure CLI-ből, REST API
@@ -64,7 +64,7 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 Az az [postgres Server replika Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) paranccsal a következő paramétereket kell megadni:
 
-| Beállítás | Példaérték | Description  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létre lesz hozva.  |
 | name | mydemoserver – replika | A létrehozott új replika-kiszolgáló neve. |

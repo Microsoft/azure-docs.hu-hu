@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
 ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100581269"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
@@ -20,7 +20,7 @@ Előfordulhat, hogy a Azure Automation runbookok nem fér hozzá más felhőben 
 
 Kétféle Runbook-feldolgozó létezik – rendszer és felhasználó. A következő táblázat ismerteti a kettő közötti különbséget.
 
-|Típus | Description |
+|Típus | Leírás |
 |-----|-------------|
 |**Rendszer** |A támogatja a Update Management szolgáltatás által használt rejtett runbookok, amelyek a Windows és Linux rendszerű gépeken a felhasználó által megadott frissítések telepítéséhez lettek kialakítva.<br> Az ilyen típusú hibrid Runbook-feldolgozó nem tagja a hibrid Runbook Worker csoportnak, ezért nem futtatja a Runbook-munkavégző csoportra irányuló runbookok. |
 |**Felhasználó** |Támogatja a felhasználó által definiált runbookok, amely közvetlenül a Windows és Linux rendszerű gépen fut, amely egy vagy több Runbook Worker-csoport tagja. |

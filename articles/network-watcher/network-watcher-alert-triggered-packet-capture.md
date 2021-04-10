@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570976"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Az előjelzéses hálózati figyeléshez használja a csomagok rögzítését riasztásokkal és Azure Functionsokkal
@@ -81,7 +81,7 @@ Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgo
     |**Erőforráscsoport**|PacketCaptureRG|A Function alkalmazást tartalmazó erőforráscsoport.|
     |**Szolgáltatási csomag**|Használatalapú csomag| A Function app által használt terv típusa. A lehetőségek a következők: felhasználás vagy Azure App Service terv. |
     |**Hely**|Az USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
-    |**Tárfiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
+    |**Storage-fiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
 
 3. A **PacketCaptureExample Function apps** panelen válassza a **functions**  >  **Egyéni függvény** lehetőséget  > **+** .
 

@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
 ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102244827"
 ---
 A következő fejezetekben beállíthat egy terminált, és az Azure CLI használatával hozhat létre egy IoT hubot. Az Azure CLI-parancsokat futtató terminálok konfigurálásához használhatja a böngészőalapú Azure Cloud Shell, vagy használhat helyi terminált is.

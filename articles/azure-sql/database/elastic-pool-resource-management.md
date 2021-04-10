@@ -12,10 +12,10 @@ ms.author: dfurman
 ms.reviewer: sstein
 ms.date: 09/16/2020
 ms.openlocfilehash: 40b6c5a86184860cf3e7a9840f980706485ae977
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572241"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Erőforrás-kezelés sűrű rugalmas készletekben
@@ -52,7 +52,7 @@ Ahhoz, hogy a teljesítmény romlása elkerülhető legyen az erőforrás-tartal
 
 Azure SQL Database több mérőszámot biztosít, amelyek az ilyen típusú figyelés szempontjából relevánsak. Az egyes mérőszámok ajánlott átlagos értéke meghaladja az erőforrás-tartalmat a készletben, és a korábban említett műveletek egyikével kell foglalkoznia.
 
-|Metrika neve|Description|Ajánlott átlagos érték|
+|Metrika neve|Leírás|Ajánlott átlagos érték|
 |----------|--------------------------------|------------|
 |`avg_instance_cpu_percent`|A rugalmas készlethez társított SQL-folyamat CPU-kihasználtsága az alapul szolgáló operációs rendszer által mért módon. Minden adatbázis [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) nézetében, valamint az adatbázis [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetében érhető el `master` . Ezt a metrikát a Azure Monitor is kibocsátja, ahol a [neve](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `sqlserver_process_core_percent` , és Azure Portal megtekinthető. Ez az érték azonos a rugalmas készletben lévő összes adatbázis esetében.|70% alá. Előfordulhat, hogy az alkalmi rövid tüskék akár 90%-ot is elfogadhatónak tartanak.|
 |`max_worker_percent`|[Munkavégző szál]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide) kihasználtsága. A készlet minden adatbázisához, valamint magához a készlethez van megadva. A munkaszálak száma az adatbázis szintjén és a készlet szintjén eltérő korlátozásokkal jár, ezért a mérőszám mindkét szinten történő figyelése ajánlott. Minden adatbázis [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) nézetében, valamint az adatbázis [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetében érhető el `master` . Ezt a metrikát a Azure Monitor is kibocsátja, ahol a [neve](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `workers_percent` , és Azure Portal megtekinthető.|80% alá. Az akár 100%-os tüskék miatt a kapcsolódási kísérletek és a lekérdezések sikertelenek lesznek.|
@@ -66,7 +66,7 @@ Azure SQL Database több mérőszámot biztosít, amelyek az ilyen típusú figy
 
 Ezen mérőszámok mellett Azure SQL Database olyan nézetet biztosít, amely a tényleges erőforrás-irányítási korlátokat adja vissza, valamint olyan további nézeteket, amelyek erőforrás-kihasználtsági statisztikát adnak vissza az erőforráskészlet szintjén, valamint a munkaterhelés csoport szintjén.
 
-|Nézet neve|Description|  
+|Nézet neve|Leírás|  
 |-----------------|--------------------------------|  
 |[sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)|Az erőforrás-irányítási mechanizmusok által az aktuális adatbázisban vagy rugalmas készletben használt aktuális konfigurációs és kapacitási beállítások visszaadása.|
 |[sys.dm_resource_governor_resource_pools](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|Az aktuális erőforráskészlet-állapottal, az erőforráskészlet aktuális konfigurációjával és a halmozott erőforráskészlet statisztikájának adatait adja vissza.|
