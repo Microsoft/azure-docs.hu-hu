@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: alkohli
 ms.openlocfilehash: 580e5aab7b7ac1edcfee58345291afcb9eb0e977
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103562161"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Azure Stack Edge Pro GPU-eszköz kezelése a Windows PowerShell használatával
@@ -155,7 +155,7 @@ Commands:
 
 A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `iotedge` :
 
-|command  |Description |
+|command  |Leírás |
 |---------|---------|
 |`list`     | Modulok listázása         |
 |`logs`     | Modul naplóinak beolvasása        |
@@ -426,7 +426,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
-### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>Memória módosítása, Kubernetes-feldolgozó csomópontra vonatkozó korlátozások
+### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>Kubernetes munkavégző csomópont memória- és processzorkorlátainak módosítása
 
 A Kubernetes Worker csomópont memória-vagy processzor-korlátainak módosításához hajtsa végre a következő lépéseket:
 
@@ -573,7 +573,7 @@ A alaplapi felügyeleti vezérlő (BMC) használatával távolról figyelheti é
     - Ezzel a parancsmaggal konfigurálhatja a BMC statikus konfigurációját. Megadhatja a, a és a értékeit is `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` . 
     
         ```powershell
-        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>&quot; -IPv4Gateway &quot;<IPv4 address of the gateway>&quot; -IPv4SubnetMask &quot;<IPv4 address for the subnet mask>"
         ```        
         
         Itt látható egy mintakimenet: 

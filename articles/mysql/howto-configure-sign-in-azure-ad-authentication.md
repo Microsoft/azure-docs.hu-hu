@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 808c3589ba5b51b035ccc8165489c4d11203dd66
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 492e56e09129f9d47b863624cd72cd508801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728266"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -78,7 +78,6 @@ Példa (nyilvános felhő esetén):
 ```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
-
 A fenti erőforrás-értéket pontosan az ábrán látható módon kell megadni. Más felhők esetében az erőforrás értéke a következő használatával kereshető fel:
 
 ```azurecli-interactive
@@ -90,6 +89,13 @@ Az Azure CLI 2.0.71-es és újabb verziói esetén a parancs a következő kény
 ```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
+A PowerShell használatával a következő parancs használatával kaphat hozzáférési tokent:
+
+```azurepowershell-interactive
+$accessToken = Get-AzAccessToken -ResourceUrl https://ossrdbms-aad.database.windows.net
+$accessToken.Token | out-file C:\temp\MySQLAccessToken.txt
+```
+
 
 A sikeres hitelesítés után az Azure AD egy hozzáférési jogkivonatot fog visszaadni:
 
@@ -105,13 +111,17 @@ A sikeres hitelesítés után az Azure AD egy hozzáférési jogkivonatot fog vi
 
 A jogkivonat egy alapszintű 64 karakterlánc, amely kódolja a hitelesített felhasználóra vonatkozó összes információt, és amely a Azure Database for MySQL szolgáltatásra irányul.
 
-> [!NOTE]
-> A hozzáférési jogkivonat érvényessége 5 perc és 60 perc között lehet. Javasoljuk, hogy közvetlenül a bejelentkezés megkezdése előtt szerezze be a hozzáférési jogkivonatot a Azure Database for MySQL.
+A hozzáférési jogkivonat érvényessége ***5 perc és 60 perc*** között lehet. Javasoljuk, hogy közvetlenül a bejelentkezés megkezdése előtt szerezze be a hozzáférési jogkivonatot a Azure Database for MySQL. A jogkivonat érvényességének megtekintéséhez használja a következő PowerShell-parancsot. 
+
+```azurepowershell-interactive
+$accessToken.ExpiresOn.DateTime
+```
 
 ### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>3. lépés: a token használata jelszóként a MySQL-ben való bejelentkezéshez
 
-Kapcsolódáskor a hozzáférési tokent MySQL felhasználói jelszóként kell használnia. Grafikus felhasználói felületű ügyfelek (például a MySQLWorkbench) használatakor a fenti módszer használatával kérheti le a tokent. 
+Kapcsolódáskor a hozzáférési tokent MySQL felhasználói jelszóként kell használnia. Grafikus felhasználói felületi ügyfelek (például MySQLWorkbench) használata esetén a jogkivonat lekéréséhez használhatja a fentebb ismertetett módszert. 
 
+#### <a name="using-mysql-cli"></a>A MySQL CLI használata
 A CLI használatakor ez a rövid kéz a csatlakozáshoz használható: 
 
 **Példa (Linux/macOS):**
@@ -121,8 +131,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+#### <a name="using-mysql-workbench"></a>A MySQL Workbench használata
+* Indítsa el a MySQL Workbench alkalmazást, és kattintson az adatbázis lehetőségre, majd a Kapcsolódás az adatbázishoz elemre.
+* A hostname (állomásnév) mezőben adja meg a MySQL FQDN-t (például). mydb.mysql.database.azure.com
+* A Felhasználónév mezőben adja meg a MySQL Azure Active Directory rendszergazdájának nevét, és fűzze hozzá ezt a MySQL-kiszolgáló nevéhez, nem pedig a teljes tartománynevet (FQDN). user@tenant.onmicrosoft.com@mydb
+* A jelszó mezőben kattintson a "tárolás a tárolóban" elemre, és illessze be a hozzáférési jogkivonatot a fájlból, például: C:\temp\MySQLAccessToken.txt
+* Kattintson a Speciális fülre, és ellenőrizze, hogy bejelölte-e a "titkosítatlan hitelesítés beépülő modul engedélyezése" lehetőséget.
+* Az adatbázishoz való kapcsolódáshoz kattintson az OK gombra.
 
-Fontos szempontok a csatlakozáskor:
+#### <a name="important-considerations-when-connecting"></a>Fontos szempontok a csatlakozáskor:
 
 * `user@tenant.onmicrosoft.com` annak az Azure AD-felhasználónak vagy-csoportnak a neve, amelyhez csatlakozni próbál
 * Mindig fűzze hozzá a kiszolgálónevet az Azure AD-felhasználó/csoport neve után (például `@mydb` )

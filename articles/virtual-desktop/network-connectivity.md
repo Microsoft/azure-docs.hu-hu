@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 378d341ee867b69fac22f5eb15952d104a7bf19d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221210"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167328"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>A Windows rendszerű virtuális asztali hálózati kapcsolat ismertetése
 
@@ -50,7 +50,7 @@ Az ügyfélkapcsolati folyamat alább látható:
 
 ## <a name="connection-security"></a>Kapcsolatbiztonság
 
-A TLS 1,2 az ügyfelek és a munkamenet-gazdagépek által a Windows rendszerű virtuális asztali infrastruktúra összetevőihez kezdeményezett összes kapcsolathoz használatos. A Windows virtuális asztal ugyanazt a TLS 1,2 titkosítási algoritmust használja, mint az [Azure bejárati ajtó](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door). Fontos annak biztosítása, hogy az ügyfélszámítógépek és a munkamenet-gazdagépek is használhatják ezeket a titkosítási modulokat.
+A TLS 1,2 az ügyfelek és a munkamenet-gazdagépek által a Windows rendszerű virtuális asztali infrastruktúra összetevőihez kezdeményezett összes kapcsolathoz használatos. A Windows virtuális asztal ugyanazt a TLS 1,2 titkosítási algoritmust használja, mint az [Azure bejárati ajtó](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Fontos annak biztosítása, hogy az ügyfélszámítógépek és a munkamenet-gazdagépek is használhatják ezeket a titkosítási modulokat.
 A fordított kapcsolat átviteléhez az ügyfél és a munkamenet-állomás is csatlakozik a Windows rendszerű virtuális asztali átjáróhoz. A TCP-kapcsolat létrehozása után az ügyfél vagy a munkamenet-állomás érvényesíti a Windows rendszerű virtuális asztali átjáró tanúsítványát.
 Az alapszintű átvitel létrehozása után az RDP egy beágyazott TLS-kapcsolatot hoz létre az ügyfél és a munkamenet-állomás között a munkamenet-gazdagép tanúsítványainak használatával. Alapértelmezés szerint az RDP-titkosításhoz használt tanúsítványt az operációs rendszer saját maga hozza létre a telepítés során. Ha kívánja, az ügyfelek központilag felügyelt tanúsítványokat telepíthetnek a vállalati hitelesítésszolgáltató által kiadott tanúsítványok alapján. A tanúsítványok konfigurálásával kapcsolatos további információkért lásd a [Windows Server dokumentációját](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

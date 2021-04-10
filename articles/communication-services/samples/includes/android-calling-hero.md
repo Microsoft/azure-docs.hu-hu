@@ -10,15 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f71f394f190c5de1c3d64d02fd6113817ecda1ea
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
-ms.translationtype: MT
+ms.openlocfilehash: e8ef354480c69fa9b0b5407c88209b368485127d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105152789"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729753"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 Az Azure kommunikációs szolgáltatások **csoport az Androidhoz készült Hero-minta** azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg az Android SDK-t, hogy a hangvételt és a videót is tartalmazó csoportos hívást hozzon létre. Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be és futtathatja a mintát. A minta áttekintése a kontextusban.
 
 ## <a name="download-code"></a>Kód letöltése

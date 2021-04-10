@@ -7,14 +7,14 @@ manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 02/20/2021
 ms.author: bwren
-ms.openlocfilehash: 68e947a6e13ba5195815fe966ec69ec6a2f4b8e1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3c99002a4f8613ff40a116eeceded4b3bada1c15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562970"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936155"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor mérőszámok áttekintése
 Azure Monitor mérőszámok olyan Azure Monitor szolgáltatása, amely a [figyelt erőforrások](../monitor-reference.md) numerikus adatait egy idősorozat-adatbázisba gyűjti. A metrikák olyan numerikus értékek, amelyeket rendszeres időközönként gyűjtenek, és egy adott rendszer bizonyos aspektusait egy adott időpontban írják le. A Azure Monitor metrikái nagyon egyszerűek, és a közel valós idejű forgatókönyvek támogatása révén különösen hasznosak lehetnek a riasztások és a problémák gyors észlelése érdekében. A mérőszámok Explorerrel interaktív módon elemezheti őket, és proaktívan értesítheti a riasztást, ha egy érték átlép egy küszöbértéket, vagy egy munkafüzetben vagy irányítópulton jeleníti meg őket.
@@ -27,13 +27,13 @@ Azure Monitor mérőszámok olyan Azure Monitor szolgáltatása, amely a [figyel
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Mit tehet a Azure Monitor metrikákkal?
 A következő táblázat felsorolja a Azure Monitor metrikáinak különböző módszereit.
 
-|  | Description |
+|  | Leírás |
 |:---|:---|
 | **Elemzés** | A [metrikák](metrics-charts.md) segítségével elemezheti a diagramon összegyűjtött mérőszámokat, és összehasonlíthatja a különböző erőforrások metrikáit. |
 | **Riasztás** | Olyan [metrikai riasztási szabályt](../alerts/alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](../alerts/action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |
 | **Vizualizáció** | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../app/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](../visualize/workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](../visualize/grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
 | **Automatizálás** |  Az [autoscale](../autoscale/autoscale-overview.md) használatával növelheti vagy csökkentheti az erőforrásokat egy küszöbértéket áthaladó metrika értéke alapján. |
-| **Beolvasni** | Metrikai értékek elérése parancssorból PowerShell- [parancsmagok](/powershell/module/az.applicationinsights) használatával<br>Az egyéni alkalmazás metrikai értékeinek elérése [REST API](./rest-api-walkthrough.md)használatával.<br>Metrikai értékek elérése parancssorból a  [CLI](/cli/azure/monitor/metrics)használatával. |
+| **Beolvasni** | Metrikai értékek elérése parancssorból PowerShell- [parancsmagok](/powershell/module/az.monitor) használatával<br>Az egyéni alkalmazás metrikai értékeinek elérése [REST API](./rest-api-walkthrough.md)használatával.<br>Metrikai értékek elérése parancssorból a  [CLI](/cli/azure/monitor/metrics)használatával. |
 | **Exportálás** | [Átirányítja a metrikákat a naplókba](./resource-logs.md#send-to-azure-storage) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](./stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
 | **Archívum** | Az erőforrás teljesítmény-vagy állapotadatok [archiválása](./platform-logs-overview.md) megfelelőségi, naplózási vagy offline jelentéskészítési célokra. |
 
@@ -104,7 +104,7 @@ Ez a mérőszám a "mi volt az egyes IP-címek hálózati átviteli sebessége?"
 Az Azure-ban a legtöbb erőforrás esetében a metrikák 93 napig tárolódnak. Bizonyos kivételek:
 
 **Vendég operációs rendszer metrikái**
--   **Klasszikus vendég operációs rendszer metrikái**. Ezek a [Windows diagnosztikai bővítmény (wad)](../agents/diagnostics-extension-overview.md) vagy a [Linux diagnosztikai bővítmény (Lad)](../../virtual-machines/extensions/diagnostics-linux.md) által gyűjtött teljesítményszámlálók, és egy Azure Storage-fiókhoz irányíthatók. A metrikák megőrzése 14 nap.
+-   **Klasszikus vendég operációs rendszer metrikái**. Ezek a [Windows diagnosztikai bővítmény (wad)](../agents/diagnostics-extension-overview.md) vagy a [Linux diagnosztikai bővítmény (Lad)](../../virtual-machines/extensions/diagnostics-linux.md) által gyűjtött teljesítményszámlálók, és egy Azure Storage-fiókhoz irányíthatók. A metrikák megőrzése legalább 14 nap, de a rendszer nem írja le a tényleges lejárati dátumot a Storage-fiókba. Teljesítménybeli okokból a portál korlátozza, hogy mennyi adat jelenik meg a kötetek alapján. Ezért a portál által beolvasott napok száma hosszabb 14 napnál, ha a megírt adatok mennyisége nem túl nagy.  
 -   **Azure monitor metrikáknak eljuttatott vendég operációs rendszer metrikái**. Ezek a [Windows diagnosztikai bővítmény (wad)](../agents/diagnostics-extension-overview.md) által gyűjtött teljesítményszámlálók, amelyeket a rendszer elküld a Azure monitor adatfogadónak, vagy a [InfluxData](https://www.influxdata.com/time-series-platform/telegraf/) - [alapú](../agents/diagnostics-extension-overview.md#data-destinations), a Linux rendszerű gépeken található. A metrikák megőrzése 93 nap.
 -   **Log Analytics ügynök által gyűjtött vendég operációsrendszer-metrikák**. Ezek a Log Analytics ügynök által gyűjtött és Log Analytics munkaterületre továbbított teljesítményszámlálók. A metrikák megőrzése 31 nap, és legfeljebb 2 évig bővíthető.
 

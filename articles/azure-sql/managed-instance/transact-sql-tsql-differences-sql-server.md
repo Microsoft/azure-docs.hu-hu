@@ -12,10 +12,10 @@ ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105644913"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
@@ -411,7 +411,7 @@ Műveletek:
 Az egyetlen elérhető külső forrás a RDBMS (nyilvános előzetes verzió) az Azure SQL Database-be, az Azure SQL felügyelt példányára és az Azure szinapszis-készletre. Olyan [külső táblát is használhat, amely a szinapszis Analytics kiszolgáló nélküli SQL-készletére hivatkozik](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) , és megkerülő megoldásként használja az Azure Storage-ból közvetlenül beolvasott albase külső táblákat. Az Azure SQL felügyelt példányában a kapcsolódó kiszolgálókat a [szinapszis Analytics szolgáltatásban található kiszolgáló nélküli SQL-készletbe](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) , illetve az Azure Storage-beli adatSQL serverk olvasásához használhatja.
 További információ [a következőről: Base](/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Replikálás
+### <a name="replication"></a>Replikáció
 
 - A pillanatképek és a kétirányú replikációs típusok támogatottak. Az egyesítéses replikáció, a társ-társ replikáció és a frissíthető előfizetések nem támogatottak.
 - A [tranzakciós replikáció](replication-transactional-overview.md) a FELÜGYELt SQL-példány nyilvános előzetes verziójához érhető el, néhány korlátozással:

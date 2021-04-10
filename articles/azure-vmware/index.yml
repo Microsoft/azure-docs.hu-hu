@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 03/22/2021
-  ms.openlocfilehash: 4ee35ada4e72e9a7c896514cb6616a0f9f5e27a4
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.date: 03/30/2021
+  ms.openlocfilehash: 874f0636042c592cefce5a4d3fa15b7839fbac5e
+  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/29/2021
-  ms.locfileid: "105731836"
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106108064"
 landingContent:
 - title: Az Azure VMware Solution ismertetése
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
       url: introduction.md
     - text: Platform frissítései
       url: azure-vmware-solution-platform-updates.md
-    - text: GYIK
-      url: faq.yml
   - linkListType: concept
     links:
     - text: Magánfelhő és -fürtök
@@ -40,6 +38,26 @@ landingContent:
       url: concepts-monitor-repair-private-cloud.md
     - text: Magánfelhők frissítései
       url: concepts-upgrades.md
+- title: GYIK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Általános kérdések
+      url: /azure/azure-vmware/faq#general
+    - text: Számítás, hálózat, tárolás és biztonsági mentés
+      url: /azure/azure-vmware/faq#compute,-network,-storage,-and-backup
+    - text: Gazdagépek, fürtök és privát felhők
+      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
+    - text: Azure VMware-megoldás és VMware szoftver
+      url: /azure/azure-vmware/faq#azure-vmware-solution-and-vmware-software
+    - text: Kapcsolatok
+      url: /azure/azure-vmware/faq#connectivity
+    - text: Fiókok és jogosultságok
+      url: /azure/azure-vmware/faq#accounts-and-privileges
+    - text: Számlázás és támogatás
+      url: /azure/azure-vmware/faq#billing-and-support
+    - text: Ügyfél-kommunikáció
+      url: /azure/azure-vmware/faq#customer-communication
 - title: Bevezetés
   linkLists:
   - linkListType: deploy
@@ -72,22 +90,6 @@ landingContent:
       url: tutorial-delete-private-cloud.md
 - title: Az Azure VMware Solution kiterjesztése
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: DHCP kezelése
-      url: manage-dhcp.md
-    - text: NSX hálózati összetevők konfigurálása
-      url: configure-nsx-network-components-azure-portal.md
-    - text: Vészhelyreállítás üzembe helyezése virtuális gépekhez
-      url: disaster-recovery-for-virtual-machines.md
-    - text: Virtuálisgép üzembe helyezése a tartalomtáron keresztül
-      url: ./deploy-vm-content-library.md
-    - text: A GitHub Enterprise Server beállítása
-      url: github-enterprise-server.md
-    - text: Nyilvános IP-cím használata
-      url: public-ip-usage.md
-    - text: IPSec-alagút létrehozása
-      url: create-ipsec-tunnel.md
   - linkListType: reference
     links:
     - text: Azure VMware-megoldás kérése a gazda számára
@@ -97,7 +99,21 @@ landingContent:
     - text: Költségcsökkentés fenntartott példánnyal
       url: reserved-instance.md
     - text: Migrálás kiértékelése
-      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
+  - linkListType: how-to-guide
+    links:
+    - text: DHCP kezelése
+      url: manage-dhcp.md
+    - text: NSX hálózati összetevők konfigurálása
+      url: configure-nsx-network-components-azure-portal.md
+    - text: Vészhelyreállítás üzembe helyezése virtuális gépekhez
+      url: disaster-recovery-for-virtual-machines.md
+    - text: A GitHub Enterprise Server beállítása
+      url: github-enterprise-server.md
+    - text: Nyilvános IP-cím használata
+      url: public-ip-usage.md
+    - text: IPSec-alagút létrehozása
+      url: create-ipsec-tunnel.md
 - title: Azure natív integrációja
   linkLists:
   - linkListType: how-to-guide
@@ -116,6 +132,8 @@ landingContent:
       url: protect-azure-vmware-solution-with-application-gateway.md
     - text: Traffic Manager
       url: deploy-traffic-manager-balance-workloads.md
+    - text: Riasztások konfigurálása és metrikák használata
+      url: configure-alerts-for-azure-vmware-solution.md
 - title: VMware-megoldások
   linkLists:
   - linkListType: how-to-guide
@@ -124,6 +142,8 @@ landingContent:
       url: vrealize-operations-for-azure-vmware-solution.md
     - text: A VMware Horizon üzembe helyezése
       url: azure-vmware-solution-horizon.md
+    - text: Virtuális gépek üzembe helyezése a tartalom könyvtárából
+      url: ./deploy-vm-content-library.md
 - title: VMware-ökoszisztéma
   linkLists:
   - linkListType: reference
@@ -154,6 +174,8 @@ landingContent:
       url: https://youtu.be/BoQYvqzb6Y8
     - text: Áttelepítés és kapacitás megtervezése
       url: https://youtu.be/NoNG-hkksrA
+    - text: VCenter elforgatása az Azure Logic App használatával & NSX-T jelszavakkal
+      url: https://youtu.be/cK1qY3knj88
 - title: Hibaelhárítás
   linkLists:
   - linkListType: reference

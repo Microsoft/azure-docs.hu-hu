@@ -1,0 +1,144 @@
+- name: A hálózatkezelés alapjai – dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az Azure hálózatkezelésének ismertetése
+      href: networking-overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Virtuális hálózat létrehozása
+      href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+- name: Oktatóanyagok
+  items:
+    - name: Hálózati hozzáférés korlátozása
+      href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+- name: Alapelvek
+  expanded: true
+  items:
+    - name: Architektúra
+      href: architecture-guides.md
+    - name: Tervezés és kialakítás
+      items:
+        - name: Azure hálózattervezőknek
+          href: ../azure-for-network-engineers.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Távoli munka
+          href: ../working-remotely-support.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Virtuális hálózatok
+          href: ../../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Létesítmények közötti kapcsolatok – VPN
+          href: ../../vpn-gateway/design.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Létesítmények közötti kapcsolatok – dedikált privát
+          href: ../../expressroute/expressroute-workflows.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Microsoft globális hálózat
+      items:
+        - name: Áttekintés
+          href: ../microsoft-global-network.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure-hálózati késés
+          href: ../azure-network-latency.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Internetes útválasztási beállítás az Azure-ban
+          href: ../../virtual-network/routing-preference-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Felhőalapú hálózati kapcsolat
+      items:
+        - name: Virtuális hálózat
+          href: ../../virtual-network/virtual-networks-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Nyilvános IP-cím
+          href: ../../virtual-network/public-ip-addresses.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS
+          href: ../../dns/dns-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Hálózati forgalom továbbítása
+          href: ../../virtual-network/virtual-networks-udr-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Virtuális hálózatok csatlakoztatása
+          href: ../../virtual-network/virtual-network-peering-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privát hozzáférés az erőforrásokhoz
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Helyszíni kapcsolódás az Azure-hoz – VPN-titkosítás
+          href: ../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Helyszíni rendszer kiterjesztése az Azure-ba – privát kapcsolat
+          href: ../../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Csak kimenő internetkapcsolat
+          href: ../../virtual-network/nat-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Hálózati biztonság
+      items:
+        - name: Network security groups (Hálózati biztonsági csoportok)
+          href: ../../virtual-network/network-security-groups-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privát végpont
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Hálózati tűzfal
+          href: ../../firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DDoS Protection
+          href: ../../ddos-protection/ddos-protection-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Webalkalmazási tűzfal
+          href: ../../web-application-firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+    - name: Méretezhető alkalmazások kézbesítése
+      items:
+        - name: Terheléselosztási beállítások az Azure-ban
+          href: /azure/architecture/guide/technology-choices/load-balancing-overview?toc=/azure/networking/fundamentals/toc.json
+        - name: Hálózati terheléselosztó
+          href: ../../load-balancer/load-balancer-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Biztonságos Cloud CDN és globális Load Balancer
+          href: ../../frontdoor/front-door-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Webalkalmazás terheléselosztója
+          href: ../../application-gateway/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS-alapú Load Balancer
+          href: ../../traffic-manager/traffic-manager-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Hálózatfigyelés
+      items:
+        - name: A hálózat figyelése Azure Monitor
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: A hálózati állapot figyelése és javítása
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+- name: Útmutatók
+  items:
+    - name: Felhőalapú hálózatok létrehozása és kapcsolódás
+      items:
+        - name: Virtuális hálózat létrehozása
+          href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Hozzon létre egy nyilvános IP-címet
+          href: ../../virtual-network/create-public-ip-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Útválasztási költségek optimalizálása
+          href: ../../virtual-network/routing-preference-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: NAT-átjáró létrehozása a kimenő kapcsolatok számára
+          href: ../../virtual-network/tutorial-create-nat-gateway-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure DNS-zóna és -rekord létrehozása
+          href: ../../dns/dns-getstarted-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Forgalom irányítása útválasztási táblák használatával
+          href: ../../virtual-network/tutorial-create-route-table-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Virtuális hálózatok csatlakoztatása
+          href: ../../virtual-network/tutorial-connect-virtual-networks-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privát hozzáférés az erőforrásokhoz
+          href: ../../private-link/create-private-endpoint-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Helyszíni hálózat összekapcsolása virtuális hálózattal – VPN-titkosítás
+          href: ../../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Létesítmények közötti kapcsolat – dedikált
+          href: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=/azure/networking/fundamentals/toc.json
+    - name: A hálózat védelme
+      items:
+        - name: Hálózati hozzáférés korlátozása
+          href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Hálózati forgalom szűrése
+          href: ../../virtual-network/tutorial-filter-network-traffic.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Hálózati tűzfal üzembe helyezése
+          href: ../../firewall/tutorial-firewall-deploy-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: A hálózat megvédése DDoS-támadások ellen
+          href: ../../ddos-protection/manage-ddos-protection.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Az alkalmazások továbbításának méretezése
+      items:
+        - name: Hálózati terheléselosztó létrehozása
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Biztonságos felhőalapú CDN és globális Load Balancer üzembe helyezése
+          href: ../../frontdoor/quickstart-create-front-door.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Webalkalmazás-terheléselosztó létrehozása
+          href: ../../application-gateway/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS-alapú Load Balancer létrehozása
+          href: ../../traffic-manager/quickstart-create-traffic-manager-profile.md?toc=/azure/networking/fundamentals/toc.json
+    - name: A hálózat figyelése
+      items:
+        - name: Hálózati állapot monitorozása
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Az Azure-erőforrások közötti kommunikáció monitorozása
+          href: ../../network-watcher/connection-monitor-create-using-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure Monitor hálózati adatfelismerés
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json

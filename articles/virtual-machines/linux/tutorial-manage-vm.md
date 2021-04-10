@@ -16,10 +16,10 @@ ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 77213fe83a56a33f4d10658f85465349949be792
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555601"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
@@ -252,7 +252,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 
 ### <a name="power-states"></a>Energiaállapotok
 
-| Energiaállapot | Description
+| Energiaállapot | Leírás
 |----|----|
 | Indítás | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
 | Futó | Azt jelzi, hogy a virtuális gép fut. |

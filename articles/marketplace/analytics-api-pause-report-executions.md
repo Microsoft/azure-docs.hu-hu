@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 39b535278fef42818f572631cfa1cb1f923930a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583836"
 ---
 # <a name="pause-report-executions-api"></a>Jelentések végrehajtásának szüneteltetése API
@@ -27,7 +27,7 @@ Ez az API a végrehajtás során szünetelteti a jelentések ütemezett végreha
 
 **Kérelem fejléce**
 
-| Fejléc | Típus | Description |
+| Fejléc | Típus | Leírás |
 | ------------ | ------------- | ------------- |
 | Engedélyezés | sztring | Kötelező. A Azure Active Directory (Azure AD) hozzáférési token az űrlapon `Bearer <token>` |
 | Content-Type | sztring | `Application/JSON` |

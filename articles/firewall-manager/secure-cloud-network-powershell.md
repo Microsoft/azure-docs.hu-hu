@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: 093b962bb9f42b660fb8cc5c0584ec67ebc87e48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5ef39118d16d47aeb46294658adf616515547ea6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98789162"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729524"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>Oktatóanyag: virtuális központ biztonságossá tétele Azure PowerShell használatával
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 - PowerShell 7
 
-   Ehhez az oktatóanyaghoz a Azure PowerShell helyileg kell futtatni a PowerShell 7-es verziójában. A PowerShell 7 telepítéséhez lásd: [áttelepítés a Windows powershell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7)-ből a PowerShell 7-re.
+   Ehhez az oktatóanyaghoz a Azure PowerShell helyileg kell futtatni a PowerShell 7-es verziójában. A PowerShell 7 telepítéséhez lásd: [áttelepítés a Windows powershell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7&preserve-view=true)-ből a PowerShell 7-re.
 - Az az. Network Version 3.2.0
 
     Ha az az. Network Version 3.4.0 vagy újabb verzióval rendelkezik, a jelen oktatóanyagban szereplő parancsok némelyikének használatára kell visszalépést végeznie. Az az. Network modul verzióját a paranccsal lehet megtekinteni `Get-InstalledModule -Name Az.Network` . Az az. Network modul eltávolításához futtassa a parancsot `Uninstall-Module -name az.network` . Az az. Network 3.2.0-modul telepítéséhez futtassa a parancsot `Install-Module az.network -RequiredVersion 3.2.0 -force` .

@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 38680eb291417ded4c2f93539e8d1ae091b1d560
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583794"
 ---
 # <a name="update-report-api"></a>A jelentés API frissítése
@@ -27,7 +27,7 @@ Ez az API segítséget nyújt a jelentési paraméterek módosításához.
 
 **Kérelem fejléce**
 
-| Fejléc | Típus | Description |
+| Fejléc | Típus | Leírás |
 | ------------ | ------------- | ------------- |
 | Engedélyezés | sztring | Kötelező. A Azure Active Directory (Azure AD) hozzáférési token az űrlapon `Bearer <token>` |
 | Content-Type | sztring | `Application/JSON` |
