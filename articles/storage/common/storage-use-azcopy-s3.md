@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 01c3296569d03a7fcc13c004d42d64a86a48a0bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494512"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728793"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Adatok másolása az Amazon S3-ból az Azure Storage-ba a AzCopy használatával
 
@@ -59,7 +59,7 @@ A AzCopy a [put blokkot használja az URL API-ból](/rest/api/storageservices/pu
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
@@ -76,7 +76,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -89,7 +89,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 
 A könyvtár tartalmát másolhatja anélkül, hogy a benne található könyvtárat a helyettesítő karakter (*) használatával másolja.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -99,7 +99,7 @@ A könyvtár tartalmát másolhatja anélkül, hogy a benne található könyvt�
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
@@ -109,7 +109,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -119,7 +119,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -139,7 +139,7 @@ Az AWS S3 és az Azure különböző karakterkészleteket tesz lehetővé az obj
 
 Egy AzCopy parancs részeként megadhat `copy` egy értéket a nem kötelezően megadandó `s2s-handle-invalid-metadata` jelzőhöz, amely meghatározza, hogyan szeretné kezelni azokat a fájlokat, amelyekben a fájl metaadatai a nem kompatibilis kulcsok nevét tartalmazzák. A következő táblázat ismerteti az egyes jelző értékeket.
 
-| Jelölő értéke | Description  |
+| Jelölő értéke | Leírás  |
 |--------|-----------|
 | **ExcludeIfInvalid** | (Alapértelmezett beállítás) A metaadatok nem szerepelnek az átvitt objektumban. A AzCopy egy figyelmeztetést naplóz. |
 | **FailIfInvalid** | Az objektumok nem másolhatók. A AzCopy naplóz egy hibát, és tartalmazza azt a hibás darabszámot, amely megjelenik az átvitel összegzésében.  |

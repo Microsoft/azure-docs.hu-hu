@@ -4,10 +4,10 @@ description: Ismerje meg, részletezje és vizsgálja meg a Defender IoT biztons
 ms.topic: quickstart
 ms.date: 07/30/2020
 ms.openlocfilehash: 2eb4a10372680348536231aa0333c43199b8d883
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104780990"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Gyors útmutató: biztonsági riasztások vizsgálata

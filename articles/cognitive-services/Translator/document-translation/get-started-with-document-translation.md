@@ -7,10 +7,10 @@ ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
 ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105612381"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
@@ -187,7 +187,7 @@ A Batch-dokumentumok fordítására vonatkozó kérelmet POST kérelem útján k
 
 A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekben:
 
-|HTTP-fejléc|Description|
+|HTTP-fejléc|Leírás|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Kötelező**: az érték a fordítóhoz vagy Cognitive Services erőforráshoz tartozó Azure-előfizetési kulcs.|
 |Content-Type|**Kötelező**: az adattartalom tartalomtípusát adja meg. Az elfogadott értékek az Application/JSON vagy a charset = UTF-8.|

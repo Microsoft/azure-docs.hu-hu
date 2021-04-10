@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Az arc-kompatibilis Kubernetes-fürtökkel kapcsolatos gyakori problémák elhárítása.
 keywords: Kubernetes, arc, Azure, tárolók
 ms.openlocfilehash: 992ea75c48b2630032e1314610986fbc610eec7b
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105025781"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Azure arc-kompatibilis Kubernetes-hibaelhárítás

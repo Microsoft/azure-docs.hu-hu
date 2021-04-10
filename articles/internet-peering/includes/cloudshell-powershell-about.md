@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d125471d4a6c68aff12921a8524a91ef75b6c51a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102532634"
 ---
 A parancsmagok futtatásához használhatja a Azure Cloud Shellt, amely egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Válassza a **Másolás** elemet a kód másolásához, majd illessze be Cloud Shellba. Ezután válassza az **ENTER billentyűt** a futtatásához. A Cloud Shell elindításának néhány módja van:

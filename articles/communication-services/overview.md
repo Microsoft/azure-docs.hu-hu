@@ -8,16 +8,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9559e79673d1b49ff33ff5dd81677f956657016b
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 40fe1e59b7c600e273b677d60bc162c767569c14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605382"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728572"
 ---
 # <a name="what-is-azure-communication-services"></a>Az Azure Communication Services bemutatása
-
-[!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > Az Azure kommunikációs szolgáltatásokkal felépített alkalmazások a Microsoft csapatával tudnak kommunikálni. További tudnivalókért tekintse meg a [csapat együttműködési](./quickstarts/voice-video-calling/get-started-teams-interop.md) dokumentációját.
@@ -65,7 +63,7 @@ A kommunikációs szolgáltatások erőforrásának létrehozása után megkezdh
 Az alábbi példák az Azure kommunikációs szolgáltatások SDK-k végpontok közötti kihasználtságát szemléltetik. Nyugodtan használhatja ezeket a mintákat a saját kommunikációs szolgáltatások megoldásának elindításához.
 <br>
 
-| Minta neve                               | Description                           |
+| Minta neve                               | Leírás                           |
 |---                                    |---                                   |
 |**[A Hero-mintát hívó csoport](./samples/calling-hero-sample.md)**|Ismerje meg, hogyan használható a kommunikációs szolgáltatások SDK-k egy csoportos hívási élmény létrehozására.|
 |**[A csoportos csevegési hős mintája](./samples/chat-hero-sample.md)**|Ismerje meg, hogy a kommunikációs szolgáltatások SDK-k hogyan használhatók csoportos csevegési élmény létrehozásához.|

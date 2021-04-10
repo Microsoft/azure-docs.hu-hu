@@ -4,10 +4,10 @@ description: Ez a cikk áttekinti a Azure Service Bus üzeneteket, a hasznos ada
 ms.topic: article
 ms.date: 01/29/2021
 ms.openlocfilehash: e1baca1cd3dedee5917670a00b62c68752b5e4b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101095113"
 ---
 # <a name="messages-payloads-and-serialization"></a>Üzenetek, hasznos adatforgalom és szerializáció
@@ -22,7 +22,7 @@ Az előre definiált közvetítő tulajdonságai az alábbi táblázatban látha
  
 A AMQP protokoll szintjén használt egyenértékű nevek zárójelben vannak felsorolva. 
 
-| Tulajdonság neve                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Tulajdonság neve                         | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [`ContentType`](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Content-Type)           | Opcionálisan leírja az üzenet tartalmát a RFC2045 formátumát követő leíróval, 5. szakasz; például: `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [`CorrelationId`](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (korrelációs azonosító)       | Lehetővé teszi az alkalmazás számára, hogy korrelációs célból megismertesse az üzenet környezetét. például egy olyan üzenet **MessageID** , amelyről válaszol.                                                                                                                                                                                                                                                                  |

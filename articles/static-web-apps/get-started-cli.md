@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: f3ac1c8076650a4075c33aeaa9128133b5b90296
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: a95e1658c3633f4ae8d09b71e9d3b0c82446754a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046079"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727586"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Rövid útmutató: az első statikus hely felépítése az Azure CLI használatával
 
@@ -110,7 +110,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
     - `<RESOURCE_GROUP_NAME>`: Cserélje le ezt az értéket egy meglévő [Azure-erőforráscsoport nevére](../azure-resource-manager/management/manage-resources-cli.md).
 
-      - Az erőforráscsoportok listázásával kapcsolatos részletekért tekintse meg az az [Group](/cli/azure/group?view=azure-cli-latest#az_group_list) dokumentációját.
+      - Az erőforráscsoportok listázásával kapcsolatos részletekért tekintse meg az az [Group](/cli/azure/group#az_group_list) dokumentációját.
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`: Cserélje le ezt az értéket a GitHub-felhasználónevére.
 

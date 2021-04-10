@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105609275"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Lekérdezés az Azure Cognitive Searchban
@@ -85,7 +85,7 @@ A szűrők széles körben használatosak a Cognitive Searcht tartalmazó alkalm
 
 A következő táblázatban leírtak szerint szűrőkre is szükség lehet egy speciális lekérdezési űrlap meghívásához. A szűrőket meghatározatlan kereséssel ( **`search=*`** ) vagy olyan lekérdezési karakterlánccal használhatja, amely kifejezéseket, kifejezéseket, operátorokat és mintákat tartalmaz.
 
-| Szűrési forgatókönyv | Description |
+| Szűrési forgatókönyv | Leírás |
 |-----------------|-------------|
 | Tartomány szűrőinek | Az Azure Cognitive Searchban a Range lekérdezéseket a Filter paraméterrel kell felépíteni. További információért és Példákért lásd: [tartomány szűrő példa](search-query-simple-examples.md#example-5-range-filters). |
 | Földrajzi hely keresése | Ha egy kereshető mező [EDM. geographypoint adattípuson típusú](/rest/api/searchservice/supported-data-types), létrehozhat egy szűrési kifejezést a "keresés a közelben" vagy a térképes keresési vezérlőkben. A földrajzi keresést elvégező mezők koordinátáit tartalmaznak. További információ és példa: [földrajzi keresési példa](search-query-simple-examples.md#example-6-geo-search). |

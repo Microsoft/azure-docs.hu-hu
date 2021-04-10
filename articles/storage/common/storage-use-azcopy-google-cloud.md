@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0f030683954ede013f769bf8584e6cf82bab69f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c6a53acd63b6aa882674f6aa29e1f7152f5b0a30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103555421"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728810"
 ---
 # <a name="copy-data-from-google-cloud-storage-to-azure-storage-by-using-azcopy-preview"></a>Adatok másolása a Google Cloud Storage-ból az Azure Storage-ba a AzCopy (előzetes verzió) használatával
 
@@ -63,7 +63,7 @@ A AzCopy a [put blokkot használja az URL API-ból](/rest/api/storageservices/pu
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **Példa** | `azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
@@ -74,7 +74,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -87,7 +87,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 
 A könyvtár tartalmát másolhatja anélkül, hogy a benne található könyvtárat a helyettesítő karakter (*) használatával másolja.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -97,7 +97,7 @@ A könyvtár tartalmát másolhatja anélkül, hogy a benne található könyvt�
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -109,7 +109,7 @@ Először állítsa be a `GOOGLE_CLOUD_PROJECT` Google Cloud Project projekt-azo
 
 Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://storage.cloud.google.com/' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -121,7 +121,7 @@ Először állítsa be a `GOOGLE_CLOUD_PROJECT` Google Cloud Project projekt-azo
 
 Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimbólum használatával a gyűjtő nevében. Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
-|    |     |
+| Szintaxis/példa  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket*name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -145,7 +145,7 @@ A Google Cloud Storage és az Azure különböző karakterkészleteket tesz lehe
 
 Egy AzCopy parancs részeként megadhat `copy` egy értéket a nem kötelezően megadandó `s2s-handle-invalid-metadata` jelzőhöz, amely meghatározza, hogyan szeretné kezelni azokat a fájlokat, amelyekben a fájl metaadatai a nem kompatibilis kulcsok nevét tartalmazzák. A következő táblázat ismerteti az egyes jelző értékeket.
 
-| Jelölő értéke | Description  |
+| Jelölő értéke | Leírás  |
 |--------|-----------|
 | **ExcludeIfInvalid** | (Alapértelmezett beállítás) A metaadatok nem szerepelnek az átvitt objektumban. A AzCopy egy figyelmeztetést naplóz. |
 | **FailIfInvalid** | Az objektumok nem másolhatók. A AzCopy naplóz egy hibát, és tartalmazza azt a hibás darabszámot, amely megjelenik az átvitel összegzésében.  |

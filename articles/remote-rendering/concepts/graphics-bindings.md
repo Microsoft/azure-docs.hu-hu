@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99593908"
 ---
 # <a name="graphics-binding"></a>Grafikus kötés
@@ -275,7 +275,7 @@ public struct SimulationUpdateResult
 
 A struktúra tagjai a következőkkel bírnak:
 
-| Tag | Description |
+| Tag | Leírás |
 |--------|-------------|
 | FrameId | Folyamatos keret azonosítója A SimulationUpdateParameters-bevitelhez szükséges, és folyamatosan növelni kell az egyes új kereteket. A SimulationUpdateResult 0 lesz, ha még nem érhető el frame-érték. |
 | ViewTransform | A keret kamera-átalakulási mátrixának bal és jobb oldali sztereó párja. A monoscopic megjelenítéséhez csak a `Left` tag érvényes. |
