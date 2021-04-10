@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 84d5f1e4035fb730d33b7bc8dd375273610f0bfb
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4601f2d6eddbbe8809dfd46a7e0cc5aa3c40c722
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771940"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209570"
 ---
 # <a name="data-source-schema-reference"></a>Adatforrás sémájának referenciája
 
@@ -51,7 +51,7 @@ A következő táblázat felsorolja a harmadik féltől származó gyártókat, 
 | **Hálózat** | FortiGate   | ALL   | CommonSecurityLog | [A naplózási séma szerkezete](https://docs.fortinet.com/document/fortigate/6.2.3/fortios-log-message-reference/738142/log-schema-structure)         |
 | **Hálózat** | Barracuda | Webalkalmazási tűzfal |  CommonSecurityLog   | [A syslog és más naplók konfigurálása](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259935/how-to-configure-syslog-and-other-logs/)  |
 | **Hálózat** | Cisco | ASA | CommonSecurityLog | [Cisco ASA sorozat syslog-üzenetei](https://www.cisco.com/c/en/us/td/docs/security/asa/syslog/b_syslog/about.html)    |
-| **Hálózat** | Cisco | Tűzerő   | CommonSecurityLog | [Cisco tűzerő Threat Defense syslog-üzenetek](https://www.cisco.com/c/en/us/td/docs/security/firepower/Syslogs/b_fptd_syslog_guide.pdf)    |
+| **Hálózat** | Cisco | Tűzerő   | CommonSecurityLog | [Cisco tűzerő Threat Defense syslog-üzenetek](https://www.cisco.com/c/en/us/td/docs/security/firepower/Syslogs/b_fptd_syslog_guide.html)    |
 | **Hálózat** | Cisco   | Esernyő  | Egyéni naplók táblázata  | [Naplózási formátumok és verziószámozás](https://docs.umbrella.com/deployment-umbrella/docs/log-formats-and-versioning)   |
 | **Hálózat**   | Cisco | Meraki    | CommonSecurityLog |   [Syslog-események típusai és a naplók mintái](https://documentation.meraki.com/zGeneral_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples)    |
 | **Hálózat**   | Zscaler | Nano streaming Service (NSS)|   CommonSecurityLog | Az [NSS-hírcsatornák](https://help.zscaler.com/zia/documentation-knowledgebase/analytics/nss/nss-feeds/formatting-nss-feeds) (webes, TŰZFAL, DNS és bújtatási naplók) formázása |

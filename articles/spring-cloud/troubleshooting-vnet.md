@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2369a6380c7b74302d32366d0604fca616fc3ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a84ed5a6f80b038ced2077fe3c038bd9801ca033
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732941"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Az Azure Spring Cloud hibaelhárítása a Virtual Networks szolgáltatásban
 
@@ -38,7 +38,6 @@ Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretn
 | Hibaüzenet | A hiba kijavítása |
 |------|------|
 | Az Azure Spring Cloud által létrehozott erőforrásokat a szabályzat nem engedélyezte. | A hálózati erőforrások akkor jönnek létre, amikor üzembe helyezi az Azure Spring Cloudt a saját virtuális hálózatán. Ellenőrizze, hogy van-e [Azure Policy](../governance/policy/overview.md) definiálva a létrehozás blokkolásához. Nem sikerült létrehozni az erőforrásokat a következő hibaüzenetben:. |
-| A megadott alhálózatok útválasztási táblákhoz vannak társítva. Kérjük, szüntesse meg őket. | Jelenleg nem támogatott az Azure Spring Cloud üzembe helyezése a meglévő útválasztási táblázatokhoz társított alhálózatban, majd az újbóli próbálkozás. |
 | A szükséges forgalom nem allowlisted. | Az [Azure Spring Cloud VNET való futtatásával](spring-cloud-vnet-customer-responsibilities.md) kapcsolatban a szükséges adatforgalom allowlisted érdekében tekintse meg az ügyfél feladatait. |
 
 ## <a name="my-application-cant-be-registered"></a>Az alkalmazásom nem regisztrálható

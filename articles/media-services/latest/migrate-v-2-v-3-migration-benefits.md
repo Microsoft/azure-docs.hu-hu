@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 114635722a0a131fc146eb2ab69984effb211a88
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 9dd3525f4efec3c49950839306ee5419c7850c69
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559757"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275413"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>1. lépés – a Media Services API v3-re való Migrálás előnyeinek megismerése
 
@@ -44,21 +44,21 @@ A v3-as Media Services jelentős mértékben javult.
 | Privát hivatkozás támogatása | Az ügyfelek a VNet lévő PrivateEndpoint keresztül érhetik el Media Services végpontokat a Key Delivery, a LiveEvents és a StreamingEndpoints számára. |
 | [Ügyfél-összekeveredésű kulcsok](concept-use-customer-managed-keys-byok.md) vagy saját kulcs használata (BYOK) támogatása | Az ügyfelek a Azure Key Vault egy kulcsával titkosítják a Media Services-fiókban lévő adataikat. |
 | **Adategységek** | |
-| Egy eszközhöz több [folyamatos átviteli lokátor](streaming-locators-concept.md) is tartozhat, amelyek különböző [dinamikus csomagolási](dynamic-packaging-overview.md) és dinamikus titkosítási beállításokkal rendelkeznek. | Az egyes eszközökön legfeljebb 100 streaming-lokátor engedélyezett. Az ügyfelek a médiatartalom egyetlen példányát tárolhatják az adategységben, de a különböző streaming-URL-címeket különböző streaming-házirendekkel vagy a célközönségen alapuló tartalomkezelési házirendekkel oszthatják meg.
+| Egy eszközhöz több [folyamatos átviteli lokátor](stream-streaming-locators-concept.md) is tartozhat, amelyek különböző [dinamikus csomagolási](encode-dynamic-packaging-concept.md) és dinamikus titkosítási beállításokkal rendelkeznek. | Az egyes eszközökön legfeljebb 100 streaming-lokátor engedélyezett. Az ügyfelek a médiatartalom egyetlen példányát tárolhatják az adategységben, de a különböző streaming-URL-címeket különböző streaming-házirendekkel vagy a célközönségen alapuló tartalomkezelési házirendekkel oszthatják meg.
 | **Feladatok feldolgozása** ||
-| A v3 bevezeti [](transforms-jobs-concept.md)a   fájl alapú feladatok feldolgozásának átalakítási koncepcióját. | Az átalakító használatával újrafelhasználható konfigurációk hozhatók létre, Azure Resource Manager sablonok hozhatók létre, és a feldolgozási beállítások elkülöníthetők több ügyfél vagy bérlő között. |
+| A v3 bevezeti [](transform-jobs-concept.md)a   fájl alapú feladatok feldolgozásának átalakítási koncepcióját. | Az átalakító használatával újrafelhasználható konfigurációk hozhatók létre, Azure Resource Manager sablonok hozhatók létre, és a feldolgozási beállítások elkülöníthetők több ügyfél vagy bérlő között. |
 | A fájl alapú feladatok feldolgozásához a HTTP (S) URL-címet használhatja bemenetként. | Nincs szüksége az Azure-ban tárolt tartalomra, és nem kell bemeneti eszközöket létrehoznia. |
 | **Élő események** ||
 | Prémium szintű, 1080p élő események | Az új Live Event SKU lehetővé teszi, hogy az ügyfelek az akár 1080p felbontású Felhőbeli kódolást is igénybe vegyenek. |
-| Új, [kis késleltetésű](live-event-latency.md) élő adatfolyam-támogatás élő eseményeken. | Így a felhasználók valós időben tekinthetik meg az élő eseményeket, mint ha ezt a beállítást nem engedélyezték. |
-| Az élő esemény előzetes verziója támogatja a [dinamikus csomagolást](dynamic-packaging-overview.md)   és a dinamikus titkosítást. | Ez lehetővé teszi a tartalom védelmét az előnézet, a kötőjel és a HLS csomagolás esetében. |
+| Új, [kis késleltetésű](live-event-latency-reference.md) élő adatfolyam-támogatás élő eseményeken. | Így a felhasználók valós időben tekinthetik meg az élő eseményeket, mint ha ezt a beállítást nem engedélyezték. |
+| Az élő esemény előzetes verziója támogatja a [dinamikus csomagolást](encode-dynamic-packaging-concept.md)   és a dinamikus titkosítást. | Ez lehetővé teszi a tartalom védelmét az előnézet, a kötőjel és a HLS csomagolás esetében. |
 | Élő kimenetek cseréje programok | Az élő kimenet használata egyszerűbb, mint a program entitás a v2 API-kon. |
 | Az RTMP betöltése az élő eseményekhez továbbfejlesztett, és több kódoló támogatása | Növeli a stabilitást, és biztosítja a forrás-kódoló rugalmasságát. |
 | Élő események stream nonstop | Élő eseményt üzemeltetheti, és megtarthatja a célközönséget hosszabb időszakokra is. |
 | Élő átírás az élő eseményeken | Az élő átírás lehetővé teszi, hogy az ügyfelek valós időben automatikusan szövegbe írjanak a beszélt nyelveket az élő esemény szórása során. Ez jelentősen javítja az élő események hozzáférhetőségét. |
-| [Készenléti üzemmód](live-events-outputs-concept.md#standby-mode) élő eseményeken | A készenléti állapotban lévő élő események kevésbé költségesek, mint az élő események futtatása. Ez lehetővé teszi az ügyfelek számára, hogy az élő események egy készletének megtartása mellett kevesebb időt is igénybe lehessen venni az élő események futtatására. A készenléti állapotú élő események csökkentett díjszabása február 2021-én lép érvénybe a legtöbb régióban, a többi pedig a 2021 áprilisban.
+| [Készenléti üzemmód](live-event-outputs-concept.md#standby-mode) élő eseményeken | A készenléti állapotban lévő élő események kevésbé költségesek, mint az élő események futtatása. Ez lehetővé teszi az ügyfelek számára, hogy az élő események egy készletének megtartása mellett kevesebb időt is igénybe lehessen venni az élő események futtatására. A készenléti állapotú élő események csökkentett díjszabása február 2021-én lép érvénybe a legtöbb régióban, a többi pedig a 2021 áprilisban.
 |**Tartalomvédelem** ||
-| [Tartalomvédelem](content-key-policy-concept.md)   támogatja a többkulcsos funkciókat. | Az ügyfelek mostantól több tartalom titkosítási kulcsot is használhatnak a streaming-lokátorokban. |
+| [Tartalomvédelem](drm-content-key-policy-concept.md)   támogatja a többkulcsos funkciókat. | Az ügyfelek mostantól több tartalom titkosítási kulcsot is használhatnak a streaming-lokátorokban. |
 | **Figyelés** | |
 | [Azure EventGrid](monitoring/reacting-to-media-services-events.md) Notification-támogatás | A EventGrid-értesítések több funkciója is gazdag. Több típusú értesítés is létezik, szélesebb körű SDK-támogatás az értesítések saját alkalmazásban való fogadásához, valamint a meglévő Azure-szolgáltatások, amelyek eseménykezelőként működhetnek. |
 | [Azure Monitor támogatás és integráció a Azure Portal](monitoring/monitor-events-portal-how-to.md) | Ez lehetővé teszi az ügyfeleknek, hogy megjelenítsék Media Services fiók kvótájának felhasználását, a valós idejű statisztikát a folyamatos átviteli végpontokról, valamint az élő események betöltésére és archiválására vonatkozó statisztikát. Az ügyfelek mostantól riasztásokat állíthatnak be, és valós idejű metrikus adatokon alapuló szükséges műveleteket hajthatnak végre. |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 82ba49beb74fbc7b6f9d976d123fd9465d585d88
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103561617"
 ---
 # <a name="azure-storage-data-governance-management-and-migration-partners"></a>Az Azure Storage adatirányítási, felügyeleti és áttelepítési partnerei
@@ -21,7 +21,7 @@ Ez a cikk az Azure Storage szolgáltatással integrált Microsoft-partneri váll
 
 ## <a name="verified-partners"></a>Ellenőrzött partnerek
 
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 |![CommVault-cég emblémája](./media/commvault-logo.jpg) |***CommVault**<br>Az CommVault használatával optimalizálhatja, védetté teheti, áttelepítheti és indexelheti az adatait a Microsoft-infrastruktúrával. A CommVault teljes adatvédelmet, a Microsoft-központú és az Azure-központú adatkezelési megoldást is igénybe veheti. A CommVault biztosítja az adatok kezeléséhez, átirányításához, eléréséhez és helyreállításához szükséges eszközöket, függetlenül attól, hogy hol találhatók, és csökkenti a költségeket és a kockázatot.|[Partner oldal](https://www.commvault.com/complete-data-protection)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)|
 |![Adatdinamikai Vállalat emblémája](./media/datadyn-logo.png) |**Adatdinamika**<br>Az adatdinamika nagyvállalati megoldásokat kínál a hibrid és többfelhős környezetek strukturálatlan adatkezeléséhez. Az egységesített strukturálatlan adatkezelés-platform az elemzést és az automatizálást használja az adatok különböző-tárolási környezetből (SMB, NFS vagy S3 Object) az Azure-ba való intelligens és hatékony áthelyezéséhez. A platform zökkenőmentes integrációt, nagyvállalati méretezést és teljesítményt biztosít, amely lehetővé teszi az adatkezelést a hibrid és a többfelhős környezetekben. A használati esetek többek között a következők: intelligens felhőalapú áttelepítés, vész-helyreállítás, archiválás, biztonsági mentés, infrastruktúra optimalizálása és adatkezelés. |[Partner oldal](https://www.datadynamicsinc.com/ms-azure-partner/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_2-preview?tab=Overview&flightCodes=18994ad6-20dc-4bdb-ae27-e7ef3263fa9e)|

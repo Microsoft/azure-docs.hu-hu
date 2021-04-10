@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 10/06/2020
-ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 381ee45bd678ef22222483675ddf001e16970628
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879224"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552053"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
 Ez a cikk a kereskedelmi piactéren elérhető ajánlati típusokat ismerteti. Az *ajánlat típusa* határozza meg az ajánlat struktúráját, amely tartalmazza a kereskedelmi piactéren bemutatott metaadatokat, összetevőket és egyéb tartalmakat.
 
 A [közzétételi lehetőség](determine-your-listing-type.md)kiválasztása után ki kell választania az ajánlat típusát, mielőtt megkezdené az ajánlat létrehozását a partner Centerben. Az ajánlat típusa megegyezik a közzétenni kívánt megoldás, alkalmazás vagy szolgáltatási ajánlat típusával, valamint a Microsoft-termékekkel és-szolgáltatásokkal való összehangolásával.
+
+> [!NOTE]
+> Az ajánlat típusának kiválasztása után az ajánlat nem módosítható másik típusra. Egy másik ajánlat típusának létrehozásához létre kell hoznia egy új ajánlatot.
 
 A különböző közzétételi lehetőségek, listaelemek, kiépítés vagy díjszabás lehetővé tételéhez többféle módon is konfigurálhat egyetlen ajánlatot. A közzétételi lehetőség és az ajánlat típusának konfigurációja is igazodik az ajánlat támogathatóságához és a technikai követelményekhez.
 

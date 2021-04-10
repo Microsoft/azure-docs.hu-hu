@@ -2,207 +2,152 @@
 title: Helyi fejlesztés beállítása az Azure statikus Web Apps
 description: Ismerje meg, hogyan állíthatja be helyi fejlesztési környezetét az Azure statikus Web Apps
 services: static-web-apps
-author: burkeholland
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 05/08/2020
-ms.author: buhollan
+ms.date: 04/02/2021
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a45d490d060febc18d77c8487c9f562fd2a914a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91326167"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275516"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Helyi fejlesztés beállítása az Azure statikus Web Apps előzetes verziójához
 
-Az Azure statikus Web Apps példányai két különböző típusú alkalmazásból állnak. Az első egy webes alkalmazás a statikus tartalomhoz. A webalkalmazások gyakran előtér-keretrendszerekkel és-tárakkal, illetve statikus hely generátorokkal hozhatók létre. A második szempont az API, amely egy olyan Azure Functions alkalmazás, amely sokoldalú fejlesztési környezetet biztosít.
+Amikor közzétette a felhőben, az Azure statikus Web Apps webhelye számos olyan szolgáltatást tartalmaz, amelyek ugyanúgy működnek, mint az alkalmazás. Ilyen szolgáltatások többek között a következők:
 
-A felhőben való futtatáskor az Azure statikus Web Apps zökkenőmentesen leképezi a kérelmeket a `api` webalkalmazásból a Azure functions alkalmazásba, anélkül, hogy CORS-konfigurációra lenne szükség. Helyileg, konfigurálnia kell az alkalmazást, hogy utánozza ezt a viselkedést.
+- A statikus webalkalmazás
+- Azure Functions API
+- Hitelesítési és engedélyezési szolgáltatások
+- Útválasztási és konfigurációs szolgáltatások
 
-Ez a cikk a helyi fejlesztés ajánlott bevált gyakorlatait mutatja be, beleértve a következő fogalmakat:
+Ezeknek a szolgáltatásoknak kommunikálnia kell egymással, és az Azure statikus Web Apps kezeli ezt az integrációt a felhőben.
 
-- A webes alkalmazás beállítása statikus tartalomhoz
-- A Azure Functions alkalmazás konfigurálása az alkalmazás API-hoz
-- Az alkalmazás hibakeresése és futtatása
-- Ajánlott eljárások az alkalmazás fájl-és mappastruktúrát
+A helyileg futtatott szolgáltatások azonban nem kapcsolódnak automatikusan egymáshoz.
+
+Ahhoz, hogy az Azure-ban milyen élményt nyújtson, az [Azure statikus Web Apps CLI](https://github.com/Azure/static-web-apps-cli) a következő szolgáltatásokat nyújtja:
+
+- Helyi statikus hely kiszolgálója
+- Az előtér-keretrendszer fejlesztői kiszolgálójának proxyja
+- Proxy az API-végpontok számára – elérhető Azure Functions Core Tools
+- Egy ál-hitelesítési és engedélyezési kiszolgáló
+- Helyi útvonalak és konfigurációs beállítások kényszerítése
+
+## <a name="how-it-works"></a>Működés
+
+A következő diagram bemutatja, hogyan kezeli a rendszer a kérelmeket helyileg.
+
+:::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Azure-beli statikus webalkalmazás parancssori felületi kérelme és a válasz folyamatábrája":::
+
+> [!IMPORTANT]
+> Navigáljon a [http://localhost:4280](http://localhost:4280) parancssori felület által kiszolgált alkalmazás eléréséhez.
+
+- A portra **irányuló kéréseket** a rendszer a `4280` kérelem típusától függően továbbítja a megfelelő kiszolgálóra.
+
+- A **statikus tartalomra** vonatkozó kéréseket (például a HTML-t vagy a CSS-t) a belső CLI statikus tartalom-kiszolgáló vagy az előtér-keretrendszer kiszolgálója kezeli a hibakereséshez.
+
+- A **hitelesítési és engedélyezési** kérelmeket egy emulátor kezeli, amely hamis azonosító profilt biztosít az alkalmazás számára.
+
+- A **functions Core Tools futtatókörnyezete** kezeli a kérelmeket a hely API-jával.
+
+- A rendszer az összes szolgáltatás **válaszait** visszaadja a böngészőnek, mintha egyetlen alkalmazás lenne.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure functions-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) a Visual Studio Code-hoz
-- [Live Server-bővítmény](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) a Visual Studio Code-hoz
-  - Csak akkor szükséges, ha nem használ előtér-JavaScript-keretrendszert vagy statikus site Generator parancssori felületét
+- **Meglévő Azure statikus Web Apps webhely**: Ha még nem rendelkezik ilyennel, kezdje a [Vanilla-API](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) Starter alkalmazással.
+- **[Node.js](https://nodejs.org) a NPM**-mel: futtassa a [Node.js LTS](https://nodejs.org) -verziót, amely magában foglalja a [NPM](https://www.npmjs.com/)való hozzáférést.
+- **[Visual Studio Code](https://code.visualstudio.com/)**: az API-alkalmazás hibakereséséhez használatos, de a parancssori felülethez nem szükséges.
 
-## <a name="run-projects-locally"></a>Projektek helyi futtatása
+## <a name="get-started"></a>Bevezetés
 
-Az Azure-beli statikus webalkalmazások helyi futtatása három folyamatot foglal magában, attól függően, hogy a projekt tartalmaz-e API-t.
+Nyisson meg egy terminált a meglévő Azure statikus Web Apps-hely gyökérkönyvtárában.
 
-- Helyi webkiszolgáló futtatása
-- Az API futtatása
-- A webes projekt csatlakoztatása az API-hoz
+1. Telepítse a CLI-t.
 
-A webhelyek felépítésének módjától függően előfordulhat, hogy egy helyi webkiszolgáló vagy nem szükséges az alkalmazás futtatásához a böngészőben. Az előtér-JavaScript-keretrendszerek és a statikus site-generátorok használatakor ez a funkció a megfelelő CLIs (parancssori felületek) van beépítve. A következő hivatkozások a CLI-referenciára mutatnak a keretrendszerek, könyvtárak és generátorok kiválasztásához.
+    `npm install -g @azure/static-web-apps-cli`
 
-### <a name="javascript-frameworks-and-libraries"></a>JavaScript-keretrendszerek és-kódtárak
+1. Készítse elő az alkalmazást, ha az alkalmazása szükséges.
 
-- [Angular CLI](https://angular.io/cli)
-- [Vue parancssori felület](https://cli.vuejs.org/guide/creating-a-project.html)
-- [CLI-reagálás](https://create-react-app.dev/)
+    Futtassa `npm run build` a parancsot, vagy a projekt egyenértékű parancsát.
 
-### <a name="static-site-generators"></a>Statikus hely generátorai
+1. Váltson az alkalmazás kimeneti könyvtárába. A kimeneti mappák neve gyakran _Build_ vagy valami hasonló.
 
-- [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/)
-- [Hugo](https://gohugo.io/getting-started/quick-start/)
-- [Jekyll](https://jekyllrb.com/docs/usage/)
+1. Indítsa el a CLI-t.
 
-Ha CLI-eszközt használ a hely kiszolgálására, ugorjon az [API futtatása](#run-api-locally) szakaszra.
+    `swa start`
 
-### <a name="running-a-local-web-server-with-live-server"></a>Helyi webkiszolgáló futtatása élő kiszolgálóval
+1. A gombra [http://localhost:4280](http://localhost:4280) kattintva megtekintheti az alkalmazást a böngészőben.
 
-A Visual Studio Code-hoz készült Live Server-bővítmény egy helyi fejlesztési webkiszolgálót biztosít, amely statikus tartalmat szolgál ki.
+### <a name="other-ways-to-start-the-cli"></a>A CLI indításának egyéb módjai
 
-#### <a name="create-a-repository"></a>Adattár létrehozása
+| Leírás | Parancs |
+|--- | --- |
+| Egy adott mappa kiszolgálása | `swa start ./output-folder` |
+| Futó keretrendszer fejlesztői kiszolgáló használata | `swa start http://localhost:3000` |
+| Functions-alkalmazás elindítása egy mappában | `swa start ./output-folder --api ./api` |
+| Futó függvények alkalmazás használata | `swa start ./output-folder --api http://localhost:7071` |
 
-1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és navigáljon a [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) **Vanilla-API** nevű új GitHub-projekthez, és hozzon létre egy, a sablon használatával.
+## <a name="authorization-and-authentication-emulation"></a>Engedélyezési és hitelesítési emuláció
 
-    :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub – új tárház ablak":::
+A statikus Web Apps CLI az Azure-ban megvalósított [biztonsági folyamatot](./authentication-authorization.md) emulálja. Amikor egy felhasználó bejelentkezik, megadhatja az alkalmazásnak visszaadott hamis identitási profilt.
 
-1. Nyissa meg a Visual Studio Code-ot.
+Ha például megpróbálja megkeresni a-t `/.auth/login/github` , a rendszer egy lapot ad vissza, amely lehetővé teszi egy Identity profil definiálását.
 
-1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
+> [!NOTE]
+> Az emulátor bármilyen biztonsági szolgáltatóval működik, nem csak a GitHubon.
 
-1. A keresőmezőbe írja be a **klón** kifejezést, majd válassza a **git: Clone** lehetőséget.
+:::image type="content" source="media/local-development/auth-emulator.png" alt-text="Helyi hitelesítési és engedélyezési emulátor":::
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="git-klón lehetőség a Visual Studio Code-ban":::
+Az emulátor egy olyan oldalt biztosít, amely lehetővé teszi a következő [ügyfél](./user-information.md#client-principal-data) -értékek megadását:
 
-1. Adja meg a következő értéket a **tárház URL-címéhez**.
+| Érték | Leírás |
+| --- | --- |
+| **Felhasználónév** | A biztonsági szolgáltatóhoz társított fióknév. Ez az érték jelenik meg az `userDetails` ügyfél rendszerbiztonsági tagjaként, és automatikusan létrejön, ha nem ad meg értéket. |
+| **Felhasználói azonosító** | A CLI által automatikusan generált érték.  |
+| **Szerepkörök** | A szerepkörök neveinek listája, ahol az egyes nevek új sorban vannak.  |
 
-   ```http
-   git@github.com:<YOUR_GITHUB_ACCOUNT>/vanilla-api.git
-   ```
+Bejelentkezés után:
 
-1. Válassza ki az új projekthez tartozó mappa helyét.
+- A `/.auth/me` végpont vagy a függvény végpontja segítségével kérheti le a felhasználó ügyfél- [rendszerbiztonsági](./user-information.md)tagját.
 
-1. Amikor a rendszer a klónozott adattár megnyitására kéri, válassza a **Megnyitás** gombot.
+- Navigáljon az `./auth/logout` egyszerű ügyfél törléséhez, és jelentkezzen ki az ál-felhasználót.
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="Megnyitás új ablakban":::
+## <a name="debugging"></a>Hibakeresés
 
-A Visual Studio Code megnyitja a klónozott projektet a szerkesztőben.
+Két hibakeresési kontextus található egy statikus webalkalmazásban. Az első a statikus tartalom webhelye, a második pedig az API functions. A helyi hibakeresést úgy teheti meg, hogy a statikus Web Apps parancssori felület a következő környezetek egyikéhez vagy mindkettőhöz használja a fejlesztői kiszolgálókat.
 
-### <a name="run-the-website-locally-with-live-server"></a>A webhely helyi futtatása az élő kiszolgálóval
+A következő lépések egy olyan általános forgatókönyvet mutatnak be, amely fejlesztői kiszolgálókat használ a hibakeresési környezetekhez.
 
-1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
+1. Indítsa el a statikus hely fejlesztői kiszolgálóját. Ez a parancs az Ön által használt előtér-keretrendszerre vonatkozik, de gyakran olyan parancsok formájában történik, mint a `npm run build` , `npm start` vagy a `npm run dev` .
 
-1. Írja be a **Live Server** kifejezést a keresőmezőbe, és válassza az **élő kiszolgáló: Megnyitás élő** kiszolgálóval lehetőséget.
+1. Nyissa meg az API-alkalmazás mappáját a Visual Studio Code-ban, és indítsa el a hibakeresési munkamenetet.
 
-    Megnyílik egy böngésző lap az alkalmazás megjelenítéséhez.
+1. Adja át a statikus kiszolgáló és az API-kiszolgáló címét a `swa start` parancsnak a sorrendben való listázásával.
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="A böngészőben futó egyszerű statikus hely":::
+    `swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api=http://localhost:7071`
 
-    Ez az alkalmazás HTTP-kérelmet tesz elérhetővé a `api/message` végpontnak. Jelenleg a kérelem meghiúsul, mert az alkalmazás API-részének el kell indulnia.
+A következő képernyőképek egy tipikus hibakeresési forgatókönyvhöz tartozó terminálokat mutatnak be:
 
-### <a name="run-api-locally"></a>API helyi futtatása
+A statikus tartalom helye a-on keresztül fut `npm run dev` .
 
-Az Azure statikus Web Apps API-kat Azure Functions működteti. Az API Azure statikus Web Apps projekthez való hozzáadásával kapcsolatos részletekért lásd: [API hozzáadása az Azure statikus Azure Functions web Appshoz](add-api.md) .
+:::image type="content" source="media/local-development/run-dev-static-server.png" alt-text="Statikus hely fejlesztői kiszolgálója":::
 
-Az API-létrehozási folyamat részeként létrejön egy indítási konfiguráció a Visual Studio Code-hoz. Ez a konfiguráció a _. vscode_ mappában található. Ez a mappa az API helyi létrehozásához és futtatásához szükséges összes beállítást tartalmazza.
+A Azure Functions API-alkalmazás hibakeresési munkamenetet futtat a Visual Studio Code-ban.
 
-1. A Visual Studio Code-ban nyomja le az **F5** billentyűt az API elindításához.
+:::image type="content" source="media/local-development/visual-studio-code-debugging.png" alt-text="Visual Studio Code API-hibakeresés":::
 
-1. Megnyílik egy új terminál-példány, amely az API-létrehozási folyamat kimenetét mutatja.
+A statikus Web Apps CLI mindkét fejlesztői kiszolgáló használatával indul el.
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="A Visual Studio Code terminalban futó API":::
+:::image type="content" source="media/local-development/static-web-apps-cli-terminal.png" alt-text="Azure statikus Web Apps CLI-terminál":::
 
-   A Visual Studio Code-ban az állapotjelző sáv már narancssárga. Ez a szín azt jelzi, hogy az API már fut, és a hibakereső csatolva van.
+Most a porton keresztül érkező kérések `4280` átirányítva a statikus tartalomkezelő kiszolgálóra vagy az API-hibakeresési munkamenetre.
 
-1. Ezután nyomja le a **CTRL/cmd** billentyűkombinációt, és kattintson a terminál URL-címére, és nyissa meg az API-t meghívó böngészőablakot.
-
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Az API-hívás eredményének megjelenítése a böngészőben":::
-
-### <a name="debugging-the-api"></a>Az API hibakeresése
-
-1. Nyissa meg az _API/GetMessage/index.js_ fájlt a Visual Studio Code-ban.
-
-1. A Töréspont beállításához kattintson a 2. sorban lévő bal oldali margóra. Megjelenik egy piros pont, amely azt jelzi, hogy a Töréspont be van állítva.
-
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Töréspont a Visual Studio Code-ban":::
-
-1. A böngészőben frissítse a következő helyen futó oldalt: <http://127.0.0.1:7071/api/message> .
-
-1. A rendszer szünetelteti a töréspontot a Visual Studio Code-ban, és a program végrehajtása szünetel.
-
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Töréspont találat a Visual Studio Code-ban":::
-
-   A [Visual Studio Code-ban teljes körű hibakeresési élmény érhető](https://code.visualstudio.com/Docs/editor/debugging) el az API-hoz.
-
-1. A végrehajtás folytatásához nyomja meg a **Continue (folytatás** ) gombot a hibakeresési sávon.
-
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Folytatás gomb a Visual Studio Code-ban":::
-
-### <a name="calling-the-api-from-the-application"></a>Az API meghívása az alkalmazásból
-
-Telepítésekor az Azure statikus Web Apps automatikusan leképezi ezeket a kéréseket az _API_ mappában lévő végpontokra. Ez a leképezés biztosítja, hogy az alkalmazástól érkező kérések az alábbi példához hasonlóan legyenek az API-hoz.
-
-```javascript
-let response = await fetch("/api/message");
-```
-
-Attól függően, hogy az alkalmazás a JavaScript-keretrendszer CLI-vel van-e felépítve, kétféleképpen konfigurálható az útvonal útvonala az `api` alkalmazás helyi futtatásakor.
-
-- Környezeti konfigurációs fájlok (JavaScript-keretrendszerekhez és-tárakhoz ajánlott)
-- Helyi proxy
-
-### <a name="environment-configuration-files"></a>Környezeti konfigurációs fájlok
-
-Ha a parancssori felülettel rendelkező előtér-keretrendszerekkel készíti elő az alkalmazást, használja a környezeti konfigurációs fájlokat. Az egyes keretrendszerek vagy könyvtárak eltérő módon kezelik ezeket a környezeti konfigurációs fájlokat. Gyakori, hogy van egy olyan konfigurációs fájlja, amely az alkalmazás helyi futtatásakor használatos, és egy olyan éles környezethez, amelyet az alkalmazás éles környezetben való futtatásakor használ. Az Ön által használt JavaScript-keretrendszer vagy statikus site Generator parancssori felülete automatikusan fogja tudni használni a fejlesztői fájlt helyileg és az éles fájlon, ha az alkalmazást az Azure statikus Web Appsja.
-
-A fejlesztői konfigurációs fájlban megadhatja az API elérési útját, amely arra a helyi helyre mutat, `http:127.0.0.1:7071` ahol a helyhez tartozó API helyileg fut.
-
-```
-API=http:127.0.0.1:7071/api
-```
-
-Az éles konfigurációs fájlban határozza meg az API elérési útját `api` . Így az alkalmazás az "yoursite.com/api" használatával hívja meg az API-t, ha éles környezetben fut.
-
-```
-API=api
-```
-
-Ezek a konfigurációs értékek a webalkalmazás JavaScript-beli csomópont-környezeti változói is szerepelhetnek.
-
-```js
-let response = await fetch(`${process.env.API}/message`);
-```
-
-Amikor a CLI-t a webhely fejlesztési módban történő futtatására vagy a hely éles környezetbe való felépítésére használja, a `process.env.API` rendszer a megfelelő konfigurációs fájlból cseréli ki az értéket.
-
-Az előtér-JavaScript-keretrendszerek és-kódtárak környezeti fájljainak konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
-
-- [Szögletes környezeti változók](https://angular.io/guide/build#configuring-application-environments)
-- [Reagálás – egyéni környezeti változók hozzáadása](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-- [Vue – üzemmódok és környezeti változók](https://cli.vuejs.org/guide/mode-and-env.html)
-
-[!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
-
-##### <a name="restart-live-server"></a>Élő kiszolgáló újraindítása
-
-1. Az **F1** billentyű lenyomásával megnyithatja a parancs palettáját a Visual Studio Code-ban.
-
-1. Írja be az élő **kiszolgáló** elemet, és válassza az élő kiszolgáló **: az élő kiszolgáló leállítása** lehetőséget.
-
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Az élő kiszolgáló parancs leállítása a Visual Studio Command paletta-ban":::
-
-1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
-
-1. Írja be az élő **kiszolgáló** elemet, és válassza **az élő kiszolgáló: Megnyitás élő kiszolgálóval** lehetőséget.
-
-1. Frissítse a (z) rendszert futtató alkalmazást `http://locahost:3000` . A böngésző most megjeleníti az API által visszaadott üzenetet.
-
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Hello a böngészőben megjelenő API-ból":::
+A különböző hibakeresési forgatókönyvekkel kapcsolatos további információkért, a portok és a kiszolgálók címének testreszabásával kapcsolatos útmutatásért tekintse meg az [Azure statikus Web Apps CLI-tárházat](https://github.com/Azure/static-web-apps-cli).
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazásbeállítások konfigurálása](application-settings.md)
+> [Az alkalmazás konfigurálása](configuration.md)

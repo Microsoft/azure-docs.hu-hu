@@ -7,15 +7,15 @@ ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/15/2020
+ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 95feeebf009cae22cf3952df80596c12e75cbe4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 605e3f0451cc2029ecc98e42741f30a2d3ef190b
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94357572"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167957"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Mi az Azure Key Vault Managed HSM (előzetes verzió)?
 
@@ -36,6 +36,7 @@ Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezé
 - **Elkülönített hozzáférés-vezérlés**: a felügyelt HSM "helyi RBAC" hozzáférés-vezérlési modell lehetővé teszi, hogy a kijelölt HSM-fürt rendszergazdái teljes körűen szabályozzák a HSM, hogy még a felügyeleti csoport, az előfizetés vagy az erőforráscsoport-rendszergazda nem bírálhatja felül
 - **Fips 140-2 3. szint ellenőrzött HSM**: az adatvédelmet és a megfelelőségi követelmények teljesítését a FIPS ((Federal Information Protection Standard) 140-2 3. szint ellenőrzött HSM. A felügyelt HSM a Marvell LiquidSecurity HSM-adaptereket használják.
 - **Monitorozás és naplózás**: teljes mértékben integrált az Azure monitorral. Az összes tevékenység teljes naplóinak beolvasása Azure Monitoron keresztül. Az Azure Log Analytics használata az elemzésekhez és a riasztásokhoz.
+- **Adattárolás**: a felügyelt HSM nem tárolja/dolgozza fel az ügyféladatokat azon a régión kívül, amelyen az ügyfél üzembe helyezi a HSM-példányt.
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Az Azure és a Microsoft Pásti/SaaS szolgáltatásokkal integrálva 
 

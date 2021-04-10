@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: További források
       items:
-        - name: Standard hangszolgáltatási támogatás
-          href: language-support.md#standard-voices
         - name: Neurális hangszolgáltatási támogatás
           href: language-support.md#neural-voices
         - name: Régiós támogatás
@@ -249,7 +247,7 @@
     - name: A Szándékfelismerés áttekintése
       href: intent-recognition.md
     - name: Szándékfelismerés gyorsútmutatója
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: Útmutatók
       items:
         - name: 'A beszélő szándékának felismerése a LUIS szolgáltatással, C#'
@@ -464,6 +462,8 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: Privát végpont engedélyezése
       href: speech-services-private-link.md
+    - name: VNet szolgáltatás végpontjának engedélyezése
+      href: speech-service-vnet-service-endpoint.md
     - name: Linuxos OpenSSL konfigurálása
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

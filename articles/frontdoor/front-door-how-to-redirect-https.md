@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edc1ebe53969ceac0452818bee016e35de1e9322
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91626642"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167838"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>A Azure Portal használatával HTTP-vel HTTPS-átirányítással hozhat létre egy bejárati ajtót
 
@@ -29,7 +29,7 @@ A Azure Portal használatával [létrehozhat egy bejárati ajtót](quickstart-cr
 1. Válasszon egy *előfizetést* , majd használjon egy meglévő erőforráscsoportot, vagy hozzon létre újat. Kattintson a **tovább** gombra a konfiguráció lap megadásához.
 
     > [!NOTE]
-    > A felhasználói felületen megkérdezett hely csak az erőforráscsoport esetében érhető el. A bejárati ajtó konfigurációját a rendszer az összes [Azure-beli elülső ajtó pop-helyein](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)üzembe helyezi.
+    > A felhasználói felületen megkérdezett hely csak az erőforráscsoport esetében érhető el. A bejárati ajtó konfigurációját a rendszer az összes [Azure-beli elülső ajtó pop-helyein](front-door-faq.yml#what-are-the-pop-locations-for-azure-front-door-)üzembe helyezi.
 
     :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása":::
 

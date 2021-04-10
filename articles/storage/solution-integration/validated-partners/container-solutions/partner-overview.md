@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 8b46ad7a34be99aefeb067591fa1b029dba2361e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103561889"
 ---
 # <a name="azure-storage-container-management-partners"></a>Azure Storage Container Management-partnerek
@@ -21,7 +21,7 @@ Ez a cikk a Microsoft partneri megoldásokat mutatja be, amelyek lehetővé tesz
 
 ## <a name="verified-partners"></a>Ellenőrzött partnerek
 
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Kasten-cég emblémája](./media/kasten-logo.png) |**Kasten**<br>A Veeam által biztosított Kasten megoldást nyújt a Kubernetes biztonsági mentésére és a vész-helyreállításra. A Kasten segít a vállalatoknak a 2. nap adatkezelési kihívásokkal foglalkozni, hogy magabiztosan futtassák az alkalmazásokat a Kubernetes.<br><br>A Kasten K10 adatkezelési szoftver platformja egy skálázható és biztonságos rendszer a Kubernetes-alkalmazások BCDR és mobilitására.|[Partner oldal](https://docs.kasten.io/latest/install/azure/azure.html)|
 | ![Portworx-cég emblémája](./media/portworx-logo.png) |**Portworx**<br>A Portworx által biztosított tiszta tárolás megoldást nyújt az állandó tárolásra, a BCDR, az adatbiztonságra, a Felhőbeli és az adatáttelepítésre a Kubernetes-on integrált alkalmazások esetében.|[Partner oldal](https://portworx.com/azure/)|

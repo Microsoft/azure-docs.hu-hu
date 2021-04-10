@@ -10,12 +10,12 @@ ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 10262b168b91370956c9559ba688c72213ba7618
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 64a112fd29ee9e3fbb82d9b54322415569b3ff85
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870993"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209536"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB az Azure-beli szinapszis-hivatkozással
 
@@ -33,22 +33,31 @@ A kiszolgáló nélküli SQL-készlet lehetővé teszi Azure Cosmos DB analitika
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET kulccsal](#tab/openrowset-key)
 
-Egy Azure Cosmos DB analitikus tárolóban lévő adatok lekérdezéséhez és elemzéséhez a kiszolgáló nélküli SQL-készlet a következő `OPENROWSET` szintaxist használja:
+Egy Azure Cosmos DB analitikus tárolóban lévő adatok lekérdezéséhez és elemzéséhez kiszolgáló nélküli SQL-készletet használunk. A kiszolgáló nélküli SQL-készlet az `OPENROWSET` SQL-szintaxist használja, ezért először át kell alakítania a Azure Cosmos db-kapcsolódási karakterláncot erre a formátumra:
 
 ```sql
 OPENROWSET( 
        'CosmosDB',
-       '<Azure Cosmos DB connection string>',
+       '<SQL connection string for Azure Cosmos DB>',
        <Container name>
     )  [ < with clause > ] AS alias
 ```
 
-A Azure Cosmos DB kapcsolódási karakterlánc megadja az Azure Cosmos DB fiók nevét, az adatbázis nevét, az adatbázis-fiók főkulcsát, valamint a függvény választható régiójának nevét `OPENROWSET` .
+Azure Cosmos DB SQL-kapcsolódási karakterlánca megadja az Azure Cosmos DB fiók nevét, az adatbázis nevét, az adatbázis-fiók főkulcsát, valamint egy választható régió nevét a `OPENROWSET` függvényhez. Ezen információk némelyike a standard Azure Cosmos DB a kapcsolatok sztringből is elvégezhető.
 
-A kapcsolatok karakterláncának formátuma a következő:
+Konvertálás a szabványos Azure Cosmos DB a kapcsolatok karakterláncának formátuma:
+
+```
+AccountEndpoint=https://<database account name>.documents.azure.com:443/;AccountKey=<database account master key>;
+```
+
+Az SQL-kapcsolatok karakterláncának formátuma a következő:
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
+
+A régió nem kötelező. Ha nincs megadva, a rendszer a tároló elsődleges régióját használja.
 
 A Azure Cosmos DB tároló neve idézőjelek nélkül van megadva a `OPENROWSET` szintaxisban. Ha a tároló neve speciális karaktereket tartalmaz, például egy kötőjelet (-), a nevet szögletes zárójelbe () kell becsomagolni `[]` a `OPENROWSET` szintaxisban.
 
@@ -59,13 +68,14 @@ Használhatja `OPENROWSET` a hitelesítő adatokra hivatkozó szintaxist:
 ```sql
 OPENROWSET( 
        PROVIDER = 'CosmosDB',
-       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       CONNECTION = '<SQL connection string for Azure Cosmos DB without account key>',
        OBJECT = '<Container name>',
        [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
     )  [ < with clause > ] AS alias
 ```
 
-A Azure Cosmos DB-kapcsolatok karakterlánca ebben az esetben nem tartalmaz kulcsot. A kapcsolatok karakterláncának formátuma a következő:
+A Azure Cosmos DBhoz tartozó SQL-kapcsolatok karakterlánca ebben az esetben nem tartalmaz kulcsot. A kapcsolatok karakterláncának formátuma a következő:
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>'
 ```
@@ -165,6 +175,7 @@ Tegyük fel, hogy az [ECDC COVID adatkészletből](https://azure.microsoft.com/s
 Ezek a Azure Cosmos DBban található, a szinapszis SQL-ben található, sorok és oszlopok halmaza használható, egyszerű JSON-dokumentumok. A `OPENROWSET` függvény lehetővé teszi, hogy megadhatja az elolvasni kívánt tulajdonságok egy részhalmazát, valamint a záradékban szereplő pontos oszlop típusait `WITH` :
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET kulccsal](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -173,7 +184,9 @@ FROM OPENROWSET(
        Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
+
 ### <a name="openrowset-with-credential"></a>[OPENROWSET hitelesítő adatokkal](#tab/openrowset-credential)
+
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
@@ -186,7 +199,9 @@ FROM OPENROWSET(
       OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+   
 ```
+
 ---
 A lekérdezés eredménye a következő táblázathoz hasonló lehet:
 
@@ -256,7 +271,7 @@ WITH (  paper_id    varchar(8000),
 A lekérdezés eredménye a következő táblázathoz hasonló lehet:
 
 | paper_id | cím | metaadatok | szerzők |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | bb11206963e831f... | Kiegészítő információk öko-epidemi... | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
 | bb1206963e831f1... | Lábadozó-szérumok használata az immun-E... | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
 | bb378eca9aac649... | Tylosema esculentum (György) gumó és B... | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 

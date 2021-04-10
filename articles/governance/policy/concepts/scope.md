@@ -1,20 +1,19 @@
 ---
 title: A hatókör megismerése Azure Policy
 description: Ismerteti Azure Resource Manager hatókörének fogalmát, valamint azt, hogy a Azure Policy hogyan vonatkozik a Azure Policy kiértékeléséhez szükséges erőforrások ellenőrzésére.
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c198d2d2961b6d9e10a3b78481183cba7f7197ca
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90984437"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167736"
 ---
 # <a name="understand-scope-in-azure-policy"></a>A hatókör megismerése Azure Policy
 
-Számos beállítással határozható meg, hogy mely erőforrások legyenek kiértékelve, és hogy mely erőforrásokat értékeli ki a Azure Policy. A vezérlőelemek elsődleges fogalma a _hatókör_.
-A magas szintű áttekintést lásd: [hatókör a Azure Resource Managerban](../../../azure-resource-manager/management/overview.md#understand-scope).
-Ez a cikk ismerteti a Azure Policy _hatókörének_ hatását, valamint a hozzá kapcsolódó objektumokat és tulajdonságokat.
+Számos olyan beállítás létezik, amely meghatározza, hogy mely erőforrások legyenek kiértékelve, és hogy a Azure Policy milyen erőforrásokat értékel ki. A vezérlőelemek elsődleges fogalma a _hatókör_. Az Azure Policy hatóköre a hatókörnek a Azure Resource Manager-ben való működésének a függvénye. A magas szintű áttekintést lásd: [hatókör a Azure Resource Managerban](../../../azure-resource-manager/management/overview.md#understand-scope).
+Ez a cikk ismerteti a _hatókör_ fontosságát a Azure Policy és a kapcsolódó objektumok és tulajdonságok tekintetében.
 
 ## <a name="definition-location"></a>Definíció helye
 
