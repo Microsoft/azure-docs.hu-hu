@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: bc1978f6ed0aa3e38f25fa03fc54ddc7d4efb9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033333"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961064"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikadiagramok hibaelhárítása
 
@@ -43,7 +43,7 @@ Néhány erőforrás nem bocsát ki folyamatosan metrikákat. Az Azure például
 
 [Az Azure legtöbb mérőszáma 93 napig tárolódik](../essentials/data-platform-metrics.md#retention-of-metrics). Nem kérdezheti le azonban 30 napnál nagyobb időszak adatait egyetlen diagramban. Ez a korlátozás a [naplóalapú metrikákra](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) nem vonatkozik.
 
-**Megoldás:** Ha üres diagramot lát, vagy a diagram csak a metrikai adatok egy részét jeleníti meg, ellenőrizze, hogy az időválasztóban a kezdő és a záró dátumok közötti különbség nem haladja-e meg a 30 napos időközt.
+**Megoldás:** Ha üres diagramot lát, vagy a diagram csak a metrikai adatok egy részét jeleníti meg, ellenőrizze, hogy az időválasztóban a kezdő és a záró dátumok közötti különbség nem haladja-e meg a 30 napos időközt. Miután kiválasztotta a 30 napos intervallumot [, a](metrics-charts.md#pan) diagramra kattintva megtekintheti a teljes megőrzés ablakát.
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Minden metrikaérték az y tengely zárolt tartományán kívülre esett
 

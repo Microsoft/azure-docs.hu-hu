@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/01/2021
 ms.author: apimpm
 ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594171"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Helyi mérőszámok és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
@@ -149,7 +149,7 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 Most, hogy mind a statd, mind a Prometheus üzembe lett helyezve, frissítjük a saját üzemeltetésű átjáró konfigurációját, hogy elindítsa a mérőszámokat a statisztikán keresztül. A szolgáltatás engedélyezhető vagy letiltható a `telemetry.metrics.local` saját üzemeltetésű átjáró ConfigMap található kulcs használatával, további beállításokkal. Alább látható az elérhető lehetőségek részletezése:
 
-| Mező  | Alapértelmezett | Description |
+| Mező  | Alapértelmezett | Leírás |
 | ------------- | ------------- | ------------- |
 | telemetria. Metrics. local  | `none` | Lehetővé teszi a naplózást a statisztikán keresztül. Az érték lehet `none` `statsd` . |
 | telemetria. mérőszámok. local. statd. Endpoint  | n.a. | A statisztikai végpontot határozza meg. |
@@ -208,7 +208,7 @@ Ha a saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes szo
 
 A saját üzemeltetésű átjáró számos protokollt is támogat, például: `localsyslog` , `rfc5424` és `journal` . Az alábbi táblázat összefoglalja az összes támogatott lehetőséget. 
 
-| Mező  | Alapértelmezett | Description |
+| Mező  | Alapértelmezett | Leírás |
 | ------------- | ------------- | ------------- |
 | telemetria. logs. STD  | `text` | Engedélyezi a naplózást a standard streamek számára. Az érték lehet `none` , `text` , `json` |
 | telemetria. logs. local  | `none` | Engedélyezi a helyi naplózást. Az érték lehet `none` a,, `auto` `localsyslog` , `rfc5424` , `journal`  |

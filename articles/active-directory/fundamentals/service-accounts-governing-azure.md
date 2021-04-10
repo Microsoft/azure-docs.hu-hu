@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104587899"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Az Azure AD-szolgáltatásfiókok szabályozása
@@ -32,7 +32,7 @@ Az Azure Active Directory (Azure AD) háromféle szolgáltatásfiókot támogat:
 
 A szolgáltatásfiók létrehozása vagy egy alkalmazás regisztrálása előtt dokumentálja a szolgáltatásfiók legfontosabb információit. Az információk dokumentálása megkönnyíti a fiók hatékony figyelését és szabályozását. Javasoljuk, hogy az alábbi adatok gyűjtését és nyomon követését a központosított Configuration Management-adatbázisban (CMDB).
 
-| Adatok| Description| Részletek |
+| Adatok| Leírás| Részletek |
 | - | - | - |
 | Tulajdonos| A szolgáltatásfiók felügyeletéhez és figyeléséhez felelős felhasználó vagy csoport.| Hozza létre a tulajdonost a fiók figyeléséhez szükséges engedélyekkel, és hajtsa végre a problémák enyhítésének módját. A probléma enyhítését a tulajdonos vagy egy kérelem útján teheti meg. |
 | Cél| A fiók használatának módja.| Rendelje hozzá a szolgáltatásfiókot egy adott szolgáltatáshoz, alkalmazáshoz vagy parancsfájlhoz. Kerülje a többszörös használatú szolgáltatásfiókok létrehozását. |

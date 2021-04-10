@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 2c693c9e972cdfc66cce0d52323c113b6006bd97
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab3fdd24446448e9c21a1e4867c26c960f814c7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102444796"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958396"
 ---
 Ismerkedjen meg az arc-felismeréssel a Face ügyféloldali kódtár for go használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -22,7 +22,7 @@ A következőhöz való ugráshoz használja a Face Service ügyféloldali függ
 
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
+* [PersonGroup létrehozása és betanítása](#create-and-train-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 
 [Dokumentáció](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [SDK letöltése](https://github.com/Azure/azure-sdk-for-go)
@@ -106,7 +106,7 @@ Ezek a kódrészletek bemutatják, hogyan végezheti el az alapszintű feladatok
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
+* [PersonGroup létrehozása és betanítása](#create-and-train-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
@@ -161,7 +161,7 @@ A következő kód a megfeleltetés részleteit jeleníti meg a konzolon.
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_print)]
 
 
-## <a name="create-and-train-a-person-group"></a>Személy csoport létrehozása és betanítása
+## <a name="create-and-train-a-persongroup"></a>PersonGroup létrehozása és betanítása
 
 Ennek a forgatókönyvnek a végrehajtásához a következő képeket kell mentenie a projekt gyökérkönyvtárában: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
@@ -202,11 +202,11 @@ Az arcok hozzárendelése után betanítja a **PersonGroup** , hogy képes legye
 Az azonosítási művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy **PersonGroup**, egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek.
 
 > [!IMPORTANT]
-> A példa futtatásához először futtatnia kell a kódot [egy személy csoport létrehozása és betanítása csoportban](#create-and-train-a-person-group).
+> A példa futtatásához először futtatnia kell a kódot a [create (létrehozás) és a Train a PersonGroup](#create-and-train-a-persongroup).
 
 ### <a name="get-a-test-image"></a>Tesztelési rendszerkép beolvasása
 
-A következő kód a projekt gyökerében jelenik meg egy rendszerképet _test-image-person-group.jpg_ és betölti a program memóriába. Ezt a lemezképet ugyanabban a tárházban találja, mint a [személyek létrehozása és betanítása csoportban](#create-and-train-a-person-group)használt rendszerképek: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
+A következő kód a projekt gyökerében jelenik meg egy rendszerképet _test-image-person-group.jpg_ és betölti a program memóriába. Ezt a lemezképet ugyanabban a tárházban találja meg, mint a [create és a Train a PersonGroup](#create-and-train-a-persongroup): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 

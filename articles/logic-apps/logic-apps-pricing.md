@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101699028"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>A Azure Logic Apps díjszabása és számlázási modelljei
@@ -25,7 +25,7 @@ A díjköteles használati díjszabási modell a nyilvános, "globális", több-
 
 Egy lekérdezési trigger által kezdeményezett kérelem például továbbra is végrehajtásra kerül, még akkor is, ha az adott trigger ki van hagyva, és nem jön létre logikai alkalmazás munkafolyamat-példánya.
 
-| Elemek | Description |
+| Elemek | Leírás |
 |-------|-------------|
 | [Beépített](../connectors/apis-list.md#built-in) eseményindítók és műveletek | Natív módon futtatható a Logic Apps szolgáltatásban, és a [ **műveletek** ára](https://azure.microsoft.com/pricing/details/logic-apps/)alapján mérhető. <p><p>Például a HTTP-eseményindító és a kérelem eseményindítója beépített eseményindítók, míg a HTTP-művelet és a válasz művelet beépített művelet. Az adatműveletek, a kötegelt műveletek, a változó műveletek és a [munkafolyamat-vezérlési műveletek](../connectors/apis-list.md#control-workflow), például a hurkok, a feltételek, a kapcsoló, a párhuzamos ágak stb. is beépített műveletek. |
 | [Szabványos összekötő](../connectors/apis-list.md#managed-connectors) -eseményindítók és műveletek <p><p>[Egyéni összekötő](../connectors/apis-list.md#custom) -eseményindítók és műveletek | A [standard szintű összekötő díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/)alapján mérhető. |
@@ -70,7 +70,7 @@ A pontosabb felhasználási költségek becsléséhez tekintse át a következő
 
 A rögzített díjszabási modell az [ *integrációs szolgáltatási környezetben* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)futó logikai alkalmazásokra vonatkozik. Az ISE számlázása a [integrációs szolgáltatási környezet ár](https://azure.microsoft.com/pricing/details/logic-apps)alapján történik, amely a létrehozott [ISE szintjétől vagy *SKU* -](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) tól függ. Ez a díjszabás eltér a több-bérlős díjszabástól, mivel a fenntartott kapacitásért és a dedikált erőforrásokhoz fizet, függetlenül attól, hogy használja-e őket.
 
-| ISE SKU | Description |
+| ISE SKU | Leírás |
 |---------|-------------|
 | **Prémium** | Az alapegység [kapacitása rögzített](logic-apps-limits-and-config.md#integration-service-environment-ise) , és [a prémium SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ha több átviteli sebességre van szüksége, [további skálázási egységeket adhat hozzá](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) az ISE vagy azután. Az egyes skálázási egységek [óradíja nagyjából az alapegység díjszabása](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 | **Fejlesztő** | Az alapegység [rögzített kapacitással](logic-apps-limits-and-config.md#integration-service-environment-ise) rendelkezik, és [a fejlesztői SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ez az SKU azonban nem rendelkezik szolgáltatói szerződéssel (SLA), vertikális Felskálázási képességgel vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késések vagy leállások merülhetnek fel. Előfordulhat, hogy a háttérbeli frissítések időnként megszakítják a szolgáltatást. <p><p>**Fontos**: Ügyeljen arra, hogy ezt az SKU-t kizárólag feltáráshoz, kísérletezéshez, fejlesztéshez és teszteléshez használja, nem éles környezetben vagy teljesítmény-teszteléshez. <p><p>A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). |
@@ -78,7 +78,7 @@ A rögzített díjszabási modell az [ *integrációs szolgáltatási környezet
 
 ### <a name="included-at-no-extra-cost"></a>Külön díj nélkül
 
-| Elemek | Description |
+| Elemek | Leírás |
 |-------|-------------|
 | [Beépített](../connectors/apis-list.md#built-in) eseményindítók és műveletek | Jelenítse meg az **alapvető** címkét, és futtassa a logikai alkalmazásokkal megegyező ISE-ben. |
 | [Szokványos összekötők](../connectors/apis-list.md#managed-connectors) <p><p>[Vállalati összekötők](../connectors/apis-list.md#enterprise-connectors) | – Az **ISE** -címkét megjelenítő felügyelt összekötők kifejezetten úgy vannak kialakítva, hogy a helyszíni adatátjáró nélkül működjenek, és UGYANABBAN az ISE-ben fussanak, mint a Logic apps szolgáltatásban. Az ISE díjszabása annyi vállalati kapcsolatot tartalmaz, amennyit csak szeretne. <p><p>– A több-bérlős Logic Apps szolgáltatásban futó ISE-címkét nem megjelenítő összekötők. Az ISE díjszabása azonban magában foglalja az ISE-ben futó Logic Apps-alkalmazások végrehajtását. |
@@ -98,7 +98,7 @@ Az [integrációs fiók](../logic-apps/logic-apps-pricing.md#integration-account
 
 A Azure Logic Apps a [díjszabási](https://azure.microsoft.com/pricing/details/logic-apps/) és [Számlázási modellekben](logic-apps-pricing.md#integration-accounts)változó, az integrációs fiók szintjének vagy szintjein alapul, attól függően, hogy a Logic apps alkalmazás-vagy ISE-alapú-e:
 
-| Szint | Description |
+| Szint | Leírás |
 |------|-------------|
 | **Basic** | Olyan forgatókönyvek esetében, amelyekben csak az üzenetek kezelésére van szükség, vagy olyan kis üzleti partnernek kell működnie, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik. <p><p>A Logic Apps SLA támogatja. |
 | **Standard** | Olyan forgatókönyvek esetén, ahol összetettebb VÁLLALATKÖZI kapcsolatok és nagyobb számú entitást kell kezelni. <p><p>A Logic Apps SLA támogatja. |

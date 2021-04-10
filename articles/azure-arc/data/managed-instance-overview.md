@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: overview
 ms.openlocfilehash: 65f61324c496d4b76e6f599966a780c735114870
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686665"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>Az Azure arc használatára képes SQL felügyelt példányok áttekintése
@@ -22,7 +22,7 @@ Az Azure arc használatára képes SQL felügyelt példány egy Azure SQL-adatsz
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="description"></a>Description
+## <a name="description"></a>Leírás
 
 Az Azure arc használatára képes SQL felügyelt példány közel 100%-os kompatibilitást biztosít a legújabb SQL Server adatbázis-motorral, és lehetővé teszi a meglévő SQL Server ügyfelei számára, hogy az adatszuverenitás fenntartása mellett minimális alkalmazás-és adatbázis-módosításokat emeljenek az Azure ív adatszolgáltatásaiba. Ugyanakkor a felügyelt SQL-példány beépített felügyeleti képességeket tartalmaz, amelyek drasztikusan csökkentik a felügyeleti terhelést. 
 

@@ -3,12 +3,12 @@ title: Fogalmak – identitás és hozzáférés
 description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d49ce27ee74621874281a555651c09a73048928
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026904"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109815"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
@@ -93,6 +93,9 @@ A nem hozzárendelhető vagy nem törölhető szerepkörök létrehozásának me
    A hozzáadott engedély az objektum **engedélyek** szakaszában jelenik meg.
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX – T Manager-hozzáférés és-identitás
+
+>[!NOTE]
+>A NSX-T 2,5 jelenleg támogatott.
 
 Az NSX-T kezelőjének eléréséhez használja a *rendszergazdai* fiókot. Teljes körű jogosultságokkal rendelkezik, és lehetővé teszi az 1. szintű (T1) átjárók, szegmensek (logikai kapcsolók) és minden szolgáltatás létrehozását és felügyeletét. A jogosultságok hozzáférést biztosítanak az NSX-T réteg-0 (T0) átjáróhoz. A t0-átjáró módosítása a hálózati teljesítmény romlása vagy a saját Felhőbeli hozzáférés nélkül is csökkenhet. Nyisson meg egy támogatási kérést a Azure Portal az NSX-T T0-átjáró módosításainak igényléséhez.
 

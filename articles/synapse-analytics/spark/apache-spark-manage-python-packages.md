@@ -10,10 +10,10 @@ ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
 ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104586641"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Python-kódtárak kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
@@ -145,7 +145,7 @@ Munkaterület-csomagok hozzáadása:
 >
 >- Ha a munkaterület-csomagok (előzetes verzió) segítségével csomagokat telepítenek egy adott Apache Spark készletre, akkor a csomagok már nem adhatók meg a tárolási fiók elérési útjának használatával ugyanazon a készleten.  
 
-### <a name="storage-account"></a>A(z)
+### <a name="storage-account"></a>Tárfiók
 Az egyéni Builder-csomagok telepíthetők a Apache Spark készletbe úgy, hogy az összes kerék fájlt feltölti a szinapszis munkaterülethez csatolt Azure Data Lake Storage (Gen2) fiókba. 
 
 A fájlokat a Storage-fiók alapértelmezett tárolójában fel kell tölteni a következő elérési útra: 
