@@ -8,19 +8,20 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d5e4920dcc422e848266f35c8a59175b5149b924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7aebb10fb3855936d930685f1a8eef2588140ad1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492744"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930455"
 ---
 # <a name="telephony-concepts"></a>Telefonos fogalmak
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
+
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Az Azure kommunikációs szolgáltatások az ügyfél-kódtárak használatával telefonos és PSTN-alkalmazásokat adhatnak hozzá az alkalmazásaihoz. Ez az oldal a legfontosabb telefonos fogalmakat és képességeket foglalja össze. Tekintse meg a [hívó könyvtárat](../../quickstarts/voice-video-calling/calling-client-samples.md) , ahol további információkat tudhat meg az ügyféloldali kódtár nyelveiről és képességeiről.
+Az SDK-kat használó Azure kommunikációs szolgáltatások telefonos és PSTN-alkalmazások hozzáadására is használhatók. Ez az oldal a legfontosabb telefonos fogalmakat és képességeket foglalja össze. Az egyes SDK-nyelvekkel és képességekkel kapcsolatos további információkért tekintse meg a [hívó könyvtárat](../../quickstarts/voice-video-calling/calling-client-samples.md) .
 
 ## <a name="overview-of-telephony"></a>A telefonos szolgáltatások áttekintése
 Ha a felhasználók hagyományos telefonszámmal működnek, a hívásokat a PSTN (nyilvános hálózati kapcsoló) hanghívása könnyíti meg. PSTN-hívások létrehozásához és fogadásához a telefonos funkciókat kell hozzáadnia az Azure kommunikációs szolgáltatások erőforrásaihoz. Ebben az esetben a jelzés és a média az IP-alapú és a PSTN-alapú technológiák kombinációját használja a felhasználók összekapcsolásához. A kommunikációs szolgáltatások két különálló módszert biztosítanak a PSTN-hálózat eléréséhez: az Azure Cloud Calling és a SIP felületet.

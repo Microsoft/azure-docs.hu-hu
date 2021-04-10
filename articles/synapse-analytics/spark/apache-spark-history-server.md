@@ -10,10 +10,10 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101670701"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
@@ -42,11 +42,11 @@ A Apache Spark History Server a webes felhasználói felület a befejezett és f
 
     ![A Spark-előzmények kiszolgálójának megnyitása.](./media/apache-spark-history-server/open-spark-history-server.png)
 
-### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>A Spark History Server webes felhasználói felületének megnyitása adatcsomópontból
+### <a name="open-the-spark-history-server-web-ui-from-data-node&quot;></a>A Spark History Server webes felhasználói felületének megnyitása adatcsomópontból
 
 1. Az Azure szinapszis Studio jegyzetfüzetből válassza ki a **Spark History Server** elemet a feladatok végrehajtása kimeneti cellából vagy a jegyzetfüzet dokumentum alján található állapot panelen. Válassza a **Munkamenet részletei** lehetőséget.
 
-   ![A Spark History Server 1 elindítása](./media/apache-spark-history-server/launch-history-server2.png "A Spark History Server elindítása")
+   ![A Spark History Server 1 elindítása](./media/apache-spark-history-server/launch-history-server2.png &quot;A Spark History Server elindítása")
 
 2. Válassza ki a **Spark History Server** elemet a kicsúsztatható panelen.
 
@@ -157,7 +157,7 @@ Mutasson a Graph csomópontra az elemleírás megjelenítéséhez, amikor a fela
 
 A feladatütemezés lapon egy elemleírás és egy kis ikon jelenik meg, ha olyan feladatokkal rendelkeznek, amelyek megfelelnek a következő feltételeknek:
 
-|Feltétel|Description|
+|Feltétel|Leírás|
 |-|-|
 |Az adattorzítás|az adatolvasási méret > a fázisban lévő összes feladat átlagos adatolvasási mérete, valamint az adatolvasási méret > 10 MB|
 |Időbeli döntés|a végrehajtási idő > a szakasz összes feladatának átlagos végrehajtási időpontja * 2 és végrehajtási idő > 2 percen belül|

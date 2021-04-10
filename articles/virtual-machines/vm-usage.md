@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli virtuális gépek használatának ismertetése
+title: Információk az Azure-beli virtuális gépek használatáról
 description: A virtuális gépek használati adatainak megismerése
 services: virtual-machines
 documentationcenter: ''
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: ba973bd5609dacf05eca842025d4e828d8a9f841
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102550947"
 ---
-# <a name="understanding-azure-virtual-machine-usage"></a>Az Azure-beli virtuális gépek használatának ismertetése
+# <a name="understanding-azure-virtual-machine-usage"></a>Információk az Azure-beli virtuális gépek használatáról
 Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat nyerhetnek ki – olyan elemzéseket készíthet, amelyek lehetővé teszik a szervezeten belüli jobb költséghatékonyságot és kiosztást. Ez a dokumentum részletesen ismerteti az Azure-beli számítási felhasználás részleteit. Az Azure általános használatának részletes ismertetését a [számla megismerése](../cost-management-billing/understand/review-individual-bill.md)című rész ismerteti.
 
 ## <a name="download-your-usage-details"></a>Használati adatok letöltése

@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 6eed0ed3e936b0e9a534c82a3105c2ed37cab3d5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485419"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932369"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (előzetes verzió) – gyakori kérdések
 
@@ -36,6 +36,9 @@ Az Azure Route Server csak Border Gateway Protocol (BGP) használatát támogatj
 ### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Az Azure Route Server irányítja az adatforgalmat a saját NVA és a saját virtuális gépek között?
 
 Nem. Az Azure Route Server csak BGP-útvonalakat cserél a NVA. Az adatforgalom közvetlenül a NVA a kiválasztott virtuális gépre, és közvetlenül a virtuális gépről a NVA kerül.
+
+### <a name="does-azure-route-server-store-customer-data"></a>Az Azure Route Server tárolja az ügyféladatokat?
+Nem. Az Azure Route Server csak BGP-útvonalakat cserél a NVA, majd propagálja őket a virtuális hálózatra.
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>Ha az Azure Route Server ugyanazt az útvonalat kapja több NVA, akkor az útvonal összes példányát (de mindegyiket egy másik következő ugrással) fogja programozni a virtuális hálózatban lévő virtuális gépekre?
 

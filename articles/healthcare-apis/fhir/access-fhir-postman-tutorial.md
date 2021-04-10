@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 03/16/2021
-ms.openlocfilehash: e9031dc77054a2bbac8015bbbdd7b9ed2a35e84f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.date: 03/26/2021
+ms.openlocfilehash: 59847f745037acec47415489cdf61d119a7807af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043342"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936274"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -24,12 +24,13 @@ Egy ügyfélalkalmazás egy [Rest APIon](https://www.hl7.org/fhir/http.html)kere
 
 - Egy FHIR-végpont az Azure-ban. 
 
-   Az Azure API FHIR (felügyelt szolgáltatás) való üzembe helyezéséhez használhatja a [Azure Portal](fhir-paas-portal-quickstart.md), a [PowerShellt](fhir-paas-powershell-quickstart.md)vagy az [Azure CLI](fhir-paas-cli-quickstart.md)-t.
+  Az Azure API FHIR (felügyelt szolgáltatás) való üzembe helyezéséhez használhatja a [Azure Portal](fhir-paas-portal-quickstart.md), a [PowerShellt](fhir-paas-powershell-quickstart.md)vagy az [Azure CLI](fhir-paas-cli-quickstart.md)-t.
+
 - Egy regisztrált, [bizalmas ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) a FHIR szolgáltatás eléréséhez.
 - A FHIR szolgáltatás eléréséhez engedélyeket kapott a bizalmas ügyfélalkalmazás, például "FHIR adatközreműködői". További információ: [Az Azure RBAC konfigurálása a FHIR](./configure-azure-rbac.md).
 - A Posting telepítése megtörtént. 
     
-    További információ a Poster-ról: Ismerkedés [a Poster szolgáltatással](https://www.getpostman.com).
+  További információ a Poster-ról: Ismerkedés [a Poster szolgáltatással](https://www.getpostman.com).
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR-kiszolgáló és-hitelesítés részletei
 
@@ -62,6 +63,8 @@ Ha a korlátozott erőforrásokhoz próbál hozzáférni, a "hitelesítés siker
 ![Sikertelen hitelesítés](media/tutorial-postman/postman-authentication-failed.png)
 
 ## <a name="obtaining-an-access-token"></a>Hozzáférési jogkivonat beszerzése
+Válassza az **Get New Access Token** (Új hozzáférési jogkivonat beszerzése) lehetőséget.
+
 Érvényes hozzáférési jogkivonat beszerzéséhez válassza az **Engedélyezés** lehetőséget, és válassza a **OAuth 2,0** elemet a **típus** legördülő menüből.
 
 ![OAuth 2,0 beállítása](media/tutorial-postman/postman-select-oauth2.png)
@@ -76,13 +79,13 @@ Az **új hozzáférési jogkivonat lekérése** párbeszédpanelen adja meg a k�
 |-----------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------|
 | Jogkivonat neve            | MYTOKEN                                                                                                         | A kiválasztott név          |
 | Engedélyezési típus            | Engedélyezési kód                                                                                              |                            |
-| Visszahívási URL          | `https://www.getpostman.com/oauth2/callback`                                                                      |                            |
+| Visszahívási URL          | `https://www.getpostman.com/oauth2/callback`                                                                    |                            |
 | Hitelesítési URL-cím              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience` a `https://MYACCOUNT.azurehealthcareapis.com` FHIR készült Azure API-hoz |
-| Hozzáférési jogkivonat URL-címe      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
-| Ügyfél-azonosító             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | Alkalmazásazonosító             |
-| Titkos ügyfélkulcs         | `XXXXXXXX`                                                                                                        | Titkos ügyfél kulcsa          |
-| Hatókör | `<Leave Blank>` |
-| Állapot                |  `1234`                                                                                                           |                            |
+| Hozzáférési jogkivonat URL-címe      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                    |                            |
+| Ügyfél-azonosító             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                           | Alkalmazásazonosító             |
+| Titkos ügyfélkulcs         | `XXXXXXXX`                                                                                                      | Titkos ügyfél kulcsa          |
+| Hatókör | `<Leave Blank>` | A hatókör nincs használatban; Ezért üresen maradhat.  
+| Állapot                 | `1234`     | Az [állapot](https://learning.postman.com/docs/sending-requests/authorization/) egy átlátszatlan érték a helyek közötti kérelmek hamisításának megakadályozása érdekében. Nem kötelező, és tetszőleges értéket igénybe vehet, például "1234".                           |
 | Ügyfél-hitelesítés | Ügyfél hitelesítő adatainak küldése a törzsben                                                                                 |                 
 
 Válassza ki a **kérelem tokenjét** a Azure Active Directory hitelesítési folyamaton keresztüli irányításhoz, és a rendszer visszaadja a tokent a Poster-nek. Ha hitelesítési hiba történik, további részletekért tekintse meg a Poster-konzolt. **Megjegyzés**: a menüszalagon válassza a **nézet** lehetőséget, majd kattintson a **Poster-konzol megjelenítése** lehetőségre. A Poster-konzol billentyűparancsa **ALT-CTRL + C**.
@@ -133,7 +136,7 @@ A **Küldés** gombra kattintva megállapíthatja, hogy a beteg létrehozása si
 
 ![Képernyőkép, amely azt mutatja, hogy a beteg sikeresen létrejött.](media/tutorial-postman/postman-patient-created.png)
 
-Ha megismétli a beteges keresést, a következőt kell látnia:
+Ha megismétli a beteges keresést, akkor a beteg rekordnak kell megjelennie.
 
 ![Beteg létrehozva](media/tutorial-postman/postman-patient-found.png)
 

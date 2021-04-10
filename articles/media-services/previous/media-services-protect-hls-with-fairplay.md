@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15aab28b7dfbaf305412f1080346b54cc6827437
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 870b567d5917c405a3eef70a27b1a19c021d7a80
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009640"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055144"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Az Apple FairPlay vagy a Microsoft PlayReady által védett HLS-tartalmak
 
@@ -33,7 +33,7 @@ A Azure Media Services lehetővé teszi a HTTP Live Streaming-(HLS-) tartalom di
 
 * **AES-128 boríték tiszta kulcsa**
 
-    A teljes adathalmaz titkosítása az **AES-128 CBC** mód használatával történik. Az iOS és az OS X lejátszó natív módon támogatja az adatfolyam visszafejtését. További információ: [az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-protect-with-aes128.md).
+    A teljes adathalmaz titkosítása az **AES-128 CBC** mód használatával történik. Az iOS és az OS X lejátszó natív módon támogatja az adatfolyam visszafejtését. További információ: [az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-playready-license-template-overview.md).
 * **Apple FairPlay**
 
     Az egyes videó-és hangminták titkosítása **AES-128 CBC** mód használatával történik. Az **Fairplay streaming** (FPS) integrálva van az eszköz operációs rendszereibe, natív támogatással az iOS és az Apple TV szolgáltatásban. A Safari az OS X-ben lehetővé teszi az FPS használatát a titkosított Media Extensions (EME) felület támogatásával.

@@ -3,22 +3,22 @@ title: Tárolórendszerképek importálása
 description: A tároló lemezképeit az Azure API-k használatával importálhatja egy Azure Container registrybe anélkül, hogy a Docker-parancsokat kellene futtatnia.
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988238"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221500"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Tároló-lemezképek importálása egy tároló-beállításjegyzékbe
 
 A tárolók lemezképeit egyszerűen importálhatja egy Azure Container registrybe Docker-parancsok használata nélkül. Például importálhatja a lemezképeket egy fejlesztői beállításjegyzékből egy éles beállításjegyzékbe, vagy átmásolhatja az alaplemezképeket egy nyilvános beállításjegyzékből.
 
-Azure Container Registry a lemezképek meglévő beállításjegyzékből való másolásának számos gyakori forgatókönyvét kezeli:
+Azure Container Registry a lemezképek és egyéb összetevők meglévő beállításjegyzékből való másolásának számos gyakori forgatókönyvét kezeli:
 
-* Importálás nyilvános beállításjegyzékből
+* Lemezképek importálása nyilvános beállításjegyzékből
 
-* Importálás másik Azure-beli tároló-beállításjegyzékből ugyanazon vagy egy másik Azure-előfizetésben vagy-bérlőben
+* Képek vagy OCI-összetevők importálása, beleértve a Helm 3 diagramot egy másik Azure Container registryből, ugyanabban vagy egy másik Azure-előfizetésben vagy-bérlőben
 
 * Importálás nem Azure Private Container registryből
 

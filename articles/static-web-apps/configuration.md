@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
-ms.openlocfilehash: 324a8e75488d74fc6aa52e499b8dde616cd9beb5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b6779de0203246a60bdfa60ea110a0f0d5f26ff3
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034047"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106449"
 ---
 # <a name="configure-azure-static-web-apps"></a>Az Azure statikus Web Apps konfigurálása
 
@@ -275,7 +275,7 @@ A következő példa azt mutatja be, hogyan bírálható felül egy hibakód.
         },
         {
             "route": "/.auth/login/twitter",
-            "statusCode": 404,
+            "statusCode": 404
         },
         {
             "route": "/logout",
@@ -315,7 +315,7 @@ A következő példa azt mutatja be, hogyan bírálható felül egy hibakód.
     },
     "mimeTypes": {
         ".json": "text/json"
-    },
+    }
 }
 ```
 
