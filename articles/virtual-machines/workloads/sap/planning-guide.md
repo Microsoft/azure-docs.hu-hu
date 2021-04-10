@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102504712"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
@@ -348,7 +348,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Erőforrások
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Források
 [Itt](./get-started.md)található az Azure dokumentációjában az SAP-számítási feladatok belépési pontja. Ettől a belépési ponttól kezdve számos cikket talál, amelyek a következő témaköröket fedik le:
 
 - SAP NetWeaver és Business One az Azure-ban

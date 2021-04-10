@@ -1,14 +1,14 @@
 ---
 title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
-ms.date: 02/16/2021
+ms.date: 03/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c02bbb789ffac262521c2f76c62081a21cd6602c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556103"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934308"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -143,7 +143,7 @@ A választott sablon attól függ, hogy teljes előfizetést, erőforráscsoport
 |Előfizetés (az Azure Marketplace-en közzétett ajánlat használata esetén)   |[marketplaceDelegatedResourceManagement.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!TIP]
-> Noha egyetlen központi telepítésben nem lehet teljes felügyeleti csoportot bevezetni, [a felügyeleti csoport szintjén telepítheti a szabályzatot](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). A szabályzat azt vizsgálja, hogy a felügyeleti csoporton belüli egyes előfizetések delegálása megtörtént-e a megadott kezelési bérlőre, és ha nem, akkor az Ön által megadott értékek alapján hozza létre a hozzárendelést.
+> Noha egyetlen központi telepítésben nem lehet teljes felügyeleti csoportot bevezetni, [a felügyeleti csoport szintjén telepítheti a szabályzatot](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). A szabályzat a [deployIfNotExists hatás](../../governance/policy/concepts/effects.md#deployifnotexists) használatával ellenőrizze, hogy a felügyeleti csoporton belüli egyes előfizetések delegálása megtörtént-e a megadott kezelési bérlőre, és ha nem, akkor a megadott értékek alapján hozza létre a hozzárendelést. Ezután hozzáférhet a felügyeleti csoportban lévő összes előfizetéshez, de ezeket egyéni előfizetésként kell használnia (ahelyett, hogy a felügyeleti csoport egészére felveszi a műveleteket).
 
 Az alábbi példa egy olyan módosított **delegatedResourceManagement.parameters.jst** mutat be, amely az előfizetés előkészítéséhez használható. Az erőforráscsoport-paraméter fájljai (az [RG-delegált erőforrás-kezelő](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) mappában találhatók) hasonlóak, de tartalmaznak egy **rgName** paramétert is a bevezetéshez megadott erőforráscsoport (ok) azonosításához.
 

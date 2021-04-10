@@ -3,12 +3,12 @@ title: Mi az Azure Event Grid?
 description: Eseményazonosító küldése a forrástól a kezelőknek Azure Event Grid használatával. Hozzon létre eseményvezérelt alkalmazásokat, és integrálja az Azure-szolgáltatásokat.
 ms.topic: overview
 ms.date: 01/28/2021
-ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a410f56da9e28403fb98d92332e6d67c064bac4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99055134"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934866"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -22,7 +22,8 @@ Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használat
 
 :::image type="content" source="./media/overview/functional-model.png" alt-text="A források és a kezelők Event Grid modellje" lightbox="./media/overview/functional-model-big.png":::
 
-Ez a rendszerkép azt mutatja be, hogy Event Grid hogyan csatlakozik a forrásokhoz és a kezelőhöz, és nem a támogatott integrációk átfogó listája.
+> [!NOTE]
+> Ez a rendszerkép azt mutatja be, hogy Event Grid hogyan csatlakozik a forrásokhoz és a kezelőhöz, és nem a támogatott integrációk átfogó listája. Az összes támogatott eseményforrás listáját a következő szakaszban találja. 
 
 ## <a name="event-sources"></a>Eseményforrások
 
@@ -38,6 +39,7 @@ Jelenleg az alábbi Azure-szolgáltatások támogatják az események küldésé
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Azure-erőforráscsoportok](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

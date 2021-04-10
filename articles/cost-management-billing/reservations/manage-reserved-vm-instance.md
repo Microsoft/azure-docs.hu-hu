@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1523ca77b06281b84ed57fbc0e2e49ffede85fb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392272"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934342"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
 
@@ -57,8 +57,8 @@ A hatókör csak a használatalapú fizetéses díjszabású különálló előf
 
 Alapértelmezés szerint a következő felhasználók tekinthetik meg és kezelhetik a foglalásokat:
 
-- A foglalást vásárló személyt és a foglalás vásárlásához használt számlázási előfizetés fiókadminisztrátorát a rendszer hozzáadja a foglalási rendeléshez.
-- Nagyvállalati Szerződéssel és Microsoft Ügyfélszerződéssel rendelkező számlázási rendszergazdák.
+- A foglalást és a fiók tulajdonosát a számlázási előfizetés megvásárlása után az Azure RBAC hozzáférést kap a foglalási rendeléshez.
+-  A Nagyvállalati Szerződés és a Microsoft ügyfél-szerződés számlázási közreműködői a Cost Management + számlázási > foglalási tranzakciókban lévő összes foglalást kezelhetik > válassza a kék szalagcímet.
 
 Két lehetősége van, ha más személyeknek is engedélyezni szeretné a foglalások kezelését:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1901104aa05b4e7ea3a318ee8e886c745f2a6eb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98045257"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936044"
 ---
 # <a name="understand-event-data"></a>Az események értelmezése
 
@@ -23,6 +23,8 @@ Számos típusú értesítés hozható létre, és az értesítési üzenetek el
 Ez a diagram a különböző értesítési típusokat mutatja:
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
+
+## <a name="notification-structure"></a>Értesítési struktúra
 
 Az értesítések általában két részből állnak: a fejlécből és a törzsből. 
 
@@ -87,19 +89,66 @@ Telemetria-üzenet:
 }
 ```
 
-## <a name="message-format-detail-for-different-event-types"></a>Az üzenet formátumának részletei a különböző típusú eseményekhez
+A következő részek részletesebben ismertetik a IoT Hub és az Azure Digital Twins (vagy más Azure IoT-szolgáltatások) által kibocsátott különböző típusú értesítéseket. Itt olvashat az egyes értesítési típusokat kiváltó dolgokról, valamint az egyes típusú értesítési törzsekhez tartozó mezők készletéről.
 
-Ez a szakasz részletesebben ismerteti a IoT Hub és az Azure Digital Twins (vagy más Azure IoT-szolgáltatások) által kibocsátott különböző típusú értesítéseket. Itt olvashat az egyes értesítési típusokat kiváltó dolgokról, valamint az egyes típusú értesítési törzsekhez tartozó mezők készletéről.
+## <a name="digital-twin-change-notifications"></a>Digitális kettős változások értesítései
 
-### <a name="digital-twin-life-cycle-notifications"></a>Digitális kettős életciklussal kapcsolatos értesítések
+A digitális **kettős változásokról szóló értesítéseket** a rendszer akkor indítja el, ha a digitális iker frissítése folyamatban van, például:
+* A tulajdonságértékek vagy a metaadatok módosításakor.
+* Ha a digitális iker-vagy összetevő-metaadatok módosulnak. Ebben a forgatókönyvben egy példa a digitális iker modelljét változtatja meg.
 
-Minden [digitális ikrek](concepts-twins-graph.md) értesítéseket bocsát ki, függetlenül attól, hogy [IoT hub-eszközöket képviselnek-e az Azure Digital ikrekben](how-to-ingest-iot-hub-data.md) vagy sem. Ennek az az oka, hogy az **életciklussal kapcsolatos értesítések**, amelyek a digitális Twin-re vonatkoznak.
+### <a name="properties"></a>Tulajdonságok
 
-Az életciklussal kapcsolatos értesítések a következők esetén aktiválódnak:
+Itt láthatók a digitális kettős változásokról szóló értesítés törzsének mezői.
+
+| Name    | Érték |
+| --- | --- |
+| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
+| `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net*
+| `specversion` | *1.0*<br>Az üzenet megfelel a [CloudEvents-specifikáció](https://github.com/cloudevents/spec)ezen verziójának. |
+| `type` | `Microsoft.DigitalTwins.Twin.Update` |
+| `datacontenttype` | `application/json` |
+| `subject` | A digitális Twin azonosító |
+| `time` | Időbélyeg a digitális Twin művelet bekövetkeztekor |
+| `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
+
+### <a name="body-details"></a>Törzs részletei
+
+Az értesítés törzse `Twin.Update` egy JSON-javítási dokumentum, amely a digitális dupla frissítést tartalmazza.
+
+Tegyük fel például, hogy a digitális iker frissítése a következő javítás használatával történt.
+
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
+
+A megfelelő értesítés (ha a szolgáltatás szinkron módon hajtja végre, mint például az Azure digitális ikrek frissítése egy digitális Twin-et), a következőhöz hasonló szervnek kell lennie:
+
+```json
+{
+    "modelId": "dtmi:example:com:floor4;2",
+    "patch": [
+      {
+        "value": 40,
+        "path": "/Temperature",
+        "op": "replace"
+      },
+      {
+        "value": 30,
+        "path": "/comp1/prop1",
+        "op": "add"
+      }
+    ]
+  }
+```
+
+## <a name="digital-twin-lifecycle-notifications"></a>Digitális kettős életciklussal kapcsolatos értesítések
+
+Minden [digitális ikrek](concepts-twins-graph.md) értesítéseket bocsát ki, függetlenül attól, hogy [IoT hub-eszközöket képviselnek-e az Azure Digital ikrekben](how-to-ingest-iot-hub-data.md) vagy sem. Ez az életciklus- **értesítések**, amelyek a digitális Twin-re vonatkoznak.
+
+Az életciklus-értesítések a következők esetén aktiválódnak:
 * Létrejön egy digitális Twin
 * Egy digitális Twin törlésre kerül
 
-#### <a name="properties"></a>Tulajdonságok
+### <a name="properties"></a>Tulajdonságok
 
 Az életciklus-értesítés törzsének mezői.
 
@@ -114,7 +163,7 @@ Az életciklus-értesítés törzsének mezői.
 | `time` | Időbélyeg, amikor a művelet bekövetkezett a Twin |
 | `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
 
-#### <a name="body-details"></a>Törzs részletei
+### <a name="body-details"></a>Törzs részletei
 
 A törzs az érintett digitális Twin, amely JSON formátumban van megjelenítve. A séma ehhez a *digitális Twins-erőforrás 7,1*.
 
@@ -181,11 +230,11 @@ A létrehozási események esetében a hasznos adatok az erőforrás létrehozá
 }
 ```
 
-### <a name="digital-twin-relationship-change-notifications"></a>Digitális kettős kapcsolat változási értesítései
+## <a name="digital-twin-relationship-change-notifications"></a>Digitális kettős kapcsolat változási értesítései
 
 A **kapcsolat változásával kapcsolatos értesítések** akkor aktiválódnak, ha a digitális kettős kapcsolat létrejött, frissítve vagy törölve lett. 
 
-#### <a name="properties"></a>Tulajdonságok
+### <a name="properties"></a>Tulajdonságok
 
 Itt láthatók az Edge Change-értesítések törzsének mezői.
 
@@ -200,7 +249,7 @@ Itt láthatók az Edge Change-értesítések törzsének mezői.
 | `time` | Időbélyeg, hogy mikor történt a művelet a kapcsolaton |
 | `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
 
-#### <a name="body-details"></a>Törzs részletei
+### <a name="body-details"></a>Törzs részletei
 
 A törzs a kapcsolat hasznos adatai JSON formátumban is. Ugyanazt a formátumot használja, mint egy `GET` kapcsolat kérése a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins)-n keresztül. 
 
@@ -233,55 +282,6 @@ A esetében `Relationship.Delete` a törzs megegyezik a `GET` kérelemmel, és a
     "$targetId": "device2",
     "connectionType": "WIFI"
 }
-```
-
-### <a name="digital-twin-change-notifications"></a>Digitális kettős változások értesítései
-
-A digitális **kettős változásokról szóló értesítéseket** a rendszer akkor indítja el, ha a digitális iker frissítése folyamatban van, például:
-* A tulajdonságértékek vagy a metaadatok módosításakor.
-* Ha a digitális iker-vagy összetevő-metaadatok módosulnak. Ebben a forgatókönyvben egy példa a digitális iker modelljét változtatja meg.
-
-#### <a name="properties"></a>Tulajdonságok
-
-Itt láthatók a digitális kettős változásokról szóló értesítés törzsének mezői.
-
-| Name    | Érték |
-| --- | --- |
-| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
-| `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net*
-| `specversion` | *1.0*<br>Az üzenet megfelel a [CloudEvents-specifikáció](https://github.com/cloudevents/spec)ezen verziójának. |
-| `type` | `Microsoft.DigitalTwins.Twin.Update` |
-| `datacontenttype` | `application/json` |
-| `subject` | A digitális Twin azonosító |
-| `time` | Időbélyeg a digitális Twin művelet bekövetkeztekor |
-| `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
-
-#### <a name="body-details"></a>Törzs részletei
-
-Az értesítés törzse `Twin.Update` egy JSON-javítási dokumentum, amely a digitális dupla frissítést tartalmazza.
-
-Tegyük fel például, hogy a digitális iker frissítése a következő javítás használatával történt.
-
-:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
-
-A megfelelő értesítés (ha a szolgáltatás szinkron módon hajtja végre, mint például az Azure digitális ikrek frissítése egy digitális Twin-et), a következőhöz hasonló szervnek kell lennie:
-
-```json
-{
-    "modelId": "dtmi:example:com:floor4;2",
-    "patch": [
-      {
-        "value": 40,
-        "path": "/Temperature",
-        "op": "replace"
-      },
-      {
-        "value": 30,
-        "path": "/comp1/prop1",
-        "op": "add"
-      }
-    ]
-  }
 ```
 
 ## <a name="next-steps"></a>Következő lépések

@@ -13,10 +13,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-arm-template-uiex
 ms.openlocfilehash: 8b048127c8a5581a34a62cfb67c19ba7aa50f2d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701586"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rövid útmutató: App Service alkalmazás létrehozása ARM-sablon használatával
@@ -53,7 +53,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vannak az Ön kényelme érdekében. Tekintse meg az alábbi táblázatot a paraméterek alapértelmezett értékeinek és leírásának megtekintéséhez:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Description |
+| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |
@@ -74,7 +74,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vannak az Ön kényelme érdekében. Tekintse meg az alábbi táblázatot a paraméterek alapértelmezett értékeinek és leírásának megtekintéséhez:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Description |
+| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |

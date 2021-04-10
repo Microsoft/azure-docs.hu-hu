@@ -12,10 +12,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
 ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102503436"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása

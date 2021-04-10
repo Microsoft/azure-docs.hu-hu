@@ -64,8 +64,8 @@ Az oktatóanyagok a leggyakoribb Media Services feladatokhoz tartozó forgatók�
 * [Távoli fájl kódolása és videó streamelése – REST](stream-files-tutorial-with-rest.md)
 * [Feltöltött fájl kódolása és videó streamelése – .NET](stream-files-tutorial-with-api.md)
 * [Élő stream – .NET](stream-live-tutorial-with-api.md)
-* [Videó elemzése – .NET](analyze-videos-tutorial-with-api.md)
-* [AES-128 dinamikus titkosítás – .NET](protect-with-aes128.md)
+* [Videó elemzése – .NET](analyze-videos-tutorial.md)
+* [AES-128 dinamikus titkosítás – .NET](drm-playready-license-template-concept.md)
 
 ### <a name="samples"></a>Példák
 
@@ -75,12 +75,12 @@ Használja [ezt a minta böngészőt](/samples/browse/?products=azure-media-serv
 
 A útmutatók olyan mintakód-mintákat tartalmaznak, amelyek bemutatják a feladatok végrehajtásának módját. Ebben a szakaszban számos példát talál. Íme néhány közülük:
 
-* [Fiók létrehozása – parancssori felület](./create-account-howto.md)
+* [Fiók létrehozása – parancssori felület](./account-create-how-to.md)
 * [Adatelérési API-k – parancssori felület](./access-api-howto.md)
 * [Kódolás HTTPS-sel, a feladathoz megadott bemenetként – .NET](job-input-from-http-how-to.md)  
 * [Események monitorozása – Portál](monitoring/monitor-events-portal-how-to.md)
-* [Dinamikus titkosítás a multi-DRM-.NET használatával](protect-with-drm.md) 
-* [Kódolás egyéni átalakítással – parancssori felület](custom-preset-cli-howto.md)
+* [Dinamikus titkosítás a multi-DRM-.NET használatával](drm-protect-with-drm-tutorial.md) 
+* [Kódolás egyéni átalakítással – parancssori felület](encode-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 

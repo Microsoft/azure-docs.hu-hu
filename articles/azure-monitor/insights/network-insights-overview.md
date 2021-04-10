@@ -6,10 +6,10 @@ author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
 ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104605800"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor hálózatokhoz
@@ -71,7 +71,7 @@ A különböző szűrők segítségével a méretezést egy adott útvonalra és
 
 Válassza a **részletes mérőszámok megtekintése** lehetőséget egy előre konfigurált munkafüzet megnyitásához, amely részletes mérőszámokat tartalmaz az Application Gateway, az összes háttér-készlet erőforrásai és az előtér-IP-címek számára. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a><a name="connectivity"></a>Connectivity
 
 A **kapcsolat lapon egyszerűen megjeleníthetők a** [kapcsolat figyelője](../../network-watcher/connection-monitor-overview.md) és a kapcsolat figyelője (klasszikus) használatával konfigurált tesztek a kiválasztott előfizetésekhez.
 

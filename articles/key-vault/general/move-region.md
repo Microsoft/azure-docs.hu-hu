@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1961d86e55f59233b1dc168e2de48b6b42b0cff0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93285227"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728113"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Azure Key Vault áthelyezése régiók között
 
@@ -35,7 +35,7 @@ Mielőtt elkezdené, vegye figyelembe a következő fogalmakat:
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>1. lehetőség: a Key Vault biztonsági mentési és visszaállítási parancsainak használata
 
-A biztonsági mentési parancs használatával biztonsági mentést készíthet a tárolóban lévő egyes titkos kulcsokról, kulcsokról és tanúsítványokról. A titkos kódok titkosított blobként lesznek letöltve. Ezután visszaállíthatja a blobot az új kulcstartóba. A parancsok listáját itt tekintheti meg: [Azure Key Vault parancsok](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault).
+A biztonsági mentési parancs használatával biztonsági mentést készíthet a tárolóban lévő egyes titkos kulcsokról, kulcsokról és tanúsítványokról. A titkos kódok titkosított blobként lesznek letöltve. Ezután visszaállíthatja a blobot az új kulcstartóba. A parancsok listáját itt tekintheti meg: [Azure Key Vault parancsok](/powershell/module/azurerm.keyvault#key_vault).
 
 A biztonsági mentési és visszaállítási parancsok használata két korlátozást tartalmaz:
 

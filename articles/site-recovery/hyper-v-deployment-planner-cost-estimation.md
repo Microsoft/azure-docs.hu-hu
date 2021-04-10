@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e5a1f727f32fda7740b958cb3f03a3a4a3ae03f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999212"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727552"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
 
@@ -168,13 +168,13 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 A Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
 |Pénznem|Name|Pénznem|Name|Pénznem|Name|
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 |ARS|Argentin peso ($)|AUD|Ausztrál dollár ($)|BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)|CHF|Svájci frank (CHF)|DKK|Dán korona (kr)|
-|EUR|Euró (€)|GBP|Angol font (£)|HKD|Hongkongi dollár (HK$)|
+|EUR|Euró ( &euro; )|GBP|Angol font (£)|HKD|Hongkongi dollár (HK$)|
 |IDR|Indonéz rúpia (Rp)|INR|Indiai rúpia (₹)|JPY|Japán jen (¥)|
 |KRW|Koreai won (₩)|MXN|Mexikói peso (MX$)|MYR|Maláj ringgit (RM$)|
-|NOK|Norvég korona (kr)||NZD|Új-zélandi dollár ($)||RUB|Orosz rubel (руб)|
+|NOK|Norvég korona (kr)|NZD|Új-zélandi dollár ($)|RUB|Orosz rubel (руб)|
 |SAR|Szaúdi riál (SR)|SEK|Svéd korona (kr)|TWD|Tajvani új dollár (NT$)|
 |TRY|Török líra (TL)|USD| Amerikai dollár ($)|ZAR|Dél-afrikai rand (R)|
 

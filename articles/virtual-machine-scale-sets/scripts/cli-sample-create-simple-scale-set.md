@@ -5,16 +5,15 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
-ms.subservice: cli
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 31c90879d6f80f598ba71846ba68da814f254677
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1166a5df1f814e015f57dc7e80d9e440fdbe639a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91825188"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934631"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési csoport létrehozása az Azure CLI használatával
 Ez a szkript egy Azure-beli virtuálisgép-méretezési csoportot hoz létre Ubuntu operációs rendszerrel és kapcsolódó hálózati erőforrásokkal, beleértve egy terheléselosztót is. A szkript futtatása után a virtuálisgép-példányokat SSH-kapcsolaton keresztül érheti el.
