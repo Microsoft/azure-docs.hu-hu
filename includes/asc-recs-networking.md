@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 2c096953fd89b902d1567399e36fc0fbf1b89572
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103466152"
 ---
 Ebben a kategóriában **14** javaslat van.
 
-|Ajánlás |Description |Súlyosság |
+|Ajánlás |Leírás |Súlyosság |
 |---|---|---|
 |A Storage-fiókokhoz a tűzfal és a virtuális hálózati konfigurációk hozzáférését korlátozni kell |Tekintse át a hálózati hozzáférés beállításait a Storage-fiók tűzfala beállításaiban. Javasoljuk, hogy konfigurálja a hálózati szabályokat úgy, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Az adott internetről vagy helyi ügyfelekről érkező kapcsolatok engedélyezéséhez hozzáférés adható a megadott Azure-beli virtuális hálózatokból vagy a nyilvános internetes IP-címtartományok érkező forgalomhoz.<br />(Kapcsolódó szabályzat: a [Storage-fiókoknak korlátoznia kell a hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34c877ad-507e-4c82-993e-3452a6e0ad3c)) |Alacsony |
 |Az adaptív hálózatokra vonatkozó kötési javaslatokat az internetre irányuló virtuális gépeken kell alkalmazni |Azure Security Center elemezte az alább felsorolt virtuális gépek internetes forgalomra vonatkozó kommunikációs mintáit, és megállapította, hogy a hozzájuk társított NSG meglévő szabályai túlságosan engedékenyek, ami nagyobb potenciális támadási felületet eredményez.<br>Ez általában akkor fordul elő, ha ez az IP-cím nem kommunikál rendszeresen ezzel az erőforrással. Azt is megteheti, hogy az IP-címet rosszindulatúként jelölték meg Security Center fenyegetést jelentő intelligencia forrásai. <a href="https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening">tudj meg többet</a><br />(Kapcsolódó szabályzat: [az adaptív hálózat megerősítő javaslatainak alkalmazása szükséges az internetre irányuló virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f08e6af2d-db70-460a-bfe9-d5bd474ba9d6)) |Magas |

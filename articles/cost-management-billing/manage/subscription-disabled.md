@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: d7b5f1ae6db633bd1af10b1a0de1392c2a1fbcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1c40102f8815cf7299a99d290b7f57b386ede401
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685534"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055127"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Letiltott Azure-előfizetés újraaktiválása
 
@@ -23,7 +23,7 @@ Előfordulhat, hogy egy Azure-előfizetése le lesz tiltva, ha lejárt a hitelk�
 
 ## <a name="your-credit-is-expired"></a>A kredit lejárt
 
-Amikor regisztrál egy ingyenes Azure-fiókot, kap egy ingyenes próba-előfizetést, amelyhez 200 dollár értékű, 30 napig felhasználható Azure-kredit jár, valamint 12 hónapos ingyenes hozzáférés a szolgáltatásokhoz. A 30 nap letelte után az Azure letiltja az előfizetést. Az előfizetés letiltására azért van szükség, hogy Ön ne halmozzon fel véletlenül használati díjakat az előfizetéshez járó kreditek és ingyenes szolgáltatások keretein túlmenően. Az Azure-szolgáltatások további használatához [frissítenie kell az előfizetést](upgrade-azure-subscription.md). A frissítést követően 12 hónapig továbbra is hozzáférhet az ingyenes szolgáltatásokhoz. Csak az ingyenes szolgáltatás mennyiségére vonatkozó korlátozások után számítunk fel díjat.
+Ha regisztrál egy ingyenes Azure-fiókra, ingyenes próbaverziós előfizetést kap, amely 200 USD értékű Azure-kreditet biztosít a számlázási pénznemben 30 nap és 12 hónap ingyenes szolgáltatás esetén. A 30 nap letelte után az Azure letiltja az előfizetést. Az előfizetés letiltására azért van szükség, hogy Ön ne halmozzon fel véletlenül használati díjakat az előfizetéshez járó kreditek és ingyenes szolgáltatások keretein túlmenően. Az Azure-szolgáltatások további használatához [frissítenie kell az előfizetést](upgrade-azure-subscription.md). A frissítést követően 12 hónapig továbbra is hozzáférhet az ingyenes szolgáltatásokhoz. Csak az ingyenes szolgáltatás mennyiségére vonatkozó korlátozások után számítunk fel díjat.
 
 ## <a name="you-reached-your-spending-limit"></a>Elérte a költségkeretét
 

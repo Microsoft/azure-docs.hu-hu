@@ -4,10 +4,10 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a De
 ms.topic: quickstart
 ms.date: 2/18/2021
 ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784492"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Gyors útmutató: az IoT Defender használatának első lépései

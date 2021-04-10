@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan másolhat a fájlrendszerből származó adatok
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 03/29/2021
 ms.author: jingwang
-ms.openlocfilehash: a7cfcd77c4aeb12e2fca98a3564f34683b41ee21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c49b543b13dddf4c4ba7e36196795c6a0d638ae2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589002"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731955"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása fájlrendszerből vagy rendszerbe a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -35,6 +35,9 @@ A fájlrendszer-összekötő különösen a következőket támogatja:
 - Fájlok másolása helyi gépre vagy hálózati fájlmegosztásba. Linux-fájlmegosztás használatához telepítse a [Samba](https://www.samba.org/) -t a Linux-kiszolgálóra.
 - Fájlok másolása **Windows** -hitelesítéssel.
 - Fájlok másolása a-ként vagy a fájlok elemzése/létrehozása a [támogatott fájlformátumokkal és tömörítési kodekekkel](supported-file-formats-and-compression-codecs.md).
+
+> [!NOTE]
+> A csatlakoztatott hálózati meghajtó nem támogatott hálózati fájlmegosztás adatainak betöltésekor. Használja inkább a tényleges elérési utat, például ` \\server\share` :.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

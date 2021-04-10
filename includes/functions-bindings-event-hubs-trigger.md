@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 4bea0f6091c02f80e381217ab7894ec4ad90d0ed
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 32f98eb9b98168bdab270ecff07446c31f8d706d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105223"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729832"
 ---
 Az Event hub Event streambe küldött eseményre való reagáláshoz használja a függvény eseményindítóját. Az eseményindító beállításához olvasási hozzáféréssel kell rendelkeznie a mögöttes Event hub-hoz. A függvény elindításakor a függvénynek átadott üzenet karakterláncként van beírva.
 
@@ -375,12 +375,12 @@ A következő típusú paramétereket használhatja az eseményindító esemény
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)vannak megadva.
 
 ### <a name="additional-types"></a>További típusok 
-Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
 
-- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
@@ -391,12 +391,12 @@ A következő típusú paramétereket használhatja az eseményindító esemény
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)vannak megadva.
 
 ### <a name="additional-types"></a>További típusok 
-Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
 
-- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 

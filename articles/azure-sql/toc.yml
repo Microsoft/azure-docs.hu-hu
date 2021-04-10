@@ -211,6 +211,8 @@
               href: database/monitoring-with-dmvs.md
             - name: A blokkolás ismertetése és feloldása
               href: database/understand-resolve-blocking.md
+            - name: A maximális párhuzamossági fok (MAXDOP) beállítása
+              href: database/configure-max-degree-of-parallelism.md
             - name: Diagnosztikai telemetria naplózása
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: Memóriabeli OLTP

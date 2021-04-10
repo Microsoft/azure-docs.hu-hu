@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 676e5f03c8d0085a4d041662a80c63d385071919
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485537"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166717"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
@@ -147,7 +147,7 @@ A feladatok előtti és utáni feladatokat futtató runbookok, és a telepítés
 * Futtató fiók
 * Egy futtatni kívánt runbook
 
-Az Azure-gépekkel való kommunikációhoz használja a [Meghívási-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) parancsmagot az Azure-beli virtuális gépekkel való kommunikációhoz. Ennek módjáról a runbook példa [Update Management – parancsfájl futtatása a Run paranccsal](https://github.com/azureautomation/update-management-run-script-with-run-command)című témakörben talál példát.
+Az Azure-gépekkel való kommunikációhoz használja a [Meghívási-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) parancsmagot az Azure-beli virtuális gépekkel való kommunikációhoz. Ennek módjáról a következő témakörben talál példát: runbook példa [Update Management – parancsfájl futtatása a Run paranccsal](https://github.com/azureautomation/update-management-run-script-with-run-command).
 
 ### <a name="interact-with-non-azure-machines"></a>Interakció a nem Azure-beli gépekkel
 
@@ -158,7 +158,7 @@ A feladatok előtti és utáni feladatok az Azure-környezetben futnak, és nem 
 * Helyileg futtatni kívánt runbook
 * Egy szülő runbook
 
-A nem Azure-beli gépekkel való kommunikációhoz egy szülő runbook fut az Azure-környezetben. Ez a runbook a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal hívja meg a gyermek runbook. Meg kell adnia a `RunOn` paramétert, és meg kell adnia annak a hibrid Runbook-feldolgozónak a nevét, amelyen futtatni szeretné a parancsfájlt. Tekintse meg a runbook példát [Update Management – parancsfájl helyi futtatása](https://github.com/azureautomation/update-management-run-script-locally).
+A nem Azure-beli gépekkel való kommunikációhoz egy szülő runbook fut az Azure-környezetben. Ez a runbook a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal hívja meg a gyermek runbook. Meg kell adnia a `RunOn` paramétert, és meg kell adnia annak a hibrid Runbook-feldolgozónak a nevét, amelyen futtatni szeretné a parancsfájlt. Tekintse meg a runbook példát [Update Management-szkript helyi futtatását](https://github.com/azureautomation/update-management-run-script-locally).
 
 ## <a name="abort-patch-deployment"></a>Javítás telepítésének megszakítása
 
@@ -238,9 +238,9 @@ Write-Output $context
 #Example: How to create and write to a variable using the pre-script:
 <#
 #Create variable named after this run so it can be retrieved
-New-AzAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false
+New-AzAutomationVariable -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccount -Name $runId -Value "" -Encrypted $false
 #Set value of variable
-Set-AutomationVariable –Name $runId -Value $vmIds
+Set-AutomationVariable -Name $runId -Value $vmIds
 #>
 
 #Example: How to retrieve information from a variable set during the pre-script

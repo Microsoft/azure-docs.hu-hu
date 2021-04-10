@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: 9f30d271dbc769f4261fcaa357811146e5b99bd3
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104782299"
 ---
 # <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>Oktatóanyag: Hyper-V virtuális gépek felmérése az Azure-ba való áttelepítéshez
@@ -82,7 +82,7 @@ Az értékelést a következőképpen futtathatja:
         - Másik lehetőségként válassza ki azt a tárolási típust, amelyet a virtuális géphez szeretne használni a Migrálás során.
     - A **fenntartott példányok** területen válassza ki, hogy a virtuális gép tartalék példányait szeretné-e használni az áttelepítéskor.
         - Ha fenntartott példány használatát választja, a "**kedvezmény (%)** vagy a **virtuális gép üzemidő** nem adható meg. 
-        - [További információ](https://aka.ms/azurereservedinstances).
+        - [További információk](https://aka.ms/azurereservedinstances).
  1. **Virtuális gép mérete**:
      - A **méretezési feltétel** területen válassza ki, hogy szeretné-e alapozni az értékelést a kiszolgálói konfigurációs adatokra/metaadatokra vagy a teljesítmény alapú adatokra. Ha teljesítményadatokat használ:
         - A **teljesítmény előzményeiben** adja meg az adatok időtartamát, amely alapján az értékelést alapozni szeretné

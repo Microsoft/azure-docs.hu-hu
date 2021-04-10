@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d2ecfb5a58641938062166bcd7c61a7d91764a3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 480b8ef401387863693bc88c3d508ce296636c93
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093479"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107593"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Streamelési lokátor létrehozása és URL-címek összeállítása
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan hozhat létre adatfolyam-keresőt, és hogyan kész�
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-[Dinamikus csomagolás](dynamic-packaging-overview.md) előzetes verziója
+[Dinamikus csomagolás](encode-dynamic-packaging-concept.md) előzetes verziója
 
 ## <a name="java"></a>Java
 
@@ -165,10 +165,10 @@ Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https:/
 
 ## <a name="see-also"></a>Lásd még
 
-* [Szűrők létrehozása .NET használatával](filters-dynamic-manifest-dotnet-howto.md)
+* [Szűrők létrehozása .NET használatával](filters-dynamic-manifest-dotnet-how-to.md)
 * [Szűrők létrehozása REST használatával](filters-dynamic-manifest-rest-howto.md)
-* [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
+* [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-how-to.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A DRM-védelemmel ellátott tartalmakat](protect-with-drm.md).
+[A DRM-védelemmel ellátott tartalmakat](drm-protect-with-drm-tutorial.md).

@@ -10,15 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e5246edd2d6490e823bacbdfff0f60ef553878b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96487677"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729133"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztonsági tevékenységeket és vezérlőket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) követelményei és tervezési szakaszaiban figyelembe venni kívánt biztonsági kérdések és fogalmak betanítása, valamint az erőforrások képzése. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások kialakításához használhat.
@@ -153,7 +150,7 @@ Az alkalmazások tervezésének modellezése és a [Stride](https://docs.google.
 
 | Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Identitáshamisítás               | Hitelesítés        | [HTTPS-kapcsolatok megkövetelése](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1). |
+| Identitáshamisítás               | Hitelesítés        | [HTTPS-kapcsolatok megkövetelése](/aspnet/core/security/enforcing-ssl?tabs=visual-studio). |
 | Illetéktelen adatmódosítás              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](../../key-vault/general/about-keys-secrets-certificates.md)használjon Azure Key Vault tanúsítványokat. |
 | Letagadhatóság            | Letagadhatatlanság       | Az Azure [monitorozásának és diagnosztizálásának](/azure/architecture/best-practices/monitoring)engedélyezése.|
 | Információfelfedés | Titkosság       | Bizalmas adatok titkosítása [a nyugalmi](../fundamentals/encryption-atrest.md) [állapotban és az átvitel során](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
@@ -233,7 +230,7 @@ Igény *szerinti (JIT* ) hozzáférés megvalósítása a jogosultságok expozí
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Ismételt hitelesítés megkövetelése fontos tranzakciókhoz
 
-A [helyek közötti kérések hamisítása](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (más néven *XSRF* vagy *CSRF*) olyan webalkalmazások elleni támadás, amelyekben egy rosszindulatú webalkalmazás befolyásolja az ügyféloldali böngésző és a böngészőt meghatalmazó webalkalmazás közötti interakciót. A helyek közötti kérelmek hamisításával kapcsolatos támadások lehetségesek, mert a böngészők bizonyos típusú hitelesítési jogkivonatokat automatikusan küldenek egy webhelyre irányuló minden kéréssel.
+A [helyek közötti kérések hamisítása](/aspnet/core/security/anti-request-forgery) (más néven *XSRF* vagy *CSRF*) olyan webalkalmazások elleni támadás, amelyekben egy rosszindulatú webalkalmazás befolyásolja az ügyféloldali böngésző és a böngészőt meghatalmazó webalkalmazás közötti interakciót. A helyek közötti kérelmek hamisításával kapcsolatos támadások lehetségesek, mert a böngészők bizonyos típusú hitelesítési jogkivonatokat automatikusan küldenek egy webhelyre irányuló minden kéréssel.
 Ezt a kiaknázási formát is nevezzük *egykattintásos támadásnak* vagy *munkamenet-lovaglásnak* , mivel a támadás kihasználja a felhasználó korábban hitelesített munkamenetét.
 
 Az ilyen típusú támadásokkal szembeni védekezés legjobb módja, ha megkéri a felhasználót, hogy csak a felhasználó tudja biztosítani az összes fontos tranzakciót, például a vásárlást, a fiók inaktiválását vagy a jelszó módosítását. Megkérheti a felhasználót, hogy írja be újra a jelszavát, hajtsa végre a CAPTCHA-t, vagy küldjön be egy titkos jogkivonatot, amely csak a felhasználó számára lenne lehetséges. A leggyakoribb megközelítés a titkos jogkivonat.
@@ -303,7 +300,7 @@ A [Azure Logic apps](../../logic-apps/logic-apps-overview.md) egy első osztály
 
 ### <a name="use-logging-and-alerting"></a>Naplózás és riasztás használata
 
-A biztonsági vizsgálatokkal kapcsolatos biztonsági problémák [naplózása](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) , valamint riasztások kiváltása a problémákról, hogy az emberek időben tudják a problémákat. Az összes összetevő naplózásának és naplózásának engedélyezése. A naplóknak rögzíteniük kell a felhasználói környezetet, és azonosítaniuk kell az összes fontos eseményt.
+A biztonsági vizsgálatokkal kapcsolatos biztonsági problémák [naplózása](/aspnet/core/fundamentals/logging/) , valamint riasztások kiváltása a problémákról, hogy az emberek időben tudják a problémákat. Az összes összetevő naplózásának és naplózásának engedélyezése. A naplóknak rögzíteniük kell a felhasználói környezetet, és azonosítaniuk kell az összes fontos eseményt.
 
 Győződjön meg arról, hogy nem naplózza a felhasználó által a webhelyre küldött bizalmas adatokat. A bizalmas adatokra például a következők tartoznak:
 

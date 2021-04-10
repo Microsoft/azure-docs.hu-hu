@@ -4,10 +4,10 @@ description: A IoT Defender továbbra is támogatja a C, C# és Edge nyelveket, 
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.openlocfilehash: 782e2e8ab0c54e21da643ca73f647a7ea21e4223
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784526"
 ---
 # <a name="feature-support-and-retirement"></a>Szolgáltatások támogatása és kivonulás

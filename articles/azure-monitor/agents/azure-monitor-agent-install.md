@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: b2f91f0036a86151588c8c138dac5421ad54e18e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db9ad08f9a939a22e1e0e1cfba0537e6356394ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586420"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731535"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>A Azure Monitor-ügynök telepítése (előzetes verzió)
 Ez a cikk a [Azure monitor ügynöknek](azure-monitor-agent-overview.md) az Azure-beli virtuális gépeken és az Azure arc-kompatibilis kiszolgálókon való telepítésének különböző lehetőségeit ismerteti, valamint az [adatgyűjtési szabályokkal rendelkező társítások](data-collection-rule-azure-monitor-agent.md) létrehozási lehetőségeit, amelyek meghatározzák, hogy az ügynöknek milyen adatokat kell gyűjtenie.
@@ -20,6 +20,9 @@ A Azure Monitor ügynök telepítése előtt a következő előfeltételek szük
 
 - A [felügyelt rendszeridentitást](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) engedélyezni kell az Azure Virtual Machines szolgáltatásban. Ez az Azure arc-kompatibilis kiszolgálók esetében nem szükséges. A rendszeridentitás automatikusan engedélyezve lesz, ha az ügynököt a [Azure Portal használatával egy adatgyűjtési szabály létrehozásához és hozzárendeléséhez](#install-with-azure-portal)szükséges folyamat részeként telepíti a rendszer.
 - A virtuális gép virtuális hálózatán engedélyezni kell a [AzureResourceManager szolgáltatás címkéjét](../../virtual-network/service-tags-overview.md) .
+
+> [!IMPORTANT]
+> A Azure Monitor ügynök jelenleg nem támogatja a hálózati proxykat.
 
 ## <a name="virtual-machine-extension-details"></a>Virtuálisgép-bővítmény részletei
 A Azure Monitor ügynök Azure-beli virtuálisgép- [bővítményként](../../virtual-machines/extensions/overview.md) van megvalósítva, és a következő táblázatban található adatokat tartalmazza. A virtuálisgép-bővítmények telepítésének bármelyik módszerével telepíthető, beleértve a jelen cikkben ismertetett lépéseket is.

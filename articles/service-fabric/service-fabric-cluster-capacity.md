@@ -4,12 +4,12 @@ description: A csomópontok típusai, tartóssága, megbízhatósága és egyéb
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9268dfef15d8302eb31cc1b649c7fd713aab6721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714935"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732584"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 
@@ -111,7 +111,7 @@ Kövesse ezeket a javaslatokat a csomópont-típusok ezüst vagy arany tartóss�
 * Legalább öt csomópontot kell fenntartania minden olyan virtuálisgép-méretezési csoportnál, amelynél a tartóssági szint (arany vagy ezüst) engedélyezve van. Ha a küszöbérték alatt méretezi a korlátot, a fürt hibás állapotba kerül, és manuálisan kell törölnie a () állapotot `Remove-ServiceFabricNodeState` az eltávolított csomópontokhoz.
 * Az ezüst vagy arany tartóssági szinttel rendelkező virtuálisgép-méretezési csoportoknak a Service Fabric fürtben lévő saját csomópont-típusra kell leképezniük. Több virtuálisgép-méretezési csoport egyetlen csomópontos típusra való leképezése megakadályozza a Service Fabric-fürt és az Azure-infrastruktúra megfelelő működésének összehangolását.
 * Ne törölje a véletlenszerű virtuálisgép-példányokat, mindig használja a virtuálisgép-méretezési csoport méretezését a szolgáltatásban. A véletlenszerűen kiválasztott VM-példányok törlése lehetséges, hogy a virtuálisgép-példányok a [frissítési tartományok](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) és a tartalék [tartományok](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains)között oszlanak meg. Ez az egyensúlyhiány hátrányosan befolyásolhatja, hogy a rendszer képes legyen a szolgáltatás példányainak vagy a szolgáltatás replikáinak megfelelő terheléselosztásra.
-* Ha autoskálázást használ, állítsa be a szabályokat úgy, hogy a (virtuálisgép-példányok eltávolítása) művelet csak egy csomóponton legyen végrehajtva. Egyszerre legfeljebb egy példány skálázása nem biztonságos.
+* Ha autoskálázást használ, állítsa be a szabályokat úgy, hogy a (virtuálisgép-példányok eltávolítása) művelet csak egy csomóponton legyen végrehajtva. Egyszerre több példány skálázása nem biztonságos.
 * Ha a virtuális gépeket az elsődleges csomópont típusa szerint törli vagy felszabadítja, soha ne csökkentse a kiosztott virtuális gépek számát, amely alatt a megbízhatósági réteg szükséges. Ezeket a műveleteket a rendszer határozatlan ideig blokkolja egy olyan méretezési csoportnál, amelynek tartóssági szintje ezüst vagy arany.
 
 ### <a name="changing-durability-levels"></a>Tartóssági szintek módosítása

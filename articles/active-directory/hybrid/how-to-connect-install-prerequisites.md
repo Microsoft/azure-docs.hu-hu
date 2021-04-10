@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426790"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107911"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -37,7 +37,7 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 * Az Azure AD-bérlők alapértelmezés szerint 50 000 objektumot tesznek lehetővé. A tartomány ellenőrzésekor a korlát 300 000 objektumra nő. Ha még több objektumra van szüksége az Azure AD-ben, nyisson meg egy támogatási esetet, hogy a korlát továbbra is nagyobb legyen. Ha több mint 500 000 objektumra van szüksége, licencre van szüksége, például Microsoft 365, prémium szintű Azure AD vagy Enterprise Mobility + Security.
 
 ### <a name="prepare-your-on-premises-data"></a>A helyszíni adatfeldolgozás előkészítése
-* A [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) használatával azonosíthatja a címtárban előforduló hibákat, például az ismétlődéseket és a formázási problémákat, mielőtt szinkronizálni kíván az Azure ad-val és a Microsoft 365ával.
+* A [IdFix](https://github.com/Microsoft/idfix) használatával azonosíthatja a címtárban előforduló hibákat, például az ismétlődéseket és a formázási problémákat, mielőtt [szinkronizálni kíván az Azure ad-val és a Microsoft 365ával](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac).
 * Tekintse át [Az Azure ad-ben engedélyezhető választható szinkronizálási funkciókat](how-to-connect-syncservice-features.md), és értékelje ki, hogy mely szolgáltatásokat kell engedélyezni.
 
 ### <a name="on-premises-active-directory"></a>Helyszíni Active Directory
@@ -100,7 +100,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 * Ha az [expressz beállításokat](reference-connect-accounts-permissions.md#express-settings-installation) használja, vagy a verzióról a frissítésre van szüksége, vállalati rendszergazdai fiókkal kell rendelkeznie a helyszíni Active Directoryhoz.
 * Ha az egyéni beállítások telepítési útvonalát használja, több lehetőség is rendelkezésre áll. További információ: [egyéni telepítési beállítások](reference-connect-accounts-permissions.md#custom-installation-settings).
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolatok
 * A Azure AD Connect-kiszolgálónak az intraneten és az interneten egyaránt DNS-feloldásra van szüksége. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására a helyszíni Active Directory és az Azure AD-végpontokon.
 * Azure AD Connect hálózati kapcsolatra van szükség az összes konfigurált tartományhoz
 * Ha tűzfallal rendelkezik az intraneten, és meg kell nyitnia a portokat a Azure AD Connect-kiszolgálók és a tartományvezérlők között, további információért lásd: [Azure ad Connect portok](reference-connect-ports.md) .

@@ -37,17 +37,17 @@ A legtöbb esetben célszerű hibakeresési módban felépíteni az adatfolyamat
 > [!NOTE]
 > Minden olyan hibakeresési munkamenet, amelyet a felhasználó az ADF böngésző felhasználói felületéről indít, egy új munkamenet a saját Spark-fürttel. A fenti hibakeresési munkamenetek figyelés nézetével megtekintheti és kezelheti a gyári hibakeresési munkameneteket. Az egyes hibakeresési munkamenetek esetében minden órában díjat kell fizetni, beleértve a TTL-időt is.
 
-## <a name="cluster-status"></a>Fürt állapota
+## <a name="cluster-status&quot;></a>Fürt állapota
 
 A fürt állapotjelzője a tervezési felület tetején zöldre vált, amikor a fürt készen áll a hibakeresésre. Ha a fürt már meleg, akkor a zöld kijelző szinte azonnal megjelenik. Ha a fürt nem fut a hibakeresési mód megadásakor, akkor a Spark-fürt hideg rendszerindítást hajt végre. A kijelző addig forog, amíg a környezet nem áll készen az interaktív hibakeresésre.
 
 Ha befejezte a hibakeresést, kapcsolja ki a hibakeresési kapcsolót úgy, hogy a Spark-fürt leálljon, és a továbbiakban nem lesz számlázva a hibakeresési tevékenységért.
 
-## <a name="debug-settings"></a>Hibakeresési beállítások
+## <a name=&quot;debug-settings&quot;></a>Hibakeresési beállítások
 
-A hibakeresési mód bekapcsolása után szerkesztheti, hogyan tekintheti át az adatfolyamok az adatfolyamatokat. A hibakeresési beállítások szerkesztéséhez kattintson a "hibakeresési beállítások" lehetőségre az adatfolyam-vászon eszköztáron. Itt kiválaszthatja az egyes forrás-átalakításokhoz használandó sor korlátját vagy forrását. Az ebben a beállításban szereplő sorokra vonatkozó korlátok csak az aktuális hibakeresési munkamenet esetében érvényesek. Azt is megteheti, hogy az átmeneti társított szolgáltatást az Azure szinapszis Analytics-forráshoz kívánja használni. 
+A hibakeresési mód bekapcsolása után szerkesztheti, hogyan tekintheti át az adatfolyamok az adatfolyamatokat. A hibakeresési beállítások szerkesztéséhez kattintson a &quot;hibakeresési beállítások&quot; lehetőségre az adatfolyam-vászon eszköztáron. Itt kiválaszthatja az egyes forrás-átalakításokhoz használandó sor korlátját vagy forrását. Az ebben a beállításban szereplő sorokra vonatkozó korlátok csak az aktuális hibakeresési munkamenet esetében érvényesek. Azt is megteheti, hogy az átmeneti társított szolgáltatást az Azure szinapszis Analytics-forráshoz kívánja használni. 
 
-![Hibakeresési beállítások](media/data-flow/debug-settings.png "Hibakeresési beállítások")
+![Hibakeresési beállítások](media/data-flow/debug-settings.png &quot;Hibakeresési beállítások")
 
 Ha az adatfolyamban vagy valamelyik hivatkozott adatkészletben paraméterek vannak megadva, megadhatja, hogy a hibakeresés során milyen értékeket kell használni a **Parameters (paraméterek** ) lapon.
 

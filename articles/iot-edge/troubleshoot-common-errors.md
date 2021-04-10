@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489562"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275651"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -87,6 +87,8 @@ Adja meg a környezethez tartozó DNS-kiszolgálót a tároló motorjának beál
 
 A fenti példa egy nyilvánosan elérhető DNS-szolgáltatásra állítja be a DNS-kiszolgálót. Ha a peremhálózati eszköz nem fér hozzá ehhez az IP-címhez a környezetében, cserélje le az elérhető DNS-kiszolgáló címére.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Helyezze a `daemon.json` megfelelő helyre a platformhoz:
 
 | Platform | Hely |
@@ -102,6 +104,24 @@ A frissítések érvénybe léptetéséhez indítsa újra a tároló motorját.
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (rendszergazdai PowerShell) | `Restart-Service iotedge-moby -Force` |
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Helyezze a `daemon.json` `/etc/docker` könyvtárba az eszközén.
+
+Ha a hely már tartalmaz egy `daemon.json` fájlt, adja hozzá a **DNS-** kulcsot, és mentse a fájlt.
+
+A frissítések érvénybe léptetéséhez indítsa újra a tároló motorját.
+
+```bash
+sudo systemctl restart docker
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 **2. lehetőség: a DNS-kiszolgáló beállítása IoT Edge üzembe helyezés modulban**
 
@@ -275,6 +295,9 @@ Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával
 :::moniker-end
 <!-- end 1.2 -->
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nem lehet beolvasni a IoT Edge Daemon-naplókat a Windows rendszerben
 
 **Megfigyelt viselkedés:**
@@ -297,6 +320,9 @@ Windows Registry Editor Version 5.00
 "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
 "TypesSupported"=dword:00000007
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
 
 ## <a name="stability-issues-on-smaller-devices"></a>Stabilitási problémák a kisebb eszközökön
 
@@ -388,6 +414,7 @@ Az átjáró mögött található eszközök IoT Edge a `parent_hostname` konfig
 Győződjön meg arról, hogy a szülő IoT Edge eszköz fogadhat bejövő kéréseket a gyermek IoT Edge eszközről. Nyissa meg a hálózati forgalmat a 443-es és a 6617-es porton a gyermek eszközről érkező kérelmek esetében.
 
 :::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Következő lépések
 

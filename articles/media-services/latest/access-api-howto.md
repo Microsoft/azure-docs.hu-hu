@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b59276cc340f133c0f270e8ab95051b3c392e1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e45a0eefff3a6a7f7dd37bde3ee3bffaedd93dcd
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581286"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166615"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Hitelesítő adatok beszerzése Media Services API-hoz való hozzáféréshez
 
@@ -38,7 +38,7 @@ Ez a cikk a hitelesítő adatok Media Services API-hoz való hozzáférésének 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy Azure-fiók. Ha nem rendelkezik fiókkal, kezdje egy [ingyenes Azure-próbaverzióval](https://azure.microsoft.com/pricing/free-trial/).
-- Egy Media Services-fiók. További információ: [Azure Media Services fiók létrehozása a Azure Portal használatával](create-account-howto.md).
+- Egy Media Services-fiók. További információ: [Azure Media Services fiók létrehozása a Azure Portal használatával](account-create-how-to.md).
 
 ## <a name="portal"></a>[Portál](#tab/portal/)
 

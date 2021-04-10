@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a532ae9485efa9571137130d32ba0827728e8094
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257980"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166870"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások a Azure Active Directory alkalmazásproxy
 
@@ -68,11 +68,23 @@ Biztonsági okokból ez nehéz követelmény, és nem támogatjuk a helyettesít
 
 ### <a name="dns-updates"></a>DNS-frissítések
 
-Egyéni tartományok használatakor létre kell hoznia egy DNS-bejegyzést a külső URL-címhez (például) egy CNAME rekorddal, amely az  `*.adventure-works.com` alkalmazásproxy-végpont külső URL-címére mutat. Helyettesítő karakteres alkalmazások esetén a CNAME rekordnak a megfelelő külső URL-címekre kell mutatnia:
+Egyéni tartományok használatakor létre kell hoznia egy DNS-bejegyzést a külső URL-címhez (például) egy CNAME rekorddal, amely az  `*.adventure-works.com` alkalmazásproxy-végpont külső URL-címére mutat. Helyettesítő karakteres alkalmazások esetén a CNAME rekordnak a megfelelő külső URL-címre kell mutatnia:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
 Annak ellenőrzéséhez, hogy helyesen konfigurálta-e a CNAME-t, használhatja az [nslookupt](/windows-server/administration/windows-commands/nslookup) az egyik cél végponton, például: `expenses.adventure-works.com` .  A válasznak tartalmaznia kell a már említett aliast ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
+
+### <a name="using-connector-groups-assigned-to-an-app-proxy-cloud-service-region-other-than-the-default-region"></a>Az alapértelmezett régiótól eltérő, az alkalmazás-proxy felhőalapú szolgáltatási régiójához rendelt összekötő-csoportok használata
+Ha az összekötők az alapértelmezett bérlői régiótól eltérő régiókban vannak telepítve, érdemes lehet módosítani, hogy az összekötő-csoport melyik régióra legyen optimalizálva az alkalmazások eléréséhez szükséges teljesítmény javítása érdekében. További információkért lásd: [összekötő-csoportok optimalizálása a legközelebbi alkalmazásproxy felhőalapú szolgáltatás használatára](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
+ 
+Ha a helyettesítő karakteres alkalmazáshoz hozzárendelt összekötő csoport **eltérő régiót használ, mint az alapértelmezett régió**, frissítenie kell a CNAME-rekordot, hogy az egy regionális, adott külső URL-re mutasson. A kapcsolódó URL-cím meghatározásához használja az alábbi táblázatot:
+
+| Összekötőhöz rendelt régió | Külső URL-cím |
+| ---   | ---         |
+| Ázsia | `<yourAADTenantId>.asia.tenant.runtime.msappproxy.net`|
+| Ausztrália  | `<yourAADTenantId>.aus.tenant.runtime.msappproxy.net` |
+| Európa  | `<yourAADTenantId>.eur.tenant.runtime.msappproxy.net`|
+| Észak-Amerika  | `<yourAADTenantId>.nam.tenant.runtime.msappproxy.net` |
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 

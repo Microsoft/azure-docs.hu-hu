@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: ed11b0bb00a571fb4cefc51a708432baef88184d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7042d3ede872c5dc854675334b964430671d1306
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104613073"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065633"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Oktatóanyag: Felkészülés a Azure Stack Edge mini R üzembe helyezésére
 
@@ -32,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Azure Stack Edge mini R üzembe helyezéséhez tekintse meg az alábbi oktatóanyagokat az előírt sorozatban.
 
-| Lépés | Description |
+| Lépés | Leírás |
 | --- | --- |
 | **Előkészítése** |Ezeket a lépéseket a közelgő üzembe helyezés előkészítésekor kell elvégezni. |
 | **[Üzembe helyezési konfigurációs ellenőrzőlista](#deployment-configuration-checklist)** |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |
