@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104601385"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache esetén a Redis-példányhoz
@@ -63,7 +63,7 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Biztonsági mentés gyakorisága** | Legördülő menüből válassza ki a biztonsági mentés időközét, a választható lehetőségek közé **15 perc**, **30 perc**, **60 perc**, **6 óra**, **12 óra** és **24 óra**. | Ez az intervallum az előző biztonsági mentési művelet sikeres befejezését és az új biztonsági mentés eltelte után kezdődik. | 
-   | **Tárfiók** | Legördülő menüből válassza ki a Storage-fiókját. | A Storage-fióknak ugyanabban a régióban és előfizetésben kell kiválasztania, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
+   | **Storage-fiók** | Legördülő menüből válassza ki a Storage-fiókját. | A Storage-fióknak ugyanabban a régióban és előfizetésben kell kiválasztania, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
    | **Storage-kulcs** | Legördülő menüből válassza ki a használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . | Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből. | 
 
     Az első biztonsági mentés a biztonsági mentés gyakorisági intervallumának eltelte után indul el.

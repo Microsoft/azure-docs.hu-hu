@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 846d4a259f0fcd204bcad6c898efc999c3765fd3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4d2a345ed49fae2e1d77b3c5da44b305d069874e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962561"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729456"
 ---
 # <a name="azure-stack-edge-2103-release-notes"></a>Azure Stack Edge 2103 kibocsátási megjegyzései
 
@@ -98,7 +98,7 @@ Az alábbi táblázat az előző kiadásokból származó ismert problémák ös
 |**19.**|Kubernetes + frissítés |A korábbi szoftververziók, például az 2008-es kiadásokban olyan versenyhelyzet-frissítési probléma merül fel, amelynek hatására a frissítés meghiúsul a ClusterConnectionException. |Az újabb buildek használata segít elkerülni ezt a problémát. Ha továbbra is ezt a problémát látja, a megkerülő megoldással próbálja megismételni a frissítést, és működnie kell.|
 |**20**|Internet Explorer|Ha a fokozott biztonsági funkciók engedélyezve vannak, előfordulhat, hogy nem fog tudni hozzáférni a helyi webes felhasználói felület lapjaihoz. | Tiltsa le a fokozott biztonságot, és indítsa újra a böngészőt.|
 |**21.**|Kubernetes-irányítópult | Az SSL-tanúsítvánnyal rendelkező Kubernetes-irányítópult *https* -végpontja nem támogatott. | |
-|**22.**|Kubernetes |A Kubernetes nem támogatja a (z) ":" környezetet a .NET-alkalmazások által használt környezeti változók neveiben. Ez az Event Grid IoT Edge moduljának Azure Stack Edge-eszközön és más alkalmazásokban való működéséhez is szükséges. További információ: a [ASP.net Core dokumentációja](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|A ":" kifejezést dupla aláhúzással cserélje le. További információ: [Kubernetes probléma](https://github.com/kubernetes/kubernetes/issues/53201)|
+|**22.**|Kubernetes |A Kubernetes nem támogatja a (z) ":" környezetet a .NET-alkalmazások által használt környezeti változók neveiben. Ez az Event Grid IoT Edge moduljának Azure Stack Edge-eszközön és más alkalmazásokban való működéséhez is szükséges. További információ: a [ASP.net Core dokumentációja](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration#environment-variables).|A ":" kifejezést dupla aláhúzással cserélje le. További információ: [Kubernetes probléma](https://github.com/kubernetes/kubernetes/issues/53201)|
 |**23.** |Azure arc + Kubernetes-fürt |Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből.  |Ha engedélyezni szeretné a git-tárházból törölt erőforrások törlését, állítsa `--sync-garbage-collection` az ív OperatorParams. További információ: [konfiguráció törlése](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
 |**24.**|NFS |Az NFS-megosztást használó alkalmazások, amelyek az eszközön az adatírást használják, kizárólagos írást kell használniuk. Ezzel biztosítható, hogy a rendszer a lemezre írja a írásokat.| |
 |**25.**|Számítási konfiguráció |A számítási konfiguráció nem sikerül olyan hálózati konfigurációknál, amelyekben az átjárók, illetve kapcsolók vagy útválasztók válaszolnak a hálózaton nem létező rendszerekre vonatkozó ARP-kérelmekre.| |

@@ -1,0 +1,133 @@
+### YamlMime:Landing
+title: Az Azure Networking alapjai – dokumentáció
+summary: Az Azure hálózati szolgáltatások lehetővé teszik az Azure-erőforrások és a helyszíni erőforrások elérését, az Azure-hálózatban lévő alkalmazások védetté tételét, továbbítását és figyelését.
+metadata:
+  title: Az Azure Networking alapjai – dokumentáció
+  description: Ismerje meg az Azure-beli hálózatkezelési szolgáltatásokat, amelyek kapcsolatot biztosítanak az Azure-erőforrások, a helyszíni hálózatról az Azure-erőforrásokhoz való csatlakozással, a hálózati erőforrások védelmével, az alkalmazások továbbításának méretezésével és a hálózat figyelésével kapcsolatos segítséggel.
+  ms.service: networking
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 03/30/2021
+  ms.openlocfilehash: 69017e082491b784ada194a0d0bab7ac6ed50274
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106166581"
+landingContent:
+- title: Az Azure hálózatkezelésének ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure-hálózatkezelés?
+      url: networking-overview.md
+  - linkListType: concept
+    links:
+    - text: Mi az a Microsoft Global Network?
+      url: ../microsoft-global-network.md
+  - linkListType: learn
+    links:
+    - text: Hálózati infrastruktúra létrehozása az Azure-ban
+      url: /learn/paths/architect-network-infrastructure/
+- title: Bevezetés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Virtual Network?
+      url: ../../virtual-network/virtual-networks-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Virtuális hálózat létrehozása
+      url: ../../virtual-network/quick-create-portal.md
+- title: Kommunikáció az internettel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a nyilvános IP-cím?
+      url: ../../virtual-network/virtual-networks-overview.md
+    - text: Mi az a Virtual Network NAT Gateway?
+      url: ../../virtual-network/nat-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hozzon létre egy nyilvános IP-címet
+      url: ../../virtual-network/create-public-ip-portal.md
+    - text: NAT-átjáró létrehozása
+      url: ../../virtual-network/tutorial-create-nat-gateway-portal.md
+- title: Virtuális hálózatok csatlakoztatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Társviszony létesítése virtuális hálózatok között
+      url: ../../virtual-network/virtual-network-peering-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Virtuális hálózatok összekötése virtuális hálózattal
+      url: ../../virtual-network/tutorial-connect-virtual-networks-portal.md
+- title: Privát hozzáférés a hálózati erőforrásokhoz
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure privát végpont?
+      url: ../../private-link/private-endpoint-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Privát végpont létrehozása
+      url: ../../private-link/create-private-endpoint-portal.md
+- title: Az alkalmazások terheléselosztása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Hálózati terheléselosztó
+      url: ../../load-balancer/load-balancer-overview.md
+    - text: Biztonságos Cloud CDN és globális Load Balancer
+      url: ../../frontdoor/front-door-overview.md
+    - text: Webalkalmazás terheléselosztója
+      url: ../../application-gateway/overview.md
+    - text: DNS-alapú Load Balancer
+      url: ../../traffic-manager/traffic-manager-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Hálózati terheléselosztó létrehozása
+      url: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md
+    - text: Biztonságos felhőalapú CDN és globális Load Balancer üzembe helyezése
+      url: ../../frontdoor/quickstart-create-front-door.md
+    - text: Webalkalmazás-terheléselosztó létrehozása
+      url: ../../application-gateway/quick-create-portal.md
+    - text: DNS-alapú Load Balancer létrehozása
+      url: ../../traffic-manager/quickstart-create-traffic-manager-profile.md
+- title: A virtuális hálózat védelme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Network security groups (Hálózati biztonsági csoportok)
+      url: ../../virtual-network/network-security-groups-overview.md
+    - text: Azure DDoS Protection Standard
+      url: ../../ddos-protection/ddos-protection-overview.md
+    - text: Azure Firewall
+      url: ../../firewall/overview.md
+  - linkListType: tutorial
+    links:
+    - text: PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása
+      url: ../../virtual-network/tutorial-restrict-network-access-to-resources.md
+    - text: Azure DDoS Protection standard létrehozása és konfigurálása
+      url: ../../ddos-protection/manage-ddos-protection.md
+    - text: Az Azure Firewall üzembe helyezése és konfigurálása
+      url: ../../firewall/tutorial-firewall-deploy-portal.md
+- title: Helyszíni hálózatok összekapcsolása virtuális hálózatokkal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: VPN-kapcsolatok – VPN Gateway
+      url: ../../vpn-gateway/vpn-gateway-about-vpngateways.md
+    - text: Dedikált privát kapcsolatok – ExpressRoute
+      url: ../../expressroute/expressroute-introduction.md
+    - text: VPN-és dedikált magánhálózati kapcsolatok – virtuális WAN
+      url: ../../virtual-wan/virtual-wan-about.md
+  - linkListType: tutorial
+    links:
+    - text: Helyszíni hálózat összekapcsolása virtuális hálózattal – VPN-titkosítás
+      url: ../../vpn-gateway/tutorial-site-to-site-portal.md
+    - text: Helyszíni hálózat kiterjesztése az Azure-ra a ExpressRoute használatával
+      url: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md

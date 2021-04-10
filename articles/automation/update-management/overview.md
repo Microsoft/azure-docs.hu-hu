@@ -3,18 +3,20 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 03/19/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: e5deefabd6a37dbfece9f32abdce5d5144681238
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950059"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166700"
 ---
 # <a name="update-management-overview"></a>Az Update Management áttekintése
 
 Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben lévő Windows-és Linux-alapú virtuális gépek operációsrendszer-frissítéseinek kezeléséhez Azure Automation Update Management is használhatja. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát.
+
+Szolgáltatóként több ügyfél-bérlőt is felkészített az [Azure világítótoronyba](../../lighthouse/overview.md). Az Azure Lighthouse lehetővé teszi, hogy egyszerre több Azure Active Directory-(Azure AD-) bérlőre kiterjedő műveleteket hajtson végre, így a felügyeleti feladatokat, például Update Management hatékonyabbá teheti a felelős bérlők között.
 
 > [!NOTE]
 > A Update Management konfigurált gépek nem használhatók a Azure Automation egyéni parancsfájljainak futtatásához. Ez a számítógép csak a Microsoft által aláírt frissítési parancsfájlt futtathatja.
@@ -24,7 +26,7 @@ Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben
 
 Ha az Azure-beli virtuális gépen automatikusan le szeretné tölteni és telepíteni kívánja a *kritikus* és *biztonsági* javításokat, tekintse át a Windows rendszerű virtuális gépekhez készült automatikus virtuálisgép- [javítás](../../virtual-machines/automatic-vm-guest-patching.md)
 
-A Update Management üzembe helyezése és a gépek felügyelethez való engedélyezése előtt győződjön meg arról, hogy az alábbi részben található információk ismerete szükséges.  
+A Update Management üzembe helyezése és a gépek felügyelethez való engedélyezése előtt győződjön meg arról, hogy az alábbi részben található információk ismerete szükséges.
 
 ## <a name="about-update-management"></a>Tudnivalók Update Management
 
@@ -40,7 +42,7 @@ Az alábbi ábra azt szemlélteti, hogy a Update Management hogyan vizsgálja é
 
 ![Update Management munkafolyamat](./media/overview/update-mgmt-updateworkflow.png)
 
-A Update Management használatával natív módon telepíthetők a több előfizetésben lévő gépekre ugyanabban a bérlőben.
+A Update Management segítségével natív módon telepíthetők több előfizetésben lévő gépekre ugyanabban a bérlőben, vagy az Azure-beli [delegált erőforrás-kezelést](../../lighthouse/concepts/azure-delegated-resource-management.md)használó bérlők között.
 
 A csomag felszabadítása után 2 – 3 órát vesz igénybe, hogy a javítás megjelenjen a Linux rendszerű gépek értékeléséhez. A Windows rendszerű gépek esetében 12 – 15 órát vesz igénybe, hogy a javítás megjelenjen az értékelés után. Amikor egy gép befejezi a frissítések megfelelőségi vizsgálatát, az ügynök tömegesen továbbítja az adatokat Azure Monitor naplókhoz. Windows rendszerű gépen a megfelelőségi vizsgálat alapértelmezés szerint 12 óránként fut. Linux rendszerű gépek esetén a megfelelőségi vizsgálat alapértelmezés szerint óránként történik. Ha a Log Analytics ügynök újraindítása megtörténik, a rendszer 15 percen belül elindít egy megfelelőségi vizsgálatot.
 
@@ -169,9 +171,9 @@ A következő táblázat ismerteti a Update Management által támogatott csatla
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Yes |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 

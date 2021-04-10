@@ -49,7 +49,7 @@
     - name: DDoS Protection
       href: front-door-ddos.md
     - name: Front Door – GYIK
-      href: front-door-faq.md
+      href: front-door-faq.yml
     - name: Geoszűrés
       href: front-door-geo-filtering.md
     - name: Állapotminták

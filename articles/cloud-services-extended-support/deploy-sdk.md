@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123037"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166887"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Cloud Services (bővített támogatás) üzembe helyezése az Azure SDK használatával
 
@@ -156,7 +156,8 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Hozzon létre egy nyilvános IP-címet, és (opcionálisan) állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. Ha statikus IP-címet használ, azt a szolgáltatás konfigurációs fájljában foglalt IP-címekre kell hivatkoznia.
+7. Hozzon létre egy nyilvános IP-címet, és állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. A Cloud Services (kiterjesztett támogatás) csak az [alapszintű] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU nyilvános IP-címek) használatát támogatja. A standard SKU nyilvános IP-címei nem működnek Cloud Services.
+Ha statikus IP-címet használ, hivatkoznia kell rá a szolgáltatás konfigurációs (. cscfg) fájljában Fenntartott IP.
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +172,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Hozzon létre egy hálózati profil objektumot, és rendeljen hozzá egy nyilvános IP-címet a platform által létrehozott terheléselosztó elülső végéhez.
+8. Hozzon létre egy hálózati profil objektumot, és rendelje hozzá a nyilvános IP-címet a terheléselosztó felületéhez. Az Azure platform automatikusan létrehoz egy "klasszikus" SKU Load Balancer-erőforrást ugyanabban az előfizetésben, mint a Cloud Service-erőforrás. A terheléselosztó erőforrás egy írásvédett erőforrás az ARM-ben. Az erőforrás frissítései csak a Cloud Service telepítési fájljain (. cscfg &. csdef) keresztül támogatottak.
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 

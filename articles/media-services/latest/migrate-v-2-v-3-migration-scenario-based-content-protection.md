@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7ef41b76f343d8997feebc4a366deda7ce6a2afa
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644058"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729405"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Tartalomvédelem – forgatókönyv-alapú áttelepítési útmutató
 
@@ -38,11 +38,11 @@ A V3 API-ra való áttelepítés során meg kell találnia, hogy hozzá kell fé
 
 Ha például korábban az **"NB: CID: UUID: 8cb39104-122c-496e-9ac5-7f9e2c2547b8"** azonosítójú v2-eszközt használta, akkor a régi v2-eszközök a V3 API-n keresztül történő listázásakor a név lesz a GUID (ebben az esetben **"8cb39104-122c-496e-9ac5-7f9e2c2547b8"**).
 
-Lekérdezheti a v2 API-ban létrehozott eszközökhöz társított **StreamingLocators** az [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) új v3-es metódusának használatával.  Az [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet) .net-ügyfél SDK-verziójára is hivatkozik
+Lekérdezheti a v2 API-ban létrehozott eszközökhöz társított **StreamingLocators** az [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) új v3-es metódusának használatával.  Az [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true) .net-ügyfél SDK-verziójára is hivatkozik
 
 A **ListStreamingLocators** metódus eredményei megadják a lokátor **nevét** és **StreamingLocatorId** a **StreamingPolicyName** együtt.
 
-A **StreamingLocators** használt **tartalomkulcsok** megkereséséhez hívja meg a [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet) metódust.  
+A **StreamingLocators** használt **tartalomkulcsok** megkereséséhez hívja meg a [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) metódust.  
 
 A v2 API-val létrehozott és közzétett összes **eszközhöz** tartozik egy [tartalmi kulcsra vonatkozó házirend](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) és egy, a V3 API-ban definiált tartalmi kulcs is, a [folyamatos átviteli házirend](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)alapértelmezett házirendjének használata helyett.
 

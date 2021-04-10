@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f07a6376e3fdde46e9e0cb161acc97c5771d905
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99096440"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166751"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -172,7 +172,7 @@ Adja meg az ajánlatával kapcsolatos kiegészítő online dokumentumokat. Legfe
 - **Title** – az ügyfelek az ajánlat részletek lapján láthatják a címet.
 - **Hivatkozás (URL)** – adjon meg egy hivatkozást az ügyfelek számára az online dokumentum megtekintéséhez. A hivatkozásnak a vagy a értékkel kell kezdődnie `http://` `https://` .
 
-Ügyeljen arra, hogy legalább egy hivatkozást adjon hozzá a dokumentációhoz, és egy hivatkozást az [Azure IoT-eszköz](https://catalog.azureiotsolutions.com/)kompatibilis IoT Edge eszközeire.
+Ügyeljen arra, hogy legalább egy hivatkozást adjon hozzá a dokumentációhoz, és egy hivatkozást az [Azure IoT-eszköz](https://devicecatalog.azure.com/)kompatibilis IoT Edge eszközeire.
 
 ### <a name="contact-information"></a>Kapcsolattartási adatok
 

@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: d35fbc6f16b018f55e4ec7bcd6257884c3f10186
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103466157"
 ---
 Ebben a kategóriában **21** javaslat van.
 
-|Ajánlás |Description |Súlyosság |
+|Ajánlás |Leírás |Súlyosság |
 |---|---|---|
 |Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni |A feltört tulajdonosi fiókok általi visszaélések csökkentése érdekében javasoljuk, hogy a tulajdonosi fiókok számát legfeljebb 3 értékre korlátozza.<br />(Kapcsolódó szabályzat: [legfeljebb 3 tulajdonost kell kijelölni az előfizetéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f11b553-d42e-4e3a-89be-32ca364cad4c)) |Magas |
 |Az Azure Defender for Key Vault engedélyezése szükséges |A Azure Security Center a Key Vault Azure Defendert is tartalmazza, amely további biztonsági intelligenciát biztosít.<br>Az Azure Defender for Key Vault szokatlan és potenciálisan ártalmas kísérleteket észlel Key Vault fiókok eléréséhez vagy kiaknázásához.<br><br>Fontos: a szervizelését ez a javaslat a kulcstartók védelmének díját eredményezi. Ha nem rendelkezik kulcstartóval ebben az előfizetésben, nem számítunk fel díjat.<br>Ha a későbbiekben létrehoz egy kulcstartót ezen az előfizetésen, akkor a rendszer automatikusan védelmet biztosít, és a díjak ekkor megkezdődik.<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>További információ az Azure Defender Key Vaultról.</a><br />(Kapcsolódó szabályzat: [Az Azure Defender for Key Vault engedélyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)szükséges) |Magas |

@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/26/2020
-ms.openlocfilehash: 77df97eaecc59bc9160bcf63ae5d3904cd79ec79
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 04/02/2021
+ms.openlocfilehash: e518ea83608472753d3463a980aae169b291d4de
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215187"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221296"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 
@@ -84,20 +84,6 @@ az login
 Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások [https://aka.ms/devicelogin](https://aka.ms/devicelogin) egy engedélyezési kód böngészését és beírását foglalják magukban.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
-
-## <a name="install-the-machine-learning-extension"></a>A Machine learning-bővítmény telepítése
-
-A Machine learning-bővítmény telepítéséhez használja a következő parancsot:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-Ha egy üzenet jelenik meg, amely szerint a bővítmény már telepítve van, a következő paranccsal frissíthet a legújabb verzióra:
-
-```azurecli-interactive
-az extension update -n azure-cli-ml
-```
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 

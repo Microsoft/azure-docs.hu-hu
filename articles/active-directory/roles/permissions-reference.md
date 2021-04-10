@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 03/13/2021
+ms.date: 03/29/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f467fc739b3120fd43bec4e21e1e336c1cdf186f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104955236"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935413"
 ---
 # <a name="azure-ad-built-in-roles"></a>Beépített Azure AD-szerepkörök
 
@@ -229,7 +229,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Igen |
+| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Yes |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -241,7 +241,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 >* Nem rendszergazdák, például vezetők, jogi tanácsadás és emberi erőforrások alkalmazottai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz.
 
 > [!IMPORTANT]
-> Ez a szerepkör jelenleg nem képes a felhasználónkénti MFA kezelésére az örökölt MFA felügyeleti portálon. Ugyanezek a függvények a [set-MsolUser](/powershell/module/msonline/set-msoluser) PARANCSMAGOT Azure ad PowerShell-modul használatával végezhetők el.
+> Ez a szerepkör nem tudja kezelni az MFA-beállításokat az örökölt MFA felügyeleti portálon vagy a hardveres eskü-jogkivonatokban. Ugyanezek a függvények a [set-MsolUser](/powershell/module/msonline/set-msoluser) PARANCSMAGOT Azure ad PowerShell-modul használatával végezhetők el.
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -264,10 +264,10 @@ A [hitelesítési rendszergazda](#authentication-administrator) és az emelt [sz
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
 
 > [!IMPORTANT]
-> Ez a szerepkör jelenleg nem képes kezelni az MFA-beállításokat az örökölt MFA felügyeleti portálon.
+> Ez a szerepkör nem tudja kezelni az MFA-beállításokat az örökölt MFA felügyeleti portálon vagy a hardveres eskü-jogkivonatokban. 
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -1402,7 +1402,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:

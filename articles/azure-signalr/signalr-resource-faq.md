@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d3b84756f390930be5124c6bda54d07078d29053
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579303"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166921"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure Signaler szolgáltatás – gyakori kérdések
 
@@ -62,13 +62,13 @@ Az új alkalmazások esetében csak az alapértelmezett és a kiszolgáló nélk
 
 A klasszikus mód a meglévő alkalmazások visszamenőleges kompatibilitására lett tervezve, ezért új alkalmazásokhoz nem használható.
 
-További információ a [jelen dokumentum](concept-service-mode.md)szolgáltatási módból.
+A szolgáltatási móddal kapcsolatos további információkért lásd: [szolgáltatási mód az Azure signaler szolgáltatásban](concept-service-mode.md).
 
 ## <a name="can-i-send-message-from-client-in-serverless-mode"></a>Küldhetek üzenetet az ügyféltől kiszolgáló nélküli módban?
 
 Ha a Signaler-példányban a felsőbb réteg beállítása lehetőséget választja, üzenetet küldhet az ügyféltől. A felsőbb réteg olyan végpontok halmaza, amelyek üzeneteket és kapcsolatfelvételi eseményeket fogadhatnak a Signaler szolgáltatástól. Ha nincs felsőbb réteg konfigurálva, a rendszer figyelmen kívül hagyja az ügyfél üzeneteit.
 
-További információ az upstream-ról: [Ez a dokumentum](concept-upstream.md).
+További információ az upstream szolgáltatásról: [felsőbb rétegbeli beállítások](concept-upstream.md).
 
 A felsőbb rétegbeli szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 
