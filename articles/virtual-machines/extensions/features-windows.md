@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104601860"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
@@ -414,7 +414,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás** lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Description | További információ |
+| Kiterjesztés neve | Leírás | További információ |
 | --- | --- | --- |
 | Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéniszkript-bővítmény Windows rendszerre](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |

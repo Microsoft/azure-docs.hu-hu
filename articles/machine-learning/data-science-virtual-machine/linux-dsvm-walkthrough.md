@@ -9,10 +9,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100517671"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Adatelemzés Ubuntu-Data Science Virtual Machine az Azure-ban
@@ -29,7 +29,7 @@ A Linux-DSVM használatához a következő előfeltételek szükségesek:
 
 * [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). További információ a virtuális gép kiépítéséről: [az Ubuntu Data Science Virtual Machine kiépítése](./release-notes.md).
 * A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](dsvm-ubuntu-intro.md#x2go).
-* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információ](https://support.mozilla.org/questions/981140).
+* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információk](https://support.mozilla.org/questions/981140).
 
 ## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
 

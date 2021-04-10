@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 45f3a7152add8d64d961feb055413760df01eb94
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105025611"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>A webalkalmazások felhasználói adatmegőrzési elemzése Application Insights
@@ -36,7 +36,7 @@ Ha még nem látja az adatokat a Application Insights-portál megőrzési eszkö
 
 A felhasználók az adatmegőrzési eszközön lévő cellák fölé helyezhetik az elemzés gombot, és az eszközhöz tartozó tippek elmagyarázzák, hogy mit jelent a cella. Az elemzés gomb a felhasználókat az elemzési eszközre egy előre feltöltött lekérdezéssel hozza a felhasználók számára a cellából. 
 
-## <a name="use-business-events-to-track-retention"></a>Üzleti események használata a megőrzés nyomon követéséhez
+## <a name="use-business-events-to-track-retention&quot;></a>Üzleti események használata a megőrzés nyomon követéséhez
 
 A leghasznosabb adatmegőrzési elemzés érdekében mérje fel a jelentős üzleti tevékenységeket jelölő eseményeket. 
 
@@ -45,7 +45,7 @@ Előfordulhat például, hogy számos felhasználó megnyithat egy oldalt az alk
 Célszerű a kulcsfontosságú üzleti műveleteket jelképező egyéni eseményeket felvenni, és ezeket az adatmegőrzési elemzéshez használni. A játék eredményének rögzítéséhez meg kell írnia egy kódrészletet, hogy egy egyéni eseményt küldjön Application Insights. Ha a weblap kódjába vagy Node.JSba írja, a következőképpen néz ki:
 
 ```JavaScript
-    appinsights.trackEvent("won game");
+    appinsights.trackEvent(&quot;won game");
 ```
 
 Vagy a ASP.NET-kiszolgáló kódjában:

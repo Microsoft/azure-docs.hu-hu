@@ -1,17 +1,17 @@
 ---
 title: Active Directory hitelesítés – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ismerje meg a Azure Database for PostgreSQL-Single Serverrel való hitelesítéshez Azure Active Directory fogalmakat
-author: lfittl
-ms.author: lufittl
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2265e0c134f3608830088e2a6754b6d3c88d0d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87171048"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935754"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Az Azure Active Directory használata a PostgreSQL-lel történő hitelesítéshez
 

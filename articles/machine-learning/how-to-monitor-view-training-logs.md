@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c258ac62617cb6ac954e0b8c59928225c7f477b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518738"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935573"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
@@ -110,15 +110,16 @@ A futtatási lista tábla szerkesztésével több futtatást is kijelölhet, és
 
 ![Részletek futtatása a Azure Machine Learning Studióban](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="view-log-files-for-a-run"></a>Futtatási naplófájlok megtekintése 
+### <a name="view-and-download-log-files-for-a-run"></a>Futtatási naplófájlok megtekintése és letöltése 
 
 A naplófájlok nélkülözhetetlen erőforrást biztosítanak az Azure ML-munkaterhelések hibakereséséhez. A naplók és kimenetek megtekintéséhez végezzen részletezést egy adott futtatásra:  
 
 1. Navigáljon a **kísérletek** lapra.
 1. Válassza ki az adott futtatáshoz tartozó runID.
 1. Válassza ki a **kimeneteket és a naplókat** az oldal tetején.
+2. Az **összes letöltése** gombra kattintva letöltheti az összes naplót egy zip-mappába.
 
-:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="A Run (kimenet és naplók) szakaszának képernyőképe":::
+:::image type="content" source="media/how-to-monitor-view-training-logs/download-logs.png" alt-text="A futtatási parancs kimenete és naplói szakaszának képernyőképe.":::
 
 Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban látható mappákban.
 
@@ -127,7 +128,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` mappa
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |20_image_build_log.txt     | Docker-rendszerkép-létrehozási napló a betanítási környezethez, nem kötelező, egy Futtatás. Csak a környezet frissítésekor alkalmazható. Máskülönben a pénzmosás felhasználja a gyorsítótárazott rendszerképet. Ha a művelet sikeres, a rendszerkép beállításjegyzékének részleteit tartalmazza a megfelelő rendszerképhez.         |
 |55_azureml-Execution-<node_id # C1.txt     | StdOut/stderr log of Host Tool, egy csomóponton. A rendszerkép lekérése a számítási célra. Megjegyzés: Ez a napló csak akkor jelenik meg, ha biztonságos számítási erőforrásokkal rendelkezik.         |
@@ -140,7 +141,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` mappa
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   rendszernapló a feladat-előkészítéshez        |
@@ -150,7 +151,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 Ha az oldalkocsi engedélyezve van, a feladatok előkészítési és a feladatok kiadására szolgáló szkriptek az oldalkocsis tárolón belül lesznek futtatva.  Mindegyik csomóponthoz egy mappa van. 
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |start_cms.txt     |  Az oldalkocsi-tároló indításakor megjelenő folyamat naplózása       |
 |prep_cmd.txt      |   A futtatáskor megadott ContextManagers naplója `job_prep.py` (ennek egy része a következőre lesz továbbítva: `azureml-logs/65-job_prep` )       |

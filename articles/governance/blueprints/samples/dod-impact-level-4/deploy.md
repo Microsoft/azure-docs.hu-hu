@@ -4,10 +4,10 @@ description: A DoD Impact Level 4 tervre vonatkozó lépések üzembe helyezése
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 389090b79c0aad343c1999ea17ed8c9332958544
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594793"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 terv minta üzembe helyezése

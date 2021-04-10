@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
 ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581023"
 ---
 # <a name="bring-your-own-key-specification"></a>Saját kulcs használatának specifikációja
@@ -31,7 +31,7 @@ A követelmények a következők:
 
 ## <a name="terminology"></a>Terminológia
 
-|Kulcs neve|Kulcs típusa|Forrás|Description|
+|Kulcs neve|Kulcs típusa|Forrás|Leírás|
 |---|---|---|---|
 |Key Exchange-kulcs (KEK)|RSA|Azure Key Vault HSM|HSM-es biztonsági másolattal rendelkező RSA-kulcspár, amely Azure Key Vaultban lett létrehozva
 Becsomagolási kulcs|AES|Szállítói HSM|Egy [ideiglenes] AES-kulcs, amely a HSM-on keresztül lett létrehozva

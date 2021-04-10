@@ -11,10 +11,10 @@ ms.custom:
 - contperf-fy21q1
 - device-developer
 ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363202"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköztípus definiálása az Azure IoT Central-alkalmazásban
@@ -139,7 +139,7 @@ A következő táblázat a telemetria képesség konfigurációs beállításait
 | Unit (Egység) | A telemetria értékének (például: **mph**, **%** , vagy **&deg; C**) egysége. |
 | Megjelenítési egység | Nézeteken és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A telemetria képességgel kapcsolatos megjegyzések. |
-| Description | A telemetria képesség leírása. |
+| Leírás | A telemetria képesség leírása. |
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -160,7 +160,7 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Unit (Egység) | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**. |
 | Megjelenítési egység | Nézeteken és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A tulajdonság képességével kapcsolatos megjegyzések. |
-| Description | A tulajdonság funkciójának leírása. |
+| Leírás | A tulajdonság funkciójának leírása. |
 
 ### <a name="commands"></a>Parancsok
 
@@ -174,7 +174,7 @@ A következő táblázat a parancs funkciójának konfigurációs beállításai
 | Name | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Parancs. |
 | Megjegyzés | A parancs képességével kapcsolatos megjegyzések. |
-| Description | A parancs funkciójának leírása. |
+| Leírás | A parancs funkciójának leírása. |
 | Kérés | Ha engedélyezve van, a kérelem paraméterének definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 | Reagálás | Ha engedélyezve van, a parancs válaszának definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 

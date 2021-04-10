@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
 ms.openlocfilehash: 309ef8baada22f59b1395164626dd664366cb4d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104581133"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminológia és fogalmak
@@ -38,7 +38,7 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3 fogalmak
 
-|Alapelvek|Description|Hivatkozások|
+|Alapelvek|Leírás|Hivatkozások|
 |---|---|---|
 |Eszközök és tartalom feltöltése|Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és fel kell töltenie a digitális fájlokat az **eszközökbe**.|[Felhőbe történő feltöltés és tárolás](storage-account-concept.md)<br/><br/>[Eszközök koncepciója](assets-concept.md)|
 |Tartalom kódolása|Miután feltölti a kiváló minőségű digitális médiafájlokat az eszközökbe, kódolhatja azokat formátumokba, amelyek számos böngészőben és eszközön játszhatók le. <br/><br/>Az Media Services v3 kódoláshoz **átalakításokat** és **feladatokat** kell létrehoznia.|[Átalakítások és feladatok](transforms-jobs-concept.md)<br/><br/>[Kódolás Media Services](encoding-concept.md)|

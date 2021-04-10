@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 1f8100dd6340383eadec5d10b7f23db59ba0ebdf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98786385"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
@@ -930,7 +930,7 @@ A pontozási profilok a tervezési időszakban a keresési indexben vannak megha
 
 1. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>Források
 
 További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](./index-add-scoring-profiles.md)című témakörben talál.
 

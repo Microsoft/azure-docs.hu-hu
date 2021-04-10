@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
 ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105047779"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
@@ -230,7 +230,7 @@ A Microsoft [Azure Application Gateway](../../application-gateway/overview.md) e
 
 ![Application Gateway](./media/overview/azure-security-figure-2.png)
 
-Lehetővé teszi a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezi a CPU-igényes TLS-megszakítást a Application Gateway (más néven "TLS-kiszervezés" vagy "TLS-áthidaló"). Emellett további 7. rétegbeli útválasztási lehetőségeket is biztosít, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint több webhely üzemeltetését egyetlen Application Gateway mögött. Az Azure Application Gateway egy 7. rétegbeli terheléselosztó.
+Lehetővé teszi a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezi a CPU-igényes TLS-megszakítást a Application Gateway (más néven "TLS-kiszervezés&quot; vagy &quot;TLS-áthidaló"). Emellett további 7. rétegbeli útválasztási lehetőségeket is biztosít, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint több webhely üzemeltetését egyetlen Application Gateway mögött. Az Azure Application Gateway egy 7. rétegbeli terheléselosztó.
 
 Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak.
 

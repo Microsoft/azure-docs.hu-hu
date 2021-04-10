@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
 ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382624"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Azure Stack Edge mini R biztonsági utasítások
@@ -27,14 +27,14 @@ Olvassa el az ebben a cikkben található összes biztonsági információt, mie
 
 A következő jelzési szavak a veszélyforrások riasztási jelei:
 
-| Ikon | Description |
+| Ikon | Leírás |
 |:--- |:--- |
 | ![Kockázati szimbólum](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png)| **Veszély:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. <br> **Figyelmeztetés:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. <br> **Vigyázat:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet.|
 |
 
 Az Azure Stack Edge mini R-eszköz beállításakor és futtatásakor a következő veszélyforrási ikonokat kell figyelembe venni:
 
-| Ikon | Description |
+| Ikon | Leírás |
 |:--- |:--- |
 | ![Először olvassa el az összes utasítást](./media/azure-stack-edge-mini-r-safety/icon-safety-read-all-instructions.png) | Először olvassa el az összes utasítást |
 | ![Értesítés ikonjának ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **megjegyzése:** | A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |

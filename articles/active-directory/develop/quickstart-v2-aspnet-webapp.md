@@ -13,10 +13,10 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
 ms.openlocfilehash: 87948ed04f7b50820d94993d4c4fbcf2dfd94b31
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104578685"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
@@ -174,7 +174,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `ClientId`     | Az alkalmazás azonosítója a Azure Portalban regisztrált alkalmazásban. |
 > | `Authority`    | A hitelesítéshez a felhasználóhoz tartozó biztonságijogkivonat-szolgáltatás (STS) végpontja. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőben. Ebben az URL-címben a (z) *{bérlő}* a bérlő neve, a bérlő azonosítója vagy a `common` közös végpontra mutató hivatkozás. (A közös végpont a több-bérlős alkalmazásokhoz használatos.) |

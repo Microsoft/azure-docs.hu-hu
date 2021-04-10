@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 211f58e26ec89c393bf9f91cc3a05044c6b1e802
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: e67a9b35291615b87edf918b4146ab8d77a0ae7f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221278"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065143"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Oktatóanyag: az e-kereskedelmi termékkel foglalkozó közepesen súlyos rendszerképek az Azure Content Moderator
 
@@ -58,7 +58,7 @@ Ezután hozzon létre egyéni címkéket a felülvizsgálati eszközben (lásd a
 1. Nevezze el az alkalmazás **EcommerceModeration**, majd kattintson **az OK gombra**.
 1. Ha egy meglévő megoldáshoz adja hozzá ezt a projektet, válassza ki ezt a projektet egyetlen indítási projektként.
 
-Ez az oktatóanyag kiemeli a projekt központi részét képező kódot, de nem fedi le a kód minden sorát. Másolja a _program.cs_ teljes tartalmát a minta projektből (az [e-kereskedelmi katalógus moderálása](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) az új projekt _program.cs_ -fájljába. Ezután a következő szakaszokból megismerheti, hogyan működik a projekt, és hogyan használhatja azt.
+Ez az oktatóanyag kiemeli a projekt központi részét képező kódot, de nem fedi le a kód minden sorát. Másolja a _program. cs_ fájl teljes tartalmát a minta projektből (az [e-kereskedelmi katalógus moderálása](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) az új projekt _program. cs_ fájljába. Ezután a következő szakaszokból megismerheti, hogyan működik a projekt, és hogyan használhatja azt.
 
 ## <a name="define-api-keys-and-endpoints"></a>API-kulcsok és-végpontok definiálása
 

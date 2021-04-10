@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: dbd2d6dc3034ff64ef6b5d4d36d836ce8462b154
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591395"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Az Azure-beli virtuálisgép-méretezési csoportokkal végzett automatikus skálázás áttekintése
@@ -51,7 +51,7 @@ Az autoskálázási szabályok a következő források egyikének mérőszámait
 | Metrikaforrás        | Használati eset                                                                                                                     |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------|
 | Aktuális méretezési csoport    | Olyan gazdagép-alapú metrikák esetében, amelyek nem igényelnek további ügynököket a telepítéshez vagy a konfiguráláshoz.                                  |
-| A(z)      | Az Azure diagnosztikai bővítmény a teljesítménymutatókat az Azure Storage-ba írja, amely az autoskálázási szabályok elindításához használatos. |
+| Tárfiók      | Az Azure diagnosztikai bővítmény a teljesítménymutatókat az Azure Storage-ba írja, amely az autoskálázási szabályok elindításához használatos. |
 | Service Bus-üzenetsor    | Az alkalmazás vagy más összetevők üzeneteket küldhetnek egy Azure Service Bus-várólistán a szabályok elindításához.                   |
 | Application Insights | Az alkalmazásba telepített Instrumentation-csomag, amely közvetlenül az alkalmazásból továbbítja a metrikákat.                         |
 

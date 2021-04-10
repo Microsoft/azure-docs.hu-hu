@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a24b8b18dd109f1d8ed5acaa7de55ce5a3cc1eb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 261dceb70a6059c76dbe3bd1d7636eee5d9d77bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201107"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936291"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Az Azure Digital Twins CLI használata
 
@@ -50,9 +50,13 @@ Az Azure CLI újabb verzióra való telepítésével vagy frissítésével kapcs
 
 ### <a name="get-the-extension"></a>Bővítmény beszerzése
 
-Az alábbi lépésekkel ellenőrizheti, hogy a bővítmény legújabb verziója van- `azure-iot` e telepítve. Ezeket a parancsokat a [Azure Cloud Shell](../cloud-shell/overview.md) vagy egy [helyi Azure CLI](/cli/azure/install-azure-cli)-ben futtathatja.
+Az Azure CLI automatikusan kérni fogja, hogy telepítse a bővítményt egy olyan parancs első használatára, amelyhez szükség van.
 
-[!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
+Azt is megteheti, hogy a következő paranccsal bármikor telepítheti a bővítményt (vagy frissítheti, ha kiderül, hogy már rendelkezik egy régebbi verzióval). A parancs a [Azure Cloud Shell](../cloud-shell/overview.md) vagy egy [helyi Azure CLI](/cli/azure/install-azure-cli)-ben is futtatható.
+
+```azurecli-interactive
+az extension add --upgrade -n azure-iot
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

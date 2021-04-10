@@ -7,17 +7,17 @@ ms.topic: sample
 ms.date: 07/07/2020
 ms.custom: mvc
 ms.openlocfilehash: 61ce290f8ed5e8ad919a253d426d3278233caa3f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98747290"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-minták a Azure App Servicehoz
 
 A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Script | Description |
+| Script | Leírás |
 |-|-|
 |**Alkalmazás létrehozása**||
 | [Alkalmazás létrehozása és fájlok üzembe helyezése FTP-vel](./scripts/cli-deploy-ftp.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást, és telepít egy fájlt az FTP használatával. |

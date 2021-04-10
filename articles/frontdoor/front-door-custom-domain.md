@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011523"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065044"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a Front Doorhoz
+
 Ebből az oktatóanyagból elsajátíthatja, hogyan adhat hozzá egyéni tartományt a Front Doorhoz. Ha az Azure bejárati ajtót használja az alkalmazások kézbesítéséhez, egyéni tartományra van szükség, ha szeretné, hogy a saját tartományneve megjelenjen a végfelhasználói kérelemben. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is.
 
 Miután létrehozta a bejárati ajtót, az alapértelmezett előtér-gazdagép, amely a (z) altartománya `azurefd.net` , az URL-cím tartalmazza a háttérbeli tartalomnak a háttérből alapértelmezés szerint történő kézbesítéséhez (például https: \/ /contoso-frontend.azurefd.net/activeusers.htm). A kényelmes használat érdekében az Azure Front Door lehetőséget ad arra, hogy egyéni tartományt társítson az alapértelmezett gazdagéphez. Ezzel a lehetőséggel a tartalom továbbításakor az egyéni tartomány neve lesz az URL-címben a Front Door tulajdonában lévő tartománynév helyett (például https:\//www.contoso.com/photo.png). 

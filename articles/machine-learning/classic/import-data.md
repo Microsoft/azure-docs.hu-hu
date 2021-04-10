@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
 ms.openlocfilehash: db5f3cc4b9530c4aeac40786756b36cc0ac98728
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100520374"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból
@@ -157,7 +157,7 @@ A támogatott online adatforrások az alábbi táblázatban vannak részletezve.
 ### <a name="supported-online-data-sources"></a>Támogatott online adatforrások
 A Azure Machine Learning Studio (klasszikus) **adatimportálási** modul a következő adatforrásokat támogatja:
 
-| Adatforrás | Description | Paraméterek |
+| Adatforrás | Leírás | Paraméterek |
 | --- | --- | --- |
 | Webes URL-cím HTTP-n keresztül |A vesszővel tagolt értékek (CSV), tabulátorral tagolt értékek (TSV), attribútum-kapcsolati fájlformátum (ARFF) és a SVM-formátumok támogatása a HTTP-t használó bármely webes URL-címről |<b>URL</b>: a fájl teljes nevét adja meg, beleértve a webhely URL-címét és a fájlnevet bármilyen kiterjesztéssel. <br/><br/><b>Adatformátum</b>: a támogatott adatformátumok egyikét adja meg: CSV, TSV, ARFF vagy SVM. Ha az adatsorok fejléctel rendelkeznek, az oszlopnevek hozzárendelésére szolgál. |
 | Hadoop/HDFS |Beolvassa az adatokat a Hadoop-ben lévő elosztott tárolóból. A HiveQL, egy SQL-szerű lekérdezési nyelvet használva adhatja meg a kívánt adatértékeket. A HiveQL az adatok összesítéséhez és az Adatszűrés végrehajtásához is használható, mielőtt hozzáadja az adatokat a studióhoz (klasszikus). |<b>Struktúra adatbázis-lekérdezése</b>: megadja az adatlétrehozáshoz használt kaptár-lekérdezést.<br/><br/><b>HCatalog-kiszolgáló URI-ja</b> : a fürt nevét a fürt neve *&lt; &gt; . azurehdinsight.net* formátumban adja meg.<br/><br/><b>Hadoop felhasználói fiók neve</b>: a fürt kiépítéséhez használt Hadoop-felhasználói fiók nevét adja meg.<br/><br/><b>Hadoop felhasználói fiók jelszava</b> : a fürt kiépítés során használt hitelesítő adatokat adja meg. További információ: [Hadoop-fürtök létrehozása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).<br/><br/><b>Kimeneti adatforgalom helye</b>: Megadja, hogy az adatokat egy Hadoop elosztott fájlrendszerben (HDFS) vagy az Azure-ban tárolja-e a rendszer. <br/><ul>Ha a kimeneti adatokat a HDFS tárolja, adja meg a HDFS-kiszolgáló URI azonosítóját. (Ügyeljen arra, hogy a HDInsight-fürt nevét a HTTPS://előtag nélkül használja.) <br/><br/>Ha a kimeneti adatokat az Azure-ban tárolja, meg kell adnia az Azure Storage-fiók nevét, a tárterület-hozzáférési kulcsot és a tároló nevét.</ul> |

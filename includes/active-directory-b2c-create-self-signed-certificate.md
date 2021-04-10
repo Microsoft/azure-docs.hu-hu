@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
 ms.openlocfilehash: 41d9962657aa81dbe34a52302d1b68ec655f2893
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102095289"
 ---
 Ha még nem rendelkezik tanúsítvánnyal, használhat önaláírt tanúsítványt is. Az önaláírt tanúsítvány olyan biztonsági tanúsítvány, amelyet nem a hitelesítésszolgáltató (CA) aláír, és nem biztosítja a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány biztonsági garanciáit. 

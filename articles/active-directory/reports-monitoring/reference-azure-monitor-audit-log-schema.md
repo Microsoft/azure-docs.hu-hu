@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b4d32e0b939731d64f3ef2495ab606b5dc0780e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100592278"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Az Azure AD napló sémájának értelmezése Azure Monitor (előzetes verzió)
@@ -147,7 +147,7 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját is
 
 ## <a name="field-and-property-descriptions"></a>Mező és tulajdonság leírása
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 |------------|-------------|
 | time       | A dátum és idő (UTC). |
 | operationName | A művelet neve. |
@@ -167,7 +167,7 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját is
 
 <br>
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 |---------------|-------------|
 | AuditEventCategory | A naplózási esemény típusa. Ez lehet a *felhasználók felügyelete*, az *Alkalmazások kezelése* vagy más típusú.|
 | Identitás típusa | A típus lehet *alkalmazás* vagy *felhasználó*. |

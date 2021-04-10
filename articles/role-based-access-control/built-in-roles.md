@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 03/15/2021
 ms.custom: generated
 ms.openlocfilehash: ba5340fdc12bf3141c5e3f24b6b9d178a5db600d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104602519"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
@@ -140,7 +140,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Cognitive Services QnA Maker szerkesztő](#cognitive-services-qna-maker-editor) | Egy KB-os létrehozásához, szerkesztéséhez, importálásához és exportálásához. KB-ot nem lehet közzétenni vagy törölni. | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
 > | [Cognitive Services QnA Maker olvasó](#cognitive-services-qna-maker-reader) | Elolvashatja és tesztelheti a KB-ot. | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Cognitive Services felhasználó](#cognitive-services-user) | Lehetővé teszi Cognitive Services kulcsainak olvasását és listázását. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Eszközök internetes hálózata** |  |  |
+> | **Dolgok internetes hálózata** |  |  |
 > | [Eszköz frissítésének rendszergazdája](#device-update-administrator) | Teljes hozzáférést biztosít a felügyeleti és a tartalmi műveletekhez | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [Eszköz frissítése – tartalom rendszergazdája](#device-update-content-administrator) | Teljes hozzáférést biztosít a tartalmi műveletekhez | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
 > | [Eszköz frissítési tartalom olvasója](#device-update-content-reader) | Olvasási hozzáférést biztosít a tartalmi műveletekhez, de nem teszi lehetővé a módosítások végrehajtását | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |

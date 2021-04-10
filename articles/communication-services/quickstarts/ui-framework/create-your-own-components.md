@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 093fcfd95d291d959ed49cc39a227a99f14a0383
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 798b898f6e2367e3096bcf985715fd48de3d394f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488244"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930217"
 ---
 # <a name="quickstart-create-your-own-ui-framework-component"></a>Rövid útmutató: saját FELHASZNÁLÓIFELÜLET-keretrendszer összetevő létrehozása
 
@@ -47,7 +47,7 @@ A folyamat végén egy teljes alkalmazásnak kell lennie a mappán belül `my-ap
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat a JavaScript-hez készült ügyféloldali kódtár meghívásával. Helyezze át a megadott Fez-t (privát előzetes verzió) a My-app könyvtárba.
+A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat HÍVÓ SDK-t a javascripthez. Helyezze át a megadott Fez-t (privát előzetes verzió) a My-app könyvtárba.
 
 ```console
 
@@ -71,7 +71,7 @@ npm run start
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek az Azure kommunikációs szolgáltatások felhasználói felületének függvénytárának főbb funkcióit kezelik:
+A következő osztályok és felületek az Azure kommunikációs szolgáltatások felhasználói felületi SDK főbb funkcióit kezelik:
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

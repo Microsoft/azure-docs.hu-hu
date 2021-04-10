@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed8775c6544791571746b0f3784a60ce2af0de7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97707656"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726974"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>A kapcsolat és az üzenetek kézbesítésével kapcsolatos problémák elhárítása
 
@@ -108,7 +108,7 @@ Az ügyféloldali naplózási élmény pontosan ugyanaz, mint a saját üzemelte
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Kiszolgálóoldali naplózás engedélyezése a következőhöz: `ASP.NET Core SignalR`
 
-A kiszolgálóoldali naplózási funkció `ASP.NET Core SignalR` integrálható a `ILogger` keretrendszerben megadott alapú [naplózással](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) `ASP.NET Core` . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
+A kiszolgálóoldali naplózási funkció `ASP.NET Core SignalR` integrálható a `ILogger` keretrendszerben megadott alapú [naplózással](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&preserve-view=true&view=aspnetcore-2.1) `ASP.NET Core` . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
 ms.openlocfilehash: a920abacb0df030f7d38aed11e04a693cfa352a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686592"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlueJeans for Azure AD-vel
@@ -144,13 +144,13 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-bluejeans-for-azure-ad-sso"></a>Az Azure AD SSO BlueJeans konfigurálása
+## <a name="configure-bluejeans-for-azure-ad-sso&quot;></a>Az Azure AD SSO BlueJeans konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a **BlueJeans az Azure ad** vállalati webhelyre rendszergazdaként.
 
 2. Lépjen a **felügyeleti \> csoport beállításai \> Biztonság** menüpontra.
 
-    ![A képernyőképen egy böngészőablak része jelenik meg, amelyen a rendszergazda lap van kiválasztva, és a csoport beállítása és a biztonság elem van kiválasztva.](./media/bluejeans-tutorial/ic785868.png "Rendszergazda")
+    ![A képernyőképen egy böngészőablak része jelenik meg, amelyen a rendszergazda lap van kiválasztva, és a csoport beállítása és a biztonság elem van kiválasztva.](./media/bluejeans-tutorial/ic785868.png &quot;Rendszergazda")
 
 3. A **Biztonság** szakaszban hajtsa végre a következő lépéseket:
 
