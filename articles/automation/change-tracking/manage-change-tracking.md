@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572647"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
@@ -159,7 +159,7 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcsok nyomo
 
 A változási rekordok esetében különböző kereséseket végezhet a Azure Monitor naplókon. Ha megnyitotta a Change Tracking (változások nyomon követése) lapot, kattintson **log Analytics** a naplók lap megnyitásához. A következő táblázat a változási rekordokra vonatkozó példákat tartalmaz.
 
-|Lekérdezés  |Description  |
+|Lekérdezés  |Leírás  |
 |---------|---------|
 |`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Megjeleníti az automatikusra beállított és a leállítottként jelentett Microsoft-szolgáltatások legújabb leltározási rekordjait. Az eredmények a megadott számítógépnév és számítógép legutóbbi rekordjára korlátozódnak.    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Megjeleníti a törölt szoftverek módosítási rekordjait.|

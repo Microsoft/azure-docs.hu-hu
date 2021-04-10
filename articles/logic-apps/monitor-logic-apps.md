@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100580672"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez
@@ -49,7 +49,7 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
    A lehetséges futtatási állapotok:
 
-   | Futtatás állapota | Description |
+   | Futtatás állapota | Leírás |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
@@ -121,7 +121,7 @@ Az egyes logikai alkalmazások futtatása triggerrel kezdődik. Az aktiválási 
 
    A lehetséges kiváltó kísérletek állapota:
 
-   | Triggerállapot | Description |
+   | Triggerállapot | Leírás |
    |----------------|-------------|
    | **Sikertelen** | Hiba történt. A sikertelen triggerek által generált hibaüzenetek áttekintéséhez válassza ki az aktiválási kísérletet, és válassza a **kimenetek** lehetőséget. Előfordulhat például, hogy olyan bemeneteket talál, amelyek nem érvényesek. |
    | **Kimarad** | A trigger ellenőrizte a végpontot, de nem talált olyan adathalmazt, amely megfelel a megadott feltételeknek. |

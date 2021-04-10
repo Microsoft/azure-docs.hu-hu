@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100574145"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
@@ -217,7 +217,7 @@ Az Azure AD DS biztonsági naplózása a hagyományos AD DS tartományvezérlők
 
 A következő naplózási események kategóriák érhetők el:
 
-| Naplózási kategória neve | Description |
+| Naplózási kategória neve | Leírás |
 |:---|:---|
 | Fiók bejelentkezése|A naplózási kísérletekkel egy tartományvezérlőn vagy egy helyi biztonsági fiókkezelő (SAM) fiók adatai hitelesíthetők.</p>A bejelentkezési és kijelentkezési szabályzat beállításai és eseményei nyomon követik az adott számítógép elérésére tett kísérleteket. Az ebben a kategóriában található beállítások és események a használt fiók-adatbázisra összpontosítanak. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Hitelesítő adatok érvényesítésének naplózása](/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos hitelesítési szolgáltatás naplózása](/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[A Kerberos szolgáltatás jegyműveleteinek naplózása](/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Egyéb bejelentkezési/kijelentkezési események naplózása](/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Fiókkezelés|A felhasználói és számítógépfiókok és csoportok változásainak naplózása. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Alkalmazáscsoport felügyeletének naplózása](/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Számítógépes fiókok felügyeletének naplózása](/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Terjesztési csoportok felügyeletének naplózása](/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Más fiókok felügyeletének naplózása](/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Biztonsági csoportok felügyeletének naplózása](/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Felhasználói fiókok felügyeletének naplózása](/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|

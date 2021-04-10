@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359914"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure Gyorsindítás sablonok használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálásához
@@ -27,7 +27,7 @@ ms.locfileid: "97359914"
 
 Ez a cikk azt ismerteti, hogyan használható az Azure gyorsindítási sablonok az Azure-ban SQL Server virtuális gépek (VM-EK) always on rendelkezésre állási csoportjának konfigurációjának részleges automatizálására. Ebben a folyamatban két Azure rövid útmutató-sablont használunk: 
 
-   | Sablon | Description |
+   | Sablon | Leírás |
    | --- | --- |
    | [101-SQL-VM-AG-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Létrehozza a Windows feladatátvevő fürtöt, és csatlakoztatja a SQL Server virtuális gépekhez. |
    | [101 – SQL-VM-aglistener – telepítés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Létrehozza a rendelkezésre állási csoport figyelőjét, és konfigurálja a belső Load balancert. Ez a sablon csak akkor használható, ha a Windows feladatátvevő fürt a **101-SQL-VM-AG-Setup** sablonnal lett létrehozva. |

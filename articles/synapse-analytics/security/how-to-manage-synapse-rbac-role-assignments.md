@@ -9,10 +9,10 @@ ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: bed0c00b8cb5718456302dff06e98ff2f7f2b4e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100102189"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>A szinapszis RBAC szerepkör-hozzárendeléseinek kezelése a szinapszis Studióban
@@ -65,7 +65,7 @@ Ha egy szerepkört finomabb hatókörben szeretne hozzárendelni, válassza ki a
 
 ![Munkaterület-elem szerepkör-hozzárendelésének hozzáadása – elem típusának kiválasztása](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Válassza ki a hatókörként használni kívánt adott **elemet** , majd válassza ki a legördülő listából azt a **szerepkört** , amelyet hozzá szeretne rendelni.  A legördülő lista csak azokat a szerepköröket sorolja fel, amelyek a kiválasztott elemtípus esetében érvényesek. [További információ](./synapse-workspace-synapse-rbac.md).  
+Válassza ki a hatókörként használni kívánt adott **elemet** , majd válassza ki a legördülő listából azt a **szerepkört** , amelyet hozzá szeretne rendelni.  A legördülő lista csak azokat a szerepköröket sorolja fel, amelyek a kiválasztott elemtípus esetében érvényesek. [További információk](./synapse-workspace-synapse-rbac.md).  
 
 ![Munkaterület-elem szerepkör-hozzárendelésének hozzáadása – szerepkör kiválasztása](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  

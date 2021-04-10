@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan becsülheti meg jobban a Function alkalmazás A
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578555"
 ---
 # <a name="estimating-consumption-plan-costs"></a>A fogyasztási terv költségeinek becslése
 
 A Azure Functionsban futó alkalmazások esetében jelenleg háromféle üzemeltetési csomag létezik, és mindegyik csomag saját díjszabási modellel rendelkezik: 
 
-| Felkészülés | Description |
+| Felkészülés | Leírás |
 | ---- | ----------- |
 | [**Használat**](consumption-plan.md) | Csak a Function app által futtatott idő után kell fizetnie. Ez a csomag egy [ingyenes engedélyezési][díjszabási oldalt] tartalmaz előfizetés alapján.|
 | [**Prémium**](functions-premium-plan.md) | Ugyanazokat a szolgáltatásokat és skálázási mechanizmust biztosítja, mint a használati terv, de a teljesítmény-és VNET-hozzáférés is elérhető. A díjak a választott díjszabási szinten alapulnak. További információ: [Azure functions Premium csomag](functions-premium-plan.md). |
