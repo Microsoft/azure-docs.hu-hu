@@ -4,12 +4,12 @@ description: Útmutatás az aszinkron műveletek nyomon követéséhez az Azure-
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5823bc8f6c0d5b334a638d4ad350eb2f9ef2b28
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88723452"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932743"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Aszinkron Azure-műveletek nyomon követése
 
@@ -123,7 +123,7 @@ A válasz törzse a művelet állapotát tartalmazza:
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Erőforrások üzembe helyezése (201 Azure-AsyncOperation)
 
-Ebből a példából megtudhatja, hogyan határozhatja meg a [központi telepítések](/rest/api/resources/deployments/createorupdate) állapotát az erőforrások Azure-ba történő telepítéséhez. A kezdeti kérelem formátuma a következő:
+Ebből a példából megtudhatja, hogyan határozhatja meg a [központi telepítések](/rest/api/resources/resources/deployments/createorupdate) állapotát az erőforrások Azure-ba történő telepítéséhez. A kezdeti kérelem formátuma a következő:
 
 ```HTTP
 PUT

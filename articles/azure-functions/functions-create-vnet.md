@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható eg
 ms.topic: article
 ms.date: 2/22/2021
 ms.openlocfilehash: e8ca853908b366b99e150f04ced404f42acc7d21
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105027414"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Oktatóanyag: Azure Functions integrálása Azure-beli virtuális hálózattal privát végpontok használatával
@@ -87,7 +87,7 @@ A virtuális hálózatoknak olyan Storage-fiókra van szükségük, amely elkül
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | A Function alkalmazással létrehozott erőforráscsoport. |
     | **Név** | mysecurestorage| Annak a Storage-fióknak a neve, amelyre a magánhálózati végpont vonatkozik. |
-    | **[Régió](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, amelyben létrehozta a Function alkalmazást. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, amelyben létrehozta a Function alkalmazást. |
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejeződése után válassza a **Létrehozás** lehetőséget.
 
@@ -104,7 +104,7 @@ A virtuális hálózatoknak olyan Storage-fiókra van szükségük, amely elkül
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. |
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | A Function alkalmazással létrehozott erőforráscsoport. |
     | **Név** | myServiceBus| Annak a szolgáltatás-busznak a neve, amelyre a magánhálózati végpont vonatkozik. |
-    | **[Régió](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, amelyben létrehozta a Function alkalmazást. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, amelyben létrehozta a Function alkalmazást. |
     | **Tarifacsomag** | Prémium | Válassza ezt a szintet, ha Azure Service Buskal rendelkező privát végpontokat szeretne használni. |
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejeződése után válassza a **Létrehozás** lehetőséget.
@@ -130,7 +130,7 @@ Hozza létre azt a virtuális hálózatot, amelyhez a Function app integrálva v
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | A Function alkalmazással létrehozott erőforráscsoport. |
     | **Név** | myVirtualNet| Annak a virtuális hálózatnak a neve, amelyhez a Function alkalmazás csatlakozni fog. |
-    | **[Régió](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, amelyben létrehozta a Function alkalmazást. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, amelyben létrehozta a Function alkalmazást. |
 
 1. Az **IP-címek** lapon válassza az **alhálózat hozzáadása** elemet. Az alhálózati beállítások konfigurálásához használja a következő táblázatot.
 
@@ -162,7 +162,7 @@ Hozza létre a Azure Files Storage és az Azure Blob Storage magánhálózati v�
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. | |
     | **Név** | fájl – végpont | A Storage-fiókból származó fájlokhoz tartozó magánhálózati végpont neve. |
-    | **[Régió](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, ahol létrehozta a Storage-fiókot. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, ahol létrehozta a Storage-fiókot. |
 
 1. Az **erőforrás** lapon használja az alábbi táblázatban látható titkos végpontok beállításait.
 
@@ -203,7 +203,7 @@ Hozza létre a privát végpontot a Service Bus zárolásához:
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | A Function alkalmazással létrehozott erőforráscsoport. |
     | **Név** | SB – végpont | A Storage-fiókból származó fájlokhoz tartozó magánhálózati végpont neve. |
-    | **[Régió](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, ahol létrehozta a Storage-fiókot. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Az a régió, ahol létrehozta a Storage-fiókot. |
 
 1. Az **erőforrás** lapon használja az alábbi táblázatban látható titkos végpontok beállításait.
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan férhet hozzá a biztonsági riasztásokhoz és
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 160f7c014c890f5d8c4dd6366d3acca70f21ad11
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781687"
 ---
 # <a name="access-your-security-data"></a>Hozzáférés a biztonsági adataihoz

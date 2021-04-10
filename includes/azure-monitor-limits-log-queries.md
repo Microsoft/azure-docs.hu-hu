@@ -9,15 +9,15 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: 5f2b77c7d8e1a2da9517183043231b717b6cceab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101734083"
 ---
 ### <a name="general-query-limits"></a>Általános lekérdezési korlátok
 
-| Korlát | Description |
+| Korlát | Leírás |
 |:---|:---|
 | Lekérdezés nyelve | Azure Monitor ugyanazt a [Kusto-lekérdezési nyelvet](/azure/kusto/query/) használja, mint az Azure adatkezelő. Lásd: [Azure monitor a naplózási lekérdezés nyelvi eltérései](/azure/data-explorer/kusto/query/) a KQL nyelvi elemeihez Azure monitor nem támogatottak. |
 | Azure-régiók | A naplók lekérdezése túlzott terhelést jelenthet, ha az adatLog Analytics több Azure-régióban lévő munkaterületek is átnyúlnak. Részletekért lásd a [lekérdezési korlátokat](../articles/azure-monitor/logs/scope.md#query-scope-limits) . |
@@ -27,7 +27,7 @@ ms.locfileid: "101734083"
 Azure Monitor több szabályozási korláttal rendelkezik a túlzott számú lekérdezést küldő felhasználók elleni védelemhez. Az ilyen viselkedés potenciálisan túlterhelheti a rendszerháttér-erőforrásokat, és veszélyeztetheti a szolgáltatás érzékenységét. A következő korlátok úgy vannak kialakítva, hogy az ügyfelek számára biztosítható legyen a megszakítások és a konzisztens szolgáltatási szint. A felhasználói szabályozás és a korlátok kizárólag a szélsőséges használati forgatókönyvek hatására vannak kialakítva, és nem feltétlenül relevánsak a szokásos használathoz.
 
 
-| Measure | Felhasználónként korlátozva | Description |
+| Measure | Felhasználónként korlátozva | Leírás |
 |:---|:---|:---|
 | Egyidejű lekérdezések | 5 | Ha a felhasználó számára már 5 lekérdezés fut, minden új lekérdezés egy felhasználónkénti egyidejűségi sorba kerül. Ha az egyik futó lekérdezés véget ér, a rendszer a következő lekérdezést fogja lekérni a várólistából, és elindítja azt. Ez nem tartalmazza a riasztási szabályok lekérdezéseit.
 | A párhuzamossági várólistán lévő idő | 3 perc | Ha egy lekérdezés több mint 3 percen belül a várólistán található, az elindítása nélkül, akkor a 429-as kóddal rendelkező HTTP-hiba miatt leáll. |

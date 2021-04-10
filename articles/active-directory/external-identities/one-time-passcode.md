@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688467"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Egyszeri jelszavas hitelesítés e-mailben
@@ -66,13 +66,13 @@ Megtekintheti, hogy a vendég felhasználó egyszer használatos jelszót haszn�
 > [!NOTE]
 > Amikor egy felhasználó egyszeri jelszót vált ki, és később beolvas egy MSA, egy Azure AD-fiókot vagy más összevont fiókot, a rendszer továbbra is egyszer használatba veszi a hitelesítő kódot. Ha frissíteni szeretné a hitelesítési módszert, törölheti a vendég felhasználói fiókját, és újból meghívhatja őket.
 
-### <a name="example"></a>Példa
+### <a name="example&quot;></a>Példa
 
 A vendég felhasználó teri@gmail.com meghívja a fabrikam-t, amely nem rendelkezik a Google Federation beállítással. Teri nem rendelkezik Microsoft-fiók. Egy egyszeri jelszót kapnak a hitelesítéshez.
 
-## <a name="disable-email-one-time-passcode"></a>E-mail egyszeri jelszó letiltása
+## <a name=&quot;disable-email-one-time-passcode&quot;></a>E-mail egyszeri jelszó letiltása
 
-Október 2021-én az e-mailes egyszeri jelszó funkció be lesz kapcsolva az összes meglévő bérlőhöz, és alapértelmezés szerint engedélyezve van az új bérlők számára. Ekkor a Microsoft többé nem támogatja a meghívások beváltását úgy, hogy nem felügyelt ("vírus" vagy "igény szerinti") Azure AD-fiókokat és bérlőket hoz létre VÁLLALATKÖZI együttműködési forgatókönyvek létrehozásához. Engedélyezjük az e-mailek egyszeri jelszavas szolgáltatását, mivel zökkenőmentes tartalék hitelesítési módszert biztosít a vendég felhasználói számára. Azonban lehetősége van letiltani ezt a funkciót, ha úgy dönt, hogy nem használja.
+Október 2021-én az e-mailes egyszeri jelszó funkció be lesz kapcsolva az összes meglévő bérlőhöz, és alapértelmezés szerint engedélyezve van az új bérlők számára. Ekkor a Microsoft többé nem támogatja a meghívások beváltását úgy, hogy nem felügyelt (&quot;vírus&quot; vagy &quot;igény szerinti") Azure AD-fiókokat és bérlőket hoz létre VÁLLALATKÖZI együttműködési forgatókönyvek létrehozásához. Engedélyezjük az e-mailek egyszeri jelszavas szolgáltatását, mivel zökkenőmentes tartalék hitelesítési módszert biztosít a vendég felhasználói számára. Azonban lehetősége van letiltani ezt a funkciót, ha úgy dönt, hogy nem használja.
 
 > [!NOTE]
 >

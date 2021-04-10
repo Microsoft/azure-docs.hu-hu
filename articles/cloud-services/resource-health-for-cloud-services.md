@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98743508"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Az Azure Cloud Services (klasszikus) Resource Health-ellenőrzési (RHC) támogatása
@@ -50,7 +50,7 @@ Ismeretlen érték azt jelenti, hogy a felhőalapú szolgáltatás központi tel
 Mivel a szerepkör-példányok alapvetően virtuális gépek, és a virtuális gépek állapot-ellenőrzését a szerepkör-példányok esetében újra felhasználják, a virtuálisgép-kifejezés a szerepkör-példányok ábrázolására szolgál. 
 
 ## <a name="cloud-services-deployment-level-annotations--their-meanings"></a>Cloud Services (telepítési szint) megjegyzések & a jelentésük
-| Jegyzet | Description | 
+| Jegyzet | Leírás | 
 | --- | --- | 
 | Elérhető| Nincs olyan ismert probléma az Azure platformon, amely hatással van erre a Cloud Service-telepítésre |
 | Ismeretlen | Jelenleg nem lehet megállapítani a felhőalapú szolgáltatás központi telepítésének állapotát | 
@@ -63,7 +63,7 @@ Mivel a szerepkör-példányok alapvetően virtuális gépek, és a virtuális g
 | Ismeretlen és valószínűleg érintett | Jelenleg nem tudjuk meghatározni a felhőalapú szolgáltatás központi telepítésének állapotát. Ezt egy olyan folyamatban lévő Azure-szolgáltatás meghibásodása okozhatja, amely hatással lehet erre a virtuális gépre, amely a leállás feloldása után automatikusan helyreáll. |
 
 ## <a name="cloud-services-role-instance-level-annotations--their-meanings"></a>Cloud Services (szerepkör-példány szintje) megjegyzések & a jelentésük
-| Jegyzet | Description | 
+| Jegyzet | Leírás | 
 | --- | --- | 
 | Elérhető | Nincs olyan ismert probléma az Azure platformon, amely hatással van erre a virtuális gépre | 
 | Ismeretlen | Jelenleg nem lehet megállapítani a virtuális gép állapotát |

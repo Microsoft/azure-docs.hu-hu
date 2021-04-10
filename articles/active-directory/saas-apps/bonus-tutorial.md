@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Oktatóanyag: Azure Active Directory integráció a Bonus-nal
@@ -124,13 +124,13 @@ Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához hajtsa 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-bonusly-single-sign-on"></a>Bónusz egyszeri Sign-On konfigurálása
+### <a name="configure-bonusly-single-sign-on&quot;></a>Bónusz egyszeri Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a **bónusz** bérlőbe.
 
 1. A felső eszköztáron kattintson a **Beállítások** , majd az **integrációk és alkalmazások** elemre.
 
-    ![Rendkívüli közösségi szakasz](./media/bonus-tutorial/ic773686.png "Bonusly")
+    ![Rendkívüli közösségi szakasz](./media/bonus-tutorial/ic773686.png &quot;Bonusly")
 1. Az **egyszeri bejelentkezés** területen válassza az **SAML** lehetőséget.
 
 1. Az **SAML** párbeszédpanelen hajtsa végre a következő lépéseket:
@@ -197,7 +197,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-bonusly-test-user"></a>Prémium tesztelési felhasználó létrehozása
+### <a name="create-bonusly-test-user&quot;></a>Prémium tesztelési felhasználó létrehozása
 
 Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a Bónuszokba, akkor azt bónuszban kell kiépíteni. Bónusz esetén a kiépítés manuális feladat.
 
@@ -210,7 +210,7 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a B
 
 1. Kattintson a **Beállítások** elemre.
 
-    ![Beállítások](./media/bonus-tutorial/ic781041.png "Beállítások")
+    ![Beállítások](./media/bonus-tutorial/ic781041.png &quot;Beállítások")
 
 1. Kattintson a **felhasználók és bónuszok** fülre.
 

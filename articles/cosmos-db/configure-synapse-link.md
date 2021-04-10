@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db
-ms.openlocfilehash: 60b720f3f5d91570e32ecf3d03aa7065f93990c5
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 24886ff3e01e9d9b4c01eabc917ced433599c0fa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868205"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727127"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Az Azure Cosmos DB-hez készült Azure Synapse Link konfigurálása és használata
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -56,13 +56,13 @@ Az Azure szinapszis hivatkozás Azure Cosmos DB SQL API-tárolók vagy a Mongo D
 
 Az alábbi hivatkozások azt mutatják be, hogyan engedélyezhető a szinapszis-hivatkozás az Azure CLI használatával:
 
-* [Új Azure Cosmos DB-fiók létrehozása a szinapszis-hivatkozással](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create-optional-parameters&preserve-view=true)
-* [Meglévő Azure Cosmos DB fiók frissítése a szinapszis-hivatkozás engedélyezéséhez](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_update-optional-parameters&preserve-view=true)
+* [Új Azure Cosmos DB-fiók létrehozása a szinapszis-hivatkozással](/cli/azure/cosmosdb#az_cosmosdb_create-optional-parameters)
+* [Meglévő Azure Cosmos DB fiók frissítése a szinapszis-hivatkozás engedélyezéséhez](/cli/azure/cosmosdb#az_cosmosdb_update-optional-parameters)
 
 ### <a name="powershell"></a>PowerShell
 
-* [Új Azure Cosmos DB-fiók létrehozása a szinapszis-hivatkozással](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount?view=azps-5.5.0#description&preserve-view=true)
-* [Meglévő Azure Cosmos DB fiók frissítése a szinapszis-hivatkozás engedélyezéséhez](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccount?view=azps-5.5.0&preserve-view=true)
+* [Új Azure Cosmos DB-fiók létrehozása a szinapszis-hivatkozással](/powershell/module/az.cosmosdb/new-azcosmosdbaccount#description)
+* [Meglévő Azure Cosmos DB fiók frissítése a szinapszis-hivatkozás engedélyezéséhez](/powershell/module/az.cosmosdb/update-azcosmosdbaccount)
 
 
 A következő hivatkozások azt mutatják be, hogyan engedélyezhető a szinapszis-hivatkozás a PowerShell használatával:
@@ -179,15 +179,15 @@ except exceptions.CosmosResourceExistsError:
 
 Az alábbi hivatkozások bemutatják, hogyan hozhat létre egy analitikus tárolót használó tárolót az Azure CLI használatával:
 
-* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_create-examples&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+* [Azure Cosmos DB API a Mongo DB-hez](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_create-examples)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
 
 ### <a name="powershell"></a>PowerShell
 
 Az alábbi hivatkozások bemutatják, hogyan hozhat létre egy analitikus tárolót engedélyező tárolókat a PowerShell használatával:
 
-* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection?view=azps-5.5.0#description&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+* [Azure Cosmos DB API a Mongo DB-hez](/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection#description)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
 
 
 ## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Nem kötelező – az analitikai tár élettartamának frissítése
@@ -245,15 +245,15 @@ Ez jelenleg nem támogatott.
 
 A következő hivatkozások bemutatják, hogyan frissítheti a tárolók analitikai ÉLETTARTAMát az Azure CLI használatával:
 
-* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_update&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true)
+* [Azure Cosmos DB API a Mongo DB-hez](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_update)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_update)
 
 ### <a name="powershell"></a>PowerShell
 
 A következő hivatkozások bemutatják, hogyan frissítheti a tárolók analitikai ÉLETTARTAMát a PowerShell használatával:
 
-* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection?view=azps-5.5.0&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer?view=azps-5.5.0&preserve-view=true)
+* [Azure Cosmos DB API a Mongo DB-hez](/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection)
+* [Azure Cosmos DB SQL API](/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer)
 
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Kapcsolódás egy szinapszis-munkaterülethez
