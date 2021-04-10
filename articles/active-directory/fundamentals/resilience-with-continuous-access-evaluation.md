@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d792c1eb0a85f2a898d1dc5c63047a4553f13b0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724627"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106772"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>Rugalmasság kiépítése a folyamatos hozzáférés kiértékelésének használatával
 
@@ -47,6 +47,8 @@ A CAE használatához a szolgáltatásnak és az ügyfélnek is a CAE-kompatibil
 A Microsoft együttműködik az iparággal olyan [szabványok kidolgozásában](https://openid.net/wg/sse/) , amelyek lehetővé teszik a harmadik féltől származó alkalmazások számára a funkció használatát. A CAE-kompatibilis alkalmazásokat is fejlesztheti. További információért lásd: rugalmasság létrehozása az alkalmazásban.
 
 ## <a name="how-do-i-implement-cae"></a>Hogyan a CAE implementálása?
+
+* [Frissítse a kódot a CAE-kompatibilis API-k használatához](../develop/app-resilience-continuous-access-evaluation.md).
 
 * [Engedélyezze a CAE](../conditional-access/concept-continuous-access-evaluation.md) -t az Azure ad biztonsági konfigurációjában.
 

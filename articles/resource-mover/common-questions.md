@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: raynew
 ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102564271"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
@@ -110,7 +110,7 @@ Szükség szerint módosítsa a forrás-és a cél kombinációt a portálon a m
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Mi történik, ha eltávolítok egy erőforrást az áthelyezési erőforrások listájából?
 
-Eltávolíthatja az áthelyezési listához hozzáadott erőforrásokat. A pontos eltávolítási viselkedés az erőforrás állapotától függ. [További információ](remove-move-resources.md#vm-resource-state-after-removing).
+Eltávolíthatja az áthelyezési listához hozzáadott erőforrásokat. A pontos eltávolítási viselkedés az erőforrás állapotától függ. [További információk](remove-move-resources.md#vm-resource-state-after-removing).
 
 
 

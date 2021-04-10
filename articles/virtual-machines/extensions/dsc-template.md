@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/09/2021
 ms.author: magoedte
 ms.openlocfilehash: 6d22e93fe8bd36e24520108bc310d5b08c25120c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102560021"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>A kívánt állapot konfigurációs bővítménye Azure Resource Manager-sablonokkal
@@ -178,7 +178,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 
 ## <a name="details"></a>Részletek
 
-| Tulajdonság neve | Típus | Description |
+| Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
 | Settings. wmfVersion |sztring |A Windows Management Framework (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a **legújabbra** állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke **4,0**, **5,0**, **5,1** és **Latest**. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**. |
 | settings.configszülő. URL |sztring |Azt az URL-címet adja meg, amelyből le szeretné tölteni a DSC Configuration. zip fájlt. Ha a megadott URL-címnek szüksége van egy SAS-tokenre a hozzáféréshez, állítsa a **protectedSettings.configurationUrlSasToken** tulajdonságot az SAS-token értékére. Ez a tulajdonság akkor szükséges, ha **settings.configszülő. script** vagy **settings.configszülő. Function** van definiálva. Ha nem adott meg értéket ezekhez a tulajdonságokhoz, a bővítmény meghívja az alapértelmezett konfigurációs parancsfájlt a Location Configuration Manager (LCD) metaadatainak beállításához, és meg kell adni az argumentumokat. |
@@ -197,7 +197,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 A következő értékekkel kapcsolatos további információkért lásd: [helyi Configuration Manager alapszintű beállítások](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 A DSC-bővítmény alapértelmezett konfigurációs parancsfájlja csak az alábbi táblázatban felsorolt LCD-tulajdonságok konfigurálására használható.
 
-| Tulajdonság neve | Típus | Description |
+| Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Kötelező tulajdonság. Meghatározza azt a kulcsot, amelyet egy csomóponthoz használ a Azure Automation szolgáltatásban egy PowerShell hitelesítőadat-objektum jelszavaként való regisztráláshoz. Ez az érték automatikusan felderíthető az Automation-fiók **listkeys műveletének beolvasása** metódusának használatával.  Lásd a [példát](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |sztring |Kötelező tulajdonság. Megadja annak az Automation-végpontnak az URL-címét, amelyben a csomópont megpróbál regisztrálni. Ez az érték automatikusan felderíthető az Automation-fiókra vonatkozó **hivatkozási** módszer használatával. |

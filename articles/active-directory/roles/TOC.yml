@@ -22,6 +22,8 @@
       href: groups-concept.md
     - name: Felügyeleti egységek
       href: administrative-units.md
+    - name: Ajánlott eljárások
+      href: best-practices.md
     - name: Biztonság
       items:
         - name: Szerepkör biztonsági tervezése

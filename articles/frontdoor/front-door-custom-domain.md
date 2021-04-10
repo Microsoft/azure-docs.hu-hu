@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e1540602bae0779d69c0cb4bb59e93b810b52904
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065044"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550761"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a Front Doorhoz
 
@@ -70,7 +70,7 @@ CNAME rekord létrehozása az afdverify altartománnyal:
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
-    - Forrás: adja meg az egyéni tartománynevet, beleértve a afdverify altartományt is, a következő formátumban: afdverify. _&lt; Egyéni tartománynév &gt;_. Például: afdverify.www.contoso.com.
+    - Forrás: adja meg az egyéni tartománynevet, beleértve a afdverify altartományt is, a következő formátumban: afdverify. _&lt; Egyéni tartománynév &gt;_. Például: afdverify.www.contoso.com. Ha helyettesítő karaktert (például \* . contoso.com) rendel, a forrás értéke ugyanaz, mint a helyettesítő karakter: afdverify.contoso.com.
 
     - Típus: Írja be a *CNAME* szöveget.
 

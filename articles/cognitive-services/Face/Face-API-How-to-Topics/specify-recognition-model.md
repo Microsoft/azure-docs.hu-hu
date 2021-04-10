@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433556"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936580"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
 
@@ -87,7 +87,7 @@ Nincs változás a [Face-IDENTIFY API-] ban; az észleléshez csak a modell verz
 
 ## <a name="find-similar-faces-with-specified-model"></a>Hasonló arcok keresése a megadott modellel
 
-A hasonlósági kereséshez is megadhat egy felismerési modellt. A modell verzióját hozzárendelheti a `recognitionModel` [FaceList API-] val vagy a [LargeFaceList]létrehozásához használt Arcfelismerés létrehozásához. Ha nem megadja ezt a paramétert, a `recognition_01` rendszer alapértelmezés szerint a modellt használja. Az Arcfelismerés mindig a szolgáltatással létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadja őket a listához. Ez a létrehozás után nem módosítható. Ha szeretné megtekinteni, hogy milyen modellel van konfigurálva az Arcfelismerés, használja a [FaceList-Get API-] t a _returnRecognitionModel_ paraméter **true** értékkel való beállításával.
+A hasonlósági kereséshez is megadhat egy felismerési modellt. A modell verzióját hozzárendelheti a `recognitionModel` **FaceList** létrehozásához a [FaceList-Create] API-val vagy a [LargeFaceList-Create]használatával. Ha nem megadja ezt a paramétert, a `recognition_01` rendszer alapértelmezés szerint a modellt használja. A **FaceList** mindig a által létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadja őket a listához. Ez a létrehozás után nem módosítható. Ha szeretné megtekinteni, hogy a **FaceList** melyik modellre van konfigurálva, használja a [FaceList-Get API-] t a _returnRecognitionModel_ paraméter **true** értékre állításával.
 
 Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
@@ -95,7 +95,7 @@ Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Ez a kód egy nevű arc listát hoz létre `My face collection` a _recognition_04_ modell használatával a szolgáltatások kinyeréséhez. Ha egy új észlelt arc fölé keres hasonló arcokat, az adott arcot a _recognition_04_ modell használatával kell észlelni ([Arcfelismerés]). Az előző szakaszban leírtaknak megfelelően a modellnek konzisztensnek kell lennie.
+Ez a kód egy nevű **FaceList** hoz létre `My face collection` , amely a _recognition_04_ modellt használja a szolgáltatások kinyeréséhez. Ha a **FaceList** hasonló arcokra keres egy új észlelt arcot, a rendszer a _recognition_04_ modellt használva észlelni kell az arcot ([Arcfelismerés]). Az előző szakaszban leírtaknak megfelelően a modellnek konzisztensnek kell lennie.
 
 Az [arc-Find hasonló API-] ban nincs változás. az észleléshez csak a modell verzióját kell megadnia.
 

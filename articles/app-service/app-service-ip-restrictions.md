@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 420dade645d1a4ee32bb888aecb76b033d5756e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889908"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731299"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Hozzáférési korlátozások beállítása Azure App Service
 
@@ -178,7 +178,7 @@ Az alkalmazáshoz való hozzáférés szabályozása mellett korlátozhatja az a
 ### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Egy adott Azure-beli előtérben lévő példány hozzáférésének korlátozása
 Az Azure bejárati ajtóról az alkalmazásba érkező forgalom a AzureFrontDoor. backend szolgáltatás címkéjében meghatározott IP-címtartományok ismert készletével származik. A szolgáltatási címke korlátozási szabályának használatával korlátozhatja a forgalmat, hogy csak az Azure bejárati ajtóból származzon. Annak biztosítása érdekében, hogy a forgalom csak az adott példányból származzon, további szűrést kell végeznie a beérkező kéréseket az Azure-beli bejárati ajtó által küldött egyedi HTTP-fejléc alapján.
 
-:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Képernyőkép a Azure Portal &quot;hozzáférési korlátozások&quot; oldaláról, amely bemutatja, hogyan adható hozzá az Azure-beli elülső ajtó korlátozása.":::
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png?v2" alt-text="Képernyőkép a Azure Portal &quot;hozzáférési korlátozások&quot; oldaláról, amely bemutatja, hogyan adható hozzá az Azure-beli elülső ajtó korlátozása.":::
 
 PowerShell-példa:
 

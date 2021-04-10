@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f41034331ed21e194fc2b86c2902c5957333313
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121949"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010598"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -22,11 +22,48 @@ Ez a cikk a közelmúltban kiadott vagy továbbfejlesztett Azure arc-kompatibili
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>Március 2021
+
+A márciusi 2021 kiadás a 2021. április 6-án lett bevezetve.
+
+Tekintse át a jelen kiadás korlátozásait az [ismert problémákkal – Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)](known-issues.md).
+
+Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.2. Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
+
+### <a name="data-controller"></a>Adatkezelő
+
+- Az Azure arc-kompatibilis adatkezelési adatkezelő üzembe helyezése közvetlen csatlakozási módban a portálról. Indítás az [adatvezérlő üzembe helyezése – közvetlen csatlakozási mód – előfeltételek](deploy-data-controller-direct-mode-prerequisites.md).
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure arc engedélyezve PostgreSQL nagy kapacitású
+
+A PostgreSQL-hez készült egyéni erőforrás-definíciók (CRD) egyetlen CRD-ben lettek összevonva. Lásd az alábbi táblázatot.
+
+|Kiadás |CRD |
+|-----|-----|
+|Február 2021 és korábbi verziók| postgresql-11s.arcdata.microsoft.com<br/>postgresql-12s.arcdata.microsoft.com |
+|Március 2021-én kezdődően | postgresqls.arcdata.microsoft.com
+
+Az előző CRDs a korábbi telepítések törlése után törölheti. Lásd: [a korábbi telepítések tisztítása](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations).
+
+### <a name="azure-arc-enabled-managed-instance"></a>Azure arc-kompatibilis felügyelt példány
+
+- Mostantól 3 replikával állíthatja vissza az adatbázist a felügyelt SQL-példányra, és a rendszer automatikusan hozzáadja a rendelkezésre állási csoporthoz. 
+
+- Most már csatlakozhat egy másodlagos írásvédett végponthoz a 3 replikával üzembe helyezett SQL felügyelt példányokon. `azdata arc sql endpoint list`A paranccsal megtekintheti a másodlagos írásvédett kapcsolódási végpontot.
+
+### <a name="known-issues"></a>Ismert problémák
+
+- Közvetlen kapcsolódási módban a használat, a metrikák és a naplók feltöltése `azdata arc dc upload` jelenleg le van tiltva. A rendszer automatikusan feltölti a használatot. A közvetetten csatlakoztatott módban létrehozott adatkezelőhöz való feltöltésnek továbbra is működnie kell.
+- Az adatvezérlő közvetlen módban történő üzembe helyezése csak a Azure Portalból végezhető el, és nem érhető el az ügyféleszközök, például a azdata, a Azure Data Studio vagy a kubectl használatával.
+- Az Azure arc-kompatibilis SQL felügyelt példány közvetlen módban történő üzembe helyezése csak a Azure Portalból végezhető el, és nem érhető el olyan eszközökről, mint a azdata, az Azure Data Studio vagy a kubectl.
+- Az Azure arc-kompatibilis PostgeSQL-nagy kapacitású közvetlen módban történő üzembe helyezése jelenleg nem érhető el.
+- A használati adatoknak a közvetlen kapcsolati módban való automatikus feltöltése nem fog sikerülni, ha a proxyt a segítségével használja `–proxy-cert <path-t-cert-file>` .
+
 ## <a name="february-2021"></a>2021. február
 
 ### <a name="new-capabilities-and-features"></a>Új képességek és funkciók
 
-Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.1. Töltse le a következő címen: [https://aka.ms/azdata](https://aka.ms/azdata) . Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
+Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.1. Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
 
 A további frissítések a következők:
 
@@ -44,7 +81,7 @@ A kiadással kapcsolatos problémák esetén lásd: [ismert problémák – Azur
 
 ### <a name="new-capabilities-and-features"></a>Új képességek és funkciók
 
-Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.0. Töltse le a következő címen: [https://aka.ms/azdata](https://aka.ms/azdata) . Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
+Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.0. Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
 
 A további frissítések a következők:
 - A honosított portál 17 új nyelven érhető el
@@ -70,7 +107,7 @@ A további frissítések a következők:
 
 ### <a name="new-capabilities--features"></a>Új képességek & funkciók
 
-Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.2.5. Töltse le a következő címen: [https://aka.ms/azdata](https://aka.ms/azdata) .
+Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.2.5. Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
 
 Megtekintheti az SQL felügyelt példányhoz tartozó végpontokat és a PostgreSQL-nagy kapacitású az Azure-beli adatcli ( `azdata` ) `azdata arc sql endpoint list` és `azdata arc postgres endpoint list` parancsokkal.
 
@@ -127,16 +164,9 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Törölje az egyes zónák jelölőnégyzeteit a none érték megadásához.":::
 
-#### <a name="postgresql"></a>PostgreSQL
-
-- Az Azure arc-kompatibilis PostgreSQL-nagy kapacitású pontatlan hibaüzenetet ad vissza, ha nem tudja visszaállítani a megadott relatív időpontot. Ha például olyan időpontot adott meg a visszaállításhoz, amely régebbi, mint a biztonsági másolatok tartalma, akkor a visszaállítás a következő hibaüzenettel meghiúsul: hiba: (404). Ok: nem található. HTTP-válasz törzse: {"code": 404, "internalStatus": "NOT_FOUND", "OK": "nem sikerült visszaállítani a (z) kiszolgáló biztonsági mentését...}
-Ha ez bekövetkezik, indítsa újra a parancsot egy olyan időpontot jelző időtartományon belül, amelynek a biztonsági másolatait tartalmazza. Ezt a tartományt a biztonsági mentések listázásával és a készítésük dátumát megtekintve fogja meghatározni.
-- Az időpontra történő visszaállítás csak a kiszolgálócsoportok között támogatott. Egy időpontra vonatkozó visszaállítási műveletben szereplő célkiszolgáló nem lehet az a kiszolgáló, amelyről a biztonsági mentést elvégezte. A kiszolgálónak más csoportnak kell lennie. A teljes visszaállítás azonban ugyanazon kiszolgálócsoport esetében támogatott.
-- A teljes visszaállításhoz szükség van egy biztonsági mentési azonosítóra. Alapértelmezés szerint, ha nem jelez biztonsági mentési azonosítót, a rendszer a legújabb biztonsági mentést fogja használni. Ez a kiadás nem működik.
-
 ## <a name="october-2020"></a>2020. október 
 
-Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.2.3. Töltse le a következő címen: [https://aka.ms/azdata](https://aka.ms/azdata) .
+Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.2.3. Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
 
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
 

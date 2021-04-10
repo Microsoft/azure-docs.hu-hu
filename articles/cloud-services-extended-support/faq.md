@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 33bafac9247f007978fef568469d643f1a1098df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107516"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383586"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Az Azure Cloud Services (kiterjesztett támogatás) szolgáltatással kapcsolatos gyakori kérdések
 Ez a cikk az Azure Cloud Servicesokkal kapcsolatos gyakori kérdéseket ismerteti (kiterjesztett támogatás).
@@ -57,6 +57,9 @@ Cloud Services (bővített támogatás) a központi telepítés csak a leállít
 
 ### <a name="do-cloud-services-extended-support-deployments-support-scaling-across-clusters-availability-zones-and-regions"></a>A Cloud Services (kiterjesztett támogatás) központi telepítések támogatják a fürtök, a rendelkezésre állási zónák és a régiók méretezését?
 Cloud Services (kiterjesztett támogatás) központi telepítések nem méretezhetők több fürt, rendelkezésre állási zóna és régió között. 
+
+### <a name="how-can-i-get-the-deployment-id-for-my-cloud-service-extended-support"></a>Hogyan szerezhetem be a Cloud Service üzembe helyezési AZONOSÍTÓját (kiterjesztett támogatás)
+A központi telepítési azonosító privát azonosítója a [CloudServiceInstanceView](https://docs.microsoft.com/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) API használatával érhető el. A Azure Portal a Cloud Service szerepkör és példányok paneljén is elérhető (bővített támogatás)
 
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Van-e díjszabási különbség a Cloud Services (klasszikus) és a Cloud Services (bővített támogatás) között?
 Cloud Services (kiterjesztett támogatás) Azure Key Vault és alapszintű (ARM) nyilvános IP-címeket használ.A tanúsítványokat igénylő ügyfeleknek Azure Key Vault kell használniuk a Tanúsítványkezelők[számára (További információ a](https://azure.microsoft.com/pricing/details/key-vault/) Azure Key Vault díjszabásáról.)   A Cloud Services (kiterjesztett támogatás) minden nyilvános IP-címét külön számítjuk[fel (További információ a](https://azure.microsoft.com/pricing/details/ip-addresses/) nyilvános IP-címek díjszabásáról.) 

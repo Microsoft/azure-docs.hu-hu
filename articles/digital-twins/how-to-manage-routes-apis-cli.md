@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779970"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936308"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -158,7 +158,7 @@ Miután beállította a végpontot a kézbesítetlen üzenetek beállításával
 
 A kézbesítetlen üzenetek megegyeznek az eredeti végpontnak kézbesíteni kívánt eredeti esemény sémájával.
 
-Itt látható egy példa a [kettős létrehozási értesítésre](how-to-interpret-event-data.md#digital-twin-life-cycle-notifications):
+Itt látható egy példa a [kettős létrehozási értesítésre](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications):
 
 ```json
 {
@@ -234,12 +234,14 @@ További információ a parancssori felület használatáról és a rendelkezés
 Szűrés nélkül a végpontok számos eseményt kapnak az Azure Digital ikrektől:
 * Az Azure Digital Twins szolgáltatás API-ját használó [digitális Twins](concepts-twins-graph.md) telemetria
 * A Twin Property változási értesítései az Azure Digital Twins-példányon található bármelyik Twin tulajdonság változásakor
-* Életciklussal kapcsolatos események, az ikrek vagy kapcsolatok létrehozásakor vagy törlésekor
+* Olyan életciklus-események, amelyek ikrek vagy kapcsolatok létrehozásakor vagy törlésekor következnek be
 
 Az elküldött eseményeket úgy korlátozhatja, hogy hozzáad egy **szűrőt** egy végponthoz az esemény-útvonalhoz.
 
 >[!NOTE]
-> A szűrők **megkülönböztetik a kis-** és nagybetűket, és meg kell egyezniük a hasznos adatokkal (amelyek nem feltétlenül egyeznek a modell esetében).
+> A szűrők **megkülönböztetik a kis-** és nagybetűket, és meg kell egyezniük a hasznos adatokkal. 
+>
+> Az telemetria szűrők esetében ez azt jelenti, hogy a burkolatnak meg kell egyeznie az eszköz által eljuttatott telemetria, nem feltétlenül a Twin modellben definiált burkolattal. 
 
 Szűrő hozzáadásához használhat egy PUT kérelmet a *https://{saját-Azure-Digital-Twins-hostname}/eventRoutes/{Event-Route-Name}? API-Version = 2020-10-31* és a következő törzs használatával:
 

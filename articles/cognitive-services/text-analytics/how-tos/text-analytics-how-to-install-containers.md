@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/25/2021
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, érzelmek elemzése, természetes nyelvi feldolgozás
-ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc5406cec54defd118ba350ba59b8d7311cff563
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432060"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089738"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
@@ -49,6 +49,8 @@ Text Analytics tárolók használata előtt meg kell felelnie a következő elő
 |Erőforrás Text Analytics |A tároló használatához a következőket kell tennie:<br><br>Egy Azure [text Analytics-erőforrás](../../cognitive-services-apis-create-account.md) ingyenes (F0) vagy standard (S) [díjszabási szinttel](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). A társított API-kulcs és végpont URI-JÁT a Azure Portal erőforrás **kulcs és végpont** lapjára kattintva érheti el. <br><br>**{API_KEY}**: a két elérhető erőforrás-kulcs egyike. <br><br>**{ENDPOINT_URI}**: az erőforrás végpontja. |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+
+Ha a Text Analyticst használja az állapotfigyelő tárolóhoz, akkor a [felelős AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health)  (Rai) tudomásul kell vennie a értékét `accept` .
 
 ## <a name="the-host-computer"></a>A gazdaszámítógép
 

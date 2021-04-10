@@ -8,34 +8,33 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6cb4abd536cc0d4177df424ac6a774e4e2e328d7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9849648c8a0a76ff89a6f95e64eeade791e7135c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564755"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106381774"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást (kiterjesztett támogatás) az [ARM-sablonok](../azure-resource-manager/templates/overview.md)használatával. 
-
-> [!IMPORTANT]
-> A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 1. Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozza létre a kapcsolódó erőforrásokat.
 
 2. Hozzon létre egy új erőforráscsoportot a [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) vagy a [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md)használatával. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ.
+
+3. Hozzon létre egy nyilvános IP-címet, és állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. A Cloud Services (kiterjesztett támogatás) csak az [alapszintű] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU nyilvános IP-címek) használatát támogatja. A standard SKU nyilvános IP-címei nem működnek Cloud Services.
+Ha statikus IP-címet használ, akkor a szolgáltatás konfigurációs (. cscfg) fájljában Fenntartott IP kell hivatkozni. Ha meglévő IP-címet használ, hagyja ki ezt a lépést, és adja hozzá az IP-cím adatait közvetlenül az ARM-sablon terheléselosztó konfigurációs beállításaihoz.
+
+4. Hozzon létre egy hálózati profil objektumot, és rendelje hozzá a nyilvános IP-címet a terheléselosztó felületéhez. Az Azure platform automatikusan létrehoz egy "klasszikus" SKU Load Balancer-erőforrást ugyanabban az előfizetésben, mint a Cloud Service-erőforrás. A terheléselosztó erőforrás egy írásvédett erőforrás az ARM-ben. Az erőforrás frissítései csak a Cloud Service telepítési fájljain (. cscfg &. csdef) keresztül támogatottak.
  
-3. Hozzon létre egy új Storage-fiókot a [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) vagy a [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ.
+5. Hozzon létre egy új Storage-fiókot a [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) vagy a [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ.
 
-4. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy a [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz.
+6. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy a [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz.
 
-5. Választható Hozzon létre egy kulcstartót, és töltse fel a tanúsítványokat.
+6. Választható Hozzon létre egy kulcstartót, és töltse fel a tanúsítványokat.
 
     -  A tanúsítványok a szolgáltatással és a szolgáltatásba való biztonságos kommunikáció lehetővé tételéhez csatolhatók a Cloud Serviceshez. A tanúsítványok használatához a ujjlenyomatai megfelelnek meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában, és fel kell tölteni a kulcstartóba. Kulcstartó hozható létre a [Azure Portal](../key-vault/general/quick-create-portal.md) vagy a [PowerShell](../key-vault/general/quick-create-powershell.md)használatával.
     - A társított Key vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service.
@@ -351,7 +350,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
           }
         },
         {
-          "apiVersion": "2020-10-01-preview",
+          "apiVersion": "2021-03-01",
           "type": "Microsoft.Compute/cloudServices",
           "name": "[variables('cloudServiceName')]",
           "location": "[parameters('location')]",

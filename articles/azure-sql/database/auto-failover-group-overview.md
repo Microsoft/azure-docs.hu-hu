@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 12/26/2020
-ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 4d497adf5229819527608157a7a840d514f4292c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594257"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732346"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,6 +178,12 @@ OLTP műveletek végrehajtásakor használja `<fog-name>.database.windows.net` a
 
 Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja `<fog-name>.secondary.database.windows.net` a kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a használatával adja meg az olvasási szándékot a kapcsolatok karakterláncában `ApplicationIntent=ReadOnly` .
 
+> [!NOTE]
+> A prémium, üzletileg kritikus és nagy kapacitású szolgáltatási szinteken a SQL Database támogatja a [csak olvasható replikák](read-scale-out.md) használatát a csak olvasási lekérdezési feladatok kiszervezéséhez a `ApplicationIntent=ReadOnly` kapcsolódási karakterlánc paraméterének használatával. Ha georeplikált másodlagos példányt konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a georeplikált helyen is.
+>
+> - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a és a `ApplicationIntent=ReadOnly` lehetőséget `<fog-name>.database.windows.net` .
+> - Ha a másodlagos helyen lévő írásvédett replikához szeretne csatlakozni, használja a és a következőt: `ApplicationIntent=ReadOnly` `<fog-name>.secondary.database.windows.net` .
+
 ### <a name="preparing-for-performance-degradation"></a>A teljesítmény romlásának előkészítése
 
 Egy tipikus Azure-alkalmazás több Azure-szolgáltatást használ, és több összetevőből áll. A feladatátvételi csoport automatikus feladatátvétele az Azure SQL-összetevők állapotán alapul. Előfordulhat, hogy a leállás nem érinti az elsődleges régió többi Azure-szolgáltatását, és ezek összetevői továbbra is elérhetők lesznek az adott régióban. Ha az elsődleges adatbázisok a DR régióra váltanak, a függő összetevők közötti késés megnövekszik. Ha el szeretné kerülni az alkalmazás teljesítményének nagyobb késleltetését, győződjön meg arról, hogy az alkalmazás összes összetevőjének redundancia van a DR régióban, és kövesse ezeket a [hálózati biztonsági irányelveket](#failover-groups-and-network-security).
@@ -267,7 +273,7 @@ OLTP műveletek végrehajtásakor használja `<fog-name>.zone_id.database.window
 Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Ha közvetlenül a földrajzilag replikált másodlagoshoz szeretne csatlakozni, használja `<fog-name>.secondary.<zone_id>.database.windows.net` a kiszolgáló URL-címét, és a kapcsolat közvetlenül a földrajzilag replikált másodlagosra történik.
 
 > [!NOTE]
-> A prémium, üzletileg kritikus és nagy kapacitású szolgáltatási rétegekben a SQL Database támogatja a [csak olvasható replikák](read-scale-out.md) használatát a csak olvasási jogosultsággal rendelkező lekérdezési feladatok futtatásához egy vagy több írásvédett replika kapacitásával, a `ApplicationIntent=ReadOnly` kapcsolódási karakterlánc paraméterének használatával. Ha georeplikált másodlagos példányt konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a georeplikált helyen is.
+> Üzletileg kritikus szinten az SQL felügyelt példánya támogatja a [csak olvasható replikák](read-scale-out.md) használatát a csak olvasási jogosultságú lekérdezések kiszervezéséhez a `ApplicationIntent=ReadOnly` kapcsolódási karakterláncban található paraméter használatával. Ha georeplikált másodlagos példányt konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a georeplikált helyen is.
 >
 > - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a és a `ApplicationIntent=ReadOnly` lehetőséget `<fog-name>.<zone_id>.database.windows.net` .
 > - Ha a másodlagos helyen lévő írásvédett replikához szeretne csatlakozni, használja a és a következőt: `ApplicationIntent=ReadOnly` `<fog-name>.secondary.<zone_id>.database.windows.net` .

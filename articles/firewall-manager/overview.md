@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/16/2021
+ms.date: 03/29/2021
 ms.author: victorh
-ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6725bea562d3e7841b5ab82acc0a54f91f0488b4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573455"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732924"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -66,7 +66,7 @@ A biztonságos hubhoz irányíthatja át a forgalmat a szűréshez és a naplóz
 
 Ez a szolgáltatás csak biztonságos virtuális központú üzemelő példányokkal érhető el.
 
-Harmadik féltől származó szolgáltatókat is használhat a fiókirodák internetes (B2I) adatforgalmának szűrésére, egymás mellett Azure Firewall a ágat a VNet (B2V), a VNet VNet (V2V) és az internetre (VNET). Külső szolgáltatókat is használhat a V2I, ha a B2V és a V2V esetében nem szükséges a Azure Firewall. 
+Harmadik féltől származó szolgáltatókat is használhat a fiókirodák internetes (B2I) adatforgalmának szűrésére, egymás mellett Azure Firewall a ágat a VNet (B2V), a VNet VNet (V2V) és az internetre (VNET). 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
@@ -76,7 +76,7 @@ A Azure Firewall házirendek a régiók között is használhatók. Létrehozhat
 
 Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 
-|Probléma  |Description  |Kockázatcsökkentés  |
+|Probléma  |Leírás  |Kockázatcsökkentés  |
 |---------|---------|---------|
 |Forgalom felosztása|A Microsoft 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános Pásti és Microsoft 365 forgalmat a partner szolgáltatáson keresztül küldi el.|A forgalom felosztásának kivizsgálása a központban.
 |Egy biztonságos virtuális központ régiónként|Régiónként legfeljebb egy biztonságos virtuális központ lehet.|Több virtuális WAN-t hozhat létre egy régióban.|
