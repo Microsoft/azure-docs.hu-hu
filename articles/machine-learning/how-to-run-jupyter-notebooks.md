@@ -11,18 +11,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 257fc6544061c2ef9c3fdbfb8c33bc06ed2db6e3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fec4eb55f43bd17db5935ab32e5429927c74f5b9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566335"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066211"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
 Megtudhatja, hogyan futtathat Jupyter-jegyzetfüzeteket közvetlenül a munkaterületen a Azure Machine Learning Studióban. A [Jupyter](https://jupyter.org/) vagy a [JupyterLab](https://jupyterlab.readthedocs.io)elindításához lehetősége van a jegyzetfüzetek szerkesztésére és futtatására is a munkaterület elhagyása nélkül.
 
 A fájlok, például a jegyzetfüzetek létrehozásával és kezelésével kapcsolatos információkért lásd: [fájlok létrehozása és kezelése a munkaterületen](how-to-manage-files.md).
+
+> [!IMPORTANT]
+> A (előzetes verzióként megjelölt) szolgáltatások szolgáltatói szerződés nélkül érhetők el, és az éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,17 +51,27 @@ Az aktuális nézet kibontásához használja a fókusz módot, így az aktív l
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Fókusz mód/normál nézet váltása":::
 
-## <a name="use-intellisense"></a>IntelliSense használata
+## <a name="code-completion-intellisense"></a>Kód befejezése (IntelliSense)
 
 Az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) egy kód-kiegészítési támogatás, amely számos funkciót tartalmaz: tagok listázása, a paraméterek adatai, a gyors információ és a teljes szó. Ezek a funkciók segítenek többet megtudni a használt kódokról, nyomon követhetik a beírt paramétereket, és hívásokat adhatnak hozzá a tulajdonságokhoz és metódusokhoz, csak néhány billentyűleütéssel.  
 
-A kód beírásakor használja a CTRL + SZÓKÖZ billentyűkombinációt az IntelliSense aktiválásához.
+### <a name="use-code-snippets-preview"></a>Kódrészletek használata (előzetes verzió)
+
+Használja a **CTRL + SZÓKÖZ** billentyűkombinációt az IntelliSense-kódrészletek elindításához.  Görgessen végig a javaslatok között, vagy kezdje el gépelni a beszúrni kívánt kód megkereséséhez.  A kód beszúrása után a TAB billentyűvel testreszabhatja a kódot a saját használatra.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/insert-snippet.gif" alt-text="Kódrészlet beszúrása":::
+
+Ezek a kódrészletek akkor érhetők el, ha a VS Code-ban megnyitja a jegyzetfüzetet. Az elérhető kódrészletek teljes listáját itt tekintheti meg: [Azure Machine learning vs Code kódrészletek](https://github.com/Azure/azureml-snippets/blob/main/snippets/snippets.md).
+
+A kódrészletek listáját a jegyzetfüzet eszköztárával tallózhatja és keresheti meg a kódrészlet panel megnyitásához.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="A kódrészlet panel eszköz megnyitása a jegyzetfüzet eszköztárán":::
+
+A kódrészletek panelen új kódrészletek hozzáadására vonatkozó kérést is küldhet.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="A kódrészlet panel lehetővé teszi, hogy új kódrészletet javasoljon":::
 
 ## <a name="clean-your-notebook-preview"></a>A jegyzetfüzet tisztítása (előzetes verzió)
-
-> [!IMPORTANT]
-> A Gathering szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A jegyzetfüzetek létrehozása során általában az adatfeltáráshoz vagy a hibakereséshez használt cellákkal végződik. Az *adatgyűjtés* funkció segítségével tiszta jegyzetfüzetet hozhat létre a külső cellák nélkül.
 
@@ -158,7 +171,7 @@ Ezek a műveletek alaphelyzetbe állítják a jegyzetfüzet állapotát, és a j
 
 ## <a name="add-new-kernels"></a>Új kernelek hozzáadása
 
-[A terminál használatával ](how-to-access-terminal.md#add-new-kernels) létrehozhat és hozzáadhat új kerneleket a számítási példányhoz. A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példányra telepített összes Jupyter-kernelt.
+[A terminál használatával](how-to-access-terminal.md#add-new-kernels) létrehozhat és hozzáadhat új kerneleket a számítási példányhoz. A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példányra telepített összes Jupyter-kernelt.
 
 A jobb oldali kernel legördülő menüben váltson a telepített kernelek bármelyikére.  
 

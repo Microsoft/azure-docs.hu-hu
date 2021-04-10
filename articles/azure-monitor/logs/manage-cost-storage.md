@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 5048364aed1eea8d0c32d9134a4ba5a22d28b989
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 64b794f4a749816af71f9c5f14dddf2bbcbc6512
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560454"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279612"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -41,7 +41,7 @@ Az utólagos elszámolású modellen kívül a Log Analytics **kapacitás-foglal
 
 Az összes díjszabási szinten az esemény adatméretét az adott esemény Log Analytics tárolt tulajdonságok karakterlánc-ábrázolása alapján számítja ki a rendszer, függetlenül attól, hogy az adatok egy ügynöktől származnak, vagy a betöltési folyamat során lettek-e hozzáadva. Ebbe beletartozik az adatokként hozzáadott [Egyéni mezők](custom-fields.md) gyűjtése, majd a log Analytics tárolása. Számos, az összes adattípussal közös tulajdonság, beleértve a [log Analytics standard tulajdonságokat](./log-standard-columns.md)is, ki van zárva az esemény méretének kiszámításakor. Ide tartoznak a következők:,,, `_ResourceId` `_SubscriptionId` `_ItemId` `_IsBillable` `_BilledSize` és `Type` . A Log Analyticsban tárolt összes többi tulajdonságot az esemény méretének kiszámítása tartalmazza. Egyes adattípusok teljes egészében díjmentesek az adatfeldolgozási díjaktól, például a AzureActivity, a Szívveréstől és a használati típustól. Annak megállapításához, hogy egy esemény ki lett-e zárva az adatok betöltésének számlázása alól, használhatja a `_IsBillable` tulajdonságot az [alább](#data-volume-for-specific-events)látható módon. A használatot GB-ban (1,0 E9 bájt) kell jelenteni. 
 
-Azt is vegye figyelembe, hogy egyes megoldások, például az [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), az [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) és a [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) saját díjszabási modellel rendelkeznek. 
+Azt is vegye figyelembe, hogy egyes megoldások, például az [Azure Defender (Security Center)](https://azure.microsoft.com/pricing/details/azure-defender/), az [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) és a [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) saját díjszabási modellel rendelkeznek. 
 
 ### <a name="log-analytics-dedicated-clusters"></a>Dedikált fürtök Log Analytics
 
@@ -51,9 +51,9 @@ A fürt kapacitásának foglalási szintje programozott módon van konfigurálva
 
 A fürtön két számlázási mód van használatban. Ezeket a paraméter megadhatja a `billingType` [fürt konfigurálásakor](customer-managed-keys.md#customer-managed-key-operations). A két mód a következő: 
 
-1. **Fürt**: ebben az esetben (ez az alapértelmezett beállítás) a betöltött adatmennyiség számlázása a fürt szintjén történik. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy a [Azure Security Center](../../security-center/index.yml) -tól származó csomópont-hozzárendelések a munkaterület szintjén lesznek alkalmazva az összesített adatoknak a fürt összes munkaterülete közötti összesítése előtt. 
+1. **Fürt**: ebben az esetben (ez az alapértelmezett beállítás) a betöltött adatmennyiség számlázása a fürt szintjén történik. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy az [Azure Defender (Security Center)](../../security-center/index.yml) csomóponton belüli kiosztásait a rendszer a munkaterület szintjén alkalmazza az összesített adatoknak a fürt összes munkaterülete közötti összesítése előtt. 
 
-2. **Munkaterületek**: a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](../../security-center/index.yml) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után). Ha egy adott munkaterületre betöltött teljes adatmennyiség kevesebb, mint a kapacitás foglalása, akkor az egyes munkaterületek díjait a rendszer a GB-os kapacitású foglalási díjszabás alapján számlázza, és a kapacitás foglalásának fel nem használt részét számlázza a fürt erőforrásának. Ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását, akkor az egyes munkaterületek számlázása a kapacitás foglalásának töredékét határozza meg a napi betöltött adat töredéke alapján, valamint az egyes munkaterületek a kapacitás foglalása felett lévő betöltött adat töredékének megfelelően. A fürterőforrás nem számít fel díjat, ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását.
+2. **Munkaterületek**: a fürt kapacitásának foglalási költségei arányosak a fürtben lévő munkaterületekkel (az egyes munkaterületek esetében az [Azure Defender (Security Center)](../../security-center/index.yml) által az egyes munkaterületekhez tartozó csomópont-hozzárendelések elszámolása után.) Ha egy adott munkaterületre betöltött teljes adatmennyiség kevesebb, mint a kapacitás foglalása, akkor az egyes munkaterületek díjait a rendszer a GB-os kapacitású foglalási díjszabás alapján számlázza, és a kapacitás foglalásának fel nem használt részét számlázza a fürt erőforrásának. Ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását, akkor az egyes munkaterületek számlázása a kapacitás foglalásának töredékét határozza meg a napi betöltött adat töredéke alapján, valamint az egyes munkaterületek a kapacitás foglalása felett lévő betöltött adat töredékének megfelelően. A fürterőforrás nem számít fel díjat, ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását.
 
 A fürt számlázási beállításaiban az adatmegőrzési díj a munkaterületen történik. Vegye figyelembe, hogy a fürt számlázása a fürt létrehozásakor kezdődik, függetlenül attól, hogy a munkaterületek hozzá lettek-e rendelve a fürthöz. Azt is vegye figyelembe, hogy a fürthöz társított munkaterületek már nem rendelkeznek díjszabási csomaggal.
 
@@ -77,7 +77,7 @@ Log Analytics díjak hozzáadódnak az Azure-számlához. Az Azure-számlázás 
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Log Analytics használatának megtekintése az Azure-számlán 
 
-Az Azure nagyszerű hasznos funkciókat biztosít a [Azure Cost Management + számlázási](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) központban. A "Cost Analysis" funkció például lehetővé teszi az Azure-erőforrások költségeinek megtekintését. Először vegyen fel egy szűrőt "erőforrástípus" (a Microsoft. operationalinsights/munkaterületre Log Analytics és a Microsoft. operationalinsights/Cluster Log Analytics fürtök esetében) lehetővé teszi, hogy nyomon kövesse a Log Analytics költeni. Ezután a "csoportosítás" lehetőségnél válassza a "mérési kategória" vagy a "mérőszám" lehetőséget.  Vegye figyelembe, hogy az egyéb szolgáltatások, például a Azure Security Center és az Azure Sentinel is számlázzák a használatot Log Analytics munkaterület-erőforrásokkal szemben. Ha meg szeretné tekinteni a hozzárendelést a szolgáltatásnév számára, akkor a diagram helyett a táblázat nézetet is kiválaszthatja. 
+Az Azure nagyszerű hasznos funkciókat biztosít a [Azure Cost Management + számlázási](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) központban. A "Cost Analysis" funkció például lehetővé teszi az Azure-erőforrások költségeinek megtekintését. Először vegyen fel egy szűrőt "erőforrástípus" (a Microsoft. operationalinsights/munkaterületre Log Analytics és a Microsoft. operationalinsights/Cluster Log Analytics fürtök esetében) lehetővé teszi, hogy nyomon kövesse a Log Analytics költeni. Ezután a "csoportosítás" lehetőségnél válassza a "mérési kategória" vagy a "mérőszám" lehetőséget.  Vegye figyelembe, hogy más szolgáltatások, például az Azure Defender (Security Center) és az Azure Sentinel is számlázzák a használatot Log Analytics munkaterület-erőforrásokon. Ha meg szeretné tekinteni a hozzárendelést a szolgáltatásnév számára, akkor a diagram helyett a táblázat nézetet is kiválaszthatja. 
 
 Használati adatait még részletesebben megismerheti, ha [letölti a használati adatokat az Azure Portalról](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). A letöltött táblázatban láthatja a napi használatot az Azure-erőforrás (például a Log Analytics-munkaterület) szerinti bontásban. Ebben az Excel-számolótáblában a Log Analytics-munkaterületek használatáról az első szűrés a "kategória kategóriája" oszlopban, hogy megjelenjen a "Log Analytics", "Insight and Analytics" (az örökölt díjszabási szintek némelyike által használt) és a "Azure Monitor" (a kapacitás foglalásának díjszabása alapján), majd hozzáad egy szűrőt a "példány azonosítója" oszlophoz, amely a "munkaterület tartalmaz" vagy a "fürt tartalmaz" (az utóbbi a Log Analytics-fürt használatát tartalmazza). A használat megjelenik a "felhasznált mennyiség" oszlopban, és az egyes bejegyzések egysége a "mértékegység" oszlopban látható.  További részletek is elérhetők, ha [meg szeretné ismerni Microsoft Azure-számláját](../../cost-management-billing/understand/review-individual-bill.md). 
 
@@ -97,7 +97,7 @@ A munkaterület Log Analytics díjszabási szintjének módosításához
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt tarifacsomagok
 
-Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek, 2018. április 2. előtt, vagy egy, a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes**, **különálló (GB-onként)** és **/node (OMS)**.  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a [Azure Security Center](../../security-center/index.yml)által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek esetében a felhasználó által konfigurálható megőrzési idő 30 – 730 nap.
+Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek, 2018. április 2. előtt, vagy egy, a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes**, **különálló (GB-onként)** és **/node (OMS)**.  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve az Azure Defender által gyűjtött biztonsági adattípusokat [(Security Center)](../../security-center/index.yml)), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek esetében a felhasználó által konfigurálható megőrzési idő 30 – 730 nap.
 
 Az önálló árképzési szinten történő használatért a betöltött adatmennyiséget számoljuk fel. A jelentés a **log Analytics** szolgáltatásban szerepel, és a mérőszám neve "adatelemzés". 
 
@@ -105,18 +105,18 @@ A/csomópontok díjszabási szintjei a figyelt virtuális gépeken (csomópontok
 
 1. Csomópont: a megfigyelt csomópontok (VM-EK) száma a Node * hónapok egységében.
 2. Adatkereten túli adatmennyiség: ez az összesített adatmennyiséget meghaladóan betöltött adat GB-ban megadott száma.
-3. A csomópontok által tartalmazott adatmennyiség: ez az összesített adatfoglalás által érintett betöltött adat mennyisége. Ezt a mérőszámot akkor is használja a rendszer, ha a munkaterület minden díjszabási szinten szerepel, hogy megjelenjen a Azure Security Center által érintett adatmennyiség.
+3. A csomópontok által tartalmazott adatmennyiség: ez az összesített adatfoglalás által érintett betöltött adat mennyisége. Ezt a mérőszámot akkor is használja a rendszer, ha a munkaterület az összes díjszabási szinten szerepel, hogy megjelenjen az Azure Defender által érintett adatmennyiség (Security Center).
 
 > [!TIP]
 > Ha a munkaterület a **csomópontok** díjszabási szintjéhez fér hozzá, de azt szeretné tudni, hogy az utólagos elszámolású szinten olcsóbb-e, akkor [az alábbi lekérdezéssel](#evaluating-the-legacy-per-node-pricing-tier) egyszerűen kérhet javaslatot. 
 
 A 2016. április előtt létrehozott munkaterületek az eredeti **standard** és **prémium** szintű díjszabáshoz is hozzáférnek, amely a 30 és 365 nap rögzített adatmegőrzéssel rendelkezik. Nem hozhatók létre új munkaterületek a **standard** vagy a **prémium** szintű díjszabásban, és ha a munkaterületet kihelyezték ezekből a rétegekből, nem helyezhető vissza. Az örökölt rétegek adatfeldolgozási mérőszámait "adatelemzésnek" nevezzük.
 
-Vannak olyan viselkedések is, amelyek az örökölt Log Analytics rétegek használata és a használat számlázása [Azure Security Center](../../security-center/index.yml). 
+Vannak olyan viselkedések is, amelyek az örökölt Log Analytics rétegek használata, valamint az [Azure Defender (Security Center)](../../security-center/index.yml)használati díjának számlázását is magukban foglalhatják. 
 
-1. Ha a munkaterület az örökölt standard vagy prémium szinten található, Azure Security Center számlázása csak Log Analytics adatfeldolgozás esetén történik, nem pedig csomópont.
-2. Ha a munkaterület a csomópontok közötti örökölt, akkor a Azure Security Center az aktuális [Azure Security Center node-alapú díjszabási modell](https://azure.microsoft.com/pricing/details/security-center/)alapján számítjuk fel. 
-3. Más díjszabási csomagokban (beleértve a kapacitás-foglalásokat is), ha a Azure Security Center 2017. június 19. előtt engedélyezték, Azure Security Center számlázása csak Log Analytics adatfeldolgozás esetén történik. Ellenkező esetben a Azure Security Center a jelenlegi Azure Security Center node-alapú díjszabási modell alapján számítjuk fel.
+1. Ha a munkaterület az örökölt standard vagy prémium szinten található, akkor az Azure Defender csak Log Analytics adatfeldolgozásra, nem pedig csomópontra történik.
+2. Ha a munkaterület a csomópontok közötti örökölt, akkor az Azure Defender az aktuális [Azure Defender Node-based díjszabási modell](https://azure.microsoft.com/pricing/details/security-center/)alapján számítja fel a díjat. 
+3. Más díjszabási csomagokban (beleértve a kapacitás-foglalásokat), ha az Azure Defender a 2017. június 19. előtt volt engedélyezve, az Azure Defender csak Log Analytics adatfeldolgozásra lesz kiszámlázva. Ellenkező esetben az Azure Defender a jelenlegi Azure Defender node-alapú díjszabási modell alapján kerül számlázásra.
 
 Az árképzési szintek korlátozásait az Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)is elérhetők.
 
@@ -125,9 +125,9 @@ A korábbi díjszabási szintek egyike sem rendelkezik regionális alapú díjsz
 > [!NOTE]
 > A OMS E1 Suite, OMS E2 Suite vagy OMS Add-On for System Center csomagból származó jogosultságok használatához válassza a Log Analytics */csomópont* díjszabási szintet.
 
-## <a name="log-analytics-and-security-center"></a>Log Analytics és Security Center
+## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics és az Azure Defender (Security Center)
 
-[Azure Security Center](../../security-center/index.yml) számlázás szorosan kötődik log Analytics számlázáshoz. A Security Center 500 MB/csomópont/nap kiosztást biztosít a [biztonsági adattípusok](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) és a frissítési és a updateSummary típusú adattípusok következő részhalmazával, ha az Update Management megoldás nem fut a munkaterületen, vagy a megoldás célcsoportja engedélyezve van. Ha a munkaterület a csomópontok közötti örökölt árképzési szinten van, akkor a Security Center és Log Analytics kiosztások kombinálhatók, és a rendszer közösen alkalmazza az összes számlázható bevitt adatot.  
+Az [Azure Defender (Security Center)](../../security-center/index.yml) számlázása szorosan kötődik log Analytics számlázáshoz. Az Azure Defender 500 MB/csomópont/nap kiosztást biztosít a [biztonsági adattípusok](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) és a frissítési és updateSummary típusú adattípusok következő részhalmazára vonatkozóan, ha az Update Management megoldás nem fut a munkaterületen, vagy ha a megoldás célcsoportja engedélyezve van, további [információ](https://docs.microsoft.com/azure/security-center/security-center-pricing#what-data-types-are-included-in-the-500-mb-free-data-limit). Ha a munkaterület a csomópontok közötti örökölt árképzési szinten található, akkor az Azure Defender és a Log Analytics foglalások összevonva lesznek, és a rendszer közösen alkalmazza az összes számlázható bevitt adatot.  
 
 ## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időtartam módosítása
 
@@ -215,7 +215,7 @@ A napi korlát elérésekor a számlázható adattípusok gyűjteménye a nap h�
 > A napi korlát nem tudja leállítani az adatgyűjtést a megadott Cap-szintnek megfelelően, és néhány felesleges adatmennyiség várható, különösen akkor, ha a munkaterület nagy mennyiségű adattal rendelkezik. Tekintse meg az [alább](#view-the-effect-of-the-daily-cap) egy olyan lekérdezést, amely hasznos a Cap napi viselkedésének tanulmányozásához. 
 
 > [!WARNING]
-> A napi korlát nem állítja le a WindowsEvent, a SecurityAlert, a SecurityBaseline, a SecurityBaselineSummary, a SecurityDetection, a SecurityEvent, a WindowsFirewall, a MaliciousIPCommunication, a LinuxAuditLog, a SysmonEvent, a ProtectionStatus, az Update és a updateSummary típusú adattípusok gyűjteményét, kivéve azokat a munkaterületeket, amelyekben a Azure Security Center a 2017. június 19. előtt 
+> A napi korlát nem állítja le a WindowsEvent, a SecurityAlert, a SecurityBaseline, a SecurityBaselineSummary, a SecurityDetection, a SecurityEvent, a WindowsFirewall, a MaliciousIPCommunication, a LinuxAuditLog, a SysmonEvent, a ProtectionStatus, az Update és a updateSummary típusú adattípusok gyűjteményét, kivéve azokat a munkaterületeket, amelyekben az Azure Defender (Security Center) telepítése a 2017. június 19. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>A definiálni kívánt napi adatkorlát meghatározása
 
@@ -232,6 +232,14 @@ A következő lépések azt ismertetik, hogyan konfigurálható egy korlát a Lo
 :::image type="content" source="media/manage-cost-storage/set-daily-volume-cap-01.png" alt-text="Az adatkorlát konfigurálása Log Analytics":::
     
 A napi korlát az ARM-ben konfigurálható úgy, hogy a `dailyQuotaGb` paramétert a `WorkspaceCapping` [munkaterületek – létrehozás vagy frissítés](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)című szakaszban leírtak szerint állítja be. 
+
+A napi korláton végrehajtott módosításokat a következő lekérdezéssel követheti nyomon:
+
+```kusto
+_LogOperation | where Operation == "Workspace Configuration" | where Detail contains "Daily quota"
+```
+
+További információ a [_LogOperation](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace) függvényről. 
 
 ### <a name="view-the-effect-of-the-daily-cap"></a>A napi korlát hatásának megtekintése
 
@@ -253,7 +261,7 @@ Usage
 
 Noha a Azure Portal vizualizációs mutatót mutatunk be, amikor eléri az adatkorlátot, ez a viselkedés nem feltétlenül igazodik az azonnali beavatkozást igénylő működési problémák kezeléséhez.  Riasztási értesítés fogadásához létrehozhat egy új riasztási szabályt Azure Monitorban.  További információt a [riasztások létrehozása, megtekintése és kezelése](../alerts/alerts-metric.md)című témakörben talál.
 
-A kezdéshez itt láthatók az ajánlott beállítások a táblában a függvény használatával történő lekérdezéséhez `Operation` `_LogOperation` . 
+A kezdéshez itt láthatók az ajánlott beállítások a táblázatban a függvény használatával történő lekérdezéséhez `Operation` (további `_LogOperation` [információ](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace)). 
 
 - Cél: válassza ki a Log Analytics erőforrást
 - Kritériumok 
@@ -344,7 +352,7 @@ Vegye figyelembe, hogy a záradék `where _IsBillable = true` kiszűri az adatt�
 
 ### <a name="data-volume-by-solution"></a>Adatmennyiség megoldásonként
 
-A számlázható adatmennyiségnek az előző hónapban a megoldással való megtekintésére használt lekérdezés (az utolsó részleges nap kivételével) a következő:
+A számlázható adatmennyiségnek az elmúlt hónapban (kivéve az utolsó részleges napot) való megtekintésére használt lekérdezés a [használati](https://docs.microsoft.com/azure/azure-monitor/reference/tables/usage) adatok típusának használatával hozható össze:
 
 ```kusto
 Usage 
@@ -383,26 +391,26 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Adatmennyiség számítógépenként
 
-Az `Usage` adattípus nem tartalmaz információkat a számítógép szintjén. Ha szeretné megtekinteni a betöltött adat **méretét** a számítógépen, használja a `_BilledSize` [tulajdonságot](./log-standard-columns.md#_billedsize), amely a méretet adja meg bájtban:
+Az `Usage` adattípus nem tartalmaz információkat a számítógép szintjén. Ha szeretné megtekinteni a feldolgozott számlázandó adat **méretét** a számítógépen, használja a `_BilledSize` [tulajdonságot](./log-standard-columns.md#_billedsize), amely a méretet adja meg bájtban:
 
 ```kusto
-find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer
-| where _IsBillable == true 
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer, Type
+| where _IsBillable == true and Type != "Usage"
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize BillableDataBytes = sum(_BilledSize) by  computerName 
-| sort by BillableDataBytes nulls last
+| sort by BillableDataBytes desc nulls last
 ```
 
-A `_IsBillable` [tulajdonság](./log-standard-columns.md#_isbillable) azt határozza meg, hogy a betöltött adatok díjkötelesek-e. 
+A `_IsBillable` [tulajdonság](./log-standard-columns.md#_isbillable) azt határozza meg, hogy a betöltött adatok díjkötelesek-e. A használat típusa nincs megadva, mivel ez csak az adattrendek elemzéséhez szükséges. 
 
 A számítógépeken betöltött számlázható események **számának** megtekintéséhez használja a következőt: 
 
 ```kusto
 find where TimeGenerated > ago(24h) project _IsBillable, Computer
-| where _IsBillable == true 
+| where _IsBillable == true and Type != "Usage"
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize eventCount = count() by computerName  
-| sort by eventCount nulls last
+| sort by eventCount desc nulls last
 ```
 
 > [!TIP]
@@ -478,6 +486,7 @@ Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 
 | A nagy adatmennyiség forrása | Az adatmennyiség csökkentésének módja |
 | -------------------------- | ------------------------- |
+| Adatgyűjtés szabályai      | A [Azure monitor ügynök](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) adatgyűjtési szabályokat használ az adatgyűjtés kezelésére. Az egyéni XPath-lekérdezésekkel [korlátozhatja az adatgyűjtést](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent#limit-data-collection-with-custom-xpath-queries) . | 
 | Tárolóval kapcsolatos megállapítások         | [Konfigurálja a tároló](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost) -elemzéseket úgy, hogy csak a szükséges adatokat gyűjtsön. |
 | Biztonsági események            | Válassza a [gyakori vagy minimális biztonsági események](../../security-center/security-center-enable-data-collection.md#data-collection-tier) lehetőséget <br> Módosítsa a biztonsági naplózási szabályzatot, hogy csak a szükséges eseményeket gyűjtse be. Tekintse át a következőkhöz való eseménygyűjtés szükségességét: <br> - [szűrőplatform naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [beállításjegyzék naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [fájlrendszer naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [kernelobjektum naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [leírókezelés naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – Cserélhető tároló naplózása |
 | Teljesítményszámlálók       | Módosítsa a [teljesítményszámlálók konfigurációját](../agents/data-sources-performance-counters.md): <br> – Csökkentse a gyűjtés gyakoriságát <br> – Csökkentse a teljesítményszámlálók számát |
@@ -548,7 +557,7 @@ Az, hogy az örökölt **csomópontok** díjszabási szintjéhez hozzáférésse
 
 Az értékelés megkönnyítése érdekében a következő lekérdezéssel javaslatot tehet az optimális díjszabási csomagra a munkaterület használati mintái alapján.  Ez a lekérdezés az elmúlt 7 napban egy munkaterületre betöltött figyelt csomópontokat és adatmennyiségeket vizsgálja, és minden nap esetében kiértékeli, hogy melyik árképzési csomag legyen optimális. A lekérdezés használatához meg kell adnia a
 
-1. azt jelzi, hogy a munkaterület használ-e Azure Security Center a vagy a értékre való beállításával. `workspaceHasSecurityCenter` `true` `false` 
+1. azt jelzi, hogy a munkaterület az Azure Defendert (Security Center) használja-e a vagy a értékre `workspaceHasSecurityCenter` `true` `false` , 
 2. frissítse az árakat, ha vannak meghatározott kedvezmények, és
 3. Itt adhatja meg, hogy hány napig kell visszakeresni és elemezni a beállítást `daysToEvaluate` . Ez akkor hasznos, ha a lekérdezésen túl sokáig próbálkozik a 7 napos adatmennyiség megkeresésével. 
 
@@ -556,7 +565,7 @@ Az árképzési csomagra vonatkozó javaslat lekérdezése:
 
 ```kusto
 // Set these parameters before running query
-// Pricing details available at https://azure.microsoft.com/en-us/pricing/details/monitor/
+// Pricing details available at https://azure.microsoft.com/pricing/details/monitor/
 let daysToEvaluate = 7; // Enter number of previous days to analyze (reduce if the query is taking too long)
 let workspaceHasSecurityCenter = false;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your montly price per monitored nodes
@@ -676,6 +685,10 @@ Az adatgyűjtés leállításakor az OperationStatus állapota: **Figyelmezteté
 
 Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *napi adatsapka* -riasztás létrehozása című témakörben leírt lépéseket az adatgyűjtés leállításakor. A következő témakörben ismertetett lépések végrehajtásával konfigurálhat egy e-mailt, webhookot vagy runbook műveletet a riasztási szabályhoz: [műveleti csoport létrehozása](../alerts/action-groups.md) . 
 
+## <a name="late-arriving-data"></a>Későn érkező adatvesztés   
+
+Olyan helyzetek merülhetnek fel, amikor az adatok nagyon régi időbélyegzővel vannak betöltve, például ha egy ügynök nem tud kommunikálni Log Analytics kapcsolódási probléma miatt, vagy ha egy gazdagép nem megfelelő időpontot/időpontot használ. A problémák diagnosztizálásához használja az oszlopot `_TimeReceived` ([További információ](https://docs.microsoft.com/azure/azure-monitor/logs/log-standard-columns#_timereceived)) az `TimeGenerated` oszlop mellett. `TimeReceived` az az idő, amikor a rekordot a Azure Monitor betöltési pontja fogadta az Azure-felhőben.  
+
 ## <a name="limits-summary"></a>Korlátok összegzése
 
 Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket az Azure- [előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)dokumentálják.
@@ -686,7 +699,7 @@ Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díj
 - A keresési nyelv használatának megismeréséhez tekintse meg a [naplóban megkeresett Azure monitor naplókat](../logs/log-query-overview.md) . A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 - Az [új naplózási riasztás létrehozásával kapcsolatos](../alerts/alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
 - A [megoldás célcsoportja](../insights/solution-targeting.md) csak a szükséges számítógépek adatainak gyűjtésére használható.
-- Egy hatékony esemény-gyűjtési házirend konfigurálásához tekintse át [Azure Security Center szűrési házirendet](../../security-center/security-center-enable-data-collection.md).
+- Egy hatékony esemény-gyűjtési házirend konfigurálásához tekintse át az [Azure Defender (Security Center) szűrési szabályzatát](../../security-center/security-center-enable-data-collection.md).
 - [Teljesítményszámláló konfigurációjának](../agents/data-sources-performance-counters.md)módosítása
 - Az események gyűjtési beállításainak módosításához tekintse át az [Eseménynapló konfigurációját](../agents/data-sources-windows-events.md).
 - A syslog-gyűjtemény beállításainak módosításához tekintse át a [syslog konfigurációját](../agents/data-sources-syslog.md).

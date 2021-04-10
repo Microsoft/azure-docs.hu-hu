@@ -1,15 +1,15 @@
 ---
 title: Az Azure Security teljesítményteszt v1-es verziójának megfelelőségi részletei
 description: Az Azure Security benchmark v1 szabályozási megfelelőségének beépített kezdeményezési adatai. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0d90cadb215dc1d67f2588d5434fec2202133917
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cd63c657821fe15a8dade3535db5612a219a8a1c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105032589"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090018"
 ---
 # <a name="details-of-the-azure-security-benchmark-v1-regulatory-compliance-built-in-initiative"></a>Az Azure Security benchmark v1 szabályozási megfelelőségének beépített kezdeményezésének részletei
 

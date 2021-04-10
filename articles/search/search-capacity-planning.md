@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d848c1ed1ab9d4cb24dec9423d93ec62ab45633b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: b1f742c1de259f6c1c06d9b31a8788699f0b8426
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99537221"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580026"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás kapacitásának becslése és kezelése
 
@@ -48,17 +48,19 @@ Cognitive Search a szilánkok kezelése egy implementációs adat és nem konfig
 
 + Automatikus kiegészítési rendellenességek: automatikus lekérdezések, ahol a egyezések egy részben megadott kifejezés első több karakterén történnek, fogadjon egy olyan fuzzy paramétert, amely a helyesírási kis eltéréseket megbocsátja. Az automatikus kiegészítés esetében a zavaros egyezés az aktuális szegmensen belüli kifejezésekre van korlátozva. Ha például egy szegmens "Microsoft" kifejezést tartalmaz, és a "micor" részleges kifejezése van megadva, akkor a keresőmotor a "Microsoft" résznek felel meg a szegmensben, de nem az index fennmaradó részeit tároló más szegmensekben.
 
-## <a name="how-to-evaluate-capacity-requirements"></a>A kapacitásra vonatkozó követelmények kiértékelése
+## <a name="approaching-estimation"></a>A becslés közeledik
 
-A szolgáltatás üzemeltetésének kapacitása és költségei. A rétegek két szintre korlátozzák a korlátozásokat: a tárterületet és a tartalmakat (például a szolgáltatás indexei számát). Fontos figyelembe venni mindkettőt, mivel a határértékek közül az első a hatályos korlát.
+A szolgáltatás üzemeltetésének kapacitása és költségei. A rétegek két szintre korlátozzák a korlátozásokat: a tartalmak (például egy szolgáltatás indexei száma) és a tárterület. Fontos figyelembe venni mindkettőt, mivel a határértékek közül az első a hatályos korlát.
 
-Az indexek és egyéb objektumok mennyiségét jellemzően az üzleti és mérnöki követelmények írják elő. Előfordulhat például, hogy az Active Development, a Testing és a Production esetében ugyanaz az index több verziója van.
+Az indexek és más objektumok számát általában az üzleti és mérnöki követelmények írják elő. Előfordulhat például, hogy az Active Development, a Testing és a Production esetében ugyanaz az index több verziója van.
 
 A tárolási igényeket a felépíteni kívánt indexek méretétől függően kell meghatározni. Nincsenek olyan szilárd heurisztikus vagy általános értékek, amelyek segítenek a becslésekben. Az indexek méretének [meghatározása egyetlen módszer.](search-what-is-an-index.md) A mérete az importált adatmennyiség, a szöveg elemzése és az index konfigurációja alapján történik, például az, hogy engedélyezi-e a javaslatokat, a szűrést és a rendezést.
 
 A teljes szöveges kereséshez az elsődleges adatstruktúra egy [fordított index](https://en.wikipedia.org/wiki/Inverted_index) -struktúra, amely különböző tulajdonságokkal rendelkezik, mint a forrásadatok. A fordított indexek esetében a méretet és az összetettséget a tartalom határozza meg, nem feltétlenül a betáplált adatmennyiség. Egy nagy redundanciával rendelkező nagyméretű adatforrás kisebb indexet eredményezhet, mint egy nagy mértékben változó tartalmat tartalmazó kisebb adathalmaz. Így ritkán lehet az index méretét az eredeti adatkészlet méretétől függően kikövetkeztetni.
 
-> [!NOTE] 
+Az index attribútumai, például a szűrők és a rendezés engedélyezése hatással lesznek a tárolási követelményekre. A javaslatok használatának a tárolási következményei is vannak. További információ: [attribútumok és index mérete](search-what-is-an-index.md#index-size).
+
+> [!NOTE]
 > Annak ellenére, hogy az indexek és a tárolás jövőbeli igényeit is megbecsülik, érdemes meggondolni. Ha a rétegek kapacitása túl alacsonyra vált, egy új szolgáltatást kell kiépíteni egy magasabb szintű szinten, majd [újra kell töltenie az indexeket](search-howto-reindex.md). A szolgáltatás egyik rétegből a másikba való helyben történő frissítése nem történik meg.
 >
 
@@ -87,7 +89,7 @@ A dedikált erőforrások nagyobb mintavételezési és feldolgozási időt bizt
     + Ha a tesztelés nagy léptékű indexelést és lekérdezési terhelést foglal magában, a magas szintű, S2-es vagy akár S3 értékű.
     + Ha nagy mennyiségű adatmennyiséget indexel, és a lekérdezés terhelése viszonylag alacsony, mint egy belső üzleti alkalmazás esetében, az optimalizált tárolóval kezdődik az L1 vagy az L2.
 
-1. [Hozzon létre egy kezdeti indexet](search-what-is-an-index.md) annak meghatározására, hogy a forrásadatok hogyan fordíthatók le egy indexre. Ez az egyetlen módszer az index méretének becslésére.
+1. [Hozzon létre egy kezdeti indexet](search-what-is-an-index.md) annak meghatározására, hogy a forrásadatok hogyan fordíthatók le egy indexre. Ez az egyetlen módszer az index méretének becslésére. 
 
 1. A portálon [megfigyelheti a tárterületet, a szolgáltatási korlátokat, a lekérdezési kötetet és a késést](search-monitor-usage.md) . A portálon másodpercenként megjelennek a lekérdezések, a szabályozott lekérdezések és a keresési késések. Ezeknek az értékeknek a segítségével eldöntheti, hogy a megfelelő szintet választotta-e.
 
@@ -109,9 +111,9 @@ Ha kezdettől fogva magas fenntartható lekérdezési köteteket vár, érdemes 
 
 A tárolásra optimalizált csomagok nagy mennyiségű adatszámítási feladatokhoz hasznosak, és a lekérdezési késésre vonatkozó követelmények kevésbé fontosak lesznek. Továbbra is használjon további replikákat a terheléselosztáshoz és a párhuzamos feldolgozáshoz szükséges további partíciókhoz. Ezt követően a szolgáltatás üzembe helyezése után beállíthatja a teljesítményt.
 
-**Szolgáltatásiszint-szerződések**
+**Szolgáltatási szintű szerződések**
 
-Az ingyenes szint és az előzetes verzió funkciói nem biztosítanak [szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Minden számlázható szinten a SLA-kat akkor kell végrehajtani, ha elegendő redundancia van kiépítve a szolgáltatáshoz. Legalább két replikát kell megadnia a Query (olvasási) SLA-hoz. Három vagy több replikával kell rendelkeznie a lekérdezéshez és az indexeléshez (írható-olvasható) SLA-hoz. A partíciók száma nem befolyásolja a SLA-kat.
+Az ingyenes szint és az előzetes verzió funkcióit a [szolgáltatói szerződések (SLA-EK)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)nem fedik le. Minden számlázható szinten a SLA-kat akkor kell végrehajtani, ha elegendő redundancia van kiépítve a szolgáltatáshoz. Legalább két replikát kell megadnia a Query (olvasási) SLA-hoz. Három vagy több replikával kell rendelkeznie a lekérdezéshez és az indexeléshez (írható-olvasható) SLA-hoz. A partíciók száma nem befolyásolja a SLA-kat.
 
 ## <a name="tips-for-capacity-planning"></a>Tippek a kapacitás megtervezéséhez
 
@@ -119,24 +121,30 @@ Az ingyenes szint és az előzetes verzió funkciói nem biztosítanak [szolgál
 
 + Ne feledje, hogy a kiépítés alatti egyetlen hátránya, hogy előfordulhat, hogy le kell bontania egy szolgáltatást, ha a tényleges követelmények nagyobbak az előrejelzéseknél. A szolgáltatás megszakadásának elkerülése érdekében hozzon létre egy új szolgáltatást egy magasabb szintű szinten, és futtassa azt egymás mellett, amíg az összes alkalmazás és kérelem meg nem célozza az új végpontot.
 
-## <a name="when-to-add-partitions-and-replicas"></a>Mikor lehet partíciókat és replikákat felvenni
+## <a name="when-to-add-capacity"></a>Mikor lehet kapacitást felvenni
 
-A szolgáltatás eredetileg egy partíciót és egy replikát tartalmazó minimális szintű erőforrásokat foglal le.
+A szolgáltatás eredetileg egy partíciót és egy replikát tartalmazó minimális szintű erőforrásokat foglal le. A [kiválasztott](search-sku-tier.md) keret határozza meg a partíció méretét és sebességét, az egyes szintek pedig a különböző forgatókönyvekhez illeszkedő jellemzők körén vannak optimalizálva. Ha magasabb szintű szintet választ, előfordulhat, hogy kevesebb partícióra van szüksége, mint ha S1-et használ. Az egyik kérdés, amelyet saját irányított teszteléssel kell megválaszolnia, hogy egy nagyobb és drágább partíció jobb teljesítményt biztosít-e, mint két olcsóbb partíció az alacsonyabb szinten kiépített szolgáltatásokban.
 
 Egyetlen szolgáltatásnak elegendő erőforrással kell rendelkeznie az összes számítási feladat (indexelés és lekérdezések) kezeléséhez. Egyik munkaterhelés sem fut a háttérben. Az indexelést ütemezhet olyan időpontokra, amikor a lekérdezési kérések természetesen ritkábbak, de a szolgáltatás más módon nem rangsorolja az egyik feladatot. Emellett egy bizonyos mennyiségű redundancia is kisimítja a lekérdezési teljesítményt, ha a szolgáltatások vagy a csomópontok belsőleg frissülnek.
 
-Általános szabályként a keresési alkalmazások általában több replikát igényelnek, mint a partíciók, különösen akkor, ha a szolgáltatási műveletek a lekérdezési munkaterhelések szempontjából elfogultak. A [magas rendelkezésre állásról](#HA) szóló szakasz ismerteti, hogy miért.
+Néhány útmutató a kapacitás hozzáadásának meghatározásához:
 
-A [kiválasztott](search-sku-tier.md) keret határozza meg a partíció méretét és sebességét, az egyes szintek pedig a különböző forgatókönyvekhez illeszkedő jellemzők körén vannak optimalizálva. Ha magasabb szintű szintet választ, előfordulhat, hogy kevesebb partícióra van szüksége, mint ha S1-et használ. Az egyik kérdés, amelyet saját irányított teszteléssel kell megválaszolnia, hogy egy nagyobb és drágább partíció jobb teljesítményt biztosít-e, mint két olcsóbb partíció az alacsonyabb szinten kiépített szolgáltatásokban.
++ A szolgáltatói szerződés magas rendelkezésre állási feltételeinek teljesítése
++ A HTTP 503-hibák gyakorisága növekszik
++ Nagyméretű lekérdezési kötetek várhatók
+
+Általános szabályként a keresési alkalmazások általában több replikát igényelnek, mint a partíciók, különösen akkor, ha a szolgáltatási műveletek a lekérdezési munkaterhelések szempontjából elfogultak. Minden replika az index egy példánya, amely lehetővé teszi, hogy a szolgáltatás a kérelmeket több példányon is terheléselosztással ossza meg. Az Azure Cognitive Search felügyeli az összes terheléselosztást és replikációt, és a szolgáltatáshoz lefoglalt replikák számát bármikor módosíthatja. Egy standard keresési szolgáltatásban legfeljebb 12 replikát, egy alapszintű keresési szolgáltatásban pedig 3 replikát foglalhat le. A replika kiosztása a [Azure Portal](search-create-service-portal.md) vagy egy programozott lehetőség közül lehet.
 
 A közel valós idejű adatfrissítést igénylő alkalmazások kereséséhez a replikák több partícióra van szükségük. A partíciók hozzáadásával az írási/olvasási műveletek nagyobb számú számítási erőforráson keresztül terjednek ki. Emellett további lemezterületet biztosít a további indexek és dokumentumok tárolásához.
 
-A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat, hogy a partíciók növekményes növekedésének a replikák kisebb, de arányos növekedése szükséges. A lekérdezések és a lekérdezési kötetek összetettsége azt eredményezi, hogy milyen gyorsan történik a lekérdezés végrehajtása.
+Végezetül a nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat, hogy a partíciók növekményes növekedésének a replikák kisebb, de arányos növekedése szükséges. A lekérdezések és a lekérdezési kötetek összetettsége azt eredményezi, hogy milyen gyorsan történik a lekérdezés végrehajtása.
 
 > [!NOTE]
 > További replikák vagy partíciók hozzáadásával növelheti a szolgáltatás futtatásának költségeit, és az eredmények rendezésének módjában enyhe eltéréseket vezethet be. Ügyeljen arra, hogy ellenőrizze a [díjszabási számológépet](https://azure.microsoft.com/pricing/calculator/) , és Ismerje meg a további csomópontok hozzáadásának számlázási következményeit. Az [alábbi diagram](#chart) segítséget nyújt az adott konfigurációhoz szükséges keresési egységek számának kereszthivatkozásához. További információ arról, hogyan befolyásolják a további replikák a lekérdezés feldolgozását: [megrendelés eredményei](search-pagination-page-layout.md#ordering-results).
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>Replikák és partíciók lefoglalása
+<a name="adjust-capacity"></a>
+
+## <a name="add-or-reduce-replicas-and-partitions"></a>Replikák és partíciók hozzáadása vagy csökkentése
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és válassza ki a keresési szolgáltatást.
 
@@ -158,7 +166,7 @@ A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat,
 
    :::image type="content" source="media/search-capacity-planning/3-save-confirm.png" alt-text="Módosítások mentése" border="true":::
 
-   A kapacitás változásai akár több órát is igénybe vehetnek. A folyamat elindítása után nem lehet megszakítani a műveletet, és nincs valós idejű figyelés a replika és a partíciók beállításaihoz. A következő üzenet azonban továbbra is látható, amíg megváltozik.
+   A kapacitás változása akár 15 perctől akár több óráig is eltarthat. A folyamat elindítása után nem lehet megszakítani a műveletet, és nincs valós idejű figyelés a replika és a partíciók beállításaihoz. A következő üzenet azonban továbbra is látható, amíg megváltozik.
 
    :::image type="content" source="media/search-capacity-planning/4-updating.png" alt-text="Állapotjelző üzenet a portálon" border="true":::
 
@@ -192,31 +200,7 @@ Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhel
 > A replikák és partíciók száma egyenletesen oszlik el a 12 (pontosabban, 1, 2, 3, 4, 6, 12). Ennek az az oka, hogy az Azure Cognitive Search az egyes indexeket 12 szegmensre osztja, így a partíciók között egyenlő arányban terjedhet. Ha például a szolgáltatás három partícióval rendelkezik, és létrehoz egy indexet, minden partíció az index négy szegmensét fogja tartalmazni. Az Azure Cognitive Search az indexek egy implementációs részletességgel rendelkeznek, amely a jövőbeli kiadásokban változhat. Bár a szám 12 ma, nem várható, hogy ez a szám mindig 12 lesz a jövőben.
 >
 
-<a id="HA"></a>
-
-## <a name="high-availability"></a>Magas rendelkezésre állás
-
-Mivel a méretezés egyszerűen és viszonylag gyorsan megoldható, általában azt javasoljuk, hogy először egy partíciót és egy vagy két replikát válasszon, majd a skálázási folyamat létrehozásakor. A lekérdezési feladatok elsődlegesen a replikákat futtatják. Ha nagyobb átviteli sebességre vagy magas rendelkezésre állásra van szüksége, valószínűleg további replikákat kell megadnia.
-
-A magas rendelkezésre állásra vonatkozó általános javaslatok a következők:
-
-+ Két replika a csak olvasási terhelések magas rendelkezésre állásához (lekérdezések)
-
-+ Három vagy több replika az olvasási/írási munkaterhelések magas rendelkezésre állásához (lekérdezések és az indexelés egyéni dokumentumok hozzáadása, frissítése vagy törlése)
-
-Az Azure Cognitive Search szolgáltatói szerződések (SLA) a lekérdezési műveletekre és a dokumentumok hozzáadását, frissítését vagy törlését tartalmazó index-frissítésekre irányulnak.
-
-Az alapszintű csomag egy partíción és három replikán található. Ha azt szeretné, hogy a rugalmasság azonnal reagáljon az indexelési és a lekérdezési átviteli sebesség igény szerinti ingadozására, vegye figyelembe az egyik standard szintet is.  Ha úgy találja, hogy a tárolási követelmények sokkal gyorsabban növekednek, mint a lekérdezési átviteli sebesség, vegye figyelembe a tárterület optimalizált szintjeinek egyikét.
-
-## <a name="about-queries-per-second-qps"></a>Lekérdezések másodpercenkénti száma (QPS)
-
-A lekérdezési teljesítménnyel kapcsolatos tényezők nagy száma miatt a Microsoft nem teszi közzé a várt QPS-számokat. A QPS-becsléseket minden ügyféltől függetlenül kell kialakítani, amely az alkalmazás számára érvényes szolgáltatási szintet, konfigurációt, indexelést és lekérdezési szerkezeteket használja. Az index mérete és összetettsége, a lekérdezés mérete és összetettsége, valamint a forgalom mennyisége a QPS elsődleges tényezője. Az ilyen tényezők ismeretlenek lehetnek, így nem lehet értelmes becsléseket nyújtani.
-
-A becslések a dedikált erőforrásokon futó szolgáltatásokra (alapszintű és standard csomagokra) számítanak. Megbecsülheti a QPS, mert több paramétert is megadhat. A becslések megközelítésével kapcsolatos útmutatásért lásd: [Azure Cognitive Search teljesítmény és optimalizálás](search-performance-optimization.md).
-
-A Storage optimalizált szintjeihez (L1 és L2) a standard szintnél kisebb lekérdezési sebességet és nagyobb késést kell várni.
-
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A költségek becslése és kezelése](search-sku-manage-costs.md)
+> [Költségek kezelése](search-sku-manage-costs.md)

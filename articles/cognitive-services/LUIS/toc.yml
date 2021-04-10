@@ -1,62 +1,152 @@
-- name: A LUIS dokumentációja
+- name: A Language Understanding (LUIS) dokumentációja
   href: index.yml
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az a hangfelismerés?
+    - name: A LUIS áttekintése
       href: what-is-luis.md
+    - name: Nyelvi támogatás
+      href: luis-language-support.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Újdonságok
       href: whats-new.md
-- name: Rövid útmutatók
+    - name: LUIS FAQ
+      href: troubleshooting.md
+      displayName: 'Troubleshooting, import'
+- name: LUIS gyors útmutató
   items:
     - name: Előre összeállított tartományalkalmazás létrehozása
       href: luis-get-started-create-app.md
     - name: A LUIS portál használata
       items:
-        - name: 1. Alkalmazás létrehozása
+        - name: Alkalmazás létrehozása
           href: get-started-portal-build-app.md
           displayName: 'intent, entity, create app, test, example utterance'
-        - name: 2. Alkalmazás üzembe helyezése
+        - name: Alkalmazás üzembe helyezése
           href: get-started-portal-deploy-app.md
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Böngésző használata
       href: luis-get-started-get-intent-from-browser.md
     - name: Ügyfélkódtárak és REST API-k használata
       href: client-libraries-rest-api.md
-- name: Oktatóanyagok
+- name: Példák
+  href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
+- name: Útmutatók
   items:
-    - name: Felbontható alkalmazás létrehozása
+    - name: Bejelentkezés a LUIS portálra
+      href: sign-in-luis-portal.md
+    - name: Új alkalmazás indítása
+      href: luis-how-to-start-new-app.md
+      displayName: 'import, export, container'
+    - name: Modell létrehozása
       items:
-        - name: 1. Felhasználói szándékok meghatározása
-          href: tutorial-intents-only.md
-        - name: 2. Felhasználói adatok kinyerése
-          href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-    - name: Az alkalmazás továbbfejlesztése
+        - name: Szándék hozzáadása
+          href: luis-how-to-add-intents.md
+        - name: Entitás hozzáadása az adatok kinyerésére
+          href: luis-how-to-add-entities.md
+          displayName: 'roles, import'
+        - name: Előre összeállított modellek használata
+          href: howto-add-prebuilt-models.md
+        - name: Entitás címkézése beszédelemben
+          href: label-entity-example-utterance.md
+        - name: Szolgáltatások hozzáadása
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
+          href: luis-how-to-add-features.md
+        - name: Szándék beszerzése a REST API használatával
+          href: luis-get-started-get-intent-from-rest.md
+        - name: A modell módosítása a REST API használatával
+          href: get-started-get-model-rest-apis.md
+    - name: Az alkalmazás integrálása
       items:
-        - name: Bizonytalan előrejelzések javítása
-          href: luis-tutorial-review-endpoint-utterances.md
-        - name: Minták hozzáadása az előrejelzések javításához
-          href: luis-tutorial-pattern.md
-    - name: Használat robottal
+        - name: A Bing Spell Check 7-es verziójával
+          href: luis-tutorial-bing-spellcheck.md
+        - name: Beszédszolgáltatással
+          href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
+    - name: Előrejelzés pontosságának javítása
       items:
-        - name: C# használatával
-          href: luis-csharp-tutorial-bf-v4.md
-          displayName: 'bot framework, framework, sdk, abs'
-        - name: Node.js használatával
-          displayName: 'bot framework, framework, sdk, abs'
-          href: luis-nodejs-tutorial-bf-v4.md
+        - name: Az irányítópult használata
+          displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
+          href: luis-how-to-use-dashboard.md
+        - name: A végpont beszédmódjainak áttekintése
+          displayName: active learning
+          href: luis-how-to-review-endpoint-utterances.md
+        - name: Minták hozzáadása
+          displayName: 'syntax, template, roles'
+          href: luis-how-to-model-intent-pattern.md
+    - name: Az alkalmazás betanítása és tesztelése
+      items:
+        - name: Az alkalmazás betanítása
+          href: luis-how-to-train.md
+          displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
+        - name: Interaktív tesztelés
+          href: luis-interactive-test.md
+        - name: Kötegelt tesztelés
+          href: luis-how-to-batch-test.md
+          displayName: 'import, export'
+    - name: Közzététel
+      href: luis-how-to-publish-app.md
+    - name: Előrejelzési futtatókörnyezet lekérdezése
+      href: luis-get-started-get-intent-from-browser.md
+    - name: Migrate (Áttelepítés)
+      items:
+        - name: Áttekintés
+          href: migration.md
+        - name: Migrálás összetett entitásból
+          href: migrate-from-composite-entity.md
+        - name: Migrálás tartalomkészítési erőforrásra
+          href: luis-migration-authoring.md
+        - name: Migrálás a V3 API-re
+          href: luis-migration-api-v3.md
+        - name: Migrálás V3 tartalomkészítési API-kra
+          href: luis-migration-authoring-entities.md
+        - name: Migrálás V3 előrejelzési API-kra
+          href: luis-migration-api-v3.md
+        - name: Áttérés az API 2-es verziójára
+          href: luis-migration-api-v1-to-v2.md
+    - name: Alkalmazás kezelése
+      items:
+        - name: Azure-erőforrások
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
+          href: luis-how-to-azure-subscription.md
+        - name: Alkalmazás- és verzióbeállítások
+          href: how-to-application-settings-portal.md
+        - name: Szerzők és közreműködők
+          displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
+          href: luis-how-to-collaborate.md
+        - name: Verziókkal
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: A Traffic Managerrel
+          href: luis-traffic-manager.md
+    - name: LUIS üzembe helyezése
+      items:
+        - name: Tárolók használata
+          items:
+            - name: Tárolók telepítése és futtatása
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
+              href: luis-container-howto.md
+            - name: Tárolók konfigurálása
+              href: luis-container-configuration.md
+            - name: A Container Instances használata
+              href: ../containers/azure-container-instance-recipe.md
+            - name: Tárolókorlátozások
+              href: luis-container-limitations.md
+              displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+            - name: Cognitive Services-tárolók – dokumentáció
+              href: ../containers/index.yml
 - name: Alapelvek
   items:
     - name: Mesterséges intelligencia
       href: artificial-intelligence.md
     - name: Fejlesztési életciklus
       href: luis-concept-app-iteration.md
+    - name: Ajánlott eljárások
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
     - name: Az alkalmazás megtervezése
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Adatgyűjtés
-      href: data-collection.md
     - name: Alkalmazásmodellek
       items:
         - name: Típusok
@@ -80,9 +170,6 @@
           href: schema-change-prediction-runtime.md
     - name: Előrejelzési pontszám
       href: luis-concept-prediction-score.md
-    - name: Ajánlott eljárások
-      href: luis-concept-best-practices.md
-      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
     - name: Az alkalmazás teljesítményének növelése
       items:
         - name: A végpont beszédmódjainak áttekintése
@@ -93,6 +180,8 @@
           href: luis-concept-test.md
     - name: Adatkezelés
       items:
+        - name: Adatgyűjtés
+          href: data-collection.md
         - name: Adatok módosítása
           href: luis-concept-data-alteration.md
         - name: Adatok átalakítása
@@ -105,152 +194,44 @@
     - name: A LUIS és a QnA Maker használata
       href: choose-natural-language-processing-service.md
       displayName: 'nlp, qna maker'
-    - name: Enterprise
-      items:
-        - name: Tervezési stratégiák
-          href: luis-concept-enterprise.md
-          displayName: import
+    - name: Vállalati tervezési stratégiák
+      href: luis-concept-enterprise.md
+      displayName: import
     - name: DevOps-eljárások alkalmazása a LUIS használatával
       items:
+        - name: DevOps használata
+          href: luis-how-to-devops-with-github.md
         - name: A LUIS verziókövetési és elágaztatási stratégiái
           href: luis-concept-devops-sourcecontrol.md
         - name: DevOps tesztelése
           href: luis-concept-devops-testing.md
         - name: CI/CD-munkafolyamatok
           href: luis-concept-devops-automation.md
-- name: Útmutatók
+- name: Oktatóanyagok
   items:
-    - name: Bejelentkezés a LUIS portálra
-      href: sign-in-luis-portal.md
-    - name: Új alkalmazás indítása
-      href: luis-how-to-start-new-app.md
-      displayName: 'import, export, container'
-    - name: Modellépítés
+    - name: Felbontható alkalmazás létrehozása
       items:
-        - name: Szándék hozzáadása
-          href: luis-how-to-add-intents.md
-        - name: Entitás hozzáadása az adatok kinyerésére
-          href: luis-how-to-add-entities.md
-          displayName: 'roles, import'
-        - name: Előre összeállított modellek használata
-          href: howto-add-prebuilt-models.md
-        - name: Entitás címkézése beszédelemben
-          href: label-entity-example-utterance.md
-        - name: Szolgáltatás hozzáadása
-          displayName: 'synonym, interchange, phrase list, descriptor, feature'
-          href: luis-how-to-add-features.md
-        - name: REST API-kkal
-          items:
-            - name: Alkalmazás létrehozása programozott módon a Node.js használatával
-              href: luis-tutorial-node-import-utterances-csv.md
-    - name: Integrálás
+        - name: 1. Felhasználói szándékok meghatározása
+          href: tutorial-intents-only.md
+        - name: 2. Felhasználói adatok kinyerése
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
+    - name: Az alkalmazás továbbfejlesztése
       items:
-        - name: A Bing Spell Check 7-es verziójával
-          href: luis-tutorial-bing-spellcheck.md
-        - name: Beszédszolgáltatással
-          href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
-    - name: Előrejelzés pontosságának javítása
+        - name: Bizonytalan előrejelzések javítása
+          href: luis-tutorial-review-endpoint-utterances.md
+        - name: Minták hozzáadása az előrejelzések javításához
+          href: luis-tutorial-pattern.md
+    - name: Használat robottal
       items:
-        - name: Az irányítópult használata
-          displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
-          href: luis-how-to-use-dashboard.md
-        - name: A végpont beszédmódjainak áttekintése
-          displayName: active learning
-          href: luis-how-to-review-endpoint-utterances.md
-        - name: Minták hozzáadása
-          displayName: 'syntax, template, roles'
-          href: luis-how-to-model-intent-pattern.md
-    - name: Betanítás
-      href: luis-how-to-train.md
-      displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
-    - name: Tesztelés
-      items:
-        - name: Interaktív tesztelés
-          href: luis-interactive-test.md
-        - name: Kötegelt tesztelés
-          href: luis-how-to-batch-test.md
-          displayName: 'import, export'
-    - name: Közzététel
-      href: luis-how-to-publish-app.md
-    - name: Előrejelzési futtatókörnyezet lekérdezése
-      href: luis-get-started-get-intent-from-browser.md
-    - name: Migrate (Áttelepítés)
-      items:
-        - name: Áttekintés
-          href: migration.md
-        - name: Migrálás összetett entitásból
-          href: migrate-from-composite-entity.md
-        - name: Migrálás tartalomkészítési erőforrásra
-          href: luis-migration-authoring.md
-        - name: Migrálás a V3 API-re
-          href: luis-migration-api-v3.md
-    - name: Alkalmazás kezelése
-      items:
-        - name: Azure-erőforrások
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
-          href: luis-how-to-azure-subscription.md
-        - name: Alkalmazás- és verzióbeállítások
-          href: how-to-application-settings-portal.md
-        - name: Szerzők és közreműködők
-          displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
-          href: luis-how-to-collaborate.md
-        - name: Verziókkal
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: A Traffic Managerrel
-          href: luis-traffic-manager.md
-    - name: API-k használata
-      items:
-        - name: Fejlesztőknek
-          href: developer-reference-resource.md
-        - name: Alkalmazásséma
-          href: app-schema-definition.md
-        - name: Migrálás V3 tartalomkészítési API-kra
-          href: luis-migration-authoring-entities.md
-        - name: Migrálás V3 előrejelzési API-kra
-          href: luis-migration-api-v3.md
-        - name: Áttérés az API 2-es verziójára
-          href: luis-migration-api-v1-to-v2.md
-    - name: REST API-k használata
-      items:
-        - name: Szándék lekérése
-          href: luis-get-started-get-intent-from-rest.md
-        - name: Modell módosítása
-          href: get-started-get-model-rest-apis.md
-    - name: Tárolók használata
-      items:
-        - name: Tárolók telepítése és futtatása
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
-          href: luis-container-howto.md
-        - name: Tárolók konfigurálása
-          href: luis-container-configuration.md
-        - name: A Container Instances használata
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Tárolókorlátozások
-          href: luis-container-limitations.md
-          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-        - name: Cognitive Services-tárolók – dokumentáció
-          href: ../containers/index.yml
-    - name: DevOps használata
-      href: luis-how-to-devops-with-github.md
-    - name: Kapcsolódó szolgáltatások
-      items:
-        - name: Azure Bot Service
-          href: 'https://dev.botframework.com/'
-        - name: Robotépítő 4.x SDK C#
-          href: 'https://github.com/Microsoft/botbuilder-dotnet'
-        - name: QnA Maker
-          href: 'https://qnamaker.ai/'
-        - name: Bing Speech API
-          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
-        - name: Bing Spell Check API
-          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
-        - name: Szövegelemzés
-          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-        - name: Recognizers-Text
-          href: 'https://github.com/Microsoft/Recognizers-Text'
-        - name: Intelligens kioszk
-          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
+        - name: C# használatával
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
+        - name: Node.js használatával
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
+    - name: Alkalmazás létrehozása programozott módon a Node.js használatával
+      href: luis-tutorial-node-import-utterances-csv.md
 - name: Referencia
   items:
     - name: Fejlesztői referencia
@@ -325,91 +306,86 @@
                   href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
     - name: Felhasználói adatvédelem
       href: luis-user-privacy.md
-    - name: Régiók
+    - name: Létrehozási vagy közzétételi régiók
       href: luis-reference-regions.md
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Korlátok
       href: luis-limits.md
     - name: Alkalmazás- és verzióbeállítások
       href: luis-reference-application-settings.md
-    - name: Előre összeállított entitáshivatkozás
+    - name: Entitások bemutatása
       items:
-        - name: Entitások kultúránként
-          href: luis-reference-prebuilt-entities.md
-        - name: Kor entitás
-          href: luis-reference-prebuilt-age.md
-        - name: Pénznem entitás
-          href: luis-reference-prebuilt-currency.md
-        - name: DatetimeV2 entitás
-          href: luis-reference-prebuilt-datetimev2.md
-          displayName: timex
-        - name: Dimenzió entitás
-          href: luis-reference-prebuilt-dimension.md
-        - name: Elavult entitások
-          href: luis-reference-prebuilt-deprecated.md
-        - name: E-mail entitás
-          href: luis-reference-prebuilt-email.md
-        - name: GeographyV2 entitás
-          href: luis-reference-prebuilt-geographyV2.md
-        - name: KeyPhrase entitás
-          href: luis-reference-prebuilt-keyphrase.md
-        - name: Szám entitás
-          href: luis-reference-prebuilt-number.md
-        - name: Sorszám entitás
-          href: luis-reference-prebuilt-ordinal.md
-        - name: 2-es verziójú sorszám entitás
-          href: luis-reference-prebuilt-ordinal-v2.md
-        - name: Százalék entitás
-          href: luis-reference-prebuilt-percentage.md
-        - name: PersonName entitás
-          href: luis-reference-prebuilt-person.md
-        - name: Telefonszám entitás
-          href: luis-reference-prebuilt-phonenumber.md
-        - name: Hőmérséklet entitás
-          href: luis-reference-prebuilt-temperature.md
-        - name: URL-cím entitás
-          href: luis-reference-prebuilt-url.md
-    - name: Előre összeállított tartományhivatkozás
-      href: luis-reference-prebuilt-domains.md
-      displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
-    - name: Egyéni entitáshivatkozás
-      items:
-        - name: Gépi tanulási entitás
-          href: reference-entity-machine-learned-entity.md
-        - name: Összetett entitás
-          href: reference-entity-composite.md
-        - name: Listaentitás
-          href: reference-entity-list.md
-        - name: Pattern.any entitás
-          href: reference-entity-pattern-any.md
-        - name: Reguláriskifejezés-entitás
-          href: reference-entity-regular-expression.md
-        - name: Egyszerű entitás
-          href: reference-entity-simple.md
+        - name: Prebuilt
+          items:
+            - name: Előre összeállított tartományhivatkozás
+              href: luis-reference-prebuilt-domains.md
+            - name: Entitások kultúránként
+              href: luis-reference-prebuilt-entities.md
+            - name: Kor entitás
+              href: luis-reference-prebuilt-age.md
+            - name: Pénznem entitás
+              href: luis-reference-prebuilt-currency.md
+            - name: DatetimeV2 entitás
+              href: luis-reference-prebuilt-datetimev2.md
+              displayName: timex
+            - name: Dimenzió entitás
+              href: luis-reference-prebuilt-dimension.md
+            - name: Elavult entitások
+              href: luis-reference-prebuilt-deprecated.md
+            - name: E-mail entitás
+              href: luis-reference-prebuilt-email.md
+            - name: GeographyV2 entitás
+              href: luis-reference-prebuilt-geographyV2.md
+            - name: KeyPhrase entitás
+              href: luis-reference-prebuilt-keyphrase.md
+            - name: Szám entitás
+              href: luis-reference-prebuilt-number.md
+            - name: Sorszám entitás
+              href: luis-reference-prebuilt-ordinal.md
+            - name: 2-es verziójú sorszám entitás
+              href: luis-reference-prebuilt-ordinal-v2.md
+            - name: Százalék entitás
+              href: luis-reference-prebuilt-percentage.md
+            - name: PersonName entitás
+              href: luis-reference-prebuilt-person.md
+            - name: Telefonszám entitás
+              href: luis-reference-prebuilt-phonenumber.md
+            - name: Hőmérséklet entitás
+              href: luis-reference-prebuilt-temperature.md
+            - name: URL-cím entitás
+              href: luis-reference-prebuilt-url.md
+          displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
+        - name: Egyéni
+          items:
+            - name: Gépi tanulási entitás
+              href: reference-entity-machine-learned-entity.md
+            - name: Összetett entitás
+              href: reference-entity-composite.md
+            - name: Listaentitás
+              href: reference-entity-list.md
+            - name: Pattern.any entitás
+              href: reference-entity-pattern-any.md
+            - name: Reguláriskifejezés-entitás
+              href: reference-entity-regular-expression.md
+            - name: Egyszerű entitás
+              href: reference-entity-simple.md
     - name: Minta szintaxisa
       href: reference-pattern-syntax.md
     - name: Hangulatreferencia
       href: luis-reference-prebuilt-sentiment.md
 - name: További források
   items:
+    - name: LUIS portál
+      href: 'https://www.luis.ai'
     - name: Támogatási lehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
-    - name: Kódminták
-      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Nyelvi támogatás
-      href: luis-language-support.md
       displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure-ütemterv
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Szószedet
       href: luis-glossary.md
-    - name: Hibaelhárítás
-      href: troubleshooting.md
-      displayName: 'FAQ, import'
-    - name: Díjszabás és korlátok
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás
@@ -421,5 +397,21 @@
       href: /search/index?search=LUIS
     - name: Blog
       href: 'https://blog.botframework.com/category/luis/'
-- name: LUIS portál
-  href: 'https://www.luis.ai'
+    - name: Kapcsolódó szolgáltatások
+      items:
+        - name: Azure Bot Service
+          href: 'https://dev.botframework.com/'
+        - name: Robotépítő 4.x SDK C#
+          href: 'https://github.com/Microsoft/botbuilder-dotnet'
+        - name: QnA Maker
+          href: 'https://qnamaker.ai/'
+        - name: Bing Speech API
+          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+        - name: Bing Spell Check API
+          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+        - name: Szövegelemzés
+          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+        - name: Recognizers-Text
+          href: 'https://github.com/Microsoft/Recognizers-Text'
+        - name: Intelligens kioszk
+          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 2ac5474f1b20e409da01c531ef13060e72fd548c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786124"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>A tevékenység Azure Data Factory
@@ -51,11 +51,11 @@ Az Until tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyel
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A tevékenység neve `Until` . | Sztring | Igen
-típus | **Csak** a értékre kell beállítani. | Sztring | Igen
-kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Igen
-timeout | A do-ig hurkos időtúllépés a megadott idő után. | Sztring. `d.hh:mm:ss` (vagy) `hh:mm:ss` . Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
-Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés kiértékelése után hajt végre `true` . | Tevékenységek tömbje. |  Igen
+name | A tevékenység neve `Until` . | Sztring | Yes
+típus | **Csak** a értékre kell beállítani. | Sztring | Yes
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Yes
+timeout | A do-ig hurkos időtúllépés a megadott idő után. | Sztring. `d.hh:mm:ss` (vagy) `hh:mm:ss` . Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | No
+Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés kiértékelése után hajt végre `true` . | Tevékenységek tömbje. |  Yes
 
 ## <a name="example-1"></a>1\. példa
 
