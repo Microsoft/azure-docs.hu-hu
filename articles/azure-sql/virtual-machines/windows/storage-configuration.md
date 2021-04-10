@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105565422"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>Tároló konfigurálása SQL Server virtuális gépekhez
@@ -142,7 +142,7 @@ Az Azure a következő beállítások használatával hozza létre a tárolót S
 
 Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzájuk tartozó optimalizálási lehetőségeket ismerteti:
 
-| Munkaterhelés típusa | Description | Optimalizálás |
+| Munkaterhelés típusa | Leírás | Optimalizálás |
 | --- | --- | --- |
 | **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |Nincsenek |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |

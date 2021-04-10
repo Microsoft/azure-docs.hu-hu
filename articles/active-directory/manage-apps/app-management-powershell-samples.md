@@ -12,10 +12,10 @@ ms.date: 02/18/2021
 ms.author: kenwith
 ms.reviewer: mifarca
 ms.openlocfilehash: f5f7ec8245a43440a400b9ca6b55bf1093eb62cc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102636188"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>Azure Active Directory PowerShell-példák az alkalmazások kezeléséhez
@@ -26,7 +26,7 @@ Az alábbi táblázat az Azure AD-alkalmazások kezeléséhez használható Powe
 
 A példákban használt parancsmagokkal kapcsolatos további információkért lásd: [alkalmazások](/powershell/module/azuread/#applications).
 
-| Hivatkozás | Description |
+| Hivatkozás | Leírás |
 |---|---|
 |**Application Management-parancsfájlok**||
 | [Titkok és tanúsítványok exportálása (alkalmazás-regisztrációk)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | A titkok és tanúsítványok exportálása Azure Active Directory bérlőben az alkalmazások regisztrálásához. |

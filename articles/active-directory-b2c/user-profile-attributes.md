@@ -11,10 +11,10 @@ ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102500529"
 ---
 # <a name="user-profile-attributes"></a>Felhasználói profilattribútumok
@@ -39,7 +39,7 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 - Ha az attribútum felhasználói folyamatokban is használható
 - Ha az attribútum az [Azure ad egy adott technikai profiljában](active-directory-technical-profile.md) és a ( &lt; szabályzattípushoz &gt; , &lt; OutputClaims &gt; vagy &lt; PersistedClaims &gt; ) szakaszban is használható.
 
-|Név     |Típus     |Description|Azure Portal|Felhasználói folyamatok|Egyéni szabályzat|
+|Név     |Típus     |Leírás|Azure Portal|Felhasználói folyamatok|Egyéni szabályzat|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Logikai|Azt jelzi, hogy a felhasználói fiók engedélyezve van vagy le van tiltva: **igaz** , ha a fiók engedélyezve van, ellenkező esetben **hamis**.|Igen|Nem|Megőrzött, kimenet|
 |korcsoport        |Sztring|A felhasználó korcsoport. Lehetséges értékek: NULL, nem definiált, kisebb, felnőtt, NotAdult.|Igen|Nem|Megőrzött, kimenet|
@@ -105,7 +105,7 @@ Az ügyfél fiókkal rendelkező felhasználók több identitással is bejelentk
 
 A Microsoft Graph API-ban a helyi és az összevont identitások is a User `identities` attribútumban tárolódnak, amely [objectIdentity](/graph/api/resources/objectidentity)típusú. A `identities` gyűjtemény a felhasználói fiókba való bejelentkezéshez használt identitások készletét jelöli. Ez a gyűjtemény lehetővé teszi, hogy a felhasználó a hozzá tartozó identitásokkal jelentkezzen be a felhasználói fiókba. Az identitások attribútum legfeljebb tíz [objectIdentity](/graph/api/resources/objectidentity) objektumot tartalmazhat. Minden objektum a következő tulajdonságokat tartalmazza:
 
-| Név   | Típus |Description|
+| Név   | Típus |Leírás|
 |:---------------|:--------|:----------|
 |signInType|sztring| Megadja a felhasználói bejelentkezési típusokat a címtárban. Helyi fiók esetén:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` vagy bármely más hasonló típus. A közösségi fiókot a következőre kell beállítani:  `federated` .|
 |kiállító|sztring|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated` ), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartománynevét adja meg, például: `contoso.onmicrosoft.com` . A közösségi identitás (ahol  a signInType `federated` ) értéke a kibocsátó neve, például:`facebook.com`|

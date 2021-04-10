@@ -4,10 +4,10 @@ description: Ez az adatmodell a diagnosztikai események Log Analyticsba (LA) t�
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: 0d75af6d2b41aad0b5f821dd1f6409b30f7ca531
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102499594"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Adatmodell a Azure Backup diagnosztikai eseményeihez

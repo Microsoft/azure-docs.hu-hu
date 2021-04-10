@@ -12,10 +12,10 @@ ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38b484bd67f3354132675f343dcc06bd7f9d48a0
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102499812"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager és Azure Active Directory integráció a biztonságos hibrid hozzáféréshez
@@ -68,7 +68,7 @@ Az ábrán az 1-4-es lépések bemutatják a felhasználó, a BIG IP és az Azur
 
 ![A képen a magas szintű architektúra látható](./media/f5-aad-integration/integration-flow-diagram.png)
 
-| Lépés | Description |
+| Lépés | Leírás |
 |:------|:-----------|
 | 1. | A felhasználó kiválasztja az alkalmazás ikonját a portálon, feloldja az SAML SP URL-címét (BIG-IP) |
 | 2. | A BIG-IP átirányítja a felhasználót az SAML-IDENTITÁSSZOLGÁLTATÓ (Azure AD) az előzetes hitelesítéshez|

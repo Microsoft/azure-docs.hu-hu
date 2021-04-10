@@ -7,10 +7,10 @@ author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
 ms.openlocfilehash: 2aa7afebede3759221674c48dd66256e740575a3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105565945"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
@@ -37,7 +37,7 @@ A következő táblázat felsorolja a Data Factory által támogatott számítá
 
 Tekintse meg az alábbi táblázatot az igény szerinti és BYOC (saját számítási) környezetben történő konfiguráláshoz támogatott Storage-beli társított szolgáltatások típusairól.
 
-| A számítási társított szolgáltatásban | Tulajdonság neve                | Description                                                  | Blob | ADLS Gen2 | Azure SQL DB | ADLS Gen 1 |
+| A számítási társított szolgáltatásban | Tulajdonság neve                | Leírás                                                  | Blob | ADLS Gen2 | Azure SQL DB | ADLS Gen 1 |
 | ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
 | Igény szerinti                 | linkedServiceName            | Az Azure Storage társított szolgáltatása, amelyet az igény szerinti fürt használ az adattároláshoz és az adatfeldolgozáshoz. | Igen  | Igen       | Nem           | Nem         |
 |                           | additionalLinkedServiceNames | További Storage-fiókokat ad meg a HDInsight társított szolgáltatáshoz, hogy a Data Factory szolgáltatás regisztrálja őket az Ön nevében. | Igen  | Nem        | Nem           | Nem         |

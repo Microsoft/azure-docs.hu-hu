@@ -10,10 +10,10 @@ ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98927405"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
@@ -43,7 +43,7 @@ Ebben a lépésben hozzárendel egy rendszerhez rendelt felügyelt identitást a
 
 Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerhez rendelt felügyelt identitásához. Azure Cosmos DB több beépített szerepkörrel rendelkezik, amelyeket hozzárendelhet a felügyelt identitáshoz. Ebben a megoldásban a következő két szerepkört fogja használni:
 
-|Beépített szerepkör  |Description  |
+|Beépített szerepkör  |Leírás  |
 |---------|---------|
 |[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat. Olvasási/írási kulcsok lekérését teszi lehetővé. |
 |[Cosmos DB fiók-olvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |

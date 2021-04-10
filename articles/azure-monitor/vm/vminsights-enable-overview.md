@@ -7,10 +7,10 @@ ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
 ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102634158"
 ---
 # <a name="enable-vm-insights-overview"></a>A VM-információk áttekintésének engedélyezése
@@ -41,7 +41,7 @@ A VM-alapú bepillantást a következő gépek támogatják:
 ## <a name="supported-azure-arc-machines"></a>Támogatott Azure arc-gépek
 A virtuális gépekről elérhető Azure arc-kiszolgálók olyan régiókban érhetők el, ahol az arc-kiterjesztési szolgáltatás elérhető. Az ív-ügynök 0,9-es vagy újabb verzióját kell futtatnia.
 
-| Csatlakoztatott forrás | Támogatott | Description |
+| Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
 | Windows-ügynökök | Yes | A Windows [log Analytics ügynökével](../agents/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](../agents/agents-overview.md#supported-operating-systems). |
 | Linux-ügynökök | Yes | A [Linux rendszerhez készült log Analytics-ügynökkel](../agents/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |

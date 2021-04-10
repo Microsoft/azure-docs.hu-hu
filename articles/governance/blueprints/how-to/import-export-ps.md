@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan dolgozhat a terv-definíciók kóddal. Az expor
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919986"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Terv-definíciók importálása és exportálása a PowerShell-lel
