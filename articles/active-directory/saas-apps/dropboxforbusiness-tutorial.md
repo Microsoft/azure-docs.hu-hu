@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
 ms.openlocfilehash: 41f6db8cf2454c224addac525e9d039954a95712
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104601499"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Oktatóanyag: a Dropbox Business integrálása a Azure Active Directory
@@ -133,7 +133,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Ha manuálisan szeretné beállítani a Dropbox businesst, nyisson meg egy új böngészőablakot, és lépjen a Dropbox üzleti bérlőre, és jelentkezzen be a Dropbox üzleti bérlőbe. és hajtsa végre a következő lépéseket:
 
-    ![Képernyőkép, amely a "Dropbox Business Sign in" lapot mutatja.](./media/dropboxforbusiness-tutorial/account.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely a "Dropbox Business Sign in&quot; lapot mutatja.](./media/dropboxforbusiness-tutorial/account.png &quot;Egyszeri bejelentkezés konfigurálása")
 
 4. Kattintson a **felhasználó ikonra** , és válassza a **Beállítások** lapot.
 

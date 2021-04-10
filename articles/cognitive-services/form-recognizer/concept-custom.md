@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 74ced2ecadb5ccfe5cdb7966550e469ae4f8ab31
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 8a29bc0d98c1286dcf09da59dc21ac2b2e09f478
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612262"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935617"
 ---
 # <a name="form-recognizer-custom-models"></a>Űrlap-felismerő egyéni modelljei
 
@@ -34,36 +34,37 @@ Az űrlap-felismerő használatával olyan modellt is betaníthat, amely kinyeri
 Az egyéni modell létrehozásával, betanításával és használatával kapcsolatos lépések a következők:
 
 > [!div class="nextstepaction"]
-> [1. a betanítási adatkészlet összeállítása](build-training-data-set.md#custom-model-input-requirements)
+>A betanítási adatkészlet összeállítása] (Build-Training-adatok-set. MD # Custom-Model-input-követelmények)
 
 Az egyéni modell létrehozása a betanítási adatkészlet létrehozásával kezdődik. A minta adatkészlethez legalább öt befejezett, azonos típusú kész űrlapra lesz szüksége. Különböző fájltípusok lehetnek, és szöveget és kézírást is tartalmazhatnak. Az űrlapoknak ugyanolyan típusú dokumentumnak kell lenniük, és követniük kell az űrlap-felismerő [bemeneti követelményeit](build-training-data-set.md#custom-model-input-requirements) .  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [2. Töltse fel a betanítási adatkészletet](build-training-data-set.md#upload-your-training-data)
+> [Töltse fel a betanítási adatkészletet](build-training-data-set.md#upload-your-training-data)
 
 A betanítási adatait fel kell töltenie egy Azure Blob Storage-tárolóba. Ha nem tudja, hogyan hozhat létre egy tárolóval rendelkező Azure Storage-fiókot, tekintse [meg a Azure Portal Azure Storage](../../storage/blobs/storage-quickstart-blobs-portal.md)gyors üzembe helyezését *ismertető témakört* . Az ingyenes díjszabási csomaggal (F0) próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 > [!div class="nextstepaction"]
-> [3. az egyéni modell betanítása](quickstarts/client-library.md#train-a-custom-model)
+>[Az egyéni modell betanítása](quickstarts/client-library.md#train-a-custom-model)
 
 A modellt [a címkével ellátott](quickstarts/client-library.md#train-a-model-with-labels) adatkészletek [nélkül](quickstarts/client-library.md#train-a-model-without-labels) is betaníthatja. A címke nélküli adatkészletek kizárólag az elrendezési API-ra támaszkodnak a kulcsfontosságú információk észlelésére és azonosítására a hozzáadott emberi bevitel nélkül. A címkével ellátott adatkészletek az elrendezési API-ra is támaszkodnak, de a kiegészítő emberi bevitel is szerepel, például az adott címkéket és a mezők helyét. Ha a címkével ellátott és a címkével ellátott adatmennyiséget egyaránt használni szeretné, kezdje a címkével ellátott betanítási adattípushoz legalább öt befejezett formát, majd vegyen fel címkézetlen adatkészletet a szükséges adatkészletbe.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;  
 
 >[!div class="nextstepaction"]
-> [4. dokumentumok elemzése az egyéni modellel](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
+>[Dokumentumok elemzése az egyéni modellel](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
 
 Tesztelje az újonnan betanított modellt olyan űrlap használatával, amely nem része a betanítási adatkészletnek. Az egyéni modell teljesítményének növeléséhez továbbra is folytathatja a képzést.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [5. egyéni modellek kezelése](quickstarts/client-library.md#manage-custom-models)
+>[Egyéni modellek kezelése](quickstarts/client-library.md#manage-custom-models)
 
 Bármikor megtekintheti az előfizetéshez tartozó egyéni modellek listáját, lekérheti az adott egyéni modell adatait, vagy törölhet egy egyéni modellt a fiókjából.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az API-referenciák dokumentációjának megismerésével további információkat tudhat meg az űrlap felismerő ügyfelének könyvtárából.
+
 > [!div class="nextstepaction"]
-> [Űrlap-felismerő API-referenciája](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)
+> [Űrlap-felismerő API-referenciája](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
 >

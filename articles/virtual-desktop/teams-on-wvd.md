@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743117"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935720"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -120,7 +120,7 @@ A WebSocket szolgáltatás és a csapatok asztali alkalmazás telepítése után
 
 3. Válassza a **verzió** elemet.
 
-      Ha a média-optimalizálás be van töltve, a szalagcím megjeleníti a **WVD média optimalizált beállításait**. Ha a szalagcímben a **WVD adathordozó nincs csatlakoztatva**, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra.
+      Ha a média-optimalizálás be van töltve, a szalagcím megjeleníti a **Windows rendszerű virtuális asztali média optimalizált** verzióját. Ha a szalagcímben **nincs csatlakoztatva a Windows rendszerű virtuális asztali adathordozó**, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra.
 
 4. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Beállítások** lehetőséget.
 

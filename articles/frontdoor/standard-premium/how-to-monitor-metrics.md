@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: 72388eb8006ff1b9628db5066dc63e6a0811f3d5
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105557326"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Valós idejű figyelés az Azure-beli előtérben standard/prémium szintű
@@ -35,7 +35,7 @@ Beállíthat riasztásokat az egyes mérőszámokhoz, például a 4XXErrorRate v
 
 ## <a name="metrics-supported-in-azure-front-door-standardpremium"></a>Az Azure Door standard/Premium kiadásban támogatott metrikák
 
-| Mérőszámok  | Description | Dimenziók |
+| Mérőszámok  | Leírás | Dimenziók |
 | ------------- | ------------- | ------------- |
 | Találatok aránya (bájt) | A kimenő forgalom AFD-gyorsítótárból való kilépésének aránya a teljes kimenő forgalomra kiszámítva. </br> A **bájtok aránya** = (kimenő forgalomtól a forrástól kimenő)/egress a szélétől. </br> **A bájtok találati arányának kiszámítása során kizárt forgatókönyvek**:</br> 1. explicit módon nem konfigurálhat gyorsítótárat a szabályok motorja vagy a lekérdezési karakterlánc gyorsítótárazási viselkedése alapján. </br> 2. explicit módon konfigurálta a gyorsítótár-vezérlési direktívát tároló nélküli vagy privát gyorsítótárral. </br>3. a bájtok találati aránya alacsony lehet, ha a forgalom nagy része nem a konfiguráció vagy forgatókönyvek alapján történő gyorsítótárazás helyett a forrásra van továbbítva. | Végpont |
 | RequestCount | A CDN által kiszolgált ügyfél-kérelmek száma. | Végpont, ügyfél ország, ügyfél-régió, HTTP-állapot, HTTP-állapot csoport |

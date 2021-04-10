@@ -3,17 +3,18 @@ title: Az Azure Cloud Services skálázásának konfigurálása (bővített tám
 description: Az Azure Cloud Services skálázási beállításainak engedélyezése (bővített támogatás)
 ms.topic: how-to
 ms.service: cloud-services-extended-support
+ms.subservice: autoscale
 author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cfa5be01a0d36764086c6c9adf97e6cb166d2bb6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dab3411319f40a111144a3e1c1f02f1b67d011b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935651"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Skálázási beállítások konfigurálása az Azure Cloud Services (bővített támogatás) 
 

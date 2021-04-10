@@ -4,10 +4,10 @@ description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok fe
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593336"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
@@ -240,7 +240,7 @@ Biztonsági mentési felhasználóként vagy rendszergazdaként képesnek kell l
 * ráadásul
   * Az adatok (például feladatok, házirendek stb.) a **log Analytics** munkaterületre is elküldhetők. Ez lehetővé teszi Azure Monitor naplók funkcióit, hogy lehetővé tegyék az adatok korrelációját a Azure Monitor által gyűjtött más monitorozási adatokkal, összevonja a naplóbejegyzéseket több Azure-előfizetésből és-bérlőből egyetlen helyre az elemzéshez [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
   * Adatokat küldhet az Event hub-nak az Azure-on kívüli bejegyzések küldéséhez, például egy harmadik féltől származó SIEM (biztonsági információk és rendezvényszervezés) vagy más log Analytics megoldáshoz. [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
-  * Az Azure Storage-fiókba küldheti az adatait, ha a naplózást, a statikus elemzést vagy a biztonsági mentést 90 napnál hosszabb ideig kívánja megőrizni. Ha csak 90 vagy kevesebb napig kell megtartania az eseményeket, nem kell létrehoznia az archívumokat egy Storage-fiókhoz, mivel a tevékenység-naplózási események az Azure-platformon maradnak a 90 napig. [További információ](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
+  * Az Azure Storage-fiókba küldheti az adatait, ha a naplózást, a statikus elemzést vagy a biztonsági mentést 90 napnál hosszabb ideig kívánja megőrizni. Ha csak 90 vagy kevesebb napig kell megtartania az eseményeket, nem kell létrehoznia az archívumokat egy Storage-fiókhoz, mivel a tevékenység-naplózási események az Azure-platformon maradnak a 90 napig. [További információk](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Riasztások kezelése
 

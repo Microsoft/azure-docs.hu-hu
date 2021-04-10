@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
 ms.openlocfilehash: 22411e5a80f555a3ead05d39466a7a175923d9bc
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105104003"
 ---
 * Miután kiválasztotta a megfelelő platformot a [platform beállításainak konfigurálása](../articles/active-directory/develop/quickstart-register-app.md#configure-platform-settings) szakasz 4. lépésében, konfigurálja az **átirányítási URI-ket** és a **hozzáférési jogkivonatokat** az oldalsó panelen a felhasználói felület jobb oldalán.

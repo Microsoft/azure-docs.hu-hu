@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98599559"
 ---
 # <a name="show-traffic-on-the-map"></a>Forgalom megjelenítése a térképen
@@ -23,7 +23,7 @@ A Azure Mapsban kétféle forgalmi adatok érhetők el:
 - Incidensek – olyan pont-és vonal-alapú adatmennyiségből állnak, mint például az építőipar, a közúti bezárások és a balesetek.
 - Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. Gyakran a forgalmi forgalomra vonatkozó adatokat használják az utak színezésére. A színek attól függnek, hogy mekkora forgalom lassul le a folyamaton, a sebességkorlátozás vagy más metrika alapján. Négy érték adható át a `flow` Térkép forgalmi lehetőségéhez.
 
-    |Folyamat értéke | Description|
+    |Folyamat értéke | Leírás|
     | :-- | :-- |
     | `none` | Nem jeleníti meg a forgalmi adatokat a térképen |
     | `relative` | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |

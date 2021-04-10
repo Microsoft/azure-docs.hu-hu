@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
 ms.openlocfilehash: df0018e323bc0c5725c9752b25b77612f035c196
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100582492"
 ---
 # <a name="reference-api-management-resource-log-schema"></a>Hivatkozás: API Management erőforrás-napló sémája
@@ -25,7 +25,7 @@ A API Management erőforrás-napló gyűjtésének engedélyezéséhez tekintse 
 
 Az egyes API-kérelmeket a következő tulajdonságok naplózzák.
 
-| Tulajdonság  | Típus | Description |
+| Tulajdonság  | Típus | Leírás |
 | ------------- | ------------- | ------------- |
 | method | sztring | A bejövő kérelem HTTP-metódusa |
 | url | sztring | A bejövő kérelem URL-címe |
