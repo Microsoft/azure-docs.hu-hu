@@ -3,7 +3,7 @@ title: Azure DDoS Protection hivatkozási architektúrák
 description: Ismerje meg az Azure DDoS Protection hivatkozási architektúráit.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b74ebf332790fd9a08840c8c76d99e2b014dac43
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94992437"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103079"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection hivatkozási architektúrák
 
@@ -59,6 +59,20 @@ Az internetről a webalkalmazás felé irányuló összes forgalom a [Applicatio
 Javasoljuk, hogy konfigurálja a Application Gateway WAF SKU-t (megakadályozza a módot) a 7. rétegbeli (HTTP/HTTPS/WebSocket) támadások elleni védelemhez. Emellett a webalkalmazások úgy vannak konfigurálva, hogy [csak a Application Gateway IP-címről érkező forgalmat fogadják el](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) .
 
 A hivatkozási architektúrával kapcsolatos további információkért tekintse meg [ezt a cikket](/azure/architecture/reference-architectures/app-service-web-app/multi-region).
+
+## <a name="protecting-on-premises-resources"></a>A helyszíni erőforrások védelme
+
+A Azure DDoS Protection standard méretének, kapacitásának és hatékonyságának kihasználásával biztosíthatja a helyszíni erőforrások védelmét azáltal, hogy egy nyilvános IP-címet üzemeltet az Azure-ban, és átirányítja a forgalmat a háttérbeli forrásra a helyszíni környezetbe.
+
+![Helyszíni erőforrások védelme](./media/reference-architectures/ddos-on-prem.png)
+
+Ha van olyan webalkalmazása, amely az internetről érkező forgalmat fogad, a webalkalmazást a Application Gateway mögött futtathatja, majd a WAF a 7. rétegbeli webes támadásokkal szemben, például az SQL-injektálással és a Slowloris. Az alkalmazás háttérbeli eredete a helyszíni környezetben lesz, amely a VPN-kapcsolaton keresztül csatlakozik. 
+
+A helyi környezetben a háttérbeli erőforrások nem lesznek elérhetők a nyilvános interneten. Csak a AppGW/WAF nyilvános IP-cím érhető el az interneten, és az alkalmazás DNS-neve erre a nyilvános IP-címhez van hozzárendelve. 
+
+Ha a DDoS Protection standard engedélyezve van a virtuális hálózaton, amely tartalmazza a AppGW/WAF, DDoS Protection a standard védelmet nyújt az alkalmazásnak a hibás forgalom mérséklése és a feltételezett tiszta forgalom az alkalmazásba való átirányításával. 
+
+Ebből a [cikkből](https://docs.microsoft.com/azure/azure-vmware/protect-azure-vmware-solution-with-application-gateway) megtudhatja, hogyan használhatja a DDoS Protection standardot a Application Gateway mellett az Azure VMware-megoldáson futó webalkalmazások elleni védelemhez.
 
 ## <a name="mitigation-for-non-web-paas-services"></a>A nem webes Pásti szolgáltatásainak enyhítése
 

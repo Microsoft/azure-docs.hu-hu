@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1c85a07a3d61c80f3871f04c399263a8e210254e
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591877"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010791"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Kapcsolódás Azure Database for MySQL a MySQL-hez készült dbForge Studio használatával
 
@@ -78,9 +78,7 @@ Az adatbázis-áttelepítési erőfeszítések eredményeképpen a *world_x* ada
 a dbForge Studio for MySQL több eszközt is tartalmaz, amelyek lehetővé teszik a MySQL-adatbázisok áttelepítését, a MySQL-sémák pedig and\or az Azure-ba. A választható funkciók a saját igényeitől és a projekt követelményeitől függenek. Ha szelektíven át kell helyeznie egy adatbázist, azaz bizonyos MySQL-táblákat át kell telepíteni az Azure-ba, érdemes a séma és az adatösszehasonlítás funkciót használni.
 Ebben a példában migráljuk a MySQL-kiszolgálón található *globális* adatbázist a Azure Database for MySQLra. Az áttelepítési folyamat mögötti logikája a dbForge Studio for MySQL sémájának és adatösszehasonlítási funkciójának használatával egy üres adatbázist hoz létre Azure Database for MySQLban, szinkronizálja a szükséges MySQL-adatbázissal először a séma-összehasonlítás eszköz használatával, majd az adatösszehasonlítás eszközzel. Így a MySQL sémák és az adathalmazok pontosan át lesznek helyezve az Azure-ba.
 
-### <a name="connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Kapcsolódás Azure Database for MySQLhoz és üres adatbázis létrehozása
-
-Kapcsolódjon egy Azure Database for MySQLhoz, és hozzon létre egy üres adatbázist.
+### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>1. lépés Kapcsolódás Azure Database for MySQLhoz és üres adatbázis létrehozása
 
 ### <a name="step-2-schema-synchronization"></a>2. lépés Séma szinkronizálása
 

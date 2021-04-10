@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7eca7d8f3cd40f4a3961f0ac478fba290be3041
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561891"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279663"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -175,10 +175,6 @@ A következő táblázat bemutatja, hogy mely hozzáférési rétegek érhetők 
 > [!IMPORTANT]
 > Egy meglévő Storage-fiók vagy blob hozzáférési rétegének módosítása további díjakat eredményezhet. További információkat a Storage- [fiók számlázása](#storage-account-billing)című témakörben talál.
 
-## <a name="encryption"></a>Titkosítás
-
-A Storage-fiókban lévő összes adat titkosítva van a szolgáltatás oldalán. A titkosítással kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST-adatokhoz](storage-service-encryption.md).
-
 ## <a name="storage-account-endpoints"></a>Tárfiókvégpontok
 
 A Storage-fiók egyedi névteret biztosít az Azure-ban az adataihoz. Az Azure Storage-ban tárolt összes objektumhoz tartozik egy olyan címe, amely tartalmazza az egyedi fióknevet. A fiók neve és az Azure Storage szolgáltatás végpontja a Storage-fiókhoz tartozó végpontokat képezi le.
@@ -200,22 +196,17 @@ Hozzon létre egy objektum elérésére szolgáló URL-címet egy Storage-fiókb
 
 A Storage-fiók a Blobok egyéni tartományának használatára is konfigurálható. További információ: [Egyéni tartománynév beállítása az Azure Storage-fiókhoz](../blobs/storage-custom-domain-name.md).  
 
-## <a name="control-access-to-account-data"></a>Fiókadatok hozzáférésének szabályozása
+## <a name="migrating-a-storage-account"></a>Storage-fiók áttelepítése
 
-Alapértelmezés szerint a fiókban tárolt adatok csak Ön, azaz a fiók tulajdonosa számára érhetőek el. Ön szabályozhatja, hogy ki férhet hozzá az adataihoz, és milyen engedélyekkel rendelkezik.
+A következő táblázat a Storage-fiókok áthelyezésére, frissítésére vagy áttelepítésére vonatkozó útmutatást összegzi és ismerteti:
 
-Minden, a Storage-fiókra vonatkozó kérelmet engedélyezni kell. A szolgáltatás szintjén a kérelemnek tartalmaznia kell egy érvényes *engedélyezési* fejlécet. Pontosabban, ez a fejléc tartalmazza az összes olyan információt, amely ahhoz szükséges, hogy a szolgáltatás a végrehajtás előtt érvényesítse a kérést.
-
-A következő módszerek bármelyikével biztosíthat hozzáférést a Storage-fiókban található adathoz:
-
-- **Azure Active Directory:** Használjon Azure Active Directory (Azure AD) hitelesítő adatokat egy felhasználó, csoport vagy más identitás hitelesítéséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez. Ha az identitás hitelesítése sikeres, az Azure AD visszaadja az Azure Blob Storage-ba vagy a várólista-tárolóba való kérelem engedélyezéséhez használandó tokent. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
-- **Megosztott kulcs engedélyezése:** Használja a Storage-fiók hozzáférési kulcsát olyan kapcsolati karakterlánc létrehozásához, amelyet az alkalmazás a futásidőben használ az Azure Storage eléréséhez. A kapcsolódási karakterláncban szereplő értékek az Azure Storage-nak átadott *engedélyezési* fejléc összeállítására szolgálnak. További információ: az [Azure Storage-beli kapcsolatok karakterláncának konfigurálása](storage-configure-connection-string.md).
-- **Közös hozzáférési aláírás:** A közös hozzáférésű aláírás (SAS) egy olyan token, amely lehetővé teszi az erőforrásokhoz való delegált hozzáférést a Storage-fiókban. Az SAS-jogkivonat az URL-címen az Azure Storage-ba irányuló kérés engedélyezéséhez szükséges összes információt beágyazza. SAS létrehozásakor megadhatja, hogy az SAS milyen engedélyeket biztosítson az erőforrásnak, és az engedélyek érvényességi időtartamát. SAS-tokent az Azure AD hitelesítő adataival vagy megosztott kulccsal lehet aláírni. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md).
-
-> [!NOTE]
-> Az Azure AD-beli hitelesítő adatokkal rendelkező felhasználók vagy alkalmazások hitelesítése kiváló biztonságot és könnyű használatot biztosít más engedélyezési módokon. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban.
->
-> A Microsoft az Azure AD-hitelesítés használatát javasolja az Azure Storage blob-és üzenetsor-alkalmazásaihoz, ha lehetséges.
+| Migrálási forgatókönyv | Részletek |
+|--|--|
+| Storage-fiók áthelyezése másik előfizetésre | Azure Resource Manager lehetőséget biztosít az erőforrások másik előfizetésre való áthelyezésére. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Storage-fiók áthelyezése másik erőforráscsoporthoz | Azure Resource Manager lehetőséget biztosít az erőforrás más erőforráscsoporthoz való áthelyezésére. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Storage-fiók áthelyezése egy másik régióba | A tárfiókok áthelyezéséhez létre kell hozni egy másolatot a tárfiókról egy másik régióban. Ezután helyezze át az adatait a fiókba a AzCopy használatával vagy más választott eszközzel. További információ: [Azure Storage-fiók áthelyezése másik régióba](storage-account-move.md). |
+| Frissítés általános célú v2 Storage-fiókra | Az általános célú v1 Storage-fiók vagy a blob Storage-fiók egy általános célú v2-fiókra is frissíthető. Vegye figyelembe, hogy ez a művelet nem vonható vissza. További információ: [frissítés általános célú v2 Storage-fiókra](storage-account-upgrade.md). |
+| Klasszikus Storage-fiók áttelepítése Azure Resource Managerre | A Azure Resource Manager üzemi modell a klasszikus üzemi modellhez a funkcionalitás, a méretezhetőség és a biztonság szempontjából kiváló. A klasszikus Storage-fiókok Azure Resource Managerre való áttelepítésével kapcsolatos további információkért lásd: [Storage-fiókok](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts) áttelepítése a **platform által támogatott IaaS-erőforrások áttelepítése klasszikusról Azure Resource Managerra**. |
 
 ## <a name="copying-data-into-a-storage-account"></a>Adatok másolása egy Storage-fiókba
 
@@ -240,6 +231,10 @@ Az Azure Storage REST APIával kapcsolatos további információkért lásd: az 
 > [!IMPORTANT]
 > Az ügyféloldali titkosítással titkosított blobok a titkosítással kapcsolatos metaadatokat a blobbal együtt tárolják. Ha ügyféloldali titkosítással titkosított blobot másol, ügyeljen arra, hogy a másolási művelet megőrizze a blob metaadatait, különös tekintettel a titkosítással kapcsolatos metaadatokra. Ha a blobokat a titkosítási metaadatok nélkül másolja, a blob tartalma nem kérhető le újból. További információt a titkosítással kapcsolatos metaadatokról [az Azure Storage ügyféloldali titkosítását](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
 
+## <a name="encryption"></a>Titkosítás
+
+A Storage-fiókban lévő összes adat titkosítva van a szolgáltatás oldalán. A titkosítással kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST-adatokhoz](storage-service-encryption.md).
+
 ## <a name="storage-account-billing"></a>Tárfiókok számlázása
 
 Az Azure Storage-számlák a Storage-fiók használata alapján. A tárfiókban lévő összes objektum számlázása együtt, csoportosan történik. A tárolási költségek kiszámítása a következő tényezők szerint történik:
@@ -260,5 +255,5 @@ Az [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/prici
 
 - [Tárfiók létrehozása](storage-account-create.md)
 - [Blokkblob-tárfiók létrehozása](../blobs/storage-blob-create-account-block-blob.md)
-- [Frissítés általános célú v2-tárfiókra](storage-account-upgrade.md)
+- [Frissítés általános célú v2 Storage-fiókra](storage-account-upgrade.md)
 - [Törölt tárfiók helyreállítása](storage-account-recover.md)

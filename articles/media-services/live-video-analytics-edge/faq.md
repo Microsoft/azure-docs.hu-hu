@@ -3,12 +3,12 @@ title: Élő videó-elemzés IoT Edge GYIK-ban – Azure
 description: Ez a cikk a IoT Edge élő videó-elemzésekkel kapcsolatos gyakori kérdésekre ad választ.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 661b6155ce2d95e2111a1fa338fd5df438e61e7d
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 2e5ec6e3a303bb8d655e666a820cfe67943b4eb6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105032796"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275957"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Élő video Analytics IoT Edge GYIK
 
@@ -57,7 +57,7 @@ Nem, nem támogatjuk az Open Network Video Interface Forum (ONVIF)-felderítést
 
 **Lejátszható a szélétől Azure Media Services rögzített eszközök az olyan streaming-technológiák használatával, mint a HLS vagy a DASH?**
 
-Igen. A rögzített eszközöket, például a Azure Media Services bármely más eszközét továbbíthatja. A tartalom továbbításához létre kell hoznia egy folyamatos átviteli végpontot és a futó állapotot. A standard szintű folyamatos átviteli lokátor létrehozási folyamata hozzáférést biztosít egy Apple HTTP Live Streaming (HLS) vagy dinamikus adaptív streaminghez HTTP-n keresztül (kötőjel, más néven MPEG-DASH). További információ a HLS és a DASH-jegyzékek létrehozásáról és közzétételéről: [dinamikus csomagolás](../latest/dynamic-packaging-overview.md).
+Igen. A rögzített eszközöket, például a Azure Media Services bármely más eszközét továbbíthatja. A tartalom továbbításához létre kell hoznia egy folyamatos átviteli végpontot és a futó állapotot. A standard szintű folyamatos átviteli lokátor létrehozási folyamata hozzáférést biztosít egy Apple HTTP Live Streaming (HLS) vagy dinamikus adaptív streaminghez HTTP-n keresztül (kötőjel, más néven MPEG-DASH). További információ a HLS és a DASH-jegyzékek létrehozásáról és közzétételéről: [dinamikus csomagolás](../latest/encode-dynamic-packaging-concept.md).
 
 **Használhatom a Media Services szabványos tartalomvédelem és DRM funkcióit archivált eszközön?**
 
@@ -69,7 +69,7 @@ A megfelelő HLS 3-as vagy 4-es verziójú szabványt támogató szabványos lej
 
 A teszteléshez ajánlott játékosok a következők:
 
-* [Azure Media Player](../latest/use-azure-media-player.md)
+* [Azure Media Player](../latest/player-use-azure-media-player-how-to.md)
 * [HLS.js](https://hls-js.netlify.app/demo/)
 * [Video.js](https://videojs.com/)
 * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)

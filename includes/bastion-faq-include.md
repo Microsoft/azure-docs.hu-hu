@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ba0e7173c41e26a698596fa18bf1fc1453f3fb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99628934"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073479"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Szükségem van egy nyilvános IP-címre a virtuális gépen az Azure-alapú megerősített kapcsolaton keresztül?
 
@@ -22,6 +22,10 @@ Nem. Amikor az Azure Bastion használatával csatlakozik egy virtuális géphez,
 ### <a name="is-ipv6-supported"></a>Támogatott-e az IPv6?
 
 Az IPv6 jelenleg nem támogatott. Az Azure Bastion csak az IPv4-t támogatja.
+
+### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>Használhatom az Azure Bastion-t az Azure saját DNS zónákkal?
+
+Az Azure Bastion és az Azure saját DNS zónák használata jelenleg nem támogatott. Az Azure-alapú megerősített erőforrás üzembe helyezése előtt győződjön meg arról, hogy a gazdagép virtuális hálózata nincs csatlakoztatva egy magánhálózati DNS-zónához.
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>Szükség van RDP-vagy SSH-ügyfélre?
 

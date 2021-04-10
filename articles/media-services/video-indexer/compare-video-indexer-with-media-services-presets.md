@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ceb105409ff218cd633eb36d793e8fc16c7d135c
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047345"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961540"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services v3 alapkészletek és Video Indexer összehasonlítása 
 
@@ -31,7 +31,7 @@ Jelenleg a [video Indexer API](https://api-portal.videoindexer.ai/) -k és a [Me
 
 |Szolgáltatás|Video Indexer API-k |A video Analyzer és a audio Analyzer előzetes beállítása<br/>Media Services V3 API-k|
 |---|---|---|
-|Média-ismeretek|[Továbbfejlesztett](video-indexer-output-json-v2.md) |[Alapismeretek](../latest/analyzing-video-audio-files-concept.md)|
+|Média-ismeretek|[Továbbfejlesztett](video-indexer-output-json-v2.md) |[Alapismeretek](../latest/analyze-video-audio-files-concept.md)|
 |Során|Tekintse meg a támogatott funkciók teljes listáját: <br/> [Áttekintés](video-indexer-overview.md)|Csak a video-bepillantást adja vissza|
 |Számlázás|[Díjszabás Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Díjszabás Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Megfelelőség|A legújabb megfelelőségi frissítésekhez látogasson el az [Azure megfelelőségi Offerings.pdfre ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) , és keressen rá a "video Indexer" kifejezésre, és ellenőrizze, hogy az megfelel-e a tanúsítványnak.|A legújabb megfelelőségi frissítésekhez látogasson el az [Azure megfelelőségi Offerings.pdfre ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) , és keressen rá a "Media Services" kifejezésre, és ellenőrizze, hogy az megfelel-e a tanúsítványnak.|

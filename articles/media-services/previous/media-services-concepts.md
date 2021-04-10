@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: fbe387b3f86dfd10cbc4e80a02ee2528e43c4b67
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d5743b3328248617b9158cfb1f8960549784c564
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016882"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055994"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services fogalmak
 
@@ -85,7 +85,7 @@ A Media Services kétféle lokátort támogat: a OnDemandOrigin-lokátorokat (p�
 >[!NOTE]
 >OnDemandOrigin-lokátor létrehozásakor a List engedély (AccessPermissions. list) nem használható. 
 
-### <a name="storage-account"></a>A(z)
+### <a name="storage-account"></a>Tárfiók
 Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A Media Service-fiókok egy vagy több Storage-fiókkal is társíthatók. Egy fiók korlátlan számú tárolót tartalmazhat, feltéve, hogy a teljes méretük 500TB alatt van.  A Media Services SDK-szintű eszközöket biztosít, amelyekkel több Storage-fiókot kezelhet, és terheléselosztást végez az adategységek elosztása során, a metrikák és a véletlenszerű eloszlás alapján. További információ: az [Azure Storage](/previous-versions/azure/dn767951(v=azure.100))használata. 
 
 ## <a name="jobs-and-tasks"></a>Feladatok és tevékenységek
@@ -157,7 +157,7 @@ A jogkivonat korlátozott házirendjének konfigurálásakor meg kell adnia az e
 
 További információért tekintse át a következő cikkeket:
 - [Tartalom – áttekintés](media-services-content-protection-overview.md)
-- [Védelem AES-128](media-services-protect-with-aes128.md)
+- [Védelem AES-128](media-services-playready-license-template-overview.md)
 - [Védelem a PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Szállít

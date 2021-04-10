@@ -7,10 +7,10 @@ ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
 ms.openlocfilehash: 6cb85bc1da7d98d3e2ad46229588a91d971ce014
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567290"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor-naplók – áttekintés
@@ -23,7 +23,7 @@ Azure Monitor naplók a Azure Monitor szolgáltatása, amely összegyűjti és r
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>Mire használhatók Azure Monitor naplók?
 A következő táblázat ismerteti az Azure Monitorban található naplók különböző módszereit:
 
-|  | Description |
+|  | Leírás |
 |:---|:---|
 | **Elemzés** | A Azure Portal [log Analytics](./log-analytics-tutorial.md) használata a [naplók](./log-query-overview.md) írásához és interaktív módon történő elemzéséhez egy hatékony elemzési motor használatával |
 | **Riasztás** | Olyan [naplózási riasztási szabályt](../alerts/alerts-log.md) konfigurálhat, amely értesítést küld, vagy [automatikus műveletet hajt végre](../alerts/action-groups.md) , ha a lekérdezés eredményei egy adott eredménynek felelnek meg. |

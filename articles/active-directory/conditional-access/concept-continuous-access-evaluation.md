@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44091cda479f2c0ccbe77bb9989ee2eda4c40f9d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727093"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055773"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -163,11 +163,11 @@ Ha ez a forgatókönyv a végtelen hurkok elkerülése érdekében a környezetb
 
 Az Office frissítési csatornáinak ismertetését lásd: [Microsoft 365 alkalmazások frissítési csatornáinak áttekintése](/deployoffice/overview-update-channels). Javasoljuk, hogy a szervezetek ne tiltsa le a web Account Managert (WAM).
 
-### <a name="policy-change-timing"></a>Házirend-módosítás időzítése
+### <a name="group-membership-and-policy-update-effective-time"></a>Csoporttagság és a házirend frissítése érvényes idő
 
-A rendszergazdák által végrehajtott módosítások akár egy napot is igénybe vehetnek. Némi optimalizálás történt a késleltetés két órára való csökkentése érdekében. Azonban még nem fedi le az összes forgatókönyvet. 
+A csoporttagság és a házirendek frissítése a rendszergazdák számára akár egy napot is igénybe vehet. Néhány optimalizálást végeztek a házirend-frissítésekhez, amelyek a késleltetést két óráig csökkentik. Azonban még nem fedi le az összes forgatókönyvet. 
 
-Ha vészhelyzet van, és a frissített szabályzatokat bizonyos felhasználók számára azonnal alkalmazni kell, a felhasználói munkamenet visszavonásához használja ezt a [PowerShell-parancsot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) vagy a "munkamenet visszavonása" lehetőséget, amely lehetővé teszi, hogy a frissített szabályzatokat azonnal alkalmazza a rendszer.
+Ha vészhelyzet van, és szükség van a szabályzatok frissítésére vagy a csoporttagság módosítására bizonyos felhasználók számára azonnal, akkor a felhasználói munkamenet visszavonásához használja ezt a [PowerShell-parancsot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) vagy "a munkamenet visszavonása" lehetőséget a felhasználói profilok lapon, amely biztosítja, hogy a frissített szabályzatokat azonnal alkalmazza a rendszer.
 
 ### <a name="coauthoring-in-office-apps"></a>Az Office-alkalmazások társszerzője
 

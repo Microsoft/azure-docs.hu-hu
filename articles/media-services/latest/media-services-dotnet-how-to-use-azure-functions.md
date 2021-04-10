@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/22/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e0bb8ccf3be6038c228034a55cd15cadcebddbb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 389ad34bb856675dfabd761507ed07cc722c032a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572404"
+ms.locfileid: "105961676"
 ---
 # <a name="develop-azure-functions-with-media-services-v3"></a>Azure Functions fejlesztése a Media Services v3-vel
 
@@ -29,7 +29,7 @@ Ha a Azure Media Servicest használó meglévő Azure Functionsokat szeretné fe
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ahhoz, hogy létrehozhassa az első függvényét, egy aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
-- Ha olyan Azure Functions hoz létre, amely műveleteket hajt végre a Azure Media Services-(AMS-) fiókban, vagy a Media Services által eljuttatott eseményeket figyeli, hozzon létre egy AMS-fiókot az [itt](create-account-howto.md)leírtak szerint.
+- Ha olyan Azure Functions hoz létre, amely műveleteket hajt végre a Azure Media Services-(AMS-) fiókban, vagy a Media Services által eljuttatott eseményeket figyeli, hozzon létre egy AMS-fiókot az [itt](account-create-how-to.md)leírtak szerint.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 

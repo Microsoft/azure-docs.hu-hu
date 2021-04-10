@@ -3,16 +3,16 @@ title: Azure Defender a Container nyilvántartók számára – az előnyök és
 description: Ismerje meg az Azure Defender a Container-jegyzékek előnyeit és funkcióit.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176637"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010692"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>A tárolóregisztrációs adatbázisokhoz készült Azure Defender bemutatása
 
@@ -47,7 +47,7 @@ A képvizsgálat három eseményindítót tartalmaz:
 
 - **Leküldés** esetén – amikor egy rendszerképet küld a beállításjegyzékbe, Security Center automatikusan megvizsgálja a képet. A rendszerkép vizsgálatának elindításához küldje le az adattárba.
 
-- **Nemrégiben leállt** – mivel az új biztonsági réseket minden nap felderítik, az **Azure Defender a Container-jegyzékek esetében** az elmúlt 30 napban meghúzott képeket is megvizsgálja. Az újraellenőrzéshez nem számítunk fel további díjat; a fentiekben leírtaknak megfelelően havonta egyszer kell fizetni.
+- **Nemrégiben leállt** – mivel az új biztonsági réseket minden nap felderítik, az **Azure Defender a Container-jegyzékek esetében** hetente megkeresi az elmúlt 30 napban meghúzott képeket is. Ezek az újraellenőrzések nem díjkötelesek. a fentiekben leírtaknak megfelelően havonta egyszer kell fizetni.
 
 - **Az import** -Azure Container Registry eszközön olyan eszközök importálhatók, amelyekkel a Docker hub, a Microsoft Container Registry vagy más Azure Container Registry használatával képeket hozhat a beállításjegyzékbe. Az **Azure Defender a Container nyilvántartói számára** az importált támogatott lemezképeket vizsgálja. További információ: [Container images importálása egy tároló-beállításjegyzékbe](../container-registry/container-registry-import-images.md).
  

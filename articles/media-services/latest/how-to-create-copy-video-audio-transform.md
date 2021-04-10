@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/19/2020
 ms.author: inhenkel
-ms.openlocfilehash: 24dcd64ba14303c4e205ba3da610d04d4ef277d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a3d9ff9947a97182964f805d0b8da7e3abcad69
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724574"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962361"
 ---
 # <a name="create-a-copyvideo-copyaudio-transform"></a>CopyVideo-CopyAudio átalakító létrehozása
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan hozhat létre `CopyVideo/CopyAudio` átalakítót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy eszköz létrehozásához kövesse az [Media Services fiók létrehozása](./create-account-howto.md) a szükséges Media Services fiók és erőforráscsoport létrehozásához című témakör lépéseit.
+Egy eszköz létrehozásához kövesse az [Media Services fiók létrehozása](./account-create-how-to.md) a szükséges Media Services fiók és erőforráscsoport létrehozásához című témakör lépéseit.
 
 ## <a name="methods"></a>Metódusok
 

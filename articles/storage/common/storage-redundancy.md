@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d01e125ef3e905191d76c9f4888e790958211dff
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 37e508a0f4af940773a92271075239c204e52834
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607320"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010713"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -74,8 +74,8 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 | Tárfiók típusa | Támogatott régiók | Támogatott szolgáltatások |
 |--|--|--|
 | Általános célú v2<sup>1</sup> | Afrika Dél-Afrika északi régiója<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Ázsia<br /> (Ázsia és a Csendes-óceáni térség) Délkelet-Ázsia<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Ausztrália<br /> (Ázsia és a Csendes-óceáni térség) Közép-India<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Japán<br /> (Ázsia és a Csendes-óceáni térség) Korea középső régiója<br /> Kanada Közép-Kanada<br /> Európa Észak-Európa<br /> Európa Nyugat-Európa<br /> Európa Közép-Franciaország<br /> Európa Középnyugat-Németország<br /> Európa Kelet-Norvégia<br /> Európa Észak-Svájc<br /> Európa Egyesült Királyság déli régiója<br /> (Közel-Kelet) Észak-Egyesült Arab<br /> (Dél-Amerika) Dél-Brazília<br /> USA USA középső régiója<br /> (US) USA keleti régiója<br /> USA USA 2. keleti régiója<br /> USA USA északi középső régiója<br />USA USA déli középső régiója<br /> USA USA nyugati régiója<br /> USA USA 2. nyugati régiója | Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblázatok<br /> Üzenetsorok<br /> |
-| <sup>1</sup> . BlockBlobStorage | Afrika Dél-Afrika északi régiója<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Ázsia<br /> (Ázsia és a Csendes-óceáni térség) Délkelet-Ázsia<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Ausztrália<br /> (Ázsia és a Csendes-óceáni térség) Közép-India<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Japán<br /> (Ázsia és a Csendes-óceáni térség) Korea középső régiója<br /> Kanada Közép-Kanada<br /> Európa Észak-Európa<br /> Európa Nyugat-Európa<br /> Európa Közép-Franciaország<br /> Európa Középnyugat-Németország<br /> Európa Kelet-Norvégia<br /> Európa Észak-Svájc<br /> Európa Egyesült Királyság déli régiója<br /> (Közel-Kelet) Észak-Egyesült Arab<br /> (Dél-Amerika) Dél-Brazília<br /> USA USA középső régiója<br /> (US) USA keleti régiója<br /> USA USA 2. keleti régiója<br /> USA USA északi középső régiója<br />USA USA déli középső régiója<br /> USA USA nyugati régiója<br /> USA USA 2. nyugati régiója | Csak Premium blokk Blobok |
-| FileStorage | Afrika Dél-Afrika északi régiója<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Ázsia<br /> (Ázsia és a Csendes-óceáni térség) Délkelet-Ázsia<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Ausztrália<br /> (Ázsia és a Csendes-óceáni térség) Közép-India<br /> (Ázsia és a Csendes-óceáni térség) Kelet-Japán<br /> (Ázsia és a Csendes-óceáni térség) Korea középső régiója<br /> Kanada Közép-Kanada<br /> Európa Észak-Európa<br /> Európa Nyugat-Európa<br /> Európa Közép-Franciaország<br /> Európa Középnyugat-Németország<br /> Európa Kelet-Norvégia<br /> Európa Észak-Svájc<br /> Európa Egyesült Királyság déli régiója<br /> (Közel-Kelet) Észak-Egyesült Arab<br /> (Dél-Amerika) Dél-Brazília<br /> USA USA középső régiója<br /> (US) USA keleti régiója<br /> USA USA 2. keleti régiója<br /> USA USA északi középső régiója<br />USA USA déli középső régiója<br /> USA USA nyugati régiója<br /> USA USA 2. nyugati régiója | Csak a prémium szintű fájlok megosztása |
+| <sup>1</sup> . BlockBlobStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br /> Nyugat-Európa<br /> Közép-Franciaország <br /> Kelet-Japán<br /> Az Egyesült Királyság déli régiója <br /> USA keleti régiója <br /> USA 2. keleti régiója <br /> USA 2. nyugati régiója| Csak Premium blokk Blobok |
+| FileStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br /> Nyugat-Európa<br /> Közép-Franciaország <br /> Kelet-Japán<br /> Az Egyesült Királyság déli régiója <br /> USA keleti régiója <br /> USA 2. keleti régiója <br /> USA 2. nyugati régiója | Csak a prémium szintű fájlok megosztása |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
 <sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).

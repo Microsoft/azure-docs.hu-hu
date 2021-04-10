@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99507536"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103385"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>A Microsoft Business Applications független szoftverszállítói (ISV) Connect programjának előkészítési útmutatója
 
@@ -25,7 +25,7 @@ A Business Applications ISV-csatlakozási program összes technikai, marketing �
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>A Microsoft partner Center-fiók beállítása
 
-Az ISV-kapcsolódási programhoz tartozó fiók beállításához és kezeléséhez végezze el a cikk lépéseit: [kereskedelmi Piactéri fiók létrehozása a partner Centerben](./partner-center-portal/create-account.md). Ez a cikk az új fiókok létrehozásával és az új közzétevők kereskedelmi Piactéri programhoz való hozzáadásával kapcsolatos összes lépést ismerteti.
+Az ISV-kapcsolódási programhoz tartozó fiók beállításához és kezeléséhez végezze el a cikk lépéseit: [kereskedelmi Piactéri fiók létrehozása a partner Centerben](create-account.md). Ez a cikk az új fiókok létrehozásával és az új közzétevők kereskedelmi Piactéri programhoz való hozzáadásával kapcsolatos összes lépést ismerteti.
 
 > [!NOTE]
 > Ehhez a lépéshez *tulajdonosi* vagy *felettesi* szerepkörre van szükség a partner Centerben.

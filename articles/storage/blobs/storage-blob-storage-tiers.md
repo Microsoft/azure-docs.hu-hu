@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e2f3296eb6d4286bb4ef7081c1459109c40915f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656838"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962305"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Hozzáférési szintek Azure Blob Storage – gyakori, ritka elérésű és archív
 
@@ -86,7 +86,7 @@ Az archív hozzáférési szint használati forgatókönyvei például a követk
 - A megfelelőségi és archiválási adatai, amelyeket hosszú ideig kell tárolni, és szinte soha nem fér hozzá
 
 > [!NOTE]
-> Az archiválási szint ZRS, GZRS vagy RA-GZRS fiókok esetén nem támogatott. A LRS-ről GRS-re való Migrálás nem támogatott, ha a Storage-fiók blobokat tartalmaz az archiválási szinten.
+> Az archiválási szint ZRS, GZRS vagy RA-GZRS fiókok esetén nem támogatott. A LRS-ről a GRS-re való Migrálás támogatott, feltéve, hogy az archiválási szintre nem kerültek Blobok, miközben a fiók a LRS értékre lett állítva. A fiók visszahelyezhető a GRS, ha a frissítés a fiók LRS számított 30 napnál kevesebb időt vesz igénybe, és az archiválási szintre nem helyeztek blobokat, amíg a fiók a LRS értékre lett állítva.
 
 ## <a name="account-level-tiering"></a>Fiók szintű rétegek
 

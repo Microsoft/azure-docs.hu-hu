@@ -2,13 +2,13 @@
 title: Azure VMware-megoldás saját felhő létrehozása
 description: Az Azure VMware-megoldás saját felhővel való létrehozásának lépései a Azure Portal használatával.
 ms.topic: include
-ms.date: 02/17/2021
-ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 6b4e5631d1a4b6c5bf56b01aba12752595ef63b8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725404"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073754"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -34,7 +34,7 @@ ms.locfileid: "101725404"
 1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet. A következő képernyőn ellenőrizze a megadott adatokat. Ha az adatok helyesek, válassza a **Létrehozás** lehetőséget.
 
    > [!NOTE]
-   > Ez a lépés nagyjából két órát vesz igénybe. 
+   > Ez a lépés nagyjából 3-4 órát vesz igénybe. A meglévő/azonos fürtben egyetlen csomópont hozzáadása 30-45 percen belül megtörténik.
 
 1. Ellenőrizze, hogy a központi telepítés sikeres volt-e. Navigáljon a létrehozott erőforráscsoporthoz, és válassza ki saját felhőjét.  A telepítés befejeződése után a **sikeres** állapot jelenik meg. 
 

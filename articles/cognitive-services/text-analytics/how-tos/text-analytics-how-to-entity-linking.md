@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599000"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280564"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -206,7 +206,7 @@ Az 3,0-es verzió csak szinkron műveletet tartalmaz. A következő JSON egy pé
 
 ## <a name="post-the-request"></a>A kérelem közzététele
 
-Az elemzés a kérelem megkapásakor történik meg. Az áttekinthető kérelmek méretével és számával kapcsolatos információkat az [Áttekintés lapon](../overview.md#data-limits) tekintheti meg a percenkénti küldéshez.
+Az elemzés a kérelem megkapásakor történik meg. Tekintse meg az [adatkorlátozásokról](../overview.md#data-limits) szóló cikket, amely a percenként elküldhető kérelmek méretével és számával kapcsolatos információkat tartalmazza.
 
 A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen adatmennyiséget, és az eredményeket azonnal visszaadja a válaszban.
 

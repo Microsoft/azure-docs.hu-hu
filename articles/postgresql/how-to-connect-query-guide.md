@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
 ms.openlocfilehash: 1506ce311fe443247050a36e1b9fa4600360ac6e
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105604141"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Az Azure Database for PostgreSQL egykiszolgálós üzemének csatlakozási és lekérdezési áttekintése
@@ -20,7 +20,7 @@ Az alábbi dokumentum olyan példákra mutató hivatkozásokat tartalmaz, amelye
 
 ## <a name="quickstarts"></a>Rövid útmutatók
 
-| Gyorsútmutató | Description |
+| Gyorsútmutató | Leírás |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|A pgAdmin használatával csatlakozhat a kiszolgálóhoz, és leegyszerűsíti az adatbázis-objektumok létrehozását, karbantartását és használatát.|
 |[psql Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Ez a cikk bemutatja, hogyan futtathat [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) -t a [Azure Cloud Shell](../cloud-shell/overview.md) a kiszolgálóhoz való kapcsolódáshoz, majd az utasítások futtatásához az adatbázisban lévő adatokat lekérdezni, beszúrni, frissíteni és törölni. A **psql** futtatható, ha telepítve van a fejlesztési környezetében|

@@ -1,6 +1,6 @@
 ---
-title: 'Oracle – SQL Server az Azure-beli virtuális gépen: áttelepítési útmutató'
-description: Ez az útmutató az Oracle-sémák áttelepítését mutatja be SQL Server Azure-beli virtuális gépeken az Oracle-SQL Server Migration Assistant használatával.
+title: 'Oracle to SQL Server on Azure Virtual Machines: áttelepítési útmutató'
+description: Ez az útmutató bemutatja, hogyan telepítheti át az Oracle-sémákat az Azure-Virtual Machines SQL Server az Oracle SQL Server Migration Assistant használatával.
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,217 +10,237 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 8f034492568a7525f8f75f5f2add1a732c3ad896
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: d4fb33e8e904d12e242f7eeaf9c2dc50a02eff4d
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644292"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961251"
 ---
-# <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Áttelepítési útmutató: Oracle SQL Server Azure-beli virtuális gépen
+# <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>Áttelepítési útmutató: Oracle to SQL Server on Azure Virtual Machines
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Ez az útmutató azt ismerteti, hogy az Oracle-sémák áttelepíthetők az Azure-beli virtuális gépen SQL Server az Oracle-SQL Server Migration Assistant használatával. 
+Ez az útmutató bemutatja, hogyan telepítheti át az Oracle-sémákat az Azure-Virtual Machines SQL Server az Oracle SQL Server Migration Assistant használatával. 
 
 Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Az Oracle-sémának az Azure-beli virtuális gépen SQL Serverre való átmigrálása a következőkre van szüksége:
+Ha át szeretné telepíteni az Oracle-sémát az Azure Virtual Machines SQL Serverre, a következőkre lesz szüksége:
 
-- Annak ellenőrzéséhez, hogy a forrás-környezet támogatott-e.
-- Az [Oracle SQL Server Migration Assistant (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54258)letöltése.
+- Egy támogatott forrásoldali környezet.
+- [SQL Server Migration Assistant (SSMA) Oracle-hez](https://www.microsoft.com/en-us/download/details.aspx?id=54258).
 - A cél [SQL Server VM](../../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
-- Az Oracle és a [Provider](/sql/ssma/oracle/connect-to-oracle-oracletosql) [SSMA szükséges engedélyei](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) .
+- Az Oracle és a [szolgáltató](/sql/ssma/oracle/connect-to-oracle-oracletosql) [SSMA szükséges engedélyek](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) .
 - Kapcsolat és megfelelő engedélyek a forrás és a cél eléréséhez. 
 
 
 ## <a name="pre-migration"></a>A migrálás előtt
 
-A felhőbe való Migrálás előkészítése során ellenőrizze, hogy a forrás-környezet támogatott-e, és hogy rendelkezik-e az előfeltételekkel. Ez segít a hatékony és sikeres Migrálás biztosításában.
+A felhőbe való Migrálás előkészítéséhez ellenőrizze, hogy a forrás-környezet támogatott-e, és hogy van-e valamilyen előfeltétele. Ez segít a hatékony és sikeres Migrálás biztosításában.
 
-A folyamat ezen része magában foglalja az áttelepíteni kívánt adatbázisok leltárának elvégzését, a lehetséges áttelepítési problémák vagy blokkolók kiértékelését, valamint az esetlegesen feltárt elemek feloldását. 
+A folyamat ezen része a következőket foglalja magában: 
+- Az áttelepíteni kívánt adatbázisok leltárának elvégzése.
+- Ezeknek az adatbázisoknak a kiértékelése lehetséges migrációs problémák vagy blokkolók esetén. 
+- Oldja fel a feltárt problémákat. 
 
 ### <a name="discover"></a>Felderítés
 
-A [map Toolkit](https://go.microsoft.com/fwlink/?LinkID=316883) segítségével azonosíthatja a meglévő adatforrásokat és a vállalat által használt funkciók részleteit, így jobban megismerheti és megtervezheti az áttelepítést. Ez a folyamat a hálózat vizsgálatával azonosítja az összes szervezet Oracle-példányát, valamint a használatban lévő verziót és szolgáltatásokat.
+A [map Toolkit](https://go.microsoft.com/fwlink/?LinkID=316883) segítségével azonosíthatja a meglévő adatforrásokat és a vállalat által használt funkciók részleteit. Így jobban megismerheti az áttelepítést, és segítséget nyújt a tervezésben. Ez a folyamat a szervezet Oracle-példányainak, valamint az Ön által használt verziók és szolgáltatások azonosítására szolgáló hálózat vizsgálatát foglalja magában.
 
-Ha a MAP Toolkit használatával szeretne leltározási vizsgálatot végezni, kövesse az alábbi lépéseket: 
+Ha a Térkép eszközkészletet szeretné használni leltár vizsgálatához, kövesse az alábbi lépéseket: 
+
 
 1. Nyissa meg a [Térkép eszközkészletet](https://go.microsoft.com/fwlink/?LinkID=316883).
+
+
 1. Válassza az **adatbázis létrehozása/kiválasztása** lehetőséget:
 
-   ![Adatbázis kiválasztása](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
+   ![Az adatbázis létrehozása/kiválasztása lehetőséget megjelenítő képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
 
-1. Válassza a **leltár-adatbázis létrehozása** lehetőséget, adja meg az új leltár-adatbázis nevét, adjon meg egy rövid leírást, majd kattintson **az OK gombra**:
+1. Válassza **a leltár-adatbázis létrehozása** lehetőséget. Adja meg a létrehozandó új leltári adatbázis nevét, adjon meg egy rövid leírást, majd kattintson **az OK gombra**: 
 
-   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Leltár-adatbázis létrehozása":::
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Képernyőfelvétel a leltári adatbázisok létrehozásához szükséges felületet bemutató képernyőképről.":::
 
 1. Válassza a **leltári adatok gyűjtése** lehetőséget a **leltár és értékelés varázsló** megnyitásához:
 
-   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Készletadatok gyűjtése":::
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="A leltári adatok összegyűjtése hivatkozást megjelenítő képernyőkép.":::
 
-1. A **leltár és értékelés varázslóban** válassza az **Oracle** lehetőséget, majd kattintson a **Next (tovább**) gombra:
 
-   ![Oracle kiválasztása](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
+1. A **leltár és értékelés varázslóban** válassza az **Oracle** lehetőséget, majd válassza a **Next (tovább**) gombot:
 
-1. Válassza ki az üzleti igényeinek és környezetének legmegfelelőbb számítógép-keresési lehetőséget, majd válassza a **Next (tovább**) gombot: 
+   ![A leltár és értékelés varázsló leltározási helyzetek lapját bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
 
-   ![Válassza ki az üzleti igényeknek leginkább megfelelő számítógép-keresési lehetőséget](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
+1. Válassza ki az üzleti igényeknek és környezetnek legmegfelelőbb számítógép-keresési lehetőséget, majd válassza a **Next (tovább**) gombot: 
+
+   ![A leltár és értékelés varázsló felderítési módszerek lapját bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
 
 1. Adja meg a hitelesítő adatokat, vagy hozzon létre új hitelesítő adatokat a vizsgálni kívánt rendszerekhez, majd válassza a **Next (tovább**) gombot:
 
-    ![Hitelesítő adatok megadása](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
-
-1. Állítsa be a hitelesítő adatok sorrendjét, majd válassza a **Next (tovább**) gombot:
-
-   ![Hitelesítő adatok sorrendjének beállítása](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
-
-1. Határozza meg a felderíteni kívánt számítógépek hitelesítő adatait. Minden számítógépen vagy gépen egyedi hitelesítő adatokat használhat, vagy az **összes számítógép hitelesítő adatainak** listáját is használhatja:
+    ![A leltár és értékelés varázsló összes számítógép hitelesítő adatok lapját megjelenítő képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
 
 
-   ![A felderíteni kívánt számítógépek hitelesítő adatainak megadása](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
+1. Állítsa be a hitelesítő adatok sorrendjét, majd válassza a **Next (tovább**) gombot: 
+
+   ![A leltár és értékelés varázsló hitelesítő adatok sorrend lapját bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
 
 
-1. Ellenőrizze a kiválasztási összegzést, majd kattintson a **Befejezés gombra**:
+1. Adja meg a felderíteni kívánt számítógépek hitelesítő adatait. Minden számítógépen vagy gépen egyedi hitelesítő adatokat használhat, vagy használhatja az összes számítógép hitelesítő adatait tartalmazó listát is.  
 
-   ![Összefoglalás áttekintése](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
-
-1. A vizsgálat befejezését követően tekintse meg az **adatgyűjtés** összegző jelentését. A vizsgálat több percet is igénybe vehet, és az adatbázisok számától függ. Ha elkészült, válassza a **Bezárás** lehetőséget:
-
-   ![Gyűjtemény összegző jelentése](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
+   ![A leltár és értékelés varázsló számítógépek és hitelesítő adatok megadása lapján látható képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
 
 
-1. Válassza a **Beállítások lehetőséget** , ha jelentést szeretne készíteni az Oracle Assessment és az adatbázis részleteiről. A jelentés létrehozásához jelölje ki mindkét beállítást (eggyel egyet).
+1. Ellenőrizze a beállításokat, majd kattintson a **Befejezés gombra**:
+
+   ![A leltár és értékelés varázsló összefoglalás lapját bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
+
+
+1. A vizsgálat befejeződése után tekintse meg az **adatgyűjtés** összegzését. A vizsgálat az adatbázisok számától függően néhány percet is igénybe vehet. Ha elkészült, válassza a **Bezárás** lehetőséget: 
+
+   ![Az adatgyűjtés összegzését bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
+
+
+1. Válassza a **Beállítások lehetőséget** , ha jelentést szeretne készíteni az Oracle Assessment és az adatbázis részleteiről. A jelentés létrehozásához egyszerre válassza a két lehetőséget.
 
 
 ### <a name="assess"></a>Kiértékelés
 
-Az adatforrások azonosítása után az [oracle SQL Server Migration Assistant (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54258) segítségével mérje fel, hogy az Oracle-példány (ok) át legyenek-e migrálva a SQL Server VMba, hogy megértse a kettő közötti réseket. Az áttelepítési segéd segítségével áttekintheti az adatbázis-objektumokat és-adatforrásokat, kiértékelheti az áttelepítésre használt adatbázisokat, áttelepítheti az adatbázis-objektumokat SQL Serverba, majd átSQL Server telepítheti
+Az adatforrások azonosítása után a [SQL Server Migration Assistant for Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258) használatával mérje fel, hogy az Oracle-példányok áttelepítése a SQL Server VM. A Segéd segít megérteni a forrás-és a cél-adatbázisok közötti különbségeket. Áttekintheti az adatbázis-objektumokat és-adatforrásokat, kiértékelheti az áttelepítésre használt adatbázisokat, áttelepítheti az adatbázis-objektumokat SQL Serverba, majd átSQL Server telepítheti
 
 Az értékelés létrehozásához kövesse az alábbi lépéseket: 
 
-1. Nyissa meg az  [Oracle SQL Server Migration Assistant (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
-1. Válassza a **fájl** , majd az **új projekt** lehetőséget. 
-1. Adja meg a projekt nevét, egy helyet a projekt mentéséhez, majd válasszon egy SQL Server áttelepítési célt a legördülő menüből. Válassza **az OK gombot**:
 
-   ![Új projekt](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
+1. [Az Oracle SQL Server Migration Assistant](https://www.microsoft.com/en-us/download/details.aspx?id=54258)megnyitása. 
+1. A **fájl** menüben válassza az **új projekt** lehetőséget. 
+1. Adja meg a projekt nevét és helyét a projekthez, majd válasszon ki egy SQL Server áttelepítési célt a listából. Válassza **az OK gombot**: 
 
-1. Válassza **a Kapcsolódás az Oracle-hoz** lehetőséget. Adja meg az Oracle-kapcsolat adatainak értékét a **Kapcsolódás az Oracle** -hez párbeszédpanelen:
+   ![Képernyőkép, amely az új projekt párbeszédpanelt jeleníti meg.](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
 
-   ![Kapcsolódás az Oracle-hoz](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
 
-   Válassza ki az áttelepíteni kívánt Oracle-sémát (ka) t: 
+1. Válassza **a Kapcsolódás az Oracle-hoz** lehetőséget. Adja meg az Oracle-kapcsolat értékeit a **Kapcsolódás az Oracle** -hez párbeszédpanelen:
 
-   ![Oracle-séma kiválasztása](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
+   ![Az Oracle kapcsolódása párbeszédpanelt megjelenítő képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
 
-1. Kattintson a jobb gombbal az áttelepíteni kívánt Oracle-sémára az **Oracle metadata Explorerben**, majd válassza a **jelentés létrehozása** lehetőséget. Ekkor létrejön egy HTML-jelentés. Azt is megteheti, hogy az adatbázis kiválasztása után kiválasztja a **jelentés létrehozása** lehetőséget a navigációs sávon:
+   Válassza ki az áttelepíteni kívánt Oracle-sémákat: 
 
-   ![Jelentés létrehozása](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
+   ![Képernyőkép, amely az áttelepíthető Oracle-sémák listáját jeleníti meg.](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
 
-1. Az **Oracle metadata Explorerben** válassza ki az Oracle-sémát, majd válassza a **jelentés létrehozása** lehetőséget a HTML-jelentés konvertálási statisztikákkal és hibákkal/figyelmeztetésekkel való létrehozásához.
-1. A HTML-jelentés áttekintésével megismerheti a konverziós statisztikákat és az esetleges hibákat vagy figyelmeztetéseket. A jelentést az Excelben is megnyithatja, hogy beolvassa az Oracle-objektumok leltárát, valamint a séma átalakításának végrehajtásához szükséges erőfeszítést. A jelentés alapértelmezett helye a SSMAProjects belüli jelentési mappában található. 
+
+1. Az **Oracle metadata Explorerben** kattintson a jobb gombbal arra az Oracle-sémára, amelyet át szeretne telepíteni, majd válassza a **jelentés létrehozása** lehetőséget. Ekkor létrejön egy HTML-jelentés. Azt is megteheti, hogy kijelöli az adatbázist, majd a felső menüben kiválasztja a **jelentés létrehozása** lehetőséget.
+
+   ![Képernyőkép, amely bemutatja, hogyan hozhat létre egy jelentést.](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
+
+1. Tekintse át az átalakítási statisztikák, a hibák és a figyelmeztetések HTML-jelentését. Elemezheti a konverziós problémák és a megoldások értelmezését.
+
+    A jelentést az Excelben is megnyithatja, hogy beolvassa az Oracle-objektumok leltárát, és a séma átalakításának befejezéséhez szükséges erőfeszítést is. A jelentés alapértelmezett helye a SSMAProjects található jelentés mappája. 
 
    Például: `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
-    
-   ![Átalakítási jelentés](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
+
+
+   ![Képernyőkép, amely egy konverziós jelentést jelenít meg.](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
+
 
 ### <a name="validate-data-types"></a>Adattípusok ellenőrzése
 
-Érvényesítse az alapértelmezett adattípus-leképezéseket, és szükség esetén módosítsa azokat a követelmények alapján. Ehhez kövesse az alábbi lépéseket: 
+Ellenőrizze az alapértelmezett adattípus-hozzárendeléseket, és szükség esetén módosítsa azokat a követelmények alapján. Ehhez kövesse az alábbi lépéseket: 
 
-1. Válassza az **eszközök** lehetőséget a menüből. 
-1. Válassza a **projekt beállításai** lehetőséget. 
-1. Válassza a **típus-hozzárendelések** fület:
 
-   ![Típus-hozzárendelések](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
+1. Az **eszközök** menüben válassza a **projekt beállításai** lehetőséget. 
+1. Válassza a **típus-hozzárendelések** lapot. 
 
-1. Az egyes táblák típus-hozzárendelését az **Oracle metadata Explorerben** található táblázat kiválasztásával módosíthatja. 
+   ![A típus-hozzárendelések lapot megjelenítő képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
 
-### <a name="convert-schema"></a>Séma konvertálása
+1. Az egyes táblák típus-hozzárendelését úgy módosíthatja, hogy kijelöli a táblázatot az **Oracle metadata Explorerben**. 
+
+### <a name="convert-the-schema"></a>A séma konvertálása
 
 A séma konvertálásához kövesse az alábbi lépéseket: 
 
-1. Választható Dinamikus vagy alkalmi lekérdezések konvertálásához kattintson a jobb gombbal a csomópontra, majd válassza az **utasítás hozzáadása** parancsot.
-1. Válassza a **kapcsolódás SQL Server** lehetőséget a legfelső szintű navigációs sávon. 
+1. Választható Dinamikus vagy alkalmi lekérdezések konvertálásához kattintson a jobb gombbal a csomópontra, és válassza az **Add utasítás** elemet.
+
+1. A felső menüben kattintson a **kapcsolódás SQL Server** lehetőségre. 
      1. Adja meg az Azure-beli virtuális gépen SQL Server kapcsolati adatait. 
-     1. Válassza ki a célként megadott adatbázist a legördülő listából, vagy adjon meg egy új nevet, amely esetben a rendszer létrehoz egy adatbázist a célkiszolgálón. 
+     1. Válassza ki a kívánt adatbázist a listából, vagy adjon meg egy új nevet. Ha új nevet ad meg, a rendszer létrehoz egy adatbázist a célkiszolgálón. 
      1. Adja meg a hitelesítés részleteit. 
      1. Válassza a **Kapcsolódás** lehetőséget. 
 
-   ![Kapcsolódás az SQL-hez](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
 
-1. Kattintson a jobb gombbal az Oracle-sémára az **Oracle metadata Explorerben** , és válassza a **séma konvertálása** lehetőséget. Azt is megteheti, hogy kijelöli a **séma konvertálása** lehetőséget a felső vonal navigációs sávján:
+   ![Képernyőkép, amely bemutatja, hogyan csatlakozhat a SQL Serverhoz.](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
 
-   ![Séma konvertálása](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
+1. Kattintson a jobb gombbal az Oracle-sémára az **Oracle metadata Explorerben** , és válassza a **séma konvertálása** lehetőséget. Azt is megteheti, hogy a felső menüben a **séma konvertálása** lehetőségre kattint:
 
-1. Az átalakítás befejezése után hasonlítsa össze és tekintse át az átalakított objektumokat az eredeti objektumokra a lehetséges problémák azonosításához és a javaslatok alapján történő kezeléséhez:
+   ![A séma átalakítását bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
 
-   ![Javaslatok áttekintése](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
+
+1. A séma átalakításának befejeződése után tekintse át a konvertált objektumokat, és hasonlítsa össze azokat az eredeti objektumokkal a lehetséges problémák azonosítása érdekében. A javaslatok a következő problémák megoldására használhatók:
+
+   ![A két séma összehasonlítását bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
 
    Hasonlítsa össze a konvertált Transact-SQL-szöveget az eredeti tárolt eljárásokkal, és tekintse át a javaslatokat: 
 
-   ![Ajánlási kód áttekintése](./media/oracle-to-sql-on-azure-vm-guide/procedure-comparison.png)
+   ![Képernyőfelvétel: Transact-SQL, tárolt eljárások és figyelmeztetés.](./media/oracle-to-sql-on-azure-vm-guide/procedure-comparison.png)
 
-   A projektet helyileg is mentheti egy offline séma szervizelési gyakorlatához. Ezt úgy teheti meg, ha a **fájl** menüben a **projekt mentése** lehetőséget választja. Ez lehetőséget nyújt arra, hogy a forrás-és a célként megadott sémákat offline állapotba hozza, és szervizelést végezzen, mielőtt közzé tudja tenni a sémát a SQL Server.
+   A projektet helyileg is mentheti egy offline séma szervizelési gyakorlatához. Ehhez válassza a **fájl** menü **projekt mentése** parancsát. A projekt helyi mentése lehetővé teszi a forrás-és a célként megadott sémák offline kiértékelését és szervizelését, mielőtt közzéteszi a sémát a SQL Server.
 
-1. Válassza az **eredmények áttekintése** lehetőséget a kimenet ablaktáblán, és tekintse át a hibákat a hibák **listája** ablaktáblán. 
-1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. Ez lehetőséget biztosít a forrás-és a célként megadott sémák offline állapotba helyezésére és szervizelésre, mielőtt közzé tudja tenni a sémát az Azure-beli virtuális gépen SQL Server.
+1. Válassza az **eredmények áttekintése** lehetőséget a **kimenet** ablaktáblán, majd tekintse át a hibákat a hibák **listája** ablaktáblán. 
+1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. A **fájl** menüben válassza a **projekt mentése** elemet. Ez lehetőséget biztosít a forrás-és a célként megadott sémák offline kiértékelésére és szervizelésre, mielőtt közzéteszi a sémát az Azure Virtual Machines SQL Server.
 
 
 ## <a name="migrate"></a>Migrate
 
-Miután elvégezte a szükséges előfeltételeket, és végrehajtotta az **áttelepítés előtti** fázishoz kapcsolódó feladatokat, készen áll a séma és az adatok áttelepítésére. Az áttelepítés két lépést tesz szükségessé – a séma közzétételét és az adatáttelepítést. 
+Miután elvégezte a szükséges előfeltételeket, és végrehajtotta az áttelepítés előtti fázishoz kapcsolódó feladatokat, készen áll a séma és az adatok áttelepítésére. Az áttelepítés két lépést tesz szükségessé: a séma közzétételét és az adatáttelepítést. 
 
 
 A séma közzétételéhez és az adatáttelepítés végrehajtásához kövesse az alábbi lépéseket: 
 
-1. Tegye közzé a sémát: kattintson a jobb gombbal az adatbázisra a **SQL Server metaadat-kezelőben**  , majd válassza az **adatbázissal való szinkronizálás** lehetőséget. Ez a művelet közzéteszi az Oracle-sémát, hogy SQL Server az Azure-beli virtuális gépen:
+1. Tegye közzé a sémát: kattintson a jobb gombbal az adatbázisra **SQL Server metaadat-kezelőben** , majd válassza az **adatbázissal való szinkronizálás** lehetőséget. Ez teszi közzé az Oracle-sémát, hogy SQL Server az Azure Virtual Machines. 
 
-   ![Szinkronizálás adatbázissal](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
+   ![Képernyőkép, amely megjeleníti a szinkronizálás az adatbázissal parancsot.](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
 
    Tekintse át a forrás projekt és a cél közötti leképezést:
 
-   ![Szinkronizálás állapotának áttekintése](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
+   ![A szinkronizálási állapotot bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
 
 
-1. Migrálja az adatokat: kattintson a jobb gombbal arra az adatbázisra vagy objektumra, amelyet az **Oracle metadata Explorerben** szeretne áttelepíteni, majd válassza az **adatok áttelepíteni** lehetőséget. Választhatja azt is, hogy az **adatok áttelepíthetők** a legfelső szintű navigációs sávon. Ha egy teljes adatbázisra szeretné áttelepíteni az adatátvitelt, jelölje be az adatbázis neve melletti jelölőnégyzetet. Ha az adatok áttelepíthetők az egyes táblákból, bontsa ki az adatbázist, majd a táblák csomópontot, és jelölje be a tábla melletti jelölőnégyzetet. Ha az adatok kihagyása az egyes táblákból, törölje a jelet a jelölőnégyzetből:
 
-   ![Az adatáttelepítés](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
+1. Migrálja az adatokat: kattintson a jobb gombbal arra az adatbázisra vagy objektumra, amelyet az **Oracle metadata Explorerben** szeretne áttelepíteni, majd válassza az **adatok áttelepíteni** lehetőséget. Azt is megteheti, hogy a felső menüben kijelöli az **adatáttelepítés** lehetőséget.
 
-1. Adja meg az Oracle és a SQL Server kapcsolati adatait az Azure-beli virtuális gépen a párbeszédpanelen.
-1. Az áttelepítés befejezése után tekintse meg az **adatáttelepítési jelentést**:  
+   Ha egy teljes adatbázisra szeretné áttelepíteni az adatátvitelt, jelölje be az adatbázis neve melletti jelölőnégyzetet. Ha az adatok áttelepíthetők az egyes táblákból, bontsa ki az adatbázist, majd a **táblák** csomópontot, és jelölje be a tábla melletti jelölőnégyzetet. Ha az adatok kihagyása az egyes táblákból, törölje a jelet a megfelelő jelölőnégyzetből.
 
-    ![Adatáttelepítési jelentés](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
+   ![Az adatmigrálás parancsot megjelenítő képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
 
-1. Kapcsolódjon a SQL Serverhoz az Azure VM-példányon [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával, és ellenőrizze az áttelepítést az adatelemzés és a séma áttekintésével:
+1. Adja meg az Oracle és a SQL Server kapcsolati adatait az Azure Virtual Machines a párbeszédpanelen.
+1. Az áttelepítés befejeződése után tekintse meg az **adatáttelepítési jelentést**:
 
-   ![Érvényesítés a SSMA](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
+    ![Az adatáttelepítési jelentést bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
+
+1. Kapcsolódjon a SQL Server az Azure Virtual Machines-példányon [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)használatával. Ellenőrizze az áttelepítést az adatelemzés és a séma áttekintésével:
 
 
-A SSMA használata mellett a SQL Server Integration Services (SSIS) használatával is áttelepítheti az adatok áttelepíthetők. További információ: 
-- A cikk a [SQL Server Integration Services első lépések](//sql/integration-services/sql-server-integration-services).
-- A tanulmány [SQL Server Integration Services: SSIS for Azure és hibrid adatáthelyezés](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
+   ![A SSMA SQL Server példányát bemutató képernyőkép.](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
 
+A SSMA használata helyett a SQL Server Integration Services (SSIS) használatával áttelepítheti az adatátvitelt. További információ: 
+- A cikk [SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
+- A tanulmányi [SSIS az Azure-hoz és a hibrid adatáthelyezéshez](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
 
 
 ## <a name="post-migration"></a>A migrálás után 
 
-Miután sikeresen elvégezte az **áttelepítési** szakaszt, át kell haladnia az áttelepítés utáni feladatok sorozatán, hogy minden a lehető legzökkenőmentesen és hatékonyan működjön.
+Az áttelepítési fázis befejezése után el kell végeznie az áttelepítés utáni feladatok sorozatát, hogy minden a lehető legzökkenőmentesen és hatékonyan fusson.
 
 ### <a name="remediate-applications"></a>Alkalmazások szervizelése
 
-Miután áttelepítette az adatátvitelt a cél környezetbe, az összes olyan alkalmazásnak, amely korábban használta a forrást, el kell kezdenie a cél felhasználását. Ennek elvégzése bizonyos esetekben szükségessé teszi az alkalmazások módosítását.
+Miután áttelepítette az adatátvitelt a cél környezetbe, az összes olyan alkalmazásnak, amely korábban a forrást használta, el kell kezdenie a cél felhasználását. A módosítások végrehajtásához szükség lehet az alkalmazások módosítására.
 
-Az [adathozzáférés áttelepítési eszközkészlete](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) egy olyan bővítmény a Visual Studio Code-hoz, amely lehetővé teszi a Java-forráskód elemzését és az adatelérési API-hívások és lekérdezések észlelését, és az új adatbázis-háttér támogatásához szükséges egyetlen ablaktáblából álló nézetet biztosít. További információ: [Java-alkalmazás migrálása az Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727) blogból. 
+Az [adathozzáférés áttelepítési eszközkészlete](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) egy bővítmény a Visual Studio Code-hoz. Lehetővé teszi a Java-forráskód elemzését és az adatelérési API-hívások és lekérdezések észlelését. Az eszközkészlet egy egyablakos nézetet biztosít arról, hogy mit kell megcélozni az új adatbázis-háttér támogatásához. További információ: [Java-alkalmazás migrálása az Oracle-ből](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727). 
 
 ### <a name="perform-tests"></a>Tesztek végrehajtása
 
-Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek elvégzését tartalmazza:
+Az adatbázis áttelepítésének teszteléséhez hajtsa végre a következő tevékenységeket:
 
-1. **Ellenőrzési tesztek fejlesztése**. Az adatbázis-áttelepítés teszteléséhez SQL-lekérdezéseket kell használnia. Létre kell hoznia az érvényesítési lekérdezéseket a forrás-és a célként megadott adatbázisokon való futtatáshoz. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
+1. **Ellenőrzési tesztek fejlesztése**. Az adatbázis-áttelepítés teszteléséhez SQL-lekérdezéseket kell használnia. Hozza létre azokat az ellenőrzési lekérdezéseket, amelyek a forrás-és a célként megadott adatbázison futnak. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
 
-2. **Tesztkörnyezet beállítása**. A tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
+2. **Tesztelési környezet beállítása**. A tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
 
 3. **Ellenőrzési tesztek futtatása**. Futtassa az ellenőrző teszteket a forráson és a célon, majd elemezze az eredményeket.
 
@@ -228,46 +248,49 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 
 ### <a name="optimize"></a>Optimalizálás
 
-Az áttelepítés utáni fázis elengedhetetlen az adatok pontosságával kapcsolatos problémák összeegyeztetéséhez és a teljesség ellenőrzéséhez, valamint a számítási feladatok teljesítményével kapcsolatos problémák kezeléséhez.
+Az áttelepítés utáni fázis elengedhetetlen az adatok pontosságával kapcsolatos problémák összeegyeztetéséhez és a teljesség ellenőrzéséhez. Emellett kritikus fontosságú a számítási feladatok teljesítményével kapcsolatos problémák kezelése is.
 
 > [!Note]
 > További információ ezekről a problémákról és az azok enyhítésére szolgáló konkrét lépésekről: [áttelepítés utáni érvényesítés és optimalizálási útmutató](/sql/relational-databases/post-migration-validation-and-optimization-guide).
 
 
-## <a name="migration-assets"></a>Áttelepítési eszközök 
+## <a name="migration-resources"></a>Migrálási erőforrások 
 
-Ha további segítségre van az áttelepítési forgatókönyv végrehajtásával kapcsolatban, tekintse meg a következő forrásokat, amelyek a valós idejű migrációs projektek támogatásában lettek kifejlesztve.
+Ha további segítségre van az áttelepítési forgatókönyv végrehajtásához, tekintse meg a következő, a valós áttelepítési projekt támogatására kifejlesztett forrásokat.
 
 | **Cím/hivatkozás**                                                                                                                                          | **Leírás**                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely nagy mértékben segíti a nagyméretű ingatlanok értékelését azáltal, hogy biztosítja és automatizálja a célzott platformra vonatkozó döntési folyamatokat.                                                          |
-| [Oracle Inventory parancsfájl-összetevők](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Ez az objektum olyan PL/SQL-lekérdezést tartalmaz, amely megkeresi az Oracle rendszertáblázatokat, és az objektumok számát a séma típusa, az Objektumtípus és az állapot szerint adja meg. Emellett az egyes sémákban a "nyers adatmennyiség", valamint az egyes sémákban lévő táblázatok méretezése is durva becslést ad, a CSV-formátumban tárolt eredményekkel együtt.                                                                                                               |
-| [SSMA Oracle Assessment Collection &-összevonás automatizálása](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Ez az erőforrás egy. csv-fájlt használ belépésként (sources.csv a projekt mappáiban) a SSMA-értékelés konzolos módban való futtatásához szükséges XML-fájlok létrehozásához. A source.csv az ügyfél a meglévő Oracle-példányok leltára alapján kapja meg. A kimeneti fájlok AssessmentReportGeneration_source_1.xml, ServersConnectionFile.xml és VariableValueFile.xml.|
-| [SSMA általános Oracle-hibákhoz és azok javításához](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Az Oracle használatával a WHERE záradékban nem skaláris feltételt rendelhet hozzá. A SQL Server azonban nem támogatja ezt a típusú feltételt. Ennek eredményeképpen az Oracle SQL Server Migration Assistant (SSMA) nem konvertálja a WHERE záradékban nem skaláris feltétellel rendelkező lekérdezéseket, hanem hiba-O2SS0001 generál. Ez a tanulmány további részleteket tartalmaz a problémáról és annak megoldási módjairól.          |
-| [Oracle – SQL Server áttelepítési kézikönyv](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Ez a dokumentum az Oracle-sémák a SQL Server legújabb verziójára való áttelepítésével kapcsolatos feladatokra koncentrál. Ha az áttelepítéshez a funkciók/funkciók módosítása szükséges, akkor az adatbázist használó alkalmazások változásainak lehetséges hatását körültekintően kell figyelembe venni.                                                     |
+| [Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Ez az eszköz az adott számítási feladathoz javasolt legjobban illeszkedő cél platformokat, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjeit biztosítja. Egyszerű, egykattintásos számítási és jelentéskészítési folyamattal segíti a nagyméretű ingatlanok értékelését azáltal, hogy automatizált és egységes cél-platform döntéshozatali folyamatot biztosít.                                                          |
+| [Oracle Inventory parancsfájl-összetevők](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Ez az objektum egy olyan PL/SQL-lekérdezést tartalmaz, amely az Oracle-rendszertáblákat célozza meg, és az objektumok számát a séma típusa, az Objektumtípus és az állapot alapján adja meg. Emellett az egyes sémákban lévő nyers adatmennyiséget, valamint az egyes sémákban található táblák méretezését is megbecsüli, és a CSV-formátumban tárolt eredményeket is biztosítja.                                                                                                               |
+| [SSMA Oracle Assessment Collection &-összevonás automatizálása](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Ez a készlet a. csv-fájlt használja bejegyzésként (sources.csv a projekt mappáiban), hogy létrehozzák azokat az XML-fájlokat, amelyekre szükség van a SSMA-értékelés konzolos módban való futtatásához. A source.csv fájlt a meglévő Oracle-példányok leltározásával adja meg. A kimeneti fájlok AssessmentReportGeneration_source_1.xml, ServersConnectionFile.xml és VariableValueFile.xml.|
+| [Az Oracle-adatbázisok áttelepítése során felmerülő problémák és lehetséges SSMA](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Az Oracle használatával a WHERE záradékban nem skaláris feltételt rendelhet hozzá. A SQL Server nem támogatja az ilyen típusú feltételt. Így a SSMA for Oracle nem konvertál olyan lekérdezéseket, amelyek nem skaláris feltételt tartalmaznak a WHERE záradékban. Ehelyett a következő hibát generálja: O2SS0001. Ez a tanulmány részletesen ismerteti a problémát és a megoldásának módszereit.          |
+| [Oracle – SQL Server áttelepítési kézikönyv](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Ez a dokumentum az Oracle-sémák a SQL Server legújabb verziójára való áttelepítésével kapcsolatos feladatokra koncentrál. Ha az áttelepítéshez a szolgáltatások/funkciók módosítása szükséges, gondosan mérlegelje az egyes módosítások lehetséges hatását az adatbázist használó alkalmazások esetében.                                                     |
 
-Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat alapszintű alapokmánya az adatplatform-áttelepítési projektek a Microsoft Azure-beli adatplatformra való feltiltásának és felgyorsításának feloldása.
+
+Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat alapszintű alapokmánya az adatplatform-áttelepítési projektek Microsoft Azure adatplatformon való összevonásának feloldása és felgyorsítása.
+
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A SQL Server alkalmazandó szolgáltatások rendelkezésre állásának vizsgálatához tekintse meg az [Azure globális infrastruktúra-központot](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database)
+- A SQL Serverra vonatkozó szolgáltatások rendelkezésre állásának vizsgálatához tekintse meg az [Azure globális infrastruktúra-központját](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database).
 
-- A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egy olyan mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, tekintse meg a cikk [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md) című témakört.
+- A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek és speciális feladatok ellátásához nyújt segítséget, lásd: [szolgáltatások és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 
-- További információ az Azure SQL-ről:
+- Az Azure SQL-ről további információt a következő témakörben talál:
    - [Üzembe helyezési lehetőségek](../../azure-sql-iaas-vs-paas-what-is-overview.md)
-   - [Azure-beli virtuális gépeken futó SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
-   - [Az Azure teljes tulajdonlási költsége kalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) 
+   - [SQL Server az Azure Virtual Machines szolgáltatásban](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
+   - [Az Azure teljes tulajdonlási költsége kalkulátor](https://azure.microsoft.com/pricing/tco/calculator/)
 
 
-- Ha többet szeretne megtudni a Felhőbeli Migrálás keretrendszerével és bevezetési ciklusával kapcsolatban, olvassa el a következőt:
+- Ha többet szeretne megtudni a Felhőbeli Migrálás keretrendszeréről és bevezetési ciklusáról, tekintse meg a következőt:
    -  [Felhőbevezetési keretrendszer az Azure-hoz](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Ajánlott eljárások az Azure-ra való áttéréssel kapcsolatos díjszabási és méretezési feladatok elvégzéséhez](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Ajánlott eljárások az Azure-ba migrált számítási feladatokhoz és méretekhez](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- További információ a licencelésről:
+- A licenceléssel kapcsolatos további információkért lásd:
    - [Saját licenc használata a Azure Hybrid Benefit](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
    - [A SQL Server 2008 és SQL Server 2008 R2 ingyenes kibővített támogatása](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)
 
+- Az alkalmazás-hozzáférési réteg értékeléséhez használja az [adathozzáférés áttelepítési eszközkészletének előzetes](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)verzióját.
+- Az "A/B" adatelérési réteg tesztelésével kapcsolatos részletekért lásd: [Database Experimentation Assistant áttekintése](/sql/dea/database-experimentation-assistant-overview).
 
-- Az alkalmazás-hozzáférési réteg értékeléséhez lásd: [adathozzáférés áttelepítési eszközkészlete (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
-- Az A/B típusú adatelérési réteg végrehajtásával kapcsolatos további információkért lásd: [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).
+

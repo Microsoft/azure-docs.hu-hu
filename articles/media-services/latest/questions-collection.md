@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9c4ffee437e3049f8e480375f0b1373fce09fe77
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: dc8f8f7ced1c5915c2ea54390685806cfcdd257f
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105646073"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280309"
 ---
 <!-- NOTE this file is temporary and a placeholder until the FAQ file update is completed. -->
 
@@ -34,7 +34,7 @@ Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad vál
 - A Media Services fiókhoz (beleértve a tartalom titkosítási kulcsokat, a jogkivonat-ellenőrző kulcsokat, a JobInputHttp URL-címeket és az egyéb entitások metaadatait) társított további adatokat a Microsoft tulajdonában lévő tárolóban tároljuk a Media Services fiókhoz kiválasztott régióban.
     - A Dél-és Délkelet-ázsiai régiókban tárolt [adattárolási követelmények](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) miatt a további fiókadatok tárolása redundáns módon történik, és egyetlen régióban található. Délkelet-Ázsiában a további fiókadatok tárolása Szingapúrban és Dél-Brazíliában történik, a rendszer az adattárolást Brazíliában tárolja.
     - Brazília déli és Délkelet-ázsiai régiójában a további fiókadatok a Microsoft tulajdonában lévő tárolóban is tárolhatók a [párosított régióban](../../best-practices-availability-paired-regions.md).
-- Azure Media Services regionális szolgáltatás, és nem biztosít [magas rendelkezésre állást](media-services-high-availability-encoding.md) vagy adatreplikálást. Azok az ügyfelek, akik ezeket a szolgáltatásokat igénybe veszik, kifejezetten javasoljuk, hogy hozzon létre egy megoldást több régióban lévő Media Services-fiókok használatával.  Egy minta, amely bemutatja, hogyan hozhat létre magas rendelkezésre állású megoldást a Media Services video on demand útmutatóként.
+- Azure Media Services regionális szolgáltatás, és nem biztosít [magas rendelkezésre állást](architecture-high-availability-encoding-concept.md) vagy adatreplikálást. Azok az ügyfelek, akik ezeket a szolgáltatásokat igénybe veszik, kifejezetten javasoljuk, hogy hozzon létre egy megoldást több régióban lévő Media Services-fiókok használatával.  Egy minta, amely bemutatja, hogyan hozhat létre magas rendelkezésre állású megoldást a Media Services video on demand útmutatóként.
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Melyek a Media Services v3 Azure Portal korlátozásai?
 
@@ -44,15 +44,15 @@ Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök végezhetnek műveleteket Azure Media Services erőforrásokon? 
 
-Lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz](rbac-overview.md).
+Lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz](security-rbac-concept.md).
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Hogyan streamet az Apple iOS-eszközökre?
 
-Győződjön meg arról, hogy az elérési út végén található ( **Format = m3u8-AAPL)** (az URL-cím **/manifest** szakasza után), hogy az adatfolyam-küldő kiszolgáló visszaadja-e a http Live Streaming (HLS) tartalmat az Apple iOS Native-eszközökön való felhasználáshoz. Részletekért lásd: [tartalom továbbítása](dynamic-packaging-overview.md).
+Győződjön meg arról, hogy az elérési út végén található ( **Format = m3u8-AAPL)** (az URL-cím **/manifest** szakasza után), hogy az adatfolyam-küldő kiszolgáló visszaadja-e a http Live Streaming (HLS) tartalmat az Apple iOS Native-eszközökön való felhasználáshoz. Részletekért lásd: [tartalom továbbítása](encode-dynamic-packaging-concept.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Mi az ajánlott módszer a videók feldolgozására?
 
-Az [átalakítások](/rest/api/media/transforms) használatával konfigurálhatja a videók kódolására vagy elemzésére szolgáló gyakori feladatokat. Mindegyik transzformáció egy receptet vagy egy munkafolyamatot ír le, amely a videó-vagy hangfájlok feldolgozására használható. A [feladatnak](/rest/api/media/jobs) az a tényleges kérése, hogy az átalakítást egy bemeneti videóra vagy hangtartalomra alkalmazza Media Services. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
+Az [átalakítások](/rest/api/media/transforms) használatával konfigurálhatja a videók kódolására vagy elemzésére szolgáló gyakori feladatokat. Mindegyik transzformáció egy receptet vagy egy munkafolyamatot ír le, amely a videó-vagy hangfájlok feldolgozására használható. A [feladatnak](/rest/api/media/jobs) az a tényleges kérése, hogy az átalakítást egy bemeneti videóra vagy hangtartalomra alkalmazza Media Services. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. További információt az [átalakításokkal és feladatokkal](transform-jobs-concept.md) kapcsolatos cikkben olvashat.
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Feltöltöttem, kódoltam és közzétettem egy videót. Miért nem játssza le a videót, amikor megpróbálok adatfolyamot továbbítani?
 
@@ -60,7 +60,7 @@ Az egyik leggyakoribb ok az, hogy nem rendelkezik a folyamatos átviteli végpon
 
 ### <a name="how-does-pagination-work"></a>Hogyan működik a tördelés?
 
-Ha oldalszámozást használ, mindig a következő hivatkozásra kell használnia a gyűjtemény számbavételéhez, és nem függ egy adott oldalméret méretétől. A részleteket és példákat lásd: [szűrés, rendezés, lapozás](entities-overview.md).
+Ha oldalszámozást használ, mindig a következő hivatkozásra kell használnia a gyűjtemény számbavételéhez, és nem függ egy adott oldalméret méretétől. A részleteket és példákat lásd: [szűrés, rendezés, lapozás](filter-order-page-entitites-how-to.md).
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhetők el a Azure Media Services v3 verzióban?
 
@@ -68,7 +68,7 @@ Részletekért tekintse meg [az áttelepítési útmutatót](migrate-v-2-v-3-mig
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Milyen folyamattal kell áthelyezni Media Services fiókot az előfizetések között?  
 
-Részletekért lásd: [Media Services fiók áthelyezése az előfizetések között](media-services-account-concept.md).
+Részletekért lásd: [Media Services fiók áthelyezése az előfizetések között](account-move-account-how-to.md).
 
 ## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
 
@@ -93,7 +93,7 @@ A következő lehetőségek közül választhat:
 
 Media Services v3 élő kódolás még nem támogatja a videó vagy a képek beszúrását az élő adatfolyamban. 
 
-A forrás videó átváltásához használhat egy [élő helyszíni kódolót](recommended-on-premises-live-encoders.md) . Számos alkalmazás biztosítja a források váltását, beleértve a Wirecast, a Switching Studio (iOS) és a OBS Studio (ingyenes alkalmazás) lehetőséget.
+A forrás videó átváltásához használhat egy [élő helyszíni kódolót](encode-recommended-on-premises-live-encoders.md) . Számos alkalmazás biztosítja a források váltását, beleértve a Wirecast, a Switching Studio (iOS) és a OBS Studio (ingyenes alkalmazás) lehetőséget.
 
 ## <a name="content-protection"></a>Tartalomvédelem
 
@@ -109,7 +109,7 @@ Nem kell semmilyen speciális jogkivonat-szolgáltatót használnia, például A
 
 Győződjön meg arról, hogy a kibocsátó, a célközönség és a jogcímek pontosan egyeznek a JWT és a `ContentKeyPolicyRestriction` által használt érték között `ContentKeyPolicy` .
 
-További információ: [a tartalom Media Services dinamikus titkosítással való védelemmel](content-protection-overview.md)való ellátása.
+További információ: [a tartalom Media Services dinamikus titkosítással való védelemmel](drm-content-protection-concept.md)való ellátása.
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Hogyan és hol kapok JWT tokent, mielőtt felhasználom egy licenc vagy kulcs igénylésére?
 
@@ -127,8 +127,8 @@ Azure Media Services API-k használatával konfigurálhatja a licencek/kulcsok k
 
 További információkért lásd:
 
-- [Tartalomvédelem – áttekintés](content-protection-overview.md)
-- [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
+- [Tartalomvédelem – áttekintés](drm-content-protection-concept.md)
+- [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](architecture-design-multi-drm-system.md)
 
 ### <a name="should-i-use-http-or-https"></a>HTTP vagy HTTPS protokollt használok?
 A ASP.NET MVC Player alkalmazásnak a következőket kell támogatnia:
@@ -163,11 +163,11 @@ Az ügyfelek gyakran a saját adatközpontjában vagy a DRM-szolgáltatók álta
 
 Jelenleg a [Azure Portal](https://portal.azure.com/) a következőket használhatja:
 
-* [Élő események](live-events-outputs-concept.md) kezelése Media Services v3-ban. 
+* [Élő események](live-event-outputs-concept.md) kezelése Media Services v3-ban. 
 * V3- [eszközök](assets-concept.md)megtekintése (nem felügyelt). 
 * [Az API-k elérésére vonatkozó információk beolvasása](./access-api-howto.md). 
 
-Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), az [Azure CLI](/cli/azure/ams)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transform-jobs-concept.md) és [tartalmak védelméhez](drm-content-protection-concept.md)) használja a [REST API](/rest/api/media/), az [Azure CLI](/cli/azure/ams)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Létezik AssetFile-koncepció a v3-as verzióban?
 
@@ -207,7 +207,7 @@ Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre 
 
 Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy szám, amely a videó tartalmát tartalmazza. A numerikus érték a videó-kiadatások maximális sávszélessége. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. A nevű harmadik mappa `Data` tartalmazza az fps-tartalom fő lejátszási listáját. Végezetül boot.xml a mappa tartalmának teljes leírását tartalmazza `.movpkg` . 
 
-![Offline FairPlay iOS-minta alkalmazáshoz](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+![Offline FairPlay iOS-minta alkalmazáshoz](media/drm-offline-fairplay-for-ios-concept/offline-fairplay-file-structure.png)
 
 Példa boot.xml fájlra:
 
@@ -253,7 +253,7 @@ Az egyéni STS üzleti logikától függően a rendszer különböző jogcímeke
 
 #### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Mi a Widevine és a Media Services DRM biztonsági szintek közötti leképezés?
 
-A Google "Widevine DRM-architektúra áttekintése" három biztonsági szintet határoz meg. A Widevine- [licenc sablonjának Azure Media Services dokumentációja](widevine-license-template-overview.md) azonban öt biztonsági szintet vázol fel (a lejátszási ügyfél megbízhatósági követelményei). Ez a szakasz a biztonsági szintek leképezését ismerteti.
+A Google "Widevine DRM-architektúra áttekintése" három biztonsági szintet határoz meg. A Widevine- [licenc sablonjának Azure Media Services dokumentációja](drm-widevine-license-template-concept.md) azonban öt biztonsági szintet vázol fel (a lejátszási ügyfél megbízhatósági követelményei). Ez a szakasz a biztonsági szintek leképezését ismerteti.
 
 A Google Widevine a biztonsági szintek mindkét készletét definiálja. A különbség a használati szint: architektúra vagy API. Az öt biztonsági szint a Widevine API-ban használatos. A `content_key_specs` -t tartalmazó objektumot a `security_level` rendszer deszerializálja, és átadja a Widevine globális kézbesítési szolgáltatásnak a Azure Media Services Widevine License Service. A következő táblázat a két biztonsági szint közötti leképezést mutatja be.
 

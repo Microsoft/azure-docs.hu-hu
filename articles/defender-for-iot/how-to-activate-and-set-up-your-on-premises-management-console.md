@@ -3,12 +3,12 @@ title: A helyszíni felügyeleti konzol aktiválása és beállítása
 description: A felügyeleti konzol aktiválása biztosítja, hogy az érzékelők regisztrálva legyenek az Azure-ban, és információt küldjenek a helyszíni felügyeleti konzolra, valamint arról, hogy a helyszíni felügyeleti konzol felügyeleti feladatokat hajt végre a csatlakoztatott érzékelőkön.
 ms.date: 3/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 89ce6da3521248ff7373e23ae8831106cbee74de
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 86bbebb54753145e087865acd8c0d4690a53aa99
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784628"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383845"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>A helyszíni felügyeleti konzol aktiválása és beállítása 
 
@@ -33,29 +33,37 @@ Bejelentkezés a felügyeleti konzolra:
 
 Ha elfelejtette a jelszavát, válassza a **jelszó helyreállítása**  lehetőséget, és tekintse meg a jelszó- [helyreállítás](how-to-manage-the-on-premises-management-console.md#password-recovery) című témakört, amely útmutatást nyújt a jelszó helyreállításához.
 
-## <a name="get-and-upload-an-activation-file"></a>Aktiválási fájl beszerzése és feltöltése
+## <a name="activate-the-on-premises-management-console"></a>A helyszíni felügyeleti konzol aktiválása
 
 Az első bejelentkezés után aktiválni kell a helyszíni felügyeleti konzolt az aktiválási fájl beszerzésével és feltöltésével. 
 
-Aktiválási fájl beszerzése:
+A helyszíni felügyeleti konzol aktiválása:
 
-1. Navigáljon az Azure Defender IoT-portál **díjszabási** lapjára. 
-1. Válassza ki azt az előfizetést, amelyhez a helyszíni felügyeleti konzolt hozzá kívánja rendelni.
-1. Válassza az **aktiválási fájl letöltése a felügyeleti konzolhoz** lapot. Az aktiválási fájl letöltése megtörténik.
+1. Jelentkezzen be a helyszíni felügyeleti konzolba.
+
+1. A képernyő felső részén található riasztási értesítésben válassza a **művelet elvégzése** hivatkozást.
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/take-action.png" alt-text="Kattintson a művelet végrehajtása hivatkozásra a képernyő felső részén található riasztásban.":::
+
+1. Az aktiválás előugró ablakban válassza a **Azure Portal** hivatkozást.
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/azure-portal.png" alt-text="Válassza ki a Azure Portal hivatkozást a felugró üzenetből.":::
+ 
+1. Válassza ki azt az előfizetést, amelyhez a helyszíni felügyeleti konzolt hozzá szeretné rendelni, majd válassza a helyszíni **felügyeleti konzol aktiválási fájljának letöltése** gombot. Az aktiválási fájl letöltése megtörténik.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Töltse le az aktiválási fájlt.":::
 
-Aktiválási fájl feltöltése:
+   Ha még nem készített elő előfizetést, akkor [előfizetést](how-to-manage-subscriptions.md#onboard-a-subscription)is bevezet.
 
-1. Navigáljon a **Rendszerbeállítások** lapra a helyszíni felügyeleti konzolon.
-1. Válassza az **aktiválás** ikont :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false"::: .
-1. Válassza a **fájl kiválasztása** lehetőséget, majd válassza ki a letöltött fájlt.
+1. Váltson vissza az **aktiválás** előugró képernyőre, és válassza a **fájl kiválasztása** lehetőséget.
+
+1. Válassza ki a letöltött fájlt.
 
 A kezdeti aktiválás után a figyelt eszközök száma túllépheti a bevezetéskor definiált véglegesített eszközök számát. Ez akkor fordul elő, ha további érzékelőkkel csatlakozik a felügyeleti konzolhoz. Ha a figyelt eszközök száma és a véglegesített eszközök száma között eltérés tapasztalható, egy figyelmeztetés jelenik meg a felügyeleti konzolon. Ha ez történik, töltsön fel egy új aktiválási fájlt.
 
 ## <a name="set-up-a-certificate"></a>Tanúsítvány beállítása
 
-A felügyeleti konzol telepítése után létrejön egy helyi önaláírt tanúsítvány, amely a konzol elérésére szolgál. Miután a rendszergazda első alkalommal bejelentkezett a felügyeleti konzolra, a rendszer az SSL/TLS-tanúsítvány bevezetését kéri. 
+A felügyeleti konzol telepítése után létrejön egy helyi önaláírt tanúsítvány. Ez a tanúsítvány a konzol elérésére szolgál. Miután a rendszergazda első alkalommal bejelentkezett a felügyeleti konzolra, a rendszer az SSL/TLS-tanúsítvány bevezetését kéri. 
 
 Két biztonsági szint érhető el:
 
@@ -76,7 +84,9 @@ A konzol a következő típusú tanúsítványokat támogatja:
 Tanúsítvány feltöltése:
 
 1. Ha a rendszer a bejelentkezés után kéri, adja meg a tanúsítvány nevét.
+
 1. Töltse fel a CRT és a kulcs fájljait.
+
 1. Szükség esetén adjon meg egy hozzáférési kódot, és töltsön fel egy PEM-fájlt.
 
 Előfordulhat, hogy a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány feltöltése után frissítenie kell a képernyőt.
@@ -84,6 +94,7 @@ Előfordulhat, hogy a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány 
 A felügyeleti konzol és a csatlakoztatott érzékelők közötti ellenőrzés letiltása:
 
 1. Kattintson a **Tovább** gombra.
+
 1. A **rendszerszintű ellenőrzés engedélyezése** váltógomb kikapcsolása.
 
 Új tanúsítvány, támogatott tanúsítványfájl és kapcsolódó elemek feltöltésével kapcsolatos információkért lásd: [a helyszíni felügyeleti konzol kezelése](how-to-manage-the-on-premises-management-console.md).
@@ -100,21 +111,23 @@ Két lehetőség érhető el az Azure Defender IoT-érzékelőkhöz a helyszíni
 
 A csatlakozás után be kell állítania egy helyet az érzékelőkkel.
 
-### <a name="connect-sensors-from-the-sensor-console"></a>Érzékelők összekötése az érzékelő konzolról
+### <a name="connect-sensors-to-the-on-premises-management-console-from-the-sensor-console"></a>Érzékelők összekapcsolása a helyszíni felügyeleti konzollal az érzékelő konzolról
 
-Adott érzékelők összekapcsolása a helyszíni felügyeleti konzollal az érzékelő konzolról:
+Az érzékelők a helyszíni felügyeleti konzolhoz kapcsolhatók az érzékelő konzolról:
 
-1. Az érzékelő konzol bal oldali paneljén válassza a **Rendszerbeállítások** elemet.
+1. A helyszíni felügyeleti konzolon válassza a **Rendszerbeállítások** elemet.
 
-2. Válassza **a felügyelethez való kapcsolódás** lehetőséget.
+1. Másolja a **másolási kapcsolatok sztringjét**.
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-not-connected.png" alt-text="Képernyőkép a helyszíni felügyeleti konzol állapotjelző ablakáról, amely a kapcsolat nélküli állapotot jeleníti meg.":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-string.png" alt-text="Másolja az érzékelőhöz tartozó kapcsolatok sztringjét.":::
 
-3. A **cím** szövegmezőbe írja be annak a helyszíni felügyeleti konzolnak az IP-címét, amelyhez csatlakozni szeretne.
+1. Az érzékelőn navigáljon a **Rendszerbeállítások** elemre, és válassza a **Kapcsolódás a felügyeleti konzolhoz** lehetőséget. :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-to-management-console.png" border="false":::
 
-4. Válassza a **Kapcsolódás** lehetőséget. Az állapot módosul:
+1. Illessze be a másolt kapcsolatok karakterláncát a helyszíni felügyeleti konzolról a **kapcsolatok karakterlánc** mezőjébe.
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-connected.png" alt-text="Képernyőkép a helyszíni felügyeleti konzol állapotjelző ablakáról, amely a csatlakoztatott állapotot mutatja.":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/paste-connection-string.png" alt-text="Illessze be a másolt kapcsolatok karakterláncát a kapcsolatok karakterlánc mezőjébe.":::
+
+1. Válassza a **Kapcsolódás** lehetőséget.
 
 ### <a name="connect-sensors-by-using-tunneling"></a>Érzékelők összekötése bújtatás használatával
 
@@ -161,61 +174,55 @@ A hozzáférési csoportok lehetővé teszik, hogy a felhasználók felügyelik 
 
 ### <a name="how-it-works"></a>Működés
 
-Az egyes helyekhez megadhat egy üzleti egységet és egy régiót. Ezután hozzáadhat zónákat, amelyek logikai entitások a hálózatban. 
+Megadhat egy üzleti egységet és egy régiót a szervezet minden helyéhez. Ezután hozzáadhat zónákat, amelyek a hálózatban található logikai entitások. 
 
-Mindegyik zónához legalább egy érzékelőt hozzá kell rendelni. Az öt szintű modell biztosítja a szervezet struktúráját tükröző védelmi rendszer biztosításához szükséges rugalmasságot és részletességet.
-
-A helyeket közvetlenül a Térkép bármelyik nézetéről módosíthatja. Amikor térképes nézetből nyit meg egy helyet, a megnyitott riasztások száma az egyes zónák mellett jelenik meg.
-
-:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="Képernyőkép a helyszíni felügyeleti konzol térképéről a berlini adatátfedéssel.":::
+Egy zónához legalább egy érzékelőt hozzá kell rendelnie. Az öt szintű modell biztosítja a szervezet struktúráját tükröző védelmi rendszer biztosításához szükséges rugalmasságot és részletességet.
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/diagram-of-sensor-showing-relationships.png" alt-text="Az érzékelőket és a regionális kapcsolatot bemutató diagram.":::
+
+A vállalati nézet használatával közvetlenül szerkesztheti a helyeket. Ha a vállalati nézetből kiválaszt egy helyet, a nyitott riasztások száma az egyes zónák mellett jelenik meg.
+
+:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="Képernyőkép a helyszíni felügyeleti konzol térképéről a berlini adatátfedéssel.":::
 
 Hely beállítása:
 
 1. Vegyen fel új üzleti egységeket a szervezet logikai struktúrájának megfelelően.
 
-2. Vegyen fel új régiókat a szervezet régióinak megfelelően.
+   1. A vállalati nézetben válassza a **minden hely**  >  **részlegek kezelése Munkaegységek** lehetőséget.
 
-3. Adjon hozzá egy helyet.
+      :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-business-unit.png" alt-text="Válassza a vállalati nézet képernyő minden hely legördülő menüjének üzleti egység kezelése elemét.":::
 
-4. Zónák hozzáadása egy helyhez.
+   1. Adja meg az új üzleti egység nevét, és válassza a **Hozzáadás** lehetőséget.
 
-5. Kapcsolja össze az érzékelőket.
+1. Vegyen fel egy új régiót a szervezet régióinak megfelelően.
 
-6. Érzékelő társítása a helyek zónájához.
+   1. A vállalati nézetben válassza a **minden régió**  >  **terület kezelése** lehetőséget.
 
-Üzleti egységek hozzáadása:
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-regions.png" alt-text="Válassza a minden régió lehetőséget, majd a régiók elemet a vállalat régióinak kezeléséhez.":::
 
-1. A vállalati nézetben válassza a **minden hely**  >  **részlegek kezelése Munkaegységek** lehetőséget.
+   1. Adja meg az új régió nevét, és válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-business-unit-screen.png" alt-text="Képernyőfelvétel: az üzleti egységek kezelése nézet.":::
+1. Adjon hozzá egy helyet.
 
-2. Adja meg az új üzleti egység nevét, és válassza a **Hozzáadás** lehetőséget.
+   1. A vállalati nézetben válassza a :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: felső sávot. A kurzor plusz jelre () jelenik meg **+** .
 
-Új régió hozzáadása:
+   1. Helyezze **+** el az új hely helyét, és jelölje ki. Megnyílik az **új hely létrehozása** párbeszédpanel.
 
-1. A vállalati nézetben válassza a **minden régió**  >  **terület kezelése** lehetőséget.
+      :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="Képernyőkép az új hely létrehozása nézetről.":::
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-regions-screen.png" alt-text="A régiók kezelése nézetet bemutató képernyőkép.":::
+   1. Adja meg az új hely nevét és fizikai címeit, majd válassza a **Mentés** lehetőséget. Az új hely megjelenik az oldaltérképen.
 
-2. Adja meg az új régió nevét, és válassza a **Hozzáadás** lehetőséget.
+4. [Zónák hozzáadása egy helyhez](#create-enterprise-zones).
 
-Új hely hozzáadása:
+5. [Kapcsolja össze az érzékelőket](how-to-manage-individual-sensors.md#connect-a-sensor-to-the-management-console).
 
-1. A vállalati nézetben válassza a :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: felső sávot. A kurzor plusz jelre () jelenik meg **+** .
-
-2. Helyezze **+** el az új hely helyét, és jelölje ki. Megnyílik az **új hely létrehozása** párbeszédpanel.
-
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="Képernyőkép az új hely létrehozása nézetről.":::
-
-3. Adja meg az új hely nevét és fizikai címeit, majd válassza a **Mentés** lehetőséget. Az új hely megjelenik az oldaltérképen.
+6. [Érzékelő társítása a helyek zónájához](#assign-sensors-to-zones).
 
 Hely törlése:
 
 1. A **hely kezelése** ablakban válassza ki azt :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: a sávot, amely a hely nevét tartalmazza, majd válassza a **hely törlése** lehetőséget. Megjelenik a megerősítő mező, és ellenőrizze, hogy szeretné-e törölni a helyet.
 
-2. A megerősítés mezőben válassza az **Igen** lehetőséget. A megerősítési mező bezárul, és a **hely kezelése** ablak a törölt hely nélkül jelenik meg.
+2. A megerősítés mezőben válassza a **Confirm (megerősítés**) lehetőséget.
 
 ## <a name="create-enterprise-zones"></a>Vállalati zónák létrehozása
 
@@ -250,11 +257,11 @@ Zóna hozzáadása egy helyhez:
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-zone-screen.png" alt-text="Képernyőkép az új zóna létrehozása nézetről.":::
 
-2. Adja meg a zóna nevét.
+1. Adja meg a zóna nevét.
 
-3. Adja meg az új zóna leírását, amely egyértelműen meghatározza a hely zónákra osztásához használt jellemzőket.
+1. Adja meg az új zóna leírását, amely egyértelműen meghatározza a hely zónákra osztásához használt jellemzőket.
 
-4. Válassza a **Mentés** lehetőséget. Az új zóna megjelenik a **hely kezelése** ablakban azon hely alatt, amelyhez ez a zóna tartozik.
+1. Válassza a **Mentés** lehetőséget. Az új zóna megjelenik a **hely kezelése** ablakban azon hely alatt, amelyhez ez a zóna tartozik.
 
 Zóna szerkesztése:
 
@@ -262,13 +269,13 @@ Zóna szerkesztése:
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/zone-edit-screen.png" alt-text="A zóna szerkesztése párbeszédpanelt megjelenítő képernyőkép.":::
 
-2. Szerkessze a zóna paramétereit, majd válassza a **Mentés** lehetőséget.
+1. Szerkessze a zóna paramétereit, majd válassza a **Mentés** lehetőséget.
 
 Zóna törlése:
 
 1. A **hely kezelése** ablakban válassza ki azt :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: a sávot, amely tartalmazza a zóna nevét, majd válassza a **zóna törlése** lehetőséget.
 
-2. A megerősítés mezőben válassza az **Igen** lehetőséget.
+1. A megerősítés mezőben válassza az **Igen** lehetőséget.
 
 Szűrés a kapcsolat állapota szerint:
 
@@ -302,23 +309,23 @@ Minden zónához hozzá kell rendelnie a helyi forgalom elemzését és a riaszt
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassigned-sensors-view.png" alt-text="Képernyőkép a nem hozzárendelt érzékelők nézetről.":::
 
-2. Ellenőrizze, hogy a **kapcsolat** állapota csatlakoztatva van-e. Ha nem, tekintse [meg az érzékelők csatlakoztatása a helyszíni felügyeleti konzolhoz](#connect-sensors-to-the-on-premises-management-console) című témakört a csatlakozással kapcsolatos részletekért. 
+1. Ellenőrizze, hogy a **kapcsolat** állapota csatlakoztatva van-e. Ha nem, tekintse [meg az érzékelők csatlakoztatása a helyszíni felügyeleti konzolhoz](#connect-sensors-to-the-on-premises-management-console) című témakört a csatlakozással kapcsolatos részletekért. 
 
-3. Válassza ki :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: a hozzárendelni kívánt érzékelőt.
+1. Válassza ki :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: a hozzárendelni kívánt érzékelőt.
 
-4. Az **érzékelő** kiosztása párbeszédpanelen válassza ki a hozzárendelni kívánt üzleti egységet, régiót, helyet és zónát.
+1. Az **érzékelő** kiosztása párbeszédpanelen válassza ki a hozzárendelni kívánt üzleti egységet, régiót, helyet és zónát.
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-sensor-screen.png" alt-text="Képernyőkép az érzékelő kiosztása nézetről.":::
 
-5. Válassza a **hozzárendelés** lehetőséget.
+1. Válassza a **hozzárendelés** lehetőséget.
 
 Érzékelő hozzárendelésének megszüntetése és törlése:
 
 1. Válassza le az érzékelőt a helyszíni felügyeleti konzolról. További részletekért lásd: [érzékelők összekapcsolása a helyszíni felügyeleti konzolhoz](#connect-sensors-to-the-on-premises-management-console) .
 
-2. A **hely kezelése** ablakban válassza ki az érzékelőt, és válassza a elemet :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: . Az érzékelő néhány pillanat múlva megjelenik a hozzá nem rendelt érzékelők listájában.
+1. A **hely kezelése** ablakban válassza ki az érzékelőt, és válassza a elemet :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: . Az érzékelő néhány pillanat múlva megjelenik a hozzá nem rendelt érzékelők listájában.
 
-3. Ha törölni szeretné a nem hozzárendelt érzékelőt a helyről, válassza ki az érzékelőt a hozzá nem rendelt érzékelők listájából, és válassza a lehetőséget :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
+1. Ha törölni szeretné a nem hozzárendelt érzékelőt a helyről, válassza ki az érzékelőt a hozzá nem rendelt érzékelők listájából, és válassza a lehetőséget :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
 ## <a name="see-also"></a>Lásd még
 

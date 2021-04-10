@@ -3,15 +3,15 @@ title: Meglévő Windowsos virtuális asztali (klasszikus) címkészlet kibontá
 description: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel a Windows Virtual Desktopban (klasszikus).
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88009171"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551951"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel a Windows Virtual Desktopban (klasszikus)
 
@@ -39,7 +39,7 @@ A következő információkra is szüksége lesz a gazdagép és a munkamenet-ga
 A következő három szakaszban három módszer használható a címkészlet kibontására. Bármely, az Ön számára kényelmes üzembe helyezési eszközzel elvégezhető.
 
 >[!NOTE]
->Az üzembe helyezési fázisban hibaüzenetek jelennek meg az előző munkamenet-gazdagép virtuálisgép-erőforrásaihoz, ha éppen leállnak. Ezek a hibák azért történnek, mert az Azure nem tudja futtatni a PowerShell DSC bővítményt annak ellenőrzéséhez, hogy a munkamenet-gazda virtuális gépek megfelelően vannak-e regisztrálva a meglévő gazdagépen Ezeket a hibákat nyugodtan figyelmen kívül hagyhatja, vagy elkerülheti a hibákat úgy, hogy a telepítési folyamat megkezdése előtt elindítja az összes munkamenet-gazda virtuális gépet a meglévő gazdagép-készletben.
+>Az üzembe helyezési fázisban hibaüzenetek jelennek meg az előző munkamenet-gazdagép virtuálisgép-erőforrásaihoz, ha éppen leállnak. Ezek a hibák azért történnek, mert az Azure nem tudja futtatni a PowerShell DSC bővítményt annak ellenőrzéséhez, hogy a munkamenet-gazda virtuális gépek megfelelően vannak-e regisztrálva a meglévő gazdagépen Azt a munkamenet-gazdagépet, amelynek a neve a "-0" végződéssel végződik, azonban nyugodtan figyelmen kívül hagyhatja ezeket a hibákat más munkamenet-gazdagépek esetén, vagy elkerülheti a hibákat úgy, hogy a telepítési folyamat megkezdése előtt elindítja az összes munkamenet-gazda virtuális gépet a meglévő gazdagépen.
 
 ## <a name="redeploy-from-azure"></a>Újraüzembe helyezés az Azure-ból
 
@@ -96,7 +96,7 @@ Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdag
 1. Válassza ki a virtuálisgép-méretet, amely megfelel a meglévő munkamenet-gazda virtuális gépeknek.
 
     >[!NOTE]
-    >Ha a keresett virtuálisgép-méret nem jelenik meg a virtuálisgép-méret választóban, ennek az az oka, hogy még nem készítettük üzembe az Azure Marketplace eszközre. A virtuális gép méretének igényléséhez hozzon létre egy kérést, vagy egy meglévő kérelmet a [Windows virtuális asztali UserVoice fórumában](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Ha a keresett virtuálisgép-méret nem jelenik meg a virtuálisgép-méret választóban, ennek az az oka, hogy még nem készítettük üzembe az Azure Marketplace eszközre.
 
 2. Szabja testre a *használati profilt*, az *összes felhasználót* és a virtuálisgép-paraméterek *számát* , hogy kiválassza a gazdagép készletében lévő összes munkamenet-gazdagép számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, ezeket a beállításokat a 8 virtuális gép számára konfigurálja.
 3. Adja meg a virtuális gépek neveinek előtagját. Ha például a "prefix" nevet adja meg, akkor a virtuális gépek "előtag-0", "előtag-1" és így tovább.

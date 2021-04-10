@@ -8,15 +8,15 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: 7be40ac5f6cda7a81d68ca0b17f377891dd58480
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: b9ed71a8fc9346ecd454eba98dcbb3b13186eba2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606045"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276042"
 ---
-# <a name="known-issues-azure-communication-services-sdks"></a>Ismert problémák: az Azure kommunikációs szolgáltatások SDK-k
-Ez a cikk a korlátozásokkal és az Azure Communication Services SDK-k használatával kapcsolatos ismert problémákról nyújt információkat.
+# <a name="known-issues-azure-communication-services-calling-sdks"></a>Ismert problémák: az Azure kommunikációs szolgáltatása SDK-kat hív meg
+Ez a cikk az SDK-kat hívó Azure kommunikációs szolgáltatásokkal kapcsolatos korlátozásokkal és ismert problémákról nyújt információkat.
 
 > [!IMPORTANT]
 > Több tényező is befolyásolhatja a hívási élmény minőségét. A **[hálózati követelmények](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)** dokumentációjában tájékozódhat a kommunikációs szolgáltatások hálózati konfigurációjáról és az ajánlott eljárások teszteléséről.
@@ -47,7 +47,10 @@ Az alkalmazások nem tudják enumerálni/kiválasztani a MIC/Speaker eszközöke
 Ha macOS rendszeren használja a Safari alkalmazást, az alkalmazás nem fogja tudni felsorolni/kiválasztani a beszélőket a kommunikációs szolgáltatások Eszközkezelő. Ebben az esetben az eszközöket az operációs rendszer használatával kell kiválasztani. Ha macOS rendszeren használja a Chrome-t, az alkalmazás a kommunikációs szolgáltatások Eszközkezelő segítségével enumerálhatja vagy kiválaszthatja az eszközöket.
 
 ### <a name="audio-connectivity-is-lost-when-receiving-sms-messages-or-calls-during-an-ongoing-voip-call"></a>Az SMS-üzenetek vagy-hívások fogadásakor a rendszer elveszi a hangkapcsolatot egy folyamatban lévő VoIP-hívás során
-A mobil böngészők nem tartanak fenn kapcsolatot a háttérben állapotban. Ennek eredményeként csökkenhet a hívás, ha a VoIP-hívást egy olyan esemény szakította meg, amely a háttérben küldi el az alkalmazást.
+Ez a probléma több okból is előfordulhat:
+
+- Egyes mobil böngészők nem tartanak fenn kapcsolatot a háttérben állapotban. Ennek eredményeként csökkenhet a hívás, ha a VoIP-hívást egy olyan esemény szakította meg, amely a háttérben küldi el az alkalmazást. 
+- Előfordulhat, hogy egy SMS-vagy PSTN-hívás rögzíti a hanghangt, és nem engedi vissza a hanganyagot a VoIP-hívásra. Az Apple ezt a problémát a 14.4.1 + iOS-verziókban javította. 
 
 <br/>Ügyféloldali kódtár: hívás (JavaScript)
 <br/>Böngészők: Safari, Chrome
@@ -95,9 +98,16 @@ Ha a felhasználó úgy dönt, hogy a hívás állapota alatt gyorsan be-és kik
  - Ha a felhasználó hanggal kezdődik, majd elindítja és leállítja a videót, miközben a hívás `Connecting` állapota folyamatban van.
  - Ha a felhasználó hanggal kezdődik, majd elindítja és leállítja a videót, miközben a hívás `Lobby` állapota folyamatban van.
 
-
 #### <a name="possible-causes"></a>Lehetséges okok
 A vizsgálat alatt.
+
+### <a name="enumeratingaccessing-devices-for-safari-on-macos-and-ios"></a>A Safari és az iOS rendszerhez készült eszközök enumerálása/elérése 
+Ha az eszközökhöz való hozzáférés meg van adva, néhány idő elteltével a rendszer alaphelyzetbe állítja az eszköz engedélyeit. A MacOS és az iOS rendszeren futó Safari nem tartja meg az engedélyeket nagyon hosszú ideig, kivéve, ha a streamet beszerezték. Ennek legegyszerűbb módja a DeviceManager. askDevicePermission () API meghívása az Eszközkezelő eszköz enumerálási API-jai (DeviceManager. getCameras (), DeviceManager. getSpeakers () és DeviceManager. getMicrophones ()) meghívása előtt. Ha az engedélyek ott vannak, akkor a felhasználó nem lát semmit, ha nem, akkor újra meg kell kérni.
+
+<br/>Érintett eszközök: iPhone
+<br/>Ügyféloldali kódtár: hívás (JavaScript)
+<br/>Böngészők: Safari
+<br/>Operációs rendszer: iOS
 
 ###  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>Időnként hosszú időt vesz igénybe a távoli résztvevő videók megjelenítése
 Folyamatos csoportos hívás esetén _a felhasználó a_ videót küldi, majd a _B felhasználó_ csatlakozik a híváshoz. Előfordulhat, hogy a B felhasználó nem látja az A felhasználó videóját, vagy ha a felhasználó hosszú késleltetés után megkezdi A megjelenítést. Ezt a problémát olyan hálózati környezet okozhatja, amely további konfigurálást igényel. A hálózati beállításokkal kapcsolatos útmutatásért tekintse meg a [hálózati követelmények](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements) dokumentációját.
