@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96460293"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro technikai specifikációi
@@ -60,13 +60,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Azure Stack Edge Pro-eszközének 6 hálózati adaptere van, a PORT1-PORT6.
 
-| Specifikáció           | Description                 |
+| Specifikáció           | Leírás                 |
 |-------------------------|----------------------------|
 |  Hálózati adapterek    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
 
 A használt hálózati adapterek a következők: 
 
-| Specifikáció           | Description                 |
+| Specifikáció           | Leírás                 |
 |-------------------------|----------------------------|
 |Hálózati lánya kártya (rNDC) |QLogic FastLinQ 41264 Dual port 25GbE SFP +, Dual port 1 GbE, rNDC|
 |PCI hálózati adapter |QLogic FastLinQ 41262 Zwei-portok 25Gbit/s SFP28 adapter|

@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100375102"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
@@ -145,7 +145,7 @@ A vállalatokban a **vállalati tűzfal** a szervezet központi útválasztójá
 
 A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tartományokra vonatkozó követelményeit tartalmazza.
 
-| Tartománynevek | Kimenő portok | Description |
+| Tartománynevek | Kimenő portok | Leírás |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Az átjáró számára szükséges az adatátviteli szolgáltatásokhoz való kapcsolódáshoz Data Factory |
 | `*.core.windows.net` | 443 | Az átjáró az Azure Storage-fiókhoz való csatlakozáshoz használja az [előkészített másolási](data-factory-copy-activity-performance.md#staged-copy) szolgáltatás használatakor. | 
@@ -158,7 +158,7 @@ A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tarto
 
 A következő táblázat a **Windows tűzfal** **bejövő portokra** vonatkozó követelményeit tartalmazza.
 
-| Bejövő portok | Description | 
+| Bejövő portok | Leírás | 
 | ------------- | ----------- | 
 | 8050 (TCP) | A Hitelesítőadat-kezelő alkalmazása megköveteli a helyszíni adattárakhoz tartozó hitelesítő adatok biztonságos beállítását az átjárón. | 
 

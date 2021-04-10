@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100519796"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: Forgalom irányítása NVA-n keresztül
@@ -69,14 +69,14 @@ Ebben a forgatókönyvben azonban meg kell gondolni, hogy mely statikus útvonal
 
 Ezzel az alapértelmezett táblában a NVA a NVA VNet mögötti forgalom küldéséhez szükséges statikus útvonalak a következők:
 
-| Description | Útválasztási táblázat | Statikus útvonal              |
+| Leírás | Útválasztási táblázat | Statikus útvonal              |
 | ----------- | ----------- | ------------------------- |
 | 2. VNet       | Alapértelmezett     | 10.2.0.0/16 – > eastusconn |
 | 4. VNet       | Alapértelmezett     | 10.4.0.0/16 – > weconn     |
 
 A Virtual WAN már tudja, hogy melyik kapcsolattal küldi el a csomagokat, de a kapcsolatnak tudnia kell, mi a teendő a csomagok fogadásakor: ez az a hely, ahol a kapcsolati útválasztási táblák vannak használatban. Itt fogjuk használni a rövidebb előtagokat (/24 a hosszabb/16 helyett), hogy meggyőződjünk arról, hogy ezek az útvonalak előnyben részesítettek a NVA virtuális hálózatok importált útvonalakon (VNet 2 és VNet 4):
 
-| Description | Kapcsolat | Statikus útvonal            |
+| Leírás | Kapcsolat | Statikus útvonal            |
 | ----------- | ---------- | ----------------------- |
 | 5. VNet       | eastusconn | 10.2.1.0/24 – > 10.2.0.5 |
 | 6. VNet       | eastusconn | 10.2.2.0/24 – > 10.2.0.5 |

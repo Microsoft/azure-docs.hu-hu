@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 4cafe9af1eb5a765ab86bafb63cc9ab7d0889dc8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99627599"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-eseményindítók és -kötések – fogalmak
@@ -96,7 +96,7 @@ A következő táblázat példákat mutat be bizonyos kötési típusokra, amely
 
 Létrehozhat egyéni bemeneti és kimeneti kötéseket is. A kötéseket a .NET-ben kell létrehozni, de bármilyen támogatott nyelvről felhasználhatók. Az egyéni kötések létrehozásával kapcsolatos további információkért lásd: [Egyéni bemeneti és kimeneti kötések létrehozása](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 - [Kötési kifejezések és minták](./functions-bindings-expressions-patterns.md)
 - [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)
 - [Kötési kifejezés regisztrálása](./functions-bindings-register.md)

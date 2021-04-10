@@ -5,10 +5,10 @@ services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7f91ac0aec46d0fc24901585156dceabb18640c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586834"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor Azure Relay metrikák 
@@ -48,7 +48,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | ListenerConnections-Success  | Egy adott időszakban Azure Relay sikeres figyelő-kapcsolatok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |ListenerConnections-ClientError |A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -65,7 +65,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 ## <a name="memory-usage-metrics"></a>Memóriahasználat mérőszámai
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |BytesTransferred |A megadott időszakon át továbbított bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
@@ -73,7 +73,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 A Azure Relay a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-|Dimenzió neve|Description|
+|Dimenzió neve|Leírás|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay támogatja az üzenetküldési entitásokat a névtérben.|
 
