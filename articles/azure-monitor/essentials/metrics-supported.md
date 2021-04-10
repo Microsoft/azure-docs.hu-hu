@@ -4,14 +4,14 @@ description: Az egyes erőforrástípusok számára elérhető metrikák listáj
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/06/2021
+ms.date: 04/01/2021
 ms.author: robb
-ms.openlocfilehash: 2437ab80a23ffc39c180bcdf72921fdf13768541
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0854d56930dbc8decfcf8f96a814f082e361de62
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033503"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167243"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
@@ -55,17 +55,16 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 > [!IMPORTANT] 
 > Ez a legújabb frissítés egy új oszlopot hoz létre, és átrendezi a mérőszámokat ABC-ként. A hozzáadási információ azt jelenti, hogy az alábbi táblázatok a böngészőablak szélessége alapján vízszintes görgetősávtal rendelkezhetnek az alsó sarokban. Ha úgy véli, hogy hiányoznak az adatok, a görgetősávon láthatja a teljes táblázatot.
-
 ## <a name="microsoftaadiamazureadmetrics"></a>Microsoft. aadiam/azureADMetrics
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ThrottledRequests|No|ThrottledRequests|Darabszám|Átlag|azureADMetrics típusú metrika|Nincsenek méretek|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/kiszolgálók
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |CleanerCurrentPrice|Yes|Memória: tisztító – aktuális ár|Darabszám|Átlag|A memória aktuális ára, a $ re normalizálva, 1000-ra normalizálva.|ServerResourceType|
 |CleanerMemoryNonshrinkable|Yes|Memória: nem csökkenthető a tisztább memória|Bájt|Átlag|A memória mennyisége (bájtban), amelyet a háttérben futó tisztító nem szabályoz.|ServerResourceType|
@@ -118,7 +117,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BackendDuration|Yes|A háttérbeli kérelmek időtartama|Ezredmásodpercben|Átlag|A háttérbeli kérelmek időtartama (ezredmásodpercben)|Hely, állomásnév|
 |Kapacitás|Yes|Kapacitás|Százalék|Átlag|A ApiManagement szolgáltatás kihasználtsági metrikája|Hely|
@@ -142,16 +141,15 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |HttpIncomingRequestCount|Yes|HttpIncomingRequestCount|Darabszám|Darabszám|A bejövő HTTP-kérelmek teljes száma.|StatusCode, hitelesítés|
 |HttpIncomingRequestDuration|Yes|HttpIncomingRequestDuration|Darabszám|Átlag|Egy HTTP-kérelem késése.|StatusCode, hitelesítés|
 |ThrottledHttpRequestCount|Yes|ThrottledHttpRequestCount|Darabszám|Darabszám|Szabályozott HTTP-kérelmek.|Nincsenek méretek|
 
-
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Spring
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |aktív – időzítő – darabszám|Yes|aktív – időzítő – darabszám|Darabszám|Átlag|Jelenleg aktív Időzítők száma|Üzembe helyezés, AppName, Pod|
 |foglalási – arány|Yes|foglalási – arány|Bájt|Átlag|A felügyelt halomban lefoglalt bájtok száma|Üzembe helyezés, AppName, Pod|
@@ -204,10 +202,9 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |kérelmek összesen|Yes|kérelmek összesen|Darabszám|Átlag|A folyamat élettartamán belüli kérelmek teljes száma|Üzembe helyezés, AppName, Pod|
 |munkakészlet|Yes|munkakészlet|Darabszám|Átlag|A folyamat által használt munkakészlet mennyisége (MB)|Üzembe helyezés, AppName, Pod|
 
-
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |TotalJob|Yes|Feladatok összesen|Darabszám|Összesen|A feladatok teljes száma|Runbook, állapot|
 |TotalUpdateDeploymentMachineRuns|Yes|Összes frissítés központi telepítési gép futtatása|Darabszám|Összesen|Szoftverfrissítés központi telepítésének teljes futtatása a szoftverfrissítési központi telepítési gépen|SoftwareUpdateConfigurationName, állapot, TargetComputer, SoftwareUpdateConfigurationRunId|
@@ -216,7 +213,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftavsprivateclouds"></a>Microsoft. AVS/privateClouds
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |CapacityLatest|Yes|Adattár lemezének teljes kapacitása|Bájt|Átlag|Az adattárban lévő lemez teljes kapacitása|DSNAME|
 |DiskUsedPercentage|Yes| Felhasznált adattároló-lemez százalékos aránya|Százalék|Átlag|Az adattárban használt szabad lemez százaléka|DSNAME|
@@ -230,7 +227,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |CoreCount|No|Dedikált mag száma|Darabszám|Összesen|A Batch-fiókban lévő dedikált magok teljes száma|Nincsenek méretek|
 |CreatingNodeCount|No|Csomópontok számának létrehozása|Darabszám|Összesen|Létrehozandó csomópontok száma|Nincsenek méretek|
@@ -267,7 +264,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/munkaterületek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Aktív magok|Yes|Aktív magok|Darabszám|Átlag|Aktív magok száma|Forgatókönyv, ClusterName|
 |Aktív csomópontok|Yes|Aktív csomópontok|Darabszám|Átlag|Futó csomópontok száma|Forgatókönyv, ClusterName|
@@ -288,7 +285,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockchain/blockchainMembers
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BroadcastProcessedCount|Yes|BroadcastProcessedCountDisplayName|Darabszám|Átlag|A feldolgozott tranzakciók száma.|Csomópont, csatorna, típus, állapot|
 |ChaincodeExecuteTimeouts|Yes|ChaincodeExecuteTimeoutsDisplayName|Darabszám|Átlag|Az időkorláttal rendelkező chaincode-végrehajtások (init vagy meghívás) száma.|Csomópont, chaincode|
@@ -374,15 +371,15 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftbotservicebotservices"></a>Microsoft. botservice/botservices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
-|RequestLatency|Yes|Kérelem késése|Ezredmásodpercben|Összesen|A kiszolgáló által a kérelem feldolgozásához szükséges idő|Művelet, hitelesítés, protokoll|
-|RequestsTraffic|Yes|Forgalom kérése|Százalék|Darabszám|Benyújtott kérelmek száma|Művelet, hitelesítés, protokoll, StatusCode, StatusCodeClass|
+|RequestLatency|Yes|Kérelem késése|Ezredmásodpercben|Összesen|A kiszolgáló által a kérelem feldolgozásához szükséges idő|Művelet, hitelesítés, protokoll, DataCenter|
+|RequestsTraffic|Yes|Forgalom kérése|Százalék|Darabszám|Benyújtott kérelmek száma|Művelet, hitelesítés, protokoll, StatusCode, StatusCodeClass, DataCenter|
 
 
 ## <a name="microsoftcacheredis"></a>Microsoft. cache/Redis
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |allcachehits|Yes|Gyorsítótár-találatok (példány-alapú)|Darabszám|Összesen||ShardId, port, elsődleges|
 |allcachemisses|Yes|Gyorsítótár-lemaradás (példány-alapú)|Darabszám|Összesen||ShardId, port, elsődleges|
@@ -584,7 +581,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcacheredisenterprise"></a>Microsoft. cache/redisEnterprise
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |cachehits|Yes|Gyorsítótár-találatok|Darabszám|Összesen||Nincsenek méretek|
 |cacheLatency|Yes|Gyorsítótár késési másodpercek (előzetes verzió)|Darabszám|Átlag||InstanceId|
@@ -604,22 +601,21 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |totalkeys|Yes|Kulcsok összesen|Darabszám|Maximum||Nincsenek méretek|
 |usedmemory|Yes|Felhasznált memória|Bájt|Maximum||Nincsenek méretek|
 |usedmemorypercentage|Yes|Felhasznált memória százalékos aránya|Százalék|Maximum||InstanceId|
-|usedmemoryRss|Yes|Felhasznált memória RSS-címe|Bájt|Maximum||InstanceId|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Yes|Webalkalmazási tűzfalra vonatkozó kérelmek száma|Darabszám|Összesen|A webalkalmazási tűzfal által feldolgozott ügyfelek kéréseinek száma|PolicyName, RuleName, művelet|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profilok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ByteHitRatio|Yes|Bájtos találatok aránya|Százalék|Átlag|A gyorsítótárból kiszolgált teljes bájtok aránya a teljes válasz bájtjaihoz képest|Végpont|
-|OriginHealthPercentage|Yes|Forrás állapotának százaléka|Százalék|Átlag|A AFDX és a háttér közötti sikeres állapot-mintavételek százalékos aránya.|Forrás, OriginPool|
+|OriginHealthPercentage|Yes|Forrás állapotának százaléka|Százalék|Átlag|A AFDX és a háttér közötti sikeres állapot-mintavételek százalékos aránya.|Forrás, OriginGroup|
 |OriginLatency|Yes|Forrás késése|Ezredmásodpercben|Átlag|A AFDX Edge által a háttérbe irányuló kérés elküldésekor kiszámított idő, amíg a AFDX nem kapta meg a háttér utolsó válaszának bájtját.|Forrás, végpont|
 |OriginRequestCount|Yes|Származási kérelmek száma|Darabszám|Összesen|A AFDX és a forrás között küldött kérések száma.|HttpStatus, HttpStatusGroup, forrás, végpont|
 |Percentage4XX|Yes|4XX százalékos aránya|Százalék|Átlag|Az összes olyan ügyfél-kérelem százaléka, amelynél a válasz állapotkód 4XX|Végpont, ClientRegion, ClientCountry|
@@ -633,7 +629,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Lemez olvasási sebessége (bájt/s)|No|Lemez olvasása|BytesPerSecond|Átlag|A megfigyelési időszak során lemezről beolvasott bájtok átlagos száma.|RoleInstanceId|
 |Lemez olvasási művelete/mp|Yes|Lemez olvasási művelete/mp|CountPerSecond|Átlag|Lemez olvasása IOPS.|RoleInstanceId|
@@ -646,7 +642,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Lemez olvasási sebessége (bájt/s)|No|Lemez olvasása|BytesPerSecond|Átlag|A megfigyelési időszak során lemezről beolvasott bájtok átlagos száma.|Nincsenek méretek|
 |Lemez olvasási művelete/mp|Yes|Lemez olvasási művelete/mp|CountPerSecond|Átlag|Lemez olvasása IOPS.|Nincsenek méretek|
@@ -659,7 +655,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
@@ -672,7 +668,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |BlobCapacity|No|BLOB kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
@@ -688,7 +684,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/fileServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés, fájlmegosztás|
@@ -706,7 +702,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
@@ -721,7 +717,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
@@ -736,7 +732,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/fiókok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BlockedCalls|Yes|Blokkolt hívások|Darabszám|Összesen|Azon hívások száma, amelyek túllépték a sebességet vagy a kvóta korlátját.|ApiName, OperationName, régió|
 |CharactersTrained|Yes|Betanított karakterek|Darabszám|Összesen|A betanított karakterek teljes száma.|ApiName, OperationName, régió|
@@ -761,7 +757,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft. Communication/CommunicationServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |APIRequestAuthentication|No|Hitelesítési API-kérelmek|Darabszám|Darabszám|A kommunikációs szolgáltatások hitelesítési végpontján megjelenő kérelmek száma.|Művelet, StatusCode, StatusCodeClass|
 |APIRequestChat|Yes|Csevegési API-kérelmek|Darabszám|Darabszám|A kommunikációs szolgáltatások csevegési végpontján megjelenő kérelmek száma.|Művelet, StatusCode, StatusCodeClass|
@@ -770,7 +766,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcomputecloudservices"></a>Microsoft. számítás/cloudServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Lemez olvasási bájtjai|Yes|Lemez olvasási bájtjai|Bájt|Összesen|A figyelési időszak során lemezről beolvasott bájtok száma|RoleInstanceId, Szerepkörazonosítónak|
 |Lemez olvasási művelete/mp|Yes|Lemez olvasási művelete/mp|CountPerSecond|Átlag|Lemez olvasása IOPS|RoleInstanceId, Szerepkörazonosítónak|
@@ -781,7 +777,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcomputecloudservicesroles"></a>Microsoft. számítási/cloudServices/szerepkörök
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Lemez olvasási bájtjai|Yes|Lemez olvasási bájtjai|Bájt|Összesen|A figyelési időszak során lemezről beolvasott bájtok száma|RoleInstanceId, Szerepkörazonosítónak|
 |Lemez olvasási művelete/mp|Yes|Lemez olvasási művelete/mp|CountPerSecond|Átlag|Lemez olvasása IOPS|RoleInstanceId, Szerepkörazonosítónak|
@@ -792,7 +788,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcomputedisks"></a>Microsoft. számítás/lemezek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Összetett lemez olvasási sebessége (bájt/s)|No|Lemez olvasási sebessége (bájt/mp) (előzetes verzió)|Bájt|Átlag|A figyelési időszak során lemezről beolvasott bájtok másodpercenkénti száma, Megjegyzés: Ez a metrika előzetes verzióban érhető el, és az általánosan elérhetővé válás előtt változhat.||
 |Összetett lemez olvasási művelete/mp|No|Lemez olvasási művelete/mp (előzetes verzió)|Bájt|Átlag|A figyelési időszak során a lemezen végrehajtott olvasási IOs-műveletek száma, vegye figyelembe, hogy ez a metrika előzetes verzióban érhető el, és az általánosan elérhetővé válás előtt változhat.||
@@ -802,10 +798,10 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
-|Felhasznált CPU-kreditek|Yes|Felhasznált CPU-kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma|Nincsenek méretek|
-|Fennmaradó CPU-kreditek|Yes|Fennmaradó CPU-kreditek|Darabszám|Átlag|A feltört kreditek teljes száma|Nincsenek méretek|
+|Felhasznált CPU-kreditek|Yes|Felhasznált CPU-kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma. Csak a B sorozatú feltört virtuális gépeken érhető el|Nincsenek méretek|
+|Fennmaradó CPU-kreditek|Yes|Fennmaradó CPU-kreditek|Darabszám|Átlag|A feltört kreditek teljes száma. Csak a B sorozatú feltört virtuális gépeken érhető el|Nincsenek méretek|
 |Adatlemez-sávszélesség felhasznált százaléka|Yes|Adatlemez-sávszélesség felhasznált százaléka|Százalék|Átlag|A percenként felhasznált adatlemez-sávszélesség százalékos aránya|LUN|
 |Adatlemez IOPS felhasznált százaléka|Yes|Adatlemez IOPS felhasznált százaléka|Százalék|Átlag|Az adatlemez I/o-kihasználtságának százalékos aránya percenként|LUN|
 |Adatlemez maximális burst sávszélessége|Yes|Adatlemez maximális burst sávszélessége|Darabszám|Átlag|A másodpercenkénti bájtok maximális átviteli sebessége adatlemez esetén|LUN|
@@ -857,10 +853,10 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
-|Felhasznált CPU-kreditek|Yes|Felhasznált CPU-kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma|Nincsenek méretek|
-|Fennmaradó CPU-kreditek|Yes|Fennmaradó CPU-kreditek|Darabszám|Átlag|A feltört kreditek teljes száma|Nincsenek méretek|
+|Felhasznált CPU-kreditek|Yes|Felhasznált CPU-kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma. Csak a B sorozatú feltört virtuális gépeken érhető el|Nincsenek méretek|
+|Fennmaradó CPU-kreditek|Yes|Fennmaradó CPU-kreditek|Darabszám|Átlag|A feltört kreditek teljes száma. Csak a B sorozatú feltört virtuális gépeken érhető el|Nincsenek méretek|
 |Adatlemez-sávszélesség felhasznált százaléka|Yes|Adatlemez-sávszélesség felhasznált százaléka|Százalék|Átlag|A percenként felhasznált adatlemez-sávszélesség százalékos aránya|LUN, VMName|
 |Adatlemez IOPS felhasznált százaléka|Yes|Adatlemez IOPS felhasznált százaléka|Százalék|Átlag|Az adatlemez I/o-kihasználtságának százalékos aránya percenként|LUN, VMName|
 |Adatlemez maximális burst sávszélessége|Yes|Adatlemez maximális burst sávszélessége|Darabszám|Átlag|A másodpercenkénti bájtok maximális átviteli sebessége adatlemez esetén|LUN, VMName|
@@ -912,10 +908,10 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft. számítás/virtualMachineScaleSets/virtualMachines
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
-|Felhasznált CPU-kreditek|Yes|Felhasznált CPU-kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma|Nincsenek méretek|
-|Fennmaradó CPU-kreditek|Yes|Fennmaradó CPU-kreditek|Darabszám|Átlag|A feltört kreditek teljes száma|Nincsenek méretek|
+|Felhasznált CPU-kreditek|Yes|Felhasznált CPU-kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma. Csak a B sorozatú feltört virtuális gépeken érhető el|Nincsenek méretek|
+|Fennmaradó CPU-kreditek|Yes|Fennmaradó CPU-kreditek|Darabszám|Átlag|A feltört kreditek teljes száma. Csak a B sorozatú feltört virtuális gépeken érhető el|Nincsenek méretek|
 |Adatlemez-sávszélesség felhasznált százaléka|Yes|Adatlemez-sávszélesség felhasznált százaléka|Százalék|Átlag|A percenként felhasznált adatlemez-sávszélesség százalékos aránya|LUN|
 |Adatlemez IOPS felhasznált százaléka|Yes|Adatlemez IOPS felhasznált százaléka|Százalék|Átlag|Az adatlemez I/o-kihasználtságának százalékos aránya percenként|LUN|
 |Adatlemez maximális burst sávszélessége|Yes|Adatlemez maximális burst sávszélessége|Darabszám|Átlag|A másodpercenkénti bájtok maximális átviteli sebessége adatlemez esetén|LUN|
@@ -967,7 +963,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft. ContainerInstance/containerGroups
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |CpuUsage|Yes|CPU-használat|Darabszám|Átlag|CPU-használat a millicores összes magot illetően.|containerName|
 |MemoryUsage|Yes|Memóriahasználat|Bájt|Átlag|A memória teljes kihasználtsága bájtban.|containerName|
@@ -977,7 +973,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/nyilvántartók
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AgentPoolCPUTime|Yes|AgentPool CPU-idő|Másodperc|Összesen|AgentPool CPU-idő másodpercben|Nincsenek méretek|
 |RunDuration|Yes|Futtatás időtartama|Ezredmásodpercben|Összesen|Futtatás időtartama (ezredmásodpercben)|Nincsenek méretek|
@@ -989,19 +985,33 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. Tárolószolgáltatás/managedClusters
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |apiserver_current_inflight_requests|No|Fedélzeti kérelmek|Darabszám|Átlag|A jelenleg felhasznált fedélzeti kérelmek maximális száma a apiserver az elmúlt másodpercben|requestKind|
+|cluster_autoscaler_cluster_safe_to_autoscale|No|Fürt állapota|Darabszám|Átlag|Meghatározza, hogy a fürt automatikusan méretezhető-e a fürtön.||
+|cluster_autoscaler_scale_down_in_cooldown|No|Leskálázási hűtő|Darabszám|Átlag|Meghatározza, hogy a leskálázás van-e a hűtőben – ebben az időkeretben egyetlen csomópont sem lesz eltávolítva||
+|cluster_autoscaler_unneeded_nodes_count|No|Szükségtelen csomópontok|Darabszám|Átlag|A fürt auotscaler megjelöli ezeket a csomópontokat törlésre jelöltként, és végül törölve lesz||
+|cluster_autoscaler_unschedulable_pods_count|No|Unschedulable hüvelyek|Darabszám|Átlag|A fürtben aktuálisan unschedulable hüvelyek száma||
 |kube_node_status_allocatable_cpu_cores|No|A felügyelt fürtben rendelkezésre álló CPU-magok teljes száma|Darabszám|Átlag|A felügyelt fürtben rendelkezésre álló CPU-magok teljes száma||
 |kube_node_status_allocatable_memory_bytes|No|A felügyelt fürtben rendelkezésre álló memória teljes mennyisége|Bájt|Átlag|A felügyelt fürtben rendelkezésre álló memória teljes mennyisége||
 |kube_node_status_condition|No|Különböző csomóponti feltételek állapota|Darabszám|Átlag|Különböző csomóponti feltételek állapota|feltétel, állapot, status2, csomópont|
 |kube_pod_status_phase|No|Hüvelyek száma fázis szerint|Darabszám|Átlag|Hüvelyek száma fázis szerint|fázis, névtér, Pod|
 |kube_pod_status_ready|No|A hüvelyek száma üzemkész állapotban|Darabszám|Átlag|A hüvelyek száma üzemkész állapotban|névtér, Pod, Condition|
+|node_cpu_usage_millicores|Yes|CPU-használat Millicores|MilliCores|Átlag|A CPU-kihasználtság összesített mérése a millicores-ben a fürtön keresztül|csomópont, nodepool|
+|node_cpu_usage_percentage|Yes|CPU-használat százaléka|Százalék|Átlag|A fürt összesített átlagos CPU-kihasználtsága százalékban kifejezve|csomópont, nodepool|
+|node_disk_usage_bytes|Yes|Felhasznált lemez bájtjai|Bájt|Átlag|Az eszköz által bájtban használt lemezterület|csomópont, nodepool, eszköz|
+|node_disk_usage_percentage|Yes|Felhasznált lemez százaléka|Százalék|Átlag|Az eszköz által százalékban használt lemezterület|csomópont, nodepool, eszköz|
+|node_memory_rss_bytes|Yes|Memória RSS-bájtjai|Bájt|Átlag|Bájtban használt tároló RSS-memória|csomópont, nodepool|
+|node_memory_rss_percentage|Yes|Memória RSS-százaléka|Százalék|Átlag|A tárolóban használt RSS-memória százalékban|csomópont, nodepool|
+|node_memory_working_set_bytes|Yes|Memória munkakészletének bájtjai|Bájt|Átlag|A tároló munkakészletének memóriában használt mérete|csomópont, nodepool|
+|node_memory_working_set_percentage|Yes|Memória munkakészletének százalékos aránya|Százalék|Átlag|A tároló munkakészletének%-ban használt memóriája|csomópont, nodepool|
+|node_network_in_bytes|Yes|Hálózati bájtban|Bájt|Átlag|Hálózati fogadott bájtok|csomópont, nodepool|
+|node_network_out_bytes|Yes|Hálózati kimenő bájtok|Bájt|Átlag|Hálózati továbbított bájtok|csomópont, nodepool|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |FailedRequests|Yes|Sikertelen kérelmek|Darabszám|Összesen|A rendelkezésre álló naplók beolvasása egyéni erőforrás-szolgáltatók számára|HttpMethod, CallPath, StatusCode|
 |SuccessfullRequests|Yes|Sikeres kérelmek|Darabszám|Összesen|Az egyéni szolgáltató által kezdeményezett sikeres kérések|HttpMethod, CallPath, StatusCode|
@@ -1009,7 +1019,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft. DataBoxEdge/dataBoxEdgeDevices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Availablecapacity;)|Yes|Rendelkezésre álló kapacitás|Bájt|Átlag|A rendelkezésre álló kapacitás bájtban a jelentési időszak alatt.|Nincsenek méretek|
 |BytesUploadedToCloud|Yes|Feltöltött Felhőbeli bájtok (eszköz)|Bájt|Átlag|Az Azure-ba az eszközről a jelentési időszakban feltöltött bájtok teljes száma.|Nincsenek méretek|
@@ -1027,7 +1037,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft. DataCollaboration/munkaterületek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DataAssetCount|Yes|Adategységek létrehozva|Darabszám|Maximum|Létrehozott adategységek száma|DataAssetName|
 |PipelineCount|Yes|Létrehozott folyamatok|Darabszám|Maximum|Létrehozott folyamatok száma|PipelineName|
@@ -1037,7 +1047,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/datafactories
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |FailedRuns|Yes|Sikertelen futtatások|Darabszám|Összesen||pipelineName, activityName|
 |SuccessfulRuns|Yes|Sikeres futtatások|Darabszám|Összesen||pipelineName, activityName|
@@ -1045,7 +1055,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ActivityCancelledRuns|Yes|A megszakított tevékenység metrikákat futtat|Darabszám|Összesen||ActivityType, PipelineName, FailureType, név|
 |ActivityFailedRuns|Yes|Sikertelen tevékenység-futtatási metrikák|Darabszám|Összesen||ActivityType, PipelineName, FailureType, név|
@@ -1078,7 +1088,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/fiókok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |JobAUEndedCancelled|Yes|Megszakított AU-idő|Másodperc|Összesen|A megszakított feladatok teljes AU-ideje.|Nincsenek méretek|
 |JobAUEndedFailure|Yes|Sikertelen AU-idő|Másodperc|Összesen|A sikertelen feladatok összes AU-ideje.|Nincsenek méretek|
@@ -1091,7 +1101,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. Data Lake Store/fiókok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DataRead|Yes|Olvasott információk|Bájt|Összesen|A fiókból beolvasott adatok teljes mennyisége.|Nincsenek méretek|
 |DataWritten|Yes|Írt adatértékek|Bájt|Összesen|A fiókba írt összes adatmennyiség.|Nincsenek méretek|
@@ -1102,7 +1112,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/fiókok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |FailedShareSubscriptionSynchronizations|Yes|Fogadott megosztás sikertelen Pillanatképek|Darabszám|Darabszám|A fogadott megosztások száma sikertelen Pillanatképek a fiókban|Nincsenek méretek|
 |FailedShareSynchronizations|Yes|Nem sikerült elküldeni a megosztást pillanatképeket|Darabszám|Darabszám|A fiókban sikertelenül továbbított megosztási Pillanatképek száma|Nincsenek méretek|
@@ -1114,7 +1124,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/kiszolgálók
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktív kapcsolatok|Darabszám|Átlag|Aktív kapcsolatok|Nincsenek méretek|
 |backup_storage_used|Yes|Felhasznált biztonsági mentési tár|Bájt|Átlag|Felhasznált biztonsági mentési tár|Nincsenek méretek|
@@ -1135,7 +1145,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |aborted_connections|Yes|Megszakított kapcsolatok|Darabszám|Összesen|Megszakított kapcsolatok|Nincsenek méretek|
 |active_connections|Yes|Aktív kapcsolatok|Darabszám|Maximum|Aktív kapcsolatok|Nincsenek méretek|
@@ -1155,7 +1165,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/kiszolgálók
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktív kapcsolatok|Darabszám|Átlag|Aktív kapcsolatok|Nincsenek méretek|
 |backup_storage_used|Yes|Felhasznált biztonsági mentési tár|Bájt|Átlag|Felhasznált biztonsági mentési tár|Nincsenek méretek|
@@ -1176,7 +1186,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktív kapcsolatok|Darabszám|Átlag|Aktív kapcsolatok|Nincsenek méretek|
 |backup_storage_used|Yes|Felhasznált biztonsági mentési tár|Bájt|Átlag|Felhasznált biztonsági mentési tár|Nincsenek méretek|
@@ -1201,9 +1211,23 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |write_throughput|Yes|Írási átviteli sebesség (bájt/s)|Darabszám|Átlag|A megfigyelési időszak során az adatlemezre másodpercenként írt bájtok száma|Nincsenek méretek|
 
 
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft. DBForPostgreSQL/serverGroupsv2
+
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|---|
+|active_connections|Yes|Aktív kapcsolatok|Darabszám|Átlag|Aktív kapcsolatok|ServerName|
+|cpu_percent|Yes|CPU-százalék|Százalék|Átlag|CPU-százalék|ServerName|
+|IOPS|Yes|IOPS|Darabszám|Átlag|I/o-műveletek másodpercenként|ServerName|
+|memory_percent|Yes|Memória százaléka|Százalék|Átlag|Memória százaléka|ServerName|
+|network_bytes_egress|Yes|Kimenő hálózat|Bájt|Összesen|Hálózati kapcsolat az aktív kapcsolatok között|ServerName|
+|network_bytes_ingress|Yes|Bejövő hálózat|Bájt|Összesen|Hálózati kapcsolat az aktív kapcsolatok között|ServerName|
+|storage_percent|Yes|Tárolási százalék|Százalék|Átlag|Tárolási százalék|ServerName|
+|storage_used|Yes|Felhasznált tárterület|Bájt|Átlag|Felhasznált tárterület|ServerName|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/kiszolgálók
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktív kapcsolatok|Darabszám|Átlag|Aktív kapcsolatok|Nincsenek méretek|
 |backup_storage_used|Yes|Felhasznált biztonsági mentési tár|Bájt|Átlag|Felhasznált biztonsági mentési tár|Nincsenek méretek|
@@ -1225,7 +1249,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktív kapcsolatok|Darabszám|Átlag|Aktív kapcsolatok|Nincsenek méretek|
 |cpu_percent|Yes|CPU-százalék|Százalék|Átlag|CPU-százalék|Nincsenek méretek|
@@ -1239,14 +1263,14 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdeviceselasticpools"></a>Microsoft. Devices/ElasticPools
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |elasticPool.requestedUsageRate|Yes|kért használati arány|Százalék|Átlag|kért használati arány|Nincsenek méretek|
 
 
 ## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft. Devices/ElasticPools/IotHubTenants
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |C2D. commands. kimenő. elhagyása. sikeres|Yes|C2D üzenetek elhagyva|Darabszám|Összesen|Az eszköz által elhagyott felhőből az eszközre irányuló üzenetek száma|Nincsenek méretek|
 |C2D. commands. kimenő. Complete. success|Yes|C2D-üzenetek kézbesítésének befejezése|Darabszám|Összesen|Az eszköz által sikeresen befejeződött a felhőből az eszközre küldött üzenetek száma|Nincsenek méretek|
@@ -1321,7 +1345,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |C2D. commands. kimenő. elhagyása. sikeres|Yes|C2D üzenetek elhagyva|Darabszám|Összesen|Az eszköz által elhagyott felhőből az eszközre irányuló üzenetek száma|Nincsenek méretek|
 |C2D. commands. kimenő. Complete. success|Yes|C2D-üzenetek kézbesítésének befejezése|Darabszám|Összesen|Az eszköz által sikeresen befejeződött a felhőből az eszközre küldött üzenetek száma|Nincsenek méretek|
@@ -1395,7 +1419,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AttestationAttempts|Yes|Igazolási kísérletek|Darabszám|Összesen|Az eszköz által megkísérelt tanúsítványok száma|ProvisioningServiceName, állapot, protokoll|
 |DeviceAssignments|Yes|Hozzárendelt eszközök|Darabszám|Összesen|Az IoT hubhoz rendelt eszközök száma|ProvisioningServiceName, IotHubName|
@@ -1404,7 +1428,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft. DigitalTwins/digitalTwinsInstances
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ApiRequests|Yes|API-kérelmek|Darabszám|Összesen|A digitális Twins olvasási, írási, törlési és lekérdezési műveleteire vonatkozó API-kérések száma.|Művelet, hitelesítés, protokoll, StatusCode, StatusCodeClass, StatusText|
 |ApiRequestsFailureRate|Yes|API-kérelmek meghibásodási aránya|Százalék|Átlag|A szolgáltatás által a példányhoz kapott API-kérelmek százalékos aránya, amely belső hibát (500) ad vissza a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteihez.|Művelet, hitelesítés, protokoll|
@@ -1424,7 +1448,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AddRegion|Yes|Régió hozzáadva|Darabszám|Darabszám|Régió hozzáadva|Region|
 |AutoscaleMaxThroughput|No|Maximális átviteli sebesség|Darabszám|Maximum|Maximális átviteli sebesség|DatabaseName, CollectionName|
@@ -1444,6 +1468,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |CassandraTableUpdate|No|Cassandra-tábla frissítve|Darabszám|Darabszám|Cassandra-tábla frissítve|ResourceName, ChildResourceName, |
 |CreateAccount|Yes|Fiók létrehozva|Darabszám|Darabszám|Fiók létrehozva|Nincsenek méretek|
 |DataUsage|No|Adathasználat|Bájt|Összesen|Összesen 5 perces részletességgel jelentett adatok teljes kihasználtsága|CollectionName, DatabaseName, régió|
+|DedicatedGatewayRequests|Yes|DedicatedGatewayRequests|Darabszám|Darabszám|Kérések a dedikált átjárón|DatabaseName, CollectionName, CacheExercised, OperationName, régió|
 |DeleteAccount|Yes|Fiók törölve|Darabszám|Darabszám|Fiók törölve|Nincsenek méretek|
 |DocumentCount|No|Dokumentumok száma|Darabszám|Összesen|5 perces részletességgel jelentett dokumentumok száma összesen|CollectionName, DatabaseName, régió|
 |DocumentQuota|No|Dokumentum kvótája|Bájt|Összesen|Összesen 5 perces részletességgel jelentett tárolási kvóta|CollectionName, DatabaseName, régió|
@@ -1505,7 +1530,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/tartományok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|Yes|Speciális szűrési értékelések|Darabszám|Összesen|Az esemény-előfizetések között kiértékelt speciális szűrők összesen ebben a témakörben.|Témakör, EventSubscriptionName, DomainEventSubscriptionName|
 |DeadLetteredCount|Yes|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|Témakör, EventSubscriptionName, DomainEventSubscriptionName, DeadLetterReason|
@@ -1521,7 +1546,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Yes|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason|
 |DeliveryAttemptFailCount|No|Sikertelen kézbesítések eseményei|Darabszám|Összesen|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType|
@@ -1533,7 +1558,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |PublishFailCount|Yes|Sikertelen események közzététele|Darabszám|Összesen|A témakörben nem sikerült közzétenni az összes eseményt|ErrorType, hiba|
 |PublishSuccessCount|Yes|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Nincsenek méretek|
@@ -1543,7 +1568,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventgridpartnernamespaces"></a>Microsoft. EventGrid/partnerNamespaces
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Yes|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason, EventSubscriptionName|
 |DeliveryAttemptFailCount|No|Sikertelen kézbesítések eseményei|Darabszám|Összesen|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType, EventSubscriptionName|
@@ -1559,7 +1584,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventgridpartnertopics"></a>Microsoft. EventGrid/partnerTopics
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|Yes|Speciális szűrési értékelések|Darabszám|Összesen|Az esemény-előfizetések között kiértékelt speciális szűrők összesen ebben a témakörben.|EventSubscriptionName|
 |DeadLetteredCount|Yes|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason, EventSubscriptionName|
@@ -1575,7 +1600,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|Yes|Speciális szűrési értékelések|Darabszám|Összesen|Az esemény-előfizetések között kiértékelt speciális szűrők összesen ebben a témakörben.|EventSubscriptionName|
 |DeadLetteredCount|Yes|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason, EventSubscriptionName|
@@ -1592,7 +1617,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|Yes|Speciális szűrési értékelések|Darabszám|Összesen|Az esemény-előfizetések között kiértékelt speciális szűrők összesen ebben a témakörben.|EventSubscriptionName|
 |DeadLetteredCount|Yes|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason, EventSubscriptionName|
@@ -1609,7 +1634,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/fürtök
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Aktív kapcsolatok|No|Aktív kapcsolatok|Darabszám|Átlag|A Microsoft. EventHub összes aktív kapcsolata.||
 |AvailableMemory|No|Szabad memória|Százalék|Maximum|Az Event hub-fürt rendelkezésre álló memóriája a teljes memória százalékában.|Szerepkör|
@@ -1634,7 +1659,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/névterek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Aktív kapcsolatok|No|Aktív kapcsolatok|Darabszám|Átlag|A Microsoft. EventHub összes aktív kapcsolata.||
 |CaptureBacklog|No|Várakozó fájlok rögzítése.|Darabszám|Összesen|A Microsoft. EventHub várakozó fájlok rögzítése.|EntityName|
@@ -1674,23 +1699,27 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft. HDInsight/fürtök
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |CategorizedGatewayRequests|Yes|Kategorizált átjáró-kérelmek|Darabszám|Összesen|Az átjáróra vonatkozó kérelmek száma kategóriánként (1xx/2xx/3xx/4xx/5xx)|HttpStatus|
 |GatewayRequests|Yes|Átjáróra vonatkozó kérelmek|Darabszám|Összesen|Az átjáróra vonatkozó kérelmek száma|HttpStatus|
 |KafkaRestProxy.ConsumerRequest.m1_delta|Yes|REST proxy fogyasztói RequestThroughput|CountPerSecond|Összesen|A Kafka REST proxy iránti fogyasztói kérelmek száma|Gép, témakör|
+|KafkaRestProxy.ConsumerRequestFail.m1_delta|Yes|REST proxy fogyasztó sikertelen kérelmek|CountPerSecond|Összesen|Fogyasztói kérelmekre vonatkozó kivételek|Gép, témakör|
 |KafkaRestProxy.ConsumerRequestTime.p95|Yes|REST proxy fogyasztói RequestLatency|Ezredmásodpercben|Átlag|Üzenet késése egy fogyasztói kérelemben a Kafka REST proxyn keresztül|Gép, témakör|
+|KafkaRestProxy.ConsumerRequestWaitingInQueueTime.p95|Yes|REST-proxy fogyasztói kérelmének várakozó fájlok|Ezredmásodpercben|Átlag|A fogyasztói REST proxy várólistájának hossza|Gép, témakör|
 |KafkaRestProxy.MessagesIn.m1_delta|Yes|REST proxy gyártó MessageThroughput|CountPerSecond|Összesen|Termelői üzenetek száma a Kafka REST proxyn keresztül|Gép, témakör|
 |KafkaRestProxy.MessagesOut.m1_delta|Yes|REST proxy fogyasztói MessageThroughput|CountPerSecond|Összesen|Fogyasztói üzenetek száma a Kafka REST proxyn keresztül|Gép, témakör|
 |KafkaRestProxy.OpenConnections|Yes|REST-proxy ConcurrentConnections|Darabszám|Összesen|A Kafka REST proxyn keresztüli egyidejű kapcsolatok száma|Gép, témakör|
 |KafkaRestProxy.ProducerRequest.m1_delta|Yes|REST proxy gyártó RequestThroughput|CountPerSecond|Összesen|A Kafka REST proxyhoz tartozó termelői kérelmek száma|Gép, témakör|
+|KafkaRestProxy.ProducerRequestFail.m1_delta|Yes|REST-proxy előállítójának sikertelen kérelmei|CountPerSecond|Összesen|Termelői kérelmekre vonatkozó kivételek|Gép, témakör|
 |KafkaRestProxy.ProducerRequestTime.p95|Yes|REST proxy gyártó RequestLatency|Ezredmásodpercben|Átlag|Üzenet késése egy gyártói kérelemben a Kafka REST proxyn keresztül|Gép, témakör|
+|KafkaRestProxy.ProducerRequestWaitingInQueueTime.p95|Yes|REST-proxy gyártói kérelmének várakozó fájlok|Ezredmásodpercben|Átlag|Gyártó REST proxy-várólista hossza|Gép, témakör|
 |NumActiveWorkers|Yes|Aktív feldolgozók száma|Darabszám|Maximum|Aktív feldolgozók száma|MetricName|
 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/szolgáltatások
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A szolgáltatás rendelkezésre állási sebessége.|Nincsenek méretek|
 |CosmosDbCollectionSize|Yes|Cosmos DB gyűjtemény mérete|Bájt|Összesen|A háttérbeli Cosmos DB gyűjtemény mérete bájtban megadva.|Nincsenek méretek|
@@ -1715,21 +1744,21 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofthybridnetworknetworkfunctions"></a>Microsoft. hybridnetwork/networkfunctions
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |HyperVVirtualProcessorUtilization|Yes|CPU átlagos kihasználtsága|Százalék|Átlag|A virtuális processzor kihasználtságának átlagos százalékos aránya egy percen belül. A virtuális CPU teljes száma az SKU-definícióban a felhasználó által konfigurált értéken alapul. A további szűrést az SKU-ban definiált RoleName alapján lehet alkalmazni.|InstanceName|
 
 
 ## <a name="microsofthybridnetworkvirtualnetworkfunctions"></a>Microsoft. hybridnetwork/virtualnetworkfunctions
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |HyperVVirtualProcessorUtilization|Yes|CPU átlagos kihasználtsága|Százalék|Átlag|A virtuális processzor kihasználtságának átlagos százalékos aránya egy percen belül. A virtuális CPU teljes száma az SKU-definícióban a felhasználó által konfigurált értéken alapul. A további szűrést az SKU-ban definiált RoleName alapján lehet alkalmazni.|InstanceName|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/autoscalesettings
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |MetricThreshold|Yes|Metrika küszöbértéke|Darabszám|Átlag|A konfigurált autoskálázási küszöbérték az autoscale futtatásakor.|MetricTriggerRule|
 |ObservedCapacity|Yes|Megfigyelt kapacitás|Darabszám|Átlag|Az a kapacitás, amelyet a program a végrehajtáskor az autoskálázáshoz jelentett.||
@@ -1739,7 +1768,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|Yes|Rendelkezésre állás|Százalék|Átlag|Sikeresen befejezett rendelkezésre állási tesztek százaléka|availabilityResult/név, availabilityResult/hely|
 |availabilityResults/darabszám|No|Rendelkezésre állási tesztek|Darabszám|Darabszám|Rendelkezésre állási tesztek száma|availabilityResult/név, availabilityResult/hely, availabilityResult/sikeres|
@@ -1775,7 +1804,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft. IoTCentral/IoTApps
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |C2D. Property. Read. failure|Yes|Nem sikerült beolvasni az eszköz tulajdonságát IoT Central|Darabszám|Összesen|Az IoT Central által kezdeményezett sikertelen tulajdonságok összes olvasásának száma|Nincsenek méretek|
 |C2D. Property. Read. success|Yes|Az eszköz tulajdonságainak olvasása IoT Central|Darabszám|Összesen|Az IoT Centralról kezdeményezett sikeres tulajdonságok száma|Nincsenek méretek|
@@ -1792,21 +1821,9 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |dataExport. messages. írásos|Yes|Az adatexportálási üzenetek írása|Darabszám|Összesen|Célhelyre írt üzenetek száma|exportId, exportDisplayName, destinationId, destinationDisplayName|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
-|---|---|---|---|---|---|---|
-|ApiLatency|No|ApiLatency|6|0|A Microsoft. IoTSpaces API-kérelmek késésének mértéke ezredmásodpercben|Nincsenek méretek|
-|FunctionExecutionLatency|No|FunctionExecutionLatency|6|0|A felhasználó által definiált függvények késését méri a Microsoft. IoTSpaces ezredmásodpercben.|Nincsenek méretek|
-|MessageEgressFailure|No|MessageEgressFailure|2|3|Megkeres egy honosított karakterláncot, amely a mértékek esetében a Microsoft. IoTSpaces esetében nem sikerült darabszámú eseményt eredményezett.|Nincsenek méretek|
-|MessageEgressLatency|No|MessageEgressLatency|6|0|A Microsoft. IoTSpaces ezredmásodpercben méri a kiosztótól a többi végpontig eltelt időt.|Nincsenek méretek|
-|MessageEgressSuccess|No|MessageEgressSuccess|2|3|Megkeres egy honosított karakterláncot, amely a Microsoft. IoTSpaces számának befejezett mértékek száma eseményéhez hasonló.|Nincsenek méretek|
-|ProcessingLatency|No|ProcessingLatency|6|0|A Microsoft. IoTSpaces által a kiküldett eseményhez betöltött üzenetek késését adja meg ezredmásodpercben.|Nincsenek méretek|
-
-
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. kulcstartó/managedhsms
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|No|Teljes szolgáltatás rendelkezésre állása|Százalék|Átlag|Szolgáltatási kérelmek rendelkezésre állása|ActivityType, ActivityName, StatusCode, StatusCodeClass|
 |ServiceApiHit|Yes|Összes szolgáltatási API-találat|Darabszám|Darabszám|A Service API összes találatának száma|ActivityType, ActivityName|
@@ -1816,7 +1833,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. kulcstartó/tárolók
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Tár teljes rendelkezésre állása|Százalék|Átlag|Tár kéréseinek rendelkezésre állása|ActivityType, ActivityName, StatusCode, StatusCodeClass|
 |SaturationShoebox|No|Tár teljes telítettsége|Százalék|Átlag|Tár kapacitásának használata|ActivityType, ActivityName, TransactionType|
@@ -1827,14 +1844,14 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftkubernetesconnectedclusters"></a>Microsoft. kubernetes/connectedClusters
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |capacity_cpu_cores|Yes|A csatlakoztatott fürtben található CPU-magok teljes száma|Darabszám|Összesen|A csatlakoztatott fürtben található CPU-magok teljes száma||
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/fürtök
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BatchBlobCount|Yes|Köteg Blobok száma|Darabszám|Átlag|Adatforrások száma egy összesített kötegben a betöltéshez.|Adatbázis|
 |BatchDuration|Yes|Köteg időtartama|Másodperc|Átlag|A betöltési folyamat összesítési fázisának időtartama.|Adatbázis|
@@ -1885,7 +1902,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/integrationServiceEnvironments
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ActionLatency|Yes|Művelet késése |Másodperc|Átlag|A befejezett munkafolyamat-műveletek késése.|Nincsenek méretek|
 |ActionsCompleted|Yes|Befejezett műveletek |Darabszám|Összesen|A befejezett munkafolyamat-műveletek száma.|Nincsenek méretek|
@@ -1923,7 +1940,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/munkafolyamatok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ActionLatency|Yes|Művelet késése |Másodperc|Átlag|A befejezett munkafolyamat-műveletek késése.|Nincsenek méretek|
 |ActionsCompleted|Yes|Befejezett műveletek |Darabszám|Összesen|A befejezett munkafolyamat-műveletek száma.|Nincsenek méretek|
@@ -1963,7 +1980,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/munkaterületek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Aktív magok|Yes|Aktív magok|Darabszám|Átlag|Aktív magok száma|Forgatókönyv, ClusterName|
 |Aktív csomópontok|Yes|Aktív csomópontok|Darabszám|Átlag|Acitve-csomópontok száma Ezek azok a csomópontok, amelyek aktívan futtatnak egy feladatot.|Forgatókönyv, ClusterName|
@@ -2004,7 +2021,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/fiókok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|Az API-k rendelkezésre állása|ApiCategory, ApiName|
 |Használat|No|Használat|Darabszám|Darabszám|API-hívások száma|ApiCategory, ApiName, ResultType, ResponseCode|
@@ -2012,7 +2029,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Mediaservices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AssetCount|Yes|Eszközök száma|Darabszám|Átlag|Az aktuális Media Service-fiókban már létrehozott eszközök száma|Nincsenek méretek|
 |AssetQuota|Yes|Eszköz kvótája|Darabszám|Átlag|Hány eszköz engedélyezett a jelenlegi Media Service-fiókhoz|Nincsenek méretek|
@@ -2021,6 +2038,8 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |ContentKeyPolicyCount|Yes|Tartalmi kulcsokra vonatkozó szabályzatok száma|Darabszám|Átlag|A jelenlegi Media Service-fiókban már létrejött a tartalmi kulcs házirendjeinek száma|Nincsenek méretek|
 |ContentKeyPolicyQuota|Yes|Tartalmi kulcs házirend-kvótája|Darabszám|Átlag|Az aktuális Media Service-fiókhoz tartozó tartalmi kulcsokra vonatkozó házirendek száma|Nincsenek méretek|
 |ContentKeyPolicyQuotaUsedPercentage|Yes|Tartalom kulcsára vonatkozó házirend kvótájának százalékos aránya|Százalék|Átlag|A tartalmi kulcsra vonatkozó házirend százaléka a jelenlegi Media Service-fiókban|Nincsenek méretek|
+|MaxChannelsAndLiveEventsCount|Yes|Élő esemény kvótájának maximális száma|Darabszám|Maximum|Az aktuális Media Services-fiókban engedélyezett élő események maximális száma|Nincsenek méretek|
+|MaxRunningChannelsAndLiveEventsCount|Yes|Élő esemény kvótájának maximális száma|Darabszám|Maximum|Az aktuális Media Services-fiókban engedélyezett élő események maximális száma|Nincsenek méretek|
 |RunningChannelsAndLiveEventsCount|Yes|Élő események számának futtatása|Darabszám|Átlag|Az aktuális Media Services-fiókban futó élő események teljes száma|Nincsenek méretek|
 |StreamingPolicyCount|Yes|Folyamatos átviteli szabályzatok száma|Darabszám|Átlag|A jelenlegi Media Service-fiókban már létrejöttek a folyamatos átviteli házirendek|Nincsenek méretek|
 |StreamingPolicyQuota|Yes|Streaming Policy-kvóta|Darabszám|Átlag|Az aktuális Media Service-fiókhoz tartozó folyamatos átviteli házirendek száma|Nincsenek méretek|
@@ -2029,7 +2048,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftmediamediaservicesliveevents"></a>Microsoft. Media/Mediaservices/liveEvents
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |IngestBitrate|Yes|Élő esemény betöltési bitrátája|BitsPerSecond|Átlag|Egy élő eseményhez (bit/mp) betöltött bejövő bitráta.|TrackName|
 |IngestDriftValue|Yes|Élő esemény betöltésének drift értéke|Másodperc|Maximum|A betöltött tartalom és a rendszeróra időbélyege közötti eltolódás a percenkénti másodpercben kifejezve. A nullától eltérő érték azt jelzi, hogy a betöltött tartalom lassabban érkezik a rendszeridőt jelző időpontig.|TrackName|
@@ -2039,18 +2058,18 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/Mediaservices/streamingEndpoints
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
-|CPU|Yes|Processzorhasználat|Százalék|Átlag|A prémium szintű streaming-végpontok CPU-használata. Ezek az adatátviteli végpontok nem érhetők el.|VmId|
+|CPU|Yes|Processzorhasználat|Százalék|Átlag|A prémium szintű streaming-végpontok CPU-használata. Ezek az adatátviteli végpontok nem érhetők el.|Nincsenek méretek|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatforgalom mennyisége bájtban kifejezve.|OutputFormat|
-|EgressBandwidth|No|Kimenő sávszélesség|BitsPerSecond|Átlag|Kimenő forgalom (bit/mp).|VmId|
+|EgressBandwidth|No|Kimenő sávszélesség|BitsPerSecond|Átlag|Kimenő forgalom (bit/mp).|Nincsenek méretek|
 |Kérelmek|Yes|Kérelmek|Darabszám|Összesen|Továbbítási végpontra irányuló kérelmek.|OutputFormat, HttpStatusCode, ErrorCode|
 |SuccessE2ELatency|Yes|A Befejezés végének késése|Ezredmásodpercben|Átlag|A sikeres kérelmek átlagos késése ezredmásodpercben.|OutputFormat|
 
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft. MixedReality/remoteRenderingAccounts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ActiveRenderingSessions|Yes|Aktív renderelési munkamenetek|Darabszám|Átlag|Aktív renderelési munkamenetek száma összesen|SessionType, SDKVersion|
 |AssetsConverted|Yes|Átalakított eszközök|Darabszám|Összesen|Átalakított eszközök teljes száma|SDKVersion|
@@ -2058,7 +2077,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftmixedrealityspatialanchorsaccounts"></a>Microsoft. MixedReality/spatialAnchorsAccounts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AnchorsCreated|Yes|Létrehozott horgonyok|Darabszám|Összesen|Létrehozott horgonyok száma|DeviceFamily, SDKVersion|
 |AnchorsDeleted|Yes|Törölt horgonyok|Darabszám|Összesen|Törölt horgonyok száma|DeviceFamily, SDKVersion|
@@ -2070,7 +2089,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft. NetApp/netAppAccounts/capacityPools
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |VolumePoolAllocatedSize|Yes|Készlet lefoglalt mérete|Bájt|Átlag|A készlet kiépített mérete|Nincsenek méretek|
 |VolumePoolAllocatedToVolumeThroughput|Yes|Lefoglalt készlet átviteli sebessége|BytesPerSecond|Átlag|A készlethez tartozó összes kötet átviteli sebességének összege|Nincsenek méretek|
@@ -2082,11 +2101,11 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/capacityPools/kötetek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AverageReadLatency|Yes|Olvasási késleltetés átlagos késése|Ezredmásodpercben|Átlag|Olvasási késleltetés átlagos száma ezredmásodpercben/művelet|Nincsenek méretek|
 |AverageWriteLatency|Yes|Írási késleltetés átlagos késése|Ezredmásodpercben|Átlag|Írási késleltetés átlagos száma ezredmásodpercben|Nincsenek méretek|
-|CbsVolumeBackupActive|Yes|A kötet biztonsági mentése fel van függesztve|Darabszám|Átlag|Felfüggesztette a biztonsági mentési szabályzatot a kötetre? 1 Ha igen, 0, ha nem.|Nincsenek méretek|
+|CbsVolumeBackupActive|Yes|A kötet biztonsági mentése fel van függesztve|Darabszám|Átlag|Felfüggesztette a biztonsági mentési szabályzatot a kötetre? 0 Ha igen, akkor 1, ha nem.|Nincsenek méretek|
 |CbsVolumeLogicalBackupBytes|Yes|Kötet biztonsági másolatának bájtjai|Bájt|Átlag|A köteten biztonsági mentéssel elkészített bájtok száma.|Nincsenek méretek|
 |CbsVolumeOperationComplete|Yes|A kötet biztonsági mentési művelete befejeződött|Darabszám|Átlag|Sikerült befejezni az utolsó kötet biztonsági mentési vagy visszaállítási műveletét? 1 Ha igen, 0, ha nem.|Nincsenek méretek|
 |CbsVolumeOperationTransferredBytes|Yes|Kötet biztonsági mentése utoljára továbbított bájtok|Bájt|Átlag|A legutóbbi biztonsági mentési vagy visszaállítási művelet során átvitt bájtok teljes száma.|Nincsenek méretek|
@@ -2112,7 +2131,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ApplicationGatewayTotalTime|No|Application Gateway teljes idő|Ezredmásodpercben|Átlag|A kérelem feldolgozásának és a válasz elküldésekor elvégezhető átlagos idő. Ez az időszak átlaga, amikor a Application Gateway megkapja egy HTTP-kérelem első bájtját, amikor a válasz küldése művelet befejeződik. Fontos megjegyezni, hogy ez általában a Application Gateway feldolgozási időt, az időpontot, amikor a kérés és a válasz csomagjai a hálózaton keresztül utaznak, valamint a háttér-kiszolgáló válaszának időpontját.|Figyelő|
 |AvgRequestCountPerHealthyHost|No|Percenkénti kérelmek száma kifogástalan állapotú gazdagépen|Darabszám|Átlag|Kérelmek átlagos száma percenként, a készletben lévő kifogástalan állapotú gazdagépek esetében|BackendSettingsPool|
@@ -2132,19 +2151,19 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |EstimatedBilledCapacityUnits|No|Becsült számlázott kapacitási egységek|Darabszám|Átlag|A felszámított becsült kapacitási egységek|Nincsenek méretek|
 |FailedRequests|Yes|Sikertelen kérelmek|Darabszám|Összesen|A Application Gateway által kiszolgált sikertelen kérelmek száma|BackendSettingsPool|
 |FixedBillableCapacityUnits|No|Fix számlázandó kapacitásegységek|Darabszám|Átlag|Minimálisan felszámított kapacitási egységek|Nincsenek méretek|
-|HealthyHostCount|Yes|Kifogástalan állapotú gazdagépek száma|Darabszám|Átlag|Az egészséges háttérbeli gazdagépek száma|BackendSettingsPool|
+|HealthyHostCount|Yes|Kifogástalan állapotú gazdagépek száma|Darabszám|Átlag|Kifogástalan állapotú háttérbeli gazdagépek száma|BackendSettingsPool|
 |MatchedCount|Yes|Webalkalmazási tűzfal teljes szabályának eloszlása|Darabszám|Összesen|Webalkalmazási tűzfal – teljes szabály eloszlása a bejövő forgalomhoz|Szerepkörcsoportot, RuleId|
 |NewConnectionsPerSecond|No|Új kapcsolatok másodpercenként|CountPerSecond|Átlag|Új kapcsolatok másodpercenként létesített Application Gateway|Nincsenek méretek|
 |ResponseStatus|Yes|Válasz állapota|Darabszám|Összesen|Application Gateway által visszaadott http-válasz állapota|HttpStatusGroup|
 |Teljesítmény|No|Teljesítmény|BytesPerSecond|Átlag|A Application Gateway által kiszolgált bájtok másodpercenkénti száma|Nincsenek méretek|
 |TlsProtocol|Yes|Ügyfél TLS protokoll|Darabszám|Összesen|Azoknak a TLS-és nem TLS-kérelmeknek a száma, amelyek az ügyfél által kezdeményezett Application Gatewaykal létesített kapcsolatban állnak. A TLS protokoll terjesztésének megtekintéséhez szűrje a Dimension TLS protokollt.|Figyelő, TlsProtocol|
 |TotalRequests|Yes|Összes kérelem|Darabszám|Összesen|A Application Gateway által kiszolgált sikeres kérések száma|BackendSettingsPool|
-|UnhealthyHostCount|Yes|Nem kifogástalan állapotú gazdagépek száma|Darabszám|Átlag|Sérült háttérbeli gazdagépek száma|BackendSettingsPool|
+|UnhealthyHostCount|Yes|Nem kifogástalan állapotú gazdagépek száma|Darabszám|Átlag|Nem kifogástalan állapotú háttérbeli gazdagépek száma|BackendSettingsPool|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ApplicationRuleHit|Yes|Alkalmazás-szabályok találatok száma|Darabszám|Összesen|Az alkalmazások szabályainak száma|Állapot, ok, protokoll|
 |DataProcessed|Yes|Feldolgozott adatok|Bájt|Összesen|A tűzfal által feldolgozott adatmennyiség teljes mennyisége|Nincsenek méretek|
@@ -2154,9 +2173,20 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |Teljesítmény|No|Teljesítmény|BitsPerSecond|Átlag|A tűzfal által feldolgozott átviteli sebesség|Nincsenek méretek|
 
 
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
+
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|---|
+|pingmesh|No|Megerősített kommunikációs állapot|Darabszám|Átlag|A kommunikációs állapot 1 értéket jelenít meg, ha az összes kommunikáció jó, és 0, ha a hibás.||
+|munkamenetek|No|Session Count|Darabszám|Összesen|A megerősített munkamenetek száma. Megtekintés összegben és példányban.|gazda|
+|összesen|Yes|Teljes memória|Darabszám|Átlag|Memória teljes statisztikája.|gazda|
+|usage_user|No|Használt processzor|Darabszám|Átlag|CPU-használati statisztika.|CPU, gazdagép|
+|protokollok|Yes|Felhasznált memória|Darabszám|Átlag|Memóriahasználat statisztikái.|gazda|
+
+
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BitsInPerSecond|Yes|BitsInPerSecond|BitsPerSecond|Átlag|Az Azure-ra bejövő bitek száma másodpercenként|Nincsenek méretek|
 |BitsOutPerSecond|Yes|BitsOutPerSecond|BitsPerSecond|Átlag|Az Azure-ról kimenő bitek száma másodpercenként|Nincsenek méretek|
@@ -2164,7 +2194,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft. Network/dnszones
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |QueryVolume|No|Lekérdezési kötet|Darabszám|Összesen|A DNS-zónák számára kiszolgált lekérdezések száma|Nincsenek méretek|
 |RecordSetCapacityUtilization|No|Rekordazonosító kapacitásának kihasználtsága|Százalék|Maximum|Egy DNS-zóna által használt rekordazonosító-kapacitás százaléka|Nincsenek méretek|
@@ -2173,7 +2203,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ArpAvailability|Yes|ARP rendelkezésre állása|Százalék|Átlag|Az ARP és a MSEE közötti rendelkezésre állás az összes társ felé.|PeeringType, társ|
 |BgpAvailability|Yes|BGP rendelkezésre állása|Százalék|Átlag|A BGP rendelkezésre állása a MSEE az összes társ felé.|PeeringType, társ|
@@ -2187,7 +2217,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/társak
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BitsInPerSecond|Yes|BitsInPerSecond|BitsPerSecond|Átlag|Az Azure-ra bejövő bitek száma másodpercenként|Nincsenek méretek|
 |BitsOutPerSecond|Yes|BitsOutPerSecond|BitsPerSecond|Átlag|Az Azure-ról kimenő bitek száma másodpercenként|Nincsenek méretek|
@@ -2195,21 +2225,21 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|No|BitsInPerSecond|BitsPerSecond|Átlag|Az Azure-ra bejövő bitek száma másodpercenként|Kapcsolatnév|
 |ErGatewayConnectionBitsOutPerSecond|No|BitsOutPerSecond|BitsPerSecond|Átlag|Az Azure-ról kimenő bitek száma másodpercenként|Kapcsolatnév|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Yes|A társnak hirdetett útvonalak száma (előzetes verzió)|Darabszám|Maximum|A társ által a ExpressRouteGateway által hirdetett útvonalak száma|roleInstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Yes|A társtól megszerzett útvonalak száma (előzetes verzió)|Darabszám|Maximum|A társ által a ExpressRouteGateway által megszerzett útvonalak száma|roleInstance|
-|ExpressRouteGatewayCpuUtilization|Yes|CPU-kihasználtság (előzetes verzió)|Darabszám|Átlag|A ExpressRoute-átjáró CPU-kihasználtsága|roleInstance|
+|ExpressRouteGatewayCpuUtilization|Yes|Processzorhasználat|Darabszám|Átlag|A ExpressRoute-átjáró CPU-kihasználtsága|roleInstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|No|Útvonalak változásának gyakorisága (előzetes verzió)|Darabszám|Összesen|Útvonalak változásának gyakorisága a ExpressRoute-átjáróban|roleInstance|
 |ExpressRouteGatewayNumberOfVmInVnet|No|Virtuális gépek száma a Virtual Networkban (előzetes verzió)|Darabszám|Maximum|A Virtual Networkban lévő virtuális gépek száma|Nincsenek méretek|
-|ExpressRouteGatewayPacketsPerSecond|No|Csomag/másodperc (előzetes verzió)|CountPerSecond|Átlag|ExpressRoute-átjáró csomagjainak száma|roleInstance|
+|ExpressRouteGatewayPacketsPerSecond|No|Másodpercenkénti csomagok száma|CountPerSecond|Átlag|ExpressRoute-átjáró csomagjainak száma|roleInstance|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AdminState|Yes|AdminState|Darabszám|Átlag|A port rendszergazdai állapota|Hivatkozás|
 |LineProtocol|Yes|LineProtocol|Darabszám|Átlag|A port protokolljának állapota|Hivatkozás|
@@ -2221,7 +2251,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BackendHealthPercentage|Yes|Háttér állapotának százalékos aránya|Százalék|Átlag|A HTTP/S proxyról a háttérbe való sikeres állapot-mintavételek százalékos aránya|Háttér, Háttérkészletek|
 |BackendRequestCount|Yes|Háttérbeli kérelmek száma|Darabszám|Összesen|A HTTP/S proxyról a háttérre küldött kérések száma|HttpStatus, HttpStatusGroup, háttérrendszer|
@@ -2236,7 +2266,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AllocatedSnatPorts|No|Lefoglalt SNAT-portok|Darabszám|Átlag|Az időszakon belül lefoglalt SNAT-portok teljes száma|FrontendIPAddress, BackendIPAddress, ProtocolType, |
 |ByteCount|Yes|Bájtok száma|Bájt|Összesen|Az adott időszakon belül továbbított bájtok teljes száma|FrontendIPAddress, FrontendPort, irány|
@@ -2250,7 +2280,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworknatgateways"></a>Microsoft. Network/natGateways
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ByteCount|Yes|Bájt|Bájt|Összesen|Az adott időszakon belül továbbított bájtok teljes száma|Protokoll, irány|
 |DatapathAvailability|Yes|DataPath elérhetősége (előzetes verzió)|Darabszám|Átlag|NAT-átjáró DataPath rendelkezésre állása|Nincsenek méretek|
@@ -2262,7 +2292,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft. Network/networkInterfaces
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BytesReceivedRate|Yes|Fogadott bájtok száma|Bájt|Összesen|A hálózati adapter által fogadott bájtok száma|Nincsenek méretek|
 |BytesSentRate|Yes|Eljuttatott bájtok|Bájt|Összesen|A hálózati adapter által eljuttatott bájtok száma|Nincsenek méretek|
@@ -2272,7 +2302,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft. Network/networkWatchers/connectionMonitors
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AverageRoundtripMs|Yes|Átlagos menetidő (MS) (klasszikus)|Ezredmásodpercben|Átlag|A forrás és a cél között eljuttatott kapcsolati figyelési mintavételek átlagos hálózati időkorlátja (MS)|Nincsenek méretek|
 |ChecksFailedPercent|Yes|Sikertelen ellenőrzések százalékos aránya|Százalék|Átlag|a kapcsolat figyelési ellenőrzése nem sikerült|SourceAddress, SourceName, Sourceresourceid azonosítónak, forrás típusa, protokoll, DestinationAddress, DestinationName, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName, SourceIP, DestinationIP, SourceSubnet, DestinationSubnet|
@@ -2283,7 +2313,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkp2svpngateways"></a>Microsoft. Network/p2sVpnGateways
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |P2SBandwidth|Yes|Átjáró P2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos pont – hely sávszélessége bájt/másodpercben|Nincsenek méretek|
 |P2SConnectionCount|Yes|P2S-kapcsolatok száma|Darabszám|Összesen|Az átjáró P2S-kapcsolatainak száma|Protokoll|
@@ -2291,7 +2321,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkprivatednszones"></a>Microsoft. Network/privateDnsZones
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |QueryVolume|Yes|Lekérdezési kötet|Darabszám|Összesen|Egy saját DNS zónában kiszolgált lekérdezések száma|Nincsenek méretek|
 |RecordSetCapacityUtilization|No|Rekordazonosító kapacitásának kihasználtsága|Százalék|Maximum|Egy saját DNS zóna által használt rekordazonosító-kapacitás százalékos aránya|Nincsenek méretek|
@@ -2304,7 +2334,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkprivateendpoints"></a>Microsoft. Network/privateEndpoints
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |PEBytesIn|Yes|Bájtok itt|Darabszám|Összesen|Kimenő bájtok teljes száma|PrivateEndpointId|
 |PEBytesOut|Yes|Kimenő bájtok|Darabszám|Összesen|Kimenő bájtok teljes száma|PrivateEndpointId|
@@ -2312,7 +2342,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkprivatelinkservices"></a>Microsoft. Network/privateLinkServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |PLSBytesIn|Yes|Bájtok itt|Darabszám|Összesen|Kimenő bájtok teljes száma|PrivateLinkServiceId|
 |PLSBytesOut|Yes|Kimenő bájtok|Darabszám|Összesen|Kimenő bájtok teljes száma|PrivateLinkServiceId|
@@ -2321,7 +2351,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/nyilvános IP
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ByteCount|Yes|Bájtok száma|Bájt|Összesen|Az adott időszakon belül továbbított bájtok teljes száma|Port, irány|
 |BytesDroppedDDoS|Yes|Bejövő bájtok elvetve DDoS|BytesPerSecond|Maximum|Bejövő bájtok elvetve DDoS|Nincsenek méretek|
@@ -2353,7 +2383,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|Yes|Végponti állapot végpont szerint|Darabszám|Maximum|1 Ha a végpont mintavételi állapota "enabled" (engedélyezve), 0 más.|Végpontneve|
 |QpsByEndpoint|Yes|Visszaadott végponti lekérdezések|Darabszám|Összesen|Az adott időkeretben a Traffic Manager-végpontok számának visszaadása|Végpontneve|
@@ -2361,15 +2391,15 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AverageBandwidth|Yes|Átjáró S2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos helyek közötti sávszélessége bájt/másodpercben|Nincsenek méretek|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Yes|A társnak hirdetett útvonalak száma (előzetes verzió)|Darabszám|Maximum|A társ által a ExpressRouteGateway által hirdetett útvonalak száma|roleInstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Yes|A társtól megszerzett útvonalak száma (előzetes verzió)|Darabszám|Maximum|A társ által a ExpressRouteGateway által megszerzett útvonalak száma|roleInstance|
-|ExpressRouteGatewayCpuUtilization|Yes|CPU-kihasználtság (előzetes verzió)|Darabszám|Átlag|A ExpressRoute-átjáró CPU-kihasználtsága|roleInstance|
+|ExpressRouteGatewayCpuUtilization|Yes|Processzorhasználat|Darabszám|Átlag|A ExpressRoute-átjáró CPU-kihasználtsága|roleInstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|No|Útvonalak változásának gyakorisága (előzetes verzió)|Darabszám|Összesen|Útvonalak változásának gyakorisága a ExpressRoute-átjáróban|roleInstance|
 |ExpressRouteGatewayNumberOfVmInVnet|No|Virtuális gépek száma a Virtual Networkban (előzetes verzió)|Darabszám|Maximum|A Virtual Networkban lévő virtuális gépek száma|Nincsenek méretek|
-|ExpressRouteGatewayPacketsPerSecond|No|Csomag/másodperc (előzetes verzió)|CountPerSecond|Átlag|ExpressRoute-átjáró csomagjainak száma|roleInstance|
+|ExpressRouteGatewayPacketsPerSecond|No|Másodpercenkénti csomagok száma|CountPerSecond|Átlag|ExpressRoute-átjáró csomagjainak száma|roleInstance|
 |P2SBandwidth|Yes|Átjáró P2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos pont – hely sávszélessége bájt/másodpercben|Nincsenek méretek|
 |P2SConnectionCount|Yes|P2S-kapcsolatok száma|Darabszám|Maximum|Az átjáró P2S-kapcsolatainak száma|Protokoll|
 |TunnelAverageBandwidth|Yes|Alagút sávszélessége|BytesPerSecond|Átlag|Az alagút átlagos sávszélessége bájt/másodpercben|Kapcsolatnév, RemoteIP|
@@ -2379,11 +2409,18 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |TunnelIngressBytes|Yes|Alagút bejövő forgalma (bájt)|Bájt|Összesen|Az alagúthoz beérkező bájtok száma|Kapcsolatnév, RemoteIP|
 |TunnelIngressPacketDropTSMismatch|Yes|Alagút forgalomválasztó-eltérés miatti bejövőcsomag-elvetése|Darabszám|Összesen|Az alagút forgalomválasztójának eltérése miatt elvetett bejövő csomagok száma|Kapcsolatnév, RemoteIP|
 |TunnelIngressPackets|Yes|Bújtatási bejövő csomagok|Darabszám|Összesen|Az alagúthoz beérkező csomagok száma|Kapcsolatnév, RemoteIP|
+|TunnelNatAllocations|No|Bújtatási NAT-foglalások|Darabszám|Összesen|Egy alagúton lévő NAT-szabályhoz tartozó foglalások száma|NatRule, kapcsolatnév, RemoteIP|
+|TunnelNatedBytes|No|Bújtatási címfordításos bájtok|Bájt|Összesen|Egy NAT-szabály által az alagúton mért bájtok száma |NatRule, kapcsolatnév, RemoteIP|
+|TunnelNatedPackets|No|Bújtatási címfordításos csomagok|Darabszám|Összesen|Egy NAT-szabály által az alagúton lezárt csomagok száma|NatRule, kapcsolatnév, RemoteIP|
+|TunnelNatFlowCount|No|Bújtatási NAT-folyamatok|Darabszám|Összesen|NAT-folyamatok száma az alagúton a flow típusa és a NAT-szabály szerint|NatRule, kapcsolatnév, RemoteIP, FlowType|
+|TunnelNatPacketDrop|No|Alagút NAT-csomagjainak elejtése|Darabszám|Összesen|Az alagúton a drop Type és a NAT-szabály által eldobott felhúzott csomagok száma|NatRule, kapcsolatnév, RemoteIP, DropType|
+|TunnelReverseNatedBytes|No|Bújtatási fordított, visszaadott bájtok|Bájt|Összesen|Az alagúton egy NAT-szabály által fordítottan fordított bájtok száma|NatRule, kapcsolatnév, RemoteIP|
+|TunnelReverseNatedPackets|No|Bújtatási fordított, visszaadott csomagok|Darabszám|Összesen|Egy NAT-szabály által fordított, egy alagúton lévő csomagok száma|NatRule, kapcsolatnév, RemoteIP|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|Yes|A pingelések időpontjának kerekítése egy virtuális géphez|Ezredmásodpercben|Átlag|A célként megadott virtuális gépre eljuttatott pingelések menetének időpontja|SourceCustomerAddress, DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|Yes|Sikertelen pingelések egy virtuális géphez|Százalék|Átlag|A hibás pingelések száma a cél virtuális gép összes elküldéses pingelésének százalékában|SourceCustomerAddress, DestinationCustomerAddress|
@@ -2391,14 +2428,14 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftnetworkvirtualrouters"></a>Microsoft. Network/virtualRouters
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |PeeringAvailability|Yes|BGP rendelkezésre állása|Százalék|Átlag|A BGP rendelkezésre állása a VirtualRouter és a távoli társak között|Társ|
 
 
 ## <a name="microsoftnetworkvpngateways"></a>Microsoft. Network/vpnGateways
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AverageBandwidth|Yes|Átjáró S2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos helyek közötti sávszélessége bájt/másodpercben|Nincsenek méretek|
 |TunnelAverageBandwidth|Yes|Alagút sávszélessége|BytesPerSecond|Átlag|Az alagút átlagos sávszélessége bájt/másodpercben|Kapcsolatnév, RemoteIP|
@@ -2408,11 +2445,18 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |TunnelIngressBytes|Yes|Alagút bejövő forgalma (bájt)|Bájt|Összesen|Az alagúthoz beérkező bájtok száma|Kapcsolatnév, RemoteIP|
 |TunnelIngressPacketDropTSMismatch|Yes|Alagút forgalomválasztó-eltérés miatti bejövőcsomag-elvetése|Darabszám|Összesen|Az alagút forgalomválasztójának eltérése miatt elvetett bejövő csomagok száma|Kapcsolatnév, RemoteIP|
 |TunnelIngressPackets|Yes|Bújtatási bejövő csomagok|Darabszám|Összesen|Az alagúthoz beérkező csomagok száma|Kapcsolatnév, RemoteIP|
+|TunnelNatAllocations|No|Bújtatási NAT-foglalások|Darabszám|Összesen|Egy alagúton lévő NAT-szabályhoz tartozó foglalások száma|NatRule, kapcsolatnév, RemoteIP|
+|TunnelNatedBytes|No|Bújtatási címfordításos bájtok|Bájt|Összesen|Egy NAT-szabály által az alagúton mért bájtok száma |NatRule, kapcsolatnév, RemoteIP|
+|TunnelNatedPackets|No|Bújtatási címfordításos csomagok|Darabszám|Összesen|Egy NAT-szabály által az alagúton lezárt csomagok száma|NatRule, kapcsolatnév, RemoteIP|
+|TunnelNatFlowCount|No|Bújtatási NAT-folyamatok|Darabszám|Összesen|NAT-folyamatok száma az alagúton a flow típusa és a NAT-szabály szerint|NatRule, kapcsolatnév, RemoteIP, FlowType|
+|TunnelNatPacketDrop|No|Alagút NAT-csomagjainak elejtése|Darabszám|Összesen|Az alagúton a drop Type és a NAT-szabály által eldobott felhúzott csomagok száma|NatRule, kapcsolatnév, RemoteIP, DropType|
+|TunnelReverseNatedBytes|No|Bújtatási fordított, visszaadott bájtok|Bájt|Összesen|Az alagúton egy NAT-szabály által fordítottan fordított bájtok száma|NatRule, kapcsolatnév, RemoteIP|
+|TunnelReverseNatedPackets|No|Bújtatási fordított, visszaadott csomagok|Darabszám|Összesen|Egy NAT-szabály által fordított, egy alagúton lévő csomagok száma|NatRule, kapcsolatnév, RemoteIP|
 
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. NotificationHubs/névterek/NotificationHubs
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |bejövő|Yes|Bejövő üzenetek|Darabszám|Összesen|A sikeres küldési API-hívások száma. |Nincsenek méretek|
 |bejövő. ALL. failedrequests|Yes|Minden bejövő sikertelen kérelem|Darabszám|Összesen|Értesítési központ bejövő sikertelen kéréseinek száma|Nincsenek méretek|
@@ -2480,7 +2524,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/munkaterületek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre álló memória Average_%-ban|Yes|Rendelkezésre álló memória%-ban|Darabszám|Átlag|Rendelkezésre álló memória Average_%-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_ rendelkezésre álló szabad hely a lapozófájlban|Yes|Rendelkezésre álló swap-terület (%)|Darabszám|Átlag|Average_ rendelkezésre álló szabad hely a lapozófájlban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
@@ -2549,7 +2593,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft. peering/társaik
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |EgressTrafficRate|Yes|Kimenő forgalom aránya|BitsPerSecond|Átlag|Kimenő forgalom sebessége (bit/mp)|ConnectionId, SessionIp, TrafficClass|
 |IngressTrafficRate|Yes|Bejövő forgalom aránya|BitsPerSecond|Átlag|Bejövő forgalom sebessége bit/másodpercben|ConnectionId, SessionIp, TrafficClass|
@@ -2558,14 +2602,14 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. peering/peeringServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |PrefixLatency|Yes|Előtag-késés|Ezredmásodpercben|Átlag|Medián előtag késése|PrefixName|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitások
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |memory_metric|Yes|Memória (Gen1)|Bájt|Átlag|Memory. Tartomány 0-3 GB a1, 0-5 GB az a2, 0-10 GB, a3, 0-25 GB, a4, 0-50 GB, a5 és 0-100 GB, A6. Csak Power BI Embedded 1. generációs erőforrások esetén támogatott.|Nincsenek méretek|
 |memory_thrashing_metric|Yes|Memória-Kiverés (adatkészletek) (Gen1)|Százalék|Átlag|Memória átlagos kiverése. Csak Power BI Embedded 1. generációs erőforrások esetén támogatott.|Nincsenek méretek|
@@ -2574,19 +2618,9 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |QueryPoolJobQueueLength|Yes|Lekérdezési készlet feladatok várólistájának hossza (adatkészletek) (Gen1)|Darabszám|Átlag|A lekérdezési szál készletének várólistájában lévő feladatok száma. Csak Power BI Embedded 1. generációs erőforrások esetén támogatott.|Nincsenek méretek|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/fiókok
-
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
-|---|---|---|---|---|---|---|
-|ScanCancelled|Yes|Vizsgálat megszakítva|Darabszám|Összesen|A megszakított ellenőrzések számát jelzi.|ResourceId|
-|ScanCompleted|Yes|A vizsgálat befejeződött|Darabszám|Összesen|Azt jelzi, hogy a vizsgálatok száma sikeresen befejeződött.|ResourceId|
-|ScanFailed|Yes|Sikertelen vizsgálat|Darabszám|Összesen|Azt jelzi, hogy a vizsgálatok száma nem sikerült.|ResourceId|
-|ScanTimeTaken|Yes|Vizsgálat ideje elvégezve|Másodperc|Összesen|A teljes vizsgálati időt jelzi másodpercben.|ResourceId|
-
-
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. hatáskörébe/fiókok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ScanCancelled|Yes|Vizsgálat megszakítva|Darabszám|Összesen|A megszakított ellenőrzések számát jelzi.||
 |ScanCompleted|Yes|A vizsgálat befejeződött|Darabszám|Összesen|Azt jelzi, hogy a vizsgálatok száma sikeresen befejeződött.||
@@ -2596,7 +2630,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/névterek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Aktív kapcsolatok|No|Aktív kapcsolatok|Darabszám|Összesen|A Microsoft. Relay aktív kapcsolatai összesen.|EntityName|
 |ActiveListeners|No|ActiveListeners|Darabszám|Összesen|A Microsoft. Relay ActiveListeners összesen.|EntityName|
@@ -2615,7 +2649,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftresourcessubscriptions"></a>Microsoft. Resources/előfizetések
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Késés|Yes|Bejövő HTTP-kérelmek késésének adatvédelme|Darabszám|Átlag|Bejövő HTTP-kérelmek késésének adatvédelme|Metódus, névtér, RequestRegion, ResourceType, Microsoft. SubscriptionId|
 |Adatforgalom|Yes|Adatforgalom|Darabszám|Átlag|Http-forgalom|RequestRegion, StatusCode, StatusCodeClass, ResourceType, névtér, Microsoft. SubscriptionId|
@@ -2623,7 +2657,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |SearchLatency|Yes|Keresési késés|Másodperc|Átlag|Keresési szolgáltatás átlagos keresési késése|Nincsenek méretek|
 |SearchQueriesPerSecond|Yes|Keresési lekérdezések másodpercenként|CountPerSecond|Átlag|Keresési lekérdezések másodpercenként a keresési szolgáltatáshoz|Nincsenek méretek|
@@ -2632,7 +2666,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/névterek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Aktív kapcsolatok|No|Aktív kapcsolatok|Darabszám|Összesen|A Microsoft. ServiceBus összes aktív kapcsolata.||
 |ActiveMessages|No|Üzenetsor vagy témakör aktív üzeneteinek száma.|Darabszám|Átlag|Üzenetsor vagy témakör aktív üzeneteinek száma.|EntityName|
@@ -2657,7 +2691,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft. ServiceFabricMesh/alkalmazások
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ActualCpu|No|ActualCpu|Darabszám|Átlag|Tényleges CPU-használat a Millon magokban|ApplicationName, szolgáltatásnév, CodePackageName, ServiceReplicaName|
 |ActualMemory|No|ActualMemory|Bájt|Átlag|Tényleges memóriahasználat MB-ban|ApplicationName, szolgáltatásnév, CodePackageName, ServiceReplicaName|
@@ -2674,7 +2708,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/szignáló
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ConnectionCount|Yes|Kapcsolatok száma|Darabszám|Maximum|A felhasználói kapcsolatok mennyisége.|Végpont|
 |InboundTraffic|Yes|Bejövő forgalom|Bájt|Összesen|A szolgáltatás bejövő forgalma|Nincsenek méretek|
@@ -2684,9 +2718,18 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |UserErrors|Yes|Felhasználói hibák|Százalék|Maximum|A felhasználói hibák százalékos aránya|Nincsenek méretek|
 
 
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft. SignalRService/WebPubSub
+
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|---|
+|ConnectionCount|Yes|Kapcsolatok száma|Darabszám|Maximum|A felhasználói kapcsolatok mennyisége.|Nincsenek méretek|
+|InboundTraffic|Yes|Bejövő forgalom|Bájt|Összesen|A szolgáltatás bejövő forgalma|Nincsenek méretek|
+|OutboundTraffic|Yes|Kimenő forgalom|Bájt|Összesen|A szolgáltatás kimenő forgalma|Nincsenek méretek|
+
+
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |avg_cpu_percent|Yes|Átlagos CPU-százalék|Százalék|Átlag|Átlagos CPU-százalék|Nincsenek méretek|
 |io_bytes_read|Yes|I/o-bájtok olvasása|Bájt|Átlag|I/o-bájtok olvasása|Nincsenek méretek|
@@ -2699,7 +2742,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |active_queries|Yes|Aktív lekérdezések|Darabszám|Összesen|Aktív lekérdezések az összes munkaterhelési csoporton belül. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
 |allocated_data_storage|Yes|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adattárolás. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
@@ -2752,7 +2795,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/kiszolgálók/elasticPools
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |allocated_data_storage|Yes|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület|Nincsenek méretek|
 |allocated_data_storage_percent|Yes|Lefoglalt adatterület százalékos aránya|Százalék|Maximum|Lefoglalt adatterület százalékos aránya|Nincsenek méretek|
@@ -2790,7 +2833,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft. Storage/storageAccounts
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatok mennyisége. Ez a szám magában foglalja az Azure Storage külső ügyfelének, valamint az Azure-on belüli kimenő ügyfeleknek. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
@@ -2803,7 +2846,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |BlobCapacity|No|BLOB kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
@@ -2820,7 +2863,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatok mennyisége. Ez a szám magában foglalja az Azure Storage külső ügyfelének, valamint az Azure-on belüli kimenő ügyfeleknek. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés, fájlmegosztás|
@@ -2839,7 +2882,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatok mennyisége. Ez a szám magában foglalja az Azure Storage külső ügyfelének, valamint az Azure-on belüli kimenő ügyfeleknek. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
@@ -2854,7 +2897,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Rendelkezésre állás|Yes|Rendelkezésre állás|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Yes|Kimenő forgalom|Bájt|Összesen|A kimenő adatok mennyisége. Ez a szám magában foglalja az Azure Storage külső ügyfelének, valamint az Azure-on belüli kimenő ügyfeleknek. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
@@ -2869,7 +2912,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragecachecaches"></a>Microsoft. StorageCache/gyorsítótárak
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ClientIOPS|Yes|Ügyfél teljes IOPS|Darabszám|Átlag|A gyorsítótár által feldolgozott ügyféloldali fájlok műveleteinek aránya.|Nincsenek méretek|
 |ClientLatency|Yes|Ügyfél átlagos késése|Ezredmásodpercben|Átlag|Az ügyféloldali fájl műveleteinek átlagos késése a gyorsítótárban.|Nincsenek méretek|
@@ -2898,10 +2941,11 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>Microsoft. storagesync/storageSyncServices
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ServerSyncSessionResult|Yes|Szinkronizálási munkamenet eredménye|Darabszám|Átlag|Metrika, amely minden alkalommal naplózza az 1 értéket, amikor a kiszolgálói végpont sikeresen befejezte a szinkronizálási munkamenetet a Felhőbeli végponttal|SyncGroupName, ServerEndpointName, SyncDirection|
 |StorageSyncBatchTransferredFileBytes|Yes|Szinkronizált bájtok száma|Bájt|Összesen|A szinkronizálási munkamenetek számára átvitt fájlok teljes mérete|SyncGroupName, ServerEndpointName, SyncDirection|
+|StorageSyncRecallComputedSuccessRate|Yes|Felhőbeli rétegek felidézésének sikerességi aránya|Százalék|Átlag|A sikeres visszahívások százalékos aránya|SyncGroupName, ServerName|
 |StorageSyncRecalledNetworkBytesByApplication|Yes|Felhőbeli rétegek felidézésének mérete alkalmazás szerint|Bájt|Összesen|Az alkalmazás által visszahívott adatmennyiség|SyncGroupName, kiszolgálónév, ApplicationName|
 |StorageSyncRecalledTotalNetworkBytes|Yes|Felhőbeli rétegek felidézésének mérete|Bájt|Összesen|Visszahívott adatmennyiség|SyncGroupName, ServerName|
 |StorageSyncRecallIOTotalSizeBytes|Yes|Felhőbeli rétegek felidézése|Bájt|Összesen|A kiszolgáló által visszaadott adatmennyiség teljes mérete|ServerName|
@@ -2913,7 +2957,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagesync/storageSyncServices/registeredServers
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ServerHeartbeat|Yes|Kiszolgáló online állapota|Darabszám|Maximum|Metrika, amely minden alkalommal naplózza az 1 értéket, amikor a resigtered-kiszolgáló sikeresen megjegyez egy szívverést a Felhőbeli végponttal|ServerResourceId, ServerName|
 |ServerRecallIOTotalSizeBytes|Yes|Felhőbeli rétegek felidézése|Bájt|Összesen|A kiszolgáló által visszaadott adatmennyiség teljes mérete|ServerResourceId, ServerName|
@@ -2921,7 +2965,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagesync/storageSyncServices/syncGroups
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |SyncGroupBatchTransferredFileBytes|Yes|Szinkronizált bájtok száma|Bájt|Összesen|A szinkronizálási munkamenetek számára átvitt fájlok teljes mérete|SyncGroupName, ServerEndpointName, SyncDirection|
 |SyncGroupSyncSessionAppliedFilesCount|Yes|Szinkronizált fájlok|Darabszám|Összesen|Szinkronizált fájlok száma|SyncGroupName, ServerEndpointName, SyncDirection|
@@ -2930,7 +2974,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ServerEndpointBatchTransferredFileBytes|Yes|Szinkronizált bájtok száma|Bájt|Összesen|A szinkronizálási munkamenetek számára átvitt fájlok teljes mérete|ServerEndpointName, SyncDirection|
 |ServerEndpointSyncSessionAppliedFilesCount|Yes|Szinkronizált fájlok|Darabszám|Összesen|Szinkronizált fájlok száma|ServerEndpointName, SyncDirection|
@@ -2939,7 +2983,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AMLCalloutFailedRequests|Yes|Sikertelen függvények kérései|Darabszám|Összesen|Sikertelen függvények kérései|LogicalName, PartitionId|
 |AMLCalloutInputEvents|Yes|Függvények eseményei|Darabszám|Összesen|Függvények eseményei|LogicalName, PartitionId|
@@ -2956,12 +3000,13 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |LateInputEvents|Yes|Késői bemeneti események|Darabszám|Összesen|Késői bemeneti események|LogicalName, PartitionId|
 |OutputEvents|Yes|Kimeneti események|Darabszám|Összesen|Kimeneti események|LogicalName, PartitionId|
 |OutputWatermarkDelaySeconds|Yes|Vízjel késleltetése|Másodperc|Maximum|Vízjel késleltetése|LogicalName, PartitionId|
+|ProcessCPUUsagePercentage|Yes|CPU-kihasználtság%-ban (előzetes verzió)|Százalék|Maximum|CPU-kihasználtság%-ban (előzetes verzió)|LogicalName, PartitionId|
 |ResourceUtilization|Yes|SU% kihasználtsága|Százalék|Maximum|SU% kihasználtsága|LogicalName, PartitionId|
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. szinapszis/munkaterületek
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BuiltinSqlPoolDataProcessedBytes|No|Feldolgozott adatmennyiség (bájt)|Bájt|Összesen|Lekérdezések által feldolgozott adatmennyiség|Nincsenek méretek|
 |BuiltinSqlPoolLoginAttempts|No|Bejelentkezési kísérletek|Darabszám|Összesen|A sikerül vagy sikertelen bejelentkezési kísérletek száma|Eredmény|
@@ -2973,7 +3018,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. szinapszis/munkaterületek/bigDataPools
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BigDataPoolAllocatedCores|No|lefoglalt virtuális mag|Darabszám|Maximum|Apache Spark készlethez lefoglalt virtuális mag|SubmitterId|
 |BigDataPoolAllocatedMemory|No|Lefoglalt memória (GB)|Darabszám|Maximum|Lefoglalt memória a Apach Spark-készlethez (GB)|SubmitterId|
@@ -2983,7 +3028,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. szinapszis/munkaterületek/sqlPools
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ActiveQueries|No|Aktív lekérdezések|Darabszám|Összesen|Az aktív lekérdezések. Ha ezt a metrikát nem szűri, és a felosztatlan érték jelenik meg, akkor a rendszeren futó összes aktív lekérdezés megjelenik.|IsUserDefined|
 |AdaptiveCacheHitPercent|No|Adaptív gyorsítótár-találatok százalékos aránya|Százalék|Maximum|Méri, hogy a számítási feladatok milyen jól használják az adaptív gyorsítótárat. Ezt a metrikát a gyorsítótár találati százalékos metrikájának használatával határozhatja meg, hogy szeretné-e bővíteni a további kapacitást, vagy futtassa újra a számítási feladatokat a gyorsítótár hidrát|Nincsenek méretek|
@@ -3008,7 +3053,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/Environments
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |IngressReceivedBytes|Yes|Bejövő fogadott bájtok száma|Bájt|Összesen|Az összes eseményforrás által olvasott bájtok száma|Nincsenek méretek|
 |IngressReceivedInvalidMessages|Yes|A bejövő forgalom érvénytelen üzeneteket kapott|Darabszám|Összesen|Az összes Event hub-vagy IoT hub-eseményforrás által beolvasott érvénytelen üzenetek száma|Nincsenek méretek|
@@ -3023,7 +3068,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/Environments/eventsources
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |IngressReceivedBytes|Yes|Bejövő fogadott bájtok száma|Bájt|Összesen|Az eseményforrás által beolvasott bájtok száma|Nincsenek méretek|
 |IngressReceivedInvalidMessages|Yes|A bejövő forgalom érvénytelen üzeneteket kapott|Darabszám|Összesen|Az eseményforrás által beolvasott érvénytelen üzenetek száma|Nincsenek méretek|
@@ -3038,7 +3083,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. VMwareCloudSimple/virtualMachines
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |Lemez olvasási bájtjai|Yes|Lemez olvasási bájtjai|Bájt|Összesen|A lemez teljes átviteli sebessége a mintavételi időszakon belül beolvasási műveletek miatt.|Nincsenek méretek|
 |Lemez olvasási művelete/mp|Yes|Lemez olvasási művelete/mp|CountPerSecond|Átlag|Az i/o-olvasási műveletek átlagos száma az előző mintavételi időszakban. Vegye figyelembe, hogy ezek a műveletek változó méretűek lehetnek.|Nincsenek méretek|
@@ -3063,7 +3108,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft. Web/hostingEnvironments/multiRolePools
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |ActiveRequests|Yes|Aktív kérések (elavult)|Darabszám|Összesen|Aktív kérések|Példány|
 |AverageResponseTime|Yes|Átlagos válaszidő (elavult)|Másodperc|Átlag|A kérések kiszolgálásához szükséges átlagos idő másodpercben.|Példány|
@@ -3092,7 +3137,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft. Web/hostingEnvironments/workerPools
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |CpuPercentage|Yes|Processzorhasználat (%)|Százalék|Átlag|A munkavégző készlet összes példányán használt átlagos CPU.|Példány|
 |MemoryPercentage|Yes|Memória százaléka|Százalék|Átlag|A munkavégző készlet összes példányán használt átlagos memória.|Példány|
@@ -3103,7 +3148,7 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft. Web/kiszolgálófarmok
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BytesReceived|Yes|A-ben tárolt adatértékek|Bájt|Összesen|A csomag összes példányán használt átlagos bejövő sávszélesség.|Példány|
 |BytesSent|Yes|Kimenő adatvesztés|Bájt|Összesen|A csomag összes példányán használt átlagos kimenő sávszélesség.|Példány|
@@ -3129,14 +3174,14 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/Sites
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AppConnections|Yes|Kapcsolatok|Darabszám|Átlag|A homokozóban meglévő kötött szoftvercsatornák (w3wp.exe és annak alárendelt folyamatai) száma. A kötött szoftvercsatorna a kötési ()/Connect () API-k meghívásával jön létre, és addig marad, amíg az említett szoftvercsatorna le nem zárul a CloseHandle függvény hívásakor ()/closesocket () használatával.|Példány|
 |AverageMemoryWorkingSet|Yes|Memória átlagos munkakészlete|Bájt|Átlag|Az alkalmazás által használt memória átlagos mérete (MB) (MiB).|Példány|
 |AverageResponseTime|Yes|Átlagos válaszidő (elavult)|Másodperc|Átlag|Az alkalmazásnak a kérelmek kiszolgálásához szükséges átlagos ideje másodpercben.|Példány|
 |BytesReceived|Yes|A-ben tárolt adatértékek|Bájt|Összesen|Az alkalmazás által felhasznált bejövő sávszélesség mennyisége a MiB-ben.|Példány|
 |BytesSent|Yes|Kimenő adatvesztés|Bájt|Összesen|Az alkalmazás által felhasznált kimenő sávszélesség mennyisége a MiB-ben.|Példány|
-|CpuTime|Yes|CPU-idő|Másodperc|Összesen|Az alkalmazás által felhasznált CPU mennyisége másodpercben. További információ erről a metrikáról. Lásd: https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (CPU-idő vs CPU-százalék). Nem alkalmazható Azure Functionsra.|Példány|
+|CpuTime|Yes|CPU-idő|Másodperc|Összesen|Az alkalmazás által felhasznált CPU mennyisége másodpercben. További információ erről a metrikáról. Nem alkalmazható Azure Functionsra. Lásd: https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage (CPU-idő vs CPU-százalék).|Példány|
 |CurrentAssemblies|Yes|Aktuális szerelvények|Darabszám|Átlag|Az alkalmazás összes alkalmazástartományok betöltött szerelvények aktuális száma.|Példány|
 |FileSystemUsage|Yes|Fájlrendszer használata|Bájt|Átlag|Az alkalmazás által felhasznált fájlrendszerbeli kvóta százalékaránya.|Nincsenek méretek|
 |FunctionExecutionCount|Yes|Függvény végrehajtásának száma|Darabszám|Összesen|Függvények végrehajtásának száma. Csak Azure Functions esetén jelen van.|Példány|
@@ -3173,14 +3218,14 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Slots
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |AppConnections|Yes|Kapcsolatok|Darabszám|Átlag|A homokozóban meglévő kötött szoftvercsatornák (w3wp.exe és annak alárendelt folyamatai) száma. A kötött szoftvercsatorna a kötési ()/Connect () API-k meghívásával jön létre, és addig marad, amíg az említett szoftvercsatorna le nem zárul a CloseHandle függvény hívásakor ()/closesocket () használatával.|Példány|
 |AverageMemoryWorkingSet|Yes|Memória átlagos munkakészlete|Bájt|Átlag|Az alkalmazás által használt memória átlagos mérete (MB) (MiB).|Példány|
 |AverageResponseTime|Yes|Átlagos válaszidő (elavult)|Másodperc|Átlag|Az alkalmazásnak a kérelmek kiszolgálásához szükséges átlagos ideje másodpercben.|Példány|
 |BytesReceived|Yes|A-ben tárolt adatértékek|Bájt|Összesen|Az alkalmazás által felhasznált bejövő sávszélesség mennyisége a MiB-ben.|Példány|
 |BytesSent|Yes|Kimenő adatvesztés|Bájt|Összesen|Az alkalmazás által felhasznált kimenő sávszélesség mennyisége a MiB-ben.|Példány|
-|CpuTime|Yes|CPU-idő|Másodperc|Összesen|Az alkalmazás által felhasznált CPU mennyisége másodpercben. További információ erről a metrikáról. Lásd: https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (CPU-idő vs CPU-százalék).|Példány|
+|CpuTime|Yes|CPU-idő|Másodperc|Összesen|Az alkalmazás által felhasznált CPU mennyisége másodpercben. További információ erről a metrikáról. Nem alkalmazható Azure Functionsra. Lásd: https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage (CPU-idő vs CPU-százalék).|Példány|
 |CurrentAssemblies|Yes|Aktuális szerelvények|Darabszám|Átlag|Az alkalmazás összes alkalmazástartományok betöltött szerelvények aktuális száma.|Példány|
 |FileSystemUsage|Yes|Fájlrendszer használata|Bájt|Átlag|Az alkalmazás által felhasznált fájlrendszerbeli kvóta százalékaránya.|Nincsenek méretek|
 |FunctionExecutionCount|Yes|Függvény végrehajtásának száma|Darabszám|Összesen|Függvény végrehajtásának száma|Példány|
@@ -3217,14 +3262,13 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 ## <a name="microsoftwebstaticsites"></a>Microsoft. Web/staticSites
 
-|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
+|Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |BytesSent|Yes|Kimenő adatvesztés|Bájt|Összesen|BytesSent|Példány|
 |FunctionErrors|Yes|FunctionErrors|Darabszám|Összesen|FunctionErrors|Példány|
 |FunctionHits|Yes|FunctionHits|Darabszám|Összesen|FunctionHits|Példány|
 |SiteErrors|Yes|SiteErrors|Darabszám|Összesen|SiteErrors|Példány|
 |SiteHits|Yes|SiteHits|Darabszám|Összesen|SiteHits|Példány|
-
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -137,6 +137,8 @@
           href: how-to-setup-lab-gpu.md
         - name: Windows rendszerű virtuálisgép-sablon előkészítése
           href: how-to-prepare-windows-template.md
+        - name: Külső file Storage használata
+          href: how-to-attach-external-storage.md
         - name: A Windows leállítási viselkedésének szabályozása
           href: how-to-windows-shutdown.md
         - name: Támogatási információk megtekintése (oktató)

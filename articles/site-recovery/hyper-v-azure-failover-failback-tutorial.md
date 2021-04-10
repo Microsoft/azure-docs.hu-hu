@@ -1,19 +1,16 @@
 ---
 title: Hyper-V virtuális gépek feladatátvételének beállítása az Azure-ba Azure Site Recovery
 description: Megtudhatja, hogyan hajthat végre feladatátvételt Hyper-V virtuális gépeken az Azure-ba a Azure Site Recovery használatával.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 12/16/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb012f7cc5faa5e286b617785512ffa463c213bb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86132462"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579548"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Hyper-V virtuális gépek feladatátvétele az Azure-ba
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 9fa6a1758bc2e2a76291efc3bb239c5249a6e21e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149341"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167668"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Számítási célok beállítása a modell betanításához és üzembe helyezéséhez
 
@@ -53,7 +53,7 @@ Azure Machine Learning által felügyelt számítási célok használatához lá
 
 ## <a name="whats-a-compute-target"></a>Mi a számítási cél?
 
-A Azure Machine Learning segítségével különböző erőforrásokra és környezetekre is betaníthatja a modellt, együttesen [__számítási célok__](concept-azure-machine-learning-architecture.md#compute-targets)néven. A számítási cél lehet egy helyi gép vagy egy felhőalapú erőforrás, például egy Azure Machine Learning számítási, Azure-HDInsight vagy távoli virtuális gép.  Emellett számítási célokat is használhat a modell telepítéséhez a ["hol és hogyan kell üzembe helyezni a modelleket"](how-to-deploy-and-where.md)című cikkben leírtak szerint.
+A Azure Machine Learning segítségével különböző erőforrásokon és környezeteken is betaníthatja a modellt, és együttesen [__számítási célokat__](concept-azure-machine-learning-architecture.md#compute-targets)is nevezünk. A számítási cél lehet egy helyi gép vagy egy felhőalapú erőforrás, például egy Azure Machine Learning számítási, Azure-HDInsight vagy távoli virtuális gép.  Emellett számítási célokat is használhat a modell telepítéséhez a ["hol és hogyan kell üzembe helyezni a modelleket"](how-to-deploy-and-where.md)című cikkben leírtak szerint.
 
 
 ## <a name="local-computer"></a><a id="local"></a>Helyi számítógép
@@ -64,9 +64,12 @@ Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Távoli virtuális gépek
 
-A Azure Machine Learning támogatja az Azure-beli virtuális gépek csatlakoztatását is. A virtuális gépnek Azure-Data Science Virtual Machine (DSVM) kell lennie. Ez a virtuális gép egy előre konfigurált adatelemzési és AI-fejlesztési környezet az Azure-ban. A virtuális gép számos eszközt és keretrendszert kínál a teljes életciklusú gépi tanulás fejlesztéséhez. A DSVM és a Azure Machine Learning használatával kapcsolatos további információkért lásd: [fejlesztési környezet konfigurálása](./how-to-configure-environment.md#dsvm).
+A Azure Machine Learning támogatja az Azure-beli virtuális gépek csatlakoztatását is. A virtuális gépnek Azure-Data Science Virtual Machine (DSVM) kell lennie. A virtuális gép számos eszközt és keretrendszert kínál a teljes életciklusú gépi tanulás fejlesztéséhez. A DSVM és a Azure Machine Learning használatával kapcsolatos további információkért lásd: [fejlesztési környezet konfigurálása](./how-to-configure-environment.md#dsvm).
 
-1. **Létrehozás**: hozzon létre egy DSVM, mielőtt a modellt betanítani. Az erőforrás létrehozásával kapcsolatban tekintse meg [a Linux (Ubuntu) Data Science Virtual Machine kiépítése](./data-science-virtual-machine/dsvm-ubuntu-intro.md)című témakört.
+> [!TIP]
+> A távoli virtuális gépek helyett a [Azure Machine learning számítási példány](concept-compute-instance.md)használatát javasoljuk. Ez egy teljes körűen felügyelt, felhőalapú számítási megoldás, amely Azure Machine Learningre vonatkozik. További információ: [Azure Machine learning számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md).
+
+1. **Létrehozás**: Azure Machine learning nem tud létrehozni távoli virtuális gépet. Ehelyett létre kell hoznia a virtuális gépet, majd csatlakoztatnia kell a Azure Machine Learning munkaterülethez. A DSVM létrehozásával kapcsolatos információkért lásd: [a Linux Data Science Virtual Machine kiépítése (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Azure Machine Learning csak az **Ubuntut** futtató virtuális gépeket támogatja. Amikor létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet választ, ki kell választania egy Ubuntut használó virtuális gépet.
@@ -120,11 +123,16 @@ A Azure Machine Learning támogatja az Azure-beli virtuális gépek csatlakoztat
    src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
    ```
 
+> [!TIP]
+> Ha __el szeretné távolítani__ (leválasztani) egy virtuális gépet a munkaterületről, használja a [RemoteCompute. leválasztás ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) metódust.
+>
+> Azure Machine Learning nem törli a virtuális gépet. Manuálisan kell törölnie a virtuális gépet a Azure Portal, a CLI vagy az Azure virtuális géphez készült SDK használatával.
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apache Spark biztosít, amely a modell betanítására használható.
 
-1. **Létrehozás**: hozza létre a HDInsight-fürtöt, mielőtt felhasználja a modell betanításához. A Spark on HDInsight-fürt létrehozásával kapcsolatban lásd: [Spark-fürt létrehozása a HDInsight-ben](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+1. **Létrehozás**: Azure Machine learning nem tud létrehozni HDInsight-fürtöt. Ehelyett létre kell hoznia a fürtöt, majd csatlakoztatnia kell a Azure Machine Learning munkaterülethez. További információ: [Spark-fürt létrehozása a HDInsight-ben](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Azure Machine Learning megköveteli, hogy a HDInsight-fürt __nyilvános IP-címmel__ rendelkezzen.
@@ -165,8 +173,10 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
-
-Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](how-to-set-up-training-targets.md).
+> [!TIP]
+> Ha __el szeretné távolítani__ (leválasztani) egy HDInsight-fürtöt a munkaterületről, használja a [HDInsightCompute. leválasztás ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) metódust.
+>
+> Azure Machine Learning nem törli a HDInsight-fürtöt. Manuálisan kell törölnie a Azure Portal, a CLI vagy az Azure HDInsight SDK használatával.
 
 ## <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
@@ -215,7 +225,7 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 A Azure Databricks egy Apache Spark-alapú környezet az Azure-felhőben. A számítási célként Azure Machine Learning folyamattal is használható.
 
-Használat előtt hozzon létre egy Azure Databricks munkaterületet. Munkaterület-erőforrás létrehozásához tekintse [meg a Spark-feladatok futtatása Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) dokumentumon című témakört.
+> [! FONTOS} Azure Machine Learning nem hozhat létre Azure Databricks számítási célt. Ehelyett létre kell hoznia egy Azure Databricks munkaterületet, majd csatolnia kell a Azure Machine Learning-munkaterülethez. Munkaterület-erőforrás létrehozásához tekintse [meg a Spark-feladatok futtatása Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) dokumentumon című témakört.
 
 Azure Databricks számítási célként való csatolásához adja meg a következő információkat:
 
@@ -329,8 +339,7 @@ A modell telepítésekor a Azure Container Instances (ACI) dinamikusan jön lét
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Az Azure Kubernetes Service (ak) számos konfigurációs lehetőséget biztosít a Azure Machine Learning használata esetén. További információ: [Az Azure Kubernetes szolgáltatás létrehozása és csatlakoztatása](how-to-create-attach-kubernetes.md).
-
+Az Azure Kubernetes Service (ak) különböző konfigurációs beállításokat tesz lehetővé a Azure Machine Learning használatakor. További információ: [Az Azure Kubernetes szolgáltatás létrehozása és csatlakoztatása](how-to-create-attach-kubernetes.md).
 
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 

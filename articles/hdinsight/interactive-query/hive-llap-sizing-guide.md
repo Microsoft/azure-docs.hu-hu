@@ -8,10 +8,10 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104869667"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Az Azure HDInsight interaktív lekérdezési fürt (kaptár LLAP) méretezési útmutatója
@@ -222,7 +222,7 @@ Például: teljes szektorcsoport kapacitása = 100 GB memória, osztva a LLAP, a
 A számítási feladatok felügyeleti várólistájának kapacitása 20 GB, az erőforrás-csomag `QUERY_PARALLELISM` öt értéket határozhat meg, ami azt jelenti, hogy a számítási feladatok kezelése öt TEZ AMs-t indít el egyenként 4 GB méretű tárolóval. Ha `QUERY_PARALLELISM` a nagyobb a kapacitásnál, előfordulhat, hogy néhány TEZ AMs-stop válaszol `ACCEPTED` . A Hiveserver2 Interactive nem tud beküldeni lekérdezési töredékeket a nem állapotú TEZ AMs-nek `RUNNING` .
 
 
-#### <a name="next-steps"></a>**Következő lépések**
+#### <a name="next-steps"></a>**További lépések**
 Ha ezek az értékek nem oldják meg a problémát, látogasson el az alábbiak egyikére...
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).

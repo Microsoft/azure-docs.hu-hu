@@ -2,7 +2,6 @@
 title: Az Azure RBAC hibáinak megoldása
 description: Az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) kapcsolatos problémák elhárítása.
 services: azure-portal
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555881"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580103"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -68,11 +66,16 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+
+- Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet.
+
+    Ennek a forgatókönyvnek a megoldásához a `principalType` tulajdonságot a `ServicePrincipal` szerepkör-hozzárendelés létrehozásakor kell beállítania. A szerepkör-hozzárendelést is be kell állítania `apiVersion` `2018-09-01-preview` vagy később. További információ: Azure- [szerepkörök társítása egy új egyszerű szolgáltatáshoz a REST API használatával vagy az](role-assignments-rest.md#new-service-principal) [Azure-szerepkörök hozzárendelésével egy új egyszerű szolgáltatáshoz Azure Resource Manager sablonok használatával](role-assignments-template.md#new-service-principal)
+
 - Ha megpróbálja eltávolítani az utolsó tulajdonosi szerepkör-hozzárendelést egy előfizetéshez, a következő hibaüzenet jelenhet meg: "nem lehet törölni az utolsó RBAC-rendszergazdai hozzárendelést". Az előfizetés utolsó tulajdonosi szerepkör-hozzárendelésének eltávolítása nem támogatott az előfizetés árva használatának elkerülése érdekében. Ha meg szeretné szüntetni az előfizetését, tekintse [meg az Azure-előfizetés lemondása](../cost-management-billing/manage/cancel-azure-subscription.md)című témakört.
 
 ## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
 
-- Ha az egyéni szerepkörök létrehozásához szükséges lépéseket szeretné látni, tekintse meg az egyéni szerepkör-oktatóanyagokat a [Azure Portal](custom-roles-portal.md) (jelenleg előzetes verzióban elérhető), [Azure PowerShell](tutorial-custom-role-powershell.md)vagy az [Azure CLI](tutorial-custom-role-cli.md)használatával.
+- Ha egy egyéni szerepkör létrehozásával kapcsolatos lépések szükségesek, tekintse meg az egyéni szerepkör-oktatóanyagokat a [Azure Portal](custom-roles-portal.md), [Azure PowerShell](tutorial-custom-role-powershell.md)vagy az [Azure CLI](tutorial-custom-role-cli.md)használatával.
 - Ha nem tud frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely `Microsoft.Authorization/roleDefinition/write` jogosultsággal rendelkezik, például a [tulajdonos](built-in-roles.md#owner) vagy a [felhasználó hozzáférés-rendszergazdája](built-in-roles.md#user-access-administrator).
 - Ha nem sikerül törölni egy egyéni szerepkört, és a „There are existing role assignments referencing role (code: RoleDefinitionHasAssignments” (Szerepkör-hozzárendelések hivatkoznak a szerepkörre (kód: RoleDefinitionHasAssignments)) hibaüzenet jelenik meg, akkor vannak olyan szerepkör-hozzárendelések, amelyek továbbra is az adott egyéni szerepkört használják. Távolítsa el a szóban forgó szerepkör-hozzárendeléseket, majd próbálja meg ismét törölni az egyéni szerepkört.
 - Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. Nem hozhatók létre több szerepkör-definíció (code: RoleDefinitionLimitExceeded), ha új egyéni szerepkört próbál létrehozni, törölje a nem használt egyéni szerepköröket. Az Azure legfeljebb **5000** egyéni szerepkört támogat egy címtárban. (Az Azure Germany és az Azure China 21Vianet esetében a korlát 2000 egyéni szerepkör.)

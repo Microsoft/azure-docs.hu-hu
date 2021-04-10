@@ -6,22 +6,22 @@ ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 228193066c45421c4dddee1802aba1feed59e9c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1834fb7478fbb9ed435dac4f1e4b43f83e5d2db1
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042674"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383569"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek naplóriasztási szabályokhoz
 
 A [log riasztás](alerts-log.md) támogatja a [webhook műveleti csoportok konfigurálását](./action-groups.md#webhook). Ebben a cikkben leírjuk, hogy milyen tulajdonságok érhetők el, és hogyan konfigurálhatók az egyéni JSON-webhookok.
 
 > [!NOTE]
-> Az egyéni JSON-alapú webhook jelenleg nem támogatott az API-verzióban `2020-05-01-preview`
+> Az egyéni JSON-alapú webhook jelenleg nem támogatott az API-verzióban `2020-05-01-preview` .
 
 > [!NOTE]
-> Javasoljuk, hogy az [általános riasztási sémát](../alerts/alerts-common-schema.md) használja a webhook-integrációhoz. Az általános riasztási séma előnye, hogy egyetlen bővíthető és egységesített riasztási adattartalommal rendelkezik a Azure Monitor összes riasztási szolgáltatásában. Az egyéni JSON-adattartalommal rendelkező naplózási riasztási szabályok esetében a közös séma az [itt](../alerts/alerts-common-schema-definitions.md#log-alerts)ismertetett módon visszaállíthatja a hasznos adatokat tartalmazó sémát. A közös sémával rendelkező riasztások legfeljebb 256 KB-os felső korláttal rendelkeznek, és a nagyobb riasztások nem tartalmazzák a keresési eredményeket. Ha a keresési eredmények nem szerepelnek, a vagy a használatával érheti el a `LinkToFilteredSearchResultsAPI` `LinkToSearchResultsAPI` lekérdezési eredményeket a log Analytics API-n keresztül.
+> Javasoljuk, hogy az [általános riasztási sémát](../alerts/alerts-common-schema.md) használja a webhook-integrációhoz. Az általános riasztási séma előnye, hogy egyetlen bővíthető és egységesített riasztási adattartalommal rendelkezik a Azure Monitor összes riasztási szolgáltatásában. Az egyéni JSON-adattartalommal rendelkező naplózási riasztási szabályok esetében a közös riasztási séma engedélyezésével visszaállíthatja a hasznos adatokat tartalmazó sémát az [itt](../alerts/alerts-common-schema-definitions.md#log-alerts)leírt módon. Ez azt jelenti, hogy ha egyéni JSON-adattartalmat szeretne definiálni, a webhook nem tudja használni a Common Alert sémát. A közös sémával rendelkező riasztások legfeljebb 256 KB-os felső korláttal rendelkeznek, és a nagyobb riasztások nem tartalmazzák a keresési eredményeket. Ha a keresési eredmények nem szerepelnek, a vagy a használatával érheti el a `LinkToFilteredSearchResultsAPI` `LinkToSearchResultsAPI` lekérdezési eredményeket a log Analytics API-n keresztül.
 
 ## <a name="webhook-payload-properties"></a>Webhook hasznos adatainak tulajdonságai
 
@@ -87,65 +87,68 @@ A következő minta adattartalom a riasztások Log Analyticson alapuló szabván
 
 ```json
 {
-    "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName": "AcmeRule",
-    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
-    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
-    "Description": "log alert rule",
-    "Severity": "Warning",
-    "AffectedConfigurationItems": [
-        "INC-Gen2Alert"
-    ],
-    "Dimensions": [
-        {
-            "name": "Computer",
-            "value": "INC-Gen2Alert"
-        }
-    ],
-    "SearchResult": {
-        "tables": [
+   "schemaId":"Microsoft.Insights/LogAlert",
+   "data":{
+      "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
+      "AlertRuleName":"AcmeRule",
+      "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+      "SearchIntervalStartTimeUtc":"2018-03-26T08:10:40Z",
+      "SearchIntervalEndtimeUtc":"2018-03-26T09:10:40Z",
+      "AlertThresholdOperator":"Greater Than",
+      "AlertThresholdValue":0,
+      "ResultCount":2,
+      "SearchIntervalInSeconds":3600,
+      "LinkToSearchResults":"https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+      "LinkToFilteredSearchResultsUI":"https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+      "LinkToSearchResultsAPI":"https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+      "LinkToFilteredSearchResultsAPI":"https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+      "Description":"log alert rule",
+      "Severity":"Warning",
+      "AffectedConfigurationItems":[
+         "INC-Gen2Alert"
+      ],
+      "Dimensions":[
+         {
+            "name":"Computer",
+            "value":"INC-Gen2Alert"
+         }
+      ],
+      "SearchResult":{
+         "tables":[
             {
-                "name": "PrimaryResult",
-                "columns": [
-                    {
-                        "name": "$table",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Computer",
-                        "type": "string"
-                    },
-                    {
-                        "name": "TimeGenerated",
-                        "type": "datetime"
-                    }
-                ],
-                "rows": [
-                    [
-                        "Fabrikam",
-                        "33446677a",
-                        "2018-02-02T15:03:12.18Z"
-                    ],
-                    [
-                        "Contoso",
-                        "33445566b",
-                        "2018-02-02T15:16:53.932Z"
-                    ]
-                ]
+               "name":"PrimaryResult",
+               "columns":[
+                  {
+                     "name":"$table",
+                     "type":"string"
+                  },
+                  {
+                     "name":"Computer",
+                     "type":"string"
+                  },
+                  {
+                     "name":"TimeGenerated",
+                     "type":"datetime"
+                  }
+               ],
+               "rows":[
+                  [
+                     "Fabrikam",
+                     "33446677a",
+                     "2018-02-02T15:03:12.18Z"
+                  ],
+                  [
+                     "Contoso",
+                     "33445566b",
+                     "2018-02-02T15:16:53.932Z"
+                  ]
+               ]
             }
-        ]
-    },
-    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
-    "AlertType": "Metric measurement"
+         ]
+      },
+      "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+      "AlertType":"Metric measurement"
+   }
 }
 ```
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6774e172c4e8607bfadd95f947d650afa62a984f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93393676"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550422"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
 
@@ -101,7 +101,7 @@ Törlés Azure AD-ben:
 - **Windows 7/8** – először tiltsa le vagy törölje a Windows 7/8 rendszerű eszközöket a helyszíni ad-ben. Az Azure AD Connect használatával nem tud letiltani vagy törölni Windows 7/8 rendszerű eszközöket az Azure AD-ben. Ehelyett, amikor a helyszíni módosításokat végzi, le kell tiltania/törölnie kell az Azure AD-ben.
 
 > [!NOTE]
->* A helyszíni AD-ben vagy az Azure AD-ban lévő eszközök törlése nem távolítja el a regisztrációt az ügyfélen. A szolgáltatás csak az eszköz identitásának (például feltételes hozzáférés) használatával fogja megakadályozni az erőforrásokhoz való hozzáférést. További információ a [regisztráció eltávolításáról az ügyfélen](faq.md#hybrid-azure-ad-join-faq).
+>* A helyszíni AD-ben vagy az Azure AD-ban lévő eszközök törlése nem távolítja el a regisztrációt az ügyfélen. A szolgáltatás csak az eszköz identitásának (például feltételes hozzáférés) használatával fogja megakadályozni az erőforrásokhoz való hozzáférést. További információ a [regisztráció eltávolításáról az ügyfélen](faq.yml).
 >* Egy Windows 10 rendszerű eszköz csak az Azure AD-ben való törlése újra szinkronizálja az eszközt a helyszíni Azure AD-kapcsolattal, de a "függő" állapotban lévő új objektumként. Az eszközön újra kell regisztrálni.
 >* Az eszköznek a Windows 10/Server 2016 rendszerű eszközök szinkronizálási hatókörből való eltávolítása törli az Azure AD-eszközt. A szinkronizálási hatókörbe való hozzáadásával a rendszer egy új objektumot helyez el "függőben" állapotba. Az eszköz újbóli regisztrálása szükséges.
 >* Ha nem használja a Windows 10-es eszközökön a Azure AD Connect a szinkronizáláshoz (például csak a AD FS a regisztrációhoz), akkor a Windows 7/8-eszközökhöz hasonló életciklust kell kezelnie.
@@ -113,7 +113,7 @@ Azure AD-hez csatlakoztatott eszközök letiltása vagy törlése az Azure AD-be
 
 > [!NOTE]
 >* Az Azure AD-eszközök törlése nem távolítja el a regisztrációt az ügyfélen. A szolgáltatás csak az eszköz identitásának (például feltételes hozzáférés) használatával fogja megakadályozni az erőforrásokhoz való hozzáférést. 
->* További információk az [Azure ad-vel való csatlakozásról](faq.md#azure-ad-join-faq) 
+>* További információk az [Azure ad-vel való csatlakozásról](faq.yml) 
 
 ### <a name="azure-ad-registered-devices"></a>Azure AD-ben regisztrált eszközök
 
@@ -121,7 +121,7 @@ Azure AD-ben regisztrált eszközök letiltása vagy törlése az Azure AD-ben
 
 > [!NOTE]
 >* Egy Azure AD-beli regisztrált eszköz az Azure AD-ben való törlése nem távolítja el a regisztrációt az ügyfélen. A szolgáltatás csak az eszköz identitásának (például feltételes hozzáférés) használatával fogja megakadályozni az erőforrásokhoz való hozzáférést.
->* További információk a [regisztráció törléséről az ügyfélen](faq.md#azure-ad-register-faq)
+>* További információk a [regisztráció törléséről az ügyfélen](faq.yml)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Elavult eszközök törlése az Azure Portalon  
 

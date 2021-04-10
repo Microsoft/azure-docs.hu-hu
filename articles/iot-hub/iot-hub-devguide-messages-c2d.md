@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
 ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104607891"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Felhőből az eszközre irányuló üzenetek küldése IoT-hubhoz
@@ -100,7 +100,7 @@ A törzs a rekordok JSON-szerializált tömbje, amelyek mindegyike a következő
 | EnqueuedTimeUtc    | Egy időbélyeg, amely azt jelzi, hogy mikor történt az üzenet eredménye (például a hub megkapta a visszajelzési üzenetet, vagy lejárt az eredeti üzenet) |
 | OriginalMessageId  | A *MessageID* üzenet, amelyre ez a visszajelzési információ vonatkozik |
 | StatusCode         | Egy kötelező karakterlánc, amelyet az IoT hub által generált visszajelzési üzenetekben használ: <br/> *Siker* <br/> *Lejárt* <br/> *DeliveryCountExceeded* <br/> *Elutasítva* <br/> *Törlődnek* |
-| Description        | *Statuscode* karakterlánc-értékei |
+| Leírás        | *Statuscode* karakterlánc-értékei |
 | DeviceId           | A felhőből az eszközre irányuló üzenet megcélzott eszközének *DeviceID* eleme, amelyre ez a visszajelzés vonatkozik |
 | DeviceGenerationId | A felhőből az eszközre irányuló üzenet *DeviceGenerationId* , amelyre ez a visszajelzés vonatkozik |
 

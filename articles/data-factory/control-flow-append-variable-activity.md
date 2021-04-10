@@ -8,10 +8,10 @@ ms.author: weetok
 ms.reviewer: jburchel
 ms.date: 10/09/2018
 ms.openlocfilehash: 1ca58fc208bb02d137b977e0b18857e8c87a5440
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104783846"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Változó tevékenység hozzáfűzése Azure Data Factory
@@ -22,7 +22,7 @@ A változó hozzáfűzése tevékenységgel hozzáadhat egy értéket egy Data F
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-name | A tevékenység neve a folyamatban | Igen
+name | A tevékenység neve a folyamatban | Yes
 leírás | A tevékenység működését leíró szöveg | nem
 típus | A tevékenység típusa AppendVariable | igen
 érték | A megadott változóhoz való hozzáfűzéshez használt karakterlánc-literál vagy kifejezés objektum értéke | igen

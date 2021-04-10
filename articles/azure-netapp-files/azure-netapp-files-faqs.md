@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 3ca4938d8666fd60ebac9e75bb2da1780e0914d3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608000"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935243"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -191,6 +191,10 @@ Az SMB-ügyfél által jelentett kötet mérete az a maximális méret, ameddig 
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>Problémák léptek fel az SMB-megosztáshoz való kapcsolódás során. Mit tegyek?
 
 Ajánlott eljárásként állítsa be a számítógép órája szinkronizálásának maximális tűréshatárát öt percre. További információ: [a számítógép órája szinkronizálásának maximális hibatűrése](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
+
+### <a name="can-i-manage-smb-shares-sessions-and-open-files-through-computer-management-console-mmc"></a>Kezelhetem, és áthelyezhetem `SMB Shares` `Sessions` `Open Files` a számítógép-kezelési konzolt (MMC)?
+
+A `SMB Shares` , `Sessions` és a számítógép- `Open Files` kezelési konzol (MMC) felügyelete jelenleg nem támogatott.
 
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Hogyan szerezhetem be az SMB-kötetek IP-címét a portálon keresztül?
 

@@ -3,12 +3,12 @@ title: Eseményvezérelt videó rögzítése a felhőben és lejátszás a Felh�
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást a Azure IoT Edgeon, hogy rögzítse a felhőbe, és hogyan játssza vissza a felhőből.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: ea98b4c8981be9fffe7911e4c8402a8f522976f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702317"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279816"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -426,7 +426,7 @@ Megvizsgálhatja a gráf által létrehozott Media Services adategységet, ha be
 1. A megnyíló varázslóban fogadja el az alapértelmezett beállításokat, majd válassza a **Hozzáadás** lehetőséget. [További információ: videolejátszás](video-playback-concept.md).
 
     > [!TIP]
-    > Ellenőrizze, hogy [fut-e a folyamatos átviteli végpont](../latest/streaming-endpoint-concept.md).
+    > Ellenőrizze, hogy [fut-e a folyamatos átviteli végpont](../latest/stream-streaming-endpoint-concept.md).
 1. A lejátszónak be kell töltenie a videót. Kattintson a **Lejátszás** gombra a megtekintéshez.
 
 > [!NOTE]

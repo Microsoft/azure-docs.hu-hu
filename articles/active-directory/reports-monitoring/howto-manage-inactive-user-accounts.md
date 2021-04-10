@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4ebbd0b1715d9de3905060952a35ad42060119
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660664"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167549"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Útmutató: inaktív felhasználói fiókok kezelése az Azure AD-ben
 
@@ -47,10 +47,9 @@ Az inaktív fiókok észleléséhez ki kell értékelni a **Microsoft Graph** AP
 
 - **Felhasználók dátum szerint**: ebben a forgatókönyvben a megadott dátum előtt egy lastSignInDateTime rendelkező felhasználók listáját kéri le: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
-
-
-
-
+> [!NOTE]
+> Előfordulhat, hogy az összes felhasználó utolsó bejelentkezési napjáról jelentést kell létrehoznia, ha igen, az alábbi forgatókönyvet használhatja.
+> **Utolsó bejelentkezés dátuma és időpontja az összes felhasználó** számára: ebben a forgatókönyvben az összes felhasználó listáját kéri le, valamint az egyes felhasználók utolsó lastSignInDateTime: `https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
 
 ## <a name="what-you-need-to-know"></a>Amit még tudnia kell
 

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 76469f8b74b119c07374232899302fe1d18fe463
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731462"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-sablon üzembe helyezése what-if művelettel
 
@@ -117,10 +117,10 @@ Ha színek nélkül szeretné visszaadni az eredményeket, nyissa meg az [Azure 
 
 REST API esetén használja a következőt:
 
-* [Központi telepítések – What if](/rest/api/resources/deployments/whatif) az erőforráscsoportok üzembe helyezéséhez
-* [Központi telepítések –](/rest/api/resources/deployments/whatifatsubscriptionscope) az előfizetések hatókörének What if az előfizetés központi telepítéséhez
-* [Központi telepítések – What if a felügyeleti csoport hatókörében](/rest/api/resources/deployments/whatifatmanagementgroupscope) a felügyeleti csoportok központi telepítéséhez
-* [Központi telepítések – What if a bérlői hatókörben](/rest/api/resources/deployments/whatifattenantscope) a bérlői környezetekben.
+* [Központi telepítések – What if](/rest/api/resources/resources/deployments/whatif) az erőforráscsoportok üzembe helyezéséhez
+* [Központi telepítések –](/rest/api/resources/resources/deployments/whatifatsubscriptionscope) az előfizetések hatókörének What if az előfizetés központi telepítéséhez
+* [Központi telepítések – What if a felügyeleti csoport hatókörében](/rest/api/resources/resources/deployments/whatifatmanagementgroupscope) a felügyeleti csoportok központi telepítéséhez
+* [Központi telepítések – What if a bérlői hatókörben](/rest/api/resources/resources/deployments/whatifattenantscope) a bérlői környezetekben.
 
 ## <a name="change-types"></a>Változástípusok
 
@@ -364,17 +364,17 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
       id:
 "/subscriptions/./resourceGroups/ExampleGroup/providers/Microsoft.Network/virtualNet
-works/vnet-001"
-      location:        "centralus"
-      name:            "vnet-001"
-      tags.CostCenter: "12345"
-      tags.Owner:      "Team A"
-      type:            "Microsoft.Network/virtualNetworks"
+works/vnet-001&quot;
+      location:        &quot;centralus&quot;
+      name:            &quot;vnet-001&quot;
+      tags.CostCenter: &quot;12345&quot;
+      tags.Owner:      &quot;Team A&quot;
+      type:            &quot;Microsoft.Network/virtualNetworks&quot;
 
 Resource changes: 1 to delete.
 
 Are you sure you want to execute the deployment?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y"):
 ```
 
 Megtekintheti a várt módosításokat, és ellenőrizheti, hogy szeretné-e futtatni a központi telepítést.

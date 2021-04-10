@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864890"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579367"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gép biztonsági mentéséből
 
@@ -133,12 +133,12 @@ Továbbá győződjön meg arról, hogy rendelkezik a [megfelelő géppel a ILR-
 
 Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancsfájlt, ellenőrizze, hogy van-e hozzáférése a következőhöz:
 
-- `download.microsoft.com`
+- `download.microsoft.com` vagy `AzureFrontDoor.FirstParty` szolgáltatás címkéje a NSG-ben
 - A helyreállítási szolgáltatás URL-címei (a GEO neve arra a régióra utal, ahol a Recovery Services-tároló található)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure-beli nyilvános régiókban)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Az Azure China 21Vianet esetében)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure USA kormánya)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Az Azure Germany esetében)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure-beli nyilvános régiókban) vagy `AzureBackup` szolgáltatási címke a NSG-ben
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Az Azure China 21Vianet esetében) vagy `AzureBackup` szolgáltatási címkét a NSG-ben
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Az Azure US government esetében) vagy `AzureBackup` szolgáltatási címke a NSG-ben
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Az Azure Germany esetében) vagy `AzureBackup` szolgáltatási címke a NSG-ben
 - Kimenő portok 53 (DNS), 443, 3260
 
 > [!NOTE]

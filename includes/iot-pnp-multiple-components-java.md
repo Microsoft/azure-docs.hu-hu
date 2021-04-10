@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
 ms.openlocfilehash: 3bf5ac4e01bca3bfc3cc8720a068bc53830b4747
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104612404"
 ---
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre több összetevőből álló IoT Plug and Play eszköz-alkalmazást, hogyan csatlakoztathatja az IoT hubhoz, és az Azure CLI használatával megtekintheti az általa küldött telemetria. A minta alkalmazás Java nyelven íródott, és megtalálható a Javához készült Azure IoT Device SDK-ban. A megoldás-szerkesztő az Azure CLI használatával tudja értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.

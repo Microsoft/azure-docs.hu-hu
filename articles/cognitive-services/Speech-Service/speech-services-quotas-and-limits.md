@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645112"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937056"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
 
@@ -63,19 +63,19 @@ A [beszédfelismerési SDK](speech-sdk.md) -val és/vagy [beszéd-szöveg REST A
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>Szöveg-beszéd kvóták és a beszédfelismerési erőforrások korlátai
 Az alábbi táblázatban az "állítható" sor nélküli paraméterek **nem** állíthatók be az összes ár szintjére.
 
-| Kvóta | Ingyenes (F0)<sup>3</sup> | Standard (S0) |
-|--|--|--|
-| **A másodpercenkénti tranzakciók maximális száma (TPS) a standard és a neurális hangok esetében** | 200<sup>4</sup> | 200<sup>4</sup> |  |
-| **Egyéni hang egyidejű kérelmi korlátja** |  |  |
-| Alapértelmezett érték | 10 | 10 |
-| Módosítható | Nem<sup>5</sup> | Igen<sup>5</sup> |
-| **HTTP-specifikus kvóták** |  |
-| Maximális hanghossz | 10 perc | 10 perc |
-| Különálló címkék maximális száma `<voice>` a SSML | 50 | 50 |
-| **WebSocket-specifikus kvóták** |  |  |
-|Másodpercenként előállított maximális hanghossz | 10 perc | 10 perc |
-|Maximális SSML üzenet mérete másodpercenként |64 KB |64 KB |
-| **REST API korlát** | 20 kérelem percenként | 300 kérelem percenként |
+| Kvóta                                                                          | Ingyenes (F0)<sup>3</sup>  | Standard (S0)   |
+|--------------------------------------------------------------------------------|------------------------|-----------------|
+| **A másodpercenkénti tranzakciók maximális száma (TPS) a standard és a neurális hangok esetében** | 200<sup>4</sup>        | 200<sup>4</sup> |
+| **Egyéni hang egyidejű kérelmi korlátja**                                  |                        |                 |
+| Alapértelmezett érték                                                                  | 10                     | 10              |
+| Módosítható                                                                     | Nem<sup>5</sup>         | Igen<sup>5</sup> |
+| **HTTP-specifikus kvóták**                                                       |                        |                 |
+| Maximális hanghossz                                          | 10 perc                 | 10 perc          |
+| Különálló címkék maximális száma `<voice>` a SSML                                  | 50                     | 50              |
+| **WebSocket-specifikus kvóták**                                                  |                        |                 |
+| Másodpercenként előállított maximális hanghossz                                             | 10 perc                 | 10 perc          |
+| Maximális SSML üzenet mérete másodpercenként                                                 | 64 KB                  | 64 KB           |
+| **REST API korlát**                                                             | 20 kérelem percenként | 300 kérelem percenként |
 
 
 <sup>3</sup> az **ingyenes (F0)** díjszabási szinten a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)a havi kedvezmények is szerepelnek.<br/>

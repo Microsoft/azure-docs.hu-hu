@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: fe8714f38c6a04b311a748f3eb081be82eb86635
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024132"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937243"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – áttekintés
 
@@ -60,7 +60,7 @@ A Azure Monitor [különböző forrásokból](monitor-reference.md)származó ad
 - **Azure-előfizetések figyelésére vonatkozó** információk: az Azure-előfizetés működésével és kezelésével, valamint az Azure állapotával és működésével kapcsolatos adatmennyiség. 
 - Az **Azure-bérlő figyelési adatait**: a bérlői szintű Azure-szolgáltatások működésével, például Azure Active Directoryával kapcsolatos információk.
 
-Amint létrehoz egy Azure-előfizetést és elkezdi hozzáadni az erőforrásokat (például virtuális gépeket vagy webalkalmazásokat), az Azure Monitor elkezdi az adatokat gyűjteni.  A [Tevékenységnaplók](essentials/platform-logs-overview.md) rögzítik az erőforrások létrehozását vagy módosítását. A [metrikák](data-platform.md) megmutatják, hogyan végezheti el az erőforrást, és milyen erőforrásokat fogyaszt. 
+Amint létrehoz egy Azure-előfizetést és elkezdi hozzáadni az erőforrásokat (például virtuális gépeket vagy webalkalmazásokat), az Azure Monitor elkezdi az adatokat gyűjteni.  A [Tevékenységnaplók](essentials/platform-logs-overview.md) rögzítik az erőforrások létrehozását vagy módosítását. A [metrikák](essentials/data-platform-metrics.md) megmutatják, hogyan végezheti el az erőforrást, és milyen erőforrásokat fogyaszt. 
 
 A [diagnosztika engedélyezésével](essentials/platform-logs-overview.md) kiterjesztheti a gyűjtött adatok mennyiségét az erőforrások belső műveleteibe.  [Vegyen fel egy ügynököt](agents/agents-overview.md) az erőforrások kiszámításához a telemetria a vendég operációs rendszerből való összegyűjtéséhez. 
 

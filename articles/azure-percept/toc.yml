@@ -62,9 +62,9 @@
           href: how-to-view-telemetry.md
     - name: Beszédfelismerési megoldás fejlesztése az Azure Percept DK-mel
       items:
-        - name: A hangsegéd konfigurálása az Azure Percept Studióban
-          href: how-to-configure-voice-assistant.md
         - name: A hangsegéd konfigurálása IoT Hub
+          href: how-to-configure-voice-assistant.md
+        - name: A hangsegéd konfigurálása az Azure Percept Studióban
           href: how-to-manage-voice-assistant.md
     - name: Azure Percept-eszközök frissítése
       items:
@@ -82,7 +82,7 @@
           href: how-to-connect-to-percept-dk-over-serial.md
     - name: Eszközök
       items:
-        - name: Devtools Pack telepítő
+        - name: Dev Tools Pack telepítő
           href: dev-tools-installer.md
     - name: Hibaelhárítás
       items:

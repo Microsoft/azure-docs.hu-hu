@@ -5,16 +5,15 @@ author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
-ms.subservice: powershell
 ms.date: 11/08/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e783f7f0a9be413679e509e4d6124d50bb811821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c365e83c0208a5105d9396fb788966bbd4643ac
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87059296"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934580"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure PowerShell-lel
 

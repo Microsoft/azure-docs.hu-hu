@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan állíthatja be az Azure Private-hivatkozást e
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d21943c90e1f77bd4a43cdfd27b183df018f6cc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 034eb35eeef975be23cc318aa797282008d71728
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101690668"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936903"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -70,7 +70,7 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
     | Virtuális hálózat| Válassza ki a virtuális hálózatot. |
     | Alhálózat | Válassza ki az alhálózatot. |
     |**saját DNS integráció**||
-    |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. <br><br/> A magánhálózati végponthoz való kapcsolódáshoz DNS-rekordra van szükség. Javasoljuk, hogy a privát végpontot egy privát DNS-zónával integrálja. Saját DNS-kiszolgálókat is használhat, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával. |
+    |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. <br><br/> A magánhálózati végponthoz való kapcsolódáshoz DNS-rekordra van szükség. Javasoljuk, hogy a privát végpontot egy privát DNS-zónával integrálja. Saját DNS-kiszolgálókat is használhat, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával. <br><br/> Ha az Igen lehetőséget választja ehhez a beállításhoz, a rendszer létrehoz egy privát DNS-zónát is. A DNS-zóna csoport a saját DNS-zóna és a magánhálózati végpont közötti kapcsolat. Ez a hivatkozás segít automatikusan frissíteni a magánhálózati DNS-zónát, ha van frissítés a privát végponthoz. Ha például régiókat ad hozzá vagy távolít el, a rendszer automatikusan frissíti a magánhálózati DNS-zónát. |
     |Privát DNS-zóna |Válassza ki **privatelink.documents.Azure.com**. <br><br/> A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.|
     |||
 
@@ -78,6 +78,8 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
 1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 Ha jóváhagyta az Azure Cosmos-fiókhoz tartozó privát hivatkozást, akkor a Azure Portalban a **tűzfal és a virtuális hálózatok** ablaktábla **minden hálózat** lehetőség nem érhető el.
+
+## <a name="api-types-and-private-zone-names"></a><a id="private-zone-name-mapping"></a>API-típusok és saját zónák nevei
 
 Az alábbi táblázat a különböző Azure Cosmos-fiók API-típusai, a támogatott alerőforrások és a hozzájuk tartozó saját zónák neve közötti leképezést mutatja. A Gremlin és a Table API fiókokat az SQL API-n keresztül is elérheti, így ezek az API-k két bejegyzést használhatnak.
 
@@ -145,6 +147,8 @@ A privát végpont létrehozása után a következő PowerShell-parancsfájl has
 
 ```azurepowershell-interactive
 Import-Module Az.PrivateDns
+
+# Zone name differs based on the API type and group ID you are using. 
 $zoneName = "privatelink.documents.azure.com"
 $zone = New-AzPrivateDnsZone -ResourceGroupName $ResourceGroupName `
   -Name $zoneName
@@ -159,19 +163,19 @@ $pe = Get-AzPrivateEndpoint -Name $PrivateEndpointName `
 
 $networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
   -ApiVersion "2019-04-01"
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName `
-  -RecordType A -ZoneName $zoneName  `
-  -ResourceGroupName $ResourceGroupName -Ttl 600 `
-  -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
-  -IPv4Address $ipconfig.properties.privateIPAddress)  
-}
-}
+
+# Create DNS configuration
+
+$PrivateDnsZoneId = $zone.ResourceId
+
+$config = New-AzPrivateDnsZoneConfig -Name $zoneName`
+ -PrivateDnsZoneId $PrivateDnsZoneId
+
+## Create a DNS zone group
+New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName`
+ -PrivateEndpointName $PrivateEndpointName`
+ -Name "MyPrivateZoneGroup"`
+ -PrivateDnsZoneConfig $config
 ```
 
 ### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
@@ -242,6 +246,7 @@ az network private-endpoint create \
 A privát végpont létrehozása után a következő Azure CLI-parancsfájl használatával integrálhatja azt egy privát DNS-zónával:
 
 ```azurecli-interactive
+#Zone name differs based on the API type and group ID you are using. 
 zoneName="privatelink.documents.azure.com"
 
 az network private-dns zone create --resource-group $ResourceGroupName \
@@ -253,15 +258,13 @@ az network private-dns link vnet create --resource-group $ResourceGroupName \
    --virtual-network $VNetName \
    --registration-enabled false 
 
-#Query for the network interface ID  
-networkInterfaceId=$(az network private-endpoint show --name $PrivateEndpointName --resource-group $ResourceGroupName --query 'networkInterfaces[0].id' -o tsv)
- 
-# Copy the content for privateIPAddress and FQDN matching the Azure Cosmos account 
-az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
- 
-#Create DNS records 
-az network private-dns record-set a create --name recordSet1 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName
-az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName -a <Private IP Address>
+#Create a DNS zone group
+az network private-endpoint dns-zone-group create \
+   --resource-group $ResourceGroupName \
+   --endpoint-name $PrivateEndpointName \
+   --name "MyPrivateZoneGroup" \
+   --private-dns-zone $zoneName \
+   --zone-name "myzone"
 ```
 
 ## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Privát végpont létrehozása Resource Manager-sablonnal
@@ -460,38 +463,6 @@ A következő kód használatával hozzon létre egy "PrivateZone_template.json"
 }
 ```
 
-A következő kód használatával hozzon létre egy "PrivateZoneRecords_template.json" nevű Resource Manager-sablont.
-
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "DNSRecordName": {
-            "type": "string"
-        },
-        "IPAddress": {
-            "type":"string"
-        }        
-    },
-    "resources": [
-         {
-            "type": "Microsoft.Network/privateDnsZones/A",
-            "apiVersion": "2018-09-01",
-            "name": "[parameters('DNSRecordName')]",
-            "properties": {
-                "ttl": 300,
-                "aRecords": [
-                    {
-                        "ipv4Address": "[parameters('IPAddress')]"
-                    }
-                ]
-            }
-        }    
-    ]
-}
-```
-
 **A sablonhoz tartozó Parameters fájl megadása**
 
 Hozza létre a következő két paraméter-fájlt a sablonhoz. Hozza létre a "PrivateZone_parameters.json." a következő kóddal:
@@ -511,18 +482,65 @@ Hozza létre a következő két paraméter-fájlt a sablonhoz. Hozza létre a "P
 }
 ```
 
-Hozza létre a "PrivateZoneRecords_parameters.json." a következő kóddal:
+A következő kód használatával hozzon létre egy "PrivateZoneGroup_template.json" nevű Resource Manager-sablont. Ez a sablon létrehoz egy magánhálózati DNS-zónát egy meglévő virtuális hálózatban lévő Azure Cosmos SQL API-fiókhoz.
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "type": "string"
+        },
+        "PrivateEndpointDnsGroupName": {
+            "value": "string"
+        },
+        "privateEndpointName":{
+            "value": "string"
+        }        
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-06-01",
+            "name": "[parameters('PrivateEndpointDnsGroupName')]",
+            "location": "global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]",
+                "[variables('privateEndpointName')]"
+            ],
+          "properties": {
+            "privateDnsZoneConfigs": [
+              {
+                "name": "config1",
+                "properties": {
+                  "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]"
+                }
+              }
+            ]
+          }
+        }
+    ]
+}
+```
+
+**A sablonhoz tartozó Parameters fájl megadása**
+
+Hozza létre a következő két paraméter-fájlt a sablonhoz. Hozza létre a "PrivateZoneGroup_parameters.json." a következő kóddal:
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "DNSRecordName": {
+        "privateZoneName": {
             "value": ""
         },
-        "IPAddress": {
-            "type":"object"
+        "PrivateEndpointDnsGroupName": {
+            "value": ""
+        },
+        "privateEndpointName":{
+            "value": ""
         }
     }
 }
@@ -555,15 +573,18 @@ $PrivateZoneName = "myPrivateZone.documents.azure.com"
 # Name of the private endpoint to create
 $PrivateEndpointName = "myPrivateEndpoint"
 
+# Name of the DNS zone group to create
+$PrivateEndpointDnsGroupName = "myPrivateDNSZoneGroup"
+
 $cosmosDbResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($CosmosDbAccountName)"
 $VNetResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($VNetName)"
 $SubnetResourceId = "$($VNetResourceId)/subnets/$($SubnetName)"
 $PrivateZoneTemplateFilePath = "PrivateZone_template.json"
 $PrivateZoneParametersFilePath = "PrivateZone_parameters.json"
-$PrivateZoneRecordsTemplateFilePath = "PrivateZoneRecords_template.json"
-$PrivateZoneRecordsParametersFilePath = "PrivateZoneRecords_parameters.json"
 $PrivateEndpointTemplateFilePath = "PrivateEndpoint_template.json"
 $PrivateEndpointParametersFilePath = "PrivateEndpoint_parameters.json"
+$PrivateZoneGroupTemplateFilePath = "PrivateZoneGroup_template.json"
+$PrivateZoneGroupParametersFilePath = "PrivateZoneGroup_parameters.json"
 
 ## Step 2: Login your Azure account and select the target subscription
 Login-AzAccount 
@@ -594,21 +615,15 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
     -PrivateEndpointName $PrivateEndpointName
 $deploymentOutput
 
-## Step 6: Map the private endpoint to the private zone
-$networkInterface = Get-AzResource -ResourceId $deploymentOutput.Outputs.privateEndpointNetworkInterface.Value -ApiVersion "2019-04-01"
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
-    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
-        $recordName = $fqdn.split('.',2)[0]
-        $dnsZone = $fqdn.split('.',2)[1]
-        Write-Output "Deploying PrivateEndpoint DNS Record $($PrivateZoneName)/$($recordName) Template on $($resourceGroupName)"
-        New-AzResourceGroupDeployment -Name "PrivateEndpointDNSDeployment" `
-            -ResourceGroupName $ResourceGroupName `
-            -TemplateFile $PrivateZoneRecordsTemplateFilePath `
-            -TemplateParameterFile $PrivateZoneRecordsParametersFilePath `
-            -DNSRecordName "$($PrivateZoneName)/$($RecordName)" `
-            -IPAddress $ipconfig.properties.privateIPAddress
-    }
-}
+## Step 6: Create the private zone
+New-AzResourceGroupDeployment -Name "PrivateZoneGroupDeployment" `
+    -ResourceGroupName $ResourceGroupName `
+    -TemplateFile $PrivateZoneGroupTemplateFilePath `
+    -TemplateParameterFile $PrivateZoneGroupParametersFilePath `
+    -PrivateZoneName $PrivateZoneName `
+    -PrivateEndpointName $PrivateEndpointName`
+    -PrivateEndpointDnsGroupName $PrivateEndpointDnsGroupName
+
 ```
 
 ## <a name="configure-custom-dns"></a>Egyéni DNS konfigurálása
@@ -653,13 +668,17 @@ Ha közvetlen módú kapcsolaton keresztül használ privát hivatkozást egy Az
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Privát végpont frissítése régió hozzáadásakor vagy eltávolításakor
 
-Ha nem használ privát DNS-zónát, akkor az Azure Cosmos-fiókhoz tartozó régiók hozzáadásával vagy eltávolításával ehhez a fiókhoz hozzá kell adnia vagy el kell távolítania a DNS-bejegyzéseket. A régiók hozzáadása vagy eltávolítása után frissítheti az alhálózat saját DNS-zónáját, hogy azok tükrözzék a hozzáadott vagy eltávolított DNS-bejegyzéseket, valamint a hozzájuk tartozó magánhálózati IP-címeket.
+Ha például egy Azure Cosmos-fiókot helyez üzembe három régióban: "USA nyugati régiója", "Közép-USA" és "Nyugat-Európa". Amikor létrehoz egy privát végpontot a fiókjához, négy privát IP-cím van lefoglalva az alhálózatban. A három régió mindegyikének van egy IP-címe, és a globális/régió-agnosztikus végpontnak egyetlen IP-címe van. Később hozzáadhat egy új régiót (például "East US") az Azure Cosmos-fiókhoz. A magánhálózati DNS-zóna a következőképpen frissül:
 
-Tegyük fel például, hogy egy Azure Cosmos-fiókot helyez üzembe három régióban: "USA nyugati régiója", "Közép-USA" és "Nyugat-Európa". Amikor létrehoz egy privát végpontot a fiókjához, négy privát IP-cím van lefoglalva az alhálózatban. A három régió mindegyikének van egy IP-címe, és a globális/régió-agnosztikus végpontnak egyetlen IP-címe van.
+* **Ha a magánhálózati DNS-zóna csoportot használja:**
 
-Később hozzáadhat egy új régiót (például "East US") az Azure Cosmos-fiókhoz. Az új régió hozzáadása után hozzá kell adnia egy megfelelő DNS-rekordot a saját DNS-zónájához vagy az egyéni DNS-hez.
+  Ha privát DNS-zónát használ, a magánhálózati DNS-zóna automatikusan frissül, amikor a magánhálózati végpont frissül. Az előző példában egy új régió hozzáadása után a rendszer automatikusan frissíti a magánhálózati DNS-zónát.
 
-A régió eltávolításakor ugyanezeket a lépéseket használhatja. A régió eltávolítását követően el kell távolítania a megfelelő DNS-rekordot a saját DNS-zónájából vagy az egyéni DNS-ből.
+* **Ha a magánhálózati DNS-zóna csoportot nem használják:**
+
+  Ha nem használ privát DNS-zónát, akkor az Azure Cosmos-fiókhoz tartozó régiók hozzáadásával vagy eltávolításával ehhez a fiókhoz hozzá kell adnia vagy el kell távolítania a DNS-bejegyzéseket. A régiók hozzáadása vagy eltávolítása után frissítheti az alhálózat saját DNS-zónáját, hogy azok tükrözzék a hozzáadott vagy eltávolított DNS-bejegyzéseket, valamint a hozzájuk tartozó magánhálózati IP-címeket.
+
+  Az előző példában az új régió hozzáadása után hozzá kell adnia egy megfelelő DNS-rekordot a saját DNS-zónájához vagy az egyéni DNS-hez. A régió eltávolításakor ugyanezeket a lépéseket használhatja. A régió eltávolítását követően el kell távolítania a megfelelő DNS-rekordot a saját DNS-zónájából vagy az egyéni DNS-ből.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 

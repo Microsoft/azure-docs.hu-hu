@@ -1,18 +1,15 @@
 ---
 title: Architektúra – VMware/fizikai vész-helyreállítás egy másodlagos helyre Azure Site Recovery
 description: Ez a cikk áttekintést nyújt a helyszíni VMware virtuális gépek vagy fizikai Windows-/Linux-kiszolgálók vész-helyreállítási folyamata során használt összetevőkről és architektúráról egy másodlagos VMware-helyre Azure Site Recovery használatával.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: d400e6bcda0a2114d798a3289f01f52b677a6f94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 032f8619a1f8d4299af1eb069fdccba1307542d4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656495"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579510"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektúra a VMware/fizikai kiszolgálók replikálásához egy másodlagos helyszíni helyre
 

@@ -8,13 +8,13 @@ ms.author: heidist
 tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.openlocfilehash: 814a5afbde548891a30d941365cdd71d227b4767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 98e0137c8e48696737cd5d8d1fd4d3de925b9f7f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674396"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579795"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 
@@ -27,123 +27,60 @@ ms.locfileid: "101674396"
 > * [Portál](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Az Azure Cognitive Search egy teljes körűen felügyelt, felhőalapú keresési szolgáltatás, amellyel gazdag keresési élményt hozhat létre egyéni alkalmazásokba. Ez a cikk ismerteti azokat a szolgáltatás-felügyeleti feladatokat, amelyeket elvégezhet a [Azure Portalban](https://portal.azure.com) egy már üzembe helyezett keresési szolgáltatáshoz. A szolgáltatás felügyeletét könnyű megtervezni, a következő feladatokra korlátozódik:
+Az Azure Cognitive Search egy teljes körűen felügyelt, felhőalapú keresési szolgáltatás, amellyel gazdag keresési élményt hozhat létre egyéni alkalmazásokba. Ez a cikk a már létrehozott keresési szolgáltatás [Azure Portal](https://portal.azure.com) elvégezhető felügyeleti feladatokat ismerteti. A portál lehetővé teszi, hogy a szolgáltatással kapcsolatos összes [felügyeleti feladatot](#management-tasks) , valamint a tartalomkezelést és a feltárást is végrehajtsa. Így a portál széles spektrumú hozzáférést biztosít a keresési szolgáltatás műveleteinek valamennyi aspektusához.
 
-* Győződjön meg arról, hogy a tároló a középső oldal **használati** hivatkozását használja.
-* Vizsgálja meg a lekérdezési köteteket és a késést a középső oldal **figyelési** hivatkozásának használatával, valamint hogy a kérelmek szabályozása megtörtént-e.
-* A hozzáférés kezelése a **kulcsok** oldal bal oldalán.
-* Állítsa be a kapacitást a **Méretezés** lapon balra.
+Minden keresési szolgáltatás önálló erőforrásként van kezelve. Az alábbi képen egy "demo-Search-SVC" nevű egyetlen ingyenes keresési szolgáltatás portáljának oldalai láthatók. Bár lehet, hogy megszokta, hogy Azure PowerShell vagy Azure CLI-t használ a Service Management szolgáltatáshoz, érdemes megismerni a portál oldalain elérhető eszközöket és képességeket. Néhány feladat egyszerűen és gyorsabban végezhető el a portálon, mint a kód. 
 
-A portálon végrehajtott feladatokat a [felügyeleti API](/rest/api/searchmanagement/) -k és az [az. Search PowerShell-modul](search-manage-powershell.md)használatával is lehet programozott módon kezelni. A felügyeleti feladatok teljes mértékben képviseltetik magukat a portál és a programozott felületek között. Nincs olyan konkrét felügyeleti feladat, amely csak egy módozatban érhető el.
+## <a name="overview-home-page"></a>Áttekintés (Kezdőlap) oldal
 
-Az Azure Cognitive Search további Azure-szolgáltatásokat használ a további monitorozáshoz és felügyelethez. Önmagában az egyetlen keresési szolgáltatással tárolt adattartalom (indexek, indexelő és adatforrás-definíciók és egyéb objektumok). A portál oldalain jelentett mérőszámok a 30 napos időszakon belüli belső naplókból vannak kihúzva. A felhasználó által vezérelt naplózás és a további események esetében [Azure monitorra](../azure-monitor/index.yml)lesz szüksége. 
+Az Áttekintés lap az egyes szolgáltatások "Kezdőlap" lapja. Az alábbiakban a képernyőn megjelenő területek piros mezőben jelennek meg a gyakran használt feladatok, eszközök és csempék, különösen akkor, ha új a szolgáltatáshoz.
 
-## <a name="fixed-service-properties"></a>Rögzített szolgáltatás tulajdonságai
+:::image type="content" source="media/search-manage/search-portal-overview-page.png" alt-text="A keresési szolgáltatások portáljának oldalai" border="true":::
 
-A keresési szolgáltatás több aspektusa is meg van határozva, ha a szolgáltatás kiépítve lett, és később nem módosítható:
+| Terület | Leírás |
+|------|-------------|
+| 1  | Az **Essentials (alapvető** szolgáltatások) szakasz megjeleníti a szolgáltatás tulajdonságait, beleértve a kapcsolatok beállításakor használt végpontot is. Emellett a rétegek, a replika és a partíciók számát is megjeleníti egy pillantással. |
+| 2 | A lap tetején számos parancs található az interaktív eszközök meghívásához vagy a szolgáltatás kezeléséhez. Az [importálási](search-get-started-portal.md) és a [keresési kezelő](search-explorer.md) is általában a prototípus-készítéshez és a feltáráshoz használatos. |
+| 3 | Az **Essentials** szakasz alatt több füles oldal található, amelyekkel gyorsan elérhetők a használati statisztikák, a szolgáltatási állapot metrikái, valamint a szolgáltatáshoz tartozó összes meglévő index, indexelő, adatforrás és szakértelmével. Ha egy indexet vagy egy másik objektumot választ, további lapok válnak elérhetővé az objektumok összeállításának, beállításainak és állapotának megjelenítéséhez (ha van ilyen). |
+| 4 | A bal oldalon olyan hivatkozásokat érhet el, amelyek további oldalakat nyitnak meg a kapcsolatokon használt API-kulcsok eléréséhez, a szolgáltatás konfigurálásához, a biztonság konfigurálásához, a figyelési műveletekhez, a feladatok automatizálásához és a támogatáshoz. |
 
-* Szolgáltatás neve (a szolgáltatás nem nevezhető át)
-* Szolgáltatás helye (jelenleg nem helyezhető át egy érintetlen szolgáltatás egy másik régióba)
-* A replika és a partíciók maximális száma (a szint, az alapszintű vagy a standard alapján meghatározva)
+### <a name="read-only-service-properties"></a>Írásvédett szolgáltatás tulajdonságai
 
-Ha az alapszintű és egy partícióval rendelkezik, és most már több partícióra van szüksége, [új szolgáltatást kell létrehoznia](search-create-service-portal.md) egy magasabb szintű szinten, és újra létre kell hoznia a tartalmat az új szolgáltatáson. 
+A keresési szolgáltatás több aspektusa is meg van határozva, ha a szolgáltatás kiépítve van, és nem módosítható:
 
-## <a name="administrator-rights"></a>Rendszergazdai jogosultságok
+* Szolgáltatás neve (a keresési szolgáltatás nem nevezhető át)
+* Szolgáltatás helye (nem helyezhető át könnyen egy érintetlen keresési szolgáltatás egy másik régióba. Bár van egy sablon, a tartalom áthelyezése manuális folyamat.
+* Szolgáltatási szintet (nem lehet átváltani S1-ről S2-re, például új szolgáltatás létrehozása nélkül)
 
-A szolgáltatás kiépítés vagy leszerelése egy Azure-előfizetés rendszergazdája vagy egy társ-rendszergazda által végezhető el.
+## <a name="management-tasks"></a>Felügyeleti feladatok
 
-A végponthoz való hozzáférés tekintetében bárki hozzáférhet a szolgáltatás URL-címéhez, és egy API-kulcs hozzáfér a tartalomhoz. A kulcsokkal kapcsolatos további információkért lásd: [az API-kulcsok kezelése](search-security-api-keys.md).
+A szolgáltatás felügyeletét könnyű megtervezni, és gyakran a szolgáltatáshoz képest elvégezhető feladatok határozzák meg:
 
-* A szolgáltatáshoz csak olvasási hozzáférés van lekérdező jogosultság, amelyet általában egy ügyfélalkalmazás biztosít az URL-cím és a lekérdezési API-kulcs megadásával.
-* Az írási és olvasási hozzáférés lehetővé teszi a kiszolgálói objektumok hozzáadását, törlését és módosítását, beleértve az API-kulcsokat, az indexeket, az indexelő, az adatforrásokat és az ütemterveket. Az olvasási és írási hozzáférés az URL-cím, egy rendszergazdai API-kulcs megadásával adható meg.
+* A [kapacitás módosítása](search-capacity-planning.md) replikák és partíciók hozzáadásával vagy eltávolításával
+* Rendszergazdai és lekérdezési műveletekhez használt [API-kulcsok kezelése](search-security-api-keys.md)
+* [Rendszergazdai műveletekhez való hozzáférés szabályozása](search-security-rbac.md) Szerepköralapú biztonság használatával
+* [IP-tűzfalszabályok konfigurálása](service-configure-firewall.md) a hozzáférés IP-cím szerinti korlátozásához
+* [Privát végpont konfigurálása](service-create-private-endpoint.md) az Azure Private link és egy privát virtuális hálózat használatával
+* A [szolgáltatás állapotának figyelése](search-monitor-usage.md): tárterület, lekérdezési kötetek és késés
 
-A szolgáltatás kiépítési berendezéséhez szükséges jogosultságokat a szerepkör-hozzárendelések biztosítják. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrások kiépítésére [Azure Resource Manager](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer. 
+A szolgáltatásban létrehozott összes objektum enumerálása is lehetséges: indexek, indexelő, adatforrások, szakértelmével stb. A portál áttekintő lapja a szolgáltatásban található összes tartalmat megjeleníti. A keresési szolgáltatás műveleteinek túlnyomó többsége tartalommal kapcsolatos.
 
-Az Azure Cognitive Search kontextusában az [Azure szerepkör-hozzárendelések](search-security-rbac.md) határozzák meg, hogy ki végezhet el feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](/rest/api/searchmanagement/search-howto-management-rest-api)használják:
+A portálon végrehajtott felügyeleti feladatok a [felügyeleti REST API](/rest/api/searchmanagement/)-kon keresztül is kezelhetők, az [az. Search PowerShell-modul](search-manage-powershell.md), [az Search Azure CLI-modul](search-manage-azure-cli.md), valamint a .net, a Python, a Java és a JavaScript Azure SDK-k használatával. A felügyeleti feladatok teljes egészében képviseltetik magukat a Portálon és az összes programozott felületen. Nincs olyan konkrét felügyeleti feladat, amely csak egy módozatban érhető el.
 
-* Szolgáltatás létrehozása vagy törlése
-* A szolgáltatás skálázása
-* API-kulcsok törlése vagy újragenerálása
-* Diagnosztikai naplózás engedélyezése (szolgáltatások létrehozása)
-* Traffic Analytics engedélyezése (szolgáltatások létrehozása)
+A Cognitive Search további Azure-szolgáltatásokat is használ részletesebb monitorozáshoz és felügyelethez. Önmagában a keresési szolgáltatásban tárolt egyetlen adatforrás objektum tartalma (indexek, indexelő és adatforrás-definíciók és egyéb objektumok). A portál oldalain jelentett mérőszámok a 30 napos időszakon belüli belső naplókból vannak kihúzva. A felhasználó által vezérelt naplózás és a további események esetében [Azure monitorra](../azure-monitor/index.yml)lesz szüksége. A keresési szolgáltatás diagnosztikai naplózásának beállításával kapcsolatos további információkért lásd: a [naplófájlok adatainak összegyűjtése és elemzése](search-monitor-logs.md).
+
+## <a name="administrator-permissions"></a>Rendszergazdai engedélyek
+
+Amikor megnyitja a keresési szolgáltatás áttekintése lapot, a fiókhoz rendelt engedélyek határozzák meg, hogy mely lapok érhetők el Önnek. A cikk elején található áttekintő lap megjeleníti a portál azon lapjait, amelyeket a rendszergazda vagy a közreműködő látni fog.
+
+Az Azure-erőforrásokban a rendszergazdai jogosultságok a szerepkör-hozzárendeléseken keresztül adhatók meg. Az Azure Cognitive Search környezetében a [szerepkör-hozzárendelések](search-security-rbac.md) határozzák meg, hogy ki oszthat ki replikákat és partíciókat, illetve hogyan kezelhet API-kulcsokat, függetlenül attól, hogy a portált, a [PowerShellt](search-manage-powershell.md), az [Azure CLI](search-manage-azure-cli.md)-t vagy a [felügyeleti REST API-kat](/rest/api/searchmanagement/search-howto-management-rest-api)használják:
 
 > [!TIP]
-> Az Azure-ra kiterjedő mechanizmusok használatával zárolhatja az előfizetést vagy az erőforrást, így megakadályozhatja a keresési szolgáltatás véletlen vagy jogosulatlan törlését rendszergazdai jogosultságokkal rendelkező felhasználók számára. További információ: [erőforrások zárolása a váratlan törlés megakadályozása érdekében](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="logging-and-system-information"></a>Naplózási és rendszerinformációk
-
-Az alapszintű és újabb verziók esetében a Microsoft minden Azure Cognitive Search-szolgáltatást az 99,9%-os rendelkezésre állást figyeli a szolgáltatói szerződések (SLA) esetében. Ha a szolgáltatás lassú, vagy az átviteli sebesség az SLA-küszöbérték alá esik, a támogatási csapatoknak tekintse át a rendelkezésre álló naplófájlokat, és foglalkozzon a probléma megoldásával.
-
-Az Azure Cognitive Search az indexelési és lekérdezési tevékenységek gyűjtésére és tárolására [Azure monitor](../azure-monitor/index.yml) használ. A keresési szolgáltatás önmagában csak a tartalmát tárolja (indexek, indexelő definíciók, adatforrás-definíciók, készségkészlet-definíciók, szinonimák leképezései). A gyorsítótárazás és a naplózott adatok a szolgáltatáson kívül, gyakran egy Azure Storage-fiókban tárolódnak. Az indexelési és lekérdezési számítási feladatok naplózásával kapcsolatos további információkért lásd: [naplózási adatok gyűjtése és elemzése](search-monitor-logs.md).
-
-A szolgáltatással kapcsolatos általános információk alapján az Azure Cognitive Search beépített szolgáltatásainak használatával a következő módokon szerezheti be az információkat:
-
-* A szolgáltatás **áttekintése** lap értesítések, tulajdonságok és állapotüzenetek használatával.
-* A [szolgáltatás tulajdonságainak beolvasása](/rest/api/searchmanagement/services)a [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](/rest/api/searchmanagement/) használatával. Nem található új információ vagy művelet a programozott rétegben. A felületek léteznek, így parancsfájlok írhatók.
-
-## <a name="monitor-resource-usage"></a>Erőforrás-használat figyelése
-
-Az irányítópulton az erőforrás-figyelés a szolgáltatás irányítópultján megjelenő információkra korlátozódik, és néhány mérőszámot, amelyet a szolgáltatás lekérdezésével érhet el. A szolgáltatás irányítópultjának használat szakaszában gyorsan meghatározhatja, hogy a partíciós erőforrások szintje megfelelő-e az alkalmazáshoz. Ha a naplózott eseményeket szeretné rögzíteni és megőrizni, külső erőforrásokat (például az Azure-figyelést) is kiépítheti. További információ: az [Azure Cognitive Search figyelése](search-monitor-usage.md).
-
-A Search szolgáltatás REST API használatával a dokumentumok és indexek száma programozott módon is elvégezhető: 
-
-* [Index statisztikáinak beolvasása](/rest/api/searchservice/Get-Index-Statistics)
-* [Dokumentumok számlálása](/rest/api/searchservice/count-documents)
-
-## <a name="disaster-recovery-and-service-outages"></a>Vész-helyreállítási és szolgáltatás-kimaradások
-
-Bár az adatai megmentését is lehetővé teszi, az Azure Cognitive Search nem biztosítja a szolgáltatás azonnali feladatátvételét, ha a fürt vagy az adatközpont szintjén áramkimaradás történik. Ha egy fürt meghibásodik az adatközpontban, az operatív csapat felismeri és a szolgáltatás visszaállítását végzi. A szolgáltatás visszaállítása során állásidőt tapasztalhat, de a szolgáltatási kreditek igénylésével kompenzálhatja a szolgáltatás nem rendelkezésre állását a [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
-
-Ha a Microsoft általi ellenőrzésen kívüli katasztrofális hibák esetén folyamatos szolgáltatásra van szükség, egy másik régióban is [kiépítheti a további](search-create-service-portal.md) szolgáltatásokat, és a Geo-replikációs stratégia megvalósításával biztosíthatja, hogy az indexek teljes mértékben redundánsak legyenek az összes szolgáltatásban.
-
-Azok az ügyfelek, akik [Indexelő](search-indexer-overview.md) adatokat használnak az indexek feltöltéséhez és frissítéséhez, az azonos adatforrást használó geo-specifikus indexelő segítségével kezelhetik a vész-helyreállítást. A különböző régiókban található két szolgáltatás, amelyek mindegyike indexelt, indexelheti ugyanazt az adatforrást a Geo-redundancia eléréséhez. Ha olyan adatforrásokból származó indexelést is használ, amelyek földrajzilag redundánsak, vegye figyelembe, hogy az Azure Cognitive Search indexelő csak növekményes indexelést végezhetnek (új, módosított vagy törölt dokumentumokból származó frissítések egyesítése) az elsődleges replikából. Feladatátvételi esemény esetén ügyeljen arra, hogy az indexelő újra az új elsődleges replikára irányítsa. 
-
-Ha nem használ indexelő funkciót, az alkalmazás kódjával párhuzamosan küldheti el az objektumokat és az adatait a különböző keresési szolgáltatásoknak. További információ: [teljesítmény és optimalizálás az Azure Cognitive Searchban](search-performance-optimization.md).
-
-## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
-
-Mivel az Azure Cognitive Search nem elsődleges adattárolási megoldás, nem biztosítunk formális mechanizmust az önkiszolgáló biztonsági mentéshez és visszaállításhoz. Az [Azure Cognitive Search .net minta](https://github.com/Azure-Samples/azure-search-dotnet-samples) -tárházban található **index-Backup-Restore** mintakód használatával azonban az index definícióját és a pillanatképet egy sor JSON-fájlra is felhasználhatja, majd ezekkel a fájlokkal visszaállíthatja az indexet, ha szükséges. Ez az eszköz az indexeket is át tudja helyezni a szolgáltatási szintek között.
-
-Ellenkező esetben az index létrehozásához és feltöltéséhez használt alkalmazás kódja a de facto Visszaállítási lehetőség, ha tévedésből töröl egy indexet. Az indexek újraépítéséhez törölnie kell azt (feltéve, hogy létezik), újra létre kell hoznia az indexet a szolgáltatásban, majd újra kell töltenie az adatok elsődleges adattárból való beolvasásával.
-
-## <a name="scale-up-or-down"></a>Vertikális fel- és leskálázás
-
-Minden keresési szolgáltatás legalább egy replikával és egy partícióval indul el. Ha olyan platformra regisztrált, [amely támogatja a nagyobb kapacitást](search-limits-quotas-capacity.md), kattintson a bal oldali navigációs ablaktábla **Méretezés** elemére az erőforrás-használat módosításához.
-
-Ha erőforráson keresztül ad hozzá kapacitást, a szolgáltatás automatikusan ezeket használja. Az Ön részéről nincs szükség további műveletre, de az új erőforrás hatásának megvalósulása némi késéssel jár. További erőforrások kiépítéséhez akár 15 percet is igénybe vehet.
-
-### <a name="add-replicas"></a>Replikák hozzáadása
-
-A lekérdezések másodpercenkénti száma (QPS) vagy a magas rendelkezésre állás elérése a replikák hozzáadásával történik. Minden replika egyetlen másolattal rendelkezik egy indexből, így a szolgáltatás lekérdezési kéréseinek kiszolgálásához még egy replika hozzáadására van lehetőség. A magas rendelkezésre álláshoz legalább 3 replika szükséges (lásd: a [kapacitás módosítása](search-capacity-planning.md) a részletekhez).
-
-A több replikát tartalmazó keresési szolgáltatás a lekérdezési kérelmeket nagyobb számú indexnél tudja betölteni. A lekérdezési mennyiség szintje miatt a lekérdezési átviteli sebesség gyorsabb lesz, ha a kérés kiszolgálásához több példány is rendelkezésre áll az indexben. Ha a lekérdezés késését tapasztalja, pozitív hatással lehet a teljesítményre, ha a további replikák online állapotban vannak.
-
-Bár a lekérdezési átviteli sebesség a replikák hozzáadásakor leáll, a replikák szolgáltatáshoz való hozzáadásakor nem lehet pontosan dupla vagy tripla. Az összes keresési alkalmazásra olyan külső tényezők vonatkoznak, amelyek hatással lehetnek a lekérdezési teljesítményre. Az összetett lekérdezések és a hálózati késés két tényező, amelyek hozzájárulnak a lekérdezési válaszidő változásaihoz.
-
-### <a name="add-partitions"></a>Partíciók hozzáadása
-
-Sokkal gyakoribb a replikák hozzáadása, de ha korlátozott a tárterület, hozzáadhat partíciókat, amelyekkel nagyobb kapacitást érhet el. A szolgáltatás kiépített szintje határozza meg, hogy a partíciók hozzáadhatók-e. Az alapszintű csomag egyetlen partíción van zárolva. A standard szintű csomagok és a fenti csomagok további partíciókat is támogatnak.
-
-A partíciók 12 (konkrét, 1, 2, 3, 4, 6 vagy 12) osztóban lesznek hozzáadva. Ez egy horizontális skálázási összetevő. Az indexek 12 szegmensben jönnek létre, amelyek mindegyike 1 partíción tárolható, vagy egyenlően 2, 3, 4, 6 vagy 12 partícióra osztható (egy-egy szegmens/partíció).
-
-### <a name="remove-replicas"></a>Replikák eltávolítása
-
-A nagy mennyiségű lekérdezési kötetek után a csúszka segítségével csökkentheti a replikákat a keresési lekérdezés terhelésének normalizálása után (például az üdülési értékesítések felett). Az Ön részéről nincs szükség további lépésekre. A replikák számának csökkentése lemond az adatközpontban található virtuális gépekről. A lekérdezési és az adatfeldolgozási műveletek mostantól kevesebb virtuális gépen futnak, mint korábban. A minimális követelmény egy replika.
-
-### <a name="remove-partitions"></a>Partíciók eltávolítása
-
-A replikák eltávolításával szemben, amelyhez nincs szükség további erőfeszítésre, előfordulhat, hogy néhány teendője van, ha több tárterületet használ, mint amennyit csökkenteni lehet. Ha például a megoldás három partíciót használ, az egy vagy két partícióra való leépítés hibát eredményez, ha az új tárolóhely kisebb, mint az index üzemeltetéséhez szükséges. Az elvárásoknak megfelelően lehetőség van az indexek vagy dokumentumok törlésére egy társított indexen belül, hogy felszabadítsa a helyet, vagy megtartja a jelenlegi konfigurációt.
-
-Nincs olyan észlelési módszer, amely közli, hogy mely indexek vannak tárolva egy adott partíción. Az egyes partíciók körülbelül 25 GB tárhelyet biztosítanak, ezért a tárterületet a szükséges partíciók számával kell csökkenteni. Ha egy partícióra kíván visszaállítani, akkor mind a 12 szegmensnek el kell férnie.
-
-Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
+> A szolgáltatás kiépítés vagy leszerelése egy Azure-előfizetés rendszergazdája vagy egy társ-rendszergazda által végezhető el. Az Azure-ra kiterjedő mechanizmusok használatával zárolhatja az előfizetést vagy az erőforrást, így megakadályozhatja a keresési szolgáltatás véletlen vagy jogosulatlan törlését rendszergazdai jogosultságokkal rendelkező felhasználók számára. További információ: [erőforrások zárolása a váratlan törlés megakadályozása érdekében](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Automatizálás a [PowerShell](search-manage-powershell.md) -lel vagy az [Azure CLI](search-manage-azure-cli.md) -vel
-
-* [Teljesítmény-és optimalizálási](search-performance-optimization.md) technikák áttekintése
-
+* A portálon elérhető [figyelési képességek](search-monitor-usage.md) áttekintése
+* Automatizálás a [PowerShell](search-manage-powershell.md) vagy az [Azure CLI](search-manage-azure-cli.md) használatával
 * A tartalom és a műveletek védelméhez szükséges [biztonsági funkciók](search-security-overview.md) áttekintése
-
 * [Diagnosztikai naplózás](search-monitor-logs.md) engedélyezése a lekérdezési és indexelési számítási feladatok figyeléséhez

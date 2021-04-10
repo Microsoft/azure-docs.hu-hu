@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a 
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105109352"
 ---
 # <a name="enable-container-insights"></a>Tároló-felismerés engedélyezése

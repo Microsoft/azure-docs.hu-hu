@@ -5,13 +5,14 @@ author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: b7e9318ee34836f8fbd2ae7a330134d8174e6a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/10/2021
+ms.subservice: metrics
+ms.openlocfilehash: 93d30663034c7560550160960af20f0a465d93c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031395"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936172"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor metrikák metrikáinak összesítése és megjelenítése
 
@@ -26,6 +27,7 @@ Ha mérőszámot ad hozzá egy diagramhoz, a metrikák Explorer automatikusan ki
 Hozzunk létre néhány kifejezést egyértelműen:
 
 - **Metrika értéke** – egy adott erőforráshoz összegyűjtött egyetlen mérési érték.
+- **Idősorozat-adatbázis** – az adatpontok tárolásához és lekéréséhez optimalizált adatbázis, amely egy értéket és egy megfelelő időbélyeget tartalmaz. 
 - **Időtartam – általános** időtartam.
 - **Időköz** – a két metrikai érték összegyűjtése között eltelt idő. 
 - **Time Range (időtartomány** ) – a diagramon megjelenő időtartam. A tipikus alapértelmezett érték 24 óra. Csak meghatározott tartományok érhetők el. 
@@ -33,7 +35,9 @@ Hozzunk létre néhány kifejezést egyértelműen:
 - **Összesítési típus** – a statisztikai típus több metrikai értékből számított.  
 - **Összesítés** – több bemeneti érték beírásának folyamata, majd ezek használatával egyetlen kimeneti érték hozható létre az összesítési típus által definiált szabályok segítségével. Például átlagosan több értéket kell megtenni.  
 
-A metrikák a rendszeres időközönként rögzített metrikai értékek sorozata. Amikor Kirajzol egy diagramot, a kiválasztott metrika értékei külön vannak összesítve az idő részletessége (más néven időgabona) szerint. Az időrészletesség méretét a [Metrikaböngésző Time Picker panelen](../essentials/metrics-getting-started.md#select-a-time-range)választhatja ki. Ha nem választ explicit választ, a rendszer automatikusan kijelöli az idő részletességét a jelenleg kijelölt időtartomány alapján. A kiválasztást követően a rendszer összesíti az egyes időmérési intervallumokban rögzített mérőszám-értékeket, és a diagramra helyezi át a Datapoint.
+## <a name="summary-of-process"></a>Folyamat összefoglalása
+
+A metrikák egy időbélyeggel tárolt értékek sorozata. Az Azure-ban a legtöbb metrika az Azure metrika idősorozat-adatbázisában van tárolva. Amikor Kirajzol egy diagramot, a rendszer beolvassa a kijelölt mérőszámok értékeit az adatbázisból, majd külön összesíti azokat a választott idő részletessége (más néven időgabona) alapján. Az időrészletesség méretét a [Metrikaböngésző Time Picker panelen](../essentials/metrics-getting-started.md#select-a-time-range)választhatja ki. Ha nem választ explicit választ, a rendszer automatikusan kijelöli az idő részletességét a jelenleg kijelölt időtartomány alapján. A kiválasztást követően a rendszer összesíti az egyes időmérési intervallumokban rögzített mérőszám-értékeket, és a diagramra helyezi át a Datapoint.
 
 ## <a name="aggregation-types"></a>Összesítési típusok 
 
@@ -82,9 +86,11 @@ Fontos, hogy megtudja, mi a "normális" a számítási feladatokhoz, hogy a legm
 
 ## <a name="how-the-system-collects-metrics"></a>A rendszerek mérőszámok gyűjtésének módja
 
-Az adatgyűjtés mérőszám szerint változik. A gyűjtési időszakok két típusa létezik.
+Az adatgyűjtés mérőszám szerint változik. 
 
 ### <a name="measurement-collection-frequency"></a>Mérési gyűjtemény gyakorisága 
+
+A gyűjtési időszakok két típusa létezik.
 
 - **Normál** – a metrikát olyan konzisztens időközönként gyűjti a rendszer, amely nem változik.
 
