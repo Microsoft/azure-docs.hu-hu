@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8ad79f2f27864b4fbc78b7c104828230ff7f93bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35ed677c3176fb990f752f3204a1ae11bf39896c
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465657"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121693"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL verzió támogatási szabályzata
 
@@ -22,16 +22,19 @@ Ez az oldal leírja a Azure Database for MySQL verziószámozási házirendjét,
 
 A Azure Database for MySQL a [MySQL Community Editionből](https://www.mysql.com/products/community/)lett kifejlesztve, a InnoDB Storage Engine használatával. A szolgáltatás a Közösség által támogatott összes jelenlegi főverziót támogatja, azaz a MySQL 5,6, 5,7 és 8,0. A MySQL az X. Y. Z elnevezési sémát használja, ahol az X a főverzió, az Y a másodlagos verzió, a Z pedig a hibajavítási kiadás. A sémával kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
-> [!NOTE]
-> Az egyetlen kiszolgálóból álló központi telepítési beállításban az átjáró a kiszolgálói példányokkal való kapcsolat átirányítására szolgál. A kapcsolatok létrejötte után a MySQL-ügyfél az átjárón beállított MySQL-verziót jeleníti meg, nem a MySQL-kiszolgálópéldányon futó tényleges verziót. A MySQL-kiszolgálópéldány verziójának meghatározásához használja a `SELECT VERSION();` parancsot a MySQL parancssorában.
-
 A Azure Database for MySQL jelenleg a MySQL következő fő és másodlagos verzióit támogatja:
 
-| Verzió | Önálló kiszolgáló <br/> Aktuális alverzió |Rugalmas kiszolgáló (előzetes verzió) <br/> Aktuális alverzió  |
+| Verzió | [Önálló kiszolgáló](overview.md) <br/> Aktuális alverzió |[Rugalmas kiszolgáló (előzetes verzió)](/../flexible-server/overview.md) <br/> Aktuális alverzió  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL 5,6-es verzió |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(kivonva) | Nem támogatott|
 |MySQL 5,7-es verzió | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL 8,0-es verzió | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
+
+> [!NOTE]
+> Az egyetlen kiszolgálóból álló központi telepítési beállításban az átjáró a kiszolgálói példányokkal való kapcsolat átirányítására szolgál. A kapcsolatok létrejötte után a MySQL-ügyfél az átjárón beállított MySQL-verziót jeleníti meg, nem a MySQL-kiszolgálópéldányon futó tényleges verziót. A MySQL-kiszolgálópéldány verziójának meghatározásához használja a `SELECT VERSION();` parancsot a MySQL parancssorában. Ha az alkalmazásnak a v 5.7-es vagy a v 8.0-s verziójához kell csatlakoznia, akkor a kiszolgáló kapcsolati karakterláncában található portot úgy kell módosítani, ahogy azt a dokumentációban is ismertetjük [.](concepts-supported-versions.md#connect-to-a-gateway-node-that-is-running-a-specific-mysql-version)
+
+> [!IMPORTANT]
+> A MySQL v 5.6 egyetlen kiszolgálón, a febuary 2021-es verzióval van kivonva. Szeptember 1-től a 2021-es verziótól kezdődően nem hozhat létre új v 5.6-kiszolgálókat Azure Database for MySQL-Egykiszolgálós telepítés esetén. Ugyanakkor időponthoz kapcsolódó helyreállításokat is végrehajthat, és a meglévő kiszolgálókhoz olvasási replikákat hozhat létre.
 
 Tekintse meg a verzió támogatási szabályzatát a verziók [támogatásával kapcsolatos szabályzat dokumentációjában.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
@@ -56,7 +59,7 @@ Az alábbi táblázat a MySQL főverzióinak kivonulási részleteit tartalmazza
 Ha továbbra is a kivont verziót futtatja, az egyes MySQL-adatbázisok lejárati dátuma után vegye figyelembe a következő korlátozásokat:
 - Mivel a Közösség nem szabadít fel semmilyen további hibajavítást vagy biztonsági javítást, Azure Database for MySQL nem fogja feljavítani a kivont adatbázismotor számára az esetleges hibákat vagy biztonsági problémákat, vagy egyéb módon biztonsági intézkedéseket hajt végre a kivont adatbázismotor tekintetében. Az Azure azonban továbbra is rendszeres karbantartást és javítást végez a gazdagép, az operációs rendszer, a tárolók és a szolgáltatásokkal kapcsolatos egyéb összetevők számára.
 - Ha bármilyen támogatási probléma merülhet fel a MySQL-adatbázissal kapcsolatban, előfordulhat, hogy nem tudunk támogatást nyújtani Önnek. Ilyen esetekben frissítenie kell az adatbázist ahhoz, hogy támogatást nyújtson Önnek.
-<!-- - You will not be able to create new database servers for the retired version. However, you will be able to perform point-in-time recoveries and create read replicas for your existing servers. -->
+- Nem fog tudni új adatbázis-kiszolgálókat létrehozni a kivont verzióhoz. Ugyanakkor időponthoz kapcsolódó helyreállításokat is végrehajthat, és a meglévő kiszolgálókhoz olvasási replikákat hozhat létre.
 - A Azure Database for MySQL által fejlesztett új szolgáltatási képességek csak a támogatott adatbázis-kiszolgáló verziók esetében érhetők el.
 - Az üzemidőre vonatkozó SLA-kat kizárólag Azure Database for MySQL szolgáltatással kapcsolatos problémákra, és nem az adatbázismotor által okozott hibák okozta állásidőre alkalmazza a rendszer.  
 - Ha súlyos fenyegetést észlelt a szolgáltatás a kivont adatbázis-verzióban azonosított MySQL adatbázismotor biztonsági rése miatt, az Azure úgy dönthet, hogy leállítja az adatbázis-kiszolgáló számítási csomópontját, hogy először biztonságossá tegye a szolgáltatást. A rendszer a kiszolgáló online állapotba hozása előtt frissíti a kiszolgálót. A frissítési folyamat során a rendszer mindig a szolgáltatásban végzett automatikus biztonsági mentéssel védi az adatokat, amelyek igény szerint visszaállíthatók a régebbi verzióra. 

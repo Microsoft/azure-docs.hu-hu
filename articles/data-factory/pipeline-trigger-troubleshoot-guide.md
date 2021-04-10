@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
 ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105563412"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
@@ -66,7 +66,7 @@ A másolási tevékenység létrehozásakor válassza a **bináris másolás** l
 
 ### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime-for-data-flow"></a>Egy folyamat futtatása meghiúsul, ha eléri az adatfolyam-integrációs modul kapacitásának korlátját
 
-**Kérdés**
+**Probléma**
 
 Hibaüzenet:
 
@@ -135,7 +135,7 @@ A *foreach* párhuzamossági foka valójában a maximális párhuzamossági fok.
  **Resolution** (Osztás)
  
 * Egyidejűségi korlát: Ha a folyamat egy egyidejűségi házirenddel rendelkezik, ellenőrizze, hogy nem fut-e folyamatban a régi folyamat. A Azure Data Factoryban engedélyezett maximális feldolgozási folyamat 10 folyamat. 
-* Figyelési korlátok: lépjen az ADF authoring vászonra, válassza ki a folyamatot, és állapítsa meg, hogy van-e társítva Egyidejűség tulajdonsága. Ha igen, ugorjon a figyelés nézetre, és győződjön meg arról, hogy az elmúlt 45 napban nincs folyamatban. Ha van valamilyen folyamatban lévő művelet, megszakíthatja, és az új folyamat futtatásának kell kezdődnie.
+* Figyelési korlátok: lépjen az ADF authoring vászonra, válassza ki a folyamatot, és állapítsa meg, hogy van-e társítva Egyidejűség tulajdonsága. Ha igen, lépjen a Monitorozás nézetbe, és győződjön meg arról, hogy nincs olyan folyamat az elmúlt 45 napból, ami még mindig fut. Ha van valamilyen folyamatban lévő művelet, megszakíthatja, és az új folyamat futtatásának kell kezdődnie.
 * Átmeneti problémák: lehetséges, hogy a futtatását egy átmeneti hálózati probléma, a hitelesítő adatok meghibásodása, a szolgáltatások leállása vagy a leállás befolyásolta.  Ha ez történik, Azure Data Factory belső helyreállítási folyamattal rendelkezik, amely figyeli az összes futtatást, és elindítja őket, amikor észreveszi, hogy hiba történt. Ez a folyamat óránként történik, így ha a Futtatás több mint egy óráig elakad, hozzon létre egy támogatási esetet.
  
 ### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>Az ADF-másolási és-adatfolyam-műveletekhez tartozó tevékenységek hosszú ideje

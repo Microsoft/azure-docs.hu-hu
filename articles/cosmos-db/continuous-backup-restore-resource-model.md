@@ -8,10 +8,10 @@ ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 065127fbeaabc415dd9a5fbe74f90d5060909d5d
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105641040"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Erőforrás-modell a Azure Cosmos DB időponthoz tartozó visszaállítási szolgáltatáshoz (előzetes verzió)
@@ -43,7 +43,7 @@ Ez a tulajdonság azt jelzi, hogy a fiók hogyan lett létrehozva. A lehetséges
 
 Az `RestoreParameters` erőforrás tartalmazza a visszaállítási művelet részleteit, beleértve a fiók azonosítóját, a visszaállítani kívánt időt és a visszaállítani kívánt erőforrásokat.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 |restoreMode  | A visszaállítási módnak *PointInTime* kell lennie |
 |restoreSource   |  Annak a instanceId a címe, amelyből a visszaállítást kezdeményezni kívánja.       |
@@ -52,7 +52,7 @@ Az `RestoreParameters` erőforrás tartalmazza a visszaállítási művelet rés
 
 **DatabaseRestoreResource** – minden erőforrás egyetlen adatbázist és az adatbázis alatti összes gyűjteményt jelképezi.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 |databaseName | Az adatbázis nevét |
 | collectionNames| Az adatbázishoz tartozó tárolók listája |
@@ -134,7 +134,7 @@ Az összes helyreállítható fiók listájának lekéréséhez lásd: [helyreá
 
 Minden erőforrás egy mutációs eseményről tartalmaz információkat, például a létrehozás és a törlés a SQL Databaseon történt. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben véletlenül törölték az adatbázist, és ha meg kell tudnia, hogy mikor történt ez az esemény.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | eventTimestamp | Az adatbázis létrehozásakor vagy törlésekor az időpontot (UTC). |
 | ownerId | Az SQL-adatbázis neve. |
@@ -148,7 +148,7 @@ Az adatbázis-mutációk listájának lekéréséhez lásd: [helyreállítható 
 
 Mindegyik erőforrás olyan mutációs eseményről tartalmaz információkat, mint például az SQL-tárolóban történt létrehozás és törlés. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben a tárolót módosították vagy törölték, és ha az esemény megtörtént.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | eventTimestamp    | A tároló eseményének időpontja (UTC).|
 | ownerId| Az SQL-tároló neve.|
@@ -162,7 +162,7 @@ Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megteki
 
 Az egyes erőforrások egyetlen adatbázist és az adatbázis alatti összes tárolót jelölik.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | databaseName  | Az SQL-adatbázis neve.
 | collectionNames   | Az adatbázishoz tartozó SQL-tárolók listája.|
@@ -173,7 +173,7 @@ Az SQL Database és a Container combok listájának lekéréséhez, amelyek a me
 
 Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, mint például a MongoDB-adatbázisban történt létrehozás és törlés. Ezek az információk segíthetnek abban a forgatókönyvben, amikor az adatbázist véletlenül törölték, és a felhasználónak meg kell találnia az esemény bekövetkezésekor.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 |eventTimestamp| Az adatbázis eseményének időpontja (UTC).|
 | ownerId| A MongoDB-adatbázis neve. |
@@ -186,7 +186,7 @@ Az adatbázis-mutációk listájának lekéréséhez tekintse meg a visszaállí
 
 Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, mint például a MongoDB-gyűjteményen történt létrehozás és törlés. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben a gyűjteményt módosították vagy törölték, és a felhasználónak meg kell találnia az esemény megtörténtét.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | eventTimestamp |A gyűjtemény eseményének időpontja (UTC). |
 | ownerId| A MongoDB-gyűjtemény neve. |
@@ -199,7 +199,7 @@ Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megteki
 
 Mindegyik erőforrás egyetlen adatbázist és az adatbázis alatti összes gyűjteményt jelképezi.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | databaseName  |A MongoDB-adatbázis neve. |
 | collectionNames | A MongoDB-gyűjtemények listája ebben az adatbázisban. |

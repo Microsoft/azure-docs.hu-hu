@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 3bc97a932e622838315f717cc7b036a559787805
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97369157"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Az Azure biztonsági teljesítményteszt áttekintése (v2)
@@ -28,7 +28,7 @@ Ez a teljesítményteszt egy átfogó biztonsági útmutató részét képezi, a
  Az Azure biztonsági teljesítményteszt a felhő-központú ellenőrzési területekre koncentrál. Ezek a vezérlők konzisztensek a jól ismert biztonsági referenciaértékekkel, például a Center for Internet Security (CIS) vezérli az 7,1-es és a National Institute of Standards and Technology (NIST) SP 800-53-es verzióját.
 Az Azure biztonsági teljesítményteszt a következő vezérlőket tartalmazza:
 
-| ASB-vezérlési tartományok | Description 
+| ASB-vezérlési tartományok | Leírás 
 |--|--|
 | [Hálózati &nbsp; Biztonság &nbsp; (NS)](security-controls-v2-network-security.md) | A hálózati biztonság magában foglalja az Azure-hálózatok biztonságossá tételének és védelmének, beleértve a virtuális hálózatok biztonságossá tételét, a magánhálózati kapcsolatok létrehozását, a külső támadások megelőzését és enyhítését, valamint a DNS biztonságossá tételét. |
 | [Identitáskezelés &nbsp; &nbsp; (IM)](security-controls-v2-identity-management.md) | Az Identitáskezelés kiterjed a biztonságos identitás-és hozzáférés-vezérlések létrehozására Azure Active Directory használatával, beleértve az egyszeri bejelentkezést, az erős hitelesítéseket, a felügyelt identitásokat (és a szolgáltatási alapelveket) az alkalmazásokhoz, a feltételes hozzáféréshez és a fiókok rendellenességének figyeléséhez. |

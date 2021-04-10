@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali (klasszikus) gazdagép-készlet Azu
 description: Windows rendszerű virtuális asztali (klasszikus) címkészlet létrehozása az Azure Marketplace használatával.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7e0862bd7519f59602f1e769301614895bd6e09
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88008593"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121880"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Oktatóanyag: gazdagép létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -80,10 +80,10 @@ A **virtuális gépek konfigurálása** lapon:
 1. Fogadja el az alapértelmezett értékeket, vagy szabja testre a virtuális gépek számát és méretét.
 
     >[!NOTE]
-    >Ha a keresett virtuálisgép-méret nem jelenik meg a méret-választóban, ez azért van, mert még nem készítettük el az Azure Marketplace eszközre. A méret igényléséhez hozzon létre egy kérést, vagy egy meglévő kérelmet a [Windows virtuális asztali UserVoice fórumában](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Ha a keresett virtuálisgép-méret nem jelenik meg a méret-választóban, ez azért van, mert még nem készítettük el az Azure Marketplace eszközre.
 
-1. Adja meg a virtuális gépek neveinek előtagját. Ha például az *előtagot* adja meg, a virtuális gépek neve **előtag-0**, **előtag-1**, és így tovább.
-1. Válassza a **Tovább: virtuális gép beállításai** lehetőséget.
+2. Adja meg a virtuális gépek neveinek előtagját. Ha például az *előtagot* adja meg, a virtuális gépek neve **előtag-0**, **előtag-1**, és így tovább.
+3. Válassza a **Tovább: virtuális gép beállításai** lehetőséget.
 
 ### <a name="virtual-machine-settings"></a>A virtuális gép beállításai
 

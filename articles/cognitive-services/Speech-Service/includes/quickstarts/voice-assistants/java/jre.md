@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 8ee14b94977b3152e0aab853fa3919a739d0dfdd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 536b0f2554bc5a360b9e1a7e14fa7b5383aa5365
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187657"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106271693"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +53,7 @@ Emellett a naplózás engedélyezéséhez frissítse a _pom.xml_ fájlt, hogy az
 
    import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
    import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-   import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+   import com.microsoft.cognitiveservices.speech.dialog.BotFrameworkConfig;
    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
    import org.slf4j.Logger;
    import org.slf4j.LoggerFactory;
@@ -434,7 +434,7 @@ Emellett a naplózás engedélyezéséhez frissítse a _pom.xml_ fájlt, hogy az
 
 ## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
-Válassza az F11 lehetőséget, **Run** vagy válassza a  >  **hibakeresés** futtatása lehetőséget.
+Válassza az F11 lehetőséget, vagy válassza a  >  **hibakeresés** futtatása lehetőséget.
 A konzolon megjelenik a "Say valami" üzenet.
 Ezen a ponton beszéljen egy angol nyelvű kifejezéssel vagy mondattal, amelyet a robotja tud megérteni. A beszédet a robot a közvetlen vonalas beszéd csatornán keresztül továbbítja, ahol a robot felismeri és dolgozza fel. A válasz tevékenységként lesz visszaadva. Ha a robot válaszként adja vissza a beszédet, a hang a osztály használatával lesz visszajátszva `AudioPlayer` .
 

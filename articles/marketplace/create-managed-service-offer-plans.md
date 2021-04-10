@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
 ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100383228"
 ---
 # <a name="how-to-create-plans-for-your-managed-service-offer"></a>Csomagok létrehozása a felügyelt szolgáltatási ajánlathoz
@@ -79,12 +79,12 @@ Legfeljebb 10 000 előfizetés-azonosító hozzáadásával a következővel:. C
 
 ## <a name="technical-configuration"></a>Technikai konfiguráció
 
-Ez a szakasz egy olyan jegyzékfájlt hoz létre, amely engedélyezési információkat tartalmaz az ügyfelek erőforrásainak kezeléséhez. Ez az információ az Azure-beli [delegált erőforrás-kezelés](../lighthouse/concepts/azure-delegated-resource-management.md)engedélyezéséhez szükséges.
+Ez a szakasz egy olyan jegyzékfájlt hoz létre, amely engedélyezési információkat tartalmaz az ügyfelek erőforrásainak kezeléséhez. Ezekre az információkra [az Azure által delegált erőforrás-kezelés](../lighthouse/concepts/azure-delegated-resource-management.md) engedélyezéséhez van szükség.
 
 Tekintse át a [bérlőket, a szerepköröket és a felhasználókat az Azure Lighthouse-forgatókönyvekben](../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles) , amelyekkel megismerheti, hogy mely szerepkörök támogatottak, valamint az engedélyek meghatározásának ajánlott eljárásai.
 
 > [!NOTE]
-> Az engedélyezési bejegyzéseiben szereplő felhasználók és szerepkörök minden olyan ügyfélre érvényesek lesznek, aki aktiválja a csomagot. Ha korlátozni szeretné egy adott ügyfél hozzáférését, közzé kell tennie egy privát csomagot a kizárólagos használatra.
+> Az engedélyezési bejegyzésekben található felhasználók és szerepkörök a csomagot aktiváló ügyfelek mindegyikére vonatkoznak. Ha egy adott ügyfélre szeretné korlátozni a hozzáférést, közzé kell tennie az ügyfél általi kizárólagos használatot lehetővé tevő privát csomagot.
 
 ### <a name="manifest"></a>Jegyzék
 

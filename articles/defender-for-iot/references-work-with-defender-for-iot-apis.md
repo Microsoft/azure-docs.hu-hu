@@ -4,10 +4,10 @@ description: Külső REST API használatával férhet hozzá az érzékelők és
 ms.date: 12/14/2020
 ms.topic: reference
 ms.openlocfilehash: d509f2674a61af1d0ab03892186526b1cb109eee
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778831"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender a IoT-érzékelő és a felügyeleti konzol API-jai számára
@@ -106,38 +106,38 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **id** | Numerikus | Nem | - |
-| **erőforrásrekordjaiba** | JSON-tömb | Igen | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
-| **name** | Sztring | Nem | - |
-| **típusa** | Sztring | Nem | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
-| **macAddresses** | JSON-tömb | Igen | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
-| **operatingSystem** | Sztring | Igen | - |
-| **engineeringStation** | Logikai | Nem | Igaz vagy hamis |
-| **szkenner** | Logikai | Nem | Igaz vagy hamis |
-| **jogosult** | Logikai | Nem | Igaz vagy hamis |
-| **gyártó** | Sztring | Igen | - |
-| **protokollok** | JSON-tömb | Igen | Protokoll objektum |
-| **belső vezérlőprogram** | JSON-tömb | Igen | Belső vezérlőprogram objektuma |
+| **id** | Numerikus | No | - |
+| **erőforrásrekordjaiba** | JSON-tömb | Yes | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
+| **name** | Sztring | No | - |
+| **típusa** | Sztring | No | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
+| **macAddresses** | JSON-tömb | Yes | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
+| **operatingSystem** | Sztring | Yes | - |
+| **engineeringStation** | Logikai | No | Igaz vagy hamis |
+| **szkenner** | Logikai | No | Igaz vagy hamis |
+| **jogosult** | Logikai | No | Igaz vagy hamis |
+| **gyártó** | Sztring | Yes | - |
+| **protokollok** | JSON-tömb | Yes | Protokoll objektum |
+| **belső vezérlőprogram** | JSON-tömb | Yes | Belső vezérlőprogram objektuma |
 
 #### <a name="protocol-fields"></a>Protokoll mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Név** | Sztring | Nem |  |
-| **Címek** | JSON-tömb | Igen | Fő vagy numerikus értékek |
+| **Név** | Sztring | No |  |
+| **Címek** | JSON-tömb | Yes | Fő vagy numerikus értékek |
 
 #### <a name="firmware-fields"></a>Belső vezérlőprogram mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **sorozatszám** | Sztring | Nem | N/A vagy a tényleges érték |
-| **modell** | Sztring | Nem | N/A vagy a tényleges érték |
-| **firmwareVersion** | Dupla | Nem | N/A vagy a tényleges érték |
-| **additionalData** | Sztring | Nem | N/A vagy a tényleges érték |
-| **moduleAddress** | Sztring | Nem | N/A vagy a tényleges érték |
-| **rack** | Sztring | Nem | N/A vagy a tényleges érték |
-| **slot** | Sztring | Nem | N/A vagy a tényleges érték |
-| **Cím** | Sztring | Nem | N/A vagy a tényleges érték |
+| **sorozatszám** | Sztring | No | N/A vagy a tényleges érték |
+| **modell** | Sztring | No | N/A vagy a tényleges érték |
+| **firmwareVersion** | Dupla | No | N/A vagy a tényleges érték |
+| **additionalData** | Sztring | No | N/A vagy a tényleges érték |
+| **moduleAddress** | Sztring | No | N/A vagy a tényleges érték |
+| **rack** | Sztring | No | N/A vagy a tényleges érték |
+| **slot** | Sztring | No | N/A vagy a tényleges érték |
+| **Cím** | Sztring | No | N/A vagy a tényleges érték |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -331,19 +331,19 @@ Az eszközök kapcsolatait képviselő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **firstDeviceId** | Numerikus | Nem | - |
-| **secondDeviceId** | Numerikus | Nem | - |
-| **lastSeen** | Numerikus | Nem | EPOCH (UTC) |
-| **felderített** | Numerikus | Nem | EPOCH (UTC) |
-| **portok** | Szám tömb | Nem | - |
-| **protokollok** | JSON-tömb | Nem | Protokoll mező |
+| **firstDeviceId** | Numerikus | No | - |
+| **secondDeviceId** | Numerikus | No | - |
+| **lastSeen** | Numerikus | No | EPOCH (UTC) |
+| **felderített** | Numerikus | No | EPOCH (UTC) |
+| **portok** | Szám tömb | No | - |
+| **protokollok** | JSON-tömb | No | Protokoll mező |
 
 #### <a name="protocol-field"></a>Protokoll mező
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **name** | Sztring | Nem | - |
-| **parancsok** | Sztringtömb | Nem | - |
+| **name** | Sztring | No | - |
+| **parancsok** | Sztringtömb | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -495,11 +495,11 @@ Az IP-címeken azonosított CVEs jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **cveId** | Sztring | Nem | - |
-| **IP-cím** | Sztring | Nem | IP-cím |
-| **pontszám** | Sztring | Nem | 0,0 – 10,0 |
-| **attackVector** | Sztring | Nem | Hálózat, szomszédos hálózat, helyi vagy fizikai |
-| **Leírás** | Sztring | Nem | - |
+| **cveId** | Sztring | No | - |
+| **IP-cím** | Sztring | No | IP-cím |
+| **pontszám** | Sztring | No | 0,0 – 10,0 |
+| **attackVector** | Sztring | No | Hálózat, szomszédos hálózat, helyi vagy fizikai |
+| **Leírás** | Sztring | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -614,21 +614,21 @@ A riasztásokat jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **ID (Azonosító)** | Numerikus | Nem | - |
-| **idő** | Numerikus | Nem | EPOCH (UTC) |
-| **cím** | Sztring | Nem | - |
-| **message** | Sztring | Nem | - |
-| **Súlyosság** | Sztring | Nem | Figyelmeztetés, másodlagos, fő vagy kritikus |
-| **motor** | Sztring | Nem | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
-| **sourceDevice** | Numerikus | Igen | Eszközazonosító |
-| **destinationDevice** | Numerikus | Igen | Eszközazonosító |
-| **additionalInformation** | További információ objektum | Igen | - |
+| **ID (Azonosító)** | Numerikus | No | - |
+| **idő** | Numerikus | No | EPOCH (UTC) |
+| **cím** | Sztring | No | - |
+| **message** | Sztring | No | - |
+| **Súlyosság** | Sztring | No | Figyelmeztetés, másodlagos, fő vagy kritikus |
+| **motor** | Sztring | No | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
+| **sourceDevice** | Numerikus | Yes | Eszközazonosító |
+| **destinationDevice** | Numerikus | Yes | Eszközazonosító |
+| **additionalInformation** | További információ objektum | Yes | - |
 
 #### <a name="additional-information-fields"></a>További információ mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Leírás** | Sztring | Nem | - |
+| **Leírás** | Sztring | No | - |
 | **információk** | JSON-tömb | Nem | Sztring |
 
 #### <a name="response-example"></a>Példa válaszra
@@ -737,11 +737,11 @@ A riasztásokat jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|--|
-| **időbélyeg** | Numerikus | Nem | EPOCH (UTC) |
-| **cím** | Sztring | Nem | - |
-| **Súlyosság** | Sztring | Nem | INFORMÁCIÓ, értesítés vagy riasztás |
-| **tulajdonosa** | Sztring | Igen | Ha az esemény manuálisan lett létrehozva, akkor ez a mező tartalmazza az eseményt létrehozó felhasználónevet. |
-| **tartalom** | Sztring | Nem | - |
+| **időbélyeg** | Numerikus | No | EPOCH (UTC) |
+| **cím** | Sztring | No | - |
+| **Súlyosság** | Sztring | No | INFORMÁCIÓ, értesítés vagy riasztás |
+| **tulajdonosa** | Sztring | Yes | Ha az esemény manuálisan lett létrehozva, akkor ez a mező tartalmazza az eseményt létrehozó felhasználónevet. |
+| **tartalom** | Sztring | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -850,74 +850,74 @@ Az eszköz objektum a következőket tartalmazza:
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **name** | Sztring | Nem | - |
-| **erőforrásrekordjaiba** | JSON-tömb | Nem | - |
-| **securityScore** | Numerikus | Nem | - |
-| **gyártó** | Sztring | Igen |  |
-| **firmwareVersion** | Sztring | Igen | - |
-| **modell** | Sztring | Igen | - |
-| **isWirelessAccessPoint** | Logikai | Nem | Igaz vagy hamis |
-| **operatingSystem** | Operációs rendszer objektuma | Igen | - |
-| **biztonsági rések** | Sebezhetőségi objektum | Igen | - |
+| **name** | Sztring | No | - |
+| **erőforrásrekordjaiba** | JSON-tömb | No | - |
+| **securityScore** | Numerikus | No | - |
+| **gyártó** | Sztring | Yes |  |
+| **firmwareVersion** | Sztring | Yes | - |
+| **modell** | Sztring | Yes | - |
+| **isWirelessAccessPoint** | Logikai | No | Igaz vagy hamis |
+| **operatingSystem** | Operációs rendszer objektuma | Yes | - |
+| **biztonsági rések** | Sebezhetőségi objektum | Yes | - |
 
 #### <a name="operating-system-fields"></a>Operációs rendszer mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Név** | Sztring | Igen | - |
-| **Típus** | Sztring | Igen | - |
-| **Verzió** | Sztring | Igen | - |
-| **latestVersion** | Sztring | Igen | - |
+| **Név** | Sztring | Yes | - |
+| **Típus** | Sztring | Yes | - |
+| **Verzió** | Sztring | Yes | - |
+| **latestVersion** | Sztring | Yes | - |
 
 #### <a name="vulnerabilities-fields"></a>Biztonsági rések mezői
  
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **antiViruses** | JSON-tömb | Igen | Vírusvédelmi nevek |
-| **plainTextPasswords** | JSON-tömb | Igen | Jelszó-objektumok |
-| **remoteAccess** | JSON-tömb | Igen | Távelérési objektumok |
-| **isBackupServer** | Logikai | Nem | Igaz vagy hamis |
-| **openedPorts** | JSON-tömb | Igen | Megnyitott portok objektumai |
-| **isEngineeringStation** | Logikai | Nem | Igaz vagy hamis |
-| **isKnownScanner** | Logikai | Nem | Igaz vagy hamis |
-| **cves** | JSON-tömb | Igen | CVE-objektumok |
-| **isUnauthorized** | Logikai | Nem | Igaz vagy hamis |
-| **malwareIndicationsDetected** | Logikai | Nem | Igaz vagy hamis |
-| **weakAuthentication** | JSON-tömb | Igen | Gyenge hitelesítést használó észlelt alkalmazások |
+| **antiViruses** | JSON-tömb | Yes | Vírusvédelmi nevek |
+| **plainTextPasswords** | JSON-tömb | Yes | Jelszó-objektumok |
+| **remoteAccess** | JSON-tömb | Yes | Távelérési objektumok |
+| **isBackupServer** | Logikai | No | Igaz vagy hamis |
+| **openedPorts** | JSON-tömb | Yes | Megnyitott portok objektumai |
+| **isEngineeringStation** | Logikai | No | Igaz vagy hamis |
+| **isKnownScanner** | Logikai | No | Igaz vagy hamis |
+| **cves** | JSON-tömb | Yes | CVE-objektumok |
+| **isUnauthorized** | Logikai | No | Igaz vagy hamis |
+| **malwareIndicationsDetected** | Logikai | No | Igaz vagy hamis |
+| **weakAuthentication** | JSON-tömb | Yes | Gyenge hitelesítést használó észlelt alkalmazások |
 
 #### <a name="password-fields"></a>Jelszó mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **alaphelyzetbe állítása** | Sztring | Nem | - |
-| **protokoll** | Sztring | Nem | - |
-| **erősségét** | Sztring | Nem | Nagyon gyenge, gyenge, közepes vagy erős |
+| **alaphelyzetbe állítása** | Sztring | No | - |
+| **protokoll** | Sztring | No | - |
+| **erősségét** | Sztring | No | Nagyon gyenge, gyenge, közepes vagy erős |
 
 #### <a name="remote-access-fields"></a>Távelérési mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Port** | Numerikus | Nem | - |
-| **közlekedési** | Sztring | Nem | TCP vagy UDP |
-| **ügyfél** | Sztring | Nem | IP-cím |
-| **clientSoftware** | Sztring | Nem | SSH, VNC, távoli asztal vagy csapat megjelenítője |
+| **Port** | Numerikus | No | - |
+| **közlekedési** | Sztring | No | TCP vagy UDP |
+| **ügyfél** | Sztring | No | IP-cím |
+| **clientSoftware** | Sztring | No | SSH, VNC, távoli asztal vagy csapat megjelenítője |
 
 #### <a name="open-port-fields"></a>Port mezőinek megnyitása
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Port** | Numerikus | Nem | - |
-| **közlekedési** | Sztring | Nem | TCP vagy UDP |
-| **protokoll** | Sztring | Igen | - |
-| **isConflictingWithFirewall** | Logikai | Nem | Igaz vagy hamis |
+| **Port** | Numerikus | No | - |
+| **közlekedési** | Sztring | No | TCP vagy UDP |
+| **protokoll** | Sztring | Yes | - |
+| **isConflictingWithFirewall** | Logikai | No | Igaz vagy hamis |
 
 #### <a name="cve-fields"></a>CVE-mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **ID (Azonosító)** | Sztring | Nem | - |
-| **pontszám** | Numerikus | Nem | Dupla |
-| **Leírás** | Sztring | Nem | - |
+| **ID (Azonosító)** | Sztring | No | - |
+| **pontszám** | Numerikus | No | Dupla |
+| **Leírás** | Sztring | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -1538,8 +1538,8 @@ Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
 
 #### <a name="request-example"></a>Példa kérésre
 
@@ -1651,9 +1651,9 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
+| **new_password** | Sztring | No |
 
 #### <a name="curl-command"></a>Curl parancs
 
@@ -1730,10 +1730,10 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **admin_username** | Sztring | Nem |
-| **admin_password** | Sztring | Nem |
-| **username** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **admin_username** | Sztring | No |
+| **admin_password** | Sztring | No |
+| **username** | Sztring | No |
+| **new_password** | Sztring | No |
 
 #### <a name="curl-command"></a>Curl parancs
 
@@ -1823,40 +1823,40 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **sensorId** | Numerikus | Nem | - |
-| **Zónaazonosító** | Numerikus | Igen | - |
-| **siteId** | Numerikus | Igen | - |
-| **erőforrásrekordjaiba** | JSON-tömb | Igen | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
-| **name** | Sztring | Nem | - |
-| **típusa** | Sztring | Nem | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
-| **macAddresses** | JSON-tömb | Igen | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
-| **operatingSystem** | Sztring | Igen | - |
-| **engineeringStation** | Logikai | Nem | Igaz vagy hamis |
-| **szkenner** | Logikai | Nem | Igaz vagy hamis |
-| **jogosult** | Logikai | Nem | Igaz vagy hamis |
-| **gyártó** | Sztring | Igen | - |
-| **Protokollok** | JSON-tömb | Igen | Protokoll objektum |
-| **belső vezérlőprogram** | JSON-tömb | Igen | Belső vezérlőprogram objektuma |
+| **sensorId** | Numerikus | No | - |
+| **Zónaazonosító** | Numerikus | Yes | - |
+| **siteId** | Numerikus | Yes | - |
+| **erőforrásrekordjaiba** | JSON-tömb | Yes | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
+| **name** | Sztring | No | - |
+| **típusa** | Sztring | No | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
+| **macAddresses** | JSON-tömb | Yes | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
+| **operatingSystem** | Sztring | Yes | - |
+| **engineeringStation** | Logikai | No | Igaz vagy hamis |
+| **szkenner** | Logikai | No | Igaz vagy hamis |
+| **jogosult** | Logikai | No | Igaz vagy hamis |
+| **gyártó** | Sztring | Yes | - |
+| **Protokollok** | JSON-tömb | Yes | Protokoll objektum |
+| **belső vezérlőprogram** | JSON-tömb | Yes | Belső vezérlőprogram objektuma |
 
 #### <a name="protocol-fields"></a>Protokoll mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| Name | Sztring | Nem | - |
-| Címek | JSON-tömb | Igen | Fő vagy numerikus értékek |
+| Name | Sztring | No | - |
+| Címek | JSON-tömb | Yes | Fő vagy numerikus értékek |
 
 #### <a name="firmware-fields"></a>Belső vezérlőprogram mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **sorozatszám** | Sztring | Nem | N/A vagy a tényleges érték |
-| **modell** | Sztring | Nem | N/A vagy a tényleges érték |
-| **firmwareVersion** | Dupla | Nem | N/A vagy a tényleges érték |
-| **additionalData** | Sztring | Nem | N/A vagy a tényleges érték |
-| **moduleAddress** | Sztring | Nem | N/A vagy a tényleges érték |
-| **rack** | Sztring | Nem | N/A vagy a tényleges érték |
-| **slot** | Sztring | Nem | N/A vagy a tényleges érték |
-| **Cím** | Sztring | Nem | N/A vagy a tényleges érték |
+| **sorozatszám** | Sztring | No | N/A vagy a tényleges érték |
+| **modell** | Sztring | No | N/A vagy a tényleges érték |
+| **firmwareVersion** | Dupla | No | N/A vagy a tényleges érték |
+| **additionalData** | Sztring | No | N/A vagy a tényleges érték |
+| **moduleAddress** | Sztring | No | N/A vagy a tényleges érték |
+| **rack** | Sztring | No | N/A vagy a tényleges érték |
+| **slot** | Sztring | No | N/A vagy a tényleges érték |
+| **Cím** | Sztring | No | N/A vagy a tényleges érték |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -2044,21 +2044,21 @@ Ezzel az API-val lekérheti az összes vagy szűrt riasztást egy helyszíni fel
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **ID (Azonosító)** | Numerikus | Nem | - |
-| **idő** | Numerikus | Nem | EPOCH (UTC) |
-| **cím** | Sztring | Nem | - |
-| **message** | Sztring | Nem | - |
-| **Súlyosság** | Sztring | Nem | Figyelmeztetés, másodlagos, fő vagy kritikus |
-| **motor** | Sztring | Nem | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
-| **sourceDevice** | Numerikus | Igen | Eszközazonosító |
-| **destinationDevice** | Numerikus | Igen | Eszközazonosító |
-| **additionalInformation** | További információ objektum | Igen | - |
+| **ID (Azonosító)** | Numerikus | No | - |
+| **idő** | Numerikus | No | EPOCH (UTC) |
+| **cím** | Sztring | No | - |
+| **message** | Sztring | No | - |
+| **Súlyosság** | Sztring | No | Figyelmeztetés, másodlagos, fő vagy kritikus |
+| **motor** | Sztring | No | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
+| **sourceDevice** | Numerikus | Yes | Eszközazonosító |
+| **destinationDevice** | Numerikus | Yes | Eszközazonosító |
+| **additionalInformation** | További információ objektum | Yes | - |
 
 #### <a name="additional-information-fields"></a>További információ mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Leírás** | Sztring | Nem | - |
+| **Leírás** | Sztring | No | - |
 | **információk** | JSON-tömb | Nem | Sztring |
 
 #### <a name="response-example"></a>Példa válaszra
@@ -2206,7 +2206,7 @@ JSON-objektum, amely az UUID-t tartalmazó riasztáson végrehajtandó művelete
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **művelet** | Sztring | Nem | leíró vagy handleAndLearn |
+| **művelet** | Sztring | No | leíró vagy handleAndLearn |
 
 #### <a name="request-example"></a>Példa kérésre
 
@@ -2230,7 +2230,7 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Leírás |
 |--|--|--|--|
-| **tartalom/hiba** | Sztring | Nem | Ha a kérelem sikeres, megjelenik a Content (tartalom) tulajdonság. Ellenkező esetben a hiba tulajdonság jelenik meg. |
+| **tartalom/hiba** | Sztring | No | Ha a kérelem sikeres, megjelenik a Content (tartalom) tulajdonság. Ellenkező esetben a hiba tulajdonság jelenik meg. |
 
 #### <a name="possible-content-values"></a>Lehetséges tartalom értékei
 
@@ -2472,8 +2472,8 @@ A műveleti állapot részleteit tartalmazó üzenet sztringje:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -2557,9 +2557,9 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
+| **new_password** | Sztring | No |
 
 #### <a name="curl-command"></a>Curl parancs
 
@@ -2636,10 +2636,10 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **admin_username** | Sztring | Nem |
-| **admin_password** | Sztring | Nem |
-| **username** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **admin_username** | Sztring | No |
+| **admin_password** | Sztring | No |
+| **username** | Sztring | No |
+| **new_password** | Sztring | No |
 
 #### <a name="curl-command"></a>Curl parancs
 

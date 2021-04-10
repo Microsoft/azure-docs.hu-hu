@@ -19,6 +19,8 @@
       items:
         - name: ASP.NET-alkalmazás
           href: cache-web-app-howto.md
+        - name: ASP.NET Core-alkalmazás
+          href: cache-web-app-aspnet-core-howto.md
         - name: .NET Core-alkalmazás
           href: cache-dotnet-core-quickstart.md
         - name: .NET-alkalmazás

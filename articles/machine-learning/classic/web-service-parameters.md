@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
 ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518334"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás paramétereinek használata
@@ -58,11 +58,11 @@ Tegyük fel például, hogy egy olyan [adatexportálási][writer] modullal kís�
    
    ![Webszolgáltatás paraméterének ikonja](./media/web-service-parameters/icon.png)
    
-   Válassza a "Set as Web Service paraméter" lehetőséget.
+   Válassza a "Set as Web Service paraméter&quot; lehetőséget.
    
-   A Tulajdonságok ablaktábla alján található **webszolgáltatás-paraméterek** alatt egy bejegyzést adnak hozzá, amelynek a neve "a tárolótól kezdve a blobhoz" nevű elérési út. Ez az a webszolgáltatás-paraméter, amely most már társítva van ehhez az [adatexportálási][writer] modul-paraméterhez.
-4. A webszolgáltatás paraméterének átnevezéséhez kattintson a névre, írja be a "blob elérési útja" kifejezést, majd nyomja le az **ENTER** billentyűt. 
-5. A webszolgáltatás paraméter alapértelmezett értékének megadásához kattintson a név jobb oldalán látható ikonra, válassza az "alapértelmezett érték megadása" lehetőséget, adjon meg egy értéket (például "container1/output1.csv"), és nyomja le az **ENTER** billentyűt.
+   A Tulajdonságok ablaktábla alján található **webszolgáltatás-paraméterek** alatt egy bejegyzést adnak hozzá, amelynek a neve &quot;a tárolótól kezdve a blobhoz&quot; nevű elérési út. Ez az a webszolgáltatás-paraméter, amely most már társítva van ehhez az [adatexportálási][writer] modul-paraméterhez.
+4. A webszolgáltatás paraméterének átnevezéséhez kattintson a névre, írja be a &quot;blob elérési útja&quot; kifejezést, majd nyomja le az **ENTER** billentyűt. 
+5. A webszolgáltatás paraméter alapértelmezett értékének megadásához kattintson a név jobb oldalán látható ikonra, válassza az &quot;alapértelmezett érték megadása&quot; lehetőséget, adjon meg egy értéket (például &quot;container1/output1.csv"), és nyomja le az **ENTER** billentyűt.
    
    ![Webszolgáltatás paraméter](./media/web-service-parameters/parameter.png)
 6. Kattintson a **Futtatás** elemre. 

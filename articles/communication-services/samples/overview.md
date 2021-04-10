@@ -10,10 +10,10 @@ ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: a5b3a94a0b1253b946239cd26113e9dfc955dd9a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104955958"
 ---
 # <a name="samples"></a>Példák
