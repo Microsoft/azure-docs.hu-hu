@@ -221,6 +221,8 @@
               href: blob-inventory.md
         - name: Adatok migrálása
           items:
+            - name: A tárterület áttelepítése – áttekintés
+              href: ../common/storage-migration-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Adatátviteli megoldások összehasonlítása
               href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
@@ -411,8 +413,12 @@
               href: soft-delete-container-enable.md
             - name: Blob verziószámozásának engedélyezése
               href: versioning-enable.md
-            - name: Blobok helyreállítható törlésének engedélyezése
-              href: soft-delete-blob-enable.md
+            - name: A Blobok Soft delete engedélyezése és kezelése
+              items:
+                - name: BLOB törlésének engedélyezése
+                  href: soft-delete-blob-enable.md
+                - name: A nem törölt Blobok kezelése és visszaállítása
+                  href: soft-delete-blob-manage.md
             - name: Időponthoz kötött visszaállítás engedélyezése
               href: point-in-time-restore-manage.md
             - name: Pillanatképek készítése (.NET)
@@ -439,6 +445,8 @@
           items:
             - name: A nyílt forráskódú Azurite emulátor használata
               href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Automatizált tesztek futtatása a Azurite használatával
+              href: use-azurite-to-run-automated-tests.md
             - name: Az Azure Storage Emulator használata
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Statikus webhely üzemeltetése
@@ -573,6 +581,8 @@
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Parancssori kapcsolók Storage Explorer
               href: ../common/storage-explorer-command-line-options.md
+            - name: Storage Explorer közvetlen hivatkozás
+              href: ../common/storage-explorer-direct-link.md
             - name: A Storage Explorer biztonsági beállításai
               href: ../common/storage-explorer-security.md
             - name: A Storage Explorer blobverzió-számozása

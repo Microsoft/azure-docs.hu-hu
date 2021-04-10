@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 224f2e773ecd42dcbdd356531d9ce94636de002f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98185767"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448270"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>PowerShell-parancsfájlok létrehozása MSIX-alkalmazás csatolásához (előzetes verzió)
 
@@ -27,7 +27,7 @@ Ebből a témakörből megtudhatja, hogyan állíthat be PowerShell-szkripteket 
 
 ## <a name="install-certificates"></a>Tanúsítványok telepítése
 
-Telepítenie kell a tanúsítványokat az összes olyan munkamenet-gazdagépre, amely a MSIX-alkalmazáshoz csatol csomagokat.
+Telepítenie kell a tanúsítványokat az összes olyan munkamenet-gazdagépre, amely a MSIX-alkalmazáshoz tartozó csomagokat fogja üzemeltetni.
 
 Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbízható vagy önaláírt, a következő módon telepítheti:
 

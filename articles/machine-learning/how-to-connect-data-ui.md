@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508231"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027652"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Kapcsolódás adatkapcsolathoz a Azure Machine Learning Studióval
 
@@ -69,7 +69,7 @@ Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár**
 Az adattár létrehozása után hozzon létre egy adatkészletet az adataival való kommunikációhoz. Az adatkészletek a gépi tanulási feladatokhoz, például a képzéshez egy lustán kiértékelt adatforrásba csomagolják az adatokat. [További információ az adathalmazokról](how-to-create-register-datasets.md).
 
 Kétféle adatkészlet létezik, a FileDataset és a TabularDataset. 
-A [FileDatasets](how-to-create-register-datasets.md#filedataset) egy vagy több fájlra vagy nyilvános URL-címekre mutató hivatkozásokat hoz létre. Míg a [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) táblázatos formában jeleníti meg az adatokat. 
+A [FileDatasets](how-to-create-register-datasets.md#filedataset) egy vagy több fájlra vagy nyilvános URL-címekre mutató hivatkozásokat hoz létre. Míg a [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) táblázatos formában jeleníti meg az adatokat. A. csv, a. TSV, a. Parque, a. JSON fájlokból és az SQL-lekérdezések eredményeiből is létrehozhat TabularDatasets.
 
 Az alábbi lépések és animációk bemutatják, hogyan hozhat létre adatkészletet [Azure Machine learning Studióban](https://ml.azure.com).
 

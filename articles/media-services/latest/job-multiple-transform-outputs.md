@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fc3ab64a35c24df2af9d90a5ad348f840610d188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ada86e0ce44977789eaa5d6327c0aad2883b47d
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102635841"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108846"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Több átalakítási kimenettel rendelkező feladatok létrehozása
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ez a témakör bemutatja, hogyan hozhat létre átalakítót két átalakítási kimenettel. Az első azt kéri, hogy a rendszer kódolja a bemenetet adaptív sávszélességű adatfolyamként egy beépített [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) -készlettel. A második egy a bemeneti videóban lévő hangjelzést hívja fel a [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)való feldolgozásra. Az átalakítás létrehozása után elküldheti azt a feladatot, amely ennek megfelelően dolgozza fel a videót. Mivel ebben a példában két átalakítási kimenetet adunk meg, két feladatot kell megadnia. Dönthet úgy is, hogy a feladatok kimenetét ugyanarra az objektumra irányítja (az alább látható módon), vagy az eredményeket külön egységekre is kiírja.
+Ez a témakör bemutatja, hogyan hozhat létre átalakítót két átalakítási kimenettel. Az első azt kéri, hogy a rendszer kódolja a bemenetet adaptív sávszélességű adatfolyamként egy beépített [AdaptiveStreaming](encode-concept.md#builtinstandardencoderpreset) -készlettel. A második egy a bemeneti videóban lévő hangjelzést hívja fel a [AudioAnalyzerPreset](analyze-video-audio-files-concept.md#built-in-presets)való feldolgozásra. Az átalakítás létrehozása után elküldheti azt a feladatot, amely ennek megfelelően dolgozza fel a videót. Mivel ebben a példában két átalakítási kimenetet adunk meg, két feladatot kell megadnia. Dönthet úgy is, hogy a feladatok kimenetét ugyanarra az objektumra irányítja (az alább látható módon), vagy az eredményeket külön egységekre is kiírja.
 
 > [!TIP]
 > A fejlesztés megkezdése előtt tekintse át [az Media Services V3 API](media-services-apis-overview.md) -kkal való fejlesztést (az API-k elérésére vonatkozó információkat, elnevezési konvenciókat stb.).

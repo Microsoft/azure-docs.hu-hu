@@ -2,24 +2,24 @@
 title: URL-cím és lekérdezési karakterlánc újraírása az Azure Application Gateway-Azure Portal
 description: Megtudhatja, hogyan konfigurálhat egy Azure-Application Gateway az URL-cím és a lekérdezési karakterlánc újraírására a Azure Portal használatával.
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 7/16/2020
-ms.author: surmb
-ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215773"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384757"
 ---
-# <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>URL-cím újraírása az Azure Application Gateway-Azure Portal (előzetes verzió)
+# <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>URL-cím újraírása az Azure Application Gateway-Azure Portal
 
 Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával konfigurálni egy [Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md) -példányt az URL-cím újraírásához.
 
 >[!NOTE]
-> Az URL-Újraírási funkció előzetes verzióban érhető el, és csak Standard_v2 és a Application Gateway WAF_v2 SKU-ban érhető el. Éles környezetben való használatra nem ajánlott. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az URL-Újraírási funkció csak a Application Gateway Standard_v2 és WAF_v2 SKU esetében érhető el. Ha az URL-cím újraírása egy WAF-kompatibilis átjárón van konfigurálva, a WAF kiértékelése az újraírásos kérelmek fejlécén és URL-címén történik. [További információk](rewrite-http-headers-url.md#using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

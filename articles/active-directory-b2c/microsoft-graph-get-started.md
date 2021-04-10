@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98675186"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382461"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Microsoft Graph-alkalmazás regisztrálása
 
@@ -56,31 +56,38 @@ Mielőtt a parancsfájlok és az alkalmazások kommunikálhatnak a [Microsoft Gr
 1. Válassza a **Regisztráció** lehetőséget.
 1. Jegyezze fel az alkalmazás – áttekintés oldalon megjelenő **alkalmazást (ügyfél-azonosítót)** . Ezt az értéket egy későbbi lépésben kell használni.
 
-### <a name="grant-api-access"></a>API-hozzáférés biztosítása
+## <a name="grant-api-access"></a>API-hozzáférés biztosítása
 
-Ezután adja meg a regisztrált alkalmazás engedélyeit a bérlői erőforrások kezeléséhez a Microsoft Graph API-hívásokkal.
+Ahhoz, hogy az alkalmazás hozzáférjen a Microsoft Graph lévő adathoz, adja meg a regisztrált alkalmazást a vonatkozó [alkalmazási engedélyekkel](https://docs.microsoft.com/graph/permissions-reference). Az alkalmazás hatályos engedélyei a jogosultságok teljes szintje. Például az Azure AD B2C-bérlő minden felhasználójának *létrehozásához*, *olvasásához*, *frissítéséhez* és *törléséhez* adja hozzá a **User. ReadWrite. All** engedélyt. 
+
+> [!NOTE]
+> A **User. ReadWrite. All** engedély nem tartalmazza a felhasználói fiókok jelszavainak frissítését. Ha az alkalmazásnak frissítenie kell a felhasználói fiók jelszavát, adja meg a [felhasználói rendszergazdai szerepkört](#optional-grant-user-administrator-role). A [felhasználói rendszergazdai](../active-directory/roles/permissions-reference.md#user-administrator) szerepkör megadásakor a **felhasználó. ReadWrite. All** nem szükséges. A felhasználó rendszergazdai szerepköre magában foglalja a felhasználók kezeléséhez szükséges összes tudnivalót.
+
+Több alkalmazás-engedélyt is megadhat az alkalmazásnak. Ha például az alkalmazásnak a Azure AD B2C-bérlőben is kezelnie kell a csoportokat, adja hozzá a **Group. ReadWrite. All** engedélyt is. 
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
 
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+## <a name="optional-grant-user-administrator-role"></a>Választható Felhasználói rendszergazdai szerepkör megadása
 
-Már rendelkezik egy olyan alkalmazással, amely jogosult a Azure AD B2C-bérlőben lévő felhasználók *létrehozására*, *olvasására*, *frissítésére* és *törlésére* . A *jelszó-frissítési* engedélyek hozzáadásához folytassa a következő szakasszal.
+Ha az alkalmazásnak vagy a parancsfájlnak frissítenie kell a felhasználók jelszavát, akkor az alkalmazáshoz hozzá kell rendelnie a *felhasználói rendszergazdai* szerepkört. A [felhasználó rendszergazdai](../active-directory/roles/permissions-reference.md#user-administrator) szerepköre rögzített engedélyeket biztosít az alkalmazás számára. 
 
-## <a name="enable-user-delete-and-password-update"></a>Felhasználói törlés és jelszó frissítésének engedélyezése
-
-Az *olvasási és írási címtáradatokat* tartalmazó engedély **nem** tartalmazza a felhasználók törlésének képességét vagy a felhasználói fiók jelszavának módosítását.
-
-Ha az alkalmazásnak vagy a parancsfájlnak törölnie kell a felhasználókat, vagy frissítenie kell a jelszavukat, a *felhasználói rendszergazdai* szerepkört az alkalmazáshoz kell rendelnie:
+A *felhasználói rendszergazda* szerepkör hozzáadásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és a **címtár + előfizetés** szűrő használatával váltson át a Azure ad B2C-bérlőre.
 1. Keresse meg és válassza ki a **Azure ad B2C**.
 1. A **kezelés** területen válassza a **szerepkörök és rendszergazdák** lehetőséget.
-1. Válassza ki a **felhasználói rendszergazda** szerepkört.
+1. Válassza ki a **felhasználói rendszergazda** szerepkört. 
 1. Válassza a **hozzárendelések hozzáadása** lehetőséget.
-1. A **kijelölés** szövegmezőbe írja be a korábban regisztrált alkalmazás nevét, például *managementapp1*. Válassza ki az alkalmazást, amikor megjelenik a keresési eredmények között.
+1. A **kijelölés** szövegmezőbe írja be a korábban regisztrált alkalmazás nevét vagy azonosítóját, például *managementapp1*. Ha megjelenik a keresési eredmények között, válassza ki az alkalmazást.
 1. Válassza a **Hozzáadás** lehetőséget. Az engedélyek teljes propagálása eltarthat néhány percig.
+
+## <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
+
+Az alkalmazásnak szüksége van egy ügyfél titkos kulcsára, hogy igazolja az identitását a jogkivonat kérésekor. Az ügyfél titkos kulcsának hozzáadásához kövesse az alábbi lépéseket:
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
 
 ## <a name="next-steps"></a>Következő lépések
 

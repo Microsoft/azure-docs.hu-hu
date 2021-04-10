@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 039332a8728e5d7e5b605f51f4bb53e6dcbb6381
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98217226"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109169"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>A lekérdezési teljesítményt érintő szűk keresztmetszetek típusai az Azure SQL Database-ben
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -139,7 +139,7 @@ Az újrafordítás (vagy a gyorsítótár kiürítése utáni friss fordítás) 
 
 - **Megváltozott fizikai kialakítás**: például az újonnan létrehozott indexek hatékonyabban fedik le a lekérdezés követelményeit. Az új indexeket új fordításban lehet használni, ha a lekérdezés-optimalizáló úgy dönt, hogy az új indexet használja, mint az eredetileg a lekérdezés-végrehajtás első verziójára kiválasztott adatstruktúra használata. A hivatkozott objektumok fizikai változásai a fordítási idő új tervének megválasztásához vezethetnek.
 
-- **Kiszolgáló erőforrásainak eltérései**: Ha egy rendszer egyik csomagja eltér a tervtől, akkor az erőforrás rendelkezésre állása, például az elérhető processzorok száma, befolyásolhatja, hogy melyik tervet hozza létre a rendszer. Ha például egy rendszer több processzorral rendelkezik, lehetséges, hogy egy párhuzamos tervet választ ki.
+- **Kiszolgáló erőforrásainak eltérései**: Ha egy rendszer egyik csomagja eltér a tervtől, akkor az erőforrás rendelkezésre állása, például az elérhető processzorok száma, befolyásolhatja, hogy melyik tervet hozza létre a rendszer. Ha például egy rendszer több processzorral rendelkezik, lehetséges, hogy egy párhuzamos tervet választ ki. A Azure SQL Database párhuzamosságával kapcsolatos további információkért lásd: [a maximális párhuzamossági fok (MAXDOP) beállítása Azure SQL Databaseban](database/configure-max-degree-of-parallelism.md).
 
 - **Különböző statisztikák**: a hivatkozott objektumokhoz társított statisztikák változhattak, vagy az eredeti rendszer statisztikái lényegesen eltérőek lehetnek. Ha a statisztikai változás és az újrafordítás történik, a lekérdezés-optimalizáló a változástól kezdődő statisztikát használja. Az átdolgozott statisztikai adatok eloszlása és gyakorisága eltérő lehet az eredeti fordítástól. Ezek a változások a kardinális becslések létrehozásához használatosak. (A *kardinális becslések* a logikai lekérdezési fában áthaladó sorok száma.) A kardinális becslések változásai a különböző fizikai operátorok és a hozzájuk tartozó műveletek elvégzésére is kiválaszthatók. A statisztikában még kisebb változások is megváltoztathatják a lekérdezés végrehajtási tervét.
 
@@ -181,6 +181,8 @@ Nem mindig könnyű megállapítani a CPU-problémát okozó számítási felada
 
 Intelligent Insights használata a [munkaterhelés növekedésének](database/intelligent-insights-troubleshoot-performance.md#workload-increase) észleléséhez és a [regressziók tervezéséhez](database/intelligent-insights-troubleshoot-performance.md#plan-regression).
 
+- **Párhuzamosság**: a túlzott párhuzamosság RONTHATJA a processzor és a feldolgozó szál erőforrásainak más lekérdezéseit. A Azure SQL Database párhuzamosságával kapcsolatos további információkért lásd: [a maximális párhuzamossági fok (MAXDOP) beállítása Azure SQL Databaseban](database/configure-max-degree-of-parallelism.md).
+
 ## <a name="waiting-related-problems"></a>Várakozással kapcsolatos problémák
 
 Miután megnyitotta a legoptimálisabb tervet, és a *várakozással kapcsolatos* problémák a végrehajtási problémákkal kapcsolatosak, a teljesítményproblémák általában a lekérdezések valószínűleg egy adott erőforrásra várnak. A várakozással kapcsolatos problémákat az alábbiak okozhatják:
@@ -220,6 +222,11 @@ A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának
 > - [TigerToolbox várakozások és zárak](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
+## <a name="see-also"></a>Lásd még
+
+* [A maximális párhuzamossági fok (MAXDOP) beállítása Azure SQL Database](database/configure-max-degree-of-parallelism.md)
+* [A Azure SQL Database Azure SQL Database blokkolásával kapcsolatos problémák megismerése és megoldása](database/understand-resolve-blocking.md)
+
 ## <a name="next-steps"></a>Következő lépések
 
-[SQL Database monitorozás és hangolás áttekintése](database/monitor-tune-overview.md)
+* [SQL Database monitorozás és hangolás áttekintése](database/monitor-tune-overview.md)

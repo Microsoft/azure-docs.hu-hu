@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 901d86b5569be61f89178dac460b8750bce9ea73
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: dfdd7286013bbb6462fb8e5b1bdf52e6ed738029
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605535"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384680"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Mi a mérőszámok tanácsadója (előzetes verzió)? 
 
@@ -27,6 +27,11 @@ A metrikai tanácsadó az Azure Cognitive Services része, amely az AI használa
 * Anomáliák diagnosztizálása és Súgó a kiváltó okok elemzéséhez
 
 :::image type="content" source="media/metrics-advisor-overview.png" alt-text="A metrikai tanácsadó áttekintése":::
+
+Ez a dokumentáció a következő típusú cikkeket tartalmazza:
+* A [rövid](./Quickstarts/web-portal.md) útmutatók részletes útmutatást tesznek lehetővé, amelyekkel hívásokat indíthat a szolgáltatásba, és rövid idő alatt lekérheti az eredményeket. 
+* A [útmutató útmutatók](./how-tos/onboard-your-data.md) a szolgáltatás használatára vonatkozó utasításokat tartalmaznak részletesebb vagy testreszabott módokon.
+* A [fogalmi cikkek](glossary.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.
 
 ## <a name="connect-to-a-variety-of-data-sources"></a>Kapcsolódás különféle adatforrásokhoz
 

@@ -2,13 +2,13 @@
 title: Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
-ms.date: 07/08/2020
-ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/01/2021
+ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716737"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167890"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával
 
@@ -33,7 +33,7 @@ Ez a cikk a következőket ismerteti:
 
 - Ez a funkció nem kapcsolódik a [Azure Disk Encryptionhoz](../security/fundamentals/azure-disk-encryption-vms-vmss.md), amely a virtuális gép lemezei a BitLocker (Windows) és a DM-Crypt (Linux rendszerhez) rendszerhez készült vendég-alapú titkosítását használják.
 
-- Az Recovery Services-tároló csak az **ugyanabban a régióban** található, Azure Key Vaultban tárolt kulcsokkal titkosítható. Emellett a kulcsok csak **RSA 2048 kulcsok** lehetnek, és **engedélyezve** állapotban kell lenniük.
+- Az Recovery Services-tároló csak az **ugyanabban a régióban** található, Azure Key Vaultban tárolt kulcsokkal titkosítható. Emellett a kulcsoknak csak **RSA-kulcsoknak** kell lenniük, és **engedélyezve** állapotban kell lenniük.
 
 - Az CMK titkosított Recovery Services tárolójának áthelyezése az erőforráscsoportok és az előfizetések között jelenleg nem támogatott.
 - Ha olyan Recovery Services-tárolót helyez át, amely már titkosítva van az ügyfél által felügyelt kulcsokkal egy új bérlő számára, akkor frissítenie kell a Recovery Services-tárolót a tár felügyelt identitásának és CMK újbóli létrehozásához és újrakonfigurálásához (amelynek az új Bérlőnek kell lennie). Ha ez nem történik meg, a biztonsági mentési és visszaállítási műveletek sikertelenek lesznek. Az előfizetésen belül beállított szerepköralapú hozzáférés-vezérlési (RBAC) engedélyeket is újra kell konfigurálni.
@@ -42,6 +42,9 @@ Ez a cikk a következőket ismerteti:
 
     >[!NOTE]
     >Az az Module 5.3.0 vagy a more paranccsal használhatja az ügyfél által felügyelt kulcsokat a Recovery Services-tárolóban található biztonsági mentésekhez.
+    
+    >[!Warning]
+    >Ha a PowerShellt használja a biztonsági mentéshez használt titkosítási kulcsok kezelésére, nem javasoljuk, hogy frissítse a kulcsokat a portálról.<br></br>Ha frissíti a kulcsot a portálról, a PowerShell használatával nem frissítheti tovább a titkosítási kulcsot, amíg az új modellt támogató PowerShell-frissítés elérhetővé válik. Azonban továbbra is frissítheti a kulcsot a Azure Portal.
 
 Ha még nem hozta létre és konfigurálta a Recovery Services-tárolót, [olvassa el a következő témakört](backup-create-rs-vault.md):.
 
@@ -59,22 +62,32 @@ Ez a szakasz a következő lépésekkel jár:
 
 Szükség van arra, hogy az összes fenti lépést a fent említett sorrendben végezze el a kívánt eredmények eléréséhez. Az alábbiakban részletesen ismertetjük az egyes lépéseket.
 
-### <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Felügyelt identitás engedélyezése a Recovery Services-tárolóban
+## <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Felügyelt identitás engedélyezése a Recovery Services-tárolóban
 
-Azure Backup a rendszerhez rendelt felügyelt identitás használatával hitelesíti a Recovery Services-tárolót a Azure Key Vault tárolt titkosítási kulcsok eléréséhez. Az Recovery Services-tároló felügyelt identitásának engedélyezéséhez kövesse az alábbi lépéseket.
+A Azure Backup rendszerhez rendelt felügyelt identitásokat és felhasználó által hozzárendelt felügyelt identitásokat használ a Recovery Services-tároló hitelesítéséhez a Azure Key Vault tárolt titkosítási kulcsok eléréséhez. Az Recovery Services-tároló felügyelt identitásának engedélyezéséhez kövesse az alábbi lépéseket.
 
 >[!NOTE]
 >Ha engedélyezve van, a felügyelt identitás **nem** tiltható le (akár átmenetileg is). A felügyelt identitás letiltása inkonzisztens viselkedést eredményezhet.
+
+### <a name="enable-system-assigned-managed-identity-for-the-vault"></a>A rendszerhez rendelt felügyelt identitás engedélyezése a tárolóhoz
 
 **A portálon:**
 
 1. Ugrás a Recovery Services-tárolóra – > **identitás**
 
-    ![Identitás beállításai](./media/encryption-at-rest-with-cmk/managed-identity.png)
+    ![Identitás beállításai](media/encryption-at-rest-with-cmk/enable-system-assigned-managed-identity-for-vault.png)
 
-1. Módosítsa az **állapotot** **be értékre, majd** válassza a **Mentés** lehetőséget.
+1. Navigáljon a **rendszerhez rendelt** lapra.
 
-1. Létrejön egy objektumazonosító, amely a tároló rendszer által hozzárendelt felügyelt identitása.
+1. Módosítsa az **állapotot** **a** következőre:.
+
+1. A tároló identitásának engedélyezéséhez kattintson a **Mentés** gombra.
+
+Létrejön egy objektumazonosító, amely a tároló rendszer által hozzárendelt felügyelt identitása.
+
+>[!NOTE]
+>Ha engedélyezve van, a felügyelt identitás nem tiltható le (akár átmenetileg is). A felügyelt identitás letiltása inkonzisztens viselkedést eredményezhet.
+
 
 **PowerShell-lel:**
 
@@ -98,7 +111,28 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Engedélyek kiosztása a Recovery Services-tárolóhoz a titkosítási kulcs eléréséhez a Azure Key Vault
+### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>Felhasználó által hozzárendelt felügyelt identitás hozzárendelése a tárolóhoz
+
+A Recovery Services-tárolóhoz tartozó, felhasználóhoz rendelt felügyelt identitás hozzárendeléséhez hajtsa végre a következő lépéseket:
+
+1.  Ugrás a Recovery Services-tárolóra – > **identitás**
+
+    ![Felhasználó által hozzárendelt felügyelt identitás hozzárendelése a tárolóhoz](media/encryption-at-rest-with-cmk/assign-user-assigned-managed-identity-to-vault.png)
+
+1.  Navigáljon a **felhasználóhoz rendelt** lapra.
+
+1.  A felhasználó által hozzárendelt felügyelt identitás hozzáadásához kattintson a **+ Hozzáadás** gombra.
+
+1.  A megnyíló **felhasználóhoz rendelt felügyelt identitás hozzáadása** panelen válassza ki az identitásához tartozó előfizetést.
+
+1.  Válassza ki az identitást a listából. Azt is megteheti, hogy az identitás vagy az erőforráscsoport neve alapján szűri.
+
+1.  Ha elkészült, kattintson a **Hozzáadás** gombra az identitás hozzárendelésének befejezéséhez.
+
+## <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Engedélyek kiosztása a Recovery Services-tárolóhoz a titkosítási kulcs eléréséhez a Azure Key Vault
+
+>[!Note]
+>Ha felhasználó által hozzárendelt identitásokat használ, ugyanazokat az engedélyeket kell hozzárendelni a felhasználó által hozzárendelt identitáshoz.
 
 Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot tartalmazó Azure Key Vault elérését. Ezt úgy teheti meg, hogy engedélyezi a Recovery Services tár felügyelt identitását a Key Vault eléréséhez.
 
@@ -120,7 +154,7 @@ Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot
 
 1. Válassza a **Mentés** lehetőséget a Azure Key Vault hozzáférési házirendjében történt módosítások mentéséhez.
 
-### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>A Azure Key Vault eltávolításának és törlésének engedélyezése
+## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>A Azure Key Vault eltávolításának és törlésének engedélyezése
 
 Engedélyeznie kell a **Soft delete és Purge Protection** szolgáltatást a titkosítási kulcsot tároló Azure Key Vault. Ezt az alább látható Azure Key Vault felhasználói felületen végezheti el. (Másik lehetőségként ezek a tulajdonságok a Key Vault létrehozásakor is megadhatók.) További információt ezekről a Key Vault tulajdonságokról [itt](../key-vault/general/soft-delete-overview.md)talál.
 
@@ -160,7 +194,7 @@ A következő lépésekkel engedélyezheti a helyreállítható törlési és-ki
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
-### <a name="assign-encryption-key-to-the-rs-vault"></a>Titkosítási kulcs kiosztása az RS-tárolóhoz
+## <a name="assign-encryption-key-to-the-rs-vault"></a>Titkosítási kulcs kiosztása az RS-tárolóhoz
 
 >[!NOTE]
 > A folytatás előtt győződjön meg a következőkről:
@@ -172,7 +206,7 @@ A következő lépésekkel engedélyezheti a helyreállítható törlési és-ki
 
 A fentiek betartását követően folytassa a tároló titkosítási kulcsának kiválasztásával.
 
-#### <a name="to-assign-the-key-in-the-portal"></a>A kulcs kiosztása a portálon
+### <a name="to-assign-the-key-in-the-portal"></a>A kulcs kiosztása a portálon
 
 1. Ugrás a Recovery Services-tárolóra – > **tulajdonságai**
 
@@ -192,7 +226,7 @@ A fentiek betartását követően folytassa a tároló titkosítási kulcsának 
     1. Tallózással keresse meg és válassza ki a kulcsot a Key Vault a Key Picker ablaktáblán.
 
         >[!NOTE]
-        >Ha a Key Picker panelen megadja a titkosítási kulcsot, a rendszer automatikusan elforgatja a kulcsot, amikor a kulcs új verziója engedélyezve van.
+        >Ha a Key Picker panelen megadja a titkosítási kulcsot, a rendszer automatikusan elforgatja a kulcsot, amikor a kulcs új verziója engedélyezve van. [További információ](#enabling-auto-rotation-of-encryption-keys) a titkosítási kulcsok automatikus rotációjának engedélyezéséről.
 
         ![Kulcs kiválasztása a Key vaultból](./media/encryption-at-rest-with-cmk/key-vault.png)
 
@@ -206,7 +240,7 @@ A fentiek betartását követően folytassa a tároló titkosítási kulcsának 
 
     ![Tevékenységnapló](./media/encryption-at-rest-with-cmk/activity-log.png)
 
-#### <a name="to-assign-the-key-with-powershell"></a>A kulcs társítása a PowerShell-lel
+### <a name="to-assign-the-key-with-powershell"></a>A kulcs társítása a PowerShell-lel
 
 A [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) parancs használatával engedélyezheti a titkosítást az ügyfél által felügyelt kulcsokkal, valamint a használni kívánt titkosítási kulcs hozzárendelését vagy frissítését.
 
@@ -249,8 +283,8 @@ Mielőtt továbblép a védelem konfigurálására, javasoljuk, hogy gondoskodjo
 > A védelem konfigurálásának folytatása előtt **sikeresen** végre kell hajtania a következő lépéseket:
 >
 >1. A Backup-tároló létrehozása
->1. A biztonságimásolat-tároló rendszer által hozzárendelt felügyelt identitásának engedélyezése
->1. Hozzárendelt engedélyek a Backup-tárolóhoz a Key Vault lévő titkosítási kulcsok eléréséhez
+>1. Engedélyezte a Recovery Services tár rendszer által hozzárendelt felügyelt identitását, vagy hozzárendelt egy felhasználó által hozzárendelt felügyelt identitást a tárolóhoz
+>1. Hozzárendelt engedélyek a Backup-tárolóhoz (vagy a felhasználóhoz rendelt felügyelt identitáshoz) a Key Vault található titkosítási kulcsok eléréséhez
 >1. A Key Vault törlésének engedélyezése és a védelem kiürítése
 >1. Érvényes titkosítási kulcsot rendelt a Backup-tárolóhoz
 >
@@ -311,6 +345,44 @@ A fájlok visszaállításának végrehajtásakor a visszaállított adatok a c�
 ### <a name="restoring-sap-hanasql-databases-in-azure-vms"></a>SAP HANA/SQL-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
 Ha egy Azure-beli virtuális gépen futó biztonsági másolatból SAP HANA/SQL-adatbázisból végez visszaállítást, a visszaállított adatok titkosítása a cél tároló helyén használt titkosítási kulcs használatával történik. Lehet, hogy egy ügyfél által felügyelt kulcs vagy egy platform által felügyelt kulcs, amely a virtuális gép lemezének titkosítására szolgál.
+
+## <a name="additional-topics"></a>További témakörök
+
+### <a name="enable-encryption-using-customer-managed-keys-at-vault-creation-in-preview"></a>Titkosítás engedélyezése az ügyfél által felügyelt kulcsok használatával a tár létrehozásakor (előzetes verzió)
+
+>[!NOTE]
+>Az ügyfél által felügyelt kulcsokkal rendelkező tárolók létrehozásakor a titkosítás engedélyezése korlátozott nyilvános előzetes verzióban érhető el, és engedélyezni kell az előfizetések listáját. Az előzetes verzióra való feliratkozáshoz töltse ki az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u) , és írjon nekünk a következő címen: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+
+Ha az előfizetés engedélyezett, a **biztonsági mentés titkosítása** lap jelenik meg. Ez lehetővé teszi, hogy a biztonsági mentés titkosítását az ügyfél által felügyelt kulcsok használatával engedélyezze új Recovery Services-tároló létrehozásakor. A titkosítás engedélyezéséhez hajtsa végre a következő lépéseket:
+
+1. Az **alapbeállítások** lap **biztonsági másolat titkosítása** lapján határozza meg a titkosítási kulcsot és a titkosításhoz használandó identitást.
+
+   ![Titkosítás engedélyezése a tár szintjén](media/encryption-at-rest-with-cmk/enable-encryption-using-cmk-at-vault.png)
+
+
+   >[!NOTE]
+   >A beállítások csak a biztonsági mentésre vonatkoznak, és nem kötelező.
+
+1. Válassza az **ügyfél által felügyelt kulcs használata** titkosítási típusként lehetőséget.
+
+1. A titkosításhoz használandó kulcs megadásához válassza ki a megfelelő beállítást.
+
+   Megadhatja a titkosítási kulcs URI-JÁT, vagy megkeresheti és kiválaszthatja a kulcsot. Amikor megadja a kulcsot a **Key Vault kiválasztása** lehetőséggel, a titkosítási kulcs automatikus rotációja automatikusan engedélyezve lesz. [További információ az automatikus rotációs](#enabling-auto-rotation-of-encryption-keys)szolgáltatásról. 
+
+1. Az ügyfél által felügyelt kulcsokkal történő titkosítás kezeléséhez válassza a felhasználó által hozzárendelt felügyelt identitást. Kattintson a **kiválasztás** elemre a kívánt identitás tallózásához és kiválasztásához.
+
+1. Ha elkészült, folytassa a címkék hozzáadásával (nem kötelező) és a tár létrehozásával.
+
+### <a name="enabling-auto-rotation-of-encryption-keys"></a>Titkosítási kulcsok automatikus rotációjának engedélyezése
+
+Ha a biztonsági másolatok titkosításához használni kívánt ügyfél által felügyelt kulcsot ad meg, a következő módszerekkel adhatja meg:
+
+- Adja meg a kulcs URI-JÁT
+- Kiválasztás Key Vault
+
+A **select from Key Vault** lehetőség használatával engedélyezheti a kijelölt kulcs automatikus elforgatását. Ezzel kiküszöbölheti a manuális erőfeszítést a következő verzióra való frissítéshez. Azonban használja ezt a lehetőséget:
+- A kulcs verziófrissítése akár egy órát is igénybe vehet.
+- Ha a kulcs új verziója lép érvénybe, a régi verziónak (engedélyezett állapotban) is elérhetőnek kell lennie legalább egy további biztonsági mentési feladatokhoz a kulcs frissítésének érvénybe lépését követően.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

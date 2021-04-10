@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 'Lásd: a naplózás engedélyezése a diagnosztikai beállításokkal, valamint a naplók azonnali megtekintésének lekérdezése.'
 author: baanders
 ms.author: baanders
-ms.date: 11/9/2020
+ms.date: 2/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08db4d92da5213b1ce1b79867650da9df8c38ee4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100588595"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385079"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
 
@@ -68,7 +68,7 @@ Az alábbiakban további információkat talál az Azure Digital Twins által gy
 | ADTModelsOperation | A modellekre vonatkozó összes API-hívás naplózása |
 | ADTQueryOperation | A lekérdezésekre vonatkozó összes API-hívás naplózása |
 | ADTEventRoutesOperation | Naplózza az esemény-útvonalakra vonatkozó összes API-hívást, valamint az Azure Digital Twins-ból érkező eseményeket egy olyan végponti szolgáltatáshoz, mint például a Event Grid, a Event Hubs és a Service Bus |
-| ADTDigitalTwinsOperation | Az Azure digitális Twins-hoz tartozó összes API-hívás naplózása |
+| ADTDigitalTwinsOperation | Az egyes ikrekre vonatkozó összes API-hívás naplózása |
 
 Minden naplózási kategória írási, olvasási, törlési és művelet-műveletből áll.  Ezek a leképezések a következőképpen REST API hívásokat:
 
@@ -104,18 +104,20 @@ Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](/r
 
 Minden naplózási kategória tartalmaz egy sémát, amely meghatározza, hogyan történik az adott kategóriában lévő események jelentése. Minden egyes naplóbejegyzés szövegként tárolódik, és JSON-blobként van formázva. A log és a example JSON-törzs mezői az alábbi naplókhoz vannak megadva. 
 
-`ADTDigitalTwinsOperation`, `ADTModelsOperation` és `ADTQueryOperation` egy konzisztens API log-sémát használ, `ADTEventRoutesOperation` a saját külön sémával rendelkezik.
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` és `ADTQueryOperation` konzisztens API-napló sémát használjon. `ADTEventRoutesOperation` kibővíti a sémát, hogy tartalmazza a `endpointName` Tulajdonságok mezőjét.
 
 ### <a name="api-log-schemas"></a>API-naplózási sémák
 
-Ez a naplózási séma konzisztens a `ADTDigitalTwinsOperation` , és rendszerhez `ADTModelsOperation` `ADTQueryOperation` . Az Azure Digital Twins-példány API-hívásainak információit tartalmazza.
+Ez a naplózási séma konzisztens a következőhöz:, `ADTDigitalTwinsOperation` `ADTModelsOperation` `ADTQueryOperation` . Ugyanez a séma a (z) esetében is használatos `ADTEventRoutesOperation` , a  `Microsoft.DigitalTwins/eventroutes/action` művelet neve kivételével (a sémával kapcsolatos további információkért lásd a következő szakaszt: [*kimenő naplók sémái*](#egress-log-schemas)).
+
+A séma olyan információt tartalmaz, amely az Azure Digital Twins-példány API-hívásainak meghívására vonatkozik.
 
 Az API-naplók mező-és tulajdonság-leírása itt található.
 
 | Mező neve | Adattípus | Leírás |
 |-----|------|-------------|
 | `Time` | DateTime | Az esemény bekövetkezett dátuma és időpontja (UTC) |
-| `ResourceID` | Sztring | Annak az erőforrásnak a Azure Resource Manager erőforrás-azonosítója, amelyben az esemény lezajlott |
+| `ResourceId` | Sztring | Annak az erőforrásnak a Azure Resource Manager erőforrás-azonosítója, amelyben az esemény lezajlott |
 | `OperationName` | Sztring  | Az esemény során végrehajtandó művelet típusa |
 | `OperationVersion` | Sztring | Az esemény során használt API-verzió |
 | `Category` | Sztring | A kibocsátott erőforrás típusa |
@@ -125,9 +127,15 @@ Az API-naplók mező-és tulajdonság-leírása itt található.
 | `DurationMs` | Sztring | Mennyi ideig tartott az esemény végrehajtása ezredmásodpercben |
 | `CallerIpAddress` | Sztring | Az esemény maszkolt forrás IP-címe |
 | `CorrelationId` | Guid | Az ügyfél egyedi azonosítót adott meg az eseményhez |
-| `Level` | Sztring | Az esemény naplózási súlyossága |
+| `ApplicationId` | Guid | A tulajdonos engedélyezésében használt alkalmazás azonosítója |
+| `Level` | Int | Az esemény naplózási súlyossága |
 | `Location` | Sztring | Az a régió, ahol a rendezvény lezajlott |
 | `RequestUri` | URI | Az esemény során használt végpont |
+| `TraceId` | Sztring | `TraceId`, a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A teljes nyomkövetés azonosítója, amely az elosztott nyomkövetés egyedi azonosítására szolgál a rendszerek között. |
+| `SpanId` | Sztring | `SpanId` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A kérelem azonosítója a nyomkövetésben. |
+| `ParentId` | Sztring | `ParentId` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A szülő-azonosító nélküli kérelem a nyomkövetés gyökere. |
+| `TraceFlags` | Sztring | `TraceFlags` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A nyomkövetési jelzőket, például a mintavételezést, a nyomkövetési szintet stb. vezérli. |
+| `TraceState` | Sztring | `TraceState` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. További szállító-specifikus nyomkövetési azonosítási adatok, amelyek a különböző elosztott nyomkövetési rendszerekre terjednek ki. |
 
 Az alábbi példa JSON-törzseket mutat be az ilyen típusú naplókhoz.
 
@@ -143,12 +151,25 @@ Az alábbi példa JSON-törzseket mutat be az ilyen típusú naplókhoz.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "314",
+  "durationMs": 8,
   "callerIpAddress": "13.68.244.*",
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -164,12 +185,25 @@ Az alábbi példa JSON-törzseket mutat be az ilyen típusú naplókhoz.
   "resultType": "Success",
   "resultSignature": "201",
   "resultDescription": "",
-  "durationMs": "935",
+  "durationMs": "80",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -185,18 +219,67 @@ Az alábbi példa JSON-törzseket mutat be az ilyen típusú naplókhoz.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "255",
+  "durationMs": "314",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
+```
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+Az alábbiakban egy olyan JSON-törzs szerepel, `ADTEventRoutesOperation` amely **nem** `Microsoft.DigitalTwins/eventroutes/action` típusú (a sémával kapcsolatos további információkért lásd a következő szakaszt: [*kimenő naplók sémái*](#egress-log-schemas)).
+
+```json
+  {
+    "time": "2020-10-30T22:18:38.0708705Z",
+    "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+    "operationName": "Microsoft.DigitalTwins/eventroutes/write",
+    "operationVersion": "2020-10-31",
+    "category": "EventRoutesOperation",
+    "resultType": "Success",
+    "resultSignature": "204",
+    "resultDescription": "",
+    "durationMs": 42,
+    "callerIpAddress": "212.100.32.*",
+    "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+    "identity": {
+      "claims": {
+        "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+      }
+    },
+    "level": "4",
+    "location": "southcentralus",
+    "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/EventRoutes/egressRouteForEventHub?api-version=2020-10-31",
+    "properties": {},
+    "traceContext": {
+      "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+      "spanId": "b630da57026dd046",
+      "parentId": "9f0de6dadae85945",
+      "traceFlags": "01",
+      "tracestate": "k1=v1,k2=v2"
+    }
+  },
 ```
 
 ### <a name="egress-log-schemas"></a>Kimenő naplózási sémák
 
-Ez a naplók sémája `ADTEventRoutesOperation` . Ezek a kivételekre és az Azure Digital Twins-példányhoz csatlakozó kimenő végpontokra vonatkozó API-műveletekre vonatkozó részleteket tartalmaznak.
+Ez a `ADTEventRoutesOperation` művelet nevére jellemző naplók sémája `Microsoft.DigitalTwins/eventroutes/action` . Ezek a kivételekre és az Azure Digital Twins-példányhoz csatlakozó kimenő végpontokra vonatkozó API-műveletekre vonatkozó részleteket tartalmaznak.
 
 |Mező neve | Adattípus | Leírás |
 |-----|------|-------------|
@@ -205,28 +288,55 @@ Ez a naplók sémája `ADTEventRoutesOperation` . Ezek a kivételekre és az Azu
 | `OperationName` | Sztring  | Az esemény során végrehajtandó művelet típusa |
 | `Category` | Sztring | A kibocsátott erőforrás típusa |
 | `ResultDescription` | Sztring | További információk az eseményről |
-| `Level` | Sztring | Az esemény naplózási súlyossága |
+| `CorrelationId` | Guid | Az ügyfél egyedi azonosítót adott meg az eseményhez |
+| `ApplicationId` | Guid | A tulajdonos engedélyezésében használt alkalmazás azonosítója |
+| `Level` | Int | Az esemény naplózási súlyossága |
 | `Location` | Sztring | Az a régió, ahol a rendezvény lezajlott |
+| `TraceId` | Sztring | `TraceId`, a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A teljes nyomkövetés azonosítója, amely az elosztott nyomkövetés egyedi azonosítására szolgál a rendszerek között. |
+| `SpanId` | Sztring | `SpanId` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A kérelem azonosítója a nyomkövetésben. |
+| `ParentId` | Sztring | `ParentId` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A szülő-azonosító nélküli kérelem a nyomkövetés gyökere. |
+| `TraceFlags` | Sztring | `TraceFlags` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. A nyomkövetési jelzőket, például a mintavételezést, a nyomkövetési szintet stb. vezérli. |
+| `TraceState` | Sztring | `TraceState` a [W3c nyomkövetési kontextusának](https://www.w3.org/TR/trace-context/)részeként. További szállító-specifikus nyomkövetési azonosítási adatok, amelyek a különböző elosztott nyomkövetési rendszerekre terjednek ki. |
 | `EndpointName` | Sztring | Az Azure Digital Ikrekben létrehozott kimenő forgalom végpontjának neve |
 
 Az alábbi példa JSON-törzseket mutat be az ilyen típusú naplókhoz.
 
-#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+#### <a name="adteventroutesoperation-for-microsoftdigitaltwinseventroutesaction"></a>A Microsoft. DigitalTwins/eventroutes/Action ADTEventRoutesOperation
+
+Íme egy példa egy adott típusú JSON-törzsre `ADTEventRoutesOperation` `Microsoft.DigitalTwins/eventroutes/action` .
 
 ```json
 {
   "time": "2020-11-05T22:18:38.0708705Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "operationVersion": "",
   "category": "EventRoutesOperation",
-  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "resultType": "",
+  "resultSignature": "",
+  "resultDescription": "Unable to send EventHub message to [myPath] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "durationMs": -1,
+  "callerIpAddress": "",
   "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-  "level": "3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
+  "level": "4",
   "location": "southcentralus",
+  "uri": "",
   "properties": {
-    "endpointName": "endpointEventGridInvalidKey"
+    "endpointName": "myEventHub"
+  },
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
   }
-}
+},
 ```
 
 ## <a name="view-and-query-logs"></a>Naplók megtekintése és lekérdezése

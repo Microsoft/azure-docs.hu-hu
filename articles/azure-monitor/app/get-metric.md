@@ -2,21 +2,20 @@
 title: Get-Metric Azure Monitor Application Insights
 description: Ismerje meg, hogy a GetMetric () hívásával hogyan rögzíthet helyileg előre összevont mérőszámokat a .NET-és .NET Core-alkalmazásokhoz Azure Monitor Application Insights
 ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22baa1ae9554601a72ffdb848b87d99281067967
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719780"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384289"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Egyéni metrika-gyűjtemény a .NET-ben és a .NET Core-ban
 
 Az Azure Monitor Application Insights .NET-és .NET Core SDK-k két különböző módszerrel gyűjthetik össze az egyéni metrikákat, `TrackMetric()` és `GetMetric()` . A két módszer közötti fő különbség a helyi összesítés. `TrackMetric()` hiányzik az előzetes összesítés `GetMetric()` , miközben az összesítése már megtörtént. Az ajánlott módszer az Összesítés használata, ezért már `TrackMetric()` nem az egyéni metrikák gyűjtésének előnyben részesített módja. Ez a cikk végigvezeti a GetMetric () metódus használatával, valamint a működésének indoklásával.
 
-## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus GetMetric
+## <a name="pre-aggregating-vs-non-pre-aggregating-api"></a>Előzetes összesítés és nem előkészítő API
 
 `TrackMetric()` egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()` a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. `TrackMetric()`A-től eltérően `GetMetric()` a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
 
@@ -286,7 +285,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a `TrackValue()` rendszer nem fogja követni a hívásokat.
+* `seriesCountLimit` a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a meghívása `TrackValue()` általában egy új adatsorozatot eredményez, amely hamis értéket ad vissza.
 * `valuesPerDimensionLimit` a dimenziók eltérő értékeinek megkorlátja hasonló módon.
 * `restrictToUInt32Values` meghatározza, hogy a nem negatív egész értékeket kell-e követni.
 

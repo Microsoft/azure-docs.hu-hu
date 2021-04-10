@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bdcbb38a56e46d01a5580f6d32ef733df8911b67
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99981782"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108336"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -23,32 +23,35 @@ A térbeli elemzés lehetővé teszi a kameraeszközök videóinak valós idejű
 
 A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
-| Műveleti azonosító| Description|
+| Műveleti azonosító| Leírás|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis – personcount | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. A zónát teljes egészében egyetlen kamerának kell tartalmaznia ahhoz, hogy a PersonCount pontos összeget rögzítsen. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis – personcrossingline | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
 | cognitiveservices. vízió. spatialanalysis – personcrossingpolygon | _PersonZoneEnterExitEvent_ -eseményt bocsát ki, amikor egy személy belép vagy kilép a zónából, és irányt biztosít az átadott zóna számozott oldalával. _PersonZoneDwellTimeEvent_ bocsát ki, amikor a személy kilép a zónából, és útmutatást nyújt, valamint megadja a zónán belül eltöltött személy ezredmásodpercben megadott számát. |
 | cognitiveservices. vízió. spatialanalysis – persondistance | Nyomon követi, ha a felhasználók nem sértik a távolsági szabályt. <br> Rendszeresen bocsát ki egy _personDistanceEvent_ az egyes távolságok megsértésének helyén. |
+| cognitiveservices. vízió. spatialanalysis | Általános művelet, amely a fent említett összes forgatókönyv futtatására használható. Ez a beállítás akkor hasznos, ha több forgatókönyvet szeretne futtatni ugyanazon a kamerán, vagy a rendszererőforrásokat (pl. GPU) hatékonyabban kívánja használni. |
 
 Az összes művelet a `.debug` verzióban is elérhető, amely képes megjeleníteni a képkockákat a feldolgozás során. A `xhost +` képkockák és események megjelenítésének engedélyezéséhez futtatnia kell a gazdagépen.
 
-| Műveleti azonosító| Description|
+| Műveleti azonosító| Leírás|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. debug | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. debug | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
 | cognitiveservices. vízió. spatialanalysis-personcrossingpolygon. debug | _PersonZoneEnterExitEvent_ -eseményt bocsát ki, amikor egy személy belép vagy kilép a zónából, és irányt biztosít az átadott zóna számozott oldalával. _PersonZoneDwellTimeEvent_ bocsát ki, amikor a személy kilép a zónából, és útmutatást nyújt, valamint megadja a zónán belül eltöltött személy ezredmásodpercben megadott számát. |
 | cognitiveservices. vízió. spatialanalysis-persondistance. debug | Nyomon követi, ha a felhasználók nem sértik a távolsági szabályt. <br> Rendszeresen bocsát ki egy _personDistanceEvent_ az egyes távolságok megsértésének helyén. |
+| cognitiveservices. vízió. spatialanalysis. debug | Általános művelet, amely a fent említett összes forgatókönyv futtatására használható. Ez a beállítás akkor hasznos, ha több forgatókönyvet szeretne futtatni ugyanazon a kamerán, vagy a rendszererőforrásokat (pl. GPU) hatékonyabban kívánja használni. |
 
 A térbeli elemzések videó AI-modulként is futtathatók [élő video Analytics](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) használatával. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Műveleti azonosító| Description|
+| Műveleti azonosító| Leírás|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. livevideoanalytics | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. livevideoanalytics | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
 | cognitiveservices. vízió. spatialanalysis-personcrossingpolygon. livevideoanalytics | _PersonZoneEnterExitEvent_ -eseményt bocsát ki, amikor egy személy belép vagy kilép a zónából, és irányt biztosít az átadott zóna számozott oldalával. _PersonZoneDwellTimeEvent_ bocsát ki, amikor a személy kilép a zónából, és útmutatást nyújt, valamint megadja a zónán belül eltöltött személy ezredmásodpercben megadott számát.  |
 | cognitiveservices. vízió. spatialanalysis-persondistance. livevideoanalytics | Nyomon követi, ha a felhasználók nem sértik a távolsági szabályt. <br> Rendszeresen bocsát ki egy _personDistanceEvent_ az egyes távolságok megsértésének helyén. |
+| cognitiveservices. vízió. spatialanalysis. livevideoanalytics | Általános művelet, amely a fent említett összes forgatókönyv futtatására használható. Ez a beállítás akkor hasznos, ha több forgatókönyvet szeretne futtatni ugyanazon a kamerán, vagy a rendszererőforrásokat (pl. GPU) hatékonyabban kívánja használni. |
 
 Az élő videó elemzési műveletei a verzióban is elérhetők `.debug` (pl. cognitiveservices. vízió. spatialanalysis-personcount. livevideoanalytics. debug), amely képes megjeleníteni a képkockákat a feldolgozás során. A `xhost +` képkockák és események vizualizációjának engedélyezéséhez futtatnia kell a gazdagépen.
 
@@ -57,7 +60,7 @@ Az élő videó elemzési műveletei a verzióban is elérhetők `.debug` (pl. c
 
 Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 
-| Üzemeltetési paraméterek| Description|
+| Üzemeltetési paraméterek| Leírás|
 |---------|---------|
 | Művelet azonosítója | A fenti tábla műveleti azonosítója.|
 | engedélyezve | Boolean: true vagy FALSE|
@@ -65,11 +68,12 @@ Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 | VIDEO_SOURCE_ID | A kamera-eszköz vagy a videó stream rövid neve. Ezt a rendszer az esemény JSON-kimenetével adja vissza.|
 | VIDEO_IS_LIVE| A kamera eszközei esetében igaz; hamis a rögzített videókhoz.|
 | VIDEO_DECODE_GPU_INDEX| A videó keretének dekódolására szolgáló GPU. Alapértelmezés szerint 0. Azonosnak kell lennie a `gpu_index` többi csomópont-konfigurációval `VICA_NODE_CONFIG` , például: `DETECTOR_NODE_CONFIG` .|
-| INPUT_VIDEO_WIDTH | Bemeneti videó/stream keretének szélessége (például 1920). Egy választható mező, és ha a megadott keret fel lesz méretezve erre a dimenzióra, de továbbra is megőrzi a méretarányt.|
+| INPUT_VIDEO_WIDTH | Bemeneti videó/stream keretének szélessége (például 1920). Ez egy nem kötelezően kitöltendő mező, és ha meg van határozva, a keret méretezése erre a dimenzióra történik a méretarány megőrzése mellett.|
 | DETECTOR_NODE_CONFIG | JSON, amely azt jelzi, hogy melyik GPU-t kell futtatni a detektor csomópontot. A következő formátumúnak kell lennie: `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | A zóna és a vonal JSON-konfigurációja az alább vázolt módon.|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` annak engedélyezéséhez, hogy a videó streamben a Face maszkot viselő személyeket észlelje, `False` Tiltsa le azt. Alapértelmezés szerint ez a beállítás le van tiltva. A maszk észleléséhez a bemeneti videó szélessége paraméterének 1920-nek kell lennie `"INPUT_VIDEO_WIDTH": 1920` . Az Arcfelismerés attribútum nem lesz visszaadva, ha a rendszer észleli, hogy a felhasználók nem néznek szembe a kamerával, vagy túl messze vannak. További információért tekintse meg a [kamera elhelyezési](spatial-analysis-camera-placement.md) útmutatóját |
 
+### <a name="detector-node-parameter-settings"></a>Kiderítő csomópont paraméterének beállításai
 Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek példája.
 
 ```json
@@ -78,12 +82,9 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 "do_calibration": true,
 "enable_recalibration": true,
 "calibration_quality_check_frequency_seconds":86400,
-"calibration_quality_check_sampling_num": 80,
-"calibration_quality_check_sampling_times": 5,
 "calibration_quality_check_sample_collect_frequency_seconds": 300,
 "calibration_quality_check_one_round_sample_collect_num":10,
-"calibration_quality_check_queue_max_size":1000,
-"recalibration_score": 75
+"calibration_quality_check_queue_max_size":1000
 }
 ```
 
@@ -93,15 +94,12 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 | `do_calibration` | sztring | Azt jelzi, hogy a kalibrálás be van kapcsolva. `do_calibration` a **cognitiveservices. vizualizáció. spatialanalysis-persondistance** megfelelő működéséhez igaznak kell lennie. az do_calibration alapértelmezés szerint True (igaz) értékre van állítva. |
 | `enable_recalibration` | logikai | Azt jelzi, hogy be van-e kapcsolva az automatikus újrakalibrálás. Az alapértelmezett szint a `true`.|
 | `calibration_quality_check_frequency_seconds` | int | Az egyes minőségi ellenőrzések közötti másodpercek minimális száma annak megállapításához, hogy szükség van-e az újrakalibrálásra. Az alapértelmezett érték `86400` (24 óra). Csak akkor használatos, ha `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_num` | int | A véletlenszerűen kiválasztott tárolt adatminták száma minőségi ellenőrzés esetén – hiba mérése. Az alapértelmezett szint a `80`. Csak akkor használatos, ha `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_times` | int | Az időpontok száma, ha a hibák mérése a véletlenszerűen kiválasztott adatminták különböző csoportjain történik minőség-ellenőrzés során. Az alapértelmezett szint a `5`. Csak akkor használatos, ha `enable_recalibration=True` .|
 | `calibration_quality_check_sample_collect_frequency_seconds` | int | Az új adatmintáknak az újrakalibráláshoz és a minőség-ellenőrzéshez való begyűjtésének minimális száma másodpercben. Az alapértelmezett érték `300` (5 perc). Csak akkor használatos, ha `enable_recalibration=True` .|
 | `calibration_quality_check_one_round_sample_collect_num` | int | A begyűjthető új adatminták minimális száma egy adott mintavételi kör alapján. Az alapértelmezett szint a `10`. Csak akkor használatos, ha `enable_recalibration=True` .|
 | `calibration_quality_check_queue_max_size` | int | A kamera-modell kalibrálásakor tárolandó adatminták maximális száma. Az alapértelmezett szint a `1000`. Csak akkor használatos, ha `enable_recalibration=True` .|
-| `recalibration_score` | int | Maximális minőségi küszöbérték az újrakalibrálás megkezdéséhez. Az alapértelmezett szint a `75`. Csak akkor használatos, ha `enable_recalibration=True` . A kalibrációs minőséget a program a képcél-újravetítési hiba miatti inverz kapcsolat alapján számítja ki. Az észlelt célok a 2D képkockákban a célok a 3D térben vannak kialakítva, és a meglévő kamera-kalibrálási paraméterek használatával újra feltervezve a 2D képkeretbe. Az újravetítési hibát az észlelt célok és az újratervezett célok közötti átlagos távolságok mérik.|
 | `enable_breakpad`| logikai | Azt jelzi, hogy engedélyezni kívánja-e a Breakpad, amely összeomlási memóriakép létrehozásához használható a hibakereséshez. Alapértelmezés szerint ez a `false` beállítás. Ha a értékre állítja be `true` , akkor a tároló részét is hozzá kell adnia `"CapAdd": ["SYS_PTRACE"]` `HostConfig` `createOptions` . Alapértelmezés szerint az összeomlási memóriakép fel van töltve a [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter alkalmazásba, ha azt szeretné, hogy az összeomlási memóriaképek feltöltve legyenek a saját AppCenter-alkalmazásba, felülbírálhatja a környezeti változót az `RTPT_APPCENTER_APP_SECRET` alkalmazás alkalmazási titkával.
 
-
+## <a name="spatial-analysis-operations-configuration-and-output"></a>Térbeli elemzési műveletek konfigurációja és kimenete
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Cognitiveservices. vízió. spatialanalysis – personcount
 
  Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zónát konfigurál. A művelethez több zóna is konfigurálható.
@@ -122,7 +120,7 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -167,7 +165,7 @@ Ez egy példa egy olyan JSON-bemenetre a SPACEANALYTICS_CONFIG paraméter szám�
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `lines` | list| Sorok listája.|
 | `name` | sztring| A sor rövid neve.|
@@ -213,7 +211,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -239,6 +237,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
         "output_frequency":1,
         "minimum_distance_threshold":6.0,
         "maximum_distance_threshold":35.0,
+        "aggregation_method": "average"
            "threshold": 16.00,
            "focus": "footprint"
             }
@@ -247,7 +246,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -258,9 +257,86 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 | `output_frequency` | int | Az események egressed aránya. Ha `output_frequency` = x, minden X esemény egressed, pl. `output_frequency` = 2: minden más esemény kimenet. A a és a is `output_frequency` alkalmazható `event` `interval` .|
 | `minimum_distance_threshold` | float| A távolság a lábon, amely egy "TooClose" eseményt indít el, ha az emberek kisebbek, mint a távolságok egymástól.|
 | `maximum_distance_threshold` | float| A távolság a lábon, amely egy "TooFar" eseményt indít el, ha az emberek nagyobbak, mint a távolságok egymástól.|
+| `aggregation_method` | sztring| A persondistance összesített eredményének metódusa. A aggregation_method a és a is `mode` alkalmazható `average` .|
 | `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja).|
 
-A zónák és a vonalak konfigurációjának megismeréséhez tekintse meg a [kamera elhelyezésére](spatial-analysis-camera-placement.md) vonatkozó irányelveket.
+### <a name="configuration-for-cognitiveservicesvisionspatialanalysis"></a>A cognitiveservices. vízió. spatialanalysis konfigurációja
+Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy vonalat és zónát konfigurál a **cognitiveservices. vízió. spatialanalysis** számára. A művelethez több sort vagy zónát is beállíthat, és az egyes sorok/zónák különböző eseményekkel rendelkezhetnek.
+
+ ```
+{
+  "lines": [
+    {
+      "name": "doorcamera",
+      "line": {
+        "start": {
+          "x": 0,
+          "y": 0.5
+        },
+        "end": {
+          "x": 1,
+          "y": 0.5
+        }
+      },
+      "events": [
+        {
+          "type": "linecrossing",
+          "config": {
+            "trigger": "event",
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        }
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "name": "lobbycamera",
+      "polygon": [[0.3, 0.3],[0.3, 0.9],[0.6, 0.9],[0.6, 0.3],[0.3, 0.3]],
+      "events": [
+        {
+          "type": "persondistance",
+          "config": {
+            "trigger": "event",
+            "output_frequency": 1,
+            "minimum_distance_threshold": 6.0,
+            "maximum_distance_threshold": 35.0,
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "count",
+          "config": {
+            "trigger": "event",
+            "output_frequency": 1,
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "zonecrossing",
+          "config": {
+            "threshold": 48.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "zonedwelltime",
+          "config": {
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+## <a name="camera-configuration"></a>Kamera konfigurációja
+
+A zónák és vonalak konfigurálásával kapcsolatos további információkért tekintse meg a [kamera elhelyezésére](spatial-analysis-camera-placement.md) vonatkozó irányelveket.
 
 ## <a name="spatial-analysis-operation-output"></a>Térbeli elemzési művelet kimenete
 
@@ -325,7 +401,7 @@ A művelet által adott esemény kimenetének JSON-mintája.
             },
             "metadata": {
             "attributes": {
-                "face_Mask": 0.99
+                "face_mask": 0.99
             }
         }
         },
@@ -352,7 +428,7 @@ A művelet által adott esemény kimenetének JSON-mintája.
             },
             "metadata":{
             "attributes": {
-                "face_noMask": 0.99
+            "face_nomask": 0.99
             }
             }
     }
@@ -379,8 +455,8 @@ A művelet által adott esemény kimenetének JSON-mintája.
 | `type` | sztring| Régió típusa|
 | `points` | gyűjtemény| A bal felső és a jobb alsó pont, amikor a régió típusa téglalap |
 | `confidence` | float| Algoritmus megbízhatósága|
-| `face_Mask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy egy álarcot visel |
-| `face_noMask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy **nem** viseli az álarcot. |
+| `face_mask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy egy álarcot visel |
+| `face_nomask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy **nem** viseli az álarcot. |
 
 | SourceInfo mező neve | Típus| Description|
 |---------|---------|---------|
@@ -394,14 +470,6 @@ A művelet által adott esemény kimenetének JSON-mintája.
 | `cameraHeight` | float | A kamera magassága a talajszint felett lábakban. Ez az automatikus kalibrálásra utal. |
 | `focalLength` | float | A kamera gyújtótávolsága képpontban megadva Ez az automatikus kalibrálásra utal. |
 | `tiltUpAngle` | float | A kamera dőlésének szöge függőlegesen Ez az automatikus kalibrálásra utal.|
-
-| SourceInfo mező neve | Típus| Description|
-|---------|---------|---------|
-| `id` | sztring| Kamera azonosítója|
-| `timestamp` | dátum| A JSON-tartalom kibocsátásának UTC szerinti dátuma|
-| `width` | int | Videó keretének szélessége|
-| `height` | int | Videó keretének magassága|
-| `frameId` | int | Keret azonosítója|
 
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcrossingline-ai-insights"></a>JSON-formátum a cognitiveservices. vízióhoz. spatialanalysis – personcrossingline AI-ismeretek
@@ -452,7 +520,7 @@ Példa a JSON-ra a művelet észlelési kimenetéhez.
             "confidence": 0.9005028605461121,
             "metadata": {
             "attributes": {
-                "face_Mask": 0.99
+                "face_mask": 0.99
             }
         }
         }
@@ -467,7 +535,7 @@ Példa a JSON-ra a művelet észlelési kimenetéhez.
 | `detectionsId` | array| Az eseményt kiváltó személy észlelésének egyedi azonosítója 1. méretű tömb|
 | `properties` | gyűjtemény| Értékek gyűjteménye|
 | `trackinId` | sztring| A észlelt személy egyedi azonosítója|
-| `status` | sztring| Vonali kereszteződések iránya, vagy "CrossLeft" vagy "CrossRight"|
+| `status` | sztring| Vonali kereszteződések iránya, vagy "CrossLeft" vagy "CrossRight". Az irány azon alapul, hogy a sor végén a "Start" (indítás) lehetőség áll fenn. A CrossRight balról jobbra halad. A CrossLeft jobbról balra halad.|
 | `zone` | sztring | A sor "Name" (név) mezője|
 
 | Észlelések mező neve | Típus| Description|
@@ -478,8 +546,8 @@ Példa a JSON-ra a művelet észlelési kimenetéhez.
 | `type` | sztring| Régió típusa|
 | `points` | gyűjtemény| A bal felső és a jobb alsó pont, amikor a régió típusa téglalap |
 | `confidence` | float| Algoritmus megbízhatósága|
-| `face_Mask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy egy álarcot visel |
-| `face_noMask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy **nem** viseli az álarcot. |
+| `face_mask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy egy álarcot visel |
+| `face_nomask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy **nem** viseli az álarcot. |
 
 | SourceInfo mező neve | Típus| Description|
 |---------|---------|---------|
@@ -542,7 +610,7 @@ Példa a JSON-t a művelet észlelési kimenetére `zonecrossing` SPACEANALYTICS
             "confidence": 0.6267998814582825,
         "metadata": {
         "attributes": {
-        "face_Mask": 0.99
+        "face_mask": 0.99
         }
         }
            
@@ -613,7 +681,7 @@ Példa a JSON-t a művelet észlelési kimenetére `zonedwelltime` SPACEANALYTIC
 | `properties` | gyűjtemény| Értékek gyűjteménye|
 | `trackinId` | sztring| A észlelt személy egyedi azonosítója|
 | `status` | sztring| A sokszög-kereszteződések iránya, vagy "Enter" vagy "Exit"|
-| `side` | int| A sokszög azon oldalának száma, amelyet a személy áthaladt. Mindkét oldal a sokszög két csúcspontja közötti, a zónát jelképező, számozott szegély. A sokszög első két csúcspontja közötti szegély az első oldal.|
+| `side` | int| A sokszög azon oldalának száma, amelyet a személy áthaladt. Mindkét oldal a sokszög két csúcspontja közötti, a zónát jelképező, számozott szegély. A sokszög első két csúcspontja közötti szegély az első oldalon látható. Az "oldal" üres, ha az esemény nem egy adott oldalhoz van társítva elzáródás miatt. Ha például egy személy eltűnik, de nem volt látható a zóna egyik oldalának átlépésekor, vagy ha egy személy szerepel a zónában, de nem látott át egy oldalt.|
 | `durationMs` | float | A zónában töltött személy időpontját jelölő ezredmásodpercek száma. Ez a mező akkor van megadva, ha az esemény típusa _personZoneDwellTimeEvent_ .|
 | `zone` | sztring | A keresztben lévő zónát jelölő sokszög "Name" mezője|
 
@@ -625,8 +693,8 @@ Példa a JSON-t a művelet észlelési kimenetére `zonedwelltime` SPACEANALYTIC
 | `type` | sztring| Régió típusa|
 | `points` | gyűjtemény| A bal felső és a jobb alsó pont, amikor a régió típusa téglalap |
 | `confidence` | float| Algoritmus megbízhatósága|
-| `face_Mask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy egy álarcot visel |
-| `face_noMask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy **nem** viseli az álarcot. |
+| `face_mask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy egy álarcot visel |
+| `face_nomask` | float | A tartományhoz (0-1) tartozó megbízhatósági érték azt jelzi, hogy az észlelt személy **nem** viseli az álarcot. |
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights"></a>JSON-formátum a cognitiveservices. vízióhoz. spatialanalysis – persondistance AI-ismeretek
 
@@ -765,6 +833,9 @@ Ebben a példában a következő: `centerGroundPoint` `{x: 4, y: 5}` . Ez azt je
 | `focalLength` | float | A kamera gyújtótávolsága képpontban megadva Ez az automatikus kalibrálásra utal. |
 | `tiltUpAngle` | float | A kamera dőlésének szöge függőlegesen Ez az automatikus kalibrálásra utal.|
 
+### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-ai-insights"></a>JSON-formátum a cognitiveservices. vízió. spatialanalysis AI-bepillantást
+
+A művelet kimenete a konfigurálttól függ `events` , például ha az `zonecrossing` adott művelethez be van állítva egy esemény, a kimenet a következő lesz: `cognitiveservices.vision.spatialanalysis-personcrossingpolygon` .
 
 ## <a name="use-the-output-generated-by-the-container"></a>A tároló által generált kimenet használata
 
@@ -963,7 +1034,7 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
       }
   }
   ```
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `batch_size` | int | Ha az összes kamera ugyanazzal a felbontással rendelkezik, állítsa be `batch_size` az adott műveletben használni kívánt kamerák számát, ellenkező esetben állítsa az 1 értéket, `batch_size` vagy hagyja meg az alapértelmezett (1) értéket, ami azt jelzi, hogy egyetlen köteg sem támogatott. |
 

@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104670426"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
@@ -118,7 +118,7 @@ Ha új biztonsági mentési szabályzatot jelölt ki, töltse ki a házirend-be�
 5. A **havi biztonsági mentési pontok megőrzése** és **az éves biztonsági mentési pontok megőrzése** érdekében adja meg, hogy a napi vagy heti biztonsági mentések havi vagy éves biztonsági mentését kívánja-e megőrizni.
 6. A szabályzat mentéséhez kattintson **az OK gombra** .
     > [!NOTE]
-    > A Restore Point-gyűjtemény (RPC) tárolásához a Backup szolgáltatás egy külön erőforráscsoportot (RG) hoz létre. Ez a RG különbözik a virtuális gép RG-től. [További információ](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
+    > A Restore Point-gyűjtemény (RPC) tárolásához a Backup szolgáltatás egy külön erőforráscsoportot (RG) hoz létre. Ez a RG különbözik a virtuális gép RG-től. [További információk](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
     ![Új biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/new-policy.png)
 

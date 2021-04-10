@@ -13,16 +13,16 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: f11aec770818cd4ceeeda1ae7decf30acb9ca92b
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fc3717436619468e2db0bf4b408059112dae24cc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630712"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384153"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>Oktatóanyag: a Microsoft által biztosított parancsfájlok használata tesztelési tanúsítványok létrehozásához
 
-A Microsoft PowerShell-és bash-parancsfájlokkal ismerteti, hogyan hozhat létre saját X. 509 tanúsítványokat, és hogyan hitelesítheti azokat egy IoT Hub. A parancsfájlok a [githubon](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)találhatók. Csak demonstrációs célokat szolgálnak. Az általuk létrehozott tanúsítványok nem használhatók éles környezetben. A tanúsítványok rögzített jelszavakat tartalmaznak ("1234"), és 30 nap elteltével lejárnak. Éles környezetben saját ajánlott eljárásokat kell használnia a tanúsítványok létrehozásához és az élettartam-kezeléshez.
+A Microsoft PowerShell-és bash-parancsfájlokkal ismerteti, hogyan hozhat létre saját X. 509 tanúsítványokat, és hogyan hitelesítheti azokat egy IoT Hub. A parancsfájlok egy GitHub- [tárházban](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)találhatók. Csak demonstrációs célokat szolgálnak. Az általuk létrehozott tanúsítványok nem használhatók éles környezetben. A tanúsítványok rögzített jelszavakat tartalmaznak ("1234"), és 30 nap elteltével lejárnak. Éles környezetben saját ajánlott eljárásokat kell használnia a tanúsítványok létrehozásához és az élettartam-kezeléshez.
 
 ## <a name="powershell-scripts"></a>PowerShell-parancsprogramok
 
@@ -30,7 +30,7 @@ A Microsoft PowerShell-és bash-parancsfájlokkal ismerteti, hogyan hozhat létr
 
 A Windows rendszerhez készült OpenSSL beszerzése. <https://www.openssl.org/docs/faq.html#MISC4>A letöltéshez vagy a <https://www.openssl.org/source/> forrásból való kiépítéshez szükséges helyeket itt tekintheti meg. Ezután futtassa az előzetes parancsfájlokat:
 
-1. Másolja a [githubról](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) a szkripteket arra a helyi könyvtárba, amelyben dolgozni szeretne. A rendszer az összes fájlt a címtár gyermekeiként hozza létre.
+1. Másolja a parancsfájlokat ebből a GitHub- [adattárból](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) abba a helyi könyvtárba, amelyben dolgozni szeretne. A rendszer az összes fájlt a címtár gyermekeiként hozza létre.
 
 1. Indítsa el a PowerShellt rendszergazdaként.
 

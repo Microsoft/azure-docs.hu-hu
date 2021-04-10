@@ -5,14 +5,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06990a5bd1d6619f07952e84870a01f5cd5068df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872081"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384425"
 ---
-# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
+# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Kimenő hálózati forgalom konfigurálása Azure HDInsight-fürtök esetében tűzfal használatával
 
 Ez a cikk azokat a lépéseket ismerteti, amelyekkel biztonságossá teheti a HDInsight-fürt kimenő forgalmát Azure Firewall használatával. Az alábbi lépések feltételezik, hogy egy meglévő fürthöz konfigurál egy Azure Firewall. Ha tűzfal mögötti új fürtöt helyez üzembe, először hozza létre a HDInsight-fürtöt és az alhálózatot. Ezután kövesse az útmutató lépéseit.
 
@@ -32,7 +32,7 @@ A meglévő HDInsight a Azure Firewall-mel való kilépésének lezárásához s
 
 1. Hozzon létre egy alhálózatot.
 1. Hozzon létre egy tűzfalat.
-1. Alkalmazási szabályok hozzáadása a tűzfalhoz
+1. Alkalmazás-szabályok hozzáadása a tűzfalhoz.
 1. Adja hozzá a hálózati szabályokat a tűzfalhoz.
 1. Hozzon létre egy útválasztási táblázatot.
 
@@ -76,7 +76,7 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Cserélje le a helyére a `storage_account_name` tényleges Storage-fiók nevét. Ha csak HTTPS-kapcsolatot szeretne használni, győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](../storage/common/storage-require-secure-transfer.md) beállítás engedélyezve van a Storage-fiókon. Ha privát végpontot használ a Storage-fiókok eléréséhez, ez a lépés nem szükséges, és a tárolási forgalmat nem továbbítja a tűzfal.|
+    | Rule_4 | * | https:443 | storage_account_name. blob. Core. Windows. net | Cserélje le a helyére a `storage_account_name` tényleges Storage-fiók nevét. Győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](../storage/common/storage-require-secure-transfer.md) beállítás engedélyezve van a Storage-fiókon. Ha privát végpontot használ a Storage-fiókok eléréséhez, ez a lépés nem szükséges, és a tárolási forgalmat nem továbbítja a tűzfal.|
 
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="Title: adja meg az alkalmazási szabály gyűjtésének részleteit":::
 
@@ -84,7 +84,7 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
 ### <a name="configure-the-firewall-with-network-rules"></a>A tűzfal konfigurálása hálózati szabályokkal
 
-Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurálásához.
+Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurálásához. 
 
 1. Folytassa az előző lépéssel, lépjen a **hálózati szabályok gyűjteménye**  >  **+ hálózati szabálygyűjtemény hozzáadása** elemre.
 
@@ -102,14 +102,14 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     | Name | Protokoll | Forráscímek | Szolgáltatáscímkék | Célport | Jegyzetek |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | Ha a HDInsight által biztosított alapértelmezett SQL Server-kiszolgálókat használja, állítson be egy hálózati szabályt az SQL-hez tartozó szolgáltatás címkék szakaszában, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. Ha egyéni SQL Servert használ a Ambari, a Oozie, a Ranger és a kaptár metaadattárak, akkor csak a saját egyéni SQL-kiszolgálóira kell engedélyeznie a forgalmat.|
+    | Rule_5 | TCP | * | SQL | 1433, 11000-11999 | Ha a HDInsight által biztosított alapértelmezett SQL Server-kiszolgálókat használja, állítson be egy hálózati szabályt az SQL-hez tartozó szolgáltatás címkék szakaszában, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. Ha egyéni SQL Servert használ a Ambari, a Oozie, a Ranger és a kaptár metaadattárak, akkor csak a saját egyéni SQL-kiszolgálóira kell engedélyeznie a forgalmat. Tekintse meg a [Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúráját, és](../azure-sql/database/connectivity-architecture.md) ellenőrizze, hogy a 1433-es tartományon kívül a 11000-11999-es porttartomány is szükséges. |
     | Rule_6 | TCP | * | Azure Monitor | * | választható Azok az ügyfelek, akik automatikus méretezési funkciót terveznek, hozzá kell adni ezt a szabályt. |
     
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="Title: adja meg az alkalmazási szabálygyűjtemény gyűjteményét":::
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
-### <a name="create-and-configure-a-route-table"></a>Útválasztási táblázat létrehozása és konfigurálása
+### <a name="create-and-configure-a-route-table"></a>Útválasztási táblázat létrehozása és konfigurálása 
 
 Hozzon létre egy útválasztási táblázatot a következő bejegyzésekkel:
 
