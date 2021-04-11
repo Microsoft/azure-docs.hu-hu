@@ -107,7 +107,9 @@
       href: /cli/azure/aro
     - name: Azure Red Hat OpenShift REST API-k
       href: /rest/api/openshift
-- name: További források
+    - name: Azure CLI
+      href: /cli/azure/openshift
+- name: Erőforrások
   items:
     - name: Gyakori kérdések
       href: openshift-faq.md

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 254f424694df72a290a07369fe910587fadf58d4
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385547"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552954"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -104,6 +104,15 @@ A tűzfallal védett tárolók eléréséhez használhatja a **felhasználói id
 #### <a name="user-identity"></a>Felhasználói identitás
 
 A tűzfallal védett tárhely felhasználói identitáson keresztüli eléréséhez az az. Storage PowerShell-modult használhatja.
+#### <a name="configuration-via-azure-portal"></a>Konfigurálás Azure Portal használatával
+
+1. Azure Portal megkeresheti a Storage-fiókját.
+1. A hálózat területen válassza a beállítások lehetőséget.
+1. Az "erőforrás példányai" szakaszban vegyen fel egy kivételt a szinapszis-munkaterületre.
+1. Válassza a Microsoft. szinapszis/munkaterületek erőforrástípust.
+1. Válassza ki a munkaterület nevét példány neveként.
+1. Kattintson a Mentés gombra.
+
 #### <a name="configuration-via-powershell"></a>Konfigurálás a PowerShell használatával
 
 Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és vegyen fel egy kivételt a szinapszis-munkaterületre.

@@ -7,12 +7,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: adcefc21ac4fc8a00d97d5ac4352bad1287b60de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1950fa5269460bd3daeb671a37a072dc4f5f050
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517633"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385258"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rövid útmutató: Azure-beli adat-előállító és folyamat létrehozása a REST API használatával
 
@@ -37,7 +37,9 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 * Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az Azure Blob Storage-hoz való kapcsolódáshoz olyan eszközöket használhat, mint például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) . hozzon létre egy BLOB-tárolót, töltse fel a bemeneti fájlt, és ellenőrizze a kimeneti fájlt.
 * Telepítse a **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat. Ez a rövid útmutató a PowerShellt használja REST API-hívások indítására.
 * **Egy alkalmazás létrehozása az Azure Active Directoryban**[ennek az útmutatónak](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) a lépéseit követve. Jegyezze fel a következő, a későbbi lépésekben használt értékeket: **Application ID**, **CLIENTSECRETS** és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz.
-
+>[!NOTE]
+>   Szuverén felhők esetén a megfelelő felhőalapú végpontokat kell használnia a ActiveDirectoryAuthority és a ResourceManagerUrl (BaseUri) számára. A PowerShell használatával egyszerűen lekérheti a végpont URL-címeit a különböző felhőkhöz a "Get-AzEnvironment | Format-List ", amely az egyes felhőalapú környezetekhez tartozó végpontok listáját fogja visszaadni.  
+>    
 ## <a name="set-global-variables"></a>Globális változók beállítása
 
 1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.

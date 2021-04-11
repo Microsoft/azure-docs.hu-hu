@@ -1,174 +1,183 @@
 ---
-title: Linux Virtual Machines Windows Virtual Machines Azure biztonsági alapterve
+title: Windows Virtual Machines Azure biztonsági alapterve
 description: A Windows Virtual Machines biztonsági alapterve az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósítására szolgáló eljárási útmutatást és erőforrásokat biztosít.
 author: msmbaldwin
-ms.service: virtual-machines
-ms.subservice: security
-ms.collection: linux
+ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 11f0a58f8c6d38d070d4bafe68794bdd9ada7cf3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4478ab6e1ec53f00350d692ed0d7ad838dec02f2
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556162"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284923"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines Azure biztonsági alapterve
 
-Az Windows Virtual Machines Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
+Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](../../security/benchmarks/overview-v1.md) Windows Virtual Machinesre vonatkozó útmutatást alkalmaz. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Windows Virtual Machines vonatkozó kapcsolódó útmutatás.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
-
-További információ: [Azure Security](../../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
+> [!NOTE]
+> Az Windows Virtual Machinesre nem alkalmazható **vezérlők** , vagy amelyek esetében a felelősség a Microsoft által lett kizárva. Ha szeretné megtekinteni, hogyan Windows Virtual Machines teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a **[teljes Windows Virtual Machines biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/blob/master/Azure%20Offer%20Security%20Baselines/1.1/windows-virtual-machines-security-baseline-v1.1.xlsx)**.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../../security/benchmarks/security-control-network-security.md).*
+*További információ: [Azure Security Benchmark: Hálózati biztonság](../../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
-**Útmutató**: Azure-beli virtuális gép (VM) létrehozásakor létre kell hoznia egy virtuális hálózatot (VNet), vagy egy meglévő VNet kell használnia, és konfigurálnia kell a virtuális gépet egy alhálózattal. Győződjön meg arról, hogy az összes telepített alhálózat rendelkezik olyan hálózati biztonsági csoporttal, amely az alkalmazások megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel rendelkezik.
+**Útmutató**: Azure-beli virtuális gép (VM) létrehozásakor létre kell hoznia egy virtuális hálózatot (VNet), vagy egy meglévő VNet kell használnia, és konfigurálnia kell a virtuális gépet egy alhálózattal. Győződjön meg arról, hogy az összes telepített alhálózat rendelkezik olyan hálózati biztonsági csoporttal, amely az alkalmazások megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel rendelkezik. 
 
 Ha a központosított tűzfalhoz adott használati esettel rendelkezik, Azure Firewall is felhasználhatja ezeket a követelményeket.
 
-* [Virtuális hálózatok és virtuális gépek az Azure-ban](../network-overview.md)
+- [Virtuális hálózatok és virtuális gépek az Azure-ban](/azure/virtual-machines/windows/network-overview)
 
-* [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
+- [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
+- [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall üzembe helyezése és konfigurálása](../../firewall/tutorial-firewall-deploy-portal.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure Firewall üzembe helyezése és konfigurálása](../../firewall/tutorial-firewall-deploy-portal.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 1.1](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-1-1.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 1.1](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-1-1.md)]
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
 **Útmutató**: a Azure Security Center segítségével azonosíthatja és követheti a hálózatvédelemre vonatkozó ajánlásokat az Azure-beli virtuális gépek (VM) erőforrásainak biztonságossá tételéhez az Azure-ban. Engedélyezze a NSG flow-naplókat, és küldje el a naplókat egy Storage-fiókba a szokatlan tevékenységű virtuális gépek forgalmának naplózásához.
 
-* [A NSG folyamat naplófájljainak engedélyezése](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
+- [A NSG folyamat naplófájljainak engedélyezése](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [A Azure Security Center által biztosított hálózati biztonság ismertetése](../../security-center/security-center-network-recommendations.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A Azure Security Center által biztosított hálózati biztonság ismertetése](../../security-center/security-center-network-recommendations.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
 **Útmutató**: Ha a virtuális GÉPET (VM) webalkalmazások üzemeltetésére használja, használjon egy hálózati biztonsági CSOPORTOT (NSG) a virtuális gép alhálózatán, hogy korlátozza, hogy a hálózati forgalom, a portok és a protokollok képesek legyenek kommunikálni. Ha úgy konfigurálja a NSG, hogy csak a szükséges forgalmat engedélyezze az alkalmazás számára, kövesse a legkevésbé Kiemelt hálózati megközelítést.
 
-Az Azure webalkalmazási tűzfal (WAF) a kritikus webalkalmazások előtt is üzembe helyezhető a bejövő forgalom további ellenőrzéséhez. Diagnosztikai beállítás engedélyezése a WAF és a naplók betöltéséhez egy Storage-fiókba, az Event hub-ba vagy a Log Analytics-munkaterületre.
+Az Azure webalkalmazási tűzfal (WAF) a kritikus webalkalmazások előtt is üzembe helyezhető a bejövő forgalom további ellenőrzéséhez. Diagnosztikai beállítás engedélyezése a WAF és a naplók betöltéséhez egy Storage-fiókba, az Event hub-ba vagy a Log Analytics-munkaterületre. 
 
-* [Application Gateway létrehozása webalkalmazási tűzfallal a Azure Portal használatával](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
+- [Application Gateway létrehozása webalkalmazási tűzfallal a Azure Portal használatával](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-* [Hálózati biztonsági csoportokkal kapcsolatos információk](../../virtual-network/tutorial-filter-network-traffic.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Hálózati biztonsági csoportokkal kapcsolatos információk](../../virtual-network/tutorial-filter-network-traffic.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártevő IP-címekkel folytatott kommunikáció megtagadása
 
-**Útmutató**: az elosztott szolgáltatásmegtagadási (DDoS) standard szintű védelem engedélyezése a virtuális hálózatokon a DDOS-támadások elleni védelem érdekében. Az Azure Security Center integrált fenyegetési intelligencia használatával figyelheti az ismert kártékony IP-címekkel folytatott kommunikációt. Konfigurálja megfelelően Azure Firewall az egyes Virtual Network szegmenseken, és engedélyezze a fenyegetések felderítését, és állítsa be a "riasztás és megtagadás" beállítást a kártékony hálózati forgalom számára.
+**Útmutató**: az elosztott szolgáltatásmegtagadási (DDoS) standard szintű védelem engedélyezése a virtuális hálózatokon a DDOS-támadások elleni védelem érdekében. Az Azure Security Center integrált fenyegetési intelligencia használatával figyelheti az ismert kártékony IP-címekkel folytatott kommunikációt.  Konfigurálja megfelelően Azure Firewall az egyes Virtual Network szegmenseken, és engedélyezze a fenyegetések felderítését, és állítsa be a "riasztás és megtagadás" beállítást a kártékony hálózati forgalom számára.
 
-A Azure Security Center igény szerinti hálózati hozzáférésével korlátozhatja a jóváhagyott IP-címekre való Windows Virtual Machines kitettségét korlátozott időtartamra. Emellett Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat ajánlunk, amelyek a portok és a forrás IP-címeket a tényleges forgalom és a veszélyforrások felderítése alapján korlátozzák.
+A Azure Security Center igény szerinti hálózati hozzáférésével korlátozhatja a jóváhagyott IP-címekre való Windows Virtual Machines kitettségét korlátozott időtartamra.  Emellett Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat ajánlunk, amelyek a portok és a forrás IP-címeket a tényleges forgalom és a veszélyforrások felderítése alapján korlátozzák.
 
-* [A DDoS Protection konfigurálása](../../ddos-protection/manage-ddos-protection.md)
+- [A DDoS Protection konfigurálása](../../ddos-protection/manage-ddos-protection.md)
 
-* [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
+- [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../../security-center/azure-defender.md)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../../security-center/azure-defender.md)
 
-* [Azure Security Center adaptív hálózat megerősítésének ismertetése](../../security-center/security-center-adaptive-network-hardening.md)
+- [Azure Security Center adaptív hálózat megerősítésének ismertetése](../../security-center/security-center-adaptive-network-hardening.md)
 
-* [Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése](../../security-center/security-center-just-in-time.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése](../../security-center/security-center-just-in-time.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 1.4](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-1-4.md)]
 
 ### <a name="15-record-network-packets"></a>1,5: hálózati csomagok rögzítése
 
 **Útmutató**: rögzíthet NSG-naplókat egy Storage-fiókba, hogy adatforgalmi rekordokat lehessen készíteni az Azure-Virtual Machines számára. A rendellenes tevékenység kivizsgálásakor engedélyezheti Network Watcher csomagok rögzítését, hogy a hálózati forgalom áttekinthető legyen a szokatlan és váratlan tevékenységekhez.
 
-* [A NSG folyamat naplófájljainak engedélyezése](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
+- [A NSG folyamat naplófájljainak engedélyezése](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [A Network Watcher engedélyezése](../../network-watcher/network-watcher-create.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A Network Watcher engedélyezése](../../network-watcher/network-watcher-create.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
 **Útmutató**: a Network Watcher és egy nyílt forráskódú azonosító eszköz által biztosított csomagok rögzítésének kombinálásával a fenyegetések széles köre miatt hálózati behatolás-észlelést is végezhet. Emellett a megfelelő módon telepítheti Azure Firewall a Virtual Network szegmensekre, és a fenyegetések felderítése engedélyezve van, és úgy van beállítva, hogy a kártékony hálózati forgalom a "riasztás és megtagadás" legyen.
 
-* [Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel](../../network-watcher/network-watcher-intrusion-detection-open-source-tools.md)
+- [Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel](../../network-watcher/network-watcher-intrusion-detection-open-source-tools.md)
 
-* [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
+- [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Riasztások konfigurálása Azure Firewall](../../firewall/threat-intel.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Riasztások konfigurálása Azure Firewall](../../firewall/threat-intel.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
 **Útmutató**: az Azure Application Gateway a megbízható tanúsítványokhoz engedélyezett https/SSL-alapú webalkalmazásokhoz is üzembe helyezhető. Az Azure Application Gateway használatával a figyelőket a portokhoz, a szabályok létrehozásához és az erőforrások egy háttér-készlethez, például a Windows rendszerű virtuális gépekhez való hozzáadásával irányíthatja át az alkalmazás webes forgalmát adott erőforrásokra.
 
-* [Application Gateway üzembe helyezése](../../application-gateway/quick-create-portal.md)
+- [Application Gateway üzembe helyezése](../../application-gateway/quick-create-portal.md)
 
-* [A Application Gateway konfigurálása a HTTPS használatára](../../application-gateway/create-ssl-portal.md)
+- [A Application Gateway konfigurálása a HTTPS használatára](../../application-gateway/create-ssl-portal.md)
 
-* [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](../../application-gateway/overview.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](../../application-gateway/overview.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
 **Útmutató**: Virtual Network szolgáltatás-címkék használata hálózati biztonsági csoportokon vagy az Azure-beli virtuális gépekhez konfigurált Azure Firewall hálózati hozzáférés-vezérlés definiálásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-* [A szolgáltatási címkék megismerése és használata](../../virtual-network/service-tags-overview.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [A szolgáltatási címkék megismerése és használata](../../virtual-network/service-tags-overview.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
 **Útmutató**: az Azure Virtual Machines (VM) szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-beli virtuális gépek üzembe helyezését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, szerepkör-hozzárendelések és Azure Policy-hozzárendelések egyetlen tervrajz-definícióban való kicsomagolásával. A tervezetet alkalmazhatja az előfizetésekre, és engedélyezheti az erőforrás-kezelést a tervrajzok verziószámozásával.
 
-* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minták a hálózatkezeléshez](../../governance/policy/samples/built-in-policies.md#network)
+- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
 
-* [Azure Blueprint létrehozása](../../governance/blueprints/create-blueprint-portal.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Azure Blueprint létrehozása](../../governance/blueprints/create-blueprint-portal.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
 **Útmutató**: használhat címkéket a hálózati biztonsági csoportokhoz (NSG) és a Windows rendszerű virtuális gépekhez konfigurált hálózati biztonsággal és forgalommal kapcsolatos egyéb erőforrásokhoz is. Az egyes NSG-szabályok esetében a "Leírás" mezővel adhatja meg az üzleti igényeket és/vagy időtartamot a hálózatra irányuló vagy onnan érkező forgalmat engedélyező szabályokhoz.
 
-* [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
-* [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
+- [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
@@ -176,41 +185,39 @@ A Azure Security Center igény szerinti hálózati hozzáférésével korlátozh
 
 A Azure Policy segítségével érvényesítheti (és/vagy szervizelheti) a Windows Virtual Machineshoz kapcsolódó hálózati erőforrás konfigurációit.
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/alerts/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minták a hálózatkezeléshez](../../governance/policy/samples/built-in-policies.md#network)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
 
 **Felelősség**: Ügyfél
 
-## <a name="logging-and-monitoring"></a>Naplózás és figyelés
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
 
-*További információ [: Security Control: naplózás és figyelés](../../security/benchmarks/security-control-logging-monitoring.md).*
+**Azure Policy beépített definíciók – Microsoft. számítás**:
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
+[!INCLUDE [Resource Policy for Microsoft.Compute 1.11](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-1-11.md)]
 
-**Útmutató**: a Microsoft fenntartja az Azure-erőforrások időforrásait, de lehetősége van a Windows Virtual Machines időszinkronizálási beállításainak kezelésére.
+## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-* [Az Azure számítási erőforrások időszinkronizálásának konfigurálása](./time-sync.md)
-
-**Azure Security Center figyelés**: nem érhető el
-
-**Felelősség**: Microsoft
+*További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](../../security/benchmarks/security-control-logging-monitoring.md)című témakörben talál.*
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
 **Útmutató**: a Azure Security Center biztonsági eseménynapló-figyelést biztosít a Windows Virtual Machines számára. A biztonsági eseménynapló által generált adatmennyiség miatt a szolgáltatás alapértelmezés szerint nem tárolja azt.
 
-* [Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virtuális gépről, akkor azt egy adatgyűjtési szinten tárolhatja, ahol a Log Analytics lekérdezhető. Különböző szintek vannak: minimális, közös és mind, amelyek részletesen az alábbi hivatkozásra mutatnak.](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virtuális gépről, akkor azt egy adatgyűjtési szinten tárolhatja, ahol a Log Analytics lekérdezhető. Különböző szintek vannak: minimális, közös és mind, amelyek részletesen az alábbi hivatkozásra mutatnak.](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 2.2](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-2.md)]
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
@@ -220,47 +227,55 @@ A vendég operációs rendszer diagnosztikai adatai gyűjtésének engedélyezé
 
 A virtuális gépek által támogatott alkalmazások és szolgáltatások speciális láthatósága érdekében a Azure Monitor for VMs és az Application betekintést is engedélyezheti. A Application Insights segítségével figyelheti az alkalmazást, és rögzítheti a telemetria, például HTTP-kérelmeket, kivételeket stb., így a virtuális gépek és az alkalmazás közötti problémák is összekapcsolhatók.
 
-Emellett engedélyezze a Azure Monitor számára a naplózási és a tevékenységi naplók elérését, beleértve az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célhelyek és más hasznos elemeket.
+Emellett engedélyezze a Azure Monitor számára a naplózási és a tevékenységi naplók elérését, beleértve az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célhelyek és más hasznos elemeket. 
 
-* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
-* [A log Analytics-ügynök áttekintése](../../azure-monitor/agents/log-analytics-agent.md)
+- [A log Analytics-ügynök áttekintése](../../azure-monitor/agents/log-analytics-agent.md)
 
-* [Windows rendszerhez készült log Analytics virtuálisgép-bővítmény](../extensions/oms-windows.md)
+- [Windows rendszerhez készült log Analytics virtuálisgép-bővítmény](../extensions/oms-windows.md)
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
 
-* [Az Application Insights áttekintése](../../azure-monitor/app/app-insights-overview.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Az Application Insights áttekintése](../../azure-monitor/app/app-insights-overview.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 2.3](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-3.md)]
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
-**Útmutató**: a Azure Security Center használatával biztosíthatja az Azure Virtual Machines biztonsági eseménynaplóinak figyelését. A biztonsági eseménynapló által generált adatmennyiség miatt a szolgáltatás alapértelmezés szerint nem tárolja azt.
+**Útmutató**: a Azure Security Center használatával biztosíthatja az Azure Virtual Machines biztonsági eseménynaplóinak figyelését. A biztonsági eseménynapló által generált adatmennyiség miatt a szolgáltatás alapértelmezés szerint nem tárolja azt. 
 
 Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virtuális gépről, akkor a Log Analytics munkaterületen belül tárolhatja a Azure Security Centeron belül konfigurált kívánt adatgyűjtési szinten.
 
-* [Adatgyűjtés az Azure Security Centerben](../../security-center/security-center-enable-data-collection.md)
+- [Adatgyűjtés az Azure Security Centerben](../../security-center/security-center-enable-data-collection.md)
 
-* [A rendszernapló-adatgyűjtési funkció rögzítéséhez engedélyeznie kell a Log Analytics bővítményt](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A rendszernapló-adatgyűjtési funkció rögzítéséhez engedélyeznie kell a Log Analytics bővítményt](https://docs.microsoft.com/azure/azure-monitor/vm/quick-collect-azurevm#enable-the-log-analytics-vm-extension)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 2.4](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-4.md)]
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 **Útmutató**: gondoskodjon arról, hogy a virtuális gépek naplófájljainak tárolására használt összes Storage-fiók vagy log Analytics-munkaterület a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időtartamát.
 
-* [Virtuális gépek figyelése az Azure-ban](../../azure-monitor/vm/monitor-vm-azure.md)
+- [Virtuális gépek figyelése az Azure-ban](../../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../../azure-monitor/logs/manage-cost-storage.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
@@ -270,261 +285,273 @@ Elemezheti és figyelheti a rendellenes viselkedésre és a rendszeres eredmény
 
 Azt is megteheti, hogy az Azure Sentinel vagy egy harmadik féltől származó SIEM-t is engedélyez és biztosít a naplók monitorozásához és áttekintéséhez.
 
-* [A log Analytics-ügynök áttekintése](../../azure-monitor/agents/log-analytics-agent.md)
+- [A log Analytics-ügynök áttekintése](../../azure-monitor/agents/log-analytics-agent.md)
 
-* [Windows rendszerhez készült log Analytics virtuálisgép-bővítmény](../extensions/oms-windows.md)
+- [Windows rendszerhez készült log Analytics virtuálisgép-bővítmény](../extensions/oms-windows.md)
 
-* [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
+- [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-* [Log Analytics munkaterület ismertetése](../../azure-monitor/logs/log-analytics-tutorial.md)
+- [Log Analytics munkaterület ismertetése](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/logs/get-started-queries.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/logs/get-started-queries.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: riasztások engedélyezése rendellenes tevékenységekhez
 
-**Útmutató**: a log Analytics munkaterülettel konfigurált Azure Security Center használata az Azure-Virtual Machines biztonsági naplóiban és eseményeiben észlelt rendellenes tevékenységek figyelésére és riasztására.
+**Útmutató**: a log Analytics munkaterülettel konfigurált Azure Security Center használata az Azure-Virtual Machines biztonsági naplóiban és eseményeiben észlelt rendellenes tevékenységek figyelésére és riasztására.  
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-hez kapcsolódó riasztások beállítását a rendellenes tevékenységekhez.
 
-* [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
+- [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-* [Riasztások kezelése Azure Security Centerban](../../security-center/security-center-managing-and-responding-alerts.md)
+- [Riasztások kezelése Azure Security Centerban](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/alerts/tutorial-response.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
-**Útmutató**: használhatja az Azure-hoz készült Microsoft antimalware-t Cloud Services és Virtual Machines és konfigurálhatja a virtuális gépeket az események Azure Storage-fiókba való naplózására. Konfiguráljon egy Log Analytics munkaterületet az események betöltéséhez a Storage-fiókokból, és szükség esetén hozzon létre riasztásokat. Kövesse az Azure Security Center: "számítási alkalmazások" című témakörben foglalt javaslatokat &amp; .
+**Útmutató**: használhatja az Azure-hoz készült Microsoft antimalware-t Cloud Services és Virtual Machines és konfigurálhatja a virtuális gépeket az események Azure Storage-fiókba való naplózására. Konfiguráljon egy Log Analytics munkaterületet az események betöltéséhez a Storage-fiókokból, és szükség esetén hozzon létre riasztásokat. Kövesse az Azure Security Center: "számítási alkalmazások" című témakörben foglalt javaslatokat &amp; . 
 
-* [A Microsoft antimalware konfigurálása Cloud Services és Virtual Machines](../../security/fundamentals/antimalware.md)
+- [A Microsoft antimalware konfigurálása Cloud Services és Virtual Machines](../../security/fundamentals/antimalware.md)
 
-* [A Virtual Machines vendég szintű figyelésének engedélyezése](../../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A Virtual Machines vendég szintű figyelésének engedélyezése](../../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 2.8](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-2-8.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 2.8](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-8.md)]
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
 
 **Útmutató**: harmadik féltől származó megoldás megvalósítása az Azure Marketplace-ről a DNS-naplózási megoldáshoz, amelyet a szervezeteknek szüksége van.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
 
-**Útmutató**: a Azure Security Center biztonsági eseménynapló-figyelést biztosít az Azure Virtual Machines (VM) számára. Security Center kiépíti a Microsoft monitoring agentet az összes támogatott Azure-beli virtuális gépre, valamint az automatikus kiépítés engedélyezése esetén létrehozott újakra, vagy manuálisan is telepítheti az ügynököt. Az ügynök engedélyezi a 4688-es folyamat-létrehozási eseményt és a 4688-es eseményen belüli parancssori mezőt. A virtuális gépen létrehozott új folyamatokat az eseménynapló rögzíti, és a Security Center észlelési szolgáltatásai figyelik.
+**Útmutató**: a Azure Security Center biztonsági eseménynapló-figyelést biztosít az Azure Virtual Machines (VM) számára.  Security Center kiépíti a Microsoft monitoring agentet az összes támogatott Azure-beli virtuális gépre, valamint az automatikus kiépítés engedélyezése esetén létrehozott újakra, vagy manuálisan is telepítheti az ügynököt. Az ügynök engedélyezi a 4688-es folyamat-létrehozási eseményt és a 4688-es eseményen belüli parancssori mezőt. A virtuális gépen létrehozott új folyamatokat az eseménynapló rögzíti, és a Security Center észlelési szolgáltatásai figyelik.
 
-* [Adatgyűjtés az Azure Security Centerben](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Adatgyűjtés az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](../../security/benchmarks/security-control-identity-access-control.md).*
+*További információt az [Azure biztonsági teljesítményteszt: Identity and Access Control](../../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: Azure Active Directory a felhasználói hozzáférés felügyeletének ajánlott módszere, az Azure Virtual Machines helyi fiókokkal rendelkezhetnek. A helyi és a tartományi fiókokat egyaránt felül kell vizsgálni és felügyelni kell, általában minimális helyigénysel. Emellett az Azure Privileged Identity Management is kihasználhatja a virtuális gépek erőforrásainak eléréséhez használt rendszergazdai fiókokhoz.
+**Útmutató**: noha a Azure Active Directory (Azure ad) a felhasználói hozzáférés felügyeletének ajánlott módszere, az Azure Virtual Machines rendelkezhet helyi fiókkal. A helyi és a tartományi fiókokat egyaránt felül kell vizsgálni és felügyelni kell, általában minimális helyigénysel. Emellett az Azure Privileged Identity Management is kihasználhatja a virtuális gépek erőforrásainak eléréséhez használt rendszergazdai fiókokhoz.
 
-* [A helyi fiókok információi a következő címen érhetők el:](../../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
+- [Helyi fiókok adatai](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
 
-* [Információk a Privileged Identity Managerről](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Információk a Privileged Identity Managerről](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató**: a Windows Virtual Machines és a Azure Active Directory nem rendelkezik az alapértelmezett jelszavak fogalmával. A harmadik féltől származó alkalmazásokért és Marketplace-szolgáltatásért felelős ügyfél, amely az alapértelmezett jelszavakat használja.
-
-**Azure Security Center figyelés**: nem érhető el
+**Útmutató**: Windows Virtual Machines és Azure Active Directory (Azure ad) nem az alapértelmezett jelszavak fogalma. A harmadik féltől származó alkalmazásokért és Marketplace-szolgáltatásért felelős ügyfél, amely az alapértelmezett jelszavakat használja.
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
-**Útmutató**: szabványos működési eljárások létrehozása a virtuális gépekhez hozzáféréssel rendelkező dedikált rendszergazdai fiókok használatával. A rendszergazdai fiókok számának figyeléséhez használja a Azure Security Center identitás-és hozzáférés-kezelés lehetőséget. Az Azure-beli virtuális gépek erőforrásainak eléréséhez használt rendszergazdai fiókok az Azure Privileged Identity Management (PIM) segítségével is kezelhetők. Az Azure Privileged Identity Management számos lehetőséget kínál, például igény szerinti jogosultságszint-emelést, Multi-Factor Authentication megkövetelése a szerepkör és a delegálási beállítások megadásához, hogy az engedélyek csak meghatározott időkeretek számára legyenek elérhetők, és a jóváhagyó megkövetelése.
+**Útmutató**: szabványos működési eljárások létrehozása a virtuális gépekhez hozzáféréssel rendelkező dedikált rendszergazdai fiókok használatával. A rendszergazdai fiókok számának figyeléséhez használja a Azure Security Center identitás-és hozzáférés-kezelés lehetőséget. Az Azure-beli virtuális gépek erőforrásainak eléréséhez használt rendszergazdai fiókok az Azure Privileged Identity Management (PIM) segítségével is kezelhetők. Az Azure Privileged Identity Management számos lehetőséget kínál, például igény szerinti jogosultságszint-emelést, többtényezős hitelesítést igényel, mielőtt feltételezi a szerepkört, és delegálási lehetőségeket biztosít, hogy az engedélyek csak meghatározott időkeretek számára legyenek elérhetők, és a jóváhagyó megkövetelése.
 
-* [Azure Security Center identitás és hozzáférés ismertetése](../../security-center/security-center-identity-access.md)
+- [Azure Security Center identitás és hozzáférés ismertetése](../../security-center/security-center-identity-access.md)
 
-* [Információk a Privileged Identity Managerről](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Információk a Privileged Identity Managerről](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 3.3](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-3-3.md)]
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Azure Active Directory egyszeri bejelentkezés (SSO) használata
 
-**Útmutató**: ha lehetséges, az ügyfélnek az egyszeri bejelentkezést Azure Active Directory használnia a különálló hitelesítő adatok felhasználónkénti konfigurálása helyett. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata.
+**Útmutató**: ha lehetséges, az ügyfél az egyszeri bejelentkezést Azure Active Directory (Azure ad-val) használja, és nem konfigurálja külön önálló hitelesítő adatokat a szolgáltatásban. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata.
 
-* [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](../../active-directory/manage-apps/what-is-single-sign-on.md)
+- [Egyszeri bejelentkezés az Azure AD-alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-* [Identitás és hozzáférés figyelése Azure Security Centeron belül](../../security-center/security-center-identity-access.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Identitás és hozzáférés figyelése Azure Security Centeron belül](../../security-center/security-center-identity-access.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató**: az Azure ad MFA engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése.
+**Útmutató**: engedélyezze Azure Active Directory (Azure ad) többtényezős hitelesítését, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait.
 
-* [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Többtényezős hitelesítés engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identitás és hozzáférés figyelése Azure Security Centeron belül](../../security-center/security-center-identity-access.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Identitás és hozzáférés figyelése Azure Security Centeron belül](../../security-center/security-center-identity-access.md)
 
 **Felelősség**: Ügyfél
 
-### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: biztonságos, Azure által felügyelt munkaállomások használata felügyeleti feladatokhoz
+**Azure Security Center figyelés**: nincs
 
-**Útmutató**: az Azure-erőforrások bejelentkezésére és konfigurálására szolgáló, az MFA használatára konfigurált, a mancsok (emelt szintű hozzáférési munkaállomások) használata.
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: biztonságos, Azure által felügyelt munkaállomások használata felügyeleti feladatokhoz 
 
-* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+**Útmutató**: a mancsok (emelt szintű hozzáférésű munkaállomások) használata többtényezős hitelesítéssel, amely az Azure-erőforrások bejelentkezésére és konfigurálására van konfigurálva.
 
-* [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-**Azure Security Center figyelés**: nem érhető el
+- [Többtényezős hitelesítés engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
-**Útmutatás**: Azure ad PRIVILEGED Identity Management (PIM) használata naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg. Igény szerint az ügyfél Azure Security Center kockázatkezelési riasztásokat is betöltheti a Azure Monitorba, és egyéni riasztásokat/értesítéseket állíthat be a műveleti csoportok használatával.
+**Útmutatás**: Azure Active Directory (Azure AD) PRIVILEGED Identity Management (PIM) használata naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg. Igény szerint az ügyfél Azure Security Center kockázatkezelési riasztásokat is betöltheti a Azure Monitorba, és egyéni riasztásokat/értesítéseket állíthat be a műveleti csoportok használatával.
 
-* [Privileged Identity Management (PIM) üzembe helyezése](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
+- [Privileged Identity Management (PIM) üzembe helyezése](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure Security Center kockázati észlelések ismertetése (gyanús tevékenység)](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure Security Center kockázati észlelések ismertetése (gyanús tevékenység)](../../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure-tevékenységnaplók integrálása az Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../../azure-monitor/alerts/action-groups.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../../azure-monitor/alerts/action-groups.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
-**Útmutató**: Azure Active Directory feltételes hozzáférési szabályzatok és elnevezett helyszínek használatával engedélyezheti a hozzáférést az IP-címtartományok vagy országok/régiók csak bizonyos logikai csoportjaiból.
+**Útmutató**: a Azure Active Directory (Azure ad) feltételes hozzáférési szabályzatok és elnevezett helyszínek használatával engedélyezheti a hozzáférést az IP-címtartományok vagy országok/régiók csak bizonyos logikai csoportjaiból.
 
-* [Elnevezett helyszínek konfigurálása az Azure-ban](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Elnevezett helyszínek konfigurálása az Azure-ban](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza. A felügyelt identitások használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vaultt is, a kódban szereplő hitelesítő adatok nélkül. A virtuális gépen futó kód a felügyelt identitásával kérhet hozzáférési jogkivonatokat az Azure AD-hitelesítést támogató szolgáltatásokhoz.
+**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.  A felügyelt identitások használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vaultt is, a kódban szereplő hitelesítő adatok nélkül. A virtuális gépen futó kód a felügyelt identitásával kérhet hozzáférési jogkivonatokat az Azure AD-hitelesítést támogató szolgáltatásokhoz.
 
-* [Azure AD-példány létrehozása és konfigurálása](../../active-directory-domain-services/tutorial-create-instance.md)
+- [Azure AD-példány létrehozása és konfigurálása](../../active-directory-domain-services/tutorial-create-instance.md)
 
-* [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](../../active-directory/managed-identities-azure-resources/overview.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](../../active-directory/managed-identities-azure-resources/overview.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató**: az Azure ad olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett a Azure Active Directory Identity Access Reviews használatával hatékonyan kezelhet csoporttagság, hozzáférés a vállalati alkalmazásokhoz és a szerepkör-hozzárendelésekhez. A felhasználó hozzáférését rendszeresen felül lehet vizsgálni, hogy csak a megfelelő felhasználók férhessenek hozzájuk. Az Azure Virtual Machines használatakor át kell tekintenie a helyi biztonsági csoportokat és a felhasználókat, hogy ne legyenek olyan váratlan fiókok, amelyek veszélyeztethetik a rendszer biztonságát.
+**Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD Identity hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználó hozzáférését rendszeresen felül lehet vizsgálni, hogy csak a megfelelő felhasználók férhessenek hozzájuk. Az Azure Virtual Machines használatakor át kell tekintenie a helyi biztonsági csoportokat és a felhasználókat, hogy ne legyenek olyan váratlan fiókok, amelyek veszélyeztethetik a rendszer biztonságát.
 
-* [Az Azure Identity hozzáférési felülvizsgálatok használata](../../active-directory/governance/access-reviews-overview.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Az Azure Identity hozzáférési felülvizsgálatok használata](../../active-directory/governance/access-reviews-overview.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: a figyelő megkísérli a deaktivált hitelesítő adatok elérését
 
-**Útmutató**: a Azure Active Directory diagnosztikai beállításainak konfigurálása a naplók és a bejelentkezési naplók log Analytics-munkaterületre való elküldéséhez. Emellett a Azure Monitor segítségével tekintheti át a naplókat, és lekérdezéseket hajthat végre az Azure Virtual Machines szolgáltatásban.
+**Útmutató**: a Azure Active Directory (Azure ad) diagnosztikai beállításainak konfigurálása a naplók és bejelentkezési naplók log Analytics-munkaterületre való elküldéséhez. Emellett a Azure Monitor segítségével tekintheti át a naplókat, és lekérdezéseket hajthat végre az Azure Virtual Machines szolgáltatásban.
 
-* [Log Analytics munkaterület ismertetése](../../azure-monitor/logs/log-analytics-tutorial.md)
+- [Log Analytics munkaterület ismertetése](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure-tevékenységnaplók integrálása az Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/logs/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/logs/get-started-queries.md)
 
-* [Virtuális gépek figyelése az Azure-ban](../../azure-monitor/vm/monitor-vm-azure.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Virtuális gépek figyelése az Azure-ban](../../azure-monitor/vm/monitor-vm-azure.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
-**Útmutató**: a Azure Active Directory kockázatkezelési és identitás-védelmi funkcióinak használatával konfigurálhatja a tárolási fiók erőforrásaival kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával.
+**Útmutató**: az Azure Active Directory (Azure ad) kockázatkezelési és identitás-védelmi funkcióinak használatával konfigurálhatja a tárolási fiók erőforrásaival kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával.
 
-* [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
 
-**Útmutató**: abban az esetben, ha egy külső félnek hozzá kell férnie az ügyféladatok eléréséhez (például egy támogatási kérelem során), az Azure-beli virtuális gépek Ügyfélszéf használatával tekintheti meg és hagyhatja jóvá vagy utasíthatja el az ügyféladatok hozzáférési kérelmeit.
+**Útmutató**: abban az esetben, ha egy harmadik félnek hozzá kell férnie az ügyféladatok eléréséhez (például egy támogatási kérelem során), az Azure-beli virtuális gépek Ügyfélszéf használatával tekintse át és hagyja jóvá az ügyféladatok-hozzáférési kérelmeket, vagy utasítsa el azokat.
 
-* [A Ügyfélszéf ismertetése](../../security/fundamentals/customer-lockbox-overview.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [A Ügyfélszéf ismertetése](../../security/fundamentals/customer-lockbox-overview.md)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](../../security/benchmarks/security-control-data-protection.md)adatvédelem.*
+*További információ: [Azure Security Benchmark: Adatvédelem](../../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
 **Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-beli virtuális gépek nyomon követését.
 
-* [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az erőforrásokat virtuális hálózattal/alhálózattal kell elválasztani, megfelelően címkézve, és egy hálózati biztonsági csoporton (NSG) vagy egy Azure Firewallon belül kell biztosítani. A bizalmas adatok tárolására és feldolgozására Virtual Machines a házirend és eljárás (ok) bekapcsolásával kikapcsolhatja azokat, ha nincsenek használatban.
 
-* [További Azure-előfizetések létrehozása](../../cost-management-billing/manage/create-subscription.md)
+- [További Azure-előfizetések létrehozása](../../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../../governance/management-groups/create-management-group-portal.md)
+- [Management Groups létrehozása](../../governance/management-groups/create-management-group-portal.md)
 
-* [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
-* [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
+- [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
+- [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
+- [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Riasztások vagy riasztások konfigurálása és a Azure Firewall megtagadása](../../firewall/threat-intel.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Riasztások vagy riasztások konfigurálása és a Azure Firewall megtagadása](../../firewall/threat-intel.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
 
@@ -532,11 +559,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli az ügyfelek adatvesztése és a kitettség elleni védelem érdekében. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-* [Az ügyféladatok Azure-beli védelmének ismertetése](../../security/fundamentals/protection-customer-data.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Az ügyféladatok Azure-beli védelmének ismertetése](../../security/fundamentals/protection-customer-data.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
@@ -544,340 +571,398 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédelemhez, amikor a Cloud Services és az ügyfelek között utazik.
 
-* [Átvitel közbeni titkosítás a virtuális gépeken](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Átvitel közbeni titkosítás a virtuális gépeken](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#in-transit-encryption-in-vms)
 
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
 **Útmutató**: a szervezet technológiai rendszerei által tárolt, feldolgozott vagy továbbított bizalmas információk azonosítására egy külső féltől származó aktív felderítési eszköz használatával, beleértve a helyszíni vagy a távoli szolgáltatónál lévőket, valamint a szervezet bizalmas információinak leltározását.
 
-**Azure Security Center figyelés**: nem érhető el
+**Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC 
+
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával elkülönítheti a munkatársain belüli feladatokat, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A virtuális gép hozzáférés-vezérlését az Azure CLI vagy a Azure PowerShell használatával konfigurálhatja a Azure Portal.
+
+- [Azure RBAC-vel](../../role-based-access-control/overview.md)
+
+- [Beépített Azure-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
 **Felelősség**: Ügyfél
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
-
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával elkülönítheti a munkatársain belüli feladatokat, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A Azure Portal a virtuális gép hozzáférés-vezérlését az Azure CLI, a orAzure PowerShell használatával konfigurálhatja.
-
-* [Azure RBAC-vel](../../role-based-access-control/overview.md)
-
-* [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
-
-**Azure Security Center figyelés**: nem érhető el
-
-**Felelősség**: Ügyfél
+**Azure Security Center figyelés**: nincs
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
 **Útmutató**: egy külső gyártótól származó eszköz, például egy automatizált gazdagép-alapú adatvesztés-megelőzési megoldás alkalmazása a hozzáférés-vezérlés kikényszeríthető az adatvesztés kockázatának enyhítése érdekében.
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
 
 **Útmutató**: a Windows Virtual Machines (VM) virtuális lemezeinek tárolása a kiszolgálóoldali titkosítás vagy az Azure Disk Encryption (ADE) használatával történik. Azure Disk Encryption a Windows BitLocker szolgáltatásával titkosítja a felügyelt lemezeket az ügyfél által felügyelt kulcsokkal a vendég virtuális gépen belül. Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t, mivel lehetővé teszi a virtuális gépekhez tartozó operációsrendszer-típusok és-lemezképek használatát a Storage szolgáltatásban tárolt adattitkosítással.
 
-* [Az Azure által felügyelt lemezek kiszolgálóoldali titkosítása](../disk-encryption.md)
+- [Az Azure által felügyelt lemezek kiszolgálóoldali titkosítása](/azure/virtual-machines/windows/disk-encryption)
 
-* [Azure Disk Encryption Windows rendszerű virtuális gépekhez](./disk-encryption-overview.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure Disk Encryption Windows rendszerű virtuális gépekhez](/azure/virtual-machines/windows/disk-encryption-overview)
 
 **Felelősség**: Megosztott
 
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 4.8](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-4-8.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 4.8](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-4-8.md)]
+
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a rendszer a virtuális gépekre és a kapcsolódó erőforrásokra vonatkozó módosításokat hajt végre.
+**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a rendszer a virtuális gépekre és a kapcsolódó erőforrásokra vonatkozó módosításokat hajt végre.  
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/alerts/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/alerts/alerts-activity-log.md)
-
-* [Azure Storage Analytics-naplózás](../../storage/common/storage-analytics-logging.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure Storage Analytics-naplózás](../../storage/common/storage-analytics-logging.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](../../security/benchmarks/security-control-vulnerability-management.md).*
+*További információért lásd az [Azure biztonsági teljesítményteszt: biztonsági rés kezelése](../../security/benchmarks/security-control-vulnerability-management.md)című témakört.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
-**Útmutató**: a Azure Security Center ajánlásainak követése az Azure-Virtual Machines a sebezhetőségi felmérések végrehajtása során. A virtuális gépek sebezhetőségi felmérésének elvégzéséhez használja az Azure Security által ajánlott vagy harmadik féltől származó megoldást.
+**Útmutató**: a Azure Security Center ajánlásainak követése az Azure-Virtual Machines a sebezhetőségi felmérések végrehajtása során.  A virtuális gépek sebezhetőségi felmérésének elvégzéséhez használja az Azure Security által ajánlott vagy harmadik féltől származó megoldást.
 
-* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../../security-center/deploy-vulnerability-assessment-vm.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 5.1](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-5-1.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 5.1](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-5-1.md)]
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
 
-**Útmutató**: az Azure Update Management megoldás használatával kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
+**Útmutató**: az Azure Update Management megoldás használatával kezelheti a virtuális gépek frissítéseit és javításait.  A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-* [Update Management megoldás az Azure-ban](../../automation/update-management/overview.md)
+- [Update Management megoldás az Azure-ban](/azure/automation/overview)
 
-* [A virtuális gépek frissítéseinek és javításának kezelése](../../automation/update-management/manage-updates-for-vm.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](/azure/automation/manage-updates-for-vm)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 5.2](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-5-2.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 5.2](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-5-2.md)]
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: a harmadik féltől származó szoftverek címeihez készült automatizált javítási megoldás üzembe helyezése
 
-**Útmutató**: külső gyártótól származó javítási felügyeleti megoldás használata is lehetséges. Az Azure Update Management megoldással kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
+**Útmutató**: külső gyártótól származó javítási felügyeleti megoldás használata is lehetséges.  Az Azure Update Management megoldással kezelheti a virtuális gépek frissítéseit és javításait.  A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-* [Update Management megoldás az Azure-ban](../../automation/update-management/overview.md)
+- [Update Management megoldás az Azure-ban](/azure/automation/overview)
 
-* [A virtuális gépek frissítéseinek és javításának kezelése](../../automation/update-management/manage-updates-for-vm.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](/azure/automation/manage-updates-for-vm)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
 
 **Útmutató**: a vizsgálati eredmények konzisztens időközönkénti exportálása és az eredmények összehasonlítása annak ellenőrzéséhez, hogy a biztonsági rések szervizelése megtörtént-e. Ha Azure Security Center által javasolt sebezhetőségi kezelési javaslatot használ, az ügyfél a kiválasztott megoldás portálján megtekintheti a korábbi vizsgálati adataikat.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
 
 **Útmutató**: a Azure Security Center által biztosított alapértelmezett kockázati minősítések (biztonságos pontszám) használata.
 
-* [A Azure Security Center biztonsági pontszámának megismerése](../../security-center/secure-score-security-controls.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A Azure Security Center biztonsági pontszámának megismerése](../../security-center/secure-score-security-controls.md)
 
 **Felelősség**: Ügyfél
 
-## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../../security/benchmarks/security-control-inventory-asset-management.md).*
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 5.5](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-5-5.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 5.5](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-5-5.md)]
+
+## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
+
+*További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](../../security/benchmarks/security-control-inventory-asset-management.md)című témakörben talál.*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
 **Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetéseken belüli összes erőforrást (beleértve a virtuális gépeket is). Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
-* [Lekérdezések létrehozása az Azure Graph használatával](../../governance/resource-graph/first-query-portal.md)
+- [Lekérdezések létrehozása az Azure Graph használatával](../../governance/resource-graph/first-query-portal.md)
 
-* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
-* [Az Azure RBAC ismertetése](../../role-based-access-control/overview.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Az Azure RBAC ismertetése](../../role-based-access-control/overview.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, amelyekkel a metaadatok logikailag rendezhetők a besorolások alapján.
 
-* [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
 **Útmutató**: a virtuális gépek és a kapcsolódó erőforrások rendszerezéséhez és nyomon követéséhez használja a címkézés, a felügyeleti csoportok és a különálló előfizetések használatát. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-* [További Azure-előfizetések létrehozása](../../cost-management-billing/manage/create-subscription.md)
+- [További Azure-előfizetések létrehozása](../../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../../governance/management-groups/create-management-group-portal.md)
+- [Management Groups létrehozása](../../governance/management-groups/create-management-group-portal.md)
 
-* [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: a jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
 
 **Útmutató**: létre kell hoznia egy leltárt a jóváhagyott Azure-erőforrásokról és jóváhagyott szoftverekről a számítási erőforrásokhoz. Használhat adaptív alkalmazás Azure Security Center-vezérlőket is, amelyek segítségével megadhatja, hogy mely alkalmazások számára engedélyezett a konfigurált számítógépcsoportok futtatása. Ez a szolgáltatás az Azure-ban és a nem Azure-beli Windowsban (minden verzió, klasszikus vagy Azure Resource Manager) és linuxos gépen is elérhető.
+                    
 
-         
-
-* [Az adaptív alkalmazások vezérlésének engedélyezése](../../security-center/security-center-adaptive-application.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Az adaptív alkalmazások vezérlésének engedélyezése](../../security-center/security-center-adaptive-application.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
 **Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 - Nem engedélyezett erőforrástípusok
+
 - Engedélyezett erőforrástípusok
 
-Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat. Ez magas biztonsági alapú környezetekben, például a Storage-fiókokkal is segít.
+Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat. Ez segíthet a magas biztonságú környezetekben, például a Storage-fiókokkal.
 
-* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Lekérdezések létrehozása az Azure Graph használatával](../../governance/resource-graph/first-query-portal.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Lekérdezések létrehozása az Azure Graph használatával](../../governance/resource-graph/first-query-portal.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
 **Útmutató**: a Azure Automation teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során. Az Azure-beli virtuális gépek Leltározásával automatizálhatja a Virtual Machines összes szoftverével kapcsolatos információk gyűjtését. Megjegyzés: a szoftver neve, verziója, közzétevője és frissítési ideje elérhető a Azure Portal. A telepítés dátumának és egyéb információinak eléréséhez az ügyfélnek a vendég szintű diagnosztika engedélyezéséhez és a Windows-eseménynaplók Log Analytics munkaterületre való bekapcsolásához van szükség.
 
-Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, az adaptív alkalmazás-vezérlők a Azure Security Center a gépi tanulás segítségével elemzik a gépen futó alkalmazásokat, és létrehoznak egy engedélyezési listát ebből az intelligenciával. Ez a funkció nagy mértékben leegyszerűsíti az alkalmazások engedélyezési listájának házirend-szabályzatának konfigurálását és karbantartását, így elkerülhető, hogy a nemkívánatos szoftverek ne legyenek használatban a környezetben. Konfigurálhatja a naplózási módot vagy a kényszerített módot. A naplózási mód csak a védett virtuális gépeken lévő tevékenységeket naplózza. A kényszerített mód kikényszeríti a szabályokat, és ellenőrzi, hogy a nem engedélyezett alkalmazások le vannak-e tiltva.
+Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, az adaptív alkalmazás-vezérlők a Azure Security Center a gépi tanulás segítségével elemzik a gépen futó alkalmazásokat, és engedélyezési hoznak létre ebből az intelligenciával. Ez a funkció nagy mértékben leegyszerűsíti az alkalmazás-engedélyezési szabályzatok konfigurálásának és karbantartásának folyamatát, így elkerülhető, hogy a nemkívánatos szoftverek ne legyenek használatban a környezetben. Konfigurálhatja a naplózási módot vagy a kényszerített módot. A naplózási mód csak a védett virtuális gépeken lévő tevékenységeket naplózza. A kényszerített mód kikényszeríti a szabályokat, és ellenőrzi, hogy a nem engedélyezett alkalmazások le vannak-e tiltva.
 
-* [Bevezetés az Azure Automationbe](../../automation/automation-intro.md)
+- [Bevezetés az Azure Automationbe](../../automation/automation-intro.md)
 
-* [Az Azure-beli virtuális gépek leltározásának engedélyezése](../../automation/automation-tutorial-installed-software.md)
+- [Az Azure-beli virtuális gépek leltározásának engedélyezése](../../automation/automation-tutorial-installed-software.md)
 
-* [Az adaptív alkalmazások vezérlőinek ismertetése](../../security-center/security-center-adaptive-application.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Az adaptív alkalmazások vezérlőinek ismertetése](../../security-center/security-center-adaptive-application.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
 
-**Útmutató**: a Azure Automation teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során. Change Tracking használatával azonosíthatja a Virtual Machines telepített összes szoftvert. A jogosulatlan szoftverek eltávolításához saját folyamatot alkalmazhat, vagy használhatja Azure Automation állapot konfigurációját.
+**Útmutató**: a Azure Automation teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során.  Change Tracking használatával azonosíthatja a Virtual Machines telepített összes szoftvert. A jogosulatlan szoftverek eltávolításához saját folyamatot alkalmazhat, vagy használhatja Azure Automation állapot konfigurációját.
 
-* [Bevezetés az Azure Automationbe](../../automation/automation-intro.md)
+- [Bevezetés az Azure Automationbe](../../automation/automation-intro.md)
 
-* [A környezet változásainak követése a Change Tracking megoldással](../../automation/change-tracking/overview.md)
+- [A környezet változásainak követése a Change Tracking megoldással](../../automation/change-tracking/overview.md)
 
-* [Azure Automation állapot konfigurációjának áttekintése](../../automation/automation-dsc-overview.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure Automation állapot konfigurációjának áttekintése](../../automation/automation-dsc-overview.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
 
 **Útmutató**: Azure Security Center adaptív alkalmazás-vezérlők használatával biztosíthatja, hogy csak a hitelesített szoftverek legyenek végrehajtva, és az összes jogosulatlan szoftver le legyen tiltva az Azure Virtual Machines-on való végrehajtás során.
 
-* [Azure Security Center adaptív alkalmazás-vezérlők használata](../../security-center/security-center-adaptive-application.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure Security Center adaptív alkalmazás-vezérlők használata](../../security-center/security-center-adaptive-application.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 6.8](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-6-8.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 6.8](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-6-8.md)]
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
 
-**Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával: – nem engedélyezett erőforrástípusok
+**Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
+- Nem engedélyezett erőforrástípusok
+
 - Engedélyezett erőforrástípusok
 
-* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+További információkat az alábbi hivatkozásokon találhat:
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](../../governance/policy/samples/index.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Igen
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 6.9](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-6-9.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 6.9](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-6-9.md)]
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: a jóváhagyott szoftverek leltárának fenntartása
 
 **Útmutató**: az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű megoldás a Azure Security Center, amely segítségével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-ban és a nem Azure-beli gépeken (Windows és Linux). Harmadik féltől származó megoldás implementálása, ha ez nem felel meg a szervezet követelményének.
 
-* [Azure Security Center adaptív alkalmazás-vezérlők használata](../../security-center/security-center-adaptive-application.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Azure Security Center adaptív alkalmazás-vezérlők használata](../../security-center/security-center-adaptive-application.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 6.10](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-6-10.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 6.10](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-6-10.md)]
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: korlátozza a felhasználók képességét a Azure Resource Manager való interakcióra
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 
-* [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../../role-based-access-control/conditional-access-azure-management.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../../role-based-access-control/conditional-access-azure-management.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
 
-**Útmutató**: a parancsfájlok típusától függően használhat operációs rendszer-specifikus konfigurációkat vagy harmadik féltől származó erőforrásokat, amelyekkel korlátozhatja, hogy a felhasználók képesek legyenek parancsfájlokat végrehajtani az Azure számítási erőforrásokon belül. Emellett kihasználhatja Azure Security Center adaptív alkalmazás vezérlőelemeit is, hogy csak a hitelesített szoftverek fussanak, és az összes jogosulatlan szoftver le legyen tiltva az Azure Virtual Machines.
+**Útmutató**: a parancsfájlok típusától függően az operációs rendszerre jellemző konfigurációk vagy harmadik féltől származó erőforrások segítségével korlátozhatja, hogy a felhasználók képesek-e parancsfájlokat végrehajtani az Azure számítási erőforrásokon belül. Emellett kihasználhatja Azure Security Center adaptív alkalmazás vezérlőelemeit is, hogy csak a hitelesített szoftverek fussanak, és az összes jogosulatlan szoftver le legyen tiltva az Azure Virtual Machines.
 
-* [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
-* [Azure Security Center adaptív alkalmazás-vezérlők használata](../../security-center/security-center-adaptive-application.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure Security Center adaptív alkalmazás-vezérlők használata](../../security-center/security-center-adaptive-application.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
 **Útmutató**: az Azure-környezetben üzembe helyezett magas kockázatú alkalmazások elkülöníthetők a virtuális hálózatok, az alhálózatok, az előfizetések, a felügyeleti csoportok stb. számára, és megfelelően biztonságosak a Azure Firewall, a webalkalmazási TŰZFAL (WAF) vagy a hálózati biztonsági csoport (NSG) használatával.
 
-* [Virtuális hálózatok és virtuális gépek az Azure-ban](../network-overview.md)
+- [Virtuális hálózatok és virtuális gépek az Azure-ban](/azure/virtual-machines/windows/network-overview)
 
-* [Azure Firewall áttekintése](../../firewall/overview.md)
+- [Azure Firewall áttekintése](../../firewall/overview.md)
 
-* [Webalkalmazási tűzfal – áttekintés](../../web-application-firewall/overview.md)
+- [Webalkalmazási tűzfal – áttekintés](../../web-application-firewall/overview.md)
 
-* [Hálózati biztonság – áttekintés](../../virtual-network/network-security-groups-overview.md)
+- [Hálózati biztonság – áttekintés](../../virtual-network/network-security-groups-overview.md)
 
-* [Az Azure Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
+- [Az Azure Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 
-* [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../../governance/management-groups/overview.md)
+- [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../../governance/management-groups/overview.md)
 
-* [Útmutató az előfizetéssel kapcsolatos döntésekhez](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Útmutató az előfizetéssel kapcsolatos döntésekhez](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../../security/benchmarks/security-control-secure-configuration.md).*
+*További információt az [Azure biztonsági teljesítményteszt: biztonságos konfiguráció](../../security/benchmarks/security-control-secure-configuration.md)című témakörben talál.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
 **Útmutató**: Azure Policy vagy Azure Security Center használata az összes Azure-erőforrás biztonsági konfigurációjának fenntartásához. Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaScript Object Notation (JSON), amelyet át kell tekinteni, hogy a konfigurációk megfeleljenek a vállalat biztonsági követelményeinek, és meghaladják azokat.
 
-* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [A virtuálisgép-sablon letöltésével kapcsolatos információk](/previous-versions/azure/virtual-machines/windows/download-template)
-
-**Azure Security Center figyelés**: nem érhető el
+- [A virtuálisgép-sablon letöltésével kapcsolatos információk](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
 
-**Útmutató**: Azure Security Center javaslat használata [a Virtual Machines biztonsági konfigurációjában található biztonsági rések szervizelése] a biztonsági konfigurációk minden számítási erőforráson való fenntartásához.
+**Útmutató**: Azure Security Center ajánlás használata a biztonsági rések javításához a Virtual Machines biztonsági konfigurációjában, hogy az összes számítási erőforráson fenntartsa a biztonsági konfigurációkat.
 
-* [Azure Security Center javaslatok figyelése](../../security-center/security-center-recommendations.md)
+- [Azure Security Center javaslatok figyelése](../../security-center/security-center-recommendations.md)
 
-* [Azure Security Center javaslatok szervizelése](../../security-center/security-center-remediate-recommendations.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure Security Center javaslatok szervizelése](../../security-center/security-center-remediate-recommendations.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
 
-**Útmutató**: Azure Resource Manager-sablonok és Azure-házirendek használata a virtuális gépekhez társított Azure-erőforrások biztonságos konfigurálásához. A Azure Resource Manager-sablonok a virtuális gépek Azure-erőforrásokkal és egyéni sablonnal való üzembe helyezéséhez használt JSON-alapú fájlok, amelyeket meg kell őrizni. A Microsoft végzi el a karbantartást az alapsablonokon. Az Azure-szabályzat [deny] és a [telepítés, ha nem létezik] használatával kényszerítheti ki az Azure-erőforrások biztonságos beállításait.
+**Útmutató**: Azure Resource Manager-sablonok és Azure-házirendek használata a virtuális gépekhez társított Azure-erőforrások biztonságos konfigurálásához.  A Azure Resource Manager-sablonok a virtuális gépek Azure-erőforrásokkal és egyéni sablonnal való üzembe helyezéséhez használt JSON-alapú fájlok, amelyeket meg kell őrizni.  A Microsoft végzi el a karbantartást az alapsablonokon.  Az Azure-szabályzat [deny] és a [telepítés, ha nem létezik] használatával kényszerítheti ki az Azure-erőforrások biztonságos beállításait.
 
-* [Azure Resource Manager sablonok létrehozásával kapcsolatos információk](./ps-template.md)
+- [Azure Resource Manager sablonok létrehozásával kapcsolatos információk](ps-template.md)
 
-* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy effektusok ismertetése](../../governance/policy/concepts/effects.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure Policy effektusok ismertetése](../../governance/policy/concepts/effects.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
 
@@ -891,167 +976,191 @@ Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, 
 
 A legtöbb esetben a Microsoft Base VM-sablonok a Azure Automation kívánt állapot-konfigurációval együtt segíthetnek a biztonsági követelmények teljesítésében és fenntartásában.
 
-* [A virtuálisgép-sablon letöltésével kapcsolatos információk](/previous-versions/azure/virtual-machines/windows/download-template)
+- [A virtuálisgép-sablon letöltésével kapcsolatos információk](/previous-versions/azure/virtual-machines/windows/download-template)
 
-* [Az ARM-sablonok létrehozásával kapcsolatos információk](./ps-template.md)
+- [Az ARM-sablonok létrehozásával kapcsolatos információk](ps-template.md)
 
-* [Egyéni virtuális merevlemez feltöltése az Azure-ba](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910&preserve-view=true)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Egyéni virtuális merevlemez feltöltése az Azure-ba](upload-generalized-managed.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 7.4](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-7-4.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 7.4](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-7-4.md)]
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
 **Útmutató**: az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódokat, például az egyéni Azure-szabályzatokat, Azure Resource Manager sablonokat, a kívánt állapot-konfigurációs parancsfájlokat stb. Az Azure-DevOps felügyelt erőforrások, például a kód, a buildek és a munkahelyi nyomon követés eléréséhez engedélyekkel kell rendelkeznie az adott erőforrásokhoz. A legtöbb engedély a beépített biztonsági csoportokon keresztül adható meg az engedélyek és hozzáférés című témakörben leírtak szerint. Az Azure DevOps integrált, Active Directory vagy a TFS-vel integrált integrációval rendelkező felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára is engedélyezheti vagy megtagadhatja az engedélyeket.
 
-* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-* [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: Ha egyéni lemezképeket (például virtuális merevlemezt) használ, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
+**Útmutató**: Ha egyéni lemezképeket (például virtuális merevlemezt) használ, az Azure szerepköralapú hozzáférés-vezérlés használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.  
 
-* [Az Azure RBAC ismertetése](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Az Azure RBAC ismertetése](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Az Azure RBAC konfigurálása](../../role-based-access-control/quickstart-assign-role-user-portal.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Az Azure RBAC konfigurálása](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: az Azure-erőforrások konfigurációs felügyeleti eszközeinek üzembe helyezése
 
 **Útmutató**: Azure Policy kihasználása a virtuális gépek rendszerkonfigurációinak riasztására, naplózására és betartatására. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: konfigurációs felügyeleti eszközök telepítése operációs rendszerekhez
 
 **Útmutató**: Azure Automation állapot-konfiguráció a kívánt állapot-konfigurációs (DSC) csomópontok egyike a felhőben vagy a helyszíni adatközpontban. Lehetővé teszi, hogy gyorsan és könnyen, egy központi, biztonságos helyen lehessen méretezni a több ezer gépen. Könnyedén beépítheti a gépeket, hozzárendelheti a deklaratív konfigurációkat, és megtekintheti azokat a jelentéseket, amelyek az egyes gépek megfelelőségét a megadott kívánt állapotnak megfelelően mutatják.
 
-* [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](../../automation/automation-dsc-onboarding.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](../../automation/automation-dsc-onboarding.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: automatikus konfigurációs monitorozás megvalósítása Azure-erőforrásokhoz
 
-**Útmutató**: a Azure Security Center kihasználása az Azure-beli virtuális gépek alapkonfigurációjának megkereséséhez. Az automatikus konfiguráció további módszereit Azure Automation állapot konfigurációjának használatával is elvégezheti.
+**Útmutató**: a Azure Security Center kihasználása az Azure-beli virtuális gépek alapkonfigurációjának megkereséséhez.  Az automatikus konfiguráció további módszereit Azure Automation állapot konfigurációjának használatával is elvégezheti.
 
-* [Javaslatok szervizelése Azure Security Center](../../security-center/security-center-remediate-recommendations.md)
+- [Javaslatok szervizelése Azure Security Center](../../security-center/security-center-remediate-recommendations.md)
 
-* [Azure Automation állapot konfigurációjának első lépései](../../automation/automation-dsc-getting-started.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure Automation állapot konfigurációjának első lépései](../../automation/automation-dsc-getting-started.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
 
 **Útmutató**: Azure Automation állapot-konfiguráció a kívánt állapot-konfigurációs (DSC) csomópontok egyike a felhőben vagy a helyszíni adatközpontban. Lehetővé teszi, hogy gyorsan és könnyen, egy központi, biztonságos helyen lehessen méretezni a több ezer gépen. Könnyedén beépítheti a gépeket, hozzárendelheti a deklaratív konfigurációkat, és megtekintheti azokat a jelentéseket, amelyek az egyes gépek megfelelőségét a megadott kívánt állapotnak megfelelően mutatják.
 
-* [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](../../automation/automation-dsc-onboarding.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](../../automation/automation-dsc-onboarding.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
+
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 7.10](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-7-10.md)]
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 7.10](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-7-10.md)]
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
 
 **Útmutató**: a Managed Service Identity együttes használata a Azure Key Vault a Felhőbeli alkalmazások titkos felügyeletének egyszerűsítése és biztonságossá tétele érdekében.
 
-* [Integráció a Azure-Managed identitásokkal](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+- [Integráció az Azure felügyelt identitásokkal](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [Key Vault létrehozása](../../key-vault/general/quick-create-portal.md)
+- [Key Vault létrehozása](../../key-vault/general/quick-create-portal.md)
 
-* [Hitelesítés Key Vault](../../key-vault/general/authentication.md)
+- [Hitelesítés Key Vault](../../key-vault/general/authentication.md)
 
-* [Key Vault hozzáférési szabályzatok kiosztása](../../key-vault/general/assign-access-policy-portal.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Key Vault hozzáférési szabályzatok kiosztása](../../key-vault/general/assign-access-policy-portal.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató**: felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását az Azure ad-ben. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
+**Útmutató**: felügyelt identitások használata az Azure-szolgáltatások automatikus felügyelt identitással való ellátásához Azure Active Directory (Azure ad). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
-* [Felügyelt identitások konfigurálása](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Felügyelt identitások konfigurálása](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
 **Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz.
 
-* [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../../security/benchmarks/security-control-malware-defense.md).*
+*További információt az [Azure biztonsági teljesítményteszt: kártevők elleni védelem](../../security/benchmarks/security-control-malware-defense.md)című témakörben talál.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
 **Útmutató**: a Microsoft antimalware használata az Azure Windows rendszerű virtuális gépekhez az erőforrások folyamatos monitorozásához és védelméhez.
 
-* [A Microsoft antimalware konfigurálása Cloud Services és Virtual Machines](../../security/fundamentals/antimalware.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A Microsoft antimalware konfigurálása Cloud Services és Virtual Machines](../../security/fundamentals/antimalware.md)
 
 **Felelősség**: Ügyfél
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
 
-**Útmutató**: az Azure-beli virtuális gépekre nem alkalmazható, mivel ez egy számítási erőforrás.
+**Azure Policy beépített definíciók – Microsoft. ClassicCompute**:
 
-**Azure Security Center figyelés**: nem alkalmazható
+[!INCLUDE [Resource Policy for Microsoft.ClassicCompute 8.1](../../../includes/policy/standards/asb/rp-controls/microsoft.classiccompute-8-1.md)]
 
-**Felelősség**: nem alkalmazható
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 8.1](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-8-1.md)]
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
 
 **Útmutató**: telepítésekor az Azure-hoz készült Microsoft antimalware szolgáltatás alapértelmezés szerint automatikusan telepíti a legújabb aláírást, platformot és motor-frissítéseket. Kövesse az Azure Security Center: "számítási alkalmazások" című témakörben található javaslatokat &amp; , hogy az összes végpont naprakész legyen a legújabb aláírásokkal. A Windows operációs rendszer további biztonsággal biztosítható, hogy a Microsoft Defender komplex veszélyforrások elleni védelmi szolgáltatásával, amely integrálható a Azure Security Centersal, a vírus-vagy kártevő-alapú támadások kockázatát korlátozza.
 
-* [A Microsoft antimalware telepítése Azure Cloud Services és Virtual Machines](../../security/fundamentals/antimalware.md)
+- [A Microsoft antimalware telepítése Azure Cloud Services és Virtual Machines](../../security/fundamentals/antimalware.md)
 
-* [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 8.3](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-8-3.md)]
+
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../../security/benchmarks/security-control-data-recovery.md).*
+*További információt az [Azure biztonsági teljesítményteszt: adat-helyreállítás](../../security/benchmarks/security-control-data-recovery.md)című témakörben talál.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
 **Útmutató**: engedélyezze Azure Backup és konfigurálja az Azure-beli virtuális gépeket (VM), valamint az automatikus biztonsági mentések kívánt gyakoriságát és megőrzési idejét.
 
-* [Az Azure virtuális gépek biztonsági mentésének áttekintése](../../backup/backup-azure-vms-introduction.md)
+- [Az Azure virtuális gépek biztonsági mentésének áttekintése](../../backup/backup-azure-vms-introduction.md)
 
-* [Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból](../../backup/backup-azure-vms-first-look-arm.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból](../../backup/backup-azure-vms-first-look-arm.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 9.1](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-9-1.md)]
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és minden ügyfél által felügyelt kulcs biztonsági mentése
 
@@ -1059,139 +1168,143 @@ A legtöbb esetben a Microsoft Base VM-sablonok a Azure Automation kívánt áll
 
 Engedélyezze Azure Backup és a célként megadott Azure-Virtual Machines (VM), valamint a kívánt gyakoriságot és megőrzési időt. Ez magában foglalja a rendszerállapot teljes biztonsági mentését. Ha az Azure Disk Encryption szolgáltatást használja, az Azure virtuális gép biztonsági mentése automatikusan kezeli az ügyfél által felügyelt kulcsok biztonsági mentését.
 
-* [Biztonsági mentés titkosítást használó Azure-beli virtuális gépeken](../../backup/backup-azure-vms-encryption.md)
+- [Biztonsági mentés titkosítást használó Azure-beli virtuális gépeken](../../backup/backup-azure-vms-encryption.md)
 
-* [Az Azure virtuális gépek biztonsági mentésének áttekintése](../../backup/backup-azure-vms-introduction.md)
+- [Az Azure virtuális gépek biztonsági mentésének áttekintése](../../backup/backup-azure-vms-introduction.md)
 
-* [Az Azure virtuális gépek biztonsági mentésének áttekintése](../../backup/backup-azure-vms-introduction.md)
+- [Az Azure virtuális gépek biztonsági mentésének áttekintése](../../backup/backup-azure-vms-introduction.md)
 
-* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. számítás**:
+
+[!INCLUDE [Resource Policy for Microsoft.Compute 9.2](../../../includes/policy/standards/asb/rp-controls/microsoft.compute-9-2.md)]
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
-**Útmutató**: a Azure Backupon belüli tartalmak adatvisszaállításának rendszeres elvégzése. Ha szükséges, tesztelje a visszaállítási tartalmat egy elkülönített virtuális hálózatra vagy előfizetésre. Az ügyfél által felügyelt kulcsok biztonsági másolatának visszaállítását.
+**Útmutató**: a Azure Backupon belüli tartalmak adatvisszaállításának rendszeres elvégzése. Ha szükséges, ellenőrizze a tartalom visszaállítását egy elkülönített virtuális hálózatra vagy előfizetésre. Az ügyfél által felügyelt kulcsok biztonsági másolatának visszaállítását.
 
 Az Azure Disk Encryption használata esetén visszaállíthatja az Azure-beli virtuális gépet a lemez titkosítási kulcsaival. A lemezes titkosítás használata esetén visszaállíthatja az Azure-beli virtuális gépet a lemez titkosítási kulcsaival.
 
-* [Biztonsági mentés titkosítást használó Azure-beli virtuális gépeken](../../backup/backup-azure-vms-encryption.md)
+- [Biztonsági mentés titkosítást használó Azure-beli virtuális gépeken](../../backup/backup-azure-vms-encryption.md)
 
-* [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../../backup/backup-azure-restore-files-from-vm.md)
+- [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../../backup/backup-azure-restore-files-from-vm.md)
 
-* [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
-* [Titkosított virtuális gépek biztonsági mentése és visszaállítása](../../backup/backup-azure-vms-encryption.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Titkosított virtuális gépek biztonsági mentése és visszaállítása](../../backup/backup-azure-vms-encryption.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: az Azure által felügyelt lemezek Azure Backup használatával történő biztonsági mentésekor a virtuális gépek Storage Service encryption (SSE) inaktív állapotban vannak titkosítva. A Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését is elvégezheti. A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezze a Key Vault Soft-Delete.
+**Útmutató**: az Azure Managed disks Azure Backup használatával történő biztonsági mentésekor a virtuális gépek Storage Service encryption (SSE) inaktív állapotban vannak titkosítva. A Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését is elvégezheti. A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezze a Key Vault Soft-Delete.
 
-* [Soft Delete a virtuális gépekhez](../../backup/soft-delete-virtual-machines.md)
+- [Soft Delete a virtuális gépekhez](../../backup/soft-delete-virtual-machines.md)
 
-* [Azure Key Vault: a helyreállítható törlés áttekintése](../../key-vault/general/soft-delete-overview.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure Key Vault: a helyreállítható törlés áttekintése](/azure/key-vault/general/overview-soft-delete)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](../../security/benchmarks/security-control-incident-response.md).*
+*További információ: [Azure Security Benchmark: Incidensek kezelése](../../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
 **Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
-* [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-* [Microsoft Security Response Center – incidens anatómiája](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
+- [Microsoft Security Response Center – incidens anatómiája](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-* [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
-**Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
+**Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint a riasztást eredményező tevékenység mögötti rosszindulatú szándékkal.
 
-Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások megoldását azon Azure-erőforrások és -környezetek kritikussága alapján, ahol az incidens történt.
+Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához.  Az Ön felelőssége, hogy rangsorolja a riasztások megoldását azon Azure-erőforrások és -környezetek kritikussága alapján, ahol az incidens történt.
 
-* [Biztonsági riasztások az Azure Security Centerben](../../security-center/security-center-alerts-overview.md)
+- [Biztonsági riasztások az Azure Security Centerben](../../security-center/security-center-alerts-overview.md)
 
-* [Címkék használata az Azure-erőforrások rendszerezéséhez](../../azure-resource-manager/management/tag-resources.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
 **Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
-* [Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és edzésprogramjának kidolgozásához](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és edzésprogramjának kidolgozásához](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-* [A Azure Security Center biztonsági kapcsolattartó beállítása](../../security-center/security-center-provide-security-contact-details.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A Azure Security Center biztonsági kapcsolattartó beállítása](../../security-center/security-center-provide-security-contact-details.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
 **Útmutató**: az Azure Security Center-riasztások és javaslatok exportálása a folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-* [Folyamatos exportálás konfigurálása](../../security-center/continuous-export.md)
+- [Folyamatos exportálás konfigurálása](../../security-center/continuous-export.md)
 
-* [Riasztások streamelése az Azure Sentinelbe](../../sentinel/connect-azure-security-center.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Riasztások streamelése az Azure Sentinelbe](../../sentinel/connect-azure-security-center.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan elindíthatja a válaszokat az "Logic apps" használatával a biztonsági riasztások és az Azure-erőforrások védelme érdekében javasolt javaslatok alapján.
 
-* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../../security-center/workflow-automation.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../../security-center/workflow-automation.md)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
+*További információkért tekintse meg az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team gyakorlatok](../../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)című témakört.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
 **Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatban a Microsoft stratégiáját és a Red Teaming és a Live site penetráció tesztelését is használhatja.
 
-* [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Felelősség**: Megosztott
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapterveiről](../../security/benchmarks/security-baselines-overview.md)
+- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

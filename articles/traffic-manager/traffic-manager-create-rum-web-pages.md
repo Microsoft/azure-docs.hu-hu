@@ -4,21 +4,20 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja be a weblapjait 
 services: traffic-manager
 documentationcenter: traffic-manager
 author: duongau
-manager: twooley
+manager: kumud
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/16/2018
+ms.date: 04/06/2021
 ms.author: duau
-ms.custom: ''
-ms.openlocfilehash: 2bb104fd9cfc3c4ffddb82e4cf442e94c4650550
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ec91945c901f46d7036e8c474f9f5f0714ce65e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98184558"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580383"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>valós felhasználómérés küldése az Azure-Traffic Manager weblapok használatával
 
@@ -26,43 +25,47 @@ A weblapokat úgy is beállíthatja, hogy valós felhasználómérés küldjön 
 
 ## <a name="obtain-a-real-user-measurements-key"></a>valós felhasználómérés kulcs beszerzése
 
-Az ügyfélalkalmazás által Traffic Manager elküldött méréseket a szolgáltatás a **valós felhasználómérés (rum) kulcsnak** nevezett egyedi karakterlánc használatával azonosítja. Egy RUM-kulcsot a Azure Portal, egy REST API vagy a PowerShell vagy az Azure CLI használatával szerezhet be.
+Az ügyfélalkalmazás által Traffic Manager elküldött méréseket a szolgáltatás a **valós felhasználómérés (rum) kulcsnak** nevezett egyedi karakterlánc használatával azonosítja. A RUM-kulcsot a Azure Portal, a REST API, a PowerShell vagy az Azure parancssori felület használatával kérheti le.
 
 A RUM kulcs beszerzése Azure Portal használatával:
 1. Egy böngészőben jelentkezzen be az Azure Portalra. Ha még nincs fiókja, regisztrálhat egy egy hónapos ingyenes próbaverzióra.
-2. A portál keresősávjában keressen rá a módosítani kívánt Traffic Manager-profil nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
-3. A Traffic Manager profil panelen kattintson a **valós felhasználómérés** elemre a **Beállítások** területen.
-4. Kattintson a **kulcs létrehozása** lehetőségre egy új rum-kulcs létrehozásához.
- 
-   ![valós felhasználómérés kulcs előállítása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+
+1. A portálon keresse meg a módosítani kívánt Traffic Manager profil nevét, majd válassza ki a Traffic Manager profilt a megjelenített eredmények között.
+
+1. A Traffic Manager profil lapon válassza a **valós felhasználómérés** lehetőséget a **Beállítások** területen.
+
+1. Válassza a **kulcs létrehozása** lehetőséget egy új rum-kulcs létrehozásához.
+
+    :::image type="content" source="./media/traffic-manager-create-rum-web-pages/generate-rum-key.png" alt-text="Képernyőkép a kulcs létrehozásáról."::: 
 
    **1. ábra: valós felhasználómérés kulcs létrehozása**
 
-5. A panel most megjeleníti a generált RUM-kulcsot és egy JavaScript-kódrészletet, amelyet be kell ágyazni a HTML-lapra.
- 
-    ![valós felhasználómérés kulcs JavaScript-kódja](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
+1. A lap ekkor megjeleníti a generált RUM-kulcsot, valamint egy JavaScript-kódrészletet, amelyet be kell ágyazni a HTML-lapra.
+
+    :::image type="content" source="./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png" alt-text="A generált JavaScript-kód képernyőképe."::: 
 
     **2. ábra: valós felhasználómérés kulcs-és mérési JavaScript**
  
-6. A JavaScript-kód másolásához kattintson a **Másolás** gombra. 
+1. A JavaScript-kód másolásához kattintson a **Másolás** gombra. 
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > A valós felhasználómérés funkció megfelelő működéséhez használja a generált JavaScriptet. A parancsfájl vagy az valós felhasználómérés által használt parancsfájlok módosításai kiszámíthatatlan működéshez vezethetnek.
 
 ## <a name="embed-the-code-to-an-html-web-page"></a>A kód beágyazása egy HTML-weblapra
 
 A RUM-kulcs beszerzése után a következő lépés a másolt JavaScript beágyazása egy olyan HTML-oldalra, amelyet a végfelhasználók meglátogatnak. A HTML-szerkesztés többféleképpen is elvégezhető, és különböző eszközöket és munkafolyamatokat használhat. Ebből a példából megtudhatja, hogyan frissítheti a HTML-lapokat a szkript hozzáadásához. Ezt az útmutatót használhatja a HTML-forrás felügyeleti munkafolyamathoz való igazításhoz.
 
-1.  HTML-oldal megnyitása egy szövegszerkesztőben
-2.  Illessze be azt a JavaScript-kódot, amelyet az előző lépésben másolt a HTML törzs szakaszába (a másolt kód a 8 & 9. sorban található, lásd a 3. ábrát).
- 
-    ![JavaScript-kód beágyazása a weblapra valós felhasználómérés](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
+1. Nyissa meg a HTML-lapot egy szövegszerkesztőben.
+
+1. Illessze be az utolsó szakaszban másolt JavaScript-kódot a HTML törzs szakaszába. A másolt kód a 8 & 9. sorban található, lásd: 3. ábra.
+
+    :::image type="content" source="./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png" alt-text="Képernyőfelvétel a weboldalra ágyazott generált JavaScriptről."::: 
 
     **3. ábra: egyszerű HTML beágyazott valós felhasználómérés JavaScripttel**
 
-3.  Mentse a HTML-fájlt, és az internethez csatlakozó webkiszolgálón tárolja. 
-4. Amikor a lap legközelebb megjelenik egy webböngészőben, a rendszer letölti a JavaScriptet, és a parancsfájl végrehajtja a mérési és jelentéskészítési műveleteket.
+1. Mentse a HTML-fájlt, és az internethez csatlakozó webkiszolgálón tárolja.
 
+1. Amikor legközelebb megjeleníti a lapot egy webböngészőben, a rendszer letölti a JavaScriptet, és a parancsfájl végrehajtja a mérési és jelentéskészítési műveleteket.
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ a [valós felhasználómérés](traffic-manager-rum-overview.md)

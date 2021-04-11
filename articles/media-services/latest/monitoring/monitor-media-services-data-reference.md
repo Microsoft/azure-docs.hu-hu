@@ -9,10 +9,10 @@ ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
 ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105609088"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services adathivatkozás figyelése
@@ -32,7 +32,7 @@ Media Services támogatja a következő erőforrások figyelési metrikáit:
 
 A következő fiók metrikáit figyelheti.
 
-|Metrika neve|Megjelenített név|Description|
+|Metrika neve|Megjelenített név|Leírás|
 |---|---|---|
 |AssetCount|Eszközök száma|A fiókban lévő eszközök.|
 |AssetQuota|Eszköz kvótája|A fiókban lévő eszköz kvótája.|
@@ -50,7 +50,7 @@ Tekintse át [a fiók kvótáit és korlátozásait](../limits-quotas-constraint
 
 A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) metrikáit támogatja:
 
-|Metrika neve|Megjelenített név|Description|
+|Metrika neve|Megjelenített név|Leírás|
 |---|---|---|
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|

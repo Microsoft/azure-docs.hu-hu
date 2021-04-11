@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: a Machine learning használatának első lépései – Python'
 titleSuffix: Azure Machine Learning
-description: Ebből az oktatóanyagból megtudhatja, hogyan futtathatja a Pythonhoz készült Azure Machine Learning SDK-t a személyes fejlesztési környezetben.
+description: Ismerkedjen meg a saját fejlesztési környezetében futó Pythonhoz készült Azure Machine Learning SDK-val.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: 81b9b5d53e1b61322d25d5dead85429474c1272c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 69340245cdebda570b526afd4f11ac8314384b43
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935549"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210618"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben (4. rész)
 
@@ -30,16 +30,18 @@ Az oktatóanyag-sorozat 1. részében a következőket fogja elsajátítani:
 > * Állítsa be a kód címtár-struktúráját.
 > * Hozzon létre egy Azure Machine Learning munkaterületet.
 > * Konfigurálja a helyi fejlesztési környezetet.
-> * Hozzon létre egy számítási fürtöt.
+> * Hozzon létre egy számítási fürtöt, amely egy felhőalapú erőforrás a modellek betanításához.
 
-> [!NOTE]
-> Ez az oktatóanyag-sorozat a **Batch-feladatok** elküldéséhez szükséges Azure Machine learning fogalmakat ismerteti – ez az a kód, amellyel a rendszer a háttérben futtatja a kódot, felhasználói beavatkozás nélkül. Ez akkor hasznos, ha a befejezett parancsfájlokat vagy kódokat többször szeretné futtatni, vagy a számítási igényű gépi tanulási feladatokhoz. Ha jobban érdeklik a felderítő munkafolyamatok, használhatja [a Jupyter vagy a RStudio-t egy Azure Machine learning számítási példányon](tutorial-1st-experiment-sdk-setup.md).
+Ez az oktatóanyag-sorozat a **Batch-feladatok** elküldéséhez szükséges Azure Machine learning fogalmakat ismerteti – ez az a kód, amellyel a rendszer a háttérben futtatja a kódot, felhasználói beavatkozás nélkül. Ez akkor hasznos, ha a befejezett parancsfájlokat vagy kódokat többször szeretné futtatni, vagy a számítási igényű gépi tanulási feladatokhoz.
+
+A Azure Machine Learning használatának egy másik nagyszerű módja a Jupyter notebookok használata.  Tekintse [meg a Jupyter-jegyzetfüzetek Azure Machine learning első lépései című oktatóanyagot](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálkozzon [Azure Machine learning](https://aka.ms/AMLFree).
 - [Anaconda](https://www.anaconda.com/download/) vagy [Miniconda](https://www.anaconda.com/download/) a Python virtuális környezetek kezeléséhez és csomagok telepítéséhez.  
 - Ha még nem ismeri a Conda használatát, tekintse meg [a Conda használatának első lépéseit](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html)ismertető témakört.
+- Bármilyen IDE-vagy szövegszerkesztő a Python-parancsfájlok létrehozásához.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Az Azure Machine Learning SDK telepítése
 

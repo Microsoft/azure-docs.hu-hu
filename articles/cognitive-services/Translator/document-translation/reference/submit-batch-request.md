@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
 ms.openlocfilehash: 803a0b9f4496a3d785aa6f22833fee4ae6eca6e0
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105613026"
 ---
 # <a name="document-translation-submit-batch-request"></a>Dokumentum fordítása: batch-kérelem elküldése
@@ -45,13 +45,13 @@ Megtudhatja, hogyan keresheti meg az [Egyéni tartománynevet](../get-started-wi
 
 A kérelem fejlécei:
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Kötelező kérelem fejléce|
 
 ## <a name="request-body-batch-submission-request"></a>Kérelem törzse: batch-küldési kérelem
 
-|Név|Típus|Description|
+|Név|Típus|Leírás|
 |--- |--- |--- |
 |bemenetek|BatchRequest[]|Alább felsorolt BatchRequest. A dokumentumokat tartalmazó dokumentumok vagy mappák beviteli listája. Adathordozó típusa: "Application/JSON", "text/JSON", "Application/* + JSON".|
 
@@ -217,7 +217,7 @@ Győződjön meg arról, hogy a mappanév (kis-és nagybetűk megkülönböztet�
 
 A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
-|Állapotkód|Description|
+|Állapotkód|Leírás|
 |--- |--- |
 |202|Elfogadott. A sikeres kérés és a Batch-kérést a szolgáltatás hozza létre. A fejléc Operation-Location a műveleti AZONOSÍTÓval rendelkező állapot-URL-címet jelöli. HeadersOperation helye: karakterlánc|
 |400|Hibás kérelem. Érvénytelen kérés. Adja meg a bemeneti paramétereket.|
@@ -229,7 +229,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 ## <a name="error-response"></a>Hiba válasza
 
-|Név|Típus|Description|
+|Név|Típus|Leírás|
 |--- |--- |--- |
 |code|sztring|A magas szintű hibakódokat tartalmazó enumerálások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
 |message|sztring|Magas szintű hibaüzenetet kap.|

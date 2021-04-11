@@ -2,17 +2,19 @@
 title: VSphere hitelesítő adatok alaphelyzetbe állítása Azure VMware-megoldáshoz
 description: Ismerje meg, hogyan állíthatja alaphelyzetbe az Azure VMware-megoldás vSphere hitelesítő adatait, és gondoskodjon arról, hogy a HCX-összekötő a legújabb vSphere hitelesítő adatokkal rendelkezik.
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: 1376b6322250da506d32b8ced0a62ddbf60ba9f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: 793b79e42a0adbca54804d1b66102736aff22d7a
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587627"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109101"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>VSphere hitelesítő adatok alaphelyzetbe állítása Azure VMware-megoldáshoz
 
 Ebből a cikkből megtudhatja, hogyan állíthatja alaphelyzetbe a vCenter Server és a NSX-T Manager hitelesítő adatait az Azure VMware-megoldás privát felhője számára. Ezzel biztosíthatja, hogy a HCX-összekötő a legújabb vCenter Server hitelesítő adatokkal rendelkezik.
+
+Ezen útmutató mellett megtekintheti a videót is a [vCenter CloudAdmin & NSX-T rendszergazdai jelszavának alaphelyzetbe állításához](https://youtu.be/cK1qY3knj88).
 
 ## <a name="reset-your-azure-vmware-solution-credentials"></a>Az Azure VMware-megoldás hitelesítő adatainak alaphelyzetbe állítása
 

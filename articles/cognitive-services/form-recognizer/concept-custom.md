@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8a29bc0d98c1286dcf09da59dc21ac2b2e09f478
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d339d02310fddc3e5fd463f7d37e253614dba17
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935617"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067588"
 ---
 # <a name="form-recognizer-custom-models"></a>Űrlap-felismerő egyéni modelljei
 
@@ -34,30 +34,27 @@ Az űrlap-felismerő használatával olyan modellt is betaníthat, amely kinyeri
 Az egyéni modell létrehozásával, betanításával és használatával kapcsolatos lépések a következők:
 
 > [!div class="nextstepaction"]
->A betanítási adatkészlet összeállítása] (Build-Training-adatok-set. MD # Custom-Model-input-követelmények)
+>[&#120783;. A betanítási adatkészlet összeállítása](build-training-data-set.md#custom-model-input-requirements)
 
 Az egyéni modell létrehozása a betanítási adatkészlet létrehozásával kezdődik. A minta adatkészlethez legalább öt befejezett, azonos típusú kész űrlapra lesz szüksége. Különböző fájltípusok lehetnek, és szöveget és kézírást is tartalmazhatnak. Az űrlapoknak ugyanolyan típusú dokumentumnak kell lenniük, és követniük kell az űrlap-felismerő [bemeneti követelményeit](build-training-data-set.md#custom-model-input-requirements) .  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [Töltse fel a betanítási adatkészletet](build-training-data-set.md#upload-your-training-data)
+> [&#120784;. Töltse fel a betanítási adatkészletet](build-training-data-set.md#upload-your-training-data)
 
 A betanítási adatait fel kell töltenie egy Azure Blob Storage-tárolóba. Ha nem tudja, hogyan hozhat létre egy tárolóval rendelkező Azure Storage-fiókot, tekintse [meg a Azure Portal Azure Storage](../../storage/blobs/storage-quickstart-blobs-portal.md)gyors üzembe helyezését *ismertető témakört* . Az ingyenes díjszabási csomaggal (F0) próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
+
 > [!div class="nextstepaction"]
->[Az egyéni modell betanítása](quickstarts/client-library.md#train-a-custom-model)
+>[&#120785;. Az egyéni modell betanítása](quickstarts/client-library.md#train-a-custom-model)
 
 A modellt [a címkével ellátott](quickstarts/client-library.md#train-a-model-with-labels) adatkészletek [nélkül](quickstarts/client-library.md#train-a-model-without-labels) is betaníthatja. A címke nélküli adatkészletek kizárólag az elrendezési API-ra támaszkodnak a kulcsfontosságú információk észlelésére és azonosítására a hozzáadott emberi bevitel nélkül. A címkével ellátott adatkészletek az elrendezési API-ra is támaszkodnak, de a kiegészítő emberi bevitel is szerepel, például az adott címkéket és a mezők helyét. Ha a címkével ellátott és a címkével ellátott adatmennyiséget egyaránt használni szeretné, kezdje a címkével ellátott betanítási adattípushoz legalább öt befejezett formát, majd vegyen fel címkézetlen adatkészletet a szükséges adatkészletbe.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;  
 
 >[!div class="nextstepaction"]
->[Dokumentumok elemzése az egyéni modellel](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
+>[&#120786;. Dokumentumok elemzése az egyéni modellel](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
 
 Tesztelje az újonnan betanított modellt olyan űrlap használatával, amely nem része a betanítási adatkészletnek. Az egyéni modell teljesítményének növeléséhez továbbra is folytathatja a képzést.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
->[Egyéni modellek kezelése](quickstarts/client-library.md#manage-custom-models)
+>[&#120787;. Egyéni modellek kezelése](quickstarts/client-library.md#manage-custom-models)
 
 Bármikor megtekintheti az előfizetéshez tartozó egyéni modellek listáját, lekérheti az adott egyéni modell adatait, vagy törölhet egy egyéni modellt a fiókjából.
 

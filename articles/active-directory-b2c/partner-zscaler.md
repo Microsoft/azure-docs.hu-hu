@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9cd193eb6ff2858440f1cd9a62bdd53d58d6047d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096853"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256293"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Oktatóanyag: a Zscaler privát hozzáférésének konfigurálása Azure Active Directory B2C
 
@@ -96,7 +96,7 @@ A Azure AD B2C konfigurálása után a identitásszolgáltató többi konfigurá
 >[!Note]
 >Ez a lépés csak akkor szükséges, ha még nem konfigurált egyéni házirendeket. Ha már rendelkezik egy vagy több egyéni házirenddel, akkor kihagyhatja ezt a lépést.
 
-Ha egyéni házirendeket szeretne konfigurálni a Azure AD B2C bérlőn, tekintse meg az [Egyéni szabályzatok beszerzése a Azure Active Directory B2C](./custom-policy-get-started.md)című témakört.
+Ha egyéni házirendeket szeretne konfigurálni a Azure AD B2C bérlőn, tekintse meg az [Egyéni szabályzatok beszerzése a Azure Active Directory B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)című témakört.
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>3. lépés: a ZPA SAML-alkalmazásként való regisztrálása Azure AD B2C
 
@@ -149,7 +149,7 @@ Nyissa meg a ZPA felhasználói portált vagy egy böngésző-hozzáférési alk
 
 További információkért tekintse át a következő cikkeket:
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [SAML-alkalmazás regisztrálása Azure AD B2C](./saml-service-provider.md)
 - [Részletes konfigurációs útmutató a ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Identitásszolgáltató konfigurálása egyszeri bejelentkezéshez](https://help.zscaler.com/zpa/configuring-idp-single-sign)

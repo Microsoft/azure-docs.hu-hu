@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b880d70baf7c160f8235bd01a5000f83825c36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc81e0b5a2b7e9e2e5ab12094950f71ad51c6871
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98614842"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225971"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Mi az Azure AD Connect Cloud Sync?
 Azure AD Connect a Cloud Sync a Microsoft új ajánlása, amely a felhasználók, csoportok és névjegyek Azure AD-be való szinkronizálásához készült hibrid identitási célok teljesítésére és megvalósítására lett tervezve.  Ezt a Azure AD Connect alkalmazás helyett az Azure AD Cloud kiépítési ügynök használatával hajtja végre.  Azonban Azure AD Connect szinkronizálással is használható, és a következő előnyöket biztosítja:
@@ -63,7 +63,7 @@ Az alábbi táblázat a Azure AD Connect és a Azure AD Connect Cloud Sync össz
 | Összevonás támogatása |●|●|
 | Közvetlen egyszeri bejelentkezés|● |●|
 | Támogatja a tartományvezérlőre történő telepítést |● |● |
-| A Windows Server 2012 és a Windows Server 2012 R2 támogatása |● |● |
+| A Windows Server 2016 támogatása|● |● |
 | Szűrés tartományokon/szervezeti egységeken/csoportokon |● |● |
 | Objektumok szűrése attribútum értékeit |● | |
 | A minimális attribútumkészletek szinkronizálásának engedélyezése (MinSync) |● |● |

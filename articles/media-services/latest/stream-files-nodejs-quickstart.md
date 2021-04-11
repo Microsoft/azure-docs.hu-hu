@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: a431060be380952940bdb99c65abc7a9740091de
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105038158"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109186"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Videofájlok kódolása és továbbítása Node.JS
 
@@ -58,7 +58,7 @@ Nyissa meg az [index. TS](https://github.com/Azure-Samples/media-services-v3-nod
 
 A minta a következő műveleteket hajtja végre:
 
-1. Létrehoz egy **átalakítót** egy [Content Aware Encoding-készlettel](./content-aware-encoding.md). Először ellenőrzi, hogy létezik-e a megadott átalakító.
+1. Létrehoz egy **átalakítót** egy [Content Aware Encoding-készlettel](./encode-content-aware-concept.md). Először ellenőrzi, hogy létezik-e a megadott átalakító.
 1. Létrehoz egy kimeneti adategységet **, amelyet a** kódolási **feladatokban** használ a kimenet
 1. Opcionálisan feltölt egy helyi fájlt a Storage blob SDK használatával.
 1. Létrehoz egy HTTPS URL-címen vagy feltöltött fájlon alapuló **feladatot** .

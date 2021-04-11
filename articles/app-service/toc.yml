@@ -11,10 +11,8 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: ASP.NET-mag
-      href: quickstart-dotnetcore.md
     - name: ASP.NET
-      href: quickstart-dotnet-framework.md
+      href: quickstart-dotnetcore.md
     - name: Node.js
       href: quickstart-nodejs.md
     - name: PHP
@@ -187,6 +185,10 @@
               href: deploy-ci-cd-custom-container.md
             - name: Üzembe helyezés a helyi Gitből
               href: deploy-local-git.md
+            - name: GitHub Actions
+              href: deploy-github-actions.md
+            - name: GitHub-műveletek tárolók számára
+              href: deploy-container-github-action.md
             - name: Üzembe helyezés sablon használatával
               href: deploy-complex-application-predictably.md
         - name: Telepítési hitelesítő adatok beállítása
@@ -215,8 +217,6 @@
               href: configure-authentication-provider-facebook.md
             - name: Hitelesítés a Google-lel
               href: configure-authentication-provider-google.md
-            - name: Hitelesítés Microsoft-fiókkal
-              href: configure-authentication-provider-microsoft.md
             - name: Hitelesítés a Twitterrel
               href: configure-authentication-provider-twitter.md
             - name: Hitelesítés OpenID Connect-szolgáltatóval (előzetes verzió)

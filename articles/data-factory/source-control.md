@@ -7,12 +7,12 @@ ms.author: weetok
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2021
-ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5cb9090025fe541ad3f70cdac876aca0552f154
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719376"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553158"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -26,7 +26,7 @@ Alapértelmezés szerint a Azure Data Factory felhasználói felületi élmény 
 A jobb authoring Experience Azure Data Factory lehetővé teszi egy git-tárház konfigurálását az Azure Repos vagy a GitHub használatával. A Git egy verziókezelő rendszer, amely egyszerűbb változáskövetést és együttműködést tesz lehetővé. Ebből a cikkből megtudhatja, hogyan konfigurálhat és dolgozhat a git-tárházban, valamint kiemelheti az ajánlott eljárásokat és a hibaelhárítási útmutatót.
 
 > [!NOTE]
-> Azure Government felhő esetében csak a GitHub Enterprise érhető el.
+> Azure Government felhő esetében csak a *GitHub Enterprise Server* érhető el.
 
 Ha többet szeretne megtudni arról, hogy a Azure Data Factory hogyan integrálódik a git-vel, tekintse meg az alábbi 15 perces oktatóanyagot:
 

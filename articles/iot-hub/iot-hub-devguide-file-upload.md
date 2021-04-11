@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d106021d90304a06ea7c08494d626511bb903df0
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90019529"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553039"
 ---
 # <a name="upload-files-with-iot-hub"></a>Fájlok feltöltése az IoT Hubbal
 
@@ -44,7 +44,13 @@ A fájlfeltöltés funkció használatához először össze kell kapcsolni egy 
 A [fájlok feltöltése az eszközről a felhőbe a IoT hub](iot-hub-csharp-csharp-file-upload.md) útmutatók a feltöltési folyamat teljes áttekintését tartalmazzák. Ezek a útmutatók azt mutatják be, hogyan lehet a Azure Portal használatával társítani egy IoT hub-beli Storage-fiókot.
 
 > [!NOTE]
-> Az [Azure IoT SDK](iot-hub-devguide-sdks.md) -k automatikusan kezelik az SAS URI beolvasását, a fájl feltöltését és a befejezett feltöltés IoT hub értesítését.
+> Az [Azure IoT SDK](iot-hub-devguide-sdks.md) -k automatikusan kezelik a közös hozzáférésű aláírás URI azonosítójának beolvasását, a fájl feltöltését és a befejezett feltöltés IoT hub értesítését. Ha egy tűzfal blokkolja a Blob Storage végpont elérését, de engedélyezi a hozzáférést a IoT Hub végponthoz, a fájlfeltöltés folyamata meghiúsul, és a következő hibaüzenetet jeleníti meg a IoT C# eszközoldali SDK-hoz:
+>
+> `---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond`
+>
+> Ahhoz, hogy a fájlfeltöltés funkció működjön, a IoT Hub végpontnak és a Blob Storage végpontnak is elérhetőnek kell lennie az eszköz számára.
+> 
+
 
 ## <a name="initialize-a-file-upload"></a>Fájl feltöltésének inicializálása
 IoT Hub egy végponttal rendelkezik, amely a fájlok feltöltésére szolgáló SAS URI-t igényel a tárolóhoz. A fájlfeltöltés folyamatának elindításához az eszköz POST-kérést küld `{iot hub}.azure-devices.net/devices/{deviceId}/files` a következő JSON-törzsnek:

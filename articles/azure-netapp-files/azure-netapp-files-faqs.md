@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 318b7e8b35fa7cc56a86033a08e316257a488b6f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935243"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442694"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -82,7 +82,25 @@ Nem, jelenleg nem alkalmazhat hálózati biztonsági csoportokat a Azure NetApp 
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Használhatom az Azure RBAC-t a Azure NetApp Files?
 
-Igen, Azure NetApp Files támogatja az Azure RBAC funkcióit.
+Igen, Azure NetApp Files támogatja az Azure RBAC funkcióit. A beépített Azure-szerepkörökkel együtt [Egyéni szerepköröket hozhat létre](../role-based-access-control/custom-roles.md) a Azure NetApp Fileshoz. 
+
+Az Azure NetApp Files engedélyek teljes listájáért lásd: az Azure erőforrás-szolgáltató műveletei [`Microsoft.NetApp`](../role-based-access-control/resource-provider-operations.md#microsoftnetapp) .
+
+### <a name="are-azure-activity-logs-supported-on-azure-netapp-files"></a>Támogatottak az Azure-beli tevékenységek naplói Azure NetApp Files?
+
+Azure NetApp Files egy natív Azure-szolgáltatás. A rendszer naplózza a Azure NetApp Files összes PUT, POST és DELETE API-t. A naplók például olyan tevékenységeket mutatnak be, mint a pillanatképet létrehozó, a kötetet módosító, és így tovább.
+
+Az API-műveletek teljes listáját itt tekintheti meg: [Azure NetApp Files REST API](/rest/api/netapp/).
+
+### <a name="how-do-i-audit-file-access-on-azure-netapp-files-nfs-v3-and-v41-volumes"></a>Hogyan naplófájl-hozzáférés naplózása Azure NetApp Files NFS-(v3-és v 4.1-) köteteken?
+
+A naplókat az ügyfél oldalán is konfigurálhatja. A rendszer naplózza az összes olvasási, írási és attribútum-változást. 
+
+### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>Használhatom az Azure-szabályzatokat a Azure NetApp Files?
+
+Igen, létrehozhat [Egyéni Azure-házirendeket](../governance/policy/tutorials/create-custom-policy-definition.md). 
+
+Az Azure NetApp Files felületen azonban nem hozhat létre Azure-házirendeket (egyéni elnevezési házirendeket). Lásd: [Azure NetApp Files hálózati tervezéssel kapcsolatos irányelvek](azure-netapp-files-network-topologies.md#considerations).
 
 ## <a name="performance-faqs"></a>Gyakori kérdések a teljesítményről
 

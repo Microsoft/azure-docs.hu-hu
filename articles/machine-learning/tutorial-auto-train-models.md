@@ -1,7 +1,7 @@
 ---
-title: 'Regressziós oktatóanyag: automatizált ML'
+title: 'Oktatóanyag: regresszió automatikus gépi tanulással'
 titleSuffix: Azure Machine Learning
-description: Hozzon létre egy automatizált gépi tanulási kísérletet, amely egy regressziós modellt hoz létre az Ön által megadott képzési és konfigurációs beállítások alapján.
+description: Kódot írhat a Python SDK-val egy automatizált gépi tanulási kísérlet létrehozásához, amely egy regressziós modellt hoz létre.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,34 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7f3052905d7594d64be9455c16239ebabd219849
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565078"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210635"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: Automatizált gépi tanulás használata a taxiutak árának előrejelzéséhez
 
-
-Ebben az oktatóanyagban a Azure Machine Learning automatizált gépi tanulást használ egy regressziós modell létrehozásához a New York-i taxi díjszabásának előrejelzéséhez. Ez a folyamat fogadja az oktatási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkció-normalizálás/szabványosítási módszerek, modellek és hiperparaméter-beállítások kombinációit, hogy a legjobb modellt lehessen megérkezni.
+Ebben az oktatóanyagban a Azure Machine Learning SDK-ban található automatizált gépi tanulás használatával [regressziós modellt](concept-automated-ml.md#regression) hozhat létre a New York-i taxi díjszabásának előrejelzéséhez. Ez a folyamat fogadja az oktatási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkció-normalizálás/szabványosítási módszerek, modellek és hiperparaméter-beállítások kombinációit, hogy a legjobb modellt lehessen megérkezni.
 
 ![Folyamatábra](./media/tutorial-auto-train-models/flow2.png)
 
-Ez az oktatóanyag a következő feladatokat ismerteti:
+Ebben az oktatóanyagban kódot fog írni a Python SDK használatával.  A következő feladatokat fogja megismerni:
 
 > [!div class="checklist"]
 > * Az Azure Open-adatkészletek használatával letöltheti, átalakíthatja és megtisztíthatja az adatokat
 > * Automatizált gépi tanulási regressziós modell betanítása
 > * Modell pontosságának kiszámítása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Próbálja ki az automatizált gépi tanulást is a következő típusú modellek esetében: 
+
+* [Oktatóanyag: hozzon létre egy besorolási modellt automatikus ml-vel Azure Machine learning](tutorial-first-experiment-automated-ml.md) -egy kód nélküli példa.
+* [Oktatóanyag: a kereslet automatikus gépi tanulással való előrejelzése](tutorial-automated-ml-forecast.md) – a kód nélküli példa.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Ha még nem rendelkezik Azure Machine Learning munkaterülettel vagy notebook virtuális géppel, fejezze be a [telepítési útmutatót](tutorial-1st-experiment-sdk-setup.md) .
 * A telepítési oktatóanyag befejezése után nyissa meg az *oktatóanyagok/Regression-automl-NYC-taxi-Data/Regression-Automated-ml. ipynb* notebookot ugyanazzal a notebook-kiszolgálóval.

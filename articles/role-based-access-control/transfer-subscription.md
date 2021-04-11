@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555905"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580112"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
@@ -74,15 +74,15 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 | Rendszer által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Le kell tiltania, majd újra engedélyeznie kell a felügyelt identitásokat. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
 | Felhasználó által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Törölnie kell, újra létre kell hoznia és csatolnia kell a felügyelt identitásokat a megfelelő erőforráshoz. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
 | Azure Key Vault | Igen | Yes | [Hozzáférési szabályzatok listázása Key Vault](#list-key-vaults) | Frissítenie kell a kulcstartóhoz társított bérlői azonosítót. Az új hozzáférési házirendeket el kell távolítania és hozzá kell adnia. |
-| Azure SQL Database-adatbázisok engedélyezve az Azure AD-hitelesítés integrációja | Igen | Nem | [Azure SQL-adatbázisok keresése az Azure AD-hitelesítéssel](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure SQL Database-adatbázisok engedélyezve az Azure AD-hitelesítés integrációja | Igen | Nem | [Azure SQL-adatbázisok keresése az Azure AD-hitelesítéssel](#list-azure-sql-databases-with-azure-ad-authentication) | Egy Azure SQL Database-adatbázis nem vihető át egy másik címtárba, ha az Azure AD-hitelesítés engedélyezve van. További információ: [Azure Active Directory hitelesítés használata](../azure-sql/database/authentication-aad-overview.md). | 
 | Azure Storage és Azure Data Lake Storage Gen2 | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
 | Azure Data Lake Storage Gen1 | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
 | Azure Files | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
-| Azure File Sync | Igen | Yes |  |  |
+| Azure File Sync | Igen | Yes |  | A Storage Sync szolgáltatás és/vagy a Storage-fiók át lehet helyezni egy másik könyvtárba. További információkat a [Azure Filesról szóló gyakori kérdések (GYIK)](../storage/files/storage-files-faq.md#azure-file-sync) című témakörben talál. |
 | Azure Managed Disks | Igen | Yes |  |  Ha az ügyfél által felügyelt kulcsokkal rendelkező Managed Disks titkosítását használja, le kell tiltania, majd újra engedélyeznie kell a lemezes titkosítási csoportokhoz társított rendszerhez rendelt identitásokat. És újra létre kell hoznia a szerepkör-hozzárendeléseket, azaz újra meg kell adnia a szükséges engedélyeket a lemez titkosítási csoportjai számára a Kulcstartókban. |
-| Azure Kubernetes Service | Igen | Yes |  |  |
+| Azure Kubernetes Service | Igen | Nem |  | Az AK-fürt és a hozzá tartozó erőforrások nem vihetők át másik könyvtárba. További információ: az [Azure Kubernetes Service (ak) szolgáltatással kapcsolatos gyakori kérdések](../aks/faq.md) |
 | Azure Policy | Igen | Nem | Minden Azure Policy objektum, beleértve az egyéni definíciókat, a hozzárendeléseket, a kivételeket és a megfelelőségi adatok. | A definíciók [exportálására](../governance/policy/how-to/export-resources.md), importálására és újbóli hozzárendelésére van szükség. Ezután hozzon létre új szabályzat-hozzárendeléseket és a szükséges [házirend-kivételeket](../governance/policy/concepts/exemption-structure.md). |
-| Azure Active Directory tartományi szolgáltatások | Igen | Nem |  |  |
+| Azure Active Directory tartományi szolgáltatások | Igen | Nem |  | Azure AD Domain Services felügyelt tartomány nem vihető át másik könyvtárba. További információ: [Azure Active Directory (ad) tartományi szolgáltatásokkal kapcsolatos gyakori kérdések (GYIK)](../active-directory-domain-services/faqs.md) |
 | Alkalmazásregisztrációk | Igen | Yes |  |  |
 
 > [!WARNING]

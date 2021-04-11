@@ -3,16 +3,16 @@ title: A folyamat-összehangolás és az eseményindítók hibáinak megoldása 
 description: Különböző módszerekkel végezheti el a folyamat-triggerekkel kapcsolatos hibák elhárítását Azure Data Factory.
 author: ssabat
 ms.service: data-factory
-ms.date: 03/13/2021
+ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563412"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385411"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
 
@@ -83,7 +83,26 @@ Elérte az Integration Runtime kapacitási korlátját. Lehet, hogy nagy mennyis
 - A folyamatokat különböző indító időpontokban futtathatja.
 - Hozzon létre egy új integrációs modult, és ossza szét a folyamatokat több integrációs modul között.
 
-### <a name="how-to-perform-activity-level-errors-and-failures-in-pipelines"></a>Tevékenység szintű hibák és hibák végrehajtása a folyamatokban
+### <a name="a-pipeline-run-error-while-invoking-rest-api-in-a-web-activity"></a>A folyamat futása során hiba történt a REST API webes tevékenységben való meghívásakor
+
+**Probléma**
+
+Hibaüzenet:
+
+`
+Operation on target Cancel failed: {“error”:{“code”:”AuthorizationFailed”,”message”:”The client ‘<client>’ with object id ‘<object>’ does not have authorization to perform action ‘Microsoft.DataFactory/factories/pipelineruns/cancel/action’ over scope ‘/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.DataFactory/factories/<data factory name>/pipelineruns/<pipeline run id>’ or the scope is invalid. If access was recently granted, please refresh your credentials.”}}
+`
+
+**Ok**
+
+A folyamatok a webes tevékenység használatával hívhatják az ADF REST API metódusokat, ha és csak akkor, ha a Azure Data Factory tag hozzá van rendelve a közreműködő szerepkörhöz. Először be kell állítania a Azure Data Factory felügyelt identitás hozzáadását a közreműködő biztonsági szerepkörhöz. 
+
+**Resolution** (Osztás)
+
+Mielőtt a Azure Data Factory REST API egy webes tevékenység beállítások lapján használja, konfigurálni kell a biztonságot. Azure Data Factory folyamatok a webes tevékenység használatával hívhatják az ADF REST API metódusokat, ha és csak akkor, ha az Azure Data Factory felügyelt identitás hozzá van rendelve a *közreműködői*  szerepkörhöz. Először nyissa meg a Azure Portal, majd a bal oldali menüben kattintson a **minden erőforrás** hivatkozásra. Válassza a **Azure Data Factory** lehetőséget, ha a *szerepkör-hozzárendelés hozzáadása* mezőben a **Hozzáadás** gombra kattint a közreműködői szerepkörrel rendelkező felügyelt identitás hozzáadásához.
+
+
+### <a name="how-to-check-and-branch-on-activity-level-success-and-failure-in-pipelines"></a>Tevékenység-szintű sikeres és sikertelen folyamatok ellenőrzési és ágazati állapotba helyezése
 
 **Ok**
 
@@ -115,7 +134,7 @@ A *foreach* párhuzamossági foka valójában a maximális párhuzamossági fok.
 
 *Foreach* kapcsolatos ismert tények
  * A foreach rendelkezik egy batchs count (n) nevű tulajdonsággal, ahol az alapértelmezett érték 20, a Max pedig 50.
- * A kötegek száma n, az n várólisták létrehozásához használatos. Később megbeszéljük a várólisták kiépítésének részleteit.
+ * A kötegek száma n, az n várólisták létrehozásához használatos. 
  * Minden üzenetsor egymás után fut, de több várólista is futtatható párhuzamosan.
  * A várólisták előre lettek létrehozva. Ez azt jelenti, hogy a futásidejű modulban nincs szükség a várólisták kiegyensúlyozására.
  * Egyszerre legfeljebb egy, várólistára feldolgozható elemnek kell lennie. Ez azt jelenti, hogy a legtöbb n elem feldolgozása egy adott időpontban történik.
@@ -124,7 +143,8 @@ A *foreach* párhuzamossági foka valójában a maximális párhuzamossági fok.
 **Resolution** (Osztás)
 
  * A *SetVariable* tevékenységet ne használja a párhuzamosan futó *rendszerekben* .
- * A várólisták létrehozási módjának figyelembevételével az ügyfél növelheti a foreach teljesítményét úgy, hogy több *foreaches* állít be, ahol minden foreach hasonló feldolgozási idővel rendelkező elemek lesznek. Ez biztosítja, hogy a hosszú távú feldolgozásokat párhuzamosan dolgozza fel a rendszer.
+ * A várólisták létrehozási módjának figyelembevételével az ügyfél javíthatja a foreach teljesítményét azáltal, hogy a *foreach* többszörösét állítja be, ahol minden *foreach* hasonló feldolgozási idővel rendelkező elemek lesznek. 
+ * Ez biztosítja, hogy a hosszú távú feldolgozásokat párhuzamosan dolgozza fel a rendszer.
 
  ### <a name="pipeline-status-is-queued-or-stuck-for-a-long-time"></a>A folyamat állapota várólistára van állítva, vagy hosszú ideig ragadt
  

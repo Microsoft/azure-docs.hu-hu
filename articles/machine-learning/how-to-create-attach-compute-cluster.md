@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: c11176f0c7760e76b755406bda96b72b302f8857
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506939"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169572"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning számítási fürt létrehozása
 
@@ -44,11 +44,9 @@ A számítási fürtök biztonságos módon futtathatják a feladatokat egy [vir
 
 ## <a name="limitations"></a>Korlátozások
 
-* Ne **hozzon létre több egyidejű mellékletet ugyanahhoz a számítási** feladatokhoz a munkaterületen. Például egy számítási fürt csatolása egy munkaterülethez két különböző név használatával. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
-
-    Ha újra csatolni szeretné a számítási célt, például a fürtkonfiguráció beállításainak módosításához, először el kell távolítania a meglévő mellékletet.
-
 * A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__ van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+* Jelenleg csak a fürtök létrehozását (és nem frissítését) támogatja a ARM-sablonok [ https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json ] használatával. A számítások frissítéséhez javasoljuk, hogy az SDK-t, a CLI-t vagy az UX-t használja most.
 
 * Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](how-to-manage-quotas.md).
 
