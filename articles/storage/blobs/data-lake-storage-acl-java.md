@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: e7d6156fe5cd8ab32ff159bda64e0c06cfbac406
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100654225"
 ---
 # <a name="use-java-to-manage-acls-in-azure-data-lake-storage-gen2"></a>A Java használata a hozzáférés-vezérlési listák kezeléséhez Azure Data Lake Storage Gen2

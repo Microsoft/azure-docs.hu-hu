@@ -8,19 +8,15 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9c1abe1323bc095fe4dfbfc559ef7e159d1f7532
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 306294cc654e46dbe8af80b25cb9c709071fad20
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880675"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166326"
 ---
 # <a name="deploy-a-azure-cloud-services-extended-support-using-the-azure-portal"></a>Azure Cloud Services (bővített támogatás) üzembe helyezése a Azure Portal használatával
 Ez a cikk azt ismerteti, hogyan használható a Azure Portal a Cloud Service (bővített támogatás) központi telepítésének létrehozásához. 
-
-> [!IMPORTANT]
-> A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 

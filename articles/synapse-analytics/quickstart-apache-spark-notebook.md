@@ -10,10 +10,10 @@ ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
 ms.openlocfilehash: 060c78621b82f4698d4596383cd155d85d483d8e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669494"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Gyors útmutató: kiszolgáló nélküli Apache Spark készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával
@@ -82,9 +82,9 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
 
     Ha a Storage Explorert használja, lehetséges, hogy a fentiekben használt két különböző módszer hatását is láthatja. Ha nincs megadva fájlrendszer, a rendszer az alapértelmezett értéket használja, ebben az esetben `default>user>trusted-service-user>demo_df` . A rendszer menti az adatfájlokat a megadott fájlrendszer helyére.
 
-    Figyelje meg, hogy a "CSV" és a "parketta" formátumokban az írási műveletek számos particionált fájllal jönnek létre.
+    Figyelje meg, hogy a "CSV&quot; és a &quot;parketta&quot; formátumokban az írási műveletek számos particionált fájllal jönnek létre.
 
-    ![A kimenet Storage Explorer-nézete](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "A kimenet Storage Explorer-nézete")
+    ![A kimenet Storage Explorer-nézete](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png &quot;A kimenet Storage Explorer-nézete")
 
     ![Képernyőkép, amely kiemeli az alapértelmezett > demodata > demo_df elérési utat.](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "A kimenet Storage Explorer-nézete")
 

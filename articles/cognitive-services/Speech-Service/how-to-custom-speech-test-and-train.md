@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103232494"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
@@ -102,7 +102,7 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 
 A <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox </a> használatával ellenőrizze a hangtulajdonságokat, vagy alakítsa át a meglévő hangokat a megfelelő formátumokba. Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a SoX parancssorban:
 
-| Tevékenység | Description | SoX-parancs |
+| Tevékenység | Leírás | SoX-parancs |
 |----------|-------------|-------------|
 | Hangformátum keresése | Ezzel a paranccsal ellenőrizhető<br>a hangfájl formátuma. | `sox --i <filename>` |
 | Hangformátum konvertálása | A parancs használata a konvertáláshoz<br>a hangfájl egyetlen csatornára, 16 bites, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |

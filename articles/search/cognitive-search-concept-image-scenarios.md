@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103419591"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Információk feldolgozása és kinyerése a képekből mesterséges intelligencia-gazdagító forgatókönyvekben
@@ -30,7 +30,7 @@ A dokumentum repedésének részeként új indexelő konfigurációs paramétere
 
 A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek normalizált képeket várnak. A képnormalizálás indexelésének engedélyezéséhez az szükséges, hogy egy készségkészlet csatolva legyen ehhez az indexelő.
 
-| Konfigurációs paraméter | Description |
+| Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
 | imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>Állítsa "generateNormalizedImagePerPage" értékre, ha normalizált képekből álló tömböt hoz létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a rendszer a képeket a *normalized_images* mezőben teszi elérhetővé. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
 |  normalizedImageMaxWidth | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték 2000. A maximálisan engedélyezett érték 10000. | 
@@ -61,7 +61,7 @@ A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](/re
 
 Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_images* mező képek tömbjét fogja tartalmazni. Mindegyik rendszerkép egy összetett típus, amely a következő tagokkal rendelkezik:
 
-| Rendszerkép tagja       | Description                             |
+| Rendszerkép tagja       | Leírás                             |
 |--------------------|-----------------------------------------|
 | adatok               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
 | szélesség              | A normalizált képek szélessége képpontban megadva |

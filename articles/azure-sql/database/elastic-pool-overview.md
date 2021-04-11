@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
 ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653635"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database
@@ -114,7 +114,7 @@ További információk a több adatbázissal dolgozó további adatbázis-eszkö
 
 A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](business-continuity-high-availability-disaster-recover-hadr-overview.md) támogatják, amelyek az önálló adatbázisokhoz is elérhetők.
 
-- **Időponthoz való visszaállítás**
+- **Adott időpontnak megfelelő helyreállítás**
 
   Az időponthoz való visszaállítás az adatbázis automatikus biztonsági mentését használja a készletben lévő adatbázisok egy adott időpontra történő helyreállításához. Lásd: [Időponthoz kötött visszaállítás](recovery-using-backups.md#point-in-time-restore)
 

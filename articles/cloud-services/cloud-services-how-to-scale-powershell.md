@@ -3,17 +3,18 @@ title: Azure Cloud Service (klasszikus) méretezése a Windows PowerShellben | M
 description: klasszikus Ismerje meg, hogyan méretezheti a PowerShellt egy webes szerepkör vagy feldolgozói szerepkör az Azure-ban való méretezéséhez.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: autoscale
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a090da1933b0fcd6edb5b2415c773f9efcb27387
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b0a9cc8032cfd849f053e2d45e05f85e4216a23
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743304"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936614"
 ---
 # <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>Azure Cloud Service (klasszikus) méretezése a PowerShellben
 

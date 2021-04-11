@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4b67952565ae7d5e8a05661fba2129177072007c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: a6522eb54980cb28f08ce91e29a6a18943d49040
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105033391"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089011"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -36,6 +36,7 @@ ms.locfileid: "105033391"
 |[Az internetről érkező SSH-hozzáférést le kell tiltani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |Ez a házirend minden olyan hálózati biztonsági szabályt naplóz, amely engedélyezi az internetről érkező SSH-hozzáférést |Naplózás, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
 |[A Storage-fiókoknak virtuális hálózati szolgáltatási végpontot kell használniuk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F60d21c4f-21a3-4d94-85f4-b924e6aeeda4) |Ez a házirend minden olyan Storage-fiókot naplóz, amely nem virtuális hálózati szolgáltatás-végpont használatára van konfigurálva. |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_StorageAccount_Audit.json) |
 |[A virtuális gépeket egy jóváhagyott virtuális hálózathoz kell csatlakoztatni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd416745a-506c-48b6-8ab1-83cb814bcaa3) |Ez a házirend a nem jóváhagyott virtuális hálózathoz csatlakoztatott virtuális gépeket naplózza. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ApprovedVirtualNetwork_Audit.json) |
+|[A virtuális hálózatokat Azure DDoS Protection standard szintű védelemmel kell ellátni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d) |A virtuális hálózatok a Azure DDoS Protection standard szintű és a protokollok elleni támadásokkal védhetők. További információért látogasson el a következő oldalra: [https://aka.ms/ddosprotectiondocs](https://aka.ms/ddosprotectiondocs) . |Módosítás, naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json) |
 |[A virtuális hálózatoknak a megadott virtuális hálózati átjárót kell használniuk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff1776c76-f58c-4245-a8d0-2b207198dc8b) |Ez a házirend minden virtuális hálózatot naplóz, ha az alapértelmezett útvonal nem a megadott virtuális hálózati átjáróra mutat. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetwork_ApprovedVirtualNetworkGateway_AuditIfNotExists.json) |
 |[A webalkalmazási tűzfalat (WAF) engedélyezni kell Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |Az Azure webalkalmazási tűzfal (WAF) üzembe helyezése a nyilvános webes alkalmazások előtt a bejövő forgalom további ellenőrzéséhez. A webalkalmazási tűzfal (WAF) a webalkalmazások központosított védelmét nyújtja a gyakori biztonsági rések és sebezhetőségek, például az SQL-injektálások, a helyek közötti parancsfájlok, a helyi és a távoli fájlok végrehajtásához. A webalkalmazásokhoz való hozzáférést az egyes országok, IP-címtartományok és más http-(s-) paraméterek alapján is korlátozhatja egyéni szabályok segítségével. |Naplózás, megtagadás, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
 |[Engedélyezni kell a webalkalmazási tűzfalat (WAF) az Azure bejárati szolgáltatásának szolgáltatásához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |Az Azure webalkalmazási tűzfal (WAF) üzembe helyezése a nyilvános webes alkalmazások előtt a bejövő forgalom további ellenőrzéséhez. A webalkalmazási tűzfal (WAF) a webalkalmazások központosított védelmét nyújtja a gyakori biztonsági rések és sebezhetőségek, például az SQL-injektálások, a helyek közötti parancsfájlok, a helyi és a távoli fájlok végrehajtásához. A webalkalmazásokhoz való hozzáférést az egyes országok, IP-címtartományok és más http-(s-) paraméterek alapján is korlátozhatja egyéni szabályok segítségével. |Naplózás, megtagadás, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |

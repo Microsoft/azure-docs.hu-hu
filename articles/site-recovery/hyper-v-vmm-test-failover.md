@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sideeksh
-ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 675190bee674c745494c2378712afa89bd43cbe4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87420413"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727875"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
@@ -43,10 +43,10 @@ A feladatátvételi tesztet az elsődleges helyről a másodlagos helyre futtath
 
 A feladatátvételi teszt futtatásakor a rendszer arra kéri, hogy válassza ki a hálózati beállításokat a tesztelési replika-gépek számára a táblázatban foglaltak szerint.
 
-| **Beállítás** | **Részletek** | |
-| --- | --- | --- |
-| **Nincs** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz, és nincs csatlakoztatva egyetlen hálózathoz sem.<br/><br/> A gépet a létrehozása után a virtuálisgép-hálózathoz is összekapcsolhatjuk.| |
-| **Meglévő használata** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz.<br/><br/>Hozzon létre egy, az éles hálózattól elkülönített virtuálisgép-hálózatot.<br/><br/>Ha VLAN-alapú hálózatot használ, javasoljuk, hogy hozzon létre egy külön logikai hálózatot (éles környezetben nem használt) a VMM erre a célra. Ezzel a logikai hálózattal virtuálisgép-hálózatokat lehet létrehozni a feladatátvételi tesztekhez.<br/><br/>A logikai hálózatot társítani kell legalább egy, a virtuális gépeket üzemeltető Hyper-V-kiszolgáló hálózati adapteréhez.<br/><br/>A VLAN logikai hálózatok esetében a logikai hálózathoz hozzáadott hálózati helyeket el kell különíteni.<br/><br/>Ha Windowsos hálózati virtualizálási alapú logikai hálózatot használ, a Azure Site Recovery automatikusan elkülönített virtuálisgép-hálózatokat hoz létre. | |
+| **Beállítás** | **Részletek** |
+| --- | --- |
+| **Nincs** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz, és nincs csatlakoztatva egyetlen hálózathoz sem.<br/><br/> A gépet a létrehozása után a virtuálisgép-hálózathoz is összekapcsolhatjuk.|
+| **Meglévő használata** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz.<br/><br/>Hozzon létre egy, az éles hálózattól elkülönített virtuálisgép-hálózatot.<br/><br/>Ha VLAN-alapú hálózatot használ, javasoljuk, hogy hozzon létre egy külön logikai hálózatot (éles környezetben nem használt) a VMM erre a célra. Ezzel a logikai hálózattal virtuálisgép-hálózatokat lehet létrehozni a feladatátvételi tesztekhez.<br/><br/>A logikai hálózatot társítani kell legalább egy, a virtuális gépeket üzemeltető Hyper-V-kiszolgáló hálózati adapteréhez.<br/><br/>A VLAN logikai hálózatok esetében a logikai hálózathoz hozzáadott hálózati helyeket el kell különíteni.<br/><br/>Ha Windowsos hálózati virtualizálási alapú logikai hálózatot használ, a Azure Site Recovery automatikusan elkülönített virtuálisgép-hálózatokat hoz létre. |
 | **Hálózat létrehozása** | A rendszer automatikusan létrehoz egy ideiglenes tesztelési hálózatot a **logikai hálózatban** és a kapcsolódó hálózati telephelyeken megadott beállítás alapján.<br/><br/> A feladatátvétel ellenőrzi, hogy a virtuális gépek létrejöttek-e.<br/><br/> Akkor használja ezt a beállítást, ha a helyreállítási terv egynél több virtuálisgép-hálózatot használ.<br/><br/> Ha Windows-alapú hálózati virtualizálási hálózatokat használ, ez a beállítás automatikusan képes virtuális gépeket létrehozni ugyanazokkal a beállításokkal (alhálózatokkal és IP-címkészlet) a replika virtuális gép hálózatában. Ezek a virtuálisgép-hálózatok a feladatátvételi teszt befejeződése után automatikusan törlődnek.<br/><br/> A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép létezik. Nincs hozzáadva a felhőhöz.|
 
 ### <a name="best-practices"></a>Ajánlott eljárások

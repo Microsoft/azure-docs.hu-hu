@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101667744"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure-beli hatáskörébe metrikák a Azure Monitor
@@ -62,7 +62,7 @@ A Azure Portal metrika szakaszának megismeréséhez olvassa el a következő k�
 
 A következő táblázat tartalmazza a Azure Portal vizsgálatához elérhető metrikák listáját:
 
-| Metrika neve | Metrika névtere | Összesítés típusa | Description |
+| Metrika neve | Metrika névtere | Összesítés típusa | Leírás |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Ellenőrzés megszakítva | Automatizált vizsgálat | Sum <br> Darabszám | A megszakított adatforrás összesítése az időszak során |
 | A vizsgálat befejeződött | Automatizált vizsgálat | Sum <br> Darabszám | A befejezett adatforrás összesítése az időszak során |

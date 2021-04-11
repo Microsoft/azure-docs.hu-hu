@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101734103"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106271632"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager
 A következő korlátozások csak a **Azure Resource Manager** régiónként felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
@@ -73,12 +73,12 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Hálózati adapterek szabályai (a hálózati adapter összes IP-címe között) | 300                           |
 | Előtér-IP-konfigurációk              | 600                           |
 | Háttérbeli készlet mérete                       | 1 000 IP-konfiguráció, egyetlen virtuális hálózat |
-| Háttérbeli erőforrások száma Load Balancer <sup> 1<sup> | 250                   |
+| Háttérbeli erőforrások száma Load Balancer <sup> 1<sup> | 1200                   |
 | Magas rendelkezésre állású portok                 | 1/belső előtér       |
 | Kimenő szabályok száma Load Balancer        | 600                           |
 | Terheléselosztó virtuális gépenként                   | 2 (1 nyilvános és 1 belső)   |
 
-<sup>1</sup> a korlát akár 150 erőforrást is tartalmaz, az önálló virtuálisgép-erőforrások, a rendelkezésre állási csoport erőforrásai és a virtuálisgép-méretezési csoportok elhelyezésével együtt.
+<sup>1</sup> a korlát akár 1 200 erőforrást is tartalmaz, az önálló virtuálisgép-erőforrások, a rendelkezésre állási csoport erőforrásai és a virtuálisgép-méretezési csoportok elhelyezésével együtt.
 
 **Alapszintű Load Balancer**
 

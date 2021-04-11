@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: a1f66feedf33faf107bb4fca1879077379dfa815
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601504"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066347"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -91,7 +91,7 @@ A különböző lehetőségekkel kapcsolatos további információkért lásd [a
 #### <a name="free"></a>[Ingyenes](https://azure.microsoft.com/free/)
 
 - 12 hónapig ingyenesen használható, népszerű szolgáltatások
-- 200 dollár értékű kredit a szolgáltatások 30 napos használatához
+- 200 USD kredit a számlázási pénznemben a szolgáltatások 30 napig való megismeréséhez
 - 25+ mindig ingyenes szolgáltatás
 
 #### <a name="pay-as-you-go"></a>[Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p)

@@ -9,10 +9,10 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104604253"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
@@ -167,7 +167,7 @@ Az Azure Sentinel-entitások részletes oldalain [betekintési panel](identify-t
 
 Ha engedélyezve van a [UEBA](ueba-enrichments.md), és legalább négy napos időkeretet választott ki, akkor ez a betekintő ablaktábla a következő új szakaszt is tartalmazza a UEBA-eredményekhez:
 
-|Section  |Description  |
+|Section  |Leírás  |
 |---------|---------|
 |**UEBA-ismeretek**     | A rendellenes felhasználói tevékenységek összegzése: <br>-Földrajzi helyeken, eszközökön és környezeteken keresztül<br>– A felhasználók saját előzményeihez képest időbeli és gyakorisági horizonton keresztül <br>– A társak viselkedéséhez képest <br>-A szervezet viselkedéséhez képest     |
 |**Felhasználói partnerek biztonsági csoporttagság alapján**     |   Felsorolja az Azure AD biztonsági csoportok tagságán alapuló felhasználói partnereket, így biztosítva a biztonsági műveleti csapatok számára a hasonló engedélyekkel rendelkező más felhasználók listáját.  |

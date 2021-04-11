@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101666519"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Az Azure hatáskörébe tartozó adatok besorolása
@@ -62,7 +62,7 @@ A hatáskörébe ugyanazok a bizalmas adattípusok tartoznak, mint a Microsoft 3
 
    A fő **besorolási** információk oldal a következő területeket jeleníti meg:
 
-   |Terület  |Description  |
+   |Terület  |Leírás  |
    |---------|---------|
    |**Besorolásokkal rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban talált előfizetések száma <br>– Az adataiban található egyedi besorolások száma <br>– A talált kategorizált források száma <br>– A talált minősített fájlok száma <br>– A talált kategorizált táblák száma         |
    |**Legtöbbet besorolt adatforrások (utolsó 30 nap)**     |Az elmúlt 30 napban a minősített adatokat tartalmazó források számának alakulását mutatja.            |
