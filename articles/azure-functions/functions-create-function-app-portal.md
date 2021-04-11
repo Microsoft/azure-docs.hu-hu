@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét ki
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492120"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385989"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
@@ -60,11 +60,7 @@ Ezután hozzon létre egy függvényt az új függvény alkalmazásban.
 
     ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Illessze be a függvény URL-címét a böngésző címsorába. Adja hozzá a lekérdezési karakterlánc értékét `?name=<your_name>` az URL végéhez, majd nyomja le az ENTER billentyűt a kérelem futtatásához. 
-
-    Az alábbi példa a böngészőben visszaadott választ mutatja:
-
-    ![A függvény által visszaadott válasz a böngészőben.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+1. Illessze be a függvény URL-címét a böngésző címsorába. Adja hozzá a lekérdezési karakterlánc értékét `?name=<your_name>` az URL végéhez, majd nyomja le az ENTER billentyűt a kérelem futtatásához. A böngészőnek egy válaszüzenetet kell megjelenítenie, amely visszhangot jelez a lekérdezési karakterlánc értékét. 
 
     Ha a kérelem URL-címe tartalmaz egy [hozzáférési kulcsot](functions-bindings-http-webhook-trigger.md#authorization-keys) (), az azt jelenti, hogy a függvény `?code=...` létrehozásakor a **Névtelen** hozzáférési szint helyett a **függvényt** választja. Ebben az esetben inkább fűzze hozzá a következőt: `&name=<your_name>` .
 

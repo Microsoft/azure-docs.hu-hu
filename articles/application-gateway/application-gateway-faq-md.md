@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc803814e493ffef6f5928dc9971f9f6f864342d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102619154"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221738"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -394,6 +394,16 @@ Ha a Application Gateway/WAF szolgáltatás v1-es verzióját használja, akkor 
 További információkért tekintse meg a [dokumentációt](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers).
 
 Ha a Application Gateway/WAF szolgáltatás v2 SKU-át használja, nem kell feltöltenie az új tanúsítványt a HTTP-beállításokba, mivel a v2 SKU a "megbízható főtanúsítványok" szolgáltatást használja, és itt nem kell műveletet végrehajtania.
+
+## <a name="configuration---mutual-authentication"></a>Konfiguráció – kölcsönös hitelesítés
+
+### <a name="what-is-mutual-authentication"></a>Mi a kölcsönös hitelesítés?
+
+A kölcsönös hitelesítés kétirányú hitelesítés az ügyfél és a kiszolgáló között. A kölcsönös hitelesítés Application Gateway jelenleg lehetővé teszi az átjáró számára, hogy ellenőrizze a kérést küldő ügyfelet, amely ügyfél-hitelesítés. Általában az ügyfél az egyetlen, amely hitelesíti a Application Gateway. Mivel a Application Gateway mostantól is hitelesítheti az ügyfelet, kölcsönös hitelesítésbe kerül, ahol Application Gateway és az ügyfél kölcsönösen hitelesíti egymást. 
+
+### <a name="is-mutual-authentication-available-between-application-gateway-and-its-backend-pools"></a>Elérhető-e kölcsönös hitelesítés Application Gateway és a háttérbeli készletek között?
+
+Nem, a kölcsönös hitelesítés jelenleg csak a előtér-ügyfél és a Application Gateway között történik. A háttérbeli kölcsönös hitelesítés jelenleg nem támogatott.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguráció – bejövő forgalom vezérlője AK-hoz
 

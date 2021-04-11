@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508809"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029403"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure privát végpont?
 
@@ -39,7 +39,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 
 - Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy írásvédett hálózati adaptert. A csatoló dinamikusan magánhálózati IP-címeket kap az alhálózatból, amely leképezi a magánhálózati kapcsolat erőforrását. A magánhálózati IP-cím értéke változatlan marad a magánhálózati végpont teljes életciklusa során.
  
-- A magánhálózati végpontot a virtuális hálózattal megegyező régióban kell telepíteni. 
+- A privát végpontot a virtuális hálózattal azonos régióban és előfizetésben kell telepíteni. 
  
 - A magánhálózati kapcsolati erőforrás a virtuális hálózat és a magánhálózati végpontok egy másik régiójában is üzembe helyezhető.
  

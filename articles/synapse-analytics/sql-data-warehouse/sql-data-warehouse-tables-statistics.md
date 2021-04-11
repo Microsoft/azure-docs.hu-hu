@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3ade41c51cbb8065734e8957cfc8b9f0c22b2df3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42dd34f0fe4006411f413002eb7c351646e72390
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673366"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078961"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet táblázatos statisztikái az Azure szinapszis Analyticsben
 
@@ -90,7 +90,7 @@ Ha azonban a dedikált SQL-készlet csak egy országot/régiót tartalmaz, és e
 
 A következő javaslatok frissítik a statisztikát:
 
-|||
+| Statisztikai attribútum | Ajánlás|
 |-|-|
 | **A statisztika frissítéseinek gyakorisága**  | Konzervatív: naponta </br> Az adatai betöltése vagy átalakítása után |
 | **Mintavételezés** |  Kevesebb mint 1 000 000 000 sor, használja az alapértelmezett mintavételezést (20 százalék). </br> A több mint 1 000 000 000 sorral a mintavételezést két százalékkal kell használni. |

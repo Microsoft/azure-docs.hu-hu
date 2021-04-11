@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 6d9bb17e0e68c563c6d8cc18669d8c298d4f267b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 779a8745688e6a1fb8a15bc9119c6fbc1803ca2c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951827"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078927"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása REST-végpontra a és a rendszerből a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -495,7 +495,7 @@ A sablon két paramétert határoz meg:
 
     | Tulajdonság | Leírás |
     |:--- |:--- |
-    | URL-cím |Adja meg a OAuth tulajdonosi jogkivonatának beolvasásához használandó URL-címet. például a mintában itt látható https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | URL-cím |Adja meg a OAuth tulajdonosi jogkivonatának beolvasásához használandó URL-címet. például a mintában itt látható https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |
     | Metódus | A HTTP-metódus. Az engedélyezett értékek: **post** és **Get**. | 
     | Fejlécek | A fejléc felhasználó által definiált, amely egy fejléc nevére hivatkozik a HTTP-kérelemben. | 
     | Törzs | A HTTP-kérelem törzse. | 

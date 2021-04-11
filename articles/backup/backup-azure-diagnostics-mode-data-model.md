@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2682bf0483b38c50e64bf4ec5255c89f931ab0f0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500988"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078910"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -199,9 +199,9 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | MonthlyRetentionDaysOfTheWeek_s |Szöveg ||A havi megőrzésre kiválasztott hét napjai |
 | MonthlyRetentionWeeksOfTheMonth_s |Szöveg ||A hónap hete, amikor a havi megőrzés konfigurálva van, például: első, utolsó |
 | YearlyRetentionDuration_s |Tizedes tört ||Teljes megőrzési időtartam években a konfigurált biztonsági másolatok esetében |
-| YearlyRetentionTimes_s |Szöveg ||Az éves adatmegőrzés konfigurálásának dátuma és időpontja |
-| YearlyRetentionMonthsOfTheYear_s |Szöveg ||Az év hónapos megőrzésre kiválasztott hónapja |
-| YearlyRetentionFormat_s |Szöveg ||Az évenkénti megőrzéshez szükséges konfiguráció típusa, például naponta, hetente, hetente | |
+| YearlyRetentionTimes_s |Szöveg | | Az éves adatmegőrzés konfigurálásának dátuma és időpontja |
+| YearlyRetentionMonthsOfTheYear_s |Szöveg | | Az év hónapos megőrzésre kiválasztott hónapja |
+| YearlyRetentionFormat_s |Szöveg ||Az évenkénti megőrzéshez szükséges konfiguráció típusa, például naponta, hetente, hetente |
 | YearlyRetentionDaysOfTheMonth_s |Szöveg ||Az éves megőrzéshez kiválasztott hónap dátuma |
 | SynchronisationFrequencyPerDay_s |Egész szám |v2|Napok száma egy nap során a rendszer az SC DPM és a MABS esetében szinkronizálja a fájlok biztonsági mentését |
 | DiffBackupFormat_s |Szöveg |v2|Az SQL-alapú különbözeti biztonsági másolatok formátuma az Azure virtuális gép biztonsági mentésében |

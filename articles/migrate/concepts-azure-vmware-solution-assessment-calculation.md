@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 1d9918786b22faddaeb07a12f0840b36a11ffe4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55f0562ae08a6e5a6b38bd0b6fc9f781b94ab64
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778381"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078689"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>Értékelés áttekintése (Migrálás az Azure VMware-megoldásba)
 
@@ -31,6 +31,9 @@ Az Azure Migrateekkel létrehozott értékelések az adatok időponthoz kapcsol�
 **Azure VM** | Kiértékelés a helyszíni kiszolgálók Azure-beli virtuális gépekre történő migrálásához. A helyszíni kiszolgálókat felhasználhatja [VMware](how-to-set-up-appliance-vmware.md) -és [Hyper-V](how-to-set-up-appliance-hyper-v.md) környezetben, valamint [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) az Azure-beli virtuális gépekre való áttelepítéshez ezzel az értékelési típussal.
 **Azure SQL** | A helyszíni SQL Server-kiszolgálók VMware-környezetből Azure SQL Database vagy az Azure SQL felügyelt példányba való átköltöztetésének értékelése.
 **Azure VMware Solution (AVS)** | Kiértékelés a helyszíni kiszolgálók [Azure VMware Solutionbe (AVS-be)](../azure-vmware/introduction.md) történő migrálásához. A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> Ha az Azure-beli virtuális gép vagy az AVS-értékelések nem megfelelőek a felderítési és értékelési eszközön, kattintson az értékelések teljes számára, és válassza ki az összes értékelést, és számítsa ki újra az Azure-beli virtuális gépet vagy az AVS-értékeléseket. A felderítési és értékelési eszköz ezután megjeleníti az értékelés típusának helyes darabszámát. 
 
 Az Azure VMware-megoldás (AVS) értékelése két méretezési feltétel beállítását biztosítja:
 

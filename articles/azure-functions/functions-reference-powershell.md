@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7951543d548696c8de403d7980e1a41b678c6cd
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936787"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078668"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -235,7 +235,7 @@ A PowerShell-függvények naplózása ugyanúgy működik, mint a rendszeres Pow
 | ------------- | -------------- |
 | Hiba | **`Write-Error`** |
 | Figyelmeztetés | **`Write-Warning`**  | 
-| Tájékoztatás | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Tájékoztatás | _Az_ adatszint naplózásának megírása. |
+| Tájékoztatás | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`** <br/> _Az_ adatszint naplózásának megírása. |
 | Hibakeresés | **`Write-Debug`** |
 | Nyomkövetés | **`Write-Progress`** <br /> **`Write-Verbose`** |
 

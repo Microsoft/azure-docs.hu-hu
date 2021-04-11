@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 04/05/2021
 ms.author: zhchia
-ms.openlocfilehash: 2fcb85b2c16bc2dd418c2260420733dd8663382a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 809b32fcf6f39ba9dec2980a79e8824e282b54b7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96179254"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450089"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Gyutacs konfigurálása
 
@@ -144,6 +144,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
 * A Gyutacs a **jogosultságok** nevű egyéni scim-attribútumokat támogatja. Ezek az attribútumok csak akkor hozhatók létre és nem frissíthetők. 
+* A Gyutacs SCIM API nem támogatja a userName attribútum szűrését. Ennek eredményeképpen előfordulhat, hogy a naplókban hibák jelennek meg, amikor olyan meglévő felhasználót próbál meg szinkronizálni, aki nem rendelkezik Felhasználónév attribútummal, de létezik olyan e-mail-címmel, amely megfelel az Azure AD-beli userPrincipalName. 
 
 ## <a name="change-log"></a>Változási napló
 

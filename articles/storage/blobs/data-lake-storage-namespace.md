@@ -4,16 +4,16 @@ description: A Azure Data Lake Storage Gen2 hierarchikus névterének fogalmát 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95912994"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220504"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchikus névtér Azure Data Lake Storage Gen2
 
@@ -44,6 +44,10 @@ Emellett a blob Storage-funkciók és az Azure-szolgáltatások ökoszisztémáj
 A hierarchikus névtér engedélyezésének okait a TCO-elemzés határozza meg. Általánosságban elmondható, hogy a tárolási gyorsítás miatti munkaterhelések késésének fejlesztése a számítási erőforrásokat kevesebb ideig igényli. Számos számítási feladat késése a hierarchikus névtér által engedélyezett atomi címtár-manipuláció miatt javítható. Számos munkaterhelésben a számítási erőforrás a teljes költség > 85%-át, így a munkaterhelés késésének szerény csökkenése is jelentős mennyiségű TCO-megtakarítást jelent. Még azokban az esetekben is, amikor a hierarchikus névtér engedélyezése növeli a tárolási költségeket, a TCO-t továbbra is csökkentik a számítási költségek miatt.
 
 Az adattárolási árak, a tranzakciós árak és a tárolási kapacitás foglalási díjszabása közötti különbségeket elemezheti az olyan fiókok között, amelyek hierarchikus névtérrel rendelkeznek, és hierarchikus névtereket is tartalmaz: [Azure Data Lake Storage Gen2 díjszabása](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+
+## <a name="enabling-a-hierarchical-namespace"></a>Hierarchikus névtér engedélyezése
+
+Egy meglévő Storage-fiókban nem engedélyezhető hierarchikus névtér. Egy hierarchikus névteret csak akkor engedélyezhet, ha létrehoz egy Storage-fiókot. Útmutatásért tekintse [meg a Azure Data Lake Storage Gen2hoz használandó Storage-fiók létrehozása](create-data-lake-storage-account.md)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261dceb70a6059c76dbe3bd1d7636eee5d9d77bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5037450d401153811899b8d769ca92af7ce4068e
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936291"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103776"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Az Azure Digital Twins CLI használata
 
@@ -25,7 +25,7 @@ A Azure Portal Azure Digital Twins-példányának kezelése mellett az Azure Dig
 * [Útvonalak](concepts-route-events.md) kezelése
 * [Biztonság](concepts-security.md) konfigurálása az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával
 
-A beállításhalmaz neve az **DT**, amely az [Azure CLI-hez készült Azure IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension)részét képezi. A parancsok és azok használatának teljes listáját a következő parancs dokumentációjában tekintheti meg `az iot` : az [ *DT* Command Reference](/cli/azure/ext/azure-iot/dt).
+A beállításhalmaz neve az **DT**, amely az [Azure CLI-hez készült Azure IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension)részét képezi. A parancsok és azok használatának teljes listáját a következő parancs dokumentációjában tekintheti meg `az iot` : az [ *DT* Command Reference](/cli/azure/dt).
 
 ## <a name="uses-deploy-and-validate"></a>Felhasználás (üzembe helyezés és ellenőrzés)
 
@@ -61,4 +61,4 @@ az extension add --upgrade -n azure-iot
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a parancssori felülettel és a teljes körű parancsaival a dokumentációs dokumentációban:
-* [*az DT* Command Reference](/cli/azure/ext/azure-iot/dt)
+* [*az DT* Command Reference](/cli/azure/dt)

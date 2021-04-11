@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644662"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103810"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Adatok megosztása és fogadása az Azure Blob Storage-ból és az Azure Data Lake Storage-ból
 
@@ -201,7 +201,7 @@ A tárolási Pillanatképek teljesítményét számos tényező befolyásolja, a
 
 * Párhuzamos hozzáférés a forrás-és a célként megadott adattárakhoz.  
 * A forrás és a cél adattárolók helye. 
-* Növekményes pillanatkép esetén a megosztott adatkészletben található fájlok száma hatással lehet az utolsó sikeres pillanatkép utáni utolsó módosítási idővel rendelkező fájlok listájának megkeresésére. 
+* Növekményes pillanatkép esetén a megosztott adatkészletben lévő fájlok száma hatással lehet a legutóbbi sikeres pillanatkép utáni utolsó módosítási idővel rendelkező fájlok listájának megkereséséhez szükséges időtartamra. 
 
 
 ## <a name="next-steps"></a>Következő lépések

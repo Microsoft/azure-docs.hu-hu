@@ -3,16 +3,16 @@ title: Facebook-hitelesítés konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a Facebook-hitelesítést identitás-szolgáltatóként a App Service vagy Azure Functions alkalmazáshoz.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc639eaea76b3309d6ed047e73c726040da19639
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80519964"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078009"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása Facebook-Bejelentkezés használatára
 
@@ -52,29 +52,24 @@ A cikkben ismertetett eljárás végrehajtásához olyan Facebook-fiókra van sz
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook-információk hozzáadása az alkalmazáshoz
 
-1. Jelentkezzen be a [Azure Portalba] , és navigáljon a app Service alkalmazáshoz.
-1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés** lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
-1. Válassza a **Facebook** lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
-1. Válassza az **OK** lehetőséget.
+1. Jelentkezzen be a [Azure Portalba] , és navigáljon az alkalmazáshoz.
+1. A bal oldali menüben válassza a **hitelesítés** lehetőséget. Kattintson a **személyazonosság-szolgáltató hozzáadása** elemre.
+1. Válassza a **Facebook** lehetőséget az identitás-szolgáltató legördülő menüben. Illessze be a korábban beszerzett alkalmazás-azonosító és az alkalmazás titkos értékeit.
 
-   ![Képernyőkép a Mobile App Facebook beállításairól][0]
+    A titkos kódot a rendszer tárolóhely-Sticky [alkalmazásként](./configure-common.md#configure-app-settings) tárolja `FACEBOOK_PROVIDER_AUTHENTICATION_SECRET` . Ezt a beállítást később is frissítheti [Key Vault hivatkozások](./app-service-key-vault-references.md) használatához, ha a titkos kulcsot szeretné kezelni a Azure Key Vaultban.
 
-    Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyeznie kell a felhasználókat az alkalmazás kódjában.
-1. Választható Ha csak a Facebook által hitelesített felhasználók számára szeretné korlátozni a hozzáférést, akkor állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a **Facebookon**. Ha beállítja ezt a funkciót, az alkalmazásnak minden kérelmet hitelesítenie kell. Emellett az összes nem hitelesített kérelmet is átirányítja a Facebookon a hitelesítéshez.
+1. Ha ez az alkalmazáshoz konfigurált első identitás-szolgáltató, akkor a rendszer a **app Service hitelesítési beállítások** szakaszt is kéri. Ellenkező esetben a következő lépésre léphet.
+    
+    Ezek a beállítások határozzák meg, hogy az alkalmazás hogyan válaszol a nem hitelesített kérelmekre, és az alapértelmezett beállítások átirányítják az összes kérelmet az új szolgáltatóval való bejelentkezéshez. Módosíthatja a viselkedés testre szabását, vagy később is módosíthatja ezeket a beállításokat a  **hitelesítési beállítások** melletti **Szerkesztés** lehetőség választásával. További információ ezekről a lehetőségekről: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
 
-   > [!CAUTION]
-   > A hozzáférés ily módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos olyan alkalmazások esetében, amelyek nyilvánosan elérhető kezdőlaptal rendelkeznek, mint sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, hogy az alkalmazás manuálisan megkezdse a hitelesítést. További információ: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
+1. Választható Kattintson a **Tovább: hatókörök** elemre, és adja hozzá az alkalmazáshoz szükséges hatóköröket. Ezeket a rendszer a böngészőalapú folyamatok bejelentkezési idejére kéri.
+1. Kattintson a **Hozzáadás** parancsra.
 
-1. Kattintson a **Mentés** gombra.
-
-Most már készen áll a Facebook használatára a hitelesítéshez az alkalmazásban.
+Most már készen áll a Facebook használatára a hitelesítéshez az alkalmazásban. A szolgáltató a **hitelesítés** képernyőn jelenik meg. Innen módosíthatja vagy törölheti a szolgáltatói konfigurációt.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Következő lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-[0]: ./media/app-service-mobile-how-to-configure-facebook-authentication/mobile-app-facebook-settings.png
 
 <!-- URLs. -->
 [Facebook-fejlesztők]: https://go.microsoft.com/fwlink/p/?LinkId=268286

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 049a0ad45ea82210d8fac28db0fb3d067841bba4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4d553f6c87d1044f8bde7460a0ea7bf123dd1851
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625143"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450072"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása importálás és exportálás használatával
 
@@ -35,13 +35,13 @@ Hozzon létre egy üres adatbázist a Azure Database for MySQL-kiszolgálón a M
 
 A csatlakozáshoz tegye a következőket:
 
-1. A Azure Portal keresse meg a kapcsolatok adatait a MySQL-hez készült Azure-adatbázis **Áttekintés** paneljén.
+1. A Azure Portal keresse meg a kapcsolatok adatait a Azure Database for MySQL **Áttekintés** ablaktábláján.
 
    :::image type="content" source="./media/concepts-migrate-import-export/1_server-overview-name-login.png" alt-text="Képernyőkép a Azure Portal Azure Database for MySQL kiszolgáló csatlakoztatási adatairól.":::
 
 1. Adja hozzá a kapcsolódási adatokat a MySQL Workbenchhez.
 
-   :::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL Workbench-beli kapcsolatok karakterlánca":::
+   :::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Képernyőkép a MySQL Workbench-beli kapcsolatok karakterláncáról.":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>Az importálási és exportálási technikák használatának megállapítása
 
@@ -50,14 +50,14 @@ A csatlakozáshoz tegye a következőket:
 
 A következő helyzetekben a MySQL Tools használatával importálhat és exportálhat adatbázisokat a MySQL-adatbázisba. Más eszközök esetében lépjen a [MySQL – Azure Database áttelepítési útmutató](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf)"áttelepítési módszerek" szakaszára (22. oldal). 
 
-- Ha szelektíven kell választania néhány táblázatot egy meglévő MySQL-adatbázisból az Azure MySQL-adatbázisba való importáláshoz, ajánlott az importálási és exportálási módszer használata.  Ezzel kihagyhatja az áttelepítés felesleges tábláit, így időt és erőforrásokat takaríthat meg. Használja például a vagy a `--include-tables` `--exclude-tables` kapcsolót a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) és a `--tables` kapcsolót a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
+- Ha szelektíven kell választania néhány táblázatot egy meglévő MySQL-adatbázisból az Azure MySQL-adatbázisba való importáláshoz, ajánlott az importálási és exportálási módszer használata. Ezzel kihagyhatja az áttelepítés felesleges tábláit, így időt és erőforrásokat takaríthat meg. Használja például a vagy a `--include-tables` `--exclude-tables` kapcsolót a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables), a `--tables` kapcsolót pedig a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - Ha a táblázatokon kívül más adatbázis-objektumokat helyez át, explicit módon hozza létre ezeket az objektumokat. Belefoglalja a korlátozásokat (elsődleges kulcs, külső kulcs és indexek), a nézeteket, a függvényeket, az eljárásokat, az eseményindítókat és az összes olyan adatbázis-objektumot, amelyet át szeretne telepíteni.
 - Ha egy MySQL-adatbázistól eltérő külső adatforrásokból végez áttelepítést, hozzon létre lapos fájlokat, és importálja őket a [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html)használatával.
 
 > [!Important]
-> Az egyetlen kiszolgáló és a rugalmas kiszolgáló is *csak a InnoDB-tárolót* támogatja. Győződjön meg arról, hogy az adatbázisban lévő összes tábla a InnoDB Storage motort használja, amikor az Azure Database for MySQL-be tölti be az adatait.
+> Az egyetlen kiszolgáló és a rugalmas kiszolgáló is csak a InnoDB-tárolót támogatja. Győződjön meg arról, hogy az adatbázisban lévő összes tábla a InnoDB Storage motort használja, amikor az Azure Database for MySQL-be tölti be az adatait.
 >
-> Ha a forrásadatbázis egy másik tárolóeszközt használ, az adatbázis migrálása előtt váltson át a InnoDB motorra. Ha például van egy WordPress vagy egy webalkalmazás, amely a MyISAM motort használja, először alakítsa át a táblákat az InnoDB-táblákba való áttelepítéssel. A záradék használatával `ENGINE=INNODB` állítsa be a motort egy tábla létrehozásához, majd az adatok átvitelét a kompatibilis táblába az áttelepítés előtt.
+> Ha a forrásadatbázis egy másik tárolóeszközt használ, a-adatbázis migrálása előtt alakítsa át a InnoDB motorra. Ha például van egy WordPress vagy egy webalkalmazás, amely a MyISAM motort használja, először alakítsa át a táblákat az InnoDB-táblákba való áttelepítéssel. A záradék használatával `ENGINE=INNODB` állítsa be a motort egy tábla létrehozásához, majd az adatok átvitelét a kompatibilis táblába az áttelepítés előtt.
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
@@ -127,7 +127,7 @@ Az **adatexportálás** ablaktáblán a MySQL-adatait is exportálhatja.
 
 1. Válassza ki az exportálandó adatbázis-objektumokat, majd konfigurálja a kapcsolódó beállításokat.
 1. Az aktuális objektumok betöltéséhez válassza a **frissítés** lehetőséget.
-1. Ha szeretné, a jobb felső sarokban válassza a **Speciális beállítások** lehetőséget az exportálási művelet pontosításához. Tegyük fel például, hogy a tábla zárolások hozzáadása, az INSERT utasítás helyett a Replace, és a kezdő karaktereket tartalmazó idézőjelek szerepelnek.
+1. Ha szeretné, a jobb felső sarokban válassza a **Speciális beállítások** lehetőséget az exportálási művelet pontosításához. Tegyük fel például, hogy a tábla zárolások, `replace` a utasítások helyett a használat `insert` és az idézőjelek kezdő karakterrel szerepelnek.
 1. Válassza az **Exportálás indítása** lehetőséget az exportálási folyamat megkezdéséhez.
 
 

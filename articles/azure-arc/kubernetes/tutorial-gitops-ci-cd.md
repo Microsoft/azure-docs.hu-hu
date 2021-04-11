@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025815"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076309"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Oktatóanyag: CI/CD implementálása az Azure arc-kompatibilis Kubernetes-fürtöket használó GitOps
 
@@ -58,7 +58,7 @@ Ez az oktatóanyag feltételezi az Azure DevOps, az Azure Repos és a folyamatok
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Alkalmazás-és GitOps-repók importálása az Azure Reposba
 
-Egy [alkalmazás](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#application-repo) -tárház és egy [GitOps](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#gitops-repo) -tárház importálása az Azure reposba. Ebben az oktatóanyagban a következő példa-repókat használja:
+Egy [alkalmazás](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo) -tárház és egy [GitOps](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo) -tárház importálása az Azure reposba. Ebben az oktatóanyagban a következő példa-repókat használja:
 
 * **arc-vel-demo-src** Application adattár
    * URL https://github.com/Azure/arc-cicd-demo-src
@@ -338,4 +338,4 @@ Ebben az oktatóanyagban egy teljes körű CI/CD-munkafolyamatot állított be, 
 Az Azure arc-kompatibilis Kubernetes GitOps és konfigurációkkal kapcsolatos további információkért tekintse meg a fogalmi cikket.
 
 > [!div class="nextstepaction"]
-> [CI/CD-munkafolyamat GitOps használatával – Azure arc-kompatibilis Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd)
+> [CI/CD-munkafolyamat GitOps használatával – Azure arc-kompatibilis Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)

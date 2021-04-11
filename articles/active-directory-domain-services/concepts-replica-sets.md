@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 03/30/2021
 ms.author: justinha
-ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bcd3ebef027ec72728be21b0fe1504236f553ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689062"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058170"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>A replika a Azure Active Directory Domain Services kapcsolatos fogalmakat és szolgáltatásokat tartalmazza
 
@@ -54,7 +54,7 @@ Az alábbi példa egy felügyelt tartományt mutat be három replikával a rugal
 
 A felügyelt tartományokhoz tartozó alapértelmezett SKU a *vállalati* SKU, amely több replikát is támogat. Ha a *standard* SKU-ra módosította a további replikákat, [frissítse a felügyelt tartományt](change-sku.md) *nagyvállalati* vagy *prémium* szintűre.
 
-A replikakészlet-készletek maximális száma négy, beleértve a felügyelt tartomány létrehozásakor létrehozott első replikát is.
+A replika-készletek támogatott maximális száma öt, beleértve a felügyelt tartomány létrehozásakor létrehozott első replikát is.
 
 Az egyes replikák számlázása a tartományi konfigurációs SKU alapján történik. Ha például olyan felügyelt tartománya van, amely a *vállalati* SKU-t használja, és három replikakészlet van, akkor az előfizetése óránként lesz elszámolva mindhárom replikakészlet esetében.
 
@@ -66,7 +66,7 @@ Nem. A replikának a felügyelt tartományhoz tartozó előfizetésben kell lenn
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Hány replikakészlet hozható létre?
 
-Legfeljebb négy replikakészlet hozható létre – a felügyelt tartomány kezdeti replikája, valamint három további replikakészlet is.
+Legfeljebb öt replikakészlet hozható létre – a felügyelt tartomány kezdeti replikája, valamint négy további replikakészlet is.
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Hogyan történik a felhasználók és a csoportok adatainak szinkronizálása a saját replikákkal?
 

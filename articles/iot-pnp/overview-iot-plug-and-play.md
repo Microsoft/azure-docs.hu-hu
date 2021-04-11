@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594569"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079012"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Mi az IoT Plug and Play?
 
@@ -68,7 +68,7 @@ Eszköz-szerkesztőként olyan IoT-terméket fejleszthet, amely támogatja a IoT
 
 ## <a name="device-certification"></a>Eszköztanúsítás
 
-A [IoT Plug and Play eszköz minősítési program](howto-certify-device.md) ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
+A [IoT Plug and Play eszköz minősítési program](../certification/program-requirements-pnp.md) ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab9f33616547c073e8e3a2128a441238bf3a17d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84697843"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220453"
 ---
 # <a name="http-api-reference"></a>HTTP API-referenciák
 
@@ -18,7 +18,7 @@ Az Durable Functions-bővítmény olyan beépített HTTP API-kat tesz elérhető
 
 A bővítmény által megvalósított összes HTTP API-nak a következő paramétereket kell megadni. Az összes paraméter adattípusa `string` .
 
-| Paraméter        | Paraméter típusa  | Description |
+| Paraméter        | Paraméter típusa  | Leírás |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Lekérdezési sztring    | A [feladat hub](durable-functions-task-hubs.md)neve. Ha nincs megadva, a rendszer feltételezi, hogy az aktuális Function-alkalmazás feladatának hub-neve. |
 | **`connection`** | Lekérdezési sztring    | A Storage-fiókhoz tartozó kapcsolatok karakterláncának **neve** . Ha nincs megadva, a rendszer a Function alkalmazás alapértelmezett kapcsolatok sztringjét feltételezi. |
@@ -128,6 +128,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 A functions Runtime 2. x verziójában az URL-formátum ugyanazokkal a paraméterekkel rendelkezik, mint egy kissé eltérő előtaggal:
@@ -140,6 +141,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
@@ -153,20 +155,21 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | **`createdTimeFrom`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt követően létrehozott visszaadott példányok listáját.|
 | **`createdTimeTo`**     | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott visszaadott példányok listáját.|
 | **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
+| **`returnInternalServerErrorOnFailure`**  | Lekérdezési sztring    | Nem kötelező megadni. Ha a értékre `true` van állítva, ez az API a 200 helyett HTTP 500-választ ad vissza, ha a példány meghibásodási állapotban van. Ez a paraméter automatikus állapot-lekérdezési forgatókönyvekhez készült. |
 
 ### <a name="response"></a>Reagálás
 
 Több lehetséges állapotkód-érték is visszaadható.
 
-* **HTTP 200 (ok)**: a megadott példány befejezett állapotban van.
+* **HTTP 200 (ok)**: a megadott példány befejezett vagy sikertelen állapotú.
 * **HTTP 202 (elfogadva)**: a megadott példány folyamatban van.
 * **HTTP 400 (hibás kérés)**: a megadott példány meghiúsult vagy leállt.
 * **HTTP 404 (nem található)**: a megadott példány nem létezik, vagy nem indult el.
-* **HTTP 500 (belső kiszolgálóhiba)**: a megadott példány nem kezelt kivétellel meghiúsult.
+* **HTTP 500 (belső kiszolgálóhiba)**: csak akkor tért vissza, ha a értéke `returnInternalServerErrorOnFailure` `true` és a megadott példány nem kezelt kivétel miatt meghiúsult.
 
 A **http 200** és a **http 202** esetek válaszának adattartalma egy JSON-objektum, amely a következő mezőket tartalmazhatja:
 
-| Mező                 | Adattípus | Description |
+| Mező                 | Adattípus | Leírás |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | sztring    | A példány futtatókörnyezeti állapota. Az értékek közé tartoznak a következők: *Futtatás*, *függő*, *sikertelen*, *megszakított*, *leállított*, *befejezett*. |
 | **`input`**           | JSON      | A példány inicializálásához használt JSON-adatbázis. Ez a mező akkor van `null` beállítva, ha a `showInput` lekérdezési karakterlánc paraméter értéke `false` .|
@@ -427,7 +430,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                 | Paramétertípus  | Description |
+| Mező                 | Paramétertípus  | Leírás |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Lekérdezési sztring    | A megadott ISO8601 időbélyegzőn vagy azt követően létrehozott kiürített példányok listájának szűrése.|
 | **`createdTimeTo`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri az adott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott kiürített példányok listáját.|

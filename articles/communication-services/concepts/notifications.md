@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9a878dc5cdbbe336e7279d0cd919bd17cd42d0e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728215"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220792"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
@@ -67,13 +67,24 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 #### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>Az értesítési központ csatolása a Azure Portal használatával
 
-A portálon navigáljon az Azure kommunikációs szolgáltatások erőforrásaihoz. A kommunikációs szolgáltatások erőforráson belül válassza a kommunikációs szolgáltatások lap bal oldali menüjének leküldéses értesítések elemét, és kapcsolja össze a korábban kiépített értesítési központot. Itt meg kell adnia a kapcsolódási karakterláncot és a resourceId:
+1. A portálon nyissa meg az Azure kommunikációs szolgáltatások erőforrását.
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="A leküldéses értesítések beállításait ábrázoló képernyőkép a Azure Portalon belül.":::
+1. A kommunikációs szolgáltatások erőforráson belül válassza a kommunikációs szolgáltatások lap bal oldali menüjének **leküldéses értesítések** elemét, és kapcsolja össze a korábban kiépített értesítési központot.
+
+1. Válassza az **értesítési központ csatolása** lehetőséget. Ekkor megjelenik a csatlakozáshoz elérhető értesítési központok listája.
+ 
+1. Válassza ki azt az értesítési központot, amelyet használni szeretne ehhez az erőforráshoz.
+ 
+   - Ha új hubot kell létrehoznia, válassza az **új értesítési központ létrehozása** lehetőséget az erőforráshoz kiépített új központ beszerzéséhez.
+
+   :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="A leküldéses értesítések beállításait ábrázoló képernyőkép a Azure Portalon belül.":::
+
+Ekkor megjelenik az értesítési központ, amelyet a csatlakoztatott állapothoz társított.
+
+Ha egy másik hubot szeretne használni az erőforráshoz, válassza a **Leválasztás** lehetőséget, majd ismételje meg a lépéseket a különböző értesítési központ összekapcsolásához.
 
 > [!NOTE]
-> Ha az Azure Notification hub kapcsolati karakterláncát frissíti, a kommunikációs szolgáltatások erőforrását is frissíteni kell.
-A hub összekapcsolásának minden változása az adatsíkon (azaz egy értesítés küldésekor) jelenik meg, legfeljebb ``10`` percen belül. Ez akkor is érvényes, ha a hub első alkalommal van társítva, **Ha** az értesítéseket korábban küldték.
+> A hub összekapcsolásának bármilyen változása az adatsíkon (azaz értesítés küldésekor) jelenik meg, legfeljebb 10 percen belül. Ugyanez a viselkedés akkor érvényes, ha a hub első alkalommal van társítva, **Ha** az értesítések a módosítás előtt lettek elküldve.
 
 ### <a name="device-registration"></a>Eszközregisztráció
 

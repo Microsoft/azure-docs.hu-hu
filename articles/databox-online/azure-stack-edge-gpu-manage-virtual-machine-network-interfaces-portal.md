@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to manage network interfaces on an Azure Stack Edge Pro device so that I can use it to run applications using Edge compute before sending it to Azure.
-ms.openlocfilehash: 84077f174fabd02afcd5171e8d365e8cbd3a52c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e709b04b4eac60e6cc0ba3e53eb77583162dfef
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027649"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078893"
 ---
 # <a name="use-the-azure-portal-to-manage-network-interfaces-on-the-vms-on-your-azure-stack-edge-pro-gpu"></a>A Azure Portal segítségével kezelheti a virtuális gépeken lévő hálózati adaptereket a Azure Stack Edge Pro GPU-ban
 
@@ -40,7 +39,7 @@ Az eszköz csak egy virtuális kapcsolót, de több virtuális hálózati adapte
 
 Mielőtt megkezdené az eszközön lévő virtuális gépek kezelését a Azure Portalon keresztül, ügyeljen rá, hogy:
 
-1. Engedélyezte a hálózati adaptert a számítási feladatokhoz az eszközön. Ez a művelet létrehoz egy virtuális kapcsolót a virtuális GÉPEN lévő hálózati adapteren. 
+1. Egy aktivált Azure Stack Edge Pro GPU-eszközhöz férhet hozzá. Engedélyezte a hálózati adaptert a számítási feladatokhoz az eszközön. Ez a művelet létrehoz egy virtuális kapcsolót a virtuális GÉPEN lévő hálózati adapteren. 
     1. Az eszköz helyi felhasználói felületén lépjen a **számítás** elemre. Válassza ki azt a hálózati adaptert, amelyet a virtuális kapcsoló létrehozásához használni fog.
 
         > [!IMPORTANT] 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722701"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077618"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
 
@@ -103,21 +103,21 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 ### <a name="system-health-events"></a>Rendszerállapot-események
 
-| Esemény neve | Leírás|
-|------|---------|
-|archon_exit     |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
-|archon_error     |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
-|InputRate     |Az a sebesség, amellyel a gráf feldolgozza a videó bemenetét. 5 percenként jelentett jelentést. | 
-|OutputRate     |Az a sebesség, amellyel a gráf kiadja az AI-bepillantást. 5 percenként jelentett jelentést. |
-|archon_allGraphsStarted | Elküldése, ha az összes gráf befejeződik. |
-|archon_configchange     | Egy gráf konfigurációjának módosításakor lett elküldve. |
-|archon_graphCreationFailed     |A rendszer akkor továbbítja, ha a jelentett gráf `graphId` nem indul el. |
-|archon_graphCreationSuccess     |Akkor lett elindítva, amikor a jelentett gráf `graphId` sikeresen elindul. |
-|archon_graphCleanup     | Akkor lett elküldve, amikor a jelentésben a jelentés `graphId` megtisztítása megtörtént, és kilép. |
-|archon_graphHeartbeat     |A szívverés minden percben elküldésre kerül a szaktudás minden gráfa esetében. |
-|archon_apiKeyAuthFail |Akkor küldi el a rendszer, ha a Computer Vision erőforrás-kulcs 24 óránál hosszabb ideig nem tudja hitelesíteni a tárolót, a következő okok miatt: nem kvóta, érvénytelen, offline. |
-|VideoIngesterHeartbeat     |Minden órában elküldjük, jelezve, hogy a videó stream a videó forrása, és az adott órában előforduló hibák száma. Minden gráf esetében jelenteni kell. |
-|VideoIngesterState | A jelentések *leálltak* vagy *megkezdődött* a video streaming szolgáltatásban. Minden gráf esetében jelenteni kell. |
+| Esemény neve                  | Leírás    |
+|-----------------------------|-------------------------------------------------------------------------------------------|
+| archon_exit                 | Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
+| archon_error                | A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.      |
+| InputRate                   | Az a sebesség, amellyel a gráf feldolgozza a videó bemenetét. 5 percenként jelentett jelentést.              |
+| OutputRate                  | Az a sebesség, amellyel a gráf kiadja az AI-bepillantást. 5 percenként jelentett jelentést.                |
+| archon_allGraphsStarted     | Elküldése, ha az összes gráf befejeződik.                                           |
+| archon_configchange         | Egy gráf konfigurációjának módosításakor lett elküldve.                                              |
+| archon_graphCreationFailed  | A rendszer akkor továbbítja, ha a jelentett gráf `graphId` nem indul el.                           |
+| archon_graphCreationSuccess | Akkor lett elindítva, amikor a jelentett gráf `graphId` sikeresen elindul.                      |
+| archon_graphCleanup         | Akkor lett elküldve, amikor a jelentésben a jelentés `graphId` megtisztítása megtörtént, és kilép.                      |
+| archon_graphHeartbeat       | A szívverés minden percben elküldésre kerül a szaktudás minden gráfa esetében.                                   |
+| archon_apiKeyAuthFail       | Akkor küldi el a rendszer, ha a Computer Vision erőforrás-kulcs 24 óránál hosszabb ideig nem tudja hitelesíteni a tárolót, a következő okok miatt: nem kvóta, érvénytelen, offline. |
+| VideoIngesterHeartbeat      | Minden órában elküldjük, jelezve, hogy a videó stream a videó forrása, és az adott órában előforduló hibák száma. Minden gráf esetében jelenteni kell. |
+| VideoIngesterState          | A jelentések *leálltak* vagy *megkezdődött* a video streaming szolgáltatásban. Minden gráf esetében jelenteni kell.              |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge eszköz hibaelhárítása
 

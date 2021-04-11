@@ -44,7 +44,7 @@
     - name: Digital Twins
       href: concepts-digital-twin.md
     - name: Eszköztanúsítás
-      href: concepts-certification-program.md
+      href: ../certification/program-requirements-pnp.md
     - name: Modelladattár
       href: concepts-model-repository.md
     - name: Modellek használata megoldásokban
@@ -61,8 +61,6 @@
       href: howto-use-embedded-c.md
     - name: Digitális ikereszközök kezelése
       href: howto-manage-digital-twin.md
-    - name: Eszköz minősítése
-      href: howto-certify-device.md
     - name: IoT Plug and Play Bridge-minta összekötése
       href: howto-use-iot-pnp-bridge.md
     - name: IoT Plug and Play-híd létrehozása és üzembe helyezése

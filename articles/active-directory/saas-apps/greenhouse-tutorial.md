@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a14b16e34faa827228594bf6d4f0bd9ed48cf72
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731920"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Oktatóanyag: Azure Active Directory üvegházhatású integrációval
 
@@ -40,7 +40,7 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az üvegház támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* Az üvegház támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t.
 
 ## <a name="adding-greenhouse-from-the-gallery"></a>Üvegház hozzáadása a katalógusból
 
@@ -73,18 +73,28 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal az **üvegházhatású** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.greenhouse.io`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<COMPANYNAME>.greenhouse.io`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.greenhouse.io`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minták egyikének használatával:
+    
+    | Válasz URL-cím|
+    | -------------- |
+    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
+    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
+    |
+
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<COMPANYNAME>.greenhouse.io`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az alábbi értékek beszerzéséhez vegye fel a kapcsolatot az [üvegházhatású ügyfelek ügyfélszolgálatával](https://www.greenhouse.io/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezés URL-címével. Az alábbi értékek beszerzéséhez vegye fel a kapcsolatot az [üvegházhatású ügyfelek ügyfélszolgálatával](https://www.greenhouse.io/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -127,7 +137,7 @@ Ebben a szakaszban a B. Simon használatával engedélyezheti az Azure egyszeri 
 
     ![az SSO-oldal képernyőképe](./media/greenhouse-tutorial/configure.png)
 
-1. Hajtsa végre a következő lépéseket az egyetlen Sign-On oldalon.
+1. Hajtsa végre az alábbi lépéseket az **egyszeri bejelentkezési** oldalon.
 
     ![az SSO konfigurációs oldalának képernyőképe](./media/greenhouse-tutorial/sso-page.png)
 
@@ -172,15 +182,22 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az üvegházba, az üveg
       >[!NOTE]
       >A Azure Active Directory fiók tulajdonosai e-mailt kapnak, beleértve a fiók megerősítését, mielőtt az aktív állapotba kerül.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja az üvegházhatást okozó bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
+#### <a name="sp-initiated"></a>Az SP inicializálva:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja az üvegházhatást okozó bejelentkezési URL-címre, ahol kezdeményezheti a bejelentkezési folyamatot.  
 
 * Lépjen közvetlenül az üvegházhatású bejelentkezési URL-címre, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások üvegház csempére kattint, a rendszer átirányítja az üvegházhatást okozó bejelentkezési URL-címre. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra az üvegházba, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Amikor a saját alkalmazások üvegházi csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra az üvegházba, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
 
 
 ## <a name="next-steps"></a>Következő lépések

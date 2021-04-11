@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a17dcf36cd8b23bf3bc014e2d101d057221de2b8
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708050"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504893"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -95,9 +95,6 @@ Ha egy ugrás vörös színű, azt jelenti, hogy az egy nem megfelelő állapot�
 
 ### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Hogyan működik a teljesítményproblémák lokalizálása a Teljesítményfigyelőben?
 A NPM egy valószínűségi mechanizmust használ a meghibásodási valószínűségek az egyes hálózati elérési utakhoz, hálózati szegmensekhez és az összetevők hálózati ugrásokhoz való hozzárendeléséhez azon nem kifogástalan elérési utak száma alapján, amelyek részét képezik. Mivel a hálózati szegmensek és a komló több nem megfelelő állapotú elérési út részévé válik, a hozzájuk tartozó hibák valószínűsége növekszik. Ez az algoritmus akkor működik a legjobban, ha sok olyan csomóponttal rendelkezik, amelynek NPM-ügynöke csatlakozik egymáshoz, mivel ez növeli az adatpontokat a hiba valószínűségének kiszámításához.
-
-### <a name="how-can-i-create-alerts-in-npm"></a>Hogyan hozhatok létre riasztásokat a NPM-ben?
-Jelenleg a NPM felhasználói felületéről érkező riasztások létrehozása egy ismert probléma miatt meghiúsul. [Manuálisan hozzon létre riasztásokat](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>A riasztások alapértelmezett Log Analytics lekérdezései
 Teljesítményfigyelő lekérdezése

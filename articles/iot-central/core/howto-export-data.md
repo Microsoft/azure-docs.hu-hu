@@ -4,16 +4,16 @@ description: Az új adatexportálás használata a IoT-adatainak az Azure-ba és
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d57f24f8cb4b59ce9b9cd5853be11fb2d104d75
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100522614"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277895"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan használható az új adatexportálási funkció 
 
 Megteheti például a következőt:
 
-- A telemetria-és a tulajdonság-módosítások folyamatos exportálása JSON formátumban, közel valós időben.
+- A telemetria, a tulajdonságok módosításait, az eszközök életciklusát és az eszközök sablonjának életciklus-alapú, közel valós időben történő exportálását.
 - Az adatstreamek szűrésével exportálhatja az egyéni feltételekkel egyező adatforgalmat.
 - Az adatstreamek az eszköz egyéni értékeivel és tulajdonságértékek gazdagítása.
 - Az Azure Event Hubs, a Azure Service Bus, az Azure Blob Storage és a webhook-végpontok számára küldje el az összes olyan célhelyet.
@@ -133,21 +133,19 @@ Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatex
     | :------------- | :---------- | :----------- |
     |  Telemetria | Telemetria-üzenetek exportálása az eszközökről közel valós időben. Minden exportált üzenet tartalmazza az eredeti üzenet teljes tartalmát, normalizálva.   |  [Telemetria-üzenet formátuma](#telemetry-format)   |
     | Tulajdonságok módosítása | A módosításokat az eszköz és a felhő tulajdonságai között közel valós időben exportálhatja. A csak olvasható eszköz tulajdonságainál a jelentett értékek módosításai lesznek exportálva. Az írási és olvasási tulajdonságok esetében a jelentett és a kívánt értékeket is exportálja a rendszer. | [Tulajdonság-módosítási üzenet formátuma](#property-changes-format) |
+    | Eszközök életciklusa | Az eszköz regisztrált és törölt eseményeinek exportálása. | [Eszköz életciklusának módosítása üzenet formátuma](#device-lifecycle-changes-format) |
+    | Az eszköz sablonjának életciklusa | A közzétett sablon módosításainak exportálása, beleértve a létrehozott, a frissített és a törölt eszközöket. | [Az eszköz sablonjának életciklusának módosítása üzenet formátuma](#device-template-lifecycle-changes-format) | 
 
-<a name="DataExportFilters"></a>
-1. Szükség esetén szűrők hozzáadásával csökkentheti az exportált adatmennyiséget. Az egyes adatexportálási típusokhoz különböző típusú szűrők érhetők el:
-
-    A telemetria szűréséhez a következőket teheti:
-
-    - **Az exportált** adatfolyam csak olyan eszközökön telemetria, amelyek megfelelnek az eszköz nevének, az eszköz azonosítójának és az eszköz sablonjának szűrési feltételének.
-    - **Szűrés** a képességek felett: Ha egy telemetria elemet választ a **név** legördülő menüben, az exportált adatfolyam csak a szűrési feltételnek megfelelő telemetria tartalmaz. Ha a **név** legördülő menüben kiválasztja az eszköz vagy a felhő tulajdonság elemét, az exportált adatfolyam csak a telemetria megfelelő tulajdonságokkal rendelkező eszközökről származó eszközöket tartalmaz.
-    - **Üzenet tulajdonságai szűrő**: az eszköz SDK-kat használó eszközök az egyes telemetria üzenetekben küldhetnek *üzenet-tulajdonságokat* vagy *alkalmazás-tulajdonságokat* . A tulajdonságok olyan kulcs-érték párok táska, amelyek egyéni azonosítókkal címkézik az üzenetet. Az üzenet tulajdonságai szűrő létrehozásához adja meg a keresett üzenet tulajdonság kulcsát, és adjon meg egy feltételt. Csak a megadott szűrési feltételnek megfelelő tulajdonságokkal rendelkező telemetria exportálja a rendszer. A következő karakterlánc-összehasonlító operátorok támogatottak: egyenlő, nem egyenlő, nem tartalmaz, nem tartalmaz, létezik, nem létezik. [További információ az alkalmazás tulajdonságairól IoT hub docs-ból](../../iot-hub/iot-hub-devguide-messages-construct.md).
-
-    A tulajdonságok változásainak szűréséhez használjon egy **képesség szűrőt**. Válasszon egy tulajdonságot a legördülő menüben. Az exportált adatfolyam csak a szűrési feltételnek megfelelő kijelölt tulajdonság módosításait tartalmazza.
-
-<a name="DataExportEnrichmnents"></a>
-1. Igény szerint az exportált üzeneteket további kulcs-érték párokkal gazdagíthatja. A következő dúsítások érhetők el a telemetria és a tulajdonsághoz az adatexportálási típusok módosításához:
-
+1. Szükség esetén szűrők hozzáadásával csökkentheti az exportált adatmennyiséget. Az egyes adatexportálási típusokhoz különböző típusú szűrők érhetők el: <a name="DataExportFilters"></a>
+    
+    | Adatok típusa | Elérhető szűrők| 
+    |--------------|------------------|
+    |Telemetria|<ul><li>Szűrés eszköznév, eszköz azonosítója és eszköz sablon alapján</li><li>Stream szűrése, hogy csak olyan telemetria tartalmazzon, amelyek megfelelnek a szűrési feltételeknek</li><li>Az adatfolyam szűrése, hogy csak a szűrési feltételeknek megfelelő tulajdonságokkal rendelkező eszközökről származó telemetria tartalmazzon.</li><li>Az adatfolyam szűrése úgy történik, hogy csak olyan telemetria tartalmazzon, amelyeknek az *üzenet tulajdonságai* megfelelnek a szűrő feltételének. Az *üzenet tulajdonságai* (más néven az *alkalmazás tulajdonságai*) a kulcs-érték párok egy zacskójában lesznek elküldve az eszköz SDK-kat használó eszközök által telemetria üzenetekben. Az üzenet tulajdonságai szűrő létrehozásához adja meg a keresett üzenet tulajdonság kulcsát, és adjon meg egy feltételt. Csak a megadott szűrési feltételnek megfelelő tulajdonságokkal rendelkező telemetria exportálja a rendszer. [További információ az alkalmazások tulajdonságairól IoT Hub docs-ról](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
+    |Tulajdonságok módosítása|<ul><li>Szűrés eszköznév, eszköz azonosítója és eszköz sablon alapján</li><li>Az adatfolyam szűrése, hogy csak a szűrési feltételeknek megfelelő tulajdonság-módosításokat tartalmazzon</li></ul>|
+    |Eszközök életciklusa|<ul><li>Szűrés eszköznév, eszköz azonosítója és eszköz sablon alapján</li><li>Az adatfolyam szűrése, hogy csak a szűrési feltételeknek megfelelő tulajdonságokkal rendelkező eszközök módosításait tartalmazza.</li></ul>|
+    |Az eszköz sablonjának életciklusa|<ul><li>Szűrés eszköz sablon alapján</li></ul>|
+    
+1. Igény szerint az exportált üzeneteket további kulcs-érték párokkal gazdagíthatja. A következő dúsítások érhetők el a telemetria és a tulajdonsághoz az adatexportálási típusok módosításához: <a name="DataExportEnrichmnents"></a>
     - **Egyéni karakterlánc**: egyéni statikus karakterláncot hoz létre minden üzenethez. Írjon be egy tetszőleges kulcsot, és adjon meg egy karakterlánc-értéket.
     - **Tulajdonság**: hozzáadja az aktuális eszköz jelentett tulajdonságát vagy a Felhőbeli tulajdonság értékét az egyes üzenetekhez. Adjon meg egy kulcsot, és válasszon ki egy eszközt vagy egy Felhőbeli tulajdonságot. Ha az exportált üzenet olyan eszközről származik, amely nem rendelkezik a megadott tulajdonsággal, az exportált üzenet nem kapja meg a dúsítást.
 
@@ -207,6 +205,7 @@ Minden exportált üzenet a teljes üzenet normalizált formáját tartalmazza, 
 - `deviceId`: Annak az eszköznek az azonosítója, amely elküldte a telemetria üzenetet.
 - `schema`: A hasznos adatok sémájának neve és verziószáma.
 - `templateId`: Az eszközhöz társított eszköz sablonjának azonosítója.
+- `enqueuedTime`: Az az idő, amikor a IoT Central megkapta az üzenetet.
 - `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
 - `messageProperties`: Az eszköz által az üzenettel küldött további tulajdonságok. Ezeket a tulajdonságokat más néven az *alkalmazás tulajdonságai* is nevezik. [További információ: IoT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -349,6 +348,7 @@ Minden üzenet vagy rekord egy eszköz vagy egy Felhőbeli tulajdonság egyik m�
 - `messageType`: Vagy `cloudPropertyChange` , `devicePropertyDesiredChange` , vagy `devicePropertyReportedChange` .
 - `deviceId`: Annak az eszköznek az azonosítója, amely elküldte a telemetria üzenetet.
 - `schema`: A hasznos adatok sémájának neve és verziószáma.
+- `enqueuedTime`: IoT Central által észlelt változás időpontja.
 - `templateId`: Az eszközhöz társított eszköz sablonjának azonosítója.
 - `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
 
@@ -377,13 +377,78 @@ Az alábbi példa egy exportált tulajdonság-módosítási üzenetet mutat be a
 }
 ```
 
+## <a name="device-lifecycle-changes-format"></a>Eszköz életciklusának változási formátuma
+
+Minden üzenet vagy rekord egyetlen eszközre való váltást jelöl. Az exportált üzenetben szereplő információk a következők:
+
+- `applicationId`: A IoT Central alkalmazás azonosítója.
+- `messageSource`: Az üzenet forrása – `deviceLifecycle` .
+- `messageType`: `registered` Vagy vagy `deleted` .
+- `deviceId`: A módosított eszköz azonosítója.
+- `schema`: A hasznos adatok sémájának neve és verziószáma.
+- `templateId`: Az eszközhöz társított eszköz sablonjának azonosítója.
+- `enqueuedTime`: Az az idő, amikor a változás bekövetkezett IoT Centralban.
+- `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
+
+Event Hubs és Service Bus esetén IoT Central az új üzenetek adatait az Event hub-ba vagy a Service Bus üzenetsor vagy témakörbe exportálja közel valós időben. Az egyes üzenetek felhasználói tulajdonságaiban (más néven az alkalmazás tulajdonságai) a, a, `iotcentral-device-id` a `iotcentral-application-id` `iotcentral-message-source` és a `iotcentral-message-type` automatikusan szerepel.
+
+A blob Storage esetében az üzenetek kötegbe kerülnek, és percenként egyszer lesznek exportálva.
+
+Az alábbi példa egy, az Azure Blob Storageban fogadott exportált eszköz életciklusára vonatkozó üzenetet jelenít meg.
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceLifecycle",
+  "messageType": "registered",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+## <a name="device-template-lifecycle-changes-format"></a>Az eszköz sablonjának életciklus-változási formátuma
+
+Minden üzenet vagy rekord egyetlen közzétett sablon egyetlen módosítását jelöli. Az exportált üzenetben szereplő információk a következők:
+
+- `applicationId`: A IoT Central alkalmazás azonosítója.
+- `messageSource`: Az üzenet forrása – `deviceTemplateLifecycle` .
+- `messageType`: Vagy `created` , `updated` , vagy `deleted` .
+- `schema`: A hasznos adatok sémájának neve és verziószáma.
+- `templateId`: Az eszközhöz társított eszköz sablonjának azonosítója.
+- `enqueuedTime`: Az az idő, amikor a változás bekövetkezett IoT Centralban.
+- `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
+
+Event Hubs és Service Bus esetén IoT Central az új üzenetek adatait az Event hub-ba vagy a Service Bus üzenetsor vagy témakörbe exportálja közel valós időben. Az egyes üzenetek felhasználói tulajdonságaiban (más néven az alkalmazás tulajdonságai) a, a, `iotcentral-device-id` a `iotcentral-application-id` `iotcentral-message-source` és a `iotcentral-message-type` automatikusan szerepel.
+
+A blob Storage esetében az üzenetek kötegbe kerülnek, és percenként egyszer lesznek exportálva.
+
+Az alábbi példa egy, az Azure Blob Storageban fogadott exportált eszköz életciklusára vonatkozó üzenetet jelenít meg.
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceTemplateLifecycle",
+  "messageType": "created",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+
 ## <a name="comparison-of-legacy-data-export-and-data-export"></a>A régi adatexportálás és az adatexportálás összehasonlítása
 
 Az alábbi táblázat az [örökölt adatexportálás](howto-export-data-legacy.md) és az új adatexportálási funkciók közötti különbségeket mutatja be:
 
 | Képességek  | Örökölt adatexportálás | Új adatexportálás |
 | :------------- | :---------- | :----------- |
-| Elérhető adattípusok | Telemetria, eszközök, eszközök sablonjai | Telemetria, tulajdonságok módosításai |
+| Elérhető adattípusok | Telemetria, eszközök, eszközök sablonjai | Telemetria, a tulajdonságok változásai, az eszköz életciklusának változásai, az eszköz sablonjának életciklusának változásai |
 | Szűrés | Nincsenek | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
 | Modellbővítések | Nincsenek | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
 | Célhelyek | Azure Event Hubs, Azure Service Bus várólisták és témakörök, Azure Blob Storage | Ugyanaz, mint a korábbi adatexportáláshoz és webhookokhoz|

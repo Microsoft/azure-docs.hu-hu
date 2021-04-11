@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557012"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078740"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -101,8 +101,8 @@ Ha macOS vagy Linux rendszert használ a Visual Studio Code-ban a Logic app-proj
 1. Mentse a kapcsolatok karakterláncát biztonságos helyre. Miután létrehozta a logikai alkalmazás projektjét a Visual Studio Code-ban, hozzá kell adnia a karakterláncot a **local.settings.jsa** projekt legfelső szintű mappájában lévő fájlhoz.
 
    > [!IMPORTANT]
-   > Ha egy Docker-tárolóba kíván üzembe helyezni, ezt a kapcsolódási karakterláncot is hozzá kell adnia az üzembe helyezéshez használt Docker-fájlhoz.
-
+   > Ha egy Docker-tárolóba kíván üzembe helyezni, ezt a kapcsolódási karakterláncot is az üzembe helyezéshez használt Docker-fájllal kell használnia. Éles környezetek esetében ügyeljen arra, hogy az ilyen titkokat és bizalmas információkat (például kulcstartó használatával) védje és biztosítsa.
+  
 ### <a name="tools"></a>Eszközök
 
 * A [Visual Studio Code 1.30.1 (január 2019) vagy újabb](https://code.visualstudio.com/), amely ingyenes. Ezeket az eszközöket a Visual Studio Code-hoz is letöltheti és telepítheti, ha még nem rendelkezik ezekkel:
@@ -304,6 +304,9 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, í
          }
       }
       ```
+
+      > [!IMPORTANT]
+      > Éles környezetek esetében ügyeljen arra, hogy az ilyen titkokat és bizalmas információkat (például kulcstartó használatával) védje és biztosítsa.
 
    1. Ha elkészült, győződjön meg róla, hogy menti a módosításokat.
 
@@ -652,7 +655,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    ![Képernyőkép a munkafolyamat áttekintő oldaláról a futtatási állapottal és előzményekkel](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Futtatás állapota | Description |
+   | Futtatás állapota | Leírás |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
@@ -676,7 +679,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    A munkafolyamat egyes lépései a következő lehetséges állapotokat tartalmazhatják:
 
-   | Művelet állapota | Ikon | Description |
+   | Művelet állapota | Ikon | Leírás |
    |---------------|------|-------------|
    | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futott, de kérelem érkezett a megszakításhoz. |
@@ -1205,7 +1208,10 @@ Ha még nem ismeri a Docker-t, tekintse át a következő témaköröket:
 
 * A Docker-tároló létrehozásakor használt munkafolyamat Docker-fájlja
 
-  Ez a példa egy logikai alkalmazást helyez üzembe. Az azt a kapcsolati karakterláncot adja meg, amely a logikai alkalmazás Azure Portal való közzétételéhez használt Azure Storage-fiók elérési kulcsát tartalmazza. A karakterlánc megkereséséhez lásd: a [Storage-fiók kapcsolódási karakterláncának beolvasása](#find-storage-account-connection-string).
+  Ez a példa egy logikai alkalmazást helyez üzembe, és megadja a kapcsolati karakterláncot, amely az Azure Storage-fiók elérési kulcsát tartalmazza, amelyet a logikai alkalmazás a Azure Portal való közzétételéhez használt. A karakterlánc megkereséséhez lásd: a [Storage-fiók kapcsolódási karakterláncának beolvasása](#find-storage-account-connection-string). További információkért tekintse át [a Docker-fájlok írásához ajánlott eljárásokat](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
+  
+  > [!IMPORTANT]
+  > Éles környezetek esetében ügyeljen arra, hogy az ilyen titkokat és bizalmas információkat (például kulcstartó használatával) védje és biztosítsa. A Docker-fájlok esetében tekintse át a [Build images with BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) és [a bizalmas adatok kezelése a Docker Secrets](https://docs.docker.com/engine/swarm/secrets/)szolgáltatással című ismertetőt.
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1219,8 +1225,6 @@ Ha még nem ismeri a Docker-t, tekintse át a következő témaköröket:
 
    RUN cd /home/site/wwwroot
    ```
-
-   További információ: [ajánlott eljárások a Docker-fájlok írásához](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 <a name="find-storage-account-connection-string"></a>
 

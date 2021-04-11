@@ -4,6 +4,8 @@
   items:
     - name: Bevezetés az Azure biztonsági megoldásaiba
       href: overview.md
+    - name: Végpontok közötti biztonság
+      href: end-to-end.md
     - name: Megosztott feladatkörök a felhőben
       href: shared-responsibility.md
 - name: Számítási feladatok biztonságossá tétele az Azure Portalon

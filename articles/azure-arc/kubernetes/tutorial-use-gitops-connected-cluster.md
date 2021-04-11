@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 987fb5745b6528eb96b4237f698b3ae371d69287
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec83d8d56ad67d8c64c6ac3151ca3819e88c0616
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731819"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449596"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Oktatóanyag: konfigurációk üzembe helyezése a GitOps használatával egy Azure arc-kompatibilis Kubernetes-fürtön 
 
@@ -30,6 +30,14 @@ Ebben az oktatóanyagban a konfigurációk a GitOps használatával lesznek alka
 - Egy meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürt.
     - Ha még nem csatlakoztatta a fürtöt, tekintse meg a [Connect an Azure arc enabled Kubernetes-fürt](quickstart-connect-cluster.md)gyors üzembe helyezését ismertető útmutatót.
 - A szolgáltatás előnyeinek és architektúrájának megismerése. További információk: [konfigurációk és GitOps – Azure arc-kompatibilis Kubernetes-cikk](conceptual-configurations.md).
+- Telepítse az `k8s-configuration` Azure CLI-bővítményt >= 1.0.0 verzióra:
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
+
+    >[!TIP]
+    > Ha a `k8s-configuration` bővítmény már telepítve van, a következő parancs használatával frissítheti a legújabb verzióra: `az extension update --name k8s-configuration`
 
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 

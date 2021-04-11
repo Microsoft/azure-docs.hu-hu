@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
-ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 376aa04228113c56f0f797f737833802c9eca021
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98184339"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029488"
 ---
 # <a name="how-traffic-manager-works"></a>A Traffic Manager működése
 
@@ -30,7 +30,7 @@ Traffic Manager két fő előnyt biztosít:
 
 Amikor egy ügyfél megkísérel a szolgáltatáshoz kapcsolódni, először IP-címmé kell feloldania a szolgáltatás DNS-nevét. Az ügyfél ez után ehhez az IP-címhez kapcsolódva éri el a szolgáltatást.
 
-**A legfontosabb szempont, hogy Traffic Manager a DNS szintjén működik.**  Traffic Manager a DNS használatával irányítja az ügyfeleket bizonyos szolgáltatási végpontokra a forgalom-útválasztási módszer szabályai alapján. Az ügyfelek **közvetlenül** csatlakoznak a kiválasztott végponthoz. Traffic Manager nem proxy vagy átjáró. Traffic Manager nem látja az ügyfél és a szolgáltatás közötti adatforgalmat.
+**A legfontosabb szempont, hogy Traffic Manager az alkalmazási rétegben található DNS-szinten működik (7. réteg).**  Traffic Manager a DNS használatával irányítja az ügyfeleket bizonyos szolgáltatási végpontokra a forgalom-útválasztási módszer szabályai alapján. Az ügyfelek **közvetlenül** csatlakoznak a kiválasztott végponthoz. Traffic Manager nem proxy vagy átjáró. Traffic Manager nem látja az ügyfél és a szolgáltatás közötti adatforgalmat.
 
 ## <a name="traffic-manager-example"></a>Traffic Manager példa
 

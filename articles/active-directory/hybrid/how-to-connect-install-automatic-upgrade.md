@@ -16,15 +16,16 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ec237af8cd0c79d5a7b62aad0bc6521e5cf3d7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317616"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059241"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
-Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
+Azure AD Connect az automatikus frissítés egy olyan szolgáltatás, amely rendszeresen ellenőrzi a Azure AD Connect újabb verzióit. Ha a kiszolgáló engedélyezve van az automatikus frissítéshez, és egy újabb verzió található, amelyhez a kiszolgáló jogosult, a rendszer automatikus frissítést hajt végre az újabb verzióra.
+Vegye figyelembe, hogy biztonsági okokból az automatikus frissítést végrehajtó ügynök ellenőrzi a letöltött verzió digitális aláírása alapján a Azure AD Connect új buildjét.
 
 ## <a name="overview"></a>Áttekintés
 Győződjön meg arról, hogy a Azure AD Connect telepítésének mindig naprakésznek kell lennie, az **automatikus frissítési** funkcióval még soha nem volt egyszerűbb. Ez a funkció alapértelmezés szerint engedélyezve van az expressz telepítésekhez és az rSync-frissítésekhez. Új verzió kiadásakor a rendszer automatikusan frissíti a telepítést.

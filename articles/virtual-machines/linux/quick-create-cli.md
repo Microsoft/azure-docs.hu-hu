@@ -5,9 +5,8 @@ author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/09/2018
+ms.date: 03/30/2021
 ms.author: cynthn
 ms.custom:
 - mvc
@@ -15,18 +14,18 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: fd411255247e6a37b857ac11c1b0abbd4558d02a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e8c1a06244c46f5789506e8a77d410f5493bbf3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549770"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058578"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rövid útmutató: Linux-alapú virtuális gép létrehozása az Azure CLI használatával
 
 Ez a rövid útmutató azt ismerteti, hogyan használható az Azure parancssori felülete (CLI) egy linuxos virtuális gép (VM) üzembe helyezéséhez az Azure-ban. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.
 
-Ebben az oktatóanyagban az Ubuntu 16.04 LTS-t fogjuk telepíteni. A virtuális gép működés közbeni bemutatásához SSH-val fog csatlakozni hozzá, és az NGINX-webkiszolgálót fogja telepíteni.
+Ebben az oktatóanyagban a legújabb Ubuntu LTS-lemezképet fogjuk telepíteni. A virtuális gép működés közbeni bemutatásához SSH-val fog csatlakozni hozzá, és az NGINX-webkiszolgálót fogja telepíteni.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -88,10 +87,10 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
-A virtuális géphez a szokásos módon kapcsolódhat SSH-val. Cserélje le **publicIpAddress** kifejezést a virtuális gép nyilvános IP-címére, amint az a virtuális gép előző kimenetében szerepel:
+A virtuális géphez a szokásos módon kapcsolódhat SSH-val. Cserélje le a példában szereplő IP-címet a virtuális gép nyilvános IP-címére az előző kimenetben feljegyzett módon:
 
 ```bash
-ssh azureuser@publicIpAddress
+ssh azureuser@40.68.254.142
 ```
 
 ## <a name="install-web-server"></a>A webkiszolgáló telepítése

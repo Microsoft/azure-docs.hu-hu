@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 3f175ff8e7c809032f35cdea9dc3cffa8345b82c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 929d8412b3be894e80a13d9a2bd07ab7401b8dda
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106823"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277861"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
 
@@ -41,8 +41,8 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
     
     Tekintse át
 
-    * [Streameléskeresők](streaming-locators-concept.md)
-    * [Streamelési szabályzatok](streaming-policy-concept.md)
+    * [Streameléskeresők](stream-streaming-locators-concept.md)
+    * [Streamelési szabályzatok](stream-streaming-policy-concept.md)
     * [Csomagolás és kézbesítés](encode-dynamic-packaging-concept.md)
     * [Szűrők](filters-concept.md)
 * A tartalom védelme érdekében Titkosítsa a Advanced Encryption Standard (AES-128) vagy a három fő DRM-rendszer valamelyikét: Microsoft PlayReady, Google Widevine és Apple FairPlay. A [tartalom titkosítása a Azure Portal](drm-encrypt-content-how-to.md) rövid útmutatóval azt mutatja be, hogyan konfigurálható a tartalom védelme.
@@ -94,7 +94,7 @@ Egy eszköz közzétételéhez most hozzá kell adnia egy folyamatos átviteli l
 
     > [!NOTE]
     > Ha azt szeretné, hogy a stream titkosítva legyen, létre kell hoznia egy tartalmi kulcsra vonatkozó házirendet, és be kell állítania azt a folyamatos átviteli lokátoron. Részletekért lásd: [tartalom titkosítása a Azure Portal](drm-encrypt-content-how-to.md).
-1. A **folyamatos átviteli lokátor hozzáadása** ablakban kiválaszthatja az előre definiált folyamatos átviteli szabályzatok egyikét. Részletes információk: [folyamatos átviteli házirendek](streaming-policy-concept.md)
+1. A **folyamatos átviteli lokátor hozzáadása** ablakban kiválaszthatja az előre definiált folyamatos átviteli szabályzatok egyikét. Részletes információk: [folyamatos átviteli házirendek](stream-streaming-policy-concept.md)
 
     ![Folyamatos átviteli lokátor](./media/asset-create-asset-upload-portal-quickstart/streaming-locator.png)
 
@@ -105,7 +105,7 @@ Az eszköz közzétételét követően közvetlenül a portálon keresztül tov�
 Vagy másolja a streaming URL-címet, és használja azt az ügyfél-lejátszóban.
 
 > [!NOTE]
-> Ellenőrizze, hogy fut-e a [folyamatos átviteli végpont](streaming-endpoint-concept.md) . Amikor először hoz létre egy Media Service-fiókot, a rendszer létrehozza az alapértelmezett folyamatos átviteli végpontot, és leállított állapotban van, ezért el kell indítania a tartalom továbbítása előtt.<br/>Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont futó állapotban van.
+> Ellenőrizze, hogy fut-e a [folyamatos átviteli végpont](stream-streaming-endpoint-concept.md) . Amikor először hoz létre egy Media Service-fiókot, a rendszer létrehozza az alapértelmezett folyamatos átviteli végpontot, és leállított állapotban van, ezért el kell indítania a tartalom továbbítása előtt.<br/>Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont futó állapotban van.
 
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
 

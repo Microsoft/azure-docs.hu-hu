@@ -4,22 +4,20 @@ description: A Container Instances biztonsági alapterve az Azure biztonsági Te
 author: msmbaldwin
 ms.service: container-instances
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f63fc7ae28d80707149046637cf39c60a45748fd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be742de41979a218aeca588ce72a8ce80c8c59e5
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566574"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078605"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances Azure biztonsági alapterve
 
-Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](../security/benchmarks/overview-v1.md) Container Instancesre vonatkozó útmutatást alkalmaz. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban.
-A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Container instances vonatkozó kapcsolódó útmutatás. A Container Instances nem alkalmazható **vezérlők** ki vannak zárva.
+Ez a biztonsági alapkonfiguráció az [Azure Security benchmark 1.0-s verziójának](../security/benchmarks/overview-v1.md) Container Instancesára vonatkozó útmutatást alkalmazza. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Container instances vonatkozó kapcsolódó útmutatás. Az Container Instancesre nem alkalmazható **vezérlők** , vagy amelyek esetében a felelősség a Microsoft által lett kizárva.
 
- 
 Ha szeretné megtekinteni, hogyan Container Instances teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Container instances biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Hálózati biztonság
@@ -32,7 +30,7 @@ Ha szeretné megtekinteni, hogyan Container Instances teljes mértékben leképe
 
 A kimenő hálózati hozzáférés vezérlése egy Azure Container Instances delegált alhálózatról Azure Firewall használatával. 
 
-- [Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton](/azure/container-instances/container-instances-vnet)
+- [Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton](/azure/container-instances/container-instance-vnet)
 
 - [Azure Firewall üzembe helyezése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -68,7 +66,7 @@ A kimenő hálózati hozzáférés vezérlése egy Azure Container Instances del
 
 A NSG konfigurálásához Azure Security Center igény szerinti hálózati hozzáférést is használhat, hogy korlátozott időtartamra korlátozza a végpontok jóváhagyott IP-címekre való kitettségét. Emellett Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat ajánlunk, amelyek a portok és a forrás IP-címeket a tényleges forgalom és a veszélyforrások felderítése alapján korlátozzák.
 
-- [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
+- [A DDoS Protection konfigurálása](/azure/virtual-network/manage-ddos-protection)
 
 - [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -124,7 +122,7 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 **Útmutató**: Ha egy felhőalapú privát beállításjegyzéket (például az Azure Container registryt Azure Container instances) használ a tároló-beállításjegyzékhez való hozzáférést igénylő erőforrásokhoz, a Azure Container Registry szolgáltatáshoz használja a virtuális hálózati szolgáltatás címkéit a hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlés meghatározásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha a "AzureContainerRegistry" nevű szolgáltatási címkét egy szabály megfelelő forrás vagy cél mezőjében adja meg, akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-- [Hozzáférés engedélyezése a Service tag számára](../container-registry/container-registry-firewall-access-rules.md#allow-access-by-service-tag)
+- [Hozzáférés engedélyezése a Service tag számára](https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag)
 
 **Felelősség**: Ügyfél
 
@@ -160,9 +158,9 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a tároló-beállításjegyzékhez kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Felelősség**: Ügyfél
 
@@ -196,7 +194,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -206,9 +204,9 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 **Útmutató**: Azure Container instances naplók elemzése és monitorozása a rendellenes működéshez és az eredmények rendszeres áttekintéséhez. Az Azure Monitor Log Analytics munkaterülete segítségével tekintheti át a naplókat, és lekérdezéseket végezhet a naplózási adatokon.
 
-- [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
+- [Log Analytics munkaterület ismertetése](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
 
 - [Log-kompatibilis tároló-csoport és lekérdezési naplók létrehozása](container-instances-log-analytics.md)
 
@@ -222,7 +220,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 - [Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz](../container-registry/container-registry-diagnostics-audit-logs.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](/azure/azure-monitor/learn/tutorial-response)
 
 **Felelősség**: Ügyfél
 
@@ -254,11 +252,11 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az Azure Container Registry és a Azure Container Instances, minden egyes Azure Container Registry esetében nyomon követheti, hogy a beépített rendszergazdai fiók engedélyezve van-e vagy le van-e tiltva. Ha nincs használatban, tiltsa le a fiókot.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-- [Azure Container Registry rendszergazdai fiók](../container-registry/container-registry-authentication.md#admin-account)
+- [Azure Container Registry rendszergazdai fiók](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
 
 **Felelősség**: Ügyfél
 
@@ -270,7 +268,7 @@ Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az
 
 Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az Azure Container Registry Azure Container Instances, ha az Azure Container Registry alapértelmezett rendszergazdai fiókja engedélyezve van, akkor a rendszer automatikusan létrehozza az összetett jelszavakat, és azokat el kell forgatni. Ha nincs használatban, tiltsa le a fiókot.
 
-- [Azure Container Registry rendszergazdai fiók](../container-registry/container-registry-authentication.md#admin-account)
+- [Azure Container Registry rendszergazdai fiók](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
 
 **Felelősség**: Ügyfél
 
@@ -284,7 +282,7 @@ Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az
 
 - [Azure Security Center identitás és hozzáférés ismertetése](../security-center/security-center-identity-access.md)
 
-- [Azure Container Registry rendszergazdai fiók](../container-registry/container-registry-authentication.md#admin-account)
+- [Azure Container Registry rendszergazdai fiók](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
 
 **Felelősség**: Ügyfél
 
@@ -294,11 +292,11 @@ Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az
 
 **Útmutató**: ha lehetséges, használjon Azure Active Directory (Azure ad) SSO-t a különálló önálló hitelesítő adatok konfigurálása helyett. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata.
 
-Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az Azure Container Registry és a Azure Container Instances, a tároló-beállításjegyzékhez való egyéni hozzáféréshez használja az Azure AD-vel integrált egyéni bejelentkezéseket.
+Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az Azure Container Registry és a Azure Container Instances, a tároló-beállításjegyzékhez való egyéni hozzáféréshez az Azure AD-vel való önálló bejelentkezést kell használnia.
 
 - [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-- [Egyéni bejelentkezés egy tároló-beállításjegyzékbe](../container-registry/container-registry-authentication.md#individual-login-with-azure-ad)
+- [Egyéni bejelentkezés egy tároló-beállításjegyzékbe](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#individual-login-with-azure-ad)
 
 **Felelősség**: Ügyfél
 
@@ -364,7 +362,7 @@ Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
+- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -378,7 +376,7 @@ Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és bejelentkezik a naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Felelősség**: Ügyfél
 
@@ -400,7 +398,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: nem érhető el; Ügyfélszéf jelenleg nem támogatott a Azure Container Instances.
 
-- [Ügyfélszéf támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -468,7 +466,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
 
-- [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
+- [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
 **Felelősség**: Megosztott
 
@@ -518,7 +516,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Inaktív adatok Azure-ban való titkosításának ismertetése](../security/fundamentals/encryption-atrest.md)
 
-- [Ügyfél által felügyelt kulcsok Azure Container Registry](../container-registry/container-registry-customer-managed-keys.md)
+- [Ügyfél által felügyelt kulcsok Azure Container Registry](https://aka.ms/acr/cmk)
 
 **Felelősség**: Ügyfél
 
@@ -544,7 +542,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Tároló-figyelési és-ellenőrzési biztonsági javaslatok a Azure Container Instances](container-instances-image-security.md)
 
-- [Azure Container Registry integráció a Security Center](../security-center/defender-for-container-registries-introduction.md)
+- [Azure Container Registry integráció a Security Center](/azure/security-center/azure-container-registry-integration)
 
 **Felelősség**: Ügyfél
 
@@ -604,7 +602,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -666,9 +664,9 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 - [Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz](../container-registry/container-registry-diagnostics-audit-logs.md)
 
-- [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
+- [Log Analytics munkaterület ismertetése](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
 
 **Felelősség**: Ügyfél
 
@@ -700,7 +698,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **Felelősség**: Ügyfél
 
@@ -728,7 +726,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az operációs rendszer specifikus konfigurációjának vagy külső erőforrásainak használata arra, hogy korlátozza a felhasználók számára az Azure számítási erőforrásokon belüli parancsfájlok futtatását.
 
-- [Például a PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?amp;preserve-view=true&view=powershell-7)
+- [Például a PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Felelősség**: Ügyfél
 
@@ -802,9 +800,9 @@ Ha olyan felhőalapú privát beállításjegyzéket használ, mint például az
 
 **Útmutató**: Ha egyéni Azure-szabályzat-definíciókat használ, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Az Azure Repos dokumentációja](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/)
 
 **Felelősség**: Ügyfél
 
@@ -964,7 +962,7 @@ Azure Key Vault ügyfél által felügyelt kulcsok biztonsági mentése az Azure
 
 - [Tároló-lemezképek importálása egy tároló-beállításjegyzékbe](../container-registry/container-registry-import-images.md)
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 - [Központi telepítési adataik titkosítása Container Instances](container-instances-encrypt-data.md)
 
@@ -976,7 +974,7 @@ Azure Key Vault ügyfél által felügyelt kulcsok biztonsági mentése az Azure
 
 **Útmutató**: az Azure parancssori eszközeivel vagy SDK-k használatával a Azure Key Vault felügyelt kulcs biztonsági másolatának visszaállítása.
 
-- [Azure Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
 **Felelősség**: Ügyfél
 
@@ -1020,7 +1018,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md) 
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Felelősség**: Ügyfél
 
@@ -1086,5 +1084,5 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)
+- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 44dfd07a5b749d88552bb1dcac2ee4b4e5ce65e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565240"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554076"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -140,7 +140,7 @@ Az Azure-előfizetési erőforrásokhoz való hozzáférés az Azure RBAC való 
 
 ## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
 
-A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Linux rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania az "Azure Linux VM-bejelentkezés" alkalmazást a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
+A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Linux rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania a "Microsoft Azure linuxos virtuális gép bejelentkezési" alkalmazását a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
 
 > [!WARNING]
 > Felhasználónkénti engedélyezett/kényszerített Azure AD-Multi-Factor Authentication nem támogatott a virtuális gép bejelentkezéséhez.

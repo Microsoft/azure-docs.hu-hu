@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ee066ff46f319749469a41e6decf12b35c0ee27e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e160b21581bc7b5fa38b12309bd9deb90bfbbe51
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651943"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251327"
 ---
 A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta-információkat sorolja fel. További információ a Service Bus díjszabásáról és egyéb kvótáról: [Service Bus díjszabása](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Kvóta neve | Hatókör | Jegyzetek | Érték |
 | --- | --- | --- | --- |
-| Egy Azure-előfizetéshez tartozó alapszintű vagy standard névterek maximális száma |Névtér |A Azure Portal a további alapszintű vagy standard szintű névterek további kérelmeit a rendszer elutasítja. |100|
-| Prémium szintű névterek maximális száma az Azure-előfizetések esetében |Névtér |A portál a további prémium szintű névterek további kérelmeit is elutasítja. |100 |
+| Egy Azure-előfizetéshez tartozó alapszintű vagy standard névterek maximális száma |Névtér |A Azure Portal a további alapszintű vagy standard szintű névterek további kérelmeit a rendszer elutasítja. | Az alapértelmezett érték 100. <br/> A maximális érték 1 000. <br/><br/> A határérték növeléséhez forduljon az Azure támogatási szolgálatához. |
+| Prémium szintű névterek maximális száma az Azure-előfizetések esetében |Névtér |A portál a további prémium szintű névterek további kérelmeit is elutasítja. | Az alapértelmezett érték 100. <br/> A maximális érték 1 000. <br/><br/> A határérték növeléséhez forduljon az Azure támogatási szolgálatához. |
 | Üzenetsor vagy témakör mérete |Entitás |A várólista vagy a témakör létrehozásakor van meghatározva. <br/><br/> A rendszer elutasítja a következő bejövő üzeneteket, és kivételt kap a hívó kód. |1, 2, 3, 4 GB vagy 5 GB.<br /><br />A prémium SKU-ban és a [particionálást](../articles/service-bus-messaging/service-bus-partitioning.md) engedélyező standard SKU esetében a maximális várólista vagy a témakör mérete 80 GB. |
 | Névtér egyidejű kapcsolatainak száma |Névtér |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. A REST-műveletek nem számítanak bele az egyidejű TCP-kapcsolatok irányába. |NET Messaging: 1 000.<br /><br />AMQP: 5 000. |
 | Egyidejű fogadási kérelmek száma egy üzenetsor, témakör vagy előfizetési entitás esetében |Entitás |A rendszer elutasítja a további fogadási kérelmeket, és a hívási kód kivételt kap. Ez a kvóta az egyidejű fogadási műveletek együttes számára vonatkozik a témakör összes előfizetésében. |5000 |
@@ -38,6 +38,6 @@ A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta
 | SQL-szűrők vagy-műveletek mérete |Névtér |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket, és a hívási kód kivételt kap. |A szűrési feltétel karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Szabály műveleti karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Kifejezések maximális száma szabály szerint művelet: 32. |
 | A megosztott hozzáférés engedélyezési szabályainak száma névtér, üzenetsor vagy témakör szerint |Entitás, névtér |A további szabályok létrehozására vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |Szabályok maximális száma az entitás típusa szerint: 12. <br /><br /> A Service Bus névterekben konfigurált szabályok minden típusra érvényesek: várólisták, témakörök. |
 | Üzenetek száma tranzakció szerint | Tranzakció | A rendszer elutasítja a további bejövő üzeneteket, és kivételt jelent a következő: "nem lehet több mint 100 üzenetet küldeni egyetlen tranzakcióban" a hívó kód fogadja. | 100 <br /><br /> Mind a **Send ()** , mind a **SendAsync ()** művelethez. |
-| Virtuális hálózat és IP-szűrési szabályok száma | Névtér | &nbsp; | 128 | 
+| Virtuális hálózat és IP-szűrési szabályok száma | Névtér | &nbsp; | 128 |
 
 [Azure portal]: https://portal.azure.com

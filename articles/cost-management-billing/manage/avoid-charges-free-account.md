@@ -8,16 +8,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: d2648276ead73d8951a93fe3215bee345a79dca9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 426d7f5ee117b346280a712cc9f71ab0e617d64f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062981"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220738"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Díjak elkerülése az ingyenes Azure-fiókkal
 
-A jogosult új felhasználók 200 USD értékű Azure-kreditet kaphatnak a számlázási pénznemben az első 30 nap során, és egy korlátozott mennyiségű ingyenes szolgáltatást biztosítanak 12 hónapig az [ingyenes Azure-fiókkal](https://azure.microsoft.com/free/). Az ingyenes szolgáltatások korlátainak megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). Amíg a kredit nem jár le, vagy ha csak ingyenes szolgáltatásokat használ a korlátokon belül, nem számítunk fel díjat.
+A jogosult új felhasználók a számlázási pénznemben USD200 az Azure-kreditet az első 30 nap során, és egy korlátozott számú ingyenes szolgáltatást biztosítanak 12 hónapig az [ingyenes Azure-fiókkal](https://azure.microsoft.com/free/). Az ingyenes szolgáltatások korlátainak megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). Amíg a kredit nem jár le, vagy ha csak ingyenes szolgáltatásokat használ a korlátokon belül, nem számítunk fel díjat.
 
 Vizsgáljunk meg néhány indokot, amelyek miatt költségek merülhetnek fel az ingyenes Azure-fiókja használatakor.
 

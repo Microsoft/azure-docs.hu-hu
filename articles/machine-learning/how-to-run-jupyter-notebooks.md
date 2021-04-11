@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fec4eb55f43bd17db5935ab32e5429927c74f5b9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066211"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220708"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -46,16 +46,19 @@ A Jupyter vagy a JupyterLab a jegyzetfüzet eszköztáráról is elindíthatja. 
 
 Az aktuális nézet kibontásához használja a fókusz módot, így az aktív lapfülekre koncentrálhat. A fókusz mód elrejti a jegyzetfüzetek fájlkezelőjét.
 
-1. A terminál ablak eszköztárán válassza a **fókusz mód** lehetőséget a fókusz üzemmód bekapcsolásához. Az ablak szélessége függően ez az eszköztár. **..** menüpontjában lehet.
+1. A terminál ablak eszköztárán válassza a **fókusz mód** lehetőséget a fókusz üzemmód bekapcsolásához. Az ablak szélessége függően az eszköz a **...** menüpont alatt található az eszköztáron.
 1. Fókusz módban a normál **nézet** lehetőségre kattintva térjen vissza a normál nézetbe.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Fókusz mód/normál nézet váltása":::
 
 ## <a name="code-completion-intellisense"></a>Kód befejezése (IntelliSense)
 
-Az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) egy kód-kiegészítési támogatás, amely számos funkciót tartalmaz: tagok listázása, a paraméterek adatai, a gyors információ és a teljes szó. Ezek a funkciók segítenek többet megtudni a használt kódokról, nyomon követhetik a beírt paramétereket, és hívásokat adhatnak hozzá a tulajdonságokhoz és metódusokhoz, csak néhány billentyűleütéssel.  
+Az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) egy kód-kiegészítési támogatás, amely számos funkciót tartalmaz: tagok listázása, a paraméterek adatai, a gyors információ és a teljes szó. Néhány billentyűleütéssel a következőket teheti:
+* További információ a használt kóddal kapcsolatban
+* A beírt paraméterek nyomon követése
+* Hívások hozzáadása a tulajdonságokhoz és a metódusokhoz 
 
-### <a name="use-code-snippets-preview"></a>Kódrészletek használata (előzetes verzió)
+### <a name="insert-code-snippets-preview"></a>Kódrészletek beszúrása (előzetes verzió)
 
 Használja a **CTRL + SZÓKÖZ** billentyűkombinációt az IntelliSense-kódrészletek elindításához.  Görgessen végig a javaslatok között, vagy kezdje el gépelni a beszúrni kívánt kód megkereséséhez.  A kód beszúrása után a TAB billentyűvel testreszabhatja a kódot a saját használatra.
 
@@ -285,8 +288,8 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 * Ha nem tud jegyzetfüzethez csatlakozni, győződjön meg arról, hogy a webes szoftvercsatorna- **kommunikáció nincs letiltva** . A számítási példányok Jupyter működéséhez engedélyezni kell a webes szoftvercsatorna-kommunikációt. Győződjön meg arról, hogy a hálózat engedélyezi a WebSocket-kapcsolatokat a *. instances.azureml.net és a *. instances.azureml.ms. 
-
 * Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a [virtuális hálózaton belülről lehet hozzáférni](./how-to-secure-training-vnet.md#compute-instance). Ha egyéni DNS-vagy hosts fájlt használ, vegyen fel egy bejegyzést a < instance-Name >. < régió >. instances.azureml.ms a munkaterület privát végpontjának magánhálózati IP-címével. További információ az [Egyéni DNS-](./how-to-custom-dns.md?tabs=azure-cli) cikkben található.
+
     
 ## <a name="next-steps"></a>Következő lépések
 
