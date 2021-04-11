@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 03/12/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q3
-ms.openlocfilehash: c3f21471e486f88daf8d79b74633c076d27ac8e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9021c3f70c9fc053998d1b31271a1ca3b0124b4d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557581"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169538"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>A munkaterület használata egyéni DNS-kiszolgálóval
 
-Ha Azure Machine Learning munkaterületet használ privát végponttal, a [DNS-névfeloldás többféleképpen is kezelhető](../private-link/private-endpoint-dns.md). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. Ha ehelyett _saját, egyéni DNS-kiszolgálót használ_, akkor manuálisan kell létrehoznia a DNS-bejegyzéseket, vagy feltételes továbbítókat kell használnia a munkaterülethez.
+Ha Azure Machine Learning munkaterületet használ privát végponttal, a [DNS-névfeloldás többféleképpen is kezelhető](../private-link/private-endpoint-dns.md). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. Ha ehelyett __saját, egyéni DNS-kiszolgálót használ__, manuálisan kell LÉTREHOZNIA DNS-bejegyzéseket, vagy feltételes továbbítókat kell használnia a munkaterülethez.
 
 > [!IMPORTANT]
 > Ez a cikk csak a teljes tartománynév (FQDN) és az IP-címek megkeresését ismerteti ezen bejegyzések esetében, ezért nem nyújt információt ezen elemek DNS-rekordjainak konfigurálásáról. A rekordok hozzáadásával kapcsolatos információkért olvassa el a DNS-szoftver dokumentációját.
@@ -46,11 +46,12 @@ Az alábbi lista tartalmazza a munkaterület által használt teljes tartományn
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
 
     > [!NOTE]
-    > A teljes tartománynévhez tartozó munkaterület neve csonkolt lehet. A csonkítás úgy történik, hogy a teljes tartománynév 63 karakternél kisebb vagy azzal egyenlő legyen.
+    > A teljes tartománynévhez tartozó munkaterület neve csonkolt lehet. A csonkítás megtartja a `ml-<workspace-name, truncated>-<region>-<workspace-guid>` 63 karaktert.
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]
-    > A számítási példányok csak a virtuális hálózaton belül érhetők el.
+    > * A számítási példányok csak a virtuális hálózaton belül érhetők el.
+    > * A teljes tartománynév IP-címe **nem** a számítási példány IP-címe. Ehelyett használja a munkaterület privát végpontjának magánhálózati IP-címét (a bejegyzések IP-címe `*.api.azureml.ms` ).
 
 ## <a name="azure-china-21vianet-regions"></a>Az Azure China 21Vianet régiói
 
@@ -61,7 +62,7 @@ Az Azure China 21Vianet régiói a következő teljes tartományneveket használ
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
 
     > [!NOTE]
-    > A teljes tartománynévhez tartozó munkaterület neve csonkolt lehet. A csonkítás úgy történik, hogy a teljes tartománynév 63 karakternél kisebb vagy azzal egyenlő legyen.
+    > A teljes tartománynévhez tartozó munkaterület neve csonkolt lehet. A csonkítás megtartja a `ml-<workspace-name, truncated>-<region>-<workspace-guid>` 63 karaktert.
 * `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>IP-címek keresése
 
@@ -108,7 +109,7 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * Ha számítási példánya van, használja a (z `<instance-name>.<region>.instances.azureml.ms` ) értéket, ahol a a `<instance-name>` számítási példány neve. Használja a munkaterület magánhálózati végpontjának magánhálózati IP-címét. Vegye figyelembe, hogy a számítási példány csak a virtuális hálózaton belülről érhető el.
+> * Ha számítási példánya van, használja a (z `<instance-name>.<region>.instances.azureml.ms` ) értéket, ahol a a `<instance-name>` számítási példány neve. Használja a munkaterület privát végpontjának magánhálózati IP-címét. A számítási példány csak a virtuális hálózaton belülről érhető el.
 >
 > Az összes IP-cím esetében ugyanazt a címet használja, mint az `*.api.azureml.ms` előző lépésekből visszaadott bejegyzéseket.
 

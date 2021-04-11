@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e70b41dfba03b7439313350746724c6f8e90bc34
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564772"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110325"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása a ExpressRoute-hez a Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ A konfigurálás megkezdése előtt tekintse meg az alábbi lépések [videóit]
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Az átjáró alhálózatának hozzáadása":::
 
-1. Az alhálózat **nevénél** automatikusan megjelenik a „GatewaySubnet” érték. Ez az érték szükséges ahhoz, hogy az Azure felismerje, hogy az alhálózat egy átjáró alhálózata. Állítsa be az automatikusan kitöltött **címtartomány** értékeit, hogy megfeleljenek a konfigurációs követelményeinek. Javasoljuk, hogy hozzon létre egy átjáró-alhálózatot egy/27 vagy nagyobb (/26,/25 stb.).
+1. Az alhálózat **nevénél** automatikusan megjelenik a „GatewaySubnet” érték. Ez az érték szükséges ahhoz, hogy az Azure felismerje, hogy az alhálózat egy átjáró alhálózata. Állítsa be az automatikusan kitöltött **címtartomány** értékeit, hogy megfeleljenek a konfigurációs követelményeinek. Javasoljuk, hogy hozzon létre egy átjáró-alhálózatot egy/27 vagy nagyobb (/26,/25 stb.). Ha 16 ExpressRoute-áramkört csatlakoztat az átjáróhoz, létre **kell** hoznia egy/26 vagy nagyobb átjáró-alhálózatot.
 
     Ha kettős veremből álló virtuális hálózatot használ, és az IPv6-alapú privát ExpressRoute-t szeretné használni, kattintson az **IP6-címterület hozzáadása** és a bemeneti **IPv6-címtartomány** értékei elemre.
 

@@ -1,17 +1,16 @@
 ---
 title: A Azure Monitor naplók üzembe helyezésének megtervezése | Microsoft Docs
 description: Ez a cikk azokat a szempontokat és javaslatokat ismerteti, amelyek a munkaterületek Azure Monitor való üzembe helyezésére készülnek.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8502c35a145e4a041f9d44b8396fe16f5db3febc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030834"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384204"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -64,7 +63,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével 
 
 A felhasználóhoz hozzáférő adatok az alábbi táblázatban felsorolt tényezők kombinációjával vannak meghatározva. Mindegyiket az alábbi szakasz ismerteti.
 
-| Szempont | Description |
+| Szempont | Leírás |
 |:---|:---|
 | [Hozzáférési mód](#access-mode) | A felhasználó által a munkaterület eléréséhez használt metódus.  Meghatározza az elérhető adatmennyiséget és az alkalmazott hozzáférés-vezérlési módot. |
 | [Hozzáférés-vezérlési mód](#access-control-mode) | A munkaterületre vonatkozó beállítás, amely meghatározza, hogy a rendszer az engedélyeket a munkaterületen vagy az erőforrás szintjén alkalmazza-e. |

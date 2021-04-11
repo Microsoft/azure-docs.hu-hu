@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7d9e2f02eadec9fac93f14a0fe137c72a35224be
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35c3bd0213b6d895a81605f5858f924182e1e307
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727909"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168858"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
@@ -25,7 +25,7 @@ Ez a minta fejlesztők számára készült, és nagyon egyszerűvé teszi a komm
 ## <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
 > [!IMPORTANT]
-> [Ez a minta a githubon érhető el.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
+> [Ez a minta **a githubon** érhető el.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
 Kövesse a/Project/readme.MD a projekt beállításához és a számítógép helyi futtatásához.
 Miután a [webes hívás mintája](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) fut a gépen, a következő Kezdőlap jelenik meg:

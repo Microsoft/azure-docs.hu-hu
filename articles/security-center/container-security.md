@@ -1,23 +1,18 @@
 ---
-title: Tárolók biztonsága a Azure Security Centerban | Microsoft Docs
-description: Ismerkedjen meg Azure Security Center tárolók biztonsági funkcióival.
-services: security-center
-documentationcenter: na
+title: Tárolók biztonsága a Azure Security Center és az Azure Defender szolgáltatással
+description: Tudnivalók a Azure Security Center tároló biztonsági funkcióiról
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/07/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9fddb27ee6a1139fa8b07c6c19dd4fdf1a20096e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101341"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029138"
 ---
 # <a name="container-security-in-security-center"></a>Tárolóbiztonság a Security Centerben
 
@@ -27,9 +22,9 @@ A Security Center a következő tároló-erőforrástípusok elleni védelemmel 
 
 | Erőforrás típusa | Security Center által kínált védelem |
 |:--------------------:|-----------|
-| ![Kubernetes szolgáltatás](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Azure Kubernetes szolgáltatás (ak) fürtök** | – Az AK-fürtök konfigurációinak folyamatos felmérése, amelyekkel láthatóvá teheti a helytelen konfigurációkat, és útmutatást nyújt az észlelt problémák megoldásához.<br>[További információ a környezet megkeményedéséről a biztonsági javaslatok segítségével](#environment-hardening).<br><br>-Veszélyforrások elleni védelem az AK-fürtök és a Linux-csomópontok számára. A gyanús tevékenységekre vonatkozó riasztásokat az opcionális  [Azure Defender a Kubernetes esetében](defender-for-kubernetes-introduction.md)nyújtja.<br>[További információ az AK-csomópontok és-fürtök futásidejű védelméről](#run-time-protection-for-aks-nodes-and-clusters).|
-| ![Tároló gazdagépe](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Tároló gazdagépek**<br>(A Docker-t futtató virtuális gépek) | – A Docker-konfigurációk folyamatos értékelése a helytelen konfigurációkkal való láthatóság biztosításához, valamint irányelvek a választható  [Azure Defender for Servers](defender-for-servers-introduction.md)által felderített problémák megoldásához.<br>[További információ a környezet megkeményedéséről a biztonsági javaslatok segítségével](#environment-hardening).|
-| ![Tároló-beállításjegyzék](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry (ACR) jegyzékek** | – Sebezhetőségi felmérés és felügyeleti eszközök a Azure Resource Manager-alapú ACR-jegyzékekben található rendszerképekhez az opcionális [Azure Defender a Container-jegyzékek esetében](defender-for-container-registries-introduction.md).<br>[További információ a tárolók rendszerképeinek a biztonsági rések elleni vizsgálatáról](#vulnerability-management---scanning-container-images). |
+| ![Kubernetes szolgáltatás](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Kubernetes-fürtök** | A fürtök folyamatos értékelése a helytelen konfigurációkkal és az azonosított fenyegetések enyhítését segítő irányelvek betekintésének biztosításához. További információ a [környezet megkeményedéséről a biztonsági javaslatok segítségével](#environment-hardening).<br><br>Fenyegetések elleni védelem fürtökhöz és Linux-csomópontokhoz. A gyanús tevékenységekre vonatkozó riasztásokat az [Azure Defender a Kubernetes számára](defender-for-kubernetes-introduction.md)nyújtja. Ez az Azure Defender-csomag védi a Kubernetes-fürtöket, függetlenül attól, hogy azok az Azure Kubernetes szolgáltatásban (ak), a helyszínen vagy más felhőalapú szolgáltatókon futnak. fürtök. <br>További információ a [Kubernetes-csomópontok és-fürtök futtatási idejű védelméről](#run-time-protection-for-kubernetes-nodes-and-clusters).|
+| ![Tároló gazdagépe](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Tároló gazdagépek**<br>(A Docker-t futtató virtuális gépek) | A Docker-környezetek folyamatos értékelése a helytelen konfigurációkkal és irányelvekkel való láthatóság érdekében, hogy segítsen enyhíteni az opcionális [Azure Defender for Servers](defender-for-servers-introduction.md)által azonosított fenyegetéseket.<br>További információ a [környezet megkeményedéséről a biztonsági javaslatok segítségével](#environment-hardening).|
+| ![Tároló-beállításjegyzék](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry (ACR) jegyzékek** | Sebezhetőségi felmérés és felügyeleti eszközök a Azure Resource Manager-alapú ACR-jegyzékekben található rendszerképekhez az opcionális [Azure Defender a Container-jegyzékek esetében](defender-for-container-registries-introduction.md).<br>További információ a [tárolók rendszerképeinek a biztonsági rések elleni vizsgálatáról](#vulnerability-management---scanning-container-images). |
 |||
 
 Ez a cikk azt ismerteti, hogyan használhatók a Security Center, valamint a nem kötelező Azure Defender-csomagok a tároló-beállításjegyzékhez,-Kubernetes és-feladataihoz, valamint a tárolók és az alkalmazások biztonságának javításához, figyeléséhez és karbantartásához.
@@ -38,7 +33,7 @@ Megtudhatja, hogyan segíti a Security Center a tárolók biztonságával kapcso
 
 - [Sebezhetőségi kezelés – tároló lemezképének vizsgálata](#vulnerability-management---scanning-container-images)
 - [Környezet megerősítése](#environment-hardening)
-- [Futásidejű védelem AK-csomópontokhoz és-fürtökhöz](#run-time-protection-for-aks-nodes-and-clusters)
+- [Futásidejű védelem a Kubernetes-csomópontok és-fürtök esetében](#run-time-protection-for-kubernetes-nodes-and-clusters)
 
 Az alábbi képernyőfelvételen az eszközök leltára oldal és a Security Center által védett különböző tároló-erőforrástípusok láthatók.
 
@@ -103,7 +98,7 @@ Megadhatja például, hogy az emelt szintű tárolók ne legyenek létrehozva, �
 További információ a [Kubernetes számítási feladatainak biztonságáról](kubernetes-workload-protections.md).
 
 
-## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>Futásidejű védelem AK-csomópontokhoz és-fürtökhöz
+## <a name="run-time-protection-for-kubernetes-nodes-and-clusters"></a>Futásidejű védelem a Kubernetes-csomópontok és-fürtök esetében
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: c2fa1441f5b7d8af4d610c5341f60009e57173af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 120bfe2eefae3c1721073060231c6c2a1962b7c8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560947"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110274"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása ExpressRoute a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    ```
-1. Adjon hozzá egy átjáró-alhálózatot a Virtual Networkhoz. Az átjáró-alhálózatnak "GatewaySubnet" névvel kell rendelkeznie. Az átjáró-alhálózat/27 vagy nagyobb (/26,/25 stb.).
+1. Adjon hozzá egy átjáró-alhálózatot a Virtual Networkhoz. Az átjáró-alhálózatnak "GatewaySubnet" névvel kell rendelkeznie. Az átjáró-alhálózat/27 vagy nagyobb (/26,/25 stb.). Ha 16 ExpressRoute-áramkört csatlakoztat az átjáróhoz, létre **kell** hoznia egy/26 vagy nagyobb átjáró-alhálózatot.
 
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26

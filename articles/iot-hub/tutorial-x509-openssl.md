@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 0d083d856138d7895a6e03f4d290ef3c4ddebd05
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4379c8f43bbfa539179b821bf6b18a01518afad6
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630720"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384306"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>Oktatóanyag: az OpenSSL használata tesztelési tanúsítványok létrehozásához
 
@@ -101,6 +101,13 @@ authorityKeyIdentifier   = keyid:always
 basicConstraints         = critical,CA:true,pathlen:0
 extendedKeyUsage         = clientAuth,serverAuth
 keyUsage                 = critical,keyCertSign,cRLSign
+subjectKeyIdentifier     = hash
+
+[client_ext]
+authorityKeyIdentifier   = keyid:always
+basicConstraints         = critical,CA:false
+extendedKeyUsage         = clientAuth
+keyUsage                 = critical,digitalSignature
 subjectKeyIdentifier     = hash
 
 ```
@@ -244,13 +251,19 @@ Most már rendelkezik egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsí
 
 1. Válassza az **ellenőrző kód előállítása** lehetőséget. További információ: CA- [tanúsítvány birtoklásának bizonyítása](tutorial-x509-prove-possession.md).
 
-1. Másolja az ellenőrzőkódot a vágólapra. A tanúsítvány tulajdonosának kell megadnia az ellenőrző kódot. Ha például az ellenőrző kód BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A, adja hozzá a tanúsítványt tulajdonosként a következő lépésben látható módon.
+1. Másolja az ellenőrzőkódot a vágólapra. A tanúsítvány tulajdonosának kell megadnia az ellenőrző kódot. Ha például az ellenőrző kód BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A, adja hozzá a tanúsítványt tulajdonosként a 9. lépésben látható módon.
 
 1. Titkos kulcs létrehozása.
 
   ```bash
-    $ openssl req -new -key pop.key -out pop.csr
+    $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+  ```
 
+9. Tanúsítvány-aláírási kérelem (CSR) létrehozása a titkos kulcsból. Adja hozzá az ellenőrző kódot a tanúsítvány tárgyához.
+
+  ```bash
+  openssl req -new -key pop.key -out pop.csr
+  
     -----
     Country Name (2 letter code) [XX]:.
     State or Province Name (full name) []:.
@@ -267,16 +280,16 @@ Most már rendelkezik egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsí
  
   ```
 
-9. Hozzon létre egy tanúsítványt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ konfigurációs fájljának és a CSR-nek a használatával.
+10. Hozzon létre egy tanúsítványt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ konfigurációs fájljának és a CSR-nek a birtokában lévő tanúsítvány igazolása alapján.
 
   ```bash
     openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
 
   ```
 
-10. Válassza ki az új tanúsítványt a **tanúsítvány részletei** nézetben.
+11. Válassza ki az új tanúsítványt a **tanúsítvány részletei** nézetben. A PEM-fájl megkereséséhez navigáljon a tanúsítványok mappára.
 
-11. A tanúsítvány feltöltése után válassza az **ellenőrzés** lehetőséget. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány állapotának **ellenőrzött** értékre kell váltania.
+12. A tanúsítvány feltöltése után válassza az **ellenőrzés** lehetőséget. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány állapotának **ellenőrzött** értékre kell váltania.
 
 ## <a name="step-8---create-a-device-in-your-iot-hub"></a>8. lépés – eszköz létrehozása a IoT Hubban
 

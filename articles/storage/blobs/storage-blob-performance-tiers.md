@@ -1,19 +1,19 @@
 ---
 title: BLOB Storage-teljesítmény szintjeinek letiltása – Azure Storage
 description: A prémium és a standard szintű teljesítményszint közötti különbséget ismerteti az Azure Block blob Storage-hoz.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/12/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4affed8a1226f02970928b2c227b0295167959de
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880708"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277097"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Blokkblobtárolás teljesítményszintjei
 

@@ -1,16 +1,16 @@
 ---
-title: A Defender Micro Agent felépítése a forráskódból (előzetes verzió)
-description: A Micro Agent tartalmaz egy infrastruktúrát, amely az eloszlás testreszabására használható.
+title: 'Rövid útmutató: a Defender Micro Agent kiépítése a forráskódból (előzetes verzió)'
+description: Ebben a rövid útmutatóban megismerheti a mikro-ügynököt, amely egy olyan infrastruktúrát tartalmaz, amely testreszabható a disztribúcióban.
 ms.date: 1/18/2021
 ms.topic: quickstart
-ms.openlocfilehash: aac9bf224064dd8393acfeb2928f5ed2d1f84381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3a8f82989d6abbaf2657e4b45638c77b3b2f704
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781109"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384597"
 ---
-# <a name="build-the-defender-micro-agent-from-source-code-preview"></a>A Defender Micro Agent felépítése a forráskódból (előzetes verzió)
+# <a name="quickstart-build-the-defender-micro-agent-from-source-code-preview"></a>Rövid útmutató: a Defender Micro Agent kiépítése a forráskódból (előzetes verzió)
 
 A Micro Agent tartalmaz egy infrastruktúrát, amely testreszabható a terjesztéshez. Az elérhető konfigurációs paraméterek listájának megtekintéséhez tekintse meg a `configs/LINUX_BASE.conf` fájlt.
 
@@ -32,17 +32,7 @@ Az értékek felülbírálása:
 
     `cmake -DCMAKE_BUILD_TYPE=Debug -Dlog_level=DEBUG -Dlog_level_cmdline:BOOL=ON -DIOT_SECURITY_MODULE_DIST_TARGET=UBUNTU1804 ..` 
 
-## <a name="baseline-configuration-signing"></a>Alapterv-konfiguráció aláírása 
-
-Az ügynök alapértelmezés szerint ellenőrzi a lemezre helyezett konfigurációs fájlok valódiságát a módosítás enyhítése érdekében.
-
-Ezt a folyamatot az előfeldolgozó jelző megadásával állíthatja le `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` .
-
-Nem javasoljuk, hogy az aláírás-ellenőrzési környezetet ne kapcsolja ki éles környezetekben. 
-
-Ha az éles környezetben eltérő konfigurációra van szüksége, lépjen kapcsolatba a Defender for IoT csapatával. 
-
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
 1. Lépjen kapcsolatba a fiók kezelőjével, és kérjen hozzáférést a Defender for IoT forráskódhoz.
  
@@ -77,7 +67,17 @@ Ha az éles környezetben eltérő konfigurációra van szüksége, lépjen kapc
 
 1. Választható A [VSCode](https://code.visualstudio.com/download ) letöltése és telepítése 
 
-1. Választható Telepítse a VSCode [C/C++ bővítményét](https://code.visualstudio.com/docs/languages/cpp ) .
+1. Választható Telepítse a [C/C++ kiterjesztést](https://code.visualstudio.com/docs/languages/cpp ) a VSCode.-None értékre
+
+## <a name="baseline-configuration-signing"></a>Alapterv-konfiguráció aláírása 
+
+Az ügynök alapértelmezés szerint ellenőrzi a lemezre helyezett konfigurációs fájlok valódiságát a módosítás enyhítése érdekében.
+
+Ezt a folyamatot az előfeldolgozó jelző megadásával állíthatja le `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` .
+
+Nem javasoljuk, hogy az aláírás-ellenőrzési környezetet ne kapcsolja ki éles környezetekben. 
+
+Ha az éles környezetben eltérő konfigurációra van szüksége, lépjen kapcsolatba a Defender for IoT csapatával. 
 
 ## <a name="building-the-defender-iot-micro-agent"></a>A Defender IoT Micro Agent felépítése 
 

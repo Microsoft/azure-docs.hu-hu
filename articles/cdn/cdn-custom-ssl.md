@@ -5,15 +5,15 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616400"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058952"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -172,15 +172,18 @@ Adjon engedélyt az Azure CDN számára, hogy hozzáférhessen az Azure Key Vaul
 
 3. A Tanúsítványkezelés típusa területen válassza a **Saját tanúsítvány használata** lehetőséget. 
 
-    ![Tanúsítvány konfigurálása](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    :::image type="content" source="./media/cdn-custom-ssl/cdn-configure-your-certificate.png" alt-text="Képernyőkép a CDN-végpont tanúsítványának konfigurálásáról.":::
 
-4. Válassza ki a Key Vaultot, a tanúsítványt (titkos kódot) és a tanúsítványverziót.
+4. Válasszon ki egy kulcstartót, tanúsítványt/titkos kulcsot, valamint a tanúsítvány/titok verzióját.
 
     Az Azure CDN a következő információkat jeleníti meg: 
     - Az előfizetés azonosítójához tartozó Key Vault-fiókok. 
-    - A kiválasztott Key Vaultban található tanúsítványok (titkos kódok). 
-    - A tanúsítvány elérhető verziói. 
+    - A kiválasztott kulcstartóban lévő tanúsítványok/titkok. 
+    - Az elérhető tanúsítvány/titkos verziók.
  
+    > [!NOTE]
+    > Ahhoz, hogy a tanúsítvány automatikusan el legyen forgatva a legújabb verzióra, ha a tanúsítvány egy újabb verziója elérhető a Key Vaultban, állítsa a tanúsítvány/titkos változatot a "Latest" értékre. Ha egy adott verzió van kiválasztva, akkor manuálisan kell kiválasztania az új verziót a tanúsítvány elforgatásához. A tanúsítvány/titok új verziójának üzembe helyezéséhez akár 24 óráig is eltarthat. 
+   
 5. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
   
 6. A tanúsítvány használatakor a tartomány érvényesítése nem kötelező. Továbbra is [várjon a propagálásra](#wait-for-propagation).
@@ -234,7 +237,7 @@ A DigiCert ellenőrző e-mailt küld a következő e-mail-címekre. Ellenőrizze
 * **hostmaster@your-domain-name.com**  
 * **postmaster@your-domain-name.com**  
 
-Egy e-mailt kell kapnia néhány percen belül, hogy jóváhagyja a kérést. Ha levélszemét-szűrőt használ, adja hozzá az verification@digicert.com engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
+Egy e-mailt kell kapnia néhány percen belül, hogy jóváhagyja a kérést. Ha levélszemét-szűrőt használ, adja hozzá a verification@digicert.com engedélyezési. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
     
 ![Tartományérvényesítési e-mail](./media/cdn-custom-ssl/domain-validation-email.png)
 

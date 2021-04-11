@@ -9,24 +9,23 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5e83f883b5e1e35842ab128e4732e993fb937a0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564747"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383658"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>Oktatóanyag: a Linux rendszerű virtuális gépek vész-helyreállításának beállítása
-
 
 Ez az oktatóanyag bemutatja, hogyan állíthatja be a vész-helyreállítást a Linux rendszerű Azure-beli virtuális gépeken. Ebből a cikkből megtudhatja, hogyan:
 
 > [!div class="checklist"]
 > * A Linux rendszerű virtuális gépek vész-helyreállításának engedélyezése
-> * Vészhelyreállítási próba végrehajtása
+> * Vész-helyreállítási gyakorlat futtatása a várt módon való működéshez
 > * A virtuális gép replikálásának leállítása a részletezés után
 
-Amikor engedélyezi a replikációt egy virtuális géphez, a Site Recovery mobilitási szolgáltatás bővítmény települ a virtuális gépre, és regisztrálja azt a [Azure site Recovery](../../site-recovery/site-recovery-overview.md). A replikáció során a rendszer a virtuálisgép-lemezek írásait a forrás régiójában lévő cache Storage-fiókba küldi. Az adatok innen érkeznek a célhelyre, a helyreállítási pontok pedig az adatokból jönnek létre.  Ha a vész-helyreállítás során a virtuális gép egy másik régióba kerül, a rendszer egy helyreállítási pontot használ a virtuális gép visszaállításához a célként megadott régióban.
+Amikor engedélyezi a replikációt egy virtuális géphez, a Site Recovery mobilitási szolgáltatás bővítmény települ a virtuális gépre, és regisztrálja azt a [Azure site Recovery](../../site-recovery/site-recovery-overview.md). A replikáció során a rendszer a virtuálisgép-lemezek írását egy gyorsítótárbeli Storage-fiókba küldi el a forrás virtuálisgép-régióban. Az adatok innen érkeznek a célhelyre, a helyreállítási pontok pedig az adatokból jönnek létre.  Ha egy virtuális gépet a vész-helyreállítás során egy másik régióba hajt végre, a rendszer egy helyreállítási pontot hoz létre a célként megadott régióban található virtuális gép létrehozásához.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -60,26 +59,67 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
     GuestAndHybridManagement | Akkor használja, ha szeretné automatikusan frissíteni a replikálásra engedélyezett virtuális gépeken futó Site Recovery mobilitási ügynököt.
 5. Győződjön meg arról, hogy a virtuális gépek rendelkeznek a legfelső szintű tanúsítvánnyal. Linux rendszerű virtuális gépeken kövesse a Linux-terjesztő által biztosított útmutatást a legújabb megbízható főtanúsítványok és a visszavont tanúsítványok listájának lekéréséhez a virtuális gépen.
 
-## <a name="enable-disaster-recovery"></a>Vész-helyreállítás engedélyezése
+## <a name="create-a-vm-and-enable-disaster-recovery"></a>Virtuális gép létrehozása és a vész-helyreállítás engedélyezése
+
+A virtuális gépek létrehozásakor a vész-helyreállítást is engedélyezheti.
+
+1. [Hozzon létre egy Linux rendszerű virtuális gépet](quick-create-portal.md).
+2. A **kezelés** lap **site Recovery** területén válassza a vész- **helyreállítás engedélyezése** lehetőséget.
+3. A **másodlagos régióban** válassza ki azt a célcsoportot, amelyre a virtuális gépet a vész-helyreállításhoz szeretné replikálni.
+4. A **másodlagos előfizetés** területen válassza ki azt a cél-előfizetést, amelyben a célként megadott virtuális gép létre lesz hozva. A célként megadott virtuális gép akkor jön létre, amikor feladatátvételt hajt végre a forrás virtuális gépen a forrás régiójából a célként megadott régióba.
+5. A **Recovery Services**-tárolóban válassza ki a replikáláshoz használni kívánt tárolót. Ha nem rendelkezik tárolóval, válassza az **új létrehozása** lehetőséget. Válassza ki azt az erőforráscsoportot, amelyben a tárolót és a tároló nevét kívánja elhelyezni.
+6. **Site Recovery házirendben** hagyja meg az alapértelmezett házirendet, vagy válassza az **új létrehozása** lehetőséget az egyéni értékek megadásához.
+
+    - A helyreállítási pontok a virtuálisgép-lemezek egy adott időpontban vett pillanatképei alapján jönnek létre. Ha feladatátvételt végez egy virtuális gépen, egy helyreállítási pont használatával állítja vissza a virtuális gépet a célként megadott régióban. 
+    - A rendszer öt percenként létrehoz egy összeomlás-konzisztens helyreállítási pontot. Ez a beállítás nem módosítható. Az összeomlás-konzisztens Pillanatképek rögzítik a lemezen lévő, a pillanatkép elkészítéséhez szükséges adatok mennyiségét. Nem tartalmaz semmit a memóriában. 
+    - Alapértelmezés szerint a Site Recovery 24 óráig megőrzi az összeomlás-konzisztens helyreállítási pontokat. 0 és 72 óra közötti egyéni értéket is beállíthat.
+    - Az alkalmazással konzisztens pillanatképek készítése 4 óránként történik.
+    - Alapértelmezés szerint a Site Recovery 24 óráig tárolja a helyreállítási pontokat.
+
+7. A **rendelkezésre állási beállítások** területen adja meg, hogy a virtuális gép önállóként, rendelkezésre állási zónában vagy rendelkezésre állási csoportba legyen-e telepítve.
+
+    :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="Engedélyezze a replikálást a virtuálisgép-kezelés tulajdonságai lapon.":::
+
+8. Fejezze be a virtuális gép létrehozását.
+
+## <a name="enable-disaster-recovery-for-an-existing-vm"></a>Egy meglévő virtuális gép vész-helyreállításának engedélyezése
+
+Ha egy meglévő virtuális gépen szeretné engedélyezni a vész-helyreállítást, használja ezt az eljárást.
 
 1. A Azure Portal nyissa meg a virtuális gép tulajdonságai lapot.
 2. A **Műveletek** részen válassza a **Vészhelyreállítás** elemet.
-3. Az **alapvető**  >  **célkitűzések** területen válassza ki azt a régiót, amelyre a virtuális gépet replikálni szeretné. A forrás-és a célcsoportnak ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
-4. Kattintson a **felülvizsgálat + replikáció indítása** lehetőségre.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/disaster-recovery.png" alt-text="Engedélyezze a replikálást a virtuális gép tulajdonságainak vész-helyreállítási lapján.":::
+    :::image type="content" source="./media/tutorial-disaster-recovery/existing-vm.png" alt-text="Nyisson meg egy meglévő virtuális gép vész-helyreállítási beállításait.":::
 
-5. A **felülvizsgálat és a replikáció elindítása** lapon ellenőrizze a beállításokat:
+3. Az **alapvető beállításokban**, ha a virtuális gép rendelkezésre állási zónában van telepítve, akkor a rendelkezésre állási zónák között kiválaszthatja a vész-helyreállítást.
+4. A **cél régióban** válassza ki azt a régiót, amelyre a virtuális gépet replikálni szeretné. A forrás-és a célcsoportnak ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
 
-    - **Cél beállításai** Alapértelmezés szerint a Site Recovery a forrás beállításait a célként megadott erőforrások létrehozásához.
-    - **Tárolási beállítások – gyorsítótár Storage-fiók**. A helyreállítás egy Storage-fiókot használ a forrás régióban. A forrásként szolgáló virtuális gép módosításait a rendszer gyorsítótárazza ebben a fiókban, mielőtt replikálja a célhelyre.
-    - **Tárolási beállítások – replika lemez**. Alapértelmezés szerint a Site Recovery olyan replika felügyelt lemezeket hoz létre a célként megadott régióban, amelyek a forrásként szolgáló virtuális gépek felügyelt lemezeit ugyanazzal a tárolási típussal (standard vagy prémium szint) tükrözték.
-    - **Replikációs beállítások**. Megjeleníti a tár részleteit, és azt jelzi, hogy a Site Recovery által létrehozott helyreállítási pontok 24 óráig tartanak.
-    - **Bővítmény beállításai**. Azt jelzi, hogy a Site Recovery a replikált virtuális gépekre telepített Site Recovery mobilitási szolgáltatás bővítményének frissítéseit fogja kezelni. A jelzett Azure Automation-fiók kezeli a frissítési folyamatot.
+    :::image type="content" source="./media/tutorial-disaster-recovery/basics.png" alt-text="Állítsa be a virtuális gép alapszintű vész-helyreállítási beállításait.":::
+
+5. Válassza a **Tovább: speciális beállítások** lehetőséget.
+6. A **Speciális beállítások** lapon áttekintheti a beállításokat, és módosíthatja az értékeket egyéni beállításokra. Alapértelmezés szerint a Site Recovery a forrás beállításait a célként megadott erőforrások létrehozásához.
+
+    - **Cél-előfizetés**. Az előfizetés, amelyben a célként megadott virtuális gép létrejön a feladatátvétel után.
+    - **Cél** virtuálisgép-erőforráscsoport. Az az erőforráscsoport, amelyben a célként megadott virtuális gép létrejön a feladatátvétel után.
+    - **Célként megadott virtuális hálózat**. Az Azure-beli virtuális hálózat, amelyben a célként megadott virtuális gép a feladatátvételt követően jön létre.
+    - **Cél rendelkezésre állása**. Ha a célként megadott virtuális gép egyetlen példányként jön létre, a rendelkezésre állási csoport vagy a rendelkezésre állási zónában.
+    - **Közelség elhelyezése**. Ha alkalmazható, válassza ki azt a Proximity-elhelyezési csoportot, amelyben a cél virtuális gép a feladatátvételt követően található.
+    - **Tárolási beállítások – gyorsítótár Storage-fiók**. A helyreállítás a forrás régióban lévő Storage-fiókot használja ideiglenes adattárként. A forrásként szolgáló virtuális gép módosításait a rendszer gyorsítótárazza ebben a fiókban, mielőtt replikálja a célhelyre.
+        - Alapértelmezés szerint a rendszer létrehoz egy gyorsítótár-tárolási fiókot a tárolóban, és újból felhasználja.
+        - Ha testre szeretné szabni a virtuális gép gyorsítótár-fiókját, másik Storage-fiókot is kijelölhet.
+    - **Tárolási beállítások – replika felügyelt lemez**. Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célként megadott régióban.
+        -  Alapértelmezés szerint a célként kezelt lemez felügyeli a forrásként szolgáló virtuális gép által felügyelt lemezeket ugyanazzal a tárolási típussal (standard HDD/SSD vagy prémium SSD).
+        - Igény szerint testre szabhatja a tárolási típust.
+    - **Replikációs beállítások**. Megjeleníti azt a tárolót, amelyben a virtuális gép található, valamint a virtuális géphez használt replikációs házirendet. Alapértelmezés szerint a virtuális gép Site Recovery által létrehozott helyreállítási pontok 24 óráig tartanak.
+    - **Bővítmény beállításai**. Azt jelzi, hogy a Site Recovery a replikált virtuális gépeken telepített Site Recovery mobilitási szolgáltatás bővítményének frissítéseit kezeli.
+        - A jelzett Azure Automation-fiók kezeli a frissítési folyamatot.
+        - Testreszabhatja az Automation-fiókot.
 
     :::image type="content" source="./media/tutorial-disaster-recovery/settings-summary.png" alt-text="A cél-és replikációs beállítások összegzését bemutató oldal.":::
 
-2. Válassza a **replikáció indítása** lehetőséget. Az üzembe helyezés elindul, és Site Recovery megkezdi a cél erőforrások létrehozását. Az értesítésekben nyomon követheti a replikálás folyamatát.
+6. Válassza a **felülvizsgálat + replikáció indítása** lehetőséget.
+
+7. Válassza a **replikáció indítása** lehetőséget. Az üzembe helyezés elindul, és Site Recovery megkezdi a cél erőforrások létrehozását. Az értesítésekben nyomon követheti a replikálás folyamatát.
 
     :::image type="content" source="./media/tutorial-disaster-recovery/notifications.png" alt-text="Értesítés a replikálás előrehaladásáról.":::
 
@@ -97,7 +137,6 @@ A replikálási feladatok befejeződése után megtekintheti a virtuális gép r
 5. Az **infrastruktúra nézetben** a forrás-és a cél virtuális gépek, a felügyelt lemezek és a cache Storage-fiók vizuális áttekintését olvashatja.
 
     :::image type="content" source="./media/tutorial-disaster-recovery/infrastructure.png" alt-text="infrastruktúra-vizualizációs Térkép a virtuális gép vész-helyreállításához.":::
-
 
 ## <a name="run-a-drill"></a>Részletezés futtatása
 

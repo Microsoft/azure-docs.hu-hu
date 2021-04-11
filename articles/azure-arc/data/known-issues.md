@@ -9,20 +9,51 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee652047a33d73ece2d7648905fa590d90b1fb2f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122000"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029505"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Ismert problémák – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>Március 2021
+
+### <a name="data-controller"></a>Adatkezelő
+
+- Az adatvezérlőt közvetlen csatlakozási módban is létrehozhatja a Azure Portal. A más Azure arc-kompatibilis adatszolgáltatási eszközökkel való üzembe helyezés nem támogatott. Pontosabban nem telepíthet adatvezérlőt közvetlen csatlakozási módban a jelen kiadás során az alábbi eszközök bármelyikével.
+   - Azure Data Studio
+   - Azure-beli adatcli ( `azdata` )
+   - Kubernetes natív eszközök
+
+   [Az Azure arc-adatkezelő üzembe helyezése | A közvetlen csatlakozási mód](deploy-data-controller-direct-mode.md) azt ismerteti, hogyan hozhatja létre az adatkezelőt a portálon. 
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure arc engedélyezve PostgreSQL nagy kapacitású
+
+- Egy Azure arc-kompatibilis postgres nagy kapacitású-kiszolgálócsoport üzembe helyezése nem támogatott a közvetlen csatlakozási mód számára engedélyezett ív-adatkezelőben.
+- Érvénytelen értéket kell átadni a `--extensions` paraméternek egy kiszolgálócsoport konfigurációjának szerkesztésekor, hogy a További bővítmények helytelenül visszaállítsák az engedélyezett bővítmények listáját, hogy mi volt a kiszolgálócsoport létrehozásakor, és megakadályozza, hogy a felhasználó további bővítményeket hozzon létre. Az egyetlen megkerülő megoldás, ha ez történik, törölje a kiszolgálócsoport törlését, majd telepítse újra.
+
 ## <a name="february-2021"></a>2021. február
 
-- A csatlakoztatott fürt üzemmódja le van tiltva
+### <a name="data-controller"></a>Adatkezelő
+
+- A közvetlen összekapcsolási fürt üzemmódja le van tiltva
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure arc engedélyezve PostgreSQL nagy kapacitású
+
+- Az időponthoz való visszaállítás jelenleg nem támogatott az NFS-tárolón.
+- Egyszerre nem lehet engedélyezni és konfigurálni a pg_cron-bővítményt. Ehhez két parancsot kell használnia. Egy parancs, amely lehetővé teszi, és egy parancs konfigurálását. 
+
+   Például:
+   ```console
+   § azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+   § azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+   ```
+
+   Az első parancshoz a kiszolgálócsoport újraindítása szükséges. Ezért a második parancs végrehajtása előtt győződjön meg arról, hogy a kiszolgálócsoport állapota a frissítéstől a kész értékre vált. Ha a második parancsot az újraindítás befejeződése előtt hajtja végre, a művelet sikertelen lesz. Ha ez a helyzet, egyszerűen várjon néhány percet, majd futtassa újra a második parancsot.
 
 ## <a name="introduced-prior-to-february-2021"></a>Február 2021. előtt bemutatott
 
@@ -43,12 +74,6 @@ ms.locfileid: "102122000"
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Törölje az egyes zónák jelölőnégyzeteit a none érték megadásához.":::
 
-### <a name="postgresql"></a>PostgreSQL
-
-- Az Azure arc-kompatibilis PostgreSQL-nagy kapacitású pontatlan hibaüzenetet ad vissza, ha nem tudja visszaállítani a megadott relatív időpontot. Ha például olyan időpontot adott meg a visszaállításhoz, amely régebbi, mint a biztonsági másolatok tartalma, a visszaállítás a következőhöz hasonló hibaüzenettel fog meghiúsulni: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}`
-Ha ez bekövetkezik, indítsa újra a parancsot egy olyan időpontot jelző időtartományon belül, amelynek a biztonsági másolatait tartalmazza. Ezt a tartományt a biztonsági mentések listázásával és a készítésük dátumát megtekintve fogja meghatározni.
-- Az időpontra történő visszaállítás csak a kiszolgálócsoportok között támogatott. Egy időpontra vonatkozó visszaállítási műveletben szereplő célkiszolgáló nem lehet az a kiszolgáló, amelyről a biztonsági mentést elvégezte. A kiszolgálónak más csoportnak kell lennie. A teljes visszaállítás azonban ugyanazon kiszolgálócsoport esetében támogatott.
-- A teljes visszaállításhoz szükség van egy biztonsági mentési azonosítóra. Alapértelmezés szerint, ha nem jelez biztonsági mentési azonosítót, a rendszer a legújabb biztonsági mentést fogja használni. Ez a kiadás nem működik.
 
 ## <a name="next-steps"></a>Következő lépések
 

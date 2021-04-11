@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d778844fee8cad9359532ffa23e177bf7b13c4b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9bdc4b2fed40817c7173468180e34de1ed0506fb
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98117690"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962679"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet kapacitásának korlátai az Azure szinapszis Analyticsben
 
@@ -84,17 +84,17 @@ Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet külön
 
 ## <a name="metadata"></a>Metaadatok
 
+A DMV alaphelyzetbe áll, ha egy dedikált SQL-készlet szüneteltetve van, vagy ha méretezhető.
+
 | Rendszernézet | Sorok maximális száma |
 |:--- |:--- |
-| sys.dm_pdw_component_health_alerts |10,000 |
-| sys.dm_pdw_dms_cores |100 |
-| sys.dm_pdw_dms_workers |A legutóbbi 1000 SQL-kérelmekhez tartozó DMS-feldolgozók száma összesen |
-| sys.dm_pdw_errors |10,000 |
-| sys.dm_pdw_exec_requests |10,000 |
-| sys.dm_pdw_exec_sessions |10,000 |
-| sys.dm_pdw_request_steps |A 1000 legutóbbi, sys.dm_pdw_exec_requestsban tárolt SQL-kérelmekre vonatkozó lépések teljes száma. |
-| sys.dm_pdw_os_event_logs |10,000 |
-| sys.dm_pdw_sql_requests |A sys.dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmek. |
+| [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?view=azure-sqldw-latest&preserve-view=true) |100 |
+| [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true) |A legutóbbi 1000 SQL-kérelmekhez tartozó DMS-feldolgozók száma összesen |
+| [sys.dm_pdw_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-errors-transact-sql?view=azure-sqldw-latest&preserve-view=true) |10,000 |
+| [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true) |10,000 |
+| [sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?view=azure-sqldw-latest&preserve-view=true) |10,000 |
+| [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true) |A 1000 legutóbbi, sys.dm_pdw_exec_requestsban tárolt SQL-kérelmekre vonatkozó lépések teljes száma. |
+| [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true) |A sys.dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmek. |
 |||
 
 ## <a name="next-steps"></a>Következő lépések

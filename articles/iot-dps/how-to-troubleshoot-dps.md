@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: xujing
 ms.openlocfilehash: 73a785ee3975245ecd97f8c8aab77acc796a4e36
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105568018"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
@@ -32,7 +32,7 @@ Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a
 4. Válassza ki a kívánt metrikát. 
    <br />A DPS jelenleg három mérőszámot biztosít:
 
-    | Metrika neve | Description |
+    | Metrika neve | Leírás |
     |-------|------------|
     | Igazolási kísérletek | Az eszköz kiépítési szolgáltatásával hitelesíteni próbált eszközök száma|
     | Regisztrációs kísérletek | A sikeres hitelesítés után IoT Hub regisztrálni próbált eszközök száma|
@@ -58,7 +58,7 @@ További információ: [Azure monitor riasztások](../azure-monitor/alerts/alert
 
 5. A kívánt naplók összegyűjtésének engedélyezése.
 
-    | Napló neve | Description |
+    | Napló neve | Leírás |
     |-------|------------|
     | DeviceOperations | Eszköz-kapcsolódási eseményekhez kapcsolódó naplók |
     | ServiceOperations | A Service SDK-val kapcsolatos eseménynaplók (például regisztrációs csoportok létrehozása vagy frissítése)|
@@ -75,7 +75,7 @@ További információ: [Azure monitor riasztások](../azure-monitor/alerts/alert
 ## <a name="common-error-codes"></a>Gyakori hibakódok
 Ez a táblázat a gyakori hibák megismerésére és megoldására használható.
 
-| Hibakód| Description | HTTP-állapotkód |
+| Hibakód| Leírás | HTTP-állapotkód |
 |-------|------------|------------|
 | 400 | A kérelem törzse nem érvényes; például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni.| 400 helytelen formátum |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | 401 Nem engedélyezett|

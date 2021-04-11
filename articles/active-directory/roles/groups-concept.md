@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5df7088551e7e7f616077342b762baca179f8640
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a71a53cd2aff16102a54f5a24063615e02d11872
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123360"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169521"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -63,6 +63,7 @@ A következő forgatókönyvek jelenleg nem támogatottak:
 - *Azure ad P2 licenccel rendelkező ügyfeleinknek* Még a csoport törlése után is megjelenik a szerepkör jogosult tagja a PIM felhasználói felületén. Funkcionálisan nincs probléma; Ez csak egy gyorsítótár-probléma a Azure Portalban.  
 - A szerepkör-hozzárendelésekhez használja az új [Exchange felügyeleti központot](https://admin.exchange.microsoft.com/) csoporttagság használatával. A régi Exchange felügyeleti központ még nem támogatja ezt a funkciót. Az Exchange PowerShell-parancsmagok a várt módon fognak működni.
 - Azure Information Protection portálon (a klasszikus portálon) még nem ismeri fel a szerepkör-tagságot a csoporton keresztül. [Áttelepítheti az egységes érzékenységű címkézési platformra](/azure/information-protection/configure-policy-migrate-labels) , majd az Office 365 biztonsági & megfelelőségi központjának használatával csoportos hozzárendeléseket használhat a szerepkörök kezeléséhez.
+- Az [alkalmazások felügyeleti központja](https://config.office.com/) még nem támogatja ezt a funkciót. Rendeljen felhasználókat közvetlenül az Office-alkalmazások rendszergazdai szerepköréhez.
 
 Ezeket a problémákat kijavítja.
 

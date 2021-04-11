@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 03/17/2021
 ms.openlocfilehash: 8e5c204709f0eadb6c1a4b6f479d4833f335b264
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104594886"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – rugalmas kiszolgáló
@@ -106,7 +106,7 @@ A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy glob
 
 Továbbra is bővítjük a rugalmas kiszolgáló további régióit.
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újraszámítási költségeket igényel a PostgreSQL-motoron kifejlesztett meglévő alkalmazások rugalmas kiszolgálóra történő áttelepítéséhez. 
 

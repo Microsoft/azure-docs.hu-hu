@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218638"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059360"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>A titkosítás konfigurálása Azure Key Vault felügyelt HSM-ben (előzetes verzió) tárolt, ügyfél által felügyelt kulcsokkal
 
@@ -65,7 +65,9 @@ az keyvault role assignment create \
 
 ## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Titkosítás konfigurálása kulccsal a felügyelt HSM-ben
 
-Végül konfigurálja az Azure Storage-titkosítást az ügyfél által felügyelt kulcsokkal a felügyelt HSM-ben tárolt kulcsok használatára. A támogatott típusok közé tartoznak a 2048, 3072 és 4096 méretű RSA-HSM-kulcsok. Telepítse az Azure CLI-2.12.0 vagy újabb verzióját úgy, hogy a titkosítást a felügyelt HSM-ben ügyfél által felügyelt kulcs használatára konfigurálja. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Végül konfigurálja az Azure Storage-titkosítást az ügyfél által felügyelt kulcsokkal a felügyelt HSM-ben tárolt kulcsok használatára. A támogatott típusok közé tartoznak a 2048, 3072 és 4096 méretű RSA-HSM-kulcsok. A kulcsok felügyelt HSM-ben való létrehozásával kapcsolatos információkért lásd: [HSM-kulcs létrehozása](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key).
+
+Telepítse az Azure CLI-2.12.0 vagy újabb verzióját úgy, hogy a titkosítást a felügyelt HSM-ben ügyfél által felügyelt kulcs használatára konfigurálja. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 Az ügyfél által felügyelt kulcs verziószámának automatikus frissítéséhez hagyja ki a kulcs verzióját, ha a Storage-fiókhoz az ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást. Az alábbi példában látható módon frissítse a Storage-fiók titkosítási beállításait az az [Storage Account Update](/cli/azure/storage/account#az_storage_account_update) paranccsal. Adja meg a `--encryption-key-source parameter` és a beállítását, hogy `Microsoft.Keyvault` engedélyezze az ügyfél által felügyelt kulcsokat a fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 

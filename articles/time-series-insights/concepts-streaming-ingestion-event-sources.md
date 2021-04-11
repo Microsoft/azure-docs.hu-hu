@@ -1,20 +1,20 @@
 ---
 title: Adatfolyam-betöltési események forrásai – Azure Time Series Insights Gen2 | Microsoft Docs
 description: Ismerkedjen meg Azure Time Series Insights Gen2.
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: ec41f7503ec179cb1fa6172e94e613933f719c93
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953617"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504396"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-esemény forrásai
 
@@ -75,7 +75,7 @@ Egy eseményforrás létrehozásakor lehetősége van megadnia, hogy milyen elő
 
 - Az eseményforrás-kapcsolati karakterláncok megadásakor kövesse a legalacsonyabb jogosultsági szint elvét. Event Hubs esetében csak a *küldési* jogcímet konfigurálja, és a IoT hub csak a *szolgáltatás csatlakozási* engedélyét használja.
 
-> [!CAUTION] 
+> [!CAUTION]
 > Ha törli a IoT Hub vagy az Event hub-t, és újra létrehoz egy új erőforrást ugyanazzal a névvel, létre kell hoznia egy új eseményforrás, és csatolnia kell az új IoT Hub vagy az Event hub-t. A rendszer addig nem tölti be az adatot, amíg el nem végzi ezt a lépést.
 
 ## <a name="production-workloads"></a>Éles számítási feladatok

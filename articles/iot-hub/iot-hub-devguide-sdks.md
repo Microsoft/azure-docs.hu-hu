@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: d35535c87ca20bfc573995bf15f79bc149619776
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a94bdfd03d4e48495601b5c494204ac1ad50378
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611589"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168331"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Az Azure IoT Hub SDK-k ismertetése és használata
 
@@ -41,7 +41,7 @@ Ismerje meg az [Azure IoT SDK-k használatával történő fejlesztés előnyeit
 
 Az SDK-k által támogatott platformok az [Azure IoT SDK-platform támogatásában](iot-hub-device-sdk-platform-support.md)találhatók.
 
-Az SDK-kompatibilitással kapcsolatos további információkért tekintse meg az [Azure Certified for IoT Device Catalog](https://catalog.azureiotsolutions.com/) vagy az egyes Tárházak című témakört.
+Az SDK-kompatibilitással kapcsolatos további információkért tekintse meg az [Azure Certified for IoT Device Catalog](https://devicecatalog.azure.com/) vagy az egyes Tárházak című témakört.
 
 ## <a name="azure-iot-hub-device-sdks"></a>Azure IoT Hub eszköz SDK-k
 

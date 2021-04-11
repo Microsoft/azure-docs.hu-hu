@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 7d421cf20aa054fb3e1e4877ee610a284eeff7c9
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 6f08fa0b2126112fa17fd61be6f44bb5cc6d5396
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627054"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552155"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
-Ez a cikk ismerteti a Microsoft kereskedelmi piactéren szolgáltatott szoftverként (SaaS) való közzététel különböző lehetőségeit és követelményeit. Az SaaS-ajánlatok lehetővé teszik a szoftveres megoldások online előfizetésekkel történő továbbítását és licencelését. SaaS-közzétevőként Ön kezeli és fizeti az Ön ajánlata ügyfelei általi használatát támogató infrastruktúrát. Ez a cikk segít felkészülni az ajánlat közzétételére a kereskedelmi piactéren a partner centerrel.
+Ez a cikk ismerteti a Microsoft kereskedelmi piactéren szolgáltatott szoftverként (SaaS) való közzététel különböző lehetőségeit és követelményeit. Az SaaS lehetővé teszi, hogy az online előfizetéseken keresztül szoftveres megoldásokat nyújtson az ügyfeleknek. SaaS-közzétevőként Ön kezeli és fizeti az Ön ajánlata ügyfelei általi használatát támogató infrastruktúrát. Ez a cikk segít felkészülni az ajánlat közzétételére a kereskedelmi piactéren a partner centerrel.
 
 ## <a name="listing-options"></a>Terméklistázási lehetőségek
 
@@ -134,6 +134,28 @@ Ha úgy dönt, hogy a normál szerződést használja, lehetősége van arra, ho
 > [!NOTE]
 > Miután közzétett egy ajánlatot a kereskedelmi piactérre vonatkozó standard szerződéssel, nem használhatja a saját egyéni használati feltételeit. Ez egy "vagy" forgatókönyv. A megoldást a standard szerződés vagy a saját használati feltételei alapján ajánljuk fel. Ha módosítani szeretné a standard szintű szerződés feltételeit, ezt a standard szintű szerződés módosításaival teheti meg.
 
+
+## <a name="microsoft-365-integration"></a>Microsoft 365-integráció
+
+A Microsoft 365 integrációja lehetővé teszi, hogy az SaaS-ajánlat a kapcsolódó ingyenes bővítmények, például a Teams alkalmazások, az Office-bővítmények és a SharePoint-keretrendszer megoldásai révén több Microsoft 365 alkalmazás felületén keresztül is elérhetővé tegye a kapcsolódó élményt. Az alábbi információk megadásával megkönnyítheti ügyfelei számára a E2E-megoldás (webszolgáltatás + kapcsolódó beépülő modulok) összes aspektusának felderítését és egy folyamaton belüli üzembe helyezését. 
+  - Ha az SaaS-ajánlat integrálva van a Microsoft Graphval, akkor adja meg a SaaS-ajánlat által az integrációhoz használt Azure Active Directory (HRE) alkalmazás AZONOSÍTÓját. A rendszergazdák áttekinthetik a SaaS-ajánlat megfelelő működéséhez szükséges hozzáférési engedélyeket a HRE-alkalmazás AZONOSÍTÓjában, és hozzáférést biztosítanak, ha a telepítés során speciális rendszergazdai engedélyre van szükség. 
+    
+     Ha úgy dönt, hogy eladja az ajánlatot a Microsofton keresztül, akkor ez ugyanaz a HRE-alkalmazás azonosítója, amelyet a kezdőlapon regisztrált, hogy az ügyfél-előfizetés aktiválásához szükséges alapszintű felhasználói adatokat kapjon. Részletes útmutatásért tekintse [meg a kereskedelmi piactéren a transacter SaaS-ajánlat kezdőlapjának összeállítása](azure-ad-transactable-saas-landing-page.md)című témakört. 
+    
+   -    Adja meg azoknak a kapcsolódó beépülő moduloknak a listáját, amelyek a csatolni kívánt SaaS-ajánlattal működnek. Az ügyfelek képesek lesznek felderíteni a E2E-megoldást a AppSource, és a rendszergazdák is telepíthetik a SaaS-t és az összes kapcsolódó beépülő modult, amelyhez ugyanahhoz a folyamathoz kapcsolódott Microsoft 365 felügyeleti központban.
+    
+        A kapcsolódó bővítmények összekapcsolásához meg kell adnia a beépülő modul AppSource hivatkozását, ez azt jelenti, hogy a bővítményt először közzé kell tenni a AppSource-ben. Az összekapcsolható támogatott bővítmény-típusok a következők: Team apps, Office beépülő modulok és SharePoint Framework (SPFx) megoldások. Minden csatolt bővítménynek egyedinek kell lennie egy SaaS-ajánlathoz. 
+
+A kapcsolt termékek esetében a keresés a AppSource-ben egy eredményként fog visszatérni, amely magában foglalja a SaaS és az összes társított bővítményt is. Az ügyfél a SaaS-ajánlat és a társított bővítmények termék részletes oldalai között tud navigálni. A rendszergazdák áttekinthetik és telepíthetik a SaaS-és csatolt bővítményeket ugyanazon a folyamaton belül, a Microsoft 365 felügyeleti központban lévő integrált és csatlakoztatott felhasználói felület segítségével. További információ: [Microsoft 365 alkalmazások tesztelése és telepítése – Microsoft 365-rendszergazda](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps).
+
+### <a name="microsoft-365-integration-support-limitations"></a>Microsoft 365 integrációs támogatási korlátozások
+A felderítés egyetlen E2E-megoldásként támogatott a AppSource-ben az összes eset esetében, azonban a E2E-megoldás egyszerűsített telepítése a fentiekben leírtak szerint a Microsoft 365 felügyeleti központban nem támogatott a következő esetekben:
+
+   - Ugyanaz a bővítmény több SaaS-ajánlathoz van csatolva.
+   - Az SaaS-ajánlat beépülő modulokhoz van csatolva, de nem integrálható Microsoft Graph, és nincs megadva HRE-alkalmazás azonosítója.
+  - Az SaaS-ajánlat beépülő modulokhoz van csatolva, de a Microsoft Graph integrációhoz megadott HRE-azonosító több SaaS-ajánlat között is meg van osztva.
+
+ 
 ## <a name="offer-listing-details"></a>Ajánlat részletei
 
 Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Centerben, a szöveg, a képek, a választható videók és az egyéb információk megadására kerül az **ajánlati lista** oldalán. Ez az információ, amelyet az ügyfelek látni fognak, amikor a kereskedelmi piactéren észlelik az ajánlatát, ahogy az a következő példában is látható.

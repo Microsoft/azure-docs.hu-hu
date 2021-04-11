@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9f7df4889d1d54605ab2b5cd79f3039f06fab197
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564925"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027873"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Áttelepítési útmutató: SQL Server Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez az útmutató segítséget nyújt a SQL Server-példány átirányításához Azure SQL Databasere. 
+Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) SQL Server-példányát Azure SQL Databasere. 
 
 A helyszíni vagy a szolgáltatásban futó SQL Server áttelepíthetők: 
 
@@ -36,7 +36,7 @@ További áttelepítési információkért tekintse meg az [áttelepítés átte
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-A SQL Server Azure SQL Databasere való áttelepítéséhez ellenőrizze, hogy rendelkezik-e az alábbi előfeltételekkel: 
+A SQL Server Azure SQL Databasere való [áttelepítéséhez](https://azure.microsoft.com/migration/migration-journey) győződjön meg arról, hogy rendelkezik a következő előfeltételekkel: 
 
 - A kiválasztott [áttelepítési módszer](sql-server-to-sql-database-overview.md#compare-migration-options) és a hozzá tartozó eszközök.
 - [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) olyan gépre van telepítve, amely képes csatlakozni a forrás SQL Serverhoz.
@@ -47,7 +47,7 @@ A SQL Server Azure SQL Databasere való áttelepítéséhez ellenőrizze, hogy r
 
 ## <a name="pre-migration"></a>A migrálás előtt
 
-Miután ellenőrizte, hogy a forrás-környezet támogatott-e, kezdje az áttelepítés előtti fázissal. Fedezze fel az összes meglévő adatforrást, mérje fel az áttelepítés megvalósíthatóságát, és azonosítsa az áttelepítést megakadályozó blokkolási problémákat. 
+Miután ellenőrizte, hogy a forrás-környezet támogatott-e, kezdje az áttelepítés előtti fázissal. Fedezze fel az összes meglévő adatforrást, mérje fel az áttelepítés megvalósíthatóságát, és azonosítsa az [Azure-felhő áttelepítését](https://azure.microsoft.com/migration)megakadályozó blokkolási problémákat.
 
 ### <a name="discover"></a>Felderítés
 
@@ -200,6 +200,10 @@ További információ: [Azure SQL Database kezelése az áttelepítés után](..
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, lásd: [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 
+
+- További információ a [Azure Migrateról](https://azure.microsoft.com/services/azure-migrate) :
+   - [Azure Migrate](../../../migrate/migrate-services-overview.md)
+
 - Ha többet szeretne megtudni SQL Database lásd:
     - [A Azure SQL Database áttekintése](../../database/sql-database-paas-overview.md)
    - [Az Azure teljes tulajdonlási költsége kalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) 
@@ -207,7 +211,8 @@ További információ: [Azure SQL Database kezelése az áttelepítés után](..
 
 - Ha többet szeretne megtudni a Felhőbeli Migrálás keretrendszerével és bevezetési ciklusával kapcsolatban, olvassa el a következőt:
    -  [Felhőbevezetési keretrendszer az Azure-hoz](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Ajánlott eljárások az Azure-ra való áttéréssel kapcsolatos díjszabási és méretezési feladatok elvégzéséhez](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Ajánlott eljárások az Azure-ba való Migrálás díjszabásához és méretezéséhez](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Erőforrások Cloud Migration](https://azure.microsoft.com/migration/resources)
 
 - Az alkalmazás-hozzáférési réteg értékeléséhez lásd: [adathozzáférés áttelepítési eszközkészlete (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
 - Az A/B típusú adatelérési réteg végrehajtásával kapcsolatos további információkért lásd: [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

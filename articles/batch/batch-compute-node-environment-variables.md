@@ -4,10 +4,10 @@ description: A feladat futásidejű környezeti változóinak útmutatója és r
 ms.topic: conceptual
 ms.date: 12/30/2020
 ms.openlocfilehash: dbdc13e28a3a0c772480d2602f147e0d3354ff48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104669984"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch futtatókörnyezet környezeti változói
@@ -36,7 +36,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-| Változó neve                     | Description                                                              | Rendelkezésre állás | Példa |
+| Változó neve                     | Leírás                                                              | Rendelkezésre állás | Példa |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Annak a Batch-fióknak a neve, amelyhez a feladat tartozik.                  | Minden feladat.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | A Batch-fiók URL-címe. | Minden feladat. | `https://myaccount.westus.batch.azure.com` |

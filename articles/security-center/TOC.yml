@@ -43,10 +43,10 @@
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
           href: quickstart-onboard-machines.md
         - name: AWS-fiókok csatlakoztatása
-          displayName: 'hybrid, multicloud, amazon, arc'
+          displayName: 'hybrid, multicloud, multi-cloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: GCP-fiókok csatlakoztatása
-          displayName: 'hybrid, multicloud, google'
+          displayName: 'hybrid, multicloud, multi-cloud, google'
           href: quickstart-onboard-gcp.md
     - name: 6. Automatikus válaszok létrehozása a riasztásokhoz
       displayName: 'Resource Manager, ARM'
@@ -198,6 +198,9 @@
         - name: Meghatározott rendszerkép-sebezhetőségi eredmények letiltása
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
+        - name: Azure arc-kompatibilis Kubernetes-fürtök védelme
+          displayName: 'k8s, containers, aks, hybrid, arc, azure arc, multicloud'
+          href: defender-for-kubernetes-azure-arc.md
         - name: A Kubernetes számítási feladatok védelme
           displayName: 'k8s, containers, aks'
           href: kubernetes-workload-protections.md
@@ -312,6 +315,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Végpontvédelmi értékelés és javaslatok
       href: security-center-endpoint-protection.md
+    - name: Azure CLI
+      href: /cli/azure/security
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

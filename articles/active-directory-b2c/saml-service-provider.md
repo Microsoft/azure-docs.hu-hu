@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107513"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384272"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -71,22 +71,42 @@ Az alkalmazás és a Azure AD B2C közötti megbízhatósági kapcsolat létreho
 
 | Használat | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| SAML-kérelem aláírása  | No | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány, amelyet az alkalmazás használ a Azure AD B2Cba küldött SAML-kérelmek aláírására. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. Azure AD B2C érvényesíti az SAML-kérelem aláírását a nyilvános kulccsal az alkalmazás metaadatainak használatával.|
-| SAML-állítás titkosítása  | No | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. A Azure AD B2C a nyilvános kulcs használatával titkosíthatja az alkalmazásra vonatkozó állításokat. Az alkalmazás a titkos kulcsot használja az állítás visszafejtéséhez.|
+| SAML-kérelem aláírása  | Nem | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány, amelyet az alkalmazás használ a Azure AD B2Cba küldött SAML-kérelmek aláírására. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. Azure AD B2C érvényesíti az SAML-kérelem aláírását a nyilvános kulccsal az alkalmazás metaadatainak használatával.|
+| SAML-állítás titkosítása  | Nem | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. A Azure AD B2C a nyilvános kulcs használatával titkosíthatja az alkalmazásra vonatkozó állításokat. Az alkalmazás a titkos kulcsot használja az állítás visszafejtéséhez.|
 
 **Tanúsítványok Azure AD B2C**
 
 | Használat | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| SAML-válaszok aláírása | Yes | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az alkalmazásnak küldött SAML-válasz aláírásához. Az alkalmazás beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez. |
+| SAML-válaszok aláírása | Igen  | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az alkalmazásnak küldött SAML-válasz aláírásához. Az alkalmazás beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez. |
+| SAML-állítás aláírása | Igen | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az SAML-válasz érvényesítésének aláírásához. Az `<saml:Assertion>` SAML-válasz része.  |
 
 Éles környezetben javasoljuk, hogy használjon egy nyilvános hitelesítésszolgáltató által kiadott tanúsítványokat. Ezt az eljárást azonban önaláírt tanúsítványokkal is elvégezheti.
 
-### <a name="prepare-a-self-signed-certificate-for-saml-response-signing"></a>Önaláírt tanúsítvány előkészítése SAML-válaszok aláírásához
+### <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása
 
-Létre kell hoznia egy SAML-válasz aláíró tanúsítványát, hogy az alkalmazás megbízzon a Azure AD B2Ctól kapott állításban.
+Az alkalmazás és a Azure AD B2C közötti megbízhatósági kapcsolat létrehozásához hozzon létre egy SAML-válasz aláíró tanúsítványát. Azure AD B2C ezt a tanúsítványt használja az alkalmazásnak küldött SAML-válasz aláírására. Az alkalmazás beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez. 
+
+> [!TIP]
+> Az ebben a szakaszban létrehozott házirend-kulcsot más célra is használhatja, például az [SAML](saml-service-provider-options.md#saml-assertions-signature)-jogcímen való bejelentkezéshez. 
+
+### <a name="obtain-a-certificate"></a>Tanúsítvány beszerzése
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
+
+### <a name="upload-the-certificate"></a>A tanúsítvány feltöltése
+
+A tanúsítványt a Azure AD B2C bérlőben kell tárolnia.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+1. A **Beállítások** területen válassza a lehetőséget `Upload` .
+1. Adja meg a szabályzat kulcsának **nevét** . Például: `SamlIdpCert`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
+1. Tallózással keresse meg és válassza ki a tanúsítvány. pfx fájlját a titkos kulccsal.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="enable-your-policy-to-connect-with-a-saml-application"></a>Az SAML-alkalmazáshoz való kapcsolódás engedélyezése a házirend számára
 
@@ -111,6 +131,7 @@ Keresse meg a `<ClaimsProviders>` szakaszt, és adja hozzá a következő XML-k�
       </Metadata>
       <CryptographicKeys>
         <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
@@ -147,51 +168,6 @@ Az `IssuerUri` SAML-jogkivonat kiállítói technikai profiljában módosíthatj
     </TechnicalProfile>
 ```
 
-#### <a name="sign-the-azure-ad-b2c-idp-saml-metadata-optional"></a>Írja alá a Azure AD B2C identitásszolgáltató SAML-metaadatokat (opcionális)
-
-Ha az alkalmazás megköveteli, utasíthatja Azure AD B2C az SAML-identitásszolgáltató metaadat-dokumentum aláírására. Ehhez állítson elő és töltsön fel egy SAML-identitásszolgáltató metaadat-aláírási házirend-kulcsot, amint az az [SAML-válaszok aláírására szolgáló önaláírt tanúsítvány előkészítése](#prepare-a-self-signed-certificate-for-saml-response-signing)című ábrán látható. Ezután konfigurálja a `MetadataSigning` metaadat-elemet az SAML-jogkivonat kiállítói technikai profiljában. A `StorageReferenceId` névnek hivatkoznia kell a szabályzat kulcsának nevére.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
-
-#### <a name="sign-the-azure-ad-b2c-idp-saml-response-element-optional"></a>A Azure AD B2C identitásszolgáltató SAML-válasz elemének aláírása (opcionális)
-
-Megadhat egy tanúsítványt, amelyet az SAML-üzenetek aláírásához kíván használni. Az üzenet az `<samlp:Response>` alkalmazásnak küldött SAML-válasz eleme.
-
-A tanúsítvány megadásához állítson elő és töltsön fel egy házirend-kulcsot az [SAML-válaszok aláírására szolgáló önaláírt tanúsítvány előkészítése](#prepare-a-self-signed-certificate-for-saml-response-signing)című ábrán látható módon. Ezután konfigurálja a `SamlMessageSigning` metaadat-elemet az SAML-jogkivonat kiállítói technikai profiljában. A `StorageReferenceId` névnek hivatkoznia kell a szabályzat kulcsának nevére.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
 ## <a name="configure-your-policy-to-issue-a-saml-response"></a>A szabályzat konfigurálása SAML-válasz kibocsátásához
 
 Most, hogy a házirend létrehozhat SAML-válaszokat, konfigurálnia kell a szabályzatot, hogy az alapértelmezett JWT válasz helyett SAML-választ adjon ki az alkalmazásnak.

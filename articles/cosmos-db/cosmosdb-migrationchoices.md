@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3325960793a5a0d7bc48ca8030c675d7ebf0c026
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93097583"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442592"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>A helyszíni vagy a Felhőbeli adatátviteli beállítások Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,8 +64,8 @@ Az alábbi tényezők befolyásolják a migrálási eszköz kiválasztását:
 
 |Áttelepítés típusa|Megoldás|Támogatott források|Támogatott célok|Megfontolandó szempontok|
 |---------|---------|---------|---------|---------|
-|Offline|[cqlsh MÁSOLÁSi parancs](cassandra-import-data.md#migrate-data-using-cqlsh-copy-command)|CSV-fájlok | Azure Cosmos DB Cassandra API| &bull; Egyszerűen beállítható. <br/>&bull; Nagyméretű adathalmazokhoz nem alkalmas. <br/>&bull; Csak akkor működik, ha a forrás egy Cassandra-tábla.|
-|Offline|[Táblázat másolása a Sparktal](cassandra-import-data.md#migrate-data-using-spark) | &bull;Apache Cassandra<br/>&bull;Azure Cosmos DB Cassandra API| Azure Cosmos DB Cassandra API | &bull; A Spark-funkciók használatával integrálással az átalakítást és a betöltést. <br/>&bull; A szabályozások kezeléséhez egyéni újrapróbálkozási szabályzattal rendelkező konfigurációra van szükség.|
+|Offline|[cqlsh MÁSOLÁSi parancs](cassandra-import-data.md#migrate-data-by-using-the-cqlsh-copy-command)|CSV-fájlok | Azure Cosmos DB Cassandra API| &bull; Egyszerűen beállítható. <br/>&bull; Nagyméretű adathalmazokhoz nem alkalmas. <br/>&bull; Csak akkor működik, ha a forrás egy Cassandra-tábla.|
+|Offline|[Táblázat másolása a Sparktal](cassandra-import-data.md#migrate-data-by-using-spark) | &bull;Apache Cassandra<br/>&bull;Azure Cosmos DB Cassandra API| Azure Cosmos DB Cassandra API | &bull; A Spark-funkciók használatával integrálással az átalakítást és a betöltést. <br/>&bull; A szabályozások kezeléséhez egyéni újrapróbálkozási szabályzattal rendelkező konfigurációra van szükség.|
 |Online|[Striim (Oracle DB/Apache Cassandra-ból)](cosmosdb-cassandra-api-migrate-data-striim.md)| &bull;Oracle<br/>&bull;Apache Cassandra<br/><br/> Más támogatott forrásokért tekintse meg a [Striim webhelyet](https://www.striim.com/sources-and-targets/) .|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB Cassandra API <br/><br/> További támogatott célokért tekintse meg a [Striim webhelyet](https://www.striim.com/sources-and-targets/) .| &bull; Sokféle forrással működik, például Oracle, DB2 SQL Server. <br/>&bull; Egyszerűen hozhat létre ETL-folyamatokat, és irányítópultot biztosít a figyeléshez. <br/>&bull; Nagyobb adatkészleteket támogat. <br/>&bull; Mivel ez egy harmadik féltől származó eszköz, azt a piactéren kell megvásárolni, és telepíteni kell a felhasználó környezetében.|
 |Online|[Blitzz (Oracle DB/Apache Cassandra-ból)](oracle-migrate-cosmos-db-blitzz.md)|&bull;Oracle<br/>&bull;Apache Cassandra<br/><br/>Más támogatott forrásokért tekintse meg a [Blitzz webhelyet](https://www.blitzz.io/) . |Azure Cosmos DB Cassandra API. <br/><br/>További támogatott célokért tekintse meg a [Blitzz webhelyet](https://www.blitzz.io/) . | &bull; Nagyobb adatkészleteket támogat. <br/>&bull; Mivel ez egy harmadik féltől származó eszköz, azt a piactéren kell megvásárolni, és telepíteni kell a felhasználó környezetében.|
 

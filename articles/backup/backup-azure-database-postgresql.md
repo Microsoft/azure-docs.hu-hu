@@ -2,14 +2,14 @@
 title: Az Azure Database for PostgreSQL biztonsági mentése
 description: Ismerkedjen meg Azure Database for PostgreSQL biztonsági mentéssel hosszú távú adatmegőrzéssel (előzetes verzió)
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eba9d78dda45197c0d1e92195980f3d731734a8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737572"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011712"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL biztonsági mentés hosszú távú adatmegőrzéssel (előzetes verzió)
 
@@ -135,10 +135,9 @@ Az alábbi utasítások részletes útmutatóul szolgálnak az Azure PostgreSQL-
 
 1. **Adatmegőrzési** beállítások megadása. Egy vagy több megőrzési szabályt is hozzáadhat. Az egyes adatmegőrzési szabályok feltételezik az adott biztonsági másolatok bemeneteit, valamint az adattárak és a megőrzés időtartamát.
 
-1. Dönthet úgy, hogy a biztonsági másolatokat a két adattár (vagy rétegek) egyikében tárolja: **biztonsági mentési** adattár (standard szint) vagy **archiválási** adattár (előzetes verzió). **Kétszintű rétegbeli beállítás** közül választhat, amelyekkel meghatározhatja, hogy a biztonsági másolatok hogyan legyenek a két adattárra bontva:
+1. Dönthet úgy, hogy a biztonsági másolatokat a két adattár (vagy rétegek) egyikében tárolja: **biztonsági mentési** adattár (standard szint) vagy **archiválási** adattár (előzetes verzió).
 
-    - Ha szeretné, hogy a rendszer **azonnal** készítsen biztonsági másolatot a biztonsági mentési és az archiválási adattárakban, válassza a másolást.
-    - Ha a biztonsági mentési adattár lejárta után szeretné áthelyezni a biztonsági mentést az archiválási adattárba, válassza a **lejárati idő** áthelyezése lehetőséget.
+   A **lejárati** időpontot kiválasztva áthelyezheti a biztonsági mentést az archiválási adattárba a biztonsági mentési adattár lejárta után.
 
 1. Az **alapértelmezett adatmegőrzési szabály** minden más megőrzési szabály hiányában érvényes, és az alapértelmezett érték három hónap.
 
@@ -197,7 +196,21 @@ A visszaállítás elindításához kövesse ezt a lépésenkénti útmutatót:
 
     ![Visszaállítás fájlként](./media/backup-azure-database-postgresql/restore-as-files.png)
 
+1. Ha a helyreállítási pont az archiválási szinten található, a visszaállítás előtt újra kell hidratálnia a helyreállítási pontot.
+   
+   ![Rehidratálás beállításai](./media/backup-azure-database-postgresql/rehydration-settings.png)
+   
+   Adja meg a következő további paramétereket a rehidratálás használatához:
+   - **Rehidratálás prioritása:** Az alapértelmezett érték a **standard**.
+   - **Rehidratálás időtartama:** A maximális rehidratálás időtartama 30 nap, a minimális újraszárítási időtartam pedig 10 nap. Az alapértelmezett érték **15**.
+   
+   A helyreállítási pontot a **biztonsági mentési adattár** tárolja a megadott folyadékpótlás időtartama alatt.
+
+
 1. Tekintse át az adatokat, és válassza a **visszaállítás** lehetőséget. Ez egy megfelelő visszaállítási feladatot indít el, amely nyomon követhető a **biztonsági mentési feladatok** alatt.
+
+>[!NOTE]
+>A Azure Database for PostgreSQL archiválásának támogatása korlátozott nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>A biztonsági mentés és a visszaállítás konfigurálásához szükséges előfeltételek
 
@@ -220,7 +233,7 @@ Válassza ki a vonatkozó biztonsági mentési házirendben definiált megőrzé
 
 ### <a name="stop-protection"></a>A védelem kikapcsolása
 
-A biztonsági másolati elemek védelmét leállíthatja. Ezzel a beállítással az adott biztonsági mentési tételhez tartozó helyreállítási pontokat is törli. Még nem biztosítjuk a védelem leállításának lehetőségét a meglévő helyreállítási pontok megőrzése mellett.
+A biztonsági másolati elemek védelmét leállíthatja. Ezzel a beállítással az adott biztonsági mentési tételhez tartozó helyreállítási pontokat is törli. Ha a helyreállítási pontok legalább hat hónapig nem az archiválási szinten vannak, a helyreállítási pontok törlése a korai törlési költséget eredményezi. Még nem biztosítjuk a védelem leállításának lehetőségét a meglévő helyreállítási pontok megőrzése mellett.
 
 ![A védelem kikapcsolása](./media/backup-azure-database-postgresql/stop-protection.png)
 

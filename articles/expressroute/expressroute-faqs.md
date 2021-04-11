@@ -1,18 +1,18 @@
 ---
 title: Gyakori kérdések – Azure ExpressRoute | Microsoft Docs
-description: A ExpressRoute GYIK a támogatott Azure-szolgáltatásokkal, a díjszabással, az adatokkal, a kapcsolatokkal, az SLA-val, a szolgáltatókkal és a szolgáltatásokkal, valamint a sávszélességgel és további technikai
+description: A ExpressRoute GYIK a támogatott Azure-szolgáltatásokkal, a díjszabással, az adatokkal, a kapcsolatokkal, az SLA-val, a szolgáltatókkal és a szolgáltatásokkal, valamint a sávszélességgel és egyéb technikai
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 579a7114a06386fe48fcc074cc1095e980837ba0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: efa5c3192ca6f51c219cc308a776e6db7212103c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732176"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552240"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -22,7 +22,7 @@ A ExpressRoute egy Azure-szolgáltatás, amely lehetővé teszi, hogy a Microsof
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Milyen előnyökkel jár a ExpressRoute és a magánhálózati kapcsolatok használata?
 
-Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Magasabb szintű biztonságot, megbízhatóságot és sebességet biztosítanak, és az interneten keresztül jellemző kapcsolatokkal alacsonyabb és konzisztens késéssel rendelkeznek. Bizonyos esetekben a helyszíni eszközök és az Azure közötti adatátvitelhez ExpressRoute-kapcsolatok használata jelentős költséghatékonyságot eredményezhet.
+Az ExpressRoute-kapcsolatok nem haladnak át a nyilvános interneten. Magasabb szintű biztonságot, megbízhatóságot és sebességet biztosítanak, és az interneten keresztül jellemző kapcsolatokkal alacsonyabb és konzisztens késéssel rendelkeznek. Bizonyos esetekben a helyszíni eszközök és az Azure közötti adatátvitelhez ExpressRoute-kapcsolatok használata jelentős költséghatékonyságot eredményezhet.
 
 ### <a name="where-is-the-service-available"></a>Hol érhető el a szolgáltatás?
 
@@ -46,7 +46,7 @@ Nem. A szolgáltatói sebességtől függetlenül is vásárolhat privát kapcso
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, akkor használhatom a beszerzett sávszélességet?
 
-Igen, a ExpressRoute-áramkör másodlagos kapcsolatán elérhető sávszélességgel akár kétszer is felhasználhatja a sávszélesség-korlátot. Az áramkör beépített redundancia úgy van konfigurálva, hogy az elsődleges és másodlagos kapcsolatok, a megszerzett sávszélesség és a Microsoft vállalati peremhálózati útválasztói (Msee) használatával legyenek beállítva. Ha szükséges, a másodlagos kapcsolaton keresztül elérhető sávszélesség további forgalomhoz is használható. Mivel a másodlagos kapcsolatok a redundancia szempontjából jelentenek, azonban nem garantált, és nem használható tovább a hosszabb ideig tartó forgalomhoz. Ha többet szeretne megtudni arról, hogyan használható mindkét connnections a forgalom továbbítására, tekintse meg a [használat elérési utat](./expressroute-optimize-routing.md#solution-use-as-path-prepending)a következő helyen:.
+Igen, a ExpressRoute-áramkör másodlagos kapcsolatán elérhető sávszélességgel akár kétszer is felhasználhatja a sávszélesség-korlátot. Az áramkör beépített redundancia úgy van konfigurálva, hogy az elsődleges és másodlagos kapcsolatok, a megszerzett sávszélesség és a Microsoft vállalati peremhálózati útválasztói (Msee) használatával legyenek beállítva. Ha szükséges, a másodlagos kapcsolaton keresztül elérhető sávszélesség további forgalomhoz is használható. Mivel a másodlagos kapcsolatok a redundancia szempontjából jelentenek, azonban nem garantált, és nem használható tovább a hosszabb ideig tartó forgalomhoz. Ha szeretne többet megtudni arról, hogyan használható mindkét kapcsolat a forgalom továbbítására, tekintse meg a [használat elérési útként való használatát](./expressroute-optimize-routing.md#solution-use-as-path-prepending)ismertető témakört.
 
 Ha úgy tervezi, hogy csak az elsődleges kapcsolatát használja a forgalom továbbítására, a kapcsolat sávszélessége javítva lesz, és a rendszer a túlfizetést próbálja meg növelni. Ha a forgalom egy ExpressRoute-átjárón keresztül áramlik át, az átjáró SKU-jának sávszélessége rögzített, és nem használható fel. Az egyes átjárók SKU-jának sávszélességét lásd: [a ExpressRoute virtuális hálózati átjárók ismertetése](expressroute-about-virtual-network-gateways.md#aggthroughput).
 
@@ -95,7 +95,7 @@ Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcso
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure globális szolgáltatások közössége)
 * Azure nyilvános IP-címek IaaS (Virtual Machines, Virtual Network átjárók, terheléselosztó stb.)  
-* A többi Azure-szolgáltatás többsége is támogatott. Ellenőrizze, hogy van-e közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatás.
+* A többi Azure-szolgáltatás többsége is támogatott. Jelölje be a közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatást.
 
 **Nem támogatott:**
 
@@ -108,7 +108,7 @@ Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcso
 
 ### <a name="public-peering"></a>Nyilvános társviszony-létesítés
 
-A nyilvános társítás le lett tiltva az új ExpressRoute-áramkörökben. Az Azure-szolgáltatások mostantól elérhetők a Microsoft-partnerek számára. Ha olyan áramkört hoz létre, amely a nyilvános társítást megelőzően lett létrehozva, akkor a kívánt szolgáltatástól függően használhatja a Microsoft társközi vagy nyilvános társítását.
+A nyilvános társítás le lett tiltva az új ExpressRoute-áramkörökben. Az Azure-szolgáltatások mostantól elérhetők a Microsoft-partnerek számára. Ha a nyilvános társítást megelőzően létrehozott áramkör elavult, a kívánt szolgáltatástól függően választhatja a Microsoft-társ vagy a nyilvános társas kapcsolat használatát.
 
 További információ és konfigurációs lépések a nyilvános társítással kapcsolatban: [ExpressRoute Public-peering](about-public-peering.md).
 
@@ -171,7 +171,7 @@ A magas rendelkezésre állás kialakításához [itt](./designing-for-high-avai
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan magas rendelkezésre állást biztosít a ExpressRoute-hez csatlakoztatott virtuális hálózatokon?
 
-Magas rendelkezésre állást érhet el, ha akár négy ExpressRoute-áramkört csatlakoztat a virtuális hálózathoz, vagy ha a ExpressRoute-áramköröket különböző, egymással összekapcsoló (például Szingapúr, Szingapúr2) virtuális hálózathoz csatlakoztatja. Ha egy ExpressRoute-áramkör leáll, a kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-áramkörön. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalom irányítása egyenlő a több útvonalos útválasztás (ECMP) alapján. A kapcsolat súlyozásával az egyik áramkört használhatja egy másikhoz. További információ: az [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
+Magas rendelkezésre állást érhet el, ha legfeljebb 16 ExpressRoute-áramkört csatlakoztat a virtuális hálózathoz ugyanazon a helyen, vagy ha a ExpressRoute-áramköröket különböző, egymással összekapcsoló helyekkel (például Szingapúrban, Szingapúr2) csatlakoztatja a virtuális hálózathoz. Ha egy ExpressRoute-áramkör leáll, a kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-áramkörön. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalom irányítása egyenlő a több útvonalos útválasztás (ECMP) alapján. A kapcsolat súlyozásával az egyik áramkört használhatja egy másikhoz. További információ: az [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hogyan, hogy az Azure-beli nyilvános szolgáltatásokhoz, például az Azure Storage-hoz és az Azure SQL-hez a Microsoft társközi vagy nyilvános társ-kezeléshez szánt forgalma előnyben részesített a ExpressRoute útvonalon?
 
@@ -351,13 +351,17 @@ Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/det
 Igen. A prémium szintű ExpressRoute díjait a ExpressRoute áramköri díjakra és a kapcsolati szolgáltató által igényelt díjakra kell alkalmazni.
 
 ## <a name="expressroute-local"></a>Helyi ExpressRoute
+
 ### <a name="what-is-expressroute-local"></a>Mi az a ExpressRoute local?
-A helyi ExpressRoute a standard SKU és a prémium SKU mellett a ExpressRoute áramkör SKU-jának. A helyi legfontosabb funkciója, hogy egy ExpressRoute-társítási helyen lévő helyi áramkör csak egy vagy két Azure-régióhoz fér hozzá, vagy közel azonos metróhoz. Ezzel szemben a standard szintű áramkör hozzáférést biztosít a geopolitikai területeken lévő összes Azure-régióhoz, valamint egy prémium szintű áramkört az összes Azure-régióhoz. 
+
+A helyi ExpressRoute a standard SKU és a prémium SKU mellett a ExpressRoute áramkör SKU-jának. A helyi legfontosabb funkciója, hogy egy ExpressRoute-társítási helyen lévő helyi áramkör csak egy vagy két Azure-régióhoz fér hozzá, vagy közel azonos metróhoz. Ezzel szemben a standard szintű áramkör hozzáférést biztosít a geopolitikai területeken lévő összes Azure-régióhoz, valamint egy prémium szintű áramkört az összes Azure-régióhoz. A helyi SKU-val csak a ExpressRoute áramkör megfelelő helyi régiójából lehet meghirdetni az útvonalakat (a Microsoft és a privát kapcsolatok esetében). Nem fog tudni útvonalakat fogadni a megadott helyi régiótól eltérő más régiókban.
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Milyen előnyökkel jár a ExpressRoute helyi?
+
 A standard vagy prémium szintű ExpressRoute-áramkör esetében a kimenő adatforgalomért nem kell külön fizetnie a kimenő adatforgalomért a ExpressRoute helyi áramköre számára. Más szóval a ExpressRoute helyi díja adatátviteli díjakat is tartalmaz. A helyi ExpressRoute sokkal gazdaságosabb megoldás, ha nagy mennyiségű adat átvitelére van szükség, és az adatokhoz privát kapcsolaton keresztül kapcsolódhat a kívánt Azure-régiók közelében lévő ExpressRoute-partneri helyhez. 
 
 ### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Milyen funkciók érhetők el, és mi nem a ExpressRoute helyi rendszeren?
+
 A standard ExpressRoute áramkörhöz képest a helyi áramkör ugyanazokkal a szolgáltatásokkal rendelkezik, mint a következő:
 * Az Azure-régiókhoz való hozzáférés hatóköre a fent leírtak szerint
 * A ExpressRoute Global Reach helyi rendszeren nem érhető el
@@ -365,6 +369,7 @@ A standard ExpressRoute áramkörhöz képest a helyi áramkör ugyanazokkal a s
 A helyi ExpressRoute is ugyanazok a korlátozások vonatkoznak az erőforrásokra (például a virtuális hálózatok száma) a standard értékre. 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Hol van a ExpressRoute helyi elérhetősége, és mely Azure-régiók vannak leképezve az összes társítási helyhez?
+
 A ExpressRoute local (helyi) lehetőség azon a társítási helyeken érhető el, ahol egy vagy két Azure-régiót zártak be. Nem érhető el olyan egyenrangú helyen, ahol az adott államban vagy régióban, illetve országban vagy régióban nem található Azure-régió. Tekintse meg a pontos leképezéseket a [helyszínek lapon](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-microsoft-365"></a>Microsoft 365 ExpressRoute

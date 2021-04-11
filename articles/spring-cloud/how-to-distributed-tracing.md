@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f55a82eeddc8d4515b0f1333b615244976975097
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6bcb020b14952541c673592c1040fca211ed4edf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877977"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011851"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
@@ -82,7 +82,7 @@ Adja hozzá a következő beállításokat a konfigurációs forráshoz, amelyet
 2. Ha látni szeretné az Eureka-kiszolgáló, a konfigurációs kiszolgáló és a felhasználói alkalmazások között eljuttatott nyomkövetési felölelt, állítsa a `management.tracing.egressIgnorePattern` következőre: "/API/v2/spans |/v2/apps/.*/permissions |/Eureka/.*| /oauth/.*".
 
 A *appsettings.json* például a következő tulajdonságokat fogja tartalmazni:
- 
+
 ```json
 "management": {
     "tracing": {
@@ -119,25 +119,58 @@ A fenti eljárások követéséhez olyan Azure Spring Cloud Service-szolgáltat�
 
 1. Ugorja át ezt a lépést, ha követte az [Azure Spring Cloud-alkalmazás előkészítését ismertető útmutatót](how-to-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze pom.xml-fájlját, hogy tartalmazza a következő Spring Cloud Sleuth függőséget:
 
-    ```xml
-    <dependencyManagement>
-        <dependencies>
+    * Spring boot-verzió < 2.4. x.
+
+      ```xml
+      <dependencyManagement>
+          <dependencies>
+              <dependency>
+                  <groupId>org.springframework.cloud</groupId>
+                  <artifactId>spring-cloud-sleuth</artifactId>
+                  <version>${spring-cloud-sleuth.version}</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-sleuth</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-zipkin</artifactId>
+          </dependency>
+      </dependencies>
+      ```
+
+    * Spring boot-verzió >= 2.4. x.
+
+      ```xml
+      <dependencyManagement>
+          <dependencies>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-sleuth</artifactId>
-                <version>${spring-cloud-sleuth.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-    </dependencies>
-    ```
+                  <groupId>org.springframework.cloud</groupId>
+                  <artifactId>spring-cloud-sleuth</artifactId>
+                  <version>${spring-cloud-sleuth.version}</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-sleuth</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+           </dependency>
+      </dependencies>
+      ```
+
 
 1. Hozza létre és telepítse újra az Azure Spring Cloud Service-t, hogy tükrözze ezeket a módosításokat.
 

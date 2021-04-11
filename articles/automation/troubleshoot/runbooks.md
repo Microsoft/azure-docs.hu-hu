@@ -5,12 +5,12 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea9d8a4899b0d725c9791192d68373b44acee11f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723809"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168739"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
 
@@ -90,9 +90,9 @@ A probléma okának megállapításához kövesse az alábbi lépéseket:
    ```powershell
    $Cred = Get-Credential
    #Using Azure Service Management
-   Add-AzureAccount –Credential $Cred
+   Add-AzureAccount -Credential $Cred
    #Using Azure Resource Manager
-   Connect-AzAccount –Credential $Cred
+   Connect-AzAccount -Credential $Cred
    ```
 
 1. Ha a hitelesítés helyileg meghiúsul, nem állította be megfelelően a Azure Active Directory (Azure AD) hitelesítő adatait. Az Azure AD-fiók megfelelő beállításához tekintse meg a következő cikket: hitelesítés az Azure-ban a [Azure Active Directory használatával](../automation-use-azure-ad.md).
@@ -201,11 +201,11 @@ Az alábbi lépéseket követve megállapíthatja, hogy hitelesített-e az Azure
 
 1. Annak ellenőrzéséhez, hogy a parancsfájl önállóan működik-e, tesztelje a Azure Automationon kívül.
 1. A parancsmag futtatása előtt győződjön meg arról, hogy a parancsfájl a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) parancsmagot futtatja `Select-*` .
-1. Hozzáadás a `Disable-AzContextAutosave –Scope Process` runbook elejéhez. Ez a parancsmag biztosítja, hogy a hitelesítő adatok csak az aktuális runbook végrehajtásához legyenek érvényesek.
+1. Hozzáadás a `Disable-AzContextAutosave -Scope Process` runbook elejéhez. Ez a parancsmag biztosítja, hogy a hitelesítő adatok csak az aktuális runbook végrehajtásához legyenek érvényesek.
 1. Ha továbbra is megjelenik a hibaüzenet, módosítsa a kódját a paraméter hozzáadásával `AzContext` `Connect-AzAccount` , majd hajtsa végre a kódot.
 
    ```powershell
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -242,7 +242,7 @@ Előfordulhat, hogy az előfizetési környezet elvész, ha egy runbook több ru
 * Ha el szeretné kerülni a helytelen előfizetés hivatkozását, tiltsa le az Automation-runbookok a környezetek mentését az egyes runbook elején lévő következő kód használatával.
 
    ```azurepowershell-interactive
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
    ```
 
 * A Azure PowerShell parancsmagok támogatják a `-DefaultProfile` paramétert. Ez az összes és a AzureRm parancsmaghoz lett hozzáadva, hogy támogassa több PowerShell-parancsfájl futtatását ugyanabban a folyamatban, így megadhatja a környezetet és az egyes parancsmagokhoz használni kívánt előfizetést. A runbookok mentse a környezeti objektumot a runbook a runbook létrehozásakor (azaz amikor egy fiók bejelentkezik), és minden alkalommal, amikor módosul, és hivatkozzon a környezetre az az parancsmag megadásakor.
