@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: f2ea960d28bcdcbf586570933ac00dccae18e46a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bc7b1a0742e79c3c84bf533e75467b5def2706b4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067996"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277725"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Saját kulcs használata (ügyfél által felügyelt kulcsok) a Media Services
 
@@ -46,8 +46,8 @@ A Media Services automatikusan támogatja a kettős titkosítást. Az inaktív a
 
 ## <a name="tutorials"></a>Oktatóanyagok
 
-- [Az ügyfél által felügyelt kulcsok vagy BYOK használata a Azure Portal használatával Media Services](tutorial-byok-portal.md)
-- [Az ügyfél által felügyelt kulcsokat vagy BYOK Media Services REST API használhatja](tutorial-byok-postman.md).
+- [Az ügyfél által felügyelt kulcsok vagy BYOK használata a Azure Portal használatával Media Services](security-customer-managed-keys-portal-tutorial.md)
+- [Az ügyfél által felügyelt kulcsokat vagy BYOK Media Services REST API használhatja](security-customer-managed-keys-rest-postman-tutorial.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

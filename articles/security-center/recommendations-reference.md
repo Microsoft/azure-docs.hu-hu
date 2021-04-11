@@ -4,15 +4,15 @@ description: Ez a cikk Azure Security Center biztonsági javaslatait sorolja fel
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801484"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504812"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – gyorsútmutató
 
@@ -58,12 +58,15 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 
 ## <a name="deprecated-recommendations"></a>Elavult javaslatok
 
-|Ajánlás|Leírás & kapcsolódó szabályzat|Súlyosság|Gyors javítás engedélyezve? ([További információ](security-center-remediate-recommendations.md#quick-fix-remediation))|Erőforrás típusa|
-|----|----|----|----|----|
-|**A App Serviceshoz való hozzáférést korlátozni kell**|Korlátozza a hozzáférést a App Services a hálózati konfiguráció módosításával, hogy megtagadja a bejövő forgalmat a túl széles tartományokból.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a App Services elérését korlátozni kell)|Magas|N|App Service|
-|**A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni**|Megerősítheti a webalkalmazásokat futtató virtuális gépek hálózati biztonsági csoportját (NSG), valamint a webalkalmazás-portok tekintetében túlzottan megengedhető NSG-szabályokat.<br>(Kapcsolódó szabályzat: a IaaS webalkalmazásaihoz tartozó NSG-szabályokat meg kell erősíteni)|Magas|N|Virtuális gép|
-|**A pod biztonsági házirendeket úgy kell meghatározni, hogy csökkentse a támadási vektort a szükségtelen alkalmazási jogosultságok eltávolításával (előzetes verzió)**|Határozza meg a pod biztonsági szabályzatokat a szükségtelen alkalmazás-jogosultságok eltávolításával a támadási vektor csökkentése érdekében. Ajánlott a pod biztonsági szabályzatok konfigurálása, hogy a hüvelyek csak azokhoz az erőforrásokhoz férhessenek hozzá, amelyekhez hozzáférésük engedélyezett.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a pod biztonsági szabályzatokat meg kell határozni a Kubernetes-szolgáltatásokon)|Közepes|N|Számítási erőforrások (tárolók)|
-|**A IoT biztonsági modul Azure Security Center telepítése a IoT-eszközök láthatóságának megismeréséhez**|Telepítse Azure Security Center a IoT biztonsági modulhoz, és ismerkedjen meg a IoT-eszközökkel.|Alacsony|N|IoT-eszköz|
+|Ajánlás|Leírás & kapcsolódó szabályzat|Súlyosság|
+|----|----|----|
+|A App Serviceshoz való hozzáférést korlátozni kell|Korlátozza a hozzáférést a App Services a hálózati konfiguráció módosításával, hogy megtagadja a bejövő forgalmat a túl széles tartományokból.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a App Services elérését korlátozni kell)|Magas|
+|A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni|Megerősítheti a webalkalmazásokat futtató virtuális gépek hálózati biztonsági csoportját (NSG), valamint a webalkalmazás-portok tekintetében túlzottan megengedhető NSG-szabályokat.<br>(Kapcsolódó szabályzat: a IaaS webalkalmazásaihoz tartozó NSG-szabályokat meg kell erősíteni)|Magas|
+|A pod biztonsági házirendeket úgy kell meghatározni, hogy csökkentse a támadási vektort a szükségtelen alkalmazási jogosultságok eltávolításával (előzetes verzió)|Határozza meg a pod biztonsági szabályzatokat a szükségtelen alkalmazás-jogosultságok eltávolításával a támadási vektor csökkentése érdekében. Ajánlott a pod biztonsági szabályzatok konfigurálása, hogy a hüvelyek csak azokhoz az erőforrásokhoz férhessenek hozzá, amelyekhez hozzáférésük engedélyezett.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a pod biztonsági szabályzatokat meg kell határozni a Kubernetes-szolgáltatásokon)|Közepes|
+|A IoT biztonsági modul Azure Security Center telepítése a IoT-eszközök láthatóságának megismeréséhez|Telepítse Azure Security Center a IoT biztonsági modulhoz, és ismerkedjen meg a IoT-eszközökkel.|Alacsony|
+|A számítógépeket újra kell indítani a rendszerfrissítések alkalmazásához|Indítsa újra a gépeket a rendszerfrissítések alkalmazásához, és a számítógép védelmét a biztonsági rések alapján. (Kapcsolódó szabályzat: a rendszerfrissítéseket telepíteni kell a gépekre)|Közepes|
+|A figyelési ügynököt telepíteni kell a gépekre|Ez a művelet egy figyelési ügynököt telepít a kiválasztott virtuális gépekre. Válasszon ki egy munkaterületet, amelyről jelentést szeretne készíteni az ügynöknek. (Nincs kapcsolódó házirend)|Magas|
+||||
 
 ## <a name="next-steps"></a>Következő lépések
 

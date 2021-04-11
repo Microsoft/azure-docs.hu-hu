@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 216df0d128e0557345db8f82f6010e1ef681593c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100527023"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968781"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel
 
@@ -93,11 +94,22 @@ A szerepkör-hozzárendelések hozzáadásához a következőket kell tennie:
 > [!Note]
 > Ajánlott az egyedi szerepkör-azonosítót használni a szkriptek szerepkör neve helyett. Ezért ha egy szerepkört átneveznek, a parancsfájlok továbbra is működni fognak. A jelen dokumentum-szerepkör neve csak olvashatóság érdekében használatos.
 
-Azure CLI-parancs szerepkör-hozzárendelés létrehozásához:
+A szerepkör-hozzárendelés létrehozásához futtassa a következő parancsot:
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope <scope>
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName <role_name> -SignInName <assignee_upn> -Scope <scope>
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ApplicationId <applicationId> -Scope <scope>
+```
+---
 
 A Azure Portal az Azure szerepkör-hozzárendelések képernyő a hozzáférés-vezérlés (IAM) lapon lévő összes erőforráshoz elérhető.
 
@@ -114,10 +126,20 @@ A Azure Portal az Azure szerepkör-hozzárendelések képernyő a hozzáférés-
 
     ![Szerepkör-erőforráscsoport hozzáadása](../media/rbac/image-5.png)
 
-Azure CLI:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+```
+---
 
 A fenti szerepkör-hozzárendelés lehetővé teszi a Key Vault-objektumok listázását a Key vaultban.
 
@@ -131,11 +153,20 @@ A fenti szerepkör-hozzárendelés lehetővé teszi a Key Vault-objektumok list�
 
     ![Szerepkör-hozzárendelés – Key Vault](../media/rbac/image-6.png)
 
- Azure CLI:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+```
+---
 
 Miután létrehozta a fenti szerepkör-hozzárendelést, létrehozhat/frissíthet/törölhet titkokat.
 
@@ -153,11 +184,20 @@ Miután létrehozta a fenti szerepkör-hozzárendelést, létrehozhat/frissíthe
 
 3. Az aktuális felhasználóhoz tartozó "Key Vault Secrets Officer" nevű kulcsfontosságú titkokat hozhatja létre, ugyanúgy, mint a Key Vault.
 
-Azure CLI:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+```
+---
 
 ### <a name="test-and-verify"></a>Tesztelés és ellenőrzés
 
@@ -199,7 +239,7 @@ Navigáljon a korábban létrehozott titkos kulcshoz. Az összes titkos tulajdon
 
 [az szerepkör-definíció létrehozása parancs](/cli/azure/role/definition#az-role-definition-create)
 
-**(CLI bash-szkript)</br>**
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role definition create --role-definition '{ \
    "Name": "Backup Keys Operator", \
@@ -216,6 +256,31 @@ az role definition create --role-definition '{ \
     "AssignableScopes": ["/subscriptions/{subscriptionId}"] \
 }'
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$roleDefinition = @"
+{ 
+   "Name": "Backup Keys Operator", 
+   "Description": "Perform key backup/restore operations", 
+    "Actions": [ 
+    ], 
+    "DataActions": [ 
+        "Microsoft.KeyVault/vaults/keys/read ", 
+        "Microsoft.KeyVault/vaults/keys/backup/action", 
+         "Microsoft.KeyVault/vaults/keys/restore/action" 
+    ], 
+    "NotDataActions": [ 
+   ], 
+    "AssignableScopes": ["/subscriptions/{subscriptionId}"] 
+}
+"@
+
+$roleDefinition | Out-File role.json
+
+New-AzRoleDefinition -InputFile role.json
+```
+---
 
 Az egyéni szerepkörök létrehozásáról további információt a következő témakörben talál:
 

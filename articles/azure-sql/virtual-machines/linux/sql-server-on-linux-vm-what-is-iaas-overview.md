@@ -1,7 +1,7 @@
 ---
 title: Az Azure Virtual Machines for Linux SQL Server áttekintése | Microsoft Docs
 description: Ismerje meg, hogyan futtathat teljes SQL Server kiadásokat az Azure Virtual Machines for Linux rendszeren. Ebben a cikkben közvetlen hivatkozásokat találhat az SQL Servert tartalmazó összes linuxos virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz.
-services: virtual-machines-linux
+services: virtual-machines-sql
 documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c394fe2aa7639d32e5d79bcb22a01151f7666f5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3613b8417c78d0a01582defb7396cc65521e2f4c
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96324618"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449481"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

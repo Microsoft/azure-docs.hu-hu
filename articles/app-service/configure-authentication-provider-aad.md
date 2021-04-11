@@ -5,54 +5,51 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0f028f264d02d7300bb888e2053708ef6b06ea51
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721562"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078315"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure App Service vagy Azure Functions hitelesítését, hogy az alkalmazás a felhasználók számára az Azure Active Directory (Azure AD) hitelesítési szolgáltatóként legyen aláírva.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure App Service vagy Azure Functions hitelesítését, hogy az alkalmazás a [Microsoft Identity platformmal](../active-directory/develop/v2-overview.md) (Azure ad) legyen aláírva a hitelesítési szolgáltatóként.
 
-## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurálás az expressz beállításokkal
+A App Service Authentication szolgáltatás automatikusan létrehozhatja az alkalmazások regisztrációját a Microsoft Identity platform használatával. Használhat olyan regisztrációt is, amelyet Ön vagy egy címtár-rendszergazda külön is létrehoz.
 
-Az **expressz** beállítás úgy van kialakítva, hogy lehetővé tegye a hitelesítés egyszerű engedélyezését, és mindössze néhány kattintást igényel.
-
-Az expressz beállítások automatikusan létrehozzák az Azure Active Directory v1 végpontot használó alkalmazás-regisztrációt. A [Azure Active Directory v 2.0](../active-directory/develop/v2-overview.md) (beleértve a [MSAL](../active-directory/develop/msal-overview.md)) használatához kövesse a [Speciális konfigurációs utasításokat](#advanced).
+- [Új alkalmazás regisztrációjának automatikus létrehozása](#express)
+- [Külön létrehozott meglévő regisztráció használata](#advanced)
 
 > [!NOTE]
-> Az **expressz** beállítás a kormányzati felhők esetében nem érhető el.
+> Az új regisztráció létrehozásának lehetősége kormányzati felhők esetén nem érhető el. Ehelyett [külön kell megadnia a regisztrációt](#advanced).
 
-Az **expressz** beállítással engedélyezheti a hitelesítést, az alábbi lépéseket követve:
+## <a name="create-a-new-app-registration-automatically"></a><a name="express"> </a>Új alkalmazás regisztrációjának automatikus létrehozása
 
-1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
-2. A bal oldali navigációs sávon válassza **a hitelesítés/engedélyezés** lehetőséget  >  .
-3. Válassza a **Azure Active Directory**  >  **expressz** lehetőséget.
+Ez a beállítás úgy van kialakítva, hogy a hitelesítés egyszerű legyen, és csak néhány kattintást igényel.
 
-   Ha inkább egy meglévő alkalmazás-regisztrációt szeretne választani:
+1. Jelentkezzen be a [Azure Portalba] , és navigáljon az alkalmazáshoz.
+1. A bal oldali menüben válassza a **hitelesítés** lehetőséget. Kattintson a **személyazonosság-szolgáltató hozzáadása** elemre.
+1. Válassza a **Microsoft** lehetőséget az identitás-szolgáltató legördülő menüben. Alapértelmezés szerint az új regisztráció létrehozása lehetőség van kiválasztva. Módosíthatja a regisztráció nevét vagy a támogatott fióktípus típusát.
 
-   1. Válassza a **meglévő ad-alkalmazás kiválasztása** lehetőséget, majd kattintson a **Azure ad alkalmazás** elemre.
-   2. Válasszon egy meglévő alkalmazás-regisztrációt, és kattintson **az OK** gombra.
+    A rendszer létrehozza és tárolja az ügyfél titkos kulcsát, amely tárolóhely-Sticky- [alkalmazási beállításként](./configure-common.md#configure-app-settings) lesz elnevezve `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` . Ezt a beállítást később is frissítheti [Key Vault hivatkozások](./app-service-key-vault-references.md) használatához, ha a titkos kulcsot szeretné kezelni a Azure Key Vaultban.
 
-4. Kattintson az **OK** gombra, hogy regisztrálja a app Service alkalmazást a Azure Active Directoryban. Létrejön egy új alkalmazás regisztrálása.
+1. Ha ez az alkalmazáshoz konfigurált első identitás-szolgáltató, akkor a rendszer a **app Service hitelesítési beállítások** szakaszt is kéri. Ellenkező esetben a következő lépésre léphet.
+    
+    Ezek a beállítások határozzák meg, hogy az alkalmazás hogyan válaszol a nem hitelesített kérelmekre, és az alapértelmezett beállítások átirányítják az összes kérelmet az új szolgáltatóval való bejelentkezéshez. Módosíthatja a viselkedés testre szabását, vagy később is módosíthatja ezeket a beállításokat a  **hitelesítési beállítások** melletti **Szerkesztés** lehetőség választásával. További információ ezekről a lehetőségekről: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
 
-    ![Expressz beállítások a Azure Active Directoryban](./media/configure-authentication-provider-aad/express-settings.png)
+1. Választható Kattintson a **Tovább gombra: engedélyek** és az alkalmazáshoz szükséges hatókörök hozzáadása. Ezeket a rendszer hozzáadja az alkalmazás regisztrálásához, de később is módosíthatja őket.
+1. Kattintson a **Hozzáadás** parancsra.
 
-5. Választható Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában. Ha csak az Azure Active Directory által hitelesített felhasználók számára kívánja korlátozni az alkalmazás-hozzáférést, állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a **Azure Active Directoryval való bejelentkezéshez**. Ha beállítja ezt a funkciót, az alkalmazásnak minden kérelmet hitelesítenie kell. Emellett átirányítja az összes nem hitelesített Azure Active Directory a hitelesítéshez.
-
-    > [!CAUTION]
-    > A hozzáférés ily módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos olyan alkalmazások esetében, amelyek nyilvánosan elérhető kezdőlaptal rendelkeznek, mint sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, ha az alkalmazás manuálisan indítja el a bejelentkezést. További információ: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
-6. Kattintson a **Mentés** gombra.
+Most már készen áll a Microsoft Identity platform használatára a hitelesítéshez az alkalmazásban. A szolgáltató a **hitelesítés** képernyőn jelenik meg. Innen módosíthatja vagy törölheti a szolgáltatói konfigurációt.
 
 Az Azure AD-bejelentkezés az Azure Storage-hoz és Microsoft Graphhoz hozzáférő webalkalmazáshoz való konfigurálását [bemutató példát ebben az oktatóanyagban](scenario-secure-app-authentication-app-service.md)talál.
 
-## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Konfigurálás speciális beállításokkal
+## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"> </a>Külön létrehozott meglévő regisztráció használata
 
-Ahhoz, hogy az Azure AD hitelesítő szolgáltatóként működjön az alkalmazáshoz, regisztrálnia kell az alkalmazást. Az expressz beállítás automatikusan megtörténik. A speciális beállítás lehetővé teszi, hogy manuálisan regisztrálja az alkalmazást, testreszabja a regisztrációt, és manuálisan helyezze vissza a regisztrációs adatokat a App Serviceba. Ez akkor hasznos, ha például egy másik Azure AD-bérlőtől származó alkalmazás-regisztrációt szeretne használni, mint amely a App Service.
+Az alkalmazást manuálisan is regisztrálhatja a Microsoft Identity platformon, testreszabhatja a regisztrációt, és konfigurálhatja App Service hitelesítését a regisztrációs adatokkal. Ez akkor hasznos, ha például egy másik Azure AD-bérlőből származó alkalmazás-regisztrációt szeretne használni, mint amely az alkalmazásában van.
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>Alkalmazás-regisztráció létrehozása az Azure ad-ben a app Service-alkalmazáshoz
 
@@ -87,22 +84,27 @@ Az alkalmazás regisztrálásához hajtsa végre a következő lépéseket:
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Azure Active Directory engedélyezése a app Service alkalmazásban
 
-1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
-1. A bal oldali ablaktábla **Beállítások** területén válassza a **hitelesítés/engedélyezés** lehetőséget  >  .
-1. Választható Alapértelmezés szerint a App Service hitelesítés lehetővé teszi a nem hitelesített hozzáférést az alkalmazáshoz. A felhasználói hitelesítés érvénybe léptetéséhez állítsa be a **műveletet, ha a kérelem nem hitelesítve van** a **Azure Active Directoryba való bejelentkezéshez**.
-1. A **hitelesítésszolgáltatók** területen válassza a **Azure Active Directory** lehetőséget.
-1. **Felügyeleti módban** válassza a **speciális** lehetőséget, és konfigurálja app Service hitelesítést az alábbi táblázatnak megfelelően:
+1. Jelentkezzen be a [Azure Portalba] , és navigáljon az alkalmazáshoz.
+1. A bal oldali menüben válassza a **hitelesítés** lehetőséget. Kattintson a **személyazonosság-szolgáltató hozzáadása** elemre.
+1. Válassza a **Microsoft** lehetőséget az identitás-szolgáltató legördülő menüben.
+1. Az **alkalmazás regisztrálása** beállításnál választhat, hogy kiválaszt **egy meglévő alkalmazást ebben a címtárban** , amely automatikusan összegyűjti a szükséges alkalmazás-információkat. Ha a regisztráció egy másik bérlőtől származik, vagy Önnek nincs engedélye a regisztrációs objektum megtekintésére, válassza **a meglévő alkalmazás-regisztráció részleteinek megadása** lehetőséget. Ehhez a beállításhoz ki kell töltenie a következő konfigurációs adatokat:
 
     |Mező|Leírás|
     |-|-|
-    |Ügyfél-azonosító| Használja az **alkalmazás regisztrációjának alkalmazás-(ügyfél-) azonosítóját** . |
-    |Kiállító URL-címe| A `<authentication-endpoint>/<tenant-id>/v2.0` és a helyett használja a *\<authentication-endpoint>* felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontját](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) is, és cserélje le https://login.microsoftonline.com *\<tenant-id>* azt a **címtár-(bérlői) azonosítóra** , amelyben az alkalmazás regisztrálása létrejött. Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. Az Azure AD v1-t és Azure Functions alkalmazásokat használó alkalmazások esetében hagyja `/v2.0` ki az URL-címet.|
+    |Alkalmazás (ügyfél) azonosítója| Használja az **alkalmazás regisztrációjának alkalmazás-(ügyfél-) azonosítóját** . |
     |Ügyfél titka (nem kötelező)| Használja az alkalmazás regisztrációjában létrehozott ügyfél-titkos kulcsot. Az ügyfél titka, a hibrid folyamat használatos, a App Service pedig visszaküldi a hozzáférési és frissítési jogkivonatokat. Ha nincs beállítva az ügyfél titkos kulcsa, a rendszer implicit folyamatot használ, és csak egy azonosító jogkivonatot ad vissza. Ezeket a jogkivonatokat a szolgáltató küldte el, és az EasyAuth jogkivonat-tárolóban tárolja.|
+    |Kiállító URL-címe| A `<authentication-endpoint>/<tenant-id>/v2.0` és a helyett használja a *\<authentication-endpoint>* felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontját](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) is, és cserélje le https://login.microsoftonline.com *\<tenant-id>* azt a **címtár-(bérlői) azonosítóra** , amelyben az alkalmazás regisztrálása létrejött. Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. Az Azure AD v1-t és Azure Functions alkalmazásokat használó alkalmazások esetében hagyja `/v2.0` ki az URL-címet.|
     |Engedélyezett jogkivonat-célközönségek| Ha ez egy Felhőbeli vagy kiszolgálóalkalmazás-alkalmazás, és engedélyezni szeretné a hitelesítési jogkivonatokat egy webalkalmazásból, adja hozzá a webalkalmazás **alkalmazás-azonosító URI-ját** itt. A konfigurált **ügyfél** -azonosító *mindig* implicit módon engedélyezett célközönségnek tekintendő.|
 
-2. Válassza **az OK**, majd a **Mentés** lehetőséget.
+    Az ügyfél titkos kulcsát a rendszer tárolóhelyként rögzített [alkalmazás-beállításként](./configure-common.md#configure-app-settings) tárolja `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` . Ezt a beállítást később is frissítheti [Key Vault hivatkozások](./app-service-key-vault-references.md) használatához, ha a titkos kulcsot szeretné kezelni a Azure Key Vaultban.
 
-Most már készen áll a Azure Active Directory használatára a App Service alkalmazásban való hitelesítéshez.
+1. Ha ez az alkalmazáshoz konfigurált első identitás-szolgáltató, akkor a rendszer a **app Service hitelesítési beállítások** szakaszt is kéri. Ellenkező esetben a következő lépésre léphet.
+    
+    Ezek a beállítások határozzák meg, hogy az alkalmazás hogyan válaszol a nem hitelesített kérelmekre, és az alapértelmezett beállítások átirányítják az összes kérelmet az új szolgáltatóval való bejelentkezéshez. Módosíthatja a viselkedés testre szabását, vagy később is módosíthatja ezeket a beállításokat a  **hitelesítési beállítások** melletti **Szerkesztés** lehetőség választásával. További információ ezekről a lehetőségekről: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
+
+1. Kattintson a **Hozzáadás** parancsra.
+
+Most már készen áll a Microsoft Identity platform használatára a hitelesítéshez az alkalmazásban. A szolgáltató a **hitelesítés** képernyőn jelenik meg. Innen módosíthatja vagy törölheti a szolgáltatói konfigurációt.
 
 ## <a name="configure-client-apps-to-access-your-app-service"></a>Ügyfélalkalmazások konfigurálása a App Service eléréséhez
 

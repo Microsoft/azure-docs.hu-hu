@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c927682231bab1fc92f198c56a2f6aeff2f4c516
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799935"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553532"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Saját forrásának védelme az Azure-beli előtérben standard/prémium (előzetes verzió)
 
@@ -43,7 +43,7 @@ Ha engedélyezi a saját forrásra mutató privát hivatkozást az Azure bejára
 
 ## <a name="limitations"></a>Korlátozások
 
-Az Azure Door Private-végpontok a nyilvános előzetes verzióban érhetők el a következő régiókban: USA keleti régiója, 2. nyugati régiója és az USA déli középső régiója.
+Az Azure Door Private-végpontok a nyilvános előzetes verzióban érhetők el a következő régiókban: USA keleti régiója, 2. nyugati régiója, USA déli középső régiója és Egyesült Királyság déli régiója.
 
 A legjobb késés érdekében mindig válasszon ki egy, a forráshoz legközelebb eső Azure-régiót, amikor a bejárati ajtó privát kapcsolati végpontjának engedélyezését választja.
 
