@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 0c4f1fbc0ed27dbf3b7347e0e4c12f1926ac1377
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 65e93cdeb5592eef92fe8c8261231179fae6af67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566251"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731802"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 - Az `Dataset` adat felosztása részhalmazokra, például betanítási és érvényesítési részhalmazokra
 - Objektumok létrehozása az `OutputFileDatasetConfig` adatok átviteléhez a következő folyamat lépéséhez
 - `OutputFileDatasetConfig`Objektumok használata bemenetként a folyamat lépéseihez
-- Hozzon létre új `Dataset` objektumokat a `OutputFileDatasetConfig` wisƒh, hogy megmaradjon
+- Hozzon létre új `Dataset` objektumokat, `OutputFileDatasetConfig` amelyeket meg szeretne őrizni
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -126,7 +126,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()],
     inputs=[test.as_named_input('test').as_download()]
 )
 

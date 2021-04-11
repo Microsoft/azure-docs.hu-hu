@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 52e855cb4ab42ed78a055ecdc31cffa886dc9bf2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175991"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731989"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Mi a mennyiségű kemény kvóta módosítása a Azure NetApp Files szolgáltatáshoz
 
 A szolgáltatás kezdetétől Azure NetApp Files kapacitás-készlet létesítési és automatikus növekedési mechanizmust használtak. Azure NetApp Files kötetek kiosztása a kiválasztott réteg és méret alapján, az ügyfél által kiosztott kapacitás készletén történik. A mennyiségi méretek (kvóták) a teljesítmény és a kapacitás biztosítására szolgálnak, és a kvóták bármikor módosíthatók. Ez azt jelenti, hogy a kötet kvótája jelenleg a kötet sávszélességének szabályozására szolgáló teljesítmény. Jelenleg a kapacitás kitöltésekor a kapacitás automatikusan növekszik.   
 
 > [!IMPORTANT] 
-> A kötet és a kapacitás-készlet kiépítés Azure NetApp Files viselkedése *manuális* és *ellenőrizhető* mechanizmusra változik. **2021. április 1-től kezdődően a mennyiségi méretek (kvóta) kezeli a sávszélesség-teljesítményt, valamint a kiosztott kapacitást, és a mögöttes kapacitások készlete már nem fog automatikusan növekedni.** 
+> A kötet és a kapacitás-készlet kiépítés Azure NetApp Files viselkedése *manuális* és *ellenőrizhető* mechanizmusra változik. **A 2021 (frissítve), a mennyiségi méretek (kvóta) a sávszélesség teljesítményének, valamint a kiépített kapacitásnak és a mögöttes kapacitás-készletek a továbbiakban nem fognak automatikusan növekedni.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>A mennyiségi rögzített kvóta változásának okai
 

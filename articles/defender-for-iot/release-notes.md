@@ -1,14 +1,14 @@
 ---
 title: Az Azure Defender IoT újdonságai
 description: Ebből a cikkből megtudhatja, hogy a Defender legújabb kiadásának újdonságai a IoT.
-ms.topic: how-to
+ms.topic: overview
 ms.date: 03/14/2021
-ms.openlocfilehash: 970d46a76f125dcaf82491fdea877e6874e2384f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d8c4ebfc55c80878b780fe9f663aaec62a75f9d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778695"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382912"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Az Azure Defender IoT újdonságai
 

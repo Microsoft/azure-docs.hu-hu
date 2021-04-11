@@ -502,7 +502,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Frissítés
               items:
-                - name: A Service Fabric-verzió frissítése
+                - name: Service Fabric-fürt frissítéseinek kezelése
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Fürtkonfiguráció frissítése
                   href: service-fabric-cluster-config-upgrade-azure.md

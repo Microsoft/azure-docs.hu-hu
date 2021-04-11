@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951470"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Az Azure-ban előre kiépített és üzembe helyezett szolgáltatások üzembe helyezése
@@ -145,10 +145,10 @@ A kapcsolatok karakterlánca beágyazott erőforrásként is definiálva van.
 
 ![Azt mutatja, hogy a rendszer hogyan definiálja a kapcsolatok karakterláncait beágyazott erőforrásként a JSON-kódban.](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-A `properties` elemben az `config/connectionstrings` egyes kapcsolódási karakterláncok neve: érték párokként is definiálva vannak, a megadott formátummal `"<name>" : {"value": "…", "type": "…"}` . Az elem esetében a lehetséges értékek a következők:,, `type` `MySql` `SQLServer` `SQLAzure` és `Custom` .
+A `properties` elemben az `config/connectionstrings` egyes kapcsolódási karakterláncok neve: érték párokként is definiálva vannak, a megadott formátummal `"<name>&quot; : {&quot;value&quot;: &quot;…&quot;, &quot;type&quot;: &quot;…&quot;}` . Az elem esetében a lehetséges értékek a következők:,, `type` `MySql` `SQLServer` `SQLAzure` és `Custom` .
 
 > [!TIP]
-> A kapcsolatok karakterlánc-típusainak végleges listáját a következő parancs futtatásával Azure PowerShell: \[ Enum]:: GetNames ("Microsoft. WindowsAzure. commands. Utilities. websites. Services. Webentitások. DatabaseType")
+> A kapcsolatok karakterlánc-típusainak végleges listáját a következő parancs futtatásával Azure PowerShell: \[ Enum]:: GetNames (&quot;Microsoft. WindowsAzure. commands. Utilities. websites. Services. Webentitások. DatabaseType")
 > 
 > 
 

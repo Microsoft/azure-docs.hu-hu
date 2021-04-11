@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan csatlakozhat az Apache Beeline-ügyfélhez a ka
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.date: 05/27/2020
-ms.openlocfilehash: ab5dedf6718dad4f16fde59d905e2e59be5c495f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 5dcb6168a263be11410126ff08bd8b015da5af46
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944458"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103436"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Kapcsolódás az Apache beelinhez a HDInsight-on vagy helyi telepítése
 
@@ -77,7 +77,9 @@ Apache Spark a HiveServer2 saját implementációját biztosítja, amelyet más 
 
 #### <a name="through-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-A használt kapcsolatok karakterlánca némileg eltér. Ahelyett, hogy a-t `httpPath=/hive2` használja `httpPath/sparkhive2` . Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a-t a fürthöz `admin` tartozó bejelentkezési fiókra. ESP-fürtök esetén használja a teljes UPN-t (például: user@domain.com ). Cserélje le a `password` nevet a fürt bejelentkezési fiókjának jelszavára.
+A használt kapcsolatok karakterlánca némileg eltér. Ahelyett, hogy a-t `httpPath=/hive2` használja `httpPath/sparkhive2` . Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a-t a fürthöz `admin` tartozó bejelentkezési fiókra. Cserélje le a `password` nevet a fürt bejelentkezési fiókjának jelszavára.
+> [!NOTE]
+> Az ESP-fürtök esetében cserélje le `admin` a teljes UPN-t (például: user@domain.com ). 
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'

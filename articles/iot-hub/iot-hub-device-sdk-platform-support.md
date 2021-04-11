@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: c47e67375e093ff6e9a5cf7193c76eeeb5228e29
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: ab450c6ec6ae32cafcf07e88940736f209973d8d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045650"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168042"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
@@ -22,7 +22,7 @@ Az eszköz SDK-k mellett a Microsoft számos más utat is biztosít az ügyfelek
 
 * A Microsoft számos partneri vállalattal együttműködve segíti a fejlesztési készletek közzétételét az Azure IoT C SDK alapján a hardveres platformokon.
 
-* A Microsoft a Microsoft megbízható partnereivel együttműködve folyamatosan bővülő eszközöket biztosít az Azure-IoT tesztelt és tanúsított eszközökhöz. Az eszközök aktuális listájának megtekintéséhez tekintse meg az [Azure Certified for IoT-eszközök katalógusát](https://catalog.azureiotsolutions.com/).
+* A Microsoft a Microsoft megbízható partnereivel együttműködve folyamatosan bővülő eszközöket biztosít az Azure-IoT tesztelt és tanúsított eszközökhöz. Az eszközök aktuális listájának megtekintéséhez tekintse meg az [Azure Certified for IoT-eszközök katalógusát](https://devicecatalog.azure.com/).
 
 * A Microsoft egy platform absztrakciós réteget (PAL) biztosít az Azure IoT Hub Device C SDK-ban, amely segítséget nyújt a fejlesztőknek az SDK-nak a platformhoz való egyszerű hordozhatóságában. További információ: [C SDK-Porting útmutató](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
 
@@ -114,9 +114,9 @@ Ha az eszköz platformját az előző részek egyike sem fedi le, érdemes lehet
 
 A Microsoft számos partnerrel működik együtt az Azure IoT-univerzum folyamatos kibővítéséhez az Azure IoT tesztelt és minősített eszközökkel.
 
-* Az Azure IoT Certified eszközök böngészéséhez tekintse meg a [Microsoft Azure Certified for IoT-eszköz katalógusát](https://catalog.azureiotsolutions.com/).
+* Az Azure IoT Certified eszközök böngészéséhez tekintse meg a [Microsoft Azure Certified for IoT-eszköz katalógusát](https://devicecatalog.azure.com/).
 
-* Ha többet szeretne megtudni a IoT-ökoszisztéma Azure Certified minősítéséről, tekintse meg [a Certified for IoT ökoszisztéma csatlakoztatása](https://catalog.azureiotsolutions.com/register)című témakört.
+* Ha többet szeretne megtudni a IoT-ökoszisztéma Azure Certified minősítéséről, tekintse meg [a Certified for IoT ökoszisztéma csatlakoztatása](../certification/overview.md)című témakört.
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Csatlakozás a IoT Hub SDK nélkül
 

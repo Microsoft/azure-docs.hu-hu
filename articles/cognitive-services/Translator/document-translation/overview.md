@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f84dc66828f2ebf13316b3348fd93933a2223b5a
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 0d9ef13de29ac140d94e9e4c05b14f35b9e5834c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612279"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968169"
 ---
 # <a name="what-is-document-translation-preview"></a>Mi a dokumentum fordítása (előzetes verzió)?
 
@@ -43,7 +43,7 @@ A útmutatóban megtudhatja, hogyan kezdheti el gyorsan a dokumentum-fordító h
 
 A dokumentumok fordítása a következő dokumentum-fájltípusokat támogatja:
 
-| Fájl típusa| Fájlkiterjesztés|Description|
+| Fájl típusa| Fájlkiterjesztés|Leírás|
 |---|---|--|
 |Adobe PDF|.pdf|Adobe Acrobat – hordozható dokumentum formátuma|
 |HTML|.html|Hyper-szöveg korrektúrájának nyelve|
@@ -54,13 +54,12 @@ A dokumentumok fordítása a következő dokumentum-fájltípusokat támogatja:
 |Microsoft Word|.docx| Egy szöveges dokumentum fájlja.|
 |Tabulátorral tagolt értékek/TAB|. TSV/. TAB| Tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|
 |Szöveg|.txt| Formázatlan szöveges dokumentum.|
-|Fordítási memória cseréje|. TMX|Nyílt XML-szabvány, amely a számítógéppel segített fordítás (CAT) és a honosítási alkalmazások által létrehozott fordítási memória (TM)-adatcseréhez használatos.|
 
 ## <a name="supported-glossary-formats"></a>A Szószedet támogatott formátuma
 
 A dokumentumok fordítása a következő Szószedet-fájltípusokat támogatja:
 
-| Fájl típusa| Fájlkiterjesztés|Description|
+| Fájl típusa| Fájlkiterjesztés|Leírás|
 |---|---|--|
 |Honosítási adatcsere fájlformátuma|XLF. , xliff| Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.|
 |Tabulátorral tagolt értékek/TAB|. TSV/. TAB| Tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|

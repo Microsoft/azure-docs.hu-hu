@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 10812cf97f4f0dfc6f7957608eddf7acf929c3fc
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035427"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579763"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Adatforrások az Azure Sentinelhez való összekapcsolásához használja a Logstash-t
 
@@ -44,7 +44,9 @@ A Logstash motor három összetevőből áll:
 - Kimeneti beépülő modulok: gyűjtött és feldolgozott adatok testreszabott küldése különböző célhelyekre.
 
 > [!NOTE]
-> Az Azure Sentinel csak a saját megadott kimeneti beépülő modulját támogatja. Nem támogatja a külső féltől származó kimeneti bővítményeket az Azure Sentinel számára, vagy bármilyen más Logstash beépülő modult.
+> - Az Azure Sentinel csak a saját megadott kimeneti beépülő modulját támogatja. A beépülő modul aktuális verziója: v 1.0.0, 2020-08-25-es kiadás. Nem támogatja a külső féltől származó kimeneti bővítményeket az Azure Sentinel számára, vagy bármilyen más Logstash beépülő modult.
+>
+> - Az Azure Sentinel Logstash kimeneti beépülő modulja csak **a 7,0 és 7,9 közötti Logstash-verziókat** támogatja.
 
 A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú adatokat küld a Log Analytics munkaterületre a Log Analytics HTTP-adatgyűjtő REST API használatával. Az adatgyűjtés egyéni naplókba történik.
 
@@ -67,19 +69,21 @@ Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elas
 
 | Mező neve | Adattípus | Description |
 |----------------|---------------|-----------------|
-| `workspace_id` | sztring | Adja meg a munkaterület AZONOSÍTÓjának GUID azonosítóját. * |
-| `workspace_key` | sztring | Adja meg a munkaterület elsődleges kulcsának GUID azonosítóját. * |
+| `workspace_id` | sztring | Adja meg a munkaterület-azonosító GUID azonosítóját (lásd a tippet). |
+| `workspace_key` | sztring | Adja meg a munkaterület elsődleges kulcsának GUID azonosítóját (lásd a tippet). |
 | `custom_log_table_name` | sztring | Állítsa be annak a táblának a nevét, amelybe a rendszer betölti a naplókat. Kimeneti beépülő modulok esetében csak egy Táblanév lehet konfigurálni. A naplófájl az Azure Sentinelben a **naplók** területen jelenik meg, az **egyéni naplók** kategória **tábláiban** , `_CL` utótaggal. |
 | `endpoint` | sztring | Nem kötelező kitölteni. Alapértelmezés szerint ez a Log Analytics végpont. Ez a mező egy alternatív végpont beállítására használható. |
 | `time_generated_field` | sztring | Nem kötelező kitölteni. Ez a tulajdonság felülbírálja Log Analytics alapértelmezett **TimeGenerated** mezőjét. Adja meg az adatforrás timestamp mezőjének nevét. A mezőben szereplő értékeknek meg kell felelniük az ISO 8601 formátumának ( `YYYY-MM-DDThh:mm:ssZ` ) |
 | `key_names` | array | Adja meg Log Analytics kimeneti séma mezőinek listáját. Minden listaelemet szimpla idézőjelek között kell megadni, és az elemeket vesszővel kell elválasztani, a teljes listát pedig szögletes zárójelek közé kell foglalni. Lásd az alábbi példát. |
-| `plugin_flush_interval` | szám | Nem kötelező kitölteni. A beállítással adhatja meg a maximális időközt (másodpercben) az üzenetek átvitele között Log Analytics. Az alapértelmezett érték az 5. |
-    | `amount_resizing` | boolean | Igaz vagy hamis. Engedélyezheti vagy letilthatja az automatikus skálázási mechanizmust, amely a fogadott naplófájlok mennyisége alapján módosítja az üzenet pufferének méretét. |
+| `plugin_flush_interval` | szám | Nem kötelező kitölteni. A beállítással adhatja meg a maximális időközt (másodpercben) az üzenetek átvitele között Log Analytics. Az alapértelmezett érték 5. |
+| `amount_resizing` | boolean | Igaz vagy hamis. Engedélyezheti vagy letilthatja az automatikus skálázási mechanizmust, amely a fogadott naplófájlok mennyisége alapján módosítja az üzenet pufferének méretét. |
 | `max_items` | szám | Nem kötelező kitölteni. Csak akkor érvényes `amount_resizing` , ha a "false" értékre van állítva. A használatával megadhatja a határértéket az üzenet pufferének méretétől (a rekordokban). Az alapértelmezett érték 2000.  |
 | `azure_resource_id` | sztring | Nem kötelező kitölteni. Meghatározza annak az Azure-erőforrásnak az AZONOSÍTÓját, amelyben az adat található. <br>Az erőforrás-azonosító értéke különösen akkor hasznos, ha [erőforrás-környezeti RBAC](resource-context-rbac.md) használ, hogy csak bizonyos adatforrásokhoz férhessenek hozzá. |
 | | | |
 
-* A munkaterület-azonosítót és az elsődleges kulcsot a munkaterület-erőforrásban, az **ügynökök kezelése** területen találja.
+> [!TIP]
+> - A munkaterület-azonosítót és az elsődleges kulcsot a munkaterület-erőforrásban, az **ügynökök kezelése** területen találja.
+> - Mivel **azonban** a hitelesítő adatok és a konfigurációs fájlokban a titkosítatlan fájlok között tárolt egyéb bizalmas információk nem felelnek meg az ajánlott biztonsági eljárásoknak, határozottan javasoljuk, hogy a **munkaterület-azonosítót** és a **munkaterület elsődleges kulcsát** a konfigurációban biztonságosan is felhasználja a **Logstash** . Útmutatásért lásd a [rugalmas dokumentációt](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-started-logstash-user.html) .
 
 #### <a name="sample-configurations"></a>Minta konfiguráció
 
@@ -175,5 +179,5 @@ Ha nem lát adatokat ebben a naplófájlban, hozzon elő és küldjön el néhá
 ## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan használhatja a Logstash-t külső adatforrások Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg, hogyan [érheti el az adatait és a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerkedjen meg a fenyegetések észlelésével az Azure Sentinel használatával, [beépített](tutorial-detect-threats-built-in.md) vagy [Egyéni](tutorial-detect-threats-custom.md) szabályokkal.

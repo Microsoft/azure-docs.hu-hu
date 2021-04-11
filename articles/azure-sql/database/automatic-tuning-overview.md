@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/23/2021
 ms.openlocfilehash: 6bd8d6001fcd3bfa487259aa219ff771f26a8a94
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951283"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatikus hangolás a Azure SQL Database és az Azure SQL felügyelt példányában
@@ -65,7 +65,7 @@ A Azure SQL Database és az Azure SQL felügyelt példányaiban elérhető Autom
 | :----------------------------- | ----- | ----- |
 | **Index létrehozása** – azonosítja azokat az indexeket, amelyek javíthatják a munkaterhelés teljesítményét, indexeket hoz létre, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult-e. | Igen | Nem |
 | **Drop index** – elveszíti a nem használt (az elmúlt 90 napban megadott) és ismétlődő indexeket. Az egyedi indexek, beleértve az elsődleges kulcsot és az egyedi korlátozásokat támogató indexeket, soha nem törlődnek. Ez a beállítás akkor lehet automatikusan letiltva, ha az indexekkel rendelkező lekérdezések szerepelnek a munkaterhelésben, vagy ha a munkaterhelés a partíciók váltását végzi. A prémium és üzletileg kritikus szolgáltatási szinten ez a lehetőség soha nem fogja eldobni a használaton kívüli indexeket, de ha vannak ilyenek, elvesznek a duplikált indexek. | Igen | Nem |
-| **Utolsó jó csomag kényszerítése** (automatikus terv javítása) – az Azure SQL-lekérdezéseket egy olyan végrehajtási terv használatával azonosítja, amely lassabb, mint az előző helyes csomag, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Igen |
+| **Utolsó jó csomag kényszerítése** (automatikus terv javítása) – az Azure SQL-lekérdezéseket egy olyan végrehajtási terv használatával azonosítja, amely lassabb, mint az előző helyes csomag, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Yes |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database automatikus finomhangolása
 

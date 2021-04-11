@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d3627f6bcda7a18204c24fc2a1347c4a512c5369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ab729f5aa94c7137203c25319a5b830448d00a7
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149732"
+ms.locfileid: "105968203"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Erőforrások és javaslatok kizárása a biztonságos pontszám alól 
 
@@ -33,7 +33,7 @@ Ilyen esetekben a következőket hozhatja létre a javaslatok alól:
 | Szempont                          | Részletek                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:                  | Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
-| Árképzési                        | Ez egy prémium szintű Azure Policy-képesség, amely az Azure Defender-ügyfelek számára ingyenes, díjmentesen használható. Más felhasználók esetében a jövőben a díjak is vonatkozhatnak.                                                                                                                                                                 |
+| Árképzési                        | Ez egy prémium szintű Azure Policy képesség, amelyet az Azure Defender ügyfelei számára biztosítunk, és nem kell további költségeket fizetnie. Más felhasználók esetében a jövőben a díjak is vonatkozhatnak.                                                                                                                                                                 |
 | Szükséges szerepkörök és engedélyek: | **Előfizetés tulajdonosának** vagy **szabályzatának közreműködője** a kivétel létrehozásához<br>Szabály létrehozásához engedélyekre van szükség a házirendek szerkesztéséhez Azure Policy.<br>További információ az [Azure RBAC engedélyeiről Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
 | Korlátozások:                    | Kivételeket csak az Security Center alapértelmezett kezdeményezésében, az Azure biztonsági Teljesítménytesztben vagy a mellékelt standard szintű kezdeményezésekben foglalt javaslatok esetében lehet létrehozni. Az egyéni kezdeményezésekből létrehozott javaslatok nem mentesülnek. További információ a [házirendek, a kezdeményezések és a javaslatok](security-policy-concept.md)közötti kapcsolatokról. |
 | Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)                                                                                                                                                                                         |

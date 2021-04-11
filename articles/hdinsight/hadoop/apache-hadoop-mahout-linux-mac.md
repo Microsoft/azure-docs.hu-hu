@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c3484c1e65eb70be484a4a2eebda21a41dbf1ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946489"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936869"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
 
@@ -18,7 +18,7 @@ Ismerje meg, hogyan hozhatja elő a filmkészítési javaslatokat az [Apache Mah
 
 A Mahout egy [gépi tanulási](https://en.wikipedia.org/wiki/Machine_learning) könyvtár a Apache Hadoop számára. A Mahout az adatfeldolgozáshoz szükséges algoritmusokat, például a szűrést, a besorolást és a fürtözést is tartalmazza. Ebben a cikkben egy ajánlási motort használ, amely a barátok által készített filmek alapján készít javaslatokat.
 
-A HDInsight-ben található Mahout verziójával kapcsolatos további információkért lásd: [HDInsight-verziók és Apache Hadoop-összetevők](../hdinsight-component-versioning.md).
+A Mahout érhető el. a HDInsight 3,6, és nem érhető el a HDInsight 4,0-ben. A HDInsight-ben található Mahout verziójával kapcsolatos további információkért lásd: [HDInsight 3,6 összetevő verziója](../hdinsight-36-component-versioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

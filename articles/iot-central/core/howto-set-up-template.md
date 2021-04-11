@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef4be54f5c6025a09314a04504cff40fc39478d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363202"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168161"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
@@ -59,7 +59,7 @@ Egyes [alkalmazás-sablonok](concepts-app-templates.md) már tartalmaznak olyan 
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Eszköz sablonjának létrehozása az eszköz-katalógusból
 
-A Builder segítségével gyorsan megkezdheti a megoldás kiépítését egy hitelesített eszköz használatával. Tekintse meg a listát az [Azure IoT-eszköz katalógusában](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrálódik az eszköz-katalógussal, így bármely hitelesített eszközről importálhatja az eszköz modelljét. Eszköz sablonjának létrehozása ezen eszközök egyikéről a IoT Centralban:
+A Builder segítségével gyorsan megkezdheti a megoldás kiépítését egy hitelesített eszköz használatával. Tekintse meg a listát az [Azure IoT-eszköz katalógusában](https://devicecatalog.azure.com). IoT Central integrálódik az eszköz-katalógussal, így bármely hitelesített eszközről importálhatja az eszköz modelljét. Eszköz sablonjának létrehozása ezen eszközök egyikéről a IoT Centralban:
 
 1. Nyissa meg az IoT Central alkalmazás **eszköz sablonok** lapját.
 1. Válassza az **+ új** lehetőséget, majd a katalógusból válassza ki a hitelesített eszközök egyikét. IoT Central létrehoz egy, az eszköz modellje alapján létrehozott sablont.
