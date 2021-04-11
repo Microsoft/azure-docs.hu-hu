@@ -3,17 +3,18 @@ title: Azure Cloud Services (klasszikus) def. webrole-séma | Microsoft Docs
 description: Az Azure web role testre szabott a ASP.NET, a PHP, a WCF és a FastCGI-t támogató webalkalmazás-programozáshoz. Tudnivalók a webes szerepkörök szolgáltatás-definíciós elemeiről.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 3c5811649d7d6c0aa1e90ed34c61be6a7f9339f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3266be461af50d74988ad4834f2f8fc548e383
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743151"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934087"
 ---
 # <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Azure Cloud Services (klasszikus) definíciós webszerepkör-séma
 

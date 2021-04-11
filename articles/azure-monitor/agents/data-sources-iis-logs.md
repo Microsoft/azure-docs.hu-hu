@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: 87cb19daa23c9fcca601771a9fe168b98be02627
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104586267"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
@@ -66,7 +66,7 @@ Az IIS-naplóbejegyzések típusa **W3CIISLog** , és a következő táblázatba
 ## <a name="log-queries-with-iis-logs"></a>Lekérdezések naplózása IIS-naplókkal
 Az alábbi táblázat különböző példákat tartalmaz az IIS-naplóbejegyzések lekérésére szolgáló naplókra.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:--- |:--- |
 | W3CIISLog |Az összes IIS-naplózási rekord. |
 | W3CIISLog &#124;, ahol scStatus = = 500 |Az összes IIS-naplózási rekord 500-as visszatérési állapottal. |

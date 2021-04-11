@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
 ms.date: 3/23/2021
-ms.openlocfilehash: eedbc46ee5feb0aa6f6a26c3f5b3c67ac8ca0a5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 259a8581d16f4fd6958a0d9ec2631f667d362b19
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044260"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579466"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Az Azure karbantartási eseményeinek megtervezése Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ A karbantartási esemény a karbantartási esemény elején lévő elsődleges �
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Tervezett karbantartási esemény szimulálása
 
-Annak biztosítása, hogy az ügyfélalkalmazás az éles környezetben történő üzembe helyezést megelőzően a karbantartási események számára is rugalmas legyen, segít csökkenteni az alkalmazások hibáinak kockázatát, és hozzájárul az alkalmazások rendelkezésre állásához a végfelhasználók számára. A tervezett karbantartási események során tesztelheti az ügyfélalkalmazás viselkedését, ha a PowerShell, a CLI vagy a REST API segítségével [manuális feladatátvételt kezdeményez](https://aka.ms/mifailover-techblog) . Azonos viselkedést eredményez, mint a karbantartási esemény, amely az elsődleges replikát offline állapotba hozza.
+Annak biztosítása, hogy az ügyfélalkalmazás az éles környezetben történő üzembe helyezést megelőzően a karbantartási események számára is rugalmas legyen, segít csökkenteni az alkalmazások hibáinak kockázatát, és hozzájárul az alkalmazások rendelkezésre állásához a végfelhasználók számára. A tervezett karbantartási események során tesztelheti az ügyfélalkalmazás viselkedését, ha a PowerShell, a CLI vagy a REST API segítségével teszteli az [alkalmazás hibatűrési rugalmasságát](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla#testing-application-fault-resiliency) . Lásd még: [manuális feladatátvétel kezdeményezése](https://aka.ms/mifailover-techblog) felügyelt példányhoz. Azonos viselkedést eredményez, mint a karbantartási esemény, amely az elsődleges replikát offline állapotba hozza.
 
 ## <a name="retry-logic"></a>Újrapróbálkozási logika
 

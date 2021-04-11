@@ -5,10 +5,10 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102614819"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions – fejlesztői útmutató
@@ -129,7 +129,7 @@ Az identitás-alapú kapcsolatokat a következő trigger-és kötési bővítmé
 
 Az Azure-szolgáltatásokhoz tartozó identitás-alapú kapcsolatok a következő tulajdonságokat fogadják el:
 
-| Tulajdonság    | Kiterjesztésekhez szükséges | Környezeti változó | Description |
+| Tulajdonság    | Kiterjesztésekhez szükséges | Környezeti változó | Leírás |
 |---|---|---|---|
 | Szolgáltatás URI-ja | Azure-Blob, Azure-üzenetsor | `<CONNECTION_NAME_PREFIX>__serviceUri` |  Annak a szolgáltatásnak az adatsík URI azonosítója, amelyhez csatlakozik. |
 | Teljesen minősített névtér | Event Hubs | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | A teljesen minősített Event hub-névtér. |
@@ -156,7 +156,7 @@ Bizonyos esetekben előfordulhat, hogy egy másik identitás használatát szere
 
 Ha egy Azure Active Directory egyszerű szolgáltatással szeretne csatlakozni ügyfél-AZONOSÍTÓval és titkos kulccsal, a fenti [kapcsolati tulajdonságok](#connection-properties) mellett adja meg a kapcsolatot a következő szükséges tulajdonságokkal:
 
-| Tulajdonság    | Környezeti változó | Description |
+| Tulajdonság    | Környezeti változó | Leírás |
 |---|---|---|
 | Bérlőazonosító | `<CONNECTION_NAME_PREFIX>__tenantId` | A Azure Active Directory bérlő (könyvtár) azonosítója. |
 | Ügyfél-azonosító | `<CONNECTION_NAME_PREFIX>__clientId` |  A bérlőn belüli alkalmazás-regisztráció ügyfél-(alkalmazás-) azonosítója. |

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b502690a62410f1e8d2950074e8b479f7dc7f88
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b9d3f6973c210e7bd91c088ee7a276bfbcc48ce
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609318"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121982"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services eseményekhez Azure Event Grid sémák
 
@@ -136,7 +136,7 @@ Az alábbi példa a **JobStateChange** esemény sémáját mutatja be:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | previousState | sztring | A feladattípus állapota az esemény előtt. |
 | állapot | sztring | Az eseményben szereplő feladatok új állapota. Például "ütemezett: a művelet készen áll a kezdésre" vagy "kész: a művelet befejeződött".|
@@ -206,7 +206,7 @@ Az egyes végső feladatok állapotának változásaihoz (például JobFinished,
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | kimenetek | Tömb | A feladatok kimenetének beolvasása.|
 
@@ -322,7 +322,7 @@ Az alábbi példa a **LiveEventConnectionRejected** esemény sémáját mutatja 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
@@ -330,7 +330,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 | resultCode | sztring | A rendszer elutasította a csatlakozás okát. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
-A hibák eredményének kódjait az [élő események](../live-event-error-codes.md)hibakódjában találja.
+A hibák eredményének kódjait az [élő események](../live-event-error-codes-reference.md)hibakódjában találja.
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -358,7 +358,7 @@ Az alábbi példa a **LiveEventEncoderConnected** esemény sémáját mutatja be
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél felelős azért, hogy ezt az azonosítót a betöltési URL-címben adja meg. |
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |
@@ -392,7 +392,7 @@ Az alábbi példa a **LiveEventEncoderDisconnected** esemény sémáját mutatja
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
@@ -400,11 +400,11 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 | resultCode | sztring | A kódoló kibontásának oka. Előfordulhat, hogy a rendszer kecsesen leválasztja vagy hibát észlelt. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
-A hibák eredményének kódjait az [élő események](../live-event-error-codes.md)hibakódjában találja.
+A hibák eredményének kódjait az [élő események](../live-event-error-codes-reference.md)hibakódjában találja.
 
 A kecses leválasztási eredmények kódjai a következők:
 
-| Eredménykód | Description |
+| Eredménykód | Leírás |
 | ----------- | ----------- |
 | S_OK | A kódoló leválasztása sikeresen megtörtént. |
 | MPE_CLIENT_TERMINATED_SESSION | A kódoló leválasztva (RTMP). |
@@ -442,7 +442,7 @@ Az alábbi példa a **LiveEventIncomingDataChunkDropped** esemény sémáját mu
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A pálya neve. |
@@ -482,7 +482,7 @@ Az alábbi példa a **LiveEventIncomingStreamReceived** esemény sémáját muta
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
@@ -521,7 +521,7 @@ Az alábbi példa a **LiveEventIncomingStreamsOutOfSync** esemény sémáját mu
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | minLastTimestamp | sztring | Az összes műsorszám (hang vagy videó) utolsó időbélyegének minimális száma. |
 | typeOfTrackWithMinLastTimestamp | sztring | A pálya (hang vagy videó) minimális utolsó időbélyeg-típusa. |
@@ -557,7 +557,7 @@ Az alábbi példa a **LiveEventIncomingVideoStreamsOutOfSync** esemény sémáj�
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | firstTimestamp | sztring | A videó típusú számok/minőségi szintek egyikéhez tartozó időbélyeg érkezett. |
 | firstDuration | sztring | Az adathalmaz időtartama az első időbélyeggel. |
@@ -599,7 +599,7 @@ Az alábbi példa a **LiveEventIngestHeartbeat** esemény sémáját mutatja be:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
@@ -643,7 +643,7 @@ Az alábbi példa a **LiveEventTrackDiscontinuityDetected** esemény sémáját 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
@@ -657,7 +657,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A EventGrid témakör. Ez a tulajdonság a Media Services fiók erőforrás-azonosítójával rendelkezik. |
 | tárgy | sztring | A Media Services fiók Media Servicesi csatornájának erőforrás-elérési útja. A témakör és a tárgy összefűzésével megadhatja a feladatokhoz tartozó erőforrás-azonosítót. |
@@ -676,4 +676,4 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Élő események hibakódja](../live-event-error-codes.md)
+- [Élő események hibakódja](../live-event-error-codes-reference.md)

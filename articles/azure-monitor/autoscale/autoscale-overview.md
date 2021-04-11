@@ -5,10 +5,10 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101726002"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
@@ -81,8 +81,8 @@ Példák a kódokra:
 * [Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](autoscale-virtual-machine-scale-sets.md)  
 * [REST API méretezése](/rest/api/monitor/autoscalesettings)
 
-## <a name="horizontal-vs-vertical-scaling"></a>Vízszintes és függőleges méretezés
-Az autoskálázás csak horizontálisan méretezhető, ami a virtuálisgép-példányok számának növekedése ("out") vagy a csökkenés ("in").  A horizontális megoldás rugalmasabb a Felhőbeli helyzetekben, mivel lehetővé teszi, hogy akár több ezer virtuális gépet futtasson a terhelés kezeléséhez.
+## <a name="horizontal-vs-vertical-scaling&quot;></a>Vízszintes és függőleges méretezés
+Az autoskálázás csak horizontálisan méretezhető, ami a virtuálisgép-példányok számának növekedése (&quot;out") vagy a csökkenés ("in").  A horizontális megoldás rugalmasabb a Felhőbeli helyzetekben, mivel lehetővé teszi, hogy akár több ezer virtuális gépet futtasson a terhelés kezeléséhez.
 
 Ezzel szemben a vertikális skálázás eltérő. Ugyanazokat a virtuális gépeket őrzi meg, de a virtuális gépeket ("felfelé") vagy annál kevesebbet ("Down") teszi hatékonyabbá. A teljesítményt a memória, a processzor sebessége, a lemezterület stb. méri.  A vertikális skálázás több korlátozást tartalmaz. Ez a nagyobb hardverek számától függ, ami gyorsan elér egy felső korlátot, és régiónként változhat. A vertikális skálázáshoz is általában szükség van egy virtuális gép leállítására és újraindítására.
 

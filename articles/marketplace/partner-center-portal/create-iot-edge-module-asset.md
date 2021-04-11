@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: aca27b89a3b92b410fa560c8b4bd7eb3d4e0a935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8eddd5d346003af0c2b41d65fc0aa09c86f48c7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93346774"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167447"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>A IoT Edge modul technikai eszközeinek előkészítése
 
@@ -39,14 +39,14 @@ A modulnak támogatnia kell az IoT Edge által támogatott összes 1. szintű pl
 
 - Adjon meg egy legújabb címkét és egy Version címkét (például: 1.0.1), amelyek a [GitHub manifest-Tool eszközzel](https://github.com/estesp/manifest-tool)létrehozott manifest-címkék.
 
-- A [partner központ](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatok listája lapján a **hasznos hivatkozások** szakaszban található hivatkozásokat adhat hozzá a [Azure IoT Edge minősített eszköz katalógusához](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/).
+- A [partner központ](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatok listája lapján a **hasznos hivatkozások** szakaszban található hivatkozásokat adhat hozzá a [Azure IoT Edge minősített eszköz katalógusához](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible).
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Az 1. szintű platform egy részhalmaza, amelyet a IoT Edge támogat
 
 A modulnak támogatnia kell a IoT Edge által támogatott 1. rétegbeli platformokat ( [Azure IoT Edge-támogatásban](../../iot-edge/support.md)rögzített módon). A platformot használó modulnak a következőket kell tennie:
 
 - Adjon meg egy legújabb címkét és egy Version (például 1.0.1) címkét, amely a GitHub [manifest-Tool eszközzel](https://github.com/estesp/manifest-tool) létrehozott manifest-címkék, ha több platform is támogatott. A jegyzékfájl címkéi csak akkor választhatók, ha egy platform támogatott.
-- A [partner központ](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatok listája lapján adhat hozzá egy hivatkozást a **hasznos hivatkozások** szakasz alatt legalább egy IoT Edge eszközre a [Azure IoT Edge minősített eszköz katalógusában](https://catalog.azureiotsolutions.com/).
+- A [partner központ](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatok listája lapján adhat hozzá egy hivatkozást a **hasznos hivatkozások** szakasz alatt legalább egy IoT Edge eszközre a [Azure IoT Edge minősített eszköz katalógusában](https://devicecatalog.azure.com/).
 
 :::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Ez a partner Center ajánlati lista szakaszának képe":::
 
@@ -54,7 +54,7 @@ A modulnak támogatnia kell a IoT Edge által támogatott 1. rétegbeli platform
 
 IoT Edge a modul méretei (például a processzor, a RAM, a tárolás és a GPU) a célként megadott IoT Edge-eszközökön a következő követelményeknek kell megfelelniük:
 
-- A modulnak működnie kell legalább egy IoT Edge eszközzel a [Azure IoT Edge minősített eszköz katalógusában](https://catalog.azureiotsolutions.com/).
+- A modulnak működnie kell legalább egy IoT Edge eszközzel a [Azure IoT Edge minősített eszköz katalógusában](https://devicecatalog.azure.com/).
 
 - A minimális hardverkövetelmények dokumentációját az ajánlat leírásában szereplő utolsó bekezdésnek kell megadnia (a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace)ajánlati lista lapján). Igény szerint a javasolt hardverkövetelmények is kiválaszthatók, ha azok jelentősen eltérnek. Adja meg például a következő szakaszt az ajánlat leírásának végén:
 

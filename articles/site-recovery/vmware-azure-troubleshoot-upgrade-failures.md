@@ -1,18 +1,15 @@
 ---
 title: A Microsoft Azure Site Recovery-szolgáltató frissítésének hibáinak megoldása
 description: A Microsoft Azure Site Recovery-szolgáltató frissítésekor felmerülő gyakori problémák megoldása.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
-ms.author: raynew
-ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f53cc8d5732db85f69e48efdaddd518e75ff518b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84434368"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579493"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>A Microsoft Azure Site Recovery Provider frissítésével kapcsolatos hibák elhárítása
 

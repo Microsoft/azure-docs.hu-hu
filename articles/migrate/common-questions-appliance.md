@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.openlocfilehash: 059a1888b529487f2b0d17509370897222a20d83
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105563021"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
@@ -160,7 +160,7 @@ Megadhat tartomány/Windows (nem tartományi)/Linux (nem tartományi)/SQL Server
 ## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Milyen típusú SQL Server-kapcsolatok tulajdonságait támogatja az SQL-felderítési Azure Migrate?
 A Azure Migrate titkosítja Azure Migrate berendezés és a forrás SQL Server példányok közötti kommunikációt (a kapcsolat titkosítása tulajdonság értéke TRUE). Ezek a kapcsolatok a [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) -mel vannak titkosítva (igaz értékre állítva); az átviteli réteg az SSL használatával titkosítja a csatornát, és megkerüli a tanúsítványláncot a megbízhatóság ellenőrzéséhez. A berendezés-kiszolgálót úgy kell beállítani, hogy [megbízzon a tanúsítvány legfelső szintű hitelesítésszolgáltatóján](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
-Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amely a bejelentkezési csomagok titkosítására szolgál. [További információ](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amely a bejelentkezési csomagok titkosítására szolgál. [További információk](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 
 ## <a name="next-steps"></a>Következő lépések

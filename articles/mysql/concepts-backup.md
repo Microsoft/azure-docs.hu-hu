@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103010354"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
@@ -96,7 +96,7 @@ A kiszolgáló helyreállításának várható ideje több tényezőtől függ:
 ```sql
 select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
 ```
-Nagyméretű vagy nagyon aktív adatbázisok esetén a visszaállítás több órát is igénybe vehet. Ha egy régióban hosszabb ideig tartó leállás történik, előfordulhat, hogy a rendszer nagy számú geo-visszaállítási kérelmet indít el a vész-helyreállításhoz. Sok kérelem esetén az egyes adatbázisok helyreállítási ideje növekedhet. A legtöbb adatbázis-visszaállítás kevesebb, mint 12 óra alatt fejeződik be.
+Nagyméretű vagy nagyon aktív adatbázisok esetén a visszaállítás több órát is igénybe vehet. Ha a régióban elhúzódó leállás következik be, előfordulhat, hogy a vészhelyreállítási folyamat túl sok georedundáns visszaállítási kérést ad ki. Ha túl sok a kérés, az egyes adatbázisok helyreállítási ideje megnőhet. A legtöbb adatbázis-visszaállítás kevesebb, mint 12 óra alatt fejeződik be.
 
 > [!IMPORTANT]
 > A törölt kiszolgálók csak a biztonsági másolatok törlését követő **öt napon** belül állíthatók vissza. Az adatbázis biztonsági mentése csak a kiszolgálót üzemeltető Azure-előfizetésből érhető el és állítható vissza. Az eldobott kiszolgálók visszaállításához tekintse meg a [dokumentált lépéseket](howto-restore-dropped-server.md). A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](../azure-resource-manager/management/lock-resources.md).

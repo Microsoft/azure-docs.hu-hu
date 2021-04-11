@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: dc1ab8bd1a851f7fafd5c001ac73e66973e1b64c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d1b5e490b7c8212e6103e3d169c1b5491d01dde
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102051888"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167430"
 ---
 # <a name="pronunciation-assessment"></a>Kiejtés értékelése
 
@@ -28,7 +28,7 @@ A pedagógusok képesek a több beszélő kiejtésének valós idejű kiértéke
 Ebből a cikkből megtudhatja, hogyan állíthatja be `PronunciationAssessmentConfig` és kérheti le a `PronunciationAssessmentResult` beszédfelismerési SDK használatát.
 
 > [!NOTE]
-> A kiejtés-értékelési funkció jelenleg csak a nyelvet támogatja `en-US` .
+> A kiejtés-értékelési funkció jelenleg támogatja a `en-US` nyelvet, amely az összes [beszéd és szöveg közötti régióban](regions.md#speech-to-text-text-to-speech-and-translation)elérhető. A és a `en-GB` `zh-CN` languages támogatása az előzetes verzióban érhető el, amely a `westus` és a `eastasia` `centralindia` régiókban is elérhető.
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>Kiejtési értékelés a Speech SDK-val
 
@@ -194,9 +194,63 @@ Ez a táblázat a kiejtési értékelés eredmény-paramétereit sorolja fel.
 | `PronunciationScore` | Az adott beszéd kiejtési minőségét jelző összesített pontszám. Ez az Összesítés a `AccuracyScore` `FluencyScore` és `CompletenessScore` a súlyozással történik. |
 | `ErrorType` | Ez az érték azt jelzi, hogy egy szó ki van-e hagyva, be van-e jelölve vagy rosszul van-e kiválasztva `ReferenceText` . A lehetséges értékek: `None` (azaz nincs hiba ezen a szónak), `Omission` `Insertion` és `Mispronunciation` . |
 
+### <a name="sample-responses"></a>Mintául szolgáló válaszok
+
+Egy tipikus kiejtési értékelési eredmény a JSON-ban:
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronunciationAssessment":
+        {
+            "PronScore" : 84.4,
+            "AccuracyScore" : 100.0,
+            "FluencyScore" : 74.0,
+            "CompletenessScore" : 100.0,
+        },
+        "Words": [
+            {
+              "Word" : "Good",
+              "Offset" : 500000,
+              "Duration" : 2700000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            },
+            {
+              "Word" : "morning",
+              "Offset" : 5300000,
+              "Duration" : 900000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            }
+        ]
+      }
+  ]
+}
+```
+
 ## <a name="next-steps"></a>Következő lépések
 
 <!-- TODO: update JavaScript sample links after release -->
+
+* Tekintse meg a kiejtés értékelését bemutató videó [bevezetését](https://www.youtube.com/watch?v=cBE8CUHOFHQ) és [videós oktatóanyagát](https://www.youtube.com/watch?v=zFlwm7N4Awc)
+
+* Próbálja ki a [kiejtés Assessment bemutatóját](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment/BrowserJS)
 
 ::: zone pivot="programming-language-csharp"
 * A kiejtés értékeléséhez tekintse meg a GitHubon található [mintakód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L949) című részt.
@@ -219,3 +273,5 @@ Ez a táblázat a kiejtési értékelés eredmény-paramétereit sorolja fel.
 ::: zone-end
 
 * [A Speech SDK dokumentációja](speech-sdk.md)
+
+* [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)

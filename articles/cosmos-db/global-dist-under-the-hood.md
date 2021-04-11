@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 1b47ad27abbe59eceabd15d091f88f4659d8dad6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 592a9b89379094c88881c3c8485c7e38a1613b34
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486386"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219484"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális Adatterjesztés a Azure Cosmos DB-ben – a motorháztető alatt
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -61,7 +61,7 @@ A szolgáltatás lehetővé teszi, hogy a Cosmos-adatbázisokat egyetlen írási
 
 ## <a name="conflict-resolution"></a>Ütközések feloldása
 
-A frissítés propagálásának, az ütközések feloldásának és az oksági viszonyok nyomon követésének kialakítását a [járványos algoritmusok](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) és az [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) rendszer korábbi munkája ihlette. Habár az ötletek kernelei megmaradtak, és a Cosmos DB rendszerkialakításával való kommunikációhoz hasznos hivatkozási keretet biztosítanak, az is jelentős átalakításon estek át, ahogy azokat a Cosmos DB rendszerre alkalmazták. Erre azért volt szükség, mert az előző rendszerek nem az erőforrás-szabályozáshoz, sem a Cosmos DB működéséhez szükséges mérethez, sem pedig a képességek biztosításához (például a határos elavulás következetességéhez), valamint a szigorú és átfogó SLA-ra, amelyet a Cosmos DB biztosít ügyfeleinek.  
+A frissítés propagálásának, az ütközések feloldásának és az oksági viszonyok nyomon követésének kialakítását a [járványos algoritmusok](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) és az [Bayou](https://people.cs.umass.edu/~mcorner/courses/691M/papers/terry.pdf) rendszer korábbi munkája ihlette. Habár az ötletek kernelei megmaradtak, és a Cosmos DB rendszerkialakításával való kommunikációhoz hasznos hivatkozási keretet biztosítanak, az is jelentős átalakításon estek át, ahogy azokat a Cosmos DB rendszerre alkalmazták. Erre azért volt szükség, mert az előző rendszerek nem az erőforrás-szabályozáshoz, sem a Cosmos DB működéséhez szükséges mérethez, sem pedig a képességek biztosításához (például a határos elavulás következetességéhez), valamint a szigorú és átfogó SLA-ra, amelyet a Cosmos DB biztosít ügyfeleinek.  
 
 Ne felejtse el, hogy a partíciók több régióban vannak elosztva, és a Cosmos-adatbázisok (többrégiós írások) replikációs protokollját követve replikálják az adatot az adott partíciós készletet alkotó fizikai partíciók között. Az egyes fizikai partíciók (egy partíciós készlet) elfogadják az írásokat, és általában az adott régióhoz tartozó ügyfelekre mutatnak olvasási műveleteket. Az adott régióban található fizikai partíció által elfogadott írásokat a rendszer tartósan véglegesíti, és a fizikai partíción belül, az ügyfélnek való nyugtázás előtt elvégzi. Ezek a feltételes írások, és a partíción belüli többi fizikai partícióra vannak propagálva egy anti-entrópia Channel használatával. Az ügyfelek feltételes vagy véglegesített írásokat is igényelhetnek a kérelem fejlécének átadásával. Az anti-entrópia-propagálás (beleértve a propagálás gyakoriságát is) dinamikus, a particionálás topológiája, a fizikai partíciók regionális közelsége és a beállított konzisztencia-szint alapján. Egy partíción belül a Cosmos DB egy elsődleges véglegesítő sémát követ egy dinamikusan kiválasztott döntőbíró-partícióval. A döntőbíró kiválasztása dinamikus, és az átfedések topológiája alapján szerves részét képezi a partíció újrakonfigurálásának. A véglegesített írások (beleértve a többsoros vagy kötegelt frissítéseket) garantáltan megrendelhetők. 
 

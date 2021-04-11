@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6a80f73a97a5732f00e10107fff2330038210a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732564"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122016"
 ---
 # <a name="networking"></a>Hálózatkezelés
 
@@ -87,7 +87,7 @@ További információ a bejövő biztonsági szabályokról:
 
 * **Alkalmazás**. Az alkalmazás portszámának elég nagynak kell lennie ahhoz, hogy le lehessen fedni az alkalmazások végponti követelményeit. Ez a tartomány nem lehet a számítógép Dinamikus porttartomány, azaz a konfigurációban beállított az ephemeralports-tartomány. Service Fabric ezeket a portokat használja, amikor új portokra van szükség, és gondoskodik a portok tűzfalának megnyitásáról a csomópontokon.
 
-* **SMB**. Az SMB protokollt két forgatókönyv esetén a Lemezképtárolóba szolgáltatás használja. Ez a port szükséges ahhoz, hogy letöltse a csomagokat a Lemezképtárolóba a csomópontok között, valamint replikálja ezeket a replikák között. 
+* **SMB**. Nem kötelező, a Runtime 7.1-es és újabb verziója alapértelmezés szerint nem használ SMB-t. Az SMB protokollt két forgatókönyv esetén a Lemezképtárolóba szolgáltatás használja. Ez a port szükséges ahhoz, hogy letöltse a csomagokat a Lemezképtárolóba a csomópontok között, valamint replikálja ezeket a replikák között. 
 
 * **RDP**. Nem kötelező, ha az internetről vagy a VirtualNetwork Jumpbox-forgatókönyvek esetén RDP szükséges. 
 

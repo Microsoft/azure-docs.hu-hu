@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6499e4b3404a255025f88488e73da1efb6449296
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582068"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075951"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Megbízható indítást engedélyező virtuális gép üzembe helyezése (előzetes verzió)
 
@@ -32,27 +32,30 @@ A [megbízható indítás](trusted-launch.md) egy módszer a [2. generációs](g
 Hozzon létre egy virtuális gépet, amelyen engedélyezve van a megbízható indítás.
 
 1. Jelentkezzen be az Azure [Portalra](https://aka.ms/TL_preview).
-1. **Virtual Machines** keresése.
-1. A **szolgáltatások** területen válassza a **virtuális gépek** lehetőséget.
-1. A **virtuális gépek** lapon válassza a **Hozzáadás**, majd a **virtuális gép** lehetőséget.
-1. A **projekt részletei** területen ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
-1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adja meg az erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
-1. A **példány részletei** területen adja meg a virtuális gép nevét, és válasszon egy olyan régiót, amely támogatja a [megbízható indítást](trusted-launch.md#public-preview-limitations).
-1. A **rendszerkép** területen válasszon ki egy olyan [rendszerképet, amely támogatja a megbízható indítást](trusted-launch.md#public-preview-limitations). Előfordulhat, hogy csak a rendszerkép 1. generációs verzióját látja, ami nem minden rendben van, folytassa a következő lépéssel.
-1. Váltson át a **speciális** lapra úgy, hogy kiválasztja az oldal tetején.
-1. Görgessen le a virtuálisgép- **generáció** szakaszhoz, majd válassza a **2**. generációs elemet.
-1. Miközben továbbra is a **speciális** lapon, görgessen le a **megbízható indítás** elemig, majd jelölje be a **megbízható indítás** jelölőnégyzetet. Ekkor két további lehetőség jelenik meg – biztonságos rendszerindítás és vTPM. Válassza ki a megfelelő beállításokat a központi telepítéshez.
+   > [!NOTE] 
+   > A portál hivatkozása egyedi a megbízható indítás előzetes verziójára.
+   >  
+2. **Virtual Machines** keresése.
+3. A **szolgáltatások** területen válassza a **virtuális gépek** lehetőséget.
+4. A **virtuális gépek** lapon válassza a **Hozzáadás**, majd a **virtuális gép** lehetőséget.
+5. A **projekt részletei** területen ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
+6. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adja meg az erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+7. A **példány részletei** területen adja meg a virtuális gép nevét, és válasszon egy olyan régiót, amely támogatja a [megbízható indítást](trusted-launch.md#public-preview-limitations).
+8. A **rendszerkép** területen válasszon ki egy olyan [rendszerképet, amely támogatja a megbízható indítást](trusted-launch.md#public-preview-limitations). Előfordulhat, hogy csak a rendszerkép 1. generációs verzióját látja, ami nem minden rendben van, folytassa a következő lépéssel.
+9. Váltson át a **speciális** lapra úgy, hogy kiválasztja az oldal tetején.
+10. Görgessen le a virtuálisgép- **generáció** szakaszhoz, majd válassza a **2**. generációs elemet.
+11. Miközben továbbra is a **speciális** lapon, görgessen le a **megbízható indítás** elemig, majd jelölje be a **megbízható indítás** jelölőnégyzetet. Ekkor két további lehetőség jelenik meg – biztonságos rendszerindítás és vTPM. Válassza ki a megfelelő beállításokat a központi telepítéshez.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="A megbízható indítás beállításait bemutató képernyőkép.":::
 
-1. Lépjen vissza az **alapok** lapra, a **kép** területen, és győződjön meg arról, hogy a következő üzenet jelenik meg: **Ez a kép támogatja a megbízható indítási előnézetet. Konfigurálás a Speciális lapon**. A 2. generációs képet most ki kell jelölni.
+12. Lépjen vissza az **alapok** lapra, a **kép** területen, és győződjön meg arról, hogy a következő üzenet jelenik meg: **Ez a kép támogatja a megbízható indítási előnézetet. Konfigurálás a Speciális lapon**. A 2. generációs képet most ki kell jelölni.
 
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Képernyőfelvétel: az üzenet, amely megerősíti, hogy ez egy Gen2-rendszerkép, amely támogatja a megbízható indítást.":::
 
-1.  Válasszon olyan virtuálisgép-méretet, amely támogatja a megbízható indítást. Tekintse meg a [támogatott méretek](trusted-launch.md#public-preview-limitations)listáját.
-1.  Adja meg a **rendszergazdai fiók** adatait, majd a **bejövő portok szabályait**.
-1.  A lap alján válassza a **felülvizsgálat + létrehozás** elemet.
-1.  A **virtuális gép létrehozása** lapon megtekintheti a telepíteni kívánt virtuális gép adatait. Ha készen áll, kattintson a **Létrehozás** gombra.
+13. Válasszon olyan virtuálisgép-méretet, amely támogatja a megbízható indítást. Tekintse meg a [támogatott méretek](trusted-launch.md#public-preview-limitations)listáját.
+14. Adja meg a **rendszergazdai fiók** adatait, majd a **bejövő portok szabályait**.
+15. A lap alján válassza a **felülvizsgálat + létrehozás** elemet.
+16. A **virtuális gép létrehozása** lapon megtekintheti a telepíteni kívánt virtuális gép adatait. Ha készen áll, kattintson a **Létrehozás** gombra.
 
     :::image type="content" source="media/trusted-launch/validation.png" alt-text="Az érvényesítés lap Sceenshot, amely a megbízható indítási beállításokat tartalmazza.":::
 

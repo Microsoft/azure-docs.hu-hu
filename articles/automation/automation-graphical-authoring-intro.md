@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57d5627e45e79263408b9b5760c8332122ce8c91
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501228"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167396"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
 
@@ -328,19 +328,19 @@ Az [összehasonlító operátorok](/powershell/module/microsoft.powershell.core/
 A következő feltétel például meghatározza, hogy a virtuális gép jelenleg le van-e állítva egy nevű tevékenységből `Get-AzureVM` .
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped"
 ```
 
 A következő feltétel határozza meg, hogy ugyanaz a virtuális gép a leállítotttól eltérő állapotban van-e.
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -ne "Stopped"
 ```
 
 A runbook több feltételt is csatlakoztathat egy [logikai operátor](/powershell/module/microsoft.powershell.core/about/about_logical_operators)használatával, például `-and` vagy `-or` . A következő feltétel például ellenőrzi, hogy az előző példában szereplő virtuális gép leállított vagy leállítási állapotban van-e.
 
 ```powershell-interactive
-($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
+($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopping")
 ```
 
 ### <a name="use-hashtables"></a>Szórótáblában használata

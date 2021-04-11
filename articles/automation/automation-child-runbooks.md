@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0dd5cf5209924972080af6d22429252338754de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 338de996b06769b9d2891c7208b9050cc3acc7ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491248"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167294"
 ---
 # <a name="create-modular-runbooks"></a>Moduláris runbookok létrehozása
 
@@ -56,15 +56,15 @@ Ha a runbook a beágyazott végrehajtás használatával meghívja a grafikus va
 A következő példa egy teszt gyermek runbook indít el, amely egy összetett objektumot, egy egész értéket és egy logikai értéket fogad el. A rendszer egy változóhoz társítja a gyermekrunbook kimenetét. Ebben az esetben a gyermek runbook egy PowerShell-munkafolyamat runbook.
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = PSWF-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 Ez ugyanaz a példa, amely egy PowerShell-runbook használja a gyermekként.
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 ## <a name="start-a-child-runbook-using-a-cmdlet"></a>Gyermek runbook elindítása parancsmag használatával
@@ -84,7 +84,7 @@ Egy parancsmaggal elindított alárendelt runbook paramétereinek megadása szó
 
 Előfordulhat, hogy az előfizetési környezet elvész, amikor elindítják a gyermek runbookok különálló feladatként. Ahhoz, hogy a gyermek runbook az az Module-parancsmagok egy adott Azure-előfizetéssel való végrehajtásához, a gyermeknek a szülő runbook függetlenül hitelesítenie kell ezt az előfizetést.
 
-Ha ugyanabban az Automation-fiókban lévő feladatok egynél több előfizetéssel működnek, az egyik feladatban szereplő előfizetés kiválasztásával megváltoztathatja a jelenleg kijelölt előfizetési környezetet más feladatokhoz. Ha el szeretné kerülni ezt a helyzetet, használja `Disable-AzContextAutosave –Scope Process` az egyes runbook elején. Ez a művelet csak a környezetet menti a runbook végrehajtásához.
+Ha ugyanabban az Automation-fiókban lévő feladatok egynél több előfizetéssel működnek, az egyik feladatban szereplő előfizetés kiválasztásával megváltoztathatja a jelenleg kijelölt előfizetési környezetet más feladatokhoz. Ha el szeretné kerülni ezt a helyzetet, használja `Disable-AzContextAutosave -Scope Process` az egyes runbook elején. Ez a művelet csak a környezetet menti a runbook végrehajtásához.
 
 ### <a name="example"></a>Példa
 
@@ -92,7 +92,7 @@ A következő példa egy gyermek runbook indít el paraméterekkel, majd megvár
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 # Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
@@ -108,11 +108,11 @@ $AzureContext = Set-AzContext -SubscriptionId $ServicePrincipalConnection.Subscr
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 
 Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
+    -AutomationAccountName 'MyAutomationAccount' `
+    -Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
     -AzContext $AzureContext `
-    –Parameters $params –Wait
+    -Parameters $params -Wait
 ```
 
 ## <a name="next-steps"></a>Következő lépések

@@ -3,12 +3,12 @@ title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e24b7540ea1ac41774e2c23781265f9a61940cb1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629274"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276739"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -17,7 +17,7 @@ Ez a cikk azt ismerteti, hogyan kezeli a Azure Event Grid az eseményeket, amiko
 Event Grid tartós kézbesítést biztosít. Minden egyes előfizetéshez **legalább egyszer** kézbesít minden üzenetet. Az eseményeket azonnal elküldi az egyes előfizetések regisztrált végpontjának. Ha egy végpont nem igazolja egy esemény fogadását, Event Grid újrapróbálkozik az esemény kézbesítésével.
 
 > [!NOTE]
-> A Event Grid nem garantálja az események kézbesítésének sorrendjét, így az előfizető a rendeléstől függetlenül is megkaphatja őket. 
+> A Event Grid nem garantálja az események kézbesítésének sorrendjét, így az előfizetők a rendeléstől függetlenül kaphatják meg őket. 
 
 ## <a name="batched-event-delivery"></a>Kötegelt esemény kézbesítése
 
@@ -55,11 +55,11 @@ Az Azure CLI és a Event Grid használatával kapcsolatos további információk
 
 ## <a name="retry-schedule-and-duration"></a>Újrapróbálkozási ütemterv és időtartam
 
-Ha a EventGrid hibaüzenetet kap egy esemény kézbesítési kísérlete során, a EventGrid eldönti, hogy újra kell-e próbálkoznia a kézbesítéssel vagy a kézbesítetlen levelekkel, vagy el kell dobnia az eseményt a hiba típusa alapján. 
+Ha a EventGrid hibaüzenetet kap egy esemény kézbesítési kísérlete során, akkor a EventGrid eldönti, hogy újra kell-e próbálkoznia a kézbesítéssel, kézbesítve az eseményt, vagy el kell dobnia az eseményt a hiba típusa alapján. 
 
-Ha az előfizetett végpont által visszaadott hiba olyan konfigurációval kapcsolatos hiba, amely nem oldható fel az újrapróbálkozásokkal (például ha a végpont törölve van), a EventGrid elküldheti az eseményt, vagy eldobja az eseményt, ha a kézbesítetlen levél nincs konfigurálva.
+Ha az előfizetett végpont által visszaadott hiba egy olyan konfigurációval kapcsolatos hiba, amely nem oldható fel az újrapróbálkozásokkal (például ha a végpont törölve van), akkor a EventGrid a kézbesítetlen üzenetek küldését hajtja végre az eseményen, vagy eldobja az eseményt, ha a kézbesítetlen levél nincs konfigurálva.
 
-A következő típusú végpontok típusai nem történnek újra:
+Az alábbi táblázat a végpontok és a hibák típusait ismerteti, amelyek esetében az Újrapróbálkozás nem történik meg:
 
 | Végpont típusa | Hibakódok |
 | --------------| -----------|
@@ -67,7 +67,7 @@ A következő típusú végpontok típusai nem történnek újra:
 | Webhook | 400 hibás kérelem, 413 kérelem entitása túl nagy, 403 Tiltott, 404 nem található, 401 jogosulatlan |
  
 > [!NOTE]
-> Ha a Dead-Letter nincs konfigurálva a végponthoz, az események a fenti hibák miatt el lesznek dobva. Ha nem szeretné, hogy az ilyen típusú események el legyenek dobva, érdemes lehet a kézbesítetlen levelek konfigurálása.
+> Ha a Dead-Letter nincs konfigurálva egy végponthoz, akkor a fenti hibák miatt az események el lesznek dobva. Ha nem szeretné, hogy az ilyen típusú események el legyenek dobva, érdemes lehet Dead-Letter konfigurálni.
 
 Ha az előfizetett végpont által visszaadott hiba nem szerepel a fenti listában, a EventGrid a lent ismertetett szabályzatok használatával hajtja végre az újrapróbálkozást:
 
@@ -89,7 +89,7 @@ Ha a végpont 3 percen belül válaszol, Event Grid megpróbálja eltávolítani
 
 Event Grid egy kis véletlenszerűség az összes újrapróbálkozási lépéshez, és bizonyos újrapróbálkozások kihagyása, ha egy végpont nem kifogástalan állapotú, hosszú ideig leáll, vagy úgy tűnik, hogy túlterhelt.
 
-A determinisztikus működéséhez állítsa az esemény időpontját élő és maximális kézbesítési kísérletekre az [előfizetés-újrapróbálkozási házirendekben](manage-event-delivery.md).
+A determinisztikus működéséhez állítsa be az esemény élettartamát és a maximális kézbesítési kísérleteket az [előfizetés-újrapróbálkozási házirendekben](manage-event-delivery.md).
 
 Alapértelmezés szerint a Event Grid minden olyan eseményt lejár, amely 24 órán belül nem érkezik meg. [Az újrapróbálkozási szabályzatot az](manage-event-delivery.md) esemény-előfizetés létrehozásakor is testreszabhatja. Megadja a kézbesítési kísérletek maximális számát (az alapértelmezett érték 30) és az esemény élettartamát (az alapértelmezett érték 1440 perc).
 
@@ -111,11 +111,11 @@ Event Grid küld egy eseményt a kézbesítetlen levelek helyére, amikor megpr�
 
 Az élettartam lejáratát csak a következő ütemezett kézbesítési kísérletnél ellenőrzi a rendszer. Tehát akkor is, ha a következő ütemezett kézbesítési kísérlet előtt lejár az esemény, akkor a lejárati idő csak a következő kézbesítéskor van bejelölve, majd ezt követően kézbesítve lesz. 
 
-Az utolsó kísérlet az esemény kézbesítése és a kézbesítetlen levél helyére való továbbítása között öt perc késéssel jár. Ez a késleltetés a blob Storage-műveletek számának csökkentésére szolgál. Ha a kézbesítetlen levelek helye négy órán keresztül nem érhető el, a rendszer elveti az eseményt.
+Az utolsó kísérlet az esemény kézbesítése és a kézbesítetlen levél helyére való továbbítása között öt perc késéssel jár. Ez a késés a blob Storage-műveletek számának csökkentésére szolgál. Ha a kézbesítetlen levelek helye négy órán keresztül nem érhető el, a rendszer elveti az eseményt.
 
 A kézbesítetlen levelek helyének beállítása előtt egy tárolóval rendelkező Storage-fiókkal kell rendelkeznie. Az esemény-előfizetés létrehozásakor adja meg a tároló végpontját. A végpont formátuma a (z): `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Előfordulhat, hogy értesítést szeretne kapni, ha egy eseményt elküldtek a kézbesítetlen levél helyére. Ha Event Gridt szeretne használni a nem kézbesített eseményekre való válaszadásra, [hozzon létre egy esemény-előfizetést](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) a kézbesítetlen levél blob Storage-hoz. Minden alkalommal, amikor a kézbesítetlen levelek blob-tárolója egy nem kézbesített eseményt kap, Event Grid értesíti a kezelőt. A kezelő olyan műveletekkel válaszol, amelyeket el kíván végezni a nem beérkező események egyeztetéséhez. A kézbesítetlen levelek helyének beállításához és az újrapróbálkozási szabályzatok létrehozásához lásd: [kézbesítetlen levelek és újrapróbálkozási szabályzatok](manage-event-delivery.md).
+Előfordulhat, hogy értesítést szeretne kapni, ha egy eseményt elküldtek a kézbesítetlen levelek helyére. Ha Event Gridt szeretne használni a nem kézbesített eseményekre való válaszadásra, [hozzon létre egy esemény-előfizetést](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) a kézbesítetlen levél blob Storage-hoz. Minden alkalommal, amikor a kézbesítetlen levelek blob-tárolója egy nem kézbesített eseményt kap, Event Grid értesíti a kezelőt. A kezelő olyan műveletekkel válaszol, amelyeket el kíván végezni a nem beérkező események egyeztetéséhez. A kézbesítetlen levelek helyének beállításához és az újrapróbálkozási szabályzatok létrehozásához lásd: [kézbesítetlen levelek és újrapróbálkozási szabályzatok](manage-event-delivery.md).
 
 ## <a name="delivery-event-formats"></a>Kézbesítési események formátuma
 Ez a szakasz példákat mutat be a különböző kézbesítési sémák formátumában (Event Grid sémában, CloudEvents 1,0 sémában és egyéni sémában) található eseményekről és elhalt levelekről. További információ ezekről a formátumokról: [Event Grid Schema](event-schema.md) and [Cloud Events 1,0 Schema](cloud-event-schema.md) article. 
@@ -288,7 +288,7 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 | 503 A szolgáltatás nem érhető el | Újrapróbálkozás 30 másodperc vagy több után |
 | Minden más | Újrapróbálkozás 10 másodperc vagy több után |
 
-## <a name="delivery-with-custom-headers"></a>Kézbesítés egyéni fejlécekkel
+## <a name="custom-delivery-properties"></a>Egyéni kézbesítési tulajdonságok
 Az esemény-előfizetések lehetővé teszik a kézbesített események részét képező HTTP-fejlécek beállítását. Ez a funkció lehetővé teszi, hogy egyéni fejléceket állítson be, amelyekre a célhelynek szüksége van. Esemény-előfizetés létrehozásakor akár 10 fejlécet is beállíthat. Minden fejléc értéke nem lehet nagyobb, mint 4 096 (4K) bájt. Egyéni fejléceket állíthat be a következő célhelyekre küldött eseményeken:
 
 - Webhookok
@@ -296,7 +296,7 @@ Az esemény-előfizetések lehetővé teszik a kézbesített események részét
 - Azure Event Hubs
 - Továbbító Hibrid kapcsolatok
 
-További információ: [kézbesítés egyéni fejlécekkel](delivery-properties.md). 
+További információ: [Egyéni kézbesítési tulajdonságok](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Következő lépések
 

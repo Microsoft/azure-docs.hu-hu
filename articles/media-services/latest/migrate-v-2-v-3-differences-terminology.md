@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5c1fbaf9be4cb128f0e4390a8c97c6f0b9330ce2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 42c4c91b6715ffec4c734632c69623206bc6dbae
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559876"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076002"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminológia és entitások változása Media Services v2 és v3 között
 
@@ -73,7 +73,7 @@ Tekintse át Media Services v3 erőforrásokra alkalmazott elnevezési konvenci�
 | **Kódolás** <!--new row --> |||
 | Kódolási átviteli sebesség <!--new row --> | átviteli sebesség (Kbit/s): 128 (Kbit/s)| bitek másodpercenként: ex: 128000 (BITS/másodperc)|
 | DRM-FairPlay kódolása <!--new row --> | Media Services v2-ben megadható az inicializálási vektor (IV). | Media Services v3-as verzióban nem adható meg a FairPlay IV.|
-| Prémium szintű kódoló <!--new row --> | Prémium szintű kódoló és örökölt indexelő| A [prémium szintű kódoló](../previous/media-services-encode-asset.md) és az örökölt [Media Analytics-processzorok](../previous/legacy-components.md) (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül. A hangcsatorna-hozzárendelés támogatását a standard kódolóhoz egészítették ki.  [A Media Services kódolással kapcsolatos dokumentációban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)lásd: hang.  | Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md) |
+| Prémium szintű kódoló <!--new row --> | Prémium szintű kódoló és örökölt indexelő| A [prémium szintű kódoló](../previous/media-services-encode-asset.md) és az örökölt [Media Analytics-processzorok](../previous/legacy-components.md) (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül. A hangcsatorna-hozzárendelés támogatását a standard kódolóhoz egészítették ki.  [A Media Services kódolással kapcsolatos dokumentációban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)lásd: hang.  <br/> Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md) |
 | **Átalakítások és feladatok** <!--new row -->|||
 | A feladatok alapú feldolgozás HTTPS <!--new row --> |<!-- empty -->| A fájl alapú feladatok feldolgozásához a bemenetként HTTPS URL-címet használhat. Nem kell már az Azure-ban tárolt tartalmat használnia, és nem kell eszközöket létrehoznia. |
 | ARM-sablonok a feladatokhoz <!--new row --> | Az ARM-sablonok nem léteznek a v2-ben. | Az átalakító használatával újrafelhasználható konfigurációk hozhatók létre, Azure Resource Manager sablonok hozhatók létre, és a feldolgozási beállítások elkülöníthetők több ügyfél vagy bérlő között. |

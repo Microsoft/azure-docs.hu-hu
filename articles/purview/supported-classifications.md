@@ -6,20 +6,20 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 02/05/2021
-ms.openlocfilehash: 37df9a276339b80a81e6ac5d5db14872de9edff4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 4/1/2021
+ms.openlocfilehash: e1d3d495d958465e966701aa7ce91bc2706b48e0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065854"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219586"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Támogatott besorolások az Azure hatáskörébe
 
 Ez a cikk az Azure hatáskörébe (előzetes verzió) támogatott és definiált rendszerbesorolásokat sorolja fel.
 
 
-- **Eltérő egyezési küszöbérték**: az oszlopokban a képolvasó által az adatmintázat futtatása előtt megtalált különböző adatértékek teljes száma. A rendszer besorolási szabályai szerint az egyes oszlopokban legalább 8 különböző értéknek kell lennie, hogy azok besorolásra vonatkozzanak. A rendszernek ezt az értéket kell megadnia ahhoz, hogy az oszlop elegendő adatmennyiséget tartalmazzon a képolvasó számára a pontos besoroláshoz. Például egy olyan oszlop, amely az 1 értéket tartalmazó több sort tartalmaz, nem lesz besorolva. Azokat az oszlopokat, amelyek egy értéket tartalmazó sort tartalmaznak, és a sorok többi része null értékű, nem lesz besorolva. Ha több mintázatot ad meg, ez az érték mindenre vonatkozik.
+- **Eltérő egyezési küszöbérték**: az oszlopokban a képolvasó által az adatmintázat futtatása előtt megtalált különböző adatértékek teljes száma. A különböző egyeztetési küszöbértéknek semmi köze a mintázat megfeleltetéséhez, de ez a minta egyeztetésének előfeltétele. A rendszer besorolási szabályai szerint az egyes oszlopokban legalább 8 különböző értéknek kell lennie, hogy azok besorolásra vonatkozzanak. A rendszernek ezt az értéket kell megadnia ahhoz, hogy az oszlop elegendő adatmennyiséget tartalmazzon a képolvasó számára a pontos besoroláshoz. Például egy olyan oszlop, amely az 1 értéket tartalmazó több sort tartalmaz, nem lesz besorolva. Azokat az oszlopokat, amelyek egy értéket tartalmazó sort tartalmaznak, és a sorok többi része null értékű, nem lesz besorolva. Ha több mintázatot ad meg, ez az érték mindenre vonatkozik.
 
 - **Minimális egyezési küszöb**: az adatértékek minimális százalékos aránya egy oszlopban, amelyet a lapolvasónak kell megkeresnie az alkalmazandó besoroláshoz. A rendszer besorolási értéke 60%.
 

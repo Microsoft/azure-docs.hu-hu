@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/31/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0805ac84318a4fee98c30127ac80c0dac2b96309
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8774df6a2eee15f8b5a0c37362e5b20f14b07549
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558261"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167362"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Ideiglenes hozzáférési pass beállítása az Azure AD-ben a jelszóval nem rendelkező hitelesítési módszerek regisztrálásához (előzetes verzió)
 
@@ -57,7 +57,7 @@ Az ideiglenes hozzáférési pass hitelesítési módszer házirendjének konfig
    | Egyszeri használat | Hamis | Igaz/hamis | Ha a házirend hamis értékre van állítva, akkor a bérlőben lévő átadások az érvényessége során egyszer vagy többször is használhatók (maximális élettartam). Ha az ideiglenes hozzáférési szabályzatban egyszeri használatot alkalmaz, a bérlőben létrehozott összes hágó egyszeri használatra lesz létrehozva. |
    | Hossz | 8 | 8-48 karakter | Meghatározza a PIN-kód hosszát. |
 
-## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Ideiglenes hozzáférési menet létrehozása az Azure AD-portálon
+## <a name="create-a-temporary-access-pass"></a>Ideiglenes hozzáférési pass létrehozása
 
 Miután engedélyezte a szabályzatot, létrehozhat egy ideiglenes hozzáférési Pass-t egy felhasználó számára az Azure AD-ben. Ezek a szerepkörök a következő műveleteket hajtják végre egy ideiglenes hozzáférési menethez kapcsolódóan.
 
@@ -66,9 +66,7 @@ Miután engedélyezte a szabályzatot, létrehozhat egy ideiglenes hozzáférés
 - A hitelesítési rendszergazdák létrehozhatnak, törölhetnek, megtekinthetnek egy ideiglenes hozzáférési átadást a tagokon (kivéve magukat)
 - A globális rendszergazda megtekintheti az ideiglenes hozzáférési adatokat a felhasználónál (a kód beolvasása nélkül).
 
-Ideiglenes hozzáférési pass létrehozásához:
-
-1. Jelentkezzen be a portálra globális rendszergazdaként, privilegizált hitelesítési rendszergazdaként vagy hitelesítési rendszergazdaként. 
+1. Jelentkezzen be a Azure Portalba globális rendszergazdaként, privilegizált hitelesítési rendszergazdaként vagy hitelesítési rendszergazdaként. 
 1. Kattintson a **Azure Active Directory** gombra, tallózással keresse meg a felhasználók elemet, válasszon ki egy felhasználót, például: *Chris Green*, majd válassza a **hitelesítési módszerek** lehetőséget.
 1. Ha szükséges, válassza az **új felhasználói hitelesítési módszerek kipróbálása** lehetőséget.
 1. Válassza a **hitelesítési módszerek hozzáadásának** lehetőségét.
@@ -80,6 +78,30 @@ Ideiglenes hozzáférési pass létrehozásához:
 1. A Hozzáadás után a rendszer megjeleníti az ideiglenes hozzáférési menet részleteit. Jegyezze fel a tényleges ideiglenes hozzáférési pass értéket. Ezt az értéket a felhasználónak kell megadnia. Ezt az értéket nem tekintheti meg, miután rákattintott **az OK** gombra.
    
    ![Képernyőkép az ideiglenes hozzáférési pass részleteiről](./media/how-to-authentication-temporary-access-pass/details.png)
+
+A következő parancsok bemutatják, hogyan hozhat létre és szerezhet be ideiglenes hozzáférési Passet a PowerShell használatával:
+
+```powershell
+# Create a Temporary Access Pass for a user
+$properties = @{}
+$properties.isUsableOnce = $True
+$properties.startDateTime = '2021-03-11 06:00:00'
+$propertiesJSON = $properties | ConvertTo-Json
+
+New-MgUserAuthenticationTemporaryAccessPassMethod -UserId user2@contoso.com -BodyParameter $propertiesJSON
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM TAPRocks!
+
+# Get a user's Temporary Access Pass
+Get-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM
+
+```
 
 ## <a name="use-a-temporary-access-pass"></a>Ideiglenes hozzáférési pass használata
 
@@ -108,6 +130,13 @@ Lejárt ideiglenes hozzáférési pass nem használható. A felhasználó **hite
 1. Az Azure AD-portálon keresse meg a **felhasználók** elemet, válasszon ki egy felhasználót, például *koppintson a felhasználó* elemre, majd válassza a **hitelesítési módszerek** lehetőséget.
 1. A listában látható **ideiglenes hozzáférési pass (előzetes verzió)** hitelesítési módszer jobb oldalán válassza a **Törlés** lehetőséget.
 
+Használhatja a PowerShellt is:
+
+```powershell
+# Remove a user's Temporary Access Pass
+Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -TemporaryAccessPassAuthenticationMethodId c5dbd20a-8b8f-4791-a23f-488fcbde3b38
+```
+
 ## <a name="replace-a-temporary-access-pass"></a>Ideiglenes hozzáférési pass cseréje 
 
 - Egy felhasználó csak egy ideiglenes hozzáférési Pass-t tartalmazhat. A PIN-kód az ideiglenes hozzáférési menet kezdési és befejezési ideje alatt használható.
@@ -123,8 +152,8 @@ Tartsa szem előtt a következő korlátozásokat:
 
 - Ha egyszer használatos ideiglenes hozzáférési Pass-t használ a jelszó nélküli módszer (például a FIDO2 vagy a telefonos bejelentkezés) regisztrálásához, a felhasználónak 10 percen belül be kell fejeznie a regisztrációt az egyszeri ideiglenes hozzáférési lépéssel. Ez a korlátozás nem vonatkozik olyan ideiglenes hozzáférési Passre, amely többször is felhasználható.
 - A vendég felhasználók nem jelentkezhetnek be ideiglenes hozzáférési pass-be.
-- Az önkiszolgáló jelszó-visszaállítás (SSPR) hatókörében lévő felhasználóknak regisztrálniuk kell a SSPR metódusok egyikét, miután bejelentkezett egy ideiglenes hozzáférési lépéssel. Ha a felhasználó csak a FIDO2 kulcsot fogja használni, zárja ki őket a SSPR-szabályzatból, vagy tiltsa le a SSPR regisztrációs házirendjét. 
-- Ideiglenes hozzáférési pass nem használható a hálózati házirend-kiszolgáló (NPS) bővítmény és Active Directory összevonási szolgáltatások (AD FS) (AD FS) adapterrel.
+- Az önkiszolgáló jelszó-visszaállítási (SSPR-) regisztrációs házirend *vagy* az [Identity Protection többtényezős hitelesítési regisztrációs házirendje](../identity-protection/howto-identity-protection-configure-mfa-policy.md) hatókörű felhasználók számára szükséges a hitelesítési módszerek regisztrálása, miután bejelentkezett egy ideiglenes hozzáférési lépéssel. A szabályzatok hatókörében lévő felhasználók a [kombinált regisztráció megszakítási módjára](concept-registration-mfa-sspr-combined.md#combined-registration-modes)lesznek átirányítva. Ez a felület jelenleg nem támogatja a FIDO2 és a telefonos bejelentkezési regisztrációt. 
+- Ideiglenes hozzáférési pass nem használható a hálózati házirend-kiszolgáló (NPS) és a Active Directory összevonási szolgáltatások (AD FS) (AD FS) adapterrel, vagy a Windows telepítő/beépített felhasználói élmény (OOBE) és az Autopilot használatával. 
 - Ha a zökkenőmentes SSO engedélyezve van a bérlőn, a rendszer felszólítja a felhasználókat a jelszó megadására. Az **ideiglenes hozzáférési pass helyett** a hivatkozás elérhető lesz a felhasználó számára, hogy egy ideiglenes hozzáférési menetben jelentkezzen be.
 
   ![Képernyőkép az ideiglenes hozzáférési pass használatáról](./media/how-to-authentication-temporary-access-pass/alternative.png)

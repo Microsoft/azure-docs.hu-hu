@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 8e0b94a46e96dd8ba16040e16b421520eb67de19
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583865"
 ---
 # <a name="programmatic-access-paradigm"></a>Programozott hozzáférés paradigma
@@ -52,7 +52,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egyéni lekérdezést a _norma
 
 *Kérelem fejléce*
 
-| Fejléc | Típus | Description |
+| Fejléc | Típus | Leírás |
 | ------------- | ------------- | ------------- |
 | Engedélyezés | sztring | Kötelező. A Azure Active Directory (Azure AD) hozzáférési jogkivonata. A formátum `Bearer <token>`. |
 | Content-Type | `string` | `application/JSON` |
@@ -148,7 +148,7 @@ Ha sikeresen létrehoz egy egyéni jelentéssablon-sablont, és a `QueryID` [jel
 
 *Kérelem fejléce*
 
-| Fejléc | Típus | Description |
+| Fejléc | Típus | Leírás |
 | ------ | ---- | ----------- |
 | Engedélyezés | sztring | Kötelező. A Azure Active Directory (Azure AD) hozzáférési jogkivonata. A formátum `Bearer <token>`. |
 | Tartalom típusa | sztring | `application/JSON` |
@@ -271,7 +271,7 @@ Ezzel a módszerrel lekérdezheti egy jelentés végrehajtásának állapotát a
 
 *Kérelem fejléce*
 
-| Fejléc | Típus | Description |
+| Fejléc | Típus | Leírás |
 | ------ | ------ | ------ |
 | Engedélyezés | sztring | Kötelező. A Azure Active Directory (Azure AD) hozzáférési jogkivonata. A formátum `Bearer <token>`. |
 | Tartalomtípus | sztring | `application/json` |

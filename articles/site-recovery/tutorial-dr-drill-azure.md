@@ -1,19 +1,16 @@
 ---
 title: Vész-helyreállítási gyakorlat futtatása az Azure-ba Azure Site Recovery
 description: Megtudhatja, hogyan futtathat vész-helyreállítási gyakorlatot a helyszínen az Azure-ba, Azure Site Recovery segítségével.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 246295017e2b05de10ccfd2154a1490ae0ece9c3
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84699617"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579091"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 

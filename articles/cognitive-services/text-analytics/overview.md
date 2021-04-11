@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586478b6b3943fb0154ed6c50bade6fd8b08b76
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598966"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219501"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -26,6 +26,12 @@ A Text Analytics API egy felhőalapú szolgáltatás, amely természetes nyelvi 
 Az API az [Azure Cognitive Services](../index.yml)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez. Ezek a szolgáltatások a REST API [3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) -es vagy [3,1-](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)es verziójának vagy az [ügyféloldali függvénytárnak](quickstarts/client-libraries-rest-api.md)a használatával használhatók.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
+
+Ez a dokumentáció a következő típusú cikkeket tartalmazza:
+* [A gyors](./quickstarts/client-libraries-rest-api.md) útmutatók részletes útmutatást tesznek lehetővé, amelyekkel hívásokat indíthat a szolgáltatásba, és rövid idő alatt elérheti az eredményeket. 
+* A [útmutatók](./how-tos/text-analytics-how-to-call-api.md) útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.
+* A [fogalmak](text-analytics-user-scenarios.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.
+* Az [oktatóanyagok](./tutorials/tutorial-power-bi-key-phrases.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja ezt a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 

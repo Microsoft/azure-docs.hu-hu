@@ -9,14 +9,16 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b641ec37d134303ae6b31c092cd3c50811477a7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108417"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276756"
 ---
 # <a name="teams-interoperability"></a>Teams-együttműködés
+
+[!INCLUDE [Public Preview](../includes/public-preview-include-document.md)]
 
 > [!IMPORTANT]
 > A [csapat bérlői együttműködésének](../concepts/teams-interop.md)engedélyezéséhez vagy letiltásához fejezze be [ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u).
@@ -41,7 +43,7 @@ Amikor a kommunikációs szolgáltatások felhasználója összekapcsolja a csap
 
 A kommunikációs szolgáltatások csapatának együttműködési szolgáltatása jelenleg privát előzetes verzióban érhető el. Ha általánosan elérhető, a kommunikációs szolgáltatások felhasználói a "külső hozzáférésű felhasználók"-ként lesznek kezelve. További információ a külső hozzáférésről a [szervezeten kívüli személyekkel a Microsoft Teams szolgáltatásban, csevegéssel és együttműködéssel](/microsoftteams/communicate-with-users-from-other-organizations).
 
-A kommunikációs szolgáltatások felhasználói csatlakozhatnak az ütemezett csapatok üléseihez, amíg a névtelen illesztések engedélyezve vannak az [értekezlet beállításaiban](/microsoftteams/meeting-settings-in-teams).
+A kommunikációs szolgáltatások felhasználói csatlakozhatnak az ütemezett csapatok üléseihez, amíg a névtelen illesztések engedélyezve vannak az [értekezlet beállításaiban](/microsoftteams/meeting-settings-in-teams). Ha az értekezlet egy csatornára van ütemezve, a kommunikációs szolgáltatások felhasználói nem tudnak majd csatlakozni a csevegéshez, illetve üzeneteket küldeni és fogadni.
 
 ## <a name="teams-in-government-clouds-gcc"></a>Csapatok a kormányzati felhőkben (GCC)
 Az Azure kommunikációs szolgáltatásokkal való együttműködés jelenleg nem kompatibilis a [Microsoft 365 Government-Felhőkkel (GCC)](/MicrosoftTeams/plan-for-government-gcc) használó csapatok üzembe helyezésével. 
