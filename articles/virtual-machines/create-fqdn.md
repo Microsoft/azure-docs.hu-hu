@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/12/2020
+ms.date: 04/01/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42c53e72de7f6b2943086544f607042957f4b849
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132064"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220079"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Teljes tartománynév létrehozása a Azure Portal Linux rendszerű virtuális gép számára
 
@@ -25,11 +25,12 @@ Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha sz�
 
 
 1. Válassza ki a virtuális gépet a portálon. 
-1. A bal oldali menüben válassza a **Konfigurálás** lehetőséget.
-1. A **DNS-név felirat** alatt adja meg a használni kívánt előtagot.
-1. Válassza a **Mentés** lehetőséget az oldal tetején.
-1. A bal oldali menüben az **Áttekintés** lehetőség kiválasztásával térjen vissza a virtuális gép áttekintés paneljére. 
-1. Ellenőrizze, hogy a *DNS-név* megfelelően jelenik-e meg. 
+1. A bal oldali menüben válassza a **Tulajdonságok** lehetőséget.
+1. A **nyilvános IP-address\DNS neve felirat** alatt válassza ki az IP-címét.
+2. A **DNS-név felirat** alatt adja meg a használni kívánt előtagot.
+3. Válassza a **Mentés** lehetőséget az oldal tetején.
+4. A bal oldali menüben válassza az **Áttekintés** lehetőséget, hogy visszatérjen a virtuális gép áttekintés paneljére.
+5. Ellenőrizze, hogy a **DNS-név** megfelelően jelenik-e meg. 
 
 ## <a name="next-steps"></a>Következő lépések
 

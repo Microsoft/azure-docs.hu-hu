@@ -3,12 +3,12 @@ title: Sablonfüggvények
 description: Ismerteti a Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket az értékek lekéréséhez, a karakterláncok és a numerikus karakterek használatához, valamint a telepítési információk lekéréséhez.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9ea21a57404f7de832fb307bdabeb47f8cf3f58
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707319"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220181"
 ---
 # <a name="arm-template-functions"></a>ARM-sablon függvények
 
@@ -176,7 +176,6 @@ A Resource Manager a következő függvényeket biztosítja az erőforrások ér
 * [listSecrets](template-functions-resource.md#list)
 * [listáját](template-functions-resource.md#list)
 * [pickZones](template-functions-resource.md#pickzones)
-* [szolgáltatók](template-functions-resource.md#providers)
 * [referencia](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) – csak az erőforráscsoporthoz történő központi telepítések esetén használható.
 * [resourceId](template-functions-resource.md#resourceid) – bármely hatókörben használható, de az érvényes paraméterek a hatókörtől függően változnak.

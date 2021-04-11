@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589219"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076649"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Az Azure arc használatára képes SQL felügyelt példány funkciói és képességei
 
@@ -117,19 +117,19 @@ Az Azure arc használatára képes SQL felügyelt példány közös programkódo
 | Szolgáltatás | Azure Arc-kompatibilis, felügyelt SQL-példány |
 |--|--|
 | JSON | Igen |
-| Lekérdezéstár | Yes |  |
-| Historikus | Yes |  |
-| Natív XML-támogatás | Yes |  |
-| XML-indexelés | Yes |  |
-| & UPSERT-képességek EGYESÍTÉSe | Yes |  |
-| Dátum és idő adattípus | Yes |  |
-| Honosítási támogatás | Yes |  |
+| Lekérdezéstár | Yes | 
+| Historikus | Yes | 
+| Natív XML-támogatás | Yes | 
+| XML-indexelés | Yes | 
+| & UPSERT-képességek EGYESÍTÉSe | Yes | 
+| Dátum és idő adattípus | Yes | 
+| Honosítási támogatás | Yes | 
 | Teljes szöveges és szemantikai keresés | No |
-| A nyelv meghatározása a lekérdezésben | Yes |  |
-| Service Broker (üzenetküldés) | Yes |  |
-| Transact-SQL-végpontok | Yes |  |
-| Graph | Yes |  |
-| Machine Learning Services | No |  |
+| A nyelv meghatározása a lekérdezésben | Yes | 
+| Service Broker (üzenetküldés) | Yes | 
+| Transact-SQL-végpontok | Yes | 
+| Graph | Yes | 
+| Machine Learning Services | No |
 | PolyBase | No |
 
 

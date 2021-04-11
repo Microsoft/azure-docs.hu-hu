@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53f09eed89f9667611ed4d5e0268c889609d560a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707134"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553566"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Gyors útmutató: biztonságos virtuális gép csatlakoztatása a böngészőben egy privát IP-cím használatával
 
@@ -37,6 +37,10 @@ A virtuális géphez (VM) a Azure Portal és az Azure Bastion használatával cs
 * Szükséges VM-portok:
   * Bejövő portok: RDP (3389)
 
+ >[!NOTE]
+ >Az Azure Bastion és az Azure saját DNS zónák használata jelenleg nem támogatott. Mielőtt elkezdené, győződjön meg arról, hogy a megerősített erőforrás üzembe helyezését megtervező virtuális hálózat nem kapcsolódik privát DNS-zónához.
+ >
+
 ### <a name="example-values"></a><a name="values"></a>Példaértékek
 
 A konfiguráció létrehozásakor a következő példában szereplő értékeket használhatja, vagy helyettesíthet sajátját is.
@@ -47,7 +51,7 @@ A konfiguráció létrehozásakor a következő példában szereplő értékeket
 | --- | --- |
 | Virtuális gép| TestVM |
 | Erőforráscsoport | TestRG1 |
-| Region | USA keleti régiója |
+| Régió | USA keleti régiója |
 | Virtuális hálózat | VNet1 |
 | Címtér | 10.1.0.0/16 |
 | Alhálózatok | Előtér: 10.1.0.0/24 |

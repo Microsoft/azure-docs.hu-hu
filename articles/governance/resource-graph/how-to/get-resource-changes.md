@@ -1,14 +1,14 @@
 ---
 title: Erőforrás-módosítások lekérése
 description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megváltozását, lekérni a módosított tulajdonságok listáját, és kiértékelni a különbségeket.
-ms.date: 01/27/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594651"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219076"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -145,6 +145,10 @@ A **resourceId** minden észlelt változási eseménye a következő tulajdonsá
 - **beforeSnapshot** – annak az erőforrás-pillanatképnek a **snapshotId** és **időbélyegét** tartalmazza, amelyet a rendszer a változás észlelése előtt hozott.
 - **afterSnapshot** – az erőforrás-pillanatkép **snapshotId** és **időbélyegét** tartalmazza, amelyet a rendszer a változás észlelése után hozott.
 - **changeType** – a **BeforeSnapshot** és a **afterSnapshot** közötti teljes módosítási rekordra vonatkozóan észlelt változás típusát írja le. Az értékek a következők: _Létrehozás_, _frissítés_ és _Törlés_. A **propertyChanges** tulajdonság tömbje csak akkor szerepel, ha a **changeType** _frissítése_ történik.
+
+  > [!IMPORTANT]
+  > A _create_ csak a korábban létezett erőforrásokon érhető el, és az elmúlt 14 napban törölve lett.
+
 - **propertyChanges** – a tulajdonságok ezen tömbje részletezi az összes olyan erőforrás-tulajdonságot, amely a **BeforeSnapshot** és a **afterSnapshot** között frissült:
   - **propertyName** – a megváltoztatott erőforrás-tulajdonság neve.
   - **changeCategory** – ismerteti, hogy mi történt a módosítással. Az értékek a következők: _rendszer_ és _felhasználó_.

@@ -3,16 +3,16 @@ title: NSX hálózati összetevők konfigurálása az Azure VMware-megoldásban
 description: Ismerje meg, hogyan konfigurálhatja az NSX-T hálózati szegmenseket az Azure VMware-megoldás konzoljának használatával.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a4702efe8ea26234d074f421d2e6eab871eba5f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716997"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733097"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>NSX hálózati összetevők konfigurálása az Azure VMware-megoldásban
 
-Az Azure VMware-megoldás privát felhője alapértelmezés szerint a NSX-T szoftveresen definiált hálózatként (SDDC) érhető el. Előre kiépítve egy NSX-T réteg-0 átjáróval aktív/aktív módban, valamint egy alapértelmezett NSX-T 1. rétegbeli átjáró aktív/készenléti módban.  Ezek az átjárók lehetővé teszik a szegmensek (logikai kapcsolók) összekapcsolását, valamint East-West és North-South kapcsolatok biztosítását. 
+Az Azure VMware-megoldás privát felhője alapértelmezés szerint a NSX-T szoftveresen definiált hálózatként (SDDC) érhető el. Előre kiépítve egy NSX-T réteg-0 átjáróval **aktív/aktív** módban, valamint egy alapértelmezett NSX-t 1. rétegbeli átjáró aktív/készenléti módban.  Ezek az átjárók lehetővé teszik a szegmensek (logikai kapcsolók) összekapcsolását, valamint East-West és North-South kapcsolatok biztosítását. 
 
 Miután telepítette az Azure VMware-megoldás saját felhőjét, a számítási **feladatok hálózata** területen konfigurálhatja a szükséges NSX-T objektumokat az Azure VMware-megoldás konzolján.  A konzol a NSX-T műveletek egyszerűsített nézetét jeleníti meg, amelyeket a VMware-rendszergazdának naponta kell megcéloznia, és a NSX-T-T nem ismerő felhasználók számára.  
 

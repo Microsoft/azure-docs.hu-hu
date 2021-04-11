@@ -1,14 +1,14 @@
 ---
 title: 'Minta: csoportházirend-definíciók kezdeményezésekkel'
 description: Ez a Azure Policy minta egy példát mutat be a házirend-definíciók kezdeményezésbe való csoportosítására.
-ms.date: 10/14/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: aa09cafe636a4665dba6a2e746c13b95ff304895
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bbb2efdd27ead942fa0ef48f7785eec8bce9378
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92072917"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092857"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy minta: csoportházirend-definíciók
 

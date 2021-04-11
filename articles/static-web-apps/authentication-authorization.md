@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419286"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218634"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Az Azure Static Web Apps előzetes verziójának hitelesítése és engedélyezése
 
@@ -156,7 +156,13 @@ Egy [útvonal-szabály](./configuration.md#routes) használatával leképezheti 
 
 ### <a name="post-login-redirect"></a>Bejelentkezés utáni átirányítás
 
-Ha azt szeretné, hogy a felhasználó a bejelentkezés után egy adott oldalra térjen vissza, adjon meg egy URL-címet a `post_login_redirect_uri` lekérdezési karakterlánc paraméterben.
+Ha azt szeretné, hogy a felhasználó a bejelentkezés után egy adott oldalra térjen vissza, adjon meg egy teljes URL-címet a `post_login_redirect_uri` lekérdezési karakterlánc paraméterben.
+
+Például:
+
+```html
+<a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a>
+```
 
 ## <a name="logout"></a>Kijelentkezés
 

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bbfb54d6ba7483e96633bdf05bb580e5517d216
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258439"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277742"
 ---
 # <a name="managed-identities"></a>Felügyelt identitások
 
@@ -47,8 +47,8 @@ További információ az ügyfél által felügyelt kulcsokról és Key Vaultekr
 
 Ezek az oktatóanyagok a fent említett forgatókönyveket is tartalmazzák.
 
-- [Az ügyfél által felügyelt kulcsok vagy BYOK használata a Azure Portal használatával Media Services](tutorial-byok-portal.md)
-- [Az ügyfél által felügyelt kulcsokat vagy BYOK Media Services REST API használhatja](tutorial-byok-postman.md).
+- [Az ügyfél által felügyelt kulcsok vagy BYOK használata a Azure Portal használatával Media Services](security-customer-managed-keys-portal-tutorial.md)
+- [Az ügyfél által felügyelt kulcsokat vagy BYOK Media Services REST API használhatja](security-customer-managed-keys-rest-postman-tutorial.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

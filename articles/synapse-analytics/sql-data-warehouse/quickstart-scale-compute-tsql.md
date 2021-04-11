@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ffffeb38aeb9d1f01f376d58a52323bb7b84b306
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c105fe217834dc9e0e652a42ebf3b526972b228
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98676323"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961370"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Gyors útmutató: számítások méretezése dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben a T-SQL használatával
 
@@ -99,12 +99,12 @@ Az adattárházegységek számának módosításához:
 
 ## <a name="monitor-scale-change-request"></a>Méretmódosítási kérés monitorozása
 
-Az előző módosítási kérés állapotának megtekintéséhez használhatja a `WAITFORDELAY` T-SQL szintaxist a sys.dm_operation_status dinamikus felügyeleti nézet (DMV) lekérdezéséhez.
+Az előző módosítási kérelem előrehaladásának megtekintéséhez használja a `WAITFORDELAY` T-SQL szintaxist a [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) dinamikus felügyeleti nézet (DMV) lekérdezéséhez.
 
 A szolgáltatásobjektum módosítási állapotának lekérdezése:
 
 1. Kattintson a jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget.
-2. Futtassa az alábbi lekérdezést a sys.dm_operation_status DMV lekérdezéséhez.
+2. Futtassa a következő lekérdezést a [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) DMV lekérdezéséhez.
 
     ```sql
     WHILE

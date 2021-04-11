@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204048"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581816"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Oktatóanyag: a tanúsítvány automatikus elforgatásának konfigurálása Key Vaultban
 
@@ -51,7 +51,7 @@ Hozzon létre egy tanúsítványt, vagy importáljon egy tanúsítványt a kulcs
 
 ## <a name="update-certificate-lifecycle-attributes"></a>A tanúsítvány életciklus-attribútumainak frissítése
 
-Azure Key Vault a tanúsítvány életciklus-attribútumait a tanúsítvány létrehozásának időpontja előtt és után is frissítheti.
+Azure Key Vault a tanúsítvány életciklus-attribútumait a tanúsítvány létrehozásakor vagy után is frissítheti.
 
 Key Vault-ben létrehozott tanúsítvány a következőket teheti:
 
@@ -83,7 +83,7 @@ Key Vault automatikusan elforgatja a tanúsítványokat a CAs használatával l�
         |  Automatikus megújítás egy adott időpontban| Minden Névjegy küldése egy adott időpontban |
         |-----------|------|
         |Ha kiválasztja ezt a lehetőséget, *bekapcsolja* az autorotációt. | Ha ezt a beállítást választja, *nem* fog automatikusan elforgatni, de csak a névjegyeket fogja riasztani.|
-
+         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
 1. Válassza a **Létrehozás** lehetőséget.
 
 ![Tanúsítvány életciklusa](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

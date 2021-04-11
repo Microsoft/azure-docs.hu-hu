@@ -2,21 +2,22 @@
 title: Kapcsolatok – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Megtudhatja, hogyan lehet elhárítani a Azure Database for PostgreSQL-kiszolgáló kapcsolódási problémáit.
 keywords: PostgreSQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
-author: niklarin
-ms.author: nlarin
+author: sunilagarwal
+ms.author: sunila
+ms.reviewer: ''
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fe8c4b751be174a91a0e2e94991bc63b4b1e5c7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014618"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504243"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló kapcsolódási problémáinak elhárítása
 
-A kapcsolódási problémákat számos különböző dolog okozhatja, többek között:
+A kapcsolódási problémákat többek között a következők okozhatják:
 
 * Tűzfalbeállítások
 * A kapcsolatok időtúllépése
@@ -47,10 +48,10 @@ A Azure Database for PostgreSQLhoz való kapcsolódási problémák általában 
 Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for PostgreSQLhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
 * Kiszolgáló tűzfal-konfigurációja: Ellenőrizze, hogy a Azure Database for PostgreSQL kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
-* Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások nevét, például a PostgreSQL-t egyes tűzfalakon.
+* Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyekhez nem tud csatlakozni, engedélyezni kell, és az alkalmazások nevei, például a PostgreSQL egyes tűzfalakon.
 * Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy a felhasználónévben lévő *\@ kiszolgálónév* -utótagnál.
 * Ha úgy látja, hogy a hiba _-kiszolgáló nincs konfigurálva az IPv6-kapcsolatok engedélyezésére_, vegye figyelembe, hogy az alapszintű csomag nem támogatja az VNet-szolgáltatási végpontokat. El kell távolítania a Microsoft. SQL-végpontot abból az alhálózatból, amely az alapszintű kiszolgálóhoz próbál csatlakozni.
-* Ha a _"* * *" kapcsolati hiba sslmode értéke érvénytelen, ha az SSL-támogatás nincs lefordítva a_ hibánál, az azt jelenti, hogy a PostgreSQL-ügyfél nem támogatja az SSL-t. Az ügyféloldali libpq valószínűleg nem a "--with-OpenSSL" jelzővel lett lefordítva. Próbáljon meg csatlakozni egy olyan PostgreSQL-ügyféllel, amely SSL-támogatással rendelkezik. 
+* Ha a _"* * *" kapcsolati hiba sslmode értéke érvénytelen, ha az SSL-támogatás nincs lefordítva a_ hiba miatt, akkor a PostgreSQL-ügyfél nem támogatja az SSL használatát. Az ügyféloldali libpq valószínűleg nem a "--with-OpenSSL" jelzővel lett lefordítva. Próbáljon meg csatlakozni egy olyan PostgreSQL-ügyféllel, amely SSL-támogatással rendelkezik. 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 

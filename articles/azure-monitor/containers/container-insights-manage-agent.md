@@ -3,12 +3,12 @@ title: A Container bepillantási ügynök kezelése | Microsoft Docs
 description: Ez a cikk a leggyakoribb karbantartási feladatok kezelését ismerteti a Container bepillantást vett Log Analytics ügynökkel.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b485f4d49f0dd80f712d96779098c26be3f6de1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713796"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442575"
 ---
 # <a name="how-to-manage-the-container-insights-agent"></a>A Container bepillantást nyerhető ügynök kezelése
 
@@ -79,21 +79,6 @@ curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
-
-Tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) az **egyszerű szolgáltatásnév használatával** című témakört, amely részletesen ismerteti az ezzel a paranccsal használható egyszerű szolgáltatásokat.
-
-### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Ügynök frissítése az Azure arc-kompatibilis Kubernetes
-
-A következő parancs végrehajtásával frissítheti az ügynököt egy Azure arc-kompatibilis Kubernetes-fürtön.
-
-```console
-curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
-export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
-bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
-```
-
-Tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) az **egyszerű szolgáltatásnév használatával** című témakört, amely részletesen ismerteti az ezzel a paranccsal használható egyszerű szolgáltatásokat.
-
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Környezeti változók gyűjteményének letiltása tárolón
 

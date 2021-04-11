@@ -3,12 +3,12 @@ title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok (ARM-sablonok) létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257997"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219943"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
@@ -160,7 +160,7 @@ Ha a sablon a várt módon működik, javasoljuk, hogy használja ugyanazt az AP
 
 Ne használjon paramétert az API-verzióhoz. Az erőforrás tulajdonságai és értékei az API-verziótól eltérőek lehetnek. Az IntelliSense egy szerkesztőprogramban nem tudja meghatározni a megfelelő sémát, ha az API-verzió értéke paraméter. Ha olyan API-verziót ad át, amely nem egyezik a sablon tulajdonságaival, a telepítés sikertelen lesz.
 
-Ne használjon változókat az API-verzióhoz. Különösen ne használja a [providers függvényt](template-functions-resource.md#providers) az API-verziók dinamikus beszerzésére az üzembe helyezés során. Előfordulhat, hogy a dinamikusan lekért API-verzió nem egyezik meg a sablon tulajdonságaival.
+Ne használjon változókat az API-verzióhoz. 
 
 ## <a name="resource-dependencies"></a>Erőforrás-függőségek
 

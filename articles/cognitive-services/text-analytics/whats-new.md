@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ed3a11381285a9422380eb14ff301a2b9ea816a
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598898"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093554"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -51,11 +51,12 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
     * Új `Date` entitás típusa
     * Az érvényesítés észlelése, amely a tagadás észlelését váltja fel (csak az API v 3.1-es verziójában érhető el – előzetes verzió: 4).
     * A társított entitások új előnyben részesített `name` tulajdonsága, amely különböző ontológiákat és kódolási rendszerekből van normalizálva (csak az API v 3.1-es verziójában érhető el. 4). 
-* Egy új, címkével `3.0.015370001-onprem-amd64` és az új modell-verzióval rendelkező tároló-rendszerkép `2021-03-01` lett kiadva a Container Preview adattárba. 
-* Az állapot-tároló rendszerképének Text Analytics a következő hónapban új adattárba kerül.  Tekintse meg az új kezdőlapján található e-mailes kommunikációt.
+* Egy új, címkével `3.0.015490002-onprem-amd64` és az új modell-verzióval rendelkező tároló-rendszerkép `2021-03-01` lett kiadva a Container Preview adattárba. 
+    * A tároló képe a továbbiakban nem lesz letölthető a `containerpreview.azurecr.io` 2021. április 26. után.
+* Az állapot-tárolóhoz tartozó, ugyanazzal a modell-verzióval rendelkező új Text Analytics mostantól elérhető a következő címen: `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare` . Április 26-ától kezdődően a tárolót csak ebből a tárházból töltheti le.
+
 > [!div class="nextstepaction"]
 > [További információ az Text Analyticsról az állapotról](how-tos/text-analytics-for-health.md)
->
 
 ### <a name="text-analytics-resource-portal-update"></a>Az erőforrás-portál Text Analytics frissítése
 * A **feldolgozott szöveges rekordok** mostantól mérőszámként elérhetők a Azure Portal Text Analytics erőforrásának **figyelés** szakaszában.  

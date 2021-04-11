@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0bba85cc99e1751f39172ac320fe721d6f02e87
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100635387"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076785"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 
@@ -30,8 +30,19 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
 
 1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy a `applicationId` beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
 
-   > [!IMPORTANT]
-   > Key Vault hivatkozások nem képesek a Key vaultban tárolt titkos kódok feloldására [hálózati korlátozásokkal](../key-vault/general/overview-vnet-service-endpoints.md) , kivéve, ha az alkalmazás egy [app Service Environmenton](./environment/intro.md)belül fut.
+### <a name="access-network-restricted-vaults"></a>Hozzáférés a hálózatra korlátozott tárolók számára
+
+> [!NOTE]
+> A Linux-alapú alkalmazások jelenleg nem tudják feloldani a titkos kulcsokat a hálózatra korlátozott Key vaultból, kivéve, ha az alkalmazás egy [app Service Environmenton](./environment/intro.md)belül fut.
+
+Ha a tár [hálózati korlátozásokkal](../key-vault/general/overview-vnet-service-endpoints.md)van konfigurálva, akkor is biztosítania kell, hogy az alkalmazásnak legyen hálózati hozzáférése.
+
+1. Győződjön meg arról, hogy az alkalmazás konfigurálta-e a kimenő hálózati funkciókat a [app Service hálózati szolgáltatások](./networking-features.md) és [Azure functions hálózati beállítások](../azure-functions/functions-networking-options.md)című témakörben leírtak szerint.
+
+2. Győződjön meg arról, hogy a tároló azon hálózati vagy alhálózatához tartozó konfigurációs fiókjai, amelyeken az alkalmazás el fogja érni.
+
+> [!IMPORTANT]
+> A tároló virtuális hálózati integráción keresztüli elérése jelenleg nem kompatibilis a [titkos kulcsokkal a megadott verzió nélkül](#rotation).
 
 ## <a name="reference-syntax"></a>Hivatkozás szintaxisa
 
@@ -56,6 +67,9 @@ Alternatív megoldás:
 ```
 
 ## <a name="rotation"></a>Változtatás
+
+> [!IMPORTANT]
+> [A tároló virtuális hálózati integráción keresztüli elérése](#access-network-restricted-vaults) jelenleg nem kompatibilis a titkos kulcsokkal a megadott verzió nélkül.
 
 Ha egy verzió nincs megadva a hivatkozásban, akkor az alkalmazás a Key Vault található legújabb verziót fogja használni. Ha az újabb verziók elérhetővé válnak, például egy rotációs eseménnyel, akkor az alkalmazás automatikusan frissül, és egy napon belül elkezdi használni a legújabb verziót. Az alkalmazásban végrehajtott összes konfigurációs módosítás azonnali frissítést eredményez az összes hivatkozott titok legújabb verzióihoz.
 

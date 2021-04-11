@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 1eefb7097f672552956e90a19e0a7b411cae8a24
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 832cc1d4f9ec3cec4ada6e964e3ab2f6f023dd41
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455686"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554869"
 ---
-### <a name="standard-and-neural-voices"></a>Standard és neurális hangok
+### <a name="neural-and-standard-voices"></a>Neurális és standard hangok
 
-A táblázat segítségével meghatározhatja a **szabványos hangok rendelkezésre állását** régiónként/végpont szerint:
+A táblázat segítségével meghatározhatja az **neurális és a szabványos hangok rendelkezésre állását** régiónként/végpont szerint:
 
-| Region | Végpont |
+| Régió | Végpont |
 |--------|----------|
 | Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` |
@@ -34,6 +34,7 @@ A táblázat segítségével meghatározhatja a **szabványos hangok rendelkezé
 | USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA nyugati középső régiója | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
 | USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
@@ -41,25 +42,11 @@ A táblázat segítségével meghatározhatja a **szabványos hangok rendelkezé
 > [!TIP]
 > Az előzetes verzióban megjelenő [hangok](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview) csak a következő 3 régióban érhetők el: USA keleti régiója, Nyugat-Európa és Délkelet-Ázsia.
 
-A táblázat segítségével meghatározhatja a **neurális hangok elérhetőségét** régiónként/végpont szerint:
-
-| Region | Végpont |
-|--------|----------|
-| Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 
-| Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` |
-| USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
-| USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
-
 ### <a name="custom-voices"></a>Egyéni hangok
 
 Ha egyéni hangbetűkészletet hozott létre, használja a létrehozott végpontot. Az alább felsorolt végpontokat is használhatja, és lecserélheti a `{deploymentId}` hangmodell üzembe helyezési azonosítóját.
 
-| Region | Végpont |
+| Régió | Végpont |
 |--------|----------|
 | Kelet-Ausztrália | `https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Dél-Brazília | `https://brazilsouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
@@ -97,7 +84,7 @@ Az alábbi táblázat az egyéni neurális hangfunkciók regionális támogatás
 
 A hosszú hang API több régióban is elérhető egyedi végpontokkal.
 
-| Region | Végpont |
+| Régió | Végpont |
 |--------|----------|
 | USA keleti régiója | `https://eastus.customvoice.api.speech.microsoft.com` |
 | Közép-India | `https://centralindia.customvoice.api.speech.microsoft.com` |

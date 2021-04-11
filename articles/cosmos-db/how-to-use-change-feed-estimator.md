@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/15/2019
+ms.date: 04/01/2021
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d4e461b25a25ecdf0d4d89ee7f1c82b9d4a0737
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339836"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220164"
 ---
 # <a name="use-the-change-feed-estimator"></a>A módosítási hírcsatorna kalkulátor használata
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan figyelheti meg a [változási hírcsatorna proce
 
 ## <a name="why-is-monitoring-progress-important"></a>Miért fontos a figyelési folyamat?
 
-A Change feed processzor olyan mutatóként működik, amely a [változási csatornán](./change-feed.md) halad előre, és a delegált implementációban végez módosításokat. 
+A Change feed processzor olyan mutatóként működik, amely a [változási csatornán](./change-feed.md) halad előre, és a delegált implementációban végez módosításokat.
 
 A módosítási hírcsatorna-feldolgozó üzembe helyezése az elérhető erőforrások, például a processzor, a memória, a hálózat stb. alapján feldolgozhatja a módosításokat egy adott sebességgel.
 
@@ -32,7 +32,9 @@ Ennek a forgatókönyvnek az azonosítása segít megérteni, hogy szükség van
 
 ## <a name="implement-the-change-feed-estimator"></a>A Change feed kalkulátor implementálása
 
-A [change feed processzorhoz](./change-feed-processor.md)hasonlóan a Change feed kalkulátor leküldéses modellként működik. A kalkulátor méri a legutóbb feldolgozott elem (a címbérletek állapota által meghatározott) és a tároló legutóbbi változása közötti különbséget, és leküldi ezt az értéket egy delegált értékre. A mérés elvégzésének időköze az alapértelmezett 5 másodperces értékkel is testreszabható.
+### <a name="as-a-push-model-for-automatic-notifications"></a>Leküldéses modellként az automatikus értesítések számára
+
+A [change feed processzorhoz](./change-feed-processor.md)hasonlóan a változási hírcsatorna becslése leküldéses modellként is működhet. A kalkulátor méri a legutóbb feldolgozott elem (a címbérletek állapota által meghatározott) és a tároló legutóbbi változása közötti különbséget, és leküldi ezt az értéket egy delegált értékre. A mérés elvégzésének időköze az alapértelmezett 5 másodperces értékkel is testreszabható.
 
 Ha például a változási csatorna processzora a következőképpen van definiálva:
 
@@ -52,8 +54,29 @@ A becslést fogadó delegált példa:
 
 Ezt a becslést elküldheti a figyelési megoldásnak, és azt is megtudhatja, hogyan viselkedik az előrehaladás az idő múlásával.
 
+### <a name="as-an-on-demand-detailed-estimation"></a>Igény szerinti részletes becslés
+
+A leküldéses modellel ellentétben egy másik lehetőség is rendelkezésre áll, amely lehetővé teszi az igény szerinti becslés megszerzését. Ez a modell részletesebb információkat is tartalmaz:
+
+* A becsült késés/bérlet.
+* A példány tulajdonosa és az egyes bérletek feldolgozása, így azonosíthatja, hogy van-e probléma egy példányon.
+
+Ha a módosítási hírcsatorna processzora a következőképpen van definiálva:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimatorDetailed)]
+
+A kalkulátort ugyanazzal a címbérleti konfigurációval is létrehozhatja:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimatorDetailed)]
+
+És ha szeretné, a szükséges gyakorisággal megszerezheti a részletes becslést:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=GetIteratorEstimatorDetailed)]
+
+Mindegyik `ChangeFeedProcessorState` tartalmazni fogja a bérlet és a késés adatait, valamint azt is, hogy kik az aktuális példány tulajdonosai. 
+
 > [!NOTE]
-> A módosítási hírcsatorna-kalkulátor nem szükséges a módosítási csatorna processzorának részeként telepíteni, és nem lehet ugyanannak a projektnek a része. Független lehet, és egy teljesen más példányban futtatható. Csak ugyanazt a nevet és címbérleti konfigurációt kell használnia.
+> A módosítási hírcsatorna-kalkulátor nem szükséges a módosítási csatorna processzorának részeként telepíteni, és nem lehet ugyanannak a projektnek a része. Független lehet, és egy teljesen más példányban futtatható, ami ajánlott. Csak ugyanazt a nevet és címbérleti konfigurációt kell használnia.
 
 ## <a name="additional-resources"></a>További források
 

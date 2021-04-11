@@ -2,26 +2,27 @@
 title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699606"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220113"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
-Ebből a cikkből megtudhatja, milyen problémák merülhetnek fel az Azure Container Registry virtuális hálózatban való elérésekor vagy a tűzfal mögött. 
+Ebből a cikkből megtudhatja, milyen problémák merülhetnek fel az Azure Container Registry virtuális hálózatban való elérésekor vagy egy tűzfal vagy proxykiszolgáló mögött. 
 
 ## <a name="symptoms"></a>Hibajelenségek
 
 A következők közül egyet vagy többet is tartalmazhat:
 
 * Nem lehet leküldeni vagy lekérni a képeket, és hibaüzenetet kap `dial tcp: lookup myregistry.azurecr.io`
+* Nem lehet leküldeni vagy lekérni a képeket, és hibaüzenetet kap `Client.Timeout exceeded while awaiting headers`
 * Nem lehet leküldeni vagy lekérni a képeket, és Azure CLI-hibát kap `Could not connect to the registry login server`
 * Nem sikerült lekérni a lemezképeket a beállításjegyzékből az Azure Kubernetes Service-be vagy egy másik Azure-szolgáltatásba
-* Nem lehet hozzáférni egy, a HTTPS-proxy mögötti beállításjegyzékhez, és hibaüzenetet kap `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* Nem érhető el egy, a HTTPS-proxy mögötti beállításjegyzék, és hibaüzenetet kap, `Error response from daemon: login attempt failed with status: 403 Forbidden` vagy `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
 * Nem lehet konfigurálni a virtuális hálózati beállításokat, és hibaüzenetet kap `Failed to save firewall and virtual network settings for container registry`
 * Nem lehet hozzáférni vagy megtekinteni a beállításjegyzék beállításait Azure Portal vagy a beállításjegyzéket az Azure CLI használatával felügyelni
 * Nem lehet virtuális hálózati beállításokat vagy nyilvános hozzáférési szabályokat felvenni vagy módosítani
@@ -41,7 +42,7 @@ Futtassa az az [ACR renézz-Health](/cli/azure/acr#az-acr-check-health) parancso
 
 A példákat az [Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md) ismertető szakaszban találja. Ha a rendszer hibákat jelez, tekintse át a hibákra vonatkozó [referenciát](container-registry-health-error-reference.md) és a javasolt megoldásokat a következő fejezetekben.
 
-Ha problémákat tapasztal az Azure Kubernetes szolgáltatás beállításjegyzék-wih, futtassa az az [AK-ellenőrzés – ACR](/cli/azure/aks#az_aks_check_acr) parancsot annak ellenőrzéséhez, hogy a beállításjegyzék elérhető-e az AK-fürtről.
+Ha az Azure Kubernetes szolgáltatás integrált beállításjegyzékkel való használatával kapcsolatos problémákat tapasztal, futtassa az az [AK-ellenőrzés-ACR](/cli/azure/aks#az_aks_check_acr) parancsot annak ellenőrzéséhez, hogy az AK-fürt elérheti-e a beállításjegyzéket.
 
 > [!NOTE]
 > Bizonyos hálózati kapcsolati tünetek akkor is előfordulhatnak, ha a beállításjegyzék-hitelesítéssel vagy-engedélyezéssel kapcsolatos probléma merül fel. Lásd: a [beállításjegyzék bejelentkezési hibáinak megoldása](container-registry-troubleshoot-login.md).
@@ -57,7 +58,7 @@ Ha egy beállításjegyzéket szeretne elérni egy ügyfél-tűzfal vagy proxyki
 
 Földrajzilag replikált beállításjegyzék esetében konfigurálja az adatvégponthoz való hozzáférést az egyes regionális replikák esetében.
 
-HTTPS-proxy mögött ellenőrizze, hogy a Docker-ügyfél és a Docker-démon is konfigurálva van-e a proxy működéséhez.
+HTTPS-proxy mögött ellenőrizze, hogy a Docker-ügyfél és a Docker-démon is konfigurálva van-e a proxy működéséhez. Ha módosítja a Docker-démon proxybeállításait, ne felejtse el újraindítani a démont. 
 
 A ContainerRegistryLoginEvents tábla beállításjegyzék-erőforrás-naplófájljai segíthetnek a blokkolt megkísérelt kapcsolatok diagnosztizálásában.
 

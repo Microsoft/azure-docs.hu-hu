@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: személyre szabott, Azure személyre szabott, gépi tanulás
-ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2577502907b69e134651c93ab7a98fc51e9aaa6
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928542"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169249"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -21,11 +21,14 @@ Az Azure személyre szabott felhőalapú szolgáltatás lehetővé teszi, hogy a
 > [!TIP]
 > A tartalom bármilyen típusú információ, például szöveg, kép, URL-cím, e-mailek, vagy bármi más, amelyet a felhasználók számára szeretne kijelölni és megjeleníteni.
 
-A Kezdés előtt nyugodtan kipróbálhatja a [személyre szabást az interaktív bemutatóval](https://personalizationdemo.azurewebsites.net/).
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:  
 
-<!--
-![What is personalizer animation](./media/what-is-personalizer.gif)
--->
+* [**A gyors**](quickstart-personalizer-sdk.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.  
+* A [**útmutatók**](how-to-settings.md) útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
+* A [**fogalmak**](how-personalizer-works.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.  
+* Az [**oktatóanyagok**](tutorial-use-personalizer-web-app.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.  
+
+A Kezdés előtt próbálja ki [a személyre szabást az interaktív bemutatóval](https://personalizationdemo.azurewebsites.net/).
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Hogyan választja ki a személyre szabott tartalmi elemet?
 
@@ -100,18 +103,6 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
         * A tartalom megjelenítése után azonnal
         * Vagy valamivel később egy offline rendszeren
     1. Egy használati időszak után [értékelje ki a hurkot](concepts-offline-evaluation.md) offline kiértékeléssel. Az offline kiértékelés lehetővé teszi a személyre szabott szolgáltatás hatékonyságának tesztelését és értékelését a kód módosítása vagy a felhasználói élmény befolyásolása nélkül.
-
-## <a name="complete-a-quickstart"></a>Bevezetés befejezése
-
-A C#, a JavaScript és a Python gyors útmutatókat kínál. Minden rövid útmutató úgy lett kialakítva, hogy megtanítsa az alapvető tervezési mintákat, és kevesebb mint 10 perc alatt futtatja a kódot. 
-
-* [Rövid útmutató: a személyre szabott ügyféloldali kódtár használata](./quickstart-personalizer-sdk.md)
-
-A személyre szabott szolgáltatás használatának megkezdése után próbálja ki az oktatóanyagokat, és Ismerje meg, hogyan használhatja a személyre szabott szolgáltatásokat webalkalmazásokban, csevegési robotok vagy egy Azure notebook használatával.
-
-* [Oktatóanyag: személyre szabott használata egy .NET-webalkalmazásban](tutorial-use-personalizer-web-app.md)
-* [Oktatóanyag: személyre szabott használata egy .NET csevegési robotban](tutorial-use-personalizer-chat-bot.md)
-* [Oktatóanyag: személyre szabott használata Azure-jegyzetfüzetekben](tutorial-use-azure-notebook-generate-loop-data.md)
 
 ## <a name="reference"></a>Referencia 
 
