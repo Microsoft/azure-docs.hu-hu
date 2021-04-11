@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d657f1df14b083631227cb7c19f64b65be8801d0
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587865"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010465"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Bevezetés az Azure-szolgáltatásfiókok biztonságossá tételéhez
 
@@ -26,7 +26,7 @@ A Azure Active Directory natív típusú szolgáltatásfiókok a következők: f
 
 ## <a name="types-of-azure-active-directory-service-accounts"></a>Azure Active Directory-szolgáltatásfiókok típusai
 
-Az Azure-ban üzemeltetett szolgáltatások esetében ajánlott felügyelt identitást használni, ha ez lehetséges, és ha nem, akkor egyszerű szolgáltatásnevet. A felügyelt identitások nem használhatók az Azure-on kívül üzemeltetett szolgáltatásokhoz. Ebben az esetben javasoljuk, hogy egy egyszerű szolgáltatásnevet. Ha felügyelt identitást vagy szolgáltatásnevet is használhat, tegye meg. Azt javasoljuk, hogy Azure Active Directory felhasználói fiókot ne használjon egyszerű szolgáltatásnévként. Tekintse meg az alábbi táblázatot az összegzéshez.
+Az Azure-ban üzemeltetett szolgáltatások esetében ajánlott felügyelt identitást használni, ha ez lehetséges, és ha nem, akkor egyszerű szolgáltatásnevet. A felügyelt identitások nem használhatók az Azure-on kívül üzemeltetett szolgáltatásokhoz. Ebben az esetben javasoljuk, hogy egy egyszerű szolgáltatásnevet. Ha felügyelt identitást vagy szolgáltatásnevet is használhat, tegye meg. Azt javasoljuk, hogy ne használjon Azure Active Directory felhasználói fiókot szolgáltatásfiókként. Tekintse meg az alábbi táblázatot az összegzéshez.
  
 
 | Szolgáltatás üzemeltetése| Felügyelt identitás| Szolgáltatásnév| Azure-felhasználói fiók |
@@ -54,7 +54,7 @@ Egy egyszerű szolgáltatásnév egy alkalmazás-objektum helyi ábrázolása eg
 
 Az egyszerű szolgáltatásoknak két mechanizmusa van a hitelesítéshez – Ügyféltanúsítványok és ügyfél-titkos kulcsok használatával. A tanúsítványok biztonságosabbak: ha lehetséges, használjon ügyféltanúsítványt. Az ügyfél-titkoktól eltérően az Ügyféltanúsítványok nem ágyazhatók be véletlenül programkódba.
 
-Az egyszerű szolgáltatások biztonságossá tételével kapcsolatban lásd: az egyszerű szolgáltatások biztonságossá tétele.
+Az egyszerű szolgáltatások biztonságossá tételével kapcsolatban lásd: az [egyszerű szolgáltatások biztonságossá tétele](service-accounts-principal.md).
 
  
 ## <a name="next-steps"></a>Következő lépések

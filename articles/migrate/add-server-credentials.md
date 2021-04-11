@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.openlocfilehash: e72d509f71704bbf8608543df5e819a9b8783935
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105562069"
 ---
 # <a name="provide-server-credentials-to-discover-software-inventory-dependencies-and-sql-server-instances-and-databases"></a>Adja meg a kiszolgálói hitelesítő adatokat a szoftverek leltárának, függőségeinek és SQL Server példányainak és adatbázisainak felderítéséhez
@@ -32,7 +32,7 @@ Több kiszolgálói hitelesítő adatot is hozzáadhat a készülék Configurati
 
 A kiszolgáló által támogatott hitelesítő adatok típusai az alábbi táblázatban láthatók:
 
-Hitelesítő adatok típusa | Description
+Hitelesítő adatok típusa | Leírás
 --- | ---
 **Tartományi hitelesítő adatok** | **Tartományi hitelesítő adatokat** adhat hozzá a **hitelesítő adatok hozzáadása** modális lehetőség kiválasztásával a legördülő menüben. <br/><br/> Tartományi hitelesítő adatok megadásához meg kell adnia azt a **tartománynevet** , amelyet a teljes tartománynév (FQDN) formátumban kell megadni (például prod.Corp.contoso.com). <br/><br/> A hitelesítő adatok, a Felhasználónév és a jelszó rövid nevét is meg kell adnia. <br/><br/> A hozzáadott tartományi hitelesítő adatok automatikusan érvényesítve lesznek a tartomány Active Directory. Ennek célja, hogy megakadályozza a fiókok zárolását, amikor a készülék megkísérli leképezni a tartomány hitelesítő adatait a felderített kiszolgálókon. <br/><br/> A készülék nem kísérli meg leképezni a sikertelen ellenőrzéssel rendelkező tartományi hitelesítő adatokat. Legalább egy sikeresen érvényesített tartományi hitelesítő adatot vagy legalább egy nem tartományi hitelesítő adatot kell megadnia a szoftver leltárának folytatásához.<br/><br/>A rendszer a Windows-kiszolgálókon automatikusan leképezett tartományi hitelesítő adatokat fogja használni a szoftverek leltározásához, és felhasználhatja SQL Server példányok és adatbázisok felderítésére is _(ha a Windows-hitelesítési módot konfigurálta az SQL-kiszolgálókon)_.<br/> [További](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) információ az SQL-kiszolgálókon támogatott hitelesítési módok típusairól.
 **Nem tartományi hitelesítő adatok (Windows/Linux)** | **Windows (nem tartományi)** vagy **Linux (nem tartományi)** rendszer hozzáadásához válassza a szükséges lehetőséget a **hitelesítő adatok hozzáadása** modális legördülő listából. <br/><br/> A hitelesítő adatok, a Felhasználónév és a jelszó rövid nevét kell megadnia.

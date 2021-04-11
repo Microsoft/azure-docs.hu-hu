@@ -1,18 +1,18 @@
 ---
 title: A kapcsolatok készletezését bemutató Java-minták
 description: Ez a cikk a kapcsolatok készletezését bemutató Java-mintákat sorolja fel.
-author: ambhatna
+author: rothja
+ms.author: jroth
 ms.custom: devx-track-java
-ms.author: ambhatna
 ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: b108dc8a04825826d7e0887d8fd5884b122827f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6874fb2664fbbaa284aba4703173dd8614c955e5
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87314696"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550388"
 ---
 # <a name="java-sample-to-illustrate-connection-pooling"></a>A kapcsolatok készletezését bemutató Java-minta
 

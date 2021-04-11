@@ -10,16 +10,16 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 54e703b096ea4e3572a6fc00aa6b7b2b99c4bcad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af9d520bab3ff49b30672717414fbd651c915dd4
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800744"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552377"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
 
-A tárolók (előzetes verzió) helyreállítható törlésével megvédheti az adatait véletlenül vagy rosszindulatúan törölve. Ha a tárolók visszaállítható törlése engedélyezve van a tárfiókban, a rendszer a megadott időtartamig megőrzi a törölt tárolókat és tartalmukat az Azure Storage-ben. A megőrzési időtartam alatt a korábban törölt tárolók helyreállíthatók. A tároló helyreállításakor a törléskor a tárolóban lévő blobok is helyre lesznek állítva.
+A tárolók (előzetes verzió) helyreállítható törlésével megvédheti az adatait véletlenül vagy rosszindulatúan törölve. Ha a tároló-helyreállító törlés engedélyezve van egy Storage-fiókhoz, a rendszer megőrzi a törölt tárolót és annak tartalmát az Azure Storage-ban az Ön által megadott időszakra vonatkozóan. A megőrzési időtartam alatt a korábban törölt tárolók helyreállíthatók. A tároló helyreállításakor a törléskor a tárolóban lévő blobok is helyre lesznek állítva.
 
 A blob-adatai teljes körű védelme érdekében a Microsoft a következő adatvédelmi funkciók engedélyezését javasolja:
 
@@ -37,7 +37,7 @@ A tárolók helyreállított törlésének engedélyezésekor megadhat egy megő
 A tárolók visszaállításakor a tároló blobok és a blob-verziók is visszaállíthatók. Ha azonban maga a tároló törlődött, csak a tárolók törlését használhatja a Blobok visszaállításához. Ha egy törölt blobot szeretne visszaállítani, ha a fölérendelt tároló nem lett törölve, a blob Soft DELETE vagy a blob verziószámozást kell használnia.
 
 > [!WARNING]
-> A tároló-helyreállító törlés csak a teljes tárolókat és a törlés időpontjában tárolt blobokat állíthatja vissza. A törölt Blobok nem állíthatók vissza tárolón belül a tároló-helyreállító törlés használatával.
+> A tároló-helyreállító törlés csak a teljes tárolókat és azok tartalmát állíthatja vissza a törlés időpontjában. A törölt Blobok nem állíthatók vissza tárolón belül a tároló-helyreállító törlés használatával. A Microsoft azt javasolja, hogy a Blobok Soft delete és a blob verziószámozása is lehetővé tegye a tárolók egyedi blobjának a megvédését.
 
 A következő ábra azt mutatja be, hogyan állítható vissza a törölt tároló, ha a tárolók Soft delete engedélyezve van:
 
@@ -50,7 +50,7 @@ A megőrzési időszak lejárta után a tároló véglegesen törlődik az Azure
 A tárolók törlésének letiltása nem eredményezi végleges törlését a korábban törölt tárolók számára. A rendszer véglegesen törli a törölt tárolókat a tároló törlésének időpontjában érvényben lévő megőrzési időszak lejártakor.
 
 > [!IMPORTANT]
-> A tároló-helyreállító törlés nem véd a Storage-fiók törlésével, csak a tárolók törlésével szemben. A Storage-fiók törlésével szembeni védelemhez állítson be egy zárolást a Storage-fiók erőforrásán. A Azure Resource Manager erőforrásainak zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+> A tároló Soft delete nem véd a Storage-fiókok törlésével. Csak az adott fiókban lévő tárolók törlésével véd. A Storage-fiók törlésével szembeni védelemhez állítson be egy zárolást a Storage-fiók erőforrásán. További információ a Storage-fiókok zárolásáról: [Azure Resource Manager zárolás alkalmazása egy Storage-fiókra](../common/lock-account-resource.md).
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 

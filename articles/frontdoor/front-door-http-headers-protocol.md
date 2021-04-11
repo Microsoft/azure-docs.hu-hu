@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: 7f40b48473c04238d504288307039948fcacf90a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5989f91233448c04d50ba1c69a06851b91426a03
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511144"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167804"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli bejárati ajtón
 Ez a cikk azt a protokollt ismerteti, amelyet a bevezető ajtó támogat a hívási útvonal részeivel (lásd a képet). A következő szakaszokban további információkat talál a bejárati ajtó által támogatott HTTP-fejlécekről.
@@ -40,7 +40,7 @@ A bejárati ajtó a bejövő kérelmek fejléceit tartalmazza, kivéve, ha a kor
 | X – Azure – SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Azt a szoftvercsatorna IP-címet jelöli, amely a jelenlegi kérelemből származó TCP-kapcsolathoz tartozik. Előfordulhat, hogy a kérelem ügyfél-IP-címe nem egyenlő a szoftvercsatorna IP-címével, mert azt egy felhasználó önkényesen felülírhatja.|
 | X – Azure-ref | *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Egy egyedi hivatkozási sztring, amely a bejárati ajtó által kiszolgált kéréseket azonosítja. A rendszer a hozzáférési naplók keresésére, valamint a hibaelhárítás szempontjából kritikus fontosságú megoldására szolgál.|
 | X – Azure – RequestChain | *X-Azure-RequestChain: ugrások = 1* </br> Az a fejléc, amelyet a bejárati ajtó használ a kérési hurkok észlelésére, és a felhasználóknak nem kell függőséget végezniük. |
-| X – Azure – FDID | *X-Azure-FDID: 55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> Egy, a kérést azonosító hivatkozási sztring egy adott előtérben lévő erőforrásból származik. Az érték a Azure Portalban látható, vagy a felügyeleti API használatával kérhető le. Ezt a fejlécet az IP ACL-ekkel együtt használva zárolhatja a végpontot úgy, hogy csak egy adott bejárati erőforrástól érkező kéréseket fogadjon. [További részletekért](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) tekintse meg a gyakori kérdéseket |
+| X – Azure – FDID | *X-Azure-FDID: 55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> Egy, a kérést azonosító hivatkozási sztring egy adott előtérben lévő erőforrásból származik. Az érték a Azure Portalban látható, vagy a felügyeleti API használatával kérhető le. Ezt a fejlécet az IP ACL-ekkel együtt használva zárolhatja a végpontot úgy, hogy csak egy adott bejárati erőforrástól érkező kéréseket fogadjon. [További részletekért](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) tekintse meg a gyakori kérdéseket |
 | X – továbbított – a következőhöz: | *X – továbbított – a következőhöz: 127.0.0.1* </br> Az X-továbbított-for (XFF) HTTP-fejléc mező gyakran azonosítja a webkiszolgálóhoz a HTTP-proxyn vagy a Load balanceren keresztül csatlakozó ügyfél származó IP-címét. Ha van meglévő XFF-fejléc, akkor a bejárati ajtó hozzáfűzi az ügyfél szoftvercsatorna IP-címét, vagy hozzáadja a XFF-fejlécet az ügyfél szoftvercsatorna IP-címéhez. |
 | X-továbbított-gazdagép | *X-továbbított-gazdagép: contoso.azurefd.net* </br> Az X-Forwarded-Host HTTP-fejléc mező az ügyfél által a gazdagép HTTP-kérelmének fejlécében kért eredeti gazdagép azonosítására szolgáló közös módszer. Ennek az az oka, hogy az előtérben lévő gazdagép neve eltérhet a kérést kezelő háttér-kiszolgálótól. |
 | X – továbbított – proto | *X – továbbított – proto: http* </br> Az X-Forwarded-proto HTTP-fejléc mező gyakran használatos egy HTTP-kérelem kezdeményező protokolljának azonosítására. A konfiguráción alapuló bejárati ajtó HTTPS használatával kommunikálhat a háttérrel. Ez akkor is igaz, ha a fordított proxyra irányuló kérelem HTTP. |

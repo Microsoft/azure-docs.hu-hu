@@ -17,19 +17,19 @@ ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574560"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552733"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory bejelentkezési tevékenységgel kapcsolatos jelentések – előzetes verzió
 
 A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a következő összetevőkből áll:
 
 - **Tevékenység** 
-    - **Bejelentkezések** – információ arról, ha a felhasználók, alkalmazások és felügyelt erőforrások bejelentkeznek az Azure ad-ba és hozzáférnek az erőforrásokhoz.
+    - **Bejelentkezések** – információ arról, ha a felhasználók, alkalmazások és felügyelt erőforrások bejelentkeznek az Azure ad-be és az erőforrások elérésére.
     - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
@@ -210,7 +210,7 @@ Az adatelemzés egyszerűbbé tétele érdekében a nem interaktív bejelentkez�
 
 - Alkalmazás
 
-- User
+- Felhasználó
 
 - IP-cím
 

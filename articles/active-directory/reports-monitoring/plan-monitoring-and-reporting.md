@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577766"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552614"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -47,7 +47,7 @@ Az Azure AD-figyelés segítségével a naplók a következőre irányíthatók:
 * egy Azure Event hub, amely integrálható a meglévő SIEM-eszközökkel, például a splunk, a Sumologic vagy a QRadar.
 
 > [!NOTE]
-A közelmúltban kezdtük el használni a Azure Monitor naplók kifejezést Log Analytics helyett. A naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi. Frissíti a terminológiát, hogy jobban tükrözze a naplók szerepét a [Azure monitorban](../../azure-monitor/data-platform.md). A részletekért tekintse meg [Azure monitor terminológiai módosításokat](../../azure-monitor/terminology.md) .
+> A közelmúltban kezdtük el használni a Azure Monitor naplók kifejezést Log Analytics helyett. A naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi. Frissíti a terminológiát, hogy jobban tükrözze a naplók szerepét a [Azure monitorban](../../azure-monitor/data-platform.md). A részletekért tekintse meg [Azure monitor terminológiai módosításokat](../../azure-monitor/terminology.md) .
 
 [További információ a jelentések adatmegőrzési házirendjeiről](./reference-reports-data-retention.md).
 
@@ -99,7 +99,7 @@ A jelentéskészítés és a monitorozás az üzleti igények kielégítésére 
 * Örülök, hogy meg kell felelnie az üzleti igényeknek
 * Nem alkalmazható
 
-|Terület |Leírás |
+|Terület |Description |
 |-|-|
 |Megőrzés| **30 napnál hosszabb napló megőrzése**. Jogi vagy üzleti követelmények miatt a naplókat és az Azure AD bejelentkezési naplóit 30 napnál hosszabb ideig kell tárolni. |
 |Elemzés| **A naplóknak kereshetőnek kell lenniük**. A tárolt naplóknak analitikai eszközökkel kell kereshetőnek lennie. |

@@ -132,8 +132,6 @@
           href: custom-translator/training-and-model.md
         - name: BLEU-pontszám
           href: custom-translator/what-is-bleu-score.md
-        - name: Titkosítás
-          href: encrypt-data-at-rest.md
 - name: Dokumentum fordítása
   items:
     - name: Mi a dokumentum fordítása?
@@ -146,8 +144,6 @@
           href: document-translation/create-sas-tokens.md
     - name: Referencia
       items:
-        - name: Dokumentumok fordítása REST API
-          href: /rest/api/cognitiveservices/translator/documenttranslation
         - name: Dokumentumok formátumának beolvasása
           href: document-translation/reference/get-document-formats.md
         - name: Szószedet formátumának beolvasása
@@ -170,5 +166,9 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
+    - name: Titkosítás
+      href: encrypt-data-at-rest.md
     - name: Kódminták a GitHubon
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: Adatvédelem és cookie-k
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

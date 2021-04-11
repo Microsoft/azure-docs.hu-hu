@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1366f24ec3bd35ec23d5bf0879fced367c9f6a45
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095566"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552435"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage
 
@@ -67,14 +67,11 @@ A módosítások rögzítésének és rögzítésének megkezdéséhez engedély
 A Azure Portal használatával engedélyezze a Storage-fiók módosítási csatornájának használatát:
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját.
+1. Navigáljon a **blob Service** alatt lévő **Adatvédelem** lehetőségre.
+1. A **nyomon követés** területen válassza **a blob-módosítási hírcsatorna bekapcsolása** elemet.
+1. Kattintson a **Save (Mentés** ) gombra az adatvédelmi beállítások megerősítéséhez.
 
-2. Navigáljon a **blob Service** területen a **Adatvédelem** lehetőségre.
-
-3. Kattintson az **engedélyezve** lehetőségre a **blob-módosítási hírcsatorna** területen.
-
-4. Kattintson a **Save (Mentés** ) gombra az **adatvédelmi** beállítások megerősítéséhez.
-
-    ![Képernyőkép, amely az adatvédelmi beállításokat jeleníti meg.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
+    :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="Képernyőfelvétel: a Azure Portal változási csatornájának engedélyezése":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

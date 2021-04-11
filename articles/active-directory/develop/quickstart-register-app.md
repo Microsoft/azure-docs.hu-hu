@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: fa5ecd19863e8a37efdf533e68aeaed053c552f8
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: a5ba50b65cea573b8dbfdb17f671caee37cba459
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625679"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731496"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -44,7 +44,7 @@ Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépé
     Bármikor módosíthatja a megjelenítendő nevet, és több alkalmazás-regisztráció is megosztható. Az alkalmazás regisztrációjának automatikusan generált alkalmazása (ügyfél) azonosítója, nem a megjelenítendő neve, a rendszer egyedileg azonosítja az alkalmazást az Identity platformon belül.
 1. Itt adhatja meg, hogy ki használhatja ki az alkalmazást, más néven a *bejelentkezési közönségnek*.
 
-    | Támogatott fióktípusok | Description |
+    | Támogatott fióktípusok | Leírás |
     |-------------------------|-------------|
     | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha olyan alkalmazást hoz létre, amelyet csak felhasználók (vagy vendégek) használhatnak *a* bérlőben.<br><br>Gyakran *üzletági (LOB* ) alkalmazásnak nevezik, ez az alkalmazás egy *egybérlős* alkalmazás a Microsoft Identity platformon. |
     | **Tetszőleges szervezeti címtárban található fiókok** | Válassza ezt a lehetőséget, ha azt szeretné, hogy a felhasználók *bármely* Azure Active Directory (Azure ad-) bérlőben használni tudják az alkalmazást. Ez a beállítás akkor lehet hasznos, ha például olyan szoftveres (SaaS) alkalmazást készít, amelyet több szervezet számára szeretne biztosítani.<br><br>Ezt a fajta alkalmazást több- *bérlős* alkalmazásnak nevezzük a Microsoft Identity platformon. |
@@ -59,7 +59,7 @@ Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépé
 A regisztráció befejeződése után a Azure Portal megjeleníti az alkalmazás regisztrációjának **Áttekintés** paneljét. Megjelenik az **alkalmazás (ügyfél) azonosítója**. Az ügyfél- *azonosítónak* is nevezik, ez az érték egyedileg azonosítja az alkalmazást a Microsoft Identity platformon. 
 
 > [!IMPORTANT]
-> Az új alkalmazás-regisztrációk alapértelmezés szerint rejtve vannak a felhasználók számára. Ha készen áll arra, hogy a felhasználók láthassák az alkalmazást a saját [alkalmazások lapon](../user-help/my-apps-portal-end-user-access.md) , engedélyezheti azt. Az alkalmazás engedélyezéséhez a Azure Portal navigáljon az **Azure Active** Directory  >  **vállalati alkalmazások** elemre, és válassza ki az alkalmazást. Ezután a **Tulajdonságok** lapon a **felhasználók láthatók?** Igen értékre.
+> Az új alkalmazás-regisztrációk alapértelmezés szerint rejtve vannak a felhasználók számára. Ha készen áll arra, hogy a felhasználók láthassák az alkalmazást a saját [alkalmazások lapon](../user-help/my-apps-portal-end-user-access.md) , engedélyezheti azt. Az alkalmazás engedélyezéséhez a Azure Portal navigáljon **Azure Active Directory**  >  **vállalati alkalmazások** elemre, és válassza ki az alkalmazást. Ezután a **Tulajdonságok** lapon a **felhasználók láthatók?** Igen értékre.
 
 Az alkalmazás kódja vagy az alkalmazásban használt hitelesítési tár általában az ügyfél-azonosítót is használja. Az azonosító az Identity platform által fogadott biztonsági jogkivonatok érvényesítésének részeként használatos.
 

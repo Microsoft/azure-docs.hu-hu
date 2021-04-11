@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készlete
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773504"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552597"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Egy fürthöz több csomópontkészlet létrehozása és felügyelete az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -738,6 +738,34 @@ Meglévő AK-fürtök esetében hozzáadhat egy új csomópont-készletet is, é
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
+### <a name="use-a-public-ip-prefix"></a>Nyilvános IP-előtag használata
+
+A [nyilvános IP-előtag használatának számos előnye][public-ip-prefix-benefits]van. Az AK támogatja a meglévő nyilvános IP-előtag címeinek használatát a csomópontok számára, `node-public-ip-prefix` Ha új fürtöt hoz létre, vagy egy csomópont-készletet ad hozzá az erőforrás-azonosítóhoz a jelzővel.
+
+Először hozzon létre egy nyilvános IP-előtagot [az az Network Public-IP előtag Create][az-public-ip-prefix-create]:
+
+```azurecli-interactive
+az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
+```
+
+Tekintse meg a kimenetet, és jegyezze fel a `id` következő előtagot:
+
+```output
+{
+  ...
+  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
+  ...
+}
+```
+
+Végezetül, amikor új fürtöt hoz létre, vagy új csomópont-készletet ad hozzá, használja a jelölőt, `node-public-ip-prefix` és adja meg az előtag erőforrás-azonosítóját:
+
+```azurecli-interactive
+az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
+```
+
+### <a name="locate-public-ips-for-nodes"></a>A csomópontok nyilvános IP-címeinek megkeresése
+
 A csomópontok nyilvános IP-címeit többféleképpen is megtalálhatja:
 
 * Használja az Azure CLI-parancsot az [vmss List-instance-Public-IPS][az-list-ips].
@@ -821,3 +849,5 @@ A [közeli elhelyezési csoportok][reduce-latency-ppg] használatával csökkent
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create

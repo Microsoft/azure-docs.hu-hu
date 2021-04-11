@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 4983c1e1e7f235fa7a5b748a0ce5b1c79176c849
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102510680"
 ---
 A dokumentumban szereplő bejegyzések `deploymentconfig.json` a [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration)paramétereinek felelnek meg. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
-| JSON-entitás | Metódus paramétere | Description |
+| JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
 | `computeType` | NA | A számítási cél. ACI esetén az értéknek a következőnek kell lennie: `ACI` . |
 | `containerResourceRequirements` | NA | A processzor-és memória-entitások tárolója. |
