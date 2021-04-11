@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce3bda82e634cd80560d7915a08fa33218173779
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714782"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967197"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Tárfiók replikálási módjának megváltoztatása
 
@@ -122,25 +122,30 @@ Manuális áttelepítést kell végrehajtania, ha:
 - Az adatok áttelepíthetők a ZRS-ből LRS, GRS vagy RA-GRS.
 - A Storage-fiók az archiválási szinten található adatokkal is rendelkezik.
 
-Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)keresztül is kérhet élő áttelepítést. A portálon válassza ki azt a Storage-fiókot, amelyet ZRS szeretne alakítani.
+Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)keresztül is kérhet élő áttelepítést. 
 
-1. Válassza az **új támogatási kérelem** lehetőséget.
-2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat: 
+> [!IMPORTANT]
+> Ha több Storage-fiókot kell áttelepítenie, hozzon létre egy támogatási jegyet, és adja meg a **részletek** lapon konvertálandó fiókok nevét.
+
+Élő áttelepítés igényléséhez kövesse az alábbi lépéseket:
+
+1. A Azure Portal navigáljon egy olyan Storage-fiókhoz, amelyet át szeretne telepíteni.
+1. A **támogatás + hibaelhárítás** területen válassza az **új támogatási kérelem** lehetőséget.
+1. A fiók adatai alapján fejezze be az **alapvető beállítások** lapot:
     - **Probléma típusa**: válassza a **technikai** lehetőséget.
-    - **Szolgáltatás**: válassza **a saját szolgáltatások és a** **Storage-fiókok kezelése** lehetőséget.
-    - **Erőforrás**: válassza ki a ZRS konvertálni kívánt erőforrást.
-3. Kattintson a **Tovább** gombra.
-4. A **probléma** szakasz a következő értékeket határozza meg:
-    - **Súlyosság**: hagyja meg az alapértelmezett értéket.
+    - **Szolgáltatás**: válassza **a saját szolgáltatások**, majd a **Storage-fiókok kezelése** lehetőséget.
+    - **Erőforrás**: válassza ki az áttelepíteni kívánt Storage-fiókot. Ha több Storage-fiókot kell megadnia, ezt a **részletek** szakaszban teheti meg.
     - **Probléma típusa**: válassza **Az adatáttelepítés** lehetőséget.
-    - **Kategória**: válassza **az áttelepítés a ZRS** lehetőséget.
-    - **Title**: adjon meg egy leíró címet, például **ZRS fiók áttelepítése**.
-    - **Részletek**: írja be a **részletek mezőbe a** további részleteket, például a (z) [LRS, GRS] \_ régióból a ZRS-be kíván migrálni \_ .
-5. Kattintson a **Tovább** gombra.
-6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
-7. Válassza a **Létrehozás** lehetőséget.
+    - **Probléma altípusa**: válassza **az ÁTTELEPÍTÉS ZRS, GZRS vagy ra-GZRS** lehetőséget.
 
-A támogatási személy felveszi Önnel a kapcsolatot, és segítséget nyújt a szükséges segítségért.
+    :::image type="content" source="media/redundancy-migration/request-live-migration-basics-portal.png" alt-text="Az élő áttelepítés igénylését bemutató képernyőkép – alapismeretek lap":::
+
+1. Kattintson a **Tovább** gombra. A **megoldások** lapon megtekintheti a Storage-fiókok jogosultságát az áttelepítéshez.
+1. Kattintson a **Tovább** gombra. Ha több áttelepíteni kívánt Storage-fiókkal rendelkezik, akkor a **részletek** lapon adja meg az egyes fiókok nevét pontosvesszővel elválasztva.
+
+    :::image type="content" source="media/redundancy-migration/request-live-migration-details-portal.png" alt-text="Az élő áttelepítés igénylését bemutató képernyőkép – Részletek lap":::
+
+1. Adja meg a további szükséges információkat a **részletek** lapon, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a támogatási jegy áttekintéséhez és elküldéséhez. A támogatási személy felveszi Önnel a kapcsolatot, hogy segítséget nyújtson a szükséges segítséghez.
 
 > [!NOTE]
 > A prémium fájlmegosztás (FileStorage-fiókok) csak a LRS és a ZRS esetében érhető el.

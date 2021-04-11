@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: f7167df523ca6f84eacd92fc7af1011e8b3b00b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba6eb0a1b607fc05c4d0c660dd3d7016f81ef4b3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950335"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Sarokköves egyetlen Sign-On
 
@@ -123,49 +123,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>A Sarokköves egyszeri Sign-On egyszeri bejelentkezés konfigurálása
 
-1. Jelentkezzen be a sarokköve egyetlen Sign-On rendszergazdaként.
-
-1. Nyissa meg a **rendszergazdai > eszközöket**.
-
-    ![screeenshot a rendszergazda számára lapon.](./media/cornerstone-ondemand-tutorial/admin.png)
-
-1. Válassza ki a **konfigurációs eszközök** **peremhálózati** paneljét.
-
-    ![screeenshot az EDGE panelhez.](./media/cornerstone-ondemand-tutorial/edge-panel.png)
-
-1. Válasszon ki egy Sign-On az **integráció** szakaszban.
-
-    ![screeenshot egyetlen Sign-On lehetőséggel.](./media/cornerstone-ondemand-tutorial/single-sign-on.png)
-
-1. Kattintson az **egyszeri bejelentkezés hozzáadása** gombra. Válassza a **bejövő SAML** lehetőséget az alábbi látható felugró ablakban, majd kattintson a **Hozzáadás** gombra.
-
-    ![screeenshot a bejövő SAML-hoz.](./media/cornerstone-ondemand-tutorial/inbound.png)
-
-1. Hajtsa végre az alábbi lépéseket a következő oldalon:
-
-    ![screeenshot az alapkonfiguráció szakaszhoz.](./media/cornerstone-ondemand-tutorial/configuration.png)
-
-    a. Az **Általános tulajdonságok** területen kattintson a **fájl feltöltése** gombra a **tanúsítvány (Base64)** fájljának feltöltéséhez, amelyet a Azure Portal letöltött.
-
-    b. Jelölje be az **Engedélyezés** jelölőnégyzetet, és a **identitásszolgáltató URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
-
-    c. Kattintson a **Mentés** gombra.
+Az egyszeri bejelentkezés a **sarokköves egyszeri bejelentkezési** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [sarokkövei Sign-On támogatási csapatba](mailto:moreinfo@csod.com) , vagy forduljon a partneréhez. Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>Egyedi Sign-On tesztelési felhasználó létrehozása
 
 Ennek a szakasznak a célja, hogy egy B. Simon nevű felhasználót hozzon létre a Sarokköves egyszeri bejelentkezésben. Az egyszerű Sign-On támogatja az automatikus felhasználó-kiépítés használatát, amely alapértelmezés szerint engedélyezve van. További részletekért tekintse [meg az automatikus](./cornerstone-ondemand-provisioning-tutorial.md) felhasználó-kiépítés konfigurálását ismertető témakört.
-
-**Ha manuálisan kell létrehoznia a felhasználót, hajtsa végre a következő lépéseket:**
-
-1. Jelentkezzen be a sarokköve egyetlen Sign-On rendszergazdaként.
-
-1. Nyissa meg a **rendszergazda-> felhasználókat** , és kattintson a lap alján található **felhasználó hozzáadása** elemre.
-
-    ![screeenshot a sarokkövek teszteléséhez.](./media/cornerstone-ondemand-tutorial/user-1.png)
-
-1. Töltse ki a kötelező mezőket az **új felhasználó hozzáadása** oldalon, és kattintson a **Save (Mentés**) gombra.
-
-    ![screeenshot a kötelező mezőkkel rendelkező felhasználók létrehozásához.](./media/cornerstone-ondemand-tutorial/user-2.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

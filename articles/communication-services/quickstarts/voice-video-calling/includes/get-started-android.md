@@ -6,14 +6,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: b68d3a92015a8add2dd97313f9971cf896f8e77e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 38194ed7290d6cd9c4889d27ff458f950603c5be
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108275"
+ms.locfileid: "106073328"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Android rendszerhez készült Azure kommunikációs szolgáltatások meghívásával.
+
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
 > Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 8 verziót használja.

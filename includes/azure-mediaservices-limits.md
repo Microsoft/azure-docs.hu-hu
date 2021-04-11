@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91329659"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073656"
 ---
 >[!NOTE]
 >A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
@@ -41,7 +41,7 @@ ms.locfileid: "91329659"
 
 <sup>3</sup> Ha a feladat entitások listázására vonatkozó kérést küld, a kérések száma legfeljebb 1 000 feladatot ad vissza. Az összes elküldött feladat nyomon követéséhez használja a Top vagy a skip lekérdezéseket a [OData rendszerlekérdezési beállítások](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))című témakörben leírtak szerint.
 
-<sup>4</sup> A lokátorok nem a felhasználónkénti hozzáférés-vezérlés kezelésére lettek tervezve. Ha különböző hozzáférési jogokat szeretne biztosítani az egyes felhasználók számára, használja a digitális jogkezelési (DRM) megoldásokat. További információ: [a tartalom Azure Media Servicessal való védelemmel való](../articles/media-services/previous/media-services-content-protection-overview.md)ellátása.
+<sup>4</sup> A lokátorok nem a felhasználónkénti hozzáférés-vezérlés kezelésére lettek tervezve. Ha különböző hozzáférési jogokat szeretne biztosítani az egyes felhasználók számára, használja a digitális jogkezelési (DRM) megoldásokat. További információ: [a tartalom Azure Media Servicessal való védelemmel való](../articles/media-services/latest/drm-content-protection-concept.md)ellátása.
 
 <sup>5</sup> A Storage-fiókoknak ugyanahhoz az Azure-előfizetéshez kell tartoznia.
 

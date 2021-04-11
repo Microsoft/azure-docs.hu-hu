@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
-ms.openlocfilehash: 45977faec9ab54fed0c1e7054c567b4d18b11f50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645022"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449358"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgáltatás előnyeit és képességeit, ami lehetővé teszi, hogy alkalmazásai, eszközei vagy eszközei szövegeket alakítsanak ki az emberi, például a szintetizált beszédbe. Válasszon a standard és a neurális hangok közül, vagy hozzon létre egyedi hangvételt a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang a kiválasztott számú nyelven és területi beállításban érhető el. A támogatott hangok, nyelvek és területi beállítások teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:
+
+* **A gyors** üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.
+* A **útmutatók** útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.
+* A **fogalmak** részletesen ismertetik a szolgáltatás funkcióit és funkcióit.
+* Az **oktatóanyagok** már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.
 
 > [!NOTE]
 > A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat vagy Custom Speech-t használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.

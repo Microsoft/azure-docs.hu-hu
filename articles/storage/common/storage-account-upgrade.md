@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c73849d07c1495251c17510ea71f29c674c618
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555006"
+ms.locfileid: "105967489"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2-tárfiókra
 
@@ -28,7 +28,7 @@ Az általános célú, v1-es vagy blob Storage-fiókokból származó általáno
 > [!NOTE]
 > Bár a Microsoft a legtöbb esetben javasolja az általános célú v2-fiókok használatát, a Microsoft továbbra is támogatja az általános célú v1-fiókokat az új és a meglévő ügyfelek számára. Általános célú v1-es Storage-fiókokat hozhat létre új régiókban, amikor az Azure Storage elérhető ezekben a régiókban. A Microsoft jelenleg nem rendelkezik az általános célú v1-fiókok támogatásának elavulttá tételével, és legalább egy éves előzetes értesítést fog biztosítani az Azure Storage funkciójának elavulttá tételéhez. A Microsoft továbbra is biztosítja az általános célú v1-fiókok biztonsági frissítéseit, de ez a fióktípus nem vár új szolgáltatás-fejlesztést.
 >
-> Az új Azure Storage-régiókban az általános célú v1-fiókok díjszabása 2020. október 1-től megegyezik az általános célú v2-fiókok díjszabásával ezekben a régiókban. A meglévő Azure Storage-régiók díjszabása nem változott. Az általános célú v1-fiókok egy adott régióban való díjszabásáról az Azure Storage díjszabását ismertető oldalon tájékozódhat. Válassza ki a régiót, majd a **díjszabás** mellett válassza az **egyéb** lehetőséget.
+> A 2020. október 1. után online állapotú új Azure-régiók esetében az általános célú v1-fiókok díjszabása megváltozott, és megfelel az általános célú v2-fiókok díjszabásának az adott régiókban. Az Azure-régiók általános célú v1-fiókjainak díjszabása, amelyek 2020 október 1. előtt léteztek, nem változtak. Az általános célú v1-fiókok egy adott régióban való díjszabásáról az Azure Storage díjszabását ismertető oldalon tájékozódhat. Válassza ki a régiót, majd a **díjszabás** mellett válassza az **egyéb** lehetőséget.
 
 ## <a name="upgrade-an-account"></a>Fiók frissítése
 

@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0b86a7014af42f2ffb067c2de797f270a5b1855
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94409569"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967472"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>NFS-ügyfél konfigurálása az Azure NetApp Fileshoz
 
 Az ebben a cikkben ismertetett NFS-ügyfél konfigurációja a [nfsv 4.1 Kerberos-titkosítás konfigurálásakor](configure-kerberos-encryption.md) vagy [egy kettős protokollú kötet létrehozásakor](create-volumes-dual-protocol.md)a telepítés része. A Linux-disztribúciók széles választéka használható a Azure NetApp Fileshoz. Ez a cikk két leggyakrabban használt környezet konfigurációit ismerteti: RHEL 8 és Ubuntu 18,04. 
 
+## <a name="requirements-and-considerations"></a>Követelmények és megfontolások  
+
 A használt Linux-íztől függetlenül a következő konfigurációk szükségesek:
+
 * Konfiguráljon egy NTP-ügyfelet, hogy elkerülje a problémák időbeli eldöntését.
 * Konfigurálja a Linux-ügyfél DNS-bejegyzéseit névfeloldásra.  
     Ebben a konfigurációban szerepelnie kell az "A" (továbbítás) rekordnak és a PTR (fordított) rekordnak. 

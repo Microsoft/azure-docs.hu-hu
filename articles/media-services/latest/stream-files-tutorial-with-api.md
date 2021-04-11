@@ -12,7 +12,7 @@ MS. Service: Media-Services MS. munkaterhelés: MS. topic: oktatóanyag MS. Cust
 > [!NOTE]
 > Bár ez az oktatóanyag [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) -példákat használ, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
 
-Azure Media Services lehetővé teszi, hogy a médiafájlokat a különböző böngészőkön és eszközökön lejátszani kívánt formátumokba kódolja. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. A kódolással kapcsolatos segítségért lásd a [kódolási koncepciót](encoding-concept.md). Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. Egy HTTPS URL-címen keresztül elérhetővé tehető tartalmat is kódolhat. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
+Azure Media Services lehetővé teszi, hogy a médiafájlokat a különböző böngészőkön és eszközökön lejátszani kívánt formátumokba kódolja. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. A kódolással kapcsolatos segítségért lásd a [kódolási koncepciót](encode-concept.md). Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. Egy HTTPS URL-címen keresztül elérhetővé tehető tartalmat is kódolhat. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
 
 ![Videó lejátszása Azure Media Player](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag a következőket mutatja be:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nincs telepítve a Visual Studio, a [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
+- [Hozzon létre egy Media Services fiókot](./account-create-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
 - Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 
 ## <a name="download-and-set-up-the-sample"></a>A minta letöltése és beállítása
@@ -89,13 +89,13 @@ A kimeneti [objektum](/rest/api/media/assets) tárolja a kódolási feladat ered
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Átalakítás és a feltöltött fájlt kódoló feladat létrehozása
 
-A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak** nevezzük. További információt az [átalakításokkal és feladatokkal](./transforms-jobs-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre.
+A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak** nevezzük. További információt az [átalakításokkal és feladatokkal](./transform-jobs-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre.
 
 #### <a name="transform"></a>Átalakítás
 
-Egy új [átalakításpéldány](/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A kötelező paraméter egy **TransformOutput** objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Az ebben a cikkben leírt minta az **AdaptiveStreaming** nevű beépített előzetes beállítást használja. Az előzetes beállítás a bemeneti videót egy automatikusan létrehozott sávszélességi skálává (sávszélesség–felbontás párokká) kódolja a bemeneti felbontás és sávszélesség alapján, majd ISO MP4-fájlokat hoz létre H.264 kódolású video- és AAC kódolású audiosávokkal, amelyek megfelelnek a sávszélesség–felbontás pároknak. Az előzetes beállítással kapcsolatos információkért tekintse meg a [sávszélességi skálák automatikus létrehozását](autogen-bitrate-ladder.md) ismertető részt.
+Egy új [átalakításpéldány](/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A kötelező paraméter egy **TransformOutput** objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Az ebben a cikkben leírt minta az **AdaptiveStreaming** nevű beépített előzetes beállítást használja. Az előzetes beállítás a bemeneti videót egy automatikusan létrehozott sávszélességi skálává (sávszélesség–felbontás párokká) kódolja a bemeneti felbontás és sávszélesség alapján, majd ISO MP4-fájlokat hoz létre H.264 kódolású video- és AAC kódolású audiosávokkal, amelyek megfelelnek a sávszélesség–felbontás pároknak. Az előzetes beállítással kapcsolatos információkért tekintse meg a [sávszélességi skálák automatikus létrehozását](encode-autogen-bitrate-ladder.md) ismertető részt.
 
-Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni előzetes beállításokat. További információt [a kódoló előzetes beállításainak testreszabását](customize-encoder-presets-how-to.md) ismertető cikkben talál.
+Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni előzetes beállításokat. További információt [a kódoló előzetes beállításainak testreszabását](encode-custom-presets-how-to.md) ismertető cikkben talál.
 
 [Átalakítások](/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható. A Media Services 3-as verziója esetében a **Get** metódusok **null** értéket adnak vissza, ha az entitás nem létezik (a kis- és nagybetűket meg nem különböztető névellenőrzés történik).
 
@@ -200,4 +200,4 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 
 > [!div class="nextstepaction"]
-> [Videók elemzése](analyze-videos-tutorial-with-api.md)
+> [Videók elemzése](analyze-videos-tutorial.md)

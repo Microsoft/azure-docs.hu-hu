@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
 ms.openlocfilehash: c42f3081a831c267c7bc605267b99e2a916ea3d8
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105613025"
 ---
 # <a name="document-translation-get-operations"></a>Dokumentum fordítása: lekérési műveletek
@@ -59,7 +59,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 A kérelem fejlécei:
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Kötelező kérelem fejléce|
 
@@ -67,7 +67,7 @@ A kérelem fejlécei:
 
 A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
-|Állapotkód|Description|
+|Állapotkód|Leírás|
 |--- |--- |
 |200|OK gombra. Sikeres kérés, és visszaadja az összes művelet állapotát. HeadersRetry-After: integerETag: string|
 |400|Hibás kérelem. Érvénytelen kérés. Adja meg a bemeneti paramétereket.|
@@ -81,7 +81,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 A sikeres válasz a következő információkat adja vissza.
 
-|Név|Típus|Description|
+|Név|Típus|Leírás|
 |--- |--- |--- |
 |id|sztring|A művelet azonosítója.|
 |createdDateTimeUtc|sztring|A művelet létrehozásának dátuma és időpontja.|
@@ -98,7 +98,7 @@ A sikeres válasz a következő információkat adja vissza.
 
 ###<a name="error-response"></a>Hiba válasza
 
-|Név|Típus|Description|
+|Név|Típus|Leírás|
 |--- |--- |--- |
 |code|sztring|A magas szintű hibakódokat tartalmazó enumerálások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
 |message|sztring|Magas szintű hibaüzenetet kap.|

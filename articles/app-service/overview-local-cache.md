@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 462f37730d61a674edd463e57a98a1228c8ed611
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96852252"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967081"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
 > [!NOTE]
-> A helyi gyorsítótár nem támogatott a Function apps vagy a Container App Service alkalmazásokban, például [Windows-tárolókban](quickstart-custom-container.md?pivots=container-windows) vagy [Linuxon app Service](overview.md#app-service-on-linux).
+> A helyi gyorsítótár nem támogatott a Function apps vagy a Container App Service alkalmazásokban, például [Windows-tárolókban](quickstart-custom-container.md?pivots=container-windows) vagy [Linuxon app Service](overview.md#app-service-on-linux). Az alkalmazási típusok számára elérhető helyi gyorsítótár verziója az [alkalmazás-gyorsítótár](https://github.com/Azure-App-Service/KuduLite/wiki/App-Cache).
 
 
 Azure App Service a tartalmat az Azure Storage tárolja, és tartós módon, tartalmi megosztásként is felszínre kerül. Ez a kialakítás a különböző alkalmazásokkal való együttműködésre szolgál, és a következő tulajdonságokkal rendelkezik:  

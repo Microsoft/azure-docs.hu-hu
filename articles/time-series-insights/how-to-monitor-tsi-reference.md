@@ -2,7 +2,7 @@
 title: Monitoring Azure Time Series Insights adathivatkozás | Microsoft Docs
 description: Dokumentáció a Azure Time Series Insights figyeléséhez.
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20d376ee501edf16711617847c685dfd531f2c80
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591378"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504583"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights adathivatkozás figyelése
 
@@ -23,12 +23,13 @@ Ismerje meg a Azure Time Series Insights-környezetből Azure Monitor által gy�
 
 ## <a name="metrics"></a>Mérőszámok
 
-Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatikusan összegyűjtött platform-metrikákat. Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Azure Time Series Insightst is) lásd: [Azure monitor támogatott metrikák](../azure-monitor/essentials/metrics-supported.md). A metrikák erőforrás-szolgáltatója a [Microsoft. TimeSeriesInsights/Environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) és a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatikusan összegyűjtött platform-metrikákat. Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Azure Time Series Insightst is) lásd: [Azure monitor támogatott metrikák](../azure-monitor/essentials/metrics-supported.md).
+A metrikák erőforrás-szolgáltatója a [Microsoft. TimeSeriesInsights/Environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) és a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Bejövő forgalom
- 
-|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|
+
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
 |---|---|---|---|---|
 |IngressReceivedBytes|Bejövő fogadott bájtok száma|Bájt|Összesen|Az eseményforrás által beolvasott bájtok száma|
 |IngressReceivedInvalidMessages|A bejövő forgalom érvénytelen üzeneteket kapott|Darabszám|Összesen|Az eseményforrás által beolvasott érvénytelen üzenetek száma|
@@ -40,7 +41,7 @@ Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatik
 
 ### <a name="storage"></a>Tárolás
 
-|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|A meleg tárolás Max tulajdonságai|Darabszám|Maximum|A környezet által az S1/S2 SKU számára engedélyezett tulajdonságok maximális száma, valamint a TB SKU-hoz tartozó meleg tár által engedélyezett tulajdonságok maximális száma|
 |WarmStorageUsedProperties|Meleg tároláshoz használt tulajdonságok |Darabszám|Maximum|A környezet által az S1/S2 SKU-hoz használt tulajdonságok száma, valamint a TB SKU meleg tárolója által használt tulajdonságok száma|

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffb7d708921c96f57a617f82fc54d7f462fb4282
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588828"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168756"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C-hez készült Azure IoT eszközoldali SDK
 
@@ -31,7 +31,7 @@ Az **Azure IoT ESZKÖZOLDALI SDK** olyan kódtárak összessége, amelyek leegys
 
 A C Azure IoT eszközoldali SDK-t ANSI C (C99) nyelven írták, hogy maximalizálja a hordozhatóságot. Ez a funkció lehetővé teszi, hogy a kódtárak több platformon és eszközön is működjenek, különösen ha a lemez és a memória minimálisra csökkentése prioritást jelent.
 
-Az SDK tesztelésének számos platformja van (a részletekért tekintse meg az [Azure Certified for IoT-eszköz katalógusát](https://catalog.azureiotsolutions.com/) ). Bár ez a cikk a Windows platformon futó mintakód bemutatóit tartalmazza, a cikkben ismertetett kód megegyezik a támogatott platformok tartományán.
+Az SDK tesztelésének számos platformja van (a részletekért tekintse meg az [Azure Certified for IoT-eszköz katalógusát](https://devicecatalog.azure.com/) ). Bár ez a cikk a Windows platformon futó mintakód bemutatóit tartalmazza, a cikkben ismertetett kód megegyezik a támogatott platformok tartományán.
 
 A következő videó áttekintést nyújt a C-hez készült Azure IoT SDK-ról:
 

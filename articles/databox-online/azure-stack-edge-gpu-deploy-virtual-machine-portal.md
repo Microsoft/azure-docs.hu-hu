@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: c11a89d91693075ca54c0689223dcf2af06df521
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 139b543160b679ba063a0633f9091e7bc0ef1fc1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568511"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074855"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön a Azure Portal használatával
 
@@ -127,9 +126,10 @@ Az alábbi lépéseket követve hozzon létre egy virtuális gépet, miután lé
     |Paraméter |Leírás  |
     |---------|---------|
     |Virtuális gép neve     |         |
+    |Peremhálózati erőforráscsoport     | Hozzon létre egy új erőforráscsoportot a virtuális géphez társított összes erőforráshoz.        |
     |Kép     | Válassza ki az eszközön elérhető virtuálisgép-lemezképeket.        |
     |Méret     | Válasszon a [virtuális gépek támogatott méretei](azure-stack-edge-gpu-virtual-machine-sizes.md)közül.        |
-    |Felhasználónév     | Használja az alapértelmezett Felhasználónév *azureuser*.        |
+    |Felhasználónév     | A rendszergazdának az alapértelmezett Felhasználónév *azureuser* használatával jelentkezzen be a virtuális gépre.        |
     |Hitelesítéstípus    | Válasszon az SSH nyilvános kulcs vagy a felhasználó által megadott jelszó közül.       |
     |Jelszó     | Adjon meg egy jelszót a virtuális gépre való bejelentkezéshez. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott [összetettségi követelményeknek](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).        |
     |Jelszó megerősítése    | Adja meg újra a jelszót.        |
@@ -149,11 +149,7 @@ Az alábbi lépéseket követve hozzon létre egy virtuális gépet, miután lé
 
         ![4. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-2.png)
 
-    1.  További lemezek hozzáadásához ismételje meg a fenti műveletet. A lemezek létrehozása után megjelennek a **lemezek** lapon.
-
-        ![5. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-3.png)
-
-        Válassza a **Tovább: Hálózatkezelés** lehetőséget.
+    1.  További lemezek hozzáadásához ismételje meg a fenti műveletet. A lemezek létrehozása után megjelennek a **lemezek** lapon. Válassza a **Tovább: hálózatkezelés** lehetőséget.
 
 1. A **hálózatkezelés** lapon konfigurálni fogja a virtuális gép hálózati kapcsolatát.
 
@@ -168,26 +164,32 @@ Az alábbi lépéseket követve hozzon létre egy virtuális gépet, miután lé
 
     Válassza a **Next (tovább): felülvizsgálat + létrehozás** elemet.
 
+1. A **speciális** lapon megadhatja az egyéni vagy a Cloud-init billentyűparancsot a virtuális gép testreszabásához. 
+
+    A Cloud-init segítségével testre szabhatja a virtuális gépet az első rendszerindításkor. A Cloud-init használatával csomagokat és írási fájlokat telepíthet, illetve konfigurálhatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során fut, nincs szükség további lépésekre a konfiguráció alkalmazásához. A Cloud-init részletes ismertetését lásd: [Cloud-init – áttekintés](../virtual-machines/linux/tutorial-automate-vm-deployment.md#cloud-init-overview).
+
+    ![7. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-advanced-1.png)    
+
 1. A **felülvizsgálat + létrehozás** lapon tekintse át a virtuális gép specifikációit, és válassza a **Létrehozás** lehetőséget.
 
-    ![7. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
+    ![8. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
 
 1. A virtuális gép létrehozása megkezdődik, és akár 20 percet is igénybe vehet. A virtuális gépek létrehozásának figyeléséhez lépjen a **központi telepítések** lehetőségre.
 
-    ![8. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
+    ![9. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
 
     
 1. A virtuális gép sikeres létrehozása után az **áttekintő** oldal frissül, és megjeleníti az új virtuális gépet.
 
-    ![9. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
+    ![10. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
 
 1. Válassza ki az újonnan létrehozott virtuális GÉPET a **virtuális gépekhez** való ugráshoz.
 
-    ![10. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
+    ![11. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
     A részletek megtekintéséhez válassza ki a virtuális gépet. 
 
-    ![11. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+    ![12. virtuális gép hozzáadása](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
 ## <a name="connect-to-a-vm"></a>Csatlakozás virtuális géphez
 

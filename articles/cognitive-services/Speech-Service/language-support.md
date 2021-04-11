@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 3446de7592c10fd9c0905097a77314192688719d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 443c6960b88fb8eeb5cdee43de6c87bf4fe2ac7b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554008"
+ms.locfileid: "106581484"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -59,7 +59,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Horvát (Horvátország)                 | `hr-HR` | Szöveg                                   |                           |
 | Cseh (Cseh Köztársaság)             | `cs-CZ` | Szöveg                                   |                           |
 | Dán (Dánia)                   | `da-DK` | Szöveg                                   | Yes                          |
-| Holland (Hollandia)                | `nl-NL` | Hang (20201015)<br>Szöveg                                   |    Yes                       |
+| Holland (Hollandia)                | `nl-NL` | Hang (20201015)<br>Szöveg<br>Kiejtése|    Yes                       |
 | Angol (Ausztrália)                | `en-AU` | Hang (20201019)<br>Szöveg                 | Yes                          |
 | Angol (Kanada)                   | `en-CA` | Hang (20201019)<br>Szöveg                 | Yes                          |
 | Angol (Ghána)                    | `en-GH` | Szöveg                                   |                           |
@@ -78,10 +78,10 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Észt (Észtország)                  | `et-EE` | Szöveg                                   |                           |
 | Filippínó (Fülöp-szigetek)             | `fil-PH`| Szöveg                                   |                           |
 | Finn (Finnország)                  | `fi-FI` | Szöveg                                   |     Yes                      |
-| Francia (Kanada)                    | `fr-CA` | Hang (20201015)<br>Szöveg                 |     Yes                      |
+| Francia (Kanada)                    | `fr-CA` | Hang (20201015)<br>Szöveg<br>Kiejtése|     Yes                      |
 | Francia (Franciaország)                    | `fr-FR` | Hang (20201015)<br>Szöveg<br>Kiejtése|      Yes                     |
-| Francia (Svájc)               | `fr-CH` | Szöveg                                   |                           |
-| Német (Ausztria)                   | `de-AT` | Szöveg                                   |                           |
+| Francia (Svájc)               | `fr-CH` | Szöveg<br>Kiejtése                  |                           |
+| Német (Ausztria)                   | `de-AT` | Szöveg<br>Kiejtése                  |                           |
 | Német (Németország)                   | `de-DE` | Hang (20190701, 20200619, 20201127)<br>Szöveg<br>Kiejtése|  Yes                         |
 | Görög (Görögország)                     | `el-GR` | Szöveg                                   |                           |
 | Gudzsaráti (indiai)                  | `gu-IN` | Szöveg                                   |                           |
@@ -100,33 +100,33 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | norvég (bokmål, Norvégia)         | `nb-NO` | Szöveg                                   |     Yes                      |
 | Lengyel (Lengyelország)                    | `pl-PL` | Szöveg                                   |       Yes                    |
 | Portugál (Brazília)                | `pt-BR` | Hang (20190620, 20201015)<br>Szöveg<br>Kiejtése|          Yes                 |
-| Portugál (Portugália)              | `pt-PT` | Szöveg                                   |             Yes              |
+| Portugál (Portugália)              | `pt-PT` | Szöveg<br>Kiejtése                  |             Yes              |
 | Román (Románia)                 | `ro-RO` | Szöveg                                   |                           |
 | Orosz (Oroszország)                   | `ru-RU` | Hang (20200907)<br>Szöveg                 |                Yes           |
 | Szlovák (Szlovákia)                  | `sk-SK` | Szöveg                                   |                           |
 | Szlovén (Szlovénia)               | `sl-SI` | Szöveg                                   |                           |
-| Spanyol (Argentína)                | `es-AR` | Szöveg                                   |                           |
-| Spanyol (Bolívia)                  | `es-BO` | Szöveg                                   |                           |
-| Spanyol (Chile)                    | `es-CL` | Szöveg                                   |                           |
-| Spanyol (Kolumbia)                 | `es-CO` | Szöveg                                   |                           |
-| Spanyol (Costa Rica)               | `es-CR` | Szöveg                                   |                           |
-| Spanyol (Kuba)                     | `es-CU` | Szöveg                                   |                           |
-| Spanyol (Dominikai Köztársaság)       | `es-DO` | Szöveg                                   |                           |
-| Spanyol (Ecuador)                  | `es-EC` | Szöveg                                   |                           |
-| Spanyol (Salvador)              | `es-SV` | Szöveg                                   |                           |
+| Spanyol (Argentína)                | `es-AR` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Bolívia)                  | `es-BO` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Chile)                    | `es-CL` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Kolumbia)                 | `es-CO` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Costa Rica)               | `es-CR` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Kuba)                     | `es-CU` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Dominikai Köztársaság)       | `es-DO` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Ecuador)                  | `es-EC` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Salvador)              | `es-SV` | Szöveg<br>Kiejtése                  |                           |
 | Spanyol (Egyenlítői-Guinea)        | `es-GQ` | Szöveg                                   |                           |
-| Spanyol (Guatemala)                | `es-GT` | Szöveg                                   |                           |
-| Spanyol (Honduras)                 | `es-HN` | Szöveg                                   |                           |
-| Spanyol (Mexikó)                   | `es-MX` | Hang (20200907)<br>Szöveg                 |    Yes                       |
-| Spanyol (Nicaragua)                | `es-NI` | Szöveg                                   |                           |
-| Spanyol (Panama)                   | `es-PA` | Szöveg                                   |                           |
-| Spanyol (Paraguay)                 | `es-PY` | Szöveg                                   |                           |
-| Spanyol (perui)                     | `es-PE` | Szöveg                                   |                           |
-| Spanyol (Puerto Rico)              | `es-PR` | Szöveg                                   |                           |
-| Spanyol (Spanyolország)                    | `es-ES` | Hang (20201015)<br>Szöveg                 |  Yes                         |
-| Spanyol (Uruguay)                  | `es-UY` | Szöveg                                   |                           |
-| Spanyol (USA)                      | `es-US` | Szöveg                                   |                           |
-| Spanyol (Venezuela)                | `es-VE` | Szöveg                                   |                           |
+| Spanyol (Guatemala)                | `es-GT` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Honduras)                 | `es-HN` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Mexikó)                   | `es-MX` | Hang (20200907)<br>Szöveg<br>Kiejtése|    Yes                       |
+| Spanyol (Nicaragua)                | `es-NI` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Panama)                   | `es-PA` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Paraguay)                 | `es-PY` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (perui)                     | `es-PE` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Puerto Rico)              | `es-PR` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Spanyolország)                    | `es-ES` | Hang (20201015)<br>Szöveg<br>Kiejtése|  Yes                         |
+| Spanyol (Uruguay)                  | `es-UY` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (USA)                      | `es-US` | Szöveg<br>Kiejtése                  |                           |
+| Spanyol (Venezuela)                | `es-VE` | Szöveg<br>Kiejtése                  |                           |
 | Svéd (Svédország)                   | `sv-SE` | Szöveg                                   |   Yes                        |
 | Tamil (India)                      | `ta-IN` | Szöveg                                   |                           |
 | Telugu (India)                     | `te-IN` | Szöveg                                   |                           |

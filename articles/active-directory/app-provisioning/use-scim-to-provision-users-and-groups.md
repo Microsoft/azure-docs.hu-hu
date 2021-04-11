@@ -12,12 +12,12 @@ ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022942"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449449"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
 
@@ -168,10 +168,10 @@ A SCIM RFC-ben több végpont is definiálva van. Elkezdheti a `/User` végponto
 |--|--|
 |/User|SZIFILISZ-műveletek végrehajtása felhasználói objektumon.|
 |/Group|SZIFILISZ-műveletek végrehajtása egy csoport objektumon.|
-|/ServiceProviderConfig|A SCIM szabvány által támogatott funkciók részleteit tartalmazza, például a támogatott erőforrásokat és a hitelesítési módszert.|
-|/ResourceTypes|Az egyes erőforrásokra vonatkozó metaadatok megadása|
 |/Schemas|Az egyes ügyfelek és szolgáltatók által támogatott attribútumok különbözőek lehetnek. Az egyik szolgáltató például, `name` `title` , és `emails` , míg egy másik szolgáltató a, a és a szolgáltatást használja `name` `title` `phoneNumbers` . A sémák végpont lehetővé teszi a támogatott attribútumok felderítését.|
 |/Bulk|A tömeges műveletek lehetővé teszik, hogy az erőforrás-objektumok nagy gyűjteményében műveleteket hajtson végre egyetlen műveletben (például egy nagy csoport frissítési tagsága).|
+|/ServiceProviderConfig|A SCIM szabvány által támogatott funkciók részleteit tartalmazza, például a támogatott erőforrásokat és a hitelesítési módszert.|
+|/ResourceTypes|Az egyes erőforrásokra vonatkozó metaadatokat határozza meg.|
 
 **A végpontok példáinak listája**
 
@@ -1329,9 +1329,9 @@ Az ellenőrzőlista használatával gyorsan és az ügyfelek zökkenőmentes üz
 > * 3 nem lejáró teszt hitelesítő adatai az alkalmazáshoz (kötelező)
 > * Támogassa a OAuth engedélyezési kód támogatását vagy az alább leírtak szerint a hosszú élettartamú tokent (kötelező)
 > * Hozzon létre egy mérnöki és támogatási pontot az ügyfelek támogatásához a katalógus bevezetése után (kötelező)
+> * [Támogatási séma felderítése (kötelező)](https://tools.ietf.org/html/rfc7643#section-6)
 > * Több csoporttagság frissítésének támogatása egyetlen JAVÍTÁSsal
 > * Nyilvánosan dokumentálja a SCIM-végpontot
-> * [Támogatási séma felderítése](https://tools.ietf.org/html/rfc7643#section-6)
 
 ### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Az összekötők üzembe helyezésének engedélyezése az alkalmazás-katalógusban
 A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az engedélyezéshez, és a meglévő iparági szabványok használatára támaszkodik.

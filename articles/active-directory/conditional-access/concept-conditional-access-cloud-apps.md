@@ -11,19 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c8024a2083d09fcbd53a37f0d391c4589748eea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 80ec5133ad12dda4a6883c663007b8b7fec2e81a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605076"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551934"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
 A felhőalapú alkalmazások vagy műveletek a feltételes hozzáférési szabályzatok kulcsfontosságú jelei. A feltételes hozzáférési házirendek lehetővé teszik a rendszergazdák számára, hogy bizonyos alkalmazásokhoz vagy műveletekhez rendeljenek vezérlőket.
 
 - A rendszergazdák választhatnak a beépített Microsoft-alkalmazásokat és bármely [Azure ad integrált alkalmazást](../manage-apps/what-is-application-management.md) , beleértve a katalógust, a nem katalógust és az [Application proxyn](../manage-apps/what-is-application-proxy.md)keresztül közzétett alkalmazásokat is.
-- A rendszergazdák dönthetnek úgy, hogy nem felhőalapú alkalmazáson, hanem felhasználói műveleten alapuló szabályzatot határoznak meg. Az egyetlen támogatott művelet a biztonsági adatok (előzetes verzió) regisztrálása, amely lehetővé teszi, hogy a feltételes hozzáférés a [kombinált biztonsági információk regisztrációs felülete](../authentication/howto-registration-mfa-sspr-combined.md)körüli ellenőrzéseket kényszerítse ki.
+- A rendszergazdák dönthetnek úgy, hogy nem felhőalapú alkalmazáson, hanem felhasználói műveleten alapuló szabályzatot határoznak meg. Két felhasználói műveletet támogatunk
+   - A biztonsági adatok (előzetes verzió) regisztrálása a [kombinált biztonsági információk regisztrálási felülete](../authentication/howto-registration-mfa-sspr-combined.md) körüli szabályozás érvényesítéséhez 
+   - Az eszközök regisztrálása vagy csatlakoztatása (előzetes verzió) segítségével kényszerítheti a szabályozást, amikor a felhasználók az Azure AD-ben [regisztrálják](../devices/concept-azure-ad-register.md) vagy [csatlakoznak](../devices/concept-azure-ad-join.md) 
 
 ![Feltételes hozzáférési szabályzat definiálása és felhőalapú alkalmazások megadása](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -131,9 +133,10 @@ A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégez
 
 - **Biztonsági információk regisztrálása**: Ez a felhasználói művelet lehetővé teszi, hogy a feltételes hozzáférési szabályzat kényszerítse ki, hogy a rendszer mikor engedélyezze a kombinált regisztrációt a biztonsági adatok regisztrálására. További információt a következő cikkben talál: [kombinált biztonsági információk regisztrálása](../authentication/concept-registration-mfa-sspr-combined.md).
 
-- **Eszközök regisztrálása vagy csatlakoztatása (előzetes verzió)**: Ez a felhasználói művelet lehetővé teszi a rendszergazdák számára a feltételes hozzáférési szabályzat kikötését, amikor a felhasználók [regisztrálják](../devices/concept-azure-ad-register.md) vagy [csatlakoztatják](../devices/concept-azure-ad-join.md) az eszközöket az Azure ad Ennek a felhasználói műveletnek két fő szempontja van: 
+- **Eszközök regisztrálása vagy csatlakoztatása (előzetes verzió)**: Ez a felhasználói művelet lehetővé teszi a rendszergazdák számára a feltételes hozzáférési szabályzat kikötését, amikor a felhasználók [regisztrálják](../devices/concept-azure-ad-register.md) vagy [csatlakoztatják](../devices/concept-azure-ad-join.md) az eszközöket az Azure ad Részletesen ismerteti a többtényezős hitelesítés konfigurálását és az eszközök csatlakoztatását a jelenleg létező, bérlői szintű házirend helyett. Ennek a felhasználói műveletnek három fő szempontja van: 
    - `Require multi-factor authentication` az egyetlen elérhető hozzáférés-vezérlés ezzel a felhasználói művelettel, és minden más le van tiltva. Ez a korlátozás megakadályozza az olyan hozzáférés-vezérlési ütközéseket, amelyek az Azure AD-eszközök regisztrációja vagy nem alkalmazhatók az Azure AD-eszközök regisztrálására. 
-   - Ha a feltételes hozzáférési szabályzat engedélyezve van ezzel a felhasználói művelettel, a nem értékre kell állítania a **Azure Active Directory**  >  **eszköz**  >  **beállításait**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` .  Ellenkező esetben az ezzel a felhasználói művelettel rendelkező feltételes hozzáférési szabályzatok nem megfelelően lettek kikényszerítve. Az eszköz beállításával kapcsolatos további információkért tekintse meg az [eszközbeállítások konfigurálása](../devices/device-management-azure-portal.md#configure-device-settings)című részt. Ez a felhasználói művelet rugalmasságot biztosít a többtényezős hitelesítés megköveteléséhez egy adott felhasználóhoz és csoporthoz vagy feltételhez tartozó eszközök regisztrálásához vagy csatlakoztatásához ahelyett, hogy a teljes bérlőre kiterjedő szabályzatot kellene használnia az eszközbeállítások során. 
+   - `Client apps` a és a `Device state` feltételek nem érhetők el ezzel a felhasználói művelettel, mert az Azure ad-eszköz regisztrációja függ a feltételes hozzáférési szabályzatok érvénybe léptetéséhez.
+   - Ha a feltételes hozzáférési szabályzat engedélyezve van ezzel a felhasználói művelettel, a nem értékre kell állítania a **Azure Active Directory**  >  **eszköz**  >  **beállításait**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` .  Ellenkező esetben az ezzel a felhasználói művelettel rendelkező feltételes hozzáférési szabályzat nincs megfelelően kikényszerítve. Az eszköz beállításával kapcsolatos további információkért tekintse meg az [eszközbeállítások konfigurálása](../devices/device-management-azure-portal.md#configure-device-settings)című részt. 
    
 ## <a name="next-steps"></a>Következő lépések
 

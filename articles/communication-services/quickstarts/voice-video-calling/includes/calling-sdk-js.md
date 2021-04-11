@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645432"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073181"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,10 +21,9 @@ ms.locfileid: "105645432"
 ## <a name="install-the-sdk"></a>Az SDK telepítése
 
 > [!NOTE]
-> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 10 verziót használja.
+> Ez a dokumentum az ACS Calling web SDK-t használja.
 
 A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat hívó és gyakori SDK-kat a JavaScript használatára.
-Ez a dokumentum a a hívó könyvtárának a 1.0.0-Beta. 10 verziójában található típusokra hivatkozik.
 
 ```console
 npm install @azure/communication-common --save
@@ -144,6 +143,8 @@ const call = callAgent.join(context);
 ```
 
 ### <a name="join-a-teams-meeting"></a>Csatlakozás Teams-értekezlethez
+> [!NOTE]
+> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Ha ezt az API-t szeretné használni, használja az ACS Calling web SDK "Beta" kiadását
 
 Ha csatlakozni szeretne egy csapathoz, használja a `join` metódust, és adja át az értekezlet hivatkozását vagy koordinátáit.
 
@@ -593,8 +594,8 @@ console.log(result.video);
 ```
 
 ## <a name="record-calls"></a>Hívások rögzítése
-
-[!INCLUDE [Private Preview Notice](../../../includes/private-preview-include-section.md)]
+> [!NOTE]
+> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Ha ezt az API-t szeretné használni, használja az ACS Calling web SDK "Beta" kiadását
 
 A Call Recording a Core API kiterjesztett funkciója `Call` . Először be kell szereznie a rögzítési funkció API-objektumát:
 
@@ -620,6 +621,8 @@ callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler)
 ```
 
 ## <a name="transfer-calls"></a>Hívások átvitele
+> [!NOTE]
+> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Ha ezt az API-t szeretné használni, használja az ACS Calling web SDK "Beta" kiadását
 
 A hívásátirányítás a Core API kiterjesztett funkciója `Call` . Először be kell szereznie az átvitel funkció API-objektumát:
 

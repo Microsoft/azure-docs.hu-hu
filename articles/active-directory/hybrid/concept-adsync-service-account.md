@@ -15,12 +15,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb23d79caa6964c3f61fbb84c8b8f229f475b8ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca99a997d621bfd2455e909b36b6802775b20ac2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722157"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074607"
 ---
 # <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 Azure AD Connect egy helyszíni szolgáltatást telepít, amely összehangolja Active Directory és Azure Active Directory közötti szinkronizálást.  A Microsoft Azure AD Sync synchronization Service (ADSync) a helyszíni környezetben futó kiszolgálón fut.  A szolgáltatás hitelesítő adatai alapértelmezés szerint az expressz telepítésekben vannak beállítva, de testreszabhatók a szervezeti biztonsági követelmények teljesítéséhez.  Ezek a hitelesítő adatok nem használhatók a helyszíni erdőkhöz vagy Azure Active Directoryhoz való kapcsolódáshoz.
@@ -56,7 +56,7 @@ Jelmagyarázat:
 - Önállóan felügyelt szolgáltatásfiókot – [önálló felügyelt szolgáltatásfiók](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 - gMSA – [csoportosan felügyelt szolgáltatásfiók](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
- ||**LocalDB </br> Express**|**LocalDB/LocalSQL </br> Custom**|**Távoli SQL- </br> Egyéni**|
+|Gép típusa |**LocalDB </br> Express**|**LocalDB/LocalSQL </br> Custom**|**Távoli SQL- </br> Egyéni**|
 |-----|-----|-----|-----|
 |**tartományhoz csatlakoztatott számítógép**|**VSA**|**VSA**</br> *Önállóan felügyelt szolgáltatásfiókot*</br> *gMSA*</br> Helyi fiók</br> Tartományi fiók| *gMSA* </br>Tartományi fiók|
 |Tartományvezérlő| **Önállóan felügyelt szolgáltatásfiókot**|**Önállóan felügyelt szolgáltatásfiókot** </br>*gMSA*</br> Tartományi fiók|*gMSA*</br>Tartományi fiók| 

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95a468d130d1ab1eee349f15592175301c9ddf37
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721123"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110019"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Átfedés létrehozása a Media Encoder Standard használatával
 
@@ -41,8 +41,8 @@ A Media Encoder Standard a képek, hangfájlok vagy más videók egy másik vide
 
 Ha még nem ismeri az átalakításokat, javasoljuk, hogy hajtsa végre a következő tevékenységeket:
 
-* [Videó és hang kódolásának](encoding-concept.md) olvasása Media Services
-* Olvassa el, [Hogyan kódolhat egyéni átalakító-.net-](customize-encoder-presets-how-to.md)tel. A cikk lépéseit követve állítsa be, hogy az átalakításokkal való együttműködéshez szükség van-e a .NET-re, majd térjen vissza ide az átfedések előre beállított mintájának kipróbálásához.
+* [Videó és hang kódolásának](encode-concept.md) olvasása Media Services
+* Olvassa el, [Hogyan kódolhat egyéni átalakító-.net-](encode-custom-presets-how-to.md)tel. A cikk lépéseit követve állítsa be, hogy az átalakításokkal való együttműködéshez szükség van-e a .NET-re, majd térjen vissza ide az átfedések előre beállított mintájának kipróbálásához.
 * Lásd az [átalakítások hivatkozási dokumentumát](/rest/api/media/transforms).
 
 Ha már ismeri az átalakításokat, töltse le az átfedések mintáját.

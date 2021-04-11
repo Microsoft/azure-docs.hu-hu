@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6499e4b3404a255025f88488e73da1efb6449296
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075951"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581190"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Megbízható indítást engedélyező virtuális gép üzembe helyezése (előzetes verzió)
 
@@ -41,10 +41,13 @@ Hozzon létre egy virtuális gépet, amelyen engedélyezve van a megbízható in
 5. A **projekt részletei** területen ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
 6. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adja meg az erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
 7. A **példány részletei** területen adja meg a virtuális gép nevét, és válasszon egy olyan régiót, amely támogatja a [megbízható indítást](trusted-launch.md#public-preview-limitations).
-8. A **rendszerkép** területen válasszon ki egy olyan [rendszerképet, amely támogatja a megbízható indítást](trusted-launch.md#public-preview-limitations). Előfordulhat, hogy csak a rendszerkép 1. generációs verzióját látja, ami nem minden rendben van, folytassa a következő lépéssel.
-9. Váltson át a **speciális** lapra úgy, hogy kiválasztja az oldal tetején.
-10. Görgessen le a virtuálisgép- **generáció** szakaszhoz, majd válassza a **2**. generációs elemet.
-11. Miközben továbbra is a **speciális** lapon, görgessen le a **megbízható indítás** elemig, majd jelölje be a **megbízható indítás** jelölőnégyzetet. Ekkor két további lehetőség jelenik meg – biztonságos rendszerindítás és vTPM. Válassza ki a megfelelő beállításokat a központi telepítéshez.
+8. A **rendszerkép** területen válasszon ki egy 2. generációs [rendszerképet, amely támogatja a megbízható indítást](trusted-launch.md#public-preview-limitations). 
+   > [!TIP]
+   > Ha nem látja a kívánt rendszerkép 2. generációs verzióját, válassza az **összes rendszerkép** megjelenítése lehetőséget, majd a **virtuális gép generálási** szűrőjét csak a Gen 2 rendszerképek megjelenítéséhez. Keresse meg a képet a listában, **majd a legördülő menüből válassza** ki a 2. generációs verziót.
+ 
+1. Váltson át a **speciális** lapra úgy, hogy kiválasztja az oldal tetején.
+1. Görgessen le a **VM Generation** szakaszhoz. Győződjön meg arról, hogy a **2. gen** van kijelölve.
+1. Miközben továbbra is a **speciális** lapon, görgessen le a **megbízható indítás** elemig, majd jelölje be a **megbízható indítás** jelölőnégyzetet. Ekkor két további lehetőség jelenik meg – biztonságos rendszerindítás és vTPM. Válassza ki a megfelelő beállításokat a központi telepítéshez.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="A megbízható indítás beállításait bemutató képernyőkép.":::
 
@@ -67,10 +70,10 @@ A virtuális gép üzembe helyezése eltarthat néhány percig.
 A megbízható indítási virtuális gépek üzembe helyezése egy rövid útmutató sablon használatával végezhető el:
 
 **Linux**:    
-[![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+[![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
 **Windows**:    
-[![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+[![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>Megtekintés és frissítés
 

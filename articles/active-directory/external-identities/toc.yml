@@ -120,7 +120,7 @@
               href: use-dynamic-groups.md
             - name: A B2B felhasználók ismertetése
               href: user-properties.md
-            - name: Visszaváltási állapot visszaállítása
+            - name: Visszaváltási állapot visszaállítása (előzetes verzió)
               href: reset-redemption-status.md
             - name: Azure AD B2B integrált alkalmazások
               href: configure-saas-apps.md

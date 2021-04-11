@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: 07fc6ee0afb29f9d6c701c7eb2c65be988971eaf
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105612636"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi az az Azure App Service?
@@ -39,7 +39,7 @@ A Azure Backup a következő kulcsfontosságú előnyöket nyújtja:
 - **Könnyen méretezhető** – a Azure Backup az Azure-felhő mögöttes teljesítményének és korlátlan skálájának használatával biztosítja a magas rendelkezésre állást karbantartási vagy figyelési terhelés nélkül.
 - **Korlátlan adatátviteli** lehetőség: a Azure Backup nem korlátozza az átvitt bejövő vagy kimenő adatok mennyiségét, vagy a továbbított adatok díját.
   - Kimenő adatokon a Recovery Services-tárolóból a visszaállítási művelet során átvitt adatok értendők.
-  - Ha az Azure import/export szolgáltatással nagy mennyiségű adat importálására szolgáló offline kezdeti biztonsági mentést hajt végre, akkor a rendszer a bejövő adatokhoz kapcsolódó költségeket is felhasználja.  [További információ](backup-azure-backup-import-export.md).
+  - Ha az Azure import/export szolgáltatással nagy mennyiségű adat importálására szolgáló offline kezdeti biztonsági mentést hajt végre, akkor a rendszer a bejövő adatokhoz kapcsolódó költségeket is felhasználja.  [További információk](backup-azure-backup-import-export.md).
 - **Adatbiztonság megőrzése**: Azure Backup biztosít olyan megoldásokat, amelyekkel biztonságossá teheti az adatátvitelt és [a nyugalmi](backup-azure-security-feature-cloud.md) [állapotban lévő](backup-azure-security-feature.md) adatok védelmét.
 - **Központosított figyelés és felügyelet**: a Azure Backup [beépített monitorozási és riasztási képességeket](backup-azure-monitoring-built-in-monitor.md) biztosít egy Recovery Services-tárolóban. Ezek a képességek további felügyeleti infrastruktúra nélkül érhetők el. A figyelés és a jelentéskészítés méretezését a [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)is növelheti.
 - Alkalmazás **-konzisztens biztonsági másolatok beolvasása**: az alkalmazás-konzisztens biztonsági mentés azt jelenti, hogy egy helyreállítási pont rendelkezik az összes szükséges adattal a biztonsági másolat visszaállításához. A Azure Backup az alkalmazással konzisztens biztonsági mentéseket biztosít, amelyek biztosítják, hogy az adatokat nem kell visszaállítani további javításokkal. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.

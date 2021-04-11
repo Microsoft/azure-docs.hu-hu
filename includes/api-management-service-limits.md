@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0614e6fb1df13332cb05dcb7bb9b0f07a1764d23
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103621958"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251271"
 ---
 | Erőforrás | Korlát |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "103621958"
 | Az előfizetések maximális száma a<sup>8</sup> . szolgáltatási példány esetében | 500 |
 | Ügyféltanúsítvány-alapú tanúsítványok maximális száma a<sup>8</sup> . szolgáltatási példány esetében | 50 |
 | API-k maximális száma a szolgáltatási példányok esetében<sup>8</sup> | 50 |
-| Az API-műveletek maximális száma a<sup>8</sup> . szolgáltatási példány esetében | 1,000 |
+| Az API Management műveleteinek maximális száma a<sup>8</sup> . szolgáltatási példány esetében | 1,000 |
 | Maximális kérelem teljes időtartama<sup>8</sup> | 30 másodperc |
 | Maximálisan pufferelt hasznos adatok mérete<sup>8</sup> | 2 MiB |
 | Kérelem URL-címének maximális mérete (<sup>9</sup> ) | 4096 bájt |

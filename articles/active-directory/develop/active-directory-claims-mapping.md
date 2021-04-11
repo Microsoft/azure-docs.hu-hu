@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647596"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075066"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -304,7 +304,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | User | streetAddress | Utca, házszám |
 | User | Irányítószám | Irányítószám |
 | User | preferredlanguage | Előnyben részesített nyelv |
-| User | onpremisesuserprincipalname | Helyszíni UPN |*
+| User | onpremisesuserprincipalname | Helyszíni UPN |
 | User | mailnickname | Levelezési Felhasználónév |
 | User | extensionattribute1 | 1. bővítmény-attribútum |
 | User | extensionattribute2 | 2. bővítmény-attribútum |
@@ -419,16 +419,6 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 | ExtractMailPrefix | Nincsenek |
 | Csatlakozás | A csatlakoztatott utótagnak az erőforrás-bérlő ellenőrzött tartományának kell lennie. |
 
-### <a name="custom-signing-key"></a>Egyéni aláíró kulcs
-
-A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához a Azure PowerShell parancsmaggal [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) hozzon létre egy tanúsítvány-kulcs hitelesítő adatait az alkalmazás objektumához.
-
-Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, a jogkivonat-aláíró kulcsokat az `appid={client_id}` [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)hozzáfűzésével kell ellenőrizni. Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell:
-
-```
-https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
-```
-
 ### <a name="cross-tenant-scenarios"></a>Több-bérlős forgatókönyvek
 
 A jogcím-hozzárendelési házirendek nem vonatkoznak a vendég felhasználókra. Ha egy vendég felhasználó egy, az egyszerű szolgáltatáshoz hozzárendelt jogcím-leképezési házirenddel rendelkező alkalmazáshoz próbál hozzáférni, az alapértelmezett jogkivonat ki lesz állítva (a házirendnek nincs hatása).
@@ -531,6 +521,33 @@ Ebben a példában egy olyan házirendet hoz létre, amely egy "JoinedData" egy�
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="security-considerations"></a>Biztonsági szempontok
+
+A jogkivonatokat fogadó alkalmazások arra a tényre támaszkodnak, hogy az Azure AD-ben mérvadóan állítják ki a jogcím értékeit, és az nem módosítható. Ha azonban a jogkivonatok tartalmát a jogcím-hozzárendelési szabályzatok használatával módosítja, előfordulhat, hogy ezek a feltételezések már nem megfelelőek. Az alkalmazásoknak explicit módon el kell ismerniük, hogy a jogkivonatokat a jogcímek leképezési házirendjének létrehozója módosította, hogy a rosszindulatú szereplők által létrehozott jogcímek leképezési házirendjeitől védve legyenek. Ezt a következő módokon teheti meg:
+
+- Egyéni aláíró kulcs konfigurálása
+- Az alkalmazás jegyzékfájljának frissítése a hozzárendelt jogcímek fogadására.
+ 
+Ennek hiányában az Azure AD [ `AADSTS50146` hibakódot](reference-aadsts-error-codes.md#aadsts-error-codes)ad vissza.
+
+### <a name="custom-signing-key"></a>Egyéni aláíró kulcs
+
+Ha egyéni aláíró kulcsot szeretne hozzáadni a szolgáltatásnév objektumhoz, a Azure PowerShell parancsmaggal [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) hozhat létre egy tanúsítvány-kulcs hitelesítő adatait az alkalmazás objektumához.
+
+Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, a jogkivonat-aláíró kulcsokat az `appid={client_id}` [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)hozzáfűzésével kell ellenőrizni. Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell:
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
+
+### <a name="update-the-application-manifest"></a>Az alkalmazás jegyzékfájljának frissítése
+
+Azt is megteheti, `acceptMappedClaims` hogy a tulajdonságot `true` az [alkalmazás jegyzékfájljában](reference-app-manifest.md)is beállíthatja. A [apiApplication erőforrástípus](/graph/api/resources/apiapplication#properties)dokumentációja szerint ez lehetővé teszi az alkalmazás számára, hogy egyéni aláíró kulcs megadása nélkül használja a jogcímek leképezését.
+
+Ehhez a kért jogkivonat-célközönségnek az Azure AD-bérlő ellenőrzött tartománynevét kell használnia, ami azt jelenti, hogy a (az `Application ID URI` `identifierUris` alkalmazás-jegyzékfájlban szereplő) beállítást kell megadni, például: `https://contoso.com/my-api` vagy (egyszerűen az alapértelmezett bérlő nevét kell használnia) `https://contoso.onmicrosoft.com/my-api` .
+
+Ha nem ellenőrzött tartományt használ, az Azure AD egy `AADSTS501461` "AcceptMappedClaims" nevű hibakódot ad vissza, amely az *alkalmazás GUID azonosítójának vagy a bérlő ellenőrzött tartományán belüli hallgatóságnak felel meg. Módosítsa az erőforrás-azonosítót, vagy használjon alkalmazásspecifikus aláíró kulcsot. "*
 
 ## <a name="see-also"></a>Lásd még
 

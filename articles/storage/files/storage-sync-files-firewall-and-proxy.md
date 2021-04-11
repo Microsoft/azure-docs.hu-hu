@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 84ab3451ef71b95db3a0f00f88a58482516b48f4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729640"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581855"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
@@ -96,6 +96,10 @@ A számítógépre vonatkozó proxybeállítások konfigurálásához kövesse a
 
 2. A WinHTTP proxy beállításainak megadása 
 
+   > [!Note]  
+   > Számos módszer létezik (WPAD, PAC-fájl, netsh stb.) egy Windows-kiszolgáló proxykiszolgáló használatára való konfigurálásához. Az alábbi lépések bemutatják, hogyan konfigurálhatja a proxybeállításokat a netsh használatával, de a [proxykiszolgáló beállításainak konfigurálása a Windows](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-proxy-server-settings) dokumentációjában felsorolt módszerekkel támogatott.
+
+
    - Futtassa a következő parancsot egy rendszergazda jogú parancssorból vagy a PowerShellből a meglévő proxy beállítás megtekintéséhez:   
 
      netsh WinHTTP show proxy
@@ -134,7 +138,7 @@ Ha &ast; a. AFS.Azure.net vagy &ast; a. One.microsoft.com túl széles, korláto
 
 Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előfordulhat, hogy az Azure-fájlmegosztást globálisan redundáns (GRS) Storage-fiókban adta meg. Ha ez az eset áll fenn, akkor az Azure-fájlmegosztás egy tartós regionális kimaradás esetén átveszi a feladatokat a párosított régióba. Azure File Sync ugyanazokat a regionális párosításokat használja, mint a Storage. Így ha GRS-fiókokat használ, engedélyeznie kell a további URL-címeket, hogy a kiszolgáló a párosított régióval beszéljen a Azure File Sync. Az alábbi táblázat ezt a "párosított régiót" hívja meg. Ezen kívül egy Traffic Manager-profil URL-címét is engedélyezni kell. Ez biztosítja, hogy a hálózati forgalom zökkenőmentesen átirányítható legyen a párosított régióba feladatátvétel esetén, és az alábbi táblázatban "felderítési URL-cím" néven jelenik meg.
 
-| Felhőbeli  | Region | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
+| Felhőbeli  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
 |--------|--------|----------------------|---------------|---------------|
 | Nyilvános |Kelet-Ausztrália | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.microsoft.com | Délkelet-Ausztrália | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.microsoft.com |
 | Nyilvános |Délkelet-Ausztrália | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-AUS.One.microsoft.com | Kelet-Ausztrália | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-AUS.One.microsoft.com |

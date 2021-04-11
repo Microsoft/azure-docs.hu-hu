@@ -1,25 +1,25 @@
 ---
-title: Azure Cognitive Search-naplók és-metrikák megjelenítése Power BI
-description: Azure Cognitive Search-naplók és-metrikák megjelenítése Power BI
-manager: eladz
+title: Naplók és metrikák megjelenítése Power BI
+description: Az Azure Cognitive Search-naplók és-metrikák megjelenítése Power BIokkal.
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 4056e892855c06ce6c412ec4a592ebcd97fc11a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: fbbeb861e50abfd393b416ddc46ff147fffb7b8e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325383"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581626"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Cognitive Search-naplók és-metrikák megjelenítése Power BI
-Az [azure Cognitive Search](./search-what-is-azure-search.md) lehetővé teszi, hogy egy Azure Storage-fiókban tárolja a keresési szolgáltatáshoz tartozó műveleti naplókat és szolgáltatási metrikákat. Ezen a lapon megtudhatja, hogyan jelenítheti meg ezt az információt egy Power BI sablon alkalmazáson keresztül. Az alkalmazás részletes információkat nyújt a keresési szolgáltatásról, többek között a kereséssel, az indexeléssel, a műveletekkel és a szolgáltatási metrikákkal kapcsolatban.
+
+Az [azure Cognitive Search](./search-what-is-azure-search.md) elküldhetik a műveleti naplókat és a szolgáltatási metrikákat egy Azure Storage-fiókba, amelyet aztán Power bi jeleníthet meg. Ez a cikk ismerteti a lépéseket, valamint azt, hogy hogyan jeleníthető meg az Power BI sablon alkalmazása az adatmegjelenítéshez. A sablon segítségével részletes információkhoz juthat a keresési szolgáltatásról, beleértve a lekérdezésekkel, az indexeléssel, a műveletekkel és a szolgáltatási metrikákkal kapcsolatos információkat.
 
 A Power BI template app **Azure Cognitive Search: a naplók és a metrikák elemzése** a [Power bi apps piactéren](https://appsource.microsoft.com/marketplace/apps).
 
-## <a name="how-to-get-started-with-the-app"></a>Az alkalmazás első lépései
+## <a name="set-up-the-app"></a>Az alkalmazás beállítása
 
 1. A keresési szolgáltatás metrikájának és erőforrás-naplózásának engedélyezése:
 
@@ -67,7 +67,8 @@ A Power BI template app **Azure Cognitive Search: a naplók és a metrikák elem
 
     :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="Képernyőkép az Azure Cognitive Search Power BI jelentésről.":::
 
-## <a name="how-to-change-the-app-parameters"></a>Az alkalmazás paramétereinek módosítása
+## <a name="modify-app-parameters"></a>Alkalmazás paramétereinek módosítása
+
 Ha egy másik Storage-fiókból kívánja megjeleníteni az adatok megjelenítését, vagy módosítani szeretné a lekérdezési napok számát, kövesse az alábbi lépéseket a **napok** és a **StorageAccount** paramétereinek módosításához.
 
 1. Navigáljon a Power BI alkalmazásaihoz, keresse meg az Azure Cognitive Search alkalmazást, és válassza az **alkalmazás szerkesztése** gombot a munkaterület megtekintéséhez.
@@ -86,7 +87,8 @@ Ha egy másik Storage-fiókból kívánja megjeleníteni az adatok megjeleníté
 
 1. Nyissa meg a jelentést a frissített adatértékek megtekintéséhez. Előfordulhat, hogy frissítenie kell a jelentést a legfrissebb adatértékek megtekintéséhez.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting-report-issues"></a>Jelentésekkel kapcsolatos problémák elhárítása
+
 Ha úgy találja, hogy az adatai nem láthatók, kövesse az alábbi hibaelhárítási lépéseket:
 
 1. Nyissa meg a jelentést, és frissítse az oldalt, és győződjön meg róla, hogy a legfrissebb adatnézeteket tekinti meg. A jelentésben lehetőség van az adatfrissítésre. Ezzel a beállítással hozzájuthat a legfrissebb értékekhez.
@@ -98,8 +100,7 @@ Ha úgy találja, hogy az adatai nem láthatók, kövesse az alábbi hibaelhár�
 1. Ellenőrizze, hogy az adatkészlet továbbra is frissül-e. A frissítési állapot jelzője a fenti 8. lépésben látható. Ha továbbra is frissül, várjon, amíg a frissítés be nem fejeződik a jelentés megnyitásához és frissítéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
-[További információ az Azure Cognitive Search](./index.yml)
 
-[Mi az a Power BI?](/power-bi/fundamentals/power-bi-overview)
-
-[A Power BI szolgáltatás alapfogalmai tervezők számára](/power-bi/service-basic-concepts)
++ [Keresési műveletek és tevékenységek figyelése](search-monitor-usage.md)
++ [Mi az a Power BI?](/power-bi/fundamentals/power-bi-overview)
++ [A Power BI szolgáltatás alapfogalmai tervezők számára](/power-bi/service-basic-concepts)

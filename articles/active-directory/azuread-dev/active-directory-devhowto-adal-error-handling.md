@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da47893839322f06cebfbee40902414040bb87d8
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85383734"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075202"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Hiba történt a Azure Active Directory Authentication Library-(ADAL-) ügyfelekkel kapcsolatos ajánlott eljárások kezelésében
 
@@ -197,7 +197,7 @@ Meghibásodás esetén előfordulhat, hogy egy alkalmazás felhasználói felül
 
 A natív alkalmazásokban a hibák két esetben határozhatók meg:
 
-|  |  |
+| Case (Eset) | Leírás  |
 |------|-------------|
 | **1. eset**:<br>Nem újrapróbálkozást lehetővé tevő hiba (a legtöbb esetben) | 1. Ne próbálkozzon azonnali próbálkozással. A végfelhasználó felhasználói felületének bemutatása az újrapróbálkozást meghívó adott hiba alapján (például "próbálja meg újra bejelentkezni" vagy "az Azure AD Broker alkalmazás letöltése"). |
 | **2. eset**:<br>Újrapróbálkozást lehetővé tevő hiba | 1. egyetlen újrapróbálkozást hajthat végre, mert a végfelhasználó olyan állapotba lépett, amely sikert eredményezett.<br><br>2. Ha az újrapróbálkozás sikertelen, a végfelhasználói felhasználói felületet az újrapróbálkozást meghívó adott hiba alapján ("próbálja meg újra bejelentkezni", "az Azure AD Broker alkalmazás letöltése" stb.) mutatja. |
@@ -371,7 +371,7 @@ Ha adal.jst használó egylapos alkalmazást hoz létre a AcquireToken-mel, a hi
 
 A sikertelen AcquireToken a következő esetekben szerepelnek:
 
-|  |  |
+| Case (Eset) | Leírás  |
 |------|-------------|
 | **1. eset**:<br>Feloldható interaktív kérelemmel | 1. Ha a login () nem sikerül, ne végezzen azonnali újrapróbálkozást. Csak akkor próbálkozzon újra, ha a felhasználói művelet megkérdezi az újrapróbálkozást.|
 | **2. eset**:<br>Nem oldható fel egy interaktív kérelem. A hiba újrapróbálható. | 1. hajtson végre egyetlen újrapróbálkozást, mivel a végfelhasználó főkiszolgálója olyan állapotba lépett, amely sikert eredményez.<br><br>2. Ha az újrapróbálkozás sikertelen, a végfelhasználót egy, az újrapróbálkozást meghívó adott hiba alapján jeleníti meg ("próbáljon újra bejelentkezni"). |

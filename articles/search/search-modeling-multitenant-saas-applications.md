@@ -2,24 +2,24 @@
 title: Bérlős és tartalom elkülönítése
 titleSuffix: Azure Cognitive Search
 description: Ismerje meg a több-bérlős SaaS-alkalmazások általános kialakítási mintáit az Azure Cognitive Search használata során.
-manager: nitinme
 author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 7833dcf8fbe2b6460346310a4d094c7bb5d606c4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91397368"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581573"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search
 
 Egy több-bérlős alkalmazás az egyik, amely ugyanazokat a szolgáltatásokat és képességeket biztosítja a bérlők számára, akik nem láthatják és nem oszthatják meg más bérlők információit. Ez a dokumentum az Azure Cognitive Search-mel létrehozott több-bérlős alkalmazások bérlői elkülönítési stratégiáit tárgyalja.
 
 ## <a name="azure-cognitive-search-concepts"></a>Az Azure Cognitive Search fogalmak
+
 A szolgáltatásként nyújtott keresési megoldásként az [Azure Cognitive Search](search-what-is-azure-search.md) lehetővé teszi, hogy a fejlesztők gazdag keresési funkciókat adjanak az alkalmazásokhoz anélkül, hogy bármilyen infrastruktúrát kellene kezelniük, vagy az adatok lekérése nélkül kellene foglalkoznia. A szolgáltatás feltölti az adattárat, majd a felhőben tárolja azokat. Az Azure Cognitive Search API-hoz való egyszerű kérések használatával az adatai módosíthatók és kereshetők. 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Szolgáltatások, indexek, mezők és dokumentumok keresése
@@ -31,14 +31,16 @@ Az Azure Cognitive Search használatakor az egyik a *keresési szolgáltatásra*
 A keresési szolgáltatásban található minden egyes index saját sémával rendelkezik, amelyet számos testreszabható *mező* határoz meg. Az Azure Cognitive Search indexbe kerülnek az egyes *dokumentumok* formájában. Minden dokumentumot fel kell tölteni egy adott indexbe, és hozzá kell férnie az index sémájának. Amikor az Azure Cognitive Search használatával keres adatokat, a teljes szöveges keresési lekérdezések egy adott indexre lesznek kiadva.  Ha össze szeretné hasonlítani ezeket a fogalmakat egy adatbázishoz, a mezőket a táblázat oszlopaihoz lehet hasonlítani, és a dokumentumok a sorokhoz is összehasonlíthatók.
 
 ### <a name="scalability"></a>Méretezhetőség
+
 A standard szintű [díjszabásban](https://azure.microsoft.com/pricing/details/search/) szereplő Azure Cognitive Search-szolgáltatások két dimenzióban méretezhetők: tárterület és rendelkezésre állás.
 
-* A *partíciók* hozzáadhatók a keresési szolgáltatás tárterületének növeléséhez.
-* A *replikák* hozzáadhatók a szolgáltatásokhoz, így növelhetik a keresési szolgáltatás által kezelhető kérelmek átviteli sebességét.
++ A *partíciók* hozzáadhatók a keresési szolgáltatás tárterületének növeléséhez.
++ A *replikák* hozzáadhatók a szolgáltatásokhoz, így növelhetik a keresési szolgáltatás által kezelhető kérelmek átviteli sebességét.
 
 A partíciók és replikák hozzáadásával és eltávolításával lehetővé válik a keresési szolgáltatás kapacitása, hogy az adatok mennyisége és az alkalmazás által igényelt forgalom növekedni fog. Ahhoz, hogy egy keresési szolgáltatás elér egy olvasási [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-t, két replikára van szükség. Ahhoz, hogy egy szolgáltatás olvasási és írási [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-t érjen el, három replikára van szükség.
 
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Szolgáltatások és indexek korlátai az Azure Cognitive Search
+
 Az Azure Cognitive Search különböző [díjszabási szintjei](https://azure.microsoft.com/pricing/details/search/) vannak, és a rétegek mindegyike különböző [korlátozásokkal és kvótákkal](search-limits-quotas-capacity.md)rendelkezik. A korlátozások némelyike a szolgáltatás szintjén van, néhány pedig az index szintjén, néhány pedig a partíció szintjén.
 
 |  | Alapszintű | Standard1 | Standard2 | Standard3 | Standard3 HD |
@@ -51,6 +53,7 @@ Az Azure Cognitive Search különböző [díjszabási szintjei](https://azure.mi
 | **Indexek maximális száma (szolgáltatás)** |5 |50 |200 |200 |3000 (max. 1000 indexek/partíció) |
 
 #### <a name="s3-high-density"></a>Nagy sűrűségű S3
+
 Az Azure Cognitive Search S3-as díjszabási csomagjában lehetőség van a nagy sűrűségű (HD) üzemmódra, amely kifejezetten több-bérlős forgatókönyvekhez készült. Sok esetben az egyszerűség és a költséghatékonyság előnyeinek elérése érdekében számos kisebb bérlőt kell támogatni egyetlen szolgáltatásban.
 
 Az S3 HD lehetővé teszi, hogy a sok kisméretű indexet egyetlen keresési szolgáltatás felügyelete alá lehessen csomagolni azáltal, hogy a partíciók használatával kibővíti az indexeket, így több indexet is tárolhat egyetlen szolgáltatásban.
@@ -58,24 +61,32 @@ Az S3 HD lehetővé teszi, hogy a sok kisméretű indexet egyetlen keresési szo
 Az S3 szolgáltatás úgy lett kialakítva, hogy rögzített számú indexet működtessen (legfeljebb 200), és lehetővé teszi, hogy az egyes indexek horizontálisan méretezhetők legyenek, mivel új partíciókat adnak hozzá a szolgáltatáshoz. A partíciók S3 HD-szolgáltatásokhoz való hozzáadása növeli a szolgáltatás által üzemeltethető indexek maximális számát. Az egyes S3HD-indexek ideális maximális mérete 50 – 80 GB, de a rendszer által kiszabott egyes indexek esetében nem áll rendelkezésre rögzített méretkorlát.
 
 ## <a name="considerations-for-multitenant-applications"></a>Több-bérlős alkalmazások szempontjai
+
 A több-bérlős alkalmazásoknak hatékonyan kell kiosztaniuk az erőforrásokat a bérlők között, miközben a különböző bérlők között bizonyos fokú adatvédelemre van szükség. Az ilyen alkalmazások architektúrájának tervezésekor néhány szempontot figyelembe kell venni:
 
-* *Bérlő elkülönítése:* Az alkalmazás fejlesztőknek megfelelő intézkedéseket kell tenniük annak biztosításához, hogy a bérlők ne legyenek jogosulatlan vagy nemkívánatos hozzáférésük más bérlők adatához. Az adatvédelem szempontjából a bérlők elkülönítési stratégiái a megosztott erőforrások hatékony kezelését és a zajos szomszédok elleni védelmet igénylik.
-* *Felhőalapú erőforrás díja:* A többi alkalmazáshoz hasonlóan a szoftveres megoldásoknak is versenyképesnek kell lenniük a több-bérlős alkalmazások összetevőjeként.
-* *Egyszerű műveletek:* Több-bérlős architektúra fejlesztésekor fontos szempont az alkalmazás működésére és összetettségére gyakorolt hatás. Az Azure Cognitive Search rendelkezik [99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-os SLA-val.
-* *Globális helyigény:* Előfordulhat, hogy a több-bérlős alkalmazásoknak hatékonyan kell kiszolgálni a világ bármely részén elosztott bérlőket.
-* *Méretezhetőség:* Az alkalmazás-fejlesztőknek meg kell fontolniuk, hogyan egyeztethetők össze az alkalmazások kellően alacsony szintjének fenntartása és az alkalmazás megtervezése között a bérlők számával, valamint a bérlők adatai és a számítási feladatok méretétől függően.
++ *Bérlő elkülönítése:* Az alkalmazás fejlesztőknek megfelelő intézkedéseket kell tenniük annak biztosításához, hogy a bérlők ne legyenek jogosulatlan vagy nemkívánatos hozzáférésük más bérlők adatához. Az adatvédelem szempontjából a bérlők elkülönítési stratégiái a megosztott erőforrások hatékony kezelését és a zajos szomszédok elleni védelmet igénylik.
+
++ *Felhőalapú erőforrás díja:* A többi alkalmazáshoz hasonlóan a szoftveres megoldásoknak is versenyképesnek kell lenniük a több-bérlős alkalmazások összetevőjeként.
+
++ *Egyszerű műveletek:* Több-bérlős architektúra fejlesztésekor fontos szempont az alkalmazás működésére és összetettségére gyakorolt hatás. Az Azure Cognitive Search rendelkezik [99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-os SLA-val.
+
++ *Globális helyigény:* Előfordulhat, hogy a több-bérlős alkalmazásoknak hatékonyan kell kiszolgálni a világ bármely részén elosztott bérlőket.
+
++ *Méretezhetőség:* Az alkalmazás-fejlesztőknek meg kell fontolniuk, hogyan egyeztethetők össze az alkalmazások kellően alacsony szintjének fenntartása és az alkalmazás megtervezése között a bérlők számával, valamint a bérlők adatai és a számítási feladatok méretétől függően.
 
 Az Azure Cognitive Search néhány olyan határt kínál, amely a bérlők adatai és a számítási feladatok elkülönítésére használható.
 
 ## <a name="modeling-multitenancy-with-azure-cognitive-search"></a>Bérlős modellezése az Azure Cognitive Search
+
 Több-bérlős forgatókönyv esetén az alkalmazás fejlesztői egy vagy több keresési szolgáltatást használnak, és a bérlőket a szolgáltatások, az indexek vagy mindkettő között osztják el. Az Azure Cognitive Search néhány gyakori mintát tartalmaz a több-bérlős forgatókönyv modellezéséhez:
 
-1. *Index/bérlő:* Minden bérlő saját indexet tartalmaz a más Bérlővel megosztott keresési szolgáltatáson belül.
-2. *Szolgáltatás/bérlő:* Mindegyik bérlő rendelkezik saját dedikált Azure Cognitive Search szolgáltatással, amely a legmagasabb szintű adatmennyiséget és a munkaterhelések elkülönítését kínálja.
-3. *Kettő* kombinációja: Nagyobb, aktívabb bérlők dedikált szolgáltatásokat kapnak, míg a kisebb bérlők egyedi indexeket kapnak a megosztott szolgáltatásokon belül.
++ *Egy index/bérlő:* Minden bérlő saját indexet tartalmaz a más Bérlővel megosztott keresési szolgáltatáson belül.
 
-## <a name="1-index-per-tenant"></a>1. index/bérlő
++ *Egy szolgáltatás/bérlő:* Mindegyik bérlő rendelkezik saját dedikált Azure Cognitive Search szolgáltatással, amely a legmagasabb szintű adatmennyiséget és a munkaterhelések elkülönítését kínálja.
+
++ *Kettő* kombinációja: Nagyobb, aktívabb bérlők dedikált szolgáltatásokat kapnak, míg a kisebb bérlők egyedi indexeket kapnak a megosztott szolgáltatásokon belül.
+
+## <a name="model-1-one-index-per-tenant"></a>1. modell: egy index/bérlő
 
 :::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="Az index/bérlői modell ábrázolása" border="false":::
 
@@ -93,7 +104,7 @@ Az Azure Cognitive Search lehetővé teszi az egyéni indexek és a növekedő i
 
 Ha az indexek teljes száma túl nagyra nő egyetlen szolgáltatás esetében, egy másik szolgáltatást kell kiépíteni az új bérlők befogadásához. Ha az indexeket új szolgáltatások hozzáadásakor kell áthelyezni a keresési szolgáltatások között, az indexből származó adatoknak kézzel kell átmásolnia az egyik indexből a másikba, mivel az Azure Cognitive Search nem engedélyezi az index áthelyezését.
 
-## <a name="2-service-per-tenant"></a>2. szolgáltatás/bérlő
+## <a name="model-2-once-service-per-tenant"></a>2. modell: egyszeri szolgáltatás/bérlő
 
 :::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="A szolgáltatás/bérlői modell ábrázolása" border="false":::
 
@@ -109,7 +120,8 @@ A szolgáltatás/bérlő modell hatékony választás a globális helyigényű a
 
 A minta skálázásának kihívásai akkor jelentkeznek, amikor az egyes bérlők kibővítik a szolgáltatást. Az Azure Cognitive Search jelenleg nem támogatja a keresési szolgáltatás díjszabási szintjét, így az összes adatmennyiséget manuálisan át kell másolni egy új szolgáltatásba.
 
-## <a name="3-mixing-both-models"></a>3. mindkét modell keverése
+## <a name="model-3-hybrid"></a>3. modell: hibrid
+
 A modellezési bérlős egy másik mintázata a bérlői és a szolgáltatás-bérlői stratégiák keveredését is felkeveri.
 
 A két minta összekeverésével az alkalmazás legnagyobb bérlői dedikált szolgáltatásokat foglalhatnak el, míg a kevésbé aktív, kisebb bérlők egy megosztott szolgáltatásban foglalhatnak le indexeket. Ez a modell biztosítja, hogy a legnagyobb bérlők következetesen nagy teljesítményt biztosítanak a szolgáltatástól, miközben a kisebb bérlők számára a zajos szomszédoktól való védekezést segítik.
@@ -117,6 +129,7 @@ A két minta összekeverésével az alkalmazás legnagyobb bérlői dedikált sz
 Ennek a stratégiának a megvalósítása azonban előrelátó módon feltételezi, hogy mely bérlők igényelnek dedikált szolgáltatást, illetve egy megosztott szolgáltatásbeli indexet. Az alkalmazások összetettsége a két bérlős-modell kezelésének szükségességével nő.
 
 ## <a name="achieving-even-finer-granularity"></a>Még finomabb részletesség elérése
+
 A fenti tervezési minták a több-bérlős forgatókönyvek Azure-beli modellezésére Cognitive Search feltételezik, hogy az egyes bérlők egy adott alkalmazás teljes példányai. Az alkalmazások azonban néha több kisebb hatókört is kezelhetnek.
 
 Ha a szolgáltatás-/bérlői és az index/bérlői modellek nem eléggé kis hatókörű, az index modellezése még finomabb részletességi fokú részletességgel valósítható meg.
@@ -127,10 +140,8 @@ Ezzel a módszerrel különböző felhasználói fiókok, különálló jogosult
 
 > [!NOTE]
 > A fent ismertetett módszer használatával egyetlen indexet állíthat be több bérlő kiszolgálására, ami befolyásolja a keresési eredmények relevanciáját. A keresés relevanciás pontszámait index-szintű hatókörre számítjuk ki, nem pedig a bérlői szintű hatókörre, így az összes bérlő adatai bekerülnek a releváns pontszámok alapjául szolgáló statisztikai adatokba, például a kifejezés gyakoriságával.
-> 
-> 
+>
 
 ## <a name="next-steps"></a>Következő lépések
-Az Azure Cognitive Search számos alkalmazás számára meggyőző megoldás. A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) a legmegfelelőbb Azure-Cognitive Search az alkalmazások számítási feladatainak és architektúráinak méretének megfelelően.
 
-Az Azure Cognitive Search és a több-bérlős forgatókönyvekkel kapcsolatos bármilyen kérdés a következő lehet: azuresearch_contact@microsoft.com .
+Az Azure Cognitive Search számos alkalmazás számára meggyőző megoldás. A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) a legmegfelelőbb Azure-Cognitive Search az alkalmazások számítási feladatainak és architektúráinak méretének megfelelően.

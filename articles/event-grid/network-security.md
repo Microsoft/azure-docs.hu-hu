@@ -5,12 +5,12 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d58e8b5ce9fb444fa501f897cca722613d9c51fe
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917528"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967574"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid erőforrások hálózati biztonsága
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Event Grid használatával: 
@@ -33,7 +33,7 @@ A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](.
 ## <a name="ip-firewall"></a>IP-tűzfal 
 A Azure Event Grid támogatja az IP-alapú hozzáférés-vezérlést a témakörökben és tartományokban való közzétételhez. Az IP-alapú vezérlők használatával a közzétevőket egy témakörre vagy tartományra korlátozhatja, hogy csak a jóváhagyott gépek és felhőalapú szolgáltatások készlete legyen. Ez a szolgáltatás kiegészíti a Event Grid által támogatott [hitelesítési mechanizmusokat](security-authentication.md) .
 
-Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja az IP-címek és IP-címtartományok [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölését. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni.
+Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítést és engedélyezést tartalmaz. Az IP-tűzfallal továbbra is korlátozhatja az IP-címek és IP-címtartományok [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölését. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni.
 
 A témakörökhöz és tartományokhoz tartozó IP-tűzfal konfigurálásának lépésenkénti lépéseiért lásd az [IP-tűzfal konfigurálását](configure-firewall.md)ismertető témakört.
 
