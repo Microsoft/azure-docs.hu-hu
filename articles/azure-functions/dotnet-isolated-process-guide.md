@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4da685c247427e78297df1753779ee9b5c7866b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b527a2c7cbfe4971f5dd99f40f98d3eaa32aa451
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023197"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227313"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Útmutató a függvények futtatásához a .NET 5,0-ben az Azure-ban
 
@@ -105,7 +105,7 @@ Az alábbi példa egy különálló szolgáltatás-függőséget szúr be:
 
 További információ: [függőségi befecskendezés ASP.net Coreban](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-### <a name="middleware"></a>Köztes szoftverek
+### <a name="middleware"></a>Közbenső szoftver
 
 A .NET izolált is támogatja a middleware-regisztrációt, a ASP.NET-ben találhatóhoz hasonló modell használatával. Ez a modell lehetővé teszi a logika beírását a Meghívási folyamatba, a függvények végrehajtása előtt és után.
 
@@ -195,7 +195,7 @@ Ez a szakasz ismerteti a .NET 5,0-as folyamaton futó működési és viselkedé
 | function.jsaz összetevőn | Létrehozott | Nem generált |
 | Konfiguráció | [host.jsbekapcsolva](functions-host-json.md) | [host.js](functions-host-json.md) és egyéni inicializálás |
 | Függőséginjektálás | [Támogatott](functions-dotnet-dependency-injection.md)  | [Támogatott](#dependency-injection) |
-| Köztes szoftverek | Nem támogatott | Támogatott |
+| Közbenső szoftver | Nem támogatott | Támogatott |
 | Hideg indítási idő | Tipikus | Az igény szerinti indítás miatt már nem. A lehetséges késések csökkentése érdekében a Windows helyett Linuxon futtassa a parancsot. |
 | ReadyToRun | [Támogatott](functions-dotnet-class-library.md#readytorun) | _TBD_ |
 
@@ -224,4 +224,4 @@ A .NET elkülönített folyamat-függvények futtatásával kapcsolatos megoldá
 [HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
 [HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
 [ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
-[JsonSerializerOptions]: /api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true
+[JsonSerializerOptions]: /dotnet/api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

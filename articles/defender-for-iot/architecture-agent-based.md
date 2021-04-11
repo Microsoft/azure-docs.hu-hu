@@ -1,16 +1,16 @@
 ---
-title: Ügynök-alapú megoldás architektúrája
+title: Mi az az ügynök-alapú megoldás architektúrája?
 description: Ismerje meg az Azure Defender IoT-ügynökön alapuló architektúráját és az információáramlást.
 ms.topic: overview
 ms.date: 1/25/2021
-ms.openlocfilehash: b04e8fa6225aef9f3c228a44631f117fedffccff
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e08c3f151c3d3bc4fe08e61d960874b07f5b63e8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784883"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383524"
 ---
-# <a name="agent-based-solution-for-device-builders"></a>Ügynökalapú megoldás eszközkészítők számára
+# <a name="what-is-agent-based-solution-for-device-builders"></a>Mi az az ügynök-alapú megoldás az eszközök építői számára
 
 Ez a cikk a Defender IoT-ügynökön alapuló megoldásának funkcionális rendszerarchitektúráját ismerteti. A IoT készült Azure Defender két lehetőséget kínál a környezet igényeinek, az ügynök nélküli megoldásnak a szervezeteknek és az eszközök építői számára.
 
@@ -34,7 +34,7 @@ A IoT ajánlásai és értesítései (analitikai folyamat kimenete) az egyes üg
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="A Micro Agent architektúrája.":::
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)
 

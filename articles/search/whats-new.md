@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 99a7f08b6d366f2f928b99caba2424c2fae0d625
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9ae576a2d0ab8aee00be5b755c348806b412bef
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559519"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108489"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -27,6 +27,8 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 | [Helyesírás-ellenőrzés lekérdezési feltételei](speller-how-to-add.md) | Mielőtt a lekérdezési feltételek elérnék a keresőmotort, megadhatja őket a helyesírási hibák ellenőrzéséhez. A `speller` beállítás bármilyen típusú lekérdezéssel használható (egyszerű, teljes vagy szemantikai). |  Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió|
 | [SharePoint Online-indexelő](search-howto-index-sharepoint-online.md) | Ez az indexelő egy SharePoint Online-webhelyhez kapcsolódik, így a tartalom indexelhető egy dokumentumtárból. | Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
 | [Normalizálók](search-normalizers.md) | A normalizálók egyszerű szöveges előfeldolgozást biztosítanak, például burkolatot, ékezetes eltávolítást, asciifolding és így tovább, anélkül, hogy a teljes elemzési láncon át kellene haladnia.| Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
+[**Egyéni entitás keresési képességei**](cognitive-search-skill-custom-entity-lookup.md ) |  Egy kognitív képesség, amely a szavak és kifejezések egyéni, felhasználó által definiált listájáról keres szöveget. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható. | Általánosan elérhető. |
+|
 
 ## <a name="february-2021"></a>2021. február
 

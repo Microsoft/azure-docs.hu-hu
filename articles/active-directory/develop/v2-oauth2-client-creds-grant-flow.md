@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/2/2020
+ms.date: 4/1/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 96f7d7c94ce908d953a6941bfa237fe8da1dc482
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b3e27f266551eb7425d4801d14261a5e428e4c2
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98752668"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168110"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata
 
@@ -25,7 +25,7 @@ Használhatja az RFC 6749-ben megadott [OAuth 2,0 ügyfél-hitelesítő adatokat
 
 Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját. Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
-A OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamata lehetővé teszi egy webszolgáltatás (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát a felhasználó megszemélyesítése helyett a hitelesítéshez egy másik webszolgáltatás hívásakor. Ebben az esetben az ügyfél általában egy közepes szintű webszolgáltatás, egy démon-szolgáltatás vagy egy webhely. A Microsoft Identity platform lehetővé teszi, hogy a hívó szolgáltatás hitelesítő adatként használjon tanúsítványokat (közös titok helyett).
+A OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamata lehetővé teszi egy webszolgáltatás (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát a felhasználó megszemélyesítése helyett a hitelesítéshez egy másik webszolgáltatás hívásakor. A Microsoft Identity platform lehetővé teszi, hogy a hívó szolgáltatás hitelesítő adatként használjon tanúsítványokat (közös titok helyett).  Mivel az alkalmazások saját hitelesítő adatai vannak használatban, ezeket a hitelesítő adatokat biztonságban kell tartani – _Soha ne_ tegye közzé ezt a hitelesítő adatot a forráskódban, ágyazza be a weblapokba, vagy használja azt egy széles körben elterjedt natív alkalmazásban. 
 
 Az ügyfél-hitelesítő adatok folyamatában az engedélyek közvetlenül az alkalmazáshoz adhatók meg a rendszergazda számára. Ha az alkalmazás jogkivonatot jelenít meg egy erőforráshoz, az erőforrás azt kényszeríti, hogy maga az alkalmazás engedélyezte a művelet végrehajtását, mert nincs olyan felhasználó, aki részt vesz a hitelesítésben.  Ez a cikk az alkalmazások API-nak való [meghívásához](#application-permissions)szükséges lépéseket, valamint [az API meghívásához szükséges jogkivonatok beszerzését](#get-a-token)ismerteti.
 
@@ -261,7 +261,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 Olvassa el az [ügyfél hitelesítő adatai – áttekintés dokumentációját](https://aka.ms/msal-net-client-credentials) a Microsoft hitelesítési könyvtárából
 
-| Sample | Platform |Description |
+| Sample | Platform |Leírás |
 |--------|----------|------------|
 |[Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2,1 konzol | Egy egyszerű .NET Core-alkalmazás, amely egy adott bérlő felhasználóit jeleníti meg a Microsoft Graph az alkalmazás identitásával, a felhasználó nevében. A minta azt is szemlélteti, hogy a hitelesítés tanúsítványokat használ a hitelesítéshez. |
 |[Active-Directory-DotNet-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET, MVC | Egy webalkalmazás, amely a Microsoft Graph adatait az alkalmazás identitásával szinkronizálja, ahelyett, hogy a felhasználó nevében használja. |

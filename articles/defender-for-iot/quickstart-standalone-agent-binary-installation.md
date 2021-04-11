@@ -1,16 +1,16 @@
 ---
-title: A Defender telepítése a IoT Micro agenthez (előzetes verzió)
-description: Ismerje meg, hogyan telepítheti és hitelesítheti a Defender Micro Agent ügynököt.
+title: 'Rövid útmutató: a Defender telepítése a IoT Micro agenthez (előzetes verzió)'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan telepítheti és hitelesítheti a Defender Micro Agent ügynököt.
 ms.date: 3/9/2021
 ms.topic: quickstart
-ms.openlocfilehash: ecde9f42acc5cf4a924a657f4f0cdc545c4a668e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a153b640a1d1e86f9b761817d05fda7d3e47da98
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782724"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384408"
 ---
-# <a name="install-defender-for-iot-micro-agent-preview"></a>A Defender telepítése a IoT Micro agenthez (előzetes verzió)
+# <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>Rövid útmutató: a Defender telepítése a IoT Micro agenthez (előzetes verzió)
 
 Ez a cikk azt ismerteti, hogyan telepítheti és hitelesítheti a Defender Micro Agent ügynököt.
 
@@ -148,4 +148,5 @@ sudo apt-get install defender-iot-micro-agent=<version>
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A Defender Micro Agent felépítése a forráskódból](quickstart-building-the-defender-micro-agent-from-source.md)
+> [!div class="nextstepaction"]
+> [A Defender Micro Agent felépítése a forráskódból](quickstart-building-the-defender-micro-agent-from-source.md)

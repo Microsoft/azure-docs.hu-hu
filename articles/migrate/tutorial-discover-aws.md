@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
 ms.openlocfilehash: 295cd5a6831cb64d146bb92bca74b82ff7ab29df
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104771481"
 ---
 # <a name="tutorial-discover-aws-instances-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: AWS-példányok felderítése Azure Migrateekkel: felderítés és Értékelés
@@ -74,7 +74,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
     ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-aws/register-apps.png)
 
-1. Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás regisztrálását. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+1. Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás regisztrálását. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-aws-instances"></a>AWS-példányok előkészítése
 
@@ -173,7 +173,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config

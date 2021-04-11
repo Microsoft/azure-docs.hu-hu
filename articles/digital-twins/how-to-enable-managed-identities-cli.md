@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9ce87584373bd87a8f89ecb4ea692b44d3fab4d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9eb5950b5cf7d4e7d0270deed72866ee28e3962
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202960"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106904"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Felügyelt identitás engedélyezése az Azure Digital Twins-események útválasztásához (előzetes verzió): Azure CLI
 
@@ -40,7 +40,7 @@ Ezen létrehozási módszerek egyike ugyanazokat a konfigurációs beállításo
 
 Ebből a szakaszból megtudhatja, hogyan engedélyezheti a rendszer által felügyelt identitásokat egy jelenleg létrehozott Azure digitális Twins-példányon. 
 
-Ezt úgy teheti meg, hogy hozzáad egy `--assign-identity` paramétert a `az dt create` példány létrehozásához használt parancshoz. (A paranccsal kapcsolatos további információkért tekintse meg a [hivatkozási dokumentációt](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) , vagy az [Azure Digital Twins-példány beállításának általános utasításait](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
+Ezt úgy teheti meg, hogy hozzáad egy `--assign-identity` paramétert a `az dt create` példány létrehozásához használt parancshoz. (A paranccsal kapcsolatos további információkért tekintse meg a [hivatkozási dokumentációt](/cli/azure/dt#az_dt_create) , vagy az [Azure Digital Twins-példány beállításának általános utasításait](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
 
 Rendszerfelügyelt identitással rendelkező példány létrehozásához adja hozzá a  `--assign-identity` következőhöz hasonló paramétert:
 
@@ -97,7 +97,7 @@ A `--scopes` paramétert hozzáadhatja a `az dt create` parancshoz, hogy az iden
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-A paranccsal kapcsolatos további példákért tekintse meg az az [ **DT Create** Reference dokumentációt](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create).
+A paranccsal kapcsolatos további példákért tekintse meg az az [ **DT Create** Reference dokumentációt](/cli/azure/dt#az_dt_create).
 
 Azt is megteheti, hogy szerepkörök létrehozására és kezelésére az az [**role hozzárendelési**](/cli/azure/role/assignment) parancssori csoportot is használja. Ez olyan további forgatókönyvek támogatásához használható, amelyekben nem kívánja csoportosítani a szerepkör-hozzárendelést a Create paranccsal.
 
@@ -108,7 +108,7 @@ Miután beállította a rendszer által felügyelt identitást az Azure Digital 
 >[!NOTE]
 > Az identitás-alapú hitelesítésre való váltáshoz olyan végpontot nem lehet szerkeszteni, amely a kulcs alapú identitással már létrejött. A végpont első létrehozásakor ki kell választania a hitelesítési típust.
 
-Ezt úgy teheti meg, hogy hozzáad egy `--auth-type` paramétert a `az dt endpoint create` végpont létrehozásához használt parancshoz. (A paranccsal kapcsolatos további információkért tekintse meg a [dokumentációt](/cli/azure/ext/azure-iot/dt/endpoint/create) , illetve az [Azure Digital Twins-végpont beállításával kapcsolatos általános útmutatást](how-to-manage-routes-apis-cli.md#create-the-endpoint)).
+Ezt úgy teheti meg, hogy hozzáad egy `--auth-type` paramétert a `az dt endpoint create` végpont létrehozásához használt parancshoz. (A paranccsal kapcsolatos további információkért tekintse meg a [dokumentációt](/cli/azure/dt/endpoint/create) , illetve az [Azure Digital Twins-végpont beállításával kapcsolatos általános útmutatást](how-to-manage-routes-apis-cli.md#create-the-endpoint)).
 
 Ha identitás-alapú hitelesítést használó végpontot szeretne létrehozni, adja meg a `IdentityBased` hitelesítési típust a  `--auth-type` paraméterrel. Az alábbi példa egy Event Hubs végpontra mutat.
 

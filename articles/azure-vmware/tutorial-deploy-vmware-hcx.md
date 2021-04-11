@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869089"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011000"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -20,7 +20,7 @@ A VMware HCX Advanced Connector előre telepítve van az Azure VMware megoldásb
 >Bár a VMware-konfiguráció maximális eszköze a helyszíni összekötő és a Cloud Manager között legfeljebb 25 hely párokat ír le, a licencelés ezt háromra korlátozza a HCX Advanced és a 10 for HCX Enterprise Edition esetében.
 
 >[!NOTE]
->A VMware HCX Enterprise előzetes verziójú szolgáltatásként érhető el az Azure VMware megoldásban. Ingyenes, és az előzetes verziójú szolgáltatás használati feltételeinek hatálya alá tartozik. A VMware HCX Enterprise szolgáltatás általánosan elérhetővé tétele után 30 napos értesítést kap, hogy a számlázás át fog térni. Lehetősége van a szolgáltatás kikapcsolására vagy letiltására is. A VMware HCX Enterprise és a VMware HCX Advanced közötti egyszerű visszalépési útvonal nem érhető el. Ha úgy dönt, hogy visszalépést végez, újra kell telepítenie az állásidőt.
+>A VMware HCX Enterprise előzetes verziójú szolgáltatásként érhető el az Azure VMware megoldásban. Ingyenes, és az előzetes verziójú szolgáltatás használati feltételeinek hatálya alá tartozik. A VMware HCX Enterprise szolgáltatás általánosan elérhetővé tétele után 30 napos értesítést kap, hogy a számlázás át fog térni. Lehetősége van a szolgáltatás kikapcsolására vagy letiltására is. A HCx Enterprise verzióról a HCX-re való visszalépésre az újbóli üzembe helyezés nélkül van lehetőség, de a művelet végrehajtásához egy támogatási jegyet kell bejelentkeznie. Ha visszalépést tervez, gondoskodjon arról, hogy ne legyenek ütemezve a Migrálás
 
 Első lépésként tekintse át a [szoftver verziójának követelményeit](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html) [, valamint](#before-you-begin)az [előfeltételeket](#prerequisites). 
 

@@ -1,21 +1,21 @@
 ---
 title: Keresési szolgáltatás létrehozása a portálon
 titleSuffix: Azure Cognitive Search
-description: Ebből a portálból megtudhatja, hogyan állíthat be egy Azure Cognitive Search-erőforrást a Azure Portalban. Válassza az erőforráscsoportok, a régiók, az SKU vagy az árképzési szintet.
+description: Ismerje meg, hogyan állíthat be egy Azure Cognitive Search-erőforrást a Azure Portalban. Válassza az erőforráscsoportok, a régiók, valamint az SKU vagy az árképzés szintet.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/15/2021
-ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651986"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580753"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
+# <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
 Az [azure Cognitive Search](search-what-is-azure-search.md) egy Azure-erőforrás, amellyel teljes szöveges keresési élményt adhat hozzá az egyéni alkalmazásokhoz. Egyszerűen integrálható más Azure-szolgáltatásokkal, amelyek adatkezelést vagy további feldolgozást tesznek lehetővé, a hálózati kiszolgálókon lévő alkalmazásokkal vagy más felhőalapú platformokon futó szoftverekkel.
 

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 1e7a956b358d486250fbfc26da141c47c0238b56
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97930786"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448389"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Fájlmegosztás beállítása a MSIX-alkalmazás csatolásához (előzetes verzió)
 

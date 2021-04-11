@@ -3,12 +3,12 @@ title: Felügyelt identitás engedélyezése Azure Event Grid rendszer témakör
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolgáltatás identitása egy Azure Event Grid rendszer témakörben.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 66b418787e5570dc5da06a5332dd834ccbfd4aef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d8219cf9cba4ce0a4fb5ddbcf695f1ec72de36fe
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630414"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280513"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-system-topic"></a>Rendszer által felügyelt identitás társítása Event Grid rendszerbeli témakörhöz
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a rendszer által felügyelt identitást egy meglévő Event Grid rendszer-témakörhöz. A felügyelt identitások megismeréséhez tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md)című témakört.  
@@ -43,4 +43,4 @@ A rendszer által felügyelt identitást csak a regionális Azure-erőforrások 
 
 
 ## <a name="next-steps"></a>Következő lépések
-Adja hozzá az identitást egy megfelelő szerepkörhöz (például Service Bus adatfeladóhoz) a célhelyen (például egy Service Bus üzenetsor). A részletes lépésekért lásd: [identitás hozzáadása az Azure-szerepkörökhöz a célhelyeken](add-identity-roles.md). 
+Adja hozzá az identitást egy megfelelő szerepkörhöz (például Service Bus adatfeladóhoz) a célhelyen (például egy Service Bus üzenetsor). A részletes lépésekért lásd: [a felügyelt identitás engedélyezése a Event Grid célhoz való hozzáféréshez](add-identity-roles.md). 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 04/07/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6984f27ae0ae81c3bf8d98efcce5fb23909c36d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577094"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226090"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
 
@@ -108,6 +108,18 @@ Javasoljuk, hogy a legtöbb esetben a Azure Stack Edge Pro fix IP-címek alapjá
 | https:// \* . azurecr.IO                     | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
 | https:// \* . Azure-Devices.net              | IoT Hub hozzáférés (kötelező)                             | 
 
+### <a name="url-patterns-for-monitoring"></a>A figyelés URL-mintái
+
+Adja hozzá a következő URL-mintákat a Azure Monitorhoz, ha a Linux rendszerhez készült Log Analytics-ügynök tárolós verzióját használja.
+
+| URL-minta | Port | Összetevő vagy funkció |
+|-------------|-------------|----------------------------|
+| http:// \* ODS.opinsights.Azure.com | 443 | Adatfeldolgozás |
+| http:// \* . OMS.opinsights.Azure.com | 443 | Operations Management Suite-(OMS-) előkészítés |
+| http:// \* . DC.Services.VisualStudio.com | 443 | Azure Public Cloud Application Insightst használó ügynök telemetria |
+
+További információ: [a hálózati tűzfalakra vonatkozó követelmények a tárolók adatainak figyeléséhez](../azure-monitor/containers/container-insights-onboard.md#network-firewall-requirements).
+
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>A Azure Government átjárójának URL-mintái
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/azure-stack-edge-gateway-gov-url-patterns-firewall.md)]
@@ -119,6 +131,17 @@ Javasoljuk, hogy a legtöbb esetben a Azure Stack Edge Pro fix IP-címek alapjá
 | https: \/ /MCR.microsoft.com<br></br>https:// \* . CDN.mscr.com | Microsoft Container Registry (kötelező)               |
 | https:// \* . Azure-Devices.us              | IoT Hub hozzáférés (kötelező)           |
 | https:// \* . azurecr.us                    | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
+
+### <a name="url-patterns-for-monitoring-for-azure-government"></a>A Azure Government figyelésének URL-mintái
+
+Adja hozzá a következő URL-mintákat a Azure Monitorhoz, ha a Linux rendszerhez készült Log Analytics-ügynök tárolós verzióját használja.
+
+| URL-minta | Port | Összetevő vagy funkció |
+|-------------|-------------|----------------------------|
+| http:// \* ODS.opinsights.Azure.us | 443 | Adatfeldolgozás |
+| http:// \* . OMS.opinsights.Azure.us | 443 | Operations Management Suite-(OMS-) előkészítés |
+| http:// \* . DC.Services.VisualStudio.com | 443 | Azure Public Cloud Application Insightst használó ügynök telemetria |
+
 
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 

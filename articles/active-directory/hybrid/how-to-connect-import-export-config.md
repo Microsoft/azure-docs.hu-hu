@@ -11,12 +11,12 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e2bdaa2c7a7648124fbe0be60e5a0af2f83238f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98681955"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226513"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Azure AD Connect konfigurációs beállításainak importálása és exportálása 
 
@@ -42,7 +42,7 @@ Előzőleg exportált beállítások importálása:
 1. Válassza a **szinkronizálási beállítások importálása** lehetőséget. Tallózással keresse meg a korábban exportált JSON-beállításokat tartalmazó fájlt.
 1. Válassza a **Telepítés** gombot.
 
-   ![A szükséges összetevők telepítése képernyőt megjelenítő képernyőkép](media/how-to-connect-import-export-config/import1.png)
+   ![A szükséges összetevők telepítése képernyőt megjelenítő képernyőkép](media/how-to-connect-import-export-config/import-1.png)
 
 > [!NOTE]
 > Felülbírálhatja a beállításokat ezen a lapon, például SQL Server használatát LocalDB helyett, vagy egy meglévő szolgáltatásfiók használatát egy alapértelmezett VSA helyett. Ezeket a beállításokat a rendszer nem importálja a konfigurációs beállítások fájljából. Információ-és összehasonlítási célokat szolgálnak.
@@ -57,7 +57,7 @@ Itt láthatók a telepítési élményben elvégezhető változások. Az összes
 - Helyszíni **címtárbeli hitelesítő adatok**: a szinkronizálási beállításokban található minden helyszíni címtárhoz meg kell adnia a hitelesítő adatokat a szinkronizálási fiók létrehozásához, vagy egy előre létrehozott egyéni szinkronizálási fiókot kell megadnia. Ez az eljárás megegyezik a tiszta telepítési felülettel, azzal a kivétellel, hogy nem adhat hozzá vagy távolíthat el címtárakat.
 - **Konfigurációs beállítások**: a tiszta telepítéshez hasonlóan dönthet úgy, hogy a kezdeti beállításokat konfigurálja az automatikus szinkronizálás indításához vagy az átmeneti üzemmód engedélyezéséhez. A fő különbség az, hogy az átmeneti üzemmód szándékosan engedélyezve van a konfiguráció és a szinkronizálás eredményének összehasonlításához, mielőtt aktívan exportálja az eredményeket az Azure-ba.
 
-![A címtárak összekapcsolására szolgáló képernyőt bemutató képernyőkép](media/how-to-connect-import-export-config/import2.png)
+![A címtárak összekapcsolására szolgáló képernyőt bemutató képernyőkép](media/how-to-connect-import-export-config/import-2.png)
 
 > [!NOTE]
 > Csak egy szinkronizációs kiszolgáló lehet az elsődleges szerepkörben, és aktívan exportálhatja a konfigurációs módosításokat az Azure-ba. Az összes többi kiszolgálót átmeneti módba kell helyezni.
@@ -71,21 +71,27 @@ Az áttelepítéshez olyan PowerShell-parancsfájlt kell futtatni, amely kibontj
 ### <a name="migration-process"></a>Migrálási folyamat 
 A beállítások áttelepíthetők:
 
-1. Indítsa el **AzureADConnect.msi** az új átmeneti kiszolgálón, és állítsa le Azure ad Connect **üdvözlőlapján** .
+ 1. Indítsa el **AzureADConnect.msi** az új átmeneti kiszolgálón, és állítsa le Azure ad Connect **üdvözlőlapján** .
 
-1. Másolja **MigrateSettings.ps1** a Microsoft Azure ad Connect\Tools könyvtárból a meglévő kiszolgáló egy helyére. Ilyen például a C:\setup, ahol a telepítő egy olyan könyvtár, amely a meglévő kiszolgálón lett létrehozva.
+ 2. Másolja **MigrateSettings.ps1** a Microsoft Azure ad Connect\Tools könyvtárból a meglévő kiszolgáló egy helyére. Ilyen például a C:\setup, ahol a telepítő egy olyan könyvtár, amely a meglévő kiszolgálón lett létrehozva.</br>
+     ![Azure AD Connect-címtárakat bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate-1.png)
 
-   ![Azure AD Connect-címtárakat bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate1.png)
+     >[!NOTE]
+     > Ha a következő üzenet jelenik meg: "A pozíciós paraméter nem található, amely elfogadja az argumentumot **igaz**.", az alábbi módon:
+     >
+     >
+     >![A hiba képernyőképe ](media/how-to-connect-import-export-config/migrate-5.png) után szerkessze a MigrateSettings.ps1 fájlt, és távolítsa el **$true** és futtassa a szkriptet: ![ képernyőkép a konfiguráció szerkesztéséhez](media/how-to-connect-import-export-config/migrate-6.png)
+ 
 
-1. Futtassa a parancsfájlt az itt látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. A teljes **exportált-ServerConfiguration-*** mappát át kell másolnia az új kiszolgálóra.
 
-   ![Képernyőkép, amely a Windows PowerShellben lévő parancsfájlt jeleníti meg. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Az exportált-ServerConfiguration-* mappa másolását bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate3.png)
 
-1. **Azure ad Connect** indításához kattintson duplán a ikonra az asztalon. Fogadja el a Microsoft szoftverlicenc-szerződését, és a következő lapon válassza a **Testreszabás** lehetőséget.
-1. Jelölje be a **szinkronizálási beállítások importálása** jelölőnégyzetet. Válassza a **Tallózás** lehetőséget a másolt exportált ServerConfiguration-* mappa tallózásához. Az áttelepített beállítások importálásához válassza ki a MigratedPolicy.js.
+ 3. Futtassa a parancsfájlt az itt látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. A teljes **exportált-ServerConfiguration-*** mappát át kell másolnia az új kiszolgálóra.
+     ![Képernyőkép, amely a Windows PowerShellben lévő parancsfájlt jeleníti meg. ](media/how-to-connect-import-export-config/migrate-2.png)![ Az exportált-ServerConfiguration-* mappa másolását bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate-3.png)
 
-   ![A szinkronizálási beállítások importálása lehetőséget megjelenítő képernyőkép.](media/how-to-connect-import-export-config/migrate4.png)
+ 4. **Azure ad Connect** indításához kattintson duplán a ikonra az asztalon. Fogadja el a Microsoft szoftverlicenc-szerződését, és a következő lapon válassza a **Testreszabás** lehetőséget.
+ 5. Jelölje be a **szinkronizálási beállítások importálása** jelölőnégyzetet. Válassza a **Tallózás** lehetőséget a másolt exportált ServerConfiguration-* mappa tallózásához. Az áttelepített beállítások importálásához válassza ki a MigratedPolicy.js.
+
+     ![A szinkronizálási beállítások importálása lehetőséget megjelenítő képernyőkép.](media/how-to-connect-import-export-config/migrate-4.png)
 
 ## <a name="post-installation-verification"></a>Telepítés utáni ellenőrzés 
 

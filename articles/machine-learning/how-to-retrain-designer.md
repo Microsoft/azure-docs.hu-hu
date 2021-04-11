@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 04/06/2020
+ms.date: 03/06/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed5f59fc1d751f92a7c016aa3586497659f778fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "97708466"
+ms.locfileid: "105962951"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Modellek újratanítása a tervezőben a folyamat paramétereinek használatával
 
@@ -120,3 +120,5 @@ A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonosi típu
 Ebben a cikkben megtanulta, hogyan hozhat létre egy paraméteres betanítási folyamat végpontját a tervező használatával.
 
 Az előrejelzések készítésére szolgáló modellek üzembe helyezésének teljes bemutatása a [tervezői oktatóanyagban](tutorial-designer-automobile-price-train-score.md) a regressziós modell betanítása és üzembe helyezése című témakörben olvasható.
+
+Az SDK használatával történő futtatási folyamat végpontjának közzétételéhez és elküldéséhez tekintse meg [ezt a cikket](how-to-deploy-pipelines.md).

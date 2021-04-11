@@ -3,12 +3,12 @@ title: 'Rövid útmutató: Defender IoT-alapú megoldáshoz'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan lehet bevezetni és engedélyezni a Defender for IoT Security szolgáltatást az Azure IoT Hubban.
 ms.topic: quickstart
 ms.date: 1/20/2021
-ms.openlocfilehash: b795773ae0eb667cf7f53f4209b6476ba937b17f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2704f8989ab39825cef052ca5556a2e6461efe75
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780956"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384493"
 ---
 # <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>Rövid útmutató: Defender IoT-alapú megoldáshoz
 

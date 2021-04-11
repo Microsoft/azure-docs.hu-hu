@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c49fe65cf97207a495f6c0cc78585489a0db6ff
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099947"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228248"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>A ExpressRoute Direct konfigurálása
 
@@ -305,7 +305,12 @@ Hozzon létre egy áramkört a ExpressRoute Direct erőforráson.
   AllowClassicOperations           : False
   GatewayManagerEtag     
   ```
-
+## <a name="delete-the-resource"></a>Erőforrás törlése
+A közvetlen ExpressRoute-erőforrás törlése előtt először törölnie kell a ExpressRoute Direct port pár ExpressRoute-áramkörét.
+A ExpressRoute Direct-erőforrást a következő parancs futtatásával törölheti:
+ ```powershell
+   Remove-azexpressrouteport -Name $Name -Resourcegroupname -$ResourceGroupName
+   ```
 ## <a name="next-steps"></a>Következő lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613612"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106870"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Gyakori kérdések az Cloud Partner Portalról a partneri központba való áttérésről
 
@@ -24,7 +24,7 @@ Folytathatja az üzleti tevékenységet a partner Centerben:
 
 | Terület | Módosítások |
 | --- | --- |
-| Fiók | Nem kell új partner Center-fiókot létrehoznia; a meglévő Cloud Partner Portal hitelesítő adataival bejelentkezhet a fiókpartner-központba, ahol a fiókját, a felhasználóit, az engedélyeit és a számlázást is kezelheti. A közzétételi szerződés és a vállalati profil adatai áttelepülnek az új partner Center-fiókjába, valamint a kifizetési profilokkal, a felhasználói fiókokkal és engedélyekkel, valamint az aktív ajánlatokkal. További információ: [a kereskedelmi piactér fiókjának kezelése a partner Centerben](partner-center-portal/manage-account.md). |
+| Fiók | Nem kell új partner Center-fiókot létrehoznia; a meglévő Cloud Partner Portal hitelesítő adataival bejelentkezhet a fiókpartner-központba, ahol a fiókját, a felhasználóit, az engedélyeit és a számlázást is kezelheti. A közzétételi szerződés és a vállalati profil adatai áttelepülnek az új partner Center-fiókjába, valamint a kifizetési profilokkal, a felhasználói fiókokkal és engedélyekkel, valamint az aktív ajánlatokkal. További információ: [a kereskedelmi piactér fiókjának kezelése a partner Centerben](manage-account.md). |
 | Ajánlat-közzétételi és ajánlat-kezelési élmény | Áthelyezte az ajánlat adatait a Cloud Partner Portalról a partneri központba. Mostantól elérhetővé teszi az ajánlatokat a partner Centerben, amely továbbfejlesztett felhasználói élményt és intuitív felületet biztosít. Megtudhatja, hogyan [frissíthet egy meglévő ajánlatot a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md). |
 | Az ajánlatok elérhetősége a kereskedelmi piactéren | Nincs változás. Ha az ajánlata a kereskedelmi piacon él, továbbra is élőben fog működni. |
 | Új vásárlások és központi telepítések | Nincs változás. Az ügyfelek megszakítás nélkül folytathatják az ajánlatok megvásárlását és üzembe helyezését. |

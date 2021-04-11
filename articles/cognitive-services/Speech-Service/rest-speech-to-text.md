@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76b4a749bff94cbf218d3cd3c7d132eef119b7ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c041d64b3dbd0c38979f4d8d0fa563a72f6a4b1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606905"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168195"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -153,7 +153,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 Javasoljuk, hogy a hangadatok közzététele során a streaming (darabolásos) feltöltést is javasolja, ami jelentősen csökkentheti a késést. A streaming engedélyezéséhez lásd: [mintakód különböző programozási nyelveken](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment) .
 
 >[!NOTE]
->A kiejtés-értékelési funkció jelenleg csak nyelven érhető el `en-US` .
+> A kiejtés-értékelési funkció jelenleg támogatja a `en-US` nyelvet, amely az összes [beszéd és szöveg közötti régióban](regions.md#speech-to-text)elérhető. A és a `en-GB` `zh-CN` languages támogatása az előzetes verzióban érhető el, amely a `westus` és a `eastasia` `centralindia` régiókban is elérhető.
 
 ### <a name="sample-request"></a>Példa a kérelemre
 

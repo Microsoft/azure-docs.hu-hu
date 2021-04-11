@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 03b29e6ddd16731073b33fef14d5aafb54df2abe
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878094"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227857"
 ---
-# <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása
+# <a name="self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Problémák önálló diagnosztizálása és megoldása az Azure Spring Cloud-ban
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Az Azure Spring Cloud Diagnostics egy interaktív megoldás, amely a konfiguráció nélkül elhárítja az alkalmazást. Az Azure Spring Cloud Diagnostics észleli a problémákat, és útmutatást nyújt a problémák elhárításához és megoldásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+A exericise elvégzéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart.md) útmutatót.

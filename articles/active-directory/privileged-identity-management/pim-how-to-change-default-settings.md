@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 676fdf264cb930069425a330c3da9cd753bf8e0a
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567033"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management
@@ -64,14 +64,14 @@ A szerepkörök beállításainak konfigurálásakor két hozzárendelési időt
 
 A következő **jogosult** hozzárendelések időtartamára vonatkozó lehetőségek közül választhat:
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Állandó jogosult hozzárendelés engedélyezése** | A globális rendszergazdák és a Kiemelt szerepkörök rendszergazdái állandó jogosult hozzárendelést rendelhetnek hozzá. |
 | **Jogosult hozzárendelés lejárta a következő után** | A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelés megadott kezdő és záró dátumot biztosítson. |
 
 Emellett az alábbi **aktív** hozzárendelések időtartamára vonatkozó lehetőségek közül választhat:
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Állandó aktív hozzárendelés engedélyezése** | A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák állandó aktív hozzárendelést is hozzárendelhet. |
 | **Aktív hozzárendelés lejárta a következő után** | A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák megkövetelhetik, hogy minden aktív hozzárendeléshez meg legyen adva a kezdő és a záró dátum. |

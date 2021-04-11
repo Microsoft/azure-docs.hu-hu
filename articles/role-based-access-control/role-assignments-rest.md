@@ -2,7 +2,6 @@
 title: Azure-szerepkörök kiosztása az REST API-Azure RBAC
 description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára a REST API és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
@@ -10,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/15/2021
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: d012173adb5e238282e107b832ed9c6895237e48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a61f54530f25ac33c6ef097698198a11cf1275e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556072"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581447"
 ---
 # <a name="assign-azure-roles-using-the-rest-api"></a>Azure-szerepkörök kiosztása a REST API használatával
 
@@ -109,6 +108,26 @@ Az alábbi ábrán egy példa látható a kimenetre:
     "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
     "type": "Microsoft.Authorization/roleAssignments",
     "name": "{roleAssignmentId1}"
+}
+```
+
+### <a name="new-service-principal"></a>Új egyszerű szolgáltatásnév
+
+Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet. Ha például létrehoz egy új felügyelt identitást, majd megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, akkor a szerepkör-hozzárendelés meghiúsulhat. A hiba oka valószínűleg a replikálás késése. Az egyszerű szolgáltatás egy régióban jön létre; a szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnevet.
+
+Ennek a forgatókönyvnek a megoldásához a `principalType` tulajdonságot a `ServicePrincipal` szerepkör-hozzárendelés létrehozásakor kell beállítania. A szerepkör-hozzárendelést is be kell állítania `apiVersion` `2018-09-01-preview` vagy később.
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2018-09-01-preview
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+    "principalId": "{principalId}",
+    "principalType": "ServicePrincipal"
+  }
 }
 ```
 

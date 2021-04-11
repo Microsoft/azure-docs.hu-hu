@@ -3,15 +3,15 @@ title: Azure Machine Learning folyamatok végrehajtása
 description: Megtudhatja, hogyan futtathatja Azure Machine Learning folyamatait a Azure Data Factory folyamatokban.
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: daperlov
-author: djpmsft
+ms.author: weetok
+author: dcstwh
 ms.date: 07/16/2020
-ms.openlocfilehash: db1816baf0ebc476a132b344d8db3cdbdd170e50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0b941325d6bbabcb083b5f71a40c145d3ef48d0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373929"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103470"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning folyamatok végrehajtása Azure Data Factory
 
@@ -55,6 +55,7 @@ mlPipelineId | A közzétett Azure Machine Learning folyamat azonosítója | Kar
 experimentName | A Machine Learning folyamat futtatási kísérletének neve | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | No
 mlPipelineParameters | A közzétett Azure Machine Learning folyamat-végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Machine Learningi folyamatban megadott folyamat-paraméterek neveivel. | Kulcs értékű párokkal (vagy resultType objektummal rendelkező kifejezéssel) rendelkező objektum | No
 mlParentRunId | A szülő Azure Machine Learning folyamat futtatási azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | No
+dataPathAssignments | A datapaths az Azure Machine learningben való módosítására használt szótár. Datapaths váltásának engedélyezése | Kulcs értékű párokkal rendelkező objektum | No
 continueOnStepFailure | Annak megadása, hogy folytatja-e a Machine Learning folyamat más lépéseinek végrehajtását, ha egy lépés meghiúsul | boolean | No
 
 > [!NOTE]

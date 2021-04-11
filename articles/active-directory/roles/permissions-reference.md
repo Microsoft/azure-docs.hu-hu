@@ -14,24 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f467fc739b3120fd43bec4e21e1e336c1cdf186f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ad8466dca6634b0e72ef4a65acb537006dba3bda
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935413"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108540"
 ---
 # <a name="azure-ad-built-in-roles"></a>Beépített Azure AD-szerepkörök
 
 Azure Active Directory (Azure AD) esetén, ha egy másik rendszergazdának vagy nem rendszergazdának az Azure AD-erőforrások felügyeletére van szüksége, hozzá kell rendelnie egy Azure AD-szerepkört, amely biztosítja a szükséges engedélyeket. Például hozzárendelhet szerepköröket a felhasználók hozzáadásához vagy módosításához, a felhasználói jelszavak visszaállításához, a felhasználói licencek kezeléséhez vagy a tartománynevek kezeléséhez.
 
 Ez a cikk felsorolja az Azure ad-erőforrások kezelésének engedélyezéséhez hozzárendelhető Azure AD beépített szerepköröket. További információ a szerepkörök hozzárendeléséről: [Azure ad-szerepkörök kiosztása a felhasználók számára](manage-roles-portal.md).
-
-## <a name="limit-use-of-global-administrator"></a>Globális rendszergazda használatának korlátozása
-
-A globális rendszergazdai szerepkörhöz hozzárendelt felhasználók elolvashatják és módosíthatják az Azure AD-szervezet minden felügyeleti beállítását. Alapértelmezés szerint, amikor egy felhasználó regisztrál a Microsoft Cloud Service szolgáltatásra, létrejön egy Azure AD-bérlő, és a felhasználó tagja lesz a globális rendszergazdák szerepkörnek. Ha egy meglévő bérlőhöz ad hozzá egy előfizetést, nincs hozzárendelve a globális rendszergazdai szerepkörhöz. Csak a globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák delegálják a rendszergazdai szerepköröket. Az üzleti kockázat csökkentése érdekében javasoljuk, hogy ezt a szerepkört a szervezete legkevesebb lehetséges személyéhez rendelje.
-
-Ajánlott eljárásként Azt javasoljuk, hogy a szerepkört a szervezetnél kevesebb mint öt személyhez rendelje hozzá. Ha több mint öt adminisztrátora van hozzárendelve a globális rendszergazdai szerepkörhöz a szervezetében, a következő módokon csökkentheti annak használatát.
 
 ## <a name="all-roles"></a>Minden szerepkör
 
@@ -771,6 +765,9 @@ Ez a rendszergazda kezeli az Azure AD-szervezetek és a külső identitás-szolg
 ## <a name="global-administrator"></a>Globális rendszergazda
 
 Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Active Directory összes felügyeleti funkciójához, valamint olyan szolgáltatásokhoz, amelyek olyan Azure Active Directory identitásokat használnak, mint például a Microsoft 365 Security Center, a Microsoft 365 megfelelőségi központ, az Exchange Online, a SharePoint Online és a Skype vállalati online verzió. A globális rendszergazdák továbbá az Azure-előfizetések és-felügyeleti csoportok kezeléséhez is [hozzáférhetnek](../../role-based-access-control/elevate-access-global-admin.md) . Ez lehetővé teszi, hogy a globális rendszergazdák teljes hozzáférést kapjanak az összes Azure-erőforráshoz a megfelelő Azure AD-bérlő használatával. Az Azure AD-szervezetre feliratkozik személy globális rendszergazda lesz. A vállalatnál több globális rendszergazda is lehet. A globális rendszergazdák alaphelyzetbe állíthatják bármely felhasználó és az összes többi rendszergazda jelszavát.
+
+> [!NOTE]
+> Ajánlott eljárásként a Microsoft azt javasolja, hogy a globális rendszergazdai szerepkört a szervezetnél kevesebb mint öt személyhez rendelje. További információ: [ajánlott eljárások az Azure ad-szerepkörökhöz](best-practices.md).
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -1841,6 +1838,23 @@ Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasznál�
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Service Health olvasása és konfigurálása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Microsoft 365 szolgáltatási kérelmek létrehozása és kezelése |
 > | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft 365 felügyeleti központban található összes erőforrás alapszintű tulajdonságainak olvasása |
+
+## <a name="how-to-understand-role-permissions"></a>A szerepkör engedélyeinek megismerése
+
+Az engedélyek sémája lazán követi a Microsoft Graph REST formátumát:
+
+`<namespace>/<entity>/<propertySet>/<action>`
+
+Például:
+
+`microsoft.directory/applications/credentials/update`
+
+| Engedély elem | Leírás |
+| --- | --- |
+| névtér | Termék vagy szolgáltatás, amely elérhetővé teszi a feladatot, és a előtagértéke `microsoft` . Az Azure AD-ban lévő összes feladat például a `microsoft.directory` névteret használja. |
+| entitás | A szolgáltatás által Microsoft Graphban elérhető logikai funkció vagy összetevő. Például az Azure AD teszi elérhetővé a felhasználókat és a csoportokat, a OneNote megjegyzéseket tesz elérhetővé, és az Exchange elérhetővé teszi a postaládákat és a naptárakat. A `allEntities` névtérben található összes entitást külön kulcsszóval kell megadnia. Ezt gyakran használják olyan szerepkörökben, amelyek egy teljes termékhez biztosítanak hozzáférést. |
+| propertySet | Az entitás adott tulajdonságai vagy szempontjai, amelyekhez hozzáférés van megadva. Például `microsoft.directory/applications/authentication/read` lehetővé teszi a válasz URL-címének, kijelentkezési URL-címének és implicit flow tulajdonságának olvasását az Azure ad-beli Application objektumon.<ul><li>`allProperties` az entitás összes tulajdonságának kijelölése, beleértve az emelt szintű tulajdonságokat is.</li><li>`standard` kijelöli a közös tulajdonságokat, de kizárja a művelettel kapcsolatos privilegizált fájlokat `read` . Például lehetőség van `microsoft.directory/user/standard/read` arra, hogy beolvassa a szabványos tulajdonságokat, például a nyilvános telefonszámot és az e-mail-címet, de ne a többtényezős hitelesítéshez használt személyes másodlagos telefonszámot vagy e-mail-címet.</li><li>`basic` kijelöli a közös tulajdonságokat, de kizárja a művelettel kapcsolatos privilegizált fájlokat `update` . Az elolvasható tulajdonságok halmaza különbözhet a frissíteni kívánt tulajdonságokkal. Ezért vannak olyan kulcsszavak, amelyek azt `standard` `basic` tükrözik.</li></ul> |
+| művelet | A megadott művelet, amely általában a következőkből áll: létrehozás, olvasás, frissítés vagy törlés (szifilisz). A `allTasks` fenti képességek (létrehozás, olvasás, frissítés és törlés) esetében egy speciális kulcsszót kell megadni. |
 
 ## <a name="deprecated-roles"></a>Elavult szerepkörök
 

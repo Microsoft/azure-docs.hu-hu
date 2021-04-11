@@ -5,16 +5,16 @@ author: avirishuv
 ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
+ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9194ab70e37c0659e77cbe9c10ffca10e1a76de8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684610"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011868"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure-beli virtuálisgép-méretezési csoport operációsrendszer-képének automatikus frissítései
 
@@ -79,7 +79,7 @@ A következő platformos SKU-EK jelenleg támogatottak (és a továbbiak rendsze
 ### <a name="service-fabric-requirements"></a>Service Fabric követelmények
 
 Ha Service Fabric használ, győződjön meg arról, hogy teljesülnek a következő feltételek:
--   Service Fabric [tartóssági szint](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Silver vagy Gold, és nem bronz.
+-   Service Fabric [tartóssági szint](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) az ezüst vagy az arany, és nem a bronz (kivéve a csak állapot nélküli nodetypes, amelyek támogatják az automatikus operációs rendszer frissítéseit).
 -   A méretezési csoport modelljének definíciójában a Service Fabric-bővítménynek TypeHandlerVersion 1,1 vagy újabb értékűnek kell lennie.
 -   A tartóssági szintnek azonosnak kell lennie a Service Fabric-fürtön, és Service Fabric bővítményt a méretezési csoport modelljének definíciójában.
 - Nincs szükség további állapot-mintavételre vagy alkalmazás-állapot kiterjesztésére.
@@ -163,7 +163,7 @@ A terheléselosztó mintavételét a méretezési csoport *networkProfile* lehet
 ```
 
 > [!NOTE]
-> Ha a Service Fabric használatával automatikus operációsrendszer-frissítést használ, az új operációsrendszer-rendszerképet a frissítési tartomány frissíti a tartomány frissítésével, hogy fenntartsa a Service Fabric futó szolgáltatások magas rendelkezésre állását. Ha az operációs rendszer automatikus frissítését szeretné használni Service Fabric a fürtöt úgy kell konfigurálni, hogy az ezüst tartóssági szintet vagy ennél nagyobbat használjon. A Service Fabric-fürtök tartóssági jellemzőivel kapcsolatos további információkért tekintse meg [ezt a dokumentációt](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
+> Ha a Service Fabric használatával automatikus operációsrendszer-frissítést használ, az új operációsrendszer-rendszerképet a frissítési tartomány frissíti a tartomány frissítésével, hogy fenntartsa a Service Fabric futó szolgáltatások magas rendelkezésre állását. Ha az operációs rendszer automatikus frissítését szeretné használni Service Fabric a fürt NodeType úgy kell konfigurálni, hogy az ezüst tartóssági szintet vagy magasabbra legyen állítva. A bronz tartóssági szinten az operációs rendszer automatikus frissítése csak állapot nélküli nodetypes esetén támogatott. A Service Fabric-fürtök tartóssági jellemzőivel kapcsolatos további információkért tekintse meg [ezt a dokumentációt](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Hitelesítő adatok naprakészen tartása
 Ha a méretezési csoport bármilyen hitelesítő adatot használ a külső erőforrások eléréséhez, például egy virtuálisgép-bővítményt, amely egy SAS-jogkivonat használatára van konfigurálva a Storage-fiókhoz, akkor győződjön meg arról, hogy a hitelesítő adatok frissülnek. Ha a hitelesítő adatok (beleértve a tanúsítványokat és a jogkivonatokat is) elévültek, a frissítés sikertelen lesz, és a virtuális gépek első kötege sikertelen állapotba kerül.

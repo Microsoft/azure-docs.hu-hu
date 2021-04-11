@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: b4aa00b7a2cc7ca6bc968be70957c127a8e00738
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fefbc21c385e3beacbf570c31ffbf97238c780fc
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98253534"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109084"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Mi az Apache Kafka az Fluent felhőhöz?
 
@@ -56,6 +56,12 @@ Két számlázási lehetőség érhető el: utólagos elszámolású havi csomag
 - A kötelezettségvállalási terv alapján a minimálisan szükséges **költségekre** regisztrálhat, és kedvezményes áron veheti igénybe az elkötelezett Felhőbeli használatát.
 
 Ön dönti el, hogy melyik számlázási lehetőséget szeretné használni a szolgáltatás létrehozásakor.
+
+## <a name="connector-to-azure-cosmos-db"></a>Összekötő Azure Cosmos DB
+
+A Fluent hub-ügyfélen telepítse az Cosmos DB-összekötőt a [Fluent hub-lista](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos)által javasolt módon. 
+
+Az összekötő manuális telepítéséhez először töltse le az Über JAR-t a [Cosmos db releases lapról](https://github.com/microsoft/kafka-connect-cosmosdb/releases). Azt is megteheti, hogy létrehoz [egy saját über jar-t közvetlenül a forráskódból](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector). Fejezze be a telepítést a következő témakörben ismertetett útmutatást követve: az [Összekötők manuális telepítése manuálisan](https://docs.confluent.io/home/connect/install.html#install-connector-manually).  
 
 ## <a name="confluent-links"></a>Fluent hivatkozások
 

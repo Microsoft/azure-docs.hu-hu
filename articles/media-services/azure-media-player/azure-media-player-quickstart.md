@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
-ms.date: 04/20/2020
-ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: a6fd603318a25e15d1d4dcc1e3eaf75f96fc5ade
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956060"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448627"
 ---
 # <a name="azure-media-player-quickstart"></a>Az Azure Media Player gyorsútmutatója
 A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Azure Media Services-fiókjából. Ez a szakasz nagy vonalakban ismerteti az alapvető lépéseket. Az alábbi szakaszokban a Azure Media Player beállításával és konfigurálásával kapcsolatos konkrét tudnivalókat talál.  Egyszerűen adja hozzá a következőket a dokumentum `<head>` eleméhez:
@@ -22,7 +22,7 @@ A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igén
 ```
 
 > [!IMPORTANT]
-> A verziót **ne** használja `latest` éles környezetben, mert az igény szerint változhat. Cserélje le a `latest` (Azure Media Player) verzióját a helyére, például a következővel: `latest` `1.0.0` . Azure Media Player verziók lekérdezése [innen](azure-media-player-changelog.md)lehetséges.
+> A verziót **ne** használja `latest` éles környezetben, mert az igény szerint változhat. Cserélje le a `latest` (Azure Media Player) verzióját a helyére, például a következővel: `latest` `1.0.0` . Azure Media Player verziók lekérdezése [innen](https://amp.azure.net/libs/amp/latest/docs/changelog.html)lehetséges.
 
 ## <a name="use-the-video-element"></a>A videó elem használata
 

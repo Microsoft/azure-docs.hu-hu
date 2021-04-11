@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0477153b466702bec0fa2d5221fee1e054d06314
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b6aae76b0b35f8195fb52b7fb11de43d8fa511ba
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033766"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028434"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Kényszerített jelszó-visszaállítási folyamat beállítása Azure Active Directory B2C
 
@@ -92,7 +92,7 @@ A **kényszerített jelszó-visszaállítási** beállítás engedélyezése a r
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 1. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
 1. Válassza ki a `B2C_1A_signup_signin_Custom_ForcePasswordReset` szabályzatot a megnyitásához. 
-1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](tutorial-register-applications.md)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
 1. Jelentkezzen be azzal a felhasználói fiókkal, amelynek a jelszavát alaphelyzetbe állítja.
 1. Most meg kell változtatnia a felhasználó jelszavát. Módosítsa a jelszót, és válassza a **Folytatás** lehetőséget. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.

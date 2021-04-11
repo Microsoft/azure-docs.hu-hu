@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3566634948df3ce8ecb747148eb10f48bfc582
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97355145"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106887"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
 Ez a cikk bemutatja, hogyan hozhat létre új Dynamics 365 for Operations ajánlatot. [A Microsoft Dynamics 365 for Finance and Operations](https://dynamics.microsoft.com/finance-and-operations) egy vállalati erőforrás-tervezési (ERP) szolgáltatás, amely támogatja a fejlett pénzügyi, üzemeltetési, gyártási és ellátási láncok kezelését. A Dynamics 365 for Operations összes ajánlatának a minősítési folyamaton keresztül kell haladnia.
 
-A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](../create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 >[!NOTE]
 > Az ajánlat közzétételét követően az ajánlat szerkesztése csak a partner Centerben és az online áruházban lesz frissítve, miután újra elküldte az ajánlatot a kiadványhoz.
@@ -129,7 +129,7 @@ Define marketplace details such as offer name, description, and images for each 
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 
 ### <a name="marketplace-details"></a>Piactér – részletek

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 03ef2110af2d9e642019c2b07b53fae3e32b1ea6
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104950178"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
@@ -185,15 +185,15 @@ A következő táblázat a támogatott naplózási típusokat és leírásokat t
 
 | Napló típusa | Windows | Windows-tároló | Linux | Linux-tároló | Leírás |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | Java SE & tomcat | Igen | Igen | Igen | Standard kimenet és standard hiba |
-| AppServiceHTTPLogs | Igen | Igen | Igen | Igen | Webkiszolgáló-naplók |
-| AppServiceEnvironmentPlatformLogs | Igen | N.A. | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
-| AppServiceAuditLogs | Igen | Igen | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
-| AppServiceFileAuditLogs | Igen | Igen | TBA | TBA | A webhely tartalma módosult; **csak a prémium szinthez és a fentiekhez érhető el** |
+| AppServiceConsoleLogs | Java SE & tomcat | Igen | Igen | Yes | Standard kimenet és standard hiba |
+| AppServiceHTTPLogs | Igen | Igen | Igen | Yes | Webkiszolgáló-naplók |
+| AppServiceEnvironmentPlatformLogs | Yes | N.A. | Igen | Yes | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
+| AppServiceAuditLogs | Igen | Igen | Igen | Yes | Bejelentkezési tevékenység FTP-n és kudu |
+| AppServiceFileAuditLogs | Igen | Yes | TBA | TBA | A webhely tartalma módosult; **csak a prémium szinthez és a fentiekhez érhető el** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & tomcat áldott képek <sup>1</sup> | Java SE & tomcat áldott képek <sup>1</sup> | Alkalmazás-naplók |
-| AppServiceIPSecAuditLogs  | Igen | Igen | Igen | Igen | IP-szabályoktól érkező kérések |
-| AppServicePlatformLogs  | TBA | Igen | Igen | Igen | Tároló műveleti naplói |
-| AppServiceAntivirusScanAuditLogs | Igen | Igen | Igen | Igen | Víruskeresési [naplók](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) a Microsoft Defender használatával; **csak a prémium szintű csomag esetében érhető el** | 
+| AppServiceIPSecAuditLogs  | Igen | Igen | Igen | Yes | IP-szabályoktól érkező kérések |
+| AppServicePlatformLogs  | TBA | Igen | Igen | Yes | Tároló műveleti naplói |
+| AppServiceAntivirusScanAuditLogs | Igen | Igen | Igen | Yes | Víruskeresési [naplók](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) a Microsoft Defender használatával; **csak a prémium szintű csomag esetében érhető el** | 
 
 <sup>1</sup> a Java SE-alkalmazások esetében adja hozzá a "$website _AZMON_PREVIEW_ENABLED" lehetőséget az alkalmazás beállításaihoz, és állítsa 1 vagy igaz értékre.
 

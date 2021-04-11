@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780314"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103404"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Mit az a Microsoft kereskedelmi piactér?
 
@@ -82,5 +82,5 @@ Ezen előnyök részletesebb megismeréséhez tekintse meg [a kereskedelmi Marke
 ## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [a Microsoft kereskedelmi piactérről](/learn/modules/intro-commercial-marketplace/) Microsoft Learnon.
-- A kereskedelmi piactéren való közzététel iránt érdeklődő új Microsoft-partnerekért lásd: [kereskedelmi piactér-fiók létrehozása a partner Centerben](partner-center-portal/create-account.md).
+- A kereskedelmi piactéren való közzététel iránt érdeklődő új Microsoft-partnerekért lásd: [kereskedelmi piactér-fiók létrehozása a partner Centerben](create-account.md).
 - Ha többet szeretne megtudni a legújabb és jövőbeli kiadásokról, csatlakozzon a [Microsoft partner közösségbeli](https://www.microsoftpartnercommunity.com/)beszélgetéshez.
