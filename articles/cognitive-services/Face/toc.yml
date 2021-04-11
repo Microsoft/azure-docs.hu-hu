@@ -3,38 +3,28 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az a Face szolgáltatás?
+    - name: Arc-szolgáltatás áttekintése
       href: Overview.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Újdonságok
       href: releasenotes.md
-- name: Rövid útmutatók
-  items:
-    - name: Az ügyfélkódtár vagy a REST API használata
-      href: Quickstarts/client-libraries.md
-- name: Oktatóanyagok
-  items:
-    - name: Az ügyfél-SDK használata
-      items:
-        - name: C#
-          href: Tutorials/FaceAPIinCSharpTutorial.md
-- name: Alapelvek
-  items:
-    - name: Arcfelismerés
-      href: concepts/face-detection.md
-    - name: Arcfelismerés
-      href: concepts/face-recognition.md
+- name: Szembenéző rövid útmutató
+  href: Quickstarts/client-libraries.md
+- name: Példák
+  href: /samples/browse/?products=azure&term=face
 - name: Útmutatók
   items:
-    - name: Arcfelismerés
+    - name: Arcok észlelése és elemzése
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: Arcfelismerés modell verziójának meghatározása
+      href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: Arcfelismerés modell verziójának meghatározása
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Arcok hozzáadása egy csoporthoz
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: A HeadPose attribútum használata
       href: Face-API-How-to-Topics/how-to-use-headpose.md
-    - name: Arcfelismerési modell megadása
-      href: Face-API-How-to-Topics/specify-recognition-model.md
-    - name: Arcfelismerési modell megadása
-      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Késés csökkentése a Face szolgáltatás használatakor
       href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: A nagy léptékű funkció használata
@@ -43,8 +33,12 @@
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: Arcokhoz kapcsolódó adatok migrálása
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-    - name: Tárolók használata
+    - name: A Face tároló használata
       items:
+        - name: Cognitive Services-tárolók – dokumentáció
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+        - name: A tárolók áttekintése
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
         - name: Tárolók telepítése és futtatása
           href: face-how-to-install-containers.md
         - name: Tárolók konfigurálása
@@ -52,49 +46,47 @@
         - name: A Container Instances használata
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: Cognitive Services-tárolók – dokumentáció
-          href: ../containers/index.yml
-- name: Forgatókönyvek részletes ismertetése
+- name: Alapelvek
   items:
-    - name: Arcadatok alapján történő beléptetés
+    - name: Arcfelismerés
+      href: concepts/face-detection.md
+    - name: Arcfelismerés
+      href: concepts/face-recognition.md
+- name: Oktatóanyagok
+  items:
+    - name: Arcfelismerés-alkalmazás létrehozása
+      href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Felhasználók hozzáadása egy Arcfelismerés szolgáltatáshoz
       items:
-        - name: Áttekintés
+        - name: Ajánlott eljárások felhasználók hozzáadásához
           href: enrollment-overview.md
-        - name: Útmutatók
-          items:
-            - name: Beléptetési alkalmazás buildelése a Reacttel
-              href: build-enrollment-app.md
+        - name: Reagáló alkalmazás létrehozása felhasználók hozzáadásához
+          href: build-enrollment-app.md
 - name: Referencia
   items:
-    - name: Face API
+    - name: Face REST API
       href: APIReference.md
-    - name: SDK-k
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Python
-          href: /python/api/azure-cognitiveservices-vision-face/
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-face
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
-- name: További források
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-face
+    - name: Python
+      href: /python/api/azure-cognitiveservices-vision-face/?view=azure-python
+    - name: Indítás
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
+- name: Források
   items:
-    - name: Támogatási lehetőségek
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: Példák
-      items:
-        - name: Face-minták
-          href: /samples/browse/?products=azure&term=face
-    - name: Díjszabás és korlátok
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Régiónkénti rendelkezésre állás
+    - name: Régiós támogatás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: A modulok megismerése
+      href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
+    - name: Támogatási és súgólehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás
       href: encrypt-data-at-rest.md
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

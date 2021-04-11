@@ -10,18 +10,29 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cbc147cb0aabc0540e3a91c99243aa88a8cca146
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643663"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210792"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
 Az automatizált gépi tanulás, más néven automatizált ML vagy AutoML, az időigényes automatizálási folyamat, a gépi tanulási modellek fejlesztésének ismétlődő feladatai. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. Az automatikus ML Azure Machine Learning a [Microsoft kutatási részlegének](https://www.microsoft.com/research/project/automl/)áttörése alapján történik.
 
 A hagyományos gépi tanulási modell fejlesztése erőforrás-igényes, és jelentős tartományi ismereteket és időt igényel, hogy több tucat modellt hozzon létre és hasonlítson össze. Az automatizált gépi tanulással felgyorsíthatja az éles használatra kész ML-modellek gyors és hatékony beszerzéséhez szükséges időt.
+
+## <a name="automl-in-azure-machine-learning"></a>AutoML Azure Machine Learning
+
+A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez:
+
+* A Code tapasztalt ügyfelek esetében [Azure Machine learning a PYTHON SDK](/python/api/overview/azure/ml/intro)-t.  Ismerkedés az [oktatóanyaggal: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez](tutorial-auto-train-models.md).
+
+* A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning studiót a következő címen szerezheti be: [https://ml.azure.com](https://ml.azure.com/) .  Ismerkedés a következő oktatóanyagokkal:
+    * [Oktatóanyag: a Azure Machine learning automatikus ml-vel rendelkező besorolási modell létrehozása](tutorial-first-experiment-automated-ml.md).
+    *  [Oktatóanyag: az automatikus gépi tanulás iránti igény előrejelzése](tutorial-automated-ml-forecast.md)
+
 
 ## <a name="when-to-use-automl-classify-regression--forecast"></a>Mikor kell használni a AutoML: osztályozás, regresszió, & előrejelzés
 
@@ -116,7 +127,7 @@ Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalm
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; feldolgozása| Leírás |
+|Méretezés &nbsp; & &nbsp; feldolgozása| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -199,14 +210,6 @@ Például az __egyes példányok vagy egyedi__ modellek létrehozása a követke
 * Az egyes tárolók értékesítésének előrejelzése
 * Prediktív karbantartás több száz olajos kutak esetében
 * Egyéni felhasználói élmény testreszabása.
-
-## <a name="automl-in-azure-machine-learning"></a>AutoML Azure Machine Learning
-
-A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez:
-
-* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro) -t 
-
-* A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning Studio at [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 

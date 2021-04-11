@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/11/2021
-ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.date: 04/08/2021
+ms.openlocfilehash: 075b02e3e5f2e409298bf31eb0b6720e64af68a0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276654"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210828"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -67,6 +67,10 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
     - [Fürt autoskálázásának beállítása az AK-ban](../aks/cluster-autoscaler.md)
 
 - Ne __frissítse közvetlenül a fürtöt YAML-konfiguráció használatával__. Míg az Azure Kubernetes Services a YAML-konfiguráción keresztül támogatja a frissítéseket, Azure Machine Learning központi telepítések felülbírálják a módosításokat. A csak két YAML mező, amely nem írható felül, a __kérelmek korlátai__ , valamint a __processzor és a memória__.
+
+- A Azure Machine Learning Studio felhasználói felületén, az SDK-ban vagy a CLI-bővítménnyel __nem__ idempotens létre egy AK-fürtöt. Az erőforrás újbóli létrehozásának megkísérlése hibát eredményez, ha már létezik ilyen nevű fürt.
+    
+    - A Azure Resource Manager-sablonok és a [Microsoft. MachineLearningServices/munkaterületek/számítási](/azure/templates/microsoft.machinelearningservices/2019-11-01/workspaces/computes) erőforrások használata egy AK-fürt létrehozásához szintén __nem__ idempotens. Ha egy már meglévő erőforrás frissítésére próbálja újra használni a sablont, ugyanezt a hibát fogja kapni.
 
 ## <a name="azure-kubernetes-service-version"></a>Az Azure Kubernetes Service verziója
 

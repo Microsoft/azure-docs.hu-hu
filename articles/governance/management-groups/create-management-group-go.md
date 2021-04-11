@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: felügyeleti csoport létrehozása a go-val'
 description: Ebben a rövid útmutatóban a go használatával hozzon létre egy felügyeleti csoportot az erőforrások erőforrás-hierarchiába rendezéséhez.
-ms.date: 09/30/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b6ca4d10f2a86ecb55fec2afe72b4aabfbb94f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf2d2c556cfd6ada6d31fc6ee797888ed0899573
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100101776"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091446"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>Gyors útmutató: felügyeleti csoport létrehozása a go-val
 
@@ -57,7 +57,7 @@ Ha engedélyezni szeretné a Go-t a felügyeleti csoportok kezeléséhez, a csom
 
 ## <a name="application-setup"></a>Alkalmazásbeállítás
 
-Ha a go-csomagokat hozzáadta a környezetéhez, itt az ideje, hogy beállítsa a go alkalmazást, amely létrehoz egy felügyeleti csoportot.
+Ha a go-csomagokat hozzáadta a környezetéhez, itt az ideje, hogy beállítsa a go alkalmazást, amely létrehozhat egy felügyeleti csoportot.
 
 1. Hozza létre a go alkalmazást, és mentse a következő forrást `mgCreate.go` :
 

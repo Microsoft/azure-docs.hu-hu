@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 47c641eedbbe096a75223286563acb0a2405b1a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d5ff0f2444aac153116e8e33a6ed2af74c93f057
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935209"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553515"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -54,10 +54,11 @@ Ez a szakasz a Windows-alkalmazásokra és SQL Server-megoldásokra mutató hiva
 
 ### <a name="sql-server"></a>SQL Server
 
+* [SQL Server az Azure telepítési útmutatójában a Azure NetApp Files használatával](https://www.netapp.com/pdf.html?item=/media/27154-tr-4888.pdf)
+* [A Azure NetApp Files használatának előnyei SQL Server üzembe helyezéshez](solutions-benefits-azure-netapp-files-sql-server.md)
 * [SQL Server üzembe helyezése SMB-kapcsolaton keresztül Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs)
 * [SQL Server Always-On feladatátvevő fürt üzembe helyezése SMB-kapcsolaton keresztül Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) 
 * [Always-On rendelkezésre állási csoportok üzembe helyezése Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) 
-* [A Azure NetApp Files használatának előnyei SQL Server üzembe helyezéshez](solutions-benefits-azure-netapp-files-sql-server.md)
 
 ## <a name="sap-on-azure-solutions"></a>SAP Azure-megoldásokkal
 

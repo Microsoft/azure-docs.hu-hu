@@ -6,18 +6,18 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 tags: connectors
-ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5eae6b48a65f919ea233ad77a215ed5672425175
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449628"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385853"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése SSH és az Azure Logic Apps használatával
+# <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok létrehozása és kezelése SSH és Azure Logic Apps használatával
 
-A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatával a biztonságos [File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) kiszolgálón lévő fájlok figyelésére, létrehozására, küldésére és fogadására szolgáló feladatok automatizálásához Azure Logic apps és az SFTP-SSH összekötő használatával hozhat létre és automatizálhat integrációs munkafolyamatokat. Az SFTP olyan hálózati protokoll, amely fájlhozzáférést, fájlátvitelt és fájlfelügyeletet biztosít valamilyen megbízható adatstreamen keresztül.
+A Secure [shell (SSH)](https://www.ssh.com/ssh/protocol/) protokollt használó fájlok [Biztonságos File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) kiszolgálón való létrehozásával és kezelésével kapcsolatos feladatok automatizálásához a Azure Logic apps és az SFTP-SSH összekötő használatával hozhat létre automatizált integrációs munkafolyamatokat. Az SFTP olyan hálózati protokoll, amely fájlhozzáférést, fájlátvitelt és fájlfelügyeletet biztosít valamilyen megbízható adatstreamen keresztül.
 
 Íme néhány példa a feladatok automatizálására:
 
@@ -27,7 +27,7 @@ A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatá
 * Fájl tartalmának és metaadatainak beolvasása.
 * Archívumok kinyerése mappákba.
 
-Az SFTP-kiszolgálón lévő eseményeket figyelő eseményindítókat használhat, és a kimenetet más műveletek számára is elérhetővé teheti. Az SFTP-kiszolgálón különféle feladatokat végző műveleteket is használhat. A logikai alkalmazásban más műveletek is használhatók az SFTP-műveletek kimenetének használatával. Ha például az SFTP-kiszolgálóról rendszeresen lekéri a fájlokat, e-mail-riasztásokat küldhet a fájlokról és azok tartalmáról az Office 365 Outlook Connector vagy a Outlook.com Connector használatával. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+A munkafolyamatban olyan triggert használhat, amely figyeli az SFTP-kiszolgálón lévő eseményeket, és elérhetővé teszi a kimenetet más műveletek számára. Ezután a műveletek használatával különféle feladatokat hajthat végre az SFTP-kiszolgálón. Olyan egyéb műveleteket is tartalmazhat, amelyek az SFTP-SSH műveletek kimenetét használják. Ha például az SFTP-kiszolgálóról rendszeresen lekéri a fájlokat, e-mail-riasztásokat küldhet a fájlokról és azok tartalmáról az Office 365 Outlook Connector vagy a Outlook.com-összekötő használatával. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért tekintse át a témakör későbbi, az [SFTP-SSH és az SFTP összehasonlítása](#comparison) című szakaszát.
 
@@ -40,44 +40,42 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
   * OpenText Secure MFT
   * OpenText GXS
 
-* Az SFTP-SSH összekötő a titkos kulcsos hitelesítés vagy a jelszó-hitelesítés használatát is támogatja.
-
-* SFTP – az [adatdarabolást](../logic-apps/logic-apps-handle-large-messages.md) támogató SSH-műveletek legfeljebb 1 GB-tal kezelhetik a fájlokat, míg az olyan SFTP-SSH-műveletek, amelyek nem támogatják a darabolást, akár 50 MB-ot is kezelhetnek. Bár az alapértelmezett méret 15 MB, ez a méret dinamikusan változhat, 5 MB-tól kezdődően, és fokozatosan növekszik az 50 MB-os maximális értékre, az olyan tényezők alapján, mint a hálózati késés, a kiszolgáló válaszideje és így tovább.
+* SFTP – az [adatdarabolást](../logic-apps/logic-apps-handle-large-messages.md) támogató SSH-műveletek legfeljebb 1 GB-tal kezelhetik a fájlokat, míg az olyan SFTP-SSH-műveletek, amelyek nem támogatják a darabolást, akár 50 MB-ot is kezelhetnek. Az adathalmaz alapértelmezett mérete 15 MB. Ez a méret azonban dinamikusan változhat, 5 MB-tól kezdődően, és fokozatosan növekszik a 50 MB-os maximális értékkel. A dinamikus méretezés olyan tényezőkön alapul, mint a hálózati késés, a kiszolgáló válaszideje és így tovább.
 
   > [!NOTE]
   > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE-címkével ellátott verziója adatdarabolást igényel az [ISE-üzenetek használatának korlátozásához](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
   Ezt az adaptív viselkedést felülbírálhatja, ha [egy állandó adatméretet ad meg](#change-chunk-size) helyette. Ez a méret 5 MB és 50 MB között lehet. Tegyük fel például, hogy rendelkezik egy 45 MB-nyi fájllal és egy olyan hálózattal, amely az adott fájlméret késés nélküli használatát teszi lehetővé. Az adaptív adatdarabolás több hívást eredményez, inkább egy hívást. A hívások számának csökkentése érdekében kipróbálhatja a 50 MB-os méretet. Ha például 15 MB-os adattömböket használ a logikai alkalmazásnak, akkor a méretet 5 MB-ra csökkentheti.
 
-  Az adatrészlet mérete egy kapcsolatban van társítva, ami azt jelenti, hogy ugyanazt a kapcsolatokat használhatja a darabolást támogató műveletekhez, majd olyan műveletekhez, amelyek nem támogatják a darabolást. Ebben az esetben az adathalmaz mérete olyan műveletek esetében, amelyek nem támogatják az adatdarabolási tartományokat 5 MB-ról 50 MB-ra. Ez a táblázat azt mutatja, hogy mely SFTP-SSH-műveletek támogatják a darabolást:
+  Az adathalmaz mérete egy kapcsolatban van társítva. Ez az attribútum azt jelenti, hogy ugyanazokat a kapcsolatokat használhatja mindkét művelethez, amelyek támogatják a darabolást nem támogató műveleteket. Ebben az esetben az adathalmaz mérete olyan műveletek esetében, amelyek nem támogatják az adatdarabolási tartományokat 5 MB-ról 50 MB-ra. Ez a táblázat azt mutatja, hogy mely SFTP-SSH-műveletek támogatják a darabolást:
 
   | Művelet | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
   |--------|------------------|-----------------------------|
-  | **Fájl másolása** | No | Nem alkalmazható |
-  | **Fájl létrehozása** | Igen | Yes |
+  | **Fájl másolása** | Nem | Nem alkalmazható |
+  | **Fájl létrehozása** | Igen | Igen |
   | **Mappa létrehozása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl törlése** | Nem alkalmazható | Nem alkalmazható |
   | **Archív fájl kibontása a mappába** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl tartalmának beolvasása** | Igen | Yes |
-  | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Yes |
+  | **Fájl tartalmának beolvasása** | Igen | Igen |
+  | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Igen |
   | **Fájl metaadatainak beolvasása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható | Nem alkalmazható |
   | **Mappában található fájlok listázása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl frissítése** | No | Nem alkalmazható |
+  | **Fájl frissítése** | Nem | Nem alkalmazható |
   ||||
 
 * SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
 
-  1. Használjon olyan SFTP-SSH-triggert, amely csak a fájl tulajdonságait adja vissza, például **egy fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+  1. Használjon egy SFTP-SSH-triggert, amely csak a fájltulajdonságok értékét adja vissza. Ezek a triggerek tartalmazzák a leírást **(csak tulajdonságok)**.
 
-  1. Kövesse a triggert az SFTP-SSH- **Get fájl tartalma** művelettel, amely beolvassa a teljes fájlt, és implicit módon használja az üzenetek darabolását.
+  1. Kövesse a triggert az SFTP-SSH- **Fájl letöltése** művelettel. Ez a művelet beolvassa a teljes fájlt, és implicit módon használja az üzenetek darabolását.
 
 <a name="comparison"></a>
 
 ## <a name="compare-sftp-ssh-versus-sftp"></a>Az SFTP-SSH és az SFTP összehasonlítása
 
-Íme az SFTP-SSH-összekötő és az SFTP-összekötő, ahol az SFTP-SSH összekötő az alábbi képességekkel rendelkezik:
+Az alábbi lista az SFTP-összekötőtől eltérő főbb SFTP-SSH-képességeket ismerteti:
 
 * A a [SSH.net könyvtárat](https://github.com/sshnet/SSH.NET)használja, amely a .NET-et támogató nyílt forráskódú Secure Shell-(SSH-) kódtár.
 
@@ -85,30 +83,25 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
 * Megadja a **fájl átnevezése** műveletet, amely átnevezi az SFTP-kiszolgálón található fájlt.
 
-* *Akár 1 óráig* is gyorsítótárazza a kapcsolatot az SFTP-kiszolgálóval, ami javítja a teljesítményt, és csökkenti a próbálkozások számát a kiszolgálóhoz való csatlakozáskor. A gyorsítótárazási viselkedés időtartamának beállításához szerkessze a [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) tulajdonságot az SFTP-kiszolgálón található SSH-konfigurációban.
+* *Legfeljebb 1 órára* gyorsítótárazza az SFTP-kiszolgálóhoz való kapcsolódást. Ez a funkció javítja a teljesítményt, és csökkenti, hogy az összekötő milyen gyakran próbál csatlakozni a kiszolgálóhoz. A gyorsítótárazási viselkedés időtartamának beállításához szerkessze a [ **ClientAliveInterval** tulajdonságot](https://man.openbsd.org/sshd_config#ClientAliveInterval) az SFTP-kiszolgálón található SSH-konfigurációban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Az SFTP-kiszolgáló címe és a fiók hitelesítő adatai, amelyek lehetővé teszik a logikai alkalmazás számára az SFTP-fiók elérését. Emellett hozzá kell férnie egy SSH titkos kulcshoz és az SSH titkos kulcs jelszavához. Ha nagyméretű fájlokat tölt fel, a daraboláshoz olvasási és írási engedéllyel kell rendelkeznie az SFTP-kiszolgálón lévő gyökérkönyvtárhoz. Ellenkező esetben "401 jogosulatlan" hibaüzenetet kap.
+* Az SFTP-kiszolgáló címe és a fiók hitelesítő adatai, így a munkafolyamata elérheti az SFTP-fiókját. Emellett hozzá kell férnie egy SSH titkos kulcshoz és az SSH titkos kulcs jelszavához. Nagyméretű fájlok darabolással való feltöltéséhez olvasási és írási hozzáféréssel kell rendelkeznie az SFTP-kiszolgálón lévő gyökérkönyvtárhoz. Ellenkező esetben "401 jogosulatlan" hibaüzenetet kap.
 
-  > [!IMPORTANT]
-  >
-  > Az SFTP-SSH összekötő *csak* ezeket a titkos kulcs formátumait, algoritmusait és ujjlenyomatait támogatja:
-  >
-  > * **Titkos kulcs formátuma**: RSA (Rivest-Adleman) és DSA (digitális aláírási algoritmus) kulcsok az OpenSSH-ban és a SSH.com-formátumokban. Ha a titkos kulcs Putty (. PPK) fájlformátumban van, először [alakítsa át a kulcsot az OpenSSH (. PEM)](#convert-to-openssh)fájlformátumba.
-  >
-  > * **Titkosítási algoritmusok**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC és aes-256-CBC
-  >
-  > * **Ujjlenyomat**: MD5
-  >
-  > Miután hozzáadta az SFTP-SSH-triggert vagy a logikai alkalmazáshoz használni kívánt műveletet, meg kell adnia az SFTP-kiszolgáló kapcsolódási adatait. Ha megadja az SSH titkos kulcsát ehhez a csatlakozáshoz, ***ne adja meg manuálisan a kulcsot, vagy szerkessze a kulcsot***, ami miatt a kapcsolódás sikertelen lehet. Ehelyett a ***kulcsot másolja*** a titkos SSH-kulcs fájljából, és ***illessze*** be a kulcsot a kapcsolat részleteibe. 
-  > További információkért lásd a jelen cikk a [Kapcsolódás az SFTP-hez SSH-val](#connect) című szakaszát.
+  Az SFTP-SSH összekötő a titkos kulcs hitelesítését és a jelszó-hitelesítést is támogatja. Az SFTP-SSH-összekötő azonban *csak* a titkos kulcs formátumait, algoritmusait és ujjlenyomatait támogatja:
+
+  * **Titkos kulcs formátuma**: RSA (Rivest-Adleman) és DSA (digitális aláírási algoritmus) kulcsok az OpenSSH-ban és a SSH.com-formátumokban. Ha a titkos kulcs Putty (. PPK) fájlformátumban van, először [alakítsa át a kulcsot az OpenSSH (. PEM)](#convert-to-openssh)fájlformátumba.
+  * **Titkosítási algoritmusok**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC és aes-256-CBC
+  * **Ujjlenyomat**: MD5
+
+  Miután hozzáad egy SFTP-SSH-triggert vagy műveletet a munkafolyamathoz, meg kell adnia az SFTP-kiszolgáló kapcsolati adatait. Ha megadja az SSH titkos kulcsát ehhez a csatlakozáshoz, a ***ne adja meg manuálisan a**(_) kulcsot, ami miatt a kapcsolódás sikertelen lehet. Ehelyett a _*_kulcsot másolja_*_ a titkos SSH-kulcs fájljából, és *_illessze be_* a kulcsot a kapcsolat részleteibe. További információkért lásd a jelen cikk a [Kapcsolódás az SFTP-hez SSH-val](#connect) című szakaszát.
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, ahová el szeretné érni az SFTP-fiókját. Egy SFTP-SSH triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha SFTP-SSH műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
+* A logikai alkalmazás munkafolyamata, ahová el szeretné érni az SFTP-fiókját. Egy SFTP-SSH triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazás-munkafolyamatot](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha SFTP-SSH műveletet szeretne használni, indítsa el a munkafolyamatot egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
 ## <a name="how-sftp-ssh-triggers-work"></a>Az SFTP-SSH-triggerek működése
 
@@ -130,13 +123,13 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>Eseményindító ismétlődésének eltolása és eltolódása
 
-A kapcsolódáson alapuló eseményindítók, amelyekhez először létre kell hozni egy kapcsolatokat, például az SFTP-SSH eseményindítót, eltérnek a Azure Logic Apps natív módon futtató beépített eseményindítókkal, például az [ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md). Ismétlődő kapcsolaton alapuló eseményindítók esetében az ismétlődés ütemezése nem az egyetlen illesztőprogram, amely a végrehajtást vezérli, és az időzóna csak a kezdeti kezdési időpontot határozza meg. A későbbi futtatások az ismétlődési ütemtervtől, a legutóbbi indítás végrehajtástól *és* más olyan tényezőktől függenek, amelyek futási időket okozhatnak, vagy váratlan viselkedést okoznak, például nem tartanak fenn a megadott ütemtervet, amikor a nyári időmegtakarítás (DST) elindul és véget ér. Annak ellenőrzéséhez, hogy az ismétlődési idő ne legyen átváltva a DST életbe léptetéséhez, manuálisan módosítsa az ismétlődést, hogy a logikai alkalmazás továbbra is a várt időpontban fusson. Ellenkező esetben a kezdési idő egy óra elteltével, a DST indításakor és egy órával a DST végén halad át. További információ: [Ismétlődés a kapcsolatok alapú eseményindítók esetében](../connectors/apis-list.md#recurrence-connection-based).
+A kapcsolódáson alapuló eseményindítók, amelyekhez először létre kell hozni egy kapcsolatokat, például az SFTP-SSH eseményindítót, eltérnek a Azure Logic Apps natív módon futtató beépített eseményindítókkal, például az [ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md). Ismétlődő kapcsolaton alapuló eseményindítók esetében az ismétlődés ütemezése nem az egyetlen illesztőprogram, amely a végrehajtást vezérli, és az időzóna csak a kezdeti kezdési időpontot határozza meg. A későbbi futtatások az ismétlődési ütemtervtől, a legutóbbi eseményindító végrehajtástól *és* más olyan tényezőktől függenek, amelyek futási időket okozhatnak, vagy váratlan viselkedést eredményezhetnek. A váratlan viselkedés például nem tudja fenntartani a megadott ütemtervet, amikor a nyári időmegtakarítás (DST) elindul és végződik. Annak ellenőrzéséhez, hogy az ismétlődési idő ne legyen átváltva a DST életbe léptetéséhez, manuálisan módosítsa az ismétlődést. Így a munkafolyamat a várt időpontban továbbra is futni fog. Ellenkező esetben a kezdési idő egy óra elteltével, a DST indításakor és egy órával a DST végén halad át. További információ: [Ismétlődés a kapcsolatok alapú eseményindítók esetében](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="convert-to-openssh"></a>
 
 ## <a name="convert-putty-based-key-to-openssh"></a>Putty-alapú kulcs konvertálása az OpenSSH-ra
 
-Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnévkiterjesztést használja, először alakítsa át a kulcsot az OpenSSH formátumba, amely a. PEM (Privacy Enhanced Mail) fájlnévkiterjesztést használja.
+A PuTTY formátum és az OpenSSH formátum különböző fájlnévkiterjesztések használatát használja. A PuTTY formátum a. PPK vagy a PuTTY titkos kulcsot, a fájlnévkiterjesztést használja. Az OpenSSH formátum a. PEM vagy Privacy Enhanced Mail, a fájlnévkiterjesztés használatát használja. Ha a titkos kulcs Putty formátumú, és az OpenSSH formátumot kell használnia, először az alábbi lépéseket követve alakítsa át a kulcsot az OpenSSH formátumba:
 
 ### <a name="unix-based-os"></a>UNIX-alapú operációs rendszer
 
@@ -176,9 +169,9 @@ Ez a szakasz azokat a szempontokat ismerteti, amelyeket az összekötő esemény
 
 ### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>A fájlok feltöltése és feldolgozása különböző SFTP-mappák használatával
 
-Győződjön meg arról, hogy az SFTP-kiszolgálón külön mappákat használ a feltöltött fájlok tárolásához, és hogy az trigger hogyan figyeli ezeket a fájlokat a feldolgozáshoz, ami azt jelenti, hogy a fájlok között át kell helyeznie a fájlokat a mappák között. Ellenkező esetben az trigger nem indul el, és kiszámíthatatlanul viselkedik, például kihagy egy véletlenszerű számú fájlt, amelyet az trigger feldolgoz.
+Az SFTP-kiszolgálón használjon külön mappákat a feltöltött fájlok tárolásához, és a triggert a fájlok feldolgozásra történő figyeléséhez. Ellenkező esetben az trigger nem indul el, és kiszámíthatatlanul viselkedik, például kihagy egy véletlenszerű számú fájlt, amelyet az trigger feldolgoz. Ez a követelmény azonban azt jelenti, hogy a fájlok a mappák közötti áthelyezéséhez szükséges. 
 
-Ha ez a probléma történik, távolítsa el a fájlokat az trigger által figyelt mappából, és használjon másik mappát a feltöltött fájlok tárolásához.
+Ha ez az indító probléma merül fel, távolítsa el a fájlokat az indító mappából, és használjon másik mappát a feltöltött fájlok tárolásához.
 
 <a name="create-file"></a>
 
@@ -216,7 +209,7 @@ Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-
 
    1. Válassza a  >  **Másolás** szerkesztése lehetőséget.
 
-   1. Az SFTP-SSH-trigger vagy a hozzáadott művelet esetében illessze be a *teljes* kulcsot, amelyet a **titkos SSH-kulcs** tulajdonságba másolt, amely több sort is támogat.  **_Ügyeljen rá, hogy a kulcsot illessze be_*a kulcsba. _*_ne adja meg manuálisan a kulcsot, vagy szerkessze_ azt**.
+   1. Az SFTP-SSH triggerben vagy műveletben *illessze be a teljes* másolt kulcsot az **SSH titkos kulcs** tulajdonságba, amely több sort is támogat. **_Ne adja meg manuálisan a kulcsot, vagy szerkessze_** azt.
 
 1. A kapcsolat részleteinek megadása után kattintson a **Létrehozás** gombra.
 
@@ -244,9 +237,9 @@ A darabolást használó alapértelmezett adaptív működés felülbírálásá
 
 ### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP-SSH-trigger: fájl hozzáadásakor vagy módosításakor
 
-Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, amikor egy fájlt hozzáadnak vagy módosítanak egy SFTP-kiszolgálón. Hozzáadhat például egy olyan feltételt, amely ellenőrzi a fájl tartalmát, és beolvassa a tartalmat attól függően, hogy a tartalom megfelel-e a megadott feltételnek. Ezután hozzáadhat egy műveletet, amely beolvassa a fájl tartalmát, és az SFTP-kiszolgáló egy mappájába helyezi a tartalmat.
+Ez az aktiválás elindítja a munkafolyamatot, amikor egy fájlt hozzáadnak vagy módosítanak egy SFTP-kiszolgálón. Példa követő műveletek esetén a munkafolyamat feltételt használva ellenőrizhető, hogy a fájl tartalma megfelel-e a megadott feltételeknek. Ha a tartalom megfelel a feltételnek, a **Fájl letöltése** SFTP-SSH művelet letöltheti a tartalmat, majd egy másik SFTP-SSH művelettel a fájl egy másik mappába HELYEZHETŐ az SFTP-kiszolgálón.
 
-**Vállalati példa**: ezt az triggert használhatja az ügyfél-megrendeléseket képviselő új fájlok SFTP-mappájának figyelésére. Ezután használhat egy SFTP-műveletet, például a **fájlok beolvasása** lehetőséget, így a sorrend tartalmát megtekintve további feldolgozást hajthat végre, és a rendelést egy Orders adatbázisban tárolhatja.
+**Vállalati példa**: ezt az triggert használhatja az ügyfél-megrendeléseket képviselő új fájlok SFTP-mappájának figyelésére. Ezután használhat egy SFTP-SSH-műveletet, például a **fájlok beolvasása** lehetőséget, hogy a megrendelés tartalma további feldolgozásra kerüljön, és tárolja a rendelést egy Orders adatbázisban.
 
 <a name="get-content"></a>
 
@@ -282,7 +275,7 @@ Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás nem tud sikeresen kapcs
 
 ### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 hiba: "nem létező fájlra vagy mappára történt hivatkozás."
 
-Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás egy új fájlt hoz létre az SFTP-kiszolgálón az SFTP-SSH **create file** művelettel, de azonnal áthelyezi az újonnan létrehozott fájlt, mielőtt a Logic Apps szolgáltatás beolvassa a fájl metaadatait. Amikor a logikai alkalmazás futtatja a **fájl létrehozása** műveletet, a Logic Apps szolgáltatás automatikusan meghívja az SFTP-kiszolgálót a fájl metaadatainak beolvasására. Ha azonban a logikai alkalmazás áthelyezi a fájlt, akkor a Logic Apps szolgáltatás már nem találja a fájlt, így megkapja a `404` hibaüzenetet.
+Ez a hiba akkor fordulhat elő, ha a munkafolyamat létrehoz egy fájlt az SFTP-kiszolgálón az SFTP-SSH **create file** művelettel, de azonnal áthelyezi ezt a fájlt, mielőtt a Logic Apps szolgáltatás beolvassa a fájl metaadatait. Amikor a munkafolyamat futtatja a **fájl létrehozása** műveletet, a Logic Apps szolgáltatás automatikusan meghívja az SFTP-kiszolgálót a fájl metaadatainak beolvasására. Ha azonban a logikai alkalmazás áthelyezi a fájlt, akkor a Logic Apps szolgáltatás már nem találja a fájlt, így megkapja a `404` hibaüzenetet.
 
 Ha nem tudja elkerülni vagy késleltetni a fájl áthelyezését, kihagyhatja a fájl metaadatainak olvasását a fájl létrehozása után, a következő lépések végrehajtásával:
 

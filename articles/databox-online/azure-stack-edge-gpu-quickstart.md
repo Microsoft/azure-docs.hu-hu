@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: b6389152116a47bedbc9c2dc44231f3e1732fdc6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055110"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210810"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Gyors útmutató: az Azure Stack Edge Pro és a GPU használatának első lépései 
 
@@ -36,7 +36,7 @@ A telepítése előtt győződjön meg arról, hogy az alábbi előfeltételek t
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
 
-1. **Telepítés**: csatlakoztassa az 1. portot egy ügyfélhez egy fordított KÁBELLEL vagy USB Ethernet-adapteren keresztül. Csatlakoztasson legalább egy másik portot az adatokhoz, lehetőleg 25 GbE (a 3. PORTról a 6-os portra) az internetre legalább 1 GbE kapcsoló és SFP + Copper kábelek használatával. A biztosított tápkábelek csatlakoztatása a tápegységekhez és az energiaellátási kiosztások elkülönítése. Az eszköz bekapcsolásához nyomja meg a főkapcsoló gombot az előlapon.  
+1. **Telepítés**: csatlakoztassa az 1. portot egy ügyfélhez egy fordított KÁBELLEL vagy USB Ethernet-adapteren keresztül. Csatlakoztasson legalább egy másik portot az adatokhoz, lehetőleg 25 GbE (a 3. PORTról a 6-os portra) az SFP + Copper kábelek használatával, vagy használja a 2-es PORTOT az RJ45-javító kábellel. A biztosított tápkábelek csatlakoztatása a tápegységekhez és az energiaellátási kiosztások elkülönítése. Az eszköz bekapcsolásához nyomja meg a főkapcsoló gombot az előlapon.  
 
     Lásd: [Cavium FastlinQ 41000 Series együttműködési mátrix](https://www.marvell.com/documents/xalflardzafh32cfvi0z/) és [Mellanox Dual port 25G ConnectX-4 Channel hálózati adapter kompatibilis termékek](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products) a kompatibilis hálózati kábelek és kapcsolók beszerzéséhez.
 

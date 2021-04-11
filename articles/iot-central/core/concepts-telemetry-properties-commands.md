@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535314"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106489978"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -51,6 +51,10 @@ IoT Central segítségével megtekintheti a nyers adatokat, amelyeket az eszköz
     Ebben a nézetben kiválaszthatja a megjelenítendő oszlopokat, és megadhatja a megtekinteni kívánt időtartományt. A nem **modellezett adatok** oszlop az eszköz azon adatait jeleníti meg, amelyek nem felelnek meg az eszköz sablonjának bármely tulajdonság-vagy telemetria-definíciójának.
 
 ## <a name="telemetry"></a>Telemetria
+
+### <a name="telemetry-in-components"></a>Telemetria az összetevőkben
+
+Ha a telemetria egy összetevőben van definiálva, adjon hozzá egy nevű egyéni üzenet tulajdonságot az `$.sub` eszköz modelljében definiált összetevő nevével. További információ: [oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](tutorial-connect-device.md).
 
 ### <a name="primitive-types"></a>Primitív típusok
 
@@ -437,6 +441,21 @@ Az eszköz ügyfelének az alábbi példához hasonló JSON-ként kell elkülden
 > [!NOTE]
 > A tulajdonságok adattartalom-formátuma a 07/14/2020-on vagy azt követően létrehozott alkalmazásokra vonatkozik.
 
+### <a name="properties-in-components"></a>Összetevők tulajdonságai
+
+Ha a tulajdonság egy összetevőben van definiálva, akkor csomagolja be a tulajdonságot az összetevő nevébe. A következő példa a összetevőt állítja be az `maxTempSinceLastReboot` `thermostat2` összetevőben. A jelölő `__t` azt jelzi, hogy ez egy összetevő:
+
+```json
+{
+  "thermostat2" : {  
+    "__t" : "c",  
+    "maxTempSinceLastReboot" : 38.7
+    } 
+}
+```
+
+További információ: [oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](tutorial-connect-device.md).
+
 ### <a name="primitive-types"></a>Primitív típusok
 
 Ez a szakasz azokat a primitív tulajdonságokat mutatja be, amelyeket az eszköz egy IoT Central alkalmazásnak küld.
@@ -715,15 +734,31 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 }
 ```
 
-### <a name="writeable-property-types"></a>Írható tulajdonságok típusai
+### <a name="writable-property-types"></a>Írható tulajdonságok típusai
 
-Ez a szakasz olyan írható tulajdonságokat mutat be, amelyeket az eszköz egy IoT Central alkalmazástól kap.
+Ez a szakasz olyan írható típusú tulajdonságokat mutat be, amelyeket az eszköz egy IoT Central alkalmazástól kap.
 
-IoT Central az eszköztől az írható tulajdonságok frissítéseire választ vár. A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező kitöltése nem kötelező. Példákért tekintse meg az alábbi kódrészleteket.
+Ha az írható tulajdonság egy összetevőben van definiálva, a kívánt tulajdonsághoz tartozó üzenet tartalmazza az összetevő nevét. Az alábbi példa azt az üzenetet mutatja be, amely arra kéri az eszközt, hogy frissítse az `targetTemperature` `thermostat2` összetevőt. A jelölő `__t` azt jelzi, hogy ez egy összetevő:
+
+```json
+{
+  "thermostat2": {
+    "targetTemperature": {
+      "value": 57
+    },
+    "__t": "c"
+  },
+  "$version": 3
+}
+```
+
+További információ: [oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](tutorial-connect-device.md).
+
+A IoT Central az eszköztől az írható tulajdonságok frissítéseire választ vár. A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező kitöltése nem kötelező. Példákért tekintse meg az alábbi kódrészleteket.
 
 `ac` egy numerikus mező, amely az alábbi táblázatban szereplő értékeket használja:
 
-| Érték | Címke | Leírás |
+| Érték | Címke | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
@@ -834,6 +869,8 @@ Az eszköznek a következő JSON-adattartalomot kell elküldenie IoT Central a f
 ```
 
 ## <a name="commands"></a>Parancsok
+
+Ha a parancs egy összetevőben van definiálva, az eszköz által fogadott parancs neve tartalmazza az összetevő nevét. Ha például meghívja a parancsot `getMaxMinReport` , és az összetevőt hívja `thermostat2` meg, az eszköz egy nevű parancs végrehajtására vonatkozó kérelmet kap `thermostat2*getMaxMinReport` .
 
 Az eszköz modelljének következő kódrészlete egy olyan parancs definícióját jeleníti meg, amely nem rendelkezik paraméterekkel, és nem várta, hogy az eszköz semmit nem ad vissza:
 

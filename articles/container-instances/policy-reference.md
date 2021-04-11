@@ -1,15 +1,15 @@
 ---
 title: A Azure Container Instances beépített szabályzat-definíciói
 description: A Azure Container Instances Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1c4ec89f3e1d637c5844f38a625ad0ab07e35c4f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 06886397bd4e30826863daab3b3cd525fef523a1
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035343"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091386"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-instances"></a>A Azure Container Instances beépített definíciói Azure Policy
 

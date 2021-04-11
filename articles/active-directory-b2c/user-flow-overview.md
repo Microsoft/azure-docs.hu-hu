@@ -1,94 +1,110 @@
 ---
-title: Felhasználói folyamatok Azure Active Directory B2Cban | Microsoft Docs
+title: Felhasználói folyamatok és egyéni házirendek a Azure Active Directory B2Cban | Microsoft Docs
 titleSuffix: Azure AD B2C
-description: További információ a Azure Active Directory B2C bővíthető házirend-keretrendszeréről és a különböző felhasználói folyamatok létrehozásáról.
+description: További információ a beépített felhasználói folyamatokról és a Azure Active Directory B2C egyéni házirend-bővíthető házirend-keretrendszeréről.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e4dbc5178bec3a5b1f0931267465879f604f36f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94840191"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226008"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Felhasználói folyamatok az Azure Active Directory B2C-ben
+# <a name="user-flows-and-custom-policies-overview"></a>Felhasználói folyamatok és egyéni házirendek áttekintése
 
-Hogy könnyebb legyen beállítani az alkalmazások leggyakoribb identitáskezelési feladatait, az Azure AD B2C Portal több előre meghatározott, konfigurálható szabályzatot tartalmaz; ezek az úgynevezett **felhasználói folyamatok**. A felhasználói folyamattal meghatározhatja, hogy a felhasználók hogyan használják az alkalmazást, amikor olyan műveleteket végeznek, mint például a bejelentkezés, a regisztráció, a profil szerkesztése vagy a jelszó alaphelyzetbe állítása. A felhasználói folyamatok esetében a következő képességeket szabályozhatja:
+Azure AD B2Cban megadhatja azt az üzleti logikát, amelyet a felhasználók követnek, hogy hozzáférjenek az alkalmazáshoz. Megadhatja például, hogy a felhasználók milyen lépéseket követnek a bejelentkezéskor, a regisztráció, a profil szerkesztése vagy a jelszó alaphelyzetbe állítása során. A folyamat befejezése után a felhasználó jogkivonatot szerez be, és hozzáférést szerez az alkalmazáshoz. 
 
-- Bejelentkezéshez használt fióktípus, például Facebook-vagy helyi fiókokhoz hasonló közösségi fiókok
-- A fogyasztótól begyűjtött attribútumok, például Utónév, irányítószám és a cipő mérete
-- Azure AD többtényezős hitelesítés
-- A felhasználói felület testreszabása
-- Információ arról, hogy az alkalmazás jogcímeket fogad jogkivonatként
+Azure AD B2C kétféleképpen biztosíthat identitás-felhasználói élményt:
 
-A bérlőben számos különböző típusú felhasználói folyamatot hozhat létre, és igény szerint használhatja azokat az alkalmazásokban. A felhasználói folyamatok az alkalmazások között újra felhasználhatók. Ez a rugalmasság lehetővé teszi az identitások megadását és módosítását a kód minimális vagy semmilyen módosításával. Az alkalmazás egy szabványos HTTP-hitelesítési kérelem használatával indítja el a felhasználói folyamatot, amely tartalmazza a felhasználói folyamat paraméterét. Egy testreszabott [jogkivonat](tokens-overview.md) érkezik válaszként.
+* A **felhasználói folyamatok** előre definiált, beépített, konfigurálható szabályzatokat biztosítanak, így percek alatt létrehozhatók a regisztráció, a bejelentkezés és a házirend-szerkesztési élmény.
 
-Az alábbi példák a "p" lekérdezési karakterlánc paramétert mutatják be, amely meghatározza a használni kívánt felhasználói folyamatot:
+* Az **Egyéni szabályzatok** lehetővé teszik, hogy saját felhasználói utazásokat hozzon létre az összetett identitási élményhez.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siup                                       // Your sign-up user flow
-```
+Az alábbi képernyőfelvételen a felhasználói folyamat beállításai felhasználói felület, illetve az egyéni házirend-konfigurációs fájlok láthatók.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siin                                       // Your sign-in user flow
-```
+![Képernyőfelvétel: a felhasználói folyamat beállításainak KEZELŐFELÜLETe, illetve az egyéni házirend-konfigurációs fájlok.](media/user-flow-overview/user-flow-vs-custom-policy.png)
 
-## <a name="user-flow-versions"></a>Felhasználói folyamatok verziói
+Ez a cikk röviden áttekinti a felhasználói folyamatokat és az egyéni szabályzatokat, és segít eldönteni, hogy melyik módszer fog működni a legjobban az üzleti igényei szerint.
 
-Azure AD B2C több típusú felhasználói folyamatot tartalmaz:
+## <a name="user-flows"></a>Felhasználói folyamatok
 
-- **Regisztráció és bejelentkezés** – kezeli a regisztrációs és a bejelentkezési élményeket egyetlen konfigurációval. A felhasználók a környezettől függően a megfelelő útvonalat vezetik le. Emellett külön **regisztrációs** vagy **bejelentkezési** felhasználói folyamatokat is tartalmaz. A kombinált regisztráció és a bejelentkezési felhasználói folyamat azonban általában ajánlott.
-- **Profil szerkesztése** – lehetővé teszi a felhasználók számára a profil adatainak szerkesztését.
-- **Jelszó alaphelyzetbe állítása** – beállíthatja, hogy a felhasználók hogyan állíthatják alaphelyzetbe a jelszavukat.
+A leggyakoribb identitási feladatok beállításához a Azure Portal számos előre definiált és konfigurálható szabályzatot tartalmaz, amelyeket *felhasználói folyamatoknak* nevezünk.
 
-A legtöbb felhasználói folyamat esetében a **javasolt** verzió és a **standard** verzió is szerepel. Részletekért lásd: [felhasználói folyamatok verziói](user-flow-versions.md).
+A felhasználói folyamatok beállításait, például az alábbi beállításokkal konfigurálhatja az identitások viselkedését az alkalmazásokban:
 
-> [!IMPORTANT]
-> Ha korábban már használta a felhasználói folyamatokat Azure AD B2C előtt, megfigyelheti, hogy módosítottuk a felhasználói folyamatok verzióinak hivatkozását. Korábban V1 (az éles környezetben való használatra kész) verziókat, valamint V1.1 és V2 (előzetes) verziókat kínáltunk. Most összevontuk a felhasználói folyamatokat két verzióra:
->
->- Az **ajánlott** felhasználói folyamatok a felhasználói folyamatok új előzetes verzióit jelentik. Alaposan tesztelték és egyesítik az örökölt **v2** és a **v 1.1** verzió összes funkcióját. Az új javasolt felhasználói folyamatok továbbra is megmaradnak és frissülnek. Ha áthelyezi ezeket az új ajánlott felhasználói folyamatokat, hozzáférhet a kiadott új funkciókhoz.
->- A korábban **v1**-ként ismert **általános** felhasználói folyamatok általánosan elérhetők, a termelésre kész felhasználói folyamatok. Ha a felhasználói folyamatok kritikus fontosságúak, és a nagymértékben stabil verzióktól függenek, továbbra is használhatja a normál felhasználói folyamatokat, és felismerheti, hogy ezek a verziók nem lesznek karbantartva és frissítve.
->
->Az összes korábbi előzetes verziójú felhasználói folyamat (V 1.1 és v2) a 2021-es **augusztus 1-től** az elavult elérési úton van. Ahol csak lehetséges, javasoljuk, hogy a lehető leghamarabb [váltson az új **javasolt** felhasználói folyamatokra](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) , így mindig kihasználhatja a legújabb funkciókat és frissítéseket.
+* A bejelentkezéshez használt fióktípus, például olyan közösségi fiókok, mint például a Facebook vagy a bejelentkezéshez e-mail-címet és jelszót használó helyi fiókok
+* A fogyasztótól begyűjtött attribútumok, például Utónév, postai kód vagy lakhely szerinti ország/régió
+* Azure AD-Multi-Factor Authentication (MFA)
+* A felhasználói felület testreszabása
+* Jogcímek készlete egy jogkivonatban, amelyet az alkalmazás akkor kap, miután a felhasználó befejezte a felhasználói folyamatot
+* Munkamenet-kezelés
+* ... és még sok minden más
 
-## <a name="linking-user-flows"></a>Felhasználói folyamatok összekapcsolása
+Az alkalmazások általános identitási forgatókönyvek többsége a felhasználói folyamatokkal hatékonyan definiálható és valósítható meg. Javasoljuk, hogy a beépített felhasználói folyamatokat használja, hacsak nem rendelkezik olyan összetett felhasználói utazási forgatókönyvekkel, amelyek az egyéni házirendek teljes rugalmasságát igénylik.
 
-A helyi fiókkal rendelkező **regisztrációs vagy bejelentkezési** felhasználói folyamat tartalmaz egy **elfelejtett jelszót?** hivatkozást a felület első oldalán. Ha erre a hivatkozásra kattint, nem indítja el automatikusan a jelszó-visszaállítás felhasználói folyamatát.
+## <a name="custom-policies"></a>Egyéni szabályzatok
 
-Ehelyett a hibakódot a `AADB2C90118` rendszer visszaadja az alkalmazásnak. Az alkalmazásnak ezt a hibakódot egy adott felhasználói folyamat futtatásával kell kezelnie, amely alaphelyzetbe állítja a jelszót. Ha példát szeretne látni, tekintse meg az [egyszerű ASP.net mintát](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) , amely bemutatja a felhasználói folyamatok összekapcsolását.
+Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák a Azure AD B2C bérlő felhasználói élményének viselkedését. Habár a felhasználói folyamatok előre vannak meghatározva a Azure AD B2C-portálon a leggyakoribb identitási feladatok elvégzéséhez, az egyéni szabályzatok teljes mértékben szerkeszthetők egy identitás-fejlesztővel, és számos különböző feladatot végezhetnek el.
 
-## <a name="email-address-storage"></a>E-mail-cím tárterülete
+Az egyéni szabályzatok teljes mértékben konfigurálhatók és házirend-vezéreltek. Összehangolja az entitások közötti megbízhatóságot a szabványos protokollokban. Például az OpenID Connect, a OAuth, az SAML és néhány nem standard, például REST API-alapú rendszer-rendszerbeli jogcímek cseréje. A keretrendszer felhasználóbarát, fehér címkével ellátott tapasztalatokat hoz létre.
 
-Egy e-mail-cím a felhasználói folyamat részeként is megkövetelhető. Ha a felhasználó egy közösségi identitás-szolgáltatóval végzi a hitelesítést, az e-mail-cím a **otherMails** tulajdonságban tárolódik. Ha egy helyi fiók egy Felhasználónév alapján van kiválasztva, akkor az e-mail-cím egy erős hitelesítési részlet tulajdonságban tárolódik. Ha egy helyi fiók egy e-mail-címen alapul, akkor az e-mail-cím a **signInNames** tulajdonságban tárolódik.
+Az egyéni házirend lehetővé teszi a felhasználói útvonalak összeállítását a lépések tetszőleges kombinációjával. Például:
 
-Az e-mail-cím nem garantálható az ilyen esetekben. A bérlői rendszergazda letilthatja az e-mailek ellenőrzését a helyi fiókok alapszintű házirendjeiben. Még ha az e-mail cím ellenőrzése is engedélyezve van, a rendszer nem ellenőrzi a címeket, ha azok egy közösségi identitás-szolgáltatótól származnak, és nem változtak.
+* Összevonása más identitás-szolgáltatókkal
+* Az első és a harmadik féltől származó többtényezős hitelesítés (MFA) kihívásai
+* Bármilyen felhasználói bevitel összegyűjtése
+* Integráció külső rendszerekkel REST API kommunikáció használatával
 
-A Microsoft Graph API-n keresztül csak a **otherMails** és a **signInNames** tulajdonságok jelennek meg. Az erős hitelesítés részletei tulajdonságban szereplő e-mail-cím nem érhető el.
+Az egyes felhasználói útvonalakat egy házirend határozza meg. Tetszőleges számú szabályzatot építhet ki, mint amennyire szüksége lehet a szervezete legjobb felhasználói élményének engedélyezéséhez.
+
+![A IEF által engedélyezett összetett felhasználói út példáját bemutató ábra](media/user-flow-overview/custom-policy-diagram.png)
+
+Az egyéni házirendeket több XML-fájl határozza meg, amelyek egy hierarchikus láncban egymásra hivatkoznak. Az XML-elemek meghatározzák a jogcímek sémáját, a jogcímek átalakítását, a tartalmi definíciókat, a jogcímeket, a technikai profilokat, a felhasználói útvonalak előkészítésének lépéseit és az identitással kapcsolatos egyéb szempontokat
+
+Az egyéni szabályzatok nagy rugalmassága a legmegfelelőbb, ha összetett identitás-forgatókönyveket kell létrehoznia. Az egyéni házirendeket konfiguráló fejlesztőknek alapos részletességgel kell megadniuk a megbízható kapcsolatokat, hogy tartalmazzák a metaadatok végpontját, a pontos jogcím-definíciókat, valamint a titkok, kulcsok és tanúsítványok konfigurálását az egyes identitás-szolgáltatók igényei szerint.
+
+További információ az egyéni házirendekről [Azure Active Directory B2Cban](custom-policy-overview.md).
+
+## <a name="comparing-user-flows-and-custom-policies"></a>Felhasználói folyamatok és egyéni házirendek összehasonlítása
+
+Az alábbi táblázat részletesen összehasonlítja az Azure AD B2C felhasználói folyamatokkal és az egyéni házirenddel kapcsolatos forgatókönyveket.
+
+| Környezet | Felhasználói folyamatok | Egyéni szabályzatok |
+|-|-------------------|-----------------|
+| Megcélzott felhasználók | Az összes alkalmazás-fejlesztő személyazonossági szakértelemmel vagy anélkül. | Identitás-szakemberek, rendszerintegrátorok, tanácsadók és belső identitású csapatok. Ezek kényelmesek az OpenID Connect-folyamatokkal, valamint az identitás-szolgáltatók és a jogcímek hitelesítésének megismerésére. |
+| Konfigurációs módszer | Azure Portal egy felhasználóbarát felhasználói felülettel (UI). | Közvetlenül szerkesztheti az XML-fájlokat, majd feltöltheti őket a Azure Portalba. |
+| Felhasználói felület testreszabása | A [felhasználói felület teljes testreszabása](customize-ui-with-html.md) HTML-, CSS-és [JavaScript](javascript-and-page-layout.md)-beállításokkal.<br><br>[Többnyelvű támogatás](language-customization.md) egyéni karakterláncokkal. | Ugyanaz |
+| Attribútumok testreszabása | Standard és egyéni attribútumok. | Ugyanaz |
+| Jogkivonat-és munkamenet-kezelés | A [jogkivonatok](configure-tokens.md) és a [munkamenetek viselkedésének](session-behavior.md)testreszabása. | Ugyanaz |
+| Identitásszolgáltatók | [Előre definiált helyi](identity-provider-local.md) vagy [közösségi szolgáltató](add-identity-provider.md), például Azure Active Directory bérlők közötti összevonás. | Szabványokon alapuló OIDC, OAUTH és SAML.  A REST API-kkal való integráció használatával a hitelesítés is lehetséges. |
+| Identitással kapcsolatos feladatok | [Regisztráció vagy bejelentkezés](add-sign-up-and-sign-in-policy.md) helyi vagy számos közösségi fiókkal.<br><br>Önkiszolgáló [jelszó-visszaállítás](add-password-reset-policy.md).<br><br>[Profil szerkesztése](add-profile-editing-policy.md).<br><br>Multi-Factor Authentication.<br><br>Hozzáférési jogkivonat folyamatai. | Hajtsa végre ugyanazokat a feladatokat, mint a felhasználói folyamatok egyéni identitás-szolgáltatók használatával vagy egyéni hatókörök használata.<br><br>Hozzon létre egy felhasználói fiókot egy másik rendszeren a regisztráció időpontjában.<br><br>Üdvözlő e-mail küldése a saját e-mail szolgáltatójának használatával.<br><br>Használjon Azure AD B2Con kívüli felhasználói tárolót.<br><br>A felhasználó által megadott adatok érvényesítése egy megbízható rendszerrel egy API használatával. |
+
+## <a name="application-integration"></a>Alkalmazásintegráció
+
+A bérlőben számos felhasználói folyamatot vagy különböző típusú egyéni szabályzatokat hozhat létre, és igény szerint használhatja azokat az alkalmazásokban. A felhasználói folyamatok és az egyéni házirendek is újra felhasználhatók az alkalmazások között. Ez a rugalmasság lehetővé teszi az identitások megadását és módosítását a kód minimális vagy semmilyen módosításával. 
+
+Amikor egy felhasználó be kíván jelentkezni az alkalmazásba, az alkalmazás egy felhasználói folyamathoz vagy egyéni házirend által megadott végponthoz kezdeményezi az engedélyezési kérelmet. A felhasználói folyamat vagy az egyéni házirend határozza meg és szabályozza a felhasználó élményét. Amikor elvégeznek egy felhasználói folyamatot, Azure AD B2C generál egy jogkivonatot, majd visszairányítja a felhasználót az alkalmazáshoz.
+
+![Mobil alkalmazás Azure AD B2C bejelentkezési oldal közötti folyamattal](media/user-flow-overview/app-integration.png)
+
+Több alkalmazás is használhatja ugyanazt a felhasználói folyamatot vagy egyéni házirendet. Egyetlen alkalmazás több felhasználói folyamatot vagy egyéni szabályzatot is használhat.
+
+Ha például be szeretne jelentkezni egy alkalmazásba, az alkalmazás a *regisztrációs vagy bejelentkezési* felhasználói folyamatot használja. Miután a felhasználó bejelentkezett, érdemes lehet szerkeszteni a profilt. A profil szerkesztéséhez az alkalmazás egy másik engedélyezési kérelmet indít el, ezúttal a felhasználói folyamat *szerkesztése* lehetőséget használva.
+
+Az alkalmazás egy szabványos HTTP-hitelesítési kérelem használatával indítja el a felhasználói folyamatot, amely tartalmazza a felhasználói folyamatot vagy az egyéni szabályzat nevét. Egy testreszabott [jogkivonat](tokens-overview.md) érkezik válaszként.
+
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az ajánlott felhasználói folyamatok létrehozásához kövesse az [oktatóanyag: felhasználói folyamat létrehozása](tutorial-create-user-flows.md)című témakör utasításait.
+- Az ajánlott felhasználói folyamatok létrehozásához kövesse az [oktatóanyag: felhasználói folyamat létrehozása](tutorial-create-user-flows.md)című témakör utasításait.
+- Tudnivalók a [Azure ad B2C felhasználói folyamatának verzióiról](user-flow-versions.md).
+- További információ az [Azure ad B2C egyéni szabályzatokról](custom-policy-overview.md).
