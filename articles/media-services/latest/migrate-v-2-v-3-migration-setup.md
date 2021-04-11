@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959670"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279680"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>3. lépés – áttelepítés beállítása a v3 REST API vagy az ügyféloldali SDK-ra
 
@@ -43,7 +43,7 @@ Azok az ügyfelek, akik korábban az ARM Management API 2015-10-01-es verziójá
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>Új Media Services-fiók létrehozása teszteléshez
 
-Kövesse a rövid útmutató lépéseit a [környezet beállításához](how-to-set-azure-subscription.md?tabs=portal) a Azure Portal használatával. Válassza az API-hozzáférés és az egyszerű szolgáltatás hitelesítése lehetőséget egy új Azure AD-alkalmazás AZONOSÍTÓjának és titkos kulcsainak létrehozásához a teszt fiókkal való használatra.
+Kövesse a rövid útmutató lépéseit a [környezet beállításához](setup-azure-subscription-how-to.md?tabs=portal) a Azure Portal használatával. Válassza az API-hozzáférés és az egyszerű szolgáltatás hitelesítése lehetőséget egy új Azure AD-alkalmazás AZONOSÍTÓjának és titkos kulcsainak létrehozásához a teszt fiókkal való használatra.
 
 [Hozzon létre egy Media Services-fiókot](account-create-how-to.md?tabs=portal).
 [Hitelesítő adatok Beszerzése Media Services API-hoz való hozzáféréshez](access-api-howto.md?tabs=portal).
@@ -66,7 +66,7 @@ Kövesse a rövid útmutató lépéseit a [környezet beállításához](how-to-
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-A [poster](./media-rest-apis-with-postman.md) Media Services v3 REST API-hívásokhoz használható.
+A [poster](./setup-postman-rest-how-to.md) Media Services v3 REST API-hívásokhoz használható.
 Olvassa el a [REST API-hivatkozási lapokat](/rest/api/media/).
 
 A Poster-gyűjteményben az 2020-05-01-es verzió sztringjét kell használnia.

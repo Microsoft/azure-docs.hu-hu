@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.openlocfilehash: ac11b7bc7e53c214f872d400565d50009479afcb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104604423"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
@@ -101,8 +101,8 @@ Az index létrehozásával és a mezők tulajdonságainak beállításával kapc
 | kínai (egyszerűsített) | zh-Hans. Microsoft | zh-Hans. Lucene |
 | kínai (hagyományos) | zh-Hant. Microsoft | zh-Hant. Lucene |
 | Horvát | HR. Microsoft |  |
-| cseh | cs. Microsoft | cs. Lucene |
-| dán | da. Microsoft | da. Lucene |
+| Cseh | cs. Microsoft | cs. Lucene |
+| Dán | da. Microsoft | da. Lucene |
 | Holland | nl. Microsoft | nl. Lucene |
 | Angol | en. Microsoft | en. Lucene |
 | Észt | et. Microsoft |  |

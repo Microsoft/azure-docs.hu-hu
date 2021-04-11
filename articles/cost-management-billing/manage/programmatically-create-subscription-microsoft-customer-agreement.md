@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 779a1410641f945dc8dbf38aecf65b97d64971b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5409c30020db2c8d7acf3c23df5a7d709d872341
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593965"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963274"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Azure-előfizetések létrehozása programozott módon Microsoft Ügyfélszerződéshez a legújabb API-kkal
 
@@ -28,7 +28,9 @@ Ha programozott módon hoz létre Azure-előfizetést, azt az a megállapodás s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előfizetések létrehozásához tulajdonosi, közreműködői vagy Azure-előfizetések létrehozói szerepkörével kell rendelkeznie egy számlaszakaszra, vagy tulajdonos vagy közreműködői szerepkörrel egy számlázási profilra vagy számlázási fiókra vonatkozóan. További információkért lásd [az előfizetés számlázási szerepköreit és azok feladatait](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Előfizetések létrehozásához tulajdonosi, közreműködői vagy Azure-előfizetések létrehozói szerepkörével kell rendelkeznie egy számlaszakaszra, vagy tulajdonos vagy közreműködői szerepkörrel egy számlázási profilra vagy számlázási fiókra vonatkozóan. Ugyanezt a szerepkört is megadhatja egy egyszerű szolgáltatásnév (SPN) számára. További információ a szerepkörökről és az engedélyek hozzárendeléséről: [előfizetés számlázási szerepkörei és feladatai](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+
+Ha SPN-t használ előfizetések létrehozásához, használja az Azure AD-alkalmazás regisztrációjának ObjectId az egyszerű szolgáltatásnév ObjectId [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) vagy az [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list)használatával. 
 
 Ha nem tudja, rendelkezik-e hozzáféréssel Microsoft Ügyfélszerződéshez, tekintse meg a [Microsoft Ügyfélszerződéshez való hozzáférés ellenőrzéséről](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement) szóló cikket.
 

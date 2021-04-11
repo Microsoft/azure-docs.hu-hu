@@ -8,10 +8,10 @@ ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
 ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105608119"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
@@ -195,7 +195,7 @@ A naplózási szintekkel kapcsolatos további információkért lásd: a [napló
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Description|
+|Szolgáltatástípus|Élettartama|Leírás|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|

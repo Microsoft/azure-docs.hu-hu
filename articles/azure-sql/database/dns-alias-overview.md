@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 128a57f02ebd85e4fece3c1417b8afc5c845514a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94989122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732227"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>A Azure SQL Database DNS-aliasa
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -98,7 +98,7 @@ A kódban használt parancsmagok a következők:
 - [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról a 2. kiszolgálóra.
 - [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): távolítsa el a DNS-aliast a 2. kiszolgálóról az alias nevének használatával.
 
-## <a name="limitations-during-preview"></a>Korlátozások az előzetes verzióban
+## <a name="limitations"></a>Korlátozások
 
 A DNS-aliasok jelenléte a következő korlátozásokkal jár:
 

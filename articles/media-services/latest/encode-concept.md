@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 22f4c5bba3ea6836a8c9b016315f3cfae36cb52d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111938"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279493"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
@@ -31,7 +31,7 @@ A videók általában [progresszív letöltéssel](https://en.wikipedia.org/wiki
 > A Media Services nem számláz a megszakított vagy hibás feladatokért. Például egy olyan feladat, amely elérte a 50%-os előrehaladást, és a megszakítása megszakadt, a feladat percének 50%-ában nem történik számlázás. Csak a befejezett feladatokért kell fizetnie.
 
 * A progresszív letöltéssel történő továbbításhoz a Azure Media Services segítségével konvertálhat egy digitális médiafájlt [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -fájlba, amely a [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodekkel kódolt videókat és az [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -kodekkel kódolt hanganyagot tartalmaz. Ez az MP4-fájl a Storage-fiókban lévő eszközre íródik. A fájl közvetlen letöltéséhez használhatja az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t). Ha a kimeneti eszközt egy adott tároló nevével hozta létre a tárolóban, használja ezt a helyet. Ellenkező esetben a Media Services használatával [listázhatja az objektum-tároló URL-címeit](/rest/api/media/assets/listcontainersas). 
-* A tartalom adaptív sávszélességű adatfolyamként történő kézbesítésének előkészítéséhez a köztes fájlt több bitrátán kell kódolni (magasról alacsonyra). A minőség kecses átállásának biztosítása érdekében a videó felbontása alacsonyabb, mint a sávszélesség. Ez egy úgynevezett kódolási létrát eredményez, amely a felbontások és a bitráta (lásd: [automatikusan generált adaptív sávszélességű létrák](encode-autogen-bitrate-ladder.md)) táblázata. Media Services használatával több bitrátán is kódolhatja a köztes fájlokat. Ennek során az MP4-fájlok és a hozzájuk tartozó, a Storage-fiókban lévő eszközre írt társított adatfolyam-konfigurációs fájlok készletét fogja kapni. Ezután a Media Services [dinamikus csomagolási](encode-dynamic-packaging-concept.md) funkciójának használatával továbbíthatja a videót a streaming protokollok, például az [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) és a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)segítségével. Ehhez létre kell hoznia egy [adatfolyam-keresőt](streaming-locators-concept.md) , és a támogatott protokolloknak megfelelő streaming URL-címeket kell létrehoznia, amelyek az eszközök és alkalmazások számára a képességeik alapján adhatók ki.
+* A tartalom adaptív sávszélességű adatfolyamként történő kézbesítésének előkészítéséhez a köztes fájlt több bitrátán kell kódolni (magasról alacsonyra). A minőség kecses átállásának biztosítása érdekében a videó felbontása alacsonyabb, mint a sávszélesség. Ez egy úgynevezett kódolási létrát eredményez, amely a felbontások és a bitráta (lásd: [automatikusan generált adaptív sávszélességű létrák](encode-autogen-bitrate-ladder.md)) táblázata. Media Services használatával több bitrátán is kódolhatja a köztes fájlokat. Ennek során az MP4-fájlok és a hozzájuk tartozó, a Storage-fiókban lévő eszközre írt társított adatfolyam-konfigurációs fájlok készletét fogja kapni. Ezután a Media Services [dinamikus csomagolási](encode-dynamic-packaging-concept.md) funkciójának használatával továbbíthatja a videót a streaming protokollok, például az [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) és a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)segítségével. Ehhez létre kell hoznia egy [adatfolyam-keresőt](stream-streaming-locators-concept.md) , és a támogatott protokolloknak megfelelő streaming URL-címeket kell létrehoznia, amelyek az eszközök és alkalmazások számára a képességeik alapján adhatók ki.
 
 Az alábbi ábrán a dinamikus csomagolással rendelkező igény szerinti kódoláshoz tartozó munkafolyamat látható.
 
@@ -41,7 +41,7 @@ Ez a témakör útmutatást nyújt a tartalmak Media Services v3-vel való kódo
 
 ## <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
-Media Services v3 kódoláshoz létre kell hoznia egy [átalakítót](/rest/api/media/transforms) és egy [feladatot](/rest/api/media/jobs). Az átalakítás egy receptet határoz meg a kódolási beállításokhoz és kimenetekhez; a feladattípus a recept egy példánya. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
+Media Services v3 kódoláshoz létre kell hoznia egy [átalakítót](/rest/api/media/transforms) és egy [feladatot](/rest/api/media/jobs). Az átalakítás egy receptet határoz meg a kódolási beállításokhoz és kimenetekhez; a feladattípus a recept egy példánya. További információt az [átalakításokkal és feladatokkal](transform-jobs-concept.md) kapcsolatos cikkben olvashat.
 
 Ha Media Services kódolást használ, az előállítók használatával tájékoztathatja a kódolót a bemeneti médiafájlok feldolgozásáról. A Media Services v3-as verziójában szabványos kódoló használatával kódolja a fájlokat. Megadhatja például a videó felbontását és/vagy a kívánt Hangcsatornák számát a kódolt tartalomban.
 
@@ -84,8 +84,8 @@ Megadhatja, hogy létrehoz egy [feladatot](/rest/api/media/jobs/create) egyetlen
 
 Példák:
 
-* [Videó kivágása a .NET-tel](subclip-video-dotnet-howto.md)
-* [Videó kivágása a REST-tel](subclip-video-rest-howto.md)
+* [Videó kivágása a .NET-tel](transform-subclip-video-dotnet-how-to.md)
+* [Videó kivágása a REST-tel](transform-subclip-video-rest-how-to.md)
 
 ## <a name="built-in-presets"></a>Beépített beállításkészletek
 

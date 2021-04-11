@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cf4f427c76709022feed37c7a21f1ab4d594acd0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728164"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091871"
 ---
 # <a name="pricing-scenarios"></a>Díjszabási forgatókönyvek
 
@@ -44,6 +44,41 @@ Alice csoportos hívást készített a kollégáival, Bob és Charlie-val. Alice
 - 1 résztvevő x 43 perc x $0,004/résztvevő/perc = $0,172 [a videó és az audió díja azonos a díjszabásban]
 
 **A csoportos hívás teljes költsége**: $0,48 + $0,172 = $0,652
+
+
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-to-a-pstn-number"></a>Díjszabási példa: az alkalmazás kimenő hívása a JS SDK-val egy PSTN-számra
+
+Alice PSTN-hívást kezdeményez az alkalmazásból az USA-beli telefonszámán kezdődően `+1-425` .
+
+- Alice használta a JS SDK-t az alkalmazás létrehozásához.
+- A hívás összesen 5 percet vesz igénybe.
+
+**Költségszámítások**
+
+- 1 résztvevő a VoIP-lábát (Alice) az alkalmazásról a kommunikációs szolgáltatások kiszolgálóira x 10 perc x $0,004/percben résztvevő percenként = $0,04
+- 1 résztvevő a kommunikációs szolgáltatások kiszolgálóiról egy USA-beli telefonszámra x 10 perc x $0,013/perc = $0,13.
+
+Megjegyzés: az USA vegyes díjszabása `+1-425` $0,013. A részletekért tekintse meg a következő hivatkozást: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**A csoportos hívás teljes költsége**: $0,04 + $0,13 = $0,17
+
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>Díjszabási példa: hanghívás csoportosítása JS SDK és 1 PSTN-láb használatával
+
+Alice és Bob VOIP-híváson keresztül. Bob megkezdte a Charlie-ra irányuló, Charlie-beli PSTN-számon, az Egyesült államokbeli telefonszámon megjelenő hívást `+1-425` .
+
+- Alice használta a JS SDK-t az alkalmazás létrehozásához. Körülbelül 10 percet beszéltünk, mielőtt meghívja Charlie-t a PSTN-számon.
+- Miután Bob megkapta a hívást a Charlie-ra a PSTN-számon, a hárman egy másik 10 percig szólalnak meg.
+
+**Költségszámítások**
+
+- 2 résztvevői a VoIP-láb (Alice és Bob) az alkalmazásról a kommunikációs szolgáltatások kiszolgálóira x 20 perc x $0,004/résztvevős percenként = $0,16
+- 1 résztvevő a kommunikációs szolgáltatások kiszolgálóinak a PSTN kimenő lábán (Charlie) a US telefonszám x 10 perc x $0,013/résztvevős percenként = $0,13
+
+Megjegyzés: az USA vegyes díjszabása `+1-425` $0,013. A részletekért tekintse meg a következő hivatkozást: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**A VoIP + eszkalációs hívás teljes költsége**: $0,16 + $0,13 = $. 29
+
 
 ### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>Díjszabási példa: a kommunikációs szolgáltatások JavaScript SDK-felhasználója egy ütemezett Microsoft Teams-találkozóhoz csatlakozik
 

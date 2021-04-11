@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fd837a4c547b227147752b03b6a7312c733a5ae
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 63415037b9f91936e04fa715405bfb86bf022cdd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057014"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551764"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása
 
@@ -423,4 +423,4 @@ Ha az értékek **nem**, akkor a következők miatt lehet:
 
 [Az eszközök hibaelhárításának folytatása a dsregcmd parancs használatával](troubleshoot-device-dsregcmd.md)
 
-További kérdések: eszközkezelés – [Gyakori kérdések](faq.md)
+További kérdések: eszközkezelés – [Gyakori kérdések](faq.yml)

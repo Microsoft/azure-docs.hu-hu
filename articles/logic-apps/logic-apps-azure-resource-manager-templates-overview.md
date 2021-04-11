@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ec72431d927fd59677075e7adfdf7df171574882
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44131ecf6fd3d8d2f07f0fe567fb924ac8621682
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772943"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110002"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
@@ -67,7 +67,7 @@ A Logic app-sablonok esetében elsősorban a következő sablon-objektumok haszn
 |-----------|-------------|
 | `parameters` | A [sablon paramétereit](../azure-resource-manager/templates/template-syntax.md#parameters) deklarálja az Azure-ban üzembe helyezett erőforrások létrehozásakor és testreszabásakor használandó értékek elfogadásához. Ezek a paraméterek például elfogadják a logikai alkalmazás nevének és helyének, kapcsolatainak és az üzembe helyezéshez szükséges egyéb erőforrásoknak az értékeit. Ezeket a [paramétereket egy paraméter-fájlban](#template-parameter-files)tárolhatja, amelyet a témakör későbbi részében talál. Az általános részleteket lásd: [Paraméterek – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#parameters). |
 | `resources` | Meghatározza az Azure-erőforráscsoport létrehozásához vagy frissítéséhez és üzembe helyezéséhez szükséges [erőforrásokat](../azure-resource-manager/templates/template-syntax.md#resources) , például a logikai alkalmazást, a kapcsolatokat, az Azure Storage-fiókokat stb. Az általános részleteket lásd: [erőforrások – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#resources). |
-||||
+|||
 
 A logikai alkalmazás sablonja a következő formátumnév-formátumot használja:
 

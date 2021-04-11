@@ -2,31 +2,30 @@
 title: A Azure Service Bus IP-tűzfalszabályok konfigurálása
 description: A tűzfalszabályok használata az adott IP-címekről Azure Service Bus való csatlakozás engedélyezéséhez.
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: e73f566533cb2357653f7f584ec9ca77333c0a63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/29/2021
+ms.openlocfilehash: 747e15e912033c5bc6a1f64ab389f1ab03f40c0b
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100560859"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962322"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Azure Service Bus névtér elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
 
 Ez a funkció olyan helyzetekben hasznos, amikor a Azure Service Bus csak bizonyos jól ismert helyekről lehet elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route][express-route]Service Bust használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről vagy egy vállalati NAT-átjáró címéről érkező forgalom legyen. 
 
-> [!IMPORTANT]
-> - A tűzfalak és a virtuális hálózatok csak a **prémium** szintű Service Bus támogatottak. Ha a **Premier** szintre való frissítés nem egy lehetőség, javasoljuk, hogy a közös hozzáférésű aláírás (SAS) tokenjét biztonságos módon őrizze meg, és csak a jogosult felhasználók férhessenek hozzá. További információ az SAS-hitelesítéssel kapcsolatban: [hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md#shared-access-signature).
-> - Legalább egy IP-szabályt vagy virtuális hálózati szabályt meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal).  
-
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 Az IP-tűzfalszabályok a Service Bus névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Service Bus névtérben lévő engedélyezett IP-szabálynak, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
-A tűzfalszabályok bevezetésével megakadályozhatja, hogy más Azure-szolgáltatások a Service Bus használatával kommunikálnak. Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Service Bus erőforrásaihoz, még akkor is, ha az IP-szűrés engedélyezve van. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services). 
+## <a name="important-points"></a>Fontos pontok
+- A tűzfalak és a virtuális hálózatok csak a **prémium** szintű Service Bus támogatottak. Ha a **Premier** szintre való frissítés nem egy lehetőség, javasoljuk, hogy a közös hozzáférésű aláírás (SAS) tokenjét biztonságos módon őrizze meg, és csak a jogosult felhasználók férhessenek hozzá. További információ az SAS-hitelesítéssel kapcsolatban: [hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md#shared-access-signature).
+- **Legalább egy IP-tűzfalszabály vagy virtuális hálózati szabály** megadása a névtér számára, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal).  
+- A tűzfalszabályok bevezetésével megakadályozhatja, hogy más Azure-szolgáltatások a Service Bus használatával kommunikálnak. Kivételként engedélyezheti a hozzáférést bizonyos **megbízható szolgáltatásoktól** Service Bus erőforrásaihoz, még akkor is, ha az IP-szűrés engedélyezve van. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services). 
 
-A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
-- Azure App Service
-- Azure Functions
+    A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
+    - Azure App Service
+    - Azure Functions
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfalszabályok létrehozásához egy Service Bus névtérhez. 

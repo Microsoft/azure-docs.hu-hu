@@ -1,18 +1,15 @@
 ---
 title: Figyelő Azure Site Recovery | Microsoft Docs
 description: Azure Site Recovery replikációs problémák és műveletek figyelése és hibaelhárítása a portál használatával
-author: raynew
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: raynew
-ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a80f68c230bfed5caad4fd5ce474d8d06fd3d093
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023567"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579324"
 ---
 # <a name="monitor-site-recovery"></a>A Site Recovery monitorozása
 
@@ -152,7 +149,7 @@ A **replikált elemek** listájában szerezze be a replikált gépek listáját.
 3. Az **oszlopok** elemre kattintva további oszlopokat jeleníthet meg, például megjelenítheti a RPO, a célként megadott konfigurációs problémákat és a replikációs hibákat.
 4. Kattintson a **Filter (szűrő** ) elemre az információk meghatározott paraméterek, például a replikálási állapot vagy egy adott replikációs házirend alapján történő megtekintéséhez.
 5. Kattintson a jobb gombbal egy gépre olyan műveletek elindításához, mint például a feladatátvételi teszt, vagy a hozzá tartozó konkrét hiba részleteinek megtekintéséhez.
-6. Kattintson egy gépre a további részletek részletezéséhez. A részletek a következők:
+6. Kattintson egy gépre a további részletek részletezéséhez. Az adatok a következők:
    - **Replikációs információ**: a gép aktuális állapota és állapota.
    - **RPO** (helyreállítási pont célkitűzése): a virtuális gép aktuális RPO és a RPO utolsó kiszámításának időpontja.
    - **Helyreállítási pontok**: a gép legújabb elérhető helyreállítási pontjai.

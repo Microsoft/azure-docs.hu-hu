@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 800acddcb3527b9ca16d7fc664c2a3c27b528c25
-ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
+ms.openlocfilehash: afb8a6f7d18a36503253da3666a1325eef228651
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105726686"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958135"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ A POM-fájlban hivatkozzon a `azure-communication-chat` csomagra a csevegési AP
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.7</version> 
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -66,7 +66,7 @@ A hitelesítéshez az ügyfélnek a csomagra kell hivatkoznia `azure-communicati
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version> 
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -82,7 +82,7 @@ A következő osztályok és felületek a Javához készült Azure Communication
 | ChatThreadAsyncClient | Ez az osztály szükséges az aszinkron csevegési szál működéséhez. A példányokat a ChatAsyncClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére |
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A Common SDK CommunicationTokenCredential osztályát kell használnia, hogy átadja a tokent a csevegési ügyfelének. 
+Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A Common SDK CommunicationTokenCredential osztályát kell használnia, hogy átadja a tokent a csevegési ügyfelének.
 
 További információ a [csevegési architektúráról](../../../concepts/chat/concepts.md)
 
@@ -106,7 +106,7 @@ public class App
     public static void main( String[] args ) throws IOException
     {
         System.out.println("Azure Communication Services - Chat Quickstart");
-        
+
         // Your unique Azure Communication service endpoint
         String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 
@@ -139,7 +139,8 @@ public class App
 - A `topic` konstruktor paraméterének használatával adjon meg egy témakört a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` .
 - Ezzel a paranccsal `participants` listázhatja a szálhoz hozzáadandó hozzászólásláncok résztvevőit. `ChatParticipant` a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) rövid útmutatójában létrehozott felhasználót hozza létre.
 
-`CreateChatThreadResult` a válasz egy csevegési szál létrehozásával tért vissza. Egy olyan `getChatThread()` metódust tartalmaz, amely visszaadja a `ChatThread` szál ügyfelének lekéréséhez használható objektumot, amelyből a `ChatThreadClient` létrehozott szálon végezheti el a műveletek végrehajtását: résztvevők hozzáadása, üzenet küldése stb. Az `ChatThread` objektum tartalmazza azt a `getId()` metódust is, amely lekéri a szál egyedi azonosítóját.
+`CreateChatThreadResult` a válasz egy csevegési szál létrehozásával tért vissza.
+Egy olyan `getChatThread()` metódust tartalmaz, amely visszaadja a `ChatThread` szál ügyfelének lekéréséhez használható objektumot, amelyből a `ChatThreadClient` létrehozott szálon végezheti el a műveletek végrehajtását: résztvevők hozzáadása, üzenet küldése stb. Az `ChatThread` objektum tartalmazza azt a `getId()` metódust is, amely lekéri a szál egyedi azonosítóját.
 
 ```Java
 ChatParticipant firstThreadParticipant = new ChatParticipant()

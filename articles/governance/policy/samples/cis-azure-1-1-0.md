@@ -1,15 +1,15 @@
 ---
 title: A CIS Microsoft Azure alapjaira vonatkozó szabályozási megfelelőségi részletek
 description: A CIS Microsoft Azure alapjaival kapcsolatos alapszintű szabályozási megfelelőségi előírásoknak. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7d26825e3e401984b52216c6827b8a3baf44ad62
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d21d04fe4347a2ff7735045e786520c106309c7
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105032514"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091752"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>A CIS Microsoft Azure alapjaival kapcsolatos alapkövetelmények
 
@@ -17,7 +17,7 @@ A következő cikk azt ismerteti, hogyan jelennek meg a Azure Policy szabályoz�
 További információ erről a megfelelőségi szabványról: [CIS Microsoft Azure founds benchmark 1.1.0](https://www.cisecurity.org/benchmark/azure/). A _tulajdonjog_ megismeréséhez tekintse meg a [Azure Policy házirend-definíció](../concepts/definition-structure.md#type) és [a megosztott felelősség a felhőben](../../../security/fundamentals/shared-responsibility.md)című témakört.
 
 A következő leképezések a **CIS Microsoft Azure founds benchmark 1.1.0** -vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott **megfelelőségi tartományra** ugorhat. Számos vezérlő [Azure Policy](../overview.md) kezdeményezési definícióval van implementálva. A teljes kezdeményezési definíció áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot.
-Ezután keresse meg és válassza ki a **CIS Microsoft Azure alapítványok benchmark 1.1.0** szabályozási megfelelőségének beépített kezdeményezési definícióját.
+Ezután keresse meg és válassza ki a **CIS Microsoft Azure alapítványok benchmark v 1.1.0** szabályozási megfelelőségének beépített kezdeményezési definícióját.
 
 Ez a beépített kezdeményezés a [CIS Microsoft Azure founds teljesítményteszt-tervezet](../../blueprints/samples/cis-azure-1-1-0.md)részeként van telepítve.
 
@@ -70,7 +70,14 @@ Ez a beépített kezdeményezés a [CIS Microsoft Azure founds teljesítménytes
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Security Center Standard díjszabási szintet kell kiválasztani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1181c5f-672a-477a-979a-7d58aa086233) |A standard szintű díjszabás lehetővé teszi a fenyegetések észlelését a hálózatok és a virtuális gépek számára, a fenyegetések felderítését, a rendellenességek észlelését és a viselkedés-elemzést Azure Security Center |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Standard_pricing_tier.json) |
+|[Az Azure Defender for App Service engedélyezése szükséges](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2913021d-f2fd-4f3d-b958-22354e2bdbcb) |Az Azure Defender for App Service kihasználja a felhő méretezését, és azt, hogy az Azure hogyan rendelkezik felhőalapú szolgáltatóként, hogy figyelje a gyakori webalkalmazás-támadásokat. |AuditIfNotExists, letiltva |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnAppServices_Audit.json) |
+|[Az Azure Defender for Azure SQL Database-kiszolgálókat engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Az SQL-hez készült Azure Defender lehetővé teszi az adatbázis-biztonsági rések felszínre való felhasználhatóságát, valamint az SQL-adatbázisok fenyegetését jelző rendellenes tevékenységek észlelését, valamint a bizalmas adatok felderítését és besorolását. |AuditIfNotExists, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
+|[Engedélyezve kell lennie az Azure Defender for Container nyilvántartójának](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |Az Azure Defender for Container-beállításjegyzékek biztonsági réseket biztosítanak az elmúlt 30 nap során húzott rendszerképekről, leküldve a regisztrációs adatbázisba vagy importálnak, és elérhetővé teszik a képek részletes megállapításait. |AuditIfNotExists, letiltva |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
+|[Az Azure Defender for Key Vault engedélyezése szükséges](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e6763cc-5078-4e64-889d-ff4d9a839047) |Az Azure Defender for Key Vault további védelmi és biztonsági intelligencia-réteget biztosít a Key Vault-fiókok eléréséhez vagy kihasználásához szükséges szokatlan és potenciálisan ártalmas kísérletek észlelésével. |AuditIfNotExists, letiltva |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnKeyVaults_Audit.json) |
+|[Engedélyezni kell az Azure Defender for Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F523b5cd1-3e23-492f-a539-13118b6d1e3a) |A Kubernetes készült Azure Defender valós idejű veszélyforrások elleni védelmet biztosít a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. |AuditIfNotExists, letiltva |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnKubernetesService_Audit.json) |
+|[Az Azure Defender for Servers szolgáltatást engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4da35fc9-c9e7-4960-aec9-797fe7d9051d) |A kiszolgálókhoz készült Azure Defender valós idejű veszélyforrások elleni védelmet biztosít a kiszolgálói munkaterhelések számára, és megerősítő javaslatokat hoz létre, valamint riasztásokat küld a gyanús tevékenységekről. |AuditIfNotExists, letiltva |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnVM_Audit.json) |
+|[Engedélyezni kell az Azure Defender for SQL-kiszolgálókat a gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6581d072-105e-4418-827f-bd446d56421b) |Az SQL-hez készült Azure Defender lehetővé teszi az adatbázis-biztonsági rések felszínre való felhasználhatóságát, valamint az SQL-adatbázisok fenyegetését jelző rendellenes tevékenységek észlelését, valamint a bizalmas adatok felderítését és besorolását. |AuditIfNotExists, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServerVirtualMachines_Audit.json) |
+|[Engedélyezni kell az Azure Defender for Storage szolgáltatást](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F308fbb08-4ab8-4e67-9b29-592e93fb94fa) |Az Azure Defender for Storage szolgáltatás szokatlan és potenciálisan ártalmas kísérletek észlelését teszi lehetővé a Storage-fiókok eléréséhez vagy kiaknázásához. |AuditIfNotExists, letiltva |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnStorageAccounts_Audit.json) |
 
 ### <a name="ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>Győződjön meg arról, hogy a figyelési ügynök automatikus kiépítés értéke "on" értékre van állítva
 

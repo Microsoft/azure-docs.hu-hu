@@ -4,32 +4,31 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 66a98d6c17deda00f2e90035d5c0bacc430470d1
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 479aa522462d14f295177e6b2d2fcc4707657760
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106073073"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498837"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Egy központilag telepített kommunikációs szolgáltatások erőforrása. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
-- A a `User Access Token` hívási ügyfél engedélyezéséhez. További információ a [beszerzéséről `User Access Token` ](../../access-tokens.md)
-- Opcionális: fejezze be a gyors üzembe helyezési útmutatót az [alkalmazáshoz való hívás hozzáadásával](../getting-started-with-calling.md)
+- Egy üzembe helyezett Azure kommunikációs szolgáltatások erőforrása. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
+- Felhasználói hozzáférési jogkivonat a hívási ügyfél engedélyezéséhez. [Felhasználói hozzáférési jogkivonat beszerzése](../../access-tokens.md).
+- Nem kötelező: fejezze be a [hanghívás hozzáadása az alkalmazáshoz](../getting-started-with-calling.md) című rövid útmutatót.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="set-up-your-system"></a>A System beállítása
 
-### <a name="creating-the-xcode-project"></a>A Xcode projekt létrehozása
+### <a name="create-the-xcode-project"></a>A Xcode projekt létrehozása
 
-> [!NOTE]
-> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 8 verziót használja.
+A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézetes alkalmazás** sablonját. Ez a rövid útmutató a [SwiftUI keretrendszert](https://developer.apple.com/xcode/swiftui/)használja, ezért a **nyelvet** a **Swift** és a **felhasználói felület** **SwiftUI** kell beállítania. 
 
-A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézetes alkalmazás** sablonját. Ez a rövid útmutató a [SwiftUI keretrendszert](https://developer.apple.com/xcode/swiftui/)használja, ezért állítsa be a **nyelvet** a **Swift** értékre, és a **felhasználói felületet** **SwiftUI**. Ebben a rövid útmutatóban nem hozhat létre egység-vagy felhasználói felületi teszteket. Nyugodtan szüntesse meg az **egységek tesztelését** , és törölje a **felhasználói felületi tesztek belefoglalását** is.
+Ebben a rövid útmutatóban nem hozhat létre egység-vagy felhasználói felületi teszteket. Nyugodtan törölheti a **belefoglalási egység teszteket** , és a **felhasználói felületi tesztek** szövegmezőket is megadhatja.
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Képernyőfelvétel: az új projekt létrehozása ablak a Xcode belül.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Képernyőkép, amely megjeleníti a Xcode belüli projekt létrehozásának ablakát.":::
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>A csomag és a függőségek telepítése a CocoaPods
 
@@ -46,13 +45,13 @@ A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézet
    ```
 
 2. Futtassa az `pod install` parancsot.
-3. Nyissa meg a `.xcworkspace` with Xcode.
+3. Nyissa meg `.xcworkspace` a Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Hozzáférés kérése a mikrofonhoz
 
-Az eszköz mikrofonjának eléréséhez frissítenie kell az alkalmazás információs tulajdonságainak listáját `NSMicrophoneUsageDescription` . A társított értéket adja meg, `string` amely szerepelni fog a párbeszédpanelen, amelyet a rendszer a kérelem hozzáférésének kéréséhez használ a felhasználótól.
+Az eszköz mikrofonjának eléréséhez frissítenie kell az alkalmazás információ-tulajdonságainak listáját a következővel: `NSMicrophoneUsageDescription` . A társított értéket adja meg, `string` amely szerepelni fog a párbeszédpanelen, amelyet a rendszer a felhasználótól való hozzáférés kéréséhez használ.
 
-Kattintson a jobb gombbal a `Info.plist` projekt fájának bejegyzésére, és válassza a **Megnyitás**  >  **forrásként kód** lehetőséget. Adja hozzá a következő sorokat a legfelső szintű `<dict>` szakaszhoz, majd mentse a fájlt.
+Kattintson a jobb gombbal a `Info.plist` projekt fájának bejegyzésére, és válassza a **Megnyitás**  >  **forrásként kód** lehetőséget. Adja hozzá a következő sorokat a legfelső szintű `<dict>` szakaszban, majd mentse a fájlt.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -61,33 +60,36 @@ Kattintson a jobb gombbal a `Info.plist` projekt fájának bejegyzésére, és v
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
-Nyissa meg a projekt **ContentView. Swift** fájlját, és adjon hozzá egy `import` deklarációt a fájl elejéhez az importáláshoz `AzureCommunicationCalling library` . Emellett az importáláshoz `AVFoundation` szükség van a kódban az audio engedélyre vonatkozó kérelemre.
+Nyissa meg a projekt *ContentView. Swift* fájlját, és adjon hozzá egy `import` deklarációt a fájl elejéhez a könyvtár importálásához `AzureCommunicationCalling` . Emellett importálja az importálást is `AVFoundation` . Szüksége lesz rá a kódban szereplő hangengedély-kérelmekre.
 
 ```swift
 import AzureCommunicationCalling
 import AVFoundation
 ```
 
-## <a name="object-model"></a>Objektummodell
+## <a name="learn-the-object-model"></a>A objektummodell megismerése
 
 A következő osztályok és felületek az Azure kommunikációs szolgáltatások az iOS-hez készült SDK-val kapcsolatos főbb funkcióit kezelik.
+
+> [!NOTE]
+> Ez a rövid útmutató a Calling SDK-ból származó 1.0.0-Beta. 8 verziót használja.
 
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | A CallClient a hívó SDK fő belépési pontja.|
-| CallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
-| CommunicationTokenCredential | A rendszer a CommunicationTokenCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.| 
-| CommunicationIdentifier | A CommunicationIdentifier a felhasználó identitásának jelölésére szolgál, amely a következők egyike lehet: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
+| `CallClient` | `CallClient` a hívó SDK fő belépési pontja.|
+| `CallAgent` | `CallAgent` a hívások indításához és kezeléséhez használatos. |
+| `CommunicationTokenCredential` | `CommunicationTokenCredential` a rendszer jogkivonat-hitelesítő adatként használja a példány létrehozásához `CallAgent` .| 
+| `CommunicationIdentifier` | `CommunicationIdentifier` a felhasználó identitásának ábrázolására szolgál. Az identitás lehet `CommunicationUserIdentifier` , `PhoneNumberIdentifier` , vagy `CallingApplication` . |
 
 > [!NOTE]
-> Az esemény-meghatalmazottak megvalósításakor az alkalmazásnak erős hivatkozást kell tartania az esemény-előfizetéseket igénylő objektumokra. Ha például egy `RemoteParticipant` objektumot ad vissza a metódus meghívásakor, `call.addParticipant` és az alkalmazás beállítja a delegált figyelését `RemoteParticipantDelegate` , az alkalmazásnak erős hivatkozást kell tartalmaznia az `RemoteParticipant` objektumra. Ellenkező esetben, ha az objektum gyűjtése bekerül, a delegált végzetes kivételt fog kiváltani, ha a hívó SDK megpróbálja meghívni az objektumot.
+> Amikor az alkalmazás végrehajtja az esemény-delegált, erős hivatkozást kell tartania az esemény-előfizetéseket igénylő objektumokra. Ha például egy `RemoteParticipant` objektumot ad vissza a metódus meghívásakor, `call.addParticipant` és az alkalmazás beállítja a delegált figyelését `RemoteParticipantDelegate` , az alkalmazásnak erős hivatkozást kell tartalmaznia az `RemoteParticipant` objektumra. Ellenkező esetben, ha az objektum gyűjtése bekerül, a delegált végzetes kivételt fog kiváltani, ha a hívó SDK megpróbálja meghívni az objektumot.
 
-## <a name="initialize-the-callagent"></a>A CallAgent inicializálása
+## <a name="initialize-callagent"></a>CallAgent inicializálása
 
-Egy példány létrehozásához olyan `CallAgent` `CallClient` metódust kell használnia, `callClient.createCallAgent` amely aszinkron módon visszaadja az `CallAgent` objektumot az inicializálás után.
+Egy példánynak a alkalmazásból való létrehozásához `CallAgent` `CallClient` olyan metódust kell használnia, `callClient.createCallAgent` amely aszinkron módon visszaadja az `CallAgent` objektumot az inicializálás után.
 
-A hívási ügyfél létrehozásához át kell adnia egy `CommunicationTokenCredential` objektumot.
+Hívási ügyfél létrehozásához át kell adnia egy `CommunicationTokenCredential` objektumot.
 
 ```swift
 
@@ -104,14 +106,14 @@ var userCredential: CommunicationTokenCredential?
        return
 }
 
-// tokenProvider needs to be implemented by contoso which fetches new token
+// tokenProvider needs to be implemented by Contoso, which fetches a new token
 public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
     let newToken = self.tokenProvider!.fetchNewToken()
     onCompletion(newToken, nil)
 }
 ```
 
-Adja meg `CommunicationTokenCredential` a fent létrehozott objektumot, `CallClient` és állítsa be a megjelenítendő nevet.
+Adja meg a `CommunicationTokenCredential` létrehozott objektumot `CallClient` , és állítsa be a megjelenítendő nevet.
 
 ```swift
 
@@ -133,9 +135,9 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>Kimenő hívás elhelyezése
 
-Egy hívás létrehozásához és elindításához meg kell hívnia az egyik API `CallAgent` -t, és meg kell adnia egy olyan felhasználó kommunikációs szolgáltatásbeli identitását, amelyet a kommunikációs szolgáltatások kezelési SDK használatával kiépített.
+Hívás létrehozásához és elindításához meg kell hívnia az egyik API-t, és meg kell `CallAgent` adnia a kommunikációs szolgáltatások identitását, amelyet a Communication Services Management SDK használatával kiépített.
 
-A hívás létrehozása és a kezdés szinkronban van. Ekkor megjelenik a hívási példány, amely lehetővé teszi a hívás összes eseményére való előfizetést.
+A hívás létrehozása és a kezdés szinkronban van. Egy hívási példányt fog kapni, amely lehetővé teszi a hívás összes eseményére való előfizetést.
 
 ### <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>Helyezzen 1:1-hívást egy felhasználónak vagy 1: n hívásnak a felhasználók és a PSTN használatával
 
@@ -147,7 +149,8 @@ let oneToOneCall = self.callAgent.call(participants: callees, options: StartCall
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>1: n hívás elhelyezése a felhasználók és a PSTN között
-Ha a hívást PSTN-re szeretné helyezni, meg kell adnia a kommunikációs szolgáltatásokkal megszerzett telefonszámot
+Ha a hívást PSTN-re szeretné helyezni, meg kell adnia a kommunikációs szolgáltatásokkal megszerzett telefonszámot.
+
 ```swift
 
 let pstnCallee = PhoneNumberIdentifier(phoneNumber: '+1999999999')
@@ -156,8 +159,8 @@ let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options:
 
 ```
 
-### <a name="place-a-11-call-with-with-video"></a>1:1-hívás elhelyezése videóval
-A Device Manager-példány beszerzéséhez [tekintse](#device-management) meg a következőt
+### <a name="place-a-11-call-with-video"></a>1:1-hívás elhelyezése videóval
+A Device Manager-példányok beszerzéséhez tekintse meg az [eszközök kezelése](#manage-devices)című szakaszt.
 
 ```swift
 
@@ -174,7 +177,7 @@ let call = self.callAgent?.call(participants: [callee], options: startCallOption
 ```
 
 ### <a name="join-a-group-call"></a>Csatlakozás csoportos híváshoz
-Egy híváshoz való csatlakozáshoz meg kell hívnia az egyik API-t a *CallAgent* -on
+Egy híváshoz való csatlakozáshoz meg kell hívnia az egyik API-t `CallAgent` .
 
 ```swift
 
@@ -183,8 +186,8 @@ let call = self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCal
 
 ```
 
-### <a name="subscribe-for-incoming-call"></a>Előfizetés bejövő hívásra
-Előfizetés a bejövő hívási eseményre
+### <a name="subscribe-to-an-incoming-call"></a>Előfizetés bejövő hívásra
+Előfizetés bejövő hívási eseményre.
 
 ```
 final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelegate
@@ -204,8 +207,8 @@ final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelega
 ```
 
 ### <a name="accept-an-incoming-call"></a>Bejövő hívás elfogadása
-Hívás fogadásához hívja meg az "elfogadás" metódust egy hívás objektumon.
-Delegált beállítása a CallAgent 
+Hívás fogadásához hívja `accept` meg a metódust egy hívási objektumon. Delegált beállítása a következőre: `CallAgent` .
+
 ```swift
 final class CallHandler: NSObject, CallAgentDelegate
 {
@@ -235,23 +238,23 @@ if let incomingCall = CallHandler().incomingCall {
 }
 ```
 
-## <a name="push-notification"></a>Leküldéses értesítés
+## <a name="set-up-push-notifications"></a>Leküldéses értesítések beállítása
 
-A mobil leküldéses értesítés a mobileszköz felugró értesítése. A híváshoz a VoIP-ra (Internet Protocol) leküldéses értesítések küldésére fogunk összpontosítani. A leküldéses értesítések regisztrálásához, a leküldéses értesítések kezeléséhez, valamint a leküldéses értesítések regisztrációjának megszüntetéséhez lehetőséget biztosítunk Önnek.
+A mobil leküldéses értesítés az előugró értesítés, amelyet a mobileszközön kap. A híváshoz a VoIP (hangvezérelt Internet Protocol) leküldéses értesítések küldésére fogunk összpontosítani. 
 
-### <a name="prerequisite"></a>Előfeltétel
+A következő szakaszok ismertetik a leküldéses értesítések regisztrálását, kezelését és regisztrációjának megszüntetését. A feladatok elkezdése előtt végezze el az alábbi előfeltételeket:
 
-- 1. lépés: Xcode-> & képességek aláírása – > hozzáadási képesség – > "leküldéses értesítések"
-- 2. lépés: Xcode – > & képességeinek aláírása – > hozzáadási képesség – > "háttér mód"
-- 3. lépés: "háttérbeli üzemmódok" – > válassza a "Voice over IP" és a "távoli értesítések" lehetőséget.
+1. A Xcode-ben lépjen az **&-képességek aláírása lehetőségre**. Adjon hozzá egy képességet a **+ képesség lehetőség** kiválasztásával, majd válassza a **leküldéses értesítések** lehetőséget.
+2. Adjon hozzá egy másik képességet a **+ képesség lehetőség** kiválasztásával, majd válassza a **háttér mód** lehetőséget.
+3. A **háttér mód** területen jelölje be az **IP-cím** és a **távoli értesítések** hangjelzése jelölőnégyzetet.
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Képernyőfelvétel: képességek hozzáadása a Xcode-ben." lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Képernyőkép, amely bemutatja, hogyan adhat hozzá képességeket a Xcode-ben." lightbox="../media/ios/xcode-push-notification.png":::
 
-#### <a name="register-for-push-notifications"></a>Regisztráció leküldéses értesítésekhez
+### <a name="register-for-push-notifications"></a>Regisztráció leküldéses értesítésekhez
 
-A leküldéses értesítések regisztrálásához hívja a registerPushNotification () függvényt egy *CallAgent* -példányra egy eszköz regisztrációs jogkivonattal.
+A leküldéses értesítések regisztrálásához hívjon `registerPushNotification()` be egy `CallAgent` példányt egy eszköz regisztrációs jogkivonattal.
 
-A leküldéses értesítések regisztrálását a sikeres inicializálás után kell meghívni. Az `callAgent` objektum megsemmisítve lesz `logout` meghívva, amely automatikusan törli a leküldéses értesítések regisztrációját.
+A sikeres inicializálás után a leküldéses értesítések regisztrációjának kell történnie. Az `callAgent` objektum megsemmisítve lesz `logout` meghívva, amely automatikusan törli a leküldéses értesítések regisztrációját.
 
 
 ```swift
@@ -267,8 +270,8 @@ callAgent.registerPushNotifications(deviceToken: deviceToken) { (error) in
 
 ```
 
-#### <a name="push-notification-handling"></a>Leküldéses értesítések kezelését
-A bejövő hívások leküldéses értesítések fogadásához hívja a *handlePushNotification ()* metódust egy *CallAgent* -példányon egy szótári adattartalommal.
+### <a name="handle-push-notifications"></a>Leküldéses értesítések kezelése
+Ha leküldéses értesítéseket szeretne kapni a bejövő hívásokról, hívjon fel egy olyan példányt, amely `handlePushNotification()` `CallAgent` szótári adattartalommal rendelkezik.
 
 ```swift
 
@@ -283,11 +286,12 @@ callAgent.handlePush(notification: callNotification) { (error) in
 }
 
 ```
-#### <a name="unregister-push-notification"></a>Leküldéses értesítés regisztrációjának törlése
+### <a name="unregister-push-notifications"></a>Leküldéses értesítések regisztrációjának törlése
 
-Az alkalmazások bármikor megszüntetik a leküldéses értesítések regisztrációját. Egyszerűen hívja `unregisterPushNotification` meg a metódust a *CallAgent*.
+Az alkalmazások bármikor megszüntetik a leküldéses értesítések regisztrációját. Egyszerűen hívja `unregisterPushNotification` meg a metódust `CallAgent` .
+
 > [!NOTE]
-> Az alkalmazások nem törlődnek automatikusan a leküldéses értesítésből a kijelentkezéskor.
+> Az alkalmazások nem törlődnek automatikusan a leküldéses értesítésekből a kijelentkezéskor.
 
 ```swift
 
@@ -301,13 +305,13 @@ callAgent.unregisterPushNotifications { (error) in
 
 ```
 
-## <a name="mid-call-operations"></a>Közép-hívási műveletek
+## <a name="perform-mid-call-operations"></a>Telefonos műveletek végrehajtása
 
 A videóval és hanggal kapcsolatos beállítások kezeléséhez hívás közben különféle műveleteket is végrehajthat.
 
 ### <a name="mute-and-unmute"></a>Némítás és némítás feloldása
 
-A helyi végpont némításához vagy a némítás feloldásához használhatja a `mute` és az `unmute` aszinkron API-kat:
+A helyi végpont némításához vagy a némítás feloldásához használhatja a `mute` és az `unmute` aszinkron API-kat.
 
 ```swift
 call!.mute { (error) in
@@ -320,7 +324,7 @@ call!.mute { (error) in
 
 ```
 
-Aszinkron Helyi némítás
+A következő kód használatával aszinkron módon lehet felnémítani a helyi végpontot.
 
 ```swift
 call!.unmute { (error) in
@@ -334,7 +338,7 @@ call!.unmute { (error) in
 
 ### <a name="start-and-stop-sending-local-video"></a>Helyi videó küldésének elindítása és leállítása
 
-Ha meg szeretné kezdeni a helyi videó küldését a hívás más résztvevőinek, használja az `startVideo` API-t és a Pass-t a következővel: `localVideoStream``camera`
+Ha meg szeretné kezdeni a helyi videó küldését a hívás más résztvevői számára, használja az API-t, és adja meg a következőt: `startVideo` `localVideoStream` `camera` .
 
 ```swift
 
@@ -351,7 +355,7 @@ call!.startVideo(stream: localVideoStream) { (error) in
 
 ```
 
-A videó küldésének megkezdése után a `LocalVideoStream` példány felveszi a `localVideoStreams` gyűjteményt egy hívási példányra:
+A videó küldésének megkezdése után a `LocalVideoStream` példány felveszi a `localVideoStreams` gyűjteményt egy hívási példányra.
 
 ```swift
 
@@ -359,7 +363,7 @@ call.localVideoStreams[0]
 
 ```
 
-Aszinkron A helyi videó leállításához továbbítsa a `localVideoStream` visszaadott értéket a következő hívásból `call.startVideo` :
+A helyi videó leállításához adja meg a `localVideoStream` hívásból visszaadott példányt `call.startVideo` . Ez egy aszinkron művelet.
 
 ```swift
 
@@ -373,9 +377,9 @@ call!.stopVideo(stream: localVideoStream) { (error) in
 
 ```
 
-## <a name="remote-participants-management"></a>Távoli résztvevők kezelése
+## <a name="manage-remote-participants"></a>Távoli résztvevők kezelése
 
-Minden távoli résztvevőt a típus képvisel `RemoteParticipant` , és a gyűjteményen keresztül érhetők el a `remoteParticipants` hívási példányon:
+Minden távoli résztvevőt a típus képvisel `RemoteParticipant` , és a gyűjteményen keresztül érhetők el a `remoteParticipants` hívási példányon.
 
 ### <a name="list-participants-in-a-call"></a>Hívás résztvevőinek listázása
 
@@ -385,14 +389,14 @@ call.remoteParticipants
 
 ```
 
-### <a name="remote-participant-properties"></a>Távoli résztvevő tulajdonságai
+### <a name="get-remote-participant-properties"></a>Távoli résztvevő tulajdonságainak beolvasása
 
 ```swift
 
 // [RemoteParticipantDelegate] delegate - an object you provide to receive events from this RemoteParticipant instance
 var remoteParticipantDelegate = remoteParticipant.delegate
 
-// [CommunicationIdentifier] identity - same as the one used to provision token for another user
+// [CommunicationIdentifier] identity - same as the one used to provision a token for another user
 var identity = remoteParticipant.identity
 
 // ParticipantStateIdle = 0, ParticipantStateEarlyMedia = 1, ParticipantStateConnecting = 2, ParticipantStateConnected = 3, ParticipantStateOnHold = 4, ParticipantStateInLobby = 5, ParticipantStateDisconnected = 6
@@ -414,7 +418,7 @@ var videoStreams = remoteParticipant.videoStreams // [RemoteVideoStream, RemoteV
 
 ### <a name="add-a-participant-to-a-call"></a>Résztvevő hozzáadása egy híváshoz
 
-Meghívhatja a résztvevőt egy híváshoz (egy felhasználóhoz vagy egy telefonszámhoz) `addParticipant` . Ez szinkron módon visszaküld egy távoli résztvevő példányt.
+Ha szeretne hozzáadni egy résztvevőt egy híváshoz (vagy egy felhasználóhoz vagy telefonszámhoz), akkor meghívhatja a következőt: `addParticipant` . Ezzel a paranccsal a rendszer szinkron módon visszaküld egy távoli résztvevő példányt.
 
 ```swift
 
@@ -423,7 +427,7 @@ let remoteParticipantAdded: RemoteParticipant = call.add(participant: Communicat
 ```
 
 ### <a name="remove-a-participant-from-a-call"></a>Résztvevő eltávolítása egy hívásból
-Ha el szeretne távolítani egy résztvevőt egy hívásból (vagy egy felhasználóról vagy egy telefonszámról), meghívhatja az API-t  `removeParticipant` . Ez a megoldás aszinkron módon fog megjelenni.
+Ha el szeretne távolítani egy résztvevőt egy hívásból (vagy egy felhasználóról vagy egy telefonszámról), meghívja az API-t `removeParticipant` . Ez a megoldás aszinkron módon fog megjelenni.
 
 ```swift
 
@@ -439,11 +443,11 @@ call!.remove(participant: remoteParticipantAdded) { (error) in
 
 ## <a name="render-remote-participant-video-streams"></a>A távoli résztvevő video streamek megjelenítése
 
-Előfordulhat, hogy a távoli résztvevők videó-vagy nyomtatómegosztást kezdeményeznek hívás közben.
+A távoli résztvevők videó-vagy nyomtatómegosztást indíthatnak hívás közben.
 
-### <a name="handle-remote-participant-videoscreen-sharing-streams"></a>A távoli résztvevő videó/képernyő megosztása streamek kezelése
+### <a name="handle-video-sharing-or-screen-sharing-streams-of-remote-participants"></a>Kezelheti a távoli résztvevők videó-megosztási vagy képernyő-megosztási streamjét
 
-A távoli résztvevők streamek listázásához vizsgálja meg a `videoStreams` gyűjteményeket:
+A távoli résztvevők streamek listázásához vizsgálja meg a `videoStreams` gyűjteményeket.
 
 ```swift
 
@@ -451,7 +455,7 @@ var remoteParticipantVideoStream = call.remoteParticipants[0].videoStreams[0]
 
 ```
 
-### <a name="remote-video-stream-properties"></a>Távoli video stream tulajdonságai
+### <a name="get-remote-video-stream-properties"></a>Távoli video stream-tulajdonságok beolvasása
 
 ```swift
 
@@ -463,9 +467,9 @@ var id: Int = remoteParticipantVideoStream.id // id of remoteParticipantStream
 
 ```
 
-### <a name="render-remote-participant-stream"></a>Távoli résztvevői stream megjelenítése
+### <a name="render-remote-participant-streams"></a>Távoli résztvevői streamek megjelenítése
 
-A távoli résztvevői streamek megjelenítésének megkezdése:
+A távoli résztvevői streamek megjelenítésének megkezdéséhez használja a következő kódot.
 
 ```swift
 
@@ -476,16 +480,16 @@ targetRemoteParticipantView.update(scalingMode: ScalingMode.fit)
 
 ```
 
-### <a name="remote-video-renderer-methods-and-properties"></a>Távoli videó-megjelenítő módszerei és tulajdonságai
+### <a name="get-remote-video-renderer-methods-and-properties"></a>Távoli videó-megjelenítő metódusok és tulajdonságok beolvasása
 
 ```swift
 // [Synchronous] dispose() - dispose renderer and all `RendererView` associated with this renderer. To be called when you have removed all associated views from the UI.
 remoteVideoRenderer.dispose()
 ```
 
-## <a name="device-management"></a>Eszközfelügyelet
+## <a name="manage-devices"></a>Eszközök kezelése
 
-`DeviceManager` lehetővé teszi a helyi eszközök enumerálását, amelyek a hang-és video-adatfolyamok továbbítására irányuló hívásokban használhatók. Azt is lehetővé teszi, hogy engedélyt kérjen a felhasználótól a mikrofon/kamera eléréséhez. `deviceManager`A következő `callClient` objektumhoz férhet hozzá:
+`DeviceManager` lehetővé teszi a helyi eszközök enumerálását, amelyek a hang-és video-adatfolyamok továbbítására irányuló hívásokban használhatók. Azt is lehetővé teszi, hogy engedélyt kérjen a felhasználótól egy mikrofonhoz vagy kamerához való hozzáféréshez. Elérheti `deviceManager` az `callClient` objektumot.
 
 ```swift
 
@@ -501,7 +505,7 @@ self.callClient!.getDeviceManager { (deviceManager, error) in
 
 ### <a name="enumerate-local-devices"></a>Helyi eszközök enumerálása
 
-A helyi eszközökhöz való hozzáféréshez használhat enumerálási metódusokat a Eszközkezelő. A számbavétel egy szinkron művelet.
+A helyi eszközök eléréséhez használhat enumerálási metódusokat az Eszközkezelőben. A számbavétel egy szinkron művelet.
 
 ```swift
 // enumerate local cameras
@@ -512,9 +516,9 @@ var localMicrophones = deviceManager.microphones! // [AudioDeviceInfo, AudioDevi
 var localSpeakers = deviceManager.speakers! // [AudioDeviceInfo, AudioDeviceInfo...]
 ``` 
 
-### <a name="set-default-microphonespeaker"></a>Alapértelmezett mikrofon/hangszóró beállítása
+### <a name="set-the-default-microphone-or-speaker"></a>Az alapértelmezett mikrofon vagy hangszóró beállítása
 
-Az Eszközkezelővel beállíthat egy alapértelmezett eszközt, amelyet a rendszer a hívás indításakor fog használni. Ha a verem alapértékei nincsenek beállítva, a kommunikációs szolgáltatások az operációs rendszer alapértelmezett értékeire fognak visszatérni.
+Az Eszközkezelővel beállíthat egy alapértelmezett eszközt, amelyet a rendszer a hívás indításakor használni fog. Ha a verem alapértékei nincsenek beállítva, a kommunikációs szolgáltatások az operációs rendszer alapértelmezett értékeire kerülnek vissza.
 
 ```swift
 // get first microphone
@@ -527,9 +531,9 @@ var firstSpeaker = self.deviceManager!.speakers!
 deviceManager.setSpeaker(speakerDevice: firstSpeaker)
 ```
 
-### <a name="local-camera-preview"></a>Helyi kamera előzetes verziója
+### <a name="get-a-local-camera-preview"></a>Helyi kamera előzetes verziójának beolvasása
 
-A segítségével `Renderer` megkezdheti a stream megjelenítését a helyi kameráról. Ezt a streamet nem küldi el a többi résztvevőnek; Ez egy helyi előnézeti hírcsatorna. Ez egy aszinkron művelet.
+A segítségével `Renderer` megkezdheti a stream megjelenítését a helyi kameráról. Ezt a streamet nem lehet elküldeni a többi résztvevőnek; Ez egy helyi előnézeti hírcsatorna. Ez egy aszinkron művelet.
 
 ```swift
 
@@ -540,9 +544,9 @@ self.view = try renderer!.createView()
 
 ```
 
-### <a name="local-camera-preview-properties"></a>Helyi kamera előzetes verziójának tulajdonságai
+### <a name="get-local-camera-preview-properties"></a>Helyi kamera előnézeti tulajdonságainak beolvasása
 
-A megjelenítő olyan tulajdonságokat és metódusokat tartalmaz, amelyek lehetővé teszik a renderelés vezérlését:
+A megjelenítő olyan tulajdonságokat és metódusokat tartalmaz, amelyek lehetővé teszik a renderelés vezérlését.
 
 ```swift
 
@@ -567,16 +571,16 @@ localRenderer.dispose()
 
 ```
 
-## <a name="eventing-model"></a>Eseményvezérelt modell
+## <a name="subscribe-to-notifications"></a>Feliratkozás értesítésekre
 
 Előfizethet a legtöbb tulajdonságra és gyűjteményre, hogy értesítést kapjon az értékek változásakor.
 
 ### <a name="properties"></a>Tulajdonságok
-Előfizetés az `property changed` eseményekre:
+Az eseményekre való előfizetéshez `property changed` használja a következő kódot.
 
 ```swift
 call.delegate = self
-// Get the property of the call state by doing get on the call's state member
+// Get the property of the call state by getting on the call's state member
 public func onCallStateChanged(_ call: Call!,
                                args: PropertyChangedEventArgs!)
 {
@@ -589,7 +593,7 @@ public func onCallStateChanged(_ call: Call!,
 ```
 
 ### <a name="collections"></a>Gyűjtemények
-Előfizetés az `collection updated` eseményekre:
+Az eseményekre való előfizetéshez `collection updated` használja a következő kódot.
 
 ```swift
 call.delegate = self

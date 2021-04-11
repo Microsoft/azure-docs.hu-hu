@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügyfelet a beállítások naplózására a virtuális gépeken belül.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: a18f230c1b7b1eb2c953542e276127f4f47cbb39
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 6fb3ed3644ccdb5de8f03bedf56943a91570322b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802522"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733026"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -176,7 +176,10 @@ A vendég konfigurációs bővítmény naplófájlokat ír a következő helysz�
 
 Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux
+
+- Azure-beli virtuális gép: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+- Azure-beli virtuális gép: `/var/lib/GuestConfig/arc_policy_logs/gc_agent.log`
 
 ### <a name="collecting-logs-remotely"></a>Naplók távoli gyűjtése
 
@@ -210,9 +213,9 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 A vendég konfigurációs ügyfél letölti a csomagokat a gépre, és kibontja a tartalmat.
 A letöltött és tárolt tartalmak ellenőrzéséhez tekintse meg az alább megadott mappák helyét.
 
-Windows: `c:\programdata\guestconfig\configurations`
+Windows: `c:\programdata\guestconfig\configuration`
 
-Linux: `/var/lib/guestconfig/configurations`
+Linux: `/var/lib/GuestConfig/Configuration`
 
 ## <a name="guest-configuration-samples"></a>Vendég konfigurációs minták
 

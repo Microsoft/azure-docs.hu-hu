@@ -1,18 +1,22 @@
 ---
-title: Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
-description: Megtudhatja, hogyan hozhat létre egyedi DefenderIotMicroAgent-modult az új eszközökhöz.
+title: 'Gyors útmutató: Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egyedi DefenderIotMicroAgent-modult az új eszközökhöz.
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5036eefbd77a22d492f6ce7d3c7d15f50a081490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1bcaa76e9bfbe417bfd0d4b539b8e0c7ff95c7b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781058"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384511"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
+# <a name="quickstart-create-a-defender-iot-micro-agent-module-twin-preview"></a>Gyors útmutató: Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
 
 Az új eszközökhöz egyedi **DefenderIotMicroAgent** -modult hozhat létre. Az ikrek modult a IoT Hubban lévő összes eszközhöz is létrehozhatja. 
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Nincsenek
 
 ## <a name="device-twins"></a>Eszköz ikrek 
 
@@ -70,4 +74,5 @@ Annak ellenőrzése, hogy egy Defender-IoT-Micro-Agent Twin létezik-e egy adott
 
 ## <a name="next-steps"></a>Következő lépések 
 
-A következő cikkből megtudhatja, hogyan [vizsgálhatja meg a biztonsági javaslatokat](quickstart-investigate-security-recommendations.md).
+> [!div class="nextstepaction"]
+> [biztonsági javaslatok vizsgálata](quickstart-investigate-security-recommendations.md)

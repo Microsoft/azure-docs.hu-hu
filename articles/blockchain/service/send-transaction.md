@@ -5,10 +5,10 @@ ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
 ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105628645"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Oktatóanyag: intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain Service-ben
@@ -81,13 +81,13 @@ Az Azure Blockchain Development Kit a szarvasgomba használatával hajtja végre
 
 ![A szerződés sikeresen telepítve](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>Szerződési függvény meghívása
+## <a name="call-a-contract-function&quot;></a>Szerződési függvény meghívása
 A **HelloBlockchain** -szerződés **SendRequest hívás** funkciója módosítja a **RequestMessage** állapot változót. Egy blockchain-hálózat állapotának módosítása tranzakción keresztül történik. Létrehozhat egy parancsfájlt, amely a **SendRequest hívás** függvényt tranzakción keresztül hajtja végre.
 
 1. Hozzon létre egy új fájlt a szarvasgomba-projekt gyökerében, és nevezze el `sendrequest.js` . Adja hozzá a következő Web3 JavaScript-kódot a fájlhoz.
 
     ```javascript
-    var HelloBlockchain = artifacts.require("HelloBlockchain");
+    var HelloBlockchain = artifacts.require(&quot;HelloBlockchain");
         
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")
