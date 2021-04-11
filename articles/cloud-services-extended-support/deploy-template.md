@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9849648c8a0a76ff89a6f95e64eeade791e7135c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381774"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105510"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
@@ -25,14 +25,12 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
 
 2. Hozzon létre egy új erőforráscsoportot a [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) vagy a [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md)használatával. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ.
 
-3. Hozzon létre egy nyilvános IP-címet, és állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. A Cloud Services (kiterjesztett támogatás) csak az [alapszintű] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU nyilvános IP-címek) használatát támogatja. A standard SKU nyilvános IP-címei nem működnek Cloud Services.
+3. Hozzon létre egy nyilvános IP-címet, és állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. Cloud Services (kiterjesztett támogatás) csak az [Alapszintű](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU nyilvános IP-címeinek támogatása. A standard SKU nyilvános IP-címei nem működnek Cloud Services.
 Ha statikus IP-címet használ, akkor a szolgáltatás konfigurációs (. cscfg) fájljában Fenntartott IP kell hivatkozni. Ha meglévő IP-címet használ, hagyja ki ezt a lépést, és adja hozzá az IP-cím adatait közvetlenül az ARM-sablon terheléselosztó konfigurációs beállításaihoz.
-
-4. Hozzon létre egy hálózati profil objektumot, és rendelje hozzá a nyilvános IP-címet a terheléselosztó felületéhez. Az Azure platform automatikusan létrehoz egy "klasszikus" SKU Load Balancer-erőforrást ugyanabban az előfizetésben, mint a Cloud Service-erőforrás. A terheléselosztó erőforrás egy írásvédett erőforrás az ARM-ben. Az erőforrás frissítései csak a Cloud Service telepítési fájljain (. cscfg &. csdef) keresztül támogatottak.
  
-5. Hozzon létre egy új Storage-fiókot a [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) vagy a [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ.
+4. Hozzon létre egy új Storage-fiókot a [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) vagy a [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ.
 
-6. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy a [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz.
+5. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy a [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz.
 
 6. Választható Hozzon létre egy kulcstartót, és töltse fel a tanúsítványokat.
 

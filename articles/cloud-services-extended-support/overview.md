@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169283"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293872"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Tudnivalók az Azure Cloud Servicesról (bővített támogatás)
 
-> [!IMPORTANT]
-> A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-A Cloud Services (bővített támogatás) az [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) termék új, [Azure Resource Manager](../azure-resource-manager/management/overview.md) alapú üzembe helyezési modellje, amely jelenleg nyilvános előzetes verzióban érhető el. A Cloud Services (kiterjesztett támogatás) elsődleges előnye, hogy regionális rugalmasságot biztosít, valamint az Azure-Service Manager használatával üzembe helyezett Cloud Services Azure-beli szolgáltatások paritását. Emellett olyan ARM-képességeket is kínál, mint a szerepköralapú hozzáférés és vezérlés (RBAC), címkék, szabályzatok és a telepítési sablonok támogatása.  
+A Cloud Services (bővített támogatás) az [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) termék új, [Azure Resource Manager](../azure-resource-manager/management/overview.md) alapú üzembe helyezési modellje, amely már általánosan elérhető. A Cloud Services (kiterjesztett támogatás) elsődleges előnye, hogy regionális rugalmasságot biztosít, valamint az Azure-Service Manager használatával üzembe helyezett Cloud Services Azure-beli szolgáltatások paritását. Emellett olyan ARM-képességeket is kínál, mint a szerepköralapú hozzáférés és vezérlés (RBAC), címkék, szabályzatok és a telepítési sablonok támogatása.  
 
 Ezzel a módosítással a Cloud Services Azure Service Manager-alapú üzemi modellje át lesz nevezve [Cloud Services (klasszikus)](../cloud-services/cloud-services-choose-me.md). Megtarthatja a webes és felhőalapú alkalmazások és szolgáltatások felépítésének és gyors üzembe helyezésének képességét. A Cloud Services-infrastruktúrát a jelenlegi igény alapján méretezheti, és gondoskodhat arról, hogy az alkalmazások teljesítménye a költségek csökkentése mellett is megmaradjon.  
 

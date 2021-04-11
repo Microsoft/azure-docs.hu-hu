@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13c659592b7e0b45d0d58519e3620babb8cb3c6a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679146"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107567"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI alkalmazás-létrehozás áttekintése
 
@@ -72,7 +72,7 @@ Miután létrehozta és tesztelte az alkalmazást Power BIban, mentse az alkalma
 
 Az üzleti követelmények közé tartoznak az eljárási, szerződéses és jogi kötelezettségek. A következőket kell tennie:
 
-- Regisztrált kereskedelmi Piactéri közzétevő. Ha nincs regisztrálva, kövesse a [kereskedelmi Piactéri fiók létrehozása a partner Centerben](create-account.md)című témakör lépéseit.
+- Regisztrált kereskedelmi Piactéri közzétevő. Ha nincs regisztrálva, kövesse a [kereskedelmi Piactéri fiók létrehozása a partner Centerben](../create-account.md)című témakör lépéseit.
 - Olyan tartalmat adjon meg, amely megfelel az ajánlat AppSource-on való listázásának feltételeinek. További információkért lásd: [alkalmazás listázása a AppSource-on? A következőképpen](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
 - Fogadja el a következőt: és kövesse a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/privacystatement).
 

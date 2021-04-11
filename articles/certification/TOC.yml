@@ -1,0 +1,47 @@
+- name: Az Azure Certified eszköz dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az Azure Certified eszköz program?
+      href: overview.md
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: 1 – a megfelelő minősítés kiválasztása
+      href: tutorial-00-selecting-your-certification.md
+    - name: 2 – a projekt létrehozása
+      href: tutorial-01-creating-your-project.md
+    - name: 3 – eszköz adatainak hozzáadása
+      href: tutorial-02-adding-device-details.md
+    - name: 4 – az eszköz tesztelése
+      href: tutorial-03-testing-your-device.md
+    - name: 5 – az eszköz közzététele
+      href: tutorial-04-publishing-your-device.md
+- name: Programkövetelmények
+  items:
+    - name: Azure Certified-eszköz
+      href: program-requirements-azure-certified-device.md
+    - name: IoT Plug and Play
+      href: program-requirements-pnp.md
+    - name: Edge által felügyelt
+      href: program-requirements-edge-managed.md
+    - name: Edge Secured-Core (előzetes verzió)
+      href: program-requirements-edge-secured-core.md
+- name: Alapelvek
+  items:
+    - name: Örökölt eszközök
+      href: concepts-legacy.md
+    - name: Marketing-fogalmak
+      href: concepts-marketing.md
+- name: Útmutatók
+  items:
+    - name: Közzétett eszköz szerkesztése
+      href: how-to-edit-published-device.md
+    - name: Közvetetten csatlakoztatott eszköz tanúsítása
+      href: how-to-indirectly-connected-devices.md
+    - name: Az összetevők funkció használata
+      href: how-to-using-the-components-feature.md
+- name: Források
+  items:
+    - name: Minősítési Szószedet
+      href: resources-glossary.md

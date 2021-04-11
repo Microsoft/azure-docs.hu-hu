@@ -1,17 +1,17 @@
 ---
 title: Tárterület automatikus növekedése – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a tárterület automatikus növekedése a Azure Database for PostgreSQL-Single Server Azure Portal használatával
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/29/2019
-ms.openlocfilehash: 20c1d598cdb8bc68a3f2348547569a8f2719858c
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dd6effff2fa38276729e2609e115ef72c7af4066
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551390"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228078"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Tárterület automatikus növekedése a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal használatával
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for PostgreSQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.

@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0fe193ee76c56ec57d0643f4a156739d1a51230c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b341237d0e703239233f7ac0e9664f5fb90bbb4b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670091"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105807"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -43,6 +43,8 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 ## <a name="download-and-open-the-unity-sample-project"></a>Az Unity Sample projekt letöltése és megnyitása
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+Az iOS platformhoz szükséges ASA SDK-csomagok letöltéséhez és importálásához kövesse az [itt](../how-tos/setup-unity-project.md#download-asa-packages) található utasításokat.
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 

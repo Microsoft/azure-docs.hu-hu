@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/18/2021
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8630dd2fb1157fbeba99f2a06d73712ab46a63f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f5a60f14799e872d835d651fc043edd27dfc6990
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035067"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105595"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -176,6 +176,12 @@ A Microsoft-identitások különböző módokon hitelesíthetők, ami az alkalma
 | `ngcmfa` | Ezzel egyenértékű `mfa` , bizonyos speciális hitelesítő adatok kiépítési céljára szolgál. |
 | `wiaormfa`| A felhasználó Windows vagy MFA hitelesítő adatokat használt a hitelesítéshez. |
 | `none` | Nem történt hitelesítés. |
+
+## <a name="access-token-lifetime"></a>Hozzáférési jogkivonat élettartama
+
+A hozzáférési jogkivonat alapértelmezett élettartama a tokent kérő ügyfélalkalmazástól függően változhat. Például a folyamatos hozzáférés kiértékelése (CAE) képességgel rendelkező ügyfelek, akik a CAE-t támogató munkameneteket egyeztetik, hosszú élettartamú jogkivonat-élettartamot (akár 28 órát) fognak látni.  Ha a hozzáférési jogkivonat lejár, az ügyfélnek a frissítési tokent kell használnia (általában csendesen) új frissítési jogkivonat és hozzáférési jogkivonat beszerzése.
+
+A hozzáférési token élettartama beállítható annak szabályozására, hogy az ügyfélalkalmazás milyen gyakran járjon le az alkalmazás-munkamenetben, és hogy milyen gyakran szükséges a felhasználónak ismételt hitelesítése (csendes vagy interaktív módon). További információért olvassa el a [konfigurálható jogkivonat-élettartamok](active-directory-configurable-token-lifetimes.md)című témakört.
 
 ## <a name="validating-tokens"></a>Tokenek ellenőrzése
 

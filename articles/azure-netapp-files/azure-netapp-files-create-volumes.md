@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b6104bcf68c720fa727d16e408a25adcba805aa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96854733"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259574"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása az Azure NetApp Files számára
 
-Azure NetApp Files támogatja a kötetek NFS használatával történő létrehozását (NFSv3 és NFSv 4.1), a SMB3 vagy a kettős protokollt (NFSv3 és SMB). A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ebből a cikkből megtudhatja, hogyan hozhat létre NFS-köteteket. 
+Azure NetApp Files támogatja a kötetek NFS használatával történő létrehozását (NFSv3 és NFSv 4.1), a SMB3 vagy a kettős protokollt (NFSv3 és SMB). A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. 
+
+Ebből a cikkből megtudhatja, hogyan hozhat létre NFS-köteteket. SMB-kötetek esetén tekintse meg [az SMB-kötet létrehozása](azure-netapp-files-create-volumes-smb.md)című témakört. A kettős protokollú kötetek esetében lásd: [kettős protokollú kötet létrehozása](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Előkészületek 
 * A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.  
@@ -112,6 +114,8 @@ Azure NetApp Files támogatja a kötetek NFS használatával történő létreho
 
         További konfigurációk szükségesek, ha a NFSv 4.1-et használó Kerberost használ. Kövesse az [nfsv 4.1 Kerberos-titkosítás konfigurálása](configure-kerberos-encryption.md)című témakör utasításait.
 
+    * Ha engedélyezni szeretné Active Directory LDAP-felhasználók és kiterjesztett csoportok (legfeljebb 1024 csoport) számára a kötet elérését, válassza az **LDAP** lehetőséget. A konfigurálás utasításait követve [konfigurálja az LDAP-t kiterjesztett csoportokkal az NFS mennyiségi hozzáféréshez](configure-ldap-extended-groups.md) a szükséges konfigurációk végrehajtásához. 
+ 
     * Szükség esetén [az NFS-kötet exportálási házirendjét is konfigurálhatja](azure-netapp-files-configure-export-policy.md).
 
     ![NFS-protokoll meghatározása](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -127,6 +131,7 @@ Azure NetApp Files támogatja a kötetek NFS használatával történő létreho
 
 * [Az NFSv 4.1 alapértelmezett tartományának konfigurálása az Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
 * [Az NFSv 4.1 Kerberos-titkosításának konfigurálása](configure-kerberos-encryption.md)
+* [Konfigurálja az LDAP HOZZÁADÁSát kiterjesztett csoportokkal az NFS mennyiségi hozzáféréshez](configure-ldap-extended-groups.md)
 * [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Exportálási szabályzat konfigurálása NFS-kötethez](azure-netapp-files-configure-export-policy.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

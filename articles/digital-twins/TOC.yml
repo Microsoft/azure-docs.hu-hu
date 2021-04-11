@@ -43,6 +43,8 @@
       href: concepts-query-units.md
     - name: Integráció más szolgáltatásokkal
       href: concepts-integration.md
+    - name: Eseményértesítések
+      href: concepts-event-notifications.md
     - name: Eseményútvonalak
       href: concepts-route-events.md
     - name: Az Azure Digital Twins-megoldások biztonsága
@@ -91,8 +93,6 @@
           href: how-to-manage-twin.md
         - name: Ikergráf kezelése kapcsolatokkal
           href: how-to-manage-graph.md
-        - name: Eseményadatok értelmezése
-          href: how-to-interpret-event-data.md
         - name: Azure-függvény beállítása az adatok feldolgozásához
           href: how-to-create-azure-function.md
         - name: Az ikergráf lekérdezése

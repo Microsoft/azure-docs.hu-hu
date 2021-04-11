@@ -1,6 +1,6 @@
 ---
-title: Időjárási szolgáltatások (előzetes verzió) – fogalmak a Microsoft Azure Maps-ben
-description: Ismerje meg a Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) alkalmazásával kapcsolatos fogalmakat.
+title: Időjárási szolgáltatások – fogalmak Microsoft Azure Maps-ben
+description: Ismerje meg a Microsoft Azure Maps időjárási szolgáltatásokra vonatkozó fogalmakat.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,18 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76d4eb08ba9cc0394610fdd00f6faba02278e8e3
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904737"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258010"
 ---
-# <a name="weather-services-preview-in-azure-maps"></a>Időjárási szolgáltatások (előzetes verzió) Azure Maps
-
-> [!IMPORTANT]
-> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
 
 Ez a cikk a Azure Maps [időjárási szolgáltatásokra](/rest/api/maps/weather)alkalmazandó fogalmakat ismerteti. Javasoljuk, hogy az időjárási API-k megkezdése előtt végezze el ezt a cikket.
 

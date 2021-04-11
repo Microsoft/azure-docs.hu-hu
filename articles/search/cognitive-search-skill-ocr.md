@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950805"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285841"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR – kognitív képesség
 
 Az **optikai karakterfelismerési (OCR)** képesség felismeri a nyomtatott és a kézírásos szövegeket a képfájlokban. Ez a képesség a Cognitive Services [Computer Vision](../cognitive-services/computer-vision/overview.md) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) által biztosított gépi tanulási modelleket használja. Az **OCR** -képesség a következő funkciókra mutat:
 
-+ Angol, spanyol, német, francia, olasz, portugál és holland nyelven az új ["READ"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API használatos.
-+ Az összes többi nyelv esetében az ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API használatos.
++ Angol, spanyol, német, francia, olasz, portugál és holland nyelven az új ["READ"](../cognitive-services/computer-vision/overview-ocr.md#read-api) API használatos.
++ Az összes többi nyelv esetében a rendszer az [örökölt OCR](../cognitive-services/computer-vision/overview-ocr.md#ocr-api) API-t használja.
 
 Az **OCR** -képesség kigyűjti a szöveget a képfájlokból. A támogatott formátumok a következők:
 
@@ -43,8 +43,8 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| `detectOrientation`   | Engedélyezi a képek tájolásának automatikus észlelését. <br/> Érvényes értékek: TRUE/FALSE.|
-| `defaultLanguageCode` | <p>   A bemeneti szöveg nyelvi kódja A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>nl (holland) <br/>en (angol) <br/>Fi (finn)  <br/>fr (francia) <br/>  Németország (német) <br/>el (görög) <br/> hu (Magyar) <br/> It (olasz) <br/>  ja (Japán) <br/> Ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  ru (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  TR (török) <br/> ar (arab) <br/> ro (román) <br/> SR-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (szlovák) <br/>  unk (ismeretlen) <br/><br/> Ha a Nyelvkód nincs meghatározva vagy NULL értékű, a nyelv angolra lesz állítva. Ha a nyelv explicit módon "unk" értékre van állítva, a rendszer automatikusan észleli a nyelvet. </p> |
+| `detectOrientation`    | Engedélyezi a képek tájolásának automatikus észlelését. <br/> Érvényes értékek: TRUE/FALSE.|
+| `defaultLanguageCode` | <p>    A bemeneti szöveg nyelvi kódja A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>nl (holland) <br/>en (angol) <br/>Fi (finn)  <br/>fr (francia) <br/>  Németország (német) <br/>el (görög) <br/> hu (Magyar) <br/> It (olasz) <br/>  ja (Japán) <br/> Ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  ru (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  TR (török) <br/> ar (arab) <br/> ro (román) <br/> SR-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (szlovák) <br/>  unk (ismeretlen) <br/><br/> Ha a Nyelvkód nincs meghatározva vagy NULL értékű, a nyelv angolra lesz állítva. Ha a nyelv explicit módon "unk" értékre van állítva, a rendszer automatikusan észleli a nyelvet. </p> |
 | `lineEnding` | Az egyes észlelt sorok között használandó érték. Lehetséges értékek: "space", "CarriageReturn", "soremelés".  Az alapértelmezett érték a "space". |
 
 Korábban egy "textExtractionAlgorithm" nevű paraméter szerepel annak megadásához, hogy a képességnek ki kell-e bontania a "nyomtatott" vagy "kézzel írott" szöveget.  Ez a paraméter elavult, és már nem szükséges, mivel a legújabb olvasási API-algoritmus képes mindkét típusú szöveg kinyerésére egyszerre.  Ha a szaktudás definíciója már tartalmazza ezt a paramétert, akkor nem kell eltávolítania, de a továbbiakban nem lesz használatban, és mindkét típusú szöveg kibontásra kerül, függetlenül attól, hogy mire van beállítva.
@@ -57,9 +57,9 @@ Korábban egy "textExtractionAlgorithm" nevű paraméter szerepel annak megadás
 
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
-| Kimenet neve     | Leírás                   |
+| Kimenet neve      | Leírás                   |
 |---------------|-------------------------------|
-| `text`            | A képből kinyert egyszerű szöveg.   |
+| `text`             | A képből kinyert egyszerű szöveg.   |
 | `layoutText`    | Összetett típus, amely leírja a kinyert szöveget, valamint azt a helyet, ahol a szöveg található.|
 
 

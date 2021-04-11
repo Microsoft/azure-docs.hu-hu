@@ -3,12 +3,12 @@ title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
 ms.date: 02/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d13a0235152046eff2585da170d5fba0e9d3b09
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594586"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259081"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
@@ -50,7 +50,7 @@ A beállítás Azure Portalban való konfigurálásához kövesse az alábbi lé
 
 ### <a name="set-default-management-group-with-rest-api"></a>Alapértelmezett felügyeleti csoport beállítása REST API
 
-A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/resources/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Cserélje le a `{rootMgID}` értéket a gyökér felügyeleti csoportjának azonosítójával, és a `{defaultGroupID}` felügyeleti csoport azonosítójának használatával az alapértelmezett felügyeleti csoport lesz:
+A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/managementgroups/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Cserélje le a `{rootMgID}` értéket a gyökér felügyeleti csoportjának azonosítójával, és a `{defaultGroupID}` felügyeleti csoport azonosítójának használatával az alapértelmezett felügyeleti csoport lesz:
 
 - REST API URI
 
@@ -91,7 +91,7 @@ A beállítás Azure Portalban való konfigurálásához kövesse az alábbi lé
 
 ### <a name="set-require-authorization-with-rest-api"></a>Engedélyezés megkövetelése REST API
 
-A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/resources/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Ez az érték egy _logikai_ érték, ezért **igaz** vagy **hamis** értéket adjon meg az értékhez. A **true** értékkel engedélyezheti a felügyeleti csoport hierarchiájának védelmét:
+A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/managementgroups/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Ez az érték egy _logikai_ érték, ezért **igaz** vagy **hamis** értéket adjon meg az értékhez. A **true** értékkel engedélyezheti a felügyeleti csoport hierarchiájának védelmét:
 
 - REST API URI
 

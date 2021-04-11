@@ -4,13 +4,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
-ms.date: 07/09/2020
-ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/01/2021
+ms.openlocfilehash: 6529aa49d06e64947deb5ae54db0c39ad2575569
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96027675"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106288609"
 ---
 ## <a name="business-disaster-recovery"></a>Üzleti katasztrófák helyreállítása
 
@@ -24,7 +24,7 @@ Az Azure-on keresztül elérhető további magas rendelkezésre állási funkci�
 
 - **Feladatátvétel**: az Azure [geo-replikációt és terheléselosztást](/azure/architecture/resiliency/recovery-loss-azure-region)biztosít.
 - **Adatok helyreállítása** és **tárolása – helyreállítás**: [Az Azure számos lehetőséget kínál az adatok megőrzésére és helyreállítására](/azure/architecture/resiliency/recovery-data-corruption).
-- **Azure site Recovery**: az Azure a site Recovery szolgáltatásait [Azure site Recovery](../articles/site-recovery/index.yml)használatával biztosítja.
+- **Azure site Recovery**: az Azure helyreállítási funkciókat biztosít a [Azure site Recoveryon](../articles/site-recovery/index.yml)keresztül.
 - **Azure Backup**: a [Azure Backup](../articles/backup/backup-architecture.md) az Azure-beli virtuális gépek helyszíni és felhőalapú biztonsági mentését is támogatja.
 
 Győződjön meg arról, hogy a megfelelő Azure-funkciók lehetővé teszik, hogy globális, régiók közötti magas rendelkezésre állást biztosítson az eszközök és a felhasználók számára.
@@ -44,7 +44,7 @@ A Azure Time Series Insights más szolgáltatásokkal való integrálása továb
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-Több módon is megtarthatja a Azure Time Series Insights-adatait,-alkalmazásait és-szolgáltatásait, még akkor is, ha azok megszakadnak. 
+Több módon is megtarthatja a Azure Time Series Insights-adatait,-alkalmazásait és-szolgáltatásait, még akkor is, ha azok megszakadnak.
 
 Azonban előfordulhat, hogy az Azure Time Series-környezet teljes biztonsági másolatát is meg kell határoznia az alábbi célokból:
 
@@ -63,12 +63,13 @@ Ismétlődő környezet létrehozásához:
 Ha egy esemény következik be:
 
 1. Ha az elsődleges régiót a vész-incidensek befolyásolják, átirányítja a műveleteket a biztonsági mentési Azure Time Series Insights környezetbe.
+1. Mivel a hub-sorozatszámok a feladatátvételt követően újraindulnak, a különböző fogyasztói csoportokkal rendelkező régiókban/környezetekben hozza létre újra az eseményforrás, hogy elkerülje az ismétlődő események kinézetének létrehozását.
 1. A második régió használatával biztonsági mentést készíthet, és helyreállíthatja az összes Azure Time Series Insights telemetria és a lekérdezési adatokat.
 
 > [!IMPORTANT]
 > Feladatátvétel esetén:
-> 
-> * Késés is előfordulhat.
-> * Előfordulhat, hogy a rendszer a műveletek átirányítása közben az üzenet feldolgozásának pillanatnyi csúcsát is felhasználja.
-> 
+>
+> - Késés is előfordulhat.
+> - Előfordulhat, hogy a rendszer a műveletek átirányítása közben az üzenet feldolgozásának pillanatnyi csúcsát is felhasználja.
+>
 > További információért olvassa el a [Azure Time Series Insights késleltetésének enyhítését](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md)ismertető témakört.

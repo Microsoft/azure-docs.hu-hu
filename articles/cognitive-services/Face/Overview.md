@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: arc-felismerés, Arcfelismerés szoftver, arc-elemzés, szembenézés egyeztetése, Arcfelismerés alkalmazás, Szembenézés a képek alapján, Arcfelismerés keresés
-ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 26076289d8c6659abdd55fa805c27b13690feccd
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532256"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258741"
 ---
 # <a name="what-is-the-azure-face-service"></a>Mi az Azure Face Service?
 
@@ -29,12 +29,18 @@ Az Azure Face szolgáltatás olyan AI-algoritmusokat biztosít, amelyek a képek
 
 A Face szolgáltatás számos különböző arc-elemzési funkciót biztosít, amelyek mindegyike az alábbi részben látható.
 
-## <a name="face-detection"></a>Arcészlelés
+Ez a dokumentáció a következő típusú cikkeket tartalmazza:
+* A [rövid](./Quickstarts/client-libraries.md) útmutatók részletes útmutatást tesznek lehetővé, amelyekkel hívásokat indíthat a szolgáltatásba, és rövid idő alatt lekérheti az eredményeket. 
+* A [útmutató útmutatók](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md) a szolgáltatás használatára vonatkozó utasításokat tartalmaznak részletesebb vagy testreszabott módokon.
+* A [fogalmi cikkek](./concepts/face-detection.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.
+* Az [oktatóanyagok](./Tutorials/FaceAPIinCSharpTutorial.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja ezt a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.
 
-A Face szolgáltatás észleli az emberi arcokat egy képen, és visszaadja a helyük téglalapjának koordinátáit. Ha szeretné, a Arcfelismerés számos arc-alapú attribútumot, például a Head póz, a nemek, a kor, az érzelem, az arcszőrzet és a szemüvegeket is kinyerheti.
+## <a name="face-detection"></a>Arcfelismerés
+
+Az észlelési API észleli az emberi arcokat egy képen, és visszaadja a helyük téglalapjának koordinátáit. Ha szeretné, a Arcfelismerés számos arc-alapú attribútumot, például a Head póz, a nemek, a kor, az érzelem, az arcszőrzet és a szemüvegeket is kinyerheti. Ezek az attribútumok általános előrejelzések, nem tényleges besorolások. 
 
 > [!NOTE]
-> Az Arcfelismerés funkció a [Computer Vision szolgáltatáson](../computer-vision/overview.md)keresztül is elérhető. Ha azonban az adatokkal kapcsolatos további műveleteket kíván végrehajtani, ezt a szolgáltatást kell használnia.
+> Az Arcfelismerés funkció a [Computer Vision szolgáltatáson](../computer-vision/overview.md)keresztül is elérhető. Ha azonban olyan műveleteket szeretne végezni, mint például az azonosítás, az ellenőrzés, a hasonló vagy a csoport, a Face szolgáltatást kell használnia.
 
 ![Egy nő és egy férfi képe, amely az arcukon és a nemek közötti téglalapokat ábrázolja](./Images/Face.detection.jpg)
 
@@ -42,7 +48,19 @@ Az Arcfelismerés szolgáltatással kapcsolatos további információkért tekin
 
 ## <a name="face-verification"></a>Arcellenőrzés
 
-Az ellenőrzés az API-val két észlelt arc vagy egy személy objektum közötti hitelesítést végez. Lényegében azt értékeli, hogy a két arc ugyanazon személyhez tartozik-e. Ez a funkció biztonsági helyzetekben hasznos lehet. További információ: [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy az API-dokumentáció [ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
+Az API-k ellenőrzése az észlelésen alapul, és a kérdéssel foglalkozik: "ezek a két rendszerkép ugyanaz a személy?". Az ellenőrzést az "egy az egyhez" egyeztetésnek is nevezik, mivel a mintavételi képet csak egyetlen regisztrált sablonhoz hasonlítjuk. Az ellenőrzés a személyazonosság-ellenőrzés vagy a hozzáférés-vezérlési forgatókönyvekben használható annak ellenőrzéséhez, hogy egy kép egyezik-e egy korábban rögzített képpel (például egy, a kormány által kiadott személyazonosító kártyáról származó fényképből). További információ: [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy az API-dokumentáció [ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
+
+## <a name="face-identification"></a>Arcok azonosítása
+
+Az API azonosítása az észlelés és a kérdés megválaszolásával is elindul: "az észlelt észlelési funkció az adatbázisban regisztrált összes feltettre illeszkedik?" Mivel az arc-felismerési kereséshez hasonló, az "egy-a-többhöz" egyezésnek is nevezik. A rendszer a jelölt találatok alapján határozza meg, hogy a mintavételi sablon milyen mértékben egyezik a regisztrált sablonokkal.
+
+Az alábbi képen a nevű adatbázisra mutat példát `"myfriends"` . Mindegyik csoport legfeljebb 1 000 000 különböző személy objektumot tartalmazhat. Mindegyik személyobjektumhoz legfeljebb 248 arc lehet regisztrálva.
+
+![Három oszlopból álló rács különböző személyek számára, melyek mindegyike három sornyi képpel rendelkezik](./Images/person.group.clare.jpg)
+
+Az adatbázis létrehozása és betanítása után az azonosítást a csoporton belül egy új észlelt arc használatával végezheti el. Ha a rendszer a csoport egyik tagjaként azonosítja az arcot, visszaadja a személyobjektumot.
+
+A személy azonosításával kapcsolatos további információkért tekintse meg az [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy az API-referenciák [azonosítására](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) szolgáló dokumentációt.
 
 ## <a name="find-similar-faces"></a>Hasonló arcok keresése
 
@@ -64,21 +82,6 @@ Négy hasonló arc megtalálásához a **matchPerson** mód az a és b értéket
 
 A Group API több csoportra osztja az ismeretlen arcokat a hasonlóság alapján. Mindegyik csoport az eredeti arcok halmazának különálló valódi részhalmaza. Egy csoport összes arca valószínűleg ugyanahhoz a személyhez tartozik. Egyetlen személynek több különböző csoportja is lehet. A csoportokat egy másik tényező különbözteti meg, például a kifejezést. További információ: [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy a [Group API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) -referenciák dokumentációja.
 
-## <a name="person-identification"></a>Személyazonosítás
-
-Az azonosított API használatával azonosíthatók az észlelt arcok az emberek adatbázisán (Arcfelismerés keresés). Ez a funkció akkor lehet hasznos, ha az automatikus képcímkézést a Photo Management szoftverben lehet használni. Az adatbázist előre kell létrehoznia, és bármikor szerkesztheti.
-
-Az alábbi képen a nevű adatbázisra mutat példát `"myfriends"` . Mindegyik csoport legfeljebb 1 000 000 különböző személy objektumot tartalmazhat. Mindegyik személyobjektumhoz legfeljebb 248 arc lehet regisztrálva.
-
-![Három oszlopból álló rács különböző személyek számára, melyek mindegyike három sornyi képpel rendelkezik](./Images/person.group.clare.jpg)
-
-Az adatbázis létrehozása és betanítása után az azonosítást a csoporton belül egy új észlelt arc használatával végezheti el. Ha a rendszer a csoport egyik tagjaként azonosítja az arcot, visszaadja a személyobjektumot.
-
-A személy azonosításával kapcsolatos további információkért tekintse meg az [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy az API-referenciák [azonosítására](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) szolgáló dokumentációt.
-
-## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
-
-A [Face tároló (előzetes verzió) használatával](face-how-to-install-containers.md) üzembe helyezhet API-szolgáltatásokat a helyszínen. Ez a Docker-tároló lehetővé teszi, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz.
 
 ## <a name="sample-apps"></a>Mintaalkalmazások
 

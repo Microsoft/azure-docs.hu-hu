@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 99c36354334701dcd4c7c30c5fd5039c13885525
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65df5f178ce0ec845fca6343c51049b6bf426e18
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358708"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106037"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Dynamics 365 for Business Central-ajánlat létrehozása
 
 Ez a cikk bemutatja, hogyan hozható létre új Dynamics 365 Business Central-ajánlat. A [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) egy vállalati erőforrás-tervezési (ERP) szolgáltatás, amely az üzleti folyamatok széles körét kezeli, többek között a pénzügy, a műveletek, az ellátási lánc, a CRM, a projektmenedzsment és az elektronikus kereskedelem terén. A Prémium csomag a klasszikus üzembe helyezési modellt és a gyártást is támogatja. A Dynamics 365 Business Central szolgáltatáshoz készült összes ajánlatnak a minősítési folyamaton keresztül kell haladnia.
 
-A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](../create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 >[!NOTE]
 > Az ajánlat közzétételét követően az ajánlat szerkesztése csak a partner Centerben és az online áruházban lesz frissítve, miután újra elküldte az ajánlatot a kiadványhoz.
@@ -132,7 +132,7 @@ Ezen a lapon megadhatja az ajánlat részleteit, például az ajánlat nevét, l
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 
 ### <a name="marketplace-details"></a>Piactér – részletek

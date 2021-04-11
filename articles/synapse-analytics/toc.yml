@@ -45,6 +45,9 @@ items:
       - name: 9. Ismerkedés a tudásbázissal
         href: get-started-knowledge-center.md
         displayName: 'get, started'
+      - name: 10 rendszergazda hozzáadása
+        href: get-started-add-admin.md
+        displayName: 'get, started'
   - name: Munkaterület
     items:
       - name: Rövid útmutatók
@@ -565,6 +568,8 @@ items:
             href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
           - name: Az alkalmazás szintű metrikák figyelése a Prometheus és a Grafana Apache Spark
             href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
+          - name: A metrikák és naplók összegyűjtése és megjelenítése az Azure Log Analytics használatával (előzetes verzió)
+            href: ./spark/apache-spark-azure-log-analytics.md
       - name: Alapelvek
         items:
           - name: Apache Spark

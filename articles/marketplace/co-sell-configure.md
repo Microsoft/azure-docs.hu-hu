@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ab7a0c3fa947fdf62672013b5a557d0447eb67c5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563395"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106853"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Közös értékesítés konfigurálása kereskedelmi Piactéri ajánlathoz
 
@@ -38,7 +38,7 @@ A közös értékesítés lehetőség a következő típusú ajánlatokhoz érhe
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
 1. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
     > [!TIP]
-    > Ha nem látja a **kereskedelmi piactért** a bal oldali navigációs sávon, [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](./partner-center-portal/create-account.md) , és ellenőrizze, hogy a fiókja regisztrálva van-e a kereskedelmi piactér programban.
+    > Ha nem látja a **kereskedelmi piactért** a bal oldali navigációs sávon, [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , és ellenőrizze, hogy a fiókja regisztrálva van-e a kereskedelmi piactér programban.
 1. Az **Áttekintés** lapon válassza ki a közös értékesítéshez használni kívánt ajánlatot.
     > [!NOTE]
     > A közös értékesítést konfigurálhatja egy olyan új ajánlathoz, amely még nem lett közzétéve, vagy egy már közzétett ajánlattal.

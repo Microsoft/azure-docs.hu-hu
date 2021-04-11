@@ -11,14 +11,20 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: d5bf294e9371c5baf3cea23734c9a89f36091cd5
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 3bbf47da3724b9df0905e2a212cda4a16bf44bdb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210278"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258554"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
+
+## <a name="text-to-speech-2021-april-release"></a>Szöveg-beszéd 2021 – április kiadás
+
+**A neurális TTS 21 régión keresztül érhető el**
+
+- **Tizenkét új régió hozzáadva** – a neurális TTS mostantól elérhető az alábbi új 12 régióban:,,,,,,,, `Japan East` `Japan West` `Korea Central` `North Central US` `North Europe` `South Central US` `Southeast Asia` `UK South` `west Central US` , `West Europe` ,, `West US` `West US 2` . [Tekintse](regions.md#text-to-speech) meg a 21 támogatott régió teljes listáját.
 
 ## <a name="text-to-speech-2021-march-release"></a>Szöveg-beszéd 2021 – márciusi kiadás
 

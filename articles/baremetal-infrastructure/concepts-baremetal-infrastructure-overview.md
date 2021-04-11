@@ -4,19 +4,19 @@ description: Áttekintést nyújt a BareMetal-infrastruktúráról az Azure-ban.
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/06/2021
-ms.openlocfilehash: bccb171ce364a5129489c437f2f18156cc563a1b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 04/08/2021
+ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579054"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257568"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Mi a BareMetal-infrastruktúra az Azure-ban?
 
 A Microsoft Azure felhőalapú infrastruktúrát kínál, és számos integrált felhőalapú szolgáltatást biztosít az üzleti igények kielégítése érdekében. Bizonyos esetekben előfordulhat, hogy az operációs rendszer nélküli kiszolgálókon kell szolgáltatásokat futtatnia virtualizációs réteg nélkül. Szükség lehet a rendszergazdai hozzáférésre és az operációs rendszer (OS) vezérlésére. Ahhoz, hogy kielégítse az igényeket, az Azure számos nagy értékű és kritikus fontosságú alkalmazáshoz biztosít BareMetal-infrastruktúrát.
 
-A BareMetal-infrastruktúra dedikált BareMetal-példányok (számítási példányok), nagy teljesítményű és alkalmazás-megfelelő tárolók (NFS, dNFS, ISCSI és Fibre Channel), valamint egy elkülönített virtuális helyi hálózat (VLAN-ok) készlete. A tárolók megoszthatók a BareMetal-példányok között, így olyan funkciók is engedélyezhetők, mint a kibővíthető fürtök, illetve magas rendelkezésre állású párok létrehozása a STONITH.
+A BareMetal-infrastruktúra dedikált BareMetal-példányok (számítási példányok), nagy teljesítményű és alkalmazás-megfelelő tárolók (NFS, ISCSI és Fibre Channel), valamint egy elkülönített virtuális helyi hálózat (VLAN-ok) készlete. A tárolók megoszthatók a BareMetal-példányok között, így olyan funkciók is engedélyezhetők, mint a kibővíthető fürtök, illetve magas rendelkezésre állású párok létrehozása a STONITH.
  
 Ez a környezet speciális VLAN-okat is biztosít, ha virtuális gépeket (VM-ket) futtat egy vagy több Azure-beli virtuális hálózaton (virtuális hálózatok) az Azure-előfizetésében. Az Azure-előfizetésében a teljes környezet erőforráscsoport.
 
@@ -40,7 +40,7 @@ A BareMetal-infrastruktúra a következő előnyöket kínálja:
     - Legfeljebb 1 PB/bérlő 
     - Akár 1,2 millió/bérlő IOPS 
     - 40/100 GB-os hálózati sávszélesség
-    - Elérhető NFS, dNFS, ISCSI és FC használatával
+    - Elérhető NFS, ISCSI és FC használatával
 - Redundáns energiaellátás, tápegységek, hálózati adapterek, adatkezelési szolgáltatások, portok, WAN, Storage és Management
 - Gyakori tartalékok a hibák pótlására (nincs szükség az újrakonfigurálásra)
 - Ügyfél által koordinált karbantartási időszakok

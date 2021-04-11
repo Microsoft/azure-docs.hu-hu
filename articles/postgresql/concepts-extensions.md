@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: de395bed885804445146b01745edf5e93426cb13
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 765c3653dae4f514263cd8db636d9cec42d56d15
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606317"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107618"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények az Azure Database for PostgreSQL-ben – Önálló kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot kötegelnek egyetlen csomaggá, amely egyetlen paranccsal betölthető vagy eltávolítható az adatbázisból. Az adatbázisba való betöltés után a bővítmények ugyanúgy működnek, mint a beépített funkciók.
@@ -62,7 +62,7 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS-topológia térbeli típusai és funkciói|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2, 1.7.4             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
+> |[timescaledb](https://docs.timescale.com/latest)                    |1.7.4             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
 > |[nem ékezetes](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
 > |[UUID – ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
@@ -108,7 +108,7 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | PostGIS-topológia térbeli típusai és funkciói|
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1, 1.7.4             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.7.4             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
 > |[nem ékezetes](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
 > |[UUID – ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
@@ -154,7 +154,7 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | PostGIS-topológia térbeli típusai és funkciói|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1, 1.7.4             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.7.4             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
 > |[nem ékezetes](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
 > |[UUID – ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 

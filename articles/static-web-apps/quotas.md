@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042725"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095169"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Kvóták az Azure statikus Web Apps előzetes verziójában
 
@@ -29,7 +29,7 @@ Az Azure statikus Web Apps előzetes verziójának következő kvótái létezne
 | Alkalmazás mérete                    | 250 MB           |
 | Éles üzem előtti környezetek | 3                |
 | Egyéni tartományok              | 1                |
-| Engedélyezés<br><br>Egyéni szerepkörökkel és útválasztási szabályokkal | Legfeljebb 25 végfelhasználó meghívott és hozzárendelt szerepkörök |
+| Engedélyezés (egyéni szerepkörökkel és útválasztási szabályokkal) | Legfeljebb 25 végfelhasználó lehet, akik egyéni szerepkörökhöz tartozhatnak |
 | Azure Functions             | Elérhető        |
 | SLA                         | Nincsenek             |
 

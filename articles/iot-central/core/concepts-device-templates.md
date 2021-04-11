@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97795428"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492001"
 ---
 # <a name="what-are-device-templates"></a>Mik azok az eszközsablonok?
 
@@ -39,70 +39,122 @@ Az eszköz modellje határozza meg, hogy egy eszköz hogyan kommunikál a IoT Ce
 
 A megoldás fejlesztője is exportálhat egy JSON-fájlt, amely tartalmazza az eszköz modelljét. Egy eszköz fejlesztője ezt a JSON-dokumentumot arra használhatja, hogy megtudja, hogyan kommunikál az eszköz a IoT Central alkalmazással.
 
-Az eszköz modelljét definiáló JSON-fájl a [Digital Twin Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)protokollt használja. IoT Central azt várja, hogy a JSON-fájl tartalmazza az eszköz modelljét a beágyazott illesztőfelületekkel, nem pedig külön fájlokban.
+Az eszköz modelljét definiáló JSON-fájl a [Digital Twin Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)protokollt használja. IoT Central azt várja, hogy a JSON-fájl tartalmazza az eszköz modelljét a beágyazott illesztőfelületekkel, nem pedig külön fájlokban. További információ: [IoT Plug and Play modellezési útmutató](../../iot-pnp/concepts-modeling-guide.md).
 
 Egy tipikus IoT-eszköz a következőket alkotja:
 
 - Egyéni részek, amelyek az eszköz egyedivé tételét teszik elérhetővé.
 - Szabványos részek, amelyek az összes eszközre jellemző dolgok.
 
-Ezeket a részeket _illesztőfelületeknek_ nevezzük az eszköz modelljében. A felületek határozzák meg az eszköz által megvalósított egyes részek részleteit. Az illesztőfelületek az eszközök modelljei között újrafelhasználhatók. A DTDL egy összetevő egy különálló DTDL-fájlban definiált illesztőfelületre hivatkozik.
+Ezeket a részeket _illesztőfelületeknek_ nevezzük az eszköz modelljében. A felületek határozzák meg az eszköz által megvalósított egyes részek részleteit. Az illesztőfelületek az eszközök modelljei között újrafelhasználhatók. A DTDL-ben egy összetevő egy másik csatolóra hivatkozik, amely egy külön DTDL-fájlban vagy a fájl egy külön szakaszában definiálva lehet.
 
-Az alábbi példa egy hőmérséklet-vezérlő eszköz eszköz-modelljének körvonalát mutatja be. Az alapértelmezett összetevő a, a és a definícióit tartalmazza `workingSet` `serialNumber` `reboot` . Az eszköz modellje a és a `thermostat` `deviceInformation` felületekre is kiterjed:
+Az alábbi példa egy [hőmérséklet-vezérlő eszköz](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json)eszköz-modelljének körvonalát mutatja be. Az alapértelmezett összetevő a, a és a definícióit tartalmazza `workingSet` `serialNumber` `reboot` . Az eszköz modellje két `thermostat` összetevőt és egy `deviceInformation` összetevőt is tartalmaz. A három összetevő tartalma a rövidség kedvéért el lett távolítva:
 
 ```json
-{
-  "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:TemperatureController;1",
-  "@type": "Interface",
-  "displayName": "Temperature Controller",
-  "description": "Device with two thermostats and remote reboot.",
-  "contents": [
-    {
-      "@type": [
-        "Telemetry", "DataSize"
-      ],
-      "name": "workingSet",
-      "displayName": "Working Set",
-      "description": "Current working set of the device memory in KiB.",
-      "schema": "double",
-      "unit" : "kibibyte"
-    },
-    {
-      "@type": "Property",
-      "name": "serialNumber",
-      "displayName": "Serial Number",
-      "description": "Serial number of the device.",
-      "schema": "string"
-    },
-    {
-      "@type": "Command",
-      "name": "reboot",
-      "displayName": "Reboot",
-      "description": "Reboots the device after waiting the number of seconds specified.",
-      "request": {
-        "name": "delay",
-        "displayName": "Delay",
-        "description": "Number of seconds to wait before rebooting the device.",
-        "schema": "integer"
+[
+  {
+    "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+    ],
+    "@id": "dtmi:com:example:TemperatureController;2",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "DataSize"
+        ],
+        "description": {
+          "en": "Current working set of the device memory in KiB."
+        },
+        "displayName": {
+          "en": "Working Set"
+        },
+        "name": "workingSet",
+        "schema": "double",
+        "unit": "kibibit"
+      },
+      {
+        "@type": "Property",
+        "displayName": {
+          "en": "Serial Number"
+        },
+        "name": "serialNumber",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@type": "Command",
+        "commandType": "synchronous",
+        "description": {
+          "en": "Reboots the device after waiting the number of seconds specified."
+        },
+        "displayName": {
+          "en": "Reboot"
+        },
+        "name": "reboot",
+        "request": {
+          "@type": "CommandPayload",
+          "description": {
+            "en": "Number of seconds to wait before rebooting the device."
+          },
+          "displayName": {
+            "en": "Delay"
+          },
+          "name": "delay",
+          "schema": "integer"
+        }
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat1"
+        },
+        "name": "thermostat1",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat2"
+        },
+        "name": "thermostat2",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "DeviceInfo"
+        },
+        "name": "deviceInformation",
+        "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1"
       }
-    },
-    {
-      "@type" : "Component",
-      "schema": "dtmi:com:example:Thermostat;1",
-      "name": "thermostat",
-      "displayName": "Thermostat",
-      "description": "Thermostat One."
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
-      "name": "deviceInformation",
-      "displayName": "Device Information interface",
-      "description": "Optional interface with basic device hardware information."
+    ],
+    "displayName": {
+      "en": "Temperature Controller"
     }
-  ]
-}
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:example:Thermostat;2",
+    "@type": "Interface",
+    "displayName": "Thermostat",
+    "description": "Reports current temperature and provides desired temperature control.",
+    "contents": [
+      ...
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+    "@type": "Interface",
+    "displayName": "Device Information",
+    "contents": [
+      ...
+    ]
+  }
+]
 ```
 
 Az illesztőfelületnek van néhány kötelező mezője:
@@ -132,7 +184,7 @@ A következő példa a termosztát interfész definícióját mutatja be:
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:Thermostat;1",
+  "@id": "dtmi:com:example:Thermostat;2",
   "@type": "Interface",
   "displayName": "Thermostat",
   "description": "Reports current temperature and provides desired temperature control.",
@@ -143,8 +195,8 @@ A következő példa a termosztát interfész definícióját mutatja be:
         "Temperature"
       ],
       "name": "temperature",
-      "displayName" : "Temperature",
-      "description" : "Temperature in degrees Celsius.",
+      "displayName": "Temperature",
+      "description": "Temperature in degrees Celsius.",
       "schema": "double",
       "unit": "degreeCelsius"
     },
@@ -157,7 +209,7 @@ A következő példa a termosztát interfész definícióját mutatja be:
       "schema": "double",
       "displayName": "Target Temperature",
       "description": "Allows to remotely specify the desired target temperature.",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "writable": true
     },
     {
@@ -167,7 +219,7 @@ A következő példa a termosztát interfész definícióját mutatja be:
       ],
       "name": "maxTempSinceLastReboot",
       "schema": "double",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "displayName": "Max temperature since last reboot.",
       "description": "Returns the max temperature since last device reboot."
     },
@@ -183,7 +235,7 @@ A következő példa a termosztát interfész definícióját mutatja be:
         "schema": "dateTime"
       },
       "response": {
-        "name" : "tempReport",
+        "name": "tempReport",
         "displayName": "Temperature Report",
         "schema": {
           "@type": "Object",
@@ -199,17 +251,17 @@ A következő példa a termosztát interfész definícióját mutatja be:
               "schema": "double"
             },
             {
-              "name" : "avgTemp",
+              "name": "avgTemp",
               "displayName": "Average Temperature",
               "schema": "double"
             },
             {
-              "name" : "startTime",
+              "name": "startTime",
               "displayName": "Start Time",
               "schema": "dateTime"
             },
             {
-              "name" : "endTime",
+              "name": "endTime",
               "displayName": "End Time",
               "schema": "dateTime"
             }
@@ -235,7 +287,7 @@ Alapértelmezés szerint a tulajdonságok csak olvashatók. A csak olvasható tu
 
 Egy tulajdonságot egy felületen írhatóként is megadhat. Az eszközök frissíthetik a IoT Central alkalmazásból származó írható tulajdonságot, valamint az alkalmazásra vonatkozó jelentéskészítési tulajdonságértékek frissítését is.
 
-Az eszközöknek nem kell csatlakozniuk a tulajdonságértékek beállításához. A frissített értékek akkor lesznek átadva, amikor az eszköz a következőhöz csatlakozik az alkalmazáshoz. Ez a viselkedés a csak olvasható és írható tulajdonságokra is vonatkozik.
+Az eszközöknek nem kell csatlakozniuk a tulajdonságértékek beállításához. A frissített értékek akkor lesznek átadva, amikor az eszköz a következőhöz csatlakozik az alkalmazáshoz. Ez a viselkedés az írásvédett és az írható tulajdonságokra is vonatkozik.
 
 Ne használjon tulajdonságokat a telemetria az eszközről való küldéséhez. Például egy írásvédett tulajdonság például `temperatureSetting=80` azt jelenti, hogy az eszköz hőmérséklete 80 értékre van állítva, és az eszköz megpróbál bejutni vagy maradni, ez a hőmérséklet.
 

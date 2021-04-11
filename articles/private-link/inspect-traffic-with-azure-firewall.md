@@ -8,14 +8,17 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3059d88c9894ba50a608afaf1cb23367dfaf089c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641988"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259455"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Egy privát végpontra irányuló forgalom vizsgálata az Azure Firewall használatával
+
+> [!NOTE]
+> Ha biztonságos virtuális központtal szeretné biztonságossá tenni az Azure Virtual WAN-beli privát végpontokra irányuló forgalmat, tekintse meg [Az Azure Virtual WAN-ban található privát végpontok felé irányuló biztonságos forgalmat](../firewall-manager/private-link-inspection-secure-virtual-hub.md).
 
 Az Azure Private-végpont az Azure privát kapcsolatának alapvető építőeleme. A privát végpontok lehetővé teszik, hogy a virtuális hálózaton üzembe helyezett Azure-erőforrások magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
@@ -166,7 +169,7 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre.  |
     | **Példány adatai** |  |
     | Virtuális gép neve | Adja meg a **myVM**. |
-    | Region | Válassza ki az USA **déli középső** régióját. |
+    | Régió | Válassza ki az USA **déli középső** régióját. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
     | Kép | Válassza az **Ubuntu Server 18,04 LTS-Gen1** lehetőséget. |
     | Méret | Válassza a **Standard_B2s** lehetőséget. |
@@ -215,7 +218,7 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
     | Name | Adja meg a **myAzureFirewall**. |
-    | Region | Válassza az **USA déli középső** régióját. |
+    | Régió | Válassza az **USA déli középső** régióját. |
     | A rendelkezésre állási zóna | Hagyja meg az alapértelmezett **nincs** értéket. |
     | Válasszon egy virtuális hálózatot    |    Válassza a **meglévő használata** lehetőséget.    |
     | Virtuális hálózat    |    Válassza a **myAzFwVNet** lehetőséget.    |
@@ -301,7 +304,7 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. |
     | **Példány adatai** | |
     | Name | Adja meg a **SQLPrivateEndpoint**. |
-    | Region | Válassza ki az USA **déli középső** régióját. |
+    | Régió | Válassza ki az USA **déli középső** régióját. |
 
 6. Válassza ki az **erőforrás** lapot, vagy válassza a **Next (tovább** ) gombot az oldal alján.
 
@@ -489,7 +492,7 @@ Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális há
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
-    | Region | Válassza az **USA déli középső** régióját. |
+    | Régió | Válassza az **USA déli középső** régióját. |
     | Name | Adja meg **a alhálózat-to-AzureFirewall** értéket. |
     | Átjáró-útvonalak propagálása | Válassza a **Nem** lehetőséget. |
 

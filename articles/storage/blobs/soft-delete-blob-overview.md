@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227024"
+ms.locfileid: "107257500"
 ---
 # <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
@@ -93,12 +93,14 @@ A nem törölt objektumok visszaállításával kapcsolatos további informáci�
 
 ## <a name="blob-soft-delete-and-versioning"></a>Blobos törlés és verziószámozás
 
-Ha a blob verziószámozása és a blob Soft delete egyaránt engedélyezve van egy Storage-fiókhoz, akkor a Blobok felülírása automatikusan létrehoz egy új verziót. Az új verzió nem törlődik, és a rendszer nem távolítja el, ha a helyreállítható törlés megőrzési ideje lejár. Nem készíthetők helyreállított Pillanatképek. Amikor töröl egy blobot, a blob aktuális verziója egy korábbi verzió lesz, és a rendszer törli az aktuális verziót. A rendszer nem hoz létre új verziót, és nem hoz létre nem törölt pillanatképeket.
+Ha a blob verziószámozása és a blob Soft delete egyaránt engedélyezve van egy Storage-fiókhoz, akkor a Blobok felülírása automatikusan létrehoz egy új verziót. Az új verzió nem törlődik, és a rendszer nem távolítja el, ha a helyreállítható törlés megőrzési ideje lejár. Nem készíthetők helyreállított Pillanatképek. Amikor töröl egy blobot, a blob aktuális verziója egy korábbi verzió lesz, és már nem létezik aktuális verzió. A rendszer nem hoz létre új verziót, és nem hoz létre nem törölt pillanatképeket.
 
-A helyreállítható törlés és verziószámozás engedélyezése együtt védi a blob-verziók törlését. Ha a helyreállítható törlés engedélyezve van, egy verzió törlése egy nem törölt verziót hoz létre. A **blob törlése** művelettel visszaállíthatja a nem törölt verziót, feltéve, hogy a blob aktuális verziója van. Ha nincs aktuális verzió, akkor a **blob törlésének** meghívása előtt át kell másolnia egy korábbi verziót az aktuális verzióra.
+A helyreállítható törlés és verziószámozás engedélyezése együtt védi a blob-verziók törlését. Ha a helyreállítható törlés engedélyezve van, egy verzió törlése egy nem törölt verziót hoz létre. A **blob törlésének** visszavonása művelettel visszaállíthatja a nem törölt verziókat a helyreállítható törlés megőrzési ideje alatt. A **blob törlésének** visszavonása művelet mindig visszaállítja a blob összes nem törölt verzióját. Nem lehet visszaállítani egyetlen, nem törölt verziót.
+
+A helyreállítható törlés megőrzési időtartamának lejárta után a rendszer véglegesen törli az összes helyreállított blob-verziót.
 
 > [!NOTE]
-> A törölt Blobok **törlésének** visszavonása művelet meghívása, ha a Verziószámozás engedélyezve van, visszaállítja a nem törölt verziókat vagy pillanatképeket, de nem állítja vissza az alap blobot. Az alap blob visszaállításához léptesse elő az előző verziót az alap blobba másolással.
+> A törölt Blobok **törlésének** visszavonása művelet meghívása, ha a Verziószámozás engedélyezve van, visszaállítja a nem törölt verziókat vagy pillanatképeket, de nem állítja vissza az aktuális verziót. A jelenlegi verzió visszaállításához léptesse elő a korábbi verziót, ha az aktuális verzióra másolja.
 
 A Microsoft azt javasolja, hogy az optimális adatvédelem érdekében a Storage-fiókok esetében is engedélyezze a verziószámozást és a Blobok törlését. További információ a Blobok verziószámozásának és a Soft delete együttes használatáról: [blob verziószámozása és a Soft delete](versioning-overview.md#blob-versioning-and-soft-delete).
 

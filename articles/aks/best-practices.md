@@ -3,19 +3,24 @@ title: Ajánlott eljárások az Azure Kubernetes Service (ak) szolgáltatáshoz
 description: A Fürtfelügyelő és a fejlesztői ajánlott eljárások gyűjteménye alkalmazások létrehozásához és kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 12/07/2018
-ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/09/2021
+ms.openlocfilehash: f4bd109ce6827de26b1649380b6f6a2ba7c10e17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686259"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105901"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Fürtözési és fejlesztői ajánlott eljárások az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások létrehozásához és kezeléséhez
 
-Az Azure Kubernetes Service (ak) szolgáltatásban való sikeres alkalmazások létrehozásához és futtatásához néhány fontos szempontot figyelembe kell venni. Ezek a területek a több-bérlős és a Feladatütemező funkciók, a fürt és a pod biztonság, vagy az üzletmenet folytonossága és a vész-helyreállítás. A következő ajánlott eljárások a fürtök és a fejlesztők számára vannak csoportosítva, hogy megértsék az egyes területek szempontjait, és implementálják a megfelelő szolgáltatásokat.
+Az alkalmazások az Azure Kubernetes szolgáltatásban (ak) való sikeres kiépítése és futtatása néhány fontos szempont megismerését és megvalósítását igényli, beleértve a következőket:
+* Több-bérlős és Scheduler-funkciók.
+* A fürt és a pod biztonsága.
+* Üzletmenet-folytonosság és vész-helyreállítás. 
 
-Ezek az ajánlott eljárások és fogalmi cikkek az AK termékcsoport, a mérnöki csapatok és a terepi csapatok, köztük a globális fekete övek (GBBs) együttes használatával lettek megírva.
+
+Az AK termékcsoport, a mérnöki csapatok és a Field Teams (beleértve a globális fekete öveket [GBBs]) hozzájárult a következő ajánlott eljárások és fogalmak összefoglalásához. Céljuk, hogy segítsenek a fürtök és a fejlesztők számára a fenti megfontolások megismerésében és a megfelelő funkciók megvalósításában.
+
 
 ## <a name="cluster-operator-best-practices"></a>A cluster operátor ajánlott eljárásai
 

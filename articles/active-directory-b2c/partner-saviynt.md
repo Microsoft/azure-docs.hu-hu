@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe5a2114a99b7867ac5e51b6bf9ec542ad47ca13
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465674"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257891"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Oktatóanyag a Saviynt konfigurálásához a Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![Saviynt architektúra diagramot ábrázoló kép](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A meghatalmazott rendszergazda elindítja Azure AD B2C felhasználói művelet kezelését a Saviynt-on keresztül.
 | 2. | Ha a meghatalmazott rendszergazda végrehajtja az adott műveletet, a Saviynt ellenőrzi az engedélyezési motorját.
@@ -135,6 +135,6 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 
 - [Webes API-alkalmazás létrehozása](./add-web-api-application.md)

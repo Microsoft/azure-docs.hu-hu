@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: cf5772e9cf08eaa7f34acd59a9c96da6f20cd03d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 96c37ded2750ad3e4882b203d71c75c9f4608e9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131411"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285909"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 
@@ -368,7 +368,7 @@ Az API-válasz minden olyan tranzakciót visszaad, amely befolyásolta a száml�
 
 A Microsoft-ügyfélszerződésekhez tartozó számlázási fiókokban a számlázási profilokkal kezelheti a számlákat és a fizetési módokat. A rendszer havonta létrehoz egy számlát minden számlázási profil számára, a fizetési módok használatával pedig kifizetheti a számlát.
 
-a megkeresett krediteket egy számlázási profilhoz rendeli. A számla számlázási profil számára történő létrehozásakor a rendszer automatikusan alkalmazza a krediteket az összköltségre a fizetendő összeg kiszámításához. A fennmaradó összeget egy fizetési mód segítségével, például csekkel/átutalással vagy bankkártyával fizetheti ki.
+Hozzárendelheti a számlázási profilhoz beszerzett krediteket. A számla számlázási profil számára történő létrehozásakor a rendszer automatikusan alkalmazza a krediteket az összköltségre a fizetendő összeg kiszámításához. A fennmaradó összeget egy fizetési mód segítségével, például csekkel/átutalással vagy bankkártyával fizetheti ki.
 
 ## <a name="products-that-arent-covered-by-azure-credits"></a>Az Azure-kreditek által nem fedezett termékek
 

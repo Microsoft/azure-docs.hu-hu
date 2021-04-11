@@ -8,101 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
-ms.openlocfilehash: 804dacc4351da9e04ac75b2484b4330901a69271
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 875ef961148668a83e94c116622b5e461d2413fa
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488482"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286134"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Computer Vision szolgáltatásával olyan speciális algoritmusokhoz férhet hozzá, amelyek képek feldolgozását végzik, és a vizuális funkciók alapján adnak vissza információkat. A Computer Vision például megállapíthatja, hogy egy rendszerkép tartalmaz-e felnőtt tartalmat, megkeresheti-e az adott márkákat vagy objektumokat, vagy megkeresheti az emberi arcokat.
+Az Azure Computer Vision szolgáltatásával olyan speciális algoritmusokhoz férhet hozzá, amelyek képek feldolgozását végzik, és a vizuális funkciók alapján adnak vissza információkat. 
 
-Létrehozhat Computer Vision-alkalmazásokat egy [ügyféloldali KÓDTÁR SDK](./quickstarts-sdk/client-library.md) -n keresztül, vagy közvetlenül is meghívja a [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) . Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
-
-Ez a dokumentáció a következő típusú cikkeket tartalmazza:
-* A [rövid](./quickstarts-sdk/client-library.md) útmutatók részletes útmutatást tesznek lehetővé, amelyekkel hívásokat indíthat a szolgáltatásba, és rövid idő alatt lekérheti az eredményeket. 
-* A [útmutató útmutatók](./Vision-API-How-to-Topics/HowToCallVisionAPI.md) a szolgáltatás használatára vonatkozó utasításokat tartalmaznak részletesebb vagy testreszabott módokon.
-* A [fogalmi cikkek](concept-recognizing-text.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.
-* Az [oktatóanyagok](./tutorials/storage-lab-tutorial.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja ezt a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.
-
-## <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
-
-A Computer Vision az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md) képességeket is tartalmazza. Az új olvasási API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből és a dokumentumokból. Mély tanuláson alapuló modelleket használ, és számos felületen és háttérbeli szöveggel működik együtt. Ilyenek például az üzleti dokumentumok, a számlák, a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. Az OCR API-k [több nyelven](./language-support.md)is támogatják a nyomtatott szöveg kinyerését. [A kezdéshez kövesse az első](./quickstarts-sdk/client-library.md) lépéseket.
+| Szolgáltatás|Leírás|
+|---|---|
+|[Optikai karakterfelismerés (OCR)](overview-ocr.md)|Az optikai karakterfelismerési (OCR) szolgáltatás szöveget gyűjt a képekből. Az új olvasási API használatával kinyerheti a nyomtatott és a kézírásos szöveget a fényképekből és a dokumentumokból. Mély tanuláson alapuló modelleket használ, és számos felületen és háttérbeli szöveggel működik együtt. Ilyenek például az üzleti dokumentumok, a számlák, a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. Az OCR API-k [több nyelven](./language-support.md)is támogatják a nyomtatott szöveg kinyerését. Az első lépésekhez kövesse az [OCR](quickstarts-sdk/client-library.md) rövid útmutatóját.|
+|[Képelemzés](overview-image-analysis.md)| A rendszerkép-elemzési szolgáltatás számos vizuális funkciót Kinyer a képekből, például az objektumokból, az arcokból, a felnőtt tartalomból és az automatikusan generált szöveges leírásokból. A kezdéshez kövesse a [rendszerkép elemzése](quickstarts-sdk/image-analysis-client-library.md) rövid útmutatót.|
+| [Térbeli elemzés](intro-to-spatial-analysis-public-preview.md)| A térbeli elemzési szolgáltatás elemzi a személyek jelenlétét és mozgását a videó-hírcsatornán, és olyan eseményeket állít elő, amelyeket más rendszerek is válaszolnak. Telepítse a [térbeli elemzési tárolót](spatial-analysis-container.md) a kezdéshez.|
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Computer Vision a digitális eszközök kezeléséhez
 
 A Computer Vision számos digitális Asset Management-(DAM-) forgatókönyvet képes kihasználni. A DAM a gazdag média-eszközök rendszerezésének, tárolásának és lekérésének üzleti folyamata, valamint a digitális jogok és engedélyek kezelése. Előfordulhat például, hogy egy vállalat szeretné csoportosítani és azonosítani a képeket a látható emblémák, arcok, objektumok, színek és egyebek alapján. Vagy előfordulhat, hogy automatikusan kívánja [létrehozni a képekhez tartozó feliratokat](./Tutorials/storage-lab-tutorial.md) és kulcsszavakat csatolni, hogy azok kereshetőek legyenek. Az Cognitive Services, az Azure Cognitive Search és az intelligens jelentéskészítés szolgáltatást használó teljes körű megoldásért tekintse meg a Knowledge Reporting [Solution-gyorsító útmutatót](https://github.com/Azure-Samples/azure-search-knowledge-mining) a githubon. Más DAM-példákért tekintse meg a [Computer Vision megoldási sablonok](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) tárházát.
-
-## <a name="analyze-images-for-insight"></a>Képek elemzése eredmények kinyeréséhez
-
-Elemezheti a képeket, hogy információkat szolgáltasson a vizualizáció szolgáltatásairól és jellemzőiről. Az alábbi táblázat összes funkcióját a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API tartalmazza. [A kezdéshez kövesse az első](./quickstarts-sdk/client-library.md) lépéseket.
-
-
-### <a name="tag-visual-features"></a>Vizuális jellemzők címkézése
-
-Azonosíthatja és címkézheti egy kép vizualizációs funkcióit több ezer felismerhető objektumból, az élő dolgokból, a díszletből és a tevékenységekből álló készletből. Ha a címkék nem egyértelműek vagy nem általános ismeretek, az API-válasz a címke kontextusának tisztázására szolgáló tippeket tartalmaz. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb. [Vizuális jellemzők címkézése](concept-tagging-images.md)
-
-### <a name="detect-objects"></a>Objektumok észlelése
-
-Az objektum-észlelés hasonlít a címkézéshez, de az API az egyes alkalmazott címkékhez tartozó határoló mezők koordinátáit adja vissza. Ha például egy rendszerkép kutyát, macskát és személyt tartalmaz, az észlelési művelet a képen látható koordinátákkal együtt listázza ezeket az objektumokat. Ezt a funkciót használhatja a képek objektumai közötti további kapcsolatok feldolgozásához. Azt is megtudhatja, hogy mikor van több példánya ugyanazzal a címkével egy képen. [Objektumok észlelése](concept-object-detection.md)
-
-### <a name="detect-brands"></a>Márkák észlelése
-
-A képeken vagy videókban található kereskedelmi márkákat több ezer globális emblémából álló adatbázisból azonosíthatja. Ezt a funkciót használhatja például arra, hogy felderítse, mely márkák a legnépszerűbbek a közösségi médiában, vagy a média termékeinek legelterjedtebb eleme. [Márkák észlelése](concept-brand-detection.md)
-
-### <a name="categorize-an-image"></a>Rendszerkép kategorizálása
-
-Felismeri és kategorizálja a teljes képet egy [kategóriaelnevezési rendszer](Category-Taxonomy.md) segítségével, szülő/gyermek hierarchiák használatával. A kategóriák egyedül vagy az új címkéző modellekkel együtt is használhatóak.<br/>Jelenleg az egyetlen támogatott nyelv a képek címkézéséhez és kategorizálásához az angol. [Rendszerkép kategorizálása](concept-categorizing-images.md)
-
-### <a name="describe-an-image"></a>Képek leírása
-
-Leírást hoz létre a teljes képhez a felhasználók által is olvasható nyelven, teljes mondatok használatával. A Computer Vision algoritmusai különböző leírásokat hoznak létre a képen felismert tárgyak alapján. A leírásokat a rendszer kiértékeli, majd megbízhatósági pontszámot hoz létre hozzájuk. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza. [Képek leírása](concept-describing-images.md)
-
-### <a name="detect-faces"></a>Arcfelismerés
-
-Felismeri a képen található arcokat, és információval szolgál minden felismert arccal kapcsolatban. A Computer Vision visszaküldi az arcok koordinátáit, a téglalapot és a képen szereplő személy nemét és életkorát.<br/>Computer Vision a [Face](../face/index.yml) szolgáltatás funkcióinak egy részét biztosítja. A Face szolgáltatást részletesebb elemzésre is használhatja, például az arc azonosítására és az észlelésre. [Arcfelismerés](concept-detecting-faces.md)
-
-### <a name="detect-image-types"></a>Képek típusának észlelése
-
-Észleli a kép jellemzőit, például hogy a kép vonalrajz-e, vagy annak a valószínűségét, hogy a kép ClipArt. [Képek típusának észlelése](concept-detecting-image-types.md)
-
-### <a name="detect-domain-specific-content"></a>Tartományspecifikus tartalom észlelése
-
-Tartománymodellek segítségével észleli és felismeri a kép tartományspecifikus tartalmát, például a hírességeket vagy nevezetességeket. Ha például egy rendszerkép személyeket tartalmaz, Computer Vision a hírességek egy tartományi modelljével határozzák meg, hogy a rendszerképben észlelt személyek ismert hírességek-e. [Tartományspecifikus tartalom észlelése](concept-detecting-domain-content.md)
-
-### <a name="detect-the-color-scheme"></a>Színséma észlelése
-
-A képen használt színek elemzése. A Computer Vision eldönti, hogy a kép fekete-fehér-e vagy színes, illetve színes képek esetében felismeri a domináns és a kiegészítő színeket. [Színséma észlelése](concept-detecting-color-schemes.md)
-
-### <a name="generate-a-thumbnail"></a>Miniatűr létrehozása
-
-Elemzi a kép tartalmát, hogy megfelelő miniatűrt tudjon létrehozni a képhez. Computer Vision először egy kiváló minőségű miniatűrt hoz létre, majd a képen található objektumokat elemzi a *fontos terület* meghatározásához. Computer Vision ezután megvágja a képet, hogy megfeleljen a fontos terület követelményeinek. Igény szerint a létrehozott miniatűr az eredeti képtől eltérő oldalaránnyal is rendelkezhet. [Miniatűr létrehozása](concept-generating-thumbnails.md)
-
-### <a name="get-the-area-of-interest"></a>A fontos terület beszerzése
-
-Egy rendszerkép tartalmának elemzése a *fontos terület* koordinátáinak visszaadásához. A rendszerkép kivágása és a miniatűr létrehozása helyett a Computer Vision a régió határolókeret koordinátáit adja vissza, így a hívó alkalmazás igény szerint módosíthatja az eredeti rendszerképet. [A fontos terület beszerzése](concept-generating-thumbnails.md#area-of-interest)
-
-## <a name="moderate-content-in-images"></a>Képek tartalmának moderálása
-
-A Computer Vision használatával [felderítheti a felnőtt tartalmakat](concept-detecting-adult-content.md) egy rendszerképben, és a különböző besorolások megbízhatósági pontszámait is visszaküldheti. A tartalom megjelölésére vonatkozó küszöbérték beállítható egy csúszó skálán, hogy megfeleljenek a beállításoknak.
-
-## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
-
-Computer Vision tárolók használatával telepítheti a helyszíni API-szolgáltatásokat. Ezek a Docker-tárolók lehetővé teszik, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz. Computer Vision a következő tárolókat kínálja:
-
-* A [Computer Vision Read OCR Container (előzetes verzió)](computer-vision-how-to-install-containers.md) lehetővé teszi a nyomtatott és a kézírásos szöveg felismerését a képekben.
-* A [Computer Vision térbeli elemzési tároló (előzetes verzió)](spatial-analysis-container.md) lehetővé teszi a valós idejű adatfolyam-videók elemzését a személyek közötti térbeli kapcsolatok és a fizikai környezetek közötti mozgás megismerése érdekében.
 
 ## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
@@ -119,6 +53,8 @@ Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltat
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Computer Vision használatának első lépései a következő útmutatóban olvashatók az előnyben részesített fejlesztői nyelven:
+Egy rövid útmutató segítségével implementálhatja és futtathatja a szolgáltatást az előnyben részesített fejlesztői nyelven.
 
-- [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md)
+* [Gyors útmutató: optikai karakterfelismerés (OCR)](quickstarts-sdk/client-library.md)
+* [Gyors útmutató: képek elemzése](quickstarts-sdk/image-analysis-client-library.md)
+* [Gyors útmutató: térbeli elemzési tároló](spatial-analysis-container.md)

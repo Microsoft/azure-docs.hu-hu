@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 04/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1ceed171b0516e293ffe58bca0225d3d3dfdb414
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 653eacd11c4a3c7ab500abff809a6b9bf8229c1f
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094655"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492069"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Az Azure Nagyvállalati Szerződés (EA) szerepköreinek kezelése
 
@@ -22,6 +22,7 @@ A szervezet használati adatainak és költségeinek kezeléséhez a Nagyvállal
 
 - Vállalati rendszergazda
 - Vállalati rendszergazda (csak olvasási)<sup>1</sup>
+- EA-vásárló
 - Részlegszintű rendszergazda
 - Részlegszintű rendszergazda (csak olvasási)
 - Fióktulajdonos<sup>2</sup>
@@ -61,6 +62,7 @@ Az alábbi ábra egyszerű Azure EA-hierarchiákat mutat be.
 Az alábbi rendszergazdai felhasználói szerepkörök a vállalati regisztráció részei:
 
 - Vállalati rendszergazda
+- EA-vásárló
 - Részlegszintű rendszergazda
 - Fióktulajdonos
 - Szolgáltatás-rendszergazda
@@ -80,12 +82,24 @@ Az ilyen szerepkörrel felruházott felhasználók rendelkeznek a legmagasabb sz
 - Más vállalati rendszergazdák kezelése.
 - Részlegszintű rendszergazdák kezelése.
 - Értesítendő felek kezelése.
+- Azure-szolgáltatások vásárlása, beleértve a foglalásokat is.
 - A fiókok használati adatainak megtekintése.
 - A fiókok nem számlázott díjainak megtekintése.
 - Minden foglalási rendelés és foglalás megtekintése és kezelése, amelyre a Nagyvállalati Szerződés vonatkozik.
   - A vállalati rendszergazda (csak olvasási) megtekintheti a foglalási rendeléseket és foglalásokat. Nem kezelheti őket.
 
 Több vállalati rendszergazda is lehet egy vállalati regisztrációban. A vállalati rendszergazdákhoz rendelhet csak olvasási hozzáférést is. Mindegyikük örökli a részlegszintű rendszergazdai szerepkört.
+
+### <a name="ea-purchaser"></a>EA-vásárló
+
+Az ehhez a szerepkörhöz tartozó felhasználók jogosultak az Azure-szolgáltatások megvásárlására, de nem jogosultak a fiókok kezelésére. Ezek a következők:
+
+- Azure-szolgáltatások vásárlása, beleértve a foglalásokat is.
+- A fiókok használati adatainak megtekintése.
+- A fiókok nem számlázott díjainak megtekintése.
+- Minden foglalási rendelés és foglalás megtekintése és kezelése, amelyre a Nagyvállalati Szerződés vonatkozik.
+
+Az EA-vásárlói szerepkör jelenleg csak SPN-alapú hozzáféréshez van engedélyezve. Ha meg szeretné tudni, hogyan rendelheti hozzá a szerepkört egy egyszerű szolgáltatáshoz, tekintse meg a [szerepkörök társítása az Azure-ban nagyvállalati szerződés egyszerű szolgáltatásnév](assign-roles-azure-service-principals.md)nevet.
 
 ### <a name="department-administrator"></a>Részlegszintű rendszergazda
 
@@ -126,6 +140,7 @@ A következő szakaszok az egyes szerepkörök korlátait és képességeit muta
 |---|---|
 |Vállalati rendszergazda|Korlátlan|
 |Vállalati rendszergazda (csak olvasási)|Korlátlan|
+| Egy SPN-hez rendelt EA-vásárló | Korlátlan |
 |Részlegszintű rendszergazda|Korlátlan|
 |Részlegszintű rendszergazda (csak olvasási)|Korlátlan|
 |Fióktulajdonos|Fiókonként 1<sup>3</sup>|
@@ -134,18 +149,19 @@ A következő szakaszok az egyes szerepkörök korlátait és képességeit muta
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Szervezeti felépítés és engedélyek szerepkörönként
 
-|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási)|Fióktulajdonos| Partner|
-|---|---|---|---|---|---|---|
-|Vállalati rendszergazdák megtekintése|✔|✔|✘|✘|✘|✔|
-|Vállalati rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✘|✘|✘|✘|
-|Értesítési kapcsolattartók megtekintése<sup>4</sup> |✔|✔|✘|✘|✘|✔|
-|Értesítési kapcsolattartók hozzáadása vagy eltávolítása<sup>4</sup> |✔|✘|✘|✘|✘|✘|
-|Részlegek létrehozására és kezelésére |✔|✘|✘|✘|✘|✘|
-|Részlegszintű rendszergazdák megtekintése|✔|✔|✔|✔|✘|✔|
-|Részlegszintű rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✔|✘|✘|✘|
-|A regisztrációhoz tartozó fiókok megtekintése |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
-|Fiókok hozzáadása a regisztrációhoz és a fióktulajdonos módosítása|✔|✘|✔<sup>5</sup>|✘|✘|✘|
-|Előfizetések és előfizetési engedélyek létrehozása és kezelése|✘|✘|✘|✘|✔|✘|
+|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)| EA-vásárló | Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási)|Fióktulajdonos| Partner|
+|---|---|---|---|---|---|---|---|
+|Vállalati rendszergazdák megtekintése|✔|✔| ✔|✘|✘|✘|✔|
+|Vállalati rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✘|✘|✘|✘|✘|
+|Értesítési kapcsolattartók megtekintése<sup>4</sup> |✔|✔|✔|✘|✘|✘|✔|
+|Értesítési kapcsolattartók hozzáadása vagy eltávolítása<sup>4</sup> |✔|✘|✘|✘|✘|✘|✘|
+|Részlegek létrehozására és kezelésére |✔|✘|✘|✘|✘|✘|✘|
+|Részlegszintű rendszergazdák megtekintése|✔|✔|✔|✔|✔|✘|✔|
+|Részlegszintű rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✘|✔|✘|✘|✘|
+|A regisztrációhoz tartozó fiókok megtekintése |✔|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Fiókok hozzáadása a regisztrációhoz és a fióktulajdonos módosítása|✔|✘|✘|✔<sup>5</sup>|✘|✘|✘|
+|Foglalások vásárlása|✔|✘|✔|✘|✘|✘|✘|
+|Előfizetések és előfizetési engedélyek létrehozása és kezelése|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup>Az értesítési kapcsolattartók kapják meg az Azure Nagyvállalati Szerződésre vonatkozó tájékoztató e-maileket.
 - <sup>5</sup>A feladat a részlegen belüli fiókokra korlátozódik.
@@ -166,14 +182,14 @@ A részlegszintű rendszergazdák hozzáadásával kapcsolatos további informá
 
 ## <a name="usage-and-costs-access-by-role"></a>Szerepkörök szerint hozzáférés a használati adatokhoz és a költségekhez
 
-|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási) |Fióktulajdonos| Partner|
-|---|---|---|---|---|---|---|
-|Kreditegyenleg megtekintése, beleértve az Azure-előrefizetést|✔|✔|✘|✘|✘|✔|
-|Részleg költségkvótáinak megtekintése|✔|✔|✘|✘|✘|✔|
-|Részleg költségkvótáinak beállítása|✔|✘|✘|✘|✘|✘|
-|Szervezet EA-árlistájának megtekintése|✔|✔|✘|✘|✘|✔|
-|Használati adatok és költségek megtekintése|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
-|Erőforrások kezelése az Azure Portalon|✘|✘|✘|✘|✔|✘|
+|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|EA-vásárló|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási) |Fióktulajdonos| Partner|
+|---|---|---|---|---|---|---|---|
+|Kreditegyenleg megtekintése, beleértve az Azure-előrefizetést|✔|✔|✔|✘|✘|✘|✔|
+|Részleg költségkvótáinak megtekintése|✔|✔|✔|✘|✘|✘|✔|
+|Részleg költségkvótáinak beállítása|✔|✘|✘|✘|✘|✘|✘|
+|Szervezet EA-árlistájának megtekintése|✔|✔|✔|✘|✘|✘|✔|
+|Használati adatok és költségek megtekintése|✔|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Erőforrások kezelése az Azure Portalon|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup>A vállalati rendszergazdának engedélyeznie kell a **díjtételek megtekintését a részlegszintű rendszergazda számára** az Enterprise Portalon. A részlegszintű rendszergazda ezután megtekintheti a részleg költségeire vonatkozó adatokat.
 - <sup>7</sup>A vállalati rendszergazdának engedélyeznie kell a **díjtételek megtekintését a fióktulajdonos számára** az Enterprise Portalon. A fióktulajdonos ezután megtekintheti a fiók költségeire vonatkozó adatokat.
@@ -198,8 +214,6 @@ A következő táblázat bemutatja a Nagyvállalati Szerződés rendszergazdai s
 |None|Nem alkalmazható |Tulajdonos|Kiskereskedelmi díjszabás|
 
 A vállalati rendszergazdai szerepkört és a díjtétel-megtekintési szabályzatokat az Enterprise Portalon lehet beállítani. Az Azure-szerepkört az Azure Portalon lehet frissíteni. További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
-
-
 
 ## <a name="next-steps"></a>További lépések
 

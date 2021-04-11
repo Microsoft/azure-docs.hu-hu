@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 8d495c04d5753c3771a0870659cc92fb1e604216
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: f20af8c61bbfbbbbc20c29470648c3df6a272396
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031205"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285496"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>Áttelepítési útmutató: az IBM DB2 – Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) az IBM DB2-adatbázisait Azure SQL Databasere, [SQL Server áttelepítési](https://azure.microsoft.com/migration/migration-journey) segéd használatával a DB2-hez. 
+Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) az IBM DB2-adatbázisait Azure SQL Databasere, [SQL Server áttelepítési](https://azure.microsoft.com/en-us/migration/sql-server/) segéd használatával a DB2-hez. 
 
 Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatói](https://docs.microsoft.com/data-migration). 
 
@@ -157,8 +157,8 @@ További segítségért tekintse meg a következő erőforrásokat, amelyeket a 
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[DB2 zOS adategységek felderítési és értékelési csomagja](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Ha az SQL-szkriptet egy adatbázison futtatja, az eredményeket a fájlrendszer egyik fájljába exportálhatja. Számos fájlformátum támogatott, beleértve a *. csv fájlt is, így az eredményeket külső eszközökön, például táblázatokban rögzítheti. Ez a módszer akkor lehet hasznos, ha egyszerűen meg szeretné osztani az eredményeket olyan csapatokkal, amelyeken nincs telepítve a Workbench.|
-|[IBM DB2 LUW-leltári parancsfájlok és összetevők](https://github.com/Microsoft/DataMigrationTeam/tree/master/IBM%20Db2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|Ez az objektum olyan SQL-lekérdezést tartalmaz, amely az IBM DB2 LUW 11,1 rendszertábláit tartalmazza, és az objektumok számát séma és objektumtípus alapján, az egyes sémákban a "nyers adat" durva becslésével, valamint az egyes sémákban lévő táblák méretezésével, valamint CSV-formátumban tárolt eredményekkel biztosítja.|
-|[DB2 LUW – tiszta méretezés az Azure-ban – telepítési útmutató](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Db2%20PureScale%20on%20Azure.pdf)|Ez az útmutató egy DB2-implementációs csomag kiindulási pontként szolgál. Bár az üzleti követelmények eltérőek lesznek, ugyanez az alapszintű minta is érvényes. Ezt az építészeti mintát az Azure-beli OLAP-alkalmazásokhoz is használhatja.|
+|[IBM DB2 LUW-leltári parancsfájlok és összetevők](https://github.com/microsoft/DataMigrationTeam/blob/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|Ez az objektum olyan SQL-lekérdezést tartalmaz, amely az IBM DB2 LUW 11,1 rendszertábláit tartalmazza, és az objektumok számát séma és objektumtípus alapján, az egyes sémákban a "nyers adat" durva becslésével, valamint az egyes sémákban lévő táblák méretezésével, valamint CSV-formátumban tárolt eredményekkel biztosítja.|
+|[DB2 LUW – tiszta méretezés az Azure-ban – telepítési útmutató](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|Ez az útmutató egy DB2-implementációs csomag kiindulási pontként szolgál. Bár az üzleti követelmények eltérőek lesznek, ugyanez az alapszintű minta is érvényes. Ezt az építészeti mintát az Azure-beli OLAP-alkalmazásokhoz is használhatja.|
 
 Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat alapszintű alapokmánya az adatplatform-áttelepítési projektek a Microsoft Azure-beli adatplatformra való feltiltásának és felgyorsításának feloldása.
 

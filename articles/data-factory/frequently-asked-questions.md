@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2027e3555a7eb616ad024ec00bf6b0f8f452167c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739334"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258520"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory – gyakori kérdések
 
@@ -226,86 +226,11 @@ A másolási tevékenység használatával a többi összekötőtől származó 
 
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Elérhető a saját üzemeltetésű integrációs modul az adatforgalomhoz?
 
-A saját üzemeltetésű integrációs modul egy ADF-alapú folyamat-összeállítás, amellyel a másolási tevékenységgel adatok szerezhetők be és helyezhetők át a helyszíni vagy a VM-alapú adatforrásokból, illetve elsüllyednek. Először készítsen másolatot az adatforgalomról, majd az átalakításhoz szükséges adatfolyamot, majd egy későbbi másolatot, ha át kell helyeznie az átalakított adattárolót a helyszíni áruházba.
+A saját üzemeltetésű integrációs modul egy ADF-alapú folyamat-összeállítás, amellyel a másolási tevékenységgel adatok szerezhetők be és helyezhetők át a helyszíni vagy a VM-alapú adatforrásokból, illetve elsüllyednek. A saját üzemeltetésű integrációs modulhoz használt virtuális gépek a védett adattárakkal azonos VNET helyezhetők el az ADF-ből származó adattárakhoz való hozzáféréshez. Az adatfolyamatok esetében ugyanazokat a végső eredményeket fogja elérni, ha a Azure IR felügyelt VNET használja helyette.
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Az adatfolyam-számítási motor több bérlőt is kiszolgál?
 
 A fürtök soha nem lesznek megosztva. Garantáljuk, hogy az egyes feladatokhoz az üzemi környezetben futnak az elkülönítés. Hibakeresési forgatókönyv esetén egy személy kap egy fürtöt, és minden debugs az adott felhasználó által kezdeményezett fürtre lép.
-
-## <a name="wrangling-data-flows"></a>Huzavona-adatfolyamok
-
-### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Melyek a huzavona-adatfolyam támogatott régiói?
-
-A huzavona-adatfolyam jelenleg támogatott a következő régiókban létrehozott adatüzemekben:
-
-* Kelet-Ausztrália
-* Közép-Kanada
-* Közép-India
-* USA keleti régiója
-* USA 2. keleti régiója
-* Kelet-Japán
-* Észak-Európa
-* Délkelet-Ázsia
-* USA déli középső régiója
-* Az Egyesült Királyság déli régiója
-* USA nyugati középső régiója
-* Nyugat-Európa
-* USA nyugati régiója
-* USA 2. nyugati régiója
-
-### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Milyen korlátozások és korlátozások vonatkoznak a huzavona-adatfolyamra?
-
-Az adatkészlet neve csak alfanumerikus karaktereket tartalmazhat. A következő adattárak támogatottak:
-
-* DelimitedText-adatkészlet az Azure Blob Storage fiók kulcsos hitelesítésének használatával
-* DelimitedText adatkészlet Azure Data Lake Storage Gen2-ben a fiók kulcsa vagy a szolgáltatás egyszerű hitelesítése használatával
-* DelimitedText adatkészlet Azure Data Lake Storage gen1 az egyszerű szolgáltatás hitelesítésének használatával
-* A Azure SQL Database és az adatraktár SQL-hitelesítéssel. Lásd az alábbi támogatott SQL-típusokat. Az adatraktár nem rendelkezik alalaptal vagy átmeneti támogatással.
-
-Jelenleg a társított szolgáltatás Key Vault integrációja nem támogatott a huzavona-adatfolyamatokban.
-
-### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Mi a különbség a leképezési és a huzavona adatfolyamatok között?
-
-Az Adatáramlások leképezése lehetővé teszi, hogy az adatforgalom méretezés nélkül, kódolás nélkül legyen átalakítva. Az Adatátalakítási feladatokat az adatáramlási vásznon is megtervezheti átalakítások sorozatának létrehozásával. Az Adatátalakítási lépések után tetszőleges számú forrás-átalakítást indíthat. Fejezze be az adatfolyamatot egy fogadóval, hogy az eredményeket egy célhelyen lehessen kirakodni. Az adatáramlás megfeleltetése kiváló megoldás a fogadók és a források ismert és ismeretlen sémákkal történő leképezésére és átalakítására.
-
-A huzavona-adatfolyamatok lehetővé teszik az adatfeldolgozást és-feltárást az Power Query online mashup-szerkesztő használatával, a Spark-végrehajtással. Az adattavak növekedésével időnként csak egy adatkészletet kell felderíteni, vagy létre kell hoznia egy adatkészletet a tóban. Nem egy ismert célhoz van hozzárendelve. A huzavona-adatfolyamatok kevésbé formális és modell-alapú elemzési helyzetekben használatosak.
-
-### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Mi a különbség a Power platform adatfolyamok és a huzavona adatforgalma között?
-
-A Power platform adatfolyamok lehetővé teszi a felhasználók számára, hogy az adatforrások széles köréből importálják és alakítsuk át az Common Data Service és Azure Data Lake, hogy PowerApps alkalmazásokat, Power BI jelentéseket vagy folyamat-automatizálásokat hozzanak létre. A Power platform adatfolyamok a Power BI és az Excel programhoz hasonló, a Power Query adat-előkészítési élményt használja. A Power platform adatfolyamok a szervezeten belüli egyszerű újrafelhasználást is lehetővé teszi, és automatikusan kezeli a munkafolyamatot (például a adatfolyamok automatikus frissítését, amely egy másik adatfolyam függ, amikor az előbbi frissítve lett).
-
-A Azure Data Factory (ADF) egy felügyelt adatintegrációs szolgáltatás, amely lehetővé teszi, hogy az adatmérnökök és az állampolgári adatintegrátor komplex hibrid kinyerési, átalakítási és kinyerési (ELT) munkafolyamatokat hozzon létre. Az ADF-ben a huzavona adatáramlás lehetővé teszi a felhasználók számára a Felhőbeli adatelőkészítést, valamint az infrastruktúra-felügyelet nélküli adatméretek méretezését. A Power Query adatelőkészítési technológiát használja (amelyet a Power platform adatfolyamok, Excelben, Power BI) is használ az adatgyűjtés előkészítéséhez és alakításához. A big data integráció összes összetettségét és méretezési nehézségeit felépítve a huzavona Adatáramlások lehetővé teszik a felhasználók számára, hogy a Spark-végrehajtással gyorsan készítsék el az adatmennyiséget. A felhasználók rugalmas adatfolyamatokat hozhatnak létre egy elérhető vizualizációs környezetben a böngészőalapú kezelőfelülettel, és lehetővé teszik, hogy az ADF kezelje a Spark-végrehajtás bonyolultságát. Készítsen ütemterveket a folyamatokhoz, és figyelje az adatfolyamatok végrehajtását az ADF-figyelési portálról. Egyszerűen kezelheti az adatrendelkezésre állási SLA-kat az ADF bőséges rendelkezésre állásának figyelésével és riasztásokkal, valamint a beépített folyamatos integrációs és üzembe helyezési képességekkel, hogy felügyelt környezetben mentse és kezelhesse a folyamatokat. Riasztásokat hozhat létre, és megtekintheti a végrehajtási terveket annak ellenőrzéséhez, hogy a logikája az adatfolyamatok hangolása szerint van-e végrehajtva.
-
-### <a name="supported-sql-types"></a>Támogatott SQL-típusok
-
-A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvényesítési hiba jelenik meg, ha olyan adattípust használ, amely nem támogatott.
-
-* rövid
-* double
-* valós szám
-* float
-* char
-* NCHAR
-* varchar
-* nvarchar
-* egész szám
-* int
-* bit
-* boolean
-* smallint
-* tinyint
-* bigint
-* hosszú
-* szöveg
-* dátum
-* dátum/idő
-* datetime2
-* idő adattípusúra
-* időbélyeg
-* uniqueidentifier
-* xml
-
-A jövőben más adattípusok is támogatottak lesznek.
 
 ## <a name="next-steps"></a>Következő lépések
 

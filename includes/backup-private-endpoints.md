@@ -1,15 +1,15 @@
 ---
-author: dcurwin
+author: v-amallick
 ms.service: backup
 ms.topic: include
 ms.date: 03/12/2020
-ms.author: dacurwin
-ms.openlocfilehash: fd7124ad83a446d7dde39a836c337a97b12a0a0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: v-amallick
+ms.openlocfilehash: d20ed4d39921f8000f77f947c4372bd8b10ca642
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95560575"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106294115"
 ---
 Mostantól [privát végpontokat](../articles/private-link/private-endpoint-overview.md) is használhat az adatok biztonságos biztonsági mentésére a virtuális hálózaton belüli kiszolgálókról a Recovery Services-tárolóba. A privát végpont egy IP-címet használ a tár VNET. A virtuális hálózaton belüli erőforrásai és a tároló közötti hálózati forgalom a virtuális hálózatra és a Microsoft gerinc hálózatán található privát kapcsolatra is áthalad. Ezzel kiküszöbölhető a nyilvános internetről való kitettség. Az Azure-beli virtuális gépeken futó SQL-és SAP HANA-adatbázisok biztonsági mentésére és visszaállítására privát végpontok használhatók. A MARS-ügynököt használó helyszíni kiszolgálókhoz is használható.
 

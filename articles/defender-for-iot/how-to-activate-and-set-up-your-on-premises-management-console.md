@@ -1,14 +1,14 @@
 ---
 title: A helyszíni felügyeleti konzol aktiválása és beállítása
 description: A felügyeleti konzol aktiválása biztosítja, hogy az érzékelők regisztrálva legyenek az Azure-ban, és információt küldjenek a helyszíni felügyeleti konzolra, valamint arról, hogy a helyszíni felügyeleti konzol felügyeleti feladatokat hajt végre a csatlakoztatott érzékelőkön.
-ms.date: 3/18/2021
+ms.date: 4/6/2021
 ms.topic: how-to
-ms.openlocfilehash: 86bbebb54753145e087865acd8c0d4690a53aa99
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: db0d2a84feeb5bf52932842badda8c126994c05d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383845"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492154"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>A helyszíni felügyeleti konzol aktiválása és beállítása 
 
@@ -217,6 +217,10 @@ Hely beállítása:
 5. [Kapcsolja össze az érzékelőket](how-to-manage-individual-sensors.md#connect-a-sensor-to-the-management-console).
 
 6. [Érzékelő társítása a helyek zónájához](#assign-sensors-to-zones).
+
+### <a name="delete-a-site"></a>Hely törlése
+
+Ha már nincs szüksége egy webhelyre, akkor törölheti a helyszíni felügyeleti konzolról.
 
 Hely törlése:
 

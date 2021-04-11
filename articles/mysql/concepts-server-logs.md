@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: efabb3de69e96ec1a8955b2691af20a36fbabfe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3342b38f782b718cefd63295ef4d4d26b525058
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595935"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259047"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók az Azure Database for MySQL-ben
 Azure Database for MySQL a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -45,7 +45,7 @@ A helyi kiszolgáló tárolásához a Azure Portal vagy az Azure CLI használat�
 Azure Monitor diagnosztikai naplók lehetővé teszik a lassú lekérdezési naplók lekérését Azure Monitor naplókba (Log Analytics), az Azure Storage-ba vagy a Event Hubsba. További információért lásd [alább](concepts-server-logs.md#diagnostic-logs) .
 
 ## <a name="local-server-storage-log-retention"></a>Helyi kiszolgáló tárolási naplójának megőrzése
-A kiszolgáló helyi tárolójába való bejelentkezéskor a naplók akár hét napig is elérhetők a létrehozásuk után. Ha a rendelkezésre álló naplók teljes mérete meghaladja a 7 GB-ot, a rendszer törli a legrégebbi fájlokat, amíg a szabad terület elérhetővé válik.
+A kiszolgáló helyi tárolójába való bejelentkezéskor a naplók akár hét napig is elérhetők a létrehozásuk után. Ha a rendelkezésre álló naplók teljes mérete meghaladja a 7 GB-ot, a rendszer törli a legrégebbi fájlokat, amíg a szabad terület elérhetővé válik. A kiszolgálói naplók 7 GB-os tárolási korlátja ingyenesen elérhető, és nem terjeszthető ki. 
 
 A naplók 24 óránként vagy 7 GB-onként vannak elforgatva, attól függően, hogy melyik érkezik először.
 

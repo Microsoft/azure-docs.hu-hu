@@ -5,21 +5,39 @@
   href: overview.md
 - name: Fiókkezelés
   items:
-    - name: Új Partnerközpontfiók létrehozása
-      href: partner-center-portal/create-account.md
-    - name: Saját fiók kezelése
-      href: partner-center-portal/manage-account.md
-    - name: Vállalati munkahelyi fiók megkeresése vagy létrehozása
-      href: partner-center-portal/company-work-accounts.md
-    - name: Fiók migrálása a CPP-ből a Partnerközpontba
-      href: partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: A Microsoft értesítése
-      href: submit-legal-notice.md
+    - name: Általános fiókkezelés
+      items:
+        - name: Új Partnerközpontfiók létrehozása
+          href: create-account.md
+        - name: Új közzétevők hozzáadása
+          href: add-publishers.md
+        - name: Saját fiók kezelése
+          href: manage-account.md
+        - name: Fiókok váltása
+          href: switch-accounts.md
+        - name: Bérlők kezelése
+          href: manage-tenants.md
+        - name: Vállalati munkahelyi fiók megkeresése vagy létrehozása
+          href: company-work-accounts.md
+        - name: Fiók migrálása a CPP-ből a Partnerközpontba
+          href: account-migration-from-cpp-to-pc.md
+        - name: A Microsoft értesítése
+          href: submit-legal-notice.md
+    - name: Felhasználók kezelése
+      items:
+        - name: Felhasználók hozzáadása és kezelése
+          href: add-manage-users.md
+        - name: Felhasználói szerepkörök kiosztása
+          href: user-roles.md
+        - name: Csoportok kezelése
+          href: manage-groups.md
+        - name: Azure AD-alkalmazások hozzáadása és kezelése
+          href: manage-aad-apps.md
 - name: Fogalmak
   items:
     - name: Terméklistázási lehetőségek
       href: determine-your-listing-type.md
-    - name: Tranzakciók a kereskedelmi piactéren
+    - name: Transact-képességek
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: Személyes ajánlatok
       href: private-offers.md

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting
 ms.reviewer: larryfr, vaidyas, laobri, tracych
-ms.author: trmccorm
-author: tmccrmck
+ms.author: pansav
+author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 619123cc2723fcf8e4bd80410c6b098b113d61c6
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522155"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286317"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>A ParallelRunStep hibaelhárítása
 
@@ -96,6 +96,9 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `mini_batch_size`: A mini-batch egyetlen hívásnak átadott mérete `run()` . (nem kötelező; az alapértelmezett érték a és a rendszerhez tartozó `10` fájlok `FileDataset` `1MB` `TabularDataset` .)
     - A esetében `FileDataset` a minimális értékkel rendelkező fájlok száma `1` . Több fájlt is egyesítheti egyetlen mini-kötegbe.
     - A esetében `TabularDataset` a mérete az adatmennyiség. Az értékek például a következők:,, `1024` `1024KB` `10MB` és `1GB` . A javasolt érték: `1MB` . A mini-batch-ból `TabularDataset` soha nem lesz keresztben a fájl határa. Ha például. csv fájlokkal rendelkezik, amelyek különböző méretűek, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha be van állítva `mini_batch_size = 1MB` , akkor az 1 MB-nál kisebb méretű fájlok egyetlen mini batch-ként lesznek kezelve. Az 1 MB-nál nagyobb méretű fájlok több mini-kötegre lesznek felosztva.
+        > [!NOTE]
+        > Az SQL által támogatott TabularDatasets nem particionálható. 
+
 - `error_threshold`: A rendszer figyelmen kívül hagyja a hibák számát a (z `TabularDataset` ) és a (z) esetében a `FileDataset` feldolgozás során. Ha a teljes bemenethez tartozó hibák száma meghaladja ezt az értéket, a rendszer megszakítja a feladatot. A hiba küszöbértéke a teljes bemenetre vonatkozik, nem a metódusnak eljuttatott egyes mini-batch esetében `run()` . A tartomány `[-1, int.max]` . A `-1` rész azt jelzi, hogy a rendszer figyelmen kívül hagyja az összes hibát a feldolgozás során.
 - `output_action`: Az alábbi értékek egyike azt jelzi, hogyan lesz rendszerezve a kimenet:
     - `summary_only`: A felhasználói parancsfájl a kimenetet fogja tárolni. `ParallelRunStep` a csak a hiba küszöbértékének kiszámításához használja a kimenetet.
@@ -110,7 +113,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `run_invocation_timeout`: A `run()` metódus meghívásának időtúllépése másodpercben. (nem kötelező; az alapértelmezett érték: `60` )
 - `run_max_try`: Maximális számú próbálkozás a `run()` mini batch számára. A nem `run()` sikerült, ha kivétel keletkezik, vagy ha a rendszer nem ad vissza semmit, ha `run_invocation_timeout` a szolgáltatás elérte az értéket (opcionális; az alapértelmezett érték `3` ). 
 
-A (z),,,, és as értéket megadhatja, `mini_batch_size` `node_count` hogy a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor a paraméterek értékei finomhangolása megtörténjen. Ebben a példában a `PipelineParameter` és a és a () `mini_batch_size` értéket fogja használni, `Process_count_per_node` Ha később újra elküld egy futtatást. 
+A (z),,,, és as értéket megadhatja, `mini_batch_size` `node_count` hogy a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor a paraméterek értékei finomhangolása megtörténjen. Ebben a példában a `PipelineParameter` `mini_batch_size` és a és a `Process_count_per_node` értékét fogja módosítani, amikor újra elküld egy másik futtatást. 
 
 ### <a name="parameters-for-creating-the-parallelrunstep"></a>A ParallelRunStep létrehozásához szükséges paraméterek
 
@@ -151,7 +154,7 @@ A EntryScript Helper és Print utasítások használatával generált naplók a 
 
 - `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`: Ezek a fájlok entry_script a EntryScript Helper használatával írt naplók.
 
-- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: Ezek a fájlok az stdout-ból (pl. Print utasítás) származó naplók a entry_script.
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: Ezek a fájlok az stdout-ból származó naplók (például entry_script Print utasítás).
 
 - `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`: Ezek a fájlok a entry_script stderr származó naplók.
 
@@ -212,10 +215,11 @@ def run(mini_batch):
 
 A felhasználó a ParalleRunStep side_inputs paraméterével adhat át hivatkozási adattípust a parancsfájlnak. A side_inputsként megadott összes adatkészlet minden munkavégző csomóponthoz lesz csatlakoztatva. A felhasználó lekérheti a csatlakoztatás helyét a pass argumentum használatával.
 
-Készítse el a hivatkozási adatokat tartalmazó [adatkészletet](/python/api/azureml-core/azureml.core.dataset.dataset) , és regisztrálja azt a munkaterületen. Adja át a `side_inputs` paraméterének `ParallelRunStep` . Emellett az elérési útját is hozzáadhatja a `arguments` szakaszhoz, hogy könnyen hozzáférhessen a csatlakoztatott elérési úthoz:
+Készítse el a hivatkozási adatokat tartalmazó [adatkészletet](/python/api/azureml-core/azureml.core.dataset.dataset) , adja meg a helyi csatlakoztatási útvonalat, és regisztrálja azt a munkaterületen. Adja át a `side_inputs` paraméterének `ParallelRunStep` . Emellett az elérési útját is hozzáadhatja a `arguments` szakaszhoz, hogy könnyen hozzáférhessen a csatlakoztatott elérési úthoz:
 
 ```python
-label_config = label_ds.as_named_input("labels_input")
+local_path = "/tmp/{}".format(str(uuid.uuid4()))
+label_config = label_ds.as_named_input("labels_input").as_mount(local_path)
 batch_score_step = ParallelRunStep(
     name=parallel_step_name,
     inputs=[input_images.as_named_input("input_images")],

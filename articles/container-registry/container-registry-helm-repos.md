@@ -3,12 +3,12 @@ title: Áruházi Helm-diagramok
 description: Megtudhatja, hogyan tárolhatja a Kubernetes-alkalmazásokhoz tartozó Helm-diagramokat a Azure Container Registry-Tárházak használatával
 ms.topic: article
 ms.date: 06/12/2020
-ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86537867"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223081"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>A Helm-diagramok leküldése és lekérése egy Azure Container registrybe
 
@@ -31,7 +31,7 @@ A Helm 3-at a Azure Container Registry-ban található Helm-diagramok üzemeltet
 * `helm chart`A Helm parancssori felületén található parancsok használatával leküldheti, lekérheti és kezelheti a-beállításjegyzékben található Helm-diagramokat
 * A használatával `helm install` diagramokat telepíthet egy Kubernetes-fürtre egy helyi adattár-gyorsítótárból.
 > [!NOTE]
-> A Helm 3 esetében az az [ACR Helm][az-acr-helm] parancsai elavultak a Helm 2 ügyféllel való használatra. Tekintse meg a [termék ütemtervét](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Ha korábban már telepítette a Helm 2 diagramot, tekintse meg [a Helm v2 áttelepítése v3-](https://helm.sh/docs/topics/v2_v3_migration/)re című témakört.
+> A Helm 3 esetében az az [ACR Helm][az-acr-helm] parancsai elavultak a Helm 2 ügyféllel való használatra. A parancs eltávolítása előtt legalább 3 hónapos értesítés jelenik meg. Ha korábban már telepítette a Helm 2 diagramot, tekintse meg [a Helm v2 áttelepítése v3-](https://helm.sh/docs/topics/v2_v3_migration/)re című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

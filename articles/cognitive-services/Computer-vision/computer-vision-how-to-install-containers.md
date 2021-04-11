@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: helyszíni, OCR, Docker, tároló
-ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432553"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285722"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Az OCR Docker-tárolók beolvasása (előzetes verzió) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102432553"
 
 A tárolók lehetővé teszik a Computer Vision API-k a saját környezetében való futtatását. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ebből a cikkből megtudhatja, hogyan töltheti le, telepítheti és futtathatja Computer Vision tárolókat.
 
-Az *olvasási* OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](concept-recognizing-text.md#read-api)található.
+Az *olvasási* OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ: az [API-k olvasása útmutató](Vision-API-How-to-Topics/call-read-api.md).
 
 ## <a name="read-32-preview-container"></a>Olvasás 3,2 – előzetes verzió tárolója
 
@@ -96,7 +96,7 @@ Az olvasáshoz tároló lemezképek érhetők el.
 
 A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) parancs használatával töltse le a tárolók rendszerképét.
 
-### <a name="docker-pull-for-the-read-container"></a>Docker-lekérés az olvasási tárolóhoz
+### <a name="docker-pull-for-the-read-ocr-container"></a>Docker-lekérés az olvasási OCR-tárolóhoz
 
 # <a name="version-32-preview"></a>[3,2-es verzió – előzetes verzió](#tab/version-3-2)
 
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 A parancs a következőket hajtja végre:
 
-* Futtatja az olvasási tárolót a tároló rendszerképből.
+* Futtatja az olvasási OCR-tárolót a tároló rendszerképből.
 * 8 CPU-mag és 18 gigabájt (GB) memóriát foglal le.
 * Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
@@ -156,7 +156,7 @@ ApiKey={API_KEY}
 
 A parancs a következőket hajtja végre:
 
-* Futtatja az olvasási tárolót a tároló rendszerképből.
+* Futtatja az olvasási OCR-tárolót a tároló rendszerképből.
 * 8 CPU-mag és 16 gigabájt (GB) memóriát foglal le.
 * Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
@@ -392,7 +392,7 @@ A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával ér
 ---
 
 > [!IMPORTANT]
-> Ha több olvasási tárolót helyez üzembe egy terheléselosztó mögött, például a Docker-összeállítás vagy a Kubernetes alatt, külső gyorsítótárral kell rendelkeznie. Mivel előfordulhat, hogy a feldolgozó tároló és a GET kérelem tárolója nem azonos, a külső gyorsítótár tárolja az eredményeket, és megosztja őket a tárolók között. A gyorsítótár-beállításokkal kapcsolatos további információkért lásd: [Computer Vision Docker-tárolók konfigurálása](./computer-vision-resource-container-config.md).
+> Ha több olvasási OCR-tárolót telepít egy terheléselosztó mögé, például a Docker-összeállítás vagy a Kubernetes alatt, külső gyorsítótárral kell rendelkeznie. Mivel előfordulhat, hogy a feldolgozó tároló és a GET kérelem tárolója nem azonos, a külső gyorsítótár tárolja az eredményeket, és megosztja őket a tárolók között. A gyorsítótár-beállításokkal kapcsolatos további információkért lásd: [Computer Vision Docker-tárolók konfigurálása](./computer-vision-resource-container-config.md).
 
 ### <a name="synchronous-read"></a>Szinkron olvasás
 
@@ -445,7 +445,7 @@ Ebben a cikkben megtanulta Computer Vision tárolók letöltésére, telepítés
 * A Computer Vision egy Linux-tárolót biztosít a Docker számára, és beolvassa a beágyazást.
 * A Container images letölthető a "Container Preview" tároló-beállításjegyzékből az Azure-ban.
 * A tároló lemezképei a Docker-ben futnak.
-* A REST API vagy az SDK használatával a tároló gazdagép URI azonosítójának megadásával hívhat meg műveleteket az olvasási tárolókban.
+* Használhatja a REST API vagy az SDK-t az olvasási OCR-tárolóban végzett műveletek meghívásához a tároló gazda URI azonosítójának megadásával.
 * A tárolók létrehozásakor számlázási adatokat kell megadnia.
 
 > [!IMPORTANT]
@@ -454,7 +454,7 @@ Ebben a cikkben megtanulta Computer Vision tárolók letöltésére, telepítés
 ## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](computer-vision-resource-container-config.md) áttekintése konfigurációs beállításokhoz
-* A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át [Computer Vision áttekintést](overview.md)
-* A tároló által támogatott metódusokkal kapcsolatos részletekért tekintse meg a [Computer Vision API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) .
+* Tekintse át az [OCR áttekintését](overview-ocr.md) , ha többet szeretne megtudni a nyomtatott és a kézírásos szöveg felismeréséről
+* A tároló által támogatott metódusokkal kapcsolatos részletekért tekintse meg az [OLVASÁSI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) -t.
 * A Computer Vision funkcióival kapcsolatos problémák megoldásához tekintse meg a [Gyakori kérdések (GYIK)](FAQ.md) című témakört.
 * További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata

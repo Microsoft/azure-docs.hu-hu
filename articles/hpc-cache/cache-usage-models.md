@@ -4,14 +4,14 @@ description: Ismerteti a gyorsítótár-használat különböző modelljeit, val
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3ad252520ca0cf7acdb3c84ef1da87c8076f3172
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a22f4b257476e96c51ae491b8570e3798f7b3ab7
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775714"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259727"
 ---
 # <a name="understand-cache-usage-models"></a>Gyorsítótár-használati modellek ismertetése
 
@@ -39,7 +39,7 @@ Az Azure HPC-gyorsítótárba beépített használati modellek eltérő értéke
 
 ## <a name="choose-the-right-usage-model-for-your-workflow"></a>Válassza ki a munkafolyamat megfelelő használati modelljét
 
-Az összes használt NFS-tárolási cél használati modelljét ki kell választania. Az Azure Blob Storage-célok olyan beépített használati modellel rendelkeznek, amely nem szabható testre.
+Az egyes használt NFS-protokoll-tárolók használati modelljét kell választania. Az Azure Blob Storage-célok olyan beépített használati modellel rendelkeznek, amely nem szabható testre.
 
 A HPC gyorsítótár-használati modelljei lehetővé teszik a gyors reagálás egyensúlyának kiválasztását az elavult adatok beszerzésének kockázatával. Ha optimalizálni szeretné a fájlok olvasásának sebességét, előfordulhat, hogy nem biztos benne, hogy a gyorsítótárban lévő fájlok be vannak-e jelölve a háttérbeli fájlokban. Ha azonban azt szeretné, hogy a fájlok mindig naprakészek legyenek a távoli tárterülettel, válasszon olyan modellt, amely gyakran ellenőrzi a fájlokat.
 
@@ -77,6 +77,29 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 [!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
 Ha kérdése van az Azure HPC gyorsítótár-munkafolyamatának legjobb használati modelljével kapcsolatban, forduljon az Azure-képviselőjéhez, vagy nyisson meg egy támogatási kérést a segítségért.
+
+## <a name="know-when-to-remount-clients-for-nlm"></a>A NLM-ügyfelek újracsatlakoztatásának időpontja
+
+Bizonyos helyzetekben szükség lehet az ügyfelek újracsatlakoztatására, ha megváltoztatja a tárolási cél használati modelljét. Erre azért van szükség, mert a különböző használati modellek kezelik a Network Lock Manager-(NLM-) kérelmeket.
+
+A HPC-gyorsítótár az ügyfelek és a háttérrendszer tárolási rendszere között helyezkedik el. Általában a gyorsítótár átadja a NLM kérelmeket a háttér-tárolási rendszernek, bizonyos helyzetekben azonban maga a gyorsítótár fogadja az NLM kérelmet, és egy értéket ad vissza az ügyfélnek. Az Azure HPC cache-ben ez csak akkor fordul elő, ha a használati modellt **olvasási nehéz, ritka írásokat** (vagy egy szabványos blob Storage-tárolót használ, amely nem rendelkezik konfigurálható használati modellel).
+
+Ha az **olvasási nehéz, a ritkán** használt használati modell és egy másik használati modell között változik, a fájlok ütközése kisebb kockázattal jár. Az aktuális NLM-állapotot nem lehet átvinni a gyorsítótárból a Storage rendszerbe, vagy fordítva. Így az ügyfél zárolási állapota pontatlan.
+
+Csatlakoztassa újra az ügyfeleket, és győződjön meg arról, hogy pontos NLM állapottal rendelkeznek az új Lock Managerrel.
+
+Ha az ügyfelek NLM-kérést küldenek, ha a használati modell vagy a háttérbeli tároló nem támogatja azt, akkor hibaüzenetet kapnak.
+
+### <a name="disable-nlm-at-client-mount-time"></a>A NLM letiltása az ügyfél csatlakoztatási idején
+
+Nem mindig könnyű megismerni, hogy az ügyfélszoftverek küldenek-e NLM-kérelmeket.
+
+A NLM letilthatja, ha az ügyfelek a parancs használatával csatlakoztatják a fürtöt ``-o nolock`` ``mount`` .
+
+A beállítás pontos viselkedése ``nolock`` az ügyfél operációs rendszertől függ, ezért a csatlakoztatási dokumentációban (Man 5 NFS) keresse meg az ügyfél operációs rendszerét. A legtöbb esetben a zárolást helyileg helyezi át a-ügyfélre. Körültekintően járjon el, ha az alkalmazás több ügyfél között zárolja a fájlokat.
+
+> [!NOTE]
+> ADLS – az NFS nem támogatja a NLM. A NLM-et a fenti csatlakoztatási lehetőséggel kell letiltani, ha ADLS-NFS tárolási célt használ.
 
 ## <a name="next-steps"></a>Következő lépések
 

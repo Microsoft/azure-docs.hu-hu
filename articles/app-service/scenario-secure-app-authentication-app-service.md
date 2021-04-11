@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905570"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223187"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>Oktatóanyag: hitelesítés hozzáadása a Azure App Service-on futó webalkalmazáshoz
 
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ebben az oktatóanyagban szüksége lesz egy webalkalmazásra, amely a App Servicere van telepítve. Használhat egy meglévő webalkalmazást, vagy a [ASP.net Core](quickstart-dotnetcore.md) rövid útmutatóban új webalkalmazást hozhat létre és tehet közzé app Service.
 
-Akár meglévő webalkalmazást használ, akár újat hoz létre, jegyezze fel a webalkalmazás nevét és azon erőforráscsoport nevét, amelyre a webalkalmazás telepítve van. Ezekre a nevekre az oktatóanyag során van szükség. Ebben az oktatóanyagban például az eljárások és a képernyőképek nevei *SecureWebApp* tartalmaznak.
+Akár meglévő webalkalmazást használ, akár újat hoz létre, jegyezze fel a webalkalmazás nevét és azon erőforráscsoport nevét, amelyre a webalkalmazás telepítve van. Ezekre a nevekre az oktatóanyag során van szükség. 
 
 ## <a name="configure-authentication-and-authorization"></a>Hitelesítés és engedélyezés konfigurálása
 
@@ -53,17 +53,19 @@ Az **erőforráscsoportok** területen keresse meg és válassza ki az erőforr�
 
 :::image type="content" alt-text="Képernyőkép, amely az alkalmazás felügyeleti oldalának kiválasztását mutatja be." source="./media/scenario-secure-app-authentication-app-service/select-app-service.png":::
 
-Az alkalmazás bal oldali menüjében válassza a **hitelesítés/engedélyezés** lehetőséget, majd **a** bejelöléssel engedélyezze app Service hitelesítést.
+Az alkalmazás bal oldali menüjében válassza a **hitelesítés** lehetőséget, majd kattintson az **identitás-szolgáltató hozzáadása** lehetőségre.
 
-Az **Elvégzendő művelet, ha a kérés nincs hitelesítve** területen válassza a **Bejelentkezés az Azure Active Directoryval** lehetőséget.
+Az **identitás-szolgáltató hozzáadása** lapon válassza a **Microsoft** lehetőséget az **identitás-szolgáltatóként** a Microsoft és az Azure ad-identitások bejelentkezni.
 
-A **hitelesítésszolgáltatók** területen válassza a **Azure Active Directory** lehetőséget. Válassza az **expressz** lehetőséget, majd fogadja el az alapértelmezett beállításokat új Active Directory alkalmazás létrehozásához. Válassza az **OK** lehetőséget.
+Az **alkalmazás-regisztrációs**  >  **alkalmazás regisztrációjának típusa** beállításnál válassza az **új alkalmazás regisztrációjának létrehozása** lehetőséget.
 
-:::image type="content" alt-text="Az expressz hitelesítést bemutató képernyőkép." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
+Az **alkalmazás-regisztráció**  >  **által támogatott fióktípus** esetében válassza a **jelenlegi bérlő – egyetlen bérlő** lehetőséget.
 
-A **hitelesítés/engedélyezés** lapon válassza a **Mentés** lehetőséget.
+A **app Service Authentication Settings (hitelesítési beállítások** ) szakaszban hagyja meg a **hitelesítést** a hitelesítés **megkövetelése** és a nem **hitelesített kérések** http 302-es verzióra való beállításához **: ajánlott a webhelyek számára**.
 
-Amikor megjelenik az üzenettel kapcsolatos értesítés `Successfully saved the Auth Settings for <app-name> App` , frissítse a portál oldalt.
+Az **identitás-szolgáltató hozzáadása** lap alján kattintson a **Hozzáadás** elemre a webalkalmazás hitelesítésének engedélyezéséhez.
+
+:::image type="content" alt-text="A hitelesítés konfigurálását bemutató képernyőkép." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 Most már rendelkezik egy olyan alkalmazással, amelyet a App Service hitelesítés és engedélyezés biztosít.
 

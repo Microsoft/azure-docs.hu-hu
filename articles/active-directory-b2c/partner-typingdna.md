@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 68617d86fda940c5d3752f2389088a8c729aebec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afaac48d263082a17c7ba58996f4000366de0211
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97108348"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256548"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Oktatóanyag a TypingDNA konfigurálásához a Azure Active Directory B2C
 
@@ -196,4 +196,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni házirendek a AAD B2Cban](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal AAD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal AAD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

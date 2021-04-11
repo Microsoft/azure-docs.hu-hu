@@ -1,14 +1,14 @@
 ---
-title: 'Gyors útmutató: Computer Vision ügyféloldali kódtár'
+title: 'Gyors útmutató: ügyféloldali függvénytár vagy REST API olvasása'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használhatja az Azure Computer Visiont az alkalmazásban natív ügyféloldali kódtár használatával a választott nyelven.
+description: Ismerje meg, hogyan használható az optikai karakterfelismerés (OCR) az alkalmazásban natív ügyféloldali kódtár használatával a választott nyelven.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/15/2020
+ms.date: 03/21/2020
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -17,16 +17,16 @@ ms.custom:
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
 keywords: Computer vízió, Computer vízió szolgáltatás
-ms.openlocfilehash: 50976de4a60e5330740bcbf387d74c505316c0cf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 865002fbc9e492b43b9c572468f722c85c6cc4b8
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560814"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284780"
 ---
-# <a name="quickstart-use-the-computer-vision-client-library"></a>Gyors útmutató: az Computer Vision ügyféloldali kódtár használata
+# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Gyors útmutató: az ügyféloldali függvénytár vagy REST API használata
 
-Ismerkedjen meg a Computer Vision REST API vagy az ügyféloldali kódtárakkal. A Computer Vision szolgáltatás AI-algoritmusokat biztosít a rendszerképek feldolgozásához és a vizualizációs funkciókkal kapcsolatos információk visszaküldéséhez. Az alábbi lépéseket követve telepíthet csomagot az alkalmazásba, és kipróbálhatja az alapszintű feladatokhoz tartozó kódot.
+Ismerkedjen meg az olvasási REST API vagy az ügyféloldali kódtárakkal. Az olvasási szolgáltatás AI-algoritmusokat biztosít a látható szöveg képekből való kinyeréséhez és strukturált karakterláncként való visszaküldéséhez. Az alábbi lépéseket követve telepíthet csomagot az alkalmazásba, és kipróbálhatja az alapszintű feladatokhoz tartozó kódot.
 
 
 

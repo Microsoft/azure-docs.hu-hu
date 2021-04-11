@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 5f0a7477df2e281748c053ea8c7e7d3e79626296
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ef76be2c083d6185b8b919d174de28aa3b65446
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588018"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293770"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>Az adatelemzés kiszolgáló nélküli SQL-készlettel
 
-Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az információkat a kiszolgáló nélküli SQL-készlettel a Spark-adatbázisokban található adatforrások használatával. 
+Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az adatelemzést kiszolgáló nélküli SQL-készlettel. 
 
 ## <a name="the-built-in-serverless-sql-pool"></a>A beépített kiszolgáló nélküli SQL-készlet
 

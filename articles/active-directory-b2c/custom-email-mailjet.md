@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48e823b19c1c6d30e73a7a673cbeab82a4d007a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489219"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256956"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Egyéni e-mail-ellenőrzés a mailjet
 
-Az egyéni e-mailek használata Azure Active Directory B2C (Azure AD B2C) a testreszabott e-mailek küldése az alkalmazásait használó felhasználók számára. A [DisplayControls](display-controls.md) (jelenleg előzetes verzióban) és a harmadik féltől származó e-mail-szolgáltató mailjet használatával saját e-mail-sablont használhat, amely a következőkből áll *:* cím és tárgy, valamint támogatja a honosítási és egyéni egyszeri jelszavas (OTP) beállításokat.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Az egyéni e-mailek használata Azure Active Directory B2C (Azure AD B2C) a testreszabott e-mailek küldése az alkalmazásait használó felhasználók számára. A külső gyártótól származó e-mail-szolgáltató mailjet használhatja a saját e-mail-sablonját, a cím és *a* tárgy lehetőséggel, valamint a honosítási és egyéni egyszeri jelszó (OTP) beállítások támogatásával.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Az egyéni e-mail-ellenőrzéshez egy külső gyártótól származó e-mail-szolgáltató, például [mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)vagy [SparkPost](https://sparkpost.com), egyéni REST API vagy bármilyen HTTP-alapú e-mail-szolgáltató használata szükséges (beleértve a sajátját is). Ez a cikk a mailjet-t használó megoldások beállítását ismerteti.
 
@@ -576,3 +587,5 @@ A GitHubon megtalálhatja például az egyéni e-mail-ellenőrzési szabályzato
 
 - [Egyéni e-mail-ellenőrzés – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - Az egyéni REST API vagy bármely HTTP-alapú SMTP e-mail-szolgáltató használatáról további információt a [Rest műszaki profil definiálása egy Azure ad B2C egyéni szabályzatban](restful-technical-profile.md)című témakörben talál.
+
+::: zone-end
