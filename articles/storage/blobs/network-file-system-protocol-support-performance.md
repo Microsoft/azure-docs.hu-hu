@@ -9,19 +9,19 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de511fa30caa608c2dc87b6c0ba166ed56ff9499
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589871"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490182"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 teljesítménybeli megfontolások az Azure Blob Storage-ban (előzetes verzió)
 
 A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a cikk olyan javaslatokat tartalmaz, amelyek segítenek a tárolási kérelmek teljesítményének optimalizálásában. Az NFS 3,0 Azure Blob Storage-támogatásával kapcsolatos további tudnivalókért lásd: a [hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage szolgáltatásban (előzetes verzió)](network-file-system-protocol-support.md).
 
 > [!NOTE]
-> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el. A standard szintű teljesítményű GPV2 a következő régiókban támogatja: Kelet-Ausztrália, Korea középső régiója és az USA déli középső régiója. Az előzetes verzióban az összes nyilvános régióban a prémium szintű teljesítménnyel rendelkező Block blob is támogatott.
+> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el. A következő régiókban támogatja a standard szintű teljesítményű GPV2-tárolók használatát: Kelet-Ausztrália, Korea középső régiója, USA keleti régiója és az USA déli középső régiója. Az előzetes verzióban az összes nyilvános régióban a prémium szintű teljesítménnyel rendelkező Block blob is támogatott.
 
 ## <a name="add-clients-to-increase-throughput"></a>Ügyfelek hozzáadása az átviteli sebesség növeléséhez 
 

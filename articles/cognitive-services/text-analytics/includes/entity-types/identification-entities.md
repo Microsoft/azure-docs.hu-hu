@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: 352b81bf2dfeca1d7413e7cac131264d06c7b92e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a74c0cad971389168d643c9504f5bb809438a1ea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599304"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097859"
 ---
 ### <a name="financial-account-identification"></a>Pénzügyi fiók azonosítása
 
@@ -34,7 +34,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        American Banker Association (ABA) tranzit-útválasztási számok.
+        American Banker Association (ABA) tranzit-útválasztási számok. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `ABARoutingNumber` a `pii-categories` paramétert a paraméterhez. `ABARoutingNumber` az API-válaszban is visszaadja, ha a rendszer észleli.
       
@@ -62,7 +62,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        SWIFT-kódok a fizetési utasítással kapcsolatos információkhoz.
+        SWIFT-kódok a fizetési utasítással kapcsolatos információkhoz. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `SWIFTCode` a `pii-categories` paramétert a paraméterhez. `SWIFTCode` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -89,7 +89,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        Hitelkártya-számok. 
+        Hitelkártya-számok. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `CreditCardNumber` a `pii-categories` paramétert a paraméterhez. `CreditCardNumber` az API-válaszban lesz visszaadva, ha a rendszer észleli.
 
@@ -116,7 +116,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        IBAN-kódok a fizetési utasítással kapcsolatos információkhoz.
+        IBAN-kódok a fizetési utasítással kapcsolatos információkhoz. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `InternationlBankingAccountNumber` a `pii-categories` paramétert a paraméterhez. `InternationlBankingAccountNumber` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -144,12 +144,12 @@ A következő entitások az ország szerint vannak csoportosítva és listázva:
     :::column span="":::
         **Entitás**
 
-        Argentin nemzeti identitás (DNI) száma
+        Argentin nemzeti identitás (DNI) száma 
 
     :::column-end:::
     :::column span="2":::
-        **Részletek**
-
+        **Részletek** Szintén visszaadott `domain=phi` .
+        
         Az entitás kategóriájának beszerzéséhez adja hozzá `ARNationalIdentityNumber` a `pii-categories` paramétert a paraméterhez. `ARNationalIdentityNumber` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df0fcaf7987e30f9c2599346aaef5fcabb4f04e9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928681"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256650"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Oktatóanyag a IDology konfigurálásához a Azure Active Directory B2C 
 
@@ -93,7 +93,7 @@ A minta szabályzat ezeket a neveket használja:
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>4. rész – a Azure AD B2C házirend konfigurálása
 
-1. Ezt a [dokumentumot](custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) követve töltse le a [LocalAccounts Starter Pack csomagot](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) , és konfigurálja a Azure ad B2C bérlő házirendjét. Kövesse az utasításokat, amíg el nem végzi az **egyéni házirend tesztelése** szakaszt.
+1. Ezt a [dokumentumot](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) követve töltse le a [LocalAccounts Starter Pack csomagot](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) , és konfigurálja a Azure ad B2C bérlő házirendjét. Kövesse az utasításokat, amíg el nem végzi az **egyéni házirend tesztelése** szakaszt.
 
 2. Töltse le a két minta szabályzatot [itt](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/policy).
 
@@ -145,4 +145,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

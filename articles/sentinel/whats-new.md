@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: e882ae89da2fd081d6b41d3d42e998d3600f0e18
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120748"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490298"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -32,6 +32,7 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 
 ## <a name="march-2021"></a>Március 2021
 
+- [A munkafüzetek automatikus frissítésének beállítása megtekintési módban](#set-workbooks-to-automatically-refresh-while-in-view-mode)
 - [Új észlelések a Azure Firewall](#new-detections-for-azure-firewall)
 - [Automatizálási szabályok és incidensek által aktivált](#automation-rules-and-incident-triggered-playbooks) forgatókönyvek (beleértve az összes új forgatókönyv-dokumentációt)
 - [Új riasztások gazdagítása: bővített entitások leképezése és egyéni részletek](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
@@ -39,6 +40,20 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 - [Az incidens-szűrők és a rendezési beállítások mostantól a munkamenetben mentve (nyilvános előzetes verzió)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Microsoft 365 Defender-incidensek integrációja (nyilvános előzetes verzió)](#microsoft-365-defender-incident-integration-public-preview)
 - [Új Microsoft szolgáltatás-összekötők a Azure Policy használatával](#new-microsoft-service-connectors-using-azure-policy)
+
+### <a name="set-workbooks-to-automatically-refresh-while-in-view-mode"></a>A munkafüzetek automatikus frissítésének beállítása megtekintési módban
+
+Az Azure Sentinel-felhasználók mostantól az új [Azure monitor képességgel](https://techcommunity.microsoft.com/t5/azure-monitor/azure-workbooks-set-it-to-auto-refresh/ba-p/2228555) képesek automatikusan frissíteni a munkafüzet-adataikat a megtekintési munkamenet során.
+
+Az egyes munkafüzetek vagy munkafüzetek sablonjában válassza :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false"::: az **automatikus frissítés** lehetőséget az intervallum beállításainak megjelenítéséhez. Válassza ki az aktuális nézet-munkamenethez használni kívánt beállítást, majd kattintson az **alkalmaz** gombra.
+
+- A támogatott frissítési időközök **5 perc** és **1 nap** közé esnek.
+- Alapértelmezés szerint az automatikus frissítés ki van kapcsolva. A teljesítmény optimalizálása érdekében a rendszer minden alkalommal kikapcsolja az automatikus frissítést, amikor lezárta a munkafüzetet, és nem a háttérben fut. Szükség szerint kapcsolja be az automatikus frissítést a következő alkalommal, amikor megnyitja a munkafüzetet.
+- A munkafüzet szerkesztésekor a rendszer szünetelteti az automatikus frissítést, és minden alkalommal újraindul az automatikus frissítési időközök, amikor a szerkesztési mód megtekintési módjára vált vissza.
+
+    Az intervallumok akkor is újraindulnak, ha manuálisan frissíti a munkafüzetet a :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: **frissítés** gombra kattintva.
+
+További információt az [oktatóanyag: az adatok megjelenítése és figyelése](tutorial-monitor-your-data.md) és a [Azure monitor dokumentációjában](../azure-monitor/visualize/workbooks-overview.md)talál.
 
 ### <a name="new-detections-for-azure-firewall"></a>Új észlelések a Azure Firewall
 
@@ -190,7 +205,7 @@ Az Azure Sentinel-entitások részletes oldalain [betekintési panel](identify-t
 
 Ha engedélyezve van a [UEBA](ueba-enrichments.md), és legalább négy napos időkeretet választott ki, akkor ez a betekintő ablaktábla a következő új szakaszt is tartalmazza a UEBA-eredményekhez:
 
-|Section  |Leírás  |
+|Section  |Description  |
 |---------|---------|
 |**UEBA-ismeretek**     | A rendellenes felhasználói tevékenységek összegzése: <br>-Földrajzi helyeken, eszközökön és környezeteken keresztül<br>– A felhasználók saját előzményeihez képest időbeli és gyakorisági horizonton keresztül <br>– A társak viselkedéséhez képest <br>-A szervezet viselkedéséhez képest     |
 |**Felhasználói partnerek biztonsági csoporttagság alapján**     |   Felsorolja az Azure AD biztonsági csoportok tagságán alapuló felhasználói partnereket, így biztosítva a biztonsági műveleti csapatok számára a hasonló engedélyekkel rendelkező más felhasználók listáját.  |
@@ -317,7 +332,7 @@ Ez az Azure Sentinel-frissítés olyan új vadászati lekérdezéseket tartalmaz
 - **Hatás**
 - **Kezdeti hozzáférés**
 - **Kitartás**
-- **Jogosultságok eszkalációja**
+- **Jogosultság eszkalációja**
 
 A hozzáadott vadászati lekérdezések célja, hogy segítsen megtalálni a gyanús tevékenységeket a környezetben. Habár a jogszerű tevékenységet és a potenciálisan rosszindulatú tevékenységeket is visszaadhatják, hasznosak lehetnek a vadászatra. 
 

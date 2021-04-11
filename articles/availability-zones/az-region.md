@@ -4,16 +4,16 @@ description: Az Azure-ban kiválóan elérhető és rugalmas alkalmazások hozha
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/06/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: a81f3a3c51ffd0e1e0937c077a07fcbde16f0513
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 782e632f8707b4cafb6d33438f6c8da7e8b08c30
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961302"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491390"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 
@@ -45,16 +45,16 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 
 
 ## <a name="azure-regions-with-availability-zones"></a>Azure-régiók Availability Zones
-
+ 
 
 | Amerika           | Európa               | Afrika              | Ázsia és a Csendes-óceáni térség   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
 | Dél-Brazília       | Közép-Franciaország       | Dél-Afrika északi régiója * | Kelet-Ausztrália |
-| Közép-Kanada     | Középnyugat-Németország |                     | Kelet-Japán     |
-| Az USA középső régiója         | Észak-Európa         |                     | Korea középső régiója * |
-| USA keleti régiója            | Az Egyesült Királyság déli régiója             |                     | Délkelet-Ázsia |
-| USA 2. keleti régiója          | Nyugat-Európa          |                     |                |
+| Közép-Kanada     | Középnyugat-Németország |                     | Közép-India * |
+| Az USA középső régiója         | Észak-Európa         |                     | Kelet-Japán     |
+| USA keleti régiója            | Az Egyesült Királyság déli régiója             |                     | Korea középső régiója * |
+| USA 2. keleti régiója          | Nyugat-Európa          |                     | Délkelet-Ázsia |
 | USA déli középső régiója |                      |                     |                |
 | USA-beli államigazgatás – Virginia    |                      |                     |                |
 | USA 2. nyugati régiója        |                      |                     |                |
@@ -115,89 +115,100 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 
 **Mainstream szolgáltatások**
 
-| Termékek                                        | Rugalmasság |
-|-------------------------------------------------|:------------:|
-| App Service-környezetek                        |      : large_blue_diamond:  |
-| Azure Active Directory tartományi szolgáltatások          |      : large_blue_diamond:  |
-| Azure Bastion                                   |      : large_blue_diamond:  |
-| Azure Cache for Redis                           |      : large_blue_diamond:  |
-| Azure Cognitive Services: Text Analytics        |      : large_blue_diamond:  |
-| Azure Adatkezelő                             |      : large_blue_diamond:  |
-| Azure Database for MySQL – rugalmas kiszolgáló      |      : large_blue_diamond:  |
-| Azure Database for PostgreSQL – rugalmas kiszolgáló |      : large_blue_diamond:  |
-| Azure DDoS Protection                           |      : large_blue_diamond:  |
-| Azure Disk Encryption                           |      : large_blue_diamond:  |
-| Azure Firewall                                  |      : large_blue_diamond:  |
-| Azure Firewall Manager                          |      : large_blue_diamond:  |
-| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
-| Azure Private Link                              |      : large_blue_diamond:  |
-| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
-| Azure Site Recovery                             |      : large_blue_diamond:  |
-| Azure SQL: virtuális gép                      |      : large_blue_diamond:  |
-| Azure Search                                    |      : large_blue_diamond:  |
-| Azure Web Application Firewall                  |      : large_blue_diamond:  |
-| Container Registry                              |      : large_blue_diamond:  |
-| Event Grid                                      |      : large_blue_diamond:  |
-| Network Watcher                                 |      : large_blue_diamond:  |
-| Network Watcher: Traffic Analytics              |      : large_blue_diamond:  |
-| Power BI Embedded                               |      : large_blue_diamond:  |
-| Prémium Blob Storage                            |      : large_blue_diamond:  |
-| Storage: prémium szintű Azure-fájlok                    |      : large_blue_diamond:  |
-| Virtual Machines: Azure dedikált gazdagép          |      : large_blue_diamond:  |
-| Virtual Machines: Ddsv4-Series                  |      : large_blue_diamond:  |
-| Virtual Machines: Ddv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Dsv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Dv4-Series                    |      : large_blue_diamond:  |
-| Virtual Machines: Edsv4-Series                  |      : large_blue_diamond:  |
-| Virtual Machines: Edv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Esv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
-| Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: M sorozat                      |      : large_blue_diamond:  |
-| Virtuális WAN                                     |      : large_blue_diamond:  |
-| Virtuális WAN: ExpressRoute                       |      : large_blue_diamond:  |
-| Virtuális WAN: pont – hely VPN Gateway          |      : large_blue_diamond:  |
-| Virtuális WAN: helyek közötti VPN Gateway           |      : large_blue_diamond:  |
+
+|     Termékek                                                    | Rugalmasság             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     App Service-környezetek                                    | : large_blue_diamond:  |
+|     Azure Active Directory tartományi szolgáltatások                      | : large_blue_diamond:  |
+|     Azure Bastion                                               | : large_blue_diamond:  |
+|     Azure Cache for Redis                                       | : large_blue_diamond:  |
+|     Azure Cognitive Search                                      | : large_blue_diamond:  |
+|     Azure Cognitive Services: Text Analytics                    | : large_blue_diamond:  |
+|     Azure Adatkezelő                                         | : large_blue_diamond:  |
+|     Azure Database for MySQL – rugalmas kiszolgáló                  | : large_blue_diamond:  |
+|     Azure Database for PostgreSQL – rugalmas kiszolgáló             | : large_blue_diamond:  |
+|     Azure DDoS Protection                                       | : large_blue_diamond:  |
+|     Azure Disk Encryption                                       | : large_blue_diamond:  |
+|     Azure Firewall                                              | : large_blue_diamond:  |
+|     Azure Firewall Manager                                      | : large_blue_diamond:  |
+|     Azure Kubernetes Service (AKS)                              | : large_blue_diamond:  |
+|     Azure Private Link                                          | : large_blue_diamond:  |
+|     Azure Site Recovery                                         | : large_blue_diamond:  |
+|     Azure SQL: virtuális gép                                  | : large_blue_diamond:  |
+|     Azure Web Application Firewall                              | : large_blue_diamond:  |
+|     Container Registry                                          | : large_blue_diamond:  |
+|     Event Grid                                                  | : large_blue_diamond:  |
+|     Network Watcher                                             | : large_blue_diamond:  |
+|     Network Watcher: Traffic Analytics                          | : large_blue_diamond:  |
+|     Power BI Embedded                                           | : large_blue_diamond:  |
+|     Prémium Blob Storage                                        | : large_blue_diamond:  |
+|     Storage: prémium szintű Azure-fájlok                                | : large_blue_diamond:  |
+|     Virtual Machines: Azure dedikált gazdagép                      | : large_blue_diamond:  |
+|     Virtual Machines: Ddsv4-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Ddv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Dsv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Dv4-Series                                | : large_blue_diamond:  |
+|     Virtual Machines: Edsv4-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Edv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Esv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Ev4-Series                                | : large_blue_diamond:  |
+|     Virtual Machines: Fsv2-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: M sorozat                                  | : large_blue_diamond:  |
+|     Virtuális WAN                                                 | : large_blue_diamond:  |
+|     Virtuális WAN: ExpressRoute                                   | : large_blue_diamond:  |
+|     Virtuális WAN: pont – hely VPN Gateway                      | : large_blue_diamond:  |
+|     Virtuális WAN: helyek közötti VPN Gateway                       | : large_blue_diamond:  |
+
+
+**Speciális szolgáltatások**
+
+|     Termékek                                                    | Rugalmasság             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure Red Hat OpenShift                                     | : large_blue_diamond:  |
+|     Cognitive Services: anomália detektor                        | : large_blue_diamond:  |
+|     Cognitive Services: űrlap-felismerő                         | : large_blue_diamond:  |
+|     Storage: ultravékony lemez                                         | : large_blue_diamond:  |
 
 
 **Nem regionális**
 
-|     Termékek                                  |     Rugalmasság    |
-|-----------------------------------------------|:-------------------:|
-|     Azure DNS                                 |     : globe_with_meridians:             |
-|     Azure Active Directory                  |     : globe_with_meridians:             |
-|     Azure Komplex veszélyforrások elleni védelem          |     : globe_with_meridians:             |
-|     Azure Advisor                             |     : globe_with_meridians:             |
-|     Azure Blueprints                          |     : globe_with_meridians:             |
-|     Azure Bot Services                        |     : globe_with_meridians:             |
-|     Azure Front Door                          |     : globe_with_meridians:             |
-|     Azure Defender a IoT                  |     : globe_with_meridians:             |
-|     Azure Front Door                           |     : globe_with_meridians:             |
-|     Azure Information Protection            |     : globe_with_meridians:             |
-|     Azure-világítótorony                        |     : globe_with_meridians:             |
-|     Azure Managed Applications              |     : globe_with_meridians:             |
-|     Azure Maps                                |     : globe_with_meridians:             |
-|     Azure Policy                              |     : globe_with_meridians:             |
-|     Azure-erőforrás gráf                    |     : globe_with_meridians:             |
-|     Azure Sentinel                            |     : globe_with_meridians:             |
-|     Azure Stack                               |     : globe_with_meridians:             |
-|     Azure Stack Edge                        |     : globe_with_meridians:             |
-|     Cloud Shell                               |     : globe_with_meridians:             |
-|     Content Delivery Network                  |     : globe_with_meridians:             |
-|     Költségkezelés                           |     : globe_with_meridians:             |
-|     Microsoft Azure Ügyfélszéf    |     : globe_with_meridians:             |
-|     Intune                                    |     : globe_with_meridians:             |
-|     Microsoft Azure peering szolgáltatás         |     : globe_with_meridians:             |
-|     Microsoft Azure Portal                  |     : globe_with_meridians:             |
-|     Microsoft Cloud App Security              |     : globe_with_meridians:             |
-|     Microsoft Graph                           |     : globe_with_meridians:             |
-|     Security Center                         |     : globe_with_meridians:             |
-|     Traffic Manager                         |     : globe_with_meridians:             |
+|     Termékek                                                    | Rugalmasság             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure DNS                                                   | : globe_with_meridians: |
+|     Azure Active Directory                                    | : globe_with_meridians: |
+|     Azure Komplex veszélyforrások elleni védelem                            | : globe_with_meridians: |
+|     Azure Advisor                                               | : globe_with_meridians: |
+|     Azure Blueprints                                            | : globe_with_meridians: |
+|     Azure Bot Services                                          | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     Azure Defender a IoT                                    | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     Azure Information Protection                              | : globe_with_meridians: |
+|     Azure-világítótorony                                          | : globe_with_meridians: |
+|     Azure Managed Applications                                | : globe_with_meridians: |
+|     Azure Maps                                                  | : globe_with_meridians: |
+|     Azure Performance Diagnostics                               | : globe_with_meridians: |
+|     Azure Policy                                                | : globe_with_meridians: |
+|     Azure-erőforrás gráf                                      | : globe_with_meridians: |
+|     Azure Sentinel                                              | : globe_with_meridians: |
+|     Azure Stack                                                 | : globe_with_meridians: |
+|     Azure Stack Edge                                          | : globe_with_meridians: |
+|     Cloud Shell                                                 | : globe_with_meridians: |
+|     Content Delivery Network                                    | : globe_with_meridians: |
+|     Költségkezelés                                             | : globe_with_meridians: |
+|     Microsoft Azure Ügyfélszéf                      | : globe_with_meridians: |
+|     Intune                                                      | : globe_with_meridians: |
+|     Microsoft Azure peering szolgáltatás                           | : globe_with_meridians: |
+|     Microsoft Azure Portal                                    | : globe_with_meridians: |
+|     Microsoft Cloud App Security                                | : globe_with_meridians: |
+|     Microsoft Graph                                             | : globe_with_meridians: |
+|     Security Center                                           | : globe_with_meridians: |
+|     Traffic Manager                                           | : globe_with_meridians: |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>A Availability Zones-beli virtuális gépek díjszabása
 
-A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem kell további díjat fizetni. További információkért tekintse át a [sávszélesség díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/bandwidth/).
+Az Azure-előfizetéssel Azure Availability Zones érhetők el. További információ: [sávszélesség-díjszabási oldal](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 
 ## <a name="get-started-with-availability-zones"></a>Ismerkedés a Availability Zones

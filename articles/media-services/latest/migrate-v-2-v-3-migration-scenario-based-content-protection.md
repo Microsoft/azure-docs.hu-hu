@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74f15fc302a8499e41a1413dd8915e6442d4bbe7
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729405"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064494"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Tartalomvédelem – forgatókönyv-alapú áttelepítési útmutató
 
@@ -28,7 +28,7 @@ Ez a cikk részletes információkat és útmutatást nyújt a tartalomvédelem 
 
 ## <a name="protect-content-in-v3-api"></a>Tartalom biztosítása a V3 API-ban
 
-Használja az új V3 API [többkulcsos](design-multi-drm-system-with-access-control.md) funkcióinak támogatását.
+Használja az új V3 API [többkulcsos](architecture-design-multi-drm-system.md) funkcióinak támogatását.
 
 A következő témakörben talál további tudnivalókat: tartalomvédelem – fogalmak, oktatóanyagok és útmutatók.
 
@@ -44,9 +44,9 @@ A **ListStreamingLocators** metódus eredményei megadják a lokátor **nevét**
 
 A **StreamingLocators** használt **tartalomkulcsok** megkereséséhez hívja meg a [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) metódust.  
 
-A v2 API-val létrehozott és közzétett összes **eszközhöz** tartozik egy [tartalmi kulcsra vonatkozó házirend](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) és egy, a V3 API-ban definiált tartalmi kulcs is, a [folyamatos átviteli házirend](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)alapértelmezett házirendjének használata helyett.
+A v2 API-val létrehozott és közzétett összes **eszközhöz** tartozik egy [tartalmi kulcsra vonatkozó házirend](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) és egy, a V3 API-ban definiált tartalmi kulcs is, a [folyamatos átviteli házirend](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)alapértelmezett házirendjének használata helyett.
 
-A V3 API tartalomkezelésével kapcsolatos további információkért tekintse meg a [tartalom védelme Media Services dinamikus titkosítással](https://docs.microsoft.com/azure/media-services/latest/content-protection-overview) című cikket.
+A V3 API tartalomkezelésével kapcsolatos további információkért tekintse meg a [tartalom védelme Media Services dinamikus titkosítással](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept) című cikket.
 
 ## <a name="how-to-list-your-v2-assets-and-content-protection-settings-using-the-v3-api"></a>A v2-eszközök és a tartalomvédelem beállításainak listázása a V3 API használatával
 
@@ -60,7 +60,7 @@ Ha frissítenie kell, módosítania vagy módosítania kell a v2 entitásokban t
 
 ## <a name="how-do-i-change-the-contentkeypolicy-used-for-a-v2-asset-that-is-published-and-keep-the-same-content-key"></a>Hogyan módosítja egy közzétett v2-eszközhöz használt ContentKeyPolicy, és megtartja ugyanazt a tartalmi kulcsot?
 
-Ebben az esetben először vissza kell vonnia az eszköz közzétételét (az összes streaming-lokátor eltávolítása) az adategységen a v2 SDK-val (törölje a keresőt, válassza le a tartalmi kulcs engedélyezési házirendjét, csatolja az eszköz kézbesítési házirendjét, szüntesse meg a tartalom kulcsát, törölje a tartalmat), majd hozzon létre egy új **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** v3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) és [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept)használatával.
+Ebben az esetben először vissza kell vonnia az eszköz közzétételét (az összes streaming-lokátor eltávolítása) az adategységen a v2 SDK-val (törölje a keresőt, válassza le a tartalmi kulcs engedélyezési házirendjét, csatolja az eszköz kézbesítési házirendjét, szüntesse meg a tartalom kulcsát, törölje a tartalmat), majd hozzon létre egy új **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** v3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) és [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept)használatával.
 
 Meg kell adnia a **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** létrehozásakor szükséges adott tartalmi kulcs azonosítóját és kulcs értékét.
 
@@ -75,24 +75,24 @@ Ha a tartalmat a v2-ről a v3-re telepíti át, javasoljuk, hogy telepítse a [v
 
 ### <a name="concepts"></a>Alapelvek
 
-- [A tartalmak Media Services dinamikus titkosítással védhetők](content-protection-overview.md)
-- [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
-- [Media Services v3 és PlayReady-licenc sablonnal](playready-license-template-overview.md)
-- [A Media Services v3 és a Widevine-licenc sablonjának áttekintése](widevine-license-template-overview.md)
-- [Apple FairPlay-licencek követelményei és konfigurálása](fairplay-license-overview.md)
+- [A tartalmak Media Services dinamikus titkosítással védhetők](drm-content-protection-concept.md)
+- [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](architecture-design-multi-drm-system.md)
+- [Media Services v3 és PlayReady-licenc sablonnal](drm-playready-license-template-concept.md)
+- [A Media Services v3 és a Widevine-licenc sablonjának áttekintése](drm-widevine-license-template-concept.md)
+- [Apple FairPlay-licencek követelményei és konfigurálása](drm-fairplay-license-overview.md)
 - [Folyamatos átviteli házirendek](streaming-policy-concept.md)
-- [Tartalmi kulcs házirendjei](content-key-policy-concept.md)
+- [Tartalmi kulcs házirendjei](drm-content-key-policy-concept.md)
 
 ### <a name="tutorials"></a>Oktatóanyagok
 
-[Gyors útmutató: tartalom titkosítása a portál használatával](encrypt-content-quickstart.md)
+[Gyors útmutató: tartalom titkosítása a portál használatával](drm-encrypt-content-how-to.md)
 
 ### <a name="how-to-guides"></a>Útmutatók
 
-- [Aláírókulcs lekérése a meglévő szabályzatból](get-content-key-policy-dotnet-howto.md)
-- [Offline FairPlay streaming iOS-hez Media Services v3](offline-fairplay-for-ios.md)
-- [Offline Widevine streaming az Androidhoz Media Services v3](offline-widevine-for-android.md)
-- [Offline PlayReady streaming a Windows 10 rendszerhez Media Services v3](offline-plaready-streaming-for-windows-10.md)
+- [Aláírókulcs lekérése a meglévő szabályzatból](drm-get-content-key-policy-dotnet-how-to.md)
+- [Offline FairPlay streaming iOS-hez Media Services v3](drm-offline-fairplay-for-ios-concept.md)
+- [Offline Widevine streaming az Androidhoz Media Services v3](drm-offline-widevine-for-android.md)
+- [Offline PlayReady streaming a Windows 10 rendszerhez Media Services v3](drm-offline-playready-streaming-for-windows-10.md)
 
 ## <a name="samples"></a>Példák
 

@@ -4,19 +4,19 @@ description: A Azure Monitor általános riasztási séma-definícióinak ismert
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045394"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491712"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
 Ez a cikk a Azure Monitor [általános riasztási sémájának definícióit](./alerts-common-schema.md) ismerteti, beleértve a webhookok, a Azure Logic apps, a Azure functions és a Azure Automation runbookok. 
 
 Minden riasztási példány leírja az érintett erőforrást és a riasztás okát. Ezeket a példányokat az alábbi szakaszokban ismertetett általános séma ismerteti:
-* **Essentials**: az összes riasztási típussal közös szabványosított mezők összessége, amelyek leírják, hogy a riasztás milyen erőforrást tartalmaz, valamint további gyakori riasztási metaadatok (például a súlyosság vagy a leírás). 
+* **Essentials**: az összes riasztási típussal közös szabványosított mezők összessége, amelyek leírják, hogy a riasztás milyen erőforrást tartalmaz, valamint további gyakori riasztási metaadatok (például a súlyosság vagy a leírás). A súlyosság definíciói a [riasztások áttekintésében](alerts-overview.md#overview)találhatók. 
 * **Riasztási környezet**: a riasztás okát leíró mezők összessége, a riasztás típusától függően változó mezőkkel. Például egy metrikai riasztás olyan mezőket tartalmaz, mint a metrika neve és a metrika értéke a riasztási környezetben, míg a tevékenység naplójának riasztása a riasztást kiváltó eseményről tartalmaz információkat. 
 
 **Példa riasztási adattartalomra**

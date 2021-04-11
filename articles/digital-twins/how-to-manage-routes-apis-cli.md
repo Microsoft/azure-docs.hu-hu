@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7efebaf23bd8e897243f6ee12b23d3821a4c033
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936308"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257330"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ehhez először be kell állítani az eseményeket fogadó **végpontokat**. Ezután létrehozhat olyan  [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
+Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](concepts-event-notifications.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ehhez először be kell állítani az eseményeket fogadó **végpontokat**. Ezután létrehozhat olyan  [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
 
 Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán a [REST API](/rest/api/azure-digitaltwins/)-kkal, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)-val és az [Azure digitális Twins parancssori](how-to-use-cli.md)felületével.
 
@@ -48,7 +48,7 @@ Ez a szakasz ismerteti, hogyan hozhatja létre ezeket a végpontokat az Azure CL
 
 ### <a name="create-the-endpoint"></a>A végpont létrehozása
 
-Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Az alábbi példák azt mutatják be, hogyan hozhatók létre végpontok az [Azure Digital Twins CLI](how-to-use-cli.md)-hez készült az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) paranccsal. Cserélje le a parancsokban szereplő helyőrzőket a saját erőforrásainak részleteire.
+Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Az alábbi példák azt mutatják be, hogyan hozhatók létre végpontok az [Azure Digital Twins CLI](how-to-use-cli.md)-hez készült az [DT Endpoint Create](/cli/azure/dt/endpoint/create) paranccsal. Cserélje le a parancsokban szereplő helyőrzőket a saját erőforrásainak részleteire.
 
 Event Grid végpont létrehozása:
 
@@ -119,7 +119,7 @@ Az alábbi lépéseket követve állíthatja be ezeket a tárolási erőforráso
     
 #### <a name="create-the-dead-letter-endpoint"></a>A kézbesítetlen levél végpontjának létrehozása
 
-Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, adja hozzá a következő kézbesítetlen levelek paramétert az az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) parancshoz az [Azure Digital Twins CLI](how-to-use-cli.md)-hez.
+Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, adja hozzá a következő kézbesítetlen levelek paramétert az az [DT Endpoint Create](/cli/azure/dt/endpoint/create) parancshoz az [Azure Digital Twins CLI](how-to-use-cli.md)-hez.
 
 A paraméter értéke a **Kézbesítetlen levél sas URI-ja** , amely a Storage-fiók neve, a tároló neve és az [előző szakaszban](#set-up-storage-resources)összegyűjtött sas-token. Ez a paraméter létrehozza a végpontot a kulcs alapú hitelesítéssel.
 
@@ -158,7 +158,7 @@ Miután beállította a végpontot a kézbesítetlen üzenetek beállításával
 
 A kézbesítetlen üzenetek megegyeznek az eredeti végpontnak kézbesíteni kívánt eredeti esemény sémájával.
 
-Itt látható egy példa a [kettős létrehozási értesítésre](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications):
+Itt látható egy példa a [kettős létrehozási értesítésre](concepts-event-notifications.md#digital-twin-lifecycle-notifications):
 
 ```json
 {
@@ -204,7 +204,7 @@ Ha nincs útvonal neve, az Azure digitális Ikreken kívül egyetlen üzenet sem
 
 Az egyik útvonalnak engedélyezni kell több értesítés és eseménytípus kijelölését. 
 
-Az esemény-útvonalak az Azure Digital Twins [ **EventRoutes** adatsík API](/rest/api/digital-twins/dataplane/eventroutes) -k vagy [ **az DT Route** CLI-parancsok](/cli/azure/ext/azure-iot/dt/route)segítségével hozhatók létre. A szakasz további részében a létrehozás folyamata látható.
+Az esemény-útvonalak az Azure Digital Twins [ **EventRoutes** adatsík API](/rest/api/digital-twins/dataplane/eventroutes) -k vagy [ **az DT Route** CLI-parancsok](/cli/azure/dt/route)segítségével hozhatók létre. A szakasz további részében a létrehozás folyamata látható.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Útvonalak létrehozása az API-kkal és a C# SDK-val
 
@@ -225,7 +225,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre, listázhat és törölhet egy
 
 ### <a name="create-routes-with-the-cli"></a>Útvonalak létrehozása a parancssori felülettel
 
-Az útvonalakat az az [DT Route](/cli/azure/ext/azure-iot/dt/route) paranccsal is kezelheti az Azure Digital Twins CLI-hez. 
+Az útvonalakat az az [DT Route](/cli/azure/dt/route) paranccsal is kezelheti az Azure Digital Twins CLI-hez. 
 
 További információ a parancssori felület használatáról és a rendelkezésre álló parancsokról [*: útmutató: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
@@ -256,4 +256,4 @@ Itt láthatók a támogatott útválasztási szűrők. A *szűrő szöveg sémá
 ## <a name="next-steps"></a>Következő lépések
 
 További információ a fogadott üzenetek különböző típusairól:
-* [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)
+* [*Fogalmak: események értesítései*](concepts-event-notifications.md)

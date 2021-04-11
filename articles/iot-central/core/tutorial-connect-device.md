@@ -11,18 +11,18 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8f1b5eabe235d107b48dc7b2db5b6d4b1188a3fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833966"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491100"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással
 
 *Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
-Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat egy ügyfélalkalmazás az Azure IoT Central-alkalmazásához az eszköz fejlesztőinek. Az alkalmazás szimulálja egy termosztátos eszköz viselkedését. Amikor az alkalmazás csatlakozik a IoT Centralhoz, elküldi a termosztát-eszköz modell-AZONOSÍTÓját. IoT Central a modell AZONOSÍTÓját használja az eszköz modell lekéréséhez és az eszköz sablonjának létrehozásához. A testreszabásokat és nézeteket hozzá kell adni az eszköz sablonhoz, hogy az operátor kapcsolatba lépjen az eszközzel.
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat egy ügyfélalkalmazás az Azure IoT Central-alkalmazásához az eszköz fejlesztőinek. Az alkalmazás szimulálja egy hőmérséklet-vezérlő eszköz viselkedését. Amikor az alkalmazás csatlakozik a IoT Centralhoz, elküldi a hőmérséklet-vezérlő eszköz modell-AZONOSÍTÓját. IoT Central a modell AZONOSÍTÓját használja az eszköz modell lekéréséhez és az eszköz sablonjának létrehozásához. A testreszabásokat és nézeteket hozzá kell adni az eszköz sablonhoz, hogy az operátor kapcsolatba lépjen az eszközzel.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -70,7 +70,7 @@ Eszköz-fejlesztőként a **nyers** adatnézet segítségével megvizsgálhatja,
 
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="A nyers adatnézet":::
 
-Ebben a nézetben kiválaszthatja a megjelenítendő oszlopokat, és megadhatja a megtekinteni kívánt időtartományt. A nem **modellezett adatok** oszlop az eszköz azon adatait jeleníti meg, amelyek nem felelnek meg az eszköz sablonjának bármely tulajdonság-vagy telemetria-definíciójának.
+Ebben a nézetben kiválaszthatja a megjelenítendő oszlopokat, és megadhatja a megtekinteni kívánt időtartományt. A nem **modellezett** adatoszlop azokat az eszközöket jeleníti meg, amelyek nem felelnek meg az eszköz sablonjának bármely tulajdonság-vagy telemetria-definíciójának.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

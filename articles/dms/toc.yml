@@ -37,7 +37,7 @@
   items:
     - name: SQL Server migrálása
       items:
-        - name: Azure SQL Database
+        - name: az Azure SQL Database-be
           href: tutorial-sql-server-to-azure-sql.md
         - name: felügyelt Azure SQL-példányra (offline)
           href: tutorial-sql-server-to-managed-instance.md
@@ -93,7 +93,11 @@
           href: how-to-migrate-ssis-packages.md
         - name: Felügyelt Azure SQL-példány
           href: how-to-migrate-ssis-packages-managed-instance.md
-- name: További források
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/dms
+- name: Erőforrások
   items:
     - name: Gyakori kérdések
       href: faq.md

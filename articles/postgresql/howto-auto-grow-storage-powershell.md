@@ -1,18 +1,18 @@
 ---
 title: Tárterület automatikus növekedése – Azure PowerShell – Azure Database for PostgreSQL
 description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növekedés tárolását a PowerShell használatával Azure Database for PostgreSQLban.
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 05333aa4a42b821366ea7ad0a564781422fda66a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 00292d3f45554908b3a6e5c3477ad1c5031f5176
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551050"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228044"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-postgresql-server-using-powershell"></a>Tároló automatikus növekedése Azure Database for PostgreSQL-kiszolgálón a PowerShell használatával
 

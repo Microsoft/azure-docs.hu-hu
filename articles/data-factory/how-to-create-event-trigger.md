@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: d9012c2bb56b7936b627063be2e9c5b7aa33541e
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 3021d049a38f1d883518fc7c45aa8ca0a906c2f7
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962730"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221585"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Egy folyamatot futtató eseményindító létrehozása tárolási eseményre válaszként
 
@@ -76,7 +76,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre tárolási esemény-esem�
    Az előző példában az eseményindító úgy van beállítva, hogy a. csv fájlban végződő blob-elérési út a tárolóban, a Container _Sample---_ ban a mappa _esemény-tesztelés_ területén jön létre. A **folderPath** és a **filename** tulajdonság rögzíti az új blob helyét. Ha például a MoviesDB.csv bekerül az elérési út mintába – az adatelemzési/esemény-tesztelés, a `@triggerBody().folderPath` értéke `sample-data/event-testing` és a `@triggerBody().fileName` értéke `moviesDB.csv` . Ezek az értékek leképezve jelennek meg a példában a folyamat paramétereinek `sourceFolder` és `sourceFile` , amelyek az egész folyamat során használhatók `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
 
    > [!NOTE]
-   > Ha az [Azure szinapszis Analyticsben](/synapse-analytics)hozza létre a folyamatot, és elindítja az aktiválást, a `@trigger().outputs.body.fileName` és paramétert kell használnia `@trigger().outputs.body.folderPath` . A két tulajdonság a Blobok adatait rögzíti. Ezeket a tulajdonságokat a és a használata helyett használhatja `@triggerBody().fileName` `@triggerBody().folderPath` .
+   > Ha az [Azure szinapszis Analyticsben](../synapse-analytics/overview-what-is.md)hozza létre a folyamatot, és elindítja az aktiválást, a `@trigger().outputs.body.fileName` és paramétert kell használnia `@trigger().outputs.body.folderPath` . A két tulajdonság a Blobok adatait rögzíti. Ezeket a tulajdonságokat a és a használata helyett használhatja `@triggerBody().fileName` `@triggerBody().folderPath` .
 
 1. Ha elkészült, kattintson a **Befejezés** gombra.
 
@@ -86,11 +86,11 @@ A következő táblázat áttekintést nyújt a tárolási esemény-eseményind�
 
 | **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Kötelező** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Yes |
+| **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Igen |
 | **események** | A triggert tüzet kiváltó események típusa. | Tömb    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Igen, az értékek bármely kombinációja. |
 | **blobPathBeginsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell kezdődnie. Például csak a `/records/blobs/december/` tárolóban lévő mappában lévő Blobok eseményindítóját kell kiváltani `december` `records` . | Sztring   | | Adja meg a következő tulajdonságok legalább egyikének értékét: `blobPathBeginsWith` vagy `blobPathEndsWith` . |
 | **blobPathEndsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell végződnie. Például `december/boxes.csv` csak a mappában lévő Blobok eseményindítóját kell kiváltani `boxes` `december` . | Sztring   | | Meg kell adnia egy értéket a következő tulajdonságok közül legalább egy számára: `blobPathBeginsWith` vagy `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | No |
+| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | Nem |
 
 ## <a name="examples-of-storage-event-triggers"></a>Példák a tárolási események eseményindítóinak tárolására
 

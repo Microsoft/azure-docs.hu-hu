@@ -2,7 +2,7 @@
 title: 'Gyors útmutató: Language Understanding (LUIS) SDK-ügyfél kódtárai és REST API'
 description: LUIS-alkalmazás létrehozása és lekérdezése a LUIS SDK-ügyfél kódtárai és REST API.
 ms.topic: quickstart
-ms.date: 12/09/2020
+ms.date: 03/29/2021
 ms.service: cognitive-services
 ms.author: aahi
 manager: nitinme
@@ -11,12 +11,12 @@ author: aahill
 keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozás, NLP, LUIS, Azure Luis, természetes nyelvi megértés, AI Csevegőrobot, Csevegőrobot Maker, természetes nyelv megismerése
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-luis
-ms.openlocfilehash: 7ff5844cf9f1bce45df438fc00e24da28c438b05
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ca45266ce4b8ca784c3d54aafb80a66efaf2a1da
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939213"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278915"
 ---
 # <a name="quickstart-language-understanding-luis-client-libraries-and-rest-api"></a>Gyors útmutató: Language Understanding (LUIS) ügyféloldali kódtárak és REST API
 
@@ -61,9 +61,5 @@ Egyéb hibák – ha az előző listában nem szereplő hibaüzenetet kap, tudas
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Mi a Language Understanding (LUIS) API?](what-is-luis.md)
-* [Újdonságok](whats-new.md)
-* [Szándékok](luis-concept-intent.md), [entitások](luis-concept-entity-types.md)és [példa hosszúságú kimondott szöveg](luis-concept-utterance.md)és [előre összeépített entitások](luis-reference-prebuilt-entities.md)
-* A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code)található.
-* A természetes nyelv megismerése: [természetes nyelvi megértés (NLU) és természetes nyelvi feldolgozás (NLP)](artificial-intelligence.md)
-* Robotok: [AI csevegőrobotok](luis-csharp-tutorial-bf-v4.md "a Csevegőrobot Maker oktatóanyaga")
+> [!div class="nextstepaction"]
+> [A LUIS-hez készült iterációs alkalmazások fejlesztése](./luis-concept-app-iteration.md)

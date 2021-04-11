@@ -1,14 +1,14 @@
 ---
 title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
-ms.date: 10/22/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 75f4fcfb88bd4cb1ac0c8bfeac236b452479b8c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4e059f3691554aa91dfd15cf308ef62afa58928
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721613"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089967"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -99,7 +99,7 @@ Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következ
 
 ## <a name="using-arrays-in-conditions"></a>Tömbök használata a feltételekben
 
-### <a name="in-and-notin"></a>`In` és `notIn`
+### <a name="in-and-notin"></a>És notIn
 
 A `in` és a `notIn` feltételek csak a tömb értékeit vehetik működésbe. Egy tömbben lévő érték meglétének ellenőrzéséhez. A tömb lehet literális JSON-tömb vagy egy Array paraméterre mutató hivatkozás. Például:
 
@@ -135,7 +135,7 @@ A [Value Count](../concepts/definition-structure.md#value-count) kifejezés azt 
 }
 ```
 
-A kifejezés kiértékeléséhez Azure Policy kiértékeli a `where` feltételt az egyes tagok esetében 3 alkalommal, egyszer, hogy hányszor értékelte ki a rendszer `[ "test*", "dev*", "prod*" ]` `true` . Minden iteráció esetén az aktuális tömb tag értéke párosítva lesz a `pattern` által definiált index nevével `count.name` . Ezt az értéket ezután a feltételen belül lehet hivatkozni `where` egy speciális sablon függvény meghívásával: `current('pattern')` .
+A kifejezés kiértékeléséhez Azure Policy kiértékeli a `where` feltételt az egyes tagokra vonatkozóan (egyszer), és `[ "test*", "dev*", "prod*" ]` megszámolja, hogy hányszor lett kiértékelve `true` . Minden iteráció esetén az aktuális tömb tag értéke párosítva lesz a `pattern` által definiált index nevével `count.name` . Ezt az értéket ezután a feltételen belül lehet hivatkozni `where` egy speciális sablon függvény meghívásával: `current('pattern')` .
 
 | Iteráció | `current('pattern')` visszaadott érték |
 |:---|:---|
@@ -243,7 +243,7 @@ A tömb erőforrás-tulajdonságait általában két különböző típusú alia
 
 #### <a name="referencing-the-array"></a>A tömbre hivatkozik
 
-Az első alias egyetlen értéket képvisel, a `stringArray` kérelem tartalmából származó tulajdonság értékét. Mivel a tulajdonság értéke tömb, nem nagyon hasznos a házirend feltételeiben. Például:
+Az első alias egyetlen értéket képvisel, a `stringArray` kérelem tartalmából származó tulajdonság értékét. Mivel a tulajdonság értéke tömb, nem használható a házirend feltételeiben. Például:
 
 ```json
 {
@@ -290,9 +290,9 @@ Ha a tömb objektumokat tartalmaz, egy `[*]` alias használható egy adott tulaj
 }
 ```
 
-Ez az állapot akkor igaz, ha az összes `property` tulajdonság értéke `objectArray` egyenlő `"value"` . További példákat itt talál: [további \[ \* \] alias-példák](#appendix--additional--alias-examples).
+Ez az állapot akkor igaz, ha az összes `property` tulajdonság értéke `objectArray` egyenlő `"value"` . További példákat itt talál: [további \[ \* \] alias-példák](#additional--alias-examples).
 
-Ha a `field()` függvényt egy tömb aliasára hivatkozik, a visszaadott érték az összes kijelölt érték tömbje. Ez azt jelenti, hogy a függvény általános használati esete, hogy a `field()` sablon függvények az erőforrás-tulajdonságok értékekre való alkalmazása igen korlátozott. Ebben az esetben csak az olyan sablon-függvények használhatók, amelyek elfogadják a tömb argumentumait. Például lehetséges a tömb hosszának beolvasása a következővel: `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Azonban összetettebb forgatókönyvek, például a Template függvény alkalmazása minden egyes tömb tagjaira, és a kívánt értékkel való összehasonlítás csak a kifejezés használata esetén lehetséges `count` . További információ: [Field Count kifejezés](#field-count-expressions).
+Ha a `field()` függvényt egy tömb aliasára hivatkozik, a visszaadott érték az összes kijelölt érték tömbje. Ez azt jelenti, hogy a függvény gyakori felhasználási esete, hogy a `field()` sablon függvények az erőforrás-tulajdonságok értékekre való alkalmazása korlátozott. Ebben az esetben csak az olyan sablon-függvények használhatók, amelyek elfogadják a tömb argumentumait. Például lehetséges a tömb hosszának beolvasása a következővel: `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Azonban összetettebb forgatókönyvek, például a Template függvény alkalmazása az egyes tömbökre, és a kívánt értékre való összehasonlítás csak a kifejezés használata esetén lehetséges `count` . További információ: [Field Count kifejezés](#field-count-expressions).
 
 Az összegzéshez tekintse meg a következő példában szereplő erőforrás-tartalmakat, valamint a különböző aliasok által visszaadott kiválasztott értékeket:
 
@@ -371,7 +371,7 @@ Ha feltétel nélkül használja `where` , `count` egyszerűen egy tömb hosszá
 }
 ```
 
-Ez a viselkedés beágyazott tömbökkel is működik. Például a következő `count` kifejezés kiértékelése megtörténik, `true` mivel a tömbökben négy tömb tag található `nestedArray` :
+Ez a viselkedés beágyazott tömbökkel is működik. Például a következő `count` kifejezés kiértékelése megtörténik, `true` mivel négy tömb tag található a `nestedArray` tömbökben:
 
 ```json
 {
@@ -382,7 +382,7 @@ Ez a viselkedés beágyazott tömbökkel is működik. Például a következő `
 }
 ```
 
-A ereje a `count` `where` feltételben van. Ha meg van adva, Azure Policy enumerálja a tömb tagjait, és kiértékeli a feltételt, és megszámolja, hogy hány tömb tagja értékeli ki a rendszer `true` . Pontosabban, a `where` feltétel kiértékelésének minden iterációjában Azure Policy kiválaszt egy tömbbeli tagot ***i** _-t, és kiértékeli az erőforrás tartalmát a (z `where` ) * állapottal szemben, _Ha ***_ az a array_ * tagja. Az egyes iterációkban csak egy tömbös tag érhető el, így összetett feltételeket alkalmazhat az egyes tömb tagjain.
+A ereje a `count` `where` feltételben van. Ha meg van adva, Azure Policy enumerálja a tömb tagjait, és kiértékeli a feltételt, és megszámolja, hogy a tömb tagjainak hány tagja van kiértékelve `true` . Pontosabban, a `where` feltétel kiértékelésének minden iterációjában Azure Policy kiválaszt egy tömbbeli tagot ***i** _-t, és kiértékeli az erőforrás tartalmát a (z `where` ) * állapottal szemben, _Ha *_ az a array_ * tagja. Az egyes iterációkban csak egy tömbös tag érhető el, így összetett feltételeket alkalmazhat az egyes tömb tagjain.
 
 Példa:
 
@@ -398,7 +398,9 @@ Példa:
   "equals": 1
 }
 ```
-A kifejezés kiértékeléséhez Azure Policy kiértékeli `count` a `where` feltételt az egyes tagok esetében 3 alkalommal, egyszer, hogy hányszor értékelte ki a rendszer `stringArray` `true` . Ha a `where` feltétel a `Microsoft.Test/resourceType/stringArray[*]` tömb tagjaira vonatkozik, ahelyett, hogy kijelöli a összes tagját `stringArray` , minden alkalommal csak egyetlen tömbös tagot fog kijelölni:
+
+A kifejezés kiértékeléséhez Azure Policy kiértékeli `count` a `where` feltételt az egyes tagokra vonatkozóan (egyszer), és `stringArray` megszámolja, hogy hányszor lett kiértékelve `true` .
+Ha a `where` feltétel a `Microsoft.Test/resourceType/stringArray[*]` tömb tagjaira vonatkozik, ahelyett, hogy kijelöli a összes tagját `stringArray` , minden alkalommal csak egyetlen tömbös tagot fog kijelölni:
 
 | Iteráció | Kijelölt `Microsoft.Test/resourceType/stringArray[*]` értékek | `where` Kiértékelés eredménye |
 |:---|:---|:---|
@@ -406,7 +408,7 @@ A kifejezés kiértékeléséhez Azure Policy kiértékeli `count` a `where` fel
 | 2 | `"b"` | `false` |
 | 3 | `"c"` | `false` |
 
-Így a `count` vissza fog térni `1` .
+A visszaadott `count` érték `1` .
 
 Egy összetettebb kifejezés:
 
@@ -436,7 +438,7 @@ Egy összetettebb kifejezés:
 | 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `false` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4`| `true` |
 
-És így a `count` visszaadja `1` .
+A visszaadott `count` érték `1` .
 
 Az a tény, hogy a `where` kifejezés a **teljes** kérelem tartalmára van kiértékelve (csak a jelenleg enumerált tömb tag módosításaival), azt jelenti, hogy a `where` feltétel a tömbön kívüli mezőkre is vonatkozik:
 
@@ -458,7 +460,7 @@ Az a tény, hogy a `where` kifejezés a **teljes** kérelem tartalmára van kié
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-A beágyazott számlálási kifejezések használatával feltételeket alkalmazhat a beágyazott tömb mezőire. A következő feltétel például ellenőrzi, hogy a `objectArray[*]` tömb pontosan 2 taggal rendelkezik `nestedArray[*]` -e, amely legalább 1 tagot tartalmaz:
+A beágyazott számlálási kifejezések használatával feltételeket alkalmazhat a beágyazott tömb mezőire. A következő feltétel például ellenőrzi, hogy a `objectArray[*]` tömb pontosan két olyan taggal rendelkezik `nestedArray[*]` -e, amelyek legalább egy tagot tartalmaznak:
 
 ```json
 {
@@ -480,9 +482,9 @@ A beágyazott számlálási kifejezések használatával feltételeket alkalmazh
 | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` 2 taggal rendelkezik => `true` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` 2 taggal rendelkezik => `true` |
 
-Mivel mindkét tagnak `objectArray[*]` van egy `nestedArray[*]` 2 taggal rendelkező gyermek tömbje, a külső Count kifejezés visszaadja `2` .
+Mivel mindkét tagnak `objectArray[*]` van egy gyermek tömbje `nestedArray[*]` két taggal, a külső Count kifejezés visszaadja `2` .
 
-Összetettebb példa: Győződjön meg arról, hogy a `objectArray[*]` tömb pontosan 2 taggal rendelkezik, vagy a következővel `nestedArray[*]` egyenlő `2` `3` :
+Összetettebb példa: Győződjön meg arról, hogy a `objectArray[*]` tömb pontosan két olyan taggal rendelkezik, amelyeknek egyenlő a következővel `nestedArray[*]` `2` `3` :
 
 ```json
 {
@@ -538,13 +540,13 @@ A sablon funkcióinak használatakor a `current()` függvény használatával é
 
 #### <a name="the-field-function-inside-where-conditions"></a>A mező függvény a feltételek között
 
-A `field()` függvény használható az aktuális tömbbeli tag értékének elérésére is, ha a **Count** kifejezés nem egy **létezési feltételen** belül van (a `field()` függvény mindig az adott feltétel alapján értékelt erőforrást tekinti át). 
-A `field()` kiértékelt tömbre hivatkozó viselkedés a következő fogalmakon alapul:
+A `field()` függvény használható az aktuális tömbbeli tag értékének elérésére is, ha a **Count** kifejezés nem egy **létezési feltételen** belül van (a `field()` függvény mindig az **IF** feltétel által kiértékelt erőforrásra hivatkozik). A `field()` kiértékelt tömbre hivatkozó viselkedés a következő fogalmakon alapul:
+
 1. A Array aliasok az összes tömb tagjai közül kiválasztott értékek gyűjteményében vannak feloldva.
 1. `field()` a tömb Aliasokra hivatkozó függvények a kijelölt értékekkel rendelkező tömböt adnak vissza.
 1. Ha a feltételben a megszámolt tömb aliasára hivatkozik, a függvény egy olyan `where` gyűjteményt ad vissza, amely egyetlen, az aktuális iterációban kiértékelt értékkel rendelkező tömbből van kiválasztva.
 
-Ez azt jelenti, hogy amikor a feltételben lévő függvénnyel hivatkozik a megszámolt tömbre, a függvény egy olyan `field()` `where` **tömböt ad vissza, amely egyetlen taggal** rendelkezik. Habár ez nem lehet intuitív, összhangban van azzal a gondolattal, hogy a Array aliasok mindig a kiválasztott tulajdonságok gyűjteményét adják vissza. Bemutatunk egy példát:
+Ez azt jelenti, hogy amikor a feltételben lévő függvénnyel hivatkozik a megszámolt tömbre, a függvény egy olyan `field()` `where` **tömböt ad vissza, amely egyetlen taggal** rendelkezik. Habár ez a viselkedés nem lehet intuitív, összhangban van azzal a gondolattal, hogy a Array aliasok mindig a kiválasztott tulajdonságok gyűjteményét adják vissza. Bemutatunk egy példát:
 
 ```json
 {
@@ -565,7 +567,7 @@ Ez azt jelenti, hogy amikor a feltételben lévő függvénnyel hivatkozik a meg
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[field('Microsoft.Test/resourceType/stringArray[*]')]` => `[ "b" ]` | `false` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[field('Microsoft.Test/resourceType/stringArray[*]')]` => `[ "c" ]` | `false` |
 
-Ezért ha egy függvénnyel el kell érnie a megszámolt tömb aliasának értékét `field()` , az azt jelenti, hogy a sablont egy sablon függvénysel kell becsomagolni `first()` :
+Ezért ha egy függvénnyel el kell érnie a megszámolt tömb aliasának értékét `field()` , a következőképpen kell elvégeznie a `first()` sablon függvényének becsomagolását:
 
 ```json
 {
@@ -589,7 +591,7 @@ Hasznos példákért tekintse meg a [mezők száma példákat](../concepts/defin
 
 ## <a name="modifying-arrays"></a>Tömbök módosítása
 
-Az erőforrás [hozzáfűzési](../concepts/effects.md#append) és [módosítási](../concepts/effects.md#modify) tulajdonsága a létrehozás vagy a frissítés során. A tömb tulajdonságainak használatakor a hatások viselkedése attól függ, hogy a művelet megkísérli-e módosítani az  **\[\*\]** aliast, vagy sem:
+Az erőforrás [hozzáfűzési](../concepts/effects.md#append) és [módosítási](../concepts/effects.md#modify) tulajdonsága a létrehozás vagy a frissítés során. A tömb tulajdonságainak használatakor a hatások viselkedése attól függ, hogy a művelet megkísérli-e módosítani az **\[\*\]** aliast, vagy sem:
 
 > [!NOTE]
 > Az `modify` aliasokkal való hatás jelenleg **előzetes** verzióban érhető el.
@@ -608,9 +610,9 @@ Az erőforrás [hozzáfűzési](../concepts/effects.md#append) és [módosítás
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 
-## <a name="appendix--additional--alias-examples"></a>Függelék – további [*] alias-példák
+## <a name="additional--alias-examples"></a>További [*] alias-példák
 
-Azt javasoljuk, hogy a [mezők száma kifejezések](#field-count-expressions) használatával győződjön meg arról, hogy a kérelem tartalmában található tömb tagjainak egyike vagy bármelyike feltételnek felel-e meg. Bizonyos egyszerű feltételek esetében azonban lehetséges, hogy ugyanazt az eredményt egy tömb-alias használatával ( [a tömb tagjainak gyűjteményével kapcsolatos hivatkozásban](#referencing-the-array-members-collection)leírt módon) is elérheti. Ez olyan házirend-szabályok esetében lehet hasznos, amelyek túllépik a megengedett **számú** kifejezések korlátját. Példák gyakori használati esetekre:
+Azt javasoljuk, hogy a [mezők száma kifejezések](#field-count-expressions) használatával győződjön meg arról, hogy a kérelem tartalmában található tömb tagjainak egyike vagy bármelyike feltételnek felel-e meg. Bizonyos egyszerű feltételek esetében azonban lehetséges, hogy ugyanazt az eredményt egy, a [tömb tagjainak hivatkozását](#referencing-the-array-members-collection)ismertető témakörben leírtak szerint egy tömb-alias használatával érik el. Ez a minta olyan házirend-szabályokban lehet hasznos, amelyek túllépik a megengedett **számú** kifejezések korlátját. Példák gyakori használati esetekre:
 
 Az alábbi forgatókönyv-táblázathoz tartozó példa házirend-szabály:
 

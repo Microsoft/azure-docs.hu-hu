@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9fe49f44e157708c3083e2c73757988877fbfcb5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7d99e3de8a796dea19f3a2ad7a03b98239981e2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563463"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121098"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -54,7 +54,7 @@ A videók átírására és feliratozására szolgáló további nyelvek mostant
 * Thai, "th-TH"
 * Török, "TR-TR"
 
-Tekintse meg a legújabb elérhető nyelveket a [videó-és hangfájlok fogalmának elemzése című cikkben.](analyzing-video-audio-files-concept.md)
+Tekintse meg a legújabb elérhető nyelveket a [videó-és hangfájlok fogalmának elemzése című cikkben.](analyze-video-audio-files-concept.md)
 
 ## <a name="february-2021"></a>2021. február
 
@@ -134,7 +134,7 @@ Tekintse meg a legújabb mintákat a **[Media-Services-v3-Node-oktatóanyagok](h
 
 Az élő események mostantól egy alacsonyabb díjszabású számlázási módot is támogatnak a "készenléti" állapothoz. Ez lehetővé teszi, hogy az ügyfelek a "forró készletek" létrehozásához alacsonyabb áron előre foglalják el az élő eseményeket. Az ügyfelek ezután a készenléti állapotú élő események használatával gyorsabban válthatnak a futó állapotba, mint a létrehozáskor.  Ez csökkenti a csatorna jelentős elindításának idejét, és lehetővé teszi a gyors, alacsonyabb díjszabású gépek lefoglalását.
 Tekintse meg a legfrissebb [díjszabási részleteket.](https://azure.microsoft.com/pricing/details/media-services)
-A készenléti állapottal és az élő események más állapotával kapcsolatos további információkért tekintse meg a cikk [élő esemény állapotait és számlázását](./live-event-states-billing.md) ismertető cikket.
+A készenléti állapottal és az élő események más állapotával kapcsolatos további információkért tekintse meg a cikk [élő esemény állapotait és számlázását](./live-event-states-billing-concept.md) ismertető cikket.
 
 ## <a name="december-2020"></a>2020. december
 
@@ -146,17 +146,17 @@ A Azure Media Services mostantól elérhető az Azure Portal Norvégia keleti r�
 
 ### <a name="basic-audio-analysis"></a>Alapszintű hang elemzése
 
-A hangelemzési beállításkészlet mostantól egy alapszintű mód díjszabási szintjét is tartalmazza. Az új alapszintű hangelemző mód alacsony díjszabású lehetőséget biztosít a beszédfelismerési átiratok kinyerésére, valamint a kimeneti feliratok és feliratok formázására. Ez a mód beszéd – szöveg típusú átírást és VTT alcím/képaláírás-fájl létrehozását végzi. A mód kimenete tartalmaz egy bepillantást nem tartalmazó JSON-fájlt, amely csak a kulcsszavakat, az átírást és az időzítési adatokat tartalmazza. Ez a mód nem tartalmazza az automatikus nyelvfelismerés és a hangszórók diarization. Tekintse meg a [támogatott nyelvek listáját.](analyzing-video-audio-files-concept.md#built-in-presets)
+A hangelemzési beállításkészlet mostantól egy alapszintű mód díjszabási szintjét is tartalmazza. Az új alapszintű hangelemző mód alacsony díjszabású lehetőséget biztosít a beszédfelismerési átiratok kinyerésére, valamint a kimeneti feliratok és feliratok formázására. Ez a mód beszéd – szöveg típusú átírást és VTT alcím/képaláírás-fájl létrehozását végzi. A mód kimenete tartalmaz egy bepillantást nem tartalmazó JSON-fájlt, amely csak a kulcsszavakat, az átírást és az időzítési adatokat tartalmazza. Ez a mód nem tartalmazza az automatikus nyelvfelismerés és a hangszórók diarization. Tekintse meg a [támogatott nyelvek listáját.](analyze-video-audio-files-concept.md#built-in-presets)
 
 Az indexelő v1 és az indexelő v2-et használó ügyfeleknek át kell térniük az alapszintű hangelemzési készletre.
 
-További információ az alapszintű audio Analyzer módból: [videó-és hangfájlok elemzése](analyzing-video-audio-files-concept.md).  Az alapszintű hangelemző mód és a REST API használatának megismeréséhez tekintse meg az [alapszintű hang átalakításának létrehozása](how-to-create-basic-audio-transform.md)című témakört.
+További információ az alapszintű audio Analyzer módból: [videó-és hangfájlok elemzése](analyze-video-audio-files-concept.md).  Az alapszintű hangelemző mód és a REST API használatának megismeréséhez tekintse meg az [alapszintű hang átalakításának létrehozása](how-to-create-basic-audio-transform.md)című témakört.
 
 ### <a name="live-events"></a>Élő események
 
 A legtöbb tulajdonság frissítése mostantól engedélyezett az élő események leállításakor. Emellett a felhasználók megadhatnak egy előtagot a statikus állomásnévhez az élő esemény bemeneti és előnézeti URL-címeihez. A VanityUrl most úgy lett meghívva `useStaticHostName` , hogy jobban tükrözze a tulajdonság szándékát.
 
-Az élő események mostantól készenléti állapottal rendelkeznek.  Tekintse [meg az élő eseményeket és a Media Services élő kimeneteit](./live-events-outputs-concept.md).
+Az élő események mostantól készenléti állapottal rendelkeznek.  Tekintse [meg az élő eseményeket és a Media Services élő kimeneteit](./live-event-outputs-concept.md).
 
 Egy élő esemény támogatja A különböző bemeneti méretarányok fogadását. A stretch mód lehetővé teszi, hogy az ügyfelek megadják a kimenet nyújtásának viselkedését.
 
@@ -173,7 +173,7 @@ Az élő kódolás mostantól lehetővé teszi a rögzített kulcstároló-töre
 
 Már elérhető a dinamikus adatcsomagolásban a örökölt PlayReady Protected File Format (PIFF 1,1) titkosítás támogatása. Ez támogatja a Samsungtól és az LG-től származó örökölt intelligens TV-készleteket, amelyek a Microsoft által közzétett Common Encryption Standard (CENC) korai tervezeteit implementálják.  A PIFF 1,1 formátuma más néven a Silverlight ügyféloldali könyvtára által korábban támogatott titkosítási formátum. Napjainkban az ilyen titkosítási formátum esetében az egyetlen felhasználási eset az, hogy az örökölt intelligens TV-piacot célozza meg, ahol még nem triviálisan sok olyan intelligens televízió található, amely csak a PIFF 1,1 titkosítást támogató Smooth Streaming támogatja.
 
-Az új PIFF 1,1 titkosítási támogatás használatához módosítsa a titkosítási értéket "PIFF" értékre a folyamatos átviteli lokátor URL-címének elérési útján. További részletekért tekintse meg a [Content Protection áttekintését.](content-protection-overview.md)
+Az új PIFF 1,1 titkosítási támogatás használatához módosítsa a titkosítási értéket "PIFF" értékre a folyamatos átviteli lokátor URL-címének elérési útján. További részletekért tekintse meg a [Content Protection áttekintését.](drm-content-protection-concept.md)
 Például: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
@@ -187,11 +187,11 @@ Az élő átiratok immár 19 nyelvet és 8 régiót támogatnak.
 
 ### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>A tartalom védelme Media Services és az Azure AD-vel
 
-Közzétettünk egy teljes körű tartalomvédelem nevű oktatóanyagot [Az Azure ad használatával](./azure-ad-content-protection.md).
+Közzétettünk egy teljes körű tartalomvédelem nevű oktatóanyagot [Az Azure ad használatával](./architecture-azure-ad-content-protection.md).
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
 
-Magas rendelkezésre állást tettünk közzé a Media Services és a video on demand (VOD) [áttekintése](./media-services-high-availability-encoding.md) és [mintája](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)alapján.
+Magas rendelkezésre állást tettünk közzé a Media Services és a video on demand (VOD) [áttekintése](./architecture-high-availability-encoding-concept.md) és [mintája](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)alapján.
 
 ## <a name="june-2020"></a>2020. június
 
@@ -243,7 +243,7 @@ A következő lépésekkel tekintheti meg a fejléc-Exchange működés közbeni
 
 Az élő átirat mostantól nyilvános előzetes verzióban érhető el, és az USA 2. nyugati régiójában használható.
 
-Az élő átírást úgy terveztük, hogy az élő eseményekkel együtt használható kiegészítő képességként.  A szolgáltatás az átmenő és a standard vagy a prémium kódolású élő eseményeken is támogatott.  Ha ez a szolgáltatás engedélyezve van, a szolgáltatás a Cognitive Services [beszéd-szöveg](../../cognitive-services/speech-service/speech-to-text.md) funkciója segítségével átmásolja a beérkező szövegben szereplő szóbeli szavakat. Ezt a szöveget ezután elérhetővé kell tenni a videóval és hanggal együtt az MPEG-DASH és a HLS protokollok esetében. A számlázás egy új kiegészítő mérőszámon alapul, amely az élő eseményhez képest további költségeket eredményez, ha a "Running" állapotban van.  Az élő átírással és a számlázással kapcsolatos részletekért lásd: [élő átirat](live-transcription.md)
+Az élő átírást úgy terveztük, hogy az élő eseményekkel együtt használható kiegészítő képességként.  A szolgáltatás az átmenő és a standard vagy a prémium kódolású élő eseményeken is támogatott.  Ha ez a szolgáltatás engedélyezve van, a szolgáltatás a Cognitive Services [beszéd-szöveg](../../cognitive-services/speech-service/speech-to-text.md) funkciója segítségével átmásolja a beérkező szövegben szereplő szóbeli szavakat. Ezt a szöveget ezután elérhetővé kell tenni a videóval és hanggal együtt az MPEG-DASH és a HLS protokollok esetében. A számlázás egy új kiegészítő mérőszámon alapul, amely az élő eseményhez képest további költségeket eredményez, ha a "Running" állapotban van.  Az élő átírással és a számlázással kapcsolatos részletekért lásd: [élő átirat](live-event-live-transcription-how-to.md)
 
 > [!NOTE]
 > Jelenleg az élő átírás csak előzetes verzióként érhető el az USA 2. nyugati régiójában. Jelenleg csak az angol (en-US) nyelven beszélő szavak átírását támogatja.
@@ -251,7 +251,7 @@ Az élő átírást úgy terveztük, hogy az élő eseményekkel együtt haszná
 ### <a name="content-protection"></a>Tartalomvédelem
 
 A korlátozott régiókban megjelent *jogkivonat-újrajátszás megelőzési* funkciója mostantól minden régióban elérhető.
-Media Services ügyfél mostantól korlátozhatja, hogy a rendszer hányszor használhatja ugyanazt a jogkivonatot kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](content-protection-overview.md#token-replay-prevention).
+Media Services ügyfél mostantól korlátozhatja, hogy a rendszer hányszor használhatja ugyanazt a jogkivonatot kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](drm-content-protection-concept.md#token-replay-prevention).
 
 ### <a name="new-recommended-live-encoder-partners"></a>Új ajánlott élő kódoló partnerek
 
@@ -310,7 +310,7 @@ Részletekért lásd: [a Tamás Áttelepítésének Media Encoder standard](../p
 
 ### <a name="content-protection"></a>Tartalomvédelem
 
-A jogkivonatok korlátozásával védett tartalom továbbításakor a végfelhasználóknak meg kell szerezniük egy jogkivonatot, amelyet a rendszer a kézbesítési kérelem részeként küld. A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](content-protection-overview.md#token-replay-prevention).
+A jogkivonatok korlátozásával védett tartalom továbbításakor a végfelhasználóknak meg kell szerezniük egy jogkivonatot, amelyet a rendszer a kézbesítési kérelem részeként küld. A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](drm-content-protection-concept.md#token-replay-prevention).
 
 Júliustól az előzetes verzió funkció csak az USA középső és az USA nyugati középső régiójában érhető el.
 
@@ -340,7 +340,7 @@ Részletekért lásd: [Media Services metrikák és diagnosztikai naplók figyel
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Többszörös hangsávok támogatják a dinamikus csomagolást 
 
-Ha több, több kodeket és nyelvet tartalmazó hangsávokkal rendelkező adatfolyam-továbbítási eszközt is tartalmaz, a [dinamikus csomagolás](dynamic-packaging-overview.md) mostantól támogatja a HLS kimenetének több hangsávot (4-es vagy újabb verzió).
+Ha több, több kodeket és nyelvet tartalmazó hangsávokkal rendelkező adatfolyam-továbbítási eszközt is tartalmaz, a [dinamikus csomagolás](encode-dynamic-packaging-concept.md) mostantól támogatja a HLS kimenetének több hangsávot (4-es vagy újabb verzió).
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea regionális pár nyitva van a Media Services 
 
@@ -352,7 +352,7 @@ További információkért tekintse [meg a felhőket és a régiókat, amelyekbe
 
 A Media Services teljesítmény-fejlesztési funkciókat tartalmazó frissítések lettek hozzáadva.
 
-* A feldolgozáshoz támogatott maximális fájlméret frissült. Lásd:, [kvóták és korlátok](limits-quotas-constraints.md).
+* A feldolgozáshoz támogatott maximális fájlméret frissült. Lásd:, [kvóták és korlátok](limits-quotas-constraints-reference.md).
 * A [kódolási sebesség fejlesztése](concept-media-reserved-units.md).
 
 ## <a name="april-2019"></a>2019. április
@@ -360,11 +360,11 @@ A Media Services teljesítmény-fejlesztési funkciókat tartalmazó frissítés
 ### <a name="new-presets"></a>Új beállításkészletek
 
 * A rendszer hozzáadta a [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) a beépített analizátor-előkészletekhez.
-* A rendszer hozzáadta a [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) a beépített kódoló-előbeállításokhoz. További információ: [Content-Aware kódolás](content-aware-encoding.md). 
+* A rendszer hozzáadta a [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) a beépített kódoló-előbeállításokhoz. További információ: [Content-Aware kódolás](encode-content-aware-concept.md). 
 
 ## <a name="march-2019"></a>2019. március
 
-A dinamikus csomagolás mostantól támogatja a Dolby Atmos-t. További információ: [dinamikus csomagolás által támogatott hangkodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+A dinamikus csomagolás mostantól támogatja a Dolby Atmos-t. További információ: [dinamikus csomagolás által támogatott hangkodekek](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging).
 
 Mostantól megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. További információ: [szűrők hozzárendelése a streaming Locator](filters-concept.md#associating-filters-with-streaming-locator)szolgáltatáshoz.
 
@@ -378,7 +378,7 @@ A [Microsoft. Media. JobOutputProgress](monitoring/media-services-event-schemas.
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard-és MPI-fájlok 
 
-Ha az MP4-fájl (ok) Media Encoder Standard kódolást hoz létre, a rendszer létrehoz egy új. MPI-fájlt, és hozzáadja a kimeneti eszközhöz. Ez az MPI-fájl a [dinamikus csomagolás](dynamic-packaging-overview.md) és a folyamatos átviteli forgatókönyvek teljesítményének növelésére szolgál.
+Ha az MP4-fájl (ok) Media Encoder Standard kódolást hoz létre, a rendszer létrehoz egy új. MPI-fájlt, és hozzáadja a kimeneti eszközhöz. Ez az MPI-fájl a [dinamikus csomagolás](encode-dynamic-packaging-concept.md) és a folyamatos átviteli forgatókönyvek teljesítményének növelésére szolgál.
 
 Ne módosítsa vagy távolítsa el az MPI-fájlt, vagy az ilyen fájl létezésére (vagy nem) való függőséget a szolgáltatásban.
 
@@ -518,7 +518,7 @@ Ha 09/28 és 10/12 közötti eszközöket vagy fiók-szűrőket hozott létre Me
 
 A .NET SDK-ban a következő funkciók találhatók:
 
-* **Átalakítja** és **feladatait** a médiatartalom kódolásához vagy elemzéséhez. Példák: adatfolyam- [fájlok](stream-files-tutorial-with-api.md) és- [elemzés](analyze-videos-tutorial-with-api.md).
+* **Átalakítja** és **feladatait** a médiatartalom kódolásához vagy elemzéséhez. Példák: adatfolyam- [fájlok](stream-files-tutorial-with-api.md) és- [elemzés](analyze-videos-tutorial.md).
 * **Streaming-lokátorok** tartalmak közzétételéhez és a végfelhasználói eszközökre való továbbításához
 * **Folyamatos átviteli szabályzatok** és **tartalmi kulcsokra vonatkozó házirendek** a kulcsfontosságú kézbesítés és a tartalomvédelem (DRM) konfigurálásához a tartalmak kézbesítése során.
 * Élő **események** és **élő kimenetek** élő adatfolyam-tartalmak betöltésének és archiválásának konfigurálásához.

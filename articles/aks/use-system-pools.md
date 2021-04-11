@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c65d3a7316d431c57d9fb75775e271bf9f34ca
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178830"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223268"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -43,7 +43,8 @@ A rendszercsomópont-készletek a következő korlátozásokkal rendelkeznek:
 * A Rendszerkészletek osType Linux rendszernek kell lennie.
 * A felhasználói csomópont-készletek osType lehet Linux vagy Windows.
 * A rendszerkészleteknek legalább egy csomópontot tartalmazniuk kell, és a felhasználói csomópontok készletei nulla vagy több csomópontot is tartalmazhatnak.
-* A rendszercsomópont-készletek legalább 2 vCPU és 4 GB memóriával rendelkező VM SKU-t igényelnek.
+* A rendszercsomópont-készletek legalább 2 vCPU és 4 GB memóriával rendelkező VM SKU-t igényelnek. A feltört virtuális gép (B sorozat) nem ajánlott.
+* Legalább két csomópont 4 vCPU ajánlott (pl. Standard_DS4_v2), különösen nagy méretű fürtök esetén (több CoreDNS Pod-replika, 3 – 4 + bővítmény stb.).
 * A rendszercsomópont-készleteknek legalább 30 hüvelyt kell támogatniuk, a [hüvelyek minimális és maximális értékének képlete][maximum-pods]szerint.
 * A helyszíni csomópont-készletek felhasználói csomópont-készleteket igényelnek.
 * Egy további rendszercsomópont-készlet hozzáadásával vagy a csomópont-készlet egy rendszercsomópont-készlettel való módosításával a rendszer *nem* helyezi át automatikusan a rendszerhüvelyeket. A rendszerhüvelyek továbbra is futhatnak ugyanazon a csomópont-készleten, még akkor is, ha egy felhasználói csomópont-készletre módosítják. Ha töröl vagy lekicsinyít egy olyan rendszerhüvelyt futtató csomópont-készletet, amely korábban a rendszercsomópont-készlet volt, akkor a rendszer ezeket a hüvelyeket az új rendszercsomópont-készletre helyezi át az előnyben részesített ütemezéssel.

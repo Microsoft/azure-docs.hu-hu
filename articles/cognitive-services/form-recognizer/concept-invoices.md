@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47c4c5bdc90e148916900b1e72bc2a392d2e473
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467391"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285331"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
 
-Az Azure-űrlap felismerője az előre elkészített számla modelljeivel elemezheti és kinyerheti az értékesítési számlákból származó információkat. A számla API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a számlákat, és a feldolgozott adatmennyiséget a számla feldolgozásának automatizálására. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/concept-recognizing-text.md) képességeket ötvözi a részletes tanulási modellekkel, hogy kinyerje a legfontosabb információkat a számlákból angol nyelven. Kibontja a szöveget, a táblákat és az információkat, például az ügyfelet, a szállítót, a számla AZONOSÍTÓját, a számla esedékes dátumát, a teljes összeget, a számla összegét, az adó mennyiségét, a szállítást, a számlázást, a sorok számát Az előre elkészített számla API nyilvánosan elérhető az űrlap felismerő v 2.1 előzetes verziójában.
+Az Azure-űrlap felismerője az előre elkészített számla modelljeivel elemezheti és kinyerheti az értékesítési számlákból származó információkat. A számla API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a számlákat, és a feldolgozott adatmennyiséget a számla feldolgozásának automatizálására. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/overview-ocr.md) képességeket ötvözi a részletes tanulási modellekkel, hogy kinyerje a legfontosabb információkat a számlákból angol nyelven. Kibontja a szöveget, a táblákat és az információkat, például az ügyfelet, a szállítót, a számla AZONOSÍTÓját, a számla esedékes dátumát, a teljes összeget, a számla összegét, az adó mennyiségét, a szállítást, a számlázást, a sorok számát Az előre elkészített számla API nyilvánosan elérhető az űrlap felismerő v 2.1 előzetes verziójában.
 
 ## <a name="what-does-the-invoice-service-do"></a>Mire szolgál a számlázási szolgáltatás?
 

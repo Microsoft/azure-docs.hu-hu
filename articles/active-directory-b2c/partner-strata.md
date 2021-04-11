@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49def79c467aa8f2b3fda9688dc77fcb003a34a5
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557174"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256565"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Oktatóanyag a helyi alkalmazások a rétegek használatával történő védelemének Azure AD B2C bővítéséhez
 
@@ -57,7 +57,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A képen egy Azure AD B2C integráció architektúrája látható a rétegek Maverics, hogy lehetővé váljon a hibrid alkalmazásokhoz való hozzáférés](./media/partner-strata/strata-architecture-diagram.png)
 
-| Lépések | Leírás |
+| Lépések | Description |
 |:-------|:---------------|
 | 1. | A felhasználó a helyszíni üzemeltetett alkalmazás elérésére vonatkozó kérést tesz elérhetővé. A Maverics Identity Orchestrator a felhasználó által az alkalmazásnak benyújtott kérelmet.|
 | 2. | A Orchestrator ellenőrzi a felhasználó hitelesítési állapotát. Ha nem kap munkamenet-jogkivonatot, vagy a megadott munkamenet-jogkivonat érvénytelen, a rendszer elküldi a felhasználónak, hogy Azure AD B2C a hitelesítéshez.|
@@ -344,4 +344,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

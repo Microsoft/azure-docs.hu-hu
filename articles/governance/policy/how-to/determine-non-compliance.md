@@ -1,14 +1,14 @@
 ---
 title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
-ms.date: 09/30/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: a8168bf22aceaf5cbdec4b1346801aa62b7aa4ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 66b0c6d7d0575e7361d04d16e6ba6fb06e36801b
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439833"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094115"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 

@@ -1,14 +1,14 @@
 ---
 title: 'Minta: logikai operátorok egy házirend-definícióban'
 description: Ez a Azure Policy minta bemutatja, hogyan használhatók a logikai operátorok egy házirend-definícióban.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: feb9e50b0c73c19027b747cf0f95fa1cb6fbd47c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88545590"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093350"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy minta: logikai operátorok
 
@@ -16,7 +16,7 @@ Egy házirend-definíció több feltételes utasítást is tartalmazhat. Előfor
 
 ## <a name="sample-1-one-logical-operator"></a>1. példa: egy logikai operátor
 
-Ez a szabályzat-definíció kiértékeli a CosmosDB-fiókokat, hogy ellenőrizze, hogy az automatikus feladatátvétel és több írási hely van-e konfigurálva. Ha nem, a [naplózás](../concepts/effects.md#audit) elindítja és létrehoz egy naplóbejegyzést a nem megfelelő erőforrás létrehozásakor vagy frissítésekor.
+Ez a szabályzat-definíció kiértékeli [Azure Cosmos db](../../../cosmos-db/introduction.md) fiókokat, hogy az automatikus feladatátvételek és a több írási hely van-e konfigurálva. Ha nem, a [naplózás](../concepts/effects.md#audit) elindítja és létrehoz egy naplóbejegyzést a nem megfelelő erőforrás létrehozásakor vagy frissítésekor.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
@@ -41,7 +41,7 @@ Ez a **' policyrule osztály. Ha** a Letiltás egyetlen **allOf** is tartalmaz, 
 
 ## <a name="sample-3-combining-logical-operators"></a>3. minta: logikai operátorok egyesítése
 
-Ez a házirend-definíció kiértékeli a Java Spring-fiókokat, hogy ellenőrizze, hogy nincs-e engedélyezve a nyomkövetés, vagy ha a nyomkövetés nem sikeres állapotban van.
+Ez a szabályzat-definíció kiértékeli az Azure-fiókok [rugóját](/azure/developer/java/spring-framework) , hogy ellenőrizze, hogy nincs-e engedélyezve a nyomkövetés, vagy a nyomkövetés nem sikeres állapotban van-e.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
 

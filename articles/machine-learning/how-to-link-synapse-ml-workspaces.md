@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640834"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227347"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Az Azure szinapszis Analytics és Azure Machine Learning munkaterületek (előzetes verzió) összekapcsolása
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy társított szolgáltatást, amely összeköti az [Azure szinapszis Analytics](/synapse-analytics/overview-what-is.md) -munkaterületet és [Azure Machine learning munkaterületet](concept-workspace.md).
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy társított szolgáltatást, amely összeköti az [Azure szinapszis Analytics](/azure/synapse-analytics/overview-what-is) -munkaterületet és [Azure Machine learning munkaterületet](concept-workspace.md).
 
 Ha az Azure szinapszis-munkaterülethez társított Azure Machine Learning-munkaterülettel rendelkezik, a skálán egy Apache Spark-készletet is csatolhat az adatok huzavona, és az azonos jegyzetfüzetből végezheti el a modell betanítását.
 

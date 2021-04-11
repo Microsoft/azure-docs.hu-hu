@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: ba332ed0e949c3c209dc3bd2d72d37187a200eea
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 32c56df5bafa9439fc559edf137c1080920cfb32
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030134"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284374"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Áttelepítési útmutató: MySQL – Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) MySQL-adatbázisát egy Azure SQL Database-adatbázisba a MySQL-hez készült [SQL Server MIGRATION](https://azure.microsoft.com/migration/migration-journey) Assistant (SSMA for MySQL) használatával. 
+Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) MySQL-adatbázisát egy Azure SQL Database-adatbázisba a MySQL-hez készült [SQL Server MIGRATION](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant (SSMA for MySQL) használatával. 
 
 Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatója](https://docs.microsoft.com/data-migration). 
 

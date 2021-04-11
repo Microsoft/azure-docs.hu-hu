@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3bc821f31e0463000c9089e48818249f2c046ede
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5ac8c5bb68430a1e886a89709d5e256beb8819c8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107102995"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257279"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -40,7 +40,7 @@ Az alábbi elérési úton az Azure digitális Twins-hoz Time Series Insights fo
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Útvonal létrehozása és szűrés az ikerpéldány frissítési értesítéseire
 
-Az Azure Digital Twins-példányok [dupla frissítési eseményeket](how-to-interpret-event-data.md) bocsátanak ki, amikor a Twin állapot frissül. Ebben a szakaszban egy Azure digitális Twins- [**esemény útvonalát**](concepts-route-events.md) fogja létrehozni, amely további feldolgozás céljából irányítja ezeket a frissítési eseményeket az Azure [Event Hubsba](../event-hubs/event-hubs-about.md) .
+Az Azure Digital Twins-példányok [kettős változási eseményeket](concepts-event-notifications.md#digital-twin-change-notifications) bocsátanak ki, amikor a Twin állapot frissül. Ebben a szakaszban egy Azure digitális Twins- [**esemény útvonalát**](concepts-route-events.md) fogja létrehozni, amely további feldolgozás céljából irányítja ezeket a frissítési eseményeket az Azure [Event Hubsba](../event-hubs/event-hubs-about.md) .
 
 Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md) egy olyan forgatókönyv segítségével, amelyben egy hőmérőt használ egy hőmérséklet-attribútum frissítésére egy olyan digitális ikeren, amely egy helyet jelöl. Ez a minta a Twin-frissítésekre támaszkodik, és nem továbbítja a telemetria egy IoT-eszközről, így rugalmasan módosíthatja az alapul szolgáló adatforrást anélkül, hogy frissítenie kellene a Time Series Insights logikát.
 

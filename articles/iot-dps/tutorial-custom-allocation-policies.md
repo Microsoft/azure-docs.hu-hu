@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258541"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227381"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Oktatóanyag: egyéni foglalási szabályzatok használata az eszközök kiépítési szolgáltatásával (DPS)
 
@@ -483,6 +483,17 @@ Az erőforráscsoport törlése név szerint:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Részletesebb egyéni kiosztási [szabályzatot például az egyéni foglalási házirendek használata](how-to-use-custom-allocation-policies.md)című témakörben talál.
-* További információ: [IoT hub eszköz](concepts-device-reprovision.md)újraépítése.
-* További részletekért lásd: [az előzőleg](how-to-unprovision-devices.md)kiépített eszközök kiépítése.
+Részletesebb egyéni kiosztási szabályzatot például a következő témakörben talál: 
+
+> [!div class="nextstepaction"]
+> [Egyéni kiosztási szabályzatok használata](how-to-use-custom-allocation-policies.md)
+
+* További információ:
+
+> [!div class="nextstepaction"]
+> [A IoT Hub eszköz újraépítésével kapcsolatos fogalmak](concepts-device-reprovision.md)
+
+* További részletekért lásd:
+
+> [!div class="nextstepaction"]
+> [Korábban kiépített eszközök megszüntetése](how-to-unprovision-devices.md)

@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/08/2021
 ms.author: matjazl
-ms.openlocfilehash: fbc683c98eb0124e8d879eada276593ca9bf7042
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934704"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284433"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Bizalmas ügyfélalkalmazás regisztrálása a Azure Active Directoryban
 
@@ -29,7 +29,7 @@ Az ügyfélalkalmazás regisztrálása egy olyan alkalmazás Azure AD-ábrázol�
 
 1. Válassza az **Alkalmazásregisztrációk** lehetőséget. 
 
-    ![Azure Portal. Új alkalmazás regisztrálása.](media/how-to-aad/portal-aad-new-app-registration.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure Portal. Új alkalmazás regisztrálása.":::
 
 1. Válassza az **új regisztráció** lehetőséget.
 
@@ -39,7 +39,7 @@ Az ügyfélalkalmazás regisztrálása egy olyan alkalmazás Azure AD-ábrázol�
 
 1. Választható Adjon meg egy **átirányítási URI**-t. Ezeket az adatokat később is megváltoztathatja, de ha ismeri az alkalmazás válaszának URL-címét, adja meg most.
 
-    ![Új bizalmas ügyfélalkalmazás regisztrálása.](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="Új bizalmas ügyfélalkalmazás regisztrálása.":::
 
 1. Válassza a **Regisztráció** lehetőséget.
 
@@ -49,7 +49,7 @@ Most, hogy regisztrálta az alkalmazását, ki kell választania, hogy mely API-
 
 1. Válassza az **API-engedélyek** lehetőséget.
 
-    ![Bizalmas ügyfél. API-engedélyek](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png" alt-text="Bizalmas ügyfél. API-engedélyek.":::
 
 1. Válassza **az engedély hozzáadása** lehetőséget.
 
@@ -70,11 +70,11 @@ Most, hogy regisztrálta az alkalmazását, ki kell választania, hogy mely API-
 
 1. Válassza a **tanúsítványok & titkok** lehetőséget, majd válassza az **új ügyfél titka** lehetőséget. 
 
-    ![Bizalmas ügyfél. Alkalmazás titka](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="Bizalmas ügyfél. Alkalmazás titka.":::
 
-1. Adja meg az ügyfél titkos kódjának **leírását** . Válassza a lejárat (1 év, 2 év vagy soha nem) lehetőséget, majd kattintson a **Hozzáadás** gombra.
+1. Adja meg az ügyfél titkos kódjának **leírását** . A lejárat időkeretének kiválasztásához válassza a **lejárat** legördülő menüt, majd kattintson a **Hozzáadás** gombra.
 
-   ![Ügyfél titkos kulcsának hozzáadása](media/how-to-aad/add-a-client-secret.png)
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="Adja hozzá az ügyfél titkos kulcsát.":::
 
 1. Az ügyfél titkos karakterláncának létrehozása után másolja az **értékét** és **azonosítóját**, és tárolja azokat biztonságos helyen.
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40e9e2b0e7437566a132f2402d3bed01b284d11a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102109024"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081132"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> Manuálisan aktivált Webjobs létrehozása
 
@@ -33,7 +33,7 @@ ms.locfileid: "102109024"
    | <abbr title="Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és a és a nem tartalmazhat különleges `-` karaktereket `_` .">Name</abbr> | myTriggeredWebJob | 
     | <abbr title="A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl.">Fájlfeltöltés</abbr> | ConsoleApp.zip |
     | <abbr title="A típusok között folyamatos, aktivált.">Típus</abbr> | Kiváltott | 
-    | <abbr title="A típusok a következők: ütemezett vagy manuális">Triggerek</a> | Kézi | |
+    | <abbr title="A típusok a következők: ütemezett vagy manuális">Triggerek</a> | Kézi | 
 
 4. Kattintson az **OK** gombra. 
 

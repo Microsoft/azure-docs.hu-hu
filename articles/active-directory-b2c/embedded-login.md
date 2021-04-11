@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc4450fb1e21211b43bc178d94cf4bdfe6da58e1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639912"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256786"
 ---
 # <a name="embedded-sign-in-experience"></a>Beágyazott bejelentkezési élmény
 
@@ -49,7 +49,7 @@ IFrame használatakor vegye figyelembe a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hajtsa végre az [első lépések az egyéni házirendek Active Directory B2Cban](custom-policy-get-started.md)című témakör lépéseit.
+* Hajtsa végre az [első lépések az egyéni házirendek Active Directory B2Cban](tutorial-create-user-flows.md?pivots=b2c-custom-policy)című témakör lépéseit.
 * [Engedélyezze az egyéni tartományokat](custom-domain.md) a szabályzatok számára.
 
 ## <a name="configure-your-policy"></a>A házirend konfigurálása
