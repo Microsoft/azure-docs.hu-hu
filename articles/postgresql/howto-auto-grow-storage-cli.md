@@ -1,18 +1,18 @@
 ---
 title: Tárterület automatikus növekedése – Azure CLI-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk azt ismerteti, hogyan konfigurálható az automatikus növekedés az Azure CLI-vel Azure Database for PostgreSQL – egyetlen kiszolgálón.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 8/7/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6b6f3875af4c7f0eace327d810c632a6bb217092
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e323dfd0449b0fb4ad5119955227a2aa9bea1031
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94534194"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551152"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Azure Database for PostgreSQL Storage – egyetlen kiszolgáló automatikus növelése az Azure CLI használatával
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for PostgreSQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.

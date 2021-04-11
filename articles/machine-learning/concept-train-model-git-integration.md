@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 11/16/2020
-ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 04/08/2021
+ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547849"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027805"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -25,6 +25,11 @@ A Azure Machine Learning teljes mértékben támogatja a nyomon követéshez has
 Ha Azure Machine Learningre küld el egy feladatot, ha a forrásfájlok egy helyi git-tárházban tárolódnak, akkor a rendszer a betanítási folyamat részeként nyomon követi a tárházra vonatkozó információkat.
 
 Mivel Azure Machine Learning nyomon követi a helyi git-tárház adatait, nem kötődik egyetlen konkrét központi adattárhoz sem. A tárházat a GitHub, a GitLab, a bitbucket, az Azure DevOps vagy más git-kompatibilis szolgáltatásból lehet klónozott.
+
+> [!TIP]
+> A Visual Studio Code használatával a git a grafikus felhasználói felületen keresztül kommunikálhat. Ha a Visual Studio Code használatával szeretne csatlakozni egy Azure Machine Learning távoli számítási példányhoz, tekintse meg a következőt: [kapcsolódás Azure Machine learning számítási példányhoz a Visual Studio Code-ban (előzetes verzió)](how-to-set-up-vs-code-remote.md)
+>
+> A Visual Studio Code Version Control funkcióival kapcsolatos további információkért lásd: a [Version Control használata a vs Code](https://code.visualstudio.com/docs/editor/versioncontrol) -ban, és [a GITHUB használata a vs Code-ban](https://code.visualstudio.com/docs/editor/github).
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git-adattárak klónozása a munkaterület fájlrendszerébe
 Azure Machine Learning megosztott fájlrendszert biztosít a munkaterület összes felhasználója számára.

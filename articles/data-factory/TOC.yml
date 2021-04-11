@@ -15,6 +15,8 @@
       href: quickstart-create-data-factory-portal.md
     - name: Adatfeldolgozó létrehozása – az Adatmásolás eszköz
       href: quickstart-create-data-factory-copy-data-tool.md
+    - name: Az adatelőállító létrehozása – Azure CLI
+      href: quickstart-create-data-factory-azure-cli.md
     - name: Adat-előállító létrehozása – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
     - name: Adat-előállító létrehozása – .NET
@@ -105,6 +107,8 @@
       items:
         - name: Adatok átalakítása leképezési adatfolyamokkal
           items:
+            - name: Ajánlott eljárások az adattároláshoz a tóban ADLS Gen2
+              href: tutorial-data-flow-write-to-lake.md
             - name: Adatátalakítás a tavon a Delta Lake-szel
               href: tutorial-data-flow-delta-lake.md
             - name: Adatok átalakítása leképezési adatfolyamokkal
@@ -789,9 +793,7 @@
         - name: Folyamattriggerek
           href: pipeline-trigger-troubleshoot-guide.md
         - name: Adatfolyamok
-          items:
-            - name: Adatfolyamatok áttekintése
-              href: data-flow-troubleshoot-guide.md
+          href: data-flow-troubleshoot-guide.md
         - name: Folyamatos integráció és üzembe helyezés
           href: ci-cd-github-troubleshoot-guide.md
         - name: Biztonság és hozzáférés-vezérlés
@@ -820,6 +822,8 @@
       href: /python/api/overview/azure/datafactory
     - name: Az Azure Policy beépített elemei
       href: policy-reference.md
+    - name: Azure CLI
+      href: /cli/azure/ext/datafactory/datafactory
 - name: További források
   items:
     - name: Tanulmányok

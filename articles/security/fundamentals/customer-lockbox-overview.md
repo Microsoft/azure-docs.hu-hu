@@ -7,27 +7,28 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 02/19/2021
-ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 80d1e4f39d69f761b801ccec834c0228057e4847
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461674"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448525"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Ügyfélszéf a Microsoft Azure-hoz
 
 > [!NOTE]
 > Ennek a funkciónak a használatához a szervezetnek rendelkeznie kell egy minimális **fejlesztői** szintű [Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/) .
 
-Az Ügyfélszéf a Microsoft Azure-hoz egy felületet biztosít az ügyfeleknek, ahol áttekinthetik, illetve jóváhagyhatják vagy elutasíthatják az ügyféladatok hozzáférési kérelmeit. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
+A Microsoft munkatársai és alprocesszorai által végrehajtott legtöbb művelet, támogatás és hibaelhárítás nem igényli az ügyféladatok elérését. Azokban a ritka esetekben, amikor szükség van az ilyen hozzáférésre, Ügyfélszéf a Microsoft Azure számára biztosít felületet az ügyfelek számára az ügyféladatok hozzáférési kérelmeinek áttekintéséhez és jóváhagyásához vagy elutasításához. Olyan esetekben használatos, amikor egy Microsoft mérnöknek hozzá kell férnie az ügyféladatok eléréséhez, akár egy ügyfél által kezdeményezett támogatási jegyre, akár a Microsoft által azonosított problémára válaszol.
 
 Ez a cikk bemutatja, hogyan engedélyezheti a Ügyfélszéf és a kulcstároló-kérelmek kezdeményezését, nyomon követését és tárolását a későbbi felülvizsgálatok és auditálások számára.
 
 <a name='supported-services-and-scenarios-in-general-availability'></a><a name='supported-services-and-scenarios-in-preview'></a>
-## <a name="supported-services-and-scenarios-general-availability"></a>Támogatott szolgáltatások és forgatókönyvek (általánosan elérhető)
+## <a name="supported-services-and-scenarios"></a>Támogatott szolgáltatások és forgatókönyvek
 
-A következő szolgáltatások már általánosan elérhetők a Ügyfélszéf számára:
+### <a name="general-availability"></a>Általános elérhetőség
+A következő szolgáltatások általánosan elérhetők a Ügyfélszéf számára:
 
 - Azure API Management
 - Azure App Service
@@ -49,6 +50,12 @@ A következő szolgáltatások már általánosan elérhetők a Ügyfélszéf sz
 - Azure Synapse Analytics
 - Virtuális gépek az Azure-ban (a távoli asztal elérését, a memóriaképek elérését és a felügyelt lemezeket is beleértve)
 
+### <a name="public-preview"></a>Nyilvános előzetes verzió
+A következő szolgáltatások jelenleg előzetes verzióban érhetők el a Ügyfélszéf számára:
+
+- Azure Machine Learning
+- Azure Batch
+
 ## <a name="enable-customer-lockbox"></a>Ügyfélszéf engedélyezése
 
 Mostantól engedélyezheti a Ügyfélszéf a Ügyfélszéf panel [adminisztrációs moduljában](https://aka.ms/customerlockbox/administration) .  
@@ -66,7 +73,7 @@ Az alábbi lépések egy Ügyfélszéf-kérelem tipikus munkafolyamatát ismerte
 
 3. Egy Azure-támogatási szakember áttekinti a szolgáltatási kérelmet, és meghatározza a probléma megoldásának következő lépéseit.
 
-4. Ha a támogatási szakember nem tudja elhárítani a problémát a szabványos eszközök és telemetria használatával, a következő lépés az igény szerinti (JIT) hozzáférési szolgáltatás használatával emelt szintű engedélyek kérése. Ez a kérelem az eredeti támogatási szakembertől vagy egy másik mérnöktől is származhat, mert a problémát az Azure DevOps csapata is felhasználja.
+4. Ha a támogatási szakember nem tudja elhárítani a problémát a szabványos eszközök és a szolgáltatás által generált adatforrások használatával, a következő lépés az igény szerinti (JIT) hozzáférési szolgáltatás használatával emelt szintű engedélyek kérése. Ez a kérelem az eredeti támogatási szakembertől vagy egy másik mérnöktől is származhat, mert a problémát az Azure DevOps csapata is felhasználja.
 
 5. Miután az Azure-mérnök elküldte a hozzáférési kérelmet, az igény szerinti szolgáltatás kiértékeli a kérelmet, figyelembe véve a következő tényezőket:
     - Az erőforrás hatóköre
@@ -129,8 +136,10 @@ Bevezetünk egy új alapszintű vezérlőelemet ([3,13](../benchmarks/security-c
 
 Ügyfélszéf kérelmeket a következő mérnöki támogatási helyzetekben nem indítja el a rendszer:
 
-- Egy Microsoft-mérnöknek olyan műveletet kell végrehajtania, amely a szabványos működési eljárásokon kívül esik. Például akkor, ha nem várt vagy kiszámíthatatlan forgatókönyvekben szeretné helyreállítani vagy visszaállítani a szolgáltatásokat.
-- A Microsoft-mérnök a hibaelhárítás során hozzáfér az Azure-platformhoz, és véletlenül az ügyféladatokhoz is hozzáfér. Például az Azure hálózati csapata olyan hibaelhárítást végez, amely egy hálózati eszközön lévő csomag rögzítését eredményezi. Ebben az esetben, ha az ügyfél az adatátvitel közben titkosítja az adatforgalmat, akkor a mérnök nem tudja beolvasni az adatforgalmat.
+- A szokásos működési eljárásokon kívül eső vészhelyzeti forgatókönyvek. Egy jelentős szolgáltatási leállás például azonnali figyelmet igényel a szolgáltatások helyreállítására vagy helyreállítására egy váratlan vagy kiszámíthatatlan forgatókönyvben. Ezek a "break Glass" események ritkák, és a legtöbb esetben nem igényelnek semmilyen hozzáférést az ügyféladatok feloldásához.
+- A Microsoft mérnöke a hibaelhárítás részeként fér hozzá az Azure platformhoz, és az ügyféladatokat véletlenül kiteszi. Például az Azure hálózati csapata olyan hibaelhárítást végez, amely egy hálózati eszközön lévő csomag rögzítését eredményezi. Ritkán fordul elő, hogy ezek a forgatókönyvek a vásárlói adatok jelentős mennyiségéhez férnek hozzá. Az ügyfelek az átvitel és a REST titkosítás használatával továbbra is védetté tehetik adataikat.
+
+Az Ügyfélszéf kérelmeket a külső jogi igények is nem aktiválják. További részletekért tekintse meg a Microsoft adatvédelmi központban található [adatokkal kapcsolatos kormányzati kérelmekről](https://www.microsoft.com/trust-center/) szóló vitát.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611827"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028743"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -31,6 +31,18 @@ Az itt leírt részletes tevékenység-naplókat **csak** az egyéni szabályzat
 ## <a name="set-up-application-insights"></a>Application Insights beállítása
 
 Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példányt az előfizetésében.
+
+> [!TIP]
+> Application Insights egyetlen példánya használható több Azure AD B2C bérlőhöz. Ezután a lekérdezésben szűrheti a bérlő vagy a szabályzat nevét. További információkért [tekintse meg a Application Insights](#see-the-logs-in-application-insights) mintákban található naplókat.
+
+Ha Application Insights kilépő példányát szeretné használni az előfizetésében, kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely tartalmazza az Azure-előfizetését (nem a Azure ad B2C könyvtárat).
+1. Nyissa meg a korábban létrehozott Application Insights erőforrást.
+1. Az **Áttekintés** lapon jegyezze fel a kialakítási **kulcsot**
+
+Az előfizetéshez tartozó Application Insights példányának létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely tartalmazza az Azure-előfizetését (nem a Azure ad B2C könyvtárat).
@@ -94,14 +106,61 @@ Az új naplók a Application Insightsban való megtekintése előtt rövid késl
 
 Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezéseket:
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |---------------------|--------------------|
-`traces` | A Azure AD B2C által generált naplók megtekintése |
-`traces | where timestamp > ago(1d)` | Az elmúlt nap Azure AD B2C által generált naplók megtekintése
+| `traces` | Az Azure AD B2C által generált összes napló lekérése |
+| `traces | where timestamp > ago(1d)` | Az elmúlt nap során Azure AD B2C által generált naplók beolvasása.|
+| `traces | where message contains "exception" | where timestamp > ago(2h)`|  Az elmúlt két órában hibákat tartalmazó összes napló beolvasása.|
+| `traces | where customDimensions.Tenant == "contoso.onmicrosoft.com" and customDimensions.UserJourney  == "b2c_1a_signinandup"` | Szerezze be Azure AD B2C *contoso.onmicrosoft.com* -bérlő által generált összes naplót, és a felhasználói út *b2c_1a_signinandup*. |
+| `traces | where customDimensions.CorrelationId == "00000000-0000-0000-0000-000000000000"`| A Azure AD B2C által generált összes napló beolvasása egy korrelációs AZONOSÍTÓhoz. Cserélje le a korrelációs azonosítót a korrelációs AZONOSÍTÓra. | 
 
 Előfordulhat, hogy a bejegyzések hosszúak. Exportálás CSV-be alaposabb keresés céljából.
 
 A lekérdezéssel kapcsolatos további információkért lásd: [Azure monitorban található lekérdezések áttekintése](../azure-monitor/logs/log-query-overview.md).
+
+## <a name="see-the-logs-in-vs-code-extension"></a>A VS Code bővítménnyel kapcsolatos naplók megtekintése
+
+Javasoljuk, hogy telepítse a [vs Code](https://code.visualstudio.com/)-hoz készült [Azure ad B2C-bővítményt](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) . A Azure AD B2C bővítménnyel a naplók a szabályzat neve, a korrelációs azonosító (az Application-elemzések a korrelációs azonosító első számjegyét) és a napló időbélyegzője alapján vannak rendszerezve. Ezzel a funkcióval a helyi időbélyeg alapján megtalálhatja a megfelelő naplót, és a Azure AD B2C által végrehajtott módon láthatja a felhasználói utat.
+
+> [!NOTE]
+> A Közösség a vs Code-bővítményt fejlesztette ki a Azure AD B2C számára, hogy segítse az identitás-fejlesztőket. A Microsoft nem támogatja a bővítményt, és a szolgáltatás szigorúan elérhetővé válik.
+
+### <a name="set-application-insights-api-access"></a>Application Insights API-hozzáférés beállítása
+
+A Application Insights beállítása és az egyéni házirend konfigurálása után be kell szereznie a Application Insights **API-azonosítót**, és létre kell hoznia az **API-kulcsot**. Azure AD B2C bővítmény az API-azonosítót és az API-kulcsot is használja, hogy beolvassa a Application Insights eseményeket (telemetriáiról). Az API-kulcsokat, például jelszavakat kell kezelni. Titok megőrzése.
+
+> [!NOTE]
+> Application Insights rendszerállapot-kulcsot, amelyet a Create korábbi Azure AD B2C használ a telemetriáiról küldéséhez a Application Insights. A kialakítási kulcsot csak az Azure AD B2C-házirendben használja, nem pedig a vs Code bővítményben.
+
+Application Insights-azonosító és-kulcs beszerzése:
+
+1. A Azure Portalban nyissa meg az alkalmazás Application Insights erőforrását.
+1. Válassza a **Beállítások**, majd az **API-hozzáférés** lehetőséget.
+1. Az **alkalmazás azonosítójának** másolása
+1. Válassza az **API-kulcs létrehozása** lehetőséget.
+1. Jelölje be az **olvasási telemetria** jelölőnégyzetet.
+1. Másolja a **kulcsot** az API-kulcs létrehozása panel bezárása előtt, és mentse biztonságos helyre. Ha elveszíti a kulcsot, létre kell hoznia egy másikat.
+
+    ![Képernyőkép, amely bemutatja, hogyan hozhat létre API-hozzáférési kulcsot.](./media/troubleshoot-with-application-insights/application-insights-api-access.png)
+
+### <a name="set-up-azure-ad-b2c-vs-code-extension"></a>Azure AD B2C VS Code bővítmény beállítása
+
+Most, hogy már rendelkezik Azure Application betekintő API-AZONOSÍTÓval és kulccsal, beállíthatja a vs Code bővítményt a naplók olvasásához. A Azure AD B2C VS Code bővítmény két hatókört biztosít a beállításokhoz:
+
+- **Felhasználói globális beállítások** – olyan beállítások, amelyek globálisan érvényesek a vs Code bármely példányára.
+- **Munkaterület-beállítások** – a munkaterületen belül tárolt beállítások, és csak a munkaterület megnyitásakor érvényesek (a vs Code **Open mappa** használatával).
+
+1. A **Azure ad B2C nyomkövetési** Explorerben kattintson a **Beállítások** ikonra.
+
+    ![Képernyőkép, amely bemutatja az Application bepillantást.](./media/troubleshoot-with-application-insights/app-insights-settings.png)
+
+1. Adja meg az Azure Application Insights **azonosítóját** és **kulcsát**.
+1. Kattintson a **Mentés** gombra.
+
+A beállítások mentése után az Application Insight-naplók megjelennek a **Azure ad B2C nyomkövetés (alkalmazás elemzése)** ablakban.
+
+![Képernyőkép a vscode Azure AD B2C-bővítményéről, amely az Azure Application ininsight-nyomkövetést mutatja be.](./media/troubleshoot-with-application-insights/vscode-extension-application-insights-trace.png)
+
 
 ## <a name="configure-application-insights-in-production"></a>Application Insights konfigurálása éles környezetben
 
@@ -128,12 +187,8 @@ Az éles környezet teljesítményének és jobb felhasználói élményének ja
    
 1. Töltse fel és tesztelje a szabályzatot.
 
+
+
 ## <a name="next-steps"></a>Következő lépések
 
-Az identitásfejlesztők munkájának megkönnyítése érdekében a közösség kidolgozott egy megtekintőt a felhasználói interakciósorozatokhoz. Az Application Insights-példányból olvassa be a felhasználói interakciósorozatot, és jól strukturált áttekintést biztosít róla. Ön beszerezheti a forráskódot, és üzembe helyezheti a saját megoldásában.
-
-A Microsoft nem támogatja a felhasználói utazási lejátszót, és a szolgáltatás szigorúan elérhetővé válik.
-
-Megtalálhatja a megtekintő azon verzióját, amely a GitHubon Application Insights eseményeket olvas be:
-
-[Azure-Samples/Active-Directory-B2C-Advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
+- Ismerje meg, hogyan lehet [elhárítani az egyéni házirendeket Azure ad B2C](troubleshoot-custom-policies.md)

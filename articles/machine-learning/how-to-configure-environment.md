@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 11/16/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 686274bc90f516f597a397a6b0270fb638e30c95
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501617"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027710"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Python-fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -134,7 +134,12 @@ A Visual Studio Code használata a fejlesztéshez:
 1. Telepítse a [Visual Studio Code](https://code.visualstudio.com/Download)-ot.
 1. Telepítse a [Azure Machine learning Visual Studio Code bővítményt](tutorial-setup-vscode-extension.md) (előzetes verzió).
 
-Miután telepítette a Visual Studio Code bővítményt, felügyelheti [Azure Machine learning erőforrásait](how-to-manage-resources-vscode.md), [futtathatja és hibakeresési kísérleteit](how-to-debug-visual-studio-code.md), valamint [betanított modelleket telepíthet](tutorial-train-deploy-image-classification-model-vscode.md).
+Miután telepítette a Visual Studio Code bővítményt, használja a következőre:
+
+* [Azure Machine Learning-erőforrások kezelése](how-to-manage-resources-vscode.md)
+* [Kapcsolódás Azure Machine Learning számítási példányhoz](how-to-set-up-vs-code-remote.md)
+* [Kísérletek futtatása és hibakeresése](how-to-debug-visual-studio-code.md)
+* [Betanított modellek üzembe helyezése](tutorial-train-deploy-image-classification-model-vscode.md).
 
 ## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure Machine Learning számítási példány
 
@@ -151,7 +156,7 @@ További információ a számítási példányokról, beleértve a csomagok tele
 
 A Jupyter Notebook-kiszolgáló és a JupyterLab mellett számítási példányokat is használhat az [integrált jegyzetfüzet szolgáltatásban Azure Machine learning Studióban](how-to-run-jupyter-notebooks.md).
 
-A Azure Machine Learning Visual Studio Code bővítmény használatával [egy Azure Machine learning számítási példányt is konfigurálhat távoli Jupyter notebook kiszolgálóként](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server).
+Azure Machine Learning a VS Code használatával a Visual Studio Code-bővítményt is használhatja a [távoli számítási példányokhoz való kapcsolódáshoz](how-to-set-up-vs-code-remote.md).
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Adatelemzési virtuális gép
 

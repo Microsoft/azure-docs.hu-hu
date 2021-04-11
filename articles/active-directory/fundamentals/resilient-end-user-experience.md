@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47a4a79fd423806693e86aef1edd132d844069e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cf49b1a2b7178800966342a3d52ed49450f3d97c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557904"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226684"
 ---
 # <a name="resilient-end-user-experience"></a>Rugalmas végfelhasználói élmény
 
@@ -42,7 +42,7 @@ Ha az üzleti követelményei teljesülnek, válassza a beépített felhasznál�
 
 Ha az üzleti követelmények miatt [Egyéni szabályzatokat választ](../../active-directory-b2c/custom-policy-get-started.md) , ügyeljen arra, hogy az alkalmazás szintű tesztelésen kívül a működési, a teljesítményre vagy a skálázásra vonatkozó házirend szintű tesztelést végezzen.
 
-Tekintse meg a [felhasználói folyamatokat és az egyéni házirendeket összehasonlító](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies) cikket, amely segítséget nyújt a döntéshez.
+Tekintse meg a [felhasználói folyamatokat és az egyéni házirendeket összehasonlító](../../active-directory-b2c/user-flow-overview.md#comparing-user-flows-and-custom-policies) cikket, amely segítséget nyújt a döntéshez.
 
 ## <a name="choose-multiple-idps"></a>Több IDP kiválasztása
 

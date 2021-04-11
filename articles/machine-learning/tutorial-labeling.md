@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 3a86f0eb88ba0a56f0887d71f649cf9b9d5ec7a3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882466"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227262"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt létrehozása a többosztályos képek besorolásához 
 
@@ -207,9 +207,7 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
-
-Ebben az oktatóanyagban a képeket címkézte.  Most használja a címkével ellátott adatait:
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Gépi tanulási rendszerkép-felismerési modell betanítása](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb).
+> [Hozzon létre egy adatcímkéző projektet, és exportálja a címkéket](how-to-create-labeling-projects.md).

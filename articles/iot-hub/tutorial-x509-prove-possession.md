@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 0eb91754c3c70a7b477d456158454f707a874207
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e2827a4f87398f0a37ef04f797d2c7276d1a66d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630717"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384170"
 ---
 # <a name="tutorial-proving-possession-of-a-ca-certificate"></a>Oktatóanyag: HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány birtoklásának igazolása
 
@@ -46,9 +46,11 @@ Miután feltöltötte a legfelső szintű hitelesítésszolgáltató (CA) tanús
 
     * Ha a Microsoft által megadott bash-parancsfájlt használja, futtassa a parancsot a `./certGen.sh create_verification_certificate "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` nevű tanúsítvány létrehozásához `verification-code.cert.pem` . További információ: [a Microsoft által biztosított parancsfájlok használata](tutorial-x509-scripts.md).
 
-    * Ha OpenSSL-t használ a tanúsítványok létrehozásához, először egy titkos kulcsot és egy tanúsítvány-aláírási kérelmet (CSR) kell előállítania:
+    * Ha OpenSSL-t használ a tanúsítványok létrehozásához, először egy titkos kulcsot kell kiállítania, majd egy tanúsítvány-aláírási kérelmet (CSR):
 
       ```bash
+      $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+
       $ openssl req -new -key pop.key -out pop.csr
 
       -----

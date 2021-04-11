@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149324"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276654"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -48,12 +48,8 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
 
 - Ha privát AK-fürtöt szeretne használni (az Azure Private link használatával), először létre kell hoznia a fürtöt, majd **csatolnia** kell a munkaterülethez. További információt a [privát Azure Kubernetes Service-fürt létrehozása](../aks/private-clusters.md)című témakörben talál.
 
-- Az AK-fürthöz tartozó számítási névnek egyedinek kell lennie az Azure ML-munkaterületen belül.
-    - A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.
-    - Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakter.
-    - A névnek betűvel kell kezdődnie.
-    - A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.
-   
+- Az AK-fürthöz tartozó számítási névnek egyedinek kell lennie az Azure ML-munkaterületen belül. Tartalmazhat betűket, számokat és kötőjeleket is. Betűvel kell kezdődnie, betűvel vagy számmal kell végződnie, és 3 – 24 karakter hosszúnak kell lennie.
+ 
  - Ha a modelleket **GPU** -csomópontokra vagy **FPGA** -csomópontokra (vagy bármely konkrét SKU-ra) szeretné telepíteni, akkor létre kell hoznia egy FÜRTÖt az adott SKU-val. Nem támogatott másodlagos csomópont-készlet létrehozása meglévő fürtben, valamint modellek üzembe helyezése a másodlagos csomópont-készletben.
  
 - Fürt létrehozásakor vagy csatolásakor kiválaszthatja, hogy a fürtöt __fejlesztési-tesztelési__ vagy __éles__ környezetben kívánja-e létrehozni. Ha nem éles környezetben szeretné létrehozni a __fejlesztéshez__, az __ellenőrzéshez__ és a __teszteléshez__ egy AK-fürtöt, állítsa be a __fürt célját__ a __dev-test__ értékre. Ha nem határozza meg a fürt célját, a rendszer létrehoz egy __éles__ fürtöt. 

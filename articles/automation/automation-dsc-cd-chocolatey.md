@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955e6b22c22d9cbe5891bcd0109806cb9270a456
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896325"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168654"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Folyamatos üzembe helyezés beállítása a Chocolatey segítségével
 
@@ -73,8 +73,8 @@ A használati példa teljes forrása ebben a [Visual Studio-projektben](https://
 Hitelesített ( `Connect-AzAccount` ) PowerShell parancssorban: (eltarthat néhány percig, amíg a lekérési kiszolgáló be van állítva)
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-New-AzAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+New-AzResourceGroup -Name MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES
+New-AzAutomationAccount -ResourceGroupName MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES -Name MY-AUTOMATION-ACCOUNT
 ```
 
 Az Automation-fiókját a következő régiókba helyezheti el (más néven helyként): USA 2. keleti régiója, USA déli középső régiója, US Gov Virginia, Nyugat-Európa, Délkelet-Ázsia, Kelet-Japán, Közép-India és Délkelet-Ausztrália, Közép-Kanada, Észak-Európa.
@@ -103,7 +103,7 @@ A manuális megközelítés is csak egyszer használható erőforrásként, kiv�
 2. Telepítse az integrációs modult.
 
     ```azurepowershell-interactive
-    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    Install-Module -Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
     ```
 
 3. Másolja a Module mappát a **C:\Program Files\WindowsPowerShell\Modules\MODULE-Name** egy ideiglenes mappába.
@@ -119,14 +119,14 @@ A manuális megközelítés is csak egyszer használható erőforrásként, kiv�
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME -ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 A példában szereplő példa a cChoco és a xNetworking vonatkozó lépéseket hajtja végre. 
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>4. lépés: a csomópont-konfiguráció hozzáadása a lekérési kiszolgálóhoz
 
-A konfigurációnak a lekéréses kiszolgálóra való első importálásakor és a fordításakor semmi nem különleges. Ugyanaz a konfiguráció minden későbbi importálása vagy összeállítása pontosan ugyanaz lesz. Minden alkalommal, amikor frissíti a csomagot, és le kell küldenie az éles környezetbe, ezt a lépést a konfigurációs fájl helyességének biztosítása után hajtja végre – beleértve a csomag új verzióját is. A konfigurációs fájl **ISVBoxConfig.ps1**:
+A konfigurációnak a lekéréses kiszolgálóra való első importálásakor és a fordításakor semmi nem különleges. Ugyanaz a konfiguráció minden későbbi importálása vagy összeállítása pontosan ugyanaz lesz. Minden alkalommal, amikor frissíti a csomagot, és le kell küldenie az éles környezetbe, ezt a lépést a konfigurációs fájl helyességének biztosítása után kell végrehajtania – beleértve a csomag új verzióját is. A konfigurációs fájl **ISVBoxConfig.ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -175,18 +175,18 @@ Itt látható a **New-ConfigurationScript.ps1** szkript (az az modul használat�
 
 ```powershell
 Import-AzAutomationDscConfiguration `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -SourcePath C:\temp\AzureAutomationDsc\ISVBoxConfig.ps1 `
-    -Published –Force
+    -Published -Force
 
 $jobData = Start-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -ConfigurationName ISVBoxConfig
 
 $compilationJobId = $jobData.Id
 
 Get-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -Id $compilationJobId
 ```
 

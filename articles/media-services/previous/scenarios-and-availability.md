@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: cb7500489cc4516b8cf44dd029c0831103dc53a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: add2a4aba1f7664b919e88992b2a1d71e8291b53
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103007933"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226769"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Gyakori forgatókönyvek Microsoft Azure Media Services
 
@@ -49,7 +49,7 @@ Kattintson a képre a teljes méretű megjelenítéshez.
 
 [![Diagram, amely a leggyakrabban használt objektumokat mutatja be a Azure Media Services objektum adatmodelljével való fejlesztés során.](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
-A teljes modellt [itt](https://media.windows.net/API/$metadata?api-version=2.15) tekintheti meg.  
+A teljes modellt [itt](https://m.eet.com/media/1170326/ms-part1.pdf) tekintheti meg.  
 
 ## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Tartalom védelme a tárolón és folyamatos médiatovábbítás tisztán (titkosítatlanul)
 

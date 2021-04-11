@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b24276974eba76aa841cdd7f02145210713474eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ed9aef66e9e1a672274b814abbc4e83600761f5
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872285"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028706"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -87,17 +87,17 @@ Ha a biztonsági démon legújabb verziójára szeretne frissíteni, használja 
    sudo apt-get install iotedge
    ```
 
-Ha a biztonsági démon egy adott verziójára szeretne frissíteni, adja meg a verziót az apt List kimenetből. Amikor frissül a **iotedge** , az automatikusan megkísérli frissíteni az **libiothsm-STD** csomagot a legújabb verzióra, ami függőségi ütközést eredményezhet. Ha nem a legújabb verziót fogja használni, ügyeljen arra, hogy mindkét csomagot ugyanarra a verzióra célozza meg. A következő parancs például a 1.0.9 kiadás egy adott verzióját telepíti:
+Ha a biztonsági démon egy adott verziójára szeretne frissíteni, adja meg a verziót az apt List kimenetből. Amikor frissül a **iotedge** , az automatikusan megkísérli frissíteni az **libiothsm-STD** csomagot a legújabb verzióra, ami függőségi ütközést eredményezhet. Ha nem a legújabb verziót fogja használni, ügyeljen arra, hogy mindkét csomagot ugyanarra a verzióra célozza meg. Az alábbi parancs például az 1,1 kiadás egy adott verzióját telepíti:
 
    ```bash
-   sudo apt-get install iotedge=1.0.9-1 libiothsm-std=1.0.9-1
+   sudo apt-get install iotedge=1.1.1 libiothsm-std=1.1.1
    ```
 
 Ha a telepíteni kívánt verzió az apt-get használatával nem érhető el, a curl használatával bármely verziót megcélozhat a [IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) adattárból. A telepíteni kívánt verzióhoz keresse meg a megfelelő **libiothsm-STD-** és **iotedge** -fájlokat az eszközhöz. Minden fájlhoz kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe. A hivatkozás címe segítségével telepítse az összetevők adott verzióit:
 
 ```bash
-curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
-curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo apt-get install ./libiothsm-std.deb
+curl -L <iotedge link> -o iotedge.deb && sudo apt-get install ./iotedge.deb
 ```
 <!-- end 1.1 -->
 :::moniker-end
@@ -140,7 +140,7 @@ Jelenleg nem támogatott a Windows rendszerű eszközökön futó IoT Edge 1,2-e
 
 ## <a name="update-the-runtime-containers"></a>A futásidejű tárolók frissítése
 
-A IoT Edge-ügynök és a IoT Edge hub-tárolók frissítésének módja attól függ, hogy a működés közbeni címkéket (például 1,0) vagy az adott címkéket (például 1.0.7) használja-e a telepítésben.
+A IoT Edge-ügynök és a IoT Edge hub-tárolók frissítésének módja attól függ, hogy a működés közbeni címkéket (például 1,1) vagy adott címkéket (például 1.1.1) használ-e a telepítésben.
 
 A parancsok vagy a segítségével keresse meg az eszközön a IoT Edge-ügynök és IoT Edge hub-modulok verzióját `iotedge logs edgeAgent` `iotedge logs edgeHub` .
 
@@ -156,13 +156,13 @@ A IoT Edge-ügynök és a IoT Edge hub-lemezképek a IoT Edge azon verziójával
 
 ### <a name="update-a-rolling-tag-image"></a>Egy gördülő címke rendszerképének frissítése
 
-Ha gördülő címkéket használ a központi telepítésben (például mcr.microsoft.com/azureiotedge-hub:**1,0**), akkor a lemezkép legújabb verziójának lekéréséhez kényszeríteni kell a tároló futtatókörnyezetét az eszközön.
+Ha gördülő címkéket használ a központi telepítésben (például mcr.microsoft.com/azureiotedge-hub:**1,1**), akkor a lemezkép legújabb verziójának lekéréséhez kényszeríteni kell a tároló futtatókörnyezetét az eszközön.
 
 Törölje a rendszerkép helyi verzióját a IoT Edge eszközről. Windows rendszerű gépeken a biztonsági démon eltávolítása eltávolítja a futtatókörnyezet lemezképeit is, így nem kell újból végrehajtania ezt a lépést.
 
 ```bash
-docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
-docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
+docker rmi mcr.microsoft.com/azureiotedge-hub:1.1
+docker rmi mcr.microsoft.com/azureiotedge-agent:1.1
 ```
 
 Előfordulhat, hogy a `-f` rendszerképek eltávolításához a Force jelzőt kell használnia.
@@ -171,7 +171,7 @@ A IoT Edge szolgáltatás lekéri a futásidejű lemezképek legújabb verzióit
 
 ### <a name="update-a-specific-tag-image"></a>Egy adott címke rendszerképének frissítése
 
-Ha adott címkéket használ a központi telepítésben (például mcr.microsoft.com/azureiotedge-hub:**1.0.8**), akkor mindössze annyit kell tennie, hogy frissíti a címkét a telepítési jegyzékben, és alkalmazza a módosításokat az eszközön.
+Ha adott címkéket használ a központi telepítésben (például mcr.microsoft.com/azureiotedge-hub:**1.1.1**), akkor mindössze annyit kell tennie, hogy frissíti a címkét a telepítési jegyzékben, és alkalmazza a módosításokat az eszközön.
 
 1. A Azure Portal IoT Hub válassza ki a IoT Edge eszközt, és válassza a **modulok beállítása** lehetőséget.
 
@@ -267,9 +267,9 @@ Most, hogy az eszközökön futó IoT Edge szolgáltatás frissítve lett, a cik
 
 Azure IoT Edge rendszeresen felszabadítja a IoT Edge szolgáltatás új verzióit. Az egyes stabil kiadások előtt egy vagy több Release Candidate (RC) verzió található. Az RC-verziók tartalmazzák a kiadás tervezett funkcióit, de továbbra is tesztelésen és ellenőrzésen mennek keresztül. Ha korábban egy új szolgáltatást szeretne tesztelni, telepítheti az RC-verziót, és visszajelzést küldhet a GitHubon keresztül.
 
-A kiadásra jelölt verziók ugyanazt a számozási konvenciót követik, mint a Releases, de a **-RC** és egy növekményes szám is a végéhez fűzve. A kiadási jelölteket megtekintheti a stabil verzióként megjelenő [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases) listájában. Például keresse meg a **1.0.9-RC5** és a **1.0.9-RC6**, amelyek közül kettő a **1.0.9** előtt érkezett kiadási jelöltek közül. Azt is láthatja, hogy az RC-verziók **előzetes** címkékkel vannak megjelölve.
+A kiadásra jelölt verziók ugyanazt a számozási konvenciót követik, mint a Releases, de a **-RC** és egy növekményes szám is a végéhez fűzve. A kiadási jelölteket megtekintheti a stabil verzióként megjelenő [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases) listájában. Például keresse meg a **1.2.0-RC4-** et, amely a **1.2.0** előtt kiadott kiadási jelöltek egyike. Azt is láthatja, hogy az RC-verziók **előzetes** címkékkel vannak megjelölve.
 
-A IoT Edge-ügynök és a hub-modulok olyan RC-verziókkal rendelkeznek, amelyek ugyanazon egyezménnyel vannak megjelölve. Például: **MCR.microsoft.com/azureiotedge-hub:1.0.9-RC6**.
+A IoT Edge-ügynök és a hub-modulok olyan RC-verziókkal rendelkeznek, amelyek ugyanazon egyezménnyel vannak megjelölve. Például: **MCR.microsoft.com/azureiotedge-hub:1.2.0-RC4**.
 
 Előzetes verzióként a Release Candidate verziók nem szerepelnek a normál telepítők által megcélzott legújabb verzióban. Ehelyett manuálisan kell megcéloznia a tesztelni kívánt RC-verzióhoz tartozó eszközöket. A legtöbb esetben az RC verzióra történő telepítés vagy frissítés ugyanaz, mint a IoT Edge egyéb speciális verzióinak megcélzása.
 

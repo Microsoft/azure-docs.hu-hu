@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2b4079b6d4eb39b65a7a60cd4d149c7748ab39ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5f9e28ac568f70801b2bd955c201712cfcb80084
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178881"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963327"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Az Azure Disk Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
 Az Azure Disk Container Storage Interface (CSI) illesztőprogramja az Azure Kubernetes szolgáltatás (ak) által az Azure-lemezek életciklusának kezeléséhez használt [CSI-specifikációnak](https://github.com/container-storage-interface/spec/blob/master/spec.md)megfelelő illesztőprogram.
@@ -71,9 +71,9 @@ test.txt
 
 Az alapértelmezett tárolási osztályok a leggyakoribb forgatókönyvek, de nem az összes. Bizonyos esetekben előfordulhat, hogy saját tárolási osztályt szeretne használni a saját paraméterekkel. Például van egy olyan forgatókönyv, amelyben érdemes lehet módosítani az `volumeBindingMode` osztályt.
 
-Az alapértelmezett tárolási osztályok olyan `volumeBindingMode: Immediate` osztályt használnak, amely garantálja, hogy a rendszer azonnal megtörténjen a PVC létrehozása után. Azokban az esetekben, amikor a csomópont-készletek topológia korlátozottak, például a rendelkezésre állási zónák használata, a PVs kötve vagy kiépítve lenne a pod ütemezési követelményeinek ismerete nélkül (ebben az esetben egy adott zónában kell lennie).
+Olyan `volumeBindingMode: Immediate` osztályt is használhat, amely garantálja, hogy a rendszer azonnal megtörténjen a PVC létrehozása után. Azokban az esetekben, amikor a csomópont-készletek topológia korlátozottak, például a rendelkezésre állási zónák használata, a PVs kötve vagy kiépítve lenne a pod ütemezési követelményeinek ismerete nélkül (ebben az esetben egy adott zónában kell lennie).
 
-Ennek a forgatókönyvnek a megoldásához használhatja a `volumeBindingMode: WaitForFirstConsumer` -t, amely késlelteti a PV kötését és kiépítési folyamatát, amíg a PVC-t használó Pod-t nem kell létrehozni. Így a PV a pod ütemezési korlátai által meghatározott rendelkezésre állási zónában (vagy más topológiában) lesz kiépítve.
+Ennek a forgatókönyvnek a megoldásához használhatja a `volumeBindingMode: WaitForFirstConsumer` -t, amely késlelteti a PV kötését és kiépítési folyamatát, amíg a PVC-t használó Pod-t nem kell létrehozni. Így a PV a pod ütemezési korlátai által meghatározott rendelkezésre állási zónában (vagy más topológiában) lesz kiépítve. Az alapértelmezett tárolási osztályok az `volumeBindingMode: WaitForFirstConsumer` osztályt használják.
 
 Hozzon létre egy nevű fájlt `sc-azuredisk-csi-waitforfirstconsumer.yaml` , és illessze be a következő jegyzékfájlt.
 A tárolási osztály megegyezik a `managed-csi` tárolási osztállyal, de egy másik `volumeBindingMode` osztállyal.

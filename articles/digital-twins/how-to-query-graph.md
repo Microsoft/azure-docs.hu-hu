@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d15e2b8bfcddfd1f554ab2a27083fe5256e9e2b
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462677"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226328"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -94,19 +94,14 @@ Mindhárom argumentumot együtt is át lehet adni: `IS_OF_MODEL(twinCollection, 
 
 A digitális ikrek **kapcsolatain** alapuló lekérdezések esetén az Azure digitális Twins lekérdezési nyelvének speciális szintaxisa van.
 
-A kapcsolatok a `FROM` záradékkal vannak bevonva a lekérdezés hatókörébe. A "klasszikus" SQL-Type nyelvek egyik fontos különbsége, hogy az ebben a `FROM` záradékban szereplő kifejezések nem táblázatos jellegűek, a záradék pedig az `FROM` entitások közötti kapcsolat bejárását fejezi ki, és a (z) Azure digitális Twins-verziójával van írva `JOIN` .
+A kapcsolatok a `FROM` záradékkal vannak bevonva a lekérdezés hatókörébe. A "klasszikus" SQL-Type nyelvektől eltérően `FROM` a záradékban szereplő kifejezések nem táblázatos jellegűek, hanem a `FROM` záradék az entitások közötti kapcsolat bejárását fejezi ki. A kapcsolatok közötti átjáráshoz az Azure Digital Twins a egyéni verzióját használja `JOIN` .
 
-Ne felejtse el, hogy az Azure Digital Twins [modell](concepts-models.md) képességeivel a kapcsolatok nem léteznek az ikrektől függetlenül. Ez azt jelenti, hogy az Azure Digital Twins lekérdezési nyelvben a `JOIN` kissé eltér az általános SQL-beli `JOIN`-tól, mert a kapcsolatok itt nem kérdezhetők le külön, hanem egy ikerpéldányhoz kell kötni azokat.
-Ennek a különbségnek a megnyilvánulása, hogy a `JOIN` záradékban a `RELATED` kulcsszóval lehet egy ikerpéldány kapcsolatainak halmazára hivatkozni.
+Ne felejtse el, hogy az Azure Digital Twins [modell](concepts-models.md) képességeivel a kapcsolatok nem léteznek az ikrektől függetlenül. Ez azt jelenti, hogy az itt található kapcsolatokat nem lehet egymástól függetlenül lekérdezni, és egy Twin-hez kell kötni.
+Ennek kezeléséhez a kulcsszó a `RELATED` záradékban szerepel, `JOIN` hogy lekérje a két gyűjteményből származó, bizonyos típusú kapcsolatok készletét. A lekérdezésnek ezután szűrnie kell `WHERE` azt a záradékot, amely a kapcsolati lekérdezésben (az ikrek értékeit használva) használt, adott iker (eke) t használja `$dtId` .
 
-A következő szakasz több példát mutat be, hogy ez hogyan néz ki.
+A következő részekben példákat talál arra, hogy mi így néz ki.
 
-> [!TIP]
-> Ez a funkció elméletileg a CosmosDB dokumentum-központú funkcióit utánozza, ahol a `JOIN` dokumentumon belüli gyermekobjektumok is elvégezhetők. A CosmosDB a `IN` kulcsszó használatával jelzi, hogy a az `JOIN` aktuális környezeti dokumentumban lévő tömb elemeinek megismétlésére szolgál.
-
-### <a name="relationship-based-query-examples"></a>Kapcsolaton alapuló lekérdezési példák
-
-Ha olyan adatkészletet szeretne beolvasni, amely kapcsolatokat tartalmaz, használjon egyetlen `FROM` utasítást, amelyet N utasítások követnek `JOIN` , ahol a `JOIN` utasítások egy korábbi vagy egy utasítás eredményéhez kapcsolódnak `FROM` `JOIN` .
+### <a name="basic-relationship-query"></a>Alapszintű kapcsolat lekérdezése
 
 Példa a kapcsolaton alapuló lekérdezésre. Ez a kódrészlet kiválasztja az összes olyan digitális ikreket, amelynek *ID* tulajdonsága "ABC", és az ezen digitális ikrekhez kapcsolódó összes digitális ikrek a következő kapcsolaton keresztül *szerepelnek* .
 
@@ -114,6 +109,18 @@ Példa a kapcsolaton alapuló lekérdezésre. Ez a kódrészlet kiválasztja az 
 
 > [!NOTE]
 > A fejlesztőnek nem kell `JOIN` összekapcsolnia ezt a záradékban található kulcs értékével `WHERE` (vagy a definícióban szereplő kulcs értékének megadásával `JOIN` ). Ezt az összefüggést a rendszer automatikusan számítja ki, mivel maguk a kapcsolat tulajdonságai azonosítják a célentitást.
+
+### <a name="query-by-the-source-or-target-of-a-relationship"></a>Lekérdezés a kapcsolat forrása vagy célja alapján
+
+A kapcsolat lekérdezési struktúrájának használatával azonosítható egy olyan digitális Twin, amely a kapcsolat forrását vagy célját jelöli.
+
+Például megkezdheti a forrást, és követheti a kapcsolatait, és megkeresheti a kapcsolatok cél ikreket. Az alábbi példa egy olyan lekérdezést mutat be, amely a Twin *Source-Twin forrásból* érkező *hírcsatornák* kapcsolatainak célját keresi.
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipSource":::
+
+Azt is megteheti, hogy megkezdi a kapcsolat célját, és visszanyomja a kapcsolatot, hogy megtalálja a forrás IKeret. Az alábbi példa egy olyan lekérdezésre mutat be példát, amely megkeresi a *hírcsatornák* kapcsolatának forrását a Twin *Target-Twin célra*.
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipTarget":::
 
 ### <a name="query-the-properties-of-a-relationship"></a>Kapcsolat tulajdonságainak lekérdezése
 
@@ -128,7 +135,9 @@ A fenti példában látható, hogy a *reportedCondition* a *servicedBy* -kapcsol
 
 ### <a name="query-with-multiple-joins"></a>Lekérdezés több illesztéssel
 
-Legfeljebb öt `JOIN` s támogatott egyetlen lekérdezésben. Ez lehetővé teszi, hogy egyszerre több kapcsolati szintet is bejárjon.
+Legfeljebb öt `JOIN` s támogatott egyetlen lekérdezésben. Ez lehetővé teszi, hogy egyszerre több kapcsolati szintet is bejárjon. 
+
+Több kapcsolati szinten történő lekérdezéshez használjon egyetlen `FROM` utasítást, amelyet N utasítások követnek `JOIN` , ahol a `JOIN` utasítások az előző vagy az utasítás eredményéhez kapcsolódnak `FROM` `JOIN` .
 
 Íme egy példa egy többcsatlakozásos lekérdezésre, amely az 1. és 2. helyiségekben található világos panelek összes izzóját lekéri.
 

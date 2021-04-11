@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: ff9d63459d0b645f14c62006a8f76f7dd4f986be
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 5fd209c612f90e3912e244daf60d20edf30a08c6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644382"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112851"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS SDK használatával SMS-üzenetek küldéséhez.
 
@@ -59,7 +59,7 @@ dotnet build
 Még az alkalmazás könyvtára alatt telepítse az Azure kommunikációs szolgáltatások SMS SDK for .NET-csomagot a `dotnet add package` paranccsal.
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
+dotnet add package Azure.Communication.Sms --version 1.0.0
 ```
 
 Adjon hozzá egy `using` direktívát a **program. cs** felső részéhez, hogy tartalmazza a `Azure.Communication` névteret.
@@ -120,7 +120,7 @@ A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a k
 Ha SMS-üzenetet szeretne küldeni a címzettek listájára, hívja `Send` meg a vagy a `SendAsync` függvényt a címzett telefonszámait tartalmazó SmsClient. A választható paramétereket is megadhatja annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani.
 
 ```csharp
-Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
+Response<IReadOnlyList<SmsSendResult>> response = smsClient.Send(
     from: "<from-phone-number>",
     to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" },
     message: "Weekly Promotion!",

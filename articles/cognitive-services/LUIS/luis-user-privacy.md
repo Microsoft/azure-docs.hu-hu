@@ -8,13 +8,13 @@ ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/10/2020
-ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2020
+ms.openlocfilehash: a7a7bbb8b911f86b81cdeafe3fe57e1fdf820681
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98680184"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228282"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Ügyféladatok exportálása és törlése Language Understanding (LUIS) Cognitive Services
 
@@ -85,7 +85,15 @@ Egyesült Államok authoring (más néven programozott API-k) erőforrásait az 
 
 * Az Európai vagy ausztráliai szerzői régiók nem támogatják az Azure földrajzi területeit
 
-Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által fogadott hosszúságú kimondott szöveg az Azure Egyesült Államok-földrajzában az aktív tanuláshoz lesz tárolva. 
+Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által fogadott hosszúságú kimondott szöveg az Azure Egyesült Államok-földrajzában az aktív tanuláshoz lesz tárolva.
+
+### <a name="switzerland-north"></a>Észak-Svájc
+
+A Észak-Svájc authoring (más néven programozási API-k) erőforrásai az Azure svájci régiójában üzemelnek, és támogatják a végpontok a következő Azure-régiókba való telepítését:
+
+* Svájc 
+
+Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által kapott hosszúságú kimondott szöveg az Azure svájci régiójában, az aktív tanuláshoz kell majd tárolni.
 
 ## <a name="disable-active-learning"></a>Aktív tanulás letiltása
 

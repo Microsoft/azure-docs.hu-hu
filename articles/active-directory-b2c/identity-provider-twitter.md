@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/06/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3699743c5d1b3330715984d2b6116cfebafe74f1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 97a8134e858112d7e1deff6744b5555c172692f2
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579827"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028179"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Twitter-fiókkal való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -45,7 +45,7 @@ Ha Azure AD B2C Twitter-fiókkal rendelkező felhasználók számára szeretné 
 1. A **hitelesítési beállítások** területen válassza a **Szerkesztés** lehetőséget.
     1. Jelölje be a **3 lábú OAuth engedélyezése** jelölőnégyzetet.
     1. Válassza **a kérelem e-mail címe a felhasználók számára** jelölőnégyzetet.
-    1. A **visszahívási URL-címek** esetében adja meg a értéket `https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` .  Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ha a bérlő nevét és a felhasználói folyamat azonosítóját adja meg, akkor is használja az összes kisbetűt, ha Azure AD B2C nagybetűvel vannak meghatározva. Cserélje le ezt:
+    1. A **visszahívási URL-címek** esetében adja meg a értéket `https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` .  Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ha a bérlő nevét és a felhasználói folyamat AZONOSÍTÓját adja meg, akkor is használja az összes kisbetűt, ha Azure AD B2C nagybetűvel vannak meghatározva. Cserélje le ezt:
         - `your-tenant-name` a bérlő nevének nevével.
         - `your-domain-name` az egyéni tartománnyal.
         - `your-user-flow-Id` a felhasználói folyamat azonosítójával. Például: `b2c_1a_signup_signin_twitter`. 
@@ -179,7 +179,7 @@ A Twitter-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja 
 ## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
 
 1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
-1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](tutorial-register-applications.md)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
 1. A regisztrációs vagy bejelentkezési oldalon válassza a **Twitter** lehetőséget a Twitter-fiókkal való bejelentkezéshez.
 

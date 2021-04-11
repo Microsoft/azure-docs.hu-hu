@@ -7,13 +7,13 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
-ms.date: 2/25/2020
-ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: b4b67a6bf4eea72b3a81bd01398cc60cc33c0d0a
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955057"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227041"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az App Configuration eléréséhez
 
@@ -145,7 +145,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >Ahogy az Azure- [erőforrások felügyelt identitások szolgáltatásával kapcsolatos gyakori kérdések](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), az alapértelmezett módszer a felügyelt identitás használatának feloldása. Ebben az esetben az Azure Identity Library arra kényszeríti, hogy adja meg a kívánt identitást, hogy elkerülje a bokréták futásidejű problémáit (például ha új felhasználó által hozzárendelt felügyelt identitást ad hozzá, vagy ha a rendszer által hozzárendelt felügyelt identitás engedélyezve van). Ezért akkor is meg kell adnia a clientId, ha csak egy felhasználó által hozzárendelt felügyelt identitás van definiálva, és nincs rendszerhez rendelt felügyelt identitás.
+    >Ahogy az Azure- [erőforrások felügyelt identitások szolgáltatásával kapcsolatos gyakori kérdések](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), az alapértelmezett módszer a felügyelt identitás használatának feloldása. Ebben az esetben az Azure Identity Library arra kényszeríti, hogy adja meg a kívánt identitást, hogy elkerülje a bokréták futásidejű problémáit (például ha új felhasználó által hozzárendelt felügyelt identitást ad hozzá, vagy ha a rendszer által hozzárendelt felügyelt identitás engedélyezve van). Ezért akkor is meg kell adnia a clientId, ha csak egy felhasználó által hozzárendelt felügyelt identitás van definiálva, és nincs rendszerhez rendelt felügyelt identitás.
 
 
 1. Ha az alkalmazás konfigurációs értékeit és a Key Vault hivatkozásokat is szeretné használni, frissítse a *program. cs* frissítést az alábbi ábrán látható módon. Ez a kód a (z `SetCredential` ) részeként meghívja `ConfigureKeyVault` a konfigurációs szolgáltatót, hogy milyen hitelesítő adatokat használjon a Key Vault hitelesítéshez.

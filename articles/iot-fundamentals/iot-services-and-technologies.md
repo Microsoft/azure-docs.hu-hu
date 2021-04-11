@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 311f8164803dd12664aa193f08c8a1095ee07e31
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96852812"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168705"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Milyen Azure-technológiákat és-szolgáltatásokat használhat a IoT-megoldások létrehozásához?
 
@@ -29,7 +29,7 @@ A [IoT Central alkalmazás platform](https://apps.azureiotcentral.com) csökkent
 
 Az Azure IoT Central egy teljes körűen felügyelt alkalmazás-platform, amely egyéni IoT-megoldások létrehozására használható. A IoT Central alkalmazás-sablonok használatával hozza létre a megoldásokat. Vannak sablonok általános megoldásokhoz és adott iparágakhoz, mint például az energia, az egészségügy, a kormányzat és a kereskedelmi. IoT Central alkalmazás-sablonok segítségével percek alatt üzembe helyezhet egy IoT Central alkalmazást, amelyet aztán testreszabhat a témákkal, az irányítópultokkal és a nézetekkel.
 
-A megoldáshoz való gyors kapcsolódáshoz válassza az [Azure Certified for IoT Device Catalog](https://catalog.azureiotsolutions.com) eszközeit. Az IoT Central webes felhasználói felülettel figyelheti és kezelheti az eszközöket, hogy azok egészségesek maradjanak és csatlakoztatva legyenek. Összekötők és API-k használatával integrálhatja IoT Central alkalmazását más üzleti alkalmazásokkal.
+A megoldáshoz való gyors kapcsolódáshoz válassza az [Azure Certified for IoT Device Catalog](https://devicecatalog.azure.com) eszközeit. Az IoT Central webes felhasználói felülettel figyelheti és kezelheti az eszközöket, hogy azok egészségesek maradjanak és csatlakoztatva legyenek. Összekötők és API-k használatával integrálhatja IoT Central alkalmazását más üzleti alkalmazásokkal.
 
 Teljes körűen felügyelt alkalmazási platformként IoT Central egy egyszerű, kiszámítható díjszabási modellel rendelkezik.
 
@@ -52,7 +52,7 @@ Ha teljesen új IoT-megoldást szeretne létrehozni, vagy IoT Central vagy megol
 
 ### <a name="devices"></a>Eszközök
 
-Fejlessze IoT-eszközeit az [Azure IoT Starter-készletek](https://catalog.azureiotsolutions.com/kits) egyikével, vagy válasszon ki egy eszközt, [amelyet az Azure Certified for IoT Device Catalog](https://catalog.azureiotsolutions.com)használatával használhat. A beágyazott kód implementálása a nyílt forráskódú [eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-k használatával. Az eszköz SDK-k több operációs rendszert támogatnak, mint például a Linux, a Windows és a valós idejű operációs rendszerek. Több programozási nyelvhez is vannak SDK-k, például a [C](https://github.com/Azure/azure-iot-sdk-c), a [Node.js](https://github.com/Azure/azure-iot-sdk-node), a [Java](https://github.com/Azure/azure-iot-sdk-java), a [.net](https://github.com/Azure/azure-iot-sdk-csharp)és a [Python](https://github.com/Azure/azure-iot-sdk-python).
+Fejlessze IoT-eszközeit az [Azure IoT Starter-készletek](https://devicecatalog.azure.com/kits) egyikével, vagy válasszon ki egy eszközt, [amelyet az Azure Certified for IoT Device Catalog](https://devicecatalog.azure.com)használatával használhat. A beágyazott kód implementálása a nyílt forráskódú [eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-k használatával. Az eszköz SDK-k több operációs rendszert támogatnak, mint például a Linux, a Windows és a valós idejű operációs rendszerek. Több programozási nyelvhez is vannak SDK-k, például a [C](https://github.com/Azure/azure-iot-sdk-c), a [Node.js](https://github.com/Azure/azure-iot-sdk-node), a [Java](https://github.com/Azure/azure-iot-sdk-java), a [.net](https://github.com/Azure/azure-iot-sdk-csharp)és a [Python](https://github.com/Azure/azure-iot-sdk-python).
 
 A [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) szolgáltatás használatával tovább egyszerűsítheti az eszközök beágyazott kódjának létrehozását. A IoT Plug and Play lehetővé teszi, hogy a megoldások fejlesztői bármilyen beágyazott kód írása nélkül integrálják az eszközöket a megoldásaikkal. A IoT-Plug and Play középpontjában az eszköz képességeinek leírására szolgáló _eszköz-képességi modell_ séma található. Az eszköz képességeinek modellje segítségével létrehozza a beágyazott eszköz kódját, és konfigurálhat egy felhőalapú megoldást, például egy IoT Central alkalmazást.
 

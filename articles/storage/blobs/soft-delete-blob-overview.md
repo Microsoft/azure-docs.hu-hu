@@ -9,16 +9,18 @@ ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 29d9dd7757319e59fc12b42d89c2ce16dec71b8b
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551067"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227024"
 ---
 # <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
 A blob Soft delete egy adott blobot, pillanatképet vagy verziót biztosít a véletlen törlésekről vagy felülírásokról azáltal, hogy a törölt adatok megadott ideig tart a rendszeren. A megőrzési időszak alatt a törölt objektumot visszaállíthatja az állapotára a törlésük időpontjában. A megőrzési időszak lejárta után az objektum véglegesen törölve lesz.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>Ajánlott adatvédelmi konfiguráció
 
@@ -29,8 +31,6 @@ A blob-törlés a blob-adatvédelemmel kapcsolatos átfogó adatvédelmi straté
 - BLOB törölje a törlést, hogy visszaállítsa a törölt blobot, pillanatképet vagy verziót. Ha szeretné megtudni, hogyan engedélyezheti a Blobok törlését, olvassa el a következőt: Blobok eltávolításának [engedélyezése és kezelése](soft-delete-blob-enable.md).
 
 További információ a Microsoft adatvédelmi javaslatairól: [Adatvédelem – áttekintés](data-protection-overview.md).
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-soft-delete-works"></a>A blob-törlés működése
 

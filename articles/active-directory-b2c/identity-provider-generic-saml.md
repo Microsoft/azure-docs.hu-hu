@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a66486d791968f5752b96ed00374f8662b9c30fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580045"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028298"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Az SAML-identitás-szolgáltatóval való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -227,7 +227,7 @@ Nyisson meg egy böngészőt, és navigáljon az URL-címre. Győződjön meg ar
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 1. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
 1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
-1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](tutorial-register-applications.md)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
 1. A regisztrációs vagy bejelentkezési oldalon válassza a **contoso** lehetőséget a contoso-fiókkal való bejelentkezéshez.
 

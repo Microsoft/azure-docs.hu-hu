@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439459"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228231"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -289,20 +289,20 @@ Ha meg szeretné őrizni a nem sérült kapcsolatokat, a következő lépésekke
 
 Miután az összes kapcsolaton áthaladt, az összes nem hozzáadott kapcsolat nevében törölje a sérült adataikat (ha van ilyen), és adja hozzá őket a Storage Explorer alábbi szabványos lépéseivel:
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. A **Start** menüben keresse meg a **hitelesítőadat-kezelőt** , és nyissa meg.
 2. Nyissa meg a **Windows rendszerbeli hitelesítő adatokat**.
 3. Az **általános hitelesítő adatok** területen keresse meg a kulcsot tartalmazó bejegyzéseket `<connection_type_key>/<corrupted_connection_name>` (például: `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Nyisson meg egy reflektorfényt (Command + szóköz), és keressen rá a **kulcstartó-hozzáférés** kifejezésre.
 2. Keresse meg a kulcsot tartalmazó bejegyzéseket `<connection_type_key>/<corrupted_connection_name>` (például: `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 A helyi hitelesítő adatok kezelése a Linux-disztribúciótól függően változhat. Ha a Linux-disztribúció nem biztosít beépített GUI-eszközt a helyi hitelesítő adatok kezeléséhez, telepíthet egy külső gyártótól származó eszközt a helyi hitelesítő adatok kezeléséhez. Használhatja például a [csikóhalat](https://wiki.gnome.org/Apps/Seahorse/), amely egy nyílt forráskódú GUI-eszköz a Linux helyi hitelesítő adatainak kezeléséhez.
 
@@ -356,7 +356,7 @@ Storage Explorer szükséges, hogy a .NET Core telepítve legyen a rendszeren. J
 > [!NOTE]
 > Storage Explorer 1.7.0 és korábbi verziókhoz a .NET Core 2,0 szükséges. Ha a .NET Core újabb verziója van telepítve, akkor a [Storage Explorer javításra](#patching-storage-explorer-for-newer-versions-of-net-core)van szükség. Ha Storage Explorer 1.8.0-t vagy újabb verziót futtat, legalább a .NET Core 2,1-es verzióra van szüksége.
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20,04](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20,04](#tab/2004)
 
 1. Töltse le a Storage Explorer. tar. gz fájlt.
 2. Telepítse a [.net Core-futtatókörnyezetet](/dotnet/core/install/linux):
@@ -369,7 +369,7 @@ Storage Explorer szükséges, hogy a .NET Core telepítve legyen a rendszeren. J
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Töltse le a Storage Explorer. tar. gz fájlt.
 2. Telepítse a [.net Core-futtatókörnyezetet](/dotnet/core/install/linux):
@@ -382,7 +382,7 @@ Storage Explorer szükséges, hogy a .NET Core telepítve legyen a rendszeren. J
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Töltse le a Storage Explorer. tar. gz fájlt.
 2. Telepítse a [.net Core-futtatókörnyezetet](/dotnet/core/install/linux):
@@ -431,6 +431,98 @@ Ha a Azure Portal **Megnyitás a Explorerben** gomb nem működik, győződjön 
 * Mozilla Firefox
 * Google Chrome
 * Microsoft Internet Explorer
+
+## <a name="gathering-logs"></a>Naplók összegyűjtése
+
+Amikor problémát jelent a GitHubon, előfordulhat, hogy bizonyos naplók összegyűjtését kéri a probléma diagnosztizálásához.
+
+### <a name="storage-explorer-logs"></a>Naplók Storage Explorer
+
+A 1.16.0 verziótól kezdődően a Storage Explorer különböző dolgokat naplóz a saját alkalmazás naplóiba. Ezeket a naplókat egyszerűen elérheti a Súgó > a naplók könyvtárának megnyitása lehetőségre kattintva. Alapértelmezés szerint a rendszer a részletes részletességgel Storage Explorer naplókat. A részletességi szint módosításához adjon hozzá egy környezeti változót a (z) névvel `STG_EX_LOG_LEVEL` , és a következő értékek bármelyikét:
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info` (alapértelmezett szint)
+- `verbose`
+- `debug`
+
+A naplók a futtatott Storage Explorer egyes munkameneteinek mappáira vannak bontva. Minden olyan naplófájl esetében, amelyet meg kell osztania, ajánlott zip-archívumba helyezni őket, a különböző mappák különböző munkameneteiből származó fájlokkal.
+
+### <a name="authentication-logs"></a>Hitelesítési naplók
+
+A bejelentkezéssel vagy a Storage Explorer hitelesítési könyvtárával kapcsolatos problémák esetén valószínűleg a hitelesítési naplókat kell összegyűjtenie. A hitelesítési naplók tárolása a következő helyen történik:
+- Windows: `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS és Linux `~/.ServiceHub/logs`
+
+Általában az alábbi lépéseket követve gyűjtheti össze a naplókat:
+
+1. Válassza a beállítások > a bejelentkezés > a részletes hitelesítési naplózás lehetőséget. Ha Storage Explorer a hitelesítési könyvtárával kapcsolatos probléma miatt nem indul el, a rendszer ezt elvégzi.
+2. Storage Explorer bezárásához.
+1. Opcionális/ajánlott: törölje a meglévő naplókat a `logs` mappából. Ezzel a művelettel csökkentheti a részünkre küldendő információk mennyiségét.
+4. Nyissa meg Storage Explorer és reprodukálja a problémát
+5. Storage Explorer lezárása
+6. A mappa tartalmának zip-je `log` .
+
+### <a name="azcopy-logs"></a>AzCopy-naplók
+
+Ha nem sikerül átadni az adatátvitelt, előfordulhat, hogy le kell kérnie a AzCopy-naplókat. A AzCopy-naplók két különböző módszer használatával könnyen megtalálhatók:
+- A sikertelen átvitelek továbbra is a tevékenység naplójában, kattintson a "Ugrás a AzCopy naplófájlra" elemre.
+- A múltban sikertelen átvitelekhez lépjen a AzCopy logs mappába. Ez a mappa a következő címen érhető el:
+  - Windows: `C:\Users\<your username>\.azcopy`
+  - macOS és Linux ~/.azcopy
+
+### <a name="network-logs"></a>Hálózati naplók
+
+Bizonyos problémák esetén a Storage Explorer által kezdeményezett hálózati hívások naplóit kell megadnia. Windows rendszeren ezt a Hegedűs használatával teheti meg.
+
+> [!NOTE]
+> A Hegedűs-Nyomkövetések tartalmazhatnak olyan jelszavakat, amelyeket a böngésző a nyomkövetés összegyűjtése során beírt/küldtünk. Mindenképpen olvassa el a Hegedűs-nyomkövetés megtisztításának utasításait. Ne töltse fel a Hegedűs nyomait a GitHubba. Itt láthatja, hol lehet biztonságosan elküldeni a Hegedűs nyomkövetését.
+
+1. rész: a Hegedűs telepítése és konfigurálása
+
+1. Hegedűs telepítése
+2. Hegedűs elindítása
+3. Válassza az eszközök > lehetőségek lehetőséget
+4. Kattintson a HTTPS lapra
+5. Győződjön meg arról, hogy a rögzítés összekapcsolása és a HTTPS-forgalom visszafejtése jelölőnégyzet
+6. Kattintson a Műveletek gombra
+7. Válassza a "megbízhatósági főtanúsítvány", majd az "igen" lehetőséget a következő párbeszédablakban.
+8. Kattintson ismét a Műveletek gombra
+9. Válassza a főtanúsítvány exportálása az asztalra lehetőséget
+10. Nyissa meg az asztalt
+11. A FiddlerRoot. cer fájl megkeresése
+12. Kattintson duplán a megnyitáshoz
+13. Ugrás a "Részletek" lapra
+14. Kattintson a Másolás fájlba... elemre.
+15. Az exportálás varázslóban válassza a következő beállításokat
+    - Base-64 kódolású X. 509
+    - A Fájlnév mezőben keresse meg a következőt:... C:\Users a \<your user dir> \AppData\Roaming\StorageExplorer\certs, majd bármilyen fájlnévként mentheti
+16. A tanúsítvány ablakának lezárása
+17. Kezdés Storage Explorer
+18. Ugrás a configure > proxy konfigurálása
+19. A párbeszédpanelen válassza az "alkalmazásproxy-beállítások használata" lehetőséget, és állítsa be az URL-címet http://localhost és a portot a 8888 értékre.
+20. Kattintson az OK gombra
+21. Újraindítás Storage Explorer
+22. Érdemes megtekinteni egy folyamat hálózati hívásait a `storageexplorer:` hegedűsben
+
+2. rész: a probléma reprodukálása
+1. A Hegedűs kivételével minden alkalmazás lezárása
+2. Törölje a Hegedűs naplóját (X ikon a bal felső sarokban, a Nézet menü közelében)
+3. Opcionális/ajánlott: hagyja, hogy a Hegedűs néhány percig legyen beállítva, ha megjelennek a hálózati hívások, kattintson a jobb gombbal rájuk, és válassza a "szűrés most" > "elrejtés" lehetőséget. <process name>
+4. Kezdés Storage Explorer
+5. Reprodukálja a hibát
+6. Kattintson a fájl > mentés > minden munkamenet..., mentés valahol, nem fogja elfelejteni
+7. A Hegedűs és a Storage Explorer lezárása
+
+3. rész: a Hegedűs nyomon követése
+1. Kattintson duplán a Hegedűs nyomkövetésére (. saz fájl)
+2. Nyomja le ENTER `ctrl`+`f`
+3. A megjelenő párbeszédpanelen győződjön meg arról, hogy a következő beállítások vannak beállítva: Search = kérelmek és válaszok, vizsgálat = fejlécek és testületek
+4. Keresse meg a Hegedűs nyomkövetésének begyűjtésekor használt jelszavakat, a Kiemelt bejegyzéseket, kattintson a jobb gombbal, és válassza az > kiválasztott munkamenetek eltávolítása lehetőséget.
+5. Ha a nyomkövetés összegyűjtése során biztosan megadott jelszavakat a böngészőben, de nem talál bejegyzéseket a CTRL + f használatakor, és nem szeretné módosítani a jelszavakat/a használt jelszavakat más fiókok esetében, ne hagyja ki a. saz fájl küldését. Jobb félni, mint elnézést. :)
+6. Mentse újra a nyomkövetést új névvel
+7. Nem kötelező: az eredeti nyomkövetés törlése
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a26f7c63b639f9aeb6a8f526e77dacb37fb4d87
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555635"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068064"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Az ügyfelek irányítópultja a kereskedelmi piactér elemzésében
 
@@ -163,6 +163,7 @@ _**1. táblázat: az adatszótár kifejezése**_
 | CommerceRootCustomer | Kereskedelmi gyökér ügyfél | Egy számlázási fiókazonosító több ügyfél-azonosítóval is társítható.<br>A Számlázási fiók AZONOSÍTÓjának és ügyfél-AZONOSÍTÓjának egy kombinációja több kereskedelmi piactér-előfizetéshez is társítható.<br>A kereskedelmi gyökér ügyfél az előfizetés ügyfelének nevét jelzi. | CommerceRootCustomer |
 | Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. | CustomerId |
 | Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A **Számlázási fiók azonosítójának** hozzárendelése a **Vevőkódhez** a kifizetési tranzakciós jelentés összekapcsolásához az ügyfél, a megrendelés és a használati jelentések segítségével. | BillingAccountId |
+| Ügyfél típusa | Ügyfél típusa | A mező értéke az ügyfél típusát jelképezi. Lehetséges értékek:<ul><li>egyes</li> <li>szervezet</li></ul> | CustomerType |
 |||||
 
 ### <a name="customers-page-filters"></a>Ügyfelek oldal szűrői

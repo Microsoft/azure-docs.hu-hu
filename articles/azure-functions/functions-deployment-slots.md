@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172409"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551356"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
 
@@ -20,9 +20,6 @@ A következő, a függvények a tárolóhelyek cseréjével kapcsolatos hatásai
 
 - A forgalom átirányítása zökkenőmentes; a swap miatt a rendszer nem távolítja el a kérelmeket.
 - Ha egy függvény egy csere közben fut, a végrehajtás folytatódik, és a következő eseményindítók átirányítva lesznek a felcserélt alkalmazás-példányra.
-
-> [!NOTE]
-> A Linux-használati csomag jelenleg nem érhető el.
 
 ## <a name="why-use-slots"></a>Miért érdemes tárolóhelyeket használni?
 
@@ -229,7 +226,7 @@ Az üzembe helyezési pontok két szinten támogatottak:
 | Windows-felhasználás       | Általános elérhetőség |
 | Windows Premium           | Általános elérhetőség  |
 | Dedikált Windows         | Általános elérhetőség |
-| Linux-felhasználás         | Nem támogatott          |
+| Linux-felhasználás         | Előnézet          |
 | Linux Premium             | Általános elérhetőség  |
 | Linux dedikált           | Általános elérhetőség |
 

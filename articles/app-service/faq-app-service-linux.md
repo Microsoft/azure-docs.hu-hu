@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100093998"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012607"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
 
@@ -144,6 +144,20 @@ Automatikus portok észlelése. Megadhat egy *WEBSITES_PORT* nevű alkalmazást,
 
 Nem, a platform kezeli a HTTPS-megszakítást a megosztott előtér-végpontokon.
 
+**A beépített tárolók esetében a Code változót kell használnia a kódban?**
+
+Nem, a port változó nem szükséges az automatikus port észlelése miatt. Ha nem észlelhető port, az alapértelmezett érték a 80.
+Egyéni port manuális konfigurálásához használja a Docker közzétett utasításokat, valamint a WEBSITES_PORT, amely a tárolóhoz való kötéshez szükséges port értékkel rendelkezik.
+
+**Szükség van a WEBSITES_PORT egyéni tárolók használatára?**
+
+Igen, ez az egyéni tárolók esetében kötelező. Egyéni port manuális konfigurálásához használja a Docker közzétett utasításokat, valamint a WEBSITES_PORT, amely a tárolóhoz való kötéshez szükséges port értékkel rendelkezik.
+
+**Használhatom ASPNETCORE_URLS a Docker-rendszerképben?**
+
+Igen, írja felül a környezeti változót a .NET Core-alkalmazás elindítása előtt.
+Például A init.sh parancsfájlban: export ASPNETCORE_URLS = {Your Value}
+
 ## <a name="multi-container-with-docker-compose"></a>Több tároló a Docker-összeállítással
 
 **Hogyan konfigurálja a Azure Container Registry (ACR) szolgáltatást több tárolóval való használatra?**
@@ -206,3 +220,4 @@ Az Alkalmazásbeállítások csak betűk (A-Z, a-z), számok (0-9) és aláhúz�
 - [Mi a Linux Azure App Service?](overview.md#app-service-on-linux)
 - [Átmeneti környezetek beállítása az Azure App Service-ben](deploy-staging-slots.md)
 - [Folyamatos üzembe helyezés a Web App for Containers](./deploy-ci-cd-custom-container.md)
+- [Tudnivalók: Web Apps és Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)

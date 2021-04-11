@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: aba9b71ec2fbfedecf08577c7bd2eae7a28a5588
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 2b96d62fb2be27de03964212557446d2e792beb8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644343"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112852"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Python SMS SDK használatával SMS-üzenetek küldéséhez.
 
@@ -23,11 +23,11 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 
 <!--**TODO: update all these reference links as the resources go live**
 
-[API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)--> 
+[API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)-->
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python](https://www.python.org/downloads/) 2,7 vagy 3.6 +.
 - Aktív kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
 - SMS-kompatibilis telefonszám. [Telefonszám beolvasása](../get-phone-number.md).
@@ -65,7 +65,7 @@ except Exception as ex:
 Még az alkalmazás könyvtára alatt telepítse az Azure kommunikációs szolgáltatások SMS SDK for Python-csomagot a `pip install` paranccsal.
 
 ```console
-pip install azure-communication-sms --pre
+pip install azure-communication-sms
 ```
 
 ## <a name="object-model"></a>Objektummodell
@@ -104,7 +104,7 @@ sms_responses = sms_client.send(
 
 ```
 
-`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number>` azt a telefonszámot, amelyhez üzenetet kíván küldeni. 
+`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number>` azt a telefonszámot, amelyhez üzenetet kíván küldeni.
 
 > [!WARNING]
 > Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
@@ -125,7 +125,7 @@ sms_responses = sms_client.send(
 
 ```
 
-`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number-1>` `<to-phone-number-2>` olyan telefonszám (oka) t, amelyhez üzenetet szeretne küldeni. 
+`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number-1>` `<to-phone-number-2>` olyan telefonszám (oka) t, amelyhez üzenetet szeretne küldeni.
 
 > [!WARNING]
 > Vegye figyelembe, hogy a telefonszámokat E. 164 nemzetközi szabvány formátumban kell megadni. (például: + 14255550123).
