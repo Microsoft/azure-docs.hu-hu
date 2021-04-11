@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/09/2019
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9408adfe33fc71707532f3bf5646f3727fd7dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b70d08363db212e5039690ceaaef5dbb55bcd65f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955054"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107273"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Videó kivágása Media Services-.NET-kódolással
 
@@ -31,9 +31,9 @@ A következő C#-példa egy olyan feladatot hoz létre, amely egy adott eszköz�
 
 A jelen témakörben ismertetett lépések végrehajtásához a következőket kell tennie:
 
-- [Azure Media Services-fiók létrehozása](./create-account-howto.md)
+- [Azure Media Services-fiók létrehozása](./account-create-how-to.md)
 - Hozzon létre egy átalakítót és egy bemeneti és kimeneti eszközöket. A .NET-oktatóanyag használatával megtekintheti, hogyan hozhat létre átalakítót és bemeneti és kimeneti eszközöket a [feltöltési, a kódolási és a stream-videóban](stream-files-tutorial-with-api.md) .
-- Tekintse át a [kódolási koncepcióval](encoding-concept.md) foglalkozó témakört.
+- Tekintse át a [kódolási koncepcióval](encode-concept.md) foglalkozó témakört.
 
 ## <a name="example"></a>Példa
 
@@ -92,4 +92,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Kódolás egyéni átalakítással](customize-encoder-presets-how-to.md) 
+[Kódolás egyéni átalakítással](encode-custom-presets-how-to.md) 

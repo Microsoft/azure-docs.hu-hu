@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562222"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166683"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -22,6 +22,21 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 
 __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következő URL-címet másolja és illeszti be a hírcsatorna-olvasóba: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-03-31"></a>2021-03-31
+### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio notebook-élmény (március frissítés)
++ **Új funkciók**
+  + CSV/TSV renderelése. A felhasználók a könnyebb adatelemzés érdekében rácsos formátumban tudják megjeleníteni és TSV/CSV formátumú fájlt. 
+  + Egyszeri bejelentkezéses hitelesítés a számítási példányhoz. A felhasználók mostantól egyszerűen hitelesíthetők az új számítási példányok közvetlenül a jegyzetfüzet felhasználói felületén, így könnyebben hitelesíthetők és használhatók közvetlenül az Azure SDK-k a AzureML-ben. 
+  + Számítási példány Metrikái. A felhasználók megtekinthetik a számítási mérőszámokat, például a CPU-használatot és a memóriát a terminálon keresztül.
+  + Fájl részletei. A felhasználók most már megtekinthetik a fájl részleteit, beleértve az utolsó módosítás időpontját és a fájlméretet is. ehhez kattintson a fájl melletti 3 pontra.
+
++ **Hibajavítások és javítások**
+  + Továbbfejlesztett oldal betöltési ideje.
+  + Jobb teljesítmény.
+  + Jobb sebesség és kernel megbízhatóság.
+  + Vertikális Real Estate – a notebook fájljának végleges mozgatásával
+  + A hivatkozások mostantól a terminálon is megtalálhatók
+  + Továbbfejlesztett IntelliSense-teljesítmény
 
 ## <a name="2021-03-08"></a>2021-03-08
 

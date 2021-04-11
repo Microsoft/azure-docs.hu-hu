@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f6e2474a533f5619d5544b674a87b6412323cc3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502446"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166734"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adatfeliratok automatikus címkézése
 
@@ -96,7 +96,7 @@ Ahhoz, hogy a MIP-érzékenységi címkéket az Azure-ban található Azure-eszk
 A MIP érzékenységi címkéjének az Azure hatáskörébe való kiterjesztésével a szervezetek mostantól felfedezhetik, beoszthatják és betekintést nyerhetnek az adatforrások szélesebb körébe, és minimalizálják a megfelelőségi kockázatot.
 
 > [!NOTE]
-> Mivel a Microsoft 365 és az Azure-beli hatáskörébe külön szolgáltatások tartoznak, lehetséges, hogy különböző régiókban lesznek telepítve. A címkék nevei és az egyéni bizalmas adatok típusának nevei a vásárlói adatoknak tekintendők, és alapértelmezés szerint ugyanabban a földrajzi helyen maradnak az adatok érzékenységének védelme és a GDPR-törvények elkerülése érdekében.
+> Mivel a Microsoft 365 és az Azure-beli hatáskörébe külön szolgáltatások tartoznak, lehetséges, hogy különböző régiókban lesznek telepítve. A címkék nevei és az egyéni bizalmas adatok típusának neve ügyfél-adatnak tekintendő, és alapértelmezés szerint ugyanazon a földrajzi helyen maradnak, hogy megvédje az adatok érzékenységét, és megfeleljen az adatvédelmi előírásoknak.
 >
 > Ebben az esetben a címkék és az egyéni bizalmas adattípusok nem az Azure-beli hatáskörébe vannak osztva, és az Ön beleegyezik, hogy az Azure hatáskörébe tartozik.
 

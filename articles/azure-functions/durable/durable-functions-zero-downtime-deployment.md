@@ -7,10 +7,10 @@ ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102558763"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
@@ -60,42 +60,42 @@ A következő ábra az üzembe helyezési pontok és a Storage-fiókok leírt ko
 
 ![Üzembe helyezési pontok és Storage-fiókok](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host.jspéldákon
+### <a name="hostjson-examples&quot;></a>host.jspéldákon
 
 A következő JSON-töredékek példák a *host.js* fájlhoz tartozó kapcsolatok karakterlánc-beállítására.
 
-#### <a name="functions-20"></a>Függvények 2,0
+#### <a name=&quot;functions-20&quot;></a>Függvények 2,0
 
 ```json
 {
-  "version": 2.0,
-  "extensions": {
-    "durableTask": {
-      "hubName": "MyTaskHub",
-      "storageProvider": {
-        "connectionStringName": "DurableManagementStorage"
+  &quot;version&quot;: 2.0,
+  &quot;extensions&quot;: {
+    &quot;durableTask&quot;: {
+      &quot;hubName&quot;: &quot;MyTaskHub&quot;,
+      &quot;storageProvider&quot;: {
+        &quot;connectionStringName&quot;: &quot;DurableManagementStorage&quot;
       }
     }
   }
 }
 ```
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name=&quot;functions-1x&quot;></a>Functions 1.x
 
 ```json
 {
-  "durableTask": {
-    "azureStorageConnectionStringName": "DurableManagementStorage"
+  &quot;durableTask&quot;: {
+    &quot;azureStorageConnectionStringName&quot;: &quot;DurableManagementStorage&quot;
   }
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>CI/CD-folyamat konfigurációja
+### <a name=&quot;cicd-pipeline-configuration&quot;></a>CI/CD-folyamat konfigurációja
 
 Konfigurálja a CI/CD-folyamatot úgy, hogy csak akkor telepítsen, ha a Function alkalmazás nem rendelkezik függőben lévő vagy nem futó munkafolyamati példányokkal. Az Azure-folyamatok használatakor létrehozhat egy függvényt, amely ezeket a feltételeket ellenőrzi, ahogy az alábbi példában is látható:
 
 ```csharp
-[FunctionName("StatusCheck")]
+[FunctionName(&quot;StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,

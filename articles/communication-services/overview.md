@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 40fe1e59b7c600e273b677d60bc162c767569c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0efdf48e78d0cc48e288bea354f5de5f9635c760
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728572"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106840"
 ---
 # <a name="what-is-azure-communication-services"></a>Az Azure Communication Services bemutatása
 
@@ -21,7 +21,7 @@ ms.locfileid: "105728572"
 > Az Azure kommunikációs szolgáltatásokkal felépített alkalmazások a Microsoft csapatával tudnak kommunikálni. További tudnivalókért tekintse meg a [csapat együttműködési](./quickstarts/voice-video-calling/get-started-teams-interop.md) dokumentációját.
 
 
-Az Azure kommunikációs szolgáltatások lehetővé teszik a valós idejű multimédiás hang-, videó-és telefonos IP-alapú kommunikációs funkciók egyszerű hozzáadását az alkalmazásaihoz. A kommunikációs szolgáltatások SDK-k is lehetővé teszik a csevegési és SMS-funkciók hozzáadását a kommunikációs megoldásokhoz.
+Az Azure kommunikációs szolgáltatások lehetővé teszik a valós idejű multimédiás hang-, videó-és telefonos IP-alapú kommunikációs funkciók egyszerű hozzáadását az alkalmazásaihoz. A kommunikációs szolgáltatások SDK-kódtárai lehetővé teszik a csevegési és SMS-funkciók hozzáadását a kommunikációs megoldásokhoz.
 
 <br>
 
@@ -40,14 +40,13 @@ A vegyes forgatókönyvek támogatottak. A kommunikációs szolgáltatások alka
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
-Az alábbi források nagyszerű helyet biztosítanak az Azure kommunikációs szolgáltatásainak megkezdéséhez. 
+Az alábbi források nagyszerű helyet biztosítanak az Azure kommunikációs szolgáltatásainak megkezdéséhez.
 <br>
 
 | Erőforrás                               |Leírás                           |
 |---                                    |---                                   |
 |**[Communication Services-erőforrás létrehozása](./quickstarts/create-communication-resource.md)**|Az Azure kommunikációs szolgáltatások használatának megkezdéséhez használja a Azure Portal vagy a Communication Services SDK-t az első kommunikációs szolgáltatások erőforrásának kiépítéséhez. A kommunikációs szolgáltatások erőforrás-kapcsolati karakterlánca után kiépítheti az első felhasználói hozzáférési jogkivonatait.|
 |**[Telefonszám beszerzése](./quickstarts/telephony-sms/get-phone-number.md)**|Az Azure kommunikációs szolgáltatásokkal telefonszámokat helyezhet üzembe és szabadíthat fel. Ezeket a telefonszámokat a kimenő hívások kezdeményezésére és SMS kommunikációs megoldások létrehozására lehet használni.|
-|**[SMS küldése az alkalmazásból](./quickstarts/telephony-sms/send.md)**|Az Azure Communication Services SMS SDK lehetővé teszi, hogy SMS-üzeneteket küldjön és fogadjon .NET-és JavaScript-alkalmazásaiból.|
 
 A kommunikációs szolgáltatások erőforrásának létrehozása után megkezdheti az ügyfél-forgatókönyvek, például a hang-és videohívás-hívások vagy a szöveges csevegés létrehozását.
 
@@ -57,30 +56,31 @@ A kommunikációs szolgáltatások erőforrásának létrehozása után megkezdh
 |**[Ismerkedés a hang-és videohívások meghívásával](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Az Azure kommunikációs szolgáltatások lehetővé teszik hang-és videohívás hozzáadását az alkalmazásokhoz a hívó SDK használatával. Ezt a kódtárat a WebRTC működteti, és lehetővé teszi, hogy az alkalmazásokon belül társközi, multimédia és valós idejű kommunikációt hozzon létre.|
 |**[Hívási alkalmazás csatlakoztatása Teams-értekezlethez](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Az Azure kommunikációs szolgáltatásaival egyéni Meeting-élmények hozhatók létre, amelyek a Microsoft csapatait használják. A kommunikációs szolgáltatási megoldás (ok) felhasználóinak interakcióba léphetnek a csapat résztvevőinek hang-, videó-, csevegési és nyomtatómegosztást.|
 |**[Ismerkedés a csevegéssel](./quickstarts/chat/get-started.md)**|Az Azure Communication Services csevegési SDK használatával valós idejű csevegést építhet be alkalmazásaiba.|
+|**[SMS küldése az alkalmazásból](./quickstarts/telephony-sms/send.md)**|Az Azure Communication Services SMS SDK lehetővé teszi, hogy SMS-üzeneteket küldjön és fogadjon .NET-és JavaScript-alkalmazásaiból.|
 
 ## <a name="samples"></a>Példák
 
-Az alábbi példák az Azure kommunikációs szolgáltatások SDK-k végpontok közötti kihasználtságát szemléltetik. Nyugodtan használhatja ezeket a mintákat a saját kommunikációs szolgáltatások megoldásának elindításához.
+Az alábbi példák az Azure kommunikációs szolgáltatások SDK-kódtárainak végpontok közötti kihasználtságát szemléltetik. Nyugodtan használhatja ezeket a mintákat a saját kommunikációs szolgáltatások megoldásának elindításához.
 <br>
 
 | Minta neve                               | Leírás                           |
 |---                                    |---                                   |
-|**[A Hero-mintát hívó csoport](./samples/calling-hero-sample.md)**|Ismerje meg, hogyan használható a kommunikációs szolgáltatások SDK-k egy csoportos hívási élmény létrehozására.|
-|**[A csoportos csevegési hős mintája](./samples/chat-hero-sample.md)**|Ismerje meg, hogy a kommunikációs szolgáltatások SDK-k hogyan használhatók csoportos csevegési élmény létrehozásához.|
+|**[A Hero-mintát hívó csoport](./samples/calling-hero-sample.md)**|Megtudhatja, hogyan használható a kommunikációs szolgáltatások SDK-kódtára egy csoportos hívási élmény létrehozásához.|
+|**[A csoportos csevegési hős mintája](./samples/chat-hero-sample.md)**|Ismerje meg, hogyan használható a kommunikációs szolgáltatások SDK-kódtára csoportos csevegési élmény létrehozásához.|
 
 
-## <a name="platforms-and-sdks"></a>Platformok és SDK-k
+## <a name="platforms-and-sdk-libraries"></a>Platformok és SDK-kódtárak
 
-Az alábbi források segítséget nyújtanak az Azure kommunikációs szolgáltatások SDK-k megismeréséhez:
+Az alábbi források segítséget nyújtanak az Azure Communication Services SDK-kódtárak megismeréséhez:
 
 | Erőforrás                               | Leírás                           |
 |---                                    |---                                   |
-|**[SDK-k és REST API-k](./concepts/sdk-options.md)**|Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat területre rendezik, amelyeket az SDK képvisel. A valós idejű kommunikációs igények alapján meghatározhatja, hogy mely SDK-kat szeretné használni.|
+|**[SDK-kódtárak és REST API-k](./concepts/sdk-options.md)**|Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat területre rendezik, amelyeket az SDK képvisel. A valós idejű kommunikációs igények alapján eldöntheti, hogy melyik SDK-kódtárat szeretné használni.|
 |**[Az SDK meghívása – áttekintés](./concepts/voice-video-calling/calling-sdk-features.md)**|Tekintse át a kommunikációs szolgáltatásokat hívó SDK áttekintése című témakört.|
 |**[A csevegési SDK áttekintése](./concepts/chat/sdk-features.md)**|Tekintse át a kommunikációs szolgáltatások csevegési SDK áttekintése című témakört.|
 |**[SMS SDK – áttekintés](./concepts/telephony-sms/sdk-features.md)**|Tekintse át a kommunikációs szolgáltatások SMS SDK áttekintése című témakört.|
 
-## <a name="compare-azure-communication-services"></a>Az Azure kommunikációs szolgáltatások összehasonlítása
+## <a name="other-microsoft-communication-services"></a>Egyéb Microsoft kommunikációs szolgáltatások
 
 Két másik Microsoft kommunikációs termék közül választhat, amelyek a kommunikációs szolgáltatásokkal közvetlenül nem működnek együtt:
 

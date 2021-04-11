@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798884"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107945"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
@@ -94,6 +94,23 @@ Nem állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák 
 - Az [elavult eszközök kezelésére](manage-stale-devices.md)szolgáló folyamat meghatározása és implementálása.
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosításához (például a számítógép megjelenített nevének előtagjának használatával), agresszíven kell lennie ezeknek az eszközöknek a tisztításához, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
    - A Windows aktuális és alacsonyabb szintű, nem állandó VDI-telepítések esetén olyan eszközöket kell törölni, amelyeknek 15 napnál régebbi **ApproximateLastLogonTimestamp** van.
+
+> [!NOTE]
+> Nem állandó VDI használata esetén, ha meg szeretné akadályozni az eszköz csatlakoztatását, győződjön meg arról, hogy a következő beállításkulcs van beállítva:  
+> `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
+>
+> Győződjön meg arról, hogy a Windows 10 1803-es vagy újabb verzióját futtatja.  
+>
+> Az elérési út alatti bármely adat barangolása `%localappdata%` nem támogatott. Ha a tartalom áthelyezését választja, győződjön meg `%localappdata%` arról, hogy a következő mappák és beállításkulcsok tartalma **soha nem** hagyja az eszközt semmilyen feltételben. Például: a profil áttelepítési eszközeinek ki kell hagyniuk a következő mappákat és kulcsokat:
+>
+> * `%localappdata%\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy`
+> * `%localappdata%\Packages\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy`
+> * `%localappdata%\Packages\<any app package>\AC\TokenBroker`
+> * `%localappdata%\Microsoft\TokenBroker`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+>
+
 
 ### <a name="persistent-vdi"></a>Állandó VDI
 

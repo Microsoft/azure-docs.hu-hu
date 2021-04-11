@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 4817a68ad74ed9a51f8b9ea67f3d271bbaa3423b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103466170"
 ---
 Ebben a kategóriában **31** javaslat van.
 
-|Ajánlás |Description |Súlyosság |
+|Ajánlás |Leírás |Súlyosság |
 |---|---|---|
 |Az API-alkalmazás csak HTTPS protokollon keresztül érhető el |A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.<br />(Kapcsolódó szabályzat: [az API-alkalmazás csak HTTPS protokollon keresztül érhető el](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb7ddfbdc-1260-477d-91fd-98bd9be789a6)) |Közepes |
 |Az Azure Defender for App Service engedélyezése szükséges |Az Azure Defender for App Service kihasználja a felhő méretezését, és azt, hogy az Azure hogyan rendelkezik felhőalapú szolgáltatóként, hogy figyelje a gyakori webalkalmazás-támadásokat.<br>Az Azure Defender for App Service képes észlelni az alkalmazásokkal kapcsolatos támadásokat, és azonosítani a feltörekvő támadásokat.<br><br>Fontos: szervizelését ez a javaslat a App Service-csomagok védelméért fizetendő díjakat eredményez. Ha nem rendelkezik App Service-csomaggal ebben az előfizetésben, nem számítunk fel díjat.<br>Ha a jövőben az előfizetéshez tartozó App Service terveket hoz létre, azok automatikusan védettek lesznek, és a díjak ekkor megkezdődik.<br> <a href='https://docs.microsoft.com/azure/security-center/security-center-app-services'>További információ az Azure Defender App Serviceról.</a><br />(Kapcsolódó szabályzat: [Az Azure Defender for app Service engedélyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)szükséges) |Magas |

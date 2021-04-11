@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 751e9337d74210d238be079e8fcd1bb973937846
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644439"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936852"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz az Ubuntu Server 18,04 x64-es csomag ügynökének használatával
 
@@ -19,7 +19,7 @@ A IoT Hub eszköz frissítése két frissítési formát támogat – a rendszer
 
 A Package-alapú frissítések olyan célzott frissítések, amelyek csak egy adott összetevőt vagy alkalmazást módosítanak az eszközön. Ez csökkenti a sávszélesség-használatot, és csökkenti a frissítés letöltésének és telepítésének idejét. A csomagok frissítései általában lehetővé teszik, hogy az eszközök kevesebb állásidőt alkalmazzanak, amikor frissítést alkalmaznak, és elkerülik a lemezképek létrehozásának terhelését.
 
-Ez az oktatóanyag végigvezeti azokon a lépéseken, amelyekkel teljes körű, a IoT Hub eszköz frissítésén keresztül végezhető el a csomagon alapuló frissítés. Ebben az oktatóanyagban egy Ubuntu Server 18,04 x64 rendszert futtató Azure IoT Edge és az eszköz-frissítési csomag ügynökét használjuk. Az oktatóanyag bemutatja a minta-csomagok frissítését, de a hasonló lépések használatával más csomagokat is frissíthet, például Azure IoT Edge vagy az általa használt tároló motort.
+Ez a teljes körű oktatóanyag végigvezeti a Azure IoT Edge az Ubuntu Server 18,04 x64-es frissítésén az eszköz frissítési csomag ügynökének használatával. Bár az oktatóanyag bemutatja a IoT Edge frissítését, hasonló lépésekkel frissítheti más csomagokat, például az általa használt tároló motort.
 
 Az oktatóanyag eszközei és fogalmai még akkor is érvényesek, ha eltérő operációsrendszer-platform-konfigurációt tervez használni. Fejezze be ezt a bevezetést egy teljes körű frissítési folyamatra, majd válassza ki a frissítés és az operációs rendszer platform előnyben részesített formáját a részletek kiszámításához.
 

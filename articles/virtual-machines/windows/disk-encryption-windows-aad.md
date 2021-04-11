@@ -10,10 +10,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555278"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption az Azure AD-vel a Windows rendszerű virtuális gépekhez (előző kiadás)
@@ -64,7 +64,7 @@ A következő táblázat felsorolja az új virtuális gépekhez tartozó Resourc
 | subnetName | Annak az alhálózatnak a neve a VNet, amelyhez a virtuális gép hálózati adapterének tartoznia kell. |
 | AADClientID | Az Azure AD-alkalmazás ügyfél-azonosítója, amely jogosultsággal rendelkezik a Key vaultba való titkok írásához. |
 | AADClientSecret | Az Azure AD-alkalmazás azon titkos kulcsa, amely a Key vaultba való titkos kódok írásához szükséges engedélyekkel rendelkezik. |
-| keyVaultURL | Azon kulcstartó URL-címe, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` vagy az Azure CLI használatával kérheti le `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
+| keyVaultURL | Azon kulcstartó URL-címe, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -VaultName "MyKeyVault&quot; -ResourceGroupName &quot;MyKeyVaultResourceGroupName").VaultURI` vagy az Azure CLI használatával kérheti le `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
 | keyEncryptionKeyURL | A generált BitLocker-kulcs titkosításához használt kulcs-titkosítási kulcs URL-címe (nem kötelező). </br> </br>A KeyEncryptionKeyURL egy opcionális paraméter. Saját KEK-t is használhat a kulcstartóban lévő adattitkosítási kulcs (jelszó titka) további védelméhez. |
 | keyVaultResourceGroup | A Key Vault erőforráscsoport. |
 | vmName | Annak a virtuális gépnek a neve, amelyen a titkosítási műveletet végre szeretné állítani. |

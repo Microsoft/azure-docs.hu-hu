@@ -366,9 +366,12 @@
   items:
     - name: Sablonok létrehozása
       items:
-        - name: Sablonfájl szerkezete
+        - name: JSON-struktúra
           displayName: 'parameters,variables,resources,outputs,condition'
           href: template-syntax.md
+        - name: Bicep struktúra
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: bicep-file.md
         - name: Sablonkifejezések írása
           href: template-expressions.md
         - name: Paraméterek

@@ -3,12 +3,12 @@ title: Bevezetés
 description: Ismerje meg az Azure VMware-megoldás funkcióit és előnyeit a VMware-alapú számítási feladatok Azure-beli üzembe helyezéséhez és kezeléséhez.
 ms.topic: overview
 ms.date: 03/24/2021
-ms.openlocfilehash: a75c04cf6b51068ef9867e3f9438b2820da703fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048816"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107986"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
@@ -19,11 +19,6 @@ Az Azure VMware-megoldás egy VMware-alapú ellenőrzött megoldás, amely a fej
 Az ábrán látható a privát felhők és a virtuális hálózatok közötti érintkezés az Azure-ban, az Azure-szolgáltatások és a helyszíni környezetek között. A privát felhőktől az Azure-szolgáltatásokhoz vagy virtuális hálózatok való hálózati hozzáférés az Azure szolgáltatási végpontok SLA-alapú integrálását teszi lehetővé. A ExpressRoute Global Reach összekapcsolja a helyszíni környezetet az Azure VMware-megoldás saját felhővel. 
 
 ![Az Azure VMware-megoldás saját felhővel való érintkezésének képe az Azure-ba és a helyszínen](./media/adjacency-overview-drawing-final.png)
-
-## <a name="customer-communication"></a>Ügyfél-kommunikáció
-A szolgáltatással kapcsolatos problémák, a tervezett karbantartás, az állapot-tanácsadók, a biztonsági tanácsadók értesítései a Azure Portal **Service Healthon** keresztül jelennek meg. Az értesítésekhez tartozó műveletnapló-riasztások beállításakor időben hajthat végre műveleteket. További információ: [szolgáltatás állapotára vonatkozó riasztások létrehozása a Azure Portal használatával](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
-
-:::image type="content" source="media/service-health.png" alt-text="Képernyőkép Service Health értesítésekről":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Gazdagépek, fürtök és privát felhők
 
@@ -60,6 +55,9 @@ A saját felhőben a következőket teheti:
 
 Az Azure VMware-megoldáson belüli figyelési minták hasonlóak az Azure-beli virtuális gépekhez a IaaS platformon belül. További információk és útmutatók: Azure-beli [virtuális gépek figyelése Azure monitorokkal](../azure-monitor/vm/monitor-vm-azure.md).
 
+## <a name="customer-communication"></a>Ügyfél-kommunikáció
+[!INCLUDE [customer-communications](includes/customer-communications.md)]
+
 ## <a name="next-steps"></a>Következő lépések
 
 A következő lépés a [saját felhő és a fürtök legfontosabb alapfogalmai](concepts-private-clouds-clusters.md)megismerése.
@@ -68,3 +66,5 @@ A következő lépés a [saját felhő és a fürtök legfontosabb alapfogalmai]
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
+
+

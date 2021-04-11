@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: e7735c4240529cc6fc9bb6470934dd335d22aa77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719610"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455382"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107562"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Kapcsolódás Media Services V3 API-hoz – .NET
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 .NET SDK-hoz 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét
+- [Hozzon létre egy Media Services fiókot](./account-create-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét
 - Telepítsen egy olyan eszközt, amelyet a .NET-fejlesztéshez szeretne használni. A cikkben ismertetett lépések bemutatják, hogyan használható a [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). A Visual Studio Code-ot használhatja [a C#](https://code.visualstudio.com/docs/languages/csharp)használata című témakörben. Másik lehetőségként más Kódszerkesztő is használható.
 
 > [!IMPORTANT]
@@ -237,14 +237,14 @@ namespace ConsoleApp1
 
 - [Oktatóanyag: videók feltöltése, kódolása és továbbítása – .NET](stream-files-tutorial-with-api.md) 
 - [Oktatóanyag: élő stream a Media Services v3-.NET-tel](stream-live-tutorial-with-api.md)
-- [Oktatóanyag: videók elemzése Media Services v3-.NET használatával](analyze-videos-tutorial-with-api.md)
+- [Oktatóanyag: videók elemzése Media Services v3-.NET használatával](analyze-videos-tutorial.md)
 - [Feladathoz tartozó bemenet létrehozása helyi fájlból – .NET](job-input-from-local-file-how-to.md)
 - [Feladathoz tartozó bemenet létrehozása egy HTTPS URL-címről – .NET](job-input-from-http-how-to.md)
-- [Kódolás egyéni átalakítással – .NET](customize-encoder-presets-how-to.md)
-- [AES-128 dinamikus titkosítás és a Key Delivery Service használata – .NET](protect-with-aes128.md)
-- [A DRM dinamikus titkosítása és a licenc kézbesítése szolgáltatás használata – .NET](protect-with-drm.md)
-- [Aláíró kulcs beszerzése a meglévő házirendből – .NET](get-content-key-policy-dotnet-howto.md)
-- [Szűrők létrehozása Media Services-.NET-tel](filters-dynamic-manifest-dotnet-howto.md)
+- [Kódolás egyéni átalakítással – .NET](encode-custom-presets-how-to.md)
+- [AES-128 dinamikus titkosítás és a Key Delivery Service használata – .NET](drm-playready-license-template-concept.md)
+- [A DRM dinamikus titkosítása és a licenc kézbesítése szolgáltatás használata – .NET](drm-protect-with-drm-tutorial.md)
+- [Aláíró kulcs beszerzése a meglévő házirendből – .NET](drm-get-content-key-policy-dotnet-how-to.md)
+- [Szűrők létrehozása Media Services-.NET-tel](filters-dynamic-manifest-dotnet-how-to.md)
 - [Speciális video igény szerinti példák a Azure Functions v2-re Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Lásd még
