@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100618975"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109747"
 ---
 # <a name="programmatically-manage-workbooks"></a>Munkafüzetek programozott kezelése
 
@@ -99,19 +99,19 @@ A munkafüzet-erőforrások két típusa felügyelhető programozott módon:
 
 ### <a name="galleries"></a>Katalógusok
 
-| Katalógus                                        | Erőforrás típusa                                      | Munkafüzet típusa |
-| :--------------------------------------------- |:---------------------------------------------------|:--------------|
-| Munkafüzetek Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
-| VM-bepillantást Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
-| Munkafüzetek a log Analytics-munkaterületen           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
-| Munkafüzetek Application Insights              | `microsoft.insights/component`                     | `workbook`    |
-| Hibaelhárítási útmutatók a Application Insights | `microsoft.insights/component`                     | `tsg`         |
-| Használat Application Insights                  | `microsoft.insights/component`                     | `usage`       |
-| Munkafüzetek a Kubernetes szolgáltatásban                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
-| Erőforráscsoportok munkafüzetek                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
-| Munkafüzetek Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
-| Virtuálisgép-bepillantást a Virtual Machines szolgáltatásban                | `microsoft.compute/virtualmachines`                | `insights`    |
-| A virtuálisgép-méretezési csoportokban található virtuális gépek      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| Katalógus                                        | Erőforrás típusa                                       | Munkafüzet típusa |
+|:-----------------------------------------------|:----------------------------------------------------|:--------------|
+| Munkafüzetek Azure Monitor                     | `Azure Monitor`                                     | `workbook`    |
+| VM-bepillantást Azure Monitor                   | `Azure Monitor`                                     | `vm-insights` |
+| Munkafüzetek a log Analytics-munkaterületen           | `microsoft.operationalinsights/workspaces`          | `workbook`    |
+| Munkafüzetek Application Insights              | `microsoft.insights/components`                     | `workbook`    |
+| Hibaelhárítási útmutatók a Application Insights | `microsoft.insights/components`                     | `tsg`         |
+| Használat Application Insights                  | `microsoft.insights/components`                     | `usage`       |
+| Munkafüzetek a Kubernetes szolgáltatásban                | `Microsoft.ContainerService/managedClusters`        | `workbook`    |
+| Erőforráscsoportok munkafüzetek                   | `microsoft.resources/subscriptions/resourcegroups`  | `workbook`    |
+| Munkafüzetek Azure Active Directory            | `microsoft.aadiam/tenant`                           | `workbook`    |
+| Virtuálisgép-bepillantást a Virtual Machines szolgáltatásban                | `microsoft.compute/virtualmachines`                 | `insights`    |
+| A virtuálisgép-méretezési csoportokban található virtuális gépek      | `microsoft.compute/virtualmachinescalesets`         | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Munkafüzet-példány üzembe helyezésének Azure Resource Manager sablonja
 

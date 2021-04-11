@@ -2,18 +2,15 @@
 title: Azure-ról Azure-ra Azure Site Recovery vész-helyreállítási architektúrája
 description: Az Azure-beli virtuális gépek Azure-régiói közötti vész-helyreállítást biztosító architektúra áttekintése, az Azure Site Recovery szolgáltatás használatával.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
-ms.author: raynew
-ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38bf9d41f81a76c4263952a94b5526984db0705f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652245"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580938"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 

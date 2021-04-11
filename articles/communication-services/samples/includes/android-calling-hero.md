@@ -2,26 +2,29 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: azure-communication-services
-author: mikben
-manager: mikben
+author: ddematheu2
+manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: e8ef354480c69fa9b0b5407c88209b368485127d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
-ms.translationtype: HT
+ms.author: dademath
+ms.openlocfilehash: c6e8be5462e0caffec7a1c88dae54f3f818ec323
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729753"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498761"
 ---
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
+
+
 Az Azure kommunikációs szolgáltatások **csoport az Androidhoz készült Hero-minta** azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg az Android SDK-t, hogy a hangvételt és a videót is tartalmazó csoportos hívást hozzon létre. Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be és futtathatja a mintát. A minta áttekintése a kontextusban.
 
 ## <a name="download-code"></a>Kód letöltése
 
-A gyors útmutatóhoz tartozó véglegesített kód megkeresése a [githubon](https://github.com/Azure-Samples/communication-services-android-calling-hero).
+Keresse meg a minta projektjét a [githubon](https://github.com/Azure-Samples/communication-services-android-calling-hero). A minta [csapatokkal való együttműködéssel](../../concepts/teams-interop.md) rendelkező verziója különálló [ágban](https://github.com/Azure-Samples/communication-services-android-calling-hero/tree/feature/teams_interop)található.
 
 ## <a name="overview"></a>Áttekintés
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 590ad577f3648ea9214ec4dcb6b6cab59dd5a3f1
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 8f968572a357bb3c98d9c3133a7ec0a0a94dbf93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104219"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958404"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Gyors útmutató: Face ügyféloldali kódtár a JavaScripthez
 
@@ -24,7 +24,7 @@ A következőhöz használhatja a Face ügyféloldali kódtárat a JavaScripthez
 
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása](#create-a-person-group)
+* [PersonGroup létrehozása](#create-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 
 [Dokumentáció](/javascript/api/@azure/cognitiveservices-face/)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Példák](/samples/browse/?products=azure&term=face&languages=javascript)
@@ -106,7 +106,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő f
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása](#create-a-person-group)
+* [PersonGroup létrehozása](#create-a-persongroup)
 * [Arc azonosítása](#identify-a-face)
 
 > [!TIP]
@@ -163,27 +163,27 @@ A következő metódus észleli a megcélzott lemezképekben található arcokat
 
 Az [azonosítási](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup), egy olyan, a különböző [személy](/javascript/api/@azure/cognitiveservices-face/person) objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek. Az azonosítási művelet végrehajtásához először létre kell hoznia és be kell tanítania egy [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
-### <a name="add-faces-to-person-group"></a>Arcok felvétele a person csoportba
+### <a name="add-faces-to-persongroup"></a>Arcok hozzáadása a PersonGroup
 
 Hozza létre a következő függvényt az arcok hozzáadásához a [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
-### <a name="wait-for-training-of-person-group"></a>Várakozás a személy csoport betanítására
+### <a name="wait-for-training-of-persongroup"></a>Várakozás a PersonGroup betanítására
 
-Hozza létre a következő segítő függvényt, hogy megvárja, amíg a személy csoport befejeződik a képzés.
+Hozza létre a következő segítő függvényt, és várjon, amíg a **PersonGroup** befejeződik.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="wait_for_training":::
 
-### <a name="create-a-person-group"></a>Személy csoport létrehozása
+### <a name="create-a-persongroup"></a>PersonGroup létrehozása
 
 A következő kód:
-- Létrehoz egy [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)
-- A korábban definiált hívással hozzáadja az arcokat a személy csoporthoz `AddFacesToPersonGroup` .
-- A személy csoportjának bevonata.
-- A személy csoportba tartozó arcokat azonosítja.
+- Létrehoz egy [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup)
+- A korábban definiált hívással hozzáadja az arcokat a **PersonGroup** `AddFacesToPersonGroup` .
+- Betanítja a **PersonGroup**.
+- A **PersonGroup** lévő arcokat azonosítja.
 
-Most már készen áll arra, hogy az ellenőrzési, azonosítási vagy csoportosítási műveletekben felhasználja ezt a **személy** csoportot és a hozzá tartozó **személyeket** .
+A **PersonGroup** és a hozzá tartozó **személyre** vonatkozó objektumok most már készen állnak az ellenőrzési, azonosítási vagy csoportosítási műveletekben való használatra.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 

@@ -295,6 +295,8 @@
           href: enable-host-encryption.md
     - name: Monitorozás és naplózás
       items:
+        - name: Fürtmetrikák megtekintése
+          href: view-metrics.md
         - name: Azure Monitor tárolókhoz
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
@@ -349,6 +351,8 @@
       items:
         - name: A szolgáltatáshálók bemutatása
           href: servicemesh-about.md
+        - name: A Service Mesh (ak) bővítmény megnyitása (előzetes verzió)
+          href: servicemesh-osm-about.md
         - name: Az Istio használata
           items:
             - name: Az Istio bemutatása

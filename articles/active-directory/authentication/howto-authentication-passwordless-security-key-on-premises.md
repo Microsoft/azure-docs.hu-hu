@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef56db4ef67515d14f8462db2975e68a1a86f238
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647472"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959857"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory 
 
@@ -193,6 +193,8 @@ Ha a hibrid Azure AD-hez csatlakoztatott gép tiszta telepítését végzi, a ta
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Nem tudom beolvasni az SSO-t az NTLM hálózati erőforráshoz a parancssori felülettel való bejelentkezés után, és hitelesítő adatok kérése
 
 Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a kimenetét `nltest /dsgetdc:contoso /keylist /kdc` .
+
+Megjegyzés: Ez a/keylist kapcsoló a Nltest parancsban található az ügyfél Windows 10 v2004 vagy újabb verziójának használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 

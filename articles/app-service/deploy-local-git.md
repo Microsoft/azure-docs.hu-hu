@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5dd6183bf88c167adb2f084c319cd90b94351dfb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: faf3afc60c8517509199e6a306f511a15b32358c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100560495"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732839"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi git üzembe helyezése Azure App Service
 
@@ -140,6 +140,7 @@ A következő gyakori hibaüzenetek jelenhetnek meg, ha a git használatával te
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Az alkalmazás nem működik.|Indítsa el az alkalmazást a Azure Portal. A git-telepítés nem érhető el a webalkalmazás leállításakor.|
 |`Couldn't resolve host 'hostname'`|Az "Azure" távoli adatcímeinek adatai helytelenek.|A `git remote -v` parancs használatával listázhatja az összes távoli, valamint a hozzá tartozó URL-címet. Győződjön meg arról, hogy az "Azure" távoli URL-címe helyes. Ha szükséges, távolítsa el, majd hozza létre újra a távoli elérést a megfelelő URL-cím használatával.|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Nem adott meg ágat a alatt `git push` , vagy nem állította be a `push.default` értéket `.gitconfig` .|Futtassa `git push` újra a főág megadását: `git push azure main` .|
+|`Error - Changes committed to remote repository but deployment to website failed.`|Olyan helyi ágat küldött le, amely nem felel meg az alkalmazás üzembe helyezési ágának az Azure-ban.|Ellenőrizze, hogy az aktuális ág van-e `master` . Az alapértelmezett ág módosításához használja az `DEPLOYMENT_BRANCH` Alkalmazásbeállítás értéket.|
 |`src refspec [branchname] does not match any.`|Megpróbált leküldeni az "Azure" távoli számítógépének főoldalán kívüli ágra.|Futtassa `git push` újra a főág megadását: `git push azure main` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|Ez a hiba akkor fordulhat elő, ha egy nagyméretű git-tárházat próbál leküldeni HTTPS-kapcsolaton keresztül.|Módosítsa a git-konfigurációt a helyi gépen, hogy minél `postBuffer` nagyobb legyen. Példa: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|Egy Node.js alkalmazást telepített egy _package.jsa_ fájlon, amely további szükséges modulokat határoz meg.|A hiba előtt tekintse át a hibaüzeneteket `npm ERR!` , hogy a probléma további kontextusban legyen. A hiba ismert okai és a hozzájuk tartozó üzenetek a következők `npm ERR!` :<br /><br />**Helytelenül formázott package.jsa következő fájlon**: `npm ERR! Couldn't read dependencies.`<br /><br />A **natív modul nem rendelkezik bináris terjesztéssel a Windows rendszerhez**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />vagy <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|

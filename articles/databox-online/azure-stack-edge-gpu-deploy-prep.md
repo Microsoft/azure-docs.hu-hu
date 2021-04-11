@@ -10,10 +10,10 @@ ms.date: 03/03/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: a58146c2c8121f3f0e3b564caafbb09396d39672
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105568538"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Felkészülés a Azure Stack Edge Pro és a GPU üzembe helyezésére 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A Azure Stack Edge Pro üzembe helyezéséhez először elő kell készítenie a környezetet. Ha a környezet elkészült, kövesse a szükséges lépéseket, és ha szükséges, az eszköz teljes telepítéséhez választható lépéseket és eljárásokat. A részletes telepítési utasítások jelzik, hogy mikor kell végrehajtania ezeket a szükséges és választható lépéseket.
 
-| Lépés | Description |
+| Lépés | Leírás |
 | --- | --- |
 | **Előkészítése** |Ezeket a lépéseket a közelgő üzembe helyezés előkészítésekor kell elvégezni. |
 | **[Üzembe helyezési konfigurációs ellenőrzőlista](#deployment-configuration-checklist)** |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |

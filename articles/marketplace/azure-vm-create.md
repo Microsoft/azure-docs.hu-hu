@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
-ms.openlocfilehash: ffc09daa15e742ca2b5b8a2fa9323e33fe317c60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 827e4d883fd9e80ae84845d620cc4ca00816f56e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200393"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551313"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en
 
@@ -58,20 +58,7 @@ A tesztelési meghajtó engedélyezéséhez jelölje be a **teszt-meghajtó enge
 
 ## <a name="configure-customer-leads-management"></a>Az ügyfél-érdeklődők felügyeletének konfigurálása
 
-Ha a partner Center használatával tesz közzé ajánlatot a kereskedelmi piactéren, kapcsolja össze az Ügyfélkapcsolat-kezelési (CRM) rendszerével. Ez lehetővé teszi az ügyfelek kapcsolattartási adatainak megszerzését, amint valaki érdeklődik a termék iránt, vagy használja a terméket. Ha egy tesztelési meghajtót szeretne engedélyezni, a CRM-hez való csatlakozásra van szükség (lásd az előző szakaszt). Ellenkező esetben a CRM-hez való csatlakozás nem kötelező.
-
-1. Az **ügyfél-érdeklődők** területen válassza a **Kapcsolódás** hivatkozást.
-1. A **kapcsolat részletei** párbeszédpanelen válasszon egy érdeklődő célhelyet.
-1. Fejezze be a megjelenő mezőket. A részletes lépésekért tekintse meg a következő cikkeket:
-
-   - [Az ajánlat konfigurálása az érdeklődők Azure-táblázatba való küldésére](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
-   - [Az ajánlat beállítása a dynamics 365 Customer engagement](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md#configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement) (korábban Dynamics CRM Online) felé irányuló érdeklődők küldésére
-   - [Az ajánlat beállítása az érdeklődők HTTPS-végpontra küldéséhez](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md#configure-your-offer-to-send-leads-to-the-https-endpoint)
-   - [Az ajánlat beállítása, hogy érdeklődőket küldjön a Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
-   - [Az ajánlat beállítása, hogy érdeklődőket küldjön a Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
-
-1. A megadott konfiguráció ellenőrzéséhez válassza az **Érvényesítés** hivatkozást.
-1. Válassza a **Kapcsolódás** lehetőséget.
+[!INCLUDE [Customer leads](includes/customer-leads.md)] 
 
 A bal oldali navigációs menü következő lapján a Tovább gombra kattintva válassza a **Piszkozat mentése** lehetőséget, majd kattintson a **Tulajdonságok** elemre.
 

@@ -1,16 +1,16 @@
 ---
-title: Érzékelők és előfizetések előkészítése és felügyelete a Defender for IoT portálon
+title: Érzékelők és előfizetések kezelése a Defender for IoT portálon
 description: Ismerje meg, hogyan végezheti el az érzékelők bevezetését, megtekintését és kezelését a Defender for IoT portálon.
 ms.date: 2/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 5c529a5679e8b3d4879b003fa3d168e911f9b518
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b4c8b3d10fe88816e07eb775b2bf3827d578b17
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781823"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383048"
 ---
-# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Érzékelők és előfizetések előkészítése és felügyelete a Defender for IoT portálon
+# <a name="manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Érzékelők és előfizetések kezelése a Defender for IoT portálon
 
 Ez a cikk bemutatja, hogyan végezheti el az érzékelők bevezetését, megtekintését és kezelését a [Defender for IoT portálon](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
@@ -137,6 +137,6 @@ Előfizetés regisztrációjának megszüntetésére szolgáló:
 
 A helyszíni környezet nincs hatással, de az érzékelőt el kell távolítani a helyszíni környezetből, vagy újra hozzá kell rendelni az érzékelőt egy másik előfizetéshez, hogy a kapcsolódó adatok ne legyenek a helyszíni felügyeleti konzolra áramlanak. 
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Az érzékelő aktiválása és beállítása](how-to-activate-and-set-up-your-sensor.md)

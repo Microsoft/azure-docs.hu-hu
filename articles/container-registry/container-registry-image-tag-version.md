@@ -5,16 +5,16 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dfd29f2265e599f3cc7c412b81c3b7b93af40db
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75445736"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109713"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>A tároló lemezképének címkézésére és verziószámozására vonatkozó javaslatok
 
-Amikor egy tároló-beállításjegyzékbe helyezi üzembe a tároló-lemezképek telepítését, majd telepíti őket, szüksége lesz egy, a képcímkézésre és a verziószámozásra vonatkozó stratégiára. Ebből a cikkből megtudhatja, hogyan illeszkedik a tároló életciklusa során a következő két módszerre:
+Amikor a tároló-lemezképeket egy tároló-beállításjegyzékbe küldi, majd telepíti őket, szüksége lesz egy, a képcímkézésre és a verziószámozásra vonatkozó stratégiára. Ebből a cikkből megtudhatja, hogyan illeszkedik a tároló életciklusa során a következő két módszerre:
 
 * **Stabil címkék** – felhasználható címkék, például egy fő vagy alverzió (például *mycontainerimage: 1.0*) jelzése.
 * **Egyedi címkék** – egy másik címkét minden olyan képhez, amelyet egy beállításjegyzékbe küld, például *mycontainerimage: abc123*.

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: a8a4f84db140ca442371cb71886bebf9214d3e43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 444185dc41532bfa55c271e2f0027eb8b71de42f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026538"
+ms.locfileid: "105959905"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Az Azure Metrics Explorer speciális funkciói
 
@@ -79,11 +79,28 @@ Ha más metrikát használó diagramot szeretne létrehozni, válassza a **diagr
 
 Több diagram átrendezéséhez vagy törléséhez kattintson a három pont (**..**.) gombra a diagram menü megnyitásához. Ezután válassza a **feljebb**, **a lejjebb vagy** a **Törlés** lehetőséget.
 
-## <a name="aggregation"></a>Összesítés
+## <a name="time-range-controls"></a>Időtartomány-vezérlők
+
+Az időtartomány az [időválasztó paneljén](metrics-getting-started.md#select-a-time-range)való módosítása mellett a diagram területén lévő vezérlőelemek is megadhatók.
+### <a name="pan"></a>Pásztázás
+
+A pásztázáshoz kattintson a bal és jobb nyílra a diagram peremén.  Ekkor a rendszer visszahelyezi a kijelölt időtartományt, és továbbítja a diagram időbeli tartományának felét.  Ha például megtekinti az elmúlt 24 órát, a balra mutató nyílra kattintva az időtartomány átválthat egy napra és egy fél – 12 órája.
+
+A legtöbb metrika 93 napos adatmegőrzést tesz lehetővé, de csak 30 napot tekinthet meg egyszerre.  A Pan-vezérlők használatával megtekintheti az elmúlt 30 napot, majd könnyedén visszatérhet 15 nap alatt, hogy megtekinthesse a megőrzési időszak hátralévő részét.
+
+![Animált GIF, amely a bal és a jobb oldali pásztázási vezérlőket mutatja.](./media/metrics-charts/metrics-pan-controls.gif)
+
+### <a name="zoom"></a>Zoom
+
+A diagramra kattintva és húzással nagyíthatja a diagram egy szakaszát.  A nagyítás a diagram időtartományát fogja frissíteni a kijelölés kiválasztásához, és kisebb időkeretet választ, ha az időkeret "Automatic" értékre van állítva.  Az új időtartomány a metrikák összes diagramján érvényes lesz.
+
+![Animált GIF, amely a metrikák nagyítási funkcióját mutatja.](./media/metrics-charts/metrics-zoom-control.gif)
+
+## <a name="aggregation&quot;></a>Összesítés
 
 Ha mérőszámot ad hozzá egy diagramhoz, a metrikák kezelője automatikusan egy alapértelmezett összesítést alkalmaz. Az alapértelmezett érték az alapszintű forgatókönyvekben van. Más összesítéssel azonban további információkhoz juthat a metrikáról. 
 
-Mielőtt eltérő összesítéseket használ egy diagramon, tisztában kell lennie azzal, hogy a metrikák kezelője hogyan kezeli őket. A metrikák egy adott időszakban rögzített mérési (vagy "metrikus értékek") sorozatok. Amikor Kirajzol egy diagramot, a kiválasztott metrika értékei külön lesznek összesítve az *időgabona* során. 
+Mielőtt eltérő összesítéseket használ egy diagramon, tisztában kell lennie azzal, hogy a metrikák kezelője hogyan kezeli őket. A metrikák egy adott időszakban rögzített mérési (vagy &quot;metrikus értékek") sorozatok. Amikor Kirajzol egy diagramot, a kiválasztott metrika értékei külön lesznek összesítve az *időgabona* során. 
 
 Kiválaszthatja az időgabona méretét a metrikai tallózó [időválasztó paneljének](./metrics-getting-started.md#select-a-time-range)használatával. Ha nem választja ki explicit módon az időkeretet, a rendszer alapértelmezés szerint a jelenleg kijelölt időtartományt használja. Az időtartam megállapítása után az egyes időkeretek során rögzített metrikai értékeket összesíti a diagramon, egy adatpontot és egy időszeletet.
 

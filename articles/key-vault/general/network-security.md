@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40094c00a4b896756c5c0e51116e0ae33ae2a096
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742636"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580735"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása
 
@@ -29,13 +29,14 @@ Ez a szakasz a Azure Key Vault tűzfal különböző konfigurálási módjait fe
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault tűzfal Letiltva (alapértelmezett)
 
-Alapértelmezés szerint az új kulcstartó létrehozásakor a Azure Key Vault tűzfal le van tiltva. Minden alkalmazás és Azure-szolgáltatás elérheti a kulcstartót, és kéréseket küldhet a kulcstartónak. Vegye figyelembe, hogy ez a konfiguráció nem jelenti azt, hogy minden felhasználó el tudja végezni a kulcstartón végrehajtott műveleteket. A Key Vault továbbra is korlátozza a Key vaultban tárolt titkokat, kulcsokat és tanúsítványokat Azure Active Directory hitelesítési és hozzáférési házirendi engedélyek megkövetelésével. A Key Vault hitelesítésének részletesebb megismeréséhez tekintse meg a Key Vault-hitelesítés alapjairól [szóló dokumentumot.](./authentication-fundamentals.md)
+Alapértelmezés szerint az új kulcstartó létrehozásakor a Azure Key Vault tűzfal le van tiltva. Minden alkalmazás és Azure-szolgáltatás elérheti a kulcstartót, és kéréseket küldhet a kulcstartónak. Vegye figyelembe, hogy ez a konfiguráció nem jelenti azt, hogy minden felhasználó el tudja végezni a kulcstartón végrehajtott műveleteket. A Key Vault továbbra is korlátozza a Key vaultban tárolt titkokat, kulcsokat és tanúsítványokat Azure Active Directory hitelesítési és hozzáférési házirendi engedélyek megkövetelésével. A Key Vault hitelesítésének részletesebb megismeréséhez tekintse meg a Key Vault-hitelesítés alapjairól [szóló dokumentumot.](./authentication-fundamentals.md) További információ: [hozzáférés Azure Key Vault tűzfal mögött](./access-behind-firewall.md).
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault tűzfal engedélyezve (csak megbízható szolgáltatások esetén)
 
-Ha engedélyezi a Key Vault tűzfalat, a "megbízható Microsoft-szolgáltatások engedélyezése a tűzfal megkerüléséhez" lehetőséget kap. A megbízható szolgáltatások listája nem fedi le az egyes Azure-szolgáltatásokat. Az Azure DevOps például nem szerepel a megbízható szolgáltatások listáján. **Ez nem jelenti azt, hogy azok a szolgáltatások, amelyek nem jelennek meg a megbízható szolgáltatások listáján, nem megbízhatóak vagy nem biztonságosak.** A megbízható szolgáltatások listája magában foglalja azokat a szolgáltatásokat, amelyeken a Microsoft a szolgáltatáson futó összes kódot vezérli. Mivel a felhasználók egyéni kódokat írhatnak az Azure-szolgáltatásokban, például az Azure DevOps, a Microsoft nem biztosítja a szolgáltatáshoz tartozó keretrendelés létrehozását. Továbbá, mivel egy szolgáltatás megjelenik a megbízható szolgáltatás listán, nem jelenti azt, hogy az összes forgatókönyv esetében engedélyezett.
+Ha engedélyezi a Key Vault tűzfalat, a "megbízható Microsoft-szolgáltatások engedélyezése a tűzfal megkerüléséhez" lehetőséget kap. A megbízható szolgáltatások listája nem fedi le az egyes Azure-szolgáltatásokat. Az Azure DevOps például nem szerepel a megbízható szolgáltatások listáján. **Ez nem jelenti azt, hogy azok a szolgáltatások, amelyek nem jelennek meg a megbízható szolgáltatások listáján, nem megbízhatóak vagy nem biztonságosak.** A megbízható szolgáltatások listája magában foglalja azokat a szolgáltatásokat, amelyeken a Microsoft a szolgáltatáson futó összes kódot vezérli. Mivel a felhasználók egyéni kódokat írhatnak az Azure-szolgáltatásokban, például az Azure DevOps, a Microsoft nem biztosítja a szolgáltatáshoz tartozó keretrendelés létrehozását. Továbbá, mivel egy szolgáltatás megjelenik a megbízható szolgáltatás listán, nem jelenti azt, hogy az összes forgatókönyv esetében engedélyezett. 
 
 Ha meg szeretné állapítani, hogy a használni kívánt szolgáltatás szerepel-e a megbízható szolgáltatás listán, tekintse meg a [következő dokumentumot.](./overview-vnet-service-endpoints.md#trusted-services)
+Útmutató a [portálon, az Azure CLI-ben és a PowerShellben](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) található útmutatást követve
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault tűzfal engedélyezve (IPv4-címek és tartományok – statikus IP-címek)
 

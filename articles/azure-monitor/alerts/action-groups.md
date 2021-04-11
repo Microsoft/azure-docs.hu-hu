@@ -3,14 +3,14 @@ title: Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: fb067e603c181482a863dc9fd75556e32a801bc6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772348"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104983"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -162,12 +162,10 @@ A műveleti csoportban korlátozott számú ITSM művelet lehet.
 A műveleti csoportban korlátozott számú Logic app-művelet lehet.
 
 ### <a name="secure-webhook"></a>Biztonságos webhook
+A műveleti csoportok biztonságos webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](../../active-directory/develop/v2-overview.md).
 
 > [!NOTE]
 > A webhook művelet végrehajtásához a cél webhook-végpontnak nem kell megadnia a riasztás részleteit a sikeres működéshez, vagy képesnek kell lennie a POST művelet részeként megadott riasztási környezeti információk elemzésére. Ha a webhook-végpont nem tudja önállóan kezelni a riasztási környezet információit, használhat egy olyan megoldást is, mint a [Logic app-művelet](./action-groups-logic-app.md) a riasztási környezet adatainak egyéni manipulációja érdekében, hogy megfeleljen a webhook várt adatformátumának.
-> A felhasználónak a webhook szolgáltatásnév **tulajdonosának** kell lennie annak érdekében, hogy a biztonság ne legyen megsértve. Mivel bármely Azure-ügyfél hozzáférhet a portálon keresztül az összes objektum-azonosítóhoz, a tulajdonos ellenőrzése nélkül bárki felveheti a biztonságos webhookot a saját műveleti csoportjához az Azure Monitor riasztási értesítéseire, amely megsérti a biztonságot.
-
-A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](../../active-directory/develop/v2-overview.md).
 
 1. Hozzon létre egy Azure AD-alkalmazást a védett webes API-hoz. Tekintse meg a [védett webes API: alkalmazás regisztrációja](../../active-directory/develop/scenario-protected-web-api-app-registration.md)című témakört.
     - Beállíthatja, hogy a védett API-t [egy Daemon-alkalmazás hívja](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)meg.

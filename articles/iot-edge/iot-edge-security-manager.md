@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed73c114c015ce38fefa02d2b71e27e8f85dca39
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492557"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028672"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Security Manager
 
@@ -119,12 +119,17 @@ A biztonságos szilícium szükséges ahhoz, hogy a megbízhatóságot a IoT Edg
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>A Security Manager integrációja és karbantartása IoT Edge
 
-A IoT Edge Security Manager célja a Azure IoT Edge platform biztonságának és integritásának védelmét biztosító összetevők azonosítása és elkülönítése az egyéni megerősítés érdekében. A harmadik feleknek, például az eszközök gyártóinak az eszköz hardverével elérhető egyéni biztonsági funkciókat kell használniuk.  Az Azure IoT Security Manager a Linux és a Windows rendszerű platformon platformmegbízhatósági modul (TPM) használatával történő megerősítését bemutató hivatkozások a következő lépések szakaszban olvashatók. Ezek a példák szoftvereket vagy virtuális TPM használnak, de közvetlenül a különálló TPM-eszközök használatára vonatkoznak.  
+A IoT Edge Security Manager célja a Azure IoT Edge platform biztonságának és integritásának védelmét biztosító összetevők azonosítása és elkülönítése az egyéni megerősítés érdekében. A harmadik feleknek, például az eszközök gyártóinak az eszköz hardverével elérhető egyéni biztonsági funkciókat kell használniuk.  
+
+Ismerje meg, hogyan erősítheti meg az Azure IoT Security Managert a platformmegbízhatósági modul (TPM) szoftver vagy virtuális TPM használatával:  
+
+Virtuális TPM-sel rendelkező IoT Edge-eszköz létrehozása és kiépítése [Linux rendszerű virtuális gépen](how-to-auto-provision-simulated-device-linux.md).
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+IoT Edge eszköz létrehozása és kiépítése [szimulált TPM](how-to-auto-provision-simulated-device-windows.md)-sel Windows rendszeren.
+:::moniker-end
 
 ## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a blogot az [intelligens peremhálózat biztonságossá](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)tételéről.
-
-Virtuális TPM-sel rendelkező IoT Edge-eszköz létrehozása és kiépítése [Linux rendszerű virtuális gépen](how-to-auto-provision-simulated-device-linux.md).
-
-IoT Edge eszköz létrehozása és kiépítése [szimulált TPM](how-to-auto-provision-simulated-device-windows.md)-sel Windows rendszeren.

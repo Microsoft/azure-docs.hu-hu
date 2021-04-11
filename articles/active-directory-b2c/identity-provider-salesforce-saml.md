@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e740fdb9cd232892dadfe98c4d739759be66bf55
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf2f0cdf8b7c540e569067d68374eef55d3479fe
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488720"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028196"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Salesforce SAML-szolgáltatóval való bejelentkezés beállítása SAML protokoll használatával Azure Active Directory B2C
 
@@ -202,7 +202,7 @@ A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáad
 ## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
 
 1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
-1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](tutorial-register-applications.md)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
 1. A regisztráció vagy bejelentkezés lapon válassza a **Salesforce** lehetőséget a Salesforce-fiókkal való bejelentkezéshez.
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3a794d8915c820abecd530911f05ac649e5e538c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aa394cda245bd3a457a16c19660bfe08553d14d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379913"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058884"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Milyen összehasonlítások vannak a Azure CDN termék szolgáltatásai között?
 
@@ -71,7 +71,7 @@ Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 | **Egyszerű használat** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Verizon Premium** | 
 | Egyszerű integráció a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Web Apps](cdn-add-to-web-app.md), a [Media Services](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) és egyéb Azure-szolgáltatásokkal  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Felügyelet [REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Tömörítési MIME-típusok](./cdn-improve-performance.md)  |Csak alapértelmezett |Konfigurálható |Konfigurálható  |Konfigurálható  |
+| [Tömörítési MIME-típusok](./cdn-improve-performance.md)  |Konfigurálható |Konfigurálható |Konfigurálható  |Konfigurálható  |
 | Tömörítési kódolások  |gzip, brotli |gzip |gzip, deflate, bzip2, brotli  |gzip, deflate, bzip2, brotli  |
 
 ## <a name="migration"></a>Migrálás

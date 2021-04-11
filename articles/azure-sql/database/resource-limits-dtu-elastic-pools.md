@@ -10,13 +10,13 @@ ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: aa520b7d77a283e7dda883e99475947a8ccfa862
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.date: 03/30/2021
+ms.openlocfilehash: f3c20774accf9e0b589b898cb903d6da4516e553
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625623"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058918"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -76,7 +76,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | DTU minimális száma | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | DTU maximális száma | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
-| Maximális tárterület adatbázisonként (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
+| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
 <sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
@@ -97,7 +97,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
 | DTU minimális száma | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | DTU maximális száma | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
-| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximális tárterület adatbázisonként (GB) | 1024 | 1536 | 1792 | 2304 | 2816 |
 |||||||
 
 <sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
@@ -118,7 +118,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
 | eDTU-k minimális száma adatbázisonként | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000|
 | eDTU-k maximális száma adatbázisonként | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000|
-| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
 |||||||
 
 <sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
@@ -139,7 +139,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
 | DTU minimális száma | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | DTU maximális száma | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
-| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximális tárterület adatbázisonként (GB) | 2048 | 2560 | 3072 | 3584 | 4096 |
 |||||||
 
 <sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .

@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Azure Queue Storage Client Library V12 – Python'
 description: Megtudhatja, hogyan használhatja az Azure Queue Storage a Pythonhoz készült ügyféloldali kódtárat egy üzenetsor létrehozásához és az üzenetek hozzáadásához. Ebből a cikkből megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-python
-ms.openlocfilehash: b4c25ceb2e7b3f224dccdd7d24d86389100c8a2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1881af372c1f4e1c5cbb4ea7be0ede4c96bbf4ee
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801910"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276144"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure Queue Storage a Pythonhoz készült ügyféloldali kódtár
 

@@ -2,28 +2,28 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: azure-communication-services
-author: mikben
-manager: mikben
+author: ddematheu2
+manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: f1d49aa0583f34327afff229b46d7a366202aded
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.author: dademath
+ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105152802"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498784"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
 
 Az **iOS-hez** készült Azure kommunikációs szolgáltatások csoport azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg az iOS SDK-t, hogy a hangvételt és a videót is magában foglaló csoportos hívást hozzon létre. Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be és futtathatja a mintát. A minta áttekintése a kontextusban.
 
 ## <a name="download-code"></a>Kód letöltése
 
-A gyors útmutatóhoz tartozó véglegesített kód megkeresése a [githubon](https://github.com/Azure-Samples/communication-services-ios-calling-hero).
+Keresse meg a minta projektjét a [githubon](https://github.com/Azure-Samples/communication-services-ios-calling-hero). A minta [csapatokkal való együttműködéssel](../../concepts/teams-interop.md) rendelkező verziója különálló [ágban](https://github.com/Azure-Samples/communication-services-ios-calling-hero/tree/feature/teams_interop)található.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -33,7 +33,7 @@ A minta így néz ki:
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel":::
 
-Ha lenyomja az új hívás indítása gombot, az iOS-alkalmazás létrehoz egy új hívást, és csatlakoztatja azt. Az alkalmazás lehetővé teszi egy meglévő Azure kommunikációs szolgáltatáshoz való csatlakozást a meglévő hívás AZONOSÍTÓjának megadásával. A Teams Meeting szolgáltatáshoz is csatlakozhat, ha megadja az értekezlet meghívásában található JOIN hivatkozást.  (Az illesztési hivatkozás formátuma a következő: `https://teams.microsoft.com/l/meetup-join/` ). További információ a csapatok együttműködési feladatairól: [Teams együttműködés fogalmi dokumentációja](../../concepts/teams-interop.md).
+Ha lenyomja az új hívás indítása gombot, az iOS-alkalmazás létrehoz egy új hívást, és csatlakoztatja azt. Az alkalmazás lehetővé teszi egy meglévő Azure kommunikációs szolgáltatáshoz való csatlakozást a meglévő hívás AZONOSÍTÓjának megadásával.
 
 A híváshoz való csatlakozást követően a rendszer felszólítja, hogy adjon engedélyt az alkalmazásnak a kamerához és a mikrofonhoz való hozzáférésre. A rendszer a megjelenítendő név megadását is kéri.
 

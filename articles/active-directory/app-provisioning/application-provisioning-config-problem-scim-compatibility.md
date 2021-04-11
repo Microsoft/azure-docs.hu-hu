@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 04/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 268931715500631ac2d10feacebff1d5c65931bf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256898"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028791"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
@@ -51,7 +51,7 @@ Az alapértelmezett SCIM-ügyfél működésének módosításához használja a
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="A SCIM jelzői a későbbi működéshez.":::
 
 * A következő URL-cím használatával frissítheti a javítási viselkedést, és biztosíthatja a SCIM megfelelőségét (például az aktív logikai és a megfelelő csoporttagság-eltávolítások esetén). Ez a viselkedés jelenleg csak a jelző használatakor érhető el, de a következő néhány hónap során az alapértelmezett viselkedés lesz. Megjegyzés Ez az előnézet jelölő jelenleg nem működik igény szerinti kiépítés esetén. 
-  * **URL-cím (scim-kompatibilis):** AzureAdScimPatch062020
+  * **URL-cím (scim-kompatibilis):** aadOptscim062020
   * **SCIM RFC-referenciák:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
   * **Viselkedés**

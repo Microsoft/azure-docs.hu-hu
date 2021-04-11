@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5089a289e617aa8c2ec153320763647fc8afac9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9ba7e3e898da8d5b7d1bb4fbc69554ee205147
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489036"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028332"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -191,7 +191,7 @@ Hajtsa végre ezeket a lépéseket minden olyan Azure AD-bérlő esetében, amel
 ## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
 
 1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
-1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](tutorial-register-applications.md)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
 1. A regisztrációs vagy bejelentkezési oldalon válassza az **általános HRE** lehetőséget az Azure ad-fiókkal való bejelentkezéshez.
 

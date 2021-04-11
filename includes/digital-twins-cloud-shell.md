@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: e61b6b9a09d759571029db4f01dd8f9d707ca518
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab5c71b787876c31aaa70fbbfb04fc86721dd168
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244813"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958263"
 ---
 Az Azure Digital Twins használatának megkezdéséhez nyissa meg [Azure Cloud Shell](https://shell.azure.com) ablakban az első teendő, hogy jelentkezzen be, és állítsa be a rendszerhéj környezetét az előfizetéséhez ehhez a munkamenethez. Futtassa ezeket a parancsokat a Cloud Shellban:
 
@@ -27,9 +27,11 @@ Ha első alkalommal használta ezt az előfizetést az Azure digitális Twins sz
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Ezután adja hozzá az [**Azure CLI-hez készült Microsoft Azure IoT-bővítményt**](/cli/azure/ext/azure-iot/iot) a Cloud Shellhoz, hogy engedélyezze a parancsokat az Azure Digital Twins és más IoT-szolgáltatások használatával való interakcióhoz. 
+Ezután adja hozzá az [**Azure CLI-hez készült Microsoft Azure IoT-bővítményt**](/cli/azure/ext/azure-iot/iot) a Cloud Shellhoz, hogy engedélyezze a parancsokat az Azure Digital Twins és más IoT-szolgáltatások használatával való interakcióhoz. A parancs futtatásával ellenőrizze, hogy a bővítmény legújabb verziója van-e:
 
-[!INCLUDE [digital-twins-cloud-shell-extensions.md](digital-twins-cloud-shell-extensions.md)]
+```azurecli-interactive
+az extension add --upgrade -n azure-iot
+```
 
 Most már készen áll az Azure Digital Twins-vel való együttműködésre a Cloud Shell.
 

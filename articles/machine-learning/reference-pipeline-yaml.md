@@ -12,10 +12,10 @@ author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 2a92fa8fd242482585ab3785e99f8239548ce369
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104868341"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Gépi tanulási folyamatok definiálása a YAML-ben
@@ -26,17 +26,17 @@ A következő táblázat felsorolja, hogy mi az, és jelenleg nem támogatott a 
 
 | Lépés típusa | Támogatott? |
 | ----- | :-----: |
-| PythonScriptStep | Igen |
-| ParallelRunStep | Igen |
-| AdlaStep | Igen |
-| AzureBatchStep | Igen |
-| DatabricksStep | Igen |
-| DataTransferStep | Igen |
-| AutoMLStep | Nem |
-| HyperDriveStep | Nem |
-| ModuleStep | Igen |
-| MPIStep | Nem |
-| EstimatorStep | Nem |
+| PythonScriptStep | Yes |
+| ParallelRunStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
+| AutoMLStep | No |
+| HyperDriveStep | No |
+| ModuleStep | Yes |
+| MPIStep | No |
+| EstimatorStep | No |
 
 ## <a name="pipeline-definition"></a>Folyamat definíciója
 

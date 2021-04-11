@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/12/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: b9ae576a2d0ab8aee00be5b755c348806b412bef
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 8db1a671904233098610a9ba55ce260e6214c38c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108489"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028502"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -21,18 +21,17 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 ## <a name="march-2021"></a>Március 2021
 
-|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
 | [Szemantikus keresés](semantic-search-overview.md) | Lekérdezésekkel kapcsolatos szolgáltatások gyűjteménye, amely jelentősen javítja a keresési eredmények helytállóságát a lekérdezési kérelem minimális módosításaival. </br></br>A [szemantikai rangsorolás](semantic-ranking.md) a szavak és a tartalom mögötti szemantikai jelentésekkel számítja ki a releváns pontszámokat. </br></br>A [szemantikai feliratok](semantic-how-to-query-request.md) a dokumentum legfontosabb összefoglaló dokumentumait adják vissza, és kiemelik a legfontosabb kifejezéseket vagy kifejezéseket. </br></br>A [szemantikai válaszok](semantic-answers.md) visszaküldik a keresési dokumentumból kinyert kulcsfontosságú részeket, amelyek egy kérdésnek megfelelő lekérdezésre közvetlen válaszként vannak kialakítva. | Nyilvános előzetes verzió ([kérés szerint](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Használja a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview vagy a [search Explorert](search-explorer.md) a Azure Portal. </br></br>A régió és a rétegek korlátozásai érvényesek. |
 | [Helyesírás-ellenőrzés lekérdezési feltételei](speller-how-to-add.md) | Mielőtt a lekérdezési feltételek elérnék a keresőmotort, megadhatja őket a helyesírási hibák ellenőrzéséhez. A `speller` beállítás bármilyen típusú lekérdezéssel használható (egyszerű, teljes vagy szemantikai). |  Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió|
 | [SharePoint Online-indexelő](search-howto-index-sharepoint-online.md) | Ez az indexelő egy SharePoint Online-webhelyhez kapcsolódik, így a tartalom indexelhető egy dokumentumtárból. | Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
-| [Normalizálók](search-normalizers.md) | A normalizálók egyszerű szöveges előfeldolgozást biztosítanak, például burkolatot, ékezetes eltávolítást, asciifolding és így tovább, anélkül, hogy a teljes elemzési láncon át kellene haladnia.| Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
-[**Egyéni entitás keresési képességei**](cognitive-search-skill-custom-entity-lookup.md ) |  Egy kognitív képesség, amely a szavak és kifejezések egyéni, felhasználó által definiált listájáról keres szöveget. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható. | Általánosan elérhető. |
-|
+| [Normalizálók](search-normalizers.md) | A normalizálók egyszerű szöveges előfeldolgozást biztosítanak: konzisztens burkolat, ékezetes eltávolítás és ASCII-összecsukható, a teljes szöveges elemzési lánc meghívása nélkül.| Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
+| [Egyéni entitás keresési képességei](cognitive-search-skill-custom-entity-lookup.md ) |  Egy kognitív képesség, amely a szavak és kifejezések egyéni, felhasználó által definiált listájáról keres szöveget. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható. | Általánosan elérhető. |
 
 ## <a name="february-2021"></a>2021. február
 
-|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
 | [Dokumentumok alaphelyzetbe állítása (előzetes verzió)](search-howto-run-reset-indexers.md) |  Egyénileg kiválasztott keresési dokumentumok újrafeldolgozása az indexelő munkaterhelésekben. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/index-preview) |
 | [Rendelkezésre állási zónák](search-performance-optimization.md#availability-zones)| Az egyes régiókban két vagy több replikával rendelkező szolgáltatások keresése – a [teljesítmény skálázása](search-performance-optimization.md#availability-zones), a rugalmasság növelése azáltal, hogy két vagy több különböző fizikai helyen replikák vannak.  | A keresési szolgáltatás létrehozásának régiója és dátuma határozza meg a rendelkezésre állást. A részletekért tekintse meg a teljesítmény méretezése című cikket. |
@@ -40,7 +39,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 ## <a name="january-2021"></a>2021. január
 
-|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
 |------------------------------|-------------|---------------|
 | [Megoldás-gyorsító az Azure Cognitive Search és QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Kérdéseket és válaszokat kér le a dokumentumból, és a legfontosabb válaszokat ajánlja fel. Egy élő bemutató alkalmazás a következő címen érhető el: [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Nyílt forráskódú projekt (SLA nélkül) |
 

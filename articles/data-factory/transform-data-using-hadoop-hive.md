@@ -8,10 +8,10 @@ ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 05/08/2019
 ms.openlocfilehash: 7d312e4a00cdd2b62ee219df807f30c22f0c9790
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104773946"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a Hadoop-struktúra tevékenységgel Azure Data Factory
@@ -56,16 +56,16 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 ## <a name="syntax-details"></a>Szintaxis részletei
 | Tulajdonság            | Leírás                                                  | Kötelező |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| name                | A tevékenység neve                                         | Igen      |
-| leírás         | A tevékenység által használt szöveg leírása                | Nem       |
-| típus                | A kaptár tevékenység esetén a tevékenység típusa HDinsightHive.        | Igen      |
-| linkedServiceName   | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
-| Scriptlinkedservice szolgáltatás | Hivatkozás egy Azure Storage-beli társított szolgáltatásra, amely a végrehajtandó struktúra parancsfájljának tárolására szolgál. Itt csak az **[Azure Blob Storage](./connector-azure-blob-storage.md)** és **[ADLS Gen2](./connector-azure-data-lake-storage.md)** társított szolgáltatások támogatottak. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja.  | Nem       |
-| scriptPath          | Adja meg a Scriptlinkedservice szolgáltatás által hivatkozott Azure Storage-ban tárolt parancsfájl elérési útját. A fájl neve megkülönbözteti a kis-és nagybetűket. | Igen      |
-| getDebugInfo        | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
-| argumentumok           | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | Nem       |
-| meghatározza             | Adja meg a paramétereket kulcs/érték párokként a kaptár-parancsfájlon belüli hivatkozáshoz. | Nem       |
-| queryTimeout        | Lekérdezés időtúllépési értéke (percben). Akkor alkalmazható, ha a HDInsight-fürt Enterprise Security Package engedélyezve van. | Nem       |
+| name                | A tevékenység neve                                         | Yes      |
+| leírás         | A tevékenység által használt szöveg leírása                | No       |
+| típus                | A kaptár tevékenység esetén a tevékenység típusa HDinsightHive.        | Yes      |
+| linkedServiceName   | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Yes      |
+| Scriptlinkedservice szolgáltatás | Hivatkozás egy Azure Storage-beli társított szolgáltatásra, amely a végrehajtandó struktúra parancsfájljának tárolására szolgál. Itt csak az **[Azure Blob Storage](./connector-azure-blob-storage.md)** és **[ADLS Gen2](./connector-azure-data-lake-storage.md)** társított szolgáltatások támogatottak. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja.  | No       |
+| scriptPath          | Adja meg a Scriptlinkedservice szolgáltatás által hivatkozott Azure Storage-ban tárolt parancsfájl elérési útját. A fájl neve megkülönbözteti a kis-és nagybetűket. | Yes      |
+| getDebugInfo        | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | No       |
+| argumentumok           | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | No       |
+| meghatározza             | Adja meg a paramétereket kulcs/érték párokként a kaptár-parancsfájlon belüli hivatkozáshoz. | No       |
+| queryTimeout        | Lekérdezés időtúllépési értéke (percben). Akkor alkalmazható, ha a HDInsight-fürt Enterprise Security Package engedélyezve van. | No       |
 
 >[!NOTE]
 >A queryTimeout alapértelmezett értéke 120 perc. 

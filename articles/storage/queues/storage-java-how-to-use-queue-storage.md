@@ -1,20 +1,20 @@
 ---
 title: A Queue Storage használata a Java-Azure Storage szolgáltatásban
 description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat a Queue Storage használatával. Megtudhatja, hogyan szúrhat be, betekintést, beolvashat és törölhet üzeneteket a Javához készült Azure Storage ügyféloldali kódtár használatával.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 08/19/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-java
-ms.openlocfilehash: 997a37ac4252813abf1b35877cd34e192ec3e2ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ea00adacff1f76eb5ec81728e3a11f703a5fe8c
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97585717"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276263"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>A Queue Storage használata a Java-ból
 

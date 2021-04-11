@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 272abef5adfbcceebe82ab703152e2a8fde86d9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 373c69d0d8e966f1b55f680ef58ff26826a14de5
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103488556"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027907"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>WeiBo-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -211,7 +211,7 @@ A GitHub technikai profilja megköveteli, hogy a **CreateIssuerUserId** jogcím-
 ## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
 
 1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
-1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](tutorial-register-applications.md)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
 1. A regisztráció vagy bejelentkezés lapon válassza a **WeiBo** lehetőséget a WeiBo-fiókkal való bejelentkezéshez.
 
