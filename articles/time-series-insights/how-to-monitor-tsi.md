@@ -2,7 +2,7 @@
 title: Figyelési Time Series Insights | Microsoft Docs
 description: A rendelkezésre állás, a teljesítmény és a művelet Time Series Insights figyelése.
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15054cd508ce7a6de51fea86ca02302fba258757
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737562"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504923"
 ---
 # <a name="monitoring-time-series-insights"></a>Figyelés Time Series Insights
 
@@ -44,7 +44,7 @@ Az alábbi részekben a cikk a Azure Time Series Insightshoz összegyűjtött ad
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Adatok figyelése Azure Time Series Insightsról
 
-Azure Time Series Insights ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások. 
+Azure Time Series Insights ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások.
 
 A begyűjthető naplók és mérőszámok részletes ismertetését lásd: [Azure Time Series Insights monitorozási adatok referenciája](how-to-monitor-tsi-reference.md) .
 

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: f349d260fff32427712442615cabf6d3958468ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640032"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449970"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
@@ -39,14 +39,14 @@ Alább további részleteket és további konfigurációs beállításokat talá
 
 ## <a name="configuration-file-path"></a>Konfigurációs fájl elérési útja
 
-Alapértelmezés szerint a Application Insights Java 3,0 elvárja, hogy a konfigurációs fájl legyen elnevezve `applicationinsights.json` , és hogy ugyanabban a könyvtárban legyen elhelyezve `applicationinsights-agent-3.0.2.jar` .
+Alapértelmezés szerint a Application Insights Java 3,0 elvárja, hogy a konfigurációs fájl legyen elnevezve `applicationinsights.json` , és hogy ugyanabban a könyvtárban legyen elhelyezve `applicationinsights-agent-3.0.3.jar` .
 
 Megadhatja saját konfigurációs fájljának elérési útját a következők használatával
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` környezeti változó, vagy
 * `applicationinsights.configuration.file` Java rendszertulajdonság
 
-Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz viszonyítva megoldódik `applicationinsights-agent-3.0.2.jar` .
+Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz viszonyítva megoldódik `applicationinsights-agent-3.0.3.jar` .
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
@@ -61,7 +61,7 @@ A kapcsolatok karakterláncának megadása kötelező. A Application Insights er
 }
 ```
 
-A környezeti változóval is beállíthatja a kapcsolatok karakterláncát `APPLICATIONINSIGHTS_CONNECTION_STRING` (ez a beállítás elsőbbséget élvez, ha a rendszer a JSON-konfigurációban is megadja a kapcsolatok karakterláncát).
+A kapcsolati karakterláncot a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_CONNECTION_STRING` (amely elsőbbséget élvez a JSON-konfigurációban megadott kapcsolati sztringnél).
 
 Ha nem állítja be a kapcsolatok karakterláncát, akkor letiltja a Java-ügynököt.
 
@@ -81,7 +81,7 @@ Ha be szeretné állítani a Felhőbeli szerepkör nevét:
 
 Ha nincs beállítva a Felhőbeli szerepkör neve, a rendszer a Application Insights erőforrás nevét fogja használni az alkalmazás térképén lévő összetevő címkézéséhez.
 
-A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` (amely elsőbbséget élvez, ha a Felhőbeli szerepkör neve is meg van adva a JSON-konfigurációban).
+A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` (amely elsőbbséget élvez a JSON-konfigurációban megadott Felhőbeli szerepkör nevével).
 
 ## <a name="cloud-role-instance"></a>Felhőalapú szerepkör-példány
 
@@ -98,7 +98,7 @@ Ha a Felhőbeli szerepkör-példányt a gép neve helyett más értékre szeretn
 }
 ```
 
-A Felhőbeli szerepkör-példányt a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_ROLE_INSTANCE` (amely elsőbbséget élvez, ha a Felhőbeli szerepkör példánya is meg van adva a JSON-konfigurációban).
+A Felhőbeli szerepkör-példányt a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_ROLE_INSTANCE` (amely elsőbbséget élvez a JSON-konfigurációban megadott felhőalapú szerepkör-példánnyal szemben).
 
 ## <a name="sampling"></a>Mintavételezés
 
@@ -117,14 +117,14 @@ Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést úgy, ho
 }
 ```
 
-A mintavételezési százalékot a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (amely akkor elsőbbséget élvez, ha a mintavételi százalék a JSON-konfigurációban is meg van adva).
+A mintavételezési százalékot a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (amely elsőbbséget élvez a JSON-konfigurációban megadott mintavételi százaléktal szemben).
 
 > [!NOTE]
 > A mintavételezési százaléknál válasszon egy olyan százalékot, amely a 100/N értéknél közelebb van, ahol N egész szám. A mintavétel jelenleg nem támogatja a többi értéket.
 
 ## <a name="sampling-overrides-preview"></a>Mintavételi felülbírálások (előzetes verzió)
 
-Ez a funkció előzetes verzióban érhető el, a 3.0.3-BETA. 2.
+Ez a funkció előzetes verzióban érhető el, a 3.0.3-től kezdve.
 
 A mintavételi felülbírálások segítségével felülbírálhatja az [alapértelmezett mintavételi százalékot](#sampling), például:
 * A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos állapot-ellenőrzésekhez.
@@ -215,7 +215,7 @@ Application Insightshoz konfigurált alapértelmezett szint `INFO` . Ha módosí
 }
 ```
 
-A szintet a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (amely akkor elsőbbséget élvez, ha a szint a JSON-konfigurációban is meg van adva).
+A szintet a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (amely elsőbbséget élvez a JSON-konfigurációban megadott szinttel szemben).
 
 Ezek az érvényes `level` értékek, amelyeket megadhat a `applicationinsights.json` fájlban, és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek esetében:
 
@@ -256,9 +256,32 @@ A Mikrométer metrikáinak automatikus gyűjtésének letiltása (beleértve a S
 }
 ```
 
+## <a name="auto-collected-azure-sdk-telemetry"></a>Automatikusan összegyűjtött Azure SDK-telemetria
+
+Ez a funkció előzetes verzióban érhető el.
+
+A legújabb Azure SDK-kódtárak számos telemetria bocsátanak ki.
+
+A 3.0.3 verziótól kezdődően engedélyezheti ennek a telemetria a gyűjtését:
+
+```json
+{
+  "preview": {
+    "instrumentation": {
+      "azureSdk": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
+Ezt a funkciót a környezeti változó használatával is engedélyezheti `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED`
+(ez a beállítás elsőbbséget élvez a JSON-konfigurációban megadott beállításokkal szemben.
+
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Meghatározott automatikusan összegyűjtött telemetria letiltása
 
-A 3.0.2 verziótól kezdődően a megadott automatikusan összegyűjtött telemetria ezekkel a konfigurációs beállításokkal lehet letiltani:
+A 3.0.3 verziótól kezdődően a megadott automatikusan összegyűjtött telemetria ezekkel a konfigurációs beállításokkal lehet letiltani:
 
 ```json
 {
@@ -267,6 +290,9 @@ A 3.0.2 verziótól kezdődően a megadott automatikusan összegyűjtött teleme
       "enabled": false
     },
     "jdbc": {
+      "enabled": false
+    },
+    "jms": {
       "enabled": false
     },
     "kafka": {
@@ -280,13 +306,28 @@ A 3.0.2 verziótól kezdődően a megadott automatikusan összegyűjtött teleme
     },
     "redis": {
       "enabled": false
+    },
+    "springScheduling": {
+      "enabled": false
     }
   }
 }
 ```
 
-> Vegye figyelembe, hogy ha részletesebb szabályozásra van szüksége, például néhány Redis-hívást, de nem az összes Redis-hívást, tekintse meg a [mintavételi felülbírálások](./java-standalone-sampling-overrides.md)című témakört.
+Ezeket a rendszerállapotokat az alábbi környezeti változók használatával is elvégezheti:
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
+
+(ez a beállítás elsőbbséget élvez a JSON-konfigurációban megadott beállításokkal szemben.
+
+> Vegye figyelembe, hogy ha részletesebb szabályozásra van szüksége, például néhány Redis-hívást, de nem az összes Redis-hívást, tekintse meg a [mintavételi felülbírálások](./java-standalone-sampling-overrides.md)című témakört.
 
 ## <a name="heartbeat"></a>Szívverés
 
@@ -324,7 +365,7 @@ Ez a funkció előzetes verzióban érhető el.
 
 Alapértelmezés szerint a metrikák 60 másodpercenként lesznek rögzítve.
 
-A 3.0.3-BETA verziótól kezdődően megváltoztathatja ezt az intervallumot:
+A 3.0.3 verziótól kezdődően módosíthatja ezt az intervallumot:
 
 ```json
 {
@@ -384,13 +425,13 @@ Alapértelmezés szerint a Application Insights Java 3,0 `INFO` a fájlra `appli
 
 `level` lehet a,,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` vagy `TRACE` .
 
-`path` abszolút vagy relatív elérési út lehet. A relatív elérési utak feloldása a mappában található könyvtáron történik `applicationinsights-agent-3.0.2.jar` .
+`path` abszolút vagy relatív elérési út lehet. A relatív elérési utak feloldása a mappában található könyvtáron történik `applicationinsights-agent-3.0.3.jar` .
 
 `maxSizeMb` a naplófájl maximális mérete a bedobás előtt.
 
 `maxHistory` a megőrzött naplófájlok száma (az aktuális naplófájlon kívül).
 
-Az 3.0.2 verziótól kezdődően a környezeti változóval is beállíthatja az öndiagnosztika beállítást `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (amely elsőbbséget élvez, ha az öndiagnosztika a `level` JSON-konfigurációban is meg van adva).
+A 3.0.2 verziótól kezdődően beállíthatja az öndiagnosztika beállítást is `level` a környezeti változó használatával `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (amely elsőbbséget élvez a JSON-konfigurációban megadott öndiagnosztika szinttel szemben).
 
 ## <a name="an-example"></a>Példa
 

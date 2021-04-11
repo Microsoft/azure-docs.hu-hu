@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: c1ad467dcd27bb48d7b1472d8cfb829dcd005f4f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729847"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554274"
 ---
 Az Azure kommunikációs szolgáltatások **csoport a Hero minta meghívásával** bemutatja, hogyan használható a webes SDK-t hívó kommunikációs szolgáltatás a csoportos hívási élmény létrehozására.
 
@@ -23,7 +23,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta hel
 
 ## <a name="download-code"></a>Kód letöltése
 
-A gyors útmutatóhoz tartozó véglegesített kód megkeresése a [githubon](https://github.com/Azure-Samples/communication-services-web-calling-hero).
+Keresse meg a minta projektjét a [githubon](https://github.com/Azure-Samples/communication-services-web-calling-hero). A minta [csapatokkal való együttműködéssel](../../concepts/teams-interop.md) rendelkező verziója különálló [ágban](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop)található.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -46,6 +46,9 @@ A fő hívó képernyő összetevői:
 - **Media Gallery**: az a fő szakasz, ahol a résztvevők megjelennek. Ha a résztvevő kamerája engedélyezve van, a videó hírcsatornája itt jelenik meg. Minden résztvevő rendelkezik egy egyéni csempével, amely megjeleníti a megjelenítendő nevüket és a video streamet (ha van ilyen)
 - **Fejléc**: ez az a hely, ahol az elsődleges hívási vezérlők a beállítások és a résztvevő oldali sáv váltására, a videó bekapcsolására és a kikapcsolására, a megosztási képernyőre és a hívás elhagyása.
 - **Oldalsó sáv**: ebben az esetben a rendszer megjeleníti a résztvevők és a beállítások adatait, ha a fejlécben lévő vezérlők használatával váltanak ki. Az összetevőt a jobb felső sarokban található "X" használatával lehet elhagyni. A résztvevők oldali sáv megjeleníti a résztvevők listáját, valamint egy hivatkozást, amely további felhasználókat hívhat meg a csevegéshez. A beállítások oldal sáv lehetővé teszi a mikrofon és a kamera beállításainak konfigurálását.
+
+> [!NOTE]
+> A web Calling SDK korlátozásai alapján csak egy távoli video stream jelenik meg. További információ: az [SDK stream támogatásának meghívása](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support).
 
 Az alábbiakban további információkat talál a minta beállításához szükséges előfeltételekről és lépésekről.
 

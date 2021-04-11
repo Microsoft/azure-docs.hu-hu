@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: e6ec59e3cb8d285652935b42493c820a7379eeb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7c103a7eba2e5da7ac040b50fcc0009a0b7237b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956077"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449868"
 ---
 # <a name="azure-media-player-full-setup"></a>Az Azure Media Player teljes telepítése #
 
@@ -20,7 +20,7 @@ A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igén
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>1. lépés: a JavaScript-és CSS-fájlok belefoglalása az oldal élére ##
 
-A Azure Media Player használatával a CDN által üzemeltetett verzióból férhet hozzá a szkriptekhez. Azt javasoljuk, hogy a JavaScriptet még a befejezést megelőzően `<body>` `<head>` , de az Azure Meia Player tartalmaz egy "HTML5 szilánkot", amely a régebbi IE-verziók számára szükséges, hogy a videó címkéjét érvényes elemként vegye figyelembe.
+A Azure Media Player használatával a CDN által üzemeltetett verzióból férhet hozzá a szkriptekhez. Azt javasoljuk, hogy a JavaScriptet még a befejezést megelőzően `<body>` `<head>` , de a (z) Azure Media Player tartalmaz egy "HTML5 szilánkot", amely a régebbi verziókban a korábbi verziókhoz szükséges, hogy a videó címkéjét érvényes elemként vegye figyelembe.
 
 > [!NOTE]
 > Ha már használ egy HTML5-szilánkot, például a [modernizációt](https://modernizr.com/) , bárhol is használhatja a Azure Media Player JavaScriptet. Azonban győződjön meg arról, hogy a modernizáló verziója tartalmazza a szilánkot a videóhoz.
@@ -33,7 +33,7 @@ A Azure Media Player használatával a CDN által üzemeltetett verzióból fér
 ```
 
 > [!IMPORTANT]
-> A verziót **ne** használja `latest` éles környezetben, mert az igény szerint változhat. Cserélje le a helyére a `latest` Azure Media Player egy verzióját. Például cserélje le a következőt: `latest` `2.1.1` . Azure Media Player verziók lekérdezése [innen](azure-media-player-changelog.md)lehetséges.
+> A verziót **ne** használja `latest` éles környezetben, mert az igény szerint változhat. Cserélje le a helyére a `latest` Azure Media Player egy verzióját. Például cserélje le a következőt: `latest` `2.1.1` . Azure Media Player verziók lekérdezése [innen](https://amp.azure.net/libs/amp/latest/docs/changelog.html)lehetséges.
 
 > [!NOTE]
 > Mivel a `1.2.0` kiadás már nem szükséges ahhoz, hogy a tartalék technológiák helyére belekerüljön a hely, a rendszer automatikusan felveszi a helyet a azuremediaplayer.min.js fájl relatív elérési útjából. A tartalék technológiák helyét úgy módosíthatja, hogy a fenti szkriptek után hozzáadja a következő parancsfájlt `<head>` .

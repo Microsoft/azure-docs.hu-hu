@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Ez a cikk azt ismerteti, hogyan lehet figyelőt létrehozni a kapcsolódási figyelőben a Azure Portal használatával.
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9942b608601b495dd041a8b59aaecb3f5dd81fa7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702164"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505229"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Figyelő létrehozása a Csatlakozáskezelő Azure Portal használatával
 
@@ -121,7 +121,7 @@ A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők ért�
 
    * A helyszíni ügynökök kiválasztásához válassza a **nem Azure-végpontok** fület. Alapértelmezés szerint az ügynökök régiónként vannak csoportosítva. Ezekhez a munkaterületekhez a Network Performance Monitor konfigurálva van. 
    
-       Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview)-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](../azure-monitor/insights/solutions.md). 
+       Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview)-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](../azure-monitor/insights/solutions.md). További információ az ügynökök a helyszíni gépekhez való konfigurálásáról: ügynökök a helyszíni [gépekhez](connection-monitor-overview.md#agents-for-on-premises-machines).
    
        A **Csatlakozáskezelő létrehozása** területen az **alapbeállítások** lapon az alapértelmezett régió van kiválasztva. Ha megváltoztatja a régiót, az ügynököket az új régióban lévő munkaterületekről is kiválaszthatja. Kiválaszthat egy vagy több ügynököt vagy alhálózatot. Az **alhálózat** nézetben kiválaszthatja a figyeléshez megadott IP-címeket. Ha több alhálózatot ad hozzá, a rendszer létrehoz egy **OnPremises_Network_1** nevű egyéni helyszíni hálózatot. A **Group By** választót is módosíthatja ügynökök szerint.
 
@@ -144,7 +144,7 @@ A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők ért�
     
     * A nem Azure-ügynökök célhelyként való kiválasztásához válassza a **nem Azure-beli végpontok** fület. Alapértelmezés szerint az ügynökök régiónként vannak csoportosítva. Ezek a munkaterületek Network Performance Monitor konfigurálva vannak. 
     
-      Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az Azure Marketplace-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](../azure-monitor/insights/solutions.md). 
+      Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az Azure Marketplace-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](../azure-monitor/insights/solutions.md). További információ az ügynökök a helyszíni gépekhez való konfigurálásáról: ügynökök a helyszíni [gépekhez](connection-monitor-overview.md#agents-for-on-premises-machines).
 
       A **Csatlakozáskezelő létrehozása** területen az **alapbeállítások**   lapon az alapértelmezett régió van kiválasztva. Ha megváltoztatja a régiót, az ügynököket az új régióban lévő munkaterületekről is kiválaszthatja. Kiválaszthat egy vagy több ügynököt vagy alhálózatot. Az **alhálózat** nézetben kiválaszthatja a figyeléshez megadott IP-címeket. Ha több alhálózatot ad hozzá, a rendszer létrehoz egy **OnPremises_Network_1** nevű egyéni helyszíni hálózatot.  
 

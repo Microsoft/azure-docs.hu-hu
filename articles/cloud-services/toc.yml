@@ -105,6 +105,32 @@
               href: cloud-services-role-config-xpath.md
         - name: Tanúsítványok kezelése
           items:
+            - name: Azure PowerShell
+              href: cloud-services-diagnostics-powershell.md
+            - name: .NET
+              href: cloud-services-dotnet-diagnostics.md
+            - name: Visual Studio
+              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+        - name: Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
+          href: diagnostics-extension-to-storage.md
+        - name: Felhőszolgáltatás követése a Diagnostics használatával
+          href: cloud-services-dotnet-diagnostics-trace-flow.md
+    - name: Migrate
+      items:
+        - name: Migrálás áttekintése
+          href: ../cloud-services-extended-support/in-place-migration-overview.md?toc=/azure/cloud-services/toc.json
+        - name: Áttelepítési technikai részletek
+          href: ../cloud-services-extended-support/in-place-migration-technical-details.md?toc=/azure/cloud-services/toc.json
+        - name: Migrálás a Azure Portal használatával
+          href: ../cloud-services-extended-support/in-place-migration-portal.md?toc=/azure/cloud-services/toc.json
+        - name: Áttelepítés a PowerShell-lel
+          href: ../cloud-services-extended-support/in-place-migration-powershell.md?toc=/azure/cloud-services/toc.json
+        - name: Gyakori hibák és ismert problémák
+          href: ../cloud-services-extended-support/in-place-migration-common-errors.md?toc=/azure/cloud-services/toc.json
+    - name: Hibaelhárítás
+      items:
+        - name: Hibakeresés
+          items:
             - name: Felhőszolgáltatások és felügyeleti tanúsítványok
               href: cloud-services-certs-create.md
             - name: Az SSL konfigurálása
@@ -172,6 +198,8 @@
                   href: cloud-services-deployment-faq.md
     - name: Referencia
       items:
+        - name: Azure CLI
+          href: /cli/azure/cloud
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
         - name: .csdef XML-séma
@@ -196,17 +224,25 @@
           href: /rest/api/compute/cloudservices/
     - name: További források
       items:
-        - name: Azure-ütemterv
-          href: 'https://azure.microsoft.com/roadmap/?category=compute'
-        - name: Képzési terv
-          href: /learn/paths/azure-fundamentals/
-        - name: Microsoft Q&A kérdések oldala
-          href: /answers/topics/azure-cloud-services.html
-        - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-        - name: Díjkalkulátor
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: Szolgáltatási hírek
-          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-        - name: Videók
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Szerepkörséma
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration-séma
+          href: schema-cscfg-networkconfiguration.md
+    - name: REST
+      href: /rest/api/compute/cloudservices/
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Képzési terv
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A kérdések oldala
+      href: /answers/topics/azure-cloud-services.html
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

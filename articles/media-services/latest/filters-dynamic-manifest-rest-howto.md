@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2d081ded07b1d32ee7525855c1756e13dfd57aa
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527326"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277504"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása Media Services REST API
 
@@ -26,7 +26,7 @@ ms.locfileid: "90527326"
 
 Ha a tartalmat az ügyfeleknek (élő vagy igény szerinti közvetítéssel közvetíti), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket. 
 
-A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
+A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-concept.md) és [szűrők](filters-concept.md).
 
 Ebből a témakörből megtudhatja, hogyan határozhat meg egy igény szerinti videóhoz tartozó szűrőt, és hogyan hozhat létre REST API-kat a [fiókok](/rest/api/media/accountfilters) és az [eszközök szűrőinek](/rest/api/media/assetfilters)létrehozásához. 
 
@@ -37,10 +37,10 @@ Ebből a témakörből megtudhatja, hogyan határozhat meg egy igény szerinti v
 
 A jelen témakörben ismertetett lépések végrehajtásához a következőket kell tennie:
 
-- Tekintse át [a szűrőket és a dinamikus jegyzékfájlokat](filters-dynamic-manifest-overview.md).
-- [A Poster beállítása Azure Media Services REST API-hívásokhoz](media-rest-apis-with-postman.md).
+- Tekintse át [a szűrőket és a dinamikus jegyzékfájlokat](filters-dynamic-manifest-concept.md).
+- [A Poster beállítása Azure Media Services REST API-hívásokhoz](setup-postman-rest-how-to.md).
 
-    Ügyeljen arra, hogy kövesse az [Azure ad-token beszerzése](media-rest-apis-with-postman.md#get-azure-ad-token)című témakör utolsó lépését. 
+    Ügyeljen arra, hogy kövesse az [Azure ad-token beszerzése](setup-postman-rest-how-to.md#get-azure-ad-token)című témakör utolsó lépését. 
 
 ## <a name="define-a-filter"></a>Szűrő definiálása  
 
@@ -121,7 +121,7 @@ Az eszközoldali szűrők létrehozásával vagy frissítésével kapcsolatos r�
 
 ## <a name="associate-filters-with-streaming-locator"></a>Szűrők hozzárendelése a folyamatos átviteli Lokátorhoz
 
-Megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. A [dinamikus csomagoló (streaming Endpoint)](dynamic-packaging-overview.md) a szűrők ezen listáját alkalmazza, az ügyfél által megadott URL-címen. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. Azt javasoljuk, hogy használja ezt a funkciót, ha szűrőket kíván alkalmazni, de nem szeretné kitenni a szűrő nevét az URL-címben.
+Megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. A [dinamikus csomagoló (streaming Endpoint)](encode-dynamic-packaging-concept.md) a szűrők ezen listáját alkalmazza, az ügyfél által megadott URL-címen. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-concept.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. Azt javasoljuk, hogy használja ezt a funkciót, ha szűrőket kíván alkalmazni, de nem szeretné kitenni a szűrő nevét az URL-címben.
 
 Ha a REST használatával szeretne szűrőket létrehozni és hozzárendelni egy streaming-Lokátorhoz, használja a [streaming-lokátorok – API létrehozása](/rest/api/media/streaminglocators/create) lehetőséget, majd `properties.filters` a [kérelem törzsében](/rest/api/media/streaminglocators/create#request-body).
                                 

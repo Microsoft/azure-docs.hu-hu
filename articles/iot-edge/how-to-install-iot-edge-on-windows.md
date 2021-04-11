@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612117"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059700"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -44,8 +44,8 @@ Ez a cikk a IoT Edge Windows-eszközökön való beállításának lépéseit so
   * Professional, Enterprise vagy Server kiadás
   * Minimális szabad memória: 2 GB
   * Minimális szabad lemezterület: 10 GB
-  * Ha Windows 10 rendszerű új központi telepítést hoz létre, győződjön meg arról, hogy engedélyezi a Hyper-V használatát. További információ: a [Hyper-V telepítése Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)rendszeren.
-  * Ha a Windows Serverrel új központi telepítést hoz létre, akkor győződjön meg arról, hogy telepíti a Hyper-V szerepkört. További információ: [a Hyper-V szerepkör telepítése a Windows Serveren](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md).
+  * Ha Windows 10 rendszerű új központi telepítést hoz létre, győződjön meg arról, hogy engedélyezi a Hyper-V használatát. További információ: a [Hyper-V telepítése Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)rendszeren.
+  * Ha a Windows Serverrel új központi telepítést hoz létre, akkor győződjön meg arról, hogy telepíti a Hyper-V szerepkört. További információ: [a Hyper-V szerepkör telepítése a Windows Serveren](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
   * Ha virtuális géppel hoz létre új központi telepítést, győződjön meg arról, hogy megfelelően konfigurálta a beágyazott virtualizálás szolgáltatást. További információ: [beágyazott virtualizációs](nested-virtualization.md) útmutató.
 
 * Hozzáférés a Windows felügyeleti központhoz a Windows felügyeleti központhoz telepített Azure IoT Edge bővítménnyel:

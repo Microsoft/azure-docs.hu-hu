@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan másolhat OData-forrásokból származó adatok
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/30/2021
 ms.author: jingwang
-ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dd86b4982edf5d206e64431a5e1458c4b848e9e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389722"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968495"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Adatok másolása OData-forrásból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -326,6 +326,48 @@ Amikor OData másol az adatokból, a következő leképezések használatosak a 
 
 > [!NOTE]
 > Az összetett adattípusok (például az **objektum**) nem támogatottak a OData.
+
+## <a name="copy-data-from-project-online"></a>Adatok másolása a Project online-ból
+
+Az adatok Project online-ból való másolásához használhatja a OData-összekötőt és egy olyan eszközről kapott hozzáférési jogkivonatot, mint a Poster.
+
+> [!CAUTION]
+> A hozzáférési jogkivonat alapértelmezés szerint 1 órán belül lejár, ezért a lejáratakor új hozzáférési tokent kell beszereznie.
+
+1. A **Poster** használatával szerezze be a hozzáférési jogkivonatot:
+
+   1. Navigáljon az **Engedélyezés** lapra a Poster webhelyén.
+   1. A **típus** mezőben válassza a **OAuth 2,0** lehetőséget, majd az **engedélyezési adattípusok hozzáadása** mezőben válassza a **kérések fejlécek** lehetőséget.
+   1. Új hozzáférési token beszerzéséhez töltse ki a következő információkat az **új jogkivonat konfigurálása** oldalon: 
+      - **Támogatás típusa**: válassza az **engedélyezési kód** lehetőséget.
+      - **Visszahívási URL-cím**: ENTER `https://www.localhost.com/` . 
+      - **Hitelesítési URL-cím**: adja meg `https://login.microsoftonline.com/common/oauth2/authorize?resource=https://<your tenant name>.sharepoint.com` . Cserélje le a `<your tenant name>` nevet a saját bérlő nevére. 
+      - **Hozzáférési jogkivonat URL-címe**: ENTER `https://login.microsoftonline.com/common/oauth2/token` .
+      - **Ügyfél-azonosító**: adja meg a HRE szolgáltatás egyszerű azonosítóját.
+      - **Ügyfél titkos kulcsa**: adja meg a szolgáltatás egyszerű kulcsát.
+      - **Ügyfél-hitelesítés**: válassza **a Küldés alapszintű hitelesítési fejlécként** lehetőséget.
+     
+   1. A rendszer kérni fogja, hogy jelentkezzen be a felhasználónevével és jelszavával.
+   1. A hozzáférési token beszerzése után másolja ki és mentse a következő lépéshez.
+   
+    [![A Poster használata a hozzáférési jogkivonat lekéréséhez](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+
+1. Hozza létre a OData társított szolgáltatást:
+    - **Szolgáltatás URL-címe**: ENTER `https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata` . Cserélje le a `<your tenant name>` nevet a saját bérlő nevére. 
+    - **Hitelesítés típusa**: válassza a **Névtelen** lehetőséget.
+    - **Hitelesítési fejlécek**:
+        - **Tulajdonság neve**: válassza az **Engedélyezés** lehetőséget.
+        - **Érték**: adja meg az 1. lépésben átmásolt **hozzáférési tokent** .
+    - Tesztelje a társított szolgáltatást.
+
+    ![OData társított szolgáltatás létrehozása](./media/connector-odata/odata-project-online-linked-service.png)
+
+1. Hozza létre a OData adatkészletet:
+    1. Hozza létre az adatkészletet a 2. lépésben létrehozott OData társított szolgáltatással.
+    1. Az adatelőnézet.
+ 
+    ![Előzetes verzió](./media/connector-odata/odata-project-online-preview-data.png)
+ 
 
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai

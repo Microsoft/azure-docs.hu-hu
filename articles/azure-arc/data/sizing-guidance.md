@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542677"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077479"
 ---
 # <a name="sizing-guidance"></a>Méretezési útmutató
 
@@ -92,9 +92,9 @@ Minden létrehozott SQL felügyelt példányhoz tartozó Pod három tárolóval 
 
 |Tárolónév|CPU-kérelem|Memória-kérelem|CPU-korlát|Memória korlátja|Jegyzetek|
 |---|---|---|---|---|---|
-|fluentbit|100m|100Mi|Nincs megadva|Nincs megadva|A fluentbit-tároló erőforrás-kérelmei az SQL felügyelt példányához megadott kérelmeken _felül_ vannak.||
-|ív – sqlmi|A felhasználó megadott vagy nincs megadva.|A felhasználó megadott vagy nincs megadva.|A felhasználó megadott vagy nincs megadva.|A felhasználó megadott vagy nincs megadva.||
-|összegyűjtött teljesítményadatok|Nincs megadva|Nincs megadva|Nincs megadva|Nincs megadva||
+|fluentbit|100m|100Mi|Nincs megadva|Nincs megadva|A fluentbit-tároló erőforrás-kérelmei az SQL felügyelt példányához megadott kérelmeken _felül_ vannak.|
+|ív – sqlmi|A felhasználó megadott vagy nincs megadva.|A felhasználó megadott vagy nincs megadva.|A felhasználó megadott vagy nincs megadva.|A felhasználó megadott vagy nincs megadva.|
+|összegyűjtött teljesítményadatok|Nincs megadva|Nincs megadva|Nincs megadva|Nincs megadva|
 
 Az összes állandó kötet alapértelmezett kötetének mérete 5Gi.
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015196"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077470"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 
@@ -79,7 +79,6 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
 |----------|-------------|
 | **Várt TA1** | Technikai nyugtázás (TA1) visszaküldése a bankközi feladónak. |
 | **A FA várható** | Funkcionális nyugtázás (FA) visszaadása az adatcsere küldőjének. <p>Adja meg a 997-es vagy a 999-es beolvasást a (z) rendszerhez **a séma** verziója alapján. <p>Ha engedélyezni szeretné a AK2 hurkok létrehozását a funkcionális visszaigazolásokban az elfogadott tranzakciótípusok esetében, válassza a **AK2/IK2 hurok belefoglalása** lehetőséget. |
-||||
 
 <a name="inbound-schemas"></a>
 

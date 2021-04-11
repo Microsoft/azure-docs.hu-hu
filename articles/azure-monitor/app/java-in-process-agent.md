@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b695df29b7a4704ee9e4e25e402fa0de8f2b7685
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008212"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450021"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
 
@@ -34,11 +34,11 @@ Az 3,0-ügynök támogatja a Java 8-as és újabb verzióit.
 >
 > Figyelmesen tekintse át az összes [konfigurációs beállítást](./java-standalone-config.md) , mivel a JSON-struktúra teljes mértékben megváltozott, és a fájlneven kívül minden kisbetűt ment.
 
-A [applicationinsights-Agent-3.0.2. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar) letöltése
+A [applicationinsights-Agent-3.0.3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar) letöltése
 
 **2. irányítsa a JVM az ügynökre**
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` az alkalmazás JVM argumentumai
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` az alkalmazás JVM argumentumai
 
 A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC` . Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
 
@@ -54,7 +54,7 @@ Mutasson az ügynököt a Application Insights erőforrásra, vagy egy környeze
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Vagy hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.2.jar` , a következő tartalommal:
+Vagy hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.3.jar` , a következő tartalommal:
 
 ```json
 {
@@ -130,6 +130,10 @@ További részletek: [konfigurációs beállítások](./java-standalone-config.m
 * Mikrométer (beleértve a Spring boot indítószerkezet metrikáit)
 * JMX metrikák
 
+### <a name="azure-sdks"></a>Azure SDK-k
+
+* Ez a funkció előzetes verzióban érhető el, az engedélyezéséhez szükséges [konfigurációs beállításokban](./java-standalone-config.md#auto-collected-azure-sdk-telemetry) .
+
 ## <a name="send-custom-telemetry-from-your-application"></a>Egyéni telemetria küldése az alkalmazásból
 
 A 3.0-s célunk, hogy az egyéni telemetria standard API-k használatával küldje el.
@@ -143,13 +147,13 @@ Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jelen
 
 |                     | Mikrométer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Egyéni események**   |            |                     |  Yes    |
-| **Egyéni metrikák**  |  Igen       |                     |  Yes    |
-| **Függőségek**    |            |                     |  Yes    |
-| **Kivételek**      |            |  Igen                |  Yes    |
-| **Lapok nézetei**      |            |                     |  Yes    |
-| **Kérelmek**        |            |                     |  Yes    |
-| **Hívásláncok**          |            |  Igen                |  Yes    |
+| **Egyéni események**   |            |                     |  Igen    |
+| **Egyéni metrikák**  |  Igen       |                     |  Igen    |
+| **Függőségek**    |            |                     |  Igen    |
+| **Kivételek**      |            |  Igen                |  Igen    |
+| **Lapok nézetei**      |            |                     |  Igen    |
+| **Kérelmek**        |            |                     |  Igen    |
+| **Hívásláncok**          |            |  Igen                |  Igen    |
 
 Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
 
@@ -328,7 +332,7 @@ requestTelemetry.setName("myname");
 ### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>Kérje le a kérelem telemetria-azonosítóját és a művelet azonosítóját a 2. x SDK használatával
 
 > [!NOTE]
-> Ez a funkció csak a 3.0.3-BETA és újabb verziókban érhető el
+> Ez a funkció csak a 3.0.3 és újabb verziókban érhető el
 
 Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
 

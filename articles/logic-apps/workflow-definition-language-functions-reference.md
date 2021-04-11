@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 03/12/2021
-ms.openlocfilehash: 1414a7b0f17918caa16ccf854d70ea199fb42a47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: 53e96f4057b35fa6c849ec643ac1c9e0c7d5b402
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870194"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076547"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához
 
@@ -145,7 +145,7 @@ A feltételekkel való együttműködéshez hasonlítsa össze az értékeket é
 Az érték típusának vagy formátumának módosításához használhatja ezeket az átalakítási függvényeket. Egy logikai értéket például egész számra válthat. További információ arról, hogyan kezeli a Logic Apps a tartalom típusát az átalakítás során: [tartalomtípusok kezelése](../logic-apps/logic-apps-content-type.md). Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [betűrendes listát](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 > [!NOTE]
-> Azure Logic Apps automatikusan átalakítja az értékeket egyes adattípusok között, ami azt jelenti, hogy nem kell manuálisan végrehajtania ezeket a konverziókat. Ha azonban így tesz, előfordulhat, hogy váratlan megjelenítési viselkedést tapasztal, amely nem befolyásolja a tényleges konverziót, csak a megjelenésük módját. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
+> Azure Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást és dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat a kódolási és dekódolási függvények használatával. Ha azonban ezeket a függvényeket a Designerben használja, előfordulhat, hogy a tervező nem várt megjelenítési viselkedést tapasztal. Ezek a viselkedésmódok csak a függvények láthatóságát érintik, nem a hatásukat, kivéve, ha szerkeszti a functions paraméter értékeit, ami eltávolítja a függvényeket és azok hatásait a kódból. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
 
 | Átalakítási függvény | Feladat |
 | ------------------- | ---- |
@@ -177,7 +177,7 @@ Az érték típusának vagy formátumának módosításához használhatja ezeke
 
 ## <a name="implicit-data-type-conversions"></a>Implicit adattípus-konverziók
 
-Az Azure Logic Apps automatikusan vagy implicit módon átalakítja egyes adattípusok között, így nem kell ezeket a típusokat manuálisan átalakítania. Ha például olyan nem karakterláncos értékeket használ, ahol a karakterláncok bemenetként vártak, Logic Apps automatikusan átalakítja a nem sztring értékeket karakterláncokra.
+Az Azure Logic Apps automatikusan vagy implicit módon átalakítja egyes adattípusok között, így nem kell manuálisan végrehajtania ezeket a konverziókat. Ha például olyan nem karakterláncos értékeket használ, ahol a karakterláncok bemenetként vártak, Logic Apps automatikusan átalakítja a nem sztring értékeket karakterláncokra.
 
 Tegyük fel például, hogy egy trigger egy numerikus értéket ad vissza kimenetként:
 
@@ -187,9 +187,11 @@ Ha ezt a numerikus kimenetet használja, ahol a karakterlánc-bevitel várható,
 
 `@{triggerBody()?['123']}`
 
+<a name="base64-encoding-decoding"></a>
+
 ### <a name="base64-encoding-and-decoding"></a>Base64-kódolás és-dekódolás
 
-Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást vagy dekódolást, így nem kell manuálisan végrehajtania ezeket a műveleteket a megfelelő kifejezések használatával:
+Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást vagy dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat a megfelelő függvények használatával:
 
 * `base64(<value>)`
 * `base64ToBinary(<value>)`
@@ -200,7 +202,7 @@ Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást vagy 
 * `decodeDataUri(<value>)`
 
 > [!NOTE]
-> Ha manuálisan adja hozzá ezeket a kifejezéseket a logikai alkalmazáshoz, például a Kifejezésszerkesztő használatával, navigáljon a Logic app designertől, és térjen vissza a tervezőhöz, a tervező csak a paraméterek értékeit jeleníti meg. A kifejezések csak akkor őrződnek meg a kódban, ha nem szerkeszti a paramétereket. Ellenkező esetben Logic Apps eltávolítja a kifejezéseket a kód nézetből, és csak a paraméterek értékeit hagyja. Ez a viselkedés nem befolyásolja a kódolást és a dekódolást, csak azt, hogy megjelenjenek-e a kifejezések.
+> Ha ezeket a funkciókat manuálisan adja hozzá a munkafolyamathoz a Logic app Designerben, például a Kifejezésszerkesztő használatával, navigáljon a tervezőtől, és térjen vissza a tervezőbe, a függvény eltűnik a tervezőtől, így csak a paraméterek értékei maradnak meg. Ez a viselkedés akkor is előfordul, ha olyan triggert vagy műveletet választ, amely ezt a függvényt használja anélkül, hogy szerkeszti a függvény paraméterének értékét. Ez az eredmény csak a függvény láthatóságát befolyásolja, a hatás nem. A kód nézetben a függvény nem érinti a műveletet. Ha azonban szerkeszti a függvény paraméterének értékeit, a függvény és annak hatása egyaránt el lesz távolítva a kód nézetből, így csak a függvény paramétereinek értékei maradnak.
 
 <a name="math-functions"></a>
 
@@ -944,7 +946,7 @@ array('hello')
 Egy sztring Base64 kódolású verziójának visszaadása.
 
 > [!NOTE]
-> A Azure Logic Apps automatikusan végrehajtja a Base64 kódolást és a dekódolást, ami azt jelenti, hogy nem kell manuálisan végrehajtania ezeket a konverziókat. Ha azonban így tesz, előfordulhat, hogy váratlan megjelenítési viselkedést tapasztal, amely nem befolyásolja a tényleges konverziót, csak a megjelenésük módját. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
+> Azure Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást és dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat a kódolási és dekódolási függvények használatával. Ha azonban ezeket a függvényeket használja, előfordulhat, hogy a tervező nem várt megjelenítési viselkedést tapasztal. Ezek a viselkedésmódok csak a függvények láthatóságát érintik, nem a hatásukat, kivéve, ha szerkeszti a functions paraméter értékeit, ami eltávolítja a függvényeket és azok hatásait a kódból. További információ: [Base64-kódolás és-dekódolás](#base64-encoding-decoding).
 
 ```
 base64('<value>')
@@ -977,7 +979,7 @@ base64('hello')
 Egy Base64 kódolású karakterlánc bináris verziójának visszaadása.
 
 > [!NOTE]
-> A Azure Logic Apps automatikusan végrehajtja a Base64 kódolást és a dekódolást, ami azt jelenti, hogy nem kell manuálisan végrehajtania ezeket a konverziókat. Ha azonban így tesz, előfordulhat, hogy váratlan megjelenítési viselkedést tapasztal, amely nem befolyásolja a tényleges konverziót, csak a megjelenésük módját. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
+> Azure Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást és dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat a kódolási és dekódolási függvények használatával. Ha azonban ezeket a függvényeket a Designerben használja, előfordulhat, hogy a tervező nem várt megjelenítési viselkedést tapasztal. Ezek a viselkedésmódok csak a függvények láthatóságát érintik, nem a hatásukat, kivéve, ha szerkeszti a functions paraméter értékeit, ami eltávolítja a függvényeket és azok hatásait a kódból. További információ: [Base64-kódolás és-dekódolás](#base64-encoding-decoding).
 
 ```
 base64ToBinary('<value>')
@@ -1012,7 +1014,7 @@ base64ToBinary('aGVsbG8=')
 Egy Base64 kódolású karakterlánc karakterlánc-verziójának visszaadása, amely hatékonyan dekódolja a Base64-karakterláncot. Használja ezt a függvényt a [decodeBase64 ()](#decodeBase64)helyett, ami elavult.
 
 > [!NOTE]
-> A Azure Logic Apps automatikusan végrehajtja a Base64 kódolást és a dekódolást, ami azt jelenti, hogy nem kell manuálisan végrehajtania ezeket a konverziókat. Ha azonban így tesz, előfordulhat, hogy váratlan megjelenítési viselkedést tapasztal, amely nem befolyásolja a tényleges konverziót, csak a megjelenésük módját. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
+> Azure Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást és dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat a kódolási és dekódolási függvények használatával. Ha azonban ezeket a függvényeket a Designerben használja, előfordulhat, hogy a tervező nem várt megjelenítési viselkedést tapasztal. Ezek a viselkedésmódok csak a függvények láthatóságát érintik, nem a hatásukat, kivéve, ha szerkeszti a functions paraméter értékeit, ami eltávolítja a függvényeket és azok hatásait a kódból. További információ: [Base64-kódolás és-dekódolás](#base64-encoding-decoding).
 
 ```
 base64ToString('<value>')
@@ -1074,9 +1076,7 @@ binary('hello')
 
 ### <a name="body"></a>body (Törzs)
 
-Egy művelet `body` kimenetének visszaadása futásidőben.
-Rövidítés a következőhöz: `actions('<actionName>').outputs.body` .
-Lásd: [actionBody ()](#actionBody) és [műveletek ()](#actions).
+Egy művelet `body` kimenetének visszaadása futásidőben. Rövidítés a következőhöz: `actions('<actionName>').outputs.body` . Lásd: [actionBody ()](#actionBody) és [műveletek ()](#actions).
 
 ```
 body('<actionName>')
@@ -1194,6 +1194,15 @@ coalesce(null, null, null)
 
 Egyesítse kettő vagy több karakterláncot, és állítsa vissza az egyesített karakterláncot.
 
+> [!NOTE]
+> Azure Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást és dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat, ha a `concat()` függvényt olyan adatokkal használja, amelyek kódolást vagy dekódolást igényelnek:
+> 
+> * `concat('data:;base64,',<value>)`
+> * `concat('data:,',encodeUriComponent(<value>))`
+> 
+> Ha azonban ezt a függvényt a tervezőben használja, előfordulhat, hogy a tervező nem várt megjelenítési viselkedést tapasztal. Ezek a viselkedésmódok csak a függvény láthatóságát érintik, és nem az effektust, kivéve, ha szerkeszti a függvény paraméter-értékeit, így eltávolítja a függvényt, és a kód hatásait. 
+> További információ: [Base64-kódolás és-dekódolás](#base64-encoding-decoding).
+
 ```
 concat('<text1>', '<text2>', ...)
 ```
@@ -1222,9 +1231,7 @@ concat('Hello', 'World')
 
 ### <a name="contains"></a>contains
 
-Győződjön meg arról, hogy egy gyűjteménynek van-e konkrét eleme.
-Igaz értéket ad vissza, ha az elem található, vagy ha nem található, hamis értéket ad vissza.
-Ez a függvény megkülönbözteti a kis-és nagybetűket.
+Győződjön meg arról, hogy egy gyűjteménynek van-e konkrét eleme. Igaz értéket ad vissza, ha az elem található, vagy ha nem található, hamis értéket ad vissza. Ez a függvény megkülönbözteti a kis-és nagybetűket.
 
 ```
 contains('<collection>', '<value>')
@@ -1622,7 +1629,7 @@ Ez a függvény elavult, ezért használja helyette a [base64ToString ()](#base6
 Az adategységes erőforrás-azonosító (URI) bináris verziójának visszaadása. Vegye fontolóra a [dataUriToBinary ()](#dataUriToBinary)használatát a helyett `decodeDataUri()` . Bár mindkét függvény ugyanúgy működik, `dataUriToBinary()` előnyben részesített.
 
 > [!NOTE]
-> A Azure Logic Apps automatikusan végrehajtja a Base64 kódolást és a dekódolást, ami azt jelenti, hogy nem kell manuálisan végrehajtania ezeket a konverziókat. Ha azonban így tesz, előfordulhat, hogy váratlan megjelenítési viselkedést tapasztal, amely nem befolyásolja a tényleges konverziót, csak a megjelenésük módját. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
+> Azure Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást és dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat a kódolási és dekódolási függvények használatával. Ha azonban ezeket a függvényeket a Designerben használja, előfordulhat, hogy a tervező nem várt megjelenítési viselkedést tapasztal. Ezek a viselkedésmódok csak a függvények láthatóságát érintik, nem a hatásukat, kivéve, ha szerkeszti a functions paraméter értékeit, ami eltávolítja a függvényeket és azok hatásait a kódból. További információ: [Base64-kódolás és-dekódolás](#base64-encoding-decoding).
 
 ```
 decodeDataUri('<value>')
@@ -1729,7 +1736,7 @@ div(11.0,5)
 Egy egységes erőforrás-azonosító (URI) kódolású verziót ad vissza egy karakterlánchoz az URL-nem biztonságos karakterek lecserélése Escape-karakterekkel. Vegye fontolóra a [uriComponent ()](#uriComponent)használatát a helyett `encodeUriComponent()` . Bár mindkét függvény ugyanúgy működik, `uriComponent()` előnyben részesített.
 
 > [!NOTE]
-> A Azure Logic Apps automatikusan végrehajtja a Base64 kódolást és a dekódolást, ami azt jelenti, hogy nem kell manuálisan végrehajtania ezeket a konverziókat. Ha azonban így tesz, előfordulhat, hogy váratlan megjelenítési viselkedést tapasztal, amely nem befolyásolja a tényleges konverziót, csak a megjelenésük módját. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
+> Azure Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást és dekódolást, így nem kell manuálisan végrehajtania ezeket a konverziókat a kódolási és dekódolási függvények használatával. Ha azonban ezeket a függvényeket a Designerben használja, előfordulhat, hogy a tervező nem várt megjelenítési viselkedést tapasztal. Ezek a viselkedésmódok csak a függvények láthatóságát érintik, nem a hatásukat, kivéve, ha szerkeszti a functions paraméter értékeit, ami eltávolítja a függvényeket és azok hatásait a kódból. További információ: [Base64-kódolás és-dekódolás](#base64-encoding-decoding).
 
 ```
 encodeUriComponent('<value>')

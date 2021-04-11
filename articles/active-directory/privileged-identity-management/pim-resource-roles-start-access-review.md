@@ -11,20 +11,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 03/16/2021
+ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 110a94c78427087f4ca5555f59055ab8e3bebcee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87c0ce72348f67c22759915a3a15c69193ad2f60
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592671"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552791"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása Privileged Identity Management
 
 A Kiemelt Azure-beli erőforrás-szerepkörökhöz való hozzáférésre van szükség az alkalmazottak változásainak időbeli változása miatt. Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a hozzáférést. A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával hozzáférési felülvizsgálatokat hozhat létre az Azure-erőforrás szerepköreihez való jogosultsági szintű hozzáféréshez. Az ismétlődő hozzáférési felülvizsgálatokat is konfigurálhatja, amelyek automatikusan megtörténnek. Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatot.
+
+## <a name="prerequisite-license"></a>Előfeltételként szükséges licenc
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. A PIM-licenccel kapcsolatos további információkért tekintse meg a [Privileged Identity Management használatára vonatkozó licencfeltételeket](subscription-requirements.md).
+
+> [!Note]
+>  Jelenleg az Azure AD-hez és az Azure-erőforrás szerepköreihez (előzetes verzió) való hozzáférésre vonatkozó hozzáférési felülvizsgálat hatókörét a bérlőben aktív prémium szintű Azure Active Directory P2 kiadással lehet elérni. Az egyszerű szolgáltatások licencelési modellje a szolgáltatás általános elérhetősége miatt véglegesítve lesz, és további licencekre lehet szükség.
 
 ## <a name="prerequisite-role"></a>Előfeltételként szükséges szerepkör
 
@@ -34,9 +41,9 @@ A Kiemelt Azure-beli erőforrás-szerepkörökhöz való hozzáférésre van sz�
 
 1. Jelentkezzen be [Azure Portalra](https://portal.azure.com/) egy olyan felhasználóval, aki hozzá van rendelve az egyik előfeltételi szerepkörhöz.
 
-1. Nyissa meg **Azure ad Privileged Identity Management**.
-
-1. A bal oldali menüben válassza az **Azure-erőforrások** lehetőséget.
+1. **Identitás-szabályozás** kiválasztása
+ 
+1. A bal oldali menüben válassza az **Azure ad Privileged Identity Management** alatt található **Azure-erőforrások** lehetőséget.
 
 1. Válassza ki a kezelni kívánt erőforrást, például egy előfizetést.
 
@@ -58,9 +65,12 @@ A Kiemelt Azure-beli erőforrás-szerepkörökhöz való hozzáférésre van sz�
 
 1. A **befejezési** beállítással adhatja meg az ismétlődő hozzáférés-felülvizsgálati sorozat befejezésének módját. A sorozat három módon végződhet: a folyamatosan futtatott értékelések határozatlan ideig, egy adott dátumig vagy egy meghatározott számú előfordulás után is megkezdődhetnek. Ön, egy másik felhasználó rendszergazdája vagy egy másik globális rendszergazda állíthatja le a sorozatot a létrehozás után, hogy megváltoztatta a dátumot a **beállításokban**, hogy az adott időpontban véget vessen.
 
-1. A **felhasználók** szakaszban válasszon ki egy vagy több olyan szerepkört, amelynek tagságát át szeretné tekinteni.
+1. A **felhasználók** szakaszban válassza ki a felülvizsgálat hatókörét. Ha szeretné áttekinteni a felhasználókat, válassza a **felhasználók vagy az (előzetes verzió) az egyszerű szolgáltatások** lehetőséget, hogy áttekintse az Azure-szerepkörhöz hozzáférő számítógép-fiókokat.   
 
     ![Felhasználói hatókör a szerepkör tagságának áttekintéséhez](./media/pim-resource-roles-start-access-review/users.png)
+
+
+1. A **szerepkör-tagság áttekintése** területen válassza ki az áttekinteni kívánt Kiemelt Azure-szerepköröket. 
 
     > [!NOTE]
     > - Az itt kiválasztott szerepkörök [állandó és jogosult szerepköröket](../privileged-identity-management/pim-how-to-add-role-to-user.md)is tartalmaznak.
@@ -77,9 +87,9 @@ A Kiemelt Azure-beli erőforrás-szerepkörökhöz való hozzáférésre van sz�
 
     ![Kijelölt felhasználók vagy tagok (saját) véleményezők listája](./media/pim-resource-roles-start-access-review/reviewers.png)
 
-    - **Kiválasztott felhasználók** – ezt a beállítást akkor használja, ha nem tudja, kinek van hozzáférése. Ezzel a beállítással a felülvizsgálatot hozzárendelheti egy erőforrás-tulajdonoshoz vagy a csoport kezelőjéhez a befejezéshez.
-    - **Tagok (önálló)** – ezzel a beállítással a felhasználók áttekinthetik saját szerepkör-hozzárendeléseiket. 
-    - **Kezelő** – ezzel a beállítással a felhasználó felettese áttekintheti a szerepkör-hozzárendelését. A Manager kiválasztásakor lehetősége van tartalék felülvizsgáló megadására is. A tartalék felülvizsgálók arra kérik, hogy tekintsék át a felhasználót, ha a felhasználó nem ad meg felettest a címtárban. 
+    - **Kiválasztott felhasználók** – ezzel a beállítással egy adott felhasználót jelölhet ki a felülvizsgálat befejezéséhez. Ez a beállítás a felülvizsgálati hatókörtől függetlenül elérhető, és a kiválasztott felülvizsgálók áttekinthetik a felhasználókat és a szolgáltatásokat. 
+    - **Tagok (önálló)** – ezzel a beállítással a felhasználók áttekinthetik saját szerepkör-hozzárendeléseiket. Ez a beállítás csak akkor érhető el, ha a felülvizsgálat hatóköre a **felhasználókra** terjed ki.
+    - **Kezelő** – ezzel a beállítással a felhasználó felettese áttekintheti a szerepkör-hozzárendelését. Ez a beállítás csak akkor érhető el, ha a felülvizsgálat hatóköre a **felhasználókra** terjed ki. A Manager kiválasztásakor lehetősége van tartalék felülvizsgáló megadására is. A tartalék felülvizsgálók arra kérik, hogy tekintsék át a felhasználót, ha a felhasználó nem ad meg felettest a címtárban. 
 
 ### <a name="upon-completion-settings"></a>Befejezési beállítások
 
