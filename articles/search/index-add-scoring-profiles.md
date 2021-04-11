@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afe56bb8637c9b2a88bda23944fd5097413fce97
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91537633"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077720"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Referenciaprofilok hozzáadása Azure Cognitive Search-indexekhez
 
@@ -161,7 +161,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  A pontozási profil törzse súlyozott mezőkből és függvényekből épül fel.  
 
-|||  
+|Tulajdonságok |Leírás|  
 |-|-|  
 |**Súlyozással**|Adjon meg olyan név-érték párokat, amelyek egy relatív súlyozást rendelnek egy mezőhöz. A [példában](#bkmk_ex)a albumTitle, a műfaj és a artistName mező a 1,5, 5 és 2 közötti növekedést eredményezi. Miért növelte a műfaj a többinél nagyobb mértékben? Ha a keresés olyan adatmennyiségen keresztül történik, amely némileg homogén (például a "műfaj" kifejezéssel `musicstoreindex` ), akkor a relatív súlyoknál nagyobb eltérésre lehet szükség. A (z) `musicstoreindex` "rock" például egy műfajként és azonos módon megfogalmazott műfaji leírásokban jelenik meg. Ha azt szeretné, hogy a műfaj meghaladja a műfaj leírását, a műfaj mezőnek sokkal nagyobb relatív súlyra van szüksége.|  
 |**Functions**|Akkor használatos, ha további számításokra van szükség az adott környezetekhez. Az érvényes értékek a következők: `freshness`, `magnitude`, `distance` és `tag`. Minden függvényhez egyedi paraméterek tartoznak.<br /><br /> -   `freshness` akkor érdemes használni, ha az új vagy a régi elemek kiemelését szeretné növelni. Ez a függvény csak a `datetime` Fields (EDM) használatával használható. DataTimeOffset). Figyelje meg, hogy az `boostingDuration` attribútum csak a `freshness` függvényt használja.<br />-   `magnitude` akkor érdemes használni, ha a magas vagy alacsony numerikus érték alapján szeretne fokozni. A függvényt meghívó forgatókönyvek közé tartozik a haszonkulcs, a legmagasabb ár, a legalacsonyabb ár vagy a letöltések száma. Ez a függvény csak Double és Integer mezőkkel használható.<br />     A `magnitude` függvénynél visszafordíthatja a tartományt, magas – alacsony értékre, ha azt szeretné, hogy az inverz minta (például az alacsonyabb díjszabású elemek magasabb díjszabású elemek kiemelése). A $100 és $1 közötti árak széles választéka miatt `boostingRangeStart` a 100-as és az 1. számú értékkel `boostingRangeEnd` növelheti az alacsonyabb árú elemeket.<br />-   `distance` olyankor kell használni, ha a közelséget vagy a földrajzi helyet szeretné növelni. Ezt a függvényt csak `Edm.GeographyPoint` mezőkkel lehet használni.<br />-   `tag` akkor érdemes használni, ha a dokumentumok és a keresési lekérdezések között közös címkéket szeretne növelni. Ez a függvény csak a és a `Edm.String` mezők használatával használható `Collection(Edm.String)` .<br /><br /> **A függvények használatára vonatkozó szabályok**<br /><br /> A függvény típusának ( `freshness` , `magnitude` , `distance` ) `tag` kisbetűnek kell lennie.<br /><br /> A függvények nem tartalmazhatnak null értékű vagy üres értékeket. Pontosabban, ha a mezőnév-t is tartalmazza, be kell állítania valamire.<br /><br /> A függvények csak szűrhető mezőkre alkalmazhatók. A szűrhető mezőkkel kapcsolatos további információkért lásd: [create Index &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index) .<br /><br /> A függvények csak olyan mezőkre alkalmazhatók, amelyek az index mezőinek gyűjteményében vannak meghatározva.|  

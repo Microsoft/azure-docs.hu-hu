@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9443c6fbaca16cf075745972a1655a2b4b2ea43c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97696085"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077533"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Oktatóanyag: Szószedetbeli kifejezések létrehozása és importálása az Azure hatáskörébe (előzetes verzió)
 
@@ -138,10 +138,10 @@ Az **új term sablon** képernyőn hajtsa végre a következő lépéseket:
 
    |Beállítás|Ajánlott érték|
    |---------|-----------|
-   |Attribútum neve|bizalmas információ|
-   |Mező típusa|legördülő|Egyetlen választás|
-   |Megjelölés kötelezőként|Jelölje be ezt a négyzetet.|
-   |+ Választási lehetőség hozzáadása| Adjon hozzá két lehetőséget. "Igen" és "nem".|
+   |Attribútum neve |bizalmas információ|
+   |Mező típusa | Egyetlen választás|
+   |Megjelölés kötelezőként | Jelölje be ezt a négyzetet.|
+   |+ Választási lehetőség hozzáadása | Adjon hozzá két lehetőséget. "Igen" és "nem".|
 
    :::image type="content" source="./media/tutorial-import-create-glossary-terms/add-new-attribute.png" alt-text="Adjon hozzá egy új attribútumot.":::
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592755"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078502"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
 ==================================================
@@ -176,12 +176,12 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
 | **Hiba** | **Műveletek** |
 | --- | --- |
-| Nem egyező mintavételi állapotkód: fogadott 401 | Győződjön meg arról, hogy a háttér-kiszolgáló hitelesítést igényel. Application Gateway mintavétel nem tud hitelesítő adatokat továbbítani a hitelesítéshez. Engedélyezze a \" HTTP 401-et a mintavételi \" állapotkód-egyeztetésben vagy a mintavételben olyan elérési útra, ahol a kiszolgálónak nincs szükség hitelesítésre. | |
-| Nem egyező mintavételi állapotkód: fogadott 403 | Hozzáférés megtiltva. Győződjön meg arról, hogy az elérési úthoz való hozzáférés engedélyezett-e a háttér-kiszolgálón. | |
-| Nem egyező mintavételi állapotkód: fogadott 404 | A lap nem található. Győződjön meg arról, hogy az állomásnév elérési útja elérhető-e a háttér-kiszolgálón. Módosítsa az állomásnév vagy az elérési út paramétert egy elérhető értékre. | |
-| Nem egyező mintavételi állapotkód: fogadott 405 | A Application Gateway mintavételi kérelmei a HTTP GET metódust használják. Győződjön meg arról, hogy a kiszolgáló engedélyezi ezt a metódust. | |
-| Nem egyező mintavételi állapotkód: fogadott 500 | Belső kiszolgálóhiba. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. | |
-| Nem egyező mintavételi állapotkód: fogadott 503 | A szolgáltatás nem érhető el. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. | |
+| Nem egyező mintavételi állapotkód: fogadott 401 | Győződjön meg arról, hogy a háttér-kiszolgáló hitelesítést igényel. Application Gateway mintavétel nem tud hitelesítő adatokat továbbítani a hitelesítéshez. Engedélyezze a \" HTTP 401-et a mintavételi \" állapotkód-egyeztetésben vagy a mintavételben olyan elérési útra, ahol a kiszolgálónak nincs szükség hitelesítésre. |
+| Nem egyező mintavételi állapotkód: fogadott 403 | Hozzáférés megtiltva. Győződjön meg arról, hogy az elérési úthoz való hozzáférés engedélyezett-e a háttér-kiszolgálón. |
+| Nem egyező mintavételi állapotkód: fogadott 404 | A lap nem található. Győződjön meg arról, hogy az állomásnév elérési útja elérhető-e a háttér-kiszolgálón. Módosítsa az állomásnév vagy az elérési út paramétert egy elérhető értékre. |
+| Nem egyező mintavételi állapotkód: fogadott 405 | A Application Gateway mintavételi kérelmei a HTTP GET metódust használják. Győződjön meg arról, hogy a kiszolgáló engedélyezi ezt a metódust. |
+| Nem egyező mintavételi állapotkód: fogadott 500 | Belső kiszolgálóhiba. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. |
+| Nem egyező mintavételi állapotkód: fogadott 503 | A szolgáltatás nem érhető el. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. |
 
 Vagy ha úgy gondolja, hogy a válasz legitim, és azt szeretné, hogy a Application Gateway a többi állapotkódot is Kifogástalan állapotba fogadja, létrehozhat egy egyéni mintavételt. Ez a megközelítés olyan helyzetekben hasznos, amikor a háttérbeli webhelynek hitelesítést kell használnia. Mivel a mintavételi kérelmek nem rendelkeznek felhasználói hitelesítő adatokkal, sikertelenek lesznek, és a háttér-kiszolgáló HTTP 401 állapotkódot ad vissza.
 

@@ -5,15 +5,15 @@ author: martinekuan
 manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/30/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fda6f913fcb5325c811671cd6476dcbf2413766
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511229"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058017"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vészhelyreállítás (BCDR): Az Azure párosított régiói
 
@@ -29,7 +29,7 @@ A regionális párok két régióból állnak, ugyanazon a földrajzon belül. A
 
 Bizonyos Azure-szolgáltatások a párosított régiók további előnyeit biztosítják az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez.  Az Azure számos [tárolási megoldást](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) kínál, amelyek kihasználják a párosított régiókat az adatelérhetőség biztosításához. Az [Azure geo-redundáns tároló](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) például automatikusan replikálja az adatforrásokat egy másodlagos régióba, így biztosítva, hogy az adatvédelem még abban az esetben is megmaradjon, ha az elsődleges régió nem helyreállítható. 
 
-Vegye figyelembe, hogy az összes Azure-szolgáltatás nem replikálja automatikusan az adatait, és az összes Azure-szolgáltatás nem áll automatikusan vissza egy sikertelen régióból a párja felé.  Ilyen esetekben a helyreállítást és a replikálást az ügyfélnek kell konfigurálnia.
+Vegye figyelembe, hogy az összes Azure-szolgáltatás nem replikálja automatikusan az adatait, és az összes Azure-szolgáltatás nem áll automatikusan tartalékba egy sikertelen régióból a párja felé.  Ilyen esetekben a helyreállítást és a replikálást az ügyfélnek kell konfigurálnia.
 
 ## <a name="can-i-select-my-regional-pairs"></a>Kijelölhetem a regionális párokat?
 
@@ -51,14 +51,15 @@ Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltat
 |:--- |:--- |:--- |
 | Asia-Pacific |Kelet-Ázsia (Hongkong) | Délkelet-Ázsia (Szingapúr) |
 | Ausztrália |Kelet-Ausztrália |Délkelet-Ausztrália |
-| Ausztrália |Ausztrália középső régiója |Ausztrália 2. középső régiója |
+| Ausztrália |Ausztrália középső régiója |Közép-Ausztrália, 2 * |
 | Brazília |Dél-Brazília |USA déli középső régiója |
+| Brazília |Dél-Brazília * |Dél-Brazília |
 | Kanada |Közép-Kanada |Kelet-Kanada |
 | Kína |Észak-Kína |Kelet-Kína|
 | Kína |Észak-Kína 2 |Kelet-Kína 2|
 | Európa |Észak-Európa (Írország) |Nyugat-Európa (Hollandia) |
-| Franciaország |Közép-Franciaország|Dél-Franciaország|
-| Németország |Közép-Németország |Északkelet-Németország |
+| Franciaország |Közép-Franciaország|Dél-Franciaország *|
+| Németország |Középnyugat-Németország |Észak-Németország * |
 | India |Közép-India |Dél-India |
 | India |Nyugat-India |Dél-India |
 | Japán |Kelet-Japán |Nyugat-Japán |
@@ -67,15 +68,17 @@ Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltat
 | Észak-Amerika |USA 2. keleti régiója |Az USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
 | Észak-Amerika |USA 2. nyugati régiója |USA nyugati középső régiója |
-| Norvégia | Kelet-Norvégia | Norvégia nyugati régiója |
-| Dél-afrikai Köztársaság | Dél-Afrika északi régiója |Dél-Afrika nyugati régiója |
-| Svájc | Észak-Svájc |Nyugat-Svájc |
+| Norvégia | Kelet-Norvégia | Norvégia nyugati régiója * |
+| Dél-afrikai Köztársaság | Dél-Afrika északi régiója |Dél-Afrika nyugati régiója * |
+| Svájc | Észak-Svájc |Nyugat-Svájc * |
 | Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
-| Egyesült Arab Emírségek | Észak-Egyesült Arab | UAE középső régiója
-| Egyesült Államok Védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |
-| Egyesült Államok – Államigazgatás |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |
-| Egyesült Államok – Államigazgatás |US Gov Iowa |USA-beli államigazgatás – Virginia |
-| Egyesült Államok – Államigazgatás |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Texas |
+| Egyesült Arab Emírségek | Észak-Egyesült Arab | Az Egyesült Arab Emírségek középső régiója * |
+| Egyesült Államok Védelmi Minisztériuma |US DoD – keleti régió * |US DoD – középső régió * |
+| Egyesült Államok – Államigazgatás |US Gov Arizona * |US Gov Texas * |
+| Egyesült Államok – Államigazgatás |US Gov Iowa * |US Gov Virginia * |
+| Egyesült Államok – Államigazgatás |US Gov Virginia * |US Gov Texas * |
+
+(*) Bizonyos régiók hozzáférése korlátozott az adott ügyfél-forgatókönyvek támogatásához, például az országon belüli vész-helyreállításhoz. Ezek a régiók csak kérés esetén érhetők el, ha [új támogatási kérést hoznak létre a Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 > [!Important]
 > - Nyugat-India csak egy irányban párosítható. Nyugat-India másodlagos régiója Dél-India, Dél-India másodlagos régiója azonban Közép-India.

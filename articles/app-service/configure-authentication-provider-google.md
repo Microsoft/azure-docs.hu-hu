@@ -3,16 +3,16 @@ title: A Google-hitelesítés konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a Google-hitelesítést identitás-szolgáltatóként a App Service vagy Azure Functions alkalmazáshoz.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6bec32fa928e840569ed95c35a056db91ea9737
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80519950"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077992"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Google bejelentkezés használatára
 
@@ -34,21 +34,20 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Google-információk hozzáadása az alkalmazáshoz
 
-1. A [Azure Portal]nyissa meg a app Service alkalmazást.
-1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés** lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
-1. Válassza a **Google** lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
-1. Válassza az **OK** lehetőséget.
+1. Jelentkezzen be a [Azure Portalba] , és navigáljon az alkalmazáshoz.
+1. A bal oldali menüben válassza a **hitelesítés** lehetőséget. Kattintson a **személyazonosság-szolgáltató hozzáadása** elemre.
+1. Válassza a **Google** elemet az identitás-szolgáltató legördülő menüben. Illessze be a korábban beszerzett alkalmazás-azonosító és az alkalmazás titkos értékeit.
 
-   A App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. További információ: [felhasználók engedélyezése vagy megtagadása](app-service-authentication-how-to.md#authorize-or-deny-users).
+    A titkos kódot a rendszer tárolóhely-Sticky [alkalmazásként](./configure-common.md#configure-app-settings) tárolja `GOOGLE_PROVIDER_AUTHENTICATION_SECRET` . Ezt a beállítást később is frissítheti [Key Vault hivatkozások](./app-service-key-vault-references.md) használatához, ha a titkos kulcsot szeretné kezelni a Azure Key Vaultban.
 
-1. Választható Ha csak a Google által hitelesített felhasználók számára szeretné korlátozni a hely elérését, állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a **Google**-ban. Ha beállítja ezt a funkciót, az alkalmazásnak minden kérelmet hitelesítenie kell. Emellett az összes nem hitelesített kérelmet is átirányítja a Google-hoz a hitelesítéshez.
+1. Ha ez az alkalmazáshoz konfigurált első identitás-szolgáltató, akkor a rendszer a **app Service hitelesítési beállítások** szakaszt is kéri. Ellenkező esetben a következő lépésre léphet.
+    
+    Ezek a beállítások határozzák meg, hogy az alkalmazás hogyan válaszol a nem hitelesített kérelmekre, és az alapértelmezett beállítások átirányítják az összes kérelmet az új szolgáltatóval való bejelentkezéshez. Módosíthatja a viselkedés testre szabását, vagy később is módosíthatja ezeket a beállításokat a  **hitelesítési beállítások** melletti **Szerkesztés** lehetőség választásával. További információ ezekről a lehetőségekről: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
 
-    > [!CAUTION]
-    > A hozzáférés ily módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos olyan alkalmazások esetében, amelyek nyilvánosan elérhető kezdőlaptal rendelkeznek, mint sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, hogy az alkalmazás manuálisan megkezdse a hitelesítést. További információ: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
+1. Választható Kattintson a **Tovább: hatókörök** elemre, és adja hozzá az alkalmazáshoz szükséges hatóköröket. Ezeket a rendszer a böngészőalapú folyamatok bejelentkezési idejére kéri.
+1. Kattintson a **Hozzáadás** parancsra.
 
-1. Kattintson a **Mentés** gombra.
-
-Most már készen áll a Google használatára a hitelesítéshez az alkalmazásban.
+Most már készen áll a Google használatára a hitelesítéshez az alkalmazásban. A szolgáltató a **hitelesítés** képernyőn jelenik meg. Innen módosíthatja vagy törölheti a szolgáltatói konfigurációt.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Következő lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Azure-beli nagyvállalati regisztráció számlázási adatainak áttekintése REST API-val
+title: Az Azure Enterprise beléptetési számlázási adatai áttekintése REST API
 description: Megtudhatja, hogyan tekintheti át a nagyvállalati regisztrációk számlázási adatait Azure REST API-kkal.
 author: lleonard-msft
 ms.service: cost-management-billing
@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 4ac9c38c3f86c1226edf3b448324205cf5f98568
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132414"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058867"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Nagyvállalati regisztráció számlázásának áttekintése REST API-kkal
 
@@ -42,7 +42,7 @@ A következő fejlécek megadása kötelező:
 Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
 
-## <a name="response"></a>Válasz  
+## <a name="response"></a>Reagálás  
 
 Sikeres válasz esetén a rendszer a 200-as (OK) állapotkódot adja vissza, amely a fiók részletes költségeinek listáját tartalmazza.
 
@@ -94,7 +94,7 @@ A következő fejlécek megadása kötelező:
 
 Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
-### <a name="response"></a>Válasz  
+### <a name="response"></a>Reagálás  
 
 Sikeres válasz esetén a rendszer a 200 (OK) állapotkódot adja vissza, amely tartalmazza egy adott számlázási időszak részletes használati adatainak és költségeinek listáját, valamint a részleg számlájának azonosítóját.
 
@@ -150,7 +150,7 @@ A következő fejlécek megadása kötelező:
 
 Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
-### <a name="response"></a>Válasz  
+### <a name="response"></a>Reagálás  
 
 Sikeres válasz esetén a rendszer a 200 (OK) állapotkódot adja vissza, amely tartalmazza egy adott számlázási időszak részletes használati adatainak és költségeinek listáját, valamint a részleg számlájának azonosítóját.
 

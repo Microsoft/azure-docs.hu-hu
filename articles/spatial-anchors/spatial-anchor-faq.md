@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384238"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284204"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Az Azure térbeli Horgonyokkal kapcsolatos gyakori kérdések
 
@@ -52,6 +52,10 @@ További információ: [Azure térbeli horgonyok – áttekintés](overview.md).
 **K: hogyan tárolja az Azure térbeli szolgáltatás az adattárolást?**
 
 **A:** A rendszer minden, a Microsoft által felügyelt adattitkosítási kulccsal titkosított adattárolót tárol, és minden egyes erőforráshoz regionálisan tárolja az összes adatmennyiséget.
+
+**K: Hol tárolja az Azure térbeli szolgáltatás az adattárolást?**
+
+**A:** Az Azure térbeli horgonyok fiókjai lehetővé teszik annak a régiónak a megadását, ahol az adatai tárolva lesznek. A Microsoft más régiókba replikálhatja az adatvédelmet, de a Microsoft nem replikálja és nem helyezi át a földrajzon kívüli adatátvitelt. Ezeket az adattípusokat abban a régióban tárolja a rendszer, ahol az Azure térbeli horgonyok fiókja konfigurálva van. Ha például a fiók regisztrálva van az USA keleti régiójában, akkor ezeket az adattárolást az USA keleti régiójában tárolja, a rugalmasság biztosítása érdekében pedig a Észak-Amerika földrajz egy másik régiójába lehet replikálni.
 
 **K: milyen információkat továbbítanak és tárolnak egy adott környezetről az Azure térbeli horgonyok használatakor? Továbbítják és tárolják a környezet képeit?**
 

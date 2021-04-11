@@ -4,12 +4,12 @@ description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Docker-beáll
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91d4209ccf558bf7c8038d8a753ec038428bc484
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6928f1c45cdac93b70797daf41205b4c5db27e0
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020006"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283818"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rövid útmutató: privát tároló-beállításjegyzék létrehozása Azure PowerShell használatával
 
@@ -55,7 +55,7 @@ Ebben a rövid útmutatóban egy *alapszintű* beállításjegyzéket hozunk lé
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-A tárolórendszerképek mozgatásához először be kell jelentkeznie a beállításjegyzékbe. Éles környezetekben érdemes egyéni identitást vagy egyszerű szolgáltatásnevet használni a tároló beállításjegyzékének eléréséhez, de a rövid útmutató elvégzéséhez engedélyezze a rendszergazdai felhasználót a beállításjegyzékben a [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] paranccsal:
+A tárolórendszerképek mozgatásához először be kell jelentkeznie a beállításjegyzékbe. A rövid útmutató megtartásához engedélyezze a rendszergazdai felhasználót a beállításjegyzékben a [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] paranccsal. Éles környezetekben érdemes alternatív [hitelesítési módszert](container-registry-authentication.md) használni a beállításjegyzék-hozzáféréshez, például egy egyszerű szolgáltatásnevet. 
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
@@ -68,6 +68,10 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 ```
 
 A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
+
+> [!TIP]
+> Az Azure CLI biztosítja a `az acr login` parancsot, amely kényelmes módszert biztosít a tároló-beállításjegyzékbe való bejelentkezésre az [Egyéni identitásával](container-registry-authentication.md#individual-login-with-azure-ad)anélkül, hogy a Docker hitelesítő adatait kellene átadnia.
+
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 

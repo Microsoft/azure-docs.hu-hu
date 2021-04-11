@@ -7,8 +7,6 @@
       href: overview.md
     - name: Melyik MySQL-beállítást válasszam?
       href: select-right-deployment-type.md
-    - name: Támogatott verziók
-      href: concepts-supported-versions.md
     - name: Verzió támogatási szabályzata
       href: concepts-version-policy.md
       displayName: version policy
@@ -21,6 +19,8 @@
       items:
         - name: Mi az az önálló kiszolgáló?
           href: single-server-overview.md
+        - name: Támogatott verziók
+          href: concepts-supported-versions.md
         - name: Tarifacsomagok
           items:
             - name: Árképzési szintek
@@ -395,8 +395,6 @@
       items:
         - name: Mi az a rugalmas kiszolgáló?
           href: flexible-server/overview.md
-        - name: Támogatott verziók
-          href: concepts-supported-versions.md
         - name: Számítás és tárolás
           href: flexible-server/concepts-compute-storage.md
     - name: Rövid útmutatók

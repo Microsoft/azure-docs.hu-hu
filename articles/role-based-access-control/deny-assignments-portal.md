@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84790246"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077839"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure-beli megtagadási hozzárendelések listázása a Azure Portal használatával
 
@@ -54,7 +54,7 @@ Kövesse az alábbi lépéseket a megtagadási hozzárendelések listázásához
 
     ![Hozzárendelések megtagadása – oszlopok](./media/deny-assignments-portal/deny-assignments-columns.png)
 
-    |  |  |
+    | Oszlop | Leírás  |
     | --- | --- |
     | **Név** | A megtagadási hozzárendelés neve. |
     | **Résztvevő típusa** | Felhasználó, csoport, rendszer által definiált csoport vagy egyszerű szolgáltatásnév. |
@@ -79,7 +79,7 @@ A megtagadási hozzárendelés további részleteinek listázásához kövesse a
 
     A **felhasználók** panel a következő két szakaszt tartalmazza.
 
-    |  |  |
+    | Beállítás megtagadása  | Leírás |
     | --- | --- |
     | **A megtagadási hozzárendelés a következőre vonatkozik**  | Rendszerbiztonsági tag, amelyekre a megtagadási hozzárendelés vonatkozik. |
     | **Hozzárendelés megtagadása kizárások** | A megtagadási hozzárendelésből kizárt rendszerbiztonsági tag. |
@@ -90,7 +90,7 @@ A megtagadási hozzárendelés további részleteinek listázásához kövesse a
 
     ![Hozzárendelés-megtagadási engedélyek megtagadása](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Művelettípus | Description |
+    | Művelettípus | Leírás |
     | --- | --- |
     | **Műveletek**  | A rendszer megtagadta a felügyeleti műveleteket. |
     | **NotActions** | A megtagadott felügyeleti műveletből kizárt felügyeleti műveletek. |

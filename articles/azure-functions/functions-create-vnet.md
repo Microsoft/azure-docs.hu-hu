@@ -3,12 +3,12 @@ title: Azure Functions integrálása virtuális hálózattal a privát végponto
 description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható egy függvény egy Azure-beli virtuális hálózathoz, és hogyan zárható le a saját végpontok használatával.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: e8ca853908b366b99e150f04ced404f42acc7d21
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027414"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078774"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Oktatóanyag: Azure Functions integrálása Azure-beli virtuális hálózattal privát végpontok használatával
 
@@ -160,7 +160,7 @@ Hozza létre a Azure Files Storage és az Azure Blob Storage magánhálózati v�
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
-    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. | |
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. |
     | **Név** | fájl – végpont | A Storage-fiókból származó fájlokhoz tartozó magánhálózati végpont neve. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, ahol létrehozta a Storage-fiókot. |
 

@@ -12,12 +12,12 @@ ms.date: 01/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b2baff33d9e91e1b5259d79eca0a22535c00f419
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9eb28ad19d53df542769a89b839668bbb205e30
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555243"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256106"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>A helyi fiók identitás-szolgáltatójának beállítása
 
@@ -143,7 +143,7 @@ Az alapszintű csomag letöltése után.
 
 1. Minden fájlban cserélje le a karakterláncot a `yourtenant` Azure ad B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c*, az összes példánya `yourtenant.onmicrosoft.com` lesz `contosob2c.onmicrosoft.com` .
 
-1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](custom-policy-get-started.md)című témakörben. Például az `/phone-number-passwordless/` **`Phone_Email_Base.xml`** Előfeltételek, a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework* végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítójának** frissítése.
+1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](tutorial-create-user-flows.md?pivots=b2c-custom-policy)című témakörben. Például az `/phone-number-passwordless/` **`Phone_Email_Base.xml`** Előfeltételek, a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework* végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítójának** frissítése.
 1. A szabályzat fájljainak feltöltése
 
 ::: zone-end

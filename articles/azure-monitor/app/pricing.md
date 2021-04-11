@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 2/7/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/30/2021
+ms.reviewer: lagayhar
+ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726180"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078400"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -25,7 +25,7 @@ Ha kérdése van a Application Insights díjszabásával kapcsolatban, tegye fel
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-Az [Azure Application Insights][start] díjszabása egy **utólagos** elszámolású modell, amely a betöltött adatmennyiségen és opcionálisan a hosszú adatmegőrzésen alapul. Minden Application Insights erőforrás külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. Az adatmennyiséget a rendszer az alkalmazásból Application Insights által fogadott, tömörítetlen JSON-adatcsomag méretének megfelelően méri. A [élő metrikastream](./live-stream.md)használatához nincs adatmennyiség.
+Az [Azure Application Insights][start] díjszabása egy **utólagos** elszámolású modell, amely a betöltött adatmennyiségen és opcionálisan a hosszú adatmegőrzésen alapul. Minden Application Insights erőforrás külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. Az adatmennyiséget a rendszer az alkalmazásból Application Insights által fogadott, tömörítetlen JSON-adatcsomag méretének megfelelően méri. Az adatmennyiséget GB-ban mérjük (10 ^ 9 bájt). A [élő metrikastream](./live-stream.md)használatához nincs adatmennyiség.
 
 A [többlépéses webes tesztek](./availability-multistep.md) felár ellenében merülhetnek fel. A többlépéses webes tesztek olyan webes tesztek, amelyek műveletek sorozatát hajtják végre. Egyetlen oldal *pingelési tesztei* esetében nincs külön díj. A ping tesztekből és a többlépéses tesztekből származó telemetria az alkalmazás más telemetria azonos módon kell fizetni.
 
@@ -43,7 +43,10 @@ Ennek a megoldásnak két megközelítése van: az alapértelmezett monitorozás
 
 ### <a name="data-collection-when-using-sampling"></a>Adatgyűjtés mintavételezéskor
 
-A ASP.NET SDK [adaptív mintavételezésével](sampling.md#adaptive-sampling)az adatmennyiség automatikusan módosul, hogy az alapértelmezett Application Insights figyeléshez megadott maximális adatforgalomon belül maradjon. Ha az alkalmazás alacsony telemetria (például hibakeresés vagy alacsony kihasználtság miatt) hoz létre, akkor a mintavételi processzor nem távolítja el az elemeket, feltéve, hogy a kötet nem éri el a beállított események másodpercenkénti szintjét. A nagy mennyiségű alkalmazás esetében az 5 esemény alapértelmezett küszöbértéke másodpercenként az adaptív mintavételezés a napi események számát 432 000-re korlátozza. Az 1 KB-os átlagos esemény-méretet használva ez az alkalmazást üzemeltető csomópontok 31 napos telemetria 13,4 GB-os, a mintavételezést pedig az egyes csomópontok esetében a helyi gépen végezheti el. 
+A ASP.NET SDK [adaptív mintavételezésével](sampling.md#adaptive-sampling)az adatmennyiség automatikusan módosul, hogy az alapértelmezett Application Insights figyeléshez megadott maximális adatforgalomon belül maradjon. Ha az alkalmazás alacsony telemetria (például hibakeresés vagy alacsony kihasználtság miatt) hoz létre, akkor a mintavételi processzor nem távolítja el az elemeket, feltéve, hogy a kötet nem éri el a beállított események másodpercenkénti szintjét. A nagy mennyiségű alkalmazás esetében az 5 esemény alapértelmezett küszöbértéke másodpercenként az adaptív mintavételezés a napi események számát 432 000-re korlátozza. Az 1 KB-os átlagos esemény-méretet használva ez 13,4 GB telemetria, amely az alkalmazás üzemeltetése után 31 napos hónap/nap, mivel a mintavétel az egyes csomópontok esetében a helyi környezettel történik.
+
+> [!NOTE]
+> Azure Monitor a napló adatméretének kiszámítása GB-ban (1 GB = 10 ^ 9 bájt).
 
 Olyan SDK-k esetében, amelyek nem támogatják az adaptív mintavételezést, betöltési [mintavételezést](./sampling.md#ingestion-sampling)is alkalmazhat, amely az adatoknak a megőrzött adatok százalékos arányán alapuló Application Insights, illetve a [ASP.NET, a ASP.net Core és a Java-webhelyeken](sampling.md#fixed-rate-sampling) a webkiszolgálótól és a webböngészőktől elküldött forgalom csökkentése érdekében mintavételt végez.
 

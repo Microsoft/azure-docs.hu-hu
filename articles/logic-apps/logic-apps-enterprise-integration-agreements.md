@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc084da6ef7f26b9e434acf8985c7077f5eaffe2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95992943"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078366"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Kereskedelmi partnerekkel kötött szerződések létrehozása és kezelése az Azure Logic Appsben
 
@@ -60,14 +60,13 @@ Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. A 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Név** | Yes | <*szerződés – név*> | A szerződés neve |
-   | **Szerződés típusa** | Yes | **AS2**, **X12** vagy **EDIFACT** | A szerződéshez tartozó protokoll típusa. A szerződési fájl létrehozásakor a fájl tartalmának meg kell egyeznie a szerződés típusával. | |  
+   | **Szerződés típusa** | Yes | **AS2**, **X12** vagy **EDIFACT** | A szerződéshez tartozó protokoll típusa. A szerződési fájl létrehozásakor a fájl tartalmának meg kell egyeznie a szerződés típusával. |
    | **Gazda partner** | Yes | <*gazda-partner-név*> | A fogadó partner a szerződést megadó szervezetet jelöli. |
    | **Gazdagép identitása** | Yes | <*gazda-partner-azonosító*> | A gazda partner azonosítója |
    | **Vendég partner** | Yes | <*vendég-partner neve*> | A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöl |
    | **Vendég identitás** | Yes | <*vendég-partner-azonosító*> | A vendég partner azonosítója |
    | **Fogadási beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan fogadja az összes bejövő üzenetet a szerződésben szereplő vendég partnertől. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenet beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12](logic-apps-enterprise-integration-x12.md) |
    | **Küldési beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan küldi el az összes kimenő üzenetet a szerződésben szereplő vendég partnernek. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenet beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12](logic-apps-enterprise-integration-x12.md) |
-   |||||
 
    > [!IMPORTANT]
    > A szerződés feloldása a Partnerben és a bejövő üzenetben definiált elemektől függ:

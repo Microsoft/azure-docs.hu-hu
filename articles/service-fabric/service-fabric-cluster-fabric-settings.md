@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt beállításainak módosítása
 description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232052"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255971"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetén testreszabhatja a beállításokat, ha frissíti a *ClusterConfig.js* fájlt, és végrehajtja a fürtön a konfiguráció frissítését. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -60,6 +60,12 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |SecretEncryptionCertX509StoreName|karakterlánc, javasolt érték: "My" (nincs alapértelmezett) |    Dinamikus|    Ez azt a tanúsítványt jelzi, amelyet a rendszer a Backup Restore Service által használt hitelesítő adatok visszafejtéséhez használt X. 509 tanúsítványtároló titkosításához és visszafejtéséhez használ. |
 |TargetReplicaSetSize|int, az alapértelmezett érték 0|Statikus| A BackupRestoreService TargetReplicaSetSize |
 
+## <a name="centralsecretservice"></a>CentralSecretService
+
+| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| --- | --- | --- | --- |
+|DeployedState |wstring, az alapértelmezett érték az L "Letiltva" |Statikus |a CSS 2 fázisból való eltávolítása. |
+
 ## <a name="clustermanager"></a>ClusterManager
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
@@ -95,6 +101,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
+|AllowCreateUpdateMultiInstancePerNodeServices |Bool, az alapértelmezett érték false |Dinamikus|Engedélyezi egy szolgáltatás több állapot nélküli példányának létrehozását. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. |
 |PerfMonitorInterval |Az idő másodpercben, az alapértelmezett érték 1 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Teljesítmény figyelési időköze A 0 vagy negatív értékre való beállítás letiltja a figyelést. |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -304,6 +311,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Bool, az alapértelmezett érték false |Statikus|A fürt állapotának kiértékelésére szolgáló házirend: az alkalmazás típusának kiértékelésének engedélyezése. |
+|EnableNodeTypeHealthEvaluation |Bool, az alapértelmezett érték false |Statikus|A fürt állapotának kiértékelése házirend: a csomópont típusú állapot kiértékelésének engedélyezése. |
 |MaxSuggestedNumberOfEntityHealthReports|Int, alapértelmezett érték 100 |Dinamikus|Azon állapot-jelentések maximális száma, amelyekkel az entitások felvehetik a figyelmet a watchdog állapot-jelentési logikája miatt. Minden egyes Health-entitásnak viszonylag kis számú állapotjelentést kell megtörténnie. Ha a jelentések száma túllépi ezt a számot, problémák merülhetnek fel a watchdog megvalósításával kapcsolatban. Az entitás kiértékelése során a túl sok jelentést tartalmazó entitás figyelmeztetési állapotú jelentéssel van megjelölve. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
@@ -349,7 +357,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |DisableContainers|bool, az alapértelmezett érték FALSE|Statikus|A tárolók letiltására szolgáló konfiguráció a DisableContainerServiceStartOnContainerActivatorOpen helyett, amely elavult konfiguráció |
 |DisableDockerRequestRetry|bool, az alapértelmezett érték FALSE |Dinamikus| Alapértelmezés szerint az SF a DD-vel (Docker Dameon) és a (z) "DockerRequestTimeout" időtúllépéssel kommunikál a hozzájuk küldött összes http-kérelemnél. Ha a DD nem válaszol az adott időszakon belül; Az SF újraküldi a kérést, ha a legfelső szintű művelet továbbra is hátralévő ideig tart.  HyperV-tárolóval; A DD időnként sokkal több időt vesz igénybe, hogy felvegye a tárolót, vagy inaktiválja azt. Ilyen esetekben a DD-kérelmek időtúllépése az SF perspektívából, az SF pedig újrapróbálkozik a művelettel. Néha úgy tűnik, hogy a DD-ra nagyobb nyomást okoz. Ez a konfiguráció lehetővé teszi az újrapróbálkozások letiltását, és várjon, amíg a DD válaszol. |
 |DnsServerListTwoIps | Bool, az alapértelmezett érték FALSE | Statikus | Ez a jelző kétszer hozzáadja a helyi DNS-kiszolgálót az időszakos megoldási problémák enyhítése érdekében. |
-| DockerTerminateOnLastHandleClosed | bool, az alapértelmezett érték FALSE | Statikus | Alapértelmezés szerint, ha a Hálóbeli a "dockerd" kezeli (a következő alapján: SkipDockerProcessManagement = = false), ez a beállítás azt konfigurálja, hogy mi történik a Hálóbeli vagy a dockerd összeomlása esetén. Ha a beállítás értéke `true` esetén a rendszer az összes futó tárolót kényszeríti, a HCS frissítőügynök megszakítja a műveletet. Ha a tárolók értékre van állítva `false` , továbbra is futni fog. Megjegyzés: az előzőtől a 8,0-ig ez a viselkedés akaratlanul egyenértékű volt `false` . Az alapértelmezett beállítás az, `true` amit várhatóan az alapértelmezett lépés, hogy a karbantartási logikánk a folyamat újraindításakor érvénybe lép. |
+| DockerTerminateOnLastHandleClosed | bool, az alapértelmezett érték TRUE (igaz) | Statikus | Alapértelmezés szerint, ha a Hálóbeli a "dockerd" kezeli (a következő alapján: SkipDockerProcessManagement = = false), ez a beállítás azt konfigurálja, hogy mi történik a Hálóbeli vagy a dockerd összeomlása esetén. Ha a beállítás értéke `true` esetén a rendszer az összes futó tárolót kényszeríti, a HCS frissítőügynök megszakítja a műveletet. Ha a tárolók értékre van állítva `false` , továbbra is futni fog. Megjegyzés: az előzőtől a 8,0-ig ez a viselkedés akaratlanul egyenértékű volt `false` . Az alapértelmezett beállítás az, `true` amit várhatóan az alapértelmezett lépés, hogy a karbantartási logikánk a folyamat újraindításakor érvénybe lép. |
 | DoNotInjectLocalDnsServer | bool, az alapértelmezett érték FALSE | Statikus | Megakadályozza, hogy a futtatókörnyezet a helyi IP-címet a tárolók DNS-kiszolgálójának beinjektálja. |
 |EnableActivateNoWindow| bool, az alapértelmezett érték FALSE|Dinamikus| Az aktivált folyamat a háttérben, konzol nélkül jön létre. |
 |EnableContainerServiceDebugMode|bool, az alapértelmezett érték TRUE (igaz)|Statikus|A Docker-tárolók naplózásának engedélyezése/letiltása.  Csak Windows.|
@@ -552,6 +560,8 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |MovementPerPartitionThrottleCountingInterval | Az idő másodpercben, az alapértelmezett érték 600 |Statikus| Másodpercek alatt meg kell adni a TimeSpan. Adja meg az előző intervallum hosszát, amelynél nyomon követhető az egyes partíciók replikáinak mozgatása (a MovementPerPartitionThrottleThreshold együtt használva). |
 |MovementPerPartitionThrottleThreshold | Uint, alapértelmezett érték 50 |Dinamikus| Egy partíció esetében nem történik terheléselosztással kapcsolatos mozgás, ha az adott partíció replikáinak kiegyensúlyozásával kapcsolatos mozgások száma elérte vagy túllépte a MovementPerFailoverUnitThrottleThreshold a MovementPerPartitionThrottleCountingInterval által jelzett korábbi intervallumban. |
 |MoveParentToFixAffinityViolation | Bool, az alapértelmezett érték false |Dinamikus| Ez a beállítás határozza meg, hogy a szülő replikák áthelyezhetők-e az affinitási megkötések kijavítására.|
+|NodeTaggingEnabled | Bool, az alapértelmezett érték false |Dinamikus| Ha igaz; A NodeTagging funkció engedélyezve lesz. |
+|NodeTaggingConstraintPriority | Int, az alapértelmezett érték 0 |Dinamikus| A csomópontok címkézésének konfigurálható prioritása. |
 |PartiallyPlaceServices | Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus| Meghatározza, hogy a fürt összes szolgáltatás-replikája "All vagy Nothing" értékűre kerüljön-e a számukra korlátozottan megfelelő csomópontok számára.|
 |PlaceChildWithoutParent | Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus|Ez a beállítás határozza meg, hogy a gyermek-szolgáltatás replikája hol helyezhető el, ha nincs fölérendelt replika. |
 |PlacementConstraintPriority | Int, az alapértelmezett érték 0 | Dinamikus|Meghatározza az elhelyezési megkötés prioritását: 0: Hard; 1: lágy; negatív: figyelmen kívül hagyás. |
@@ -572,7 +582,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |UpgradeDomainConstraintPriority | Int, az alapértelmezett érték 1| Dinamikus|Meghatározza a frissítési tartomány korlátozásának prioritását: 0: Hard; 1: lágy; negatív: figyelmen kívül hagyás. |
 |UseMoveCostReports | Bool, az alapértelmezett érték false | Dinamikus|Arra utasítja az LB-t, hogy figyelmen kívül hagyja a pontozási függvény Cost elemét; az így keletkező potenciálisan nagy számú lépés a jobb kiegyensúlyozott elhelyezés érdekében. |
 |UseSeparateSecondaryLoad | Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus|Ez a beállítás határozza meg, hogy a másodlagos replikák esetén a különálló terhelést kell-e használni. |
-|UseSeparateSecondaryMoveCost | Bool, az alapértelmezett érték false | Dinamikus|Ez a beállítás határozza meg, hogy a másodlagos replikák esetén a különálló áthelyezési költségeket kell-e használni. |
+|UseSeparateSecondaryMoveCost | Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus|Ez a beállítás határozza meg, hogy az egyes csomópontokon a PLB eltérő áthelyezési költségeket kell-e használni a másodlagoshoz. Ha a UseSeparateSecondaryMoveCost ki van kapcsolva: – az egyik csomóponton a másodlagos adatáthelyezési költségeket a rendszer az összes másodlagos (az összes többi csomóponton) overwritting-áthelyezési költségeket eredményezi, ha a UseSeparateSecondaryMoveCost be van kapcsolva:-az egyik csomóponton a másodlagos áthelyezési költségeket a rendszer csak az adott másodlagos (más csomópontok formátumú másodlagos zónák gyakorolt hatás) hatására veszi át – ha a replika összeomlása történik – az új replika a szolgáltatás szintjén megadott alapértelmezett áthelyezési díjszabással jön létre – ha a PLB áthelyezi a meglévő replika-áthelyezési költségeket. |
 |ValidatePlacementConstraint | Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus| Megadja, hogy a szolgáltatás PlacementConstraint-kifejezése érvényesítve van-e a szolgáltatás ServiceDescription leírásban frissítésekor. |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus|Megadja, hogy a rendszer kiértékeli-e a szolgáltatás PlacementConstraint-kifejezését a feladatátvétel elsődleges preferencia-értékeként. |
 |VerboseHealthReportLimit | Int, az alapértelmezett érték 20 | Dinamikus|Azt határozza meg, hogy a replikák hányszor legyenek felhelyezve az állapotra vonatkozó figyelmeztetés megkezdése előtt (ha a részletes állapot jelentéskészítés engedélyezve van). |
@@ -593,7 +603,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |ServiceApiHealthDuration | Az idő másodpercben, az alapértelmezett érték 30 perc |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ServiceApiHealthDuration határozza meg, hogy mennyi ideig kell várni a Service API futtatására, mielőtt bejelentjük, hogy az állapota nem kifogástalan. |
 |ServiceReconfigurationApiHealthDuration | Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ServiceReconfigurationApiHealthDuration határozza meg, hogy mennyi ideig várjon a Service API futtatása a nem megfelelő állapot jelentése előtt. Ez a rendelkezésre állást befolyásoló API-hívásokra vonatkozik.|
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromMilliseconds (15)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt az időtartamot, ameddig a replikátor a művelet fogadása után várakozik a visszaigazolás visszaküldése előtt. Az ebben az időszakban fogadott egyéb műveletekhez a rendszer visszaküldi a visszaigazolásokat egy üzenetben – > csökkenti a hálózati forgalmat, de potenciálisan csökkenti a replikátor átviteli sebességét.|
@@ -767,6 +777,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |Recoverservicepartitions művelet fejeződött |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A szolgáltatási partíciók helyreállításának biztonsági beállításai. |
 |Recoversystempartitions művelet |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a rendszerszolgáltatási partíciók helyreállításához. |
 |RemoveNodeDeactivations |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció az Inaktiválás több csomóponton történő visszafordításához. |
+|ReportCompletion |wstring, az alapértelmezett érték: L "admin" |Dinamikus| Biztonsági konfiguráció a jelentéskészítés befejezéséhez. |
 |ReportFabricUpgradeHealth |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a fürt verziófrissítésének folytatásához a jelenlegi verziófrissítési folyamattal. |
 |ReportFault |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció jelentési hiba esetén. |
 |ReportHealth |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a jelentéskészítési állapothoz. |

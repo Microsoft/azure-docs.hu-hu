@@ -4,12 +4,12 @@ description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe val�
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4f6ecb9ec8269ab8e06a241a395887de77691499
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934223"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078383"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -124,7 +124,7 @@ Illusztrációs célokból csak egy függő erőforrás áll rendelkezésre.
 
 ## <a name="validate-move"></a>Áthelyezés ellenőrzése
 
-Az [áthelyezési művelet ellenőrzése](/rest/api/resources/resources/resources/moveresources) lehetővé teszi az áthelyezési forgatókönyv tesztelését anélkül, hogy ténylegesen áthelyezi az erőforrásokat. Ezzel a művelettel ellenőrizhető, hogy az áthelyezés sikeres lesz-e. Az érvényesítés automatikusan megtörténik az áthelyezési kérelem elküldésekor. Ezt a műveletet csak akkor használja, ha előre meg kell határoznia az eredményeket. A művelet futtatásához a következőkre lesz szüksége:
+Az [áthelyezési művelet ellenőrzése](/rest/api/resources/resources/moveresources) lehetővé teszi az áthelyezési forgatókönyv tesztelését anélkül, hogy ténylegesen áthelyezi az erőforrásokat. Ezzel a művelettel ellenőrizhető, hogy az áthelyezés sikeres lesz-e. Az érvényesítés automatikusan megtörténik az áthelyezési kérelem elküldésekor. Ezt a műveletet csak akkor használja, ha előre meg kell határoznia az eredményeket. A művelet futtatásához a következőkre lesz szüksége:
 
 * a forrás erőforráscsoport neve
 * a célként megadott erőforráscsoport erőforrás-azonosítója
@@ -241,7 +241,7 @@ Ha hibaüzenetet kap, tekintse meg [Az Azure-erőforrások új erőforráscsopor
 
 ## <a name="use-rest-api"></a>A REST API használata
 
-A meglévő erőforrások másik erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja az [erőforrások áthelyezése](/rest/api/resources/resources/resources/moveresources) műveletet.
+A meglévő erőforrások másik erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja az [erőforrások áthelyezése](/rest/api/resources/resources/moveresources) műveletet.
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}

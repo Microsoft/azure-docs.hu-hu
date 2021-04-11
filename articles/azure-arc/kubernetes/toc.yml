@@ -22,30 +22,44 @@
       href: conceptual-agent-architecture.md
     - name: Konfigurációk és GitOps
       href: conceptual-configurations.md
-    - name: CI/CD-munkafolyamat a GitOps használatával
-      href: conceptual-gitops-ci-cd.md
+    - name: Fürt bővítményei
+      href: conceptual-extensions.md
+    - name: Fürthöz való kapcsolat
+      href: conceptual-cluster-connect.md
+    - name: Egyéni helyszínek
+      href: conceptual-custom-locations.md
+    - name: Azure RBAC-vel
+      href: conceptual-azure-rbac.md
     - name: Gyakori kérdések
       href: faq.md
+    - name: CI/CD-munkafolyamat a GitOps használatával
+      href: conceptual-gitops-ci-cd.md
 - name: Útmutatók
   items:
-    - name: Csatlakozás az Azure Archoz
-      items:
-        - name: Szolgáltatásnév előkészítése
-          href: create-onboarding-service-principal.md
-    - name: Kezelés
-      items:
-        - name: Ügynök frissítései
-          href: agent-upgrade.md
+    - name: Fürt összekötése az egyszerű szolgáltatásnév használatával
+      href: create-onboarding-service-principal.md
+    - name: Frissítési ügynökök
+      href: agent-upgrade.md
     - name: Forgatókönyvek
       items:
         - name: Helm-diagramok üzembe helyezése GitOps használatával
           href: use-gitops-with-helm.md
         - name: GitOps kényszerítése az Azure Policyval
           href: use-azure-policy.md
+        - name: Fürtcsomópontok üzembe helyezése és kezelése
+          href: extensions.md
         - name: Monitorozás a tárolókhoz készült Azure Monitor használatával
-          href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.yml
+          href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Veszélyforrások elleni védelem kikényszerítés az Azure Defender használatával
+          href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Belépésvezérlési szabályzatok az Azure Policyval
-          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.yml
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Biztonságos kapcsolódás a fürthöz bárhonnan
+          href: cluster-connect.md
+        - name: Az Azure AD-RBAC használata engedélyezési ellenőrzésekhez
+          href: azure-rbac.md
+        - name: Egyéni helyszínek létrehozása
+          href: custom-locations.md
         - name: IoT-alapú számítási feladatok üzembe helyezése
           href: deploy-azure-iot-edge-workloads.md
     - name: Hibaelhárítás
