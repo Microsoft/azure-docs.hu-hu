@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 9a5cd55576d505114c15028cf637114f3baf7668
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105627982"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>A kiszolgálói fogalmak a Azure Database for MariaDB
@@ -37,7 +37,7 @@ Az Azure Database for MariaDB-kiszolgálón egy vagy több adatbázist is létre
 
 A következő elemek segítenek biztosítani az adatbázis biztonságos elérését.
 
-| Biztonsági koncepció | Description |
+| Biztonsági koncepció | Leírás |
 | :-- | :-- |
 | **Hitelesítés és engedélyezés** | Azure Database for MariaDB-kiszolgáló támogatja a natív MySQL-hitelesítést. A kiszolgáló rendszergazdai felhasználónevével csatlakozhat és hitelesítheti a kiszolgálókat. |
 | **Protokoll** | A szolgáltatás támogatja a MySQL által használt Message-alapú protokollt. |

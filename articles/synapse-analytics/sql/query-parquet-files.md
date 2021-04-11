@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72bf8e76217e8a3bcecd381d8d61815c539dd196
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97694680"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209587"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -119,7 +119,7 @@ ORDER BY
 
 A Parquet-fájlok olvasásakor nem szükséges a OPENROWSET WITH záradék használata. Az oszlopnevek és az adattípusok automatikusan beolvashatók a Parquet-fájlokból.
 
-Az alábbi minta a Parquet-fájlok automatikus sémájának következtetéseit mutatja be. A sorok számát a 2017 szeptemberében adja vissza a séma meghatározása nélkül.
+Az alábbi minta a Parquet-fájlok automatikus sémájának következtetéseit mutatja be. A sorok számát a 2018 szeptemberében adja vissza a séma meghatározása nélkül.
 
 > [!NOTE]
 > A Parquet-fájlok olvasásakor nem szükséges oszlopokat megadni a OPENROWSET WITH záradékban. Ebben az esetben a kiszolgáló nélküli SQL Pool Query szolgáltatás metaadatokat használ a Parquet fájlban, és az oszlopokat név alapján köti össze.
@@ -128,7 +128,7 @@ Az alábbi minta a Parquet-fájlok automatikus sémájának következtetéseit m
 SELECT TOP 10 *
 FROM  
     OPENROWSET(
-        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        BULK 'puYear=2018/puMonth=9/*.snappy.parquet',
         DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
     ) AS nyc

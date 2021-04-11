@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c25504e3313234ac6b6f80a6e00c77fce28b1400
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 41bdf5251881fa9307a3cd4d214081845e967900
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174529"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209519"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -52,19 +52,19 @@ További részletes útmutatásért lásd: [dinamikus csoport létrehozása vagy
 
 ![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression"></a>Egyetlen kifejezés szabályának szintaxisa
+### <a name="rule-syntax-for-a-single-expression&quot;></a>Egyetlen kifejezés szabályának szintaxisa
 
 Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Az egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz ki: `Property Operator Value` , ahol a tulajdonság szintaxisa a Object. Property neve.
 
 A következő példa egy megfelelően felépített tagsági szabályt mutat be egyetlen kifejezéssel:
 
 ```
-user.department -eq "Sales"
+user.department -eq &quot;Sales&quot;
 ```
 
-A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabály törzsének teljes hossza nem haladhatja meg a 2048 karaktert.
+A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabály törzsének teljes hossza nem haladhatja meg a 3072 karaktert.
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Tagsági szabály törzsének összeállítása
+## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>Tagsági szabály törzsének összeállítása
 
 Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
 
@@ -74,7 +74,7 @@ Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhaszná
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
 
-## <a name="supported-properties"></a>Támogatott tulajdonságok
+## <a name=&quot;supported-properties&quot;></a>Támogatott tulajdonságok
 
 A tagsági szabályok létrehozásához háromféle tulajdonságot lehet használni.
 
@@ -84,18 +84,18 @@ A tagsági szabályok létrehozásához háromféle tulajdonságot lehet haszná
 
 A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés létrehozásához.
 
-### <a name="properties-of-type-boolean"></a>Logikai típusú tulajdonságok
+### <a name=&quot;properties-of-type-boolean&quot;></a>Logikai típusú tulajdonságok
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | accountEnabled |Igaz hamis |User. accountEnabled – EQ True |
 | dirSyncEnabled |Igaz hamis |User. dirSyncEnabled – EQ True |
 
-### <a name="properties-of-type-string"></a>Karakterlánc típusú tulajdonságok
+### <a name=&quot;properties-of-type-string&quot;></a>Karakterlánc típusú tulajdonságok
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| city |Bármilyen sztring vagy *Null* érték |(User. City-EQ "value") |
+| city |Bármilyen sztring vagy *Null* érték |(User. City-EQ &quot;value") |
 | ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
 | companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
 | Részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
