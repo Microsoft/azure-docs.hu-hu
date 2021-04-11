@@ -23,6 +23,9 @@
     - name: Az első lekérdezés futtatása – Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
+    - name: Az első lekérdezés futtatása – Java
+      displayName: 'maven, zulu, mvn'
+      href: ./first-query-java.md
     - name: Az első lekérdezés futtatása – JavaScript
       displayName: 'library, node, arm-resourcegraph'
       href: ./first-query-javascript.md

@@ -3,14 +3,14 @@ title: Azure Event Grid – egyéni fejlécek beállítása a továbbított esem
 description: Ismerteti, hogyan lehet egyéni fejléceket (vagy kézbesítési tulajdonságokat) beállítani a kézbesített eseményekhez.
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: 6cc6874b7aba6e0696dec21de5b431ca18df3013
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fb6f0de7919ed7cf9072c0fa35e8f9be5cb5e7db
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967591"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278286"
 ---
-# <a name="delivery-with-custom-headers"></a>Kézbesítés egyéni fejlécekkel
+# <a name="custom-delivery-properties"></a>Egyéni kézbesítési tulajdonságok
 Az esemény-előfizetések lehetővé teszik a kézbesített események részét képező HTTP-fejlécek beállítását. Ez a funkció lehetővé teszi, hogy egyéni fejléceket állítson be, amelyekre a célhelynek szüksége van. Esemény-előfizetés létrehozásakor akár 10 fejlécet is beállíthat. Minden fejléc értéke nem lehet nagyobb, mint 4 096 (4K) bájt.
 
 Egyéni fejléceket állíthat be a következő célhelyekre küldött eseményeken:

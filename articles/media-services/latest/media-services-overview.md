@@ -80,7 +80,7 @@ A útmutatók olyan mintakód-mintákat tartalmaznak, amelyek bemutatják a fela
 * [Kódolás HTTPS-sel, a feladathoz megadott bemenetként – .NET](job-input-from-http-how-to.md)  
 * [Események monitorozása – Portál](monitoring/monitor-events-portal-how-to.md)
 * [Dinamikus titkosítás a multi-DRM-.NET használatával](drm-protect-with-drm-tutorial.md) 
-* [Kódolás egyéni átalakítással – parancssori felület](encode-custom-preset-cli-how-to.md)
+* [Kódolás egyéni átalakítással – parancssori felület](transform-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 

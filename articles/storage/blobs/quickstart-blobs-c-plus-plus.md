@@ -1,18 +1,18 @@
 ---
 title: 'Gyors útmutató: Azure Blob Storage Library V12 – C++'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használható az Azure Blob Storage ügyféloldali kódtár 12-es verziója a C++ rendszerhez tároló és blob (Object) tárolóban való létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 10/21/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 246d2677c784daee4cc6b083cff04b6993ab3818
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a0d2bdb1879e4f68b582ee56367f0238285a401
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006489"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278082"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár V12 a C++ nyelvhez
 

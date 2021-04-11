@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368659"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096036"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>A Microsoft Spark segédprogramok bemutatása
 
@@ -25,9 +25,9 @@ A Microsoft Spark Utilities (MSSparkUtils) egy beépített csomag, amely megkön
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2hoz való hozzáférés konfigurálása 
 
-A szinapszis jegyzetfüzetek az Azure Active Directory (Azure AD) átmenő hozzáférését használják a ADLS Gen2-fiókok eléréséhez. A ADLS Gen2 fiók (vagy mappa) eléréséhez **blob Storage Adatközreműködőnek** kell lennie. 
+A szinapszis jegyzetfüzetek az Azure Active Directory (Azure AD) átmenő hozzáférését használják a ADLS Gen2-fiókok eléréséhez. A ADLS Gen2 fiók (vagy mappa) eléréséhez a **Storage blob Adatközreműködőinek** kell lennie. 
 
-A szinapszis-folyamatok a munkaterület-identitás (MSI) használatával férnek hozzá a Storage-fiókokhoz. Ha a MSSparkUtils szeretné használni a folyamat tevékenységeiben, a munkaterület identitásának **blob Storage Adatközreműködőnek** kell lennie ahhoz, hogy hozzáférhessen a ADLS Gen2 fiókhoz (vagy mappához).
+A szinapszis-folyamatok a munkaterület-identitás (MSI) használatával férnek hozzá a Storage-fiókokhoz. Ha a MSSparkUtils szeretné használni a folyamat tevékenységeiben, a munkaterület identitásának **Storage blob Adatközreműködőinek** kell lennie ahhoz, hogy hozzáférhessen a ADLS Gen2 fiókhoz (vagy mappához).
 
 Az alábbi lépések végrehajtásával győződjön meg arról, hogy az Azure AD és a munkaterület MSI-je hozzáfér a ADLS Gen2 fiókhoz:
 1. Nyissa meg a [Azure Portal](https://portal.azure.com/) és az elérni kívánt Storage-fiókot. Navigáljon az elérni kívánt tárolóhoz.

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 401033e210db0a9d65d138fd12c9d3365b311a62
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 1d827d734c434204ff6b7ec60d27e507ae626abd
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962152"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227687"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3-minták
 
@@ -31,7 +31,7 @@ Az egyes lapokon található minták leírását és hivatkozásait itt találja
 
 ## <a name="net"></a>[.NET](#tab/net/)
 
-| Mappa | Leírás |
+| Mappa | Description |
 |-------------|-------------|
 | [VideoEncoding/EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESPredefinedPreset)|A feladatok beküldése egy beépített beállításkészlet és egy HTTP URL-cím használatával, a folyamatos átvitel kimeneti eszközének közzététele, valamint az ellenőrzés eredményeinek letöltése.|
 | [VideoEncoding/EncodingWithMESCustomPreset_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_H264)|Feladatok elküldése egyéni H. 264 kódolási beállításkészlettel és HTTP URL-cím beírásával, kimeneti eszköz közzététele a folyamatos átvitelhez, valamint az ellenőrzés eredményeinek letöltése.|
@@ -47,11 +47,11 @@ Az egyes lapokon található minták leírását és hivatkozásait itt találja
 | [ContentProtection/OfflinePlayReadyAndWidevine](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/OfflinePlayReadyAndWidevine)|A tartalom dinamikus titkosítása a PlayReady és a Widevine DRM-mel, valamint a tartalom lejátszása anélkül, hogy licencet kérne a licencelési szolgáltatástól. Bemutatja, hogyan hozhat létre átalakítót beépített AdaptiveStreaming-készlettel, hogyan küldhet el egy feladatot, létrehozhat egy ContentKeyPolicy a nyitott korlátozásokkal és a PlayReady/Widevine állandó konfigurációval, társíthatja a ContentKeyPolicy egy StreamingLocator, és kinyomtathatja a lejátszáshoz használandó URL-címet.|
 | [Streaming/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|Beépített AdaptiveStreaming rendelkező átalakító létrehozása, feladatok elküldése, eszköz-szűrő és fiók-szűrő létrehozása, a szűrők hozzárendelése a streaming-lokátorokhoz és a lejátszási URL-címek nyomtatása.|
 | [Streaming/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|Beépített AdaptiveStreaming készlettel rendelkező átalakítás létrehozása, feladatok elküldése, kimeneti eszköz közzététele a HLS és a DASH streaming számára.|
-| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | Az igény szerinti kódolást vagy elemzést használó éles rendszerekre vonatkozó útmutatók és ajánlott eljárások. Az olvasóknak az [Media Services és a VOD-val való magas rendelkezésre állással](https://docs.microsoft.com/azure/media-services/latest/architecture-high-availability-encoding-concept)kell kezdődnie. A [HighAvailabilityEncodingStreaming](/HighAvailabilityEncodingStreaming/Readme.md) -minta számára külön megoldási fájl van megadva. |
+| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | Az igény szerinti kódolást vagy elemzést használó éles rendszerekre vonatkozó útmutatók és ajánlott eljárások. Az olvasóknak az [Media Services és a VOD-val való magas rendelkezésre állással](https://docs.microsoft.com/azure/media-services/latest/architecture-high-availability-encoding-concept)kell kezdődnie. A [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) -minta számára külön megoldási fájl van megadva. |
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 
-|Mappa|Leírás|
+|Mappa|Description|
 |---|---|
 |[HelloWorld – ListAssets](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/HelloWorld-ListAssets) |Eszközök összekapcsolásának és listázásának módja |
 |[Élő](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live)| Alapszintű élő közvetítés. **Figyelmeztetés**: Ellenőrizze, hogy az összes erőforrás törlődik-e, és a továbbiakban nem történik meg a számlázás a portálon az élő használatakor.|
@@ -65,7 +65,7 @@ Jelenleg egy Python-minta van, [amely alapszintű kódolással rendelkezik a Pyt
 
 ## <a name="java"></a>[Java](#tab/java)
 
-|Mappa|Leírás|
+|Mappa|Description|
 |---|---|
 |[AudioAnalytics/AudioAnalyzer/](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer)|Hang elemzése médiafájlban. |
 |Content Protection|

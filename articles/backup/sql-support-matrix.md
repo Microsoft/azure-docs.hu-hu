@@ -2,14 +2,14 @@
 title: Azure Backup támogatási mátrix az Azure-beli virtuális gépeken futó SQL Server biztonsági mentéshez
 description: Összefoglalja a támogatási beállításokat és korlátozásokat, amikor Azure-beli virtuális gépeken SQL Server biztonsági mentést készít a Azure Backup szolgáltatással.
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7038b47bd4aba8f7747eef455f1e8dd3c77a695
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97734793"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257343"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server biztonsági mentésének támogatási mátrixa
 
@@ -30,11 +30,10 @@ A Azure Backup használatával biztonsági mentést készíthet a Microsoft Azur
 |Beállítás  |Felső korlát |
 |---------|---------|
 |A kiszolgálókon (és a tárolóban) védetté tehető adatbázisok száma    |   2000      |
-|Az adatbázis mérete támogatott (ezen túlmenően a teljesítménnyel kapcsolatos problémák merülhetnek fel)   |   2 TB      |
+|Az adatbázis mérete támogatott (ezen túlmenően a teljesítménnyel kapcsolatos problémák merülhetnek fel)   |   6 TB *      |
 |Adatbázisban támogatott fájlok száma    |   1000      |
 
->[!NOTE]
-> [Töltse le a részletes Resource Plannert](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) , hogy kiszámítsa a kiszolgálón javasolt védett adatbázisok hozzávetőleges számát a virtuálisgép-erőforrások, a sávszélesség és a biztonsági mentési szabályzat alapján.
+_* Az adatbázis méretének korlátja az általunk támogatott adatátviteli sebességtől és a biztonsági mentés időkorlátjának konfigurációjától függ. Ez nem a rögzített korlát. [További információ](#backup-throughput-performance) a biztonsági mentés teljesítményéről._
 
 * SQL Server biztonsági mentés konfigurálható a Azure Portal vagy a **PowerShellben**. A CLI nem támogatott.
 * A megoldás mindkét típusú [üzembe helyezést](../azure-resource-manager/management/deployment-models.md) támogatja – Azure Resource Manager virtuális gépeket és klasszikus virtuális gépeket.
@@ -93,6 +92,17 @@ Copy-Only teljes |  Másodlagos
 Differenciál | Elsődleges
 Napló |  Másodlagos
 Copy-Only teljes |  Másodlagos
+
+## <a name="backup-throughput-performance"></a>A biztonsági mentés teljesítményének teljesítménye
+
+A Azure Backup 200 Mbps egységes adatátviteli sebességet támogat a nagyméretű SQL-adatbázisok (500 GB) teljes és különbözeti biztonsági mentéséhez. Az optimális teljesítmény kihasználása érdekében a következőket kell tennie:
+
+- A mögöttes virtuális gép (amely tartalmazza az adatbázist futtató SQL Server példányt) a szükséges hálózati átviteli sebességgel van konfigurálva. Ha a virtuális gép maximális átviteli sebessége kevesebb, mint 200 Mbps, Azure Backup nem tudja az adatok átvitelét az optimális sebességgel.<br></br>Emellett az adatbázisfájlok tartalmazó lemeznek elegendő átviteli sebességgel kell rendelkeznie. [További](../virtual-machines/disks-performance.md) információ a lemezek átviteli sebességéről és teljesítményéről az Azure-beli virtuális gépeken. 
+- A virtuális gépen futó folyamatok nem veszik igénybe a virtuális gép sávszélességét. 
+- A biztonsági mentési ütemtervek az adatbázisok egy részhalmazán keresztül oszlanak meg. Egy virtuális gépen egyszerre több biztonsági másolat is fut, és a hálózati használat aránya a biztonsági mentések között van. [További](faq-backup-sql-server.md#can-i-control-how-many-concurrent-backups-run-on-the-sql-server) információ az egyidejű biztonsági mentések számának szabályozásáról.
+
+>[!NOTE]
+> [Töltse le a részletes Resource Plannert](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) , hogy kiszámítsa a kiszolgálón javasolt védett adatbázisok hozzávetőleges számát a virtuálisgép-erőforrások, a sávszélesség és a biztonsági mentési szabályzat alapján.
 
 ## <a name="next-steps"></a>Következő lépések
 

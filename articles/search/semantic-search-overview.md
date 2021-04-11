@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 04/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: b5b33007f71cfc2a29005ce84f1fedba90dd1bf1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 04300b8d148bb22bf585aa81481c475b347ad462
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561967"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222044"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Szemantikai keresés az Azure Cognitive Search
 
@@ -64,7 +64,7 @@ A szemantikai képességek a [regisztrációs regisztráción](https://aka.ms/Se
 
 A helyesírás-javítás ugyanabban a régióban érhető el, de nem rendelkezik a rétegek korlátozásával. Ha rendelkezik olyan meglévő szolgáltatással, amely megfelel a rétegek és régiók feltételének, csak a regisztrációra van szükség.
 
-Az előzetes indítás és a 2. március 1-től április 1-én a helyesírás-javítás és a szemantikai rangsorolás díjmentesen vehető igénybe. Április 1. után a funkció futtatásának számítási költségei számlázandó eseménynek számítanak. A várt díj körülbelül 500 USD, a 250 000-es lekérdezésekhez pedig a havi dollár. A részletes költségadatok a [Cognitive Search díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/) , valamint a [költségek becslése és kezelése](search-sku-manage-costs.md)című témakörben találhatók.
+Április 2-ától az előzetes verzió elindítása után a helyesírás-javítás és a szemantikai rangsorolás díjmentesen elérhető. Áprilisban a funkció futtatásának számítási költségei lesznek számlázandó események. A várt díj körülbelül 500 USD, a 250 000-es lekérdezésekhez pedig a havi dollár. A részletes költségadatok a [Cognitive Search díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/) , valamint a [költségek becslése és kezelése](search-sku-manage-costs.md)című témakörben találhatók.
 
 ## <a name="next-steps"></a>Következő lépések
 

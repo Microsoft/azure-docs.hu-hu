@@ -32,6 +32,8 @@
     - name: Verziókezelési szabályzat
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: Teljesítménnyel kapcsolatos javaslatok
+      href: concepts-azure-advisor-recommendations.md
     - name: Ismert problémák & korlátozásokkal kapcsolatban
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -93,6 +95,9 @@
             - name: Indítás
               href: connect-go.md
               displayName: connect with go
+            - name: Rust
+              href: connect-rust.md
+              displayName: connect with rust
     - name: Oktatóanyagok
       items:
         - name: Adatbázis tervezése
@@ -558,11 +563,15 @@
       items:
         - name: Mi az a rugalmas skálázás (Citus)?
           href: hyperscale-overview.md
+        - name: Az előzetes verzió szolgáltatásai
+          href: hyperscale-preview-features.md
     - name: Gyorsútmutató
       items:
         - name: Kiszolgálócsoport létrehozása
           items:
-            - name: Azure Portal
+            - name: Alapszintű csomag (előzetes verzió)
+              href: quickstart-create-hyperscale-basic-tier.md
+            - name: Standard csomag
               href: quickstart-create-hyperscale-portal.md
               displayName: 'portal, create hyperscale'
     - name: Oktatóanyagok
@@ -581,6 +590,8 @@
           displayName: 'hyperscale, tutorial, real-time'
     - name: Alapelvek
       items:
+        - name: Alapszint
+          href: concepts-hyperscale-tiers.md
         - name: Elosztott adatok
           items:
             - name: Csomópontok és táblák
@@ -611,26 +622,26 @@
               displayName: 'backup, restore, outage, hyperscale'
             - name: Magas rendelkezésre állás
               href: concepts-hyperscale-high-availability.md
+        - name: Replikáció
+          href: concepts-hyperscale-read-replicas.md
         - name: Figyelés és hangolás
           items:
             - name: Figyelés és hangolás
               href: concepts-hyperscale-monitoring.md
             - name: Naplók
               href: concepts-hyperscale-audit.md
+        - name: Oszlopos tárolás
+          href: concepts-hyperscale-columnar.md
         - name: Beállítási lehetőségek
           href: concepts-hyperscale-configuration-options.md
+        - name: Korlátok és korlátozások
+          href: concepts-hyperscale-limits.md
         - name: Előre fizetés fenntartott kapacitásért
           href: concepts-hyperscale-reserved-pricing.md
+        - name: PostgreSQL-verziók
+          href: concepts-hyperscale-versions.md
         - name: PostgreSQL-bővítmények
           href: concepts-hyperscale-extensions.md
-    - name: API-referencia
-      items:
-        - name: SQL API-függvények
-          href: reference-hyperscale-functions.md
-        - name: Kiszolgálóparaméterek
-          href: reference-hyperscale-parameters.md
-        - name: Rendszertáblák
-          href: reference-hyperscale-metadata.md
     - name: Útmutatók
       items:
         - name: Kiszolgálócsoport mérete
@@ -656,6 +667,15 @@
               href: howto-hyperscale-modify-distributed-tables.md
         - name: Magas rendelkezésre állás
           href: howto-hyperscale-high-availability.md
+        - name: Replikáció
+          items:
+            - name: Azure Portal
+              href: howto-hyperscale-read-replicas-portal.md
+              displayName: 'replication, read replica'
+        - name: Ütemezett karbantartás
+          items:
+            - name: Azure Portal
+              href: howto-hyperscale-maintenance.md
         - name: Figyelés
           items:
             - name: Riasztások létrehozása metrikákhoz
@@ -664,6 +684,8 @@
             - name: Hozzáférés az adatbázisnaplókhoz
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: Főverzió-frissítések
+          href: howto-hyperscale-upgrade.md
         - name: Hibaelhárítás
           items:
             - name: Csatlakozási hibák elhárítása
@@ -671,6 +693,14 @@
               displayName: 'connection errors, hyperscale'
             - name: Hasznos diagnosztikai lekérdezések
               href: howto-hyperscale-useful-diagnostic-queries.md
+    - name: API-referencia
+      items:
+        - name: SQL API-függvények
+          href: reference-hyperscale-functions.md
+        - name: Kiszolgálóparaméterek
+          href: reference-hyperscale-parameters.md
+        - name: Rendszertáblák
+          href: reference-hyperscale-metadata.md
 - name: Referencia
   items:
     - name: Azure CLI

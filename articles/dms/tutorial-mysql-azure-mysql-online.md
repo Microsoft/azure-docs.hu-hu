@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: e9f8d4797907cfdc4e7184580e31ac3cb3975b66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 050356dc74641e7e7154d6a3976e6cc8d5f4ce3d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739882"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063610"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 
 A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy helyszíni MySQL-példányból, hogy [Azure Database for MySQL](../mysql/index.yml) minimális állásidővel. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban áttelepíti az **alkalmazottak** minta-adatbázisát a MySQL 5,7 helyszíni példányáról, hogy Azure Database for MySQL a Azure Database Migration Service Online áttelepítési tevékenységével.
+
+> [!IMPORTANT]
+> A "MySQL to Azure Database for MySQL" Online áttelepítési forgatókönyv helyébe egy párhuzamos, nagy teljesítményű offline áttelepítési forgatókönyv kerül, amely 2021. június 1-jén történik. Online Migrálás esetén ezt az új ajánlatot használhatja az [adatreplikációval](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)együtt. Másik lehetőségként olyan nyílt forráskódú eszközöket használhat, mint az [MyDumper/MyLoader](https://centminmod.com/mydumper.html) az online áttelepítéshez szükséges adatreplikációval. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]

@@ -3,12 +3,12 @@ title: Videolejátszás – Azure
 description: Helyőrző
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87042963"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063372"
 ---
 # <a name="video-playback"></a>Videó lejátszása 
 
@@ -28,7 +28,7 @@ Az adategységeket az iparági szabványoknak megfelelő, HTTP-alapú médiaadat
 
 ## <a name="streaming-policy"></a>Folyamatos átviteli szabályzat 
 
-A Azure Media Services különböző módszerekkel biztosíthatja a videó streamek védelmét, ahogy azt a [tartalom védelme Media Services dinamikus titkosítással](../latest/content-protection-overview.md) című cikkben tárgyaljuk. A tartalomvédelem magas szintű lehetőségei a következők:
+A Azure Media Services különböző módszerekkel biztosíthatja a videó streamek védelmét, ahogy azt a [tartalom védelme Media Services dinamikus titkosítással](../latest/drm-content-protection-concept.md) című cikkben tárgyaljuk. A tartalomvédelem magas szintű lehetőségei a következők:
 
 * **In-the-Clear streaming – a** folyamatos átvitel során a rendszer nem alkalmazza a titkosítást.
 * **Használjon Advanced Encryption Standard (AES-128)** – és implementálja a kulcsokat a videó visszafejtéséhez csak a hitelesített megjelenítők számára.

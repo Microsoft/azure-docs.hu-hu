@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a6bc9bfb06f1c80b719bdda686ae111a8884ab
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963621"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Oktatóanyag: Azure Active Directory a Palo Alto Networks – blende integrációval
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Palo Alto Networks-blendét Azure Active Directory (Azure AD) használatával.
-A Palo Alto Networks – blende Azure AD-vel való integrálása a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Palo Alto Networks-blendét Azure Active Directory (Azure AD) használatával. A Palo Alto Networks-blende Azure AD-vel való integrálásakor a következőket teheti:
 
-* Az Azure AD-ben szabályozhatja a Palo Alto Networks-blende elérését.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Palo Alto Networks-blende (egyszeri bejelentkezés) szolgáltatásba az Azure AD-fiókkal.
+* Vezérlés az Azure AD-ben, aki hozzáfér a Palo Alto Networks-blende szolgáltatáshoz.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezzenek a Palo Alto Networks-blende-ba az Azure AD-fiókokkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció és a Palo Alto Networks – blende konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Palo Alto Networks – blende egyszeri bejelentkezésre alkalmas előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Palo Alto Networks – a blende egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Palo Alto hálózatok – a blende támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO-t
+* Palo Alto hálózatok – a blende támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Palo Alto-hálózatok hozzáadása – blende a katalógusból
+## <a name="add-palo-alto-networks---aperture-from-the-gallery"></a>Palo Alto hálózatok – Aperture hozzáadása a katalógusból
 
 A Palo Alto Networks-blende Azure AD-be való integrálásának konfigurálásához a katalógusból a felügyelt SaaS-alkalmazások listájához hozzá kell adnia a Palo Alto Networks-blende elemet.
 
@@ -59,10 +58,10 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozz�
 Az Azure AD egyszeri bejelentkezés a Palo Alto Networks-Aperture használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-    * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    1. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 2. A **[Palo Alto Networks-blende SSO konfigurálása](#configure-palo-alto-networks---aperture-sso)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálása.
-    * A **[Palo Alto Networks-blende test User](#create-palo-alto-networks---aperture-test-user)** -, hogy a Britta Simon a Palo Alto Networks-Aperture, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
+    1. A **[Palo Alto Networks-blende test User](#create-palo-alto-networks---aperture-test-user)** -, hogy a Britta Simon a Palo Alto Networks-Aperture, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
 3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -77,15 +76,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Képernyőkép, amely az "alapszintű S L konfiguráció" kifejezést jeleníti meg az "azonosító" és "válasz U R L" szövegmezők kiemelésével, valamint a "Mentés" művelet kiválasztásával.](common/idp-intiated.png)
-
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    ![Palo Alto Networks – Aperture tartomány és URL-címek egyszeri bejelentkezési adatai SP](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
 
@@ -130,15 +125,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A felső menüsorban kattintson a **Beállítások** elemre.
 
-    ![A beállítások lap](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
+    ![A beállítások lap](./media/paloaltonetworks-aperture-tutorial/settings.png)
 
 3. Navigáljon az **alkalmazás** szakaszra a menü bal oldalán kattintson a **hitelesítési** űrlap elemre.
 
-    ![Az Auth lap](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
+    ![Az Auth lap](./media/paloaltonetworks-aperture-tutorial/authentication.png)
     
 4. A **hitelesítés** oldalon hajtsa végre a következő lépéseket:
     
-    ![A hitelesítés lap](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
+    ![A hitelesítés lap](./media/paloaltonetworks-aperture-tutorial/tab.png)
 
     a. Jelölje be az egyszeri bejelentkezés **engedélyezése (támogatott SSP-szolgáltatók okta, egy bejelentkezés)** lehetőséget az **egyszeri bejelentkezés** mezőből.
 

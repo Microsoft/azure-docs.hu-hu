@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/18/2021
-ms.openlocfilehash: f4336350af92c27760369d668c6babddc4d4ea30
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/05/2021
+ms.openlocfilehash: 2debf7d350f4f1fde5e86a60ad03a6858bc02743
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462916"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490335"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -120,11 +120,13 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 | Időtúllépésig | – Alapértelmezett: PT1H (1 óra) | Az a legnagyobb mennyiségű idő, ameddig a "ig" hurok futtatható a kilépés előtt, és [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)van megadva. Az időtúllépési érték kiértékelése minden hurok ciklusakor megtörténik. Ha a hurok bármelyik művelete hosszabb időt vesz igénybe, mint az időkorlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül. <p><p>Ha módosítani szeretné ezt a korlátot, az "ig" ciklus alakzatnál válassza a **határértékek módosítása** lehetőséget, majd adja meg az **időtúllépés** tulajdonság értékét. |
 ||||
 
+<a name="concurrency-debatching"></a>
+
 ### <a name="concurrency-and-debatching"></a>Egyidejűség és letétel
 
 | Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
-| Egyidejűség kiváltása | Párhuzamosságtal: korlátlan <p><p>A párhuzamossággal, amelyet a következő engedélyezése után nem lehet visszavonni: <p><p>– Alapértelmezett: 25 <br>– Min: 1 <br>-Max: 50 | Ez a korlát a logikai alkalmazások azon példányainak maximális száma, amelyek egy időben vagy párhuzamosan futtathatók. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre [csökken.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>Ennek a korlátnak a módosításához lásd: [trigger párhuzamossági korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás utáni elindítása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Egyidejűség kiváltása | Párhuzamosságtal: korlátlan <p><p>A párhuzamossággal, amelyet a következő engedélyezése után nem lehet visszavonni: <p><p>– Alapértelmezett: 25 <br>– Min: 1 <br>-Max: 100 | Ez a korlát a logikai alkalmazások azon példányainak maximális száma, amelyek egy időben vagy párhuzamosan futtathatók. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre [csökken.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>Ennek a korlátnak a módosításához lásd: [trigger párhuzamossági korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás utáni elindítása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Várakozó futtatások maximális száma | Egyidejűségtel kikapcsolva: <p><p>– Min: 1 <br>-Max: 50 <p><p>Párhuzamosságtal: <p><p>-Min: 10, valamint az egyidejű futtatások (trigger Egyidejűség) száma <br>-Max: 100 | Ez a korlát a logikai alkalmazások azon példányainak maximális száma, amelyek a futtatásra várnak, ha a logikai alkalmazás már futtatja az egyidejű példányok maximális számát. <p><p>A korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört. |
 | SplitOn-elemek | Egyidejűségtel kikapcsolva: 100 000 <p><p>Egyidejűségtel: 100 | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre csökken. |
 ||||
@@ -552,7 +554,7 @@ Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők ki
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Government – kimenő IP-címek
 
-| Region | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
+| Régió | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
 |--------|---------------|-----------------------|
 | US DoD – Középső régió | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | USA-beli államigazgatás – Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb2aeefc22fae4a3c83956dd7681b49fc435500
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5495e84d23b6723cfc7d4fbdb99e7509e378087f
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033996"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257177"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Identitás-szolgáltató hozzáadása a Azure Active Directory B2C bérlőhöz
 
@@ -27,7 +27,7 @@ A regisztrációs vagy bejelentkezési oldalon Azure AD B2C megjeleníti azon k�
 
 ![Mobil bejelentkezési példa közösségi fiókkal (Facebook)](media/add-identity-provider/external-idp.png)
 
-A Azure Portal használatával adhat hozzá Azure Active Directory B2C (Azure AD B2C) által támogatott identitás-szolgáltatókat a [felhasználói folyamatokhoz](user-flow-overview.md) . Az [Egyéni szabályzatokhoz](custom-policy-get-started.md)is hozzáadhat identitás-szolgáltatókat.
+A Azure Portal használatával adhat hozzá Azure Active Directory B2C (Azure AD B2C) által támogatott identitás-szolgáltatókat a [felhasználói folyamatokhoz](user-flow-overview.md) . Az [Egyéni szabályzatokhoz](user-flow-overview.md)is hozzáadhat identitás-szolgáltatókat.
 
 ## <a name="select-an-identity-provider"></a>Válasszon ki egy identitás-szolgáltatót
 

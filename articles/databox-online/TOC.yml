@@ -436,6 +436,10 @@
   items:
     - name: Biztonsági alapkonfiguráció
       href: security-baseline.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/databoxedge
 - name: További források
   items:
     - name: Azure Stack Edge Pro C#-mintamodulok (.NET)

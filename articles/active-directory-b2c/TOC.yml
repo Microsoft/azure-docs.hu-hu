@@ -121,6 +121,9 @@
           href: signin-appauth-ios.md
         - name: Android az AppAuth használatával
           href: signin-appauth-android.md
+        - name: Biztonságos API Management API
+          href: secure-api-management.md
+          displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Folyamat létrehozása
       items:
         - name: Regisztrációs vagy bejelentkezési szabályzat
@@ -222,6 +225,15 @@
           href: password-complexity.md
         - name: E-mailes ellenőrzés letiltása
           href: disable-email-verification.md
+        - name: Egyéni e-mail-cím ellenőrzése
+          items:
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: MFA engedélyezése
           items:
             - name: Többtényezős hitelesítés
@@ -269,17 +281,6 @@
           href: add-api-connector.md
     - name: Egyéni szabályzat
       items:
-        - name: Egyéni szabályzatok – első lépések
-          href: custom-policy-get-started.md
-        - name: Egyéni e-mail-cím ellenőrzése
-          items:
-            - name: Mailjet
-              href: custom-email-mailjet.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-            - name: SendGrid
-              href: custom-email-sendgrid.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-          displayName: verification
         - name: Saját üzleti logika hozzáadása
           items:
             - name: A REST API integrálása
@@ -299,101 +300,6 @@
               displayName: 'troubleshooting, app insights'
             - name: Egyéni házirendek hibaelhárítása
               href: troubleshoot-custom-policies.md
-        - name: Referencia
-          items:
-            - name: TrustFrameworkPolicy
-              href: trustframeworkpolicy.md
-            - name: BuildingBlocks
-              href: buildingblocks.md
-              items:
-                - name: ClaimsSchema
-                  href: claimsschema.md
-                - name: ClaimsTransformations
-                  href: claimstransformations.md
-                  items:
-                    - name: Logikai
-                      href: boolean-transformations.md
-                    - name: Dátum
-                      href: date-transformations.md
-                    - name: Általános kérdések
-                      href: general-transformations.md
-                    - name: Egész szám
-                      href: integer-transformations.md
-                    - name: JSON
-                      href: json-transformations.md
-                    - name: Telefonszám
-                      href: phone-number-claims-transformations.md
-                    - name: Külső fiókok
-                      href: social-transformations.md
-                    - name: StringCollection
-                      href: stringcollection-transformations.md
-                    - name: Sztring
-                      href: string-transformations.md
-                - name: Predikátumok
-                  href: predicates.md
-                - name: ContentDefinitions
-                  href: contentdefinitions.md
-                - name: Honosítás
-                  href: localization.md
-                  items:
-                    - name: Honosítási sztringazonosítók
-                      href: localization-string-ids.md
-                - name: DisplayControls
-                  href: display-controls.md
-                  items:
-                    - name: Ellenőrzés
-                      href: display-control-verification.md
-            - name: ClaimsProviders
-              href: claimsproviders.md
-              items:
-                - name: Technikai profilok
-                  href: technicalprofiles.md
-                  items:
-                    - name: A technikai profilok ellenőrzésének ismertetése
-                      href: validation-technical-profile.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
-                    - name: Azure AD többtényezős hitelesítés
-                      href: multi-factor-auth-technical-profile.md
-                      displayName: mfa
-                    - name: Azure AD SSPR
-                      href: aad-sspr-technical-profile.md
-                    - name: Jogcím-átalakítás
-                      href: claims-transformation-technical-profile.md
-                    - name: Azonosító jogkivonatokra vonatkozó tippek
-                      href: id-token-hint.md
-                    - name: JWT-jogkivonatkiállító
-                      href: jwt-issuer-technical-profile.md
-                    - name: OAuth1
-                      href: oauth1-technical-profile.md
-                    - name: OAuth2
-                      href: oauth2-technical-profile.md
-                    - name: Egyszeri jelszó
-                      href: one-time-password-technical-profile.md
-                      displayName: otp
-                    - name: OpenID Connect
-                      href: openid-connect-technical-profile.md
-                    - name: Telefon gyári beállításai
-                      href: phone-factor-technical-profile.md
-                    - name: REST
-                      href: restful-technical-profile.md
-                    - name: SAML-identitásszolgáltató
-                      href: saml-identity-provider-technical-profile.md
-                    - name: SAML-jogkivonatkiállító
-                      href: saml-issuer-technical-profile.md
-                    - name: Önellenőrzött
-                      href: self-asserted-technical-profile.md
-                    - name: SSO-munkamenet
-                      href: custom-policy-reference-sso.md
-                      displayName: single sign-on
-            - name: UserJourneys
-              href: userjourneys.md
-            - name: SubJourneys
-              href: subjourneys.md
-            - name: RelyingParty
-              href: relyingparty.md
-            - name: Igénylésfeloldók
-              href: claim-resolver-overview.md
     - name: UserInfo végpont
       href: userinfo-endpoint.md
     - name: Partnerintegráció
@@ -458,15 +364,15 @@
         - name: Azure Portal
           href: manage-users-portal.md
           displayName: 'create users, add users, delete users'
+        - name: Felhasználók migrálása
+          href: user-migration.md
+          displayName: bulk import
         - name: Partnerintegráció
           items:
             - name: N8identity
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
-    - name: Biztonságos API Management API
-      href: secure-api-management.md
-      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Naplók és figyelés
       items:
         - name: Naplók
@@ -489,12 +395,105 @@
         - name: Felhasználói adatok
           href: manage-user-data.md
           displayName: GDPR
-    - name: Migrálás
-      items:
-        - name: Felhasználók migrálása
-          href: user-migration.md
 - name: Referencia
   items:
+    - name: Egyéni házirend-séma
+      items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+            - name: ClaimsSchema
+              href: claimsschema.md
+            - name: ClaimsTransformations
+              href: claimstransformations.md
+              items:
+                - name: Logikai
+                  href: boolean-transformations.md
+                - name: Dátum
+                  href: date-transformations.md
+                - name: Általános kérdések
+                  href: general-transformations.md
+                - name: Egész szám
+                  href: integer-transformations.md
+                - name: JSON
+                  href: json-transformations.md
+                - name: Telefonszám
+                  href: phone-number-claims-transformations.md
+                - name: Külső fiókok
+                  href: social-transformations.md
+                - name: StringCollection
+                  href: stringcollection-transformations.md
+                - name: Sztring
+                  href: string-transformations.md
+            - name: Predikátumok
+              href: predicates.md
+            - name: ContentDefinitions
+              href: contentdefinitions.md
+            - name: Honosítás
+              href: localization.md
+              items:
+                - name: Honosítási sztringazonosítók
+                  href: localization-string-ids.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: Ellenőrzés
+                  href: display-control-verification.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+            - name: Technikai profilok
+              href: technicalprofiles.md
+              items:
+                - name: A technikai profilok ellenőrzésének ismertetése
+                  href: validation-technical-profile.md
+                - name: Azure Active Directory
+                  href: active-directory-technical-profile.md
+                - name: Azure AD többtényezős hitelesítés
+                  href: multi-factor-auth-technical-profile.md
+                  displayName: mfa
+                - name: Azure AD SSPR
+                  href: aad-sspr-technical-profile.md
+                - name: Jogcím-átalakítás
+                  href: claims-transformation-technical-profile.md
+                - name: Azonosító jogkivonatokra vonatkozó tippek
+                  href: id-token-hint.md
+                - name: JWT-jogkivonatkiállító
+                  href: jwt-issuer-technical-profile.md
+                - name: OAuth1
+                  href: oauth1-technical-profile.md
+                - name: OAuth2
+                  href: oauth2-technical-profile.md
+                - name: Egyszeri jelszó
+                  href: one-time-password-technical-profile.md
+                  displayName: otp
+                - name: OpenID Connect
+                  href: openid-connect-technical-profile.md
+                - name: Telefon gyári beállításai
+                  href: phone-factor-technical-profile.md
+                - name: REST
+                  href: restful-technical-profile.md
+                - name: SAML-identitásszolgáltató
+                  href: saml-identity-provider-technical-profile.md
+                - name: SAML-jogkivonatkiállító
+                  href: saml-issuer-technical-profile.md
+                - name: Önellenőrzött
+                  href: self-asserted-technical-profile.md
+                - name: SSO-munkamenet
+                  href: custom-policy-reference-sso.md
+                  displayName: single sign-on
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: SubJourneys
+          href: subjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
+        - name: Igénylésfeloldók
+          href: claim-resolver-overview.md
+    - name: Egyéni szabályzat kibocsátási megjegyzései
+      href: custom-policy-developer-notes.md
     - name: Szolgáltatási korlátozások
       href: service-limits.md
     - name: Alkalmazásregisztrációk
@@ -510,8 +509,6 @@
       href: error-codes.md
     - name: Bővítményalkalmazás
       href: extensions-app.md
-    - name: Egyéni szabályzat (IEF) kibocsátási megjegyzései
-      href: custom-policy-developer-notes.md
     - name: Oldalelrendezési verziók
       href: page-layout.md
       displayName: Page version

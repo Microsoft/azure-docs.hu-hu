@@ -1,16 +1,16 @@
 ---
 title: A társított Log Analytics-munkaterület esetében támogatott régiók
 description: Ez a cikk az Automation-fiók és a Log Analytics munkaterület közötti támogatott régió-hozzárendeléseket ismerteti, mivel azok a Azure Automation egyes szolgáltatásaihoz kapcsolódnak.
-ms.date: 02/17/2021
+ms.date: 04/01/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ac2a575c9fe551d5b1b396ab06b2735a749f9da
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720171"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221874"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -38,30 +38,44 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |<sup>2</sup> . EastUS2|EastUS|
 |WestUS|WestUS|
 |WestUS2|WestUS2|
+|NorthCentralUS|NorthCentralUS|
 |CentralUS|CentralUS|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
+|**Brazília**||
+|BrazilSouth|BrazilSouth|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
+|**Kína**||
+|<sup>3</sup> . ChinaEast2|ChinaEast2|
 |**Ázsia és a Csendes-óceáni térség**||
-|AustraliaEast|AustraliaEast|
-|AustraliaSoutheast|AustraliaSoutheast|
 |EastAsia|EastAsia|
 |SoutheastAsia|SoutheastAsia|
+|**India**||
 |CentralIndia|CentralIndia|
-|<sup>3</sup> . ChinaEast2|ChinaEast2|
+|**Japán**||
 |JapanEast|JapanEast|
+|**Ausztrália**||
+|AustraliaEast|AustraliaEast|
+|AustraliaSoutheast|AustraliaSoutheast|
+|**Dél-Korea**||
+|KoreaCentral|KoreaCentral|
+|**Norvégia**||
+|NorwayEast|NorwayEast|
 |**Európa**||
 |NorthEurope|NorthEurope|
-|FranceCentral|FranceCentral|
-|UKSouth|UKSouth|
 |WestEurope|WestEurope|
+|**Franciaország**||
+|FranceCentral|FranceCentral|
+|**Egyesült Királyság**
+|UKSouth|UKSouth|
+|**Svájc**||
 |SwitzerlandNorth|SwitzerlandNorth|
+|**Egyesült Arab Emírségek**||
+|UAENorth|UAENorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |<sup>3</sup> . USGovArizona|USGovArizona|
-
-
 
 <sup>1</sup> a log Analytics-munkaterületek Automation-fiókokba való EastUS nem pontos a régiók közötti leképezés, de a megfelelő leképezés.
 
