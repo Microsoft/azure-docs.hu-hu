@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 03/30/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d5749894fd277ff6a2f77e3db9721e6989d72ac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211804"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109237"
 ---
 # <a name="managed-hsm-logging"></a>Felügyelt HSM-naplózás 
 
@@ -74,9 +74,10 @@ az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource 
 Mi kerül naplózásra?
 
 * Az összes hitelesített REST API kérelem, beleértve a sikertelen kérelmeket a hozzáférési engedélyek, a rendszerhibák vagy a hibás kérelmek eredményeképpen.
-* A felügyelt HSM-ben végzett műveletek, beleértve az olyan attribútumok létrehozását, törlését és frissítését, mint a címkék.
+* A felügyelt HSM-erőforráson saját maga felügyelt sík-műveletek, beleértve a létrehozási, törlési és frissítési attribútumokat, például címkéket.
 * A biztonsági tartományhoz kapcsolódó műveletek, például az inicializálás & letöltés, a helyreállítás inicializálása, feltöltés
 * Teljes HSM biztonsági mentés, visszaállítás és szelektív visszaállítási műveletek
+* Szerepkör-felügyeleti műveletek, például a szerepkör-hozzárendelések létrehozása/megtekintése/törlése, valamint az egyéni szerepkör-definíciók létrehozása/megtekintése/törlése
 * Kulcsokon végrehajtott műveletek, beleértve a következőket:
   * A kulcsok létrehozása, módosítása vagy törlése.
   * A kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, becsomagolása és kicsomagolása.
@@ -121,30 +122,13 @@ Az egyes Blobok szövegként vannak tárolva, és JSON-ként vannak formázva. N
 ]
 ```
 
-A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Description |
-| --- | --- |
-| **TenantId** | Azure Active Directory a felügyelt HSM létrehozásához használt előfizetés bérlői AZONOSÍTÓját |
-| **idő** |Dátum és idő (UTC). |
-| **resourceId** |Azure Resource Manager erőforrás-azonosító. A felügyelt HSM-naplók esetében ez mindig a felügyelt HSM erőforrás-azonosító. |
-| **operationName** |A művelet neve, ahogy a következő táblázat is mutatja. |
-| **operationVersion** |REST API az ügyfél által kért verziót. |
-| **Kategória** |Az eredmény típusa. A felügyelt HSM-naplók esetében a **AuditEvent** az egyetlen elérhető érték. |
-| **resultType** |A REST API kérelem eredménye. |
-| **Tulajdonságok** |A művelettől (**operationName**) függően változó információk|
-| **resultSignature** |A HTTP-állapot. |
-| **resultDescription** |Az eredmény további leírása, amennyiben elérhető. |
-| **Átl** |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ebbe nincs beleszámítva a hálózati késés, így az ügyféloldalon mért idő ettől eltérhet. |
-| **callerIpAddress** |Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. |
-| **correlationId** |Egy opcionális GUID, amelyet az ügyfél továbbíthat az ügyféloldali naplók és a szolgáltatási oldali naplók összekapcsolásához. |
-| **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában egy "felhasználó", "egy egyszerű szolgáltatásnév". |
-| **requestUri** | A REST API kérelem URI-ja |
-| **clientInfo** | 
 
 ## <a name="use-azure-monitor-logs"></a>Az Azure Monitor-naplók használata
 
-A felügyelt HSM **AuditEvent** -naplók áttekintéséhez használhatja a Azure monitor-naplók Key Vault megoldását is. Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
+A felügyelt HSM **AuditEvent** -naplók áttekintéséhez használhatja a Azure monitor-naplók Key Vault megoldását is. Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat.
+
+További információk, például a beállításának módja: [Azure Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: ba2716613a0e950cbae5c65add410ac8a8b38955
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8abd4c417181b46fbf4d5c139c157044b329ea2a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92077725"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580156"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure Bastion-gazdagép létrehozása az Azure PowerShell használatával
 
@@ -25,6 +25,10 @@ A [Azure Portal](./tutorial-create-host-portal.md)használatával is létrehozha
 Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+
+ >[!NOTE]
+ >Az Azure Bastion és az Azure saját DNS zónák használata jelenleg nem támogatott. Mielőtt elkezdené, győződjön meg arról, hogy a megerősített erőforrás üzembe helyezését megtervező virtuális hálózat nem kapcsolódik privát DNS-zónához.
+ >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Megerősített gazdagép létrehozása
 

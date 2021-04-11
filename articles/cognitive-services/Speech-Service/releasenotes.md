@@ -8,53 +8,64 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 3b91f4206d7715f199d7b532853471ce179a7a9e
-ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
+ms.openlocfilehash: d5bf294e9371c5baf3cea23734c9a89f36091cd5
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105726838"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210278"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
+## <a name="text-to-speech-2021-march-release"></a>Szöveg-beszéd 2021 – márciusi kiadás
+
+**Új nyelvek és hangfelvételek a neurális TTS-hez**
+
+- **Hat új nyelv lett bevezetve** – 12 új hang van a 6 új területi beállításban a neurális TTS nyelvi listájába: nia in `cy-GB` walesi (Egyesült Királyság), Aled, `cy-GB` walesi (Egyesült Királyság), Rosa in `en-PH` English (Fülöp-szigetek), James in `en-PH` English (Fülöp-szigetek), Charline francia (Belgium) `fr-BE` , Gerard in French (Belgium), `fr-BE` francia ( `nl-BE` `nl-BE` `uk-UA` `uk-UA` `ur-PK` `ur-PK` Belgium), a holland (belgiumi), a Ostap in ukrán (Ukraine), a holland (Pakisztán), az urdu (Pakisztán), az ukrán (Ukraine), a német (pakisztáni), az ukrán (ukrán),
+
+- Öt, a 2020-es verzióban megjelent, 5 nyelven elérhető, az előzetes verzióról a GA-10 hangra **írt nyelv** : kert in `et-EE` észt (Észtország), Colm in `ga-IE` Irish (Írország), Nils in `lv-LV` lett (Lettország), leonas in `lt-LT` litván (Litvánia), Joseph in `mt-MT` máltai (Málta).
+
+- **Új, francia (kanadai) férfi hangfelvétel** – az új Voice Antoine `fr-CA` francia (Kanada) számára érhető el.
+
+- **Minőség javítása** – a kiejtési hibák arányának csökkentése `hu-HU` magyar-48,17%, `nb-NO` norvég-52,76%, `nl-NL` holland (Hollandia) – 22,11%.
+
+Ebben a kiadásban mostantól összesen 142 neurális hang támogatott a 60-es nyelvek/területi beállítások között. Emellett a 70-es standard hangok is elérhetők az 49 nyelven/területi beállításokban. Látogasson el a teljes lista [nyelvi támogatására](language-support.md#text-to-speech) .
+
+**Arc beolvasása események animálása karakterekkel**
+
+A [Viseme esemény](how-to-speech-synthesis-viseme.md) hozzá van adva a neurális TTS-hez, amely lehetővé teszi a felhasználók számára, hogy a szintetizált beszédből beolvassák az arc-sorozatot és az időtartamot. A Viseme segítségével szabályozható a 2D-és 3D-s avatárok modelljeinek mozgása, így tökéletesen illeszkedő, a szintetizált beszédre irányuló mozdulatok. A viseme mostantól csak az en-US-AriaNeural hangon működik.
+
+**Adja hozzá a Bookmark elemet a Speech szintézis Markup Language (SSML) nyelvhez**
+
+A [Könyvjelző elem](speech-synthesis-markup.md#bookmark-element) lehetővé teszi, hogy egyéni jelölőket helyezzen be a SSML-ben, hogy az egyes jelölők eltolása legyen az audio streamben. Felhasználható egy adott hely hivatkozására a szöveg vagy a címke sorrendjében.
+
 ## <a name="speech-sdk-1160-2021-march-release"></a>Speech SDK 1.16.0:2021 – márciusi kiadás
 
-**Megjegyzés**: a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
-
-**Ismert problémák**
-
-**C++/c #/Java**: `DialogServiceConnector` az a nem használható `CustomCommandsConfig` egyéni parancsok alkalmazás elérésére, és ehelyett kapcsolódási hiba esetén. Ez az alkalmazás-azonosító manuális hozzáadásával végezhető el a kérelemben a következővel: `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` . A `CustomCommandsConfig` következő kiadásban a rendszer visszaállítja a várt viselkedést.
-
-**Kiemelt összefoglalás**
-- Kisebb memória-és lemezterület-lábnyom az SDK hatékonyabbá tételéhez – ezúttal a hangsúly az Androidon.
-- Továbbfejlesztett támogatás a hang-szöveg és a szöveg-beszéd közötti tömörített hanganyagokhoz, hatékonyabb ügyfél-és kiszolgáló-kommunikációt biztosítva.
-- A szöveg-beszéd hangokat beszélő animált karakterek mostantól természetesen az ajkak és az arcok is áthelyezhetők, ami azt követi, hogy mit mondanak.
-- Új funkciók és Újdonságok, amelyek segítségével a beszédfelismerési SDK hasznos lehet a további használati esetekben és a további konfigurációkban.
-- A GitHubon megjelöléssel rendelkező ügyfeleinkkel kapcsolatos hibák elhárítása számos hibajavítást tartalmaz. köszönöm! Tartsa meg a visszajelzést!
+> [!NOTE]
+> A Windowson futó Speech SDK a Visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ újraterjeszthető csomagtól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
 #### <a name="new-features"></a>Új funkciók
 
-- **C++/c #/Java/Python**: a GStreamer (1.18.3) legújabb verziójára költözött, hogy támogatást adjon a Windows, Linux és Android rendszerhez _készült adathordozó-_ formátumok átírásához. [Itt](/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)találja a dokumentációt. Korábban az SDK csak a GStreamer által támogatott formátumok egy részhalmazát támogatta. Ez rugalmasságot biztosít a használati esethez legmegfelelőbb hangformátum használatához.
-- **C++/c #/Java/Objective-C/Python**: a tömörített TTS/szintetizált hang SDK-val való dekódolásának támogatása. Ha a kimeneti hangformátumot a PCM-re állítja be, és a GStreamer elérhető a rendszeren, az SDK automatikusan a szolgáltatás tömörített hangját fogja kérni a sávszélesség megtakarítására és az ügyfélen lévő hang dekódolására. Ez csökkentheti a használati esethez szükséges sávszélességet. A `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` `false` funkció letiltásához beállíthatja a szolgáltatást. A [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid), a [C#](/dotnet/api/microsoft.cognitiveservices.speech.propertyid), a [Java](/java/api/com.microsoft.cognitiveservices.speech.propertyid), a [Objective-C](/objectivec/cognitive-services/speech/spxpropertyid), a [Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?preserve-view=true&view=azure-python)adatai.
-- **JavaScript**: Node.js a felhasználók mostantól használhatják az [ `AudioConfig.fromWavFileInput` API](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig#fromWavFileInput_File_)-t, így az ügyfelek elküldhetik a lemezen lévő elérési utat egy wav-fájlba az SDK-nak, amelyet a rendszer felismer. Ebben a cikkben a [GitHub-probléma #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252).
-- **C++/c #/Java/Objective-C/Python**: hozzáadott `GetVoicesAsync()` metódus a TTS számára az összes rendelkezésre álló szintézisi hang programozott módon történő visszaadásához. Így megtekintheti az alkalmazásban elérhető hangokat, vagy programozott módon választhat különböző hangokat. A [C++](/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync), a [C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer#methods), a [Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer#methods), a [Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoices)és a [Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?preserve-view=true&view=azure-python#methods)adatai.
-- **C++/c #/Java/JavaScript/Objective-C/Python**: új `VisemeReceived` esemény a TTS/Speech szintézishez a szinkron viseme-animáció visszaküldéséhez. A Visemes lehetővé teszi, hogy több természetes híreket, interaktív játékokat és rajzfilmfigurát hozzon létre, és intuitív nyelvi tanítási videókat használjon. A hallási zavarokkal rendelkező személyek vizuálisan és "LIP-Read" nyelven is felvehetnek hangokat. [Itt](/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)találja a dokumentációt.
-- **C++/c #/Java/JavaScript/Objective-C/Python**: esemény hozzáadva `BookmarkReached` a TTS-hez. Megadhatja a könyvjelzőket a bemeneti SSML, és lekérheti az egyes könyvjelzők hang-eltolását. Ezt használhatja az alkalmazásban, hogy végrehajtson egy műveletet, amikor bizonyos szavakat szövegről beszédre beszél. [Itt](/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)találja a dokumentációt.
-- **Java**: a Speaker Recognition API-k támogatása, amely lehetővé teszi a Java-hangszórók felismerésének használatát. Részletek [itt](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer).
-- **C++/c #/Java/JavaScript/Objective-C/Python**: két új kimeneti hangformátum lett hozzáadva a következő WebM-tárolóval: TTS (Webm16Khz16BitMonoOpus és Webm24Khz16BitMonoOpus). Ezek jobb formátumok a hangátvitelhez az Opus kodekkel. A [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat), [C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat), [Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat), [JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat), [Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat), [Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-python)részletes adatai.
-- **C++/c #/Java/Python**: a Linux támogatott támogatása lehetővé teszi, hogy a kapcsolatok sikeresek legyenek olyan környezetekben, ahol a tanúsítvány-visszavonási listához való hálózati hozzáférés le lett tiltva. Ez lehetővé teszi, hogy az ügyfélszámítógép csak az Azure Speech szolgáltatáshoz kapcsolódjon. [Itt](/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)találja a dokumentációt.
-- **C++/c #/Java**: a hangprofil beolvasásának támogatása a hangfelismerési forgatókönyvhöz, hogy egy alkalmazás össze tudja hasonlítani a hangfelvételi adatok meglévő hangprofilját. A [C++](/cpp/cognitive-services/speech/speakerrecognizer), a [C#](/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer)és a [Java](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer)adatai. Ebben a cikkben a [GitHub-probléma #808](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/808).
+- **C++/c #/Java/Python**: a GStreamer (1.18.3) legújabb verziójára költözött, hogy támogatást adjon a Windows, Linux és Android rendszerhez készült adathordozó-formátumok átírásához. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)találja a dokumentációt.
+- **C++/c #/Java/Objective-C/Python**: a tömörített TTS/szintetizált hang dekódolásának támogatása az SDK-ban. Ha a kimeneti hangformátumot a PCM-re állítja be, és a GStreamer elérhető a rendszeren, az SDK automatikusan a szolgáltatás tömörített hangját fogja kérni a sávszélesség megtakarítására és az ügyfélen lévő hang dekódolására. A `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` `false` funkció letiltásához beállíthatja a szolgáltatást. A [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid), a [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.propertyid?view=azure-dotnet), a [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.propertyid?view=azure-java-stable), a [Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxpropertyid), a [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?view=azure-python)adatai.
+- **JavaScript**: Node.js a felhasználók mostantól az [ `AudioConfig.fromWavFileInput` API](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_)-t is használhatják. Ebben a cikkben a [GitHub-probléma #252](https://github.com/microsoft/cognitive-services-speech-sdk-JavaScript/issues/252).
+- **C++/c #/Java/Objective-C/Python**: új `GetVoicesAsync()` metódus a TTS-hez az összes elérhető szintézisi hang visszaadásához. A [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync), a [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet#methods), a [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable#methods), a [Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync)és a [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python#methods)adatai.
+- **C++/c #/Java/JavaScript/Objective-C/Python**: új `VisemeReceived` esemény a TTS/Speech szintézishez a szinkron viseme-animáció visszaküldéséhez. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)találja a dokumentációt.
+- **C++/c #/Java/JavaScript/Objective-C/Python**: esemény hozzáadva `BookmarkReached` a TTS-hez. Megadhatja a könyvjelzőket a bemeneti SSML, és lekérheti az egyes könyvjelzők hang-eltolását. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)találja a dokumentációt.
+- **Java**: a Speaker Recognition API-k támogatása. Részletek [itt](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable).
+- **C++/c #/Java/JavaScript/Objective-C/Python**: két új kimeneti hangformátum lett hozzáadva a következő WebM-tárolóval: TTS (Webm16Khz16BitMonoOpus és Webm24Khz16BitMonoOpus). Ezek jobb formátumok a hangátvitelhez az Opus kodekkel. A [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-java-stable), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest), [Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python)részletes adatai.
+- **C++/c #/Java**: a hangprofil beolvasásának támogatása a beszélő-felismerési forgatókönyvhöz. A [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognizer), a [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-dotnet)és a [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable)adatai.
+- **C++/c #/Java/Objective-C/Python**: további támogatás a különálló megosztott kódtár számára az audió mikrofon és a hangszórók vezérléséhez. Ez lehetővé teszi az SDK használatát olyan környezetekben, amelyek nem rendelkeznek a szükséges hangkönyvtári függőségekkel.
 - **Objective-C/Swift**: a modul-keretrendszer és az esernyő fejléc támogatása. Ez lehetővé teszi a Speech SDK importálását modulként az iOS/Mac Objective-C/Swift-alkalmazásokban. Ebben a cikkben a [GitHub-probléma #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452).
-- **Python**: támogatja a Python [3,9](/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) -es támogatását, és a Python 3,5-es támogatását elvetette a Python teljes [életciklusának végéig 3,5-](https://devguide.python.org/devcycle/#end-of-life-branches)ra.
+- **Python**: támogatja a Python [3,9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) -es támogatását, és a Python 3,5-es támogatását elvetette a Python teljes [életciklusának végéig 3,5-](https://devguide.python.org/devcycle/#end-of-life-branches)ra.
 
 #### <a name="improvements"></a>Fejlesztései
 
-- **Java**: a beszédfelismerési SDK memóriahasználat és a lemez helyigényének csökkentése érdekében az Android bináris fájljai jelenleg 3 – 5%-kal kisebbek.
-- **C#**: a c#-dokumentáció továbbfejlesztett pontossága, olvashatósága és [áttekintése, valamint](/dotnet/api/microsoft.cognitiveservices.speech) a C#-ban az SDK használhatóságának javítása.
-- **C++/c #/Java/Objective-C/Python**: a mikrofon és a beszélő vezérlő áthelyezése külön megosztott könyvtárba. Ez lehetővé teszi az SDK használatát olyan használati esetekben, amelyek nem igényelnek hanghardvert, például ha nincs szüksége mikrofonra vagy hangszóróra a Linuxon használt használati esethez, nem kell telepítenie a libasound.
+- A beszédfelismerési SDK memóriahasználat és a lemez helyigényének csökkentése érdekében az Android bináris fájljai jelenleg 3 – 5%-kal kisebbek.
+- A C#-referenciánk dokumentációjának jobb pontossága, olvashatósága és [áttekintése.](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)
 
 #### <a name="bug-fixes"></a>Hibajavítások
 
@@ -73,7 +84,8 @@ ms.locfileid: "105726838"
 
 ## <a name="speech-cli-also-known-as-spx-2021-march-release"></a>Speech CLI (más néven SPX): 2021 – március kiadás
 
-**Megjegyzés**: az Azure Speech Service parancssori felületének (CLI) első lépései [itt](/azure/cognitive-services/speech-service/spx-basics)olvashatók. A parancssori felület lehetővé teszi, hogy bármilyen kód írása nélkül használja az Azure Speech szolgáltatást.
+> [!NOTE]
+> Ismerkedés az Azure Speech Service parancssori felületével ( [CLI).](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics) A parancssori felület lehetővé teszi, hogy bármilyen kód írása nélkül használja az Azure Speech szolgáltatást.
 
 #### <a name="new-features"></a>Új funkciók
 
@@ -88,11 +100,16 @@ ms.locfileid: "105726838"
 Mivel a folyamatos világjárvány továbbra is megköveteli, hogy a mérnökök otthonról is működjenek, a pre-pandémiás manuális ellenőrző parancsfájlok jelentősen csökkentek. Kevesebb, kevesebb konfigurációval rendelkező eszközt vizsgálunk, és a környezettel kapcsolatos hibák valószínűsége megnő. A rendszer továbbra is szigorúan ellenőrzi az automatizálás nagy készletét. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
 Egészségesek maradjanak!
 
+## <a name="text-to-speech-2021-february-release"></a>Szövegről beszédre 2021 – februári kiadás
 
+**Egyéni neurális hang**
+
+Az egyéni neurális hang a február 13 nyelven érhető el: kínai (mandarin, egyszerűsített), angol (ausztráliai), angol (indiai), angol (Egyesült Királyság), angol (Egyesült Államok), francia (Kanada), francia (Franciaország), német (németországi), olasz (Olaszország), Japán (Japán), Koreai (Korea), Portugál (brazíliai), spanyol (Mexikó) és spanyol (Spanyolország). További információ az [Egyéni neurális hangról](custom-neural-voice.md) és [a felelősségteljes használatáról](concepts-guidelines-responsible-deployment-synthetic.md). Az egyéni neurális hangfelismerési funkció megköveteli a regisztrációt, a Microsoft pedig a Microsoft támogathatósági feltételei alapján korlátozhatja a hozzáférést. További információ a [korlátozott hozzáférésről](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context).  
 
 ## <a name="speech-sdk-1150-2021-january-release"></a>Speech SDK 1.15.0:2021 – januári kiadás
 
-**Megjegyzés**: a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+> [!NOTE]
+> A Windowson futó Speech SDK a Visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ újraterjeszthető csomagtól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
 **Kiemelt összefoglalás**
 - Kisebb memória-és lemez-lábnyom, ami hatékonyabbá teszi az SDK-t.
@@ -115,10 +132,10 @@ Egészségesek maradjanak!
 **Új funkciók**
 - **Összes**: új 48KHz kimeneti formátumok az egyéni neurális hanghoz a TTS SPEECH szintézis API-n keresztül: Audio48Khz192KBitRateMonoMp3, hang-48KHz-192kbitrate-mono-MP3, Audio48Khz96KBitRateMonoMp3, hang-48KHz-96kbitrate-mono-MP3, Raw48Khz16BitMonoPcm, RAW-48KHz-16bit-mono-PCM, Riff48Khz16BitMonoPcm, riff-48KHz-16bit-mono-PCM.
 - **Összes**: az egyéni hang is könnyebben használható. Az egyéni hang beállításának támogatása a `EndpointId` következőn keresztül: ([C++](/cpp/cognitive-services/speech/speechconfig#setendpointid), [C#](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId), [Java](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_), [JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#endpointId), [Objective-C](/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid), [Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#endpoint-id)). A módosítás előtt az egyéni hangvezérelt felhasználóknak a végponti URL-címet a metódus használatával kell beállítaniuk `FromEndpoint` . Az ügyfelek mostantól ugyanúgy használhatják a `FromSubscription` metódust, mint a nyilvános hangokat, majd a beállítás alapján megadhatják a telepítési azonosítót `EndpointId` . Ez egyszerűbbé teszi az egyéni hangok beállítását. 
-- **C++/c #/Java/Objective-C/Python**: több, mint a legfelső szintű szándék `IntentRecognizer` . Mostantól támogatja az összes leképezést tartalmazó JSON-eredmény konfigurálását, és nem csak a metóduson keresztüli, URI-paraméter használatával történő leképezést `LanguageUnderstandingModel FromEndpoint` `verbose=true` . Ebben a cikkben a [GitHub-probléma #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880). A frissített dokumentáció [itt](./quickstarts/intent-recognition.md#add-a-languageunderstandingmodel-and-intents)található.
-- **C++/c #/Java**: állítsa be a hangsegédet vagy a robotot, és ne hallgassa meg a immediatedly. `DialogServiceConnector` ([C++](/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector), [Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)) mostantól egy `StopListeningAsync()` metódust kell kísérnie `ListenOnceAsync()` . Ez azonnal leállítja a hangrögzítést, és az eredmény kihasználása érdekében tökéletesen megvárja a "Leállítás most" gomb megnyomásával.
+- **C++/c #/Java/Objective-C/Python**: több, mint a legfelső szintű szándék `IntentRecognizer` . Mostantól támogatja az összes leképezést tartalmazó JSON-eredmény konfigurálását, és nem csak a metóduson keresztüli, URI-paraméter használatával történő leképezést `LanguageUnderstandingModel FromEndpoint` `verbose=true` . Ebben a cikkben a [GitHub-probléma #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880). A frissített dokumentáció [itt](./get-started-intent-recognition.md#add-a-languageunderstandingmodel-and-intents)található.
+- **C++/c #/Java**: a hangsegéd vagy a robot azonnali figyelésének kikapcsolása. `DialogServiceConnector` ([C++](/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector), [Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)) mostantól egy `StopListeningAsync()` metódust kell kísérnie `ListenOnceAsync()` . Ez azonnal leállítja a hangrögzítést, és az eredmény kihasználása érdekében tökéletesen megvárja a "Leállítás most" gomb megnyomásával.
 - **C++/c #/Java/JavaScript**: a hangsegéd vagy a bot jobban reagál a mögöttes rendszerhibákra. `DialogServiceConnector` ([C++](/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector), [Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector), [JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector)) most már van egy új `TurnStatusReceived` eseménykezelő. Ezek a választható események megfelelnek [`ITurnContext`](/dotnet/api/microsoft.bot.builder.iturncontext) a robot összes felbontásának, és jelentést küldenek a végrehajtással kapcsolatos hibákról, például a nem kezelt kivételek, időtúllépés vagy a közvetlen vonalas beszéd és a robot közötti hálózati csökkenés eredményeképpen. `TurnStatusReceived` megkönnyíti a hibákra vonatkozó feltételek megválaszolását. Ha például egy robot túl sokáig tart egy háttérbeli adatbázis-lekérdezésen (például egy termék keresésekor), `TurnStatusReceived` lehetővé teszi az ügyfél számára, hogy a "Sajnáljuk, nem elég értem, hogy próbálja meg újra" vagy valami hasonló.
-- **C++/c #**: több platformon használja a Speech SDK-t. A [SPEECH SDK nuget csomagja](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) mostantól támogatja a Windows ARM/ARM64 asztali natív bináris fájljait (a UWP már támogatott), hogy a BESZÉDFELISMERÉSi SDK több gépen is hasznos legyen.
+- **C++/c #**: több platformon használja a Speech SDK-t. A [SPEECH SDK NuGet csomagja](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) mostantól támogatja a Windows ARM/ARM64 asztali natív bináris fájljait (a UWP már támogatott), hogy a BESZÉDFELISMERÉSi SDK több gépen is hasznos legyen.
 - **Java**: [`DialogServiceConnector`](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector) most már van olyan `setSpeechActivityTemplate()` metódusa, amely szándékosan ki lett zárva a korábbi nyelvről. Ez egyenértékű a tulajdonság beállításával `Conversation_Speech_Activity_Template` , és azt kéri, hogy a közvetlen vonalas szolgáltatás által létrehozott összes jövőbeli bot Framework-tevékenység egyesítse a megadott tartalmat a JSON-adattartalomban.
 - **Java**: továbbfejlesztett, alacsony szintű hibakeresés. Az [`Connection`](/java/api/com.microsoft.cognitiveservices.speech.connection) osztályban már van egy `MessageReceived` esemény, hasonlóan más programozási nyelvekhez (C++, C#). Ez az esemény alacsony szintű hozzáférést biztosít a bejövő adatokhoz a szolgáltatásból, és hasznos lehet a diagnosztika és a hibakeresés számára.
 - **JavaScript**: egyszerűbb beállítás a hangsegédek és a robotok számára [`BotFrameworkConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/botframeworkconfig) , amely most már rendelkezik `fromHost()` és olyan `fromEndpoint()` gyári metódusokkal, amelyek leegyszerűsítik az egyéni szolgáltatási helyszínek használatát, illetve a tulajdonságok manuális beállítását. A szabványosított opcionálisan `botId` nem alapértelmezett robotot is használhat a konfigurációs gyárakban.
@@ -166,7 +183,7 @@ Ebben a kiadásban mostantól összesen 129 neurális hang támogatott a 54-es n
 **A hangtartalom-létrehozás frissítései**
 - Továbbfejlesztett hangválasztási felhasználói felület hangkategóriákkal és részletes hangleírásokkal. 
 - Az összes neurális hangra való hanglejtés hangolása különböző nyelveken.
-- A felhasználói felület localizaiton automatizált a böngésző nyelve alapján.
+- A felhasználói felület honosításának automatizált a böngésző nyelve alapján.
 - `StyleDegree`Az összes neurális hang engedélyezett vezérlése `zh-CN` .
 Az új funkciók megtekintéséhez látogasson el a [hangtartalom-létrehozási eszközre](https://speech.microsoft.com/audiocontentcreation) . 
 
@@ -188,7 +205,7 @@ Az új funkciók megtekintéséhez látogasson el a [hangtartalom-létrehozási 
 - A neurális TTS-tárolóval a fejlesztők a saját környezetükben található legtöbb természetes digitális hangon futtathatják a hangszintézist a biztonsági és adatirányítási követelmények tekintetében. [A beszédfelismerési tárolók telepítésének](speech-container-howto.md)megadásához. 
 
 **Új funkciók**
-- **Egyéni hang**: enabed a felhasználókat, hogy átmásolják a hangmodellt az egyik régióból a másikba; a végpont támogatott felfüggesztése és folytatása. Lépjen a [portálra](https://speech.microsoft.com/customvoice) itt.
+- **Egyéni hang**: lehetővé tette, hogy a felhasználók hangmodellt másoljanak az egyik régióból a másikba; a végpont támogatott felfüggesztése és folytatása. Lépjen a [portálra](https://speech.microsoft.com/customvoice) itt.
 - A [SSML Silence címke](speech-synthesis-markup.md#add-silence) támogatása 
 - Általános TTS hangminőség-fejlesztések: jobb szó szintű kiejtési pontosság a NB-nem értékben. Csökkentett 53%-os kiejtési hiba.
 
@@ -210,7 +227,8 @@ Az új funkciók megtekintéséhez látogasson el a [hangtartalom-létrehozási 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>Speech SDK 1.14.0:2020 – októberi kiadás
 
-**Megjegyzés**: a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+> [!NOTE]
+> A Windowson futó Speech SDK a Visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ újraterjeszthető csomagtól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
 **Új funkciók**
 - **Linux**: támogatás hozzáadva a Debian 10 és az Ubuntu 20,04 LTS rendszerhez.
@@ -359,7 +377,8 @@ Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusb
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0:2020 – júliusi kiadás
 
-**Megjegyzés**: a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le és telepítse innen [.](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+> [!NOTE]
+> A Windowson futó Speech SDK a Visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ újraterjeszthető csomagtól függ. Töltse le és telepítse innen [.](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 **Új funkciók**
 - **C#**: az aszinkron beszélgetések átírásának támogatása. [Itt](./how-to-async-conversation-transcription.md)találja a dokumentációt.  
@@ -440,7 +459,7 @@ Egészségesek maradjanak!
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |
 
-    * A negatív pénznem támogatása (például "-325 &euro; ") a következő területi beállításokban:,,,, `en-US` `en-GB` `fr-FR` `it-IT` `en-AU` , `en-CA` .
+    * A negatív pénznem támogatása (például "-€325") a következő területi beállításokban:,,,, `en-US` `en-GB` `fr-FR` `it-IT` `en-AU` , `en-CA` .
 
 * Továbbfejlesztett címek beolvasása `pt-PT` .
 * A " `en-AU` `en-UK` for" és a "Four" szó fix Natasha () és a (z) "a" kiejtéssel kapcsolatos problémái.  
@@ -508,7 +527,7 @@ Egészségesek maradjanak!
 
 **Példák**
 - **Go**: a [beszédfelismeréshez](./get-started-speech-to-text.md?pivots=programming-language-go) és az [Egyéni hangsegédhez](./quickstarts/voice-assistants.md?pivots=programming-language-go)hozzáadott gyors útmutatók. [Itt](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)megtalálhatja a mintakód kódját. 
-- **JavaScript**: gyors útmutató a [szöveg-beszéd](./get-started-text-to-speech.md?pivots=programming-language-javascript), a [fordítás](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script)és a [Szándékfelismeréshoz](./quickstarts/intent-recognition.md?pivots=programming-language-javascript).
+- **JavaScript**: gyors útmutató a [szöveg-beszéd](./get-started-text-to-speech.md?pivots=programming-language-javascript), a [fordítás](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script)és a [Szándékfelismeréshoz](./get-started-intent-recognition.md?pivots=programming-language-javascript).
 - Kulcsszavas felismerési minták a [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) és a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) rendszerhez.  
 
 **COVID – 19 rövidített tesztelés:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt, és az automatizált tesztek mindegyike sikeres volt. Ha kihagyott valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
@@ -521,8 +540,8 @@ Egészségesek maradjanak!
 - C#, C++: a `UtteranceId` (z) `ConversationTranscriptionResult` rendszerhez hozzáadva egy egységes azonosítót az összes köztes és a végső beszédfelismerési eredményben. [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult), [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)– részletek.
 - Python: támogatás hozzáadva a rendszerhez `Language ID` . Lásd: speech_sample. a [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)-tárházban.
 - Windows: a Windows platformon az összes Win32 Console-alkalmazáshoz hozzáadott tömörített hangbemeneti formátum támogatása. Részletek [itt](./how-to-use-codec-compressed-audio-input-streams.md). 
-- JavaScript: a NodeJS-ben támogatja a beszédfelismerést (szöveg – beszéd). További információ [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
-- JavaScript: új API-k hozzáadása az összes küldési és fogadási üzenet ellenőrzésének engedélyezéséhez. További információ [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
+- JavaScript: a NodeJS-ben támogatja a beszédfelismerést (szöveg – beszéd). További információkat [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) talál. 
+- JavaScript: új API-k hozzáadása az összes küldési és fogadási üzenet ellenőrzésének engedélyezéséhez. További információkat [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) talál. 
         
 **Hibajavítások**
 - C#, C++: javítva a probléma, hogy `SendMessageAsync` most bináris típusúként küld bináris üzenetet. [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](/cpp/cognitive-services/speech/connection)– részletek.
@@ -711,13 +730,13 @@ Ez egy hibajavítási kiadás, amely csak a natív/felügyelt SDK-t érinti. Ez 
 **Hibajavítások**
 
 - Javítsa a FromSubscription, ha a beszélgetési átirattal együtt használja.
-- Javítsa ki a kulcsszó-felismerés hibáját a hangsegédek számára.
+- Javítsa ki a kulcsszót a hangsegédek esetében.
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0:2019 – májusi kiadás
 
 **Új funkciók**
 
-- A kulcsszavas felismerés már elérhető a Windows és a Linux rendszerekhez. Ez a funkció bármilyen mikrofonos típussal működhet, de a hivatalos támogatás jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
+- Mostantól elérhető a Windows és a Linux rendszerhez készült kulcsszó-észrevétel (KWS). A KWS funkció bármilyen mikrofonos típussal működhet, a hivatalos KWS-támogatás azonban jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
 - A kifejezésre mutató funkció az SDK-n keresztül érhető el. További információ: [itt](./get-started-speech-to-text.md).
 - A társalgási átirat funkció az SDK-n keresztül érhető el. Lásd [itt](./conversation-transcription.md).
 - Adja hozzá a hangsegédek támogatását a közvetlen vonalas beszéd csatornán keresztül.
@@ -970,7 +989,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 - A .NET Standard 2,0 támogatása Windows rendszeren. Tekintse meg a [.net Core](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)rövid útmutatót.
 - Kísérleti: a UWP támogatása Windows rendszeren (1709-es vagy újabb verzió).
   - Tekintse meg a [UWP](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp)rövid útmutatót.
-  - Megjegyzés: a Speech SDK-val készített UWP-alkalmazások még nem adják át a Windows-alkalmazás minősítési csomagját (WACK).
+  - Vegye figyelembe, hogy a Speech SDK-val készített UWP-alkalmazások még nem adják át a Windows app Certificate Kit (WACK) szolgáltatást.
 - A hosszan futó felismerés támogatása automatikus újracsatlakoztatással.
 
 **Funkcionális változások**

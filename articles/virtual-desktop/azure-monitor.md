@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztali monitor figyelése – Azure
 description: A Azure Monitor használata a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 03/31/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 1b93e0c0d61eaa390eda66da2a583a4f429ddd79
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+manager: femila
+ms.openlocfilehash: 7da35f77dd232e5f523e2bdc3f125c68015ab871
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709548"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448185"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Az üzembe helyezés figyelése a Windows rendszerű virtuális asztali Azure Monitor használatával
 
@@ -43,7 +43,7 @@ A Windows rendszerű virtuális asztali környezethez tartozó Azure Monitor fig
 
 A Windows rendszerű virtuális asztali Azure Monitor a következő módszerek egyikével nyitható meg:
 
-- Nyissa meg a [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks).
+- Nyissa meg a [aka.MS/azmonwvdi](https://aka.ms/azmonwvdi).
 - Keresse meg **és válassza ki** a **Windows rendszerű virtuális asztal** elemet a Azure Portal, majd válassza az eredmények lehetőséget.
 - Keresse meg és válassza ki **Azure monitor** a Azure Portal. Az Áttekintés területen válassza az **ininsight hub** **lehetőséget, majd válassza a** **Windows virtuális asztal** lehetőséget.
 Miután megnyitotta a lapot, adja meg a figyelni kívánt környezet **előfizetését**, **erőforráscsoportját**, **állomásnevét** és **időtartományát** .
@@ -62,7 +62,7 @@ A Windows rendszerű virtuális asztalok Azure Monitor használatának megkezdé
 
 Ha első alkalommal nyit Azure Monitor a Windows rendszerű virtuális asztali számítógépeken, be kell állítania Azure Monitor a Windows rendszerű virtuális asztali környezethez. Az erőforrások konfigurálása:
 
-1. Nyissa meg a Windows rendszerű virtuális asztali Azure Monitor a [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)-on található Azure Portal, majd válassza a **konfigurációs munkafüzet** lehetőséget.
+1. Nyissa meg a Windows rendszerű virtuális asztali Azure Monitor a [aka.MS/azmonwvdi](https://aka.ms/azmonwvdi)-on található Azure Portal, majd válassza a **konfigurációs munkafüzet** lehetőséget.
 2. Válassza ki az **előfizetés**, az **erőforráscsoport** és az **alkalmazáskészlet** területen konfigurálni kívánt környezetet.
 
 A konfigurációs munkafüzet beállítja a figyelési környezetet, és lehetővé teszi a konfiguráció ellenőrzését a telepítési folyamat befejezése után. Fontos, hogy ellenőrizze a konfigurációt, ha az irányítópulton lévő elemek nem jelennek meg megfelelően, vagy ha a termékcsoport olyan frissítéseket tesz közzé, amelyek új beállításokat igényelnek.
@@ -193,4 +193,5 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 Most, hogy konfigurálta Azure Monitor a Windows rendszerű virtuális asztali környezethez, az alábbiakban néhány olyan erőforrást talál, amelyek segíthetnek a környezet figyelésének megkezdésében:
 
 - Tekintse meg a [szószedetet](azure-monitor-glossary.md) , és ismerkedjen meg a Windows rendszerű virtuális asztalok Azure Monitorával kapcsolatos feltételekkel és fogalmakkal.
+- Az adattárolási költségek becsléséhez, méréséhez és kezeléséhez tekintse meg a [becsült Azure monitor költségeket](azure-monitor-costs.md)ismertető témakört.
 - Ha problémába ütközik, tekintse meg a Súgó és az ismert problémák [hibaelhárítási útmutatóját](troubleshoot-azure-monitor.md) .

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolg
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.openlocfilehash: 06fd4d6e472b33496e773596b0f3afc8e70be948
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105630425"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-custom-topic-or-domain"></a>Rendszer által felügyelt identitás társítása Event Grid egyéni témakörhöz vagy tartományhoz 

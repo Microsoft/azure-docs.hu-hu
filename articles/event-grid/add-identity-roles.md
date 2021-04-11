@@ -3,14 +3,14 @@ title: Felügyelt identitás hozzáadása egy szerepkörhöz Azure Event Grid c�
 description: Ez a cikk azt ismerteti, hogyan adhat hozzá felügyelt identitást Azure-szerepkörökhöz olyan célhelyeken, mint például a Azure Service Bus és az Azure Event Hubs.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 1bcef878c982122d80980dd7194fae2de6fc8762
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 1578e4c24201614ce89351b3c3cee52a09cadc30
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630384"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280479"
 ---
-# <a name="add-an-identity-to-azure-roles-on-azure-event-grid-destinations"></a>Identitás hozzáadása az Azure-szerepkörökhöz Azure Event Grid célhelyeken
+# <a name="grant-managed-identity-the-access-to-event-grid-destination"></a>Felügyelt identitás engedélyezése a Event Grid célhoz való hozzáféréshez
 Ez a szakasz azt ismerteti, hogyan adható hozzá a rendszertémakör, az egyéni témakör vagy a tartomány identitása egy Azure-szerepkörhöz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -89,6 +89,6 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy hozzárendelt egy rendszerhez rendelt identitást a rendszertémakörhöz, az egyéni témakörhöz vagy a tartományhoz, és hozzáadta az identitást a megfelelő szerepkörökhöz a célhelyeken, tekintse meg a [Devlier-események identitás használatával](managed-service-identity.md) történő kézbesítése az identitás segítségével című témakört.
+Most, hogy hozzárendelt egy rendszerhez rendelt identitást a rendszertémakörhöz, az egyéni témakörhöz vagy a tartományhoz, és hozzáadta az identitást a megfelelő szerepkörökhöz a célhelyeken, tekintse meg az [események továbbítása a felügyelt identitás használatával az események kézbesítése](managed-service-identity.md) az identitás használatával című témakört.
 
 

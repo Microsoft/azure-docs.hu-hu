@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 373cebee4e7f95062791d8bc68bfee7d845e1465
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104726063"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Egyetlen objektum szinkronizálása Azure AD Connect 
@@ -47,7 +47,7 @@ A JSON-kimeneten kívül az eszköz egy HTML-jelentést hoz létre, amely a szin
 
 A HTML-jelentés a következő: 
 
-|Tab|Description|
+|Tab|Leírás|
 |-----|-----|
 |Lépések|Az objektumok szinkronizálásához szükséges lépéseket ismerteti. Az egyes lépések a hibaelhárítás részleteit tartalmazzák. Az importálási, szinkronizálási és exportálási lépések további attribútum-információkat tartalmaznak, például a nevet, a többértékű, a típus, az érték, az érték hozzáadása, az érték törlése, a művelet, a szinkronizálási szabály, a leképezés típusa és az adatforrás.| 
 |Hibaelhárítás & javaslat|Megadja a hibakódot és az okot. A hiba adatai csak akkor érhetők el, ha hiba történik.| 
@@ -82,7 +82,7 @@ Az egyetlen objektum-szinkronizáló eszköz futtatásához hajtsa végre a köv
 
      `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-|Egyetlen objektum szinkronizálásának bemeneti paraméterei|Description| 
+|Egyetlen objektum szinkronizálásának bemeneti paraméterei|Leírás| 
 |-----|----|
 |DistinguishedName|Ez egy kötelező karakterlánc-paraméter. </br></br>Ez a Active Directory objektum megkülönböztető neve, amely szinkronizálást és hibaelhárítást igényel.| 
 |StagingMode|Ez egy opcionális kapcsoló paraméter.</br></br>Ezzel a paraméterrel megakadályozható, hogy a módosítások exportálása Azure Active Directory.</br></br>**Megjegyzés**: a parancsmag véglegesíti a szinkronizálási műveletet. </br></br>**Megjegyzés**: Azure ad Connect az előkészítési kiszolgáló nem exportálja Azure Active Directory a módosításokat.|

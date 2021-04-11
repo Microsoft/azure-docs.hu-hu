@@ -234,6 +234,8 @@
               href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
             - name: NP sorozat
               href: np-series.md
+            - name: FPGA-igazolási szolgáltatás
+              href: field-programmable-gate-arrays-attestation.md
         - name: Nagy teljesítményű számítás
           items:
             - name: Áttekintés
@@ -1303,6 +1305,8 @@
           href: ./windows/nsg-quickstart-portal.md
     - name: Nyilvános IP-cím hozzárendelése
       href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Egyéni tartománynév használata
+      href: custom-domain.md
     - name: Több hálózati adapter használata
       items:
         - name: Linux a CLI-vel

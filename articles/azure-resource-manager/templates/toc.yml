@@ -566,6 +566,16 @@
           href: template-functions-resource.md
         - name: Sztringfüggvények
           href: template-functions-string.md
+    - name: Bicep operátorok
+      items:
+        - name: Minden operátor
+          href: bicep-operators.md
+        - name: Összehasonlító operátorok
+          href: bicep-operators-comparison.md
+        - name: Logikai operátorok
+          href: bicep-operators-logical.md
+        - name: Numerikus operátorok
+          href: bicep-operators-numeric.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703275"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209629"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -72,7 +72,7 @@ A SSPR megkezdéséhez kövesse az alábbi oktatóanyagot:
 
 ## <a name="require-users-to-register-when-they-sign-in"></a>A felhasználók regisztrálásának megkövetelése a bejelentkezéskor
 
-Engedélyezheti, hogy a felhasználó megkövetelje a SSPR regisztrációját, ha az Azure AD-t használó alkalmazásokba jelentkeznek be. A munkafolyamat a következő alkalmazásokat tartalmazza:
+Engedélyezheti, hogy a felhasználó megkövetelje a SSPR regisztrációját, ha a modern hitelesítést vagy webböngészőt használja az Azure AD-t használó alkalmazásokba való bejelentkezéshez. A munkafolyamat a következő alkalmazásokat tartalmazza:
 
 * Microsoft 365
 * Azure Portal

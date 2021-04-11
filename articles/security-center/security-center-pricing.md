@@ -8,10 +8,10 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 03/23/2021
 ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889450"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free vs Azure Defender engedélyezve

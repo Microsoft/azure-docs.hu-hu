@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 306381465919d3fde7135315b69d450a496c2898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cedadf6b6026c74e25e9c81feb7f8291058b6f69
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104609315"
+ms.locfileid: "105961659"
 ---
 # <a name="monitor-media-services-metrics"></a>A Media Services metrikáinak monitorozása
 
@@ -31,7 +31,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Media Services-fiók létrehozása](../create-account-howto.md)
+- [Media Services-fiók létrehozása](../account-create-how-to.md)
 - [Figyelő Media Services mérőszámok és diagnosztikai naplók](monitor-media-services-data-reference.md) áttekintése
 
 ## <a name="view-metrics-in-azure-portal"></a>Metrikák megtekintése Azure Portal

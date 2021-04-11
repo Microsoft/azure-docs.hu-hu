@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: kereslet-előrejelzési & AutoML'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhatja be és helyezheti üzembe a kereslet-előrejelzési modellt a Azure Machine Learning Studio automatizált gépi tanulás szolgáltatásával.
+description: Igény szerinti előrejelző modell betanítása és üzembe helyezése kód nélkül, Azure Machine Learning automatikus gépi tanulás (automatizált ML) felületének használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,18 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879360"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210550"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Oktatóanyag: az automatikus gépi tanulás iránti igény előrejelzése
 
+Megtudhatja, hogyan hozhat létre egy [idősorozat-előrejelzési modellt](concept-automated-ml.md#time-series-forecasting) anélkül, hogy egyetlen sort kellene írnia a Azure Machine learning Studióban található automatikus gépi tanulás alkalmazásával. Ez a modell előre jelezheti a bike Sharing szolgáltatás számára a bérleti igényt.  
 
-Ebben az oktatóanyagban az automatikus gépi tanulást vagy az automatikus ML-t használja a Azure Machine Learning Studióban egy idősorozat-előrejelzési modell létrehozásához a bike Sharing szolgáltatáshoz való bérleti igény előrejelzéséhez.
-
-Példa besorolási modellre [: oktatóanyag: besorolási modell létrehozása AUTOMATIZÁLT ml-vel Azure Machine Learningban](tutorial-first-experiment-automated-ml.md).
-
-Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
+Ebben az oktatóanyagban semmilyen kódot nem fog írni, és a Studio felületét fogja használni a képzés elvégzéséhez.  Megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Adatkészlet létrehozása és betöltése.
@@ -34,13 +31,18 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 > * A kísérlet eredményeinek megismerése.
 > * A legjobb modell üzembe helyezése.
 
+Próbálja ki az automatizált gépi tanulást is a következő típusú modellek esetében:
+
+* A besorolási modell nélküli példaként tekintse meg az [oktatóanyag: besorolási modell létrehozása AUTOMATIZÁLT ml-sel Azure Machine learning-ben](tutorial-first-experiment-automated-ml.md)című témakört.
+* A regressziós modell első példájának megtekintéséhez tekintse meg a következő [oktatóanyagot: az automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez](tutorial-auto-train-models.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md). 
 
 * Az [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) adatfájl letöltése
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Ismerkedés a Azure Machine Learning Studióval
+## <a name="sign-in-to-the-studio"></a>Bejelentkezés a studióba
 
 Ebben az oktatóanyagban létrehozhatja az automatizált ML-kísérletet Azure Machine Learning Studióban, egy összevont webes felületen, amely tartalmazza a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek készíthetők az összes képzettségi szint adatelemző szakemberek számára. A Studio nem támogatott az Internet Explorer böngészőben.
 
@@ -82,7 +84,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
         Elválasztó|Egy vagy több karakter, amely egy &nbsp; egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Fejlécek használata az első fájlból
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincsenek
 
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. 
     
@@ -126,7 +128,7 @@ Miután betöltötte és konfigurálta az adatait, állítsa be a távoli szám�
             Számítási név |  A számítási környezet azonosítására szolgáló egyedi név. | Bike – számítás
             Csomópontok minimális/maximális száma| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
             Leskálázás előtt üresjárati másodperc | Üresjárati idő a fürt automatikus skálázása előtt a csomópontok minimális száma szerint.|120 (alapértelmezett)
-            Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| Nincs 
+            Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| Nincsenek 
   
         1. A számítási cél beszerzéséhez válassza a **Létrehozás** lehetőséget. 
 
@@ -148,7 +150,7 @@ A Machine learning-feladattípus és a konfigurációs beállítások megadásá
 
 1. Válassza a **további konfigurációs beállítások megtekintése** lehetőséget, és töltse fel a mezőket az alábbiak szerint. Ezekkel a beállításokkal hatékonyabban vezérelheti a betanítási feladatot, és megadhatja az előrejelzés beállításait. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
 
-    További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
+    További &nbsp; konfigurációk|Description|&nbsp;Az &nbsp; oktatóanyag értéke
     ------|---------|---
     Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|Normalizált legfelső szintű, négyzetes hiba
     A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
@@ -233,7 +235,7 @@ Törölje a központi telepítési példányt a Azure Machine Learning studiób�
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az automatikus ML-t használta a Azure Machine Learning Studióban egy idősorozat-előrejelzési modell létrehozásához és üzembe helyezéséhez, amely előre jelezi a bike Share bérleti igényét. 
 

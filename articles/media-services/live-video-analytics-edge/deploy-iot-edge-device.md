@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718930"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961557"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -25,7 +25,7 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az �
 * [IoT Hub létrehozása és beállítása](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge eszköz regisztrálása](../../iot-edge/how-to-register-device.md)
 * [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](../../iot-edge/how-to-install-iot-edge.md)
-* [Azure Media Services-fiók létrehozása](../latest/create-account-howto.md)
+* [Azure Media Services-fiók létrehozása](../latest/account-create-how-to.md)
 
     * Használja a következő régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA nyugati régiója, USA 2. nyugati régiója, az USA nyugati középső régiója, Kelet-Kanada, Egyesült Királyság déli régiója, Közép-Franciaország, Dél-Németország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
     * Az általános célú v2-(GPv2-) Storage-fiókok használata javasolt

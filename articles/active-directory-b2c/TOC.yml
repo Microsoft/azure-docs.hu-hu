@@ -79,13 +79,12 @@
           href: tokens-overview.md
         - name: Hozzáférési jogkivonat kérése
           href: access-tokens.md
-    - name: Szabályzatkulcsok
-      href: policy-keys-overview.md
-    - name: Felhasználói folyamat és szabályzat
+    - name: Felhasználó felület
+      expanded: true
       items:
-        - name: Felhasználói folyamatok
+        - name: Felhasználói folyamatok és egyéni házirendek
           href: user-flow-overview.md
-        - name: Egyéni szabályzatok
+        - name: Egyéni szabályzatok áttekintése
           href: custom-policy-overview.md
     - name: Felhasználói fiókok
       href: user-overview.md
@@ -93,6 +92,8 @@
       href: user-profile-attributes.md
     - name: Identity Protection és feltételes hozzáférés
       href: conditional-access-identity-protection-overview.md
+    - name: Szabályzatkulcsok
+      href: policy-keys-overview.md
 - name: Útmutatók
   items:
     - name: Alkalmazásintegráció
@@ -268,8 +269,6 @@
           href: add-api-connector.md
     - name: Egyéni szabályzat
       items:
-        - name: Egyéni szabályzatok áttekintése
-          href: custom-policy-trust-frameworks.md
         - name: Egyéni szabályzatok – első lépések
           href: custom-policy-get-started.md
         - name: Egyéni e-mail-cím ellenőrzése
@@ -298,9 +297,8 @@
             - name: Naplók gyűjtése az Application Insights használatával
               href: troubleshoot-with-application-insights.md
               displayName: 'troubleshooting, app insights'
-            - name: Szabályzat érvényesítése
+            - name: Egyéni házirendek hibaelhárítása
               href: troubleshoot-custom-policies.md
-              displayName: troubleshooting
         - name: Referencia
           items:
             - name: TrustFrameworkPolicy

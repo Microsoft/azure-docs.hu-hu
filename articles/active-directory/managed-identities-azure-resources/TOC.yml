@@ -142,7 +142,9 @@
       href: 'https://golang.org/doc/'
 - name: További források
   items:
-    - name: Gyakori kérdések és ismert problémák
+    - name: Gyakori kérdések
+      href: managed-identities-faq.md
+    - name: Ismert problémák
       href: known-issues.md
     - name: Az Azure-erőforrások felügyelt identitásait támogató Azure-szolgáltatások
       href: services-support-managed-identities.md

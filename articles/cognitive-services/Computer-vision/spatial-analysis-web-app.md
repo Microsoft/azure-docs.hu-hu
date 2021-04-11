@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf99d02a0968fb1073a02425ecb8b0d5ba7f5ac6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98183472"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109696"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Útmutató: webes alkalmazások leltározása
 
@@ -172,7 +172,7 @@ docker tag rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0 [desired local
 docker push [desired local image name]
 ```
 
-A tároló telepítéséhez hozzon létre egy új Azure-Web App for Containers, és töltse ki a szükséges paramétereket. Ezután lépjen a **Docker** lapra, és válassza az **egyetlen tároló** lehetőséget, majd **Azure Container Registry**. Használja Azure Container Registry-példányát, ahol a fenti képet leküldte.
+A tároló telepítéséhez hozzon létre egy új Azure App Service, és töltse ki a szükséges paramétereket. Ezután lépjen a **Docker** lapra, és válassza az **egyetlen tároló** lehetőséget, majd **Azure Container Registry**. Használja Azure Container Registry-példányát, ahol a fenti képet leküldte.
 
 ![Adja meg a rendszerkép részleteit](./media/spatial-analysis/solution-app-create-screen.png)
 
@@ -189,7 +189,7 @@ A 2 beállítás hozzáadása után kattintson a **Mentés** gombra. Ezután kat
 
 ### <a name="test-the-app"></a>Az alkalmazás tesztelése
 
-Nyissa meg az Azure-webalkalmazást, és ellenőrizze, hogy a telepítés sikeres volt-e, és hogy fut-e a webalkalmazás. Navigáljon a konfigurált URL-címre: `<yourapp>.azurewebsites.net` megtekintheti a futó alkalmazást.
+Nyissa meg az Azure szolgáltatást, és ellenőrizze, hogy a telepítés sikeres volt-e, és hogy fut-e a webalkalmazás. Navigáljon a konfigurált URL-címre: `<yourapp>.azurewebsites.net` megtekintheti a futó alkalmazást.
 
 ![Az üzemelő példány tesztelése](./media/spatial-analysis/solution-app-output.png)
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071681"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109849"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
@@ -94,7 +94,11 @@ Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure I
 
 ## <a name="service-limits"></a>Szolgáltatási korlátozások
 
-Az Azure Digital Twins-korlátok listáját az [*Azure digitális Twins szolgáltatás korlátai*](reference-service-limits.md)című részben tekintheti meg.
+Az Azure Digital Twins **szolgáltatási korlátairól** itt olvashat: [Azure Digital Twins szolgáltatás korlátai](reference-service-limits.md). Ez akkor lehet hasznos, ha a szolgáltatással együttműködve megérti a szolgáltatás működési és díjszabási korlátozásait, valamint azt, hogy milyen korlátokat lehet módosítani, ha szükséges.
+
+## <a name="terminology"></a>Terminológia
+
+Megtekintheti az **általános IoT használati feltételeinek** listáját, valamint az Azure IoT-szolgáltatásokban, például az Azure digitális Twins-ban, itt találhatja meg az Azure [IoT szószedetét](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json). Ez hasznos hivatkozás lehet az Azure digitális Twins szolgáltatással való Ismerkedés és a IoT-megoldás létrehozása során.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,20 +9,29 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b9de4ffe3011bbb8345a6a8c4a92ef5bd1d4559
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ac9cef77569dffe461f7711195c5638e831aa218
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728419"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110104"
 ---
 # <a name="calling-sdk-overview"></a>Az SDK meghívása – áttekintés
 
-Az SDK-k meghívása két különálló családtal történik az *ügyfelek* és *szolgáltatások számára.* A jelenleg elérhető SDK-k végfelhasználói élményekhez készültek: webhelyek és natív alkalmazások.
+A hívó SDK lehetővé teszi a végfelhasználók számára a hang-és video-kommunikációs élmények elvégzését. Ez az oldal részletes leírást nyújt a hívási funkciókról, beleértve a platform-és böngésző-támogatási információkat. A kezdéshez [azonnal tekintse](../../quickstarts/voice-video-calling/getting-started-with-calling.md) meg a gyors üzembe helyezést, vagy hívja meg a [Hero mintát](../../samples/calling-hero-sample.md). 
 
-A szolgáltatási SDK-k még nem érhetők el, és hozzáférést biztosítanak a robotokkal és más szolgáltatásokkal való integrációhoz alkalmas nyers hang-és video-adatsíkokhoz.
+A fejlesztés megkezdése után tekintse meg az [ismert problémák oldalát](../known-issues.md) , ahol megtalálhatja azokat a hibákat, amelyeken dolgozunk.
 
-## <a name="calling-sdk-capabilities"></a>Az SDK képességeinek meghívása
+A hívó SDK legfontosabb funkciói:
+
+- **Címzés** – az Azure kommunikációs szolgáltatások a kommunikációs végpontok kezeléséhez használt általános [identitásokat](../identity-model.md) biztosítanak. Az ügyfelek ezeket az identitásokat használják a szolgáltatás hitelesítésére és egymással való kommunikációra. Ezeket az identitásokat a hívó API-k használják, amelyek megtekinthetik az ügyfeleket a híváshoz (a beosztáshoz) kapcsolódóan.
+- **Titkosítás** – a hívó SDK titkosítja a forgalmat, és megakadályozza a vezetéken belüli illetéktelen módosítást. 
+- **Eszközkezelés és-média** – a hívó SDK a hang-és video-eszközökhöz való kötéshez biztosít eszközöket, kódolja a tartalmakat a kommunikációs adatsík való hatékony továbbításhoz, és a megadott formátumban jeleníti meg a tartalmat. A képernyő-és alkalmazás-megosztáshoz API-kat is biztosítunk.
+- **PSTN** – a hívó SDK képes fogadni és kezdeményezni a hagyományos, nyilvánosan átkapcsolt telefonos rendszerekkel való telefonhívásokat a Azure Portal vagy programozott [módon beszerzett telefonszámok használatával](../../quickstarts/telephony-sms/get-phone-number.md) .
+- **Csapatok ülései** – a hívó SDK [csatlakozhat a csapatok üléseihez](../../quickstarts/voice-video-calling/get-started-teams-interop.md) és a csapat hang-és videó-adatsík. 
+- **Értesítések** – a hívó SDK olyan API-kat biztosít, amelyek lehetővé teszik, hogy az ügyfelek értesítést kapjanak a bejövő hívásokról. Olyan helyzetekben, amikor az alkalmazás nem fut az előtérben, a minták elérhetők az [előugró értesítések](../notifications.md) ("pirítós") számára, hogy a végfelhasználók tájékoztassanak egy bejövő hívást. 
+
+## <a name="detailed-capabilities"></a>Részletes képességek 
 
 Az alábbi lista az SDK-kat hívó Azure kommunikációs szolgáltatásokban jelenleg elérhető funkciókat mutatja be.
 
@@ -33,30 +42,30 @@ Az alábbi lista az SDK-kat hívó Azure kommunikációs szolgáltatásokban jel
 |                   | Egy-az-egyhez hívás előléptetése két felhasználóval egy csoportos hívásban több mint két felhasználóval                                 | ✔️   | ✔️            | ✔️
 |                   | Csatlakozás egy csoportos híváshoz az elindítása után                                                                              | ✔️   | ✔️            | ✔️
 |                   | Egy másik VoIP-résztvevő meghívása egy folyamatos csoportos híváshoz                                                       | ✔️   | ✔️            | ✔️
-|  Közepes hívások vezérlése | Videó be-és kikapcsolása                                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Mikrofon némítása/feloldása                                                                                                     | ✔️   | ✔️            | ✔️         
-|                   | Váltás a kamerák között                                                                                              | ✔️   | ✔️            | ✔️           
-|                   | Helyi tartás/letartás                                                                                                  | ✔️   | ✔️            | ✔️           
-|                   | Aktív beszélő                                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Válasszon hangszórót a hívásokhoz                                                                                            | ✔️   | ✔️            | ✔️           
-|                   | Válassza ki a mikrofont a hívásokhoz                                                                                         | ✔️   | ✔️            | ✔️           
-|                   | Résztvevő állapotának megjelenítése<br/>*Tétlen, korai adathordozó, csatlakozás, csatlakoztatott, betartva, a lobbyban, leválasztva*         | ✔️   | ✔️            | ✔️           
-|                   | Hívás állapotának megjelenítése<br/>*Korai adathordozó, bejövő, csatlakozás, csengetés, csatlakoztatott, megtartás, leválasztás, leválasztva* | ✔️   | ✔️            | ✔️           
-|                   | Annak megjelenítése, hogy a résztvevő el van-e némítva                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Annak az okának a megjelenítése, amiért a résztvevő meghagyott egy hívást                                                                       | ✔️   | ✔️            | ✔️     
-| Képernyő megosztása    | A teljes képernyő megosztása az alkalmazáson belülről                                                                 | ✔️   | ❌            | ❌           
-|                   | Egy adott alkalmazás megosztása (a futó alkalmazások listájából)                                                | ✔️   | ❌            | ❌           
-|                   | Webböngészőt tartalmazó lap megosztása a megnyitott lapok listájából                                                                  | ✔️   | ❌            | ❌           
-|                   | A résztvevő megtekintheti a távoli képernyő megosztását                                                                            | ✔️   | ✔️            | ✔️         
-| Névsora            | Résztvevők listázása                                                                                                   | ✔️   | ✔️            | ✔️           
-|                   | Résztvevő eltávolítása                                                                                                | ✔️   | ✔️            | ✔️         
-| PSTN              | Egy-az-egyhez hívás elhelyezése PSTN-résztvevővel                                                                     | ✔️   | ✔️            | ✔️   
+|  Közepes hívások vezérlése | Videó be-és kikapcsolása                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Mikrofon némítása/feloldása                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Váltás a kamerák között                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Helyi tartás/letartás                                                                                                  | ✔️   | ✔️            | ✔️
+|                   | Aktív beszélő                                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Válasszon hangszórót a hívásokhoz                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Válassza ki a mikrofont a hívásokhoz                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Résztvevő állapotának megjelenítése<br/>*Tétlen, korai adathordozó, csatlakozás, csatlakoztatott, betartva, a lobbyban, leválasztva*         | ✔️   | ✔️            | ✔️
+|                   | Hívás állapotának megjelenítése<br/>*Korai adathordozó, bejövő, csatlakozás, csengetés, csatlakoztatott, megtartás, leválasztás, leválasztva* | ✔️   | ✔️            | ✔️
+|                   | Annak megjelenítése, hogy a résztvevő el van-e némítva                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Annak az okának a megjelenítése, amiért a résztvevő meghagyott egy hívást                                                                       | ✔️   | ✔️            | ✔️
+| Képernyő megosztása    | A teljes képernyő megosztása az alkalmazáson belülről                                                                 | ✔️   | ❌            | ❌
+|                   | Egy adott alkalmazás megosztása (a futó alkalmazások listájából)                                                | ✔️   | ❌            | ❌
+|                   | Webböngészőt tartalmazó lap megosztása a megnyitott lapok listájából                                                                  | ✔️   | ❌            | ❌
+|                   | A résztvevő megtekintheti a távoli képernyő megosztását                                                                            | ✔️   | ✔️            | ✔️
+| Névsora            | Résztvevők listázása                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Résztvevő eltávolítása                                                                                                | ✔️   | ✔️            | ✔️
+| PSTN              | Egy-az-egyhez hívás elhelyezése PSTN-résztvevővel                                                                     | ✔️   | ✔️            | ✔️
 |                   | Csoportos hívás elhelyezése PSTN-résztvevőkkel                                                                           | ✔️   | ✔️            | ✔️
 |                   | Egy-az-egyhez hívás előléptetése PSTN-résztvevővel egy csoportos hívásban                                                 | ✔️   | ✔️            | ✔️
-|                   | Tárcsázás egy csoportos hívásból PSTN-résztvevőként                                                                    | ✔️   | ✔️            | ✔️   
-| Általános kérdések           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   | ✔️   | ✔️            | ✔️ 
+|                   | Tárcsázás egy csoportos hívásból PSTN-résztvevőként                                                                    | ✔️   | ✔️            | ✔️
+| Általános kérdések           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   | ✔️   | ✔️            | ✔️
 | Eszközkezelés | Engedély kérése hang és/vagy videó használatára                                                                       | ✔️   | ✔️            | ✔️
-|                   | Kamera listájának beolvasása                                                                                                     | ✔️   | ✔️            | ✔️ 
+|                   | Kamera listájának beolvasása                                                                                                     | ✔️   | ✔️            | ✔️
 |                   | Kamera beállítása                                                                                                          | ✔️   | ✔️            | ✔️
 |                   | Kiválasztott kamera beolvasása                                                                                                 | ✔️   | ✔️            | ✔️
 |                   | Mikrofonok listájának beolvasása                                                                                                 | ✔️   | ✔️            | ✔️
@@ -66,7 +75,7 @@ Az alábbi lista az SDK-kat hívó Azure kommunikációs szolgáltatásokban jel
 |                   | Hangszóró beállítása                                                                                                         | ✔️   | ✔️            | ✔️
 |                   | Kiválasztott hangszóró beolvasása                                                                                                | ✔️   | ✔️            | ✔️
 | Videó megjelenítése   | Egyetlen videó renderelése számos helyen (helyi kamera vagy távoli stream)                                                  | ✔️   | ✔️            | ✔️
-|                   | Skálázási mód beállítása/frissítése                                                                                           | ✔️   | ✔️            | ✔️ 
+|                   | Skálázási mód beállítása/frissítése                                                                                           | ✔️   | ✔️            | ✔️
 |                   | Távoli video stream megjelenítése                                                                                          | ✔️   | ✔️            | ✔️
 
 ## <a name="calling-sdk-streaming-support"></a>Az SDK streaming támogatásának meghívása
@@ -95,7 +104,7 @@ A következő időtúllépések érvényesek az SDK-kat hívó kommunikációs s
 
 A következő táblázat a jelenleg elérhető támogatott böngészők készletét tartalmazza. A böngésző legújabb három verzióját támogatjuk, hacsak másként nincs jelezve.
 
-| Platform                         | Chrome | Safari  | Edge (króm) | 
+| Platform                         | Chrome | Safari  | Edge (króm) |
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
@@ -103,9 +112,9 @@ A következő táblázat a jelenleg elérhető támogatott böngészők készlet
 | Windows * * *                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu/Linux                     |  ✔️    | ❌     | ❌             |
 
-* A Safari-verziók 13.1 + támogatottak, az 1:1-hívások nem támogatottak a Safarion. 
+* A Safari-verziók 13.1 + támogatottak, az 1:1-hívások nem támogatottak a Safarion.
 
-* * A Safari 14 +/macOS 11 + szükséges a kimenő videók támogatásához. 
+* * A Safari 14 +/macOS 11 + szükséges a kimenő videók támogatásához.
 
 A kimenő képernyő megosztása csak asztali platformokon (Windows, macOS és Linux rendszeren) támogatott, a böngésző verziójától függetlenül, és semmilyen mobil platformon (Android, iOS, iPad és Tablet) nem támogatott.
 

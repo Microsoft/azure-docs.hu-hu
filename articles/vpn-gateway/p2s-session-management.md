@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55fe0bf404ecb8a81e3fe1975dfa9f5ba5dfb06
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91274233"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103351"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Pont – hely típusú VPN-munkamenetek kezelése
 
@@ -32,6 +32,8 @@ Munkamenet megtekintése és leválasztása a portálon:
    :::image type="content" source="./media/p2s-session-management/portal.png" alt-text="Példa portálra":::
 1. Az összes aktuális munkamenetet megtekintheti a Windowpane.
 1. Válassza a **"..."** lehetőséget a leválasztani kívánt munkamenethez, majd válassza a **Leválasztás** lehetőséget.
+
+Jelenleg nem használhatja ezt a funkciót a portálon a VpnGw4 és a VpnGw5 SKU-hoz. Ha rendelkezik ezekkel az átjárókkal, használja a következő szakaszban leírt PowerShell-metódust.
 
 ## <a name="powershell"></a>PowerShell
 

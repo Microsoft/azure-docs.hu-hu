@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
 ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103564320"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
@@ -33,11 +33,11 @@ Az adatfolyamatok a gyári erőforrások ablaktábláról jönnek létre, péld�
 
 Ez a művelet végigvezeti az adatáramlási vászonon, ahol létrehozhatja az átalakítási logikát. A forrás-átalakítás konfigurálásának megkezdéséhez válassza a **forrás hozzáadása** lehetőséget. További információ: forrás- [átalakítás](data-flow-source.md).
 
-## <a name="authoring-data-flows"></a>Adatfolyamatok készítése
+## <a name="authoring-data-flows&quot;></a>Adatfolyamatok készítése
 
 A leképezési folyamat egy egyedi szerzői vászon, amely megkönnyíti az átalakítási logika kiépítése. Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfigurációs panel. 
 
-![Képernyőfelvétel: az adatáramlási vászon a felső sáv, a gráf és a konfigurációs panel feliratú.](media/data-flow/canvas-1.png "Vászon")
+![Képernyőfelvétel: az adatáramlási vászon a felső sáv, a gráf és a konfigurációs panel feliratú.](media/data-flow/canvas-1.png &quot;Vászon")
 
 ### <a name="graph"></a>Graph
 
@@ -63,11 +63,11 @@ Az **optimalizálás** lap a particionálási sémák konfigurálásához szüks
 
 ![A képernyőképen az optimalizálás lap látható, amely tartalmazza a partíciós beállítást, a partíció típusát és a partíciók számát.](media/data-flow/optimize.png)
 
-#### <a name="inspect"></a>Vizsgálata
+#### <a name="inspect&quot;></a>Vizsgálata
 
 Az **ellenőrzés** lapon megtekintheti az átalakítás alatt álló adatfolyam metaadatait. Megtekintheti az oszlopok számát, a megváltoztatott oszlopokat, a hozzáadott oszlopokat, az adattípusokat, az oszlopok sorrendjét és az oszlopok hivatkozásait. A **vizsgálat** a metaadatok csak olvasható nézete. Nem kell engedélyezni a hibakeresési módot a metaadatok megjelenítéséhez a **vizsgálat** ablaktáblán.
 
-![Vizsgálata](media/data-flow/inspect1.png "Vizsgálata")
+![Vizsgálata](media/data-flow/inspect1.png &quot;Vizsgálata")
 
 Amikor átalakításokon keresztül módosítja az adatok alakját, a metaadatok változásai a **vizsgálat** panelen jelennek meg. Ha nincs definiált séma a forrás-átalakításban, akkor a metaadatok nem lesznek láthatók a **vizsgálat** ablaktáblán. A metaadatok hiánya gyakori a séma-drift forgatókönyvekben.
 

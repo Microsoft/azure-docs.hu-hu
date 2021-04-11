@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorb
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105036781"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
@@ -59,9 +59,9 @@ Először válassza ki a hatókört (Azure-előfizetés, erőforráscsoport vagy
 
 ![Műveleti szabály hatóköre](media/alerts-action-rules/action-rules-new-rule-creation-flow-scope.png)
 
-### <a name="filter-criteria"></a>Szűrési feltételek
+### <a name="filter-criteria&quot;></a>Szűrési feltételek
 
-Megadhat szűrőket is, hogy a szabály a riasztások egy adott részhalmazára vonatkozzon, vagy az egyes riasztások adott eseményeire (például csak a "fired" vagy csak "feloldott").
+Megadhat szűrőket is, hogy a szabály a riasztások egy adott részhalmazára vonatkozzon, vagy az egyes riasztások adott eseményeire (például csak a &quot;fired&quot; vagy csak &quot;feloldott").
 
 A rendelkezésre álló szűrők a következők:
 
