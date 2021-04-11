@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323192"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285280"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Az Azure SQL Managed Instance felügyeleti műveleteinek áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,12 +70,14 @@ A következő táblázatok összefoglalják a műveleteket és a jellemző álta
 |Művelet  |Hosszan futó szegmens  |Becsült időtartam  |
 |---------|---------|---------|
 |Példány tulajdonságainak módosítása (rendszergazdai jelszó, Azure AD-bejelentkezés, Azure Hybrid Benefit jelző)|N/A|Legfeljebb 1 perc.|
-|A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|Adatbázisfájlok csatolása|a műveletek 90%-a 5 percen belül befejeződik.|
+|A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|Nincs hosszan futó szegmens<sup>1</sup>|a műveletek 99%-a 5 percen belül befejeződik.|
 |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-a, 2,5 óra + idő alatt az összes adatbázist (220 GB/óra) kell befejeznie.|
 |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a 2,5 órában fejeződik be.|
 |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-a, 2,5 óra + idő alatt az összes adatbázist (220 GB/óra) kell befejeznie.|
 |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-a, 2,5 óra + idő alatt az összes adatbázist (220 GB/óra) kell befejeznie.|
 | | | 
+
+<sup>1</sup> a általános célú felügyelt példányok tárterületének méretezése nem eredményez feladatátvételt a művelet végén. Ebben az esetben a művelet a metaadatok frissítését és a küldött kérések propagálását jelenti.
 
 **Kategória: törlés**
 
@@ -90,6 +92,9 @@ A következő táblázatok összefoglalják a műveleteket és a jellemző álta
 ## <a name="instance-availability"></a>Példány rendelkezésre állása
 
 Az SQL felügyelt példánya a frissítési **műveletek során elérhető**, kivéve a frissítés végén előforduló feladatátvétel által okozott rövid állásidőt. Általában akár 10 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is, a [gyorsított adatbázis-helyreállításnak](../accelerated-database-recovery.md)köszönhetően.
+
+> [!NOTE]
+> A általános célú felügyelt példányok tárterületének méretezése nem eredményez feladatátvételt a frissítés végén.
 
 Az SQL felügyelt példánya nem érhető el az ügyfélalkalmazások számára az üzembe helyezési és törlési műveletek során.
 

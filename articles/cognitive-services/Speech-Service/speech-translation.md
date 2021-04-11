@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: beszéd fordítása
-ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954960"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449936"
 ---
 # <a name="what-is-speech-translation"></a>Mi az a beszédfordítás?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Ebben az áttekintésben megismerheti a beszédfelismerési szolgáltatás előnyeit és képességeit, ami lehetővé teszi a valós idejű, [többnyelvű beszédfelismerési](language-support.md#speech-translation) és beszéd-szöveges fordítást a hangadatfolyamok számára. A Speech SDK-val az alkalmazások, eszközök és eszközök hozzáférhetnek a forrás-átírásokhoz és a fordítási kimenetekhez a megadott hanghoz. Az ideiglenes átírási és fordítási eredményeket a rendszer beszéd észlelésekor adja vissza, a végső eredmények pedig szintetizált beszédbe alakíthatók.
+
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:
+
+* **A gyors** üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.
+* A **útmutatók** útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.
+* A **fogalmak** részletesen ismertetik a szolgáltatás funkcióit és funkcióit.
+* Az **oktatóanyagok** már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.
 
 ## <a name="core-features"></a>Alapvető funkciók
 

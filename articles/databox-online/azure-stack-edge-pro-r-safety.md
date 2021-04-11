@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3589349feed2e20711aa756d8be8ebc433ac0b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363066"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077601"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R biztonsági utasítások
 
@@ -37,7 +37,8 @@ Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a köv
 | Ikon | Leírás |
 |:--- |:--- |
 | ![Először olvassa el az összes utasítást](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Először olvassa el az összes utasítást |
-| ![Értesítés ikonjának ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **megjegyzése:** | A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. || ![Kockázati szimbólum](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Kockázati szimbólum |
+| ![Értesítés ikonjának ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **megjegyzése:** | A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
+| ![Kockázati szimbólum](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Kockázati szimbólum |
 | ![Tipp veszélyességének ikonja](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | Tipp kockázati tényező|
 | ![Nagy súly ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Nagy súlyú kockázati tényező|
 | ![Áramütés ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Áramütés veszélye |
@@ -45,7 +46,7 @@ Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a köv
 | ![Több áramforrás ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png)  | Több áramforrás. Válassza le az összes tápkábelt a berendezés összes áramellátásának eltávolításához. |
 | ![Csípés pontok ikon](./media/azure-stack-edge-pro-r-safety/icon-pinching-points.png)  | A csípés pontok jelennek meg. |
 | ![Forró összetevők vagy felületek ikon](./media/azure-stack-edge-pro-r-safety/icon-hot-component-surface.png)  | Forró összetevőket vagy felületeket jelez. |
-|
+
 
 ## <a name="handling-precautions-and-site-selection"></a>Az óvintézkedések és a hely kijelölésének feldolgozása
 

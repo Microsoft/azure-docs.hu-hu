@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6db43acda679c6c1c1edd6336f693cc4757b6d45
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98757169"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220917"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Bővítmények Cloud Serviceshoz (bővített támogatás)
 
@@ -36,6 +36,14 @@ Alapszintű figyeléssel a szerepkör példányaiból származó teljesítménys
 A speciális monitorozással a további mérőszámok mintavételezése és gyűjtése 5 perc, 1 óra és 12 óra időközönként történik. Az összesített adatokat egy Storage-fiókban tárolja a rendszer, és 10 nap után törlődik. A használt Storage-fiókot a szerepkör konfigurálja; a különböző szerepkörökhöz különböző tárolási fiókokat használhat. 
 
 További információ: [a Windows Azure Diagnostics bővítmény alkalmazása Cloud Servicesban (kiterjesztett támogatás)](enable-wad.md)
+
+## <a name="anti-malware-extension"></a>Kártevők elleni bővítmény
+Egy Azure-alkalmazás vagy-szolgáltatás engedélyezheti és konfigurálhatja a Microsoft antimalware-t az Azure Cloud Services PowerShell-parancsmagok használatával. Vegye figyelembe, hogy a Microsoft antimalware szolgáltatást letiltott állapotba helyezi a Windows Server 2012 R2-es és régebbi verzióját futtató Cloud Services platformon, amelyhez egy Azure-alkalmazásnak szüksége van a művelet engedélyezéséhez. A Windows Server 2016-es vagy újabb verziójában a Windows Defender alapértelmezés szerint engedélyezve van, ezért ezek a parancsmagok a kártevők konfigurálására használhatók.
+
+További információ: a [Microsoft antimalware hozzáadása az Azure Cloud Service-hez kiterjesztett támogatással (CS-es)](https://docs.microsoft.com/azure/security/fundamentals/antimalware-code-samples#add-microsoft-antimalware-to-azure-cloud-service-using-extended-support)
+
+Az Azure antimalware szolgáltatással kapcsolatos további információért látogasson el [ide](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+
 
 
 ## <a name="next-steps"></a>Következő lépések 

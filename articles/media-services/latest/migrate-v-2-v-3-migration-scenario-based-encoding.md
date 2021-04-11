@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: bf66723f878f8b277d71577c068afdad56708ad6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: a01571f4a1f852deb84b7f20d61b8048e8000790
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563271"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490097"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Kódolási forgatókönyv-alapú áttelepítési útmutató
 
@@ -91,7 +91,7 @@ A v2-ben az XML bemeneti és kimeneti metaadat-fájljai a kódolási feladatok e
 
 ## <a name="premium-encoder-to-v3-standard-encoder-or-partner-based-solutions"></a>Prémium szintű kódoló v3 szabványú kódolóhoz vagy partner-alapú megoldásokhoz
 
-A v2 API már nem támogatja a prémium szintű kódolót. Ha korábban a HEVC-kódoláshoz használt munkafolyamat-alapú prémium kódolót használta, a HEVC-kódolás támogatásával telepítse át az új v3 [szabványú kódolóba](media-encoder-standard-formats.md) .
+A v2 API már nem támogatja a prémium szintű kódolót. Ha korábban a HEVC-kódoláshoz használt munkafolyamat-alapú prémium kódolót használta, a HEVC-kódolás támogatásával telepítse át az új v3 [szabványú kódolóba](encode-media-encoder-standard-formats-reference.md) .
 
 Ha a prémium szintű kódoló speciális munkafolyamat-funkciói szükségesek, javasoljuk, hogy az [Imagine Communications](https://imaginecommunications.com), a [stream](https://www.telestream.net)vagy a [Bitmovin](https://bitmovin.com)használatával kezdje el használni az Azure Advanced Encoding partneri megoldást.
 
@@ -103,20 +103,20 @@ Ha korábban már használta a munkafolyamatokat fájlok Azure Blob-fájlokból 
 
 ## <a name="indexer-v1-audio-transcription-to-the-new-audioanalyzer-basic-mode"></a>Indexelő v1 hang átírása az új AudioAnalyzer "alapszintű mód"
 
-A v2 API-ban indexelő v1 processzort használó ügyfelek számára létre kell hoznia egy átalakítást, amely az `AudioAnalyzer` [alapszintű módban](how-to-create-basic-audio-transform.md) meghívja az új feladatot a feladat elküldése előtt.
+A v2 API-ban indexelő v1 processzort használó ügyfelek számára létre kell hoznia egy átalakítást, amely az `AudioAnalyzer` [alapszintű módban](transform-create-basic-audio-how-to.md) meghívja az új feladatot a feladat elküldése előtt.
 
 ## <a name="encoding-transforms-and-jobs-concepts-tutorials-and-how-to-guides"></a>A kódolási, átalakítási és feladatokkal kapcsolatos fogalmak, oktatóanyagok és útmutatók
 
 ### <a name="concepts"></a>Alapelvek
 
-- [Videó és hang kódolása Media Services](encoding-concept.md)
-- [Szabványos kódoló-formátumok és-kodekek](media-encoder-standard-formats.md)
-- [Kódolás egy automatikusan létrehozott bitráta-létrával](autogen-bitrate-ladder.md)
-- [Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet](content-aware-encoding.md)
+- [Videó és hang kódolása Media Services](encode-concept.md)
+- [Szabványos kódoló-formátumok és-kodekek](encode-media-encoder-standard-formats-reference.md)
+- [Kódolás egy automatikusan létrehozott bitráta-létrával](encode-autogen-bitrate-ladder.md)
+- [Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet](encode-content-aware-concept.md)
 - [Media szolgáltatás számára fenntartott egységek](concept-media-reserved-units.md)
 - [Bemeneti metaadatok](input-metadata-schema.md)
 - [Kimeneti metaadatok](output-metadata-schema.md)
-- [Dinamikus csomagolás a Media Services v3-ben: hangkodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)
+- [Dinamikus csomagolás a Media Services v3-ben: hangkodekek](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)
 
 ### <a name="tutorials"></a>Oktatóanyagok
 
@@ -127,18 +127,18 @@ A v2 API-ban indexelő v1 processzort használó ügyfelek számára létre kell
 
 - [Feladathoz tartozó bemenet létrehozása HTTPS URL-címről](job-input-from-http-how-to.md)
 - [Feladathoz tartozó bevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
-- [Alapszintű hang átalakításának létrehozása](how-to-create-basic-audio-transform.md)
+- [Alapszintű hang átalakításának létrehozása](transform-create-basic-audio-how-to.md)
 - .NET-tel
-  - [Kódolás egyéni átalakítással – .NET](customize-encoder-presets-how-to.md)
-  - [Átfedés létrehozása a Media Encoder Standard használatával](how-to-create-overlay.md)
-  - [Miniatűrök készítése a .NET-es kódoló standard használatával](media-services-generate-thumbnails-dotnet.md)
+  - [Kódolás egyéni átalakítással – .NET](transform-custom-presets-how-to.md)
+  - [Átfedés létrehozása a Media Encoder Standard használatával](transform-create-overlay-how-to.md)
+  - [Miniatűrök készítése a .NET-es kódoló standard használatával](transform-generate-thumbnails-dotnet-how-to.md)
 - Az Azure CLI-vel
-  - [Kódolás egyéni átalakítással – Azure CLI](custom-preset-cli-howto.md)
+  - [Kódolás egyéni átalakítással – Azure CLI](transform-custom-preset-cli-how-to.md)
 - A REST-tel
-  - [Kódolás egyéni átalakítással – REST](custom-preset-rest-howto.md)
-  - [Bélyegképek előállítása a Encoder standard és a REST használatával](media-services-generate-thumbnails-rest.md)
-- [Videó kivágása Media Services-.NET-kódolással](subclip-video-dotnet-howto.md)
-- [Videó kivágása Media Services-REST kódolással](subclip-video-rest-howto.md)
+  - [Kódolás egyéni átalakítással – REST](transform-custom-preset-rest-how-to.md)
+  - [Bélyegképek előállítása a Encoder standard és a REST használatával](transform-generate-thumbnails-rest-how-to.md)
+- [Videó kivágása Media Services-.NET-kódolással](transform-subclip-video-dotnet-how-to.md)
+- [Videó kivágása Media Services-REST kódolással](transform-subclip-video-rest-how-to.md)
 
 ## <a name="samples"></a>Példák
 

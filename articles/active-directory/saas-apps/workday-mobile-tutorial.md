@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94ab61a5c6335d43842ada48f17572c186af773c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182019"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077193"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkanap Mobile alkalmazással
 
@@ -132,13 +132,11 @@ Annak biztosítása érdekében, hogy az iOS-eszközök csak a mobileszköz-keze
 
 | Eset | Kulcs érték párok |
 |----------------------------------------------------------------------------------------   |-----------|
-| A bérlői és a webes címek mezőinek automatikus feltöltése:<br>● Munkanapokat az Android for Work-profilok engedélyezésekor.<br>● Munkanapokat iPaden és iPhone-on.     | A bérlő konfigurálásához használja ezeket az értékeket: <br>● Konfigurációs kulcs = `UserGroupCode`<br>● Érték típusa = karakterlánc <br>● Konfigurációs érték = a bérlő neve. Például: `gms`<br>A következő értékek használatával konfigurálhatja a webcímet:<br>● Konfigurációs kulcs = `AppServiceHost`<br>● Érték típusa = karakterlánc<br>● Konfigurációs érték = a bérlő alap URL-címe. Például: `https://www.myworkday.com`                                |   |
+| A bérlői és a webes címek mezőinek automatikus feltöltése:<br>● Munkanapokat az Android for Work-profilok engedélyezésekor.<br>● Munkanapokat iPaden és iPhone-on.     | A bérlő konfigurálásához használja ezeket az értékeket: <br>● Konfigurációs kulcs = `UserGroupCode`<br>● Érték típusa = karakterlánc <br>● Konfigurációs érték = a bérlő neve. Például: `gms`<br>A következő értékek használatával konfigurálhatja a webcímet:<br>● Konfigurációs kulcs = `AppServiceHost`<br>● Érték típusa = karakterlánc<br>● Konfigurációs érték = a bérlő alap URL-címe. Például: `https://www.myworkday.com`                                | 
 | A következő műveletek letiltása a munkanapokon iPaden és iPhone-on:<br>● Kivágás, másolás és beillesztés<br>● Nyomtatás                       | A funkció letiltásához állítsa be a kulcs értékét (Boolean) a `False` következőre:<br>●   `AllowCutCopyPaste`<br>●    `AllowPrint`    |
 | A képernyőképek letiltása az Androidon futó munkanapokon. |A funkció letiltásához állítsa a (logikai) értéket a `False` `AllowScreenshots` kulcsra.|
 | Tiltsa le a javasolt frissítéseket a felhasználók számára.|A funkció letiltásához állítsa a (logikai) értéket a `False` `AllowSuggestedUpdates` kulcsra.|
 |Szabja testre az App Store-beli URL-címét, hogy a felhasználók az Ön által választott App Store-ban irányítsák a mobil felhasználókat.|Az alkalmazás-áruház URL-címének módosításához használja ezeket az értékeket:<br>● Konfigurációs kulcs = `AppUpdateURL`<br>● Érték típusa = karakterlánc<br> ● Konfigurációs érték = alkalmazás-áruház URL-címe|
-|       |
-
 
 ## <a name="ios-configuration-policies"></a>iOS-t futtató eszközökhöz készült konfigurációs szabályzatok
 

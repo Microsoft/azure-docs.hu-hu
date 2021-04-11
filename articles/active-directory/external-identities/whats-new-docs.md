@@ -1,7 +1,7 @@
 ---
 title: A Azure Active Directory külső identitások újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory külső identitások számára.
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0654992831dcda65c3d5f53cc22aef0afd4d277
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453665"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449749"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory külső identitások: Újdonságok
 
 Üdvözli a Azure Active Directory külső identitások dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A külső identitások szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Március 2021
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Microsoft-fiók (MSA) – külső identitások identitás-szolgáltatója (előzetes verzió)](microsoft-account.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [API-összekötő hozzáadása felhasználói folyamathoz](self-service-sign-up-add-api-connector.md)
+- [Mit jelent a vendégfelhasználók hozzáférése az Azure Active Directory B2B-ben?](what-is-b2b.md)
+- [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](user-properties.md)
+- [Oktatóanyag: Azure AD B2B együttműködő felhasználók tömeges meghívása](tutorial-bulk-invite.md)
+- [Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz](self-service-sign-up-add-approvals.md)
+- [Vendég felhasználó beváltási állapotának visszaállítása](reset-redemption-status.md)
+- [API-összekötők használata az önkiszolgáló regisztráció testreszabásához és kiterjesztéséhez](api-connectors-overview.md)
+- [Azure Active Directory B2B-együttműködés – gyakori kérdések](faq.md)
+- [Azure Active Directory B2B-együttműködésre irányuló meghívás beváltása](redemption-experience.md)
+- [Külső identitások identitás-szolgáltatói](identity-providers.md)
+- [Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)](self-service-sign-up-user-flow.md)
+- [Egyszeri jelszavas hitelesítés e-mailben](one-time-passcode.md)
+- [Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal](add-users-administrator.md)
+
 
 ## <a name="february-2021"></a>2021. február
 

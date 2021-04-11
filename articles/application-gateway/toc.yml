@@ -90,6 +90,8 @@
           href: ssl-overview.md
         - name: SSL-szabályzatok áttekintése
           href: application-gateway-ssl-policy-overview.md
+        - name: Kölcsönös hitelesítés
+          href: mutual-authentication-overview.md
         - name: A Key Vault használata
           href: key-vault-certs.md
     - name: AKS bejövő forgalma
@@ -140,18 +142,28 @@
               href: end-to-end-ssl-portal.md
             - name: Végpontok közötti SSL – PowerShell
               href: application-gateway-end-to-end-ssl-powershell.md
+        - name: Kölcsönös hitelesítés
+          items:
+            - name: Kölcsönös hitelesítés – portál
+              href: mutual-authentication-portal.md
+            - name: Kölcsönös hitelesítés – PowerShell
+              href: mutual-authentication-powershell.md
         - name: Tanúsítványok kezelése
           items:
             - name: Háttérrendszer-tanúsítványok
               href: certificates-for-backend-authentication.md
             - name: Tanúsítványok megújítása
               href: renew-certificates.md
-            - name: Önaláírt tanúsítványok létrehozása
+            - name: Önaláírt tanúsítványok készítése a háttérrendszer számára
               href: self-signed-certificates.md
+            - name: Megbízható Ügyféltanúsítványok
+              href: mutual-authentication-certificate-management.md
         - name: SSL-szabályzat
           items:
             - name: Az SSL-szabályzatok konfigurálása
               href: application-gateway-configure-ssl-policy-powershell.md
+            - name: Figyelő-specifikus SSL-szabályzat
+              href: application-gateway-configure-listener-specific-ssl-policy.md
     - name: AKS bejövő forgalma
       items:
         - name: AKS bejövő forgalma Helmen keresztül (barnamezős)
@@ -254,6 +266,8 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Hibás átjáróval kapcsolatos hibák (502)
           href: application-gateway-troubleshooting-502.md
+        - name: Kölcsönös hitelesítés
+          href: mutual-authentication-troubleshooting.md
         - name: AKS bejövő forgalma
           href: ingress-controller-troubleshoot.md
         - name: Resource Health

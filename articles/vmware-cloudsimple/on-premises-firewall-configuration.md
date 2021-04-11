@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cc9ad0c694be8f95ddcffbc3d952d59b83f89f3
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86998891"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077210"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Hozzáférés a CloudSimple saját felhőalapú környezetéhez és a helyszíni alkalmazásokhoz
 
@@ -43,7 +43,7 @@ Ha a helyszíni Active Directoryt identitás forrásaként szeretné konfigurál
 | 389 (TCP/UDP) | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory-tartományvezérlők     | A Private Cloud vCenter-kiszolgálóról az Active Directory-tartományvezérlők felhasználói hitelesítéshez való LDAP-kommunikációhoz szükséges.                |
 | 636 (TCP)     | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory-tartományvezérlők     | A biztonságos LDAP (LDAPs) kommunikációhoz szükséges a Private Cloud vCenter-kiszolgálóról az Active Directory-tartományvezérlőkre a felhasználói hitelesítéshez. |
 | 3268 (TCP)    | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory globáliskatalógus-kiszolgálók | Több tartományvezérlős üzemelő példányokban történő LDAP-kommunikációhoz szükséges.                                                                        |
-| 3269 (TCP)    | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory globáliskatalógus-kiszolgálók | Több tartományvezérlős üzemelő példányokban történő LDAP-kommunikációhoz szükséges.                                                                       |                                           |
+| 3269 (TCP)    | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory globáliskatalógus-kiszolgálók | Több tartományvezérlős üzemelő példányokban történő LDAP-kommunikációhoz szükséges.                                                                       |
 
 ## <a name="common-ports-required-for-accessing-workload-virtual-machines"></a>A számítási feladatok virtuális gépei eléréséhez szükséges általános portok
 

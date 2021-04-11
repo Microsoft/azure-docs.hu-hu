@@ -1,14 +1,14 @@
 ---
 title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6eaefdbc28b8efc53dc7c4d46eb5d8a56d5be141
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104887699"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096597"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -25,8 +25,7 @@ A következő műveletek végrehajtásával hozhatja létre saját konfiguráci�
 > [!IMPORTANT]
 > A Azure Government és az Azure China Environments szolgáltatásban a vendég-konfigurációval rendelkező egyéni házirend-definíciók előzetes verzióként használhatók.
 >
-> A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre.
-> Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre. Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
 > 
 > Ne használja a titkokat vagy a bizalmas információkat az egyéni tartalom csomagjaiban.
 
@@ -138,7 +137,7 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
-Ha az erőforráshoz szükséges tulajdonságok vannak, akkor azokat `Get-TargetResource` a osztállyal párhuzamosan is vissza kell adni `reasons` . Ha `reasons` nem tartalmazza a szolgáltatást, a szolgáltatás tartalmazza a "catch-all" viselkedést, amely összehasonlítja a bemeneteket `Get-TargetResource` és a által visszaadott értékeket `Get-TargetResource` , és részletes összehasonlítást biztosít a következővel: `reasons` .
+Ha az erőforráshoz kötelező tulajdonságok szükségesek, akkor ezeket a tulajdonságokat `Get-TargetResource` a osztállyal párhuzamosan is vissza kell adni `reasons` . Ha `reasons` nem tartalmazza a szolgáltatást, a szolgáltatás tartalmazza a "catch-all" viselkedést, amely összehasonlítja a bemeneteket `Get-TargetResource` és a által visszaadott értékeket `Get-TargetResource` , és részletes összehasonlítást biztosít a következővel: `reasons` .
 
 ### <a name="configuration-requirements"></a>Konfigurációs követelmények
 
@@ -181,9 +180,7 @@ A kitöltött csomagot a vendég konfigurációja használja a Azure Policy defi
   - DscNativeResources modul
   - Windows A MOF által igényelt DSC-erőforrás-modulok
 
-A PowerShell-parancsmagok segítséget nyújtanak a csomag létrehozásában.
-Nincs szükség gyökér szintű mappára vagy a Version mappára.
-A csomag formátumának. zip-fájlnak kell lennie, és nem lehet nagyobb a teljes 100 MB-os méretnél, ha tömörítetlen.
+A PowerShell-parancsmagok segítséget nyújtanak a csomag létrehozásában. Nincs szükség gyökér szintű mappára vagy a Version mappára. A csomag formátumának. zip-fájlnak kell lennie, és nem lehet nagyobb, mint 100 MB, ha tömörítetlen.
 
 ### <a name="storing-guest-configuration-artifacts"></a>Vendég konfigurációs összetevők tárolása
 
@@ -217,8 +214,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Futtassa ezt a parancsfájlt egy PowerShell-terminálon, vagy mentse a fájlt a `config.ps1` Project mappában található néven.
-Futtassa a PowerShellben a terminálon történő végrehajtással `./config.ps1` . Létrejön egy új MOF-fájl.
+Futtassa ezt a parancsfájlt egy PowerShell-terminálon, vagy mentse a fájlt a `config.ps1` Project mappában található néven. Futtassa a PowerShellben a terminálon történő végrehajtással `./config.ps1` . Létrejön egy új MOF-fájl.
 
 A `Node AuditBitlocker` parancs nem szükséges technikailag, de az alapértelmezett helyett egy nevű fájlt hoz létre `AuditBitlocker.mof` `localhost.mof` . Ha a. MOF-fájlnevet követi, a konfiguráció megkönnyíti a sok fájl rendszerezését nagy léptékű működés esetén.
 
@@ -274,7 +270,7 @@ A parancsmag paraméterei `Publish-GuestConfigurationPackage` :
 - **Elérési út**: a közzétenni kívánt csomag helye
 - **ResourceGroupName**: az erőforráscsoport neve, ahol a Storage-fiók található
 - **StorageAccountName**: annak a Storage-fióknak a neve, amelyben közzé kell tenni a csomagot
-- **StorageContainerName**: (default: *guestconfiguration*) a Storage-fiókban lévő tároló neve
+- **StorageContainerName**: (default: _guestconfiguration_) a Storage-fiókban lévő tároló neve
 - **Kényszerített**: felülírja a meglévő csomagot a Storage-fiókban ugyanazzal a névvel
 
 Az alábbi példa közzéteszi a csomagot egy "guestconfiguration" nevű tárolási tárolóban.
@@ -367,7 +363,7 @@ A következő példa egy olyan szabályzat-definíció kódrészletét adja meg,
 
 ### <a name="using-parameters-in-custom-guest-configuration-policy-definitions"></a>Paraméterek használata az egyéni vendég konfigurációs házirend-definíciókban
 
-A vendég konfiguráció futási időben támogatja a konfiguráció felülírási tulajdonságait. Ez a funkció azt jelenti, hogy a csomagban lévő MOF-fájlban lévő értékeket nem kell statikusnak tekinteni. A felülbírálási értékek a Azure Policyon keresztül érhetők el, és nem befolyásolják a konfigurációk létrehozási vagy fordítási módját.
+A vendég konfiguráció futási időben támogatja a konfiguráció felülírási tulajdonságait. Ez a funkció azt jelenti, hogy a csomagban lévő MOF-fájlban lévő értékeket nem kell statikusnak tekinteni. A felülbírálási értékek a Azure Policyon keresztül érhetők el, és nem változnak a konfigurációk létrehozási vagy fordítási módjának módosítása.
 
 A parancsmagok `New-GuestConfigurationPolicy` `Test-GuestConfigurationPolicyPackage` tartalmazzák a **paraméter** nevű paramétert. Ez a paraméter egy szórótábla-definíciót vesz fel, amely tartalmazza az egyes paraméterek részleteit, és létrehozza a Azure Policy-definícióhoz használt minden fájl szükséges részeit.
 
@@ -389,7 +385,7 @@ $PolicyParameterInfo = @(
         DisplayName = 'windows service name.'                           # Policy parameter display name (mandatory)
         Description = "Name of the windows service to be audited."      # Policy parameter description (optional)
         ResourceType = "Service"                                        # DSC configuration resource type (mandatory)
-        ResourceId = 'UserSelectedNameExample'                                   # DSC configuration resource id (mandatory)
+        ResourceId = 'UserSelectedNameExample'                          # DSC configuration resource id (mandatory)
         ResourcePropertyName = "Name"                                   # DSC configuration resource property name (mandatory)
         DefaultValue = 'winrm'                                          # Policy parameter default value (optional)
         AllowedValues = @('BDESVC','TermService','wuauserv','winrm')    # Policy parameter allowed values (optional)
@@ -431,8 +427,7 @@ Ha a szabályzat frissítését szeretné kibocsátani, végezze el a módosít�
 > [!NOTE]
 > A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
 
-Először is, ha fut `New-GuestConfigurationPackage` , adja meg a csomag nevét, amely egyedivé teszi az előző verzióktól. Megadhat egy verziószámot is a névben, például: `PackageName_1.0.0` .
-Az ebben a példában szereplő számot csak a csomag egyedivé tételéhez használja a rendszer, és nem határozza meg, hogy a csomagnak újabb vagy régebbinek kell lennie, mint a többi csomagnak.
+Először is, ha fut `New-GuestConfigurationPackage` , adja meg a csomag nevét, amely egyedivé teszi az előző verzióktól. Megadhat egy verziószámot is a névben, például: `PackageName_1.0.0` . Az ebben a példában szereplő számot csak a csomag egyedivé tételéhez használja a rendszer, és nem határozza meg, hogy a csomagnak újabb vagy régebbinek kell lennie, mint a többi csomagnak.
 
 Másodszor, frissítse a parancsmaghoz használt paramétereket az `New-GuestConfigurationPolicy` alábbi magyarázatok mindegyikével.
 

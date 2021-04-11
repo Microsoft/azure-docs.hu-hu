@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 432330ae06b2e1c19401456dc05f87d0dd908f2d
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 6066b5efc9bb004aab6b651f15d24b19672c3497
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574132"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220606"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Ingyenes Azure-fiók vagy Azure for Students Starter-fiók frissítése
 
 Az [ingyenes Azure-fiókját](https://azure.microsoft.com/free/) a Azure Portal utólagos elszámolású [díjszabással](https://azure.microsoft.com/offers/ms-azr-0003p/) is frissítheti.
 
-Ha rendelkezik [Azure for Students Starter-fiókkal](https://azure.microsoft.com/offers/ms-azr-0144p/) , és jogosult az [ingyenes Azure-fiókra](https://azure.microsoft.com/free/), frissítheti azt egy [ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 200 dollár értékű Azure-kreditet és 12 hónapig ingyenes szolgáltatásokat kap a frissítéshez. Ha nem rendelkezik ingyenes fiókkal, a [támogatási kéréssel](https://go.microsoft.com/fwlink/?linkid=2083458)frissítheti az utólagos elszámolású [díjszabást](https://azure.microsoft.com/offers/ms-azr-0003p/) .
+Ha rendelkezik [Azure for Students Starter-fiókkal](https://azure.microsoft.com/offers/ms-azr-0144p/) , és jogosult az [ingyenes Azure-fiókra](https://azure.microsoft.com/free/), frissítheti azt egy [ingyenes Azure-fiókra](https://azure.microsoft.com/free/). Az Azure-kreditet a számlázási pénznemben, valamint a frissítés során 12 hónapig ingyenesen elérhető USD200 fogja kapni. Ha nem rendelkezik ingyenes fiókkal, a [támogatási kéréssel](https://go.microsoft.com/fwlink/?linkid=2083458)frissítheti az utólagos elszámolású [díjszabást](https://azure.microsoft.com/offers/ms-azr-0003p/) .
 
 Ha rendelkezik egy [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) -fiókkal, az utólagos elszámolású [díjszabásra](https://azure.microsoft.com/offers/ms-azr-0003p/) frissíthet a [támogatási kéréssel](https://go.microsoft.com/fwlink/?linkid=2083458)
 

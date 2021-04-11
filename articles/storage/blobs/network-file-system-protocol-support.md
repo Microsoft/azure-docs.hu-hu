@@ -9,19 +9,19 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57dec4187ea42476ff1c0a993b751a7389da5639
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224594"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490352"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)
 
 A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás lehetővé teszi a Linux fájlrendszer kompatibilitását az objektum tárolási skálázási és díjszabási szolgáltatásával, és lehetővé teszi a Linux-ügyfelek számára, hogy egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztatnak tárolót a blob Storage-ban. 
 
 > [!NOTE]
-> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el. A standard szintű teljesítményű GPV2 a következő régiókban támogatja: Kelet-Ausztrália, Korea középső régiója és az USA déli középső régiója. Az előzetes verzióban az összes nyilvános régióban a prémium szintű teljesítménnyel rendelkező Block blob is támogatott.
+> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el. A következő régiókban támogatja a standard szintű teljesítményű GPV2-tárolók használatát: Kelet-Ausztrália, Korea középső régiója, USA keleti régiója és az USA déli középső régiója. Az előzetes verzióban az összes nyilvános régióban a prémium szintű teljesítménnyel rendelkező Block blob is támogatott.
 
 Mindig kihívást jelent a nagy léptékű örökölt számítási feladatok futtatása, például a nagy teljesítményű számítástechnika (HPC) a felhőben. Ennek egyik oka az, hogy az alkalmazások gyakran használnak olyan hagyományos protokollokat, mint az NFS vagy a Server Message Block (SMB) az adateléréshez. Emellett a natív felhőalapú tárolási szolgáltatások olyan objektum-tárterületre összpontosítanak, amely egy hierarchikus névteret és hatékony metaadat-műveleteket biztosító fájlrendszer helyett egyszerű névteret és kiterjedt metaadatokat tartalmaz. 
 

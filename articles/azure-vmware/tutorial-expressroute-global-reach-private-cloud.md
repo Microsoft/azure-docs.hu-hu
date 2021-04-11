@@ -3,12 +3,12 @@ title: Oktatóanyag – helyszíni környezetek saját felhőbe
 description: Megtudhatja, hogyan hozhat létre ExpressRoute Global Reach-társítást egy Azure VMware-megoldásban található privát felhőbe.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 798b822989127ccbb00e971de2cc4147ac234259
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564500"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449562"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Oktatóanyag: helyszíni helyszíni környezetek egy privát felhőhöz
 
@@ -55,7 +55,7 @@ Most, hogy létrehozott egy engedélyezési kulcsot a saját felhőalapú Expres
 1. Helyszíni felhőalapú kapcsolatok létrehozása. Tegye a következők egyikét, majd válassza a **Létrehozás** lehetőséget:
 
    - Válassza ki a **ExpressRoute áramkört** a listából, vagy
-   - Ha rendelkezik az áramköri AZONOSÍTÓval, illessze be a mezőbe, és adja meg az engedélyezési kulcsot.
+   - Ha rendelkezik az áramköri AZONOSÍTÓval, illessze be a mezőbe, és adja meg az imént létrehozott hitelesítési kulcsot.
 
    :::image type="content" source="./media/expressroute-global-reach/on-premises-cloud-connections.png" alt-text="Adja meg a ExpressRoute AZONOSÍTÓját és az engedélyezési kulcsot, majd válassza a létrehozás lehetőséget.":::   
    

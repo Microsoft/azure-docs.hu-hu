@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576917"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221126"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása a Azure Portal használatával
 
@@ -105,34 +105,6 @@ Hozza létre a **myBackendPool-CR háttér-** címkészlet, hogy tartalmazza a r
 8. Válassza a **Hozzáadás** lehetőséget.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Regionális terheléselosztó hozzáadása a háttérkészletek-hez" border="true":::
-
-## <a name="create-a-health-probe"></a>Állapotminta létrehozása
-
-Ebben a szakaszban egy állapot-mintavételt hoz létre a terheléselosztási szabály létrehozásához:
-
-* Elnevezett **myHealthProbe**.
-* **TCP** protokoll.
-* **5** másodperces intervallum.
-* **Két** hiba nem kifogástalan állapotú küszöbértéke.
-
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer-CR** lehetőséget.
-
-2. A **Beállítások** területen válassza az **Állapotadat-mintavételek** lehetőséget.
-
-3. Az állapot-mintavétel konfigurálásához használja ezeket az értékeket:
-
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Név | Adja meg a **myHealthProbe**. |
-    | Protokoll | Válassza a **TCP** lehetőséget. |
-    | Port | Adja meg a **80** értéket. |
-    | Időköz | Adja meg az **5** értéket. |
-    | Nem kifogástalan állapot küszöbértéke | Adja meg a **2** értéket. |
-
-4. Válassza az **OK** lehetőséget.
-
-    > [!NOTE]
-    > A több régióból álló Load Balancer beépített állapotú mintavételt tartalmaz. Ez a mintavétel a terheléselosztási szabály létrehozásához használható helyőrző.  További információ: **[a régiók közötti Load Balancer korlátai](cross-region-overview.md#limitations)**.
 
 ## <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 

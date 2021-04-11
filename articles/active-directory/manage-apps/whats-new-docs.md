@@ -1,7 +1,7 @@
 ---
 title: Az Azure Active Directory-alkalmazások kezelésének újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory-alkalmazások kezeléséhez.
-ms.date: 03/08/2021
+ms.date: 04/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,45 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775510"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450038"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
 Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. Az Application Management szolgáltatással kapcsolatos újdonságok megismeréséhez tekintse [meg a Azure Active Directory újdonságait](../fundamentals/whats-new.md)ismertető témakört.
+
+## <a name="march-2021"></a>Március 2021
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Azure Active Directory (Azure AD) alkalmazás-felügyeleti tanúsítványok – gyakori kérdések](application-management-certs-faq.md)
+- [Azure Active Directory PowerShell-példák az alkalmazások kezeléséhez](app-management-powershell-samples.md)
+- [Az automatikus gyorsítás letiltása egy összevont IDENTITÁSSZOLGÁLTATÓ a Kezdőlap tartomány-felderítési házirenddel való felhasználói bejelentkezés során](prevent-domain-hints-with-home-realm-discovery.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Az alkalmazások konfigurációjának megtervezése Azure Active Directory](my-apps-deployment-plan.md)
+- [Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal](plan-an-application-integration.md)
+- [Integrálás a SharePoint (SAML) szolgáltatással](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Alkalmazás-hitelesítés migrálása Azure Active Directoryre](migrate-application-authentication-to-azure-active-directory.md)
+- [Alkalmazások migrálása az Azure AD-be a AD FS alkalmazás-tevékenység jelentés használatával](migrate-adfs-application-activity.md)
+- [Egyszeri bejelentkezés üzembe helyezésének tervezése](plan-sso-deployment.md)
+- [Azure Active Directory PowerShell-példák az alkalmazások kezeléséhez](app-management-powershell-samples.md)
+- [Az alkalmazásproxy Kerberos által korlátozott delegálási konfigurációinak hibaelhárítása](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+- [Gyors útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben](add-application-portal-setup-sso.md)
+- [Azure Active Directory Application Management: Újdonságok](whats-new-docs.md)
+- [Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések](application-proxy-faq.md)
+- [Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása](application-sign-in-other-problem-access-panel.md)
+- [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [A forgalom optimalizálása Azure Active Directory Application Proxy](application-proxy-network-topology.md)
+- [Azure AD Application Proxy: verziók kiadásának előzményei](application-proxy-release-version-history.md)
+- [Az alkalmazások Azure Active Directory bejelentkezési viselkedésének konfigurálása egy otthoni tartomány felderítési házirendjének használatával](configure-authentication-for-federated-users-portal.md)
+- [Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba](migrate-adfs-apps-to-azure.md)
+
 
 ## <a name="february-2021"></a>2021. február
 

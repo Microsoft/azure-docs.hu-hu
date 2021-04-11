@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2020
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 20d9810ef5ff7380eb0df5df8a6720dcef71a6ad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0621788f50a07466861fbd87ede191f5ab688cd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105104794"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554704"
 ---
 A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltatók engedélyezettek:
 
@@ -62,7 +62,9 @@ A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltat�
 - Biztonsági kommunikáció RootCA1
 - Biztonsági kommunikáció RootCA2
 - Biztonsági kommunikáció RootCA3
+- SSL.com legfelső szintű hitelesítésszolgáltató – ECC
 - SSL.com legfelső szintű hitelesítésszolgáltató RSA
+- SSL.com EV legfelső szintű hitelesítésszolgáltatója – ECC
 - SSL.com EV gyökér-hitelesítésszolgáltató RSA R2
 - Staat der Nederlanden EV legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja
 - Symantec Class 3 EV SSL-CA – G3

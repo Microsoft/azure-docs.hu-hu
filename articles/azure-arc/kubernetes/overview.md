@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes áttekintését tartalmazza.
 keywords: Kubernetes, arc, Azure, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69e9886f214d0076c8e66231fd6ad15bb060828f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121592"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449647"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Mi az Azure Arc-kompatibilis Kubernetes?
 
@@ -43,9 +43,11 @@ Az Azure arc-kompatibilis Kubernetes a következő forgatókönyveket támogatja
 
 * Alkalmazások telepítése és konfiguráció alkalmazása a GitOps-alapú konfiguráció-kezelés használatával. 
 
-* Megtekintheti és figyelheti a fürtöket a tárolók Azure Monitor használatával. 
+* Megtekintheti és figyelheti a fürtöket a tárolók Azure Monitor használatával.
 
-* Házirendek alkalmazása a Kubernetes Azure Policy használatával. 
+* A fenyegetések elleni védelem kikényszeríthető az Azure Defender for Kubernetes használatával.
+
+* Házirendek alkalmazása a Kubernetes Azure Policy használatával.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

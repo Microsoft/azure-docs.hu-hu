@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 1c40102f8815cf7299a99d290b7f57b386ede401
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 37093900bf49e8a7613e2e3f4311548675791ceb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055127"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220883"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Letiltott Azure-előfizetés újraaktiválása
 
@@ -23,7 +23,7 @@ Előfordulhat, hogy egy Azure-előfizetése le lesz tiltva, ha lejárt a hitelk�
 
 ## <a name="your-credit-is-expired"></a>A kredit lejárt
 
-Ha regisztrál egy ingyenes Azure-fiókra, ingyenes próbaverziós előfizetést kap, amely 200 USD értékű Azure-kreditet biztosít a számlázási pénznemben 30 nap és 12 hónap ingyenes szolgáltatás esetén. A 30 nap letelte után az Azure letiltja az előfizetést. Az előfizetés letiltására azért van szükség, hogy Ön ne halmozzon fel véletlenül használati díjakat az előfizetéshez járó kreditek és ingyenes szolgáltatások keretein túlmenően. Az Azure-szolgáltatások további használatához [frissítenie kell az előfizetést](upgrade-azure-subscription.md). A frissítést követően 12 hónapig továbbra is hozzáférhet az ingyenes szolgáltatásokhoz. Csak az ingyenes szolgáltatás mennyiségére vonatkozó korlátozások után számítunk fel díjat.
+Ha regisztrál egy ingyenes Azure-fiókra, ingyenes próbaverziós előfizetést kap, amely 30 napig és 12 hónapig ingyenes szolgáltatásokat biztosít az Azure-kreditek USD200 a számlázási pénznemben. A 30 nap letelte után az Azure letiltja az előfizetést. Az előfizetés letiltására azért van szükség, hogy Ön ne halmozzon fel véletlenül használati díjakat az előfizetéshez járó kreditek és ingyenes szolgáltatások keretein túlmenően. Az Azure-szolgáltatások további használatához [frissítenie kell az előfizetést](upgrade-azure-subscription.md). A frissítést követően 12 hónapig továbbra is hozzáférhet az ingyenes szolgáltatásokhoz. Csak az ingyenes szolgáltatás mennyiségére vonatkozó korlátozások után számítunk fel díjat.
 
 ## <a name="you-reached-your-spending-limit"></a>Elérte a költségkeretét
 

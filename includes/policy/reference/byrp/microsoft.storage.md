@@ -2,21 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6602b3c51acfdab1fdeebd62187d58570d97a727
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 801983959558dfe702b6f1828e5fce3c9d2fd157
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031678"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095557"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure File Sync a magánhálózati hivatkozást kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |A megadott Storage Sync Service-erőforráshoz tartozó magánhálózati végpont létrehozása lehetővé teszi a Storage-szinkronizálási szolgáltatás erőforrásának a szervezet hálózatának magánhálózati IP-címén belüli, nem pedig az internetről elérhető nyilvános végponton keresztüli elérését. A privát végpontok önmagukban történő létrehozása nem tiltja le a nyilvános végpontot. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
 |[Azure File Sync konfigurálása magánhálózati végpontokkal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb35dddd9-daf7-423b-8375-5a5b86806d5a) |A rendszer egy privát végpontot telepít a jelzett Storage Sync Service-erőforráshoz. Ez lehetővé teszi, hogy a Storage Sync Service-erőforrást a szervezete hálózatának magánhálózati IP-címén belül, az internetről elérhető nyilvános végponton keresztül foglalkozzon. Egy vagy több magán-végpont létezése önmagában nem tiltja le a nyilvános végpontot. |DeployIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_DeployIfNotExists.json) |
-|[A Storage-fiókok diagnosztikai beállításainak konfigurálása Log Analytics munkaterületre](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6f8f98a4-f108-47cb-8e98-91a0d85cd474) |Központilag telepíti a Storage-fiókok diagnosztikai beállításait egy Log Analytics munkaterületre, ha bármely olyan Storage-fiók, amelyből hiányzik ez a diagnosztikai beállítás, létrejön vagy frissül. |DeployIfNotExists, letiltva |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/DataConnectorsStorageAccounts%20_PolicyAssignment.json) |
+|[A Storage-fiókok diagnosztikai beállításainak konfigurálása Log Analytics munkaterületre](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6f8f98a4-f108-47cb-8e98-91a0d85cd474) |Központilag telepíti a Storage-fiókok diagnosztikai beállításait egy Log Analytics munkaterületre, ha bármely olyan Storage-fiók, amelyből hiányzik ez a diagnosztikai beállítás, létrejön vagy frissül. |DeployIfNotExists, letiltva |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/DataConnectorsStorageAccounts%20_PolicyAssignment.json) |
 |[A Storage-fiók konfigurálása magánhálózati kapcsolat használatára](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9f766f00-8d11-464e-80e1-4091d7874074) |A privát végpontok a virtuális hálózatot az Azure-szolgáltatásokhoz a forráson vagy a célhelyen nem nyilvános IP-cím nélkül kötik össze. Ha privát végpontokat rendel a Storage-fiókhoz, csökkentheti az adatszivárgás kockázatait. További információ a privát hivatkozásokról: [https://aka.ms/azureprivatelinkoverview](https://aka.ms/azureprivatelinkoverview) |DeployIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountPrivateEndpointEnabled_DeployIfNotExists.json) |
 |[Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F361c2074-3595-4e5d-8cab-4f21dffc835c) |Ez a szabályzat lehetővé teszi a komplex veszélyforrások elleni védelmet a Storage-fiókokban. |DeployIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAdvancedThreatProtection_Deploy.json) |
 |[A Geo-redundáns tárterületet engedélyezni kell a Storage-fiókokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf045164-79ba-4215-8f95-f8048dc1780b) |A Geo-redundancia használata a kiválóan elérhető alkalmazások létrehozásához |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/GeoRedundant_StorageAccounts_Audit.json) |

@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc19d5652f416657cbcd339de61379265587b4e7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467017"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505382"
 ---
 # <a name="form-recognizer-layout-service"></a>Űrlap-felismerő elrendezési szolgáltatás
 
-Az Azure-űrlap felismerője szöveget, táblákat, kiválasztási jeleket és strukturált adatokat tud kinyerni a dokumentumokból az elrendezési szolgáltatás használatával. Az elrendezési API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a dokumentumokat, és a dokumentumok strukturált adatábrázolását adják vissza. A hatékony optikai karakterfelismerési [(OCR)](../computer-vision/concept-recognizing-text.md) képességeket kombinálja a mély tanulási modellel a szöveg, a táblák, a kiválasztási jelek és a dokumentum-struktúra kinyeréséhez. 
+Az Azure-űrlap felismerője szöveget, táblákat, kiválasztási jeleket és strukturált adatokat tud kinyerni a dokumentumokból az elrendezési szolgáltatás használatával. Az elrendezési API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a dokumentumokat, és a dokumentumok strukturált adatábrázolását adják vissza. A hatékony optikai karakterfelismerési [(OCR)](../computer-vision/overview-ocr.md) képességeket kombinálja a mély tanulási modellel a szöveg, a táblák, a kiválasztási jelek és a dokumentum-struktúra kinyeréséhez. 
 
 ## <a name="what-does-the-layout-service-do"></a>Mit tesz az elrendezési szolgáltatás?
 
@@ -32,7 +32,7 @@ A layout API Kinyeri a szöveg, a táblák, a kiválasztási jelek és a struktu
 Az űrlap-felismerő elrendezési szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
 
 > [!div class="nextstepaction"]
-> [Űrlap OCR test Tool eszköz (FOTT)](https://fott-preview.azurewebsites.net)
+> [Az űrlap-felismerő kipróbálása](https://fott-preview.azurewebsites.net)
 
 Az űrlap-felismerő elrendezési API kipróbálásához szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)) és egy [űrlap-felismerő erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) -végpontot és kulcsot. 
 
@@ -48,7 +48,7 @@ Először hívja meg az [elemzés elrendezése](https://westcentralus.dev.cognit
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
 
 ### <a name="natural-reading-order-output-latin-only"></a>Természetes olvasási sorrend kimenete (csak latin betűs)
 

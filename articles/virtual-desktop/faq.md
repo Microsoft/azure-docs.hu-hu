@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 1f5e4cb0d2db30c6b07370be137506f3fe26837f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582136"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505297"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
 
@@ -139,7 +139,7 @@ Végül, ha engedélyezte az erőforrás-szolgáltatót a CSP tulajdonosi fiókj
 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Milyen gyakran kell bekapcsolni a virtuális gépeket a regisztrációs problémák megelőzésére?
 
-Miután regisztrált egy virtuális gépet a Windows Virtual Desktop szolgáltatásban található gazdagép-készletbe, az ügynök rendszeresen frissíti a virtuális gép tokenjét, amikor a virtuális gép aktív. A regisztrációs jogkivonat tanúsítványa 90 napig érvényes. A 90 napos korlát miatt javasoljuk, hogy a virtuális gépeket minden 90 nap alatt indítsa el. A virtuális gép ezen időtartamon belüli bekapcsolásával megakadályozhatja a regisztrációs token lejáratát vagy érvénytelenné válását. Ha 90 nap elteltével kezdte meg a virtuális gépet, és regisztrációs problémákat tapasztal, kövesse a [Windows rendszerű virtuális asztali ügynök hibaelhárítási útmutatójának](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) utasításait a virtuális gép a gazdagépről való eltávolításához, telepítse újra az ügynököt, és regisztrálja újra a készletbe.
+Miután regisztrált egy virtuális gépet a Windows Virtual Desktop szolgáltatásban található gazdagép-készletbe, az ügynök rendszeresen frissíti a virtuális gép tokenjét, amikor a virtuális gép aktív. A regisztrációs jogkivonat tanúsítványa 90 napig érvényes. Ezen 90 napos korlát miatt a virtuális gépek 20 90 percen belül online állapotba kell esniük, hogy a gép frissítse a jogkivonatait, és frissítse az ügynököt és a párhuzamos stack-összetevőket. A virtuális gép ezen időtartamon belüli bekapcsolásával megakadályozhatja a regisztrációs token lejáratát vagy érvénytelenné válását. Ha 90 nap elteltével kezdte meg a virtuális gépet, és regisztrációs problémákat tapasztal, kövesse a [Windows rendszerű virtuális asztali ügynök hibaelhárítási útmutatójának](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) utasításait a virtuális gép a gazdagépről való eltávolításához, telepítse újra az ügynököt, és regisztrálja újra a készletbe.
 
 ## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Megadhatok rendelkezésre állási beállításokat a gazdagépek létrehozásakor?
 

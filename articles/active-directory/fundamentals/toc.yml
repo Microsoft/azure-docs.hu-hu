@@ -25,6 +25,8 @@
   items:
     - name: Biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: A Microsoft 365 védelme a helyszíni támadások ellen
           href: protect-m365-from-on-premises-attacks.md
         - name: Biztonságos külső együttműködés

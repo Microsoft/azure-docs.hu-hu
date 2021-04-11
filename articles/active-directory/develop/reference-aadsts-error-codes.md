@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578498"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283813"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -60,7 +60,7 @@ Itt látható egy példa a hibaüzenetre:
 
 A `error` mezőnek több lehetséges értéke van – tekintse át a protokoll dokumentációs hivatkozásait és a OAuth 2,0 specifikációkat, hogy többet tudjon meg az adott hibákról (például `authorization_pending` az [eszköz kódjának folyamatában](v2-oauth2-device-code.md)), és hogyan reagáljon rájuk.  Néhány gyakori érték itt látható:
 
-| Hibakód         | Leírás        | Ügyfél művelete    |
+| Hibakód         | Description        | Ügyfél művelete    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki és küldje el újra a kérelmet.|
 | `invalid_grant`    | Bizonyos hitelesítési anyagok (Auth-kód, frissítési token, hozzáférési jogkivonat, PKCE Challenge) érvénytelenek voltak, nem elemezhető, hiányzik vagy egyéb módon használhatatlan | Új engedélyezési kód beszerzéséhez próbáljon ki egy új kérelmet a `/authorize` végponthoz.  Érdemes áttekinteni és érvényesíteni az alkalmazás által használt protokollokat. |
@@ -123,7 +123,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS50055 | InvalidPasswordExpiredPassword – a jelszó lejárt. |
 | AADSTS50056 | Érvénytelen vagy Null jelszó-a jelszó nem létezik a tárolóban ehhez a felhasználóhoz. |
 | AADSTS50057 | UserDisabled – a felhasználói fiók le van tiltva. Egy rendszergazda letiltotta a fiókot. |
-| AADSTS50058 | UserInformationNotProvided – ez azt jelenti, hogy a felhasználó nincs bejelentkezve. Ez egy gyakori hiba, amely akkor várható, ha egy felhasználó nem hitelesített, és még nincs bejelentkezve.</br>Ha ezt a hibát egy olyan SSO-környezet javasolja, amelyben a felhasználó korábban bejelentkezett, ez azt jelenti, hogy az SSO-munkamenet nem található vagy érvénytelen.</br>Ezt a hibát akkor lehet visszaadni az alkalmazásnak, ha a prompt = none érték van megadva. |
+| AADSTS50058 | UserInformationNotProvided – ez azt jelenti, hogy a felhasználó nincs bejelentkezve. Ez egy gyakori hiba, amely akkor várható, ha egy felhasználó nem hitelesített, és még nincs bejelentkezve.</br>Ha ez a hiba olyan SSO-környezetben fordul elő, amelyben a felhasználó korábban bejelentkezett, ez azt jelenti, hogy az SSO-munkamenet nem található vagy érvénytelen.</br>Ezt a hibát akkor lehet visszaadni az alkalmazásnak, ha a prompt = none érték van megadva. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided – a bérlők azonosítására szolgáló információ nem található a kérelemben vagy a megadott hitelesítő adatokban. A felhasználó felveheti a kapcsolatot a bérlő rendszergazdájával a probléma megoldásához. |
 | AADSTS50061 | SignoutInvalidRequest – a kijelentkezési kérelem érvénytelen. |
 | AADSTS50064 | CredentialAuthenticationError – a Felhasználónév vagy jelszó hitelesítő adatainak érvényesítése sikertelen volt. |

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168212"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505025"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>A Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása
 
@@ -216,7 +216,7 @@ A probléma megoldása:
 
 ## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Hiba: a szívveréssel kapcsolatos probléma, hogy a felhasználók megszakítják a munkamenet-gazdagépek leválasztását
 
-Ha a kiszolgáló nem vesz fel szívverést a Windows rendszerű virtuális asztali szolgáltatásból, módosítania kell a szívverés küszöbértékét. Kövesse az ebben a szakaszban található utasításokat, ha az alábbi esetek közül egy vagy több vonatkozik Önre:
+Ha a kiszolgáló nem vesz fel szívverést a Windows rendszerű virtuális asztali szolgáltatásból, módosítania kell a szívverés küszöbértékét. Ez átmenetileg csökkenti a probléma tüneteit, de nem oldja meg az alapul szolgáló hálózati problémát. Kövesse az ebben a szakaszban található utasításokat, ha az alábbi esetek közül egy vagy több vonatkozik Önre:
 
 - **CheckSessionHostDomainIsReachableAsync** -hibát kapott
 - **ConnectionBrokenMissedHeartbeatThresholdExceeded** -hibát kapott
@@ -316,7 +316,7 @@ A probléma megoldása:
 
 Ha nem találja a problémát ebben a cikkben, vagy az utasítások nem segítenek, javasoljuk, hogy távolítsa el, telepítse újra, majd regisztrálja újra a Windows rendszerű virtuális asztali ügynököt. Az ebben a szakaszban található utasítások azt mutatják be, hogyan lehet újra regisztrálni a virtuális GÉPET a Windows rendszerű virtuális asztali szolgáltatásba az összes ügynök, rendszerindító betöltő és verem-összetevő eltávolításával, a munkamenet-gazdagép a gazdagépről való eltávolításával, a virtuális gép új regisztrációs kulcsának létrehozásával, valamint az ügynök és a rendszerindító betöltő újratelepítésével. Ha az alábbi esetek közül egy vagy több vonatkozik Önre, kövesse az alábbi utasításokat:
 - A virtuális gép **frissítése** vagy nem **érhető** el
-- A verem-figyelő nem működik, és Windows 10 1809, 1903 vagy 1904 rendszeren fut
+- A verem-figyelő nem működik, és Windows 10 1809, 1903 vagy 1909 rendszeren fut
 - **EXPIRED_REGISTRATION_TOKEN** hibaüzenetet kap
 - Nem jelenik meg a virtuális gépek listája a munkamenet-gazdagépek listáján
 - Nem látja a **Távoli asztal ügynök betöltőjét** a szolgáltatások ablakban

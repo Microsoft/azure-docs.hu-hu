@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció konfigurálásához
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, arc, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df9b40764ec463553659803749f282bbc4587bde
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121405"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449543"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Helm-diagramok üzembe helyezése GitOps használatával egy arc-kompatibilis Kubernetes-fürtön
 
@@ -21,9 +21,17 @@ A Helm egy nyílt forráskódú csomagoló eszköz, amely a Kubernetes-alkalmaz�
 
 Ez a cikk bemutatja, hogyan konfigurálhatja és használhatja a Helm-t az Azure arc-kompatibilis Kubernetes.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
-Ellenőrizze, hogy rendelkezik-e meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürttel. Ha csatlakoztatott fürtre van szüksége, tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt csatlakoztatása](./quickstart-connect-cluster.md)című rövid útmutatót.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Egy meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürt.
+    - Ha még nem csatlakoztatta a fürtöt, tekintse meg a [Connect an Azure arc enabled Kubernetes-fürt](quickstart-connect-cluster.md)gyors üzembe helyezését ismertető útmutatót.
+- A szolgáltatás előnyeinek és architektúrájának megismerése. További információk: [konfigurációk és GitOps – Azure arc-kompatibilis Kubernetes-cikk](conceptual-configurations.md).
+- Telepítse az `k8s-configuration` Azure CLI-bővítményt >= 1.0.0 verzióra:
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>A GitOps és a Helm használatának áttekintése az Azure arc-kompatibilis Kubernetes
 
