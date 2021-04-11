@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100617558"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>E-mailek és webhookok riasztási értesítéseinek küldése a Azure Monitorban az autoskálázási műveletek használatával
@@ -56,7 +56,7 @@ A REST API vagy Resource Manager-sablon használatakor a következő beállítá
     ]
 ```
 
-| Mező | Kötelező? | Description |
+| Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | művelet |igen |az értéknek "Scale" értékűnek kell lennie |
 | sendToSubscriptionAdministrator |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
@@ -99,7 +99,7 @@ Az autoskálázási értesítés létrehozásakor a webhook hasznos adatai a kö
 ```
 
 
-| Mező | Kötelező? | Description |
+| Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az az állapot, amely azt jelzi, hogy egy autoskálázási művelet létrejött |
 | művelet |igen |A példányok növekedése a "vertikális felskálázás", a példányok csökkenése pedig a "skálázás" lesz. |

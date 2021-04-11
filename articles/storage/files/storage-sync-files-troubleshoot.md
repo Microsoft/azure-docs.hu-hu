@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491299"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727603"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -373,7 +373,7 @@ Az alábbi táblázat tartalmazza az összes Unicode-karaktert, Azure File Sync 
 ### <a name="common-sync-errors"></a>Gyakori szinkronizálási hibák
 <a id="-2147023673"></a>**A szinkronizálási munkamenet meg lett szakítva.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (decimális)** | – 2147023673 | 
@@ -384,7 +384,7 @@ A szinkronizálási munkamenetek különböző okok miatt sikertelenek lehetnek,
 
 <a id="-2147012889"></a>**Nem hozhatók összefüggésbe a szolgáltatással létesített kapcsolatok.**    
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80072ee7 |
 | **HRESULT (decimális)** | – 2147012889 | 
@@ -395,7 +395,7 @@ A szinkronizálási munkamenetek különböző okok miatt sikertelenek lehetnek,
 
 <a id="-2134376372"></a>**A szolgáltatás szabályozza a felhasználói kérelmet.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (decimális)** | – 2134376372 |
@@ -406,7 +406,7 @@ Nincs szükség beavatkozásra; a kiszolgáló megkísérli újra. Ha a hiba tö
 
 <a id="-2134364043"></a>**A szinkronizálás le van tiltva, amíg a változások észlelése befejeződött a visszaállítás után.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (decimális)** | – 2134364043 |
@@ -417,7 +417,7 @@ Semmit nem kell tenni. Ha egy fájl-vagy fájlmegosztás (Felhőbeli végpont) A
 
 <a id="-2147216747"></a>**A szinkronizálás nem sikerült, mert a szinkronizálási adatbázis el lett távolítva.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80041295 |
 | **HRESULT (decimális)** | – 2147216747 |
@@ -428,7 +428,7 @@ Ez a hiba általában akkor fordul elő, amikor egy biztonsági mentési alkalma
 
 <a id="-2134364065"></a>**A szinkronizálás nem fér hozzá a Felhőbeli végponton megadott Azure-fájlmegosztás eléréséhez.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (decimális)** | – 2134364065 |
@@ -444,7 +444,7 @@ Ez a hiba azért fordul elő, mert az Azure File Sync-ügynök nem fér hozzá a
 
 <a id="-2134351804"></a>**A szinkronizálás nem sikerült, mert a kérelem nem jogosult a művelet végrehajtására.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c86044 |
 | **HRESULT (decimális)** | – 2134351804 |
@@ -460,7 +460,7 @@ Ez a hiba azért fordul elő, mert a Azure File Sync ügynöknek nincs engedély
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**A használt Storage-fiók neve nem oldható fel.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (decimális)** | – 2134364064 |
@@ -477,7 +477,7 @@ Ez a hiba azért fordul elő, mert a Azure File Sync ügynöknek nincs engedély
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**Ismeretlen hiba történt a Storage-fiók elérésekor.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8308a |
 | **HRESULT (decimális)** | – 2134364022 |
@@ -489,7 +489,7 @@ Ez a hiba azért fordul elő, mert a Azure File Sync ügynöknek nincs engedély
 
 <a id="-2134364014"></a>**A szinkronizálás nem sikerült, mert a Storage-fiók zárolva van.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83092 |
 | **HRESULT (decimális)** | – 2134364014 |
@@ -500,7 +500,7 @@ Ez a hiba azért fordul elő, mert a Storage-fiók csak olvasható [erőforrás-
 
 <a id="-1906441138"></a>**A szinkronizálás nem sikerült, mert a szinkronizálási adatbázissal kapcsolatos probléma merült fel.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT (decimális)** | – 1906441138 |
@@ -511,7 +511,7 @@ Ez a hiba akkor fordul elő, ha a Azure File Sync által használt belső adatb�
 
 <a id="-2134364053"></a>**A kiszolgálón telepített Azure File Sync ügynök verziója nem támogatott.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (decimális)** | – 2134364053 |
@@ -522,7 +522,7 @@ Ez a hiba akkor fordul elő, ha az Azure File Sync-ügynök kiszolgálóra telep
 
 <a id="-2134351810"></a>**Elérte az Azure fájlmegosztás tárolási korlátját.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (decimális)** | – 2134351810 |
@@ -548,7 +548,7 @@ Ha a megosztás megtelt, és nincs megadva kvóta, a probléma megoldásának eg
 
 <a id="-2134351824"></a>**Az Azure-fájlmegosztás nem található.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (decimális)** | – 2134351824 |
@@ -564,7 +564,7 @@ Ha az Azure-fájlmegosztás törölve lett, létre kell hoznia egy új fájlmego
 
 <a id="-2134364042"></a>**A szinkronizálás szünetel, miközben az Azure-előfizetés fel van függesztve.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (decimális)** | – 2134364042 |
@@ -575,7 +575,7 @@ Ez a hiba akkor fordul elő, ha az Azure-előfizetés fel van függesztve. A szi
 
 <a id="-2134375618"></a>**A Storage-fiókhoz tűzfal vagy virtuális hálózat van konfigurálva.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8033e |
 | **HRESULT (decimális)** | – 2134375618 |
@@ -586,7 +586,7 @@ Ez a hiba akkor fordul elő, ha az Azure-fájlmegosztás nem érhető el egy tá
 
 <a id="-2134375911"></a>**A szinkronizálás nem sikerült, mert a szinkronizálási adatbázissal kapcsolatos probléma merült fel.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (decimális)** | – 2134375911 |
@@ -602,7 +602,7 @@ Ha a hiba hosszabb ideig továbbra is fennáll, hozzon létre egy támogatási k
 
 <a id="-2146762487"></a>**A kiszolgáló nem tudott biztonságos kapcsolatot létesíteni. A felhőalapú szolgáltatás nem várt tanúsítványt kapott.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (decimális)** | – 2146762487 |
@@ -627,7 +627,7 @@ A beállításazonosító beállításával a Azure File Sync ügynök elfogad m
 
 <a id="-2147012894"></a>**Nem hozhatók összefüggésbe a szolgáltatással létesített kapcsolatok.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT (decimális)** | – 2147012894 |
@@ -638,7 +638,7 @@ A beállításazonosító beállításával a Azure File Sync ügynök elfogad m
 
 <a id="-2134375680"></a>**A szinkronizálás egy hitelesítéssel kapcsolatos probléma miatt nem sikerült.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c80300 |
 | **HRESULT (decimális)** | – 2134375680 |
@@ -649,7 +649,7 @@ Ez a hiba általában azért fordul elő, mert a kiszolgáló ideje helytelen. H
 
 <a id="-2134364040"></a>**A szinkronizálás a tanúsítvány lejárata miatt nem sikerült.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83078 |
 | **HRESULT (decimális)** | – 2134364040 |
@@ -673,7 +673,7 @@ Ha az ügyfél-hitelesítési tanúsítvány lejárt, a probléma megoldásához
 
 <a id="-2134375896"></a>**A szinkronizálás nem sikerült, mert a hitelesítési tanúsítvány nem található.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c80228 |
 | **HRESULT (decimális)** | – 2134375896 |
@@ -693,7 +693,7 @@ A probléma megoldásához végezze el az alábbi lépéseket:
 
 <a id="-2134364039"></a>**A szinkronizálás nem sikerült, mert a hitelesítési identitás nem található.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83079 |
 | **HRESULT (decimális)** | – 2134364039 |
@@ -704,14 +704,14 @@ Ez a hiba azért fordul elő, mert a kiszolgálói végpont törlése sikertelen
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Az a kötet, amelyben a kiszolgálói végpont található, kevés a szabad lemezterület.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT (decimális)** | – 1906441711 |
 | **Hibasztring** | JET_errLogDiskFull |
 | **Szervizelés szükséges** | Yes |
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (decimális)** | – 2134375654 |
@@ -722,7 +722,7 @@ Ez a hiba akkor következik be, ha a kötet megtelt. Ez a hiba általában azér
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**A szolgáltatás még nem áll készen az ezzel a kiszolgálói végponttal való szinkronizálásra.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (decimális)** | – 2134364145 |
@@ -733,21 +733,21 @@ Ez a hiba azért fordul elő, mert a Felhőbeli végpont az Azure-fájlmegosztá
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**A szinkronizálás nem sikerült, mert számos egyéni fájllal kapcsolatos probléma merült fel.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (decimális)** | – 2134375877 |
 | **Hibasztring** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Szervizelés szükséges** | Yes |
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (decimális)** | – 2134375908 |
 | **Hibasztring** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Szervizelés szükséges** | Yes |
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (decimális)** | – 2134375853 |
@@ -761,7 +761,7 @@ A szinkronizálási munkamenetek a hibák egyikével meghiúsulnak, ha sok olyan
 
 <a id="-2134376423"></a>**A szinkronizálás nem sikerült, mert hiba történt a kiszolgálói végpont elérési útján.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (decimális)** | – 2134376423 |
@@ -772,7 +772,7 @@ Győződjön meg arról, hogy az elérési út létezik, helyi NTFS-köteten tal
 
 <a id="-2134375817"></a>**A szinkronizálás nem sikerült, mert a szűrő illesztőprogramjának verziója nem kompatibilis az ügynök verziójával**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80C80277 |
 | **HRESULT (decimális)** | – 2134375817 |
@@ -783,7 +783,7 @@ Ez a hiba akkor fordul elő, ha a felhőbeli rétegzési szűrő illesztőprogra
 
 <a id="-2134376373"></a>**A szolgáltatás jelenleg nem érhető el.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (decimális)** | – 2134376373 |
@@ -794,7 +794,7 @@ Ez a hiba azért következik be, mert az Azure File Sync szolgáltatás nem érh
 
 <a id="-2146233088"></a>**Kivétel miatt nem sikerült a szinkronizálás.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80131500 |
 | **HRESULT (decimális)** | – 2146233088 |
@@ -805,7 +805,7 @@ Ez a hiba akkor fordul elő, ha a szinkronizálás kivétel miatt meghiúsult. H
 
 <a id="-2134364045"></a>**A szinkronizálás nem sikerült, mert a Storage-fiók feladatátvétele egy másik régióba történt.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83073 |
 | **HRESULT (decimális)** | – 2134364045 |
@@ -816,7 +816,7 @@ Ez a hiba azért következik be, mert a tárfiók átadta a feladatait egy mási
 
 <a id="-2134375922"></a>**A szinkronizálás nem sikerült, mert átmeneti probléma történt a szinkronizálási adatbázissal.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (decimális)** | – 2134375922 |
@@ -827,7 +827,7 @@ Ez a hiba a szinkronizálási adatbázis belső hibája miatt következik be. A 
 
 <a id="-2134364024"></a>**A szinkronizálás a Azure Active Directory bérlő változása miatt nem sikerült**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83088 |
 | **HRESULT (decimális)** | – 2134364024 | 
@@ -840,7 +840,7 @@ Ha már rendelkezik az ügynök legújabb verziójával, meg kell adnia a Micros
 
 <a id="-2134364010"></a>**A szinkronizálás nem sikerült, mert a tűzfal és a virtuális hálózati kivétel nincs konfigurálva**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83096 |
 | **HRESULT (decimális)** | – 2134364010 | 
@@ -851,7 +851,7 @@ Ez a hiba akkor fordul elő, ha a tűzfal és a virtuális hálózat beállítá
 
 <a id="-2147024891"></a>**A szinkronizálás nem sikerült, mert a rendszerkötet-információs mappa engedélyei helytelenek.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80070005 |
 | **HRESULT (decimális)** | – 2147024891 |
@@ -870,7 +870,7 @@ A probléma megoldásához végezze el az alábbi lépéseket:
 
 <a id="-2134375810"></a>**A szinkronizálás nem sikerült, mert az Azure-fájlmegosztás törölve lett, és újra lett létrehozva.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8027e |
 | **HRESULT (decimális)** | – 2134375810 |
@@ -889,7 +889,7 @@ A probléma megoldásához törölje és hozza újból létre a szinkronizálás
 
 <a id="-2145844941"></a>**A szinkronizálás nem sikerült, mert a HTTP-kérelem át lett irányítva**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80190133 |
 | **HRESULT (decimális)** | – 2145844941 |
@@ -900,7 +900,7 @@ Ez a hiba azért fordul elő, mert Azure File Sync nem támogatja a HTTP-átirá
 
 <a id="-2134364027"></a>**Időtúllépés történt az offline adatátvitel során, de még folyamatban van.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (decimális)** | – 2134364027 |
@@ -911,7 +911,7 @@ Ez a hiba akkor fordul elő, ha egy adatfeldolgozási művelet túllépi az idő
 
 <a id="-2134375814"></a>**A szinkronizálás nem sikerült, mert a kiszolgálói végpont elérési útja nem található a kiszolgálón.**  
 
-| | |
+| Hiba | Code |
 |-|-|
 | **HRESULT** | 0x80c8027a |
 | **HRESULT (decimális)** | – 2134375814 |

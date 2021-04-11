@@ -4,10 +4,10 @@ description: Ez a dokumentum azt ismerteti, hogyan hozhat létre egy Azure-függ
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589936"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
@@ -46,7 +46,7 @@ Másolja az alábbi kódot a Run. CSX fájlba (Ezzel felülírja a már meglév�
 > A használni kívánt végpont címe: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Kivéve, ha az erőforrás olyan régióban található, mint Azure Government vagy az Azure China, ahol ebben az esetben az [alapértelmezett végpontok felülbírálásával](./custom-endpoints.md#regions-that-require-endpoint-modification) és a régió megfelelő telemetria-csatornájának végpontjának megadásával foglalkozó cikkben tájékozódhat.
 
 ```C#
-#load "runAvailabilityTest.csx"
+#load "runAvailabilityTest.csx&quot;
  
 using System;
 using System.Diagnostics;
@@ -57,7 +57,7 @@ using Microsoft.ApplicationInsights.Extensibility;
  
 // The Application Insights Instrumentation Key can be changed by going to the overview page of your Function App, selecting configuration, and changing the value of the APPINSIGHTS_INSTRUMENTATIONKEY Application setting.
 // DO NOT replace the code below with your instrumentation key, the key's value is pulled from the environment variable/application setting key/value pair.
-private static readonly string instrumentationKey = Environment.GetEnvironmentVariable("APPINSIGHTS_INSTRUMENTATIONKEY");
+private static readonly string instrumentationKey = Environment.GetEnvironmentVariable(&quot;APPINSIGHTS_INSTRUMENTATIONKEY");
  
 //[CONFIGURATION_REQUIRED]
 // If your resource is in a region like Azure Government or Azure China, change the endpoint address accordingly.

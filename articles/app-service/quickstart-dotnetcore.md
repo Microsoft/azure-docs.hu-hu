@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
 ms.openlocfilehash: 77e0768a617ef79ab8510f88bfdcd41d5647f9bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701637"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
@@ -111,7 +111,7 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
 1. A **üzemeltetési tervben: hozzon létre új** párbeszédpanelt, és adja meg a következő táblázatban megadott értékeket:
 
-   | Beállítás  | Ajánlott érték | Description |
+   | Beállítás  | Ajánlott érték | Leírás |
    | -------- | --------------- | ----------- |
    | **Szolgáltatási csomag**  | *myFirstAzureWebAppPlan* | Az App Service-csomag neve. |
    | **Hely**      | *Nyugat-Európa* | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
@@ -315,12 +315,12 @@ A .NET Core mintakód App Service Linux rendszeren fut, beépített képpel.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
-## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
+## <a name="update-and-redeploy-the-code&quot;></a>A kód frissítése és ismételt üzembe helyezése
 
 A helyi könyvtárban nyissa meg a _Startup.cs_ fájlt. Végezzen el egy kis módosítást a `context.Response.WriteAsync` metódushívás szövegében:
 
 ```csharp
-await context.Response.WriteAsync("Hello Azure!");
+await context.Response.WriteAsync(&quot;Hello Azure!");
 ```
 
 Mentse a módosításokat, majd telepítse újra az alkalmazást a `az webapp up` parancs használatával:

@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 5852899175f9cc9f2725b875c6e1ce9fd682768d
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625264"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106653"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis erőforrásainak skálázása az Azure SQL Database-ben
 
@@ -62,9 +62,6 @@ A szolgáltatási réteg módosításának becsült késése, az önálló adatb
 >
 > Annak megállapításához, hogy egy adatbázis PFS-tárolót használ-e, hajtsa végre a következő lekérdezést az adatbázis környezetében. Ha a AccountType oszlop értéke `PremiumFileStorage` vagy `PremiumFileStorage-ZRS` , az adatbázis PFS-tárolót használ.
 
-[!NOTE]
- A zóna redundáns tulajdonsága alapértelmezés szerint változatlan marad a üzletileg kritikus általános célú szintjére való skálázáskor. A visszalépés késése, ha a zóna-redundancia engedélyezve van, és a általános célúi szinten a zóna redundanciára való áttérés késése az adatbázis méretétől függ.
-
 ```sql
 SELECT s.file_id,
        s.type_desc,
@@ -73,6 +70,9 @@ SELECT s.file_id,
 FROM sys.database_files AS s
 WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
+
+> [!NOTE]
+> A zóna redundáns tulajdonsága alapértelmezés szerint változatlan marad a üzletileg kritikus általános célú szintjére való skálázáskor. A visszalépés késése, ha a zóna-redundancia engedélyezve van, és a általános célúi szinten a zóna redundanciára való áttérés késése az adatbázis méretétől függ.
 
 > [!TIP]
 > A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).

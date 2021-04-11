@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/3/2021
+ms.date: 3/26/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5549fc3b63b76c6158ae7399e6d94a43d2d4f28f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a794274248a12af97174dcc4e86bd4231e9d9dda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435188"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727484"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -25,6 +25,7 @@ A következő Azure File Sync-ügynök verziói támogatottak:
 
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
+| V12-es kiadás – [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | Március 26., 2021 | Támogatott – Berepülés |
 | V 11,2 kiadás – [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021. február 2. | Támogatott |
 | V 11.1 kiadás – [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | November 4., 2020 | Támogatott |
 | V 10.1 kiadás – [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott – az ügynök verziószáma 2021. június 7-én lejár |
@@ -48,13 +49,98 @@ A következő Azure File Sync ügynök verziói lejártak, és már nem támogat
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-12000"></a>Ügynök verziója 12.0.0.0
+A következő kibocsátási megjegyzések a Azure File Sync-ügynök verziójának 12.0.0.0 vonatkoznak (2021. március 26.).
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Javított javítás és problémák
+- Új portál a hálózati hozzáférési házirend és a magánhálózati végponti kapcsolatok konfigurálásához
+    - Mostantól a portál használatával letilthatja a Storage Sync szolgáltatás nyilvános végpontjának elérését, valamint a privát végpontok kapcsolatainak jóváhagyását, elutasítását és eltávolítását. A hálózati hozzáférési házirend és a magánhálózati végpont kapcsolatainak konfigurálásához nyissa meg a Storage Sync szolgáltatás portált, lépjen a beállítások szakaszra, és kattintson a hálózat lehetőségre.
+ 
+- A felhő-rétegek támogatása a 64KiB nagyobb méretű kötetek esetében
+    - A felhő-rétegek mostantól támogatják a 2MiB a 2019-es kiszolgálón. További információ: [Mi a fájl minimális mérete a szinthez?](https://docs.microsoft.com/azure/storage/files/storage-sync-choose-cloud-tiering-policies#minimum-file-size-for-a-file-to-tier)
+ 
+- Sávszélesség és késés mérése Azure File Sync szolgáltatás-és Storage-fiókhoz
+    - A Test-StorageSyncNetworkConnectivity parancsmag mostantól felhasználható a késés és a sávszélesség mérésére a Azure File Sync szolgáltatás és a Storage-fiók számára. A Azure File Sync szolgáltatás és a Storage-fiók késését a rendszer alapértelmezés szerint a parancsmag futtatásakor méri.  A "-MeasureBandwidth" paraméter használatakor a rendszer a Storage-fiók sávszélességének feltöltését és letöltését méri.
+ 
+        Ha például a sávszélességet és a késést szeretné mérni a Azure File Sync szolgáltatás és a Storage-fiók számára, futtassa a következő PowerShell-parancsokat:
+ 
+        ```powershell
+        Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+        Test-StorageSyncNetworkConnectivity -MeasureBandwidth 
+        ``` 
+ 
+- Továbbfejlesztett hibaüzenetek a portálon, ha a kiszolgálói végpont létrehozása meghiúsul
+    - Meghallottuk visszajelzését, és javítottuk a hibaüzeneteket és útmutatást, amikor a kiszolgálói végpont létrehozása meghiúsul.
+ 
+- A teljesítmény és a megbízhatóság különféle fejlesztése
+    - Továbbfejlesztett változás-észlelési teljesítmény az Azure-fájlmegosztás által módosított fájlok észlelése érdekében.
+    - Teljesítménybeli tökéletesítések az egyeztetések szinkronizálási munkameneteihez. 
+    - A ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED és az ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED hibák csökkentése érdekében a szinkronizálási javításokat.
+    - A fájlok sikertelenek lehetnek a 2019-es kiszolgálón, ha az deduplikálás engedélyezve van a köteten.
+    - A AFSDiag nem tudja tömöríteni a fájlokat, ha a fájl nagyobb, mint a 2GiB.
+
+### <a name="evaluation-tool"></a>Kiértékelési eszköz
+Azure File Sync telepítése előtt ki kell értékelnie, hogy kompatibilis-e a rendszerrel a Azure File Sync próbaverziós eszköz használatával. Ez az eszköz egy Azure PowerShell parancsmag, amely a fájlrendszer és az adatkészlet esetleges problémáit ellenőrzi, például a nem támogatott karaktereket vagy az operációs rendszer nem támogatott verzióját. A telepítési és használati utasításokért tekintse meg a tervezési útmutató [kiértékelési eszköz](./storage-sync-files-planning.md#evaluation-cmdlet) című szakaszát. 
+
+### <a name="agent-installation-and-server-configuration"></a>Az ügynök telepítése és a kiszolgáló konfigurálása
+A Azure File Sync ügynök Windows Serverrel való telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Azure file Sync központi telepítés tervezése](storage-sync-files-planning.md) és a [Azure file Sync üzembe helyezése](storage-sync-files-deployment-guide.md).
+
+- A meglévő Azure File Sync ügynök telepítésével rendelkező kiszolgálókhoz újraindításra van szükség.
+- Az ügynök telepítési csomagját emelt szintű (rendszergazdai) engedélyekkel kell telepíteni.
+- Az ügynök nem támogatott a nano Server-telepítés esetén.
+- Az ügynök csak a Windows Server 2019, a Windows Server 2016 és a Windows Server 2012 R2 rendszeren támogatott.
+- Az ügynök legalább 2 GiB memóriát igényel. Ha a kiszolgáló olyan virtuális gépen fut, amelyen engedélyezve van a dinamikus memória, a virtuális gépet legalább 2048 MiB memóriával kell konfigurálni. További információért lásd: [ajánlott rendszererőforrások](./storage-sync-files-planning.md#recommended-system-resources) .
+- A Storage Sync Agent (FileSyncSvc) szolgáltatás nem támogatja az olyan köteteken található kiszolgálói végpontokat, amelyeken a rendszerkötet információi (SVI) könyvtára tömörítve van. Ez a konfiguráció nem várt eredményeket fog eredményezni.
+
+### <a name="interoperability"></a>Együttműködési lehetőség
+- A víruskeresők, a biztonsági mentést készítő és a rétegzett fájlokhoz hozzáférő más alkalmazások nem kívánt újrahívást okozhatnak, ha nem veszik figyelembe az offline attribútumot, és nem mellőzik ezen fájlok tartalmának olvasását. További információ: [Azure file Sync hibáinak megoldása](storage-sync-files-troubleshoot.md).
+- A Fájlkiszolgálói erőforrás-kezelő (FSRM) fájlszűrők végtelen szinkronizálási hibákat okozhatnak, ha a fájlok a fájl képernyője miatt le vannak tiltva.
+- A Sysprep futtatása olyan kiszolgálón, amelyen a Azure File Sync ügynök telepítve van, és nem várt eredményekhez vezethet. A Azure File Sync-ügynököt telepíteni kell a kiszolgálói lemezkép telepítése és a Sysprep minitelepítés befejezése után.
+
+### <a name="sync-limitations"></a>A szinkronizálás korlátozásai
+A következő elemek nem szinkronizálhatók, de a rendszer többi része továbbra is a szokott módon működik:
+- Nem támogatott karaktereket tartalmazó fájlok. A nem támogatott karakterek listáját a [hibaelhárítási útmutatóban](storage-sync-files-troubleshoot.md#handling-unsupported-characters) találja.
+- Egy ponttal lezáró fájlok vagy könyvtárak.
+- A 2048 karakternél hosszabb elérési utak.
+- Biztonsági leíró naplózáshoz használt rendszerhozzáférés-vezérlési lista (SACL) része.
+- Kiterjesztett attribútumok.
+- Alternatív adatstreamek.
+- Újraelemzési pontok.
+- Rögzített hivatkozások.
+- A tömörítés (ha kiszolgálófájlon van beállítva) nem marad meg, amikor a módosításokat erre a fájlra szinkronizálja más végpontokból.
+- Az EFS (vagy más felhasználói módú) titkosítással titkosított összes fájl, amely meggátolja, hogy a szolgáltatás beolvassa az adatokat.
+
+    > [!Note]  
+    > Az Azure File Sync mindig titkosítja az átvitt adatokat. Az adatok inaktív állapotban is mindig titkosítva vannak az Azure-ban.
+ 
+### <a name="server-endpoint"></a>Kiszolgálói végpont
+- Kiszolgálóvégpontok csak NTFS-köteteken hozhatók létre. Az ReFS, FAT, FAT32 és más fájlrendszereket az Azure File Sync jelenleg nem támogatja.
+- A felhőbeli rétegezésen a rendszerköteten nem támogatott. Egy kiszolgálóvégpont létrehozásához a rendszerköteten tiltsa le a felhőbeli rétegezést a kiszolgálóvégpont létrehozásakor.
+- A feladatátvételi fürtszolgáltatás csak fürtözött lemezekkel támogatott, megosztott fürtkötetekkel (CSV-kkel) nem.
+- A kiszolgálóvégpontok nem ágyazhatók be. Ugyanazon a köteten azonban szerepelhetnek egymás mellett.
+- Ne tároljon operációs rendszer vagy alkalmazás lapozófájlját a kiszolgálói végpontok helyén.
+- A kiszolgáló neve nem frissül a portálon, ha a kiszolgáló át lett nevezve.
+
+### <a name="cloud-endpoint"></a>Felhőbeli végpont
+- Azure File Sync támogatja az Azure-fájlmegosztás közvetlen módosítását. Az Azure-fájlmegosztást érintő módosításokat azonban először egy Azure File Sync változás-észlelési feladatokkal kell felderíteni. A rendszer 24 óránként egyszer egy változás-észlelési feladatot kezdeményez a Felhőbeli végpontok számára. Az Azure-fájlmegosztás által módosított fájlok azonnali szinkronizálásához a [Meghívási AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell-parancsmag használatával manuálisan indíthatja el az Azure-fájlmegosztás változásainak észlelését. Emellett az Azure-fájlmegosztás REST protokollon keresztül végrehajtott módosításai nem frissítik az SMB utolsó módosításának időpontját, és a szinkronizálás nem lesz látható változásként.
+- A Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe. A Storage Sync szolgáltatás vagy a Storage-fiók áthelyezése után meg kell adnia a Microsoft. StorageSync alkalmazás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
+
+    > [!Note]  
+    > A Felhőbeli végpont létrehozásakor a Storage Sync szolgáltatásnak és a Storage-fióknak ugyanabban az Azure AD-bérlőben kell lennie. A Felhőbeli végpont létrehozása után a Storage Sync szolgáltatás és a Storage-fiók áthelyezhető a különböző Azure AD-bérlők között.
+
+### <a name="cloud-tiering"></a>Felhőbeli rétegzés
+- Ha egy rétegzett fájlt a Robocopy használatával másik helyre másol, az eredményül kapott fájl nem lesz rétegzett. Előfordulhat, hogy az offline attribútum be lesz állítva, mert a Robocopy helytelenül belefoglalja ezt az attribútumot a másolási műveletekbe.
+- Fájlok a Robocopy használatával történő másolásakor használja a/MIR beállítást a fájl időbélyegének megőrzéséhez. Ezzel biztosíthatja, hogy a régebbi fájlok a legutóbb használt fájlokhoz legyenek bontva.
+    > [!Warning]  
+    > A Robocopy/B kapcsoló nem támogatott a Azure File Sync. A Robocopy/B kapcsoló és egy Azure File Sync kiszolgálói végpont használata esetén a forrás a fájl sérüléséhez vezethet.
+
 ## <a name="agent-version-11200"></a>Ügynök verziója 11.2.0.0
 A következő kibocsátási megjegyzések a Azure File Sync-ügynök verziójának 11.2.0.0 vonatkoznak, amely 2021. február 2-án jelent meg. Ezek a megjegyzések a 11.1.0.0 verziójának kibocsátási megjegyzései mellett szerepelnek.
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>Javított javítás és problémák 
 - Ha a szinkronizálási munkamenetet nagy számú/elem típusú hiba miatt megszakítják, akkor a szinkronizálás akkor is eltérhet, ha új munkamenet indul el, ha az Azure File Sync szolgáltatás meghatározza, hogy az egyes elemekkel kapcsolatos hibák kijavításához szükség van-e egyéni szinkronizálási munkamenetre.
 - A kiszolgálók Register-AzStorageSyncServer parancsmaggal történő regisztrálása meghiúsulhat a "Kezeletlen kivétel" hibával.
-- Új PowerShell-parancsmag (Add-StorageSyncAllowedServerEndpointPath) az engedélyezett kiszolgálói végpontok elérési útjának konfigurálásához egy kiszolgálón. Ez a parancsmag olyan esetekben hasznos, amikor a Azure File Sync üzembe helyezését egy felhőalapú megoldás-szolgáltató (CSP) vagy egy szolgáltató kezeli, és az ügyfél az engedélyezett kiszolgálói végpontok elérési útját szeretné konfigurálni egy kiszolgálón. Kiszolgálói végpont létrehozásakor, ha a megadott elérési út nem szerepel az engedélyezési listán, a kiszolgálói végpont létrehozása sikertelen lesz. Vegye figyelembe, hogy ez egy opcionális funkció, és az összes támogatott útvonal alapértelmezés szerint engedélyezett a kiszolgálói végpontok létrehozásakor.  
+- Új PowerShell-parancsmag (Add-StorageSyncAllowedServerEndpointPath) az engedélyezett kiszolgálói végpontok elérési útjának konfigurálásához egy kiszolgálón. Ez a parancsmag olyan esetekben hasznos, amikor a Azure File Sync üzembe helyezését egy felhőalapú megoldás-szolgáltató (CSP) vagy egy szolgáltató kezeli, és az ügyfél az engedélyezett kiszolgálói végpontok elérési útját szeretné konfigurálni egy kiszolgálón. Kiszolgálói végpont létrehozásakor, ha a megadott elérési út nem szerepel a engedélyezési, a kiszolgálói végpont létrehozása sikertelen lesz. Vegye figyelembe, hogy ez egy opcionális funkció, és az összes támogatott útvonal alapértelmezés szerint engedélyezett a kiszolgálói végpontok létrehozásakor.  
 
     
     - Az engedélyezett kiszolgálói végpont elérési útjának hozzáadásához futtassa a következő PowerShell-parancsokat a kiszolgálón:

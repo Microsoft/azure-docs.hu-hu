@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
 ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591378"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights adathivatkozás figyelése
@@ -28,7 +28,7 @@ Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatik
 
 ### <a name="ingress"></a>Bejövő forgalom
  
-|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|
 |---|---|---|---|---|
 |IngressReceivedBytes|Bejövő fogadott bájtok száma|Bájt|Összesen|Az eseményforrás által beolvasott bájtok száma|
 |IngressReceivedInvalidMessages|A bejövő forgalom érvénytelen üzeneteket kapott|Darabszám|Összesen|Az eseményforrás által beolvasott érvénytelen üzenetek száma|
@@ -40,7 +40,7 @@ Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatik
 
 ### <a name="storage"></a>Tárolás
 
-|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|A meleg tárolás Max tulajdonságai|Darabszám|Maximum|A környezet által az S1/S2 SKU számára engedélyezett tulajdonságok maximális száma, valamint a TB SKU-hoz tartozó meleg tár által engedélyezett tulajdonságok maximális száma|
 |WarmStorageUsedProperties|Meleg tároláshoz használt tulajdonságok |Darabszám|Maximum|A környezet által az S1/S2 SKU-hoz használt tulajdonságok száma, valamint a TB SKU meleg tárolója által használt tulajdonságok száma|

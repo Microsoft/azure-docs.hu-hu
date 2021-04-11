@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
 ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100650762"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
@@ -41,7 +41,7 @@ A Microsoft Translatorre irányuló kéréseket a legtöbb esetben az adatközpo
 
 Ha szeretné kényszeríteni a kérést, hogy az adott Azure földrajza kezelhető legyen, módosítsa az API-kérés globális végpontját a kívánt földrajzi végpontra:
 
-|Description|Az Azure földrajza|Alap URL-cím (földrajzi végpont)|
+|Leírás|Az Azure földrajza|Alap URL-cím (földrajzi végpont)|
 |:--|:--|:--|
 |Azure|Globális (nem regionális)|   api.cognitive.microsofttranslator.com|
 |Azure|Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
@@ -65,7 +65,7 @@ Fizessen elő Translator vagy [Cognitive Services Multi-Service szolgáltatásra
 
 Az előfizetés hitelesítéséhez három fejléc használható. Ez a táblázat a használatuk módját ismerteti:
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Ha a titkos kulcsot átadja, használja Cognitive Services-előfizetéssel*.<br/>Az érték a Translator-előfizetés Azure-beli titkos kulcsa.|
 |Engedélyezés|*Ha hitelesítési tokent továbbít, használja Cognitive Services-előfizetést.*<br/>Az érték a tulajdonosi jogkivonat: `Bearer <token>` .|
@@ -78,7 +78,7 @@ Az első lehetőség a fejléc használatával történő hitelesítés `Ocp-Api
 
 Ha [globális Translator-erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)használ, egy fejlécet kell tartalmaznia a fordító meghívásához.
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Az érték a Translator-előfizetés Azure-beli titkos kulcsa.|
 
@@ -97,7 +97,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 Ha [regionális Translator-erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)használ.
 2 fejlécre van szükség a fordító meghívásához.
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Az érték a Translator-előfizetés Azure-beli titkos kulcsa.|
 |OCP-APIM-előfizetés-régió| Az érték a fordítói erőforrás régiója. |
@@ -119,7 +119,7 @@ Ha a kognitív szolgáltatás több szolgáltatást használó erőforrását ha
 
 Több szolgáltatásból álló titkos kulcs használata esetén két hitelesítési fejlécet kell tartalmaznia a kérelemmel. 2 fejlécre van szükség a fordító meghívásához.
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Az érték a több szolgáltatásra épülő erőforráshoz tartozó Azure titkos kulcs.|
 |OCP-APIM-előfizetés-régió| Az érték a több szolgáltatásból álló erőforrás régiója. |
@@ -164,7 +164,7 @@ Ha bekapcsolta ezt a funkciót, az egyéni végpontot kell használnia a fordít
 
 Az egyéni végpontot a [fordítói erőforrások](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) létrehozása után, valamint a kiválasztott hálózatokból és privát végpontokból való hozzáférés engedélyezése után találja meg.
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Az érték a Translator-előfizetés Azure-beli titkos kulcsa.|
 |OCP-APIM-előfizetés-régió| Az érték a fordítói erőforrás régiója. Ez az érték nem kötelező, ha az erőforrás `global`|
@@ -199,7 +199,7 @@ Az ingyenes próbaverziós előfizetéssel rendelkező ügyfelek például a kö
 ```
 A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok:
 
-| Code | Description |
+| Code | Leírás |
 |:----|:-----|
 | 400000| Az egyik kérelem bemenete érvénytelen.|
 | 400001| A "scope" paraméter érvénytelen.|
@@ -247,7 +247,7 @@ A metrikák segítségével megtekintheti a Translator használati és rendelkez
 
 Ez a táblázat a fordítási API-hívások figyelésére szolgáló leírással sorolja fel az elérhető metrikákat.
 
-| Mérőszámok | Description |
+| Mérőszámok | Leírás |
 |:----|:-----|
 | TotalCalls| Az API-hívások teljes száma.|
 | TotalTokenCalls| A jogkivonat-szolgáltatáson keresztüli API-hívások teljes száma a hitelesítési jogkivonat használatával.|
