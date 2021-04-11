@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 09110bb15f853f20b0be9d8c4c6f5088e7a55d8b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869446"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382980"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>A fizikai kiszolgáló felderítésének és értékelésének támogatási mátrixa 
 
@@ -39,6 +39,8 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy projektet, és 
 **Engedélyek**
 
 - Windows-kiszolgálók esetén használjon tartományi fiókot tartományhoz csatlakoztatott kiszolgálók esetében, valamint egy helyi fiókot olyan kiszolgálók esetében, amelyek nem csatlakoznak a tartományhoz. A felhasználói fiókot ezekhez a csoportokhoz kell hozzáadni: távfelügyeleti felhasználók, teljesítményfigyelő felhasználók és teljesítménynapló-felhasználók.
+    > [!Note]
+    > Windows Server 2008 és 2008 R2 esetén győződjön meg arról, hogy a WMF 3,0 telepítve van a kiszolgálókon, és a kiszolgálók eléréséhez használt tartományi/helyi fiók a következő csoportokhoz lesz hozzáadva: Teljesítményfigyelő felhasználók, Teljesítménynapló felhasználói és WinRMRemoteWMIUsers.
 - Linux-kiszolgálók esetén rendszergazdai fiókra van szüksége a felderíteni kívánt Linux-kiszolgálókon. Másik lehetőségként az alábbi parancsokkal állíthatja be a nem gyökérszintű fiókot a szükséges képességekkel:
 
 **Parancs** | **Cél**

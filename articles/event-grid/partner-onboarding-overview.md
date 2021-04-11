@@ -4,10 +4,10 @@ description: Áttekintést nyújt arról, hogyan lehet Event Grid partnerként b
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: d16337eada829a817110abf7842f763972d0718f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105109339"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>A partner bevezetésének áttekintése (Azure Event Grid)

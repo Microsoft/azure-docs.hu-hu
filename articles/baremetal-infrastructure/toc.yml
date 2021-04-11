@@ -6,13 +6,11 @@
       href: concepts-baremetal-infrastructure-overview.md
     - name: A feltételek megismerése
       href: know-baremetal-terms.md
-    - name: BareMetal-példány-egységek összekötése az Azure-ban
+    - name: BareMetal-példányok összekapcsolása az Azure-ban
       displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: connect-baremetal-infrastructure.md
 - name: Számítási feladatok
   items:
-    - name: BareMetal-számításifeladatok típusai
-      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
     - name: SAP HANA az Azure-ban (nagyméretű példányok)
       items:
         - name: Tanúsítvány

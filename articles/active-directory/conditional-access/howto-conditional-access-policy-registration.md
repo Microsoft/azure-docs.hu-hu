@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 03/29/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711d4bdf2be2ad3158c12e4690a70fb83fe7a846
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 38ddd825321a3cb7947eb76c4f5f6cdbc6cb3414
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559502"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055705"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Feltételes hozzáférés: A biztonsági információk regisztrálásának védelme
 
@@ -52,7 +52,7 @@ A következő szabályzat a kiválasztott felhasználókra vonatkozik, akik a k�
 1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
 1. Ezután kattintson a **Létrehozás** elemre.
 
-A rendszergazdáknak mostantól az ideiglenes hozzáférési hitelesítő adatokat kell kiadniuk az új felhasználóknak, hogy megfeleljenek a regisztrációhoz szükséges multi-Factor Authentication követelményeinek. A feladat végrehajtásának lépései a következő szakaszban találhatók: [ideiglenes hozzáférési pass létrehozása az Azure ad-portálon](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass-in-the-azure-ad-portal).
+A rendszergazdáknak mostantól az ideiglenes hozzáférési hitelesítő adatokat kell kiadniuk az új felhasználóknak, hogy megfeleljenek a regisztrációhoz szükséges multi-Factor Authentication követelményeinek. A feladat végrehajtásának lépései a következő szakaszban találhatók: [ideiglenes hozzáférési pass létrehozása az Azure ad-portálon](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass).
 
 A szervezetek dönthetnek úgy, hogy más engedélyezési szabályozást is igényelnek a 6b. lépésben a **többtényezős hitelesítés megkövetelése** mellett vagy a helyett. Ha több vezérlőt választ ki, jelölje be a megfelelő választógombot úgy, hogy a módosítás végrehajtásakor az **összes** kijelölt vezérlőelemet vagy az **egyiket** megkövetelje.
 

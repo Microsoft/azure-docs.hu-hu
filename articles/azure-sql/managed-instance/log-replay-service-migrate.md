@@ -8,13 +8,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/01/2021
-ms.openlocfilehash: 1b2a3f018b16258622b817648cb00e230313bf49
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.date: 03/29/2021
+ms.openlocfilehash: 186f1e085cecdc92e345231d50d06195bba55504
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564517"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732958"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Adatbázisok migrálása SQL Serverról SQL felügyelt példányra a log Replay szolgáltatás (előzetes verzió) használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,7 +70,7 @@ A LRS leállítása után automatikusan, automatikus kiegészítéssel vagy manu
 | **2. Indítsa el a LRS a felhőben**. | A szolgáltatást a következő parancsmagok közül választhatja újra: PowerShell ([Start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_start parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> A LRS külön kell elindítania minden olyan adatbázis esetében, amely Blob Storage biztonsági mentési mappájára mutat. <br /><br /> A szolgáltatás elindítása után a Blob Storage tárolóról készít biztonsági másolatokat, és megkezdi a visszaállítást az SQL felügyelt példányán.<br /><br /> Ha a LRS folyamatos módban indult el, az összes eredetileg feltöltött biztonsági mentés visszaállítása után a szolgáltatás a mappába feltöltött összes új fájlt megtekinti. A szolgáltatás a napló sorszáma (LSN) lánc alapján folyamatosan alkalmazza a naplókat a Leállításig. |
 | **2,1. a művelet előrehaladásának figyelése**. | A visszaállítási művelet előrehaladását a következő parancsmagok közül választhatja: PowerShell ([Get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_show parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2,2. szükség esetén állítsa le a műveletet**. | Ha le kell állítania az áttelepítési folyamatot, a következő parancsmagok közül választhat: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> A művelet leállítása törli azt az adatbázist, amelyet a felügyelt SQL-példányon kíván visszaállítani. A művelet leállítása után nem folytathatja az adatbázisok LRS. Újra kell indítania az áttelepítési folyamatot. |
-| **3. Kivágás a felhőbe, ha elkészült**. | Állítsa le az alkalmazást és a munkaterhelést. Végezze el az utolsó log-tail biztonsági mentést, és töltse fel az Azure Blob Storageba.<br /><br /> Hajtsa végre a átváltás egy LRS-művelet elindításával a `complete` következő parancsmagokkal: PowerShell ([Complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) vagy Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Ez a művelet leállítja a LRS, és az SQL felügyelt példányon az olvasási és írási használatra az adatbázis online állapotba kerül.<br /><br /> Az alkalmazás kapcsolódási karakterláncának átirányítása SQL Serverról SQL felügyelt példányra. |
+| **3. Kivágás a felhőbe, ha elkészült**. | Állítsa le az alkalmazást és a munkaterhelést. Végezze el az utolsó log-tail biztonsági mentést, és töltse fel az Azure Blob Storageba.<br /><br /> Hajtsa végre a átváltás egy LRS-művelet elindításával a `complete` következő parancsmagokkal: PowerShell ([Complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) vagy Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Ez a művelet leállítja a LRS, és az SQL felügyelt példányon az olvasási és írási használatra az adatbázis online állapotba kerül.<br /><br /> Az alkalmazás kapcsolódási karakterláncának átirányítása SQL Serverról SQL felügyelt példányra. Ezt a lépést saját kezűleg kell összehangolni az alkalmazás manuális kapcsolódási karakterláncának módosításával, vagy automatikusan (például ha az alkalmazás képes például egy tulajdonság vagy egy adatbázis kapcsolódási karakterláncának beolvasására). |
 
 ## <a name="requirements-for-getting-started"></a>Az első lépésekhez szükséges követelmények
 

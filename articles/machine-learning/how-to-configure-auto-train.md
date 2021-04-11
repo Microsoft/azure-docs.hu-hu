@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12a6761ac2cd305e6ff949ffa59ee3bbdff1934d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563487"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732890"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -217,7 +217,7 @@ Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanul
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>Besorolási forgatókönyvek elsődleges metrikái 
 
-A küszöbértékeket követő mérőszámok, például a,, `accuracy` `average_precision_score_weighted` `norm_macro_recall` és `precision_score_weighted` nem optimalizálható a nagyon kis méretű adatkészletek esetében, igen nagy méretűek az osztályuk (osztály egyensúlyhiánya), vagy ha a várt metrika értéke nagyon közel 0,0 vagy 1,0. Ezekben az esetekben `AUC_weighted` jobb választás lehet az elsődleges metrika számára. Az automatizált gépi tanulás befejezése után kiválaszthatja a nyertes modellt az üzleti igényeknek leginkább megfelelő mérőszám alapján.
+A küszöbérték nélküli mérőszámok, például a,, `accuracy` `average_precision_score_weighted` `norm_macro_recall` és `precision_score_weighted` nem optimalizálható a kis méretű adatkészletek esetében, nagyon nagy méretekben (osztály egyensúlyhiány), vagy ha a várt metrika értéke nagyon közel 0,0 vagy 1,0. Ezekben az esetekben `AUC_weighted` jobb választás lehet az elsődleges metrika számára. Az automatizált gépi tanulás befejezése után kiválaszthatja a nyertes modellt az üzleti igényeknek leginkább megfelelő mérőszám alapján.
 
 | Metric | Példa használati eset (ek) |
 | ------ | ------- |
@@ -257,7 +257,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok automatikusan m
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a [AutoMLConfig objektum](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)featurization elfogadott beállításait tartalmazza. 
 
-|Featurization-konfiguráció | Description |
+|Featurization-konfiguráció | Leírás |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**.|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem kell automatikusan elvégezni.|
@@ -386,16 +386,113 @@ Konfigurálás  `max_concurrent_iterations` az `AutoMLConfig` objektumban. Ha ni
 
 ## <a name="explore-models-and-metrics"></a>Modellek és mérőszámok megismerése
 
-Megtekintheti a betanítási eredményeket egy widgetben vagy beágyazottan, ha egy jegyzetfüzetben van. További részletekért tekintse meg a [modellek követése és értékelése](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) című témakört.
+Az automatikus ML lehetőséget biztosít a betanítási eredmények figyelésére és értékelésére. 
 
-Lásd: az [automatizált gépi tanulási kísérlet eredményeinek kiértékelése](how-to-understand-automated-ml.md) az egyes futtatásokhoz megadott teljesítménymutatók és mérőszámok definíciói és példái alapján. 
+* Megtekintheti a betanítási eredményeket egy widgetben vagy beágyazottan, ha egy jegyzetfüzetben van. További részletekért lásd: [AUTOMATIZÁLT ml-futtatások figyelése](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
-A featurization összegzéséhez és az adott modellhez hozzáadott funkciók megismeréséhez lásd: [featurization átlátszósága](how-to-configure-auto-features.md#featurization-transparency). 
+* Az egyes futtatásokhoz megadott teljesítménymutatók és mérőszámok definícióit és példáit lásd: az [automatizált gépi tanulási kísérlet eredményeinek kiértékelése](how-to-understand-automated-ml.md) . 
 
+* A featurization összegzéséhez és az adott modellhez hozzáadott funkciók megismeréséhez lásd: [featurization átlátszósága](how-to-configure-auto-features.md#featurization-transparency). 
+
+Megtekintheti a hiperparaméterek beállítása, a skálázási és a normalizáló technikákat, valamint az adott automatizált ML-re alkalmazott algoritmust, amely a következő egyéni kódú megoldással fut. 
+
+A következőkben az egyéni metódust kell definiálni, `print_model()` amely az automatikus ml betanítási folyamat egyes lépéseinek hiperparaméterek beállítása jeleníti meg.
+ 
+```python
+from pprint import pprint
+
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()   
+```
+
+Egy olyan helyi vagy távoli futtatáshoz, amely az imént elküldött és betanított, ugyanazon a kísérleten alapuló jegyzetfüzetből, a módszer használatával átadható a legjobb modellnek `get_output()` . 
+
+```python
+best_run, fitted_model = run.get_output()
+print(best_run)
+         
+print_model(fitted_model)
+```
+
+A következő kimenet azt jelzi, hogy:
+ 
+* A StandardScalerWrapper technikát a képzések megkezdése előtt méretezheti és normalizálhatja.
+
+* A XGBoostClassifier algoritmus a legjobb futtatásként lett azonosítva, és a hiperparaméter értékeket is megjeleníti. 
+
+```python
+StandardScalerWrapper
+{'class_name': 'StandardScaler',
+ 'copy': True,
+ 'module_name': 'sklearn.preprocessing.data',
+ 'with_mean': False,
+ 'with_std': False}
+
+XGBoostClassifier
+{'base_score': 0.5,
+ 'booster': 'gbtree',
+ 'colsample_bylevel': 1,
+ 'colsample_bynode': 1,
+ 'colsample_bytree': 0.6,
+ 'eta': 0.4,
+ 'gamma': 0,
+ 'learning_rate': 0.1,
+ 'max_delta_step': 0,
+ 'max_depth': 8,
+ 'max_leaves': 0,
+ 'min_child_weight': 1,
+ 'missing': nan,
+ 'n_estimators': 400,
+ 'n_jobs': 1,
+ 'nthread': None,
+ 'objective': 'multi:softprob',
+ 'random_state': 0,
+ 'reg_alpha': 0,
+ 'reg_lambda': 1.6666666666666667,
+ 'scale_pos_weight': 1,
+ 'seed': None,
+ 'silent': None,
+ 'subsample': 0.8,
+ 'tree_method': 'auto',
+ 'verbose': -10,
+ 'verbosity': 1}
+```
+
+A munkaterületen egy másik kísérletből származó meglévő futtatáshoz szerezze be azt a futtatási azonosítót, amelyet szeretne felderíteni, és adja át a `print_model()` metódusnak. 
+
+```python
+from azureml.train.automl.run import AutoMLRun
+
+ws = Workspace.from_config()
+experiment = ws.experiments['automl-classification']
+automl_run = AutoMLRun(experiment, run_id = 'AutoML_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx')
+
+automl_run
+best_run, model_from_aml = automl_run.get_output()
+
+print_model(model_from_aml)
+
+```
 > [!NOTE]
 > A (z) automatizált ML-algoritmusok olyan véletlenszerű adatmennyiséget alkalmaznak, amely kisebb eltérést okozhat az ajánlott modell végleges mérőszámok pontszámában, például a pontosságban. Az automatizált ML olyan adatokra is végrehajt műveleteket, mint például a vonat-teszt felosztása, a vonat-ellenőrzés felosztása vagy a kereszt-érvényesítés, ha szükséges. Tehát ha egy kísérletet ugyanazzal a konfigurációs beállításokkal és az elsődleges metrikával többször is futtat, akkor valószínű, hogy az egyes kísérleteknél a végső metrikák pontszáma a következő tényezők miatt fog megjelenni. 
 
 ## <a name="register-and-deploy-models"></a>Modellek regisztrálása és üzembe helyezése
+
 Regisztrálhat egy modellt, így később is visszatérhet a szolgáltatáshoz. 
 
 A modell automatikus ML-ből való regisztrálásához használja a [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) metódust. 

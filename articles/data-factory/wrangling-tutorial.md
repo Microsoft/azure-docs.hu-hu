@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf15d6f669718cca8b99d67a7912d3959d9c191f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684022"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732505"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>Adatfeldolgozás az huzavona
 
@@ -20,7 +20,7 @@ ms.locfileid: "98684022"
 A huzavona-ben tárolt adatmennyiség lehetővé teszi, hogy natív módon hozzon létre egy interaktív Power Query Mash-UPS-t az ADF-ben, majd hajtsa végre a méretezést egy ADF-folyamaton belül.
 
 > [!NOTE]
-> Az ADF-ben lévő Power Query körülhatárolása jelenleg nyilvános előzetes verzióban avilable
+> Az ADF-ben Power Query tevékenység jelenleg nyilvános előzetes verzióban érhető el
 
 ## <a name="create-a-power-query-activity"></a>Power Query tevékenység létrehozása
 

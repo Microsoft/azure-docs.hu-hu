@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 2/22/2021
+ms.date: 3/30/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb75450527fc31d6ea4a9f9d60d676718ad79bda
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647421"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167583"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai
 
@@ -35,9 +35,21 @@ A hitelesítési rendszer folyamatosan módosítja és hozzáadja a szolgáltat�
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Hibajavítás: az Azure AD már nem fogja kétszer kódolni az állapot paramétert.
+
+Hatálybalépés **dátuma**: május 2021
+
+Érintett **végpontok**: v 1.0 és v 2.0 
+
+Érintett **protokoll**: minden olyan folyamat, amely felkeresi a `/authorize` végpontot (implicit flow és engedélyezési kód flow)
+
+A rendszer hibát talált az Azure AD-engedélyezési válaszban. A `/authorize` hitelesítés során a `state` kérésben szereplő paraméter szerepel a válaszban, hogy megőrizze az alkalmazás állapotát, és segít megelőzni a CSRF támadásokat. Az Azure AD helytelenül kódolt URL-címet `state` kapott a paraméternek a válaszba való behelyezése előtt, ahol még egyszer kódolták.  Ez azt eredményezi, hogy az alkalmazások helytelenül elutasítják az Azure AD válaszát. 
+
+Az Azure AD többé nem kódolja ezt a paramétert, így az alkalmazások helyesen tudják elemezni az eredményt. Ezt a módosítást minden alkalmazás esetében el kell végezni. 
+
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>A feltételes hozzáférés csak explicit módon kért hatókörök esetén aktiválódik
 
-Hatálybalépés **dátuma**: március 2021
+**Hatályba lépés**: május 2021., fokozatos bevezetéssel, áprilistól kezdődően. 
 
 Érintett **végpontok**: v 2.0
 
@@ -48,6 +60,8 @@ A dinamikus megadást használó alkalmazások az összes engedélyt megkapják,
 A szükségtelen feltételes hozzáférési kérések számának csökkentése érdekében az Azure AD megváltoztatja a nem kérelmezett hatóköröket az alkalmazásoknak, így csak a explicit módon kért hatókörök váltanak ki feltételes hozzáférést. Ez a változás azt eredményezheti, hogy az alkalmazások az Azure AD korábbi viselkedésére támaszkodnak (azaz ha nem kérték fel az összes engedélyt), mert a kért jogkivonatok hiányoznak az engedélyek.
 
 Az alkalmazások mostantól megkapják a hozzáférési jogkivonatokat, amelyek a kért, valamint a feltételes hozzáférési kérésekhez nem szükséges engedélyekkel rendelkeznek.  A hozzáférési jogkivonat hatóköre megjelenik a jogkivonat-válasz `scope` paraméterében. 
+
+Ez a módosítás az összes alkalmazásra vonatkozik, kivéve azokat, amelyek megfigyelt függőséggel rendelkeznek.  A fejlesztők a jelen változás alól mentesülnek, mivel a további feltételes hozzáférési kérések függőségi viszonyba kerülhetnek. 
 
 **Példák**
 

@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 540f0725427ace4aec76de373556cd6699a1b229
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052160"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732754"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>A virtuális gépek bepillantást tevő vendég állapotának engedélyezése (előzetes verzió)
 A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
@@ -20,6 +20,7 @@ A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának m
 A virtuálisgép-megállapítások vendég állapota a nyilvános előzetes verzióban a következő korlátozásokkal rendelkezik:
 
 - Jelenleg csak az Azure-beli virtuális gépek támogatottak. A kiszolgálói Azure Arc jelenleg nem támogatott.
+- A hálózati proxyk jelenleg nem támogatottak.
 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek

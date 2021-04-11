@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78b31cb32e3df9b0d8e198d8c2122e492e609283
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625813"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383405"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
@@ -43,9 +43,9 @@ Az **Azure szinapszis Apache Sparke** mélyen és zökkenőmentesen integrálhat
 
 Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQL és a Spark együttes használata között. Az igények és a szaktudás alapján zökkenőmentesen összekeverheti és összehasonlíthatja azokat.
 
-* A megosztott struktúra-kompatibilis metaadatrendszer lehetővé teszi, hogy a (z) rendszer a (z)-ben lévő fájlokban meghatározott táblákat a Spark vagy a kaptár zökkenőmentesen felhasználja.
+* A (z) a (z) rendszerű fájlokban definiált táblákat a Spark vagy a kaptár zökkenőmentesen használhatja.
 * Az SQL és a Spark közvetlenül képes felderíteni és elemezni az adattóban tárolt Parquet, CSV-, TSV-és JSON-fájlokat.
-* Gyors skálázható betöltés és eltávolítás az SQL és a Spark adatbázisok közötti adattároláshoz
+* Gyors, skálázható betöltés az SQL és a Spark adatbázisok között
 
 ## <a name="built-in-data-integration"></a>Beépített Adatintegráció
 
@@ -71,10 +71,10 @@ A **szinapszis Studio** a felhasználói élmény, amely az adatmérnökökkel e
 * Piacvezető termelékenység az SQL vagy a Spark-kód írásához: szerzői műveletek, hibakeresés és teljesítmény optimalizálása
 * Integrálás a vállalati CI/CD-folyamattal
 
-## <a name="engage-with-the-synapse-engineering-team"></a>A szinapszis mérnöki csapatának részvétele
+## <a name="engage-with-the-synapse-community"></a>A szinapszis közösségének részvétele
 
+- [Microsoft Q&A](/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
 - [Stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse): forduljon a fejlesztési kérdésekhez.
-- [A Microsoft Q&egy kérdést tartalmazó oldalt](/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
 
 ## <a name="next-steps"></a>Következő lépések
 

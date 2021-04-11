@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83a19dea56693a1caff2c982b9f772543fe1cf2e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510800"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073305"
 ---
 Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve. Az elkülönített méretek élőak és működnek az adott hardveres generáción, és a hardveres generáció kivonásakor elavulttá válik.
 
@@ -31,6 +31,7 @@ A jelenlegi elkülönített virtuálisgép-ajánlatok a következők:
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
+* Standard_DC8_v2
 
 
 > [!NOTE]
@@ -48,6 +49,7 @@ Az elkülönített virtuálisgép-méretek hardveres korlátozott élettartammal
 | Standard_GS5  | Február 15., 2022 |
 | Standard_E64i_v3  | Február 15., 2022 |
 | Standard_E64is_v3  | Február 15., 2022 |
+| Standard_DC8_v2 | Február 15., 2022 |
 
 
 ## <a name="faq"></a>GYIK
@@ -82,7 +84,7 @@ Az elkülönített virtuálisgép-méretek hardveres korlátozott élettartammal
 | Date | Művelet |
 |---|---|
 | Február 15., 2021<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 elkülönítési kivonulási hirdetmény |
-| Február 15., 2022 | G5/GS5/E64i_v3/E64is_v3 elkülönítési garancia eltávolítva |
+| Február 28., 2022 | G5/GS5/E64i_v3/E64is_v3 elkülönítési garancia eltávolítva |
 
 <sup>1</sup> az ezeket a méreteket használó meglévő ügyfelek egy bejelentési e-mailt kapnak, amely részletes útmutatást ad a következő lépésekhez.  
 

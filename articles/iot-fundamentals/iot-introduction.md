@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1053062302c9a00cf49cee1cd8de5ca6652b745
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96453025"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167702"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure eszközök internetes hálózata (IoT)?
 
@@ -30,7 +30,7 @@ Az IoT-eszközök jellemzően egy hálózati érzékelővel rendelkező áramkö
 * Egy gyorsulásmérő egy liftben.
 * Jelenléti érzékelők egy helyiségben.
 
-Számos különböző gyártótól származó eszköz áll rendelkezésre a megoldás létrehozásához. Az Azure IoT Hub-vel való együttműködésre tanúsított eszközök listáját az [Azure Certified for IoT-eszközök katalógusában](https://catalog.azureiotsolutions.com/alldevices)tekintheti meg. A prototípusok esetében olyan eszközöket használhat, mint például a [MXChip IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/) vagy a [málna PI](https://www.raspberrypi.org/). A fejlesztői készlet beépített érzékelőkkel rendelkezik a hőmérséklet, a nyomás, a páratartalom, valamint a giroszkóp, a gyorsulásmérő és a magnetometer számára. A málna PI számos különböző típusú érzékelő csatlakoztatását teszi lehetővé. 
+Számos különböző gyártótól származó eszköz áll rendelkezésre a megoldás létrehozásához. Az Azure IoT Hub-vel való együttműködésre tanúsított eszközök listáját az [Azure Certified for IoT-eszközök katalógusában](https://devicecatalog.azure.com)tekintheti meg. A prototípusok esetében olyan eszközöket használhat, mint például a [MXChip IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/) vagy a [málna PI](https://www.raspberrypi.org/). A fejlesztői készlet beépített érzékelőkkel rendelkezik a hőmérséklet, a nyomás, a páratartalom, valamint a giroszkóp, a gyorsulásmérő és a magnetometer számára. A málna PI számos különböző típusú érzékelő csatlakoztatását teszi lehetővé. 
 
 A Microsoft nyílt forráskódú [eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md) -kat biztosít, amelyek segítségével az eszközökön futó alkalmazásokat hozhatja létre. Ezek az [SDK-k leegyszerűsítik és felgyorsítják](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) a IoT-megoldások fejlesztését.
 

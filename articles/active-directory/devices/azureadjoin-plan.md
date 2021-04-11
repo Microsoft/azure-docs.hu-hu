@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435450"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550778"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -168,13 +168,11 @@ A felhasználók egyszeri bejelentkezést kapnak az Azure AD-hez csatlakoztatott
 
 ### <a name="on-premises-network-shares"></a>Helyszíni hálózati megosztások
 
-A felhasználók egyszeri bejelentkezéssel rendelkeznek az Azure AD-hez csatlakoztatott eszközökről, amikor egy eszköz hozzáfér egy helyszíni tartományvezérlőhöz.
+A felhasználók egyszeri bejelentkezéssel rendelkeznek az Azure AD-hez csatlakoztatott eszközökről, amikor egy eszköz hozzáfér egy helyszíni tartományvezérlőhöz. [A működésének megismerése](azuread-join-sso.md)
 
 ### <a name="printers"></a>Nyomtatók
 
-A nyomtatók esetében telepítenie kell a [hibrid Felhőbeli nyomtatást](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) a nyomtatók Azure ad-hez csatlakoztatott eszközökön való felfedéséhez. 
-
-Habár a nyomtatók nem észlelhetők automatikusan csak Felhőbeli környezetben, a felhasználók a nyomtatók UNC elérési útját is használhatják közvetlenül a hozzáadáshoz. 
+Javasoljuk, hogy az [univerzális nyomtatás](/universal-print/fundamentals/universal-print-whatis) üzembe helyezéséhez felhőalapú Nyomtatáskezelő megoldás legyen a helyszíni függőségek nélkül. 
 
 ### <a name="on-premises-applications-relying-on-machine-authentication"></a>Számítógép-hitelesítésre támaszkodó helyszíni alkalmazások
 
@@ -221,7 +219,7 @@ Válassza ki az üzembe helyezési módszert vagy megközelítéseket a fenti t�
 
 ## <a name="configure-your-device-settings"></a>Az eszközbeállítások konfigurálása
 
-A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon** válassza a elemet `Devices > Device settings` .
+A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon** válassza a elemet `Devices > Device settings` . [További információ](device-management-azure-portal.md)
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>A felhasználók eszközöket léptethetnek be az Azure AD-be
 
@@ -235,11 +233,13 @@ Válassza a **kijelölés** lehetőséget, és jelölje ki azokat a felhasznál�
 
 ![Az Azure AD-be léptetett eszközök további helyi rendszergazdái](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>Multi-Factor Auth megkövetelése eszközök csatlakoztatásához
+### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>Többtényezős hitelesítés (MFA) megkövetelése az eszközök csatlakoztatásához
 
 Válassza az **Igen** lehetőséget, ha azt szeretné, hogy a felhasználók a MFA-t az eszközök Azure ad-hez való csatlakoztatása közben végezzék Az eszközöket az Azure AD-be az MFA használatával összekötő felhasználók esetében maga az eszköz második tényezővé válik.
 
 ![Multi-Factor Auth megkövetelése eszközök csatlakoztatásához](./media/azureadjoin-plan/03.png)
+
+**Javaslat:** Az eszközökhöz való csatlakozáshoz használja a felhasználói művelet [regisztrációját, vagy csatlakoztassa az eszközöket](/conditional-access/concept-conditional-access-cloud-apps#user-actions) feltételes hozzáféréssel az MFA érvényesítéséhez.
 
 ## <a name="configure-your-mobility-settings"></a>A mobilitási beállítások konfigurálása
 

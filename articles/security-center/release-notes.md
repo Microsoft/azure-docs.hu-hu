@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786089"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027618"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -24,6 +24,93 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 > [!TIP]
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
+
+## <a name="april-2021"></a>Április 2021
+
+Az áprilisi frissítések a következők:
+- [Négy új, a vendég konfigurációjával kapcsolatos javaslat (előzetes verzió)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [A Kubernetes Azure Defender használata a hibrid és a többfelhős Kubernetes-üzembe helyezések (előzetes verzió) elleni védelemhez](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [11 Azure Defender-riasztás elavult](#11-azure-defender-alerts-deprecated)
+- [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzés két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Négy új, a vendég konfigurációjával kapcsolatos javaslat (előzetes verzió)
+
+Az Azure [vendég-konfigurációs bővítménye](../governance/policy/concepts/guest-configuration.md) jelentést készít a Security Center, így biztosítva, hogy a virtuális gépek vendégen belüli beállításai megerősítve legyenek. Nincs szükség a bővítményre az ív-kompatibilis kiszolgálók esetében, mert az az ív csatlakoztatott számítógép ügynökének része. A kiterjesztéshez a számítógépen rendszer által felügyelt identitás szükséges.
+
+Négy új javaslatot adtunk hozzá a bővítmények leghatékonyabban Security Centerához.
+
+- Két javaslat arra kéri, hogy telepítse a bővítményt és a szükséges rendszer által felügyelt identitást:
+    - **A vendég konfiguráció bővítményét telepíteni kell a gépekre**
+    - **A Virtual Machines Guest Configuration bővítményt rendszerhez rendelt felügyelt identitással kell telepíteni**
+
+- Ha a bővítmény telepítve van és fut, megkezdi a gépek naplózását, és a rendszer felszólítja, hogy megerősítse a beállításokat, például az operációs rendszer és a környezeti beállítások konfigurációját. Ez a két javaslat a Windows és a Linux rendszerű gépek megerősítését kéri az alábbiak szerint:
+    - **A Windows Defender Exploit Guard-nek engedélyezve kell lennie a gépeken**
+    - **A Linux rendszerű gépek hitelesítéséhez SSH-kulcsokra van szükség**
+
+További információ a [Azure Policy vendég konfigurációjának megismeréséhez](../governance/policy/concepts/guest-configuration.md).
+
+
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>A Kubernetes Azure Defender használata a hibrid és a többfelhős Kubernetes-üzembe helyezések (előzetes verzió) elleni védelemhez
+
+A Kubernetes készült Azure Defender kibővíti a fenyegetések elleni védelmi képességeit, hogy bárhol is megvédjék a fürtöket. Ezt az [Azure arc-kompatibilis Kubernetes](../azure-arc/kubernetes/overview.md) és az új [bővítmények képességeinek](../azure-arc/kubernetes/extensions.md)integrálásával engedélyezték. 
+
+Ha engedélyezte az Azure arc használatát a nem Azure-beli Kubernetes-fürtökön, akkor a Azure Security Center egy új javaslata arra, hogy csak néhány kattintással telepítse az Azure Defender-bővítményt rájuk.
+
+Használja a javaslatot (az **Azure arc-kompatibilis Kubernetes-fürtökön telepítve kell lennie az Azure Defender bővítményének**) és a bővítménynek, hogy megvédje a más felhőalapú szolgáltatókon üzembe helyezett Kubernetes-fürtöket, de nem a felügyelt Kubernetes-szolgáltatásokban.
+
+A Azure Security Center, az Azure Defender és az Azure arc-kompatibilis Kubernetes közötti integráció az alábbi előnyökkel jár:
+
+- Az Azure Defender-bővítmény egyszerű üzembe helyezése az Azure arc-kompatibilis Kubernetes-fürtökön (manuálisan és nagy méretekben)
+- Az Azure Defender bővítmény és az üzembe helyezési állapot monitorozása az Azure arc-portálról
+- Az Security Center biztonsági javaslatai az Azure arc portál új biztonsági lapján jelennek meg
+- Az Azure Defender által észlelt biztonsági fenyegetések az Azure arc portál új biztonsági lapján jelennek meg
+- Az Azure arc-kompatibilis Kubernetes-fürtök integrálva vannak a Azure Security Center platformba és felhasználói élménybe
+
+További információ: az [Azure Defender használata a helyszíni és a többfelhős Kubernetes-fürtökkel való Kubernetes](defender-for-kubernetes-azure-arc.md).
+
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center javaslata az Azure Defender-bővítmény Azure arc-kompatibilis Kubernetes-fürtökön való üzembe helyezéséhez." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender-riasztás elavult
+
+Az alább felsorolt tizenegy Azure Defender-riasztás elavult.
+
+- Az új riasztások felülírják ezt a két riasztást, és jobb lefedettséget biztosítanak:
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | ELŐZETES verzió – a "Get-AzureDomainInfo" függvény futtatása |
+    | ARM_MicroBurstRunbook    | ELŐZETES verzió – a "Get-AzurePasswords" függvény futtatása  |
+    |                          |                                                                          |
+
+- Ez a kilenc riasztás olyan Azure Active Directory Identity Protection-összekötőhöz (IPC) kapcsolódik, amely már elavult:
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | Szokatlan bejelentkezési tulajdonságok |
+    | AnonymousLogin      | Névtelen IP-cím          |
+    | InfectedDeviceLogin | Kártevők társított IP-címe     |
+    | ImpossibleTravel    | Szokatlan utazás               |
+    | MaliciousIP         | Kártékony IP-cím          |
+    | LeakedCredentials   | Kiszivárgott hitelesítő adatok            |
+    | PasswordSpray       | Jelszó spray                |
+    | LeakedCredentials   | Azure AD-fenyegetések felderítése  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
+    > [!TIP]
+    > Ezek a kilenc IPC-riasztás soha nem Security Center riasztásokat. A Azure Active Directory (HRE) Identity Protection-összekötő (IPC) részét képezik, amely Security Centernak küldi őket. Az elmúlt két évben csak azok az ügyfelek látják a riasztásokat, akik az exportálást (az összekötőtől az ASC-ig) konfigurálták a 2019-es vagy korábbi verziókban. A HRE IPC továbbra is saját riasztási rendszerekben jeleníti meg őket, és továbbra is elérhetőek voltak az Azure Sentinelben. Az egyetlen változás, hogy már nem jelennek meg Security Centerban.
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzés két javaslata elavult 
+
+A következő két javaslat elavult, és a módosítások némi hatással lehetnek a biztonságos pontszámra:
+
+- **A számítógépeket újra kell indítani a rendszerfrissítések alkalmazásához**
+- A **figyelési ügynököt telepíteni kell a gépekre**. Ez a javaslat csak a helyszíni gépekre vonatkozik, és a logikája egy másik javaslatba kerül át, **log Analytics az ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken**
+
+Javasoljuk, hogy ellenőrizze a folyamatos exportálási és munkafolyamat-automatizálási konfigurációkat, és ellenőrizze, hogy ezek a javaslatok szerepelnek-e bennük. Emellett az azokat használó irányítópultokat vagy egyéb figyelési eszközöket ennek megfelelően kell frissíteni.
+
+További információ ezekről a javaslatokról a [biztonsági javaslatok hivatkozását ismertető oldalon](recommendations-reference.md)található.
 
 
 ## <a name="march-2021"></a>Március 2021
@@ -489,7 +576,7 @@ A decemberi frissítések a következők:
 Azure Security Center két Azure Defender-csomagot kínál az SQL Serverhez:
 
 - Azure **Defender Azure SQL Database-kiszolgálókhoz** – védi az Azure-beli natív SQL-kiszolgálókat 
-- **Azure Defender a gépeken futó SQL Server-kiszolgálókon** – a hibrid, többfelhős és helyszíni környezetekben az SQL-kiszolgálókon ugyanazok a védelem kiterjeszthető.
+- **Azure Defender az SQL-kiszolgálókon a gépeken** – a hibrid, többfelhős és helyszíni környezetekben is kibővíti az SQL-kiszolgálókat.
 
 Ebben a közleményben az **Azure Defender for SQL** mostantól védi az adatbázisait és az adataikat, bárhol is legyenek.
 
@@ -753,154 +840,3 @@ A **rendszerfrissítéseket telepíteni kell a Machines** javaslatra. Az új ver
 Most már megtekintheti, hogy az előfizetések rendelkeznek-e az alapértelmezett Security Center házirend hozzárendelésével a Azure Portal Security Center **biztonsági házirend** lapján.
 
 :::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Az alapértelmezett szabályzat-hozzárendeléseket megjelenítő Azure Security Center házirend-kezelési lapja":::
-
-## <a name="october-2020"></a>2020. október
-
-Az októberi frissítések a következők:
-- [Biztonsági rések felmérése helyszíni és többfelhős gépekhez (előzetes verzió)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
-- [Azure Firewall javaslat hozzáadva (előzetes verzió)](#azure-firewall-recommendation-added-preview)
-- [Az illetékes IP-tartományokat a gyors javítással frissített Kubernetes Services-javaslatban kell meghatározni.](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
-- [A szabályozási megfelelőségi irányítópult mostantól tartalmazza a szabványok eltávolításának lehetőségét](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
-- [Microsoft. Security/securityStatuses tábla eltávolítva az Azure Resource Graphből (ARG)](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Biztonsági rések felmérése helyszíni és többfelhős gépekhez (előzetes verzió)
-
-[Az Azure Defender for Servers](defender-for-servers-introduction.md)beépített sebezhetőség-felmérési ellenőrzőeszköze (Qualys-alapú) mostantól megvizsgálja az Azure arc-kompatibilis kiszolgálókat.
-
-Ha engedélyezte az Azure arc használatát a nem Azure-beli gépeken, Security Center az integrált biztonsági rések képolvasó üzembe helyezését teszi lehetővé manuálisan és méretezéssel.
-
-Ezzel a frissítéssel kihasználhatja az **Azure Defender-kiszolgálók** erejét, hogy megszilárdítsa a sebezhetőségi kezelési programot az összes Azure-beli és nem Azure-beli eszközön.
-
-Főbb képességek:
-
-- A VA (sebezhetőségi felmérés) képolvasó üzembe helyezési állapotának figyelése az Azure arc-gépeken
-- Az integrált VA-ügynök kiépítés a nem védett Windows-és Linux Azure-alapú arc-gépekre (manuálisan és nagy méretekben)
-- Észlelt biztonsági rések fogadása és elemzése az üzembe helyezett ügynököktől (manuálisan és nagy méretben)
-- Az Azure-beli virtuális gépek és az Azure arc-számítógépek egységes felhasználói felülete
-
-[További információ az integrált sebezhetőségi képolvasó hibrid gépekre való üzembe helyezéséről](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
-
-[További információ az Azure arc használatára képes kiszolgálókról](../azure-arc/servers/index.yml).
-
-
-### <a name="azure-firewall-recommendation-added-preview"></a>Azure Firewall javaslat hozzáadva (előzetes verzió)
-
-Új javaslat lett hozzáadva az összes virtuális hálózat Azure Firewall-mel való ellátásához.
-
-Javasoljuk, hogy a **virtuális hálózatokat a Azure Firewall védelemmel** lássa el, hogy korlátozza a hozzáférést a virtuális hálózatokhoz, és megakadályozza a potenciális fenyegetéseket Azure Firewall használatával.
-
-További információ a [Azure Firewallról](https://azure.microsoft.com/services/azure-firewall/).
-
-
-### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>Az illetékes IP-tartományokat a gyors javítással frissített Kubernetes Services-javaslatban kell meghatározni.
-
-Az ajánlott **IP-címtartományok meghatározása a Kubernetes Services szolgáltatásban** most már rendelkezik egy gyors javítási lehetőséggel.
-
-További információ erről a javaslatról és az összes többi Security Center javaslatról: [biztonsági javaslatok – útmutató](recommendations-reference.md).
-
-:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel":::
-
-
-### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>A szabályozási megfelelőségi irányítópult mostantól tartalmazza a szabványok eltávolításának lehetőségét
-
-A Security Center szabályozási megfelelőségi irányítópultja betekintést nyújt a megfelelőségi állapotba, és megfelel a megfelelőségi ellenőrzéseknek és követelményeknek.
-
-Az irányítópult a szabályozási szabványok alapértelmezett készletét tartalmazza. Ha a megadott szabványok bármelyike nem felel meg a szervezete számára, mostantól egy egyszerű folyamat távolítja el őket a felhasználói felületről egy előfizetéshez. A szabványokat csak az *előfizetés* szintjén lehet eltávolítani; a felügyeleti csoport hatóköre nem.
-
-További információ: [standard eltávolítása az irányítópultról](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
-
-
-### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft. Security/securityStatuses tábla eltávolítva az Azure Resource Graphből (ARG)
-
-Az Azure Resource Graph egy Azure-szolgáltatás, amelynek célja, hogy hatékony erőforrás-feltárást biztosítson, amely lehetővé teszi az adott előfizetések skálájának lekérdezését, így hatékonyan szabályozhatja a környezetét. 
-
-Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/) használatával kérdezheti le a biztonsági testhelyzetek széles körét. Például:
-
-- Eszközök leltározása (ARG)
-- Dokumentáltak egy példa ARG-lekérdezést a [fiókok azonosításához a többtényezős hitelesítés (MFA) engedélyezése nélkül](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
-
-Az ARG-n belül vannak olyan adattáblák, amelyek a lekérdezésekben használhatók.
-
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Az Azure Resource Graph Explorer és a rendelkezésre álló táblák":::
-
-> [!TIP]
-> Az ARG dokumentációja felsorolja az összes elérhető táblázatot az [Azure Resource Graph-táblában és az erőforrástípus-referenciában](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Ebből a frissítésből a **Microsoft. Security/securityStatuses** tábla el lett távolítva. A securityStatuses API továbbra is elérhető.
-
-Az adatcsere a Microsoft. Security/Assessments tábla használatával végezhető el.
-
-A Microsoft. Security/securityStatuses és a Microsoft. Security/Assessments között a legfontosabb különbség az, hogy míg az első az értékelések összesítését mutatja, a másodpercek mindegyike egyetlen rekorddal rendelkezik.
-
-Például a Microsoft. Security/securityStatuses egy olyan eredményt ad vissza, amely két policyAssessments tömbjét eredményezi:
-
-```
-{
-id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
-name: "mico-rg-vnet",
-type: "Microsoft.Security/securityStatuses",
-properties:  {
-    policyAssessments: [
-        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
-        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
-    ],
-    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
-    name: "GenericResourceHealthProperties",
-    type: "VirtualNetwork",
-    securitystate: "High"
-}
-```
-Míg a Microsoft. Security/Assessments egy rekordot tart fenn az egyes házirend-értékelésekhez a következőképpen:
-
-```
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
-name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
-properties:  {
-    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
-    displayName: "Azure DDOS Protection Standard should be enabled",
-    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
-}
-
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
-name: "8efac66a-1ec5-be63-a824-eb28671dc527",
-properties: {
-    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
-    displayName: "Audit diagnostic setting",
-    status:  {code: "Unhealthy"}
-}
-```
-
-**Példa egy meglévő ARG-lekérdezés securityStatuses használatával történő átalakítására az értékelés táblázatának használatával:**
-
-SecurityStatuses hivatkozó lekérdezés:
-
-```kusto
-SecurityResources 
-| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
-| where name in ({vmnames}) 
-| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
-```
-
-Az értékelések táblázatának helyettesítő lekérdezése:
-
-```kusto
-securityresources
-| where type == "microsoft.security/assessments" and id contains "virtualMachine"
-| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
-| extend source = tostring(properties.resourceDetails.Source)
-| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
-source =~ "aws", properties.additionalData.AzureResourceId,
-source =~ "gcp", properties.additionalData.AzureResourceId,
-extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
-| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
-| where resourceName in ({vmnames}) 
-| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
-```
-
-További információt a következő hivatkozásokon talál:
-- [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
-- [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/)

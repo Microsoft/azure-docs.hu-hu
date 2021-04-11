@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 3da044057784763df8d071af6c101f7baffbefc6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: d0aa9e8bfd565eeb7599d52adc0ac5b854e750bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562307"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937226"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Vészhelyzeti helyreállítás tervezése ExpressRoute-alapú privát partnerekkel
 
@@ -47,7 +47,7 @@ Ha azonban a földrajzilag redundáns párhuzamos elérési utak között terhel
 
 ### <a name="different-metros"></a>Különböző metrók
 
-Ha különböző metrókat használ a redundancia érdekében, a másodlagos helynek ugyanabban a [geo-politikai régióban](expressroute-locations-providers.md#locations)kell lennie. A geo-politikai régión kívüli hely kiválasztásához a Parallel paths mindkét áramköréhez prémium SKU-t kell használnia. Ennek a konfigurációnak az az előnye, hogy a természeti katasztrófák okozta kimaradás miatt a kapcsolatok sokkal alacsonyabbak, de a késés növelésének költségeit.
+Ha különböző metrókat használ a redundancia érdekében, válassza ki a másodlagos helyet ugyanabban a [geo-politikai régióban](expressroute-locations-providers.md#locations). A geo-politikai régión kívüli hely kiválasztásához a Parallel paths mindkét áramköréhez prémium SKU-t kell használnia. Ennek a konfigurációnak az az előnye, hogy a természeti katasztrófák okozta kimaradás miatt a kapcsolatok sokkal alacsonyabbak, de a késések teljes mértékben megnövekednek.
 
 Ebből a cikkből megtudhatja, hogyan kezelheti a Geo-redundáns útvonalak konfigurálásakor felmerülő kihívásokat.
 

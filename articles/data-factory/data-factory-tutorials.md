@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 77899366ed256e147ddbc705d68096cb1b879d8d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8fccd508d5d6dbe380b21a85faa3889e99b9942f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610212"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579517"
 ---
 # <a name="azure-data-factory-tutorials"></a>Oktatóanyagok Azure Data Factory
 
@@ -60,6 +60,8 @@ Az alábbiakban felsoroljuk az oktatóanyagokat, amelyek segítségével megisme
 [Az huzavona Power Query](wrangling-tutorial.md)
 
 [Az adatforgalom felügyelt VNet belül](tutorial-data-flow-private.md)
+
+[Ajánlott eljárások a ADLS Gen2 Lake-beli adatkezeléshez](tutorial-data-flow-write-to-lake.md)
 
 ## <a name="external-data-services"></a>Külső adatszolgáltatások
 

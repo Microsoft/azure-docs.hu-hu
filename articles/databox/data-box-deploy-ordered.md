@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522393"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067141"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -425,7 +425,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
 
 1. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor a CLI-parancs futtatásával hozza létre a Data Box sorrendet. A következő táblázat a paraméterek beállításait tartalmazza `az databox job create` :
 
-   | Beállítás (paraméter) | Description |  Mintaérték |
+   | Beállítás (paraméter) | Leírás |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |name| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -544,7 +544,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
 
 2. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor futtatja a PowerShell-parancsot a Data Box sorrend létrehozásához. A következő táblázat a [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)használt paraméterek beállításait mutatja be.
 
-    | Beállítás (paraméter) | Description |  Mintaérték |
+    | Beállítás (paraméter) | Leírás |  Mintaérték |
     |---|---|---|
     |ResourceGroupName [kötelező]| Meglévő erőforráscsoport használata. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
     |Név [kötelező]| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -790,7 +790,7 @@ Azure Data Box rendelés megszakításához futtassa a parancsot [`az databox jo
    |erőforrás-csoport [kötelező]| A törlendő rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |név [kötelező]| A törlendő megrendelés neve. | "mydataboxorder"|
    |ok [kötelező]| A megrendelés megszakításának oka. | "Hibás adatokat adtam meg, és a megrendelés megszakításához szükséges." |
-   |igen| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
+   |igen| Ne kérjen megerősítést. | – Igen (-y)| 
    |debug| Hibakeresési információk belefoglalása a részletes naplózásba | – hibakeresés |
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
@@ -827,7 +827,7 @@ Ha megszakította Azure Data Box rendelést, a futtatásával [`az databox job d
    |erőforrás-csoport [kötelező]| A törlendő rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |név [kötelező]| A törlendő megrendelés neve. | "mydataboxorder"|
    |előfizetést| Az Azure-előfizetés neve vagy azonosítója (GUID). | "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" |
-   |igen| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
+   |igen| Ne kérjen megerősítést. | – Igen (-y)|
    |debug| Hibakeresési információk belefoglalása a részletes naplózásba | – hibakeresés |
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |

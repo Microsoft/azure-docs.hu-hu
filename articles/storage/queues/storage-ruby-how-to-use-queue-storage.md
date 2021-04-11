@@ -1,19 +1,19 @@
 ---
 title: A Queue Storage használata a Ruby-Azure Storage-ból
 description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue Storage használatával, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket. A Rubyban írt minták.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 12/08/2016
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 8558949e49bcf551c9276458d375fb9ac9636184
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 257b435f0136884e8568f4201794a7ce5cf0c209
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587662"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275855"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>A Queue Storage használata a Ruby használatával
 

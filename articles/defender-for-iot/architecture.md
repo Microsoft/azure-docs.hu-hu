@@ -1,15 +1,15 @@
 ---
-title: Ügynök nélküli megoldás architektúrája
+title: Mi az ügynök nélküli megoldás architektúrája?
 description: Ismerje meg az Azure Defender IoT ügynök nélküli architektúráját és az információáramlást.
 ms.topic: overview
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 99ccd0597fddaa86a2452160fc2cbfdadab87a1b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd639ca2656b901bd87fccf36fb4a5d90d3bf918
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784866"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383541"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
@@ -107,7 +107,7 @@ Az Azure-beli IoT-portál Defender az alábbiakkal segíti Önt:
 
 - Veszélyforrások elleni intelligencia-csomagok frissítése
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)
 

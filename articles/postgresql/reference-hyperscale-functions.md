@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
-ms.date: 08/10/2020
-ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026233"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011151"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Függvények a nagy kapacitású (Citus) SQL API-ban
 
-Ez a szakasz a nagy kapacitású (Citus) által biztosított, felhasználó által definiált függvények hivatkozási információit tartalmazza. Ezek a függvények segítséget nyújtanak a szabványos SQL-parancsokon kívüli nagy kapacitású (Citus) további elosztott funkciók biztosításához.
+Ez a szakasz a nagy kapacitású (Citus) által biztosított, felhasználó által definiált függvények hivatkozási információit tartalmazza. Ezek a függvények segítenek a nagy kapacitású (Citus) elosztott funkcióinak biztosításában.
 
 > [!NOTE]
 >
@@ -178,6 +178,48 @@ SELECT create_distributed_function(
 );
 ```
 
+### <a name="alter_columnar_table_set"></a>alter_columnar_table_set
+
+A alter_columnar_table_set () függvény egy [oszlopos tábla](concepts-hyperscale-columnar.md)beállításait módosítja. Ha nem oszlopos táblán hívja meg ezt a függvényt, hibaüzenetet ad. Az összes argumentum nem kötelező, kivéve a tábla nevét.
+
+Az összes oszlopos tábla aktuális beállításainak megtekintéséhez tekintse meg a következő táblázatot:
+
+```postgresql
+SELECT * FROM columnar.options;
+```
+
+Az újonnan létrehozott táblákhoz tartozó oszlopos beállítások alapértelmezett értékei felülbírálják ezeket a GUCs:
+
+* oszlopos. tömörítés
+* columnar.compression_level
+* columnar.stripe_row_count
+* columnar.chunk_row_count
+
+#### <a name="arguments"></a>Argumentumok
+
+**table_name:** Az oszlopos tábla neve.
+
+**chunk_row_count:** (nem kötelező) a sorok maximális száma az újonnan beszúrt adathalmazok számára. A meglévő adattömbök nem változnak, és a maximális értéknél több sor is lehet. Az alapértelmezett érték a 10000.
+
+**stripe_row_count:** (nem kötelező) az újonnan beszúrt értékekhez tartozó sorok maximális száma. A meglévő adatsávok nem változnak, és ennél több sor is lehet ennél a maximális értéknél. Az alapértelmezett érték a 150000.
+
+**tömörítés:** (nem kötelező) `[none|pglz|zstd|lz4|lz4hc]` az újonnan beszúrt adattömörítési típus. A meglévő adathalmazok nem lesznek újratömörítve vagy kitömörítve. Az alapértelmezett és a javasolt érték a zstd (ha a támogatás le van fordítva).
+
+**compression_level:** (nem kötelező) az érvényes beállítások 1 és 19 közöttiek. Ha a tömörítési módszer nem támogatja a választott szintet, akkor a legközelebbi szint lesz kiválasztva.
+
+#### <a name="return-value"></a>Visszatérési érték
+
+N/A
+
+#### <a name="example"></a>Példa
+
+```postgresql
+SELECT alter_columnar_table_set(
+  'my_columnar_table',
+  compression => 'none',
+  stripe_row_count => 10000);
+```
+
 ## <a name="metadata--configuration-information"></a>Metaadatok/konfigurációs információk
 
 ### <a name="master_get_table_metadata"></a>Master \_ Get \_ Table \_ metaadatok
@@ -220,7 +262,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 ### <a name="get_shard_id_for_distribution_column"></a>\_ \_ \_ a \_ terjesztési \_ oszlophoz tartozó szegmens azonosítójának beolvasása
 
-A nagy kapacitású (Citus) egy elosztott tábla minden sorát hozzárendeli egy szegmenshez a sor terjesztési oszlopának és a tábla eloszlási módszerének értéke alapján. A legtöbb esetben a pontos leképezés egy olyan alacsony szintű adat, amelyet az adatbázis-rendszergazda figyelmen kívül hagyhat. Azonban hasznos lehet a sorok szegmensének meghatározása, akár kézi adatbázis-karbantartási feladatok esetén, akár csak a kíváncsiság eléréséhez. A `get_shard_id_for_distribution_column` függvény megadja ezt az információt a kivonat és tartomány elosztott tábláihoz, valamint a hivatkozási táblákhoz. Nem működik a hozzáfűzési eloszlásban.
+A nagy kapacitású (Citus) egy elosztott tábla minden sorát hozzárendeli egy szegmenshez a sor terjesztési oszlopának és a tábla eloszlási módszerének értéke alapján. A legtöbb esetben a pontos leképezés egy olyan alacsony szintű adat, amelyet az adatbázis-rendszergazda figyelmen kívül hagyhat. Azonban hasznos lehet a sorok szegmensének meghatározása, akár kézi adatbázis-karbantartási feladatok esetén, akár csak a kíváncsiság eléréséhez. A `get_shard_id_for_distribution_column` függvény megadja ezt az információt a kivonatok elosztott, tartományhoz elosztott és hivatkozási tábláihoz. Nem működik a hozzáfűzési eloszlásban.
 
 #### <a name="arguments"></a>Argumentumok
 

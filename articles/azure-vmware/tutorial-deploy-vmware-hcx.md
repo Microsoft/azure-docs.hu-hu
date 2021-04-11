@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104869089"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
@@ -205,7 +205,7 @@ Négy hálózati profilt fog létrehozni:
 
    - Kezelés
    - vMotion
-   - Replikálás
+   - Replikáció
    - Uplink
 
 1. Az **infrastruktúra** területen válassza az **összekötő**  >  **többhelyes szolgáltatás háló**  >  **hálózati profilok**  >  **hálózati profil létrehozása** lehetőséget.

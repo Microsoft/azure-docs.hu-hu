@@ -5,18 +5,18 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 3bd571195a3f0df290387812e68f2b0377fe3c3c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: b475990a6b079de5e9ff01e52c2135f3c99a4f2f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584050"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055637"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Ingyenes Azure-fiókhoz tartozó szolgáltatások létrehozása
 
-Az ingyenes Azure-fiók létrehozását követő első 30 napban 200 dolláros kredit áll rendelkezésére, amelyet a külső Marketplace-vásárlások kivételével bármely szolgáltatásra felhasználhat. Az Azure kipróbálásához kapott ingyenes kreditek révén szabadon kísérletezhet a különböző szintű és típusú Azure-szolgáltatásokkal. Ha olyan szolgáltatásokat vagy Azure-erőforrásokat használ, amelyek ebben az időszakban nem ingyenesek, a díjak levonása a kredit terhére történik.
+Az ingyenes Azure-fiók létrehozása után az első 30 nap során a számlázási pénznemben 200 USD értékű kreditet használhat bármely szolgáltatáson, kivéve a harmadik féltől származó Piactérek vásárlását. Az Azure kipróbálásához kapott ingyenes kreditek révén szabadon kísérletezhet a különböző szintű és típusú Azure-szolgáltatásokkal. Ha olyan szolgáltatásokat vagy Azure-erőforrásokat használ, amelyek ebben az időszakban nem ingyenesek, a díjak levonása a kredit terhére történik.
 
 Ha az első 30 nap végéig nem használja fel az összes kreditet, a fennmaradó mennyiség elvész. A regisztrációt követően az első 30 nap után, de legfeljebb 12 hónapig korlátozott mértékben használhat *egyes szolgáltatásokat* – nem az összes Azure-szolgáltatás ingyenes. Ha a 30 nap letelte előtt frissít, az esetleg fennmaradó krediteket használatalapú fizetéssel kiegészítve felhasználhatja a hátralévő napok során. Ha például november 1-től regisztrálja az ingyenes fiókot, és november 5-én frissít, november 30-ig még felhasználhatja a krediteket az új, használatalapú fizetéses előfizetése keretében. 
 
