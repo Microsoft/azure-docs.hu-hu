@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebf835cad79f8c011be2fec91f6f4644ecd0941f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97357228"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284124"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Több SQL virtuális gép regisztrálása az Azure-ban az SQL IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ A regisztrációs folyamat nem jár kockázattal, nincs leállás, és nem indí
 
 A SQL Server VM a bővítménysel való regisztrálásához a következőkre lesz szüksége: 
 
-- Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van a **Microsoft. SqlVirtualMachine** szolgáltatónál](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
+- Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van a **Microsoft. SqlVirtualMachine** szolgáltatónál](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-resource-provider) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
 - A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő Azure-szerepkörök valamelyikében találhatók: **virtuális gép közreműködője**, **közreműködője** vagy **tulajdonosa**. 
 - Az az [PowerShell (5,0 minimum)](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 

@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure Lighthouse-be.
-ms.date: 02/17/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f59d9708925b52bcf9432663fe6d3137a54b37ad
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092146"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107448"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 
@@ -16,7 +16,7 @@ Ebből a cikkből megtudhatja, hogyan tehet közzé nyilvános vagy privát fel�
 
 ## <a name="publishing-requirements"></a>Közzétételi követelmények
 
-Ajánlatok létrehozásához és közzétételéhez érvényes fiókkal kell rendelkeznie a [partner Centerben](../../marketplace/partner-center-portal/create-account.md) . Ha még nem rendelkezik fiókkal, a [regisztrációs folyamat](https://aka.ms/joinmarketplace) végigvezeti a fiók létrehozásának lépésein a partner Centerben és a kereskedelmi piactér programban való regisztrálásban.
+Ajánlatok létrehozásához és közzétételéhez érvényes fiókkal kell rendelkeznie a [partner Centerben](../../marketplace/create-account.md) . Ha még nem rendelkezik fiókkal, a [regisztrációs folyamat](https://aka.ms/joinmarketplace) végigvezeti a fiók létrehozásának lépésein a partner Centerben és a kereskedelmi piactér programban való regisztrálásban.
 
 A [felügyelt szolgáltatásokra vonatkozó minősítési követelmények](/legal/marketplace/certification-policies#700-managed-services)alapján a felügyelt szolgáltatások ajánlatának közzétételéhez egy [Silver vagy Gold Cloud platform kompetenciával](/partner-center/learn-about-competencies) vagy [Azure szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) -vel kell rendelkeznie. Meg kell [adnia egy érdeklődő célhelyet is, amely egy rekordot hoz létre a CRM-rendszerben](../../marketplace/plan-managed-service-offer.md#customer-leads) minden alkalommal, amikor egy ügyfél üzembe helyezi az ajánlatot.
 
@@ -26,13 +26,14 @@ Az alábbi táblázat segítségével meghatározhatja, hogy az ügyfelek felüg
 
 |**Megfontolandó**  |**Felügyelt szolgáltatás ajánlata**  |**ARM-sablonok**  |
 |---------|---------|---------|
-|[Partner Center-fiók](../../marketplace/partner-center-portal/create-account.md) szükséges   |Igen         |Nem        |
+|[Partner Center-fiók](../../marketplace/create-account.md) szükséges   |Igen         |Nem        |
 |[Silver vagy Gold Cloud Platform kompetencia](/partner-center/learn-about-competencies) vagy [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) szükséges      |Igen         |Nem         |
 |Elérhető az új ügyfelek számára az Azure Marketplace-en keresztül     |Igen     |Nem       |
 |Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Yes         |
 |Ügyfél-elfogadás szükséges a Azure Portal     |Igen     |Nem   |
 |Az Automation használatával több előfizetést, erőforráscsoportot vagy ügyfelet helyezhet üzembe |Nem     |Igen    |
 |Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Yes         |
+|Az ügyfelek áttekinthetik és elfogadják a frissített ajánlatokat a Azure Portal | Igen | Nem |
 
 > [!NOTE]
 > Előfordulhat, hogy a felügyelt szolgáltatási ajánlatok nem érhetők el Azure Government és más nemzeti felhőkben.
@@ -62,6 +63,8 @@ Miután egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizet�
 > A delegálást olyan nem vendég fiókkal kell végrehajtania az ügyfél bérlője számára, aki rendelkezik a bevezetéshez `Microsoft.Authorization/roleAssignments/write` szükséges engedéllyel (például [tulajdonossal](../../role-based-access-control/built-in-roles.md#owner)) az előfizetéshez tartozó szerepkörrel (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Az előfizetést delegáló felhasználók megkereséséhez az ügyfél bérlője számára kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** lehetőséget, és [megtekintheti a tulajdonosi szerepkörrel rendelkező összes felhasználót](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
+
+Ha közzéteszi az ajánlat frissített verzióját, akkor az ügyfél [áttekintheti a Azure Portal módosításait, és elfogadhatja az új verziót](view-manage-service-providers.md#update-service-provider-offers).
 
 ## <a name="next-steps"></a>Következő lépések
 

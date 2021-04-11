@@ -12,18 +12,18 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
-ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 73e37fde4b3c2dd1aeb6ab171c3726f1b4353949
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449358"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106088"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgáltatás előnyeit és képességeit, ami lehetővé teszi, hogy alkalmazásai, eszközei vagy eszközei szövegeket alakítsanak ki az emberi, például a szintetizált beszédbe. Válasszon a standard és a neurális hangok közül, vagy hozzon létre egyedi hangvételt a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang a kiválasztott számú nyelven és területi beállításban érhető el. A támogatott hangok, nyelvek és területi beállítások teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgáltatás előnyeit és képességeit, ami lehetővé teszi, hogy alkalmazásai, eszközei vagy eszközei szövegeket alakítsanak ki az emberi, például a szintetizált beszédbe. Használjon emberi jellegű neurális hangokat, vagy hozzon létre egyedi hangvételt a termék vagy a márka számára. A támogatott hangok, nyelvek és területi beállítások teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 Ez a dokumentáció a következő cikk-típusokat tartalmazza:
 
@@ -42,8 +42,6 @@ Ez a dokumentáció a következő cikk-típusokat tartalmazza:
 
 * A hosszú hang aszinkron szintézise – a [hosszú](long-audio-api.md) hangalapú API használatával aszinkron módon szintetizálhatja a szöveg-beszéd fájlokat 10 percnél hosszabb ideig (például Hangoskönyvek vagy előadások esetén). A Speech SDK vagy a beszéd – szöveg REST API használatával végrehajtott szintézistől eltérően a válaszokat nem valós időben adja vissza a rendszer. A várt érték az, hogy a kérelmeket aszinkron módon küldik el, a rendszer lekérdezi a válaszokat, és letölti a szintetizált hangot, amikor elérhetővé válik a szolgáltatásból. Csak az egyéni neurális hangok támogatottak.
 
-* Standard hangok – statisztikai számszerű szintézis és/vagy összefűzési technikák használatával hozhatók létre. Ezek a hangok jól érthetőek és természetesek. Egyszerűen engedélyezheti, hogy alkalmazásai több mint 45 nyelven beszéljenek, számos hanglehetőséggel. Ezek a hangok magas kiejtési pontosságot biztosítanak, beleértve a rövidítések támogatását, a rövidítések, a dátum/idő értelmezését, a telefonokat és egyebeket. A standard hangok teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
-
 * Neurális hangok – a mély neurális hálózatok a hagyományos beszédfelismerés korlátainak leküzdésére szolgálnak a hangsúlyt és a hanglejtést illetően. A Prosody előrejelzése és a hangszintézis párhuzamosan történik, ami több folyadékot és természetes hangzású kimenetet eredményez. A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakciót természetesebb és vonzó, digitális szövegek, például e-könyvek hangoskönyvekbe való átalakítására és az autós navigációs rendszerek fejlesztésére. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál. A neurális hangok teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 * A beszédfelismerési stílusok a SSML-hangszintézis Markup Language (SSML) nyelvvel való beállítása egy XML-alapú Markup-nyelv, amely a beszéd-szöveg kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [útmutató](speech-synthesis-markup.md) a beszéd stílusainak módosításához.
@@ -51,7 +49,7 @@ Ez a dokumentáció a következő cikk-típusokat tartalmazza:
 * Visemes – a [Visemes](how-to-speech-synthesis-viseme.md) a megfigyelt beszédben jelent meg, beleértve az ajkak, az állkapocs és a nyelv pozícióját, amikor egy adott fonéma hoz létre. A Visemes erős korrelációt mutat a hang-és fonémák. Az viseme-események a Speech SDK-ban való használatával az arc-animálási információk is létrehozhatók, amelyekkel animálható az arcok az ajak-olvasási kommunikáció, az oktatás, a szórakoztatás és az ügyfélszolgálat számára.
 
 > [!NOTE]
-> A Viseme `en-US-AriaNeural` most már csak hangra működik.
+> A Viseme-események jelenleg csak a hang esetében támogatottak `en-US-AriaNeural` .
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -66,7 +64,7 @@ A szöveg és a beszéd mintája a GitHubon érhető el. Ezek a minták a legné
 
 ## <a name="customization"></a>Testreszabás
 
-A standard és a neurális hangokon kívül egyéni hangokat is létrehozhat és finomhangolással egyedivé teheti a termékét vagy márkáját. A kezdéshez mindössze néhány hangfájlt és a hozzá tartozó átírásokat kell használnia. További információ: Ismerkedés [az egyéni hanggal](how-to-custom-voice.md)
+A neurális hangokon kívül a termékhez vagy a márkához egyedileg egyedi hangokat is létrehozhat és finomhangolást készíthet. A kezdéshez mindössze néhány hangfájlt és a hozzá tartozó átírásokat kell használnia. További információ: Ismerkedés [az egyéni hanggal](how-to-custom-voice.md)
 
 ## <a name="pricing-note"></a>Díjszabási Megjegyzés
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) ügynök – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 04/05/2021
-ms.openlocfilehash: 09c54d7f24ba4bea1bf9081333f345b1a246a4d6
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 98f558c091f1680c165ee26ffb20a8022ab15520
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505467"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107176"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Gyakori kérdések – Microsoft Azure Recovery Services (MARS) ügynök
 
@@ -213,7 +213,7 @@ Biztonsági szempontból a Azure Backup a legutóbbi helyreállítási pontot fo
 
 Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a visszaállítási folyamat leáll. A lemondás előtt visszaállított összes fájl a megadott célhelyen (eredeti vagy másodlagos helyen), a visszaállítások nélkül.
 
-### <a name="does-the-mars-agent-backup-and-restore-acls-set-on-files-folders-and-volumes"></a>A MARS-ügynök biztonsági mentési és visszaállítási ACL-ek vannak beállítva a fájlokon, mappákon és köteteken?
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>A MARS-ügynök biztonsági mentését és visszaállítását a fájlokra, mappákra és kötetekre beállított ACL-ek végzik?
 
 * A MARS-ügynök biztonsági mentést készít a fájlokra, mappákra és kötetekre beállított ACL-listákról
 * A kötet-visszaállítás helyreállítási lehetőségnél a MARS-ügynök lehetőséget biztosít az ACL-engedélyek visszaállítására a helyreállított fájlra vagy mappára vonatkozóan.

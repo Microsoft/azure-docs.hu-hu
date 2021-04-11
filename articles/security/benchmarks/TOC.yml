@@ -67,6 +67,8 @@
       href: ../../application-gateway/security-baseline.md
     - name: Az Automation biztonsági alapkonfigurációja
       href: ../../automation/security-baseline.md
+    - name: Azure Active Directory biztonsági alapterv
+      href: ../../active-directory/fundamentals/security-baseline.md
     - name: Az Azure Advisor biztonsági alapkonfigurációja
       href: ../../advisor/security-baseline.md
     - name: Az Azure App Configuration biztonsági alapkonfigurációja
@@ -235,7 +237,7 @@
       href: ../../governance/policy/samples/guest-configuration-baseline-windows.md?toc=/azure/security/benchmarks/toc.json
     - name: Windows rendszerű virtuális asztali biztonsági alapterv
       href: ../../virtual-desktop/security-baseline.md
-- name: További források
+- name: Források
   items:
     - name: Hozzárendelés a ASB és a CIS teljesítményteszt között
       href: v2-cis-benchmark.md

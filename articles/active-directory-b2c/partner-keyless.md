@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 006bcc6c0cffe6f7c08b16057325a499e44f06be
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644255"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257908"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Oktatóanyag: a kulcsnélküli konfiguráció konfigurálása Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A kép a kulcsnélküli architektúra diagramját mutatja](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók kiválaszthatják a bejelentkezést és a regisztrációt, és beírja a felhasználónevet
 | 2. | Az alkalmazás elküldi a felhasználói attribútumokat a Azure AD B2C identitás-ellenőrzéshez.
@@ -159,4 +159,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

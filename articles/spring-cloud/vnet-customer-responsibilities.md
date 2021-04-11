@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 32b41c1c4446ba34e3bfad52f1d3cbd7ed72096d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 91c8834b48625aac0f279f84648d374df15fbdd0
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108809"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285394"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Az Azure Spring Cloud VNET való futtatásának felhasználói feladatai
 Ez a dokumentum az Azure Spring Cloud virtuális hálózatban való használatának specifikációit tartalmazza.
@@ -33,7 +33,7 @@ Az alábbi lista az Azure Spring Cloud Services erőforrás-követelményeit sor
 ## <a name="azure-spring-cloud-network-requirements"></a>Azure Spring Cloud Network-követelmények
 
   | Cél végpont | Port | Használat | Megjegyzés |
-  |------|------|------|
+  |------|------|------|------|
   | *: 1194 *vagy* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 1194 | UDP: 1194 | A mögöttes Kubernetes-fürt kezelése. | |
   | *: 443 *vagy* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 443 | TCP: 443 | Azure Spring Cloud Service-kezelés. | A "requiredTraffics" szolgáltatási példány információi az erőforrás-adattartalomban, a "networkProfile" szakaszban olvashatók. |
   | *: 9000 *vagy* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 9000 | TCP: 9000 | A mögöttes Kubernetes-fürt kezelése. |
@@ -43,9 +43,9 @@ Az alábbi lista az Azure Spring Cloud Services erőforrás-követelményeit sor
   | *. servicebus.windows.net:443 *vagy* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -EventHub: 443 | TCP: 443 | Azure Event hub. | Lecserélhető az *Azure Event Hubs* [Service-végpont engedélyezése a virtuális hálózaton](../virtual-network/virtual-network-service-endpoints-overview.md). |
   
 
-## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Azure Spring Cloud FQDN-követelmények/alkalmazás-szabályok
+## <a name="azure-spring-cloud-fqdn-requirementsapplication-rules"></a>Azure Spring Cloud FQDN-követelmények/alkalmazás-szabályok
 
-A Azure Firewall teljes tartománynevet (FQDN) tartalmazó **AzureKubernetesService** biztosít a következő konfigurációk egyszerűsítéséhez.
+Azure Firewall a teljes tartománynevet jelölő **AzureKubernetesService** biztosítja a következő konfigurációk egyszerűsítését:
 
   | Cél teljes tartományneve | Port | Használat |
   |------|------|------|
@@ -61,6 +61,15 @@ A Azure Firewall teljes tartománynevet (FQDN) tartalmazó **AzureKubernetesServ
   | *mscrl.microsoft.com* | HTTPS: 80 | A Microsoft tanúsítványlánc szükséges elérési útjai. |
   | *crl.microsoft.com* | HTTPS: 80 | A Microsoft tanúsítványlánc szükséges elérési útjai. |
   | *crl3.digicert.com* | HTTPS: 80 | harmadik féltől származó SSL-tanúsítványlánc elérési útjai. |
+  
+## <a name="azure-spring-cloud-optional-fqdn-for-third-party-application-performance-management"></a>Azure Spring Cloud opcionális FQDN a harmadik féltől származó alkalmazások teljesítményének kezeléséhez
+
+Azure Firewall a teljes tartománynevet jelölő **AzureKubernetesService** biztosítja a következő konfigurációk egyszerűsítését:
+
+  | Cél teljes tartományneve | Port | Használat                                                          |
+  | ---------------- | ---- | ------------------------------------------------------------ |
+  | gyűjtő *. newrelic. com | TCP: 443/80 | Az USA-régióból származó új ereklye APM-ügynökök szükséges hálózatai az [APM-ügynökök hálózatait](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents)is láthatják. |
+  | gyűjtő *. EU01. Nr – data.net | TCP: 443/80 | Az EU-régióból származó új ereklye APM-ügynökök szükséges hálózatai az [APM-ügynökök hálózatait](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents)is láthatják. |
 
 ## <a name="see-also"></a>Lásd még
 * [Hozzáférés az alkalmazáshoz egy magánhálózati hálózaton](access-app-virtual-network.md)

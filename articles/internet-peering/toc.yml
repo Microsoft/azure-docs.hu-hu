@@ -20,6 +20,8 @@
       href: walkthrough-exchange-all.md
     - name: Útmutató a Peering Service szolgáltatáshoz partnerek számára
       href: walkthrough-peering-service-all.md
+    - name: A kommunikációs szolgáltatások partneri útmutatója
+      href: walkthrough-communications-services-partner.md
     - name: Társ ASN társítása Azure-előfizetéshez
       items:
         - name: Portál

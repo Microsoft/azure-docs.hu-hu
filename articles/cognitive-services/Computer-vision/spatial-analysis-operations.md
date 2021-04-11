@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bdcbb38a56e46d01a5580f6d32ef733df8911b67
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 4b4ee9d1e583241f8ec9b467ae9ddfdb1360fb52
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108336"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284702"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
-A térbeli elemzés lehetővé teszi a kameraeszközök videóinak valós idejű streamelését. A térbeli elemzés műveletei minden egyes konfigurált kameraeszközön létrehozzák az Azure IoT Hub-példánynak küldött JSON-üzenetek kimeneti streamjét. 
+A térbeli elemzések lehetővé teszik a valós idejű folyamatos átvitelű videók elemzését a kamera-eszközökről. Minden konfigurált kamera-eszközön a térbeli elemzés műveletei az Azure IoT Hub-példányának küldött JSON-üzenetek kimeneti streamjét fogják eredményezni. 
 
 A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
@@ -107,16 +107,16 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 ```json
 {
 "zones":[{
-    "name": "lobbycamera",
-    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
-    "events":[{
-        "type": "count",
-        "config":{
-            "trigger": "event",
+       "name": "lobbycamera",
+       "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
+       "events":[{
+              "type": "count",
+              "config":{
+                     "trigger": "event",
             "threshold": 16.00,
             "focus": "footprint"
       }
-    }]
+       }]
 }
 ```
 
@@ -231,17 +231,17 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
    "name": "lobbycamera",
    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
    "events":[{
-    "type": "persondistance",
-    "config":{
-        "trigger": "event",
-        "output_frequency":1,
-        "minimum_distance_threshold":6.0,
-        "maximum_distance_threshold":35.0,
+       "type": "persondistance",
+       "config":{
+           "trigger": "event",
+           "output_frequency":1,
+           "minimum_distance_threshold":6.0,
+           "maximum_distance_threshold":35.0,
         "aggregation_method": "average"
            "threshold": 16.00,
            "focus": "footprint"
-            }
-    }]
+                   }
+          }]
    }]
 }
 ```
@@ -431,7 +431,7 @@ A művelet által adott esemény kimenetének JSON-mintája.
             "face_nomask": 0.99
             }
             }
-    }
+       }
     ],
     "schemaVersion": "1.0"
 }
@@ -635,7 +635,7 @@ Példa a JSON-t a művelet észlelési kimenetére `zonedwelltime` SPACEANALYTIC
                 "trackingId": "afcc2e2a32a6480288e24381f9c5d00e",
                 "status": "Exit",
                 "side": "1",
-        "durationMs": 7132.0
+              "durationMs": 7132.0
             },
             "zone": "queuecamera"
         }

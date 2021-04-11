@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b46efa53bba3b845fa5837b91a3707f4a85d298e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98659937"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258775"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás Azure Database for MariaDB
 
@@ -19,28 +19,42 @@ Azure Database for MariaDB automatikusan létrehozza a kiszolgáló biztonsági 
 
 ## <a name="backups"></a>Biztonsági másolatok
 
-A Azure Database for MariaDB teljes, differenciális és tranzakciós naplóbeli biztonsági másolatokat készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva.
+Azure Database for MariaDB biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is [beállíthatja](howto-restore-server-portal.md#set-backup-configuration) . Minden biztonsági mentés AES 256 bites titkosítással van titkosítva.
 
-Ezek a biztonságimentés-fájlok nem láthatók a felhasználók számára, és nem exportálhatók. Ezek a biztonsági másolatok csak Azure Database for MariaDB-beli visszaállítási műveletekhez használhatók. A [mysqldump](howto-migrate-dump-restore.md) használatával másolhat egy adatbázist.
+Ezek a biztonságimentés-fájlok nem láthatók a felhasználók számára, és nem exportálhatók. Ezek a biztonsági másolatok csak Azure Database for MySQL-beli visszaállítási műveletekhez használhatók. A [mysqldump](howto-migrate-dump-restore.md) használatával másolhat egy adatbázist.
 
-### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
+A biztonsági mentés típusa és gyakorisága a kiszolgálók háttér-tárolási helyétől függ.
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>Legfeljebb 4 TB tárhellyel rendelkező kiszolgálók
+### <a name="backup-type-and-frequency"></a>A biztonsági mentés típusa és gyakorisága
 
-Legfeljebb 4 TB-os maximális tárterületet támogató kiszolgálók esetén a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós naplók biztonsági mentése öt percenként történik.
+#### <a name="basic-storage-servers"></a>Alapszintű Storage-kiszolgálók
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>Legfeljebb 16 TB tárhellyel rendelkező kiszolgálók
-Az [Azure-régiók](concepts-pricing-tiers.md#storage)egy részhalmazában az újonnan kiosztott kiszolgálók akár 16 TB-nyi tárhelyet is támogatnak. Ezen nagyméretű tároló kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek. 
+Az alapszintű tároló a háttérbeli tároló, amely az [alapszintű kiszolgálókat](concepts-pricing-tiers.md)támogatja. Az alapszintű Storage-kiszolgálók biztonsági mentései pillanatkép-alapúak. A teljes adatbázis-pillanatkép naponta történik. Az alapszintű Storage-kiszolgálók esetében nem végeznek különbözeti biztonsági mentést, és az összes pillanatkép biztonsági mentése csak az adatbázis teljes biztonsági másolata.
 
-A különbségi biztonsági mentések legalább naponta egyszer végbemennek. A különbségi biztonsági mentések nem meghatározott ütemezés szerint mennek végbe. A különbözeti Pillanatképek biztonsági mentései 24 óránként történnek, kivéve, ha a tranzakciós napló (BinLog a MariaDB-ben) meghaladja a 50 GB-ot a legutóbbi különbözeti biztonsági mentés óta. Egy adott napon legfeljebb hat különbségi pillanatkép készítése engedélyezett. 
+A tranzakciós naplók biztonsági mentése öt percenként történik.
 
-A tranzakciós naplók biztonsági mentése öt percenként történik. 
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Általános célú Storage-kiszolgálók legfeljebb 4 TB-os tárhelygel
+
+Az általános célú tárolás a háttérbeli tároló, amely a [általános célú](concepts-pricing-tiers.md) és a [memóriára optimalizált platform](concepts-pricing-tiers.md) -kiszolgálót támogatja. A 4 TB-os általános célú tárolóval rendelkező kiszolgálók esetében a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós naplók biztonsági mentése öt percenként történik. Az általános célú, 4 TB-os tárterületre vonatkozó biztonsági másolatok nem pillanatkép-alapúak, és az i/o-sávszélességet használják a biztonsági mentés időpontjában. A 4 TB-os tárolón található nagyméretű adatbázisok (> 1 TB) esetében javasoljuk, hogy vegye figyelembe a következőt:
+
+- További IOPs kiépítés a Backup IOs vagy a
+- Azt is megteheti, hogy olyan általános célú tárhelyre telepít át, amely akár 16 TB-nyi tárhelyet is támogat, ha a mögöttes tároló-infrastruktúra elérhető az Ön által preferált [Azure](./concepts-pricing-tiers.md#storage)- A legfeljebb 16 TB-nyi tárterületet támogató általános célú tárterületre nem vonatkozik további díj. A 16 TB-os tárhelyre való áttelepítéssel kapcsolatos segítségért nyisson meg egy támogatási jegyet Azure Portalról.
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Általános célú Storage-kiszolgálók legfeljebb 16 TB tárhellyel
+
+Az [Azure-régiók](./concepts-pricing-tiers.md#storage)egy részhalmazában az újonnan kiosztott kiszolgálók az általános célú tárolást akár 16 TB tárhellyel is támogathatják. Ez azt jelenti, hogy a tárterület akár 16 TB tárhellyel is az alapértelmezett általános célú tárterület az összes olyan [régió](concepts-pricing-tiers.md#storage) esetében, ahol ez támogatott. A 16 TB-os tárolási kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek.
+
+A különbségi biztonsági mentések legalább naponta egyszer végbemennek. A különbségi biztonsági mentések nem meghatározott ütemezés szerint mennek végbe. A különbözeti Pillanatképek biztonsági mentései 24 óránként történnek, kivéve, ha a tranzakciós napló (a MariaDB BinLog) meghaladja a 50 GB-ot az utolsó különbözeti biztonsági mentés óta. Egy adott napon legfeljebb hat különbségi pillanatkép készítése engedélyezett.
+
+A tranzakciós naplók biztonsági mentése öt percenként történik.
+ 
 
 ### <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
 A biztonsági mentések a kiszolgálón tárolt biztonsági másolatok megőrzési időszakának beállítása alapján őrződnek meg. 7 és 35 nap közötti megőrzési időtartamot választhat. Az alapértelmezett megőrzési időtartam 7 nap. A megőrzési időszakot a kiszolgáló létrehozásakor vagy később állíthatja be, ha a [Azure Portal](howto-restore-server-portal.md#set-backup-configuration) vagy az [Azure CLI](howto-restore-server-cli.md#set-backup-configuration)használatával frissíti a biztonsági mentési konfigurációt. 
 
 A biztonsági másolatok megőrzési időszaka azt szabályozza, hogy az adott időpontra visszamenőleges visszaállítás hogyan kérhető le, mert az elérhető biztonsági másolatokon alapul. A biztonsági mentés megőrzési időszaka helyreállítási perspektívában is kezelhető helyreállítási ablakként. A biztonsági másolatok megőrzési időszakán belül az időponthoz való visszaállításhoz szükséges összes biztonsági másolat megmarad a biztonságimásolat-tárolóban. Ha például a biztonsági másolat megőrzési időtartama 7 nap, a helyreállítási időszak az utolsó 7 nap lesz. Ebben a forgatókönyvben a kiszolgáló utolsó 7 napban történő visszaállításához szükséges összes biztonsági mentést megőrzi a rendszer. A biztonsági másolatok megőrzési ablaka hét nap:
+
 - A legfeljebb 4 TB-os tárterülettel rendelkező kiszolgálók legfeljebb 2 teljes adatbázis-biztonsági mentést, az összes különbözeti biztonsági mentést és a tranzakciónapló biztonsági másolatait a legkorábbi teljes adatbázis biztonsági mentése óta hajtják végre.
 -   A legfeljebb 16 TB tárhellyel rendelkező kiszolgálók megőrzik a teljes adatbázis-pillanatképet, a különbözeti pillanatképeket és a tranzakciónapló biztonsági mentését az elmúlt 8 napban.
 

@@ -3,20 +3,20 @@ title: Microsoft Teams a Windows rendszerű virtuális asztalon – Azure
 description: A Microsoft Teams használata a Windows rendszerű virtuális asztali gépeken.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 04/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+manager: femila
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935720"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285258"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
 >[!IMPORTANT]
->A csapatok számára a média optimalizálása Microsoft 365 kormányzati (GCC) és GCC-High környezetekben támogatott. A Teams szolgáltatáshoz való multimédia-optimalizálás GCC-High vagy DoD esetében nem támogatott.
+>A csapatok számára a média optimalizálása Microsoft 365 kormányzati (GCC) és GCC-High környezetekben támogatott. Microsoft 365 DoD nem támogatja a csapatok multimédia-optimalizálását.
 
 >[!NOTE]
 >A Microsoft Teams szolgáltatáshoz készült média-optimalizálás csak Windows 10-es gépeken futó Windows asztali ügyfélprogram esetében érhető el. A média-optimalizáláshoz a Windows asztali ügyfél verziója 1.2.1026.0 vagy újabb verzió szükséges.
@@ -148,11 +148,7 @@ A virtualizált környezetekben lévő csapatok használata eltér a nem virtual
 - A Teams alkalmazás nem támogatja a HID-gombokat vagy a vezérelt vezérlőket más eszközökkel.
 - Az új Meeting Experience (NME) jelenleg nem támogatott a VDI-környezetekben.
 
-A virtualizált környezetekkel nem kapcsolatos ismert problémák esetén lásd: [támogatási csapatok a szervezetben](/microsoftteams/known-issues)
-
-## <a name="uservoice-site"></a>UserVoice-hely
-
-Küldjön visszajelzést a Microsoft Teams szolgáltatáshoz a Windows Virtual Desktopban a csapatok [UserVoice webhelyén](https://microsoftteams.uservoice.com/).
+A virtualizált környezetekkel nem kapcsolatos ismert problémák esetén lásd: [támogatási csapatok a szervezetben](/microsoftteams/known-issues).
 
 ## <a name="collect-teams-logs"></a>Csapatok naplóinak összegyűjtése
 

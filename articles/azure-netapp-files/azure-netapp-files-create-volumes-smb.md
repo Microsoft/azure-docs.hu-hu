@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: c673f7a9556193fb05e05ea372bfccd17cd3c5ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: eeeaf01dd20e5b309884a01f954ceca576cbcbb9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868511"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259625"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
-Azure NetApp Files támogatja a kötetek NFS használatával történő létrehozását (NFSv3 és NFSv 4.1), a SMB3 vagy a kettős protokollt (NFSv3 és SMB). A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMB3-köteteket.
+Azure NetApp Files támogatja a kötetek NFS használatával történő létrehozását (NFSv3 és NFSv 4.1), a SMB3 vagy a kettős protokollt (NFSv3 és SMB). A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. 
+
+Ez a cikk bemutatja, hogyan hozhat létre SMB3-köteteket. Az NFS-kötetek esetében tekintse meg [az NFS-kötet létrehozása](azure-netapp-files-create-volumes.md)című témakört. A kettős protokollú kötetek esetében lásd: [kettős protokollú kötet létrehozása](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
@@ -128,10 +130,12 @@ Az SMB-kötetekhez való hozzáférést az engedélyek szabályozzák.
 
 ### <a name="share-permissions"></a>Megosztási engedélyek  
 
-Alapértelmezés szerint az új kötet a **mindenki/teljes hozzáférés** megosztás engedélyekkel rendelkezik. A Tartománygazdák csoport tagjai a Azure NetApp Files kötethez használt számítógépfiók számítógép-kezelés funkciójával módosíthatják a megosztási engedélyeket.
+Alapértelmezés szerint az új kötet a **mindenki/teljes hozzáférés** megosztás engedélyekkel rendelkezik. A Tartománygazdák csoport tagjai a következőképpen módosíthatják a megosztási engedélyeket:  
 
-![SMB-csatlakoztatási útvonal ](../media/azure-netapp-files/smb-mount-path.png) 
- ![ beállítása megosztási engedélyek](../media/azure-netapp-files/set-share-permissions.png) 
+1. Képezze le a megosztást egy meghajtóra.  
+2. Kattintson a jobb gombbal a meghajtóra, válassza a **Tulajdonságok** lehetőséget, majd lépjen a **Biztonság** lapra.
+
+[![Megosztási engedélyek beállítása](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS-fájl és mappa engedélyei  
 

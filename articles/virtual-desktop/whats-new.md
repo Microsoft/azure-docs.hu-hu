@@ -3,21 +3,21 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 03/20/2021
+ms.date: 04/08/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
-manager: lizross
+manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: acb9b6d9d2080c63243ec4b924d07a927d6ccdfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774439"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107057"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
-A Windows rendszerű virtuális asztali frissítések rendszeres időközönként. Ebből a cikkből megismerheti a következőket:
+A Windows rendszerű virtuális asztali frissítések rendszeresen frissülnek. Ebből a cikkből megismerheti a következőket:
 
 - A legújabb frissítések
 - Új funkciók
@@ -40,14 +40,64 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 
 A Windows rendszerű virtuális asztali ügynök havonta legalább egyszer frissül.
 
-Itt módosult a Windows rendszerű virtuális asztali ügynök:
+A következő módosult a Windows rendszerű virtuális asztali ügynökben:
 
-- Verzió 1.0.2800.2800: Ez a frissítés 2021 márciusában, a fordított kapcsolatok hibája javítva.
-- Verzió 1.0.2800.2700: Ez a frissítés a 2021 februárjában lett közzétéve, és rögzített egy hozzáférés-megtagadási problémát.
+- Verzió 1.0.2866.1500: ezt a frissítést 2021. március 26-án adták ki, és kijavított egy problémát a verem állapot-ellenőrzését illetően.
+- 1.0.2800.2802 verzió: Ez a frissítés a 2021. március 10-én lett közzétéve, és általános javításokat és hibajavításokat tartalmaz.
+- Verzió 1.0.2800.2800: Ez a frissítés a 2021. március 2. és egy fordított hálózati probléma kijavítása után jelent meg.
+- Verzió 1.0.2800.2700: Ez a frissítés 2021. február 10-én jelent meg, és általános javításokat és hibajavításokat tartalmaz.
+- Verzió 1.0.2800.2700: Ez a frissítés a 2021. február 4. és a hozzáférés-megtagadási probléma kijavítása után jelent meg.
 
 ## <a name="fslogix-updates"></a>FSLogix-frissítések
 
 Kíváncsi a FSLogix legújabb frissítéseire? Tekintse [meg a FSLogix újdonságait](/fslogix/whats-new).
+
+## <a name="march-2021"></a>Március 2021
+
+A következő változás a 2021 márciusában változott.
+
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztali számítógép Azure Portal felhasználói felületének frissítései
+
+A következő frissítéseket készítettük a Windows rendszerű virtuális asztalhoz a Azure Portal:
+
+- Engedélyezte a munkafolyamatok új rendelkezésre állási lehetőségeit (rendelkezésre állási csoport és zónák) a gazdagépek létrehozásához és a virtuális gépek hozzáadásához.
+- Kijavítunk egy problémát, amelyben a "segítségre szorul" állapotú gazdagép nem érhető el. Most a gazdagépen egy figyelmeztető ikon jelenik meg.
+- Aktív munkamenetek rendezését engedélyezte.
+- Most már küldhet üzeneteket az adott felhasználók számára, vagy kijelentkezhet a gazdagép adatai lapon.
+- Módosítottuk a maximális munkamenet-korlát mezőt.
+- A munkafolyamathoz hozzáadta a szervezeti egység érvényesítési elérési útját a gazdagép létrehozásához.
+- Most már használhatja a Windows 10-es lemezkép legújabb verzióját is, ha létrehoz egy személyes gazdagépet.
+
+### <a name="generation-2-images-and-trusted-launch"></a>2. generációs rendszerképek és megbízható indítás
+
+Az Azure Marketplace-en már 2. generációs lemezképek érhetők el a Windows 10 Enterprise és a Windows 10 Enterprise multi-session szolgáltatáshoz. Ezek a lemezképek lehetővé teszik a megbízható indítási virtuális gépek használatát. További információ a 2. generációs virtuális gépekről: [1. vagy 2. generációs virtuális gép létrehozása](../virtual-machines/generation-2.md). A Windows rendszerű virtuális asztali megbízható indítási virtuális gépek kiépítésének megismeréséhez tekintse meg [a TechCommunity post](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170)című témakört.
+
+### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>A FSLogix mostantól előre telepítve van a Windows 10-es nagyvállalati multi-session images-lemezképeken
+
+Az ügyfelek visszajelzései alapján a Windows 10-es nagyvállalati multi-session rendszerkép új verzióját állítottuk be, amely már telepítve van a FSLogix nem konfigurált verziójával. Reméljük, hogy a Windows rendszerű virtuális asztal üzembe helyezése egyszerűbbé válik.
+
+### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>A Windows rendszerű virtuális asztali Azure Monitor már általánosan elérhető
+
+A Windows rendszerű virtuális asztali Azure Monitor mostantól általánosan elérhető a nyilvánosság számára. Ez a szolgáltatás egy automatizált szolgáltatás, amely figyeli az üzemelő példányokat, és lehetővé teszi az események, az állapot és a hibaelhárítási javaslatok megtekintését egyetlen helyen. További információkért tekintse meg a [dokumentációt](azure-monitor.md) , vagy tekintse meg [a TechCommunity bejegyzést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861).
+
+### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>Március 2021 – frissítések a Windows rendszerű virtuális asztali csapatokhoz
+
+A következő frissítéseket készítettük a csapatokhoz a Windows rendszerű virtuális asztalon:
+
+- A videó minőségi teljesítményének javítása hívásokon és 2x2-módban.
+- Csökkentettük a CPU-kihasználtságot 5-10%-kal (a CPU-termeléstől függően) a XVP hardveres kiszervezésének használatával.
+- A régebbi gépek mostantól a XVP és a hardveres dekódolást is használhatják, így a bejövő videók zökkenőmentesen jeleníthetők meg az 2x2-es módban.
+- Frissítettük a WebRTC-veremet a M74-ről a M88-ra a jobb AV-szinkronizálási teljesítmény és kevesebb átmeneti probléma miatt.
+- A szoftveres H264-kódolót váltotta fel a OpenH264 (OSS a webes csapatokban), ami megnövelte a kimenő kamera Videójának minőségét.
+- Március 30-án engedélyezzük az általános nyilvános csapatokhoz tartozó 2x2 üzemmódot. az 2x2 mód egyszerre legfeljebb négy bejövő videó streamet mutat be.
+
+### <a name="start-vm-on-connect-public-preview"></a>Virtuális gép elindítása a csatlakozási nyilvános előzetes verzióban
+
+Az új gazdagép-készlet beállítása, a virtuális gép elindítása a csatlakozáson lehetőség már nyilvános előzetes verzióban érhető el. Ez a beállítás lehetővé teszi a virtuális gépek bekapcsolását, amikor csak szüksége van rájuk. Ha szeretné megtakarítani a költségeket, az Azure számítási beállításainak konfigurálásával felszabadíthatja a virtuális gépeket. További információkért tekintse meg [a blogbejegyzésben](https://aka.ms/wvdstartvmonconnect) és [a dokumentációban](start-virtual-machine-connect.md).
+
+### <a name="windows-virtual-desktop-specialty-certification"></a>Windows rendszerű virtuális asztali speciális minősítés
+
+Megjelent az az-140 vizsga bétaverziója, amely lehetővé teszi az Azure-beli Windowsos virtuális asztali környezettel kapcsolatos szakértelmének bizonyítását. További információért tekintse meg [a TechCommunity bejegyzést](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107).
 
 ## <a name="february-2021"></a>2021. február
 

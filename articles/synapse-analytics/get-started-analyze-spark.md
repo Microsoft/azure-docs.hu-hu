@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5d08bc216157fce9ad81eaf3c0f540c7a4d8c3f2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108332"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259829"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -32,7 +32,7 @@ Ebből az oktatóanyagból megismerheti az adatok betöltését és elemzését 
 
 ## <a name="understanding-serverless-apache-spark-pools"></a>A kiszolgáló nélküli Apache Spark készletek ismertetése
 
-A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy egy felhasználó hogyan kíván dolgozni a Spark használatával. Ha egy készletet kezd használni, a rendszer létrehozza a Spark-munkamenetet, ha szükséges. A készlet azt szabályozza, hogy a munkamenet hány Spark-erőforrást fog használni, és hogy mennyi ideig tart a munkamenet. Az adott munkamenet során használt Spark-erőforrásokért kell fizetnie, nem maga a készlet. Ily módon a Spark-készletek lehetővé teszik a Spark használatával végzett munkát anélkül, hogy aggódnia kellene a fürtök kezelésében. Ez hasonló a kiszolgáló nélküli SQL-készlet működéséhez.
+A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy egy felhasználó hogyan kíván dolgozni a Spark használatával. Ha egy készletet kezd használni, a rendszer létrehozza a Spark-munkamenetet, ha szükséges. A készlet azt szabályozza, hogy a munkamenet hány Spark-erőforrást fog használni, és hogy mennyi ideig tart a munkamenet az automatikus szüneteltetés előtt. Az adott munkamenet során használt Spark-erőforrásokért kell fizetnie, nem maga a készlet. Ily módon a Spark-készletek lehetővé teszik a Spark használatával végzett munkát anélkül, hogy aggódnia kellene a fürtök kezelésében. Ez hasonló a kiszolgáló nélküli SQL-készlet működéséhez.
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>NYC-taxi-adatelemzés a blob Storage-ban a Spark használatával
 
@@ -41,11 +41,7 @@ A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy eg
 3. Hozzon létre egy új kódlapot, és illessze be a következő kódot a cellába.
     ```py
     %%pyspark
-    from azureml.opendatasets import NycTlcYellow
-
-    data = NycTlcYellow()
-    df = data.to_spark_dataframe()
-    # Display 10 rows
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet', format='parquet')
     display(df.limit(10))
     ```
 1. A jegyzetfüzetben a **csatolás** menüben válassza ki a korábban létrehozott **Spark1** kiszolgáló nélküli Spark-készletet.
@@ -60,7 +56,7 @@ A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy eg
 
 Az dataframe az elnevezett **adathalmazon** keresztül érhető el. Töltse be egy **nyctaxi** nevű Spark-adatbázisba.
 
-1. Vegyen fel egy újat a jegyzetfüzetbe, majd írja be a következő kódot:
+1. Vegyen fel egy új kódlapot a jegyzetfüzetbe, majd írja be a következő kódot:
 
     ```py
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")

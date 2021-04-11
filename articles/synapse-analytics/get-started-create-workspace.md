@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: a4fa902268d9a19cd0003a2fdaa4c5e58989a4ff
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f186acbe030dcbb0c2bad22586a8b2a5d1aa520d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218940"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259795"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -64,6 +64,16 @@ Az Azure szinapszis-munkaterület létrehozása után kétféleképpen nyithatja
 
 * Nyissa meg a szinapszis munkaterületet a [Azure Portal](https://portal.azure.com), a szinapszis munkaterület **Áttekintés** szakaszában, a **Megnyitás elemre kattintva** nyissa meg a szinapszis Studio megnyitása mezőt.
 * Lépjen a `https://web.azuresynapse.net` munkaterületre, és jelentkezzen be.
+
+## <a name="place-sample-data-into-the-primary-storage-account"></a>Mintaadatok elhelyezése az elsődleges Storage-fiókban
+Ebben az első lépéseket ismertető útmutatóban egy kisméretű, 100 000-es sor minta adatkészletet fogunk használni a NYX cab-adathoz. Kezdjük azzal, hogy a munkaterülethez létrehozott elsődleges Storage-fiókba helyezi.
+
+* Töltse le a fájlt a számítógépre: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
+* A szinapszis Studiio navigáljon az adatközponthoz. 
+* Kattintson a **csatolt** elemre.
+* A **Azure Data Lake Stora Gen2** kategóriában egy olyan elem jelenik meg, amelynek neve például **sajátmunkaterület (elsődleges-contosolake).**
+* Kattintson a felhasználók nevű tárolóra **(elsődleges)**
+* Kattintson a **feltöltés** gombra, és válassza ki a `NYCTripSmall.parquet` letöltött fájlt
 
 ## <a name="next-steps"></a>Következő lépések
 

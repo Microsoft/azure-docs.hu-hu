@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f1653158f7a181ad2d61bc726ba7765eab934341
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577254"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107465"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -426,7 +426,7 @@ Az oktatóanyag elvégzése után kiválaszthatja, hogy mely erőforrásokat sze
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **Ha továbbra is az ebben a cikkben beállított Azure Digital Twins-példányt szeretné használni, de a modell, az ikrek és a kapcsolatok némelyikének vagy mindegyikének törlésével** törölheti az eltávolítani kívánt elemeket az [Azure Cloud Shell](https://shell.azure.com) ablakban található az [DT](/cli/azure/ext/azure-iot/dt) CLI-parancsokkal.
+* **Ha továbbra is az ebben a cikkben beállított Azure Digital Twins-példányt szeretné használni, de a modell, az ikrek és a kapcsolatok némelyikének vagy mindegyikének törlésével** törölheti az eltávolítani kívánt elemeket az [Azure Cloud Shell](https://shell.azure.com) ablakban található az [DT](/cli/azure/dt) CLI-parancsokkal.
 
     Ez a beállítás nem távolítja el az oktatóanyagban létrehozott többi Azure-erőforrást (IoT Hub, Azure Functions alkalmazást stb.). Ezeket egyenként törölheti az egyes erőforrástípusok számára megfelelő [DT-parancsok](/cli/azure/reference-index) használatával.
 

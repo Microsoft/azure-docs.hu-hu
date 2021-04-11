@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53878384f4eb056f0cb23ec9005043ac26c8fad2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521968"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492581"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Gyors útmutató: Azure Database for MySQL rugalmas kiszolgáló létrehozásához használja a Azure Portal
 
@@ -51,11 +51,14 @@ Egy rugalmas kiszolgáló létrehozásához hajtsa végre a következő lépése
     Előfizetés|Az Ön előfizetésének neve|A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben az erőforrásért díjat kell fizetnie.|
     Erőforráscsoport|**myresourcegroup**| Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.|
     Kiszolgálónév |**mydemoserver**|Egy egyedi név, amely a rugalmas kiszolgálót azonosítja. A rendszer hozzáfűzi a tartománynevet `mysql.database.azure.com` a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.|
+    Régió|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.|
+    Munkaterhelés típusa| Fejlesztés | Az éles számítási feladatokhoz a [max_connections](concepts-server-parameters.md#max_connections) követelményeitől függően kis-és közepes méretű vagy nagyméretű méretet is választhat|
+    A rendelkezésre állási zóna| Nincs preferencia | Ha az alkalmazás az Azure-beli virtuális gépeken, a virtuálisgép-méretezési csoportokban vagy az AK-példányokban egy adott rendelkezésre állási zónában van kiépítve, akkor a rugalmas kiszolgálót ugyanabban a rendelkezésre állási zónában adhatja meg, hogy az alkalmazás és az adatbázis rézvezetékes végezhet a hálózati késésnek a zónák közötti csökkentésével.|
+    Magas rendelkezésre állás| Alapértelmezett | Üzemi kiszolgálók esetében a zóna redundáns magas rendelkezésre állásának (HA) engedélyezése erősen ajánlott az üzletmenet folytonossága és a zónák meghibásodása elleni védelem érdekében|
+    MySQL-verzió|**5.7**| Egy MySQL főverzió.|
     Rendszergazdai felhasználónév |**mydemouser**| Saját bejelentkezési fiókja, amelyet a kiszolgálóhoz való csatlakozáskor kell használni. A rendszergazda felhasználóneve nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest** vagy **Public**.|
     Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. Tartalmaznia kell a következő kategóriák közül legalább háromat is: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0 – 9) és nem alfanumerikus karakterek (!, $, #,% stb.).|
-    Region|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.|
-    Verzió|**5.7**| Egy MySQL főverzió.|
-    Számítás + tárolás | **Feltört**, **Standard_B1ms**, **10 GIB**, **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása** lehetőséget. A **számítási szint**, a **számítási méret**, a **tárterület mérete** és a biztonsági másolatok **megőrzési időszaka** alapértelmezett értékei a következők: **feltört**, **Standard_B1ms**, **10 GIB** és **7 nap** . Ezeket az értékeket elhagyhatja, vagy módosíthatja is azokat. A számítási és a tárolási beállítások mentéséhez kattintson a **Mentés** gombra a konfiguráció folytatásához. A következő képernyőfelvételen a számítási és tárolási lehetőségek láthatók.|
+    Számítás + tárolás | **Feltört**, **Standard_B1ms**, **10 GIB**, **100 IOPS**, **7 nap** | Az új kiszolgáló számítási, tárolási, IOPS és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása** lehetőséget. A **számítási szint**, a **számítási méret**, a **tárterület mérete**, a **IOPS** és a biztonsági másolatok **megőrzési időszakának** alapértelmezett értékei a következők: **feltört**, **Standard_B1ms**, **10 GIB**, **100 IOPS** és **7 nap** . Ezeket az értékeket elhagyhatja, vagy módosíthatja is azokat. Az áttelepítés során felmerülő gyorsabb adatterhelések esetén ajánlott a számítási méret által támogatott maximális méretre emelni a IOPS, később pedig visszaméretezheti a költségeket a megtakarítás érdekében. A számítási és a tárolási beállítások mentéséhez kattintson a **Mentés** gombra a konfiguráció folytatásához. A következő képernyőfelvételen a számítási és tárolási lehetőségek láthatók.|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="A számítási és tárolási beállításokat megjelenítő képernyőkép.":::
 
@@ -89,16 +92,21 @@ Ha a rugalmas kiszolgálót privát hozzáférés (VNet-integráció) használat
 
 Ha a rugalmas kiszolgálót a nyilvános hozzáférés (engedélyezett IP-címek) használatával hozta létre, a helyi IP-címet hozzáadhatja a kiszolgálón található tűzfalszabályok listájához. További útmutatásért tekintse meg a [Tűzfalszabályok létrehozásával és kezelésével kapcsolatos dokumentációt](how-to-manage-firewall-portal.md) .
 
-A helyi környezetből [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy [MySQL Workbench](./connect-workbench.md) használatával kapcsolódhat a kiszolgálóhoz. 
+A helyi környezetből [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy [MySQL Workbench](./connect-workbench.md) használatával kapcsolódhat a kiszolgálóhoz. Azure Database for MySQL rugalmas kiszolgáló támogatja az ügyfélalkalmazások a MySQL szolgáltatáshoz való csatlakoztatását Transport Layer Security (TLS), korábbi nevén SSL (SSL) használatával. A TLS egy iparági szabványnak megfelelő protokoll, amely biztosítja a titkosított hálózati kapcsolatokat az adatbázis-kiszolgáló és az ügyfélalkalmazások között, így biztosítva a megfelelőségi követelmények betartását. A MySQL rugalmas kiszolgálóval való kapcsolódáshoz le kell töltenie a hitelesítésszolgáltató ellenőrzéséhez szükséges [nyilvános SSL-tanúsítványt](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) .
+
+Az alábbi példa bemutatja, hogyan csatlakozhat a rugalmas kiszolgálóhoz a MySQL parancssori felület használatával. Ha már nincs telepítve, először telepítenie kell a MySQL-parancssort. Le fogja tölteni az SSL-kapcsolatokhoz szükséges DigiCertGlobalRootCA-tanúsítványt. A TLS/SSL-tanúsítvány ellenőrzésének érvényesítéséhez használja a--SSL-Mode = REQUIREd kapcsolati sztring beállítást. Adja át a helyi tanúsítványfájl elérési útját a--SSL-CA paraméternek. Cserélje le az értékeket a tényleges kiszolgáló nevére és jelszavára.
 
 ```bash
+sudo apt-get install mysql-client
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
-mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 
 Ha a rugalmas kiszolgálót **nyilvános hozzáférés** használatával állította be, akkor a [Azure Cloud Shell](https://shell.azure.com/bash) használatával is csatlakozhat a rugalmas kiszolgálóhoz az előre telepített MySQL-ügyféllel az alábbi ábrán látható módon:
 
-Ahhoz, hogy a Azure Cloud Shellt a rugalmas kiszolgálóhoz való kapcsolódáshoz használhassa, engedélyeznie kell a hálózati hozzáférést a Azure Cloud Shell a rugalmas kiszolgálóra. Ennek eléréséhez nyissa meg a **hálózatkezelés** panelt Azure Portal a MySQL-hez készült rugalmas kiszolgálónál, és jelölje be a **tűzfal** szakaszban található jelölőnégyzetet, amely a "nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatásból az Azure-ban ezen a kiszolgálón" lehetőséget, majd kattintson a Mentés gombra a beállítás megőrzéséhez.
+Ahhoz, hogy a Azure Cloud Shellt a rugalmas kiszolgálóhoz való kapcsolódáshoz használhassa, engedélyeznie kell a hálózati hozzáférést a Azure Cloud Shell a rugalmas kiszolgálóra. Ennek eléréséhez nyissa meg a **hálózatkezelés** panelt Azure Portal a MySQL-hez készült rugalmas kiszolgálónál, és jelölje be a **tűzfal** szakaszban a "nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáshoz az Azure-ban erre a kiszolgálóra" lehetőséget, ahogy az alábbi képernyőképen is látható, és kattintson a Mentés gombra a beállítás megőrzéséhez.
+
+ > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Képernyőkép, amely bemutatja, hogyan engedélyezhető Azure Cloud Shell hozzáférés a MySQL rugalmas kiszolgálóhoz a nyilvános hozzáférési hálózati konfigurációhoz.":::
 
 > [!NOTE]
 > Annak ellenőrzése, **hogy a nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáson belül erre a kiszolgálóra** csak fejlesztési vagy tesztelési célokra használható. Úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure-szolgáltatásokhoz vagy-eszközökhöz lefoglalt IP-címekről érkező kapcsolatokat, beleértve a más ügyfelek előfizetéseit is.
@@ -109,6 +117,9 @@ Kattintson a **kipróbálás** gombra a Azure Cloud Shell elindításához és a
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+> [!IMPORTANT]
+> Ha Azure Cloud Shell használatával csatlakozik a rugalmas kiszolgálóhoz, a--SSL = true paramétert kell használnia, és nem--SSL-Mode = REQUIREd.
+> Az elsődleges ok az, Azure Cloud Shell előre telepített mysql.exe-ügyfelet tartalmaz az MariaDB Distribution szolgáltatásból, amely a--SSL paramétert igényli, míg az Oracle-alapú terjesztéshez szükséges MySQL-ügyfél a--SSL-Mode paramétert igényli.
 
 Ha a következő hibaüzenet jelenik meg, amikor a fenti parancsot követve csatlakozik a rugalmas kiszolgálóhoz, a korábban említett "nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáshoz az Azure-ban erre a kiszolgálóra" beállítást nem sikerült beállítani, vagy a beállítás nincs mentve. Próbálkozzon újra a tűzfal beállításával, és próbálkozzon újra.
 

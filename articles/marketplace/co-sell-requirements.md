@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593390"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107091"
 ---
 # <a name="co-sell-requirements"></a>Közös értékesítésre vonatkozó követelmények
 
@@ -35,7 +35,7 @@ A közös értékesítésre kész állapot elérésére vonatkozó ajánlathoz a
 
 **Minden partner**:
 
-- Rendelkeznie kell egy MPN-AZONOSÍTÓval és egy aktív [kereskedelmi piactér-fiókkal a partner Centerben](./partner-center-portal/create-account.md).
+- Rendelkeznie kell egy MPN-AZONOSÍTÓval és egy aktív [kereskedelmi piactér-fiókkal a partner Centerben](create-account.md).
 - Győződjön meg arról, hogy rendelkezik egy teljes [üzleti profillal](/partner-center/create-a-marketing-profile) a partner Centerben. A minősített Microsoft-partnerként az üzleti profil segítséget nyújt a vállalatoknak az üzleti igények kielégítésére szolgáló egyedi megoldásait és szakértelmét bemutató ügyfelei számára, ami az [ajánlásokat](/partner-center/referrals)eredményezi.
 - Fejezze be a **közös értékesítés a Microsofttal** lapot, és tegye közzé az ajánlatot a kereskedelmi piactéren.
 - Adjon meg egy értékesítési kapcsolattartót minden közös értékesítésre jogosult földrajzi helyhez és a szükséges anyagjegyzékekhez.
@@ -59,7 +59,7 @@ A dokumentumok létrehozásához biztosítunk sablonokat. További információ 
 
 ### <a name="publish-your-offer-live"></a>Ajánlat élő közzététele
 
-A közös értékesítésre kész állapot minősítéséhez ajánlatát vagy megoldását élőben közzé kell tenni a kereskedelmi Marketplace online áruházakban: Azure Marketplace vagy Microsoft AppSource. További információ a kereskedelmi piactéren elérhető ajánlatok közzétételéről: az [ajánlat típusa szerinti közzétételi útmutató](publisher-guide-by-offer-type.md). Ha még nem tett közzé ajánlatot a kereskedelmi piactéren, győződjön meg arról, hogy rendelkezik egy [kereskedelmi piactér-fiókkal](./partner-center-portal/create-account.md).
+A közös értékesítésre kész állapot minősítéséhez ajánlatát vagy megoldását élőben közzé kell tenni a kereskedelmi Marketplace online áruházakban: Azure Marketplace vagy Microsoft AppSource. További információ a kereskedelmi piactéren elérhető ajánlatok közzétételéről: az [ajánlat típusa szerinti közzétételi útmutató](publisher-guide-by-offer-type.md). Ha még nem tett közzé ajánlatot a kereskedelmi piactéren, győződjön meg arról, hogy rendelkezik egy [kereskedelmi piactér-fiókkal](create-account.md).
 
 ## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Az Azure IP közös értékesítésének incentivized-állapotára vonatkozó követelmények
 

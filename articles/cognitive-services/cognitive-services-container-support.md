@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/16/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, Kubernetes
-ms.openlocfilehash: 3b0a39e9d84a56bac3117df9279954e3756d465a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 007dfe6d67d504286b9546fe0139055b58dc700f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065820"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285603"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-tárolók
 
@@ -76,7 +76,7 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 
 | Szolgáltatás |  Tároló | Leírás | Rendelkezésre állás |
 |--|--|--|--|
-| [Computer Vision][cv-containers] | **OCR olvasása** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/concept-recognizing-text.md)található. | Megtekintett előzetes verzió. [Hozzáférés kérése][request-access]. |
+| [Computer Vision][cv-containers] | **OCR olvasása** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/overview-ocr.md)található. | Megtekintett előzetes verzió. [Hozzáférés kérése][request-access]. |
 | [Térbeli elemzés][spa-containers] | **Térbeli elemzés** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | A valós idejű adatfolyam-továbbítási videót elemzi a személyek közötti térbeli kapcsolatok, a mozgásuk és a fizikai környezetekben található objektumok közötti interakciók megismerése érdekében. | Megtekintett előzetes verzió. [Hozzáférés kérése][request-access]. |
 | [Face][fa-containers] | **Face** | Észleli az emberi arcokat a képekben, és azonosítja az attribútumokat, beleértve az arc-tereptárgyak (például az orr és a szemek), a nemek, az életkor és más, a géppel előre jelzett arc-funkciókat. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc vagy különböző kép azonos-e a megbízhatósági pontszám használatával, vagy összehasonlítja az arcokat egy adatbázissal, hogy megtudja, hasonló vagy azonos arc létezik-e. A hasonló arcok csoportokba rendezésére is képes, közös vizualizációs jellemzőkkel. | Nem érhető el |
 | [Űrlap-felismerő][fr-containers] | **Form Recognizer** | Az űrlap ismerete a gépi tanulási technológiákat alkalmazza a kulcs-érték párok és táblák űrlapokból való azonosításához és kinyeréséhez. | Nem érhető el | 

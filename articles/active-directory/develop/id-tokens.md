@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf7940af03c02d96f6ed2ca452322ad012bc6a2d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175388"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105357"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -124,6 +124,12 @@ Annak biztosítása érdekében, hogy a jogkivonat mérete ne haladja meg a HTTP
   ...
 }
 ```
+
+## <a name="id-token-lifetime"></a>AZONOSÍTÓ jogkivonat élettartama
+
+Alapértelmezés szerint az azonosító jogkivonat 1 óra után 1 órára érvényes, az ügyfélnek új azonosító jogkivonatot kell bekérnie.
+
+Az azonosító token élettartama beállítható annak szabályozására, hogy az ügyfélalkalmazás milyen gyakran járjon le az alkalmazás-munkamenetben, és hogy milyen gyakran szükséges a felhasználónak ismételt hitelesítése (csendes vagy interaktív módon). További információért olvassa el a [konfigurálható jogkivonat-élettartamok](active-directory-configurable-token-lifetimes.md)című témakört.
 
 ## <a name="validating-an-id_token"></a>Id_token ellenőrzése
 

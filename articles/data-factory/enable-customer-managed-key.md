@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443876"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222689"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Azure Data Factory titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -137,6 +137,23 @@ Data Factory titkosításhoz használt kulcs módosításához manuálisan kell 
 ## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
 
 A tervezés után az ügyfél által felügyelt kulcs funkció engedélyezése után nem távolíthatja el az extra biztonsági lépést. A gyár és az adatok titkosítása mindig egy ügyfél által megadott kulccsal történik.
+
+## <a name="customer-managed-key-and-continuous-integration-and-continuous-deployment"></a>Ügyfél által felügyelt kulcs és folyamatos integráció és folyamatos üzembe helyezés
+
+Alapértelmezés szerint a CMK-konfiguráció nem szerepel a Factory Azure Resource Manager (ARM) sablonban. Az ARM-sablonban lévő ügyfél által felügyelt kulcs titkosítási beállításainak belefoglalása a folyamatos integrációhoz (CI/CD):
+
+1. Győződjön meg arról, hogy a gyár git módban van
+1. Navigáljon a felügyeleti portál – ügyfél által felügyelt kulcs szakaszra
+1. _Vegyen részt az ARM-sablon_ lehetőségnél
+
+  :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="Képernyőkép az ARM-sablonban található ügyfél által felügyelt kulcs beállításáról.":::
+
+A következő beállítások lesznek hozzáadva az ARM-sablonhoz. Ezek a tulajdonságok a folyamatos integráció és a kézbesítési folyamatok paraméterei a [Azure Resource Manager paraméterek konfigurációjának](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template) szerkesztésével konfigurálhatók
+
+  :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="Képernyőkép az ügyfél által felügyelt kulcs beállításáról Azure Resource Manager sablonban.":::
+
+> [!NOTE]
+> Ha hozzáadja a titkosítási beállítást az ARM-sablonokhoz, egy olyan gyári szintű beállítást ad hozzá, amely felülírja más gyári szintű beállításokat, például a git-konfigurációkat más környezetekben. Ha egy emelt szintű környezetben (például ellenőrzését vagy PROD) engedélyezte ezeket a beállításokat, tekintse meg a [globális paramétereket a CI/CD-ben](author-global-parameters.md#cicd).
 
 ## <a name="next-steps"></a>Következő lépések
 

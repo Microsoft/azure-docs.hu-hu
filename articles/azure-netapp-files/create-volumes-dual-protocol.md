@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/28/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6a2d7ad92c209a93d740d60808c2cbd2f90c6b4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574639"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258418"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
-Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy kettős protokollt használó létrehozását. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan kötetet, amely a NFSv3 és az SMB kettős protokollját használja az LDAP-felhasználók leképezésének támogatásával.  
+Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy kettős protokollt használó létrehozását. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan kötetet, amely a NFSv3 és az SMB kettős protokollját használja az LDAP-felhasználók leképezésének támogatásával. 
 
+Az NFS-kötetek létrehozásával kapcsolatban lásd: [NFS-kötet létrehozása](azure-netapp-files-create-volumes.md). Az SMB-kötetek létrehozásával kapcsolatban tekintse meg [az SMB-kötet létrehozása](azure-netapp-files-create-volumes-smb.md)című témakört. 
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
@@ -39,7 +40,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
 * Hozzon létre egy névkeresési zónát a DNS-kiszolgálón, majd adjon hozzá egy mutató (PTR) rekordot a névkeresési zónában található AD-gazdagéphez. Ellenkező esetben a kettős protokollú kötet létrehozása sikertelen lesz.
 * Ellenőrizze, hogy az NFS-ügyfél naprakész állapotban van-e, illetve hogy az operációs rendszer legfrissebb verziója fut-e rajta.
 * Győződjön meg arról, hogy a Active Directory (AD) LDAP-kiszolgáló működik és fut az AD-ben. Ezt úgy teheti meg, ha telepíti és konfigurálja a [Active Directory Lightweight Directory-szolgáltatások (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) szerepkört az ad-gépen.
-* A kettős protokollú kötetek jelenleg nem támogatják a Azure Active Directory Domain Servicest (AADDS).  
+* A kettős protokollú kötetek jelenleg nem támogatják a Azure Active Directory Domain Servicest (AADDS). A AADDS használata esetén a TLS protokollon keresztüli LDAP-t nem szabad engedélyezni.
 * A kettős protokollú kötet által használt NFS-verzió NFSv3. Ennek megfelelően a következő szempontokat kell figyelembe venni:
     * A kettős protokoll nem támogatja a Windows ACL-ek bővített attribútumait az `set/get` NFS-ügyfelekről.
     * Az NFS-ügyfelek nem változtathatják meg az NTFS biztonsági stílus engedélyeit, és a Windows-ügyfelek nem változtathatják meg a UNIX-stílusú kettős protokollú kötetek engedélyeit.   
@@ -121,6 +122,17 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
+## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>A helyi NFS-felhasználók LDAP-vel való elérésének engedélyezése kettős protokollú kötethez 
+
+Engedélyezheti a Windows LDAP-kiszolgálón nem szereplő helyi NFS-ügyfelek számára a kettős protokollú kötetek elérését, amelyeken engedélyezve van az LDAP és a kiterjesztett csoportok használata. Ehhez engedélyezze a **helyi NFS-felhasználók engedélyezése LDAP** -sel beállítást a következő módon:
+
+1. Kattintson **Active Directory kapcsolatok** elemre.  Egy meglévő Active Directory-kapcsolatban kattintson a helyi menüre (a három pontra `…` ), majd válassza a **Szerkesztés** lehetőséget.  
+
+2. A megjelenő **Active Directory beállítások szerkesztése** ablakban jelölje be a **helyi NFS-felhasználók engedélyezése LDAP** -beállítással beállítást.  
+
+    ![Képernyőfelvétel a helyi NFS-felhasználók engedélyezése LDAP-beállítással](../media/azure-netapp-files/allow-local-nfs-users-with-ldap.png)  
+
+
 ## <a name="manage-ldap-posix-attributes"></a>LDAP POSIX-attribútumok kezelése
 
 Az Active Directory felhasználók és számítógépek MMC beépülő modullal kezelheti a POSIX-attribútumokat, például a UID-t, a kezdőkönyvtárat és az egyéb értékeket.  A következő példa a Active Directory attribútum-szerkesztőt mutatja be:  
@@ -129,9 +141,9 @@ Az Active Directory felhasználók és számítógépek MMC beépülő modullal 
 
 A következő attribútumokat kell beállítania az LDAP-felhasználók és az LDAP-csoportok számára: 
 * Az LDAP-felhasználók kötelező attribútumai:   
-    `uid`: Alice, `uidNumber` : 139, `gidNumber` : 555, `objectClass` : posixAccount
+    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * Az LDAP-csoportok szükséges attribútumai:   
-    `objectClass`: "posixGroup", `gidNumber` : 555
+    `objectClass: posixGroup`, `gidNumber: 555`
 
 ## <a name="configure-the-nfs-client"></a>Az NFS-ügyfél konfigurálása 
 
@@ -141,3 +153,4 @@ Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Az
 
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md)
 * [SMB-vagy kettős protokollú kötetek hibáinak megoldása](troubleshoot-dual-protocol-volumes.md)
+* [Az LDAP-kötetek problémáinak elhárítása](troubleshoot-ldap-volumes.md)

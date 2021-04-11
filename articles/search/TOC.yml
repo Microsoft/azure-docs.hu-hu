@@ -392,6 +392,8 @@
       items:
         - name: Teljesítmény elemzése
           href: search-performance-analysis.md
+        - name: Teljesítménymérések
+          href: performance-benchmarks.md
         - name: Tippek a jobb teljesítmény érdekében
           href: search-performance-tips.md
         - name: Diagnosztikai naplózás

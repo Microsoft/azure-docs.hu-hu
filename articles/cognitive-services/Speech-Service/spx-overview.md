@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddba62b37c200ade87dbb51042fe0cb084a9ef9a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98539766"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106122"
 ---
 # <a name="what-is-the-speech-cli"></a>Mi az a Speech parancssori felület?
 
@@ -36,7 +36,7 @@ A Speech SDK használata:
 
 * Beszédfelismerés – beszéd – szöveg konvertálása hangfájlokból vagy közvetlenül egy mikrofonból, vagy egy rögzített beszélgetés átírása.
 
-* Beszédfelismerés – a szöveg és a beszéd szöveggé konvertálása szöveges fájlok bevitele vagy közvetlenül a parancssorból való bevitel használatával. [SSML-konfigurációk](speech-synthesis-markup.md), valamint [standard vagy neurális hangok](speech-synthesis-markup.md#standard-neural-and-custom-voices)használatával testreszabhatja a beszédfelismerési kimenet jellemzőit.
+* Beszédfelismerés – a szöveg és a beszéd szöveggé konvertálása szöveges fájlok bevitele vagy közvetlenül a parancssorból való bevitel használatával. [SSML-konfigurációk](speech-synthesis-markup.md), valamint [standard vagy neurális hangok](speech-synthesis-markup.md#neural-and-custom-voices)használatával testreszabhatja a beszédfelismerési kimenet jellemzőit.
 
 * Beszéd fordítása – a hanganyagot szövegre vagy hangra fordíthatja a célnyelv nyelvén.
 

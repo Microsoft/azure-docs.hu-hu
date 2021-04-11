@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b61608c0cb53ab808c5d3d789ec5ddc318c6923d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563820"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106802"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Az elemzési adatszolgáltatások programozott elérésének előfeltételei
 
@@ -20,7 +20,7 @@ Ahhoz, hogy programozott módon hozzáférhessen a kereskedelmi piactér elemzé
 
 ## <a name="commercial-marketplace-enrollment"></a>Kereskedelmi piactér-regisztráció
 
-A kereskedelmi Piactéri elemzési adatszolgáltatások programozott módon való eléréséhez regisztrálni kell a kereskedelmi piactér programban, és rendelkeznie kell egy partner Center-fiókkal. Ebből a cikkből megtudhatja, hogyan [hozhat létre kereskedelmi Piactéri fiókot a partner Centerben](./partner-center-portal/create-account.md).
+A kereskedelmi Piactéri elemzési adatszolgáltatások programozott módon való eléréséhez regisztrálni kell a kereskedelmi piactér programban, és rendelkeznie kell egy partner Center-fiókkal. Ebből a cikkből megtudhatja, hogyan [hozhat létre kereskedelmi Piactéri fiókot a partner Centerben](create-account.md).
 
 ## <a name="create-azure-active-directory-application"></a>Azure Active Directory alkalmazás létrehozása
 

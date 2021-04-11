@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a71a53cd2aff16102a54f5a24063615e02d11872
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 051963060531283b868a5a20e13e871de1919ccb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169521"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256072"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -59,7 +59,6 @@ A következő forgatókönyvek jelenleg nem támogatottak:
 - *Azure ad P2 licenccel rendelkező ügyfelek* esetében: ne rendeljen aktívként egy csoportot az Azure ad és a PRIVILEGED Identity Management (PIM) szolgáltatáson keresztüli szerepkörhöz. Konkrétan ne rendeljen hozzá szerepkört a szerepkörhöz hozzárendelhető csoporthoz, amikor a létrehozása folyamatban van, *és* a PIM használatával később hozzárendel egy szerepkört a csoporthoz. Ez olyan problémákhoz vezet, amelyekben a felhasználók nem látják az aktív szerepkör-hozzárendeléseiket a PIM-ben, és nem tudják eltávolítani a PIM-hozzárendelést. Ez a forgatókönyv nem érinti a jogosult hozzárendeléseket. Ha ezt a hozzárendelést próbálja végrehajtani, előfordulhat, hogy a rendszer váratlan viselkedést lát, például:
   - A szerepkör-hozzárendelés befejezési időpontja helytelenül jelenhet meg.
   - A PIM-portálon a **saját szerepkörök** csak egy szerepkör-hozzárendelést tudnak megjeleníteni, függetlenül attól, hogy a hozzárendelés hány módszerből áll (egy vagy több csoporton és közvetlenül).
-- A **felügyelt felhasználó bejelentkezési funkciójának szakaszos** bevezetésének engedélyezése nem támogatja a hozzárendelést csoporton keresztül.
 - *Azure ad P2 licenccel rendelkező ügyfeleinknek* Még a csoport törlése után is megjelenik a szerepkör jogosult tagja a PIM felhasználói felületén. Funkcionálisan nincs probléma; Ez csak egy gyorsítótár-probléma a Azure Portalban.  
 - A szerepkör-hozzárendelésekhez használja az új [Exchange felügyeleti központot](https://admin.exchange.microsoft.com/) csoporttagság használatával. A régi Exchange felügyeleti központ még nem támogatja ezt a funkciót. Az Exchange PowerShell-parancsmagok a várt módon fognak működni.
 - Azure Information Protection portálon (a klasszikus portálon) még nem ismeri fel a szerepkör-tagságot a csoporton keresztül. [Áttelepítheti az egységes érzékenységű címkézési platformra](/azure/information-protection/configure-policy-migrate-labels) , majd az Office 365 biztonsági & megfelelőségi központjának használatával csoportos hozzárendeléseket használhat a szerepkörök kezeléséhez.

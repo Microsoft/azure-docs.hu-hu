@@ -2,18 +2,18 @@
 title: Az Azure Resource naplózza a támogatott szolgáltatásokat és sémákat
 description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatásait és esemény-sémáját.
 ms.topic: reference
-ms.date: 09/01/2020
-ms.openlocfilehash: 661cba2d78dbb176bb04e6831cf8e045a285535e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2020
+ms.openlocfilehash: 09415353d93313f1b3c4844202b59f577ef3838d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033095"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105765"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
 > [!NOTE]
-> Az erőforrás-naplók korábban diagnosztikai naplóként ismertek. A név 2019 októberében módosult, mivel az Azure Monitor által összegyűjtött naplók típusai többek között az Azure-erőforrást is tartalmazzák. Emellett az ebben a cikkben felsorolt erőforrás-napló-kategóriák listáját is felhasználhatja. Átkerültek az [erőforrás-napló kategóriájára](resource-logs-categories.md). 
+> Az erőforrás-naplók korábban diagnosztikai naplóként ismertek. A név 2019 októberében módosult, mivel az Azure Monitor által összegyűjtött naplók típusai többek között az Azure-erőforrást is tartalmazzák. Emellett az ebben a cikkben felsorolt erőforrás-naplózási kategóriák listáját is felhasználhatja. Mostantól az [erőforrás-napló kategóriái](resource-logs-categories.md). 
 
 [Azure monitor az erőforrás-naplókat](../essentials/platform-logs-overview.md) az Azure-szolgáltatások által kibocsátott naplók, amelyek leírják ezeknek a szolgáltatásoknak vagy erőforrásoknak a működését. A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez.
 
@@ -65,6 +65,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Azure Database for MySQL | [Diagnosztikai naplók Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Naplók Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Diagnosztikai naplózás az Azure Databricksben](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| DDoS Protection | [Azure DDoS Protection standard naplózása](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Azure Digital Twins | [Azure digitális Twins-diagnosztika beállítása](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs-naplók](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | A séma nem érhető el. |
@@ -76,13 +77,13 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Load Balancer |[Naplóelemzés az Azure Load Balancerhez](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS Protection | [Azure DDoS Protection standard naplózása](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI – dedikált | [Power BI Embedded naplózása az Azure-ban](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
 | Keresés |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |
 | Service Bus |[Naplók Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database naplózás](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Feladatnaplók](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Tárolás | [Blobok](/azure/storage/blobs/monitor-blob-storage-reference#resource-logs-preview), [fájlok](/azure/storage/files/storage-files-monitoring-reference#resource-logs-preview), [várólisták](/azure/storage/queues/monitor-queue-storage-reference#resource-logs-preview),  [táblák](/azure/storage/tables/monitor-table-storage-reference#resource-logs-preview) |
 | Traffic Manager | [Traffic Manager naplózási séma](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuális hálózatok | A séma nem érhető el. |
 | Virtuális hálózati átjárók | A séma nem érhető el. |

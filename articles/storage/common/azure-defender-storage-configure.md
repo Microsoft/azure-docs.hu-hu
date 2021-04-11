@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2f044ab267365885260b031638572846184bc83
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698144"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063185"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Az Azure Defender tároláshoz konfigurálása
 
@@ -50,7 +50,7 @@ Az Azure Defendert a következő szakaszokban ismertetett módon állíthatja be
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
-Amikor előfizet a Azure Security Center Standard szintjére, az Azure Defender automatikusan beállítja az összes Storage-fiókját. Az Azure Defender a következő módon engedélyezhető vagy tiltható le a Storage-fiókok számára egy adott előfizetésben:
+Az Azure Defender be van építve Azure Security Centerba. Ha engedélyezi az Azure Defender használatát az előfizetésében, az Azure Defender for Azure Storage szolgáltatás automatikusan engedélyezve lesz az összes Storage-fiókhoz. Az Azure Defender a következő módon engedélyezhető vagy tiltható le a Storage-fiókok számára egy adott előfizetésben:
 
 1. A [Azure Portal](https://portal.azure.com) **Azure Security Center** elindítása.
 1. A főmenü **felügyelet** területén válassza a **díjszabás & beállítások** lehetőséget.
@@ -94,20 +94,38 @@ Egy Azure Policy használatával engedélyezheti az Azure Defender számára a S
 
     :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Házirend kiosztása az Azure Defender tárterületének engedélyezéséhez":::
 
-### <a name="rest-api"></a>[REST API](#tab/rest-api)
-
-Használjon REST API-parancsokat egy adott Storage-fiók Azure Defender-beállításának létrehozásához, frissítéséhez vagy beszerzéséhez.
-
-- [Komplex veszélyforrások elleni védelem – létrehozás](/rest/api/securitycenter/advancedthreatprotection/create)
-- [Komplex veszélyforrások elleni védelem – Get](/rest/api/securitycenter/advancedthreatprotection/get)
-
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Használja a következő PowerShell-parancsmagokat:
+Ha engedélyezni szeretné az Azure Defender számára a PowerShell-lel rendelkező Storage-fiókot, először telepítse az az [. Security](https://www.powershellgallery.com/packages/Az.Security) modult. Ezután hívja meg az [enable-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection) parancsot. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
-- [Komplex veszélyforrások elleni védelem engedélyezése](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Komplex veszélyforrások elleni védelem](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [A komplex veszélyforrások elleni védelem letiltása](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+```azurepowershell
+Enable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+A PowerShell-lel rendelkező Storage-fiókhoz tartozó Azure Defender-beállítás megadásához hívja meg a [Get-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/get-azsecurityadvancedthreatprotection) parancsot. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+
+```azurepowershell
+Get-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ha engedélyezni szeretné az Azure Defender számára a Storage-fiókot az Azure CLI-vel, hívja meg az az [Security ATP Storage Update](/cli/azure/security/atp/storage#az_security_atp_storage_update) parancsot. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+
+```azurecli
+az security atp storage update \
+    --resource-group <resource-group> \
+    --storage-account <storage-account> \
+    --is-enabled true
+```
+
+Ha egy Storage-fiók Azure Defender-beállításait az Azure CLI-vel szeretné megtekinteni, hívja meg az az [Security ATP Storage show](/cli/azure/security/atp/storage#az_security_atp_storage_show) parancsot. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+
+```azurecli
+az security atp storage show \
+    --resource-group <resource-group> \
+    --storage-account <storage-account>
+```
 
 ---
 
@@ -137,5 +155,6 @@ A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [Azure Storage-fiókok naplóiról](/rest/api/storageservices/About-Storage-Analytics-Logging)
-- További információ a [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Az Azure Defender tároláshoz bemutatása](../../security-center/defender-for-storage-introduction.md)
+- [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Naplók az Azure Storage-fiókokban](/rest/api/storageservices/About-Storage-Analytics-Logging)
