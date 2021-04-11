@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fadb679260582a788eb6408ff3761f00c2ceb1a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916337"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448825"
 ---
 # <a name="playback-technology-tech"></a>Lejátszási technológia ("Tech") #
 
@@ -21,7 +21,7 @@ A lejátszási technológia a videó vagy Hang lejátszásához használt konkr�
 - **azureHtml5JS**: az MSE és az eme szabványokat használja a bővítmények nélküli, a Dash-tartalomra épülő, az AES-128 bites, titkosított tartalommal vagy DRM-vel közös titkosított tartalommal (a PlayReady és a Widevine-n keresztül, ha a böngésző támogatja Azure Media Services)
 - **flashs**: a Flash Player technológiáját használja a zökkenőmentes tartalom lejátszásához, amely támogatja az AES-128 bites boríték-visszafejtést Azure Media Services – a 11,4-es vagy újabb Flash-verziót igényli
 - **html5FairPlayHLS**: a HLS és a videó elem használatával a Safari-specifikus böngésző-alapú lejátszási technológián keresztül használható. Ez a tech szükséges a FairPlay által védett tartalom lejátszásához Azure Media Servicesről, és a techOrder a 10/19/16
-- **silverlights**: a Silverlight technológiáját használja a zökkenőmentes tartalom lejátszásához, és támogatja a Azure Media Services PlayReady védett tartalmakat.
+- **Silverlights**: a Silverlight technológiáját használja a zökkenőmentes tartalom lejátszásához, és támogatja a Azure Media Services PlayReady védett tartalmakat.
 - **HTML5**: böngésző alapú lejátszási technológiát használ a videó elemmel.  Egy Apple iOS-vagy Android-eszközön ez a technológia lehetővé teszi a HLS streamek lejátszását az AES-128 bites boríték-titkosítás vagy a DRM-tartalom (FairPlay-en keresztül, ha a böngésző támogatja) alapvető támogatásával.
 
 ## <a name="tech-order"></a>Technikai sorrend ##

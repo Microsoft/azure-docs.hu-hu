@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18
 ms.openlocfilehash: 315b2efa042721a19fa779794c4921f9ced1fc83
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589803"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack"></a>Azure Stream Analytics futtatása Azure Stack 
@@ -147,7 +147,7 @@ Miután létrejött a Stream Analytics-feladat az Azure Portalon, konfigurálhat
    | Mező | Érték |
    | --- | --- |
    | Kimeneti alias | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a blob-tárolóba történő irányítására szolgál. |
-   | A(z) | Annak a Storage-fióknak a neve, ahová a kimenetet küldi. (Példa: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.microsoft.com*) |
+   | Tárfiók | Annak a Storage-fióknak a neve, ahová a kimenetet küldi. (Példa: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.microsoft.com*) |
    | Storage-fiók kulcsa | A Storage-fiókhoz társított titkos kulcs. Ezt a beállítást automatikusan kitölti a rendszer, hacsak nem kiválasztja a blob Storage-beállítások manuális megadásának lehetőségét. |
 
 > [!NOTE]

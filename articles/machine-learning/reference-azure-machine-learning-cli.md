@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jordane
 author: jpe316
-ms.date: 06/22/2020
+ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519112"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219620"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & a CLI-bővítményt használja Azure Machine Learning
 
@@ -60,22 +60,7 @@ A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azur
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 
-A Machine Learning CLI bővítmény telepítéséhez használja a következő parancsot:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-> [!TIP]
-> Az alábbi parancsokkal használható fájlok [itt](https://aka.ms/azml-deploy-cloud)találhatók.
-
-Ha a rendszer kéri, válassza `y` a bővítmény telepítéséhez.
-
-A bővítmény telepítésének ellenőrzéséhez használja a következő parancsot az ML-specifikus alparancsok listájának megjelenítéséhez:
-
-```azurecli-interactive
-az ml -h
-```
+A bővítmény automatikusan települ, amikor először megpróbál olyan parancsot használni, amely a következővel kezdődik: `az ml` .
 
 ## <a name="update-the-extension"></a>A bővítmény frissítése
 
@@ -84,7 +69,6 @@ A Machine Learning CLI bővítmény frissítéséhez használja a következő pa
 ```azurecli-interactive
 az extension update -n azure-cli-ml
 ```
-
 
 ## <a name="remove-the-extension"></a>A bővítmény eltávolítása
 

@@ -14,10 +14,10 @@ ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589463"
 ---
 # <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Alkalmazások migrálása az Azure AD-be a AD FS alkalmazás-tevékenység jelentés használatával
@@ -78,7 +78,7 @@ A AD FS alkalmazás tevékenységéről szóló jelentés az Azure AD- **haszná
 
 A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott összes konfigurációs tesztet.
 
-|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Description  |
+|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Leírás  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> A AdditionalAuthentication legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | A függő entitásnak szabályokkal kell megkérnie a többtényezős hitelesítést (MFA). Az Azure AD-ba való áttéréshez ezeket a szabályokat feltételes hozzáférési házirendekbe kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy váltson át az Azure AD MFA-re. [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> A függő entitás AdditionalWSFedEndpoint értéke TRUE (igaz).       | Sikeres/sikertelen          | A AD FS függő entitása több WS-Fed kiállítási végpontot is lehetővé tesz.Az Azure AD jelenleg csak egyet támogat.Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

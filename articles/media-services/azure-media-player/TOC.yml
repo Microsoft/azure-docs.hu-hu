@@ -2,10 +2,8 @@
   items:
     - name: Az Azure Media Player áttekintése
       href: azure-media-player-overview.md
-    - name: Kibocsátási megjegyzések
-      href: azure-media-player-release-notes.md
     - name: Változásnapló
-      href: azure-media-player-changelog.md
+      href: 'https://amp.azure.net/libs/amp/latest/docs/changelog.html'
 - name: Rövid útmutatók
   items:
     - name: Az Azure Media Player gyorsútmutatója
@@ -41,7 +39,7 @@
 - name: Referencia
   items:
     - name: API
-      href: /javascript/api/azuremediaplayer/
+      href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
     - name: API-metódusok
       href: azure-media-player-api-methods.md
     - name: Beállítások

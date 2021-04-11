@@ -6,12 +6,12 @@ ms.date: 04/16/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: bd6ed2e5c848b39ad946209d5ea92fcf6ce3b438
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e824af23fd83725b426d5860186d3c4b1496e18
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625364"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448899"
 ---
 # <a name="adding-the-jvm-arg---azure-monitor-application-insights-for-java"></a>A JVM ARG-Azure Monitor Application Insights hozzáadása Javához
 
@@ -23,24 +23,24 @@ ms.locfileid: "98625364"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` -t valahol `-jar` , például:
+Adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` -t valahol `-jar` , például:
 
 ```
-java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
+java -javaagent:path/to/applicationinsights-agent-3.0.3.jar -jar <myapp.jar>
 ```
 
 ## <a name="spring-boot-via-docker-entry-point"></a>Spring boot a Docker belépési pontján keresztül
 
-Ha az *exec* űrlapot használja, adja hozzá a paramétert a paraméterhez a paraméter `"-javaagent:path/to/applicationinsights-agent-3.0.2.jar"` előtt `"-jar"` (például:).
+Ha az *exec* űrlapot használja, adja hozzá a paramétert a paraméterhez a paraméter `"-javaagent:path/to/applicationinsights-agent-3.0.3.jar"` előtt `"-jar"` (például:).
 
 ```
-ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.2.jar", "-jar", "<myapp.jar>"]
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.3.jar", "-jar", "<myapp.jar>"]
 ```
 
-Ha a *rendszerhéj* -űrlapot használja, adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` -t valahol `-jar` , például:
+Ha a *rendszerhéj* -űrlapot használja, adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` -t valahol `-jar` , például:
 
 ```
-ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.3.jar -jar <myapp.jar>
 ```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
@@ -50,7 +50,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <mya
 Ha a Tomcat-t a vagy a használatával telepítette `apt-get` `yum` , akkor rendelkeznie kell egy fájllal `/etc/tomcat8/tomcat8.conf` .  Adja hozzá ezt a sort a fájl végéhez:
 
 ```
-JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
+JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.3.jar"
 ```
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>A Tomcat a letöltés és a kicsomagolás használatával lett telepítve
@@ -58,10 +58,10 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 Ha a Tomcat-t a letöltésével és kicsomagolásával telepítette [https://tomcat.apache.org](https://tomcat.apache.org) , akkor rendelkeznie kell egy fájllal `<tomcat>/bin/catalina.sh` .  Hozzon létre egy új fájlt a nevű könyvtárban a `<tomcat>/bin/setenv.sh` következő tartalommal:
 
 ```
-CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
+CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.3.jar"
 ```
 
-Ha a fájl `<tomcat>/bin/setenv.sh` már létezik, módosítsa a fájlt, és adja hozzá a következőt: `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` `CATALINA_OPTS` .
+Ha a fájl `<tomcat>/bin/setenv.sh` már létezik, módosítsa a fájlt, és adja hozzá a következőt: `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` `CATALINA_OPTS` .
 
 
 ## <a name="tomcat-8-windows"></a>Tomcat 8 (Windows)
@@ -71,36 +71,36 @@ Ha a fájl `<tomcat>/bin/setenv.sh` már létezik, módosítsa a fájlt, és adj
 Keresse meg a fájlt `<tomcat>/bin/catalina.bat` .  Hozzon létre egy új fájlt a nevű könyvtárban a `<tomcat>/bin/setenv.bat` következő tartalommal:
 
 ```
-set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar
+set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```
 
 Az idézőjelek nem szükségesek, de ha be szeretné vonni őket, a megfelelő elhelyezés a következő:
 
 ```
-set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
+set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.3.jar"
 ```
 
-Ha a fájl `<tomcat>/bin/setenv.bat` már létezik, csak módosítsa a fájlt, és adja hozzá a következőt: `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` `CATALINA_OPTS` .
+Ha a fájl `<tomcat>/bin/setenv.bat` már létezik, csak módosítsa a fájlt, és adja hozzá a következőt: `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` `CATALINA_OPTS` .
 
 ### <a name="running-tomcat-as-a-windows-service"></a>A Tomcat futtatása Windows-szolgáltatásként
 
-Keresse meg a fájlt `<tomcat>/bin/tomcat8w.exe` .  Futtassa ezt a végrehajtható fájlt, és adja hozzá a parancsot a `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` `Java Options` `Java` lapon.
+Keresse meg a fájlt `<tomcat>/bin/tomcat8w.exe` .  Futtassa ezt a végrehajtható fájlt, és adja hozzá a parancsot a `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` `Java Options` `Java` lapon.
 
 
 ## <a name="jboss-eap-7"></a>JBoss EAP 7
 
 ### <a name="standalone-server"></a>Önálló kiszolgáló
 
-Hozzáadás a `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` fájl meglévő `JAVA_OPTS` környezeti változóhoz `JBOSS_HOME/bin/standalone.conf` (Linux) vagy `JBOSS_HOME/bin/standalone.conf.bat` (Windows):
+Hozzáadás a `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` fájl meglévő `JAVA_OPTS` környezeti változóhoz `JBOSS_HOME/bin/standalone.conf` (Linux) vagy `JBOSS_HOME/bin/standalone.conf.bat` (Windows):
 
 ```java    ...
-    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.2.jar</b> -Xms1303m -Xmx1303m ..."
+    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.3.jar</b> -Xms1303m -Xmx1303m ..."
     ...
 ```
 
 ### <a name="domain-server"></a>Tartományi kiszolgáló
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` a meglévőhöz a `jvm-options` következőben `JBOSS_HOME/domain/configuration/host.xml` :
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` a meglévőhöz a `jvm-options` következőben `JBOSS_HOME/domain/configuration/host.xml` :
 
 ```xml
 ...
@@ -110,7 +110,7 @@ Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` a meglévő
         <jvm-options>
             <option value="-server"/>
             <!--Add Java agent jar file here-->
-            <option value="-javaagent:path/to/applicationinsights-agent-3.0.2.jar"/>
+            <option value="-javaagent:path/to/applicationinsights-agent-3.0.3.jar"/>
             <option value="-XX:MetaspaceSize=96m"/>
             <option value="-XX:MaxMetaspaceSize=256m"/>
         </jvm-options>
@@ -150,20 +150,20 @@ Sorok hozzáadása a következőhöz `start.ini`
 
 ```
 --exec
--javaagent:path/to/applicationinsights-agent-3.0.2.jar
+-javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```
 
 
 ## <a name="payara-5"></a>5. Payara
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` a meglévőhöz a `jvm-options` következőben `glassfish/domains/domain1/config/domain.xml` :
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` a meglévőhöz a `jvm-options` következőben `glassfish/domains/domain1/config/domain.xml` :
 
 ```xml
 ...
 <java-config ...>
     <!--Edit the JVM options here-->
     <jvm-options>
-        -javaagent:path/to/applicationinsights-agent-3.0.2.jar>
+        -javaagent:path/to/applicationinsights-agent-3.0.3.jar>
     </jvm-options>
         ...
 </java-config>
@@ -179,7 +179,7 @@ Java and Process Management > Process definition >  Java Virtual Machine
 ```
 Az "általános JVM argumentumok" elemnél adja hozzá a következőket:
 ```
--javaagent:path/to/applicationinsights-agent-3.0.2.jar
+-javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```
 Ezután mentse és indítsa újra az alkalmazást.
 
@@ -188,5 +188,5 @@ Ezután mentse és indítsa újra az alkalmazást.
 
 Hozzon létre egy új fájlt `jvm.options` a kiszolgáló könyvtárában (például `<openliberty>/usr/servers/defaultServer` ), és adja hozzá a következő sort:
 ```
--javaagent:path/to/applicationinsights-agent-3.0.2.jar
+-javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```

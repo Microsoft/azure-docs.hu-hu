@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1bc1df4582c83b093b6ed25d03cc73aef9a81483
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5423c26b15c5ba9fa84e5d823f75f3c82a8cb8b4
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563939"
+ms.locfileid: "105968118"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid Azure biztonsági alapterve
 
@@ -48,9 +48,7 @@ A Azure Event Grid a nyilvános IP-alapú hozzáférés-vezérlést is támogatj
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
-**Útmutató**: a Azure Security Center használata és a hálózati védelmi javaslatok követése a Event Grid-erőforrások biztonságossá tételéhez az Azure-ban. Használata esetén
-
-Az Azure Virtual Machines szolgáltatással hozzáférhet a Event Grid erőforrásaihoz, engedélyezheti a hálózati biztonsági csoport (NSG) folyamatának naplóit, és elküldheti a naplókat a forgalmi naplózáshoz.
+**Útmutató**: a Azure Security Center használata és a hálózati védelmi javaslatok követése a Event Grid-erőforrások biztonságossá tételéhez az Azure-ban. Ha Azure-beli virtuális gépeket használ a Event Grid erőforrásaihoz való hozzáféréshez, engedélyezze a hálózati biztonsági csoport (NSG) folyamatának naplóit, és küldje el a naplókat a forgalmi naplózáshoz.
 
 - [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 

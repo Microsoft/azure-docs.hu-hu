@@ -3,77 +3,70 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az az Anomaly Detector API?
+    - name: Mi az a anomália detektor?
       href: overview.md
-- name: Rövid útmutatók
-  expanded: true
+    - name: Díjszabás és korlátok
+      href: 'https://aka.ms/adpricing'
+- name: Anomália detektor – rövid útmutató
+  href: ./quickstarts/client-libraries.md
+- name: Példák
   items:
-    - name: Ügyfélkódtár
-      items:
-        - name: Anomáliadetektor-ügyfélkódtárak
-          href: ./quickstarts/client-libraries.md
-- name: Oktatóanyagok
-  items:
-    - name: Rendellenességek vizualizálása kötegként a Power BI használatával
-      href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: Interaktív bemutató
+      href: 'https://aka.ms/adDemo'
+    - name: Jupyter Notebook
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
+    - name: Azure-minták
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
 - name: Útmutatók
   items:
     - name: Adatok rendellenességeinek azonosítása
       href: how-to/identify-anomalies.md
-    - name: Üzembe helyezés az IoT Edge-eszközön
-      href: how-to/deploy-anomaly-detection-on-iot-edge.md
-    - name: Tárolók használata
+    - name: Anomália-detektor üzembe helyezése
       items:
-        - name: Tárolók telepítése és futtatása
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
-          href: anomaly-detector-container-howto.md
-        - name: Tárolók konfigurálása
-          href: anomaly-detector-container-configuration.md
-          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
-        - name: A Container Instances használata
-          href: how-to/deploy-anomaly-detection-on-container-instances.md
-        - name: Cognitive Services-tárolók – dokumentáció
-          href: ../containers/index.yml
+        - name: Üzembe helyezés az IoT Edge-eszközön
+          href: how-to/deploy-anomaly-detection-on-iot-edge.md
+        - name: Tárolók
+          items:
+            - name: Cognitive Services-tárolók – dokumentáció
+              href: 'https://docs.microsoft.com/azure/cognitive-services/containers/'
+            - name: Tárolók telepítése és futtatása
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+              href: anomaly-detector-container-howto.md
+            - name: Tárolók konfigurálása
+              href: anomaly-detector-container-configuration.md
+              displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
+            - name: A Container Instances használata
+              href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Alapelvek
   items:
     - name: Anomália-detektor API – ajánlott eljárások
       href: concepts/anomaly-detection-best-practices.md
+    - name: A spektrális maradék (SR) és a többfunkciós neurális háló (CNN) rendellenességének észlelése
+      href: 'https://arxiv.org/abs/1906.03821'
+- name: Oktatóanyagok
+  items:
+    - name: Rendellenességek vizualizálása kötegként a Power BI használatával
+      href: tutorials/batch-anomaly-detection-powerbi.md
 - name: Referencia
   items:
-    - name: REST API-referencia
+    - name: Anomália detektor REST API
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
-    - name: SDK-k
-      items:
-        - name: .NET
-          href: 'https://aka.ms/anomaly-detector-dotnet-ref'
-        - name: Indítás
-          href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
-        - name: Python
-          href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
-        - name: Node.js
-          href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
-    - name: Műszaki blogok
-      items:
-        - name: Az Azure Anomaly Detector API bemutatása
-          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
-        - name: Az SR-CNN-algoritmus áttekintése
-          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
-    - name: Bemutató
-      items:
-        - name: Interaktív bemutató
-          href: 'https://aka.ms/adDemo'
-        - name: Jupyter Notebookon
-          href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
-    - name: 'Tanulmány az SR-CNN-ről, KDD 2019'
-      href: 'https://arxiv.org/abs/1906.03821'
-- name: További források
+    - name: .NET
+      href: 'https://aka.ms/anomaly-detector-dotnet-ref'
+    - name: Indítás
+      href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
+    - name: Python
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
+    - name: Node.js
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+- name: Források
   items:
-    - name: Támogatási lehetőségek
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
-    - name: Díjszabás
-      href: 'https://aka.ms/adpricing'
-    - name: Régiónkénti rendelkezésre állás
+    - name: Régiós támogatás
       href: 'https://aka.ms/adregion'
+    - name: A modulok megismerése
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
+    - name: Támogatási & Súgó
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: Felhasználó által létrehozott tartalom
       href: user-generated-content.md
     - name: Csatlakozzon az Anomaly Detector Advisors csoporthoz a Microsoft Teamsben
@@ -82,3 +75,11 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: Műszaki blogok
+      items:
+        - name: Az Azure Anomaly Detector API bemutatása
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: Az SR-CNN-algoritmus áttekintése
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'

@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 38f34324a0cda518645f8b9231e08bafbd75cca0
-ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
+manager: femila
+ms.openlocfilehash: 8ed4c2cffffca79ea545358b8ad639118e87e013
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105709531"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448202"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Azure Monitor a Windows rendszerű virtuális asztali szószedethez
 
@@ -182,10 +182,10 @@ A Windows-eseménynaplókkal kapcsolatos további tudnivalókért tekintse meg a
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Windows rendszerű virtuális asztalok Azure Monitorének megkezdéséhez tekintse meg a következő cikkeket:
+- Első lépésként tekintse [meg a Windows rendszerű virtuális asztali Azure monitor használata a telepítés figyeléséhez](azure-monitor.md)című témakört.
+- Az adattárolási költségek becsléséhez, méréséhez és kezeléséhez tekintse meg a [becsült Azure monitor költségeket](azure-monitor-costs.md)ismertető témakört.
+- Ha problémába ütközik, tekintse meg a Súgó és az ismert problémák [hibaelhárítási útmutatóját](troubleshoot-azure-monitor.md) .
 
-- [Az üzembe helyezés figyelése a Windows rendszerű virtuális asztali Azure Monitor használatával](azure-monitor.md)
-- [Azure Monitor a Windows rendszerű virtuális asztali hibaelhárításhoz](troubleshoot-azure-monitor.md)
 
 A Azure Advisor is beállíthatja, hogy segítsen a gyakori problémák megoldásában vagy megelőzésében. További információ: [Azure Advisor használata a Windows rendszerű virtuális asztallal](azure-advisor.md).
 

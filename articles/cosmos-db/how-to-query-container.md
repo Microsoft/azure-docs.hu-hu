@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cd90e994e620960e0d974ef7609a67f8a5eb58b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93335891"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448542"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos-tároló lekérdezése
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ Ha tárolóból kérdez le adatlekérdezést, akkor a Azure Cosmos DB automatiku
 Vegyük például az alábbi lekérdezést egy Esélyegyenlőségi szűrővel `DeviceId` . Ha ezt a lekérdezést egy-on particionált tárolón futtatjuk `DeviceId` , akkor ez a lekérdezés egyetlen fizikai partícióra lesz szűrve.
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 A korábbi példához hasonlóan a lekérdezés is egyetlen partícióra fog szűrni. A további szűrő hozzáadása nem `Location` változtatja meg a következőt:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 Az alábbiakban egy olyan lekérdezés található, amely a partíciós kulcson tartomány-szűrővel rendelkezik, és nem lesz egyetlen fizikai partícióra kiterjedően. A partíción belüli lekérdezéshez a lekérdezésnek rendelkeznie kell egy olyan egyenlőségi szűrővel, amely tartalmazza a partíciós kulcsot:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>Többpartíciós kiterjedő lekérdezés
@@ -46,7 +46,7 @@ Az alábbiakban egy olyan lekérdezés található, amely a partíciós kulcson 
 A következő lekérdezés nem rendelkezik szűrővel a partíciós kulcson ( `DeviceId` ). Ezért az összes olyan fizikai partícióra ki kell állnia, amely az egyes partíciók indexén fut:
 
 ```sql
-    SELECT * FROM c WHERE c.Location = 'Seattle`
+SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 Mindegyik fizikai partíció saját indextel rendelkezik. Ezért ha egy tárolón több partíciós *lekérdezést futtat, akkor fizikai* partíción keresztül gyakorlatilag egy lekérdezést futtat. A Azure Cosmos DB automatikusan összesíti az eredményeket a különböző fizikai partíciók között.

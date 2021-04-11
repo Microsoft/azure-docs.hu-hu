@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fea39388b6b4387dfc4fe95d1cdfb3e523a8089c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470771"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382436"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Az SAML-alkalmazások Azure AD B2C-ben való regisztrálásának lehetőségei
 
@@ -34,7 +34,86 @@ Ez a cikk a Azure Active Directory (Azure AD B2C) SAML-alkalmazáshoz való csat
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="encrypted-saml-assertions"></a>Titkosított SAML-kijelentések
+
+## <a name="saml-response-signature"></a>SAML-válasz aláírása
+
+Megadhat egy tanúsítványt, amelyet az SAML-üzenetek aláírásához kíván használni. Az üzenet az `<samlp:Response>` alkalmazásnak küldött SAML-válasz eleme.
+
+Ha még nem rendelkezik házirend-kulccsal, [hozzon létre egyet](saml-service-provider.md#create-a-policy-key). Ezután konfigurálja a `SamlMessageSigning` metaadat-elemet az SAML-jogkivonat kiállítói technikai profiljában. A `StorageReferenceId` névnek hivatkoznia kell a szabályzat kulcsának nevére.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+### <a name="saml-response-signature-algorithm"></a>SAML-válasz aláírási algoritmusa
+
+Beállíthatja az SAML-állítás aláírásához használt aláírási algoritmust. A lehetséges értékek:,, `Sha256` `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy a technikai profil és az alkalmazás ugyanazt az aláírási algoritmust használja. Csak a tanúsítvány által támogatott algoritmust használja.
+
+Konfigurálja az aláírási algoritmust a `XmlSignatureAlgorithm` függő entitás metaadatainak elemében található metaadatok használatával.
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="saml-assertions-signature"></a>SAML-kijelentések aláírása
+
+Ha az alkalmazás az SAML-állítási szakaszt aláírja, győződjön meg arról, hogy az SAML-szolgáltató beállítja a `WantAssertionsSigned` -t `true` . Ha a értéke `false` vagy nem létezik, az állítás szakasz nem lesz aláírva. Az alábbi példa egy SAML szolgáltatói metaadatokat mutat be a következőre: `WantAssertionsSigned` `true` .
+
+```xml
+<EntityDescriptor ID="id123456789" entityID="https://samltestapp2.azurewebsites.net" validUntil="2099-12-31T23:59:59Z" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+  <SPSSODescriptor  WantAssertionsSigned="true" AuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+  ...
+  </SPSSODescriptor>
+</EntityDescriptor>
+```  
+
+### <a name="saml-assertions-signature-certificate"></a>SAML-kijelentések aláírási tanúsítványa
+
+A szabályzatnak meg kell adnia egy tanúsítványt, amelyet az SAML-válasz SAML-kijelentések szakaszának aláírásához kíván használni. Ha még nem rendelkezik házirend-kulccsal, [hozzon létre egyet](saml-service-provider.md#create-a-policy-key). Ezután konfigurálja a `SamlAssertionSigning` metaadat-elemet az SAML-jogkivonat kiállítói technikai profiljában. A `StorageReferenceId` névnek hivatkoznia kell a szabályzat kulcsának nevére.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+## <a name="saml-assertions-encryption"></a>SAML-kijelentések titkosítása
 
 Ha az alkalmazás az SAML-állításokat titkosított formátumban várja, győződjön meg arról, hogy a titkosítás engedélyezve van a Azure AD B2C szabályzatban.
 
@@ -158,26 +237,6 @@ Egy teljes minta szabályzatot biztosítunk, amely az SAML-teszt alkalmazással 
 1. Frissítsen a `TenantId` bérlő nevére, például *contoso.b2clogin.com*.
 1. Tartsa meg a szabályzat nevét *B2C_1A_signup_signin_saml*.
 
-## <a name="saml-response-signature-algorithm"></a>SAML-válasz aláírási algoritmusa
-
-Beállíthatja az SAML-állítás aláírásához használt aláírási algoritmust. A lehetséges értékek:,, `Sha256` `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy a technikai profil és az alkalmazás ugyanazt az aláírási algoritmust használja. Csak a tanúsítvány által támogatott algoritmust használja.
-
-Konfigurálja az aláírási algoritmust a `XmlSignatureAlgorithm` függő entitás metaadatainak elemében található metaadatok használatával.
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-  <TechnicalProfile Id="PolicyProfile">
-    <DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="SAML2"/>
-    <Metadata>
-      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
-    </Metadata>
-   ..
-  </TechnicalProfile>
-</RelyingParty>
-```
-
 ## <a name="saml-response-lifetime"></a>SAML-válasz élettartama
 
 Beállíthatja azt az időtartamot, ameddig az SAML-válasz érvényes marad. Állítsa be az élettartamot az `TokenLifeTimeInSeconds` SAML-jogkivonat kiállítói technikai profiljában található metaadatok elem használatával. Ez az érték azon másodpercek száma, amelyek eltérhetnek a `NotBefore` jogkivonat-kiállítási idő alapján kiszámított időbélyegtől. Az alapértelmezett élettartam 300 másodperc (5 perc).
@@ -279,9 +338,9 @@ Példa:
 
 A munkamenetet kezelheti Azure AD B2C és az SAML függő entitás alkalmazás között az `UseTechnicalProfileForSessionManagement` elem és a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider)használatával.
 
-## <a name="force-users-to-re-authenticate"></a>A felhasználók ismételt hitelesítésének kényszerítése 
+## <a name="force-users-to-reauthenticate"></a>A felhasználók újrahitelesítésének kényszerítése 
 
-A felhasználók ismételt hitelesítésének kényszerítéséhez az alkalmazás az `ForceAuthn` SAML hitelesítési kérelemben szereplő attribútumot is tartalmazhatja. Az `ForceAuthn` attribútum logikai érték. Ha igaz értékre van állítva, a rendszer a felhasználók munkamenetét érvényteleníti Azure AD B2Ckor, és a felhasználónak újra hitelesítenie kell magát. A következő SAML-hitelesítési kérelem bemutatja, hogyan állíthatja igaz értékre az `ForceAuthn` attribútumot. 
+A felhasználók újrahitelesítésének kényszerítéséhez az alkalmazás az `ForceAuthn` SAML hitelesítési kérelemben szereplő attribútumot is tartalmazhatja. Az `ForceAuthn` attribútum logikai érték. Ha igaz értékre van állítva, a rendszer a felhasználói munkamenetet érvényteleníti Azure AD B2Ckor, és a felhasználónak újra hitelesítenie kell magát. A következő SAML-hitelesítési kérelem bemutatja, hogyan állíthatja igaz értékre az `ForceAuthn` attribútumot. 
 
 
 ```xml
@@ -290,6 +349,28 @@ A felhasználók ismételt hitelesítésének kényszerítéséhez az alkalmazá
        ForceAuthn="true" ...>
     ...
 </samlp:AuthnRequest>
+```
+
+## <a name="sign-the-azure-ad-b2c-idp-saml-metadata"></a>A Azure AD B2C identitásszolgáltató SAML-metaadatok aláírása
+
+Ha az alkalmazás megköveteli, utasíthatja Azure AD B2C az SAML-identitásszolgáltató metaadat-dokumentum aláírására. Ha még nem rendelkezik házirend-kulccsal, [hozzon létre egyet](saml-service-provider.md#create-a-policy-key). Ezután konfigurálja a `MetadataSigning` metaadat-elemet az SAML-jogkivonat kiállítói technikai profiljában. A `StorageReferenceId` névnek hivatkoznia kell a szabályzat kulcsának nevére.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
 ```
 
 ## <a name="debug-the-saml-protocol"></a>Az SAML protokoll hibakeresése

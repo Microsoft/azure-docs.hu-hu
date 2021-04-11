@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: a177fc7e17dc91a0d57fa6dee87b80921d7fd8f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043580"
+ms.locfileid: "105967965"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
 
@@ -113,6 +113,10 @@ Az SFC-vizsgálat befejeződése után telepítse a Windows-frissítéseket, és
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    ```
+1. A régebbi operációs rendszerekkel rendelkező virtuális gépek esetében (Windows Server 2012 R2 vagy Windows 8,1 vagy újabb) ellenőrizze, hogy telepítve vannak-e a legújabb Hyper-V integrációs összetevő-szolgáltatások. További információ: [a Hyper-V integrációs összetevőinek frissítése a Windows rendszerű virtuális géphez](https://support.microsoft.com/topic/hyper-v-integration-components-update-for-windows-virtual-machines-8a74ffad-576e-d5a0-5a2f-d6fb2594f990).
+
+> [!NOTE]
+> Olyan forgatókönyv esetén, amelyben a virtuális gépeket egy vész-helyreállítási megoldással kell beállítani a helyszíni VMware-kiszolgáló és az Azure között, a Hyper-V Integration Component Services nem használható. Ha ez a helyzet, vegye fel a kapcsolatot a VMware-támogatással a virtuális gép Azure-ba való migrálása és a VMware-kiszolgáló közös üzemeltetése érdekében.
 
 ## <a name="check-the-windows-services"></a>Windows-szolgáltatások ellenőrzése
 
@@ -266,6 +270,8 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
 1. Adja meg a rendszerindítási konfigurációs adatok (BCD) beállításait.
 
    ```powershell
+   cmd
+
    bcdedit.exe /set "{bootmgr}" integrityservices enable
    bcdedit.exe /set "{default}" device partition=C:
    bcdedit.exe /set "{default}" integrityservices enable
@@ -279,6 +285,8 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
    bcdedit.exe /set "{bootmgr}" bootems yes
    bcdedit.exe /ems "{current}" ON
    bcdedit.exe /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+   exit
    ```
 
 1. A memóriakép naplója hasznos lehet a Windows összeomlási problémáinak elhárításához. Memóriakép-gyűjtemény engedélyezése:
@@ -351,6 +359,10 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
 1. Távolítson el minden olyan külső gyártótól származó szoftvert vagy illesztőprogramot, amely fizikai összetevőkhöz vagy más virtualizációs technológiához kapcsolódik.
 
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
+
+> [!NOTE]
+> A virtuális gépek üzembe helyezése során a véletlen újraindítás elkerülése érdekében javasoljuk, hogy végezze el az összes Windows Update-telepítést, és ellenőrizze, hogy nincs-e függőben lévő újraindítás. Ennek egyik módja az összes Windows-frissítés telepítése és a virtuális gép újraindítása az Azure-ba való áttelepítés előtt. </br><br>
+>Ha az operációs rendszer (Sysprep) általánosítását is el kell végeznie, frissítenie kell a Windowst, és a Sysprep parancs futtatása előtt újra kell indítania a virtuális gépet.
 
 Ideális esetben a gépet frissíteni kell a *javítási szintre*, ha ez nem lehetséges, ellenőrizze, hogy telepítve vannak-e a következő frissítések. A legújabb frissítések beszerzéséhez tekintse meg a Windows Update History Pages: Windows [10 és a Windows server 2019](https://support.microsoft.com/help/4000825), a [Windows 8,1, valamint a Windows Server 2012 R2](https://support.microsoft.com/help/4009470) és a Windows [7 sp1 és a Windows Server 2008 R2 SP1 verziót](https://support.microsoft.com/help/4009469).
 

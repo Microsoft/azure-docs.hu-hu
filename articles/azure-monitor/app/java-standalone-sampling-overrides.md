@@ -6,17 +6,17 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 17979bd548ca0d7b704ebdeb4d060bf35973b319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7602392b78f53e5b896e92058836fca60de39d64
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024146"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448882"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>Mintavételi felülbírálások (előzetes verzió) – Azure Monitor Application Insights Javához
 
 > [!NOTE]
-> A mintavételi felülbírálások funkciója előzetes verzióban érhető el, a 3.0.3-BETA. 2.
+> A mintavételi felülbírálások funkciója előzetes verzióban érhető el, a 3.0.3 kezdve.
 
 A mintavételi felülbírálások segítségével felülbírálhatja az [alapértelmezett mintavételi százalékot](./java-standalone-config.md#sampling), például:
  * A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos állapot-ellenőrzésekhez.
@@ -81,7 +81,7 @@ Ha a mintavételi felülbírálások nem egyeznek:
 * Ha ez a nyomkövetés első tartománya, akkor a rendszer az [alapértelmezett mintavételi százalékot](./java-standalone-config.md#sampling) használja.
 * Ha ez nem a nyomkövetés első tartománya, akkor a rendszer a szülő mintavételezési döntését használja.
 
-> [!IMPORTANT]
+> [!WARNING]
 > Ha döntés születik, hogy a rendszer ne gyűjtsön egy kört, akkor a rendszer nem gyűjti össze az összes alsóbb rétegbeli átadást, még akkor is, ha vannak olyan mintavételi felülbírálások, amelyek megfelelnek az alsóbb rétegbeli tartománynak.
 > Ez a viselkedés azért szükséges, mert egyébként hibás nyomkövetés következik be, és az alsóbb rétegbeli találatok gyűjtése folyamatban van, de a rendszer a nem gyűjtött információk alapján származtatja azokat.
 

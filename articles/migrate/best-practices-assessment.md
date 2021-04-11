@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 1bf844dafe450e90213db2e447bb5392064eb245
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fac488ba1881b6b79139eaf2468237e546737177
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786770"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077330"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
@@ -27,6 +27,8 @@ A Azure Migrate segítségével létrehozott értékelések: a felderítési és
 **Azure SQL** | A helyszíni SQL Server-kiszolgálók VMware-környezetből Azure SQL Database vagy az Azure SQL felügyelt példányba való átköltöztetésének értékelése. [További információ](concepts-azure-sql-assessment-calculation.md)
 **Azure VMware Solution (AVS)** | Kiértékelés a helyszíni kiszolgálók [Azure VMware Solutionbe (AVS-be)](../azure-vmware/introduction.md) történő migrálásához. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
+> [!NOTE]
+> Ha az Azure-beli virtuális gép vagy az AVS-értékelések nem megfelelőek a felderítési és értékelési eszközön, kattintson az értékelések teljes számára, és válassza ki az összes értékelést, és számítsa ki újra az Azure-beli virtuális gépet vagy az AVS-értékeléseket. A felderítési és értékelési eszköz ezután megjeleníti az értékelés típusának helyes darabszámát. 
 
 ### <a name="sizing-criteria"></a>Méretezési feltételek
 Méretezési feltételek beállításai Azure Migrate értékelésekben:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614411"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448554"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer javítása a Service Fabric-fürtben
 
@@ -222,7 +222,7 @@ A POA viselkedést az igényeinek megfelelően konfigurálhatja. Az alkalmazás 
 | WUOperationTimeOutInMinutes | Int <br>(Alapértelmezett: *90*)                   | Megadja a Windows Update művelet időtúllépését (keresés vagy letöltés vagy telepítés). Ha a művelet nem fejeződött be a megadott időkorláton belül, a rendszer megszakítja a műveletet.       |
 | WURescheduleCount     | Int <br> (Alapértelmezett: *5*)                  | A szolgáltatás által a Windows Update újraütemezett maximális száma, ha egy művelet tartósan leáll.          |
 | WURescheduleTimeInMinutes | Int <br>(Alapértelmezés: *30*) | Az az időtartam, amikor a szolgáltatás átütemezze a Windows-frissítéseket, ha a hiba továbbra is fennáll. |
-| WUFrequency           | Vesszővel tagolt karakterlánc (alapértelmezett: *hetente, szerda, 7:00:00*)     | A Windows-frissítések telepítésének gyakorisága. A formátum és a lehetséges értékek a következők: <br>-Havonta, NN, óó: PP: SS (példa: *havonta, 5, 12:22:32*). A _dd_ (nap) mező megengedett értékei _1 és 28_ közötti számok. <br>-Hetente, naponta, óó: PP: SS (példa: *hetente, kedd, 12:22:32*)  <br>– Naponta, óó: PP: SS (példa: *napi, 12:22:32*)  <br>– Hét, nap, óó: PP: mm (példa: *2, péntek, 21:00:00,* 9:00 PM UTC a második hét minden hónapjának pénteken) <br>- A *none* érték azt jelzi, hogy a Windows-frissítések nem lesznek végrehajtva.  <br><br> Az időpontok UTC-ben vannak.|
+| WUFrequency           | Vesszővel tagolt karakterlánc (alapértelmezett: *hetente, szerda, 7:00:00*)     | A Windows-frissítések telepítésének gyakorisága. A formátum és a lehetséges értékek a következők: <br>-Havonta, NN, óó: PP: SS (példa: *havonta, 5, 12:22:32*). A _dd_ (nap) mező megengedett értékei _1 és 28_ közötti számok. <br>-Hetente, naponta, óó: PP: SS (példa: *hetente, kedd, 12:22:32*)  <br>– Naponta, óó: PP: SS (példa: *napi, 12:22:32*)  <br>-MonthlyByWeekAndDay, hét, nap, óó: PP: mm (példa: *MonthlyByWeekAndDay, 2, péntek, 21:00:00,* 9:00 PM UTC, minden hónap második hetében pénteken) <br>- A *none* érték azt jelzi, hogy a Windows-frissítések nem lesznek végrehajtva.  <br><br> Az időpontok UTC-ben vannak.|
 | AcceptWindowsUpdateEula | Logikai <br>(Alapértelmezett: *true*) | A jelző beállításával az alkalmazás elfogadja a számítógép tulajdonosának nevében Windows Update End-User licencszerződést.              |
 
 > [!TIP]

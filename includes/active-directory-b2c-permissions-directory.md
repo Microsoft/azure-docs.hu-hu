@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 04/05/2021
 ms.author: mimart
-ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a2382146cd8b85b8eef54b924a206dda7107b0f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85200183"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382460"
 ---
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/) 
 
@@ -19,8 +19,9 @@ ms.locfileid: "85200183"
 1. Válassza a **Microsoft API** -k fület, majd válassza a **Microsoft Graph** lehetőséget.
 1. Válassza ki az **alkalmazás engedélyeit**.
 1. Bontsa ki a megfelelő jogosultságokat tartalmazó csoportot, és jelölje be a felügyeleti alkalmazásnak nyújtandó engedély jelölőnégyzetét. Például:
+    * **Felhasználó**  >  **User. ReadWrite. All**: felhasználói áttelepítési vagy felhasználói kezelési forgatókönyvek esetén.
+    * **Csoport**  >  **Group. ReadWrite. All**: csoportok létrehozásához, csoporttagság olvasásához és frissítéséhez, valamint csoportok törléséhez.
     * **AuditLog**  >  **AuditLog. Read. All**: a könyvtár naplóinak olvasására.
-    * **Címtár**  >  **Directory. ReadWrite. All**: felhasználói áttelepítési vagy felhasználói kezelési forgatókönyvek esetén.
     * **Házirend**  >  **Policy. ReadWrite. TrustFramework**: folyamatos integrációs/folyamatos kézbesítési (CI/CD) forgatókönyvek esetén. Például az egyéni házirend üzembe helyezése az Azure-folyamatokkal.
 1. Válassza az **engedélyek hozzáadása** lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblép a következő lépésre.
 1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.

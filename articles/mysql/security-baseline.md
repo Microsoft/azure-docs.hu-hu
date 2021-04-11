@@ -4,27 +4,25 @@ description: A Azure Database for MySQL biztonsági alapterve az Azure biztonsá
 author: msmbaldwin
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 03/29/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c05abc6b761b9839df83f3170ce295d4480ca96a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62501d6174b9ef8806de0bbdae0dfedfe70da03a
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577918"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968076"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Database for MySQL Azure biztonsági alapterve
 
-Az Azure Database for MySQL Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
+Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](../security/benchmarks/overview-v1.md) Azure Database for MySQLre vonatkozó útmutatást alkalmaz. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Azure Database for MySQL vonatkozó kapcsolódó útmutatás. Az Azure Database for MySQLre nem alkalmazható **vezérlők** , vagy amelyek esetében a felelősség a Microsoft által lett kizárva.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
-
-További információ: [Azure Security](../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
+Ha szeretné megtekinteni, hogyan Azure Database for MySQL teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure Database for MySQL biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](../security/benchmarks/security-control-network-security.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -36,13 +34,17 @@ A Azure Database for MySQL-kiszolgáló a tűzfalszabályok használatával is b
 
 - [Privát hivatkozás konfigurálása Azure Database for MySQLhoz](howto-configure-privatelink-portal.md)
 
-- [VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése a Azure Database for MySQLban](../azure-sql/database/vnet-service-endpoint-rule-overview.md)
+- [VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése a Azure Database for MySQLban](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
 
 - [Azure Database for MySQL tűzfalszabályok konfigurálása](howto-manage-firewall-using-portal.md)
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. DBforMySQL**:
+
+[!INCLUDE [Resource Policy for Microsoft.DBforMySQL 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.dbformysql-1-1.md)]
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
@@ -54,17 +56,9 @@ A Azure Database for MySQL-kiszolgáló a tűzfalszabályok használatával is b
 
 - [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
 
-### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
-
-**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártevő IP-címekkel folytatott kommunikáció megtagadása
 
@@ -76,9 +70,9 @@ A Azure Database for MySQL-példányokhoz társított virtuális hálózatokon D
 
 - [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="15-record-network-packets"></a>1,5: hálózati csomagok rögzítése
 
@@ -88,9 +82,9 @@ A Azure Database for MySQL-példányokhoz társított virtuális hálózatokon D
 
 - [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
@@ -98,17 +92,9 @@ A Azure Database for MySQL-példányokhoz társított virtuális hálózatokon D
 
 - [Összetett veszélyforrások elleni védelem konfigurálása Azure Database for MySQL](howto-database-threat-protection-portal.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
 
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
-
-**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
@@ -118,11 +104,11 @@ Megjegyzés: Azure Database for MySQL a "Microsoft. SQL" szolgáltatás címkéi
 
 - [További információ a szolgáltatási címkék használatáról](../virtual-network/service-tags-overview.md)
 
-- [A Azure Database for MySQL szolgáltatás használati felcímkézésének ismertetése](concepts-data-access-and-security-vnet.md#terminology-and-description)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [A Azure Database for MySQL szolgáltatás használati felcímkézésének ismertetése](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet#terminology-and-description)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
@@ -132,15 +118,17 @@ Megjegyzés: Azure Database for MySQL a "Microsoft. SQL" szolgáltatás címkéi
 
 - Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon
 
+További információkat az alábbi hivatkozásokon találhat:
+
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/index.md)
+- [Azure Policy minták a hálózatkezeléshez](/azure/governance/policy/samples/)
 
 - [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
@@ -152,51 +140,43 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Database for MySQL-példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 - [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-## <a name="logging-and-monitoring"></a>Naplózás és figyelés
+**Azure Security Center figyelés**: nincs
+
+## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
 *További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md)című témakörben talál.*
-
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
-
-**Útmutató**: a Microsoft fenntartja az Azure-erőforrásokhoz használt időforrást, például Azure Database for MySQL a naplókban található időbélyegek esetében.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
 **Útmutató**: a diagnosztikai beállítások és a kiszolgálói naplók engedélyezése, valamint a naplók beolvasása a Azure Database for MySQL példányai által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterület (ek) használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-- [A Azure Database for MySQL kiszolgáló naplófájljainak ismertetése](concepts-monitoring.md#server-logs)
+- [A Azure Database for MySQL kiszolgáló naplófájljainak ismertetése](https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
 **Útmutató**: a diagnosztikai beállítások engedélyezése a Azure Database for MySQL példányokon a naplózási, lassú lekérdezési és MySQL-metrikák naplóihoz való hozzáféréshez. Győződjön meg arról, hogy kifejezetten engedélyezi a MySQL-naplót. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek. Engedélyezheti az Azure-műveletnapló diagnosztikai beállításait is, és elküldheti a naplókat ugyanarra a Log Analytics munkaterületre vagy Storage-fiókba.
 
-- [A Azure Database for MySQL kiszolgáló naplófájljainak ismertetése](concepts-monitoring.md#server-logs)
+- [A Azure Database for MySQL kiszolgáló naplófájljainak ismertetése](https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs)
 
 - [Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL](howto-configure-server-logs-in-portal.md)
 
@@ -204,33 +184,25 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](../azure-monitor/essentials/activity-log.md)
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Ügyfél
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 **Útmutató**: a Azure monitoron belül a Azure Database for MySQL-naplók tárolására szolgáló log Analytics munkaterülethez a szervezet megfelelőségi szabályainak megfelelően állítsa be a megőrzési időszakot. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
-- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Erőforrás-naplók tárolása Azure Storage-fiókban](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
-**Útmutató**: az Azure Database for MySQL-példányokból származó naplók elemzése és figyelése rendellenes viselkedés esetén. A naplók áttekintéséhez és a naplózási adatok lekérdezéséhez használja a Azure Monitor Log Analytics. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik fél SIEM-nek.
+**Útmutató**: az Azure Database for MySQL-példányokból származó naplók elemzése és figyelése rendellenes viselkedés esetén. A naplók áttekintéséhez és a naplózási adatok lekérdezéséhez használja a Azure Monitor Log Analytics. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -238,9 +210,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: riasztások engedélyezése rendellenes tevékenységekhez
 
@@ -250,7 +222,7 @@ Emellett engedélyezheti a kiszolgáló naplófájljait és a MySQL diagnosztika
 
 - [A komplex veszélyforrások elleni védelem engedélyezése a Azure Database for MySQL (előzetes verzió)](howto-database-threat-protection-portal.md)
 
-- [A Azure Database for MySQL kiszolgáló naplófájljainak ismertetése](concepts-monitoring.md#server-logs)
+- [A Azure Database for MySQL kiszolgáló naplófájljainak ismertetése](https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs)
 
 - [Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL](howto-configure-server-logs-in-portal.md)
 
@@ -260,37 +232,13 @@ Emellett engedélyezheti a kiszolgáló naplófájljait és a MySQL diagnosztika
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
-
-**Útmutató**: nem alkalmazható; Azure Database for MySQL nem dolgoz fel kártevő szoftverrel kapcsolatos naplókat, illetve nem hoz létre.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
-
-**Útmutató**: nem alkalmazható; A Azure Database for MySQL nem dolgozza fel a DNS-sel kapcsolatos naplókat, és nem hoz létre.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt az [Azure biztonsági teljesítményteszt: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: Identity and Access Control](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -300,27 +248,27 @@ A Azure Database for MySQL nem támogatja a beépített szerepköralapú hozzáf
 
 - [Az Azure-előfizetés egyéni szerepköreinek megismerése](../role-based-access-control/custom-roles.md) 
 
-- [Azure Database for MySQL erőforrás-szolgáltatói műveletek ismertetése](../role-based-access-control/resource-provider-operations.md#microsoftdbformysql)
+- [Azure Database for MySQL erőforrás-szolgáltatói műveletek ismertetése](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbformysql)
 
-- [A Azure Database for MySQL hozzáférés-kezelésének megismerése](concepts-security.md#access-management)
-
-**Az Azure Security Center monitorozása**: Igen
+- [A Azure Database for MySQL hozzáférés-kezelésének megismerése](https://docs.microsoft.com/azure/mysql/concepts-security#access-management)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató**: az Azure ad nem rendelkezik az alapértelmezett jelszavak fogalmával.
+**Útmutató**: Azure Active Directory (Azure ad) nem az alapértelmezett jelszavak fogalma.
 
 A Azure Database for MySQL erőforrás létrehozásakor az Azure erős jelszóval kényszeríti a rendszergazda felhasználó létrehozását. A MySQL-példány létrehozása után azonban használhatja a létrehozott első kiszolgálói rendszergazdai fiókot, hogy további felhasználókat hozzon létre, és rendszergazdai hozzáférést biztosítson hozzájuk. A fiókok létrehozásakor ügyeljen arra, hogy az egyes fiókokhoz eltérő, erős jelszót állítson be.
 
 - [További fiókok létrehozása Azure Database for MySQLhoz](howto-create-users.md)
 
-- [Rendszergazdai jelszó frissítése](howto-create-manage-server-portal.md#update-admin-password)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Rendszergazdai jelszó frissítése](https://docs.microsoft.com/azure/mysql/howto-create-manage-server-portal#update-admin-password)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
@@ -330,57 +278,57 @@ A Azure Database for MySQL erőforrás létrehozásakor az Azure erős jelszóva
 
 - [Ismerje meg, hogyan hozhat létre rendszergazdai felhasználókat a Azure Database for MySQL](howto-create-users.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Azure Active Directory egyszeri bejelentkezés (SSO) használata
 
-**Útmutató**: az Azure Database for MySQLba való bejelentkezés támogatott a közvetlenül az adatbázisban konfigurált Felhasználónév/jelszó használatával, valamint egy Azure Active Directory (ad) identitás használatával, valamint egy Azure ad-jogkivonat a kapcsolódáshoz való felhasználásával. Azure AD-token használatakor a rendszer különböző módszereket támogat, például egy Azure AD-felhasználót, egy Azure AD-csoportot vagy egy, az adatbázishoz csatlakozó Azure AD-alkalmazást.
+**Útmutató**: az Azure Database for MySQLba való bejelentkezés támogatott a közvetlenül az adatbázisban konfigurált Felhasználónév/jelszó használatával, valamint egy Azure Active Directory (Azure ad) identitás használatával, valamint egy Azure ad-jogkivonat a kapcsolódáshoz való felhasználásával. Azure AD-token használatakor a rendszer különböző módszereket támogat, például egy Azure AD-felhasználót, egy Azure AD-csoportot vagy egy, az adatbázishoz csatlakozó Azure AD-alkalmazást.
 
-Külön, a felügyeleti sík hozzáférése a MySQL-hez REST APIon keresztül érhető el, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét egy Azure Active Directoryból beszerzett JSON Web Tokenra.
+Külön, a felügyeleti sík hozzáférése a MySQL-hez REST APIon keresztül érhető el, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét az Azure AD-ból beszerzett JSON Web Tokenra.
 
-- [Azure Active Directory használata a hitelesítéshez Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
+- [Az Azure AD használata a Azure Database for MySQL való hitelesítéshez](howto-configure-sign-in-azure-ad-authentication.md)
 
 - [Azure Database for MySQL REST API ismertetése](/rest/api/mysql/)
 
 - [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató**: a Azure Active Directory multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése. Ha Azure AD-jogkivonatokat használ az adatbázisba való bejelentkezéshez, ez lehetővé teszi a többtényezős hitelesítés megkövetelését az adatbázis-bejelentkezésekhez.
+**Útmutató**: engedélyezze Azure Active Directory (Azure ad) többtényezős hitelesítését, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait. Ha Azure AD-jogkivonatokat használ az adatbázisba való bejelentkezéshez, ez lehetővé teszi többtényezős hitelesítés megkövetelését az adatbázis-bejelentkezésekhez.
 
-- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Többtényezős hitelesítés engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Azure Active Directory használata a hitelesítéshez Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
+- [Az Azure AD használata a Azure Database for MySQL való hitelesítéshez](howto-configure-sign-in-azure-ad-authentication.md)
 
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: biztonságos, Azure által felügyelt munkaállomások használata felügyeleti feladatokhoz
 
-**Útmutató**: az Azure-erőforrások bevezetésére és konfigurálására konfigurált, multi-Factor Authentication (MFA) rendszerjogosultságú hozzáférési munkaállomások használata.
+**Útmutató**: az Azure-erőforrások bejelentkezéséhez és konfigurálásához konfigurált, többtényezős hitelesítéssel rendelkező emelt szintű hozzáférésű munkaállomások (mancsok) használata.
 
 - [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Többtényezős hitelesítés engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
 **Útmutató**: a Azure Database for MySQL komplex veszélyforrások elleni védelemének engedélyezése a gyanús tevékenységekre vonatkozó riasztások létrehozásához.
 
-Emellett a naplók és a riasztások generálásához Azure AD Privileged Identity Management (PIM) is használható, ha a környezetben gyanús vagy nem biztonságos tevékenység történik.
+Emellett Azure Active Directory (Azure AD) Privileged Identity Management (PIM) is használható a naplók és riasztások generálásához, ha gyanús vagy nem biztonságos tevékenység történik a környezetben.
 
 Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg.
 
@@ -390,9 +338,9 @@ Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói
 
 - [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
@@ -400,55 +348,55 @@ Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói
 
 - [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: a Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
+**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
 
 Az Azure Database for MySQL való bejelentkezéshez ajánlott az Azure AD használata, és egy Azure AD-tokent használ a kapcsolódáshoz. Azure AD-token használatakor a rendszer különböző módszereket támogat, például egy Azure AD-felhasználót, egy Azure AD-csoportot vagy egy, az adatbázishoz csatlakozó Azure AD-alkalmazást.
 
 Az Azure AD hitelesítő adatai a felügyeleti sík szintjén (például a Azure Portal) is használhatók a MySQL rendszergazdai fiókok vezérléséhez.
 
-- [Azure Active Directory használata a hitelesítéshez Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Az Azure AD használata a Azure Database for MySQL való hitelesítéshez](howto-configure-sign-in-azure-ad-authentication.md)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató**: Tekintse át a Azure Active Directory naplókat, hogy segítsen felderíteni az elavult fiókokat, amelyek magukban foglalhatják Azure Database for MySQL rendszergazdai szerepköröket. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelhetők a csoporttagságok, hozzáférhetnek a Azure Database for MySQLhoz és a szerepkör-hozzárendelésekhez használható vállalati alkalmazásokhoz. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, például 90 naponta, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
+**Útmutató**: Tekintse át a Azure Active Directory (Azure ad) naplókat, amelyek segítenek az elavult fiókok felderítésében, amelyek Azure Database for MySQL rendszergazdai szerepkörökkel rendelkezhetnek. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelhetők a csoporttagságok, hozzáférhetnek a Azure Database for MySQLhoz és a szerepkör-hozzárendelésekhez használható vállalati alkalmazásokhoz. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, például 90 naponta, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
-- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
+- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: a figyelő megkísérli a deaktivált hitelesítő adatok elérését
 
-**Útmutató**: a Azure Database for MySQL és Azure Active Directory diagnosztikai beállításainak engedélyezése, az összes napló küldése egy log Analytics munkaterületre. Konfigurálja a kívánt riasztásokat (például sikertelen hitelesítési kísérleteket) Log Analyticson belül.
+**Útmutató**: a Azure Database for MySQL és Azure Active Directory (Azure ad) diagnosztikai beállításainak engedélyezése, az összes napló küldése egy log Analytics munkaterületre. Konfigurálja a kívánt riasztásokat (például sikertelen hitelesítési kísérleteket) Log Analyticson belül.
 
-- [Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL](./howto-configure-server-logs-in-portal.md)
+- [Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL](/Azure/mysql/howto-configure-server-logs-in-portal)
 
-- [Naplózási naplók konfigurálása és elérése Azure Database for MySQL](./howto-configure-audit-logs-portal.md)
+- [Naplózási naplók konfigurálása és elérése Azure Database for MySQL](/Azure/mysql/howto-configure-audit-logs-portal)
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
-**Azure Security Center figyelés**: nem érhető el
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
 **Útmutató**: a Azure Database for MySQL komplex veszélyforrások elleni védelemének engedélyezése a gyanús tevékenységekre vonatkozó riasztások létrehozásához.
 
-A Azure Active Directory Identity Protection és kockázati észlelési funkciói segítségével konfigurálhatja az észlelt gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához az Azure Sentinel használatával engedélyezheti az automatikus válaszokat.
+A Azure Active Directory (Azure AD) identitás-és kockázati észlelési funkciói segítségével konfigurálhatja az észlelt gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához az Azure Sentinel használatával engedélyezheti az automatikus válaszokat.
 
 További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
@@ -460,23 +408,13 @@ További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Ügyfél
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
-
-**Útmutató**: nem alkalmazható; Azure Database for MySQL esetében Ügyfélszéf még nem támogatott.
-
-- [Ügyfélszéf támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](../security/benchmarks/security-control-data-protection.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Adatvédelem](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -484,9 +422,9 @@ További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
@@ -494,17 +432,17 @@ További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
+- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Privát hivatkozás konfigurálása Azure Database for MySQLhoz](concepts-data-access-security-private-link.md)
 
-- [VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése a Azure Database for MySQLban](../azure-sql/database/vnet-service-endpoint-rule-overview.md)
+- [VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése a Azure Database for MySQLban](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
 
 - [Azure Database for MySQL tűzfalszabályok konfigurálása](concepts-firewall-rules.md)
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
 
@@ -512,25 +450,29 @@ További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
 A Microsoft kezeli a Azure Database for MySQL alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-- [A Azure Database for MySQL adatkiszűréseának enyhítése](concepts-data-access-security-private-link.md#data-exfiltration-prevention)
+- [A Azure Database for MySQL adatkiszűréseának enyhítése](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link#data-exfiltration-prevention)
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
 **Útmutató**: a Azure Database for MySQL támogatja a MySQL-kiszolgáló és az ügyfélalkalmazások SSL (SSL) használatával történő összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Az Azure Portalban alapértelmezés szerint az összes Azure Database for MySQL példányra vonatkozóan engedélyezve van az "SSL-kapcsolat érvényesítése".
 
-Jelenleg a Azure Database for MySQL által támogatott TLS-verzió a TLS 1,0, a TLS 1,1, a TLS 1,2.
+Jelenleg a Azure Database for MySQL által támogatott TLS-verziók a TLS 1,0, a TLS 1,1, a TLS 1,2.
 
 - [A titkosítás konfigurálása a Azure Database for MySQL](concepts-ssl-connection-security.md)
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Megosztott
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. DBforMySQL**:
+
+[!INCLUDE [Resource Policy for Microsoft.DBforMySQL 4.4](../../includes/policy/standards/asb/rp-controls/microsoft.dbformysql-4-4.md)]
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
@@ -540,11 +482,11 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center figyelés**: nem érhető el
-
 **Felelősség**: Megosztott
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
+**Azure Security Center figyelés**: nincs
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC 
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure Database for MySQL vezérlési síkon való hozzáférés vezérléséhez (például Azure Portal). Az adatsíkok eléréséhez (magán az adatbázison belül) használja az SQL-lekérdezéseket a felhasználók létrehozásához és a felhasználói engedélyek konfigurálásához. Az Azure RBAC nem befolyásolja a felhasználói engedélyeket az adatbázison belül.
 
@@ -552,37 +494,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [A felhasználói hozzáférés konfigurálása az SQL-sel Azure Database for MySQL](howto-create-users.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-A Microsoft kezeli a Azure Database for MySQL alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
-
-- [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
-
-**Az Azure Security Center monitorozása**: Nem alkalmazható
-
-**Felelősség**: Microsoft
-
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
-
-**Útmutató**: a Azure Database for MySQL szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva, a lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
-
-Az Azure Database for MySQL ügyfél által felügyelt kulcsokkal történő titkosítása lehetővé teszi a saját kulcs használatát (BYOK) az inaktív adatok védelméhez. Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon a következőhöz:
-
-AskAzureDBforMySQL@service.microsoft.com
-
-- [A REST titkosítás megismerése Azure Database for MySQL](concepts-security.md)
-
-- [Ügyfelek által felügyelt kulcsok konfigurálása Azure Database for MySQLhoz](concepts-data-encryption-mysql.md)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: Microsoft
+**Azure Security Center figyelés**: nincs
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
@@ -590,9 +504,9 @@ AskAzureDBforMySQL@service.microsoft.com
 
 - [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
@@ -608,43 +522,11 @@ A Microsoft a biztonsági rések kezelését a Azure Database for MySQL támogat
 
 - [Az Azure Pásti szolgáltatásainak lefedettsége Azure Security Center](../security-center/features-paas.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Megosztott
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
+**Azure Security Center figyelés**: nincs
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: a harmadik féltől származó szoftverek címeihez készült automatizált javítási megoldás üzembe helyezése
-
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
-
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
-
-**Útmutató**: a Microsoft a sebezhetőségek kezelését a Azure Database for MySQL támogató mögöttes rendszereken hajtja végre.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: Microsoft
-
-## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
+## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
 *További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md)című témakörben talál.*
 
@@ -652,15 +534,15 @@ A Microsoft a biztonsági rések kezelését a Azure Database for MySQL támogat
 
 **Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetéseken belüli összes erőforrást (beleértve Azure Database for MySQL példányokat is). Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
-- [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
+- [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 - [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
@@ -668,9 +550,9 @@ A Microsoft a biztonsági rések kezelését a Azure Database for MySQL támogat
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
@@ -678,21 +560,21 @@ A Microsoft a biztonsági rések kezelését a Azure Database for MySQL támogat
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
+- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: a jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
 
 **Útmutató**: nem alkalmazható; Ez a javaslat a számítási erőforrások és az Azure egészének fedezésére szolgál.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
@@ -708,57 +590,25 @@ Emellett az Azure Resource Graph használatával kérdezheti le és derítheti f
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
-
-**Útmutató**: nem alkalmazható; Ez a javaslat a számítási erőforrások és az Azure egészének fedezésére szolgál.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
 
 **Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
-
 - Nem engedélyezett erőforrástípusok
-
 - Engedélyezett erőforrástípusok
+
+További információkat az alábbi hivatkozásokon találhat:
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/index)
 
 **Felelősség**: Ügyfél
 
-### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: a jóváhagyott szoftverek leltárának fenntartása
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: korlátozza a felhasználók képességét a Azure Resource Manager való interakcióra
 
@@ -766,25 +616,9 @@ Emellett az Azure Resource Graph használatával kérdezheti le és derítheti f
 
 - [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
-
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
-
-**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
@@ -800,17 +634,9 @@ Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgáló
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
 
@@ -820,37 +646,21 @@ Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgáló
 
 - [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
 **Útmutató**: ha az Azure Database for MySQL példányaihoz és a kapcsolódó erőforrásokhoz egyéni Azure Policy-definíciókat használ, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Az Azure Repos dokumentációja](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Az Azure Repos dokumentációja](/azure/devops/repos/)
 
 **Felelősség**: Ügyfél
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: az Azure-erőforrások konfigurációs felügyeleti eszközeinek üzembe helyezése
 
@@ -858,17 +668,9 @@ Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgáló
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: konfigurációs felügyeleti eszközök telepítése operációs rendszerekhez
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: automatikus konfigurációs monitorozás megvalósítása Azure-erőforrásokhoz
 
@@ -876,17 +678,9 @@ Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgáló
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
 
@@ -898,25 +692,25 @@ Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgáló
 
 - [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/assign-access-policy-portal.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató**: a Azure Database for MySQL-példány támogatja az adatbázisok elérését Azure Active Directory hitelesítéshez.  A Azure Database for MySQL példány létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. Ennek a rendszergazdának a segítségével további adatbázis-felhasználók hozhatók létre.  
+**Útmutató**: a Azure Database for MySQL-példány támogatja a Azure Active Directory (Azure ad) hitelesítést az adatbázisok eléréséhez. A Azure Database for MySQL példány létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. Ennek a rendszergazdának a segítségével további adatbázis-felhasználók hozhatók létre.
 
 Az Azure Virtual Machines vagy a Azure App Serviceon futó webalkalmazások esetében a Azure Database for MySQL példányok eléréséhez használja a Managed Service Identityt a Azure Key Vault-példány hitelesítő adatainak tárolására és lekérésére. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 
-Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (AD). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
+Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását az Azure AD-ben. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
 - [Felügyelt identitások konfigurálása](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 - [Integráció az Azure felügyelt identitásokkal](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
@@ -924,23 +718,13 @@ Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások
 
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
 *További információt az [Azure biztonsági teljesítményteszt: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md)című témakörben talál.*
-
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például az SQL Azure Database-ben), de nem az ügyfél tartalmán fut.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
 
@@ -948,19 +732,9 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 A nem számítási Azure-erőforrásokra feltöltött tartalom előzetes vizsgálata, például App Service, Data Lake Storage, Blob Storage, Azure Database for MySQL stb. A Microsoft nem fér hozzá az adataihoz ezekben a példányokban.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Megosztott
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
-
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
-
-A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például Azure Database for MySQL), azonban az nem az ügyfél tartalmán fut.
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
-**Felelősség**: N/A
+**Azure Security Center figyelés**: nincs
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
@@ -974,9 +748,13 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 - [Azure Database for MySQL kezdeti konfiguráció ismertetése](tutorial-design-database-using-portal.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Megosztott
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. DBforMySQL**:
+
+[!INCLUDE [Resource Policy for Microsoft.DBforMySQL 9.1](../../includes/policy/standards/asb/rp-controls/microsoft.dbformysql-9-1.md)]
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és minden ügyfél által felügyelt kulcs biztonsági mentése
 
@@ -988,9 +766,13 @@ Ha a Azure Database for MySQL-példányok hitelesítő adatainak tárolására A
 
 - [Key Vault kulcsok biztonsági mentése](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Megosztott
+
+**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/azure/governance/policy/samples/azure-security-benchmark) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/azure/security-center/security-center-recommendations)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/azure/security-center/azure-defender) -csomagra a kapcsolódó szolgáltatásokhoz.
+
+**Azure Policy beépített definíciók – Microsoft. DBforMySQL**:
+
+[!INCLUDE [Resource Policy for Microsoft.DBforMySQL 9.2](../../includes/policy/standards/asb/rp-controls/microsoft.dbformysql-9-2.md)]
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
@@ -1002,9 +784,9 @@ A Azure Database for MySQL példányok visszaállításának rendszeres tesztel�
 
 - [A Azure Database for MySQL biztonsági mentésének és visszaállításának ismertetése](concepts-backup.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
@@ -1012,13 +794,13 @@ A Azure Database for MySQL példányok visszaállításának rendszeres tesztel�
 
 - [A Azure Database for MySQL biztonsági mentésének és visszaállításának ismertetése](concepts-backup.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](../security/benchmarks/security-control-incident-response.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Incidensek kezelése](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -1032,19 +814,19 @@ A Azure Database for MySQL példányok visszaállításának rendszeres tesztel�
 
 - [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
-**Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
+**Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint a riasztást eredményező tevékenység mögötti rosszindulatú szándékkal.
 
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben nem termelt), és hozzon létre egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosításához és kategorizálásához.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
@@ -1052,9 +834,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és edzésprogramjának kidolgozásához](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
@@ -1062,9 +844,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
@@ -1074,9 +856,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
@@ -1084,9 +866,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
@@ -1094,15 +876,17 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
-**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Útmutató**: kövesse a Microsoft Cloud penetráció tesztelési szabályait, amelyekkel biztosíthatja, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrán, szolgáltatásokon és alkalmazásokon végzett riasztási és élő behatolási tesztek végrehajtásához használja a Microsoft stratégiáját és végrehajtási tervét.
 
-- [További információt a Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos, a Microsoft által felügyelt felhő-infrastruktúra,-szolgáltatások és-alkalmazások fejlesztésére vonatkozó stratégiáról és végrehajtásáról itt talál.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Felelősség**: Megosztott
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)
+- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

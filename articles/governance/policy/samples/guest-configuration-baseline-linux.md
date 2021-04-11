@@ -1,15 +1,15 @@
 ---
 title: Referencia – Azure Policy vendég alapkonfiguráció a Linux rendszerhez
 description: Az Azure-ban megvalósított Linux-alapkonfiguráció részletei Azure Policy Guest Configuration használatával.
-ms.date: 03/12/2021
+ms.date: 04/05/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 6b1d3048fdc0945e1ee64e211d2f7b1f9de5e6e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adee82dd9802be47a777a9666a7c680d5b5c6204
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419864"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448728"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>A Linux rendszerhez készült Azure Policy vendég alapkonfiguráció
 

@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 248d5e163eb046edd130d69307a1c553d434b92d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604668"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167498"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Szelektív jelszó kivonatának szinkronizálási konfigurációja Azure AD Connect
 
@@ -83,7 +83,7 @@ A következő szakasz azt ismerteti, hogyan engedélyezhető a szelektív jelsz�
 - Állítsa be az Active Directoryban az attribútum értékét, amely hatókör attribútumként van definiálva azon felhasználóknál, akik számára engedélyezni kívánja a jelszó-kivonat szinkronizálását. 
 
 >[!Important]
->A szelektív jelszó-kivonatok szinkronizálásának konfigurálásához megadott lépések csak olyan felhasználói objektumokat érintenek, amelyekben a **adminDescription** attribútum Active Directory értékkel van feltöltve **PHSFiltered**.
+>A szelektív jelszó-kivonatok szinkronizálásának konfigurálásához megadott lépések csak azokat a felhasználói objektumokat érintik, amelyekben a **adminDescription** attribútum Active Directory a **PHSFiltered** értékkel van feltöltve.
 Ha ez az attribútum nincs feltöltve, vagy az értéke nem **PHSFiltered** , akkor a rendszer nem alkalmazza ezeket a szabályokat a felhasználói objektumokra.
 
 
@@ -95,7 +95,7 @@ Ha ez az attribútum nincs feltöltve, vagy az értéke nem **PHSFiltered** , ak
      ![Szabály kiválasztása](media/how-to-connect-selective-password-hash-synchronization/exclude-2.png)
  3. Az első szabály letiltja a jelszó-kivonatok szinkronizálását. Adja meg a következő nevet az új egyéni szabály számára: **az ad-User AccountEnabled – felhasználók szűrése a PHS**.
  Módosítsa a sorrend értékét a 100-nál alacsonyabb értékre (például **90** vagy attól függően, hogy melyik a legalacsonyabb érték a környezetben).
- Győződjön meg róla, hogy a **Jelszó-szinkronizálás engedélyezése** és a **Letiltva** jelölőnégyzet be van jelölve, és c.
+ Győződjön meg róla, hogy a **Jelszó-szinkronizálás engedélyezése** és a **Letiltva** jelölőnégyzet be van jelölve.
  Kattintson a **Tovább** gombra.
   ![Bejövőek szerkesztése](media/how-to-connect-selective-password-hash-synchronization/exclude-3.png)
  4. A **hatókör szűrőben** kattintson a **Hozzáadás záradék** elemre.
@@ -155,7 +155,7 @@ Az alábbiakban az alábbi lépésekben végrehajtandó műveletek összegzése 
 - Állítsa be az Active Directoryban az attribútum értékét, amely hatókör attribútumként van definiálva azon felhasználóknál, akik számára engedélyezni kívánja a jelszó-kivonat szinkronizálását. 
 
 >[!Important]
->A szelektív jelszó-kivonatok szinkronizálásának konfigurálásához megadott lépések csak olyan felhasználói objektumokat érintenek, amelyekben a **adminDescription** attribútum Active Directory értékkel van feltöltve **PHSIncluded**.
+>A szelektív jelszó-kivonatok szinkronizálásának konfigurálásához megadott lépések csak azokat a felhasználói objektumokat érintik, amelyekben a **adminDescription** attribútum Active Directory a **PHSIncluded** értékkel van feltöltve.
 Ha ez az attribútum nincs feltöltve, vagy az értéke nem **PHSIncluded** , akkor a rendszer nem alkalmazza ezeket a szabályokat a felhasználói objektumokra.
 
 

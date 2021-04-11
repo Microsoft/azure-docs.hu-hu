@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b555d7972e88df85e08dbcb1737231755c21361
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696744"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448848"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP alaphelyzetbe állítása és üresjárati időkorlátja
 
@@ -58,7 +58,6 @@ A TCP Keep-Alive olyan forgatókönyvek esetén működik, ahol az akkumulátoro
 ## <a name="limitations"></a>Korlátozások
 
 - A TCP-visszaállítás csak a TCP-kapcsolatok során lett elküldve a létesített állapotban.
-- A TCP alaphelyzetbe állítása nem lesz elküldése a belső terheléselosztó esetében, HA konfigurálva van a HA port.
 - A TCP Üresjárati időkorlát nem befolyásolja az UDP protokoll terheléselosztási szabályait.
 
 ## <a name="next-steps"></a>Következő lépések

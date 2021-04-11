@@ -10,18 +10,27 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcd48354372a196ea903c335e5e22caf20e25996
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720389"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219654"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Ajánlott eljárások kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
 Ebben a cikkben az ajánlott eljárások gyűjteményét találja a kiszolgáló nélküli SQL-készlet használatára. A kiszolgáló nélküli SQL-készlet az Azure szinapszis Analytics egyik erőforrása.
 
 A kiszolgáló nélküli SQL-készlet lehetővé teszi a fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárolási vagy betöltési képességekkel. Tehát az összes olyan fájl, amelyet a lekérdezés a kiszolgáló nélküli SQL-készleten kívülre mutat. A fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
+
+Bizonyos általános irányelvek a következők:
+- Győződjön meg arról, hogy az ügyfélalkalmazások a kiszolgáló nélküli SQL-készlettel közös elhelyezésű.
+  - Ha az Azure-on kívüli ügyfélalkalmazások használatát (például Power BI Desktop, SSMS, ADS) használja, győződjön meg arról, hogy a kiszolgáló nélküli készletet használja-e az ügyfélszámítógéphez közelebbi régióban.
+- Győződjön meg arról, hogy a tároló (Azure Data Lake, Cosmos DB) és a kiszolgáló nélküli SQL-készlet ugyanabban a régióban található.
+- Próbálja meg [optimalizálni a tárolási elrendezést](#prepare-files-for-querying) a particionálás és a fájlok 100 MB és 10 GB közötti tartományban való megtartásával.
+- Ha nagy számú eredményt ad vissza, győződjön meg róla, hogy SSMS vagy HIRDETÉSEKET használ, és nem a szinapszis Studio-t használja. A szinapszis Studio egy olyan webes eszköz, amelyet nem nagyméretű eredmény-készletek számára terveztek. 
+- Ha a sztring oszlop alapján szűri az eredményeket, próbáljon meg valamilyen `BIN2_UTF8` rendezést használni.
+- Power BI importálási mód vagy Azure Analysis Services használatával próbálja meg gyorsítótárazni az eredményeket az ügyféloldali oldalon, és rendszeresen frissítse őket. A kiszolgáló nélküli SQL-készletek nem biztosíthatnak interaktív élményt Power BI közvetlen lekérdezési módban, ha összetett lekérdezéseket használ, vagy nagy mennyiségű adatfeldolgozást végez.
 
 ## <a name="client-applications-and-network-connections"></a>Ügyfélalkalmazások és hálózati kapcsolatok
 
@@ -66,7 +75,11 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
 ### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>A CosmosDB analitikai tároló és kiszolgáló nélküli SQL-készlet közös elhelyezése
 
-Győződjön meg arról, hogy a CosmosDB analitikai tárolója ugyanahhoz a régióhoz kerül, mint a szinapszis-munkaterület. A régiók közötti lekérdezések nagy késéseket okozhatnak.
+Győződjön meg arról, hogy a CosmosDB analitikai tárolója ugyanahhoz a régióhoz kerül, mint a szinapszis-munkaterület. A régiók közötti lekérdezések nagy késéseket okozhatnak. A kapcsolódási karakterlánc régió tulajdonságának használatával explicit módon meghatározhatja azt a régiót, ahol az analitikus tároló található (lásd: [lekérdezés CosmosDb kiszolgáló nélküli SQL-készlettel](query-cosmos-db-analytical-store.md#overview)):
+
+```
+'account=<database account name>;database=<database name>;region=<region name>'
+```
 
 ## <a name="csv-optimizations"></a>CSV-optimalizálások
 
