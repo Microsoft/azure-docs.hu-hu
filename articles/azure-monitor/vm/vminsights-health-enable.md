@@ -4,14 +4,14 @@ description: Ismerteti, hogyan lehet engedélyezni a virtuális gépek beszerzé
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/16/2020
+ms.date: 04/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 540f0725427ace4aec76de373556cd6699a1b229
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f6c67e0e9ef1dd2a4092033a9479801cd0e8e7d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732754"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449307"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>A virtuális gépek bepillantást tevő vendég állapotának engedélyezése (előzetes verzió)
 A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
@@ -26,6 +26,8 @@ A virtuálisgép-megállapítások vendég állapota a nyilvános előzetes verz
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 A virtuális gépnek az alábbi operációs rendszerek egyikét kell futtatnia: 
 
+  - CentOS 7,5, 7,6, 7,7, 7,8, 7,9
+  - RedHat 7,5, 7,6, 7,7, 7,8, 7,9
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 vagy újabb
 

@@ -3,12 +3,12 @@ title: Több példányos feladatok használata MPI-alkalmazások futtatásához
 description: Megtudhatja, hogyan hajthat végre Message Passing Interface (MPI) alkalmazásokat a többpéldányos feladattípus használatával Azure Batchban.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 51fc580e0bb31e0e975c53b44887a5889a784eea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02764f8dd8a6bb3e4224b8b44fe78ab7e15ba85d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605671"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219848"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Message Passing Interface-(MPI-) alkalmazások futtatása többpéldányos feladatokkal a Batch szolgáltatásban
 
@@ -21,7 +21,7 @@ A többpéldányos feladatok lehetővé teszik, hogy egy Azure Batch feladatot e
 
 A Batch-ben minden feladat általában egyetlen számítási csomóponton fut – több feladatot küld egy feladatba, és a Batch szolgáltatás ütemezi az egyes feladatokat egy csomóponton végzett végrehajtásra. A feladatok **többpéldányos beállításainak** konfigurálásával azonban megadhatja, hogy a Batch ne hozzon létre egy elsődleges feladatot és több alfeladatot, amelyek ezután több csomóponton lesznek végrehajtva.
 
-:::image type="content" source="media/batch-mpi/batch_mpi_01.png" alt-text="A többpéldányos beállítások áttekintését bemutató ábra.":::
+:::image type="content" source="media/batch-mpi/batch-mpi-01.png" alt-text="A többpéldányos beállítások áttekintését bemutató ábra.":::
 
 Ha többpéldányos beállításokkal rendelkező feladatot küld egy feladathoz, a Batch a többpéldányos feladatok esetében több lépést hajt végre:
 

@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Cosmos DB analitikus tároló?
+title: Mi az az Azure Cosmos DB elemzési tár?
 description: Ismerkedjen meg Azure Cosmos DB tranzakciós (sor-alapú) és analitikai (oszlop alapú) tárolóval. A nagyméretű számítási feladatokhoz és a tranzakciós tárolóból az analitikai tárolóba történő automatikus szinkronizálás előnyei, valamint a teljesítményre gyakorolt hatás
 author: Rodrigossz
 ms.service: cosmos-db
@@ -8,10 +8,10 @@ ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
 ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105046212"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Mi az Azure Cosmos DB analitikus tároló?
@@ -119,7 +119,7 @@ A következő megkötések alkalmazhatók a Azure Cosmos DB lévő operatív ada
   * Az Azure Szinapszisban található Spark-készletek ezeket az oszlopokat jelölik `undefined` .
   * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az oszlopokat jelölik `NULL` .
 
-#### <a name="schema-representation"></a>Séma ábrázolása
+#### <a name="schema-representation"></a>Sémaábrázolás
 
 Az elemzési tárban két módon lehet ábrázolni a sémákat. Mindkettő kompromisszumos megoldást jelent az oszlopos ábrázolás egyszerűsége, a polimorf sémák kezelése és a lekérdezés egyszerűsége szempontjából:
 

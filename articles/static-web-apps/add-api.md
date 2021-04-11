@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33adaf33ba15b49b0a7e4d3e8f1b2a8c435a7966
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100650684"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449035"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -218,7 +218,7 @@ A Visual Studio Code használatával véglegesítheti és leküldheti a módosí
 
 ## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Lépjen az [Azure Portalra](https://portal.azure.com)
 1. Kattintson az **Erőforrás létrehozása** gombra
 1. **Statikus webalkalmazás** keresése
 1. Kattintson a **statikus webalkalmazás (előzetes verzió)** elemre.
@@ -255,7 +255,7 @@ Ezután adja hozzá a következő Build-adatokat.
 
     :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub-munkafolyamat":::
 
-1. Az üzembe helyezés befejezését követően a szervezeti egység a webalkalmazáshoz navigálva az _Áttekintés_ oldalon megjelenő _URL_ hivatkozásra kattintva érheti el.
+1. Az üzembe helyezés befejezését követően a webalkalmazásra kattintva megtekintheti az _Áttekintés_ lapon megjelenő _URL-_ hivatkozást.
 
     :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="A statikus alkalmazás URL-címének elérése a Azure Portal":::
 
@@ -263,7 +263,7 @@ Ezután adja hozzá a következő Build-adatokat.
 
 Ha nem szeretné tovább használni ezt az alkalmazást, a következő lépésekkel törölheti az Azure statikus webalkalmazást és a kapcsolódó erőforrásokat.
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Lépjen az [Azure Portalra](https://portal.azure.com)
 1. A felső keresési sávban írja be az **erőforráscsoportok** kifejezést.
 1. Kattintson az **erőforráscsoportok** elemre.
 1. **MyResourceGroup** kiválasztása

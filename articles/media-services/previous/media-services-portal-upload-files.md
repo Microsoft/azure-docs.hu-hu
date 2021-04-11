@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: c2dc193d65ff1c85837477c0a8fd345f11d59bcd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a0e4b7e759e27dafb1d847dc5d7ce464b440e98c
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009748"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960673"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Fájlok feltöltése Media Services-fiókba az Azure Portalon
 
@@ -32,7 +32,7 @@ ms.locfileid: "103009748"
 > 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. A naprakész feltöltési fájlok a portálon: a [portál használata a tartalom feltöltésére, kódolására és továbbítására](../latest/manage-assets-quickstart.md).<br/>Továbbá tekintse meg a következőket: [Media Services v3](../latest/index.yml). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. A naprakész feltöltési fájlok a portálon: a [portál használata a tartalom feltöltésére, kódolására és továbbítására](../latest/asset-create-asset-upload-portal-quickstart.md).<br/>Továbbá tekintse meg a következőket: [Media Services v3](../latest/index.yml). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Az Azure Media Services szolgáltatásban a digitális fájlok feltöltése egy objektumba történik. Az objektum tartalmazhat videót, hangot, képeket, miniatűröket, szövegsávokat és feliratfájlokat (valamint mindezen fájlok metaadatait). A fájlok feltöltése után a tartalom a felhőben lesz biztonságosan tárolva további feldolgozás és streamelés céljából.
 

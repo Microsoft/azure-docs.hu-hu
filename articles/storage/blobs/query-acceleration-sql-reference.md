@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95908778"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963257"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>A lekérdezés gyorsításának SQL nyelvi referenciája
 
@@ -122,8 +122,8 @@ A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakte
 |[UPPER](/sql/t-sql/functions/upper-transact-sql)    |A kisbetűs karaktereket tartalmazó karakteres kifejezést adja vissza nagybetűvé alakítva.|
 |[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |Egy karakter, bináris, szöveg vagy képkifejezés egy részét adja vissza SQL Serverban.|
 |[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc elejéről és végéről.|
-|VEZETŐ    |Leírás|
-|ZÁRÓ    |Leírás|
+|VEZETŐ    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc elejéről.|
+|ZÁRÓ    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc végéről.|
 
 Íme néhány példa:
 

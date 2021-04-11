@@ -3,12 +3,12 @@ title: Közvetlen módszerek használata az élő videó-elemzésekben IoT Edge 
 description: A IoT Edge Live Video Analytics számos közvetlen módszert tesz elérhetővé. A közvetlen módszerek a jelen témakörben ismertetett konvenciók alapján működnek.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56fbf565af45a9b3877ff8d6c48a56713ddc3da6
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656240"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076989"
 ---
 # <a name="direct-methods"></a>Közvetlen metódusok
 
@@ -381,7 +381,7 @@ Legfontosabb szempontok:
 | Gráf-érvényesítési hibák | 400 | GraphValidationError |
 | Modul-ellenőrzési hibák | 400 | ModuleValidationError |
 | Erőforrás-ellenőrzési hibák | 409 | ResourceValidationError |
-| Általános kiszolgálói hibák | 500 tartomány |  |  |
+| Általános kiszolgálói hibák | 500 tartomány |  | 
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 

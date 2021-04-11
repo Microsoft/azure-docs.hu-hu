@@ -13,8 +13,6 @@
   items:
     - name: Portál
       items:
-        - name: Szolgáltatás létrehozása
-          href: search-create-service-portal.md
         - name: Index létrehozása
           href: search-get-started-portal.md
         - name: Bemutatóalkalmazás létrehozása
@@ -138,20 +136,30 @@
           href: security-baseline.md
 - name: Útmutatók
   items:
-    - name: Tervezés
+    - name: Kezelés
       items:
         - name: Szint kiválasztása
           href: search-sku-tier.md
-        - name: Kapacitás becslése és kezelése
+        - name: Kapacitás tervezése
           href: search-capacity-planning.md
-        - name: A költségek megbecslése
-          href: search-sku-manage-costs.md
+        - name: Szolgáltatás létrehozása
+          href: search-create-service-portal.md
         - name: Szolgáltatási korlátozások
           href: search-limits-quotas-capacity.md
-        - name: Teljesítményorientált skálázás
+        - name: Költségek kezelése
+          href: search-sku-manage-costs.md
+        - name: Rendelkezésre állás és helyreállítás
           href: search-performance-optimization.md
-        - name: Több-bérlős architektúra
+        - name: Több-bérlős üzemmód
           href: search-modeling-multitenant-saas-applications.md
+        - name: Kezelés a portálon
+          href: search-manage.md
+        - name: Kezelés a Powershell-lel
+          href: search-manage-powershell.md
+        - name: Kezelés az Azure CLI-vel
+          href: search-manage-azure-cli.md
+        - name: Szolgáltatás áthelyezése régiók között
+          href: search-howto-move-across-regions.md
     - name: Fejlesztés
       items:
         - name: API-verziók
@@ -276,6 +284,10 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Azure SQL Servert futtató virtuális gépek
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Indexelő problémáinak elhárítása
+          href: search-indexer-troubleshooting.md
+        - name: Indexelő hibák és figyelmeztetések hibaelhárítása
+          href: cognitive-search-common-errors-warnings.md
     - name: Készségek
       items:
         - name: Cognitive Services-erőforrás csatolása
@@ -376,8 +388,28 @@
           href: semantic-ranking.md
         - name: Pontozási profilok
           href: index-add-scoring-profiles.md
+    - name: Teljesítmény és monitorozás
+      items:
+        - name: Teljesítmény elemzése
+          href: search-performance-analysis.md
+        - name: Tippek a jobb teljesítmény érdekében
+          href: search-performance-tips.md
+        - name: Diagnosztikai naplózás
+          href: search-monitor-logs.md
+        - name: Diagnosztikai naplók vizualizációja
+          href: search-monitor-logs-powerbi.md
+        - name: Monitorozás áttekintése
+          href: search-monitor-usage.md
+        - name: Lekérdezések figyelése
+          href: search-monitor-queries.md
+        - name: Indexelő alapú indexelés figyelése
+          href: search-howto-monitor-indexers.md
+        - name: Ügyféloldali interakciók figyelése
+          href: search-traffic-analytics.md
     - name: Biztonság
       items:
+        - name: Rendszergazdai jogosultságok
+          href: search-security-rbac.md
         - name: Adattitkosítás
           items:
             - name: Felhasználó által kezelt kulcsok
@@ -406,38 +438,6 @@
               href: search-security-trimming-for-azure-search.md
             - name: Felhasználói identitások szűrése
               href: search-security-trimming-for-azure-search-with-aad.md
-    - name: Kezelés
-      items:
-        - name: Portál
-          href: search-manage.md
-        - name: PowerShell
-          href: search-manage-powershell.md
-        - name: Azure CLI
-          href: search-manage-azure-cli.md
-        - name: Szolgáltatás áthelyezése régiók között
-          href: search-howto-move-across-regions.md
-        - name: Szerepköralapú rendszergazdai hozzáférés
-          href: search-security-rbac.md
-    - name: Figyelés
-      items:
-        - name: Áttekintés
-          href: search-monitor-usage.md
-        - name: Diagnosztikai naplózás
-          href: search-monitor-logs.md
-        - name: Diagnosztikai naplók vizualizációja
-          href: search-monitor-logs-powerbi.md
-        - name: Lekérdezési tevékenységek figyelése
-          href: search-monitor-queries.md
-        - name: Indexelők monitorozása
-          href: search-howto-monitor-indexers.md
-        - name: Forgalmi elemzések keresése
-          href: search-traffic-analytics.md
-    - name: Hibaelhárítás
-      items:
-        - name: Indexelőkkel kapcsolatos problémák
-          href: search-indexer-troubleshooting.md
-        - name: Indexelőkkel kapcsolatos hibák és figyelmeztetések
-          href: cognitive-search-common-errors-warnings.md
 - name: Referencia
   items:
     - name: Azure CLI

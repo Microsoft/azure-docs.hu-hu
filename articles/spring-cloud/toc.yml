@@ -99,6 +99,8 @@
           href: how-to-bind-redis.md
         - name: Alkalmazás kötése az Azure MySQL-hez
           href: how-to-bind-mysql.md
+        - name: Felügyelt identitás Azure SQL Database kapcsolódáshoz
+          href: connect-managed-identity-to-azure-sql.md
         - name: Integrálás az Azure Load Balance-megoldásokkal
           href: how-to-integrate-azure-load-balancers.md
     - name: Figyelés
@@ -133,6 +135,20 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Szerepkörök és engedélyek létrehozása
           href: how-to-permissions.md
+        - name: Végpontok közötti Transport Layer Security engedélyezése
+          href: how-to-enable-end-to-end-tls.md
+        - name: A konfigurációs kiszolgáló és a szolgáltatás beállításjegyzékének elérése
+          href: how-to-access-data-plane-azure-ad-rbac.md
+    - name: Integrálás
+      items:
+        - name: Alkalmazás kötése az Azure Cosmos DB-hez
+          href: how-to-bind-cosmos.md
+        - name: Alkalmazás kötése az Azure Cache for Redishez
+          href: how-to-bind-redis.md
+        - name: Alkalmazás kötése az Azure MySQL-hez
+          href: how-to-bind-mysql.md
+        - name: Integrálás az Azure Load Balance-megoldásokkal
+          href: how-to-integrate-azure-load-balancers.md
     - name: Automatizálás
       items:
         - name: CI/CD az Azure DevOps használatával

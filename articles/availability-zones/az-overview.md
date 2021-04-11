@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44ff938d0990a1a7794140a82c0e9222bb69a5d7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596008"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384255"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
@@ -87,8 +87,8 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolgáltatásokat: az alapszintű, a mainstream és a Specialized. A szolgáltatási kategóriák az általános rendelkezésre álláshoz vannak rendelve. A szolgáltatások gyakran elindítják az életciklusát speciális szolgáltatásként, és az igény és a kihasználtság növelését a mainstream vagy az Foundation is támogatja. A következő táblázat az alapszintű szolgáltatások kategóriáit sorolja fel. Vegye figyelembe a következőket a tábláról:
 
 - Egyes szolgáltatások nem regionálisak. További információ és a nem regionális szolgáltatások listája: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/).
-- A szolgáltatások vagy virtuális gépek régebbi generációja nem szerepel a felsorolásban. További információ: a [virtuális gépek méreteinek korábbi generációinak](../virtual-machines/sizes-previous-gen.md) dokumentációja
-- . A szolgáltatások nem kapnak kategóriát az általános Elérhetőségig (GA). További információ és az előzetes verziójú szolgáltatások listája: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). 
+- A szolgáltatások vagy virtuális gépek régebbi generációja nem szerepel a felsorolásban. További információkért lásd: a [virtuális gépek méreteinek korábbi generációinak](../virtual-machines/sizes-previous-gen.md)dokumentációja.
+- A szolgáltatások nem kapnak kategóriát az általános Elérhetőségig (GA). További információ és az előzetes verziójú szolgáltatások listája: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
 > | Alapító                           | Mainstream                                        | 

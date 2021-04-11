@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 04/06/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 6b15585f029f9289736d8d498b61a3e0ba40f009
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889416"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449273"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a Python használatával
 
@@ -75,9 +75,12 @@ A folyamatok különböző adattárakból származó adatok betöltésére képe
     ```
     > [!NOTE] 
     > Előfordulhat, hogy az "Azure-Identity" csomag egyes gyakori függőségeinél ütközik az "Azure-CLI"-vel. Ha bármilyen hitelesítési probléma teljesül, távolítsa el az Azure-CLI-t és annak függőségeit, vagy használjon tiszta gépet anélkül, hogy az "Azure-CLI" csomagot telepítené a működéséhez.
+    > Szuverén felhők esetén a megfelelő Felhőbeli konstansokat kell használnia.  A [többfelhős Pythonhoz készült Azure-kódtárak használatával kapcsolatban tekintse meg a következőt: Kapcsolódás az összes régióhoz | Microsoft Docs a Pythonhoz való kapcsolódáshoz a szuverén felhőkben.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    
     
 ## <a name="create-a-data-factory-client"></a>Adat-előállító ügyfél létrehozása
 
+  
 1. Hozzon létre egy **datafactory.py** nevű fájlt. Adja hozzá az alábbi utasításokat, hogy a névterekre mutató hivatkozásokat tudjon felvenni.
 
     ```python
@@ -122,6 +125,7 @@ A folyamatok különböző adattárakból származó adatok betöltésére képe
     ```
 3. Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy DataPipelineManagementClient osztályú példányt. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és folyamatot hozhat létre. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható. Állítsa be a **subscription_id** változót az Azure-előfizetés azonosítójaként. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
+        
     ```python
     def main():
 
@@ -136,6 +140,11 @@ A folyamatok különböző adattárakból származó adatok betöltésére képe
 
         # Specify your Active Directory client ID, client secret, and tenant ID
         credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        
+        # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
+        # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD
+        # credentials = DefaultAzureCredential(authority=CLOUD.endpoints.active_directory, tenant_id=tenant_id)
+        
         resource_client = ResourceManagementClient(credentials, subscription_id)
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 

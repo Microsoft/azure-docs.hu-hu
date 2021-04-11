@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb30913d71df46f4c0afedd475d40205c1429258
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108060"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122203"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -34,15 +34,19 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 
 ## <a name="basics-tab--project-details"></a>Alapismeretek lap > projekt részletei
 Töltse ki az alábbi mezőket:
-    1. **Előfizetés** – válasszon ki egy előfizetést.
-    1. **Erőforráscsoport** – bármely erőforráscsoport használata.
-    1. **Erőforráscsoport** – hagyja üresen ezt a mezőt.
+
+1. **Előfizetés** – válasszon ki egy előfizetést.
+1. **Erőforráscsoport** – bármely erőforráscsoport használata.
+1. **Erőforráscsoport** – hagyja üresen ezt a mezőt.
 
 
 ## <a name="basics-tab--workspace-details"></a>Alapismeretek lap > munkaterület részletei
-Töltse ki a következő mezőket: 1. **Munkaterület neve** – tetszőleges globálisan egyedi nevet választhat. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
+Töltse ki az alábbi mezőket:
+
+1. **Munkaterület neve** – tetszőleges globálisan egyedi nevet választhat. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
 1. **Régió** – válasszon régiót.
-1. **2. generációs Data Lake Storage kiválasztása** 1. Kattintson az **előfizetéshez** tartozó gombra.
+1. **2. generációs Data Lake Storage kiválasztása**
+1. Kattintson az **előfizetéshez** tartozó gombra.
 1. A **fiók neve** területen kattintson az **új létrehozása** elemre, és nevezze el az új Storage-fiókot **contosolake** , vagy ehhez hasonló névnek kell lennie.
 1. A **fájlrendszer neve** területen kattintson az **új létrehozása** elemre, és nevezze el a **felhasználók** nevet. Ekkor létrejön egy **felhasználó** nevű tároló. A munkaterület ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók a Spark-táblák és a Spark-alkalmazások naplói számára.
 1. Jelölje be a "a Storage blob adatközreműködői szerepkör kiosztása a Data Lake Storage Gen2 fiókhoz" jelölőnégyzetet. 
@@ -60,16 +64,6 @@ Az Azure szinapszis-munkaterület létrehozása után kétféleképpen nyithatja
 
 * Nyissa meg a szinapszis munkaterületet a [Azure Portal](https://portal.azure.com), a szinapszis munkaterület **Áttekintés** szakaszában, a **Megnyitás elemre kattintva** nyissa meg a szinapszis Studio megnyitása mezőt.
 * Lépjen a `https://web.azuresynapse.net` munkaterületre, és jelentkezzen be.
-
-
-
-
-
-
-
-
-
-
 
 ## <a name="next-steps"></a>Következő lépések
 

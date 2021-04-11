@@ -9,16 +9,16 @@ ms.topic: sample
 ms.custom: sample, mvc, devx-track-azurecli
 ms.date: 5/6/2019
 ms.openlocfilehash: 17e86669ae764006fddafaa05490f9021fdc5859
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105607388"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure CLI-minták Azure Database for PostgreSQL – egyetlen kiszolgáló
 A következő táblázat hivatkozásokat tartalmaz az Azure Database for PostgreSQL-hez elérhető Azure CLI-példaszkriptekre.
 
-| Példa hivatkozás | Description |
+| Példa hivatkozás | Leírás |
 |---|---|
 |**A kiszolgáló létrehozása**||
 | [Kiszolgáló és tűzfalszabály létrehozása](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Ez az Azure CLI-szkript létrehoz egy Azure Database for PostgreSQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. |

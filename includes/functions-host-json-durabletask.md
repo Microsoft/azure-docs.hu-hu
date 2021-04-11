@@ -8,10 +8,10 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105607089"
 ---
 [Durable functions](../articles/azure-functions/durable/durable-functions-overview.md)konfigurációs beállításai.
@@ -99,7 +99,7 @@ ms.locfileid: "105607089"
 
 A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számokból állhat. Ha nincs megadva, a functions-alkalmazás alapértelmezett neve **DurableFunctionsHub**. További információ: [Task hubok](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|----------|
 |hubName|DurableFunctionsHub|Az alternatív [feladatok központi](../articles/azure-functions/durable/durable-functions-task-hubs.md) neve felhasználható több Durable functions-alkalmazás elkülönítésére, még akkor is, ha ugyanazt a tárolási hátteret használják.|
 |controlQueueBatchSize|32|A vezérlési sorból egyszerre lekérdezett üzenetek száma.|

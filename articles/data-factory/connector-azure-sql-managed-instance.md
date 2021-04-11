@@ -8,10 +8,10 @@ author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
 ms.openlocfilehash: eae085a73e8f43813aa3f02fa910c7931f10f36c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104597414"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Az Azure SQL felügyelt példányain lévő Adatmásolás és átalakítás Azure Data Factory használatával
@@ -42,7 +42,7 @@ Másolási tevékenység esetén ez az Azure SQL Database-összekötő támogatj
 
 Az SQL felügyelt példány [nyilvános végpontjának](../azure-sql/managed-instance/public-endpoint-overview.md)eléréséhez használhat egy Azure Data Factory felügyelt Azure Integration Runtime-t is. Ügyeljen arra, hogy engedélyezze a nyilvános végpontot, és engedélyezze a nyilvános végponti forgalmat a hálózati biztonsági csoporton, hogy Azure Data Factory csatlakozni tudjanak az adatbázishoz. További információkért tekintse meg [ezt az útmutatót](../azure-sql/managed-instance/public-endpoint-configure.md).
 
-Az SQL felügyelt példány privát végpontjának eléréséhez állítson be egy saját üzemeltetésű [integrációs](create-self-hosted-integration-runtime.md) modult, amely hozzáfér az adatbázishoz. Ha a saját üzemeltetésű integrációs modult ugyanabban a virtuális hálózatban hozza létre, mint a felügyelt példányát, győződjön meg arról, hogy az integrációs modul számítógépe a felügyelt példánytól eltérő alhálózaton van. Ha a saját üzemeltetésű integrációs modult a felügyelt példánytól eltérő virtuális hálózaton helyezi üzembe, a virtuális hálózati kapcsolatok vagy virtuális hálózatok használatával virtuális hálózati kapcsolatot is használhat. További információ: [az alkalmazás összekötése az SQL felügyelt példányával](../azure-sql/managed-instance/connect-application-instance.md).
+Az SQL felügyelt példány privát végpontjának eléréséhez állítson be egy saját üzemeltetésű [integrációs](create-self-hosted-integration-runtime.md) modult, amely hozzáfér az adatbázishoz. Ha a saját üzemeltetésű integrációs modult ugyanazon a virtuális hálózaton helyezi üzembe, ahol a felügyelt példány van, akkor ügyeljen arra, hogy az integrációs modul gépe ne ugyanazon az alhálózaton legyen, mint a felügyelt példány. Ha a saját üzemeltetésű integrációs modult egy másik virtuális hálózaton helyezi üzembe, mint ahol a felügyelt példány van, akkor virtuális hálózati társviszony-létesítést vagy virtuális hálózatok közötti kapcsolatot is használhat. További információ: [az alkalmazás összekötése az SQL felügyelt példányával](../azure-sql/managed-instance/connect-application-instance.md).
 
 ## <a name="get-started"></a>Bevezetés
 

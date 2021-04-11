@@ -2,13 +2,13 @@
 title: Az ügynök portfoliójának áttekintése és az operációs rendszer támogatása (előzetes verzió)
 description: A IoT készült Azure Defender az eszközök típusától függően az ügynökök nagy portfólióját biztosítja.
 ms.date: 1/20/2021
-ms.topic: quickstart
-ms.openlocfilehash: 6c65ad33439002bd651c4c926b6452868f6137ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: conceptual
+ms.openlocfilehash: d2e463051d0897afe52981ea2d50ddd1f06bb54d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784764"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383422"
 ---
 # <a name="agent-portfolio-overview-and-os-support-preview"></a>Az ügynök portfoliójának áttekintése és az operációs rendszer támogatása (előzetes verzió)
 

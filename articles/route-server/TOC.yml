@@ -12,6 +12,8 @@
       href: quickstart-configure-route-server-powershell.md
     - name: Útvonal-kiszolgáló konfigurálása – parancssori felület
       href: quickstart-configure-route-server-cli.md
+    - name: Route Server-ARM-sablon konfigurálása
+      href: quickstart-configure-template.md
   expanded: true
 - name: Alapelvek
   items:

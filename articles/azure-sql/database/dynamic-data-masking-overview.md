@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918077"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551645"
 ---
 # <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -72,13 +72,13 @@ A REST API használatával programozott módon kezelheti az adatmaszkolási szab
 
 ### <a name="data-masking-policies"></a>Adatmaszkolási szabályzatok
 
-- [Létrehozás vagy frissítés](/rest/api/sql/datamaskingpolicies/createorupdate): adatbázis-adatmaszkolási szabályzat létrehozása vagy frissítése.
-- Get: adatbázis-adatmaszkolási házirend [beolvasása](/rest/api/sql/datamaskingpolicies/get). 
+- [Létrehozás vagy frissítés](/rest/api/sql/2014-04-01/datamaskingpolicies/createorupdate): adatbázis-adatmaszkolási szabályzat létrehozása vagy frissítése.
+- Get: adatbázis-adatmaszkolási házirend [beolvasása](/rest/api/sql/2014-04-01/datamaskingpolicies/get). 
 
 ### <a name="data-masking-rules"></a>Adatmaszkolási szabályok
 
-- [Létrehozás vagy frissítés](/rest/api/sql/datamaskingrules/createorupdate): adatbázis-adatmaszkolási szabály létrehozása vagy frissítése.
-- [Listázás adatbázis szerint](/rest/api/sql/datamaskingrules/listbydatabase): lekéri az adatbázis-adatmaszkolási szabályok listáját.
+- [Létrehozás vagy frissítés](/rest/api/sql/2014-04-01/datamaskingrules/createorupdate): adatbázis-adatmaszkolási szabály létrehozása vagy frissítése.
+- [Listázás adatbázis szerint](/rest/api/sql/2014-04-01/datamaskingrules/listbydatabase): lekéri az adatbázis-adatmaszkolási szabályok listáját.
 
 ## <a name="permissions"></a>Engedélyek
 

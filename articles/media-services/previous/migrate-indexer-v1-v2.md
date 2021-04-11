@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: eb4f662a4b34d748da0e97da9b64a386be3f5c49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b1960aa2d08a189e04aea8906c10e761dc1c57a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016423"
+ms.locfileid: "105962645"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrálás Media Indexer és Media Indexer 2 – Video Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!IMPORTANT]
-> Javasoljuk, hogy az ügyfelek migrálása az indexelő v1 és az indexelő v2 rendszerről a [Media Services v3 AudioAnalyzerPreset alapszintű mód](../latest/analyzing-video-audio-files-concept.md)használatára. Folyamatban van a [Azure Media Indexer](media-services-index-content.md) adathordozó-feldolgozó és [Azure Media Indexer 2 előzetes](./legacy-components.md) verziójú adathordozó-feldolgozó kivonása. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
+> Javasoljuk, hogy az ügyfelek migrálása az indexelő v1 és az indexelő v2 rendszerről a [Media Services v3 AudioAnalyzerPreset alapszintű mód](../latest/analyze-video-audio-files-concept.md)használatára. Folyamatban van a [Azure Media Indexer](media-services-index-content.md) adathordozó-feldolgozó és [Azure Media Indexer 2 előzetes](./legacy-components.md) verziójú adathordozó-feldolgozó kivonása. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
 
 A Azure Media Services Video Indexer Azure Media Analytics, Azure Cognitive Search, Cognitive Servicesra épül (például a Face API, a Microsoft Translator, a Computer Vision API és Custom Speech Service). Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel. Ha szeretné megtekinteni, hogy milyen forgatókönyvek Video Indexer használhatók a alkalmazásban, milyen funkciókat kínál, és hogyan kezdheti el az első lépéseket, tekintse meg [video Indexer videó-és hangmodelleket](../video-indexer/video-indexer-overview.md). 
 
-A videó-és hangfájlokból kinyerheti az elemzéseket az [Azure Media Services v3 Analyzer-előállítók](../latest/analyzing-video-audio-files-concept.md) használatával, vagy közvetlenül a [video Indexer API](https://api-portal.videoindexer.ai/)-k használatával. Jelenleg a Video Indexer API-k és a Media Services V3 API-k által kínált funkciók átfedésben vannak.
+A videó-és hangfájlokból kinyerheti az elemzéseket az [Azure Media Services v3 Analyzer-előállítók](../latest/analyze-video-audio-files-concept.md) használatával, vagy közvetlenül a [video Indexer API](https://api-portal.videoindexer.ai/)-k használatával. Jelenleg a Video Indexer API-k és a Media Services V3 API-k által kínált funkciók átfedésben vannak.
 
 > [!NOTE]
 > Az Video Indexer vs. Media Services Analyzer-készletek közötti különbségek megismeréséhez tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md).
@@ -49,7 +49,7 @@ A következő szakasz a kapcsolódó hivatkozásokra mutat: Hogyan szerezhetem b
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Media Services V3 API-k – első lépések
 
-A Azure Media Services V3 API lehetővé teszi, hogy kinyerje a videóból és hangfájlokból származó elemzéseket a [Azure Media Services v3 Analyzer-előkészletből](../latest/analyzing-video-audio-files-concept.md).
+A Azure Media Services V3 API lehetővé teszi, hogy kinyerje a videóból és hangfájlokból származó elemzéseket a [Azure Media Services v3 Analyzer-előkészletből](../latest/analyze-video-audio-files-concept.md).
 
 A **AudioAnalyzerPreset** lehetővé teszi több hang-elemzés kinyerését hang-vagy videofájl használatával. A kimenet tartalmaz egy VTT vagy TTML-fájlt a hangátirathoz és egy JSON-fájlhoz (az összes további hangelemzéssel). A hangelemzések közé tartoznak a kulcsszavak, a hangszórók indexelése és a beszéd hangulatának elemzése. A AudioAnalyzerPreset az egyes nyelvekhez is támogatja a nyelvfelismerés használatát. Részletes információk: [átalakítások](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
@@ -57,7 +57,7 @@ A **AudioAnalyzerPreset** lehetővé teszi több hang-elemzés kinyerését hang
 
 Első lépésként tekintse meg a következőt:
 
-* [Oktatóanyag](../latest/analyze-videos-tutorial-with-api.md)
+* [Oktatóanyag](../latest/analyze-videos-tutorial.md)
 * AudioAnalyzerPreset-minták: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) vagy [.net SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
 * VideoAnalyzerPreset-minták: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) vagy [.net SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 

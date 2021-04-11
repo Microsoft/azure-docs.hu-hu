@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709514"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551628"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 csoportok elévülési szabályzatának konfigurálása
 
@@ -65,7 +65,7 @@ A következők olyan szerepkörök, amelyek az Azure AD-ben Microsoft 365 csopor
 Szerepkör | Engedélyek
 -------- | --------
 Globális rendszergazda, csoport rendszergazdája vagy felhasználói rendszergazda | Létrehozhatja, elolvashatja, frissítheti vagy törölheti a Microsoft 365 csoportok lejárati szabályzatának beállításait<br>Bármely Microsoft 365 csoport megújítható
-User | Megújíthatja a saját Microsoft 365 csoportját<br>Visszaállíthatja a saját Microsoft 365 csoportját<br>A lejárati szabályzat beállításainak olvasása
+Felhasználó | Megújíthatja a saját Microsoft 365 csoportját<br>Visszaállíthatja a saját Microsoft 365 csoportját<br>A lejárati szabályzat beállításainak olvasása
 
 A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos további információkért lásd: [törölt Microsoft 365 csoport visszaállítása Azure Active Directoryban](groups-restore-deleted.md).
 
@@ -91,6 +91,7 @@ A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos 
 > - Amikor első alkalommal állítja be a lejáratot, a lejárati időintervallumnál régebbi csoportok 35 napra vannak beállítva, kivéve, ha a csoport automatikusan megújul, vagy a tulajdonos megújítja.
 > - Dinamikus csoport törlésekor és visszaállításakor a rendszer új csoportként tekinti meg, és a szabálynak megfelelően újra feltölti őket. Ez a folyamat akár 24 órát is igénybe vehet.
 > - A csapatokban használt csoportok lejárati megjegyzései megjelennek a csapatok tulajdonosai hírcsatornában.
+> - Ha engedélyezi a lejáratot a kiválasztott csoportokhoz, legfeljebb 500 csoportot adhat hozzá a listához. Ha több mint 500 csoportot kell felvennie, akkor az összes csoport esetében engedélyezheti a lejáratot. Ebben az esetben az 500-Group korlátozás nem érvényes.
 
 ## <a name="email-notifications"></a>E-mail-értesítések
 

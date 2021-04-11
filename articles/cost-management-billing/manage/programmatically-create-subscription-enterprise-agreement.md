@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3f07d18ccdca87f6395b24e4e3f9e6ee91cfaee3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3275fe0a72b70038cf834436e8290b9c55643414
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593975"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963291"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Azure Nagyvállalati Szerződéshez tartozó előfizetések létrehozása programozott módon a legújabb API-kkal
 
@@ -31,7 +31,8 @@ Ha programozott módon hoz létre Azure-előfizetést, azt az a megállapodás s
 Előfizetés létrehozásához tulajdonosi szerepkörrel kell rendelkeznie egy regisztrációs fiókban. A szerepkört kétféleképpen kaphatja meg:
 
 * A regisztráció vállalati rendszergazdája [megteszi Önt fióktulajdonosnak](https://ea.azure.com/helpdocs/addNewAccount) (ehhez bejelentkezés szükséges), amely eredményeként Ön a regisztrációs fiók tulajdonosává válik.
-* A regisztrációs fiók meglévő tulajdonosa [hozzáférést biztosít Önnek](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Hasonlóképpen, ha szolgáltatásnevet szeretne használni egy EA-előfizetés létrehozásához, [lehetővé kell tennie a szolgáltatásnév számára, hogy előfizetéseket hozzon létre](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+* A regisztrációs fiók meglévő tulajdonosa [hozzáférést biztosít Önnek](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Hasonlóképpen, ha szolgáltatásnevet szeretne használni egy EA-előfizetés létrehozásához, [lehetővé kell tennie a szolgáltatásnév számára, hogy előfizetéseket hozzon létre](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
+    Ha SPN-t használ előfizetések létrehozásához, használja az Azure AD-alkalmazás regisztrációjának ObjectId az egyszerű szolgáltatásnév ObjectId [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) vagy az [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list)használatával.
   > [!NOTE]
   > Győződjön meg róla, hogy a megfelelő API-verziót használja, amikor tulajdonosi engedélyeket ad a regisztrációs fióknak. A jelen cikk és a benne dokumentált API-k esetében használja a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) verziójú API-t. Ha az újabb API-k használatára kíván átállni, akkor a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) verzió használatával újra meg kell adnia a tulajdonosi engedélyt. A [2015-07-01-es verzióval](grant-access-to-create-subscription.md) végzett korábbi konfiguráció nem lesz automatikusan konvertálva az újabb API-kkal való használatra.
 
@@ -231,7 +232,7 @@ A `New-AzSubscriptionAlias` parancsmagot tartalmazó modul legújabb verzióján
 Futtassa az alábbi [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) parancsot a `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"` számlázási hatókör használatával. 
 
 ```azurepowershell-interactive
-New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
+New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload "Production"
 ```
 
 A parancsra adott válasz részeként megkapja a subscriptionId paramétert.

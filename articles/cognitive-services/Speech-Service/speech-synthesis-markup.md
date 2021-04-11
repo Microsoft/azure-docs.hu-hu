@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c4e70c7f74c202b7de44a259b8a680f57aeaa041
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c79a80f3617665cb10978e7d1654dde79d69c0dc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645028"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106751"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -27,11 +27,9 @@ A SSML beszédfelismerési szolgáltatásának megvalósítása a World Wide Web
 > [!IMPORTANT]
 > A kínai, Japán és koreai karakterek két karakterből állnak a számlázáshoz. További információ: [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-## <a name="standard-neural-and-custom-voices"></a>Standard, neurális és egyéni hangok
+## <a name="neural-and-custom-voices"></a>Neurális és egyéni hangok
 
-Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang négy nyelven és területi beállításban érhető el. A támogatott nyelvek, területi beállítások és hangok (neurális és standard) teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
-
-A standard, a neurális és az egyéni hangok megismeréséhez lásd a [szöveg – beszéd áttekintést](text-to-speech.md).
+Használjon emberi jellegű neurális hangot, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. A támogatott nyelvek, területi beállítások és hangok teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg. Ha többet szeretne megtudni az neurális és az egyéni hangokról, tekintse meg a [szöveg – beszéd áttekintést](text-to-speech.md).
 
 
 > [!NOTE]
@@ -194,12 +192,9 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-styles"></a>Beszéd stílusainak módosítása
 
-> [!IMPORTANT]
-> A beszélő stílusok beállítása csak neurális hangokat fog működni.
+Alapértelmezés szerint a szöveg és beszéd közötti szolgáltatás szintetizálja a szöveget, és semleges beszéd stílust használ a neurális hangokhoz. A beszéd stílusát beállíthatja úgy, hogy a különböző érzelmeket, például a vidámságot, az empátiát és a nyugalmat, vagy optimalizálja a hangját a különböző forgatókönyvekhez, például az ügyfélszolgálathoz, a bemondáshoz és a hangsegédhez, az `mstts:express-as` elemet használva. Ez egy opcionális elem, amely egyedi a beszédfelismerési szolgáltatáshoz.
 
-Alapértelmezés szerint a Text-to-speech szolgáltatás a standard és a neurális hangok semleges beszéd stílusa alapján szintetizálja a szöveget. Az neurális hangok segítségével úgy állíthatja be a beszéd stílusát, hogy a különböző érzelmeket, például a vidámságot, az empátiát és a nyugalmat, vagy optimalizálja a hangját a különböző forgatókönyvekhez, például az ügyfélszolgálathoz, a bemondáshoz és a hangsegédhez a `mstts:express-as` elem használatával. Ez egy opcionális elem, amely egyedi a beszédfelismerési szolgáltatáshoz.
-
-A jelen neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer:
+A következő neurális hangok esetében jelenleg a beszélő stílusú módosítások támogatottak:
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -213,18 +208,13 @@ A jelen neurális hangok esetében jelenleg a beszélő stílusának módosítá
 * `zh-CN-XiaoxuanNeural` Előnézet
 * `zh-CN-XiaoruiNeural` Előnézet
 
-A beszélő stílus intenzitása tovább módosítható, hogy jobban illeszkedjen a használati esethez. Megadhat egy erősebb vagy lágyabb stílust, `styledegree` hogy a beszéd jobban kifejező vagy visszafogott legyen.
+A beszélő stílus intenzitása tovább módosítható, hogy jobban illeszkedjen a használati esethez. Megadhat egy erősebb vagy lágyabb stílust, `styledegree` hogy a beszéd jobban kifejező vagy visszafogott legyen. A kínai (mandarin, egyszerűsített) neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer.
 
-A jelen neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer:
-* `zh-CN-XiaoxiaoNeural`
-
-A beszélő stílusok és a stílus mértékének módosítása mellett a paramétert úgy is beállíthatja, `role` hogy a hang egy másik kort és nemre is utánozza. Például egy férfi hangja növelheti a pályát, és megváltoztathatja a hanglejtést, hogy utánozza a női hangokat.
-
-Az alábbi neurális hangok esetében jelenleg támogatott a szerepkör-lejátszási beállítások használata:
+A beszélő stílusok és a stílus mértékének módosítása mellett a paramétert úgy is beállíthatja, `role` hogy a hang egy másik kort és nemre is utánozza. Például egy férfi hangja növelheti a pályát, és megváltoztathatja a hanglejtést, hogy utánozza a női hangot, de a hang neve nem változik. Jelenleg a szerepkör-módosítások a következő kínai (mandarin, egyszerűsített) neurális hangok esetében támogatottak:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a szerepkör pedig hangon is változhat. Ha a stílus vagy a szerepkör lejátszása nem támogatott, a szolgáltatás a beszédet az alapértelmezett semleges beszéd módon fogja visszaadni. A [hanglista API](rest-text-to-speech.md#get-a-list-of-voices) -n keresztül, illetve a kód nélküli [hangtartalom-létrehozási](https://aka.ms/audiocontentcreation) platformon megtekintheti, hogy milyen stílusok és szerepjátékok támogatottak minden hangon.
+A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a szerepkör pedig hangon is változhat. Ha a stílus vagy a szerepkör lejátszása nem támogatott, a szolgáltatás a beszédet az alapértelmezett semleges beszéd módon fogja visszaadni. Megtekintheti, hogy milyen stílusok és szerepkörök támogatottak az egyes hangokon a [hanglista API](rest-text-to-speech.md#get-a-list-of-voices) -n keresztül vagy a kód nélküli [hangtartalom-létrehozási](https://aka.ms/audiocontentcreation) platformon keresztül.
 
 **Syntax**
 
@@ -238,19 +228,19 @@ A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a 
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> Jelenleg csak a következőt `styledegree` támogatja: zh-CN-XiaoxiaoNeural. `role` csak a zh-CN-XiaomoNeural és a zh-CN-XiaoxuanNeural használatát támogatja.
+> Jelenleg `styledegree` csak a kínai (mandarin, egyszerűsített) neurális hangokat támogatja. `role` csak a zh-CN-XiaomoNeural és a zh-CN-XiaoxuanNeural használatát támogatja.
 
 **Attribútumok**
 
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | `style` | Megadja a beszéd stílusát. A beszélő stílusok jelenleg hangspecifikusak. | Akkor szükséges, ha a beszélő stílust módosítja egy neurális hanghoz. A használatakor `mstts:express-as` meg kell adni a stílust. Ha a megadott érték érvénytelen, akkor a rendszer figyelmen kívül hagyja ezt az elemet. |
-| `styledegree` | Megadja a beszélő stílusának intenzitását. **Elfogadott értékek**: 0,01 – 2. Az alapértelmezett érték 1, ami az előre definiált stílus intenzitását jelenti. A minimális egység 0,01, ami némileg hajlamos a cél stílusára. A 2 érték a stílus alapértelmezett intenzitásának megkettőzését eredményezi.  | Opcionális (jelenleg csak a következőt `styledegree` támogatja: zh-CN-XiaoxiaoNeural.)|
-| `role` | Megadja a beszélő szerepkört – lejátszás. A hang más korban és nemre is reagál.  | Opcionális (jelenleg csak a következőt `role` támogatja: zh-CN-XiaomoNeural és zh-CN-XiaoxuanNeural.)|
+| `styledegree` | Megadja a beszélő stílusának intenzitását. **Elfogadott értékek**: 0,01 – 2. Az alapértelmezett érték 1, ami az előre definiált stílus intenzitását jelenti. A minimális egység 0,01, ami némileg hajlamos a cél stílusára. A 2 érték a stílus alapértelmezett intenzitásának megkettőzését eredményezi.  | Opcionális (jelenleg `styledegree` csak a kínai (mandarin, egyszerűsített) neurális hangokat támogatja.)|
+| `role` | Megadja a beszélő szerepkört – lejátszás. A hang más korban és nemtől is működik, de a hangnév nem változik.  | Opcionális (jelenleg csak a következőt `role` támogatja: zh-CN-XiaomoNeural és zh-CN-XiaoxuanNeural.)|
 
 Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismerések milyen beszélő stílusokat támogatnak.
 
-| Hang                   | Stílus                     | Leírás                                                 |
+| Hang                   | Stílus                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítéséhez |
 |                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez        |
@@ -322,17 +312,19 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
 |                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
 
-A táblázat segítségével meghatározhatja, hogy mely szerepkörök támogatottak az egyes neurális hangokon.
+A táblázat segítségével ellenőrizhető a támogatott szerepkörök és azok definíciói.
 
-| Hang                   | Szerepkör                       | Leírás                                                 |
-|-------------------------|----------------------------|-------------------------------------------------------------|
-| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | A hang egy fiatal felnőtt nő számára utánozza.                 |
-|                         | `role="OlderAdultMale"`    | A hang egy régebbi felnőtt férfit utánoz.                   |
-|                         | `role="Girl"`              | A hang utánozza a lányt.                               |
-|                         | `role="Boy"`               | A hang egy fiút utánoz.                                |
-| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | A hang egy fiatal felnőtt nő számára utánozza.                 |
-|                         | `role="OlderAdultFemale"`  | A hang egy régebbi felnőtt nőstényt utánoz.                 |
-|                         | `role="OlderAdultMale"`    | A hang egy régebbi felnőtt férfit utánoz.                   |
+|Szerepkör                     | Leírás                |
+|-------------------------|----------------------------|
+|`role="Girl"`            | A hang utánozza a lányt. |
+|`role="Boy"`             | A hang egy fiút utánoz. |
+|`role="YoungAdultFemale"`| A hang egy fiatal felnőtt nő számára utánozza.|
+|`role="YoungAdultMale"`  | A hang a fiatal felnőtt férfit utánozza.|
+|`role="OlderAdultFemale"`| A hang egy régebbi felnőtt nőstényt utánoz.|
+|`role="OlderAdultMale"`  | A hang egy régebbi felnőtt férfit utánoz.|
+|`role="SeniorFemale"`    | A hang egy vezető nő számára utánozza.|
+|`role="SeniorMale"`      | A hang egy vezető férfit utánoz.|
+
 
 **Példa**
 
@@ -399,7 +391,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Választható |
 
-| Erősségét                      | Leírás |
+| Erősségét                      | Description |
 |-------------------------------|-------------|
 | Nincs, vagy ha nincs megadva érték | 0 MS        |
 | x – gyenge                        | 250 MS      |
@@ -720,7 +712,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>

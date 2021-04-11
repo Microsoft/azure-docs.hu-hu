@@ -3,12 +3,12 @@ title: Az Azure Event Hubs integrálása az Azure Private link Service szolgált
 description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private link Service használatával
 ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5c01788044f3c3a5d875a24172e7222ff195f81
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94427751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960843"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Azure Event Hubs-névterek hozzáférésének engedélyezése privát végpontokon keresztül 
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
@@ -17,11 +17,10 @@ A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcso
 
 További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
-> [!WARNING]
-> A privát végpontok engedélyezése megakadályozhatja, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.  A letiltott kérések közé tartoznak a más Azure-szolgáltatások, a Azure Portal, a naplózási és a metrikai szolgáltatások, valamint így tovább. Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Event Hubs erőforrásaihoz, még akkor is, ha a magánhálózati végpontok engedélyezve vannak. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services).
-
->[!NOTE]
-> Ez a funkció mind a **standard** , mind a **dedikált** szint esetében támogatott. Az alapszintű **csomag** nem támogatja.
+## <a name="important-points"></a>Fontos pontok
+- Ez a funkció mind a **standard** , mind a **dedikált** szint esetében támogatott. Az alapszintű **csomag** nem támogatja.
+- A privát végpontok engedélyezése megakadályozhatja, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.  A letiltott kérések közé tartoznak a más Azure-szolgáltatások, a Azure Portal, a naplózási és a metrikai szolgáltatások, valamint így tovább. Kivételként engedélyezheti a hozzáférést bizonyos **megbízható szolgáltatásoktól** Event Hubs erőforrásaihoz, még akkor is, ha a magánhálózati végpontok engedélyezve vannak. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services).
+- **Legalább egy IP-szabályt vagy virtuális hálózati szabályt** meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal). 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása a Azure Portal használatával
 
@@ -51,8 +50,8 @@ Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtá
 
     :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="Hálózatok lap – kiválasztott hálózatok lehetőség" lightbox="./media/private-link-service/selected-networks-page.png":::    
 
-    > [!NOTE]
-    > Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva. Ha nem ad meg IP-tűzfalszabály-szabályt vagy virtuális hálózatot ad hozzá, a névtér a nyilvános interneten keresztül érhető el. 
+    > [!WARNING]
+    > Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva. Ha nem ad meg IP-tűzfalszabály-szabályt vagy virtuális hálózatot ad hozzá, a névtér a nyilvános interneten keresztül (a hozzáférési kulccsal) érhető el. 
 1. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. 
 1. A lap tetején kattintson a **+ privát végpont** gombra.
 

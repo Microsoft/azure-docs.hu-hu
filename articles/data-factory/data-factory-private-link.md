@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d572509b3b2b3a0fc69f207d005984ee07ce34a4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389178"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076819"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link az Azure Data Factoryhez
 
@@ -54,7 +54,7 @@ A Private link Service minden korábbi kommunikációs csatornán való engedél
    - A saját üzemeltetésű integrációs modul és a Azure Data Factory szolgáltatás közötti kommunikáció biztonságos, magánhálózati környezetben is elvégezhető. A saját üzemeltetésű integrációs modul és a Azure Data Factory szolgáltatás közötti forgalom privát kapcsolaton keresztül halad. 
 - **Jelenleg nem támogatott**:
    - A saját üzemeltetésű integrációs modult használó interaktív szerzői műveletek, például a kapcsolat tesztelése, a mappák listájának és a táblák listájának lekérése, a séma beolvasása és az előnézeti adatmegjelenítés.
-   - Ha engedélyezi az automatikus frissítést, a saját üzemeltetésű integrációs modul új verziója automatikusan letölthető a Microsoft letöltőközpontból.
+   - A saját üzemeltetésű integrációs modul új verziója, amely automatikusan letölthető a Microsoft letöltőközpontból, ha engedélyezi az automatikus frissítést, jelenleg nem támogatott.
 
    > [!NOTE]
    > A jelenleg nem támogatott funkciók esetében továbbra is konfigurálnia kell a korábban említett tartományt és portot a virtuális hálózaton vagy a vállalati tűzfalon. 

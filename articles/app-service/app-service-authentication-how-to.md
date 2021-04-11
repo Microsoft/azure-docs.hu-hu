@@ -2,14 +2,14 @@
 title: A AuthN/AuthZ speciális használata
 description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedélyezési funkciót App Service különböző forgatókönyvek esetén, valamint felhasználói jogcímeket és különböző jogkivonatokat kaphat.
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: fc2916cbccc21262467533b0b497b14f4f4b941c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034877"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076870"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -18,10 +18,9 @@ Ez a cikk bemutatja, hogyan szabhatja testre a [app Service beépített hiteles�
 A gyors kezdéshez tekintse meg a következő oktatóanyagok egyikét:
 
 * [Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben](tutorial-auth-aad.md)
-* [Az alkalmazás konfigurálása az Azure Active Directory-bejelentkezés használatára](configure-authentication-provider-aad.md)
+* [Az alkalmazás konfigurálása a Microsoft Identity platform bejelentkezés használatára](configure-authentication-provider-aad.md)
 * [Az alkalmazás konfigurálása a Facebook-bejelentkezés használatára](configure-authentication-provider-facebook.md)
 * [Az alkalmazás konfigurálása a Google-bejelentkezés használatára](configure-authentication-provider-google.md)
-* [Az alkalmazás konfigurálása a Microsoft-fiókbejelentkezés használatára](configure-authentication-provider-microsoft.md)
 * [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára](configure-authentication-provider-twitter.md)
 * [Alkalmazás konfigurálása OpenID Connect-szolgáltató használatával történő bejelentkezéshez (előzetes verzió)](configure-authentication-provider-openid-connect.md)
 * [Az alkalmazás konfigurálása az Apple-be való bejelentkezésre (előzetes verzió)](configure-authentication-provider-apple.md)
@@ -37,8 +36,7 @@ Először a Azure Portal **hitelesítés/engedélyezés** lapján konfigurálja 
 A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz ( `/.auth/login/<provider>` ). Például:
 
 ```html
-<a href="/.auth/login/aad">Log in with Azure AD</a>
-<a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
+<a href="/.auth/login/aad">Log in with the Microsoft Identity Platform</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
@@ -159,7 +157,6 @@ A kiszolgáló kódjából a szolgáltatóra jellemző jogkivonatokat a rendszer
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Facebook-token | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
-| Microsoft-fiók | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
@@ -175,7 +172,6 @@ Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet jogkivonata](#e
 - **Google**: fűzze hozzá a `access_type=offline` lekérdezési karakterlánc paramétert az `/.auth/login/google` API-híváshoz. Ha a Mobile Apps SDK-t használja, hozzáadhatja a paramétert a `LogicAsync` túlterhelések egyikéhez (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: nem biztosít frissítési jogkivonatokat. A hosszú élettartamú tokenek 60 nap múlva lejárnak (lásd [a Facebook lejáratát és a hozzáférési tokenek kiterjesztését](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: a hozzáférési tokenek nem járnak le (lásd: [Twitter OAuth – gyakori kérdések](https://developer.twitter.com/en/docs/authentication/faq)).
-- **Microsoft-fiók**: a [Microsoft-fiók hitelesítési beállításainak konfigurálásakor](configure-authentication-provider-microsoft.md)válassza ki a `wl.offline_access` hatókört.
 - **Azure Active Directory**: a-ben [https://resources.azure.com](https://resources.azure.com) végezze el a következő lépéseket:
     1. Az oldal tetején válassza az **írás/írás** lehetőséget.
     2. A bal oldali böngészőben navigáljon az **előfizetések** > * *_\<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **szolgáltatók**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings elemre**. 
@@ -280,14 +276,26 @@ Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosítha
 
 Ha a többi szint valamelyike nem rendelkezik a szükséges engedélyekkel, vagy ha a platform vagy az identitás szolgáltatója nem támogatott, egyéni kódot kell írnia a felhasználók engedélyezéséhez a [felhasználói jogcímek](#access-user-claims)alapján.
 
-## <a name="updating-the-configuration-version-preview"></a>A konfiguráció verziójának frissítése (előzetes verzió)
+## <a name="updating-the-configuration-version"></a>A konfigurációs verzió frissítése
 
-A felügyeleti API két verziója létezik a hitelesítés/engedélyezés szolgáltatáshoz. Az előnézeti v2 verziója szükséges a (z) "hitelesítés (előzetes verzió)" felhasználói felületéhez a Azure Portal. Egy alkalmazás, amely már a v1 API-t használja, a v2 verzióra frissíthet néhány módosítás után. A titkos konfigurációt a tárolóhely-Sticky alkalmazás beállításaiba kell áthelyezni. A Microsoft-fiók szolgáltatójának konfigurálása jelenleg nem támogatott a v2-ben.
+A felügyeleti API két verziója létezik a hitelesítés/engedélyezés szolgáltatáshoz. A (z) Azure Portal hitelesítési élményéhez a v2 verziója szükséges. Egy alkalmazás, amely már a v1 API-t használja, a v2 verzióra frissíthet néhány módosítás után. A titkos konfigurációt a tárolóhely-Sticky alkalmazás beállításaiba kell áthelyezni. Ezt automatikusan megteheti az alkalmazás portáljának "hitelesítés" részéből.
 
 > [!WARNING]
-> A v2 előzetes verzióra való Migrálás letilthatja az alkalmazás App Service hitelesítési/engedélyezési funkciójának kezelését egyes ügyfeleken, például a Azure Portal, az Azure CLI és a Azure PowerShell meglévő felhasználói felületén. Ez nem vonható vissza. Az előzetes verzió ideje alatt a termelési számítási feladatok áttelepítése nem javasolt vagy nem támogatott. Csak kövesse az ebben a szakaszban ismertetett lépéseket az alkalmazások teszteléséhez.
+> A v2-be való Migrálás letilthatja az alkalmazás App Service hitelesítési/engedélyezési funkciójának kezelését bizonyos ügyfeleken keresztül, például a Azure Portal, az Azure CLI és a Azure PowerShell meglévő felhasználói felületén. Ez nem vonható vissza.
 
-### <a name="moving-secrets-to-application-settings"></a>A titkok áthelyezése az alkalmazás beállításaiba
+A v2 API nem támogatja a Microsoft-fiók létrehozását és szerkesztését a v1-ben végzett eltérő szolgáltatóként. Ehelyett kihasználja az átszervezett [Microsoft Identity platformot](../active-directory/develop/v2-overview.md) az Azure ad-vel és a személyes Microsoft-fiókokkal való bejelentkezési felhasználók számára. A v2 API-ra való áttéréskor a v1 Azure Active Directory konfiguráció a Microsoft Identity platform szolgáltatójának konfigurálására szolgál. Az áttelepítési folyamat során a v1 Microsoft-fiók szolgáltatója továbbra is a megszokott módon működik, de javasoljuk, hogy térjen át a Microsoft Identity platform újabb modelljére. További információért lásd: [Microsoft-fiókok szolgáltatói regisztrációjának támogatása](#support-for-microsoft-account-provider-registrations) .
+
+Az automatizált áttelepítési folyamat áthelyezi a szolgáltatói titkokat az alkalmazásbeállításokbe, majd átalakítja a többi konfigurációt az új formátumba. Az automatikus áttelepítés használata:
+
+1. Navigáljon az alkalmazáshoz a portálon, és válassza a **hitelesítés** menüpontot.
+1. Ha az alkalmazás a v1 modellel lett konfigurálva, megjelenik egy **frissítés** gomb.
+1. Tekintse át a leírást a megerősítő kérdésben. Ha készen áll az áttelepítés végrehajtására, kattintson a **frissítés** elemre a parancssorban.
+
+### <a name="manually-managing-the-migration"></a>Az áttelepítés manuális kezelése
+
+A következő lépésekkel manuálisan telepítheti át az alkalmazást a v2 API-ra, ha nem kívánja használni a fent említett automatikus verziót.
+
+#### <a name="moving-secrets-to-application-settings"></a>A titkok áthelyezése az alkalmazás beállításaiba
 
 1. Szerezze be meglévő konfigurációját a v1 API használatával:
 
@@ -397,9 +405,7 @@ A felügyeleti API két verziója létezik a hitelesítés/engedélyezés szolg�
 
 Ekkor áttelepítette az alkalmazást, hogy az identitás-szolgáltatói titkokat az alkalmazás beállításainak megfelelően tárolja.
 
-### <a name="support-for-microsoft-account-registrations"></a>Microsoft-fiók regisztrációk támogatása
-
-A v2 API jelenleg nem támogatja a Microsoft-fiókot eltérő szolgáltatóként. Ehelyett az átszervezett [Microsoft Identity platformot](../active-directory/develop/v2-overview.md) használja a személyes Microsoft-fiókkal rendelkező felhasználók bejelentkezésére. A v2 API-ra való áttéréskor a v1 Azure Active Directory konfiguráció a Microsoft Identity platform szolgáltatójának konfigurálására szolgál.
+#### <a name="support-for-microsoft-account-provider-registrations"></a>Microsoft-fiókok szolgáltatói regisztrációjának támogatása
 
 Ha a meglévő konfigurációja Microsoft-fiókot tartalmaz, és nem tartalmaz Azure Active Directory szolgáltatót, átválthatja a konfigurációt a Azure Active Directory szolgáltatóra, majd elvégezheti az áttelepítést. Ehhez tegye a következőket:
 
@@ -413,12 +419,10 @@ Ha a meglévő konfigurációja Microsoft-fiókot tartalmaz, és nem tartalmaz A
 1. Ezen a ponton sikeresen átmásolta a konfigurációt, de a Microsoft-fiókok meglévő konfigurációja továbbra is fennáll. Mielőtt eltávolítja, győződjön meg arról, hogy az alkalmazás összes része hivatkozik a Azure Active Directory szolgáltatóra a bejelentkezési hivatkozások használatával stb. Ellenőrizze, hogy az alkalmazás összes része a várt módon működik-e.
 1. Ha ellenőrizte, hogy a dolgok a HRE Azure Active Directory szolgáltatón keresztül működnek, eltávolíthatja a Microsoft-fiók szolgáltatójának konfigurációját.
 
-Előfordulhat, hogy egyes alkalmazások már külön regisztrációval rendelkeznek Azure Active Directory és a Microsoft-fiókhoz. Ezek az alkalmazások jelenleg nem telepíthetők át. 
-
 > [!WARNING]
 > A két regisztráció megszervezése a HRE-alkalmazás által [támogatott fióktípus](../active-directory/develop/supported-accounts-validation.md) módosításával lehetséges. Ez azonban a Microsoft-fiókok felhasználói számára új beleegyezés-kérést kényszerít, és a felhasználók identitási jogcímei eltérőek lehetnek a szerkezetben, `sub` különösen az értékek módosítása óta, mivel új alkalmazás-azonosító van használatban. Ez a megközelítés nem ajánlott, ha alaposan megértette. Ehelyett várnia kell a két regisztráció támogatását a v2 API felületén.
 
-### <a name="switching-to-v2"></a>Váltás a v2-re
+#### <a name="switching-to-v2"></a>Váltás a v2-re
 
 A fenti lépések elvégzése után navigáljon az alkalmazáshoz a Azure Portal. Válassza a "hitelesítés (előzetes verzió)" szakaszt. 
 

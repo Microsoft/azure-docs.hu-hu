@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Azure-dokumentáció
-summary: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet.
+summary: 'Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet.'
 brand: azure
 metadata:
   title: Azure-dokumentáció
-  description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet.
+  description: 'Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet.'
   services: azure
   ms.service: azure
   ms.topic: hub-page
@@ -12,1383 +12,1377 @@ metadata:
   ms.author: rolyon
   ms.date: 03/03/2021
   featureFlags:
-  - clicktale
-  ms.openlocfilehash: f26db3f981de1f49ac2bc148098034dd226c891c
-  ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "105022296"
+    - clicktale
 highlightedContent:
   items:
-  - title: Azure fejlesztői útmutató az első lépésekhez
-    itemType: get-started
-    url: guides/developer/azure-developer-guide.md
-  - title: Tervezze meg alkalmazását az Azure Architecture Centerrel
-    itemType: architecture
-    url: /azure/architecture/
-  - title: Készítse fel szervezetét a felhőbevezetési keretrendszerrel
-    itemType: overview
-    url: /azure/cloud-adoption-framework/
-  - title: Fejlessze a készségeit a Microsoft Learnnel
-    itemType: learn
-    url: /learn/browse/?products=azure&resource_type=learning%20path
+    - title: Azure fejlesztői útmutató az első lépésekhez
+      itemType: get-started
+      url: guides/developer/azure-developer-guide.md
+    - title: Tervezze meg alkalmazását az Azure Architecture Centerrel
+      itemType: architecture
+      url: /azure/architecture/
+    - title: Készítse fel szervezetét a felhőbevezetési keretrendszerrel
+      itemType: overview
+      url: /azure/cloud-adoption-framework/
+    - title: Fejlessze a készségeit a Microsoft Learnnel
+      itemType: learn
+      url: /learn/browse/?products=azure&resource_type=learning%20path
 productDirectory:
   title: Tekintse át az Azure-termékeket
   items:
-  - title: Azure-Percept
-    summary: Peremhálózati intelligencia a szilíciumból a szolgáltatásba
-    imageSrc: ./media/index/azure-percept.svg
-    azureCategories:
-    - iot
-    url: azure-percept/index.yml
-  - title: Anomáliadetektor
-    summary: Könnyedén hozzáadhat rendellenességészlelési képességeket alkalmazásaihoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/anomaly-detector/index.yml
-  - title: Azure Bot Service
-    summary: Intelligens, kiszolgáló nélküli botszolgáltatás, amely igény szerint méretezhető
-    imageSrc: https://static.docs.com/ui/media/product/azure/bot-service.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /azure/bot-service/
-  - title: Azure Cognitive Search
-    summary: Mesterséges intelligenciát használó felhőalapú keresési szolgáltatás mobil- és webalkalmazások fejlesztéséhez
-    imageSrc: https://static.docs.com/ui/media/product/azure/search.svg
-    azureCategories:
-    - ai-machine-learning
-    - mobile
-    - web
-    url: search/index.yml
-  - title: Azure Cognitive Services
-    summary: Intelligens API-funkciók hozzáadásával környezetfüggő interakció válik lehetővé
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - featured
-    - ai-machine-learning
-    - mobile
-    url: cognitive-services/index.yml
-  - title: Azure Databricks
-    summary: Gyors, könnyű és együttműködésen alapuló Apache Spark-alapú elemzési platform
-    imageSrc: https://static.docs.com/ui/media/product/azure/databricks.svg
-    azureCategories:
-    - ai-machine-learning
-    - analytics
-    url: /azure/databricks/
-  - title: Állapotú robot
-    summary: Felügyelt szolgáltatás célja – a virtuális egészségügyi asszisztensek fejlesztéséhez készült.
-    imageSrc: media/index/health-bot-logo.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /azure/health-bot/
-  - title: Azure Machine Learning
-    summary: Mesterséges intelligencia mindenki számára egy kísérletezést és modellkezelést lehetővé tevő, teljes körű, méretezhető és megbízható platformmal
-    imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
-    azureCategories:
-    - ai-machine-learning
-    - iot
-    url: machine-learning/index.yml
-  - title: Azure Open Datasets
-    summary: Felhőplatform összeválogatott nyílt adatkészletek üzemeltetéséhez és megosztásához a gépi tanulási modellek fejlesztésének felgyorsítása érdekében
-    imageSrc: https://static.docs.com/ui/media/product/azure/open-datasets.svg
-    azureCategories:
-    - ai-machine-learning
-    url: open-datasets/index.yml
-  - title: Azure RTOS
-    summary: A beágyazott IoT-fejlesztés és -kapcsolat egyszerűsítése
-    imageSrc: https://static.docs.com/ui/media/product/azure/rtos.svg
-    azureCategories:
-    - iot
-    url: /azure/rtos/
-  - title: Bing – Automatikus kiegészítés
-    summary: Alkalmazásának keresési funkcióját intelligens automatikus kiegészítési lehetőségekkel bővítheti
-    imageSrc: ./media/index/API_Bing_AutoSuggest.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
-  - title: Bing – Egyéni keresés
-    summary: Egy könnyen kezelhető, reklámmentes, kereskedelmi minőségű keresési eszköz, amely a kívánt eredményeket szolgáltatja
-    imageSrc: ./media/index/API_Bing_Custom_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-custom-search/overview.md
-  - title: Bing – Entitáskeresés
-    summary: Gazdagíthatja a felhasználói élményt a webről származó entitásadatok azonosításával és kiegészítésével
-    imageSrc: ./media/index/API_Bing_Entity_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-entities-search/overview.md
-  - title: Bing – Képkeresés
-    summary: Képeket kereshet átfogó találatokkal
-    imageSrc: ./media/index/API_Bing_Image_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-image-search/overview.md
-  - title: Bing – Hírkeresés
-    summary: Híreket kereshet átfogó találatokkal
-    imageSrc: ./media/index/API_Bing_News_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-news-search/search-the-web.md
-  - title: Bing – Helyesírás-ellenőrzés
-    summary: Észlelheti és kijavíthatja a helyesírási hibákat az alkalmazáson belül
-    imageSrc: ./media/index/API_Bing_Spell_Check.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-spell-check/overview.md
-  - title: Bing – Videokeresés
-    summary: Videókat kereshet átfogó találatokkal
-    imageSrc: ./media/index/API_Bing_Video_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-video-search/overview.md
-  - title: Bing vizuális keresés
-    summary: Gazdag megállapításokra tehet szert, ami segítséget nyújt meggyőző képalkalmazások összeállításához egy tetszés szerinti eszközön
-    imageSrc: ./media/index/API_Bing_Visual_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-visual-search/overview.md
-  - title: Bing – Internetes keresés
-    summary: Bővített keresési részletek beszerzése webes dokumentumok milliárdjaiból
-    imageSrc: ./media/index/API_Bing_Web_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-web-search/overview.md
-  - title: Azure Communication Services (Előzetes verzió)
-    summary: Tartalmas kommunikációs élményt hozhat létre a Microsoft Teams által is használt biztonságos platformmal
-    imageSrc: ./media/index/communication-services.svg
-    azureCategories:
-    - web
-    - mobile
-    url: communication-services/overview.md
-  - title: Számítógépes látástechnológia
-    summary: Gyakorlatban használható információk leszűrése képekből
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/computer-vision/index.yml
-  - title: Tartalommoderátor
-    summary: Automatizált kép-, szöveg- és videómoderálás
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/content-moderator/index.yml
-  - title: Custom Vision
-    summary: Könnyedén testreszabhatja a saját korszerű számítógépes látástechnológiai modelljeit az egyedi használati módjának megfelelően
-    imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/custom-vision-service/index.yml
-  - title: Data Science Virtual Machine
-    summary: Gazdag, előre konfigurált környezet MI-fejlesztéshez
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - ai-machine-learning
-    url: machine-learning/data-science-virtual-machine/index.yml
-  - title: Arcfelismerés
-    summary: Arcok felismerése, azonosítása, elemzése, rendszerezése és megjelölése fényképeken
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/face/index.yml
-  - title: Form Recognizer
-    summary: Mesterséges intelligenciát használó dokumentumkinyerési szolgáltatás, amely együttműködik az űrlapjaival
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/form-recognizer/index.yml
-  - title: Modern olvasó
-    summary: Segítségével bármilyen korú és képességű felhasználó képessé válik szövegek elolvasására és megértésére
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/immersive-reader/index.yml
-  - title: Ink Recognizer (előzetes verzió)
-    summary: MI-szolgáltatás, amely felismeri a szabadkézi digitális tartalmakat, például a kézírást, az alakzatokat és a szabadkézi dokumentumok elrendezését
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
-  - title: Kinect DK
-    summary: Számítógépes látástechnológiás és beszédmodelleket készíthet egy fejlett MI-érzékelőkkel rendelkező fejlesztői készlettel
-    imageSrc: ./media/index/kinect-viewer.svg
-    azureCategories:
-    - ai-machine-learning
-    - iot
-    - mixed-reality
-    url: kinect-dk/index.yml
-  - title: Language Understanding
-    summary: Megtaníthatja appjait, hogy értsék a felhasználói parancsokat
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/luis/index.yml
-  - title: Microsoft Genomics
-    summary: Teljesítmény a genomszekvenáláshoz és a kutatási megállapításokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/genomics.svg
-    azureCategories:
-    - ai-machine-learning
-    url: genomics/index.yml
-  - title: Metrics Advisor (előzetes verzió)
-    summary: AI-szolgáltatás a metrikák monitorozásához és a problémák diagnosztizálásához
-    imageSrc: ./media/index/metrics-advisor.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/metrics-advisor/index.yml
-  - title: Personalizer
-    summary: Személyre szabott felhasználói élményt nyújtó MI-szolgáltatás
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/personalizer/index.yml
-  - title: Project Bonsai (előzetes verzió)
-    summary: Gépi betanítási szolgáltatás intelligens ipari vezérlési rendszerek létrehozásához szimulációk használatával
-    imageSrc: https://static.docs.com/ui/media/product/azure/bonsai.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /bonsai/
-  - title: QnA Maker
-    summary: Átalakíthatja az információkat párbeszédes, könnyen átlátható válaszokká
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/qnamaker/index.yml
-  - title: Speaker Recognition (előzetes verzió)
-    summary: Beszédet használva azonosíthatja és ellenőrizheti az egyes beszélőket
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/speaker-recognition-overview.md
-  - title: Diktálás
-    summary: A beszédhangokat írott szöveggé alakíthatja a természetesebb interakciók érdekében
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/index-speech-to-text.yml
-  - title: Beszédfordítás
-    summary: Könnyedén integrálható, valós idejű beszédfordítási funkció az alkalmazásához
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/index-speech-translation.yml
-  - title: Szövegelemzés
-    summary: Hangulatelemzéssel és a témakörök értékelésével könnyedén megismerheti a felhasználók igényeit
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/text-analytics/index.yml
-  - title: Szövegfelolvasás
-    summary: Az írott szöveget beszéddé konvertálhatja egy természetesebb és hozzáférhetőbb interfész kialakítása érdekében
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/index-text-to-speech.yml
-  - title: Translator
-    summary: Könnyedén végezhet gépi fordítást egy egyszerű REST API-hívással
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/translator/index.yml
-  - title: Video Indexer
-    summary: Videóelemzések feloldása
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - ai-machine-learning
-    - media
-    url: media-services/video-indexer/index.yml
-  - title: Azure Analysis Services
-    summary: Szolgáltatásként elérhető nagyvállalati szintű adatelemző motor
-    imageSrc: https://static.docs.com/ui/media/product/azure/analysis-services.svg
-    azureCategories:
-    - analytics
-    url: analysis-services/index.yml
-  - title: Azure Data Explorer
-    summary: Gyors és kitűnően méretezhető szolgáltatás az adatok feltárására
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-explorer.svg
-    azureCategories:
-    - analytics
-    url: /azure/data-explorer
-  - title: Azure Data Lake Storage
-    summary: Rendkívül rugalmasan méretezhető, Azure Blob Storage-on alapuló biztonságos Data Lake-funkciók
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - analytics
-    - storage
-    url: storage/blobs/data-lake-storage-introduction.md
-  - title: Azure Data Share
-    summary: Egyszerű és biztonságos szolgáltatás big data típusú adatok más szervezetekkel való megosztásához
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-shares.svg
-    azureCategories:
-    - analytics
-    - storage
-    url: data-share/index.yml
-  - title: Azure Stream Analytics
-    summary: Alkalmazások és eszközök gyors adatstreamjeinek valós idejű elemzései
-    imageSrc: https://static.docs.com/ui/media/product/azure/stream-analytics.svg
-    azureCategories:
-    - analytics
-    - iot
-    url: stream-analytics/index.yml
-  - title: Azure Synapse Analytics
-    summary: Korlátlan elemzési szolgáltatás a megállapítások páratlan gyorsaságú kinyerésével
-    imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
-    azureCategories:
-    - analytics
-    url: synapse-analytics/index.yml
-  - title: Data Catalog
-    summary: Jobban kihasználhatja a vállalati adategységekben rejlő értékeket
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
-    azureCategories:
-    - analytics
-    url: data-catalog/index.yml
-  - title: Azure Purview
-    summary: Az üzleti érték maximalizálása egységesített adatszabályozással
-    imageSrc: https://static.docs.com/ui/media/product/azure/purview.svg
-    azureCategories:
-    - analytics
-    - management-and-governance
-    url: purview/index.yml
-  - title: Data Factory
-    summary: Hibrid adatok integrációja egyszerűen, nagyvállalati szinten
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-factory.svg
-    azureCategories:
-    - analytics
-    url: data-factory/index.yml
-  - title: Data Lake Analytics
-    summary: Big data egyszerűen az elosztott elemzési szolgáltatás révén
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-lake-analytics.svg
-    azureCategories:
-    - analytics
-    url: data-lake-analytics/index.yml
-  - title: Event Hubs
-    summary: Eszközök millióiról érkező telemetriai adatok fogadása
-    imageSrc: https://static.docs.com/ui/media/product/azure/event-hubs.svg
-    azureCategories:
-    - analytics
-    url: event-hubs/index.yml
-  - title: HDInsight
-    summary: Felhőalapú Hadoop-, Spark-, R Server-, HBase- és Storm-fürtök kiépítése
-    imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
-    azureCategories:
-    - analytics
-    url: hdinsight/index.yml
-  - title: Log Analytics
-    summary: Teljes megfigyelhetőséget eredményez az alkalmazásaiban, infrastruktúrájában és hálózatán
-    imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
-    azureCategories:
-    - analytics
-    - management-and-governance
-    url: azure-monitor/index.yml
-  - title: Power BI Embedded
-    summary: Teljes mértékben interaktív, lenyűgöző adatábrázolásokat ágyazhat be alkalmazásaiba
-    imageSrc: https://static.docs.com/ui/media/product/azure/power-bi.svg
-    azureCategories:
-    - analytics
-    url: /power-bi/developer/azure-pbie-what-is-power-bi-embedded
-  - title: R Server for HDInsight
-    summary: Prediktív elemzés, gépi tanulás és statisztikai modellezés big data adatokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
-    azureCategories:
-    - analytics
-    url: hdinsight/r-server/r-server-overview.md
-  - title: Azure Blockchain Service (előzetes verzió)
-    summary: Konzorciumi blokklánchálózatok létrehozása, irányítása és bővítése
-    imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-service.svg
-    azureCategories:
-    - blockchain
-    url: blockchain/service/index.yml
-  - title: Azure Blockchain Workbench (előzetes verzió)
-    summary: Egyszerű prototípus-készítés blokklánc-alkalmazásokhoz a felhőben
-    imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg
-    azureCategories:
-    - blockchain
-    url: blockchain/workbench/index.yml
-  - title: Azure Cosmos DB
-    summary: Gyors NoSQL-adatbázis Open API-kkal bármilyen mérethez
-    imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
-    azureCategories:
-    - featured
-    - blockchain
-    - databases
-    - iot
-    url: cosmos-db/index.yml
-  - title: Azure felügyelt példány az Apache Cassandra-hoz
-    summary: A felügyelt nyílt forráskódú Apache Cassandra-adatközpontok üzembe helyezésének és méretezésének automatizálása
-    imageSrc: ./media/index/managed-instance-apache-cassandra.svg
-    azureCategories:
-    - databases
-    url: managed-instance-apache-cassandra/index.yml
-  - title: Logic Apps
-    summary: Az adatok felhők közötti használatának és elérésének automatizálása kódírás nélkül
-    imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
-    azureCategories:
-    - blockchain
-    - integration
-    - iot
-    url: logic-apps/index.yml
-  - title: API Apps
-    summary: Felhőalapú API-k egyszerű összeállítása és használata
-    imageSrc: https://static.docs.com/ui/media/product/azure/api-apps.svg
-    azureCategories:
-    - compute
-    - containers
-    - web
-    url: app-service/index.yml
-  - title: App Service
-    summary: Hatékony felhőalapú web- és mobilalkalmazások gyors létrehozása
-    imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
-    azureCategories:
-    - featured
-    - compute
-    - mobile
-    - web
-    url: app-service/index.yml
-  - title: Azure CycleCloud
-    summary: Tetszőleges méretű HPC és nagy számítási igényű fürtök létrehozása, kezelése, üzemeltetése és optimalizálása
-    imageSrc: ./media/index/logo_cyclecloud.svg
-    azureCategories:
-    - compute
-    url: /azure/cyclecloud/index
-  - title: Azure Dedicated Host
-    summary: Windows- és Linux-rendszerekhez való Azure-beli virtuális gépek gazdagépeként szolgáló dedikált fizikai kiszolgáló
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - compute
-    url: ./virtual-machines/dedicated-hosts.md
-  - title: Azure Functions
-    summary: Események feldolgozása kiszolgáló nélküli programkóddal
-    imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
-    azureCategories:
-    - featured
-    - compute
-    - containers
-    - iot
-    url: azure-functions/index.yml
-  - title: Azure Kubernetes Service (AKS)
-    summary: A Kubernetes üzembe helyezésének, kezelésének és üzemeltetésének leegyszerűsítése
-    imageSrc: https://static.docs.com/ui/media/product/azure/kubernetes-services.svg
-    azureCategories:
-    - featured
-    - compute
-    - containers
-    url: aks/index.yml
-  - title: Azure Quantum (előzetes verzió)
-    summary: Az Azure-ban még ma is tapasztalhatja a kvantum-hatást
-    imageSrc: ./media/index/quantum.svg
-    azureCategories:
-    - compute
-    - featured
-    url: /azure/quantum/
-  - title: Azure Spring Cloud
-    summary: Teljes mértékben felügyelt Spring Cloud-szolgáltatás, amely Pivotallal buildelhető és működtethető
-    imageSrc: https://static.docs.com/ui/media/product/azure/spring-cloud.svg
-    azureCategories:
-    - compute
-    - web
-    url: spring-cloud/index.yml
-  - title: Azure VMware Solution
-    summary: VMware-alapú számítási feladatait natív módon futtathatja az Azure-ban
-    imageSrc: ./media/index/azure-vmware.svg
-    azureCategories:
-    - compute
-    url: azure-vmware/index.yml
-  - title: Batch
-    summary: Feladatütemezés és számításkezelés felhőméretben
-    imageSrc: https://static.docs.com/ui/media/product/azure/batch-accounts.svg
-    azureCategories:
-    - compute
-    url: batch/index.yml
-  - title: Cloud Services
-    summary: Magas rendelkezésre állású, a végtelenségig méretezhető felhőalkalmazások és API-k létrehozása
-    imageSrc: https://static.docs.com/ui/media/product/azure/cloud-services.svg
-    azureCategories:
-    - compute
-    url: cloud-services-extended-support/index.yml
-  - title: Tárolópéldányok
-    summary: Könnyedén futtathat tárolókat az Azure-on, kiszolgálók kezelése nélkül
-    imageSrc: https://static.docs.com/ui/media/product/azure/container-instances.svg
-    azureCategories:
-    - compute
-    - containers
-    url: container-instances/index.yml
-  - title: Linux rendszerű virtuális gépek
-    summary: Virtuális gépek kiépítése Ubuntu, Red Hat és más rendszerekhez
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - featured
-    - compute
-    url: ./virtual-machines/index.yml
-  - title: Service Fabric
-    summary: Mikroszolgáltatások üzembe helyezése és tárolók összehangolása Windows vagy Linux rendszeren
-    imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
-    azureCategories:
-    - compute
-    - containers
-    url: service-fabric/index.yml
-  - title: SQL Server on Virtual Machines
-    summary: Nagyvállalati SQL Server-alkalmazások felhőben történő üzemeltetése
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-server-vm.svg
-    azureCategories:
-    - compute
-    - databases
-    url: ./azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - title: Static Web Apps (előzetes verzió)
-    summary: Modern webalkalmazás-szolgáltatás, amely egyszerűsített teljes körű fejlesztést kínál a forráskódtól a globális magas rendelkezésre állásig
-    imageSrc: ./media/index/static-apps.svg
-    azureCategories:
-    - compute
-    - web
-    url: static-web-apps/index.yml
-  - title: Virtual Machine Scale Sets
-    summary: Több ezer Linux- és Windows-alapú virtuális gép felügyelete és méretezése
-    imageSrc: https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg
-    azureCategories:
-    - compute
-    url: virtual-machine-scale-sets/index.yml
-  - title: Web Apps
-    summary: Üzleti szempontból alapvető fontosságú webalkalmazások gyors létrehozása és üzembe helyezése
-    imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
-    azureCategories:
-    - compute
-    - containers
-    - web
-    url: app-service/index.yml
-  - title: Windows Virtual Desktop
-    summary: A legjobb virtuális asztali felület, az Azure-on keresztül
-    imageSrc: https://static.docs.com/ui/media/product/azure/windows-virtual-desktop.svg
-    azureCategories:
-    - featured
-    - compute
-    - windows-virtual-desktop
-    url: virtual-desktop/index.yml
-  - title: Windows rendszerű virtuális gépek
-    summary: Windows-alapú virtuális gépek kiépítése percek alatt
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - featured
-    - compute
-    url: ./virtual-machines/index.yml
-  - title: Azure Dev Spaces
-    summary: Elvégzi az Azure AKS szolgáltatásban futó mikroszolgáltatás-alkalmazás tesztelését és iteratív fejlesztését
-    imageSrc: ./media/index/AzureDevSpaceController_50x.svg
-    azureCategories:
-    - containers
-    - developer-tools
-    url: dev-spaces/index.yml
-  - title: Azure Red Hat OpenShift
-    summary: Teljes mértékben felügyelt OpenShift-szolgáltatás, a Red Hattel közösen működtetve
-    imageSrc: https://static.docs.com/ui/media/product/azure/openshift.svg
-    azureCategories:
-    - containers
-    url: virtual-machines/linux/openshift-get-started.md
-  - title: Container Registry
-    summary: Tárolórendszerképek tárolása és kezelése az összes Azure-környezettípusban
-    imageSrc: https://static.docs.com/ui/media/product/azure/container-registry.svg
-    azureCategories:
-    - containers
-    url: container-registry/index.yml
-  - title: Tárolókhoz készült Web App
-    summary: Az üzleti igényeknek megfelelően méretezhető, tárolóalapú webalkalmazások gyors és egyszerű üzembe helyezése
-    imageSrc: https://static.docs.com/ui/media/product/azure/web-apps-containers.svg
-    azureCategories:
-    - containers
-    - web
-    url: ./app-service/index.yml
-  - title: Azure API for FHIR
-    summary: Könnyedén létrehozható és üzembe helyezhető FHIR-szolgáltatás az egészségügyiadat-megoldásokhoz és együttműködési lehetőségekhez
-    imageSrc: https://static.docs.com/ui/media/product/azure/api-for-fhir.svg
-    azureCategories:
-    - databases
-    - integration
-    url: healthcare-apis/fhir/index.yml
-  - title: Azure Cache for Redis
-    summary: Alkalmazások felruházása magas átviteli sebességű és rövid késleltetésű adathozzáféréssel
-    imageSrc: https://static.docs.com/ui/media/product/azure/cache-redis.svg
-    azureCategories:
-    - databases
-    url: azure-cache-for-redis/index.yml
-  - title: Azure Database for MariaDB
-    summary: Felügyelt MariaDB-adatbázisszolgáltatás alkalmazásfejlesztőknek
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-mariadb-server.svg
-    azureCategories:
-    - databases
-    url: mariadb/index.yml
-  - title: Azure Database for MySQL
-    summary: Felügyelt MySQL adatbázis-szolgáltatás appfejlesztőknek
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-mysql-server.svg
-    azureCategories:
-    - databases
-    url: mysql/index.yml
-  - title: Azure Database for PostgreSQL
-    summary: Felügyelt PostgreSQL adatbázis-szolgáltatás appfejlesztőknek
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
-    azureCategories:
-    - databases
-    - hybrid
-    url: postgresql/index.yml
-  - title: Azure Database Migration Service
-    summary: A helyszíni adatbázis felhőbe történő migrálása egyszerűbben
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-migration-services.svg
-    azureCategories:
-    - databases
-    - migration
-    url: dms/index.yml
-  - title: Azure SQL
-    summary: Modern SQL-termékcsalád migrálási és alkalmazámodernizálási feladatokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql.svg
-    azureCategories:
-    - featured
-    - hybrid
-    - databases
-    url: azure-sql/index.yml
-  - title: Azure SQL Database
-    summary: Felügyelt, intelligens SQL a felhőben
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
-    azureCategories:
-    - databases
-    url: azure-sql/database/index.yml
-  - title: Felügyelt Azure SQL-példány
-    summary: Felügyelt, mindig naprakész SQL-példány a felhőben
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-managed-instance.svg
-    azureCategories:
-    - databases
-    url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge
-    summary: Kis erőforrásigénnyel rendelkező, peremhálózatra optimalizált adatmotor beépített mesterséges intelligenciával
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
-    azureCategories:
-    - databases
-    - iot
-    url: azure-sql-edge/index.yml
-  - title: Table Storage
-    summary: Félig strukturált adatkészleteket használó NoSQL kulcs-érték tároló
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - databases
-    url: ./storage/tables/table-storage-overview.md
-  - title: Alkalmazás konfigurációja
-    summary: Gyors, méretezhető paramétertár alkalmazáskonfigurációhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/app-configuration.svg
-    azureCategories:
-    - developer-tools
-    url: azure-app-configuration/index.yml
-  - title: Azure Data Studio
-    summary: Egy egyszerű szerkesztő, amellyel kiszolgáló nélküli SQL-készletlekérdezéseket futtathat, és szöveges, JSON- vagy Excel-formátumban jelenítheti meg és mentheti az eredményeket.
-    imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
-    azureCategories:
-    - developer-tools
-    url: /sql/azure-data-studio/
-  - title: Azure DevOps
-    summary: Szolgáltatások fejlesztőcsapatoknak kódmegosztáshoz, projektkövetéshez és szoftverkészítéshez
-    imageSrc: https://static.docs.com/ui/media/product/azure/devops.svg
-    azureCategories:
-    - developer-tools
-    - devops
-    - hybrid
-    url: /azure/devops/
-  - title: Azure DevTest Labs
-    summary: Környezetek gyors létrehozása újrahasznosítható sablonokkal és összetevőkkel
-    imageSrc: https://static.docs.com/ui/media/product/azure/devtest-labs.svg
-    azureCategories:
-    - developer-tools
-    - devops
-    url: lab-services/index.yml
-  - title: Azure Lab Services
-    summary: Laborok kiépítése tantermi munkához, próbaverziókhoz, fejlesztéshez és teszteléshez vagy bármilyen más forgatókönyvhöz
-    imageSrc: https://static.docs.com/ui/media/product/azure/lab-services.svg
-    azureCategories:
-    - developer-tools
-    url: lab-services/index.yml
-  - title: Azure Pipelines
-    summary: Folyamatos buildelés, tesztelés és üzembe helyezés bármilyen platformhoz és felhőhöz
-    imageSrc: https://static.docs.com/ui/media/product/azure/pipelines.svg
-    azureCategories:
-    - developer-tools
-    - devops
-    url: /azure/devops/pipelines/
-  - title: Visual Studio
-    summary: Hatékony és rugalmas környezet alkalmazások fejlesztéséhez a felhőben
-    imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-    azureCategories:
-    - developer-tools
-    url: /visualstudio/windows
-  - title: Visual Studio Code
-    summary: Hatékony és egyszerűsített kódszerkesztő a felhőalapú fejlesztéshez
-    imageSrc: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-    azureCategories:
-    - developer-tools
-    url: https://code.visualstudio.com/docs
-  - title: Visual Studio Codespaces (előzetes verzió)
-    summary: Bárhonnan elérhető felhőbeli fejlesztési környezetek
-    imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-    azureCategories:
-    - developer-tools
-    url: /visualstudio/online/overview/what-is-vsonline
-  - title: Application Insights
-    summary: Teljes megfigyelhetőséget eredményez az alkalmazásaiban, infrastruktúrájában és hálózatán
-    imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
-    azureCategories:
-    - devops
-    - management-and-governance
-    url: azure-monitor/index.yml
-  - title: Azure Artifacts
-    summary: Csomagok létrehozása, kiszolgálóra helyezése és megosztása csapaton belül
-    imageSrc: https://static.docs.com/ui/media/product/azure/artifacts.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/artifacts/
-  - title: Azure Boards
-    summary: Tervezés, nyomon követés és munkaegyeztetés a csapaton belül
-    imageSrc: https://static.docs.com/ui/media/product/azure/boards.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/boards/
-  - title: Azure Monitor
-    summary: Teljes megfigyelhetőséget eredményez az alkalmazásaiban, infrastruktúrájában és hálózatán
-    imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
-    azureCategories:
-    - devops
-    - management-and-governance
-    url: azure-monitor/index.yml
-  - title: Azure Repos
-    summary: Korlátlan, felhőben üzemeltetett, privát Git-adattárak projektekhez
-    imageSrc: https://static.docs.com/ui/media/product/azure/repos.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/repos/
-  - title: Azure Test Plans
-    summary: A manuális és felderítési jellegű tesztelési eszköztár segítségével magabiztosan tesztelheti és szolgáltathatja termékeit
-    imageSrc: https://static.docs.com/ui/media/product/azure/test-plans.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/test/
-  - title: GitHub-műveletek az Azure-hoz
-    summary: Alkalmazás létrehozása, tesztelése és üzembe helyezése a GitHubból az Azure-ba
-    imageSrc: ./media/index/github-actions-icon.svg
-    azureCategories:
-    - devops
-    - developer-tools
-    url: /azure/developer/github/github-actions
-  - title: Azure Active Directory (AD)
-    summary: Helyszíni tárak szinkronizálása és az egyszeri bejelentkezés engedélyezése
-    imageSrc: https://static.docs.com/ui/media/product/azure/active-directory.svg
-    azureCategories:
-    - hybrid
-    - identity
-    - security
-    url: active-directory/index.yml
-  - title: Azure Arc (előzetes verzió)
-    summary: Bármilyen infrastruktúrába bevezetheti az Azure-szolgáltatásokat és -felügyeletet
-    imageSrc: https://static.docs.com/ui/media/product/azure/arc.svg
-    azureCategories:
-    - hybrid
-    url: azure-arc/index.yml
-  - title: Azure ExpressRoute
-    summary: Dedikált száloptikás magánhálózati kapcsolatok az Azure-hoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/expressroute.svg
-    azureCategories:
-    - hybrid
-    - networking
-    url: expressroute/index.yml
-  - title: Azure Sentinel
-    summary: Natív felhőalapú SIEM és intelligens biztonsági elemzések használata a vállalat védelmének érdekében
-    imageSrc: https://static.docs.com/ui/media/product/azure/sentinel.svg
-    azureCategories:
-    - hybrid
-    - security
-    url: sentinel/index.yml
-  - title: Azure Stack
-    summary: Innovatív hibrid alkalmazások felhőhatárok közötti buildelése és futtatása
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack.svg
-    azureCategories:
-    - hybrid
-    url: /azure-stack/
-  - title: Azure Stack HCI
-    summary: Hiperkonvergens infrastruktúra integrálása az Azure-ral és a hibrid szolgáltatásokkal a virtuális számítási feladatok helyszíni futtatásához
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
-    azureCategories:
-    - hybrid
-    url: /azure-stack/hci/
-  - title: Azure Stack Hub
-    summary: Az Azure Stack Hub integrált hardverrendszerként érhető el, amelyben a szoftver előre van telepítve a hitelesített hardveren
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
-    azureCategories:
-    - hybrid
-    url: /azure-stack/operator/
-  - title: Azure Stack Edge
-    summary: Egy Azure által felügyelt berendezés, amely az Azure számítási, tárolási és intelligenciával kapcsolatos képességeit nyújtja a peremhálózaton
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack-edge.svg
-    azureCategories:
-    - hybrid
-    url: ./databox-online/index.yml
-  - title: Security Center
-    summary: A biztonsági felügyelet egységesítése és fejlett fenyegetésvédelem biztosítása a hibrid felhőalapú számítási feladatokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
-    azureCategories:
-    - hybrid
-    - security
-    url: security-center/index.yml
-  - title: Azure IoT Edge
-    summary: Felhőbeli intelligens technológiák és elemzések kiterjesztése a peremeszközökre
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-edge.svg
-    azureCategories:
-    - hybrid
-    - iot
-    url: iot-edge/index.yml
-  - title: Azure Active Directory External Identities
-    summary: Felhasználói identitás és hozzáférés kezelése a felhőben
-    imageSrc: https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg
-    azureCategories:
-    - identity
-    url: active-directory/external-identities/index.yml
-  - title: Azure Active Directory tartományi szolgáltatások
-    summary: Azure-beli virtuális gépeit tartományvezérlők nélkül csatlakoztathatja tartományokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/ad-domain-services.svg
-    azureCategories:
-    - identity
-    - security
-    url: active-directory-domain-services/index.yml
-  - title: Azure Information Protection
-    summary: Fejlettebb védelem a bizalmas adatok számára – bárhol, bármikor
-    imageSrc: https://static.docs.com/ui/media/product/azure/information-protection.svg
-    azureCategories:
-    - identity
-    - security
-    url: /azure/information-protection/
-  - title: API Management
-    summary: Biztonságos, nagy terhelhetőségű programozási felületek (API-k) közzététele fejlesztők, partnerek és munkatársak számára
-    imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
-    azureCategories:
-    - integration
-    - iot
-    - mobile
-    - web
-    url: api-management/index.yml
-  - title: Event Grid
-    summary: Megbízható, nagy léptékű eseménykezelés
-    imageSrc: https://static.docs.com/ui/media/product/azure/event-grid-domains.svg
-    azureCategories:
-    - integration
-    - iot
-    url: event-grid/index.yml
-  - title: Service Bus
-    summary: Kapcsolódás privát és nyilvános felhőkörnyezetben
-    imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
-    azureCategories:
-    - integration
-    url: service-bus-messaging/index.yml
-  - title: Azure Digital Twins
-    summary: IoT-térbeliintelligenciára épülő következő generációs megoldások kialakítása
-    imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
-    azureCategories:
-    - iot
-    - mixed-reality
-    url: digital-twins/index.yml
-  - title: Azure IoT Central
-    summary: IoT-megoldások létrehozásának felgyorsítása
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-central.svg
-    azureCategories:
-    - iot
-    url: iot-central/index.yml
-  - title: Azure IoT Hub
-    summary: Több milliárd IoT-eszköz csatlakoztatása, monitorozása és felügyelete
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-    azureCategories:
-    - iot
-    url: iot-hub/index.yml
-  - title: Azure IoT-megoldásgyorsítók
-    summary: Teljes mértékben testre szabható megoldások létrehozása gyakori IoT-forgatókönyvekhez, sablonok segítségével
-    imageSrc: ./media/index/iot-solution-accelerators.svg
-    azureCategories:
-    - iot
-    url: iot-accelerators/index.yml
-  - title: Azure Maps
-    summary: Az egyszerű és biztonságos helymeghatározási API-k térinformatikai kontextust biztosítanak az adatokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/maps.svg
-    azureCategories:
-    - iot
-    - mobile
-    - web
-    url: azure-maps/index.yml
-  - title: Azure Sphere
-    summary: MCU-alapú eszközök biztonságos csatlakoztatása a felhőhöz
-    imageSrc: https://static.docs.com/ui/media/product/azure/sphere.svg
-    azureCategories:
-    - iot
-    url: /azure-sphere/
-  - title: Azure Time Series Insights
-    summary: Idősoros adatok feltárása és elemzése IoT-eszközökről
-    imageSrc: https://static.docs.com/ui/media/product/azure/time-series-insights-environments.svg
-    azureCategories:
-    - iot
-    url: time-series-insights/index.yml
-  - title: Notification Hubs
-    summary: Leküldéses értesítések küldése bármely platformra, bármilyen háttérrendszerről
-    imageSrc: https://static.docs.com/ui/media/product/azure/notification-hubs.svg
-    azureCategories:
-    - iot
-    - mobile
-    - web
-    url: notification-hubs/index.yml
-  - title: Windows 10 IoT Core Services
-    summary: Hosszú távú operációsrendszer-támogatás, szolgáltatások az eszközfrissítések kezeléséhez és hozzáférés az eszközállapotokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-windows10-core-services.svg
-    azureCategories:
-    - iot
-    url: /windows/iot-core/
-  - title: Automation
-    summary: Egyszerűbb felhőfelügyelet a folyamatok automatizálásával
-    imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
-    azureCategories:
-    - management-and-governance
-    url: automation/index.yml
-  - title: Azure Advisor
-    summary: Az Azure ajánlott eljárásaival foglalkozó, személyre szabott javaslati motor
-    imageSrc: https://static.docs.com/ui/media/product/azure/advisor.svg
-    azureCategories:
-    - management-and-governance
-    url: advisor/index.yml
-  - title: Azure Backup
-    summary: Tegye egyszerűbbé az adatvédelmet és a zsarolóprogramok elleni védekezést
-    imageSrc: https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg
-    azureCategories:
-    - management-and-governance
-    - storage
-    url: backup/index.yml
-  - title: Azure Blueprints (előzetes verzió)
-    summary: Irányított környezetek gyors, megismételhető kiépítése
-    imageSrc: https://static.docs.com/ui/media/product/azure/blueprints.svg
-    azureCategories:
-    - management-and-governance
-    url: governance/blueprints/index.yml
-  - title: Azure Lighthouse
-    summary: Segítségével a szolgáltatók nagy léptékben és pontosan kezelhetik ügyfeleiket
-    imageSrc: https://static.docs.com/ui/media/product/azure/lighthouse.svg
-    azureCategories:
-    - management-and-governance
-    url: lighthouse/index.yml
-  - title: Azure Managed Applications
-    summary: A felhőajánlatok kezelésének leegyszerűsítése
-    imageSrc: https://static.docs.com/ui/media/product/azure/managed-applications.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-resource-manager/managed-applications/index.yml
-  - title: Azure Migrate
-    summary: Helyszíni virtuális gépeit egyszerűen felderítheti, felmérheti, megfelelő méretűre állíthatja és az Azure-ba migrálhatja
-    imageSrc: https://static.docs.com/ui/media/product/azure/migrate.svg
-    azureCategories:
-    - management-and-governance
-    - migration
-    url: migrate/index.yml
-  - title: Azure Policy
-    summary: Vállalati irányítás és szabványok nagyobb léptékű megvalósítása az Azure-erőforrásokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/policy.svg
-    azureCategories:
-    - management-and-governance
-    url: governance/policy/index.yml
-  - title: Azure Resource Manager
-    summary: Az alkalmazás-erőforrások egyszerűsített kezelése
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-resource-manager/index.yml
-  - title: Azure Resource Mover (Előzetes verzió)
-    summary: Több erőforrás Azure-régiók közötti áthelyezésének egyszerűsítése
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
-    azureCategories:
-    - management-and-governance
-    url: resource-mover/index.yml
-  - title: ARM-sablonok
-    summary: Infrastruktúra biztosítása kódként a Resource Manager használatával az összes Azure-erőforráshoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-resource-manager/templates/index.yml
-  - title: Azure Service Health
-    summary: Személyes útmutatás és támogatás az Azure-szolgáltatások Önt érintő problémái esetén
-    imageSrc: https://static.docs.com/ui/media/product/azure/service-health.svg
-    azureCategories:
-    - management-and-governance
-    url: service-health/index.yml
-  - title: Azure Site Recovery
-    summary: Az üzletmenet folytonosságáról beépített vészhelyreállítási szolgáltatással gondoskodhat
-    imageSrc: https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg
-    azureCategories:
-    - management-and-governance
-    - migration
-    url: site-recovery/index.yml
-  - title: Azure Cloud Shell
-    summary: Az Azure felügyeletének leegyszerűsítése egy böngészőalapú felület segítségével
-    imageSrc: https://static.docs.com/ui/media/product/azure/cloud-shell.svg
-    azureCategories:
-    - management-and-governance
-    url: cloud-shell/overview.md
-  - title: Cost Management + Billing
-    summary: A felhővel kapcsolatos költségek optimalizálása és az általa nyújtott lehetőségek maximális kihasználása
-    imageSrc: https://static.docs.com/ui/media/product/azure/cost-management.svg
-    azureCategories:
-    - management-and-governance
-    - migration
-    url: cost-management-billing/index.yml
-  - title: Microsoft Azure Portal
-    summary: Minden Azure-termékét egyetlen egységesített konzolon hozhatja létre, kezelheti és monitorozhatja
-    imageSrc: https://static.docs.com/ui/media/product/azure/azure.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-portal/index.yml
-  - title: Network Watcher
-    summary: Hálózati teljesítményfigyelő és diagnosztikai megoldás
-    imageSrc: https://static.docs.com/ui/media/product/azure/network-watcher.svg
-    azureCategories:
-    - management-and-governance
-    - networking
-    url: network-watcher/index.yml
-  - title: Traffic Manager
-    summary: A bejövő forgalom irányítása a jobb teljesítmény és rendelkezésre állás érdekében
-    imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
-    azureCategories:
-    - management-and-governance
-    - networking
-    url: traffic-manager/index.yml
-  - title: Azure Media Player
-    summary: Egyetlen lejátszó, amellyel minden tartalom lejátszható
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/use-azure-media-player.md
-  - title: Content Delivery Network
-    summary: Biztonságos, megbízható, globálisan elérhető tartalomkézbesítés biztosítása
-    imageSrc: https://static.docs.com/ui/media/product/azure/cdn-profiles.svg
-    azureCategories:
-    - media
-    - networking
-    - web
-    url: cdn/index.yml
-  - title: Content Protection
-    summary: Biztonságos tartalomkézbesítés az AES, a PlayReady, a Widevine és a FairPlay használatával
-    imageSrc: ./media/index/media-protection.svg
-    azureCategories:
-    - media
-    url: media-services/latest/content-protection-overview.md
-  - title: Encoding
-    summary: Stúdióminőségű kódolás felhőszinten
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/encoding-concept.md
-  - title: Live and On-Demand Streaming
-    summary: Tartalomkézbesítés gyakorlatilag bármely eszközre, az üzleti igényeknek megfelelő léptékben
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/stream-live-tutorial-with-api.md
-  - title: Live Video Analytics (előzetes verzió)
-    summary: Intelligens, videóalapú alkalmazások létrehozása tetszőleges mesterséges intelligenciával
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/live-video-analytics-edge/overview.md
-  - title: Media Services
-    summary: Video- és hangtartalom kódolása, tárolása és streamelése ipari méretekben
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/index.yml
-  - title: Data Box
-    summary: Berendezések és megoldások Azure-ba való adatátvitelhez
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-box.svg
-    azureCategories:
-    - migration
-    - storage
-    url: databox/index.yml
-  - title: Objektum-horgonyok (előzetes verzió)
-    summary: 3D tartalom automatikus igazítása és rögzítése a fizikai világban lévő objektumokhoz
-    imageSrc: ./media/index/object-anchors.svg
-    azureCategories:
-    - mixed-reality
-    url: object-anchors/index.yml
-  - title: Spatial Anchors
-    summary: Többfelhasználós, tértudatos vegyesvalóság-élmények létrehozása
-    imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
-    azureCategories:
-    - mixed-reality
-    - mobile
-    url: spatial-anchors/index.yml
-  - title: Azure Remote Rendering
-    summary: Kitűnő minőségű, interaktív 3D-s tartalom renderelése és streamelése eszközeire valós időben
-    imageSrc: https://static.docs.com/ui/media/product/azure/remote-rendering.svg
-    azureCategories:
-    - mixed-reality
-    url: remote-rendering/index.yml
-  - title: Visual Studio App Center
-    summary: Mobil- és asztali alkalmazások folyamatos buildelése, tesztelése, kiadása és monitorozása
-    imageSrc: https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg
-    azureCategories:
-    - mobile
-    url: /appcenter/
-  - title: Xamarin
-    summary: Felhőalapú mobilalkalmazások gyorsabb létrehozása
-    imageSrc: https://docs.microsoft.com/media/logos/logo_xamarin.svg
-    azureCategories:
-    - mobile
-    url: /xamarin/
-  - title: Application Gateway
-    summary: Biztonságos, méretezhető és magas rendelkezésre állású webes kezelőfelületek létrehozása az Azure-ban
-    imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg
-    azureCategories:
-    - networking
-    - security
-    url: application-gateway/index.yml
-  - title: Azure Bastion
-    summary: Privát és teljes körűen felügyelt RDP- és SSH-hozzáférés a virtuális gépeihez
-    imageSrc: ./media/index/web_connect.svg
-    azureCategories:
-    - networking
-    url: bastion/index.yml
-  - title: Azure Defender
-    summary: Hibrid felhőbeli számítási feladatok védelme
-    imageSrc: ./media/index/defender.svg
-    azureCategories:
-    - security
-    url: security-center/azure-defender.md
-  - title: Azure Defender IoT-hez
-    summary: Folyamatos objektumkezelés és fenyegetések észlelése a felügyelt és nem felügyelt IoT/OT-eszközökön
-    imageSrc: ./media/index/defender-iot.svg
-    azureCategories:
-    - security
-    - iot
-    url: ./defender-for-iot/index.yml
-  - title: Azure DDoS Protection
-    summary: Az alkalmazások védelme az elosztott szolgáltatásmegtagadásos (DDoS-) támadásokkal szemben
-    imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg
-    azureCategories:
-    - networking
-    - security
-    url: ./ddos-protection/ddos-protection-overview.md
-  - title: Azure DNS
-    summary: Üzemeltessen saját DNS-tartományt az Azure-ban
-    imageSrc: https://static.docs.com/ui/media/product/azure/dns.svg
-    azureCategories:
-    - networking
-    url: dns/index.yml
-  - title: Azure Firewall
-    summary: Natív tűzfalfunkciók beépített rendelkezésre állással és korlátlan felhőbeli skálázással, karbantartási igény nélkül
-    imageSrc: https://static.docs.com/ui/media/product/azure/firewall.svg
-    azureCategories:
-    - networking
-    url: firewall/index.yml
-  - title: Azure Firewall Manager
-    summary: Központi hálózatbiztonsági szabályzat és útvonalkezelés a globálisan elosztott, szoftveresen meghatározott szegélyhálózatokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/firewall-manager.svg
-    azureCategories:
-    - networking
-    url: firewall-manager/index.yml
-  - title: Azure Front Door
-    summary: Skálázható, biztonsági funkciókkal ellátott kézbesítési pont globális, mikroszolgáltatás-alapú webalkalmazásokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
-    azureCategories:
-    - networking
-    - security
-    url: frontdoor/index.yml
-  - title: Azure Internet Analyzer (előzetes verzió)
-    summary: Tesztelheti, hogy a hálózatkezelési infrastruktúra módosításai milyen hatással lesznek az ügyfelek teljesítményére
-    imageSrc: https://static.docs.com/ui/media/product/azure/internet-analyzer.svg
-    azureCategories:
-    - networking
-    url: internet-analyzer/index.yml
-  - title: Azure Private Link
-    summary: Privát hozzáférés az Azure platformon üzemelő szolgáltatásokhoz, így az adatok a Microsoft hálózatán belül maradnak
-    imageSrc: https://static.docs.com/ui/media/product/azure/private-link.svg
-    azureCategories:
-    - networking
-    url: private-link/index.yml
-  - title: Load Balancer
-    summary: Magas rendelkezésre állás és hálózati teljesítmény biztosítása alkalmazásai számára
-    imageSrc: https://static.docs.com/ui/media/product/azure/load-balancer.svg
-    azureCategories:
-    - networking
-    url: load-balancer/index.yml
-  - title: Azure Route Server (előzetes verzió)
-    summary: A hálózati berendezések működtetésének leegyszerűsítése
-    imageSrc: ./media/index/azure-route-server.svg
-    azureCategories:
-    - networking
-    url: route-server/index.yml
-  - title: Virtual Network
-    summary: Magánhálózatok kialakítása és igény szerinti csatlakoztatása a helyben üzemelő adatközpontokhoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
-    azureCategories:
-    - networking
-    url: virtual-network/index.yml
-  - title: Virtuális WAN
-    summary: A Microsoft által felügyelt küllős modell a csatlakoztatáshoz és a biztonsághoz
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-wans.svg
-    azureCategories:
-    - networking
-    url: virtual-wan/index.yml
-  - title: VPN Gateway
-    summary: Biztonságos kapcsolat, több hely egymással történő összekapcsolásával
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-network-gateways.svg
-    azureCategories:
-    - networking
-    - security
-    url: vpn-gateway/index.yml
-  - title: Web Application Firewall (Webalkalmazási tűzfal)
-    summary: Natív felhőbeli webalkalmazási tűzfal (WAF) szolgáltatás, amely hatékony védelmet nyújt webalkalmazásai számára
-    imageSrc: https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg
-    azureCategories:
-    - networking
-    - security
-    url: web-application-firewall/index.yml
-  - title: Azure Dedicated HSM
-    summary: A felhőben használt hardveres biztonsági modulok kezelése
-    imageSrc: ./media/index/dedicated-hsm.svg
-    azureCategories:
-    - security
-    url: dedicated-hsm/index.yml
-  - title: Key Vault
-    summary: A kulcsok, valamint egyéb titkok biztonságos tárolása és elérésük szabályozása
-    imageSrc: https://static.docs.com/ui/media/product/azure/key-vault.svg
-    azureCategories:
-    - security
-    url: key-vault/index.yml
-  - title: Archive Storage
-    summary: Piacvezető költségszint a ritkán használt adatok tárolásához
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
-    azureCategories:
-    - storage
-    url: storage/blobs/storage-blob-storage-tiers.md
-  - title: Azure-hoz készült Avere vFXT
-    summary: Nagy teljesítményű, fájlalapú számítási feladatok futtatása a felhőben
-    imageSrc: ./media/index/avere.svg
-    azureCategories:
-    - storage
-    url: avere-vfxt/index.yml
-  - title: Azure FXT Edge Filer
-    summary: A hibrid tárolási rendszert optimalizáló megoldás HPC-környezetekhez
-    imageSrc: https://static.docs.com/ui/media/product/azure/fxt-edge-filer.svg
-    azureCategories:
-    - storage
-    url: fxt-edge-filer/index.yml
-  - title: Azure HPC Cache
-    summary: Fájlok gyorsítótárazása nagy teljesítményű feldolgozáshoz (HPC)
-    imageSrc: https://static.docs.com/ui/media/product/azure/hpc-cache.svg
-    azureCategories:
-    - storage
-    url: hpc-cache/index.yml
-  - title: Azure NetApp Files
-    summary: Nagyvállalati szintű Azure-fájlmegosztások a NetApptől
-    imageSrc: https://static.docs.com/ui/media/product/azure/netapp-files.svg
-    azureCategories:
-    - storage
-    url: azure-netapp-files/index.yml
-  - title: Blob Storage
-    summary: REST-alapú objektumtár strukturálatlan adatok számára
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - storage
-    url: storage/blobs/index.yml
-  - title: Disk Storage
-    summary: Nagy teljesítményű, rendkívül tartós blokktároló Azure-beli virtuális gépekhez
-    imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
-    azureCategories:
-    - storage
-    url: virtual-machines/managed-disks-overview.md
-  - title: Azure Files
-    summary: Szabványos SMB 3.0 protokollt használó fájlmegosztások
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-azure-files.svg
-    azureCategories:
-    - storage
-    url: storage/files/index.yml
-  - title: Queue Storage
-    summary: Alkalmazások forgalomhoz igazodó, hatékony méretezése
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - storage
-    url: storage/queues/index.yml
-  - title: Storage
-    summary: Tartós, magas rendelkezésre állású és rendkívül rugalmasan skálázható felhőalapú tárolás
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - storage
-    url: storage/index.yml
-  - title: Storage Explorer
-    summary: Azure Storage-erőforrások megtekintése és kezelése
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
-    azureCategories:
-    - storage
-    url: vs-azure-tools-storage-manage-with-storage-explorer.md
-  - title: StorSimple
-    summary: Alacsonyabb költségek egy vállalati hibrid felhőalapú tárolási megoldással
-    imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
-    azureCategories:
-    - storage
-    url: storsimple/index.yml
-  - title: Azure SignalR szolgáltatás
-    summary: Valós idejű webes funkciók egyszerű hozzáadása
-    imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg
-    azureCategories:
-    - web
-    url: azure-signalr/index.yml
+    - title: Azure-Percept
+      summary: Peremhálózati intelligencia a szilíciumból a szolgáltatásba
+      imageSrc: ./media/index/azure-percept.svg
+      azureCategories:
+        - iot
+      url: azure-percept/index.yml
+    - title: Anomáliadetektor
+      summary: Könnyedén hozzáadhat rendellenességészlelési képességeket alkalmazásaihoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/anomaly-detector.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/anomaly-detector/index.yml
+    - title: Azure Bot Service
+      summary: 'Intelligens, kiszolgáló nélküli botszolgáltatás, amely igény szerint méretezhető'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/bot-service.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: /azure/bot-service/
+    - title: Azure Cognitive Search
+      summary: Mesterséges intelligenciát használó felhőalapú keresési szolgáltatás mobil- és webalkalmazások fejlesztéséhez
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/search.svg'
+      azureCategories:
+        - ai-machine-learning
+        - mobile
+        - web
+      url: search/index.yml
+    - title: Azure Cognitive Services
+      summary: Intelligens API-funkciók hozzáadásával környezetfüggő interakció válik lehetővé
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - featured
+        - ai-machine-learning
+        - mobile
+      url: cognitive-services/index.yml
+    - title: Azure Databricks
+      summary: 'Gyors, könnyű és együttműködésen alapuló Apache Spark-alapú elemzési platform'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/databricks.svg'
+      azureCategories:
+        - ai-machine-learning
+        - analytics
+      url: /azure/databricks/
+    - title: Állapotú robot
+      summary: Felügyelt szolgáltatás célja – a virtuális egészségügyi asszisztensek fejlesztéséhez készült.
+      imageSrc: media/index/health-bot-logo.svg
+      azureCategories:
+        - ai-machine-learning
+      url: /azure/health-bot/
+    - title: Azure Machine Learning
+      summary: 'Mesterséges intelligencia mindenki számára egy kísérletezést és modellkezelést lehetővé tevő, teljes körű, méretezhető és megbízható platformmal'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/machine-learning.svg'
+      azureCategories:
+        - ai-machine-learning
+        - iot
+      url: machine-learning/index.yml
+    - title: Azure Open Datasets
+      summary: Felhőplatform összeválogatott nyílt adatkészletek üzemeltetéséhez és megosztásához a gépi tanulási modellek fejlesztésének felgyorsítása érdekében
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/open-datasets.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: open-datasets/index.yml
+    - title: Azure RTOS
+      summary: A beágyazott IoT-fejlesztés és -kapcsolat egyszerűsítése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/rtos.svg'
+      azureCategories:
+        - iot
+      url: /azure/rtos/
+    - title: Bing – Automatikus kiegészítés
+      summary: Alkalmazásának keresési funkcióját intelligens automatikus kiegészítési lehetőségekkel bővítheti
+      imageSrc: ./media/index/API_Bing_AutoSuggest.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
+    - title: Bing – Egyéni keresés
+      summary: 'Egy könnyen kezelhető, reklámmentes, kereskedelmi minőségű keresési eszköz, amely a kívánt eredményeket szolgáltatja'
+      imageSrc: ./media/index/API_Bing_Custom_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-custom-search/overview.md
+    - title: Bing – Entitáskeresés
+      summary: Gazdagíthatja a felhasználói élményt a webről származó entitásadatok azonosításával és kiegészítésével
+      imageSrc: ./media/index/API_Bing_Entity_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-entities-search/overview.md
+    - title: Bing – Képkeresés
+      summary: Képeket kereshet átfogó találatokkal
+      imageSrc: ./media/index/API_Bing_Image_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-image-search/overview.md
+    - title: Bing – Hírkeresés
+      summary: Híreket kereshet átfogó találatokkal
+      imageSrc: ./media/index/API_Bing_News_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-news-search/search-the-web.md
+    - title: Bing – Helyesírás-ellenőrzés
+      summary: Észlelheti és kijavíthatja a helyesírási hibákat az alkalmazáson belül
+      imageSrc: ./media/index/API_Bing_Spell_Check.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-spell-check/overview.md
+    - title: Bing – Videokeresés
+      summary: Videókat kereshet átfogó találatokkal
+      imageSrc: ./media/index/API_Bing_Video_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-video-search/overview.md
+    - title: Bing vizuális keresés
+      summary: 'Gazdag megállapításokra tehet szert, ami segítséget nyújt meggyőző képalkalmazások összeállításához egy tetszés szerinti eszközön'
+      imageSrc: ./media/index/API_Bing_Visual_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-visual-search/overview.md
+    - title: Bing – Internetes keresés
+      summary: Bővített keresési részletek beszerzése webes dokumentumok milliárdjaiból
+      imageSrc: ./media/index/API_Bing_Web_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-web-search/overview.md
+    - title: Azure Communication Services
+      summary: Tartalmas kommunikációs élményt hozhat létre a Microsoft Teams által is használt biztonságos platformmal
+      imageSrc: ./media/index/communication-services.svg
+      azureCategories:
+        - web
+        - mobile
+      url: communication-services/overview.md
+    - title: Számítógépes látástechnológia
+      summary: Gyakorlatban használható információk leszűrése képekből
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/computer-vision/index.yml
+    - title: Tartalommoderátor
+      summary: 'Automatizált kép-, szöveg- és videómoderálás'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/content-moderator/index.yml
+    - title: Custom Vision
+      summary: Könnyedén testreszabhatja a saját korszerű számítógépes látástechnológiai modelljeit az egyedi használati módjának megfelelően
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/custom-vision.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/custom-vision-service/index.yml
+    - title: Data Science Virtual Machine
+      summary: 'Gazdag, előre konfigurált környezet MI-fejlesztéshez'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: machine-learning/data-science-virtual-machine/index.yml
+    - title: Arcfelismerés
+      summary: 'Arcok felismerése, azonosítása, elemzése, rendszerezése és megjelölése fényképeken'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/face/index.yml
+    - title: Form Recognizer
+      summary: 'Mesterséges intelligenciát használó dokumentumkinyerési szolgáltatás, amely együttműködik az űrlapjaival'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/form-recognizer/index.yml
+    - title: Modern olvasó
+      summary: Segítségével bármilyen korú és képességű felhasználó képessé válik szövegek elolvasására és megértésére
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/immersive-reader/index.yml
+    - title: Ink Recognizer (előzetes verzió)
+      summary: 'MI-szolgáltatás, amely felismeri a szabadkézi digitális tartalmakat, például a kézírást, az alakzatokat és a szabadkézi dokumentumok elrendezését'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
+    - title: Kinect DK
+      summary: Számítógépes látástechnológiás és beszédmodelleket készíthet egy fejlett MI-érzékelőkkel rendelkező fejlesztői készlettel
+      imageSrc: ./media/index/kinect-viewer.svg
+      azureCategories:
+        - ai-machine-learning
+        - iot
+        - mixed-reality
+      url: kinect-dk/index.yml
+    - title: Language Understanding
+      summary: 'Megtaníthatja appjait, hogy értsék a felhasználói parancsokat'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/luis/index.yml
+    - title: Microsoft Genomics
+      summary: Teljesítmény a genomszekvenáláshoz és a kutatási megállapításokhoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/genomics.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: genomics/index.yml
+    - title: Metrics Advisor (előzetes verzió)
+      summary: AI-szolgáltatás a metrikák monitorozásához és a problémák diagnosztizálásához
+      imageSrc: ./media/index/metrics-advisor.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/metrics-advisor/index.yml
+    - title: Personalizer
+      summary: Személyre szabott felhasználói élményt nyújtó MI-szolgáltatás
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/personalizer/index.yml
+    - title: Project Bonsai (előzetes verzió)
+      summary: Gépi betanítási szolgáltatás intelligens ipari vezérlési rendszerek létrehozásához szimulációk használatával
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/bonsai.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: /bonsai/
+    - title: QnA Maker
+      summary: 'Átalakíthatja az információkat párbeszédes, könnyen átlátható válaszokká'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/qnamaker/index.yml
+    - title: Speaker Recognition (előzetes verzió)
+      summary: Beszédet használva azonosíthatja és ellenőrizheti az egyes beszélőket
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/speaker-recognition-overview.md
+    - title: Diktálás
+      summary: A beszédhangokat írott szöveggé alakíthatja a természetesebb interakciók érdekében
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/index-speech-to-text.yml
+    - title: Beszédfordítás
+      summary: 'Könnyedén integrálható, valós idejű beszédfordítási funkció az alkalmazásához'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/index-speech-translation.yml
+    - title: Szövegelemzés
+      summary: Hangulatelemzéssel és a témakörök értékelésével könnyedén megismerheti a felhasználók igényeit
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/text-analytics/index.yml
+    - title: Szövegfelolvasás
+      summary: Az írott szöveget beszéddé konvertálhatja egy természetesebb és hozzáférhetőbb interfész kialakítása érdekében
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/index-text-to-speech.yml
+    - title: Translator
+      summary: Könnyedén végezhet gépi fordítást egy egyszerű REST API-hívással
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/translator/index.yml
+    - title: Video Indexer
+      summary: Videóelemzések feloldása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - ai-machine-learning
+        - media
+      url: media-services/video-indexer/index.yml
+    - title: Azure Analysis Services
+      summary: Szolgáltatásként elérhető nagyvállalati szintű adatelemző motor
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/analysis-services.svg'
+      azureCategories:
+        - analytics
+      url: analysis-services/index.yml
+    - title: Azure Data Explorer
+      summary: Gyors és kitűnően méretezhető szolgáltatás az adatok feltárására
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-explorer.svg'
+      azureCategories:
+        - analytics
+      url: /azure/data-explorer
+    - title: Azure Data Lake Storage
+      summary: 'Rendkívül rugalmasan méretezhető, Azure Blob Storage-on alapuló biztonságos Data Lake-funkciók'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - analytics
+        - storage
+      url: storage/blobs/data-lake-storage-introduction.md
+    - title: Azure Data Share
+      summary: Egyszerű és biztonságos szolgáltatás big data típusú adatok más szervezetekkel való megosztásához
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-shares.svg'
+      azureCategories:
+        - analytics
+        - storage
+      url: data-share/index.yml
+    - title: Azure Stream Analytics
+      summary: Alkalmazások és eszközök gyors adatstreamjeinek valós idejű elemzései
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stream-analytics.svg'
+      azureCategories:
+        - analytics
+        - iot
+      url: stream-analytics/index.yml
+    - title: Azure Synapse Analytics
+      summary: Korlátlan elemzési szolgáltatás a megállapítások páratlan gyorsaságú kinyerésével
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/synapse.svg'
+      azureCategories:
+        - analytics
+      url: synapse-analytics/index.yml
+    - title: Data Catalog
+      summary: Jobban kihasználhatja a vállalati adategységekben rejlő értékeket
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-catalog.svg'
+      azureCategories:
+        - analytics
+      url: data-catalog/index.yml
+    - title: Azure Purview
+      summary: Az üzleti érték maximalizálása egységesített adatszabályozással
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/purview.svg'
+      azureCategories:
+        - analytics
+        - management-and-governance
+      url: purview/index.yml
+    - title: Data Factory
+      summary: 'Hibrid adatok integrációja egyszerűen, nagyvállalati szinten'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-factory.svg'
+      azureCategories:
+        - analytics
+      url: data-factory/index.yml
+    - title: Data Lake Analytics
+      summary: Big data egyszerűen az elosztott elemzési szolgáltatás révén
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-lake-analytics.svg'
+      azureCategories:
+        - analytics
+      url: data-lake-analytics/index.yml
+    - title: Event Hubs
+      summary: Eszközök millióiról érkező telemetriai adatok fogadása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/event-hubs.svg'
+      azureCategories:
+        - analytics
+      url: event-hubs/index.yml
+    - title: HDInsight
+      summary: 'Felhőalapú Hadoop-, Spark-, R Server-, HBase- és Storm-fürtök kiépítése'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/hdinsight.svg'
+      azureCategories:
+        - analytics
+      url: hdinsight/index.yml
+    - title: Log Analytics
+      summary: 'Teljes megfigyelhetőséget eredményez az alkalmazásaiban, infrastruktúrájában és hálózatán'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/log-analytics.svg'
+      azureCategories:
+        - analytics
+        - management-and-governance
+      url: azure-monitor/index.yml
+    - title: Power BI Embedded
+      summary: 'Teljes mértékben interaktív, lenyűgöző adatábrázolásokat ágyazhat be alkalmazásaiba'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/power-bi.svg'
+      azureCategories:
+        - analytics
+      url: /power-bi/developer/azure-pbie-what-is-power-bi-embedded
+    - title: R Server for HDInsight
+      summary: 'Prediktív elemzés, gépi tanulás és statisztikai modellezés big data adatokhoz'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/hdinsight.svg'
+      azureCategories:
+        - analytics
+      url: hdinsight/r-server/r-server-overview.md
+    - title: Azure Blockchain Service (előzetes verzió)
+      summary: 'Konzorciumi blokklánchálózatok létrehozása, irányítása és bővítése'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-service.svg'
+      azureCategories:
+        - blockchain
+      url: blockchain/service/index.yml
+    - title: Azure Blockchain Workbench (előzetes verzió)
+      summary: Egyszerű prototípus-készítés blokklánc-alkalmazásokhoz a felhőben
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg'
+      azureCategories:
+        - blockchain
+      url: blockchain/workbench/index.yml
+    - title: Azure Cosmos DB
+      summary: Gyors NoSQL-adatbázis Open API-kkal bármilyen mérethez
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cosmos-db.svg'
+      azureCategories:
+        - featured
+        - blockchain
+        - databases
+        - iot
+      url: cosmos-db/index.yml
+    - title: Azure felügyelt példány az Apache Cassandra-hoz
+      summary: A felügyelt nyílt forráskódú Apache Cassandra-adatközpontok üzembe helyezésének és méretezésének automatizálása
+      imageSrc: ./media/index/managed-instance-apache-cassandra.svg
+      azureCategories:
+        - databases
+      url: managed-instance-apache-cassandra/index.yml
+    - title: Logic Apps
+      summary: Az adatok felhők közötti használatának és elérésének automatizálása kódírás nélkül
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/logic-apps.svg'
+      azureCategories:
+        - blockchain
+        - integration
+        - iot
+      url: logic-apps/index.yml
+    - title: API Apps
+      summary: Felhőalapú API-k egyszerű összeállítása és használata
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/api-apps.svg'
+      azureCategories:
+        - compute
+        - containers
+        - web
+      url: app-service/index.yml
+    - title: App Service
+      summary: Hatékony felhőalapú web- és mobilalkalmazások gyors létrehozása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/app-service.svg'
+      azureCategories:
+        - featured
+        - compute
+        - mobile
+        - web
+      url: app-service/index.yml
+    - title: Azure CycleCloud
+      summary: 'Tetszőleges méretű HPC és nagy számítási igényű fürtök létrehozása, kezelése, üzemeltetése és optimalizálása'
+      imageSrc: ./media/index/logo_cyclecloud.svg
+      azureCategories:
+        - compute
+      url: /azure/cyclecloud/index
+    - title: Azure Dedicated Host
+      summary: Windows- és Linux-rendszerekhez való Azure-beli virtuális gépek gazdagépeként szolgáló dedikált fizikai kiszolgáló
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - compute
+      url: ./virtual-machines/dedicated-hosts.md
+    - title: Azure Functions
+      summary: Események feldolgozása kiszolgáló nélküli programkóddal
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/functions.svg'
+      azureCategories:
+        - featured
+        - compute
+        - containers
+        - iot
+      url: azure-functions/index.yml
+    - title: Azure Kubernetes Service (AKS)
+      summary: 'A Kubernetes üzembe helyezésének, kezelésének és üzemeltetésének leegyszerűsítése'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/kubernetes-services.svg'
+      azureCategories:
+        - featured
+        - compute
+        - containers
+      url: aks/index.yml
+    - title: Azure Quantum (előzetes verzió)
+      summary: Az Azure-ban még ma is tapasztalhatja a kvantum-hatást
+      imageSrc: ./media/index/quantum.svg
+      azureCategories:
+        - compute
+        - featured
+      url: /azure/quantum/
+    - title: Azure Spring Cloud
+      summary: 'Teljes mértékben felügyelt Spring Cloud-szolgáltatás, amely Pivotallal buildelhető és működtethető'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/spring-cloud.svg'
+      azureCategories:
+        - compute
+        - web
+      url: spring-cloud/index.yml
+    - title: Azure VMware Solution
+      summary: VMware-alapú számítási feladatait natív módon futtathatja az Azure-ban
+      imageSrc: ./media/index/azure-vmware.svg
+      azureCategories:
+        - compute
+      url: azure-vmware/index.yml
+    - title: Batch
+      summary: Feladatütemezés és számításkezelés felhőméretben
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/batch-accounts.svg'
+      azureCategories:
+        - compute
+      url: batch/index.yml
+    - title: Cloud Services
+      summary: 'Magas rendelkezésre állású, a végtelenségig méretezhető felhőalkalmazások és API-k létrehozása'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cloud-services.svg'
+      azureCategories:
+        - compute
+      url: cloud-services-extended-support/index.yml
+    - title: Tárolópéldányok
+      summary: 'Könnyedén futtathat tárolókat az Azure-on, kiszolgálók kezelése nélkül'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/container-instances.svg'
+      azureCategories:
+        - compute
+        - containers
+      url: container-instances/index.yml
+    - title: Linux rendszerű virtuális gépek
+      summary: 'Virtuális gépek kiépítése Ubuntu, Red Hat és más rendszerekhez'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - featured
+        - compute
+      url: ./virtual-machines/index.yml
+    - title: Service Fabric
+      summary: Mikroszolgáltatások üzembe helyezése és tárolók összehangolása Windows vagy Linux rendszeren
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg'
+      azureCategories:
+        - compute
+        - containers
+      url: service-fabric/index.yml
+    - title: SQL Server on Virtual Machines
+      summary: Nagyvállalati SQL Server-alkalmazások felhőben történő üzemeltetése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-server-vm.svg'
+      azureCategories:
+        - compute
+        - databases
+      url: ./azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - title: Static Web Apps (előzetes verzió)
+      summary: 'Modern webalkalmazás-szolgáltatás, amely egyszerűsített teljes körű fejlesztést kínál a forráskódtól a globális magas rendelkezésre állásig'
+      imageSrc: ./media/index/static-apps.svg
+      azureCategories:
+        - compute
+        - web
+      url: static-web-apps/index.yml
+    - title: Virtual Machine Scale Sets
+      summary: Több ezer Linux- és Windows-alapú virtuális gép felügyelete és méretezése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg'
+      azureCategories:
+        - compute
+      url: virtual-machine-scale-sets/index.yml
+    - title: Web Apps
+      summary: Üzleti szempontból alapvető fontosságú webalkalmazások gyors létrehozása és üzembe helyezése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/app-service.svg'
+      azureCategories:
+        - compute
+        - containers
+        - web
+      url: app-service/index.yml
+    - title: Windows Virtual Desktop
+      summary: 'A legjobb virtuális asztali felület, az Azure-on keresztül'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/windows-virtual-desktop.svg'
+      azureCategories:
+        - featured
+        - compute
+        - windows-virtual-desktop
+      url: virtual-desktop/index.yml
+    - title: Windows rendszerű virtuális gépek
+      summary: Windows-alapú virtuális gépek kiépítése percek alatt
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - featured
+        - compute
+      url: ./virtual-machines/index.yml
+    - title: Azure Dev Spaces
+      summary: Elvégzi az Azure AKS szolgáltatásban futó mikroszolgáltatás-alkalmazás tesztelését és iteratív fejlesztését
+      imageSrc: ./media/index/AzureDevSpaceController_50x.svg
+      azureCategories:
+        - containers
+        - developer-tools
+      url: dev-spaces/index.yml
+    - title: Azure Red Hat OpenShift
+      summary: 'Teljes mértékben felügyelt OpenShift-szolgáltatás, a Red Hattel közösen működtetve'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/openshift.svg'
+      azureCategories:
+        - containers
+      url: virtual-machines/linux/openshift-get-started.md
+    - title: Container Registry
+      summary: Tárolórendszerképek tárolása és kezelése az összes Azure-környezettípusban
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/container-registry.svg'
+      azureCategories:
+        - containers
+      url: container-registry/index.yml
+    - title: Tárolókhoz készült Web App
+      summary: 'Az üzleti igényeknek megfelelően méretezhető, tárolóalapú webalkalmazások gyors és egyszerű üzembe helyezése'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/web-apps-containers.svg'
+      azureCategories:
+        - containers
+        - web
+      url: ./app-service/index.yml
+    - title: Azure API for FHIR
+      summary: Könnyedén létrehozható és üzembe helyezhető FHIR-szolgáltatás az egészségügyiadat-megoldásokhoz és együttműködési lehetőségekhez
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/api-for-fhir.svg'
+      azureCategories:
+        - databases
+        - integration
+      url: healthcare-apis/fhir/index.yml
+    - title: Azure Cache for Redis
+      summary: Alkalmazások felruházása magas átviteli sebességű és rövid késleltetésű adathozzáféréssel
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cache-redis.svg'
+      azureCategories:
+        - databases
+      url: azure-cache-for-redis/index.yml
+    - title: Azure Database for MariaDB
+      summary: Felügyelt MariaDB-adatbázisszolgáltatás alkalmazásfejlesztőknek
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-mariadb-server.svg'
+      azureCategories:
+        - databases
+      url: mariadb/index.yml
+    - title: Azure Database for MySQL
+      summary: Felügyelt MySQL adatbázis-szolgáltatás appfejlesztőknek
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-mysql-server.svg'
+      azureCategories:
+        - databases
+      url: mysql/index.yml
+    - title: Azure Database for PostgreSQL
+      summary: Felügyelt PostgreSQL adatbázis-szolgáltatás appfejlesztőknek
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg'
+      azureCategories:
+        - databases
+        - hybrid
+      url: postgresql/index.yml
+    - title: Azure Database Migration Service
+      summary: A helyszíni adatbázis felhőbe történő migrálása egyszerűbben
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-migration-services.svg'
+      azureCategories:
+        - databases
+        - migration
+      url: dms/index.yml
+    - title: Azure SQL
+      summary: Modern SQL-termékcsalád migrálási és alkalmazámodernizálási feladatokhoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql.svg'
+      azureCategories:
+        - featured
+        - hybrid
+        - databases
+      url: azure-sql/index.yml
+    - title: Azure SQL Database
+      summary: 'Felügyelt, intelligens SQL a felhőben'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-database.svg'
+      azureCategories:
+        - databases
+      url: azure-sql/database/index.yml
+    - title: Felügyelt Azure SQL-példány
+      summary: 'Felügyelt, mindig naprakész SQL-példány a felhőben'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-managed-instance.svg'
+      azureCategories:
+        - databases
+      url: azure-sql/managed-instance/index.yml
+    - title: Azure SQL Edge
+      summary: 'Kis erőforrásigénnyel rendelkező, peremhálózatra optimalizált adatmotor beépített mesterséges intelligenciával'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-database-edge.svg'
+      azureCategories:
+        - databases
+        - iot
+      url: azure-sql-edge/index.yml
+    - title: Table Storage
+      summary: Félig strukturált adatkészleteket használó NoSQL kulcs-érték tároló
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - databases
+      url: ./storage/tables/table-storage-overview.md
+    - title: Alkalmazás konfigurációja
+      summary: 'Gyors, méretezhető paramétertár alkalmazáskonfigurációhoz'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/app-configuration.svg'
+      azureCategories:
+        - developer-tools
+      url: azure-app-configuration/index.yml
+    - title: Azure Data Studio
+      summary: 'Egy egyszerű szerkesztő, amellyel kiszolgáló nélküli SQL-készletlekérdezéseket futtathat, és szöveges, JSON- vagy Excel-formátumban jelenítheti meg és mentheti az eredményeket.'
+      imageSrc: 'https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg'
+      azureCategories:
+        - developer-tools
+      url: /sql/azure-data-studio/
+    - title: Azure DevOps
+      summary: 'Szolgáltatások fejlesztőcsapatoknak kódmegosztáshoz, projektkövetéshez és szoftverkészítéshez'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/devops.svg'
+      azureCategories:
+        - developer-tools
+        - devops
+        - hybrid
+      url: /azure/devops/
+    - title: Azure DevTest Labs
+      summary: Környezetek gyors létrehozása újrahasznosítható sablonokkal és összetevőkkel
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/devtest-labs.svg'
+      azureCategories:
+        - developer-tools
+        - devops
+      url: lab-services/index.yml
+    - title: Azure Lab Services
+      summary: 'Laborok kiépítése tantermi munkához, próbaverziókhoz, fejlesztéshez és teszteléshez vagy bármilyen más forgatókönyvhöz'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/lab-services.svg'
+      azureCategories:
+        - developer-tools
+      url: lab-services/index.yml
+    - title: Azure Pipelines
+      summary: 'Folyamatos buildelés, tesztelés és üzembe helyezés bármilyen platformhoz és felhőhöz'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/pipelines.svg'
+      azureCategories:
+        - developer-tools
+        - devops
+      url: /azure/devops/pipelines/
+    - title: Visual Studio
+      summary: Hatékony és rugalmas környezet alkalmazások fejlesztéséhez a felhőben
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+      azureCategories:
+        - developer-tools
+      url: /visualstudio/windows
+    - title: Visual Studio Code
+      summary: Hatékony és egyszerűsített kódszerkesztő a felhőalapú fejlesztéshez
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+      azureCategories:
+        - developer-tools
+      url: 'https://code.visualstudio.com/docs'
+    - title: Visual Studio Codespaces (előzetes verzió)
+      summary: Bárhonnan elérhető felhőbeli fejlesztési környezetek
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+      azureCategories:
+        - developer-tools
+      url: /visualstudio/online/overview/what-is-vsonline
+    - title: Application Insights
+      summary: 'Teljes megfigyelhetőséget eredményez az alkalmazásaiban, infrastruktúrájában és hálózatán'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/application-insights.svg'
+      azureCategories:
+        - devops
+        - management-and-governance
+      url: azure-monitor/index.yml
+    - title: Azure Artifacts
+      summary: 'Csomagok létrehozása, kiszolgálóra helyezése és megosztása csapaton belül'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/artifacts.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/artifacts/
+    - title: Azure Boards
+      summary: 'Tervezés, nyomon követés és munkaegyeztetés a csapaton belül'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/boards.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/boards/
+    - title: Azure Monitor
+      summary: 'Teljes megfigyelhetőséget eredményez az alkalmazásaiban, infrastruktúrájában és hálózatán'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/monitor.svg'
+      azureCategories:
+        - devops
+        - management-and-governance
+      url: azure-monitor/index.yml
+    - title: Azure Repos
+      summary: 'Korlátlan, felhőben üzemeltetett, privát Git-adattárak projektekhez'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/repos.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/repos/
+    - title: Azure Test Plans
+      summary: A manuális és felderítési jellegű tesztelési eszköztár segítségével magabiztosan tesztelheti és szolgáltathatja termékeit
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/test-plans.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/test/
+    - title: GitHub-műveletek az Azure-hoz
+      summary: 'Alkalmazás létrehozása, tesztelése és üzembe helyezése a GitHubból az Azure-ba'
+      imageSrc: ./media/index/github-actions-icon.svg
+      azureCategories:
+        - devops
+        - developer-tools
+      url: /azure/developer/github/github-actions
+    - title: Azure Active Directory (AD)
+      summary: Helyszíni tárak szinkronizálása és az egyszeri bejelentkezés engedélyezése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/active-directory.svg'
+      azureCategories:
+        - hybrid
+        - identity
+        - security
+      url: active-directory/index.yml
+    - title: Azure Arc (előzetes verzió)
+      summary: Bármilyen infrastruktúrába bevezetheti az Azure-szolgáltatásokat és -felügyeletet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/arc.svg'
+      azureCategories:
+        - hybrid
+      url: azure-arc/index.yml
+    - title: Azure ExpressRoute
+      summary: Dedikált száloptikás magánhálózati kapcsolatok az Azure-hoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/expressroute.svg'
+      azureCategories:
+        - hybrid
+        - networking
+      url: expressroute/index.yml
+    - title: Azure Sentinel
+      summary: Natív felhőalapú SIEM és intelligens biztonsági elemzések használata a vállalat védelmének érdekében
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sentinel.svg'
+      azureCategories:
+        - hybrid
+        - security
+      url: sentinel/index.yml
+    - title: Azure Stack
+      summary: Innovatív hibrid alkalmazások felhőhatárok közötti buildelése és futtatása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack.svg'
+      azureCategories:
+        - hybrid
+      url: /azure-stack/
+    - title: Azure Stack HCI
+      summary: Hiperkonvergens infrastruktúra integrálása az Azure-ral és a hibrid szolgáltatásokkal a virtuális számítási feladatok helyszíni futtatásához
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack-hci.svg'
+      azureCategories:
+        - hybrid
+      url: /azure-stack/hci/
+    - title: Azure Stack Hub
+      summary: 'Az Azure Stack Hub integrált hardverrendszerként érhető el, amelyben a szoftver előre van telepítve a hitelesített hardveren'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack-hub.svg'
+      azureCategories:
+        - hybrid
+      url: /azure-stack/operator/
+    - title: Azure Stack Edge
+      summary: 'Egy Azure által felügyelt berendezés, amely az Azure számítási, tárolási és intelligenciával kapcsolatos képességeit nyújtja a peremhálózaton'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack-edge.svg'
+      azureCategories:
+        - hybrid
+      url: ./databox-online/index.yml
+    - title: Security Center
+      summary: A biztonsági felügyelet egységesítése és fejlett fenyegetésvédelem biztosítása a hibrid felhőalapú számítási feladatokhoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/security-center.svg'
+      azureCategories:
+        - hybrid
+        - security
+      url: security-center/index.yml
+    - title: Azure IoT Edge
+      summary: Felhőbeli intelligens technológiák és elemzések kiterjesztése a peremeszközökre
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-edge.svg'
+      azureCategories:
+        - hybrid
+        - iot
+      url: iot-edge/index.yml
+    - title: Azure Active Directory External Identities
+      summary: Felhasználói identitás és hozzáférés kezelése a felhőben
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg'
+      azureCategories:
+        - identity
+      url: active-directory/external-identities/index.yml
+    - title: Azure Active Directory tartományi szolgáltatások
+      summary: Azure-beli virtuális gépeit tartományvezérlők nélkül csatlakoztathatja tartományokhoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/ad-domain-services.svg'
+      azureCategories:
+        - identity
+        - security
+      url: active-directory-domain-services/index.yml
+    - title: Azure Information Protection
+      summary: 'Fejlettebb védelem a bizalmas adatok számára – bárhol, bármikor'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/information-protection.svg'
+      azureCategories:
+        - identity
+        - security
+      url: /azure/information-protection/
+    - title: API Management
+      summary: 'Biztonságos, nagy terhelhetőségű programozási felületek (API-k) közzététele fejlesztők, partnerek és munkatársak számára'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/api-management.svg'
+      azureCategories:
+        - integration
+        - iot
+        - mobile
+        - web
+      url: api-management/index.yml
+    - title: Event Grid
+      summary: 'Megbízható, nagy léptékű eseménykezelés'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/event-grid-domains.svg'
+      azureCategories:
+        - integration
+        - iot
+      url: event-grid/index.yml
+    - title: Service Bus
+      summary: Kapcsolódás privát és nyilvános felhőkörnyezetben
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/service-bus.svg'
+      azureCategories:
+        - integration
+      url: service-bus-messaging/index.yml
+    - title: Azure Digital Twins
+      summary: IoT-térbeliintelligenciára épülő következő generációs megoldások kialakítása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/digital-twins.svg'
+      azureCategories:
+        - iot
+        - mixed-reality
+      url: digital-twins/index.yml
+    - title: Azure IoT Central
+      summary: IoT-megoldások létrehozásának felgyorsítása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-central.svg'
+      azureCategories:
+        - iot
+      url: iot-central/index.yml
+    - title: Azure IoT Hub
+      summary: 'Több milliárd IoT-eszköz csatlakoztatása, monitorozása és felügyelete'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-hub.svg'
+      azureCategories:
+        - iot
+      url: iot-hub/index.yml
+    - title: Azure IoT-megoldásgyorsítók
+      summary: 'Teljes mértékben testre szabható megoldások létrehozása gyakori IoT-forgatókönyvekhez, sablonok segítségével'
+      imageSrc: ./media/index/iot-solution-accelerators.svg
+      azureCategories:
+        - iot
+      url: iot-accelerators/index.yml
+    - title: Azure Maps
+      summary: Az egyszerű és biztonságos helymeghatározási API-k térinformatikai kontextust biztosítanak az adatokhoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/maps.svg'
+      azureCategories:
+        - iot
+        - mobile
+        - web
+      url: azure-maps/index.yml
+    - title: Azure Sphere
+      summary: MCU-alapú eszközök biztonságos csatlakoztatása a felhőhöz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sphere.svg'
+      azureCategories:
+        - iot
+      url: /azure-sphere/
+    - title: Azure Time Series Insights
+      summary: Idősoros adatok feltárása és elemzése IoT-eszközökről
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/time-series-insights-environments.svg'
+      azureCategories:
+        - iot
+      url: time-series-insights/index.yml
+    - title: Notification Hubs
+      summary: 'Leküldéses értesítések küldése bármely platformra, bármilyen háttérrendszerről'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/notification-hubs.svg'
+      azureCategories:
+        - iot
+        - mobile
+        - web
+      url: notification-hubs/index.yml
+    - title: Windows 10 IoT Core Services
+      summary: 'Hosszú távú operációsrendszer-támogatás, szolgáltatások az eszközfrissítések kezeléséhez és hozzáférés az eszközállapotokhoz'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-windows10-core-services.svg'
+      azureCategories:
+        - iot
+      url: /windows/iot-core/
+    - title: Automation
+      summary: Egyszerűbb felhőfelügyelet a folyamatok automatizálásával
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/automation.svg'
+      azureCategories:
+        - management-and-governance
+      url: automation/index.yml
+    - title: Azure Advisor
+      summary: 'Az Azure ajánlott eljárásaival foglalkozó, személyre szabott javaslati motor'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/advisor.svg'
+      azureCategories:
+        - management-and-governance
+      url: advisor/index.yml
+    - title: Azure Backup
+      summary: Tegye egyszerűbbé az adatvédelmet és a zsarolóprogramok elleni védekezést
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg'
+      azureCategories:
+        - management-and-governance
+        - storage
+      url: backup/index.yml
+    - title: Azure Blueprints (előzetes verzió)
+      summary: 'Irányított környezetek gyors, megismételhető kiépítése'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/blueprints.svg'
+      azureCategories:
+        - management-and-governance
+      url: governance/blueprints/index.yml
+    - title: Azure Lighthouse
+      summary: Segítségével a szolgáltatók nagy léptékben és pontosan kezelhetik ügyfeleiket
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/lighthouse.svg'
+      azureCategories:
+        - management-and-governance
+      url: lighthouse/index.yml
+    - title: Azure Managed Applications
+      summary: A felhőajánlatok kezelésének leegyszerűsítése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/managed-applications.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-resource-manager/managed-applications/index.yml
+    - title: Azure Migrate
+      summary: 'Helyszíni virtuális gépeit egyszerűen felderítheti, felmérheti, megfelelő méretűre állíthatja és az Azure-ba migrálhatja'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/migrate.svg'
+      azureCategories:
+        - management-and-governance
+        - migration
+      url: migrate/index.yml
+    - title: Azure Policy
+      summary: Vállalati irányítás és szabványok nagyobb léptékű megvalósítása az Azure-erőforrásokhoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/policy.svg'
+      azureCategories:
+        - management-and-governance
+      url: governance/policy/index.yml
+    - title: Azure Resource Manager
+      summary: Az alkalmazás-erőforrások egyszerűsített kezelése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-groups.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-resource-manager/index.yml
+    - title: Azure Resource Mover (Előzetes verzió)
+      summary: Több erőforrás Azure-régiók közötti áthelyezésének egyszerűsítése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-mover.svg'
+      azureCategories:
+        - management-and-governance
+      url: resource-mover/index.yml
+    - title: ARM-sablonok
+      summary: Infrastruktúra biztosítása kódként a Resource Manager használatával az összes Azure-erőforráshoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-groups.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-resource-manager/templates/index.yml
+    - title: Azure Service Health
+      summary: Személyes útmutatás és támogatás az Azure-szolgáltatások Önt érintő problémái esetén
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/service-health.svg'
+      azureCategories:
+        - management-and-governance
+      url: service-health/index.yml
+    - title: Azure Site Recovery
+      summary: Az üzletmenet folytonosságáról beépített vészhelyreállítási szolgáltatással gondoskodhat
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg'
+      azureCategories:
+        - management-and-governance
+        - migration
+      url: site-recovery/index.yml
+    - title: Azure Cloud Shell
+      summary: Az Azure felügyeletének leegyszerűsítése egy böngészőalapú felület segítségével
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cloud-shell.svg'
+      azureCategories:
+        - management-and-governance
+      url: cloud-shell/overview.md
+    - title: Cost Management + Billing
+      summary: A felhővel kapcsolatos költségek optimalizálása és az általa nyújtott lehetőségek maximális kihasználása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cost-management.svg'
+      azureCategories:
+        - management-and-governance
+        - migration
+      url: cost-management-billing/index.yml
+    - title: Microsoft Azure Portal
+      summary: 'Minden Azure-termékét egyetlen egységesített konzolon hozhatja létre, kezelheti és monitorozhatja'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/azure.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-portal/index.yml
+    - title: Network Watcher
+      summary: Hálózati teljesítményfigyelő és diagnosztikai megoldás
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/network-watcher.svg'
+      azureCategories:
+        - management-and-governance
+        - networking
+      url: network-watcher/index.yml
+    - title: Traffic Manager
+      summary: A bejövő forgalom irányítása a jobb teljesítmény és rendelkezésre állás érdekében
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/traffic-manager.svg'
+      azureCategories:
+        - management-and-governance
+        - networking
+      url: traffic-manager/index.yml
+    - title: Azure Media Player
+      summary: 'Egyetlen lejátszó, amellyel minden tartalom lejátszható'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/player-use-azure-media-player-how-to.md
+    - title: Content Delivery Network
+      summary: 'Biztonságos, megbízható, globálisan elérhető tartalomkézbesítés biztosítása'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cdn-profiles.svg'
+      azureCategories:
+        - media
+        - networking
+        - web
+      url: cdn/index.yml
+    - title: Content Protection
+      summary: 'Biztonságos tartalomkézbesítés az AES, a PlayReady, a Widevine és a FairPlay használatával'
+      imageSrc: ./media/index/media-protection.svg
+      azureCategories:
+        - media
+      url: media-services/latest/drm-content-protection-concept.md
+    - title: Encoding
+      summary: Stúdióminőségű kódolás felhőszinten
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/encode-concept.md
+    - title: Live and On-Demand Streaming
+      summary: 'Tartalomkézbesítés gyakorlatilag bármely eszközre, az üzleti igényeknek megfelelő léptékben'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/stream-live-tutorial-with-api.md
+    - title: Live Video Analytics (előzetes verzió)
+      summary: 'Intelligens, videóalapú alkalmazások létrehozása tetszőleges mesterséges intelligenciával'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/live-video-analytics-edge/overview.md
+    - title: Media Services
+      summary: 'Video- és hangtartalom kódolása, tárolása és streamelése ipari méretekben'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/index.yml
+    - title: Data Box
+      summary: Berendezések és megoldások Azure-ba való adatátvitelhez
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-box.svg'
+      azureCategories:
+        - migration
+        - storage
+      url: databox/index.yml
+    - title: Objektum-horgonyok (előzetes verzió)
+      summary: 3D tartalom automatikus igazítása és rögzítése a fizikai világban lévő objektumokhoz
+      imageSrc: ./media/index/object-anchors.svg
+      azureCategories:
+        - mixed-reality
+      url: object-anchors/index.yml
+    - title: Spatial Anchors
+      summary: 'Többfelhasználós, tértudatos vegyesvalóság-élmények létrehozása'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg'
+      azureCategories:
+        - mixed-reality
+        - mobile
+      url: spatial-anchors/index.yml
+    - title: Azure Remote Rendering
+      summary: 'Kitűnő minőségű, interaktív 3D-s tartalom renderelése és streamelése eszközeire valós időben'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/remote-rendering.svg'
+      azureCategories:
+        - mixed-reality
+      url: remote-rendering/index.yml
+    - title: Visual Studio App Center
+      summary: 'Mobil- és asztali alkalmazások folyamatos buildelése, tesztelése, kiadása és monitorozása'
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg'
+      azureCategories:
+        - mobile
+      url: /appcenter/
+    - title: Xamarin
+      summary: Felhőalapú mobilalkalmazások gyorsabb létrehozása
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_xamarin.svg'
+      azureCategories:
+        - mobile
+      url: /xamarin/
+    - title: Application Gateway
+      summary: 'Biztonságos, méretezhető és magas rendelkezésre állású webes kezelőfelületek létrehozása az Azure-ban'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/application-gateways.svg'
+      azureCategories:
+        - networking
+        - security
+      url: application-gateway/index.yml
+    - title: Azure Bastion
+      summary: Privát és teljes körűen felügyelt RDP- és SSH-hozzáférés a virtuális gépeihez
+      imageSrc: ./media/index/web_connect.svg
+      azureCategories:
+        - networking
+      url: bastion/index.yml
+    - title: Azure Defender
+      summary: Hibrid felhőbeli számítási feladatok védelme
+      imageSrc: ./media/index/defender.svg
+      azureCategories:
+        - security
+      url: security-center/azure-defender.md
+    - title: Azure Defender IoT-hez
+      summary: Folyamatos objektumkezelés és fenyegetések észlelése a felügyelt és nem felügyelt IoT/OT-eszközökön
+      imageSrc: ./media/index/defender-iot.svg
+      azureCategories:
+        - security
+        - iot
+      url: ./defender-for-iot/index.yml
+    - title: Azure DDoS Protection
+      summary: Az alkalmazások védelme az elosztott szolgáltatásmegtagadásos (DDoS-) támadásokkal szemben
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/ddos-protection.svg'
+      azureCategories:
+        - networking
+        - security
+      url: ./ddos-protection/ddos-protection-overview.md
+    - title: Azure DNS
+      summary: Üzemeltessen saját DNS-tartományt az Azure-ban
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/dns.svg'
+      azureCategories:
+        - networking
+      url: dns/index.yml
+    - title: Azure Firewall
+      summary: 'Natív tűzfalfunkciók beépített rendelkezésre állással és korlátlan felhőbeli skálázással, karbantartási igény nélkül'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/firewall.svg'
+      azureCategories:
+        - networking
+      url: firewall/index.yml
+    - title: Azure Firewall Manager
+      summary: 'Központi hálózatbiztonsági szabályzat és útvonalkezelés a globálisan elosztott, szoftveresen meghatározott szegélyhálózatokhoz'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/firewall-manager.svg'
+      azureCategories:
+        - networking
+      url: firewall-manager/index.yml
+    - title: Azure Front Door
+      summary: 'Skálázható, biztonsági funkciókkal ellátott kézbesítési pont globális, mikroszolgáltatás-alapú webalkalmazásokhoz'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/front-door.svg'
+      azureCategories:
+        - networking
+        - security
+      url: frontdoor/index.yml
+    - title: Azure Internet Analyzer (előzetes verzió)
+      summary: 'Tesztelheti, hogy a hálózatkezelési infrastruktúra módosításai milyen hatással lesznek az ügyfelek teljesítményére'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/internet-analyzer.svg'
+      azureCategories:
+        - networking
+      url: internet-analyzer/index.yml
+    - title: Azure Private Link
+      summary: 'Privát hozzáférés az Azure platformon üzemelő szolgáltatásokhoz, így az adatok a Microsoft hálózatán belül maradnak'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/private-link.svg'
+      azureCategories:
+        - networking
+      url: private-link/index.yml
+    - title: Load Balancer
+      summary: Magas rendelkezésre állás és hálózati teljesítmény biztosítása alkalmazásai számára
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/load-balancer.svg'
+      azureCategories:
+        - networking
+      url: load-balancer/index.yml
+    - title: Azure Route Server (előzetes verzió)
+      summary: A hálózati berendezések működtetésének leegyszerűsítése
+      imageSrc: ./media/index/azure-route-server.svg
+      azureCategories:
+        - networking
+      url: route-server/index.yml
+    - title: Virtual Network
+      summary: Magánhálózatok kialakítása és igény szerinti csatlakoztatása a helyben üzemelő adatközpontokhoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-networks.svg'
+      azureCategories:
+        - networking
+      url: virtual-network/index.yml
+    - title: Virtuális WAN
+      summary: A Microsoft által felügyelt küllős modell a csatlakoztatáshoz és a biztonsághoz
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-wans.svg'
+      azureCategories:
+        - networking
+      url: virtual-wan/index.yml
+    - title: VPN Gateway
+      summary: 'Biztonságos kapcsolat, több hely egymással történő összekapcsolásával'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-network-gateways.svg'
+      azureCategories:
+        - networking
+        - security
+      url: vpn-gateway/index.yml
+    - title: Web Application Firewall (Webalkalmazási tűzfal)
+      summary: 'Natív felhőbeli webalkalmazási tűzfal (WAF) szolgáltatás, amely hatékony védelmet nyújt webalkalmazásai számára'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg'
+      azureCategories:
+        - networking
+        - security
+      url: web-application-firewall/index.yml
+    - title: Azure Dedicated HSM
+      summary: A felhőben használt hardveres biztonsági modulok kezelése
+      imageSrc: ./media/index/dedicated-hsm.svg
+      azureCategories:
+        - security
+      url: dedicated-hsm/index.yml
+    - title: Key Vault
+      summary: 'A kulcsok, valamint egyéb titkok biztonságos tárolása és elérésük szabályozása'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/key-vault.svg'
+      azureCategories:
+        - security
+      url: key-vault/index.yml
+    - title: Archive Storage
+      summary: Piacvezető költségszint a ritkán használt adatok tárolásához
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-explorer.svg'
+      azureCategories:
+        - storage
+      url: storage/blobs/storage-blob-storage-tiers.md
+    - title: Azure-hoz készült Avere vFXT
+      summary: 'Nagy teljesítményű, fájlalapú számítási feladatok futtatása a felhőben'
+      imageSrc: ./media/index/avere.svg
+      azureCategories:
+        - storage
+      url: avere-vfxt/index.yml
+    - title: Azure FXT Edge Filer
+      summary: A hibrid tárolási rendszert optimalizáló megoldás HPC-környezetekhez
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/fxt-edge-filer.svg'
+      azureCategories:
+        - storage
+      url: fxt-edge-filer/index.yml
+    - title: Azure HPC Cache
+      summary: Fájlok gyorsítótárazása nagy teljesítményű feldolgozáshoz (HPC)
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/hpc-cache.svg'
+      azureCategories:
+        - storage
+      url: hpc-cache/index.yml
+    - title: Azure NetApp Files
+      summary: Nagyvállalati szintű Azure-fájlmegosztások a NetApptől
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/netapp-files.svg'
+      azureCategories:
+        - storage
+      url: azure-netapp-files/index.yml
+    - title: Blob Storage
+      summary: REST-alapú objektumtár strukturálatlan adatok számára
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - storage
+      url: storage/blobs/index.yml
+    - title: Disk Storage
+      summary: 'Nagy teljesítményű, rendkívül tartós blokktároló Azure-beli virtuális gépekhez'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/disk-storage.svg'
+      azureCategories:
+        - storage
+      url: virtual-machines/managed-disks-overview.md
+    - title: Azure Files
+      summary: Szabványos SMB 3.0 protokollt használó fájlmegosztások
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-azure-files.svg'
+      azureCategories:
+        - storage
+      url: storage/files/index.yml
+    - title: Queue Storage
+      summary: 'Alkalmazások forgalomhoz igazodó, hatékony méretezése'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - storage
+      url: storage/queues/index.yml
+    - title: Storage
+      summary: 'Tartós, magas rendelkezésre állású és rendkívül rugalmasan skálázható felhőalapú tárolás'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - storage
+      url: storage/index.yml
+    - title: Storage Explorer
+      summary: Azure Storage-erőforrások megtekintése és kezelése
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-explorer.svg'
+      azureCategories:
+        - storage
+      url: vs-azure-tools-storage-manage-with-storage-explorer.md
+    - title: StorSimple
+      summary: Alacsonyabb költségek egy vállalati hibrid felhőalapú tárolási megoldással
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg'
+      azureCategories:
+        - storage
+      url: storsimple/index.yml
+    - title: Azure SignalR szolgáltatás
+      summary: Valós idejű webes funkciók egyszerű hozzáadása
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/signalr-service.svg'
+      azureCategories:
+        - web
+      url: azure-signalr/index.yml
 tools:
   title: Nyelvek és eszközök
   items:
-  - title: Python
-    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
-    url: /azure/developer/python/
-  - title: .NET
-    imageSrc: ./media/index/net-logo.svg
-    url: /dotnet/azure/
-  - title: JavaScript
-    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
-    url: /azure/developer/javascript/
-  - title: Java
-    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
-    url: /azure/developer/java/
-  - title: Indítás
-    imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
-    url: /azure/developer/go/
-  - title: REST API
-    imageSrc: https://docs.microsoft.com/media/logos/logo_REST.svg
-    url: /rest/api/
-  - title: Azure PowerShell
-    imageSrc: https://docs.microsoft.com/media/logos/logo_powershell.svg
-    url: /powershell/azure/
-  - title: Azure CLI
-    imageSrc: https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg
-    url: /cli/azure/
-  - title: ARM-sablonok
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
-    url: azure-resource-manager/templates/index.yml
-  - title: Jenkins
-    imageSrc: https://docs.microsoft.com/media/logos/logo_jenkins.svg
-    url: /azure/developer/jenkins
-  - title: Terraform
-    imageSrc: https://docs.microsoft.com/media/logos/logo_terraform.svg
-    url: /azure/developer/terraform/
-  - title: Ansible
-    imageSrc: ./media/index/ansible.svg
-    url: /azure/developer/ansible
+    - title: Python
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_python.svg'
+      url: /azure/developer/python/
+    - title: .NET
+      imageSrc: ./media/index/net-logo.svg
+      url: /dotnet/azure/
+    - title: JavaScript
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_js.svg'
+      url: /azure/developer/javascript/
+    - title: Java
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+      url: /azure/developer/java/
+    - title: Indítás
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg'
+      url: /azure/developer/go/
+    - title: REST API
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_REST.svg'
+      url: /rest/api/
+    - title: Azure PowerShell
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+      url: /powershell/azure/
+    - title: Azure CLI
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg'
+      url: /cli/azure/
+    - title: ARM-sablonok
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-groups.svg'
+      url: azure-resource-manager/templates/index.yml
+    - title: Jenkins
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_jenkins.svg'
+      url: /azure/developer/jenkins
+    - title: Terraform
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_terraform.svg'
+      url: /azure/developer/terraform/
+    - title: Ansible
+      imageSrc: ./media/index/ansible.svg
+      url: /azure/developer/ansible
 additionalContent:
   sections:
-  - title: Független felhők
-    items:
-    - title: Azure Government
-      summary: Dedikált felhő az Egyesült Államok kormányzati szervei és partnerei számára.
-      url: azure-government/index.yml
-    - title: Azure Germany
-      summary: A német adatkezelési előírásoknak megfelelő dedikált felhő.
-      url: germany/index.yml
-    - title: Azure China 21Vianet
-      summary: Kínában található, a 21Vianet által működtetett dedikált felhő.
-      url: /azure/china/
-  - title: Partneri megoldások
-    items:
-    - title: Azure partneri megoldások
-      summary: Integrált partneri megoldások, amelyeket az Azure-ban használhat a felhőalapú infrastruktúra fejlesztéséhez.
-      url: ./partner-solutions/overview.md
-    - title: Kereskedelmi piactér
-      summary: Független szoftvergyártói partnereinktől származó alkalmazások és szolgáltatások online piactére.
-      url: ./marketplace/index.yml
+    - title: Független felhők
+      items:
+        - title: Azure Government
+          summary: Dedikált felhő az Egyesült Államok kormányzati szervei és partnerei számára.
+          url: azure-government/index.yml
+        - title: Azure Germany
+          summary: A német adatkezelési előírásoknak megfelelő dedikált felhő.
+          url: germany/index.yml
+        - title: Azure China 21Vianet
+          summary: 'Kínában található, a 21Vianet által működtetett dedikált felhő.'
+          url: /azure/china/
+    - title: Partneri megoldások
+      items:
+        - title: Azure partneri megoldások
+          summary: 'Integrált partneri megoldások, amelyeket az Azure-ban használhat a felhőalapú infrastruktúra fejlesztéséhez.'
+          url: ./partner-solutions/overview.md
+        - title: Kereskedelmi piactér
+          summary: Független szoftvergyártói partnereinktől származó alkalmazások és szolgáltatások online piactére.
+          url: ./marketplace/index.yml

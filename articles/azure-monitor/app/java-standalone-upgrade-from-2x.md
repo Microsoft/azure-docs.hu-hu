@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 342c535cadb1a2d3f2d18478d8941d9ea61bdf72
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040243"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448967"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Frissítés Application Insights Java 2. x SDK-ból
 
@@ -45,72 +45,12 @@ A 2. x SDK-ban a műveleti neveket a http-metódus ( `GET` , `POST` stb.) előre
 
 :::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-prefixed-by-http-method.png" alt-text="Http-metódus által előrögzített műveleti nevek":::
 
-Az alábbi kódrészlet 3 telemetria processzort állít be, amelyek az előző viselkedés replikálásához vannak egyesítve.
-A telemetria processzorok a következő műveleteket hajtják végre (sorrendben):
+A 3.0.3-től kezdődően visszaállíthatja a 2. x viselkedést a következővel:
 
-1. Az első telemetria processzor egy span processzor (típus `span` ), ami azt jelenti, hogy a és a rendszerre vonatkozik `requests` `dependencies` .
-
-   Minden olyan span egyezik, amely egy nevű attribútummal rendelkezik, `http.method` és rendelkezik egy, a-val kezdődő tartománynévvel `/` .
-
-   Ezután kicsomagolja az adott tartomány nevét egy nevű attribútumba `tempName` .
-
-2. A második telemetria processzor is egy span processzor.
-
-   A rendszer minden olyan tartományhoz egyeztet, amely rendelkezik nevű attribútummal `tempName` .
-
-   Ezután frissíti a span nevet a két attribútum összefűzésével `http.method` `tempName` , szóközzel elválasztva.
-
-3. Az utolsó telemetria processzor egy attribútum processzor (típus `attribute` ), ami azt jelenti, hogy az összes olyan telemetria vonatkozik, amely rendelkezik attribútumokkal (jelenleg `requests` `dependencies` és `traces` ).
-
-   Minden olyan telemetria meg fog egyezni, amely egy nevű attribútummal rendelkezik `tempName` .
-
-   Ezután törli a nevű attribútumot `tempName` , így azt nem egyéni dimenzióként fogja jelenteni.
-
-```
+```json
 {
   "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "include": {
-          "matchType": "regexp",
-          "attributes": [
-            { "key": "http.method", "value": "" }
-          ],
-          "spanNames": [ "^/" ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [ "^(?<tempName>.*)$" ]
-          }
-        }
-      },
-      {
-        "type": "span",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "name": {
-          "fromAttributes": [ "http.method", "tempName" ],
-          "separator": " "
-        }
-      },
-      {
-        "type": "attribute",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "actions": [
-          { "key": "tempName", "action": "delete" }
-        ]
-      }
-    ]
+    "httpMethodInOperationName": true
   }
 }
 ```
