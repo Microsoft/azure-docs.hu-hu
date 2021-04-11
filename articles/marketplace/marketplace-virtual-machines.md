@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b5d0a8b12ad07c5be3a4cfc0840acc81aa0c395
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879326"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060732"
 ---
-# <a name="how-to-plan-a-virtual-machine-offer"></a>Virtuális gépek ajánlatának megtervezése
+# <a name="plan-a-virtual-machine-offer"></a>Virtuálisgép-ajánlat megtervezése
 
 Ez a cikk a virtuális gépek (VM) kereskedelmi piactéren való közzétételének különböző lehetőségeit és követelményeit ismerteti. A VM-ajánlatok az Azure Marketplace-en üzembe helyezett és számlázható ajánlatok.
 
@@ -102,7 +102,7 @@ A virtuális gép felderítését és üzembe helyezését egy adott ügyfélre 
 
 További információ: a kereskedelmi Piactéri ajánlatok és [a Microsoft kereskedelmi piactéren elérhető privát ajánlatok](private-offers.md) [csomagjai és díjszabása](plans-pricing.md) .
 
-## <a name="test-drives"></a>Tesztverziók
+## <a name="test-drive"></a>Tesztelési meghajtó
 
 Engedélyezheti a virtuális gép tesztelési meghajtójának engedélyezését. A tesztelési meghajtók adott számú óráig biztosítanak hozzáférést egy előre konfigurált környezethez. Engedélyezheti a tesztelési meghajtókat bármilyen közzétételi lehetőséghez, azonban ez a funkció további követelményekkel is rendelkezik. További információ a tesztelési meghajtókról: [Mi az a test Drive?](what-is-test-drive.md). A különböző típusú tesztelési meghajtók konfigurálásával kapcsolatos információkért lásd: a tesztvezetés [technikai konfigurációjának tesztelése](test-drive-technical-configuration.md).
 

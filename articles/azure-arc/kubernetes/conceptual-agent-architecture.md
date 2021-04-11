@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes-ügynökök építészeti áttekintését tartalmazza
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953068"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442541"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure arc-kompatibilis Kubernetes-ügynök architektúrája
 
@@ -49,7 +49,10 @@ A legtöbb helyszíni adatközpont szigorú hálózati szabályokat kényszerít
         | `deployment.apps/cluster-metadata-operator` | Összegyűjti a fürtök metaadatait, beleértve a fürtverziót, a csomópontok számát és az Azure Arc-ügynök verzióját. |
         | `deployment.apps/resource-sync-agent` | Szinkronizálja a fent említett fürt metaadatait az Azure-ba. |
         | `deployment.apps/flux-logs-agent` | Gyűjti a naplókat a verziókövetés konfigurációjának részeként üzembe helyezett Flux-kezelők számára. |
-    
+        | `deployment.apps/extension-manager` | A Extension Helm-diagramok életciklusának telepítése és kezelése |  
+        | `deployment.apps/clusterconnect-agent` | Fordított proxy ügynök, amely lehetővé teszi a fürt csatlakozását a fürthöz való hozzáférés biztosításához `apiserver` . Ez egy opcionális összetevő, amely csak akkor telepíthető, ha `cluster-connect` a szolgáltatás engedélyezve van a fürtön.   |
+        | `deployment.apps/guard` | A HRE RBAC szolgáltatáshoz használt hitelesítési és engedélyezési webhook-kiszolgáló. Ez egy opcionális összetevő, amely csak akkor telepíthető, ha `azure-rbac` a szolgáltatás engedélyezve van a fürtön.   |
+
 1. Ha az összes Azure arc-alapú Kubernetes-ügynök hüvelye `Running` állapotban van, ellenőrizze, hogy a fürt csatlakoztatva van-e az Azure arc-hoz. A következőket kell látnia:
     * Egy Azure arc-kompatibilis Kubernetes erőforrás a [Azure Resource Managerban](../../azure-resource-manager/management/overview.md). Az Azure nyomon követi ezt az erőforrást az ügyfél által felügyelt Kubernetes-fürt kivetítése helyett, nem a tényleges Kubernetes-fürtöt.
     * A fürt metaadatai (például a Kubernetes verziója, az ügynök verziója és a csomópontok száma) az Azure arc-kompatibilis Kubernetes-erőforrás metaadataiként jelennek meg.

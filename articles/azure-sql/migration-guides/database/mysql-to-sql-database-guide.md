@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 8952e6e1bda8763d403c02dcd5815f1e1c0941e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba332ed0e949c3c209dc3bd2d72d37187a200eea
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641867"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030134"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Áttelepítési útmutató: MySQL – Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Ebből az útmutatóból megtudhatja, hogyan telepítheti át MySQL-adatbázisát egy Azure SQL Database-adatbázisba a MySQL-hez készült SQL Server Migration Assistant (SSMA for MySQL) használatával. 
+Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) MySQL-adatbázisát egy Azure SQL Database-adatbázisba a MySQL-hez készült [SQL Server MIGRATION](https://azure.microsoft.com/migration/migration-journey) Assistant (SSMA for MySQL) használatával. 
 
 Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatója](https://docs.microsoft.com/data-migration). 
 
@@ -33,7 +33,7 @@ Mielőtt megkezdené a MySQL-adatbázis áttelepítését egy SQL Database-adatb
 
 ## <a name="pre-migration"></a>A migrálás előtt 
 
-Az előfeltételek teljesítése után készen áll a környezet topológiájának felderítésére és az áttelepítés megvalósíthatóságának értékelésére.
+Az előfeltételek teljesítése után már készen áll a környezet topológiájának felderítésére és az Azure-beli [Felhőbeli áttelepítés](https://azure.microsoft.com/migration)megvalósíthatóságának felmérésére.
 
 ### <a name="assess"></a>Kiértékelés 
 
@@ -178,3 +178,6 @@ Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat ala
 - Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatója](https://datamigration.microsoft.com/). 
 
 - Áttelepítési videók: az áttelepítési [út áttekintése és az ajánlott áttelepítési és értékelési eszközök és szolgáltatások](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/).
+
+- További [felhőalapú áttelepítési erőforrások](https://azure.microsoft.com/migration/resources/): [felhőalapú áttelepítési megoldások](https://azure.microsoft.com/migration).
+

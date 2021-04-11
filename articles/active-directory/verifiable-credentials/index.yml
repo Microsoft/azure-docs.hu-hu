@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Ellenőrizhető hitelesítő adatok Azure Active Directory dokumentációja
+summary: A ellenőrizhető hitelesítő adatokkal olyan megoldásokat hozhat létre, amelyek lehetővé teszik az ügyfelek számára a saját adatok kezelését.
+metadata:
+  author: barclayn
+  description: Megtudhatja, hogyan építhet be ellenőrizhető hitelesítő adatokat a megoldásokra, így az ügyfelek saját maguk is vezérelhetik az információkat
+  manager: daveba
+  ms.author: barclayn
+  ms.collection: na
+  ms.date: 03/30/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 13eb88e8e8613c913f66185eba751a1fe3c36e1e
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106175707"
+landingContent:
+- title: A ellenőrizhető hitelesítő adatok ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory ellenőrizhető hitelesítő adatok bevezetése
+      url: decentralized-identifier-overview.md
+  - linkListType: video
+    links:
+    - text: Erőforrások hozzáférésének szabályozása
+      url: https://www.youtube.com/watch?v=r20hCF9NbTo
+- title: Ellenőrizhető hitelesítő adatok a személyes adatok felett
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Ismerkedés a ellenőrizhető hitelesítő adatokkal
+      url: get-started-verifiable-credentials.md
+  - linkListType: concept
+    links:
+    - text: A kiállítói szolgáltatás kommunikációs példái
+      url: issuer-openid.md
+- title: A DID összekapcsolása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A tartomány összekapcsolása az elosztott azonosítóval
+      url: how-to-dnsbind.md

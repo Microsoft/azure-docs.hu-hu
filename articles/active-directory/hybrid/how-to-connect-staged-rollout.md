@@ -10,14 +10,14 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709718"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385581"
 ---
-# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Áttelepítés felhőalapú hitelesítésre szakaszos kibocsátással
 
 A lépcsőzetes bevezetéssel szelektíven tesztelheti a felhasználók csoportjait olyan felhőalapú hitelesítési funkciókkal, mint az Azure AD Multi-Factor Authentication (MFA), a feltételes hozzáférés, a kiszivárgott hitelesítő adatok identitásának védelme, a személyazonosság szabályozása és mások, a tartományok kivágása előtt.  Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
     
@@ -79,7 +79,7 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 - A rendszergazdák biztonsági csoportok használatával tudják kideríteni a Felhőbeli hitelesítést. Ha a helyszíni Active Directory biztonsági csoportok használatakor szeretné elkerülni a szinkronizálás késését, javasoljuk, hogy használjon Felhőbeli biztonsági csoportokat. A következő feltételek érvényesek:
 
     - Szolgáltatásként legfeljebb 10 csoportot használhat. Ez azt is megteheti, hogy 10 csoportot használ a *jelszó kivonatának szinkronizálásához*, az *átmenő hitelesítéshez* és a *zökkenőmentes egyszeri bejelentkezéshez*.
-    - Beágyazott csoportok *nem támogatottak*. Ez a hatókör a nyilvános előzetes verzióra is érvényes.
+    - Beágyazott csoportok *nem támogatottak*. 
     - A szakaszos bevezetéshez *nem használhatók* dinamikus csoportok.
     - A csoporton belüli kapcsolattartási objektumok nem lesznek hozzáadva a csoporthoz.
 
@@ -168,19 +168,19 @@ A következő lehetőségek közül választhat:
 
 Tegye a következőket:
 
-1. Az előnézet UX eléréséhez jelentkezzen be az [Azure ad-portálra](https://aka.ms/stagedrolloutux).
+1. Az UX eléréséhez jelentkezzen be az [Azure ad-portálra](https://aka.ms/stagedrolloutux).
 
-2. Jelölje be a **felügyelt felhasználói bejelentkezés (előzetes verzió) hivatkozásának engedélyezése szakaszos** bevezetést.
+2. Jelölje be a **felügyelt felhasználó bejelentkezési hivatkozásának szakaszos** bevezetésének engedélyezése beállítást.
 
    Ha például engedélyezni szeretné az *a kapcsolót*, a **jelszó-kivonatolási szinkronizálást** és a **zökkenőmentes egyszeri bejelentkezéses** vezérlőket csúsztassa a **be** értékre, ahogy az az alábbi képeken látható.
 
-   ![Az Azure AD Connect lap](./media/how-to-connect-staged-rollout/sr4.png)
+   
 
-   !["A szakaszos bevezetési funkciók engedélyezése (előzetes verzió)" oldal](./media/how-to-connect-staged-rollout/sr5.png)
+  
 
 3. Adja hozzá a csoportokat a szolgáltatáshoz az *átmenő hitelesítés* és a *zökkenőmentes egyszeri bejelentkezés* engedélyezéséhez. Az UX-időtúllépés elkerüléséhez győződjön meg arról, hogy a biztonsági csoportok kezdetben legfeljebb 200 tagot tartalmaznak.
 
-   ![A "csoportok kezelése jelszó-kivonat szinkronizálásához (előzetes verzió)" oldal](./media/how-to-connect-staged-rollout/sr6.png)
+   
 
    >[!NOTE]
    >A csoport tagjai automatikusan engedélyezve vannak az előkészített bevezetéshez. A beágyazott és a dinamikus csoportok nem támogatottak a szakaszos bevezetéshez.

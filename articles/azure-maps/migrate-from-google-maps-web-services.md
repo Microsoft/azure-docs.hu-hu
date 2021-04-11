@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2b80dfa091d6a2b892c8baf8e9c35084c5bee4e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386849"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076388"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Oktatóanyag: webszolgáltatás migrálása a Google Mapsből
 
@@ -46,11 +46,11 @@ A táblázat megjeleníti a Azure Maps Service API-kat, amelyek hasonló funkci�
 | Geokódolás               | [Search](/rest/api/maps/search)                                   |                         
 | Helyek keresése           | [Search](/rest/api/maps/search)                                   |                         
 | Automatikus kiegészítés      | [Search](/rest/api/maps/search)                                   |                         
-| Elérési út            | Lásd: [útvonalak és utasítások kiszámítása](#calculate-routes-and-directions) szakasz.            
-| Sebességkorlátozások            | Lásd: [koordináta szakasz fordított geocode](#reverse-geocode-a-coordinate) .                  
+| Elérési út            | Lásd: [útvonalak és utasítások kiszámítása](#calculate-routes-and-directions) szakasz.  |        
+| Sebességkorlátozások            | Lásd: [koordináta szakasz fordított geocode](#reverse-geocode-a-coordinate) .         |         
 | Statikus Térkép              | [Megjelenítés](/rest/api/maps/render/getmapimage)                       |                         
 | Időzóna               | [Időzóna](/rest/api/maps/timezone)                              |                         
-| Jogosultságszint               | [Jogosultságszint-emelés (előzetes verzió)](/rest/api/maps/elevation)                   |                         |
+| Jogosultságszint               | [Jogosultságszint-emelés (előzetes verzió)](/rest/api/maps/elevation)                   | 
 
 A következő szolgáltatási API-k jelenleg nem érhetők el Azure Mapsban:
 

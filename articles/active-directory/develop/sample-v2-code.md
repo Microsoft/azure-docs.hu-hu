@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc740acb366212640015ca0fb527d34fade1097d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a19ca14a37bd24e499fdf0681b3510e9a4a8ea3f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010762"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075032"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -61,7 +61,7 @@ Az alábbi példák bemutatják a felhasználók bejelentkezési webalkalmazása
 | -------- | ------------------- | --------------------------------- |
 | ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp Signs-in Users oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.net Core Web App calls Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázisban</p>Speciális példa [a bejelentkezett felhasználó jogkivonat-gyorsítótárának elérésére a háttérben futó alkalmazások, API-k és szolgáltatások](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) segítségével |
 | ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS az Azure ad Application Migration forgatókönyvét a fejlesztők](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) számára, hogy megtudja, hogyan lehet biztonságosan és biztonságosan migrálni az alkalmazásokat a Active Directory összevonási szolgáltatások (AD FS) (AD FS) szolgáltatással integrált Azure Active Directory (Azure ad) | |
-| ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET gyors útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-rendszergazda-korlátozott-hatókörök-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph – képzés – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET gyors útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-rendszergazda-korlátozott-hatókörök-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> [msgraph – képzés – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp) |
 | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |[Java servlet-oktatóanyag – 1,1. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Bejelentkezés a HRE| |
 | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |[Java servlet-oktatóanyag – 1,2. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Bejelentkezés B2C-vel |
 | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  | | [Java servlet-oktatóanyag – 2,1. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Bejelentkezés a HRE és a Call Graph szolgáltatással|

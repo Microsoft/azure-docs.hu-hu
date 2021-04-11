@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 04/06/2021
 ms.author: duau
-ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a7e81c57552fdc24262522343a08fdabba71bfd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019463"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552580"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás az Azure alkalmazáskézbesítési csomagjával
 
@@ -40,8 +40,8 @@ Ha egyesíti ezeket a globális és regionális szolgáltatásokat, az alkalmaz�
 
 ## <a name="global-load-balancing"></a>Globális terheléselosztás
 A **Traffic Manager** globális DNS-terheléselosztást biztosít. A bejövő DNS-kérelmeket tekinti át, és kifogástalan háttérrel válaszol, az ügyfél által kiválasztott útválasztási házirend után. Az útválasztási módszerek beállításai a következők:
-- * * A teljesítmény-útválasztás a legközelebb álló háttérbe küldi a kérelmeket a lehető legkevesebb késéssel.
-- A **prioritási útválasztás** az összes adatforgalmat a háttérbe irányítja, más háttérrel pedig biztonsági másolatként.
+- A **teljesítmény-útválasztás** a legközelebb álló háttérbe küldi a kérelmeket a legkevesebb késéssel.
+- A **prioritási útválasztás** a háttérbe irányuló összes forgalmat átirányítja a biztonsági mentéshez.
 - A **súlyozott ciklikus időszeleteléses útválasztás** az egyes háttérekhez rendelt súlyozás alapján osztja el a forgalmat.
 - A **földrajzi útválasztás** biztosítja azokat a kérelmeket, amelyek az adott földrajzi régiókból származnak, és ezeket a régiókat leképező háttérrendszer kezeli. (Például a spanyolországi kérelmeket a franciaországi Közép-Azure régióba kell átirányítani)
 - Az **alhálózat-útválasztás** lehetővé teszi, hogy az IP-címtartományok a háttérrendszer számára legyenek leképezve, így az adott IP-címekre érkező kéréseket a rendszer elküldi az adott háttérrendszer számára. (Például a vállalati HQ IP-címéről csatlakozó felhasználók különböző webes tartalmakat kapnak, mint az általános felhasználók)

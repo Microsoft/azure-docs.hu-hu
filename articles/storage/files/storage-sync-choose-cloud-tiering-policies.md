@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/24/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2ed1b8162c49ccc26cb98dd02897a9c40f809d14
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01bf9ac6a3bfcb30fb6e6a6f9d56de3f9f516f03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204382"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059275"
 ---
 # <a name="choose-cloud-tiering-policies"></a>Válassza a felhő szintű szabályzatok lehetőséget.
 
@@ -34,8 +34,13 @@ Az ügynök 9-es és újabb verzióiban a fájl minimális fájlmérete a fájlr
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 KB   |
 |64 KB (65536)    | 128 KB  |
+|128 KB (131072) | 256 KB |
+|256 KB (262144) | 512 KB |
+|512 KB (524288) | 1 MB |
+|1 MB (1048576) | 2 MB |
+|2 MB (2097152) | 4 MB |
 
-A legfeljebb 64 KB méretű szektorcsoportok jelenleg támogatottak, de nagyobb méretek esetén a Felhőbeli rétegek nem működnek.
+A legfeljebb 2 MB méretű szektorcsoportok támogatottak a Azure File Sync Agent 12-es verziójában, de nagyobb méret esetén a felhő-rétegek nem működnek.
 
 A Windows által használt összes fájlrendszer, a fürt méretétől függően rendezi a merevlemezt (más néven a foglalási egység mérete). A fürt mérete a fájl tárolására használható legkisebb lemezterületet jelöli. Ha a fájlméretek nem jönnek létre a fürt méretének még többszörösére, a fájlnak a fürt következő többszörösére való tárolásához további helyet kell használni.
 

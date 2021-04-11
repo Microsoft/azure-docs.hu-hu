@@ -1,0 +1,50 @@
+- name: Az Azure AD ellenőrizhető hitelesítő adatainak dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Azure Active Directory ellenőrizhető hitelesítő adatok bevezetése
+      href: decentralized-identifier-overview.md
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: Ismerkedés a ellenőrizhető hitelesítő adatokkal
+      href: get-started-verifiable-credentials.md
+    - name: Ellenőrizhető hitelesítő adatok konfigurálása a bérlőben
+      items:
+        - name: 1 – ellenőrizhető hitelesítő adatok beállítása a saját Azure AD-ben
+          href: enable-your-tenant-verifiable-credentials.md
+        - name: 2 – ellenőrizhető hitelesítő adatok kiállítójának a saját Azure AD-vel való összekötése
+          href: issue-verify-verifiable-credentials-your-tenant.md
+- name: Alapelvek
+  expanded: true
+  items:
+    - name: Az OpenID Connect protokoll részletei
+      href: issuer-openid.md
+- name: Útmutatók
+  expanded: true
+  items:
+    - name: A hitelesítő adatok testreszabása
+      href: credential-design.md
+    - name: A hitelesítő adatok visszavonásának kezelése
+      href: how-to-issuer-revoke.md
+    - name: A tartomány összekapcsolása a DID-val
+      href: how-to-dnsbind.md
+    - name: Ellenőrizhető hitelesítő adatok kihagyása
+      href: how-to-opt-out.md
+- name: Példák
+  expanded: true
+  items:
+    - name: Példa Node-alkalmazásra
+      href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
+    - name: Minta kiállítója
+      href: 'https://didvc-issuer-sample.azurewebsites.net/'
+    - name: Minta-ellenőrző
+      href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: További források
+  expanded: true
+  items:
+    - name: GYIK
+      href: verifiable-credentials-faq.md
+    - name: Fejlesztői fiók létrehozása
+      href: how-to-create-a-free-developer-account.md

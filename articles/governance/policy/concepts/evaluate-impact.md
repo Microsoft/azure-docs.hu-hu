@@ -1,18 +1,18 @@
 ---
 title: Új Azure Policy definíció hatásának kiértékelése
 description: Ismerkedjen meg az új házirend-definíció Azure-környezetbe való bevezetésének folyamatával.
-ms.date: 10/05/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 187a64ce3581c4aaa893e2a805ce787a0bfd6c79
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590803"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091718"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Új Azure Policy definíció hatásának kiértékelése
 
-A Azure Policy hatékony eszköz az Azure-erőforrások üzleti szabványokhoz való felügyeletéhez és a megfelelőségi igények kielégítéséhez. Ha a felhasználók, folyamatok vagy folyamatok erőforrásokat hoznak létre vagy frissítenek, Azure Policy áttekinti a kérést. Ha a házirend-definíció hatásának [módosítása](./effects.md#modify), [Hozzáfűzés](./effects.md#deny) vagy [DeployIfNotExists](./effects.md#deployifnotexists), a házirend módosítja a kérést, vagy hozzáadja azt. Ha a házirend-definíció hatással van a [naplózásra](./effects.md#audit) vagy a [AuditIfNotExists](./effects.md#auditifnotexists), a házirend az új és a frissített erőforrásokra vonatkozó műveletnapló-bejegyzést hoz létre. Ha a házirend-definíció hatása [megtagadva](./effects.md#deny), a házirend leállítja a kérelem létrehozását vagy módosítását.
+A Azure Policy hatékony eszköz az Azure-erőforrások üzleti szabványokhoz való felügyeletéhez és a megfelelőségi igények kielégítéséhez. Ha a felhasználók, folyamatok vagy folyamatok erőforrásokat hoznak létre vagy frissítenek, Azure Policy áttekinti a kérést. Ha a házirend-definíció hatása [módosítva](./effects.md#modify), [Hozzáfűzés](./effects.md#deny)vagy [DeployIfNotExists](./effects.md#deployifnotexists), a házirend módosítja a kérést, vagy hozzáadja azt. Ha a házirend-definíció hatással van a [naplózásra](./effects.md#audit) vagy a [AuditIfNotExists](./effects.md#auditifnotexists), a házirend az új és a frissített erőforrásokra vonatkozó műveletnapló-bejegyzést hoz létre. Ha a házirend-definíció hatása [megtagadva](./effects.md#deny), a házirend leállítja a kérelem létrehozását vagy módosítását.
 
 Ezek az eredmények pontosan olyankor szükségesek, amikor tudja, hogy a szabályzat helyesen van definiálva. Fontos azonban, hogy egy új szabályzatot a kívánt módon érvényesítse, mielőtt engedélyezi, hogy megváltoztassa vagy letiltsa a munkát. Az ellenőrzésnek biztosítania kell, hogy csak a kívánt erőforrások legyenek nem megfelelőek, és a rendszer helytelenül tartalmazza a megfelelő erőforrásokat az eredményekben ( _hamis pozitív_ néven).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c54f935ed05451df5922ff1a3d564c775703700
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490993"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029352"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>A Azure IoT Edge tanúsítványok használatának ismertetése
 
@@ -25,7 +25,7 @@ IoT Edge a tanúsítványokat a modulok és az alsóbb rétegbeli IoT eszközök
 >[!NOTE]
 >Ez a cikk azokat a tanúsítványokat ismerteti, amelyek a IoT Edge eszköz különböző összetevői és egy IoT Edge eszköz és a levél eszközei közötti kapcsolatok biztonságossá tételére szolgálnak. Tanúsítványokat is használhat a IoT Edge-eszköz IoT Hub való hitelesítéséhez. Ezek a hitelesítési tanúsítványok eltérnek, és nem jelennek meg ebben a cikkben. Az eszköz tanúsítványokkal történő hitelesítésével kapcsolatos további információkért lásd: [IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványokkal](how-to-auto-provision-x509-certs.md).
 
-Ez a cikk azt ismerteti, hogy IoT Edge tanúsítványok hogyan működhetnek üzemi, fejlesztési és tesztelési helyzetekben. Míg a parancsfájlok különbözőek (PowerShell vagy bash), a fogalmak ugyanazok, mint a Linux és a Windows között.
+Ez a cikk azt ismerteti, hogy IoT Edge tanúsítványok hogyan működhetnek üzemi, fejlesztési és tesztelési helyzetekben.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge-tanúsítványok
 

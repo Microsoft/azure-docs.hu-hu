@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596722"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277402"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Jel leíró hangsávok
 
@@ -29,9 +29,9 @@ Ebből a cikkből megtudhatja, hogyan kódolhat egy videót, töltsön fel egy, 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
+- [Hozzon létre egy Media Services fiókot](./account-create-how-to.md).
 - Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
-- Tekintse át a [dinamikus csomagolást](dynamic-packaging-overview.md).
+- Tekintse át a [dinamikus csomagolást](encode-dynamic-packaging-concept.md).
 - Tekintse át a [videók feltöltése, kódolása és továbbítása](stream-files-tutorial-with-api.md) című oktatóanyagot.
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bemeneti objektum létrehozása és helyi fájl feltöltés az objektumba 
@@ -64,7 +64,7 @@ A jelen cikk esetében adja át az `outputAsset.Name` értéket a `SubmitJobAsyn
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Hozzon létre egy átalakítót és egy olyan feladatot, amely kódolja a feltöltött fájlt
 
-A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Ha új feladatokat küld minden új videóhoz, akkor ezt a receptet a könyvtárában lévő összes videóra alkalmazza. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információt az [átalakításokkal és feladatokkal](./transforms-jobs-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
+A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Ha új feladatokat küld minden új videóhoz, akkor ezt a receptet a könyvtárában lévő összes videóra alkalmazza. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információt az [átalakításokkal és feladatokkal](./transform-jobs-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
 
 A következő példa létrehoz egy átalakítót (ha az egyik nem létezik).
 
@@ -245,4 +245,4 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Videók elemzése](analyze-videos-tutorial-with-api.md)
+[Videók elemzése](analyze-videos-tutorial.md)

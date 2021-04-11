@@ -8,13 +8,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/29/2021
-ms.openlocfilehash: 186f1e085cecdc92e345231d50d06195bba55504
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 03/31/2021
+ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732958"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075900"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Adatbázisok migrálása SQL Serverról SQL felügyelt példányra a log Replay szolgáltatás (előzetes verzió) használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,6 +34,7 @@ A következő esetekben érdemes megfontolni a LRS használatát:
 - Az Database Migration Service végrehajtható fájlnak nincs fájlhoz való hozzáférése az adatbázis biztonsági mentéséhez.
 - Nem érhető el hozzáférés a gazda operációs rendszerhez, vagy nincsenek rendszergazdai jogosultságok.
 - A hálózati portok nem nyithatók meg a környezetből az Azure-ba.
+- Hálózati sávszélesség-szabályozás vagy proxy-blokkolási probléma a környezetben.
 - A biztonsági mentéseket közvetlenül az Azure Blob Storage tárolja a `TO URL` kapcsolón keresztül.
 - Eltérő biztonsági másolatokat kell használnia.
 

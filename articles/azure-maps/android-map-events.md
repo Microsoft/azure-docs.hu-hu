@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: ebe61e5956dc0f35794211a336eb7d884ee18d76
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105608901"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Együttműködés a térképpel (Android SDK)
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan használhatja a Maps Events Managert.
 
 A Térkép az összes eseményt a `events` tulajdonságán keresztül kezeli. A következő táblázat felsorolja az összes támogatott Térkép-eseményt.
 
-| Esemény                  | Eseménykezelő formátuma | Description |
+| Esemény                  | Eseménykezelő formátuma | Leírás |
 |------------------------|----------------------|-------------|
 | `OnCameraIdle`         | `()`                 | <p>Az utolsó olyan keret után következik be, amely után a Térkép "tétlen" állapotba kerül:<ul><li>Nincs folyamatban kamera-átmenet.</li><li>A jelenleg kért csempék betöltődik.</li><li>Minden áttűnési/átmenetes animáció befejeződött.</li></ul></p> |
 | `OnCameraMove`         | `()`                 | Az egyik nézetről a másikra történő animált áttérés során többször is elindítható a felhasználói interakció vagy módszerek eredményeképpen. |

@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: új szabályzat-hozzárendelés a .NET Core használatával'
 description: Ebben a rövid útmutatóban a .NET Core használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 09/30/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4c8f8e9df544b6fc00b5b7701435f5a606f9764
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b89a0db419b1e7213e9742e4a39d073445d05189
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91604679"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091786"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-net-core"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a .NET Core használatával
 

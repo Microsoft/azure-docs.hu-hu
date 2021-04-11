@@ -3,13 +3,13 @@ title: Privát Azure Kubernetes Service-fürt létrehozása
 description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Service-(ak-) fürtöt
 services: container-service
 ms.topic: article
-ms.date: 3/5/2021
-ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/31/2021
+ms.openlocfilehash: 474c9a5d58627cec59904ccbcc5b3597de314612
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771855"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120367"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -77,7 +77,7 @@ A következő paraméterek használhatók a saját DNS zónák konfigurálásáh
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Az AK előzetes verziójának 0.5.3 vagy újabb verziója
+* Az AK előzetes verziójának 0.5.7 vagy újabb verziója
 * Az API 2020-11-01-es vagy újabb verziója
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Privát AK-fürt létrehozása saját DNS zónával (előzetes verzió)
@@ -91,6 +91,7 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
+
 ## <a name="options-for-connecting-to-the-private-cluster"></a>A privát fürthöz való csatlakozás lehetőségei
 
 Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgáló kezeléséhez olyan virtuális gépet kell használnia, amely hozzáféréssel rendelkezik az AK-fürt Azure-Virtual Networkához (VNet). Több lehetőség is van a magánhálózati kapcsolat létrehozására a privát fürthöz.
@@ -98,8 +99,61 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgál�
 * Hozzon létre egy virtuális gépet ugyanabba az Azure-Virtual Networkba (VNet), mint az AK-fürtöt.
 * Használjon különálló hálózatban található virtuális GÉPET, és állítsa be a [virtuális hálózatok][virtual-network-peering]közötti társítást.  Erről a lehetőségről az alábbi szakaszban talál további információt.
 * [Express Route-vagy VPN-][express-route-or-VPN] kapcsolat használata.
+* Használja az [AK-futtatási parancs funkciót](#aks-run-command-preview).
 
 A legegyszerűbb lehetőség a virtuális gép létrehozása ugyanabban a VNET, mint az AK-fürt.  Az expressz útvonal és a VPN-EK növelik a költségeket és további hálózati bonyolultságot igényelnek.  A virtuális hálózat társításához meg kell terveznie a hálózati CIDR-tartományokat, hogy ne legyenek átfedésben lévő tartományok.
+
+### <a name="aks-run-command-preview"></a>AK-futtatási parancs (előzetes verzió)
+
+Ma, amikor egy privát fürthöz kell hozzáférni, ezt a fürt virtuális hálózatán, vagy egy társ hálózaton vagy ügyfélszámítógépen kell végrehajtania. Ehhez általában a számítógépnek VPN vagy Express útvonalon keresztül kell csatlakoznia a fürt virtuális hálózatához, vagy létre kell hozni egy Jumpbox a fürt virtuális hálózatában. Az AK-futtatási parancs lehetővé teszi a parancsok távoli meghívását egy AK-fürtön az AK API-n keresztül. Ez a funkció egy olyan API-t biztosít, amely lehetővé teszi, hogy például egy távoli laptopról származó, igény szerinti parancsokat hajtson végre egy privát fürthöz. Ez nagymértékben segíti a privát fürtök gyors, igény szerinti elérését, ha az ügyfélszámítógép nem a fürt magánhálózaton található, miközben továbbra is ugyanazokat a RBAC-vezérlőket és privát API-kiszolgálókat tartja fenn és érvényesíti.
+
+### <a name="register-the-runcommandpreview-preview-feature"></a>Az `RunCommandPreview` előzetes verzió funkciójának regisztrálása
+
+Az új futtatási parancs API használatához engedélyeznie kell a `RunCommandPreview` szolgáltatás jelölőjét az előfizetésében.
+
+Regisztrálja a `RunCommandPreview` szolgáltatás jelölőjét az [az Feature Register] [az-Feature-Register] paranccsal az alábbi példában látható módon:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "RunCommandPreview"
+```
+
+Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/RunCommandPreview')].{Name:name,State:properties.state}"
+```
+
+Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="use-aks-run-command"></a>AK-futtatási parancs használata
+
+Egyszerű parancs
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl get pods -n kube-system"
+```
+
+Jegyzékfájl üzembe helyezése az adott fájl csatolásával
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f deployment.yaml
+```
+
+Jegyzékfájl üzembe helyezése egy teljes mappa csatolásával
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f .
+```
+
+Hajtson végre egy Helm-telepítést, és adja át a megadott értékek jegyzékét
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
+```
 
 ## <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 254f424694df72a290a07369fe910587fadf58d4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501567"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385547"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -36,11 +36,11 @@ A kiszolgáló nélküli SQL-készletbe bejelentkezett felhasználók számára 
 A **felhasználói identitás**, amely az "Azure ad pass-through" néven is ismert, olyan engedélyezési típus, ahol a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure ad-felhasználó identitása az adatok elérésének engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak. Ahogy az alábbi táblázatban is látható, az SQL-felhasználó típusa nem támogatott.
 
 > [!IMPORTANT]
-> Az adatok eléréséhez rendelkeznie kell egy Storage blob-adattulajdonosi/közreműködői/olvasói szerepkörrel, amely az Ön identitását használja.
-> Még ha Ön is egy Storage-fiók tulajdonosa, akkor is hozzá kell adnia magát a Storage blob adatszerepköreinek egyikéhez.
->
-> Ha többet szeretne megtudni a Azure Data Lake Store Gen2 való hozzáférés-vezérlésről, tekintse át a [Azure Data Lake Storage Gen2 cikkben található hozzáférés-vezérlést](../../storage/blobs/data-lake-storage-access-control.md) .
->
+> Az ügyfélalkalmazások gyorsítótárazzák az HRE hitelesítési tokent. Például a PowerBI gyorsítótárak HRE-tokenje, és ugyanazt a tokent használja egy órára. A hosszú rúnaírásos-lekérdezések sikertelenek lehetnek, ha a jogkivonat a lekérdezés végrehajtásának közepén lejár. Ha a lekérdezés közepén lejáró HRE-hozzáférési jogkivonat által okozott lekérdezési hibákat tapasztal, érdemes lehet átváltani a [felügyelt identitásra](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) vagy a [közös hozzáférési aláírásra](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types).
+
+Az adatok eléréséhez rendelkeznie kell egy Storage blob-adattulajdonosi/közreműködői/olvasói szerepkörrel, amely az Ön identitását használja. Alternatív megoldásként részletes ACL-szabályokat is megadhat a fájlokhoz és mappákhoz való hozzáféréshez. Még ha Ön is egy Storage-fiók tulajdonosa, akkor is hozzá kell adnia magát a Storage blob adatszerepköreinek egyikéhez.
+Ha többet szeretne megtudni a Azure Data Lake Store Gen2 való hozzáférés-vezérlésről, tekintse át a [Azure Data Lake Storage Gen2 cikkben található hozzáférés-vezérlést](../../storage/blobs/data-lake-storage-access-control.md) .
+
 
 ### <a name="shared-access-signature"></a>[Közös hozzáférésű jogosultságkód](#tab/shared-access-signature)
 
@@ -54,6 +54,10 @@ SAS-token beszerzéséhez lépjen a **Azure Portal-> Storage-fiókhoz – > köz
 > SAS-jogkivonat:? SV = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = HTTPS&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
 Ha SAS-token használatával szeretné engedélyezni a hozzáférést, létre kell hoznia egy adatbázis-hatókörű vagy kiszolgáló-hatókörű hitelesítő adatot. 
+
+
+> [!IMPORTANT]
+> A adatbázismotor a SAS-jogkivonattal férhet hozzá. Érdemes lehet átváltani a [felügyelt identitásra](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) vagy az [Azure ad átmenő](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) hitelesítésre a védett tároló eléréséhez.
 
 ### <a name="managed-identity"></a>[Felügyelt identitás](#tab/managed-identity)
 

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4f333c4bb66195e6c99bd45dcc7c29a0b9a2eaa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6431328a0969ced0d98cbc7ff047cc0673ecb91
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591414"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074556"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analytics kibocsátási megjegyzésekben
 
@@ -90,7 +90,9 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
 |**Adatbázis-kompatibilitási szint (előzetes verzió)**| Ezzel a kiadással a felhasználók mostantól megadhatják az adatbázis kompatibilitási szintjét, hogy lekérjek a Transact-SQL nyelvét és a lekérdezés-feldolgozási viselkedést a szinapszis SQL-motor egy adott verziójára vonatkozóan. További információ: az [adatbázis hatókörű konfigurációjának](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és módosítása.|
-|**Sp_describe_undeclared_parameters**| Annak engedélyezése, hogy a felhasználók megtekintsék a nem deklarált paraméterek metaadatait egy Transact-SQL-kötegben. További információ: [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).| <br/><br/><br/>
+|**Sp_describe_undeclared_parameters**| Annak engedélyezése, hogy a felhasználók megtekintsék a nem deklarált paraméterek metaadatait egy Transact-SQL-kötegben. További információ: [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).| 
+
+<br/><br/><br/>
 
 | Az eszközök fejlesztése                                         | Részletek                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599211"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029777"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -34,6 +34,14 @@ A Text Analytics API használata előtt létre kell hoznia egy Azure-erőforrás
 2.  Válassza ki a végponthoz használni kívánt régiót.  Vegye figyelembe, hogy a `/analyze` és a `/health` végpontok csak a következő régiókban érhetők el: USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa és Nyugat-Európa.
 
 3.  Hozza létre a Text Analytics-erőforrást, és lépjen a lap bal oldalán található kulcsok és végpont panelre. Másolja az API-k meghívásakor később használni kívánt kulcsot. Ezt később adja hozzá a fejléc értékeként `Ocp-Apim-Subscription-Key` .
+
+4. A Text Analytics erőforrással eljuttatott szöveges rekordok számának ellenőrzését:
+
+    1. A Azure Portalban navigáljon a Text Analytics-erőforráshoz. 
+    2. A bal oldali navigációs menü **figyelés** területén kattintson a **metrikák** elemre. 
+    3. Válassza a *feldolgozott szöveges rekordok* elemet a **metrika** legördülő listájában.
+    
+Egy szöveges rekord 1000 karakterből áll.
 
 ## <a name="change-your-pricing-tier"></a>Árképzési szintek módosítása 
 

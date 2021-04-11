@@ -24,3 +24,7 @@
           href: ./datadog/manage.md
         - name: Hibaelhárítás
           href: ./datadog/troubleshoot.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/confluent

@@ -2,25 +2,27 @@
 title: Egy tulajdonság több példányának meghatározása
 description: Egy Azure Resource Manager sablonban (ARM-sablonban) lévő másolási művelettel több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 1bee4fb672fc0794d5372a4af60b1270105f1755
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: 94bc153a49f80694ab9b2d5b04fdf57e8a12e8c8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889008"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385751"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-sablonban (ARM-sablon). Az `copy` elemnek a sablonban lévő erőforrás tulajdonságok szakaszába való hozzáadásával dinamikusan állíthatja be egy tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
+Ez a cikk bemutatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-sablonban (ARM-sablon). A másolási hurok a sablonban lévő erőforrások tulajdonságok szakaszába való hozzáadásával dinamikusan állíthatja be egy tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
 
-Csak `copy` a legfelső szintű erőforrásokkal használható, még akkor is, ha `copy` egy tulajdonságra alkalmaz. A gyermek-erőforrások legfelső szintű erőforrásra történő módosításával kapcsolatos tudnivalókat [az alárendelt erőforrás iterációjában](copy-resources.md#iteration-for-a-child-resource)talál.
+A másolási hurkot csak legfelső szintű erőforrásokkal használhatja, még akkor is, ha a másolási hurkot egy tulajdonságra alkalmazza. A gyermek-erőforrások legfelső szintű erőforrásra történő módosításával kapcsolatos tudnivalókat [az alárendelt erőforrás iterációjában](copy-resources.md#iteration-for-a-child-resource)talál.
 
-A másolás [erőforrásokat](copy-resources.md), [változókat](copy-variables.md)és [kimeneteket](copy-outputs.md)is használhat.
+A másolási hurok [erőforrásokkal](copy-resources.md), [változókkal](copy-variables.md)és [kimenetekkel](copy-outputs.md)is elvégezhető.
 
 ## <a name="syntax"></a>Syntax
 
-A másolási elem a következő általános formátumú:
+# <a name="json"></a>[JSON](#tab/json)
+
+Adja hozzá az `copy` elemet a sablon erőforrások szakaszához egy tulajdonsághoz tartozó elemek számának megadásához. A másolási elem a következő általános formátumú:
 
 ```json
 "copy": [
@@ -38,22 +40,54 @@ A `count` tulajdonság megadja a tulajdonsághoz használni kívánt iterációk
 
 A `input` tulajdonság a megismételni kívánt tulajdonságokat adja meg. A tulajdonság értéke alapján létrehozott elemek tömbjét hozza létre `input` .
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+A hurkok több tulajdonságot is használhatnak:
+
+- Iteráció egy tömbben:
+
+  ```bicep
+  <property-name>: [for <item> in <collection>: {
+    <properties>
+  }
+  ```
+
+- Egy tömb elemeinek megismétlése
+
+  ```bicep
+  <property-name>: [for (<item>, <index>) in <collection>: {
+    <properties>
+  }
+  ```
+
+- Hurok-index használata
+
+  ```bicep
+  <property-name>: [for <index> in range(<start>, <stop>): {
+    <properties>
+  }
+  ```
+
+---
+
 ## <a name="copy-limits"></a>Másolási korlátok
 
 A szám nem lehet nagyobb, mint 800.
 
 A darabszám nem lehet negatív szám. Ha az Azure CLI, a PowerShell vagy a REST API legújabb verziójával telepíti a sablont, akkor nulla lehet. Pontosabban a következőket kell használnia:
 
-* Azure PowerShell **2,6** vagy újabb
-* Azure CLI- **2.0.74** vagy újabb
-* REST API **2019-05-10** -es vagy újabb verzió
-* A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
+- Azure PowerShell **2,6** vagy újabb
+- Azure CLI- **2.0.74** vagy újabb
+- REST API **2019-05-10** -es vagy újabb verzió
+- A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
 
 A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
 
 ## <a name="property-iteration"></a>Tulajdonság iterációja
 
-Az alábbi példa azt szemlélteti, hogyan alkalmazható a `copy` `dataDisks` tulajdonság egy virtuális gépen:
+Az alábbi példa bemutatja, hogyan alkalmazhatja a másolási hurkot `dataDisks` egy virtuális gép tulajdonságára:
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -74,7 +108,7 @@ Az alábbi példa azt szemlélteti, hogyan alkalmazható a `copy` `dataDisks` tu
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2020-06-01",
       ...
       "properties": {
         "storageProfile": {
@@ -84,13 +118,14 @@ Az alábbi példa azt szemlélteti, hogyan alkalmazható a `copy` `dataDisks` tu
               "name": "dataDisks",
               "count": "[parameters('numberOfDataDisks')]",
               "input": {
-                "diskSizeGB": 1023,
                 "lun": "[copyIndex('dataDisks')]",
-                "createOption": "Empty"
+                "createOption": "Empty",
+                "diskSizeGB": 1023
               }
             }
           ]
         }
+        ...
       }
     }
   ]
@@ -99,13 +134,13 @@ Az alábbi példa azt szemlélteti, hogyan alkalmazható a `copy` `dataDisks` tu
 
 Figyelje meg, hogy ha `copyIndex` egy tulajdonság-iteráción belül használ, meg kell adnia az iteráció nevét. A tulajdonság iterációja egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például: `copyIndex('dataDisks', 1)` .
 
-A Resource Manager kibontja a `copy` tömböt az üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek az objektum tulajdonságai lesznek. A központilag telepített sablon a következőket válik:
+A központilag telepített sablon a következőket válik:
 
 ```json
 {
   "name": "examplevm",
   "type": "Microsoft.Compute/virtualMachines",
-  "apiVersion": "2017-03-30",
+  "apiVersion": "2020-06-01",
   "properties": {
     "storageProfile": {
       "dataDisks": [
@@ -134,57 +169,57 @@ A következő példa sablon létrehoz egy feladatátvételi csoportot a tömbké
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "primaryServerName": {
-            "type": "string"
-        },
-        "secondaryServerName": {
-            "type": "string"
-        },
-        "databaseNames": {
-            "type": "array",
-            "defaultValue": [
-                "mydb1",
-                "mydb2",
-                "mydb3"
-            ]
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "primaryServerName": {
+      "type": "string"
     },
-    "variables": {
-        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    "secondaryServerName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Sql/servers/failoverGroups",
-            "apiVersion": "2015-05-01-preview",
-            "name": "[variables('failoverName')]",
-            "properties": {
-                "readWriteEndpoint": {
-                    "failoverPolicy": "Automatic",
-                    "failoverWithDataLossGracePeriodMinutes": 60
-                },
-                "readOnlyEndpoint": {
-                    "failoverPolicy": "Disabled"
-                },
-                "partnerServers": [
-                    {
-                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
-                    }
-                ],
-                "copy": [
-                    {
-                        "name": "databases",
-                        "count": "[length(parameters('databaseNames'))]",
-                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
-                    }
-                ]
-            }
-        }
-    ],
-    "outputs": {
+    "databaseNames": {
+      "type": "array",
+      "defaultValue": [
+        "mydb1",
+        "mydb2",
+        "mydb3"
+      ]
     }
+  },
+  "variables": {
+    "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/failoverGroups",
+      "apiVersion": "2015-05-01-preview",
+      "name": "[variables('failoverName')]",
+      "properties": {
+        "readWriteEndpoint": {
+          "failoverPolicy": "Automatic",
+          "failoverWithDataLossGracePeriodMinutes": 60
+        },
+        "readOnlyEndpoint": {
+          "failoverPolicy": "Disabled"
+        },
+        "partnerServers": [
+          {
+            "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+          }
+        ],
+        "copy": [
+          {
+            "name": "databases",
+            "count": "[length(parameters('databaseNames'))]",
+            "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+  }
 }
 ```
 
@@ -216,7 +251,64 @@ Az `copy` elem egy tömb, így több tulajdonság is megadható az erőforrásho
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+@minValue(0)
+@maxValue(16)
+@description('The number of dataDisks to be returned in the output array.')
+param numberOfDataDisks int = 16
+
+resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  ...
+  properties: {
+    storageProfile: {
+      ...
+      dataDisks: [for i in range(0, numberOfDataDisks): {
+        lun: i
+        createOption: 'Empty'
+        diskSizeGB: 1023
+      }]
+    }
+    ...
+  }
+}
+```
+
+A központilag telepített sablon a következőket válik:
+
+```json
+{
+  "name": "examplevm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2020-06-01",
+  "properties": {
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "lun": 0,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        },
+        {
+          "lun": 1,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        },
+        {
+          "lun": 2,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        }
+      ],
+      ...
+```
+
+---
+
 Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hivatkozzon a tulajdonság iterációra név alapján.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -250,6 +342,30 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for i in range(0, 2): {
+  name: concat(vnetname, i)
+  location: resourceGroup().location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        addressPrefix
+      ]
+    }
+    subnets: [for j in range(0, 2): {
+      name: 'subnet-${j}'
+      properties: {
+        addressPrefix: subnetAddressPrefix[j]
+      }
+    }]
+  }
+}]
+```
+
+---
+
 ## <a name="example-templates"></a>Példák sablonokra
 
 Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tulajdonság egynél több értékét hozza létre.
@@ -260,10 +376,10 @@ Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tul
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
-* A másolási elem egyéb felhasználási módjaiért lásd:
-  * [Erőforrás-iteráció az ARM-sablonokban](copy-resources.md)
-  * [Változó iteráció az ARM-sablonokban](copy-variables.md)
-  * [Kimeneti iteráció az ARM-sablonokban](copy-outputs.md)
-* Ha szeretne többet megtudni a sablonok részeiről, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című szakaszt.
-* A sablon üzembe helyezésének megismeréséhez tekintse meg az [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShellával](deploy-powershell.md)foglalkozó témakört.
+- Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
+- A másolási hurok egyéb felhasználási módjaiért lásd:
+  - [Erőforrás-iteráció az ARM-sablonokban](copy-resources.md)
+  - [Változó iteráció az ARM-sablonokban](copy-variables.md)
+  - [Kimeneti iteráció az ARM-sablonokban](copy-outputs.md)
+- Ha szeretne többet megtudni a sablonok részeiről, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című szakaszt.
+- A sablon üzembe helyezésének megismeréséhez tekintse meg az [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShellával](deploy-powershell.md)foglalkozó témakört.

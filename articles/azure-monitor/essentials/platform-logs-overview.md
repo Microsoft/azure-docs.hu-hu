@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
-ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2b22746b7a78349580220f4aa7579876fd21c33
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033299"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074590"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Az Azure-platform naplóinak áttekintése
 A platform naplói részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. Ezek automatikusan létrejönnek, bár bizonyos platform-naplókat egy vagy több megőrzött célhelyre kell továbbítani. Ez a cikk áttekintést nyújt a platform naplóiról, beleértve az általuk biztosított információkat, valamint azt, hogy hogyan konfigurálhatja őket gyűjteményekhez és elemzésekhez.
@@ -43,10 +43,10 @@ A különböző Azure platform-naplók megtekintésére és elemzésére külön
 ## <a name="destinations"></a>Célhelyek
 A figyelési követelményektől függően a következő táblázatban szereplő célok közül egy vagy több célhelyre is küldhet platform-naplókat. [Diagnosztikai beállítások létrehozásával](../essentials/diagnostic-settings.md)konfigurálja a platform-naplók célhelyeit.
 
-| Cél | Description |
+| Cél | Leírás |
 |:---|:---|
-| Log Analytics-munkaterület | Elemezze az összes Azure-erőforrás naplóit, és használja ki az összes elérhető funkciót [Azure monitor naplókhoz](../logs/data-platform-logs.md) , beleértve a [naplózási lekérdezéseket](../logs/log-query-overview.md) és a [naplózási riasztásokat](../alerts/alerts-log.md). Egy interaktív jelentés részeként rögzítheti egy naplóbeli lekérdezés eredményeit egy Azure-irányítópulton, vagy belefoglalhatja azt egy munkafüzetbe. |  |
-| Eseményközpont | Platform-naplóbejegyzések küldése az Azure-on kívül, például egy harmadik féltől származó SIEM vagy egyéni telemetria platformra.
+| Log Analytics-munkaterület | Elemezze az összes Azure-erőforrás naplóit, és használja ki az összes elérhető funkciót [Azure monitor naplókhoz](../logs/data-platform-logs.md) , beleértve a [naplózási lekérdezéseket](../logs/log-query-overview.md) és a [naplózási riasztásokat](../alerts/alerts-log.md). Egy interaktív jelentés részeként rögzítheti egy naplóbeli lekérdezés eredményeit egy Azure-irányítópulton, vagy belefoglalhatja azt egy munkafüzetbe. | 
+| Eseményközpont | Platform-naplóbejegyzések küldése az Azure-on kívül, például egy harmadik féltől származó SIEM vagy egyéni telemetria platformra. |
 | Azure Storage tárterület | Archiválja a naplókat a naplózáshoz vagy a biztonsági mentéshez. |
 
 - A műveletnapló vagy az erőforrás-naplók diagnosztikai beállításainak létrehozásával kapcsolatos részletekért lásd: [diagnosztikai beállítások létrehozása a platform-naplók és-metrikák különböző célhelyekre küldéséhez](../essentials/diagnostic-settings.md). 

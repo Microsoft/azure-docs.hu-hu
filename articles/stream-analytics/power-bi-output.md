@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/7/2021
+ms.openlocfilehash: 07b7715935756293467f2a3004109df9bf679661
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020060"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030000"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics Power BI kimenete
 
@@ -23,7 +23,7 @@ Stream Analytics Power BI kimenete jelenleg nem érhető el az Azure China 21Via
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírásait a Power BI kimenetének konfigurálásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Adjon meg egy rövid nevet, amelyet a lekérdezésekben használ a lekérdezés kimenetének a Power BI kimenetre való irányításához. |
 | Csoport munkaterülete |Ha az adatmegosztást más Power BI felhasználókkal szeretné engedélyezni, válassza ki a csoportokat a Power BI-fiókban, vagy válassza **a saját munkaterület** lehetőséget, ha nem szeretne írni egy csoportba. Egy meglévő csoport frissítéséhez a Power BI hitelesítés megújítása szükséges. |
@@ -73,9 +73,10 @@ Dupla | Dupla | Sztring | Sztring | Dupla
 Sztring | Sztring | Sztring | Sztring | Sztring 
 Datetime | Sztring | Sztring |  Datetime | Sztring
 
-## <a name="output-batch-size"></a>Kimeneti köteg mérete
+## <a name="limitations-and-best-practices"></a>Korlátozások és ajánlott eljárások
+Jelenleg Power BI nagyjából egyszer hívható meg másodpercenként. A streaming vizualizációk 15 KB-os csomagokat támogatnak. Ezen túlmenően a streaming vizualizációk meghiúsulnak (de a leküldések továbbra is működni fognak). Ezeknek a korlátozásoknak a miatt a Power BI a legtermészetesebb esetben olyan esetekhez nyújtja magát, amikor az Azure Stream Analytics jelentős adatterhelést eredményez. Azt javasoljuk, hogy a kiugró ablak vagy a ugráló ablak használatával ellenőrizze, hogy az adatküldés másodpercenként legfeljebb egy leküldéses legyen, és hogy a lekérdezés az átviteli sebességre vonatkozó követelményeken belül landol-e.
 
-A kimeneti köteg mérete: [Power bi REST API-korlátok](/power-bi/developer/automation/api-rest-api-limitations).
+További információ a kimeneti köteg méretéről: [Power bi REST API-korlátok](/power-bi/developer/automation/api-rest-api-limitations).
 
 ## <a name="next-steps"></a>Következő lépések
 
