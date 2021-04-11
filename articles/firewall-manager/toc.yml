@@ -51,6 +51,8 @@
   items:
     - name: Biztonságipartner-szolgáltatók üzembe helyezése
       href: deploy-trusted-security-partner.md
+    - name: Privát végpontok biztonságossá tétele
+      href: private-link-inspection-secure-virtual-hub.md
     - name: Migrálás tűzfalszabályzatba – PowerShell
       href: migrate-to-policy.md
     - name: DNS-beállítások

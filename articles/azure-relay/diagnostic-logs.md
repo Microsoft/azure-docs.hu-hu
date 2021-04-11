@@ -3,12 +3,12 @@ title: Diagnosztikai naplók a Hibrid kapcsolatokhoz
 description: Ez a cikk a Azure Relay számára elérhető összes tevékenység-és diagnosztikai napló áttekintését tartalmazza.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590878"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079097"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Diagnosztikai naplók engedélyezése Azure Relay Hibrid kapcsolatok
 A Azure Relay Hibrid kapcsolatok használatának megkezdése után érdemes figyelni, hogy a figyelők és a küldők hogyan és mikor legyenek megnyitva és lezárva, valamint hogyan történik a Hibrid kapcsolatok létrehozása és az üzenetek küldése. Ez a cikk áttekintést nyújt a Azure Relay szolgáltatás által biztosított tevékenység-és diagnosztikai naplókról. 
@@ -80,29 +80,29 @@ Itt látható egy hibrid kapcsolati esemény JSON formátumban.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>A diagnosztikai naplókban rögzített események és műveletek
 
-| Művelet | Leírás | 
-| --------- | ----------- | 
-| AuthorizationFailed | Az engedélyezés sikertelen.|
-| InvalidSasToken | Érvénytelen SAS-jogkivonat. | 
-| ListenerAcceptingConnection | A figyelő fogadja a kapcsolatokat. |
-| ListenerAcceptingConnectionTimeout | Túllépte az időkorlátot, ha a figyelő elfogadja a kapcsolatokat. |
-| ListenerAcceptingHttpRequestFailed | Egy kivétel miatt sikertelen volt a HTTP-kérelem elfogadását kérő figyelő. |
-| ListenerAcceptingRequestTimeout | Túllépte a kérelem elfogadását kérő figyelő időkorlátját. |  
-| ListenerClosingFromExpiredToken | A figyelő bezárul, mert a biztonsági jogkivonat lejárt. | 
-| ListenerRejectedConnection | A figyelő elutasította a kapcsolatokat. |
-| ListenerReturningHttpResponse | A figyelő HTTP-választ ad vissza. |  
-| ListenerReturningHttpResponseFailed | A figyelő egy hibakódtal rendelkező HTTP-választ ad vissza. | 
- ListenerSentHttpResponse | A Relay szolgáltatás HTTP-választ kapott a figyelőtől. | 
-| ListenerUnregistered | A figyelő regisztrációja megszüntetve. | 
-| ListenerUnresponsive | A figyelő válasz küldésekor nem válaszol. | 
-| MessageSendingToListener | Üzenet küldése a figyelőnek. |
-| MessageSentToListener | A rendszer elküldi az üzenetet a figyelőnek. | 
-| NewListenerRegistered | Új figyelő regisztrálva. |
-| NewSenderRegistering | Új feladó regisztrálása. | 
-| ProcessingRequestFailed | A hibrid kapcsolatok műveletének feldolgozása sikertelen volt. | 
-| SenderConnectionClosed | A küldő kapcsolódása bezárult. |
-| SenderListenerConnectionEstablished | A küldő és a figyelő sikeresen létrehozta a kapcsolódást. |
-| SenderSentHttpRequest | A küldő HTTP-kérelmet küld. | 
+| Művelet                           | Leírás                                                     |
+|-------------------------------------|-----------------------------------------------------------------|
+| AuthorizationFailed                 | Az engedélyezés sikertelen.                                           |
+| InvalidSasToken                     | Érvénytelen SAS-jogkivonat.                                              |
+| ListenerAcceptingConnection         | A figyelő fogadja a kapcsolatokat.                           |
+| ListenerAcceptingConnectionTimeout  | Túllépte az időkorlátot, ha a figyelő elfogadja a kapcsolatokat.                |
+| ListenerAcceptingHttpRequestFailed  | Egy kivétel miatt sikertelen volt a HTTP-kérelem elfogadását kérő figyelő. |
+| ListenerAcceptingRequestTimeout     | Túllépte a kérelem elfogadását kérő figyelő időkorlátját.                   |
+| ListenerClosingFromExpiredToken     | A figyelő bezárul, mert a biztonsági jogkivonat lejárt. |
+| ListenerRejectedConnection          | A figyelő elutasította a kapcsolatokat.                       |
+| ListenerReturningHttpResponse       | A figyelő HTTP-választ ad vissza.                     |
+| ListenerReturningHttpResponseFailed | A figyelő egy hibakódtal rendelkező HTTP-választ ad vissza. |
+| ListenerSentHttpResponse            | A Relay szolgáltatás HTTP-választ kapott a figyelőtől.  |
+| ListenerUnregistered                | A figyelő regisztrációja megszüntetve.                                   |
+| ListenerUnresponsive                | A figyelő válasz küldésekor nem válaszol.         |
+| MessageSendingToListener            | Üzenet küldése a figyelőnek.                              |
+| MessageSentToListener               | A rendszer elküldi az üzenetet a figyelőnek.                                    |
+| NewListenerRegistered               | Új figyelő regisztrálva.                                        |
+| NewSenderRegistering                | Új feladó regisztrálása.                                      |
+| ProcessingRequestFailed             | A hibrid kapcsolatok műveletének feldolgozása sikertelen volt.     |
+| SenderConnectionClosed              | A küldő kapcsolódása bezárult.                                |
+| SenderListenerConnectionEstablished | A küldő és a figyelő sikeresen létrehozta a kapcsolódást.    |
+| SenderSentHttpRequest               | A küldő HTTP-kérelmet küld.                                |
 
 
 ## <a name="next-steps"></a>Következő lépések

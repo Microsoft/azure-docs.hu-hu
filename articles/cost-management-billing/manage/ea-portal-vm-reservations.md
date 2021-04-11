@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 6303a94cec9efc01815b6dc6c697abdfe0f84227
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98597960"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220900"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
 
@@ -96,7 +96,7 @@ Abban az esetben, ha az Azure Nagyvállalati Szerződéssel rendelkező ügyfele
 
 ### <a name="reserved-instance-expiration"></a>Fenntartott példány lejárata
 
-A fenntartás előtt 30 nappal és annak lejártakor e-mail-értesítéseket kap. Ha a fenntartás lejár, az üzemelő virtuális gépek továbbra is futnak majd, és a későbbiekben használatalapú fizetési díjszabás vonatkozik rájuk. További információ: [Fenntartott virtuálisgép-példányok ajánlata](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+E-mail-értesítéseket fog kapni, az első 1 30 nappal a foglalás lejárta előtt, a másikat pedig lejáratkor. Ha a fenntartás lejár, az üzemelő virtuális gépek továbbra is futnak majd, és a későbbiekben használatalapú fizetési díjszabás vonatkozik rájuk. További információ: [Fenntartott virtuálisgép-példányok ajánlata](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 ## <a name="next-steps"></a>További lépések
 

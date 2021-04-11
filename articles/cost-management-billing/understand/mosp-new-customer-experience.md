@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575466"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122526"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>A frissített Azure-beli számlázási fiók használatának első lépései
 
@@ -26,11 +26,11 @@ A költségek és a számlák kezelése a felhőbeli felhasználói élmény egy
 
 Az alábbi ábra az új és a régi számlázási fiókot hasonlítja össze:
 
-![Az új és a régi fiók számlázási hierarchiájának összehasonlítását bemutató ábra](./media/mosp-new-customer-experience/comparison-old-new-account.png)
+:::image type="content" source="./media/mosp-new-customer-experience/comparison-old-new-account.png" alt-text="A régi és az új fiók számlázási hierarchiája közötti összehasonlítást bemutató ábra." border="false" lightbox="./media/mosp-new-customer-experience/comparison-old-new-account.png":::
 
 Az új számlázási fiók egy vagy több számlázási profilt tartalmaz, amelyek lehetővé teszik a számlák és a fizetési módok kezelését. Az egyes számlázási profilok egy vagy több számlaszakaszt tartalmaznak, amelyekkel rendszerezhetőek a számlázási profil számláján szereplő költségek.
 
-![Az új számlázási hierarchiát bemutató ábra](./media/mosp-new-customer-experience/new-billing-account-hierarchy.png)
+:::image type="content" source="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png" alt-text="Az új számlázási hierarchiát ábrázoló diagram." border="false" lightbox="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png":::
 
 A számlázási fiók szerepkörei rendelkeznek a legmagasabb szintű engedélyekkel. Ezeket a szerepköröket olyan felhasználókhoz kell hozzárendelni, akiknek meg kell tekinteniük a számlákat és nyomon kell követniük a teljes fiók költségeit, tehát például egy szervezet pénzügyi vagy informatikai vezetőihez vagy egy fiókkal rendelkező személyhez. További információkért lásd [a számlázási fiók szerepköreit és azok feladatait](../manage/understand-mca-roles.md#billing-account-roles-and-tasks) ismertető cikket. A fiók frissítésekor a régi számlázási fiókban rendszergazdai szerepkörrel rendelkező felhasználó tulajdonosi szerepkört kap az új fiókhoz.
 
@@ -60,7 +60,21 @@ Az új fiók az alábbi költségkezelési és számlázási képességeket tart
 
 **Kiszámíthatóbb havi számlázási időszak** – Az új fiókban a számlázási időszak a hónap első napján kezdődik és a hónap utolsó napján ér véget, függetlenül attól, hogy mikor regisztrált az Azure használatára. A rendszer minden hónap elején létrehoz egy számlát, amely az előző hónap minden díját tartalmazza.
 
-**Egyetlen havi számla több előfizetéshez** – Lehetősége van külön-külön havi számlát kapni mindegyik előfizetéséhez, vagy egyetlen számlát kapni többhöz.
+**Egyszeri havi számla több előfizetéshez** – a meglévő fiókjában minden egyes Azure-előfizetéshez tartozó számla jelenik meg. A fiók frissítésekor a rendszer karbantartja a meglévő viselkedést, de rugalmasan egyesítheti az előfizetések díját egyetlen számlán. A fiók frissítése után kövesse az alábbi lépéseket a díjak konszolidálása egyetlen számlán:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
+   ![Képernyőkép az Azure Portal keresőmezőjéről a Költségkezelés + számlázás keresőkifejezéssel.](./media/mosp-new-customer-experience/billing-search-cost-management-billing.png)
+3. Válassza ki az **Azure-előfizetéseket** a képernyő bal oldalán. 
+4. A táblázat felsorolja azokat az Azure-előfizetéseket, amelyekért fizetnie kell. A számlázási profil oszlopban megtalálhatja az előfizetés számlázásához használt számlázási profilt. Az előfizetési díjak a számlázási profilhoz tartozó számlán jelennek meg. Az összes előfizetés egyetlen számlán való összevonásához egyetlen számlázási profilhoz kell csatolni az összes előfizetést.  
+    :::image type="content" source="./media/mosp-new-customer-experience/list-azure-subscriptions.png" alt-text="Képernyőkép, amely az Azure-előfizetések listáját jeleníti meg." lightbox="./media/mosp-new-customer-experience/list-azure-subscriptions.png" :::
+5. Válasszon számlázási profilt, amelyet használni szeretne. 
+6. Válasszon olyan előfizetést, amely nem kapcsolódik az 5. lépésben kiválasztott számlázási profilhoz. Kattintson a három pontra az előfizetéshez. Válassza a **Számlázási szakasz módosítása** lehetőséget.  
+    :::image type="content" source="./media/mosp-new-customer-experience/select-change-invoice-section.png" alt-text="Képernyőkép, amely bemutatja, hol található a számla megváltoztatása lehetőség." lightbox="./media/mosp-new-customer-experience/select-change-invoice-section-zoomed-in.png" :::
+7. Válassza ki a #5 lépésben kiválasztott számlázási profilt.  
+    :::image type="content" source="./media/mosp-new-customer-experience/change-invoice-section.png" alt-text="A számla módosításának módját bemutató képernyőkép." lightbox="./media/mosp-new-customer-experience/change-invoice-section-zoomed-in.png" :::
+8. Válassza a **módosítás** lehetőséget.
+9. Ismételje meg a 6-8 lépést az összes többi előfizetésnél. 
 
 **Egyetlen havi számla az Azure-előfizetésekhez, a támogatási csomagokhoz és az Azure Marketplace-termékekhez** – Egyetlen havi számlát fog kapni, amely az összes költséget tartalmazza, például az Azure-előfizetések használati díját, a támogatási csomagok és az Azure Marketplace-vásárlások költségeit.
 
@@ -98,6 +112,12 @@ Az alábbiakat javasoljuk, hogy felkészülhessen az újdonságokra:
 
 Az új eljárás szerint a számláját a hónap kilencedik napja környékén állítja ki a rendszer. A számla az előző hónap minden díját tartalmazza. Ez a dátum eltérhet attól, amely napon a régi fiókban állította ki a számlát a rendszer. Ha másokkal is megosztja a számlát, értesítse őket az új dátumról.
 
+
+**Számlák az áttelepítés utáni első hónapban**
+
+A fiókja frissítésének napját, a meglévő Számlázatlan díjakat véglegesítjük, és az ilyen díjakhoz tartozó számlákat azon a napon kapja meg, amikor általában megkapja a számlákat. John például két Azure-előfizetéssel rendelkezik – az Azure sub 01 számlázási ciklust tartalmaz a hónap ötödik napjától a következő hónap negyedik napjáig és az Azure sub 02 számlázási ciklusával a hónap tizedik napjától a következő hónap kilencedik napjáig. John az Azure-előfizetésekhez tartozó számlákat általában a hónap ötödik napján kapja meg. Most, hogy John fiókja április 4-én frissült, az Azure sub 01 díjait március 1-től április 4-én, az Azure sub 02 esetében pedig a március 1-től április 4-ig terjedő díjat véglegesíti a rendszer. John két számlát kap, amelyek közül az egyik az április 5. A fiók frissítése után John számlázási ciklusa a naptári hónapon alapul, és a naptári hónap elejétől az adott naptári hónap végéig felmerült összes költséget lefedi.  Az előző naptári hónap díjainak számlázása minden hónap 9. napján érhető el. A fenti példában János április 1-től április 30-ig egy másik számlán fog megjelenni május 5-én. 
+
+
 **Új számlázási és költségkezelési API-k**
 
 Ha Cost Management vagy Billing API-kkal kérdezi le vagy frissíti a számlázással vagy a költségekkel kapcsolatos adatokat, akkor az új API-kat kell használnia. Az alábbi táblázat tartalmazza azokat az API-kat, amelyek nem fognak működni az új számlázási fiókkal, illetve azokat a módosításokat, amelyeket végre kell hajtania az új számlázási fiókjában.
@@ -106,6 +126,7 @@ Ha Cost Management vagy Billing API-kkal kérdezi le vagy frissíti a számláz�
 |---------|---------|
 |[Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | A Billing Accounts – List API-ban a régi számlázási fiók agreementType tulajdonsága **MicrosoftOnlineServiceProgram**, az új számlázási fiók agreementType tulajdonsága pedig **MicrosoftCustomerAgreement**. Ha függőséget szeretne felvenni az agreementType tulajdonsághoz, frissítse. |
 |[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Ez az API csak a fiók frissítése előtt létrehozott számlákat fogja visszaadni. Az új számlázási fiókban létrehozott számlák az [Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API használatával tekinthetők meg. |
+
 
 ## <a name="cost-management-updates-after-account-update"></a>A Cost Management frissítése a fiók frissítése után
 
@@ -141,7 +162,7 @@ A fiók frissítése után egyetlen számlát fog kapni, amely az Azure összes 
 
 Ha például a régi fiók számlázási időszaka november 24-től december 23-ig tartott, akkor a frissítés után az időszak megváltozik, és november 1-től november 30-ig tart, december 1-től december 31-ig tart stb.
 
-:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="A régi és az új számlázási időszak összehasonlítását ábrázoló kép " lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="A régi és az új számlázási időszak közötti összehasonlítást bemutató képernyőkép." lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
 
 #### <a name="budgets"></a>Költségvetések
 
@@ -156,7 +177,7 @@ Az új számlázási fiók továbbfejlesztett exportálási funkciókat biztosí
 
 Például a december 23. és a január 22. közötti számlázási időszak esetén az exportált CSV-fájl az erre az időszakra vonatkozó költség- és használati adatokat tartalmazná. A frissítés után az exportálás a naptári hónapra vonatkozó adatokat fogja tartalmazni. Például a január 1. és január 31. közötti adatokat stb.
 
-:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="A régi és az új exportálási adatok összehasonlítását ábrázoló kép" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="A régi és az új exportálási részletek összehasonlítását bemutató képernyőképek." lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>További információ
 

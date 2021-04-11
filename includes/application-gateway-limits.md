@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612962"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106450617"
 ---
 | Erőforrás | Korlát | Megjegyzés |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "98612962"
 | Újraírható szabálykészlet száma |400| |
 | Fejléc vagy URL-konfiguráció száma újraírható szabálykészlet alapján|40| |
 | Feltételek száma újraírható szabálykészlet alapján|40| |
-| Egyidejű WebSocket-kapcsolatok |Közepes átjárók 20000<br> Nagyméretű átjárók 50k| |
+| Egyidejű WebSocket-kapcsolatok |Közepes átjárók 20000<sup>2</sup><br> Nagyméretű átjárók 50k<sup>2</sup>| |
 | URL-cím maximális hossza|32KB| |
 | A fejléc maximális mérete HTTP/2 esetén |4KB| |
 | Maximális fájlfeltöltés mérete, standard |2 GB | |
@@ -45,3 +45,5 @@ ms.locfileid: "98612962"
 | WAF-kizárások maximális száma Application Gateway|40||
 
 <sup>1</sup> WAF-kompatibilis SKU esetén az erőforrások számát a 40 értékre kell korlátozni.
+
+a <sup>2</sup> korlát Application Gateway példánya nem Application Gateway erőforrás.

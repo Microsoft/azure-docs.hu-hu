@@ -2,13 +2,13 @@
 title: Microsoft Azure Recovery Services (MARS) ügynök – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 09c54d7f24ba4bea1bf9081333f345b1a246a4d6
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917358"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505467"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Gyakori kérdések – Microsoft Azure Recovery Services (MARS) ügynök
 
@@ -100,6 +100,10 @@ Ez a figyelmeztetés akkor is megjelenhet, ha a biztonsági mentési szabályzat
 
 * Ha a kiszolgáló vagy a beállítások egy ismert jó állapotra lettek helyreállítva, a biztonsági mentési ütemtervek nem szinkronizálhatók.
 * Ha ezt a figyelmeztetést kapja, [konfigurálja](backup-azure-manage-windows-server.md) újra a biztonsági mentési szabályzatot, majd futtasson egy igény szerinti biztonsági mentést, és szinkronizálja újra a helyi kiszolgálót az Azure-ban.
+
+### <a name="i-see-a-few-jobs-are-stuck-in-the-in-progress-state-for-a-long-time-under-backup-jobs-in-the-azure-portal-how-can-i-resolve-these"></a>Néhány feladatot úgy látok, hogy hosszú ideje beragadnak a folyamatban lévő feladatok a Azure Portal biztonsági mentési feladatai alatt. Hogyan oldhatók fel ezek a problémák?
+
+Ez akkor fordulhat elő, ha egy feladatot nem sikerült befejezni az okok miatt, például a hálózati kapcsolati problémák, a gépi leállítás vagy a folyamat leállítása. Itt nincs szükség felhasználói beavatkozásra. Ezek a feladatok 30 nap elteltével automatikusan **sikertelenként** lesznek megjelölve. [További információ](backup-windows-with-mars-agent.md#run-an-on-demand-backup) az igény szerinti biztonsági mentési feladatok futtatásáról a Mars-ügynök használatával.
 
 ## <a name="manage-the-backup-cache-folder"></a>A biztonsági mentési gyorsítótár mappájának kezelése
 
@@ -198,7 +202,7 @@ Ha ugyanazzal a jelszóval rendelkezik (amelyet a regisztráció során megadott
 
 | Eredeti gép | Jelszót | Elérhető beállítások |
 | --- | --- | --- |
-| Elveszett |Elérhető |A MARS-ügynököt telepítheti és regisztrálhatja egy másik gépen ugyanazzal a jelszóval, amelyet az eredeti gép regisztrálása során adott meg.   >  A visszaállítás végrehajtásához válasszon **másik helyet** a helyreállítási lehetőség számára. További információkért tekintse meg ezt a [cikket](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Elveszett |Elérhető |A MARS-ügynököt telepítheti és regisztrálhatja egy másik gépen ugyanazzal a jelszóval, amelyet az eredeti gép regisztrálása során adott meg.   >  A visszaállítás végrehajtásához válasszon **másik helyet** a helyreállítási lehetőség számára. További információkért tekintse meg [ezt a cikket](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Elveszett |Elveszett |Nem lehet helyreállítani az adatokat, vagy az adatok nem érhetők el |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>A biztonsági mentési feladatok végrehajtása sikertelen volt, vagy hosszú ideje nem fut. Megtartom a megőrzési időszakot. Továbbra is visszaállíthatók?
@@ -209,7 +213,7 @@ Biztonsági szempontból a Azure Backup a legutóbbi helyreállítási pontot fo
 
 Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a visszaállítási folyamat leáll. A lemondás előtt visszaállított összes fájl a megadott célhelyen (eredeti vagy másodlagos helyen), a visszaállítások nélkül.
 
-### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>A MARS-ügynök biztonsági mentését és visszaállítását a fájlokra, mappákra és kötetekre beállított ACL-ek végzik?
+### <a name="does-the-mars-agent-backup-and-restore-acls-set-on-files-folders-and-volumes"></a>A MARS-ügynök biztonsági mentési és visszaállítási ACL-ek vannak beállítva a fájlokon, mappákon és köteteken?
 
 * A MARS-ügynök biztonsági mentést készít a fájlokra, mappákra és kötetekre beállított ACL-listákról
 * A kötet-visszaállítás helyreállítási lehetőségnél a MARS-ügynök lehetőséget biztosít az ACL-engedélyek visszaállítására a helyreállított fájlra vagy mappára vonatkozóan.

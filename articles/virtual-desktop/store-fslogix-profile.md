@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f8a82eddfdc7a2a4899c4ee836687df26101bdc
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526602"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221891"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára
 
@@ -44,6 +44,26 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 |Azure Active Directory-integráció|[Natív Active Directory és Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services és natív Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|
 
 Ha kiválasztotta a tárolási módszert, tekintse meg a [Windows rendszerű virtuális asztali díjszabást](https://azure.microsoft.com/pricing/details/virtual-desktop/) a díjszabási tervekkel kapcsolatos információkért.
+
+## <a name="azure-files-tiers"></a>Azure Files rétegek
+
+Azure Files két különböző tárolási szintet kínál: prémium és standard. Ezek a rétegek lehetővé teszik a fájlmegosztás teljesítményének és bekerülési értékének testreszabását, hogy megfeleljenek a forgatókönyv követelményeinek.
+
+- A prémium szintű fájlmegosztást SSD-meghajtók teszik elérhetővé, és a FileStorage a Storage-fiók típusában vannak telepítve. A prémium szintű fájlmegosztás konzisztens nagy teljesítményt és kis késleltetést biztosít a bemeneti és kimeneti (IO) intenzív számítási feladatokhoz. 
+
+- A standard fájlmegosztást merevlemez-meghajtók (HDD-k) teszik elérhetővé, és az általános célú 2-es verziójú (GPv2) Storage-fiók típusa szerint vannak telepítve. A standard fájlmegosztás megbízható teljesítményt biztosít a teljesítmény-változékonyságra kevésbé érzékeny IO-munkaterhelésekhez, például az általános célú fájlmegosztás és a fejlesztési/tesztelési környezetek számára. A standard fájlmegosztás csak utólagos elszámolású számlázási modellben érhető el.
+
+A következő táblázat ismerteti a számítási feladatok alapján felhasználható teljesítményszint-javaslatokat. Ezek a javaslatok segítenek kiválasztani a teljesítményi szintet, amely megfelel a teljesítménnyel kapcsolatos céloknak, a költségvetésnek és a regionális szempontoknak. Ezeket a javaslatokat a [Távoli asztal](/windows-server/remote/remote-desktop-services/remote-desktop-workloads)számítási feladatokból származó forgatókönyvekre alapozta. 
+
+| Munkaterhelés típusa | Ajánlott fájl szintje |
+|--------|-----------|
+| Light (kevesebb, mint 200 felhasználó) | Szabványos fájlmegosztás |
+| Light (több mint 200 felhasználó) | Prémium fájlmegosztás vagy standard többfájlos megosztással |
+|Közepes|Prémium fájlmegosztás|
+|Magas szintű|Prémium fájlmegosztás|
+|Energiaellátás|Prémium fájlmegosztás|
+
+A Azure Files teljesítményével kapcsolatos további információkért lásd a [fájlmegosztás és a fájlméret céljait](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)ismertető részt. További információ a díjszabásról: [Azure Files díjszabása](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="next-steps"></a>Következő lépések
 

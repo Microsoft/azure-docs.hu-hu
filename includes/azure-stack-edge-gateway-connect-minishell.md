@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/08/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ad760caedffa97599548b8dd1b59a887b5690af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 89e648099a5ac6d905f475319cc108dd0d05a6e9
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105105585"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081047"
 ---
 Az ügyfél operációs rendszertől függően az eszközhöz való távoli kapcsolódás eljárásai eltérőek.
 
@@ -58,8 +58,15 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 
     Ha a megbízhatósági kapcsolattal kapcsolatos hiba jelenik meg, akkor ellenőrizze, hogy az eszközre feltöltött csomópont-tanúsítvány aláíró lánca is telepítve van-e az eszközhöz hozzáférő ügyfélen.
 
+    Ha nem használja a tanúsítványokat (javasoljuk, hogy használja a tanúsítványokat!), a munkamenet-beállítások használatával kihagyhatja ezt az ellenőrzést: `-SkipCACheck -SkipCNCheck -SkipRevocationCheck` .
+
+    ```powershell
+    $sessOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck 
+    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL -SessionOption $sessOptions    
+    ```
+
     > [!NOTE] 
-    > Ha a `-UseSSL` kapcsolót használja, a távoli eljáráshívás *https*-kapcsolaton keresztül történik. Javasoljuk, hogy mindig *https* -kapcsolatot használjon a PowerShell használatával történő távoli kapcsolódáshoz. Bár a *http* -munkamenet nem a legbiztonságosabb kapcsolati módszer, a megbízható hálózatokon elfogadható.
+    > Ha a `-UseSSL` kapcsolót használja, a távoli eljáráshívás *https*-kapcsolaton keresztül történik. Javasoljuk, hogy mindig *https* -kapcsolatot használjon a PowerShell használatával történő távoli kapcsolódáshoz. 
 
 6. Ha a rendszer kéri, adja meg a jelszót. Használja ugyanazt a jelszót, amelyet a helyi webes felhasználói felületen való bejelentkezéshez használ. A helyi webes felhasználói felület alapértelmezett jelszava *jelszó1*. Amikor sikeresen kapcsolódott az eszközhöz a távoli PowerShell használatával, a következő minta kimenet jelenik meg:  
 
@@ -77,27 +84,30 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
     [10.100.10.10]: PS>
     ```
 
-### <a name="remotely-connect-from-a-linux-client"></a>Távoli kapcsolat Linux-ügyféllel
+> [!IMPORTANT]
+> A jelenlegi kiadásban csak Windows-ügyfélen keresztül kapcsolódhat az eszköz PowerShell-felületéhez. A `-UseSSL` beállítás nem működik a Linux-ügyfelekkel.
 
-Azon a Linux-ügyfélen, amelyet a kapcsolódáshoz használni fog:
+<!--### Remotely connect from a Linux client-->
 
-- [Telepítse a Linux rendszerhez készült legújabb PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) -t a githubról az SSH távelérési szolgáltatásának beszerzéséhez. 
-- [Csak az `gss-ntlmssp` NTLM-modulból telepítse a csomagot](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu-ügyfelek esetén használja a következő parancsot:
+<!--On the Linux client that you'll use to connect:
+
+- [Install the latest PowerShell Core for Linux](/powershell/scripting/install/installing-powershell-core-on-linux) from GitHub to get the SSH remoting feature. 
+- [Install only the `gss-ntlmssp` package from the NTLM module](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). For Ubuntu clients, use the following command:
     - `sudo apt-get install gss-ntlmssp`
 
-További információért nyissa meg a [PowerShell távoli ELJÁRÁSHÍVÁS SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core)-val című témakört.
+For more information, go to [PowerShell remoting over SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
-Az alábbi lépéseket követve távolról csatlakozhat egy NFS-ügyfélről.
+Follow these steps to remotely connect from an NFS client.
 
-1. A PowerShell-munkamenet megnyitásához írja be a következőt:
+1. To open PowerShell session, type:
 
     `pwsh`
  
-2. A távoli ügyfél használatával történő kapcsolódáshoz írja be a következőt:
+2. For connecting using the remote client, type:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    Ha a rendszer kéri, adja meg az eszközre való bejelentkezéshez használt jelszót.
+    When prompted, provide the password used to sign into your device.
  
 > [!NOTE]
-> Ez az eljárás nem működik Mac OSon.
+> This procedure does not work on Mac OS.-->

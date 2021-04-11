@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef4eb3eb55ec1f062efb0f8215a3619f526b1ad2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011935"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063984"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Feladatátvételi továbbítás implementálása Media Services v2-vel
 
@@ -753,7 +753,7 @@ Ebben a szakaszban létrehozza a redundancia kezelésére szolgáló képessége
 
 A témakörben szereplő példa a folyamatos átvitelt mutatja. Ha a védett adatfolyamot szeretné elvégezni, néhány további dolgot is telepítenie kell, ugyanazokat a **AssetDeliveryPolicy** kell használnia, mint a **ContentKeyAuthorizationPolicy** vagy a külső kulcs kiszolgálójának URL-címét, és ugyanazzal az azonosítóval kell megadnia a tartalom kulcsait.
 
-További információ a tartalomvédelem [használatáról: az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-protect-with-aes128.md).
+További információ a tartalomvédelem [használatáról: az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-playready-license-template-overview.md).
 
 ## <a name="see-also"></a>Lásd még
 

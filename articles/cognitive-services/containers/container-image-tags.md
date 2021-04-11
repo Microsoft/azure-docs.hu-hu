@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/17/2020
+ms.date: 03/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2ac8633e48c98b9e1d778ac1d07835683e00e1c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102424478"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095815"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések
 
@@ -1355,6 +1355,24 @@ Ehhez a tároló-rendszerképhez a következő címkék érhetők el. Megtalálh
 | `3.0-nl`   | Hangulatelemzés v3 (holland)                 |
 | `2.1`    | Hangulatelemzés v2      |
 
+
+## <a name="text-analytics-for-health"></a>Egészségügyi Text Analytics
+
+Az [állapot][ta-he] -tároló rendszerképének Text Analytics található a `mcr.microsoft.com` Container Registry syndicateban. A `azure-cognitive-services/textanalytics/` tárházban található, és neve `healthcare` . A teljes tároló rendszerképének neve `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare`
+
+Ehhez a tároló-rendszerképhez a következő címkék érhetők el. Megtalálhatja a címkék teljes listáját is a [MCR](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/healthcare/tags/list).
+
+
+Kibocsátási megjegyzések a következőhöz `3.0.015490002-onprem-amd64` :
+
+* új modell verziója `2021-03-01`
+* A tároló a MCR-be lett szabadítva.
+
+| Képcímkék | Jegyzetek                                         |
+|------------|:----------------------------------------------|
+| `latest`   |                                               |
+| `3.0.015490002-onprem-amd64`   |               |
+
 [ad-containers]: ../anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: ../computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: ../face/face-how-to-install-containers.md
@@ -1369,3 +1387,4 @@ Ehhez a tároló-rendszerképhez a következő címkék érhetők el. Megtalálh
 [ta-kp]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-la]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-se]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+[ta-he]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare

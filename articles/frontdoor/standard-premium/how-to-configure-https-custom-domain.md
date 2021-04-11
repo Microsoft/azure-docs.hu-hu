@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: c2edf11939996156c2b589b0b7876ae1b01466e5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3f3b4d3e431d9e24549bdb8caa4b2d17f547c82c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740817"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064052"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>HTTPS konfigurálása a bejárati ajtó standard/prémium SKU (előzetes verzió) egyéni tartományához a Azure Portal használatával
 

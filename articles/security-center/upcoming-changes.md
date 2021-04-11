@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/18/2021
+ms.date: 04/08/2021
 ms.author: memildin
-ms.openlocfilehash: b9a93286b6a546160b6c621d084437f671eab4d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773572"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103759"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -28,59 +28,11 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 | Tervezett módosítás                                                                                                                                                        | Változás becsült dátuma |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | Március 2021                |
-| [11 Azure Defender-riasztás elavult](#deprecation-of-11-azure-defender-alerts)                                                                                   | Március 2021                |
 | [21 javaslat a biztonsági vezérlők között](#21-recommendations-moving-between-security-controls)                                                           | Április 2021                |
-| [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két további javaslata elavult](#two-further-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | Április 2021                |
-| [Az AWS javaslatai az általánosan elérhetővé tételhez lesznek közzétéve](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | Április 2021                |
+| [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | Április 2021                |
+| [Az AWS javaslatai az általánosan elérhetővé tételhez lesznek közzétéve](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **Augusztus** 2021             |
 | [Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése](#enhancements-to-sql-data-classification-recommendation)                                                     | Q2 2021                   |
 |                                                                                                                                                                       |                           |
-
-
-### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult 
-
-**Változás becsült dátuma:** Március 2021
-
-A következő két javaslatot ütemezjük a 2021 februárjában:
-
-- A számítógépeket újra kell **indítani a rendszerfrissítések alkalmazásához**. Ez enyhe hatással lehet a biztonságos pontszámra.
-- A **figyelési ügynököt telepíteni kell a gépekre**. Ez a javaslat csak a helyszíni gépekre vonatkozik, és a logikája egy másik javaslatba kerül át, **log Analytics az ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken**. Ez enyhe hatással lehet a biztonságos pontszámra.
-
-Javasoljuk, hogy ellenőrizze a folyamatos exportálási és munkafolyamat-automatizálási konfigurációkat, és ellenőrizze, hogy ezek a javaslatok szerepelnek-e bennük. Emellett az azokat használó irányítópultokat vagy egyéb figyelési eszközöket ennek megfelelően kell frissíteni.
-
-További információ ezekről a javaslatokról a [biztonsági javaslatok hivatkozását ismertető oldalon](recommendations-reference.md)található.
-
-### <a name="deprecation-of-11-azure-defender-alerts"></a>11 Azure Defender-riasztás elavult
-
-**Változás becsült dátuma:** Március 2021
-
-A következő hónapban az alább felsorolt tizenegy Azure Defender-riasztás elavulttá válik.
-
-- Az új riasztások felülírják ezt a két riasztást, és jobb lefedettséget biztosítanak:
-
-    | AlertType                | AlertDisplayName                                                         |
-    |--------------------------|--------------------------------------------------------------------------|
-    | ARM_MicroBurstDomainInfo | ELŐZETES verzió – a "Get-AzureDomainInfo" függvény futtatása |
-    | ARM_MicroBurstRunbook    | ELŐZETES verzió – a "Get-AzurePasswords" függvény futtatása  |
-    |                          |                                                                          |
-
-- Ez a kilenc riasztás olyan Azure Active Directory Identity Protection összekötőhöz kapcsolódik, amely már elavult:
-
-    | AlertType           | AlertDisplayName              |
-    |---------------------|-------------------------------|
-    | UnfamiliarLocation  | Szokatlan bejelentkezési tulajdonságok |
-    | AnonymousLogin      | Névtelen IP-cím          |
-    | InfectedDeviceLogin | Kártevők társított IP-címe     |
-    | ImpossibleTravel    | Szokatlan utazás               |
-    | MaliciousIP         | Kártékony IP-cím          |
-    | LeakedCredentials   | Kiszivárgott hitelesítő adatok            |
-    | PasswordSpray       | Jelszó spray                |
-    | LeakedCredentials   | Azure AD-fenyegetések felderítése  |
-    | AADAI               | Azure AD AI                   |
-    |                     |                               |
- 
-
-
 
 
 ### <a name="21-recommendations-moving-between-security-controls"></a>21 javaslat a biztonsági vezérlők között 
@@ -98,7 +50,7 @@ Ismerje meg, hogy mely javaslatok szerepelnek a biztonsági ellenőrzésekben é
 |||
 
 
-### <a name="two-further-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két további javaslata elavult
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult
 
 **Változás becsült dátuma:** Április 2021
 
@@ -110,7 +62,7 @@ A következő két javaslat elavult:
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Az AWS javaslatai az általánosan elérhetővé tételhez lesznek közzétéve
 
-**Változás becsült dátuma:** Április 2021
+**Változás becsült dátuma:** Augusztus 2021
 
 Azure Security Center védi a munkaterheléseket az Azure-ban, a Amazon Web Services (AWS) és a Google Cloud Platformban (GCP).
 
@@ -121,7 +73,7 @@ Ezzel a módosítással az AWS-javaslatok két halmaza kerül át a GA-ra:
 - [A Security hub PCI DSS vezérlői](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
 - [Biztonsági központ CIS AWS-alapjai – teljesítményteszt-vezérlők](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
 
-Ha ezek a GA és a felmérések az AWS-erőforrásokon futnak, az eredmények az összes multi-és hibrid Felhőbeli erőforrás együttes biztonsági pontszámát is befolyásolják. 
+Ha ezek a GA és a felmérések az AWS-erőforrásokon futnak, az eredmények az összes multi-és hibrid Felhőbeli erőforrás együttes biztonsági pontszámát is befolyásolják.
 
 
 

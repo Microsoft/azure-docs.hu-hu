@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 889a04d68de45a6270ae0c38615d841a526ad86a
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052143"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490692"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Az adatgyűjtési szabályok (előzetes verzió) használatával konfigurálhatja a virtuális gépek elemzését a vendég állapotában
 A [virtuális gép elemzése lehetővé teszi](vminsights-health-overview.md) a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést több virtuális gépen az adatgyűjtési szabályok használatával.
@@ -175,17 +175,17 @@ Egy vagy több olyan karakterlánc listája, amely meghatározza, hogy az állap
 A következő táblázat az aktuálisan elérhető figyelők neveit sorolja fel.
 
 | Típus neve | Név | Leírás |
-|:---|:---|:---|
-| legfelső szintű | legfelső szintű | A virtuális gép állapotát jelképező legfelső szintű figyelő. | |
-| CPU-kihasználtság | CPU-kihasználtság | CPU-kihasználtsági figyelő. | |
-| logikai lemezek | logikai lemezek | A Windows rendszerű virtuális gépen lévő összes figyelt lemez állapotának összesítési figyelője. | |
-| logikai lemezek\|* | logikai – \| C lemezek:<br>logikai lemezek \| D: | Egy adott lemez Windows rendszerű virtuális gépen való nyomon követési állapotát összesítő figyelő. | 
-| logikai lemezek – \| * \| szabad terület | logikai lemezek \| C: \| szabad terület<br>logikai lemezek – \| D: \| szabad terület | Lemezes szabad terület figyelője a Windows rendszerű virtuális gépen. |
+|:----------|:-----|:------------|
+| legfelső szintű | legfelső szintű | A virtuális gép állapotát jelképező legfelső szintű figyelő. |
+| CPU-kihasználtság | CPU-kihasználtság | CPU-kihasználtsági figyelő. |
+| logikai lemezek | logikai lemezek | A Windows rendszerű virtuális gépen lévő összes figyelt lemez állapotának összesítési figyelője. |
+| logikai lemezek\|\* | logikai – \| C lemezek:<br>logikai lemezek \| D: | Egy adott lemez Windows rendszerű virtuális gépen való nyomon követési állapotát összesítő figyelő. |
+| logikai lemezek – \| \* \| szabad terület | logikai lemezek \| C: \| szabad terület<br>logikai lemezek – \| D: \| szabad terület | Lemezes szabad terület figyelője a Windows rendszerű virtuális gépen. |
 | fájlrendszerek | fájlrendszerek | A Linux rendszerű virtuális gépen lévő összes fájlrendszer állapotának összesített figyelője. |
-| fájlrendszerek\|* | fájlrendszerek\|/<br>fájlrendszerek \| /mnt | Egy Linux rendszerű virtuális gép fájlrendszerének nyomon követési állapotának összesítése. | fájlrendszerek|/var/log |
-| fájlrendszerek \| * \| – szabad terület | fájlrendszerek \| / \| – szabad terület<br>fájlrendszerek \| /mnt \| szabad terület | Lemezes szabad terület figyelője a Linux rendszerű virtuális gépek fájlrendszerén. | 
-| memória | memória | A virtuális gép memóriájának állapotára vonatkozó összesített figyelő. | |
-| \|rendelkezésre álló memória| \|rendelkezésre álló memória | A virtuális gépen a rendelkezésre álló memória nyomon követése. | |
+| fájlrendszerek\|\* | fájlrendszerek\|/<br>fájlrendszerek \| /mnt | Egy Linux rendszerű virtuális gép fájlrendszerének nyomon követési állapotának összesítése. |
+| fájlrendszerek \| \* \| – szabad terület | fájlrendszerek \| / \| – szabad terület<br>fájlrendszerek \| /mnt \| szabad terület | Lemezes szabad terület figyelője a Linux rendszerű virtuális gépek fájlrendszerén. |
+| memória | memória | A virtuális gép memóriájának állapotára vonatkozó összesített figyelő. |
+| \|rendelkezésre álló memória | \|rendelkezésre álló memória | A virtuális gépen a rendelkezésre álló memória nyomon követése. |
 
 
 ## <a name="alertconfiguration-element"></a>alertConfiguration elem

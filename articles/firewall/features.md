@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 21bb1856409b7fbea1eeffb8b3769dd63119da50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612847"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278184"
 ---
 # <a name="azure-firewall-features"></a>Az Azure Firewall funkciói
 
@@ -55,7 +55,7 @@ Azure Firewall Availability Zones a Availability Zones támogató régiókban é
 > [!NOTE]
 > Availability Zones csak az üzembe helyezés során állítható be. Meglévő tűzfal nem konfigurálható úgy, hogy tartalmazza a Availability Zones.
 
-További információ a Availability Zonesről: [régiók és Availability Zones az Azure-ban](../availability-zones/az-overview.md)
+További információ a Availability Zonesről: [régiók és Availability Zones az Azure-ban](../availability-zones/az-overview.md).
 
 ## <a name="unrestricted-cloud-scalability"></a>Korlátlan felhőalapú skálázhatóság
 
@@ -86,6 +86,8 @@ A [fenyegetésekkel kapcsolatos intelligencia](threat-intel.md)-alapú szűrés 
 A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet lefordít az Azure Firewall nyilvános IP-címére (forráshálózati címfordítás, SNAT). Azonosíthatja és engedélyezheti a virtuális hálózatból a távoli internetes célhelyekre irányuló forgalmat. A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány. 
 
 Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall a SNAT a AzureFirewallSubnet-ben lévő egyik tűzfal magánhálózati IP-címére irányítja át a forgalmat. A Azure Firewall konfigurálhatja úgy, hogy **ne** SNAT a nyilvános IP-címtartományt. További információ: [Azure Firewall SNAT magánhálózati IP-címtartományok](snat-private-range.md).
+
+Azure Firewall mérőszámokban figyelheti a SNAT-portok kihasználtságát. További információ: SNAT-portok kihasználtságának ismertetése a [tűzfal naplófájljaiban és a metrikák dokumentációjában](logs-and-metrics.md#metrics).
 
 ## <a name="inbound-dnat-support"></a>Bejövő DNAT-támogatás
 

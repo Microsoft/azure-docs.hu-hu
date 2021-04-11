@@ -9,18 +9,18 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 361a151d1f1835f82e440704105cf8b3844a4c54
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461113"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221625"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-SQL Server modul üzembe helyezése Azure IoT Edge-t futtató linuxos eszközön tárolt adattároláshoz.
+Helyezzen üzembe egy SQL Server modult, amely a Linux-tárolókkal Azure IoT Edge futtató eszközökön tárolja az adattárolást.
 
 Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kérdezhet le a peremhálózaton. Azure IoT Edge rendelkezik az üzenetek gyorsítótárazásához szükséges alapszintű tárolási képességekkel, ha egy eszköz offline állapotba kerül, majd továbbítja őket a kapcsolat újbóli létrehozásakor. Szüksége lehet azonban ennél fejlettebb tárolási képességekre is, például az adatok helyi lekérdezéséhez. A IoT Edge-eszközök a helyi adatbázisokkal összetettebb számítási feladatokat hajthatnak végre anélkül, hogy fenn kellene tartaniuk a IoT Hubhoz való kapcsolódást.
 
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* Azure IoT Edge rendszert futtató AMD64-eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
+* A Linux-tárolókat Azure IoT Edge futtató AMD64-es eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
   * Az ARM-eszközök (például a málna PiS) nem futhatnak SQL Server. Ha az SQL-t egy ARM-eszközön szeretné használni, regisztráljon az [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) előzetes verziójának kipróbálásához.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.

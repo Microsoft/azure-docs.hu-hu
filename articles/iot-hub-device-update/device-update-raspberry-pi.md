@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b6a9fa3ac85460a46653c171198a2dfea8580f3a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644494"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121336"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz a málna PI 3 B és a Reference kép használatával
 
@@ -81,7 +81,7 @@ Olvassa el az ügynök használata előtti licencfeltételeket. A telepítés é
 
 Az eszközt most fel kell venni az Azure IoT Hubba.  Az Azure IoT Hubban létrejön egy, az eszközhöz tartozó kapcsolatok karakterlánca.
 
-1. A Azure Portal indítsa el az eszköz frissítési IoT Hubját.
+1. A Azure Portal indítsa el az Azure IoT Hubt.
 2. Hozzon létre egy új eszközt.
 3. A lap bal oldalán navigáljon a "felfedezők" > "IoT-eszközök" > válassza az "új" lehetőséget.
 4. Adja meg az eszköz nevét az "eszköz azonosítója" alatt – ellenőrizze, hogy be van-e jelölve az "autogeneráló kulcsok" jelölőnégyzet.
@@ -103,9 +103,9 @@ Az eszközt most fel kell venni az Azure IoT Hubba.  Az Azure IoT Hubban létrej
  
 Cserélje le a `<device connection string>` karakterláncot a saját kapcsolatok karakterlánccá
  ```markdown
-    echo "connection_string=<device connection string>" > adu-conf.txt  
-    echo "aduc_manufacturer=ADUTeam" >> adu-conf.txt
-    echo "aduc_model=RefDevice" >> adu-conf.txt
+    echo "connection_string=<device connection string>" > /adu/adu-conf.txt  
+    echo "aduc_manufacturer=ADUTeam" >> /adu/adu-conf.txt
+    echo "aduc_model=RefDevice" >> /adu/adu-conf.txt
    ```
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>Az eszköz csatlakoztatása az eszköz frissítése IoT Hub
@@ -127,9 +127,9 @@ Használja ezt a verziószámot az alábbi frissítés importálása lépésben.
 
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com) , és navigáljon a IoT hub.
 
-2. A bal oldali navigációs ablaktáblán található "IoT-eszközök" vagy "IoT Edge" közül keresse meg a IoT-eszközt, és keresse meg az eszköz Ikerét.
+2. A bal oldali navigációs ablaktáblán található "IoT-eszközök" vagy "IoT Edge" közül keresse meg a IoT eszközt, és navigáljon a Twin vagy a modulhoz.
 
-3. A Twin (eszközök) készletben törölje a meglévő eszköz frissítési címke értékét a NULL értékre állításával.
+3. Az eszköz-frissítési ügynök moduljának különálló moduljában törölje a meglévő eszköz frissítési címke értékét a NULL értékre állításával. Ha eszköz-identitást használ az eszköz frissítési ügynökével, végezze el ezeket a módosításokat az eszközön.
 
 4. Vegyen fel egy új eszköz frissítési címke értékét az alább látható módon.
 

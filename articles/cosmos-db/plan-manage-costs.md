@@ -6,13 +6,13 @@ ms.author: sngun
 ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 98e849791acd71ea8bf3ac9cb1949da9f562e749
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602146"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490828"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Az Azure Cosmos DB költségeinek megtervezése és kezelése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,11 @@ A Azure Cosmos DB kétféle kapacitási módot támogat: [kiépített átviteli 
 
 A Cost Analysis Cost Management támogatja a legtöbb Azure-fiók típusát, de nem mindegyiket. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). A költségadatok megtekintéséhez legalább olvasási hozzáférésre van szüksége egy Azure-fiókhoz. További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
-## <a name="estimating-provisioned-throughput-costs-before-using-azure-cosmos-db"></a>A kiépített átviteli sebesség becslése a használata előtt Azure Cosmos DB
+## <a name="estimate-costs-before-using-azure-cosmos-db"></a>A költségek becslése a használata előtt Azure Cosmos DB
+
+Azure Cosmos DB két különböző kapacitású üzemmódban érhető el: kiépített átviteli sebesség és kiszolgáló nélküli. Mindkét módban ugyanazokat az adatbázis-műveleteket hajthatja végre, de a műveletek számlázásának módja eltér.
+
+### <a name="estimate-provisioned-throughput-costs"></a>Kiosztott átviteli sebesség becslése
 
 Ha Azure Cosmos DB kiépített átviteli sebességű módban szeretné használni, akkor az Azure Cosmos-fiók erőforrásainak létrehozása előtt a [Azure Cosmos db kapacitás-kalkulátor](https://cosmos.azure.com/capacitycalculator/) használatával becsülje meg a költségeket. A kapacitás-kalkulátor segítségével megbecsülheti a számítási feladatok szükséges átviteli sebességét és költségeit. Az Azure Cosmos-adatbázisok és-tárolók konfigurálása a számítási feladatokhoz megfelelő mennyiségű kiépített átviteli sebességgel vagy a [kérelmek egységével (ru/s)](request-units.md)a számítási feladatokhoz elengedhetetlen, hogy optimalizálja a költségeket és a teljesítményt. Olyan részleteket kell beírnia, mint például az API-típus, a régiók száma, az elem mérete, az olvasási/írási kérelmek másodpercenkénti száma, a teljes tárolt adat a költségbecslés érdekében. Ha többet szeretne megtudni a kapacitás-kalkulátorról, tekintse meg a [becslést](estimate-ru-with-capacity-planner.md) ismertető cikket.
 
@@ -39,7 +43,7 @@ Az alábbi képernyőfelvételen az átviteli sebesség és a költségbecslés 
 
 :::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Költségbecslés a Azure Cosmos DB Capacity kalkulátorban":::
 
-## <a name="estimating-serverless-costs-before-using-azure-cosmos-db"></a><a id="estimating-serverless-costs"></a> Kiszolgáló nélküli költségek becslése a használata előtt Azure Cosmos DB
+### <a name="estimate-serverless-costs"></a><a id="estimating-serverless-costs"></a> Kiszolgáló nélküli költségek becslése
 
 Ha kiszolgáló nélküli módban tervezi használni a Azure Cosmos DBt, meg kell becsülnie, hogy hány [kérelem-egység](request-units.md) és GB tárterületet használ fel havi rendszerességgel. A kért egységek mennyiségét a havonta kiállított adatbázis-műveletek számának kiértékelésével becsülheti meg, és a megfelelő RU-költségeket megszorozva. A következő táblázat az általános adatbázis-műveletek becsült költségét sorolja fel:
 
@@ -58,6 +62,26 @@ Miután kiszámította a kérelmek teljes számát és a GB-nyi tárterületet, 
 
 > [!NOTE]
 > Az előző példában bemutatott költségek csak demonstrációs célokat szolgálnak. A legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+
+## <a name="understand-the-full-billing-model"></a>A teljes számlázási modell ismertetése
+
+Azure Cosmos DB olyan Azure-infrastruktúrán fut, amely új erőforrások telepítésekor költségekkel jár. Fontos tisztában lenni azzal, hogy lehetséges, hogy további infrastrukturális költségek merülhetnek fel.
+
+### <a name="how-youre-charged-for-azure-cosmos-db"></a>A Azure Cosmos DB díja
+
+Azure Cosmos DB erőforrások létrehozásakor vagy használatakor a következő mérőszámokra lehet fizetni:
+
+* **Adatbázis-műveletek** – a kiosztott vagy felhasznált kérési egységek (ru/s) alapján kell fizetnie:
+  * Standard (manuális) kiépített átviteli sebesség – a tárolón vagy adatbázison kiépített RU/s óradíjat számoljuk fel.
+  * Kiépített átviteli sebesség – a rendszer a maximálisan engedélyezett RU/mp-k száma alapján számlázza.
+
+* **Felhasznált tárterület** – az adatai és az indexek egy adott órán belül felhasznált teljes tárolási mennyiségét (GB-ban) számítjuk fel.
+
+A Azure Cosmos DB szolgáltatások, például a biztonsági mentési tár, az analitikai tárolás, a rendelkezésre állási zónák és a többrégiós írások használata esetén további díjat számítunk fel. A számlázási ciklus végén az egyes mérőszámok díjait összegzi a rendszer. A számla vagy számla az összes Azure Cosmos DB költség szakaszát mutatja. Az egyes fogyasztásmérők külön sorban szerepelnek. További információt a [díjszabási modellről](how-pricing-works.md) szóló cikkben talál.
+
+### <a name="using-azure-prepayment"></a>Azure-előfizetések használata
+
+Az Azure-előfizetéssel ellátott kreditek esetén Azure Cosmos DB díjat is fizethet. Az Azure-beli előfizetési kreditek azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>A becsült költségek áttekintése az Azure Portalon
 
@@ -79,7 +103,7 @@ Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak neve
 
 A Azure Cosmos DBekkel rendelkező erőforrások használatakor költségek merülnek fel. Az erőforrás-használati egység költségei az időintervallumok (másodperc, perc, óra és nap) vagy a kérési egység használata szerint változnak. Amint a Azure Cosmos DB használata megkezdődik, a költségek felmerülnek, és a Azure Portal [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ablaktáblájában láthatja őket.
 
-A Cost Analysis használatakor különböző időintervallumok esetén megtekintheti a Azure Cosmos DBi költségeket gráfokban és táblázatokban. Néhány példa: nap, aktuális, előző hónap és év. A költségeket a költségvetések és az előre jelzett költségek között is megtekintheti. Ha a hosszabb nézetekre vált, az idő múlásával azonosíthatja a kiadási trendeket, és megtekintheti, hogy hol történt a túltöltés. Ha költségvetéseket hozott létre, azt is megteheti, hogy a megadottak hol vannak túllépve. 
+A Cost Analysis használatakor különböző időintervallumok esetén megtekintheti a Azure Cosmos DBi költségeket gráfokban és táblázatokban. Néhány példa: nap, aktuális, előző hónap és év. A költségeket a költségvetések és az előre jelzett költségek között is megtekintheti. Ha a hosszabb nézetekre vált, az idő múlásával azonosíthatja a kiadási trendeket, és megtekintheti, hogy hol történt a túltöltés. Ha költségvetéseket hozott létre, azt is megteheti, hogy a megadottak hol vannak túllépve.
 
 Azure Cosmos DB költségek megtekintése a Cost Analysis szolgáltatásban:
 
@@ -90,7 +114,7 @@ Azure Cosmos DB költségek megtekintése a Cost Analysis szolgáltatásban:
 1. Alapértelmezés szerint az összes szolgáltatás díja megjelenik az első fánk-diagramon. Válassza ki a diagramot a "Azure Cosmos DB" címkével.
 
 1. Egy szolgáltatás, például a Azure Cosmos DB költségeinek szűkítéséhez válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév** lehetőséget. Ezután válassza ki a **Azure Cosmos db** elemet a listából. Íme egy példa, amely csak a Azure Cosmos DBra vonatkozó költségeket mutatja:
- 
+
    :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Költségek figyelése a Cost Analysis ablaktáblával":::
 
 Az előző példában a február hónapra vonatkozóan a Azure Cosmos DB aktuális díja látható. A diagramok a hely és az erőforráscsoport szerint Azure Cosmos DB költségeket is tartalmazzák.
@@ -105,14 +129,27 @@ A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgálta
 
 A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
+## <a name="other-ways-to-manage-and-reduce-costs"></a>A költségek kezelésének és csökkentésének egyéb módjai
+
+A következő ajánlott eljárások a költségek csökkentéséhez használhatók:
+
+* A [kiépített átviteli sebesség optimalizálása](optimize-cost-throughput.md) – ez a cikk részletesen ismerteti az átviteli sebesség optimalizálásának ajánlott eljárásait. Leírja, hogy mikor kell kiépíteni az átviteli sebességet a tároló szintjén és az adatbázis szintjén a munkaterhelés típusa alapján.
+
+* A [kérések optimalizálásának optimalizálása](optimize-cost-reads-writes.md) – ez a cikk azt ismerteti, hogy az olvasási és írási kérelmek milyen módon fordíthatók le a kérési egységekre, és hogyan optimalizálható a kérelmek díja.
+
+* A [tárolási költségeket](optimize-cost-storage.md) tároló díjszabásának optimalizálása a használat alapján történik. Megtudhatja, hogyan optimalizálhatja a tárolási költségeket az elemek méretével, az indexelési szabályzattal, ha olyan szolgáltatásokat használ, mint például a hírcsatorna és az idő megváltozása.
+
+* [Többrégiós díj optimalizálása](optimize-cost-regions.md) – ha egy vagy több használaton kívüli olvasási régióval rendelkezik, hajtsa végre a lépéseket, hogy az olvasási régiókban lévő, a hírcsatornát a beolvasott régión belüli maximális kihasználtságot használja, vagy helyezze át egy másik másodlagosra, ha túlzott kihasználtságú.
+
+* A [fejlesztési és tesztelési költségeket optimalizálhatja](optimize-dev-test.md) – megtudhatja, hogyan optimalizálhatja a fejlesztési költségeket a helyi emulátor, a Azure Cosmos db ingyenes réteg, az ingyenes Azure-fiók és néhány egyéb lehetőség használatával.
+
+* A [költségek optimalizálása fenntartott kapacitással](cosmos-db-reserved-capacity.md) – megtudhatja, hogyan használhatja a fenntartott kapacitást úgy, hogy pénzt takarítson meg, ha egy vagy három évre Azure Cosmos db erőforrásokra vonatkozó foglalást tesz elérhetővé.
+
 ## <a name="next-steps"></a>Következő lépések
 
 A díjszabással kapcsolatos további információkért tekintse meg a következő cikkeket Azure Cosmos DB:
 
 * [Díjszabási modell az Azure Cosmos DB-ben](how-pricing-works.md)
-* [A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben](optimize-cost-throughput.md)
-* [A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben](./optimize-cost-reads-writes.md)
-* [A tárterület költségeinek optimalizálása az Azure Cosmos DB-ben](optimize-cost-storage.md)
 * Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 * További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.
 * További információ a [váratlan költségek megelőzéséről](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

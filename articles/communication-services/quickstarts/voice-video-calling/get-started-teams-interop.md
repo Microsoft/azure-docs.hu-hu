@@ -8,14 +8,16 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 39c35bc90986126d099e68023e15b97c58d0ac26
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e75d2b480a9cbfd2977d9d449c1ea12bdfe4920
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108183"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095611"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Gyors útmutató: a hívó alkalmazás csatlakoztatása egy Teams-értekezlethez
+
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!IMPORTANT]
 > A [csapat bérlői együttműködésének](../../concepts/teams-interop.md)engedélyezéséhez vagy letiltásához fejezze be [ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u).
@@ -33,6 +35,14 @@ Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal, ha a JavaScript SD
 ::: zone pivot="platform-ios"
 [!INCLUDE [Calling with iOS](./includes/teams-interop-ios.md)]
 ::: zone-end
+
+A jelen dokumentumban ismertetett funkciók a kommunikációs szolgáltatások SDK-k általános availablity verzióját használják. A csapatok együttműködéséhez a kommunikációs szolgáltatások SDK-k bétaverziója szükséges. A Beta SDK-kat a [kibocsátási megjegyzések lapon](https://github.com/Azure/Communication/tree/master/releasenotes)lehet feltárni.
+
+Ha a "csomag telepítése" lépést a bétaverziós SDK-k használatával hajtja végre, módosítsa a csomag verzióját a legújabb bétaverzióra úgy, hogy megadja a `@1.0.0-beta.10` csomag nevét (a cikk írásakor) a verzió (verzió) verzióját `communication-calling` . Nem kell módosítania a `communication-common` Package parancsot. Például:
+
+```console
+npm install @azure/communication-calling@1.0.0-beta.10 --save
+```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

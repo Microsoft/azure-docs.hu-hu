@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87f52bef07644370c268168c984a452d5ae3f9bd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585407"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279459"
 ---
 # <a name="trusted-storage-for-media-services"></a>Megbízható tárterület Media Services
 
@@ -29,7 +29,7 @@ Ha azonban tűzfalat szeretne használni a Storage-fiók biztonságossá tétel�
 
 ## <a name="tutorial"></a>Oktatóanyag
 
-További információt a megbízható tárolás engedélyezéséről a [Media Services megbízható tárolóval](tutorial-trusted-storage-rest.md) foglalkozó oktatóanyagban talál.
+További információt a megbízható tárolás engedélyezéséről a [Media Services megbízható tárolóval](security-trusted-storage-rest-tutorial.md) foglalkozó oktatóanyagban talál.
 
 > [!NOTE]
 > Ahhoz, hogy a Media Services képes legyen olvasni és írni a Storage-fiókot, meg kell adnia az AMS által felügyelt identitás tárolójának blob-adatközreműködői hozzáférését.  Az általános közreműködő szerepkör megadása nem fog működni, mert nem engedélyezi a megfelelő engedélyeket az adatsíkon.

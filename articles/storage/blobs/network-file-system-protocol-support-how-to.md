@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428643"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490454"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
 
@@ -82,7 +82,7 @@ A fiók konfigurálásakor válassza ki a következő értékeket:
 
 |Beállítás | Prémium szintű teljesítmény | Standard teljesítmény  
 |----|---|---|
-|Hely|Az összes elérhető régió |A következő régiók egyike: Kelet-Ausztrália, Korea középső régiója és az USA déli középső régiója   
+|Hely|Az összes elérhető régió |A következő régiók egyike: Kelet-Ausztrália, Korea középső régiója, USA keleti régiója és az USA déli középső régiója   
 |Teljesítmény|Prémium| Standard
 |Fiók altípusa|BlockBlobStorage| Általános célú v2
 |Replikáció|Helyileg redundáns tárolás (LRS)| Helyileg redundáns tárolás (LRS)

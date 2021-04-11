@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712317"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490488"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással
 
@@ -291,8 +291,8 @@ Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Ne
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent (klasszikus) | %-Os mintavétel sikertelen (klasszikus) | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs (klasszikus) | Átlagos menetidő (MS) (klasszikus) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |
-| ChecksFailedPercent | %-Os ellenőrzés sikertelen | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs | Oda-és visszaút ideje (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| ChecksFailedPercent | %-Os ellenőrzés sikertelen | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
+| RoundTripTimeMs | Oda-és visszaút ideje (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
 | TestResult | Teszt eredménye | Darabszám | Átlag | A Csatlakozáskezelő teszt eredménye | SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Metrika-alapú riasztások a kapcsolatok figyelője számára
@@ -358,6 +358,8 @@ Az Azure-beli virtuális gépeket forrásként szolgáló hálózatok esetében 
     * A két átjáró közötti alagút le van választva vagy hiányzik.
     * A második átjáró nem található az alagútban.
     * Nem található egyenrangú információ.
+> [!NOTE]
+> Ha két csatlakoztatott átjáró található, és az egyik nem ugyanabban a régióban található, mint a forrás végpont, a CM a topológia nézet "nincs útvonal megtanult" értékének megfelelően azonosítja. Nincs hatással a kapcsolat. Ez egy ismert probléma, és a javítás folyamatban van. 
 * Az útvonal hiányzik a Microsoft Edge-ben.
 * A forgalom a rendszerútvonalak vagy a UDR miatt leállt.
 * A BGP nincs engedélyezve az átjáró-kapcsolatban.

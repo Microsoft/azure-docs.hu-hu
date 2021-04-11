@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a87525248273db38e4e7bc8d1b59bbd9f99bb4c6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c334888f5b85b0d2211225282680d5f791b50793
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106990"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277878"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Magas rendelkezésre állás a Media Services és a videó igény szerint (VOD)
 
@@ -61,7 +61,7 @@ Ez a magas szintű diagram a rendelkezésre álló minta architektúráját muta
 
 * [Hozzon létre](./account-create-how-to.md) két (vagy több) Azure Media Services fiókot. A két fióknak különböző régiókban kell lennie. További információ: [a Azure Media Services szolgáltatást telepítő régiók](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
 * Töltse fel az adathordozót ugyanabba a régióba, ahonnan el szeretné küldeni a feladatot. A kódolás megkezdésével kapcsolatos további információkért lásd: [a feladatok bevitele HTTPS URL-](./job-input-from-http-how-to.md) címről vagy egy [helyi fájlból származó feladatok létrehozása](./job-input-from-local-file-how-to.md).
-* Ha ezt követően újra el kell küldenie a [feladatot](./transforms-jobs-concept.md) egy másik régióba, használhatja `JobInputHttp` vagy használhatja az `Copy-Blob` adatok másolását a forrásként szolgáló tárolóból a másik régióban lévő eszköz-tárolóba.
+* Ha ezt követően újra el kell küldenie a [feladatot](./transform-jobs-concept.md) egy másik régióba, használhatja `JobInputHttp` vagy használhatja az `Copy-Blob` adatok másolását a forrásként szolgáló tárolóból a másik régióban lévő eszköz-tárolóba.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -72,10 +72,10 @@ Ez a magas szintű diagram a rendelkezésre álló minta architektúráját muta
 
     További információk:
 
-    * Tekintse meg a [Hangelemzési mintát](./transforms-jobs-concept.md) , amely bemutatja, hogyan figyelheti meg a feladatokat a Azure Event Grid, beleértve a tartalék hozzáadását abban az esetben, ha a Azure Event Grid üzenetek valamilyen okból késleltetve vannak.
+    * Tekintse meg a [Hangelemzési mintát](./transform-jobs-concept.md) , amely bemutatja, hogyan figyelheti meg a feladatokat a Azure Event Grid, beleértve a tartalék hozzáadását abban az esetben, ha a Azure Event Grid üzenetek valamilyen okból késleltetve vannak.
     * Tekintse meg [Media Services események Azure Event Grid sémáit](./media-services-event-schemas.md).
 
-* A [feladatok](./transforms-jobs-concept.md)létrehozásakor:
+* A [feladatok](./transform-jobs-concept.md)létrehozásakor:
     * Véletlenszerűen válasszon ki egy fiókot a jelenleg használt fiókok listájából (ez a lista általában mindkét fiókot tartalmazza, de ha problémát észlel, akkor csak egy fiókot tartalmazhat). Ha a lista üres, riasztást küld, hogy az operátor megvizsgálja.
     * Hozzon létre egy rekordot, amellyel nyomon követheti az egyes fedélzeti feladatokat, valamint a használt régiót/fiókot.
 * Ha a `JobStateChange` kezelő értesítést kap arról, hogy egy adott tevékenység elérte az ütemezett állapotot, jegyezze fel az ütemezett állapotba és a használt régióba/fiókba való belépés időpontját.

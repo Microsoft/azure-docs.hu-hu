@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5dd6735b5ef17f97de1d2272bd98f6b87b0bc84b
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 8d495c04d5753c3771a0870659cc92fb1e604216
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553090"
+ms.locfileid: "107031205"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>Áttelepítési útmutató: az IBM DB2 – Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Ez az útmutató bemutatja, hogyan telepítheti át IBM DB2-adatbázisait Azure SQL Databasere a DB2-SQL Server Migration Assistant használatával. 
+Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) az IBM DB2-adatbázisait Azure SQL Databasere, [SQL Server áttelepítési](https://azure.microsoft.com/migration/migration-journey) segéd használatával a DB2-hez. 
 
 Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatói](https://docs.microsoft.com/data-migration). 
 
@@ -35,7 +35,7 @@ A DB2-adatbázis SQL Databasera való áttelepíthető a következőkre van szü
 
 ## <a name="pre-migration"></a>A migrálás előtt
 
-Az előfeltételek teljesítése után készen áll a környezet topológiájának felderítésére és az áttelepítés megvalósíthatóságának értékelésére. 
+Az előfeltételek teljesítése után készen áll a környezet topológiájának felderítésére és az Azure-beli [Felhőbeli áttelepítés](https://azure.microsoft.com/migration)megvalósíthatóságának felmérésére.
 
 ### <a name="assess-and-convert"></a>Értékelés és átalakítás
 
@@ -174,7 +174,8 @@ Az adatsql mérnöki csapat fejlesztette ezeket az erőforrásokat. A csapat ala
 
 - Ha többet szeretne megtudni a Felhőbeli Migrálás keretrendszeréről és bevezetési ciklusáról, tekintse meg a következőt:
    -  [Felhőbevezetési keretrendszer az Azure-hoz](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Ajánlott költségszámítási és méretezési eljárások az Azure-ba migrált számítási feladatokhoz](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Ajánlott költségszámítási és méretezési eljárások az Azure-ba migrált számítási feladatokhoz](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
+   -  [Erőforrások Cloud Migration](https://azure.microsoft.com/migration/resources) 
 
 - Az alkalmazás-hozzáférési réteg értékeléséhez lásd: [adathozzáférés áttelepítési eszközkészlete](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Az A/B típusú adatelérési réteg végrehajtásával kapcsolatos további információkért lásd: [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

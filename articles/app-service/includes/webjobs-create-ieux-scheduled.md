@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ef0aa8ba1983ca30fd44c27fe570b6b5f51733a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5105df5793d37b166b017585a62c962933a0b019
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101745672"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081137"
 ---
 ## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a> Ütemezett Webjobs létrehozása
 
@@ -31,7 +31,7 @@ ms.locfileid: "101745672"
     
     | Beállítás      | Mintaérték   |
     | ------------ | ----------------- | 
-    | <abbr title="Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és a és a nem tartalmazhat különleges `-` karaktereket `_` .">Name</a> | myScheduledWebJob |  |
+    | <abbr title="Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és a és a nem tartalmazhat különleges `-` karaktereket `_` .">Name</a> | myScheduledWebJob | 
     | <abbr title="A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl.">Fájlfeltöltés</abbr> | ConsoleApp.zip |
     | <abbr title="A típusok között folyamatos, aktivált.">Típus</abbr> | Kiváltott |
     | <abbr title="Ahhoz, hogy az ütemezés megbízhatóan működjön, engedélyezze az Always On funkciót. Az Always on csak az alapszintű, a standard és a prémium szintű díjszabásban érhető el.">Triggerek</a> | Ütemezett |

@@ -190,7 +190,7 @@
           href: delivery-and-retry.md
         - name: Webhook-eseménykézbesítés
           href: webhook-event-delivery.md
-        - name: Kézbesítési tulajdonságok
+        - name: Egyéni kézbesítési tulajdonságok
           href: delivery-properties.md
     - name: Vészhelyreállítás
       items:
@@ -280,9 +280,9 @@
               href: enable-identity-custom-topics-domains.md
             - name: Felügyelt identitás engedélyezése a rendszer témakörében
               href: enable-identity-system-topics.md
-            - name: Identitás hozzáadása az Azure-szerepkörökhöz célhelyeken
+            - name: Felügyelt identitás engedélyezése a Event Grid célhoz való hozzáféréshez
               href: add-identity-roles.md
-            - name: Identitást használó esemény-előfizetések létrehozása
+            - name: A felügyelt identitást használó esemény-előfizetés létrehozása
               href: managed-service-identity.md
         - name: Események biztonságos kézbesítése privát kapcsolaton keresztül
           href: consume-private-endpoints.md

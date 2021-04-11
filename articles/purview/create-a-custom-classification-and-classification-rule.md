@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 2/5/2021
-ms.openlocfilehash: 2966618619aa40ed60c2f3d0fb2c8e080d34a016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/24/2021
+ms.openlocfilehash: 7d6baee49250509e50cdeeea8cf8ca6cec5b362d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617046"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222156"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Egyéni besorolások az Azure hatáskörébe
 
@@ -28,7 +28,7 @@ Lehetősége van egyéni besorolások létrehozására is, ha az alapértelmezet
 
 ## <a name="steps-to-create-a-custom-classification"></a>Egyéni besorolás létrehozásának lépései
 
-Egyéni besorolás létrehozásához tegye a következőket:
+Egyéni besorolás létrehozásához kövesse az alábbi lépéseket:
 
 1. A katalógusból válassza a bal oldali menü **felügyeleti központ** elemét.
 
@@ -68,7 +68,7 @@ Ezek az adatok tartalmazzák a példányok számát, a formális nevet, a társ�
 
 ## <a name="custom-classification-rules"></a>Egyéni besorolási szabályok
 
-A Catalog szolgáltatás az alapértelmezett besorolási szabályok készletét biztosítja, amelyet a képolvasó az egyes adattípusok automatikus észlelésére használ. A saját egyéni besorolási szabályait is hozzáadhatja más típusú adattípusok észleléséhez, amelyeket érdemes lehet megkeresni az adatközpontban. Ez a funkció nagyon hatékony lehet, ha \' újra megpróbálja megtalálni az adatbirtokon belüli adatait.
+A Catalog szolgáltatás az alapértelmezett besorolási szabályok készletét biztosítja, amelyet a képolvasó az egyes adattípusok automatikus észlelésére használ. A saját egyéni besorolási szabályait is hozzáadhatja más típusú adattípusok észleléséhez, amelyeket érdemes lehet megkeresni az adatközpontban. Ez a képesség akkor lehet hatékony, ha az adatbirtokon belül próbál meg megkeresni egy adatmennyiséget.
 
 Tegyük fel például, \' hogy egy contoso nevű vállalat olyan alkalmazotti azonosítókkal rendelkezik, amelyek a vállalaton belül szabványosítva vannak a szó \" alkalmazottal, \" majd egy GUID-t a (z) {GUID} alkalmazott létrehozásához. Például az alkalmazotti azonosító egy példánya úgy néz ki, mint `EMPLOYEE9c55c474-9996-420c-a285-0d0fc23f1f55` .
 
@@ -109,7 +109,7 @@ Egyéni besorolási szabály létrehozása:
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Új regex-szabály létrehozása" border="true":::
 
-1. Ha úgy dönt, hogy létrehoz egy javasolt regex-mintát, a fájl feltöltése után válasszon ki egyet a javasolt minták közül, majd kattintson a **Hozzáadás a mintákhoz** lehetőségre a javasolt adattípusok és az oszlopok mintáinak használatához. Megadhatja a javasolt mintákat, vagy a fájl feltöltése nélkül is beírhatja saját mintáit.
+1. Ha úgy dönt, hogy létrehoz egy javasolt regex-mintát, a fájl feltöltése után válasszon ki egy javasolt mintát, és válassza a **Hozzáadás a mintákhoz** lehetőséget a javasolt adattípusok és az oszlopok mintázatának használatához. Megadhatja a javasolt mintákat, vagy a fájl feltöltése nélkül is beírhatja saját mintáit.
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Javasolt regex készítése" border="true":::
 
@@ -128,6 +128,14 @@ Egyéni besorolási szabály létrehozása:
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Szabály ellenőrzése a létrehozás előtt" border="true":::
 
+1. A létrehozási folyamat befejezése előtt tesztelje a besorolási szabályt annak ellenőrzéséhez, hogy az alkalmazás címkéket fog-e alkalmazni az eszközeire. A szabályban szereplő besorolásokat a rendszer a vizsgálat során éppen feltöltött mintaadatok alapján alkalmazza. Ez azt jelenti, hogy a rendszer az összes rendszerbesorolást és az egyéni besorolást a fájl adataihoz fogja egyeztetni.
+
+   A bemeneti fájlok tartalmazhatnak tagolt fájlokat (CSV, PSV, SSV, TSV), JSON vagy XML-tartalmat. A tartalom a bemeneti fájl fájlkiterjesztés alapján lesz értelmezve. A tagolt adatmennyiséghez tartozhat egy fájlkiterjesztés, amely megfelel a felsorolt típusok bármelyikének. A TSV-beli adatfájlok például egy MySampleData.csv nevű fájlban létezhetnek. A tagolt tartalomnak is legalább 3 oszlopból kell állnia.
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-screen.png" alt-text="Szabály tesztelése a létrehozás előtt" border="true":::
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-uploaded-file-result-screen.png" alt-text="Alkalmazott besorolások megtekintése egy tesztüzenet feltöltése után" border="true":::
+
 ### <a name="creating-a-dictionary-rule"></a>Szótári szabály létrehozása
 
 1. Ha szótári szabályt hoz létre, a következő képernyő jelenik meg. Töltsön fel egy olyan fájlt, amely az egyetlen oszlopban létrehozott besorolás összes lehetséges értékét tartalmazza.
@@ -136,9 +144,9 @@ Egyéni besorolási szabály létrehozása:
 
 1. A szótár létrehozása után módosíthatja a különböző egyeztetési és a minimális egyezési küszöbértékeket, és elküldheti a szabályt.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Hatáskörébe tartozó szótári szabály – a különböző egyezési küszöbérték és a minimális egyezési küszöbérték módosítása" border="true":::
+- **Eltérő egyezési küszöbérték**: az oszlopokban a képolvasó által az adatmintázat futtatása előtt megtalált különböző adatértékek teljes száma. A különböző egyeztetési küszöbértéknek semmi köze a mintázat megfeleltetéséhez, de ez a minta egyeztetésének előfeltétele. A javasolt érték 8. Ez az érték 2 és 32 közötti tartományba állítható be manuálisan. A rendszernek ezt az értéket kell megadnia ahhoz, hogy az oszlop elegendő adatmennyiséget tartalmazzon a képolvasó számára a pontos besoroláshoz. Például egy olyan oszlop, amely az 1 értéket tartalmazó több sort tartalmaz, nem lesz besorolva. Azokat az oszlopokat, amelyek egy értéket tartalmazó sort tartalmaznak, és a sorok többi része null értékű, nem lesz besorolva. Ha több mintázatot ad meg, ez az érték mindenre vonatkozik.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Szótár-szabály létrehozása, ha a szótár jelölőnégyzet be van jelölve." border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Szótár szabály létrehozása Dictionary-Generated pipa jellel." border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 
