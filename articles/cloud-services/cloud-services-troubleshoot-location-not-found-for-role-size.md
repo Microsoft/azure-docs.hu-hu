@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558958"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109662"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>A LocationNotFoundForRoleSize hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor
 
@@ -47,7 +47,8 @@ Ebben a forgatókönyvben egy másik régiót vagy SKU-t kell kiválasztania a C
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Az Azure CLI-t használó régióban található SKU-lista listázása
 
-Használhatja az az [VM List-SKUs](/cli/azure/vm.html#az_vm_list_skus) parancsot.
+Használhatja az [az VM List-SKUs] (/CLI/Azure/VM? View = Azure-CLI-Latest)
+#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) parancs.
 
 - A `--location` paraméter használatával szűrheti a kimenetet a használt helyre.
 - A paraméter használatával a `--size` részleges méret neve alapján kereshet.

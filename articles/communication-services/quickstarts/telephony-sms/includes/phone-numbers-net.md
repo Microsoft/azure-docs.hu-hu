@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 07a8d792bbb17df1401b5892b09fb7ff2f5f8e52
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0bfb23977f6553568da24df614621bdf1eb9d06d
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629378"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112998"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,16 +38,16 @@ dotnet build
 Miközben még mindig az alkalmazás könyvtárában van, telepítse az Azure Communication PhoneNumbers a .NET-csomaghoz a `dotnet add package` parancs használatával.
 
 ```console
-dotnet add package Azure.Communication.PhoneNumbers --version 1.0.0-beta.5
+dotnet add package Azure.Communication.PhoneNumbers --version 1.0.0-beta.6
 ```
 
 Adjon hozzá egy `using` direktívát a **programhoz. cs** , hogy tartalmazza a névtereket.
 
 ```csharp
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Azure.Communication.PhoneNumbers;
-using Azure.Communication.PhoneNumbers.Models;
 ```
 
 Frissítse `Main` a függvény aláírását aszinkron értékre.
@@ -61,7 +61,7 @@ static async Task Main(string[] args)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-A telefonszám-ügyfelek a [Azure Portal] [azure_portal] Azure kommunikációs erőforrásaiból beszerzett kapcsolati karakterlánc használatával hitelesíthetők.
+A telefonszám-ügyfeleket a [Azure Portal] [azure_portal] Azure kommunikációs erőforrásaiból beszerzett kapcsolati karakterlánc használatával lehet hitelesíteni.
 
 ```csharp
 // Get a connection string to our Azure Communication resource.
@@ -98,20 +98,20 @@ A telefonszámok keresésének eredménye a következő: `PhoneNumberSearchResul
 
 ```csharp
 var purchaseOperation = await client.StartPurchasePhoneNumbersAsync(searchOperation.Value.SearchId);
-await purchaseOperation.WaitForCompletionAsync();
+await purchaseOperation.WaitForCompletionResponseAsync();
 ```
 
 ### <a name="get-phone-numbers"></a>Telefonszám (ok) beolvasása
 
 A vásárlást követően lekérheti azt az ügyfélről.
 ```csharp
-var getPhoneNumberResponse = await client.GetPhoneNumberAsync("+14255550123");
+var getPhoneNumberResponse = await client.GetPurchasedPhoneNumberAsync("+14255550123");
 Console.WriteLine($"Phone number: {getPhoneNumberResponse.Value.PhoneNumber}, country code: {getPhoneNumberResponse.Value.CountryCode}");
 ```
 
 Lekérheti az összes megvásárolt telefonszámot is.
 ``` csharp
-var purchasedPhoneNumbers = client.GetPhoneNumbersAsync();
+var purchasedPhoneNumbers = client.GetPurchasedPhoneNumbersAsync();
 await foreach (var purchasedPhoneNumber in purchasedPhoneNumbers)
 {
     Console.WriteLine($"Phone number: {purchasedPhoneNumber.PhoneNumber}, country code: {purchasedPhoneNumber.CountryCode}");
@@ -134,7 +134,7 @@ Megvásárolt telefonszámot is felszabadíthat.
 
 ````csharp
 var releaseOperation = await client.StartReleasePhoneNumberAsync("+14255550123");
-await releaseOperation.WaitForCompletionAsync();
+await releaseOperation.WaitForCompletionResponseAsync();
 ````
 
 ## <a name="run-the-code"></a>A kód futtatása

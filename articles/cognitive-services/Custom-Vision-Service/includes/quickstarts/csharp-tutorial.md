@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efbd5b455f825b0ce77da7d1e59876ca9b1facf5
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: b247613ba02f897d2c0b02fc12ecd4a974cffdf4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104803308"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113217"
 ---
 Ismerkedjen meg a .NET-hez készült Custom Vision ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a képbesorolási modell létrehozásához szükséges példát. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
 
@@ -96,7 +96,7 @@ Az alkalmazás **fő** metódusában hozzon létre változókat az erőforrás k
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Custom Vision erőforrások telepítése sikeresen megtörtént, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsok és a végpont az erőforrások **kulcs és végpont** oldalain található. A betanítási és előrejelzési kulcsokat is meg kell kapnia, valamint a képzési erőforrások végpontját.
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Custom Vision erőforrások telepítése sikeresen megtörtént, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsok és a végpont az erőforrások **kulcs és végpont** oldalain található. Be kell szereznie a képzési és előrejelzési erőforrások kulcsait, valamint a képzési erőforrás API-végpontját.
 >
 > A jóslat erőforrás-azonosító értékét az erőforrás **Tulajdonságok** lapján, az **előfizetés azonosítója** mezőben találja.
 > 

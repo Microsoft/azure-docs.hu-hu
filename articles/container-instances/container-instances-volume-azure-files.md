@@ -2,23 +2,27 @@
 title: Azure Files kötet csatlakoztatása a tároló csoportjához
 description: Megtudhatja, hogyan csatlakoztathat Azure Files kötetet az állapot megőrzéséhez Azure Container Instances
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 03/24/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09a4d9922a4f9ba4296fc194d72c621fecb8342d
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954974"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968900"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure-fájlmegosztás csatlakoztatása az Azure Container Instancesben
 
 Az Azure Container Instances alapértelmezés szerint állapot nélküli. Ha a tároló újraindul, összeomlik vagy leáll, az összes állapota elvész. Ha azt szeretné, hogy az állapot a tároló élettartamán túl is megmaradjon, külső tárból kell csatlakoztatnia egy kötetet. Ahogy az ebben a cikkben is látható, Azure Container Instances csatlakoztathat [Azure Files](../storage/files/storage-files-introduction.md)használatával létrehozott Azure-fájlmegosztást. A Azure Files teljes körűen felügyelt, az Azure Storage-ban üzemeltetett fájlmegosztást kínál, amelyek az iparági szabványnak megfelelő SMB protokollon keresztül érhetők el. Az Azure-fájlmegosztás Azure Container Instances használatával olyan fájlmegosztási funkciókat biztosít, mint az Azure-fájlmegosztás Azure-beli virtuális gépekkel való használata.
 
+## <a name="limitations"></a>Korlátozások
+
+* Azure Files-megosztásokat csak Linux-tárolók csatlakoztatására lehet csatlakoztatni. Tekintse át a Linux és a Windows Container groups szolgáltatás támogatásának különbségeit az [áttekintésben](container-instances-overview.md#linux-and-windows-containers).
+* Az Azure fájlmegosztás kötet csatlakoztatásához a Linux-tárolónak *root* -ként kell futnia.
+* Az Azure fájlmegosztás mennyiségi csatlakoztatása a CIFS-támogatásra korlátozódik.
+
 > [!NOTE]
-> Egy Azure Files-megosztás csatlakoztatása jelenleg csak Linux-tárolók számára engedélyezett. A platform aktuális eltéréseit az [áttekintésben](container-instances-overview.md#linux-and-windows-containers)találja.
->
-> A Azure Files-megosztások tároló-példányhoz való csatlakoztatása hasonló a Docker- [kötés csatlakoztatásához](https://docs.docker.com/storage/bind-mounts/). Ügyeljen arra, hogy ha egy megosztást egy olyan tároló-könyvtárba csatlakoztat, amelyben a fájlok vagy a címtárak találhatók, akkor ezeket a fájlokat vagy címtárakat a csatlakoztatás elrejti, és a tároló futtatásakor nem érhetők el.
+> A Azure Files-megosztások tároló-példányhoz való csatlakoztatása hasonló a Docker- [kötés csatlakoztatásához](https://docs.docker.com/storage/bind-mounts/). Ha olyan tároló-könyvtárba csatlakoztat egy megosztást, amelyben a fájlok vagy könyvtárak léteznek, a csatlakoztatás elrejti a fájlokat vagy a címtárakat, így a tároló futtatása közben elérhetetlenné válik.
 >
 
 > [!IMPORTANT]

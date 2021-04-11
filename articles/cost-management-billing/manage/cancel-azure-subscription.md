@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b20134cbfb85c2dcaef1227e6390c8c6047ad5be
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735775"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109390"
 ---
 # <a name="cancel-your-azure-subscription"></a>Az Azure-előfizetés lemondása
 
@@ -77,6 +77,10 @@ Ha ingyenes próbaverziós előfizetéssel rendelkezik, nem kell 30 napot várni
 1. Válassza ki a törölni kívánt előfizetést.
 1. Válassza az **Áttekintés** lehetőséget, majd az **Előfizetés törlése** elemet.
 
+## <a name="delete-other-subscriptions"></a>Egyéb előfizetések törlése
+
+A manuálisan törölhető előfizetés csak az ingyenes próbaverziós előfizetés lehet. Az összes többi előfizetés-típust, beleértve az utólagos elszámolású előfizetéseket is, csak az [előfizetés megszakítási](#cancel-subscription-in-the-azure-portal) folyamata törli. Más szóval nem lehet közvetlenül törölni az előfizetést, kivéve, ha az ingyenes próbaverziós előfizetés. Az előfizetés lemondása után azonban létrehozhat egy [Azure-támogatási kérelmet](https://go.microsoft.com/fwlink/?linkid=2083458) , amely arra kéri, hogy azonnal törölje az előfizetést.
+
 ## <a name="reactivate-a-subscription"></a>Előfizetés újraaktiválása
 
 Ha véletlenül megszakítja az előfizetését az utólagos elszámolású díjszabással, akkor [újraaktiválhatja azt a Azure Portal](subscription-disabled.md).
@@ -89,7 +93,7 @@ Előfordulhat, hogy nem rendelkezik az előfizetés lemondásához szükséges e
 
 ## <a name="how-do-i-delete-my-azure-account"></a>Hogyan törölhetem az Azure-fiókomat?
 
-*El kell távolítanom a fiókomat, az összes személyes adatommal együtt. Már lemondtam az aktív (ingyenes próbaverziós) előfizetéseseimet. Nincs aktív előfizetésem, és törölni szeretném a fiókomat*.
+*El kell távolítani a fiókomat, beleértve az összes személyes adatot. Már megszakítottam az aktív (ingyenes próbaverziós) előfizetéseket. Nincs aktív előfizetésem, és szeretném teljesen törölni a fiókomat*.
 
 * Ha a szervezete biztosítja az Azure Active Directory-fiókot az Ön számára, akkor az Azure AD-rendszergazda tudja törölni a fiókot. Ezt követően a szolgáltatások le lesznek tiltva. Ez azt jelenti, hogy virtuális gépei felszabadultak, az ideiglenes IP-címek szabadok, a tárterület pedig csak olvasható. Összefoglalva: a lemondás után a számlázás azonnal leáll.
 

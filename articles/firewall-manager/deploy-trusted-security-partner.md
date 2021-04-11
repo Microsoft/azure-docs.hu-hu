@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/31/2021
 ms.author: victorh
-ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96485722"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109509"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Biztonságipartner-szolgáltató üzembe helyezése
 
@@ -67,7 +67,7 @@ Ne feledje, hogy a VPN-átjárót központilag kell telepíteni ahhoz, hogy egy 
 
 ## <a name="configure-third-party-security-providers-to-connect-to-a-secured-hub"></a>Külső gyártótól származó biztonsági szolgáltatók konfigurálása biztonságos hubhoz való kapcsolódáshoz
 
-A virtuális központ VPN Gatewayhoz tartozó alagutak beállításához a harmadik féltől származó szolgáltatók hozzáférési jogokkal kell rendelkezniük a központhoz. Ehhez társítson egy egyszerű szolgáltatást az előfizetéséhez vagy az erőforráscsoporthoz, és adja meg a hozzáférési jogosultságokat. Ezeket a hitelesítő adatokat a portálon keresztül kell megadnia a harmadik féltől.
+A virtuális központ VPN Gatewayhoz tartozó alagutak beállításához a harmadik féltől származó szolgáltatók hozzáférési jogokkal kell rendelkezniük a központhoz. Ehhez társítson egy egyszerű szolgáltatást az előfizetéséhez vagy az erőforráscsoporthoz, és adja meg a hozzáférési jogosultságokat. Ezeket a hitelesítő adatokat a portálon keresztül kell megadnia a harmadik félnek.
 
 ### <a name="create-and-authorize-a-service-principal"></a>Egyszerű szolgáltatás létrehozása és engedélyezése
 
@@ -90,28 +90,25 @@ A virtuális központ VPN Gatewayhoz tartozó alagutak beállításához a harma
    
 2. Az Azure-beli Azure Virtual WAN-portálon megtekintheti az alagút létrehozási állapotát. Miután az alagutak az Azure-ban és a partner portálon **is megjelennek, folytassa a következő** lépésekkel, hogy beállítsa az útvonalakat annak kiválasztásához, hogy mely ágakat és virtuális hálózatok kell elküldeni az internetes forgalomnak a partnernek.
 
-## <a name="configure-route-settings"></a>Útvonal-beállítások konfigurálása
+## <a name="configure-security-with-firewall-manager"></a>Biztonság konfigurálása a Firewall Managerrel
 
 1. Keresse meg a Azure Firewall Manager-> biztonságos hubokat. 
 2. Válasszon egy hubot. A hub állapotának most már a **függőben lévő biztonsági kapcsolat** helyett **kiépítve** kell lennie.
 
    Győződjön meg arról, hogy a külső szolgáltató tud csatlakozni az elosztóhoz. A VPN-átjárón lévő alagutaknak **csatlakoztatott** állapotban kell lenniük. Ez az állapot jobban tükrözi a hub és a külső partner közötti kapcsolat állapotát az előző állapothoz képest.
-3. Válassza ki a hubot, és navigáljon az **útvonal beállításai** elemre.
+3. Válassza ki a hubot, és navigáljon a **biztonsági konfigurációkhoz**.
 
    Ha harmadik féltől származó szolgáltatót helyez üzembe a központba, az a hubot egy *biztonságos virtuális hubhoz* alakítja át. Ez biztosítja, hogy a harmadik féltől származó szolgáltató egy 0.0.0.0/0 (alapértelmezett) útvonalat Hirdessen a hubhoz. Az VNet-kapcsolatok és a központhoz csatlakoztatott helyek azonban nem kapják meg ezt az útvonalat, kivéve, ha nem engedélyezte, hogy mely kapcsolatokhoz kell ezt az alapértelmezett útvonalat választania.
-4. Az **internetes forgalom** területen válassza a **VNet** vagy az **ág – Internet** lehetőséget, vagy mindkettőt, hogy az útvonalak konfigurálva legyenek a harmadik féltől.
+4. Konfigurálja a virtuális WAN-biztonságot úgy, hogy az **internetes forgalmat** egy megbízható biztonsági partneren keresztül Azure Firewall és **privát forgalomon** keresztül állítja be. Ez automatikusan biztonságossá teszi az egyes kapcsolatokat a virtuális WAN-ban.
 
-   Ez csak azt jelzi, hogy milyen típusú forgalmat kell átirányítani a központba, de nem befolyásolja az útvonalakat a virtuális hálózatok vagy ágakon. Ezeket az útvonalakat a rendszer alapértelmezés szerint nem továbbítja a hubhoz csatolt összes virtuális hálózatok/ág számára.
-5. Ki kell választania a **biztonságos kapcsolatokat** , és ki kell választania azokat a kapcsolatokat, amelyeken ezeket az útvonalakat be kell állítani. Ez azt jelzi, hogy mely virtuális hálózatok/ágak indíthatják el az internetes forgalmat a külső szolgáltató felé.
-6. Az **útvonal beállításai** területen válassza a **biztonságos kapcsolatok** az internetes forgalom alatt lehetőséget, majd válassza ki a VNet vagy az ágakat (virtuális WAN-*helyeket* ) a biztonság érdekében. Válassza a **biztonságos internetes forgalom** lehetőséget.
-   ![Biztonságos internetes forgalom](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Váltson vissza a hubok lapra. A központ **biztonsági partnere szolgáltatójának** állapota most már  **védett**.
+   :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="Biztonsági konfiguráció":::
+5. Továbbá, ha a szervezete nyilvános IP-tartományokat használ a virtuális hálózatokban és a fiókirodákban, ezeket az IP-előtagokat explicit módon kell megadnia a **privát forgalmi előtagok** használatával. A nyilvános IP-címek előtagjai egyedileg vagy összesítésként adhatók meg.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Harmadik féltől származó szolgáltatással történő internetes forgalom ág-vagy VNet
 
 Ezt követően ellenőrizheti, hogy a VNet virtuális gépek vagy a fiókirodák hozzáférhetnek-e az internethez, és ellenőrizhetik, hogy a forgalom a külső szolgáltatás felé áramlik-e.
 
-Az útvonal-beállítás lépéseinek befejezése után a VNet virtuális gépek és a fiókirodák a 0/0-as vagy harmadik féltől származó szolgáltatási útvonalra kerülnek. Ezeket a virtuális gépeket nem lehet RDP-vagy SSH-kapcsolat. A bejelentkezéshez az [Azure Bastion](../bastion/bastion-overview.md) szolgáltatást egy társ VNet helyezheti üzembe.
+Az útvonal-beállítás lépéseinek befejezése után a VNet virtuális gépeket és a fiókirodákat is 0/0-re küldik a harmadik féltől származó szolgáltatási útvonalnak. Ezeket a virtuális gépeket nem lehet RDP-vagy SSH-kapcsolat. A bejelentkezéshez az [Azure Bastion](../bastion/bastion-overview.md) szolgáltatást egy társ VNet helyezheti üzembe.
 
 ## <a name="next-steps"></a>Következő lépések
 

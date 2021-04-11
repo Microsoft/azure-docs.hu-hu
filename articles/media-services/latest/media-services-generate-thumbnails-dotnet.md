@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3efb5aa864f0940b7b5aa6a9131da9ce8bd732ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 135c163c555bc30bea57ccbdf73bf0414a834da2
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092813"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109645"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>Miniatűrök készítése a .NET-es kódoló standard használatával
 
@@ -29,7 +29,7 @@ A Media Encoder Standard használatával [JPEG](https://en.wikipedia.org/wiki/JP
 
 ## <a name="recommended-reading-and-practice"></a>Ajánlott olvasás és gyakorlat
 
-Azt javasoljuk, hogy ismerkedjen meg az egyéni átalakításokkal, ha beolvassa a [kódolást egy egyéni átalakító-.net](customize-encoder-presets-how-to.md)használatával.
+Azt javasoljuk, hogy ismerkedjen meg az egyéni átalakításokkal, ha beolvassa a [kódolást egy egyéni átalakító-.net](encode-custom-presets-how-to.md)használatával.
 
 ## <a name="transform-code-example"></a>Példa a kód átalakítására
 

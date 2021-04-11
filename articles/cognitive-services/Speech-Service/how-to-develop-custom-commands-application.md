@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97935818"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553277"
 ---
 # <a name="develop-custom-commands-applications"></a>Egyéni parancsok alkalmazásának fejlesztése
 
@@ -212,7 +212,7 @@ Először szerkessze a meglévő `TurnOn` parancsot a több eszköz bekapcsolás
     | **Globális**          | Ki nem jelölt             |
     | **Kötelező**           | Bejelölve               |
     | **A kötelező paraméterre adott válasz**     | **Egyszerű szerkesztő** > `Which device do you want to control?`    | 
-    | **Típus**               | **Sztring**                |          |
+    | **Típus**               | **Sztring**                |     
     | **Konfigurálás**      | **Előre megadott bemeneti értékek elfogadása belső katalógusból** | 
     | **Előre megadott bemeneti értékek** | `tv`, `fan`               |
     | **Aliasok** ( `tv` )      | `television`, `telly`     |
@@ -633,7 +633,7 @@ Az egyéni parancsok válaszának egy másik módja a kimeneti hang kiválasztá
 > ![A minta mondatokat és paramétereket bemutató képernyőkép.](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> A nyilvános hangok esetében az neurális típusok csak bizonyos régiókban érhetők el. További információ: [beszédfelismerési szolgáltatás által támogatott régiók](./regions.md#standard-and-neural-voices).
+> A nyilvános hangok esetében az neurális típusok csak bizonyos régiókban érhetők el. További információ: [beszédfelismerési szolgáltatás által támogatott régiók](./regions.md#neural-and-standard-voices).
 >
 > Egyéni hangokat hozhat létre az **Egyéni** hangprojekt oldalon. További információ: [Bevezetés az egyéni hang használatába](./how-to-custom-voice.md).
 

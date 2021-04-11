@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault hozzáférési szabályzat (CLI) társítása
-description: Az Azure CLI használatával Key Vault hozzáférési szabályzatot rendelhet hozzá egy egyszerű szolgáltatáshoz vagy alkalmazás-identitáshoz.
+description: Az Azure CLI használata egy Key Vault hozzáférési szabályzat hozzárendeléséhez egy rendszerbiztonsági tag vagy egy alkalmazás identitása számára.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0c7910ac149c8de43eeac92913a0d314fcc1854e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934577"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968849"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Key Vault hozzáférési szabályzat kiosztása
 
-A Key Vault hozzáférési szabályzat meghatározza, hogy egy adott szolgáltatásnév, azaz egy alkalmazás vagy felhasználói csoport különböző műveleteket hajthat végre Key Vault [titkokon](../secrets/index.yml), [kulcsokon](../keys/index.yml)és [tanúsítványokon](../certificates/index.yml). Hozzáférési szabályzatokat a [Azure Portal](assign-access-policy-portal.md), az Azure CLI (ez a cikk) vagy [Azure PowerShell](assign-access-policy-powershell.md)használatával rendelhet hozzá.
+A Key Vault hozzáférési szabályzat meghatározza, hogy egy adott rendszerbiztonsági tag, azaz felhasználó, alkalmazás vagy felhasználói csoport különböző műveleteket hajthat végre Key Vault [titkokon](../secrets/index.yml), [kulcsokon](../keys/index.yml)és [tanúsítványokon](../certificates/index.yml). Hozzáférési szabályzatokat a [Azure Portal](assign-access-policy-portal.md), az Azure CLI (ez a cikk) vagy [Azure PowerShell](assign-access-policy-powershell.md)használatával rendelhet hozzá.
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -69,7 +69,7 @@ A kívánt engedélyek hozzárendeléséhez használja az az Key [Vault set-Poli
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
 ```
 
-Cserélje le a- `<object-id>` t az egyszerű szolgáltatásnév objektum-azonosítójával.
+Cserélje le a `<object-id>` azonosítót a rendszerbiztonsági tag objektumazonosítóára.
 
 `--secret-permissions` `--key-permissions` Az adott típusokhoz csak a, a és az `--certificate-permissions` engedélyek kiosztása szükséges. A, a és a engedélyezett értékei az az Key `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` [Vault set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) dokumentációjában találhatók.
 

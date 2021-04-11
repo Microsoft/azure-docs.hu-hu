@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bd46f013680d5cbc9e75a312206fdb2fdcac7ec
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730881"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109356"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
@@ -147,12 +147,12 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
 Itt talál további információt a HTTP + hencegő triggerből vagy műveletből származó kimenetekről. A HTTP + hencegés hívása ezt az információt adja vissza:
 
-| Tulajdonság neve | Típus | Description |
+| Tulajdonság neve | Típus | Leírás |
 |---------------|------|-------------|
 | fejlécek | object | A kérelemben szereplő fejlécek |
-| body (Törzs) | object | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| body (Törzs) | object | A kérelem szövegtörzsét tartalmazó objektum |
 | állapotkód | int | A kérelemben szereplő állapotkód |
-|||
+||||
 
 | Állapotkód | Description |
 |-------------|-------------|

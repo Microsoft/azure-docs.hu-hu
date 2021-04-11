@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan helyezheti üzembe az Azure SSIS integrációs 
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/22/2021
+ms.date: 04/02/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6007ce4b4c54d795ff2cc3188504db11c29219cc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740409"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256369"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul kiépítése Azure Data Factory
 
@@ -70,7 +70,7 @@ Az adatelőállító létrehozása után nyissa meg a Azure Portal áttekintés 
 
 ### <a name="from-the-data-factory-overview"></a>A Data Factory áttekintése
 
-1. Az **Első lépések** lapon válassza ki az **SSIS integrációs modul konfigurálása** csempét. 
+1. Az **első lépések** lapon válassza a **SSIS-integráció konfigurálása** csempét. 
 
    ![SSIS integrációs modul konfigurálása csempe](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -78,7 +78,7 @@ Az adatelőállító létrehozása után nyissa meg a Azure Portal áttekintés 
 
 ### <a name="from-the-authoring-ui"></a>A szerzői felhasználói felületen
 
-1. A Azure Data Factory felhasználói felületen váltson a **Szerkesztés** lapra, és válassza a **kapcsolatok** lehetőséget. Ezután váltson az **Integration Runtimes (integrációs** modulok) lapra, ahol megtekintheti a meglévő integrációs modulokat az adatgyárban. 
+1. A Azure Data Factory felhasználói felületen váltson a **kezelés** lapra, majd váltson az **Integration Runtimes (integrációs** modulok) lapra, ahol megtekintheti a meglévő integrációs modulokat az adatgyárban. 
 
    ![Meglévő integrációs modulok megtekintésére szolgáló kiválasztások](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -86,7 +86,7 @@ Az adatelőállító létrehozása után nyissa meg a Azure Portal áttekintés 
 
    ![Integrációs modul elérése a menüből](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. Az **integrációs modul telepítése** ablaktáblán válassza ki a **meglévő SSIS-csomagok az Azure csempén való végrehajtásához** , majd kattintson a **tovább** gombra.
+1. Az **integrációs modul telepítése** ablaktáblán válassza ki a **meglévő SSIS-csomagok az Azure csempén való végrehajtásához** , majd válassza a **Folytatás** lehetőséget.
 
    ![Integrációs modulok típusának megadása](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
@@ -116,7 +116,7 @@ Az **Integration Runtime telepítési** paneljének **általános beállítások
 
    1. A **pénz megtakarítása** lehetőségnél válassza a Azure Hybrid Benefit lehetőséget az integrációs futtatókörnyezethez: **Igen** vagy **nem**. Válassza az **Igen** lehetőséget, ha a frissítési garanciával rendelkező saját SQL Server licencét szeretné kihasználni a hibrid használattal járó költségmegtakarítással. 
 
-   1. Kattintson a **Tovább** gombra. 
+   1. Válassza a **Folytatás** lehetőséget. 
 
 ### <a name="deployment-settings-page"></a>Központi telepítési beállítások lap
 
@@ -158,7 +158,7 @@ Ha bejelöli a jelölőnégyzetet, a következő lépésekkel hozhatja létre a 
 
    1. A **katalógus-adatbázis szolgáltatási szintjéhez** válassza ki az adatbázis-kiszolgáló szolgáltatási SZINTJÉT a SSISDB üzemeltetéséhez. Válassza ki az alapszintű, a standard vagy a prémium szintet, vagy válasszon egy rugalmas készlet nevét.
 
-Jelölje be a **Kapcsolódás tesztelése** , ha alkalmazható, és ha sikeres, kattintson a **Tovább gombra**.
+Jelölje be a **Kapcsolódás tesztelése** , ha alkalmazható, és ha ez sikeres, válassza a **Folytatás** lehetőséget.
 
 #### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR Package Stores létrehozása
 
@@ -177,7 +177,7 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
    1. A **Package Store társított szolgáltatás** esetében válassza ki a meglévő társított szolgáltatást, amely tárolja a fájlrendszer/Azure Files/Azure SQL felügyelt példányhoz tartozó hozzáférési adatokat, ahol a csomagok telepítve vannak, vagy hozzon létre egy újat az **új** lehetőség kiválasztásával. Az **új társított szolgáltatás** ablaktáblán hajtsa végre a következő lépéseket. 
 
       > [!NOTE]
-      > Az Azure Files eléréséhez használhatja az **Azure file Storage** vagy a **fájlrendszerhez** társított szolgáltatásokat. Ha az **Azure file Storage** társított szolgáltatást használja, Azure-SSIS IR a Package Store jelenleg csak az **alapszintű** (nem a **fiók kulcsát** és az **sas URI**-t) hitelesítési módszert támogatja. Az **Azure file Storage** társított szolgáltatás **alapszintű** hitelesítésének használatához hozzáfűzheti `?feature.upgradeAzureFileStorage=false` Az ADF portál URL-címét a böngészőben. Azt is megteheti, hogy a **fájlrendszerhez** társított szolgáltatást használja a Azure Files eléréséhez. 
+      > Az Azure Files eléréséhez használhatja az **Azure file Storage** vagy a **fájlrendszerhez** társított szolgáltatásokat. Ha az **Azure file Storage** társított szolgáltatást használja, Azure-SSIS IR a Package Store jelenleg csak az **alapszintű** (nem a **fiók kulcsát** és az **sas URI**-t) hitelesítési módszert támogatja. 
 
       ![A társított szolgáltatások telepítési beállításai](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -188,8 +188,8 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
       1. A **Típus mezőben** válassza az **Azure file Storage**, az **Azure SQL felügyelt példány** vagy a **fájlrendszer** lehetőséget.
 
       1. Az integrációs modulon keresztül figyelmen kívül hagyhatja a **csatlakozást**, mivel mindig a Azure-SSIS IR használjuk a csomagok tárolóinak hozzáférési információinak beolvasására.
-
-      1. Ha az **Azure file Storage** lehetőséget választja, hajtsa végre az alábbi lépéseket. 
+      
+      1. Ha az **Azure file Storage** lehetőséget választja, a **hitelesítési módszerhez** válassza az **alapszintű** lehetőséget, majd hajtsa végre a következő lépéseket. 
 
          1. A **fiók kiválasztása módszer** esetében válassza **Az Azure-előfizetés** lehetőséget, vagy **adja meg manuálisan**.
          
@@ -199,21 +199,21 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
 
       1. Ha az **Azure SQL felügyelt példányát** választja, hajtsa végre az alábbi lépéseket. 
 
-         1. Válassza ki a **kapcsolódási sztringet** manuálisan, vagy a **Azure Key Vault** , ahol titkosként van tárolva.
+         1. Válassza ki a **kapcsolatok karakterláncát** , vagy a **Azure Key Vault** , ahol titkosként van tárolva.
          
          1. Ha a **kapcsolatok karakterláncát** választja, hajtsa végre az alábbi lépéseket. 
+             1. Ha az **Azure-előfizetés** lehetőséget választja, válassza ki a megfelelő **Azure-előfizetést**, a **kiszolgáló nevét**, a **végpont típusát** **és az** **adatbázis nevét**. Ha a **manuális bevitelt** választja, hajtsa végre az alábbi lépéseket. 
+                1.  A **teljes tartománynév** mezőben adja meg az `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` Azure SQL felügyelt példányának magán-vagy nyilvános végpontját. Ha megadja a privát végpontot, a **kapcsolat tesztelése** nem alkalmazható, mert az ADF felhasználói felülete nem tudja elérni.
 
-            1. A **teljes tartománynév** mezőben adja meg az `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` Azure SQL felügyelt példányának magán-vagy nyilvános végpontját. Ha megadja a privát végpontot, a **kapcsolat tesztelése** nem alkalmazható, mert az ADF felhasználói felülete nem tudja elérni.
-
-            1. Az **adatbázis neve** mezőbe írja be a következőt: `msdb` .
+                1. Az **adatbázis neve** mezőbe írja be a következőt: `msdb` .
                
             1. A **Hitelesítés típusa** beállításnál válassza az **SQL-hitelesítés**, a **felügyelt identitás** vagy az **egyszerű szolgáltatásnév** lehetőséget.
 
-            1. Ha az **SQL-hitelesítés** lehetőséget választja, adja meg a megfelelő **felhasználónevet** és **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
+                - Ha az **SQL-hitelesítés** lehetőséget választja, adja meg a megfelelő **felhasználónevet** és **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
 
-            1. Ha a **felügyelt identitás** lehetőséget választja, adja meg az ADF felügyelt identitás hozzáférését az Azure SQL felügyelt példányához.
+                -  Ha a **felügyelt identitás** lehetőséget választja, adja meg az ADF felügyelt identitás hozzáférését az Azure SQL felügyelt példányához.
 
-            1. Ha az **egyszerű szolgáltatásnév** lehetőséget választja, adja meg a megfelelő **egyszerű szolgáltatásnév** és **egyszerű szolgáltatásnév kulcsát** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
+                - Ha az **egyszerű szolgáltatásnév** lehetőséget választja, adja meg a megfelelő **egyszerű szolgáltatásnév** és **egyszerű szolgáltatásnév kulcsát** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
 
       1. Ha a **fájlrendszer** lehetőséget választja, adja meg annak a mappának az UNC elérési útját, ahol a csomagok telepítve vannak a **gazdagéphez**, valamint a megfelelő **felhasználónevet** és **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
 
@@ -221,7 +221,7 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
 
    1. A hozzáadott csomagok tárolói a **központi telepítési beállítások** lapon jelennek meg. Ha el szeretné távolítani őket, jelölje be a jelölőnégyzeteket, majd válassza a **Törlés** lehetőséget.
 
-Jelölje be a **Kapcsolódás tesztelése** , ha alkalmazható, és ha sikeres, kattintson a **Tovább gombra**.
+Jelölje be a **Kapcsolódás tesztelése** , ha alkalmazható, és ha ez sikeres, válassza a **Folytatás** lehetőséget.
 
 ### <a name="advanced-settings-page"></a>Speciális beállítások lap
 
@@ -241,7 +241,7 @@ Az **Integration Runtime telepítési** paneljének **Speciális beállítások*
 
    1. Válassza a **Folytatás** lehetőséget. 
 
-Az **Integration Runtime telepítési** paneljének **Összefoglalás** lapján tekintse át az összes kiépítési beállítást, könyvjelzővel az ajánlott dokumentációs hivatkozásokat, és válassza a **Befejezés** lehetőséget az integrációs modul létrehozásának megkezdéséhez. 
+Az **Integration Runtime telepítési** paneljének **Összefoglalás** lapján tekintse át az összes kiépítési beállítást, könyvjelzővel az ajánlott dokumentációs hivatkozásokat, és válassza a **Létrehozás** lehetőséget az integrációs modul létrehozásának elindításához. 
 
    > [!NOTE]
    > Az egyéni telepítési idő kizárása után a folyamatnak 5 percen belül be kell fejeződnie.

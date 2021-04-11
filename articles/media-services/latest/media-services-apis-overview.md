@@ -128,7 +128,7 @@ A AMSE egy nyílt forráskódú projekt, amely a Közösség által biztosított
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
-Lásd: [Azure Media Services entitások szűrése, rendezése és lapozása](entities-overview.md).
+Lásd: [Azure Media Services entitások szűrése, rendezése és lapozása](filter-order-page-entitites-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 

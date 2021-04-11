@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882229"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968611"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és SQL Server adatbázisai között
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ PowerShell-példák a SQL-adatszinkronizálás konfigurálásának módjáról: 
    | **Privát hivatkozás használata** | Válassza ki a szolgáltatás által felügyelt privát végpontot a szinkronizálási szolgáltatás és a hub-adatbázis közötti biztonságos kapcsolat létrehozásához. |
 
    > [!NOTE]
-   > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a **szinkronizálási metaadat-adatbázisként** való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat. Ez az adatbázis a kiválasztott régióban és előfizetésben lévő összes szinkronizálási csoport **szinkronizálási metaadat-adatbázisa** . Az adatbázis vagy a neve nem módosítható a régió összes szinkronizálási csoportjának és szinkronizálási ügynökének eltávolítása nélkül.
+   > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a **szinkronizálási metaadat-adatbázisként** való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat. Ez az adatbázis a kiválasztott régióban és előfizetésben lévő összes szinkronizálási csoport **szinkronizálási metaadat-adatbázisa** . Az adatbázis vagy a neve nem módosítható a régió összes szinkronizálási csoportjának és szinkronizálási ügynökének eltávolítása nélkül. Emellett a rugalmas feladatok adatbázisa nem használható SQL-adatszinkronizálás metaadat-adatbázisként, és fordítva.  
 
    Kattintson az **OK gombra** , és várja meg a szinkronizálási csoport létrehozását és üzembe helyezését.
    

@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 922a34bd1a147d407041d2945b14df18a18d7287
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed53cb60f6fb3bca93900941a8a6a53bed99d779
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104761233"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073766"
 ---
 Ha másik üzembe helyezési pontról klónozott konfigurációt telepít, a klónozott konfiguráció szerkeszthető. Egyes konfigurációs elemek követik a tartalmat a swap (nem tárolóhely-specifikus), míg az egyéb konfigurációs elemek ugyanazon a tárolóhelyen maradnak a swap (tárolóhely-specifikus) után. Az alábbi listában a tárolóhelyek cseréjekor megjelenő beállítások láthatók.
 
@@ -40,6 +40,7 @@ A csillaggal (*) jelölt funkciók nem lesznek lecserélve.
 * Eltérő eredetű erőforrások megosztása (CORS)
 * Virtuális hálózat integrációja
 * Elérésiút-megfeleltetések
+* Az utótaggal végződik beállítások _EXTENSION_VERSION
 
 > [!NOTE]
 > A beállítások megváltoztatásához adja hozzá az alkalmazás `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` minden egyes tárolóhelyén található alkalmazást, és állítsa az értékét a következőre: `0` vagy `false` . Ezek a beállítások vagy mind cserélhetők, akár egyáltalán nem. Csak néhány beállítás cserélhető, és nem.

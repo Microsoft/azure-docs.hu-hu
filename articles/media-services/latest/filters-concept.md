@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ba9a4d5ac427533c2ce005a74fe43b0ce80de79
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89291551"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109441"
 ---
 # <a name="filters"></a>Szűrők
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ha a tartalmat az ügyfeleknek (élő adatfolyam-továbbítási eseményeknek vagy igény szerinti videóknak) juttatja el, az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services az előre definiált szűrők alapján [dinamikus jegyzékfájlokat](filters-dynamic-manifest-overview.md) kínál. 
+Ha a tartalmat az ügyfeleknek (élő adatfolyam-továbbítási eseményeknek vagy igény szerinti videóknak) juttatja el, az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services az előre definiált szűrők alapján [dinamikus jegyzékfájlokat](filters-dynamic-manifest-concept.md) kínál. 
 
 A szűrők kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára a következő műveleteket: 
 
@@ -141,12 +141,12 @@ Az alábbi példa egy élő adatfolyam-szűrőt definiál:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Szűrők társítása a streaming Locator használatával
 
-Megadhatja az [eszköz vagy a fiók szűrőinek](filters-concept.md) listáját a [folyamatos átviteli lokátorban](/rest/api/media/streaminglocators/create#request-body). A [dinamikus](dynamic-packaging-overview.md) csomagolás alkalmazza a szűrők listáját, valamint azokat, amelyeket az ügyfél az URL-címben megad. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. 
+Megadhatja az [eszköz vagy a fiók szűrőinek](filters-concept.md) listáját a [folyamatos átviteli lokátorban](/rest/api/media/streaminglocators/create#request-body). A [dinamikus](encode-dynamic-packaging-concept.md) csomagolás alkalmazza a szűrők listáját, valamint azokat, amelyeket az ügyfél az URL-címben megad. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-concept.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. 
 
 Lásd az alábbi példákat:
 
-* [Szűrők hozzárendelése a streaming Locator-.NET-tel](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Szűrők hozzárendelése az adatfolyam-keresőhöz – parancssori felület](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Szűrők hozzárendelése a streaming Locator-.NET-tel](filters-dynamic-manifest-dotnet-how-to.md#associate-filters-with-streaming-locator)
+* [Szűrők hozzárendelése az adatfolyam-keresőhöz – parancssori felület](filters-dynamic-manifest-cli-how-to.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>Szűrők frissítése
  
@@ -161,5 +161,5 @@ Ha módosítani kell a szűrő definícióját, érdemes létrehozni egy új sz�
 A következő cikkek bemutatják, hogyan hozhat létre programozott módon szűrőket.  
 
 - [Szűrők létrehozása REST API-kkal](filters-dynamic-manifest-rest-howto.md)
-- [Szűrők létrehozása .NET használatával](filters-dynamic-manifest-dotnet-howto.md)
-- [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
+- [Szűrők létrehozása .NET használatával](filters-dynamic-manifest-dotnet-how-to.md)
+- [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-how-to.md)
