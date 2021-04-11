@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 76469f8b74b119c07374232899302fe1d18fe463
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731462"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074622"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-sablon üzembe helyezése what-if művelettel
 
@@ -32,7 +32,7 @@ A modulok telepítésével kapcsolatos további információkért lásd: [Instal
 
 ## <a name="install-azure-cli-module"></a>Az Azure CLI-modul telepítése
 
-A what-if Azure CLI-beli használatához az Azure CLI 2.5.0 vagy újabb verziója szükséges. Ha szükséges, [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli).
+Ha az Azure CLI-ben szeretné használni, akkor az Azure CLI-2.14.0 vagy újabb verzióját kell használnia. Ha szükséges, [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli).
 
 ## <a name="see-results"></a>Eredmények megtekintése
 
@@ -117,10 +117,10 @@ Ha színek nélkül szeretné visszaadni az eredményeket, nyissa meg az [Azure 
 
 REST API esetén használja a következőt:
 
-* [Központi telepítések – What if](/rest/api/resources/resources/deployments/whatif) az erőforráscsoportok üzembe helyezéséhez
-* [Központi telepítések –](/rest/api/resources/resources/deployments/whatifatsubscriptionscope) az előfizetések hatókörének What if az előfizetés központi telepítéséhez
-* [Központi telepítések – What if a felügyeleti csoport hatókörében](/rest/api/resources/resources/deployments/whatifatmanagementgroupscope) a felügyeleti csoportok központi telepítéséhez
-* [Központi telepítések – What if a bérlői hatókörben](/rest/api/resources/resources/deployments/whatifattenantscope) a bérlői környezetekben.
+* [Központi telepítések – What if](/rest/api/resources/deployments/whatif) az erőforráscsoportok üzembe helyezéséhez
+* [Központi telepítések –](/rest/api/resources/deployments/whatifatsubscriptionscope) az előfizetések hatókörének What if az előfizetés központi telepítéséhez
+* [Központi telepítések – What if a felügyeleti csoport hatókörében](/rest/api/resources/deployments/whatifatmanagementgroupscope) a felügyeleti csoportok központi telepítéséhez
+* [Központi telepítések – What if a bérlői hatókörben](/rest/api/resources/deployments/whatifattenantscope) a bérlői környezetekben.
 
 ## <a name="change-types"></a>Változástípusok
 

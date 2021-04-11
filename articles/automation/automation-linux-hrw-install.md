@@ -3,14 +3,14 @@ title: Linuxos hibrid Runbook-feldolgozó üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan telepíthet egy Azure Automation hibrid Runbook-feldolgozót a runbookok Linux-alapú gépeken való futtatásához a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21bb3a353874e401d86741584d102b5c217e69cc
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182332"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030049"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -106,6 +106,31 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 A hibrid Runbook-feldolgozók hálózati követelményeivel kapcsolatban lásd: [a hálózat konfigurálása](automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker telepítése
+
+A hibrid Runbook-feldolgozók üzembe helyezésére két módszer áll rendelkezésre. A Azure Portal importálhatja és futtathatja a runbook a Runbook-galériából, vagy egy több PowerShell-parancs futtatásával is végrehajthatja ugyanezt a feladatot.
+
+### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Runbook importálása a Runbook-gyűjteményből
+
+Az importálási eljárás részletes leírása a [Runbookok importálása a githubról a Azure Portal](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal). Az importálandó runbook neve az **Automation Linux-HybridWorker létrehozása**.
+
+A runbook a következő paramétereket használja.
+
+| Paraméter | Állapot | Leírás |
+| ------- | ----- | ----------- |
+| `Location` | Kötelező | A Log Analytics munkaterület helye. |
+| `ResourceGroupName` | Kötelező | Az Automation-fiókhoz tartozó erőforráscsoport. |
+| `AccountName` | Kötelező | Az Automation-fiók neve, amelyben a hibrid futtatású feldolgozó regisztrálva lesz. |
+| `CreateLA` | Kötelező | Ha az értéke TRUE (igaz), a az értékét használja `WorkspaceName` log Analytics munkaterület létrehozásához. Ha hamis, akkor a értékének `WorkspaceName` egy meglévő munkaterületre kell hivatkoznia. |
+| `LAlocation` | Választható | Az a hely, ahol a Log Analytics munkaterület létre lesz hozva, vagy ahol már létezik. |
+| `WorkspaceName` | Választható | A létrehozandó vagy használandó Log Analytics munkaterület neve. |
+| `CreateVM` | Kötelező | Ha az értéke TRUE (igaz), használja az értéket `VMName` egy új virtuális gép neveként. Ha hamis, `VMName` a használatával megkeresheti és regisztrálhatja a meglévő virtuális gépet. |
+| `VMName` | Választható | A létrehozott vagy regisztrált virtuális gép neve a (z) értékétől függően `CreateVM` . |
+| `VMImage` | Választható | A létrehozandó virtuálisgép-rendszerkép neve. |
+| `VMlocation` | Választható | A létrehozott vagy regisztrált virtuális gép helye. Ha nincs megadva ez a hely, a rendszer a értéket `LAlocation` használja. |
+| `RegisterHW` | Kötelező | Ha az értéke igaz, regisztrálja a virtuális gépet hibrid feldolgozóként. |
+| `WorkerGroupName` | Kötelező | A hibrid feldolgozói csoport neve. |
+
+### <a name="manually-run-powershell-commands"></a>PowerShell-parancsok manuális futtatása
 
 A Linux Hybrid Runbook Worker telepítéséhez és konfigurálásához hajtsa végre az alábbi lépéseket.
 

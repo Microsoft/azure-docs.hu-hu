@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92485375"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968305"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -58,7 +58,7 @@ A tűzfalbeállítások és a PostgreSQL-kiszolgáló paraméterei nem őrződne
 A helyreállítási mechanizmusból való visszaállítás után a következőket kell tennie a felhasználók és alkalmazások biztonsági mentésének és futtatásának visszaszerzéséhez:
 
 * Ha az új kiszolgáló lecseréli az eredeti kiszolgálót, átirányítja az ügyfeleket és az ügyfélalkalmazások az új kiszolgálóra
-* Gondoskodjon arról, hogy a felhasználók csatlakozzanak a megfelelő kiszolgálói szintű tűzfal-és VNet-szabályokhoz. Ezek a szabályok nem másolódnak át az eredeti kiszolgáló csoportjából.
+* Győződjön meg arról, hogy a felhasználók csatlakozhatnak a megfelelő kiszolgálói szintű tűzfallal. Ezek a szabályok nem másolódnak át az eredeti kiszolgáló csoportjából.
 * Szükség szerint módosítsa a PostgreSQL-kiszolgáló paramétereit. A paraméterek nem másolódnak át az eredeti kiszolgáló csoportjából.
 * Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
 * Konfigurálja a riasztásokat, ha szükséges.

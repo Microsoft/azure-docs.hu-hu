@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e43c472c939049e5dfd4ec4df909a3178ef8e2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100388583"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553260"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>A hanganyag-létrehozási eszközzel fejlesztheti a szintézist
 
@@ -44,7 +44,7 @@ Miután regisztrált az Azure-fiókra, létre kell hoznia egy beszédfelismerés
 Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz igénybe. Az üzembe helyezés befejezését követően elkezdheti a hangtartalom létrehozási menetét. 
 
  >[!NOTE]
-   > Ha azt tervezi, hogy neurális hangokat használ, győződjön meg arról, hogy az erőforrást [egy olyan régióban hozza létre, amely támogatja a neurális hangokat](regions.md#standard-and-neural-voices).
+   > Ha azt tervezi, hogy neurális hangokat használ, győződjön meg arról, hogy az erőforrást [egy olyan régióban hozza létre, amely támogatja a neurális hangokat](regions.md#neural-and-standard-voices).
  
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>3. lépés – jelentkezzen be a hangtartalom létrehozására az Azure-fiókkal és a beszédfelismerési erőforrással
 

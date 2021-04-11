@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ba730adaa1e3b111586012ba1849c6dc84d6db00
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609258"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553991"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Monitor használata az Azure szinapszis Analytics-munkaterülettel
 
@@ -103,10 +103,14 @@ Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** leh
 
 Az Azure szinapszis Analytics-munkaterületek által kibocsátott naplók a következők:
 
-| Log Analytics tábla neve | Naplózási kategória neve                 | Description |
-|-------------------------------|-------------------------------------------------|-------------|
-| SynapseGatewayApiRequests     | GatewayApiRequests             | Azure szinapszis Gateway API-kérelmek. |
-| SynapseRbacOperations         | SynapseRbacOperations          | Azure szinapszis szerepköralapú hozzáférés-vezérlési (SRBAC) műveletek. |
+| Log Analytics tábla neve       | Naplózási kategória neve              | Description          |
+|--------------------------------|--------------------------------|----------------------|
+| SynapseGatewayApiRequests      | GatewayApiRequests             | Azure szinapszis Gateway API-kérelmek. |
+| SynapseRbacOperations          | SynapseRbacOperations          | Azure szinapszis szerepköralapú hozzáférés-vezérlési (SRBAC) műveletek. |
+| SynapseBuiltinSqlReqsEnded     | BuiltinSqlReqsEnded            | Az Azure szinapszis beépített kiszolgáló nélküli SQL-készlettel zárult. |
+| SynapseIntegrationPipelineRuns | IntegrationPipelineRuns        | Az Azure szinapszis integrációs folyamata fut. |
+| SynapseIntegrationActivityRuns | IntegrationActivityRuns        | Az Azure szinapszis integrációs tevékenységének futtatása. |
+| SynapseIntegrationTriggerRuns  | IntegrationTriggerRuns         | Az Azure szinapszis integrációs trigger fut. |
 
 ### <a name="dedicated-sql-pool-logs"></a>Dedikált SQL Pool-naplók
 

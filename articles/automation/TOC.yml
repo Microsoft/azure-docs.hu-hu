@@ -116,7 +116,7 @@
           href: troubleshoot/shared-resources.md
     - name: Folyamatautomatizálás
       items:
-        - name: Runbookok és modulok használata a PowerShell-galériában
+        - name: Meglévő runbookok és modulok használata
           href: automation-runbook-gallery.md
         - name: A PowerShell-munkafolyamat megismerése
           href: automation-powershell-workflow.md

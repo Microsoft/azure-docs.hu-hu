@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: a794274248a12af97174dcc4e86bd4231e9d9dda
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727484"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074403"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -76,8 +76,8 @@ A következő kibocsátási megjegyzések a Azure File Sync-ügynök verzióján
     - Továbbfejlesztett változás-észlelési teljesítmény az Azure-fájlmegosztás által módosított fájlok észlelése érdekében.
     - Teljesítménybeli tökéletesítések az egyeztetések szinkronizálási munkameneteihez. 
     - A ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED és az ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED hibák csökkentése érdekében a szinkronizálási javításokat.
-    - A fájlok sikertelenek lehetnek a 2019-es kiszolgálón, ha az deduplikálás engedélyezve van a köteten.
-    - A AFSDiag nem tudja tömöríteni a fájlokat, ha a fájl nagyobb, mint a 2GiB.
+    - Kijavítva egy olyan hibát, amely miatt a fájlok sikertelenek lehetnek a 2019-es kiszolgálón, ha az deduplikálás engedélyezve van a köteten.
+    - Javítva egy hiba, amely miatt a AFSDiag nem tudja tömöríteni a fájlokat, ha egy fájl nagyobb, mint a 2GiB.
 
 ### <a name="evaluation-tool"></a>Kiértékelési eszköz
 Azure File Sync telepítése előtt ki kell értékelnie, hogy kompatibilis-e a rendszerrel a Azure File Sync próbaverziós eszköz használatával. Ez az eszköz egy Azure PowerShell parancsmag, amely a fájlrendszer és az adatkészlet esetleges problémáit ellenőrzi, például a nem támogatott karaktereket vagy az operációs rendszer nem támogatott verzióját. A telepítési és használati utasításokért tekintse meg a tervezési útmutató [kiértékelési eszköz](./storage-sync-files-planning.md#evaluation-cmdlet) című szakaszát. 

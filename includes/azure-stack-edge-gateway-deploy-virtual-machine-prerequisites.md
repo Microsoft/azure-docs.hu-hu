@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: e459ea1e9d8d7d51a62ba3ed1d2de8815a1b4222
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f166413507afb9aff814eaddaade099d2e34ae68
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104918"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554408"
 ---
 Mielőtt üzembe helyezi a virtuális gépeket az Azure Stack Edge-eszközön, konfigurálnia kell az ügyfelet, hogy Azure Resource Manageron keresztül kapcsolódjon az eszközhöz Azure PowerShellon keresztül. Részletes útmutatásért lásd: [kapcsolódás Azure Resource Managerhoz az Azure stack Edge-eszközön](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md).
 
@@ -23,9 +23,9 @@ Győződjön meg arról, hogy a következő lépésekkel fér hozzá az eszközh
 
 1. A helyi eszköz API-jai a hitelesítéshez való meghívásához írja be a következőt: 
 
-    `login-AzureRMAccount -EnvironmentName <Environment Name>`
+    `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d`
 
-    Azure Resource Manager használatával történő kapcsolódáshoz adja meg a Felhasználónév *EdgeARMuser* és a jelszavát.
+    Azure Resource Manager használatával történő kapcsolódáshoz adja meg a Felhasználónév *EdgeArmUser* és a jelszavát.
 
 1. Ha a Kubernetes-hez konfigurálta a számítást, kihagyhatja ezt a lépést. Ellenkező esetben ellenőrizze, hogy a hálózati adaptert engedélyezte-e a számításhoz a következő módon: 
 

@@ -23,6 +23,8 @@
   items:
     - name: Az ellenőrzött partnerek áttekintése
       href: .\validated-partners\data-management\partner-overview.md
+    - name: Áttelepítési eszközök összehasonlítása
+      href: ./validated-partners/data-management/migration-tools-comparison.md
   expanded: false
 - name: Elsődleges és másodlagos tárolási partnerek
   items:

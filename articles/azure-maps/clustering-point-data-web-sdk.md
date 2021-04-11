@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105608357"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Az `DataSource` osztály a következő módszereket biztosítja a fürtözéshez kapcsolódóan.
 
-| Metódus | Visszatérési típus | Description |
+| Metódus | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: szám) | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | getClusterExpansionZoom (clusterId: szám) | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
@@ -92,7 +92,7 @@ Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>fürtö
 
 Ha az egér eseményei olyan rétegen történnek, amely fürtözött adatpontokat tartalmaz, a fürtözött adatpont GeoJSON pont szolgáltatás objektumként tér vissza az eseményre. Ennek a pontnak a funkciója a következő tulajdonságokkal fog rendelkezni:
 
-| Tulajdonság neve             | Típus    | Description   |
+| Tulajdonság neve             | Típus    | Leírás   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
 | `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom` , `getClusterChildren` és `getClusterLeaves` metódusokkal. |

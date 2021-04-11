@@ -5,25 +5,28 @@ description: A Storage-fiókban tárolt adatvédelmet saját titkosítási kulcc
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 72f7130aad12ee2b5d463195b0b5c7847022bdfd
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645175"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059445"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz
 
 A Storage-fiókban tárolt adatvédelmet saját titkosítási kulccsal is elvégezheti. Felhasználó által kezelt kulcs megadásakor a megadott kulccsal védi és szabályozza az adatokat titkosító kulcs hozzáférését. A felhasználó által kezelt kulcsokkal rugalmasabban kezelhető a hozzáférés-vezérlés.
 
-Az ügyfél által felügyelt kulcsok tárolására Azure Key Vault vagy Azure Key Vault felügyelt hardveres biztonsági modul (HSM) (előzetes verzió) használata szükséges. Létrehozhatja saját kulcsait, és tárolhatja azokat a kulcstartóban vagy a felügyelt HSM-ben, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Storage-fióknak és a Key vaultnak vagy a felügyelt HSM-nek ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet.
+Az ügyfél által felügyelt kulcsok tárolásához a következő Azure-kulcsok egyikét kell használnia:
 
-További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
+- [Azure Key Vault](../../key-vault/general/overview.md)
+- [Azure Key Vault felügyelt hardveres biztonsági modul (HSM) (előzetes verzió)](../../key-vault/managed-hsm/overview.md)
+
+Létrehozhatja saját kulcsait, és tárolhatja azokat a kulcstartóban vagy a felügyelt HSM-ben, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Storage-fióknak és a Key vaultnak vagy a felügyelt HSM-nek ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet.
 
 > [!IMPORTANT]
 >

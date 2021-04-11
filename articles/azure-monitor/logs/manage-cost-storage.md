@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 64b794f4a749816af71f9c5f14dddf2bbcbc6512
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279612"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554042"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -494,7 +494,7 @@ Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 | Rendszernapló                     | Módosítsa a [rendszernapló konfigurációját](../agents/data-sources-syslog.md): <br> – Csökkentse a gyűjtésben részt vevő létesítmények számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* vagy *Hibakeresés* szintű eseményeket |
 | AzureDiagnostics           | [Erőforrás-napló gyűjteményének](../essentials/diagnostic-settings.md#create-in-azure-portal) módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldás célcsoportja](../insights/solution-targeting.md) csak a szükséges számítógépek adatainak gyűjtésére használható. |
-| Application Insights | A következő lehetőségeinek áttekintése: [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
+| Application Insights | A [Application Insights adatmennyiség kezelésére](../app/pricing.md#managing-your-data-volume) vonatkozó beállítások áttekintése |
 | [SQL-elemzés](../insights/azure-sql.md) | A naplózási beállítások finomhangolásához használja a [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) . |
 | Azure Sentinel | Tekintse át azokat a [Sentinel-adatforrásokat](../../sentinel/connect-data-sources.md) , amelyeket mostanában engedélyezett a további adatmennyiség forrásaként. |
 

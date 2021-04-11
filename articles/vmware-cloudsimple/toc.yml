@@ -178,6 +178,10 @@
               href: on-premises-connection.md
             - name: Azure virtuális hálózati kapcsolat ExpressRoute-tal
               href: azure-expressroute-connection.md
+    - name: Referencia
+      items:
+        - name: Azure CLI
+          href: /cli/azure/csvmware
     - name: Kibocsátási megjegyzések
       items:
         - name: CloudSimple – 2020. szeptemberi frissítés

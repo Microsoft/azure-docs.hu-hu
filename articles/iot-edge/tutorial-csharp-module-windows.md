@@ -9,12 +9,13 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: 84e5bbff11d0a5ff5d47ca43a3da54d1f1fb5555
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464061"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218855"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Oktatóanyag: C# IoT Edge-modulok fejlesztése Windows-tárolók használatával
 
@@ -23,7 +24,7 @@ ms.locfileid: "103464061"
 Ez a cikk bemutatja, hogyan hozhat létre C#-kódot a Visual Studióval, és hogyan telepítheti azt egy Azure IoT Edge rendszert futtató Windows-eszközre.
 
 >[!NOTE]
->IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatni fogja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem támogatottak. A Windows rendszerű eszközökön [IoT Edge Linux rendszeren](iot-edge-for-linux-on-windows.md) való használatának vagy áthelyezésének megfontolnia, hogy Windows-eszközökön fusson IoT Edge.
+>IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem támogatottak. A Windows rendszerű eszközökön [IoT Edge Linux rendszeren](iot-edge-for-linux-on-windows.md) való használatának vagy áthelyezésének megfontolnia, hogy Windows-eszközökön fusson IoT Edge.
 
 Azure IoT Edge-modulok használatával olyan programkódot helyezhet üzembe, amely közvetlenül a IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein.
 

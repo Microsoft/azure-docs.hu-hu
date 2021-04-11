@@ -244,12 +244,22 @@
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
             - name: Windows általánosított rendszerkép használata
               href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+            - name: A Windows speciális rendszerképének használata
+              href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
             - name: Támogatott virtuálisgép-méretek és -típusok
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
             - name: Kapcsolódás a VM-konzolhoz
               href: azure-stack-edge-gpu-connect-virtual-machine-console.md
             - name: Hálózati adapterek kezelése
               href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
+            - name: Lemezek kezelése
+              href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
+            - name: VIRTUÁLIS gépek méretének kezelése
+              href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+            - name: VM-címkék kezelése
+              href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
+            - name: Virtuális kapcsoló létrehozása
+              href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
         - name: Tanúsítványok kezelése
           items:
             - name: Követelmények

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
 ms.openlocfilehash: d6d8b1d08bbef1c37cbf0583022428037808580d
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105613059"
 ---
 # <a name="document-translation-get-document-storage-source"></a>Dokumentum fordítása: a dokumentum tárolási forrásának beolvasása
@@ -39,7 +39,7 @@ Megtudhatja, hogyan keresheti meg az [Egyéni tartománynevet](../get-started-wi
 
 A kérelem fejlécei:
 
-|Fejlécek|Description|
+|Fejlécek|Leírás|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Kötelező kérelem fejléce|
 
@@ -47,7 +47,7 @@ A kérelem fejlécei:
 
 A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
-|Állapotkód|Description|
+|Állapotkód|Leírás|
 |--- |--- |
 |200|OK gombra. Sikeres kérelem, amely a tárolási források listáját adja vissza.|
 |500|Belső kiszolgálóhiba.|
@@ -58,14 +58,14 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 ### <a name="successful-get-document-storage-source-response"></a>A dokumentum-tárolási forrás válaszának beolvasása sikeres
 A lista alaptípusa a dokumentum-tárolási forrás API beolvasása szolgáltatásban.
 
-|Név|Típus|Description|
+|Név|Típus|Leírás|
 |--- |--- |--- |
 |érték|karakterlánc []|Objektumok listája.|
 
 
 ### <a name="error-response"></a>Hiba válasza
 
-|Név|Típus|Description|
+|Név|Típus|Leírás|
 |--- |--- |--- |
 |code|sztring|A magas szintű hibakódokat tartalmazó enumerálások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
 |message|sztring|Magas szintű hibaüzenetet kap.|

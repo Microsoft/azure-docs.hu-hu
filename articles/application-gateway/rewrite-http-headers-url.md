@@ -2,17 +2,17 @@
 title: HTTP-fejlécek és URL-cím újraírása az Azure Application Gateway-vel | Microsoft Docs
 description: Ez a cikk áttekintést nyújt a HTTP-fejlécek és URL-címek újraírásáról az Azure-ban Application Gateway
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726512"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384839"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-fejlécek és URL-cím újraírása Application Gateway
 
@@ -38,7 +38,7 @@ Ha meg szeretné tudni, hogyan írhatók át a kérések és válaszok fejlécei
 
 A kérelmekben és a válaszokban lévő összes fejlécet újraírhatja, kivéve a kapcsolatokat, és frissíti a fejléceket. Az Application Gateway használatával egyéni fejléceket is létrehozhat, és hozzáadhatja azokat az átirányított kérésekhez és válaszokhoz.
 
-### <a name="url-path-and-query-string-preview"></a>URL-cím és lekérdezési karakterlánc (előzetes verzió)
+### <a name="url-path-and-query-string"></a>URL elérési útja és lekérdezési karakterlánca
 
 A Application Gateway URL-re való Újraírási képességével a következőket teheti:
 
@@ -51,9 +51,6 @@ A Application Gateway URL-re való Újraírási képességével a következőket
 Az Application Gateway Azure Portal használatával történő újraírásának megismeréséhez lásd [itt](rewrite-url-portal.md).
 
 ![A Application Gateway tartalmazó URL-cím újraírásának folyamatát ismertető diagram.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> Az URL-Újraírási funkció előzetes verzióban érhető el, és csak Standard_v2 és a Application Gateway WAF_v2 SKU-ban érhető el. Éles környezetben való használatra nem ajánlott. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="rewrite-actions"></a>Újraírási műveletek
 
@@ -129,7 +126,20 @@ Az Application Gateway a következő kiszolgálói változókat támogatja:
 | ssl_enabled               | "On", ha a kapcsolatok TLS módban működnek. Ellenkező esetben üres karakterláncot kell megadni. |
 | uri_path                  | Annak a gazdagépnek az adott erőforrását azonosítja, amelyet a webes ügyfél szeretne elérni. Ez az argumentumok nélküli kérelem URI-ja. Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path érték lesz `/article.aspx` |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>Kölcsönös hitelesítési kiszolgálói változók (előzetes verzió)
+
+A Application Gateway a következő kiszolgálói változókat támogatja a kölcsönös hitelesítési helyzetekben. Ezeket a kiszolgálói változókat ugyanúgy használhatja, mint a többi kiszolgálói változót. 
+
+|   Változó neve    |                   Leírás                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | A PEM-ügyféltanúsítvány a létesített SSL-kapcsolathoz. |
+| client_certificate_end_date| Az ügyféltanúsítvány záró dátuma. |
+| client_certificate_fingerprint| Az ügyféltanúsítvány SHA1 ujjlenyomata egy létesített SSL-kapcsolathoz. |
+| client_certificate_issuer | Az ügyféltanúsítvány "kiállító megkülönböztető neve" karakterlánca egy létesített SSL-kapcsolathoz. |
+| client_certificate_serial | Az ügyféltanúsítvány sorozatszáma egy létesített SSL-kapcsolathoz.  |
+| client_certificate_start_date| Az ügyféltanúsítvány kezdő dátuma. |
+| client_certificate_subject| Az ügyféltanúsítvány tulajdonos DN-karakterlánca egy létesített SSL-kapcsolathoz. |
+| client_certificate_verification| Az ügyféltanúsítvány-ellenőrzés eredménye: *sikeres*, *sikertelen: <reason>*, vagy *nincs* , ha egy tanúsítvány nem volt jelen. | 
 
 ## <a name="rewrite-configuration"></a>Konfiguráció újraírása
 
@@ -148,6 +158,17 @@ Az újraírható szabálykészlet A következőket tartalmazza:
       * **URL-cím elérési útja**: az az érték, amelynek az elérési útját újra kell írni. 
       * **URL-lekérdezési karakterlánc**: az az érték, amelyre a lekérdezési karakterláncot újra kell írni. 
       * **Elérésiút-hozzárendelés újraértékelése**: annak megállapítására szolgál, hogy az URL-cím elérési útjának újraértékelése megtörténjen-e, vagy sem. Ha nincs bejelölve, a rendszer az eredeti URL-cím elérési útját fogja használni az URL-cím elérési útjának elérési útjának megfeleltetéséhez. Ha igaz értékre van állítva, a rendszer újraértékeli az URL-cím elérési útját, hogy ellenőrizze az átírásos útvonal egyezését. A kapcsoló engedélyezése lehetővé teszi, hogy a kérést egy másik háttérbeli készletbe irányítsa át az újraírás után.
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>URL-újraírás vagy állomásfejléc-újraírás használata webalkalmazási tűzfallal (WAF_v2 SKU)
+
+Ha az URL-újraírást vagy a állomásfejléc újraírását konfigurálja, a WAF kiértékelése a kérelem fejlécére vagy URL-címére (az újraírás után) való módosítás után fog történni. Ha eltávolítja az URL-újraírást vagy a állomásfejléc Újraírási konfigurációját a Application Gatewayon, akkor a WAF kiértékelése a fejléc újraírása előtt történik (előre írás). Ez a sorrend biztosítja, hogy a WAF-szabályok a háttér-készlet által fogadott végső kérelemre legyenek alkalmazva.
+
+Tegyük fel például, hogy az alábbi fejléc-Újraírási szabályt adja meg a fejléchez `"Accept" : "text/html"` – Ha a fejléc értéke `"Accept"` egyenlő `"text/html"` , majd írja át az értéket a következőre: `"image/png"` .
+
+Itt csak a fejléc újraírására van konfigurálva, a WAF kiértékelése történik `"Accept" : "text/html"` . Ha azonban beállítja az URL-újraírást vagy a gazdagép fejlécének újraírását, akkor a WAF kiértékelése történik `"Accept" : "image/png"` .
+
+>[!NOTE]
+> Az URL-írási műveletek várhatóan kisebb növekedést okoznak a WAF CPU-kihasználtsága Application Gateway. Azt javasoljuk, hogy egy rövid ideig figyelje a [CPU-kihasználtság metrikáját](high-traffic-support.md) , miután engedélyezte az URL-címek Újraírási szabályait a WAF Application Gateway.
 
 ### <a name="common-scenarios-for-header-rewrite"></a>A fejléc újraírásának gyakori forgatókönyvei
 

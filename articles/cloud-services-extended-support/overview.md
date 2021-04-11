@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618474"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169283"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Tudnivalók az Azure Cloud Servicesról (bővített támogatás)
 
@@ -48,12 +48,9 @@ Az üzembe helyezésre vonatkozó Cloud Services (klasszikus) és Cloud Services
 - A [Azure Resource Manageron](../azure-resource-manager/templates/overview.md) központilag telepített összes erőforrásnak egy virtuális hálózaton belül kell lennie. A virtuális hálózatok és alhálózatok a Azure Resource Manager meglévő Azure Resource Manager API-k használatával jönnek létre, és a. cscfg NetworkConfiguration szakaszában kell hivatkozni a Cloud Services telepítésekor (kiterjesztett támogatás).   
 
 - Minden felhőalapú szolgáltatás (kiterjesztett támogatás) egyetlen független üzembe helyezés. A Cloud Services (bővített támogatás) nem támogatja több tárolóhely használatát egyetlen felhőalapú szolgáltatáson belül.  
-    - A VIP swap <sup>*</sup> funkció felhasználható két felhőalapú szolgáltatás (kiterjesztett támogatás) közötti váltásra. Egy felhőalapú szolgáltatás új kiadásának teszteléséhez és előkészítéséhez, a Cloud Service (kiterjesztett támogatás) üzembe helyezéséhez és a címkeként való megjelöléséhez, amely egy másik felhőalapú szolgáltatással (kiterjesztett támogatással), VIP-ként cserélhető.  
+    - A VIP swap funkció felhasználható két felhőalapú szolgáltatás (kiterjesztett támogatás) közötti váltásra. Egy felhőalapú szolgáltatás új kiadásának teszteléséhez és előkészítéséhez, a Cloud Service (kiterjesztett támogatás) üzembe helyezéséhez és a címkeként való megjelöléséhez, amely egy másik felhőalapú szolgáltatással (kiterjesztett támogatással), VIP-ként cserélhető.  
 
 - A tartománynév-szolgáltatás (DNS) címkéje nem kötelező a Cloud Service-hez (kiterjesztett támogatás). Azure Resource Manager a DNS-címke a felhőalapú szolgáltatáshoz társított nyilvános IP-erőforrás tulajdonsága. 
-
-
-<sup>*</sup> A nyilvános előzetes verzióban nem érhető el a Cloud Services VIP-swap (bővített támogatás).  
 
 ## <a name="migration-to-azure-resource-manager"></a>Áttelepítés Azure Resource Managerre
 

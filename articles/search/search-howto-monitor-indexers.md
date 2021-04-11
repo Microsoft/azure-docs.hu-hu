@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: a94720e6b84821d53a3bfdcbdce249390078940f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed79831559802efdf7e3813f48b74c2fd3c63e87
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063269"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581867"
 ---
-# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Az Azure Cognitive Search indexelő állapotának és eredményeinek figyelése
+# <a name="monitor-indexer-status-and-results-in-azure-cognitive-search"></a>Az indexelő állapotának és eredményeinek figyelése az Azure Cognitive Search
 
 Az indexelő feldolgozását figyelheti a Azure Portal, vagy programozott módon, REST-hívásokkal vagy egy Azure SDK-val. Az indexelő állapotán kívül az indítási és befejezési időpontokat, valamint egy adott Futtatás részletes hibáit és figyelmeztetéseit is áttekintheti.
 

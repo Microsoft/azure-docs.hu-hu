@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d691c4c510f5ff00c34d03b7b8d7a7bcaa53c3f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452135"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554093"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: a helyreállítható törlés áttekintése
 
@@ -20,7 +20,7 @@ ms.locfileid: "102452135"
 > Azonnal engedélyeznie kell a Soft-delete szolgáltatást a kulcstartókban. A helyreállítható törlés lehetősége hamarosan elavulttá válik. A részletes információk [itt](soft-delete-change.md) találhatók
 
 > [!IMPORTANT]
-> A helyreállítható tároló-eseményindítók törlik a Key Vault-szolgáltatásokkal való integráció beállításait, például az Azure RBAC szerepköreinek hozzárendeléseit, Event Grid előfizetéseket, Azure Monitor a diagnosztikai beállításokat. A Soft-Deleted Key Vault az integrált szolgáltatások beállításainak helyreállítását manuálisan újra létre kell hozni. 
+> A helyreállítható tároló-eseményindítók törlik a Key Vault-szolgáltatásokkal, például az Azure RBAC-szerepkörök hozzárendeléseivel, Event Grid előfizetésekkel integrált beállításokat. A Soft-Deleted Key Vault az integrált szolgáltatások beállításainak helyreállítását manuálisan újra létre kell hozni. 
 
 Key Vault a helyreállítható törlési funkció lehetővé teszi a törölt tárolók helyreállítását és a Key Vault-objektumok (például kulcsok, titkok, tanúsítványok) törlését, amelyeket a rendszer a Soft delete néven is ismert. Pontosabban a következő helyzeteket vesszük fel: Ez a védelem a következő védelmi lehetőségeket kínálja:
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95026522"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504175"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Naplózás engedélyezése a Speech SDK-ban
 
-A fájlba való naplózás a Speech SDK választható funkciója. A fejlesztési naplózás során további információkat és diagnosztikát biztosít a Speech SDK alapvető összetevőiből. Ezt úgy engedélyezheti, `Speech_LogFilename` Ha egy beszéd konfigurációs objektum tulajdonságát a naplófájl helyére és nevére állítja be. A naplózást a rendszer globálisan aktiválja, ha a rendszer létrehoz egy felismerőt ebből a konfigurációból, és ezt követően nem lehet letiltani. A naplófájlok neve nem módosítható egy futó naplózási munkamenet során.
+A fájlba való naplózás a Speech SDK választható funkciója. A fejlesztési naplózás során további információkat és diagnosztikát biztosít a Speech SDK alapvető összetevőiből. Ezt úgy engedélyezheti, `Speech_LogFilename` Ha egy beszéd konfigurációs objektum tulajdonságát a naplófájl helyére és nevére állítja be. A naplózást egy statikus osztály kezeli a Speech SDK natív könyvtárában. Bekapcsolhatja a naplózást bármely Speech SDK-felismerő vagy szintetizátor-példány esetében. A folyamat minden példánya ugyanazon a naplófájlba írja a naplóbejegyzéseket.
 
 > [!NOTE]
 > A naplózás elérhető a Speech SDK verziójának 1.4.0 az összes támogatott Speech SDK programozási nyelvben, a JavaScript kivételével.

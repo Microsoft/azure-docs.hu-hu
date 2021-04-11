@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 565d801fb569f818613fd31b7492c0847eef9a7a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580995"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169351"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
@@ -128,7 +128,7 @@ A következő problémák lehetséges okai:
 #### <a name="resolution"></a>Feloldás
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Nem típusos munkaterület-azonosító vagy-kulcs
-Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy a munkaterület kulcsa nem lett-e megadva, tekintse meg a következőt: [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/agents/agent-manage.md#windows-agent) a Windows-ügynökhöz, illetve [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/agents/agent-manage.md#linux-agent) a Linux-ügynökhöz. Győződjön meg arról, hogy a Azure Portal teljes sztringet választ, majd másolja és illessze be alaposan.
+Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy a munkaterület kulcsa nem lett-e begépelve, tekintse meg a Windows-ügynökhöz tartozó [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#windows-agent) , illetve a Linux-ügynökhöz tartozó [munkaterület-Linux ügynök hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#linux-agent) című témakört. Győződjön meg arról, hogy a Azure Portal teljes sztringet választ, majd másolja és illessze be alaposan.
 
 ##### <a name="configuration-not-downloaded"></a>A konfiguráció nincs letöltve
 

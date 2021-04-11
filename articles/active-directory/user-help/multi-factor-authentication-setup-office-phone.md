@@ -10,19 +10,21 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c77672ce895cc63a04973c4cb3e752ca319e269d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83739209"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553413"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Irodai telefon beállítása kétfaktoros ellenőrzési módszerként
 
 Beállíthatja, hogy az irodai telefon a kétfaktoros ellenőrzési módszerként működjön.
 
->[!Note]
-> Ha az irodai telefon lehetőség szürkén jelenik meg, lehetséges, hogy a szervezet nem teszi lehetővé az Office-telefonszámok használatát az ellenőrzéshez. Ebben az esetben ki kell választania egy másik módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
+> [!Note]
+> Ha az **irodai telefon** lehetőség nem választható ki, lehetséges, hogy a szervezet nem teszi lehetővé az Office-telefonszámok használatát az ellenőrzéshez. Ebben az esetben ki kell választania egy másik módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért. 
+> 
+> A kombinált regisztrációt használó felhasználók nem látják a bővítmény használatát az **Office Phone** lehetőséggel.
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Az irodai telefonszám beállítása ellenőrzési módszerként
 

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – ellenőrizhető hitelesítő adatok kiadása és ellenőrzése a Bérlővel (előzetes verzió)
+title: Oktatóanyag – ellenőrizhető hitelesítő adatok kiadása és ellenőrzése az Azure-Bérlővel (előzetes verzió)
 description: A ellenőrizhető hitelesítő adatok kód mintájának módosítása az Azure-Bérlővel való együttműködéshez
 documentationCenter: ''
 author: barclayn
@@ -10,14 +10,14 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 95d3ab19565ed04d9bf7d59ba7262d40b4971d34
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169997"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553379"
 ---
-# <a name="tutorial-issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Oktatóanyag: ellenőrizhető hitelesítő adatok kiadása és ellenőrzése a Bérlővel (előzetes verzió)
+# <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Oktatóanyag – ellenőrizhető hitelesítő adatok kiadása és ellenőrzése a Bérlővel (előzetes verzió)
 
 > [!IMPORTANT]
 > Azure Active Directory ellenőrizhető hitelesítő adatok jelenleg nyilvános előzetes verzióban érhetők el.
@@ -66,7 +66,7 @@ Regisztráljon egy "VC Wallet-alkalmazás" nevű alkalmazást az Azure AD-ben, �
 
    ![kiállítói végpontok](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-key-vault"></a>A Node-alkalmazás beállítása Key Vaulthoz való hozzáférésre
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>A Node-alkalmazás beállítása Azure Key Vaulthoz való hozzáférésre
 
 A felhasználó hitelesítő adatainak kiállítási kérelmének hitelesítéséhez a kiállító webhelye a titkosítási kulcsokat a Azure Key Vaultban használja. Azure Key Vault eléréséhez a webhelynek szüksége van egy ügyfél-AZONOSÍTÓra és egy ügyfél-titkos kulcsra, amelyet a rendszer a Azure Key Vault való hitelesítéshez használhat.
 
@@ -183,7 +183,7 @@ Néhány további értéket is meg kell kapnia, mielőtt a minta alkalmazásban 
 
    ![bejelentkezési kulcs azonosítója](media/issue-verify-verifable-credentials-your-tenant/issuer-signing-key-ion.png)
 
-### <a name="did-document"></a>Dokumentum 
+### <a name="did-document"></a>Dokumentum
 
 1. A különböző [ion Network Explorer](https://identity.foundation/ion/explorer/) megnyitása
 
@@ -308,7 +308,7 @@ Most, hogy kiállítottuk a saját bérlőnk által az Ön Azure AD-beli jogcím
     
    ![új engedély kérése](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
 
-8. Nem ellenőrizte a hitelesítő adatait, és a webhelynek az első és az utolsó nevet kell megjelenítenie az Azure AD felhasználói fiókjából. 
+8. Sikeresen ellenőrizte a hitelesítő adatait, és a webhelynek az Azure AD felhasználói fiókjából kell megjelennie az első és az utolsó név. 
 
 Ezzel befejezte az oktatóanyagot, és hivatalosan ellenőrzött hitelesítő adat-szakértő! A mintául szolgáló alkalmazás mind a kiadási, mind az ellenőrzési, mind a jogcímeket használja, miközben az Azure AD-ből ellenőrizhető hitelesítő adatokba írja a jogcímeket. 
 

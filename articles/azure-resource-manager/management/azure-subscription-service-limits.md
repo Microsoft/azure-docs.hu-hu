@@ -2,13 +2,13 @@
 title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd62c926cce765ebc2b21378308650e313716ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471007"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030821"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
@@ -34,9 +34,9 @@ Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/m
 
 Bizonyos korlátok regionális szinten kezelhetők.
 
-Vegyük példaként a vCPU-kvótákat. A vCPU támogatásával a kvóta növeléséhez el kell döntenie, hogy hány vCPU kíván használni a régiókban. Ezután egy konkrét kérést fog kérni az Azure-erőforráscsoport kvótáinak vCPU a kívánt mennyiségekhez és régiókhoz. Ha a Nyugat-Európában 30 vCPU kell használnia az alkalmazás futtatásához, akkor külön 30 vCPU-t kér Nyugat-Európában. A vCPU-kvóta nem növekszik más régiókban – csak Nyugat-Európában a 30 vCPU kvóta.
+Vegyük példaként a vCPU-kvótákat. A vCPU támogatásával a kvóta növeléséhez el kell döntenie, hogy hány vCPU kíván használni a régiókban. Ezután a kívánt mennyiségekhez és régiókhoz vCPU-kvótákat kér. Ha a Nyugat-Európában 30 vCPU kell használnia az alkalmazás futtatásához, akkor külön 30 vCPU-t kér Nyugat-Európában. A vCPU-kvóta nem növekszik más régiókban – csak Nyugat-Európában a 30 vCPU kvóta.
 
-Ennek eredményeképpen döntse el, hogy az Azure-erőforráscsoport kvótái milyen mennyiségű legyenek a számítási feladatokhoz egy adott régióban. Ezt követően adja meg ezt az összeget minden olyan régióban, amelybe telepíteni kívánja. Ha segítségre van szükség az aktuális kvóták meghatározásához adott régiókban, tekintse meg az [erőforrás-kvóták hibáinak elhárítása](../templates/error-resource-quota.md)című témakört.
+Ennek eredményeképpen döntse el, hogy a kvóták milyen mennyiségű számítási feladathoz tartozhatnak egy adott régióban. Ezt követően adja meg ezt az összeget minden olyan régióban, amelybe telepíteni kívánja. Ha segítségre van szükség az aktuális kvóták meghatározásához adott régiókban, tekintse meg az [erőforrás-kvóták hibáinak elhárítása](../templates/error-resource-quota.md)című témakört.
 
 ## <a name="general-limits"></a>Általános korlátok
 

@@ -15,16 +15,16 @@ ms.custom: mvc
 ms.date: 04/05/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99db58e39377932608b1c78bac37003432aa4c04
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c49ded056c642fa91331b7cc98d18da34d9c73a6
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381905"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504352"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Mik azok az Azure-erőforrások felügyelt identitásai?
 
-A fejlesztők számára gyakori kihívás a titkok és a hitelesítő adatok kezelése a különböző szolgáltatások közötti kommunikáció biztonságossá tételéhez. Az Azure-ban a felügyelt identitások nem teszik lehetővé, hogy a fejlesztők a hitelesítő adatok kezeléséhez a személyazonosságot az Azure AD-ben, az Azure AD-ben pedig Azure Active Directory (Azure AD-) tokenek beszerzéséhez használják. Ez segít a [Azure Key Vault](../../key-vault/general/overview.md) elérésében is, ahol a fejlesztők biztonságos módon tárolhatják a hitelesítő adatokat. Az Azure-erőforrások felügyelt identitásai ezt a problémát úgy oldják meg, hogy az Azure AD-ben automatikusan felügyelt identitást biztosítanak az Azure-szolgáltatások számára.
+A fejlesztők számára a gyakori kihívás a különböző összetevők közötti kommunikáció biztosításához használt titkok és hitelesítő adatok kezelése. A felügyelt identitások nem szükségesek a fejlesztők számára a hitelesítő adatok kezeléséhez. A felügyelt identitások a Azure Active Directory (Azure AD) hitelesítést támogató erőforrásokhoz való csatlakozáskor használandó identitást biztosítanak. Az alkalmazások a felügyelt identitás használatával szerezhetnek be Azure AD-jogkivonatokat. Előfordulhat például, hogy egy alkalmazás felügyelt identitással fér hozzá olyan erőforrásokhoz, mint [Azure Key Vault](../../key-vault/general/overview.md) , ahol a fejlesztők biztonságos módon tárolhatják a hitelesítő adatokat, vagy hozzáférhetnek a Storage-fiókokhoz.
 
 Mit használhat felügyelt identitás?
 
@@ -33,7 +33,7 @@ Mit használhat felügyelt identitás?
 A felügyelt identitások használatának előnyei a következők:
 
 - Nem kell kezelnie a hitelesítő adatokat. A hitelesítő adatok még nem érhetők el.
-- A felügyelt identitások használatával bármely olyan erőforráson hitelesíthető, amely támogatja az Azure Active Directory hitelesítést, beleértve a saját alkalmazásait is.
+- A felügyelt identitások használatával bármely olyan erőforráson hitelesíthető, amely támogatja az [Azure Active Directory hitelesítést](../authentication/overview-authentication.md) , beleértve a saját alkalmazásait is.
 - A felügyelt identitások további díjak nélkül is használhatók.
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Az alábbi táblázat a felügyelt identitások két típusa közötti különbs
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Hogyan használhatom az Azure-erőforrások felügyelt identitásait?
 
-![néhány példa arra, hogy a fejlesztők hogyan használhatják a felügyelt identitásokat, hogy a hitelesítési adatok kezelése nélkül hozzáférjenek az erőforrásokhoz a kódból.](media/overview/azure-managed-identities-examples.png)
+![néhány példa arra, hogy a fejlesztők hogyan használhatják a felügyelt identitásokat, hogy a hitelesítési adatok kezelése nélkül hozzáférjenek az erőforrásokhoz a kódból.](media/overview/when-use-managed-identities.png)
 
 ## <a name="what-azure-services-support-the-feature"></a>Mely Azure-szolgáltatások támogatják a szolgáltatást?<a name="which-azure-services-support-managed-identity"></a>
 

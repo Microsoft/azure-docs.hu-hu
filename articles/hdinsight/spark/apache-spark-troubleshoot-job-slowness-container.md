@@ -4,12 +4,12 @@ description: Apache Spark a feladatok lassan futnak, amikor az Azure Storage-tá
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/21/2019
-ms.openlocfilehash: c26baec66248ca00ef212acf3d773c2566b3aea9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d256292956b42c65722ea5f9c87d6835297d1d40
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946368"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219093"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Az Apache Spark-feladatok lassan futnak, ha az Azure Storage-tároló sok fájlt tartalmaz az Azure HDInsightban
 
@@ -28,6 +28,8 @@ A partíciók nyomon követéséhez a Sparknak egy olyan információt kell fenn
 A Spark 2,1-es verziójában a Spark azt jelzi, hogy egy meglévő partíciós oszlop megegyezik-e a jelenlegi írási kérelemben szereplővel, és hogy a rendszer minden írási művelet után is a következő műveleteket fogja-e megtekinteni.
 
 Ha a Spark 2,2-as verzióban az adatírás hozzáfűzési móddal történik, ezt a teljesítménnyel kapcsolatos problémát meg kell oldani.
+
+A Spark 2,3-as verzióban ugyanaz a viselkedés, mint a Spark 2,2.
 
 ## <a name="resolution"></a>Feloldás
 

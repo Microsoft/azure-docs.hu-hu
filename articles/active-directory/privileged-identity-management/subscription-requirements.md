@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 08/06/2020
+ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d0428f73c4df3d97002def03823ff8cced1d647
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88005803"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552631"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>A Privileged Identity Management használatára vonatkozó licencfeltételek
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használa
 
 ## <a name="valid-licenses"></a>Érvényes licencek
 
-[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+A [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] PIM-t és annak összes beállítását kell használnia. Jelenleg az Azure AD-hez és az Azure-erőforrás szerepköreihez (előzetes verzió) való hozzáférésre vonatkozó hozzáférési felülvizsgálat hatókörét a bérlőben aktív prémium szintű Azure Active Directory P2 kiadással lehet elérni. Az egyszerű szolgáltatások licencelési modellje a szolgáltatás általános elérhetősége miatt véglegesítve lesz, és további licencekre lehet szükség.
 
 ## <a name="licenses-you-must-have"></a>Szükséges licencek
 
@@ -73,3 +73,5 @@ Ha egy prémium szintű Azure AD P2, EMS E5 vagy próbaverziós licenc lejár, P
 - [A Privileged Identity Management üzembe helyezése](pim-deployment-plan.md)
 - [A Privileged Identity Management használatának első lépései](pim-getting-started.md)
 - [Nem felügyelhető szerepkörök Privileged Identity Management](pim-roles.md)
+- [Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása a PIM-ben](pim-resource-roles-start-access-review.md)
+- [Azure AD-szerepkörök hozzáférési felülvizsgálatának létrehozása a PIM-ben](pim-how-to-start-security-review.md)

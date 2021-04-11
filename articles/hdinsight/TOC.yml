@@ -268,10 +268,14 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Az Apache Oozie hibaelhárítása
               href: ./troubleshoot-oozie.md
+            - name: Az Apache Sqoop hibáinak megoldása
+              href: ./troubleshoot-sqoop.md
             - name: WebHCat-hibák megértése és megoldása
               href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: Referencia
       items:
+        - name: Azure CLI
+          href: /cli/azure/hdinsight
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
         - name: .NET-hez készült SDK

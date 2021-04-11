@@ -10,12 +10,12 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 30451f237f4a6d42fee018d5e6c5adb3bbf022b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cdf1267d53abc2214521f584b6cfb4738b808204
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105957955"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112849"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Java SMS SDK használatával SMS-üzenetek küldéséhez.
 
@@ -60,14 +60,7 @@ Nyissa meg a **pom.xml** fájlt a szövegszerkesztőben. Adja hozzá a függős�
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
-Adja hozzá a `azure-core-http-netty` függőséget a **pom.xml** -fájlhoz.
-
 ```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-core-http-netty</artifactId>
-    <version>1.8.0</version>
-</dependency>
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core</artifactId>
@@ -83,8 +76,6 @@ package com.communication.quickstart;
 import com.azure.communication.sms.models.*;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.communication.sms.*;
-import com.azure.core.http.HttpClient;
-import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
 import com.azure.core.util.Context;
 import java.util.Arrays;
 
@@ -106,43 +97,33 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | Ez az osztály hozza létre a SmsClient. Ezt a végponttal, a hitelesítő adatokkal és egy http-ügyféllel biztosíthatja. |
 | SmsClient                    | Ez az osztály minden SMS-funkcióhoz szükséges. Az SMS-üzenetek küldésére használható.                |
-| SmsSendOptions               | Ez az osztály lehetőséget biztosít egyéni címkék hozzáadására és a kézbesítési jelentéskészítés konfigurálására. Ha a deliveryReportEnabled értéke TRUE (igaz), akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres volt.|                           |
+| SmsSendOptions               | Ez az osztály lehetőséget biztosít egyéni címkék hozzáadására és a kézbesítési jelentéskészítés konfigurálására. Ha a deliveryReportEnabled értéke TRUE (igaz), akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres volt. |        
 | SmsSendResult                | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Példány létrehozása `SmsClient` a-val a kapcsolatok karakterláncával. (A hitelesítő adatok a `Key` Azure Portalból származnak. Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
+Példány létrehozása `SmsClient` a-val a kapcsolatok karakterláncával. (A hitelesítő adatok a `Key` Azure Portalból származnak. Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string). Emellett bármely egyéni HTTP-ügyféllel inicializálhatja az ügyfelet, amely a felületet valósítja meg `com.azure.core.http.HttpClient` .
 
 Adja hozzá a következő kódot a `main` metódushoz:
 
 ```java
-// You can find your endpoint and access key from your resource in the Azure Portal
+// You can find your endpoint and access key from your resource in the Azure portal
 String endpoint = "https://<resource-name>.communication.azure.com/";
 AzureKeyCredential azureKeyCredential = new AzureKeyCredential("<access-key-credential>");
-
-// Create an HttpClient builder of your choice and customize it
-HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 SmsClient smsClient = new SmsClientBuilder()
                 .endpoint(endpoint)
                 .credential(azureKeyCredential)
-                .httpClient(httpClient)
                 .buildClient();
 ```
 
-Az ügyfelet bármely olyan egyéni HTTP-ügyféllel inicializálhatja, amely megvalósítja a `com.azure.core.http.HttpClient` felületet. A fenti kód azt mutatja be, hogy az [Azure alapszintű](/java/api/overview/azure/core-http-netty-readme) , az által biztosított http-ügyfelet használja `azure-core` .
-
-A teljes kapcsolati karakterláncot a connectionString () függvény használatával is megadhatja a végpont és a hozzáférési kulcs megadása helyett. 
+A teljes kapcsolati karakterláncot a connectionString () függvény használatával is megadhatja a végpont és a hozzáférési kulcs megadása helyett.
 ```java
-// You can find your connection string from your resource in the Azure Portal
+// You can find your connection string from your resource in the Azure portal
 String connectionString = "https://<resource-name>.communication.azure.com/;<access-key>";
-
-// Create an HttpClient builder of your choice and customize it
-HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 SmsClient smsClient = new SmsClientBuilder()
             .connectionString(connectionString)
-            .httpClient(httpClient)
             .buildClient();
 ```
 
@@ -173,12 +154,12 @@ SmsSendOptions options = new SmsSendOptions();
 options.setDeliveryReportEnabled(true);
 options.setTag("Marketing");
 
-Iterable<SmsSendResult> sendResults = smsClient.send(
+Iterable<SmsSendResult> sendResults = smsClient.sendWithResponse(
     "<from-phone-number>",
     Arrays.asList("<to-phone-number1>", "<to-phone-number2>"),
     "Weekly Promotion",
     options /* Optional */,
-    Context.NONE);
+    Context.NONE).getValue();
 
 for (SmsSendResult result : sendResults) {
     System.out.println("Message Id: " + result.getMessageId());

@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/27/2021
+ms.date: 04/01/2021
 ms.author: tamram
-ms.openlocfilehash: 93a84b26825e98d406aba1ae4bdd4a544a61c76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 16da73fe453760e2dc84e7d683c3a16c12b8a06f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937335"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218607"
 ---
 | Erőforrás | Cél |
 |-|-|
@@ -33,6 +33,6 @@ A következő táblázat a szolgáltatás verziója által engedélyezett maxim�
 
 | Szolgáltatás verziója | Maximális blokk mérete (Put blokkon keresztül) | BLOB maximális mérete (Put blokk lista használatával) | BLOB maximális mérete egyszeri írási művelettel (Put blobon keresztül) |
 |-|-|-|-|
-| 2019-12-12-es és újabb verziók | 4000 MiB | Körülbelül 190,7 TiB (4000 MiB X 50 000 blokk) | 5000 MiB |
+| 2019-12-12-es és újabb verziók | 4000 MiB | Körülbelül 190,7 TiB (4000 MiB X 50 000 blokk) | 5000 MiB (előzetes verzió) |
 | 2016-05-31-es verzió az 2019-07-07-es verzióval | 100 MiB | Körülbelül 4,75 TiB (100 MiB X 50 000 blokk) | 256 MiB |
 | 2016-05-31 előtti verziók | 4 MiB | Körülbelül 195 GiB (4 MiB X 50 000 blokk) | 64 MiB |

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688467"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552750"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Egyszeri jelszavas hitelesítés e-mailben
 
@@ -64,7 +64,7 @@ Megtekintheti, hogy a vendég felhasználó egyszer használatos jelszót haszn�
 ![Képernyőfelvétel: egyszeri jelszóval rendelkező felhasználó, amely az OTP forrás értékét tartalmazza](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> Amikor egy felhasználó egyszeri jelszót vált ki, és később beolvas egy MSA, egy Azure AD-fiókot vagy más összevont fiókot, a rendszer továbbra is egyszer használatba veszi a hitelesítő kódot. Ha frissíteni szeretné a hitelesítési módszert, törölheti a vendég felhasználói fiókját, és újból meghívhatja őket.
+> Amikor egy felhasználó egyszeri jelszót vált ki, és később beolvas egy MSA, egy Azure AD-fiókot vagy más összevont fiókot, a rendszer továbbra is egyszer használatba veszi a hitelesítő kódot. Ha szeretné frissíteni a felhasználó hitelesítési módszerét, [alaphelyzetbe állíthatja a beváltási állapotát](reset-redemption-status.md).
 
 ### <a name="example&quot;></a>Példa
 
@@ -76,7 +76,7 @@ Október 2021-én az e-mailes egyszeri jelszó funkció be lesz kapcsolva az ös
 
 > [!NOTE]
 >
-> Ha az egyszeri e-mail-jelszó funkció engedélyezve van a bérlőben, és ki van kapcsolva, az egyszeri jelszót beváltó vendég-felhasználók nem fognak tudni bejelentkezni. Törölheti a vendég felhasználót, és újból meghívhatja őket, hogy újra bejelentkezzenek egy másik hitelesítési módszer használatával.
+> Ha az egyszeri e-mail-jelszó funkció engedélyezve van a bérlőben, és ki van kapcsolva, az egyszeri jelszót beváltó vendég-felhasználók nem fognak tudni bejelentkezni. [Alaphelyzetbe állíthatja a beváltási állapotukat](reset-redemption-status.md) , így a másik hitelesítési módszer használatával újra bejelentkezhet.
 
 ### <a name="to-disable-the-email-one-time-passcode-feature"></a>Az e-mail egyszeri jelszó funkciójának letiltása
 

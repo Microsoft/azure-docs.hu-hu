@@ -181,6 +181,8 @@
           href: active-directory-data-storage-eu.md
         - name: Az ausztrál és új-zélandi ügyfelek identitásadatainak tárolása
           href: active-directory-data-storage-australia-newzealand.md
+    - name: Az élvonalbeli felügyelet
+      href: frontline-worker-management.md
     - name: Azure AD-üzemeltetési referencia
       items:
         - name: Introduction (Bevezetés)

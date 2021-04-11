@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7269a2435715834a2c1e6723de3fdc6e72eaad5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c26c56940e95fe32b709aa01fbaa9e567e797197
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955448"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074539"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -57,8 +57,18 @@ Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kap
 >
 >A kivont verziókkal kapcsolatos korábbi verziókról lásd: [Azure ad Connect verziójának kiadási előzményei archívuma](reference-connect-version-history-archive.md)
 
+## <a name="1640"></a>1.6.4.0
+
+### <a name="release-status"></a>Kiadás állapota
+3/31/2021: az automatikus frissítéshez nem érhető el a rendszer a letöltéshez
+
+### <a name="bug-fixes"></a>Hibajavítások
+- Ez a kiadás kijavít egy hibát a 1.6.2.4 verziójában, ahol az adott kiadásra való frissítés után a Azure AD Connect Health szolgáltatás nem lett megfelelően regisztrálva, és nem működött. Az üzembe helyezett build 1.6.2.4 rendelkező ügyfeleket a rendszer arra kéri, hogy frissítse a Azure AD Connect-kiszolgálót ezzel a buildtel, amely helyesen regisztrálja az állapotfigyelő szolgáltatást. 
 
 ## <a name="1624"></a>1.6.2.4
+>[!IMPORTANT]
+> Frissítés 2021. március 30-án: felderített egy problémát ebben a buildben. A Build telepítése után az állapotfigyelő szolgáltatások nincsenek regisztrálva. Azt javasoljuk, hogy ne telepítse ezt a buildet. Hamarosan Kiadunk egy gyorsjavítást.
+> Ha már telepítette ezt a buildet, manuálisan is regisztrálhatja az állapotfigyelő szolgáltatásokat a [jelen cikkben](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#manually-register-azure-ad-connect-health-for-sync) látható parancsmag használatával.
 
 >[!NOTE]
 > - Ez a kiadás csak letöltésre lesz elérhető.
@@ -66,7 +76,7 @@ Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kap
 > - Ez a kiadás alapértelmezés szerint a AADConnect-kiszolgálót az új v2 végpontra irányítja. Vegye figyelembe, hogy ez a végpont nem támogatott a német nemzeti felhőben, a kínai nemzeti felhőben és az Egyesült Államok kormányzati felhőben, és ha ezen a felhőben kell telepítenie ezt a verziót, a v1 végpontra való váltáshoz [ezeket az utasításokat](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) kell követnie. Ha ezt nem teszi meg, a szinkronizálás hibákat eredményez.
 
 ### <a name="release-status"></a>Kiadás állapota
-3/19/2021: kiadva a letöltéshez
+3/19/2021: kiadva letölthető, nem érhető el az automatikus frissítéshez
 
 ### <a name="functional-changes"></a>Funkcionális változások
 

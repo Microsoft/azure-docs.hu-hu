@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cce37a7c719c6a0c183e166fa28967ea926a221
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100098095"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581643"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -31,7 +31,7 @@ Az indexelő egyetlen eszközként használhatja az adatfeldolgozáshoz, vagy ol
 |----------|---------|
 | Egyetlen adatforrás | Ez a minta a legegyszerűbb: az egyik adatforrás a keresési index egyetlen szolgáltatója. A forrásból egy olyan mezőt fog azonosítani, amely egyedi értékeket tartalmaz, amelyek a keresési indexben a dokumentum kulcsaként szolgálnak. A rendszer az egyedi értéket fogja használni azonosítóként. Minden más forrás mező implicit módon vagy explicit módon van leképezve az index megfelelő mezőihez. </br></br>Fontos elvihetőség, hogy a dokumentum kulcsa a forrásadatokből származik. A keresési szolgáltatás nem hoz alapértékeket. A későbbi futtatások során új kulcsokkal rendelkező bejövő dokumentumok lesznek hozzáadva, míg a meglévő kulcsokkal rendelkező bejövő dokumentumok egyesítése vagy felülírása attól függően, hogy az index mezői null értékűek vagy fel vannak-e töltve. |
 | Több adatforrás | Az indexek több forrásból is fogadhatnak tartalmakat, ahol minden egyes Futtatás új tartalmat hoz egy másik forrásból. </br></br>Az egyik eredmény lehet egy olyan index, amely minden indexelő futtatása után a dokumentumokat fogja megnyerni, és az összes forrásból származó teljes dokumentum teljes egészében létrejött. Az 1-100-as dokumentumok például a blob Storage-ból származnak, a 101-200-es dokumentumok pedig az Azure SQL-ből, és így tovább. Ennek a forgatókönyvnek a feladata az összes bejövő adathoz használható index séma megtervezése, valamint a keresési indexben egységes dokumentum-kulcs szerkezete. Natív módon a dokumentumok egyedi azonosítására szolgáló értékek egy blob-tárolóban és egy SQL-tábla elsődleges kulcsa metadata_storage_path. Képzelje el, hogy az egyik vagy mindkét forrást módosítani kell, hogy a kulcsfontosságú értékeket közös formátumban adja meg, függetlenül a tartalom eredetétől. Ebben az esetben várhatóan bizonyos szintű előfeldolgozást kell végeznie az adatok homogenizálása érdekében, hogy azt egyetlen indexbe lehessen húzni. </br></br>Lehetséges, hogy az első futtatáskor részlegesen kitöltött dokumentumok kereshetők, majd a későbbi futtatások további kitöltésével más forrásokból származó értékeket hoznak. Például a 1-10 mezők blob Storage-ból, 11-20 az Azure SQL-ből és így tovább. Ennek a mintának az a kihívása, hogy minden indexelési Futtatás ugyanazt a dokumentumot célozza meg. A mezők meglévő dokumentumba való egyesítéséhez meg kell egyeznie a dokumentum kulcsával. A forgatókönyv bemutatását lásd [: oktatóanyag: index több adatforrásból](tutorial-multiple-data-sources.md). |
-| Több indexelő | Ha több adatforrást használ, előfordulhat, hogy több indexelő is szükséges, ha a futásidejű paramétereket, az ütemtervet vagy a mező-hozzárendeléseket kell módosítania. Bár több indexelő adatforrás-készlet is megcélozhatja ugyanazt az indexet, ügyeljen arra, hogy az indexelő fusson, amely felülírhatja a meglévő értékeket az indexben. Ha egy második indexelő-adatforrás ugyanazokat a dokumentumokat és mezőket célozza meg, akkor az első futtatásból származó értékek felül lesznek írva. A mezőértékek teljes egészében le vannak cserélve. az indexelő nem tudja egyesíteni az értékeket több futtatásból ugyanabba a mezőbe.</br></br>Egy másik többszörös indexelő használati eset a [Cognitive Search régiók közötti kiskálázása](search-performance-optimization.md#use-indexers-for-updating-content-on-multiple-services). Előfordulhat, hogy ugyanazon keresési index különböző régiókban található másolatai vannak. A keresési index tartalmának szinkronizálásához több indexelő is tartozhat ugyanabból az adatforrásból, ahol minden indexelő egy másik keresési indexet céloz meg.</br></br>A nagyon nagy adatkészletek [párhuzamos indexeléséhez](search-howto-large-index.md#parallel-indexing) több indexelő stratégia is szükséges. Minden indexelő az adathalmazt célozza meg. |
+| Több indexelő | Ha több adatforrást használ, előfordulhat, hogy több indexelő is szükséges, ha a futásidejű paramétereket, az ütemtervet vagy a mező-hozzárendeléseket kell módosítania. Bár több indexelő adatforrás-készlet is megcélozhatja ugyanazt az indexet, ügyeljen arra, hogy az indexelő fusson, amely felülírhatja a meglévő értékeket az indexben. Ha egy második indexelő-adatforrás ugyanazokat a dokumentumokat és mezőket célozza meg, akkor az első futtatásból származó értékek felül lesznek írva. A mezőértékek teljes egészében le vannak cserélve. az indexelő nem tudja egyesíteni az értékeket több futtatásból ugyanabba a mezőbe.</br></br>Egy másik többszörös indexelő használati eset a [Cognitive Search régiók közötti kiskálázása](search-performance-optimization.md#data-sync). Előfordulhat, hogy ugyanazon keresési index különböző régiókban található másolatai vannak. A keresési index tartalmának szinkronizálásához több indexelő is tartozhat ugyanabból az adatforrásból, ahol minden indexelő egy másik keresési indexet céloz meg.</br></br>A nagyon nagy adatkészletek [párhuzamos indexeléséhez](search-howto-large-index.md#parallel-indexing) több indexelő stratégia is szükséges. Minden indexelő az adathalmazt célozza meg. |
 | Tartalom átalakítása | A Cognitive Search támogatja a választható [AI-gazdagító](cognitive-search-concept-intro.md) viselkedéseket, amelyek képelemzést és természetes nyelvi feldolgozást hoznak létre új kereshető tartalom és struktúra létrehozásához. Az AI-bővítés Indexer-alapú, csatolt [készségkészlet](cognitive-search-working-with-skillsets.md)keresztül történik. Az AI-bővítés végrehajtásához az indexelő továbbra is szüksége van egy indexre és egy Azure-adatforrásra, azonban ebben az esetben a készségkészlet-feldolgozást hozzáadja az indexelő végrehajtásához. |
 
 <a name="supported-data-sources"></a>
@@ -42,7 +42,7 @@ Az indexelő adattárakat térképez fel az Azure-ban.
 
 + [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (előzetes verzió)
-+ [Azure-Table Storage](search-howto-indexing-azure-tables.md)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)

@@ -1,60 +1,81 @@
 ---
-title: Azure Cosmos DB Cassandra API gyakori hibáinak elhárítása
-description: Ez a dokumentum a Azure Cosmos DB-ben észlelt gyakori problémák elhárításának módszereit tárgyalja Cassandra API
+title: A Azure Cosmos DB gyakori hibáinak elhárítása Cassandra API
+description: Ez a cikk a Azure Cosmos DB Cassandra API gyakori problémáit és azok hibaelhárítását ismerteti.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e81ab2539527c9d5c5cf2c6bff77fd19887103cd
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658571"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967353"
 ---
-# <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API gyakori problémáinak elhárítása
+# <a name="troubleshoot-common-issues-in-the-azure-cosmos-db-cassandra-api"></a>A Azure Cosmos DB gyakori problémáinak elhárítása Cassandra API
+
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-A Cassandra API in Azure Cosmos DB egy kompatibilitási réteg, amely a népszerű nyílt forráskódú Apache Cassandra-adatbázishoz nyújt [vezetékes protokoll-támogatást](cassandra-support.md) , és [Azure Cosmos db](./introduction.md)-t működtet. A teljes körűen felügyelt natív szolgáltatásként a Azure Cosmos DB [garantálja a Cassandra API rendelkezésre állását, átviteli sebességét és konzisztenciáját](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) . Ezek a garanciák az Apache Cassandra örökölt implementációjában nem lehetségesek. Cassandra API emellett a nulla karbantartási platform működését és a nulla állásidő javítását is lehetővé teszi. Ennek megfelelően számos háttérbeli művelet különbözik az Apache Cassandra-től, ezért a gyakori hibák elkerüléséhez bizonyos beállítások és megközelítések javasoltak. 
+A Cassandra API a [Azure Cosmos db](./introduction.md) egy kompatibilitási réteg, amely a nyílt forráskódú Apache Cassandra-adatbázishoz nyújt [vezetékes protokollt](cassandra-support.md) .
 
-Ez a cikk a Azure Cosmos DB Cassandra APIt használó alkalmazások általános hibáit és megoldásait ismerteti. Ha a hiba nem szerepel a lenti listában, és egy [támogatott művelet Cassandra APIban](cassandra-support.md)való végrehajtása során hiba lépett fel, ahol a hiba nem jelenik meg *natív Apache Cassandra használata* esetén, [hozzon létre egy Azure-támogatási kérelmet](../azure-portal/supportability/how-to-create-azure-support-request.md).
+Ez a cikk a Azure Cosmos DB Cassandra APIt használó alkalmazások általános hibáit és megoldásait ismerteti. Ha a hiba nem szerepel a felsorolásban, és hibát tapasztal, amikor egy [támogatott műveletet hajt végre a Cassandra-ben](cassandra-support.md), de a hiba nem jelenik meg natív Apache Cassandra használata esetén, [hozzon létre egy Azure-támogatási kérelmet](../azure-portal/supportability/how-to-create-azure-support-request.md).
+
+>[!NOTE]
+>A teljes körűen felügyelt Felhőbeli natív szolgáltatásként a Azure Cosmos DB garantálja a Cassandra API [rendelkezésre állását, átviteli sebességét és konzisztenciáját](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) . A Cassandra API a nulla karbantartási platform működését és a nulla állásidő javítását is lehetővé teszi.
+>
+>Ezek a garanciák nem lehetségesek az Apache Cassandra korábbi implementációjában, így sok Cassandra API háttérbeli művelet eltér az Apache Cassandra-től. A gyakori hibák elkerülése érdekében bizonyos beállítások és megközelítések javasoltak.
 
 ## <a name="nonodeavailableexception"></a>NoNodeAvailableException
-Ez egy legfelső szintű burkoló kivétel, amely nagy számú lehetséges okot és belső kivételt okoz, amelyek közül számos lehet ügyfélhez kapcsolódó. 
-### <a name="solution"></a>Megoldás
-Néhány népszerű ok és megoldás a következő: 
-- Az Azure-LoadBalancers üresjárati időkorlátja: Ez a következőképpen is megnyilvánulhat `ClosedConnectionException` . Ennek megoldásához állítsa az életben tartási beállítás beállítást az illesztőprogramban (lásd [alább](#enable-keep-alive-for-java-driver)), és növelje a Keep-Alive beállításokat az operációs rendszeren, vagy [állítsa be az üresjárati időtúllépést Azure Load Balancerban](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). 
-- **Ügyfélalkalmazás erőforrás-kimerülése:** győződjön meg arról, hogy az ügyfélszámítógépek elegendő erőforrással rendelkeznek a kérelem végrehajtásához. 
 
-## <a name="cannot-connect-to-host"></a>Nem lehet csatlakozni a gazdagéphez
-A következő hibaüzenet jelenhet meg: `Cannot connect to any host, scheduling retry in 600000 milliseconds` . 
+Ez a hiba egy legfelső szintű burkoló kivétel, amely nagy számú lehetséges okot és belső kivételt okoz, amelyek közül számos lehet ügyfélhez kapcsolódó.
 
-### <a name="solution"></a>Megoldás
-Ez az ügyféloldali SNAT lehet. A probléma kizárásához kövesse a SNAT címen található lépéseket a [Kimenő kapcsolatok esetében](../load-balancer/load-balancer-outbound-connections.md) . Ez egy üresjárati időtúllépési probléma is lehet, ha az Azure Load Balancer alapértelmezés szerint 4 perc üresjárati időkorláttal rendelkezik. Tekintse meg a dokumentációt a terheléselosztó [üresjárati időkorlátjában](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Engedélyezze a TCP-t – tartsa életben az illesztőprogram-beállításokat (lásd [alább](#enable-keep-alive-for-java-driver)), és állítsa az `keepAlive` operációs rendszer intervallumát 4 percnél kevesebbre.
+Gyakori okok és megoldások:
 
- 
+- **Az Azure LoadBalancers üresjárati időkorlátja**: Ez a probléma a következőképpen is megnyilvánulhat: `ClosedConnectionException` . A probléma megoldásához állítsa a Keep-Alive beállítást az illesztőprogramban (lásd: [Keep-Alive engedélyezése a Java-illesztőprogramhoz](#enable-keep-alive-for-the-java-driver)), és növelje a Keep-Alive beállításokat az operációs rendszeren, vagy [állítsa be az üresjárat időkorlátját Azure Load Balancer](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal).
+
+- **Ügyfélalkalmazás erőforrás-kimerülése**: Győződjön meg arról, hogy az ügyfélszámítógépek elegendő erőforrással rendelkeznek a kérelem végrehajtásához.
+
+## <a name="cant-connect-to-a-host"></a>Nem lehet csatlakozni a gazdagéphez
+
+Ez a következő hibaüzenet jelenhet meg: "nem lehet csatlakozni a gazdagéphez, az újrapróbálkozások száma 600000 ezredmásodpercben."
+
+Ezt a hibát a forrás hálózati címfordítás (SNAT) kimerülése okozhatja az ügyféloldali oldalon. A probléma kizárásához kövesse a SNAT-on a [Kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md) című szakasz lépéseit.
+
+A hiba akkor is előfordulhat, ha az Azure Load Balancer alapértelmezés szerint négy perc üresjárati időkorláttal rendelkezik. Lásd: a [terheléselosztó üresjárati időkorlátja](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). [Engedélyezze a Keep-Alive értéket a Java-illesztőprogram számára](#enable-keep-alive-for-the-java-driver) , és állítsa be az `keepAlive` operációs rendszer intervallumát négy percnél kevesebbre.
 
 ## <a name="overloadedexception-java"></a>OverloadedException (Java)
-A felhasználható kérelmek teljes száma meghaladja a tárterületre vagy a táblára kiépített kérések mennyiségét. Így a kérelmek szabályozása megtörténik.
-### <a name="solution"></a>Megoldás
-Érdemes megfontolni a Azure Portal a térközhez vagy a táblához rendelt átviteli sebesség méretezését (lásd [itt](manage-scale-cassandra.md) : méretezési műveletek a Cassandra APIban), vagy egy újrapróbálkozási házirendet is megvalósíthat. A Java esetében lásd: újrapróbálkozási minták a [v3. x illesztőprogramhoz](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) és a [v4. x illesztőprogramhoz](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4). Lásd még: [Az Azure Cosmos Cassandra Extensions for Java](https://github.com/Azure/azure-cosmos-cassandra-extensions).
 
-### <a name="overloadedexception-even-with-sufficient-throughput"></a>OverloadedException még elegendő átviteli sebességgel 
-A rendszer úgy tűnik, hogy a kérések mennyisége és/vagy az elfogyasztott kérések egységnyi ára alapján a kérelmek szabályozása és a kérések mennyiségének kiszámításához elegendő átviteli sebesség A vártnál több lehetséges oka van:
-- **Séma szintű műveletek:** Cassandra API a séma szintű műveletekhez (CREATE TABLE, ALTER TABLE, DROP TABLE) implementálja a rendszer átviteli sebességének költségvetését. Ennek a költségvetésnek elegendőnek kell lennie az éles rendszer sémájának műveleteihez. Ha azonban nagy számú séma-szintű művelet van, akkor lehetséges, hogy túllépi ezt a korlátot. Mivel ez a költségkeret nem felhasználó által vezérelt, érdemes megfontolni a futtatott séma-műveletek számának csökkentését. Ha a művelet végrehajtása nem oldja meg a problémát, vagy nem valósítható meg a munkaterhelés esetében, [hozzon létre egy Azure-támogatási kérelmet](../azure-portal/supportability/how-to-create-azure-support-request.md).
-- **Adatok eldöntése:** ha az átviteli sebesség Cassandra APIban van kiépítve, egyenlően oszlik meg a fizikai partíciók között, és mindegyik fizikai partíciónak van felső korlátja. Ha nagy mennyiségű adatot szúr be vagy kérdez le egy adott partícióból, lehetséges, hogy az adott táblára vonatkozóan nagy mennyiségű teljes átviteli sebesség (kérelmek egysége) kiépítés miatt korlátozott. Tekintse át az adatmodellt, és győződjön meg arról, hogy nem rendelkezik túlzott mértékű döntéssel, ami okozhatja a gyors partíciót. 
+A kérelmek szabályozása megtörténik, mert a felhasznált kérelmek teljes száma nagyobb, mint a kulcstartón vagy táblában kiépített kérelmek száma.
 
-## <a name="intermittent-connectivity-errors-java"></a>Átmeneti kapcsolódási hibák (Java) 
+Érdemes lehet a Azure Portalhoz rendelt átviteli sebesség méretezését (lásd: [Azure Cosmos DB Cassandra API fiók rugalmas skálázása](manage-scale-cassandra.md)) vagy újrapróbálkozási szabályzat megvalósítása.
+
+A Java esetében lásd: újrapróbálkozási minták a [v3. x illesztőprogramhoz](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) és a [v4. x illesztőprogramhoz](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4). Lásd még: [Az Azure Cosmos Cassandra Extensions for Java](https://github.com/Azure/azure-cosmos-cassandra-extensions).
+
+### <a name="overloadedexception-despite-sufficient-throughput"></a>OverloadedException a megfelelő átviteli sebesség ellenére
+
+A rendszer úgy tűnik, hogy a kérelmek szabályozása akkor is lehetséges, ha elegendő átviteli sebesség van kiépítve a kérelem mennyiségi vagy felhasznált kérelmi egységének díjaként. Két lehetséges ok:
+
+- **Séma szintű műveletek**: a Cassandra API a séma szintű műveletekhez (CREATE TABLE, ALTER TABLE, drop Table) implementálja a rendszer átviteli sebességének költségvetését. Ennek a költségvetésnek elegendőnek kell lennie az éles rendszer sémájának műveleteihez. Ha azonban nagy számú séma-szintű művelet van, akkor túllépheti ezt a korlátot.
+
+  Mivel a költségvetés nem felhasználó által vezérelt, érdemes csökkenteni a futtatott séma-műveletek számát. Ha ez a művelet nem oldja meg a problémát, vagy nem valósítható meg a munkaterhelés esetében, [hozzon létre egy Azure-támogatási kérelmet](../azure-portal/supportability/how-to-create-azure-support-request.md).
+
+- **Adatok eldöntése**: Ha az átviteli sebesség a Cassandra APIban van kiépítve, akkor egyenlően oszlik meg a fizikai partíciók között, és mindegyik fizikai partíciónak van felső korlátja. Ha nagy mennyiségű adatot szúr be vagy kérdez le egy adott partícióból, akkor is lehet, hogy az adott tábla nagy mennyiségű teljes átviteli sebességét (kérelmek egységét) is kiépíti.
+
+  Tekintse át az adatmodellt, és győződjön meg arról, hogy nem rendelkezik túlzott mértékű döntéssel, ami gyors partíciót eredményezhet.
+
+## <a name="intermittent-connectivity-errors-java"></a>Átmeneti kapcsolódási hibák (Java)
+
 A kapcsolatok váratlanul elvesznek vagy időtúllépésnek számítanak.
 
-### <a name="solution"></a>Megoldás 
-A Javához készült Apache Cassandra-illesztőprogramok két natív újracsatlakoztatási szabályzatot biztosítanak: `ExponentialReconnectionPolicy` és `ConstantReconnectionPolicy` . A mező alapértelmezett értéke: `ExponentialReconnectionPolicy`. Azure Cosmos DB Cassandra API esetében azonban ajánlott `ConstantReconnectionPolicy` 2 másodperces késleltetés. Tekintse meg a Java v4. x illesztőprogramhoz tartozó [illesztőprogram-dokumentációt](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/)  , és [itt](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/) a Java 3. x útmutatást lásd: a [ReconnectionPolicy konfigurálása a Java-illesztőprogramokhoz az](#configuring-reconnectionpolicy-for-java-driver) alábbi példákban.
+A Javához készült Apache Cassandra-illesztőprogramok két natív újracsatlakoztatási szabályzatot biztosítanak: `ExponentialReconnectionPolicy` és `ConstantReconnectionPolicy` . A mező alapértelmezett értéke: `ExponentialReconnectionPolicy`. Azure Cosmos DB Cassandra API esetében azonban `ConstantReconnectionPolicy` két másodperces késleltetést ajánlunk.
+
+Tekintse meg a Java [4. x illesztőprogram dokumentációját](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/), a [Java 3. x illesztőprogram dokumentációját](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/), vagy [konfigurálja a ReconnectionPolicy a Java-illesztőprogramok](#configure-reconnectionpolicy-for-the-java-driver) példái között.
 
 ## <a name="error-with-load-balancing-policy"></a>Hiba a terheléselosztási házirenddel
 
-Ha végrehajtotta a terheléselosztási házirendet a Java Datastax-illesztőprogram v3. x verziójában, az alábbihoz hasonló kóddal:
+Lehet, hogy implementálta a terheléselosztási házirendet a Java DataStax-illesztőprogram v3. x verziójában, a következőhöz hasonló kóddal:
 
 ```java
 cluster = Cluster.builder()
@@ -70,29 +91,29 @@ cluster = Cluster.builder()
         .build();
 ```
 
-Ha az érték `withLocalDc()` nem felel meg a kapcsolattartási pont adatközpontjának, akkor előfordulhat, hogy a következő hibát tapasztalja: `com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)` . 
+Ha az érték `withLocalDc()` nem felel meg a kapcsolattartási pont adatközpontjának, időszakos hibát tapasztalhat: `com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)` .
 
-### <a name="solution"></a>Megoldás 
-A [CosmosLoadBalancingPolicy](https://github.com/Azure/azure-cosmos-cassandra-extensions/blob/master/package/src/main/java/com/microsoft/azure/cosmos/cassandra/CosmosLoadBalancingPolicy.java) megvalósítása (Előfordulhat, hogy a működéséhez frissítenie kell a datastax alverziót):
+A [CosmosLoadBalancingPolicy](https://github.com/Azure/azure-cosmos-cassandra-extensions/blob/master/package/src/main/java/com/microsoft/azure/cosmos/cassandra/CosmosLoadBalancingPolicy.java)implementálása. A működéséhez előfordulhat, hogy a következő kóddal kell frissítenie a DataStax:
 
 ```java
 LoadBalancingPolicy loadBalancingPolicy = new CosmosLoadBalancingPolicy.Builder().withWriteDC("West US").withReadDC("West US").build();
 ```
 
-## <a name="count-fails-on-large-table"></a>A Count sikertelen a nagyméretű táblában
-Ha nagy mennyiségű `select count(*) from table` sorhoz futtat vagy hasonló, a kiszolgáló időtúllépést mutat.
+## <a name="the-count-fails-on-a-large-table"></a>Egy nagyméretű tábla száma meghiúsul
 
-### <a name="solution"></a>Megoldás 
-Ha helyi CQLSH-ügyfelet használ, próbálja meg módosítani a `--connect-timeout` vagy a `--request-timeout` beállításokat (további részletek [itt](https://cassandra.apache.org/doc/latest/tools/cqlsh.html)találhatók). Ha ez nem elegendő, és a szám továbbra is időtúllépést okoz, akkor a Azure Cosmos DB háttérbeli telemetria rekordjainak számát a Azure Portal metrikák lapján, a metrika kiválasztásával `document count` , majd az adatbázishoz vagy a gyűjteményhez tartozó szűrő hozzáadásával (a Azure Cosmos db egy analóg táblája) adja meg. Ezután az eredményül kapott gráf fölé helyezheti azt az időpontot, amikor a rekordok számát meg szeretné jeleníteni.
+Ha nagy mennyiségű `select count(*) from table` sorhoz futtat vagy hasonló, a kiszolgáló időtúllépést tapasztal.
+
+Ha helyi CQLSH-ügyfelet használ, módosítsa a `--connect-timeout` vagy a `--request-timeout` beállításokat. Lásd [: cqlsh: a CQL-rendszerhéj](https://cassandra.apache.org/doc/latest/tools/cqlsh.html).
+
+Ha a szám továbbra is időtúllépés miatt lejár, a Azure Cosmos DB háttér-telemetria származó rekordok számát a Azure Portal metrikák lapján, a metrika kiválasztásával, `document count` majd az adatbázishoz vagy a gyűjteményhez tartozó szűrő hozzáadásával (az Azure Cosmos dB-ben lévő tábla analóg elemével) érheti el. Ezután az eredményül kapott gráf fölé helyezheti azt az időpontot, amikor a rekordok számát meg szeretné jeleníteni.
 
 :::image type="content" source="./media/cassandra-troubleshoot/metrics.png" alt-text="metrikák nézet":::
 
-
-## <a name="configuring-reconnectionpolicy-for-java-driver"></a>A ReconnectionPolicy konfigurálása Java-illesztőprogramhoz
+## <a name="configure-reconnectionpolicy-for-the-java-driver"></a>A Java-illesztőprogram ReconnectionPolicy konfigurálása
 
 ### <a name="version-3x"></a>3. x verzió
 
-A Java-illesztőprogram 3. x verziójának esetében konfigurálja az újrakapcsolódási házirendet a fürt objektum létrehozásakor:
+A Java-illesztőprogram 3. x verziójának esetében konfigurálja az újrakapcsolódási házirendet, amikor létrehoz egy fürtözött objektumot:
 
 ```java
 import com.datastax.driver.core.policies.ConstantReconnectionPolicy;
@@ -119,11 +140,11 @@ datastax-java-driver {
 }
 ```
 
-## <a name="enable-keep-alive-for-java-driver"></a>Keep-Alive engedélyezése a Java-illesztőprogramhoz
+## <a name="enable-keep-alive-for-the-java-driver"></a>Keep-Alive engedélyezése a Java-illesztőprogramhoz
 
 ### <a name="version-3x"></a>3. x verzió
 
-A Java-illesztőprogram 3. x verziójában állítsa a Keep-Alive beállítást a fürt objektum létrehozásakor, és győződjön meg arról, hogy a Keep-Alive [engedélyezve van az operációs rendszeren](https://knowledgebase.progress.com/articles/Article/configure-OS-TCP-KEEPALIVE-000080089):
+A Java-illesztőprogram 3. x verziójában állítsa a Keep-Alive beállítást a fürt létrehozásakor, majd győződjön meg arról, hogy a Keep-Alive [engedélyezve van az operációs rendszeren](https://knowledgebase.progress.com/articles/Article/configure-OS-TCP-KEEPALIVE-000080089):
 
 ```java
 import java.net.SocketOptions;
@@ -138,7 +159,7 @@ cluster = Cluster.builder().addContactPoints(contactPoints).withPort(port)
 
 ### <a name="version-4x"></a>4. x verzió
 
-A Java-illesztőprogram 4-es. x verziójához állítsa be a Keep-Alive beállítást a beállítások felülbírálása beállítással, `reference.conf` és győződjön meg arról, hogy a Keep-Alive [engedélyezve van az operációs rendszeren](https://knowledgebase.progress.com/articles/Article/configure-OS-TCP-KEEPALIVE-000080089):
+A Java-illesztőprogram 4-es. x verziójához állítsa be a Keep-Alive beállítást a (z) beállításainak felülbírálásával `reference.conf` , majd győződjön meg arról, hogy a Keep-Alive [engedélyezve van az operációs rendszeren](https://knowledgebase.progress.com/articles/Article/configure-OS-TCP-KEEPALIVE-000080089):
 
 ```xml
 datastax-java-driver {
@@ -151,5 +172,5 @@ datastax-java-driver {
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerkedjen meg Azure Cosmos DB Cassandra API [támogatott szolgáltatásaival](cassandra-support.md) .
-- Megtudhatja, hogyan [telepíthet át natív Apache cassandraről Azure Cosmos DBra Cassandra API](cassandra-migrate-cosmos-db-databricks.md)
+- Ismerkedjen meg a Azure Cosmos DB Cassandra API [támogatott szolgáltatásaival](cassandra-support.md) .
+- Megtudhatja, hogyan [telepíthet át natív Apache Cassandra-ről Azure Cosmos DB Cassandra APIre](cassandra-migrate-cosmos-db-databricks.md).

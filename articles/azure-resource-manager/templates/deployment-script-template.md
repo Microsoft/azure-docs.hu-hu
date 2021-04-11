@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: 9f4c21a4b7e58c4eed3a62ea844eb11ccf4ecb49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889382"
+ms.locfileid: "105967336"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Üzembe helyezési parancsfájlok használata ARM-sablonokban
 
@@ -139,8 +139,8 @@ Tulajdonság értékének részletei:
 - `identity`: Az üzembe helyezési parancsfájl API 2020-10-01-es vagy újabb verziója esetén a felhasználó által hozzárendelt felügyelt identitás nem kötelező, kivéve, ha a parancsfájlban nem kell végrehajtania az Azure-specifikus műveleteket.  Az API 2019-10-01-es verziójának előzetes verziója esetén felügyelt identitásra van szükség, mivel a telepítési parancsfájl-szolgáltatás azt használja a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
 - `kind`: Adja meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
 - `forceUpdateTag`: Ha módosítja ezt az értéket a sablon központi telepítései között, akkor az üzembe helyezési parancsfájlt újra végre kell hajtani. Ha a `newGuid()` vagy a `utcNow()` függvényt használja, akkor mindkét függvény csak a paraméter alapértelmezett értékében használható. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
-- `containerSettings`: Itt adhatja meg az Azure Container instance testreszabásához szükséges beállításokat.  `containerGroupName` a tároló csoport nevének megadására szolgál. Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
-- `storageAccountSettings`: A meglévő Storage-fiók használatára vonatkozó beállítások megadása. Ha nincs megadva, a rendszer automatikusan létrehozza a Storage-fiókot. Lásd: [meglévő Storage-fiók használata](#use-existing-storage-account).
+- `containerSettings`: Itt adhatja meg az Azure Container instance testreszabásához szükséges beállításokat. Az üzembe helyezési parancsfájlhoz új Azure Container-példány szükséges. Meglévő Azure Container-példányt nem adhat meg. A tároló csoport nevét azonban a használatával szabhatja testre `containerGroupName` . Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
+- `storageAccountSettings`: A meglévő Storage-fiók használatára vonatkozó beállítások megadása. Ha `containerGroupName` nincs megadva, a rendszer automatikusan létrehozza a Storage-fiókot. Lásd: [meglévő Storage-fiók használata](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Itt adhatja meg a használni kívánt modul verzióját. Tekintse meg a [támogatott Azure PowerShell verziók](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listáját. Tekintse meg a [támogatott Azure CLI-verziók](https://mcr.microsoft.com/v2/azure-cli/tags/list)listáját.
 
   >[!IMPORTANT]

@@ -11,16 +11,45 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68136cc259e0be4a2f9449aa9ec15f4a14a63890
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687328"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074981"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform docs: Újdonságok
 
 Üdvözli a Microsoft Identity platform dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek.
+
+## <a name="march-2021"></a>Március 2021
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Nemrég törölt alkalmazás visszaállítása vagy eltávolítása a Microsoft Identity platformmal](quickstart-restore-app.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Rendszergazdai engedély a Microsoft Identity platformon](v2-admin-consent.md)
+- [Konfigurációs követelmények és hibaelhárítási tippek a Xamarin Androidhoz a MSAL.NET](msal-net-xamarin-android-considerations.md)
+- [Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése](scenario-daemon-acquire-token.md)
+- [Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása](scenario-daemon-app-configuration.md)
+- [Webes API-kat meghívó Daemon-alkalmazás – webes API meghívása az alkalmazásból](scenario-daemon-call-api.md)
+- [Webes API-kat meghívó Daemon-alkalmazás – áttérés éles környezetbe](scenario-daemon-production.md)
+- [Webes API-kat meghívó asztali alkalmazás: token beszerzése](scenario-desktop-acquire-token.md)
+- [Webes API-kat meghívó asztali alkalmazás: kód konfigurálása](scenario-desktop-app-configuration.md)
+- [Webes API-kat meghívó asztali alkalmazás: webes API meghívása](scenario-desktop-call-api.md)
+- [Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)](active-directory-claims-mapping.md)
+- [Naplózás a Pythonhoz készült MSAL-ben](msal-logging-python.md)
+- [Microsoft Enterprise SSO beépülő modul Apple-eszközökhöz (előzetes verzió)](apple-sso-plugin.md)
+- [Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz](quickstart-v2-aspnet-webapp.md)
+- [Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba](quickstart-v2-aspnet-core-webapp.md)
+- [Gyors útmutató: token beszerzése és a Microsoft Graph API meghívása a konzol alkalmazás identitásával](quickstart-v2-netcore-daemon.md)
+- [Gyors útmutató: ASP.NET Core webes API-k biztosítása a Microsoft Identity platformmal](quickstart-v2-aspnet-core-web-api.md)
+- [Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban](quickstart-v2-angular.md)
+- [Támogatási és súgó lehetőségek fejlesztőknek](developer-support-help-options.md)
+- [Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása](scenario-web-app-sign-user-app-configuration.md)
+- [Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés](scenario-web-app-sign-user-sign-in.md)
 
 ## <a name="february-2021"></a>2021. február
 
@@ -65,25 +94,3 @@ ms.locfileid: "101687328"
 - [Jogkivonat élettartamára vonatkozó szabályzatok konfigurálása (előzetes verzió)](configure-token-lifetimes.md)
 - [Microsoft Identity platform hitelesítési kódtárak](reference-v2-libraries.md)
 - [Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md)
-
-## <a name="december-2020"></a>2020. december
-
-### <a name="new-articles"></a>Új cikkek
-
-- [Gyors útmutató: ASP.NET Core webalkalmazás, amely a felhasználók nevében jelentkezik be, és Microsoft Graph](quickstart-v2-aspnet-core-webapp-calls-graph.md)
-- [Hibák és kivételek kezelése az MSAL.NET-ben](msal-error-handling-dotnet.md)
-- [Hibák és kivételek kezelése az iOS-hez/macOS-hez készült MSAL-ben](msal-error-handling-ios.md)
-- [Hibák és kivételek kezelése a Javához készült MSAL-ben](msal-error-handling-java.md)
-- [Hibák és kivételek kezelése az MSAL.js-ben](msal-error-handling-js.md)
-- [Hibák és kivételek kezelése a Pythonhoz készült MSAL-ben](msal-error-handling-python.md)
-- [Microsoft Identity platform token Exchange-forgatókönyvek SAML-vel és OIDC/OAuth](scenario-token-exchange-saml-oauth.md)
-
-### <a name="updated-articles"></a>Frissített cikkek
-
-- [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba](quickstart-v2-java-webapp.md)
-- [Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása](tutorial-v2-aspnet-daemon-web-app.md)
-- [Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása](scenario-web-app-sign-user-app-registration.md)
-- [Microsoft Identity platform és implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)
-- [Microsoft Identity platform hozzáférési jogkivonatok](access-tokens.md)
-- [Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md)
-

@@ -44,16 +44,24 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: Adatkezelő létrehozása
       items:
-        - name: Azure Data Studio
-          href: create-data-controller-azure-data-studio.md
-        - name: Azure Portal
-          href: create-data-controller-resource-in-azure-portal.md
-        - name: Azure Data parancssori felület (azdata)
-          href: create-data-controller-using-azdata.md
-        - name: Kubernetes-eszközök
-          href: create-data-controller-using-kubernetes-native-tools.md
-        - name: SCC alkalmazása (OpenShift)
-          href: how-to-apply-security-context-constraint.md
+        - name: Közvetett kapcsolati mód
+          items:
+            - name: Azure Data Studio
+              href: create-data-controller-azure-data-studio.md
+            - name: Azure Portal
+              href: create-data-controller-resource-in-azure-portal.md
+            - name: Azure Data parancssori felület (azdata)
+              href: create-data-controller-using-azdata.md
+            - name: Kubernetes-eszközök
+              href: create-data-controller-using-kubernetes-native-tools.md
+            - name: SCC alkalmazása (OpenShift)
+              href: how-to-apply-security-context-constraint.md
+        - name: Közvetlen kapcsolati mód
+          items:
+            - name: Előfeltételek
+              href: deploy-data-controller-direct-mode-prerequisites.md
+            - name: Üzembe helyezés
+              href: deploy-data-controller-direct-mode.md
     - name: Az Azure Arc-kompatibilis adatszolgáltatások közös felületei
       items:
         - name: Monitorozás irányítópulttal (Azure Data Studio)

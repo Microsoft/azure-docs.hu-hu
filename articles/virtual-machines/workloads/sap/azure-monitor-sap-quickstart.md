@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: d9febb4efba85d47abe1cc11a3cb52dc0393c036
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101672009"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554059"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>SAP-megoldások Azure Monitor üzembe helyezése Azure Portal
 
@@ -81,12 +81,23 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
 1. Válassza az operációs rendszer (Linux) lehetőséget a legördülő menüből 
 
-> [!IMPORTANT]
-> Az operációs rendszer (Linux) szolgáltatójának konfigurálásához győződjön meg arról, hogy a Node_Exporter telepítve van az egyes BareMetal-példányokban. További információ: [Node_Exporter](https://github.com/prometheus/node_exporter)
+>[!IMPORTANT]
+> Az operációs rendszer (Linux) szolgáltatójának konfigurálásához győződjön meg arról, hogy a Node_Exporter legújabb verziója telepítve van minden olyan gazdagépen (BareMetal vagy virtuális gépen), amelyet figyelni szeretne. Használja ezt a [link] ( https://prometheus.io/download/#node_exporter) a legújabb verzió megkereséséhez. További információ: [Node_Exporter](https://github.com/prometheus/node_exporter)
 
 2. Adjon meg egy nevet, amely a BareMetal-példány azonosítója lesz.
 3. Adja meg a Node exportőr végpontot a formájában http://IP:9100/metrics .
-4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget   . 
+
+>[!IMPORTANT]
+> Használja a Linux-gazdagép magánhálózati IP-címét. Győződjön meg arról, hogy a gazdagép és az AMS erőforrás ugyanabban a VNET van. 
+
+>[!Note]
+> A tűzfal "9100" portját meg kell nyitni a Linux-gazdagépen.
+>Ha a tűzfal-cmd: Firewall-cmd--Permanent--Add-port = 9100/TCP tűzfal-cmd--reload a UFW használata esetén: UFW Allow 9100/TCP UFW reload
+
+>[!Tip]
+> Ha a Linux-gazdagép egy Azure-beli virtuális gép, ügyeljen arra, hogy az összes megfelelő NSG engedélyezze a bejövő forgalmat a 9100-as porton a forrásként.
+ 
+5. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget   . 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server szolgáltató
