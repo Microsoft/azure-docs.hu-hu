@@ -3,15 +3,16 @@ title: Gyakori kérdések az Azure Kubernetes szolgáltatásban (ak) található
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) & Azure bizalmas számítástechnikai (ACC) csomópontok támogatásával kapcsolatos gyakori kérdésekre.
 author: agowdamsft
 ms.service: container-service
+ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 02/09/2020
 ms.author: amgowda
-ms.openlocfilehash: 550995f0be3d634e7e9f24a8bf6826916003308e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94b585078ce5e78a658fd8f110f09963200010b6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100653397"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933559"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes szolgáltatás (ak) bizalmas számítástechnikai csomópontjairól
 

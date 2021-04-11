@@ -4,10 +4,10 @@ description: Ismerje meg a Defender for IoT szolgáltatás használatakor elérh
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.openlocfilehash: bd4d89d8664dae2421ff7f268b3710b5a906427b
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784611"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerei

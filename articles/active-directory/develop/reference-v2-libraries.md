@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 590e57d587c8e6e254811892b5c5e740b511c302
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 321a5c473df30dd6f00bbcd1294d48ce8da34009
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104690653"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060380"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform hitelesítési kódtárak
 
@@ -29,7 +29,7 @@ Ha úgy dönt, hogy a [OAuth 2,0 vagy az OpenID Connect 1,0](active-directory-v2
 
 ## <a name="single-page-application-spa"></a>Egyoldalas alkalmazás (SPA)
 
-Egy egyoldalas alkalmazás teljes egészében a böngésző felületén fut, és dinamikusan vagy alkalmazás betöltési idején kéri le az oldal (HTML, CSS és JavaScript) adatmennyiségét. Meghívhatja a webes API-kat a háttérbeli adatforrásokkal való kommunikációra.
+Az egyoldalas alkalmazások teljes mértékben a böngészőben futnak, és dinamikusan vagy alkalmazásbeli betöltési idő alatt beolvasják az oldal-és a CSS-kódot. Meghívhatja a webes API-kat a háttérbeli adatforrásokkal való kommunikációra.
 
 Mivel a SPA kódja teljes egészében a böngészőben fut, olyan *nyilvános ügyfélnek* minősül, amely nem tudja biztonságosan tárolni a titkokat.
 
@@ -45,7 +45,7 @@ Mivel a webalkalmazás kódja a webkiszolgálón fut, egy olyan *bizalmas ügyf�
 
 ## <a name="desktop-application"></a>Asztali alkalmazás
 
-Az asztali alkalmazások általában bináris (lefordított) kódok, amelyek felfedik a felhasználói felületet, és a felhasználó asztalán futnak.
+Az asztali alkalmazások általában bináris (lefordított) kód, amely felhasználói felületet jelenít meg, és a felhasználó asztalán való futtatásra szolgál.
 
 Mivel egy asztali alkalmazás a felhasználó asztalán fut, olyan *nyilvános ügyfélnek* minősül, amely nem tudja biztonságosan tárolni a titkokat.
 
@@ -53,7 +53,7 @@ Mivel egy asztali alkalmazás a felhasználó asztalán fut, olyan *nyilvános �
 
 ## <a name="mobile-application"></a>Mobilalkalmazás
 
-A mobil alkalmazások általában bináris (lefordított) kódok, amelyek felfedik a felhasználói felületet, és egy felhasználó mobileszközön futnak.
+A mobil alkalmazások általában bináris (lefordított) kód, amely felhasználói felületet jelenít meg, és a felhasználó mobileszközön való futtatásra szolgál.
 
 Mivel a mobil alkalmazások a felhasználó mobileszközön futnak, olyan *nyilvános ügyfélnek* számít, amely nem tudja biztonságosan tárolni a titkokat.
 

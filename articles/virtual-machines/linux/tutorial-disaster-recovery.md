@@ -10,10 +10,10 @@ ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102564747"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>Oktatóanyag: a Linux rendszerű virtuális gépek vész-helyreállításának beállítása
@@ -46,7 +46,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
     --- | --- | --- | ---
     Tárolás | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| Adatok írása a virtuális gépről a forrás régióban lévő cache Storage-fiókba. 
     Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| Engedélyezés és hitelesítés Site Recovery szolgáltatás URL-címeire. 
-    Replikálás | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM-kommunikáció a Site Recovery szolgáltatással. 
+    Replikáció | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM-kommunikáció a Site Recovery szolgáltatással. 
     Service Bus | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | A virtuális gép a figyelési és diagnosztikai adatSite Recoveryra ír. 
 
 4. Ha hálózati biztonsági csoportokat (NSG) használ a virtuális gépek hálózati forgalmának korlátozására, hozzon létre olyan NSG-szabályokat, amelyek engedélyezik a virtuális gép kimenő kapcsolatát (HTTPS 443) ezen szolgáltatás-címkék (IP-címek csoportjai) használatával. Először próbálja ki a tesztelési NSG vonatkozó szabályokat.

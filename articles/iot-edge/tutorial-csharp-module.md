@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 01b30fed23b33719f08e93907075eee757343b1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461742"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219450"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Linux-tárolók használatával
 
@@ -52,7 +52,7 @@ A következő táblázat segítségével megismerheti a C#-modulok Linux-tárol�
 Az oktatóanyag megkezdése előtt el kellett volna haladnia az előző oktatóanyagon, hogy beállítsa a fejlesztési környezetet, [fejlesszen egy IoT Edge modult Linux-tárolók használatával](tutorial-develop-for-linux.md). Az oktatóanyag elvégzése után már a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* Azure IoT Edge rendszert futtató eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
+* A Linux-tárolókkal Azure IoT Edge rendszert futtató eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.

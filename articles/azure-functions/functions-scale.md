@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936761"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728623"
 ---
 # <a name="azure-functions-hosting-options"></a>Üzemeltetési lehetőségek Azure Functions
 
@@ -28,7 +28,7 @@ Ez a cikk a különböző üzemeltetési csomagok, valamint a Kubernetes-alapú 
 
 A következő összefoglalás a függvények három fő üzemeltetési csomagjának előnyeit foglalja le:
 
-| | |
+| Felkészülés | Előnyök |
 | --- | --- |  
 |**[Használatalapú csomag](consumption-plan.md)**| Automatikusan méretezhető, és csak a számítási erőforrásokért kell fizetnie, ha a függvények futnak.<br/><br/>A használati terv a függvények gazdagépének példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján.<br/><br/> ✔ Alapértelmezett üzemeltetési csomag.<br/>A ✔ csak akkor kell fizetnie, ha a függvények futnak.<br/>✔ A skálázást automatikusan, akár nagy terhelésű időszakok esetén is.|  
 |**[Prémium szintű csomag](functions-premium-plan.md)**|Az előre betöltött feldolgozók által igénybe vehető, az üresjárat utáni késleltetést nem igénylő alkalmazásokat használó, automatikusan méretezhető, a virtuális hálózatokhoz való csatlakozást követően a rendszer az igények alapján automatikusan méretezi a méretezést. <br/><br/>Vegye figyelembe a Azure Functions prémium csomagot a következő helyzetekben: <br/><br/>✔ A Function apps folyamatosan, vagy majdnem folyamatosan fut.<br/>✔ Nagy mennyiségű kisméretű végrehajtás és egy magas végrehajtási számla van, de a használati terv alacsony GB-nál is kevesebb időt vesz igénybe.<br/>✔ Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.<br/>✔ A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben engedélyezett maximális végrehajtási idő.<br/>✔ Olyan funkciókat kell megkövetelni, amelyek nem érhetők el a használati tervben, például virtuális hálózati kapcsolaton keresztül.|  
@@ -36,7 +36,7 @@ A következő összefoglalás a függvények három fő üzemeltetési csomagjá
 
 A cikkben szereplő összehasonlító táblázatok a következő üzemeltetési lehetőségeket is tartalmazzák, amelyek a legnagyobb mennyiségű vezérlést és elkülönítést biztosítják a Function Apps-alkalmazások futtatásához.  
 
-| | |
+| Üzemeltetési lehetőség | Részletek |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | A App Service Environment (benyújtó) egy App Service funkció, amely teljesen elkülönített és dedikált környezetet biztosít a App Service alkalmazások biztonságos, nagy léptékű futtatásához.<br/><br/>A ASE megfelelőek a következőket igénylő alkalmazás-munkaterhelésekhez: <br/><br/>✔ Nagyon nagy léptékű.<br/>✔ A teljes számítási elkülönítést és a hálózati hozzáférés biztonságos elérését.<br/>✔ Nagy memóriahasználat.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | A Kubernetes egy teljesen elkülönített és dedikált környezetet biztosít, amely a Kubernetes platformon fut.<br/><br/> A Kubernetes a következőket igénylő alkalmazás-munkaterhelések esetén megfelelő: <br/>✔ Egyéni hardverkövetelmények.<br/>✔ Elkülönítés és biztonságos hálózati hozzáférés.<br/>✔ Lehetőség hibrid vagy többfelhős környezetben való futtatásra.<br/>✔ Fut a meglévő Kubernetes-alkalmazások és-szolgáltatások mellett.|  
@@ -65,7 +65,7 @@ a <sup>3</sup> Linux az egyetlen támogatott operációs rendszer a Docker-táro
 
 A következő táblázat összehasonlítja a különböző üzemeltetési csomagok skálázási viselkedését.
 
-| | Horizontális felskálázás | Példányok maximális száma |
+| Felkészülés | Horizontális felskálázás | Példányok maximális száma |
 | --- | --- | --- |
 | **[Használatalapú csomag](consumption-plan.md)** | [Esemény vezérelt](event-driven-scaling.md). Automatikus méretezés automatikusan, akár nagy terhelésű időszakok esetén is. Azure Functions az infrastruktúra a processzor-és memória-erőforrásokat úgy méretezi, hogy a funkciók gazdagépének további példányait adja hozzá a bejövő trigger eseményeinek száma alapján. | 200 |
 | **[Prémium szintű csomag](functions-premium-plan.md)** | [Esemény vezérelt](event-driven-scaling.md). Automatikus méretezés automatikusan, akár nagy terhelésű időszakok esetén is. A Azure Functions infrastruktúra a függvények által aktivált események száma alapján méretezi a processzor-és memória-erőforrásokat a functions gazdagép további példányainak hozzáadásával. |100|
@@ -77,7 +77,7 @@ A következő táblázat összehasonlítja a különböző üzemeltetési csomag
 
 ## <a name="cold-start-behavior"></a>A hidegindító viselkedése
 
-|    |    | 
+| Felkészülés | Részletek | 
 | -- | -- |
 | **[Felhasználási &nbsp; terv](consumption-plan.md)** | Az alkalmazások üresjárat esetén nullára méretezhetők, ami azt jelenti, hogy egyes kérések további késéssel is rendelkezhetnek indításkor.  A használati tervnek van néhány optimalizációja, amelyekkel csökkenthető a hideg kezdési idő, beleértve az olyan előre bemelegítő függvényekből való húzást is, amelyek már rendelkeznek a Function Host és a nyelvi folyamatok futtatásával. |
 | **[Prémium szintű csomag](functions-premium-plan.md)** | Állandóan meleg példányok, hogy elkerülje a hideg indítást. |
@@ -95,7 +95,7 @@ A következő táblázat összehasonlítja a különböző üzemeltetési csomag
 
 ## <a name="billing"></a>Számlázás
 
-| | | 
+| Felkészülés | Részletek |
 | --- | --- |
 | **[Használatalapú csomag](consumption-plan.md)** | Csak a függvények futtatásának idejére kell fizetnie. A számlázás a végrehajtások száma, a végrehajtási idő és a felhasznált memória alapján történik. |
 | **[Prémium szintű csomag](functions-premium-plan.md)** | A Prémium csomag a szükséges és az előre bemelegített példányok által használt fő másodpercek és memória számán alapul. A csomagoknak legalább egy példányát mindig melegen kell tartani. Ez a csomag a legelőre kiszámítható díjszabást biztosítja. |

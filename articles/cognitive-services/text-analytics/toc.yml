@@ -5,10 +5,38 @@
   items:
     - name: Mi a Text Analytics API?
       href: overview.md
-    - name: Példa felhasználói forgatókönyvek
-      href: text-analytics-user-scenarios.md
+    - name: Nyelvi támogatás
+      href: language-support.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Újdonságok
       href: whats-new.md
+    - name: Text Analytics GYIK
+      href: text-analytics-resource-faq.md
+- name: Text Analytics rövid útmutató
+  href: quickstarts/client-libraries-rest-api.md
+- name: Példák
+  items:
+    - name: v3.0
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.0.0/sdk/textanalytics/ai-text-analytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples'
+    - name: v 3.1 – előzetes verzió
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples'
 - name: Az MI felelős használata
   items:
     - name: Átláthatósági megjegyzések
@@ -28,11 +56,50 @@
     - name: Integráció és felelős használat
       href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
       displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
-- name: Rövid útmutatók
-  expanded: true
+- name: Útmutatók
   items:
-    - name: Ügyfélkódtár és REST API használata
-      href: quickstarts/client-libraries-rest-api.md
+    - name: Szövegelemzési API hívása
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: Nyelvfelismerés
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: Hangulatelemzés és véleménybányászat
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: Kulcskifejezések kinyerése
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: Elnevezett entitások felismerése és személyes adatok
+      href: How-tos/text-analytics-how-to-entity-linking.md
+      displayName: 'NER, Named entity recognition, PII, redaction'
+    - name: Egészségügyi Text Analytics
+      href: How-tos/text-analytics-for-health.md
+    - name: Text Analytics üzembe helyezése
+      items:
+        - name: Tárolók
+          items:
+            - name: Tárolók telepítése és futtatása
+              href: how-tos/text-analytics-how-to-install-containers.md
+            - name: Tárolók konfigurálása
+              href: text-analytics-resource-container-config.md
+            - name: A Container Instances használata
+              maintainContext: true
+              href: ../containers/azure-container-instance-recipe.md
+            - name: Kubernetes Service (AKS) használata
+              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+            - name: Cognitive Services-tárolók – dokumentáció
+              href: ../containers/index.yml
+    - name: Migrálás az API 3. verziójára
+      href: migration-guide.md
+- name: Alapelvek
+  items:
+    - name: Példa felhasználói forgatókönyvek
+      href: text-analytics-user-scenarios.md
+    - name: Nevesített entitástípusok
+      href: named-entity-types.md
+    - name: Unicode kódolások és szöveges eltolások
+      href: concepts/text-offsets.md
+    - name: Adatkorlátok
+      href: concepts/data-limits.md
+    - name: Modell verziószámozása
+      href: concepts/model-versioning.md
 - name: Oktatóanyagok
   items:
     - name: A Power BI integrálása ügyfelektől származó visszajelzések elemzéséhez
@@ -47,53 +114,8 @@
       href: ../translator/tutorial-build-flask-app-translation-synthesis.md
     - name: Adatok kinyerése az Excelben a Power Automate használatával
       href: tutorials/extract-excel-information.md
-- name: Alapelvek
-  items:
-    - name: Nevesített entitástípusok
-      href: named-entity-types.md
-    - name: Nyelvi támogatás
-      href: language-support.md
-    - name: Szövegeltolások
-      href: concepts/text-offsets.md
-    - name: Adatkorlátok
-      href: concepts/data-limits.md
-    - name: Modell verziószámozása
-      href: concepts/model-versioning.md
-- name: Útmutatók
-  items:
-    - name: Szövegelemzési API hívása
-      href: How-tos/text-analytics-how-to-call-api.md
-    - name: Nyelvfelismerés
-      href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Hangulatelemzés és véleménybányászat
-      href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Kulcskifejezések kinyerése
-      href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Nevesített entitások felismerése
-      href: How-tos/text-analytics-how-to-entity-linking.md
-    - name: Egészségügyi Text Analytics
-      href: How-tos/text-analytics-for-health.md
-    - name: Tárolók használata
-      items:
-        - name: Tárolók telepítése és futtatása
-          href: how-tos/text-analytics-how-to-install-containers.md
-        - name: Tárolók konfigurálása
-          href: text-analytics-resource-container-config.md
-        - name: A Container Instances használata
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Kubernetes Service (AKS) használata
-          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-        - name: Cognitive Services-tárolók – dokumentáció
-          href: ../containers/index.yml
-    - name: Migrálás az API 3. verziójára
-      href: migration-guide.md
 - name: Referencia
   items:
-    - name: Parancssori felülettel kapcsolatos referencia
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: PowerShell-referencia
-      href: /powershell/module/azurerm.cognitiveservices/
     - name: Szövegelemzések API
       items:
         - name: v3.1.preview.3
@@ -104,6 +126,16 @@
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1'
     - name: SDK-k
       items:
+        - name: v 3.1 – előzetes verzió
+          items:
+            - name: .NET
+              href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview
+            - name: Python
+              href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview
+            - name: Java
+              href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview
+            - name: Node.js
+              href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview
         - name: v3.0
           items:
             - name: .NET
@@ -126,16 +158,16 @@
               href: /javascript/api/@azure/cognitiveservices-textanalytics/
             - name: Go
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
+    - name: Parancssori felülettel kapcsolatos referencia
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+    - name: PowerShell-dokumentáció
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: További források
   items:
     - name: Támogatási lehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: Külső és közösségi tartalom
       href: text-analytics-resource-external-community.md
-    - name: GYIK
-      href: text-analytics-resource-faq.md
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Megfelelőség

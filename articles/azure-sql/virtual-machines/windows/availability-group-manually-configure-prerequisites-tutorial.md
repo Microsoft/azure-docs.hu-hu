@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508742"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219263"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Oktatóanyag: rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -69,11 +69,11 @@ Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https:
 
 Az Azure létrehozza az erőforráscsoportot, és a portálon egy parancsikont helyez el az erőforráscsoporthoz.
 
-## <a name="create-the-network-and-subnets"></a>A hálózat és az alhálózatok létrehozása
+## <a name="create-the-network-and-subnet"></a>A hálózat és az alhálózat létrehozása
 
-A következő lépés a hálózatok és alhálózatok létrehozása az Azure-erőforráscsoporthoz.
+A következő lépés a hálózatok és az alhálózat létrehozása az Azure-erőforráscsoporthoz.
 
-A megoldás egy virtuális hálózatot használ két alhálózattal. A [virtuális hálózat áttekintése](../../../virtual-network/virtual-networks-overview.md) további információkat nyújt az Azure-beli hálózatokról.
+A megoldás egyetlen virtuális hálózatot és egy alhálózatot használ. A [virtuális hálózat áttekintése](../../../virtual-network/virtual-networks-overview.md) további információkat nyújt az Azure-beli hálózatokról.
 
 A virtuális hálózat létrehozása a Azure Portalban:
 
@@ -100,48 +100,13 @@ A virtuális hálózat létrehozása a Azure Portalban:
 
    A Címterület és az alhálózati címtartomány eltérő lehet a táblából. Az előfizetéstől függően a portálon elérhető címtartomány és a hozzá tartozó alhálózat-címtartomány is megjelenik. Ha nem áll rendelkezésre elegendő címtartomány, használjon másik előfizetést.
 
-   A példa az alhálózati név **rendszergazdáját** használja. Ez az alhálózat a tartományvezérlők számára érhető el.
+   A példa az alhálózati név **rendszergazdáját** használja. Ez az alhálózat a tartományvezérlők és a SQL Server virtuális gépek számára készült.
 
 5. Válassza a **Létrehozás** lehetőséget.
 
    ![A virtuális hálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
 Az Azure visszatér a portál irányítópultra, és értesítést küld az új hálózat létrehozásakor.
-
-### <a name="create-a-second-subnet"></a>Második alhálózat létrehozása
-
-Az új virtuális hálózat egy **rendszergazda** nevű alhálózattal rendelkezik. A tartományvezérlők ezt az alhálózatot használják. A SQL Server virtuális gépek egy másik, **SQL** nevű alhálózatot használnak. Az alhálózat konfigurálása:
-
-1. Az irányítópulton válassza ki a létrehozott erőforráscsoportot ( **SQL-ha-RG**). Keresse meg a hálózatot az **erőforrás csoportban az erőforráscsoport területen.**
-
-    Ha az **SQL-ha-RG** nem látható, keresse meg az **erőforráscsoportok** kiválasztásával és az erőforráscsoport neve alapján történő szűréssel.
-
-2. Válassza az **autoHAVNET** elemet az erőforrások listájában. 
-3. A **autoHAVNET** virtuális hálózat **Beállítások** területén válassza az **alhálózatok** lehetőséget.
-
-    Jegyezze fel a már létrehozott alhálózatot.
-
-   ![Jegyezze fel a már létrehozott alhálózatot](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
-
-5. Második alhálózat létrehozásához válassza a **+ alhálózat** lehetőséget.
-6. Az **alhálózat hozzáadása** területen konfigurálja az alhálózatot úgy, hogy beírja a **sqlsubnet** **nevet**. Az Azure automatikusan megadja a **címtartomány érvényes tartományát**. Győződjön meg arról, hogy ez a címtartomány legalább 10 címmel rendelkezik. Éles környezetben több címet is igényelhet.
-7. Válassza az **OK** lehetőséget.
-
-    ![Alhálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
-
-A következő táblázat összefoglalja a hálózati konfiguráció beállításait:
-
-| **Mező** | Érték |
-| --- | --- |
-| **Név** |**autoHAVNET** |
-| **Címtér** |Ez az érték az előfizetés elérhető címeitől függ. Egy tipikus érték a 10.0.0.0/16. |
-| **Alhálózat neve** |**rendszergazda** |
-| **Alhálózati címtartomány** |Ez az érték az előfizetés elérhető címeitől függ. Egy tipikus érték a 10.0.0.0/24. |
-| **Alhálózat neve** |**sqlsubnet** |
-| **Alhálózati címtartomány** |Ez az érték az előfizetés elérhető címeitől függ. Egy tipikus érték a 10.0.1.0/24. |
-| **Előfizetés** |Itt adhatja meg a használni kívánt előfizetést. |
-| **Erőforráscsoport** |**SQL-HA-RG** |
-| **Hely** |Ugyanazt a helyet kell megadnia, amelyet az erőforráscsoport számára választott. |
 
 ## <a name="create-availability-sets"></a>Rendelkezésre állási csoportok létrehozása
 
@@ -164,7 +129,7 @@ A rendelkezésre állási csoportok létrehozása után térjen vissza az erőfo
 
 ## <a name="create-domain-controllers"></a>Tartományvezérlők létrehozása
 
-Miután létrehozta a hálózatot, az alhálózatokat és a rendelkezésre állási csoportokat, készen áll a tartományvezérlők virtuális gépei létrehozására.
+Miután létrehozta a hálózat, az alhálózat és a rendelkezésre állási készleteket, készen áll a tartományvezérlők virtuális gépei létrehozására.
 
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Virtuális gépek létrehozása a tartományvezérlők számára
 

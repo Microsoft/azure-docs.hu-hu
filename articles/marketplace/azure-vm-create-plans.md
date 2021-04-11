@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: b1111caf2eaab1114371cbfed1e929afcff20898
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956254"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219365"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Csomagok létrehozása virtuálisgép-ajánlathoz
 
@@ -154,7 +154,9 @@ A privát ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) v
 
 Ha a virtuális gépet csak közvetetten kell használni, ha egy másik megoldási sablonon vagy felügyelt alkalmazáson keresztül hivatkozik rá, jelölje be ezt a jelölőnégyzetet a virtuális gép közzétételéhez, de az olyan ügyfelektől, akik közvetlenül keresnek vagy böngészhetnek.
 
-A rejtett csomagok nem támogatják az előzetes verziójú hivatkozásokat.
+Bármely Azure-ügyfél a PowerShell vagy a parancssori felület használatával telepítheti az ajánlatot.  Ha azt szeretné, hogy az ajánlat korlátozott számú ügyfél számára legyen elérhető, akkor állítsa a tervet **privát** értékre. 
+
+A rejtett csomagok nem hoznak elő előzetes verziójú hivatkozásokat. Ezeket a lépéseket azonban a [következő lépésekkel](azure-vm-create-faq.md#how-do-i-test-a-hidden-preview-image)ellenőrizheti. 
 
 Válassza a **Piszkozat mentése** lehetőséget, mielőtt továbblépne a bal oldali NAV-terv menü következő fülére, a **technikai konfigurációban**.
 

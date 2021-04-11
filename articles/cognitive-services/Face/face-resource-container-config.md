@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80878425"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934036"
 ---
 # <a name="configure-face-docker-containers"></a>Arc Docker-tárolók konfigurálása
 
@@ -67,7 +67,7 @@ A szakaszban található konfigurációs beállítások a `CloudAI` tárolóra j
 
 ### <a name="storage-scenario-settings"></a>Tárolási forgatókönyv beállításai
 
-A Face tároló a tárolt adatoktól függően blobokat, gyorsítótárat, metaadatokat és üzenetsor-adatokat tárol. A nagyméretű személyekhez tartozó indexek és eredmények például blob-adatként vannak tárolva. A Face tároló két különböző tárolási forgatókönyvet biztosít az ilyen típusú adatokkal való interakció és tárolás során:
+A Face tároló a tárolt adatoktól függően blobokat, gyorsítótárat, metaadatokat és üzenetsor-adatokat tárol. Például a **LargePersonGroup** vonatkozó betanítási indexek és eredmények blob-adatként vannak tárolva. A Face tároló két különböző tárolási forgatókönyvet biztosít az ilyen típusú adatokkal való interakció és tárolás során:
 
 * Memória  
   A memóriában mind a négy adattípus tárolódik. Nem oszlanak meg, és nem is állandóak. Ha a Face tároló le van állítva vagy el lett távolítva, a tárolóban lévő összes tárolt adatmennyiség megsemmisül.  

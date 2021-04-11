@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 314462517ba4e63694266b5e49231cb8536f3635
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: d84f56e5ae0f3c364a0fd3a08ccb173d7c65a5e2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105604726"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121761"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Az Azure Database for MySQL-kiszolgáló támogatott verziói
 
@@ -33,7 +33,7 @@ Azure Database for MySQL szolgáltatásban az átjáró-csomópontok a 3308-es p
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>A Azure Database for MySQL jelenleg a MySQL következő fő és másodlagos verzióit támogatja:
 
 
-| Verzió | Önálló kiszolgáló <br/> Aktuális alverzió |Rugalmas kiszolgáló (előzetes verzió) <br/> Aktuális alverzió  |
+| Verzió | [Önálló kiszolgáló](overview.md) <br/> Aktuális alverzió |[Rugalmas kiszolgáló (előzetes verzió)](/../flexible-server/overview.md) <br/> Aktuális alverzió  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL 5,6-es verzió |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (kivonva) | Nem támogatott|
 |MySQL 5,7-es verzió | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

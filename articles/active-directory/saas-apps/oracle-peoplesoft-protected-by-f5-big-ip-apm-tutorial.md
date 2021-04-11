@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af149f0c1db7f354be6bd968bbd0cf858493d4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522291"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219297"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Oracle PeopleSoft-mel – védett az F5 BIG-IP APM használatával
 
@@ -40,19 +40,19 @@ Első lépésként a következő elemeket kell megadnia:
     2. F5 BIG-IP Access Policy Manager™ (APM) önálló licenc 
     3. F5 BIG-IP Access Policy Manager™ (APM) bővítmény licence egy meglévő BIG-IP F5 BIG-IP® helyi Traffic Manager™ (LTM).
     4. A fenti licencen kívül az F5-es verziójú rendszerek is licenccel rendelkezhetnek a következővel: 
-        * URL-szűrési előfizetés az URL-kategória adatbázisának használatára 
-        * F5 IP Intelligence-előfizetés az ismert támadók és a rosszindulatú forgalom észleléséhez és blokkolásához 
-        * Hálózati hardveres biztonsági modul (HSM) a digitális kulcsok erős hitelesítéshez való védelméhez és kezeléséhez
-1. Az F5 BIG-IP rendszer APM-modulokkal van kiépítve (a LTM nem kötelező) 
+        * URL-szűrési előfizetés az URL-kategória adatbázisának használatára. 
+        * F5 IP Intelligence-előfizetés az ismert támadók és a rosszindulatú forgalom észleléséhez és blokkolásához. 
+        * Hálózati hardveres biztonsági modul (HSM) a digitális kulcsok erős hitelesítéshez való védelméhez és kezeléséhez.
+1. Az F5 BIG-IP rendszer APM-modulokkal van kiépítve (a LTM nem kötelező).
 1. Bár nem kötelező, erősen ajánlott az F5 rendszer üzembe helyezése egy [szinkronizálási/feladatátvételi eszköz csoportjában](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), amely magában foglalja az aktív készenléti párokat, valamint a magas rendelkezésre állású, LEBEGŐPONTOS IP-címet. A további illesztőfelület-redundancia a link aggregációs vezérlő protokoll (LACP) használatával érhető el. A LACP egyetlen virtuális csatolóként (összesítő csoportként) kezeli a csatlakoztatott fizikai adaptereket, és észleli a csoporton belüli összes illesztőfelületi hibát.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Oracle PeopleSoft által védett F5 BIG-IP APM támogatja az **SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* Az F5 BIG-IP APM által védett Oracle PeopleSoft az **SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
 
-## <a name="adding-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Az F5 BIG-IP APM által védett Oracle PeopleSoft hozzáadása a katalógusból
+## <a name="add-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Az F5 BIG-IP APM által védett Oracle PeopleSoft hozzáadása a katalógusból
 
 Az F5 BIG-IP APM által az Azure AD-be védett Oracle PeopleSoft integrálásához hozzá kell adnia az F5 BIG-IP APM által védett Oracle PeopleSoft-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal az **Oracle PeopleSoft által védett, az F5 Big-IP APM** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -231,7 +231,7 @@ Navigáljon a **helyi forgalom > profilok > SSL > ügyfél > +**, hajtsa végre 
 >[!Note]
 > Referencia https://docs.oracle.com/cd/E12530_01/oam.1014/e10356/people.htm
 
-1. Bejelentkezés a PeopleSoft-konzolra a `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start` rendszergazdai hitelesítő adatokkal (például: PS/PS)
+1. Bejelentkezés a PeopleSoft-konzolra a `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start` rendszergazdai hitelesítő adatokkal (például: PS/PS).
 
     ![Manager Önkiszolgálás](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-console.png)
 
@@ -327,11 +327,10 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az Oracle PeopleSoft-Protected az F5 Big-IP APM-be, amelyhez be kell állítania az egyszeri bejelentkezést 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az Oracle PeopleSoft-Protected az F5 Big-IP APM használatával, amelyhez be kell állítania az egyszeri bejelentkezést. 
 
-A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen az F5 BIG-IP APM csempére PeopleSoft-Protected kattint, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az Oracle PeopleSoft-Protectedba az F5 BIG-IP APM használatával, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
-
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazásokban az F5 BIG-IP APM csempével kattint az Oracle PeopleSoft-Protectedre, ha az SP módban van konfigurálva, a bejelentkezési folyamat elindításához és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az Oracle-PeopleSoft-Protectedba az F5 BIG-IP APM használatával, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha az F5 BIG-IP APM által védett Oracle PeopleSoft-t konfigurálta, akkor kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+Miután az F5 BIG-IP APM használatával konfigurálta az Oracle PeopleSoft-Protectedt, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

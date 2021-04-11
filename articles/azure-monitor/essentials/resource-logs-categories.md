@@ -2,13 +2,13 @@
 title: Azure Monitor erőforrás-naplók támogatott szolgáltatásai és kategóriái
 description: Azure Monitor az Azure-erőforrás-naplók támogatott szolgáltatásainak és az esemény sémájának ismertetése.
 ms.topic: reference
-ms.date: 01/29/2021
-ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033146"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166938"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Az Azure erőforrás-naplók támogatott kategóriái
 
@@ -33,7 +33,8 @@ Az alábbi lista felsorolja az egyes erőforrástípusok számára elérhető na
 Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak. Ha úgy érzi, hogy hiányzik egy erőforrás, tekintse meg az erőforrás-specifikus dokumentációt. Például a Microsoft. SQL/kiszolgálók/adatbázisok kategóriái nem érhetők el minden típusú adatbázishoz. További információ: [SQL Database diagnosztikai naplózással kapcsolatos információk](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitHub-megjegyzést.
-## <a name="microsoftaaddomainservices"></a>Microsoft. HRE/domainServices
+
+## <a name="microsoftaaddomainservices"></a>Microsoft. HRE/DomainServices
 
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
 |---|---|---|
@@ -46,6 +47,13 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |PolicyChange|PolicyChange|No|
 |PrivilegeUse|PrivilegeUse|No|
 |SystemSecurity|SystemSecurity|No|
+
+
+## <a name="microsoftaadiamtenants"></a>Microsoft. aadiam/bérlők
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Bejelentkezési|Bejelentkezési|Yes|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/kiszolgálók
@@ -97,6 +105,14 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |JobStreams|Feladatok adatfolyamai|No|
 
 
+## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft. AutonomousDevelopmentPlatform/fiókok
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Naplózás|Naplózás|Yes|
+|Működik|Működik|Yes|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
@@ -135,7 +151,6 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
 |---|---|---|
 |BotRequest|A csatornáktól érkező kérések a robotba|No|
-|DependencyRequest|Függőségi kérelmek|No|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
@@ -182,6 +197,7 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
 |---|---|---|
+|AuthOperational|Operatív hitelesítési naplók|Yes|
 |ChatOperational|Operatív csevegési naplók|No|
 |SMSOperational|Operatív SMS-naplók|No|
 |Használat|Használati rekordok|No|
@@ -256,6 +272,8 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |---|---|---|
 |ActivityRuns|Folyamat-futtatási tevékenység naplója|No|
 |PipelineRuns|Folyamat-futtatási napló|No|
+|SandboxActivityRuns|A homokozó tevékenység futtatja a naplót|Yes|
+|SandboxPipelineRuns|A homokozó-folyamat futtatja a naplót|Yes|
 |SSISIntegrationRuntimeLogs|SSIS Integration Runtime-naplók|No|
 |SSISPackageEventMessageContext|SSIS-csomag – esemény üzenetének környezete|No|
 |SSISPackageEventMessages|SSIS-csomag – esemény üzenetei|No|
@@ -320,6 +338,13 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
 |---|---|---|
 |PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|No|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft. DBForPostgreSQL/serverGroupsv2
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|Yes|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/kiszolgálók
@@ -531,18 +556,6 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |AppTraces|Hívásláncok|No|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
-|---|---|---|
-|Naplózás|Naplózás|No|
-|Kimenő forgalom|Kimenő forgalom|No|
-|Bejövő forgalom|Bejövő forgalom|No|
-|Működik|Működik|No|
-|Nyomkövetés|Nyomkövetés|No|
-|UserDefinedFunction|UserDefinedFunction|No|
-
-
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. kulcstartó/managedhsms
 
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
@@ -747,13 +760,6 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |Motor|Motor|No|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/fiókok
-
-|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
-|---|---|---|
-|ScanStatusLogEvent|ScanStatus|No|
-
-
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. hatáskörébe/fiókok
 
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
@@ -810,6 +816,13 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |AllLogs|Az Azure Signaler szolgáltatás naplói.|No|
 
 
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft. SignalRService/WebPubSub
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AllLogs|Az Azure web közzététel szolgáltatás naplói.|Yes|
+
+
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
 |Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
@@ -826,7 +839,7 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |Hibák|Hibák|No|
 |QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|No|
 |QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|No|
-|SQLInsights|SQL-ismeretek|No|
+|SQLInsights|SQL-megállapítások|No|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
@@ -844,7 +857,7 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|No|
 |QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|No|
 |RequestSteps|Kérelem lépései|No|
-|SQLInsights|SQL-ismeretek|No|
+|SQLInsights|SQL-megállapítások|No|
 |SqlRequests|SQL-kérelmek|No|
 |SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|No|
 |Időtúllépések|Időtúllépések|No|
@@ -901,6 +914,9 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |---|---|---|
 |BuiltinSqlReqsEnded|A beépített SQL Pool-kérelmek véget ért|No|
 |GatewayApiRequests|Szinapszis Gateway API-kérelmek|No|
+|IntegrationActivityRuns|Integrációs tevékenységek futtatása|Yes|
+|IntegrationPipelineRuns|Integrációs folyamat futtatása|Yes|
+|IntegrationTriggerRuns|Integrációs trigger futtatása|Yes|
 |SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|No|
 |SynapseRbacOperations|Szinapszis RBAC-műveletek|No|
 
@@ -975,7 +991,6 @@ Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitH
 |AppServiceIPSecAuditLogs|IPSecurity naplófájlok|No|
 |AppServicePlatformLogs|App Service platform naplói|No|
 |FunctionAppLogs|Function Application-naplók|No|
-
 
 
 ## <a name="next-steps"></a>Következő lépések
