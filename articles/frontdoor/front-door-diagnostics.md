@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a972123604cafbfc4c6753c1fe3ad21147b53b2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715547"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550659"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure-beli bejárati ajtón
 
@@ -29,7 +29,7 @@ Az Azure bejárati ajtót használva a következő módokon figyelheti az erőfo
 
 A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintését a portálon. A következő elérhetők a bejárati ajtó metrikái:
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Dimenziók | Leírás |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Dimenziók | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtó által kiszolgált ügyfél-kérelmek száma.  |
 | RequestSize | Kérelem mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelektől a befelé irányuló kérelmekként küldött bájtok száma. |
@@ -71,7 +71,7 @@ Diagnosztikai naplók konfigurálása a bejárati ajtóhoz:
 
 3. Kattintson **a diagnosztika bekapcsolása** elemre. Archiválja a diagnosztikai naplókat, valamint mérőszámokat egy Storage-fiókba, továbbíthatja őket egy Event hubhoz, vagy elküldheti azokat Azure Monitor naplókba.
 
-A bejárati ajtó jelenleg biztosít diagnosztikai naplókat (óránként kötegelt feldolgozással). A diagnosztikai naplók egyedi API-kérelmeket biztosítanak minden egyes bejegyzéshez a következő sémával:
+A bejárati ajtó jelenleg diagnosztikai naplókat biztosít. A diagnosztikai naplók egyedi API-kérelmeket biztosítanak minden egyes bejegyzéshez a következő sémával:
 
 | Tulajdonság  | Leírás |
 | ------------- | ------------- |

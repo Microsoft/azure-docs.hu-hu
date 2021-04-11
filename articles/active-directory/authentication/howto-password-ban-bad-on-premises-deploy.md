@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5134c0eeaf3ebd1467b35cf825aa64bd1b445bd5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653813"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010579"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -88,7 +88,7 @@ A következő alapvető követelmények érvényesek:
 * A Key Distribution szolgáltatást a Windows Server 2012-es és újabb verzióit futtató tartomány összes tartományvezérlőjén engedélyezni kell. Ez a szolgáltatás alapértelmezés szerint a manuális trigger indításával engedélyezhető.
 
 * A hálózati kapcsolatnak léteznie kell legalább egy, az egyes tartományokban lévő tartományvezérlő és legalább egy olyan kiszolgáló között, amely az Azure AD jelszavas védelemhez az proxy szolgáltatást üzemelteti. Ez a kapcsolat lehetővé teszi, hogy a tartományvezérlő hozzáférhessen az RPC Endpoint Mapper port 135-es portjához és a proxykiszolgáló RPC-kiszolgáló portjához.
-    * Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port, de konfigurálható [statikus port használatára](#static)is.
+    * Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port a tartományból (49152-65535), de [statikus port használatára](#static)is konfigurálható.
 * Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, hálózati hozzáféréssel kell rendelkeznie a következő végpontokhoz:
 
     |**Végpont**|**Cél**|

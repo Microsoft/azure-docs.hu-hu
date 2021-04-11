@@ -1,15 +1,15 @@
 ---
 ms.openlocfilehash: 98a3965160e7ab6c86ba8c6d3a4dfd75af4c6dbb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101750376"
 ---
 Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
 * IoT Hub
-* A(z)
+* Tárfiók
 * Azure Media Services fiók
 * Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../../../../iot-edge/how-to-install-iot-edge.md) telepítve
 

@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.openlocfilehash: f901fe23d2ff04e7ad9ba920dd90ebab8a39246c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786719"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure-beli virtuális gép felmérésének létrehozása
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure-beli virtuális gépeket a helys
 
 - Győződjön meg arról, hogy [létrehozott](./create-manage-projects.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Discovery and Assessment eszközt.
-- Értékelés létrehozásához be kell állítania egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)rendszerhez. A készülék felderíti a helyszíni kiszolgálókat, és metaadatokat és teljesítményadatokat küld Azure Migratenak: felderítés és Értékelés. [További információ](migrate-appliance.md).
+- Értékelés létrehozásához be kell állítania egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)rendszerhez. A készülék felderíti a helyszíni kiszolgálókat, és metaadatokat és teljesítményadatokat küld Azure Migratenak: felderítés és Értékelés. [További információk](migrate-appliance.md).
 
 
 ## <a name="azure-vm-assessment-overview"></a>Az Azure VM Assessment áttekintése
@@ -67,7 +67,7 @@ Az értékelést a következőképpen futtathatja:
         - Másik lehetőségként válassza ki azt a tárolási típust, amelyet a virtuális géphez szeretne használni a Migrálás során.
     - A **fenntartott példányok** területen válassza ki, hogy a virtuális gép tartalék példányait szeretné-e használni az áttelepítéskor.
         - Ha fenntartott példány használatát választja, a "**kedvezmény (%)** vagy a **virtuális gép üzemidő** nem adható meg. 
-        - [További információ](https://aka.ms/azurereservedinstances).
+        - [További információk](https://aka.ms/azurereservedinstances).
  1. **Virtuális gép mérete**:
      - A **méretezési feltétel** területen válassza ki, hogy szeretné-e alapozni az értékelést a kiszolgálói konfigurációs adatokra/metaadatokra vagy a teljesítmény alapú adatokra. Ha teljesítményadatokat használ:
         - A **teljesítmény előzményeiben** adja meg az adatok időtartamát, amely alapján az értékelést alapozni szeretné

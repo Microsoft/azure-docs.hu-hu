@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26b519ce11747ab3374d9bd286800a6c93129019
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105565231"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management
@@ -52,7 +52,7 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | Azok a felhasználók, akik Kiemelt szerepköröket rendeltek hozzá, nem kell megnövelniük a támadás esélyét. Emellett a támadók a nem aktívan használatban lévő fiókoknál is könnyebben észrevehetetlen maradnak. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a nem szükséges Kiemelt szerepkörökből. |
@@ -65,7 +65,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A többtényezős hitelesítés nélkül a feltört felhasználók is aktiválhatja a Kiemelt szerepköröket. |
 | **Hogyan lehet javítani?** | Tekintse át a szerepkörök listáját, és a [többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) minden szerepkörhöz. |
@@ -76,7 +76,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | Az aktuális Azure AD-szervezetnek nincs prémium szintű Azure AD P2-je. |
 | **Hogyan lehet javítani?** | Tekintse át az [Azure ad-kiadásokkal](../fundamentals/active-directory-whatis.md)kapcsolatos információkat. Frissítsen prémium szintű Azure AD P2-re. |
@@ -85,7 +85,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **közepes**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A Kiemelt szerepkörben lévő fiókok nem változtatták meg a jelszavukat az elmúlt 90 napban. Ezek a fiókok lehetnek olyan szolgáltatás-vagy megosztott fiókok, amelyek nincsenek karbantartva és sebezhetők a támadók számára. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő fiókokat. Ha már nincs szükségük hozzáférésre, távolítsa el őket a Kiemelt szerepkörökből. |
@@ -97,7 +97,7 @@ Súlyosság: **közepes**
 
 Súlyosság: **magas**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A Privileged Identity Managementon kívül végrehajtott Kiemelt szerepkör-hozzárendelések nincsenek megfelelően figyelve, és az aktív támadásra utalhatnak. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a Privileged Identity Managementon kívül hozzárendelt Kiemelt szerepkörökből. |
@@ -108,7 +108,7 @@ Súlyosság: **magas**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A globális rendszergazda a legmagasabb jogosultsági szintű szerepkör. Ha a globális rendszergazda biztonsága sérül, a támadó hozzáfér az összes engedélyéhez, amely a teljes rendszerét veszélyezteti. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el azokat, amelyek nem feltétlenül szükségesek a globális rendszergazdai szerepkörhöz. </br>Ehelyett alacsonyabb jogosultsági szintű szerepköröket rendelhet hozzájuk a felhasználókhoz. |
@@ -122,7 +122,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | Ugyanazon felhasználó több aktiválást is ugyanazzal a jogosultsági szinttel rendelkező szerepkörbe kapcsol egy támadás jeleként. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és győződjön meg arról, hogy a Kiemelt szerepkör [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy elvégezze a feladatait. |
@@ -158,7 +158,7 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | Azok a felhasználók, akik Kiemelt szerepköröket rendeltek hozzá, nem kell megnövelniük a támadás esélyét. Emellett a támadók a nem aktívan használatban lévő fiókoknál is könnyebben észrevehetetlen maradnak. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a nem szükséges Kiemelt szerepkörökből. |
@@ -171,7 +171,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A többtényezős hitelesítés nélkül a feltört felhasználók is aktiválhatja a Kiemelt szerepköröket. |
 | **Hogyan lehet javítani?** | Tekintse át a szerepkörök listáját, és a [többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) minden szerepkörhöz. |
@@ -182,7 +182,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | Az aktuális Azure AD-szervezetnek nincs prémium szintű Azure AD P2-je. |
 | **Hogyan lehet javítani?** | Tekintse át az [Azure ad-kiadásokkal](../fundamentals/active-directory-whatis.md)kapcsolatos információkat. Frissítsen prémium szintű Azure AD P2-re. |
@@ -191,7 +191,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **közepes**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A Kiemelt szerepkörben lévő fiókok nem változtatták meg a jelszavukat az elmúlt 90 napban. Ezek a fiókok lehetnek olyan szolgáltatás-vagy megosztott fiókok, amelyek nincsenek karbantartva és sebezhetők a támadók számára. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő fiókokat. Ha már nincs szükségük hozzáférésre, távolítsa el őket a Kiemelt szerepkörökből. |
@@ -203,7 +203,7 @@ Súlyosság: **közepes**
 
 Súlyosság: **magas**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A Privileged Identity Managementon kívül végrehajtott Kiemelt szerepkör-hozzárendelések nincsenek megfelelően figyelve, és az aktív támadásra utalhatnak. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a Privileged Identity Managementon kívül hozzárendelt Kiemelt szerepkörökből. |
@@ -214,7 +214,7 @@ Súlyosság: **magas**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | A globális rendszergazda a legmagasabb jogosultsági szintű szerepkör. Ha a globális rendszergazda biztonsága sérül, a támadó hozzáfér az összes engedélyéhez, amely a teljes rendszerét veszélyezteti. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el azokat, amelyek nem feltétlenül szükségesek a globális rendszergazdai szerepkörhöz. </br>Ehelyett alacsonyabb jogosultsági szintű szerepköröket rendelhet hozzájuk a felhasználókhoz. |
@@ -228,7 +228,7 @@ Súlyosság: **alacsony**
 
 Súlyosság: **alacsony**
 
-| | Description |
+| | Leírás |
 | --- | --- |
 | **Miért kapok ez a riasztás?** | Ugyanazon felhasználó több aktiválást is ugyanazzal a jogosultsági szinttel rendelkező szerepkörbe kapcsol egy támadás jeleként. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és győződjön meg arról, hogy a Kiemelt szerepkör [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy elvégezze a feladatait. |

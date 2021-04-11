@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3c9296a909ba23ee8a3475149911af629a01b1a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97387836"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167464"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>A megoldás-gyorsító üzembe helyezése a azureiotsolutions.com webhely használatával
 
@@ -54,7 +54,7 @@ Az Azure AD-beli felhasználókról és szerepkörökről az alábbi forrásokba
 
 ## <a name="choose-your-device"></a>Eszköz kiválasztása
 
-A AzureIoTSolutions.com-hely a [IoT-eszközök katalógusához tartozó Azure Certified minősítésre](https://catalog.azureiotsolutions.com/)hivatkozik.
+A AzureIoTSolutions.com-hely a [IoT-eszközök katalógusához tartozó Azure Certified minősítésre](https://devicecatalog.azure.com/)hivatkozik.
 
 A katalógus felsorolja a több száz tanúsított IoT hardvereszközöket, amelyekkel csatlakozhat a megoldás-gyorssegédekhez, és megkezdheti a IoT-megoldás felkészítését.
 

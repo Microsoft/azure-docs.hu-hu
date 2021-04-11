@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztali útmutató Azure Advisora – Azu
 description: A Windows rendszerű virtuális asztalok Azure Advisor ajánlásainak feloldása.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90033030"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448304"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor javaslatok megoldása
 
@@ -72,10 +72,6 @@ Ez az ajánlás az Operational Excellence alatt jelenik meg.
 A virtuális gép (VM) megfelelő működésének biztosítása érdekében fel kell oldania a megadott URL-címek blokkolását. A listát a [biztonságos URL-címek listájában](safe-url-list.md)tekintheti meg. Ha az URL-címek nincsenek feloldják, akkor a virtuális gép nem fog megfelelően működni.
 
 A javaslat megoldásához ellenőrizze, hogy feloldja-e az összes URL- [címet a biztonságos URL-címek listáján](safe-url-list.md). Az URL-címek blokkolásának feloldásához használhatja a szolgáltatás címkéjét vagy a teljes tartománynevet.
-
-## <a name="propose-new-recommendations"></a>Javaslat új javaslatokra
-
-A javaslatok elküldésével segíthet a Azure Advisor tökéletesítésében. Az Ön javaslata egy másik felhasználó számára is segíthet egy nehéz helyszínen. Ha javaslatot szeretne küldeni, látogasson el a [UserVoice fórumra](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations) , és töltse ki a beküldési űrlapot. Az űrlap kitöltésekor ügyeljen arra, hogy a lehető legrészletesebben adja meg nekünk.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,10 +11,10 @@ ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
 ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102522087"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Gépi tanulási folyamatok hibaelhárítása
@@ -27,8 +27,8 @@ Az alábbi táblázat a folyamat fejlesztése során felmerülő gyakori problé
 
 | Probléma | Lehetséges megoldás |
 |--|--|
-| Nem sikerült átadni az `PipelineData` adatkönyvtárat | Győződjön meg arról, hogy létrehozott egy könyvtárat a parancsfájlban, amely megfelel annak, ahol a folyamat a lépés kimeneti adatait várja. A legtöbb esetben a bemeneti argumentum meghatározza a kimeneti könyvtárat, majd explicit módon létrehozza a könyvtárat. `os.makedirs(args.output_dir, exist_ok=True)`A paranccsal hozhatja létre a kimeneti könyvtárat. Tekintse meg az [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) egy pontozási parancsfájl példája, amely ezt a kialakítási mintát mutatja. |
-| Függőségi hibák | Ha olyan függőségi hibákat lát a távoli folyamatokban, amelyek helyi teszteléskor nem történtek meg, ellenőrizze, hogy a távoli környezet függőségei és verziói megfelelnek-e a tesztkörnyezetben. (Lásd: [környezetek kiépítése, gyorsítótárazása és újrafelhasználása](./concept-environments.md#environment-building-caching-and-reuse)|
+| Nem sikerült átadni az `PipelineData` adatkönyvtárat | Győződjön meg arról, hogy létrehozott egy olyan könyvtárat a szkriptben, amely megfelel annak a könyvtárnak, ahová a folyamat várja a lépés kimeneti adatait. A legtöbb esetben egy bemeneti argumentum határozza meg a kimeneti könyvtárat, amelyet utána explicit módon kell létrehoznia. A kimeneti könyvtárat az `os.makedirs(args.output_dir, exist_ok=True)` metódus használatával hozhatja létre. Tekintse meg az [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) egy pontozási parancsfájl példája, amely ezt a kialakítási mintát mutatja. |
+| Függőséggel kapcsolatos hibák | Ha olyan függőségi hibákat lát a távoli folyamatban, amelyek a helyi teszteléskor nem fordultak elő, ellenőrizze, hogy a távoli környezet függőségei és verziói megfelelnek-e a tesztkörnyezet függőségeinek és verzióinak. (Lásd: [környezetek kiépítése, gyorsítótárazása és újrafelhasználása](./concept-environments.md#environment-building-caching-and-reuse)|
 | Nem egyértelmű hibák a számítási célokkal | Próbálkozzon a számítási célok törlésével és újbóli létrehozásával. A számítási célok újbóli létrehozása gyorsan elvégezhető, és bizonyos átmeneti problémák is megoldhatók. |
 | A folyamat nem használja újra a lépéseket | Az ismételt használat alapértelmezés szerint engedélyezve van, de gondoskodjon arról, hogy ne tiltsa le egy folyamat lépéseiben. Ha az újbóli használat le van tiltva, a `allow_reuse` lépésben megadott paraméter a következő lesz: `False` . |
 | A folyamat feleslegesen fut újra | Annak biztosítása érdekében, hogy a lépések csak akkor fussanak újra, amikor a mögöttes adatokat vagy parancsfájlokat módosítják, az egyes lépésekhez tartozó forráskód-címtárakat le kell választva. Ha ugyanazt a könyvtárat használja több lépéshez, előfordulhat, hogy szükségtelen ismétléseket tapasztal. Használja a `source_directory` paramétert egy folyamat lépés objektumon, hogy az elkülönített könyvtárba mutasson erre a lépésre, és győződjön meg arról, hogy nem ugyanazt az `source_directory` útvonalat használja több lépéshez. |
@@ -190,7 +190,7 @@ A parancsfájlok helyi tesztelése nagyszerű módja annak, hogy a folyamat megk
 
 Az alábbi táblázat a folyamatok különböző hibakeresési lehetőségeiről nyújt információt. Nem kimerítő lista, mert az itt látható Azure Machine Learning, Python és OpenCensus mellett más lehetőségek is vannak.
 
-| Kódtár                    | Típus   | Példa                                                          | Cél                                  | Erőforrások                                                                                                                                                                                                                                                                                                                    |
+| Kódtár                    | Típus   | Példa                                                          | Cél                                  | Források                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Azure Machine Learning portál felhasználói felülete             | [Kísérletek nyomon követése](how-to-track-experiments.md)<br>[azureml. Core. Run osztály](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
 | Python-nyomtatás/-naplózás    | Napló    | `print(val)`<br>`logging.info(message)`                          | Illesztőprogram-naplók, Azure Machine Learning Designer | [Kísérletek nyomon követése](how-to-track-experiments.md)<br><br>[Python-naplózás](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |

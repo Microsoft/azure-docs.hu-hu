@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: cdd8b42f3ef7530809c50925c631b7aa90ee213c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: bc2bec364f8d752b7416ecccf0b00d0fbec4c8e8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104787"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729758"
 ---
 Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
 
@@ -265,14 +265,14 @@ Az Event hub kimeneti kötéséhez a következő paramétereket használhatja:
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)vannak megadva.
 
 Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js* tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
 
 ### <a name="additional-types"></a>További típusok 
-Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
 
-- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
@@ -283,14 +283,14 @@ Az Event hub kimeneti kötéséhez a következő paramétereket használhatja:
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)vannak megadva.
 
 Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js* tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
 
 ### <a name="additional-types"></a>További típusok 
-Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](/dotnet/api/microsoft.azure.eventhubs.eventdata)használják a típust az [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
 
-- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

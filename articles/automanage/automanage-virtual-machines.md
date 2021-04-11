@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 973bd1ac121513a297574bbb37d1663b5a18c345
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643540"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276909"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -70,6 +70,8 @@ Ha egy új automanage-fiókkal engedélyezi az autofelügyeletet:
 Ha egy meglévő automanage-fiókkal engedélyezi az autofelügyeletet:
 * **Közreműködő** szerepkör a virtuális gépeket tartalmazó erőforráscsoporthoz
 
+Az automatikusan felügyelt fiók **közreműködői** és **erőforrás-házirend közreműködői** jogosultságokat kap az automatikusan felügyelt gépeken végrehajtandó műveletek végrehajtásához.
+
 > [!NOTE]
 > Ha egy másik előfizetésben lévő munkaterülethez csatlakozó virtuális gépen szeretné használni az automanage-t, az egyes előfizetésekben a fent ismertetett engedélyekkel kell rendelkeznie.
 
@@ -94,6 +96,19 @@ Ha első alkalommal engedélyezi a virtuális gép autofelügyeletét, a Azure P
 
 Előfordulhat, hogy a virtuális géppel való kommunikációra csak akkor van szükség, ha a virtuális gépet szervizelni próbáltuk, de ezt a szolgáltatást nem sikerült kijavítani. Ha sikeresen szervizeljük a virtuális gépet, akkor még a riasztás nélkül visszatesszük a megfelelőséget. További részletekért lásd: [virtuális gépek állapota](#status-of-vms).
 
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>Virtuális gépek autokezelésének engedélyezése Azure Policy használatával
+Emellett a beépített Azure Policy használatával is engedélyezheti a virtuális gépeken a méretezést. A házirend DeployIfNotExists hatással van, ami azt jelenti, hogy a szabályzat hatókörén belül található összes jogosult virtuális gép automatikusan be lesz helyezve a virtuális gépek ajánlott eljárásainak automatikus kezelésére.
+
+A szabályzatra mutató közvetlen hivatkozás [itt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3)található.
+
+### <a name="how-to-apply-the-policy"></a>A szabályzat alkalmazása
+1. Kattintson a **hozzárendelés** gombra a házirend-definíció megtekintésekor
+1. Válassza ki azt a hatókört, amelyen alkalmazni kívánja a házirendet (felügyeleti csoport, előfizetés vagy erőforráscsoport lehet)
+1. A **Paraméterek** területen határozza meg az automatikus felügyelet fiók, a konfigurációs profil és a hatás paramétereit (a hatás általában DeployIfNotExists kell legyen)
+    1. Ha nincs automatikusan felügyelt fiókja, [létre kell hoznia egyet](#create-an-automanage-account).
+1. A **szervizelés** alatt jelölje be a "kattintás egy szervizelési feladatra" jelölőnégyzetet. Ez elvégzi az automatikusan végzett felügyeletet.
+1. Kattintson a **felülvizsgálat + létrehozás** lehetőségre, és győződjön meg arról, hogy minden beállítás megfelelő.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="environment-configuration"></a>Környezet konfigurálása
 
@@ -142,6 +157,43 @@ Ha egy meglévő automanage-fiókkal engedélyezi az autofelügyeletet, rendelke
 > [!NOTE]
 > Ha letiltja az ajánlott eljárások autofelügyeletét, az automatikusan kezeli a fiók engedélyeit a társított előfizetésekben. Manuálisan távolítsa el az engedélyeket az előfizetés IAM oldalára kattintva, vagy törölje az automanage-fiókot. Az automanage fiók nem törölhető, ha továbbra is kezeli a gépeket.
 
+### <a name="create-an-automanage-account"></a>Felügyelet nélküli fiók létrehozása
+A portál vagy egy ARM-sablon használatával létrehozhat egy automanage-fiókot.
+
+#### <a name="portal"></a>Portál
+1. Navigáljon a portál **automanage (felügyelet** ) paneljére
+1. Kattintson **a meglévő gép engedélyezése** lehetőségre.
+1. A **speciális** alatt kattintson az "új fiók létrehozása" elemre.
+1. Töltse ki a kötelező mezőket, majd kattintson a **Létrehozás** gombra.
+
+#### <a name="arm-template"></a>ARM-sablon
+Mentse a következő ARM-sablont, `azuredeploy.json` és futtassa a következő parancsot: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automanageAccountName": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-06-30-preview",
+            "type": "Microsoft.Automanage/accounts",
+            "name": "[parameters('automanageAccountName')]",
+            "location": "[parameters('location')]",
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="status-of-vms"></a>Virtuális gépek állapota
 

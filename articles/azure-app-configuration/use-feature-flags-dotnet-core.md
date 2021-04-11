@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4d54e1ff07b250b5595d2f8aee5f022bd2359721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726427"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729507"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -218,7 +218,7 @@ Az egyezmény szerint a `FeatureManagement` JSON-dokumentum szakasza a szolgált
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Függőségi befecskendezés használata a IFeatureManager való hozzáféréshez 
 
-Egyes műveletekhez, például a szolgáltatás-jelzők manuális ellenőrzéséhez le kell kérnie a [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview)egy példányát. ASP.NET Core MVC-ben a szolgáltatások kezelője `IFeatureManager` függőségi befecskendezéssel érhető el. A következő példában egy típusú argumentumot `IFeatureManager` adnak hozzá a vezérlő konstruktorának aláírásához. A futtatókörnyezet automatikusan feloldja a hivatkozást, és megadja a felületet a konstruktor hívásakor. Ha olyan alkalmazás-sablont használ, amelyben a vezérlőhöz már tartozik egy vagy több függőségi injekció argumentum a konstruktorban, például `ILogger` `IFeatureManager` :
+Egyes műveletekhez, például a szolgáltatás-jelzők manuális ellenőrzéséhez le kell kérnie a [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?preserve-view=true&view=azure-dotnet-preview)egy példányát. ASP.NET Core MVC-ben a szolgáltatások kezelője `IFeatureManager` függőségi befecskendezéssel érhető el. A következő példában egy típusú argumentumot `IFeatureManager` adnak hozzá a vezérlő konstruktorának aláírásához. A futtatókörnyezet automatikusan feloldja a hivatkozást, és megadja a felületet a konstruktor hívásakor. Ha olyan alkalmazás-sablont használ, amelyben a vezérlőhöz már tartozik egy vagy több függőségi injekció argumentum a konstruktorban, például `ILogger` `IFeatureManager` :
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     
@@ -322,7 +322,7 @@ public IActionResult Index()
 }
 ```
 
-Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelzője *ki van kapcsolva*, a rendszer regisztrált [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?view=azure-dotnet-preview) felületet hív meg. Az alapértelmezett `IDisabledFeaturesHandler` illesztőfelület 404 állapotkódot ad vissza az ügyfélnek a válasz törzse nélkül.
+Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelzője *ki van kapcsolva*, a rendszer regisztrált [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?preserve-view=true&view=azure-dotnet-preview) felületet hív meg. Az alapértelmezett `IDisabledFeaturesHandler` illesztőfelület 404 állapotkódot ad vissza az ügyfélnek a válasz törzse nélkül.
 
 ## <a name="mvc-views"></a>MVC-nézetek
 

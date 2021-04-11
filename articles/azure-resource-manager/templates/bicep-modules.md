@@ -2,17 +2,19 @@
 title: Bicep modulok
 description: Leírja, hogyan lehet definiálni és használni egy modult, és hogyan használhatók a modul-hatókörök.
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: 7a680e8aa0fa4d5ef9cac7f9e7ba07a3aa4ee1e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 03/30/2021
+ms.openlocfilehash: 6c325bbbe265e13241119761373985ca4552b158
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611735"
+ms.locfileid: "105967880"
 ---
 # <a name="use-bicep-modules-preview"></a>Bicep modulok használata (előzetes verzió)
 
-A bicep lehetővé teszi egy összetett megoldás modulokra bontását. A bicep modul egy vagy több, együtt üzembe helyezhető erőforrás készlete. A modulok elvonták a nyers erőforrás deklarációjának összetett részleteit, ami növelheti az olvashatóságot. Újra felhasználhatja ezeket a modulokat, és megoszthatja azokat más személyekkel. A [sablon specifikációinak](./template-specs.md)együttes használata lehetővé teszi a modularitás és a kód újbóli használatának módját. Oktatóanyagért lásd [: oktatóanyag: a bicep modulok hozzáadása](./bicep-tutorial-add-modules.md).
+A bicep lehetővé teszi egy összetett megoldás modulokra bontását. A bicep modul egy vagy több, együtt üzembe helyezhető erőforrás készlete. A modulok elvonták a nyers erőforrás deklarációjának összetett részleteit, ami növelheti az olvashatóságot. Újra felhasználhatja ezeket a modulokat, és megoszthatja azokat más személyekkel. A [sablon specifikációinak](./template-specs.md)együttes használata lehetővé teszi a modularitás és a kód újbóli használatának módját. A bicep modulok egyetlen ARM-sablonba vannak transpiled, [beágyazott sablonokkal](./linked-templates.md#nested-template) a telepítéshez. A bicep-ben a [_dependsOn_](./template-syntax.md#resources) automatikusan lesz kezelve.
+
+Oktatóanyagért lásd [: oktatóanyag: a bicep modulok hozzáadása](./bicep-tutorial-add-modules.md).
 
 ## <a name="define-modules"></a>Modulok definiálása
 

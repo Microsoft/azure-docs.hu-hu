@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: 72372e6365a2535e449681549a515c3f8594f2f1
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786600"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware-megoldás (AVS) értékelésének létrehozása
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure VMware-megoldási (AVS-) érték
 
 - Győződjön meg arról, hogy [létrehozott](./create-manage-projects.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Discovery and Assessment eszközt.
-- Értékelés létrehozásához létre kell hoznia egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez, amely felderíti a helyszíni kiszolgálókat, és metaadatokat és teljesítményadatokat küld a Azure Migrate: felderítés és Értékelés. [További információ](migrate-appliance.md).
+- Értékelés létrehozásához létre kell hoznia egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez, amely felderíti a helyszíni kiszolgálókat, és metaadatokat és teljesítményadatokat küld a Azure Migrate: felderítés és Értékelés. [További információk](migrate-appliance.md).
 - [A kiszolgálói metaadatokat](./tutorial-discover-import.md) vesszővel tagolt (CSV) formátumban is importálhatja.
 
 

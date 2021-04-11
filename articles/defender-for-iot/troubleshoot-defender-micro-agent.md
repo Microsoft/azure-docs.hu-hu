@@ -1,18 +1,18 @@
 ---
 title: Defender IoT Micro Agent hibaelhárítás (előzetes verzió)
 description: Megtudhatja, hogyan kezelheti a váratlan vagy megmagyarázhatatlan hibákat.
-ms.date: 1/24/2021
+ms.date: 4/5/2021
 ms.topic: reference
-ms.openlocfilehash: 51550a4d3e5042fed7cadc4eac10a0074e954f19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d52c4093c01d7e449c68b1c8143249b51f7061a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782452"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011419"
 ---
 # <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Defender IoT Micro Agent hibaelhárítás (előzetes verzió)
 
-Ha nem várt vagy megmagyarázhatatlan hibát észlel, az alábbi hibaelhárítási módszerekkel próbálja megoldani a problémákat. Igény szerint segítséget kaphat az Azure Defender for IoT termékért felelős csapatának is.   
+Ha váratlan hiba fordul elő, a probléma megoldására tett kísérlet során a következő hibaelhárítási módszereket használhatja. Igény szerint segítséget kaphat az Azure Defender for IoT termékért felelős csapatának is.   
 
 ## <a name="service-status"></a>Szolgáltatásállapot 
 
@@ -34,9 +34,9 @@ Ha a szolgáltatás a következő módon van felsorolva `inactive` , a szolgált
 systemctl start defender-iot-micro-agent.service 
 ```
 
-Tudni fogja, hogy a szolgáltatás összeomlik, ha a folyamat ideje túl rövid. A probléma megoldásához át kell tekintenie a naplókat.
+Tudni fogja, hogy a szolgáltatás összeomlik, ha a folyamat ideje kevesebb, mint 2 perc. A probléma megoldásához [át kell tekintenie a naplókat](#review-the-logs).
 
-## <a name="review-logs"></a>Naplók áttekintése 
+## <a name="validate-micro-agent-root-privileges"></a>A Micro Agent gyökérszintű jogosultságainak ellenőrzése
 
 A következő parancs használatával ellenőrizheti, hogy a Defender IoT Micro Agent szolgáltatás rendszergazdai jogosultságokkal fut-e.
 
@@ -45,12 +45,25 @@ ps -aux | grep " defender-iot-micro-agent"
 ```
 
 :::image type="content" source="media/troubleshooting/root-privileges.png" alt-text="Győződjön meg arról, hogy a IoT Micro Agent szolgáltatáshoz tartozó Defender rendszergazdai jogosultságokkal fut.":::
+## <a name="review-the-logs"></a>A naplók áttekintése 
 
-A naplók megtekintéséhez használja a következő parancsot:  
+A naplók áttekintéséhez használja a következő parancsot:  
 
 ```azurecli
 sudo journalctl -u defender-iot-micro-agent | tail -n 200 
 ```
+
+### <a name="quick-log-review"></a>Gyors napló áttekintése
+
+Ha a mikro-ügynök futtatása során probléma lép fel, a Micro agentet ideiglenes állapotba futtathatja, amely lehetővé teszi a naplók megtekintését a következő parancs használatával:
+
+```azurecli
+sudo systectl stop defender-iot-micro-agent
+cd /var/defender_iot_micro_agent/
+sudo ./defender_iot_micro_agent
+```
+
+## <a name="restart-the-service"></a>Indítsa újra a szolgáltatást
 
 A szolgáltatás újraindításához használja a következő parancsot: 
 

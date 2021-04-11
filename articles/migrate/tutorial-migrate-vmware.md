@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
 ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567118"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül)
@@ -200,10 +200,10 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A teljesítmény növelése érdekében:
-    - Alapértelmezés szerint az adatlemezek a gazdagép-gyorsítótárazással jönnek létre a "None" értékre. Tekintse át és módosítsa az adatlemezek gyorsítótárazását a számítási feladatok igényeinek megfelelően. [További információ](../virtual-machines/premium-storage-performance.md#disk-caching).  
+    - Alapértelmezés szerint az adatlemezek a gazdagép-gyorsítótárazással jönnek létre a "None" értékre. Tekintse át és módosítsa az adatlemezek gyorsítótárazását a számítási feladatok igényeinek megfelelően. [További információk](../virtual-machines/premium-storage-performance.md#disk-caching).  
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md) használatával.

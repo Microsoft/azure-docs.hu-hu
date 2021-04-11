@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 730680b0cb6e8a728ed3072419674346de649368
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1a251f5718ee91a90ba9ba0e65c5cc7cb39096bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937192"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Közzététel és előfizetés Azure IoT Edge
 
@@ -430,9 +430,9 @@ Az alábbi példa egy olyan IoT Edge MQTT híd-konfigurációra mutat példát, 
                 },
                 {
                     "direction": "out",
-                    "topic": "",
-                    "inPrefix": "/local/telemetry",
-                    "outPrefix": "/remote/messages"
+                    "topic": "#",
+                    "inPrefix": "/local/telemetry/",
+                    "outPrefix": "/remote/messages/"
                 }
             ]
         }]

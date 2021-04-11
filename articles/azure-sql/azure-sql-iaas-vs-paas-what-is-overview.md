@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
 ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104592183"
 ---
 # <a name="what-is-azure-sql"></a>Mi az az Azure SQL? 
@@ -95,7 +95,7 @@ Az [Azure SQL felügyelt példánya](managed-instance/sql-managed-instance-paas-
 - A legjobb új alkalmazásokhoz vagy meglévő helyszíni alkalmazásokhoz, amelyek a legújabb stabil SQL Server szolgáltatásokat szeretnék használni, és amelyeket a felhőbe migrálnak, minimális változtatásokkal. A felügyelt SQL-példányok egy példánya hasonló a [Microsoft SQL Server adatbázismotor](/sql/database-engine/sql-server-database-engine-overview) egy példányához, amely megosztott erőforrásokat kínál az adatbázisokhoz és a további példányokra vonatkozó hatókörű funkciókhoz. 
 - Az SQL felügyelt példánya a helyszíni adatbázis-Migrálás minimális és adatbázis-változás nélküli áttelepítését is támogatja. Ez a beállítás biztosítja az összes, a Azure SQL Database által kiváltott összes előnyét, de olyan képességeket ad, amelyek korábban csak SQL Server virtuális gépeken érhetők el. Ez magában foglalja a natív virtuális hálózatot, és közel 100%-os kompatibilitást biztosít a helyszíni SQL Serverokkal. Az SQL felügyelt példány példányai teljes körű SQL Server hozzáférést biztosítanak az SQL-kiszolgálók Azure-ba való áttelepítéséhez.
 
-### <a name="sql-server-on-azure-vm"></a>Azure virtuális gépen futó SQL Server
+### <a name="sql-server-on-azure-vm"></a>Azure-beli virtuális gépeken futtatott SQL Server
 
 Az Azure-beli virtuális gépen [SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) az *infrastruktúra-szolgáltatás (IaaS)* kategóriába tartozik, és lehetővé teszi, hogy a SQL Servert egy teljes körűen felügyelt virtuális gépen (VM) belül futtasson az Azure-ban. 
 - A legmegfelelőbb az operációs rendszer szintű hozzáférést igénylő áttelepítésekhez és alkalmazásokhoz. Az Azure-beli SQL-alapú virtuális gépek olyan meglévő alkalmazások esetében állnak készen, amelyeken a felhőbe való gyors áttelepítésre van szükség, minimális változtatásokkal vagy módosításokkal. Az SQL-alapú virtuális gépek teljes körű felügyeletet biztosítanak a SQL Server példányon és a mögöttes operációs rendszeren az Azure-ba való áttelepítéshez 
@@ -111,7 +111,7 @@ A következő táblázatban további különbségek vannak felsorolva, de a *SQL
 
 ### <a name="comparison-table"></a>Összehasonlító táblázat
 
-| Azure SQL Database | Felügyelt Azure SQL-példány | Azure virtuális gépen futó SQL Server |
+| Azure SQL Database | Felügyelt Azure SQL-példány | Azure-beli virtuális gépeken futtatott SQL Server |
 | :--- | :--- | :--- |
 |A a legtöbb helyszíni adatbázis-szintű funkciót támogatja. A leggyakrabban használt SQL Server funkciók érhetők el.<br/>99,995%-os rendelkezésre állás garantált.<br/>Beépített biztonsági másolatok, javítás, helyreállítás.<br/>A stabil adatbázismotor legújabb verziója.<br/>A szükséges erőforrások (CPU/tárterület) egyedi adatbázisokhoz való hozzárendelésének lehetősége.<br/>Beépített speciális intelligenciát és biztonságot.<br/>Erőforrások online változása (CPU/Storage).| Szinte minden helyszíni példány-és adatbázis-szintű funkciót támogat. Nagy kompatibilitás a SQL Serversal.<br/>99,99%-os rendelkezésre állás garantált.<br/>Beépített biztonsági másolatok, javítás, helyreállítás.<br/>A stabil adatbázismotor legújabb verziója.<br/>SQL Server egyszerű Migrálás.<br/>Magánhálózati IP-cím az Azure Virtual Networkon belül.<br/>Beépített speciális intelligenciát és biztonságot.<br/>Erőforrások online változása (CPU/Storage).| A SQL Server motor teljes körű vezérléssel rendelkezik. Támogatja az összes helyszíni funkciót.<br/>Akár 99,99%-os rendelkezésre állást.<br/>Teljes paritás a helyszíni SQL Server megfelelő verziójával.<br/>Javított, jól ismert adatbázismotor-verzió.<br/>SQL Server egyszerű Migrálás.<br/>Magánhálózati IP-cím az Azure Virtual Networkon belül.<br/>Lehetősége van arra, hogy az alkalmazást vagy szolgáltatásokat olyan gazdagépen telepítse, ahol a SQL Server elhelyezve.|
 |A SQL Server áttelepítése kihívást jelenthet.<br/>Néhány SQL Server szolgáltatás nem érhető el.<br/>Nincs garantált pontos karbantartási idő (de majdnem transzparens).<br/>A SQL Server verziójával való kompatibilitás csak az adatbázis-kompatibilitási szintek használatával érhető el.<br/>Magánhálózati IP-címek támogatása az [Azure privát hivatkozásával](database/private-endpoint-overview.md).|Még mindig van néhány minimális számú SQL Server szolgáltatás, amely nem érhető el.<br/>Nincs garantált pontos karbantartási idő (de majdnem transzparens).<br/>A SQL Server verziójával való kompatibilitás csak az adatbázis-kompatibilitási szintek használatával érhető el.|Kezelnie kell a biztonsági mentéseket és a javításokat.<br>Saját High-Availability megoldást kell megvalósítani.<br/>Az erőforrások (processzor/tároló) módosítása közben állásidő van|

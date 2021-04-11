@@ -3,12 +3,12 @@ title: A Application Insights kibocsátási megjegyzései | Microsoft Docs
 description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a metrikák Explorer diagramjaihoz Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 776efd56aaa523d1c2621c51cba0446a42bb7411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9132e65e4705fd9125d97a5e095fe5f0850229a2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461912"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011050"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
 
@@ -96,7 +96,10 @@ Ha engedélyezni szeretné a jegyzeteket a munkafüzetben, ugorjon a **Speciáli
 A kiadás részleteinek megnyitásához válassza a Megjegyzés jelölőjét, beleértve a kérelmezőt, a verziókövetés ágat, a kiadási folyamatot és a környezetet.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Egyéni jegyzetek létrehozása a PowerShellből
-A GitHubról származó CreateReleaseAnnotation PowerShell-szkripttel megjegyzéseket hozhat létre bármely olyan folyamatból, amely az Azure DevOps használata nélkül használható.
+A CreateReleaseAnnotation PowerShell-szkripttel megjegyzéseket hozhat létre bármely olyan folyamatból, amely az Azure DevOps használata nélkül használható.
+
+> [!IMPORTANT]
+> Ha a PowerShell 7,1-et használja, adja hozzá `-SkipHttpErrorCheck` a parancsot a 26. sor végéhez. Példa: `$request = Invoke-WebRequest -Uri $fwLink -MaximumRedirection 0 -UseBasicParsing -ErrorAction Ignore -SkipHttpErrorCheck`.
 
 1. A CreateReleaseAnnotation.ps1 helyi másolatának készítése:
 
@@ -256,8 +259,8 @@ A GitHubról származó CreateReleaseAnnotation PowerShell-szkripttel megjegyzé
 
 Módosíthatja a parancsfájlt, például a múltbeli jegyzetek létrehozásához.
 
+
 ## <a name="next-steps"></a>Következő lépések
 
 * [Munkaelemek létrehozása](./diagnostic-search.md#create-work-item)
 * [Automatizálás a PowerShell használatával](./powershell.md)
-

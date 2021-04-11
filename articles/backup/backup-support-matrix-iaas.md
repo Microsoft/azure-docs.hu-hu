@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0150a4c1a8fbd756de6fc16142f0115b05098ed
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609787"
+ms.locfileid: "105967829"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -153,6 +153,7 @@ Azure-beli virtuális gépek biztonsági mentése zárolásokkal | Nem felügyel
 [Spot virtuális gépek](../virtual-machines/spot-vms.md) | Támogatott. Azure Backup a helyszíni virtuális gépeket normál Azure-beli virtuális gépekként visszaállítja.
 [Dedikált Azure-gazdagép](../virtual-machines/dedicated-hosts.md) | Támogatott
 Különálló Azure-beli virtuális gépek Windows-tárolóhelyek konfigurálása | Támogatott
+[Azure-VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Mind az egységes, mind a rugalmas, egyetlen Azure-beli virtuális gép biztonsági mentésére és visszaállítására egyaránt használható.
 
 ## <a name="vm-storage-support"></a>VM-tároló támogatása
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105604515"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Forgalmi adatok megjelenítése a térképen (Android SDK)
@@ -31,7 +31,7 @@ A Azure Mapsban kétféle forgalmi adatok érhetők el:
 - Incidensek – olyan pont-és vonal-alapú adatmennyiségből állnak, mint például az építőipar, a közúti bezárások és a balesetek.
 - Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. Gyakran a forgalmi forgalomra vonatkozó adatokat használják az utak színezésére. A színek attól függnek, hogy mekkora forgalom lassul le a folyamaton, a sebességkorlátozás vagy más metrika alapján. Négy érték adható át a `flow` Térkép forgalmi lehetőségéhez.
 
-    |Folyamat értéke | Description|
+    |Folyamat értéke | Leírás|
     | :-- | :-- |
     | Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
     | Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |

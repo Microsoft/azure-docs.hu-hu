@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 574340825567dcd512a5da1b311c57fe12954e34
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c3ae5c7b1c45d170548f6fa00481094117e1737
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030545"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937362"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Mi az Azure bejárati ajtó standard/Premium (előzetes verzió)?
 
@@ -28,7 +28,7 @@ A standard/prémium szintű Azure-szolgáltatásokkal a globális fogyasztói é
 
 Az Azure bejárati ajtó standard/Premium a 7. rétegbeli (HTTP/HTTPS) rétegben működik, és a globális kapcsolatok javítása érdekében a Split TCP és a Microsoft globális hálózatának használatával támogatja a többhelyes protokollt A beállított szabályok alapján, a testreszabott útválasztási módszer alapján biztosíthatja, hogy az Azure bevezető ajtaja a leggyorsabb és legteljesebb forrásra irányítsa át az ügyfelek kérelmeit. Az alkalmazás forrása bármely, az Azure-on belül vagy kívül üzemeltetett, internetre irányuló szolgáltatás. Az Azure bejárati ajtó standard/Premium számos forgalom-útválasztási módszert és a forrás állapot figyelési lehetőségeit kínálja a különböző alkalmazási igényeknek és automatikus feladatátvételi forgatókönyveknek megfelelően. A Traffic Managerhoz hasonlóan a bejárati ajtó is rugalmasan működik a hibáknál, beleértve a teljes Azure-régió meghibásodásait is.
 
-Az Azure bejárati ajtaja is védi az alkalmazást a szélein, az integrált webalkalmazási tűzfallal, a bot Protection szolgáltatással és a beépített 3/4. rétegbeli elosztott szolgáltatásmegtagadási (DDoS) védelemmel. Emellett a privát kapcsolati szolgáltatással is biztonságossá teszi a privát háttér-végpontokat. Az Azure bejárati ajtaja globális méretekben kínálja a Microsoft legjobb biztonsági megoldásait.  
+Az Azure bejárati ajtaja is védi az alkalmazást a szélein az integrált webalkalmazási tűzfal, a bot Protection, valamint a beépített 3. rétegbeli, elosztott szolgáltatásmegtagadás (DDoS) elleni védelem révén. Emellett a privát kapcsolati szolgáltatással is biztonságossá teszi a privát háttér-végpontokat. Az Azure bejárati ajtaja globális méretekben kínálja a Microsoft legjobb biztonsági megoldásait.  
 
 >[!NOTE]
 > Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre.
