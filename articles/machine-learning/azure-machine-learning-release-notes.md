@@ -9,18 +9,92 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166683"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210894"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro) -referenciát tartalmazó oldalt.
 
 __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következő URL-címet másolja és illeszti be a hírcsatorna-olvasóba: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-05"></a>2021-04-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1260"></a>Azure Machine Learning SDK a Python v 1.26.0
++ **Hibajavítások és javítások**
+  + **azureml-automl-core**
+    + Kijavított egy problémát, amelyben a AutoMLStep-futtatások és a késés vagy a gördülő ablak funkciói nem működnek. Ezeket a modelleket a rendszer nem javasolja, ha a cél késése vagy a cél gördülő ablak mérete be van állítva.
+    +  A konzol kimenetének módosítása a AutoML futtatásakor a futtatási portálra mutató hivatkozás megjelenítéséhez.
+  + **azureml-core**
+    + A HDFS mód hozzáadva a dokumentációhoz.
+    + A fájl-adatkészlet-partíciók a glob struktúra alapján való megismeréséhez hozzáadva támogatás.
+    + A AzureML-munkaterülethez társított Update Container Registry-támogatás hozzáadva.
+    + A (z) "enabled", "shared_volume" és "argumentumok" DockerSection alatti elavult környezeti attribútumok a RunConfiguration DockerConfiguration részét képezik.
+    + Frissített folyamat CLI klónozási dokumentációja
+    + A portál URI-azonosítóinak frissítése a bérlő hitelesítéséhez
+    + A kísérlet neve eltávolítva a Run URI-ból az átirányítások elkerülése érdekében 
+    + A kísérleti URO frissítése a kísérlet AZONOSÍTÓjának használatára.
+    + Hibajavítások a távoli számításokhoz a AzureML parancssori felülettel való csatolásához.
+    + A portál URI-azonosítóinak frissítése a bérlő hitelesítéséhez.
+    + A kísérleti URI frissítése a kísérlet azonosítójának használatára.
+  + **azureml-interpret**
+    + azureml – a tolmácsolást a közösségi 0.17.0 használatával frissítette
+  + **azureml-opendatasets**
+    + A kezdő dátum és a záró dátum típusának érvényesítése és a hiba jelzése, ha nem datetime típusú.
+  + **azureml – párhuzamos Futtatás**
+    + [Kísérleti funkció] Adja hozzá a `partition_keys` ParallelRunConfig paramétert, ha meg van adva, a bemeneti adatkészlet (ek) a megadott kulcsok alapján particionálva lesz a mini-batchs szolgáltatásba. Ehhez minden bemeneti adatkészletet particionálni kell.
+  + **azureml-pipeline-steps**
+    + Hibajavítás – támogató path_on_compute az adatkészlet konfigurációjának letöltésként való továbbításakor.
+    + Az R-parancsfájlok folyamatokban való futtatásához a CommandStep használata mellett elavult a RScriptStep. 
+    + A EstimatorStep elavulttá válik a CommandStep használatával, és a folyamatban lévő ML-képzés (beleértve az elosztott képzést is) a folyamatokban.
+  + **azureml – SDK**
+    + Python_requires frissítése a azureml-SDK < 3,9-re
+  + **azureml-train-automl-client**
+    +  A konzol kimenetének módosítása a AutoML futtatásakor a futtatási portálra mutató hivatkozás megjelenítéséhez.
+  + **azureml-train-core**
+    + A DockerSection "enabled", "shared_volume" és "érvekkel" attribútuma elavult a DockerConfiguration és a ScriptRunConfig használatával.
+    +  Azure Open-adatkészletek használata a MNIST adatkészlethez
+    + A HyperDrive hibaüzenetei frissültek.
+
+
+## <a name="2021-03-22"></a>2021-03-22
+
+### <a name="azure-machine-learning-sdk-for-python-v1250"></a>Azure Machine Learning SDK a Python v 1.25.0
++ **Hibajavítások és javítások**
+  + **azureml-automl-core**
+    +  A konzol kimenetének módosítása a AutoML futtatásakor a futtatási portálra mutató hivatkozás megjelenítéséhez.
+  + **azureml-core**
+    + Elindítja a tároló-beállításjegyzék frissítésének támogatását az SDK-ban és a parancssori felületen
+    + A DockerSection "enabled", "shared_volume" és "érvekkel" attribútuma elavult a DockerConfiguration és a ScriptRunConfig használatával.
+    + Frissített folyamat CLI klónozási dokumentációja
+    + A portál URI-azonosítóinak frissítése a bérlő hitelesítéséhez
+    + A kísérlet neve eltávolítva a Run URI-ból az átirányítások elkerülése érdekében
+    + A kísérleti URO frissítése a kísérlet AZONOSÍTÓjának használatára.
+    + Hibajavítások távoli számítások az az CLI használatával történő csatolásához
+    + A portál URI-azonosítóinak frissítése a bérlő hitelesítéséhez.
+    + A fájl-adatkészlet-partíciók a glob struktúra alapján való megismeréséhez hozzáadva támogatás.
+  + **azureml-interpret**
+    + azureml – a tolmácsolást a közösségi 0.17.0 használatával frissítette
+  + **azureml-opendatasets**
+    + A kezdő dátum és a záró dátum típusának érvényesítése és a hiba jelzése, ha nem datetime típusú.
+  + **azureml-pipeline-core**
+    + Hibajavítás – támogató path_on_compute az adatkészlet konfigurációjának letöltésként való továbbításakor.
+  + **azureml-pipeline-steps**
+    + Hibajavítás – támogató path_on_compute az adatkészlet konfigurációjának letöltésként való továbbításakor.
+    + Az R-parancsfájlok folyamatokban való futtatásához a CommandStep használata mellett elavult a RScriptStep. 
+    + A EstimatorStep elavulttá válik a CommandStep használatával, és a folyamatban lévő ML-képzés (beleértve az elosztott képzést is) a folyamatokban.
+  + **azureml-train-automl-runtime**
+    +  A konzol kimenetének módosítása a AutoML futtatásakor a futtatási portálra mutató hivatkozás megjelenítéséhez.
+  + **azureml-train-core**
+    + A DockerSection "enabled", "shared_volume" és "érvekkel" attribútuma elavult a DockerConfiguration és a ScriptRunConfig használatával.
+    + Azure Open-adatkészletek használata a MNIST adatkészlethez
+    + A HyperDrive hibaüzenetei frissültek.
+
 
 ## <a name="2021-03-31"></a>2021-03-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio notebook-élmény (március frissítés)
@@ -38,6 +112,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
   + A hivatkozások mostantól a terminálon is megtalálhatók
   + Továbbfejlesztett IntelliSense-teljesítmény
 
+
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK a Python v 1.24.0
@@ -50,8 +125,6 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
     + Hozzáadott funkciók a táblázatos adatkészletek oszlopos értékek és a metaadatok alapján történő szűréséhez.
   + **azureml-contrib-fairness**
     + JSON-séma belefoglalása a görgetőkerékbe `azureml-contrib-fairness`
-  + **azureml – k8s**
-    + Most meg kell adnia az erőforráscsoport és a fürt neve helyett csatolni kell resource_id.
   + **azureml – megterhelés – Mir**
     + Ha a modellek telepítésekor a show_output True (igaz) értékre van állítva, a rendszer a kérésnek a kiszolgálónak való elküldése előtt újra lejátssza a konfigurációt és a központi telepítési konfigurációt.
   + **azureml-core**
@@ -94,7 +167,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
   + **azureml-core**
     + [Kísérleti funkció] Támogatás hozzáadása a szinapszis-munkaterület a pénzmosás-hez társított szolgáltatásként való összekapcsolásához
     + [Kísérleti funkció] Támogatás hozzáadása a szinapszis Spark-készlet a pénzmosás-hez való csatlakoztatásához számítási feladatokhoz
-    + [Kísérleti funkció] Adja meg az identitás-alapú adathozzáférés támogatását. A felhasználók a hitelesítő adatok megadása nélkül regisztrálhatják az adattárt vagy az adatkészleteket. Ilyen esetben a rendszer a felhasználó HRE tokenjét vagy a számítási cél felügyelt identitását fogja használni a hitelesítéshez. További információ [itt](./how-to-identity-based-data-access.md).
+    + [Kísérleti funkció] Adja meg az identitás-alapú adathozzáférés támogatását. A felhasználók a hitelesítő adatok megadása nélkül regisztrálhatják az adattárt vagy az adatkészleteket. Ilyen esetben a rendszer a felhasználó HRE tokenjét vagy a számítási cél felügyelt identitását fogja használni a hitelesítéshez. További információkat [itt](./how-to-identity-based-data-access.md) talál.
   + **azureml-pipeline-steps**
     + [Kísérleti funkció] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) -támogatás hozzáadása
   + **azureml-synapse**
@@ -1067,7 +1140,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Leírás  |
+| Webalapú eszköz  |     Description  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1579,7 +1652,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Leírás | 
+| Webalapú eszköz | Description | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 

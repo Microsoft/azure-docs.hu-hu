@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645925"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226370"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>A felhasználó viselkedésének nyomon követése Azure AD B2Cban Application Insights használatával
 
@@ -252,7 +252,7 @@ Az üzleti igényeknek megfelelően érdemes lehet további jogcímeket rögzít
 
 ### <a name="manipulate-claims"></a>Jogcímek módosítása
 
-A bemeneti jogcímek [átalakításával](custom-policy-trust-frameworks.md#manipulating-your-claims) módosíthatók a bemeneti jogcímek, vagy újakat hozhatnak elő, mielőtt elküldené őket a Application Insightsba. A következő példában a technikai profil tartalmazza a `CheckIsAdmin` bemeneti jogcímek átalakítását.
+A bemeneti jogcímek [átalakításával](custom-policy-overview.md#manipulating-your-claims) módosíthatók a bemeneti jogcímek, vagy újakat hozhatnak elő, mielőtt elküldené őket a Application Insightsba. A következő példában a technikai profil tartalmazza a `CheckIsAdmin` bemeneti jogcímek átalakítását.
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -269,7 +269,7 @@ A bemeneti jogcímek [átalakításával](custom-policy-trust-frameworks.md#mani
 
 ### <a name="add-events"></a>Események hozzáadása
 
-Esemény hozzáadásához hozzon létre egy új technikai profilt, amely tartalmazza a `AppInsights-Common` technikai profilt. Ezt követően adja hozzá az új technikai profilt egy előkészítési lépésként a [felhasználói útra](custom-policy-trust-frameworks.md#orchestration-steps). Ha elkészült, az [előfeltétel](userjourneys.md#preconditions) elem használatával aktiválhatja az eseményt. Például csak akkor jelentse az eseményt, ha a felhasználók többtényezős hitelesítéssel futnak.
+Esemény hozzáadásához hozzon létre egy új technikai profilt, amely tartalmazza a `AppInsights-Common` technikai profilt. Ezt követően adja hozzá az új technikai profilt egy előkészítési lépésként a [felhasználói útra](custom-policy-overview.md#orchestration-steps). Ha elkészült, az [előfeltétel](userjourneys.md#preconditions) elem használatával aktiválhatja az eseményt. Például csak akkor jelentse az eseményt, ha a felhasználók többtényezős hitelesítéssel futnak.
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">

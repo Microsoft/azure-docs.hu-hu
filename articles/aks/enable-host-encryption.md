@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat gazdagép-alapú titkosítást e
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6942a3d445892faf0ea0570561eb06019e841e23
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430155"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443194"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Gazdagép-alapú titkosítás az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
 
@@ -28,11 +28,18 @@ Ez a funkció csak a fürt létrehozásakor vagy a csomópont-készlet létrehoz
 - Győződjön meg arról, hogy telepítve van a `aks-preview` CLI bővítmény v 0.4.73 vagy újabb verziója.
 - Győződjön meg arról, hogy engedélyezve van a `EnableEncryptionAtHostPreview` funkció jelzője `Microsoft.ContainerService` .
 
-Ahhoz, hogy a virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz titkosítást lehessen használni a gazdagépen, be kell szereznie a funkciót az előfizetésében. Küldje el az **encryptionAtHost@microsoft.com** előfizetési azonosítókat az előfizetések funkciójának beszerzéséhez. 
+Az Azure Kubernetes Service-fürt EncryptionAtHost tulajdonságának használata előtt engedélyeznie kell az előfizetés szolgáltatását. Az előfizetés funkciójának engedélyezéséhez kövesse az alábbi lépéseket:
 
-> [!IMPORTANT]
-> **encryptionAtHost@microsoft.com** Ahhoz, hogy a szolgáltatás engedélyezve legyen a számítási erőforrások számára, e-mailt kell kapnia az előfizetési azonosítókkal. Számítási erőforrások esetében nem engedélyezheti saját magát.
+1. Futtassa a következő parancsot az előfizetés funkciójának regisztrálásához
 
+```azurecli-interactive
+Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
+2. Győződjön meg arról, hogy a regisztrációs állapot regisztrálva van (néhány percet vesz igénybe) az alábbi parancs használatával, mielőtt kipróbálja a funkciót.
+
+```azurecli-interactive
+Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
 
 ### <a name="install-aks-preview-cli-extension"></a>Az aks-preview CLI-bővítmény telepítése
 

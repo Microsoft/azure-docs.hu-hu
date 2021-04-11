@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ce250b19478c70109fe28d199ac771a77c42c7dc
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a3771a21914831f249696fc3d733c5ea935c2c7e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112905"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251439"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Felügyelt identitás hozzáadása a kommunikációs szolgáltatások megoldásához (JS)
 
@@ -29,7 +29,9 @@ import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 
 Az alábbi példák a [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential)használják. Ez a hitelesítő adat megfelelő az éles és a fejlesztési környezetekhez.
 
-Az alkalmazások fejlesztési környezetben való regisztrálásához és környezeti változók beállításához lásd: [hozzáférés engedélyezése felügyelt identitással](../managed-identity-from-cli.md)
+A felügyelt identitások hitelesítésének használatának egyszerű módja: [hozzáférés engedélyezése felügyelt identitással](../managed-identity-from-cli.md)
+
+Részletesebben is tájékozódhat arról, hogyan működik a DefaultAzureCredential objektum, és hogyan használhatja azt olyan módon, amely nincs megadva ebben a rövid útmutatóban: [Azure Identity ügyféloldali kódtár a javascripthez](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)
 
 ### <a name="create-an-identity-and-issue-a-token-with-managed-identity"></a>Identitás létrehozása és a jogkivonat kiadása felügyelt identitással
 

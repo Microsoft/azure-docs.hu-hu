@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan sajátíthatja el a Azure IoT
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2020
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82ad29b02e501d41653fd466e58218e35c3b93c
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489457"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012169"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>A IoT Edge eszköz hibáinak megoldása
 
@@ -30,6 +30,8 @@ Az első lépés a IoT Edge hibaelhárításakor a `check` parancs használata, 
 
 A parancsot a következőképpen futtathatja `check` , vagy belefoglalhatja a `--help` jelzőt a lehetőségek teljes listájának megjelenítéséhez:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Linux rendszeren:
 
 ```bash
@@ -41,6 +43,19 @@ Windows rendszeren:
 ```powershell
 iotedge check
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.1 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge check
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 A hibaelhárító eszköz sok olyan ellenőrzést futtat, amelyek a következő három kategóriába vannak rendezve:
 
@@ -58,6 +73,9 @@ Ha IoT Edge-eszközről kell összegyűjtenie a naplókat, a legkényelmesebb m�
 
 Futtassa a `support-bundle` parancsot a `--since` jelzővel annak megadásához, hogy a múltban mennyi ideig szeretné lekérni a naplókat. Például az utolsó hat óra óta az elmúlt hat órában, az elmúlt hat `6h` `6d` `6m` percben és így tovább. A `--help` beállítások teljes listájának megjelenítéséhez adja meg a jelzőt.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Linux rendszeren:
 
 ```bash
@@ -69,6 +87,19 @@ Windows rendszeren:
 ```powershell
 iotedge support-bundle --since 6h
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge support-bundle --since 6h
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 [Közvetlen metódussal](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) is meghívhatja az eszközt, hogy feltöltse a support-Bundle parancs kimenetét az Azure Blob Storageba.
 
@@ -102,10 +133,9 @@ Ezzel a paranccsal a rendszer az összes [jelentett edgeAgent-tulajdonságot](./
 
 A [IoT Edge Security Manager](iot-edge-security-manager.md) felelős az olyan műveletekért, mint a IoT Edge rendszer inicializálásakor az indítási és kiépítési eszközökön. Ha IoT Edge nem indul el, a Security Manager naplói hasznos információkat nyújthatnak.
 
-Linux rendszeren:
-
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
+Linux rendszeren:
 
 * A IoT Edge Security Manager állapotának megtekintése:
 
@@ -131,7 +161,7 @@ Linux rendszeren:
 
      ```bash
      [Service]
-     Environment=IOTEDGE_LOG=edgelet=debug
+     Environment=IOTEDGE_LOG=debug
      ```
 
   3. Indítsa újra a IoT Edge biztonsági démont:
@@ -141,42 +171,6 @@ Linux rendszeren:
      sudo systemctl daemon-reload
      sudo systemctl restart iotedge
      ```
-<!--end 1.1 -->
-:::moniker-end
-
-<!-- 1.2 -->
-:::moniker range=">=iotedge-2020-11"
-
-* A IoT Edge rendszerszolgáltatások állapotának megtekintése:
-
-   ```bash
-   sudo iotedge system status
-   ```
-
-* Tekintse meg a IoT Edge rendszerszolgáltatások naplóit:
-
-   ```bash
-   sudo iotedge system logs -- -f
-   ```
-
-* A IoT Edge rendszerszolgáltatások részletes naplóinak megjelenítéséhez engedélyezze a hibakeresési szintű naplókat:
-
-  1. Hibakeresési szintű naplók engedélyezése.
-
-     ```bash
-     sudo iotedge system set-log-level debug
-     sudo iotedge system restart
-     ```
-
-  1. A hibakeresés után váltson vissza az alapértelmezett információs szintű naplókra.
-
-     ```bash
-     sudo iotedge system set-log-level info
-     sudo iotedge system restart
-     ```
-
-<!-- end 1.2 -->
-:::moniker-end
 
 Windows rendszeren:
 
@@ -211,6 +205,43 @@ Windows rendszeren:
      ```powershell
      Restart-Service iotedge
      ```
+
+:::moniker-end
+<!--end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* A IoT Edge rendszerszolgáltatások állapotának megtekintése:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* Tekintse meg a IoT Edge rendszerszolgáltatások naplóit:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* A IoT Edge rendszerszolgáltatások részletes naplóinak megjelenítéséhez engedélyezze a hibakeresési szintű naplókat:
+
+  1. Hibakeresési szintű naplók engedélyezése.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. A hibakeresés után váltson vissza az alapértelmezett információs szintű naplókra.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="check-container-logs-for-issues"></a>A problémákhoz tartozó tároló-naplók keresése
 

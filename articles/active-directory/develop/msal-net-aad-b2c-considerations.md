@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 84a65e9ce7360a38f552c0dea61a33ff8a94b9cc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cdbba1618815dbc8b52195169b7de2bcec2986d8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055518"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255579"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -178,7 +178,7 @@ Egy ilyen forgatókönyv tünete az, hogy a MSAL.NET akkor adja vissza, `Missing
 
 A javasolt Áthidaló megoldás a korábban leírt [szabályzat gyorsítótárazásának](#acquire-a-token-to-apply-a-policy) használata.
 
-Másik lehetőségként használhatja a `tid` jogcímet, ha [egyéni házirendeket](../../active-directory-b2c/custom-policy-get-started.md) használ a Azure ad B2Cban. Az egyéni szabályzatok a [jogcím-átalakítás](../../active-directory-b2c/claims-transformation-technical-profile.md)használatával további jogcímeket adhatnak vissza az alkalmazáshoz.
+Másik lehetőségként használhatja a `tid` jogcímet, ha [egyéni házirendeket](../../active-directory-b2c/user-flow-overview.md) használ a Azure ad B2Cban. Az egyéni szabályzatok a [jogcím-átalakítás](../../active-directory-b2c/claims-transformation-technical-profile.md)használatával további jogcímeket adhatnak vissza az alkalmazáshoz.
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>A "hiányzó jogkivonat-válasz" megoldásának enyhítése
 
@@ -190,6 +190,6 @@ A felhasználói folyamatok által visszaadott jogcímek meghatározásával kap
 
 A jogkivonatok interaktív módon való beszerzésével kapcsolatban további részleteket a következő példában talál: Azure AD B2C alkalmazások MSAL.NET.
 
-| Sample | Platform | Leírás|
+| Sample | Platform | Description|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | A MSAL.NET-t használó Xamarin-alkalmazások a felhasználókat a Azure AD B2C használatával hitelesítik, majd a visszaadott tokenekkel rendelkező webes API-kat férnek hozzá.|

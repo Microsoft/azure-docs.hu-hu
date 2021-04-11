@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491756"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012437"
 ---
 # <a name="api-management-transformation-policies"></a>API Management-átalakítási szabályzatok
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](./api-management-policies.md).
@@ -366,7 +366,7 @@ A `set-body` házirend konfigurálható úgy, hogy a [folyékony](https://shopif
 > [!IMPORTANT]
 > A házirendben használt folyadék implementációja `set-body` C# módban van konfigurálva. Ez különösen fontos olyan dolgok esetében, mint a szűrés. A Dátumszűrő használatával például a Pascal ház és a C# dátum formázása szükséges, például:
 >
-> {{Body. foo. startDateTime | Dátum: "yyyyMMddTHH: PP: ddZ"}}
+> {{Body. foo. startDateTime | Dátum: "yyyyMMddTHH: PP: ssZ"}}
 
 > [!IMPORTANT]
 > Ahhoz, hogy a folyadék sablon használatával megfelelően lehessen kötni egy XML-törzset, használjon egy szabályzatot, amely az `set-header` Application/XML, a Text/XML (vagy bármely más, + XML végződésű típus) esetében beállítja a tartalom típusát. JSON-törzs esetén az alkalmazásnak/JSON-nek, Text/JSON-nak (vagy bármilyen, + JSON-nak) kell lennie.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680832"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011776"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -173,7 +173,7 @@ További információt a [Traffic Service dokumentációjában](/rest/api/maps/t
 
 Az időjárási szolgáltatások olyan API-kat kínálnak, amelyeket a fejlesztők az adott hely időjárási adatainak lekérésére használhatnak. Az információk olyan részleteket tartalmaznak, mint például a megfigyelési dátum és idő, az időjárási feltételek rövid leírása, az időjárási ikon, a csapadék jelzői, a hőmérséklet és a Szélsebesség. A rendszer további részleteket, például a RealFeel™ hőmérsékletét és az UV-indexet is visszaadja.
 
-A fejlesztők az [útvonal-API beolvasása](/rest/api/maps/weather/getweatheralongroutepreview) lehetőséggel használhatják az időjárási információkat egy adott útvonalon. Emellett a szolgáltatás támogatja az olyan iránypontok időjárási értesítéseinek létrehozását, amelyeket az időjárási veszélyek, például az árvizek vagy a nagy esőzések érintenek.
+A fejlesztők az [útvonal-API beolvasása](/rest/api/maps/weather/getweatheralongroute) lehetőséggel használhatják az időjárási információkat egy adott útvonalon. Emellett a szolgáltatás támogatja az olyan iránypontok időjárási értesítéseinek létrehozását, amelyeket az időjárási veszélyek, például az árvizek vagy a nagy esőzések érintenek.
 
 A [Get Map csempe v2 API](/rest/api/maps/renderv2/getmaptilepreview) lehetővé teszi a múltbeli, aktuális és jövőbeli radar-és műholdas csempék kérését.
 

@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8cbc101ec9b5608574b93ea17022a3b0ef02ce4b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 90e72bd12d9115e5ff95213428ae4ac37979dcf3
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644415"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120095"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz az Ubuntu (18,04 x64) szimulátor hivatkozási ügynök használatával
 
@@ -147,9 +147,9 @@ Agent running. [main]
 
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com) , és navigáljon a IoT hub.
 
-2. A bal oldali navigációs ablaktáblán található "IoT-eszközök" vagy "IoT Edge" közül keresse meg a IoT-eszközt, és keresse meg az eszköz Ikerét.
+2. A bal oldali navigációs ablaktáblán található "IoT-eszközök" vagy "IoT Edge" közül keresse meg a IoT eszközt, és navigáljon a Twin vagy a modulhoz.
 
-3. A Twin (eszközök) készletben törölje a meglévő eszköz frissítési címke értékét a NULL értékre állításával.
+3. Az eszköz-frissítési ügynök moduljának különálló moduljában törölje a meglévő eszköz frissítési címke értékét a NULL értékre állításával. Ha eszköz-identitást használ az eszköz frissítési ügynökével, végezze el ezeket a módosításokat az eszközön.
 
 4. Vegyen fel egy új eszköz frissítési címke értékét az alább látható módon.
 

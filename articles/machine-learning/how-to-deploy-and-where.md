@@ -10,14 +10,14 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 03/25/2021
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2
 adobe-target: true
-ms.openlocfilehash: 4d2aa4d43fbc8cf9040702afb1877e0271b2eab2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 598da277214a2ee8e52cc5baaf2c792dfdc0429d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568290"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220232"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Gépi tanulási modellek üzembe helyezése az Azure-ban
 
@@ -321,7 +321,7 @@ Most már készen áll a modell üzembe helyezésére.
 Ha regisztrálta a modellt a Azure Machine Learning munkaterületen, cserélje le a "mymodel: 1" kifejezést a modell nevével és annak verziószámával.
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
+az ml model deploy -n tutorial -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 ### <a name="using-a-local-model"></a>Helyi modell használata
@@ -357,11 +357,11 @@ Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
 | Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
-| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | No |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |
-| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | No |
-| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Yes |
-| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Yes |
+| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
+| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
+| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
+| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
 
 > [!TIP]
 > A üzembe helyezéskor a számítási célokhoz tartozó Docker-rendszerképeket Azure Container Registry (ACR) alapján építették és töltik be. Alapértelmezés szerint a Azure Machine Learning létrehoz egy ACR-t, *amely az alapszintű* szolgáltatási szintet használja. A munkaterületre vonatkozó ACR a standard vagy a prémium csomagra való módosítása csökkentheti a lemezképeknek a számítási célokhoz való felépítéséhez és üzembe helyezéséhez szükséges időt. További információ: [Azure Container Registry szolgáltatási szintek](../container-registry/container-registry-skus.md).

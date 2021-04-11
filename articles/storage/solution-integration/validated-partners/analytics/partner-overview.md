@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 6c0ea6664c7f86a2672cb22091970ef727969dc2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c88dca926e3b185d388ff09ee424780d5097fb1f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562518"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075476"
 ---
 # <a name="azure-storage-analytics-and-big-data-partners"></a>Azure Storage-elemzési és big data-partnerek
 
@@ -23,7 +23,7 @@ Ez a cikk a Azure Data Lake Storage integrált Microsoft-partneri vállalatait m
 
 | Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
-|![Dremio-cég emblémája](./media/dremio-logo.png) |**Dremio**<br>Az elemzők és az adatszakértők megkereshetik, felfedezhetik és kihasználhatják az adatokat, míg az informatikai részleg irányítja a szabályozást és a biztonságot. A Dremio megkönnyíti a Data Lake Storage Blob Storage, Azure SQL Database, az Azure szinapszis SQL, a HDInsight és más szolgáltatásokkal való csatlakoztatását. A Dremio Power BI elemzők kereshetnek a Data Lake Storage tárolt új adatkészletekre, azonnal hozzáférhetnek a Power BIhoz, vizualizációkat hozhatnak létre, és valós időben iteratív a jelentések pontosítását. Az elemzők olyan új jelentéseket is létrehozhatnak, amelyek az Data Lake Storage és más adatbázisok közötti adategyesítést is magukban foglalhatnak.|[Partner oldal](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br>|
+|![Dremio-cég emblémája](./media/dremio-logo.jpg) |**Dremio**<br>Az elemzők és az adatszakértők megkereshetik, felfedezhetik és kihasználhatják az adatokat, míg az informatikai részleg irányítja a szabályozást és a biztonságot. A Dremio megkönnyíti a Data Lake Storage Blob Storage, Azure SQL Database, az Azure szinapszis SQL, a HDInsight és más szolgáltatásokkal való csatlakoztatását. A Dremio Power BI elemzők kereshetnek a Data Lake Storage tárolt új adatkészletekre, azonnal hozzáférhetnek a Power BIhoz, vizualizációkat hozhatnak létre, és valós időben iteratív a jelentések pontosítását. Az elemzők olyan új jelentéseket is létrehozhatnak, amelyek az Data Lake Storage és más adatbázisok közötti adategyesítést is magukban foglalhatnak.|[Partner oldal](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br>|
 ![Informatica-cég emblémája](./media/informatica-logo.png) |**Informatica**<br>A Informatica nagyvállalati szintű, Felhőbeli natív adatkezelési platformja automatizálja és felgyorsítja az Azure-beli vállalati adatainak felderítését, kézbesítését, minőségét és irányítását. A mesterséges intelligenciával, a metaadatok vezérelt adatintegrációval, valamint az adatminőséggel és irányítási képességekkel modernizálhatja az elemzéseket, és felgyorsíthatja az adattárházba vagy az Azure-beli adatközpontba való áttérést.|[Partner oldal](https://www.informatica.com/azure)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.annualiics?tab=Overview)|
 ![Wandisco-cég emblémája](./media/wandisco-logo.jpg) |**WANdisco**<br>A WANdisco áttelepítési motorja lehetővé teszi, hogy áttelepítse Data Lake Storage a Hadoop-adatátvitelt, amíg az aktív használatban marad, a nulla leállási idővel és a nulla adatvesztéssel.<br><br>A Microsofttal együttműködve a [WANdisco LiveData platform for Azure](../../../blobs/migrate-gen2-wandisco-live-data-platform.md) szorosan integrálva van az Azure-ba. Azure Portal üzembe helyezési élmény mellett a szerepköralapú hozzáférés-vezérlést, Azure Active Directory, Azure Policy kényszerítést és a tevékenység naplóinak integrálását is felhasználja. Az Azure számlázási integrációjának köszönhetően nem kell hozzáadnia szállítói szerződést, vagy további gyártói jóváhagyásokat kell kérnie.<br><br>Gyorsítsa fel a Hadoop-információk replikálását több forrás és cél között bármilyen adatarchitektúra esetén. A LiveData Cloud Services segítségével az adatai a Azure Databricks, a szinapszis Analytics és a HDInsight számára azonnal elérhetők lesznek, a 100%-os adatkonzisztencia garantálása mellett. |[Partner oldal](https://www.wandisco.com/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldm?tab=Overview)|
 

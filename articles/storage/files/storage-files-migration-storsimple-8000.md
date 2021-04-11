@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 814a2f7e32f173111e45fff02f00c3e4d2a9a670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601083"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075582"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
@@ -65,11 +65,11 @@ A StorSimple-berendezés első beállításakor a rendszer létrehozta a "szolg�
 
 A sikeres áttelepítéshez a "szolgáltatás adattitkosítási kulcsa" szükséges. Most már jó ideje beolvasni ezt a kulcsot a rekordokból, egyet a leltárban szereplő összes készülékhez.
 
-Ha nem találja a kulcsokat a rekordokban, lekérheti a kulcsot a készülékről. Minden berendezés egyedi titkosítási kulccsal rendelkezik. A kulcs lekérése:
+Ha nem találja a kulcsokat a rekordokban, létrehozhat egy új kulcsot a készülékről. Minden berendezés egyedi titkosítási kulccsal rendelkezik.
 
-* Támogatási kérelem Microsoft Azure a Azure Portalon keresztül. A kérésnek tartalmaznia kell a StorSimple-eszköz sorozatszámát és a szolgáltatás adattitkosítási kulcsának beolvasására vonatkozó kérést.
-* Egy StorSimple-támogatási szakember felveszi Önnel a kapcsolatot egy virtuális értekezletre vonatkozó kéréssel.
-* Győződjön meg arról, hogy az értekezlet megkezdése előtt [egy soros konzolon](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) vagy egy [távoli PowerShell-munkameneten](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)keresztül csatlakozik a StorSimple berendezéshez.
+#### <a name="change-the-service-data-encryption-key"></a>A szolgáltatásban tárolt adattitkosítási kulcs módosítása
+
+[!INCLUDE [storage-files-migration-generate-key](../../../includes/storage-files-migration-generate-key.md)]
 
 > [!CAUTION]
 > Ha úgy dönt, hogyan csatlakozhat a StorSimple-berendezéshez, vegye figyelembe a következőket:

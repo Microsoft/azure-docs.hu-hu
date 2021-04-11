@@ -10,14 +10,15 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/16/2021
+ms.custom: references_regions
+ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203725"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075712"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -32,9 +33,31 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 
 ## <a name="march-2021"></a>Március 2021
 
+### <a name="audio-analysis"></a>Hang elemzése 
+
 A hangelemzés mostantól további, a különböző díjszabású hangfunkciók új csomagjában érhető el. Az új **alapszintű** hangelemzési beállításkészlet alacsony díjszabású lehetőséget biztosít a beszéd-átírások, a fordítás és a kimeneti feliratok és feliratok kinyerésére. Az **alapszintű** hangkészlet két külön mérőszámot hoz létre a számlán, beleértve az átírási vonalat és egy külön sort a felirat és a felirat formázásához. A díjszabással kapcsolatos további információkért tekintse meg a [Media Services díjszabását](https://azure.microsoft.com/pricing/details/media-services/) ismertető oldalt.
 
 Az újonnan hozzáadott csomag akkor érhető el, ha a fájl indexeléséhez vagy újraindexeléséhez az  ->  **alapszintű** hangbeállítás lehetőséget választja (a **videó + hang indexelése** legördülő lista alatt).
+
+### <a name="new-developer-portal"></a>Új fejlesztői portál 
+
+Video Indexer egy új [fejlesztői portálon](https://api-portal.videoindexer.ai/), próbálja ki az új video Indexer API-kat, és megkeresi az összes kapcsolódó erőforrást egy helyen: [GitHub-tárház](https://github.com/Azure-Samples/media-services-video-indexer), [stack túlcsordulás](https://stackoverflow.com/questions/tagged/video-indexer), [video Indexer technikai Közösség](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) a releváns blogbejegyzésekkel, [video Indexer gyakori kérdések](faq.md), [felhasználói hang](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016) , hogy a visszajelzések és a javasolt funkciók, valamint a  ["CodePen" hivatkozása](https://codepen.io/videoindexer) widget-kódok használatával. 
+ 
+### <a name="advanced-customization-capabilities-for-insight-widget"></a>Az Insight widget speciális testreszabási képességei 
+
+Az SDK mostantól elérhető a saját szolgáltatásában lévő Video Indexer elemzések widget beágyazásához, valamint a stílusának és az adatkezelésének testreszabásához. Az SDK támogatja a standard szintű Video Indexer a bepillantást, valamint a teljes mértékben testreszabható bepillantási widgetet. A mintakód [video Indexer GitHub-tárházban](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets/widget-customization)érhető el. Ezzel a fejlett testreszabási képességekkel a megoldás fejlesztője egyéni stílusokat alkalmazhat, és a saját AI-adataihoz juthat, és az Insight widgetben (Video Indexer elemzések segítségével vagy anélkül) is elérhetővé teheti őket. 
+
+### <a name="video-indexer-deployed-in-the-us-north-central--us-west-and-canada-central"></a>Az USA északi középső régiójában, az USA nyugati régiójában és Közép-Kanadában üzemelő Video Indexer 
+
+Most már létrehozhat egy Video Indexer fizetős fiókot az USA északi középső, USA nyugati és kanadai középső régiójában
+ 
+### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>Az új forrás nyelvek támogatják a beszéd – szöveg (STT), a fordítást és a keresést 
+
+Video Indexer mostantól támogatja a STT, a fordítást és a keresést a dán ("da-DK"), a norvég ("NB-NO"), a svéd ("SV-SE"), a finn ("fi-FI"), a kanadai francia ("fr-CA"), a thai ("th-TH"), Arab ("AR-BH", "AR-EG", "AR-IQ", "AR-JO", "AR-KW", "AR-LB", "ar-", "AR-QA", "AR-S" és "AR-SY") és török ("TR-TR"). Ezek a nyelvek az API-ban és a Video Indexer webhelyén is elérhetők. 
+ 
+### <a name="search-by-topic-in-video-indexer-website"></a>Keresés témakör szerint Video Indexer webhelyén 
+
+Mostantól használhatja a keresési funkciót a [video Indexer webhely](https://www.videoindexer.ai/account/login) oldalának tetején, hogy megkeresse az adott témakörökkel rendelkező videókat. 
 
 ## <a name="february-2021"></a>2021. február
 

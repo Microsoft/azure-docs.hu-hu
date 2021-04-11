@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 136ea5fcb8dd446cfff6400616df058722fa2827
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95994859"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075372"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Azure pont – hely kapcsolati problémák
 
@@ -72,11 +72,11 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 1. Telepítse a frissítést.
 
    | Operációs rendszer verziója | Date | Szám/hivatkozás |
-   |---|---|---|---|
+   |---|---|---|
    | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
    | Windows 10 1709-es verzió | Március 22.2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
-   |  |  |  |  |
+
 
 2. Adja meg a beállításkulcs értékét. Hozzon létre vagy állítson be `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD kulcsot a beállításjegyzékben 1 értékre.
 

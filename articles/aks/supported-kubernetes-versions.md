@@ -3,23 +3,25 @@ title: Az Azure Kubernetes Service-ben támogatott Kubernetes-verziók
 description: Ismerje meg az Azure Kubernetes Service-ben (ak) lévő fürtök Kubernetes-verziójának támogatási szabályzatát és életciklusát
 services: container-service
 ms.topic: article
-ms.date: 09/08/2020
+ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba75e11a067a257c659f8c659f68bb2bba6fa2e0
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493662"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012086"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
-A Kubernetes-Közösség nagyjából három havonta kibocsátja a kisebb verziókat. A közelmúltban a Kubernetes Közösség [9 hónap és 12 hónap között megnövelte az egyes verziók támogatását](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), az 1,19-es verziótól kezdődően. Ezek a kiadások új funkciókat és fejlesztési lehetőségeket tartalmaznak. A javítási kiadások gyakoribbak (esetenként hetente), és a kritikus hibajavítások egy alverzión belül vannak. Ezek a javítások a biztonsági rések vagy a nagyobb hibák javítását is tartalmazzák.
+A Kubernetes-Közösség nagyjából három havonta kibocsátja a kisebb verziókat. A közelmúltban a Kubernetes Közösség [9 hónap és 12 hónap között megnövelte a támogatási időszakot](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), a 1,19-es verziótól kezdődően. 
+
+Az alverziók kiadásai új funkciókat és fejlesztési lehetőségeket tartalmaznak. A javítási kiadások gyakoribbak (esetenként hetente), és a kritikus hibajavítások egy alverzión belül vannak. A javítási kiadások közé tartoznak a biztonsági rések vagy a súlyos hibák javításai.
 
 ## <a name="kubernetes-versions"></a>Kubernetes-verziók
 
-A Kubernetes a szabványos [szemantikai verziószámozási](https://semver.org/) sémát használja, ami azt jelenti, hogy a Kubernetes minden egyes verziója a következő számozási sémát követi:
+A Kubernetes a szabványos [szemantikai](https://semver.org/) verziószámozási sémát használja az egyes verziókhoz:
 
 ```
 [major].[minor].[patch]
@@ -31,20 +33,21 @@ Example:
 
 A verzióban lévő egyes számok általános kompatibilitást jeleznek az előző verzióval:
 
-* A főverziók akkor változnak, ha a nem kompatibilis API-változások vagy a visszamenőleges kompatibilitás megszakad.
-* Az alverziók akkor változnak, ha a funkcionalitás változása visszamenőlegesen kompatibilis a többi másodlagos kiadással.
-* A javítási verziók megváltoznak, ha visszamenőlegesen kompatibilis hibajavítás történik.
+* A **főverziók** akkor változnak, ha inkompatibilis API-frissítéseket vagy visszamenőleges kompatibilitást lehet megszakítani.
+* Az **alverziók** akkor változnak, ha a funkciók frissítése olyankor történik, amely visszafelé kompatibilis a többi másodlagos kiadással.
+* A **javítási verziók** megváltoznak, ha visszamenőlegesen kompatibilis hibajavítás történik.
 
-A felhasználóknak törekedniük kell arra, hogy futtassák a futtatott alverzió legújabb kiadását, például ha az üzemi fürt be van kapcsolva, **`1.17.7`** és az **`1.17.8`** *1,17* sorozat legújabb elérhető javítási verziója, a lehető leghamarabb frissítenie kell **`1.17.8`** , hogy a fürt teljes mértékben kijavított és támogatott legyen.
+Célozza meg a futtatott alverzió legújabb javítócsomagjának futtatását. Az üzemi fürt például be van kapcsolva **`1.17.7`** . **`1.17.8`** elérhető a *1,17* sorozat legújabb elérhető javítási verziója. A lehető leghamarabb frissítenie kell a-t, **`1.17.8`** hogy a fürt teljes mértékben kijavított és támogatott legyen.
 
 ## <a name="kubernetes-version-support-policy"></a>Kubernetes-verzió támogatási szabályzata
 
-Az AK általánosan elérhető verziót határoz meg, amely minden SLO-vagy SLA-mértékben engedélyezve van, és ha minden régióban elérhető. Az AK támogatja a Kubernetes három GA-moll verzióját:
+Az AK egy általánosan elérhető verziót határoz meg, amely minden SLO-vagy SLA-mérésben engedélyezve van, és minden régióban elérhető. Az AK támogatja a Kubernetes három GA-moll verzióját:
 
 * A legújabb GA alverzió, amely az AK-ban jelent meg (amit N-ként fogunk hivatkozni).
 * Két korábbi másodlagos verzió.
-* A támogatott alverziók mindegyike legfeljebb két (2) stabil javítást is támogat.
-* Az AK is támogathatja az előzetes verziókat, amelyek explicit módon címkével rendelkeznek, és az [előzetes verziójú használati][preview-terms]feltételeket is felhasználhatják.
+    * A támogatott alverziók mindegyike legfeljebb két (2) stabil javítást is támogat.
+
+Az AK is támogathatja az előzetes verziókat, amelyek explicit módon címkével rendelkeznek, és az [előzetes verziójú használati][preview-terms]feltételeket is felhasználhatják.
 
 > [!NOTE]
 > Az AK olyan biztonságos üzembe helyezési eljárásokat használ, amelyek fokozatos régió üzembe helyezését igénylik. Ez azt jelenti, hogy akár 10 munkanapot is igénybe vehet, ha új kiadást vagy új verziót kíván elérhetővé tenni minden régióban.
@@ -59,7 +62,7 @@ Ha például az AK a *1.17. a* mai napon bevezeti a támogatást, a következő 
 
 Ahol a ". Letter" a javítási verziókra jellemző.
 
-Új alverzió bevezetését követően a legrégebbi alverzió és a javítások támogatott kiadásai elavultak és törlődnek. Ha például az aktuálisan támogatott verziók listája a következő:
+Új alverzió bevezetését követően a legrégebbi alverzió és a javítások támogatott kiadásai elavultak és törlődnek. A jelenleg támogatott verziók listája például a következő:
 
 ```
 1.17.a
@@ -70,10 +73,10 @@ Ahol a ". Letter" a javítási verziókra jellemző.
 1.15.f
 ```
 
-És az AK 1,18-es kiadása, az azt \* jelenti, hogy az összes 1,15. \* verzió el lesz távolítva, és 30 napon belül nem lesz támogatott.
+AK 1,18-es kiadást bocsát \* ki, és 30 nap alatt eltávolítja az összes 1,15. \* verziót.
 
 > [!NOTE]
-> Vegye figyelembe, hogy ha az ügyfelek nem támogatott Kubernetes-verziót futtatnak, a rendszer a fürt támogatásának kérelmezése után a frissítésre kéri őket. A nem támogatott Kubernetes-kiadásokat futtató fürtöket az [AK-támogatási szabályzatok](./support-policies.md)nem tartalmazzák.
+> Ha az ügyfelek nem támogatott Kubernetes-verziót futtatnak, a rendszer a fürt támogatásának kérelmezése után kéri a frissítést. A nem támogatott Kubernetes-kiadásokat futtató fürtöket az [AK-támogatási szabályzatok](./support-policies.md)nem tartalmazzák.
 
 A fentiek mellett az AK a megadott alverzióban legfeljebb két **javítási** kiadást támogat. Így a következő támogatott verziók szerepelnek:
 
@@ -93,7 +96,7 @@ New Supported Version List
 
 ### <a name="supported-kubectl-versions"></a>Támogatott `kubectl` verziók
 
-A `kubectl` *Kube-apiserver* verziójához viszonyítva egy régebbi vagy újabb verziójú alverziót is használhat, amely összhangban van a [kubectl Kubernetes-támogatási szabályzatával](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
+A `kubectl` *Kube-apiserver* verziójához viszonyítva egy régebbi vagy újabb verziót is használhat, amely összhangban van a [Kubectl-hez készült Kubernetes-támogatási szabályzattal](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
 
 Ha például a *Kube-apiserver* értéke *1,17*, akkor a *1,18* *1,16* -es verzióit használhatja a következővel: `kubectl` *Kube-apiserver*.
 
@@ -103,24 +106,25 @@ A verziójának telepítéséhez vagy frissítéséhez futtassa a következőt: 
 
 A következő verziókra vonatkozó kiadásokat és elavultkat az [AK Kubernetes kiadási naptárban](#aks-kubernetes-release-calendar)is hivatkozhat.
 
-A Kubernetes új **másodlagos** verzióihoz
-1. Az AK egy előzetes bejelentést tesz közzé egy új verzió kiadásának tervezett dátumával, és a korábbi verziókban való elavult verziót az [AK kibocsátási megjegyzésekben](https://aka.ms/aks/releasenotes) legalább 30 nappal az Eltávolítás előtt.
-2. Az AK a [szolgáltatás állapotáról szóló értesítést](../service-health/service-health-overview.md) tesz közzé az AK-val és a portál elérésével rendelkező összes felhasználó számára, és e-mailt küld az előfizetési rendszergazdáknak a tervezett verzió-eltávolítási dátumokkal.
-````
-To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
-````
-3. A felhasználók a verzió eltávolítása után **30 nappal** frissíthetnek a támogatott alverzióra, hogy továbbra is megkapják a támogatást.
+A Kubernetes új **másodlagos** verzióihoz:
+  * Az AK egy előzetes bejelentést tesz közzé egy új verzió kiadásának tervezett dátumával, és a korábbi verziókban való elavult verziót az [AK kibocsátási megjegyzésekben](https://aka.ms/aks/releasenotes) legalább 30 nappal az Eltávolítás előtt.
+  * Az AK a [szolgáltatás állapotáról szóló értesítést](../service-health/service-health-overview.md) tesz közzé az AK-val és a portál elérésével rendelkező összes felhasználó számára, és e-mailt küld az előfizetési rendszergazdáknak a tervezett verzió-eltávolítási dátumokkal.
 
-A Kubernetes új **javítócsomag** -verzióihoz
-  * A javítási verziók sürgős jellegéből adódóan ezek a szolgáltatások elérhetővé válnak a szolgáltatásban.
-  * Az AK általában nem tesz széles körű kommunikációt az új javítási verziók kiadásához. Az AK-ban azonban folyamatosan figyeli és ellenőrzi az elérhető CVE-javításokat, hogy az AK-ban időben támogassa őket. Ha a rendszer kritikus javítást talál, vagy felhasználói beavatkozásra van szükség, az AK értesíti a felhasználókat, hogy frissítsen az újonnan elérhető javításra.
-  * A felhasználók **30 napon** belül elvesznek egy javítási kiadást az AK-ból egy támogatott javításba való frissítéshez és a támogatás fogadásának folytatásához.
+    ````
+    To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
+    ````
+  * A felhasználók a verzió eltávolítása után **30 nappal** frissíthetnek a támogatott alverzióra, hogy továbbra is megkapják a támogatást.
+
+A Kubernetes új **javítócsomag** -verzióihoz:
+  * A javítási verziók sürgős jellegéből adódóan a szolgáltatásban elérhetővé válnak.
+  * Az AK általában nem közli az új javítási verziók kiadását. Az AK-ban azonban folyamatosan figyeli és ellenőrzi az elérhető CVE-javításokat, hogy az AK-ban időben támogassa őket. Ha a rendszer kritikus javítást talál, vagy felhasználói beavatkozásra van szükség, az AK értesíti a felhasználókat, hogy frissítsen az újonnan elérhető javításra.
+  * A felhasználók **30 napon** belül elvégezték a javítási kiadás eltávolítását az AK-ból, hogy egy támogatott javításba frissítsen, és továbbra is megkapja a támogatást.
 
 ### <a name="supported-versions-policy-exceptions"></a>Támogatott verziók házirend-kivételei
 
-Az AK fenntartja a jogot arra, hogy új/meglévő verziókat adjon hozzá vagy távolítson el, amelyek egy vagy több kritikus termeléssel kapcsolatos hibával vagy biztonsági problémával rendelkeznek, előzetes értesítés nélkül.
+Az AK fenntartja a jogot arra, hogy új/meglévő verziókat adjon hozzá vagy távolítson el egy vagy több kritikus termelési hatású hibával vagy biztonsági problémával, előzetes értesítés nélkül.
 
-Előfordulhat, hogy a rendszer kihagyja az adott javítási kiadásokat, vagy a hiba vagy a biztonsági probléma súlyossága függvényében felgyorsítja a bevezetést.
+A hibajavítás vagy a biztonsági probléma súlyossága alapján a javítási kiadások kihagyhatók vagy bekerülhetnek a gyorsított állapotba.
 
 ## <a name="azure-portal-and-cli-versions"></a>Azure Portal és CLI-verziók
 
@@ -151,28 +155,34 @@ A korábbi kiadási előzményekért lásd: [Kubernetes](https://en.wikipedia.or
 
 **Milyen gyakran várható a Kubernetes-verziók frissítése a támogatásban?**
 
-A Kubernetes 1,19-től kezdődően a [nyílt forráskódú közösség 1 évre kibővített támogatást](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)nyújt. Az AK véglegesíti, hogy a javítások és a támogatás legalább a felsőbb rétegbeli kötelezettségvállalásoknak megfelelő támogatást biztosít. Ez azt jelenti, hogy a 1,19-es számú AK-fürtökkel kezdődően az évente legalább egyszer frissíthető, hogy egy támogatott verzió maradjon. A 1,18-es vagy újabb verziókban a támogatási ablak 9 hónap alatt marad, és 9 havonta egyszer kell frissíteni, hogy egy támogatott verzió maradjon. Javasoljuk, hogy rendszeresen tesztelje az új verziókat, és készüljön fel az újabb verzióra való frissítésre, hogy rögzítse a legújabb stabil fejlesztéseket a Kubernetes belül.
+A Kubernetes 1,19-től kezdődően a [nyílt forráskódú közösség 1 évre kibővített támogatást](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)nyújt. Az AK véglegesíti a javításokat, és támogatja a felsőbb rétegbeli kötelezettségvállalásoknak megfelelő támogatást. A 1,19-es és annál újabb AK-fürtök esetében évente egyszer frissíthető, hogy egy támogatott verzióban maradjon. 
+
+A 1,18-es vagy alacsonyabb verziójú verziók esetében a támogatási ablak 9 hónapon belül marad, és 9 havonta egyszer kell frissíteni, hogy egy támogatott verzió maradjon. Rendszeresen tesztelheti az új verziókat, és készen áll az újabb verzióra való frissítésre, hogy rögzítse a legújabb stabil fejlesztéseket a Kubernetes belül.
 
 **Mi történik, ha egy felhasználó olyan alverzióval frissít egy Kubernetes-fürtöt, amely nem támogatott?**
 
 Ha az *n-3* vagy régebbi verzióját használja, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az n-3 verzióról n-2-ra történő verziófrissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Például:
 
 - Ha a legrégebbi támogatott AK-verzió *1,15. a* , és Ön a *1,14. b* vagy régebbi verziót használja, a támogatáson kívül van.
-- Ha a *1,14. b* verzióról *1.15* -re vagy annál nagyobbra történő frissítés sikeres, a támogatási szabályzatunk keretében visszakerül.
+- Ha a *1.14. b* -ről a- *re való frissítés* sikeresen megtörtént, akkor a támogatási szabályzatunk keretében visszakerül.
 
 A visszalépések nem támogatottak.
 
 **Mit jelent a "támogatáson kívül" kifejezés**
 
-A "támogatáson kívül" kifejezés azt jelenti, hogy a futtatott verzió a támogatott verziók listáján kívül esik, és a támogatás kérelmezése után a rendszer arra kéri, hogy frissítse a fürtöt egy támogatott verzióra, hacsak nem a 30 napos türelmi időszakon belül van. Emellett az AK nem végez futtatókörnyezetet vagy egyéb garanciát a támogatott verziók listáján kívüli fürtökre.
+A "támogatáson kívül" az alábbiakat jelenti:
+* A futtatott verzió kívül esik a támogatott verziók listáján.
+* A rendszer a támogatás kérelmezése után a fürt frissítését egy támogatott verzióra kéri, ha a verzió elavulttá tételét követő 30 napos türelmi időszakon belül van. 
+
+Emellett az AK nem végez futtatókörnyezetet vagy egyéb garanciát a támogatott verziók listáján kívüli fürtökre.
 
 **Mi történik, ha egy felhasználó olyan alverzióval méretezi a Kubernetes-fürtöt, amely nem támogatott?**
 
-Az AK által nem támogatott alverziók esetén a méretezés be-és kilépésének továbbra is működnie kell, de nincs minőségi garancia a szolgáltatásra, ezért erősen ajánlott frissíteni, hogy a fürt támogassa a támogatást.
+Az AK által nem támogatott alverziók esetén a méretezés be-és kilépésének továbbra is működnie kell. Mivel a szolgáltatáshoz nem biztosítunk minőségi garanciát, javasoljuk, hogy frissítsen a fürt támogatásához.
 
 **A felhasználó örökre Kubernetes-verzióban maradhat?**
 
-Ha egy fürtön több mint három (3) alverzió támogatott, és biztonsági kockázatokkal jár, az Azure kapcsolatba lép Önnel, hogy proaktív módon frissítse a fürtöt. Ha nem hajt végre további műveletet, az Azure fenntartja a jogot, hogy automatikusan frissítse a fürtöt az Ön nevében.
+Ha egy fürt több mint három (3) alverzión már nem támogatott, és biztonsági kockázatokkal jár, az Azure proaktív módon kapcsolatba lép Önnel a fürt frissítésével. Ha nem hajt végre további műveletet, az Azure fenntartja a jogot, hogy automatikusan frissítse a fürtöt az Ön nevében.
 
 **A vezérlő síkja milyen verziójú támogatást nyújt, ha a csomópont-készlet nem szerepel a támogatott AK-verziók egyikében sem?**
 
@@ -180,11 +190,24 @@ A vezérlési síkon az összes csomópont-készlet verziójának egy ablakában
 
 **Ki lehet hagyni több AK-verziót a fürt frissítése során?**
 
-Ha egy támogatott AK-fürtöt frissít, a Kubernetes alverzióit nem lehet kihagyni. Például a *1.12. x*  ->  *1.13. x* vagy *1.13. x*  ->  *1.14. x* közötti frissítések engedélyezettek, a *1.12. x*  ->  *1.14. x* azonban nem.
+Ha egy támogatott AK-fürtöt frissít, a Kubernetes alverzióit nem lehet kihagyni. Például a következő frissítések között:
+  * *1.12. x*  ->  *1.13. x*: engedélyezve.
+  * *1.13. x*  ->  *1.14. x*: engedélyezve.
+  * *1.12. x*  ->  *1.14. x*: nem engedélyezett.
 
-A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x* 1.13. x verzióról kell frissíteni,  ->  majd az *1.13. x*  ->  *1.14. x* verziójáról kell frissíteni.
+A *1.12. x*  ->  *1.14. x* verzióról történő frissítéshez:
+1. Frissítés *1.12. x*  ->  *1.13. x* verzióról.
+1. Frissítsen a *1.13. x*  ->  *1.14. x* verzióról.
 
-Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
+Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Frissíthet például egy nem támogatott *1.10. x* verzióról egy támogatott *1.15. x*-re.
+
+**Létrehozhatok új 1. xx. x fürtöt a 30 napos támogatási időszakban?**
+
+Nem. Ha egy verzió elavult/el lett távolítva, nem hozhat létre fürtöt az adott verzióval. A váltás során a rendszer elkezdi megtekinteni a régi verziót a verziók listájáról. Ez a folyamat akár két hetet is igénybe vehet a bejelentésből, fokozatosan régiónként.
+
+**Frissen elavult verzióban vagyok, továbbra is Hozzáadhatok új csomópont-készleteket? Vagy frissíteni kell?**
+
+Nem. Az elavult verzió csomópont-készletei nem adhatók hozzá a fürthöz. Új verziójú csomópont-készleteket is hozzáadhat. Előfordulhat azonban, hogy először frissítenie kell a vezérlő síkot. 
 
 ## <a name="next-steps"></a>Következő lépések
 

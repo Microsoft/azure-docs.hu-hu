@@ -1,5 +1,5 @@
 ---
-title: A kiállítói szolgáltatás kommunikációs példái (előzetes verzió)
+title: Kiállítói szolgáltatás kommunikációs példái (előzetes verzió) – Azure Active Directory ellenőrizhető hitelesítő adatok
 description: Az Identity Provider és a kiállító szolgáltatás közötti kommunikáció részletei
 author: barclayn
 manager: davba
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: bd1b7560967ff0c458639a5737a02fca27ffc9f5
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169993"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220198"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>A kiállítói szolgáltatás kommunikációs példái (előzetes verzió)
 
@@ -141,3 +141,7 @@ Az azonosító tokennek a JWT Compact szerializálási formátumát kell haszná
 | `iat` | Az azonosító jogkivonat kiállításának időpontját kell tartalmaznia. |
 | `nonce` | Az engedélyezési kérelemben szereplő érték. |
 | További jogcímek | Az azonosító jogkivonatnak tartalmaznia kell minden olyan további jogcímet, amelynek az értékei szerepelni fognak a kiállított ellenőrizhető hitelesítő adatokban. Ebben a szakaszban szerepelnie kell a felhasználóval kapcsolatos attribútumok, például a nevük. |
+
+## <a name="next-steps"></a>Következő lépések
+
+- [A Azure Active Directory ellenőrizhető hitelesítő adatainak testreszabása](credential-design.md)

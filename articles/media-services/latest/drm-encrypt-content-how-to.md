@@ -3,12 +3,12 @@ title: Tartalom titkosítása a Azure Portal
 description: Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a tartalom titkosítását a Azure Portal Azure Media Services használatával.
 ms.topic: quickstart
 ms.date: 08/31/2020
-ms.openlocfilehash: a97e1a3c51d44b7c530de0c6eeca569f898d07c1
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5ce942447f6d143116350940bda0e01a8b532d24
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106069323"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277678"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Gyors útmutató: tartalom titkosítása a portál használatával
 
@@ -28,8 +28,8 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan tartalmi 
 ### <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás
 
 * [Dinamikus titkosítás és kulcskézbesítés](drm-content-protection-concept.md)
-* [Streameléskeresők](streaming-locators-concept.md)
-* [Streamelési szabályzatok](streaming-policy-concept.md)
+* [Streameléskeresők](stream-streaming-locators-concept.md)
+* [Streamelési szabályzatok](stream-streaming-policy-concept.md)
 * [Tartalomkulcsszabályok](drm-content-key-policy-concept.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -80,7 +80,7 @@ Hozzáadhat egy AES-128 titkosítatlan titkosítási lehetőséget is a tartalom
 1. A kiválasztott eszköz **folyamatos átviteli lokátor** szakaszában kattintson a **+ streaming-lokátor hozzáadása** elemre. 
 1. Válasszon olyan **folyamatos átviteli házirendet** , amely megfelel a konfigurált **tartalmi kulcs házirendjének** .
 
-    A [streaming](streaming-policy-concept.md) policys témakör részletesen ismerteti, hogy a folyamatos átviteli szabályzat milyen tartalmakat tartalmaz a tartalmi kulcs házirendjében.
+    A [streaming](stream-streaming-policy-concept.md) policys témakör részletesen ismerteti, hogy a folyamatos átviteli szabályzat milyen tartalmakat tartalmaz a tartalmi kulcs házirendjében.
 1. Miután kiválasztotta a megfelelő folyamatos átviteli házirendet, kiválaszthatja a tartalmi kulcs házirendjét a legördülő listából.
 1. A **Hozzáadás** gombra kattintva adja hozzá a folyamatos átviteli lokátort az eszközhöz.
 

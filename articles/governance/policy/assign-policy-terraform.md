@@ -1,14 +1,14 @@
 ---
 title: 'Gyors útmutató: új szabályzat-hozzárendelés a Terraform'
 description: Ebben a rövid útmutatóban a Terraform és a HCL szintaxis használatával hozhat létre szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 10/27/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c1a43010c48f71872d935a8fb52f608b479da8a
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93106393"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092347"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Terraform használatával
 

@@ -1,7 +1,7 @@
 ---
 title: Automatizált ML besorolási modellek létrehozása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan taníthatja & a besorolási modellek üzembe helyezését Azure Machine Learning automatikus gépi tanulási (automatikus ML) felületével.
+description: A & a besorolási modellek üzembe helyezése kód írása nélkül, Azure Machine Learning automatikus gépi tanulás (automatizált ML) felületének használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,29 +11,31 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691943"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210846"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 
-
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy egyszerű besorolási modellt anélkül, hogy egyetlen kódrészletet írna be a Azure Machine Learning Studióban található automatikus gépi tanulás használatával. Ez a besorolási modell azt jelzi, hogy az ügyfél előfizet-e a pénzügyi intézménnyel kötött, rögzített időre szóló befizetésre.
+Megtudhatja, hogyan hozhat létre [egyszerű besorolási modellt](concept-automated-ml.md#classification) anélkül, hogy egyetlen sor kódot kellene írnia a Azure Machine learning Studióban található automatikus gépi tanulás használatával. Ez a besorolási modell azt jelzi, hogy az ügyfél előfizet-e a pénzügyi intézménnyel kötött, rögzített időre szóló befizetésre.
 
 Az automatizált gépi tanulás segítségével automatizálhatja az időigényes feladatokat. Az automatizált gépi tanulás gyorsan megismétli az algoritmusok és hiperparaméterek beállítása számos kombinációját, így könnyebben megtalálhatja a legjobb modellt a választott sikerességi mérőszám alapján.
 
-Az idősorozat-előrejelzési példa [: oktatóanyag: kereslet-előrejelzési & AutoML](tutorial-automated-ml-forecast.md).
-
-Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
+Ebben az oktatóanyagban semmilyen kódot nem fog írni, és a Studio felületét fogja használni a képzés elvégzéséhez.  Megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure Machine Learning munkaterületet.
 > * Automatizált gépi tanulási kísérlet futtatása.
 > * A kísérlet részleteinek megtekintése.
 > * A modell üzembe helyezése.
+
+Próbálja ki az automatizált gépi tanulást is a következő típusú modellek esetében:
+
+* Az előrejelzés nélküli példaként tekintse meg az [oktatóanyag: kereslet-előrejelzés & AutoML](tutorial-automated-ml-forecast.md).
+* A regressziós modell első példájának megtekintéséhez tekintse meg a következő [oktatóanyagot: az automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez](tutorial-auto-train-models.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +54,7 @@ Az Azure Machine Learning munkaterület a felhőben található alapvető erőfo
 >[!IMPORTANT] 
 > Jegyezze fel a **munkaterületet** és az **előfizetést**. Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Ismerkedés a Azure Machine Learning Studióval
+## <a name="sign-in-to-the-studio"></a>Bejelentkezés a studióba
 
 A következő kísérlettel végezheti el a beállítás és a Futtatás lépéseit a Azure Machine Learning Studióban https://ml.azure.com , egy konszolidált webes felületen, amely tartalmazza a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyveket végezhet az összes képzettségi szint adatelemző szakemberek számára. A Studio nem támogatott az Internet Explorer böngészőben.
 
@@ -100,7 +102,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
         Elválasztó|Egy vagy több karakter, amely egy &nbsp; egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincsenek
 
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában válassza ki a **day_of_week** váltási kapcsolóját, hogy ne szerepeljen. Kattintson a **Tovább** gombra.
          ![Séma űrlap](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
@@ -141,7 +143,7 @@ Az adatai betöltését és konfigurálását követően beállíthatja a kísé
             Számítási név |  A számítási környezet azonosítására szolgáló egyedi név. | automl – számítás
             Csomópontok minimális/maximális száma| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
             Leskálázás előtt üresjárati másodperc | Üresjárati idő a fürt automatikus skálázása előtt a csomópontok minimális száma szerint.|120 (alapértelmezett)
-            Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| Nincs               
+            Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| Nincsenek               
 
         1. Válassza a **Létrehozás** lehetőséget a számítási cél létrehozásához. 
 
@@ -159,11 +161,11 @@ Az adatai betöltését és konfigurálását követően beállíthatja a kísé
 
     1. Válassza a **további konfigurációs beállítások megtekintése** lehetőséget, és töltse fel a mezőket az alábbiak szerint. Ezek a beállítások hatékonyabban szabályozzák a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
 
-        További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
+        További &nbsp; konfigurációk|Description|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
         A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
-        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincs
+        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincsenek
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; ideje (óra): 1 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
         Érvényesítés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres &nbsp; keresztek ellenőrzése <br> <br> Érvényességek száma: 2
         Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| &nbsp;Egyidejű &nbsp; Ismétlések maximális száma: 5

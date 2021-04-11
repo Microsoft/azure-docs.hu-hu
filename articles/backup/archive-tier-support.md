@@ -3,12 +3,12 @@ title: Archiválási szint támogatása (előzetes verzió)
 description: Tudnivalók az archiválási szint támogatásáról Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a42b8702cfdda14a18aa3cdd4e084ed78767b0a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563973"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012148"
 ---
 # <a name="archive-tier-support-preview"></a>Archiválási szint támogatása (előzetes verzió)
 
@@ -40,6 +40,8 @@ Támogatott ügyfelek:
 
 ## <a name="get-started-with-powershell"></a>Bevezetés a PowerShell használatába
 
+1. Töltse le a PowerShell [legújabb](https://github.com/PowerShell/PowerShell/releases) verzióját a githubról.
+
 1. Futtassa az alábbi parancsot a PowerShellben:
   
     ```azurepowershell
@@ -57,7 +59,13 @@ Támogatott ügyfelek:
 
 1. A biztonsági mentési elemek listájának beolvasása:
 
-    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+    - Azure-beli virtuális gépek esetén:
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM"`
+
+    - SQL Server Azure-beli virtuális gépeken:
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"`
 
 1. A biztonsági másolati tétel beolvasása.
 

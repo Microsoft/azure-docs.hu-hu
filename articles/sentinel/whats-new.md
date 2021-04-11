@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: e882ae89da2fd081d6b41d3d42e998d3600f0e18
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604253"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120748"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -32,13 +32,36 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 
 ## <a name="march-2021"></a>Március 2021
 
+- [Új észlelések a Azure Firewall](#new-detections-for-azure-firewall)
 - [Automatizálási szabályok és incidensek által aktivált](#automation-rules-and-incident-triggered-playbooks) forgatókönyvek (beleértve az összes új forgatókönyv-dokumentációt)
 - [Új riasztások gazdagítása: bővített entitások leképezése és egyéni részletek](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
 - [Azure Sentinel-munkafüzetek nyomtatása vagy Mentés PDF formátumban](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
 - [Az incidens-szűrők és a rendezési beállítások mostantól a munkamenetben mentve (nyilvános előzetes verzió)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Microsoft 365 Defender-incidensek integrációja (nyilvános előzetes verzió)](#microsoft-365-defender-incident-integration-public-preview)
 - [Új Microsoft szolgáltatás-összekötők a Azure Policy használatával](#new-microsoft-service-connectors-using-azure-policy)
- 
+
+### <a name="new-detections-for-azure-firewall"></a>Új észlelések a Azure Firewall
+
+A Azure Firewall több beépített észlelése is hozzá lett adva az Azure Sentinel [elemzési](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats) területéhez. Ezek az új észlelések lehetővé teszik a biztonsági csapatoknak, hogy riasztást kapjanak, ha a belső hálózaton lévő gépek megpróbálnak lekérdezni vagy csatlakozni az ismert IOCs társított internetes tartományneveket vagy IP-címeket az észlelési szabály lekérdezésében meghatározottak szerint.
+
+Az új észlelések a következők:
+
+- [Solorigate Network Beacon](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
+- [Ismert GALLIUM-tartományok és-kivonatok](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
+- [Ismert IRÍDIUM IP-cím](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
+- [Ismert foszfor-csoport tartománya/IP-címe](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
+- [A DCU Takedown részét képező TALLIUM-tartományok](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
+- [Ismert CINKgel kapcsolatos maldoc-kivonat](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+- [Ismert stroncium-csoport tartományai](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
+- [NOBÉLIUM – tartomány és IP-IOCs – március 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
+
+
+Az Azure-tűzfalakkal kapcsolatos észlelések folyamatosan hozzáadódnak a beépített sablon-gyűjteményhez. A Azure Firewall legutóbbi észlelésének lekéréséhez a **szabály sablonok** területen szűrje az **adatforrásokat** **Azure Firewall** szerint:
+
+:::image type="content" source="media/whats-new/new-detections-analytics-efficiency-workbook.jpg" alt-text="Új észlelések az elemzési hatékonysági munkafüzetben":::
+
+További információ: [új észlelések Azure Firewall az Azure sentinelben](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958).
+
 ### <a name="automation-rules-and-incident-triggered-playbooks"></a>Automatizálási szabályok és incidensek által aktivált forgatókönyvek
 
 Az Automation-szabályok az Azure Sentinel új koncepciója, amellyel központilag kezelhető az incidensek kezelésének automatizálása. Amellett, hogy az incidensekhez (nem csak az előtte lévő riasztásokhoz) rendel hozzá forgatókönyveket, az Automation-szabályok lehetővé teszik a több elemzési szabályra adott válaszok automatizálását, automatikus címkézését, hozzárendelését vagy bezárását, és a végrehajtott műveletek sorrendjét. Az automatizálási szabályok egyszerűsítik az automatizálási használatot az Azure Sentinelben, és lehetővé teszik az incidensek összehangolása folyamataihoz tartozó összetett munkafolyamatok egyszerűsítését.
@@ -47,7 +70,7 @@ További információ az [automatizálási szabályok részletes ismertetésér�
 
 A fentiekben leírtak szerint az forgatókönyvek mostantól a riasztási trigger mellett is aktiválhatók az incidens-triggerrel. Az incidensek triggere nagyobb mennyiségű bemenetet biztosít a használathoz (mivel az incidens magában foglalja az összes riasztást és az entitás adatait is), így még nagyobb teljesítményt és rugalmasságot biztosít a válasz munkafolyamataiban. Az incidensek által aktivált forgatókönyvek aktiválása az Automation-szabályoknak való meghívásával történik.
 
-További információ a forgatókönyvek [bővített képességeihez](automate-responses-with-playbooks.md), valamint az automatizálási szabályokkal és az Automation-szabályokkal együtt a [válaszadási munkafolyamat](tutorial-respond-threats-playbook.md) kiépítéséről.
+További információ a forgatókönyvek [fejlett képességeiről](automate-responses-with-playbooks.md), valamint az automatizálási szabályokkal és az Automation-szabályokkal együtt a [válaszadási munkafolyamat](tutorial-respond-threats-playbook.md) kiépítéséről.
 
 ### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Új riasztások gazdagítása: bővített entitások leképezése és egyéni részletek
 

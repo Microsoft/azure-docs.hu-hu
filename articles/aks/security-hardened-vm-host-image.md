@@ -4,35 +4,38 @@ description: Tudnivalók a biztonság megerősítéséről az AK VM-gazdagép op
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 03/29/2021
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0866905d0228d2304ebf5c8ef930a629979d2da
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86244038"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012078"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Biztonság megerősítése az AK-ügynök Node gazda operációs rendszeréhez
 
-Az Azure Kubernetes Service (ak) a SOC, az ISO, a PCI DSS és a HIPAA szabványoknak megfelelő biztonságos szolgáltatás. Ez a cikk az AK-beli virtuális gépek gazdagépekre alkalmazott biztonsági korlátozásokat ismerteti. További információ az AK biztonságáról: [alkalmazások és fürtök biztonsági fogalmai az Azure Kubernetes szolgáltatásban (ak)](./concepts-security.md).
+Biztonságos szolgáltatásként az Azure Kubernetes Service (ak) megfelel a SOC, az ISO, a PCI DSS és a HIPAA szabványoknak. Ez a cikk az AK-beli virtuális gépek (VM) gazdagépekre alkalmazott biztonsági megerősítést ismerteti. További információ az AK biztonságáról: [alkalmazások és fürtök biztonsági fogalmai az Azure Kubernetes szolgáltatásban (ak)](./concepts-security.md).
 
 > [!Note]
 > Ez a dokumentum csak az AK-ban található Linux-ügynökökre terjed ki.
 
-Az AK-fürtök üzembe helyezése a gazdagépen futó virtuális gépeken történik, ami egy olyan biztonsági optimalizált operációs rendszert futtat, amely az AK-on futó tárolók esetében használatos. A gazda operációs rendszer egy **Ubuntu 16.04. LTS** -rendszerképet használ, amely további biztonsági korlátozásokat és optimalizálásokat alkalmaz (lásd a biztonsági megerősítés részleteit).
+Az AK-fürtök üzembe helyezése a gazdagépen futó virtuális gépeken történik, ami egy olyan biztonsági optimalizált operációs rendszert futtat, amely az AK-on futó tárolók számára A gazda operációs rendszer egy **Ubuntu 16.04. LTS** rendszerképet használ, amely nagyobb [biztonságot](#security-hardening-features) és optimalizálást alkalmaz.
 
 A biztonsági megerősített gazda operációs rendszer célja, hogy csökkentse a támadás felszíni területét, és optimalizálja a tárolók biztonságos üzembe helyezését.
 
 > [!Important]
-> A biztonsági megerősített operációs rendszer nem a CIS-re vonatkozó teljesítményteszt. Míg a CIS-referenciaértékek átfedésben vannak, a cél nem a CIS-kompatibilis. A gazdagép operációs rendszerének megtartására irányuló cél az, hogy a Microsoft saját belső biztonsági előírásaival összhangban álló biztonsági szintet biztosítson.
+> A biztonsági megerősített operációs rendszer **nem** a CIS-re vonatkozó teljesítményteszt. Noha átfedésben van a CIS-referenciaértékekkel, a cél nem a CIS-kompatibilis. A gazdagép operációs rendszerének megtartására irányuló cél az, hogy a Microsoft saját belső biztonsági előírásaival összhangban álló biztonsági szintet biztosítson.
 
 ## <a name="security-hardening-features"></a>Biztonsági megerősítő funkciók
 
-* Az KABAi szolgáltatás alapértelmezés szerint a biztonsággal optimalizált gazdagép operációs rendszerét biztosítja. Egy másik operációs rendszer nem választható ki.
+* Az AK-ban alapértelmezés szerint a biztonságra optimalizált gazda operációs rendszer van megadva, de nem választhat másik operációs rendszert.
 
-* Az Azure napi javításokat alkalmaz (beleértve a biztonsági javításokat is) az AK-beli virtuális gépek gazdagépei számára. Ezen javítások némelyike újraindítást igényel, míg mások nem. Az AK-beli VM-állomások újraindítását szükség szerint ütemezi. Az AK-javítások automatizálásával kapcsolatos útmutatásért lásd: [AK-csomópontok javítása](./node-updates-kured.md).
+* Az Azure napi javításokat alkalmaz (beleértve a biztonsági javításokat is) az AK-beli virtuális gépek gazdagépei számára. 
+    * Ezen javítások némelyike újraindítást igényel, míg mások nem. 
+    * Az AK-beli VM-gazdagépek újraindítására szükség van. 
+    * Az AK-javítások automatizálásával kapcsolatos útmutatásért lásd: [AK-csomópontok javítása](./node-updates-kured.md).
 
 ## <a name="what-is-configured"></a>Mi van konfigurálva
 
@@ -79,14 +82,12 @@ A biztonsági megerősített gazda operációs rendszer célja, hogy csökkentse
  
 * A támadási felület további csökkentéséhez le kell tiltani néhány felesleges kernel-modul illesztőprogramját az operációs rendszerben.
 
-* A biztonsági megerősített operációs rendszer kifejezetten AK-hoz készült, és nem támogatott az AK platformon kívül.
+* A biztonsági megerősített operációs rendszer kifejezetten AK-hoz készült, és **nem** támogatott az AK platformon kívül.
 
 ## <a name="next-steps"></a>Következő lépések  
 
-Az AK biztonságával kapcsolatos további információkért tekintse meg a következő cikkeket: 
+További információt az AK biztonságáról a következő cikkekben talál: 
 
-[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
-
-[AK biztonsági megfontolások ](./concepts-security.md)
-
-[AK ajánlott eljárások ](./best-practices.md)
+* [Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
+* [AK biztonsági megfontolások](./concepts-security.md)
+* [AK ajánlott eljárások](./best-practices.md)

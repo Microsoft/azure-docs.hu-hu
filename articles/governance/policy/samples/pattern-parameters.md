@@ -1,14 +1,14 @@
 ---
 title: 'Minta: a házirend-definícióban szereplő paraméterek'
-description: Ez a Azure Policy minta azt szemlélteti, hogyan használhatók a karakterláncok és a tömb paramétereinek egy házirend-definícióban, valamint hogyan parametrizálja a hatás.
-ms.date: 08/17/2020
+description: Ez a Azure Policy minta azt szemlélteti, hogyan használhatók a karakterláncok és a tömb paramétereinek egy házirend-definícióban, és hogyan parametrizálja a hatása.
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b742aaaf950e2b5670edbaa1f0134da144e675b6
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89649952"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092772"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy minta: paraméterek
 
@@ -16,7 +16,7 @@ A házirend-definíciót dinamikus értékre lehet állítani, hogy csökkentse 
 
 ## <a name="sample-1-string-parameters"></a>1. példa: karakterlánc-paraméterek
 
-Ez a házirend-definíció két paramétert használ: **TagName** és **tagValue** , amelyekkel beállíthatja, hogy a szabályzat-hozzárendelés milyen erőforrásokon keres. Ez a formátum lehetővé teszi, hogy a házirend-definíció tetszőleges számú címkét és címke értékű kombinációt adjon meg, de csak egyetlen házirend-definíciót tart fenn.
+Ez a házirend-definíció két paramétert használ: **TagName** és **tagValue**, amelyekkel beállíthatja, hogy a szabályzat-hozzárendelés milyen erőforrásokon keres. Ez a formátum lehetővé teszi, hogy a házirend-definíció tetszőleges számú címkét és címke értékű kombinációt adjon meg, de csak egyetlen házirend-definíciót tart fenn.
 
 > [!NOTE]
 > A **Mode** _all_ (mód) és egy erőforráscsoport használatával használható kódelemek esetében lásd a [minta: címkék – minta #1](./pattern-tags.md#sample-1-parameterize-tags).

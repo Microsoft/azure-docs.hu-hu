@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/19/2021
-ms.openlocfilehash: f652858f22e26eb7167a0cc7a2cfb8ef4b600ace
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74d30b7c42002c8f134520e0198774eba1519bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047300"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553838"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -56,7 +56,7 @@ Az **ajánlat beállítása** lap **telepítés részletei** területén kivála
    + 30 napos ingyenes próbaverzió biztosításához válassza az **ingyenes próbaverzió** lehetőséget, majd a megjelenő **próbaverzió URL-címe** mezőbe írja be a megjelenő URL-címet (a *http* vagy a *https* verziótól kezdődően), ahol az ügyfelek hozzáférhetnek az ingyenes próbaidőszakhoz az [Azure Active Directory (Azure ad) használatával egy kattintással](azure-ad-saas.md). Például: `https://contoso.com/trial/saas-app`.
    + Ha szeretné, hogy a potenciális ügyfelek kapcsolatba lépjenek az ajánlat megvásárlásához, válassza a **Kapcsolatfelvétel** lehetőséget.
 
-### <a name="enable-a-test-drive-optional"></a>Tesztelési meghajtó engedélyezése (nem kötelező)
+## <a name="enable-a-test-drive-optional"></a>Tesztelési meghajtó engedélyezése (nem kötelező)
 
 A test Drive nagyszerű lehetőséget nyújt arra, hogy az ajánlatot a lehetséges ügyfelek számára is bemutassa, ha egy előre konfigurált környezethez hozzáférést ad nekik egy rögzített számú órán keresztül. A tesztelési meghajtó felajánlása nagyobb konverziós arányt eredményez, és nagy mértékben minősített érdeklődőket generál. További információ a tesztelési meghajtókról: [Mi az a test Drive?](./what-is-test-drive.md).
 
@@ -67,14 +67,14 @@ A test Drive nagyszerű lehetőséget nyújt arra, hogy az ajánlatot a lehetsé
 1.  A **tesztelési meghajtó** területen jelölje be a **tesztvezetés engedélyezése** jelölőnégyzetet.
 1.  Válassza ki a tesztoldal típusát a megjelenő listából.
 
-### <a name="configure-lead-management"></a>Érdeklődők kezelésének konfigurálása
+## <a name="configure-lead-management"></a>Érdeklődők kezelésének konfigurálása
 
 Az Ügyfélkapcsolat-kezelési (CRM) rendszer a kereskedelmi piactérsel való összekapcsolásával biztosítható, hogy az ügyfél kapcsolattartási adatait, amikor az ügyfél kifejezi érdeklődését vagy üzembe helyezi a terméket. Ezt a csatlakozást bármikor módosíthatja az ajánlat létrehozásakor vagy után.
 
 > [!NOTE]
 > Az érdeklődők felügyeletét akkor kell konfigurálnia, ha az ajánlatot a Microsofton keresztül értékesíti, vagy kiválasztotta a **kapcsolatfelvételi** lista lehetőséget. Részletes útmutatásért tekintse [meg a kereskedelmi Marketplace-ajánlat ügyfeleinek vezetőit](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
-#### <a name="to-configure-the-connection-details-in-partner-center"></a>A kapcsolat részleteinek konfigurálása a partner Centerben
+### <a name="configure-the-connection-details-in-partner-center"></a>A kapcsolat részleteinek konfigurálása a partner Centerben
 
 1.  Az **ügyfél-érdeklődők** területen válassza a **Kapcsolódás** hivatkozást.
 1. A **kapcsolat részletei** párbeszédpanelen válasszon ki egy érdeklődő célhelyet a listából.
@@ -88,6 +88,36 @@ Az Ügyfélkapcsolat-kezelési (CRM) rendszer a kereskedelmi piactérsel való �
 
 1. A megadott konfiguráció ellenőrzéséhez válassza az **Érvényesítés** hivatkozást.
 1. A párbeszédpanel bezárásához kattintson **az OK gombra**.
+
+## <a name="configure-microsoft-365-app-integration"></a>Microsoft 365 alkalmazás-integráció konfigurálása
+
+Összekapcsolhatja az SaaS-ajánlat és a kapcsolódó Microsoft 365 alkalmazások felhasználásának [egységes felderítését és továbbítását](./plan-SaaS-offer.md) .
+
+### <a name="integrate-with-microsoft-api"></a>Integráció a Microsoft API-val
+
+1. Ha az SaaS-ajánlat nem integrálható a Microsoft Graph API-val, válassza a **nem** lehetőséget. Folytassa a közzétett Microsoft 365 alkalmazás-felhasználási ügyfelekkel való csatolást.  
+
+1. Ha az SaaS-ajánlat integrálva van Microsoft Graph API-val, válassza az **Igen** lehetőséget, majd adja meg az Microsoft Graph API-val való integrációhoz létrehozott és regisztrált Azure Active Directory-alkalmazás azonosítóját. 
+
+### <a name="link-published-microsoft-365-app-consumption-clients"></a>Microsoft 365 alkalmazás-felhasználási ügyfelek közzétett hivatkozása
+
+1. Ha nem rendelkezik olyan közzétett Office-bővítményekkel, Teams alkalmazással vagy SharePoint-keretrendszer megoldásokkal, amelyek az SaaS-ajánlattal működnek, válassza a **nem** lehetőséget.
+
+1. Ha olyan Office-bővítményt, Teams alkalmazást vagy SharePoint-keretrendszerbeli megoldásokat adott közzé, amelyek az SaaS-ajánlattal működnek, válassza az **Igen**, majd a **+ további AppSource-hivatkozás hozzáadása** lehetőséget az új hivatkozások hozzáadásához.  
+
+1. Érvényes AppSource-hivatkozást adjon meg.
+
+1. Az összes hivatkozás hozzáadásának folytatásához válassza a **+ további AppSource-hivatkozás hozzáadása** lehetőséget, és adjon meg érvényes AppSource-hivatkozásokat.  
+
+1. A társított termékek megrendelése az SaaS-ajánlat listázási lapján a rangsor értéke jelzi, a lista kiválasztásával, megtartásával és mozgatásával módosíthatja a = ikont. 
+
+1. A termék sorában a **Törlés** lehetőség kiválasztásával törölhet egy kapcsolódó terméket.  
+
+
+> [!IMPORTANT]
+> Ha leállítja egy kapcsolt termék értékesítését, nem lesz automatikusan leválasztva az SaaS-ajánlathoz, törölnie kell azt a társított termékek listájáról, majd újra be kell küldenie az SaaS-ajánlatot.  
+
+ 
 
 ## <a name="next-steps"></a>Következő lépések
 

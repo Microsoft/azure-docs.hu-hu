@@ -3,12 +3,12 @@ title: Azure arc-kompatibilis Kubernetes-fürt konfigurálása a Container bepil
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a figyelés az Azure arc-kompatibilis Kubernetes-fürtökön található tároló-információkkal.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6a725f6af613a541077cecfed3ba2289909130d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711297"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219230"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc-kompatibilis Kubernetes-fürt monitorozásának engedélyezése
 
@@ -113,7 +113,7 @@ Ha engedélyezni szeretné a fürt figyelését a korábban letöltött PowerShe
     $azureArcClusterResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. Konfigurálja a `$kubeContext` változót a fürt **Kube-környezetével** a parancs futtatásával `kubectl config get-contexts` . Ha az aktuális környezetet szeretné használni, állítsa a értéket a következőre: `""` .
+3. Konfigurálja a `$kubeContext` változót a fürt **Kube-környezetével** a parancs futtatásával `kubectl config get-contexts` . 
 
     ```powershell
     $kubeContext = "<kubeContext name of your k8s cluster>"
@@ -178,7 +178,7 @@ Az alábbi lépések végrehajtásával engedélyezheti a figyelést a megadott 
     export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. Konfigurálja a `kubeContext` változót a fürt **Kube-környezetével** a parancs futtatásával `kubectl config get-contexts` . Ha az aktuális környezetet szeretné használni, állítsa a értéket a következőre: `""` .
+3. Konfigurálja a `kubeContext` változót a fürt **Kube-környezetével** a parancs futtatásával `kubectl config get-contexts` . 
 
     ```bash
     export kubeContext="<kubeContext name of your k8s cluster>"

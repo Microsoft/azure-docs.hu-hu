@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c9709c444dfde4897c1364c8ab3d9dbfa315bb6f
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 6e60292c817ccad8eb1dd6cb3c33b944ab1c18a0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122152"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277685"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
 
@@ -25,9 +25,9 @@ ms.locfileid: "106122152"
 
 A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. 
 
-Az adatfolyam titkosítási beállításainak megadásához létre kell hoznia egy [adatfolyam-szabályzatot](streaming-policy-concept.md) , és hozzá kell rendelnie a [folyamatos átviteli lokátorhoz](streaming-locators-concept.md). Hozza létre a [tartalmi kulcs házirendjét](/rest/api/media/contentkeypolicies) annak konfigurálásához, hogy a tartalom kulcsa (amely biztonságos hozzáférést biztosít az [eszközeihez](assets-concept.md)) a végfelhasználók számára legyen továbbítva. Meg kell adnia a tartalmi kulcs házirendjének követelményeit (korlátozásait), amelyeknek teljesülniük kell ahhoz, hogy a megadott konfigurációval rendelkező kulcsok eljussanak az ügyfeleknek. A tartalmi kulcsra vonatkozó házirend nem szükséges a folyamatos átvitelhez vagy a letöltéshez. 
+Az adatfolyam titkosítási beállításainak megadásához létre kell hoznia egy [adatfolyam-szabályzatot](stream-streaming-policy-concept.md) , és hozzá kell rendelnie a [folyamatos átviteli lokátorhoz](stream-streaming-locators-concept.md). Hozza létre a [tartalmi kulcs házirendjét](/rest/api/media/contentkeypolicies) annak konfigurálásához, hogy a tartalom kulcsa (amely biztonságos hozzáférést biztosít az [eszközeihez](assets-concept.md)) a végfelhasználók számára legyen továbbítva. Meg kell adnia a tartalmi kulcs házirendjének követelményeit (korlátozásait), amelyeknek teljesülniük kell ahhoz, hogy a megadott konfigurációval rendelkező kulcsok eljussanak az ügyfeleknek. A tartalmi kulcsra vonatkozó házirend nem szükséges a folyamatos átvitelhez vagy a letöltéshez. 
 
-A tartalmi kulcs házirendjét általában a [folyamatos átviteli lokátorhoz](streaming-locators-concept.md)társítja. Azt is megteheti, hogy a tartalmi kulcsra vonatkozó házirendet egy [folyamatos átviteli házirenden](streaming-policy-concept.md) belül is megadhatja (ha speciális forgatókönyvekhez egyéni adatfolyam-szabályzatot hoz létre) 
+A tartalmi kulcs házirendjét általában a [folyamatos átviteli lokátorhoz](stream-streaming-locators-concept.md)társítja. Azt is megteheti, hogy a tartalmi kulcsra vonatkozó házirendet egy [folyamatos átviteli házirenden](stream-streaming-policy-concept.md) belül is megadhatja (ha speciális forgatókönyvekhez egyéni adatfolyam-szabályzatot hoz létre) 
 
 ## <a name="best-practices-and-considerations"></a>Ajánlott eljárások és szempontok
 

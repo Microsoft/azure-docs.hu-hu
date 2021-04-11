@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: a49fd6f97a9130fa0369d2a36cdc38e59613afc1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf96a222dd40909401b70d8f1812b7d29b6088b
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544383"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012462"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -33,7 +33,7 @@ Az elsődleges csomópont típusához javasolt topológiához az alábbi erőfor
 * Az alhálózat által hivatkozott NSG, amelyben üzembe helyezi a virtuálisgép-méretezési csoportokat.
 
 >[!NOTE]
-> A virtuálisgép-méretezési csoport egyhelyes csoportok tulajdonságát igaz értékre kell állítani, mivel Service Fabric nem támogatja egyetlen virtuálisgép-méretezési csoportot, amely zónákra terjed ki.
+> A virtuálisgép-méretezési csoport egyetlen elhelyezési csoportjának tulajdonságát igaz értékre kell állítani.
 
 Az Azure Service Fabric rendelkezésre állási zóna architektúrájának ábrája ![ , amely az azure Service Fabric rendelkezésre állási zóna architektúráját mutatja.][sf-architecture]
 

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kereshet C#-függvényeket a 
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6403e5d898b76d459a9712f7847e81e5442deeda
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201364"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075329"
 ---
 # <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>.NET 5 függvények fejlesztése és közzététele Azure Functions használatával 
 
@@ -160,7 +160,7 @@ Ezen a ponton futtathatja a parancsot a `func start` projekt mappájának gyöke
 
 1. A böngésző címsorába írja be a helyi függvény URL-címét, amely a következőhöz hasonlóan néz ki, majd futtassa a kérelmet. 
 
-    <http://localhost:7071/api/HttpExample>
+    `http://localhost:7071/api/HttpExample`
 
     Meg kell jelennie a futó terminálra írt kérelem nyomkövetési kimenetének. A kód végrehajtása a függvény kódjában beállított összes töréspontnál leáll.
 

@@ -3,12 +3,12 @@ title: Azure Media Services Event Grid forrásként
 description: A Media Services eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591928"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120112"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services Event Grid forrásként
 
@@ -514,7 +514,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | `encoderPort` | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 | `resultCode` | sztring | A rendszer elutasította a csatlakozás okát. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
-A hibák eredményének kódjait az [élő események](../media-services/latest/live-event-error-codes.md)hibakódjában találja.
+A hibák eredményének kódjait az [élő események](../media-services/latest/live-event-error-codes-reference.md)hibakódjában találja.
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -639,7 +639,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | `encoderPort` | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 | `resultCode` | sztring | A kódoló kibontásának oka. Előfordulhat, hogy a rendszer kecsesen leválasztja vagy hibát észlelt. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
-A hibák eredményének kódjait az [élő események](../media-services/latest/live-event-error-codes.md)hibakódjában találja.
+A hibák eredményének kódjait az [élő események](../media-services/latest/live-event-error-codes-reference.md)hibakódjában találja.
 
 A kecses leválasztási eredmények kódjai a következők:
 
@@ -1118,4 +1118,4 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Élő események hibakódja](../media-services/latest/live-event-error-codes.md)
+- [Élő események hibakódja](../media-services/latest/live-event-error-codes-reference.md)

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 5bc1d2ddb5b9ddb185a8349fb42d5f5db79c1498
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eae828d03431dd339c5399d8db8c6e46141ab11b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201384"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075328"
 ---
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
@@ -27,7 +27,7 @@ A Visual Studio Code integrálható [Azure functions alapeszközökkel](../artic
     
 1. Az **írja be a kérelem törzsében** megjelenik a kérelem üzenet törzsének értéke `{ "name": "Azure" }` . Nyomja le az ENTER billentyűt a kérelem üzenetének a függvénynek való elküldéséhez. 
 
-   Ehelyett HTTP GET-kérést küldhet <http://localhost:7071/api/HttpExample> egy webböngészőben található címre.
+   Ehelyett HTTP GET-kérést küldhet `http://localhost:7071/api/HttpExample` egy webböngészőben található címre.
 
 1. Ha a függvény helyileg fut, és egy választ ad vissza, a Visual Studio Code-ban megjelenik egy értesítés. A függvény végrehajtásával kapcsolatos információk a **Terminal** panelen jelennek meg.
 

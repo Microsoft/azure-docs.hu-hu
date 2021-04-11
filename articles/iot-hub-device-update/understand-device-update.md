@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 092078a79124682f7ee5c7824d4f7906c6e35475
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 95cecd66f4d0164594eb4e8da9efe765b5833e5e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558499"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120775"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>A IoT Hub eszköz frissítése (előzetes verzió) – áttekintés
 
@@ -80,7 +80,7 @@ Ha egy eszközön egy frissítési parancs érkezik, a rendszer végrehajtja a f
 
 ### <a name="importing"></a>Importálás
 
-Az importálás módja, hogy a frissítések hogyan kerülnek be az eszköz frissítéseibe, hogy azok üzembe helyezhetők legyenek az eszközökön. Az eszköz frissítése minden eszközön egyetlen frissítést támogat. Ez ideális olyan teljes képfrissítésekhez, amelyek egy teljes operációsrendszer-partíciót egyszerre frissítenek, vagy egy olyan apt-jegyzékfájlt, amely az eszközön frissíteni kívánt összes csomagot leírja. A frissítések eszköz frissítésbe való importálásához először létre kell hoznia egy, a frissítést leíró importálási jegyzékfájlt, majd fel kell töltenie a frissítési fájl (oka) t és az importálási jegyzékfájlt egy internetről elérhető helyre. Ezt követően használhatja a Azure Portal vagy az [eszköz frissítésének importálási REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) az importálás aszinkron folyamatának elindításához. Az eszköz frissítése feltölti a fájlokat, feldolgozza őket, és elérhetővé teszi azokat a IoT-eszközök számára történő terjesztéshez.
+Az importálás módja, hogy a frissítések hogyan kerülnek be az eszköz frissítéseibe, hogy azok üzembe helyezhetők legyenek az eszközökön. Az eszköz frissítése minden eszközön egyetlen frissítést támogat. Ez ideális olyan teljes képfrissítésekhez, amelyek egy teljes operációsrendszer-partíciót egyszerre frissítenek, vagy egy olyan apt-jegyzékfájlt, amely az eszközön frissíteni kívánt összes csomagot leírja. A frissítések eszköz frissítésbe való importálásához először létre kell hoznia egy, a frissítést leíró importálási jegyzékfájlt, majd fel kell töltenie a frissítési fájl (oka) t és az importálási jegyzékfájlt egy internetről elérhető helyre. Ezt követően a Azure Portal vagy az [eszköz frissítési REST API](https://docs.microsoft.com/rest/api/deviceupdate/) kezdeményezheti az importálás aszinkron folyamatát. Az eszköz frissítése feltölti a fájlokat, feldolgozza őket, és elérhetővé teszi azokat a IoT-eszközök számára történő terjesztéshez.
 
 Bizalmas tartalom esetén a letöltést egy közös hozzáférési aláírás (SAS) használatával, például az Azure Blob Storage ad-hoc SAS-vel kell ellátni. [További információ az SAS-ról](../storage/common/storage-sas-overview.md)
 
