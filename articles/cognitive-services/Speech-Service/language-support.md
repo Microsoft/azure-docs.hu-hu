@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 443c6960b88fb8eeb5cdee43de6c87bf4fe2ac7b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 52dd642c661aa60157876a89d41c771cabfe2f1d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581484"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256157"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -38,7 +38,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Nyelv                 | Területi beállítás (BCP-47) | Testreszabások  | [Nyelvfelismerés](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arab (Bahrein), modern standard  | `ar-BH` | Szöveg                                   | Yes                           | 
+| Arab (Bahrein), modern standard  | `ar-BH` | Szöveg                                   |                           | 
 | Arab (Egyiptom)                     | `ar-EG` | Szöveg                                   | Yes                          |
 | Arab (Irak)                      | `ar-IQ` | Szöveg                                   |                           |
 | Arab (Izrael)                    | `ar-IL` | Szöveg                                   |                           |
@@ -47,9 +47,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arab (Libanon)                   | `ar-LB` | Szöveg                                   |                           |
 | Arab (Omán)                      | `ar-OM` | Szöveg                                   |                           |
 | Arab (Katar)                     | `ar-QA` | Szöveg                                   |                           |
-| Arab (Szaúd-Arábia)              | `ar-SA` | Szöveg                                   | Yes                          |
+| Arab (Szaúd-Arábia)              | `ar-SA` | Szöveg                                   |                           |
 | Arab (palesztin állam)        | `ar-PS` | Szöveg                                   |                           |
-| Arab (Szíria)                     | `ar-SY` | Szöveg                                   | Yes                          |
+| Arab (Szíria)                     | `ar-SY` | Szöveg                                   |                           |
 | Arab (Egyesült Arab Emírségek)      | `ar-AE` | Szöveg                                   |                           |
 | Bolgár (Bulgária)               | `bg-BG` | Szöveg                                   |                           |
 | Katalán (Spanyolország)                    | `ca-ES` | Szöveg                                   | Yes                          |
@@ -64,10 +64,10 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Angol (Kanada)                   | `en-CA` | Hang (20201019)<br>Szöveg                 | Yes                          |
 | Angol (Ghána)                    | `en-GH` | Szöveg                                   |                           |
 | Angol (Hongkong)                | `en-HK` | Szöveg                                   |                           |
-| Angol (India)                    | `en-IN` | Hang (20200923)<br>Szöveg                 | Yes                          |
+| Angol (India)                    | `en-IN` | Hang (20200923)<br>Szöveg                 |                          |
 | Angol (Írország)                  | `en-IE` | Szöveg                                   |                           |
 | Angol (Kenya)                    | `en-KE` | Szöveg                                   |                           |
-| Angol (Új-Zéland)              | `en-NZ` | Hang (20201019)<br>Szöveg                 |  Yes                         |
+| Angol (Új-Zéland)              | `en-NZ` | Hang (20201019)<br>Szöveg                 |                          |
 | Angol (Nigéria)                  | `en-NG` | Szöveg                                   |                           |
 | Angol (Fülöp-szigetek)              | `en-PH` | Szöveg                                   |                           |
 | Angol (Szingapúr)                | `en-SG` | Szöveg                                   |                           |
@@ -83,7 +83,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Francia (Svájc)               | `fr-CH` | Szöveg<br>Kiejtése                  |                           |
 | Német (Ausztria)                   | `de-AT` | Szöveg<br>Kiejtése                  |                           |
 | Német (Németország)                   | `de-DE` | Hang (20190701, 20200619, 20201127)<br>Szöveg<br>Kiejtése|  Yes                         |
-| Görög (Görögország)                     | `el-GR` | Szöveg                                   |                           |
+| Görög (Görögország)                     | `el-GR` | Szöveg                                   |  Yes                         |
 | Gudzsaráti (indiai)                  | `gu-IN` | Szöveg                                   |                           |
 | Hindi (India)                      | `hi-IN` | Hang (20200701)<br>Szöveg                 |     Yes                      |
 | Magyar (Magyarország)                | `hu-HU` | Szöveg                                   |                           |
@@ -101,7 +101,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Lengyel (Lengyelország)                    | `pl-PL` | Szöveg                                   |       Yes                    |
 | Portugál (Brazília)                | `pt-BR` | Hang (20190620, 20201015)<br>Szöveg<br>Kiejtése|          Yes                 |
 | Portugál (Portugália)              | `pt-PT` | Szöveg<br>Kiejtése                  |             Yes              |
-| Román (Románia)                 | `ro-RO` | Szöveg                                   |                           |
+| Román (Románia)                 | `ro-RO` | Szöveg                                   |  Yes                         |
 | Orosz (Oroszország)                   | `ru-RU` | Hang (20200907)<br>Szöveg                 |                Yes           |
 | Szlovák (Szlovákia)                  | `sk-SK` | Szöveg                                   |                           |
 | Szlovén (Szlovénia)               | `sl-SI` | Szöveg                                   |                           |
@@ -283,10 +283,10 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel val
 | Thai (Thaiföld) | `th-TH` | Férfi | `th-TH-NiwatNeural` | Általános kérdések |
 | Török (Törökország) | `tr-TR` | Nő | `tr-TR-EmelNeural` | Általános kérdések |
 | Török (Törökország) | `tr-TR` | Férfi | `tr-TR-AhmetNeural` | Általános kérdések |
-| Ukrán (Ukrajna) | `uk-UA` | Nő | `en-ZA-LeahNeural` <sup>Új</sup> | Általános kérdések | 
-| Ukrán (Ukrajna) | `uk-UA` | Férfi | `en-ZA-LukeNeural` <sup>Új</sup> | Általános kérdések | 
-| Urdu (Pakisztán) | `ur-PK` | Nő | `uk-UA-PolinaNeural` <sup>Új</sup> | Általános kérdések | 
-| Urdu (Pakisztán) | `ur-PK` | Férfi | `uk-UA-OstapNeural` <sup>Új</sup> | Általános kérdések | 
+| Ukrán (Ukrajna) | `uk-UA` | Nő | `uk-UA-PolinaNeural` <sup>Új</sup> | Általános kérdések | 
+| Ukrán (Ukrajna) | `uk-UA` | Férfi | `uk-UA-OstapNeural` <sup>Új</sup> | Általános kérdések | 
+| Urdu (Pakisztán) | `ur-PK` | Nő | `ur-PK-UzmaNeural` <sup>Új</sup>  | Általános kérdések | 
+| Urdu (Pakisztán) | `ur-PK` | Férfi | `ur-PK-AsadNeural` <sup>Új</sup> | Általános kérdések | 
 | Vietnámi (Vietnám) | `vi-VN` | Nő | `vi-VN-HoaiMyNeural` | Általános kérdések |
 | Vietnámi (Vietnám) | `vi-VN` | Férfi | `vi-VN-NamMinhNeural` | Általános kérdések |
 | Walesi (Egyesült Királyság) | `cy-GB` | Nő | `cy-GB-NiaNeural` <sup>Új</sup> | Általános kérdések | 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011776"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256123"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -169,7 +169,7 @@ A Traffic szolgáltatás olyan webszolgáltatások csomagja, amelyeket a fejlesz
 
 További információt a [Traffic Service dokumentációjában](/rest/api/maps/traffic)talál.
 
-### <a name="weather-services-preview"></a>Időjárási szolgáltatások (előzetes verzió) 
+### <a name="weather-services"></a>Weather szolgáltatások
 
 Az időjárási szolgáltatások olyan API-kat kínálnak, amelyeket a fejlesztők az adott hely időjárási adatainak lekérésére használhatnak. Az információk olyan részleteket tartalmaznak, mint például a megfigyelési dátum és idő, az időjárási feltételek rövid leírása, az időjárási ikon, a csapadék jelzői, a hőmérséklet és a Szélsebesség. A rendszer további részleteket, például a RealFeel™ hőmérsékletét és az UV-indexet is visszaadja.
 

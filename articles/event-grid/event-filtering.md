@@ -3,12 +3,12 @@ title: Azure Event Grid eseményeinek szűrése
 description: Ismerteti, hogyan szűrhetők az események Azure Event Grid előfizetés létrehozásakor.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b5439b77b86d42d062cf9da66ce678f04f46f813
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419847"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256089"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
 
@@ -454,7 +454,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringin"></a>StringIn
-A **StringIn** operátor ellenőrzi, hogy a **kulcs** értéke **pontosan egyezik** -e a megadott **szűrési** értékek egyikével. A következő példában ellenőrzi, hogy a `key1` `data` szakaszban található attribútum értéke `exact` vagy `string` vagy `matches` . 
+A **StringIn** operátor ellenőrzi, hogy a **kulcs** értéke **pontosan egyezik** -e a megadott **szűrési** értékek egyikével. A következő példában ellenőrzi, hogy a `key1` `data` szakaszban található attribútum értéke `contoso` vagy `fabrikam` vagy `factory` . 
 
 ```json
 "advancedFilters": [{

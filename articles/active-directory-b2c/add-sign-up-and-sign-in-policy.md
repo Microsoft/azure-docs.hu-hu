@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 047b295d68e872b4dc334e53b5b9da0ec07d5826
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043750"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257075"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Regisztrációs és bejelentkezési folyamat beállítása Azure Active Directory B2C
 
@@ -91,7 +91,7 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 
 ## <a name="create-a-sign-up-and-sign-in-policy"></a>Regisztrálási és bejelentkezési szabályzat létrehozása
 
-Az egyéni házirendek olyan XML-fájlok készletei, amelyeket feltölt a Azure AD B2C bérlőre a felhasználói útvonalak definiálásához. Alapszintű csomagokat biztosítunk számos előre elkészített házirenddel, többek között a regisztrálással és a bejelentkezéssel, a jelszó-visszaállítással és a profil szerkesztési házirendjével. További információ: Ismerkedés [az egyéni szabályzatokkal Azure ad B2Cban](custom-policy-get-started.md).
+Az egyéni házirendek olyan XML-fájlok készletei, amelyeket feltölt a Azure AD B2C bérlőre a felhasználói útvonalak definiálásához. Alapszintű csomagokat biztosítunk számos előre elkészített házirenddel, többek között a regisztrálással és a bejelentkezéssel, a jelszó-visszaállítással és a profil szerkesztési házirendjével. További információ: Ismerkedés [az egyéni szabályzatokkal Azure ad B2Cban](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ::: zone-end
 

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 39f628845bdc9d54b48b1c8037f4a506a9d5c00a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b15a336e97cad1fb03a63ec34f563a4453755ff
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89236646"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504192"
 ---
 # <a name="frequently-asked-questions-for-microsoft-azure-attestation"></a>Microsoft Azure igazolással kapcsolatos gyakori kérdések
 
@@ -31,7 +31,7 @@ Azure PCK gyorsítótárazási szolgáltatás:
 
 ## <a name="is-sgx-attestation-supported-by-azure-attestation-in-non-azure-environments"></a>Az Azure-igazolások által támogatott SGX ENKLÁVÉHOZ-igazolások nem Azure-környezetekben
 
-Az Azure-igazolás az Azure PCK cache Service által a pólók ellenőrzéséhez megadott biztonsági alaptervtől függ. Az Azure PCK cache Service jelenleg csak az Azure bizalmas számítástechnikai csomópontok támogatására lett tervezve. 
+Nem. Az Azure-igazolás az Azure PCK cache Service által a pólók ellenőrzéséhez megadott biztonsági alaptervtől függ. Az Azure PCK cache Service jelenleg csak az Azure bizalmas számítástechnikai csomópontok támogatására lett tervezve. 
 
 ## <a name="what-validations-does-azure-attestation-perform-for-attesting-sgx-enclaves"></a>Milyen érvényesítést végez az Azure-igazolás a SGX ENKLÁVÉHOZ enklávék igazolására
 

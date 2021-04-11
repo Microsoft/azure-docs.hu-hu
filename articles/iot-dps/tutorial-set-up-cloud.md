@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5707d873bbf67add78f9a8e29fcb9135898486d6
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91316069"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226837"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Oktatóanyag: felhőalapú erőforrások konfigurálása az eszközök kiépítési felállításához a IoT Hub Device Provisioning Service
 
@@ -120,7 +120,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Az IoT Hub csatolása a Device Provisioning Service-hez
 > * A Device Provisioning Service kiosztási szabályzatának beállítása
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan állíthatja be az eszközt a kiépítéshez.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan állíthatja be az eszközt az üzembe helyezéshez
 
 > [!div class="nextstepaction"]
 > [Eszköz beállítása a kiépítéshez](tutorial-set-up-device.md)

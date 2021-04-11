@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: e0380cf432a1e0de2a8ac274fef7802bee13c58f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 73ee4d4be16284880b10df4a52b422a08c04c6a0
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030355"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284187"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Áttelepítési útmutató: hozzáférés a Azure SQL Databasehoz
 
-Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) Microsoft Access-adatbázisát egy Azure SQL Database-adatbázisba [SQL Server áttelepítési](https://azure.microsoft.com/migration/migration-journey) asszisztenssel (SSMA) való hozzáféréshez.
+Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) Microsoft Access-adatbázisát egy Azure SQL Database-adatbázisba [SQL Server áttelepítési](https://azure.microsoft.com/en-us/migration/sql-server/) asszisztenssel (SSMA) való hozzáféréshez.
 
 Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatója](https://docs.microsoft.com/data-migration). 
 

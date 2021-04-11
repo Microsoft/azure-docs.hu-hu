@@ -2,13 +2,13 @@
 title: Az Azure Disk Backup áttekintése
 description: További információ az Azure Disk Backup megoldásról.
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.date: 04/09/2021
+ms.openlocfilehash: 42f37c1f500be719e0bd79bad41226ab3ab2d911
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107295"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285139"
 ---
 # <a name="overview-of-azure-disk-backup"></a>Az Azure Disk Backup áttekintése
 
@@ -31,20 +31,20 @@ Az Azure Disk Backup olyan ügynök nélküli és összeomolhat konzisztens mego
 
 Az Azure Disk Backup megoldás a következő esetekben hasznos:
 
-- Gyakori biztonsági mentések naponta a nyugalmi alkalmazás nélkül
-- Fürtben futó alkalmazások: a Windows Server feladatátvevő fürt és a Linux-fürtök egyaránt a megosztott lemezekre vannak írva
-- Az ügynök nélküli biztonsági mentés speciális igénye az alkalmazás biztonsági vagy teljesítménnyel kapcsolatos problémái miatt
+- Gyakori biztonsági mentések naponta, az alkalmazás nyugalmi nélkül.
+- A fürtben futó alkalmazások: a Windows Server feladatátvevő fürt és a Linux-fürtök egyaránt a megosztott lemezekre vannak írva.
+- Az ügynök nélküli biztonsági mentésre az alkalmazás biztonsági vagy teljesítménnyel kapcsolatos problémái miatt van szükség.
 - Az alkalmazások konzisztens biztonsági mentése nem valósítható meg, mivel az üzletági alkalmazások nem támogatják Kötet árnyékmásolata szolgáltatás (VSS) használatát.
 
 Tekintse át az Azure-lemez biztonsági mentését olyan helyzetekben, ahol:
 
-- a kritikus fontosságú alkalmazások egy olyan Azure-beli virtuális gépen futnak, amely naponta több biztonsági mentést igényel a helyreállítási pont célkitűzésének kielégítése érdekében, de az éles környezet vagy az alkalmazás teljesítményének befolyásolása nélkül.
-- a szervezet vagy az iparági szabályozás biztonsági okokból korlátozza az ügynökök telepítését
-- Egyéni vagy közzétételi parancsfájlok futtatása, valamint a befagyasztást és a felolvasztás meghívása Linux rendszerű virtuális gépeken az alkalmazás-konzisztens biztonsági mentés túlzott terhelést eredményez az éles munkaterhelések rendelkezésre állása miatt
-- Az Azure Kubernetes szolgáltatásban (ak-beli fürtön) futó, tárolóba helyezett alkalmazások állandó tárterületként használják a felügyelt lemezeket. Ma a felügyelt lemezről biztonsági másolatot kell készítenie a nehezen kezelhető Automation-parancsfájlok segítségével.
-- a felügyelt lemezek fontos üzleti, fájlmegosztási vagy adatbázis-biztonságimásolat-fájlokat tartalmaznak, és az Azure-beli virtuális gépek biztonsági mentésének mellőzésével optimalizálni szeretnék a biztonsági mentési költségeket.
-- Számos Linux-és Windows egylemezes virtuális gép (azaz egy olyan virtuális gép, amely csak egy operációsrendszer-lemezzel rendelkezik, és nincs csatlakoztatott adatlemez), amelyek a webkiszolgáló vagy az állapot nélküli gépeket üzemeltetik, vagy átmeneti környezetként szolgálnak az alkalmazás konfigurációs beállításaival, és költséghatékony biztonsági mentési megoldásra van szükség az operációsrendszer-lemez védelme érdekében. Ha például egy gyors, igény szerinti biztonsági mentést szeretne elindítani a virtuális gép frissítése vagy javítása előtt
-- a virtuális gép olyan operációsrendszer-konfigurációt futtat, amelyet az Azure virtuális gép biztonsági mentési megoldása nem támogat (például Windows 2008 32 bites kiszolgáló)
+- A kritikus fontosságú alkalmazás olyan Azure-beli virtuális gépen fut, amely naponta több biztonsági mentést igényel a helyreállítási pont célkitűzésének kielégítése érdekében, de az éles környezet vagy az alkalmazás teljesítményének befolyásolása nélkül.
+- A szervezet vagy iparági szabályozás biztonsági okokból korlátozza az ügynökök telepítését.
+- Az alkalmazással konzisztens biztonsági mentést lehetővé nem tesz, hogy az alkalmazások egységes biztonsági mentése indokolatlanul terhelje az éles munkaterhelések rendelkezésre állását, és meghívja az egyéni előtti vagy utáni parancsfájlokat.
+- Az Azure Kubernetes szolgáltatásban (ak-beli fürtön) futó, tárolóba helyezett alkalmazások állandó tárterületként használják a felügyelt lemezeket. Jelenleg a felügyelt lemezről biztonsági másolatot kell készítenie a nehezen kezelhető Automation-parancsfájlok segítségével.
+- A felügyelt lemez a kritikus fontosságú üzleti adatfájlok tárolásához használatos, vagy adatbázis-biztonságimásolat-fájlokat tartalmaz, és az Azure-beli virtuális gépek biztonsági mentésének mellőzésével optimalizálni szeretné a biztonsági mentési költségeket.
+- Számos Linux-és Windows egylemezes virtuális gép (azaz egy olyan virtuális gép, amely csak egy operációsrendszer-lemezzel rendelkezik, és nincs csatlakoztatott adatlemez), amelyek a webkiszolgálót, az állapot nélküli gépeket vagy az alkalmazás konfigurációs beállításait tartalmazó átmeneti környezetként szolgálnak, és költséghatékony biztonsági mentési megoldásra van szükség az operációsrendszer-lemez védelme érdekében. Ha például egy gyors, igény szerinti biztonsági mentést szeretne elindítani a virtuális gép frissítése vagy javítása előtt.
+- A virtuális gép olyan operációsrendszer-konfigurációt futtat, amelyet az Azure virtuális gép biztonsági mentési megoldása nem támogat (például Windows 2008 32 bites kiszolgáló).
 
 ## <a name="how-the-backup-and-restore-process-works"></a>A biztonsági mentési és visszaállítási folyamat működése
 
@@ -54,7 +54,7 @@ Tekintse át az Azure-lemez biztonsági mentését olyan helyzetekben, ahol:
 
 - A biztonsági mentés konfigurálásához nyissa meg a Backup-tárolót, rendeljen hozzá egy biztonsági mentési szabályzatot, válassza ki azt a felügyelt lemezt, amelyről biztonsági másolatot szeretne készíteni, és adjon meg egy erőforráscsoportot, ahol a pillanatképek tárolása és kezelése történik. Azure Backup automatikusan elindítja az ütemezett biztonsági mentési feladatokat, amelyek a biztonsági mentés gyakorisága alapján létrehozzák a lemez növekményes pillanatképét. A régebbi Pillanatképek a biztonsági mentési szabályzatban megadott megőrzési időtartamnak megfelelően törlődnek.
 
-- Azure Backup a felügyelt lemez [növekményes pillanatképeit](../virtual-machines/disks-incremental-snapshots.md#restrictions) használja. A növekményes Pillanatképek a felügyelt lemezek költséghatékony, időponthoz kapcsolódó biztonsági mentése, amely az utolsó pillanatkép óta a lemez változásait terheli. A rendszer mindig a leggazdaságosabb tárterületen tárolja a standard HDD-tárterületet, függetlenül a szülő lemezek tárolási típusától. A lemez első pillanatképe elfoglalja a lemez használt méretét, és az egymást követő növekményes Pillanatképek a legutóbbi pillanatkép óta a lemez változásait is a lemezen tárolják.
+- Azure Backup a felügyelt lemez [növekményes pillanatképeit](../virtual-machines/disks-incremental-snapshots.md#restrictions) használja. A növekményes Pillanatképek a felügyelt lemezek költséghatékony, időponthoz kapcsolódó biztonsági mentése, amely az utolsó pillanatkép óta a lemez változásait terheli. Ezeket a rendszer mindig a leginkább költséghatékony tárolóban tárolja, a szabványos HDD-tárterületet, a szülő lemezek tárolási típusától függetlenül. A lemez első pillanatképe elfoglalja a lemez használt méretét, és az egymást követő növekményes Pillanatképek a legutóbbi pillanatkép óta a lemez változásait is a lemezen tárolják.
 
 - Miután konfigurálta a felügyelt lemez biztonsági mentését, a Backup-tárolóban létrejön egy biztonsági mentési példány. A biztonsági mentési példány használatával megtalálhatja a biztonsági mentési műveletek állapotát, elindíthatja az igény szerinti biztonsági mentést, és elvégezheti a visszaállítási műveleteket. Megtekintheti a biztonsági másolatok állapotát több tárolóban és biztonsági mentési példányban is a Backup Center használatával, amely egyetlen ablaktáblát biztosít az üveg nézetben.
 
@@ -62,12 +62,12 @@ Tekintse át az Azure-lemez biztonsági mentését olyan helyzetekben, ahol:
 
 - A Backup-tároló felügyelt identitás használatával fér hozzá más Azure-erőforrásokhoz. A felügyelt lemez biztonsági mentésének konfigurálásához és a korábbi biztonsági mentésből való visszaállításhoz a Backup-tár felügyelt identitásához engedélyekre van szükség a forrásoldali lemezen, a pillanatkép-erőforráscsoport létrehozásához és kezeléséhez, valamint a cél erőforráscsoporthoz, ahol vissza kívánja állítani a biztonsági mentést. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyeket adhat a felügyelt identitásnak. A felügyelt identitás olyan speciális típusú szolgáltatásnév, amelyet csak az Azure-erőforrásokkal lehet használni. További információ a [felügyelt identitásokról](../active-directory/managed-identities-azure-resources/overview.md).
 
-- Az Azure Disk Backup jelenleg támogatja a felügyelt lemezek működési biztonsági mentését, és nem másolja a biztonsági másolatokat a Backup-tárolóba. Tekintse át a [támogatási mátrixot](disk-backup-support-matrix.md)a támogatott és nem támogatott forgatókönyvek, valamint a régiók rendelkezésre állása részletes listájához.
+- Az Azure Disk Backup jelenleg támogatja a felügyelt lemezek működési biztonsági mentését, és nem másolja a biztonsági másolatokat a Backup-tárolóba. Tekintse át a [támogatási mátrixot](disk-backup-support-matrix.md) a támogatott és nem támogatott forgatókönyvek, valamint a régiók rendelkezésre állása részletes listájához.
 
 ## <a name="pricing"></a>Díjszabás
 
-Azure Backup egy pillanatkép-életciklus-kezelési megoldást kínál az Azure-lemezek védelméhez. A Azure Backup által létrehozott lemez-pillanatképeket az Azure-előfizetésében található erőforráscsoport tárolja, és a **Pillanatképek tárolásával** kapcsolatos díjat számítunk fel. A pillanatkép díjszabásával kapcsolatos további információkért tekintse meg a [felügyelt lemez díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) . Mivel a pillanatképeket nem másolja a Backup-tárolóba, Azure Backup nem számít fel díjat a **védett példányok** díja, és a **biztonsági mentési tárolási** költségek nem érvényesek. Emellett a növekményes Pillanatképek a legutóbbi pillanatkép óta elfoglalják a változási változásokat, és a szülő által felügyelt lemezek tárolási típusától függetlenül mindig a standard szintű tárolóban tárolódnak, és a standard szintű tárolás díjszabása alapján számítunk fel díjat. Így költséghatékony megoldás az Azure Disk Backup.
+Azure Backup egy pillanatkép-életciklus-kezelési megoldást kínál az Azure-lemezek védelméhez. A Azure Backup által létrehozott lemez-pillanatképeket az Azure-előfizetésében található erőforráscsoport tárolja, és a **Pillanatképek tárolásával** kapcsolatos díjat számítunk fel. A pillanatkép díjszabásával kapcsolatos további információkért tekintse meg a [felügyelt lemez díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) .<br></br>Mivel a pillanatképeket nem másolja a Backup-tárolóba, Azure Backup nem számít fel díjat a **védett példányok** díja, és a **biztonsági mentési tárolási** költségek nem érvényesek. Emellett a növekményes Pillanatképek a legutóbbi pillanatképként is elfoglalják a változási változásokat, és a szülő által felügyelt lemezek tárolási típusától függetlenül mindig a standard szintű tárolókban tárolódnak, és a standard szintű tárterület díjszabása alapján számítunk fel díjat. Így költséghatékony megoldás az Azure Disk Backup.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Disk Backup támogatási mátrixa](disk-backup-support-matrix.md)
+[Az Azure Disk Backup támogatási mátrixa](disk-backup-support-matrix.md)

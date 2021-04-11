@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 23e24e562ea6fa10eee82c54c9ab2a701dd10351
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169949"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505332"
 ---
 # <a name="access-config-server-and-service-registry"></a>A konfigurációs kiszolgáló és a szolgáltatás beállításjegyzékének elérése
 
@@ -49,6 +49,9 @@ Az Azure Spring Cloud-Adatolvasó szerepkör hozzárendelése után az ügyfelek
 
     * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
     * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+
+>[!NOTE]
+> Ha az Azure China-t használja, cserélje le `*.azuremicroservices.io` a `*.microservices.azure.cn` -t, és [Tudjon meg többet](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure).
 
 3. Nyissa meg az összeállított végpontot a hozzáférési jogkivonattal. Az engedélyezéshez helyezze a hozzáférési tokent egy fejlécbe.  Csak a "GET" metódus támogatott.
 
