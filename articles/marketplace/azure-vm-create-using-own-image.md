@@ -8,10 +8,10 @@ author: krsh
 ms.author: krsh
 ms.date: 03/10/2021
 ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200467"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>Virtuális gép létrehozása saját rendszerkép használatával
@@ -158,7 +158,7 @@ A következő három szakasz ezeket a beállításokat ismerteti.
 1. Kattintson a **Mentés** gombra.
 1. Az ebben a táblázatban szereplő paraméterek segítségével hajtsa végre az alábbi képernyőn látható mezőket.
 
-| Paraméterek | Description |
+| Paraméterek | Leírás |
 | --- | --- |
 | sourceStorageAccountResourceId | Azon forrás-tárolási fiók erőforrás-azonosítója, amelyben a blob VHD található.<br><br>Az erőforrás-azonosító beszerzéséhez nyissa meg a **Storage-fiókját** **Azure Portalon**, válassza a **Tulajdonságok menüpontot**, és másolja a **ResourceId** értéket. |
 | sourceBlobUri | Az operációsrendszer-lemez VHD-blobjának blob URI-ja (a megadott Storage-fiókban kell lennie).<br><br>A blob URL-címének beszerzéséhez nyissa meg a **Storage-fiókját** **Azure Portalon**, nyissa meg a **blobot**, és másolja az **URL-címet** . |

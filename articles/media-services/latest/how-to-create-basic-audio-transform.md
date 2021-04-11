@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
-ms.openlocfilehash: 80edac3106a79a706ee1ef18c48d41d1ad6c3eaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce0ed303790ad27c99864cc44ea85c96ac3ec468
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724591"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962237"
 ---
 # <a name="create-a-basic-audio-transform"></a>Alapszintű hang átalakításának létrehozása
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan hozhat létre alapszintű hangátalakítót.  Az ala
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy eszköz létrehozásához kövesse az [Media Services fiók létrehozása](./create-account-howto.md) a szükséges Media Services fiók és erőforráscsoport létrehozásához című témakör lépéseit.
+Egy eszköz létrehozásához kövesse az [Media Services fiók létrehozása](./account-create-how-to.md) a szükséges Media Services fiók és erőforráscsoport létrehozásához című témakör lépéseit.
 
 ## <a name="methods"></a>Metódusok
 

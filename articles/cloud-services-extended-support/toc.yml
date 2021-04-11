@@ -51,14 +51,26 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration séma
           href: schema-cscfg-networkconfiguration.md
-    - name: Gyakori kérdések
-      href: faq.md
 - name: Útmutató
   items:
-    - name: Távoli asztal-bővítmény alkalmazása
-      href: enable-rdp.md
-    - name: WAD-bővítmény alkalmazása
-      href: enable-wad.md
+    - name: Migrálás Cloud Servicesre (kiterjesztett támogatás)
+      items:
+        - name: Migrálás áttekintése
+          href: in-place-migration-overview.md
+        - name: Áttelepítési technikai részletek
+          href: in-place-migration-technical-details.md
+        - name: Migrálás a Azure Portal használatával
+          href: in-place-migration-portal.md
+        - name: Áttelepítés a PowerShell-lel
+          href: in-place-migration-powershell.md
+        - name: Gyakori hibák és ismert problémák
+          href: in-place-migration-common-errors.md
+    - name: Bővítmények alkalmazása
+      items:
+        - name: Távoli asztal-bővítmény alkalmazása
+          href: enable-rdp.md
+        - name: WAD-bővítmény alkalmazása
+          href: enable-wad.md
     - name: Riasztások engedélyezése
       href: enable-alerts.md
     - name: Skálázás konfigurálása
@@ -67,6 +79,16 @@
       href: certificates-and-key-vault.md
     - name: ARM-sablon előállítása a portál használatával
       href: generate-template-portal.md
+    - name: Két felhőalapú szolgáltatás cseréje
+      href: swap-cloud-service.md
+    - name: Az SKU felülbírálása – részletek
+      href: override-sku.md
+    - name: Hibaelhárítás
+      items:
+        - name: Szerepkör-indítási hiba
+          href: role-startup-failure.md
+        - name: Gyakori kérdések
+          href: faq.md
 - name: Példák
   items:
     - name: Minta sablonok

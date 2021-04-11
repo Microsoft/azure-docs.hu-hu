@@ -4,12 +4,12 @@ description: A használat és a problémák diagnosztizálásához helyezzen be 
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d658d7e64f720a3fb700d157cd5194ff50a48c33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e866dc30d83f1b1f080a1be385026dcfbc77320
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471634"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122101"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -702,6 +702,9 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 [Metrikaböngésző](../essentials/metrics-charts.md)létrehozhat egy olyan diagramot, amely **felhasználói, hitelesített** és **felhasználói fiókokat** számol fel.
 
 A megadott felhasználóneveket és fiókokat tartalmazó ügyfél-adatpontokat is [megkeresheti](./diagnostic-search.md) .
+
+> [!NOTE]
+> A .NET Core SDK [ApplicationInsightsServiceOptions osztályának EnableAuthenticationTrackingJavaScript tulajdonsága](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) leegyszerűsíti a felhasználónevet a Application INSIGHTS JavaScript SDK által eljuttatott minden egyes nyomkövetés hitelesítési azonosítójának a JavaScript-konfigurációjában. Ha ez a tulajdonság TRUE (igaz) értékre van állítva, a rendszer a ASP.NET Core felhasználójának felhasználónevét az [ügyféloldali telemetria](asp-net-core.md#enable-client-side-telemetry-for-web-applications)együtt kinyomtatja, így a `appInsights.setAuthenticatedUserContext` manuális Hozzáadás többé nem lesz szükséges, mivel a ASP.net Core SDK-hoz már befecskendezett. Az Auth-azonosítót arra a kiszolgálóra is el kell juttatni, ahol a .NET Core SDK azonosítja azt, és bármely kiszolgálóoldali telemetria használni fogja a [JavaScript API-referenciában](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#setauthenticatedusercontext)leírtaknak megfelelően. Azonban olyan JavaScript-alkalmazásokhoz, amelyek nem ugyanúgy működnek, mint a ASP.NET Core MVC (például a SPA Web Apps), manuálisan kell hozzáadnia `appInsights.setAuthenticatedUserContext` .
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>Az adatai szűrése, keresése és szegmentálása tulajdonságok használatával
 

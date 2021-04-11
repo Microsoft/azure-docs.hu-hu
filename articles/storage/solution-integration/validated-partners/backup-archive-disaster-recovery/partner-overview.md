@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 9e7f407ecda1fec8d8ae02e21f3b5a5ea4b0befb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103561498"
 ---
 # <a name="azure-storage-archive-backup-and-disaster-recovery-partners"></a>Azure Storage-Archívum, biztonsági mentési és vész-helyreállítási partnerek
@@ -21,7 +21,7 @@ Ez a cikk az Azure Storage szolgáltatással integrált Microsoft-partnereket is
 
 ## <a name="verified-partners"></a>Ellenőrzött partnerek
 
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 |![CommVault-cég emblémája](./media/commvault-logo.jpg) |**CommVault**<br>Az CommVault használatával optimalizálhatja, védetté teheti, áttelepítheti és indexelheti az adatait a Microsoft-infrastruktúrával. A CommVault teljes adatvédelmet, a Microsoft-központú és az Azure-központú adatkezelési megoldást is igénybe veheti. A CommVault biztosítja az adatok kezeléséhez, átirányításához, eléréséhez és helyreállításához szükséges eszközöket, függetlenül attól, hogy hol találhatók, és csökkenti a költségeket és a kockázatot.|[Partner oldal](https://www.commvault.com/complete-data-protection)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)<br>[Útmutató az első lépésekhez](./commvault/commvault-solution-guide.md)|
 |![Datadobi-cég emblémája](./media/datadob-logo.png) |**Datadobi**<br> A Datadobi képes optimalizálni a strukturálatlan tárolási környezeteket. A DobiProtect segítségével megőrizheti az üzleti szempontból kritikus hálózati tárolók (NAS) adatait az Azure-ban. Ez segít a előforduló kiberfenyegetésekkel kapcsolatban, a ransomware, a véletlen törlések és a szoftveres sebezhetőségek elleni védelemben. Ha minimálisra szeretné megőrizni a tárterületet, válassza ki azokat az adatvesztést, amelyekre szüksége lesz a katasztrófa esetén. Vészhelyzet esetén teljes mértékben helyreállíthatja az adatokat, visszaállíthatja az adatok egy részhalmazát, vagy elvégezheti a feladatátvételt az arany másolatában. |[Partner oldal](https://datadobi.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobiprotect?tab=Overview)|

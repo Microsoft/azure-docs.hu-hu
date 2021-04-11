@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 9c0e5508830343561833785fbce31f547a8a7428
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: daeea48758a9f08e7eedbfcaddcde3815f5c1e16
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729099"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>A titkokat és tanúsítványokat tartalmazó alkalmazások exportálása a szükséges dátum után lejár
 
@@ -37,7 +37,7 @@ A "tag hozzáadása" parancs feladata az oszlopok létrehozása a CSV-fájlban.
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Meghívás – webkérés](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1) | HTTP-és HTTPS-kéréseket küld egy weblapra vagy webszolgáltatásnak. Elemzi a választ, és visszaadja a hivatkozások, képek és egyéb jelentős HTML-elemek gyűjteményeit. |
+| [Meghívás – webkérés](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1&preserve-view=true) | HTTP-és HTTPS-kéréseket küld egy weblapra vagy webszolgáltatásnak. Elemzi a választ, és visszaadja a hivatkozások, képek és egyéb jelentős HTML-elemek gyűjteményeit. |
 
 ## <a name="next-steps"></a>Következő lépések
 

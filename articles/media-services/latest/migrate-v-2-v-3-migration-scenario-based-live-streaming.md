@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 322a599d5ad02ddcf19c61261d968d098b6c9871
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 273a1b5986a72acc1d6725fbb3101c9c1df17e45
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563126"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122050"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Élő közvetítés forgatókönyv-alapú áttelepítési útmutatója
 
@@ -35,12 +35,12 @@ A Azure Portal mostantól támogatja az élő események beállítását és fel
 
 Tesztelje az élő események Media Services való továbbításának új módját, mielőtt a tartalmat a v2-ről v3-ra helyezné át. Az alábbiakban a v3-funkciók használhatók, és érdemes áttelepíteni az áttelepítést.
 
-- Hozzon létre egy új v3 [élő eseményt](live-events-outputs-concept.md#live-events) a kódoláshoz. Engedélyezheti [az 1080p és 720p kódolású előkészleteket](live-event-types-comparison.md#system-presets).
-- Az [élő kimeneti](live-events-outputs-concept.md#live-outputs) entitás használata programok helyett
+- Hozzon létre egy új v3 [élő eseményt](live-event-outputs-concept.md#live-events) a kódoláshoz. Engedélyezheti [az 1080p és 720p kódolású előkészleteket](live-event-types-comparison-reference.md#system-presets).
+- Az [élő kimeneti](live-event-outputs-concept.md#live-outputs) entitás használata programok helyett
 - [Adatfolyam-lokátorok](streaming-locators-concept.md)létrehozása.
-- Vegye figyelembe, hogy szükség van a [HLS és a Dash](dynamic-packaging-overview.md) élő közvetítésre.
-- Ha az élő események gyors indítását igényli, Fedezze fel az új [készenléti üzemmód](live-events-outputs-concept.md#standby-mode) funkcióit.
-- Ha a folyamatban lévő élő eseményt szeretné átírni, Fedezze fel az új [élő átírási](live-transcription.md) funkciót.
+- Vegye figyelembe, hogy szükség van a [HLS és a Dash](encode-dynamic-packaging-concept.md) élő közvetítésre.
+- Ha az élő események gyors indítását igényli, Fedezze fel az új [készenléti üzemmód](live-event-outputs-concept.md#standby-mode) funkcióit.
+- Ha a folyamatban lévő élő eseményt szeretné átírni, Fedezze fel az új [élő átírási](live-event-live-transcription-how-to.md) funkciót.
 - Ha hosszabb folyamatos átviteli időtartamra van szüksége, hozzon létre nonstop élő eseményeket a v3-ben.
 - Az élő események figyeléséhez használja a [Event Grid](monitoring/monitor-events-portal-how-to.md) .
 
@@ -50,22 +50,22 @@ A konkrét lépésekhez tekintse meg az élő események fogalmait, az oktatóan
 
 ### <a name="concepts"></a>Alapelvek
 
-- [Élő közvetítés a Azure Media Services v3-val](live-streaming-overview.md)
-- [Élő események és élő kimenetek Media Services](live-events-outputs-concept.md)
+- [Élő közvetítés a Azure Media Services v3-val](stream-live-streaming-concept.md)
+- [Élő események és élő kimenetek Media Services](live-event-outputs-concept.md)
 - [Ellenőrzött helyszíni élő adatfolyam-kódolók](recommended-on-premises-live-encoders.md)
-- [Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket](live-event-cloud-dvr.md)
-- [Élő átírás (előzetes verzió)](live-transcription.md)
-- [Élő eseménytípus összehasonlítása](live-event-types-comparison.md)
-- [Élő események állapotai és számlázása](live-event-states-billing.md)
-- [Élő esemény alacsony késési beállításai](live-event-latency.md)
-- [Media Services élő események hibakódja](live-event-error-codes.md)
+- [Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket](live-event-cloud-dvr-time-how-to.md)
+- [Live-Event-Live-átirat – útmutató (előzetes verzió)](live-event-live-transcription-how-to.md)
+- [Élő eseménytípus összehasonlítása](live-event-types-comparison-reference.md)
+- [Élő események állapotai és számlázása](live-event-states-billing-concept.md)
+- [Élő esemény alacsony késési beállításai](live-event-latency-reference.md)
+- [Media Services élő események hibakódja](live-event-error-codes-reference.md)
 
 ### <a name="tutorials-and-quickstarts"></a>Oktatóanyagok és gyors útmutatók
 
 - [Oktatóanyag: élő közvetítés Media Services](stream-live-tutorial-with-api.md)
-- [Azure Media Services élő stream létrehozása a OBS](live-events-obs-quickstart.md)
-- [Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon](manage-assets-quickstart.md)
-- [Gyors útmutató: Azure Media Services élő stream létrehozása a Wirecast](live-events-wirecast-quickstart.md)
+- [Azure Media Services élő stream létrehozása a OBS](live-event-obs-quickstart.md)
+- [Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon](asset-create-asset-upload-portal-quickstart.md)
+- [Gyors útmutató: Azure Media Services élő stream létrehozása a Wirecast](live-event-wirecast-quickstart.md)
 
 ## <a name="samples"></a>Példák
 

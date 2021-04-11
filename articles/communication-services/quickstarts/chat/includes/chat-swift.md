@@ -10,58 +10,57 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b7bf924ba8514aa8da1d466ea4852f3f9caaf646
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5bf4bbe2c8dc863f67dffb50609f7775a4499e3a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726653"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073570"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
 
 - Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört. 
-- Telepítse a [Xcode](https://developer.apple.com/xcode/) -t és a [Cocoapods](https://cocoapods.org/)-t, majd a Xcode használatával hozzon létre egy IOS-alkalmazást a gyors üzembe helyezéshez és a Cocoapods a függőségek telepítéséhez.
-- Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell **jegyeznie az erőforrás-végpontot** .
-- Hozzon létre **két** ACS-felhasználót, és adja ki a felhasználói hozzáférési jogkivonat [felhasználói hozzáférési jogkivonatát](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a **csevegés** értékre állítsa, és **jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot**. Ebben a rövid útmutatóban egy kezdő résztvevővel hozunk létre egy szálat, majd egy második résztvevőt is hozzáadunk a szálhoz.
+- Telepítse a [Xcode](https://developer.apple.com/xcode/) és a [CocoaPods](https://cocoapods.org/). A Xcode használatával iOS-alkalmazást hozhat létre a gyors útmutatóhoz, és CocoaPods a függőségek telepítéséhez.
+- Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. Részletekért lásd: gyors útmutató [: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése](../../create-communication-resource.md). Ebben a rövid útmutatóban rögzítenie kell az erőforrás-végpontot.
+- Hozzon létre két felhasználót az Azure kommunikációs szolgáltatásokban, és adjon ki egy [felhasználói hozzáférési jogkivonatot](../../access-tokens.md). Ügyeljen arra, hogy a hatókört állítsa be `chat` , és jegyezze fel a `token` karakterláncot és a `userId` karakterláncot is. Ebben a rövid útmutatóban egy kezdeti résztvevővel rendelkező szálat hoz létre, majd egy második résztvevőt ad hozzá a szálhoz.
 
 ## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-a-new-ios-application"></a>Új iOS-alkalmazás létrehozása
 
-Nyissa meg a Xcode, és válassza a lehetőséget `Create a new Xcode project` .
+Nyissa meg a Xcode, és válassza **az új Xcode-projekt létrehozása** lehetőséget. Ezután válassza az **iOS** lehetőséget a sablonhoz és az **alkalmazáshoz** .
 
-A következő ablakban válassza `iOS` a platform és a sablon lehetőséget `App` .
+A projekt neve mezőbe írja be a következőt: **ChatQuickstart**. Ezután válassza a **storyboard** lehetőséget az illesztőfelületként, **UIKit az alkalmazás-delegálást** , és a **Swift** nyelvet.
 
-Amikor kiválasztja a beállításokat `ChatQuickstart` , adja meg a projekt nevét. Válassza ki `Storyboard` a felületet, `UIKit App Delegate` a életciklust és `Swift` a nyelvet.
-
-Kattintson a Tovább gombra, és válassza ki azt a könyvtárat, ahol létre szeretné hozni a projektet.
+Válassza a **tovább** lehetőséget, majd válassza ki azt a könyvtárat, ahol létre szeretné hozni a projektet.
 
 ### <a name="install-the-libraries"></a>A kódtárak telepítése
 
-A Cocoapods segítségével telepítjük a szükséges kommunikációs szolgáltatások függőségeit.
+A CocoaPods használatával telepítse a szükséges kommunikációs szolgáltatások függőségeit.
 
-A parancssorból navigáljon az iOS-projekt gyökérkönyvtárában `ChatQuickstart` .
-
-Hozzon létre egy Cocoapods: `pod init`
+A parancssorban lépjen az iOS-projekt gyökérkönyvtárában `ChatQuickstart` . Hozzon létre egy Cocoapods a következő paranccsal: `pod init` .
 
 Nyissa meg a Cocoapods, és adja hozzá a következő függőségeket a `ChatQuickstart` célhoz:
+
 ```
 pod 'AzureCommunication', '~> 1.0.0-beta.9'
 pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
 ```
 
-Telepítse a függőségeket, ez egy Xcode-munkaterületet is létrehoz: `pod install`
+Telepítse a függőségeket a következő paranccsal: `pod install` . Vegye figyelembe, hogy ez egy Xcode-munkaterületet is létrehoz.
 
-**A pod telepítésének futtatása után nyissa meg újra a projektet a Xcode-ben az újonnan létrehozott lehetőség kiválasztásával `.xcworkspace` .**
+A Futtatás után `pod install` nyissa meg újra a projektet a Xcode-ben az újonnan létrehozott lehetőség kiválasztásával `.xcworkspace` .
 
-### <a name="setup-the-placeholders"></a>A helyőrzők beállítása
+### <a name="set-up-the-placeholders"></a>A helyőrzők beállítása
 
 Nyissa meg a munkaterületet a `ChatQuickstart.xcworkspace` Xcode, majd nyissa meg `ViewController.swift` .
 
-Ebben a rövid útmutatóban felvesszük a kódját `viewController` , és megtekintjük a kimenetet a Xcode-konzolon. Ez a rövid útmutató nem foglalkozik a felhasználói felület iOS-ben való létrehozásával. 
+Ebben a rövid útmutatóban hozzáadja a kódját a alkalmazáshoz `viewController` , és megtekinti a kimenetet a Xcode-konzolon. Ez a rövid útmutató nem foglalkozik a felhasználói felület iOS-ben való létrehozásával. 
 
-A `viewController.swift` `AzureCommunication` és a kódtárak importálásának felső részén `AzureCommunicatonChat` :
+A (z) felső részén `viewController.swift` importálja a `AzureCommunication` és a `AzureCommunicatonChat` kódtárakat:
 
 ```
 import AzureCommunication
@@ -98,7 +97,7 @@ override func viewDidLoad() {
     }
 ```
 
-A kód a bemutató célokra való szinkronizálásához egy szemafort fogunk használni. A következő lépésekben az Azure kommunikációs szolgáltatások csevegési könyvtárával cseréljük ki a helyőrzőket a mintakód használatával.
+Demonstrációs célokra egy szemafor használatával szinkronizáljuk a kódot. A következő lépésekben az Azure kommunikációs szolgáltatások csevegési könyvtárával cseréli le a helyőrzőket a mintakód használatával.
 
 
 ### <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
@@ -120,24 +119,24 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
     )
 ```
 
-Cserélje le az helyére az `<ACS_RESOURCE_ENDPOINT>` ACS-erőforrás végpontját.
-Cserélje le `<ACCESS_TOKEN>` egy érvényes ACS hozzáférési tokent.
+Cserélje le az helyére az `<ACS_RESOURCE_ENDPOINT>` Azure kommunikációs szolgáltatások erőforrásának végpontját. Cserélje le a `<ACCESS_TOKEN>` elemet egy érvényes kommunikációs szolgáltatás hozzáférési jogkivonatára.
 
-Ez a rövid útmutató nem fedi le a csevegési alkalmazás jogkivonatait kezelő szolgáltatási szintet, de ajánlott. További részletek a [csevegési architektúrával](../../../concepts/chat/concepts.md) kapcsolatban az alábbi dokumentációban olvashatók.
+Ez a rövid útmutató nem fedi le a csevegési alkalmazás jogkivonatait kezelő szolgáltatási szintet, de ajánlott. További információkért lásd a [csevegési koncepciók](../../../concepts/chat/concepts.md)"csevegési architektúra" című szakaszát.
 
-További információ a [felhasználói hozzáférési tokenekről](../../access-tokens.md).
+A felhasználói hozzáférési jogkivonatokkal kapcsolatos további információkért lásd [: rövid útmutató: hozzáférési tokenek létrehozása és kezelése](../../access-tokens.md).
 
 ## <a name="object-model"></a>Objektummodell 
+
 A következő osztályok és felületek a JavaScripthez készült Azure Communication Services csevegő SDK főbb funkcióit kezelik.
 
 | Név                                   | Leírás                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | Ez az osztály szükséges a csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozásához, lekéréséhez és törléséhez. |
-| ChatThreadClient | Ez az osztály szükséges a csevegési szál működéséhez. A példányokat a ChatClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére és a beolvasási visszaigazolásokra |
+| `ChatClient` | Ez az osztály szükséges a csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozására, lekérésére és törlésére. |
+| `ChatThreadClient` | Ez az osztály szükséges a csevegési szál működéséhez. A példányt a használatával szerezheti be, `ChatClient` és használhatja az üzenetek küldéséhez, fogadásához, frissítéséhez és törléséhez. Azt is megteheti, hogy felveszi, eltávolítja és beolvassa a felhasználókat, begépelési értesítéseket és olvasási visszaigazolásokat küld, és előfizet a csevegési eseményekre. |
 
 ## <a name="start-a-chat-thread"></a>Csevegési szál elindítása
 
-Most a `ChatClient` segítségével hozunk létre egy új szálat egy kezdeti felhasználóval.
+Most a használatával `ChatClient` létrehoz egy új szálat egy kezdeti felhasználóval.
 
 Az `<CREATE A CHAT THREAD>` megjegyzés helyére írja be az alábbi kódot:
 
@@ -168,11 +167,11 @@ semaphore.wait()
 
 Cserélje le `<USER_ID>` egy érvényes kommunikációs szolgáltatások felhasználói azonosítóját.
 
-Itt egy szemafort használunk, hogy megvárja a befejezési kezelőt a folytatás előtt. A `threadId` következő lépésekben a befejezési kezelőhöz visszaadott válaszból fogjuk használni.
+Itt egy szemafort használ, hogy megvárja a befejezési kezelőt a folytatás előtt. A későbbi lépések során a a `threadId` kimenetet a befejezési kezelőnek visszaadott válasz alapján fogja használni.
 
 ## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
 
-Most, hogy létrehozott egy csevegési szálat, beszerezhetünk egy `ChatThreadClient` műveletet a szálon belül.
+Most, hogy létrehozott egy csevegési szálat, beszerezhet egy `ChatThreadClient` műveletet a szálon belül.
 
 Az `<CREATE A CHAT THREAD CLIENT>` megjegyzés helyére írja be az alábbi kódot:
 
@@ -202,7 +201,7 @@ chatThreadClient.send(message: message) { result, _ in
 semaphore.wait()
 ```
 
-Először is `SendChatMessageRequest` létrehozjuk a tartalmat és a küldőket tartalmazó megjelenítendő nevet (amely opcionálisan tartalmazhatja a megosztási előzmények időpontját is). A befejezési kezelőnek visszaadott válasz tartalmazza az elküldött üzenet AZONOSÍTÓját.
+Először hozza létre a (z `SendChatMessageRequest` )-t, amely tartalmazza a tartalom és a küldő megjelenítendő nevét. Ez a kérelem a megosztási előzmények időpontját is tartalmazhatja, ha azt szeretné felvenni. A befejezési kezelőnek visszaadott válasz tartalmazza az elküldött üzenet AZONOSÍTÓját.
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
@@ -226,9 +225,9 @@ chatThreadClient.add(participants: [user]) { result, _ in
 semaphore.wait()
 ```
 
-A helyére írja `<USER_ID>` be a hozzáadni kívánt felhasználó ACS felhasználói azonosítóját.
+A helyére írja `<USER_ID>` be a hozzáadni kívánt felhasználó kommunikációs szolgáltatások felhasználói azonosítóját.
 
-Ha a résztvevőt egy szálhoz adja hozzá, a válasz a befejezést követően hibákat tartalmazhat. Ezek a hibák nem felelnek meg bizonyos résztvevők hozzáadásának.
+Ha a résztvevőt egy szálhoz adja hozzá, akkor a visszaadott válasz hibákat tartalmazhat. Ezek a hibák nem felelnek meg bizonyos résztvevők hozzáadásának.
 
 ## <a name="list-users-in-a-thread"></a>Egy szál felhasználóinak listázása
 
@@ -270,9 +269,9 @@ chatThreadClient
     }
 ```
 
-Cserélje le az helyére az `<USER ID>` eltávolítandó résztvevő kommunikációs szolgáltatások felhasználói azonosítóját.
+Cserélje le az `<USER ID>` t az eltávolítandó résztvevő kommunikációs szolgáltatások felhasználói azonosítójával.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A Xcode nyomja meg a Futtatás gombot a projekt felépítéséhez és futtatásához. A konzolon megtekintheti a kód kimenetét és a ChatClient származó naplózó kimenetet.
+A Xcode-ben válassza a **Futtatás** lehetőséget a projekt létrehozásához és futtatásához. A-konzolon megtekintheti a kód kimenetét és a naplózó kimenetet a csevegési ügyfélről.
 

@@ -9,10 +9,10 @@ ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
 ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105563395"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Közös értékesítés konfigurálása kereskedelmi Piactéri ajánlathoz

@@ -3,19 +3,19 @@ title: Windowsos virtuális asztali vékony ügyfelek támogatása – Azure
 description: A Windows rendszerű virtuális asztalok vékony ügyfelek általi támogatásának rövid áttekintése.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 905451b4ce9c7a2a7c7aa2331ce3d433a9952223
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491469"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122033"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
-A Linux-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a [webes ügyféllel](connect-web.md) vagy a következő támogatott ügyfelekkel, amelyeket a Linux-alapú vékony ügyféloldali partnereink biztosítanak. Számos partnerrel dolgozunk, hogy a támogatott Windowsos virtuális asztali ügyfelek több Linux-alapú operációs rendszeren és eszközön is elérhetők legyenek. Ha a virtuális asztali Windows-támogatásra van szüksége egy olyan linuxos platformon, amely itt nem szerepel, tudassa velünk a [UserVoice oldalon](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
+A Linux-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a [webes ügyféllel](connect-web.md) vagy a következő támogatott ügyfelekkel, amelyeket a Linux-alapú vékony ügyféloldali partnereink biztosítanak. Számos partnerrel dolgozunk, hogy a támogatott Windowsos virtuális asztali ügyfelek több Linux-alapú operációs rendszeren és eszközön is elérhetők legyenek.
 
 ## <a name="connect-with-your-linux-device"></a>A Linux-eszköz csatlakoztatása
 

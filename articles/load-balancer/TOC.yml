@@ -47,6 +47,10 @@
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
         - name: NAT-átjáró belső terheléselosztó integrálása
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: IP-alapú háttérrendszer
+      items:
+        - name: Nyilvános terheléselosztó létrehozása IP-alapú háttérrel – portál
+          href: tutorial-load-balancer-ip-backend-portal.md
 - name: Példák
   items:
     - name: Azure CLI

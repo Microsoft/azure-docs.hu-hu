@@ -1,14 +1,14 @@
 ---
-title: Az érzékelőkkel kapcsolatos riasztások
+title: Az érzékelőkkel kapcsolatos riasztások ismertetése
 description: Riasztások használata a hálózat biztonságának és működésének javítása érdekében.
-ms.date: 11/30/2020
+ms.date: 3/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a34871342e9a868ba593ae894fdd91b5e99c5a44
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781347"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729422"
 ---
 # <a name="about-sensor-alerts"></a>Az érzékelőkkel kapcsolatos riasztások
 
@@ -64,9 +64,10 @@ Például:
 
   - A hálózati eszközökön észlelt kártevő-eseményeket a kockázatértékelési jelentések jelentik. Ha a kártevő-eseményekre vonatkozó riasztások el vannak *némítva*, az érintett eszközök nem lesznek kiszámítva a kockázatértékelési jelentésben.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
-- [Tanulási és intelligens informatikai képzési módok](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [A riasztások által biztosított információk megtekintése](how-to-view-information-provided-in-alerts.md)
-- [A riasztási esemény kezelése](how-to-manage-the-alert-event.md)
-- [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)
+[Tanulási és intelligens informatikai képzési módok](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes) 
+ [A riasztásokban](how-to-view-information-provided-in-alerts.md) 
+ megadott információk megtekintése [A riasztási esemény kezelése](how-to-manage-the-alert-event.md) 
+ [Riasztási munkafolyamatok](how-to-accelerate-alert-incident-response.md) 
+ felgyorsítása [A riasztás típusai és leírása](alert-engine-messages.md)

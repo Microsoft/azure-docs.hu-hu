@@ -5,18 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c26a7f53609193bf373c3f7f9b1037405d4e518
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102509030"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122135"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
-
->[!NOTE]
->Microsoft Operations Management Suite (OMS) váltás Microsoft Azure figyelőre, a terminológia módosul. Ez a cikk az Azure Log Analytics-átjáróként működő OMS-átjáróra vonatkozik. 
->
 
 Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Automation és a Azure Monitor kommunikációja a Log Analytics átjáróval, ha a közvetlenül csatlakoztatott vagy a Operations Manager által figyelt számítógépek nem rendelkeznek internet-hozzáféréssel. 
 
@@ -89,6 +85,9 @@ A Log Analytics átjáró a következő nyelveken érhető el:
 Az Log Analytics-átjáró csak Transport Layer Security (TLS) 1,0, 1,1 és 1,2 protokollt támogat.  Nem támogatja SSL (SSL) használatát.  A Log Analytics felé irányuló adatforgalom biztonsága érdekében konfigurálja az átjárót legalább TLS 1,2 használatára. A TLS vagy az SSL régebbi verziói sebezhetőek. Bár jelenleg lehetővé teszik a visszamenőleges kompatibilitást, ne használja őket.  
 
 További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../logs/data-security.md#sending-data-securely-using-tls-12). 
+
+>[!NOTE]
+>Az átjáró olyan továbbító proxy, amely nem tárol semmilyen adattárolót. Miután az ügynök kapcsolatot létesít Azure Monitorval, az átjáróval megegyező titkosítási folyamatot követi. Az adattitkosítás az ügyfél és a végpont között történik. Mivel az átjáró csak egy alagút, nem tudja megvizsgálni, hogy mit kell elküldeni.
 
 ### <a name="supported-number-of-agent-connections"></a>Az ügynökök kapcsolatainak támogatott száma
 

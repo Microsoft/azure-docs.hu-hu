@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 monikerRange: '>=iotedge-2020-11'
 ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200580"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez (előzetes verzió)
@@ -52,7 +52,7 @@ Az API-proxy modul egy alapértelmezett konfigurációt tartalmaz, amely támoga
 
 Az alapértelmezett környezeti változók jelenleg a következők:
 
-| Környezeti változó | Description |
+| Környezeti változó | Leírás |
 | -------------------- | ----------- |
 | `PROXY_CONFIG_ENV_VAR_LIST` | Sorolja fel az összes frissítendő változót egy vesszővel elválasztott listában. Ez a lépés megakadályozza a helytelen konfigurációs beállítások véletlen módosítását.
 | `NGINX_DEFAULT_PORT` | Megváltoztatja az Nginx-proxy által figyelt portot. Ha frissíti ezt a környezeti változót, győződjön meg arról, hogy a kiválasztott port a modul Docker is elérhető, és port Kötésként van deklarálva az üzembe helyezési jegyzékben.<br><br>Az alapértelmezett érték a 443.<br><br>Az Azure Marketplace-en való üzembe helyezéskor az alapértelmezett portot 8000-re frissíti a rendszer az edgeHub modullal való ütközések elkerülése érdekében. További információ: a [nyitott portok csökkentése](#minimize-open-ports). |
