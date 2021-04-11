@@ -8,20 +8,20 @@ manager: dongli
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/2/2021
 ms.author: heikora
-ms.openlocfilehash: b8e02071eca139cde02a8bad1b0e0e443db6ab86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82a732533c3d069b519b07c3209d4b96c472900
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555330"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385025"
 ---
 # <a name="model-and-endpoint-lifecycle"></a>Modell és végpont életciklusa
 
-Custom Speech az *alapmodelleket* és az *Egyéni modelleket* is használja. Minden nyelvhez egy vagy több alapmodell tartozik. Általánosságban elmondható, hogy amikor egy új beszédfelismerési modellt bocsátanak ki a normál beszédfelismerési szolgáltatásba, azt a rendszer új alapmodellként is importálja a Custom Speech szolgáltatásba. Minden 6 – 12 hónapig frissülnek. A régebbi modellek általában kevésbé hasznosak az idő múlásával, mert a legújabb modell általában nagyobb pontossággal rendelkezik.
-
-Ezzel szemben az egyéni modellek úgy jönnek létre, hogy a kiválasztott alapmodellt az adott ügyfél-forgatókönyvből származó adatokkal igazítják. Egy adott egyéni modellt sokáig használhat, miután az igényei szerint megfelelt. Azt javasoljuk azonban, hogy rendszeresen frissítsen a legújabb alapmodellre, és az idő múlásával újra betanítsa a további adatokkal. 
+A standard (nem testreszabott) beszéd az alapmodelleket meghívó AI-modelleken alapul. A legtöbb esetben egy másik alapmodellt is betanítunk minden olyan beszélt nyelvhez, amelyet támogatunk.  A beszédfelismerési szolgáltatást néhány havonta új alapmodellel frissítjük a pontosság és a minőség javítása érdekében.  
+A Custom Speech az egyéni modelleket úgy hozza létre, hogy a kiválasztott alapmodellt az adott ügyfél-forgatókönyv adatai alapján alakítja ki. Miután létrehozta az egyéni modellt, a modell nem frissül és nem módosul, még akkor sem, ha a megfelelő alapmodellt, amelyről a rendszer alkalmazkodik, frissülni fog a standard Speech Service-ben.  
+Ez a szabályzat lehetővé teszi egy adott egyéni modell hosszú ideig való használatát az igényeinek megfelelő egyéni modell használata után.  Javasoljuk azonban, hogy rendszeresen hozza létre az egyéni modellt, hogy a legújabb alapmodellből alkalmazkodva kihasználja a jobb pontosságot és minőséget.
 
 A modell életciklusával kapcsolatos egyéb kulcsfontosságú feltételek a következők:
 
@@ -59,7 +59,7 @@ Ha egy alapmodell vagy egy egyéni modell lejár, akkor mindig vissza fog térni
 
 A lejárati dátumokat a JSON- [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) Válasz tulajdonság alatt található és az egyéni beszédfelismerési API-k segítségével is megtekintheti `deprecationDates` .
 
-Az alábbi példa a GetModel API-hívás lejárati adatait szemlélteti. A "DEPRECATIONDATES" a következőket jeleníti meg: 
+Az alábbi példa a GetModel API-hívás lejárati adatait szemlélteti. A **DEPRECATIONDATES** akkor jelenik meg, ha a modell lejár: 
 ```json
 {
     "SELF": "HTTPS://WESTUS2.API.COGNITIVE.MICROSOFT.COM/SPEECHTOTEXT/V3.0/MODELS/{id}",
@@ -80,7 +80,7 @@ Az alábbi példa a GetModel API-hívás lejárati adatait szemlélteti. A "DEPR
     },
     "PROPERTIES": {
     "DEPRECATIONDATES": {
-        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date this model can be used for adaptation
+        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date the base model can be used for adaptation
         "TRANSCRIPTIONDATETIME": "2023-03-01T21:27:29Z"   // last date this model can be used for decoding
     }
     },
@@ -96,6 +96,13 @@ Az alábbi példa a GetModel API-hívás lejárati adatait szemlélteti. A "DEPR
 }
 ```
 Vegye figyelembe, hogy a modellt egy egyéni beszéd végponton, állásidő nélkül is frissítheti, ha megváltoztatja a végpont által a Speech Studio üzembe helyezés szakaszában vagy a Custom Speech API-n keresztül használt modellt.
+
+## <a name="what-happens-when-models-expire-and-how-to-update-them"></a>Mi történik, ha a modellek lejárnak és frissítik a modelleket
+Mi történik, ha egy modell lejár, és a modell frissítése a használat módjától függ.
+### <a name="batch-transcription"></a>Kötegelt átírás
+Ha egy modell lejár, amely a [Batch átíró](batch-transcription.md) transzkripciós kérelmekben használatos, 4xx hiba miatt sikertelen lesz. Ennek elkerüléséhez az `model` **átírási** kérelem törzsében elküldett JSON paramétert egy újabb alapmodellre vagy újabb egyéni modellre kell irányítani. A `model` JSON-bejegyzést is eltávolíthatja, hogy mindig a legújabb alapmodellt használja.
+### <a name="custom-speech-endpoint"></a>Egyéni beszédfelismerési végpont
+Ha egy modell lejár, amelyet egy [Egyéni beszédfelismerési végpont](how-to-custom-speech-train-model.md)használ, akkor a szolgáltatás automatikusan visszakerül a legújabb alapmodell használatára a használt nyelvhez. , a (z) lehetőségre kattintva kiválaszthatja az **üzembe helyezés** elemet az oldal tetején található **Custom Speech** menüben, majd a részletek megtekintéséhez kattintson a végpont nevére. A Részletek lap tetején megjelenik egy **frissítési modell** gomb, amely lehetővé teszi a végpont által a leállás nélkül használt modell zökkenőmentes frissítését. Ezt a módosítást programozott módon is elvégezheti a [**frissítési modell**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel) REST API használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 

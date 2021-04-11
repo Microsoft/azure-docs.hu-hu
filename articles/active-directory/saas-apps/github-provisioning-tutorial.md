@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9699c564476e116654f700c32dd47b7f6d5b81
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359262"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504566"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub konfigurálása automatikus felhasználói üzembe helyezéshez
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa a GitHubon és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a GitHubba.
+
+> [!NOTE]
+> Az Azure AD-kiépítés integrációja a GitHub [scim API](https://developer.github.com/v3/scim/)-ra támaszkodik, amely a GitHub Enterprise [Számlázási csomagjában](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)elérhető [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) -ügyfelek számára érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +36,7 @@ Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már re
 * Az SCIM-kiépítés egyetlen szervezet számára csak akkor támogatott, ha a szervezeti szinten engedélyezve van az egyszeri bejelentkezés.
 
 > [!NOTE]
-> Az Azure AD-kiépítés integrációja a GitHub [scim API](https://developer.github.com/v3/scim/)-ra támaszkodik, amely a GitHub Enterprise [Számlázási csomagjában](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)elérhető [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) -ügyfelek számára érhető el.
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="assigning-users-to-github"></a>Felhasználók kiosztása a GitHubhoz
 

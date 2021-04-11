@@ -3,12 +3,12 @@ title: 'Gyors útmutató: első lépések'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a Defender alapszintű munkafolyamatának megismerését a IoT telepítéséhez.
 ms.topic: quickstart
 ms.date: 2/18/2021
-ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784492"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384953"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Gyors útmutató: az IoT Defender használatának első lépései
 
@@ -20,7 +20,7 @@ Ez a cikk áttekintést nyújt az Azure Defender IoT való beállításához sz�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincsenek
+- Nincsenek
 
 ## <a name="permission-requirements"></a>Engedélyekre vonatkozó követelmények
 
@@ -60,11 +60,14 @@ A regisztráció a következőket tartalmazza:
 Regisztráció:
 
 1. Nyissa meg az Azure Defender for IoT portált.
+
 1. Válassza ki a **fedélzeti előfizetés** elemet.
+
 1. A **díjszabás** lapon válasszon ki egy előfizetést, vagy hozzon létre egy újat, és adja hozzá a véglegesített eszközök számát.
+
 1. Válassza a helyszíni **felügyeleti konzol letöltése** lapot, és mentse a letöltött aktiválási fájlt. Ez a fájl tartalmazza az Ön által megadott összesített véglegesített eszközöket. A rendszer a kezdeti bejelentkezés után feltölti a fájlt a felügyeleti konzolra.
 
-További információ az előfizetés regisztrációjának megszüntetésére szolgáló: [regisztrációjának megszüntetésére szolgáló](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription).
+További információ az előfizetés regisztrációjának megszüntetésére szolgáló: [regisztrációjának megszüntetésére szolgáló](how-to-manage-subscriptions.md#offboard-a-subscription).
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>A helyszíni felügyeleti konzol telepítése és beállítása
 
@@ -87,6 +90,7 @@ A telepítése és beállítása:
 Érzékelők beléptetése az Azure Defender IoT való regisztrálásával és az érzékelő aktiválási fájljának letöltésével:
 
 1. Határozza meg az érzékelő nevét, és társítsa azt egy előfizetéshez.
+
 1. Válasszon érzékelő-felügyeleti módot:
 
    - **Felhőalapú csatlakoztatott érzékelők**: az érzékelők észlelésére szolgáló információk az érzékelő konzolon jelennek meg. Emellett a riasztási adatokat egy IoT hub továbbítja, és más Azure-szolgáltatásokkal, például az Azure Sentinelrel is megosztható.
@@ -102,9 +106,13 @@ További információkért lásd: érzékelők beléptetése [és kezelése a De
 Töltse le az ISO-csomagot az Azure Defender for IoT portálról, telepítse a szoftvert, és állítsa be az érzékelőt.
 
 1. Válassza a **első lépések** lehetőséget a Defender for IoT portálon.
+
 1. Válassza az **érzékelő beállítása** lehetőséget.
+
 1. Válasszon egy verziót, és válassza a **Letöltés** lehetőséget.
+
 1. Telepítse az érzékelő szoftverét. További információ: [Defender for IoT telepítés](how-to-install-software.md).
+
 1. Aktiválja és állítsa be az érzékelőt. További információ: [Bejelentkezés és az érzékelő aktiválása](how-to-activate-and-set-up-your-sensor.md).
 
 ## <a name="connect-sensors-to-an-on-premises-management-console"></a>Érzékelők összekapcsolása helyszíni felügyeleti konzollal

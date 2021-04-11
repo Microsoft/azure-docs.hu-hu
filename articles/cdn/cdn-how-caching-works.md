@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a4688c196551f3ab6b5713d8939f53af161d1e3
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010163"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505008"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -75,6 +75,7 @@ Azure CDN támogatja a következő HTTP-gyorsítótár-direktívák fejléceit, 
 - Ha az ügyféltől a CDN-POP-hoz tartozó HTTP-kérelemben használja, a `Cache-Control` rendszer alapértelmezés szerint figyelmen kívül hagyja az összes Azure CDN-profilt.
 - Ha az ügyféltől a CDN-POP-hoz tartozó HTTP-válaszban használja:
      - A Verizon és **a Azure CDN standard** **/prémium Azure CDN** a Microsoft támogatási szolgálatának minden `Cache-Control` direktíva.
+     - A Verizon és a Azure CDN standard **/Premium Azure CDN** a **Microsofttól származó** standard/prémium szintű Cache-Control irányelvek gyorsítótárazási viselkedését az [RFC 7234-Hypertext Transfer Protocol (http/1.1): cache (IETF.org)](https://tools.ietf.org/html/rfc7234#section-5.2.2.8).
      - **Azure CDN a standard from Akamai** csak a következő `Cache-Control` irányelveket támogatja, a többi figyelmen kívül marad:
          - `max-age`: A gyorsítótár a megadott időtartamig tárolja a tartalmat. Például: `Cache-Control: max-age=5`. Ez az irányelv azt a maximális időtartamot határozza meg, ameddig a tartalom frissnek tekintendő.
          - `no-cache`: Gyorsítótárazza a tartalmat, de minden alkalommal érvényesíti a tartalmat, mielőtt a gyorsítótárból adná azt. Egyenértékű a következővel: `Cache-Control: max-age=0` .

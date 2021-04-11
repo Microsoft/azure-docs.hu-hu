@@ -1,7 +1,7 @@
 ---
 title: Újdonságok az Azure Active Directory alkalmazás-kiépítés során
 description: Új és frissített dokumentáció a Azure Active Directory alkalmazás üzembe helyezéséhez.
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bb8dfbaf7ee1758811016dd3ddf08367a44bfae
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453681"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443508"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory alkalmazás üzembe helyezése: Újdonságok
 
 Üdvözli a Azure Active Directory Application kiépítési dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A kiépítési szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Március 2021
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Az alkalmazás kiépítés bővítmény-attribútumainak szinkronizálása](user-provisioning-sync-attributes-for-mapping.md)
+- [Alkalmazás üzembe helyezése a karantén állapotában](application-provisioning-quarantine-status.md)
+- [A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal](configure-automatic-user-provisioning-portal.md)
+- [Az Azure AD-beli attribútum-hozzárendelésekhez tartozó kifejezések írásához való hivatkozás](functions-for-customizing-application-data.md)
+- [Oktatóanyag: minta SCIM-végpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md)
+
 
 ## <a name="february-2021"></a>2021. február
 

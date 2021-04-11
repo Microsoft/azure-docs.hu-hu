@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes GitOps és konfigurációjának fogalmi áttekintését tartalmazza.
 keywords: Kubernetes, arc, Azure, tárolók, konfiguráció, GitOps
-ms.openlocfilehash: a4193783a976f205b46cb8c5df29d4cef9da1d2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 198bd45374d998ef0d9d0e612e974484d52e2f20
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022874"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443306"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Konfigurációk és GitOps az Azure arc-kompatibilis Kubernetes
 
@@ -50,6 +50,6 @@ Ez a méretezhető kényszerítés biztosítja a közös alapkonfigurációt (p�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Útmutató a [Kubernetes-fürtök Azure arc-hoz való összekapcsolásához](./quickstart-connect-cluster.md).
-* Már van csatlakoztatva Kubernetes-fürt az Azure arc? [Konfigurációk létrehozása az ív használatára képes Kubernetes-fürtön](./tutorial-use-gitops-connected-cluster.md).
-* Megtudhatja, hogyan [használhatók a Azure Policy a konfigurációk méretezésére való alkalmazásához](./use-azure-policy.md).
+* A rövid útmutató segítségével [Kubernetes-fürtöt létesíthet az Azure-ív](./quickstart-connect-cluster.md)használatával.
+* [Konfigurációk létrehozása](./tutorial-use-gitops-connected-cluster.md) az Azure arc-kompatibilis Kubernetes-fürtön.
+* [A konfigurációk méretezése Azure Policy használatával alkalmazható](./use-azure-policy.md).

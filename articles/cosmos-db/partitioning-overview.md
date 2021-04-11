@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2021
-ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772467"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031001"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,9 +26,9 @@ Ez a cikk a logikai és fizikai partíciók közötti kapcsolatot ismerteti. Eme
 
 ## <a name="logical-partitions"></a>Logikai partíciók
 
-A logikai partíciók olyan elemekből állnak, amelyek ugyanazzal a partíciós kulccsal rendelkeznek. Például egy olyan tárolóban, amely az élelmiszer-táplálkozással kapcsolatos adatokat tartalmaz, minden elem tartalmaz egy `foodGroup` tulajdonságot. A `foodGroup` tároló partíciós kulcsaként is használható. Olyan elemek csoportjai, amelyek meghatározott értékekkel rendelkeznek `foodGroup` , például,, `Beef Products` `Baked Products` és `Sausages and Luncheon Meats` , különböző logikai partíciókat alkotnak. Nem kell aggódnia a logikai partíció törlésével kapcsolatban az alapul szolgáló adat törlésekor.
+A logikai partíciók olyan elemekből állnak, amelyek ugyanazzal a partíciós kulccsal rendelkeznek. Például egy olyan tárolóban, amely az élelmiszer-táplálkozással kapcsolatos adatokat tartalmaz, minden elem tartalmaz egy `foodGroup` tulajdonságot. A `foodGroup` tároló partíciós kulcsaként is használható. Olyan elemek csoportjai, amelyek meghatározott értékekkel rendelkeznek `foodGroup` , például,, `Beef Products` `Baked Products` és `Sausages and Luncheon Meats` , különböző logikai partíciókat alkotnak.
 
-A logikai partíció az adatbázis-tranzakciók hatókörét is meghatározza. A logikai partíción belüli elemeket egy [Pillanatkép-elkülönítéssel rendelkező tranzakció](database-transactions-optimistic-concurrency.md)használatával frissítheti. Amikor új elemeket adnak hozzá egy tárolóhoz, a rendszer transzparens módon létrehozza az új logikai partíciókat.
+A logikai partíció az adatbázis-tranzakciók hatókörét is meghatározza. A logikai partíción belüli elemeket egy [Pillanatkép-elkülönítéssel rendelkező tranzakció](database-transactions-optimistic-concurrency.md)használatával frissítheti. Amikor új elemeket adnak hozzá egy tárolóhoz, a rendszer transzparens módon létrehozza az új logikai partíciókat. Nem kell aggódnia a logikai partíció törlésével kapcsolatban az alapul szolgáló adat törlésekor.
 
 A tárolóban található logikai partíciók száma nincs korlátozva. Minden logikai partíció akár 20 GB-ot is tárolhat. A jó partíciós kulcs választása a lehetséges értékek széles választékával rendelkezik. Például egy olyan tárolóban, ahol minden elem tartalmaz egy `foodGroup` tulajdonságot, a `Beef Products` logikai partíción belüli adatok 20 GB-ig növekednek. A lehetséges értékek széles választékával rendelkező [partíciós kulcs kiválasztásával](#choose-partitionkey) biztosítható, hogy a tároló méretezhető legyen.
 
@@ -38,7 +38,8 @@ A tárolók méretezése az adatok és az átviteli sebesség elosztásával tö
 
 A tárolóban lévő fizikai partíciók száma a következőktől függ:
 
-* A kiépített átviteli sebesség száma (az egyes fizikai partíciók másodpercenként legfeljebb 10 000 adatátviteli sebességet biztosíthatnak).
+* A kiépített átviteli sebesség száma (az egyes fizikai partíciók másodpercenként legfeljebb 10 000 adatátviteli sebességet biztosíthatnak). A fizikai partíciók 10 000 RU/s-korlátja azt jelenti, hogy a logikai partíciók is rendelkeznek 10 000 RU/s korláttal, mivel minden logikai partíció csak egy fizikai partícióra van leképezve.
+
 * A teljes adattárolás (minden egyes fizikai partíció akár 50 GB-adatmennyiséget is tárolhat).
 
 > [!NOTE]

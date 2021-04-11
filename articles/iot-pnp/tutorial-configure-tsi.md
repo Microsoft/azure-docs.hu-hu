@@ -1,18 +1,19 @@
 ---
 title: Oktatóanyag – a Azure Time Series Insights használatával tárolhatja és elemezheti az Azure-IoT Plug and Play eszköz telemetria
 description: Oktatóanyag – Time Series Insights környezet beállítása és az IoT hub csatlakoztatása a IoT Plug and Play eszközök telemetria megtekintéséhez és elemzéséhez.
-author: lyrana
-ms.author: lyhughes
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 588d680acc8c21c7f4dcf6569e23110f3c33c482
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 28cda9fb6997500f6cd7c4c4349635e7b7a36398
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057384"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504277"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Oktatóanyag: Time Series Insights Gen2-környezet létrehozása és konfigurálása
 
@@ -26,7 +27,7 @@ Ebben az oktatóanyagban az alábbiakat végezte el:
 > * Használja a hőmérséklet-vezérlőhöz és a termosztáthoz használt [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) minta típusú fájlokat.
 
 > [!NOTE]
-> A Time Series Insights és a IoT közötti integráció előzetes verzióban érhető el Plug and Play. Előfordulhat, hogy a DTDL-eszköz modelljeinek a Time Series Insights idősorozat-modellhez való leképezése változhat. 
+> A Time Series Insights és a IoT közötti integráció előzetes verzióban érhető el Plug and Play. Előfordulhat, hogy a DTDL-eszköz modelljeinek a Time Series Insights idősorozat-modellhez való leképezése változhat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -123,7 +124,7 @@ Ezután lefordítja a DTDL-eszköz modelljét a Azure Time Series Insights eszk�
 
 ### <a name="define-your-types"></a>A típusok meghatározása
 
-Megkezdheti az adatbevitelt Azure Time Series Insights Gen2 anélkül, hogy előre definiált egy modellt. Amikor a telemetria megérkezik, Time Series Insights megkísérli az idősorozat-példányok automatikus feloldását az idősorozat-azonosító tulajdonság értékei alapján. Az összes példány az *alapértelmezett típushoz* van rendelve. A példányok megfelelő kategorizálásához manuálisan kell létrehoznia egy új típust. 
+Megkezdheti az adatbevitelt Azure Time Series Insights Gen2 anélkül, hogy előre definiált egy modellt. Amikor a telemetria megérkezik, Time Series Insights megkísérli az idősorozat-példányok automatikus feloldását az idősorozat-azonosító tulajdonság értékei alapján. Az összes példány az *alapértelmezett típushoz* van rendelve. A példányok megfelelő kategorizálásához manuálisan kell létrehoznia egy új típust.
 
 A következő részletek ismertetik a legegyszerűbb módszert az eszköz DTDL-modelljeinek az idősorozat-modellel való szinkronizálásához:
 
@@ -139,7 +140,7 @@ A következő részletek ismertetik a legegyszerűbb módszert az eszköz DTDL-m
 |-----------|------------------|-------------|
 | `@id` | `id` | `dtmi:com:example:TemperatureController;1` |
 | `displayName`    | `name`   |   `Temperature Controller`  |
-| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |  
+| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |
 |`contents` tömb| `variables` objektum  | Tekintse meg a következő példát.
 
 ![Képernyőfelvétel: D T D L – idősorozat-modell típusa.](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
@@ -161,7 +162,7 @@ Nyisson meg egy szövegszerkesztőt, és mentse a következő JSON-t a helyi meg
           "kind": "numeric",
           "value": {
             "tsx": "coalesce($event.workingSet.Long, toLong($event.workingSet.Double))"
-          }, 
+          },
           "aggregation": {
             "tsx": "avg($value)"
           }

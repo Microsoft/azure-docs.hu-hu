@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/26/2021
+ms.date: 4/7/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4c046129293fcfbcea8ecaf98da72b9126dd540a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074403"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030338"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -26,6 +26,7 @@ A következő Azure File Sync-ügynök verziói támogatottak:
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
 | V12-es kiadás – [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | Március 26., 2021 | Támogatott – Berepülés |
+| V 11.3 kiadás – [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 2021. április 7. | Támogatott |
 | V 11,2 kiadás – [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021. február 2. | Támogatott |
 | V 11.1 kiadás – [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | November 4., 2020 | Támogatott |
 | V 10.1 kiadás – [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott – az ügynök verziószáma 2021. június 7-én lejár |
@@ -76,6 +77,7 @@ A következő kibocsátási megjegyzések a Azure File Sync-ügynök verzióján
     - Továbbfejlesztett változás-észlelési teljesítmény az Azure-fájlmegosztás által módosított fájlok észlelése érdekében.
     - Teljesítménybeli tökéletesítések az egyeztetések szinkronizálási munkameneteihez. 
     - A ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED és az ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED hibák csökkentése érdekében a szinkronizálási javításokat.
+    - Kijavítva az adatsérülést okozó hiba, ha a felhőalapú rétegek engedélyezve vannak, és a rendszer a (z)/B paraméterrel másolja a többplatformos fájlokat a Robocopy használatával.
     - Kijavítva egy olyan hibát, amely miatt a fájlok sikertelenek lehetnek a 2019-es kiszolgálón, ha az deduplikálás engedélyezve van a köteten.
     - Javítva egy hiba, amely miatt a AFSDiag nem tudja tömöríteni a fájlokat, ha egy fájl nagyobb, mint a 2GiB.
 
@@ -131,8 +133,12 @@ A következő elemek nem szinkronizálhatók, de a rendszer többi része továb
 ### <a name="cloud-tiering"></a>Felhőbeli rétegzés
 - Ha egy rétegzett fájlt a Robocopy használatával másik helyre másol, az eredményül kapott fájl nem lesz rétegzett. Előfordulhat, hogy az offline attribútum be lesz állítva, mert a Robocopy helytelenül belefoglalja ezt az attribútumot a másolási műveletekbe.
 - Fájlok a Robocopy használatával történő másolásakor használja a/MIR beállítást a fájl időbélyegének megőrzéséhez. Ezzel biztosíthatja, hogy a régebbi fájlok a legutóbb használt fájlokhoz legyenek bontva.
-    > [!Warning]  
-    > A Robocopy/B kapcsoló nem támogatott a Azure File Sync. A Robocopy/B kapcsoló és egy Azure File Sync kiszolgálói végpont használata esetén a forrás a fájl sérüléséhez vezethet.
+
+## <a name="agent-version-11300"></a>Ügynök verziója 11.3.0.0
+A következő kibocsátási megjegyzések a Azure File Sync ügynök verziójának 11.3.0.0 készültek, amely 2021. április 7-én jelent meg. Ezek a megjegyzések a 11.1.0.0 verziójának kibocsátási megjegyzései mellett szerepelnek.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Javított javítás és problémák 
+Kijavítva az adatsérülést okozó hiba, ha a felhőalapú rétegek engedélyezve vannak, és a rendszer a (z)/B paraméterrel másolja a többplatformos fájlokat a Robocopy használatával.
 
 ## <a name="agent-version-11200"></a>Ügynök verziója 11.2.0.0
 A következő kibocsátási megjegyzések a Azure File Sync-ügynök verziójának 11.2.0.0 vonatkoznak, amely 2021. február 2-án jelent meg. Ezek a megjegyzések a 11.1.0.0 verziójának kibocsátási megjegyzései mellett szerepelnek.

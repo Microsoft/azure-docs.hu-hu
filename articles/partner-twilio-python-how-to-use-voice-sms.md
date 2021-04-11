@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9d6ec6aa5f30af04bf64e238f4a25ec6aef4f5d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580950"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504753"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>A Twilio használata a hang-és SMS-funkciókhoz a Pythonban
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -81,15 +81,15 @@ Amikor regisztrál egy Twilio-fiókra, megkapja a fiók biztonsági azonosítój
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Python-alkalmazás létrehozása
 A Twilio szolgáltatást használó és az Azure-ban futó Python-alkalmazások nem különböznek a Twilio szolgáltatást használó más Python-alkalmazástól. Habár a Twilio-szolgáltatások REST-alapúak, és a Python számos módon hívhatók meg, ez a cikk a Twilio-szolgáltatások a [githubról a Pythonhoz készült Twilio-kódtár][twilio_python]használatával történő használatát ismerteti. További információ a Pythonhoz készült Twilio-függvénytár használatáról: [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] .
 
-Először is, [új Azure Linux virtuális gép beállítása] [azure_vm_setup], hogy az új Python-webalkalmazás gazdagépként működjön. A virtuális gép futása után közzé kell tennie az alkalmazást egy nyilvános porton az alább leírtak szerint.
+Először [állítson be egy új Azure linuxos virtuális gépet][azure_vm_setup] , amely az új Python-webalkalmazáshoz tartozó gazdagépként működik. A virtuális gép futása után közzé kell tennie az alkalmazást egy nyilvános porton az alább leírtak szerint.
 
 ### <a name="add-an-incoming-rule"></a>Bejövő szabály hozzáadása
-  1. Nyissa meg a [hálózati biztonsági csoport] [azure_nsg] lapot.
+  1. Nyissa meg a [hálózati biztonsági csoport][azure_nsg] lapot.
   2. Válassza ki azt a hálózati biztonsági csoportot, amely megfelel a virtuális gépnek.
   3. Adjon hozzá egy **kimenő szabályt** a 80-es **porthoz**. Ügyeljen arra, hogy bármely címről engedélyezze a bejövő adatforrást.
 
 ### <a name="set-the-dns-name-label"></a>A DNS-név címke beállítása
-  1. Lépjen a [Nyilvános IP-címek] [azure_ips] lapra.
+  1. Lépjen a [nyilvános IP-címek][azure_ips] lapra.
   2. Válassza ki azt a nyilvános IP-címet, amely megfelel a virtuális gépnek.
   3. Állítsa be a **DNS-név címkéjét** a **konfiguráció** szakaszban. Ebben a példában a következőhöz hasonlóan fog kinézni: *a-domain-Label*. CentralUS.cloudapp.Azure.com
 
@@ -272,3 +272,6 @@ Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hiva
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
+[azure_ips]: https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address
+[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal
+[azure_nsg]: https://docs.microsoft.com/azure/virtual-network/manage-network-security-group

@@ -10,12 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d75ba091ff634bf613722e3a194407beeeda68fb
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786005"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967234"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>A titkos kulcs elforgatásának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -53,11 +54,17 @@ Ezt a telepítési hivatkozást akkor használhatja, ha nem rendelkezik meglév�
 
     ![Az erőforráscsoport létrehozásának módját bemutató képernyőkép.](../media/secrets/rotation-dual/dual-rotation-1.png)
 
-Most már rendelkezik egy Key vaulttal és két Storage-fiókkal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
-
+Most már rendelkezik egy Key vaulttal és két Storage-fiókkal. Ezt a beállítást az Azure CLI-ben vagy Azure PowerShell a következő parancs futtatásával ellenőrizheti:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az resource list -o table -g vaultrotation
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzResource -Name 'vaultrotation*' | Format-Table
+```
+---
 
 Az eredmény az alábbihoz hasonló kimenetet fog kinézni:
 
@@ -111,49 +118,97 @@ Az [Azure-mintákban](https://github.com/Azure-Samples/KeyVault-Rotation-Storage
 ## <a name="add-the-storage-account-access-keys-to-key-vault"></a>Adja hozzá a Storage-fiók hozzáférési kulcsait Key Vault
 
 Először állítsa be a hozzáférési szabályzatot, és adja meg a felhasználói tag számára a **titkos kulcsok kezeléséhez** szükséges engedélyeket:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -UserPrincipalName <email-address-of-user> --name vaultrotation-kv -PermissionsToSecrets set,delete,get,list
+```
+---
 
 Most már létrehozhat egy új titkot egy Storage-fiók elérési kulcsával az értékeként. Szüksége lesz a Storage-fiók erőforrás-AZONOSÍTÓra, a titkos kulcs érvényességi idejére és a kulcs AZONOSÍTÓra, hogy a titkos kulcshoz legyen hozzáadva, így a rotációs függvény újra létrehozhatja a kulcsot a Storage-fiókban.
 
 Határozza meg a Storage-fiók erőforrás-AZONOSÍTÓját. Ezt az értéket a `id` tulajdonságban találja.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 Sorolja fel a Storage-fiók hozzáférési kulcsait, hogy megkapják a kulcs értékeit:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage 
+az storage account keys list -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 Adja hozzá a titkos kulcsot a Key vaulthoz a lejárati dátummal a holnap értékre, a 60 napos érvényességi időszakra és a Storage-fiók erőforrás- Futtassa ezt a parancsot a (z) és a következő lekért értékeivel `key1Value` `storageAccountResourceId` :
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
 az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key1'
+    ProviderAddress='<storageAccountResourceId>'
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 A titkos kód `SecretNearExpiry` több percen belül elindítja az eseményt. Ez az esemény ezután aktiválja a függvényt, hogy a titkos kulcsot 60 napra állítsa a lejárattal. Ebben a konfigurációban a "SecretNearExpiry" esemény 30 naponként aktiválódik (30 nappal a lejárat előtt), és a rotációs függvény a key1 és a key2 közötti váltást is eredményezi.
 
 A hozzáférési kulcsok újragenerálása a Storage-fiók kulcsának és a Key Vault titoknak a beolvasásával ellenőrizhető, és összehasonlíthatja őket.
 
 Ezzel a paranccsal kérheti le a titkos adatokat:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
+```
+---
 
 Figyelje meg, hogy `CredentialId` a rendszer frissíti a másikat, `keyName` és `value` újragenerálta a következőt:
 
 ![Képernyőkép, amely az első Storage-fiókhoz tartozó, a z kulcstartó Secret show parancs kimenetét jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Az értékek összehasonlításához a hozzáférési kulcsok beolvasása:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
+
 Figyelje meg, hogy `value` a kulcs ugyanaz, mint a Key Vault titkos kulcsa:
 
 ![Képernyőkép, amely az első Storage-fiókhoz tartozó z Storage-fiók kulcsainak listáját jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-5.png)
@@ -185,36 +240,77 @@ A Storage-fiók kulcsainak egy meglévő függvényhez való hozzáadásához a 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>Adjon hozzá egy másik Storage-fiókhoz való hozzáférési kulcsot Key Vault
 
 Határozza meg a Storage-fiók erőforrás-AZONOSÍTÓját. Ezt az értéket a `id` tulajdonságban találja.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 Sorolja fel a Storage-fiók hozzáférési kulcsait, hogy a key2 értéket kapja:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage2 
+az storage account keys list -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrotation
+```
+---
 
 Adja hozzá a titkos kulcsot a Key vaulthoz a lejárati dátummal a holnap értékre, a 60 napos érvényességi időszakra és a Storage-fiók erőforrás- Futtassa ezt a parancsot a (z) és a következő lekért értékeivel `key2Value` `storageAccountResourceId` :
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
 az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key2';
+    ProviderAddress='<storageAccountResourceId>';
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey2 -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 Ezzel a paranccsal kérheti le a titkos adatokat:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
+```
+---
 
 Figyelje meg, hogy `CredentialId` a rendszer frissíti a másikat, `keyName` és `value` újragenerálta a következőt:
 
 ![Képernyőkép, amely a második Storage-fiókhoz tartozó a z kulcstartó Secret show parancs kimenetét jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Az értékek összehasonlításához a hozzáférési kulcsok beolvasása:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 Figyelje meg, hogy `value` a kulcs ugyanaz, mint a Key Vault titkos kulcsa:
 

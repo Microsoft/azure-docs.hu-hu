@@ -126,6 +126,8 @@
       items:
         - name: Privát DNS-zónák és -rekordok védelme
           href: dns-protect-private-zones-recordsets.md
+        - name: DNS-zónafájl importálása és exportálása
+          href: private-dns-import-export.md
     - name: Hibaelhárítás
       items:
         - name: Hibaelhárítási útmutató
