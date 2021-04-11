@@ -1,25 +1,25 @@
 ---
-title: A Speech Services kvótái és korlátai
+title: Beszédfelismerési szolgáltatás kvótái és korlátai
 titleSuffix: Azure Cognitive Services
-description: Gyors útmutató, részletes leírás és ajánlott eljárások az Azure kognitív Speech Services kvótái és korlátai számára
+description: Gyors útmutató, részletes leírás és ajánlott eljárások az Azure kognitív Speech szolgáltatás kvótái és korlátai esetében
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937056"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011173"
 ---
-# <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
+# <a name="speech-service-quotas-and-limits"></a>Beszédfelismerési szolgáltatás kvótái és korlátai
 
-Ez a cikk egy gyors referenciát és az Azure kognitív Speech Services kvótáinak **részletes leírását** és az összes [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)csomagra vonatkozó korlátozásokat tartalmaz. Emellett a kérelmek szabályozásának elkerülésére vonatkozó ajánlott eljárásokat is tartalmaz. 
+Ez a cikk egy gyors referenciát és az Azure kognitív Speech szolgáltatás kvótáinak **részletes leírását** és az összes [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)csomagra vonatkozó korlátozásokat tartalmaz. Emellett a kérelmek szabályozásának elkerülésére vonatkozó ajánlott eljárásokat is tartalmaz. 
 
 ## <a name="quotas-and-limits-quick-reference"></a>Kvóták és korlátozások – rövid útmutató
 Ugrás [szöveg – beszéd kvótára és korlátokra](#text-to-speech-quotas-and-limits-per-speech-resource)
@@ -98,9 +98,13 @@ A következő szakaszok a kvóták módosításának konkrét eseteit ismertetik
 Ugrás [szövegről beszédre Az egyéni hangra vonatkozó átírások egyidejű kérelmi korlátjának növelése](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>Beszéd – szöveg: növekvő online átírási idejű kérelmek korlátozása
-Alapértelmezés szerint az egyidejű kérelmek száma legfeljebb 20/Speech Resource (alapmodell) vagy egyéni végpont (egyéni modell) lehet. Standard szintű díjszabás esetén ez az összeg növelhető. A kérelem elküldése előtt győződjön meg arról, hogy ismeri az ebben a [szakaszban](#detailed-description-quota-adjustment-and-best-practices) található anyagokat, és ismerkedjen meg az [ajánlott eljárásokkal](#general-best-practices-to-mitigate-throttling-during-autoscaling).
+Alapértelmezés szerint az egyidejű kérelmek száma legfeljebb 100/Speech erőforrásra (alapmodell) és 20 egyéni végpontra (egyéni modell) korlátozódik. Standard szintű díjszabás esetén ez az összeg növelhető. A kérelem elküldése előtt győződjön meg arról, hogy ismeri az ebben a [szakaszban](#detailed-description-quota-adjustment-and-best-practices) található anyagokat, és ismerkedjen meg az [ajánlott eljárásokkal](#general-best-practices-to-mitigate-throttling-during-autoscaling).
 
-Az egyidejű kérelmek korlátjának növelése **nem** befolyásolja közvetlenül a költségeit. A Speech Services "csak a ténylegesen használt funkciókért fizet" modellt használja. A korlát határozza meg, hogy a szolgáltatás milyen mértékben méretezhető, mielőtt megkezdi a kérelmek szabályozását.
+>[!NOTE]
+> Ha egyéni modelleket használ, vegye figyelembe, hogy az egyik beszédfelismerési erőforráshoz számos egyéni modell üzembe helyezését futtató egyéni végpont tartozhat. Minden egyéni végpontnál az egyidejű kérelmek maximális száma (20) állítható be a létrehozással. Ha módosítania kell, **külön** kell elvégeznie az egyes egyéni végpontok beállítását. Azt is vegye figyelembe, hogy a beszédfelismerési erőforrás alapmodelljének egyidejű kérelmi korlátjának értéke **nem** befolyásolja az ehhez az erőforráshoz társított egyéni végpontokat.
+
+
+Az egyidejű kérelmek korlátjának növelése **nem** befolyásolja közvetlenül a költségeit. A beszédfelismerési szolgáltatás "csak a ténylegesen használt funkciókért fizet" modellt használja. A korlát határozza meg, hogy a szolgáltatás milyen mértékben méretezhető, mielőtt megkezdi a kérelmek szabályozását.
 
 Az **Alap** -és **Egyéni** modellek egyidejű kérelmi korlátait **külön** kell módosítani.
 
@@ -112,9 +116,9 @@ Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható
 #### <a name="have-the-required-information-ready"></a>Készítse elő a szükséges információkat:
 - **Alapmodell** esetén:
   - Beszédfelismerési erőforrás azonosítója
-  - Region
+  - Régió
 - **Egyéni modell** esetén: 
-  - Region
+  - Régió
   - Egyéni végpont azonosítója
 
 - **Információk beszerzése (alapmodell)**:  
@@ -168,7 +172,7 @@ Tegyük fel, hogy egy beszédfelismerési erőforráshoz az egyidejű kérelem k
 ### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>Szöveg – beszéd: az egyéni hangra vonatkozó egyidejű kérelmek maximális száma
 Alapértelmezés szerint az egyéni hangvégpontok egyidejű kérelmeinek száma legfeljebb 10 lehet. Standard szintű díjszabás esetén ez az összeg növelhető. A kérelem elküldése előtt győződjön meg arról, hogy ismeri az ebben a [szakaszban](#detailed-description-quota-adjustment-and-best-practices) található anyagokat, és ismerkedjen meg az [ajánlott eljárásokkal](#general-best-practices-to-mitigate-throttling-during-autoscaling).
 
-Az egyidejű kérelmek korlátjának növelése **nem** befolyásolja közvetlenül a költségeit. A Speech Services "csak a ténylegesen használt funkciókért fizet" modellt használja. A korlát határozza meg, hogy a szolgáltatás milyen mértékben méretezhető, mielőtt megkezdi a kérelmek szabályozását.
+Az egyidejű kérelmek korlátjának növelése **nem** befolyásolja közvetlenül a költségeit. A beszédfelismerési szolgáltatás "csak a ténylegesen használt funkciókért fizet" modellt használja. A korlát határozza meg, hogy a szolgáltatás milyen mértékben méretezhető, mielőtt megkezdi a kérelmek szabályozását.
 
 Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható Azure Portalon, Command-Line eszközökön vagy API-kérelmeken keresztül. A meglévő érték ellenőrzéséhez hozzon létre egy Azure-támogatási kérelmet.
 

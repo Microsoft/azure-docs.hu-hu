@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
-ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56da006dc5a0eef46d5b13984983ca680359b968
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87846037"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168093"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Az Azure Functions Python-hibáinak elhárítása
 
@@ -19,6 +19,8 @@ A következő lista a Python-függvények gyakori problémáira vonatkozó hibae
 
 * [ModuleNotFoundError és ImportError](#troubleshoot-modulenotfounderror)
 * [A "cygrpc" nem importálható](#troubleshoot-cannot-import-cygrpc)
+* [A Python kilépett a 137 kóddal](#troubleshoot-python-exited-with-code-137)
+* [A Python kilépett a 139 kóddal](#troubleshoot-python-exited-with-code-139)
 
 ## <a name="troubleshoot-modulenotfounderror"></a>A ModuleNotFoundError hibáinak megoldása
 
@@ -28,20 +30,20 @@ Ez a szakasz segítséget nyújt a modulokkal kapcsolatos hibák elhárításáh
 
 Ez a hiba akkor fordul elő, ha egy Python-függvény alkalmazás nem tud betölteni egy Python-modult. A hiba alapvető oka az alábbi problémák egyike:
 
-- [A csomag nem található](#the-package-cant-be-found)
-- [A csomag nem oldható meg a megfelelő Linux-kerékkel](#the-package-isnt-resolved-with-proper-linux-wheel)
-- [A csomag nem kompatibilis a Python-értelmező verziójával](#the-package-is-incompatible-with-the-python-interpreter-version)
-- [A csomag ütközik más csomagokkal](#the-package-conflicts-with-other-packages)
-- [A csomag csak a Windows vagy macOS platformokat támogatja](#the-package-only-supports-windows-or-macos-platforms)
+* [A csomag nem található](#the-package-cant-be-found)
+* [A csomag nem oldható meg a megfelelő Linux-kerékkel](#the-package-isnt-resolved-with-proper-linux-wheel)
+* [A csomag nem kompatibilis a Python-értelmező verziójával](#the-package-is-incompatible-with-the-python-interpreter-version)
+* [A csomag ütközik más csomagokkal](#the-package-conflicts-with-other-packages)
+* [A csomag csak a Windows vagy macOS platformokat támogatja](#the-package-only-supports-windows-or-macos-platforms)
 
 ### <a name="view-project-files"></a>Projektfájlok megtekintése
 
 A probléma tényleges okának azonosításához le kell kérnie a Function alkalmazásban futó Python-projektfájlok fájljait. Ha nem rendelkezik a Project-fájlokkal a helyi számítógépen, a következő módokon kérheti le őket:
 
-- Ha a Function alkalmazásnak van `WEBSITE_RUN_FROM_PACKAGE` alkalmazás-beállítása, és az értéke egy URL-cím, töltse le az URL-címet a böngészőjébe, és másolja be a fájlt.
-- Ha a Function alkalmazás `WEBSITE_RUN_FROM_PACKAGE` be van állítva, és a értéke `1` , akkor navigáljon a `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` fájlhoz, és töltse le a legújabb `href` URL-címről.
-- Ha a Function alkalmazás nem rendelkezik a fent említett alkalmazás-beállítással, keresse meg `https://<app-name>.scm.azurewebsites.net/api/settings` az URL-címet, és keresse meg a következőt: `SCM_RUN_FROM_PACKAGE` . A fájl letöltéséhez másolja és illessze be az URL-címet a böngészőjébe.
-- Ha ezek egyike sem működik az Ön számára, navigáljon `https://<app-name>.scm.azurewebsites.net/DebugConsole` a tartalomhoz, és fedje fel a következőt: `/home/site/wwwroot` .
+* Ha a Function alkalmazásnak van `WEBSITE_RUN_FROM_PACKAGE` alkalmazás-beállítása, és az értéke egy URL-cím, töltse le az URL-címet a böngészőjébe, és másolja be a fájlt.
+* Ha a Function alkalmazás `WEBSITE_RUN_FROM_PACKAGE` be van állítva, és a értéke `1` , akkor navigáljon a `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` fájlhoz, és töltse le a legújabb `href` URL-címről.
+* Ha a Function alkalmazás nem rendelkezik a fent említett alkalmazás-beállítással, keresse meg `https://<app-name>.scm.azurewebsites.net/api/settings` az URL-címet, és keresse meg a következőt: `SCM_RUN_FROM_PACKAGE` . A fájl letöltéséhez másolja és illessze be az URL-címet a böngészőjébe.
+* Ha ezek egyike sem működik az Ön számára, navigáljon `https://<app-name>.scm.azurewebsites.net/DebugConsole` a tartalomhoz, és fedje fel a következőt: `/home/site/wwwroot` .
 
 A cikk további részében a függvény alkalmazás tartalmának vizsgálatával, a kiváltó ok azonosításával és az adott probléma megoldásával kapcsolatos esetleges hibák elhárítása segíti a hiba lehetséges okait.
 
@@ -150,7 +152,7 @@ Ez a szakasz segítséget nyújt a Python-cygrpc kapcsolatos hibák elhárítás
 
 > `Cannot import name 'cygrpc' from 'grpc._cython'`
 
-Ez a hiba akkor fordul elő, ha egy Python-függvény alkalmazás nem indul el megfelelő Python-értelmező használatával. A hiba alapvető oka az alábbi problémák egyike:
+Ez a hiba akkor fordul elő, ha egy Python-függvény alkalmazás nem indul el megfelelő Python-tolmácsmal. A hiba alapvető oka az alábbi problémák egyike:
 
 - [A Python-értelmező nem egyezik az operációsrendszer-architektúrával](#the-python-interpreter-mismatches-os-architecture)
 - [Azure Functions Python-feldolgozók nem támogatják a Python-tolmácsot](#the-python-interpreter-is-not-supported-by-azure-functions-python-worker)
@@ -177,6 +179,42 @@ A Azure Functions Python-feldolgozó csak a Python 3,6, 3,7 és 3,8 nyelveket t�
 Ellenőrizze, hogy a Python-értelmező megfelel-e a várt verziónak `py --version` a Windowsban vagy `python3 --version` a UNIX-szerű rendszerekben. Győződjön meg arról, hogy a visszatérési eredmény a Python 3.6. x, a Python 3.7. x vagy a Python 3.8. x.
 
 Ha a Python-értelmező verziója nem felel meg az elvárásoknak, töltse le a Python 3,6, 3,7 vagy 3,8 tolmácsot a [Python Software Foundation](https://python.org/downloads/release)szolgáltatásból.
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-137"></a>Az 137-es kóddal kilépő Python hibáinak megoldása
+
+Az 137-es kódú hibákat általában a Python-függvény alkalmazásban lévő memóriával kapcsolatos problémák okozzák. Ennek eredményeképpen a következő Azure Functions hibaüzenet jelenik meg:
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 137`
+
+Ez a hiba akkor fordul elő, amikor egy Python-függvény alkalmazásának meg kell szakítani egy SIGKILL-jellel rendelkező operációs rendszer. Ez a jel általában a folyamaton kívüli hibát jelez a Python-folyamatban. A Azure Functions platformhoz tartozik egy [szolgáltatás-korlátozás](functions-scale.md#service-limits) , amely leállítja bármely olyan Function alkalmazást, amely túllépte ezt a korlátot.
+
+Tekintse meg az oktatóanyag szakaszt a [Python-függvények memória-profilkészítés](python-memory-profiler-reference.md#memory-profiling-process) területén, hogy elemezze a memória szűk keresztmetszetét a Function alkalmazásban.
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-139"></a>Az 139-es kóddal kilépő Python hibáinak megoldása
+
+Ez a szakasz a Python-függvény alkalmazásában előforduló szegmentálási hibák elhárítását segíti. Ezek a hibák általában a következő Azure Functions hibaüzenetet eredményezik:
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 139`
+
+Ez a hiba akkor fordul elő, amikor egy Python-függvény alkalmazásának meg kell szakítani egy SIGSEGV-jellel rendelkező operációs rendszer. Ez a jel a memória szegmentálásának megsértését jelzi, amelynek oka lehet egy korlátozott memóriába való váratlan beolvasás vagy írás. A következő szakaszokban a leggyakoribb kiváltó okok listáját adjuk meg.
+
+### <a name="a-regression-from-third-party-packages"></a>Harmadik féltől származó csomagok regressziója
+
+A Function app requirements.txtban egy nem rögzített csomag lesz frissítve a legújabb verzióra minden Azure Functions-telepítésben. A csomagok gyártói a legújabb kiadásban vezethetnek be regressziót. A probléma megoldásához próbálja meg felvenni az importálási utasításokat, tiltsa le a csomagok hivatkozásait, vagy rögzítse a csomagot egy korábbi verzióra requirements.txt.
+
+### <a name="unpickling-from-a-malformed-pkl-file"></a>Helytelenül formázott. PKL fájlból való kiválasztás
+
+Ha a Function alkalmazás a Python Pickel könyvtárat használja a Python-objektum. PKL fájlból való betöltéséhez, lehetséges, hogy a. PKL helytelenül formázott bájt karakterláncot tartalmaz, vagy érvénytelen a hivatkozás. A probléma megoldásához próbálja meg kipróbálni a lé. Load () függvényt.
+
+### <a name="pyodbc-connection-collision"></a>Pyodbc-kapcsolatok ütközése
+
+Ha a Function alkalmazás a népszerű ODBC-adatbázis illesztőprogram- [pyodbc](https://github.com/mkleehammer/pyodbc)használja, akkor lehetséges, hogy több kapcsolat is meg van nyitva egyetlen Function alkalmazáson belül. A probléma elkerüléséhez használja az egyszeres mintát, és gondoskodjon arról, hogy csak egy pyodbc-kapcsolatok legyenek használatban a Function alkalmazásban.
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

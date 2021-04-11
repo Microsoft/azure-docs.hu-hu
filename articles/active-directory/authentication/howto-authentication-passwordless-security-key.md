@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653830"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275804"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése 
 
@@ -89,6 +89,8 @@ Ha meg szeretné osztani a visszajelzéseket, vagy problémákba ütközik ezzel
 ### <a name="security-key-provisioning"></a>Biztonsági kulcs kiépítés
 
 A rendszergazdai kiépítés és a biztonsági kulcsok kiépítés nélkül nem érhető el.
+
+**Megjegyzés:** A FIDO2 gyorsítótárazott bejelentkezés meghiúsult a hibrid Azure AD-beli csatlakoztatott gépen, amely a win10 20H2 verziójára vonatkozik (ha LOS – DC nem érhető el). Ez jelenleg a mérnöki tervezés alatt áll.
 
 ### <a name="upn-changes"></a>UPN-módosítások
 

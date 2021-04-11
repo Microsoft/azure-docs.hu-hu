@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104798884"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
@@ -48,16 +48,16 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 
 | Eszköz identitásának típusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
-| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
+| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
 |   |   | Windows jelenlegi | Nem állandó | Igen<sup>5</sup> |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
-|   |   | Windows jelenlegi | Nem állandó | Nem |
+|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
+|   |   | Windows jelenlegi | Nem állandó | No |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
-|   | Felügyelt | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
+|   | Felügyelt | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
 | Az Azure AD-ban regisztrálva | Összevont/felügyelt | Windows jelenlegi/Windows lefelé – szint | Állandó/nem állandó | Nem alkalmazható |
 
 <sup>1</sup> a **Windows jelenlegi** eszközei a Windows 10, a Windows Server 2016 v1803 vagy újabb, valamint a Windows Server 2019.

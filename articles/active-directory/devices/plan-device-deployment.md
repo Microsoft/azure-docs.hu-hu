@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faa18b619c785ad23e1da037621597684b1c5c63
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936447"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551781"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -54,7 +54,7 @@ Az eszközök Azure AD-identitásként való megadásának legfőbb előnyei:
 
 Videó:  [feltételes hozzáférés eszköz-vezérlőkkel](https://youtu.be/NcONUf-jeS4)
 
-Gyakori kérdések: [Azure ad-eszközkezelés – gyakori kérdések](faq.md)  és [beállítások és adatroaming – gyakori kérdések](enterprise-state-roaming-faqs.md) 
+Gyakori kérdések: [Azure ad-eszközkezelés – gyakori kérdések](faq.yml)  és [beállítások és adatroaming – gyakori kérdések](enterprise-state-roaming-faqs.md) 
 
 ## <a name="plan-the-deployment-project"></a>Az üzembe helyezési projekt megtervezése
 
@@ -239,9 +239,9 @@ A támogatott és nem támogatott platformok áttekintése integrált eszközök
 
 | Eszközfelügyeleti eszközök| Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás|
 | - | - | - | - |
-| [Mobileszköz-felügyelet (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Példa: Microsoft Intune| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)|  |
-| [Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 és újabb)| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)|  |
-| [Csoportházirend](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Csak Windows)| | | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)|  |
+| [Mobileszköz-felügyelet (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Példa: Microsoft Intune| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| 
+| [Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 és újabb)| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| 
+| [Csoportházirend](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Csak Windows)| | | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| 
 
 
 

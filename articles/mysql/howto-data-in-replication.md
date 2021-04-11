@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c12068c6a2c75c7be8b5572b901a714d397b2ca
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030749"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209926"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
@@ -21,19 +21,16 @@ Ez a cikk azt ismerteti, hogyan állíthatja be a Azure Database for MySQL [felh
 > Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 >
 
-Ahhoz, hogy replikát hozzon létre a Azure Database for MySQL szolgáltatásban, [felhőbe irányuló replikálás](concepts-data-in-replication.md)  szinkronizálja az adatokat egy helyszíni MySQL-kiszolgálóról, a virtuális gépekről vagy a Felhőbeli adatbázis-szolgáltatásokból. A beérkező adatokra épülő replikáció a MySQL natív bináris naplójának (binlog) fájlpozíció-alapú replikációján alapul. A BinLog-replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL BinLog-replikáció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakört.
+Ahhoz, hogy replikát hozzon létre a Azure Database for MySQL szolgáltatásban, [felhőbe irányuló replikálás](concepts-data-in-replication.md)  szinkronizálja az adatokat egy helyszíni MySQL-kiszolgálóról, a virtuális gépekről vagy a Felhőbeli adatbázis-szolgáltatásokból. A felhőbe irányuló replikálás a MySQL-re épülő bináris log (BinLog) fájl-vagy gtid-alapú replikáción alapul. A BinLog-replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL BinLog-replikáció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakört.
 
 A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adatok replikálásának [korlátozásait és követelményeit](concepts-data-in-replication.md#limitations-and-considerations) .
 
-## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Replikaként használandó MySQL-kiszolgáló létrehozása
+## <a name="1-create-a-azure-database-for-mysql-single-server-to-be-used-as-replica"></a>1. hozzon létre egy Azure Database for MySQL egyetlen kiszolgálót, amelyet replikaként kíván használni
 
-1. Új Azure Database for MySQL-kiszolgáló létrehozása
-
-   Hozzon létre egy új MySQL-kiszolgálót (pl. "replica.mysql.database.azure.com"). A kiszolgáló létrehozásához [a Azure Portal használatával Azure Database for MySQL kiszolgáló létrehozása](quickstart-create-mysql-server-database-using-azure-portal.md) című témakörben talál további információt. Ez a kiszolgáló a felhőbe irányuló replikálás replika-kiszolgálója.
+1. Hozzon létre egy új Azure Database for MySQL önálló kiszolgálót (pl. "replica.mysql.database.azure.com"). A kiszolgáló létrehozásához [a Azure Portal használatával Azure Database for MySQL kiszolgáló létrehozása](quickstart-create-mysql-server-database-using-azure-portal.md) című témakörben talál további információt. Ez a kiszolgáló a felhőbe irányuló replikálás replika-kiszolgálója.
 
    > [!IMPORTANT]
-   > A Azure Database for MySQL-kiszolgálót a általános célú vagy a memória optimalizált díjszabási szintjein kell létrehozni.
-   >
+   > A Azure Database for MySQL-kiszolgálót a általános célú vagy a memória optimalizált díjszabási szintjein kell létrehozni, mivel az adatreplikálás csak ezekben a rétegekben támogatott.
 
 2. Azonos felhasználói fiókok és megfelelő jogosultságok létrehozása
 
@@ -42,8 +39,12 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 3. Adja hozzá a forráskiszolgáló IP-címét a replika tűzfalszabály-szabályaihoz.
 
    A tűzfalszabályokat az [Azure Portallal](howto-manage-firewall-using-portal.md) vagy az [Azure CLI-vel](howto-manage-firewall-using-cli.md) frissítheti.
+   
+4. Nem **kötelező** – ha [gtid-alapú replikálást](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) szeretne használni a forráskiszolgálóról a replika-kiszolgálóra Azure Database for MySQL, a következő kiszolgálói paramétereket engedélyeznie kell a Azure Database for MySQL-kiszolgálón az alábbi portálon látható módon.
 
-## <a name="configure-the-source-server"></a>A forráskiszolgáló konfigurálása
+   :::image type="content" source="./media/howto-data-in-replication/enable-gtid.png" alt-text="Gtid engedélyezése Azure Database for MySQL kiszolgálón":::
+
+## <a name="2-configure-the-source-mysql-server"></a>2. a forrás MySQL-kiszolgáló konfigurálása
 
 Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszínen üzemeltetett MySQL-kiszolgálót egy virtuális gépen vagy más felhőalapú szolgáltató által a felhőbe irányuló replikálás számára üzemeltetett adatbázis-szolgáltatásban. Ez a kiszolgáló a "forrás" az adatreplikációban.
 
@@ -110,7 +111,6 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
        ```bash
        log-bin=mysql-bin.log
        ```
-     
    4. A módosítások életbe léptetéséhez indítsa újra a MySQL forráskiszolgáló-kiszolgálót.
    5. A kiszolgáló újraindítása után ellenőrizze, hogy a bináris naplózás engedélyezve van-e a következővel megegyező lekérdezés futtatásával:
    
@@ -125,6 +125,14 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
+   Nem **kötelező** – ha [gtid-alapú replikálást](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html)szeretne használni, ellenőriznie kell, hogy a gtid engedélyezve van-e a forráskiszolgálón. A következő parancsot a forrás MySQL-kiszolgálón hajthatja végre, hogy ellenőrizze, hogy a gtid mód be van-e kapcsolva.
+   
+   ```sql
+   show variables like 'gtid_mode';
+   ```
+   >[!IMPORTANT]
+   > Minden kiszolgáló gtid_mode alapértelmezett értékre van állítva. Nem kell engedélyeznie az gtid-t a Source MySQL-kiszolgálón, kifejezetten az adatreplikálás beállításához. Ha a gtid már engedélyezve van a forráskiszolgálón, igény szerint gtid replikálással is beállíthatja az adatreplikálást Azure Database for MySQL egyetlen kiszolgálóval. A file-alapú replikáció használatával a forráskiszolgáló gtid módjától függetlenül állíthatja be az adatreplikálást az összes kiszolgálón.
+
 
 5. Új replikációs szerepkör létrehozása és az engedélyek beállítása
 
@@ -182,18 +190,22 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
    ```sql
     show master status;
    ```
-
    Az eredmények az alábbihoz hasonlóan jelennek meg. Ügyeljen arra, hogy a bináris fájl nevét jegyezze fel, mivel a későbbi lépésekben lesz használva.
 
    :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Fő állapot eredményei":::
+   
 
-## <a name="dump-and-restore-source-server"></a>Forráskiszolgáló kiírása és visszaállítása
+## <a name="3-dump-and-restore-source-server"></a>3. a forráskiszolgáló memóriaképe és visszaállítása
 
 1. Határozza meg, hogy mely adatbázisokat és táblákat kívánja replikálni Azure Database for MySQLba, és végezze el a memóriaképet a forráskiszolgálóról.
 
     A mysqldump segítségével kitörölheti az adatbázisokat a főkiszolgálóról. Részletekért tekintse meg a következőt: [Dump & Restore](concepts-migrate-dump-restore.md). Szükségtelen a MySQL-függvénytár és a tesztelési könyvtár kiírása.
 
-2. A forráskiszolgáló beállítása írási/olvasási módra.
+2. **Opcionális** – ha [gtid-alapú replikálást](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html)szeretne használni, meg kell határoznia a főkiszolgálón végrehajtott utolsó tranzakció gtid. A következő paranccsal jegyezze fel a főkiszolgálón végrehajtott utolsó tranzakció gtid.
+   ```sql
+   show global variables like 'gtid_executed';
+   ```
+3. A forráskiszolgáló beállítása írási/olvasási módra.
 
    Az adatbázis kiírása után állítsa vissza a forrás MySQL-kiszolgálót olvasási/írási módba.
 
@@ -205,8 +217,14 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 3. A memóriakép-fájl visszaállítása az új kiszolgálóra.
 
    Állítsa vissza a memóriakép-fájlt a Azure Database for MySQL szolgáltatásban létrehozott kiszolgálóra. A dump-fájlok MySQL-kiszolgálóra való visszaállításával kapcsolatban tekintse meg a [dump & Restore](concepts-migrate-dump-restore.md) című témakört. Ha a Memóriakép fájlja nagyméretű, töltse fel az Azure-beli virtuális gépre a replika-kiszolgálóval megegyező régión belül. Állítsa vissza a Azure Database for MySQL-kiszolgálóra a virtuális gépről.
+   
+4. Nem **kötelező** – jegyezze fel a visszaállított kiszolgáló gtid Azure Database for MySQL, hogy az azonos legyen a főkiszolgálóval. A következő paranccsal jegyezze fel a gtid megtisztított értékének gtid az Azure Database for MySQL-replika kiszolgálón. Gtid_purged értékének azonosnak kell lennie, mint a gtid-alapú replikáció működéséhez a 2. lépésben feljegyzett Master gtid_executed.
 
-## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>Forrás-és replika-kiszolgálók csatolása a felhőbe irányuló replikálás indításához
+   ```sql
+   show global variables like 'gtid_purged';
+   ```
+
+## <a name="4-link-source-and-replica-servers-to-start-data-in-replication"></a>4. a forrás-és a replika-kiszolgálók csatolása a felhőbe irányuló replikálás indításához
 
 1. Forráskiszolgáló beállítása.
 
@@ -215,12 +233,17 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
    Két kiszolgáló összekapcsolásához és a replikáció megkezdéséhez jelentkezzen be a cél replikát futtató kiszolgálóra az Azure DB for MySQL szolgáltatásban, és állítsa be a külső példányt forráskiszolgálóként. Ezt a `mysql.az_replication_change_master` tárolt eljárással teheti meg a MySQL-kiszolgálóhoz készült Azure-adatbázison.
 
    ```sql
-   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+   Nem **kötelező** – ha [gtid-alapú replikálást](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html)szeretne használni, a következő parancs használatával kapcsolja össze a két kiszolgálót
+    ```sql
+   call mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_ssl_ca>');
    ```
 
    - master_host: a forráskiszolgáló állomásneve
    - master_user: a forráskiszolgáló felhasználóneve
    - master_password: a forráskiszolgáló jelszava
+   - master_port: portszám, amelyen a forráskiszolgáló figyeli a kapcsolatokat. (3306 az az alapértelmezett port, amelyen a MySQL figyel)
    - master_log_file: bináris naplófájl neve a futtatásból `show master status`
    - master_log_pos: a bináris napló pozíciója fut `show master status`
    - master_ssl_ca: HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezete. Ha nem használ SSL-t, adja át az üres karakterláncot.
@@ -282,7 +305,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
    Ha az állapota `Slave_IO_Running` és `Slave_SQL_Running` a értéke "igen", és a "0" értékre van állítva `Seconds_Behind_Master` , a replikálás jól működik. `Seconds_Behind_Master` azt jelzi, hogy a replika milyen későn van. Ha az érték nem "0", az azt jelenti, hogy a replika frissítéseket dolgoz fel.
 
-## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
+## <a name="other-useful-stored-procedures-for-data-in-replication-operations"></a>Egyéb hasznos tárolt eljárások az adatreplikálási műveletekhez
 
 ### <a name="stop-replication"></a>Replikáció leállítása
 
@@ -307,6 +330,19 @@ A replikálási hibák kihagyásához és a replikálás folytatásához haszná
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+ Nem **kötelező** – ha [gtid-alapú replikálást](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html)szeretne használni, a következő tárolt eljárás használatával ugorjon ki egy tranzakciót
+
+```sql
+call mysql. az_replication_skip_gtid_transaction(‘<transaction_gtid>’)
+```
+Az eljárás kihagyhatja a tranzakciót az adott gtid. Ha a gtid formátuma nem megfelelő, vagy a gtid tranzakció már végre lett hajtva, az eljárás végrehajtása sikertelen lesz. A tranzakció gtid a bináris napló elemzésével határozható meg a tranzakciós események ellenőrzéséhez. A MySQL egy segédprogram- [mysqlbinlog](https://dev.mysql.com/doc/refman/5.7/en/mysqlbinlog.html) biztosít a bináris naplók elemzéséhez, és szöveges formátumban jeleníti meg a tartalmakat, amelyek a tranzakció gtid azonosítására használhatók.
+
+Ha a következő tranzakciót az aktuális replikálási pozíció után szeretné kihagyni, használja a következő parancsot a következő tranzakció gtid azonosításához az alább látható módon.
+
+```sql
+SHOW BINLOG EVENTS [IN 'log_name'] [FROM pos][LIMIT [offset,] row_count]
+```
+  :::image type="content" source="./media/howto-data-in-replication/show-binary-log.png" alt-text="Bináris naplók eredményeinek megjelenítése":::
 
 ## <a name="next-steps"></a>Következő lépések
 

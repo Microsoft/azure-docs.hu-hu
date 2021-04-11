@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
 ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104722701"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
@@ -103,7 +103,7 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 ### <a name="system-health-events"></a>Rendszerállapot-események
 
-| Esemény neve | Description|
+| Esemény neve | Leírás|
 |------|---------|
 |archon_exit     |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
 |archon_error     |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
@@ -232,7 +232,7 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 
 Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható paramétereket.
 
-| Kulcsszó | Description | Alapértelmezett érték |
+| Kulcsszó | Leírás | Alapértelmezett érték |
 |--|--|--|
 | StartTime | A kívánt naplók kezdő időpontja ezredmásodpercben (UTC). | `-1`, a tároló futtatókörnyezetének kezdete. Amikor `[-1.-1]` időtartományként használja az API-t, az elmúlt egy órában visszaadja a naplókat.|
 | EndTime | A kívánt naplók befejezési időpontja ezredmásodpercben (UTC). | `-1`, az aktuális idő. `[-1.-1]`Az időtartomány használatakor az API az elmúlt egy óra naplóit adja vissza. |
@@ -243,7 +243,7 @@ Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható param
 
 A következő táblázat a lekérdezési válasz attribútumait sorolja fel.
 
-| Kulcsszó | Description|
+| Kulcsszó | Leírás|
 |--|--|
 |DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API a ***szinkron** _ adatokat adja vissza. Amikor úgy dönt, hogy feltölti a naplókat, az API a 200 értéket adja vissza, ha a kérelem érvényes, és elkezdi a naplók feltöltését. *_aszinkron módon_* *.|
 |TimeFilter| A naplókra alkalmazott Időszűrő.|

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: d0b2ccc0bf5d38e9a72bf780875d3b6f29733189
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: b38f2831136b0ccec4aa241135f2fd342c939845
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936886"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása
 
@@ -70,10 +70,9 @@ A virtuális hálózat nem helyezhető át másik erőforráscsoporthoz vagy el�
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>DDoS-védelem engedélyezése meglévő virtuális hálózat esetén
 
 1. Hozzon létre egy DDoS Protection-tervet a [DDoS Protection-terv létrehozása](#create-a-ddos-protection-plan)című cikk lépéseinek végrehajtásával, ha nem rendelkezik meglévő DDoS Protection-csomaggal.
-2. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
-3. Adja meg annak a virtuális hálózatnak a nevét, amely számára engedélyezni szeretné a DDoS Protection a standard értéket a portál tetején található **erőforrások, szolgáltatások és dokumentumok keresése mezőbe** . Ha a virtuális hálózat neve megjelenik a keresési eredmények között, válassza ki.
-4. A **Beállítások** területen válassza a **DDoS Protection** lehetőséget.
-5. Válassza a **standard** lehetőséget. A **DDoS elleni védelmi terv** területen válasszon ki egy meglévő DDoS Protection-csomagot, vagy az 1. lépésben létrehozott csomagot, majd kattintson a **Mentés** gombra. A kiválasztott csomag a virtuális hálózattal megegyező vagy eltérő előfizetésben is lehet, de mindkét előfizetéshez ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
+2. Adja meg annak a virtuális hálózatnak a nevét, amely számára engedélyezni szeretné a DDoS Protection a standard értéket a Azure Portal tetején található **erőforrások, szolgáltatások és dokumentumok keresése mezőbe** . Ha a virtuális hálózat neve megjelenik a keresési eredmények között, válassza ki.
+3. A **Beállítások** területen válassza a **DDoS Protection** lehetőséget.
+4. Válassza a **standard** lehetőséget. A **DDoS elleni védelmi terv** területen válasszon ki egy meglévő DDoS Protection-csomagot, vagy az 1. lépésben létrehozott csomagot, majd kattintson a **Mentés** gombra. A kiválasztott csomag a virtuális hálózattal megegyező vagy eltérő előfizetésben is lehet, de mindkét előfizetéshez ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>DDoS-védelem engedélyezése minden virtuális hálózat esetében
 

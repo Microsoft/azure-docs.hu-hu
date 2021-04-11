@@ -2,13 +2,13 @@
 title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934172"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210193"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -16,7 +16,7 @@ Ez a cikk az Azure-erőforrások elnevezési szabályait és korlátozásait fog
 
 Ez a cikk erőforrás-szolgáltatói névtér alapján sorolja fel az erőforrásokat. Az erőforrás-szolgáltatók Azure-szolgáltatásokkal való egyezésének listáját az [Azure-szolgáltatások erőforrás-szolgáltatói](azure-services-resource-providers.md)című témakörében tekintheti meg.
 
-Az erőforrásnevek nem megkülönböztetik a kis-és nagybetűket, kivéve, ha kifejezetten az érvényes karaktereket tartalmazó oszlopban vannak feltüntetve.
+Az erőforrásnevek nem megkülönböztetik a kis-és nagybetűket, kivéve, ha az érvényes karakterek oszlopban szerepelnek.
 
 Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozik:
 
@@ -110,7 +110,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3–24 | Kisbetűk és számok. |
+> | batchAccounts | Régió | 3–24 | Kisbetűk és számok. |
 > | batchAccounts/alkalmazások | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/tanúsítványok | batch-fiók | 5-45 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/készletek | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
@@ -177,11 +177,18 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | galériák/lemezképek/verziók | image | 32 bites egész szám | Számok és időszakok. |
 > | images | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
 > | pillanatképek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>A Windows rendszerű virtuális gépek nem tartalmazhatnak pontot, és nem állhatnak kötőjeltel.<br><br>A Linux rendszerű virtuális gépek nem végződhet ponttal vagy kötőjeltel. |
-> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>A Windows rendszerű virtuális gépek nem tartalmazhatnak pontot, és nem állhatnak kötőjeltel.<br><br>A Linux rendszerű virtuális gépek nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
 
 > [!NOTE]
 > Az Azure-beli virtuális gépek két különböző névvel rendelkeznek: az erőforrás neve és az állomásnév. Amikor létrehoz egy virtuális gépet a portálon, ugyanazt az értéket használja mindkét névhez. Az előző táblázatban szereplő korlátozások az állomásnévre vonatkoznak. A tényleges erőforrásnév legfeljebb 64 karakterből állhat.
+
+## <a name="microsoftcommunication"></a>Microsoft. Communication
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | communicationServices | globális | 1–63 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -599,7 +606,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | központi telepítések | erőforráscsoport | 1-64 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek és időszakok. |
-> | resourcegroups | előfizetést | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek, időszakok és Unicode-karakterek, amelyek megfelelnek a [regex dokumentációjának](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Nem végződhet ponttal. |
+> | resourcegroups | előfizetést | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek, időszakok és Unicode-karakterek, amelyek megfelelnek a [regex dokumentációjának](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nem végződhet ponttal. |
 > | tagNames | erőforrás | 1-512 | Nem használható:<br>`<>%&\?/` |
 > | tagNames / tagValues | címke neve | 1-256 | Minden karakter. |
 > | templateSpecs | erőforráscsoport | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek és időszakok. |
@@ -706,10 +713,12 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | --- | --- | --- | --- |
 > | tanúsítványok | erőforráscsoport | 1-260 | Nem használható:<br>`/` <br><br>Nem végződhet szóközzel vagy ponttal.  | 
 > | kiszolgálófarmok | erőforráscsoport | 1-40 | Alfanumerikus karakterek és kötőjelek. |
-> | helyek | globális | 2-60 | Alfanumerikus karaktereket és kötőjeleket tartalmaz.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
+> | helyek | globális vagy tartományi. Lásd az alábbi megjegyzést. | 2-60 | Alfanumerikus karaktereket és kötőjeleket tartalmaz.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
 > | helyek/bővítőhelyek | hely | 2-59 | Alfanumerikus karakterek és kötőjelek. |
 
 > [!NOTE]
+> Egy webhelynek globálisan egyedi URL-címmel kell rendelkeznie. Ha üzemeltetési csomagot használó webhelyet hoz létre, az URL-cím a következő: `http://<app-name>.azurewebsites.net` . Az alkalmazás nevének globálisan egyedinek kell lennie. App Service Environment használó webhely létrehozásakor az alkalmazás nevének egyedinek kell lennie a [tartományon belül a app Service Environment számára](../../app-service/environment/using-an-ase.md#app-access). Mindkét esetben a hely URL-címe globálisan egyedi.
+>
 > A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
 
 ## <a name="next-steps"></a>Következő lépések

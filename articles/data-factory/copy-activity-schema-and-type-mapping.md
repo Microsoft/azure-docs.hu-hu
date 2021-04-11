@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68d90fa56d5dce902a44a32b322e582a81e419d5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392782"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011637"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Séma-és adattípus-leképezés a másolási tevékenységben
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogy a Azure Data Factory másolási tevékenység hogy
 
 ### <a name="default-mapping"></a>Alapértelmezett leképezés
 
-Alapértelmezés szerint a másolási tevékenység leképezi a forrásoldali adatokat, hogy az **oszlopok nevei** megkülönböztetik a kis-és nagybetűket. Ha a fogadó nem létezik, például a fájl (ok) ra való írás, a forrás mező neve a fogadó neveként marad. Az ilyen alapértelmezett leképezés támogatja a rugalmas sémákat és a séma-eltolódást a forrástól a fogadónak a végrehajtástól a végrehajtásig – a forrás adattár által visszaadott összes adatok átmásolhatók a fogadóba.
+Alapértelmezés szerint a másolási tevékenység leképezi a forrásoldali adatokat, hogy az **oszlopok nevei** megkülönböztetik a kis-és nagybetűket. Ha a fogadó nem létezik, például a fájl (ok) ra való írás, a forrás mező neve a fogadó neveként marad. Ha a fogadó már létezik, a forrásból másolt összes oszlopot tartalmaznia kell. Az ilyen alapértelmezett leképezés támogatja a rugalmas sémákat és a séma-eltolódást a forrástól a fogadónak a végrehajtástól a végrehajtásig – a forrás adattár által visszaadott összes adatok átmásolhatók a fogadóba.
 
 Ha a forrás szöveges fájl fejléc nélküli szövegfájl, akkor [explicit leképezésre](#explicit-mapping) van szükség, mert a forrás nem tartalmaz oszlopnevek.
 

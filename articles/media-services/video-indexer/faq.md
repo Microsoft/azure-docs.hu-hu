@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0b7f0427708eece75b5d418b68dd1c7a2e90853f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028794"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108693"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer gyakori kérdések
 
@@ -59,7 +59,7 @@ Nem, Video Indexer több gépi tanulási modell integrálását is lehetővé te
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Milyen adathordozó-formátumokat támogat Video Indexer?
 
-A Video Indexer a leggyakoribb adathordozó-formátumokat támogatja. További részletekért tekintse meg a [Azure Media Encoder standard formats (szabványos formátumok](../latest/media-encoder-standard-formats.md) ) listát.
+A Video Indexer a leggyakoribb adathordozó-formátumokat támogatja. További részletekért tekintse meg a [Azure Media Encoder standard formats (szabványos formátumok](../latest/encode-media-encoder-standard-formats-reference.md) ) listát.
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hogyan feltölt egy médiafájlt a Video Indexerba, és mi a korlátozás?
 

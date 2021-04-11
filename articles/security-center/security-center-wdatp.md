@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 085f3a5295d60b83536683a57a34b51abccd3067
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043019"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168178"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -38,7 +38,7 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 | Kiadás állapota:                  | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                      |
 | Árképzési                        | [Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli                                                                                                                                                                                                                                             |
 | Támogatott platformok:            |  • Windows rendszerű Azure-gépek<br> • Windows rendszerű Azure arc-gépek|
-| A Windows támogatott verziói:  |  • **Általánosan elérhető (GA) –** észlelés a Windows Server 2016, 2012 r2 és 2008 R2 SP1 rendszeren<br> • **Előzetes verzió –** észlelés a windows Server 2019, a [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)és a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (korábban Enterprise for Virtual desktops (EVD) szolgáltatásban|
+| A Windows támogatott verziói:  |  • **Általánosan elérhető (GA) –** észlelés a Windows Server 2016, 2012 r2 és 2008 R2 SP1 rendszeren<br> • **Előzetes verzió –** észlelés a windows Server 2019, a [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)és a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.yml) (korábban Enterprise for Virtual desktops (EVD) szolgáltatásban|
 | Nem támogatott operációs rendszerek:  |  • Windows 10 (a EVD vagy a WVD kivételével)<br> • Linux|
 | Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**|
 | Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |

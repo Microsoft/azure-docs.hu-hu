@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/19/2021
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955229"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552104"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
 A Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókról és fejlesztésekről nyújt összefoglalót. 
+
+## <a name="april-2021"></a>Április 2021
+
+* [Active Directory Domain Services (Hozzáadás) LDAP-felhasználók leképezése az NFS bővített csoportjaival](configure-ldap-extended-groups.md) (előzetes verzió)   
+
+    Alapértelmezés szerint a Azure NetApp Files az [RFC 5531](https://tools.ietf.org/html/rfc5531)-ben meghatározott módon legfeljebb 16 csoport azonosítóját támogatja az NFS-felhasználói hitelesítő adatok kezelésekor. Ezzel az új képességgel megnövelheti a maximális maximumot 1 024-ig, ha olyan felhasználókkal rendelkezik, akik az alapértelmezett számú csoportnál több tagja van. Ennek a képességnek a támogatásához az NFS-kötetek mostantól hozzáadhatók az LDAP hozzáadásához is, amely lehetővé teszi, hogy Active Directory LDAP-felhasználók számára a kiterjesztett csoportok bejegyzéseivel (legfeljebb 1024 csoporttal) a kötet eléréséhez. 
 
 ## <a name="march-2021"></a>Március 2021
 

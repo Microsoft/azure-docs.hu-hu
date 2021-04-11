@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 0cd1f6210fbdb74e3fd511150157dccca3e92dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a765d689307b7f56e5100e75d9f7121e944cea14
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91932464"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168280"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei 
 
@@ -29,7 +29,7 @@ Azure NetApp Files egy nagy teljesítményű file Storage-szolgáltatás az Azur
 
 ## <a name="sample-blueprints"></a>Minta tervezetek
 
-Az alábbi példa bemutatja a Windows rendszerű virtuális asztalok integrálását Azure NetApp Filesokkal. A készletezett asztali forgatókönyvekben a felhasználók a készletben lévő legjobb rendelkezésre álló munkamenetre (a [szélesség-első üzemmódra](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) irányítják a [több munkamenetet használó virtuális gépeket](../virtual-desktop/windows-10-multisession-faq.md#what-is-windows-10-enterprise-multi-session). Másfelől a személyes asztalok olyan helyzetekben vannak fenntartva, amikor az egyes felhasználók saját virtuális géppel rendelkeznek.
+Az alábbi példa bemutatja a Windows rendszerű virtuális asztalok integrálását Azure NetApp Filesokkal. A készletezett asztali forgatókönyvekben a felhasználók a készletben lévő legjobb rendelkezésre álló munkamenetre (a [szélesség-első üzemmódra](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) irányítják a [több munkamenetet használó virtuális gépeket](../virtual-desktop/windows-10-multisession-faq.yml#what-is-windows-10-enterprise-multi-session). Másfelől a személyes asztalok olyan helyzetekben vannak fenntartva, amikor az egyes felhasználók saját virtuális géppel rendelkeznek.
 
 ### <a name="pooled-desktop-scenario"></a>Készletezett asztali forgatókönyv
 

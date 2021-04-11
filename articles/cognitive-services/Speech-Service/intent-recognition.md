@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: szándék-felismerés
-ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 532101c8cc307e6a5bb65022702b516c492a51fe
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018701"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210364"
 ---
 # <a name="what-is-intent-recognition"></a>Mi a szándék-felismerés?
 
@@ -33,7 +33,7 @@ A szándék-felismerés használatával az alkalmazások, eszközök és eszköz
 
 ## <a name="get-started"></a>Bevezetés
 
-Tekintse [meg az első lépéseket a szándék](quickstarts/intent-recognition.md) -felismeréssel kapcsolatban.
+Tekintse [meg az első lépéseket a szándék](get-started-intent-recognition.md) -felismeréssel kapcsolatban.
 
 ## <a name="sample-code"></a>Mintakód
 
@@ -53,6 +53,6 @@ Mintakód a szándék-felismeréshez:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A szándék [-felismerési](quickstarts/intent-recognition.md) útmutató befejezése
+* A szándék [-felismerési](get-started-intent-recognition.md) útmutató befejezése
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 * [A Speech SDK beszerzése](speech-sdk.md)

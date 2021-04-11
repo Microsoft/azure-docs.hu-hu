@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztal integrálása az Azure-Azure Advis
 description: A Azure Advisor használata a Windows rendszerű virtuális asztali környezetben.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 76b7f97b6020a3a0d5571a3a105d15f7d7893485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: b141d3829e9d98cb793d2038e93331804d2e6b8f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89147533"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448287"
 ---
 # <a name="use-azure-advisor-with-windows-virtual-desktop"></a>Azure Advisor használata a Windows rendszerű virtuális asztallal
 
@@ -61,5 +61,3 @@ Ha kiválaszt egy kategóriát, az aktív javaslatok lapjára lép. Ezen az olda
 ## <a name="next-steps"></a>Következő lépések
 
 A javaslatok megoldásával kapcsolatos további információkért lásd: [Azure Advisor javaslatok megoldása](azure-advisor-recommendations.md).
-
-Ha javaslatai vannak az új javaslatokhoz, tegye közzé a [Azure Advisor felhasználói hangalapú fórumon](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations).

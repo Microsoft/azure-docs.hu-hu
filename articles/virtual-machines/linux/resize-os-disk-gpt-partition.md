@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 46b6ceff74dd3a296d26cc018b380c1c3f76664c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db79728bbb963aa360743afc70aecc213bfb7bc
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552949"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011681"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT-partícióval rendelkező operációsrendszer-lemez átméretezése
 
@@ -400,9 +400,8 @@ A virtuális gép újraindítása után végezze el a következő lépéseket:
 > [!NOTE]
 > Ha ugyanezt az eljárást szeretné használni az egyéb logikai kötetek átméretezéséhez, módosítsa a 12. lépésben szereplő LV-nevet.
 
+
 ### <a name="rhel-raw"></a>RHEL NYERS
->[!NOTE] 
->Mindig készítsen pillanatképet a virtuális gépről az operációsrendszer-lemez méretének növelése előtt.
 
 Az operációsrendszer-lemez méretének növeléséhez egy RHEL nyers partícióban:
 
@@ -410,120 +409,114 @@ Az operációsrendszer-lemez méretének növeléséhez egy RHEL nyers partíci�
 1. Növelje az operációsrendszer-lemez méretét a portálon.
 1. Indítsa el a virtuális gépet.
 
-Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
+A virtuális gép újraindítása után végezze el a következő lépéseket:
 
 1. A következő parancs használatával érheti el a virtuális gépet **root** felhasználóként:
- 
-   ```
-   sudo su
+
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. Telepítse a **gptfdisk** csomagot, amely az operációsrendszer-lemez méretének növeléséhez szükséges.
+1. A virtuális gép újraindítása után végezze el a következő lépést:
 
-   ```
-   yum install gdisk -y
-   ```
+   - Telepítse a **Cloud-utils-growpart** csomagot a **growpart** parancs megadásához, amely szükséges az operációsrendszer-lemez és a GDisk-kezelő méretének növeléséhez a GPT-lemezek elrendezéséhez. Ez a csomag a legtöbb Piactéri lemezképen előre telepítve van.
 
-1.  A lemezen elérhető összes szektor megtekintéséhez futtassa a következő parancsot:
-    ```
-    gdisk -l /dev/sda
-    ```
-
-1. Ekkor megjelenik a partíció típusával kapcsolatos részletek. Győződjön meg arról, hogy GPT. Azonosítsa a legfelső szintű partíciót. Ne módosítsa vagy törölje a rendszerindító partíciót (BIOS rendszerindító partíció) és a rendszerpartíciót ("EFI rendszerpartíció").
-
-1. Az alábbi parancs használatával indítsa el a particionálást első alkalommal. 
-    ```
-    gdisk /dev/sda
-    ```
-
-1. Most megjelenik egy üzenet, amely kéri a következő parancsot ("parancs:? Súgó "). 
-
-   ```
-   w
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
    ```
 
-1. Figyelmeztető üzenet jelenik meg. A másodlagos fejléc túl korán kerül a lemezre. Szeretné kijavítani ezt a problémát? (I/N): ". Az "Y" billentyűt kell megnyomnia
+1. A **lsblk-f** parancs használatával ellenőrizze a gyökér () partíciót tároló partíciót és fájlrendszer típusát **/** :
 
-   ```
-   Y
-   ```
-
-1. Ekkor megjelenik egy üzenet, amely tájékoztatja, hogy a végső ellenőrzés befejeződik, és megerősítést kér. Az "Y" gomb megnyomása
-
-   ```
-   Y
-   ```
-
-1. Ellenőrizze, hogy minden megfelelően megtörtént-e a partprobe parancs használatával
-
-   ```
-   partprobe
+   ```bash
+   [root@vm-dd-cent7 ~]# lsblk -f
+   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
+   sda
+   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
+   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
+   ├─sda14
+   └─sda15 vfat         788D-DC65                            /boot/efi
+   sdb
+   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
    ```
 
-1. A fenti lépések biztosítják, hogy a másodlagos GPT-fejléc a végén legyen elhelyezve. A következő lépés az átméretezés folyamatának elindítása a GDisk eszköz újbóli használatával. Használja az alábbi parancsot.
+1. Az ellenőrzéshez először a **GDisk** tartalmazó SDA-lemez partíciós tábláját listázva kell megkeresni. Ebben a példában egy 48 GB-os lemezt látunk a 2. partícióval a 29,0 GiB-on. A lemez a Azure Portalban 30 GB-ról 48 GB-ra bővült.
 
-   ```
-   gdisk /dev/sda
-   ```
-1. A parancs menüjében kattintson a "p" gombra a partíciók listájának megtekintéséhez. Azonosítsa a legfelső szintű partíciót (a lépésekben a sda2 tekinti a legfelső szintű partíciónak) és a rendszerindító partíciót (a lépésekben a sda3 a rendszerindító partíciónak számít). 
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
 
-   ```
-   p
-   ```
-    ![Gyökérszintű partíció és rendszerindító partíció](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
 
-1. A 'd gomb megnyomásával törölheti a partíciót, és kiválaszthatja a rendszerindításhoz rendelt partíció számát (ebben a példában ez a "3").
-   ```
-   d
-   3
-   ```
-1. A 'd gomb megnyomásával törölheti a partíciót, és kiválaszthatja a rendszerindításhoz rendelt partíció számát (ebben a példában ez a "2").
-   ```
-   d
-   2
-   ```
-    ![A gyökérszintű partíció és a rendszerindító partíció törlése](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 62914526
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 6076 sectors (3.0 MiB)
 
-1. Ha nagyobb mérettel szeretné újból létrehozni a főpartíciót, nyomja meg az n billentyűt, adja meg a korábban a root számára törölt ("2") partíció számát, és válassza az első szektort "alapértékként", utolsó szektorként "utolsó szektor értéke – rendszerindítási méret (4096 8300)
-   ```
-   n
-   2
-   (Enter default)
-   (Calculateed value of Last sector value - 4096)
-   8300
-   ```
-1. A rendszerindító partíció újbóli létrehozásához nyomja le az "n" billentyűt, adja meg a korábban a rendszerindításhoz előzőleg törölt partíció számát (ebben a példában a "3"), majd válassza az első szektort "alapértelmezett érték", utolsó szektor as "default Value" és hex Code as "EF02" néven.
-   ```
-   n
-   3
-   (Enter default)
-   (Enter default)
-   EF02
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048        62912511   29.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. Írja meg a módosításokat a "w" paranccsal, és erősítse meg az "Y" gombot.
-   ```
-   w
-   Y
-   ```
-1. Futtassa a "partprobe" parancsot a lemez stabilitásának vizsgálatához.
-   ```
-   partprobe
-   ```
-1. A virtuális gép újraindítása és a gyökérszintű partíció méretének növelése
-   ```
-   reboot
+1. Bontsa ki a gyökérhez tartozó partíciót, ebben az esetben a sda2 a **growpart** parancs használatával. Ezzel a paranccsal kibonthatja a partíciót a lemezen található összes összefüggő terület használatára.
+
+   ```bash
+   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
+   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
    ```
 
-   ![Új gyökérszintű partíció és rendszerindító partíció](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+1. Most nyomtassa ki újra az új partíciós táblát a **GDisk** .  Figyelje meg, hogy a 2. partíció 47,0 GiB-ra bővült:
 
-1. Az átméretezéshez futtassa a xfs_growfs parancsot a partíción.
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
+
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
+
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 100663262
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 4062 sectors (2.0 MiB)
+
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048       100663261   47.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
-   xfs_growfs /dev/sda2
+
+1. Bontsa ki a fájlrendszert a partíción **xfs_growfs**, amely megfelelő a piactér által generált szabványos RedHat rendszerhez:
+
+   ```bash
+   [root@vm-dd-cent7 ~]# xfs_growfs /
+   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
+            =                       sectsz=4096  attr=2, projid32bit=1
+            =                       crc=1        finobt=0 spinodes=0
+   data     =                       bsize=4096   blocks=7607808, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+   log      =internal               bsize=4096   blocks=3714, version=2
+            =                       sectsz=4096  sunit=1 blks, lazy-count=1
+   realtime =none                   extsz=4096   blocks=0, rtextents=0
+   data blocks changed from 7607808 to 12326651
    ```
-
-   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
-
 
 1. Ellenőrizze, hogy az új méret megjelenik-e a **DF** parancs használatával:
 

@@ -1,18 +1,15 @@
 ---
 title: A Azure Site Recovery folyamat kiszolgálójának figyelése
 description: Ez a cikk bemutatja, hogyan figyelheti a VMware VM/fizikai kiszolgáló vész-helyreállításához használt Azure Site Recovery Process Servert
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0dcee641a2de73238557a6a29173f71ee1c4312a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86134744"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580554"
 ---
 # <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
 

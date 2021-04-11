@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91556087cd3e7ccd85550c721f70b8608fdc4ffd
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678272"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168450"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -282,7 +282,7 @@ A Azure Maps REST API-k teljes listájáért lásd:
 
 A IoT Azure minősítéssel rendelkező eszközök listájának lekéréséhez látogasson el a következő webhelyre:
 
-* [Azure Certified-eszközök](https://catalog.azureiotsolutions.com/)
+* [Azure Certified-eszközök](https://devicecatalog.azure.com/)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
