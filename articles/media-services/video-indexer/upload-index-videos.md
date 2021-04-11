@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cc9051190bd314ac93e3de2689a6aa0ec2b6235
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199186"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108081"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -35,7 +35,7 @@ A cikk bemutatja, hogyan tölthet fel és indexelheti a videókat a következő 
 
 ## <a name="supported-file-formats-for-video-indexer"></a>A Video Indexer támogatott fájlformátumai
 
-A Video Indexer használatával használható fájlformátumok listáját a [bemeneti tároló/fájlformátumok](../latest/media-encoder-standard-formats.md#input-containerfile-formats) című cikkben találja.
+A Video Indexer használatával használható fájlformátumok listáját a [bemeneti tároló/fájlformátumok](../latest/encode-media-encoder-standard-formats-reference.md) című cikkben találja.
 
 ## <a name="video-files-storage"></a>Videofájlok tárolása
 
@@ -113,7 +113,7 @@ A videó feltöltése után a Video Indexer opcionálisan kódolja a videót. Ez
 A [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy a [Videó újraindexelése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API használatakor a `streamingPreset` az egyik választható paraméter. Ha a `streamingPreset` paramétert `Default`, `SingleBitrate` vagy `AdaptiveBitrate` értékre állítja, a kódolási folyamat aktiválódik. Az indexelési és a kódolási feladatok befejezése után a rendszer közzéteszi a videót, amely streamelhető is. A videó streameléséhez használt streamvégpontnak **Futó** állapotban kell lennie.
 
 A SingleBitrate standard kódoló díja a kimeneten fog vonatkozni. Ha a videó magassága nagyobb vagy egyenlő, mint 720, Video Indexer kódolja a 1280x720. Ellenkező esetben a 640x468.
-Az alapértelmezett beállítás a [Content Aware kódolás](../latest/content-aware-encoding.md).
+Az alapértelmezett beállítás a [Content Aware kódolás](../latest/encode-content-aware-concept.md).
 
 Az indexelési és kódolási feladatok futtatásához a [Video Indexer-fiókjához csatlakoztatott Azure Media Services-fióknak](connect-to-azure.md) fenntartott egységekre van szüksége. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. Mivel ezek nagy számításigényű feladatok, határozottan ajánlott az S3-as egységtípus. A kérelemegységek száma meghatározza a párhuzamosan futtatható feladatok maximális számát. Az általános javaslat 10 S3 kérelemegység. 
 
@@ -321,7 +321,7 @@ public class AccountContractSlim
 
 A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi táblázatban láthatók.
 
-|Állapotkód|Hibatípus (a válasz törzsében)|Description|
+|Állapotkód|Hibatípus (a válasz törzsében)|Leírás|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|

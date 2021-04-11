@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.author: victorh
-ms.openlocfilehash: 6855eb50519afacdf971ffcb8b70aa289b7cfe26
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bb89b6acbc76a4020ee721e87272b154bab6d0a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066330"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385173"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -54,7 +54,6 @@ Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
 |Probléma  |Leírás  |Kockázatcsökkentés  |
 |---------|---------|---------|
-|Ha az IP-címről származó szabályt az IP-csoportra frissíti, vagy fordítva a portálon keresztül, mindkét típus mentésre kerül, de csak egy jelenik meg a portálon.|Ez a probléma klasszikus szabályokkal történik.<br><br>Ha a portál használatával frissíti egy NAT-szabály forrásának típusát az IP-címről az IP-csoportra, vagy fordítva, akkor mindkét típust menti a háttérbe, de csak az újonnan frissített típust jeleníti meg.<br><br>Ugyanez a probléma akkor jelentkezik, ha a hálózat vagy az alkalmazás szabályának típusát IP-címről vagy IP-csoport típusra frissíti, vagy fordítva.|A portál javításának célja a 2021. márciusi.<br><br>Addig is használhatja a Azure PowerShell, az Azure CLI vagy az API-t egy szabály módosításához az IP-címről az IP-csoportra, vagy fordítva.|
 |A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](../load-balancer/load-balancer-overview.md). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
 |A PowerShell és a CLI nem támogatja az ICMP-t|A Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályokban.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
 |Az FQDN-címkék protokoll: port megadását igénylik|Az FQDN-címkékkel rendelkező alkalmazás-szabályok port: protokoll-definíciót igényelnek.|A port:protokoll értékként használhat **https**-t. Azon dolgozunk, hogy ezt a mezőt nem kötelező megadni, ha FQDN-címkéket használunk.|
@@ -78,6 +77,7 @@ Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 |A Start/Stop nem működik kényszerített bújtatási módban konfigurált tűzfallal|Az indítás/leállítás nem működik a kényszerített bújtatási módban konfigurált Azure tűzfalon. A kényszerített bújtatással konfigurált Azure Firewall indítására tett kísérlet a következő hibát eredményezi:<br><br>*Set-AzFirewall: AzureFirewall FW-XX felügyeleti IP-konfiguráció nem adható hozzá meglévő tűzfalhoz. Ha kényszerített bújtatási támogatást szeretne használni, telepítse újra a felügyeleti IP-konfigurációt. <br> StatusCode: 400 <br> ReasonPhrase: hibás kérelem*|A vizsgálat alatt.<br><br>Megkerülő megoldásként törölheti a meglévő tűzfalat, és létrehozhat egy újat ugyanazzal a paraméterekkel.|
 |Nem lehet felvenni a tűzfalszabályok címkéit a portál használatával|Azure Firewall a szabályzat egy javítással kapcsolatos korlátozást tartalmaz, amely megakadályozza a címkék hozzáadását a Azure Portal használatával. A következő hiba jön létre: *nem sikerült menteni az erőforrás címkéit*.|A rendszer kivizsgálja a javítást. Vagy használhatja a Azure PowerShell parancsmagot a `Set-AzFirewallPolicy` címkék frissítéséhez.|
 |Az IPv6 még nem támogatott|Ha IPv6-címeket ad hozzá egy szabályhoz, a tűzfal meghibásodik.|Csak IPv4-címeket használjon. Az IPv6-támogatás vizsgálat alatt áll.|
+|A több IP-csoport frissítése ütközési hiba miatt meghiúsul.|Ha két vagy több, ugyanahhoz a tűzfalhoz csatolt IPGroups frissít, az egyik erőforrás sikertelen állapotba kerül.|Ez egy ismert probléma/korlátozás. <br><br>Amikor frissít egy IPGroup, egy frissítést indít el minden olyan tűzfalon, amelyhez a IPGroup csatolva van. Ha a rendszer egy második IPGroup frissítését indítja el, miközben a tűzfal továbbra is *frissítési* állapotban van, akkor a IPGroup frissítése sikertelen lesz.<br><br>A hiba elkerüléséhez az ugyanahhoz a tűzfalhoz csatolt IPGroups egyszerre kell frissíteni. Hagyjon elég időt a frissítések között, hogy a tűzfal kikerüljön a *frissítési* állapotból.| 
 
 
 ## <a name="next-steps"></a>Következő lépések

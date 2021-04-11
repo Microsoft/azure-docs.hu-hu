@@ -3,25 +3,35 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi a Personalizer?
+    - name: Személyre szabás – áttekintés
       href: what-is-personalizer.md
+    - name: Díjszabás
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
     - name: Újdonságok
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Rövid útmutatók
+- name: Személyre szabott rövid útmutató
+  href: ./quickstart-personalizer-sdk.md
+- name: Példák
+  href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
+- name: Az MI felelős használata
   items:
-    - name: Az SDK használata
-      href: ./quickstart-personalizer-sdk.md
-- name: Oktatóanyagok
+    - name: Etika és felelős használat
+      href: ethics-responsible-use.md
+- name: Útmutatók
   items:
-    - name: Webalkalmazás használata
-      href: tutorial-use-personalizer-web-app.md
-    - name: Csevegőrobot használata
-      href: tutorial-use-personalizer-chat-bot.md
-    - name: Az Azure Notebooks használata
-      href: tutorial-use-azure-notebook-generate-loop-data.md
-      displayName: 'jupyter, notebook, python, cell, graph, chart, aggregate, model update frequency'
+    - name: Personalizer-erőforrás létrehozása
+      href: how-to-create-resource.md
+    - name: A Personalizer konfigurálása
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Gyakornoki mód használata
+      href: how-to-learning-behavior.md
+    - name: Modell- és tanulási beállítások kezelése
+      href: how-to-manage-model.md
+    - name: Elemzés offline értékeléssel
+      href: how-to-offline-evaluation.md
 - name: Alapelvek
   items:
     - name: A Personalizer működése
@@ -32,10 +42,8 @@
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
     - name: Terminológia
       href: terminology.md
-    - name: Etika és felelős használat
-      href: ethics-responsible-use.md
       displayName: 'best practice, design'
-    - name: Alapfogalmak
+    - name: Személyre szabás alapjai
       items:
         - name: Funkciók – Művelet és környezet
           href: concepts-features.md
@@ -55,71 +63,61 @@
           displayName: 'RL, contextual bandits, Vowpal Wabbit'
         - name: Feltárás
           href: concepts-exploration.md
-    - name: Elemzés
-      items:
-        - name: Offline értékelés
-          href: concepts-offline-evaluation.md
-          displayName: 'learning policy, Counterfactual, features'
-        - name: Szolgáltatások értékelése
-          href: concept-feature-evaluation.md
+    - name: Offline értékelés
+      href: concepts-offline-evaluation.md
+      displayName: 'learning policy, Counterfactual, features'
+    - name: Szolgáltatások értékelése
+      href: concept-feature-evaluation.md
     - name: Méretezhetőség és teljesítmény
       href: concepts-scalability-performance.md
-- name: Útmutatók
+- name: Oktatóanyagok
   items:
-    - name: Personalizer-erőforrás létrehozása
-      href: how-to-create-resource.md
-    - name: A Personalizer konfigurálása
-      href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: Gyakornoki mód használata
-      href: how-to-learning-behavior.md
-    - name: Modell- és tanulási beállítások kezelése
-      href: how-to-manage-model.md
-    - name: Elemzés offline értékeléssel
-      href: how-to-offline-evaluation.md
+    - name: Webalkalmazás használata
+      href: tutorial-use-personalizer-web-app.md
+    - name: Csevegőrobot használata
+      href: tutorial-use-personalizer-chat-bot.md
+    - name: Az Azure Notebooks használata
+      href: tutorial-use-azure-notebook-generate-loop-data.md
+      displayName: 'jupyter, notebook, python, cell, graph, chart, aggregate, model update frequency'
 - name: Referencia
   items:
-    - name: Példák
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
-    - name: REST API-referencia
+    - name: Személyre szabás REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
-    - name: SDK-k
+    - name: .NET
       items:
-        - name: .NET
-          items:
-            - name: Referencia
-              href: /dotnet/api/overview/azure/cognitiveservices/client/personalizer
-            - name: NuGet-csomag
-              href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
-        - name: Indítás
-          items:
-            - name: SDK
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview'
-        - name: Node.js
-          items:
-            - name: Referencia
-              href: /javascript/api/@azure/cognitiveservices-personalizer/
-            - name: NPM
-              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
-        - name: Python
-          items:
-            - name: Referencia
-              href: /python/api/overview/azure/cognitiveservices/personalizer
-            - name: Pypi-csomag
-              href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
+        - name: Referencia
+          href: /dotnet/api/overview/azure/cognitiveservices/client/personalizer
+        - name: NuGet-csomag
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+    - name: Indítás
+      items:
+        - name: Referencia
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview'
+    - name: Node.js
+      items:
+        - name: Referencia
+          href: /javascript/api/@azure/cognitiveservices-personalizer/
+        - name: NPM-csomag
+          href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
+    - name: Python
+      items:
+        - name: Referencia
+          href: /python/api/overview/azure/cognitiveservices/personalizer
+        - name: Pypi-csomag
+          href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: További források
   items:
     - name: Támogatási lehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: Hibaelhárítás
       href: troubleshooting.md
-    - name: Régiónkénti rendelkezésre állás
+    - name: A modulok megismerése
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
+    - name: Régiós támogatás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás
       href: encrypt-data-at-rest.md
-    - name: Azure-ütemterv
+    - name: Azure-frissítések
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
-    - name: Díjszabás
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092154'

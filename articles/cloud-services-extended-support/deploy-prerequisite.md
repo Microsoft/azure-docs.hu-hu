@@ -8,36 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 21433e1a0441ef458dd5f8ea4b968211ef82cd46
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865604"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384977"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
 
-> [!IMPORTANT]
-> A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 A sikeres Cloud Services (kiterjesztett támogatás) központi telepítésének ellenőrzéséhez tekintse át az alábbi lépéseket, és végezze el az egyes elemek telepítését az üzembe helyezések megkísérlése előtt. 
-
-## <a name="register-the-cloudservices-feature"></a>A CloudServices funkció regisztrálása
-Regisztrálja az előfizetéshez tartozó funkciót. A regisztráció elvégzése több percet is igénybe vehet. 
-
-```powershell
-Register-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
-```
-
-A regisztráció állapotát a következő paranccsal ellenőrizhető:  
-```powershell
-Get-AzProviderFeature 
-
-#Sample output
-FeatureName               ProviderName      RegistrationState
-CloudServices           Microsoft.Compute    Registered
-```
 
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Szükséges szolgáltatási konfigurációs (. cscfg) fájlok frissítései
 

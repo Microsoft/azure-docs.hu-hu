@@ -1,342 +1,336 @@
-### YamlMime:Hub
+### YamlMime:Hub 
 title: Az Azure-hálózatkezelés dokumentációja
-summary: Többet tudhat meg a különböző elérhető Azure-hálózatkezelési szolgáltatásokról, amelyek biztosítják a kapcsolatot az Azure-beli erőforrásokhoz, biztosítják és védik az alkalmazásokat, valamint gondoskodnak a hálózat védelméről.
+summary: 'Többet tudhat meg a különböző elérhető Azure-hálózatkezelési szolgáltatásokról, amelyek biztosítják a kapcsolatot az Azure-beli erőforrásokhoz, biztosítják és védik az alkalmazásokat, valamint gondoskodnak a hálózat védelméről.'
 brand: azure
 metadata:
   title: Az Azure-hálózatkezelés dokumentációja
-  description: Az Azure-hálózatkezelési szolgáltatások biztosítják a kapcsolatot az Azure-beli erőforrásokhoz, terjesztik és védik az alkalmazásokat, valamint gondoskodnak a hálózat biztonságáról.
+  description: 'Az Azure-hálózatkezelési szolgáltatások biztosítják a kapcsolatot az Azure-beli erőforrásokhoz, terjesztik és védik az alkalmazásokat, valamint gondoskodnak a hálózat biztonságáról.'
   ms.service: virtual-network
   ms.topic: hub-page
-  ms.collection: 
+  ms.collection: null
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 09/28/2020
-  ms.openlocfilehash: c701f1f54955257fd60fe8d58fb703a1d26d1169
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102503397"
+  ms.date: 03/30/2021
 highlightedContent:
   items:
-  - title: Mi az az Azure-hálózatkezelés?
-    itemType: overview
-    url: networking-overview.md
-  - title: Az Azure-hálózatkezelés újdonságai
-    itemType: whats-new
-    url: https://azure.microsoft.com/updates/?category=networking
-  - title: Terheléselosztási lehetőségek az Azure-ban
-    itemType: architecture
-    url: /azure/architecture/guide/technology-choices/load-balancing-overview
-  - title: Küllős hálózati topológia az Azure-ban
-    itemType: architecture
-    url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: Mi az az Azure Orbital?
-    itemType: concept
-    url: azure-orbital-overview.md
-  - title: Távmunka az Azure-szolgáltatások használatával
-    itemType: concept
-    url: working-remotely-support.md
+    - title: Mi az az Azure-hálózatkezelés?
+      itemType: overview
+      url: fundamentals/networking-overview.md
+    - title: Az Azure-hálózatkezelés újdonságai
+      itemType: whats-new
+      url: 'https://azure.microsoft.com/updates/?category=networking'
+    - title: Terheléselosztási lehetőségek az Azure-ban
+      itemType: architecture
+      url: /azure/architecture/guide/technology-choices/load-balancing-overview
+    - title: Küllős hálózati topológia az Azure-ban
+      itemType: architecture
+      url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+    - title: Mi az az Azure Orbital?
+      itemType: concept
+      url: azure-orbital-overview.md
+    - title: Távmunka az Azure-szolgáltatások használatával
+      itemType: concept
+      url: working-remotely-support.md
 conceptualContent:
   items:
-  - title: Virtuális hálózat
-    links:
-    - url: ../virtual-network/virtual-networks-overview.md
-      itemType: concept
-      text: Mi az az Azure Virtual Network?
-    - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
-      itemType: tutorial
-      text: Erőforrások hálózati hozzáférésének korlátozása
-    - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
-      itemType: tutorial
-      text: Azure-beli virtuális hálózatok csatlakoztatása
-    - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
-      itemType: how-to-guide
-      text: A hálózati forgalom szűrésével kapcsolatos problémák elhárítása
-    footerLink:
-      url: ../virtual-network/index.yml
-      text: Részletek
-  - title: Helyszíni kapcsolódás az Azure-hoz – VPN-titkosítás
-    links:
-    - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
-      itemType: overview
-      text: Mi az az Azure VPN Gateway?
-    - url: ../vpn-gateway/tutorial-site-to-site-portal.md
-      itemType: tutorial
-      text: Helyek közötti kapcsolatok
-    - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
-      itemType: how-to-guide
-      text: Pont–hely kapcsolatok
-    - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
-      itemType: how-to-guide
-      text: VPN-átjárók hibaelhárítása
-    footerLink:
-      url: ../vpn-gateway/index.yml
-      text: Részletek
-  - title: Helyszíni rendszer kiterjesztése az Azure-ba – privát kapcsolat
-    links:
-    - url: ../expressroute/expressroute-introduction.md
-      itemType: concept
-      text: Mi az az Azure ExpressRoute?
-    - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
-      itemType: tutorial
-      text: Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása
-    - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
-      itemType: tutorial
-      text: Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
-    - url: ../expressroute/expressroute-troubleshooting-network-performance.md
-      itemType: how-to-guide
-      text: A hálózati teljesítmény hibaelhárítása
-    footerLink:
-      url: ../expressroute/index.yml
-      text: Részletek
-  - title: DNS
-    links:
-    - url: ../dns/dns-overview.md
-      itemType: overview
-      text: Mi az Azure DNS?
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: overview
-      text: Mi az Azure Private DNS?
-    - url: ../dns/dns-delegate-domain-azure-dns.md
-      itemType: tutorial
-      text: Saját tartomány és altartomány üzemeltetése
-    - url: ../dns/dns-getstarted-portal.md
-      itemType: tutorial
-      text: Az Azure DNS hibaelhárítása
-    footerLink:
-      url: ../dns/index.yml
-      text: Részletek
-  - title: Hálózati terheléselosztó
-    links:
-    - url: ../load-balancer/load-balancer-overview.md
-      itemType: overview
-      text: Mi az az Azure Load Balancer?
-    - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
-      itemType: whats-new
-      text: Újdonságok
-    - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
-      itemType: quickstart
-      text: Virtuális gépek internetes forgalmának terheléselosztása
-    - url: ../load-balancer/load-balancer-troubleshoot.md
-      itemType: how-to-guide
-      text: Az Azure Load Balancer hibaelhárítása
-    footerLink:
-      url: ../load-balancer/index.yml
-      text: Részletek
-  - title: DNS-alapú terheléselosztó
-    links:
-    - url: ../traffic-manager/traffic-manager-overview.md
-      itemType: overview
-      text: Mi az az Azure Traffic Manager?
-    - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
-      itemType: tutorial
-      text: Forgalom irányítása az alacsony késés érdekében
-    - url: ../traffic-manager/traffic-manager-routing-methods.md
-      itemType: concept
-      text: Forgalom-útválasztási módszerek
-    - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
-      itemType: how-to-guide
-      text: A Traffic Manager csökkentett teljesítményével kapcsolatos hibák elhárítása
-    footerLink:
-      url: ../traffic-manager/index.yml
-      text: Részletek
-  - title: Webalkalmazás terheléselosztója
-    links:
-    - url: ../application-gateway/overview.md
-      itemType: overview
-      text: Mi az Azure Application Gateway?
-    - url: ../application-gateway/quick-create-portal.md
-      itemType: quickstart
-      text: Webes forgalom irányítása a portál használatával
-    - url: ../application-gateway/application-gateway-faq.yml
-      itemType: concept
-      text: Gyakori kérdések
-    - url: ../application-gateway/application-gateway-troubleshooting-502.md
-      itemType: how-to-guide
-      text: Hibás átjárókkal kapcsolatos hibák elhárítása
-    footerLink:
-      url: ../application-gateway/index.yml
-      text: Részletek
-  - title: Biztonságos Cloud CDN és globális Load Balancer
-    links:
-    - url: ../frontdoor/front-door-overview.md
-      itemType: overview
-      text: Mi az az Azure Front Door Service?
-    - url: ../frontdoor/standard-premium/overview.md
-      itemType: overview
-      text: Mi az Azure bejárati ajtó standard/Premium (előzetes verzió)?
-    - url: ../frontdoor/front-door-custom-domain.md
-      itemType: how-to-guide
-      text: Egyéni tartomány hozzáadása az Azure Front Door Service-hez
-    - url: ../frontdoor/front-door-how-to-redirect-https.md
-      itemType: how-to-guide
-      text: HTTPS–HTTPS-átirányítás
-    footerLink:
-      url: ../frontdoor/index.yml
-      text: Részletek
-  - title: Hálózati állapot monitorozása
-    links:
-    - url: ../network-watcher/network-watcher-monitoring-overview.md
-      itemType: overview
-      text: Mi az az Azure Network Watcher?
-    - url: ../network-watcher/traffic-analytics.md
-      itemType: concept
-      text: Forgalmi elemzések az Azure-ban
-    - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
-      itemType: tutorial
-      text: Virtuális gép be- és kimenő forgalmának naplózása
-    footerLink:
-      url: ../network-watcher/index.yml
-      text: Részletek
-  - title: Hálózati tűzfal
-    links:
-    - url: ../firewall/overview.md
-      itemType: overview
-      text: Mi az Azure Firewall?
-    - url: ../firewall/tutorial-firewall-deploy-portal.md
-      itemType: tutorial
-      text: Az Azure Firewall üzembe helyezése és konfigurálása
-    - url: ../firewall/tutorial-firewall-dnat.md
-      itemType: tutorial
-      text: Bejövő internetes forgalom szűrése az Azure Firewall használatával
-    footerLink:
-      url: ../firewall/index.yml
-      text: Részletek
-  - title: Biztonságos hozzáférés az Azure-beli virtuális gépekhez
-    links:
-    - url: ../bastion/bastion-overview.md
-      itemType: overview
-      text: Mi az az Azure Bastion?
-    - url: ../bastion/tutorial-create-host-portal.md
-      itemType: how-to-guide
-      text: Azure Bastion-gazdagép létrehozása
-    - url: ../bastion/troubleshoot.md
-      itemType: how-to-guide
-      text: Az Azure Bastion hibaelhárítása
-    footerLink:
-      url: ../bastion/index.yml
-      text: Részletek
-  - title: Hálózati biztonság kezelése
-    links:
-    - url: ../firewall-manager/overview.md
-      itemType: overview
-      text: Mi az az Azure Firewall Manager?
-    - url: ../firewall-manager/secured-virtual-hub.md
-      itemType: concept
-      text: Mi az a biztonságos virtuális központ?
-    - url: ../firewall-manager/secure-cloud-network.md
-      itemType: tutorial
-      text: A virtuális WAN biztonságossá tétele az Azure Firewall Manager használatával
-    footerLink:
-      url: ../firewall-manager/index.yml
-      text: Részletek
-  - title: Web application firewall (Webalkalmazási tűzfal)
-    links:
-    - url: ../web-application-firewall/overview.md
-      itemType: overview
-      text: Mi az az Azure webalkalmazási tűzfal?
-    - url: ../web-application-firewall/ag/ag-overview.md
-      itemType: concept
-      text: WAF az Application Gatewayen
-    - url: ../web-application-firewall/afds/afds-overview.md
-      itemType: concept
-      text: WAF az Azure Front Door Service-en
-    - url: ../web-application-firewall/cdn/cdn-overview.md
-      itemType: concept
-      text: WAF az Azure CDN-en
-    - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
-      itemType: how-to-guide
-      text: A WAF hibaelhárítása az Application Gateway esetében
-    footerLink:
-      url: ../web-application-firewall/index.yml
-      text: Részletek
-  - title: Szolgáltatás privát elérése
-    links:
-    - url: ../private-link/private-link-overview.md
-      itemType: overview
-      text: Mi az az Azure privát kapcsolat?
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: concept
-      text: Mi az az Azure privát végpont?
-    - url: ../private-link/troubleshoot-private-link-connectivity.md
-      itemType: how-to-guide
-      text: Az Azure Private Link hibaelhárítása
-    footerLink:
-      url: ../private-link/index.yml
-      text: Részletek
-  - title: DDoS Protection
-    links:
-    - url: ../ddos-protection/ddos-protection-overview.md
-      itemType: overview
-      text: Mi az az Azure DDoS Protection Standard?
-    - url: ../ddos-protection/manage-ddos-protection.md
-      itemType: how-to-guide
-      text: A DDoS Protection kezelése
-    - url: ../ddos-protection/ddos-protection-partner-onboarding.md
-      itemType: concept
-      text: Partnerek előkészítése
-    footerLink:
-      url: ../ddos-protection/index.yml
-      text: Részletek
-  - title: Content Delivery Network (Tartalomkézbesítési hálózat)
-    links:
-    - url: ../cdn/cdn-overview.md
-      itemType: overview
-      text: Mi az az Azure Content Delivery Network?
-    - url: ../cdn/cdn-create-new-endpoint.md
-      itemType: quickstart
-      text: CDN-profil és -végpont létrehozása
-    - url: ../cdn/cdn-standard-rules-engine-reference.md
-      itemType: concept
-      text: A Standard szabálymotor referenciája az Azure CDN-hez
-    - url: ../cdn/cdn-troubleshoot-endpoint.md
-      itemType: how-to-guide
-      text: Azure CDN-végpontok hibaelhárítása
-    footerLink:
-      url: ../cdn/index.yml
-      text: Részletek
-  - title: Egységesített küllős hálózat
-    links:
-    - url: ../virtual-wan/virtual-wan-about.md
-      itemType: overview
-      text: Mi az Azure Virtual WAN?
-    - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
-      itemType: concept
-      text: Globális átviteli hálózati architektúra – Azure Virtual WAN
-    - url: ../virtual-wan/virtual-wan-locations-partners.md
-      itemType: concept
-      text: Azure Virtual WAN-partnerek és -helyek
-    - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
-      itemType: how-to-guide
-      text: Migrálás küllős topológiából
-    footerLink:
-      url: ../virtual-wan/index.yml
-      text: Részletek
-  - title: Társviszony-létesítési szolgáltatások
-    links:
-    - url: ../peering-service/about.md
-      itemType: overview
-      text: Mi az az Azure Peering Service?
-    - url: ../internet-peering/overview.md
-      itemType: overview
-      text: Mi az az internetes társviszony-létesítés?
-    - url: ../internet-peering/overview-peering-service.md
-      itemType: concept
-      text: Internetes társviszony-létesítés vagy Társviszony-létesítés az Azure-ban
-    footerLink:
-      url: ../peering-service/index.yml
-      text: Részletek
+    - title: A hálózatkezelés alapjai Az Azure-ban
+      links:
+        - url: fundamentals/networking-overview.md
+          itemType: overview
+          text: Mi az az Azure-hálózatkezelés?
+        - url: ../virtual-network/quick-create-portal.md
+          itemType: get-started
+          text: Virtuális hálózat létrehozása
+        - url: microsoft-global-network.md
+          itemType: concept
+          text: Microsoft globális hálózat
+      footerLink:
+        url: ../networking/fundamentals/index.yml
+        text: Részletek
+    - title: Virtuális hálózat
+      links:
+        - url: ../virtual-network/virtual-networks-overview.md
+          itemType: concept
+          text: Mi az az Azure Virtual Network?
+        - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
+          itemType: tutorial
+          text: Erőforrások hálózati hozzáférésének korlátozása
+        - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+          itemType: tutorial
+          text: Azure-beli virtuális hálózatok csatlakoztatása
+        - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
+          itemType: how-to-guide
+          text: A hálózati forgalom szűrésével kapcsolatos problémák elhárítása
+      footerLink:
+        url: ../virtual-network/index.yml
+        text: Részletek
+    - title: Helyszíni kapcsolódás az Azure-hoz – VPN-titkosítás
+      links:
+        - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+          itemType: overview
+          text: Mi az az Azure VPN Gateway?
+        - url: ../vpn-gateway/tutorial-site-to-site-portal.md
+          itemType: tutorial
+          text: Helyek közötti kapcsolatok
+        - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
+          itemType: how-to-guide
+          text: Pont–hely kapcsolatok
+        - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
+          itemType: how-to-guide
+          text: VPN-átjárók hibaelhárítása
+      footerLink:
+        url: ../vpn-gateway/index.yml
+        text: Részletek
+    - title: Helyszíni rendszer kiterjesztése az Azure-ba – privát kapcsolat
+      links:
+        - url: ../expressroute/expressroute-introduction.md
+          itemType: concept
+          text: Mi az az Azure ExpressRoute?
+        - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
+          itemType: tutorial
+          text: Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása
+        - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
+          itemType: tutorial
+          text: Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
+        - url: ../expressroute/expressroute-troubleshooting-network-performance.md
+          itemType: how-to-guide
+          text: A hálózati teljesítmény hibaelhárítása
+      footerLink:
+        url: ../expressroute/index.yml
+        text: Részletek
+    - title: DNS
+      links:
+        - url: ../dns/dns-overview.md
+          itemType: overview
+          text: Mi az Azure DNS?
+        - url: ../private-link/private-endpoint-overview.md
+          itemType: overview
+          text: Mi az Azure Private DNS?
+        - url: ../dns/dns-delegate-domain-azure-dns.md
+          itemType: tutorial
+          text: Saját tartomány és altartomány üzemeltetése
+        - url: ../dns/dns-getstarted-portal.md
+          itemType: tutorial
+          text: Az Azure DNS hibaelhárítása
+      footerLink:
+        url: ../dns/index.yml
+        text: Részletek
+    - title: Hálózati terheléselosztó
+      links:
+        - url: ../load-balancer/load-balancer-overview.md
+          itemType: overview
+          text: Mi az az Azure Load Balancer?
+        - url: 'https://azure.microsoft.com/updates/?category=networking&query=load%20balancer'
+          itemType: whats-new
+          text: Újdonságok
+        - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
+          itemType: quickstart
+          text: Virtuális gépek internetes forgalmának terheléselosztása
+        - url: ../load-balancer/load-balancer-troubleshoot.md
+          itemType: how-to-guide
+          text: Az Azure Load Balancer hibaelhárítása
+      footerLink:
+        url: ../load-balancer/index.yml
+        text: Részletek
+    - title: DNS-alapú terheléselosztó
+      links:
+        - url: ../traffic-manager/traffic-manager-overview.md
+          itemType: overview
+          text: Mi az az Azure Traffic Manager?
+        - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
+          itemType: tutorial
+          text: Forgalom irányítása az alacsony késés érdekében
+        - url: ../traffic-manager/traffic-manager-routing-methods.md
+          itemType: concept
+          text: Forgalom-útválasztási módszerek
+        - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
+          itemType: how-to-guide
+          text: A Traffic Manager csökkentett teljesítményével kapcsolatos hibák elhárítása
+      footerLink:
+        url: ../traffic-manager/index.yml
+        text: Részletek
+    - title: Webalkalmazás terheléselosztója
+      links:
+        - url: ../application-gateway/overview.md
+          itemType: overview
+          text: Mi az Azure Application Gateway?
+        - url: ../application-gateway/quick-create-portal.md
+          itemType: quickstart
+          text: Webes forgalom irányítása a portál használatával
+        - url: ../application-gateway/application-gateway-faq.yml
+          itemType: concept
+          text: Gyakori kérdések
+        - url: ../application-gateway/application-gateway-troubleshooting-502.md
+          itemType: how-to-guide
+          text: Hibás átjárókkal kapcsolatos hibák elhárítása
+      footerLink:
+        url: ../application-gateway/index.yml
+        text: Részletek
+    - title: Biztonságos Cloud CDN és globális Load Balancer
+      links:
+        - url: ../frontdoor/front-door-overview.md
+          itemType: overview
+          text: Mi az az Azure Front Door Service?
+        - url: ../frontdoor/standard-premium/overview.md
+          itemType: overview
+          text: Mi az Azure bejárati ajtó standard/Premium (előzetes verzió)?
+        - url: ../frontdoor/front-door-custom-domain.md
+          itemType: how-to-guide
+          text: Egyéni tartomány hozzáadása az Azure Front Door Service-hez
+        - url: ../frontdoor/front-door-how-to-redirect-https.md
+          itemType: how-to-guide
+          text: HTTPS–HTTPS-átirányítás
+      footerLink:
+        url: ../frontdoor/index.yml
+        text: Részletek
+    - title: Hálózati állapot monitorozása
+      links:
+        - url: ../network-watcher/network-watcher-monitoring-overview.md
+          itemType: overview
+          text: Mi az az Azure Network Watcher?
+        - url: ../network-watcher/traffic-analytics.md
+          itemType: concept
+          text: Forgalmi elemzések az Azure-ban
+        - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
+          itemType: tutorial
+          text: Virtuális gép be- és kimenő forgalmának naplózása
+      footerLink:
+        url: ../network-watcher/index.yml
+        text: Részletek
+    - title: Hálózati tűzfal
+      links:
+        - url: ../firewall/overview.md
+          itemType: overview
+          text: Mi az Azure Firewall?
+        - url: ../firewall/tutorial-firewall-deploy-portal.md
+          itemType: tutorial
+          text: Az Azure Firewall üzembe helyezése és konfigurálása
+        - url: ../firewall/tutorial-firewall-dnat.md
+          itemType: tutorial
+          text: Bejövő internetes forgalom szűrése az Azure Firewall használatával
+      footerLink:
+        url: ../firewall/index.yml
+        text: Részletek
+    - title: Biztonságos hozzáférés az Azure-beli virtuális gépekhez
+      links:
+        - url: ../bastion/bastion-overview.md
+          itemType: overview
+          text: Mi az az Azure Bastion?
+        - url: ../bastion/tutorial-create-host-portal.md
+          itemType: how-to-guide
+          text: Azure Bastion-gazdagép létrehozása
+        - url: ../bastion/troubleshoot.md
+          itemType: how-to-guide
+          text: Az Azure Bastion hibaelhárítása
+      footerLink:
+        url: ../bastion/index.yml
+        text: Részletek
+    - title: Hálózati biztonság kezelése
+      links:
+        - url: ../firewall-manager/overview.md
+          itemType: overview
+          text: Mi az az Azure Firewall Manager?
+        - url: ../firewall-manager/secured-virtual-hub.md
+          itemType: concept
+          text: Mi az a biztonságos virtuális központ?
+        - url: ../firewall-manager/secure-cloud-network.md
+          itemType: tutorial
+          text: A virtuális WAN biztonságossá tétele az Azure Firewall Manager használatával
+      footerLink:
+        url: ../firewall-manager/index.yml
+        text: Részletek
+    - title: Web application firewall (Webalkalmazási tűzfal)
+      links:
+        - url: ../web-application-firewall/overview.md
+          itemType: overview
+          text: Mi az az Azure webalkalmazási tűzfal?
+        - url: ../web-application-firewall/ag/ag-overview.md
+          itemType: concept
+          text: WAF az Application Gatewayen
+        - url: ../web-application-firewall/afds/afds-overview.md
+          itemType: concept
+          text: WAF az Azure Front Door Service-en
+        - url: ../web-application-firewall/cdn/cdn-overview.md
+          itemType: concept
+          text: WAF az Azure CDN-en
+        - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
+          itemType: how-to-guide
+          text: A WAF hibaelhárítása az Application Gateway esetében
+      footerLink:
+        url: ../web-application-firewall/index.yml
+        text: Részletek
+    - title: Szolgáltatás privát elérése
+      links:
+        - url: ../private-link/private-link-overview.md
+          itemType: overview
+          text: Mi az az Azure privát kapcsolat?
+        - url: ../private-link/private-endpoint-overview.md
+          itemType: concept
+          text: Mi az az Azure privát végpont?
+        - url: ../private-link/troubleshoot-private-link-connectivity.md
+          itemType: how-to-guide
+          text: Az Azure Private Link hibaelhárítása
+      footerLink:
+        url: ../private-link/index.yml
+        text: Részletek
+    - title: DDoS Protection
+      links:
+        - url: ../ddos-protection/ddos-protection-overview.md
+          itemType: overview
+          text: Mi az az Azure DDoS Protection Standard?
+        - url: ../ddos-protection/manage-ddos-protection.md
+          itemType: how-to-guide
+          text: A DDoS Protection kezelése
+        - url: ../ddos-protection/ddos-protection-partner-onboarding.md
+          itemType: concept
+          text: Partnerek előkészítése
+      footerLink:
+        url: ../ddos-protection/index.yml
+        text: Részletek
+    - title: Content Delivery Network (Tartalomkézbesítési hálózat)
+      links:
+        - url: ../cdn/cdn-overview.md
+          itemType: overview
+          text: Mi az az Azure Content Delivery Network?
+        - url: ../cdn/cdn-create-new-endpoint.md
+          itemType: quickstart
+          text: CDN-profil és -végpont létrehozása
+        - url: ../cdn/cdn-standard-rules-engine-reference.md
+          itemType: concept
+          text: A Standard szabálymotor referenciája az Azure CDN-hez
+        - url: ../cdn/cdn-troubleshoot-endpoint.md
+          itemType: how-to-guide
+          text: Azure CDN-végpontok hibaelhárítása
+      footerLink:
+        url: ../cdn/index.yml
+        text: Részletek
+    - title: Egységesített küllős hálózat
+      links:
+        - url: ../virtual-wan/virtual-wan-about.md
+          itemType: overview
+          text: Mi az Azure Virtual WAN?
+        - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
+          itemType: concept
+          text: Globális átviteli hálózati architektúra – Azure Virtual WAN
+        - url: ../virtual-wan/virtual-wan-locations-partners.md
+          itemType: concept
+          text: Azure Virtual WAN-partnerek és -helyek
+        - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
+          itemType: how-to-guide
+          text: Migrálás küllős topológiából
+      footerLink:
+        url: ../virtual-wan/index.yml
+        text: Részletek
 additionalContent:
   sections:
-  - items:
-    - title: Azure PowerShell-parancsok az Azure-hálózatkezeléshez
-      summary: Megismerkedhet az Azure Network-parancsmagokkal.
-      url: /powershell/module/az.network/#networking
-    - title: Azure CLI-parancsok az Azure-hálózatkezeléshez
-      summary: Keresse meg az Azure-beli hálózati parancsokat a parancssori felület referenciájában.
-      url: /cli/azure/network
-    - title: Azure-hálózatkezelési blogok
-      summary: Megtekintheti a legfrissebb Azure-hálózatkezelési blogokat.
-      url: https://azure.microsoft.com/blog/topics/networking/
+    - items:
+        - title: Azure PowerShell-parancsok az Azure-hálózatkezeléshez
+          summary: Megismerkedhet az Azure Network-parancsmagokkal.
+          url: /powershell/module/az.network/#networking
+        - title: Azure CLI-parancsok az Azure-hálózatkezeléshez
+          summary: Keresse meg az Azure-beli hálózati parancsokat a parancssori felület referenciájában.
+          url: /cli/azure/network
+        - title: Azure-hálózatkezelési blogok
+          summary: Megtekintheti a legfrissebb Azure-hálózatkezelési blogokat.
+          url: 'https://azure.microsoft.com/blog/topics/networking/'

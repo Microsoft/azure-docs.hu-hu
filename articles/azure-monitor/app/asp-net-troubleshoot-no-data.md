@@ -4,12 +4,12 @@ description: Nem látja az Azure Application Insightsban tárolt adatmegjelenít
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562195"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056572"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -282,7 +282,9 @@ További információk:
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Naplók összegyűjtése a DotNet-tracevel
 
-Alternatív módszer a hibakeresési naplók gyűjtésére, amelyek különösen hasznosak lehetnek a Linux-alapú környezetekben [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+Alternatív megoldásként az ügyfelek használhatnak platformfüggetlen .NET Core-eszközt is, [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) amely a hibaelhárításhoz további segítséget nyújtó naplók gyűjtését is lehetővé teszi. Ez különösen hasznos lehet a Linux-alapú környezetekben.
+
+A telepítését követően [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) hajtsa végre az alábbi parancsot a bash-ben.
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -294,4 +296,3 @@ Megtudhatja, hogyan távolíthatja el Application Insights a Visual Studióban a
 
 ## <a name="still-not-working"></a>Még mindig nem működik...
 * [A Microsoft Q&egy kérdés oldalt Application Insights](/answers/topics/azure-monitor.html)
-

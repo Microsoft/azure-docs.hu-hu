@@ -2,14 +2,14 @@
 title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Annak megakadályozása, hogy a felhasználók az összes felhasználóra és szerepkörre vonatkozó zárolást alkalmazzanak az Azure-erőforrások frissítésére vagy törlésére.
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932760"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030066"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -32,13 +32,15 @@ A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekr
 
 A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. A zárolások megakadályozza, hogy a Azure Resource Manager API-nak POST-kérést igénylő műveletek is meglegyenek. Néhány gyakori példa a zárolások által blokkolt műveletekre:
 
-* A **Storage-fiók** csak olvasható zárolása megakadályozza, hogy a felhasználók listázzák a fiók kulcsait. Az Azure Storage- [lista kulcsai](/rest/api/storagerp/storageaccounts/listkeys) művelet egy post-kérésen keresztül történik, hogy megvédje a fiók kulcsaihoz való hozzáférést, amelyek teljes körű hozzáférést biztosítanak a Storage-fiókban lévő összes információhoz. Ha a Storage-fiókhoz csak olvasási zárolás van konfigurálva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure AD-beli hitelesítő adatokkal kell rendelkezniük a blob-vagy üzenetsor-adatok eléréséhez. A írásvédett zárolás megakadályozza a Storage-fiókra vagy egy adattárolóra (blob-tárolóra vagy-várólistára) kiterjedő Azure RBAC-szerepkörök hozzárendelését is.
+* A **Storage-fiók** csak olvasható zárolása megakadályozza, hogy a felhasználók listázzák a fiók kulcsait. Az Azure Storage- [lista kulcsai](/rest/api/storagerp/storageaccounts/listkeys) művelet egy post-kérésen keresztül történik, hogy megvédje a fiók kulcsaihoz való hozzáférést, amelyek teljes körű hozzáférést biztosítanak a Storage-fiókban lévő összes információhoz. Ha a Storage-fiókhoz írásvédett zárolás van konfigurálva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure AD hitelesítő adatait kell használniuk a blob-vagy üzenetsor-adatok eléréséhez. A írásvédett zárolás megakadályozza a Storage-fiókra vagy egy adattárolóra (blob-tárolóra vagy-várólistára) kiterjedő Azure RBAC-szerepkörök hozzárendelését is.
 
-* Egy **Storage-fiók** nem törölhető zárolása nem akadályozza meg a fiókban lévő adatok törlését vagy módosítását. Ez a zárolási típus csak a Storage-fiók törlését védi, és nem védi a blob, az üzenetsor, a tábla vagy a fájl adatait a Storage-fiókon belül. 
+* Egy **Storage-fiók** nem törölhető zárolása nem akadályozza meg a fiókban lévő adatok törlését vagy módosítását. Ez a típusú zárolás csak a Storage-fiók törlését védi, és nem védi a blob, az üzenetsor, a tábla vagy a fájl adatait a Storage-fiókon belül. 
 
-* A **Storage-fiók** írásvédett zárolása nem akadályozza meg, hogy a fiókban lévő adatok törölve vagy módosítva legyenek. Ez a típusú zárolás csak a Storage-fiók törlését vagy módosítását védi, és nem védi a blob, a várólista, a tábla vagy a fájl adatait a Storage-fiókon belül. 
+* A **Storage-fiók** írásvédett zárolása nem akadályozza meg, hogy a fiókban lévő adatok ne legyenek törölve vagy módosítva. Ez a típusú zárolás csak a Storage-fiók törlését vagy módosítását védi, és nem védi a blob, a várólista, a tábla vagy a fájl adatait a Storage-fiókon belül. 
 
 * Egy **app Service** erőforrás írásvédett zárolása megakadályozza, hogy a Visual Studio Server Explorer megjelenítse az erőforráshoz tartozó fájlokat, mert az interakcióhoz írási hozzáférés szükséges.
+
+* Egy **app Service csomagot** tartalmazó **erőforráscsoport** írásvédett zárolása megakadályozza [a terv vertikális felskálázását](../../app-service/manage-scale-up.md).
 
 * Egy olyan **erőforráscsoport** írásvédett zárolása, amely egy **virtuális gépet** tartalmaz, megakadályozza, hogy minden felhasználó elindítsa vagy újraindítsa a virtuális gépet. Ezeknek a műveleteknek POST kérelemre van szükségük.
 
@@ -324,7 +326,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](/rest/api/resources/managementlocks/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
+A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](/rest/api/resources/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
 
 Zárolás létrehozásához futtassa a következő parancsot:
 

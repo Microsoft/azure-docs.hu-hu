@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Vezérlő ügynök frissítései az Azure arc-kompatibilis Kubernetes
 keywords: Kubernetes, arc, Azure, K8s, tárolók, ügynök, frissítés
-ms.openlocfilehash: d81a00ed4f30f446aeed96d59a455935c652b7d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29df9973ead167e7774924cc3a0c685606092d28
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954547"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442524"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Az Azure arc-kompatibilis Kubernetes-ügynökök frissítése
 
@@ -53,7 +53,7 @@ az connectedk8s update --name AzureArcTest1 --resource-group AzureArcTest --auto
 Ha letiltotta az ügynökök automatikus frissítését, az alábbi parancs futtatásával manuálisan indíthatja el az ügynökök frissítéseit `az connectedk8s upgrade` :
 
 ```console
-az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.0.1
+az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.1.0
 ```
 
 Az Azure arc-kompatibilis Kubernetes az ügynökök verziójának szabványos [szemantikai verziószámozási sémáját](https://semver.org/) követi `MAJOR.MINOR.PATCH` . 

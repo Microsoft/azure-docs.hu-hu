@@ -3,19 +3,19 @@ title: A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
 titleSuffix: Azure Storage
 description: Ismerje meg, hogyan kérheti le az Azure Storage-fiók típusát és az SKU nevét a .NET ügyféloldali kódtár használatával.
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/12/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26ce4a77e02e62a1a204529ce8652fbba3aab2c9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94579334"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277147"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
 

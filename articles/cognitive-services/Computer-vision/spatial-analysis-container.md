@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612898"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108360"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -311,7 +311,7 @@ A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a I
 Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 Nyissa meg a gazdagépet a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélje le `ADD DEVICE CONNECTION STRING HERE` a karakterláncot a és a közötti értékre. Mentse és zárja be a fájlt. Futtassa ezt a parancsot a IoT Edge szolgáltatás újraindításához a gazdaszámítógépen.
@@ -334,7 +334,7 @@ Nyissa meg a [virtuális gép létrehozása](https://ms.portal.azure.com/#create
 
 Adja meg a virtuális gép nevét, és válassza ki a régiót (USA) az USA nyugati régiója 2. Ügyeljen arra, hogy `Availability Options` "nem szükséges infrastruktúra-redundancia" értékű legyen. A virtuális gép megfelelő méretének megtalálásához tekintse meg az alábbi ábrát, amely a teljes konfigurációt és a következő lépést ismerteti. 
 
-:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="A virtuális gép konfigurációjának részletei." lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="A virtuális gép konfigurációjának részletei." lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
 A virtuális gép méretének megkereséséhez válassza az "összes méret" lehetőséget, majd tekintse meg a "nem prémium szintű Storage virtuálisgép-méretek" listáját alább látható módon.
 
@@ -473,7 +473,7 @@ Ezután regisztrálja a virtuális gépet IoT Edge eszközként a IoT Hub-péld�
 Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 A virtuális gépen nyissa meg a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélje le `ADD DEVICE CONNECTION STRING HERE` a karakterláncot a és a közötti értékre. Mentse és zárja be a fájlt. Futtassa ezt a parancsot a IoT Edge szolgáltatás újraindításához a virtuális gépen.
@@ -542,10 +542,6 @@ Miután a telepítés befejeződött, és a tároló fut, a **gazdaszámítógé
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>A térbeli elemzés által végrehajtott műveletek konfigurálása
 
 [Térbeli elemzési műveletekkel](spatial-analysis-operations.md) konfigurálja a tárolót a csatlakoztatott kamerák használatára, konfigurálja a műveleteket, és így tovább. Minden konfigurált kamera-eszközön a térbeli elemzés műveletei a JSON-üzenetek kimeneti streamjét eredményezik, amelyet az Azure IoT Hub-példánya küld.
-
-## <a name="redeploy-or-delete-the-deployment"></a>Az üzemelő példány újbóli üzembe helyezése vagy törlése
-
-Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)-t.
 
 ## <a name="use-the-output-generated-by-the-container"></a>A tároló által generált kimenet használata
 

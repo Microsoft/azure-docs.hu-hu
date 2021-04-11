@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599127"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276994"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Útmutató: az érzelmek elemzése és a vélemények bányászata
 
-A Text Analytics API Hangulatelemzés szolgáltatása két módszert biztosít a pozitív és negatív érzelmek észlelésére. Ha Hangulatelemzés kérelmet küld, az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és megbízhatósági pontszámokat ad vissza a mondat és a dokumentum szintjén. A Hangulatelemzés végponton keresztül is küldhet vélemény-adatbányászati kérelmeket, amely részletes információkat tartalmaz a szavakhoz (például a termékek vagy szolgáltatások attribútumaihoz) kapcsolódó véleményekről a szövegben. 
+A Text Analytics API Hangulatelemzés szolgáltatása két módszert biztosít a pozitív és negatív érzelmek észlelésére. Ha Hangulatelemzés kérelmet küld, az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és megbízhatósági pontszámokat ad vissza a mondat és a dokumentum szintjén. A Hangulatelemzés végponton keresztül is küldhet vélemény-adatbányászati kérelmeket, amely részletes információkat tartalmaz a szavakhoz (például a termékek vagy szolgáltatások attribútumaihoz) kapcsolódó véleményekről a szövegben.
 
 Az API által használt AI-modelleket a szolgáltatás nyújtja, csak tartalmat kell elküldeni az elemzéshez.
 
@@ -151,7 +151,7 @@ A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is t
 
 A Hangulatelemzés v 3.1 a Hangulatelemzés és a közvélemény számára is visszatérhet a válasz objektumokra.
   
-Az érzelmek elemzése a teljes dokumentumra vonatkozó hangulati címkét és megbízhatósági pontszámot ad vissza, valamint minden mondatot. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. A dokumentumok több mondattal is rendelkezhetnek, és az egyes dokumentumokban vagy mondatokban lévő megbízhatósági pontszámok akár 1-re is felvehetők. értékelések 
+Az érzelmek elemzése a teljes dokumentumra vonatkozó hangulati címkét és megbízhatósági pontszámot ad vissza, valamint minden mondatot. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. A dokumentumok több mondattal is rendelkezhetnek, és az egyes dokumentumokban vagy mondatokban lévő megbízhatósági pontszámok akár 1-re is felvehetők.
 
 A kisegítő adatbányászat a szövegben, valamint a hozzájuk kapcsolódó felmérésben (melléknév) keres célokat. Az alábbi válaszban azt a mondatot, amelyben *az étterem nagy élelmiszereket tartalmaz, és a pincérnek barátságos* két célja van: az *élelmiszer* és a *pincér*. Minden cél `relations` tulajdonsága tartalmaz egy `ref` értéket a társított `documents` , `sentences` és objektumokra mutató URI-hivatkozással `assessments` .
 

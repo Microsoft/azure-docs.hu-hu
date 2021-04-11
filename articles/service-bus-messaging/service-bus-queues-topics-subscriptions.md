@@ -2,13 +2,13 @@
 title: Üzenetkezelés – várólisták, témakörök és előfizetések Azure Service Bus
 description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetkezelési entitásokról (Üzenetsor, témakörök és előfizetések).
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: ccd91d5091dbbba072cf222e5a73c3db1d48c321
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096334"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209824"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 Azure Service Bus támogatja a felhőalapú, Message-orientált middleware-technológiákat, beleértve a megbízható üzenetsor-kezelési és tartós közzétételi/előfizetési üzeneteket. Ezek a felügyelt üzenetkezelési képességek olyan leválasztott üzenetkezelési funkciók, amelyek támogatják a közzététel-előfizetést, az időbeli leválasztást és a terheléselosztási forgatókönyveket a Service Bus üzenetkezelési számítási feladattal. A leválasztott kommunikáció számos előnnyel jár. Például az ügyfelek és a kiszolgálók szükség szerint kapcsolódhatnak, és aszinkron módon végezhetik el a műveleteiket.
@@ -53,7 +53,7 @@ Számos esetben a konkrét tulajdonságokkal rendelkező üzeneteket különböz
 
 Teljes körű működésre példaként tekintse meg a [TopicSubscriptionWithRuleOperationsSample mintát](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample) a githubon.
 
-A lehetséges szűrési értékekkel kapcsolatos további információkért tekintse meg a [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) és a [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) osztály dokumentációját.
+A szűrőkkel kapcsolatos további információkért lásd: a [szűrők és a műveletek](topic-filters.md)témakör.
 
 ## <a name="java-message-service-jms-20-entities"></a>Java Message Service (JMS) 2,0 entitások
 A következő entitások érhetők el a Java Message Service (JMS) 2,0 API-n keresztül.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ff568ede601c57369f8c942ed61cb7a39ba703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2d965ec17fb605362c1e8cd8ef781a6bd2029d0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465708"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067384"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek vagy AES-kulcsok továbbítása Media Services használatával
 
@@ -54,7 +54,7 @@ A következő ábra azokat a fő lépéseket mutatja be, amelyekkel a Media Serv
     ```
  
 ## <a name="net-code-example"></a>.NET-kód – példa
-A következő mintakód bemutatja, hogyan hozhat létre közös tartalmi kulcsot, és hogyan szerezhet be PlayReady vagy Widevine licenc-beszerzési URL-címeket. A helyszíni kiszolgáló konfigurálásához szükség van egy tartalmi kulcsra, a kulcs AZONOSÍTÓra és a licenc-beszerzési URL-címre. A helyszíni kiszolgáló konfigurálását követően a saját streaming-kiszolgálóról is továbbíthat adatfolyamot. Mivel a titkosított adatfolyam egy Media Services licenckiszolgálóra mutat, a lejátszó Media Services-licencet kér. Ha a jogkivonat-hitelesítés lehetőséget választja, a Media Services-licenckiszolgáló érvényesíti a HTTPS protokollon keresztül eljuttatott jogkivonatot. Ha a jogkivonat érvényes, a licenckiszolgáló visszaküldi a licencet a lejátszónak. A következő kódrészlet csak azt mutatja be, hogyan hozhat létre közös tartalmi kulcsot, és hogyan szerezhet be PlayReady vagy Widevine licenc-beszerzési URL-címeket. Ha AES-128 kulcsokat kíván biztosítani, létre kell hoznia egy boríték-tartalmi kulcsot, és be kell szereznie egy kulcs-beszerzési URL-címet. További információ: [az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-protect-with-aes128.md).
+A következő mintakód bemutatja, hogyan hozhat létre közös tartalmi kulcsot, és hogyan szerezhet be PlayReady vagy Widevine licenc-beszerzési URL-címeket. A helyszíni kiszolgáló konfigurálásához szükség van egy tartalmi kulcsra, a kulcs AZONOSÍTÓra és a licenc-beszerzési URL-címre. A helyszíni kiszolgáló konfigurálását követően a saját streaming-kiszolgálóról is továbbíthat adatfolyamot. Mivel a titkosított adatfolyam egy Media Services licenckiszolgálóra mutat, a lejátszó Media Services-licencet kér. Ha a jogkivonat-hitelesítés lehetőséget választja, a Media Services-licenckiszolgáló érvényesíti a HTTPS protokollon keresztül eljuttatott jogkivonatot. Ha a jogkivonat érvényes, a licenckiszolgáló visszaküldi a licencet a lejátszónak. A következő kódrészlet csak azt mutatja be, hogyan hozhat létre közös tartalmi kulcsot, és hogyan szerezhet be PlayReady vagy Widevine licenc-beszerzési URL-címeket. Ha AES-128 kulcsokat kíván biztosítani, létre kell hoznia egy boríték-tartalmi kulcsot, és be kell szereznie egy kulcs-beszerzési URL-címet. További információ: [az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-playready-license-template-overview.md).
 
 ```csharp
 using System;
@@ -357,4 +357,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>Lásd még
 * [PlayReady és/vagy Widevine Dynamic Common Encryption használata](media-services-protect-with-playready-widevine.md)
-* [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata](media-services-protect-with-aes128.md)
+* [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata](media-services-playready-license-template-overview.md)

@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: új szabályzat-hozzárendelés JavaScripttel'
 description: Ebben a rövid útmutatóban a JavaScript használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 09/24/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d42156e68747b66778ea1cf2001d2b4bfc901bb0
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91349001"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090179"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a JavaScript használatával
 
