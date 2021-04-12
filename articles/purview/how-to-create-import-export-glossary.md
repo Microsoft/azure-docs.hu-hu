@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/02/2020
-ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/02/2021
+ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952405"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284087"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Szószedet használati feltételeinek létrehozása, importálása és exportálása
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy üzleti szószedetet az Azure hat�
 
 5. Állítsa be az **állapotot** a kifejezéshez. Az új kifejezések alapértelmezett értéke a **Piszkozat** állapota.
 
-   :::image type="content" source="media/how-to-create-import-export-glossary/new-term-options.png" alt-text="Képernyőkép az állapotok lehetőségeiről." border="true":::
+   :::image type="content" source="media/how-to-create-import-export-glossary/overview-tab.png" alt-text="Képernyőkép az állapotok lehetőségeiről.":::
 
    Ezek az állapotjelzők a kifejezéshez társított metaadatok. Jelenleg a következő állapotot állíthatja be az egyes feltételeknél:
 
@@ -92,9 +92,10 @@ Ha a kiválasztott feltételek ugyanahhoz a lejárati sablonhoz tartoznak, expor
 
 2. Válassza az **Exportálás** lehetőséget a kiválasztott feltételek letöltéséhez.
 
- > [!Important]
-   > Ha a hierarchiában lévő feltételek különböző lejárati sablonokhoz tartoznak, akkor azokat egymástól eltérő módon kell felosztani. CSV-fájlok importáláshoz. Egy kifejezés szülőjének frissítése jelenleg nem támogatott az importálási folyamat használatával.
+   :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-export.png" lightbox="media/how-to-create-import-export-glossary/select-term-template-for-export.png" alt-text="Képernyőfelvétel a Szószedet feltételeiről lapon válassza a fájl exportáláshoz lehetőséget.":::
 
+   > [!Important]
+   > Ha a hierarchiában lévő feltételek különböző lejárati sablonokhoz tartoznak, akkor azt különbözőre kell bontania. CSV-fájlok importáláshoz. Egy kifejezés szülőjének frissítése jelenleg nem támogatott az importálási folyamat használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 

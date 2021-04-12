@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d96f1e0413dac8477e2fc40bf84e88318abf3f9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181577"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az RSA Archer Suite-vel
 
@@ -37,13 +37,13 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az RSA Archer Suite támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* Az RSA Archer Suite **csak időben támogatja a** felhasználók üzembe helyezését
+* Az RSA Archer Suite támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+* Az RSA Archer Suite **csak időben támogatja a** felhasználók üzembe helyezését.
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
-## <a name="adding-rsa-archer-suite-from-the-gallery"></a>Az RSA Archer Suite hozzáadása a katalógusból
+## <a name="add-rsa-archer-suite-from-the-gallery"></a>Az RSA Archer Suite hozzáadása a katalógusból
 
 Az RSA Archer Suite Azure AD-integrációjának konfigurálásához hozzá kell adnia az RSA Archer Suite-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
@@ -53,7 +53,6 @@ Az RSA Archer Suite Azure AD-integrációjának konfigurálásához hozzá kell 
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **RSA Archer Suite** kifejezést.
 1. Válassza ki az **RSA Archer Suite** -t az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-rsa-archer-suite"></a>Azure AD SSO konfigurálása és tesztelése az RSA Archer Suite-hoz
 
@@ -74,7 +73,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal az **RSA Archer Suite** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -141,7 +140,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Hajtsa végre a következő lépéseket a következő lapon.
 
-    ![Az RSA Archer Suite SSO konfigurálása](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
+    ![Az RSA Archer Suite SSO konfigurálása](./media/rsa-archer-suite-tutorial/configuration.png)
 
     a. Nyissa meg az **egyszeri bejelentkezés** lapot, és válassza ki az **SAML** -t **egyetlen Sign-On módban** a legördülő listából.
 

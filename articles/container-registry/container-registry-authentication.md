@@ -2,13 +2,13 @@
 title: Beállításjegyzék-hitelesítési beállítások
 description: A privát Azure Container Registry hitelesítési lehetőségei, beleértve a Azure Active Directory identitással való bejelentkezést, az egyszerű szolgáltatásnév használatát és a nem kötelező rendszergazdai hitelesítő adatok használatát.
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/15/2021
+ms.openlocfilehash: d12895502ecd30991fbef836903a8ceea445b770
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148560"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285501"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Hitelesítés Azure Container registryvel
 
@@ -22,12 +22,12 @@ Az alábbi táblázat az elérhető hitelesítési módszereket és a tipikus fo
 
 | Metódus                               | Hitelesítés                                           | Forgatókönyvek                                                            | Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)                             | Korlátozások                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
-| [Egyedi AD-identitás](#individual-login-with-azure-ad)                | `az acr login` Az Azure CLI-ben                             | Interaktív Leküldés/lekérés fejlesztőknek, tesztelőknek                                    | Yes                              | Az AD-jogkivonatot 3 óránként meg kell újítani     |
-| [AD egyszerű szolgáltatás](#service-principal)                  | `docker login`<br/><br/>`az acr login` Az Azure CLI-ben<br/><br/> Beállításjegyzék-bejelentkezési beállítások az API-kon vagy az eszközökön<br/><br/> [Kubernetes-lekérési titok](container-registry-auth-kubernetes.md)                                           | Felügyelet nélküli leküldés CI/CD-folyamatból<br/><br/> Felügyelet nélküli lekérés az Azure-ba vagy a külső szolgáltatásokra  | Yes                              | Az SP-jelszó alapértelmezett lejárati ideje 1 év       |                                                           
+| [Egyedi AD-identitás](#individual-login-with-azure-ad)                | `az acr login` Az Azure CLI-ben                             | Interaktív Leküldés/lekérés fejlesztőknek, tesztelőknek                                    | Igen                              | Az AD-jogkivonatot 3 óránként meg kell újítani     |
+| [AD egyszerű szolgáltatás](#service-principal)                  | `docker login`<br/><br/>`az acr login` Az Azure CLI-ben<br/><br/> Beállításjegyzék-bejelentkezési beállítások az API-kon vagy az eszközökön<br/><br/> [Kubernetes-lekérési titok](container-registry-auth-kubernetes.md)                                           | Felügyelet nélküli leküldés CI/CD-folyamatból<br/><br/> Felügyelet nélküli lekérés az Azure-ba vagy a külső szolgáltatásokra  | Igen                              | Az SP-jelszó alapértelmezett lejárati ideje 1 év       |                                                           
 | [Integrálás az AK-val](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | Beállításjegyzék csatolása az AK-fürt létrehozásakor vagy frissítésekor  | Felügyelet nélküli lekérés az AK-fürthöz                                                  | Nem, csak a lekéréses hozzáférés             | Csak ak-fürttel érhető el            |
-| [Az Azure-erőforrásokhoz készült felügyelt identitások](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` Az Azure CLI-ben                                       | Felügyelet nélküli leküldés az Azure CI/CD-folyamatból<br/><br/> Felügyelet nélküli lekérés az Azure-szolgáltatásokhoz<br/><br/>   | Yes                              | Csak olyan Azure-szolgáltatások használata, amelyek [támogatják az Azure-erőforrások felügyelt identitásait](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)              |
+| [Az Azure-erőforrásokhoz készült felügyelt identitások](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` Az Azure CLI-ben                                       | Felügyelet nélküli leküldés az Azure CI/CD-folyamatból<br/><br/> Felügyelet nélküli lekérés az Azure-szolgáltatásokhoz<br/><br/>   | Igen                              | Kizárólag az [Azure-erőforrások felügyelt identitásait támogató](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) Azure-szolgáltatások kiválasztása              |
 | [Rendszergazdai felhasználó](#admin-account)                            | `docker login`                                          | Interaktív leküldéses/lekéréses egyéni fejlesztő vagy teszter<br/><br/>A rendszerképek a beállításjegyzékből Azure App Service vagy Azure Container Instancesba való telepítése                      | Nem, mindig lekéréses és leküldéses hozzáférés  | Egy fiók/beállításjegyzék, nem ajánlott több felhasználó számára         |
-| [Tárház – hatókörön belüli hozzáférési jogkivonat](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login` Az Azure CLI-ben   | Interaktív leküldéses/lekéréses adattár egyéni fejlesztő vagy teszter által<br/><br/> Felügyelet nélküli Leküldés/lekérés a tárházba egyéni rendszer vagy külső eszköz használatával                  | Yes                              | Jelenleg nincs integrálva az AD Identity szolgáltatással  |
+| [Tárház – hatókörön belüli hozzáférési jogkivonat](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login` Az Azure CLI-ben   | Interaktív leküldéses/lekéréses adattár egyéni fejlesztő vagy teszter által<br/><br/> Felügyelet nélküli Leküldés/lekérés a tárházba egyéni rendszer vagy külső eszköz használatával                  | Igen                              | Jelenleg nincs integrálva az AD Identity szolgáltatással  |
 
 ## <a name="individual-login-with-azure-ad"></a>Egyéni bejelentkezés az Azure AD-vel
 
@@ -65,11 +65,16 @@ A kimenet az itt rövidített hozzáférési tokent jeleníti meg:
   "loginServer": "myregistry.azurecr.io"
 }
 ``` 
+A beállításjegyzék-hitelesítés esetében javasoljuk, hogy a jogkivonat hitelesítő adatait biztonságos helyen tárolja, és kövesse az ajánlott eljárásokat a [Docker-bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/)azonosítók kezeléséhez. Tárolja például a jogkivonat értékét egy környezeti változóban:
+
+```bash
+TOKEN=$(az acr login --name <acrName> --expose-token --output tsv --query accessToken)
+```
 
 Ezután futtassa `docker login` a parancsot, `00000000-0000-0000-0000-000000000000` és adja át felhasználónevének, és használja a hozzáférési jogkivonatot jelszóként:
 
 ```console
-docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password eyJhbGciOiJSUzI1NiIs[...]24V7wA
+docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
 ```
 
 ## <a name="service-principal"></a>Szolgáltatásnév
@@ -92,7 +97,7 @@ Ahhoz, hogy CLI-parancsfájlok hozzon létre egy egyszerű szolgáltatást az Az
 
 Minden tároló-beállításjegyzék tartalmaz egy rendszergazdai felhasználói fiókot, amely alapértelmezés szerint le van tiltva. Engedélyezheti a rendszergazda felhasználóját, és kezelheti a hitelesítő adatait a Azure Portal, illetve az Azure CLI vagy más Azure-eszközök használatával. A rendszergazdai fiók teljes körű engedélyekkel rendelkezik a beállításjegyzékhez.
 
-A rendszergazdai fiókra jelenleg azért van szükség, hogy egyes esetekben lemezképet helyezzen üzembe egy tároló-beállításjegyzékből bizonyos Azure-szolgáltatásokhoz. Például a rendszergazdai fiókra akkor van szükség, ha egy beállításjegyzékből közvetlenül a [Azure Container instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) vagy az [Azure Web Apps for containers szolgáltatásban](container-registry-tutorial-deploy-app.md)helyez üzembe egy tároló-lemezképet a portálon.
+A rendszergazdai fiókra jelenleg azért van szükség, hogy egyes esetekben lemezképet helyezzen üzembe egy tároló-beállításjegyzékből bizonyos Azure-szolgáltatásokhoz. Például a rendszergazdai fiókra akkor van szükség, amikor a Azure Portal használatával helyez üzembe egy tároló-lemezképet egy beállításjegyzékből közvetlenül a [Azure Container instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) vagy [Az Azure Web Apps for containers szolgáltatásban](container-registry-tutorial-deploy-app.md).
 
 > [!IMPORTANT]
 > A rendszergazdai fiók úgy van kialakítva, hogy egyetlen felhasználó hozzáférjen a beállításjegyzékhez, főleg tesztelési célokra. A rendszergazdai fiók hitelesítő adatait nem ajánlott több felhasználó között megosztani. A rendszergazdai fiókkal hitelesítő összes felhasználó egyetlen felhasználóként jelenik meg a beállításjegyzék leküldéses és lekéréses hozzáférésével. A fiók módosítása vagy letiltása letiltja a beállításjegyzék-hozzáférést minden olyan felhasználó számára, aki hitelesítő adatait használja. A felhasználók és a szolgáltatásokhoz egyéni identitást kell használni a fej nélküli forgatókönyvek esetében.
@@ -104,7 +109,7 @@ A rendszergazdai fiók két jelszóval van ellátva, amelyek közül mindkettő 
 docker login myregistry.azurecr.io 
 ```
 
-A bejelentkezési hitelesítő adatok kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
+A bejelentkezési hitelesítő adatok kezeléséhez ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
 
 Ha engedélyezni szeretné a rendszergazda felhasználót egy meglévő beállításjegyzékben, használja az az `--admin-enabled` [ACR Update](/cli/azure/acr#az-acr-update) parancs paraméterét az Azure CLI-ben:
 

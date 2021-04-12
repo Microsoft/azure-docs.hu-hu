@@ -1,22 +1,22 @@
 ---
-title: Spring Cloud Resilience4J-megszakító metrikáinak gyűjtése
-description: A Spring Cloud Resilience4J-megszakító metrikáinak összegyűjtése.
+title: Spring Cloud Resilience4J Circuit Breaker-metrikák összegyűjtése mikrométersel
+description: A Spring Cloud Resilience4J Circuit Breaker metrikáinak összegyűjtése a mikrométerekkel az Azure Spring Cloudban.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9fc8ccc5ba21f02885b2002d5040051baac92068
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b24e8e07b4038d6def9945b7c347bb81ae5378b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878049"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258180"
 ---
-# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Spring Cloud Resilience4J áramkör-megszakító metrikáinak összegyűjtése (előzetes verzió)
+# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Spring Cloud Resilience4J Circuit Breaker-metrikák összegyűjtése mikrométersel (előzetes verzió)
 
-Ebből a dokumentumból megtudhatja, hogyan gyűjthet a Spring Cloud Resilience4j Circuit Breaker mérőszámait Application Insights Java folyamaton belüli ügynökkel.  Ezzel a funkcióval nyomon követheti a resilience4j áramkör-megszakító metrikáit Application Insightsról.
+Ebből a dokumentumból megtudhatja, hogyan gyűjthet a Spring Cloud Resilience4j Circuit Breaker mérőszámait Application Insights Java folyamaton belüli ügynökkel. Ezzel a funkcióval nyomon követheti a resilience4j áramkör-megszakító metrikáit a Application Insights és a Mikrométer használatával.
 
 A [Spring-Cloud-Circuit-Breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) használatával megmutatjuk, hogyan működik.
 

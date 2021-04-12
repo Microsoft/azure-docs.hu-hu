@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: a Azure Active Directory konfigurálása ellenőrizhető hitelesítő adatok kibocsátására (előzetes verzió)'
+title: Oktatóanyag – a Azure Active Directory konfigurálása ellenőrizhető hitelesítő adatok kibocsátására (előzetes verzió)
 description: Ebben az oktatóanyagban felépíti a szükséges környezetet a bérlőben ellenőrizhető hitelesítő adatok üzembe helyezéséhez
 documentationCenter: ''
 author: barclayn
@@ -7,17 +7,17 @@ manager: daveba
 ms.service: identity
 ms.topic: tutorial
 ms.subservice: verifiable-credentials
-ms.date: 03/31/2021
+ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 08aaa49f73ed437e041ffb93dc9ef5be41e316ec
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: cd39f6c484ebe116918611bb1d543c1919a3cb0a
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106171934"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222945"
 ---
-# <a name="tutorial-configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Oktatóanyag: a Azure Active Directory konfigurálása ellenőrizhető hitelesítő adatok kibocsátására (előzetes verzió)
+# <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Oktatóanyag – a Azure Active Directory konfigurálása ellenőrizhető hitelesítő adatok kibocsátására (előzetes verzió)
 
 Ebben az oktatóanyagban az első [lépéseket](get-started-verifiable-credentials.md) ismertető cikk részeként dolgozunk, és saját [decentralizált azonosítóval](https://www.microsoft.com/security/business/identity-access-management/decentralized-identity-blockchain?rtc=1#:~:text=Decentralized%20identity%20is%20a%20trust,protect%20privacy%20and%20secure%20transactions.) (DID) állíthatja be a Azure Active Directoryt (Azure ad). A decentralizált azonosító használatával ellenőrizhető hitelesítő adatokat adhat ki a minta alkalmazás és a kiállító használatával; Ebben az oktatóanyagban azonban továbbra is a minta Azure B2C-bérlőt használjuk a hitelesítéshez.  A következő oktatóanyagban további lépéseket teszünk az Azure AD-vel való együttműködésre konfigurált alkalmazás beszerzéséhez.
 

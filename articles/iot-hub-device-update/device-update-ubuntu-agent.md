@@ -6,18 +6,18 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 751e9337d74210d238be079e8fcd1bb973937846
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936852"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121302"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz az Ubuntu Server 18,04 x64-es csomag ügynökének használatával
 
 A IoT Hub eszköz frissítése két frissítési formát támogat – a rendszerkép-alapú és a Package-alapú.
 
-A Package-alapú frissítések olyan célzott frissítések, amelyek csak egy adott összetevőt vagy alkalmazást módosítanak az eszközön. Ez csökkenti a sávszélesség-használatot, és csökkenti a frissítés letöltésének és telepítésének idejét. A csomagok frissítései általában lehetővé teszik, hogy az eszközök kevesebb állásidőt alkalmazzanak, amikor frissítést alkalmaznak, és elkerülik a lemezképek létrehozásának terhelését.
+A Package-alapú frissítések olyan célzott frissítések, amelyek csak egy adott összetevőt vagy alkalmazást módosítanak az eszközön. A csomag alapú frissítések csökkentik a sávszélesség-használatot, és csökkentik a frissítés letöltésének és telepítésének idejét. A csomagok frissítései általában lehetővé teszik, hogy az eszközök kevesebb állásidőt alkalmazzanak, amikor frissítést alkalmaznak, és elkerülik a lemezképek létrehozásának terhelését.
 
 Ez a teljes körű oktatóanyag végigvezeti a Azure IoT Edge az Ubuntu Server 18,04 x64-es frissítésén az eszköz frissítési csomag ügynökének használatával. Bár az oktatóanyag bemutatja a IoT Edge frissítését, hasonló lépésekkel frissítheti más csomagokat, például az általa használt tároló motort.
 
@@ -40,7 +40,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 ## <a name="prepare-a-device"></a>Eszköz előkészítése
 ### <a name="using-the-automated-deploy-to-azure-button"></a>Az automatikus üzembe helyezés az Azure-ban gomb használata
 
-Ez az oktatóanyag egy [Cloud-init](../virtual-machines/linux/using-cloud-init.md)-alapú [Azure Resource Manager sablonnal](../azure-resource-manager/templates/overview.md) segíti az Ubuntu 18,04 LTS virtuális gép gyors beállítását. Telepíti mind a Azure IoT Edge futtatókörnyezetet, mind az eszköz-frissítési csomag ügynököt, majd automatikusan konfigurálja az eszközt a kiépítési adatokkal egy IoT Edge eszközhöz (előfeltételként) használt eszköz-csatlakoztatási karakterlánccal. Ezzel elkerülhető, hogy a telepítés befejezéséhez el kell indítania egy SSH-munkamenetet.
+Ez az oktatóanyag egy [Cloud-init](../virtual-machines/linux/using-cloud-init.md)-alapú [Azure Resource Manager sablonnal](../azure-resource-manager/templates/overview.md) segíti az Ubuntu 18,04 LTS virtuális gép gyors beállítását. Telepíti mind a Azure IoT Edge futtatókörnyezetet, mind az eszköz-frissítési csomag ügynököt, majd automatikusan konfigurálja az eszközt a kiépítési adatokkal egy IoT Edge eszközhöz (előfeltételként) használt eszköz-csatlakoztatási karakterlánccal. A Azure Resource Manager sablon azt is elkerüli, hogy a telepítés befejezéséhez el kell indítania egy SSH-munkamenetet.
 
 1. A kezdéshez kattintson az alábbi gombra:
 
@@ -75,7 +75,7 @@ Ez az oktatóanyag egy [Cloud-init](../virtual-machines/linux/using-cloud-init.m
 
 1. Ellenőrizze, hogy az üzembe helyezés sikeresen befejeződött-e. Az üzembe helyezés után néhány percet is igénybe vehet, hogy a telepítés után és a konfigurációban befejeződjön a IoT Edge és az eszköz-csomag frissítési ügynökének telepítése.
 
-   A kiválasztott erőforráscsoportban meg kellett történnie egy virtuális gép erőforrás üzembe helyezésnek.  Jegyezze fel a gép nevét, amelynek formátuma a következő: `vm-0000000000000` . Jegyezze fel a hozzá tartozó **DNS-név** értékét is. Ennek formátuma: `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com.
+   A kiválasztott erőforráscsoportban meg kellett történnie egy virtuális gép erőforrás üzembe helyezésnek.  Jegyezze fel a gép nevét, amelynek formátumúnak kell lennie `vm-0000000000000` . Jegyezze fel a hozzá tartozó **DNS-név** értékét is. Ennek formátuma: `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com.
 
     A **DNS-név** az újonnan üzembe helyezett virtuális gép **Áttekintés** szakaszában állapítható meg az Azure Portalon.
 
@@ -86,7 +86,7 @@ Ez az oktatóanyag egy [Cloud-init](../virtual-machines/linux/using-cloud-init.m
    > Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a társított **DNS-nevet** a következő paranccsal: `ssh <adminUsername>@<DNS_Name>`
 
 ### <a name="optional-manually-prepare-a-device"></a>Választható Eszköz manuális előkészítése
-Az eszköz telepítésének és konfigurálásának alábbi manuális lépései egyenértékűek a [Cloud-init parancsfájl](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt)által automatikusan használt beállításokkal. Felhasználhatók fizikai eszközök előkészítésére is.
+A [Cloud-init parancsfájl](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt)által automatizált lépésekhez hasonlóan a következő kézi lépések szükségesek az eszköz telepítéséhez és konfigurálásához. Ezek a lépések fizikai eszközök előkészítésére használhatók.
 
 1. Az [Azure IoT Edge futtatókörnyezet telepítéséhez](../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true)kövesse az utasításokat.
    > [!NOTE]
@@ -110,9 +110,9 @@ A licencfeltételek elolvasása a csomag használata előtt. A csomagok telepít
 
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com) , és navigáljon a IoT hub.
 
-2. A bal oldali navigációs ablaktáblán található "IoT Edge" listából keresse meg IoT Edge eszközét, és navigáljon a Twin (eszközök) panelre.
+2. A bal oldali navigációs ablaktáblán válassza a "IoT Edge" lehetőséget, keresse meg IoT Edge eszközét, és navigáljon a Twin vagy a modulhoz.
 
-3. A Twin (eszközök) készletben törölje a meglévő eszköz frissítési címke értékét a NULL értékre állításával.
+3. Az eszköz-frissítési ügynök moduljának különálló moduljában törölje a meglévő eszköz frissítési címke értékét a NULL értékre állításával. Ha eszköz-identitást használ az eszköz frissítési ügynökével, végezze el ezeket a módosításokat az eszközön.
 
 4. Vegyen fel egy új eszköz frissítési címke értékét az alább látható módon.
 
@@ -149,7 +149,7 @@ Ez a frissítés frissíti a `aziot-identity-service` és a `aziot-edge` csomago
 
 8. Az importálási folyamat elindításához válassza a Küldés lehetőséget.
 
-9. Az importálási folyamat megkezdődik, és a képernyő az "importálási előzmények" szakaszra változik. Válassza a frissítés lehetőséget, ha az importálási folyamat befejeződéséig szeretné megtekinteni a folyamatot. A frissítés méretétől függően ez néhány percen belül elvégezhető, de hosszabb időt is igénybe vehet.
+9. Az importálási folyamat megkezdődik, és a képernyő az "importálási előzmények" szakaszra változik. Válassza a frissítés lehetőséget, ha az importálási folyamat befejeződéséig szeretné megtekinteni a folyamatot. A frissítés méretétől függően az importálási folyamat néhány percen belül elvégezhető, de hosszabb időt is igénybe vehet.
 
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Az importálási folyamat frissítését bemutató képernyőkép." lightbox="media/import-update/update-publishing-sequence-2.png":::
 
@@ -212,7 +212,7 @@ Sikeresen befejezte a teljes csomag frissítését az eszköz frissítésével I
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az eszköz frissítési fiókját, példányát, IoT Hub és a IoT Edge eszközt (ha a virtuális gépet az üzembe helyezés az Azure-ban gomb használatával hozta létre). Ezt úgy teheti meg, hogy az egyes erőforrásokat és a "Törlés" lehetőséget választja. Vegye figyelembe, hogy az eszköz frissítési fiókjának tisztítása előtt törölnie kell egy eszköz frissítési példányát.
+Ha már nincs rá szükség, törölje az eszköz frissítési fiókját, példányát, IoT Hubét és a IoT Edge eszközt (ha a virtuális gépet az üzembe helyezés az Azure-ban gomb használatával hozta létre). Ezt úgy teheti meg, hogy az egyes erőforrásokat és a "Törlés" lehetőséget választja. Az eszköz frissítési fiókjának tisztítása előtt meg kell tisztítania egy eszköz frissítési példányát.
 
 ## <a name="next-steps"></a>Következő lépések
 

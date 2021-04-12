@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 419d8d0cd20c13bffdd192060d81975ee94b47fe
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95563156"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106125785"
 ---
 > [!NOTE]
 > A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
@@ -66,9 +66,9 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 | --- | --- |
 | Élő események <sup>(4)</sup> /Media Services fiók |5|
 | Élő kimenet/élő esemény |3 <sup>(5)</sup> |
-| Élő kimenet maximális időtartama | [A DVR ablak mérete](../articles/media-services/latest/live-event-cloud-dvr.md) |
+| Élő kimenet maximális időtartama | [A DVR ablak mérete](../articles/media-services/latest/live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> az élő események korlátozásával kapcsolatos részletes információkért lásd az [élő eseménytípus összehasonlítását és korlátozásait](../articles/media-services/latest/live-event-types-comparison.md).
+<sup>4</sup> az élő események korlátozásával kapcsolatos részletes információkért lásd az [élő eseménytípus összehasonlítását és korlátozásait](../articles/media-services/latest/live-event-types-comparison-reference.md).
 
 <sup>5</sup> élő kimenet létrehozásakor kezdődik, és a törléskor leáll.
 

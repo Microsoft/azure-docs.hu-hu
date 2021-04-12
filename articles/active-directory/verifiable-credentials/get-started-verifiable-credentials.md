@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: a ellenőrizhető hitelesítő adatok használatának első lépései egy minta alkalmazás használatával (előzetes verzió)'
+title: Oktatóanyag – Ismerkedjen meg Azure Active Directory ellenőrizhető hitelesítő adatokkal egy minta alkalmazással (előzetes verzió)
 description: Ebből az oktatóanyagból megtudhatja, hogyan adhat meg ellenőrizhető hitelesítő adatokat a minta alkalmazás és a tesztelési bérlő használatával
 ms.service: identity
 ms.subservice: verifiable-credentials
 author: barclayn
 ms.author: barclayn
 ms.topic: tutorial
-ms.date: 03/31/2021
-ms.openlocfilehash: 4914df0df30ed990dd2c692f0f5b57586d2a75c6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/01/2021
+ms.openlocfilehash: deebaf31197d8b7335f887ae447f05add45278b2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106171918"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222885"
 ---
-# <a name="tutorial-get-started-with-verifiable-credentials-using-a-sample-app-preview"></a>Oktatóanyag: a ellenőrizhető hitelesítő adatok használatának első lépései egy minta alkalmazás használatával (előzetes verzió)
+#  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>Oktatóanyag – Ismerkedjen meg Azure Active Directory ellenőrizhető hitelesítő adatokkal egy minta alkalmazással (előzetes verzió)
 
 Ebben az oktatóanyagban átvesszük az első ellenőrizhető hitelesítő adatok kijavításához szükséges lépéseket: ellenőrzött hitelesítő adatok szakértői kártya. Ezután ezzel a kártyával igazolhatja, hogy a hitelesítő adatokkal rendelkező hitelesítő adat szakértője a digitális hitelesítő adatoknak. Ismerkedjen meg Azure Active Directory ellenőrizhető hitelesítő adatokkal a ellenőrizhető hitelesítő adatok minta alkalmazás használatával, hogy kiadja az első ellenőrizhető hitelesítő adatait.
 

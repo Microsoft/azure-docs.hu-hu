@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609088"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121166"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services adathivatkozás figyelése
 
@@ -44,7 +44,7 @@ A következő fiók metrikáit figyelheti.
 |StreamingPolicyQuota|Streaming Policy-kvóta|Folyamatos átviteli szabályzatok kvótája a fiókban.|
 |StreamingPolicyQuotaUsedPercentage|Adatfolyam-házirend kvótájának kihasználtsága (%)|Az adatfolyam-házirend kvótájának százalékos aránya már használatban van.|
 
-Tekintse át [a fiók kvótáit és korlátozásait](../limits-quotas-constraints.md)is.
+Tekintse át [a fiók kvótáit és korlátozásait](../limits-quotas-constraints-reference.md)is.
 
 ### <a name="streaming-endpoint"></a>Streamvégpont
 

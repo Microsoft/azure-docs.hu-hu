@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5ee7e8de85a1a53359f651a74e2f9f5e51edb70
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110678"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030780"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Felügyelt identitással való hozzáférés engedélyezése a kommunikációs erőforráshoz a fejlesztési környezetben
 
@@ -78,6 +78,8 @@ Az Azure Identity SDK három környezeti változóból olvassa be az értékeket
 
 > [!IMPORTANT]
 > A környezeti változók beállítása után zárjuk be és nyissa meg újra a konzolablak ablakát. Ha a Visual studiót vagy más fejlesztési környezetet használ, előfordulhat, hogy újra kell indítania, hogy regisztrálja az új környezeti változókat.
+
+Miután beállította ezeket a változókat, a kódban található DefaultAzureCredential objektum használatával hitelesítheti magát az Ön által választott szolgáltatási ügyfélen.
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf49b1a2b7178800966342a3d52ed49450f3d97c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 53cdbfb3ba531330c37f86233cbed990da4efaf4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226684"
+ms.locfileid: "107258384"
 ---
 # <a name="resilient-end-user-experience"></a>Rugalmas végfelhasználói élmény
 
@@ -40,7 +40,7 @@ A leggyakoribb identitás-feladatok beállításának elősegítése érdekében
 
 Ha az üzleti követelményei teljesülnek, válassza a beépített felhasználói folyamatok lehetőséget. Mivel a Microsoft széles körben teszteli, az identitás felhasználói folyamatainak megfelelő házirend-szintű működés, teljesítmény vagy skálázás ellenőrzéséhez szükséges tesztelést csökkentheti. Továbbra is tesztelni kell az alkalmazásokat a funkciók, a teljesítmény és a skálázás érdekében.
 
-Ha az üzleti követelmények miatt [Egyéni szabályzatokat választ](../../active-directory-b2c/custom-policy-get-started.md) , ügyeljen arra, hogy az alkalmazás szintű tesztelésen kívül a működési, a teljesítményre vagy a skálázásra vonatkozó házirend szintű tesztelést végezzen.
+Ha az üzleti követelmények miatt [Egyéni szabályzatokat választ](../../active-directory-b2c/user-flow-overview.md) , ügyeljen arra, hogy az alkalmazás szintű tesztelésen kívül a működési, a teljesítményre vagy a skálázásra vonatkozó házirend szintű tesztelést végezzen.
 
 Tekintse meg a [felhasználói folyamatokat és az egyéni házirendeket összehasonlító](../../active-directory-b2c/user-flow-overview.md#comparing-user-flows-and-custom-policies) cikket, amely segítséget nyújt a döntéshez.
 

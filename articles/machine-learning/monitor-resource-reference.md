@@ -9,13 +9,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
-ms.date: 10/02/2020
-ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: de4d934144d6721db8c00d7199061842e518e44f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521339"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031069"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Az Azure Machine learning-adatreferenciák monitorozása
 
@@ -27,50 +27,63 @@ Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan
 
 **Modellezés**
 
-| Metric | Unit (Egység) | Leírás |
-| ----- | ----- | ----- |
-| A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
-| A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
-| A modell telepítése sikerült | Darabszám | A sikeres modell-telepítések száma. |
-| A modell regisztrálása nem sikerült | Darabszám | A sikertelen modell-regisztrációk száma. |
-| A modell regisztrálása sikerült | Darabszám | A sikeres modell-regisztrációk száma. |
+| Metric | Unit (Egység) | Description |
+|--|--|--|
+| A modell regisztrálása sikerült | Darabszám | A munkaterületen sikeres modell-regisztrációk száma |
+| A modell regisztrálása nem sikerült | Darabszám | A munkaterületen meghiúsult modell-regisztrációk száma |
+| Modell-üzembehelyezés elindítva | Darabszám | A munkaterületen elindított modellek központi telepítésének száma |
+| Modell-üzembehelyezés sikerült | Darabszám | A munkaterületen sikeres központi telepítési modellek száma |
+| Modell-üzembehelyezés sikertelen | Darabszám | A munkaterületen sikertelen telepítési modellek száma |
 
 **Kvóta**
 
 A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használhatók.
 
-| Metric | Unit (Egység) | Leírás |
-| ----- | ----- | ----- |
-| Aktív magok | Darabszám | Az aktív számítási magok száma. |
-| Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
-| Üresjárati magok | Darabszám | Az üresjáratban lévő számítási magok száma. |
-| Tétlen csomópontok | Darabszám | Az üresjáratban lévő számítási csomópontok száma. |
-| Magok kihagyása | Darabszám | A magok elhagyásának száma. |
-| Csomópontok elhagyása | Darabszám | A csomópontok elhagyásának száma. |
-| Előzik magok | Darabszám | A előzik magok száma. |
-| Előzik-csomópontok | Darabszám | A előzik-csomópontok száma. |
-| Kvóta kihasználtsága (%) | Százalék | A felhasznált kvóta százalékaránya. |
-| Magok száma összesen | Darabszám | A magok teljes száma. |
-| Csomópontok összesen | Darabszám | Az összes csomópont. |
-| Használhatatlan magok | Darabszám | A használhatatlan magok száma. |
-| Használhatatlan csomópontok | Darabszám | A használhatatlan csomópontok száma. |
+| Metric | Unit (Egység) | Description |
+|--|--|--|
+| Csomópontok összesen | Darabszám | A csomópontok száma összesen. Ez az összeg magában foglalja az aktív csomópontok, a tétlen csomópontok, a nem használható csomópontok, a előzik csomópontok és a csomópontok elhagyását |
+| Aktív csomópontok | Darabszám | Az aktív csomópontok száma. A feladatokat aktívan futtató csomópontok. |
+| Tétlen csomópontok | Darabszám | Az üresjárati csomópontok száma. Az üresjárati csomópontok azok a csomópontok, amelyek nem futtatnak feladatokat, de az elérhetővé tehetik az új feladatot. |
+| Használhatatlan csomópontok | Darabszám | Használhatatlan csomópontok száma Néhány feloldhatatlan probléma miatt nem használható csomópontok nem működőképesek. Az Azure újrahasznosítja ezeket a csomópontokat. |
+| Előzik-csomópontok | Darabszám | Előzik-csomópontok száma Ezek a csomópontok az alacsony prioritású csomópontok, amelyek el lesznek távolítva az elérhető csomópont-készletből. |
+| Csomópontok elhagyása | Darabszám | A csomópontok elhagyásának száma. A csomópontok elhagyják azokat a csomópontokat, amelyek éppen befejezték a feladatok feldolgozását, és az inaktív állapotba kerülnek. |
+| Magok összesen | Darabszám | Magok teljes száma |
+| Aktív magok | Darabszám | Aktív magok száma |
+| Üresjárati magok | Darabszám | Üresjárati magok száma |
+| Használhatatlan magok | Darabszám | Használhatatlan magok száma |
+| Előzik magok | Darabszám | Előzik magok száma |
+| Magok kihagyása | Darabszám | Kihagyott magok száma |
+| Kvóta kihasználtsága (%) | Darabszám | A felhasznált kvóta százaléka |
 
 **Erőforrás**
 
-| Metric | Unit (Egység) | Leírás |
-| ----- | ----- | ----- |
-| CpuUtilization | Százalék | A CPU százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Ez a metrika csak akkor jelenik meg, ha egy művelet egy csomóponton fut. Egy adott feladattípus egy vagy több csomópontot is használhat. Ez a mérőszám egy csomóponton van közzétéve. |
-| GpuUtilization | Százalék | A GPU hány százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Egy csomópont egy vagy több GPU-val rendelkezhet. Ez a mérőszám egy GPU-onként van közzétéve. |
+| Metric| Unit (Egység) | Description |
+|--|--|--|
+| CpuUtilization | Darabszám | A CPU-csomópont kihasználtságának százalékos értéke. A kihasználtságot egyperces időközönként kell jelenteni. |
+| GpuUtilization | Darabszám | A GPU-csomópont kihasználtságának százalékos értéke. A kihasználtságot egyperces időközönként kell jelenteni. |
+| GpuMemoryUtilization | Darabszám | A memória kihasználtságának százalékos aránya egy GPU-csomóponton. A kihasználtságot egyperces időközönként kell jelenteni. |
+| GpuEnergyJoules | Darabszám | A GPU-csomópontokon lévő joule-beli energia intervalluma. Az energia jelentése egyperces időközönként történik. |
 
 **Futtatás**
 
-A képzések futtatásával kapcsolatos információk.
+A munkaterületre vonatkozó betanítással kapcsolatos információk.
 
-| Metric | Unit (Egység) | Leírás |
-| ----- | ----- | ----- |
-| Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
-| Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
-| Elindított futtatások | Darabszám | Az elindított futtatások száma. |
+| Metric | Unit (Egység) | Description |
+|--|--|--|
+| Megszakított futtatások | Darabszám | A munkaterülethez megszakított futtatások száma. A számláló a Futtatás sikeres megszakítása után frissül. |
+| A kért futtatások megszakítása | Darabszám | Azon futtatások száma, amelyek esetében a rendszer a megszakítást kérelmezte ehhez a munkaterülethez. A Count akkor frissül, ha a lemondási kérelem érkezett a futtatáshoz. |
+| Befejezett futtatások | Darabszám | A munkaterületen sikeresen befejeződött a futtatások száma. A számláló a Futtatás befejeződése után frissül, és a rendszer a kimenetet gyűjtötte. |
+| Sikertelen futtatások | Darabszám | A munkaterületen nem sikerült a futtatások száma. A Count a Futtatás meghiúsulása esetén frissül. |
+| Futtatások véglegesítése | Darabszám | A munkaterületre vonatkozó véglegesítési állapotba lépett futtatások száma. A Count akkor frissül, ha egy Futtatás befejeződött, de a kimeneti gyűjtemény még folyamatban van. | 
+| Nem válaszoló futtatások | Darabszám | A munkaterületre nem válaszoló futtatások száma. A Count akkor frissül, ha a Futtatás nem válaszol. |
+| Nem indult el a futtatások | Darabszám | A nem elindított futtatások száma ehhez a munkaterülethez. A Count frissítése akkor történik meg, ha egy futtatási kérelem érkezik, de a futtatási adatok még nem lettek feltöltve. |
+| Futtatások előkészítése | Darabszám | A munkaterületre felkészülő futtatások száma. A Count akkor frissül, ha egy Futtatás előkészítési állapotba kerül, amíg a futtatási környezet előkészítése folyamatban van. |
+| Kiépítési futtatások | Darabszám | A munkaterülethez kiépített futtatások száma. A Count frissítése akkor történik meg, ha egy Futtatás a számítási cél létrehozására vagy kiépítési célra vár. |
+| Várólistán lévő futtatások | Darabszám | Azon futtatások száma, amelyek várólistára kerülnek ehhez a munkaterülethez. A Count akkor frissül, ha egy Futtatás várólistára kerül a számítási célra. Akkor fordulhat elő, ha a szükséges számítási csomópontok készenléti állapotra várnak. |
+| Elindított futtatások | Darabszám | A munkaterületen futó futtatások száma. A Count akkor frissül, ha a Futtatás a szükséges erőforrásokon fut. |
+| Futtatások indítása | Darabszám | A munkaterülethez elindított futtatások száma. A Count frissítése a futtatási és futtatási adatok (például a futtatási azonosító) létrehozási kérelme alapján történt. |
+| Hibák | Darabszám | A munkaterületen futtatott hibák száma. A Count frissítése akkor történik meg, amikor a Futtatás hibát észlel. |
+| Figyelmeztetések | Darabszám | A futtatási figyelmeztetések száma ebben a munkaterületen. A darabszám akkor frissül, amikor egy Futtatás figyelmeztetést észlel. |
 
 ## <a name="metric-dimensions"></a>Metrikus méretek
 
@@ -78,7 +91,7 @@ A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdim
 
 A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendelkezik.
 
-| Dimenzió | Leírás |
+| Dimenzió | Description |
 | ---- | ---- |
 | Fürt neve | A számítási fürt erőforrásának neve. Minden kvóta-metrika esetében elérhető. |
 | VM-család neve | A fürt által használt virtuálisgép-család neve. Elérhető a kvóta kihasználtsága százalékban. |
@@ -105,7 +118,7 @@ A RunType dimenzió érvényes értékei a következők:
 
 A következő táblázat felsorolja azokat a Azure Machine Learning kapcsolódó műveleteket, amelyek a tevékenység naplójában hozhatók létre.
 
-| Művelet | Leírás |
+| Művelet | Description |
 |:---|:---|
 | Machine Learning munkaterület létrehozása vagy frissítése | Egy munkaterület lett létrehozva vagy frissítve |
 | CheckComputeNameAvailability | Ellenőrizze, hogy a számítási név már használatban van-e |

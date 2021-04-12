@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: a0c3a3cbaa71d627f54550cf92c067afbb1eb3f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d0fd9ab8286496b9801d6c10682761f1264e040a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786209"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120911"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája 
 Ha a **isSequential** hamis értékre van állítva, a tevékenység párhuzamosan, legfeljebb 20 egyidejű ismétléssel közelíthető meg. Ezt a beállítást körültekintően kell használni. Ha az egyidejű ismétlések ugyanarra a mappára, de különböző fájlokra is érvényesek, ez a megközelítés rendben van. Ha az egyidejű ismétlések egyidejű, ugyanazon a fájlon vannak írva, ez a megközelítés valószínűleg hibát okoz. 
 
 ## <a name="iteration-expression-language"></a>Iterációs kifejezés nyelve
-A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismételni a tulajdonság **elemeinél**. " A használatával `@item()` megismételheti a foreach tevékenység egyetlen enumerálását. Ha például az **elemek** tömb: [1, 2, 3], `@item()` az első iterációban az 1 értéket adja vissza, a második iterációban 2, a harmadik iterációban pedig 3.
+A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismételni a tulajdonság **elemeinél**. " A használatával `@item()` megismételheti a foreach tevékenység egyetlen enumerálását. Ha például az **elemek** tömb: [1, 2, 3], `@item()` az első iterációban az 1 értéket adja vissza, a második iterációban 2, a harmadik iterációban pedig 3. A `@range(0,10)` Like kifejezéssel is megismételheti a tízszer kezdődő és a 9-es értéket.
 
 ## <a name="iterating-over-a-single-activity"></a>Iteráció egyetlen tevékenységen keresztül
 **Forgatókönyv:** Másolja az Azure blobban található ugyanabból a forrásfájl-fájlból az Azure blobban található több célfájlba.

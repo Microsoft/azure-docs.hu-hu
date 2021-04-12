@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f7357644639e1bdba07b9ad44533582fc66b600
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f186ea4afd6a8bbf52f91e94f2976f244fc8dda
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456073"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120860"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
@@ -29,7 +29,7 @@ Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezz�
 
 * [Adategységek](assets-concept.md)
 * [Folyamatos átviteli házirendek](streaming-policy-concept.md)
-* [Tartalmi kulcs házirendjei](content-key-policy-concept.md)
+* [Tartalmi kulcs házirendjei](drm-content-key-policy-concept.md)
 
 Megadhatja a kezdő és a záró időpontot is a folyamatos átviteli lokátorban, így a felhasználó csak a következő időpontok közötti tartalmat fogja lejátszani (például 5/1/2019 – 5/5/2019).  
 
@@ -37,7 +37,7 @@ Megadhatja a kezdő és a záró időpontot is a folyamatos átviteli lokátorba
 
 * A **streaming-lokátorok** nem frissíthető. 
 * A DateTime típusú **adatfolyam-kereső** tulajdonságai mindig UTC formátumban jelennek meg.
-* A Media Service-fiókhoz korlátozott számú szabályzatot kell terveznie, és újra fel kell használni őket a streaming-lokátorok számára, amikor ugyanazok a beállítások szükségesek. További információ: [kvóták és korlátozások](limits-quotas-constraints.md).
+* A Media Service-fiókhoz korlátozott számú szabályzatot kell terveznie, és újra fel kell használni őket a streaming-lokátorok számára, amikor ugyanazok a beállítások szükségesek. További információ: [kvóták és korlátozások](limits-quotas-constraints-reference.md).
 
 ## <a name="create-streaming-locators"></a>Folyamatos átviteli lokátorok létrehozása  
 
@@ -85,7 +85,7 @@ Lásd [: szűrők: társítsa a folyamatos átviteli lokátorokat](filters-conce
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Szűrés, rendelés, oldal adatfolyam-kereső entitásai
 
-Lásd: [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md).
+Lásd: [Media Services entitások szűrése, rendezése és lapozása](filter-order-page-entitites-how-to.md).
 
 ## <a name="list-streaming-locators-by-asset-name"></a>A streaming-lokátorok listázása az eszköz neve szerint
 
@@ -103,7 +103,7 @@ A következő műveletek végrehajtásával lekérheti a streaming-keresőket a 
 
 * [Adategységek](assets-concept.md)
 * [Folyamatos átviteli házirendek](streaming-policy-concept.md)
-* [Tartalmi kulcs házirendjei](content-key-policy-concept.md)
+* [Tartalmi kulcs házirendjei](drm-content-key-policy-concept.md)
 * [Oktatóanyag: videók feltöltése, kódolása és továbbítása a .NET-tel](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Következő lépések

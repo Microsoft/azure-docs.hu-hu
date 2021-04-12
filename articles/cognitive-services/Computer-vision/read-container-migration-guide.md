@@ -1,5 +1,5 @@
 ---
-title: Migrálás az olvasási v3. x OCR-tárolóba
+title: Migrálás a Read v3. x tárolóba
 titleSuffix: Azure Cognitive Services
 description: Útmutató a v3 olvasási OCR-tárolóba való áttelepítéshez
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221153"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284685"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrálás az olvasási v3. x OCR-tárolóba
 
@@ -24,7 +24,7 @@ Ha az OCR-tároló Computer Vision 2. verzióját használja, ebből a cikkből 
 
 ## <a name="configuration-changes"></a>Konfigurációs változások
 
-* `ReadEngineConfig:ResultExpirationPeriod` már nem támogatott. Az olvasási tároló egy beépített cron-feladattal rendelkezik, amely eltávolítja a 48 óra utáni kérelemmel kapcsolatos eredményeket és metaadatokat.
+* `ReadEngineConfig:ResultExpirationPeriod` már nem támogatott. Az olvasási OCR-tároló egy beépített cron-feladattal rendelkezik, amely eltávolítja a 48 óra utáni kérelemmel kapcsolatos eredményeket és metaadatokat.
 * `Cache:Redis:Configuration` már nem támogatott. A gyorsítótár nem használatos a v3. x tárolóban, ezért nem kell beállítania.
 
 ## <a name="api-changes"></a>API-változások
@@ -39,7 +39,7 @@ Az alkalmazások a felhőalapú olvasási API-k 3. verziójának használatára 
 
 ## <a name="memory-requirements"></a>Memóriakövetelmények
 
-A követelmények és javaslatok a másodpercenként egy egyszeri kéréssel rendelkező teljesítményteszteken alapulnak, és a beolvasott üzleti levél 8 MB-os képét, amely 29 sort és összesen 803 karaktert tartalmaz. Az alábbi táblázat az egyes olvasási tárolók minimális és ajánlott erőforrás-elosztását ismerteti.
+A követelmények és javaslatok a másodpercenként egy egyszeri kéréssel rendelkező teljesítményteszteken alapulnak, és a beolvasott üzleti levél 8 MB-os képét, amely 29 sort és összesen 803 karaktert tartalmaz. Az alábbi táblázat az egyes olvasási OCR-tárolók minimális és ajánlott erőforrás-elosztását ismerteti.
 
 |Tároló  |Minimális | Ajánlott  |
 |---------|---------|------|
@@ -81,7 +81,7 @@ A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatós
 ## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](computer-vision-resource-container-config.md) áttekintése konfigurációs beállításokhoz
-* A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át [Computer Vision áttekintést](overview.md)
-* A tároló által támogatott metódusokkal kapcsolatos részletekért tekintse meg a [Computer Vision API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
+* A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át az [OCR áttekintése című](overview-ocr.md) témakört.
+* A tároló által támogatott metódusokkal kapcsolatos részletekért tekintse meg az [OLVASÁSI API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) -t.
 * A Computer Vision funkcióival kapcsolatos problémák megoldásához tekintse meg a [Gyakori kérdések (GYIK)](FAQ.md) című témakört.
 * További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata

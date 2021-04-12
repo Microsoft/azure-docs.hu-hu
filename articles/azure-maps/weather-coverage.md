@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) lefedettsége
-description: További információ a Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) lefedettségéről
+title: Microsoft Azure Maps időjárási szolgáltatások lefedettsége
+description: Ismerje meg Microsoft Azure Maps időjárási szolgáltatások lefedettségét
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,19 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ac209dc898c2d30f8d50a8989b188ef5a9f5046
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905485"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257670"
 ---
-# <a name="azure-maps-weather-services-preview-coverage"></a>Azure Maps időjárási szolgáltatások (előzetes verzió) lefedettsége
-
-> [!IMPORTANT]
-> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+# <a name="azure-maps-weather-services-coverage"></a>Azure Maps időjárási szolgáltatások lefedettsége
 
 Ez a cikk a Azure Maps [időjárási szolgáltatásokra](/rest/api/maps/weather)vonatkozó lefedettségi információkat tartalmaz. Azure Maps időjárási adatszolgáltatások olyan részleteket adnak vissza, mint például a radar csempéi, a jelenlegi időjárási feltételek, az időjárás-előrejelzés és az időjárás az útvonal mentén.
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: inhenkel
-ms.openlocfilehash: 2873486b95f0bb4a9a27e2e050cc6f6d5473a44e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f01b4216af8d924354ae9e9a204a8eaefb8213
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98898172"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120843"
 ---
 # <a name="streaming-policies"></a>Streamelési szabályok
 
@@ -34,7 +34,7 @@ A következő "döntési fa" segítségével kiválaszthatja a forgatókönyvhö
 
 > [!IMPORTANT]
 > * A DateTime típusú **adatfolyam-házirendek** tulajdonságai mindig UTC formátumban jelennek meg.
-> * A Media Service-fiókhoz korlátozott számú szabályzatot kell terveznie, és újra fel kell használni őket a streaming-lokátorok számára, amikor ugyanazok a beállítások szükségesek. További információ: [kvóták és korlátozások](limits-quotas-constraints.md).
+> * A Media Service-fiókhoz korlátozott számú szabályzatot kell terveznie, és újra fel kell használni őket a streaming-lokátorok számára, amikor ugyanazok a beállítások szükségesek. További információ: [kvóták és korlátozások](limits-quotas-constraints-reference.md).
 
 ## <a name="decision-tree"></a>Döntési fa
 
@@ -42,7 +42,7 @@ Kattintson a képre a teljes méretű megjelenítéshez.
 
 [![Egy olyan döntési fát ábrázoló diagram, amelynek célja, hogy segítsen kiválasztani egy előre definiált adatfolyam-szabályzatot a forgatókönyvhöz.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
-Ha titkosítja a tartalmat, létre kell hoznia egy [tartalmi kulcsra vonatkozó házirendet](content-key-policy-concept.md), a **tartalmi kulcs házirendje** nem szükséges a folyamatos átvitelhez vagy a letöltéshez. 
+Ha titkosítja a tartalmat, létre kell hoznia egy [tartalmi kulcsra vonatkozó házirendet](drm-content-key-policy-concept.md), a **tartalmi kulcs házirendje** nem szükséges a folyamatos átvitelhez vagy a letöltéshez. 
 
 Ha speciális követelményekkel rendelkezik (például ha különböző protokollokat szeretne megadni, egyéni kulcsú kézbesítési szolgáltatást kell használnia, vagy tiszta hangsávot kell használnia), [létrehozhat](/rest/api/media/streamingpolicies/create) egyéni adatfolyam-házirendet. 
 
@@ -81,10 +81,10 @@ Válasz:
 
 ## <a name="filtering-ordering-paging"></a>Szűrés, rendezés, lapozás
 
-Lásd: [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md).
+Lásd: [Media Services entitások szűrése, rendezése és lapozása](filter-order-page-entitites-how-to.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Fájl streamelése](stream-files-dotnet-quickstart.md)
-* [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata](protect-with-aes128.md)
-* [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](protect-with-drm.md)
+* [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata](drm-playready-license-template-concept.md)
+* [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](drm-protect-with-drm-tutorial.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 357fe1844fabf6ec241d509651b4f0cbcffa3df3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa7bc6b979869a06ba7441ae33a47f82aea0704c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009130"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063967"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Az Azure Media Packaging használata statikus csomagolási feladatok elvégzéséhez  
 
@@ -715,7 +715,7 @@ A példa azt a UpdatePlayReadyConfigurationXMLFile metódust határozza meg, ame
 ```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Statikus titkosítás használata a HLSv3 és AES-128 elleni védelemhez
-Ha AES-128-mel szeretné titkosítani a HLS, választhat, hogy dinamikus titkosítást használ (az ajánlott beállítás) vagy a statikus titkosítást (az ebben a szakaszban látható módon). Ha úgy dönt, hogy dinamikus titkosítást használ, tekintse meg az [AES-128 dinamikus titkosítás és a Key Delivery Service](media-services-protect-with-aes128.md)használatát ismertető témakört.
+Ha AES-128-mel szeretné titkosítani a HLS, választhat, hogy dinamikus titkosítást használ (az ajánlott beállítás) vagy a statikus titkosítást (az ebben a szakaszban látható módon). Ha úgy dönt, hogy dinamikus titkosítást használ, tekintse meg az [AES-128 dinamikus titkosítás és a Key Delivery Service](media-services-playready-license-template-overview.md)használatát ismertető témakört.
 
 > [!NOTE]
 > A tartalom HLS alakításához először konvertálnia/kódolni kell a tartalmat Smooth Streamingba.

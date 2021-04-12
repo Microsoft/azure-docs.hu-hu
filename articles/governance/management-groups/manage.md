@@ -3,12 +3,12 @@ title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
 ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09d11450ff63046ab458f930f64534d10863f451
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596478"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258350"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -388,5 +388,5 @@ A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 - [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](./create-management-group-portal.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](./manage.md)
 - [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](/powershell/module/az.resources#resources)
-- [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/resources/managementgroups)
+- [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/managementgroups/managementgroups)
 - [Felügyeleti csoportok áttekintése az Azure CLI-ben](/cli/azure/account/management-group)

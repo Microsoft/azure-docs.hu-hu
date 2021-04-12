@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d3cc8f36f05def18c16db0875cb712cdf5d165f9
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b106c82e3755fbd0e02f12a769d80ce4761cf026
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121353"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285858"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -358,6 +358,15 @@ Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a bizto
 
 > [!Note]  
 > A Azure File Sync ügynök 9-es verziójával a VSS-Pillanatképek (beleértve a korábbi verziók lapot) mostantól támogatottak azokon a köteteken, amelyeken engedélyezve van a felhőalapú rétegek használata. A PowerShell használatával azonban engedélyeznie kell a korábbi verziók kompatibilitását. [Ismerje meg, hogyan](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service).
+
+## <a name="data-classification"></a>Adatbesorolás
+Ha telepítve van az adatbesorolási szoftver, a felhőalapú rétegek engedélyezése két okból növelheti a költségeket:
+
+1. Ha a felhőalapú rétegek engedélyezve vannak, a legforróbb fájlokat a rendszer a helyi gyorsítótárba helyezi, és a legtöbbet a felhőben lévő Azure-fájlmegosztás szintjére helyezi. Ha az adatbesorolás rendszeresen megvizsgálja a fájlmegosztás összes fájlját, a felhőbe felhasználható fájlokat újra kell hívni, amikor a rendszer beolvassa. 
+
+2. Ha az adatbesorolási szoftver a metaadatokat használja egy fájl adatfolyamában, a fájlnak teljes mértékben visszahívással kell rendelkeznie ahhoz, hogy a szoftver megjelenjen a besorolásban. 
+
+Ezek a visszahívások száma és a visszanevezett adatmennyiség növekedése is megnövelik a költségeket.
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

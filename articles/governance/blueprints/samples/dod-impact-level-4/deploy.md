@@ -1,14 +1,14 @@
 ---
 title: DoD Impact Level 4 terv minta
 description: A DoD Impact Level 4 tervre vonatkozó lépések üzembe helyezése minta, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 389090b79c0aad343c1999ea17ed8c9332958544
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcea8dab551be18b4dfca81bd179f89d17b01bdf
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594793"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386941"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 terv minta üzembe helyezése
 

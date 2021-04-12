@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bc2508220a8c0193efb55eb6cd11f7e151c80be
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729629"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284519"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a StatusPage
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a StatusPage a Azure Active Directory (Azure AD) szolgáltatással.
-A StatusPage és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a StatusPage a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az StatusPage-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a StatusPage.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a StatusPage (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A StatusPage-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a StatusPage az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció StatusPage való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
-* StatusPage egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* StatusPage egyszeri bejelentkezésre engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A StatusPage támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* A StatusPage támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-statuspage-from-the-gallery"></a>StatusPage hozzáadása a gyűjteményből
+## <a name="add-statuspage-from-the-gallery"></a>StatusPage hozzáadása a gyűjteményből
 
 A StatusPage Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a StatusPage a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
@@ -65,13 +64,13 @@ Az Azure AD SSO és a StatusPage konfigurálásához és teszteléséhez hajtsa 
     1. **[Hozzon létre StatusPage-teszt felhasználót](#create-statuspage-test-user)** – hogy a StatusPage Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
 6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
 1. A Azure Portal **AskYourTeam** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -85,7 +84,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | `https://<subdomain>.statuspage.io/` |
     |
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minták egyikének használatával:
 
      | Válasz URL-cím |
     |--------------|
@@ -152,17 +151,17 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. A fő eszköztáron kattintson a **fiók kezelése** lehetőségre.
 
-    ![Képernyőfelvétel: a StatusPage vállalati webhelyről kiválasztott fiók kezelése.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Képernyőfelvétel: a StatusPage vállalati webhelyről kiválasztott fiók kezelése.](./media/statuspage-tutorial/account.png)
 
 1. Kattintson az **egyszeri bejelentkezés** fülre.
 
-    ![A képernyőképen az egyszeri bejelentkezés lap látható.](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![A képernyőképen az egyszeri bejelentkezés lap látható.](./media/statuspage-tutorial/tab.png)
 
 1. Az egyszeri bejelentkezés beállítása lapon hajtsa végre a következő lépéseket:
 
-    ![A képernyőképen az S S O Setup (S S O Setup) oldal jelenik meg, ahol megadhatja a leírt értékeket.](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![A képernyőképen az S S O Setup (S S O Setup) oldal jelenik meg, ahol megadhatja a leírt értékeket.](./media/statuspage-tutorial/setup.png)
 
-    ![Képernyőfelvétel: a konfiguráció mentése gomb.](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![Képernyőfelvétel: a konfiguráció mentése gomb.](./media/statuspage-tutorial/configuration.png)
 
     a. Az **SSO cél URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -182,25 +181,25 @@ A StatusPage az igény szerinti üzembe helyezést is támogatja. Már engedély
 
 1. A felső menüben kattintson a **fiók kezelése** lehetőségre.
 
-    ![Képernyőfelvétel: a StatusPage vállalati webhelyről kiválasztott fiók kezelése.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Képernyőfelvétel: a StatusPage vállalati webhelyről kiválasztott fiók kezelése.](./media/statuspage-tutorial/account.png)
 
 1. Kattintson a **csapattagok** fülre.
   
-    ![Képernyőfelvétel: a csapattagok lapot jeleníti meg.](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![Képernyőfelvétel: a csapattagok lapot jeleníti meg.](./media/statuspage-tutorial/sandbox.png) 
 
 1. Kattintson a **csapattag hozzáadása** elemre.
   
-    ![Képernyőfelvétel: a csapattag hozzáadása gomb.](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![Képernyőfelvétel: a csapattag hozzáadása gomb.](./media/statuspage-tutorial/team.png) 
 
 1. Írja be annak az érvényes felhasználónak az **E-mail címét**, **utónevét** és **vezetéknevét** , amelyet szeretne a kapcsolódó szövegmezőbe beírni. 
 
-    ![Képernyőfelvétel: a felhasználó hozzáadása párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![Képernyőfelvétel: a felhasználó hozzáadása párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/statuspage-tutorial/user.png) 
 
 1. **Szerepkörként** válassza az **ügyfél rendszergazdája** elemet.
 
 1. Kattintson a **fiók létrehozása** lehetőségre.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9fbd137f8fa36a7b0526b25d664fceac795ecd81
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 09acdc0c4ea2dbe90c0b7b037b6aec501cc1dd55
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104879171"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223030"
 ---
 # <a name="tutorial-use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Oktatóanyag: az áramkör-megszakító irányítópultjának használata az Azure Spring Cloud használatával
 
@@ -20,7 +20,7 @@ ms.locfileid: "104879171"
 
 A Spring [Cloud Netflix turbina](https://github.com/Netflix/Turbine) széles körben használatos több [Hystrix](https://github.com/Netflix/Hystrix) mérőszámok összesítésére, így a streamek egyetlen nézetben figyelhetők meg a Hystrix-irányítópult használatával. Ez az oktatóanyag bemutatja, hogyan használhatja őket az Azure Spring Cloud-on.
 > [!NOTE]
-> A Netflix Hystrix széles körben használatos számos meglévő Spring Cloud-alkalmazásban, de már nem aktív fejlesztés alatt áll. Ha új projektet fejleszt, használja inkább a Spring Cloud Circuit megszakító implementációit, például a [resilience4j](https://github.com/resilience4j/resilience4j)-t. Az ebben az oktatóanyagban láthatótól eltérő, az új Spring Cloud Circuit Breaker-keretrendszer egyesíti a metrikák adatfolyamatának összes implementációját a mikrométerbe. Továbbra is dolgozunk a Mikrométerek támogatásán az Azure Spring Cloud-ban, ezért ez az oktatóanyag nem vonatkozik rá.
+> A Netflix Hystrix széles körben használatos számos meglévő Spring Cloud-alkalmazásban, de már nem aktív fejlesztés alatt áll. Ha új projektet fejleszt, használja inkább a Spring Cloud Circuit megszakító implementációit, például a [resilience4j](https://github.com/resilience4j/resilience4j)-t. Az oktatóanyagban bemutatott új Spring Cloud Circuit Breaker-keretrendszer a metrikák adatfolyamatának minden implementációját a mikrométerbe egyesíti, amelyet az Azure Spring Cloud is támogat. [További információk](https://docs.microsoft.com/azure/spring-cloud/how-to-circuit-breaker-metrics).
 
 ## <a name="prepare-your-sample-applications"></a>A mintául szolgáló alkalmazások előkészítése
 A minta a [tárházból](https://github.com/StackAbuse/spring-cloud/tree/master/spring-turbine)származik.

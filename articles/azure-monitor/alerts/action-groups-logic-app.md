@@ -5,12 +5,12 @@ author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1e81dca6926ae9f57e428eb1cef761c588a78b6
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045717"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029845"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
 
@@ -34,66 +34,66 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
 
 ## <a name="create-an-activity-log-alert-administrative"></a>Műveletnapló riasztásának létrehozása: adminisztráció
 
-1. [Logikai alkalmazás létrehozása](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
+1. [Hozzon létre egy logikai alkalmazást](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2.  Válassza ki a triggert: **http-kérés fogadásakor**.
+1.  Válassza ki a triggert: **http-kérés fogadásakor**.
 
 1. A **http-kérés fogadásakor** a párbeszédpanelen válassza a **minta hasznos adatok használata a séma létrehozásához** lehetőséget.
 
-    ![Képernyőkép, amely megjeleníti a H T T P-kérések párbeszédpanelét, valamint a minta hasznos adatok használatával létrehozott séma-opion. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
+    ![Képernyőkép, amely megjeleníti a H T T P-kérések és a minta hasznos adatainak használata beállítást a kiválasztott séma létrehozásakor. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-3.  Másolja és illessze be az alábbi minta-adattartalmat a párbeszédpanelbe:
+1.  Másolja és illessze be az alábbi minta-adattartalmat a párbeszédpanelbe:
 
     ```json
         {
-            "schemaId": "Microsoft.Insights/activityLogs",
-            "data": {
-                "status": "Activated",
-                "context": {
-                "activityLog": {
-                    "authorization": {
-                    "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/…"
+            "schemaId&quot;: &quot;Microsoft.Insights/activityLogs&quot;,
+            &quot;data&quot;: {
+                &quot;status&quot;: &quot;Activated&quot;,
+                &quot;context&quot;: {
+                &quot;activityLog&quot;: {
+                    &quot;authorization&quot;: {
+                    &quot;action&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;scope&quot;: &quot;/subscriptions/…&quot;
                     },
-                    "channels": "Operation",
-                    "claims": "…",
-                    "caller": "logicappdemo@contoso.com",
-                    "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
-                    "description": "",
-                    "eventSource": "Administrative",
-                    "eventTimestamp": "2018-04-03T22:33:11.762469+00:00",
-                    "eventDataId": "ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0",
-                    "level": "Informational",
-                    "operationName": "microsoft.insights/activityLogAlerts/write",
-                    "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/…",
-                    "resourceGroupName": "LOGICAPP-DEMO",
-                    "resourceProviderName": "microsoft.insights",
-                    "status": "Succeeded",
-                    "subStatus": "",
-                    "subscriptionId": "…",
-                    "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
-                    "resourceType": "microsoft.insights/activityLogAlerts"
+                    &quot;channels&quot;: &quot;Operation&quot;,
+                    &quot;claims&quot;: &quot;…&quot;,
+                    &quot;caller&quot;: &quot;logicappdemo@contoso.com&quot;,
+                    &quot;correlationId&quot;: &quot;91ad2bac-1afa-4932-a2ce-2f8efd6765a3&quot;,
+                    &quot;description&quot;: &quot;&quot;,
+                    &quot;eventSource&quot;: &quot;Administrative&quot;,
+                    &quot;eventTimestamp&quot;: &quot;2018-04-03T22:33:11.762469+00:00&quot;,
+                    &quot;eventDataId&quot;: &quot;ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0&quot;,
+                    &quot;level&quot;: &quot;Informational&quot;,
+                    &quot;operationName&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;operationId&quot;: &quot;61f59fc8-1442-4c74-9f5f-937392a9723c&quot;,
+                    &quot;resourceId&quot;: &quot;/subscriptions/…&quot;,
+                    &quot;resourceGroupName&quot;: &quot;LOGICAPP-DEMO&quot;,
+                    &quot;resourceProviderName&quot;: &quot;microsoft.insights&quot;,
+                    &quot;status&quot;: &quot;Succeeded&quot;,
+                    &quot;subStatus&quot;: &quot;&quot;,
+                    &quot;subscriptionId&quot;: &quot;…&quot;,
+                    &quot;submissionTimestamp&quot;: &quot;2018-04-03T22:33:36.1068742+00:00&quot;,
+                    &quot;resourceType&quot;: &quot;microsoft.insights/activityLogAlerts&quot;
                 }
                 },
-                "properties": {}
+                &quot;properties&quot;: {}
             }
         }
     ```
 
-9. A **Logic app Designer** egy előugró ablakot jelenít meg, amely figyelmezteti, hogy a logikai alkalmazásnak elküldett kérelemnek be kell állítania a **Content-Type** fejlécet az **Application/JSON** értékre. Az előugró ablak bezárásához. A Azure Monitor riasztás beállítja a fejlécet.
+1. A **Logic apps Designer** egy előugró ablakot jelenít meg, amely figyelmezteti, hogy a logikai alkalmazásnak elküldett kérelemnek be kell állítania a **Content-Type** fejlécet az **Application/JSON** értékre. Az előugró ablak bezárásához. A Azure Monitor riasztás beállítja a fejlécet.
 
-    ![A Content-Type fejléc beállítása](media/action-groups-logic-app/content-type-header.png "A Content-Type fejléc beállítása")
+    ![A Content-Type fejléc beállítása](media/action-groups-logic-app/content-type-header.png &quot;A Content-Type fejléc beállítása")
 
-10. Válassza **+** az **új lépés** , majd **a művelet hozzáadása** lehetőséget.
+1. Válassza **+** az **új lépés** , majd **a művelet hozzáadása** lehetőséget.
 
     ![Művelet hozzáadása](media/action-groups-logic-app/add-action.png "Művelet hozzáadása")
 
-11. Keresse meg és válassza ki a Microsoft Teams-összekötőt. Válassza ki a **Microsoft Teams-post üzenet** műveletet.
+1. Keresse meg és válassza ki a Microsoft Teams-összekötőt. Válassza ki a **Microsoft Teams-post üzenet** műveletet.
 
     ![Microsoft Teams-műveletek](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-műveletek")
 
-12. Konfigurálja a Microsoft Teams műveletet. A **Logic apps Designer** arra kéri, hogy végezzen hitelesítést a munkahelyi vagy iskolai fiókjával. Válassza ki a **csoport azonosítóját** és a **csatorna azonosítóját** , hogy elküldje az üzenetet.
+1. Konfigurálja a Microsoft Teams műveletet. A **Logic apps Designer** arra kéri, hogy végezzen hitelesítést a munkahelyi vagy iskolai fiókjával. Válassza ki a **csoport azonosítóját** és a **csatorna azonosítóját** , hogy elküldje az üzenetet.
 
 13. Konfigurálja az üzenetet statikus szöveg kombinációjának használatával, és a \<fields\> dinamikus tartalomra mutató hivatkozásokat. Másolja és illessze be a következő szöveget az **üzenet** mezőbe:
 
@@ -111,9 +111,9 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
 
     ![Microsoft Teams művelet: üzenet közzététele](media/action-groups-logic-app/teams-action-post-message.png "Microsoft Teams művelet: üzenet közzététele")
 
-14. A **Logic apps Designer** tetején válassza a **Mentés** lehetőséget a logikai alkalmazás mentéséhez.
+1. A **Logic apps Designer** tetején válassza a **Mentés** lehetőséget a logikai alkalmazás mentéséhez.
 
-15. Nyissa meg a meglévő műveleti csoportot, és adjon hozzá egy műveletet a logikai alkalmazásra való hivatkozáshoz. Ha nem rendelkezik meglévő műveleti csoporttal, tekintse meg [a műveleti csoportok létrehozása és kezelése a Azure Portalban](./action-groups.md) című témakört. Ne felejtse el menteni a módosításokat.
+1. Nyissa meg a meglévő műveleti csoportot, és adjon hozzá egy műveletet a logikai alkalmazásra való hivatkozáshoz. Ha nem rendelkezik meglévő műveleti csoporttal, tekintse meg [a műveleti csoportok létrehozása és kezelése a Azure Portalban](./action-groups.md) című témakört. Ne felejtse el menteni a módosításokat.
 
     ![A műveleti csoport frissítése](media/action-groups-logic-app/update-action-group.png "A műveleti csoport frissítése")
 

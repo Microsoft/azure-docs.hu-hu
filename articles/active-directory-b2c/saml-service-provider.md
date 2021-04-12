@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384272"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257721"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -47,7 +47,7 @@ Azok a szervezetek, amelyek az ügyfél-identitás-és hozzáférés-kezelési m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure ad B2Cban](custom-policy-get-started.md). A *SocialAndLocalAccounts* egyéni házirendre van szüksége a cikkben tárgyalt egyéni házirend alapszintű csomagjából.
+* Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure ad B2Cban](tutorial-create-user-flows.md?pivots=b2c-custom-policy). A *SocialAndLocalAccounts* egyéni házirendre van szüksége a cikkben tárgyalt egyéni házirend alapszintű csomagjából.
 * Az SAML protokoll alapvető ismerete és az alkalmazás SAML-implementációjának ismerete.
 * SAML-alkalmazásként konfigurált webalkalmazás. Ebben az oktatóanyagban egy általunk biztosított [SAML-teszt alkalmazást][samltest] használhat.
 
@@ -71,15 +71,15 @@ Az alkalmazás és a Azure AD B2C közötti megbízhatósági kapcsolat létreho
 
 | Használat | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| SAML-kérelem aláírása  | Nem | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány, amelyet az alkalmazás használ a Azure AD B2Cba küldött SAML-kérelmek aláírására. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. Azure AD B2C érvényesíti az SAML-kérelem aláírását a nyilvános kulccsal az alkalmazás metaadatainak használatával.|
-| SAML-állítás titkosítása  | Nem | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. A Azure AD B2C a nyilvános kulcs használatával titkosíthatja az alkalmazásra vonatkozó állításokat. Az alkalmazás a titkos kulcsot használja az állítás visszafejtéséhez.|
+| SAML-kérelem aláírása  | No | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány, amelyet az alkalmazás használ a Azure AD B2Cba küldött SAML-kérelmek aláírására. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. Azure AD B2C érvényesíti az SAML-kérelem aláírását a nyilvános kulccsal az alkalmazás metaadatainak használatával.|
+| SAML-állítás titkosítása  | No | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. A Azure AD B2C a nyilvános kulcs használatával titkosíthatja az alkalmazásra vonatkozó állításokat. Az alkalmazás a titkos kulcsot használja az állítás visszafejtéséhez.|
 
 **Tanúsítványok Azure AD B2C**
 
 | Használat | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| SAML-válaszok aláírása | Igen  | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az alkalmazásnak küldött SAML-válasz aláírásához. Az alkalmazás beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez. |
-| SAML-állítás aláírása | Igen | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az SAML-válasz érvényesítésének aláírásához. Az `<saml:Assertion>` SAML-válasz része.  |
+| SAML-válaszok aláírása | Yes  | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az alkalmazásnak küldött SAML-válasz aláírásához. Az alkalmazás beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez. |
+| SAML-állítás aláírása | Yes | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az SAML-válasz érvényesítésének aláírásához. Az `<saml:Assertion>` SAML-válasz része.  |
 
 Éles környezetben javasoljuk, hogy használjon egy nyilvános hitelesítésszolgáltató által kiadott tanúsítványokat. Ezt az eljárást azonban önaláírt tanúsítványokkal is elvégezheti.
 

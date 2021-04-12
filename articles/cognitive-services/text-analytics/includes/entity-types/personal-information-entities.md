@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 19586c09cca9a0dc74ba9ee4ef9da459964f9b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599324"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096945"
 ---
 > [!NOTE]
 > A védett állapottal kapcsolatos információk (PHI) észleléséhez használja a `domain=phi` paramétert és a modell verzióját, `2020-04-01` vagy később.
@@ -53,7 +53,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        Személyek nevei. 
+        Személyek nevei. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `Person` a `pii-categories` paramétert a paraméterhez. `Person` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -140,7 +140,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.
+        Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `Organization` a `pii-categories` paramétert a paraméterhez. `Organization` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -241,7 +241,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        Teljes levelezési cím.
+        Teljes levelezési cím. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `Address` a `pii-categories` paramétert a paraméterhez. `Address` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -270,7 +270,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        E-mail-címek.
+        E-mail-címek. Szintén visszaadott `domain=phi` .
       
         Az entitás kategóriájának beszerzéséhez adja hozzá `Email` a `pii-categories` paramétert a paraméterhez. `Email` az API-válaszban lesz visszaadva, ha a rendszer észleli.
 
@@ -298,7 +298,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        Webhelyek URL-címei. 
+        Webhelyek URL-címei. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `URL` a `pii-categories` paramétert a paraméterhez. `URL` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -327,7 +327,7 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        hálózati IP-címek. 
+        Hálózati IP-címek. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `IP` a `pii-categories` paramétert a paraméterhez. `IP` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -382,7 +382,7 @@ Az ebben a kategóriában lévő entitás a következő alkategóriákkal rendel
     :::column span="2":::
         **Részletek**
 
-        Naptári dátumok.
+        Naptári dátumok. Szintén visszaadott `domain=phi` .
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `Date` a `pii-categories` paramétert a paraméterhez. `Date` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
@@ -436,7 +436,7 @@ Az ebben a kategóriában lévő entitás a következő alkategóriákkal rendel
     :::column span="2":::
         **Részletek**
 
-        Alábbi korhatárt szabja.
+        Alábbi korhatárt szabja. 
 
         Az entitás kategóriájának beszerzéséhez adja hozzá `Age` a `pii-categories` paramétert a paraméterhez. `Age` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       

@@ -1,14 +1,14 @@
 ---
 title: FedRAMP High – tervminta-áttekintés
 description: A FedRAMP High-tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek felmérhetik a FedRAMP High adott vezérlőit.
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 1287a0369e59cc78cce775bff01fe885c1b571d0
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: HT
+ms.openlocfilehash: a53c20a0be03d50aa9b09e21613e61d9aae7c1e8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034849"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386785"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>A FedRAMP High-tervminta áttekintése
 

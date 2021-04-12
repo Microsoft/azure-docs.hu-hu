@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84e6f76bcae55ed905e11c46df66478908529970
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928698"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258027"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Oktatóanyag a Experian konfigurálásához a Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![képernyőkép a Experian-Architecture-diagramról](media/partner-experian/experian-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználó új fiók létrehozásához és az oldalba való belépéshez kiválasztja a regisztrációt. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -133,7 +133,7 @@ A megadott [Egyéni szabályzatokban](https://github.com/azure-ad-b2c/partner-in
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>6. rész – a Azure AD B2C házirend konfigurálása
 
-Tekintse át ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
+Tekintse át ezt a [dokumentumot](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
 
 >[!NOTE]
 >Ez a minta házirend a [helyi fiókok kezdő csomagjára](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)épül.
@@ -169,4 +169,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

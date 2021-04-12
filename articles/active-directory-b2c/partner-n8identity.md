@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fee7965e7834f0e05dba91f8652a0e155087b14
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96170922"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257874"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Oktatóanyag a TheAccessHub felügyeleti eszköz konfigurálásához Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Választható Kapcsolati és hitelesítő adatok minden olyan adatbázishoz vagy Lightweight Directory Access Protocol (LDAPs) szolgáltatáshoz, amelyre adatokat kíván áttelepíteni.
 
-- Választható Az [Egyéni házirendek](./custom-policy-get-started.md)használatára konfigurált Azure ad B2C környezet, ha integrálni szeretné a TheAccessHub-felügyeleti eszközt a regisztrációs házirend folyamatba.
+- Választható Az [Egyéni házirendek](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)használatára konfigurált Azure ad B2C környezet, ha integrálni szeretné a TheAccessHub-felügyeleti eszközt a regisztrációs házirend folyamatba.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -52,7 +52,7 @@ A TheAccessHub felügyeleti eszköz az Azure bármely más alkalmazásához haso
 
 ![N8identity architektúra diagramot ábrázoló kép](./media/partner-n8identity/n8identity-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a TheAccessHub felügyeleti eszközét, és átadja a felhasználói attribútumokat
@@ -62,7 +62,7 @@ A TheAccessHub felügyeleti eszköz az Azure bármely más alkalmazásához haso
 | 6. | A TheAccessHub felügyeleti eszköz szinkronizálja a felhasználói rekordokat a Azure AD B2Csal.
 | 7. |A TheAccessHub felügyeleti eszköz sikeres/sikertelen válasza alapján Azure AD B2C egy testreszabott üdvözlő e-mailt küld a felhasználónak.
 
-## <a name="create-a-global-admin-in-your-azure-ad-b2c-tenant"></a>Globális rendszergazda létrehozása a Azure AD B2C-bérlőben
+## <a name="create-a-global-admin-in-your-azure-ad-b2c-tenant&quot;></a>Globális rendszergazda létrehozása a Azure AD B2C-bérlőben
 
 A TheAccessHub-felügyeleti eszköznek engedélyekkel kell rendelkeznie a globális rendszergazda nevében a felhasználói adatok olvasásához és a Azure AD B2C-bérlőn végzett módosítások végrehajtásához. A normál rendszergazdák által megnyert módosítások; a t hatására a TheAccessHub felügyeleti eszköz képes kommunikálni a Bérlővel.
 
@@ -73,7 +73,7 @@ Globális rendszergazda létrehozásához kövesse az alábbi lépéseket:
 3. Válassza a **felhasználó létrehozása** lehetőséget egy normál címtárbeli felhasználó létrehozásához, és nem az ügyfél
 4. Az azonosító adatok űrlapjának befejezése
 
-   a. Adja meg a felhasználónevet (például "theaccesshub")
+   a. Adja meg a felhasználónevet (például &quot;theaccesshub")
 
    b. Adja meg a nevet, például "TheAccessHub szolgáltatásfiók"
 
@@ -358,7 +358,7 @@ Azure AD B2C adatainak szinkronizálása a TheAccessHub felügyeleti eszközön:
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C házirendek konfigurálása
 
-A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva van a Azure AD B2Cával való naprakész állapotának megőrzésére. A TheAccessHub felügyeleti eszköz API-ját és Azure AD B2C szabályzatait kihasználva tájékoztatjuk a TheAccessHub felügyeleti eszköz változásait. Ehhez a megoldáshoz [Azure ad B2C egyéni szabályzatok](./custom-policy-get-started.md)technikai ismerete szükséges. A következő szakaszban bemutatunk egy példát a szabályzat lépéseire és egy biztonságos tanúsítványra, amely értesíti az új fiókok TheAccessHub felügyeleti eszközét az Sign-Up egyéni szabályzatokban.
+A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva van a Azure AD B2Cával való naprakész állapotának megőrzésére. A TheAccessHub felügyeleti eszköz API-ját és Azure AD B2C szabályzatait kihasználva tájékoztatjuk a TheAccessHub felügyeleti eszköz változásait. Ehhez a megoldáshoz [Azure ad B2C egyéni szabályzatok](./user-flow-overview.md)technikai ismerete szükséges. A következő szakaszban bemutatunk egy példát a szabályzat lépéseire és egy biztonságos tanúsítványra, amely értesíti az új fiókok TheAccessHub felügyeleti eszközét az Sign-Up egyéni szabályzatokban.
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>Biztonságos hitelesítő adat létrehozása a TheAccessHub felügyeleti eszköz API-ját meghívásához
 
@@ -386,7 +386,7 @@ A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva va
 
 5. Válassza a **Letöltés** lehetőséget, ha olyan alapszintű szabályzatokat tartalmazó zip-fájlt szeretne beolvasni, amely ügyfeleket regisztrál a TheAccessHub felügyeleti eszközbe.
 
-6. Ezt az [oktatóanyagot](./custom-policy-get-started.md) követve megkezdheti az egyéni szabályzatok megtervezését Azure ad B2Cban.
+6. Ezt az [oktatóanyagot](./tutorial-create-user-flows.md?pivots=b2c-custom-policy) követve megkezdheti az egyéni szabályzatok megtervezését Azure ad B2Cban.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -394,4 +394,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

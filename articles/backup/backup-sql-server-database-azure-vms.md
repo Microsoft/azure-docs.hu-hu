@@ -2,13 +2,13 @@
 title: Több SQL Servert futtató virtuális gép biztonsági mentése a tárolóból
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést az Azure-beli virtuális gépeken található SQL Server-adatbázisokról a Recovery Services-tároló Azure Backupával
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 798dc81012ad968c3ecc287717240513a08a1349
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2021
+ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "105567210"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258469"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Több SQL Server virtuális gép biztonsági mentése a Recovery Services-tárból
 
@@ -23,10 +23,6 @@ Ebből a cikkből megtudhatja, hogyan:
 > * Tároló létrehozása és konfigurálása.
 > * Adatbázisok felderítése és biztonsági mentések beállítása.
 > * Automatikus védelem beállítása adatbázisokhoz.
-
->[!NOTE]
->Az Azure-beli virtuális gépeken futó **SQL Server-kiszolgáló és az Azure** -beli virtuális gépekhez készült SAP HANA Soft delete már előzetes verzióban érhető el.<br>
->Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt: AskAzureBackupTeam@microsoft.com
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -4,20 +4,17 @@ description: Ismerje meg, hogyan konfigurálhatja az ügyfél által felügyelt 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 04/01/2021
 ms.author: thweiss
-ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b1fc0b51c1cd2a99ec97bec9f588699a893ceca
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101656516"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222622"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
-
-> [!NOTE]
-> Az ügyfél által felügyelt kulcsok Azure Cosmos DB [analitikus tárolóval](analytical-store-introduction.md) való használata jelenleg további konfigurálást igényel a fiókjában. Kérjük, lépjen kapcsolatba [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) a részletekkel.
 
 Az Azure Cosmos-fiókban tárolt adatai automatikusan és zökkenőmentesen titkosítva vannak a Microsoft által kezelt kulcsokkal (**szolgáltatás által felügyelt kulcsok**). Lehetőség van arra is, hogy egy második titkosítási réteget adjon hozzá a kezelt kulcsokkal (az **ügyfél által felügyelt kulcsokkal**).
 
@@ -51,7 +48,7 @@ Ha meglévő Azure Key Vault példányt használ, ellenőrizheti, hogy ezek a tu
 - [A Soft delete használata a PowerShell-lel](../key-vault/general/key-vault-recovery.md)
 - [A Soft delete használata az Azure CLI-vel](../key-vault/general/key-vault-recovery.md)
 
-## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Hozzáférési szabályzat hozzáadása az Azure Key Vault-példányhoz
+## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a><a id="add-access-policy"></a> Hozzáférési szabályzat hozzáadása az Azure Key Vault-példányhoz
 
 1. A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kívánt Azure Key Vault-példányra. A bal oldali menüben válassza a **hozzáférési szabályzatok** lehetőséget:
 
@@ -63,7 +60,14 @@ Ha meglévő Azure Key Vault példányt használ, ellenőrizheti, hogy ezek a tu
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="A megfelelő engedélyek kiválasztása":::
 
-1. A **rendszerbiztonsági tag kiválasztása** területen válassza a **nincs kiválasztva** lehetőséget. Ezután keressen rá **Azure Cosmos db** rendszerbiztonsági tag elemre, és válassza ki azt (hogy könnyebb legyen megkeresni, a résztvevő azonosítója: `a232010e-820c-4083-83bb-3ace5fc29d0b` bármely Azure-régió esetében, Azure Government kivéve a rendszerbiztonsági tag azonosítóját `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Végül válassza a **kijelölés alul lehetőséget** . Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, akkor előfordulhat, hogy újra kell regisztrálnia a **Microsoft.DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
+1. A **rendszerbiztonsági tag kiválasztása** területen válassza a **nincs kiválasztva** lehetőséget.
+
+1. Keressen rá **Azure Cosmos db** rendszerbiztonsági tag elemre, és válassza ki azt (hogy könnyebb legyen megkeresni, az egyszerű azonosító: `a232010e-820c-4083-83bb-3ace5fc29d0b` bármely Azure-régió esetében kereshet, Azure Government kivéve a résztvevő azonosítóját `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, akkor előfordulhat, hogy újra kell regisztrálnia a **Microsoft.DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
+
+   > [!NOTE]
+   > Ez regisztrálja az Azure Cosmos DB az első féltől származó identitást a Azure Key Vault hozzáférési szabályzatban. Ha a Azure Cosmos DB fiók felügyelt identitásával szeretné helyettesíteni ezt az identitást, tekintse meg a [felügyelt identitás használata a Azure Key Vault hozzáférési házirendben](#using-managed-identity)című témakört.
+
+1. Válassza a **kijelölés alul lehetőséget** . 
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Azure Cosmos DB rendszerbiztonsági tag kiválasztása":::
 
@@ -226,6 +230,34 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="using-a-managed-identity-in-the-azure-key-vault-access-policy"></a><a id="using-managed-identity"></a> Felügyelt identitás használata a Azure Key Vault hozzáférési házirendben
+
+Ez a hozzáférési házirend biztosítja, hogy a titkosítási kulcsokat a Azure Cosmos DB fiókja is hozzáférhessen. Ezt úgy teheti meg, hogy hozzáférést biztosít egy adott Azure Active Directory (AD) identitáshoz. Az identitások két típusa támogatott:
+
+- Azure Cosmos DB saját identitása használható a Azure Cosmos DB szolgáltatás elérésének biztosítására.
+- A Azure Cosmos DB-fiók [felügyelt identitása](how-to-setup-managed-identity.md) kifejezetten a fiókjához való hozzáférés biztosítására használható.
+
+Mivel a rendszer által hozzárendelt felügyelt identitások csak a fiók létrehozása után kérhetők le, először létre kell hoznia a fiókját az első féltől származó identitás használatával, a [fent](#add-access-policy)leírtak szerint. Ezután:
+
+1. Ha ez nem történt meg a fiók létrehozása során, [engedélyezzen egy rendszerhez rendelt felügyelt identitást](how-to-setup-managed-identity.md) a fiókjában, és másolja a `principalId` kapott hozzárendelést.
+
+1. Vegyen fel egy új hozzáférési szabályzatot a Azure Key Vault-fiókjába, a [fentiekben](#add-access-policy)leírtak szerint, de használja az `principalId` előző lépésben a Azure Cosmos db első féltől származó identitása helyett másolt fájlt.
+
+1. Frissítse Azure Cosmos DB-fiókját annak megadásához, hogy a rendszer által hozzárendelt felügyelt identitást használja a titkosítási kulcsok Azure Key Vault-ban való elérésekor. Ezt a tulajdonság megadásával adhatja meg a fiókja Azure Resource Manager sablonjában:
+
+   ```json
+   {
+       "type": " Microsoft.DocumentDB/databaseAccounts",
+       "properties": {
+           "defaultIdentity": "SystemAssignedIdentity",
+           // ...
+       },
+       // ...
+   }
+   ```
+
+1. Lehetősége van arra is, hogy eltávolítsa a Azure Cosmos DB első féltől származó identitást a Azure Key Vault hozzáférési szabályzatból.
+
 ## <a name="key-rotation"></a>Kulcsrotálás
 
 Az Azure Cosmos-fiók által használt ügyfél által felügyelt kulcs elforgatása kétféleképpen végezhető el.
@@ -297,7 +329,7 @@ Ez a funkció jelenleg csak az új fiókok esetében érhető el.
 
 ### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Használhatók-e az ügyfél által felügyelt kulcsok a Azure Cosmos DB [analitikus tárolóval](analytical-store-introduction.md)együtt?
 
-Igen, de ez jelenleg további konfigurációt igényel a fiókjában. Kérjük, lépjen kapcsolatba [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) a részletekkel.
+Igen, de az analitikai tár engedélyezése előtt a [Azure Cosmos db fiókjának felügyelt identitását](#using-managed-identity) a Azure Key Vault hozzáférési szabályzatban kell használnia.
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Van olyan terv, amely támogatja a legfinomabb részletességet, mint a fiók szintű kulcsok?
 

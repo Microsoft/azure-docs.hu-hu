@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cea15114e125951a8fbec73f965b272a4f8053d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181431"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284158"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM regisztrálása az SQL IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ A [SQL Server IaaS-ügynök bővítménnyel](sql-server-iaas-agent-extension-aut
 
 SQL Server VM Azure Marketplace-rendszerképnek a Azure Portal használatával történő üzembe helyezése automatikusan regisztrálja a SQL Server VM a kiterjesztéssel. Ha azonban úgy dönt, hogy egy Azure-beli virtuális gépen telepíti a SQL Servert, vagy egyéni virtuális MEREVLEMEZről szeretne üzembe helyezni egy Azure-beli virtuális gépet, akkor a teljes funkció előnyeinek és kezelhetőségének feloldásához regisztrálnia kell a SQL Server VMt az SQL IaaS-ügynök bővítménnyel. 
 
-Az SQL IaaS-ügynök bővítményének használatához először [regisztrálnia kell az előfizetését a **Microsoft. SqlVirtualMachine** szolgáltatónál](#register-subscription-with-rp), amely az SQL IaaS bővítmény lehetővé teszi az erőforrások létrehozását az adott előfizetésen belül.
+Az SQL IaaS-ügynök bővítményének használatához először [regisztrálnia kell az előfizetését a **Microsoft. SqlVirtualMachine** szolgáltatónál](#register-subscription-with-resource-provider), amely az SQL IaaS bővítmény lehetővé teszi az erőforrások létrehozását az adott előfizetésen belül.
 
 > [!IMPORTANT]
 > Az SQL IaaS-ügynök bővítmény olyan adatokat gyűjt az expressz célra, amelyek az ügyfelek számára opcionális előnyöket biztosítanak SQL Server Azure-beli Virtual Machines való használatakor. A Microsoft ezeket az adatszolgáltatásokat nem használja fel a licencelési naplózáshoz az ügyfél előzetes belefoglalása nélkül. További információért tekintse meg a [SQL Server adatvédelmi kiegészítését](/sql/sql-server/sql-server-privacy#non-personal-data) .
@@ -50,9 +50,9 @@ A SQL Server VM a bővítménnyel való regisztrálásához a következőkre les
 - Az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziója vagy [Azure PowerShell (minimum 5,0)](/powershell/azure/install-az-ps). 
 
 
-## <a name="register-subscription-with-rp"></a>Előfizetés regisztrálása az RP-vel
+## <a name="register-subscription-with-resource-provider"></a>Előfizetés regisztrálása erőforrás-szolgáltatóval
 
-Ha regisztrálni szeretné a SQL Server VM az SQL IaaS-ügynök bővítménnyel, először regisztrálnia kell az előfizetését a **Microsoft. SqlVirtualMachine** -szolgáltatóval. Ez biztosítja, hogy az SQL IaaS-ügynök bővítmény képes legyen erőforrásokat létrehozni az előfizetésen belül.  Ezt a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával teheti meg.
+Ha regisztrálni szeretné a SQL Server VMt az SQL IaaS-ügynök bővítménnyel, először regisztrálnia kell az előfizetését a **Microsoft. SqlVirtualMachine** erőforrás-szolgáltatóval. Ez biztosítja, hogy az SQL IaaS-ügynök bővítmény képes legyen erőforrásokat létrehozni az előfizetésen belül.  Ezt a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával teheti meg.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -127,7 +127,7 @@ SQL Server VM regisztrálása egyszerűsített módban Azure PowerShell:
 
 ### <a name="full-management-mode"></a>Teljes felügyeleti mód
 
-Ha a SQL Server VM teljes módban regisztrálja, a rendszer újraindítja a SQL Server szolgáltatást. Kérjük, körültekintően járjon el. 
+Ha a SQL Server VM teljes módban regisztrálja, a rendszer újraindítja a SQL Server szolgáltatást. Körültekintően járjon el. 
 
 Ha a SQL Server VMt közvetlenül teljes módban szeretné regisztrálni (és valószínűleg újraindítani a SQL Server szolgáltatást), használja a következő Azure PowerShell parancsot: 
 

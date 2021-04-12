@@ -1,14 +1,14 @@
 ---
 title: Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
 description: Megtudhatja, hogyan alakíthatja át Csoportházirend a Windows Server 2019 biztonsági alaptervből egy házirend-definícióba.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a49c8044914c8c23b4f99cad7838652eb94c4b92
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93348644"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096580"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
 
@@ -96,13 +96,13 @@ Ezután a letöltött Server 2019 alapkonfigurációt egy vendég konfiguráció
 1. Miután létrehozta és feltöltötte a vendég konfigurációhoz tartozó egyéni házirend-csomagot, hozza létre a vendég-konfigurációs házirend definícióját. A `New-GuestConfigurationPolicy` parancsmag használatával hozza létre a vendég konfigurációját.
 
    ```azurepowershell-interactive
-    $NewGuestConfigurationPolicySplat = @{
+   $NewGuestConfigurationPolicySplat = @{
         ContentUri = $Uri 
         DisplayName = 'Server 2019 Configuration Baseline' 
         Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
         Path = 'C:\git\policyfiles\policy'  
         Platform = Windows 
-        }
+   }
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     

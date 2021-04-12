@@ -9,20 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ab3458003366416e10588d3f2edb29b51619ecf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678163"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257636"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
-> [!IMPORTANT]
-> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok számára a klímaváltozás elleni küzdelem érdekében. Mivel a szél nem felel meg a természetnek, a szélenergia-kezelőknek gépi tanulási (ML) modelleket kell létrehozniuk a szélenergia kapacitásának előrejelzéséhez. Ez az előrejelzés szükséges a villamosenergia-kereslet kielégítéséhez, valamint a hálózat stabilitásának biztosításához. Ebben az oktatóanyagban bemutatjuk, hogyan történik a Azure Maps időjárási előrejelzési információk összevonása a bemutatóval az időjárási olvasmányok esetében. A Azure Maps időjárási szolgáltatások (előzetes verzió) meghívásával a rendszer az időjárás-előrejelzési adatkérést kéri.
+A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok számára a klímaváltozás elleni küzdelem érdekében. Mivel a szél nem felel meg a természetnek, a szélenergia-kezelőknek gépi tanulási (ML) modelleket kell létrehozniuk a szélenergia kapacitásának előrejelzéséhez. Ez az előrejelzés szükséges a villamosenergia-kereslet kielégítéséhez, valamint a hálózat stabilitásának biztosításához. Ebben az oktatóanyagban bemutatjuk, hogyan történik a Azure Maps időjárási előrejelzési információk összevonása a bemutatóval az időjárási olvasmányok esetében. A Azure Maps időjárási szolgáltatások meghívásával az időjárás-előrejelzési adatkérést kéri a rendszer.
 
 Az oktatóanyagban a következőket végezheti el:
 
@@ -31,7 +27,7 @@ Az oktatóanyagban a következőket végezheti el:
 > * Betöltheti a bemutató adatait a fájlból.
 > * Azure Maps REST API-k hívása a Pythonban.
 > * Helyadatok leképezése a térképen.
-> * Azure Maps [napi előrejelzési](/rest/api/maps/weather/getdailyforecastpreview) időjárási adattal gazdagíthatja a bemutatókat.
+> * Azure Maps [napi előrejelzési](/rest/api/maps/weather/getdailyforecast) időjárási adattal gazdagíthatja a bemutatókat.
 > * Előrejelzési adatdiagramok ábrázolása.
 
 
@@ -72,8 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Napi előrejelzési adatgyűjtés kérése
 
-Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps Weather Services (előzetes [verzió) napi előrejelzési API](/rest/api/maps/weather/getdailyforecastpreview) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
-
+Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps időjárási szolgáltatások [napi előrejelzési API](/rest/api/maps/weather/getdailyforecast) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
 
 ```python
 subscription_key = "Your Azure Maps key"
@@ -86,7 +81,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
+# Call azure maps Weather services to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):
@@ -192,7 +187,7 @@ Ha többet szeretne megtudni arról, hogyan hívhat Azure Maps REST API-kat Azur
 
 Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a következőt:
 
-* [Napi előrejelzés](/rest/api/maps/weather/getdailyforecastpreview)
+* [Napi előrejelzés](/rest/api/maps/weather/getdailyforecast)
 * [Render-Térkép képe](/rest/api/maps/render/getmapimage)
 
 Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](./consumption-model.md)-k.
