@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593104"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logikai alkalmazás munkafolyamatok létrehozása előre összeállított sablonokból
@@ -21,7 +21,7 @@ A munkafolyamatok gyorsabb létrehozásának megkezdéséhez Logic Apps biztosí
 
 Néhány sablon-Kategória:
 
-| Sablon típusa | Description | 
+| Sablon típusa | Leírás | 
 | ------------- | ----------- | 
 | Vállalati felhőalapú sablonok | Az Azure Blob, a Dynamics CRM, a Salesforce, a Box és más összekötők integrálása a vállalati felhő igényei szerint. Ezekkel a sablonokkal például rendszerezheti az üzleti érdeklődőket, vagy biztonsági másolatot készíthet a vállalati fájlok adatairól. | 
 | Személyes hatékonyságnövelő sablonok | A napi emlékeztetők megadásával javíthatja a személyes hatékonyságot, a fontos munkaelemeket a feladatlistába helyezheti, és a hosszadalmas feladatok automatizálását egyetlen felhasználói jóváhagyási lépéshez hajthatja végre. | 
@@ -97,9 +97,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
    > [!NOTE] 
    > Számos sablon olyan összekötőket tartalmaz, amelyek már rendelkezhetnek előre feltöltött kötelező tulajdonságokkal. Előfordulhat azonban, hogy egyes sablonok esetében továbbra is meg kell adnia az értékeket, mielőtt megfelelően telepítené a logikai alkalmazást. Ha a hiányzó tulajdonságmezők befejezése nélkül próbálkozik a telepítéssel, hibaüzenet jelenik meg. 
 
-## <a name="update-logic-apps-with-templates"></a>Logikai alkalmazások frissítése sablonokkal
+## <a name="update-logic-apps-with-templates&quot;></a>Logikai alkalmazások frissítése sablonokkal
 
-1. A [Azure Portal](https://portal.azure.com "Azure Portal")a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást.
+1. A [Azure Portal](https://portal.azure.com &quot;Azure Portal")a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást.
 
 2. A tervező eszköztárán válassza a **sablonok** lehetőséget. Ez a művelet elveti a nem mentett módosításokat, ezért megjelenik egy figyelmeztető üzenet, amely megerősíti, hogy folytatja a műveletet. A megerősítéshez kattintson **az OK gombra**. Például:
 

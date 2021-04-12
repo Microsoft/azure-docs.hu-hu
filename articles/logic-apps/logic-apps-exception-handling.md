@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.date: 02/18/2021
 ms.topic: article
 ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101702504"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése az Azure Logic Appsben
@@ -27,7 +27,7 @@ A legalapvetőbb kivételek és hibakezelés érdekében az *újrapróbálkozás
 
 Az újrapróbálkozási szabályzatok típusai:
 
-| Típus | Description |
+| Típus | Leírás |
 |------|-------------|
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. |
 | **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. |
@@ -69,7 +69,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 
 *Kötelező*
 
-| Érték | Típus | Description |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*újrapróbálkozás – házirend-típus*> | Sztring | A használni kívánt újrapróbálkozási szabályzat típusa: `default` ,,, `none` `fixed` vagy `exponential` |
 | <*újrapróbálkozási időköz*> | Sztring | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz, `PT5S` a maximális intervallum `PT1D` . Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. |
@@ -78,7 +78,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 
 *Nem kötelező*
 
-| Érték | Típus | Description |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*minimális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legkisebb intervalluma |
 | <*maximális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legnagyobb intervalluma |

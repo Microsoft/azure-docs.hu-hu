@@ -7,10 +7,10 @@ ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105561814"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub-és IoT tartozó eszköz frissítése Plug and Play
@@ -50,7 +50,7 @@ Ez az eszköz frissítési ügynöke által jelentett állapot, miután az eszk�
 
 Ez a gyártót és a modellt tartalmazó tulajdonságok halmaza.
 
-|Name|Séma|Irány|Description|
+|Name|Séma|Irány|Leírás|
 |----|------|---------|-----------|
 |gyártó|sztring|eszközről a felhőbe|A által jelentett eszköz gyártója `deviceProperties` . Ezt a tulajdonságot két hely közül kell olvasni – a "AzureDeviceUpdateCore" felület először megpróbálja beolvasni a "aduc_manufacturer" értéket a [konfigurációs fájlból](device-update-configuration-file.md) .  Ha az érték nincs kitöltve a konfigurációs fájlban, akkor alapértelmezés szerint a ADUC_DEVICEPROPERTIES_MANUFACTURER fordítási idejű definícióját fogja jelenteni. Ezt a tulajdonságot a rendszer csak a rendszerindítás során fogja jelenteni.|
 |modell|sztring|eszközről a felhőbe|Az eszközön a által jelentett eszköz modellje `deviceProperties` . Ezt a tulajdonságot két hely közül kell olvasni – a AzureDeviceUpdateCore felület először megpróbálja beolvasni a "aduc_model" értéket a [konfigurációs fájlból](device-update-configuration-file.md) .  Ha az érték nincs kitöltve a konfigurációs fájlban, akkor alapértelmezés szerint a ADUC_DEVICEPROPERTIES_MODEL fordítási idejű definícióját fogja jelenteni. Ezt a tulajdonságot a rendszer csak a rendszerindítás során fogja jelenteni.|
@@ -61,7 +61,7 @@ Ez a gyártót és a modellt tartalmazó tulajdonságok halmaza.
 
 A szolgáltatás metaadatai olyan mezőket tartalmaznak, amelyeket az eszköz frissítési szolgáltatásai a műveletek és az adatok az eszköz frissítési ügynökével való kommunikációra használnak.
 
-|Name|Séma|Irány|Description|
+|Name|Séma|Irány|Leírás|
 |----|------|---------|-----------|
 |művelet|egész szám|felhőből eszközre|Ez egy egész szám, amely megfelel egy olyan műveletnek, amelyet az ügynöknek végre kell hajtania. Alább felsorolt értékek.|
 |updateManifest|sztring|felhőből eszközre|Egy frissítés tartalmának leírására szolgál. Az [importálási jegyzékből](import-update.md#create-device-update-import-manifest) létrehozva|

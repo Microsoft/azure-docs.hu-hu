@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593853"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Virtuális gépek munkaidőn kívüli indításának és leállításának lekérdezési naplói
@@ -62,7 +62,7 @@ Ha olyan naplóbeli keresést hajt végre, amely a **JobLogs** vagy a **JobStrea
 
 A következő táblázat a Start/Stop VMs during off-hours által összegyűjtött feladatokhoz tartozó rekordokat tartalmazza.
 
-|Lekérdezés | Description|
+|Lekérdezés | Leírás|
 |----------|----------|
 |A sikeresen befejezett runbook ScheduledStartStop_Parent feladatok keresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Azon runbook ScheduledStartStop_Parent feladatok keresése, amelyek nem fejeződött be sikeresen | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

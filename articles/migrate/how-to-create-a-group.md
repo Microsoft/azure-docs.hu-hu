@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.openlocfilehash: 0570ed73b86223025b250e269d7e2f358473f004
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104780854"
 ---
 # <a name="create-a-group-for-assessment"></a>Csoport létrehozása az értékeléshez
@@ -36,7 +36,7 @@ Létrehozhat egy csoportot is, ha létrehoz egy [értékelést](how-to-create-as
 Ha manuálisan szeretne létrehozni egy csoportot az értékelés létrehozásán kívül, tegye a következőket:
 
 1. A Azure Migrate projekt > **áttekintése** területen kattintson a **kiszolgálók felmérése és migrálása** elemre. **Azure Migrate: felderítés és értékelés**, kattintson a **csoportok** elemre.
-    - Ha még nem adta hozzá a Azure Migrate: Discovery and Assessment Tool eszközt, kattintson ide a hozzáadásához. [További információ](how-to-assess.md).
+    - Ha még nem adta hozzá a Azure Migrate: Discovery and Assessment Tool eszközt, kattintson ide a hozzáadásához. [További információk](how-to-assess.md).
     - Ha még nem hozott létre Azure Migrate projektet, [További információt itt](./create-manage-projects.md)olvashat.
 
     ![Csoportok kiválasztása](./media/how-to-create-a-group/select-groups.png)
@@ -60,7 +60,7 @@ Ha már [beállította a függőségi leképezést](how-to-create-group-machine-
 
 1. A **kiszolgálók** lap **Azure Migrate: felderítés és értékelés** csempén kattintson a **csoportok** elemre.
 2. Kattintson arra a csoportra, amelyet szeretne pontosítani.
-    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Az egyes kiszolgálók esetében, amelyekhez függőségeket kíván megjeleníteni, kattintson a **telepítés szükséges** elemre. Telepítsen néhány ügynököt az egyes kiszolgálókon, mielőtt le tudja képezni a kiszolgálói függőségeket. [További információ](how-to-create-group-machine-dependencies.md).
+    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Az egyes kiszolgálók esetében, amelyekhez függőségeket kíván megjeleníteni, kattintson a **telepítés szükséges** elemre. Telepítsen néhány ügynököt az egyes kiszolgálókon, mielőtt le tudja képezni a kiszolgálói függőségeket. [További információk](how-to-create-group-machine-dependencies.md).
 
         ![Függőségi leképezés hozzáadása](./media/how-to-create-a-group/add-dependency-mapping.png)
 

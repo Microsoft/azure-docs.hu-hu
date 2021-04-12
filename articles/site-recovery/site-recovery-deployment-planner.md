@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
 ms.openlocfilehash: 4291e8438f70e2e7190cd4dc6c890b5b325f2324
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100360907"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner VMware – Azure forgatókönyvhöz – információk
@@ -74,7 +74,7 @@ Azon kiszolgálók száma, amelyek profilozhatók a Site Recovery Deployment Pla
 ## <a name="prerequisites"></a>Előfeltételek
 Az eszköz két fő fázisból áll: a profil- és jelentéskészítésből. Van egy harmadik lehetőség, amely csak az átviteli sebességet számítja ki. Az alábbi táblázatban láthatók annak a kiszolgálónak a követelményei, ahonnan a profilkészítés/átviteli sebesség mérését kezdeményezi.
 
-| Kiszolgálókövetelmények | Description|
+| Kiszolgálókövetelmények | Leírás|
 |---|---|
 |Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: Windows Server 2016 vagy Windows Server 2012 R2<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server))</li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-hoz (*. blob.core.windows.net) erről a kiszolgálóról, 443-es portról<br>[Ez nem kötelező. Megadhatja, hogy a jelentés létrehozásakor a rendelkezésre álló sávszélességet manuálisan adja meg.]</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A VMware vCenter statisztikai szintjének beállítása 1 vagy magasabb szintű lehet</li><li>VCenter-port engedélyezése (alapértelmezett 443): a Site Recovery Deployment Planner ezt a portot használja a vCenter-kiszolgáló/ESXi-gazdagéphez való csatlakozáshoz.</ul></ul>|
 | Jelentéskészítés | Windows rendszerű számítógép vagy Windows Server Excel 2013 vagy újabb verzióval.<li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) megadása csak akkor szükséges, ha a jelentés generálására szolgáló parancs pass-User beállításával beolvassa a virtuális gépek legújabb virtuálisgép-konfigurációs információit. A Deployment Planner csatlakozik a vCenter-kiszolgálóhoz. A vCenter port (alapértelmezett 443) portjának engedélyezése a vCenter-kiszolgálóhoz való csatlakozáshoz.</li>|

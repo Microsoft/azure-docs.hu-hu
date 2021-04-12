@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6d1f504458aed440464015a34479d75992fe5c45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 796ac876537aa06253ad6eeec99adaf48de61c79
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149375"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167260"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -268,7 +268,7 @@ A GPG kulcstartó és a kulcspár létrehozásához használja a hibrid Runbook 
 1. A sudo alkalmazás használatával jelentkezzen be a **nxautomation** -fiókkal.
 
     ```bash
-    sudo su – nxautomation
+    sudo su - nxautomation
     ```
 
 1. A **nxautomation** használata után létrehozza a GPG-kulcspárt. A GPG végigvezeti Önt a lépéseken. Meg kell adnia a nevet, az e-mail-címet, a lejárati időt és a hozzáférési kódot. Ezután várjon, amíg nincs elég entrópia a gépen a kulcs generálásához.
@@ -304,7 +304,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 Miután konfigurálta az aláírás-ellenőrzést, a következő GPG-paranccsal írja alá a runbook.
 
 ```bash
-gpg –-clear-sign <runbook name>
+gpg --clear-sign <runbook name>
 ```
 
 Az aláírt runbook neve **<runbook name> . ASC**.
@@ -320,7 +320,7 @@ Amikor elindít egy runbook a Azure Portalban, megjelenik a **Futtatás** lehet�
 Amikor a PowerShell használatával indítja el a runbook, használja a `RunOn` paramétert a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal. Az alábbi példa a Windows PowerShell használatával indítja el a **test-runbook** nevű Runbook egy MyHybridGroup nevű hibrid runbook Worker csoporton.
 
 ```azurepowershell-interactive
-Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 ## <a name="logging"></a>Naplózás

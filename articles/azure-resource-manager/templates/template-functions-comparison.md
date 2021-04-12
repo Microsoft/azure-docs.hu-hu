@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó f�
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99834000"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM-sablonok összehasonlító függvények
@@ -31,7 +31,7 @@ A paraméterekből származó első nem null értéket adja vissza. Az üres kar
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
 | További argumentumok |No |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
@@ -133,7 +133,7 @@ Ellenőrzi, hogy két érték egyenlő-e egymással. A `equals` függvény nem t
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
 | arg2 |Yes |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
@@ -317,7 +317,7 @@ Ellenőrzi, hogy az első érték nagyobb-e, mint a második érték. A `greater
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int vagy sztring |A nagyobb összehasonlítás első értéke. |
 | arg2 |Yes |int vagy sztring |A nagyobb összehasonlítás második értéke. |
@@ -398,7 +398,7 @@ Ellenőrzi, hogy az első érték nagyobb-e vagy egyenlő-e a második értékke
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
 | arg2 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
@@ -479,7 +479,7 @@ Ellenőrzi, hogy az első érték kisebb-e a második értéknél. A `less` füg
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
 | arg2 |Yes |int vagy sztring |A kisebb összehasonlítás második értéke. |
@@ -560,7 +560,7 @@ Ellenőrzi, hogy az első érték kisebb-e vagy egyenlő-e a második értékkel
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
 | arg2 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |

@@ -4,12 +4,12 @@ description: Alkalmazásteljesítmény-felügyelet és élő webalkalmazások ha
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: ac6b6f2b47df0bce9ae164c83df54adfdf00b184
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f25a53cb227d6894aaabaf82033178f15f61c173
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575711"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076207"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 A Application Insights a [Azure monitor](../overview.md)egy funkciója, amely egy bővíthető Application Performance Management-(APM-) szolgáltatás fejlesztők és DevOps szakemberek számára. Használhatja az élő alkalmazások figyelésére. A szolgáltatás automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók mit tesznek ténylegesen az alkalmazással.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Számos platformon használható, többek között a .NET, a Node.js, a Java és a Python helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett alkalmazásokhoz. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
@@ -47,7 +47,7 @@ A fejlesztőcsapatoknak készült Application Insights segít az adott alkalmaz�
 
 Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 
-|  |  |
+| Cikk leírása   | Kép |
 | --- | --- |
 | [**Intelligens észlelés és manuális riasztások**](./proactive-diagnostics.md)<br/>Állítson be automatikus riasztásokat, amelyek alkalmazkodnak az alkalmazás normál telemetria, és akkor aktiválódik, ha a szokásos mintázaton kívül van valami. [Riasztásokat is beállíthat](../alerts/alerts-log.md) egyéni vagy standard mérőszámok bizonyos szintjeire. |![Példa a riasztásokra](./media/app-insights-overview/alerts-tn.png) |
 | [**Alkalmazás-hozzárendelés**](./app-map.md)<br/>Ismerkedjen meg az alkalmazás összetevőivel, és tekintse meg a legfontosabb mérőszámokat és riasztásokat. |![Alkalmazástérkép](./media/app-insights-overview/appmap-tn.png)  |

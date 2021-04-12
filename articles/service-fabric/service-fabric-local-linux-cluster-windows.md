@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan állíthat be Service Fabric Linux rend
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93087077"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Linux Service Fabric-fürt beállítása a Windows fejlesztői gépen

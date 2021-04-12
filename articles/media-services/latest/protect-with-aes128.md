@@ -43,7 +43,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 
 * Tekintse meg a [Content Protection áttekintését](content-protection-overview.md) ismertető cikket.
 * Telepítse a Visual Studio Code vagy a Visual Studio alkalmazást.
-* [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
+* [Hozzon létre egy Media Services fiókot](./account-create-how-to.md).
 * A [hozzáférési API](./access-api-howto.md)-k használatával Media Services API-k használatához szükséges hitelesítő adatok beolvasása.
 
 ## <a name="download-code"></a>Kód letöltése

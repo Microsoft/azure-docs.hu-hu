@@ -4,10 +4,10 @@ description: A fájlok és mappák Azure-beli virtuális gépekről történő h
 ms.topic: troubleshooting
 ms.date: 07/12/2020
 ms.openlocfilehash: 0ee856b10c6a5fbea6f6f76b2082949ab9c1e0db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101700303"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Az Azure-beli virtuális gépek biztonsági mentésének fájl-helyreállításával kapcsolatos problémák elhárítása

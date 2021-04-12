@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cc877a693ce00ca3c8040a656e743216c092636
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455212"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960520"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Szűrők létrehozása Media Services .NET SDK-val
 
@@ -37,7 +37,7 @@ Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK eg
 ## <a name="prerequisites"></a>Előfeltételek 
 
 - Tekintse át [a szűrőket és a dinamikus jegyzékfájlokat](filters-dynamic-manifest-overview.md).
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
+- [Hozzon létre egy Media Services fiókot](./account-create-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
 - Az API-k [eléréséhez](./access-api-howto.md) szükséges információk beolvasása
 - Tekintse át a [feltöltést, a kódolást és a streamet a Azure Media Services használatával, és](stream-files-tutorial-with-api.md) tekintse meg a [.net SDK használatának megkezdéséhez](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk)
 

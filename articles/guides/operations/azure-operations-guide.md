@@ -9,10 +9,10 @@ ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101093052"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
@@ -144,7 +144,7 @@ Az Azure használatának egyik előnye, hogy az alkalmazásait különböző ada
 
 A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](../../azure-resource-manager/management/manage-resources-portal.md).
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>Források
 
 Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási, hálózati, adatkezelési és alkalmazás-üzemeltetési szolgáltatások. Néhány gyakori erőforrás a virtuális gépek, a Storage-fiókok vagy az SQL-adatbázisok. Az Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrásból állnak. Előfordulhat például, hogy egy Azure-beli virtuális gép tartalmaz egy virtuális gépet, egy Storage-fiókot, egy hálózati adaptert és egy nyilvános IP-címet. Ezek az erőforrások egyenként vagy csoportként hozhatók létre, kezelhetők és törölhetők. Az Azure-erőforrásokat az útmutató későbbi részében részletesebben tárgyaljuk.
 

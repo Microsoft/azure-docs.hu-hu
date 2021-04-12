@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, összehasonlítás, SDK, különbségek, hardver, szoftver
-ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1791767e842043bbb0eda058cc3ea92be90a00fb
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87031575"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078298"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Az Azure Kinect és a Kinect Windows v2 összehasonlítása
 
@@ -46,7 +46,7 @@ Az alábbi táblázat az alacsony szintű eszköz-érzékelő hozzáférési ké
 
 | **Funkció**| **Azure Kinect** | **Windows rendszerhez készült Kinect** | **Megjegyzések** |
 |---------|---------|------------|---------|
-| **Mélység** | ✔️ | ✔️ |    |   |
+| **Mélység** | ✔️ | ✔️ |    | 
 | **IR** | ✔️ | ✔️ |  |
 | **Szín** | ✔️ | ✔️ | A Színformátum támogatja a különbségeket, az Azure Kinect DK a következő kamera-vezérlőket támogatja: expozíció, fehéregyensúly, fényerő, kontraszt, telítettség, élesség és hozzáférés |
 | **Audió** | ✔️ | ✔️ | Az Azure Kinect DK mikrofonok a Speech SDK vagy a Windows natív API használatával érhetők el |

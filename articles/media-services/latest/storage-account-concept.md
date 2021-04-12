@@ -57,4 +57,4 @@ Az alábbiak az elsődleges forgatókönyvek, amelyek a Media Services-fiók a c
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha szeretné megtudni, hogyan csatolhat Storage-fiókot a Media Services-fiókjához, tekintse meg a [fiók létrehozása](./create-account-howto.md)című témakört.
+Ha szeretné megtudni, hogyan csatolhat Storage-fiókot a Media Services-fiókjához, tekintse meg a [fiók létrehozása](./account-create-how-to.md)című témakört.
