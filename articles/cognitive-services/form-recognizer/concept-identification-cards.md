@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467809"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285356"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Űrlap-felismerő előre elkészített azonosító kártya (azonosító) modellje
 
-Az Azure-űrlap felismerője az előre elkészített azonosítók modelljével elemezheti és kinyerheti a kormányzati azonosítók (azonosítók) adatait. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/concept-recognizing-text.md) képességeket kombinálja az azonosító képességekkel a globális Passportok és az Egyesült államokbeli illesztőprogram-licencek (az összes 50-es állam és DC) legfontosabb adatainak kinyeréséhez. Az azonosítók API Kinyeri a legfontosabb információkat ezekből az azonosító dokumentumokból, például az utónévből, a vezetéknevből, a születési dátumból, a bizonylatszámből és egyebekből. Ez az API az űrlap felismerő v 2.1 előzetes verziójában érhető el felhőalapú szolgáltatásként és helyszíni tárolóként.
+Az Azure-űrlap felismerője az előre elkészített azonosítók modelljével elemezheti és kinyerheti a kormányzati azonosítók (azonosítók) adatait. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/overview-ocr.md) képességeket kombinálja az azonosító képességekkel a globális Passportok és az Egyesült államokbeli illesztőprogram-licencek (az összes 50-es állam és DC) legfontosabb adatainak kinyeréséhez. Az azonosítók API Kinyeri a legfontosabb információkat ezekből az azonosító dokumentumokból, például az utónévből, a vezetéknevből, a születési dátumból, a bizonylatszámből és egyebekből. Ez az API az űrlap felismerő v 2.1 előzetes verziójában érhető el felhőalapú szolgáltatásként és helyszíni tárolóként.
 
 ## <a name="what-does-the-id-service-do"></a>Mire szolgál az ID szolgáltatás? 
 

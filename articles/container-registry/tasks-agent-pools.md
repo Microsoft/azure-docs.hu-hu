@@ -4,12 +4,12 @@ description: Hozzon létre egy dedikált számítási készletet (Agent-készlet
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920307"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284141"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>ACR-feladat futtatása dedikált ügynök-készleten
 
@@ -31,7 +31,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
 - A Task Agent-készletek jelenleg támogatják a Linux-csomópontokat. A Windows-csomópontok jelenleg nem támogatottak.
-- A Feladatkezelő-készletek a következő régiókban érhetők el előzetes verzióban: USA 2. nyugati régiója, USA déli középső régiója, USA 2. keleti régiója, USA középső régiója, USA középső régiója, USA Korm. Arizona, USA Korm. Texas és USA Korm. Virginia.
+- A Feladatkezelő-készletek a következő régiókban érhetők el: USA 2. nyugati régiója, USA déli középső régiója, USA 2. keleti régiója, USA keleti régiója, USA középső régiója, Nyugat-Európa, Közép-Kanada, USA Korm. Arizona, USA Korm. Texas és USA Korm. Virginia.
 - Minden egyes beállításjegyzék esetében az alapértelmezett teljes vCPU (mag) kvóta 16 az összes szabványos ügynök-készlet esetében, és az elkülönített ügynök-készletek esetében 0. Nyisson meg egy [támogatási kérést][open-support-ticket] további foglaláshoz.
 - Ügynök-készleten jelenleg nem lehet megszakítani egy feladat futtatását.
 

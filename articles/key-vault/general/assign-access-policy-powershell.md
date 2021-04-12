@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault hozzáférési szabályzat kiosztása
-description: Az Azure Portal, az Azure CLI vagy a Azure PowerShell használatával Key Vault hozzáférési szabályzatot rendelhet hozzá egy egyszerű szolgáltatáshoz vagy alkalmazás identitásához.
+description: Az Azure Portal, az Azure CLI vagy a Azure PowerShell használatával Key Vault hozzáférési szabályzatot rendelhet egy rendszerbiztonsági tag vagy alkalmazás identitásához.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934533"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968730"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Key Vault hozzáférési szabályzat kiosztása a Azure PowerShell használatával
 
-A Key Vault hozzáférési szabályzat meghatározza, hogy egy adott szolgáltatásnév, azaz egy alkalmazás vagy felhasználói csoport különböző műveleteket hajthat végre Key Vault [titkokon](../secrets/index.yml), [kulcsokon](../keys/index.yml)és [tanúsítványokon](../certificates/index.yml). Hozzáférési szabályzatokat a [Azure Portal](assign-access-policy-portal.md), az [Azure CLI](assign-access-policy-cli.md)vagy a Azure PowerShell használatával rendelhet hozzá (ez a cikk).
+A Key Vault hozzáférési szabályzat meghatározza, hogy egy adott rendszerbiztonsági tag, azaz felhasználó, alkalmazás vagy felhasználói csoport különböző műveleteket hajthat végre Key Vault [titkokon](../secrets/index.yml), [kulcsokon](../keys/index.yml)és [tanúsítványokon](../certificates/index.yml). Hozzáférési szabályzatokat a [Azure Portal](assign-access-policy-portal.md), az [Azure CLI](assign-access-policy-cli.md)vagy a Azure PowerShell használatával rendelhet hozzá (ez a cikk).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 

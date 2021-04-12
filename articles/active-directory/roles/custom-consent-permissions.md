@@ -13,10 +13,10 @@ ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
 ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98740108"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Alkalmazás-engedélyezési engedélyek a Azure Active Directory egyéni szerepköreihez
@@ -65,7 +65,7 @@ Az [alkalmazás-engedélyezési szabályzatok](../manage-apps/manage-app-consent
 
 ## <a name="full-list-of-permissions"></a>Engedélyek teljes listája
 
-Engedély | Description
+Engedély | Leírás
 ---------- | -----------
 Microsoft. Directory/servicePrincipals/managePermissionGrantsForSelf. ID | Lehetővé teszi, hogy az alkalmazásokhoz való hozzájárulást önmaga (felhasználói hozzájárulás) nevében adja meg, az alkalmazás-engedélyezési szabályzat hatálya alá tartozik `{id}` .
 Microsoft. Directory/servicePrincipals/managePermissionGrantsForAll. ID | Engedélyt ad az alkalmazásoknak az összes (bérlői szintű rendszergazdai hozzájárulás) nevében való hozzájárulásra az alkalmazásra vonatkozó engedélyezési szabályzat hatálya alá `{id}` .

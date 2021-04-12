@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 273a1b5986a72acc1d6725fbb3101c9c1df17e45
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: d021267c38f0043d2361b1a6392fbacd0634a164
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122050"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279697"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Élő közvetítés forgatókönyv-alapú áttelepítési útmutatója
 
@@ -37,7 +37,7 @@ Tesztelje az élő események Media Services való továbbításának új módj�
 
 - Hozzon létre egy új v3 [élő eseményt](live-event-outputs-concept.md#live-events) a kódoláshoz. Engedélyezheti [az 1080p és 720p kódolású előkészleteket](live-event-types-comparison-reference.md#system-presets).
 - Az [élő kimeneti](live-event-outputs-concept.md#live-outputs) entitás használata programok helyett
-- [Adatfolyam-lokátorok](streaming-locators-concept.md)létrehozása.
+- [Adatfolyam-lokátorok](stream-streaming-locators-concept.md)létrehozása.
 - Vegye figyelembe, hogy szükség van a [HLS és a Dash](encode-dynamic-packaging-concept.md) élő közvetítésre.
 - Ha az élő események gyors indítását igényli, Fedezze fel az új [készenléti üzemmód](live-event-outputs-concept.md#standby-mode) funkcióit.
 - Ha a folyamatban lévő élő eseményt szeretné átírni, Fedezze fel az új [élő átírási](live-event-live-transcription-how-to.md) funkciót.
@@ -52,7 +52,7 @@ A konkrét lépésekhez tekintse meg az élő események fogalmait, az oktatóan
 
 - [Élő közvetítés a Azure Media Services v3-val](stream-live-streaming-concept.md)
 - [Élő események és élő kimenetek Media Services](live-event-outputs-concept.md)
-- [Ellenőrzött helyszíni élő adatfolyam-kódolók](recommended-on-premises-live-encoders.md)
+- [Ellenőrzött helyszíni élő adatfolyam-kódolók](encode-recommended-on-premises-live-encoders.md)
 - [Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket](live-event-cloud-dvr-time-how-to.md)
 - [Live-Event-Live-átirat – útmutató (előzetes verzió)](live-event-live-transcription-how-to.md)
 - [Élő eseménytípus összehasonlítása](live-event-types-comparison-reference.md)

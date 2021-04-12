@@ -5,6 +5,10 @@
   items:
     - name: Mi a Form Recognizer?
       href: overview.md
+    - name: Nyelvi támogatás
+      href: language-support.md
+    - name: Díjszabás és korlátok
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Újdonságok
       href: whats-new.md
 - name: Rövid útmutatók
@@ -91,15 +95,13 @@
   items:
     - name: Támogatási lehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
-    - name: Díjszabás és korlátok
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Nyelvi támogatás
-      href: language-support.md
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás
       href: encrypt-data-at-rest.md
+    - name: Adatvédelem és cookie-k
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

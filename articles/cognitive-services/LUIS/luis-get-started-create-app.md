@@ -4,13 +4,13 @@ description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy olyan LU
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/13/2020
-ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 03/29/2021
+ms.openlocfilehash: e0972998fad647c1c70be814cb7c13f14a6e1141
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019160"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277028"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
@@ -33,7 +33,7 @@ A megjelenő ablakban adja meg a következő adatokat:
 |---------|---------|
 |AName     | Az alkalmazás neve. Például: "Home Automation".        |
 |Kultúra     | A nyelv, amelyet az alkalmazás megértett és beszél.   |
-|Description | Az alkalmazás leírása.
+|Leírás | Az alkalmazás leírása.
 |Előrejelzési erőforrás | Az előrejelzési erőforrás, amely a lekérdezéseket fogja kapni. |
 
 Válassza a **Kész** lehetőséget.
@@ -214,13 +214,11 @@ Ahhoz, hogy a LUIS-előrejelzést egy csevegési robot vagy más ügyfélalkalma
     További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Behívhatja a végpontot kódból:
-
 > [!div class="nextstepaction"]
-> [LUIS-végpont hívása kóddal](./luis-get-started-get-intent-from-rest.md)
+> [A LUIS-hez készült iterációs alkalmazások fejlesztése](./luis-concept-app-iteration.md)

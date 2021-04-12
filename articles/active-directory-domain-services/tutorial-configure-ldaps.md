@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579552"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933338"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -298,6 +298,21 @@ Ha a számítógép helyi gazdagépek fájljához hozzáadott egy DNS-bejegyzés
 1. A helyi gépen nyissa meg a *jegyzettömböt* rendszergazdaként
 1. Tallózással keresse meg és nyissa meg a *C:\Windows\System32\drivers\etc\hosts* fájlt.
 1. Törölje a hozzáadott rekordhoz tartozó sort, például: `168.62.205.103    ldaps.aaddscontoso.com`
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha olyan hibaüzenetet lát, amely szerint a LDAP.exe nem tud csatlakozni, próbálkozzon a kapcsolat beszerzésének különböző szempontjaival: 
+
+1. A tartományvezérlő konfigurálása
+1. Az ügyfél konfigurálása
+1. Hálózatkezelés
+1. A TLS-munkamenet létrehozása
+
+A tanúsítvány tulajdonosának nevének egyezése esetén a tartományvezérlő az Azure-beli tartománynevet (nem pedig az Azure AD-tartománynevet) fogja használni a tanúsítvány tanúsítványtárolójában való kereséshez. Helyesírási hibák – például megakadályozhatja, hogy a tartományvezérlő kiválassza a megfelelő tanúsítványt. 
+
+Az ügyfél megkísérli a TLS-kapcsolat létesítését a megadott névvel. A forgalomnak végig kell jutnia. A tartományvezérlő elküldi a kiszolgálói hitelesítési tanúsítvány nyilvános kulcsát. A tanúsítványnak megfelelő használati jogosultsággal kell rendelkeznie a tanúsítványban, a tulajdonos nevében aláírt névnek kompatibilisnek kell lennie ahhoz, hogy az ügyfél megbízzon abban, hogy a kiszolgáló a DNS-név, amelyhez csatlakozik (azaz egy helyettesítő karakter, amely nem rendelkezik helyesírási hibákkal), és az ügyfélnek meg kell bíznia a kiállítóban. A láncban felmerülő problémákat a Eseménynapló rendszernaplójában tekintheti meg, és szűrheti azokat az eseményeket, amelyekben a forrás egyenlő Schannel. Ha ezek a darabok a helyükön vannak, a munkamenet-kulcsot alkotnak.  
+
+További információ: TLS- [kézfogás](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol).
 
 ## <a name="next-steps"></a>További lépések
 

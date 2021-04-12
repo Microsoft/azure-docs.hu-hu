@@ -11,12 +11,12 @@ ms.date: 03/11/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b67f505a71d2af7950422a86ab45ef8aebb3bf4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81729147"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056436"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Az Azure IoT Hub díjszabási információi
 
@@ -33,9 +33,9 @@ Az [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-
 | Felhőből az eszközre irányuló üzenetek | Az üzenetek sikeres elküldése 4 KB-os adattömbökben történik, például egy 6 KB-os üzenet után 2 üzenet kerül kiszámlázásra. |
 | Fájlfeltöltés | Az Azure Storage-ba való fájlátvitel IoT Hub nem mérhető. A fájlátvitel kezdeményezése és a befejezési üzenetek a 4 KB-os növekményekben elküldött üzenetként lesznek felszámítva. Például egy 10 MB-os fájl átvitele két üzenetként történik az Azure Storage-költség mellett. |
 | Közvetlen metódusok | A metódusok sikeres kérelmeit 4 KB-os adattömbökben számítjuk fel, a válaszokat pedig 4 KB-os adattömbökben, további üzenetként számítjuk fel. A leválasztott eszközökre irányuló kérelmeket 4 KB-os adattömbökben lévő üzenetként számítjuk fel. Például egy 4 KB-os törzstel rendelkező metódus, amely az eszköz törzsével kapcsolatos választ eredményez, két üzenetként lesz felszámítva. Egy 6 KB-os törzstel rendelkező metódus, amely az eszköz 1 KB-os válaszát eredményezi, a rendszer két üzenetként számítja fel a kérést, valamint egy másik üzenetet a válaszhoz. |
-| Eszközök és modulok kettős olvasások | Az eszközről vagy a modulból érkező, illetve a megoldás hátterében található kettős olvasások az 512 bájtos adattömbökben lévő üzenetekként lesznek felszámítva. Például egy 6 KB-os dupla beolvasása 12 üzenetként lesz felszámítva. |
-| Eszköz-és modul-különálló frissítések (címkék és tulajdonságok) | Az eszközről vagy a modulból érkező, illetve a megoldás hátsó részén lévő frissítések az 512 bájtos adattömbökben lévő üzenetként lesznek felszámítva. Például egy 6 KB-os dupla beolvasása 12 üzenetként lesz felszámítva. |
-| Eszközök és modulok kettős lekérdezései | A lekérdezések az eredmény méretétől függően az 512 bájtos tömbökben lesznek felszámítva. |
+| Eszközök és modulok kettős olvasások | Az eszközről vagy a modulból érkező, illetve a megoldás hátterében lévő kettős olvasások a 4 KB-os adattömbökben lévő üzenetekként lesznek felszámítva. Ha például egy 8 KB-os Twin-et olvas, 2 üzenetként számítjuk fel. |
+| Eszköz-és modul-különálló frissítések (címkék és tulajdonságok) | Az eszközről vagy modulból származó, illetve a megoldás háttérbeli frissítéseinek az üzenetek 4 KB-os adattömbökben lesznek felszámítva. Például egy 12 KB-os dupla beolvasása 3 üzenetként lesz felszámítva. |
+| Eszközök és modulok kettős lekérdezései | A lekérdezések az eredmények méretétől függően, 4 KB-os adattömbökben lesznek felszámítva. |
 | Feladatműveletek <br/> (létrehozás, frissítés, listázás, törlés) | Nem számítunk fel díjat. |
 | Feladatok eszközönkénti műveletek | A feladatok műveleteit (például a kettős frissítéseket és a metódusokat) a rendszer a szokásos módon számítja fel. Például egy 1000-es metódust eredményező, 1 KB-os kérelmeket és üres törzsű válaszokat tartalmazó feladatok díja 1000 üzenet. |
 | Életben tartási üzenetek | AMQP-vagy MQTT-protokollok használatakor a rendszer a kapcsolat létrehozásához és az egyeztetés során megjelenő üzenetek kiváltásához szükséges üzeneteket nem terheli. |

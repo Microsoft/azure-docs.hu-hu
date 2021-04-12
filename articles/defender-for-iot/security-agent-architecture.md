@@ -2,13 +2,13 @@
 title: 'Gyors útmutató: biztonsági ügynökök áttekintése'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan megismerheti a biztonsági ügynök architektúráját az Azure Defender for IoT szolgáltatásban használt ügynökökkel kapcsolatban.
 ms.topic: quickstart
-ms.date: 01/24/2021
-ms.openlocfilehash: 2e7d7d1e6770667b1ce966724611cc003116409d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/4/2021
+ms.openlocfilehash: 0937cccb0335f4eee16ca3590babe9574320b89f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778508"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384979"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Gyors útmutató: biztonsági ügynök hivatkozási architektúrája
 
@@ -33,7 +33,7 @@ A IoT biztonsági ügynökök védelmezője nyílt forráskódú projektként le
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincsenek
+- Nincsenek
 
 ## <a name="agent-supported-platforms"></a>Ügynök által támogatott platformok
 
@@ -48,8 +48,7 @@ A IoT Defender különböző telepítő ügynököket kínál a 32 bites és a 6
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a IoT Defender-IoT-Micro-Agent architektúrával és a rendelkezésre álló telepítők magas szintű áttekintését olvashatja.
-
-A Defender IoT-telepítéssel való használatának folytatásához használja a következő cikkeket:
+A Defender IoT-telepítéssel való megismerésének folytatásához 
 
 > [!div class="nextstepaction"]
 > [biztonsági ügynök hitelesítési módszerei](concept-security-agent-authentication-methods.md)

@@ -1,192 +1,135 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: A Computer Vision dokumentációja
-summary: A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.
+summary: 'A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.'
 metadata:
-  title: A Computer Vision dokumentációja – Gyorsútmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
-  description: A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.
+  title: 'A Computer Vision dokumentációja – Gyorsútmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs'
+  description: 'A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.'
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.topic: landing-page
+  ms.topic: hub-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 09/22/2020
-  ms.openlocfilehash: 940a34cfbf4281649737f0cf3fed7b490a9938a7
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102508894"
-landingContent:
-- title: Tudnivalók a Computer Visionről
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Mi a Computer Vision?
+  ms.date: 03/31/2021
+highlightedContent:
+  items:
+    - title: Tudnivalók a Computer Visionről
+      itemType: overview
       url: overview.md
-  - linkListType: whats-new
-    links:
-    - text: Újdonságok
+    - title: A Computer Vision újdonságai
+      itemType: whats-new
       url: whats-new.md
-  - linkListType: video
-    links:
-    - text: Intelligens megoldások az alkalmazásokhoz a Vision API-k segítségével
-      url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
-- title: Optikai karakterfelismerés (OCR)
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Optikai karakterfelismerés (OCR)
-      url: concept-recognizing-text.md
-  - linkListType: quickstart
-    links:
-    - text: A .NET SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: A Python SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: A Java SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: A Node SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: A Go SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: A REST API használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: Objektumok észlelése képeken
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Objektumészlelés
-      url: concept-object-detection.md
-  - linkListType: quickstart
-    links:
-    - text: A .NET SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: A Python SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: A Java SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: A Node SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: A Go SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: A REST API használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: Tartalomcímkék alkalmazása képekre
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Tartalomcímkék
-      url: concept-tagging-images.md
-  - linkListType: quickstart
-    links:
-    - text: A .NET SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: A Python SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: A Java SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: A Node SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: A Go SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: A REST API használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: A Read tároló használata
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: A tároló telepítése és futtatása
-      url: computer-vision-how-to-install-containers.md
-  - linkListType: how-to-guide
-    links:
-    - text: Tárolók konfigurálása
-      url: computer-vision-resource-container-config.md
-  - linkListType: deploy
-    links:
-    - text: A Container Instances használata
-      url: ../containers/azure-container-instance-recipe.md
-    - text: Használat Kubernetesszel és Helmmel
-      url: deploy-computer-vision-on-premises.md
-- title: A térbeli elemzések tárolójának használata
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: A térbeli elemzés áttekintése
-      url: intro-to-spatial-analysis-public-preview.md
-    - text: A tároló telepítése és futtatása
-      url: spatial-analysis-container.md
-    - text: Műveletek konfigurálása
-      url: spatial-analysis-operations.md
-  - linkListType: deploy
-    links:
-    - text: Személyszámláló alkalmazás üzembe helyezése
-      url: spatial-analysis-web-app.md
-  - linkListType: concept
-    links:
-    - text: Zónák és sorok elhelyezése
-      url: spatial-analysis-zone-line-placement.md
-    - text: Kamera elhelyezése
-      url: spatial-analysis-camera-placement.md
-    - text: Naplózás és hibaelhárítás
-      url: spatial-analysis-logging.md
-- title: Arcfelismerés képeken
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Arcfelismerés
-      url: concept-detecting-faces.md
-  - linkListType: quickstart
-    links:
-    - text: A .NET SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: A Python SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: A Java SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: A Node SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: A Go SDK használata
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-- title: Az MI felelős használata
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Átlátszósági Megjegyzés a térbeli elemzéshez
-      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-  - linkListType: concept
-    links:
-    - text: Felelős használat mesterséges intelligencia üzemeltetésekor
-      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-    - text: Adatok, adatvédelem és biztonság
-      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-- title: Referencia
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Computer Vision API 3.2 – előzetes verzió
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
-    - text: Computer Vision API 3.1-es verzió
-      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
-    - text: Computer Vision API 2.1
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
-    - text: .NET SDK
-      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision
-    - text: Python SDK
-      url: /python/api/overview/azure/cognitiveservices/computervision
-    - text: Java SDK
-      url: /java/api/overview/azure/cognitiveservices/client/computervision
-    - text: Node.js SDK
-      url: /javascript/api/@azure/cognitiveservices-computervision/
-    - text: Go SDK
-      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
-    - text: Azure PowerShell
-      url: /powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Azure parancssori felület (CLI)
-      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
-- title: Súgó és visszajelzés
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Támogatási és súgólehetőségek
-      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
+    - title: Nyelvi támogatás
+      itemType: reference
+      url: language-support.md
+conceptualContent:
+  items:
+    - title: Optikai karakterfelismerés
+      links:
+        - itemType: overview
+          text: Az OCR ismertetése
+          url: overview-ocr.md
+        - itemType: quickstart
+          text: Ismerkedés az OCR-sel
+          url: quickstarts-sdk/client-library.md
+        - itemType: how-to-guide
+          text: Az olvasási API meghívása
+          url: Vision-API-How-to-Topics/call-read-api.md
+        - itemType: deploy
+          text: Az OCR-tároló olvasása
+          url: computer-vision-how-to-install-containers.md
+        - itemType: reference
+          text: OCR API-hivatkozás
+          url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005'
+      footerLink:
+        text: Kibontás
+        url: index-ocr.yml
+    - title: Képelemzés
+      links:
+        - itemType: overview
+          text: Tudnivalók a képek elemzéséről
+          url: overview-image-analysis.md
+        - itemType: quickstart
+          text: Ismerkedés a képek elemzésével
+          url: quickstarts-sdk/image-analysis-client-library.md
+        - itemType: concept
+          text: Tartalomcímkék
+          url: concept-tagging-images.md
+        - itemType: concept
+          text: Képleírások
+          url: concept-describing-images.md
+        - itemType: concept
+          text: Arcfelismerés
+          url: concept-detecting-faces.md
+        - itemType: tutorial
+          text: Képek metaadatainak előállítása
+          url: Tutorials/storage-lab-tutorial.md
+        - itemType: reference
+          text: Rendszerkép-elemzési API-referenciák
+          url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+      footerLink:
+        text: Kibontás
+        url: index-image-analysis.yml
+    - title: Térbeli elemzés
+      links:
+        - itemType: overview
+          text: A térbeli elemzés ismertetése
+          url: intro-to-spatial-analysis-public-preview.md
+        - itemType: quickstart
+          text: Ismerkedés a térbeli elemzéssel
+          url: spatial-analysis-container.md
+        - itemType: how-to-guide
+          text: Térbeli elemzési műveletek konfigurálása
+          url: spatial-analysis-operations.md
+        - itemType: concept
+          text: Zónák és sorok elhelyezése
+          url: spatial-analysis-zone-line-placement.md
+        - itemType: concept
+          text: Kamera elhelyezése
+          url: spatial-analysis-camera-placement.md
+        - itemType: concept
+          text: Naplózás és hibaelhárítás
+          url: spatial-analysis-logging.md
+      footerLink:
+        text: Kibontás
+        url: index-spatial-analysis.yml
+tools:
+  title: Szoftverfejlesztői készletek (SDK-k)
+  summary: Ismerkedjen meg a Computer Vision SDK-val kedvenc programozási nyelvén.
+  items:
+    - title: C#
+      imageSrc: media/index/logo_Csharp.svg
+      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+    - title: Node.js
+      imageSrc: media/index/logo_nodejs.svg
+      url: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+    - title: Python
+      imageSrc: media/index/logo_python.svg
+      url: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+    - title: Indítás
+      imageSrc: media/index/logo_go.svg
+      url: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+    - title: Java
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+      url: /java/api/com.microsoft.cognitiveservices.speech
+additionalContent:
+  sections:
+    - items:
+        - title: REST API-k
+          links:
+            - text: Optikai karakterfelismerés (OCR)
+              url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005'
+            - text: Képelemzés
+              url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+        - title: Források
+          links:
+            - text: Díjszabás
+              url: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+            - text: Régiók
+              url: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+            - text: Tanulás
+              url: /learn/paths/explore-computer-vision-microsoft-azure/
+        - title: Támogatás
+          links:
+            - text: Támogatási és súgólehetőségek
+              url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

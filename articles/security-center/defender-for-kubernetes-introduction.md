@@ -3,26 +3,32 @@ title: Azure Defender for Kubernetes – az előnyök és funkciók
 description: Ismerje meg a Kubernetes készült Azure Defender előnyeit és funkcióit.
 author: memildin
 ms.author: memildin
-ms.date: 02/07/2021
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c500c7b7afb36ffbe04fb63551c3a7d17c1347d9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100627"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029080"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Bevezetés az Azure Defender for Kubernetes használatába
 
-Az Azure Kubernetes Service (ak) a Microsoft által felügyelt szolgáltatás a tároló alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez.
+Az Azure Defender for Kubernetes az Azure Defender-csomag, amely védelmet biztosít a Kubernetes-fürtök számára, bárhol is futnak. 
+
+A fürtök védelme a ben:
+
+- **Azure Kubernetes szolgáltatás (ak)** – a Microsoft felügyelt szolgáltatása a tároló alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez
+
+- Helyszíni **és többfelhős környezetek** – az [ív használatára képes Kubernetes bővítmény](defender-for-kubernetes-azure-arc.md) használata
 
 A Azure Security Center és az AK egy Felhőbeli natív Kubernetes biztonsági ajánlatot biztosít a környezet megerősítése, a munkaterhelések védelme és a futásidejű védelem terén, ahogyan azt a [Security Centerban található tárolók biztonsága](container-security.md)is ismerteti.
 
-A Kubernetes-fürtök fenyegetés-észleléséhez engedélyezze **Az Azure Defendert a Kubernetes** számára.
+Ha engedélyezi a kiszolgálók és a Log Analytics ügynöke [számára az Azure Defendert](defender-for-servers-introduction.md) , akkor a linuxos AK-csomópontok esetében a gazdagép szintű fenyegetések észlelése is elérhető. Ha azonban a fürt virtuálisgép-méretezési csoportra van telepítve, a Log Analytics ügynök jelenleg nem támogatott.
 
-Ha engedélyezi a kiszolgálók és a Log Analytics ügynöke [számára az Azure Defendert](defender-for-servers-introduction.md) , akkor a linuxos AK-csomópontok esetében a gazdagép szintű fenyegetések észlelése is elérhető. Ha azonban az AK-fürtöt virtuálisgép-méretezési csoportra telepíti, a Log Analytics ügynök jelenleg nem támogatott.
+
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -36,9 +42,9 @@ Ha engedélyezi a kiszolgálók és a Log Analytics ügynöke [számára az Azur
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Milyen előnyökkel jár az Azure Defender for Kubernetes?
 
-A Kubernetes készült Azure Defender a **fürt szintű veszélyforrások elleni védelmet** nyújtja az AK által felügyelt szolgáltatások figyelésével az Azure Kubernetes Service (ak) által lekért naplókon keresztül.
+A Kubernetes készült Azure Defender a fürtök naplófájljainak figyelésével biztosítja a **fürt szintű veszélyforrások elleni védelmet** .
 
-Példák azokra a biztonsági eseményekre, amelyeket az Azure Defender a Kubernetes-figyelőknek tartalmaz, így elérhetővé teszi a Kubernetes-irányítópultokat, a magas jogosultsági szintű szerepkörök létrehozását és a bizalmas csatlakoztatások létrehozását. Az AK-beli fürt szintű riasztások teljes listájáért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-akscluster).
+Példák azokra a biztonsági eseményekre, amelyeket az Azure Defender a Kubernetes-figyelőknek tartalmaz, így elérhetővé teszi a Kubernetes-irányítópultokat, a magas jogosultsági szintű szerepkörök létrehozását és a bizalmas csatlakoztatások létrehozását. A fürt szintű riasztások teljes listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-akscluster)tartalmazza.
 
 > [!TIP]
 > A tárolói riasztások szimulálása a [blogbejegyzés](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)utasításait követve végezhető el.
@@ -46,14 +52,14 @@ Példák azokra a biztonsági eseményekre, amelyeket az Azure Defender a Kubern
 Emellett a biztonsági kutatók globális csapata folyamatosan figyeli a fenyegetés tájképét. A felderített tároló-specifikus riasztásokat és biztonsági réseket adják hozzá.
 
 >[!NOTE]
-> A Security Center biztonsági riasztásokat hoz létre az Azure Kubernetes szolgáltatás műveleteihez és üzembe helyezéséhez, **miután** engedélyezte az Azure Defender for Kubernetes használatát.
+> Az Azure Defender biztonsági riasztásokat hoz létre olyan műveletekhez és központi telepítésekhez, amelyek akkor lépnek fel, ha engedélyezte a Defender for Kubernetes-csomagot az előfizetésében.
 
 
 
 
 ## <a name="azure-defender-for-kubernetes---faq"></a>Azure Defender for Kubernetes – gyakori kérdések
 
-### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Továbbra is kaphatok AK-védelmet a Log Analytics ügynök nélkül?
+### <a name="can-i-still-get-cluster-protections-without-the-log-analytics-agent"></a>Továbbra is lekérhetem a fürtök védelmét a Log Analytics ügynök nélkül?
 
 A Kubernetes-csomaghoz készült **Azure Defender** a fürt szintjén biztosít védelmet. Ha az Azure Defender Log Analytics-ügynökét is telepíti a **kiszolgálók számára**, akkor az adott csomaghoz tartozó csomópontok fenyegetés elleni védelmét fogja kérni. További információ: az [Azure Defender for Servers bemutatása](defender-for-servers-introduction.md).
 
@@ -67,7 +73,7 @@ Az Azure Defender számára az AK-csomópontok figyeléséhez a Log Analytics ü
 Az AK felügyelt szolgáltatás, és mivel a log Analytics-ügynök egy Microsoft által felügyelt bővítmény, az AK-fürtökön is támogatott.
 
 ### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>Ha a fürtön már fut egy Azure Monitor a containers Agent számára, akkor is szükség van a Log Analytics-ügynökre?
-Az Azure Defender számára az AK-csomópontok figyeléséhez a Log Analytics ügynököt kell futtatnia.
+Ahhoz, hogy az Azure Defender figyelje a csomópontjait, futtatnia kell a Log Analytics ügynököt.
 
 Ha a fürtök már futtatják a Azure Monitor a tárolók ügynöke számára, akkor a Log Analytics-ügynököt is telepítheti, és a két ügynök anélkül is dolgozhat egymással, hogy problémák lépnek fel.
 

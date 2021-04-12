@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 152b96bee63b6d2280a807ca53842ed3a67ab67d
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219182"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279765"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Alkalmazásbeállítások konfigurálása az Azure statikus Web Apps előzetes verziójának beállításához
 
@@ -168,4 +168,4 @@ Az Alkalmazásbeállítások az Azure CLI-n keresztül tekinthetők meg.
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Helyi fejlesztés beállítása](local-development.md)
+> [Előtér-keretrendszerek konfigurálása](front-end-frameworks.md)

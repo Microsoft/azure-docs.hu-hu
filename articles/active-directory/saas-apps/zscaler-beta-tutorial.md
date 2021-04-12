@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Betatal
@@ -190,14 +190,14 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Válassza az **aktiválás** lehetőséget.
 
-## <a name="configure-proxy-settings"></a>Proxybeállítások konfigurálása
+## <a name="configure-proxy-settings&quot;></a>Proxybeállítások konfigurálása
 A proxybeállítások az Internet Explorerben való konfigurálásához kövesse az alábbi lépéseket.
 
 1. Indítsa el az **Internet Explorert**.
 
 2. **Az Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét. 
     
-     ![Internetbeállítások párbeszédpanel](./media/zscaler-beta-tutorial/ic769492.png "Internetbeállítások")
+     ![Internetbeállítások párbeszédpanel](./media/zscaler-beta-tutorial/ic769492.png &quot;Internetbeállítások")
 
 3. Válassza a **kapcsolatok** fület. 
   

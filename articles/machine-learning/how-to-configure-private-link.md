@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505477"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056011"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez
 
@@ -175,7 +175,7 @@ Az Azure Virtual Machinesról a [Virtual Machines dokumentációjában](../virtu
 Bizonyos helyzetekben előfordulhat, hogy engedélyezni szeretné, hogy valaki egy nyilvános végponton keresztül kapcsolódjon a védett munkaterülethez a VNet helyett. Miután a munkaterületet privát végponttal konfigurálta, igény szerint engedélyezheti a munkaterülethez való nyilvános hozzáférést. Így nem távolítja el a privát végpontot. A VNet mögötti összetevők közötti kommunikáció továbbra is védett. A VNet keresztüli privát hozzáférésen kívül csak a munkaterülethez való nyilvános hozzáférést teszi lehetővé.
 
 > [!WARNING]
-> A nyilvános végponton való kapcsolódáskor a Studio egyes funkciói nem fognak hozzáférni az adataihoz. Ez a probléma akkor fordul elő, ha az adattárolást egy olyan szolgáltatás tárolja, amely a VNet mögött található. Például egy Azure Storage-fiók.
+> A nyilvános végponton való kapcsolódáskor a Studio egyes funkciói nem fognak hozzáférni az adataihoz. Ez a probléma akkor fordul elő, ha az adattárolást egy olyan szolgáltatás tárolja, amely a VNet mögött található. Például egy Azure Storage-fiók. Vegye figyelembe, hogy a számítási példány Jupyter/JupyterLab/RStudio funkciója és a jegyzetfüzetek futtatása nem fog működni.
 
 A magánhálózati kapcsolattal rendelkező munkaterülethez való nyilvános hozzáférés engedélyezéséhez kövesse az alábbi lépéseket:
 

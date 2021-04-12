@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709939"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581622"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése
 
-A diagnosztikai vagy működési naplók betekintést nyújtanak az Azure Cognitive Search részletes műveleteibe, és hasznosak a szolgáltatás-és munkaterhelés-folyamatok figyeléséhez. Belsőleg a Microsoft megőrzi a rendszerinformációkat a backend-ben egy rövid ideig (körülbelül 30 nap), amely elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha azonban az operatív adatok tulajdonjogát szeretné használni, konfigurálnia kell egy diagnosztikai beállítást annak megadásához, hogy a naplózási információk hol legyenek gyűjtve.
+A diagnosztikai vagy működési naplók betekintést nyújtanak az Azure Cognitive Search részletes műveleteibe, és hasznosak lehetnek a szolgáltatás állapotának és folyamatainak figyelésére. Belsőleg a Microsoft megőrzi a rendszerinformációkat a backend-ben egy rövid ideig (körülbelül 30 nap), amely elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha azonban az operatív adatok tulajdonjogát szeretné használni, konfigurálnia kell egy diagnosztikai beállítást annak megadásához, hogy a naplózási információk hol legyenek gyűjtve.
 
 A diagnosztikai naplózás a [Azure monitor](../azure-monitor/index.yml)-vel való integráción keresztül érhető el. 
 
@@ -120,7 +120,7 @@ AzureDiagnostics
 
 A Azure Monitor által rögzített naplózott események magukban foglalják az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **AzureDiagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
 
-| OperationName | Leírás |
+| OperationName | Description |
 |---------------|-------------|
 | ServiceStats | Ez a művelet egy rutinos hívás a [szolgáltatás statisztikáinak beszerzésére](/rest/api/searchservice/get-service-statistics), vagy közvetlenül vagy implicit módon, a portál áttekintő oldalának feltöltésekor, amikor betöltődik vagy frissül. |
 | Lekérdezés. keresés |  Lekérdezési kérelmek egy indextel kapcsolatban: a naplózott lekérdezésekkel kapcsolatos információk [figyelése](search-monitor-queries.md) .|

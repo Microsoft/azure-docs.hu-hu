@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f22a55a65b7dc4fd4f714d880804e6fd65dbbe46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f5586b43143763ebf36adb15d96fdb2a91b5f5c
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654374"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443474"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Jogkivonatok konfigurálása az Azure Active Directory B2C-ben
 
@@ -228,6 +228,10 @@ A OutputClaim elem a következő attribútumokat tartalmazza:
 - **AlwaysUseDefaultValue** – az alapértelmezett érték használatának kényszerítése.
 
 ::: zone-end
+
+## <a name="authorization-code-lifetime"></a>Engedélyezési kód élettartama
+
+Az [OAuth 2,0-es hitelesítési kód](authorization-code-flow.md)használatakor az alkalmazás az engedélyezési kóddal kérhet hozzáférési jogkivonatot a célként megadott erőforráshoz. Az engedélyezési kódok rövid életűek, amelyek körülbelül 10 percet követően lejárnak. Az engedélyezési kód élettartama nem konfigurálható. Győződjön meg arról, hogy az alkalmazás 10 percen belül beváltja az engedélyezési kódokat. 
 
 ## <a name="next-steps"></a>Következő lépések
 

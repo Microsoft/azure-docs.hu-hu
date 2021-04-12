@@ -7,14 +7,17 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: jocorte
-ms.openlocfilehash: a1237077b9e0a1af67d34c85d8ea8d526bd71372
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7322bab635d398fc7a5335546ba6fef327ff24b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281856"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259353"
 ---
 # <a name="secure-traffic-destined-to-private-endpoints-in-azure-virtual-wan"></a>Biztonságos forgalom a privát végpontok számára az Azure Virtual WAN-ban
+
+> [!NOTE]
+> Ez a cikk csak a biztonságos virtuális hubhoz vonatkozik. Ha meg szeretné vizsgálni a privát végpontokra irányuló forgalmat a hub-beli virtuális hálózatok Azure Firewall használatával, tekintse meg a [Azure Firewall használata a privát végpontnak szánt forgalom vizsgálatához](../private-link/inspect-traffic-with-azure-firewall.md)című témakört.
 
 Az [Azure Private-végpont](../private-link/private-endpoint-overview.md) az [Azure privát kapcsolatának](../private-link/private-link-overview.md)alapvető építőeleme. A privát végpontok lehetővé teszik, hogy a virtuális hálózaton üzembe helyezett Azure-erőforrások magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 

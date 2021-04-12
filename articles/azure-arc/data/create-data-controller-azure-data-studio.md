@@ -7,20 +7,22 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e61c8819e7ccd868ec92458cff69c37f9277d80
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573880"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029624"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Adatkezelő létrehozása Azure Data Studioban
 
 Azure Data Studio használatával létrehozhat egy adatvezérlőt a központi telepítés varázsló és a jegyzetfüzetek segítségével.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+Az aktuális időpontban létrehozhat egy adatvezérlőt a jelen cikkben ismertetett módszer használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,13 +35,13 @@ Azure Data Studio használatával létrehozhat egy adatvezérlőt a központi te
 Az alábbi lépéseket követve létrehozhat egy Azure arc-adatkezelőt a központi telepítés varázsló segítségével.
 
 1. A Azure Data Studio kattintson a bal oldali navigációs sávon a kapcsolatok fülre.
-2. Kattintson a kapcsolatok panel tetején található **...** gombra, és válassza az **új központi telepítés...** lehetőséget.
-3. Az új központi telepítés varázslóban válassza az **Azure arc-adatkezelő** elemet, majd kattintson a lap alján található **kiválasztás** gombra.
-4. Győződjön meg arról, hogy az előfeltételként szükséges eszközök elérhetők és megfelelnek a szükséges verzióknak. **Kattintson a Tovább gombra**.
-5. Használja az alapértelmezett kubeconfig-fájlt, vagy válasszon egy másikat.  Kattintson a **Tovább** gombra.
-6. Válassza ki a Kubernetes-fürt környezetét. Kattintson a **Tovább** gombra.
-7. A cél Kubernetes-fürttől függően válasszon egy központi telepítési konfigurációs profilt. **Kattintson a Tovább gombra**.
-8. Ha az Azure Red Hat OpenShift vagy a Red Hat OpenShift Container platformot használja, alkalmazza a biztonsági környezet korlátozásait. Kövesse a [biztonsági környezeti korlátozás alkalmazása az Azure arc-kompatibilis adatszolgáltatásokra a OpenShift-on](how-to-apply-security-context-constraint.md)című témakör utasításait.
+1. Kattintson a kapcsolatok panel tetején található **...** gombra, és válassza az **új központi telepítés...** lehetőséget.
+1. Az új központi telepítés varázslóban válassza az **Azure arc-adatkezelő** elemet, majd kattintson a lap alján található **kiválasztás** gombra.
+1. Győződjön meg arról, hogy az előfeltételként szükséges eszközök elérhetők és megfelelnek a szükséges verzióknak. **Kattintson a Tovább gombra**.
+1. Használja az alapértelmezett kubeconfig-fájlt, vagy válasszon egy másikat.  Kattintson a **Tovább** gombra.
+1. Válassza ki a Kubernetes-fürt környezetét. Kattintson a **Tovább** gombra.
+1. A cél Kubernetes-fürttől függően válasszon egy központi telepítési konfigurációs profilt. **Kattintson a Tovább gombra**.
+1. Ha az Azure Red Hat OpenShift vagy a Red Hat OpenShift Container platformot használja, alkalmazza a biztonsági környezet korlátozásait. Kövesse a [biztonsági környezeti korlátozás alkalmazása az Azure arc-kompatibilis adatszolgáltatásokra a OpenShift-on](how-to-apply-security-context-constraint.md)című témakör utasításait.
 
    >[!IMPORTANT]
    >Az Azure Red Hat OpenShift vagy a Red Hat OpenShift Container platformon az adatkezelő létrehozása előtt a biztonsági környezeti korlátozást kell alkalmaznia.
@@ -48,23 +50,21 @@ Az alábbi lépéseket követve létrehozhat egy Azure arc-adatkezelőt a közpo
 1. Válasszon egy Azure-beli helyet.
    
    Az itt kiválasztott Azure-hely az az Azure-beli hely, ahol az adatvezérlővel és az általa kezelt adatbázis-példányokkal kapcsolatos *metaadatok* lesznek tárolva. Az adatkezelő és az adatbázis példányai ténylegesen a Kubernetes-fürtben jönnek létre, bárhol is legyenek.
+   
+   Ha elkészült, kattintson a **tovább** gombra.
 
-10. Válassza ki a megfelelő kapcsolódási módot. További információ a [kapcsolati módokról](./connectivity.md). **Kattintson a Tovább gombra**.
-
-    Ha a közvetlen kapcsolati mód lehetőséget választja, az egyszerű szolgáltatásnév hitelesítő adatai szükségesek az [egyszerű szolgáltatás létrehozása](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)című témakörben leírtak szerint.
-
-11. Adja meg az adatvezérlő nevét, valamint azt a névteret, amelyhez az adatkezelőt létre kívánja hozni.
+1. Adja meg az adatvezérlő nevét, valamint azt a névteret, amelyhez az adatkezelőt létre kívánja hozni.
 
     A rendszer az adatkezelő és a névtér nevét fogja használni egy egyéni erőforrás létrehozásához a Kubernetes-fürtben, hogy meg kell felelniük a [Kubernetes elnevezési konvencióinak](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
     
     Ha a névtér már létezik, akkor a rendszer akkor fogja használni, ha a névtér még nem tartalmaz más Kubernetes objektumokat – hüvelyeket stb.  Ha a névtér nem létezik, a rendszer kísérletet tesz a névtér létrehozására.  A névtér Kubernetes-fürtben való létrehozásához a Kubernetes-fürt rendszergazdai jogosultságai szükségesek.  Ha nem rendelkezik Kubernetes-fürt rendszergazdai jogosultságokkal, kérje meg a Kubernetes-fürt rendszergazdáját, hogy hajtsa végre az első néhány lépést az [adatkezelő létrehozása a Kubernetes natív eszközökkel](./create-data-controller-using-kubernetes-native-tools.md) című cikkben, amelyet egy Kubernetes-rendszergazdának kell elvégeznie a varázsló befejezése előtt.
 
 
-12. Válassza ki azt a tárolási osztályt, amelyben az adatkezelőt telepíteni kívánja. 
-13.  Adja meg a felhasználónevet és a jelszót, és erősítse meg az adatkezelő rendszergazdai felhasználói fiókjának jelszavát. Kattintson a **Tovább** gombra.
+1. Válassza ki azt a tárolási osztályt, amelyben az adatkezelőt telepíteni kívánja. 
+1.  Adja meg a felhasználónevet és a jelszót, és erősítse meg az adatkezelő rendszergazdai felhasználói fiókjának jelszavát. Kattintson a **Tovább** gombra.
 
-14. Tekintse át a telepítési konfigurációt.
-15. Kattintson a **központi** telepítés elemre a kívánt konfiguráció vagy a **parancsfájl a jegyzetfüzetbe** való telepítéséhez, illetve a központi telepítési utasítások áttekintéséhez, illetve a szükséges módosítások elvégzéséhez, például a tárolási osztályok neveinek vagy szolgáltatásainak módosításához. Kattintson az **összes futtatása** gombra a jegyzetfüzet tetején.
+1. Tekintse át a telepítési konfigurációt.
+1. Kattintson a **központi** telepítés elemre a kívánt konfiguráció vagy a **parancsfájl a jegyzetfüzetbe** való telepítéséhez, illetve a központi telepítési utasítások áttekintéséhez, illetve a szükséges módosítások elvégzéséhez, például a tárolási osztályok neveinek vagy szolgáltatásainak módosításához. Kattintson az **összes futtatása** gombra a jegyzetfüzet tetején.
 
 ## <a name="monitoring-the-creation-status"></a>A létrehozási állapot figyelése
 

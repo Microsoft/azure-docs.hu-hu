@@ -4,16 +4,16 @@ description: Ez a cikk azt ismerteti, hogy a Azure Analysis Services hogyan bizt
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 03/29/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: abfcc38601887cd14509ac436e0344b681e3577e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 762a5b3c1a5111d164cd61f3811c96aa85406561
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86506753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732091"
 ---
 # <a name="analysis-services-high-availability"></a>Az Analysis Services magas rendelkezésre állása
 

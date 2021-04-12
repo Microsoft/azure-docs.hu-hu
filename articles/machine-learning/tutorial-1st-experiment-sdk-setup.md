@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: f00a5efb01ea59b04495747ffd93d9f15ad5f76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed7a95ea83cacc0eaccfa23cd87403fb9be615ee
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935532"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210669"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Oktatóanyag: első lépések a Azure Machine Learning Jupyter-jegyzetfüzetekben
 
@@ -27,7 +27,13 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > [!div class="checklist"]
 > * Hozzon létre egy [Azure Machine learning munkaterületet](concept-workspace.md) más Jupyter notebook oktatóanyagokban való használathoz.
 > * Az oktatóanyagok notebookjának klónozása a munkaterületen lévő mappába.
-> * Hozzon létre egy felhőalapú számítási példányt a Azure Machine Learning Python SDK-val telepített és előre konfigurált.
+> * Hozzon létre egy felhőalapú számítási példányt, amely Azure Machine Learning Python SDK-val már telepített és konfigurált környezetet biztosít.
+
+Ez az oktatóanyag előkészíti, hogy Jupyter-jegyzetfüzeteket futtasson egy számítási erőforráson a munkaterületen.  
+
+Az Azure Machine learning egy másik nagyszerű módja a Batch-feladatok elküldésével.  Tekintse [meg az oktatóanyagot: Ismerkedés a Azure Machine learning a fejlesztői környezetben](tutorial-1st-experiment-sdk-setup-local.md).
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 

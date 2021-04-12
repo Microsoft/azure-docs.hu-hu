@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96302748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Oktatóanyag: Azure Active Directory integráció a Wikispaces
@@ -176,17 +176,17 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-wikispaces-test-user"></a>Wikispaces-tesztelési felhasználó létrehozása
+### <a name="create-wikispaces-test-user&quot;></a>Wikispaces-tesztelési felhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Wikispaces, a Wikispaces-ben kell kiépíteni őket. Wikispaces esetén a kiépítés manuális feladat.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Felhasználói fiókok kiépítéséhez hajtsa végre a következő lépéseket:
+### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>Felhasználói fiókok kiépítéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a **Wikispaces** vállalati webhelyre rendszergazdaként.
 
 2. Ugrás a **tagokhoz**.
    
-    ![Tagok](./media/wikispaces-tutorial/ic787193.png "Tagok")
+    ![Tagok](./media/wikispaces-tutorial/ic787193.png &quot;Tagok")
 
 3. Kattintson a **személyek meghívása** elemre.
    

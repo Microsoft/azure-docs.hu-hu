@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/07/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967030"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226701"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium előzetes verziójának funkciói
 
@@ -142,13 +142,12 @@ A Premium Preview Azure Firewall a következő régiókban támogatott:
 
 Az Azure Firewall Premium Preview a következő ismert problémákkal rendelkezik:
 
-|Probléma  |Leírás  |Kockázatcsökkentés  |
+|Probléma  |Description  |Kockázatcsökkentés  |
 |---------|---------|---------|
 |A TLS-ellenőrzés csak a HTTPS standard porton támogatott|A TLS-ellenőrzés csak a HTTPS/443 protokollt támogatja. |Nincsenek. A GA-ban más portok is támogatottak lesznek.|
 |ESNI-támogatás a teljes tartománynév-feloldáshoz HTTPS-ben|A titkosított SNI HTTPS-kézfogás esetén nem támogatott.|Jelenleg csak a Firefox támogatja a ESNI egyéni konfiguráción keresztül. Javasolt Áthidaló megoldás a funkció letiltása.|
 |Ügyféltanúsítványok (TLS)|Az ügyféltanúsítványok kölcsönös identitási megbízhatóság létrehozására szolgálnak az ügyfél és a kiszolgáló között. Az ügyféltanúsítványok a TLS-egyeztetés során használatosak. Az Azure Firewall újraegyeztet egy kapcsolatot a kiszolgálóval, és nem fér hozzá az Ügyféltanúsítványok titkos kulcsához.|Nincsenek|
 |QUIC/HTTP3|A QUIC a HTTP új fő verziója. Ez egy UDP-alapú protokoll 80 (csomag) és 443 (SSL). A teljes tartománynév/URL/TLS-ellenőrzés nem támogatott.|Az UDP 80/443 hálózati szabályokként való továbbításának beállítása.|
-|A biztonságos hub és a kényszerített bújtatás nem támogatott a Premiumban|A biztonságos központi telepítések és a kényszerített bújtatási konfigurációk jelenleg nem támogatják a Firewall Premium SKU-t.|Javítás ütemezése a GA-ban.|
 Nem megbízható ügyfél által aláírt tanúsítványok|Az ügyfél által aláírt tanúsítványokat a tűzfal nem bízik meg, ha az intranetes webkiszolgálóról érkezett.|Javítás ütemezése a GA-ban.
 |Nem megfelelő forrás-és cél IP-címek a TLS-ellenőrzéssel végzett IDP riasztásokban.|Ha engedélyezi a TLS-ellenőrzés és a IDP új riasztást, a megjelenített forrás/cél IP-cím helytelen (a belső IP-cím az eredeti IP-cím helyett jelenik meg).|Javítás ütemezése a GA-ban.|
 |Nem megfelelő forrás IP-cím a riasztásokban a HTTP-IDP (TLS-ellenőrzés nélkül).|Ha az egyszerű szöveges HTTP-forgalom használatban van, és a IDP új riasztást ad ki, és a cél nyilvános IP-cím, a megjelenített forrás IP-címe helytelen (a belső IP-cím az eredeti IP-cím helyett jelenik meg).|Javítás ütemezése a GA-ban.|

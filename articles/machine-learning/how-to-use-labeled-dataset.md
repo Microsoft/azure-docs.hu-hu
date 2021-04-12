@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 2eec512af9b139b2707c435fd0c78b7d50ac1b11
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97922cc8693cddcb13350117b6c17c4220f75337
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521050"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227976"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning adatkészlet létrehozása és feltárása címkékkel
 
@@ -119,4 +119,4 @@ imgplot = plt.imshow(gray_image)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg az [adathalmazt a címkék jegyzetfüzettel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb) a teljes betanítási minta megtekintéséhez.
+* Tekintse meg az [adathalmazt a címkék jegyzetfüzettel](/azure/machine-learning/how-to-use-labeled-dataset) a teljes betanítási minta megtekintéséhez.

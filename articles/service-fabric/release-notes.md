@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 7f99c37cd9f029c7478d4102bd17c952ffd52f8c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044277"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731224"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -57,7 +57,7 @@ Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet
 
 A jelenlegi COVID válság miatt, valamint az ügyfelek által felmerülő kihívásokat figyelembe véve az 7,1-as verzió érhető el, de nem frissíti automatikusan a fürtöket automatikus verziófrissítések fogadására. A váratlan fennakadások elkerülése érdekében az automatikus frissítést addig szüneteltetjük, amíg további értesítést nem biztosítunk arról, hogy az ügyfelek a legmegfelelőbb módon tudják alkalmazni a frissítéseket.
 
-A 7,1-re a [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) vagy egy Azure Resource Manager üzemelő [példányon](./service-fabric-cluster-upgrade-version-azure.md#set-the-upgrade-mode-using-a-resource-manager-template)keresztül tud frissíteni.
+A 7,1-re a [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) vagy egy Azure Resource Manager üzemelő [példányon](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)keresztül tud frissíteni.
 
 Az automatikus frissítésekkel rendelkező Service Fabric fürtök automatikusan megkapják az 7,1-es frissítést, ha folytatjuk a normál bevezetési eljárást. A standard bevezetésének megkezdése előtt újabb bejelentést fogunk benyújtani a [Service Fabric technikai közösségi webhelyről](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
 Közzétettük a frissítéseket a támogatási dátum végéig a 6,5 7,1-ig terjedő fő kiadásokra vonatkozóan [.](./service-fabric-versions.md#supported-versions) 

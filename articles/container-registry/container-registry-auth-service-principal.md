@@ -2,17 +2,17 @@
 title: Hitelesítés szolgáltatásnévvel
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez egy Azure Active Directory egyszerű szolgáltatásnév használatával.
 ms.topic: article
-ms.date: 10/04/2019
-ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/15/2021
+ms.openlocfilehash: a32538e5fc5354427bafc5098634becdcedd1239
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86259145"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285535"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry hitelesítés egyszerű szolgáltatásokkal
 
-Egy Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával biztosíthatja a tárolók rendszerképét `docker push` , és `pull` hozzáférhet a tároló-beállításjegyzékhez. Egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz.
+Az Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával leküldéses, lekéréses vagy egyéb hozzáférést biztosíthat a tároló-beállításjegyzékhez. Egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz.
 
 ## <a name="what-is-a-service-principal"></a>Mi az a szolgáltatásnév?
 
@@ -52,7 +52,7 @@ Ha már rendelkezik egy olyan egyszerű szolgáltatással, amely hozzáférést 
 * **Felhasználónév** – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító*)
 * **Jelszó** – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok*)
 
-Minden érték az űrlap GUID-azonosítója `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
+Minden érték formátuma `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
 
 > [!TIP]
 > Egy egyszerű szolgáltatásnév jelszavát az az [ad SP reset-hitelesítőadats](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancs futtatásával lehet újból előállítani.
@@ -66,7 +66,7 @@ A hitelesítő adatok használatával például lekérheti a rendszerképet egy 
 
 ### <a name="use-with-docker-login"></a>Használat a Docker-bejelentkezéssel
 
-`docker login`Az egyszerű szolgáltatásnév használatával is futtatható. A következő példában a szolgáltatás egyszerű alkalmazásának azonosítója a környezeti változóban `$SP_APP_ID` , a változóban pedig a jelszót adja át `$SP_PASSWD` . A Docker hitelesítő adatainak kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
+`docker login`Az egyszerű szolgáltatásnév használatával is futtatható. A következő példában a szolgáltatás egyszerű alkalmazásának azonosítója a környezeti változóban `$SP_APP_ID` , a változóban pedig a jelszót adja át `$SP_PASSWD` . A Docker hitelesítő adatainak kezeléséhez ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
 
 ```bash
 # Log in to Docker with service principal credentials
