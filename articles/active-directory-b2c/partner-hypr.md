@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 357c8d79259986e211dd04580b1d8205c25824da
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953763"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257976"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>Oktatóanyag a HYPR konfigurálásához a Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![Képernyőkép a hypr-Architecture-diagramról](media/partner-hypr/hypr-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók kiválaszthatják a bejelentkezést és a regisztrációt, és beírhatják a felhasználónevet az oldalra.
 | 2. | Az alkalmazás elküldi a felhasználói attribútumokat Azure AD B2C az ellenőrzés azonosításához.
@@ -62,7 +62,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 1. Nyissa meg a házirend mappában található [Azure ad B2C HYPR szabályzatot](https://github.com/HYPR-Corp-Public/Azure-AD-B2C-HYPR-Sample/tree/master/policy) .
 
-2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez kövesse ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)
+2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez kövesse ezt a [dokumentumot](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)
 
 3. Konfigurálja a Azure AD B2C bérlő házirendjét.
 
@@ -93,4 +93,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

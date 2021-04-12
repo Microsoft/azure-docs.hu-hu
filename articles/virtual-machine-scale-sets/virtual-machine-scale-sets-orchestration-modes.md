@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 316f97480dfe7ee6481ef88faf265051a92024da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d9d9449e2a971a4247e507e0c022c8c5fb9956c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937260"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075406"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuálisgép-méretezési csoportok előkészítési módjai 
 
@@ -306,7 +306,7 @@ A méretezési csoportokhoz akár 1000 virtuális gépet is hozzáadhat rugalmas
 
 **Hogyan hasonlítja össze a rendelkezésre állást rugalmas előkészítéssel a rendelkezésre állási csoportokkal vagy az egységes előkészítéssel?**
 
-|   | Rugalmas előkészítés  | Egységes előkészítés  | Rendelkezésre állási csoportok  |
+| Rendelkezésre állási attribútum  | Rugalmas előkészítés  | Egységes előkészítés  | Rendelkezésre állási csoportok  |
 |-|-|-|-|
 | Üzembe helyezés rendelkezésre állási zónák között  | Nem  | Igen  | Nem  |
 | Tartalék tartomány rendelkezésre állási garanciái a régión belül  | Igen, akár 1000 példány is elosztható akár 3 tartalék tartomány között a régióban. A tartalék tartományok maximális száma régiónként eltérő  | Igen, legfeljebb 100 példány  | Igen, legfeljebb 200 példány  |

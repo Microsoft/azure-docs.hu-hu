@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: b13feeda162f9babe1958402a694b728312ea4e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b009c0844a0030da9698ba7e058cde8ba68c5f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015403"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063316"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine-streamelés Androidhoz
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
-> * [3\. verzió](../latest/offline-widevine-for-android.md)
+> * [3\. verzió](../latest/drm-offline-widevine-for-android.md)
 > * [2-es verzió](offline-widevine-for-android.md)
 
 > [!NOTE]

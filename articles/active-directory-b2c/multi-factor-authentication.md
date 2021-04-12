@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eff33a8670ee8eb9ee32655956ee0e913ddaa4c1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033520"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258129"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Többtényezős hitelesítés engedélyezése az Azure Active Directory B2C-ben
 
@@ -56,6 +56,6 @@ A multi-Factor Authentication lépése előtt létrejön egy ügyfél-fiók a b�
 
 ::: zone pivot="b2c-custom-policy"
 
-Ha engedélyezni szeretné, hogy Multi-Factor Authentication beolvassa a GitHubról az egyéni szabályzat kezdő csomagjait, frissítse a **SocialAndLocalAccountsWithMFA** Starter Pack csomag XML-fájljait a Azure ad B2C bérlői nevével. A **SocialAndLocalAccountsWithMFA**  lehetővé teszi a közösségi, helyi és multi-Factor Authentication lehetőségeket. További információ: Ismerkedés [az egyéni szabályzatokkal Active Directory B2Cban](custom-policy-get-started.md). 
+Ha engedélyezni szeretné, hogy Multi-Factor Authentication beolvassa a GitHubról az egyéni szabályzat kezdő csomagjait, frissítse a **SocialAndLocalAccountsWithMFA** Starter Pack csomag XML-fájljait a Azure ad B2C bérlői nevével. A **SocialAndLocalAccountsWithMFA**  lehetővé teszi a közösségi, helyi és multi-Factor Authentication lehetőségeket. További információ: Ismerkedés [az egyéni szabályzatokkal Active Directory B2Cban](tutorial-create-user-flows.md?pivots=b2c-custom-policy). 
 
 ::: zone-end

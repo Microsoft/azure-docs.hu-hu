@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552954"
+ms.locfileid: "107029743"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -23,6 +23,13 @@ A kiszolgáló nélküli SQL-készlet lekérdezése közvetlenül az Azure Stora
 - **SQL-szolgáltatási szint** – a felhasználónak engedélyt kell adni az adat [külső tábla](develop-tables-external-tables.md) használatával történő olvasásához vagy a `OPENROWSET` függvény végrehajtásához. További információ [a szükséges engedélyekről ebben a szakaszban](develop-storage-files-overview.md#permissions).
 
 Ez a cikk ismerteti a használható hitelesítő adatok típusait, valamint azt, hogy az SQL és az Azure AD-felhasználók hogyan használják a hitelesítő adatokat.
+
+## <a name="storage-permissions"></a>Tárolási engedélyek
+
+A szinapszis Analytics-munkaterületen található kiszolgáló nélküli SQL-készlet képes olvasni a Azure Data Lake tárolóban tárolt fájlok tartalmát. A tárterületre vonatkozó engedélyeket úgy kell konfigurálnia, hogy lehetővé váljon egy olyan felhasználó számára, aki SQL-lekérdezést hajt végre a fájlok olvasásához. A fájlokhoz való hozzáférés engedélyezése három módszerből áll>
+- A **[szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)** lehetővé teszi, hogy hozzárendelje a szerepkört egy bizonyos Azure ad-felhasználóhoz abban a bérlőben, ahová a tárterületet elhelyezi. Az RBAC szerepkörök hozzárendelhetők az Azure AD-felhasználókhoz. Az olvasónak rendelkeznie kell `Storage Blob Data Reader` , `Storage Blob Data Contributor` vagy `Storage Blob Data Owner` szerepkörrel. Az Azure Storage-ban adatírást végző felhasználónak `Storage Blob Data Writer` vagy szerepkörnek kell lennie `Storage Blob Data Owner` . Vegye figyelembe, hogy `Storage Owner` a szerepkör nem azt jelenti, hogy a felhasználó is `Storage Data Owner` .
+- **Access Control listák (ACL)** lehetővé teszik az Azure Storage-ban található fájlokra és könyvtárakra vonatkozó részletes engedélyezési modell megadását. Az ACL az Azure AD-felhasználókhoz rendelhető hozzá. Ha az olvasóknak az Azure Storage-beli elérési úton szeretnék beolvasni egy fájlt, a fájl elérési útjának minden mappájához végre kell hajtaniuk a (X) ACL-t, valamint a fájl olvasási (R) ACL-fájlját. [További információ a tárolási réteg ACL-engedélyeinek beállításáról](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- A **közös hozzáférésű aláírás (SAS)** lehetővé teszi, hogy az olvasó hozzáférjen a Azure Data Lake tárolóban található fájlokhoz az idő-korlátozott token használatával. Az olvasót még az Azure AD-felhasználóként sem kell hitelesíteni. Az SAS-jogkivonat tartalmazza az olvasónak biztosított engedélyeket, valamint a jogkivonat érvényességi idejét. Az SAS-token jó választás az olyan felhasználók számára, akik még nem kell ugyanabban az Azure AD-bérlőben. Az SAS-jogkivonat definiálható a Storage-fiókban vagy a megadott könyvtárakban is. További információ az [Azure Storage-erőforrásokhoz való korlátozott hozzáférés engedélyezéséről közös hozzáférési aláírások használatával](../../storage/common/storage-sas-overview.md).
 
 ## <a name="supported-storage-authorization-types"></a>Támogatott tárterület-engedélyezési típusok
 
@@ -103,7 +110,7 @@ A tűzfallal védett tárolók eléréséhez használhatja a **felhasználói id
 
 #### <a name="user-identity"></a>Felhasználói identitás
 
-A tűzfallal védett tárhely felhasználói identitáson keresztüli eléréséhez az az. Storage PowerShell-modult használhatja.
+A tűzfallal védett tárhely felhasználói identitáson keresztüli eléréséhez Azure Portal felhasználói felületet vagy PowerShell-modult használhat az. Storage használatával.
 #### <a name="configuration-via-azure-portal"></a>Konfigurálás Azure Portal használatával
 
 1. Azure Portal megkeresheti a Storage-fiókját.

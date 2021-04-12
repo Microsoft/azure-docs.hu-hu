@@ -1,15 +1,15 @@
 ---
 title: Az Azure Event Hubs beépített szabályzat-definíciói
 description: Az Azure Event Hubs beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 84486285dd9566821b5b6bbe33e3cfbffb792532
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 8fa6c05951bb65699b434be1141fb5659a7c9699
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105031332"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094089"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-hubs"></a>Az Azure Event Hubs beépített definíciói Azure Policy
 

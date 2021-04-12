@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6b9c4bcf760387f6bbe380c9aa079df2f86a1847
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 67df1c822f34f45bb0931848f8015374a346673a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060652"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278439"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
 
@@ -104,7 +104,7 @@ Ebben a szakaszban a hub és a VNet közötti összekapcsolási kapcsolatot hozz
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Az áramkör összekapcsolása a hub-átjáróval
 
-Az átjáró létrehozása után összekapcsolhatja a [ExpressRoute áramkört](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . A ExpressRoute Global Reach által támogatott helyszíneken található standard vagy prémium szintű áramkörök ExpressRoute csatlakozhatnak egy virtuális WAN ExpressRoute-átjáróhoz, és az összes virtuális WAN-továbbítási funkciót (VPN-VPN-, VPN-és ExpressRoute-átvitel) is élvezhessük. A nem Global Reach helyen található standard és prémium szintű áramkörök képesek csatlakozni az Azure-erőforrásokhoz, de nem fogják tudni használni a virtuális WAN-ExpressRoute. A ExpressRoute local az Azure Virtual WAN-hubok esetében támogatott, feltéve, hogy a virtuális WAN-hubhoz csatlakoztatott küllős virtuális hálózatok ugyanabban a régióban találhatók, mint a virtuális WAN-központ.
+Az átjáró létrehozása után összekapcsolhatja a [ExpressRoute áramkört](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . A ExpressRoute Global Reach által támogatott helyszíneken található standard vagy prémium szintű áramkörök ExpressRoute csatlakozhatnak egy virtuális WAN ExpressRoute-átjáróhoz, és az összes virtuális WAN-továbbítási funkciót (VPN-VPN-, VPN-és ExpressRoute-átvitel) is élvezhessük. A nem Global Reach helyen található standard és prémium szintű áramkörök képesek csatlakozni az Azure-erőforrásokhoz, de nem fogják tudni használni a virtuális WAN-ExpressRoute. A helyi ExpressRoute az Azure Virtual WAN hubok is támogatják.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Az áramkör összekapcsolása a hub-átjáróval
 

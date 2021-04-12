@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c830f9c7edb252508824b3a92bd31b6fad31395d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a43e734c0a5bfa7c3698dcde5cb5b17f15575d90
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169941"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222928"
 ---
 # <a name="how-to-customize-your-verifiable-credentials-preview"></a>Ellenőrizhető hitelesítő adatok testreszabása (előzetes verzió)
 
@@ -165,7 +165,7 @@ A hitelesítő adatok együttműködési képességének biztosítása érdekéb
 | `vc.type` | Karakterláncok tömbje, amely azt jelzi, hogy az Ön által ellenőrizhető hitelesítő adat megfelel-e a séma (ok) nak. |
 
 
-## <a name="input-type-self-attested-claims"></a>Bemeneti típus: Self-Attested jogcímek
+## <a name="input-type-self-attested-claims"></a>Bemenet típusa: önigazolt jogcímek
 
 A kiállítási folyamat során a felhasználó megkérheti, hogy adjon meg néhány önigazolt információt. Mostantól az egyetlen bemeneti típus a "string". 
 ```json
@@ -263,7 +263,7 @@ A megjelenítési fájl a következő szerkezettel rendelkezik.
 | `claims.{attribute}.type` | Megadja az attribútum típusát. Jelenleg csak a "string" támogatott. |
 | `claims.{attribute}.label` | Az attribútum címkéként használandó értéke, amely megjelenik a hitelesítő mezőben. Ez eltérő lehet a szabályok fájlban használt címkétől. Az ajánlott maximális hossz 40 karakter. |
 
->[!note]
+>[!NOTE]
   >Ha egy jogcím szerepel a szabályok fájlban, majd kihagyja a megjelenítési fájlban, két különböző típusú élmény van. IOS rendszeren a rendszer nem jeleníti meg a jogcímet a fenti képen látható Részletek szakaszban, míg az Androidon a jogcím megjelenik.  
 
 ## <a name="next-steps"></a>Következő lépések

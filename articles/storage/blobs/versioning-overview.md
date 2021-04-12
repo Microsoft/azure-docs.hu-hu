@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82216abd13b6128be68e22a4ce2a0f6de9a6ce2f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: f104b98c870fe6eee1d32fe656c0bba416cf3700
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227542"
+ms.locfileid: "107259744"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -43,7 +43,7 @@ Az alábbi ábra bemutatja, hogyan jönnek létre a verziók az írási művelet
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="A blob verziószámozásának működését bemutató ábra":::
 
-Ha olyan blobot töröl, amelyen engedélyezve van a verziószámozás, a rendszer törli a blob aktuális verzióját. A blob korábbi verziói megmaradnak.
+Ha olyan blobot töröl, amelyen engedélyezve van a verziószámozás, a blob aktuális verziója egy korábbi verzió lesz, és már nem létezik aktuális verzió. A blob korábbi verziói megmaradnak.
 
 A blob-verziók nem változtathatók meg. Egy meglévő blob-verzió tartalmát vagy metaadatait nem módosíthatja.
 
@@ -133,7 +133,7 @@ A következő ábra azt mutatja be, hogyan lehet a blobokat a verziószámozást
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB verziószámozása és a Soft delete
 
-A Microsoft azt javasolja, hogy az optimális adatvédelem érdekében a Storage-fiókok esetében is engedélyezze a verziószámozást és a Blobok törlését. A Soft delete védi a blobokat, a verziókat és a pillanatképeket a véletlen törléstől. A blob Soft delete szolgáltatással kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört.
+A Microsoft azt javasolja, hogy az optimális adatvédelem érdekében a Storage-fiókok esetében is engedélyezze a verziószámozást és a Blobok törlését. A blob Soft delete szolgáltatással kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört.
 
 ### <a name="overwriting-a-blob"></a>BLOB felülírása
 
@@ -141,7 +141,7 @@ Ha a blob verziószámozása és a blob Soft delete egyaránt engedélyezve van 
 
 ### <a name="deleting-a-blob-or-version"></a>BLOB vagy verzió törlése
 
-Ha a Storage-fiókban a verziószámozás és a Soft delete is engedélyezve van, akkor a Blobok törlésekor a blob aktuális verziója lesz az előző verzió, és a rendszer törli az aktuális verziót. A rendszer nem hoz létre új verziót, és nem hoz létre nem törölt pillanatképeket. A törölt blob megőrzési időszaka nincs érvényben.
+Ha a verziószámozás és a Soft delete egyaránt engedélyezve van egy Storage-fiókhoz, akkor a Blobok aktuális verziója lesz a korábbi verzió. A rendszer nem hoz létre új verziót, és nem hoz létre nem törölt pillanatképeket. A törölt blob megőrzési időszaka nincs érvényben.
 
 A Soft delete további védelmet biztosít a blob-verziók törléséhez. Ha törli a blob egy korábbi verzióját, akkor a rendszer nem törli a verziót. A rendszer megőrzi a helyreállított verziót, amíg el nem telik a helyreállított törlés megőrzési ideje, ekkor véglegesen törlődik.
 

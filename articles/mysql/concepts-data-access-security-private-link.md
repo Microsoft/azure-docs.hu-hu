@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 438ef806f6c59c6f23877a3d3110f22f08ca8713
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e239b6b00c5a5e993834a10fca30de02b9f715ff
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863564"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065514"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Private Link az Azure Database for MySQL-hez
 
@@ -118,7 +118,7 @@ Ha csak privát végpontokon szeretné használni a Azure Database for MySQL el�
 Ha ezt a beállítást az *Igen* értékre állítja, csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for MySQL. Ha ez a beállítás *nem* értékre van állítva, akkor az ügyfelek a tűzfal vagy a VNet szolgáltatás végpontjának beállításai alapján kapcsolódhatnak a Azure Database for MySQLhoz. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
 
 > [!Note]
-> Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for PostgreSQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.
+> Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for MySQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.
 >
 > Ez a beállítás nem befolyásolja a Azure Database for MySQL SSL-és TLS-konfigurációit.
 

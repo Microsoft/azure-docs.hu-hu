@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833813"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505127"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -23,16 +23,16 @@ A webes felhasználói felülettel figyelheti az eszközök feltételeit, szabá
 
 Ez a cikk IoT Central:
 
-- A projekthez társított tipikus szerepek.
+- Egy projekthez társított tipikus felhasználói szerepkörök.
 - Egy alkalmazás létrehozása.
 - Az eszközök az alkalmazáshoz történő csatlakoztatása
 - Az alkalmazás felügyelete.
 - IoT Central Azure IoT Edge képességei.
 - A Azure IoT Edge Runtime-alapú eszközök csatlakoztatása az alkalmazáshoz.
 
-## <a name="personas"></a>Szerepek
+## <a name="user-roles"></a>Felhasználói szerepkörök
 
-Az IoT Central dokumentációja négy olyan személyre utal, akik IoT Central alkalmazással működnek:
+Az IoT Central dokumentációja négy olyan felhasználói szerepkörre hivatkozik, amelyek egy IoT Central alkalmazással működnek:
 
 - A _megoldás-szerkesztő_ feladata egy [alkalmazás létrehozása](quick-deploy-iot-central.md), [szabályok és műveletek konfigurálása](quick-configure-rules.md), [integrációk definiálása más szolgáltatásokkal](howto-export-data.md), valamint az alkalmazások további testreszabása a kezelők és az eszközök fejlesztői számára.
 - A _kezelő_ [felügyeli az](howto-manage-devices.md) alkalmazáshoz csatlakoztatott eszközöket.

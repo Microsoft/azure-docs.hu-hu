@@ -3,15 +3,15 @@ title: Hitelesítés és engedélyezés
 description: Ismerje meg a Azure App Service és Azure Functions beépített hitelesítési és engedélyezési támogatását, valamint azt, hogy miként védheti meg alkalmazásait a jogosulatlan hozzáférés ellen.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 35513abdfb61d889abdbd4af7125b1fbb556d7b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b6e600fcaf32a115af14be2444144fee099d635
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612755"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075338"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -33,8 +33,7 @@ App Service [összevont identitást](https://en.wikipedia.org/wiki/Federated_ide
 
 | Szolgáltató | Bejelentkezési végpont | How-To útmutató |
 | - | - | - |
-| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` | [Azure AD-bejelentkezés App Service](configure-authentication-provider-aad.md) |
-| [Microsoft-fiók](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` | [A Microsoft-fiók bejelentkezési App Service](configure-authentication-provider-microsoft.md) |
+| [Microsoft Identity platform](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` | [App Service Microsoft Identity platform bejelentkezés](configure-authentication-provider-aad.md) |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` | [Facebook-Bejelentkezés App Service](configure-authentication-provider-facebook.md) |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` | [Google-bejelentkezés App Service](configure-authentication-provider-google.md) |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` | [Twitter-bejelentkezés App Service](configure-authentication-provider-twitter.md) |
@@ -110,21 +109,17 @@ Az ügyféloldali böngészők esetében a App Service automatikusan irányítha
 
 #### <a name="authorization-behavior"></a>Engedélyezési viselkedés
 
-A [Azure Portalban](https://portal.azure.com)számos viselkedést konfigurálhat app Service engedélyezéshez, ha a bejövő kérelem nincs hitelesítve.
+A [Azure Portalban](https://portal.azure.com)több viselkedést is app Service beállíthat, ha a bejövő kérelem nincs hitelesítve. A következő címsorok leírják a beállításokat.
 
-![A "végrehajtandó művelet, ha a kérés nem hitelesítve" legördülő lista](media/app-service-authentication-overview/authorization-flow.png)
-
-A következő címsorok leírják a beállításokat.
-
-**Névtelen kérelmek engedélyezése (nincs művelet)**
+**Nem hitelesített kérelmek engedélyezése**
 
 Ez a beállítás elhalasztja az alkalmazás kódjához való nem hitelesített forgalom engedélyezését. A hitelesített kérések esetében App Service a HTTP-fejlécekben is továbbítja a hitelesítési adatokat.
 
 Ez a lehetőség nagyobb rugalmasságot biztosít a névtelen kérelmek kezelésére. Például lehetővé teszi, hogy [több bejelentkezési szolgáltatót nyújtson](app-service-authentication-how-to.md#use-multiple-sign-in-providers) be a felhasználók számára. Azonban kódot kell írnia.
 
-**Csak hitelesített kérelmek engedélyezése**
+**Hitelesítés megkövetelése**
 
-A beállítás **bejelentkezik a szolgáltatással \<provider>**. App Service átirányítja az összes névtelen kérelmet `/.auth/login/<provider>` a kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized` .
+Ez a beállítás elutasítja az alkalmazásnak nem hitelesített forgalmat. Ez az elutasítás lehet átirányítási művelet a konfigurált identitás-szolgáltatók egyike számára. Ezekben az esetekben a rendszer átirányítja a böngésző-ügyfelet a `/.auth/login/<provider>` kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized` . Azt is beállíthatja, hogy az elutasítás legyen a `HTTP 401 Unauthorized` vagy `HTTP 403 Forbidden` az összes kérelem.
 
 Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alkalmazásban. A felhasználó jogcímeinek vizsgálatával a finomabb engedélyezés, például a szerepkör-specifikus hitelesítés kezelhető (lásd: [hozzáférés a felhasználói jogcímekhez](app-service-authentication-how-to.md#access-user-claims)).
 

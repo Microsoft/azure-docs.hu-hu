@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 653eacd11c4a3c7ab500abff809a6b9bf8229c1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 7331f9a894d36ee15702a8fe53804efd53049762
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492069"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284119"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Az Azure Nagyvállalati Szerződés (EA) szerepköreinek kezelése
 
-A szervezet használati adatainak és költségeinek kezeléséhez a Nagyvállalati Szerződéssel rendelkező Azure-ügyfelek öt különféle rendszergazdai szerepkört rendelhetnek felhasználóikhoz:
+A munkahelye használatának és a költségek kezelésének elősegítése érdekében az Azure-ügyfelek a Nagyvállalati Szerződés hat különböző rendszergazdai szerepkört rendelhetnek:
 
 - Vállalati rendszergazda
 - Vállalati rendszergazda (csak olvasási)<sup>1</sup>

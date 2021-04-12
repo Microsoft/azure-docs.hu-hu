@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c354435f689f5182dd368fd53fdab28f1ab63d48
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218791"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259421"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
 
@@ -110,7 +110,7 @@ A naplók és a metrikák megtekintésére többféle módszer áll rendelkezés
 > [!NOTE]
 > `==` megkülönbözteti a kis-és nagybetűket, de `=~` nem.
 
-Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, tekintse meg a [Azure monitor a naplók lekérdezését](/azure/data-explorer/kusto/query/)ismertető témakört.
+Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, tekintse meg a [Azure monitor a naplók lekérdezését](/azure/data-explorer/kusto/query/)ismertető témakört. Ha az összes Log Analytics-naplót egy központi ügyfélről szeretné lekérdezni, tekintse meg az [Azure adatkezelőt](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
 
 ### <a name="use-your-storage-account"></a>A Storage-fiók használata
 

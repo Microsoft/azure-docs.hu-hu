@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: cd37175bd85e31ddc18c8267cdf01f7dc6249a0b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279493"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491916"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
@@ -45,7 +45,7 @@ Media Services v3 kódoláshoz létre kell hoznia egy [átalakítót](/rest/api/
 
 Ha Media Services kódolást használ, az előállítók használatával tájékoztathatja a kódolót a bemeneti médiafájlok feldolgozásáról. A Media Services v3-as verziójában szabványos kódoló használatával kódolja a fájlokat. Megadhatja például a videó felbontását és/vagy a kívánt Hangcsatornák számát a kódolt tartalomban.
 
-Az iparági ajánlott eljárások alapján gyorsan megkezdheti a javasolt beépített készletek egyikét, vagy dönthet úgy, hogy létrehoz egy egyéni beállításkészletet az adott forgatókönyv vagy eszköz követelményeinek megfelelően. További információ: [kódolás egyéni átalakítóval](encode-custom-presets-how-to.md).
+Az iparági ajánlott eljárások alapján gyorsan megkezdheti a javasolt beépített készletek egyikét, vagy dönthet úgy, hogy létrehoz egy egyéni beállításkészletet az adott forgatókönyv vagy eszköz követelményeinek megfelelően. További információ: [kódolás egyéni átalakítóval](transform-custom-presets-how-to.md).
 
 Az MP4-fájlok előállításához a standard kódolóval kezdődően a 2019-es és újabb, új. MPI-fájl jön létre, és hozzá lesz adva a kimeneti eszközhöz. Ez az MPI-fájl a [dinamikus csomagolás](encode-dynamic-packaging-concept.md) és a folyamatos átviteli forgatókönyvek teljesítményének növelésére szolgál.
 
@@ -136,9 +136,9 @@ Media Services teljes mértékben támogatja az előre beállított összes ért
 
 #### <a name="examples"></a>Példák
 
-- [Készletek testreszabása .NET-tel](encode-custom-presets-how-to.md)
-- [Beállításkészlet testreszabása a parancssori felülettel](encode-custom-preset-cli-how-to.md)
-- [Beállítások testreszabása REST használatával](encode-custom-preset-rest-how-to.md)
+- [Készletek testreszabása .NET-tel](transform-custom-presets-how-to.md)
+- [Beállításkészlet testreszabása a parancssori felülettel](transform-custom-preset-cli-how-to.md)
+- [Beállítások testreszabása REST használatával](transform-custom-preset-rest-how-to.md)
 
 
 ## <a name="preset-schema"></a>Előre definiált séma
@@ -165,4 +165,4 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 * [Feltöltés, kódolás és stream Media Services használatával](stream-files-tutorial-with-api.md).
 * [KÓDOLÁS HTTPS-URL-címről beépített beállításkészletek használatával](job-input-from-http-how-to.md).
 * [Helyi fájl kódolása beépített beállításkészletek használatával](job-input-from-local-file-how-to.md).
-* [Hozzon létre egy egyéni beállításkészletet az adott forgatókönyv vagy eszköz követelményeinek megcélzásához](encode-custom-presets-how-to.md).
+* [Hozzon létre egy egyéni beállításkészletet az adott forgatókönyv vagy eszköz követelményeinek megcélzásához](transform-custom-presets-how-to.md).

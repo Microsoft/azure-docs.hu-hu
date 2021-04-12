@@ -4,18 +4,22 @@ description: Ismerje meg az Azure Kubernetes szolgáltatással (ak) kapcsolatos 
 services: container-service
 author: mlearned
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 03/11/2021
 ms.author: mlearned
-ms.openlocfilehash: 6c69e46ea3510476089cd932b1cd1bdf14254021
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fafbe3f4b1c53f929682f4ca160fb19a5e91918
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122374"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105306"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) alkalmazásainak és fürtjeinek biztonsági fogalmai
 
-Ha az alkalmazás számítási feladatait az Azure Kubernetes szolgáltatásban (ak) futtatja, a fürt biztonsága kulcsfontosságú szempont. A Kubernetes olyan biztonsági összetevőket tartalmaz, mint például a *hálózati házirendek* és a *titkos kulcsok*. Az Azure ezután olyan összetevőket hoz létre, mint például a hálózati biztonsági csoportok és a előkészített fürtök frissítése. Ezek a biztonsági összetevők a legújabb operációs rendszer biztonsági frissítéseit és Kubernetes, valamint a biztonságos Pod-forgalmat és a bizalmas hitelesítő adatokhoz való hozzáférést biztosító AK-fürt megtartására szolgálnak.
+A fürt biztonsága védi az ügyféladatokat az alkalmazások számítási feladatainak Azure Kubernetes szolgáltatásban (ak) való futtatásakor. 
+
+A Kubernetes tartalmazza a biztonsági összetevőket, például a *hálózati házirendeket* és a *titkos kulcsokat*. Eközben az Azure olyan összetevőket is tartalmaz, mint például a hálózati biztonsági csoportok és a előkészített fürtök frissítése. Az AK ezeket a biztonsági összetevőket a következőhöz ötvözi:
+* Tartsa meg a legújabb operációs rendszer biztonsági frissítéseit és a Kubernetes kiadásait futtató AK-fürtöt.
+* Biztonságos Pod-forgalom és a bizalmas hitelesítő adatokhoz való hozzáférés biztosítása.
 
 Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá teheti alkalmazásait az AK-ban:
 
@@ -32,7 +36,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá t
 
 ## <a name="master-security"></a>Fő biztonság
 
-Az AK-ban a Kubernetes fő összetevői a Microsoft által biztosított felügyelt szolgáltatás részét képezik. Mindegyik AK-fürt saját, egyetlen bérlős, dedikált Kubernetes-főkiszolgálóval rendelkezik az API-kiszolgáló, a ütemező stb. biztosításához. Ezt a főkiszolgálót a Microsoft felügyeli és tartja karban.
+Az AK-ban a Kubernetes fő összetevői a Microsoft által biztosított, felügyelt és karbantartott felügyelt szolgáltatás részei. Mindegyik AK-fürt saját, egyetlen bérlős, dedikált Kubernetes-főkiszolgálóval rendelkezik az API-kiszolgáló, a ütemező stb. biztosításához.
 
 Alapértelmezés szerint a Kubernetes API-kiszolgáló egy nyilvános IP-címet és egy teljesen minősített tartománynevet (FQDN) használ. Az API-kiszolgáló végpontjának hozzáférését az [engedélyezett IP-címtartományok][authorized-ip-ranges]alapján korlátozhatja. Létrehozhat egy teljesen [privát fürtöt][private-clusters] is az API-kiszolgáló virtuális hálózathoz való hozzáférésének korlátozásához.
 
@@ -40,62 +44,95 @@ Az API-kiszolgáló hozzáférését az Kubernetes szerepköralapú hozzáféré
 
 ## <a name="node-security"></a>Csomópont biztonsága
 
-Az AK-csomópontok az Ön által kezelt és karbantartott Azure-beli virtuális gépek. A Linux-csomópontok optimalizált Ubuntu-disztribúciót futtatnak a `containerd` vagy a Moby Container Runtime használatával. A Windows Server-csomópontok optimalizált Windows Server 2019 kiadást futtatnak, és a `containerd` vagy a Moby Container futtatókörnyezetet is használják. Egy AK-fürt létrehozásakor vagy skálázásakor a rendszer automatikusan telepíti a csomópontokat a legújabb biztonsági frissítésekkel és konfigurációkkal.
+Az AK-csomópontok az Ön által kezelt és karbantartott Azure-beli virtuális gépek (VM-EK). 
+* A Linux-csomópontok optimalizált Ubuntu-disztribúciót futtatnak a `containerd` vagy a Moby Container Runtime használatával. 
+* A Windows Server-csomópontok egy optimalizált Windows Server 2019 kiadást futtatnak a `containerd` vagy a Moby Container Runtime használatával. 
+
+Egy AK-fürt létrehozásakor vagy skálázásakor a rendszer automatikusan telepíti a csomópontokat a legújabb biztonsági frissítésekkel és konfigurációkkal.
 
 > [!NOTE]
-> Az Kubernetes 1,19-es verziójú csomópont-készleteket és a tároló futtatókörnyezetének nagyobb használatát használó AK-fürtök `containerd` . Az Kubernetes-t használó, a csomópontok előtt a v 1.19-t használó-fürtök a [Moby](https://mobyproject.org/) (felsőbb rétegbeli Docker) tároló-futtatókörnyezetet használják.
+> AK-fürtök a következőket használják:
+> * A Kubernetes 1,19-es és újabb verziójú csomópontja `containerd` a tároló futtatókörnyezete. 
+> * A v 1.19 Node-készletek előtti Kubernetes a [Moby](https://mobyproject.org/) (upstream Docker)-t használják tároló-futtatókörnyezetként.
 
-Az Azure platform automatikusan alkalmazza az operációs rendszer biztonsági javításait Linux-csomópontokra. Ha a Linux operációs rendszer biztonsági frissítése a gazdagép újraindítását igényli, a rendszer nem hajtja végre automatikusan az újraindítást. A Linux-csomópontokat manuálisan is újraindíthatja, vagy közös megközelítéssel használhatja a [Kured][kured], egy nyílt forráskódú újraindítási démont a Kubernetes. A Kured [daemonset elemet][aks-daemonsets] fut, és figyeli az egyes csomópontokat egy olyan fájl jelenléte esetén, amely azt jelzi, hogy újraindítás szükséges. A rendszer az újraindításokat a fürtön keresztül felügyeli a fürt frissítésével megegyező [Kordon és kiürítési folyamat](#cordon-and-drain) használatával.
+### <a name="node-security-patches"></a>Csomópont biztonsági javításai
 
-A Windows Server-csomópontok esetében Windows Update nem fut automatikusan, és nem alkalmazza a legújabb frissítéseket. A Windows Update kiadási ciklus és a saját ellenőrzési folyamata körüli rendszeres ütemterv esetén frissíteni kell a Windows Server Node-készlet (ek) et az AK-fürtben. Ez a frissítési folyamat olyan csomópontokat hoz létre, amelyek a legújabb Windows Server-lemezképet és-javításokat futtatják, majd eltávolítja a régebbi csomópontokat. További információ erről a folyamatról: [Node-készlet frissítése az AK-ban][nodepool-upgrade].
+#### <a name="linux-nodes"></a>Linux-csomópontok
+Az Azure platform automatikusan alkalmazza az operációs rendszer biztonsági javításait Linux-csomópontokra. Ha egy Linux operációs rendszer biztonsági frissítéséhez szükség van egy gazdagép újraindítására, az nem fog automatikusan újraindulni. A következő lehetőségek közül választhat:
+* A Linux-csomópontok manuális újraindítása.
+* A Kubernetes egy nyílt forráskódú újraindítási démont használ a [Kured][kured]. A Kured [daemonset elemet][aks-daemonsets] fut, és figyeli az egyes csomópontokat egy fájlhoz, amely jelzi, hogy újraindítás szükséges. 
 
-A csomópontok magánhálózati virtuális hálózati alhálózatba vannak telepítve, és nincsenek hozzárendelve nyilvános IP-címek. Hibaelhárítási és felügyeleti célokra az SSH alapértelmezés szerint engedélyezve van. Ez az SSH-hozzáférés csak a belső IP-cím használatával érhető el.
+A rendszer az újraindításokat a fürtön keresztül felügyeli a fürt frissítésével megegyező [Kordon és kiürítési folyamat](#cordon-and-drain) használatával.
 
-A tárolók biztosításához a csomópontok az Azure Managed Disks használják. A virtuálisgép-csomópontok többségének mérete esetén ezek a nagy teljesítményű SSD-k által támogatott prémium lemezek. A felügyelt lemezeken tárolt adatok automatikusan titkosítva maradnak az Azure platformon belül. A redundancia javítása érdekében ezeket a lemezeket az Azure-adatközpontban is biztonságosan replikálja a rendszer.
+#### <a name="windows-server-nodes"></a>Windows Server-csomópontok
 
-A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonságosak az ellenséges, több-bérlős használatra. További biztonsági funkciók, például a *Pod biztonsági szabályzatok*, vagy a csomópontok részletes Kubernetes szerepköralapú hozzáférés-vezérlése (Kubernetes RBAC), nehezebbé teszi a kihasználat. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
+A Windows Server-csomópontok esetében Windows Update nem fut automatikusan, és nem alkalmazza a legújabb frissítéseket. Ütemezze a Windows Server Node-készlet frissítéseit az AK-fürtön a normál Windows Update kiadási ciklus és a saját ellenőrzési folyamata körül. Ez a frissítési folyamat olyan csomópontokat hoz létre, amelyek a legújabb Windows Server-lemezképet és-javításokat futtatják, majd eltávolítja a régebbi csomópontokat. További információ erről a folyamatról: [Node-készlet frissítése az AK-ban][nodepool-upgrade].
+
+### <a name="node-deployment"></a>Csomópont központi telepítése
+A csomópontok magánhálózati virtuális hálózati alhálózatba vannak telepítve, és nincsenek hozzárendelve nyilvános IP-címek. Hibaelhárítási és felügyeleti célokra az SSH alapértelmezés szerint engedélyezve van, és csak a belső IP-cím használatával érhető el.
+
+### <a name="node-storage"></a>Csomópont-tároló
+A tárolók biztosításához a csomópontok az Azure Managed Disks használják. A virtuálisgép-csomópontok legtöbb méretéhez az Azure Managed Disks a nagy teljesítményű SSD-k által támogatott prémium szintű lemezek. A felügyelt lemezeken tárolt adatok automatikusan titkosítva maradnak az Azure platformon belül. A redundancia javítása érdekében az Azure Managed Disks biztonságosan replikálódnak az Azure-adatközpontban.
+
+### <a name="hostile-multi-tenant-workloads"></a>Ellenséges több-bérlős számítási feladatok
+
+Jelenleg a Kubernetes-környezetek nem biztonságosak az ellenséges, több-bérlős használatra. A további biztonsági funkciók, például a *Pod biztonsági házirendek* vagy a csomópontok Kubernetes RBAC hatékonyan blokkolják a biztonsági réseket. Az ellenséges több-bérlős számítási feladatok futtatásakor az igaz biztonság érdekében csak a Hypervisort bízza meg. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. 
+
+Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
 
 ### <a name="compute-isolation"></a>Számítási elkülönítés
 
- Bizonyos munkaterhelések esetén a megfelelőségi vagy szabályozási követelmények miatt a többi ügyfél-munkaterheléstől való nagyfokú elkülönítésre lehet szükség. Ezekben a számítási feladatokban az Azure [elkülönített virtuális gépeket](../virtual-machines/isolation.md)biztosít, amelyek egy AK-fürt ügynök-csomópontjaiként használhatók. Ezek az elkülönített virtuális gépek egy adott hardver-típushoz vannak elkülönítve, és egyetlen ügyfél számára vannak kijelölve. 
+A megfelelőségi vagy szabályozási követelmények miatt bizonyos számítási feladatok nagyfokú elkülönítést igényelhetnek a többi ügyfél-munkaterheléstől. Ezekben a számítási feladatokban az Azure [elkülönített virtuális gépeket](../virtual-machines/isolation.md) biztosít, amelyek ügynök-csomópontként használhatók egy AK-fürtben. Ezek a virtuális gépek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve. 
 
- Ha ezeket az elkülönített virtuális gépeket egy AK-fürttel szeretné használni, válassza ki az [itt](../virtual-machines/isolation.md) felsorolt elkülönített virtuálisgép-méretek egyikét a **csomópont MÉRETEként** az AK-fürt létrehozásakor vagy egy csomópont-készlet hozzáadásakor.
-
+Válassza ki az [elkülönített virtuális gépek](../virtual-machines/isolation.md) méretét a **csomópont méreteként** egy AK-fürt létrehozásakor vagy egy csomópont-készlet hozzáadásakor.
 
 ## <a name="cluster-upgrades"></a>Fürt frissítései
 
-A biztonság és a megfelelőség szempontjából, illetve a legújabb funkciók használatához az Azure eszközöket biztosít az AK-fürtök és-összetevők frissítésének előkészítéséhez. Ez a frissítési előkészítés magában foglalja a Kubernetes fő-és ügynök-összetevőit is. A [rendelkezésre álló Kubernetes-verziók listáját](supported-kubernetes-versions.md) az AK-fürthöz tekintheti meg. A frissítési folyamat elindításához meg kell adnia az elérhető verziók egyikét. Az Azure ezután biztonságosan látja el és üríti az egyes AK-csomópontokat, és végrehajtja a frissítést.
+Az Azure frissítési előkészítési eszközöket biztosít az AK-fürtök és-összetevők frissítésére, a biztonság és a megfelelőség fenntartására, valamint a legújabb funkciók elérésére. Ez a frissítési előkészítés magában foglalja a Kubernetes fő-és ügynök-összetevőit is. 
+
+A frissítési folyamat elindításához a [felsorolt elérhető Kubernetes-verziók](supported-kubernetes-versions.md)egyikét kell megadnia. Az Azure ezután biztonságosan kiüríti az egyes AK-csomópontokat és a frissítéseket.
 
 ### <a name="cordon-and-drain"></a>Cordon és Drain
 
-A frissítési folyamat során az AK-csomópontok külön vannak kiképezve a fürtből, így az új hüvelyek nem lesznek ütemezve. A csomópontokat ezután a következőképpen kell kiüríteni és frissíteni:
+A frissítési folyamat során az AK-csomópontok külön vannak kiképezve a fürtből annak megakadályozása érdekében, hogy új hüvelyek legyenek ütemezve. A csomópontokat ezután a következőképpen kell kiüríteni és frissíteni:
 
-- A rendszer egy új csomópontot telepít a csomópont-készletbe. Ez a csomópont a legújabb operációsrendszer-lemezképet és-javításokat futtatja.
-- A rendszer a meglévő csomópontok egyikét azonosítja a frissítéshez. A csomóponton található hüvelyek szabályosan leállnak, és a csomópont többi csomópontján vannak ütemezve.
-- Ez a meglévő csomópont törölve lett az AK-fürtből.
-- A fürtben a következő csomópontot a rendszer kiüríti és kiüríti ugyanazon folyamattal, amíg az összes csomópontot a frissítési folyamat részeként nem sikerült lecserélni.
+1.  A rendszer egy új csomópontot telepít a csomópont-készletbe. 
+    * Ez a csomópont a legújabb operációsrendszer-lemezképet és-javításokat futtatja.
+1. A rendszer a meglévő csomópontok egyikét azonosítja a frissítéshez. 
+1. Az azonosított csomóponton lévő hüvelyeket a rendszer szabályosan leállítja és ütemezi a csomópont-készlet többi csomópontján.
+1. Az üres csomópont törlődik az AK-fürtből.
+1. Az 1-4-es lépések addig ismétlődnek, amíg az összes csomópontot nem sikerült lecserélni a frissítési folyamat részeként.
 
 További információ: AK- [fürt frissítése][aks-upgrade-cluster].
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-A helyszíni hálózatokkal létesített kapcsolat és biztonság érdekében az AK-fürtöt meglévő Azure-beli virtuális hálózati alhálózatokra is telepítheti. Ezek a virtuális hálózatok rendelkezhetnek Azure-helyek közötti VPN-vagy Express Route-kapcsolattal a helyszíni hálózathoz. A Kubernetes bemenő vezérlőket privát, belső IP-címekkel lehet meghatározni, hogy a szolgáltatások csak ezen a belső hálózati kapcsolaton keresztül legyenek elérhetők.
+A helyszíni hálózatokkal létesített kapcsolat és biztonság érdekében az AK-fürtöt meglévő Azure-beli virtuális hálózati alhálózatokra is telepítheti. Ezek a virtuális hálózatok az Azure-helyek közötti VPN vagy Express Route használatával csatlakoznak a helyszíni hálózathoz. A belső hálózati kapcsolathoz való hozzáférés korlátozására szolgáló belső IP-címekkel rendelkező Kubernetes-beáramlási vezérlők definiálása.
 
 ### <a name="azure-network-security-groups"></a>Azure-beli hálózati biztonsági csoportok
 
-A virtuális hálózatok forgalmának szűréséhez az Azure hálózati biztonsági csoportokra vonatkozó szabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyező vagy megtagadott forrás-és cél IP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok úgy jönnek létre, hogy engedélyezzék a TLS-forgalmat a Kubernetes API-kiszolgálónak. Amikor terheléselosztó, port-hozzárendelés vagy bejövő útvonalak használatával hoz létre szolgáltatásokat, az AK automatikusan módosítja a hálózati biztonsági csoportot a megfelelő forgalomra.
+A virtuális hálózati forgalom szűréséhez az Azure hálózati biztonsági csoportokra vonatkozó szabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyező vagy megtagadott forrás-és cél IP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok úgy jönnek létre, hogy engedélyezzék a TLS-forgalmat a Kubernetes API-kiszolgálónak. A szolgáltatásokat terheléselosztó, Port-hozzárendelések vagy bejövő útvonalak útján hozhatja létre. Az AK automatikusan módosítja a hálózati biztonsági csoportot a forgalmi folyamat számára.
 
-Azokban az esetekben, amikor saját alhálózatot biztosít az AK-fürthöz, és módosítani szeretné a forgalom áramlását, ne módosítsa az alhálózati szintű hálózati biztonsági csoportot, amelyet az AK felügyel. További alhálózat-szintű hálózati biztonsági csoportokat is létrehozhat, amelyekkel módosíthatja a forgalom áramlását, ha nem zavarja a fürt felügyeletéhez szükséges forgalmat, például a terheléselosztó elérését, a vezérlési síkon való kommunikációt és a [kimenő][aks-limit-egress-traffic]forgalmat.
+Ha a saját alhálózatát adja meg az AK-fürthöz, **Ne módosítsa az** alhálózati szintű hálózati biztonsági csoportot, amelyet az AK felügyel. Ehelyett hozzon létre több alhálózati szintű hálózati biztonsági csoportot a forgalom forgalmának módosításához. Győződjön meg arról, hogy nem zavarja a fürtöt kezelő szükséges forgalmat, például a terheléselosztó elérését, a vezérlési síkon folytatott kommunikációt és a [kimenő][aks-limit-egress-traffic]adatokat.
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes hálózati házirend
 
-A fürtben található hüvelyek közötti hálózati forgalom korlátozásához az AK támogatást nyújt a [Kubernetes hálózati házirendjeihez][network-policy]. A hálózati házirendek segítségével engedélyezheti vagy megtagadhatja a fürtön belüli adott hálózati elérési utakat a névterek és a címkék választói alapján.
+A fürtben található hüvelyek közötti hálózati forgalom korlátozásához az AK támogatást nyújt a [Kubernetes hálózati házirendjeihez][network-policy]. A hálózati házirendekkel engedélyezheti vagy megtagadhatja a fürtön belüli adott hálózati elérési utakat a névterek és a címkék választói alapján.
 
 ## <a name="kubernetes-secrets"></a>A Kubernetes titkos kódjai
 
-A *titkos* Kubernetes a bizalmas adatok hüvelybe való beadására, például a hozzáférési hitelesítő adatokra vagy kulcsokra használják. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy az üzembe helyezés megadásakor a rendszer egy adott titkot kérhet. A titkos kulcsokat csak olyan csomópontok számára biztosítjuk, amelyekhez szükség van egy ütemezett Pod-re, és a titkot a *tmpfs* tárolja, nem lemezre írva. Ha a titkos kulcsot tartalmazó csomópont utolsó podét törli, a titkos kulcsot a rendszer törli a csomópont tmpfs. A titkos kulcsok tárolása egy adott névtéren belül történik, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
+A *titkos* Kubernetes a bizalmas adatokat hüvelybe helyezi, például a hozzáférési hitelesítő adatokat vagy a kulcsokat. 
+1. Hozzon létre egy titkos kulcsot a Kubernetes API használatával. 
+1. Adja meg a pod vagy az üzembe helyezést, és kérjen egy adott titkot. 
+    * A titkos kulcsokat csak egy ütemezett Pod-vel rendelkező csomópontok számára biztosítjuk, amelyekhez szükség van rájuk.
+    * A titkos kulcsot a rendszer a *tmpfs* tárolja, nem lemezre írva. 
+1. Ha törli az utolsó Pod-t egy titkos kulcsot igénylő csomóponton, a titkos kulcsot a rendszer törli a csomópont tmpfs. 
+   * A titkos kulcsok tárolása egy adott névtéren belül történik, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
 
-A titkok használata csökkenti a pod vagy a Service YAML-jegyzékben definiált bizalmas adatokat. Ehelyett a Kubernetes API-kiszolgálón tárolt titkos kulcsot a YAML-jegyzék részeként kell megkérnie. Ez a megközelítés csak a titkos kulcshoz megadott Pod-hozzáférést biztosítja. Megjegyzés: a titkos titkos jegyzékfájl fájljai Base64 formátumban tartalmazzák a titkos adatokat (további részleteket a [hivatalos dokumentációban][secret-risks] talál). Ezért ezt a fájlt bizalmas információként kell kezelni, és soha nem kell véglegesíteni a verziókövetés előtt.
+A titkok használata csökkenti a pod vagy a Service YAML-jegyzékben meghatározott bizalmas adatokat. Ehelyett a Kubernetes API-kiszolgálón tárolt titkos kulcsot a YAML-jegyzék részeként kell megkérnie. Ez a megközelítés csak a titkos kulcshoz megadott Pod-hozzáférést biztosítja. 
+
+> [!NOTE]
+> A nyers titkos jegyzékfájl fájljai Base64 formátumban tartalmazzák a titkos adatokat (további részletekért tekintse meg a [hivatalos dokumentációt][secret-risks] ). Ezeket a fájlokat bizalmas adatokként kezelje, és soha ne véglegesítse őket a verziókövetés során.
 
 A Kubernetes-titkokat a rendszer a etcd-ben tárolja elosztott kulcs-érték tárolóban. A Etcd-tárolót teljes mértékben az AK felügyeli, és [az adatok titkosítása az Azure platformon belül történik][encryption-atrest]. 
 
@@ -105,7 +142,7 @@ Az AK-fürtök biztonságossá tételének megkezdéséhez tekintse meg [az AK-f
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a fürt biztonságához és a frissítésekhez az AK][operator-best-practices-cluster-security] -ban, valamint [ajánlott eljárások a pod BIZTONSÁGhoz az AK-ban][developer-best-practices-pod-security].
 
-Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
+Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért lásd:
 
 - [Kubernetes/AK-fürtök és-munkaterhelések][aks-concepts-clusters-workloads]
 - [Kubernetes/AK-identitás][aks-concepts-identity]

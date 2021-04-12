@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 33664c49c501071c44ac0f5b2486e687c822940d
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 9ae7e8c4544d2e8bd9dc4ff846aabb0c7f7f9358
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027601"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284255"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Áttelepítési útmutató: Oracle – Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Ebből az útmutatóból megtudhatja, [Hogyan migrálhatja](https://azure.microsoft.com/migration/migration-journey) az Oracle-sémákat Azure SQL Databasere az Oracle-hez készült [SQL Server MIGRATION](https://azure.microsoft.com/migration/migration-journey) Assistant (SSMA for Oracle) használatával.
+Ebből az útmutatóból megtudhatja, [Hogyan migrálhatja](https://azure.microsoft.com/migration/migration-journey) az Oracle-sémákat Azure SQL Databasere az Oracle-hez készült [SQL Server MIGRATION](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant (SSMA for Oracle) használatával.
 
 Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatói](https://docs.microsoft.com/data-migration).
 

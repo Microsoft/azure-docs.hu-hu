@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a gyorsítótár t
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773232"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259761"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>További Azure HPC-gyorsítótár beállításainak konfigurálása
 
@@ -24,7 +24,7 @@ A beállítások megjelenítéséhez nyissa meg a gyorsítótár **hálózatkeze
 ![képernyőfelvétel a hálózatkezelés lapról Azure Portal](media/networking-page.png)
 
 > [!NOTE]
-> A lap egy korábbi verziója tartalmaz egy gyorsítótár-szintű root squash-beállítást, de ez a beállítás át lett helyezve az [ügyfél-hozzáférési házirendbe](access-policies.md).
+> A lap egy korábbi verziója tartalmaz egy gyorsítótár-szintű root squash-beállítást, de ez a beállítás az [ügyfél-hozzáférési házirendekre](access-policies.md)került.
 
 <!-- >> [!TIP]
 > The [Managing Azure HPC Cache video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) shows the networking page and its settings. -->
@@ -47,24 +47,26 @@ További információ az Azure Virtual Networks MTU-beállításairól: [TCP/IP 
 
 ## <a name="customize-ntp"></a>Az NTP testreszabása
 
-A gyorsítótár alapértelmezés szerint az Azure-alapú időkiszolgáló time.microsoft.com használja. Ha azt szeretné, hogy a gyorsítótár egy másik NTP-kiszolgálót használjon, adja meg azt az **NTP-konfiguráció** szakaszban. Használjon teljesen minősített tartománynevet vagy IP-címet.
+A gyorsítótár alapértelmezés szerint az Azure-alapú időkiszolgáló time.windows.com használja. Ha azt szeretné, hogy a gyorsítótár egy másik NTP-kiszolgálót használjon, adja meg azt az **NTP-konfiguráció** szakaszban. Használjon teljesen minősített tartománynevet vagy IP-címet.
 
 ## <a name="set-a-custom-dns-configuration"></a>Egyéni DNS-konfiguráció beállítása
 
 > [!CAUTION]
 > Ha nem szükséges, ne módosítsa a gyorsítótár DNS-konfigurációját. A konfigurációs hibák végzetes következményekkel járhatnak. Ha a konfiguráció nem tudja feloldani az Azure-szolgáltatások nevét, a HPC-gyorsítótár példánya véglegesen elérhetetlenné válik.
+>
+> Az egyéni DNS-konfiguráció beállítása előtt érdeklődjön az Azure-képviselőkkel.
 
 Az Azure HPC cache automatikusan a biztonságos és kényelmes Azure DNS rendszer használatára van konfigurálva. Néhány szokatlan konfiguráció azonban megköveteli, hogy a gyorsítótár egy különálló, helyszíni DNS-rendszer használatát használja az Azure-rendszer helyett. A **hálózatkezelés** lap **DNS-konfiguráció** szakasza az ilyen típusú rendszer megadására szolgál.
 
 Kérjen segítséget az Azure-képviselőkkel, vagy forduljon a Microsoft szolgáltatáshoz és a támogatási szolgálathoz, és állapítsa meg, hogy szükséges-e egyéni gyorsítótár DNS-konfiguráció használata.
 
-Ha saját helyszíni DNS-rendszerét konfigurálja az Azure HPC cache használatára, meg kell győződnie arról, hogy a konfiguráció képes az Azure-szolgáltatásokhoz tartozó Azure-végpontok nevének feloldására. Az egyéni DNS-környezetet úgy kell konfigurálni, hogy bizonyos névfeloldási kérelmeket továbbítson Azure DNS vagy egy másik kiszolgálóra, igény szerint.
+Ha saját helyszíni DNS-rendszerét konfigurálja az Azure HPC cache használatára, meg kell győződnie arról, hogy a helyi DNS-kiszolgáló képes az Azure szolgáltatásbeli végpontok nevének közvetlen feloldására. A HPC-gyorsítótár nem fog működni, ha a DNS-kiszolgáló nyilvános névfeloldásra van korlátozva.
 
 Győződjön meg arról, hogy a DNS-konfiguráció sikeresen fel tudja oldani ezeket az elemeket, mielőtt egy Azure HPC-gyorsítótárhoz használja azt:
 
 * ``*.core.windows.net``
 * A visszavont tanúsítványok listájának (CRL) letöltése és az online tanúsítványállapot-protokoll (OCSP) ellenőrző szolgáltatása. Az [Azure TLS jelen cikkének](../security/fundamentals/tls-certificate-changes.md)végén található [Tűzfalszabályok elemben](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) részleges lista szerepel, de az összes követelmény megismeréséhez forduljon a Microsoft technikai képviselőjéhez.
-* Az NTP-kiszolgáló teljesen minősített tartományneve (time.microsoft.com vagy egyéni kiszolgáló)
+* Az NTP-kiszolgáló teljesen minősített tartományneve (time.windows.com vagy egyéni kiszolgáló)
 
 Ha egyéni DNS-kiszolgálót kell beállítania a gyorsítótárhoz, használja a megadott mezőket:
 

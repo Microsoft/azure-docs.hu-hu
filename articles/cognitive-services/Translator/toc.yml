@@ -114,7 +114,7 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Alapelvek
       items:
-        - name: Terminológia
+        - name: 'Fontos kifejezések:'
           href: custom-translator/terminology.md
         - name: Szövegfordítás testreszabása és javítása
           href: customization.md

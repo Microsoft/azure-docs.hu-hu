@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/17/2021
 ms.author: cynthn
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 34fd6720b93a1462836b51856d73573a86809367
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 282eaa6e966ff458dfb1dfdd32ef6ec1f2cdc151
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022823"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443746"
 ---
 # <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Az Azure Marketplace virtuálisgép-rendszerképeinek megkeresése és használata Azure PowerShell
 
@@ -66,7 +66,7 @@ A PowerShell segítségével szűkítheti a képek listáját. Cserélje le a v�
     Akkor is használhatja, `latest` Ha a legújabb lemezképet szeretné használni, és nem egy adott régebbi verziót.
 
 
-Most már egyesítheti a kiválasztott közzétevőt, ajánlatot, SKU-t és verziót egy URN (:) által elválasztott értékekkel). `--image`Ha a [New-AzVM](/powershell/module/az.compute/new-azvm) parancsmaggal hoz létre egy virtuális gépet, adja át ezt az urn-t a paraméterrel. Az URN-ben lévő verziószámot lecserélheti a (a) verzióra, `latest` hogy lekérje a lemezkép legújabb verzióját.
+Most már egyesítheti a kiválasztott közzétevőt, ajánlatot, SKU-t és verziót egy URN (:) által elválasztott értékekkel). `-Image`Ha a [New-AzVM](/powershell/module/az.compute/new-azvm) parancsmaggal hoz létre egy virtuális gépet, adja át ezt az urn-t a paraméterrel. Az URN-ben lévő verziószámot lecserélheti a (a) verzióra, `latest` hogy lekérje a lemezkép legújabb verzióját.
 
 Ha Resource Manager-sablonnal helyez üzembe egy virtuális gépet, akkor a tulajdonságok paramétereit egyenként kell beállítania `imageReference` . Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.compute/virtualmachines).
 

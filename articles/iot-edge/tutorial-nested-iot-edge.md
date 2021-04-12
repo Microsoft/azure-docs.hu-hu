@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1b30a1eafe9af92c1ef3f81773d213ccf96555c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 098c6ace2b673654d07bfa29147fda3cbbc59b76
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462031"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107550"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Oktatóanyag: IoT Edge-eszközök hierarchiájának létrehozása (előzetes verzió)
 
@@ -623,7 +623,7 @@ A [Azure Portalban](https://ms.portal.azure.com/):
 
 ---
 
-Ha helyesen végrehajtotta a fenti lépéseket, a **legfelső rétegbeli eszköznek** jelentenie kell a négy modult: a IoT Edge API-proxy modult, a docker Container Registry modult és a rendszermodulokat a **telepítésben megadott** módon. Eltarthat néhány percig, amíg az eszköz megkapja az új központi telepítést, és elindítja a modulokat. Frissítse az oldalt, amíg meg nem jelenik az **eszköz által jelentett** hőmérséklet-érzékelő modul. Miután az eszköz jelentést készített a modulokról, készen áll a folytatásra.
+Ha helyesen végrehajtotta a fenti lépéseket, a **legfelső rétegbeli eszköznek** jelentenie kell a négy modult: a IoT Edge API-proxy modult, a docker Container Registry modult és a rendszermodulokat a **telepítésben megadott** módon. Eltarthat néhány percig, amíg az eszköz megkapja az új központi telepítést, és elindítja a modulokat. Frissítse a lapot, amíg meg nem jelenik az **eszköz által jelentett** IoTEdgeAPIProxy és beállításjegyzék-modulok listája. Miután az eszköz jelentést készített a modulokról, készen áll a folytatásra.
 
 ## <a name="deploy-modules-to-the-lower-layer-device"></a>Modulok üzembe helyezése az alsó rétegbeli eszközön
 

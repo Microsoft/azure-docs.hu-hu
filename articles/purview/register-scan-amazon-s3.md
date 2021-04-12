@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 542b6580994a2054526f0ddbb3ad93dc27c28fcc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773453"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107652"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure-beli hatáskörébe-összekötő az Amazon S3-hoz
 
@@ -38,6 +38,7 @@ További információt a következő témakörben talál:
 
 - [Erőforrások kvótáinak kezelése és növelése az Azure hatáskörébe](how-to-manage-quotas.md)
 - [Támogatott adatforrások és fájltípusok az Azure hatáskörébe](sources-and-scans.md)
+- [Privát végpontok használata a hatáskörébe tartozó fiókhoz](catalog-private-link.md)
 ### <a name="storage-and-scanning-regions"></a>Tárolási és keresési régiók
 
 Az alábbi táblázat azokat a régiókat ismerteti, amelyekben a rendszer az Azure-beli hatáskörébe tartozó régiót tárolja.
@@ -77,9 +78,13 @@ Az alábbi táblázat azokat a régiókat ismerteti, amelyekben a rendszer az Az
 
 Győződjön meg arról, hogy végrehajtotta az alábbi előfeltételeket, mielőtt az Amazon S3-gyűjtőket a hatáskörébe tartozó adatforrásként hozzáadja, és beolvassa az S3-adatait.
 
-- Az Azure-beli adatforrások rendszergazdájának kell lennie.
-
-- Ha a gyűjtőket a hatáskörébe tartozó erőforrásként adja hozzá, szüksége lesz az [AWS ARN](#retrieve-your-new-role-arn), a [gyűjtő neve](#retrieve-your-amazon-s3-bucket-name), és néha az [AWS-fiókja azonosítójának](#locate-your-aws-account-id)értékeire.
+> [!div class="checklist"]
+> * Az Azure-beli adatforrások rendszergazdájának kell lennie.
+> * [Hozzon létre egy hatáskörébe tartozó fiókot](#create-a-purview-account) , ha még nem rendelkezik ilyennel
+> * [Az AWS-gyűjtő vizsgálatának hatáskörébe tartozó hitelesítő adatok létrehozása](#create-a-purview-credential-for-your-aws-bucket-scan)
+> * [Új AWS-szerepkör létrehozása a hatáskörébe való használatra](#create-a-new-aws-role-for-purview)
+> * [Titkosított Amazon S3-gyűjtők vizsgálatának konfigurálása](#configure-scanning-for-encrypted-amazon-s3-buckets), ha szükséges
+> * Ha a gyűjtőket a hatáskörébe tartozó erőforrásként adja hozzá, szüksége lesz az [AWS ARN](#retrieve-your-new-role-arn), a [gyűjtő neve](#retrieve-your-amazon-s3-bucket-name), és néha az [AWS-fiókja azonosítójának](#locate-your-aws-account-id)értékeire.
 
 ### <a name="create-a-purview-account"></a>Hatáskörébe tartozó fiók létrehozása
 
@@ -92,7 +97,7 @@ Győződjön meg arról, hogy végrehajtotta az alábbi előfeltételeket, miel�
 Ez az eljárás azt ismerteti, hogyan hozható létre az AWS-gyűjtők vizsgálatakor használandó új, a hatáskörébe tartozó hitelesítő adatok.
 
 > [!TIP]
-> A folyamat közepén új hitelesítő adatokat is létrehozhat a [vizsgálat konfigurálásakor](#create-a-scan-for-your-amazon-s3-bucket). Ebben az esetben a **hitelesítő adatok** mezőben válassza az **új** lehetőséget.
+> A folyamat közepén új hitelesítő adatokat is létrehozhat a [vizsgálat konfigurálásakor](#create-a-scan-for-one-or-more-amazon-s3-buckets). Ebben az esetben a **hitelesítő adatok** mezőben válassza az **új** lehetőséget.
 >
 
 1. A hatáskörébe területen navigáljon a **felügyeleti központhoz**, és a **Biztonság és hozzáférés** területen válassza a **hitelesítő adatok** lehetőséget.
@@ -138,6 +143,13 @@ A hatáskörébe tartozó hitelesítő adatokkal kapcsolatos további informáci
 1. A **szerepkör létrehozása > csatolt engedélyek házirendek** területen szűrje az **S3** számára megjelenített engedélyeket. Válassza a **AmazonS3ReadOnlyAccess** lehetőséget, majd kattintson a **Tovább gombra: címkék**.
 
     ![Válassza ki a ReadOnlyAccess szabályzatot az új Amazon S3-ellenőrzési szerepkörhöz.](./media/register-scan-amazon-s3/aws-permission-role-amazon-s3.png)
+
+    > [!IMPORTANT]
+    > A **AmazonS3ReadOnlyAccess** szabályzat az S3-gyűjtők vizsgálatához szükséges minimális engedélyeket nyújt, és más engedélyeket is tartalmazhat.
+    >
+    >Ha csak a gyűjtők vizsgálatához szükséges minimális engedélyeket szeretné alkalmazni, hozzon létre egy új szabályzatot az [AWS-szabályzat minimális engedélyeiben](#minimum-permissions-for-your-aws-policy)felsorolt engedélyekkel, attól függően, hogy szeretne-e egyetlen gyűjtőt vagy a fiókban lévő gyűjtőket beolvasni. 
+    >
+    >Alkalmazza az új szabályzatot a szerepkörre a **AmazonS3ReadOnlyAccess helyett.**
 
 1. A **Címkék hozzáadása (nem kötelező)** területen dönthet úgy is, hogy értelmes címkét hoz létre ehhez az új szerepkörhöz. A hasznos címkék lehetővé teszik a létrehozott szerepkörök hozzáférésének rendszerezését, nyomon követését és szabályozását.
 
@@ -219,7 +231,7 @@ Az AWS-gyűjtők több titkosítási típust támogatnak. Az **AWS-KMS** titkos�
 
 ### <a name="retrieve-your-new-role-arn"></a>Új, az ARN szerepkör beolvasása
 
-Rögzítenie kell az AWS-szerepkört, és át kell másolnia a hatáskörébe az [Amazon S3-gyűjtő vizsgálatának létrehozásakor](#create-a-scan-for-your-amazon-s3-bucket).
+Rögzítenie kell az AWS-szerepkört, és át kell másolnia a hatáskörébe az [Amazon S3-gyűjtő vizsgálatának létrehozásakor](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 **Az ARN szerepkör beolvasása:**
 
@@ -229,11 +241,11 @@ Rögzítenie kell az AWS-szerepkört, és át kell másolnia a hatáskörébe az
 
     ![Másolja át a szerepkör ARN értékét a vágólapra.](./media/register-scan-amazon-s3/aws-copy-role-purview.png)
 
-1. Illessze be ezt az értéket egy biztonságos helyre, amely használatra kész az [Amazon S3-gyűjtő vizsgálatának létrehozásakor](#create-a-scan-for-your-amazon-s3-bucket).
+1. Illessze be ezt az értéket egy biztonságos helyre, amely használatra kész az [Amazon S3-gyűjtő vizsgálatának létrehozásakor](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 ### <a name="retrieve-your-amazon-s3-bucket-name"></a>Az Amazon S3-gyűjtő nevének lekérése
 
-Szüksége lesz az Amazon S3-gyűjtő nevére, hogy bemásolja a hatáskörébe az [Amazon S3-gyűjtő vizsgálatának létrehozásakor](#create-a-scan-for-your-amazon-s3-bucket)
+Szüksége lesz az Amazon S3-gyűjtő nevére, hogy bemásolja a hatáskörébe az [Amazon S3-gyűjtő vizsgálatának létrehozásakor](#create-a-scan-for-one-or-more-amazon-s3-buckets)
 
 **A gyűjtő nevének lekérése:**
 
@@ -270,6 +282,8 @@ Például:
 
 Akkor használja ezt az eljárást, ha csak egyetlen S3 gyűjtővel szeretne regisztrálni a hatáskörébe, mint adatforrásként, vagy ha több gyűjtője van az AWS-fiókban, de nem kívánja regisztrálni az összeset a hatáskörébe.
 
+**A gyűjtő hozzáadása**: 
+
 1. Indítsa el a hatáskörébe portált az Amazon S3 URL-címéhez tartozó dedikált hatáskörébe-összekötő használatával. Ezt az URL-címet az Amazon S3 hatáskörébe-összekötő termék-felügyeleti csapata adta meg.
 
     ![Indítsa el a hatáskörébe portált.](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -293,12 +307,15 @@ Akkor használja ezt az eljárást, ha csak egyetlen S3 gyűjtővel szeretne reg
 
     Ha elkészült, válassza a **Befejezés** lehetőséget a regisztráció befejezéséhez.
 
-Folytassa a [vizsgálat létrehozását az Amazon S3-gyűjtőhöz.](#create-a-scan-for-your-amazon-s3-bucket)
+Folytassa a [vizsgálat létrehozását egy vagy több Amazon S3-gyűjtőhöz.](#create-a-scan-for-one-or-more-amazon-s3-buckets)
 
-## <a name="add-all-of-your-amazon-s3-buckets-as-purview-resources"></a>Az összes Amazon S3-gyűjtő felvétele a hatáskörébe tartozó erőforrásként
+## <a name="add-an-amazon-account-as-a-purview-resource"></a>Amazon-fiók hozzáadása a hatáskörébe tartozó erőforrásként
 
-Akkor használja ezt az eljárást, ha több S3 gyűjtője van az Amazon-fiókjában, és szeretné regisztrálni az összes, a hatáskörébe tartozó adatforrást.
+Akkor használja ezt az eljárást, ha több S3-gyűjtője van az Amazon-fiókjában, és az összeset a hatáskörébe tartozó adatforrásként szeretné regisztrálni.
 
+[A vizsgálat konfigurálásakor](#create-a-scan-for-one-or-more-amazon-s3-buckets)kiválaszthatja a beolvasni kívánt gyűjtőket, ha nem szeretné az összeset egyszerre beolvasni.
+
+**Az Amazon-fiók hozzáadása**:
 1. Indítsa el a hatáskörébe portált az Amazon S3 URL-címéhez tartozó dedikált hatáskörébe-összekötő használatával. Ezt az URL-címet az Amazon S3 hatáskörébe-összekötő termék-felügyeleti csapata adta meg.
 
     ![Összekötő elindítása az Amazon S3 dedikált hatáskörébe portál](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -322,9 +339,9 @@ Akkor használja ezt az eljárást, ha több S3 gyűjtője van az Amazon-fiókj�
 
     Ha elkészült, válassza a **Befejezés** lehetőséget a regisztráció befejezéséhez.
 
-Folytassa az [Amazon S3-gyűjtő vizsgálatának létrehozásával](#create-a-scan-for-your-amazon-s3-bucket).
+Folytassa a [vizsgálat létrehozásával egy vagy több Amazon S3-gyűjtőn](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
-## <a name="create-a-scan-for-your-amazon-s3-bucket"></a>Az Amazon S3-gyűjtő vizsgálatának létrehozása
+## <a name="create-a-scan-for-one-or-more-amazon-s3-buckets"></a>Egy vagy több Amazon S3 gyűjtő vizsgálatának létrehozása
 
 Ha a gyűjtőket a hatáskörébe tartozó adatforrásként adta hozzá, beállíthatja, hogy a vizsgálat ütemezett időközönként vagy azonnal fusson.
 
@@ -340,9 +357,10 @@ Ha a gyűjtőket a hatáskörébe tartozó adatforrásként adta hozzá, beáll�
     |**Név**     |  Írjon be egy értelmes nevet a vizsgálathoz, vagy használja az alapértelmezett értéket.       |
     |**Típus** |Csak akkor jelenik meg, ha az AWS-fiókját felvette az összes gyűjtőbe. <br><br>Az aktuális beállítások csak **az összes**  >  **Amazon S3**-t tartalmazzák. Ha további lehetőségeket szeretne kiválasztani, válassza a hatáskörébe tartozó támogatási mátrix kibontása lehetőséget. |
     |**Hitelesítőadat**     |  Válassza ki a hatáskörébe tartozó hitelesítő adatokat az ARN szerepkörrel. <br><br>**Tipp**: Ha most új hitelesítő adatokat szeretne létrehozni, válassza az **új** lehetőséget. További információ: [a hatáskörébe tartozó hitelesítő adatok létrehozása az AWS-gyűjtők vizsgálatához](#create-a-purview-credential-for-your-aws-bucket-scan).     |
-    |     |         |
+    | **Amazon S3**    |   Csak akkor jelenik meg, ha az AWS-fiókját felvette az összes gyűjtőbe. <br><br>Válasszon ki egy vagy több beolvasni kívánt gyűjtőt, vagy **válassza az összes lehetőséget** a fiókban található összes gyűjtő vizsgálatához.      |
+    | | |
 
-    A hatáskörébe automatikusan ellenőrzi, hogy az ARN szerepkör érvényes-e, és hogy a gyűjtő és az objektum a gyűjtőn belül elérhető-e, majd folytatja a sikeres kapcsolatok sikerességét.
+    A hatáskörébe automatikusan ellenőrzi, hogy az ARN szerepkör érvényes-e, és hogy a gyűjtőn belüli gyűjtők és objektumok elérhetők-e, majd folytatja a sikeres kapcsolatok sikerességét.
 
     > [!TIP]
     > Ha más értékeket szeretne megadni, és a folytatás előtt tesztelni szeretné a kapcsolódást, válassza a jobb alsó sarokban található **Kapcsolódás tesztelése** lehetőséget a **Folytatás** elem kiválasztásához.
@@ -352,7 +370,7 @@ Ha a gyűjtőket a hatáskörébe tartozó adatforrásként adta hozzá, beáll�
 
     Ha új egyéni ellenőrzési szabálykészlet létrehozását választja, a varázslóval adja meg a következő beállításokat:
 
-    |Ablaktábla  |Leírás  |
+    |Ablaktábla  |Description  |
     |---------|---------|
     |**Új ellenőrzési szabály beállítva** /<br>**Vizsgálati szabály leírása**    |   Adjon meg egy értelmes nevet és egy opcionális leírást a szabálykészlet számára      |
     |**Fájltípusok kiválasztása**     | Válassza ki az összes olyan fájltípust, amelyet fel szeretne venni a vizsgálatba, majd válassza a **Folytatás** lehetőséget.<br><br>Új fájltípus hozzáadásához válassza az **új fájltípus** lehetőséget, és adja meg a következőket: <br>– A hozzáadni kívánt fájlkiterjesztés <br>– Opcionális Leírás  <br>– Azt határozza meg, hogy a fájl tartalma rendelkezik-e egyéni elválasztóval vagy rendszerfájl-típussal. Ezután adja meg az egyéni határolójelet, vagy válassza ki a rendszerfájl típusát. <br><br>Válassza a **Létrehozás** lehetőséget az egyéni fájltípus létrehozásához.     |
@@ -396,6 +414,90 @@ A hatáskörébe tartozó többi területen megtudhatja, hogy az adatközpontban
     Az összes hatáskörébe betekintési jelentés tartalmazza az Amazon S3 keresési eredményeit, valamint az Azure-adatforrások további eredményeit. Ha szükséges, egy további **Amazon S3** típusú eszköz lett hozzáadva a jelentés szűrési beállításaihoz.
 
     További információ: az [Azure hatáskörébe tartozó információk megismerése](concept-insights.md).
+
+## <a name="minimum-permissions-for-your-aws-policy"></a>Az AWS-szabályzat minimális engedélyei
+
+Az az alapértelmezett eljárás, amellyel [egy AWS-szerepkört hozhat létre a hatáskörébe](#create-a-new-aws-role-for-purview) , hogy az S3-gyűjtők vizsgálatakor a **AmazonS3ReadOnlyAccess** szabályzatot használja.
+
+A **AmazonS3ReadOnlyAccess** szabályzat az S3-gyűjtők vizsgálatához szükséges minimális engedélyeket nyújt, és más engedélyeket is tartalmazhat.
+
+Ha csak a gyűjtők vizsgálatához szükséges minimális engedélyeket szeretné alkalmazni, hozzon létre egy új szabályzatot az alábbi részekben felsorolt engedélyekkel attól függően, hogy szeretne-e egyetlen gyűjtőt vagy a fiókban lévő gyűjtőket beolvasni.
+
+Alkalmazza az új szabályzatot a szerepkörre a **AmazonS3ReadOnlyAccess helyett.**
+
+### <a name="individual-buckets"></a>Egyéni gyűjtők
+
+Az egyes S3-gyűjtők vizsgálatakor a minimális AWS-engedélyek a következők:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListBucket`
+
+Ügyeljen arra, hogy az erőforrást a megadott gyűjtő nevével határozza meg. Például:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3::: <bucketname>/*"
+        }
+    ]
+}
+```
+
+### <a name="all-buckets-in-your-account"></a>A fiókban lévő összes gyűjtő
+
+Az AWS-fiókban lévő összes gyűjtő vizsgálatakor a minimális AWS-engedélyek a következők:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListAllMyBuckets`
+- `ListBucket`.
+
+Győződjön meg arról, hogy az erőforrást helyettesítő karakterrel határozza meg. Például:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,16 +3,16 @@ title: Hitelesítés felügyelt identitással
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez felhasználó által hozzárendelt vagy rendszer által hozzárendelt Azure-identitás használatával.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2ab27e8548882b5bd296dc45e4bb74d3d6ba357b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041467"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285484"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
 
-[Felügyelt identitás használata az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) egy másik Azure-erőforrásból származó Azure Container registryben való hitelesítéshez anélkül, hogy a beállításjegyzék hitelesítő adatait kellene megadnia vagy kezelnie. Beállíthat például egy felhasználó által hozzárendelt vagy rendszerhez rendelt felügyelt identitást egy Linux rendszerű virtuális gépen, hogy a tároló-beállításjegyzékből egyszerűen hozzáférjen a tároló-lemezképekhez.
+[Felügyelt identitás használata az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) egy másik Azure-erőforrásból származó Azure Container registryben való hitelesítéshez anélkül, hogy a beállításjegyzék hitelesítő adatait kellene megadnia vagy kezelnie. Beállíthat például egy felhasználó által hozzárendelt vagy rendszerhez rendelt felügyelt identitást egy Linux rendszerű virtuális gépen, hogy a tároló-beállításjegyzékből egyszerűen hozzáférjen a tároló-lemezképekhez. Vagy állítson be egy Azure Kubernetes Service-fürtöt a [felügyelt identitás](../aks/use-managed-identity.md) használatára, hogy lekérje a tároló lemezképeit Azure Container Registryról a pod-környezetek számára.
 
 Ebben a cikkben többet tudhat meg a felügyelt identitásokról és az alábbiakról:
 
@@ -27,23 +27,14 @@ A tároló-beállításjegyzék beállításához és a tároló rendszerképén
 
 ## <a name="why-use-a-managed-identity"></a>Miért érdemes felügyelt identitást használni?
 
-Az Azure-erőforrások felügyelt identitása automatikusan felügyelt identitással biztosítja az Azure-szolgáltatásokat Azure Active Directory (Azure AD). A felügyelt identitással [bizonyos Azure-erőforrásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), például virtuális gépeket is beállíthat. Ezután használja az identitást más Azure-erőforrások eléréséhez, anélkül, hogy hitelesítő adatokat kellene átadnia a kódban vagy parancsfájlokban.
+Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](../active-directory/managed-identities-azure-resources/overview.md).
 
-A felügyelt identitások két típusúak:
+Miután beállította a kiválasztott Azure-erőforrásokat egy felügyelt identitással, adjon egy másik erőforráshoz hozzáférő hozzáférést, ugyanúgy, mint bármely rendszerbiztonsági tag. Rendeljen hozzá például egy felügyelt identitást egy olyan szerepkörhöz, amely lekéréses, leküldéses és lekéréses, illetve más engedélyekkel rendelkezik az Azure-beli privát beállításjegyzék (A beállításjegyzék szerepköreinek teljes listáját lásd: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md).) Identitás-hozzáférést biztosíthat egy vagy több erőforráshoz.
 
-* *Felhasználó által hozzárendelt identitások*, amelyeket hozzárendelhet több erőforráshoz, és megtarthatja a kívánt időtartamot. A felhasználó által hozzárendelt identitások jelenleg előzetes verzióban érhetők el.
+Ezt követően az identitás használatával hitelesítheti magát az [Azure ad-hitelesítést támogató szolgáltatásokban](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)a kódban szereplő hitelesítő adatok nélkül. A forgatókönyvtől függően válassza ki, hogyan kell hitelesíteni a hitelesítést a felügyelt identitás használatával. Ha az identitást szeretné használni egy Azure Container Registry virtuális gépről való eléréséhez, akkor a Azure Resource Manager segítségével végezheti el a hitelesítést. 
 
-* Egy *rendszer által felügyelt identitás*, amely egyedi egy adott erőforráshoz, például egyetlen virtuális géphez, és az adott erőforrás élettartamára vonatkozik.
-
-Miután beállította az Azure-erőforrást egy felügyelt identitással, adja meg a hozzáférést egy másik erőforráshoz, ugyanúgy, mint a rendszerbiztonsági tag. Rendeljen hozzá például egy felügyelt identitást egy olyan szerepkörhöz, amely lekéréses, leküldéses és lekéréses, illetve más engedélyekkel rendelkezik az Azure-beli privát beállításjegyzék (A beállításjegyzék szerepköreinek teljes listáját lásd: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md).) Identitás-hozzáférést biztosíthat egy vagy több erőforráshoz.
-
-Ezt követően az identitás használatával hitelesítheti magát az [Azure ad-hitelesítést támogató szolgáltatásokban](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)a kódban szereplő hitelesítő adatok nélkül. Ha az identitást szeretné használni egy Azure Container Registry virtuális gépről való eléréséhez, akkor a Azure Resource Manager segítségével végezheti el a hitelesítést. Válassza ki, hogyan kell hitelesíteni a felügyelt identitás használatával a forgatókönyvtől függően:
-
-* [Azure ad hozzáférési jogkivonat programozott módon történő beszerzése](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) http-vagy Rest-hívások használatával
-
-* Az [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) -k használata
-
-* [Jelentkezzen be az Azure CLI-be vagy a powershellbe](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) az identitással. 
+> [!NOTE]
+> Jelenleg a szolgáltatások, például az Azure Web App for Containers vagy Azure Container Instances nem használhatják a felügyelt identitást a Azure Container Registry való hitelesítéshez, amikor a tároló-lemezképet a tároló-erőforrás üzembe helyezéséhez húzza. Az identitás csak a tároló futása után érhető el. Ezeknek az erőforrásoknak a Azure Container Registryból származó rendszerképekkel való üzembe helyezéséhez egy másik hitelesítési módszer, például az [egyszerű szolgáltatásnév](container-registry-auth-service-principal.md) használata javasolt.
 
 ## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
@@ -230,8 +221,6 @@ Egy üzenetnek kell megjelennie `Login succeeded` . Ezután parancsok futtatás�
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
-> [!NOTE]
-> A rendszer által hozzárendelt felügyelt szolgáltatás-identitások használhatók a ACR-EK és a App Service képes a rendszer által hozzárendelt felügyelt szolgáltatás-identitások használatára. Ezek azonban nem kombinálhatók, mert App Service nem használhatja az MSI-t az ACR-vel való kommunikációhoz. Az egyetlen módszer a rendszergazda engedélyezése az ACR-ben, és a rendszergazdai Felhasználónév/jelszó használata.
 
 ## <a name="next-steps"></a>Következő lépések
 

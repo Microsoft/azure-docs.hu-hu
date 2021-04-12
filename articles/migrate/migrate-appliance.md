@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778338"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075695"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -500,16 +500,15 @@ Lemez adatai | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec,
 
 Itt látható a Linux-kiszolgálói teljesítményadatok, amelyeket a készülék gyűjt és küld az Azure-nak.
 
-**Adatok** | **Parancsok**
---- | ---
-Processzorhasználat | cat/proc/stat/| GREP "CPU"/proc/stat
-Memóriahasználat | ingyenes \| grep mem \| awk {Print $3/$ 2 * 100,0}
-Hálózati adapterek száma | lshw-Class hálózati \| grep ETH [0-60] \| WC-l
-Fogadott adatmennyiség/NIC | Cat/sys/Class/net/ETH $ NIC/Statistics/rx_bytes
-Továbbított adatok száma hálózati adapteren | Cat/sys/Class/net/ETH $ NIC/Statistics/tx_bytes
-Lemezek száma | fdisk-l \| egrep "Disk. * Bytes" \| awk "{Print $2}" \| Cut-F1-d ":"
-Lemez adatai | cat/proc/diskstats
-
+| **Adatok** | **Parancsok** |
+| --- | --- |
+| Processzorhasználat | cat/proc/stat/ \| grep "CPU"/proc/stat |
+| Memóriahasználat | ingyenes \| grep mem \| awk {Print $3/$ 2 * 100,0} |
+| Hálózati adapterek száma | lshw-Class hálózati \| grep ETH [0-60] \| WC-l |
+| Fogadott adatmennyiség/NIC | Cat/sys/Class/net/ETH $ NIC/Statistics/rx_bytes |
+| Továbbított adatok száma hálózati adapteren | Cat/sys/Class/net/ETH $ NIC/Statistics/tx_bytes |
+| Lemezek száma | az fdisk-l \| egrep lemeze. \* bájtok " \| awk" {print $2} " \| Cut-F1-d": " |
+| Lemez adatai | cat/proc/diskstats |
 
 ## <a name="appliance-upgrades"></a>Berendezések frissítése
 
