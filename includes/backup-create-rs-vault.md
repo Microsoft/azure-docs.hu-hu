@@ -2,19 +2,19 @@
 title: fájl belefoglalása
 description: fájlbefoglalás
 services: backup
-author: dcurwin
+author: v-amallick
 manager: carmonm
 ms.service: backup
 ms.topic: include
 ms.date: 10/18/2018
-ms.author: dacurwin
+ms.author: v-amallick
 ms.custom: include file
-ms.openlocfilehash: 69259023484457249acd4c7b4a65c4cbe3e660ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c126c349897016a00753b402b696c60fdd7b1b2e
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184746"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106294166"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 

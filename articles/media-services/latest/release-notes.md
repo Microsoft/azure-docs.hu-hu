@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7d99e3de8a796dea19f3a2ad7a03b98239981e2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121098"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279034"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -150,7 +150,7 @@ A hangelemzési beállításkészlet mostantól egy alapszintű mód díjszabás
 
 Az indexelő v1 és az indexelő v2-et használó ügyfeleknek át kell térniük az alapszintű hangelemzési készletre.
 
-További információ az alapszintű audio Analyzer módból: [videó-és hangfájlok elemzése](analyze-video-audio-files-concept.md).  Az alapszintű hangelemző mód és a REST API használatának megismeréséhez tekintse meg az [alapszintű hang átalakításának létrehozása](how-to-create-basic-audio-transform.md)című témakört.
+További információ az alapszintű audio Analyzer módból: [videó-és hangfájlok elemzése](analyze-video-audio-files-concept.md).  Az alapszintű hangelemző mód és a REST API használatának megismeréséhez tekintse meg az [alapszintű hang átalakításának létrehozása](transform-create-basic-audio-how-to.md)című témakört.
 
 ### <a name="live-events"></a>Élő események
 
@@ -324,8 +324,8 @@ Ez a funkció a [BuiltInStandardEncoderPreset](/rest/api/media/transforms/create
 
 Példák:
 
-* [Videó kivágása a .NET-tel](subclip-video-dotnet-howto.md)
-* [Videó kivágása a REST-tel](subclip-video-rest-howto.md)
+* [Videó kivágása a .NET-tel](transform-subclip-video-dotnet-how-to.md)
+* [Videó kivágása a REST-tel](transform-subclip-video-rest-how-to.md)
 
 ## <a name="may-2019"></a>2019. május
 
@@ -334,7 +334,7 @@ Példák:
 Mostantól Azure Monitor használatával megtekintheti a Media Services által kibocsátott telemetria-adatmennyiséget.
 
 * A Media Services kulcs kézbesítési végpontja által küldött kérelmek figyeléséhez használja a Azure Monitor diagnosztikai naplókat. 
-* Media Services [streaming-végpontok](streaming-endpoint-concept.md)által kibocsátott mérőszámok figyelése.   
+* Media Services [streaming-végpontok](stream-streaming-endpoint-concept.md)által kibocsátott mérőszámok figyelése.   
 
 Részletekért lásd: [Media Services metrikák és diagnosztikai naplók figyelése](monitoring/monitor-media-services-data-reference.md).
 

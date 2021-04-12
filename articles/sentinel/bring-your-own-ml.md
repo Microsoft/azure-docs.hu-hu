@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99807003"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Saját Machine Learning (ML) bekapcsolása az Azure Sentinelbe
@@ -79,7 +79,7 @@ Ha már rendelkezik Databricks vagy bármely más Spark-környezettel, és inká
 
 A BYO ML-csomag tartalmazza a Microsoft ajánlott eljárásait és kutatását az ML-ben a biztonság érdekében. Ebben a csomagban a biztonsági problémákkal kapcsolatos segédprogramok, jegyzetfüzetek és algoritmus-sablonok következő listáját biztosítjuk.
 
-| Fájlnév | Description |
+| Fájlnév | Leírás |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | A Blobok Azure-ból való olvasására és Log Analyticsba írására szolgáló segédprogramokat tartalmaz. |
 | AnomalousRASampleData | A notebook a rendellenes erőforrás-hozzáférési modell használatát mutatja be az Azure Sentinel-ben az előállított képzési és tesztelési mintaadatok használatával. |

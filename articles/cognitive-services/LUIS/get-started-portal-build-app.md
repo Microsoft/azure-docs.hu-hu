@@ -4,13 +4,13 @@ description: Ebben a rövid útmutatóban létrehoz egy alkalmazás, szándékok
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/30/2020
-ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 03/26/2021
+ms.openlocfilehash: c2f2bafe68dd3f3dad704ba12cdd4d01bf4f6588
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436674"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278762"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
 
@@ -28,7 +28,7 @@ A megjelenő ablakban adja meg a következő adatokat:
 |---------|---------|
 |Név     | Az alkalmazás neve. Például: "Home Automation". Kötelező.        |
 |Kultúra     | A nyelv, amelyet az alkalmazás megértett és beszél. Kötelező.   |
-|Description | Az alkalmazás leírása. Választható.
+|Leírás | Az alkalmazás leírása. Választható.
 |Előrejelzési erőforrás | Az előrejelzési erőforrás, amely a lekérdezéseket fogja kapni. Választható. |
 
 Válassza a **Kész** lehetőséget.
@@ -53,7 +53,7 @@ Az alkalmazás két különböző _szándéka az alábbi célokhoz_ igazodik:
 
 A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
-1. Az alkalmazás létrehozása után győződjön meg arról, hogy a **Build** szakasz **cél** lapján található. Kattintson a **Létrehozás** gombra.
+1. Az alkalmazás létrehozása után győződjön meg arról, hogy a **Build** szakasz **cél** lapján található. Válassza a **Létrehozás** lehetőséget.
 
    [![Képernyőkép: a Létrehozás gombra kattintva hozzon létre új leképezést](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -161,7 +161,7 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
 
 Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a  **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [2. alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)
+> [Alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)

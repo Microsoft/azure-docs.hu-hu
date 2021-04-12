@@ -21,7 +21,7 @@ A Media Services-erőforrások és a Media Services API eléréséhez először 
 * **Szolgáltatásnév-hitelesítés**: Szolgáltatások (például: webalkalmazások, függvényalkalmazások, logikai alkalmazások, API-k és mikroszolgáltatások) hitelesítésére szolgál. Ezt a hitelesítési módszert általában a démonszolgáltatásokat, közepes szintű szolgáltatásokat vagy ütemezett feladatokat futtató alkalmazások használják. A webalkalmazások esetében például mindig olyan közepes rétegnek kell lennie, amely a Media Serviceshoz kapcsolódik egy egyszerű szolgáltatással.
 * **Felhasználóhitelesítés**: Olyan személyek hitelesítésére szolgál, akik a Media Services-erőforrásokkal való interakcióhoz használják az alkalmazást. Az interaktív alkalmazásnak először fel kell kérnie a felhasználót a hitelesítési adatainak a megadására. Ilyen alkalmazás lehet például egy olyan felügyeletikonzol-alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő streamelés monitorozására használnak.
 
-A Media Services API megköveteli, hogy a REST API-kéréseket kezdeményező felhasználó vagy alkalmazás hozzáféréssel rendelkezzen a Media Services-fiókerőforráshoz, és **Közreműködő** vagy **Tulajdonos** szerepkört használjon. Az API elérhető az **Olvasó** szerepkörrel, de ekkor csak a **lekérési** vagy a **listázási** művelet érhető el.További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz](rbac-overview.md).
+A Media Services API megköveteli, hogy a REST API-kéréseket kezdeményező felhasználó vagy alkalmazás hozzáféréssel rendelkezzen a Media Services-fiókerőforráshoz, és **Közreműködő** vagy **Tulajdonos** szerepkört használjon. Az API elérhető az **Olvasó** szerepkörrel, de ekkor csak a **lekérési** vagy a **listázási** művelet érhető el.További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz](security-rbac-concept.md).
 
 Szolgáltatásnév létrehozása helyett érdemes lehet az Azure-erőforrások felügyelt identitásait használni a Media Services API Azure Resource Managerrel történő eléréséhez. Az Azure-erőforrások felügyelt identitásairól az [Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md) ismertető cikkben tájékozódhat bővebben.
 
@@ -52,7 +52,7 @@ A következő ábrán a számok kronológiai sorrendben jelenítik meg a kérelm
 
 Tekintse meg a következő mintákat, amelyek bemutatják, hogyan csatlakozhat az Azure AD egyszerű szolgáltatásához:
 
-* [Kapcsolódás a REST-tel](media-rest-apis-with-postman.md)  
+* [Kapcsolódás a REST-tel](setup-postman-rest-how-to.md)  
 * [Kapcsolódás Javával](configure-connect-java-howto.md)
 * [Kapcsolódás .NET-tel](configure-connect-dotnet-howto.md)
 * [Kapcsolódás Node.js-sel](configure-connect-nodejs-howto.md)

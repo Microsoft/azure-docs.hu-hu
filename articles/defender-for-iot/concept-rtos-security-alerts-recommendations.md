@@ -4,10 +4,10 @@ description: Ismerje meg a biztonsági riasztásokat és az ajánlott szervizel�
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.openlocfilehash: cfbd411617a0b80f4857e08f9803b34b80b873d4
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784679"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Defender-IoT-Micro-Agent Azure RTOS biztonsági riasztások és javaslatok (előzetes verzió)
