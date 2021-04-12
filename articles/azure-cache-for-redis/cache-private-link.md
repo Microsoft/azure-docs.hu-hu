@@ -1,19 +1,19 @@
 ---
-title: Azure cache a Redis az Azure Private linkkel (előzetes verzió)
+title: Azure cache a Redis az Azure Private linkkel
 description: Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli privát kapcsolaton keresztül az Azure cache-hez biztosít privát és biztonságos Redis. Ebből a cikkből megtudhatja, hogyan hozhat létre Azure cache-t, egy Azure-Virtual Networkt és egy privát végpontot a Azure Portal használatával.
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/31/2021
+ms.openlocfilehash: 952f708d8f368b63f772e3af35f6fd441d65622d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007585"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121659"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache a Redis az Azure Private linkkel (nyilvános előzetes verzió)
+# <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure cache a Redis az Azure Private linkkel
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy virtuális hálózatot és egy Azure cache-t a Redis-példányhoz egy privát végponttal a Azure Portal használatával. Azt is megtudhatja, hogyan adhat hozzá privát végpontot egy meglévő Azure cache-hez a Redis-példányhoz.
 
 Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli privát kapcsolaton keresztül az Azure cache-hez biztosít privát és biztonságos Redis. 
@@ -22,8 +22,7 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli priv
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
-> A privát végpontok használatához a Redis-példányhoz tartozó Azure cache-t a 2020. július 28-ig kell létrehozni.
-> Jelenleg a Geo-replikálás, a tűzfalszabályok, a portál konzol támogatása, a fürtözött gyorsítótárban több végpont, a tűzfal és a VNet Beinjektált gyorsítótárak használata nem támogatott. 
+> Jelenleg a zóna-redundancia, a portál-konzol támogatása és a tűzfal tárolási fiókjainak megőrzése nem támogatott. 
 >
 >
 
@@ -112,19 +111,8 @@ Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a foly
 > [!IMPORTANT]
 > 
 > `publicNetworkAccess`Alapértelmezés szerint van egy jelző `Disabled` . 
-> Ennek a jelzőnek a célja, hogy lehetővé tegye a nyilvános és a privát végpontok hozzáférését a gyorsítótárhoz, ha az értéke `Enabled` . Ha a értékre `Disabled` van állítva, akkor csak a privát végpontok hozzáférését engedélyezi. Az értéket beállíthatja a vagy a értékre `Disabled` `Enabled` a következő patch-kéréssel. Szerkessze az értéket, hogy tükrözze, melyik jelölőt szeretné használni a gyorsítótárban.
-> ```http
-> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
-> {    "properties": {
->        "publicNetworkAccess":"Disabled"
->    }
-> }
-> ```
+> Ennek a jelzőnek a célja, hogy lehetővé tegye a nyilvános és a privát végpontok hozzáférését a gyorsítótárhoz, ha az értéke `Enabled` . Ha a értékre `Disabled` van állítva, akkor csak a privát végpontok hozzáférését engedélyezi. Az értéket beállíthatja a vagy a értékre `Disabled` `Enabled` . További információ az érték módosításáról: [Gyakori kérdések](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
 >
-
-> [!IMPORTANT]
-> 
-> Fürtözött gyorsítótárhoz való kapcsolódáshoz be kell `publicNetworkAccess` állítani a-t, `Disabled` és csak egyetlen privát végponti kapcsolat lehet. 
 >
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Privát végpont létrehozása meglévő Azure cache-sel a Redis-példányhoz 
@@ -173,7 +161,7 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 
 2. Válassza ki azt a gyorsítótár-példányt, amelyhez privát végpontot szeretne hozzáadni.
 
-3. A képernyő bal oldalán válassza a **(előzetes verzió) privát végpont** elemet.
+3. A képernyő bal oldalán válassza a **privát végpont** elemet.
 
 4. Kattintson a **privát végpont** gombra a privát végpont létrehozásához.
 
@@ -204,16 +192,36 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 
 13. Ha megjelenik az **átadott zöld érvényesítés** üzenet, válassza a **Létrehozás** lehetőséget.
 
+> [!IMPORTANT]
+> 
+> `publicNetworkAccess`Alapértelmezés szerint van egy jelző `Disabled` . 
+> Ennek a jelzőnek a célja, hogy lehetővé tegye a nyilvános és a privát végpontok hozzáférését a gyorsítótárhoz, ha az értéke `Enabled` . Ha a értékre `Disabled` van állítva, akkor csak a privát végpontok hozzáférését engedélyezi. Az értéket beállíthatja a vagy a értékre `Disabled` `Enabled` . További információ az érték módosításáról: [Gyakori kérdések](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+>
+>
+
+
 ## <a name="faq"></a>GYIK
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Miért nem tudok csatlakozni egy privát végponthoz?
-Ha a gyorsítótár már VNet befecskendezett gyorsítótár, a magánhálózati végpontok nem használhatók a gyorsítótár-példánnyal. Ha a gyorsítótár-példány nem támogatott funkciót használ (alább látható), nem fog tudni csatlakozni a saját végpont-példányához. A gyorsítótár-példányokat továbbá július 27. után is létre kell hozni privát végpontok használatára.
+Ha a gyorsítótár már VNet befecskendezett gyorsítótár, a magánhálózati végpontok nem használhatók a gyorsítótár-példánnyal. Ha a gyorsítótár-példány nem támogatott funkciót használ (alább látható), nem fog tudni csatlakozni a saját végpont-példányához.
 
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>Milyen funkciók nem támogatottak a privát végpontok esetében?
-Geo-replikáció, tűzfalszabályok, portál-konzol támogatása, fürtözött gyorsítótárban több végpont, a tűzfalszabályok megőrzése és a zóna redundancia. 
+Jelenleg a zóna-redundancia, a portál-konzol támogatása és a tűzfal tárolási fiókjainak megőrzése nem támogatott. 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>Hogyan változtathatom meg a privát végpontot, hogy le legyen tiltva vagy engedélyezve legyen a nyilvános hálózati hozzáférés?
-`publicNetworkAccess`Alapértelmezés szerint van egy jelző `Disabled` . Ennek a jelzőnek a célja, hogy lehetővé tegye a nyilvános és a privát végpontok hozzáférését a gyorsítótárhoz, ha az értéke `Enabled` . Ha a értékre `Disabled` van állítva, akkor csak a privát végpontok hozzáférését engedélyezi. Az értéket beállíthatja a vagy a értékre `Disabled` `Enabled` a következő patch-kéréssel. Szerkessze az értéket, hogy tükrözze, melyik jelölőt szeretné használni a gyorsítótárban.
+`publicNetworkAccess`Alapértelmezés szerint van egy jelző `Disabled` . Ennek a jelzőnek a célja, hogy lehetővé tegye a nyilvános és a privát végpontok hozzáférését a gyorsítótárhoz, ha az értéke `Enabled` . Ha a értékre `Disabled` van állítva, akkor csak a privát végpontok hozzáférését engedélyezi. Megadhatja az értéket `Disabled` `Enabled` a Azure Portal vagy a REST API-javítási kéréssel. 
+
+Az Azure Portal értékének módosításához kövesse az alábbi lépéseket.
+
+1. A Azure Portal keresse meg az **Azure cache-t a Redis** , majd nyomja le az ENTER billentyűt, vagy válassza ki a keresési javaslatok közül.
+
+2. Válassza ki azt a gyorsítótár-példányt, amelynek a nyilvános hálózati hozzáférési értékét módosítani szeretné.
+
+3. A képernyő bal oldalán válassza a **privát végpont** elemet.
+
+4. Kattintson a **nyilvános hálózati hozzáférés engedélyezése** gombra.
+
+Ha módosítani szeretné az értéket egy REST API-JAVÍTÁSra vonatkozó kéréssel, tekintse meg az alábbi szakaszt, és szerkessze az értéket, hogy tükrözze, melyik jelölőt kívánja használni a gyorsítótárban.
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -223,24 +231,23 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>Hogyan használhatok több végpontot különböző virtuális hálózatokban?
+Ha több privát végpontot szeretne létrehozni különböző virtuális hálózatokban, a magánhálózati végpont létrehozása _előtt_ a magánhálózati DNS-zónát manuálisan kell konfigurálni a több virtuális hálózatra. További információ: [Azure-beli privát végpont DNS-konfigurálása](../private-link/private-endpoint-dns.md). 
+
+### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>Mi történik, ha törölem az összes privát végpontot a gyorsítótárban?
+Miután törölte a titkos végpontokat a gyorsítótárban, előfordulhat, hogy a gyorsítótár példánya nem érhető el, amíg explicit módon nem engedélyezi a nyilvános hálózati hozzáférést, vagy egy másik privát végpontot ad hozzá. A `publicNetworkAccess` jelzőt módosíthatja a Azure Portalon vagy egy REST API-javítási kérelemben. További információ az érték módosításáról: [Gyakori kérdések](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Engedélyezve vannak-e a hálózati biztonsági csoportok (NSG) a privát végpontokhoz?
 Nem, a magánhálózati végpontok esetében le vannak tiltva. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](../private-link/disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség. 
 
 A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók
 
-### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Használhatok tűzfalszabályok privát végpontokkal?
-Nem, ez a privát végpontok jelenlegi korlátozása. A magánhálózati végpont nem fog megfelelően működni, ha tűzfalszabályok vannak konfigurálva a gyorsítótárban.
-
-### <a name="how-can-i-connect-to-a-clustered-cache"></a>Hogyan lehet csatlakozni egy fürtözött gyorsítótárhoz?
-`publicNetworkAccess` be kell állítani, hogy `Disabled` csak egy privát végponti kapcsolatok legyenek.
-
 ### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>Mivel a saját végpontom nem a saját VNet, hogyan van társítva a VNet?
 Csak a VNet van csatolva. Mivel nem szerepel a VNet, a NSG-szabályokat nem szükséges módosítani a függő végpontok esetében.
 
 ### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Hogyan telepíthetem át a VNet befecskendezett gyorsítótárát egy privát végponti gyorsítótárba?
-Törölnie kell a VNet Beinjektált gyorsítótárát, és létre kell hoznia egy új, privát végponttal rendelkező gyorsítótár-példányt.
+Törölnie kell a VNet Beinjektált gyorsítótárát, és létre kell hoznia egy új, privát végponttal rendelkező gyorsítótár-példányt. További információ: [Migrálás az Azure cache-be a Redis-hez](cache-migration-guide.md)
 
 ## <a name="next-steps"></a>Következő lépések
-
 * Ha többet szeretne megtudni az Azure Private linkről, tekintse meg az [Azure Private link dokumentációját](../private-link/private-link-overview.md).
 * A gyorsítótár-példány különböző hálózati elkülönítési lehetőségeinek összehasonlításához tekintse meg az [Azure cache Redis hálózati elkülönítési lehetőségek dokumentációját](cache-network-isolation.md).

@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563776"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030009"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Azure Service Fabric-fürt üzembe helyezése csak állapot nélküli csomópont-típusokkal (előzetes verzió)
+# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Azure Service Fabric-fürt üzembe helyezése csak állapot nélküli csomópont-típusokkal
 Service Fabric a csomópontok típusai feltételezik, hogy bizonyos időpontban az állapot-nyilvántartó szolgáltatások a csomópontokra helyezhetők. Az állapot nélküli csomópontok típusai kipihenhetik ezt a feltételezést a csomópontok típusához, így a csomópont típusa más funkciók használatát teszi lehetővé, például gyorsabb horizontális Felskálázási műveleteket, az automatikus operációsrendszer-frissítések támogatását a bronz tartósságon, és több mint 100 csomópontra méretezheti egyetlen virtuálisgép-méretezési csoporton belül.
 
 * Az elsődleges csomópontok típusa nem állítható állapot nélkülire.
@@ -23,7 +23,7 @@ Service Fabric a csomópontok típusai feltételezik, hogy bizonyos időpontban 
 A sablonok elérhetők: [Service Fabric állapot nélküli csomópont-típusok sablonja](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Állapot nélküli csomópont-típusok engedélyezése Service Fabric fürtben
-Ha egy vagy több csomópontot állapot nélküliként szeretne beállítani a fürt erőforrásaiban, állítsa a **isStateless** tulajdonságot "true" értékre. Ha állapot nélküli csomópont-típusokkal rendelkező Service Fabric-fürtöt telepít, ne feledje, hogy a fürterőforrás egyetlen elsődleges csomópont-típussal rendelkezik.
+Ha egy vagy több csomópontot állapot nélküliként szeretne beállítani a fürt erőforrásaiban, állítsa a **isStateless** tulajdonságot **true (igaz**) értékre. Ha állapot nélküli csomópont-típusokkal rendelkező Service Fabric-fürtöt telepít, ne feledje, hogy a fürterőforrás egyetlen elsődleges csomópont-típussal rendelkezik.
 
 * A Service Fabric fürterőforrás-apiVersion "2020-12-01-Preview" vagy magasabb értékűnek kell lennie.
 
@@ -44,7 +44,7 @@ Ha egy vagy több csomópontot állapot nélküliként szeretne beállítani a f
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateless": false,
+        "isStateless": false, // Primary Node Types cannot be stateless
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -72,16 +72,15 @@ Ha egy vagy több csomópontot állapot nélküliként szeretne beállítani a f
 Az állapot nélküli csomópontok típusának engedélyezéséhez a következő módon kell konfigurálnia az alapul szolgáló virtuálisgép-méretezési csoport erőforrásait:
 
 * A Value  **singlePlacementGroup** tulajdonság, amelyet **false** értékre kell állítani, ha több mint 100 virtuális gépre kell méreteznie.
-* A méretezési csoport **upgradePolicy** **módját** a **Rolling** értékre kell beállítani.
+* A méretezési csoport **upgradeMode** a **Rolling** értékre kell beállítani.
 * A működés közbeni frissítési üzemmódhoz az alkalmazás állapotának vagy a beállított állapotának beállítása szükséges. Az állapot nélküli csomópont-típusok alapértelmezett konfigurációjának beállítása az alábbi módon ajánlott. Miután telepítette az alkalmazásokat a csomópont típusára, az állapot-mintavételi/állapotfigyelő portok módosíthatók az alkalmazás állapotának figyeléséhez.
 
 >[!NOTE]
-> Szükség van arra, hogy a platform tartalék tartományának száma 5-öt, ha egy állapot nélküli csomópont típusa olyan virtuálisgép-méretezési csoporttal rendelkezik, amely több zónára kiterjed. További részletekért tekintse meg ezt a [sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
-> 
-> **platformFaultDomainCount: 5**
+> Ha az automatikus skálázást állapot nélküli nodetypes használja, a leskálázási művelet után a csomópont állapota nem törlődik automatikusan. A NodeState az autoskálázás során való kitakarításához a [Service Fabric autoscale Helper](https://github.com/Azure/service-fabric-autoscale-helper) használata javasolt.
+
 ```json
 {
-    "apiVersion": "2018-10-01",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.Compute/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType1Name')]",
     "location": "[parameters('computeLocation')]",
@@ -92,8 +91,9 @@ Az állapot nélküli csomópontok típusának engedélyezéséhez a következő
           "automaticOSUpgradePolicy": {
             "enableAutomaticOSUpgrade": true
           }
-        }
-    }
+        },
+        "platformFaultDomainCount": 5
+    },
     "virtualMachineProfile": {
     "extensionProfile": {
     "extensions": [
@@ -136,6 +136,18 @@ Az állapot nélküli csomópontok típusának engedélyezéséhez a következő
     ]
 }
 ```
+
+## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>Állapot nélküli csomópont-típusok konfigurálása több Availability Zones
+A több rendelkezésre állási zónán átívelő állapot nélküli NodeType konfigurálásához kövesse [a dokumentációt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set), valamint a következő néhány módosítást:
+
+* **SinglePlacementGroup** beállítása: **hamis** , ha több elhelyezési csoportra van szükség az engedélyezéshez.
+* Set  **upgradeMode** : a fentiekben leírtak szerint adja **meg az alkalmazás**   állapotának kiterjesztését/állapotát.
+* A **platformFaultDomainCount** : **5** beállítása a virtuálisgép-méretezési csoport számára.
+
+>[!NOTE]
+> A fürtben konfigurált VMSSZonalUpgradeMode függetlenül a virtuálisgép-méretezési csoport frissítései mindig egymás után egy rendelkezésre állási zónában történnek a több zónára kiterjedő állapot nélküli NodeType, mivel az a működés közbeni frissítési módot használja.
+
+Hivatkozásként tekintse meg a [sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) az állapot nélküli csomópont-típusok több Availability Zones való konfigurálásához
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 ### <a name="public-ip-and-load-balancer-resource"></a>Nyilvános IP-cím és Load Balancer erőforrás
@@ -184,7 +196,7 @@ Ha a méretezést több mint 100 virtuális gépre szeretné engedélyezni egy v
 ```
 
 >[!NOTE]
-> A nyilvános IP-címek és a terheléselosztó erőforrásainak helybeni módosítása nem lehetséges. Ha egy alapszintű SKU-val rendelkező meglévő erőforrásról végez áttelepítést, tekintse meg a jelen cikk áttelepítés című szakaszát.
+> A nyilvános IP-címek és a terheléselosztó erőforrásainak helybeni módosítása nem lehetséges. 
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>Virtuálisgép-méretezési csoport NAT-szabályai
 A terheléselosztó bejövő NAT-szabályainak meg kell egyezniük a virtuálisgép-méretezési csoport NAT-készletével. Minden virtuálisgép-méretezési csoportnak rendelkeznie kell egy egyedi bejövő NAT-készlettel.
@@ -243,7 +255,7 @@ A standard Load Balancer és a standard nyilvános IP-címek új képességeket 
 
 
 
-### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrálás állapot nélküli csomópont-típusokra egy fürt alapszintű SKU-Load Balancer és egy alapszintű SKU IP-címének használatával
+## <a name="migrate-to-using-stateless-node-types-in-a-cluster"></a>Migrálás állapot nélküli csomópont-típusok használatára a fürtben
 Az összes áttelepítési forgatókönyvhöz hozzá kell adni egy új állapot nélküli csomópont-típust. A meglévő csomópont-típus nem telepíthető át csak állapotra.
 
 Ha olyan fürtöt szeretne áttelepíteni, amely egy alapszintű SKU-val Load Balancer és IP-címet használ, először létre kell hoznia egy teljesen új Load Balancer és IP-erőforrást a szabványos SKU használatával. Ezeket az erőforrásokat helyben nem lehet frissíteni.
@@ -256,9 +268,6 @@ A kezdéshez hozzá kell adnia az új erőforrásokat a meglévő Resource Manag
 * Az alhálózat által hivatkozott NSG, amelyben üzembe helyezi a virtuálisgép-méretezési csoportokat.
 
 Az erőforrások telepítésének befejezése után megkezdheti a csomópontok letiltását az eredeti fürtből eltávolítani kívánt csomópont-típusból.
-
->[!NOTE]
-> Ha az automatikus skálázást az állapot nélküli nodetypes és a bronz tartósság használatával használja, a leskálázási művelet után a csomópont állapota nem törlődik automatikusan. A NodeState az autoskálázás során való kitakarításához a [Service Fabric autoscale Helper](https://github.com/Azure/service-fabric-autoscale-helper) használata javasolt.
 
 ## <a name="next-steps"></a>Következő lépések 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

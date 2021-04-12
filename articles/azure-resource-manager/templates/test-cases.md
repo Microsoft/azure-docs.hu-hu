@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674042"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064145"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Az ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési esetei
 
-Ez a cikk a [template test Toolkit használatával](test-toolkit.md)futtatott alapértelmezett teszteket ismerteti. Olyan példákat tartalmaz, amelyek átadják vagy elmulasztják a tesztet. Tartalmazza az egyes tesztek nevét.
+Ez a cikk a Azure Resource Manager sablonok (ARM-sablonok) [sablon test Toolkit használatával](test-toolkit.md) futtatott alapértelmezett teszteket ismerteti. Olyan példákat tartalmaz, amelyek átadják vagy elmulasztják a tesztet. Tartalmazza az egyes tesztek nevét. Egy adott teszt futtatásához lásd: [Paraméterek tesztelése](test-toolkit.md#test-parameters).
 
 ## <a name="use-correct-schema"></a>Helyes séma használata
 
@@ -137,7 +137,7 @@ A következő példa **átadja** ezt a tesztet.
 
 Teszt neve: **a hely nem lehet hardcoded**
 
-A sablonoknak egy Location nevű paraméterrel kell rendelkezniük. Ezzel a paraméterrel állíthatja be az erőforrások helyét a sablonban. A fősablonban (azuredeploy.json vagy mainTemplate.js) Ez a paraméter alapértelmezés szerint az erőforráscsoport helyére kerül. A csatolt vagy beágyazott sablonokban a Location paraméternek nem lehet alapértelmezett helye.
+A sablonoknak egy Location nevű paraméterrel kell rendelkezniük. Ezzel a paraméterrel állíthatja be az erőforrások helyét a sablonban. A fősablonban ( _azuredeploy.json_ vagy _mainTemplate.js_) Ez a paraméter alapértelmezés szerint az erőforráscsoport helyére kerül. A csatolt vagy beágyazott sablonokban a Location paraméternek nem lehet alapértelmezett helye.
 
 Előfordulhat, hogy a sablon felhasználói korlátozott számú régióval rendelkeznek. Az erőforrás helyének megadását követően előfordulhat, hogy a felhasználók nem tudnak erőforrásokat létrehozni az adott régióban. A felhasználók akkor is blokkolva lehetnek, ha az erőforrás helyét az értékre állítja `"[resourceGroup().location]"` . Előfordulhat, hogy az erőforráscsoport olyan régióban lett létrehozva, amelyhez más felhasználók nem férhetnek hozzá. Ezek a felhasználók le vannak tiltva a sablon használatával.
 
@@ -393,11 +393,11 @@ Ha `_artifactsLocation` a és a paramétereket is tartalmazza `_artifactsLocatio
 * Ha egy paramétert ad meg, meg kell adnia a másikat.
 * `_artifactsLocation`**karakterláncnak** kell lennie
 * `_artifactsLocation` a fő sablonban alapértelmezett értékkel kell rendelkeznie
-* `_artifactsLocation` nem lehet alapértelmezett érték egy beágyazott sablonban. 
+* `_artifactsLocation` nem lehet alapértelmezett érték egy beágyazott sablonban.
 * `_artifactsLocation` az `"[deployment().properties.templateLink.uri]"` alapértelmezett értékének vagy a nyers tárház URL-címének kell lennie
 * `_artifactsLocationSasToken`**secureString** kell lennie
 * `_artifactsLocationSasToken` az alapértelmezett értékének csak üres karakterlánca lehet
-* `_artifactsLocationSasToken` nem lehet alapértelmezett érték egy beágyazott sablonban. 
+* `_artifactsLocationSasToken` nem lehet alapértelmezett érték egy beágyazott sablonban.
 
 ## <a name="declared-variables-must-be-used"></a>Deklarált változókat kell használni
 
@@ -520,7 +520,7 @@ A következő példa **átadja** ezt a tesztet.
 
 Teszt neve: a **ResourceId: nem tartalmazhatnak**
 
-Erőforrás-azonosítók létrehozásakor ne használjon felesleges függvényeket a választható paraméterekhez. Alapértelmezés szerint a [resourceId](template-functions-resource.md#resourceid) függvény az aktuális előfizetést és erőforráscsoportot használja. Ezeket az értékeket nem kell megadnia.  
+Erőforrás-azonosítók létrehozásakor ne használjon felesleges függvényeket a választható paraméterekhez. Alapértelmezés szerint a [resourceId](template-functions-resource.md#resourceid) függvény az aktuális előfizetést és erőforráscsoportot használja. Ezeket az értékeket nem kell megadnia.
 
 A következő példa **nem** teszi lehetővé ezt a tesztet, mert nem kell megadnia az aktuális előfizetés-azonosítót és az erőforráscsoport nevét.
 
@@ -691,7 +691,40 @@ A következő példa **meghiúsul** , mert a kimenetben egy [List *](template-fu
 }
 ```
 
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>Protectedsettingsfromkeyvault használata a commandToExecute-titkokhoz
+
+Teszt neve: **a CommandToExecute Protectedsettingsfromkeyvault kell használnia a titkokhoz**
+
+Egyéni parancsfájl-kiterjesztés esetén használja a titkosított tulajdonságot, `protectedSettings` Ha `commandToExecute` titkos adatot, például jelszót tartalmaz. Példák a titkos adattípusokra:, `secureString` `secureObject` `list()` függvények vagy parancsfájlok.
+
+További információ a virtuális gépek egyéni parancsfájl-bővítménnyel kapcsolatban: [Windows](
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux)és a [Microsoft. számítási virtualMachines/bővítmények](/azure/templates/microsoft.compute/virtualmachines/extensions).
+
+Ebben a példában egy nevű és típusú paraméterrel rendelkező sablon `adminPassword` `secureString` **továbbítja** a tesztet, mert a titkosított tulajdonság `protectedSettings` tartalmaz `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "protectedSettings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
+A teszt **sikertelen** , ha a titkosítatlan tulajdonság `settings` tartalmaz `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "settings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
 ## <a name="next-steps"></a>Következő lépések
 
-- A tesztelési eszközkészlet futtatásáról további információt a [ARM-sablon tesztelési eszközkészletének használata](test-toolkit.md)című témakörben talál.
-- A tesztelési eszközkészlettel foglalkozó Microsoft Learn modul esetében tekintse meg az [előzetes verzió módosításait és az Azure-erőforrások érvényesítését a mi és az ARM template test Toolkit használatával](/learn/modules/arm-template-test/).
+* A tesztelési eszközkészlet futtatásáról további információt a [ARM-sablon tesztelési eszközkészletének használata](test-toolkit.md)című témakörben talál.
+* A tesztelési eszközkészlettel foglalkozó Microsoft Learn modul esetében tekintse meg az [előzetes verzió módosításait és az Azure-erőforrások érvényesítését a mi és az ARM template test Toolkit használatával](/learn/modules/arm-template-test/).

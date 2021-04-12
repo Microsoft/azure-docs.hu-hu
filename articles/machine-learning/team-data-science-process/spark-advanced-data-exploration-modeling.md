@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b84b7387411e7df8e092a2e810591697319f9554
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37f0b48190bcbad7ab190da1d690a1a0485501a1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774677"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259319"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Speciális adatáttekintés és modellezés a Spark segítségével
 
@@ -37,7 +37,8 @@ Az általunk használt modellek közé tartozik a logisztikai és a lineáris re
 
 * A [lineáris regresszió](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html#pyspark.mllib.regression.LinearRegressionWithSGD
 ) és az SGD egy lineáris regressziós modell, amely egy sztochasztikus átmenetes (SGD) módszert használ, valamint az optimalizálás és a szolgáltatás skálázására, hogy előre megjósolja a kifizetett tip-összegeket. 
-* A [logisztikai regresszió a LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) vagy a "logit" regresszióval egy regressziós modell, amely akkor használható, ha a függő változó kategorikusan végzi az adatbesorolást. A LBFGS egy kvázi-Newton optimalizálási algoritmus, amely a Broyden – Fletcher – Goldfarb-Shanno (BFGS) algoritmust a korlátozott mennyiségű számítógép memóriájának használatával közelíti meg, és a gépi tanulásban széles körben használatos.
+* A [logisztikai regresszió a LBFGS](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html
+) vagy a "logit" regresszióval egy regressziós modell, amely akkor használható, ha a függő változó kategorikusan végzi az adatbesorolást. A LBFGS egy kvázi-Newton optimalizálási algoritmus, amely a Broyden – Fletcher – Goldfarb-Shanno (BFGS) algoritmust a korlátozott mennyiségű számítógép memóriájának használatával közelíti meg, és a gépi tanulásban széles körben használatos.
 * A [véletlenszerű erdők](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) a döntési fák együttesei.  Számos döntési fát egyesítenek a túlilleszkedés kockázatainak csökkentése érdekében. A véletlenszerű erdők regresszióhoz és besoroláshoz használatosak, és a kategorikus funkciókat kezelhetik, és bővíthetők a többosztályos besorolási beállításokkal. Nem igénylik a szolgáltatások méretezését, és képesek rögzíteni a nem lineáris és a funkciók közötti interakciókat. A véletlenszerű erdők a besorolás és a regresszió egyik legsikeresebb gépi tanulási modellje.
 * A [Gradient által növelt fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS-EK) a döntési fák együttesei. GBTS betanítása a iteratív a veszteségek csökkentése érdekében. A GBTS a regresszió és a besorolás, valamint a kategorikus funkciók kezelésére szolgál, nem szükséges a funkciók skálázása, és képes rögzíteni a nem lineáris és a funkciók közötti interakciókat. Használhatnak többosztályos besorolási beállításban is.
 
@@ -504,7 +505,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 A fenti cella végrehajtásához szükséges idő: 0,31 másodperc
 
 ### <a name="feature-scaling"></a>Szolgáltatásskálázás
-A szolgáltatás skálázása, más néven az adatok normalizálása, nem biztosítja, hogy a széles körben kifizetett értékekkel rendelkező funkciók ne legyenek nagy mértékben mérlegelve az objektív függvényben. A szolgáltatás skálázásának kódja a [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) használatával méretezi a szolgáltatásokat az egység variancia számára. A MLlib a lineáris regressziós és a sztochasztikus gradiens (SGD) használatával biztosítjuk. Az SGD egy népszerű algoritmus, amely számos más gépi tanulási modellt, például rendszeres regressziós vagy támogató vektoros gépeket (SVM) tanít.   
+A szolgáltatás skálázása, más néven az adatok normalizálása, nem biztosítja, hogy a széles körben kifizetett értékekkel rendelkező funkciók ne legyenek nagy mértékben mérlegelve az objektív függvényben. A szolgáltatás skálázásának kódja a [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html
+) használatával méretezi a szolgáltatásokat az egység variancia számára. A MLlib a lineáris regressziós és a sztochasztikus gradiens (SGD) használatával biztosítjuk. Az SGD egy népszerű algoritmus, amely számos más gépi tanulási modellt, például rendszeres regressziós vagy támogató vektoros gépeket (SVM) tanít.   
 
 > [!TIP]
 > Találtunk a LinearRegressionWithSGD algoritmust, hogy az érzékeny legyen a szolgáltatás skálázására.   

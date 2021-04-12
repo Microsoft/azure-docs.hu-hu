@@ -12,16 +12,16 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e01a3b1538c6bf3030e5c8f129606adaecffda60
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643762"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105323"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>Rendszergazdai engedélyezési munkafolyamat (előzetes verzió) konfigurálása
+# <a name="configure-the-admin-consent-workflow"></a>Rendszergazdai engedélyezési munkafolyamat konfigurálása
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető a rendszergazdai engedélyezési munkafolyamat (előzetes verzió) funkció, amely lehetővé teszi a végfelhasználók számára, hogy hozzáférést kérjenek a rendszergazdai jogosultságot igénylő alkalmazásokhoz.
+Ez a cikk azt ismerteti, hogyan engedélyezhető a rendszergazdai jogosultságok munkafolyamat funkciója, amely lehetővé teszi a végfelhasználók számára, hogy hozzáférést kérjenek az olyan alkalmazásokhoz, amelyekhez rendszergazdai engedély szükséges.
 
 Rendszergazdai jogosultsági szintű munkafolyamat nélkül a felhasználó egy olyan bérlőnél, amelynél a felhasználói beleegyezik, le lesz tiltva, amikor olyan alkalmazáshoz próbálnak hozzáférni, amely a szervezeti adathozzáféréshez szükséges engedélyekkel rendelkezik. A felhasználó általános hibaüzenetet kap arról, hogy nem engedélyezett az alkalmazáshoz való hozzáférés, és a rendszergazdától kérhet segítséget. Gyakran azonban a felhasználó nem tudja, hogy kivel kell kapcsolatba lépnie, hogy az alkalmazásban új helyi fiókot adjon meg vagy hozzon létre. Még akkor is, ha a rendszergazda értesítést kap, nincs mindig olyan gördülékeny folyamat, amely segítséget nyújt a rendszergazda számára a hozzáférés engedélyezéséhez és a felhasználók értesítéséhez.
  
@@ -38,7 +38,7 @@ A rendszergazdai engedélyekkel rendelkező munkafolyamat engedélyezése és a 
 3. A szűrő keresése mezőbe írja be a "**Azure Active Directory**" kifejezést, majd válassza ki **a Azure Active Directory** elemet.
 4. A navigációs menüben kattintson a **vállalati alkalmazások** elemre. 
 5. A **kezelés** területen válassza a **felhasználói beállítások** lehetőséget.
-6. A **rendszergazda által megadott kérések (előzetes verzió)** alatt állítsa be a felhasználók számára, hogy rendszergazdai jogosultságot **kérjenek az alkalmazásoknak, amelyek nem tudnak** hozzájárulni az **Igen** értékre
+6. A **rendszergazdai jogosultságok kérése** területen a felhasználók a rendszergazda beleegyezett **az alkalmazásba, hogy nem tudnak beleegyezni** az **Igen** értékre.
 
    ![Rendszergazdai engedélyekkel rendelkező munkafolyamat beállításainak konfigurálása](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
@@ -78,7 +78,7 @@ A rendszergazdai engedélyezési kérelmek áttekintése és a művelet végreha
 2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs menü tetején. Megnyílik a **Azure Active Directory bővítmény** .
 3. A szűrő keresése mezőbe írja be a "**Azure Active Directory**" kifejezést, majd válassza ki a **Azure Active Directory** elemet.
 4. A navigációs menüben kattintson a **vállalati alkalmazások** elemre.
-5. A **tevékenység** területen válassza a **rendszergazdai engedélyezési kérelmek (előzetes verzió)** lehetőséget.
+5. A **tevékenység** területen válassza a **rendszergazdai beleegyező kérelmek** lehetőséget.
 
    > [!NOTE]
    > A felülvizsgálók csak azokat a rendszergazdai kérelmeket láthatják, amelyeket a rendszer felülvizsgáló való kijelölése után hozott létre.
@@ -112,11 +112,7 @@ A kérelmező e-mail-értesítéseket fog kapni, ha:
  
 ## <a name="audit-logs"></a>Naplók 
  
-Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhető forgatókönyveket és naplózási értékeket ismerteti. 
-
-> [!NOTE]
-> A naplózási színész felhasználói környezete jelenleg minden esetben hiányzik. Ez egy ismert korlátozás az előzetes verzióban.
-
+Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhető forgatókönyveket és naplózási értékeket ismerteti.
 
 |Eset  |Naplózási szolgáltatás  |Naplózási kategória  |Naplózási tevékenység  |Könyvvizsgálói színész  |Naplózási naplók korlátai  |
 |---------|---------|---------|---------|---------|---------|

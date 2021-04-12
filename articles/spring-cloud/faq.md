@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: cee71557e60be9fdd94099453d9b8617c4b3b5ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f28ddfc272e6f95106595958cacfe732b2bfc3cc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878139"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258690"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -37,7 +37,7 @@ A biztonság és az adatvédelem az Azure és az Azure Spring Cloud ügyfeleinek
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Mely régiókban érhető el az Azure Spring Cloud?
 
-USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, az USA déli középső régiója, az USA északi középső régiója, az USA nyugati régiója, az USA nyugati régiója, Nyugat-Európa, Észak-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia, Kelet-Ausztrália, Kanada középső régiója, Egyesült Arab Emírségek, Közép-India, Kelet-Kína Kelet-Ázsia Korea [További információ](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, az USA déli középső régiója, az USA északi középső régiója, az USA nyugati régiója, az USA nyugati régiója, Nyugat-Európa, Észak-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia, Kelet-Ausztrália, Közép-Kanada, Észak-Ausztrália, Közép Kelet-Kína-India, Közép-Korea, Kelet-Ázsia, Japán [További információ](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>A megadott régión kívül tárolt ügyféladatok?
 

@@ -32,6 +32,8 @@
     - name: Szabályzat hozzárendelése – ARM-sablon
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: Szabályzatok kiosztása – bicep
+      href: ./assign-policy-bicep.md
     - name: Szabályzat hozzárendelése – Terraform
       displayName: 'assign, compliance, hcl, provider'
       href: ./assign-policy-terraform.md

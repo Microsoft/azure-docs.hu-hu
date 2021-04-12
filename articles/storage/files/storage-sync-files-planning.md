@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 85d5d5b484163c4c65e7ec14c5d5ce5aea339669
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3cc8f36f05def18c16db0875cb712cdf5d165f9
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593203"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121353"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -351,7 +351,7 @@ Ha a felhő-rétegek engedélyezve vannak, akkor a kiszolgáló-végpontról vag
 Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a biztonsági mentéseket a szinkronizálási csoporton belül olyan kiszolgálón kell végrehajtani, amelyen le van tiltva a Felhőbeli réteg. Ha visszaállítást végez, használja a kötet szintű vagy a fájl szintű visszaállítási lehetőségeket. A fájl szintű visszaállítási lehetőséggel visszaállított fájlok a szinkronizálási csoport összes végpontján szinkronizálva lesznek, és a meglévő fájlok a biztonsági másolatból visszaállított verzióra lesznek lecserélve.  A mennyiségi szintű visszaállítások nem cserélik le az újabb verziójú fájlokat az Azure-fájlmegosztás vagy más kiszolgálói végpontok között.
 
 > [!WARNING]
-> A Robocopy/B kapcsoló nem támogatott a Azure File Sync. A Robocopy/B kapcsoló és egy Azure File Sync kiszolgálói végpont használata esetén a forrás a fájl sérüléséhez vezethet.
+> Ha a Robocopy/B-t a forrás-vagy célkiszolgáló egyik Azure File Sync ügynökével kell használnia, frissítsen a Azure File Sync Agent v 12.0 vagy újabb verzióra. A Robocopy/B a v 12.0-nál kisebb verziójú ügynök használatával a másolás során a rétegekből származó fájlok sérülését eredményezi.
 
 > [!Note]  
 > Az operációs rendszer nélküli (BMR) visszaállítás váratlan eredményekhez vezethet, és jelenleg nem támogatott.

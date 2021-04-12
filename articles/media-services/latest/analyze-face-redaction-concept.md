@@ -1,6 +1,6 @@
 ---
-title: Arcok kivonása Azure Media Services V3 API-ban | Microsoft Docs
-description: A Azure Media Services v3 olyan arcfelismerés és-kivonási beállításkészletet biztosít, amely lehetővé teszi egy videofájl beküldését, az arcok észlelését, valamint a rájuk való elmosódást egyetlen kombinált menetben, vagy egy kétlépéses művelettel, amely lehetővé teszi a szerkesztést. Ez a cikk bemutatja, hogyan lehet kimutatni az arcokat a V3 API-ban lévő Arcfelismerés készlettel.
+title: Arcok keresése és kivonása Azure Media Services V3 API-ban | Microsoft Docs
+description: A Azure Media Services v3 olyan arcfelismerés és-kivonási (életlenítési) készletet biztosít, amely lehetővé teszi egy videofájl beküldését, az arcok észlelését, valamint opcionálisan a kivonást (elmosódást) egyetlen kombinált menetben, vagy egy kétlépéses művelettel, amely lehetővé teszi a szerkesztést. Ez a cikk bemutatja, hogyan keresheti meg és takarja el az arcokat a V3 API-ban lévő Arcfelismerés készlettel.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6db93aa369366936c90446c41406eafe9ee6e414
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 4907a81fc8cb55499fa97f2b02a3e19e7117bbbc
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630397"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286385"
 ---
-# <a name="redact-faces-with-the-face-detector-preset"></a>Arcok kivonása a Face detektor készlettel
+# <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>Arcok keresése és kivonása (életlenítés) a Face detektor készlettel
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -29,10 +29,11 @@ Azure Media Services V3 API tartalmaz egy Arcfelismerés-készletet, amely skál
 
 Ez a cikk részletesen ismerteti a **Face detektor beállításkészletét** , és bemutatja, hogyan használható a .net-hez készült Azure Media Services SDK-val.
 
+[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
+
 ## <a name="compliance-privacy-and-security"></a>Megfelelőség, adatvédelem és biztonság
  
 Fontos megjegyezni, hogy be kell tartania az elemzések Azure Media Servicesban való használatának összes vonatkozó törvényét. Nem használhat Azure Media Services vagy bármely más Azure-szolgáltatást olyan módon, amely megsért mások jogait. Mielőtt bármilyen videót feltölt, beleértve a biometrikus adatokat is a Azure Media Services szolgáltatásba feldolgozásra és tárolásra, az összes megfelelő jogosultsággal kell rendelkeznie, beleértve a megfelelő hozzájárulásokat is a videóban található személyektől. A megfelelőség, az adatvédelem és a biztonság Azure Media Services az Azure [Cognitive Services feltételeinek](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)megismerése. A Microsoft adatvédelmi kötelezettségeivel és az adatok kezelésével kapcsolatban tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products) (OST) és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Az adatmegőrzéssel, törléssel és megsemmisítéssel kapcsolatos további adatvédelmi információk az OST-ben és [itt](../video-indexer/faq.md)érhetők el. A Azure Media Services használatával Ön vállalja, hogy a Cognitive Services feltételek, az OST, a DPA és az adatvédelmi nyilatkozat köti.
-
 
 ## <a name="face-redaction-modes"></a>Szembenéző kivonási módok
 
@@ -147,9 +148,6 @@ Példa foo_IDList.txt
 A **kombinált** vagy a **kivonási** módban öt különböző életlenítési mód közül választhat a JSON bemeneti konfigurációjának használatával: **alacsony**, **Med**, **magas**, **doboz** és **fekete**. Alapértelmezés szerint a **Med** használatos.
 
 Az alábbi életlenítési típusok mintáit találhatja meg.
-
-### <a name="example-settings-for-face-detector-preset"></a>Példa a Face detektor beállításkészletének beállításaira
-[!code-csharp[Main](../../../media-services-v3-dotnet/VideoAnalytics/FaceRedactor/Program.cs#FaceDetectorPreset)]
 
 
 #### <a name="low"></a>Alacsony

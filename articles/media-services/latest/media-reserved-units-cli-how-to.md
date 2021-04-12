@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 06c0c6333b84697415ef598d4c5e853d5c006f08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c5fa3aa8397ea6e13500717f035c414af8de8e3d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870160"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121676"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>A Media szolgáltatás számára fenntartott egységek méretezése
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan méretezhető a Media szolgáltatás számára fennt
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy Media Services fiókot](./create-account-howto.md).
+[Hozzon létre egy Media Services fiókot](./account-create-how-to.md).
 
 A [Media szolgáltatás számára fenntartott egységek](concept-media-reserved-units.md)ismertetése.
 
@@ -46,8 +46,8 @@ A számlázás a fiókban a Media szolgáltatás számára fenntartott egységek
 
 ## <a name="next-step"></a>Következő lépés
 
-[Videók elemzése](analyze-videos-tutorial-with-api.md)
+[Videók elemzése](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>Lásd még
 
-* [Kvóták és korlátok](limits-quotas-constraints.md)
+* [Kvóták és korlátok](limits-quotas-constraints-reference.md)

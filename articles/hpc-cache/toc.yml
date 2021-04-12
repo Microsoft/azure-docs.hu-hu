@@ -10,6 +10,8 @@
       href: hpc-cache-namespace.md
     - name: Gyorsítótár-használati modellek ismertetése
       href: cache-usage-models.md
+    - name: 'Döntse el, hogy a HPC cache a megfelelő megoldás-e'
+      href: usage-scenarios.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció
@@ -68,6 +70,8 @@
       href: hpc-cache-blob-firewall-fix.md
     - name: NFS-céltároló létrehozásának hibaelhárítása
       href: troubleshoot-nas.md
+    - name: Az NFS-hez csatlakoztatott blob Storage használata az Azure HPC cache használatával
+      href: nfs-blob-considerations.md
     - name: Helyreállítás regionális kimaradás után
       href: hpc-region-recovery.md
     - name: Ügyfél által kezelt titkosítási kulcsok használata

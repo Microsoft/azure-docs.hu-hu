@@ -8,20 +8,20 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/28/2020
+ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 3145a52a6050272c01cd7ccb64afef0b89812753
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169957"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107703"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure hálózati szolgáltatásai – áttekintés
 
 Az Azure hálózati szolgáltatásai különféle hálózati funkciókat biztosítanak, amelyek együtt vagy külön is használhatók. A következő főbb képességek bármelyikére kattintva további információkat tudhat meg róluk:
 - [**Csatlakozási szolgáltatások**](#connect): az Azure-erőforrások és a helyszíni erőforrások összekapcsolása az azure-Virtual Network (VNet), a Virtual WAN, a ExpressRoute, a VPN Gateway, a Virtual Network NAT Gateway, a Azure DNS, a peering Service és az Azure Bastion használatával.
-- [**Alkalmazás-védelmi szolgáltatások**](#protect): az alkalmazásokat az Azure-Private link, a DDoS Protection, a tűzfal, a hálózati biztonsági csoportok, a webalkalmazási tűzfal és a Virtual Network végpontok bármely vagy több kombinációjának használatával biztosíthatja az alkalmazások védelmére.
+- [**Application Protection Services**](#protect): az alkalmazások védelmét az Azure-Load Balancer, a magánhálózati kapcsolat, a DDoS Protection, a tűzfal, a hálózati biztonsági csoportok, a webalkalmazási tűzfal és a Virtual Network végpontok bármely vagy több kombinációja használja.
 - [**Application Delivery Services**](#deliver): az Azure-hálózatban lévő alkalmazásokat az azure-Content DELIVERY Network (CDN), az Azure bejárati szolgáltatás, a Traffic Manager, a Application Gateway, az Internet Analyzer és a Load Balancer használatával biztosíthatja.
 - [**Hálózatfigyelő**](#monitor): az Azure-Network Watcher, a ExpressRoute monitor, a Azure monitor vagy a VNet terminál-hozzáférési pont (TAP) használatával figyelheti a hálózati erőforrásokat.
 
@@ -158,13 +158,13 @@ Az alábbi ábra az URL-alapú útválasztást Application Gatewaysal mutatja.
 :::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Application Gateway példa":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Hálózati figyelési szolgáltatások
-Ez a szakasz az Azure hálózati szolgáltatásait ismerteti, amelyek segítenek a hálózati erőforrások figyelésében – Network Watcher, hálózatok Azure Monitor, ExpressRoute, Azure Monitor és Virtual Network KOPPINTanak.
+Ez a szakasz az Azure hálózati szolgáltatásait ismerteti, amelyek segítenek a hálózati erőforrások figyelésében – Network Watcher, Azure Monitor hálózati információk, Azure Monitor, ExpressRoute-figyelő és Virtual Network KOPPINTanak.
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Network Watcher
 Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti azok metrikáit, és engedélyezheti vagy letiltja azok naplóit. További információ: [Mi az Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
-### <a name="azure-monitor-for-networks-preview"></a>Hálózatok Azure Monitor előzetes verzió
-A hálózatok Azure Monitor az összes telepített hálózati erőforrás állapotának és metrikáinak átfogó áttekintését teszi lehetővé anélkül, hogy konfigurációt kellene igényelni. Emellett hozzáférést biztosít a hálózati figyelési funkciókhoz, például a [kapcsolati figyelőhöz](../../network-watcher/connection-monitor-overview.md), [a hálózati biztonsági csoportokhoz tartozó adatfolyam-naplózáshoz](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)és a [Traffic Analyticshoz](../../network-watcher/traffic-analytics.md). További információ: [Azure monitor for Networks Preview](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="azure-monitor-network-insights"></a>Azure Monitor hálózati adatfelismerés
+A hálózatok Azure Monitor az összes telepített hálózati erőforrás állapotának és metrikáinak átfogó áttekintését teszi lehetővé anélkül, hogy konfigurációt kellene igényelni. Emellett hozzáférést biztosít a hálózati figyelési funkciókhoz, például a [kapcsolati figyelőhöz](../../network-watcher/connection-monitor-overview.md), [a hálózati biztonsági csoportokhoz tartozó adatfolyam-naplózáshoz](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)és a [Traffic Analyticshoz](../../network-watcher/traffic-analytics.md). További információ: [Azure monitor hálózati](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)információk.
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute-figyelő
 A ExpressRoute-áramköri metrikák, az erőforrás-naplók és a riasztások megtekintésével kapcsolatban lásd: [ExpressRoute-figyelés,-metrikák és-riasztások](../../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).

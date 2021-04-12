@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 189a89276d922665dd1ad0fbacc77ba499137048
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c41543cdfff4e5ffaad614f6cb7a539d78a0bdae
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99253102"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105561"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Az alkalmazások beleegyezett az alkalmazásokkal és az engedélyezési kérelmek kiértékelésével
 
@@ -26,7 +26,7 @@ A végfelhasználók belefoglalásának letiltását vagy korlátozását követ
 
 ## <a name="process-changes-and-education"></a>Folyamatok változásai és oktatás
 
- 1. Érdemes lehet engedélyezni a rendszergazdai [hozzájárulási munkafolyamatot (előzetes verzió)](configure-admin-consent-workflow.md) , hogy a felhasználók közvetlenül a beleegyezési képernyőről kérjenek rendszergazdai jóváhagyást.
+ 1. Érdemes lehet engedélyezni a rendszergazdai [hozzájárulási munkafolyamatot](configure-admin-consent-workflow.md) , hogy a felhasználók közvetlenül a beleegyezési képernyőn kérjenek rendszergazdai jóváhagyást.
 
  2. Győződjön meg arról, hogy az összes rendszergazda tisztában van az [engedélyek és a hozzájárulási keretrendszerrel](../develop/consent-framework.md), hogyan működik a [hozzájárulási](../develop/application-consent-experience.md) kérés, és hogyan [értékelhető ki a bérlői szintű rendszergazdai hozzájárulás iránti kérelem](#evaluating-a-request-for-tenant-wide-admin-consent).
  3. Tekintse át a szervezete meglévő folyamatait, hogy a felhasználók rendszergazdai jóváhagyást kérjenek egy alkalmazáshoz, és szükség esetén végezze el a szükséges frissítéseket. Ha a folyamatok módosulnak:

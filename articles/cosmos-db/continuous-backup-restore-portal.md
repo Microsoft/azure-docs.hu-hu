@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan azonosíthatja a visszaállítási pontot, és 
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 707ef9f60891c1da7c13638e233ee74e78fc20dd
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381868"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283937"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>A folyamatos biztonsági mentés és az időponthoz tartozó visszaállítás (előzetes verzió) konfigurálása és kezelése – Azure Portal
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -32,6 +32,10 @@ Ez a cikk a visszaállítási pont azonosítását és a folyamatos biztonsági 
 
 :::image type="content" source="./media/continuous-backup-restore-portal/configure-continuous-backup-portal.png" alt-text="Folyamatos biztonsági mentési konfigurációval rendelkező Azure Cosmos DB fiók kiépítése." border="true":::
 
+## <a name="backup-storage-redundancy"></a>Biztonsági mentési tár redundancia
+
+Alapértelmezés szerint a Azure Cosmos DB a folyamatos módú biztonsági mentési értékeket a helyileg redundáns tárolási blobokban tárolja. Azon régiók esetében, amelyeknél konfigurálva van a zóna-redundancia, a biztonsági mentést a zóna redundáns tárolási blobokban tárolja a rendszer. Ebben a módban nem frissíthető a biztonsági mentési tár redundáns felépítése.
+
 ## <a name="restore-a-live-account-from-accidental-modification"></a><a id="restore-live-account"></a>Élő fiók visszaállítása véletlen módosításból
 
 A Azure Portal használatával visszaállíthat egy élő fiókot vagy a hozzá tartozó kiválasztott adatbázisokat és tárolókat. Az alábbi lépéseket követve állíthatja vissza az adatait:
@@ -46,7 +50,7 @@ A Azure Portal használatával visszaállíthat egy élő fiókot vagy a hozzá 
 
    * **Visszaállítási pont (UTC)** – az elmúlt 30 napban megadott időbélyeg. A fióknak léteznie kell az időbélyegen. Megadhatja a visszaállítási pontot UTC szerint. Ha vissza kívánja állítani, a másodikhoz is megközelítheti a szolgáltatást. A **kattintson ide hivatkozásra kattintva** kérjen segítséget a [visszaállítási pont azonosításához](#event-feed).
 
-   * **Location (hely** ) – a célhely, ahol a fiók vissza van állítva. A fióknak ebben a régióban kell lennie az adott időbélyegzőn (például USA nyugati régiója vagy az USA keleti régiója). Egy fiók csak azokra a régiókba állítható vissza, amelyekben a forrásoldali fiók létezett.
+   * **Location (hely** ) – a célhely, ahol a fiók vissza van állítva. A fióknak ebben a régióban kell lennie az adott időbélyegzőn (például az USA nyugati régiója vagy az USA keleti régiója). Egy fiók csak azokra a régiókba állítható vissza, amelyekben a forrásoldali fiók létezett.
 
    * **Erőforrás-visszaállítás** – kiválaszthatja a **teljes fiókot** vagy egy **kijelölt adatbázist/tárolót** a visszaállításhoz. Az adatbázisoknak és a tárolóknak léteznie kell a megadott időbélyegzőn. A visszaállítási pont és a hely kiválasztása alapján a visszaállítási erőforrások fel vannak töltve, ami lehetővé teszi, hogy a felhasználó kiválassza a visszaállítani kívánt adatbázisokat vagy tárolókat.
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e257209060396fbf45a4a24c38bc6950acb5168
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101736610"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387026"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
 
@@ -28,6 +28,7 @@ ms.locfileid: "101736610"
 | Angol               |     `en`      |     ✓      |         2019-10-01         |                    |
 | Francia                |     `fr`      |     ✓      |         2019-10-01         |                    |
 | Német                |     `de`      |     ✓      |         2019-10-01         |                    |
+| Hindi                 |    `hi`       |     ✓      |         2020-04-01         |                    |
 | Olasz               |     `it`      |     ✓      |         2019-10-01         |                    |
 | Japán              |     `ja`      |     ✓      |         2019-10-01         |                    |
 | Koreai                |     `ko`      |    ✓      |         2019-10-01         |                    |

@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c38c0a3b28e186a9e94a2f49142a4893634e0024
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 319195b73edf7140b812d1c892e3058c8ba2e182
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125730"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283258"
 ---
 <!--Feature availability in region-->
 ## <a name="australia"></a>Ausztrália
@@ -21,5 +21,5 @@ ms.locfileid: "106125730"
 | [AudioAnalyzerPreset](../analyze-video-audio-files-concept.md) | | |![AudioAnalyzerPreset Kelet-Ausztrália általánosan elérhető](../media/azure-clouds-regions/ga.svg) |![AudioAnalyzerPreset Ausztrália délkeleti régiója – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encode-concept.md) | | |![StandardEncoderPreset Kelet-Ausztrália általánosan elérhető](../media/azure-clouds-regions/ga.svg) |![StandardEncoderPreset Ausztrália délkeleti régiója – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
 | [LiveEvents](../stream-live-streaming-concept.md) | | |![LiveEvents Kelet-Ausztrália általánosan elérhető](../media/azure-clouds-regions/ga.svg) |![LiveEvents Ausztrália délkeleti régiója – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
-| [StreamingEndpoints](../streaming-endpoint-concept.md) | | |![StreamingEndpoints Kelet-Ausztrália általánosan elérhető](../media/azure-clouds-regions/ga.svg) |![StreamingEndpoints Ausztrália délkeleti régiója – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
+| [StreamingEndpoints](../stream-streaming-endpoint-concept.md) | | |![StreamingEndpoints Kelet-Ausztrália általánosan elérhető](../media/azure-clouds-regions/ga.svg) |![StreamingEndpoints Ausztrália délkeleti régiója – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
 | [LiveTranscription](../live-event-live-transcription-how-to.md) | | |![LiveTranscription Kelet-Ausztrália általánosan elérhető](../media/azure-clouds-regions/ga.svg) |![LiveTranscription Ausztrália délkeleti régiója – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |

@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-nodejs-uiex
-ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b1ff02d6a9b3e8c7b7abaf1b185a9becd2be12b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735114"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105833"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -313,11 +313,11 @@ Az alkalmazás módosításait ugyanazzal a folyamattal telepítheti, és a megl
 
 Ebből a szakaszból megtudhatja, hogyan tekintheti meg (vagy "farok") a naplókat a futó App Service alkalmazásból. Az `console.log` alkalmazásban megjelenő hívások a Visual Studio Code kimenet ablakában jelennek meg.
 
-Keresse meg az alkalmazást az **Azure app Service** Explorerben, kattintson a jobb gombbal az alkalmazásra, majd válassza a **folyamatos átviteli naplók megtekintése** lehetőséget.
+Keresse meg az alkalmazást az **Azure app Service** Explorerben, kattintson a jobb gombbal az alkalmazásra, majd válassza a **streaming naplók indítása** lehetőséget.
 
 Megnyílik a VS Code kimenet ablak a log streamtel létesített kapcsolatban.
 
-![Folyamatos átviteli naplók megtekintése](./media/quickstart-nodejs/view-logs.png)
+![Adatfolyam-naplók indítása](./media/quickstart-nodejs/view-logs.png)
 
 :::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Képernyőfelvétel a VS Code parancssorról a fájlok naplózásának engedélyezéséhez és a webalkalmazás újraindításához az igen gomb kiválasztásával.":::
 

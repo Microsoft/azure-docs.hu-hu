@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/04/2021
-ms.openlocfilehash: 7ffb5a3dfd23a1515c6d21784b82ccdbf0674f0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb954a32a4e598c45578d4b06606bc133babb50d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593407"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107152"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>A OCP GTM közös értékesítési megoldásainak áttelepítése a kereskedelmi piactérre
 
@@ -32,7 +32,7 @@ A kereskedelmi piactéren regisztrált Microsoft-partnerként a következőket t
 Győződjön meg arról, hogy aktív Microsoft Partner Network tagsággal rendelkezik, és regisztrálva van a kereskedelmi piactéren a partner Centerben.
 
 - Csatlakoztassa [a Microsoft Partner Network](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)díjmentesen. Partnerként exkluzív erőforrásokhoz, programokhoz, eszközökhöz és kapcsolatokhoz férhet hozzá vállalkozása növekedéséhez.
-- Ha nem rendelkezik fiókkal a kereskedelmi piactéren, [Regisztráljon most](partner-center-portal/create-account.md) , hogy folytassa a Microsofttal való közös értékesítést, és hozzáfér a teljes körű közzétételi élményhez.
+- Ha nem rendelkezik fiókkal a kereskedelmi piactéren, [Regisztráljon most](create-account.md) , hogy folytassa a Microsofttal való közös értékesítést, és hozzáfér a teljes körű közzétételi élményhez.
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Frissítések közzététele a közös értékesítésre kész állapot eléréséhez
 
@@ -45,7 +45,7 @@ Miután regisztrált a kereskedelmi piactéren, készítse elő a megoldásait a
 
 Kövesse az alábbi lépéseket a megoldások OCP GTM való importálása előtt:
 
-1. Látogasson el a vállalat [közzétevői listájára](https://partner.microsoft.com/dashboard/account/v3/publishers/list). Ez magában foglalja a fiók tulajdonosát, feletteseit és fejlesztőit, akik hozzáférés-közzétételi jogosultsággal rendelkeznek. További információ a [partneri központ felhasználói szerepköreiről](./partner-center-portal/manage-account.md#define-user-roles-and-permissions).
+1. Látogasson el a vállalat [közzétevői listájára](https://partner.microsoft.com/dashboard/account/v3/publishers/list). Ez magában foglalja a fiók tulajdonosát, feletteseit és fejlesztőit, akik hozzáférés-közzétételi jogosultsággal rendelkeznek. További információ a [partneri központ felhasználói szerepköreiről](user-roles.md).
 2. Kérje meg az egyik felsorolt partnert, hogy a felhasználók a kereskedelmi piactéren *vezetőként* vagy *fejlesztőként* [vegyenek fel felhasználókat](https://partner.microsoft.com/dashboard/account/usermanagement) , mivel csak ezek a szerepkörök szerkeszthetik és tehetik közzé a megoldásokat.
 3. Működjön együtt a fejlesztővel, hogy a megoldásokat a OCP GTM-fiókjából a kereskedelmi piactérre helyezze át.
 4. Döntse el, hogy a következők közül melyiket kívánja elvégezni:
@@ -97,7 +97,7 @@ Akkor válassza ezt a lehetőséget, ha olyan OCP GTM-megoldásra van szüksége
 
     [![Az áttelepítési folyamat 1. művelet lapja.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
-1. A **2. művelet** lapon válassza ki a [közzétevői profilt](partner-center-portal/create-account.md) a megadott listából. Ha nem rendelkezik közzétevői fiókkal, hozzon létre egyet a [partner Centerben](https://partner.microsoft.com/solutions/migration), és válassza ki itt.
+1. A **2. művelet** lapon válassza ki a [közzétevői profilt](create-account.md) a megadott listából. Ha nem rendelkezik közzétevői fiókkal, hozzon létre egyet a [partner Centerben](https://partner.microsoft.com/solutions/migration), és válassza ki itt.
 
     [![Az áttelepítési folyamat 2. művelet lapja.](media/co-sell-migrate/action-2-migrate.png)](media/co-sell-migrate/action-2-migrate.png#lightbox)
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98797788"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029726"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -30,7 +30,7 @@ A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fió
 
 A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Name|Definíció|Leírás|
+|Name|Definíció|Description|
 |---|---|---|
 |`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
 |`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
@@ -43,7 +43,7 @@ A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amel
 
 A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Definíció|Leírás|
+|Name|Definíció|Description|
 |---|---|---|
 |`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
 |`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
@@ -57,7 +57,7 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 
 A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Definíció|Leírás|
+|Name|Definíció|Description|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
 |`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
@@ -66,16 +66,15 @@ A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókb
 
 <sup>*</sup>A tulajdonosnak körültekintően kell megadnia `accessToken` .
 
-## <a name="embedding-videos"></a>Videók beágyazása
+## <a name="embed-videos"></a>Videók beágyazása
 
-Ebből a szakaszból megtudhatja, hogyan ágyazhatja be a nyilvános és a magánjellegű tartalmakat az alkalmazásokba.
+Ez a szakasz [a videók a portál használatával](#the-portal-experience) történő beágyazását, illetve [az URL-cím manuális összeállítását](#assemble-the-url-manually) ismerteti az alkalmazásokban. 
 
 A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial` a paraméter alapértelmezett értéke `location` . Példa: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
-> [!IMPORTANT]
-> Ha megoszt egy hivatkozást a **lejátszóhoz** **vagy az** adatelérési eszközhöz, a hozzáférési jogkivonatot fogja tartalmazni, és megadja a csak olvasási jogosultságokat a fiókjához.
+### <a name="the-portal-experience"></a>A portál felülete
 
-### <a name="public-content"></a>Nyilvános tartalom
+Videó beágyazásához használja a portált az alább leírtak szerint:
 
 1. Jelentkezzen be a [video Indexer](https://www.videoindexer.ai/) webhelyére.
 1. Válassza ki a használni kívánt videót, és nyomja meg a **Lejátszás** gombot.
@@ -84,18 +83,27 @@ A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lás
 5. Másolja a beágyazási kódot (ekkor megjelenik a **beágyazott kód másolása** a **megosztás & beágyazási** párbeszédpanelen).
 6. Adja hozzá a kódot az alkalmazáshoz.
 
-### <a name="private-content"></a>Magánjellegű tartalom
+> [!NOTE]
+> Ha megoszt egy hivatkozást a **lejátszóhoz** **vagy az** adatelérési eszközhöz, a hozzáférési jogkivonatot fogja tartalmazni, és megadja a csak olvasási jogosultságokat a fiókjához.
 
-Privát videó beágyazásához át kell adnia egy hozzáférési jogkivonatot az `src` iframe-attribútumban:
+### <a name="assemble-the-url-manually"></a>Az URL-cím manuális összeállítása
+
+#### <a name="public-videos"></a>Nyilvános videók
+
+Az URL-címet a következőképpen ágyazhatja össze:
+
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>`
+  
+  
+#### <a name="private-videos"></a>Privát videók
+
+Privát videó beágyazásához át kell adnia egy hozzáférési jogkivonatot (a [Get video Access-Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) használata az `src` iframe attribútumában:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
-    
-Az alábbi módszerek egyikével szerezheti be a kognitív ismereteket ismertető widget tartalmát:
+  
+### <a name="provide-editing-insights-capabilities"></a>Adja meg a szerkesztési ismeretek funkcióit
 
-- Az eredmények [lekérése widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API.<br/>
-- A [videó-hozzáférési jogkivonat beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Adja hozzá lekérdezési paraméterként az URL-címhez. Ezt az URL-címet állítsa `src` be az IFRAME értékeként a korábban látható módon.
-
-A beágyazott widget szerkesztési információinak megadásához olyan hozzáférési jogkivonatot kell átadnia, amely szerkesztési engedélyeket tartalmaz. Használja az információ [beolvasása widgetet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) vagy a [videó-hozzáférési token beszerzése elemet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) `&allowEdit=true` .
+A beágyazott widget szerkesztési információinak megadásához olyan hozzáférési jogkivonatot kell átadnia, amely szerkesztési engedélyeket tartalmaz. A [videó-hozzáférési token beszerzése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) a alkalmazással `&allowEdit=true` .
 
 ## <a name="widgets-interaction"></a>Vezérlőinterakciók
 
@@ -291,7 +299,7 @@ Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. `&autoplay=
 
 Tekintse meg a [Code Samples](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) -tárházat, amely mintákat tartalmaz video Indexer API-hoz és widgetekhez:
 
-| Fájl/mappa                       | Leírás                                |
+| Fájl/mappa                       | Description                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | Videó-indexelő videó betöltése egyéni Azure Media Playerban.                        |
 | `azure-media-player-vi-insights`  | A VI-betekintést egyéni Azure Media Player ágyazhatja be.                             |

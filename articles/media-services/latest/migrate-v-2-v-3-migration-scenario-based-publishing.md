@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: c0108cf07f1c734ccf4b6e42c013f7237eb7daf2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 0a0052fa3d78a3b77094cfccbd4c011321ac5925
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122067"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279017"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Csomagolási és kézbesítési forgatókönyv-alapú áttelepítési útmutató
 
@@ -31,7 +31,7 @@ A tartalom a V3 API-ban való közzétételének jelentős változásai. Az új 
 ## <a name="packaging-and-delivery-in-v3"></a>Csomagolás és kézbesítés v3-ban
 
 1. Hozzon létre [tartalmi kulcsokra vonatkozó házirendeket](drm-content-key-policy-concept.md).
-1. [Adatfolyam-lokátorok](streaming-locators-concept.md)létrehozása.
+1. [Adatfolyam-lokátorok](stream-streaming-locators-concept.md)létrehozása.
 1. A [folyamatos átviteli útvonalak](create-streaming-locator-build-url.md) beszerzése 
     1. Konfigurálja a [kötőjel](encode-dynamic-packaging-concept.md#mpeg-dash-protocol) -vagy [HLS](encode-dynamic-packaging-concept.md#hls-protocol) -lejátszót.
 
@@ -44,20 +44,20 @@ Az egyes lépésekkel kapcsolatos fogalmakat, oktatóanyagokat és útmutatókat
 - [Dinamikus csomagolás a Media Services v3-ban](encode-dynamic-packaging-concept.md)
 - [Szűrők](filters-concept.md)
 - [A jegyzékfájlok szűrése dinamikus csomagoló használatával](filters-dynamic-manifest-concept.md)
-- [Streaming-végpontok (forrás) Azure Media Services](streaming-endpoint-concept.md)
-- [Tartalom továbbítása CDN-integrációval](scale-streaming-cdn.md)
-- [Folyamatos átviteli lokátorok](streaming-locators-concept.md)
+- [Streaming-végpontok (forrás) Azure Media Services](stream-streaming-endpoint-concept.md)
+- [Tartalom továbbítása CDN-integrációval](stream-scale-streaming-cdn-concept.md)
+- [Folyamatos átviteli lokátorok](stream-streaming-locators-concept.md)
 
 ### <a name="how-to-guides"></a>Útmutatók
 
-- [Adatfolyam-végpontok kezelése Media Services v3-val](manage-streaming-endpoints-howto.md)
+- [Adatfolyam-végpontok kezelése Media Services v3-val](stream-manage-streaming-endpoints-how-to.md)
 - [CLI-példa: Objektum közzététele](cli-publish-asset.md)
 - [Streamelési lokátor létrehozása és URL-címek összeállítása](create-streaming-locator-build-url.md)
 - [Feladatok eredményének letöltése](job-download-results-how-to.md)
 - [Jel leíró hangsávok](signal-descriptive-audio-howto.md)
 - [Az Azure Media Player teljes telepítése](../azure-media-player/azure-media-player-full-setup.md)
-- [Az Video.js-lejátszó használata a Azure Media Services](how-to-video-js-player.md)
-- [A Azure Media Services használatával](how-to-shaka-player.md)
+- [Az Video.js-lejátszó használata a Azure Media Services](player-how-to-video-js-player.md)
+- [A Azure Media Services használatával](player-shaka-player-how-to.md)
 
 ## <a name="samples"></a>Példák
 

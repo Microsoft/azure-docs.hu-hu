@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: f83f743b692ae5a625a4c881b12cbad999f1f606
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106768"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492239"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Kiszolgálói paraméterek Azure Database for MySQL – rugalmas kiszolgáló
 
@@ -39,9 +39,11 @@ Az alábbi részekben tájékozódhat a számos gyakran frissített kiszolgáló
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-Azure Database for MySQL rugalmas kiszolgálón a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*. 
+Azure Database for MySQL rugalmas kiszolgálón a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). a log_bin_trust_function_creators alapértelmezés szerint be van kapcsolva a rugalmas kiszolgálókon. 
 
-A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **true (igaz**) lehet.
+A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így biztonságosan engedélyezheti [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **a** használatát.
+
+Ha a [ `log_bin_trust_function_creators` ] értéke KIkapcsolva értékre van állítva, az eseményindítók létrehozásához hasonló hibaüzenetek jelenhetnek meg, ha *nem rendelkezik a felügyelői jogosultsággal, és a bináris naplózás engedélyezve van (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*. 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

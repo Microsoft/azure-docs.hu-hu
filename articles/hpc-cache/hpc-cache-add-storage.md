@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772722"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259030"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -314,6 +314,8 @@ A ADLS-NFS tárolási célpontok némelyike hasonlóságot mutat a blob Storage-
 
 A ADLS-NFS tárolási cél létrehozása előtt létre kell hoznia egy NFS-kompatibilis Storage-fiókot. Kövesse az [Azure HPC cache előfeltételeinek](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) és a [blob Storage csatlakoztatása az NFS használatával](../storage/blobs/network-file-system-protocol-support-how-to.md)című témakör útmutatásait. A Storage-fiók beállítása után létrehozhat egy új tárolót a tárolási cél létrehozásakor.
 
+A konfigurációval kapcsolatos további információkért olvassa el az [NFS-hez csatlakoztatott blob Storage használata az Azure HPC cache használatával](nfs-blob-considerations.md) című témakört.
+
 ADLS-NFS tárolási cél létrehozásához nyissa meg a **tároló hozzáadása** lapot a Azure Portal. (A további módszerek fejlesztés alatt állnak.)
 
 ![Képernyőfelvétel a tárolási cél hozzáadása oldalról a ADLS-NFS-célhoz definiált](media/add-adls-target.png)
@@ -331,8 +333,6 @@ Adja meg ezt az információt.
 * **Használati modell** – válassza ki az egyik adatgyorsítótárazási profilt a munkafolyamat alapján, a fenti [használati modell kiválasztása](#choose-a-usage-model) című részben leírtak szerint.
 
 Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
-
-<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Tárolási célok megtekintése
 

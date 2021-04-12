@@ -6,16 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cba9615a8c76387b593109bc2174ab4718f1750a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 59f70659f25f925f8f802b0fcaa1f61d4e7f7dc0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609309"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106938"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>A Azure Database for MySQL-kompatibilis MySQL-illesztőprogramok és-felügyeleti eszközök
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
-Ez a cikk a Azure Database for MySQL kompatibilis illesztőprogramokat és felügyeleti eszközöket ismerteti.
+
+Ez a cikk azokat az illesztőprogramokat és felügyeleti eszközöket ismerteti, amelyek kompatibilisek Azure Database for MySQL egyetlen kiszolgálóval.
+
+>[!NOTE]
+>Ez a cikk csak Azure Database for MySQL egyetlen kiszolgálóra vonatkozik, hogy az illesztőprogramok kompatibilisek legyenek az egykiszolgálós szolgáltatás [kapcsolati architektúrával](concepts-connectivity-architecture.md) . [Azure Database for MySQL rugalmas kiszolgáló](/../flexible-server/overview.md) kompatibilis a MySQL Community Edition-vel támogatott és kompatibilis összes illesztőprogrammal és eszközzel. 
 
 ## <a name="mysql-drivers"></a>MySQL-illesztőprogramok
 Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi kiadását használja. Ezért kompatibilis a programozási nyelvek és illesztőprogramok széles választékával. A cél az, hogy támogassa a legújabb MySQL-illesztőprogramokat, és a nyílt forráskódú Közösségből származó szerzőkkel folytatott erőfeszítésekkel folyamatosan javítsa a MySQL-illesztőprogramok funkcióit és használhatóságát. A tesztelt és a Azure Database for MySQL 5,6-es és 5,7-es verzióval kompatibilis illesztőprogramok listáját az alábbi táblázat tartalmazza:

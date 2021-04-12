@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b6a1ead2fe3c1ec4e2206d1ffbaea4e5ec57433
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059381"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222521"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -42,7 +42,7 @@ Tegyük fel például, hogy a Woodgrove bankban dolgozik, és két külső szerv
 - A Graphic Design Institute az Azure AD-t használja, és a felhasználók egyszerű felhasználónevet használnak, amely a *graphicdesigninstitute.com*-mel végződik.
 - A contoso még nem használja az Azure AD-t. A contoso felhasználói egyszerű felhasználónevet biztosítanak, amely a *contoso.com* végződik.
 
-Ebben az esetben két csatlakoztatott szervezetet is beállíthat. Létre kell hoznia egy csatlakoztatott szervezetet a Graphic Design Institute számára, és egyet a contoso számára. Ha ezt követően hozzáadja a két csatlakoztatott szervezetet egy szabályzathoz, akkor az egyes szervezetek felhasználóinak a szabályzatnak megfelelő egyszerű felhasználónevet igényelhetnek hozzáférési csomagokat. A *graphicdesigninstitute.com* tartománnyal rendelkező felhasználói egyszerű névvel rendelkező felhasználók megegyeznek a grafikai tervezési intézményhez csatlakoztatott szervezettel, és a kérések elküldésére jogosultak. A *contoso.com* tartománnyal rendelkező felhasználói egyszerű névvel rendelkező felhasználók megegyeznek a contoso által csatlakoztatott szervezettel, és csomagok igénylésére is jogosultak. És mivel a grafikai tervező Intézet az Azure AD-t használja, minden olyan felhasználó, aki a bérlőhöz hozzáadott [ellenőrzött tartományhoz](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) tartozó egyszerű névvel rendelkezik, például a *graphicdesigninstitute. example*, a hozzáférési csomagokat ugyanezen házirend használatával is kérheti.
+Ebben az esetben két csatlakoztatott szervezetet is beállíthat. Létre kell hoznia egy csatlakoztatott szervezetet a Graphic Design Institute számára, és egyet a contoso számára. Ha ezt követően hozzáadja a két csatlakoztatott szervezetet egy szabályzathoz, akkor az egyes szervezetek felhasználóinak a szabályzatnak megfelelő egyszerű felhasználónevet igényelhetnek hozzáférési csomagokat. A contoso.com tartománnyal rendelkező felhasználói egyszerű névvel rendelkező felhasználók megegyeznek a contoso által csatlakoztatott szervezettel, és csomagok igénylésére is jogosultak. A *graphicdesigninstitute.com* tartománnyal rendelkező felhasználói egyszerű névvel rendelkező felhasználók megegyeznek a grafikai tervezési intézményhez csatlakoztatott szervezettel, és a kérések elküldésére jogosultak. És mivel a grafikai tervező Intézet az Azure AD-t használja, minden olyan felhasználó, aki a bérlőhöz hozzáadott [ellenőrzött tartományhoz](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) tartozó egyszerű névvel rendelkezik, például a *graphicdesigninstitute. example*, a hozzáférési csomagokat ugyanezen házirend használatával is kérheti. Ha be van kapcsolva a [levelezésre vonatkozó egyszeri jelszavas (OTP) hitelesítés](../external-identities/one-time-passcode.md) , amely olyan tartományokból származó felhasználókat is tartalmaz, akik még nem rendelkeznek Azure ad-fiókkal, és az erőforrásokhoz való hozzáféréskor hitelesítve lesznek az e-mailek OTP használatával. 
 
 ![Példa csatlakoztatott szervezetre](./media/entitlement-management-organization/connected-organization-example.png)
 

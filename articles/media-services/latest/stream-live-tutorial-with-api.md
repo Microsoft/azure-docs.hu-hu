@@ -28,14 +28,14 @@ Ez az oktatóanyag a következőket mutatja be:
 Az oktatóanyag elvégzésének feltételei a következők:
 
 - Telepítse a Visual Studio Code vagy a Visual Studio alkalmazást.
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy JSON formátumban másolja az API-hozzáférési adatokat, vagy tárolja a Media Services fiókhoz való kapcsolódáshoz szükséges értékeket az ebben a mintában használt. env fájlformátumban.
+- [Hozzon létre egy Media Services fiókot](./account-create-how-to.md).<br/>Ügyeljen arra, hogy JSON formátumban másolja az API-hozzáférési adatokat, vagy tárolja a Media Services fiókhoz való kapcsolódáshoz szükséges értékeket az ebben a mintában használt. env fájlformátumban.
 - Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez a mintában kell használni, vagy a. env fájlformátumban kell megadnia őket. 
 - Egy olyan kamera vagy eszköz (például laptop), amely az események közvetítésére szolgál.
-- Egy helyszíni kódoló, amely kódolja a kamerás adatfolyamot, és elküldi azt a Media Services élő adatfolyam-továbbítási szolgáltatásnak az RTMP protokoll használatával, lásd: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md). A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.  
+- Egy helyszíni kódoló, amely kódolja a kamerás adatfolyamot, és elküldi azt a Media Services élő adatfolyam-továbbítási szolgáltatásnak az RTMP protokoll használatával, lásd: [ajánlott helyszíni élő kódolók](encode-recommended-on-premises-live-encoders.md). A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.  
 - Ehhez a mintához ajánlott egy szoftveres kódolóval kezdeni, például az ingyenes [nyílt forráskódú szoftver OBS Studio](https://obsproject.com/download) használatával, így egyszerűen elsajátíthatja az első lépéseket. 
 
 > [!TIP]
-> Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](live-streaming-overview.md) bemutató cikket. 
+> Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](stream-live-streaming-concept.md) bemutató cikket. 
 
 ## <a name="download-and-configure-the-sample"></a>A minta letöltése és konfigurálása
 
@@ -70,15 +70,15 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-a-live-event"></a>Élő esemény létrehozása
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre **áteresztő** típusú élő eseményt (a LiveEventEncodingType beállítása none). További információ az élő események egyéb elérhető típusairól: [élő eseménytípus](live-events-outputs-concept.md#live-event-types). Az áteresztőn kívül élő transcoding Live-eseményt is használhat 720P vagy 1080P adaptív sávszélességű felhőalapú kódoláshoz. 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre **áteresztő** típusú élő eseményt (a LiveEventEncodingType beállítása none). További információ az élő események egyéb elérhető típusairól: [élő eseménytípus](live-event-outputs-concept.md#live-event-types). Az áteresztőn kívül élő transcoding Live-eseményt is használhat 720P vagy 1080P adaptív sávszélességű felhőalapú kódoláshoz. 
  
 Néhány dolog, amit érdemes megadnia az élő esemény létrehozásakor:
 
 * Az élő esemény betöltési protokollja (jelenleg az RTMP (k) és a Smooth Streaming protokollok támogatottak).<br/>A protokoll beállítás nem módosítható, amíg az élő esemény vagy a hozzá tartozó élő kimenet fut. Ha eltérő protokollokra van szüksége, hozzon létre külön élő eseményt az egyes streaming protokollokhoz.  
 * IP-korlátozások a betöltési és az előnézeti címen. Megadhatja azokat az IP-címeket, amelyek számára engedélyezett az élő esemény Videójának beolvasása. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.<br/>Ha nincs megadva IP-cím, és nincs szabály definíciója, akkor a rendszer nem engedélyezi az IP-címet. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.<br/>Az IP-címnek a következő formátumok egyikében kell lennie: IpV4-cím, amely négy számot vagy CIDR-címtartományt tartalmaz.
-* Az esemény létrehozásakor megadhatja az automatikus indítást. <br/>Ha az autostart értéke TRUE (igaz), a rendszer az élő eseményt a létrehozás után indítja el. Ez azt jelenti, hogy a számlázás azonnal elindul, amint az élő esemény fut. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását. További információ: [élő események állapota és számlázása](live-event-states-billing.md).
+* Az esemény létrehozásakor megadhatja az automatikus indítást. <br/>Ha az autostart értéke TRUE (igaz), a rendszer az élő eseményt a létrehozás után indítja el. Ez azt jelenti, hogy a számlázás azonnal elindul, amint az élő esemény fut. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását. További információ: [élő események állapota és számlázása](live-event-states-billing-concept.md).
 Rendelkezésre állnak készenléti üzemmódok is az élő esemény elindításához a "lefoglalt" állapotnál, amely gyorsabban áthelyezhető a "Running" állapotba. Ez olyan helyzetekben hasznos, mint a hotpools, amelyeknek gyorsan kell kiadniuk a csatornákat a streamek számára.
-* Ahhoz, hogy egy betöltési URL-cím prediktív és könnyebben karbantartható legyen egy hardveres élő kódolóban, állítsa az "useStaticHostname" tulajdonságot igaz értékre. Részletes információk: élő események betöltésének [URL-címei](live-events-outputs-concept.md#live-event-ingest-urls).
+* Ahhoz, hogy egy betöltési URL-cím prediktív és könnyebben karbantartható legyen egy hardveres élő kódolóban, állítsa az "useStaticHostname" tulajdonságot igaz értékre. Részletes információk: élő események betöltésének [URL-címei](live-event-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -128,7 +128,7 @@ Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak.
 #### <a name="create-a-streaming-locator"></a>Adatfolyam-kereső létrehozása
 
 > [!NOTE]
-> A Media Services-fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot ad hozzá a fiókhoz a **leállított** állapotban. A tartalom folyamatos átvitelének megkezdéséhez, valamint a [dinamikus csomagolás](dynamic-packaging-overview.md) és a dinamikus titkosítás kihasználásához a adatfolyam-továbbítási végpontnak **futó** állapotban kell lennie.
+> A Media Services-fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot ad hozzá a fiókhoz a **leállított** állapotban. A tartalom folyamatos átvitelének megkezdéséhez, valamint a [dinamikus csomagolás](encode-dynamic-packaging-concept.md) és a dinamikus titkosítás kihasználásához a adatfolyam-továbbítási végpontnak **futó** állapotban kell lennie.
 
 Amikor egy streaming-lokátor használatával teszi közzé az adategységet, az élő esemény (a DVR-ablak hosszára számítva) továbbra is megtekinthető marad, amíg a streaming-lokátor lejárata vagy törlése megkezdődik. Így teheti elérhetővé a megtekintő közönség számára a virtuális szalagot, hogy élő és igény szerint lássa. Ugyanez az URL-cím is használható az élő esemény, a DVR ablak vagy az igény szerinti eszköz megtekintésére a rögzítés befejezésekor (az élő kimenet törlésekor).
 

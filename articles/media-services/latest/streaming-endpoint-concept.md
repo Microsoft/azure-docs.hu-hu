@@ -9,14 +9,14 @@ MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Dat
 
 Microsoft Azure Media Services a [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) egy dinamikus (igény szerinti) csomagolást és forrást jelentenek, amely az élő és az igény szerinti tartalmat közvetlenül egy ügyfél-alkalmazáshoz irányítja, amely a közös Streaming Media protokollok (HLS vagy Dash) egyikét használja. Emellett az adatfolyam- **végpont** dinamikus (igény szerinti) titkosítást biztosít az iparági vezető DRMs számára. 
 
-Media Services fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot hoz létre egy leállított állapotban. A fiók alatt több folyamatos átviteli végpont is létrehozható (lásd a [kvótákat és a korlátozásokat](limits-quotas-constraints.md)).
+Media Services fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot hoz létre egy leállított állapotban. A fiók alatt több folyamatos átviteli végpont is létrehozható (lásd a [kvótákat és a korlátozásokat](limits-quotas-constraints-reference.md)).
 
 > [!NOTE]
 > A streaming-videók elindításához el kell indítania azt a **folyamatos átviteli végpontot** , amelyről továbbítani szeretné a videót.
 >
 > Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont futó állapotban van.
 
-Tekintse át a [dinamikus csomagolással](dynamic-packaging-overview.md) foglalkozó témakört is. 
+Tekintse át a [dinamikus csomagolással](encode-dynamic-packaging-concept.md) foglalkozó témakört is. 
 
 ## <a name="naming-convention"></a>Elnevezési konvenció
 
@@ -201,7 +201,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 ## <a name="see-also"></a>Lásd még
 
-[Dinamikus csomagolás](dynamic-packaging-overview.md)
+[Dinamikus csomagolás](encode-dynamic-packaging-concept.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951014"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107295"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -302,7 +302,7 @@ Miután elvégezte a folyamatot, minden úgy van beállítva, hogy teljes körű
 
 A kivonási folyamat elindításához kézzel kell törölnie az eszközt IoT Hubról.
 
-Ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) vagy a Azure Portal. Az alábbi lépések végrehajtásával törölheti az eszközt a Azure Portalban:
+Ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete) vagy a Azure Portal. Az alábbi lépések végrehajtásával törölheti az eszközt a Azure Portalban:
 
 1. Navigáljon az IoT hubhoz, és válassza a bal oldali menüpontban a **IoT-eszközök** lehetőséget. 
 2. Ekkor megjelenik egy eszköz, amelyen a [cikk első felében](#auto-provision-device-using-device-provisioning-service)kiválasztott eszköz regisztrációs azonosító található. Azt is megteheti, hogy kiválaszthatja a törölni kívánt bármely más eszközt, ha az egy Twin az Azure digitális Twins szolgáltatásban, így ellenőrizheti, hogy a Twin automatikusan törlődik-e az eszköz törlése után.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 9797401fd96bf052fdc9de0c2c2ceaf88b3d46b6
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 0a25e1b50455cad5bdbe5b76b2a291f2a1c11940
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504209"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107006"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -189,7 +189,7 @@ Ez a szakasz a különböző ajánlati típusok Transact-követelményeit ismert
 - A Transact közzétételi lehetőséghez Microsoft-fiók és pénzügyi információk szükségesek, az ajánlat díjszabási modelljétől függetlenül.
 - A kötelező pénzügyi információk közé tartozik a kifizetési fiók és az adó profil.
 
-A fiókok beállításával kapcsolatos további információkért lásd: [a kereskedelmi piactér fiókjának kezelése a partner Centerben](partner-center-portal/manage-account.md).
+A fiókok beállításával kapcsolatos további információkért lásd: [a kereskedelmi piactér fiókjának kezelése a partner Centerben](manage-account.md).
 
 ### <a name="requirements-for-specific-offer-types"></a>Az egyes ajánlatok típusaira vonatkozó követelmények
 

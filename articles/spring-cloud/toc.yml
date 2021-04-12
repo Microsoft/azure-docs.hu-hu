@@ -93,15 +93,15 @@
           href: how-to-setup-autoscale.md
     - name: Integrálás
       items:
-        - name: Alkalmazás kötése az Azure Cosmos DB-hez
+        - name: Azure CosmosDB
           href: how-to-bind-cosmos.md
-        - name: Alkalmazás kötése az Azure Cache for Redishez
+        - name: Azure Cache for Redis
           href: how-to-bind-redis.md
-        - name: Alkalmazás kötése az Azure MySQL-hez
+        - name: Azure Database for MySQL
           href: how-to-bind-mysql.md
-        - name: Felügyelt identitás Azure SQL Database kapcsolódáshoz
+        - name: Azure SQL Database felügyelt identitással
           href: connect-managed-identity-to-azure-sql.md
-        - name: Integrálás az Azure Load Balance-megoldásokkal
+        - name: Azure Load Balance-megoldások
           href: how-to-integrate-azure-load-balancers.md
     - name: Figyelés
       items:
@@ -194,7 +194,7 @@
 - name: Referencia
   items:
     - name: Azure CLI beépülő modul
-      href: /cli/azure/ext/spring-cloud/spring-cloud
+      href: /cli/azure/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
     - name: További források

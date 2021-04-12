@@ -6,7 +6,7 @@
       tocHref: /legal/computer-vision
       topicHref: /azure/cognitive-services/Computer-vision/index
       items:
-        - name: Térbeli elemzés a Computer Visionnel
+        - name: Computer Vision térbeli elemzés
           tocHref: /legal/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/Computer-vision/index
 - name: Azure

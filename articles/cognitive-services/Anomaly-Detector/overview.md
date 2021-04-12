@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: anomáliák észlelése, gépi tanulás, algoritmusok
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572087"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278864"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
@@ -28,6 +28,12 @@ A rendellenesség-Kiderítő API lehetővé teszi, hogy a gépi tanulás ismeret
 ![A szolgáltatási kérelmekben szereplő minták változásainak észlelése](./media/anomaly_detection2.png)
 
 Az anomália detektor használata nem igényel korábbi felhasználói élményt a gépi tanulásban, és a REST API lehetővé teszi a szolgáltatás egyszerű integrálását az alkalmazásokba és folyamataiba.
+
+Ez a dokumentáció a következő típusú cikkeket tartalmazza:
+* A [rövid](./Quickstarts/client-libraries.md) útmutatók részletes útmutatást tesznek lehetővé, amelyekkel hívásokat indíthat a szolgáltatásba, és rövid idő alatt lekérheti az eredményeket. 
+* A [útmutató útmutatók](./how-to/identify-anomalies.md) a szolgáltatás használatára vonatkozó utasításokat tartalmaznak részletesebb vagy testreszabott módokon.
+* A [fogalmi cikkek](./concepts/anomaly-detection-best-practices.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.
+* Az [oktatóanyagok](./tutorials/batch-anomaly-detection-powerbi.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja ezt a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.
 
 ## <a name="features"></a>Funkciók
 

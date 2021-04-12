@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1441210303984bf777c6b580f6f7ab0c67ce6f21
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928630"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257857"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Oktatóanyag a Onfido konfigurálásához a Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![képernyőkép a onfido-Architecture-diagramról](media/partner-onfido/onfido-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználó feliratkozik egy új fiók létrehozására, és adatokat helyez el az oldalra. A Azure AD B2C a felhasználói attribútumokat gyűjti. A Azure AD B2Cben üzemeltetett Onfido-ügyfélalkalmazás előzetesen ellenőrzi a felhasználói adatokat.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -142,7 +142,7 @@ A megadott [Egyéni szabályzatokban](https://github.com/azure-ad-b2c/partner-in
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>4. rész – a Azure AD B2C házirend konfigurálása
 
-Tekintse át ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
+Tekintse át ezt a [dokumentumot](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
 
 >[!NOTE]
 > Ajánlott eljárásként Azt javasoljuk, hogy az ügyfelek az attribútumok gyűjteménye lapon vegyenek fel beleegyező értesítéseket. Értesítse a felhasználókat arról, hogy az adatok a harmadik féltől származó szolgáltatásoknak személyazonosság-ellenőrzés céljából lesznek elküldve.
@@ -171,4 +171,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

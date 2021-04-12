@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: 24aa3bc455bf716c074526d707594bd3b4170619
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/01/2021
+ms.openlocfilehash: 7ffcb93493ada36df59c0a8305e941176e8320b8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564177"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121472"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és teljesítés az Azure Data Factoryben
 
@@ -697,6 +697,9 @@ Az üzembe helyezés előtti parancsfájl futtatásakor meg kell adnia a követk
 Üzembe helyezés utáni parancsfájl futtatásakor meg kell adnia a következő paraméterek variációját a **parancsfájl argumentumai** mezőben.
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+> [!NOTE]
+> A `-deleteDeployment` jelző használatával lehet megadni az ADF központi telepítési bejegyzésének törlését az ARM telepítési előzményeiből.
 
 ![Azure PowerShell-feladat](media/continuous-integration-deployment/continuous-integration-image11.png)
 

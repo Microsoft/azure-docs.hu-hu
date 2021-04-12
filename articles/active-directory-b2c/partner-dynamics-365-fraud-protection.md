@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9483b0a8829c042a7cf8d516c6007cbbf14a97ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639755"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258077"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Oktatóanyag: a Microsoft Dynamics 365 csalások elleni védelem konfigurálása Azure Active Directory B2C
 
@@ -56,7 +56,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A kép a Microsoft dynamics365 csalások elleni védelmi architektúra diagramját mutatja](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C felhasználói attribútumokat gyűjt.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -68,7 +68,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 ## <a name="set-up-the-solution"></a>A megoldás beállítása
 
 1. [Hozzon létre egy Facebook-alkalmazást](./identity-provider-facebook.md#create-a-facebook-application) , amely lehetővé teszi, hogy az összevonás Azure ad B2C.
-2. [Adja hozzá a létrehozott Facebook-titkot](./custom-policy-get-started.md#create-the-facebook-key) identitási élmény keretrendszerének kulcsaként.
+2. [Adja hozzá a létrehozott Facebook-titkot](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key) identitási élmény keretrendszerének kulcsaként.
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Az alkalmazás konfigurálása a Microsoft DFP-ban
 
@@ -148,7 +148,7 @@ A userID értékének meg kell egyeznie a megfelelő Azure AD B2C konfiguráció
 
 1. Lépjen a házirendek mappában található [Azure ad B2C házirendre](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) .
 
-2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez kövesse ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)
+2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez kövesse ezt a [dokumentumot](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack)
 
 3. Konfigurálja a Azure AD B2C bérlő házirendjét.
 
@@ -184,4 +184,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

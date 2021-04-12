@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc52414fa0d2eeffe0381a68bd66eadafe4862ea
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781279"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443406"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
@@ -33,6 +33,13 @@ Azure AD B2C az oldal elrendezése a [jQuery Library](https://jquery.com/)követ
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>Önérvényesített oldal (selfasserted)
+
+**2.1.4**
+- Frissítette a jQuery verzióját a 3.5.1-es verzióra.
+- Frissített HandlebarJS-verzió a 4.7.6-be.
+
+**2.1.3**
+- Biztonsági javítások.
 
 **2.1.2**
 - Kijavítottuk a honosított kódolási problémát olyan nyelveken, mint például a spanyol és a francia.
@@ -87,6 +94,14 @@ Azure AD B2C az oldal elrendezése a [jQuery Library](https://jquery.com/)követ
 > [!TIP]
 > Ha a lapot honosítja több területi beállítás, vagy egy felhasználói folyamat nyelveinek támogatásához. A [honosítási azonosítók](localization-string-ids.md) című cikk felsorolja azokat a honosítási azonosítókat, amelyek a kiválasztott oldal verziójához használhatók.
 
+**2.1.4**
+- Frissítette a jQuery verzióját a 3.5.1-es verzióra.
+- Frissített HandlebarJS-verzió a 4.7.6-be.
+
+**2.1.3**
+- Biztonsági javítások.
+- Apróbb hibajavítások.
+
 **2.1.2**
 - Kijavítottuk a honosított kódolási problémát olyan nyelveken, mint például a spanyol és a francia.
 - A "Elfelejtett jelszó" hivatkozás engedélyezése a jogcím-csereként való használatra. További információ: [önkiszolgáló jelszó-visszaállítás](add-password-reset-policy.md#self-service-password-reset-recommended).
@@ -126,6 +141,15 @@ Azure AD B2C az oldal elrendezése a [jQuery Library](https://jquery.com/)követ
 
 ## <a name="mfa-page-multifactor"></a>MFA-oldal (többtényezős)
 
+**1.2.4**
+- Frissítette a jQuery verzióját a 3.5.1-es verzióra.
+- Frissített HandlebarJS-verzió a 4.7.6-be.
+
+**1.2.3**
+- Elemleírás-karakterlánc felülbírálásának engedélyezése nyelvi honosítás útján.
+- Biztonsági javítások.
+- Apróbb hibajavítások.
+
 **1.2.2**
 - Kijavított egy problémát az ellenőrző kód automatikus kitöltésével az iOS használatakor.
 - Kijavítottuk a tokennek a függő entitáshoz való átirányításával kapcsolatos problémát az Android Webview szolgáltatásban. 
@@ -162,6 +186,10 @@ Azure AD B2C az oldal elrendezése a [jQuery Library](https://jquery.com/)követ
 
 ## <a name="exception-page-globalexception"></a>Kivétel lap (globalexception)
 
+**1.2.1**
+- Frissítette a jQuery verzióját a 3.5.1-es verzióra.
+- Frissített HandlebarJS-verzió a 4.7.6-be.
+
 **1.2.0**
 
 - Kisegítő lehetőségek – javítások
@@ -182,6 +210,10 @@ Azure AD B2C az oldal elrendezése a [jQuery Library](https://jquery.com/)követ
 - Kezdeti kiadás
 
 ## <a name="other-pages-providerselection-claimsconsent-unifiedssd"></a>Egyéb lapok (ProviderSelection, ClaimsConsent, UnifiedSSD)
+
+**1.2.1**
+- Frissítette a jQuery verzióját a 3.5.1-es verzióra.
+- Frissített HandlebarJS-verzió a 4.7.6-be.
 
 **1.2.0**
 

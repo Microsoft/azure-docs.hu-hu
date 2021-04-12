@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97032524"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492324"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT Central-alkalmazásban lévő eszközök kezelése
 
@@ -156,7 +156,7 @@ Valós vagy szimulált eszköz törlése az Azure IoT Central alkalmazásból:
 
 ## <a name="change-a-property"></a>Tulajdonság módosítása
 
-A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például a város és a sorozatszám. A felhő tulajdonságai csak a IoT Central alkalmazásban léteznek, és nem szinkronizálhatók az eszközeivel. Az írható tulajdonságok vezérlik az eszköz viselkedését, és lehetővé teszik az eszköz állapotának távoli beállítását, például egy termosztátos eszköz megcélzott hőmérsékletének beállításával.  Az eszköz tulajdonságait az eszköz állítja be, és a IoT Centralon belül csak olvasható. Az eszköz **részletes** nézetében megtekintheti és frissítheti a tulajdonságokat.
+A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például a város és a sorozatszám. A felhő tulajdonságai csak a IoT Central alkalmazásban léteznek, és nem szinkronizálhatók az eszközeivel. Az írható tulajdonságok vezérlik egy eszköz viselkedését, és lehetővé teszik az eszköz állapotának távoli beállítását, például egy termosztátos eszköz megcélzott hőmérsékletének beállításával.  Az eszköz tulajdonságait az eszköz állítja be, és a IoT Centralon belül csak olvasható. Az eszköz **részletes** nézetében megtekintheti és frissítheti a tulajdonságokat.
 
 1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
