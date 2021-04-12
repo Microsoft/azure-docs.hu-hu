@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4456a65f422c23da73f36dd74680fbb598db186
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5c21c384af90341161bab9407b3f6bcd3a4efac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955834"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107582"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>Bélyegképek előállítása a Encoder standard és a REST használatával
 
@@ -28,7 +28,7 @@ A Media Encoder Standard használatával létrehozhat egy vagy több miniatűrt 
 
 ## <a name="recommended-reading-and-practice"></a>Ajánlott olvasás és gyakorlat
 
-Azt javasoljuk, hogy ismerkedjen meg az egyéni átalakításokkal, ha beolvassa a [kódolást egyéni átalakítással – Rest](custom-preset-rest-howto.md).
+Azt javasoljuk, hogy ismerkedjen meg az egyéni átalakításokkal, ha beolvassa a [kódolást egyéni átalakítással – Rest](encode-custom-preset-rest-how-to.md).
 
 ## <a name="thumbnail-parameters"></a>Miniatűr paraméterek
 

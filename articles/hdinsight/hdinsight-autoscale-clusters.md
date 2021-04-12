@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
 ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104863768"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
@@ -70,10 +70,10 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 
 | Verzió | Spark | Hive | Interaktív lekérdezés | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
-| HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
-| HDInsight 3,6, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
-| HDInsight 4,0, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 3,6 ESP nélkül | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0 ESP nélkül | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
+| HDInsight 3,6, ESP-vel | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0, ESP-vel | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
 
 \* A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 

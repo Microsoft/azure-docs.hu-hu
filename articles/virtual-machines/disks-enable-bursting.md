@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 733d441705c7c77f0667f88151e96f76975ee0b2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104596399"
 ---
 # <a name="enable-on-demand-bursting"></a>Igény szerinti kitörés engedélyezése
@@ -28,7 +28,7 @@ Az igény szerinti kitörés engedélyezése előtt Ismerje meg a következőket
 
 [!INCLUDE [managed-disk-bursting-regions-limitations](../../includes/managed-disk-bursting-regions-limitations.md)]
 
-### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+### <a name="regional-availability"></a>Regionális elérhetőség
 
 [!INCLUDE [managed-disk-bursting-availability](../../includes/managed-disk-bursting-availability.md)]
 

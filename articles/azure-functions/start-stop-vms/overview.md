@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: ''
 ms.date: 03/29/2021
-ms.openlocfilehash: aac50f085d3ad63fb0183c19cf7d9aaa679e3d04
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 44bfbaa8b18ebeab3b74bc696a16fc4cfb6c08ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111944"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220934"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>A VM v2 (előzetes verzió) indítása/leállítása – áttekintés
 
@@ -28,7 +28,7 @@ A rendszer létrehoz egy HTTP-trigger végponti függvényt, amely támogatja a 
 
 |Name |Eseményindító |Leírás |
 |-----|--------|------------|
-|AlertAvailabilityTest |Időzítő |Ez a függvény végrehajtja a rendelkezésre állási tesztet annak biztosítására, hogy az elsődleges függvény **AutoStopVM** mindig elérhető legyen.|
+|AlertAvailabilityTest |Időzítő |Ez a függvény végrehajtja a rendelkezésre állási tesztet annak biztosításához, hogy az elsődleges függvény **AutoStopVM** mindig elérhető legyen.|
 |Alapleállítás |HTTP |Ez a függvény támogatja az **autostop** forgatókönyvet, amely a logikai alkalmazásból meghívott belépési pont függvény.|
 |AutoStopAvailabilityTest |Időzítő |Ez a függvény végrehajtja a rendelkezésre állási tesztet annak ellenőrzéséhez, hogy az elsődleges funkció az **autostop** mindig elérhető-e.|
 |AutoStopVM |HTTP |A virtuális gép riasztása automatikusan aktiválja ezt a funkciót, ha a riasztási feltétel igaz.|
@@ -95,7 +95,7 @@ A virtuális gépek listájának megadása akkor használható, ha a kezdési é
 
 - A fiókja megkapta a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) engedélyt az előfizetésben.
 
-- A VM v2 (előzetes verzió) indítása/leállítása az összes olyan Azure-beli globális régióban elérhető, amelyek a Azure Functions [régió lapján elérhető termékek területen](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) találhatók. A Azure Government felhőben csak az USA-beli közigazgatási Virginia régióban érhető el.
+- A VM v2 (előzetes verzió) indítása/leállítása az összes Azure globális és USA-beli kormányzati Felhőbeli régióban elérhető, amelyek a Azure Functions [régió lapján elérhető termékek területen](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) jelennek meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

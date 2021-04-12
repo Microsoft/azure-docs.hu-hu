@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: a60ee8faf8d19afba59e46c52aaba9395c3a5292
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105604447"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
@@ -118,7 +118,7 @@ Itt látható egy példa arra, hogy Azure Maps a "fr-FR" és a regionális néze
 
 A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported-languages.md)dokumentáljuk.
 
-## <a name="navigating-the-map"></a>Navigálás a térképen
+## <a name="navigating-the-map&quot;></a>Navigálás a térképen
 
 A Térkép több különböző módon nagyítható, megpárolt, elforgatható és felhelyezhető. A következő részletek a Térkép különböző módjaira mutatnak.
 
@@ -141,16 +141,16 @@ A Térkép több különböző módon nagyítható, megpárolt, elforgatható é
 
 * Érintse meg a térképet két ujjal, és húzza őket egymáshoz.
 
-## <a name="azure-government-cloud-support"></a>Felhő-támogatás Azure Government
+## <a name=&quot;azure-government-cloud-support&quot;></a>Felhő-támogatás Azure Government
 
 A Azure Maps Android SDK támogatja a Azure Government-felhőt. A Azure Maps Android SDK ugyanazon Maven-tárházból érhető el. A Azure Maps platform Azure Government Cloud-verziójához való kapcsolódáshoz a következő feladatokat kell elvégezni.
 
 Ugyanazon a helyen, ahol meg van adva a Azure Maps-hitelesítés részletei, adja hozzá a következő kódrészletet, hogy tájékoztassa a térképet a Azure Maps kormányzati felhő tartományának használatáról.
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
-AzureMaps.setDomain("atlas.azure.us");
+AzureMaps.setDomain(&quot;atlas.azure.us");
 ```
 
 ::: zone-end

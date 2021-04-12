@@ -1,15 +1,15 @@
 ---
 title: Beépített szabályzat-definíciók az Azure arc-kompatibilis kiszolgálókhoz
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure arc használatára képes kiszolgálókon (előzetes verzió). Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 05b99127b96e879e829659b2712ff7fc8bed63d2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 890981e8d1b0d6f8eb09df87b095f60035a1682f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105037639"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095669"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Az Azure arc-kompatibilis kiszolgálók beépített definícióinak Azure Policy
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
 ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96183158"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD API Management Azure Resource Manager sablonok használatával
@@ -43,7 +43,7 @@ Ebben a példában két központi telepítési környezet létezik: a *fejleszt�
 
 Ennek a javasolt megközelítésnek a kulcsa az összes API Management konfiguráció megtartása [Azure Resource Manager-sablonokban](../azure-resource-manager/templates/template-syntax.md). A szervezetnek meg kell őriznie ezeket a sablonokat egy verziókövetés-rendszeren, például a git-ben. Ahogy az ábrán látható, a közzétevő adattár az éles API Management példány összes konfigurációját tartalmazza sablonok gyűjteményében:
 
-|Sablon  |Description  |
+|Sablon  |Leírás  |
 |---------|---------|
 |Szolgáltatássablon     | A API Management példány szolgáltatási szintjének konfigurációi, például az árképzési szint és az egyéni tartományok.         |
 |Megosztott sablonok     |  A API Management-példányok, például a csoportok, a termékek és a naplózók közös erőforrásai.    |

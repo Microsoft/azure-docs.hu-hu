@@ -1,14 +1,14 @@
 ---
 title: 'Minta: címkék használata házirend-definícióban'
 description: Ez a Azure Policy minta példákat tartalmaz a paraméteres címkék hozzáadására vagy a címkék öröklésére egy házirend-definícióban lévő erőforráscsoport használatával.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c748eb9b8ea795f9725082ec0aa0b8065ada8c65
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88545556"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093367"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy minta: Címkék
 
