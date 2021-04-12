@@ -4,10 +4,10 @@ description: A Azure Key Vault eseményekhez megadott tulajdonságokat és sém�
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: ea8821b15000b74a10f28730ccf82b538e7819e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363406"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault Event Grid forrásként
@@ -19,7 +19,7 @@ Ez a cikk a [Azure Key Vault](../key-vault/index.yml)eseményeinek tulajdonsága
 
 Egy Azure Key Vault fiók a következő típusú eseményeket hozza létre:
 
-| Esemény teljes neve | Esemény megjelenítendő neve | Description |
+| Esemény teljes neve | Esemény megjelenítendő neve | Leírás |
 | ---------- | ----------- |---|
 | Microsoft. kulcstartó. CertificateNewVersionCreated | Tanúsítvány új verziója létrehozva | Új tanúsítvány vagy új tanúsítvány-verzió létrehozásakor aktiválódik. |
 | Microsoft. kulcstartó. CertificateNearExpiry | A tanúsítvány hamarosan lejár | Akkor aktiválódik, ha a tanúsítvány aktuális verziója hamarosan lejár. (Az esemény a lejárati dátum előtt 30 nappal aktiválódik.) |

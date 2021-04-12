@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: ramamill
 ms.openlocfilehash: 96c3dce17ab78e08b28bb41c0100e51a72a666e7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105110253"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Feladat-visszavétel futtatása Hyper-V rendszerű virtuális gépekhez
@@ -29,7 +29,7 @@ Ez a cikk a Hyper-V virtuális gépek helyszíni helyről az Azure-ba történő
 2. Győződjön meg arról, hogy az Azure-beli virtuális gépek Storage-fiókot és nem felügyelt lemezeket használnak. Nem támogatottak azok a Hyper-V virtuális gépek feladat-visszavétele, amelyek felügyelt lemezeket használó Azure-gépeken átadott feladatátvételt végeznek.
 3. Ellenőrizze, hogy fut-e a helyszíni Hyper-V-gazdagép (vagy a System Center VMM-kiszolgáló, ha a Site Recovery használatával működik), és csatlakozik az Azure-hoz. 
 4. Győződjön meg arról, hogy a feladatátvétel és a végrehajtás befejeződött a virtuális gépek számára. Nem kell beállítania a Hyper-V virtuális gépek Azure-ból történő feladat-visszavételéhez szükséges konkrét Site Recovery-összetevőket.
-5. Az adatok szinkronizálásának befejezéséhez és a helyszíni virtuális gép elindításához szükséges idő számos tényezőtől függ. Az adatletöltés felgyorsításához beállíthatja, hogy a Microsoft Recovery Services-ügynök több szálat használjon a letöltés integrálással. [További információ](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
+5. Az adatok szinkronizálásának befejezéséhez és a helyszíni virtuális gép elindításához szükséges idő számos tényezőtől függ. Az adatletöltés felgyorsításához beállíthatja, hogy a Microsoft Recovery Services-ügynök több szálat használjon a letöltés integrálással. [További információk](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
 ## <a name="fail-back-to-the-original-location"></a>Feladat-visszavétel az eredeti helyre

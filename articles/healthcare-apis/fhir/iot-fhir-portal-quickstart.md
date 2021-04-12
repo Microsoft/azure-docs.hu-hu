@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 11/13/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 3e293782e6f00852a51e0617a07eebd5d8c56261
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644842"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443771"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Gyors útmutató: az Azure IoT-összekötő üzembe helyezése a FHIR-ben (előzetes verzió) a Azure Portal használatával
 
@@ -171,6 +171,11 @@ Telepítse a [folyamatos beteg monitorozási alkalmazás sablonját](../../iot-c
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Csatlakoztassa a IoT-adatait az Azure IoT-összekötővel a FHIR (előzetes verzió) szolgáltatáshoz
 
 Miután telepítette a IoT Central alkalmazást, a két beépített szimulált eszköz elkezdi a telemetria generálását. Ebben az oktatóanyagban betöltjük a telemetria a *Smart vitals patch* Simulator-ből a FHIR-be a FHIR-hez készült Azure IoT-összekötőn keresztül. Ha a IoT-adatait az Azure IoT-Összekötőbe szeretné exportálni a FHIR-hez, [be kell állítania egy folyamatos adatexportálást IoT Centralon belül](../../iot-central/core/howto-export-data.md). Először létre kell hoznia egy kapcsolódást a célhelyhez, majd egy adatexportálási feladatot hozunk létre a folyamatos futtatáshoz: 
+
+> [!NOTE]
+> Ehhez a szakaszhoz a IoT Central alkalmazás beállításai között az **adatexportálás** és az **adatexportálás (örökölt)** lehetőséget kell választania.
+
+[![Az adatexportálási beállítások IoT Central](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 Hozzon létre egy új célhelyet:
 - Lépjen a **Célhelyek** lapra, és hozzon létre egy új célhelyet.

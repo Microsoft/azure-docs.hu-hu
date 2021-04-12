@@ -13,10 +13,10 @@ ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97955399"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
@@ -47,7 +47,7 @@ Az 2018 Alex Weinert [októberi blogbejegyzést](https://techcommunity.microsoft
 
 Az Identity Protection a következő besorolások kockázatait azonosítja:
 
-| Kockázat észlelésének típusa | Description |
+| Kockázat észlelésének típusa | Leírás |
 | --- | --- |
 | Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
 | Szokatlan utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |

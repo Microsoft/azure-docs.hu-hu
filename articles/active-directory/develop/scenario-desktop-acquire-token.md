@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c63ee686ae218a696069465bb8d2d1d7413a998e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 62296acaba77017cd71227582447b9fa7c4f1934
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799088"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090239"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -257,7 +257,7 @@ WithParentActivityOrWindow(IWin32Window window)
 // Mac
 WithParentActivityOrWindow(NSWindow window)
 
-// .Net Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
+// .NET Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
 WithParentActivityOrWindow(object parent).
 ```
 
@@ -277,15 +277,26 @@ Megjegyzéseket tartalmazó
 
 `WithPrompt()` a a felhasználóval való interaktivitás vezérlésére szolgál egy kérdés megadásával.
 
-![A prompt struktúrában található mezőket ábrázoló kép. Ezek az állandó értékek vezérlik a felhasználót a WithPrompt () metódus által megjelenített kérdés típusának meghatározásával.](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![A prompt struktúrában található mezőket ábrázoló kép. Ezek az állandó értékek vezérlik a felhasználót a WithPrompt () metódus által megjelenített kérdés típusának meghatározásával.](https://user-images.githubusercontent.com/34331512/112267137-3f1c3a00-8c32-11eb-97fb-33604311329a.png)
 
 Az osztály a következő konstansokat határozza meg:
 
 - ``SelectAccount`` arra kényszeríti az STS-t, hogy bemutassa a fiók kiválasztása párbeszédpanelt, amely azokat a fiókokat tartalmazza, amelyekhez a felhasználó rendelkezik munkamenettel. Ez a beállítás akkor hasznos, ha az alkalmazás fejlesztői számára engedélyezni szeretné a felhasználók számára a különböző identitások közötti választást. Ezzel a beállítással a MSAL küldheti ``prompt=select_account`` az identitás-szolgáltatónak. Ez az alapértelmezett beállítás. Jó munkát biztosít a lehető legjobb élmény biztosításához a rendelkezésre álló információk, például a felhasználói munkamenetek fiókja és jelenléte alapján. Csak akkor módosítsa, ha nincs megfelelő oka.
 - ``Consent`` lehetővé teszi, hogy az alkalmazás fejlesztője kényszerítse a felhasználót, hogy kérjen beleegyező engedélyt, még akkor is, ha az engedélyt megadták. Ebben az esetben a MSAL elküldi `prompt=consent` az identitás-szolgáltatónak. Ez a beállítás olyan biztonsági szempontokat használó alkalmazásokban használható, ahol a szervezet irányítása megköveteli, hogy a felhasználó az alkalmazás minden egyes használatakor a belefoglalt engedély párbeszédablakban legyen látható.
 - ``ForceLogin`` lehetővé teszi, hogy az alkalmazás fejlesztője megkérje a felhasználótól a hitelesítő adatok megadását, még akkor is, ha ez a felhasználói kérdés esetleg nem szükséges. Ez a beállítás akkor lehet hasznos, ha a felhasználó újra bejelentkezik, ha a jogkivonat beszerzése meghiúsul. Ebben az esetben a MSAL elküldi `prompt=login` az identitás-szolgáltatónak. Időnként olyan biztonsági irányultságú alkalmazásokban használják, ahol a szervezet irányítása megköveteli, hogy a felhasználó minden alkalommal újra aláírja az alkalmazást, amikor az alkalmazás egyes részeihez hozzáférnek.
+- ``Create`` elindít egy regisztrációs élményt, amelyet külső identitásokhoz használ `prompt=create` az identitás-szolgáltatónak való küldéssel. Ezt a kérést nem szabad elküldeni Azure AD B2C alkalmazásokhoz. További információ: önkiszolgáló [bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz](https://aka.ms/msal-net-prompt-create).
 - ``Never`` (csak a .NET 4,5 és a WinRT esetében) nem fogja kérni a felhasználót, hanem a rejtett beágyazott webes nézetben tárolt cookie-t próbálja használni. További információ: webes nézetek a MSAL.NET-ben. Ez a beállítás sikertelen lehet. Ebben az esetben kivételt jelez, hogy `AcquireTokenInteractive` a felhasználói felületi interakcióra van szükség. Egy másik paramétert kell használnia `Prompt` .
 - ``NoPrompt`` a rendszer nem küld figyelmeztetést az identitás-szolgáltatónak. Ez a beállítás csak Azure Active Directory (Azure AD) B2C-szerkesztési profil házirendjének esetében hasznos. További információ: [Azure ad B2C sajátosságok](https://aka.ms/msal-net-b2c-specificities).
+
+#### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
+
+Ezzel a módszerrel megadhatja, hogy szeretné-e kényszeríteni egy beágyazott webnézet vagy a rendszer webnézetének használatát (ha elérhető). További információ: [böngészők használata](msal-net-web-browsers.md).
+
+ ```csharp
+ var result = await app.AcquireTokenInteractive(scopes)
+                   .WithUseEmbeddedWebView(true)
+                   .ExecuteAsync();
+  ```
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 

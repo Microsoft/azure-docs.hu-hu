@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/23/2021
+ms.date: 4/6/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4e876b3fc679dd275f38168b99b9a3a718be58
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589327"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552672"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -97,6 +97,8 @@ Ez a szakasz a végfelhasználók és a rendszergazdák felhasználói élmény�
 
 Egy példa felhasználó a contoso hálózaton, de megpróbál hozzáférni egy megosztott SaaS-alkalmazás Fabrikam-példányához, például az Outlook online-hoz. Ha a fabrikam nem engedélyezett bérlő a contoso-példányhoz, a felhasználó egy hozzáférés-megtagadási üzenetet kap, amely azt mondja, hogy olyan erőforráshoz próbál hozzáférni, amely az IT-részleg által nem jóváhagyott szervezethez tartozik.
 
+![Bérlői korlátozások hibaüzenete – április 2021](./media/tenant-restrictions/error-message.png)
+
 ### <a name="admin-experience"></a>Rendszergazdai felület
 
 Míg a bérlői korlátozások konfigurálása a vállalati proxy infrastruktúráján történik, a rendszergazdák közvetlenül is hozzáférhetnek a bérlői korlátozások jelentéseihez a Azure Portal. A jelentések megtekintése:
@@ -113,14 +115,14 @@ Előfordulhat, hogy a jelentés korlátozott információt tartalmaz, például 
 
 A Azure Portal többi jelentéséhez hasonlóan szűrőket is használhat a jelentés hatókörének megadásához. Szűrheti egy adott időintervallumot, felhasználót, alkalmazást, ügyfelet vagy állapotot. Ha az **oszlopok** gombot választja, a következő mezők tetszőleges kombinációjával választhat:
 
-- **Felhasználó** – ebben a mezőben azonosíthatók a személyazonosításra alkalmas adatok, amelyek a következőre lesznek beállítva: `00000000-0000-0000-0000-000000000000` . 
+- **Felhasználó** – ebben a mezőben a személyes adatértékek is törlődnek `00000000-0000-0000-0000-000000000000` . 
 - **Alkalmazás**
 - **Állapot**
 - **Date**
 - **Dátum (UTC)** – az UTC egyezményes világidő
 - **IP-cím**
 - **Ügyfél**
-- **Felhasználónév** – ebben a mezőben a személyazonosításra alkalmas adatok el lesznek távolítva, ahol a rendszer a következőre lesz beállítva: `{PII Removed}@domain.com`
+- **Felhasználónév** – ebben a mezőben a személyes adatértékek el lesznek távolítva. `{PII Removed}@domain.com`
 - **Hely**
 - **Cél bérlő azonosítója**
 
@@ -207,7 +209,7 @@ Egyes szervezetek megpróbálják kijavítani ezt a blokkolással, `login.live.c
 
 ### <a name="configuration-for-consumer-apps"></a>A fogyasztói alkalmazások konfigurációja
 
-Míg a `Restrict-Access-To-Tenants` fejléc engedélyezési listaként funkcionál, a Microsoft-fiók (MSA) blokk megtagadási jelként működik, és közli, hogy a Microsoft-fiók platform nem teszi lehetővé a felhasználók számára, hogy bejelentkezzenek a fogyasztói alkalmazásokba. A jel elküldéséhez a `sec-Restrict-Tenant-Access-Policy` fejlécet `login.live.com` a [fentiekkel](#proxy-configuration-and-requirements)megegyező vállalati proxy vagy tűzfal használatával kell beadni a forgalomnak. A fejléc értékének a számnak kell lennie `restrict-msa` . Ha a fejléc jelen van, és egy fogyasztói alkalmazás közvetlenül próbál bejelentkezni egy felhasználóba, a bejelentkezés le lesz tiltva.
+Míg a `Restrict-Access-To-Tenants` fejléc engedélyezési, a Microsoft-fiók (MSA) blokk megtagadási jelként működik, és a Microsoft-fiók platformon nem teszi lehetővé, hogy a felhasználók bejelentkezzenek a fogyasztói alkalmazásokba. A jel elküldéséhez a `sec-Restrict-Tenant-Access-Policy` fejlécet `login.live.com` a [fentiekkel](#proxy-configuration-and-requirements)megegyező vállalati proxy vagy tűzfal használatával kell beadni a forgalomnak. A fejléc értékének a számnak kell lennie `restrict-msa` . Ha a fejléc jelen van, és egy fogyasztói alkalmazás közvetlenül próbál bejelentkezni egy felhasználóba, a bejelentkezés le lesz tiltva.
 
 Ekkor a felhasználói alkalmazások hitelesítése nem jelenik meg a [felügyeleti naplókban](#admin-experience), mivel a login.Live.com az Azure ad-től függetlenül fut.
 
