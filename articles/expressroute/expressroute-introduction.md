@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1cef56d15838d80079decc6e1da7ad830bd1cd9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206951"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029760"
 ---
 # <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, egy kapcsolatszolgáltató segítségével. Az ExpressRoute-tal kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral és a Microsoft 365-tel.
@@ -20,6 +20,10 @@ Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microso
 Ezek lehetnek hálózatközi (IP VPN), pontok közötti Ethernet-hálózati, vagy kapcsolatszolgáltatón keresztüli virtuális keresztkapcsolatok egy közös elhelyezési létesítményen belül. Az ExpressRoute-kapcsolatok nem haladnak át a nyilvános interneten. Az ExpressRoute-kapcsolatok ezáltal megbízhatóbbak, gyorsabbak, egyenletesebb késésűek és biztonságosabbak a tipikus, interneten keresztüli kapcsolatoknál. További információ a hálózatnak a Microsofthoz való csatlakoztatásáról a ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
 
 ![ExpressRoute-kapcsolatok áttekintése](./media/expressroute-introduction/expressroute-connection-overview.png)
+
+> [!NOTE]
+> A ExpressRoute kontextusában a Microsoft Edge a ExpressRoute áramkör Microsoft-oldalán lévő peremhálózati útválasztókat ismerteti. Ez a ExpressRoute áramkör belépési pontja a Microsoft hálózatához.
+> 
 
 ## <a name="key-benefits"></a>Főbb előnyök
 

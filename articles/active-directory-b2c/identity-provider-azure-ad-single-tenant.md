@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 490880e4a37711a92b44a0ffe01315edfa6ddb26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a31fe8046e6bb0a933ade78ee2c7f4b208767a7
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580124"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028349"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
 
@@ -230,7 +230,7 @@ Az Azure AD-végponttól kapott jogkivonat lekéréséhez meg kell határoznia a
 ## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
 
 1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
-1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](tutorial-register-applications.md)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
 1. A regisztrációs vagy bejelentkezési oldalon válassza a **contoso Employee** lehetőséget az Azure ad contoso-fiókkal való bejelentkezéshez.
 

@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961557"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280292"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -38,7 +38,7 @@ Lásd: [egyéni Azure Resource Manager szerepkör létrehozása](create-custom-a
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Prémium szintű streaming-végpont beállítása
 
-Ha élő videó-elemzést szeretne használni a videók felhőbe való folyamatos rögzítéséhez, és ezt követően használja a [lekérdezési API-kat](playback-recordings-how-to.md#query-api) a lejátszás előtt, javasoljuk, hogy frissítse a Media Service-t egy [prémium szintű streaming-végpont](../latest/streaming-endpoint-concept.md#types)használatára.  
+Ha élő videó-elemzést szeretne használni a videók felhőbe való folyamatos rögzítéséhez, és ezt követően használja a [lekérdezési API-kat](playback-recordings-how-to.md#query-api) a lejátszás előtt, javasoljuk, hogy frissítse a Media Service-t egy [prémium szintű streaming-végpont](../latest/stream-streaming-endpoint-concept.md#types)használatára.  
 
 Ez egy választható lépés. Ezt az Azure CLI-parancsot használhatja:
 

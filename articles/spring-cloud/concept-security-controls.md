@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 62a0bd19f6b10bbe6561f5587ed85d4d1e5880b3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878164"
+ms.locfileid: "105966826"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Az Azure Spring Cloud Service biztonsági vezérlői
 
@@ -34,7 +34,7 @@ A biztonsági ellenőrzés olyan Azure-szolgáltatás minősége vagy funkciója
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Szolgáltatás címkéje | Yes | A **AzureSpringCloud** szolgáltatás címkével [hálózati biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)adhat meg kimenő hálózati hozzáférés-vezérlést, hogy lehetővé váljon az Azure Spring Cloud-alkalmazások forgalmának engedélyezése.<br><br>*Megjegyzés:* Jelenleg csak a 2020/07/14 után létrehozott új Azure Spring Cloud Service-példány támogatja a **AzureSpringCloud** szolgáltatás címkéjét. | [Szolgáltatáscímkék](../virtual-network/service-tags-overview.md) |
+| Szolgáltatás címkéje | Yes | A **AzureSpringCloud** szolgáltatás címkével [hálózati biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)adhat meg kimenő hálózati hozzáférés-vezérlést, hogy lehetővé váljon az Azure Spring Cloud-alkalmazások forgalmának engedélyezése. | [Szolgáltatáscímkék](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>Következő lépések
 

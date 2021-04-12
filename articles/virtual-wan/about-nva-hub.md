@@ -7,18 +7,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: d5af0cc4eb72a2db850e19e47ed11cd9f6f4536e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061859"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226311"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Tudnivalók a hálózati virtuális berendezésről egy Azure-beli virtuális WAN-központban (előzetes verzió)
 
 Az Azure Virtual WAN a hálózati partnerekkel együttműködve automatizálja az automatizálást, amely megkönnyíti az ügyfelekhez kapcsolódó berendezések (CPE) összekapcsolását a virtuális központ Azure VPN Gateway-átjárójában. Az Azure a hálózati partnerek kiválasztása révén lehetővé teszi, hogy az ügyfelek közvetlenül a virtuális hubhoz helyezzen üzembe egy külső hálózati virtuális berendezést (NVA). Ez lehetővé teszi, hogy azok az ügyfelek, akik a fiókirodát a virtuális központ ugyanazon NVA szeretnék csatlakoztatni, így képesek kihasználni a teljes körű SD-WAN-képességeket.
 
-A Barracuda Networks és a Cisco Systems az első partnerek, akik közvetlenül a virtuális WAN-központba telepíthetik a NVA.  Tekintse meg a [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) és [a Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) című témakört a megfelelő termékdokumentációhoz. Az Azure több partnerrel dolgozik, ezért várhatóan további ajánlatokat is láthat.
+A Barracuda Networks és a Cisco Systems az első partnerek, akik közvetlenül a virtuális WAN-központba telepíthetik a NVA.  Tekintse meg a [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan), a [Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) és a [VMware SD-WAN](https://kb.vmware.com/s/article/82746) című témakört a megfelelő termék-dokumentációhoz. Az Azure több partnerrel dolgozik, ezért várhatóan további ajánlatokat is láthat.
 
 > [!NOTE]
 > Csak a virtuális WAN-hubhoz üzembe helyezhető NVA-ajánlatok telepíthetők a virtuális WAN-központba. Nem helyezhetők üzembe egy tetszőleges virtuális hálózatban az Azure-ban.

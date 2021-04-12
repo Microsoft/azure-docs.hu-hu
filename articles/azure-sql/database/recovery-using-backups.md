@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
 ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98795331"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
@@ -47,14 +47,14 @@ Az adatbázis automatikus biztonsági mentések használatával történő vissz
 - A hálózati sávszélesség, ha a visszaállítás egy másik régióba történik.
 - A megcélzott régióban feldolgozott egyidejű visszaállítási kérelmek száma.
 
-Nagyméretű vagy nagyon aktív adatbázisok esetén a visszaállítás több órát is igénybe vehet. Ha egy régióban hosszabb ideig tartó leállás történik, előfordulhat, hogy a rendszer nagy számú geo-visszaállítási kérelmet indít el a vész-helyreállításhoz. Sok kérelem esetén az egyes adatbázisok helyreállítási ideje növekedhet. A legtöbb adatbázis-visszaállítás kevesebb, mint 12 óra alatt fejeződik be.
+Nagyméretű vagy nagyon aktív adatbázisok esetén a visszaállítás több órát is igénybe vehet. Ha a régióban elhúzódó leállás következik be, előfordulhat, hogy a vészhelyreállítási folyamat túl sok georedundáns visszaállítási kérést ad ki. Ha túl sok a kérés, az egyes adatbázisok helyreállítási ideje megnőhet. A legtöbb adatbázis-visszaállítás kevesebb, mint 12 óra alatt fejeződik be.
 
-Egyetlen előfizetés esetében az egyidejű visszaállítási kérelmek száma korlátozott. Ezek a korlátozások az időponthoz kötött visszaállítások, a Geo-visszaállítások és a hosszú távú adatmegőrzési biztonsági mentés bármely kombinációjára érvényesek.
+Korlátozva van, hogy egy előfizetésen belül mennyi egyidejű visszaállítási kérést lehet kiadni. Ezek a korlátozások az időponthoz kötött, a georedundáns és a hosszú távon megőrzött biztonsági másolatokból történő visszaállítások minden kombinációjára vonatkoznak.
 
-| **Üzembe helyezési lehetőség** | **A feldolgozás alatt álló egyidejű kérelmek maximális száma** | **A beküldött egyidejű kérelmek maximális száma** |
+| **Üzembehelyezési lehetőség** | **Egyszerre feldolgozható kérések maximális száma** | **Egyszerre beküldhető kérések maximális száma** |
 | :--- | --: | --: |
-|**Önálló adatbázis (előfizetés)**|30|100|
-|**Rugalmas készlet (/készlet)**|4|2000|
+|**Önálló adatbázis (előfizetésenként)**|30|100|
+|**Rugalmas készlet (készletenként)**|4|2000|
 
 
 Nincs beépített módszer a teljes kiszolgáló visszaállítására. A feladat végrehajtásával kapcsolatos példát a [Azure SQL Database: teljes kiszolgáló helyreállítása](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)című témakörben talál.

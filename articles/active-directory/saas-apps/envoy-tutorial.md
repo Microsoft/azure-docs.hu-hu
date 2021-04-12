@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 04/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 9b7e5626eeb65b5bc92c27dbb0a772e85a54d4ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbf961e7b99efe29fd8b13c2104c33e42ae7d4be
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92453970"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286515"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a megbízottat
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a megbízottat a A
 * Felügyelje az Azure AD-t, aki hozzáféréssel rendelkezik a megbízotthoz.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Azure AD-fiókjával való megbízottat.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,29 +37,29 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A megbízottat támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A megbízott az **SP** által kezdeményezett egyszeri bejelentkezést támogatja.
 
-* A megbízott **a** felhasználó üzembe helyezését támogatja
+* A megbízott **a** felhasználó üzembe helyezését támogatja.
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
-## <a name="adding-envoy-from-the-gallery"></a>Megbízott hozzáadása a gyűjteményhez
+## <a name="add-envoy-from-the-gallery"></a>Megbízottat hozzáadása a katalógusból
 
 A megbízottat az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy megbízottat a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **megbízottat** kifejezést a keresőmezőbe.
 1. Válassza ki a **megbízottat** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-envoy"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a megbízottat
+## <a name="configure-and-test-azure-ad-sso-for-envoy"></a>Az Azure AD SSO konfigurálása és tesztelése a megbízottat
 
 Konfigurálja és tesztelje az Azure AD SSO-t a megbízottat egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között.
 
-Ha az Azure AD SSO-t a megbízottat szeretné konfigurálni és tesztelni, hajtsa végre a következő építőelemeket:
+Ha az Azure AD SSO-t a megbízottat szeretné konfigurálni és tesztelni, hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -74,9 +72,9 @@ Ha az Azure AD SSO-t a megbízottat szeretné konfigurálni és tesztelni, hajts
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **megbízott** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **megbízott** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -118,15 +116,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **megbízottat**.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-envoy-sso"></a>A megbízottat SSO konfigurálása
@@ -143,19 +135,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. A felső eszköztáron kattintson a **Beállítások** elemre.
 
-    ![Envoy](./media/envoy-tutorial/ic776782.png "Envoy")
+    ![Envoy](./media/envoy-tutorial/envoy-1.png "Envoy")
 
 5. Kattintson a **vállalat** elemre.
 
-    ![Vállalat](./media/envoy-tutorial/ic776783.png "Vállalat")
+    ![Vállalat](./media/envoy-tutorial/envoy-2.png "Vállalat")
 
 6. Kattintson az **SAML** elemre.
 
-    ![SAML](./media/envoy-tutorial/ic776784.png "SAML")
+    ![SAML](./media/envoy-tutorial/envoy-3.png "SAML")
 
 7. Az **SAML-hitelesítés** konfigurálása szakaszban hajtsa végre a következő lépéseket:
 
-    ![SAML-hitelesítés](./media/envoy-tutorial/ic776785.png "SAML-hitelesítés")
+    ![SAML-hitelesítés](./media/envoy-tutorial/envoy-4.png "SAML-hitelesítés")
     
     >[!NOTE]
     >Az alkalmazás automatikusan létrehozza a HQ hely AZONOSÍTÓjának értékét.
@@ -172,16 +164,14 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a megbízott
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor a hozzáférési panelen a megbízottat tartalmazó csempére kattint, automatikusan be kell jelentkeznie arra a megbízottat, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a bejelentkező bejelentkezési URL-címre, ahol kezdeményezheti a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Nyissa meg közvetlenül a bejelentkező bejelentkezési URL-címet, majd indítsa el onnan a bejelentkezési folyamatot.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások alkalmazásban a megbízott csempére kattint, a rendszer átirányítja a bejelentkező bejelentkezési URL-címre. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [Próbálja ki a megbízottat az Azure AD-vel](https://aad.portal.azure.com/)
+A megbízott konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

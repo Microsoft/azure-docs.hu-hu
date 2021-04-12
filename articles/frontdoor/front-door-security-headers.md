@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8462b98aee1d34b6c7a2ed671667223eca45a25
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91270049"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551917"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Oktatóanyag: biztonsági fejlécek hozzáadása a Rules Engine szolgáltatással
 
@@ -41,6 +41,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. Állítsa be úgy a kezelőt **, hogy ezt** a fejlécet adja hozzá az útvonal összes bejövő kérelmének válaszként.
 
 1. Adja hozzá a fejléc neve: **Content-Security-Policy** , és határozza meg, hogy a fejlécnek milyen értékeket kell elfogadnia. Ebben a forgatókönyvben a *"script-src" saját https://apiphany.portal.azure-api.net* lehetőséget választjuk.
+
+   > [!NOTE]
+   > A fejléc értékei legfeljebb 128 karakterből állhatnak.
 
 1. Ha hozzáadta az összes szabályt, amelyet szeretne konfigurálni, ne felejtse el, hogy a kívánt útvonalra lépjen, és a szabályok motorjának beállításait az útválasztási szabályhoz rendeli. Ez a lépés a szabály működésének engedélyezéséhez szükséges. 
 

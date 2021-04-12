@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 84ac8e8309d9f1d0536d0f7a16ab9cd9f3c10a2c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c1322eac7fd5ec1ead09a7b0197db931f96f8d48
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284779"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073708"
 ---
 <a name="HOLTop"></a>
 
@@ -209,11 +209,10 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan használhatja az OCR Java-függvénytárat a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
+Ebben a rövid útmutatóban megtanulta, hogyan telepítheti az OCR-ügyféloldali kódtárat, és hogyan használhatja az olvasási API-t. Következő lépésként tekintse meg az API-funkciók beolvasása című témakört.
 
 > [!div class="nextstepaction"]
->[OCR SDK-dokumentáció (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
-
+>[Az olvasási API meghívása](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [OCR – áttekintés](../../overview-ocr.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)található.

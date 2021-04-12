@@ -1,5 +1,5 @@
 ---
-title: A ellenőrizhető hitelesítő adatok kihagyása (előzetes verzió)
+title: Azure Active Directory ellenőrizhető hitelesítő adatok (előzetes verzió)
 description: Megtudhatja, hogyan engedélyezheti a ellenőrizhető hitelesítő adatok előzetes verzióját
 documentationCenter: ''
 author: barclayn
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 93c493a9b9941913da270fe763175240c8abf9f3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d6e72b6d6f566fcf3f52e1c48ab6824c0e9a968e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170013"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222792"
 ---
 # <a name="opt-out-of-the-verifiable-credentials-preview"></a>A ellenőrizhető hitelesítő adatok kihagyása (előzetes verzió)
 
@@ -62,7 +62,7 @@ Ha elvégezte a Azure Active Directory ellenőrizhető hitelesítő adatok szolg
 
 A letiltást követően nem fogja tudni helyreállítani a műveletét, és nem végezheti el a műveletet. Ez a lépés egy egyirányú művelet, és újra kell választania, ami új létrehozást eredményezett.  
 
-## <a name="effect-on-existing-verifiable-credentials"></a>A meglévő ellenőrizhető hitelesítő adatokra gyakorolt hatás.
+## <a name="effect-on-existing-verifiable-credentials"></a>A meglévő ellenőrizhető hitelesítő adatokra gyakorolt hatás
 
 Az összes már kiadott ellenőrizhető hitelesítő adat továbbra is fennáll. A rendszer nem titkosítja a titkosítást, mivel a művelet az ION használatával megoldható marad.
 Ha azonban a függő entitások meghívja a status API-t, a rendszer mindig hibaüzenetet küld.

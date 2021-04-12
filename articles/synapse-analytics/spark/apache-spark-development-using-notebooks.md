@@ -11,10 +11,10 @@ ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
 ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105612316"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Szinapszis Studio-jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
@@ -101,7 +101,7 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Description |  
+|Magic parancs |Nyelv | Leírás |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
@@ -112,7 +112,7 @@ Az alábbi ábrán egy példa látható arra, hogyan írhat PySpark-lekérdezés
 
    ![Szinapszis Spark Magic-parancsok](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>Az adatnyelvek közötti hivatkozáshoz használjon ideiglenes táblázatokat
+### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>Az adatnyelvek közötti hivatkozáshoz használjon ideiglenes táblázatokat
 
 Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken a szinapszis Studio jegyzetfüzetben. A Sparkban egy ideiglenes tábla is szerepelhet a nyelvek között. Íme egy példa arra, hogyan lehet beolvasni egy `Scala` DataFrame a `PySpark` és a `SparkSQL` Spark Temp-tábla használatával megkerülő megoldásként.
 
@@ -120,7 +120,7 @@ Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken 
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 

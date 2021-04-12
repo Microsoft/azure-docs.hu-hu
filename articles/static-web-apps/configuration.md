@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
-ms.openlocfilehash: b6779de0203246a60bdfa60ea110a0f0d5f26ff3
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106449"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218974"
 ---
 # <a name="configure-azure-static-web-apps"></a>Az Azure statikus Web Apps konfigurálása
 
@@ -39,6 +39,7 @@ A részletekért tekintse meg a [példa konfigurációs](#example-configuration-
 
 Az útválasztási szabályok lehetővé teszik az alkalmazáshoz való hozzáférést lehetővé tevő URL-címek mintájának meghatározását a weben. Az útvonalak az útválasztási szabályok tömbje vannak meghatározva. Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
 
+- A szabályok a tömbben vannak definiálva `routes` , még akkor is, ha csak egy útvonala van.
 - A szabályok a tömbben megjelenő sorrendben lesznek végrehajtva `routes` .
 - A szabály kiértékelése leáll az első egyezés – az útválasztási szabályok nincsenek összefűzve.
 - Teljes hozzáférése van az egyéni szerepkörök neveihez.
@@ -50,17 +51,17 @@ A statikus tartalom alapértelmezett fájlja a *index.html* fájl.
 
 ## <a name="defining-routes"></a>Útvonalak meghatározása
 
-Minden szabály egy útvonal mintából áll, valamint egy vagy több választható szabály-tulajdonsággal. Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
+Minden szabály egy útvonal mintából áll, valamint egy vagy több választható szabály-tulajdonsággal. Az útválasztási szabályok a tömbben vannak meghatározva `routes` . Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
 
 | Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak.<ul><li>Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.</ul></ul>|
-| `rewrite`        | No       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizárható egy `redirect` szabályhoz<li>Az Újraírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez viszonyítva kell lenniük</ul>  |
-| `redirect`        | No       | n.a.          | Meghatározza a kérelem fájl-vagy elérésiút-átirányítási célját.<ul><li>Kölcsönösen kizárható egy `rewrite` szabályhoz.<li>Az átirányítási szabályok megváltoztatják a böngésző helyét.<li>Az alapértelmezett válasz kódja a [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (ideiglenes átirányítás), de felülbírálható egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítás).</ul> |
-| `allowedRoles` | No       | névtelen     | Az útvonal eléréséhez szükséges szerepkör-nevek listáját határozza meg. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör az összes nem [`anonymous`](./authentication-authorization.md) hitelesített felhasználóra vonatkozik<li>A beépített szerepkör [`authenticated`](./authentication-authorization.md) minden bejelentkezett felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni.<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
-| `headers`<a id="route-headers"></a> | No | n.a. | A válaszhoz hozzáadott [HTTP-fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers) készlete. <ul><li>Az útvonal-specifikus fejlécek felülbírálják, [`globalHeaders`](#global-headers) Ha az útválasztási fejléc ugyanaz, mint a globális fejléc a válaszban.<li>Egy fejléc eltávolításához állítsa az értéket egy üres sztringre.</ul> |
-| `statusCode`   | No       | `200`, `301` vagy `302` átirányításhoz | A válasz [http-állapotkódot](https://developer.mozilla.org/docs/Web/HTTP/Status) . |
-| `methods` | No | Minden metódus | Az útvonalnak megfelelő kérelem-metódusok listája. Az elérhető módszerek a következők:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` és `PATCH` . |
+| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak.<ul><li>Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.</ul></ul>|
+| `rewrite`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizárható egy `redirect` szabályhoz<li>Az Újraírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez viszonyítva kell lenniük</ul>  |
+| `redirect`        | Nem       | n.a.          | Meghatározza a kérelem fájl-vagy elérésiút-átirányítási célját.<ul><li>Kölcsönösen kizárható egy `rewrite` szabályhoz.<li>Az átirányítási szabályok megváltoztatják a böngésző helyét.<li>Az alapértelmezett válasz kódja a [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (ideiglenes átirányítás), de felülbírálható egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítás).</ul> |
+| `allowedRoles` | Nem       | névtelen     | Az útvonal eléréséhez szükséges szerepkör-nevek listáját határozza meg. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör az összes nem [`anonymous`](./authentication-authorization.md) hitelesített felhasználóra vonatkozik<li>A beépített szerepkör [`authenticated`](./authentication-authorization.md) minden bejelentkezett felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni.<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
+| `headers`<a id="route-headers"></a> | Nem | n.a. | A válaszhoz hozzáadott [HTTP-fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers) készlete. <ul><li>Az útvonal-specifikus fejlécek felülbírálják, [`globalHeaders`](#global-headers) Ha az útválasztási fejléc ugyanaz, mint a globális fejléc a válaszban.<li>Egy fejléc eltávolításához állítsa az értéket egy üres sztringre.</ul> |
+| `statusCode`   | Nem       | `200`, `301` vagy `302` átirányításhoz | A válasz [http-állapotkódot](https://developer.mozilla.org/docs/Web/HTTP/Status) . |
+| `methods` | Nem | Minden metódus | Az útvonalnak megfelelő kérelem-metódusok listája. Az elérhető módszerek a következők:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` és `PATCH` . |
 
 Minden tulajdonságnak konkrét célja van a kérelem/válasz folyamatban.
 

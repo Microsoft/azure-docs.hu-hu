@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 3f0856f85e279f97934fff506a052c8fd214ff73
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 6bb828aaff0c1d026e977863a6e224aaea81b629
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105641222"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729235"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Örökölt Azure DNS privát zónák áttelepítése új erőforrás-modellbe
 
@@ -108,9 +108,9 @@ Ez a lépés törli a régi DNS-zónákat, és csak azt követően kell végreha
 
 Ha automatizálást használ, beleértve a sablonokat, a PowerShell-parancsfájlokat vagy az SDK használatával fejlesztett egyéni kódokat, frissítenie kell az automationt, hogy az új erőforrás-modellt használja a magánhálózati DNS-zónákhoz. Alább láthatók az új privát DNS CLI/PS/SDK dokumentációra mutató hivatkozások.
 * [Azure DNS privát zónák REST API](/rest/api/dns/privatedns/privatezones)
-* [Privát zónák Azure DNS parancssori felület](/cli/azure/network/private-dns/link/vnet?view=azure-cli-latest)
+* [Privát zónák Azure DNS parancssori felület](/cli/azure/network/private-dns/link/vnet)
 * [Privát zónák Azure DNS PowerShell](/powershell/module/az.privatedns/)
-* [Azure DNS Private Zones SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS Private Zones SDK](/dotnet/api/overview/azure/privatedns/management)
 
 ## <a name="need-further-help"></a>További segítségre van szüksége
 

@@ -2,14 +2,14 @@
 title: Hibák szimulálása az Azure-beli szolgáltatásokban
 description: Ez a cikk a Microsoft Azure Service Fabric található tesztelési műveletekre mutat.
 ms.topic: conceptual
-ms.date: 06/07/2017
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f8221d92ded33350b182cce5d28dd889beae4a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595028"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732873"
 ---
 # <a name="testability-actions"></a>Tesztelési műveletek
 A megbízhatatlan infrastruktúra szimulálása érdekében az Azure Service Fabric biztosítja a fejlesztőket, és lehetővé teszi a különböző valós hibák és az állami váltások szimulálása. Ezek tesztelési műveleteknek vannak kitéve. A műveletek az alacsony szintű API-k, amelyek egy adott hiba befecskendezését, állapotának átváltását vagy érvényesítését okozzák. A műveletek kombinálásával átfogó tesztelési forgatókönyveket írhat a szolgáltatásaihoz.
@@ -34,6 +34,7 @@ A jobb minőség-ellenőrzés érdekében futtassa a szolgáltatást és az üzl
 | InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatási partíciót helyez el kvórum elvesztéseként. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Biztonságos |
 | MovePrimary |Áthelyezi egy állapot-nyilvántartó szolgáltatás megadott elsődleges replikáját a fürt megadott csomópontjára. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Biztonságos |
 | MoveSecondary |Egy állapot-nyilvántartó szolgáltatás aktuális másodlagos replikáját áthelyezi egy másik fürtcsomópont-csomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Biztonságos |
+| MoveInstance | Egy állapot nélküli szolgáltatás aktuális példányának áthelyezése egy másik fürtcsomópont-csomópontra. | MoveInstanceAsync | Move-ServiceFabricInstance | Biztonságos |
 | RemoveReplica |Replika meghibásodásának szimulálása egy replika fürtből való eltávolításával. Ez lezárta a replikát, és átvált a "None" szerepkörre, és eltávolítja az összes állapotát a fürtből. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Biztonságos |
 | RestartDeployedCodePackage |A kód-előkészítési folyamat hibájának szimulálása egy fürt csomópontjain telepített kód újraindításával. Ezzel megszakítja a kód-csomag folyamatát, amely újraindítja a folyamatban lévő összes felhasználói szolgáltatás replikáját. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Biztonságos |
 | RestartNode |Egy csomópont újraindításával szimulálja Service Fabric fürtcsomópont meghibásodását. |RestartNodeAsync |Restart-ServiceFabricNode |Biztonságos |

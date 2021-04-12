@@ -5,32 +5,40 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 7033ea6a1ba6d85f9aa15e14bb9577b2439c59a8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5e01a4fc84f852b43e5a76114bebe145da10793
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105050490"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443587"
 ---
 # <a name="azure-expressroute-insights-using-network-insights"></a>Az Azure ExpressRoute bepillantást nyerhet a hálózati eredmények használatával
 
 Ez a cikk azt ismerteti, hogyan segítheti a hálózati adatok egy helyen történő megtekintését a ExpressRoute metrikáinak és konfigurációinak megtekintéséhez. A hálózati információk használatával megtekintheti a fontos ExpressRoute adatokat tartalmazó topológiai térképeket és állapot-irányítópultokat anélkül, hogy a további telepítést el kellene végeznie.
 
-:::image type="content" source="./media/expressroute-network-insights/monitor-landing-page.png" alt-text="Képernyőkép a ExpressRoute-figyelő kezdőlapján." lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png":::
+:::image type="content" source="./media/expressroute-network-insights/network-monitor-page.png" alt-text="Képernyőkép a Networks monitor kezdőlapján." lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png":::
 
 ## <a name="visualize-functional-dependencies"></a>Funkcionális függőségek megjelenítése
 
-A megoldás megtekintéséhez navigáljon a *Azure monitor* lapra, válassza a *hálózatok* lehetőséget, majd válassza ki a *ExpressRoute áramköri* kártyát. Ezután válassza ki a megtekinteni kívánt áramkör topológia gombját.
+1. Navigáljon a *Azure monitor* lapra, majd válassza a *hálózatok* elemet.
 
-A funkcionális függőségi nézet tiszta képet nyújt a ExpressRoute-telepítőről, amely a különböző ExpressRoute-összetevők (társítások, kapcsolatok, átjárók) közötti kapcsolatot ismerteti.
+    :::image type="content" source="./media/expressroute-network-insights/monitor-page.png" alt-text="Képernyőkép a figyelő kezdőlapján.":::
 
-:::image type="content" source="./media/expressroute-network-insights/topology-view.png" alt-text="A hálózati adatmennyiségek topológiájának nézetét bemutató képernyőkép." lightbox="./media/expressroute-network-insights/topology-view-expanded.png":::
+1. Válassza ki a *ExpressRoute áramköri* kártyát. 
 
-Vigye a kurzort a topológiai Térkép bármelyik összetevőjére a konfigurációs adatok megtekintéséhez. Például vigye az egérmutatót egy ExpressRoute-társítási összetevő fölé, és tekintse meg a részleteket, például az áramköri sávszélességet és a Global Reach engedélyezést.
+1. Ezután válassza ki a megtekinteni kívánt áramkör topológia gombját.
 
-:::image type="content" source="./media/expressroute-network-insights/topology-hovered.png" alt-text="Képernyőkép az egérmutatóval a topológia nézet erőforrásairól." lightbox="./media/expressroute-network-insights/topology-hovered-expanded.png":::
+   :::image type="content" source="./media/expressroute-network-insights/monitor-landing-page.png" alt-text="Képernyőkép a ExpressRoute-figyelő kezdőlapján." lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png"::: 
+
+1. A funkcionális függőségi nézet tiszta képet nyújt a ExpressRoute-telepítőről, amely a különböző ExpressRoute-összetevők (társítások, kapcsolatok, átjárók) közötti kapcsolatot ismerteti.
+
+    :::image type="content" source="./media/expressroute-network-insights/topology-view.png" alt-text="A hálózati adatmennyiségek topológiájának nézetét bemutató képernyőkép." lightbox="./media/expressroute-network-insights/topology-view-expanded.png":::
+
+1. Vigye a kurzort a topológiai Térkép bármelyik összetevőjére a konfigurációs adatok megtekintéséhez. Például vigye az egérmutatót egy ExpressRoute-társítási összetevő fölé, és tekintse meg a részleteket, például az áramköri sávszélességet és a Global Reach engedélyezést.
+
+    :::image type="content" source="./media/expressroute-network-insights/topology-hovered.png" alt-text="Képernyőkép az egérmutatóval a topológia nézet erőforrásairól." lightbox="./media/expressroute-network-insights/topology-hovered-expanded.png":::
 
 ## <a name="view-a-detailed-and-pre-loaded-metrics-dashboard"></a>Részletes és előre betöltött mérőszámok irányítópultjának megtekintése
 

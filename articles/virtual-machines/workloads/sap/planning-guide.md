@@ -8,15 +8,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ef0bf7a8c3906122468c895325a77de555c196
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504712"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258792"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -588,7 +588,11 @@ Az Azure-Virtual Networkon belüli virtuális gépekhez rögzített vagy fenntar
 > [!NOTE]
 > Statikus IP-címeket kell hozzárendelni az Azure-ban az egyes Vnic. Ne rendeljen statikus IP-címeket a vendég operációs rendszeren belül egy vNIC. Bizonyos Azure-szolgáltatások, például a Azure Backup-szolgáltatás arra támaszkodnak, hogy legalább az elsődleges vNIC DHCP-re van beállítva, és nem statikus IP-címekre. Tekintse meg az [Azure-beli virtuális gépek biztonsági mentését](../../../backup/backup-azure-vms-troubleshoot.md#networking)ismertető dokumentumot is.
 >
->
+
+
+##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>Az SAP hostname Virtualization másodlagos IP-címei
+Az egyes Azure-beli virtuális gépek hálózati kártyái több IP-címmel is rendelkezhetnek, ez a másodlagos IP-cím használható a DNS A/PTR-rekordhoz rendelt SAP virtuális állomásnevek esetében is, ha szükséges. A másodlagos IP-címeket hozzá kell rendelni az Azure Vnic IP-konfigurációjához a [jelen cikk](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md) alapján, és az operációs rendszer másodlagos IP-címeiként is konfigurálva kell lennie a DHCP-n keresztül. Minden másodlagos IP-nek ugyanahhoz az alhálózathoz kell tartoznia, amelyhez a vNIC kötve van. Az Azure Load Balancer úszó IP-címének használata [nem támogatott]( https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations) másodlagos IP-konfigurációknál (például pacemaker-fürtöknél), ebben az esetben a Load Balancer IP-címe engedélyezi az SAP virtuális állomásnév (eke) t. Lásd még: SAP megjegyzése [#962955](https://launchpad.support.sap.com/#/notes/962955) a virtuális állomásnevek használatával kapcsolatos általános útmutatást.
+
 
 ##### <a name="multiple-nics-per-vm"></a>Több hálózati adapter/virtuális gép
 
@@ -616,12 +620,12 @@ Helyek közötti kapcsolat létrehozásához (helyszíni adatközpontból az Azu
 
 A fenti ábra két Azure-előfizetést mutat be az Azure-beli virtuális hálózatokban való használatra fenntartott IP-címek altartományával. A helyszíni hálózatról az Azure-ra való kapcsolódás VPN-kapcsolaton keresztül történik.
 
-#### <a name="point-to-site-vpn"></a>Pont – hely típusú VPN
+#### <a name="point-to-site-vpn"></a>Pont–hely VPN
 
 A pont – hely típusú VPN-hez minden ügyfélszámítógépnek csatlakoznia kell a saját VPN-hez az Azure-ban. Az SAP-forgatókönyvek esetében a pont – hely kapcsolat nem praktikus. Ezért a pont – hely VPN-kapcsolathoz nem kapnak további referenciákat.
 
 További információt itt találhat
-* [Pont – hely kapcsolat konfigurálása VNet a Azure Portal használatával](../../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Pont–hely kapcsolat konfigurálása virtuális hálózat számára az Azure Portalon](../../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével](../../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 #### <a name="multi-site-vpn"></a>Többhelyes VPN
@@ -1163,7 +1167,7 @@ Az SAP üzemelő példányok tapasztalatai az elmúlt két évben néhány leck�
 > ![Linux-embléma.][Logo_Linux] Linux
 >
 > * [Szoftveres RAID konfigurálása Linuxon][virtual-machines-linux-configure-raid]
-> * [Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban][virtual-machines-linux-configure-lvm]
+> * [Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban.][virtual-machines-linux-configure-lvm]
 >
 >
 
@@ -1236,7 +1240,7 @@ Az Azure geo-Replication helyileg működik a virtuális gépek mindegyik virtu�
 ---
 ### <a name="final-deployment"></a>Végső üzembe helyezés
 
-A végső telepítés és a pontos lépések esetében, különösen az Azure-bővítmény SAP-hoz való üzembe helyezésével kapcsolatban tekintse meg a [telepítési útmutatót][deployment-guide].
+A végső üzembe helyezéshez és a pontos lépésekhez, különösen az Azure-bővítmény SAP-hoz való üzembe helyezéséhez tekintse meg a [telepítési útmutatót][deployment-guide].
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Azure-beli virtuális gépeken futó SAP-rendszerek elérése
 
@@ -1657,7 +1661,7 @@ Az SAP változási és átviteli rendszerét (TMS) úgy kell konfigurálni, hogy
 
 ##### <a name="configuring-the-transport-domain"></a>A átviteli tartomány konfigurálása
 
-Konfigurálja a átviteli tartományt a Transport tartományvezérlőként kijelölt rendszeren a következő témakörben leírtak szerint: [a Transport tartományvezérlő konfigurálása](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Létrejön egy rendszerfelhasználó TMSADM, és a rendszer létrehozza a szükséges RFC-célt. Ezeket az RFC-kapcsolatokat a Transaction SM59 lehet megtekinteni. Az állomásnév feloldását engedélyezni kell a szállítási tartományon belül.
+Konfigurálja a átviteli tartományt a Transport tartományvezérlőként kijelölt rendszeren a következő témakörben leírtak szerint: [a Transport tartományvezérlő konfigurálása](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Configuring%20the%20Transport%20Domain%20Controller). Létrejön egy rendszerfelhasználó TMSADM, és a rendszer létrehozza a szükséges RFC-célt. Ezeket az RFC-kapcsolatokat a Transaction SM59 lehet megtekinteni. Az állomásnév feloldását engedélyezni kell a szállítási tartományon belül.
 
 Útmutató:
 
@@ -1670,12 +1674,12 @@ Konfigurálja a átviteli tartományt a Transport tartományvezérlőként kijel
 
 Egy átviteli tartományban az SAP-rendszer többek között a következőképpen néz ki:
 
-* Az Azure-beli fejlesztői rendszeren lépjen az átviteli rendszer (ügyfél 000) elemre, és hívja meg a tranzakciós STM. Válasszon másik konfigurációt a párbeszédpanelről, és folytassa a rendszer belefoglalása a tartományban. Határozza meg a tartományvezérlőt célként megadott gazdagépként ([beleértve a szállítási tartomány SAP-rendszereit](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). A rendszer most már a szállítási tartományba való felvételre vár.
+* Az Azure-beli fejlesztői rendszeren lépjen az átviteli rendszer (ügyfél 000) elemre, és hívja meg a tranzakciós STM. Válasszon másik konfigurációt a párbeszédpanelről, és folytassa a rendszer belefoglalása a tartományban. Határozza meg a tartományvezérlőt célként megadott gazdagépként ([beleértve a szállítási tartomány SAP-rendszereit](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0c17acc11d1899e0000e829fbbd.html?q=Including%20SAP%20Systems%20in%20the%20Transport%20Domain)). A rendszer most már a szállítási tartományba való felvételre vár.
 * Biztonsági okokból ezután vissza kell térnie a tartományvezérlőre, hogy erősítse a kérést. Válassza a rendszer áttekintése lehetőséget, és hagyja jóvá a várakozási rendszer jóváhagyását. Ezután erősítse meg a parancssort, és a konfiguráció terjesztése megtörténik.
 
 Ez az SAP-rendszer most már tartalmazza a szállítási tartomány összes többi SAP-rendszeréhez szükséges információkat. Ugyanakkor az új SAP-rendszerhez tartozó címadatok az összes többi SAP-rendszerbe kerülnek, az SAP-rendszer pedig a Transport Control program szállítási profiljában szerepel. Győződjön meg arról, hogy az RFC-k és a hozzáférés a tartományhoz tartozó szállítási címtárhoz.
 
-A szokásos módon folytassa a szállítási rendszerek konfigurációját a dokumentáció [módosítása és a szállítási rendszerek](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)című cikkben leírtak szerint.
+A szokásos módon folytassa a szállítási rendszerek konfigurációját a dokumentáció [módosítása és a szállítási rendszerek](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/3bdfba3692dc635ce10000009b38f839.html)című cikkben leírtak szerint.
 
 Útmutató:
 
@@ -1687,13 +1691,13 @@ A szokásos módon folytassa a szállítási rendszerek konfigurációját a dok
 
 A helyek közötti kapcsolattal rendelkező létesítmények közötti helyzetekben a helyszíni és az Azure közötti késés továbbra is jelentős lehet. Ha követjük a folyamatokat fejlesztési és tesztelési rendszereken keresztül éles környezetbe, vagy úgy gondoljuk, hogy a különböző rendszerekhez szállítást vagy támogatási csomagokat alkalmaznak, akkor a központi átviteli könyvtár helyétől függ, hogy egyes rendszerek nagy késleltetésű olvasási vagy írási időt tapasztalnak a központi átviteli címtárban. A helyzet hasonló az SAP tájképi konfigurációhoz, ahol a különböző rendszerek különböző adatközpontokon keresztül oszlanak el, és jelentős távolságban vannak az adatközpontok között.
 
-Ahhoz, hogy megtörténjen az ilyen késések megoldása, és hogy a rendszerek gyorsak legyenek a továbbítási címtárba vagy a szolgáltatásba való írás során, két STM-átviteli tartományt is beállíthat (egyet a helyszíni rendszerhez, egyet pedig az Azure-ban lévő rendszerekhez és az átviteli tartományokhoz. Olvassa el ezt a dokumentációt, amely ismerteti a jelen koncepció mögötti alapelveket az SAP TMS: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm> .
+Ahhoz, hogy megtörténjen az ilyen késések megoldása, és hogy a rendszerek gyorsak legyenek a továbbítási címtárba vagy a szolgáltatásba való írás során, két STM-átviteli tartományt is beállíthat (egyet a helyszíni rendszerhez, egyet pedig az Azure-ban lévő rendszerekhez és az átviteli tartományokhoz. Olvassa el ezt a [dokumentációt] (<https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm) , amely a jelen koncepció mögötti alapelveket ismerteti az SAP-TMS.
+
 
 Útmutató:
 
-* Szállítási tartomány beállítása minden helyen (a helyszínen és az Azure-ban) a Transaction STM használatával <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
-* Kapcsolja össze a tartományokat egy tartományi kapcsolattal, és erősítse meg a két tartomány közötti kapcsolatot.
-  <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
+* [Átviteli tartomány beállítása] ( https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Set%20up%20a%20transport%20domain) A helyszínen és az Azure-ban <a Transaction STM használatával
+* [Kapcsolja össze a tartományokat egy tartományi kapcsolattal](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/14c795388d62e450e10000009b38f889.html?q=Link%20the%20domains%20with%20a%20domain%20link) , és erősítse meg a két tartomány közötti kapcsolatot.
 * Terjessze a konfigurációt a csatolt rendszeren.
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>RFC-forgalom az Azure-ban és a helyszínen (több telephelyen) található SAP-példányok között

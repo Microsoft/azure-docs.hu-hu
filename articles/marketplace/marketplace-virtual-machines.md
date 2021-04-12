@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 0b5d0a8b12ad07c5be3a4cfc0840acc81aa0c395
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 6e391ca79c9dcf9ab533a7e67961c654b5f8630b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060732"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103368"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>Virtuálisgép-ajánlat megtervezése
 
 Ez a cikk a virtuális gépek (VM) kereskedelmi piactéren való közzétételének különböző lehetőségeit és követelményeit ismerteti. A VM-ajánlatok az Azure Marketplace-en üzembe helyezett és számlázható ajánlatok.
 
-Mielőtt elkezdené, [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](./partner-center-portal/create-account.md) , és ellenőrizze, hogy a fiókja regisztrálva van-e a kereskedelmi piactér programban.
+Mielőtt elkezdené, [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , és ellenőrizze, hogy a fiókja regisztrálva van-e a kereskedelmi piactér programban.
 
 ### <a name="technical-fundamentals"></a>Technikai alapismeretek
 

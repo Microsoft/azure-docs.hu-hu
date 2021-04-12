@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: f6705b5f72aaa8f990aaf3b1daa33697b690d1f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8768acc8d4720a750c4c7f7e0f40340aeeff279d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608884"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449052"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -309,7 +309,7 @@ A [Thales Luna 7 HSM-modell A790](https://cpl.thalesgroup.com/encryption/hardwar
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>K: hány kulcsot lehet támogatni a dedikált HSM-ben?
 
-A kulcsok maximális száma a rendelkezésre álló memória függvénye. A SafeNet Luna 7 Model A790 használatban van 32MB. Aszimmetrikus kulcsok használata esetén a következő számok is érvényesek a fő párokra.
+A kulcsok maximális száma a rendelkezésre álló memória függvénye. A Thales Luna 7 Model A790 használatban van 32MB. Aszimmetrikus kulcsok használata esetén a következő számok is érvényesek a fő párokra.
 
 * RSA-2048-19 000
 * ECC-P256-91 000

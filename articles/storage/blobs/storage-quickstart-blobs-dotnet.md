@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Azure Blob Storage Library v12-.NET'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használható a .NET-hez készült Azure Blob Storage Client Library 12-es verziója a tárolók és Blobok blob (Object) tárolóban történő létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/03/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 82dcfa0942f21f01424c4744aa0b23f4672a135f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7ab7c52f6fe392cfebd056a86f0566705fb2b8e6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106717"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280666"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure Blob Storage Client Library V12 a .NET-hez
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
-ms.openlocfilehash: 994e5ae0647f350e0a64f35318bd5803f4ed79b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05ef67e3caafe2c10d02ee4ca2e3248b7ab6c188
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98894983"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120896"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Streamvégpont (forrás) hibái
 
@@ -143,24 +143,24 @@ Az ügyfél által eljuttatott hasznos adatok formátuma nem támogatott.
 
 Titkosítási cikkekért és Példákért lásd:
 
-- [Koncepció: tartalomvédelem](content-protection-overview.md)
-- [Koncepció: tartalmi kulcs házirendjei](content-key-policy-concept.md)
+- [Koncepció: tartalomvédelem](drm-content-protection-concept.md)
+- [Koncepció: tartalmi kulcs házirendjei](drm-content-key-policy-concept.md)
 - [Koncepció: folyamatos átviteli szabályzatok](streaming-policy-concept.md)
-- [Minta: védelem AES-titkosítással](protect-with-aes128.md)
-- [Minta: védelem a DRM-mel](protect-with-drm.md)
+- [Minta: védelem AES-titkosítással](drm-playready-license-template-concept.md)
+- [Minta: védelem a DRM-mel](drm-protect-with-drm-tutorial.md)
 
 A szűrési útmutatásért lásd:
 
-- [Koncepció: dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md)
+- [Koncepció: dinamikus jegyzékfájlok](filters-dynamic-manifest-concept.md)
 - [Koncepció: szűrők](filters-concept.md)
 - [Minta: szűrők létrehozása REST API-kkal](filters-dynamic-manifest-rest-howto.md)
-- [Minta: szűrők létrehozása a .NET-tel](filters-dynamic-manifest-dotnet-howto.md)
-- [Minta: szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
+- [Minta: szűrők létrehozása a .NET-tel](filters-dynamic-manifest-dotnet-how-to.md)
+- [Minta: szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-how-to.md)
 
 Az élő cikkek és minták esetében lásd:
 
-- [Koncepció: élő közvetítés – áttekintés](live-streaming-overview.md)
-- [Koncepció: élő események és élő kimenetek](live-events-outputs-concept.md)
+- [Koncepció: élő közvetítés – áttekintés](stream-live-streaming-concept.md)
+- [Koncepció: élő események és élő kimenetek](live-event-outputs-concept.md)
 - [Minta: élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
 
 ## <a name="416-range-not-satisfiable"></a>416 A tartománykérelem nem teljesíthető
@@ -202,7 +202,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 - [Kódolási hibakódok](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services fogalmak](concepts-overview.md)
-- [Kvóták és korlátok](limits-quotas-constraints.md)
+- [Kvóták és korlátok](limits-quotas-constraints-reference.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

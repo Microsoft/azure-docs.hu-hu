@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhat szerepköralapú hozzáférés-v
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 03/30/2021
 ms.author: thweiss
-ms.openlocfilehash: f8028d69e376e2b71549be52267e2f6cbdb1f8ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a6bdf55e52a7060423d2a016f07eee3608f50d4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568647"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063474"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos DB-fiókhoz Azure Active Directoryhoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -385,6 +385,7 @@ Ez a további információ a **DataPlaneRequests** -napló kategóriájában fol
 ## <a name="limits"></a>Korlátok
 
 - Azure Cosmos DB-fiókkal akár 100 szerepkör-definíciót és 2 000 szerepkör-hozzárendelést is létrehozhat.
+- Szerepkör-definíciókat csak olyan Azure AD-identitásokhoz rendelhet hozzá, amelyek ugyanahhoz az Azure AD-bérlőhöz tartoznak, mint a Azure Cosmos DB-fiókja.
 - Az Azure AD-csoport feloldása jelenleg nem támogatott olyan identitások esetén, amelyek több mint 200 csoporthoz tartoznak.
 - Az Azure AD-jogkivonatot a rendszer jelenleg a Azure Cosmos DB szolgáltatásnak küldött egyes kérések fejlécében adja át, ami növeli a hasznos adatok teljes méretét.
 - Az adatok Azure AD-vel való elérése a [Azure Cosmos db Explorerben](data-explorer.md) még nem támogatott. A Azure Cosmos DB Explorerrel továbbra is szükség van arra, hogy a felhasználó most hozzáférhessen a fiók elsődleges kulcsához.

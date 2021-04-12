@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102426263"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552308"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -83,7 +83,7 @@ Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltat
 Ha más régiót szeretne használni az oktatóanyaghoz, akkor ezek a tényezők korlátozhatják a lehetséges lehetőségeket:
 
 * Győződjön meg arról, hogy [támogatott Azure-régiót](regions.md#voice-assistants)használ.
-* A közvetlen vonalas beszéd csatornája a szöveg-beszéd szolgáltatást használja, amely standard és neurális hangokat tartalmaz. A neurális hangok [bizonyos Azure-régiókra korlátozódnak](regions.md#standard-and-neural-voices).
+* A Direct line Speech Channel a szöveg-beszéd szolgáltatást használja, amely neurális és standard hangokat tartalmaz. Ezekben az [Azure-régiókban](regions.md#neural-and-standard-voices)mind a neurális, mind a standard hangok elérhetők.
 
 A régiókkal kapcsolatos további információkért lásd: Azure-beli [telephelyek](https://azure.microsoft.com/global-infrastructure/locations/).
 
@@ -328,7 +328,7 @@ Ha hibaüzenetet kap a fő alkalmazás ablakában, a következő táblázat seg�
 |Hiba (AuthenticationFailure): a WebSocket frissítése hitelesítési hiba miatt meghiúsult (401). A megfelelő előfizetési kulcs (vagy engedélyezési jogkivonat) és a régió nevének keresése| Az alkalmazás beállítások lapján ellenőrizze, hogy helyesen adta-e meg a beszédfelismerési előfizetési kulcsot és annak régióját.<br>Győződjön meg arról, hogy helyesen adta meg a beszédfelismerési kulcsot és a kulcsfontosságú régiót. |
 |Hiba (ConnectionFailure): a távoli állomás lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: az üzenet elküldése előtt nem sikerült csatlakozni a robothoz | Győződjön meg arról, hogy [bejelölte az "adatfolyam-végpont engedélyezése"](#register-the-direct-line-speech-channel) és/vagy a [ **webes szoftvercsatornák**](#enable-web-sockets) bekapcsolva beállítást.<br>Győződjön meg arról, hogy a Azure App Service fut. Ha igen, próbálja meg újraindítani a App Service.|
 |Hiba (ConnectionFailure): a távoli állomás lezárta a kapcsolatokat. Hibakód: 1002. Hiba részletei: a kiszolgáló a (z) 503 állapotkódot adta vissza, amikor a rendszer a (z) 101 állapotkódot várta. | Győződjön meg arról, hogy [bejelölte az "adatfolyam-végpont engedélyezése"](#register-the-direct-line-speech-channel) és/vagy a [ **webes szoftvercsatornák**](#enable-web-sockets) bekapcsolva beállítást.<br>Győződjön meg arról, hogy a Azure App Service fut. Ha igen, próbálja meg újraindítani a App Service.|
-|Hiba (ConnectionFailure): a távoli állomás lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: a válasz állapotkód nem a sikerre utal: 500 (InternalServerError)| A robot a kimeneti tevékenység [beszéd mezőjében](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) egy neurális hangot adott meg, de az előfizetési kulcshoz társított Azure-régió nem támogatja a neurális hangokat. Lásd: [standard és neurális hangok](./regions.md#standard-and-neural-voices).|
+|Hiba (ConnectionFailure): a távoli állomás lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: a válasz állapotkód nem a sikerre utal: 500 (InternalServerError)| A robot a kimeneti tevékenység [beszéd mezőjében](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) egy neurális hangot adott meg, de az előfizetési kulcshoz társított Azure-régió nem támogatja a neurális hangokat. Lásd: [neurális és standard hangok](./regions.md#neural-and-standard-voices).|
 
 Ha a probléma nem szerepel a táblázatban, olvassa el a következő témakört [: hangsegédek: gyakori kérdések](faq-voice-assistants.md). Ha az oktatóanyag lépéseinek követése után továbbra sem tudja megoldani a problémát, adjon meg egy új problémát a  [Hangsegéd GitHub lapján](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
@@ -475,7 +475,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 ## <a name="see-also"></a>Lásd még
 
 * Üzembe helyezés egy [közel található Azure-régióban](https://azure.microsoft.com/global-infrastructure/locations/) a bot válaszideje fejlesztéséhez
-* [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](./regions.md#standard-and-neural-voices) üzembe helyezése
+* [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](./regions.md#neural-and-standard-voices) üzembe helyezése
 * A Direct line Speech Channel szolgáltatáshoz kapcsolódó díjszabás:
   * [A bot Service díjszabása](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Beszédfelismerési szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)

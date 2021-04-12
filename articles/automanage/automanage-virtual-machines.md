@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 973bd1ac121513a297574bbb37d1663b5a18c345
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276909"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491277"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -77,7 +77,7 @@ Az automatikusan felügyelt fiók **közreműködői** és **erőforrás-házire
 
 ## <a name="participating-services"></a>Résztvevő szolgáltatások
 
-:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="Intelligensen integrált szolgáltatások.":::
+:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="Intelligensen integrált szolgáltatások.":::
 
 A résztvevő Azure-szolgáltatások teljes listáját, valamint azok támogatott környezetét a következő témakörben tekintheti meg:
 - [A Linux-alapú autokezelés](automanage-linux.md)

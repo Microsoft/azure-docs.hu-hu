@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v4. x konfigurálása a Container bepillantás
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c44a7c6eea6182316d626e3e8501f9aa63eef78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506412"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221517"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Az Azure Red Hat OpenShift v4. x konfigurálása a Container bepillantást tartalmazó szolgáltatással
 
@@ -34,6 +34,8 @@ A Container-megállapítások az Azure Red Hat OpenShift v4. x figyelését tám
 - Az Azure CLI verziója 2.0.72 vagy újabb verzió  
 
 - A [Helm 3](https://helm.sh/docs/intro/install/) CLI-eszköz
+
+- A [OPENSHIFT parancssori](https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html) felület legújabb verziója
 
 - [Bash 4-es verziója](https://www.gnu.org/software/bash/)
 

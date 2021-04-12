@@ -1,5 +1,5 @@
 ---
-title: Gyűjtemények (előzetes verzió) a saját alkalmazások portálon – Azure AD
+title: Alkalmazások rendszerezése gyűjteményekbe a saját alkalmazások portálon – Azure AD
 description: Megtudhatja, hogyan hozhatja létre, szerkesztheti, törölheti, elrejtheti és jelenítheti meg az alkalmazás-gyűjteményeket az alkalmazásaikban.
 services: active-directory
 author: curtand
@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/07/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ac5dede27262d3ce8bc44b4b278ed623063f8e1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095120"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209663"
 ---
-# <a name="user-collections-preview-in-my-apps"></a>Felhasználói gyűjtemények (előzetes verzió) az alkalmazásokban
+# <a name="organize-apps-using-collections-from-my-apps"></a>Alkalmazások rendszerezése az alkalmazásokból származó gyűjtemények használatával
 
 A saját alkalmazások az összes munkahelyi vagy iskolai alkalmazás elindítására és felügyeletére szolgáló, egyetlen leállású áruház. Hozzon létre gyűjteményeket az alkalmazások rendszerezéséhez, és könnyítse meg a szükséges alkalmazások megtalálását.
-
-[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
@@ -55,7 +53,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
     :::image type="content" source="media/my-apps-portal-user-collections/3-add-apps.png" alt-text="Alkalmazások hozzáadása a listáról a gyűjteményhez":::
 
-1. Az alábbi lehetőséggel átrendezheti vagy törölheti az alkalmazásokat, vagy az **Alkalmazások hozzáadása** lehetőség kiválasztásával több alkalmazást is kiválaszthat a gyűjteményhez. Ha elégedett a lehetőségeivel, válassza az **új létrehozása** lehetőséget.  
+1. Az **új ablaktábla létrehozása** panelen átrendezheti vagy törölheti az alkalmazásokat, vagy az **Alkalmazások hozzáadása** lehetőség kiválasztásával több alkalmazást is kiválaszthat a gyűjteményhez. Ha elégedett a lehetőségeivel, válassza az **új létrehozása** lehetőséget.  
 
     :::image type="content" source="media/my-apps-portal-user-collections/4-create-button.png" alt-text="Az új létrehozása gomb kiválasztásával mentheti a gyűjteményt az alkalmazásokba":::
 
@@ -87,7 +85,7 @@ Csak a létrehozott gyűjtemények szerkeszthetők. Már létrehozott gyűjtemé
 
     :::image type="content" source="media/my-apps-portal-user-collections/9-manage-apps-again.png" alt-text="Az alkalmazások kezeléséhez használja a Manage parancsot":::
 
-1. Itt beállíthatja, hogy a gyűjtemények milyen sorrendben jelenjenek meg az alkalmazásokban. A lista elején található gyűjtemény az alapértelmezett gyűjtemény lesz, amelyet minden alkalommal, amikor a myapps.microsoft.com-ra lép.  
+1. Itt beállíthatja, hogy a gyűjtemények milyen sorrendben jelenjenek meg az alkalmazásokban. A lista tetején található gyűjtemény lesz az alapértelmezett gyűjtemény, amely minden alkalommal megjelenik, amikor a myapps.microsoft.com-ra lép.  
 
     :::image type="content" source="media/my-apps-portal-user-collections/10-default-collection.png" alt-text="Az alkalmazások most már tartalmazzák az új gyűjteményt":::
 

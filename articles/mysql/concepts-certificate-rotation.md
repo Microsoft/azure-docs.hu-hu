@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 23fa3e93565066ce4b897bffe63164486efc179e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a80910340333c2e6c52bb32644c48fa3a28ab437
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449883"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210754"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megértése Azure Database for MySQL egyetlen kiszolgálón
 
@@ -169,7 +169,7 @@ Ha [adatreplikálást](concepts-data-in-replication.md) használ a Azure Databas
 
     Ha úgy látja, hogy a tanúsítvány a CA_file, SSL_Cert és SSL_Key számára van megadva, frissítenie kell a fájlt az [új tanúsítvány](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) hozzáadásával, és létre kell hoznia egy egyesített tanúsítvány-fájlt.
 
-* Ha az adatreplikálás két Azure Database for MySQL között van, akkor a másodpéldányt alaphelyzetbe kell állítania a **hívási MySQL.az_replication_change_master** végrehajtásával, és az új kettős főtanúsítványt az utolsó paraméterként kell megadnia [master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)
+* Ha az adatreplikálás két Azure Database for MySQL között van, akkor a másodpéldányt alaphelyzetbe kell állítania a **hívási MySQL.az_replication_change_master** végrehajtásával, és az új kettős főtanúsítványt az utolsó paraméterként kell megadnia [master_ssl_ca](howto-data-in-replication.md#4-link-source-and-replica-servers-to-start-data-in-replication)
 
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. van-e kiszolgálóoldali lekérdezés annak ellenőrzéséhez, hogy az SSL használatban van-e?
 

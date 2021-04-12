@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 666e9f01d090acf29b8013470ed0264cd83f6d47
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: a8420d23c8bda29290722975ada2acca6733f0e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293634"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491676"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>A DataBox használata hálózati csatlakoztatott tárolóról (NAS) az Azure-fájlmegosztásba való Migrálás céljából
 
@@ -137,7 +137,12 @@ Kövesse az Azure DataBox dokumentációjának lépéseit:
 
 A csatolt DataBox dokumentációja a RoboCopy parancsot adja meg. A parancs azonban nem alkalmas a teljes fájl és a mappa megbízhatóságának megőrzésére. Használja inkább ezt a parancsot:
 
-[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
+```console
+Robocopy /MT:32 /NP /NFL /NDL /B /MIR /IT /COPY:DATSO /DCOPY:DAT /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+```
+* Ha többet szeretne megtudni az egyes RoboCopy-jelzők részleteiről, tekintse meg a következő, [Robocopy szakaszban](#robocopy)található táblázatot.
+* Ha többet szeretne megtudni a szálak számának megfelelő méretéről `/MT:n` , a Robocopy sebességének optimalizálásáról és a Robocopy jó szomszédjának kiválasztásáról az adatközpontban, vessen egy pillantást a [Robocopy hibaelhárítási szakaszára](#troubleshoot).
+
 
 ## <a name="phase-7-catch-up-robocopy-from-your-nas"></a>7. fázis: a felzárkózás RoboCopy a NAS-ból
 
@@ -197,59 +202,7 @@ A másolatok közül néhányat párhuzamosan is futtathat. Javasoljuk, hogy egy
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Egy adott RoboCopy futtatásának sebessége és sikerességi aránya több tényezőtől függ:
-
-* IOPS a forrás-és cél tárolón
-* a közöttük elérhető hálózati sávszélesség
-* a névtérben lévő fájlok és mappák gyors feldolgozásának lehetősége
-* a RoboCopy futtatása közötti változások száma
-
-
-### <a name="iops-and-bandwidth-considerations"></a>IOPS és sávszélességgel kapcsolatos megfontolások
-
-Ebben a kategóriában meg kell fontolnia a **forrás** (a NAS), a **cél** (Azure DataBox és újabb Azure-fájlmegosztás) képességeit, valamint a hozzájuk csatlakozó **hálózatot** . A lehetséges maximális átviteli sebességet a három összetevő leglassabb értéke határozza meg. A standard szintű DataBox kettős 10 GB/s hálózati adaptereket tartalmaz. A NAS-től függően lehetséges, hogy meg tudja feleltetni a következőt:. Győződjön meg arról, hogy a hálózati infrastruktúra úgy van konfigurálva, hogy az optimális átviteli sebességet támogassa a legjobb képességeinek megfelelően.
-
-> [!CAUTION]
-> A lehető leggyorsabban a lehető leghamarabb másolja a helyi hálózat és a NAS berendezés kihasználtságát más, gyakran üzleti szempontból kritikus fontosságú feladatokhoz.
-
-Előfordulhat, hogy a lehető leggyorsabban másolja a másolást, ha fennáll a kockázata annak, hogy az áttelepítés kisajátíthatja a rendelkezésre álló erőforrásokat.
-
-* Gondolja át, hogy mikor érdemes a környezetében áttelepítést futtatni: napközben, munkaidőn kívül vagy hétvégén.
-* Vegye fontolóra a hálózatkezelési QoS-t a Windows Serveren a RoboCopy sebességének szabályozására, és ezáltal a NAS és a hálózat hatására.
-* Kerülje az áttelepítési eszközök szükségtelen működését.
-
-A RobCopy önmagában is képes a csomagok közötti késések beszúrására a `/IPG:n` `n` Robocopy-csomagok közötti ezredmásodpercben mért kapcsoló megadásával. Ezzel a kapcsolóval elkerülhetők az erőforrások monopolizálása az i/o korlátozott NAS-eszközökön és a magas kihasználtságú hálózati kapcsolatokon keresztül. 
-
-`/IPG:n` nem használható pontos hálózati sávszélesség-szabályozáshoz egy adott Mbps-hez. Használja helyette a Windows Server Network QoS szolgáltatást. A RoboCopy teljes mértékben az SMB protokollra támaszkodik az összes hálózatra vonatkozóan, így nem tudja befolyásolni a hálózat átviteli sebességét, de lelassíthatja annak kihasználtságát. 
-
-Hasonló, a NAS-on megfigyelt IOPS is érvényes. A fürt mérete a NAS-köteten, a csomagok mérete és más tényezők tömbje befolyásolja a megfigyelt IOPS. A csomagok közötti késleltetés bevezetése gyakran a legegyszerűbb módszer a NAS terhelésének szabályozására. Több érték tesztelése, például körülbelül 20 ezredmásodperc (n = 20) a többszörösére, hogy megtekintse, hogy mennyi késleltetéssel teszi lehetővé a többi követelmény kiszolgálását, miközben a RoboCopy sebességét maximálisan megtarthatja a megkötések esetében.
-
-### <a name="processing-speed"></a>Feldolgozási sebesség
-
-A RoboCopy áthalad a névtéren, és kiértékeli az összes fájlt és mappát a másoláshoz. A rendszer minden fájlt kiértékel a kezdeti másolat során, például egy másolatot a helyi hálózaton keresztül egy DataBox, és még az Azure-fájlmegosztás számára a WAN-kapcsolaton keresztül is.
-
-Gyakran az alapértelmezett érték a sávszélesség megtervezése az áttelepítés leginkább korlátozó tényezője – és ez igaz lehet. A névtér enumerálásának lehetősége azonban befolyásolhatja, hogy a nagyobb méretű, kisebb fájlokkal rendelkező névterek esetében a teljes idő még nagyobb legyen. Vegye figyelembe, hogy a kisméretű fájlok 1 TiB-as verziójának másolása sokkal hosszabb időt vesz igénybe, mint a kevesebb, de nagyobb fájlok 1 TiB-as másolása.
-
-Ennek a különbségnek az az oka, hogy a feldolgozási teljesítmény szükséges a névtér átjárásához. A RoboCopy támogatja a többszálas másolást a `/MT:n` (z) paraméterrel, ahol n a processzor-szálak számát jelenti. Tehát amikor kifejezetten a RoboCopy számára helyez üzembe egy gépet, vegye figyelembe a processzor-magok számát és az általa megadott szálak számával létesített kapcsolatukat. A leggyakoribb két szál egy mag esetében. A gép alapvető és szálak száma fontos adatpontnak számít, hogy eldöntse, milyen többszálas értékeket `/MT:n` kell megadnia. Azt is vegye figyelembe, hogy hány RoboCopy-feladat fut párhuzamosan egy adott gépen.
-
-Több szálat is gyorsan átmásoljuk a kisebb fájlok 1Tib, mint a kevesebb szál. Ugyanakkor a nagy mennyiségű fájl 1Tib egyre csökken a befektetések megtérülése. A rendszer továbbra is gyorsabban másolja a hozzárendelt szálakat, de valószínűbb, hogy a hálózati sávszélesség vagy az IO korlátozott.
-
-### <a name="avoid-unnecessary-work"></a>A szükségtelen munka elkerülése
-
-Kerülje el a névtér nagy léptékű módosításait. Ez magában foglalja a fájlok könyvtárak közötti áthelyezését, a tulajdonságok nagy méretekben történő módosítását vagy az engedélyek módosítását (NTFS ACL), mert gyakran kaszkádolt változás lép fel, ha a mappa ACL-jei a megosztás gyökeréhez közelebb vannak módosítva. A következmények a következőket okozhatják:
-
-* kibővített RoboCopy-feladatok futási ideje az ACL-változás által érintett fájlok és mappák frissítésének szükségessége miatt
-* az első helyen a DataBox használatának hatékonysága csökkenhet, ha a mappák struktúrái megváltoznak, miután a fájlok egy DataBox lettek másolva. A RoboCopy-feladatok nem tudják "lejátszani" a névtér változását, ezért az Azure-fájlmegosztás felé szállított fájlokat ki kell üríteni, és újra fel kell tölteni a fájlokat az új mappa struktúrájába az Azure-ba.
-
-Egy másik fontos szempont a RoboCopy eszköz hatékony használata. Az ajánlott RoboCopy-szkripttel a hibákat tartalmazó naplófájlt fog létrehozni és menteni. A másolási hibák előfordulhatnak – ez normális. Ezek a hibák gyakran szükségessé teszik, hogy egy másolási eszköz (például a RoboCopy) több fordulóját futtassák. Egy kezdeti Futtatás, például a NAS-ról a DataBox-re, és egy vagy több extra a/MIR kapcsolóval, hogy megszerezze a nem másolt fájlokat, és próbálkozzon újra.
-
-Fel kell készülnie arra, hogy a RoboCopy több fordulóját futtassuk egy adott névtér-hatókörön. Az egymást követő futtatások gyorsabban futnak, ahogy a másolásuk kevesebb, de a névtér feldolgozásának gyorsasága egyre nagyobb mértékben korlátozott. Ha több kört futtat, felgyorsíthatja az egyes körök felgyorsítását, mivel a RoboCopy-t nem kell megismételni, hogy az első kísérlet során mindent másoljon. Ezek a RoboCopy-kapcsolók jelentős különbséget tehetnek:
-
-* `/R:n` n = milyen gyakran próbálkozzon újra egy hibás fájl másolásával és 
-* `/W:n` n = hány másodpercig kell várni az újrapróbálkozások között
-
-`/R:5 /W:5` egy ésszerű beállítás, amelyet tetszés szerint módosíthat. Ebben a példában a rendszer ötször újrapróbálkozik egy hibás fájllal, és az újrapróbálkozások közötti öt másodperces várakozási idővel. Ha a fájl továbbra sem másolható, a következő RoboCopy-feladattal újra próbálkozik, és gyakran meghiúsulnak a fájlok, mert azok használatban vannak, vagy az időtúllépési problémák miatt előfordulhat, hogy a rendszer sikeresen átmásolja a fájlt.
-
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

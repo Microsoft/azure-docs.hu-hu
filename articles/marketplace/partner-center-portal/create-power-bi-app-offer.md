@@ -7,18 +7,18 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5eb253fb24f463106866f8b0fe17f634e805cbb
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693608"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107477"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI-alkalmazásajánlat létrehozása
 
 Ez a cikk azt ismerteti, hogyan hozhat létre és tehet közzé Power BI alkalmazás-ajánlatokat a [Microsoft AppSource](https://appsource.microsoft.com/).
 
-A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](../create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
@@ -141,7 +141,7 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
 9. Összefoglalás
-10. Leírás
+10. Description
 11. Képernyőképek/videók
 
 ### <a name="name"></a>Name
@@ -158,7 +158,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

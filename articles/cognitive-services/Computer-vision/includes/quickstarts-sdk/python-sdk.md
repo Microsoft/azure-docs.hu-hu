@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: d0b2a854391097cc7d95c4286ba581f3660d397e
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 230934ea3d4a8a970ca1fca46160b96e3f2234e8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284781"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073746"
 ---
 <a name="HOLTop"></a>
 
@@ -140,10 +140,10 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Python OCR-függvénytárát a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
+Ebben a rövid útmutatóban megtanulta, hogyan telepítheti az OCR-ügyféloldali kódtárat, és hogyan használhatja az olvasási API-t. Következő lépésként tekintse meg az API-funkciók beolvasása című témakört.
 
 > [!div class="nextstepaction"]
->[OCR API-referenciák (Python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
+>[Az olvasási API meghívása](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [OCR – áttekintés](../../overview-ocr.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py)található.

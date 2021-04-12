@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 92803c1e3062fb9f093012db3e3637746dedf87f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 99f7f6561df16cfad6b0cc001395fa3ad7b2f6dc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107040"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259472"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Árképzési szintek Azure Database for MariaDB
 
@@ -22,7 +22,7 @@ A Azure Database for MariaDB-kiszolgálót a három különböző díjszabási s
 | Számítási generáció | 5. generáció |5. generáció | 5. generáció |
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Memória/virtuális mag | 2 GB | 5 GB | 10 GB |
-| Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
+| Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
 | Adatbázis biztonsági másolatának megőrzési időtartama | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
 
 Árképzési szintek kiválasztásához használja a következő táblázatot kiindulási pontként.

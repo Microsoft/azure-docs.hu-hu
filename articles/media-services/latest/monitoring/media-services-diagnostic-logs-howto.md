@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13dadd9665f2d66861e00d769086fb23a4dea115
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 290b68b90deb669f70fa708e6c3bda83cb7187c0
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961693"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227789"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](monitor-media-services.md).
+[Azure monitor](/azure/azure-monitor/overview) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](monitor-media-services.md).
 
 Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage-fiókba, majd megtekintheti azokat.
 
@@ -183,9 +183,9 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 ## <a name="see-also"></a>Lásd még
 
-* [Azure Monitor-metrikák](https://docs.microsoft.com/azure/azure-monitor/data-platform.md)
-* [Diagnosztikai naplók Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md)
-* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md)
+* [Azure Monitor-metrikák](/azure/azure-monitor/data-platform)
+* [Diagnosztikai naplók Azure Monitor](/azure/azure-monitor/essentials/platform-logs-overview)
+* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](/azure/azure-monitor/essentials/platform-logs-overview)
 
 ## <a name="next-steps"></a>Következő lépések
 

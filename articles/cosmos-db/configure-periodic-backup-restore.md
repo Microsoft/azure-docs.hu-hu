@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Cosmos DB-fi
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565835"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284036"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Azure Cosmos DB fiók konfigurálása rendszeres biztonsági mentéssel
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,11 +31,32 @@ Az Azure Cosmos DB rendszeres időközönként automatikusan biztonsági másola
 
 * A biztonsági mentéseket az alkalmazás teljesítményének vagy rendelkezésre állásának befolyásolása nélkül kell elvégezni. Azure Cosmos DB végrehajtja az adatok biztonsági mentését a háttérben anélkül, hogy külön kiosztott átviteli sebességet (RUs) kellene használnia, és nem befolyásolja az adatbázis teljesítményét és rendelkezésre állását.
 
+## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>Biztonsági mentési tár redundancia
+
+Alapértelmezés szerint a Azure Cosmos DB az időszakos módú biztonsági mentési értékeket tárolja a földrajzilag redundáns [blob Storage-tárolóban](../storage/common/storage-redundancy.md) , amely egy [párosított régióba](../best-practices-availability-paired-regions.md)replikálódik.  
+
+Annak biztosítása érdekében, hogy a biztonsági mentési adatai ugyanabban a régióban maradnak, ahol a Azure Cosmos DB-fiókot kiosztották, megváltoztathatja az alapértelmezett geo-redundáns biztonsági mentési tárolót, és konfigurálhatja a helyileg redundáns vagy a zóna redundáns tárolást. A tárolási redundancia-mechanizmusok a biztonsági másolatok több példányát tárolják, így azok a tervezett és nem tervezett eseményektől, például az átmeneti hardverhiba, a hálózati vagy áramkimaradások vagy a súlyos természeti katasztrófák ellen védettek.
+
+A Azure Cosmos DB található biztonsági mentési adathalmazok háromszor replikálódnak az elsődleges régióba. A tárolási redundancia a fiók létrehozásakor vagy egy meglévő fiók frissítésekor a rendszeres biztonsági mentési mód esetében is konfigurálható. A következő három adatredundancia-beállítást használhatja rendszeres biztonsági mentési módban:
+
+* **Geo-redundáns biztonsági mentési tár:** Ez a beállítás aszinkron módon másolja az adatait a párosított régión belül.
+
+* **Zóna – redundáns biztonsági mentési tár:** Ez a beállítás aszinkron módon másolja az adatait az elsődleges régió három Azure-beli rendelkezésre állási zónáján belül.
+
+* **Helyileg redundáns biztonsági mentési tár:** Ez a beállítás aszinkron módon másolja az adatait az elsődleges régió egyetlen fizikai helyén.
+
+> [!NOTE]
+> Zóna – a redundáns tárolás jelenleg csak [bizonyos régiókban](high-availability.md#availability-zone-support)érhető el. A kiválasztott régió alapján; Ez a beállítás nem lesz elérhető új vagy meglévő fiókokhoz.
+>
+> A biztonságimásolat-tárolási redundancia frissítése nem befolyásolja a biztonsági mentési tár díjszabását.
+
 ## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>A biztonsági mentés intervallumának és megőrzési idejének módosítása
 
 Azure Cosmos DB automatikusan teljes biztonsági másolatot készít az adatairól 4 óránként és bármikor, a legújabb két biztonsági mentést tárolja. Ez a konfiguráció az alapértelmezett beállítás, és többletköltség nélkül elérhető. Az Azure Cosmos-fiók létrehozásakor vagy a fiók létrehozása után megváltoztathatja az alapértelmezett biztonsági mentési időközt és a megőrzési időtartamot. A biztonsági mentési konfiguráció az Azure Cosmos-fiók szintjén van beállítva, és minden fióknál külön konfigurálnia kell. Miután konfigurálta egy fiók biztonsági mentési beállításait, a rendszer az adott fiókban lévő összes tárolóra alkalmazza. A biztonsági mentési beállításokat jelenleg csak az Azure Portalon változtathatja meg.
 
 Ha véletlenül törölte vagy megsérült az adatai, az **adatok visszaállítására vonatkozó támogatási kérelem létrehozása előtt győződjön meg arról, hogy a fiók biztonsági mentése legalább hét napig megnövekszik. Az eseménytől számított 8 órán belül növelheti az adatmegőrzést.** Így az Azure Cosmos DB csapatának elég ideje lesz a fiók visszaállítására.
+
+### <a name="modify-backup-options-for-an-existing-account"></a>Meglévő fiók biztonsági mentési beállításainak módosítása
 
 A következő lépésekkel módosíthatja egy meglévő Azure Cosmos-fiók alapértelmezett biztonsági mentési beállításait:
 
@@ -48,11 +69,18 @@ A következő lépésekkel módosíthatja egy meglévő Azure Cosmos-fiók alap�
 
    * **Megőrzött Adatmásolatok** – alapértelmezés szerint a rendszer díjmentesen két biztonsági másolatot készít az adatairól. Ha kettőnél több példányra van szüksége, külön díjat számítunk fel. A további másolatok pontos árának megismeréséhez tekintse meg a [díjszabási oldal](https://azure.microsoft.com/pricing/details/cosmos-db/) felhasznált tároló szakaszát.
 
-   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-interval-retention.png" alt-text="Egy meglévő Azure Cosmos-fiók biztonsági mentési intervallumának és megőrzésének konfigurálása." border="true":::
+   * **Biztonságimásolat-tárolási redundancia** – válassza ki a szükséges tárolási redundancia beállítást, és tekintse meg a rendelkezésre álló beállítások a [biztonsági másolatok tárolásának redundancia](#backup-storage-redundancy) című szakaszát. Alapértelmezés szerint a meglévő rendszeres biztonsági mentési mód fiókjai földrajzilag redundáns tárolóval rendelkeznek. Kiválaszthat más tárterületet, például a helyileg redundáns lehetőséget, így biztosítva, hogy a biztonsági mentés ne replikálódjon egy másik régióra. Egy meglévő fiók módosításai csak a jövőbeli biztonsági mentésekre lesznek alkalmazva. Egy meglévő fiók biztonsági mentési tárterületének frissítése után a módosítások életbe léptetéséhez szükséges idő akár kétszer is eltarthat, és a **rendszer elveszti a hozzáférést a régebbi biztonsági másolatok azonnali visszaállításához.**
 
-Ha a fiók létrehozása során konfigurálja a biztonsági mentési beállításokat, beállíthatja a **biztonsági mentési szabályzatot**, amely akár **rendszeres** , akár **folyamatos**. Az időszakos házirend lehetővé teszi a biztonsági mentés intervallumának és a biztonsági másolatok megőrzésének konfigurálását. A folyamatos házirend jelenleg csak a regisztráláskor érhető el. A Azure Cosmos DB csapat felméri a munkaterhelést, és jóváhagyja a kérést.
+   > [!NOTE]
+   > A biztonságimásolat-tárolási redundancia konfigurálásához rendelkeznie kell az előfizetési szinten hozzárendelt Azure [Cosmos db Account Reader szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role) -szerepkörrel.
 
-:::image type="content" source="./media/configure-periodic-backup-restore/configure-periodic-continuous-backup-policy.png" alt-text="Rendszeres vagy folyamatos biztonsági mentési szabályzatot konfigurálhat az új Azure Cosmos-fiókokhoz." border="true":::
+   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-existing-accounts.png" alt-text="A biztonsági mentési időköz, a megőrzés és a tárterület-redundancia konfigurálása egy meglévő Azure Cosmos-fiókhoz." border="true":::
+
+### <a name="modify-backup-options-for-a-new-account"></a>Új fiók biztonsági mentési beállításainak módosítása
+
+Új fiók kiépítés esetén a **biztonsági mentési szabályzat** lapon válassza az **időszakos** _ biztonsági mentési szabályzat lehetőséget. Az időszakos házirend lehetővé teszi a biztonsági mentés időtartamának, a biztonsági másolatok megőrzésének és a biztonsági mentési tárolók redundanciának konfigurálását. Választhatja például a _ *helyileg redundáns biztonsági mentési tár** vagy a **zóna redundáns biztonsági mentési tárolási** lehetőségeit a régión kívüli biztonsági másolatok replikálásának megakadályozására.
+
+:::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-new-accounts.png" alt-text="Rendszeres vagy folyamatos biztonsági mentési szabályzatot konfigurálhat az új Azure Cosmos-fiókokhoz." border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a><a id="request-restore"></a>Adatok visszaállításának kérése biztonsági másolatból
 
@@ -115,8 +143,7 @@ Ha az átviteli sebességet az adatbázis szintjén adja meg, a biztonsági ment
 A szerepkör [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), tulajdonosának vagy közreműködőinek részét képező rendszerbiztonsági tag jogosult a visszaállítás igénylésére vagy a megőrzési időtartam módosítására.
 
 ## <a name="understanding-costs-of-extra-backups"></a>További biztonsági másolatok költségeinek megismerése
-Két biztonsági mentés ingyenes, és az extra biztonsági mentések díjszabása a [biztonsági mentési tár díjszabásában](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)ismertetett biztonsági mentési tár régió alapú díjszabása alapján történik. Például, ha a biztonsági másolat megőrzési beállítása 240 óra, azaz 10 nap, a biztonsági mentés időköze pedig 24 óra. Ez a biztonsági mentési adat 10 másolatát jelenti. Feltételezve, hogy az USA 2. nyugati régiójában 1 TB adat található, a díj a megadott hónapban 0,12 * 1000 * 8 lesz a biztonsági mentési tár számára. 
-
+Két biztonsági mentés ingyenes, és az extra biztonsági mentések díjszabása a [biztonsági mentési tár díjszabásában](https://azure.microsoft.com/pricing/details/cosmos-db/)ismertetett biztonsági mentési tár régió alapú díjszabása alapján történik. Például, ha a biztonsági másolat megőrzési beállítása 240 óra, azaz 10 nap, a biztonsági mentés időköze pedig 24 óra. Ez a biztonsági mentési adat 10 másolatát jelenti. Feltételezve, hogy az USA 2. nyugati régiójában 1 TB adat található, a díj a megadott hónapban 0,12 * 1000 * 8 lesz a biztonsági mentési tár számára.
 
 ## <a name="options-to-manage-your-own-backups"></a>A saját biztonsági mentések kezelésére szolgáló beállítások
 

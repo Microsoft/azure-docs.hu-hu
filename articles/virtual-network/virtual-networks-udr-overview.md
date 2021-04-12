@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: c8d188c7bb7034cda450049c3d4912cc1517dae5
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645277"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732601"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -114,7 +114,7 @@ Ha a pontos előtag egyezik egy explicit IP-előtaggal rendelkező útvonal és 
 Ennek a szolgáltatásnak a használatához adja meg az útválasztási táblázat parancsainál az előtag paraméterhez tartozó szolgáltatási címke nevét. A PowerShellben például létrehozhat egy új útvonalat, amely egy Azure Storage-beli IP-előtagnak a virtuális készülékre való küldését teszi elérhetővé a következő használatával: </br>
 
 ```azurepowershell-interactive
-New-AzRouteConfig -Name "StorageRoute" -AddressPrefix “Storage” -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
 ```
 
 A CLI-vel azonos parancs a következő lesz: </br>

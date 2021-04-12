@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12d0997e677bcca423f32951e99a6202855104ad
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686478"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030866"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Azure-beli ív-adatkezelő létrehozása a Azure Portalban
 
@@ -26,24 +26,23 @@ Az Azure Portal használatával létrehozhat egy Azure arc-adatkezelőt.
 
 Az Azure arc többek között az Azure Portal, noha a létrehozandó vagy kezelt erőforrás az Azure-infrastruktúrán kívül esik. A felhasználói élmény mintája ezekben az esetekben, különösen akkor, ha nincs közvetlen kapcsolat az Azure és a környezet között, a Azure Portal használatával hozzon létre egy parancsfájlt, amely azután letöltheti és végrehajthatja a környezetében, hogy biztonságos kapcsolatot hozzon létre az Azure-ba. Az Azure arc-kompatibilis kiszolgálók például ezt a mintát követik az [ív használatára képes kiszolgálók létrehozásához](../servers/onboard-portal.md).
 
-Egyelőre, mivel az előzetes verzió csak az Azure arc-kompatibilis adatszolgáltatások közvetett csatlakoztatott üzemmódját támogatja, a Azure Portal használatával létrehozhat egy jegyzetfüzetet, amely letölthető és futtatható Azure Data Studio a Kubernetes-fürtön. A későbbiekben, ha a közvetlenül csatlakoztatott mód elérhető, az adatkezelőt közvetlenül a Azure Portal is kiépítheti. További információt a [kapcsolati módokról](connectivity.md)itt olvashat.
+Ha az Azure arc-kompatibilis adatszolgáltatások közvetett kapcsolódási módját használja, akkor a Azure Portal használatával létrehozhat egy jegyzetfüzetet, amely letölthető és futtatható Azure Data Studio a Kubernetes-fürtön. 
+
+Közvetlen csatlakozási mód használatakor az adatkezelőt közvetlenül a Azure Portal is kiépítheti. További információt a [kapcsolati módokról](connectivity.md)itt olvashat.
 
 ## <a name="use-the-azure-portal-to-create-an-azure-arc-data-controller"></a>Azure-beli ív-adatkezelő létrehozása a Azure Portal használatával
 
 Az alábbi lépéseket követve hozzon létre egy Azure arc-adatkezelőt a Azure Portal és a Azure Data Studio használatával.
 
 1. Először jelentkezzen be a [Azure Portal Marketplace](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/azure%20arc%20data%20controller)-re.  A piactér keresési eredményei úgy lesznek szűrve, hogy megjelenjenek az "Azure arc adatkezelője".
-2. Ha az első lépés nem adta meg a keresési feltételeket. Adja meg a keresési eredményeket, kattintson az Azure arc-adatkezelő elemre.
-3. Válassza ki az Azure adatkezelő csempét a piactéren.
-4. Kattintson a **Létrehozás** gombra.
-5. Tekintse át az Azure arc-adatkezelő létrehozásának követelményeit, és telepítse a hiányzó előfeltételként szükséges szoftvereket, például a Azure Data Studio és a kubectl.
-6. Kattintson az **adatkezelő adatai** gombra.
-7. Válassza ki az előfizetést, az erőforráscsoportot és az Azure-beli helyet ugyanúgy, mint bármely más, a Azure Portalban létrehozott erőforrást. Ebben az esetben a kiválasztott Azure-beli hely lesz az erőforrás metaadatainak tárolása.  Maga az erőforrás minden Ön által választott infrastruktúrán létrejön. Nem kell az Azure-infrastruktúrán lennie.
-8. Adja meg az adatvezérlő nevét.
-9. Válassza ki a kapcsolati módot az adatkezelőhöz. További információ a [kapcsolódási módokról és a követelményekről](./connectivity.md). 
-
-   > [!NOTE] 
-   > Ha a **közvetlen** csatlakozási mód lehetőséget választja, ügyeljen arra, hogy az egyszerű szolgáltatás hitelesítő adatai a szolgáltatásnév [létrehozása](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)című témakörben leírt környezeti változókon keresztül legyenek beállítva. 
+1. Ha az első lépés nem adta meg a keresési feltételeket. Adja meg a keresési eredményeket, kattintson az Azure arc-adatkezelő elemre.
+1. Válassza ki az Azure adatkezelő csempét a piactéren.
+1. Kattintson a **Létrehozás** gombra.
+1. Válassza ki a közvetett kapcsolati módot. További információ a [kapcsolódási módokról és a követelményekről](./connectivity.md). 
+1. Tekintse át az Azure arc-adatkezelő létrehozásának követelményeit, és telepítse a hiányzó előfeltételként szükséges szoftvereket, például a Azure Data Studio és a kubectl.
+1. Kattintson a **következő: adatkezelő részletei** gombra.
+1. Válassza ki az előfizetést, az erőforráscsoportot és az Azure-beli helyet ugyanúgy, mint bármely más, a Azure Portalban létrehozott erőforrást. Ebben az esetben a kiválasztott Azure-beli hely lesz az erőforrás metaadatainak tárolása.  Maga az erőforrás minden Ön által választott infrastruktúrán létrejön. Nem kell az Azure-infrastruktúrán lennie.
+1. Adja meg az adatvezérlő nevét.
 
 1. Válasszon egy központi telepítési konfigurációs profilt.
 1. Kattintson a **Megnyitás az Azure Studióban** gombra.

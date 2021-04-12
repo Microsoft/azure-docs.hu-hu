@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 214deb290fc0c0992458c2806644e06ffa00b271
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596705"
+ms.locfileid: "105963444"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Oktatóanyag: Azure Media Services-események tárolása az Azure-ban Log Analytics
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 ## <a name="prerequisites"></a>Előfeltételek
 
 > * [Azure-előfizetés](how-to-set-azure-subscription.md)
-> * Egy [Media Services](create-account-howto.md) fiók és erőforráscsoport.
+> * Egy [Media Services](account-create-how-to.md) fiók és erőforráscsoport.
 > * Az [FFmpeg](https://ffmpeg.org/download.html) telepítése az operációs rendszerhez.
 > * [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) munkaterület
 

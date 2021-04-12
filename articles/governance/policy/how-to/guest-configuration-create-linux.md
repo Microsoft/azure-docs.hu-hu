@@ -1,15 +1,15 @@
 ---
 title: Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet Linux rendszerhez.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d356960987ecfe9a1e1858a28b93060dbf4aa634
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99525347"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096563"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
@@ -90,9 +90,7 @@ A DSC burkolóként viselkedik a művelet végrehajtásához, a paraméterek meg
 
 Az egyéni konfiguráció nevének mindenütt konzisztensnek kell lennie. A Content csomag. zip fájljának nevét, a MOF-fájlban található konfiguráció nevét, valamint a Azure Resource Manager sablonban (ARM-sablon) lévő vendég-hozzárendelés nevét meg kell egyeznie.
 
-A PowerShell-parancsmagok segítséget nyújtanak a csomag létrehozásában.
-Nincs szükség gyökér szintű mappára vagy a Version mappára.
-A csomag formátumának. zip formátumúnak kell lennie. a nem lehet nagyobb, mint a teljes 100 MB-os méret a kibontott értéknél.
+A PowerShell-parancsmagok segítséget nyújtanak a csomag létrehozásában. Nincs szükség gyökér szintű mappára vagy a Version mappára. A csomag formátumának. zip formátumúnak kell lennie. nem lehet nagyobb, mint 100 MB, ha tömörítetlen.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Egyéni vendég konfigurációs konfiguráció Linuxon
 
@@ -211,7 +209,7 @@ A parancsmag paraméterei `Publish-GuestConfigurationPackage` :
 - **Elérési út**: a közzétenni kívánt csomag helye
 - **ResourceGroupName**: az erőforráscsoport neve, ahol a Storage-fiók található
 - **StorageAccountName**: annak a Storage-fióknak a neve, amelyben közzé kell tenni a csomagot
-- **StorageContainerName**: (default: *guestconfiguration*) a Storage-fiókban lévő tároló neve
+- **StorageContainerName**: (default: _guestconfiguration_) a Storage-fiókban lévő tároló neve
 - **Kényszerített**: felülírja a meglévő csomagot a Storage-fiókban ugyanazzal a névvel
 
 Az alábbi példa közzéteszi a csomagot egy "guestconfiguration" nevű tárolási tárolóban.
@@ -277,7 +275,7 @@ Az Azure-ban létrehozott szabályzattal az utolsó lépés a definíció társ�
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Paraméterek használata az egyéni vendég-konfigurációs házirendekben
 
-A vendég konfiguráció futási időben támogatja a konfiguráció felülírási tulajdonságait. Ez a funkció azt jelenti, hogy a csomagban lévő MOF-fájlban lévő értékeket nem kell statikusnak tekinteni. A felülbírálási értékek a Azure Policyon keresztül érhetők el, és nem befolyásolják a konfigurációk létrehozási vagy fordítási módját.
+A vendég konfiguráció futási időben támogatja a konfiguráció felülírási tulajdonságait. Ez a funkció azt jelenti, hogy a csomagban lévő MOF-fájlban lévő értékeket nem kell statikusnak tekinteni. A felülbírálási értékek a Azure Policyon keresztül érhetők el, és nem változnak a konfigurációk létrehozási vagy fordítási módjának módosítása.
 
 Az inspec paraméterrel jellemzően a paramétereket a rendszer a futtatókörnyezetben vagy az attribútumokat használó kódokként kezeli. A vendég konfigurációja elhomályosítja ezt a folyamatot, így a rendszer a szabályzat hozzárendelésekor megadhatja a bemenetet. A rendszer automatikusan létrehoz egy attribútum-fájlt a gépen. Nem kell létrehoznia és felvennie egy fájlt a projektben. A Linux audit projekthez két lépéssel adhat hozzá paramétereket.
 
@@ -350,8 +348,7 @@ Ha a szabályzat frissítését szeretné kibocsátani, végezze el a módosít�
 > [!NOTE]
 > A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
 
-Először is, ha fut `New-GuestConfigurationPackage` , adja meg a csomag nevét, amely egyedivé teszi az előző verzióktól. Megadhat egy verziószámot is a névben, például: `PackageName_1.0.0` .
-Az ebben a példában szereplő számot csak a csomag egyedivé tételéhez használja a rendszer, és nem határozza meg, hogy a csomagnak újabb vagy régebbinek kell lennie, mint a többi csomagnak.
+Először is, ha fut `New-GuestConfigurationPackage` , adja meg a csomag nevét, amely egyedivé teszi az előző verzióktól. Megadhat egy verziószámot is a névben, például: `PackageName_1.0.0` . Az ebben a példában szereplő számot csak a csomag egyedivé tételéhez használja a rendszer, és nem határozza meg, hogy a csomagnak újabb vagy régebbinek kell lennie, mint a többi csomagnak.
 
 Másodszor, frissítse a parancsmaghoz használt paramétereket az `New-GuestConfigurationPolicy` alábbi magyarázatok mindegyikével.
 

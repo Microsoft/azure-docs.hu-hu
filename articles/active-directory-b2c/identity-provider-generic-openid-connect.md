@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21f31a21921953148ae0438cee04d846706161cc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448336"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382929"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Az OpenID Connecttel való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -43,7 +43,7 @@ Annak engedélyezéséhez, hogy a felhasználók bejelentkezzenek, az identitás
 
 ## <a name="scope"></a>Hatókör
 
-A hatókör határozza meg az egyéni identitás-szolgáltatótól összegyűjtött információkat és engedélyeket. Az OpenID Connect-kérelmeknek tartalmaznia kell a `openid` hatókör értékét, hogy az azonosító jogkivonatot megkaphassa az identitás-szolgáltatótól. Az azonosító jogkivonat nélkül a felhasználók nem tudnak bejelentkezni a Azure AD B2Cra az egyéni identitás-szolgáltató használatával. Más hatóköröket szóközzel lehet elválasztani egymástól. Tekintse át az egyéni identitás szolgáltatójának dokumentációját, amelyből megtudhatja, hogy milyen egyéb hatókörök is elérhetők.
+A hatókör határozza meg az identitás-szolgáltatótól begyűjtött információkat és engedélyeket, például: `openid profile` . Ahhoz, hogy az azonosító tokent megkapja az identitás-szolgáltatótól, `openid` meg kell adni a hatókört. Az azonosító jogkivonat nélkül a felhasználók nem tudnak bejelentkezni a Azure AD B2Cra az egyéni identitás-szolgáltató használatával. Más hatóköröket szóközzel lehet elválasztani egymástól. Tekintse át az egyéni identitás szolgáltatójának dokumentációját, amelyből megtudhatja, hogy milyen egyéb hatókörök is elérhetők.
 
 ## <a name="response-type"></a>Válasz típusa
 

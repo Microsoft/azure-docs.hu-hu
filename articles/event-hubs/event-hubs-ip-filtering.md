@@ -2,28 +2,28 @@
 title: Azure Event Hubs tűzfalszabályok | Microsoft Docs
 description: A tűzfalszabályok használatával engedélyezheti az adott IP-címekről az Azure Event Hubs való kapcsolódást.
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/29/2021
+ms.openlocfilehash: 12240135401b267fd7c60e579fdf5a12e10ffce9
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100560852"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963002"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Azure Event Hubs-névterek elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
 
 Ez a funkció olyan helyzetekben hasznos, amikor az Azure Event Hubs csak bizonyos jól ismert helyekről elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route][express-route]Event Hubst használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről érkező forgalmat engedélyezze. 
 
->[!WARNING]
-> A tűzfalszabályok bekapcsolása a Event Hubs névtérben alapértelmezés szerint blokkolja a bejövő kérelmeket, hacsak a kérelmek nem az engedélyezett nyilvános IP-címekről származó szolgáltatásból származnak. A letiltott kérések közé tartoznak a más Azure-szolgáltatások, a Azure Portal, a naplózási és a metrikai szolgáltatások, valamint így tovább. Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Event Hubs erőforrásaihoz, még akkor is, ha az IP-szűrés engedélyezve van. A megbízható szolgáltatások listáját lásd: [megbízható Microsoft-szolgáltatások](#trusted-microsoft-services).
-
-> [!IMPORTANT]
-> Legalább egy IP-szabályt vagy virtuális hálózati szabályt meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal).  
-
-
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 Az IP-tűzfalszabályok a Event Hubs névtér szintjén lesznek alkalmazva. Így a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg az engedélyezett IP-szabálynak a Event Hubs-névtérben, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
+
+
+## <a name="important-points"></a>Fontos pontok
+- Ez a funkció mind a **standard** , mind a **dedikált** szint esetében támogatott. Az alapszintű **csomag** nem támogatja.
+- A tűzfalszabályok bekapcsolása a Event Hubs névtérben alapértelmezés szerint blokkolja a bejövő kérelmeket, hacsak a kérelmek nem az engedélyezett nyilvános IP-címekről származó szolgáltatásból származnak. A letiltott kérések közé tartoznak a más Azure-szolgáltatások, a Azure Portal, a naplózási és a metrikai szolgáltatások, valamint így tovább. Kivételként engedélyezheti a hozzáférést bizonyos **megbízható szolgáltatásoktól** Event Hubs erőforrásaihoz, még akkor is, ha az IP-szűrés engedélyezve van. A megbízható szolgáltatások listáját lásd: [megbízható Microsoft-szolgáltatások](#trusted-microsoft-services).
+- **Legalább egy IP-tűzfalszabály vagy virtuális hálózati szabály** megadása a névtér számára, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal).  
+
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Ebből a szakaszból megtudhatja, hogyan hozhat létre IP-tűzfalszabályok Event Hubs névtérhez a Azure Portal használatával. 

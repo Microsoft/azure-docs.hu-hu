@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 4ae7ad186e2ed8868be6205d48e9cfbef525d810
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 04b36b9b32e78016f693e61d40246776492be0e3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106172802"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222860"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Azure Active Directory ellenőrizhető hitelesítő adatok (előzetes verzió) bemutatása
 
@@ -28,7 +28,7 @@ A digitális és a fizikai életünk egyre nagyobb mértékben összefügg az ol
 
 Az azonosító adatok azonban túl gyakran jelentek meg a biztonsági rések során. Ezek a szabálysértések kihatnak a társadalmi, szakmai és pénzügyi életünket befolyásoló emberek életére. A Microsoft úgy véli, hogy jobb megoldás. Minden személynek van olyan identitása, amely a saját és a tulajdonában van, az egyik, hogy biztonságosan tárolja a digitális identitásuk elemeit, és megőrzi az adatvédelmet. Ez az útmutató bemutatja, hogyan kapcsolódunk a különböző közösségekhez egy nyitott, megbízható, interoperábilis és szabványokon alapuló decentralizált (DID-) megoldás létrehozásához az egyéni felhasználók és szervezetek számára.
 
-## <a name="why-we-need-decentralized-identity"></a>Miért van szükség decentralizált identitásra 
+## <a name="why-we-need-decentralized-identity"></a>Miért van szükség decentralizált identitásra
 
 Jelenleg a digitális identitást használjuk a munkahelyi, otthoni és minden alkalmazás, szolgáltatás és eszköz között. Mindent megteszünk, amit mondunk, csinálunk és tapasztalunk az életünkben: jegyek vásárlása egy eseményhez, egy szállodai ellenőrzés vagy akár az ebéd megrendelése. Jelenleg az identitásunk és az összes digitális interakciónk más felek tulajdonában és ellenőrzése alatt áll, akik közül néhányat még nem is ismerünk.
 
@@ -36,7 +36,7 @@ A felhasználók általában több alkalmazáshoz és eszközhöz biztosítanak 
 
 Úgy véljük, hogy egy szabványon alapuló decentralizált identitásrendszer feloldja az új felhasználói élményeket, amelyek lehetővé tehetik, hogy a felhasználók és a szervezetek nagyobb mértékben szabályozhatják az adataikat, és magasabb fokú megbízhatóságot és biztonságot nyújtsanak az alkalmazások, eszközök és szolgáltatók számára
 
-## <a name="lead-with-open-standards"></a>Érdeklődő nyílt szabványokkal 
+## <a name="lead-with-open-standards"></a>Érdeklődő nyílt szabványokkal
 
 Elkötelezettek vagyunk arra, hogy az ügyfelekkel, partnerekkel és a Közösséggel szorosan együttműködve feloldják a decentralizált identitás-alapú élmények következő generációját, és örömmel vesszük a kapcsolatot azon személyekkel és szervezetekkel, akik hihetetlen hozzájárulást tesznek ezen a helyen. Ha a DID-ökoszisztéma növekedni fog, a szabványoknak, a technikai összetevőknek és a kód-szolgáltatásoknak nyílt forráskódúnek kell lenniük, és mindenki számára elérhetőnek kell lenniük.
 
@@ -50,21 +50,21 @@ A Microsoft aktívan együttműködik a decentralizált identitási alaprendszer
 * [Különböző megjelenítési Exchange](https://identity.foundation/presentation-exchange/)
 
 
-## <a name="what-are-dids"></a>Mi a DIDs? 
+## <a name="what-are-dids"></a>Mi a DIDs?
 
 A DIDs megértéséhez segít összehasonlítani azokat a jelenlegi identitás-rendszerekkel. Az e-mail-címek és a közösségi hálózati azonosítók az együttműködés céljára szolgáló, emberi használatra alkalmas aliasok. Ez létrehoz egy lehetséges problémát, mert az azonosítók elérését a külső felek bármikor el tudják távolítani.
 
 A decentralizált azonosítók (DIDs-EK) eltérőek. A DIDs felhasználó által generált, önkiszolgáló, globálisan egyedi azonosítók a decentralizált rendszerek (például ION) gyökerében. Egyedi tulajdonságokkal rendelkeznek, mint például a módosíthatatlansági, a cenzúra-rezisztencia és a illetéktelen evasiveness. Ezek az attribútumok kritikus fontosságúak minden olyan AZONOSÍTÓrendszer esetében, amely a saját tulajdonú és a felhasználói vezérlés biztosítására szolgál. 
 
 A Microsoft ellenőrizhető hitelesítőadat-megoldása decentralizált hitelesítő adatokat (DIDs) használ a kriptográfiai aláíráshoz, amelyet egy függő entitás (ellenőrző) tanúsít a hitelesítő adatok tulajdonosai számára. Ezért a decentralizált azonosítók alapszintű megértése ajánlott a Microsoft ajánlatán alapuló, ellenőrizhető hitelesítő adatok létrehozására.
-## <a name="what-are-verifiable-credentials"></a>Mik a ellenőrizhető hitelesítő adatok 
+## <a name="what-are-verifiable-credentials"></a>Mik a ellenőrizhető hitelesítő adatok?
 
  A napi életünkben azonosítókat használunk. Rendelkezünk olyan illesztőprogram-licencekkel, amelyeket a rendszer az autó üzemeltetésére való képességének bizonyítékaként használ. Az egyetemek olyan okleveleket állítanak ki, amelyek igazolják, hogy az oktatási szintet elértük. A PASSPORTS segítségével bizonyítjuk, hogy kik vagyunk a hatóságok, ahogy más országokba érkezünk. Az adatmodell leírja, hogyan kezelhetjük ezeket a forgatókönyveket az interneten dolgozva, de biztonságos módon, amely tiszteletben tartja a felhasználó adatvédelmét. További információ a 1,0-es [ellenőrizhető hitelesítő adatok Adatmodelljében](https://www.w3.org/TR/vc-data-model/) olvasható.
 
 Röviden, ellenőrizhető hitelesítő adatok olyan adatobjektumok, amelyek a kibocsátó által a tárgyra vonatkozó adatokat tanúsító jogcímeket alkotnak. Ezeket a jogcímeket a séma azonosítja, és tartalmazza a kiállítót és a tárgyat. A kibocsátó egy digitális aláírást hozott létre, amely igazolja, hogy tanúsítják ezeket az információkat.
 
 
-## <a name="how-does-decentralized-identity-work"></a>Hogyan működik a decentralizált identitás? 
+## <a name="how-does-decentralized-identity-work"></a>Hogyan működik a decentralizált identitás?
 
 Az identitás új formáját kell megadnia. Olyan identitásra van szükségünk, amely összehasonlítja a technológiákat és a szabványokat a kulcsfontosságú identitási attribútumok, például az öntulajdonlás és a cenzúra elleni védelem biztosításához. Ezeket a képességeket nehéz elérni a meglévő rendszerek használatával.
 

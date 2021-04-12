@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e344c849a8e9021daea9caebacec3289b99d03e6
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928664"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256667"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Oktatóanyag a Jumio konfigurálásához a Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A Jumio-vel való Azure AD B2C integráció architektúrájának ábrája.](./media/partner-jumio/jumio-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy lapon megérkezik, hogy jelentkezzen be, vagy regisztráljon, és hozzon létre egy fiókot. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -139,7 +139,7 @@ Az Alkalmazásbeállítások megadható [a Azure app Serviceban](../app-service/
 
 1. Lépjen a házirendek mappában található [Azure ad B2C házirendre](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies) .
 
-2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)letöltéséhez kövesse [ezt a cikket](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) .
+2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)letöltéséhez kövesse [ezt a cikket](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) .
 
 3. Konfigurálja a Azure AD B2C bérlő házirendjét.
 
@@ -170,4 +170,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

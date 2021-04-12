@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 16c3b59bcfa14cc02f13dadd726e0380d934598b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8d625095fc979151ed904fb355b5953e41309b4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023809"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078706"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>Felmérés áttekintése (migrálás Azure-beli virtuális gépre)
 
@@ -33,6 +33,9 @@ Háromféle értékelést hozhat létre Azure Migrate használatával: felderít
 **Azure VM** | Kiértékelés a helyszíni kiszolgálók Azure-beli virtuális gépekre történő migrálásához. A helyszíni kiszolgálókat felhasználhatja [VMware](how-to-set-up-appliance-vmware.md) -és [Hyper-V](how-to-set-up-appliance-hyper-v.md) környezetben, valamint [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) az Azure-beli virtuális gépekre való áttelepítéshez ezzel az értékelési típussal.
 **Azure SQL** | A helyszíni SQL Server-kiszolgálók VMware-környezetből Azure SQL Database vagy az Azure SQL felügyelt példányba való átköltöztetésének értékelése.
 **Azure VMware Solution (AVS)** | Kiértékelés a helyszíni kiszolgálók [Azure VMware Solutionbe (AVS-be)](../azure-vmware/introduction.md) történő migrálásához. A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> Ha az Azure-beli virtuális gép vagy az AVS-értékelések nem megfelelőek a felderítési és értékelési eszközön, kattintson az értékelések teljes számára, és válassza ki az összes értékelést, és számítsa ki újra az Azure-beli virtuális gépet vagy az AVS-értékeléseket. A felderítési és értékelési eszköz ezután megjeleníti az értékelés típusának helyes darabszámát. 
 
 Az Azure Migrateekkel létrehozott értékelések az adatok időponthoz kapcsolódó pillanatképei. Az Azure-beli virtuális gépek felmérése két méretezési feltételi lehetőséget kínál:
 

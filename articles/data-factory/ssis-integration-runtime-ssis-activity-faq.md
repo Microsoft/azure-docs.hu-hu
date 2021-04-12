@@ -4,16 +4,16 @@ description: Ez a cikk a SSIS-csomagok végrehajtásához nyújt hibaelhárítá
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: wenjiefu
-author: wenjiefu
+author: RodgeFu
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 2bc56d39de392c9e4c20c25b554e3bdeea048bfb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6eecedbc28bcb8bc0bd46534a2c2692636f6f2c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361876"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934002"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>A csomagok végrehajtásának megoldása a SSIS Integration Runtime-ban
 
@@ -121,7 +121,10 @@ Ez a hiba akkor fordul elő, ha a SSIS Integration Runtime nem fér hozzá az eg
 Az egyik lehetséges ok az, hogy az Azure AD-Multi-Factor Authentication engedélyezett Felhasználónév vagy jelszó Azure Analysis Services hitelesítésre van konfigurálva. Ez a hitelesítés nem támogatott a SSIS Integration Runtime-ban. Próbáljon meg egy egyszerű szolgáltatásnevet használni Azure Analysis Services hitelesítéshez:
 
 1. Készítsen elő egy egyszerű szolgáltatást az [automatizálás az egyszerű szolgáltatásokkal](../analysis-services/analysis-services-service-principal.md)című témakörben leírtak szerint.
-2. A Csatlakozáskezelőben konfigurálja a **megadott Felhasználónév és jelszó használata**: **AppID** beállítása felhasználónévként és **clientSecret** jelszóként.
+2. A Csatlakozáskezelőben konfigurálja a **megadott Felhasználónév és jelszó használata:** set **app:*&lt; AppID &gt;* @* &lt; TenantID &gt;*** as a Felhasználónév és a clientSecret jelszóként. Íme egy példa a helyesen formázott felhasználónévre:
+ 
+   `app:12345678-9012-3456-789a-bcdef012345678@9abcdef0-1234-5678-9abc-def0123456789abc`
+1. A Csatlakozáskezelőben konfigurálja a **megadott Felhasználónév és jelszó használata**: **AppID** beállítása felhasználónévként és **clientSecret** jelszóként.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Hibaüzenet: "a ADONET forrásának nem sikerült megadnia a (z) {GUID} csatlakozást a következő hibaüzenettel: a bejelentkezés sikertelen volt a (z)" NT AUTHORITY \ Névtelen-bejelentkezés "felhasználónál felügyelt identitás használatakor
 

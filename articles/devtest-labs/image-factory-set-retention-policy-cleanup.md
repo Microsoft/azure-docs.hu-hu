@@ -3,12 +3,12 @@ title: Adatmegőrzési szabályzat beállítása a Azure DevTest Labsban | Micro
 description: Megtudhatja, hogyan konfigurálhat egy adatmegőrzési szabályzatot, törölheti a gyárat, és kivonja a régi rendszerképeket a DevTest Labs szolgáltatásból
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550025"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727535"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Adatmegőrzési szabályzat beállítása Azure DevTest Labs
 Ez a cikk az adatmegőrzési házirend beállítását, a gyár tisztítását és a régi rendszerképek kivonását ismerteti a szervezet többi DevTest-laborjában. 
@@ -66,5 +66,5 @@ Az új rendszerkép hozzáadása a gyárhoz is egyszerű. Ha egy új rendszerké
 ## <a name="next-steps"></a>Következő lépések
 1. [Ütemezze a Build/kiadást](/azure/devops/pipelines/build/triggers?tabs=designer) a rendszerkép-előállító rendszeres futtatásához. Rendszeresen frissíti a gyár által generált képeket.
 2. További arany-lemezképek készítése a gyár számára. Azt is megteheti, hogy összetevőket hoz létre a virtuálisgép-beállítási feladatok további részeinek parancsfájlokban való [létrehozásához](devtest-lab-artifact-author.md) , és tartalmazza a gyári lemezképekben található összetevőket.
-4. Hozzon létre [külön Build/kiadást](/azure/devops/pipelines/overview?view=azure-devops-2019) a **DistributeImages** -szkript külön való futtatásához. Ezt a parancsfájlt akkor futtathatja, ha módosításokat végez a Labs.json és a cél Labs-be másolt képek beolvasásával anélkül, hogy újra létre kellene hoznia az összes rendszerképet.
+4. Hozzon létre [külön Build/kiadást](/azure/devops/pipelines/overview) a **DistributeImages** -szkript külön való futtatásához. Ezt a parancsfájlt akkor futtathatja, ha módosításokat végez a Labs.json és a cél Labs-be másolt képek beolvasásával anélkül, hogy újra létre kellene hoznia az összes rendszerképet.
 

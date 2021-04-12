@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 55b2fd911b32eae4f04ad9690de091e9dbd46ea4
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: bceacf0a22b7add0533b72b4ebf06d503366baa4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105643959"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932488"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
 
@@ -265,11 +265,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
 | **storageAccountId** |Sztring | Annak a Storage-fióknak az erőforrás-azonosítója, amelyhez diagnosztikai naplókat szeretne küldeni. |
 | **serviceBusRuleId** |Sztring | Annak a Service-Bus-névtérnek az azonosítója, amelyben a Event Hubs létre kívánja hozni a stream diagnosztikai naplóihoz. A szabály AZONOSÍTÓjának formátuma `{service bus resource ID}/authorizationrules/{key name}` .|
-| **workspaceId** | Összetett típus | Metrikus idő típusú gabona és adatmegőrzési szabályzatok tömbje. A tulajdonság értéke üres. |
+| **workspaceId** | Sztring | Annak a munkaterületnek a munkaterület-azonosítója, ahová a rendszer menti a naplókat. |
 |**mutatókat**| A folyamat által a meghívott folyamatnak átadni kívánt folyamat paramétereinek értéke| Egy JSON-objektum, amely a paraméterek nevét az argumentum értékére képezi. |
 | **naplók**| Összetett típus| Az erőforrástípus diagnosztikai-naplózási kategóriájának neve. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez hajtsa végre a diagnosztikai beállítások beolvasása műveletet. |
 | **Kategória**| Sztring| Naplózási kategóriák és adatmegőrzési szabályzatok tömbje. |

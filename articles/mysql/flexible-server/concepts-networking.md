@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: ec835073a1fe447490f6965fe41478319a47f503
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c83f36216e7488df94c372234d0541a4ee9f99b5
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106836"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492222"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Kapcsolati és hálózatkezelési fogalmak a Azure Database for MySQL rugalmas kiszolgálóhoz (előzetes verzió)
 
@@ -118,7 +118,7 @@ Megtudhatja, hogyan engedélyezheti és kezelheti a nyilvános hozzáférést (e
 ### <a name="troubleshooting-public-access-issues"></a>Nyilvános hozzáférési problémák elhárítása
 Vegye figyelembe a következő szempontokat, amikor a MySQL-kiszolgáló szolgáltatáshoz való Microsoft Azure-adatbázishoz való hozzáférés nem a várt módon viselkedik:
 
-* **Az engedélyezési lista módosításai még nem léptek érvénybe:** A Azure Database for MySQL-kiszolgáló tűzfal-konfigurációjának változásaira vonatkozóan akár öt perc is eltelhet.
+* **A engedélyezési módosításai még nem léptek érvénybe:** A Azure Database for MySQL-kiszolgáló tűzfal-konfigurációjának változásaira vonatkozóan akár öt perc is eltelhet.
 
 * A **hitelesítés sikertelen volt:** Ha a felhasználó nem rendelkezik engedéllyel a Azure Database for MySQL-kiszolgálón, vagy helytelen a használt jelszó, a rendszer megtagadja a kapcsolódást a Azure Database for MySQL-kiszolgálóhoz. A tűzfalbeállítások létrehozása csak olyan ügyfelek számára biztosít lehetőséget, akik megpróbálnak csatlakozni a kiszolgálóhoz. Minden ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat.
 
@@ -139,9 +139,23 @@ Példa
 
 
 ## <a name="tls-and-ssl"></a>TLS és SSL
-Azure Database for MySQL rugalmas kiszolgáló a Transport Layer Security (TLS) használatával támogatja az ügyfélalkalmazások a MySQL szolgáltatáshoz való csatlakoztatását. A TLS egy iparági szabványnak megfelelő protokoll, amely biztosítja az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti titkosított hálózati kapcsolatokat. A TLS a SSL (SSL) frissített protokollja.
+Azure Database for MySQL rugalmas kiszolgáló támogatja az ügyfélalkalmazások csatlakoztatását a MySQL-kiszolgálóhoz az SSL (SSL) és a Transport Layer Security (TLS) titkosítás használatával. A TLS egy iparági szabványnak megfelelő protokoll, amely biztosítja a titkosított hálózati kapcsolatokat az adatbázis-kiszolgáló és az ügyfélalkalmazások között, így biztosítva a megfelelőségi követelmények betartását.
 
-Azure Database for MySQL rugalmas kiszolgáló csak a titkosított kapcsolatokat támogatja Transport Layer Security használatával (TLS 1,2). A TLS 1.0-s és a TLS 1.1-es verziójú bejövő kapcsolatokat elutasítja a rendszer. A TLS verziója nem tiltható le vagy nem módosítható Azure Database for MySQL rugalmas kiszolgálóhoz való csatlakozáshoz. További információkért tekintse át az [SSL/TLS használatával történő kapcsolódást](how-to-connect-tls-ssl.md) ismertető témakört. 
+Azure Database for MySQL rugalmas kiszolgáló támogatja a titkosított kapcsolatokat Transport Layer Security (TLS 1,2) használatával, alapértelmezés szerint a TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata alapértelmezés szerint meg lesz tagadva. A titkosított kapcsolatok kényszerítése vagy TLS-verziója konfigurálható és módosítható a rugalmas kiszolgálón. 
+
+A következőkben az SSL-és TLS-beállítások különböző konfigurációit használhatja a rugalmas kiszolgálóhoz:
+
+| Eset   | Kiszolgáló paraméterének beállításai      | Description                                    |
+|------------|--------------------------------|------------------------------------------------|
+|SSL letiltása (titkosított kapcsolatok) | require_secure_transport = kikapcsolva |Ha az örökölt alkalmazás nem támogatja a MySQL-kiszolgálóval létesített titkosított kapcsolatokat, akkor a require_secure_transport = OFF beállítással letilthatja a titkosított kapcsolatok kényszerítését a rugalmas kiszolgálóval.|
+|SSL kikényszerítés TLS-verzióval < 1,2 | require_secure_transport = ON és tls_version = TLSV1 vagy TLS 1.1| Ha az örökölt alkalmazás támogatja a titkosított kapcsolatokat, de a 1,2-es TLS-< verzióra van szükség, akkor engedélyezheti a titkosított kapcsolatokat, de a rugalmas kiszolgáló konfigurálásával engedélyezheti az alkalmazás által támogatott TLS-verzióhoz (v 1.0 vagy v 1.1) való csatlakozást.|
+|SSL betartatása TLS-verzióval = 1.2 (alapértelmezett konfiguráció)|require_secure_transport = ON és tls_version = TLS 1.2| Ez a rugalmas kiszolgáló ajánlott és alapértelmezett konfigurációja.|
+|SSL kikényszerített TLS-verzió = 1.3 (a MySQL v 8.0-s és újabb verzióival támogatott)| require_secure_transport = ON és tls_version = TLS 1.3| Ez hasznos és ajánlott az új alkalmazások fejlesztéséhez|
+
+> [!Note]
+> Az SSL-titkosítás rugalmas kiszolgálón történő módosítása nem támogatott. Az FIPS titkosítási csomagok alapértelmezés szerint érvényben vannak, ha tls_version a TLS 1,2-es verzióra van beállítva. Az 1,2-es verziótól eltérő TLS-verziók esetén az SSL-titkosítás a MySQL Közösség telepítésével kapcsolatos alapértelmezett beállításokra van beállítva.
+
+További információkért tekintse át az [SSL/TLS használatával történő kapcsolódást](how-to-connect-tls-ssl.md) ismertető témakört. 
 
 
 ## <a name="next-steps"></a>Következő lépések

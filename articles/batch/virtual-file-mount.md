@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert e
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dc5fbdf9ca0df8362a8999856c3f7163dd5e59b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626027"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105748"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
 
@@ -53,7 +53,7 @@ Az alábbi kódrészletek különböző fájlmegosztást mutatnak be a számít�
 
 ### <a name="azure-files-share"></a>Azure Files megosztás
 
-Azure Files a standard Azure Cloud File System ajánlat. Ha többet szeretne megtudni arról, hogyan kérheti le a paraméterek bármelyikét a csatlakoztatási konfigurációs kód mintájában, tekintse meg a [Azure Files megosztás használata](../storage/files/storage-how-to-use-files-windows.md)című témakört.
+Azure Files a standard Azure Cloud File System ajánlat. Ha többet szeretne megtudni arról, hogyan kérheti le a paraméterek bármelyikét a csatlakoztatási konfigurációs kód mintájában, tekintse meg a következőt: [Azure Files megosztás – SMB használata](../storage/files/storage-how-to-use-files-windows.md) , vagy [egy Azure Files-megosztás használata az-NFS használatával](../storage/files/storage-files-how-to-create-nfs-shares.md).
 
 ```csharp
 new PoolAddParameter

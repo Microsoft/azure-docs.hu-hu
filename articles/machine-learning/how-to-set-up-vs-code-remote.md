@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ccd56afc8c4ea7e236946fc6afa54e471203fe31
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/08/2021
+ms.openlocfilehash: 14f0d15d48193267c224f3497c24651ca3249b0b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065980"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028590"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Kapcsolódás Azure Machine Learning számítási példányhoz a Visual Studio Code-ban (előzetes verzió)
 
@@ -25,8 +25,75 @@ Az [Azure Machine learning számítási példány](concept-compute-instance.md) 
 
 A Visual Studio Code-ból kétféleképpen lehet csatlakozni a számítási példányokhoz:
 
+* Távoli számítási példány. Ez a lehetőség teljes funkcionalitású fejlesztési környezetet biztosít a gépi tanulási projektek létrehozásához.
 * Távoli Jupyter Notebook-kiszolgáló. Ez a beállítás lehetővé teszi a számítási példányok távoli Jupyter Notebook kiszolgálóként való beállítását.
-* A [Visual Studio Code távoli fejlesztése](https://code.visualstudio.com/docs/remote/remote-overview). A Visual Studio Code Remote Development lehetővé teszi, hogy egy tárolót, egy távoli gépet vagy a Linux (WSL) Windows alrendszerét teljes funkcionalitású fejlesztői környezetként használja.
+
+## <a name="configure-a-remote-compute-instance"></a>Távoli számítási példány konfigurálása
+
+A távoli számítási példányok fejlesztéshez való konfigurálásához néhány előfeltételre van szükség.
+
+* Azure Machine Learning Visual Studio Code-bővítményt. További információ: [Azure Machine learning Visual Studio Code Extension telepítési útmutatója](tutorial-setup-vscode-extension.md).
+* Azure Machine Learning munkaterület. [Hozzon létre egy új munkaterületet a Visual Studio Code Azure Machine learning használatával,](how-to-manage-resources-vscode.md#create-a-workspace) ha még nem rendelkezik ilyennel.
+* Azure Machine Learning számítási példány. [Hozzon létre egy új számítási példányt az Azure Machine learning Visual Studio Code bővítménnyel,](how-to-manage-resources-vscode.md#create-compute-instance) ha még nem rendelkezik ilyennel.
+
+A távoli számítási példányhoz való kapcsolódáshoz:
+
+# <a name="vs-code"></a>[VS Code](#tab/extension)
+
+### <a name="azure-machine-learning-extension"></a>Azure Machine Learning bővítmény
+
+1. A VS Code-ban indítsa el a Azure Machine Learning bővítményt.
+1. Bontsa ki a bővítményben a **számítási példányok** csomópontot.
+1. Kattintson a jobb gombbal arra a számítási példányra, amelyhez csatlakozni szeretne, és válassza a **Kapcsolódás a számítási példányhoz** lehetőséget.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="Kapcsolódás számítási példányhoz Visual Studio Code Azure ML-bővítmény" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
+
+### <a name="command-palette"></a>Parancs paletta
+
+1. A VS Code-ban nyissa meg a parancssort a **> parancs-paletta megtekintése** lehetőség kiválasztásával.
+1. A szövegmezőbe írja be az **Azure ml: Kapcsolódás számítási példányhoz** lehetőséget.
+1. Válassza ki előfizetését.
+1. Válassza ki a munkaterületet.
+1. Válassza ki a számítási példányt, vagy hozzon létre egy újat.
+
+# <a name="studio"></a>[Studio](#tab/studio)
+
+Navigáljon a [ml.Azure.com](https://ml.azure.com)
+
+> [!IMPORTANT]
+> Ha a Visual Studio Code-ból szeretne csatlakozni a távoli számítási példányhoz, győződjön meg arról, hogy a Azure Machine Learning studióba bejelentkezett fiók ugyanaz, mint a Visual Studio Code-ban.
+
+### <a name="compute"></a>Compute
+
+1. A **számítás** lap kiválasztása
+1. Az *alkalmazás URI* oszlopában válassza ki a **vs Code** elemet ahhoz a számítási példányhoz, amelyhez csatlakozni szeretne.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png" alt-text="Kapcsolódás a számítási példányhoz VS Code Azure ML Studio" lightbox="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png":::
+
+### <a name="notebook"></a>Jegyzetfüzet
+
+1. Válassza a **Jegyzetfüzet** fület
+1. A *Jegyzetfüzet* lapon válassza ki a szerkeszteni kívánt fájlt.
+1. Válassza **a szerkesztők > szerkesztés a vs Code-ban (előzetes verzió)** lehetőséget.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png" alt-text="Kapcsolódás a számítási példányhoz VS Code Azure ML notebook" lightbox="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png":::
+
+---
+
+A távoli számítási példányhoz új ablak jelenik meg. Távoli számítási példányhoz való kapcsolódás megkísérlése esetén a következő feladatok zajlanak le:
+
+1. Engedélyezés. Egyes ellenőrzések végrehajtásával meggyőződhet arról, hogy a felhasználó megpróbál-e csatlakozni a számítási példány használatára.
+1. A VS Code távoli kiszolgáló telepítve van a számítási példányon.
+1. Létrejön egy WebSocket-kapcsolat a valós idejű interakcióhoz.
+
+A kapcsolatok létrejötte után a rendszer megőrzi azt. A rendszer a munkamenet elején állítja ki a tokent, amely automatikusan frissül, hogy fenntartsa a kapcsolatot a számítási példánnyal.
+
+A távoli számítási példányhoz való kapcsolódás után a következő paranccsal használhatja a szerkesztőt:
+
+* [Fájlok létrehozása és kezelése a távoli számítási példányon vagy fájlmegosztáson](https://code.visualstudio.com/docs/editor/codebasics).
+* A [vs Code integrált terminál](https://code.visualstudio.com/docs/editor/integrated-terminal) használatával [parancsokat és alkalmazásokat futtathat a távoli számítási példányon](how-to-access-terminal.md).
+* [Parancsfájlok és alkalmazások hibakeresése](https://code.visualstudio.com/Docs/editor/debugging)
+* [A VS Code használata a git-adattárak kezeléséhez](concept-train-model-git-integration.md)
 
 ## <a name="configure-compute-instance-as-remote-notebook-server"></a>Számítási példány konfigurálása távoli jegyzetfüzet-kiszolgálóként
 
@@ -62,93 +129,6 @@ Ezen a ponton továbbra is futtathat cellákat a Jupyter Notebook.
 
 > [!TIP]
 > A Python-szkripteket (. Jupyter) is használhatja. További információt a [Visual Studio Code Python interaktív dokumentációjában](https://code.visualstudio.com/docs/python/jupyter-support-py)talál.
-
-## <a name="configure-compute-instance-remote-development"></a>Számítási példányok távoli fejlesztésének konfigurálása
-
-A teljes funkcionalitású távoli fejlesztési élményhez néhány előfeltétel szükséges:
-
-* [Visual Studio Code Remote SSH bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-* SSH-kompatibilis számítási példány. További információ [: számítási példány létrehozása útmutató](how-to-create-manage-compute-instance.md).
-
-> [!NOTE]
-> Windows-platformokon [telepítenie kell egy OpenSSH-kompatibilis SSH-ügyfelet](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) , ha még nem létezik ilyen. A PuTTY nem támogatott a Windowsban, mivel az SSH-parancsnak az elérési úton kell lennie.
-
-### <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>A számítási példány IP-címének és SSH-portjának beolvasása
-
-1. Nyissa meg a Azure Machine Learning studiót a következő címen: https://ml.azure.com/ .
-2. Válassza ki a [munkaterületet](concept-workspace.md).
-1. Kattintson a **számítási példányok** fülre.
-1. Az **alkalmazás URI** -oszlopában kattintson a távoli számításként használni kívánt számítási példány **SSH** -hivatkozására. 
-1. A párbeszédpanelen jegyezze fel az IP-címet és az SSH-portot. 
-1. Mentse a titkos kulcsot a ~/.ssh/könyvtárba a helyi számítógépen; például nyisson meg egy szerkesztőt egy új fájlhoz, és illessze be a kulcsot a következőbe: 
-
-   **Linux**:
-
-   ```sh
-   vi ~/.ssh/id_azmlcitest_rsa  
-   ```
-
-   **Windows**:
-
-   ```cmd
-   notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa
-   ```
-
-   A titkos kulcs valahogy így fog kinézni:
-
-   ```text
-   -----BEGIN RSA PRIVATE KEY-----
-
-   MIIEpAIBAAKCAQEAr99EPm0P4CaTPT2KtBt+kpN3rmsNNE5dS0vmGWxIXq4vAWXD
-   ..... 
-   ewMtLnDgXWYJo0IyQ91ynOdxbFoVOuuGNdDoBykUZPQfeHDONy2Raw==
-
-   -----END RSA PRIVATE KEY-----
-   ```
-
-1. Módosítsa a fájl engedélyeit, és győződjön meg arról, hogy csak a fájlt tudja olvasni.  
-
-   ```sh
-   chmod 600 ~/.ssh/id_azmlcitest_rsa
-   ```
-
-### <a name="add-instance-as-a-host"></a>Példány hozzáadása gazdagépként
-
-Nyissa meg a fájlt `~/.ssh/config` (Linux) vagy `C:\Users<username>.ssh\config` (Windows) egy szerkesztőben, és adjon hozzá egy, az alábbi tartalomhoz hasonló új bejegyzést:
-
-```
-Host azmlci1 
-
-    HostName 13.69.56.51 
-
-    Port 50000 
-
-    User azureuser 
-
-    IdentityFile ~/.ssh/id_azmlcitest_rsa
-```
-
-További részletek a mezőkről:
-
-|Mező|Leírás|
-|----|---------|
-|Gazdagép|Bármilyen gyorsírást használhat a számítási példányhoz |
-|HostName|Ez a számítási példány IP-címe. |
-|Port|Ez a port a fenti SSH-párbeszédablakban látható. |
-|User|Ennek a következőnek kell lennie `azureuser` |
-|IdentityFile|Arra a fájlra mutasson, ahová a titkos kulcsot mentette |
-
-Most a fentiekben használt gyorsírással SSH-t kell tudnia használni a számítási példányhoz `ssh azmlci1` .
-
-### <a name="connect-vs-code-to-the-instance"></a>A VS Code összekötése a példánnyal
-
-1. Az SSH-konfigurációk megjelenítéséhez kattintson a távoli SSH ikonra a Visual Studio Code tevékenység sávján.
-
-1. Kattintson a jobb gombbal az imént létrehozott SSH-gazda konfigurációra.
-
-1. Válassza a **Kapcsolódás a gazdagéphez lehetőséget az aktuális ablakban**. 
-
-Innentől kezdve teljes mértékben dolgozik a számítási példányon, és mostantól szerkesztheti, hibakeresést végezhet, használhatja a git-t, a bővítmények használatát stb. – akárcsak a helyi Visual Studio Code-ban.
 
 ## <a name="next-steps"></a>Következő lépések
 
