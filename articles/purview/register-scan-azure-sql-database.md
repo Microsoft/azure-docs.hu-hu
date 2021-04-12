@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 74a8bc4209696682c294bccab450d25ae86e3645
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9873ec2113c0c5704ccca4fa10daf6ac8d572989
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643927"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107431"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database regisztrálása és vizsgálata
 
@@ -28,7 +28,8 @@ A Azure SQL Database adatforrás a következő funkciókat támogatja:
 
 ### <a name="known-limitations"></a>Ismert korlátozások
 
-Az Azure-beli hatáskörébe nem támogatottak a Azure SQL Database [nézeteinek](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) vizsgálata.
+> * Az Azure-beli hatáskörébe nem támogatottak a Azure SQL Database [nézeteinek](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) vizsgálata.
+> * Az Azure-beli hatáskörébe nem támogatott több mint 300 oszlop a séma lapon, és a "további oszlopok – csonkolt" érték jelenik meg. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

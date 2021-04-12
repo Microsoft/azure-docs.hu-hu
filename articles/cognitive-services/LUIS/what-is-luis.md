@@ -5,14 +5,14 @@ keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozá
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/22/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f32f58bebc0a7d64443259981590e368b109b19b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790867"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278949"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -23,6 +23,13 @@ Language Understanding (LUIS) egy felhőalapú társalgási szolgáltatás, amel
 A LUIS ügyfélalkalmazása lehet bármely beszélgetési alkalmazás, amely a felhasználóval természetes nyelven kommunikál egy adott feladat végrehajtásához. Ilyenek például a közösségi multimédia alkalmazások, az AI csevegőrobotok és a beszédfelismerést támogató asztali alkalmazások.
 
 ![A Cognitive Services Language Understanding (LUIS)-vel dolgozó 3 ügyfélalkalmazás fogalmi képe](./media/luis-overview/luis-entry-point.png "A Cognitive Services Language Understanding (LUIS)-vel dolgozó 3 ügyfélalkalmazás fogalmi képe")
+
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:  
+
+* [**A gyors**](luis-get-started-create-app.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.  
+* A [**útmutatók**](luis-how-to-start-new-app.md) útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
+* A [**fogalmak**](artificial-intelligence.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.  
+* Az [**oktatóanyagok**](tutorial-intents-only.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.  
 
 ## <a name="use-luis-in-a-chat-bot"></a>A LUIS használata csevegőrobotban
 
@@ -135,12 +142,10 @@ Ismerje meg a LUIS-t gyakorlati útmutatókkal a [portál](get-started-portal-bu
 
 A [Luis-tárolók használatával](luis-container-howto.md) üzembe helyezhet API-szolgáltatásokat a helyszínen. Ezek a Docker-tárolók lehetővé teszik, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szolgáltatással és a dokumentációval kapcsolatos [Újdonságok](whats-new.md "Újdonságok")
 * [Tervezze meg alkalmazását](luis-how-plan-your-app.md "Az alkalmazás megtervezése") [szándékokkal](luis-concept-intent.md "leképezések") és [entitásokkal](luis-concept-entity-types.md "szervezetek").
-* [Az előrejelzési végpont lekérdezése](luis-get-started-get-intent-from-browser.md "Az előrejelzési végpont lekérdezése").
-* A LUIS [fejlesztői erőforrásai](developer-reference-resource.md "Fejlesztői erőforrások") .
 
 [bot-framework]: /bot-framework/
 [flow]: /connectors/luis/

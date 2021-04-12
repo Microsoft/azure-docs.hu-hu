@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a03c3987c0cada69f6a7d47d7c1aa7cbf6d5015a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775765"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258877"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
@@ -197,6 +197,8 @@ Ez a lépések általános áttekintése. Előfordulhat, hogy ezek a lépések v
    * Adja meg a gyorsítótár-alkalmazás hozzáférését az Azure Storage-fiókjához a fent említett [engedélyekben](#permissions)leírtak szerint. Ezt akkor teheti meg, amikor első alkalommal hoz létre tárolási célt. Kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) lehetőséget a szükséges hozzáférési szerepkörök gyorsítótárazásához.
 
      Ha Ön nem a Storage-fiók tulajdonosa, akkor a tulajdonos ezt a lépést hajtja végre.
+
+További információ a ADLS-NFS tárolási célok Azure HPC cache használatával történő használatáról az [NFS-hez csatlakoztatott blob Storage és az Azure HPC cache](nfs-blob-considerations.md)használatával.
 
 ## <a name="set-up-azure-cli-access-optional"></a>Azure CLI-hozzáférés beállítása (nem kötelező)
 

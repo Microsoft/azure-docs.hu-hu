@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384839"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490964"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-fejlécek és URL-cím újraírása Application Gateway
 
@@ -101,7 +101,7 @@ A Application Gateway kiszolgálói változók használatával tárolja a kiszol
 
 Az Application Gateway a következő kiszolgálói változókat támogatja:
 
-|   Változó neve    |                   Leírás                                           |
+|   Változó neve    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | add_x_forwarded_for_proxy | Az X-Forwarded-For Client Request fejléc mező a `client_ip` (z) változóval (lásd a táblázat későbbi részében) az IP1, a IP2, a IP3 stb. formátumban. Ha az X-Forwardd-for mező nem szerepel az ügyfél-igénylési fejlécben, `add_x_forwarded_for_proxy` akkor a változó egyenlő a `$client_ip` változóval.   Ez a változó különösen akkor hasznos, ha újra szeretné írni az X által továbbított fejlécet a Application Gateway, hogy a fejléc csak az IP-címet tartalmazza a port adatai nélkül. |
 | ciphers_supported         | Az ügyfél által támogatott titkosítások listája.               |
@@ -130,7 +130,7 @@ Az Application Gateway a következő kiszolgálói változókat támogatja:
 
 A Application Gateway a következő kiszolgálói változókat támogatja a kölcsönös hitelesítési helyzetekben. Ezeket a kiszolgálói változókat ugyanúgy használhatja, mint a többi kiszolgálói változót. 
 
-|   Változó neve    |                   Leírás                                           |
+|   Változó neve    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | client_certificate        | A PEM-ügyféltanúsítvány a létesített SSL-kapcsolathoz. |
 | client_certificate_end_date| Az ügyféltanúsítvány záró dátuma. |
@@ -158,6 +158,14 @@ Az újraírható szabálykészlet A következőket tartalmazza:
       * **URL-cím elérési útja**: az az érték, amelynek az elérési útját újra kell írni. 
       * **URL-lekérdezési karakterlánc**: az az érték, amelyre a lekérdezési karakterláncot újra kell írni. 
       * **Elérésiút-hozzárendelés újraértékelése**: annak megállapítására szolgál, hogy az URL-cím elérési útjának újraértékelése megtörténjen-e, vagy sem. Ha nincs bejelölve, a rendszer az eredeti URL-cím elérési útját fogja használni az URL-cím elérési útjának elérési útjának megfeleltetéséhez. Ha igaz értékre van állítva, a rendszer újraértékeli az URL-cím elérési útját, hogy ellenőrizze az átírásos útvonal egyezését. A kapcsoló engedélyezése lehetővé teszi, hogy a kérést egy másik háttérbeli készletbe irányítsa át az újraírás után.
+
+## <a name="rewrite-configuration-common-pitfall"></a>A konfiguráció közös buktatóinak újraírása
+
+* Az újraértékelési elérésiút-hozzárendelés engedélyezése nem engedélyezett az alapszintű kérelmek útválasztási szabályaihoz. Ennek célja, hogy megakadályozza az alapszintű útválasztási szabály végtelen kiértékelési ciklusát.
+
+* Legalább 1 feltételes Újraírási szabálynak vagy 1 Újraírási szabálynak kell lennie, amely nem rendelkezik "újraértékelési elérésiút-hozzárendeléssel" az elérésiút-alapú útválasztási szabályokhoz, hogy megakadályozza a végtelen kiértékelési hurok használatát egy elérésiút-alapú útválasztási szabályhoz.
+
+* A bejövő kérelmeket a 500 hibakód határozza meg, ha a hurok dinamikusan jön létre az ügyfél bemenetei alapján. A Application Gateway továbbra is más kérelmeket fog kiszolgálni, az ilyen forgatókönyvek romlása nélkül.
 
 ### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>URL-újraírás vagy állomásfejléc-újraírás használata webalkalmazási tűzfallal (WAF_v2 SKU)
 

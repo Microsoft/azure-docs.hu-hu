@@ -1,33 +1,36 @@
 ---
 title: Gráfkeresés lekérdezési szintaxisa
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning Designer keresési lekérdezési szintaxisát a csomópontok kereséséhez a folyamat gráfban.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Designer keresési lekérdezési szintaxisát a csomópontok megkereséséhez a pipeline Graphban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 8/24/2020
-ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: likebupt
+ms.author: keli19
+ms.date: 03/24/2021
+ms.openlocfilehash: 74cf0b897529e8bb198b6f82a57e187662a4a285
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93420767"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259224"
 ---
 # <a name="graph-search-query-syntax"></a>Gráfkeresés lekérdezési szintaxisa
 
-Ebben a cikkben megismerheti a Graph keresési lekérdezés szintaxisát Azure Machine Learning. A gráf keresési funkciója lehetővé teszi a csomópontok keresését a név és a tulajdonságok alapján. 
+Ebből a cikkből megismerheti a Azure Machine Learning gráf keresési funkcióit. 
 
- ![Példa a Graph keresési felületét bemutató animált képernyőképre](media/search/graph-search.gif)
+A Graph Search lehetővé teszi, hogy gyorsan navigáljon egy csomóponthoz, amikor hibakeresést végez, vagy felépít egy folyamatot. Megadhatja a kulcs szót vagy lekérdezést az eszköztár beviteli mezőjében, vagy a keresés elindításához a bal oldali panel keresés lapján. Az összes egyező eredmény sárga színnel jelenik meg a vásznon, és ha kijelöl egy eredményt a bal oldali panelen, a vászonhoz tartozó csomópont vörös színnel lesz kiemelve.
 
-A Graph Search támogatja a teljes szöveges kulcsszavas keresést a csomópont neve és megjegyzései alapján. A csomópont-tulajdonsághoz (például runStatus, időtartam, computeTarget) is szűrőket használhat. A kulcsszavas keresés a Lucene-lekérdezésen alapul. A teljes keresési lekérdezés így néz ki:  
+![A Graph keresési felületét ábrázoló képernyőkép](media/search/graph-search-0322.png)
 
-**[Lucene-lekérdezés | [lekérdezés szűrése]** 
+A Graph Search támogatja a teljes szöveges kulcsszavas keresést a csomópont neve és megjegyzései alapján. A csomópont-tulajdonságot is szűrheti, például runStatus, időtartam, computeTarget. A kulcsszavas keresés a Lucene-lekérdezésen alapul. A teljes keresési lekérdezés így néz ki:  
+
+**[[Lucene-lekérdezés] | [lekérdezés szűrése]]** 
 
 Használhat Lucene-lekérdezést vagy szűrési lekérdezést is. Mindkét esetben használja az **|** elválasztót. A szűrési lekérdezés szintaxisa szigorúbb, mint a Lucene-lekérdezés. Ha tehát az ügyfél bemenete is értelmezhető, a rendszer a szűrő lekérdezést fogja alkalmazni.
 
+Ez például olyan `data OR model | compute in {cpucluster}` csomópontok keresése, amelyekben a név vagy a Megjegyzés tartalmazza a (z `data` `model` ), és a számítás cpucluster.
  
 
 ## <a name="lucene-query"></a>Lucene-lekérdezés
@@ -68,6 +71,8 @@ A következő csomópont-tulajdonságokat használhatja kulcsként:
 - számítás
 - duration
 - újbóli használatának
+- publish
+- tags
 
 És használja a következő operátorokat:
 

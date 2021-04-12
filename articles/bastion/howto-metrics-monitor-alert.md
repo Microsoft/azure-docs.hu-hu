@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417943"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259115"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Az Azure Bastion figyelésének és metrikáinak konfigurálása Azure Monitor használatával
 
@@ -58,7 +58,7 @@ Megtekintheti az Azure Bastion teljes memóriáját, amely az egyes megerősíte
 
 #### <a name="used-cpu"></a><a name="used-cpu"></a>Használt processzor
 
-Megtekintheti az Azure Bastion CPU-kihasználtságát, és megoszthatja az egyes megerősített példányok között. A mérőszám figyelése segít az Azure Bastion-t alkotó példányok rendelkezésre állásának és kapacitásának mérésében.
+Megtekintheti az Azure Bastion CPU-kihasználtságát, és megoszthatja az egyes megerősített példányok között. A mérőszám figyelése segít felmérni az Azure Bastion-t alkotó példányok rendelkezésre állását és kapacitását.
 
 :::image type="content" source="./media/metrics-monitor-alert/used-cpu.png" alt-text="A CPU-t ábrázoló képernyőkép.":::
 
@@ -73,6 +73,12 @@ Megtekintheti az egyes megerősített példányok memóriájának kihasználtsá
 #### <a name="session-count"></a>Munkamenetek száma
 
 Megtekintheti az aktív munkamenetek számát az egyes munkamenet-típusoknál (RDP és SSH) összesítve. Az egyes Azure-alapú megerősített kapcsolatok számos aktív RDP-és SSH-munkamenetet támogatnak. A mérőszám figyelése segít megérteni, hogy módosítani kell-e a megerősített szolgáltatást futtató példányok számát. Az Azure Bastion-munkamenetek számának támogatásával kapcsolatos további információkért tekintse meg az [Azure Bastion – gyakori kérdések](bastion-faq.md)című témakört.
+
+A metrika konfigurációjának ajánlott értékei a következők:
+
+* **Összesítés:** AVG
+* **Részletesség:** 5 vagy 15 perc
+* A példányok közötti felosztás javasolt a pontosabb darabszám megszerzéséhez.
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="A munkamenetek darabszámát ábrázoló képernyőkép.":::
 

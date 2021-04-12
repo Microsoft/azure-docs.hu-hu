@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/23/2017
+ms.date: 04/02/2021
 ms.author: mazha
 ms.custom: devx-track-js
-ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 386a424e45d1b718b68cbbf53322fd704317a06b
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95993377"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285224"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -29,14 +29,10 @@ ms.locfileid: "95993377"
 > 
 > 
 
-A [Node.jsAzure CDN SDK ](https://www.npmjs.com/package/azure-arm-cdn) -val a CDN-profilok és-végpontok létrehozásának és kezelésének automatizálására használható.  Ez az oktatóanyag végigvezeti egy egyszerű Node.js Console-alkalmazás létrehozásán, amely számos elérhető műveletet mutat be.  Ez az oktatóanyag nem ismerteti részletesen a Azure CDN SDK Node.js összes aspektusát.
+A [javascripthez készült Azure CDN SDK](https://www.npmjs.com/package/@azure/arm-cdn) segítségével automatizálhatja a CDN-profilok és-végpontok létrehozását és felügyeletét.  Ez az oktatóanyag végigvezeti egy egyszerű Node.js Console-alkalmazás létrehozásán, amely számos elérhető műveletet mutat be.  Ez az oktatóanyag nem ismerteti részletesen a Azure CDN SDK for JavaScript összes aspektusát.
 
-Az oktatóanyag elvégzéséhez már [Node.js](https://www.nodejs.org) **4. x. x** vagy újabb verzió van telepítve és konfigurálva.  Használhat bármely szövegszerkesztőt, amelyben létre kívánja hozni a Node.js alkalmazást.  Az oktatóanyag írásához a [Visual Studio Code](https://code.visualstudio.com)-ot használtuk.  
+Az oktatóanyag elvégzéséhez már [Node.js](https://www.nodejs.org) **6. x. x** vagy újabb verzió van telepítve és konfigurálva.  Használhat bármely szövegszerkesztőt, amelyben létre kívánja hozni a Node.js alkalmazást.  Az oktatóanyag írásához a [Visual Studio Code](https://code.visualstudio.com)-ot használtuk.  
 
-> [!TIP]
-> Az [oktatóanyagból származó befejezett projekt](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) letölthető az MSDN webhelyen.
-> 
-> 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
@@ -53,11 +49,11 @@ Ekkor a projekt inicializálására vonatkozó kérdések sora jelenik meg.  A *
 
 ![NPM init kimenet](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-A projekt most már inicializálva van egy *packages.jsval a* fájlon.  A projektünk NPM-csomagokban található Azure-kódtárakat fog használni.  Az Azure-ügyfél futtatókörnyezetét az Node.js (MS-Rest-Azure) és a Azure CDN ügyféloldali Node.js kódtár (Azure-ARM-CD) használatával fogjuk használni.  Vegyük fel a projektbe a függőségeket.
+A projekt most már inicializálva van egy *packages.jsval a* fájlon.  A projektünk NPM-csomagokban található Azure-kódtárakat fog használni.  A kódtárat a Node.js () Azure Active Directory hitelesítéshez @azure/ms-rest-nodeauth és a JavaScript () Azure CDN ügyféloldali könyvtárához használjuk @azure/arm-cdn .  Vegyük fel a projektbe a függőségeket.
 
 ```console
-npm install --save ms-rest-azure
-npm install --save azure-arm-cdn
+npm install --save @azure/ms-rest-nodeauth
+npm install --save @azure/arm-cdn
 ```
 
 A csomagok telepítésének befejezése után a fájl *package.js* a következőhöz hasonlóan kell kinéznie (a verziószámok eltérőek lehetnek):
@@ -74,8 +70,8 @@ A csomagok telepítésének befejezése után a fájl *package.js* a következő
   "author": "Cam Soper",
   "license": "MIT",
   "dependencies": {
-    "azure-arm-cdn": "^0.2.1",
-    "ms-rest-azure": "^1.14.4"
+    "@azure/arm-cdn": "^5.2.0",
+    "@azure/ms-rest-nodeauth": "^3.0.0"
   }
 }
 ```
@@ -88,8 +84,8 @@ A szerkesztőben megnyitott *app.js* megnyithatja a programunk alapszintű szerk
 1. Adja hozzá a "requires" utasítást a NPM-csomagokhoz a következővel:
    
     ``` javascript
-    var msRestAzure = require('ms-rest-azure');
-    var cdnManagementClient = require('azure-arm-cdn');
+    var msRestAzure = require('@azure/ms-rest-nodeauth');
+    const { CdnManagementClient } = require('@azure/arm-cdn');
     ```
 2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  Adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a **&lt; zárójeleket &gt;** is beleértve, szükség esetén a saját értékeivel.
    
@@ -108,23 +104,9 @@ A szerkesztőben megnyitott *app.js* megnyithatja a programunk alapszintű szerk
    
     ``` javascript
     var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
-    var cdnClient = new cdnManagementClient(credentials, subscriptionId);
+    var cdnClient = new CdnManagementClient(credentials, subscriptionId);
     ```
-   
-    Ha egyéni felhasználói hitelesítést használ, akkor ez a két sor némileg eltér.
-   
-   > [!IMPORTANT]
-   > Csak akkor használja ezt a kódot, ha egy egyszerű szolgáltatásnév helyett egyéni felhasználói hitelesítést szeretne használni.  Ügyeljen arra, hogy az egyéni felhasználói hitelesítő adatokat megvédje, és titokban tartsa őket.
-   > 
-   > 
-   
-    ``` javascript
-    var credentials = new msRestAzure.UserTokenCredentials(clientId, 
-        tenantId, '<username>', '<password>', '<redirect URI>');
-    var cdnClient = new cdnManagementClient(credentials, subscriptionId);
-    ```
-   
-    Ügyeljen rá, hogy a megfelelő információkkal helyettesítse az elemeket a **&lt; szögletes zárójelben &gt;** .  A esetében `<redirect URI>` használja az alkalmazás Azure ad-ben való regisztrálásakor megadott átirányítási URI-t.
+
 4. Node.js Console-alkalmazásunk bizonyos parancssori paramétereket fog igénybe venni.  Győződjön meg arról, hogy legalább egy paraméter át lett adva.
    
    ```javascript
@@ -237,7 +219,7 @@ function cdnList(){
         case "endpoints":
             requireParms(3);
             console.log("Listing endpoints...");
-            cdnClient.endpoints.listByProfile(parms[2], resourceGroupName, callback);
+            cdnClient.endpoints.listByProfile(resourceGroupName, parms[2], callback);
             break;
 
         default:
@@ -280,7 +262,7 @@ function cdnCreateProfile() {
         }
     };
 
-    cdnClient.profiles.create(parms[2], standardCreateParameters, resourceGroupName, callback);
+    cdnClient.profiles.create( resourceGroupName, parms[2], standardCreateParameters, callback);
 }
 
 // create endpoint <profile name> <endpoint name> <origin hostname>        
@@ -295,7 +277,7 @@ function cdnCreateEndpoint() {
         }]
     };
 
-    cdnClient.endpoints.create(parms[3], endpointProperties, parms[2], resourceGroupName, callback);
+    cdnClient.endpoints.create(resourceGroupName, parms[2], parms[3], endpointProperties, callback);
 }
 ```
 
@@ -308,7 +290,7 @@ function cdnPurge() {
     requireParms(4);
     console.log("Purging endpoint...");
     var purgeContentPaths = [ parms[3] ];
-    cdnClient.endpoints.purgeContent(parms[2], parms[1], resourceGroupName, purgeContentPaths, callback);
+    cdnClient.endpoints.purgeContent(resourceGroupName, parms[2], parms[3], purgeContentPaths, callback);
 }
 ```
 
@@ -324,14 +306,14 @@ function cdnDelete() {
         case "profile":
             requireParms(3);
             console.log("Deleting profile...");
-            cdnClient.profiles.deleteIfExists(parms[2], resourceGroupName, callback);
+            cdnClient.profiles.deleteMethod(resourceGroupName, parms[2], callback);
             break;
 
         // delete endpoint <profile name> <endpoint name>
         case "endpoint":
             requireParms(4);
             console.log("Deleting endpoint...");
-            cdnClient.endpoints.deleteIfExists(parms[3], parms[2], resourceGroupName, callback);
+            cdnClient.endpoints.deleteMethod(resourceGroupName, parms[2], parms[3], callback);
             break;
 
         default:
@@ -366,11 +348,9 @@ Végül töröljük a profilt.
 ![Profil törlése](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Ha meg szeretné tekinteni a kész projektet ebből az útmutatóból, [töltse le a mintát](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
 
-A Node.js Azure CDN SDK-ra mutató hivatkozás megtekintéséhez tekintse meg a [hivatkozást](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
+Ha meg szeretné tekinteni a JavaScripthez készült Azure CDN SDK hivatkozását, tekintse meg a [hivatkozást](https://docs.microsoft.com/javascript/api/@azure/arm-cdn).
 
-Ha további dokumentációt szeretne a Node.js készült Azure SDK-hoz, tekintse meg a [teljes referenciát](https://azure.github.io/azure-sdk-for-node/).
+A JavaScripthez készült Azure SDK-val kapcsolatos további dokumentációért tekintse meg a [teljes referenciát](https://docs.microsoft.com/javascript/api/?view=azure-node-latest).
 
 A CDN-erőforrások kezelése a [PowerShell](cdn-manage-powershell.md)-lel.
-

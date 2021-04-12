@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: db6aafc8c9db7a67c9ee70d524d17a642d03dfd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107227"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259064"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Hibaelhárítás az Azure kommunikációs szolgáltatásokban
 
@@ -79,11 +79,11 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>Hozzáférés a hívási AZONOSÍTÓhoz
 
-Ha egy támogatási kérést a hívási problémákkal kapcsolatos Azure Portal küld, a rendszer megkérheti, hogy adja meg a hivatkozott hívás AZONOSÍTÓját. Ez a hívó SDK-val érhető el:
+A hang-és videohívások hibaelhárításakor a rendszer kérheti a megadását `call ID` . Ez az `id` objektum tulajdonságán keresztül érhető el `call` :
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
-// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods
+// `call` is an instance of a call created by `callAgent.startCall` or `callAgent.join` methods
 console.log(call.id)
 ```
 
@@ -97,7 +97,7 @@ print(call.callId)
 # <a name="android"></a>[Android](#tab/android)
 ```java
 // The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
-// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods
+// `call` is an instance of a call created by `callAgent.startCall(…)` or `callAgent.join(…)` methods
 Log.d(call.getCallId())
 ```
 ---
@@ -127,17 +127,23 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő kód használatával konfigurálhatja a `AzureLogger` naplófájlokat a konzolon a JavaScript SDK segítségével:
+Az Azure kommunikációs szolgáltatások meghívója az SDK [@azure/logger](https://www.npmjs.com/package/@azure/logger) -t belsőleg a könyvtáron, a naplózás vezérlésére támaszkodik.
+A `setLogLevel` csomag metódusának használatával `@azure/logger` konfigurálja a napló kimenetét:
+
+```javascript
+import { setLogLevel } from '@azure/logger';
+setLogLevel('verbose');
+const callClient = new CallClient();
+```
+
+A AzureLogger segítségével átirányíthatja az Azure SDK-k naplózási kimenetét a `AzureLogger.log` metódus felülbírálásával: Ez akkor lehet hasznos, ha át szeretné irányítani a naplókat a konzolon kívüli helyre.
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
-
-AzureLogger.verbose = (...args) => { console.info(...args); }
-AzureLogger.info = (...args) => { console.info(...args); }
-AzureLogger.warning = (...args) => { console.info(...args); }
-AzureLogger.error = (...args) => { console.info(...args); }
-
-callClient = new CallClient({logger: AzureLogger});
+// redirect log output
+AzureLogger.log = (...args) => {
+  console.log(...args); // to console, file, buffer, REST API..
+};
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
@@ -161,7 +167,7 @@ Android Studioon navigáljon az eszköz Fájlkezelőhöz úgy, hogy kijelöli a 
 
 Az Azure kommunikációs szolgáltatások meghívása SDK a következő hibakódokat használja a hívási problémák elhárításához. Ezek a hibakódok a tulajdonságon keresztül jelennek meg a `call.callEndReason` hívás befejeződése után.
 
-| Hibakód | Leírás | Elvégzendő művelet |
+| Hibakód | Description | Elvégzendő művelet |
 | -------- | ---------------| ---------------|
 | 403 | Tiltott/hitelesítési hiba. | Győződjön meg arról, hogy a kommunikációs szolgáltatások jogkivonata érvényes, és nem járt le. |
 | 404 | A hívás nem található. | Ellenőrizze, hogy létezik-e a hívott szám (vagy hívja meg az összekötőt). |

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 30ae737a170c337fe6be51521aeb358cdcebd44b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080269"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107336"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>A tervezőben lévő folyamat paramétereinek használata sokoldalú folyamatok létrehozásához
 
@@ -95,9 +95,11 @@ Ha változó adatkészletekkel szeretné elküldeni a folyamatot, elő kell mozd
 
 Mostantól a folyamat következő futtatásakor megadhat egy másik adatkészletet a folyamat paraméter használatával.
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>Modul paraméterének csatolása a folyamat paraméteréhez 
+## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>Modul paraméterének csatolása és leválasztása a folyamat paraméteréhez 
 
-Ebből a szakaszból megtudhatja, hogyan csatolhatja a modul paraméterét a folyamat paraméteréhez.
+Ebből a szakaszból megtudhatja, hogyan csatolhatja és leválaszthatja a modul paraméterét a folyamat paraméteréhez.
+
+### <a name="attach-module-parameter-to-pipeline-parameter"></a>Modul paraméterének csatolása a folyamat paraméteréhez
 
 A duplikált modulok azonos modul-paramétereit ugyanahhoz a folyamat-paraméterhez csatolhatja, ha a folyamat futtatásakor egyszerre szeretné módosítani az értéket.
 
@@ -115,10 +117,16 @@ Az alábbi példa duplikált, **tiszta, hiányzó** adatmodult tartalmaz. Minden
 
    ![A folyamat paramétereinek csatolását bemutató képernyőkép](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-Sikeresen csatolta a **helyettesítési érték** mezőt a folyamat paraméteréhez. A modulok **helyettesítő értéke** nem hajtható végre.
+Sikeresen csatolta a **helyettesítési érték** mezőt a folyamat paraméteréhez. 
+
+
+### <a name="detach-module-parameter-to-pipeline-parameter"></a>Modul paraméterének leválasztása a folyamat paraméteréhez
+
+Ha a **helyettesítési értéket** csatolja a folyamat paraméterhez, az nem hajtható végre.
+
+A modul paraméterét leválaszthatja a folyamat paraméterre úgy, hogy a modul paraméter melletti három pontra (**..**.) kattint, és kiválasztja a **Leválasztás a folyamatból paramétert**.
 
  ![Képernyőkép, amely a folyamat paraméterének csatolása után nem alkalmazható műveleteket jelenít meg](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>Folyamat paramétereinek frissítése és törlése
 
@@ -133,7 +141,7 @@ A következő lépésekkel frissítheti a modul-folyamat paraméterét:
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>Adatkészlet-folyamat paraméterének törlése
 
-A következő lépések végrehajtásával leválaszthatja az adatkészlet-folyamat paraméterét:
+A következő lépésekkel törölheti az adatkészlet-folyamat paramétereit:
 
 1. Válassza ki az adatkészlet modulját.
 1. Törölje a beállítást a **pipeline paraméterként**.
@@ -147,22 +155,14 @@ A következő lépésekkel törölheti a modul-folyamat paraméterét:
 
 1. Válassza a folyamat paraméter melletti három pontot (**..**.).
 
-    Ebben a nézetben látható, hogy mely modulokhoz van csatolva a folyamat paraméter. Egy folyamat paraméterének törléséhez először le kell választania azt bármelyik modul-paraméterből.
+    Ebben a nézetben látható, hogy mely modulokhoz van csatolva a folyamat paraméter.
 
-    ![A modulra alkalmazott aktuális folyamat paraméterét bemutató képernyőkép](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![A modulra alkalmazott aktuális folyamat paraméterét bemutató képernyőkép](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. A vásznon válassza ki azt a modult, amelyhez a folyamat paramétere továbbra is csatolva van.
-1. A jobb oldali modul tulajdonságai ablaktáblán keresse meg azt a mezőt, amelyhez a folyamat paraméter csatolva van.
-1. A csatolt mező mouseover. Ezután válassza ki a megjelenő ellipsziseket (**..**.).
-1. Válassza **a Leválasztás a folyamatból paramétert**
-
-    ![A folyamat paramétereinek leválasztását bemutató képernyőkép](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. Ismételje meg az előző lépéseket, amíg le nem választotta a folyamat paraméterét az összes mezőből.
-1. Válassza a folyamat paraméter melletti három pontot (**..**.).
 1. Válassza a **paraméter törlése** lehetőséget a folyamat paramétereinek törléséhez.
 
-    ![A folyamat paramétereinek törlését bemutató képernyőkép](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > Egy folyamat paraméterének törlésével az összes csatolt modul paraméterét le lehet választani, és a leválasztott modul paramétereinek értéke megtartja az aktuális folyamat paraméterének értékét.     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>Folyamat futtatásának indítása folyamat-paraméterekkel 
 

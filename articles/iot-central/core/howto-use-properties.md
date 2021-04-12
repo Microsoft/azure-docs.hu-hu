@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39bab52a564439d34b8702de11edabe7f0d6dfbc
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98119084"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492256"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Tulajdonságok használata Azure IoT Central-megoldásokban
 
@@ -39,13 +39,13 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Képesség típusa | Tulajdonság.                                                                                                                                                                                                                          |
 | Szemantikai típus   | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el.                                                                       |
 | Séma          | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz.                                               |
-| Írható       | Ha a tulajdonság nem írható, az eszköz jelentést tud készíteni az Azure IoT Central. Ha a tulajdonság írható, az eszköz képes jelenteni a tulajdonságértékek az Azure IoT Central számára. Ezután az Azure IoT Central el tudja küldeni a tulajdonságok frissítéseit az eszközre. |
+| Írható       | Ha a tulajdonság nem írható, az eszköz a tulajdonságértékek jelentésére képes az Azure IoT Central. Ha a tulajdonság írható, az eszköz jelentést tud készíteni az Azure IoT Central. Ezután az Azure IoT Central el tudja küldeni a tulajdonságok frissítéseit az eszközre. |
 | Súlyosság        | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ** vagy **Figyelmeztetés**.                                                                                                                         |
 | Állapot értékei    | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik.                                                                                   |
 | Unit (Egység)            | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**.                                                                                                                                                              |
 | Megjelenítési egység    | Irányítópultokon és űrlapokon használható megjelenítési egység.                                                                                                                                                                                    |
 | Megjegyzés         | A tulajdonság képességével kapcsolatos megjegyzések.                                                                                                                                                                                        |
-| Leírás     | A tulajdonság funkciójának leírása.                                                                                                                                                                                          |
+| Description     | A tulajdonság funkciójának leírása.                                                                                                                                                                                          |
 
 A tulajdonságok az eszköz sablonjának felületén is meghatározhatók, ahogy az itt látható:
 
@@ -210,7 +210,7 @@ A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező k
 * `av` az eszközre eljuttatott verziószám.
 * `ad` egy paraméter-karakterlánc leírása.
 
-| Érték | Címke | Leírás |
+| Érték | Címke | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202` vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben vagy folyamatban van. |
@@ -219,7 +219,7 @@ A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező k
 
 További információ az eszköz-ikrekről: [eszközök konfigurálása háttér-szolgáltatásból](../../iot-hub/tutorial-device-twins.md).
 
-Ha az operátor egy írható tulajdonságot állít be az Azure IoT Central alkalmazásban, az alkalmazás egy, az eszközre vonatkozó, a kívánt tulajdonságot használva küldi el az értéket az eszköznek. Az eszköz ezután válaszol a Device Twin jelentett tulajdonság használatával. Amikor az Azure IoT Central megkapja a jelentett tulajdonság értékét, az a tulajdonság nézetét **fogadja el**, amelynek állapota elfogadva.
+Ha a kezelő egy írható tulajdonságot állít be az Azure IoT Central alkalmazásban, az alkalmazás egy, a kívánt eszközhöz tartozó dupla kívánnivalót használó tulajdonsággal küldi el az értéket az eszköznek. Az eszköz ezután válaszol a Device Twin jelentett tulajdonság használatával. Amikor az Azure IoT Central megkapja a jelentett tulajdonság értékét, az a tulajdonság nézetét **fogadja el**, amelynek állapota elfogadva.
 
 A következő nézetben az írható tulajdonságok láthatók. Ha megadja az értéket, és a **Mentés** lehetőséget választja, a kezdeti állapot **függőben** van. Amikor az eszköz elfogadja a változást, az állapot **elfogadva** értékre változik.
 

@@ -7,15 +7,15 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2020
+ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521390"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031086"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -40,7 +40,7 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva intelligens
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Gépi tanulási eszközök az egyes feladatokhoz 
 
 Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szükséges összes eszközt a fejlesztők és az adatszakértők számára, beleértve a következőket:
-+ A [Azure Machine learning Designer](tutorial-designer-automobile-price-train-score.md): húzzon-n-drop modulokat a kísérletek létrehozásához, majd a folyamatok üzembe helyezéséhez.
++ A [Azure Machine learning Designer](tutorial-designer-automobile-price-train-score.md): húzzon-n-drop modulokat a kísérletek kiépítéséhez, majd a folyamatok alacsony kódú környezetben történő üzembe helyezéséhez.
 
 + Jupyter jegyzetfüzetek: a [példánkban szereplő jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks) használatával vagy saját jegyzetfüzetek létrehozásával kihasználhatja a gépi tanuláshoz készült SDK-t a <a href="/python/api/overview/azure/ml/intro" target="_blank">Python</a> -mintákhoz. 
 
@@ -48,11 +48,11 @@ Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szüksé
 
 + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 
-+ [Machine learning-bővítmény a Visual Studio Code-felhasználók számára](tutorial-setup-vscode-extension.md)
++ A [Visual Studio Code (előzetes verzió) Machine learning-bővítménye](how-to-set-up-vs-code-remote.md) teljes funkcionalitású fejlesztési környezetet biztosít a gépi tanulási projektek létrehozásához és kezeléséhez.
 
-+ [Machine learning CLI](reference-azure-machine-learning-cli.md)
++ A [Machine learning parancssori](reference-azure-machine-learning-cli.md) felület egy Azure CLI-bővítmény, amely parancsokat biztosít a Azure Machine learning erőforrásainak parancssorból való kezeléséhez.
 
-+ Nyílt forráskódú keretrendszerek, mint például a PyTorch, a TensorFlow és a scikit – Learn és sok más
++ Olyan [nyílt forráskódú keretrendszerekkel való integráció](concept-open-source.md) , mint például a PyTorch, a TensorFlow és a scikit, valamint számos más a teljes körű gépi tanulási folyamat betanításához, üzembe helyezéséhez és kezeléséhez.
 
 + [Megerősítő tanulás](how-to-use-reinforcement-learning.md) a Ray RLlib
 
@@ -130,6 +130,8 @@ Az Azure Storage-fiók, a számítási célok és az egyéb erőforrások bizton
 - + [Ismerkedés a saját fejlesztési környezetével](tutorial-1st-experiment-sdk-setup-local.md)
   + [Jupyter notebookok használata számítási példányokon & üzembe helyezése ML-modellek betanításához](tutorial-1st-experiment-sdk-setup.md)
   + [Az automatizált gépi tanulás használata & ML-modellek üzembe helyezéséhez](tutorial-first-experiment-automated-ml.md) 
+  + [Erőforrások kezelése a Visual Studio Code-ban](how-to-manage-resources-vscode.md)
+  + [A Visual Studio Code használatával betaníthatja és üzembe helyezheti a rendszerkép besorolási modelljét](tutorial-train-deploy-image-classification-model-vscode.md)
   + [A tervező drag & drop funkciói a & üzembe helyezéséhez](tutorial-designer-automobile-price-train-score.md) 
   + [Modellek betanítása és üzembe helyezése a Machine learning parancssori felület használatával](tutorial-train-deploy-model-cli.md)
 

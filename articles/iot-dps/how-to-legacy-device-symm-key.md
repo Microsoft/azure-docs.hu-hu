@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d193d30428d24ccf65c3f70885192acad2fdc9f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051109"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228328"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Eszközök kiépítése szimmetrikus kulcsú beléptetési csoportok használatával
 
@@ -30,6 +30,16 @@ A cikk során egy Windows-alapú munkaállomást fogunk használni. Azonban az e
 > [!NOTE]
 > A cikkben használt minta C nyelven íródott. Létezik egy [C# eszköz kiépítési szimmetrikus kulcsának mintája](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) is. A minta használatához töltse le vagy klónozott [Azure-IOT-Samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) adattárát, és kövesse a mintakód beépített utasításait. A cikk utasításait követve hozzon létre egy szimmetrikus kulcsú beléptetési csoportot a portál használatával, és keresse meg az azonosító hatókörét és a beléptetési csoportot, amely a minta futtatásához szükséges elsődleges és másodlagos kulcsokat tartalmaz. A minta használatával egyéni regisztrációkat is létrehozhat.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+* A [beállított IoT hub Device Provisioning Service befejezése a Azure Portal](./quick-setup-auto-provision.md) rövid útmutatóval.
+
+A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
+
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+
+* A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
+
 ## <a name="overview"></a>Áttekintés
 
 Minden eszközhöz egyedi regisztrációs azonosítót határozunk meg az eszközt azonosító információk alapján. Például a MAC-címe vagy sorozatszáma.
@@ -40,16 +50,6 @@ A cikkben bemutatott kód a gyors üzembe helyezési ponttal megegyező mintáza
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* A [beállított IoT hub Device Provisioning Service befejezése a Azure Portal](./quick-setup-auto-provision.md) rövid útmutatóval.
-
-A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
-
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
-
-* A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Azure IoT C SDK fejlesztői környezet előkészítése
 
@@ -130,7 +130,7 @@ Az SDK tartalmazza a szimulált eszközhöz tartozó mintakód kódját. A szimu
     Nyissa meg a regisztrációt, és másolja ki a generált **Elsődleges kulcsot**. Ez a kulcs a főcsoport kulcsa.
 
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Válasszon egyedi regisztrációs azonosítót az eszközhöz
+## <a name="choose-a-unique-registration-id-for-the-device&quot;></a>Válasszon egyedi regisztrációs azonosítót az eszközhöz
 
 Az egyes eszközök azonosításához egyedi regisztrációs azonosítót kell megadni. Az eszköz MAC-címe, sorozatszáma vagy bármely egyedi adata használható. 
 
@@ -140,7 +140,7 @@ Ebben a példában egy MAC-címe és sorozatszáma kombinációját használjuk,
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Egyedi regisztrációs azonosítók létrehozása minden eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel ("-").
+Egyedi regisztrációs azonosítók létrehozása minden eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel (&quot;-").
 
 
 ## <a name="derive-a-device-key"></a>Eszköz kulcsának származtatása 
@@ -283,6 +283,15 @@ Vegye figyelembe, hogy ez a rendszerkép részét képező származtatott eszkö
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
-* [Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára](quick-create-simulated-device-symm-key.md)
-* További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése.
+* További információ az újratelepítésről:
+
+> [!div class="nextstepaction"]
+> [A IoT Hub eszköz újraépítésével kapcsolatos fogalmak](concepts-device-reprovision.md)
+
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára](quick-create-simulated-device-symm-key.md)
+
+* További információ a megszüntetésről:
+
+> [!div class="nextstepaction"]
+> [Korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md)

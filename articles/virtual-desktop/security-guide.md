@@ -5,13 +5,13 @@ author: heidilohr
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: fb0935ca2ffcad93ba47ccd207603dd870dc26b0
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014893"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445703"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -29,16 +29,16 @@ A Windows rendszerű virtuális asztali környezetében a következő biztonság
 
 | Biztonsági igények | Az ügyfél felelős erre? |
 |---------------|:-------------------------:|
-|Identitás|Yes|
-|Felhasználói eszközök (mobil és PC)|Yes|
-|Alkalmazás biztonsága|Yes|
-|Munkamenet-gazda operációs rendszer|Yes|
-|Központi telepítés konfigurálása|Yes|
-|Hálózati vezérlők|Yes|
-|Virtualizációs vezérlő síkja|No|
-|Fizikai gazdagépek|No|
-|Fizikai hálózat|No|
-|Fizikai adatközpont|No|
+|Identitás|Igen|
+|Felhasználói eszközök (mobil és PC)|Igen|
+|Alkalmazás biztonsága|Igen|
+|Munkamenet-gazda operációs rendszer|Igen|
+|Központi telepítés konfigurálása|Igen|
+|Hálózati vezérlők|Igen|
+|Virtualizációs vezérlő síkja|Nem|
+|Fizikai gazdagépek|Nem|
+|Fizikai hálózat|Nem|
+|Fizikai adatközpont|Nem|
 
 Az ügyfél nem felelős a Microsoft által kezelt biztonsági követelményeknek.
 

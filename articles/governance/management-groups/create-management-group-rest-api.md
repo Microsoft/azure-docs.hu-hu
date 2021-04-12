@@ -3,12 +3,12 @@ title: 'Gyors útmutató: felügyeleti csoport létrehozása REST API'
 description: Ebben a rövid útmutatóban a REST API használatával hozzon létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26a1c0a8025a00155bcf0498e6dfa89a8a73d983
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592500"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259132"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Gyors útmutató: felügyeleti csoport létrehozása REST API
 
@@ -28,7 +28,7 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
 
 ### <a name="create-in-rest-api"></a>Létrehozás REST API
 
-REST API esetén a [Management groups-Create vagy a Update](/rest/api/resources/managementgroups/createorupdate) Endpoint paranccsal hozzon létre egy új felügyeleti csoportot. Ebben a példában a **GroupID** felügyeleti csoport a _contoso_.
+REST API esetén a [Management groups-Create vagy a Update](/rest/api/managementgroups/managementgroups/createorupdate) Endpoint paranccsal hozzon létre egy új felügyeleti csoportot. Ebben a példában a **GroupID** felügyeleti csoport a _contoso_.
 
 - REST API URI
 
@@ -81,7 +81,7 @@ Az előző példákban az új felügyeleti csoport a gyökérszintű felügyelet
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A fent létrehozott felügyeleti csoport eltávolításához használja a [Management groups-delete](/rest/api/resources/managementgroups/delete) végpontot:
+A fent létrehozott felügyeleti csoport eltávolításához használja a [Management groups-delete](/rest/api/managementgroups/managementgroups/delete) végpontot:
 
 - REST API URI
 

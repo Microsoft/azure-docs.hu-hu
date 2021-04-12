@@ -7,18 +7,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
-ms.openlocfilehash: 827e4d883fd9e80ae84845d620cc4ca00816f56e
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 1ea8583b33fbe711fcffbf9626236923ecd0df8b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551313"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107227"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en
 
 Ez a cikk bemutatja, hogyan hozhat létre Azure-beli virtuális gépeket az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-hez. A Windows-alapú és a Linux-alapú virtuális gépeket is tartalmazza, amelyek egy operációs rendszert, egy virtuális merevlemezt (VHD) és legfeljebb 16 adatlemezt tartalmaznak.
 
-Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](partner-center-portal/create-account.md). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
+Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](create-account.md). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

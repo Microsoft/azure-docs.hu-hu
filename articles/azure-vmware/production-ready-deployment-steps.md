@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e0a4083c0253d322b2e10472d0df7496722c10
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584635"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107244"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -16,8 +16,12 @@ Ez a cikk az üzembe helyezés során használni kívánt információk azonosí
 
 Az ebben a rövid útmutatóban ismertetett lépések a virtuális gépek (VM-EK) és a Migrálás létrehozására szolgáló, éles környezetben felkészített környezetet biztosítanak. 
 
->[!IMPORTANT]
->Az Azure VMware-megoldási erőforrás létrehozása előtt kövesse az [Azure VMware megoldás-erőforrás engedélyezése](enable-azure-vmware-solution.md) című cikket egy támogatási jegy elküldéséhez, hogy a gazdagépek le legyenek foglalva. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg kérelmét, és foglalja le a gazdagépeket. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több gazdagépet szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie. 
+A gyűjtött adatok nyomon követéséhez szerezze be a [HCX tervezési ellenőrzőlistáját](https://www.virtualworkloads.com/2021/04/hcx-planning-checklist/).
+
+> [!IMPORTANT]
+> Fontos, hogy az Azure-beli VMware-megoldási erőforrás létrehozásának előkészítése előtt korán igényeljen egy gazdagépi kvótát. A gazdagép-kvótát most is kérheti, így ha elkészült a tervezési folyamat, készen áll az Azure VMware-megoldás saját felhőbe való üzembe helyezésére. Miután a támogatási csapat megkapja a fogadó kvóta iránti kérelmét, akár öt munkanapot is igénybe vesz, hogy erősítse meg a kérését, és lefoglalja a gazdagépeket. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több gazdagépet szeretne lefoglalni, hajtsa végre ugyanezt a folyamatot. További információkért tekintse meg a következő hivatkozásokat az előfizetés típusától függően:
+> - [Nagyvállalati szerződéssel rendelkező ügyfelek](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
+> - [CSP-ügyfelek](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
 
 ## <a name="subscription"></a>Előfizetés
 
@@ -30,7 +34,7 @@ Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt
 
 Azonosítsa az Azure VMware-megoldáshoz használni kívánt erőforráscsoportot.  Általában egy erőforráscsoport jön létre kifejezetten az Azure VMware megoldáshoz, de használhat egy meglévő erőforráscsoportot is.
 
-## <a name="region"></a>Region
+## <a name="region"></a>Régió
 
 Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt régiót.  További információkért tekintse meg az [Azure-termékek régiónként elérhető útmutatót](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -82,18 +86,6 @@ Ezt a hálózati szegmenst elsősorban tesztelési célokra használják a kezde
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="A virtuális gépek számítási feladataihoz tartozó IP-címek szegmensének azonosítása" border="false":::     
 
-## <a name="optional-extend-your-networks"></a>Választható Hálózatok kiterjesztése
-
-Kiterjesztheti a hálózati szegmenseket a helyszíni rendszerből az Azure VMware megoldásba, és ha így tesz, ezeket a hálózatokat is azonosíthatja.  
-
-Ne feledje, hogy:
-
-- Ha a helyi hálózatok kibővítését tervezi, ezeknek a hálózatoknak csatlakozniuk kell egy [vSphere elosztott kapcsolóhoz (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) a helyszíni VMware-környezetben.  
-- Ha a hálózat (ok) [vSphere standard kapcsolón](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)szeretné kiterjeszteni az élő hálózatot, akkor nem bővíthetők.
-
->[!NOTE]
->Ezek a hálózatok a konfiguráció utolsó lépéseként bővíthetők, nem pedig az üzembe helyezés során.
-
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Azure-Virtual Network csatlakoztatása Azure VMware-megoldáshoz
 
 Az Azure VMware-megoldással való kapcsolat biztosításához a ExpressRoute az Azure VMware megoldás saját felhőből egy ExpressRoute virtuális hálózati átjáróra épül.
@@ -106,7 +98,7 @@ Az Azure VMware-megoldással való kapcsolat biztosításához a ExpressRoute az
 
 Ha egy *meglévő* ExpressRoute virtuális hálózati átjárót szeretne használni, az Azure VMware megoldás ExpressRoute áramkörét üzembe helyezés utáni lépésként kell létrehozni. Ebben az esetben hagyja üresen a **Virtual Network** mezőt.
 
-Általános javaslatként egy meglévő ExpressRoute virtuális hálózati átjárót használhat. Tervezési célokra jegyezze fel, hogy melyik ExpressRoute virtuális hálózati átjárót fogja használni, majd folytassa a következő lépéssel.
+Általános javaslatként egy meglévő ExpressRoute virtuális hálózati átjárót használhat. Tervezési célokra jegyezze fel, hogy melyik ExpressRoute virtuális hálózati átjárót fogja használni, majd folytassa a [következő lépéssel](#vmware-hcx-network-segments).
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Új ExpressRoute virtuális hálózati átjáró létrehozása
 
@@ -116,23 +108,36 @@ Ha egy *meglévő* ExpressRoute virtuális hálózati átjárót szeretne haszn�
    1. Azonosítson egy olyan Azure-beli virtuális hálózatot, amely nem rendelkezik már meglévő ExpressRoute virtuális hálózati átjárókkal.
    2. Az üzembe helyezés előtt hozzon létre egy [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet) az Azure Virtual Networkban.
 
-- Új Azure-Virtual Network esetén előre vagy üzembe helyezés közben is létrehozhatja. Válassza az **új létrehozása** hivatkozást a **Virtual Network** listában.
+- Egy új Azure-Virtual Network és virtuális hálózati átjáró létrehozásához létre kell hoznia a telepítést a **Virtual Network** listában az **új létrehozása** hivatkozás kiválasztásával.  Fontos, hogy az üzemelő példány előtt definiálja a Címterület és az alhálózatokat, így a telepítés lépéseinek elvégzése után készen áll az adatok megadására.
 
-Az alábbi képen látható a **saját Felhőbeli** üzembe helyezési képernyő létrehozása a kiemelt **Virtual Network** mezővel.
+Az alábbi képen a **saját Felhőbeli** központi telepítés létrehozása képernyő látható a **Virtual Network** mező kiemelésével.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Képernyőkép az Azure VMware megoldás üzembe helyezési képernyőjéről Virtual Network mező kiemelésével.":::
 
->[!NOTE]
->A helyszíni környezet és az Azure VMware-megoldás a használni vagy létrehozni kívánt virtuális hálózatokat is láthatja, ezért ügyeljen arra, hogy az ebben a virtuális hálózatban használt IP-szegmensek és alhálózatok ne legyenek átfedésben.
+> [!NOTE]
+> A helyszíni környezet és az Azure VMware-megoldás a használni vagy létrehozni kívánt virtuális hálózatokat is láthatja, ezért ügyeljen arra, hogy az ebben a virtuális hálózatban használt IP-szegmensek és alhálózatok ne legyenek átfedésben.
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX hálózati szegmensek
 
-A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt van kiépítve. A VMware HCX elsődleges használati esetei a munkaterhelések áttelepítése és a vész-helyreállítás. Ha azt tervezi, hogy ezt a lehetőséget választja, érdemes megtervezni a hálózatkezelést most.   Ellenkező esetben kihagyhatja és folytathatja a következő lépéssel.
+A VMware HCX egy Azure VMware-megoldással csomagolt technológia. A VMware HCX elsődleges használati esetei a munkaterhelések áttelepítése és a vész-helyreállítás. Ha azt tervezi, hogy ezt a lehetőséget választja, érdemes megtervezni a hálózatkezelést most. Ellenkező esetben kihagyhatja és folytathatja a következő lépéssel.
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
+## <a name="optional-extend-your-networks"></a>Választható Hálózatok kiterjesztése
+
+Kiterjesztheti a hálózati szegmenseket a helyszínen az Azure VMware megoldásba. Ha kibővíti a hálózati szegmenseket, most azonosítsa ezeket a hálózatokat.  
+
+Az alábbi szempontokat érdemes figyelembe venni:
+
+- Ha a helyi hálózatok kibővítését tervezi, ezeknek a hálózatoknak csatlakozniuk kell egy [vSphere elosztott kapcsolóhoz (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) a helyszíni VMware-környezetben.  
+- A [vSphere standard kapcsolón](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) lévő hálózatok nem terjeszthetők ki.
+
+>[!NOTE]
+>Ezek a hálózatok a konfiguráció utolsó lépéseként bővíthetők, nem pedig az üzembe helyezés során.
+>
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal, hogy létrehozza az Azure VMware-megoldás saját felhőjét.
 
 > [!div class="nextstepaction"]
 > [Az Azure VMware Solution üzembe helyezése](deploy-azure-vmware-solution.md)
+> 

@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 03/17/2021
-ms.openlocfilehash: 8e5c204709f0eadb6c1a4b6f479d4833f335b264
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/05/2021
+ms.openlocfilehash: 090d38a92da126cd4fd8423231f856d22ea9a64c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594886"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106836"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -90,7 +90,7 @@ A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és
 
 A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A rugalmas kiszolgáló jelenleg a következő Azure-régiókban érhető el:
 
-| Region | Rendelkezésre állás | Zóna – redundáns HA | 
+| Régió | Rendelkezésre állás | Zóna – redundáns HA | 
 | --- | --- | --- |
 | Nyugat-Európa | :heavy_check_mark: | :heavy_check_mark: |
 | Észak-Európa | :heavy_check_mark: | :heavy_check_mark: |
@@ -103,10 +103,11 @@ A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy glob
 | Kelet-Japán | :heavy_check_mark: | :heavy_check_mark: | 
 | Kelet-Ausztrália | :heavy_check_mark: | :heavy_check_mark: | 
 | Közép-Kanada | :heavy_check_mark: | :heavy_check_mark: | 
+| Közép-Franciaország | :heavy_check_mark: | :heavy_check_mark: | 
 
 Továbbra is bővítjük a rugalmas kiszolgáló további régióit.
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újraszámítási költségeket igényel a PostgreSQL-motoron kifejlesztett meglévő alkalmazások rugalmas kiszolgálóra történő áttelepítéséhez. 
 

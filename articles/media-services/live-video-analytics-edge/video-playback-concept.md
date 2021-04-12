@@ -3,12 +3,12 @@ title: Videolejátszás – Azure
 description: Helyőrző
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063372"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278592"
 ---
 # <a name="video-playback"></a>Videó lejátszása 
 
@@ -24,7 +24,7 @@ A [Media graphs](media-graph-concept.md) használatával videót rögzíthet egy
 
 ## <a name="streaming-endpoint"></a>Streamvégpont 
 
-Az adategységeket az iparági szabványoknak megfelelő, HTTP-alapú médiaadatfolyam-továbbítási protokollok, például a HTTP Live Streaming (HLS) és az MPEG-DASH használatával [továbbíthatja](terminology.md#streaming) a Azure Media Services. Az adathordozónak a rögzített tartalomból a streaming formátumokba való átalakítását egy [streaming-végpont](../latest/streaming-endpoint-concept.md)kezeli, amely egy olyan erőforrás, amelyet az Azure Media Service-fiókban kell kiépíteni.
+Az adategységeket az iparági szabványoknak megfelelő, HTTP-alapú médiaadatfolyam-továbbítási protokollok, például a HTTP Live Streaming (HLS) és az MPEG-DASH használatával [továbbíthatja](terminology.md#streaming) a Azure Media Services. Az adathordozónak a rögzített tartalomból a streaming formátumokba való átalakítását egy [streaming-végpont](../latest/stream-streaming-endpoint-concept.md)kezeli, amely egy olyan erőforrás, amelyet az Azure Media Service-fiókban kell kiépíteni.
 
 ## <a name="streaming-policy"></a>Folyamatos átviteli szabályzat 
 
@@ -34,11 +34,11 @@ A Azure Media Services különböző módszerekkel biztosíthatja a videó strea
 * **Használjon Advanced Encryption Standard (AES-128)** – és implementálja a kulcsokat a videó visszafejtéséhez csak a hitelesített megjelenítők számára.
 * A **digitális Rights Management (DRM) rendszerek használatával** szabályozhatja a videók használatát, módosítását és továbbítását az ezeket a házirendeket érvényesítő eszközökön.
 
-A tartalomvédelem eléréséhez megadhatja és létrehozhatja a [streaming-szabályzatot](../latest/streaming-policy-concept.md) a Media Service-fiókban, és használhatja az összes eszköz folyamatos átviteléhez (feltéve, hogy minden adatfolyam ugyanazokkal a biztonsági követelményekkel rendelkezik). Használhatja az előre definiált házirendeket is (például Predefined_ClearStreamingOnly).
+A tartalomvédelem eléréséhez megadhatja és létrehozhatja a [streaming-szabályzatot](../latest/stream-streaming-policy-concept.md) a Media Service-fiókban, és használhatja az összes eszköz folyamatos átviteléhez (feltéve, hogy minden adatfolyam ugyanazokkal a biztonsági követelményekkel rendelkezik). Használhatja az előre definiált házirendeket is (például Predefined_ClearStreamingOnly).
 
 ## <a name="streaming-locator"></a>Folyamatos átviteli lokátor  
 
-Miután elindította a streaming-végpontot a Media Service-fiókban, és meghatározta a folyamatos átviteli szabályzatot, folytathatja a rögzített adathordozók adatfolyamként való továbbítását egy HLS vagy DASH protokollon keresztül. A web-Players és a Mobile apps alkalmazásnak szüksége van egy URL-címre, amely a HLS vagy a DASH streamre mutat. Ezt az URL-címet a [streaming Locator](../latest/streaming-locators-concept.md)használatával hozhatja létre. Ahogy az a cikkben is látható, és a streaming- [lokátor létrehozása és az URL-címek összeállítása](../latest/create-streaming-locator-build-url.md) minta jelenik meg, a folyamatos átviteli URL-cím a folyamatos átviteli végpontból, a folyamatos átviteli házirendből és a folyamatos átviteli lokátorból tevődik össze.
+Miután elindította a streaming-végpontot a Media Service-fiókban, és meghatározta a folyamatos átviteli szabályzatot, folytathatja a rögzített adathordozók adatfolyamként való továbbítását egy HLS vagy DASH protokollon keresztül. A web-Players és a Mobile apps alkalmazásnak szüksége van egy URL-címre, amely a HLS vagy a DASH streamre mutat. Ezt az URL-címet a [streaming Locator](../latest/stream-streaming-locators-concept.md)használatával hozhatja létre. Ahogy az a cikkben is látható, és a streaming- [lokátor létrehozása és az URL-címek összeállítása](../latest/create-streaming-locator-build-url.md) minta jelenik meg, a folyamatos átviteli URL-cím a folyamatos átviteli végpontból, a folyamatos átviteli házirendből és a folyamatos átviteli lokátorból tevődik össze.
 
 ## <a name="content-recorded-using-file-sink"></a>A fájl elfogadóval rögzített tartalma  
 

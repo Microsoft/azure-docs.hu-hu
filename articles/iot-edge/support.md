@@ -8,16 +8,16 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bd6a8af4850f3a0519bac7644100c2dcf883635
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772416"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031168"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
-[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Ez a cikk részletesen ismerteti, hogy mely rendszerek és összetevők támogatottak a IoT Edge, akár hivatalosan, akár előzetes verzióban.
 
@@ -52,18 +52,39 @@ Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren 
   * A Microsoft informális tesztelést végzett a platformokon, vagy olyan partnert ismer, amely sikeresen futtatott Azure IoT Edge a platformon
   * A más platformokhoz tartozó telepítési csomagok működhetnek ezeken a platformokon
 
-A gazda operációs rendszer családjának mindig egyeznie kell a modul tárolójában használt vendég operációs rendszer családjának. Ez azt jelenti, hogy a Linux-tárolókat csak Linux-és Windows-tárolókban használhatja Windows rendszeren. A Windows használata esetén csak az elkülönített tárolók feldolgozása támogatott, a Hyper-V elkülönített tárolók nem.  
+A gazda operációs rendszer családjának mindig egyeznie kell a modul tárolójában használt vendég operációs rendszer családjának.
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Ez azt jelenti, hogy a Linux-tárolókat csak Linux-és Windows-tárolókban használhatja Windows rendszeren. Windows-tárolók használata esetén csak az elkülönített tárolók feldolgozása támogatott, nem pedig a Hyper-V elkülönített tárolók.  
 
 A Windows rendszerhez készült Linux-IoT Edge a Windows-gazdagépen futó Linux virtuális gépen IoT Edget használ. Így Linux-modulokat futtathat Windows-eszközökön.
+:::moniker-end
+<!-- end 1.1 -->
 
 ### <a name="tier-1"></a>Első réteg
 
 A Microsoft a következő táblázatokban felsorolt rendszereket támogatja: általánosan elérhető vagy nyilvános előzetes verzióban, és minden új kiadással tesztelve van.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Edge támogatja a Linux vagy Windows rendszerű tárolóként létrehozott modulokat. A Linux-tárolók telepíthetők Linux rendszerű eszközökre, vagy Windows rendszerű eszközökre üzembe helyezhetők a Windows IoT Edge for Linux használatával. A Windows-tárolók csak Windows-eszközökre telepíthetők.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Edge a 1,2-es verzió csak a Linux-tárolóként létrehozott modulokat támogatja.
+
+Jelenleg nem támogatott a IoT Edge 1,2-es verziójának futtatása Windows-eszközökön. A Windows rendszerhez készült [Linux-IoT Edge](iot-edge-for-linux-on-windows.md) az ajánlott módszer a IoT Edge futtatására Windows-eszközökön, de jelenleg csak IoT Edge 1,1 fut. További információkért tekintse meg a jelen cikk [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) -es verzióját.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 #### <a name="linux-containers"></a>Linux-tárolók
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 A Linux-tárolóként létrehozott modulok Linux vagy Windows rendszerű eszközökön is üzembe helyezhetők. Linux rendszerű eszközök esetén a IoT Edge futtatókörnyezet közvetlenül települ a gazdagép eszközén. Windows-eszközökön a IoT Edge futtatókörnyezettel előre összeépített linuxos virtuális gép fut a gazdagépen.
 
 A Windows rendszerhez készült [Linux-IoT Edge](iot-edge-for-linux-on-windows.md) jelenleg nyilvános előzetes verzióban érhető el, de a IoT Edge Windows-eszközökön való futtatásának ajánlott módja.
@@ -78,12 +99,27 @@ A Windows rendszerhez készült [Linux-IoT Edge](iot-edge-for-linux-on-windows.m
 | Windows Server 2019 | Nyilvános előzetes verzió |  |  |
 
 Az összes Windows operációs rendszernek 1809 (Build 17763) vagy újabb verziójúnak kell lennie.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+| Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Málna PI-OS stretch |  | ![Málna PI OS stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió |
+
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Az Ubuntu Server 16,04 támogatása a 1,1-es IoT Edge-verzióval végződött.
 
 #### <a name="windows-containers"></a>Windows-tárolók
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 >[!IMPORTANT]
 >IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatni fogja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem lesznek támogatottak. A Windows rendszerű eszközökön [IoT Edge Linux rendszeren](iot-edge-for-linux-on-windows.md) való használatának vagy áthelyezésének megfontolnia, hogy Windows-eszközökön fusson IoT Edge.
 
@@ -99,6 +135,17 @@ Az összes Windows operációs rendszernek 1809 (Build 17763) verziójúnak kell
 
 >[!NOTE]
 >A Windows 10 IoT alapszintű támogatása IoT Edge 1,1-es verziójának kiadásával végződött.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem támogatottak.
+
+A Windows-tárolók által támogatott operációs rendszerekkel kapcsolatos információkért tekintse meg a jelen cikk [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) -es verzióját.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="tier-2"></a>Második réteg
 
@@ -158,10 +205,28 @@ IoT Edge a Microsoft. Azure. Devices. Client SDK-t használja. További informá
 A Azure IoT Edge virtuális gépeken is futtathatók. A virtuális gépek IoT Edge eszközként való használata gyakori, ha az ügyfelek a meglévő infrastruktúrát szeretnék kibővíteni a peremhálózati intelligenciával. A gazda VM operációs rendszer családjának meg kell egyeznie a modul tárolójában használt vendég operációs rendszer családjának. Ez a követelmény ugyanaz, mint amikor a Azure IoT Edge közvetlenül egy eszközön fut. Azure IoT Edge a mögöttes virtualizációs technológia, és olyan platformokon működik, mint például a Hyper-V és a vSphere.
 
 <br>
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+<center>
+
+![Azure IoT Edge egy virtuális gépen](./media/support/edge-on-vm-with-windows.png)
+
+</center>
+
+::: moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 <center>
 
 ![Azure IoT Edge egy virtuális gépen](./media/support/edge-on-vm.png)
+
 </center>
+
+:::moniker-end
 
 ## <a name="minimum-system-requirements"></a>Minimális rendszerkövetelmények
 

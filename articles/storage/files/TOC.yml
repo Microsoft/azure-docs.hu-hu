@@ -227,6 +227,10 @@
       items:
         - name: Migrálás Azure-fájlmegosztásokba
           href: storage-files-migration-overview.md
+        - name: Csak felhőalapú központi telepítés megcélzása
+          items:
+            - name: Migrálás helyszíni NAS-ból Azure-fájlmegosztásba a DataBox használatával
+              href: storage-files-migration-nas-cloud-databox.md
         - name: Hibrid telepítés megcélzása
           items:
             - name: Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
@@ -237,8 +241,6 @@
               href: storage-files-migration-nas-hybrid.md
             - name: Áttelepítés helyszíni NAS-ról egy hibrid fájlkiszolgálóra a DataBox-mel
               href: storage-files-migration-nas-hybrid-databox.md
-            - name: Migrálás helyszíni NAS-ból Azure-fájlmegosztásba a DataBox használatával
-              href: storage-files-migration-nas-cloud-databox.md
         - name: A StorSimple-ből
           items:
             - name: StorSimple 8100 és 8600 migrálási útmutató

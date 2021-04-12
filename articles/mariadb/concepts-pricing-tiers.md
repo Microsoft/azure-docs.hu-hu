@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92803c1e3062fb9f093012db3e3637746dedf87f
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664248"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107040"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Árképzési szintek Azure Database for MariaDB
 
@@ -46,9 +46,13 @@ Az Ön által kiépített tárterület a Azure Database for MariaDB-kiszolgáló
 | Tárolási attribútumok   | Alapszintű | Általános célú | Memóriaoptimalizált |
 |:---|:----------|:--------------------|:---------------------|
 | Tárolási típus | Alapszintű tárterület | általános célú Storage | általános célú Storage |
-| Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
+| Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
 | Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
 | IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS |
+
+>[!IMPORTANT]
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, Dél-Brazília, USA nyugati régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Dél-Kelet-Ausztrália Korea, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea , Kelet-Kanada, Közép-Kanada.
+> Minden más régió akár 4TB, akár 6000 IOPS is támogat.
 
 A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzáadhat, és lehetővé teheti, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
 
@@ -58,23 +62,6 @@ A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzá
 Az alapszintű csomag nem biztosít IOPS garanciát. A általános célú és a memória optimalizált díjszabási szintjein a IOPS a kiépített tároló méretével, 3:1 arányban méretezhető.
 
 Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával figyelheti. A figyelni kívánt mérőszámok a [tárolási korlát, a tárolási százalék, a felhasznált tárterület és az IO százalék](concepts-monitoring.md).
-
-### <a name="large-storage-preview"></a>Nagyméretű tároló (előzetes verzió)
-
-A tárolási korlátokat a általános célú és a memória optimalizált szintjein növeljük. Az előzetes verzióra engedélyező újonnan létrehozott kiszolgálók legfeljebb 16 TB tárhellyel rendelkezhetnek. A IOPS-skála 3:1-ig terjedő arányban 20 000 IOPS. A jelenlegi általánosan elérhető tárolóhoz hasonlóan további tárolókapacitást is hozzáadhat a kiszolgáló létrehozása után, és lehetővé teszi, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
-
-| Tárolási attribútumok | Általános célú | Memóriaoptimalizált |
-|:-------------|:--------------------|:---------------------|
-| Tárolási típus | Azure-Premium Storage | Azure-Premium Storage |
-| Tárterület mérete | 32 GB – 16 TB| 32 – 16 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
-
-> [!IMPORTANT]
-> A nagyméretű tárterület jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: USA keleti régiója, USA 2. keleti régiója, Dél-Brazília, Közép-USA, USA nyugati régiója, az USA északi középső régiója, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-közép-Korea, Dél-Korea, Kelet-Kanada, Dél-Ausztrália Kelet-Ausztrália és Közép-Kanada.
->
-> Minden más régió akár 4TB, akár 6000 IOPS is támogat.
->
 
 ### <a name="reaching-the-storage-limit"></a>Tárhelykorlát elérése
 

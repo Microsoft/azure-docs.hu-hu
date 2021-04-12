@@ -91,6 +91,8 @@
           href: azure-netapp-files-configure-nfsv41-domain.md
         - name: Az NFSv 4.1 Kerberos-titkosításának konfigurálása
           href: configure-kerberos-encryption.md
+        - name: Az LDAP HOZZÁADÁSának beállítása kiterjesztett csoportokkal az NFS-hez
+          href: configure-ldap-extended-groups.md
         - name: NFS-ügyfél konfigurálása az Azure NetApp Fileshoz
           href: configure-nfs-clients.md
         - name: Exportálási szabályzat konfigurálása NFS-kötethez
@@ -137,6 +139,8 @@
           href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Pillanatkép-szabályzatokkal kapcsolatos problémák elhárítása
           href: troubleshoot-snapshot-policies.md
+        - name: LDAP-kötetek hibáinak megoldása
+          href: troubleshoot-ldap-volumes.md
         - name: Erőforrás-szolgáltatókkal kapcsolatos hibák elhárítása
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Referencia

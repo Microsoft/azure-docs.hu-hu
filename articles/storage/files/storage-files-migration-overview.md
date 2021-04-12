@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c2de0c1b024d093bd0276a852d9b97ba3320f4b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554870"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286334"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -83,7 +83,7 @@ A hivatkozás nélküli forgatókönyv még nem rendelkezik közzétett áttelep
 | | Eszköz kombinációja:| Eszköz kombinációja: |
 | Windows Server 2012 R2 és újabb verziók | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync és az Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li><li>Azure File Sync keresztül</li></ul> |
 | Windows Server 2012 és korábbi verziók | <ul><li>A DataBox és a Azure File Sync a legutóbbi kiszolgálói operációs rendszerre</li><li>Tárterület-áttelepítési szolgáltatás és a legutóbbi kiszolgáló között Azure File Sync, majd feltöltés</li></ul> | <ul><li>A Storage áttelepítési szolgáltatás és a legutóbbi kiszolgáló között Azure File Sync</li><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li></ul> |
-| Hálózatra csatlakoztatott tároló (NAS) | <ul><li>[Azure File Sync feltöltéssel](storage-files-migration-nas-hybrid.md)</li><li>[DataBox + Azure File Sync](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li></ul> |
+| Hálózatra csatlakoztatott tároló (NAS) | <ul><li>[Azure File Sync feltöltéssel](storage-files-migration-nas-hybrid.md)</li><li>[DataBox + Azure File Sync](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox-n keresztül](storage-files-migration-nas-cloud-databox.md)</li><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li></ul> |
 | Linux/Samba | <ul><li>[Azure File Sync és RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li></ul> |
 | Microsoft Azure StorSimple Cloud Appliance 8100 vagy StorSimple Cloud Appliance 8600 | <ul><li>[Dedikált adatáttelepítési felhőalapú szolgáltatás](storage-files-migration-storsimple-8000.md)</li></ul> | |
 | StorSimple Cloud Appliance 1200 | <ul><li>[Azure File Sync keresztül](storage-files-migration-storsimple-1200.md)</li></ul> | |

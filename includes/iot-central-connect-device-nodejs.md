@@ -3,17 +3,17 @@ author: dominicbetts
 ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
-ms.date: 11/24/2020
-ms.openlocfilehash: 6a6baa14d7521f4a85350af7b08b5fcbe82ddf6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: 6c97ee01dd1ad5b669142d74a02bada010525e81
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97033836"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491120"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
+Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz szüksége:
 
 * Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../articles/iot-central/core/quick-deploy-iot-central.md). Az alkalmazást a 2020. július 14-én vagy azt követően kell létrehozni.
 * A [Node.js](https://nodejs.org/) 6-os vagy újabb verzióját futtató fejlesztési gép. A `node --version` parancssorban futtatva ellenőrizhető a verzió. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **Node** parancsot. Számos más operációs rendszeren azonban Node.js is használhatja.
@@ -21,59 +21,93 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-A korábban letöltött Node.js Microsoft Azure IoT SDK másolatában nyissa meg az *Azure-IoT-SDK-Node/Device/Samples/PnP/simple_thermostat.js* fájlt egy szövegszerkesztőben.
+A korábban letöltött Node.js Microsoft Azure IoT SDK másolatában nyissa meg az *Azure-IoT-SDK-Node/Device/Samples/PnP/pnpTemperatureController.js* fájlt egy szövegszerkesztőben.
 
 Amikor futtatja a mintát IoT Centralhoz való csatlakozáshoz, az eszköz kiépítési szolgáltatását (DPS) használja az eszköz regisztrálásához és egy kapcsolati karakterlánc létrehozásához. A minta lekérdezi a DPS által igényelt, a parancssori környezettől kapott kapcsolatok információit.
 
 A `main` metódus:
 
-* Létrehoz egy `client` objektumot, és beállítja a `dtmi:com:example:Thermostat;1` modell azonosítóját a kapcsolatok megnyitása előtt. IoT Central a modell AZONOSÍTÓját használja az eszközhöz tartozó sablon azonosításához vagy létrehozásához. További információ: [eszköz hozzárendelése egy eszköz sablonnal](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
-* Létrehoz egy parancsfájl-kezelőt.
-* Elindít egy hurkot, amely 10 másodpercenként elküldi a hőmérséklet-telemetria.
-* A `maxTempSinceLastReboot` tulajdonságot a IoT Central küldi. IoT Central figyelmen kívül hagyja a `serialNumber` tulajdonságot, mert az nem része az eszköz modelljének.
-* Egy írható tulajdonságok kezelőjét hozza létre.
+* Létrehoz egy `client` objektumot, és beállítja a `dtmi:com:example:TemperatureController;2` modell azonosítóját a kapcsolatok megnyitása előtt. IoT Central a modell AZONOSÍTÓját használja az eszközhöz tartozó sablon azonosításához vagy létrehozásához. További információ: [eszköz hozzárendelése egy eszköz sablonnal](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
+* Parancssori kezelőket hoz létre három parancshoz.
+* Elindítja az egyes termosztát-összetevők hurkoit, hogy 5 másodpercenként elküldjék a hőmérséklet-telemetria.
+* Elindít egy hurkot az alapértelmezett összetevő számára a munkakészletek méretének telemetria való elküldéséhez 6 másodpercenként.
+* Az `maxTempSinceLastReboot` egyes termosztát-összetevők tulajdonságának elküldése.
+* Az eszköz információinak tulajdonságainak küldése.
+* Az írható tulajdonságok kezelőit hozza létre a három összetevőhöz.
 
 ```javascript
 async function main() {
-
   // ...
 
   // fromConnectionString must specify a transport, coming from any transport package.
   const client = Client.fromConnectionString(deviceConnectionString, Protocol);
-
+  console.log('Connecting using connection string: ' + deviceConnectionString);
   let resultTwin;
+
   try {
     // Add the modelId here
     await client.setOptions(modelIdObject);
     await client.open();
+    console.log('Enabling the commands on the client');
+    client.onDeviceMethod(commandNameGetMaxMinReport1, commandHandler);
+    client.onDeviceMethod(commandNameGetMaxMinReport2, commandHandler);
+    client.onDeviceMethod(commandNameReboot, commandHandler);
 
-    client.onDeviceMethod(commandMaxMinReport, commandHandler);
+    // Send Telemetry after some interval
+    let index1 = 0;
+    let index2 = 0;
+    let index3 = 0;
+    intervalToken1 = setInterval(() => {
+      const data = JSON.stringify(thermostat1.updateSensor().getCurrentTemperatureObject());
+      sendTelemetry(client, data, index1, thermostat1ComponentName).catch((err) => console.log('error ', err.toString()));
+      index1 += 1;
+    }, 5000);
 
-    // Send Telemetry every 10 secs
-    let index = 0;
-    intervalToken = setInterval(() => {
-      sendTelemetry(client, index).catch((err) => console.log('error', err.toString()));
-      index += 1;
-    }, telemetrySendInterval);
+    intervalToken2 = setInterval(() => {
+      const data = JSON.stringify(thermostat2.updateSensor().getCurrentTemperatureObject());
+      sendTelemetry(client, data, index2, thermostat2ComponentName).catch((err) => console.log('error ', err.toString()));
+      index2 += 1;
+    }, 5500);
+
+
+    intervalToken3 = setInterval(() => {
+      const data = JSON.stringify({ workingset: 1 + (Math.random() * 90) });
+      sendTelemetry(client, data, index3, null).catch((err) => console.log('error ', err.toString()));
+      index3 += 1;
+    }, 6000);
 
     // attach a standard input exit listener
-    attachExitHandler(client);
+    exitListener(client);
 
-    // Deal with twin
     try {
       resultTwin = await client.getTwin();
-      const patchRoot = createReportPropPatch({ serialNumber: deviceSerialNum });
-      const patchThermostat = createReportPropPatch({
-        maxTempSinceLastReboot: deviceTemperatureSensor.getMaxTemperatureValue()
-      });
+      // Only report readable properties
+      const patchRoot = helperCreateReportedPropertiesPatch({ serialNumber: serialNumber }, null);
+      const patchThermostat1Info = helperCreateReportedPropertiesPatch({
+        maxTempSinceLastReboot: thermostat1.getMaxTemperatureValue(),
+      }, thermostat1ComponentName);
+
+      const patchThermostat2Info = helperCreateReportedPropertiesPatch({
+        maxTempSinceLastReboot: thermostat2.getMaxTemperatureValue(),
+      }, thermostat2ComponentName);
+
+      const patchDeviceInfo = helperCreateReportedPropertiesPatch({
+        manufacturer: 'Contoso Device Corporation',
+        model: 'Contoso 47-turbo',
+        swVersion: '10.89',
+        osName: 'Contoso_OS',
+        processorArchitecture: 'Contoso_x86',
+        processorManufacturer: 'Contoso Industries',
+        totalStorage: 65000,
+        totalMemory: 640,
+      }, deviceInfoComponentName);
 
       // the below things can only happen once the twin is there
-      updateComponentReportedProperties(resultTwin, patchRoot);
-      updateComponentReportedProperties(resultTwin, patchThermostat);
-
-      // Setup the handler for desired properties
-      desiredPropertyPatchHandler(resultTwin);
-
+      updateComponentReportedProperties(resultTwin, patchRoot, null);
+      updateComponentReportedProperties(resultTwin, patchThermostat1Info, thermostat1ComponentName);
+      updateComponentReportedProperties(resultTwin, patchThermostat2Info, thermostat2ComponentName);
+      updateComponentReportedProperties(resultTwin, patchDeviceInfo, deviceInfoComponentName);
+      desiredPropertyPatchListener(resultTwin, [thermostat1ComponentName, thermostat2ComponentName, deviceInfoComponentName]);
     } catch (err) {
       console.error('could not retrieve twin or report twin properties\n' + err.toString());
     }
@@ -97,85 +131,112 @@ async function provisionDevice(payload) {
   try {
     let result = await provisioningClient.register();
     deviceConnectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+    console.log('registration succeeded');
+    console.log('assigned hub=' + result.assignedHub);
+    console.log('deviceId=' + result.deviceId);
+    console.log('payload=' + JSON.stringify(result.payload));
   } catch (err) {
     console.error("error registering device: " + err.toString());
   }
 }
 ```
 
-A `sendTelemetry` függvény azt mutatja, hogy az eszköz hogyan küldi el a hőmérséklet telemetria IoT Central. A `getCurrentTemperatureObject` metódus egy olyan objektumot ad vissza, amely a következőképpen néz ki `{ temperature: 45.6 }` :
+A `sendTelemetry` függvény azt mutatja, hogy az eszköz hogyan küldi el a hőmérséklet telemetria IoT Central. Az összetevőkből származó telemetria egy nevű tulajdonságot adhat hozzá `$.sub` az összetevő nevével:
 
 ```javascript
-async function sendTelemetry(deviceClient, index) {
-  console.log('Sending telemetry message %d...', index);
-  const msg = new Message(
-    JSON.stringify(
-      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
-    )
-  );
+async function sendTelemetry(deviceClient, data, index, componentName) {
+  if (!!(componentName)) {
+    console.log('Sending telemetry message %d from component: %s ', index, componentName);
+  } else {
+    console.log('Sending telemetry message %d from root interface', index);
+  }
+  const msg = new Message(data);
+  if (!!(componentName)) {
+    msg.properties.add(messageSubjectProperty, componentName);
+  }
   msg.contentType = 'application/json';
   msg.contentEncoding = 'utf-8';
   await deviceClient.sendEvent(msg);
 }
 ```
 
-A `main` metódus a következő két módszer használatával küldi `maxTempSinceLastReboot` el a tulajdonságot IoT Central. A metódus a következőhöz `main` `createReportPropPatch` hasonló objektummal hív meg `{maxTempSinceLastReboot: 80.9}` :
+A `main` metódus egy nevű Helper metódust használ a `helperCreateReportedPropertiesPatch` Tulajdonságok frissítési üzeneteinek létrehozásához. Ez a metódus egy opcionális paramétert használ a tulajdonságot küldő összetevő megadásához.:
 
 ```javascript
-const createReportPropPatch = (propertiesToReport) => {
+const helperCreateReportedPropertiesPatch = (propertiesToReport, componentName) => {
   let patch;
-  patch = { };
-  patch = propertiesToReport;
+  if (!!(componentName)) {
+    patch = { };
+    propertiesToReport.__t = 'c';
+    patch[componentName] = propertiesToReport;
+  } else {
+    patch = { };
+    patch = propertiesToReport;
+  }
+  if (!!(componentName)) {
+    console.log('The following properties will be updated for component: ' + componentName);
+  } else {
+    console.log('The following properties will be updated for root interface.');
+  }
+  console.log(patch);
   return patch;
 };
-
-const updateComponentReportedProperties = (deviceTwin, patch) => {
-  deviceTwin.properties.reported.update(patch, function (err) {
-    if (err) throw err;
-    console.log('Properties have been reported for component');
-  });
-};
 ```
 
-A `main` metódus a következő két módszert használja a _cél hőmérséklet_ írható tulajdonságának IoT Centralból való kezelésére. Figyelje meg, hogy a `propertyUpdateHandle` Válasz hogyan épül fel a verzióra és az állapotkódot:
+A `main` metódus a következő módszert használja az írható tulajdonságok frissítésének kezeléséhez IoT Centralból. Figyelje meg, hogy a metódus hogyan hozza létre a választ a verzió és az állapotkód szerint:
 
 ```javascript
-const desiredPropertyPatchHandler = (deviceTwin) => {
+const desiredPropertyPatchListener = (deviceTwin, componentNames) => {
   deviceTwin.on('properties.desired', (delta) => {
-    const versionProperty = delta.$version;
-
-    Object.entries(delta).forEach(([propertyName, propertyValue]) => {
-      if (propertyName !== '$version') {
-        propertyUpdateHandler(deviceTwin, propertyName, null, propertyValue, versionProperty);
+    console.log('Received an update for device with value: ' + JSON.stringify(delta));
+    Object.entries(delta).forEach(([key, values]) => {
+      const version = delta.$version;
+      if (!!(componentNames) && componentNames.includes(key)) { // then it is a component we are expecting
+        const componentName = key;
+        const patchForComponents = { [componentName]: {} };
+        Object.entries(values).forEach(([propertyName, propertyValue]) => {
+          if (propertyName !== '__t' && propertyName !== '$version') {
+            console.log('Will update property: ' + propertyName + ' to value: ' + propertyValue + ' of component: ' + componentName);
+            const propertyContent = { value: propertyValue };
+            propertyContent.ac = 200;
+            propertyContent.ad = 'Successfully executed patch';
+            propertyContent.av = version;
+            patchForComponents[componentName][propertyName] = propertyContent;
+          }
+        });
+        updateComponentReportedProperties(deviceTwin, patchForComponents, componentName);
+      }
+      else if  (key !== '$version') { // individual property for root
+        const patchForRoot = { };
+        console.log('Will update property: ' + key + ' to value: ' + values + ' for root');
+        const propertyContent = { value: values };
+        propertyContent.ac = 200;
+        propertyContent.ad = 'Successfully executed patch';
+        propertyContent.av = version;
+        patchForRoot[key] = propertyContent;
+        updateComponentReportedProperties(deviceTwin, patchForRoot, null);
       }
     });
   });
 };
-
-const propertyUpdateHandler = (deviceTwin, propertyName, reportedValue, desiredValue, version) => {
-  console.log('Received an update for property: ' + propertyName + ' with value: ' + JSON.stringify(desiredValue));
-  const patch = createReportPropPatch(
-    { [propertyName]:
-      {
-        'value': desiredValue,
-        'ac': 200,
-        'ad': 'Successfully executed patch for ' + propertyName,
-        'av': version
-      }
-    });
-  updateComponentReportedProperties(deviceTwin, patch);
-  console.log('updated the property');
-};
 ```
 
-A `main` metódus a következő két módszert használja a parancs hívásának kezelésére `getMaxMinReport` . A `getMaxMinReportObject` METÓDUS JSON-objektumként hozza létre a jelentést:
+A `main` metódus a következő módszerekkel kezeli a IoT Central parancsait:
 
 ```javascript
 const commandHandler = async (request, response) => {
+  helperLogCommandRequest(request);
   switch (request.methodName) {
-  case commandMaxMinReport: {
-    console.log('MaxMinReport ' + request.payload);
-    await sendCommandResponse(request, response, 200, deviceTemperatureSensor.getMaxMinReportObject());
+  case commandNameGetMaxMinReport1: {
+    await sendCommandResponse(request, response, 200, thermostat1.getMaxMinReportObject());
+    break;
+  }
+  case commandNameGetMaxMinReport2: {
+    await sendCommandResponse(request, response, 200, thermostat2.getMaxMinReportObject());
+    break;
+  }
+  case commandNameReboot: {
+    await sendCommandResponse(request, response, 200, 'reboot response');
     break;
   }
   default:
@@ -187,11 +248,9 @@ const commandHandler = async (request, response) => {
 const sendCommandResponse = async (request, response, status, payload) => {
   try {
     await response.send(status, payload);
-    console.log('Response to method \'' + request.methodName +
-              '\' sent successfully.' );
+    console.log('Response to method: ' + request.methodName + ' sent successfully.' );
   } catch (err) {
-    console.error('An error ocurred when sending a method response:\n' +
-              err.toString());
+    console.error('An error ocurred when sending a method response:\n' + err.toString());
   }
 };
 ```
@@ -202,7 +261,7 @@ const sendCommandResponse = async (request, response, status, payload) => {
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A minta alkalmazás futtatásához nyisson meg egy parancssori környezetet, és navigáljon az *Azure-IOT-SDK-Node/Device/Samples/PnP* mappába, amely tartalmazza az *simple_thermostat.js* -mintát.
+A minta alkalmazás futtatásához nyisson meg egy parancssori környezetet, és navigáljon az *Azure-IOT-SDK-Node/Device/Samples/PnP* mappába, amely tartalmazza az *pnpTemperatureController.js* -mintát.
 
 [!INCLUDE [iot-central-connection-environment](iot-central-connection-environment.md)]
 
@@ -215,46 +274,67 @@ npm install
 Minta futtatása:
 
 ```cmd/sh
-node simple_thermostat.js
+node pnpTemperatureController.js
 ```
 
-Az alábbi kimenetben az eszköz regisztrálása és a IoT Centralhoz való csatlakozás látható. A minta ezután elküldi a `maxTempSinceLastReboot` tulajdonságot a telemetria küldésének megkezdése előtt:
+Az alábbi kimenetben az eszköz regisztrálása és a IoT Centralhoz való csatlakozás látható. A minta ezután elküldi a `maxTempSinceLastReboot` tulajdonságot a két termosztát-összetevőtől a telemetria küldésének megkezdése előtt:
 
 ```output
 registration succeeded
-assigned hub=iotc-.......azure-devices.net
+assigned hub=iotc-....azure-devices.net
 deviceId=sample-device-01
 payload=undefined
-Connecting using connection string HostName=iotc-........azure-devices.net;DeviceId=sample-device-01;SharedAccessKey=Ci....=
+Connecting using connection string: HostName=iotc-....azure-devices.net;DeviceId=sample-device-01;SharedAccessKey=qdv...IpAo=
 Enabling the commands on the client
 Please enter q or Q to exit sample.
-The following properties will be updated for root interface:
-{ maxTempSinceLastReboot: 55.20309427428496 }
-Properties have been reported for component
-Sending telemetry message 0...
-Sending telemetry message 1...
-Sending telemetry message 2...
-Sending telemetry message 3...
+The following properties will be updated for root interface.
+{ serialNumber: 'alwinexlepaho8329' }
+The following properties will be updated for component: thermostat1
+{ thermostat1: { maxTempSinceLastReboot: 1.5902294191855972, __t: 'c' } }
+The following properties will be updated for component: thermostat2
+{ thermostat2: { maxTempSinceLastReboot: 16.181771928614545, __t: 'c' } }
+The following properties will be updated for component: deviceInformation
+{ deviceInformation:
+   { manufacturer: 'Contoso Device Corporation',
+     model: 'Contoso 47-turbo',
+     swVersion: '10.89',
+     osName: 'Contoso_OS',
+     processorArchitecture: 'Contoso_x86',
+     processorManufacturer: 'Contoso Industries',
+     totalStorage: 65000,
+     totalMemory: 640,
+     __t: 'c' } }
+executed sample
+Received an update for device with value: {"$version":1}
+Properties have been reported for component: thermostat1
+Properties have been reported for component: thermostat2
+Properties have been reported for component: deviceInformation
+Properties have been reported for root interface.
+Sending telemetry message 0 from component: thermostat1 
+Sending telemetry message 0 from component: thermostat2 
+Sending telemetry message 0 from root interface
 ```
 
 [!INCLUDE [iot-central-monitor-thermostat](iot-central-monitor-thermostat.md)]
 
-Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra:
+Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra. A `getMaxMinReport` parancs az `thermostat2` összetevőben található, a `reboot` parancs az alapértelmezett összetevőben található. A `targetTemperature` "thermostat2" összetevő írható tulajdonsága be lett állítva:
 
 ```output
-MaxMinReport 2020-10-15T12:00:00.000Z
-Response to method 'getMaxMinReport' sent successfully.
+Received command request for command name: thermostat2*getMaxMinReport
+The command request payload is:
+2021-03-26T06:00:00.000Z
+Response to method: thermostat2*getMaxMinReport sent successfully.
 
 ...
 
-Received an update for property: targetTemperature with value: {"value":86.3}
-The following properties will be updated for root interface:
-{
-  targetTemperature: {
-    value: { value: 86.3 },
-    ac: 200,
-    ad: 'Successfully executed patch for targetTemperature',
-    av: 2
-  }
-}
+Received command request for command name: reboot
+The command request payload is:
+10
+Response to method: reboot sent successfully.
+
+...
+
+Received an update for device with value: {"thermostat2":{"targetTemperature":76,"__t":"c"},"$version":2}
+Will update property: targetTemperature to value: 76 of component: thermostat2
+Properties have been reported for component: thermostat2
 ```

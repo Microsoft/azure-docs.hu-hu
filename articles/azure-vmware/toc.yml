@@ -64,8 +64,6 @@
       href: manage-dhcp.md
     - name: NSX hálózati összetevők konfigurálása
       href: configure-nsx-network-components-azure-portal.md
-    - name: Vészhelyreállítás üzembe helyezése virtuális gépekhez
-      href: disaster-recovery-for-virtual-machines.md
     - name: A GitHub Enterprise Server beállítása
       href: github-enterprise-server.md
     - name: Nyilvános IP-cím használata
@@ -76,6 +74,26 @@
       href: windows-server-failover-cluster.md
     - name: VSphere hitelesítő adatainak alaphelyzetbe állítása
       href: reset-vsphere-credentials.md
+    - name: Vészhelyreállítás
+      items:
+        - name: Vészhelyreállítás üzembe helyezése virtuális gépekhez
+          href: disaster-recovery-for-virtual-machines.md
+        - name: Vész-helyreállítás az Azure-ba
+          items:
+            - name: Az Azure előkészítése
+              href: /azure/site-recovery/avs-tutorial-prepare-azure?context=/azure/azure-vmware/context/context
+            - name: Azure VMware-megoldás előkészítése
+              href: /azure/site-recovery/avs-tutorial-prepare-avs?context=/azure/azure-vmware/context/context
+            - name: Replikáció beállítása
+              href: /azure/site-recovery/avs-tutorial-replication?context=/azure/azure-vmware/context/context
+            - name: Vészhelyreállítási próba végrehajtása
+              href: /azure/site-recovery/avs-tutorial-dr-drill-azure?context=/azure/azure-vmware/context/context
+            - name: Feladatátvétel az Azure-ba
+              href: /azure/site-recovery/avs-tutorial-failover?context=/azure/azure-vmware/context/context
+            - name: Virtuális gépek ismételt védelme
+              href: /azure/site-recovery/avs-tutorial-reprotect?context=/azure/azure-vmware/context/context
+            - name: Feladat-visszavétel az Azure-ból
+              href: /azure/site-recovery/avs-tutorial-failback?context=/azure/azure-vmware/context/context
     - name: Azure natív integrációja
       items:
         - name: API Management

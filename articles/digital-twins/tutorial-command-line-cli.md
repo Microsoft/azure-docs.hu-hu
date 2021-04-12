@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496609"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107142"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Oktatóanyag: Azure digitális Twins-gráf létrehozása az Azure CLI használatával
 
@@ -20,7 +20,7 @@ ms.locfileid: "103496609"
 
 Ebben az oktatóanyagban egy gráfot fog létrehozni az Azure Digital Ikrekben modellek, ikrek és kapcsolatok használatával. A jelen oktatóanyag eszköze az Azure [ **CLI**-hez készült Azure Digital Twins-parancs](how-to-use-cli.md). 
 
-A CLI-parancsok használatával alapvető Azure-beli digitális Twins-műveleteket hajthat végre, például modellek feltöltését, ikrek létrehozását és módosítását, valamint kapcsolatok létrehozását. A CLI-parancsok teljes készletének megjelenítéséhez tekintse meg az [ *az DT* Command Set dokumentációját](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest) is.
+A CLI-parancsok használatával alapvető Azure-beli digitális Twins-műveleteket hajthat végre, például modellek feltöltését, ikrek létrehozását és módosítását, valamint kapcsolatok létrehozását. A CLI-parancsok teljes készletének megjelenítéséhez tekintse meg az [ *az DT* Command Set dokumentációját](/cli/azure/dt) is.
 
 Ebben az oktatóanyagban a következő lesz:...
 > [!div class="checklist"]
@@ -91,7 +91,7 @@ A modellek tervezése után fel kell töltenie őket az Azure Digital Twins-pél
     
     Navigáljon a számítógépen található fájl *Room.js* , és válassza a "Megnyitás" lehetőséget. Ezt követően ismételje meg ezt a lépést a *Floor.js*.
 
-1. Ezután használja az az [**DT Model Create**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create) parancsot az alább látható módon, hogy feltöltse a frissített *Room* modellt az Azure Digital Twins-példányba. A második parancs feltölt egy másik modellt, a *padlót*, amelyet a következő szakaszban is használhat a különböző típusú ikrek létrehozásához.
+1. Ezután használja az az [**DT Model Create**](/cli/azure/dt/model#az_dt_model_create) parancsot az alább látható módon, hogy feltöltse a frissített *Room* modellt az Azure Digital Twins-példányba. A második parancs feltölt egy másik modellt, a *padlót*, amelyet a következő szakaszban is használhat a különböző típusú ikrek létrehozásához.
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ A modellek tervezése után fel kell töltenie őket az Azure Digital Twins-pél
     Az egyes parancsok kimenete a sikeresen feltöltött modellel kapcsolatos információkat jeleníti meg.
 
     >[!TIP]
-    >A könyvtárban lévő összes modellt feltöltheti egy adott időpontban a `--from-directory` Model Create parancs beállításával is. További információ: [opcionális paraméterek az *az DT Model Create*](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create-optional-parameters).
+    >A könyvtárban lévő összes modellt feltöltheti egy adott időpontban a `--from-directory` Model Create parancs beállításával is. További információ: [opcionális paraméterek az *az DT Model Create*](/cli/azure/dt/model#az_dt_model_create-optional-parameters).
 
-1. Ellenőrizze, hogy a modellek létre lettek-e hozva az az [**DT Model List**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_list) paranccsal az alábbi ábrán látható módon. Ezzel kinyomtatja az Azure Digital Twins-példányba feltöltött összes modell teljes körű információit. 
+1. Ellenőrizze, hogy a modellek létre lettek-e hozva az az [**DT Model List**](/cli/azure/dt/model#az_dt_model_list) paranccsal az alábbi ábrán látható módon. Ezzel kinyomtatja az Azure Digital Twins-példányba feltöltött összes modell teljes körű információit. 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -129,7 +129,7 @@ Mivel a modellek nem írhatók felül, ezzel hibakódot ad vissza `ModelIdAlread
 
 Most, hogy egyes modellek fel lettek töltve az Azure Digital Twins-példányba, létrehozhat [**digitális ikreket**](concepts-twins-graph.md) a modell definíciói alapján. A digitális ikrek az Ön üzleti környezetében lévő entitásokat képviselik – például az érzékelők egy farmon, egy épületben lévő helyiségek vagy egy autóban található fények. 
 
-Digitális Twin létrehozásához használja az az [**DT Twin Create**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_create) parancsot. Arra a modellre kell hivatkoznia, amelyre a Twin alapul, és opcionálisan meghatározhatja a modell bármely tulajdonságának kezdeti értékeit is. Ebben a fázisban nem kell semmilyen kapcsolati információt átadnia.
+Digitális Twin létrehozásához használja az az [**DT Twin Create**](/cli/azure/dt/twin#az_dt_twin_create) parancsot. Arra a modellre kell hivatkoznia, amelyre a Twin alapul, és opcionálisan meghatározhatja a modell bármely tulajdonságának kezdeti értékeit is. Ebben a fázisban nem kell semmilyen kapcsolati információt átadnia.
 
 1. Futtassa ezt a kódot a Cloud Shellban, hogy több ikreket hozzon létre, a korábban frissített *szobatípus* és egy másik modell, a *padló* alapján. Ne felejtse el, hogy a *helyiség* három tulajdonsággal rendelkezik, így a kezdeti értékekkel megadhat argumentumokat. (A tulajdonságértékek inicializálása általánosságban nem kötelező, de ehhez az oktatóanyaghoz szükség van.)
 
@@ -151,7 +151,7 @@ Digitális Twin létrehozásához használja az az [**DT Twin Create**](/cli/azu
     
     Az egyes parancsok kimenete megjeleníti a sikeresen létrehozott Twin-ket (beleértve a velük inicializált szobai ikrek tulajdonságait is).
 
-1. Az alábbi ábrán látható módon ellenőrizheti, hogy az ikrek létre lettek-e hozva az az [**DT Twin Query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) paranccsal. A lekérdezés megkeresi az összes digitális ikreket az Azure Digital Twins-példányban.
+1. Az alábbi ábrán látható módon ellenőrizheti, hogy az ikrek létre lettek-e hozva az az [**DT Twin Query**](/cli/azure/dt/twin#az_dt_twin_query) paranccsal. A lekérdezés megkeresi az összes digitális ikreket az Azure Digital Twins-példányban.
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ Digitális Twin létrehozásához használja az az [**DT Twin Create**](/cli/azu
 
 Módosíthatja a létrehozott Twin-példányok tulajdonságait is. 
 
-1. Futtassa ezt [**az DT Twin Update**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_update) paranccsal, hogy megváltoztassa a *Room0* RoomName a *room0* és a *PresidentialSuite* között:
+1. Futtassa ezt [**az DT Twin Update**](/cli/azure/dt/twin#az_dt_twin_update) paranccsal, hogy megváltoztassa a *Room0* RoomName a *room0* és a *PresidentialSuite* között:
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ Módosíthatja a létrehozott Twin-példányok tulajdonságait is.
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Képernyőkép Cloud Shell a frissítési parancs eredményéről, amely tartalmazza a PresidentialSuite RoomName." lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. A frissítés sikeres ellenőrzéséhez futtassa az az [**DT Twin show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) parancsot a *room0* információinak megtekintéséhez:
+1. A frissítés sikeres ellenőrzéséhez futtassa az az [**DT Twin show**](/cli/azure/dt/twin#az_dt_twin_show) parancsot a *room0* információinak megtekintéséhez:
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -197,7 +197,7 @@ Ezután létrehozhat néhány **kapcsolatot** ezen ikrek között, hogy összeka
 
 Az egyik és a másik között létrehozható kapcsolatok típusai a korábban feltöltött [modellekben](#model-a-physical-environment-with-dtdl) vannak meghatározva. A [ *Floor* modell definíciója](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) azt adja meg, hogy a padlók egy nevű kapcsolati típussal rendelkezhetnek. Ez lehetővé teszi, hogy az egyes *emeleti* kapcsolatokból hozzon létre egy beépített típusú kapcsolatot a *benne található megfelelő* helyiségbe.
 
-Kapcsolat hozzáadásához használja az az [**DT Twin kapcsolat létrehozása**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_create) parancsot. Adja meg a kapcsolat létrejöttét, a kapcsolat típusát, valamint azt, hogy a kapcsolat milyen dupla kapcsolaton keresztül kapcsolódik. Végül adja meg a kapcsolatot egy egyedi AZONOSÍTÓval. Ha egy kapcsolat úgy van meghatározva, hogy tulajdonságok legyenek, a kapcsolat tulajdonságait is inicializálhatja ebben a parancsban.
+Kapcsolat hozzáadásához használja az az [**DT Twin kapcsolat létrehozása**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) parancsot. Adja meg a kapcsolat létrejöttét, a kapcsolat típusát, valamint azt, hogy a kapcsolat milyen dupla kapcsolaton keresztül kapcsolódik. Végül adja meg a kapcsolatot egy egyedi AZONOSÍTÓval. Ha egy kapcsolat úgy van meghatározva, hogy tulajdonságok legyenek, a kapcsolat tulajdonságait is inicializálhatja ebben a parancsban.
 
 1. A következő kód futtatásával vegyen fel egy, a korábban létrehozott *emeleti* ikrekből származó *tartalmaz* egy, a megfelelő *Twin.* A kapcsolatok neve *relationship0* és *relationship1*.
 
@@ -240,7 +240,7 @@ Az ebben az oktatóanyagban beállított ikrek és kapcsolatok a következő kon
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>A Twin gráf lekérdezése a környezeti kérdések megválaszolásához
 
-Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lekérdezheti](concepts-query-language.md) a Twin Graphot a környezettel kapcsolatos kérdések megválaszolásához. Az Azure CLI-ben ez az az [**DT Twin Query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) paranccsal hajtható végre.
+Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lekérdezheti](concepts-query-language.md) a Twin Graphot a környezettel kapcsolatos kérdések megválaszolásához. Az Azure CLI-ben ez az az [**DT Twin Query**](/cli/azure/dt/twin#az_dt_twin_query) paranccsal hajtható végre.
 
 Futtassa az alábbi lekérdezéseket a Cloud Shellban, hogy válaszoljon a minta környezettel kapcsolatos kérdésekre.
 
@@ -308,7 +308,7 @@ Az oktatóanyag elvégzése után kiválaszthatja, hogy mely erőforrásokat sze
 
 * **Ha azt tervezi, hogy folytatja a következő oktatóanyagot**, megtarthatja az itt beállított erőforrásokat, és újból felhasználhatja az Azure digitális Twins-példányát anélkül, hogy törölné a két elem között.
 
-* **Ha továbbra is az Azure Digital Twins-példányt szeretné használni, de törli az összes modelljét, ikreket és kapcsolatát**, az az [**DT Twin kapcsolat törlése**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_delete), az [**DT Twin delete**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_delete)és [**az DT Model delete**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_delete) parancsok használatával törölheti a példányban lévő kapcsolatokat, ikreket és modelleket.
+* **Ha továbbra is az Azure Digital Twins-példányt szeretné használni, de törli az összes modelljét, ikreket és kapcsolatát**, az az [**DT Twin kapcsolat törlése**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete), az [**DT Twin delete**](/cli/azure/dt/twin#az_dt_twin_delete)és [**az DT Model delete**](/cli/azure/dt/model#az_dt_model_delete) parancsok használatával törölheti a példányban lévő kapcsolatokat, ikreket és modelleket.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 

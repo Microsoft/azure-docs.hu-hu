@@ -3,18 +3,18 @@ title: A nagyvállalati szerződéses Azure Portal adminisztrációja
 description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori feladatait ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8f643336d50f5ade145454d408599215ed6fd31e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050566"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259438"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -36,7 +36,9 @@ Csak meglévő Azure vállalati rendszergazdák hozhatnak létre más vállalati
 
 ### <a name="create-another-enterprise-administrator"></a>Másik vállalati rendszergazda létrehozása
 
-Másik vállalati rendszergazda hozzáadása:
+Használja az alábbi lehetőségek egyikét a helyzet alapján.
+
+#### <a name="if-youre-already-an-enterprise-administrator"></a>Ha már vállalati rendszergazda
 
 1. Jelentkezzen be az [Azure Enterprise portálra](https://ea.azure.com).
 1. Lépjen a **Kezelés** > **Regisztráció részletei** menüpontra.
@@ -44,7 +46,11 @@ Másik vállalati rendszergazda hozzáadása:
 
 Győződjön meg arról, hogy tudja a felhasználó e-mail-címét és előnyben részesített hitelesítési módszerét (például munkahelyi, iskolai vagy Microsoft-fiók használatával végzett hitelesítés).
 
-Ha nem Ön a vállalati rendszergazda, forduljon egy vállalati rendszergazdához, és kérje meg, hogy adja hozzá Önt egy regisztrációhoz. Miután hozzá lett adva egy regisztrációhoz, egy aktiválási e-mailt fog kapni.
+#### <a name="if-youre-not-an-enterprise-administrator"></a>Ha nem vállalati rendszergazda
+
+Ha nem vállalati rendszergazda, forduljon a vállalati rendszergazdához, és kérje meg, hogy adjanak hozzá a regisztrációhoz. A vállalati rendszergazda az előző lépésekkel adja hozzá Önt vállalati rendszergazdaként. Miután hozzá lett adva egy regisztrációhoz, egy aktiválási e-mailt fog kapni.
+
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>Ha a vállalati rendszergazda nem tud segíteni
 
 Ha a vállalati rendszergazda nem tud segíteni Önnek, hozzon létre egy [támogatási kérést az Azure Enterprise portálon](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Adja meg az alábbi információkat:
 

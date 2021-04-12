@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: eb1b39f268934a71acb05d99bbeecb1b27b27a77
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 2fe8f5d0acb2ab7e2f1c64dde1bedb19b96111e9
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111893"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492290"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Szabványos kódoló-formátumok és-kodekek
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket a [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)használhat. Az egyéni előállítók **StandardEncoderPreset** használatával történő létrehozásával kapcsolatos információkért lásd az [átalakítás egyéni beállításkészlettel történő létrehozását](encode-custom-presets-how-to.md)ismertető témakört.
+Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket a [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)használhat. Az egyéni előállítók **StandardEncoderPreset** használatával történő létrehozásával kapcsolatos információkért lásd az [átalakítás egyéni beállításkészlettel történő létrehozását](transform-custom-presets-how-to.md)ismertető témakört.
 
 ## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátumok
 
@@ -103,4 +103,4 @@ A következő táblázat az exportáláshoz támogatott kodekeket és fájlform�
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Átalakítás létrehozása egyéni beállításkészlettel](encode-custom-presets-how-to.md)
+[Átalakítás létrehozása egyéni beállításkészlettel](transform-custom-presets-how-to.md)

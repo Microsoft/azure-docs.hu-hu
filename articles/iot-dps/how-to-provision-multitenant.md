@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727430"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228316"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Több-bérlős modell kiépítése 
 
@@ -26,11 +26,12 @@ Ez a két forgatókönyv összevonása gyakori. Egy több-bérlős IoT megoldás
 
 Ez a cikk egy szimulált eszköz mintát használ az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -ból, amely bemutatja, hogyan lehet eszközöket kiépíteni egy több-bérlős forgatókönyvben a régiók között. A cikkben a következő lépéseket kell végrehajtania:
 
-* Az Azure CLI használatával két regionális IoT hub hozható létre (az USA **nyugati** régiója és az **USA keleti** régiója)
-* Több-bérlős regisztráció létrehozása
-* Az Azure CLI-vel két regionális linuxos virtuális gépet hozhat létre, amelyek ugyanabban a régióban (az **USA nyugati** régiójában és az **USA keleti** régiójában) lévő eszközökként működnek.
-* Az Azure IoT C SDK Fejlesztői környezetének beállítása Linux rendszerű virtuális gépeken
-* Szimulálja az eszközöket, hogy azok kiépítve legyenek ugyanahhoz a bérlőhöz a legközelebbi régióban.
+> [!div class="checklist"]
+> * Az Azure CLI használatával két regionális IoT hub hozható létre (az USA **nyugati** régiója és az **USA keleti** régiója)
+> * Több-bérlős regisztráció létrehozása
+> * Az Azure CLI-vel két regionális linuxos virtuális gépet hozhat létre, amelyek ugyanabban a régióban (az **USA nyugati** régiójában és az **USA keleti** régiójában) lévő eszközökként működnek.
+> * Az Azure IoT C SDK Fejlesztői környezetének beállítása Linux rendszerű virtuális gépeken
+> * Szimulálja az eszközöket, hogy azok kiépítve legyenek ugyanahhoz a bérlőhöz a legközelebbi régióban.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -417,8 +418,11 @@ Az erőforráscsoport törlése név szerint:
 
 ## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> Az újratelepítéssel kapcsolatos további tudnivalókért tekintse meg az [eszközök újraépítése IoT hub](concepts-device-reprovision.md)
+* További információ az újratelepítésről:
 
 > [!div class="nextstepaction"]
-> További információ a megszüntetésről: [a korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md) .
+> [A IoT Hub eszköz újraépítésével kapcsolatos fogalmak](concepts-device-reprovision.md)
+
+* További információ a megszüntetésről:
+> [!div class="nextstepaction"]
+> [Korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md)

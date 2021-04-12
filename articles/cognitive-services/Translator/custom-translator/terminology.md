@@ -1,24 +1,24 @@
 ---
-title: Terminológia – egyéni fordító
+title: Key terms – egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: Az egyéni fordító cikkeiben használt kifejezések listája.
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 08/17/2020
+ms.date: 04/02/2021
 ms.author: lajanuar
 ms.topic: reference
-ms.openlocfilehash: 4461f584e365a5d47e7ceee942e33bc8b101b2d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a0308f2b961ce9b1321fab3e202e038eb199674
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104657822"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286419"
 ---
-# <a name="custom-translator-terminology"></a>Egyéni fordítói terminológia
+# <a name="custom-translator-key-terms"></a>Egyéni Translator-kulcs feltételei
 
-A következő táblázat felsorolja azokat a feltételeket, amelyeket az [Egyéni fordítóval](https://portal.customtranslator.azure.ai)való munka során talál.
+A következő táblázat felsorolja azokat a kulcsfontosságú kifejezéseket, amelyeket az [Egyéni fordítóval](https://portal.customtranslator.azure.ai)való együttműködés során talál.
 
 | Szó vagy kifejezés|Definíció|
 |------------------|-----------|

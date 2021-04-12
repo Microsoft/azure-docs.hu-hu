@@ -8,12 +8,12 @@ ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a30b4b056d56e096f80b9494ab80a585fff76e66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489924"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031125"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Saját IoT Edge-modulok fejlesztése
 
@@ -134,7 +134,7 @@ IoT Edge támogatja több operációs rendszer, eszköz architektúrája és fej
 
 ### <a name="linux"></a>Linux
 
-Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64-és ARM32-alapú Linux-eszközök fejlesztését.
+Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64 és a ARM32 Linux-tárolók fejlesztését.
 
 | Fejlesztési nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
@@ -145,16 +145,30 @@ Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja a
 | Python | Visual Studio Code |
 
 >[!NOTE]
->A ARM64 Linux-eszközök fejlesztésének és hibakeresésének támogatása [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el. További információ: [ARM64 IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio Code-ban (előzetes verzió)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>A ARM64 Linux-tárolók fejlesztésének és hibakeresésének támogatása [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el. További információ: [ARM64 IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio Code-ban (előzetes verzió)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ### <a name="windows"></a>Windows
 
-Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64 Windows-eszközök fejlesztését.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64 Windows-tárolók fejlesztését.
 
 | Fejlesztési nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (nincs hibakeresési képesség)<br>Visual Studio 2017/2019 |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem támogatottak.
+
+A Windows-tárolók fejlesztésével kapcsolatos információkért tekintse meg a jelen cikk [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) -es verzióját.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Következő lépések
 

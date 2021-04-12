@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 2031cbf07d700307ae1e11c516f9fc736bce5080
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 9edf8c6eca223ece8728f9868ee9fe310c517ca9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498980"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259710"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurálja az LDAP HOZZÁADÁSát kiterjesztett csoportokkal az NFS mennyiségi hozzáféréshez
 
@@ -69,9 +69,18 @@ Ez a cikk ismerteti azokat a szempontokat és lépéseket, amelyek lehetővé te
 
 2. Az LDAP-kötetek Active Directory konfigurációt igényelnek az LDAP-kiszolgáló beállításaihoz. Kövesse az [Active Directory kapcsolatokra vonatkozó követelmények](create-active-directory-connections.md#requirements-for-active-directory-connections) című témakör utasításait, és [hozzon létre egy Active Directory kapcsolatot](create-active-directory-connections.md#create-an-active-directory-connection) a Azure Portal Active Directory kapcsolatainak konfigurálásához.  
 
-3. Győződjön meg arról, hogy a Active Directory LDAP-kiszolgáló működik és fut a Active Directory. Ezt úgy teheti meg, ha telepíti és konfigurálja a [Active Directory Lightweight Directory-szolgáltatások (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) szerepkört az ad-gépen.
+3. Győződjön meg arról, hogy a Active Directory LDAP-kiszolgáló működik és fut a Active Directory. 
 
-4. Az LDAP NFS-felhasználóknak bizonyos POSIX-attribútumokkal kell rendelkezniük az LDAP-kiszolgálón. A szükséges attribútumok beállításához kövesse az [LDAP POSIX-attribútumok kezelése](create-volumes-dual-protocol.md#manage-ldap-posix-attributes) című témakört.  
+4. Az LDAP NFS-felhasználóknak bizonyos POSIX-attribútumokkal kell rendelkezniük az LDAP-kiszolgálón. Az LDAP-felhasználók és az LDAP-csoportok attribútumai az alábbiak szerint állíthatók be: 
+
+    * Az LDAP-felhasználók kötelező attribútumai:   
+        `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: user`
+    * Az LDAP-csoportok szükséges attribútumai:   
+        `objectClass: group`, `gidNumber: 555`
+
+    A POSIX-attribútumokat a Active Directory felhasználók és számítógépek MMC beépülő modullal kezelheti. A következő példa a Active Directory attribútum-szerkesztőt mutatja be:  
+
+    ![Active Directory Attribute Editor](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
 5. Ha LDAP-hez integrált Linux-ügyfelet szeretne konfigurálni, tekintse meg [az NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md)című témakört.
 

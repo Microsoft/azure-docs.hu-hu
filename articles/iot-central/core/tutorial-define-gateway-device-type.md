@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdace22072e4122150c878d43b99765cd6fd59e1
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99832385"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490777"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag – új IoT átjáró-eszköz típusának meghatározása az Azure IoT Central-alkalmazásban
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban létrehoz egy **intelligens felépítési** átjáró-e
 A IoT Central alkalmazással folytatott kommunikációt lehetővé tevő alsóbb szintű eszközök esetében az átjáró eszköz is a következőket teheti:
 
 * Küldje el saját telemetria, például a hőmérsékletet.
-* Válaszoljon az operátor által készített írható tulajdonságokra. Egy operátor például módosíthatja a telemetria küldési intervallumát.
+* Válaszoljon egy operátor által készített írható tulajdonságok frissítésére. Egy operátor például módosíthatja a telemetria küldési intervallumát.
 * Válaszoljon a parancsokra, például az eszköz újraindítására.
 
 > [!div class="checklist"]
