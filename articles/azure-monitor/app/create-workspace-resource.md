@@ -4,10 +4,10 @@ description: Ismerkedjen meg az új Azure Monitor Application Insights munkater�
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578336"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Munkaterület-alapú Application Insights erőforrások

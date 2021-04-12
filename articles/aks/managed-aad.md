@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: b7918ecc31fe152bd25153ac8c899ce3ff8fdacb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e912de4cf3a9759abe4cb3df78255c0a9ba1557
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640594"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105864"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -20,7 +20,7 @@ Az AK által felügyelt Azure AD-integráció az Azure AD integrációs felület
 
 A Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) konfigurálhat a felhasználó identitása vagy a címtár csoportjának tagsága alapján. Az Azure AD-hitelesítés az OpenID-kapcsolattal rendelkező AK-fürtökhöz van megadva. Az OpenID Connect egy OAuth 2,0 protokollra épülő identitási réteg. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][open-id-connect].
 
-További információ az Azure AD integrációs folyamatáról a [Azure Active Directory Integration Concepts dokumentációjában](concepts-identity.md#azure-active-directory-integration).
+További információ az Azure AD integrációs folyamatáról a [Azure Active Directory Integration Concepts dokumentációjában](concepts-identity.md#azure-ad-integration).
 
 ## <a name="limitations"></a>Korlátozások 
 

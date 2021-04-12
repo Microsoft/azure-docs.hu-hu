@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98539555"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580606"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás költségeinek becslése és kezelése
 
@@ -27,7 +27,7 @@ A keresési szolgáltatás által használt erőforrások mennyisége, a szolgá
 
 Számlázási célokra két egyszerű képletet kell figyelembe venni:
 
-| Képlet | Leírás |
+| Képlet | Description |
 |---------|-------------|
 | **R x P = SU** | A használt replikák száma, a felhasznált partíciók számával szorozva a szolgáltatás által használt *keresési egységek* (su) mennyiségével egyenlő. A SU erőforrás-egység, amely lehet partíció vagy replika is. |
 | **SU * számlázási arány = havi ráfordítás** | A teljes havi számla elsődleges tényezője, hogy az SUs száma megszorozza a szolgáltatás kiépített szintjének számlázási arányával. Bizonyos funkciók vagy munkaterhelések más Azure-szolgáltatások függőségeivel is rendelkeznek, ami növelheti a megoldás költségeit az előfizetés szintjén. Az alábbi számlázható események szakasz azokat a funkciókat azonosítja, amelyek hozzáadhatók a számlához. |
@@ -64,7 +64,7 @@ A minimális díj az első keresési egység (az egyik replika x egy partíció)
 
 A minimumon túl egymástól függetlenül is hozzáadhat replikákat és partíciókat. A kapacitás replikák és partíciók révén történő növekményes növekedése a következő képlet alapján növeli a számla mennyiségét: **(replikák x Partitions x számlázási arány)**, ahol a felszámított díj a kiválasztott árképzési szinttől függ.
 
-A keresési megoldások költségének becslése során ne feledje, hogy a díjszabás és a kapacitás nem lineáris (a kapacitás megkettőzése több, mint a költség megduplázása). A képlet működéséről a következő témakörben talál példát: [replikák és partíciók lefoglalása](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
+Ha megbecsüli egy keresési megoldás költségét, ne feledje, hogy a díjszabás és a kapacitás nem lineáris (a kapacitás megkettőzése több, mint az ugyanazon a szinten megjelenő költség). Emellett egy magasabb szintű rendszerre való áttérés nagyobb és gyorsabb teljesítményt biztosít, nagyjából ugyanazon az áron. További információkat és példákat a [standard S2-es szintre való frissítéssel](search-performance-tips.md#tip-upgrade-to-a-standard-s2-tier)foglalkozó témakörben talál.
 
 ### <a name="bandwidth-charges"></a>Sávszélességgel kapcsolatos díjak
 

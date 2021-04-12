@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a tárolók bepill
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711246"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Hibrid Kubernetes-fürtök konfigurálása a Container bepillantást

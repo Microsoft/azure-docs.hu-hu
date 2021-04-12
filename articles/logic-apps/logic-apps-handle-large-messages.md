@@ -6,10 +6,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 12/18/2020
 ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97695877"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Nagy méretű üzenetek kezelése Azure Logic Apps
@@ -160,7 +160,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
 1. A logikai alkalmazás egy kezdeti HTTP POST-vagy PUT-kérést küld egy üres üzenet törzsének. A kérelem fejléce tartalmazza ezt az információt arról a tartalomról, amelyet a logikai alkalmazás fel szeretne tölteni a darabokban:
 
-   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
+   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
    |---------------------------------|-------|------|-------------|
    | **x-MS – átvitel üzemmód** | darabolásos | Sztring | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
    | **x-MS-Content-Length** | <*Content-Length*> | Egész szám | A teljes tartalom mérete bájtban a darabolás előtt |
@@ -180,7 +180,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    * Ezek a fejlécek az egyes javítási üzenetekben küldött tartalmi adattömbökkel kapcsolatos adatokat tartalmazzák:
 
-     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
+     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*tartomány*> | Sztring | Az aktuális tartalom adatrészletének bájtjai, beleértve a kezdő értéket, a záró értéket és a tartalom teljes méretét, például: "Bytes = 0-1023/10100" |
      | **Content-Type** | <*Content-Type*> | Sztring | A darabolásos tartalom típusa |

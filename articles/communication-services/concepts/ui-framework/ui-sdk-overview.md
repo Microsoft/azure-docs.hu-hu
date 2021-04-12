@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 47a32815ded5809edfde856a38c69ec7c6fd6fdf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ab1a157cdf3ef5017b227cd090379dcab91997e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493356"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105931556"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Azure kommunikációs szolgáltatások felhasználói felületi keretrendszere
 
@@ -25,11 +25,11 @@ Az Azure kommunikációs szolgáltatás felhasználói felületi keretrendszeré
 - **Összetett összetevők** – ezek az összetevők a gyakori kommunikációs forgatókönyveket megvalósító Kulcsrakész megoldások. Az alkalmazásokhoz gyorsan hozzáadhat videohívásokat vagy csevegési élményeket. Az összetett összetevők a Base Components használatával létrehozott nyílt forráskódú összetevők.
 - **Alapösszetevők** – ezek az összetevők olyan nyílt forráskódú építőelemek, amelyek lehetővé teszik, hogy egyéni kommunikációs élményt hozzon létre. Az összetevők olyan hívási és csevegési funkciókhoz is elérhetők, amelyek kombinálhatók a tapasztalatok létrehozásához. 
 
-Ezek a felhasználói felületi ügyféloldali kódtárak mind a [Microsoft Fluent tervezési nyelvét](https://developer.microsoft.com/fluentui/) és eszközeit használják. A Fluent felhasználói felület olyan alapszintű réteget biztosít a felhasználói felületi keretrendszer számára, amelyet a Microsoft termékein teszteltek.
+Ezek a felhasználói felületi SDK-k mind a [Microsoft Fluent tervezési nyelvét](https://developer.microsoft.com/fluentui/) és eszközeit használják. A Fluent felhasználói felület olyan alapszintű réteget biztosít a felhasználói felületi keretrendszer számára, amelyet a Microsoft termékein teszteltek.
 
 ## <a name="differentiating-components-and-composites"></a>**Összetevők és kompozitok megkülönböztetése**
 
-Az **Alapösszetevők** az Azure kommunikációs szolgáltatások alapkönyvtáraira épülnek, és olyan alapszintű műveleteket hajtanak végre, mint például az alapszintű kódtárak inicializálása, a videó renderelése, valamint az elnémításra, a videó be-és kikapcsolására szolgáló felhasználói vezérlők biztosítása. Ezekkel az **Alapösszetevőkkel** saját egyéni elrendezési tapasztalatokat hozhat létre előre elkészített, éles használatra kész kommunikációs összetevők használatával.
+Az **Alapösszetevők** az Azure Communication Services SDK-ra épülnek, és olyan alapszintű műveleteket implementálnak, mint például az alapszintű SDK-k inicializálása, a videó renderelése, valamint az Elnémítás, a videó be-és kikapcsolására szolgáló felhasználói vezérlők biztosítása. Ezekkel az **Alapösszetevőkkel** saját egyéni elrendezési tapasztalatokat hozhat létre előre elkészített, éles használatra kész kommunikációs összetevők használatával.
 
 :::image type="content" source="../media/ui-framework/component-overview.png" alt-text="A felhasználói felületi keretrendszer összetevőjének áttekintése":::
 
@@ -39,19 +39,19 @@ Az **összetett összetevők** több **alapösszetevőt** egyesítenek, így tel
 
 ## <a name="what-ui-framework-is-best-for-my-project"></a>Melyik felhasználói felületi keretrendszer a legmegfelelőbb a projekthez?
 
-A követelmények megismerése segítséget nyújt a megfelelő ügyféloldali kódtár kiválasztásában:
+A követelmények megismerése segít kiválasztani a megfelelő SDK-t:
 
-- **Mekkora testreszabást szeretne?** Az Azure Communication Core-ügyféloldali kódtárak nem rendelkeznek UX-vel, és úgy vannak kialakítva, hogy minden szükséges UX-t létre lehessen tenni. A felhasználói felületi keretrendszer összetevői lehetővé teszik a felhasználói felületi eszközök számára a csökkentett Testreszabás költségeit.
-- **Szüksége van a Meeting szolgáltatásokra?** Az Értekezletrendszer számos olyan egyedi képességgel rendelkezik, amely jelenleg nem érhető el az Azure kommunikációs szolgáltatásokkal kapcsolatos alapvető kódtárakban, például az elhomályos hátteret és a Kiemelt állapotot.
+- **Mekkora testreszabást szeretne?** Az Azure Communication Core SDK-k nem rendelkeznek UX-vel, és úgy vannak kialakítva, hogy a kívánt UX-et is létrehozhatja. A felhasználói felületi keretrendszer összetevői lehetővé teszik a felhasználói felületi eszközök számára a csökkentett Testreszabás költségeit.
+- **Szüksége van a Meeting szolgáltatásokra?** Az Értekezletrendszer számos olyan egyedi képességgel rendelkezik, amely jelenleg nem érhető el az Azure Communication Services SDK-ban, például a homályos háttér és a Kiemelt állapot.
 - **Milyen platformokat céloz meg?** A különböző platformok különböző képességekkel rendelkeznek.
 
 A funkciók rendelkezésre állásával kapcsolatos részletek a különböző [felhasználói felületi SDK-k itt érhetők el](ui-sdk-features.md), de a legfontosabb kompromisszumok összegzése alább látható.
 
-|Ügyféloldali kódtár/SDK|Implementáció bonyolultsága|    Testreszabási képesség|  Hívó| Csevegés| [Csapatok együttműködése](./../teams-interop.md)
+|SDK/SDK|Implementáció bonyolultsága|   Testreszabási képesség|  Hívó| Csevegés| [Csapatok együttműködése](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Összetett összetevők|Alacsony|Alacsony|✔|✔|✕
 |Alapösszetevők|Közepes|Közepes|✔|✔|✕
-|Alapvető ügyféloldali kódtárak|Magas|Magas|✔|✔ |✔
+|Alapszintű SDK-k|Magas|Magas|✔|✔ |✔
 
 ## <a name="cost"></a>Költségek
 
@@ -78,7 +78,7 @@ Az Azure kommunikációs szolgáltatások identitása szükséges a felhasznál�
 
 Az összetett és az alap összetevőket egy Azure kommunikációs szolgáltatás hozzáférési jogkivonatának használatával inicializáljuk. A hozzáférési jogkivonatokat az Ön által kezelt megbízható szolgáltatáson keresztül kell beszerezni az Azure kommunikációs szolgáltatásokból. További információért lásd: rövid útmutató [: hozzáférési tokenek létrehozása](../../quickstarts/access-tokens.md) és [megbízható szolgáltatás oktatóanyaga](../../tutorials/trusted-service-tutorial.md) .
 
-Ezeknek az ügyféloldali kódtáraknak a híváshoz vagy csevegéshez is meg kell adni a környezetet. A felhasználói hozzáférési tokenekhez hasonlóan ezt a környezetet a saját megbízható szolgáltatásán keresztül kell terjeszteni az ügyfeleknek. Az alábbi lista összefoglalja az inicializálási és erőforrás-kezelési funkciókat, amelyeket működővé tenni kell.
+Ezek az SDK-k a hívás vagy csevegés kontextusához is szükségesek, amelyhez csatlakozni fognak. A felhasználói hozzáférési tokenekhez hasonlóan ezt a környezetet a saját megbízható szolgáltatásán keresztül kell terjeszteni az ügyfeleknek. Az alábbi lista összefoglalja az inicializálási és erőforrás-kezelési funkciókat, amelyeket működővé tenni kell.
 
 | Contoso-feladatok                                 | Felhasználói felületi keretrendszer feladatai                         |
 |----------------------------------------------------------|-----------------------------------------------------------------|

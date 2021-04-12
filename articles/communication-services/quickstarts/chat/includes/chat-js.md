@@ -10,18 +10,18 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 6fe1e092e1db4ad283f9d0096ea431a1e983f87c
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 322f54e4fa2e8096f68d5bbc216032a5b4e53c22
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645443"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726691"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
 
 - Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
-- Telepítse [Node.js](https://nodejs.org/en/download/) aktív LTS-és karbantartási LTS-verzióit (8.11.1 és 10.14.1 ajánlott).
+- Telepítse [Node.js](https://nodejs.org/en/download/) aktív LTS-és karbantartási LTS-verzióit.
 - Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell **jegyeznie az erőforrás-végpontot** .
 - Hozzon létre *három* ACS-felhasználót, és adja ki a felhasználói hozzáférési jogkivonat [felhasználói hozzáférési jogkivonatát](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a **csevegés** értékre állítsa, és **jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot**. A teljes bemutató létrehoz egy szálat két kezdeti résztvevővel, majd felvesz egy harmadik résztvevőt a szálba.
 
@@ -165,35 +165,37 @@ Ha megoldotta, `createChatThread` a metódus a értéket adja vissza `CreateChat
 
 ```JavaScript
 async function createChatThread() {
-    let createThreadRequest = {
-        topic: 'Preparation for London conference',
-        participants: [{
-                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                    displayName: 'Jack'
-                }, {
-                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                    displayName: 'Geeta'
-                }]
-    };
-    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createChatThreadResult.chatThread.id;
-    return threadId;
-    }
+  const createChatThreadRequest = {
+    topic: "Hello, World!"
+  };
+  const createChatThreadOptions = {
+    participants: [
+      {
+        id: '<USER_ID>',
+        displayName: '<USER_DISPLAY_NAME>'
+      }
+    ]
+  };
+  const createChatTtreadResult = await chatClient.createChatThread(
+    createChatThreadRequest,
+    createChatThreadOptions
+  );
+  const threadId = createChatThreadResult.chatThread.id;
+  return threadId;
+}
 
 createChatThread().then(async threadId => {
-    console.log(`Thread created:${threadId}`);
-    // PLACEHOLDERS
-    // <CREATE CHAT THREAD CLIENT>
-    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-    // <SEND MESSAGE TO A CHAT THREAD>
-    // <LIST MESSAGES IN A CHAT THREAD>
-    // <ADD NEW PARTICIPANT TO THREAD>
-    // <LIST PARTICIPANTS IN A THREAD>
-    // <REMOVE PARTICIPANT FROM THREAD>
-    });
+  console.log(`Thread created:${threadId}`);
+  // PLACEHOLDERS
+  // <CREATE CHAT THREAD CLIENT>
+  // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+  // <SEND MESSAGE TO A CHAT THREAD>
+  // <LIST MESSAGES IN A CHAT THREAD>
+  // <ADD NEW PARTICIPANT TO THREAD>
+  // <LIST PARTICIPANTS IN A THREAD>
+  // <REMOVE PARTICIPANT FROM THREAD>
+  });
 ```
-
-Cserélje le a **USER_ID_FOR_JACK** és a **USER_ID_FOR_GEETAt** a felhasználók és tokenek létrehozásakor beszerzett felhasználói azonosítókkal ([felhasználói hozzáférési tokenek](../../access-tokens.md)).
 
 Amikor frissíti a böngésző lapját, a következőnek kell megjelennie a konzolon:
 ```console
@@ -214,6 +216,18 @@ Vegye fel ezt a kódot a `<CREATE CHAT THREAD CLIENT>` Megjegyzés helyére a **
 Chat Thread client for threadId: <threadId>
 ```
 
+## <a name="list-all-chat-threads"></a>Az összes csevegési szál listázása
+
+A `listChatThreads` metódus a `PagedAsyncIterableIterator` típust adja vissza `ChatThreadItem` . Az összes csevegési szál listázására használható.
+Az a válasz, amely a `[ChatThreadItem]` szálak listázása után tért vissza.
+
+```JavaScript
+const threads = chatClient.listChatThreads();
+for await (const thread of threads) {
+   // your code here
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
 
 A `sendMessage` metódus használatával küldhet üzenetet a szálazonosító által azonosított szálnak.
@@ -230,17 +244,17 @@ A `sendMessage` metódus használatával küldhet üzenetet a szálazonosító �
 `SendChatMessageResult` az üzenet elküldésekor kapott válasz egy azonosítót tartalmaz, amely az üzenet egyedi azonosítója.
 
 ```JavaScript
-let sendMessageRequest =
+const sendMessageRequest =
 {
-    content: 'Hello Geeta! Can you share the deck for the conference?'
+  content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    senderDisplayName : 'Jack',
-    type: 'text'
+  senderDisplayName : 'Jack',
+  type: 'text'
 };
-let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
-let messageId = sendChatMessageResult.id;
+const sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
+const messageId = sendChatMessageResult.id;
 ```
 
 Vegye fel ezt a kódot a `<SEND MESSAGE TO A CHAT THREAD>` Megjegyzés helyére **client.js**, frissítse a böngésző fület, és tekintse meg a konzolt.
@@ -257,8 +271,8 @@ A valós idejű jelzésekkel előfizethet az új bejövő üzenetek figyelésér
 await chatClient.startRealtimeNotifications();
 // subscribe to new notification
 chatClient.on("chatMessageReceived", (e) => {
-    console.log("Notification chatMessageReceived!");
-    // your code here
+  console.log("Notification chatMessageReceived!");
+  // your code here
 });
 
 ```
@@ -269,23 +283,18 @@ Azt is megteheti, hogy a csevegési üzeneteket lekérdezi a `listMessages` met�
 
 ```JavaScript
 
-let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
-let nextMessage = await pagedAsyncIterableIterator.next();
-    while (!nextMessage.done) {
-        let chatMessage = nextMessage.value;
-        console.log(`Message :${chatMessage.content}`);
-        // your code here
-        nextMessage = await pagedAsyncIterableIterator.next();
-    }
+const messages = chatThreadClient.listMessages();
+for await (const message of messages) {
+   // your code here
+}
 
 ```
 Adja hozzá ezt a kódot a `<LIST MESSAGES IN A CHAT THREAD>` Megjegyzés helyén **client.js**.
 Frissítse a fület a konzolon, és keresse meg az ebben a csevegési szálban küldött üzenetek listáját.
 
+`listMessages` a által azonosítható különböző típusú üzeneteket ad vissza `chatMessage.type` . 
 
-`listMessages` az üzenet legújabb verzióját adja vissza, beleértve a és a használatával az üzenettel történt módosításokat és törléseket `updateMessage` is `deleteMessage` .
-A törölt üzenetek esetében `chatMessage.deletedOn` egy DateTime értéket ad vissza, amely azt jelzi, hogy az üzenet törölve lett. A szerkesztett üzenetek esetében `chatMessage.editedOn` egy DateTime értéket ad vissza, amely azt jelzi, hogy mikor lett szerkesztve az üzenet. Az üzenetek létrehozásának eredeti időpontja elérhető a használatával `chatMessage.createdOn` , amely az üzenetek rendezésére használható.
-
+További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
@@ -300,14 +309,14 @@ A metódus meghívása előtt `addParticipants` Győződjön meg arról, hogy ú
 
 ```JavaScript
 
-let addParticipantsRequest =
+const addParticipantsRequest =
 {
-    participants: [
-        {
-            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
-            displayName: 'Jane'
-        }
-    ]
+  participants: [
+    {
+      id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+      displayName: 'Jane'
+    }
+  ]
 };
 
 await chatThreadClient.addParticipants(addParticipantsRequest);
@@ -317,16 +326,10 @@ await chatThreadClient.addParticipants(addParticipantsRequest);
 
 ## <a name="list-users-in-a-chat-thread"></a>Csevegési szál felhasználóinak listázása
 ```JavaScript
-async function listParticipants() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
-   let next = await pagedAsyncIterableIterator.next();
-   while (!next.done) {
-      let user = next.value;
-      console.log(`User :${user.displayName}`);
-      next = await pagedAsyncIterableIterator.next();
-   }
+const participants = chatThreadClient.listParticipants();
+for await (const participant of participants) {
+   // your code here
 }
-await listParticipants();
 ```
 Vegye fel ezt a kódot a `<LIST PARTICIPANTS IN A THREAD>` Megjegyzés helyére **client.js**, frissítse a böngésző fület, és ellenőrizze a konzolt, és tekintse meg a szál felhasználóiról szóló információkat.
 

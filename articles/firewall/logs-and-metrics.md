@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596958"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280326"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplói és metrikái
 
@@ -181,6 +181,8 @@ A Azure Firewall a következő metrikák érhetők el:
     Egység: százalék
 
    Ha több nyilvános IP-címet ad hozzá a tűzfalhoz, további SNAT-portok érhetők el, ami csökkenti az SNAT-portok kihasználtságát. Emellett, ha a tűzfal a különböző okokból (például CPU vagy átviteli sebesség miatt) felskálázást végez, további SNAT-portok is elérhetővé válnak. Így gyakorlatilag a SNAT-portok kihasználtságának adott százaléka lemerülhet anélkül, hogy nyilvános IP-címeket adna hozzá, csak azért, mert a szolgáltatás ki van bővítve. A tűzfalon elérhető portok növeléséhez a rendelkezésre álló nyilvános IP-címek számát közvetlenül is szabályozhatja. Azonban nem vezérelheti közvetlenül a tűzfal skálázását.
+
+   Ha a tűzfal SNAT-porton fut, adjon hozzá legalább öt nyilvános IP-címet. Ez növeli a rendelkezésre álló SNAT-portok számát. További információ: [Azure Firewall szolgáltatások](features.md#multiple-public-ip-addresses).
 
 
 ## <a name="next-steps"></a>Következő lépések
