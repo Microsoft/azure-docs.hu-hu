@@ -10,28 +10,28 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d2c8d4179dbaa44929031ce7e14b597b145ed72a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740783"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067605"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
-Ez az oktatóanyag bemutatja, hogyan lehet engedélyezni a HTTPS-protokollt az előtérbeli gazdagépek szakaszban egy Front Doorhoz kapcsolódó egyéni tartomány esetében. A HTTPS-protokoll egyéni tartományon belüli használatával (például https:\//www.contoso.com) biztosítható, hogy a bizalmas adatokat a rendszer biztonságosan, TLS/SSL-titkosításon keresztül továbbítsa az Interneten. Amikor a böngésző HTTPS-protokollal kapcsolódik egy webhelyhez, ellenőrzi a webhely biztonsági tanúsítványát, és megállapítja, hogy azt arra jogosult hitelesítésszolgáltató adta-e ki. Ez az eljárás védelmet nyújt webalkalmazásai számára a támadásokkal szemben.
+Ez az oktatóanyag bemutatja, hogyan lehet engedélyezni a HTTPS-protokollt az előtérbeli gazdagépek szakaszban egy Front Doorhoz kapcsolódó egyéni tartomány esetében. Ha a HTTPS protokollt használja az egyéni tartományon (például https: \/ /www.contoso.com), gondoskodjon arról, hogy a bizalmas adatok biztonságos továbbítása a TLS/SSL-titkosításon keresztül történjen, amikor az interneten keresztül küldi el. Amikor a böngésző HTTPS-protokollal kapcsolódik egy webhelyhez, ellenőrzi a webhely biztonsági tanúsítványát, és megállapítja, hogy azt arra jogosult hitelesítésszolgáltató adta-e ki. Ez az eljárás védelmet nyújt webalkalmazásai számára a támadásokkal szemben.
 
-Az Azure bejárati ajtaja alapértelmezés szerint támogatja a HTTPS használatát a bejárati ajtó alapértelmezett állomásneve esetében. Ha például létrehoz egy bejárati ajtót (például `https://contoso.azurefd.net` ), a https automatikusan engedélyezve lesz a következőre irányuló kérésekhez: `https://contoso.azurefd.net` . Azonban a „www.contoso.com” egyéni tartomány regisztrálása után külön engedélyeznie kell a HTTPS-t az előtérbeli gazdagépen.   
+Az Azure bejárati ajtaja alapértelmezés szerint támogatja a HTTPS használatát a bejárati ajtó alapértelmezett állomásneve esetében. Ha például létrehoz egy bejárati ajtót (például `https://contoso.azurefd.net` ), a https automatikusan engedélyezve lesz a következőre irányuló kérésekhez: `https://contoso.azurefd.net` . A "www.contoso.com" egyéni tartomány bevezetését követően azonban engedélyeznie kell a HTTPS-t ehhez a frontend-gazdagéphez.   
 
 Az egyéni HTTPS szolgáltatás legfőbb jellemzői a következők:
 
-- Nincsenek további költségek: a tanúsítvány megszerzése vagy megújítása ingyenes, és a HTTPS-forgalom sem von maga után további költségeket. 
+- Többletköltség nélkül: a tanúsítvány beszerzése vagy megújítása nem jár költségekkel, és a HTTPS-forgalomra nem kell külön fizetni. 
 
 - Egyszerű engedélyezés: a kiépítés egy kattintással elvégezhető az [Azure Portalon](https://portal.azure.com) keresztül. A szolgáltatás engedélyezéséhez REST API-k, valamint más fejlesztői eszközök is használhatók.
 
-- Teljes körű tanúsítványkezelés érhető el: nem kell foglalkoznia a tanúsítványok beszerzésével és kezelésével. A tanúsítványok üzembe helyezése és megújítása automatikusan megtörténik a lejárat előtt, így nem kell attól tartani, hogy a szolgáltatás megszakad egy lejárt tanúsítvány miatt.
+- Teljes körű tanúsítványkezelés érhető el: nem kell foglalkoznia a tanúsítványok beszerzésével és kezelésével. A rendszer automatikusan kiépíti és megújítja a tanúsítványokat a lejárat előtt, ami megszünteti a szolgáltatás megszakításának kockázatát, mert egy tanúsítvány lejár.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -63,15 +63,16 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 
 2. Az előtérbeli gazdagépek listájából válassza ki azt az egyéni tartományt, amelyen engedélyezni szeretné a HTTPS-t az egyéni tartomány tárolásához.
 
-3. Az **egyéni tartományi HTTPS** szakaszban kattintson az **Engedélyezve** elemre, és válassza ki a **Front Door által felügyelt** tanúsítványforrást.
+3. Az **egyéni tartomány HTTPS** szakaszban válassza az **engedélyezve** lehetőséget, majd válassza ki a **bejárati ajtót** a tanúsítvány forrásaként.
 
 4. Kattintson a Mentés gombra.
 
-5. Folytassa [A tartomány érvényesítése](#validate-the-domain) című szakasszal.
+5. Folytassa [a tartomány érvényességének ellenőrzésével](#validate-the-domain).
 
 > [!NOTE]
 > A AFD által felügyelt tanúsítványok esetében a DigiCert 64 karakteres korlátja kényszerítve van. Ha túllépi a korlátot, az érvényesítés sikertelen lesz.
 
+! Megjegyzés A HTTPS a bejárati ajtó által felügyelt tanúsítványon keresztüli engedélyezése nem támogatott az APEX/root tartományok esetében (például: contoso.com). Ehhez a forgatókönyvhöz saját tanúsítványt is használhat.  További részletekért folytassa a 2. lehetőséggel.
 
 ### <a name="option-2-use-your-own-certificate"></a>2. lehetőség: Saját tanúsítvány használata
 
@@ -128,30 +129,27 @@ Adja meg az Azure-előfizetési engedélyt a Azure Key Vault fiókban találhat�
 
 3. A Tanúsítványkezelés típusa területen válassza a **Saját tanúsítvány használata** lehetőséget. 
 
-4. Az Azure bejárati ajtajához a Key Vault fiók előfizetése ugyanaz, mint a bejárati ajtónál. Válassza ki a Key Vaultot, a tanúsítványt (titkos kódot) és a tanúsítványverziót.
+4. Az Azure bejárati ajtajához a Key Vault fiók előfizetése ugyanaz, mint a bejárati ajtónál. Válasszon ki egy kulcstartót, titkos kulcsot és titkos verziót.
 
     Az Azure bejárati ajtó a következő információkat tartalmazza: 
     - Az előfizetés azonosítójához tartozó Key Vault-fiókok. 
-    - A kiválasztott Key Vaultban található tanúsítványok (titkos kódok). 
-    - A tanúsítvány elérhető verziói. 
+    - A kiválasztott kulcstartóban lévő titkos kódok. 
+    - A rendelkezésre álló titkos verziók.
 
-> [!NOTE]
-> Ha üresen hagyja a tanúsítvány verzióját, a következőhöz vezetne:
-> - A tanúsítvány legújabb verziója kiválasztva.
-> - A tanúsítványok a legújabb verzióra való automatikus elforgatása, amikor a tanúsítvány egy újabb verziója érhető el a Key Vault.
+    > [!NOTE]
+    >  Ahhoz, hogy a tanúsítvány automatikusan el legyen forgatva a legújabb verzióra, ha a tanúsítvány újabb verziója elérhető a Key Vaultban, állítsa a titkos verziót a "legutóbbi" értékre. Ha egy adott verzió van kiválasztva, akkor manuálisan kell kiválasztania az új verziót a tanúsítvány elforgatásához. A tanúsítvány/titok új verziójának üzembe helyezéséhez akár 24 óráig is eltarthat. 
  
-5. Saját tanúsítvány használatakor nem szükséges tartományérvényesítés. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez.
+5. Ha saját tanúsítványt használ, a tartomány érvényesítése nem szükséges. Továbbra is [várjon a propagálásra](#wait-for-propagation).
 
 ## <a name="validate-the-domain"></a>A tartomány érvényesítése
 
-Ha már rendelkezik használatban lévő egyéni tartománnyal, amely az egyéni végpontjára van leképezve egy CNAME rekorddal, vagy ha saját tanúsítványt használ, lépjen tovább a következőre:  
-[Az egyéni tartomány le van képezve a Front Doorra](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record). Ha már nem létezik a tartomány CNAME rekordjának bejegyzése, vagy az afdverify altartományt tartalmazza, lépjen tovább [Az egyéni tartomány nincs leképezve a Front Doorra](#custom-domain-is-not-mapped-to-your-front-door) című részre.
+Ha már van olyan egyéni tartománya, amely egy CNAME-rekorddal rendelkező egyéni végpontra van leképezve, vagy a saját tanúsítványát használja, folytassa az [Egyéni tartományhoz](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record)való leképezését az előtérben. Ellenkező esetben, ha a tartomány CNAME rekordjának bejegyzése már nem létezik, vagy a afdverify altartományt tartalmazza, folytassa az egyéni tartománnyal, hogy az [ne legyen leképezve az előtérben](#custom-domain-is-not-mapped-to-your-front-door).
 
 ### <a name="custom-domain-is-mapped-to-your-front-door-by-a-cname-record"></a>Az egyéni tartomány le van képezve a Front Doorra egy CNAME rekorddal
 
-Amikor hozzáadott egy egyéni tartományt a Front Door előtérbeli gazdagépeihez, létrehozott egy CNAME rekordot a saját tartományregisztrálójának DNS-táblájában, hogy leképezze a Front Door alapértelmezett .azurefd.net eszköznevére. Ha ez a CNAME rekord még létezik és nem tartalmazza az afdverify altartományt, a DigiCert hitelesítésszolgáltató arra használja, hogy automatikusan érvényesítse az egyéni tartomány tulajdonjogát. 
+Amikor hozzáadott egy egyéni tartományt a Front Door előtérbeli gazdagépeihez, létrehozott egy CNAME rekordot a saját tartományregisztrálójának DNS-táblájában, hogy leképezze a Front Door alapértelmezett .azurefd.net eszköznevére. Ha a CNAME rekord még létezik, és nem tartalmazza a afdverify altartományt, a DigiCert-hitelesítésszolgáltató használja az egyéni tartomány tulajdonjogának automatikus ellenőrzésére. 
 
-Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
+Ha saját tanúsítványt használ, a tartomány érvényesítése nem szükséges.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a Front Door alapértelmezett .azurefd.net eszközneve:
 
@@ -161,7 +159,7 @@ A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön e
 
 A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](../cdn/cdn-map-content-to-custom-domain.md) részt.
 
-Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és az érvényesség lejárta előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
+Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és az érvényesség lejárta előtt automatikusan megújul. Továbbra is [várjon a propagálásra](#wait-for-propagation). 
 
 Az automatikus érvényesítés általában eltart néhány percig. Ha a tartománya egy órán belül sincs érvényesítve, nyisson meg egy támogatási jegyet.
 
@@ -172,11 +170,11 @@ Az automatikus érvényesítés általában eltart néhány percig. Ha a tartom�
 
 Ha már nem létezik a végpont CNAME rekordjának bejegyzése, vagy az afdverify altartományt tartalmazza, kövesse az itt ismertetett lépéseket.
 
-Miután engedélyezi a HTTPS-t az egyéni tartományhoz, A DigiCert CA érvényesíti a tartomány tulajdonjogát azáltal, hogy kapcsolatba lép a regisztrálójával a tartomány [WHOIS](http://whois.domaintools.com/) regisztrálójának információja alapján. A kapcsolatfelvétel a WHOIS-regisztrációban megadott e-mail-címen (alapértelmezett) vagy telefonszámon keresztül történik. A HTTPS csak a tartomány hitelesítése után aktiválódik az egyéni tartományon. A tartomány jóváhagyására hat munkanap áll rendelkezésére. A hat munkanapon belül jóvá nem hagyott kérelmek automatikusan törlődnek. 
+Miután engedélyezi a HTTPS-t az egyéni tartományhoz, A DigiCert CA érvényesíti a tartomány tulajdonjogát azáltal, hogy kapcsolatba lép a regisztrálójával a tartomány [WHOIS](http://whois.domaintools.com/) regisztrálójának információja alapján. A kapcsolatfelvétel a WHOIS-regisztrációban megadott e-mail-címen (alapértelmezett) vagy telefonszámon keresztül történik. A HTTPS csak a tartomány hitelesítése után aktiválódik az egyéni tartományon. A tartomány jóváhagyására hat munkanap áll rendelkezésére. A hat munkanapon belül nem jóváhagyott kérelmeket a rendszer automatikusan megszakítja. 
 
 ![WHOIS-rekord](./media/front-door-custom-domain-https/whois-record.png)
 
-A DigiCert további e-mail-címekre is küld megerősítő e-mailt. Ha a WHOIS-regisztráló információja bizalmas, erősítse meg, hogy a jóváhagyást el tudja végezni közvetlenül a következő címek egyikéről:
+A DigiCert egy ellenőrző e-mailt is küld más e-mail-címekre. Ha a WHOIS-regisztráló információja bizalmas, erősítse meg, hogy a jóváhagyást el tudja végezni közvetlenül a következő címek egyikéről:
 
 admin@&lt;az-ön-tartományneve.com&gt;  
 administrator@&lt;az-ön-tartományneve.com&gt;  
@@ -184,13 +182,13 @@ webmaster@&lt;az-ön-tartományneve.com&gt;
 hostmaster@&lt;az-ön-tartományneve.com&gt;  
 postmaster@&lt;az-ön-tartományneve.com&gt;  
 
-Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemét-szűrőt használ, adja hozzá az admin@digicert.com engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
+Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemét-szűrőt használ, adja hozzá a admin@digicert.com engedélyezési. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
 
-Ha a jóváhagyási hivatkozásra kattint, a rendszer átirányítja egy online jóváhagyási űrlapra. Kövesse az űrlap utasításait; két ellenőrzési lehetősége van:
+Ha kiválasztja a jóváhagyási hivatkozást, a rendszer egy online jóváhagyási űrlapot irányít. Kövesse az űrlap utasításait; két ellenőrzési lehetősége van:
 
-- Az ugyanazon gyökértartományhoz tartozó ugyanazon fiók összes jövőbeli kérést jóváhagyhatja; például: contoso.com. Ez akkor ajánlott, ha további egyéni tartományokat tervez hozzáadni ugyanazon gyökértartományhoz.
+- Az ugyanazon gyökértartományhoz tartozó ugyanazon fiók összes jövőbeli kérést jóváhagyhatja; például: contoso.com. Ez a módszer akkor ajánlott, ha további egyéni tartományokat szeretne hozzáadni ugyanahhoz a gyökértartomány-tartományhoz.
 
-- Jóváhagyhatja az adott gazdanevet, amelyet a kéréshez használtak. A további kérésekhez további jóváhagyás szükséges.
+- Jóváhagyhatja az adott gazdanevet, amelyet a kéréshez használtak. További jóváhagyásra van szükség a további kérésekhez.
 
 A jóváhagyás után a DigiCert befejezi az egyéni tartománynév tanúsítványának létrehozását. A tanúsítvány egy évig érvényes, és a lejárta előtt automatikusan megújul.
 
@@ -200,17 +198,17 @@ A tartománynév érvényesítése után 6-8 óra szükséges ahhoz, hogy az egy
 
 ### <a name="operation-progress"></a>Műveleti folyamat
 
-Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS engedélyezésekor megy végbe. Miután engedélyezte a HTTPS-t, négy műveleti lépés jelenik meg az egyéni tartomány párbeszédpaneljében. Ahogy az egyes lépések aktívvá válnak, a folyamat előrehaladtával további allépések részletei jelennek meg a lépés alatt. Nem minden allépés fog előfordulni. Miután egy lépés sikeresen befejeződik, egy zöld pipa jelenik meg mellette. 
+Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS engedélyezésekor megy végbe. Miután engedélyezte a HTTPS-t, négy műveleti lépés jelenik meg az egyéni tartomány párbeszédpaneljében. Ahogy az egyes lépések aktívvá válnak, több allépési részlet jelenik meg a lépés alatt, ahogy halad. Nem minden allépés fog előfordulni. Miután egy lépés sikeresen befejeződik, egy zöld pipa jelenik meg mellette. 
 
 | Műveleti lépés | Műveleti allépés részletei | 
 | --- | --- |
 | 1. Kérés elküldése | Kérés elküldése |
 | | A HTTPS-kérés küldése folyamatban van. |
 | | A HTTPS-kérés elküldése sikerült. |
-| 2. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME révén le van képezve a Front Door alapértelmezett .azurefd.net előtérbeli gazdagépéhez. Ha nincs, akkor visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Minél hamarabb igazolja vissza a tartományt. |
+| 2. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME a bejárati ajtó alapértelmezett. azurefd.net előtér-állomásához van rendelve. Ha nincs, akkor visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Minél hamarabb igazolja vissza a tartományt. |
 | | Sikerült ellenőrizni a tartomány tulajdonjogát. |
-| | A tartomány tulajdonjogának ellenőrzési kérelme lejárt (az ügyfél valószínűleg nem válaszolt 6 napon belül). A HTTPS nem lesz engedélyezve a tartományon. * |
-| | A tartomány tulajdonjogának ellenőrzésére vonatkozó kérelem vissza lett utasítva az ügyfél által. A HTTPS nem lesz engedélyezve a tartományon. * |
+| | A tartomány tulajdonjogának ellenőrzési kérelme lejárt (az ügyfél valószínűleg nem válaszolt 6 napon belül). A HTTPS-t nem lehet engedélyezni a tartományon. * |
+| | A tartomány tulajdonjogának ellenőrzésére vonatkozó kérelem vissza lett utasítva az ügyfél által. A HTTPS-t nem lehet engedélyezni a tartományon. * |
 | 3. Tanúsítvány üzembe helyezése | A hitelesítésszolgáltató jelenleg azon tanúsítvány kibocsátását végzi, amely a HTTPS tartományban való engedélyezéséhez szükséges. |
 | | A tanúsítvány kibocsátása megtörtént, és a Front Doorban való üzembe helyezése folyamatban van. A folyamat akár 1 órát is igénybe vehet. |
 | | A tanúsítvány sikeresen üzembe lett helyezve a Front Doorhoz. |
@@ -236,7 +234,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 3. *Mi a teendő, ha nem kapok visszaigazolási e-mailt a DigiCerttől?*
 
-    Ha van olyan CNAME-bejegyzése az egyéni tartomány esetében, amely közvetlenül a gazdanév végpontjára mutat (és nem használja az afdverify altartománynevet), nem fog a tartomány visszaigazolására vonatkozó e-mailt kapni. A hitelesítés automatikusan történik. Máskülönben, ha nem rendelkezik CNAME-bejegyzéssel, és 24 órán belül nem kapott e-mailt, forduljon a Microsoft támogatási szolgálatához.
+    Ha van olyan CNAME-bejegyzése az egyéni tartományhoz, amely közvetlenül a végponti állomásnévre mutat (és nem használja a afdverify-altartomány nevét), akkor nem kap tartomány-ellenőrző e-mailt. A hitelesítés automatikusan történik. Máskülönben, ha nem rendelkezik CNAME-bejegyzéssel, és 24 órán belül nem kapott e-mailt, forduljon a Microsoft támogatási szolgálatához.
 
 4. *A SAN tanúsítvány használata kevésbé biztonságos, mint egy dedikált tanúsítvány használata?*
     
@@ -244,23 +242,23 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 5. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
 
-    Nem, hitelesítésszolgáltatói engedélyezési rekordra jelenleg nincs szükség. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
+    Nem, a hitelesítésszolgáltató engedélyezési rekordja jelenleg nem szükséges. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépések során engedélyezte a HTTPS protokollt az egyéni tartományon. Ha már nem szeretné HTTPS-sel használni az egyéni tartományt, letilthatja a HTTPS-t a következő lépések végrehajtásával:
+Az előző lépések során engedélyezte a HTTPS protokollt az egyéni tartományon. Ha már nem szeretné, hogy az egyéni tartománya HTTPS-alapú legyen, a következő témakörben letilthatja a HTTPS-t:
 
 ### <a name="disable-the-https-feature"></a>HTTPS szolgáltatás letiltása 
 
 1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg az **Azure-beli bejárati ajtó** konfigurációját.
 
-2. Az előtérbeli gazdagépek listájában válassza ki azt az egyéni tartományt, amelyen le szeretné tiltani a HTTPS-t.
+2. Az előtér-gazdagépek listájában válassza ki azt az egyéni tartományt, amely esetében le szeretné tiltani a HTTPS-t.
 
 3. A HTTPS letiltásához kattintson a **Letiltva**, majd a **Mentés** gombra.
 
 ### <a name="wait-for-propagation"></a>Várakozás a propagálásra
 
-Az egyéni tartomány HTTPS szolgáltatásának letiltása után 6-8 óra szükséges ahhoz, hogy a művelet végbemenjen. Ha a folyamat befejeződött, az egyéni HTTPS állapota **Letiltva** értékre vált az Azure Portalon, és a három műveleti lépés az egyéni tartomány párbeszédpanelében befejezettnek lesz jelölve. Az egyéni tartomány már nem használhatja a HTTPS-t.
+Az egyéni tartomány HTTPS szolgáltatásának letiltása után 6-8 óra szükséges ahhoz, hogy a művelet végbemenjen. Ha a folyamat befejeződött, a Azure Portalban az egyéni HTTPS-állapot **Letiltva** értékre lesz állítva, és az egyéni tartomány párbeszédpanelen a három művelet lépéseit befejezettként jelöli meg a rendszer. Az egyéni tartomány már nem használhatja a HTTPS-t.
 
 #### <a name="operation-progress"></a>Műveleti folyamat
 
@@ -278,9 +276,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Töltse fel a tanúsítványt a Key Vaultba.
 * Tartomány érvényesítése.
-* Engedélyezze a HTTPS-t az egyéni tartományhoz.
+* Engedélyezze a HTTPS protokollt az egyéni tartományhoz.
 
-Ha meg szeretné tudni, hogyan állíthatja be a Geo-szűrési szabályzatot a bejárati ajtóhoz, folytassa a következő oktatóanyaggal.
+Ha meg szeretné tudni, hogyan állíthat be egy geo-szűrési szabályzatot az előtérben, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Geo-szűrési szabályzat beállítása](front-door-geo-filtering.md)

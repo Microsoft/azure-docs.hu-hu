@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: f4648c216a0b6d06309c0166aba501d4f3f02a10
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c60d6ba1f4d3628f57b8149779318c3e049a9e24
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027516"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284238"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Áttelepítési útmutató: SAP-Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) az SAP-adapterek kiszolgálói nagyvállalati (bevezetési) adatbázisait egy Azure SQL Database-adatbázisba [SQL Server áttelepítési](https://azure.microsoft.com/migration/migration-journey) asszisztens használatával az SAP-adapterek Server Enterprise
+Ebből az útmutatóból megtudhatja, [hogyan telepítheti át](https://azure.microsoft.com/migration/migration-journey) az SAP-adapterek kiszolgálói nagyvállalati (bevezetési) adatbázisait egy Azure SQL Database-adatbázisba [SQL Server áttelepítési](https://azure.microsoft.com/en-us/migration/sql-server/) asszisztens használatával az SAP-adapterek Server Enterprise
 
 Más áttelepítési útmutatókért lásd: az [Azure Database áttelepítési útmutatója](https://docs.microsoft.com/data-migration). 
 

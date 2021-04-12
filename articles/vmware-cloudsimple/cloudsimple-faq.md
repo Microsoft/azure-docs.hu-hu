@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895563"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Gyakori kérdések a VMware-megoldásról a CloudSimple
@@ -50,7 +50,7 @@ A CloudSimple egy ütemezett karbantartási időszak előtt több nappal biztos�
 * **CloudSimple-infrastruktúra**.  A CloudSimple-infrastruktúra kiválóan elérhető.  Az ilyen típusú karbantartási időszak során a redundáns összetevők egyszerre frissülnek, hogy elkerülje a szolgáltatás megszakadását. Ön gondoskodik a saját felhőalapú vCenter, az összes virtuális géphez, a saját Felhőbeli internetkapcsolatról, valamint a helyszíni vagy az Azure-hoz való csatlakozásról.
 * **CloudSimple-portál**. Az ilyen típusú karbantartási időszak során előfordulhat, hogy a CloudSimple-portál néhány funkciója le van tiltva vagy nem érhető el.  A karbantartási időközt megelőzően az értesítés a szolgáltatásra vonatkozó korlátozásokkal kapcsolatos részleteket tartalmaz, miközben karbantartás zajlik.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 **Milyen csatlakozási lehetőségek vannak a CloudSimple-régió hálózatához?**
 

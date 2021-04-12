@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 04/09/2021
 ms.author: alkohli
-ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632033"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285198"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Biztonság és adatvédelem Azure Stack Edge Pro R és Azure Stack Edge mini R rendszerhez
 
@@ -100,17 +100,23 @@ A lemezek adatait két titkosítási réteg védi:
 > [!NOTE]
 > Az operációsrendszer-lemezen egy rétegbeli BitLocker XTS-AES-256 szoftveres titkosítás található.
 
-Ha az eszköz aktiválva van, a rendszer arra kéri, hogy mentsen egy olyan kulcsot tartalmazó fájlt, amely olyan helyreállítási kulcsokat tartalmaz, amelyek segítenek helyreállítani az eszközön lévő adatokat, ha az eszköz nem indul el. A fájlban két kulcs található:
+Az eszköz aktiválása előtt konfigurálnia kell a titkosítást az eszközön. Ez egy kötelező beállítás, és amíg a konfigurálás nem sikerült, nem aktiválhatja az eszközt. 
 
-- Az egyik kulcs helyreállítja az eszköz konfigurációját az operációsrendszer-köteteken.
-<!-- - Second key is to unlock the BitLocker on the data disks. -->
-- A második kulcs feloldja a hardveres titkosítást az adatlemezeken.
+A gyárban az eszközök rendszerképének bekapcsolását követően engedélyezve van a kötet szintjének BitLocker-titkosítása. Az eszköz fogadása után konfigurálnia kell a titkosítást. A rendszer újból létrehozza a tárolót és a köteteket, és lehetővé teszi a BitLocker-kulcsok használatát a REST titkosítás engedélyezéséhez, így újabb titkosítási réteget hozhat létre az adatokhoz. 
+
+A titkosítás-nyugalmi kulcs egy 32 karakter hosszú Base-64 kódolású kulcs, amelyet Ön biztosít, és ez a kulcs a tényleges titkosítási kulcs biztosítására szolgál. A Microsoft nem fér hozzá ehhez a titkosítatlan kulcshoz, amely megvédi adatait. A kulcsot a rendszer az eszköz aktiválása után a **felhő részletei** oldalon található kulcsfájl menti.
+
+Ha az eszköz aktiválva van, a rendszer arra kéri, hogy mentse a helyreállítási kulcsokat tartalmazó kulcsot, amely segít helyreállítani az eszközön lévő adatokat, ha az eszköz nem indul el. Bizonyos helyreállítási forgatókönyvek megkérik a mentett kulcsfájl megadására. A kulcsfájl a következő helyreállítási kulcsokkal rendelkezik:
+
+- Egy kulcs, amely feloldja az első titkosítási réteget.
+- Olyan kulcs, amely feloldja az adatlemezek hardveres titkosítását.
+- Egy kulcs, amely segít helyreállítani az eszköz konfigurációját az operációsrendszer-köteteken.
+- Egy olyan kulcs, amely az Azure-szolgáltatáson keresztül áramló adatforgalmat védi.
 
 > [!IMPORTANT]
 > Mentse a kulcsfájl biztonságos helyen kívül az eszközön. Ha az eszköz nem indul el, és nem rendelkezik a kulccsal, az adatvesztést eredményezhet.
 
-- Bizonyos helyreállítási forgatókönyvek megkérik a mentett kulcsfájl megadására. 
-<!--- If a node isn't booting up, you will need to perform a node replacement. You will have the option to swap the data disks from the failed node to the new node. For a 4-node device, you won't need a key file. For a 1-node device, you will be prompted to provide a key file.-->
+
 
 #### <a name="restricted-access-to-data"></a>Korlátozott hozzáférés az adatkezeléshez
 
@@ -132,7 +138,6 @@ Ha az eszközön a merevlemez alaphelyzetbe áll, biztonságos törlés történ
 ### <a name="protect-data-in-storage-accounts"></a>A Storage-fiókok adatainak védelme
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
-
 - Forgassa el és [szinkronizálja rendszeresen a Storage-fiók kulcsait](azure-stack-edge-gpu-manage-storage-accounts.md) , hogy megvédje a Storage-fiókját a jogosulatlan felhasználóktól.
 
 ## <a name="manage-personal-information"></a>Személyes adatok kezelése

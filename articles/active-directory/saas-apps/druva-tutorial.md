@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a7868d702ff3f1190d7f51e4ad7316508d453015
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Druva
@@ -136,13 +136,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-druva-sso"></a>Druva SSO konfigurálása
+## <a name="configure-druva-sso&quot;></a>Druva SSO konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Druva vállalati webhelyre rendszergazdaként.
 
 1. Kattintson a bal felső sarokban található Druva logóra, majd kattintson a **Druva-felhő beállításai** elemre.
 
-    ![Beállítások](./media/druva-tutorial/ic795091.png "Beállítások")
+    ![Beállítások](./media/druva-tutorial/ic795091.png &quot;Beállítások")
 
 1. Az **egyszeri bejelentkezés** lapon kattintson a **Szerkesztés** elemre.
 

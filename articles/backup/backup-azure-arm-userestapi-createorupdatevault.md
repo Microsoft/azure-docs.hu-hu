@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96002936"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
@@ -38,7 +38,7 @@ További információ a kérelem létrehozásáról: [REST API kérelem/válasz 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-|Name  |Kötelező  |Típus  |Description  |
+|Name  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
 |location     |  true       |Sztring         |   Erőforrás helye      |
@@ -66,7 +66,7 @@ A következő példában egy tárolót hoz létre a "West US"-ben. Itt adhatja m
 
 Két sikeres válasz van a művelethez egy Recovery Services-tároló létrehozásához vagy frissítéséhez:
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [Tároló](/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 létrehozva     | [Tároló](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Létrehozva      |

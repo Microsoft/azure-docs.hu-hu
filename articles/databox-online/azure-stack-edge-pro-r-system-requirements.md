@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
 ms.openlocfilehash: ef81494b6c93f2941cc41b367e566332d6bc7cc9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99831338"
 ---
 # <a name="azure-stack-edge-pro-r-system-requirements"></a>Azure Stack Edge Pro R rendszerkövetelményei
@@ -40,7 +40,7 @@ Az Azure Stack Edge Pro R rendszerkövetelményei a következők:
 
 Ha Azure Stack felügyeli, a következő többplatformos tárolási fiókok támogatottak az SMB/NFS/REST illesztőfelületek esetében.
 
-|Típus  |A(z)  |Megjegyzések  |
+|Típus  |Tárfiók  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása         |         |
 |    |  BLOB Storage: blob blokkolása       | Csak a NAS számára támogatott     |

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.openlocfilehash: 52b3523d3c092f1b9375f53038cc3b20d0ddedcc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103232834"
 ---
 # <a name="configure-the-similarity-ranking-algorithm-in-azure-cognitive-search"></a>A hasonlósági rangsorolási algoritmus konfigurálása az Azure-ban Cognitive Search
@@ -78,7 +78,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 A BM25 hasonlósága két felhasználó által testreszabható paramétert hoz létre a számított relevanciás pontszám szabályozása érdekében. A BM25 paramétereket az index létrehozásakor, vagy index-frissítésként is megadhatja, ha a BM25 algoritmus meg lett adva az index létrehozásakor.
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |----------|------|-------------|
 | K1 csomag | szám | A méretezési függvényt a dokumentum-lekérdezési pár végső relevanciás pontszáma alapján szabályozza. Az értékek általában 0,0 – 3,0, az 1,2 alapértelmezett értékkel. </br></br>A 0,0 érték a "bináris modell" értéket jelöli, ahol az egyetlen egyező kifejezés hozzájárulása megegyezik az összes egyező dokumentummal, függetlenül attól, hogy a kifejezés hány alkalommal jelenik meg a szövegben, míg egy nagyobb K1-érték lehetővé teszi, hogy a pontszám tovább növekedjen, mivel az adott időszak több példánya is megtalálható a dokumentumban. </br></br>A magasabb K1-értékek használata olyan esetekben lehet fontos, amikor egy keresési lekérdezésbe több kifejezés is beleszámít. Ezekben az esetekben érdemes lehet olyan dokumentumokat használni, amelyek megfelelnek a különböző lekérdezési kifejezéseknek, amelyek csak egy-egy, több alkalommal egyeznek meg a dokumentumokban. Ha például az "Apollo űrrepülés" kifejezést tartalmazó dokumentumok indexét kérdezi le, érdemes lehet csökkenteni a görög mitológiáról szóló cikk pontszámát, amely az "Apollo" kifejezést tartalmazza néhány tucat alkalommal, a "űrrepülés" kifejezés nélkül, egy másik cikkhez képest, amely kifejezetten megemlíti az "Apollo" és a "űrrepülés" fogalmát. |
 | b | szám | Azt szabályozza, hogy a dokumentum hossza hogyan befolyásolja a relevancia pontszámát. Az értékek 0 és 1 közöttiek, az alapértelmezett érték a 0,75. </br></br>A 0,0 érték azt jelenti, hogy a dokumentum hossza nem befolyásolja a pontszámot, míg a 1,0 érték azt jelenti, hogy a dokumentum hosszának a kifejezésre gyakorolt hatását a rendszer normalizálja. </br></br>A kifejezés gyakoriságának normalizálása a dokumentum hosszának megfelelően olyan esetekben hasznos, amikor azt szeretnénk, hogy szankcionáljuk a hosszabb dokumentumokat. Bizonyos esetekben a hosszabb dokumentumok (például egy teljes regény) nagyobb valószínűséggel tartalmaznak sok releváns kifejezést a sokkal rövidebb dokumentumokhoz képest. |
