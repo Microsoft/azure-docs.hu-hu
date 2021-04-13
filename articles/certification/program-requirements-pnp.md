@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bbe9a3f18463285521dde0ee64b369cffcd71d75
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969256"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310512"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT Plug and Play minősítési követelmények
 
@@ -51,7 +51,7 @@ A IoT Plug and Play minősítésének ígérete a következők:
 | **OS**                  | Független                                                     |
 | **Érvényesítés típusa**     | Automatizált                                                    |
 | **Érvényesítés**          | Az eszköznek a DPS-azonosító hatókör tulajdonjogának egyszerű átvitelét kell megvalósítani anélkül, hogy újra kellene fordítania a beágyazott kódot. A Microsoft biztosítja a [portál munkafolyamatot](https://certify.azure.com) a tesztek végrehajtásához annak ellenőrzéséhez, hogy az eszköz támogatja-e a DPS 1-et **.** A felhasználónak ki kell választania az egyik igazolási módszert (X. 509, TPM és SAS-kulcs) **2.** Az igazolási módszertől függően a felhasználónak a megfelelő műveleteket kell elvégeznie, például **a)** X. 509 tanúsítvány feltöltését a AICS felügyelt DPS b hatókörbe, a sas **-** kulcs vagy a hátirat kulcsának megvalósítása az eszközön |
-| **Erőforrások**           | **a)** [Device kiépítési szolgáltatás áttekintése](../iot-dps/about-iot-dps.md), **b)** [minta konfigurációs fájl a DPS-azonosító hatókör-átviteléhez](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples/digitaltwin_sample_ll_device/sample_config) |
+| **Erőforrások**           | **a)** [Device kiépítési szolgáltatás áttekintése](../iot-dps/about-iot-dps.md), **b)** [minta konfigurációs fájl a DPS-azonosító hatókör-átviteléhez](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **Szükséges DTDL v2: a teszt célja, hogy a definiált eszközök és felületek megfeleljenek a digitális Twins Definition Language v2-nek.**                                                              
 
@@ -95,7 +95,7 @@ A IoT Plug and Play minősítésének ígérete a következők:
 | **A következőkre vonatkozik**          | Bármely eszköz                                                   |
 | **OS**                  | Független                                                     |
 | **Érvényesítés típusa**     | Automatizált                                                    |
-| **Érvényesítés**          | A [portál munkafolyamata](https://certify.azure.com) ellenőrzi, hogy az eszköz kódja implementálja-e az [eszköz info Interface](https://repo.azureiotrepository.com/Models/dtmi:azure:DeviceManagement:DeviceInformation;1?api-version=2020-05-01-previewureiot:DeviceManagement:DeviceInformation:1) **1.** Ellenőrzi, hogy az eszköz kódja kibocsátja-e az értékeket IoT Hub 2 értékre **.** Ellenőrzi, hogy az interfész implementálva van-e a DCM-ben (ez a megvalósítás a DTDL v2-ben változik) **3.** Az ellenőrzések tulajdonságai nem írhatók (csak olvasható) **4.** Ellenőrzi, hogy a séma típusa sztring és/vagy hosszú, és nem null értékű-e. |
+| **Érvényesítés**          | A [portál munkafolyamata](https://certify.azure.com) ellenőrzi, hogy az eszköz kódja implementálja-e az eszköz info Interface **1.** Ellenőrzi, hogy az eszköz kódja kibocsátja-e az értékeket IoT Hub 2 értékre **.** Ellenőrzi, hogy az interfész implementálva van-e a DCM-ben (ez a megvalósítás a DTDL v2-ben változik) **3.** Az ellenőrzések tulajdonságai nem írhatók (csak olvasható) **4.** Ellenőrzi, hogy a séma típusa sztring és/vagy hosszú, és nem null értékű-e. |
 | **Erőforrások**           | [Microsoft által definiált felület](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
 | **Azure ajánlott**  | N/A                                                          |
 

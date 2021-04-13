@@ -3,12 +3,12 @@ title: Azure rövid útmutató – Event hub létrehozása a Azure Portal haszn�
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Event hub-t Azure Portal használatával.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bf83c53792c4934f43e0039d092bb3e36954bf7b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742041"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303117"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rövid útmutató: Eseményközpont létrehozása az Azure Portallal
 Az Azure Event Hubs egy Big streaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -54,7 +54,7 @@ Az Event Hubs névtér egy egyedi hatókörű tárolót biztosít, amelyben lét
    1. Válassza ki az előző lépésben létrehozott **erőforráscsoportot** .   
    1. Adja meg a névtér **nevét** . A rendszer azonnal ellenőrzi, hogy a név elérhető-e.  
    1. Válassza ki a névtér **helyét** .
-   1. Válassza ki az **árképzési szintet** (alapszintű vagy standard). Az alapszintű és a standard csomag közötti különbségekről további információt a következő témakörben talál: [Event Hubs díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/), a [szintek közötti különbségek](event-hubs-faq.md#what-is-the-difference-between-event-hubs-basic-and-standard-tiers)és a [kvóták és korlátok](event-hubs-quotas.md). 
+   1. Válassza ki az **árképzési szintet** (alapszintű vagy standard). Az alapszintű és a standard csomag közötti különbségekről további információt a következő témakörben talál: [Event Hubs díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/), a [szintek közötti különbségek](event-hubs-faq.yml#what-is-the-difference-between-event-hubs-basic-and-standard-tiers-)és a [kvóták és korlátok](event-hubs-quotas.md). 
    1. Hagyja meg az **átviteli egységek** beállításait. Az átviteli egységek előre megvásárolt kapacitásegységek. Az átviteli egységekkel kapcsolatos további tudnivalókért tekintse meg a [Event Hubs méretezhetőségét](event-hubs-scalability.md#throughput-units)ismertető témakört.  
    1. Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre.
       

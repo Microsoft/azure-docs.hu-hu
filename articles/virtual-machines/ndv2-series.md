@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2f062aa43132543a2c149039eb50c0a0ab22d83d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e335f015d784b3f3849c3646d16da9ad8999030c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618559"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309832"
 ---
 # <a name="updated-ndv2-series"></a>Frissített NDv2 sorozat
 
@@ -35,6 +35,7 @@ Kritikus fontosságú, hogy a NDv2 mind a számítási szempontból intenzív fe
 
 [Premium Storage](premium-storage-performance.md): támogatott<br>
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Ultra-lemezek](disks-types.md#ultra-disk): támogatott[(További információ a](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) rendelkezésre állásról, a használatról és a teljesítményről) <br>
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 2. generáció<br>

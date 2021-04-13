@@ -3,12 +3,12 @@ title: Apache Kafka fejlesztői útmutató Event Hubs
 description: Ez a cikk a Kafka-alkalmazások Azure-Event Hubs való integrálását ismertető cikkekre mutató hivatkozásokat tartalmaz.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fa40d7cc4b09f31d78665f901b49adacf3267f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061733"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303083"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs
 Ez a cikk a Apache Kafka-alkalmazások Azure-Event Hubs való integrálását ismertető cikkekre mutató hivatkozásokat tartalmaz. 
@@ -78,7 +78,7 @@ Tekintse át a GitHub [-adattár Azure-Event-hubok-for-Kafka](https://github.com
 Továbbá tekintse meg a következő cikkeket:
 
 - [Event Hubs Apache Kafka hibaelhárítási útmutatója](apache-kafka-troubleshooting-guide.md)
-- [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.yml)
 - [A Event Hubs Apache Kafka áttelepítési útmutatója](apache-kafka-migration-guide.md)
 
 

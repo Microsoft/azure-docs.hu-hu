@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9bbd5d4290261ec96755f02a6179a7cde267d82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97607983"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309407"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Az Azure Event Hubs (Azure-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
 
@@ -421,4 +421,4 @@ Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Az Azure Event Hubs funkciói és terminológiája](event-hubs-features.md)
-- [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+- [Event Hubs – gyakori kérdések](event-hubs-faq.yml)

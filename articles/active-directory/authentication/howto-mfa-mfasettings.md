@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932913"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305463"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Az Azure AD Multi-Factor Authentication beállításainak konfigurálása
 
@@ -236,7 +236,7 @@ Az Azure AD Multi-Factor Authentication _megbízható IP_ -címei szolgáltatás
 > [!NOTE]
 > A megbízható IP-címek csak az MFA-kiszolgáló használata esetén tartalmazhatnak privát IP-tartományokat. Felhőalapú Azure AD-Multi-Factor Authentication esetén csak nyilvános IP-címtartományok használhatók.
 >
-> Az IPv6-tartományok csak a [nevesített hely (előzetes verzió)](../conditional-access/location-condition.md#preview-features) felületén támogatottak.
+> Az IPv6-tartományok csak a [nevesített hely (előzetes verzió)](../conditional-access/location-condition.md) felületén támogatottak.
 
 Ha a szervezete telepíti a hálózati házirend-kiszolgáló bővítményét, hogy az MFA-t a helyszíni alkalmazások számára biztosítsa, jegyezze fel, hogy a forrás IP-cím mindig az NPS-kiszolgáló lesz, amely a hitelesítési kísérleten átfolyik.
 

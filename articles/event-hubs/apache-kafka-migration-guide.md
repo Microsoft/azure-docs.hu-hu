@@ -3,12 +3,12 @@ title: Migrálás az Azure Event Hubs for Apache Kafka
 description: Ez a cikk azt ismerteti, hogyan telepítheti át az ügyfeleket Apache Kafkaról az Azure Event Hubsba.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d9f3775a85df5a881c2c38566628e4e1d4d8c40e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8db14f6ec18843bf7d592d56b3cf2352c3901a9a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061444"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310036"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrálás az Apache Kafka-ökoszisztémákhoz készült Azure Event Hubsba
 Az Azure Event Hubs egy Apache Kafka-végpontot tesz elérhetővé, amely lehetővé teszi, hogy a Kafka protokoll használatával kapcsolódjon a Event Hubshoz. Ha minimális módosításokat végez a meglévő Kafka-alkalmazásban, csatlakozhat az Azure Event Hubshoz, és kihasználhatja az Azure-ökoszisztéma előnyeit. Event Hubs számos meglévő Kafka-alkalmazással működik, beleértve a MirrorMaker is. További információ: [Event Hubs Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
@@ -31,7 +31,7 @@ Szükség lehet a teljes tartománynevet is, amely az Event hub-névtérre mutat
 
 Ha a Event Hubs névtér nem nyilvános felhőre van telepítve, a tartománynév eltérhet (például \* . servicebus.chinacloudapi.cn, \* . servicebus.usgovcloudapi.net vagy \* . servicebus.cloudapi.de).
 
-## <a name="migration"></a>Migrálás 
+## <a name="migration"></a>Áttelepítés 
 
 ### <a name="update-your-kafka-client-configuration"></a>A Kafka-ügyfél konfigurációjának frissítése
 
@@ -59,6 +59,6 @@ Futtasson egy Kafka-alkalmazást, amely eseményeket küld az Event hub-nak. Ezu
 Ha többet szeretne megtudni a Kafka Event Hubséről és Event Hubsról, tekintse meg a következő cikkeket:  
 
 - [Event Hubs Apache Kafka hibaelhárítási útmutatója](apache-kafka-troubleshooting-guide.md)
-- [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.yml)
 - [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)
 - [Ajánlott konfigurációk](apache-kafka-configurations.md)

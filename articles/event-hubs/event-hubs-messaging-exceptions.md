@@ -3,12 +3,12 @@ title: Azure Event Hubs – kivételek (örökölt)
 description: Ez a cikk az Azure Event Hubs üzenetkezelési kivételek és a javasolt műveletek listáját tartalmazza.
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7c5016214bfa3e5813417177e5d113299e0284f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390895"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311923"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Üzenetkezelési kivételek Event Hubs – .NET (örökölt)
 Ez a szakasz a .NET-keretrendszer API-jai által generált .NET-kivételeket sorolja fel. 
@@ -77,7 +77,7 @@ Az alábbi táblázat az üzenetkezelési kivételek típusait, valamint azok ok
 | [Microsoft. ServiceBus. Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft. Azure. EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Az üzenet tartalma meghaladja az 1 MB-os korlátot. Ez az 1 MB-os korlát az összes üzenet, amely tartalmazhatja a rendszer tulajdonságait és a .NET-terhelést. | Csökkentse az üzenet adattartalmát, majd próbálja megismételni a műveletet. |Az újrapróbálkozás nem segít. |
 
 ## <a name="quotaexceededexception"></a>Quotaexceededexception osztályról
-A [quotaexceededexception osztályról](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) azt jelzi, hogy egy adott entitásra vonatkozó kvóta túllépve.
+A [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) kivétel azt jelzi, hogy túllépte az adott entitáshoz tartozó kvótát.
 
 Ez a kivétel akkor fordulhat elő, ha a fogadók maximális száma (5) már meg van nyitva felhasználónkénti csoport szintjén.
 
@@ -142,4 +142,4 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs áttekintése](./event-hubs-about.md)
 * [Event hub létrehozása](event-hubs-create.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+* [Event Hubs – gyakori kérdések](event-hubs-faq.yml)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2cb203a00bb00767126f95e1fdc2f5aff8990f01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1dd78ba3799573e05e4ebbf55887bae3d9674b7c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601277"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310077"
 ---
 Event Hubs rendezi az esemény-hubhoz eljuttatott események egy vagy több partícióba való rendezését. Ahogy újabb események érkeznek, a rendszer hozzáadja a sorozatot a végéhez. 
 
@@ -32,7 +32,7 @@ Event Hubs úgy lett kialakítva, hogy segítse a nagy mennyiségű esemény fel
 ### <a name="number-of-partitions"></a>Partíciók száma
 A partíciók száma a létrehozáskor van megadva, és Event Hubs standardban 1 és 32 között kell lennie. A partíciók száma a dedikált Event Hubs kapacitás egységenként legfeljebb 2000 partíció lehet. 
 
-Azt javasoljuk, hogy legalább annyi partíciót válasszon ki, amennyit várt, hogy az adott Event hub esetében az alkalmazás maximális terhelése alatt szükséges legyen a tartós [átviteli egységek (TU)](../articles/event-hubs/event-hubs-faq.md#what-are-event-hubs-throughput-units) . Egyetlen partícióval kell kiszámítani, amelynek kapacitása 1 TU (1 MB, 2 MB kimenő). A névtér vagy a fürt kapacitási egységei a partíciók számától függetlenül méretezhetők. Egy 32 partícióval rendelkező Event hub vagy 1 partícióval rendelkező Event hub esetében ugyanaz a költség, ha a névtér 1 TU kapacitásra van beállítva. 
+Azt javasoljuk, hogy legalább annyi partíciót válasszon ki, amennyit várt, hogy az adott Event hub esetében az alkalmazás maximális terhelése alatt szükséges legyen a tartós [átviteli egységek (TU)](../articles/event-hubs/event-hubs-faq.yml#what-are-event-hubs-throughput-units-) . Egyetlen partícióval kell kiszámítani, amelynek kapacitása 1 TU (1 MB, 2 MB kimenő). A névtér vagy a fürt kapacitási egységei a partíciók számától függetlenül méretezhetők. Egy 32 partícióval rendelkező Event hub vagy 1 partícióval rendelkező Event hub esetében ugyanaz a költség, ha a névtér 1 TU kapacitásra van beállítva. 
 
 Egy [dedikált Event Hubs-fürtben](../articles/event-hubs/event-hubs-dedicated-overview.md) lévő Event hub partícióinak száma [megnövelhető](../articles/event-hubs/dynamically-add-partitions.md) az Event hub létrehozása után, de a partíciók közötti elosztás a partíciók közötti eloszlásban változik, ha a partíciós kulcsok a partíciók változásaihoz való leképezése történik, ezért nehéz elkerülni az ilyen módosításokat, ha az adott alkalmazásban az események relatív sorrendje is fennáll.
 

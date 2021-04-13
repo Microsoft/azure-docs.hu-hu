@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 844846afa438a2d3425ecf6392b50f0411d8c03e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953510"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308999"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -129,7 +129,7 @@ Az alábbi táblázat az Azure-hoz kapcsolódó éles beállításokat ismerteti
 
 | Django-beállítás | Azure-utasítások |
 | --- | --- |
-| `SECRET_KEY` | Tárolja az értéket egy App Service-beállításban az [Access app Settings as környezeti változókként](#access-app-settings-as-environment-variables)leírt módon. Az értéket felválthatja ["secreting"-ként a Azure Key Vault](../key-vault/secrets/quick-create-python.md). |
+| `SECRET_KEY` | Tárolja az értéket egy App Service-beállításban az [Access app Settings as környezeti változókként](#access-app-settings-as-environment-variables)leírt módon. [Az értéket "titkos" néven is tárolhatja Azure Key Vaultban](../key-vault/secrets/quick-create-python.md). |
 | `DEBUG` | Hozzon létre egy `DEBUG` beállítást a app Service a 0 (false) értékkel, majd töltse be az értéket környezeti változóként. A fejlesztési környezetében hozzon létre egy `DEBUG` környezeti változót az 1 (igaz) értékkel. |
 | `ALLOWED_HOSTS` | Éles környezetben a Django megköveteli, hogy az alkalmazás URL-címét tartalmazza a `ALLOWED_HOSTS` *Settings.py* tömbben. Ezt az URL-címet futásidőben kérheti le a kóddal `os.environ['WEBSITE_HOSTNAME']` . App Service automatikusan beállítja a `WEBSITE_HOSTNAME` környezeti változót az alkalmazás URL-címére. |
 | `DATABASES` | Adja meg az adatbázis-kapcsolatok App Service beállításait, és töltse be azokat környezeti változókként a szótár feltöltéséhez [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Az értékeket (különösen a felhasználónevet és a jelszót) a [Azure Key Vault titokként](../key-vault/secrets/quick-create-python.md)is tárolhatja. |

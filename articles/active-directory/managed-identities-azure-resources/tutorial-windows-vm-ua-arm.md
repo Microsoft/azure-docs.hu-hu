@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag `:` felügyelt identitás használata Azure Resource Manager-Windows-Azure ad eléréséhez
+title: 'Oktatóanyag: felügyelt identitás használata az Azure Resource Manager-Windows-Azure AD eléréséhez'
 description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Windows VM-beli, felhasználó által hozzárendelt felügyelt identitással való elérésének folyamatán.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f926f400bf8ddd522bbb5f62509519fa09903d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f46d92c38d2d2567eeaafce0f9c5c9c3b5dd44c5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096594"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307061"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: felhasználó által hozzárendelt felügyelt identitás használata Windows rendszerű virtuális gépen a Azure Resource Manager eléréséhez
 

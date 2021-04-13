@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1a0fb15be92e25b576cd29e671eed3c6a5b948f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95999926"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313266"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Szolgáltatások használata a szólisták jelzésének növeléséhez
 
@@ -37,7 +37,7 @@ Tekintse át a [fogalmakat](luis-concept-feature.md) , hogy megértse, mikor és
 
     Ha a LUIS számára elég értéket adott meg, a javaslatok megjelennek. Az összes javasolt értéket **+ felveheti** , vagy kijelölhet egyéni kifejezéseket is.
 
-1. **Ezeket az értékeket** megtarthatja, ha a kifejezések felcserélhetők.
+1. **Ezeket az értékeket** megtarthatja, ha a kifejezések felcserélhetők. A megváltoztathatatlan kifejezések listája szolgáltatás a betanítás szinonimáinak listáját tartalmazza. A nem felcserélhető kifejezések listája külön szolgáltatásként szolgál a betanításhoz (ami azt jelenti, hogy a funkciók hasonlóak, de a kifejezések cseréjekor a szándék változik).
 
 1. A kifejezések listája a teljes alkalmazásra vonatkozik a **globális** beállítással, vagy egy adott modellre (cél vagy entitás). Ha a kifejezés listát a szándék vagy az entitás _funkciói_ alapján hozza létre, a váltógomb nem globális értékre van állítva. Ebben az esetben a váltás jelentése az, hogy a szolgáltatás csak a modellhez van helyi, ezért _nem globális_ az alkalmazáshoz.
 

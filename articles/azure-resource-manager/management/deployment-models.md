@@ -2,13 +2,13 @@
 title: A Resource Manager-alapú és a klasszikus üzemi modell
 description: A cikk a Resource Manager-alapú és a klasszikus (vagy szolgáltatásfelügyeleti) üzemi modellek közötti különbségeket ismerteti.
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: c2009034c431e53d162cb0f2c1f0d9815c8d1942
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185844"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306933"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager-alapú és a klasszikus üzemelő példányok: Az üzemi modellek és az erőforrások állapotának ismertetése
 
@@ -17,7 +17,7 @@ ms.locfileid: "96185844"
 
 Ebben a cikkben az Azure Resource Manager-alapú és a klasszikus üzemi modellel ismerkedhet meg. A Resource Manager-alapú és a klasszikus üzemi modell két eltérő módost kínál az Azure-megoldások üzembe helyezésére és felügyeletére. Két eltérő API-készleten keresztül használhatja őket, és az üzembe helyezett erőforrásokban is lehetnek lényeges különbségek. A két modell nem kompatibilis egymással. Ez a cikk röviden ismerteti ezeket az eltéréseket.
 
-Az erőforrások egyszerűbb üzembe helyezése és felügyelete érdekében a Microsoft a Resource Manager használatát javasolja az összes új erőforráshoz. Amennyiben lehetséges, a Microsoft javasolja, hogy a meglévő erőforrásokat is helyezze újra üzembe a Resource Manager használatával.
+Az erőforrások egyszerűbb üzembe helyezése és felügyelete érdekében a Microsoft a Resource Manager használatát javasolja az összes új erőforráshoz. Amennyiben lehetséges, a Microsoft javasolja, hogy a meglévő erőforrásokat is helyezze újra üzembe a Resource Manager használatával. Ha már használta a Cloud Servicest, áttelepítheti a megoldást [Cloud Services (kiterjesztett támogatás)](../../cloud-services-extended-support/overview.md).
 
 Ha most ismerkedik a Resource Managerrel, érdemes áttekinteni a [Azure Resource Manager áttekintésében](overview.md)meghatározott terminológiát.
 
@@ -40,7 +40,7 @@ A Resource Manager bevezetésekor az összes erőforrás visszamenőleg hozzá l
 
 Három forgatókönyvről érdemes szót ejteni:
 
-1. A Cloud Services nem támogatja a Resource Manager-alapú üzemi modellt.
+1. A [Cloud Services (klasszikus)](../../cloud-services/cloud-services-choose-me.md) nem támogatja a Resource Manager-alapú üzemi modellt. [Cloud Services (kiterjesztett támogatás)](../../cloud-services-extended-support/overview.md) támogatja a Resource Manager-alapú üzemi modellt.
 2. A virtuális gépek, a tárfiókok és a virtuális hálózatok a Resource Manager-alapú és a klasszikus üzemi modellt egyaránt támogatják.
 3. Az összes többi Azure-szolgáltatás a Resource Manager használatát támogatja.
 
@@ -95,7 +95,7 @@ Vegye figyelembe az erőforrások közötti következő összefüggéseket:
 
 A klasszikus megoldás a virtuális gépek futtatására a következő:
 
-* Egy szükséges felhőszolgáltatás, amely tárolóként szolgál a virtuális gépek futtatásához (Compute). A virtuális gépeket a rendszer automatikusan a hálózati kártya és az Azure által hozzárendelt IP-cím használatával kapja meg. Ezenkívül a felhőalapú szolgáltatás tartalmaz egy külső terheléselosztó példányt, egy nyilvános IP-címet és alapértelmezett végpontokat a távoli asztali és távoli PowerShell-forgalom lehetővé tételére a Windows-alapú virtuális gépek, valamint Secure Shell- (SSH-) forgalom lehetővé tételére a Linux-alapú virtuális gépek esetében.
+* A Cloud Services (klasszikus) a virtuális gépek üzemeltetésére szolgáló tárolóként működik (számítás). A virtuális gépeket a rendszer automatikusan a hálózati kártya és az Azure által hozzárendelt IP-cím használatával kapja meg. Ezenkívül a felhőalapú szolgáltatás tartalmaz egy külső terheléselosztó példányt, egy nyilvános IP-címet és alapértelmezett végpontokat a távoli asztali és távoli PowerShell-forgalom lehetővé tételére a Windows-alapú virtuális gépek, valamint Secure Shell- (SSH-) forgalom lehetővé tételére a Linux-alapú virtuális gépek esetében.
 * Egy szükséges Storage-fiók, amely egy virtuális gép virtuális merevlemezeit tárolja, beleértve az operációs rendszert, az ideiglenes és a további adatlemezeket (Storage).
 * Olyan választható virtuális hálózat, amely további tárolóként működik, amelyben létrehozhat egy alhálózattal rendelkező struktúrát, és kiválaszthatja azt az alhálózatot, amelyen a virtuális gép található (hálózat).
 

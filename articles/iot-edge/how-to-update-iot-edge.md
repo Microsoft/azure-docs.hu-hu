@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2021
+ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1ed9aef66e9e1a672274b814abbc4e83600761f5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: e5034c228a354c98b5792492d484da9eb10b8cf2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028706"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310852"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -202,9 +202,10 @@ A 1,2-es és korábbi verziók közötti főbb különbségek a következők:
 
 * A csomag neve a **iotedge** értékről a **aziotra** módosult.
 * A **libiothsm-STD** csomag már nem használatos. Ha a IoT Edge kiadás részeként biztosított standard csomagot használta, akkor a konfigurációk átvihetők az új verzióra. Ha a libiothsm-STD eltérő implementációját használta, akkor a felhasználó által megadott összes tanúsítványt, például az eszköz identitási tanúsítványát, az eszköz HITELESÍTÉSSZOLGÁLTATÓját és a megbízhatósági csomagot újra kell konfigurálni.
-* Egy új Identity Service, a **aziot** a 1,2 kiadás részeként lett bevezetve. Ez a szolgáltatás kezeli a IoT Edge az identitás kiépítését és felügyeletét, valamint a IoT Hubokkal kommunikáló egyéb eszközök összetevőit, például az Azure IoT Hub az eszköz frissítését. <!--TODO: add link to ADU when available -->
-* Az alapértelmezett konfigurációs fájl új névvel és hellyel rendelkezik. Korábban `/etc/iotedge/config.yaml` az eszköz konfigurációs adatai mostantól várhatóan bekerülnek a szolgáltatásba `/etc/aziot/config.toml` . A `iotedge config import` parancs segítségével a konfigurációs adatok áttelepíthetők a régi helyükre és szintaxisra az újat.
-* Minden olyan modul, amely a IoT Edge munkaterhelés API-t használja az állandó adatok titkosításához vagy visszafejtéséhez, a frissítés után nem lehet visszafejteni. IoT Edge dinamikusan generál egy fő azonosító kulcsot és egy titkosítási kulcsot belső használatra. Ez a kulcs nem kerül át az új szolgáltatásba. A IoT Edge v 1.2 egy újat fog előállítani.
+* Egy új Identity Service, a **aziot** a 1,2 kiadás részeként lett bevezetve. Ez a szolgáltatás kezeli a IoT Edge az identitás kiépítését és felügyeletét, valamint a IoT Hubkel kommunikáló egyéb eszközök összetevőit, például a [IoT hub eszköz frissítését](../iot-hub-device-update/understand-device-update.md).
+* Az alapértelmezett konfigurációs fájl új névvel és hellyel rendelkezik. Korábban `/etc/iotedge/config.yaml` az eszköz konfigurációs adatai mostantól várhatóan bekerülnek a szolgáltatásba `/etc/aziot/config.toml` . A `iotedge config import` parancs segítségével áttelepítheti a konfigurációs információkat a régi helyről és a szintaxisból az újat.
+  * Az importálási parancs nem ismeri fel és nem módosíthatja a hozzáférési szabályokat egy eszköz platformmegbízhatósági moduljában (TPM). Ha az eszköz TPM-igazolást használ, manuálisan kell frissítenie a/etc/udev/rules.d/tpmaccess.rules-fájlt, hogy hozzáférést biztosítson a aziottpm szolgáltatáshoz. További információ: [IoT Edge hozzáférés biztosítása a TPM](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)-hez.
+* A 1,2-es verzióban található munkaterhelés API új formátumban menti a titkosított titkokat. Ha egy régebbi verzióról a 1,2-es verzióra frissít, a rendszer importálja a meglévő fő titkosítási kulcsot. A számítási feladatok API a korábbi formátumban mentett titkos kódokat az importált titkosítási kulccsal tudja olvasni. A számítási feladatok API azonban nem tud a régi formátumban írni a titkosított titkokat. Miután egy modul újra titkosítja a titkos kulcsot, az új formátumban lesz mentve. Az 1,2-es verzióban titkosított titkos kódok nem olvashatók a 1,1-es verzióban található azonos modulban. Ha titkosított adat marad egy gazdagéphez csatlakoztatott mappához vagy kötethez, mindig készítsen biztonsági másolatot az adatról a frissítés *előtt* , hogy megőrizze a szükséges mértékű visszalépési képességet.
 
 A frissítési folyamatok automatizálása előtt ellenőrizze, hogy működik-e tesztelési gépen.
 

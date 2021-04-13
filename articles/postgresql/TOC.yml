@@ -32,8 +32,6 @@
     - name: Verziókezelési szabályzat
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
-    - name: Teljesítménnyel kapcsolatos javaslatok
-      href: concepts-azure-advisor-recommendations.md
     - name: Ismert problémák & korlátozásokkal kapcsolatban
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -217,6 +215,8 @@
             - name: Teljesítménnyel kapcsolatos javaslatok
               href: concepts-performance-recommendations.md
               displayName: 'query store, performance, optimize, recommendations'
+            - name: Javaslatok Azure Advisor
+              href: concepts-azure-advisor-recommendations.md
         - name: Alkalmazásfejlesztés
           items:
             - name: Ajánlott eljárások

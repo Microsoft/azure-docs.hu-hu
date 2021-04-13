@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: d7ae1e72dee28509c1338a1b56cf42a5293af9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670256"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304698"
 ---
 # <a name="glossary-of-iot-terms"></a>A IoT feltételeinek glosszáriuma
 
@@ -435,6 +435,12 @@ A modul identitása és a modul Twin ugyanazokat a funkciókat biztosítja, mint
 A [MQTT](https://mqtt.org/) az egyik üzenetküldési protokoll, amelyet a [IoT hub](#iot-hub) támogat az eszközökkel való kommunikációhoz. További információ a IoT Hub által támogatott üzenetküldési protokollokról: [üzenetek küldése és fogadása IoT hub](../iot-hub/iot-hub-devguide-messaging.md)használatával.
 
 ## <a name="o"></a>O
+
+### <a name="ontology"></a>Ontológia
+
+Egy adott tartomány modelljeinek összessége, például az ingatlanok, az intelligens városok, a IoT-rendszerek, az energiahálózatok és egyebek. A ontológiákat-ket gyakran használják az Azure-beli [digitális Twins](#azure-digital-twins)-hoz hasonló tudásbázisok sémái, mert az iparági szabványokon és ajánlott eljárásokon alapuló kiindulási pontot biztosítanak.
+
+További információ a ontológiákat: [Mi az az ontológia?](../digital-twins/concepts-ontologies.md)
 
 ### <a name="operations-monitoring"></a>Műveletek figyelése
 

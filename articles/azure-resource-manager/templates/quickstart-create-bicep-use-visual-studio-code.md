@@ -2,15 +2,15 @@
 title: Bicep-fájlok létrehozása – Visual Studio Code
 description: Az Azure-erőforrások üzembe helyezéséhez használja a Visual Studio Code és a bicep-bővítményt a bicep-fájlok számára
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/12/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82f047f553290c9121d91060c347c5b242c7ec2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612889"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306466"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Rövid útmutató: bicep-fájlok létrehozása a Visual Studio Code-ban
 
@@ -51,6 +51,10 @@ Az erőforrás deklarációja négy összetevőből áll:
 - **szimbolikus név** (STG): a szimbolikus név egy azonosító, amely az erőforrásra hivatkozik a bicep-fájlon belül. Az erőforrás neve nem az, hogy mikor lesz telepítve. Az erőforrás nevét a **Name (név** ) tulajdonság határozza meg.  Lásd a lista negyedik összetevőjét.
 - **erőforrástípus** ( Microsoft.Storage/storageAccounts@2019-06-01 ): az erőforrás-szolgáltató (Microsoft. Storage), az erőforrás típusa (storageAccounts) és a apiVersion (2019-06-01) áll. Mindegyik erőforrás-szolgáltató közzéteszi a saját API-verzióit, így ez az érték a típusra jellemző. Több típust és apiVersions is találhat az [ARM-sablonok referenciájának](/azure/templates/)különböző Azure-erőforrásaihoz.
 - **Tulajdonságok** (minden belül = {...}): adja meg az erőforrástípus tulajdonságait. Minden erőforrás rendelkezik egy `name` tulajdonsággal. A legtöbb erőforráshoz tartozik egy `location` tulajdonság is, amely azt a régiót állítja be, ahol az erőforrás telepítve van. A többi tulajdonság az erőforrás típusa és az API-verzió szerint változhat.
+
+További információ: [bicep struktúra](./bicep-file.md).
+
+A name tulajdonsághoz megjegyzés tartozik.  `//`Egysoros megjegyzésekhez vagy `/* ... */` Többsoros megjegyzésekhez használható
 
 ## <a name="completion-and-validation"></a>Befejezés és érvényesítés
 

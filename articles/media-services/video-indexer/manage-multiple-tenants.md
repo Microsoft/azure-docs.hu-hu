@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7596aa4cef6c4bc601c15018e8ede4265f395eb7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76990504"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312858"
 ---
 # <a name="manage-multiple-tenants"></a>Több bérlő kezelése
 
@@ -45,7 +45,7 @@ Ezen architektúra használatakor létrejön egy Video Indexer fiók az egyes b�
 * A több Video Indexer (és a társított Media Services) fiókokat bérlők miatt nehezebb kezelni.
 
 > [!TIP]
-> Hozzon létre egy rendszergazdai felhasználót a rendszeréhez [video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/) , és az engedélyezési API segítségével adja meg a bérlők számára a megfelelő [fiók hozzáférési tokenjét](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token).
+> Hozzon létre egy rendszergazdai felhasználót a rendszeréhez [video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/) , és az engedélyezési API segítségével adja meg a bérlők számára a megfelelő [fiók hozzáférési tokenjét](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token).
 
 ## <a name="single-video-indexer-account-for-all-users"></a>Egyetlen Video Indexer fiók az összes felhasználó számára
 
@@ -55,7 +55,7 @@ Ha ezt az architektúrát használja, az ügyfél felelős a bérlők elkülön�
 
 Ezzel a beállítással a különböző testreszabási modellek (személy, nyelv és márkák) megoszthatók és elkülöníthetők a bérlők között a modellek bérlő szerinti szűrésével.
 
-[Videók feltöltésekor](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)egy másik Partition attribútumot is megadhat bérlőként. Ez lehetővé teszi az elkülönítést a [keresési API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)-ban. A Search API-ban a Partition attribútum megadásával csak a megadott partíció eredményei lesznek elérhetők. 
+[Videók feltöltésekor](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)egy másik Partition attribútumot is megadhat bérlőként. Ez lehetővé teszi az elkülönítést a [keresési API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos)-ban. A Search API-ban a Partition attribútum megadásával csak a megadott partíció eredményei lesznek elérhetők. 
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 

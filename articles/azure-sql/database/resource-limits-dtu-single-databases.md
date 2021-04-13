@@ -10,24 +10,36 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/20/2019
-ms.openlocfilehash: c530d584282cebba78c095798944e48d7efe2c66
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 3afc2a1e3b279e7c4fd350e96787454e01e01f79
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625631"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303219"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ez a cikk részletes erőforrás-korlátozásokat tartalmaz Azure SQL Database önálló adatbázisok számára a DTU beszerzési modell használatával.
 
-A rugalmas készletek DTU megvásárlásához lásd: [DTU-erőforrások korlátai – rugalmas készletek](resource-limits-dtu-elastic-pools.md). A virtuális mag erőforrás-korlátaival kapcsolatban lásd: [virtuális mag-erőforrások korlátai – önálló adatbázisok](resource-limits-vcore-single-databases.md) és [virtuális mag-erőforrások korlátai – rugalmas készletek](resource-limits-vcore-elastic-pools.md). A különböző vásárlási modellekkel kapcsolatos további információkért lásd: [modellek és szolgáltatási szintek beszerzése](purchasing-models.md).
+* A kiszolgálón található önálló adatbázisokra vonatkozó DTU megvásárlásával kapcsolatban lásd: a [kiszolgálók erőforrás-korlátainak áttekintése](resource-limits-logical-server.md).
+* Az Azure SQL Database DTU beszerzési modellre vonatkozó korlátozásait lásd: a DTU erőforrás-korlátozásai az [önálló adatbázisok](resource-limits-dtu-single-databases.md) és a [DTU-erőforrások korlátai rugalmas készletek](resource-limits-dtu-elastic-pools.md).
+* A virtuális mag erőforrás-korlátaival kapcsolatban lásd: virtuális mag-erőforrás korlátai [– Azure SQL Database](resource-limits-vcore-single-databases.md) és [virtuális mag erőforrás-korlátok – rugalmas készletek](resource-limits-vcore-elastic-pools.md).
+* A különböző vásárlási modellekkel kapcsolatos további információkért lásd: [modellek és szolgáltatási szintek beszerzése](purchasing-models.md).
+
+Minden írásvédett replika saját erőforrásokkal rendelkezik, például a DTU, a feldolgozókkal és a munkamenetekkel. Az egyes írásvédett replikák a cikk későbbi részében részletesen ismertetett erőforrás-korlátokra vonatkoznak. 
+
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Önálló adatbázis: tárolási méretek és számítási méretek
 
-A következő táblázatok az egyes szolgáltatási rétegekben és számítási méretekben elérhető erőforrásokat jelenítik meg az egyes adatbázisokhoz. Az [Azure Portal](single-database-manage.md#the-azure-portal), a [Transact-SQL](single-database-manage.md#transact-sql-t-sql), a [PowerShell](single-database-manage.md#powershell), az [Azure CLI](single-database-manage.md#the-azure-cli)vagy a [REST API](single-database-manage.md#rest-api)használatával megadhatja a szolgáltatási szintet, a számítási méretet és a tárterületet egyetlen adatbázishoz.
+A következő táblázatok az egyes szolgáltatási rétegekben és számítási méretekben elérhető erőforrásokat jelenítik meg az egyes adatbázisokhoz. Megadhatja a szolgáltatási szintet, a számítási méretet és a tárterület mennyiségét egyetlen adatbázishoz a következő használatával:
+
+* [Transact-SQL](single-database-manage.md#transact-sql-t-sql) az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database) használatával
+* [Azure Portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](single-database-manage.md#powershell)
+* [Azure CLI](single-database-manage.md#the-azure-cli)
+* [REST API](single-database-manage.md#rest-api)
 
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [önálló adatbázis skálázása](single-database-scale.md)

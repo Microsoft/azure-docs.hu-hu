@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/15/2021
-ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/10/2021
+ms.openlocfilehash: cee7993116e746c7b827faaf94724033501f1318
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561685"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309050"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -132,14 +132,17 @@ Az adatfolyamatok díjszabása virtuális mag-óra, ami azt jelenti, hogy a für
 
 ### <a name="time-to-live"></a>Élettartam
 
-Alapértelmezés szerint minden adatfolyam-tevékenység egy új fürtöt indít el az IR-konfiguráció alapján. A fürt indítási ideje néhány percet vesz igénybe, és az adatfeldolgozás nem kezdődhet egészen addig, amíg be nem fejeződik. Ha a folyamatok több **szekvenciális** adatfolyamatot tartalmaznak, akkor engedélyezheti az élettartam (TTL) értékét. Az élő érték megadásával a fürt a végrehajtás befejeződése után bizonyos ideig életben marad. Ha egy új feladatot az élettartam ideje alatt az IR használatával kezdi meg, a rendszer újból felhasználja a meglévő fürtöt, és a kezdési idő jelentősen csökkenni fog. A második művelet befejezése után a fürt ismét életben marad a TTL-idő alatt.
+Alapértelmezés szerint minden adatfolyam-tevékenység egy új Spark-fürtöt indít el a Azure IR konfiguráció alapján. A hideg fürt indítási ideje néhány percet vesz igénybe, és az adatfeldolgozás nem kezdődhet egészen addig, amíg be nem fejeződik. Ha a folyamatok több **szekvenciális** adatfolyamatot tartalmaznak, akkor engedélyezheti az élettartam (TTL) értékét. Az élő érték megadásával a fürt a végrehajtás befejeződése után bizonyos ideig életben marad. Ha egy új feladatot az élettartam ideje alatt az IR használatával kezdi meg, a rendszer újból felhasználja a meglévő fürtöt, és a kezdési idő jelentősen csökkenni fog. A második művelet befejezése után a fürt ismét életben marad a TTL-idő alatt.
 
-Egyszerre csak egy feladatot lehet futtatni egyetlen fürtön. Ha van elérhető fürt, de két adatfolyam indul el, csak egy fogja használni az élő fürtöt. A második feladatot a saját elszigetelt fürtje fogja felkészíteni.
+Emellett a meleg fürtök indítási idejét is csökkentheti, ha a "gyors használat" lehetőséget választja az Azure Integration Runtime adatáramlás tulajdonságai területén. Ha ez igaz értékre van állítva, a rendszer az ADF-et arra utasítja, hogy ne Teardown a meglévő fürtöt az egyes feladatok után, hanem használja újra a meglévő fürtöt, amely lényegében a Azure IR életben beállított számítási környezetet a TTL-ban megadott időtartamig tartja. Ez a beállítás lehetővé teszi az adatfolyam-tevékenységek legrövidebb indítási idejét egy folyamat végrehajtásakor.
 
-Ha a legtöbb adatfolyamat párhuzamosan fut, nem ajánlott engedélyezni az ÉLETTARTAMot. 
+Ha azonban a legtöbb adatfolyamat párhuzamosan fut, nem ajánlott engedélyezni az ÉLETTARTAMot az adott tevékenységekhez használt IR-hez. Egyszerre csak egy feladatot lehet futtatni egyetlen fürtön. Ha van elérhető fürt, de két adatfolyam indul el, csak egy fogja használni az élő fürtöt. A második feladatot a saját elszigetelt fürtje fogja felkészíteni.
 
 > [!NOTE]
 > Az integrációs modul automatikus feloldása esetén az élettartam nem érhető el
+ 
+> [!NOTE]
+> A meglévő fürtök gyors újbóli felhasználása a Azure Integration Runtime jelenleg nyilvános előzetes verzióban elérhető szolgáltatása.
 
 ## <a name="optimizing-sources"></a>Források optimalizálása
 
@@ -304,9 +307,10 @@ Ha az adatfolyamatok párhuzamosan futnak, az ajánlott, hogy ne engedélyezze a
 
 ### <a name="execute-data-flows-sequentially"></a>Az adatfolyamatok végrehajtása szekvenciálisan
 
-Ha az adatfolyam-tevékenységeket egymás után hajtja végre, akkor azt javasoljuk, hogy a Azure IR konfigurációjában állítsa be a TTL értéket. Az ADF újra felhasználja a számítási erőforrásokat, így a fürt gyorsabb indítási ideje lesz. Minden tevékenység továbbra is el lesz különítve, és minden egyes végrehajtáshoz új Spark-környezetet kap.
+Ha az adatfolyam-tevékenységeket egymás után hajtja végre, akkor azt javasoljuk, hogy a Azure IR konfigurációjában állítsa be a TTL értéket. Az ADF újra felhasználja a számítási erőforrásokat, így a fürt gyorsabb indítási ideje lesz. Minden tevékenység továbbra is el lesz különítve, és minden egyes végrehajtáshoz új Spark-környezetet kap. Az egymást követő tevékenységek közötti idő csökkentéséhez állítsa be a Azure IR gyors ismételt használat jelölőnégyzetét, hogy az ADF tájékoztassa a meglévő fürtöt.
 
-A feladatok egymás utáni futtatása valószínűleg a leghosszabb időt vesz igénybe a végpontok végrehajtásához, de a logikai műveletek tiszta elkülönítését is lehetővé teszi.
+> [!NOTE]
+> A meglévő fürtök gyors újbóli felhasználása a Azure Integration Runtime jelenleg nyilvános előzetes verzióban elérhető szolgáltatása.
 
 ### <a name="overloading-a-single-data-flow"></a>Egy adatfolyam túlterhelése
 

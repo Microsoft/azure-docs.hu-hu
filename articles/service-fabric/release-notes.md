@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f7e929000b85462e7fabf6d717c52abc454b47ad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731224"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313334"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -22,11 +22,40 @@ ms.locfileid: "105731224"
 
 Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet és SDK-k legújabb kiadásairól és frissítéseiről.
 
-## <a name="service-fabric-72"></a>Service Fabric 7,2
+## <a name="service-fabric-80"></a>Service Fabric 8,0
 
-Örömmel jelentjük be, hogy az Service Fabric Runtime 7,2-es kiadása elindult a különböző Azure-régiókba, valamint az eszközök és az SDK frissítéseivel. A .NET SDK, a Java SDK és a Service Fabric futtatókörnyezet frissítései a webplatform-telepítővel, a NuGet-csomagokkal és a Maven-adattárakkal érhetők el.
+Örömmel jelentjük be, hogy az Service Fabric Runtime 8,0-es kiadása elindult a különböző Azure-régiókba, valamint az eszközök és az SDK frissítéseivel. A .NET SDK, a Java SDK és a Service Fabric futtatókörnyezet frissítései a webplatform-telepítővel, a NuGet-csomagokkal és a Maven-adattárakkal érhetők el.
 
 ### <a name="key-announcements"></a>Legfontosabb közlemények
+
+- A Windowshoz készült .NET 5 támogatásának **általános elérhetősége**
+- [Állapot nélküli NodeTypes](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types) **általános elérhetősége**
+- Állapot nélküli szolgáltatási példányok áthelyezése
+- Lehetőség a paraméteres DefaultLoad hozzáadására az alkalmazás jegyzékfájljában
+- Az Egypéldányos replikák frissítései esetében – a fürt szintjének néhány beállítását egy alkalmazás szintjén kell meghatározni
+- Képesség az intelligens elhelyezéshez a csomópont-címkék alapján
+- A fürt állapotát befolyásoló nem kifogástalan állapotú csomópontok százalékos küszöbértékének meghatározása
+- A legfelső betöltött szolgáltatások lekérdezésének lehetősége
+- Az új hibakódok új intervallumának hozzáadása
+- A szolgáltatási példány befejezettként való megjelölésének képessége
+- A Wave-alapú üzembe helyezési modell támogatása az automatikus frissítésekhez
+- Felkészültségi mintavétel hozzáadva a tárolóban lévő alkalmazásokhoz
+- A UseSeparateSecondaryMoveCost alapértelmezés szerint True (igaz) értékre való engedélyezése
+- Rögzített StateManager a hivatkozás felszabadításához, amint biztonságos a kiadás
+- Központi titkos szolgáltatás eltávolításának letiltása a felhasználói titkok tárolása közben
+
+
+### <a name="service-fabric-80-releases"></a>Service Fabric 8,0 kiadás
+| Kiadási dátum | Kiadás | További információ |
+|---|---|---|
+| 2021. április 08. | [Azure Service Fabric 8,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+
+
+## <a name="previous-versions"></a>Korábbi verziók
+
+### <a name="service-fabric-72"></a>Service Fabric 7,2
+
+#### <a name="key-announcements"></a>Legfontosabb közlemények
 
 - **Előzetes** verzió: [**Service Fabric felügyelt fürtök**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) már nyilvános előzetes verzióban érhetők el. Service Fabric felügyelt fürtök célja, hogy leegyszerűsítse a fürtök üzembe helyezését és kezelését a Service Fabric-fürtöt egy ARM-erőforrásba alkotó mögöttes erőforrások beágyazásával. További részletek: [Service Fabric felügyelt fürt áttekintése](./overview-managed-cluster.md).
 - **Előzetes** verzió: az [**állapot nélküli szolgáltatások támogatása a csomópontok számánál nagyobb számú**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) példánnyal már nyilvános előzetes verzióban érhető el. Az elhelyezési házirend lehetővé teszi egy adott partíció több állapot nélküli példányának létrehozását egy csomóponton.
@@ -40,7 +69,7 @@ Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet
 - **RunToCompletion**: Service Fabric támogatja a futtatási koncepciót a vendég végrehajtható fájljainak teljesítéséhez. Ezzel a frissítéssel a replika befejezését követően a rendszer felszabadítja a replikához lefoglalt fürterőforrás-erőforrásokat.
 - [**Továbbfejlesztettük az erőforrás-irányítási támogatást**](./service-fabric-resource-governance.md): a kérelmek és a korlátozások megadása a CPU-és a memória-erőforrásokhoz.
 
-### <a name="service-fabric-72-releases"></a>Service Fabric 7,2 kiadás
+#### <a name="service-fabric-72-releases"></a>Service Fabric 7,2 kiadás
 | Kiadási dátum | Kiadás | További információ |
 |---|---|---|
 | Október 21., 2020 | [Azure Service Fabric 7,2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
@@ -51,7 +80,6 @@ Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet
 | Február 17., 2021 | [Azure Service Fabric 7,2 hatodik frissítés kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 | 2021. március 10. | [Azure Service Fabric 7,2 hetedik frissítési kiadás](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-seventh-refresh-release/ba-p/2201100) | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU7-releasenotes.md)
 
-## <a name="previous-versions"></a>Korábbi verziók
 
 ### <a name="service-fabric-71"></a>Service Fabric 7,1
 

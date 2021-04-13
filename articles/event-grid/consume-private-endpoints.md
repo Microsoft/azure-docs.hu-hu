@@ -3,12 +3,12 @@ title: Események kézbesítése a Private link Service használatával
 description: Ez a cikk azt ismerteti, hogyan lehet megkerülni a korlátozást, hogy az események ne legyenek kézbesítve a Private link Service használatával.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 75ae8ff2c341048c39156e43da3615788e9d0f0a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629291"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309431"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Események kézbesítése a Private link Service használatával
 Jelenleg nem lehet eseményeket kézbesíteni [privát végpontok](../private-link/private-endpoint-overview.md)használatával. Ez azt eredményezi, hogy nincs támogatás, ha szigorú hálózati elkülönítési követelmények vannak, amelyekben a továbbított események forgalma nem hagyhatja el a magánhálózati IP-területet. 
@@ -36,7 +36,7 @@ Ha a Event Hubs névtérben lévő esemény-központhoz felügyelt identitás ha
 Az alábbi lépéseket követve továbbíthatja az eseményeket Service Bus várólistákba vagy témakörökbe Service Bus névterében a felügyelt identitás használatával:
 
 1. Rendszer által hozzárendelt identitás engedélyezése: [rendszertémakörök](enable-identity-system-topics.md), [Egyéni témakörök és tartományok](enable-identity-custom-topics-domains.md). 
-1. [Az identitás hozzáadása a **Azure Service Bus adatfeladói**](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) szerepkörhöz a Service Bus névtérben
+1. [Az identitás hozzáadása a **Azure Service Bus adatfeladói**](../service-bus-messaging/service-bus-managed-service-identity.md#azure-built-in-roles-for-azure-service-bus) szerepkörhöz a Service Bus névtérben
 1. [Engedélyezze a **megbízható Microsoft-szolgáltatások számára, hogy megkerüljék ezt a tűzfal-** beállítást a Service Bus névtérben](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
 1. Konfigurálja az Service Bus üzenetsor vagy témakört használó [esemény-előfizetést](managed-service-identity.md) végpontként a rendszer által hozzárendelt identitás használatára.
 

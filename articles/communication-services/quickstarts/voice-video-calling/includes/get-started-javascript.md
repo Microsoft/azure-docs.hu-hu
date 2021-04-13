@@ -1,30 +1,30 @@
 ---
-title: Rövid útmutató – VOIP-hívás hozzáadása egy webalkalmazáshoz az Azure kommunikációs szolgáltatásokkal
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a JavaScripthez készült Azure kommunikációs szolgáltatásokat hívó SDK-t
+title: Rövid útmutató – VOIP-hívás hozzáadása egy webalkalmazáshoz a Azure Communication Services
+description: Ez az oktatóanyag bemutatja, hogyan használhatja a Azure Communication Services Calling SDK for JavaScriptet
 author: ddematheu
 ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: be6ff629a651af5cc06d7928c7972f07aa0fd6e2
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: a93fe6c6203140bfed3771da8353ea7843b7694f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107291422"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327454"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást a JavaScripthez készült Azure kommunikációs szolgáltatások meghívásával.
+Ebből a rövid útmutatóból megtudhatja, hogyan indítható el egy hívás a Azure Communication Services Sdk for JavaScript használatával.
 
 > [!NOTE]
-> Ez a dokumentum a hívó SDK-ból származó 1.0.0-Beta. 10 verziót használja.
+> Ez a dokumentum a hívó SDK 1.0.0-beta.10-es verzióját használja.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Node.js](https://nodejs.org/) Aktív LTS-és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
-- Aktív kommunikációs szolgáltatások erőforrása. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
-- Felhasználói hozzáférési jogkivonat a hívási ügyfél létrehozásához. Megtudhatja, hogyan [hozhat létre és kezelhet felhasználói hozzáférési jogkivonatokat](../../access-tokens.md).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- [Node.js](https://nodejs.org/) Active LTS és Maintenance LTS verziók (8.11.1 és 10.14.1 ajánlott).
+- Egy aktív Communication Services erőforrás. [Hozzon létre egy Communication Services erőforrást.](../../create-communication-resource.md)
+- Felhasználói hozzáférési jogkivonat a hívási ügyfél példányosíthoz. Megtudhatja, [hogyan hozhat létre és kezelhet felhasználói hozzáférési jogkivonatokat.](../../access-tokens.md)
 
 
 [!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
@@ -70,7 +70,7 @@ A kód a következő:
 </html>
 ```
 
-Hozzon létre egy fájlt **client.js** nevű projekt gyökérkönyvtárában, hogy tartalmazza az alkalmazás logikáját ehhez a rövid útmutatóhoz. Adja hozzá az alábbi kódot a hívó ügyfél importálásához és a DOM-elemekre mutató hivatkozások beszerzéséhez, hogy az üzleti logikánk is csatolható legyen. 
+Hozzon létre egy fájlt a projekt gyökérkönyvtárában **client.js,** hogy tartalmazza a rövid útmutató alkalmazáslogikát. Adja hozzá a következő kódot a hívó ügyfél importálása és a DOM-elemek hivatkozásának lehívása az üzleti logika csatolása előtt. 
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
@@ -88,18 +88,18 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
+Az alábbi osztályok és felületek a hívó SDK néhány fő funkcióját Azure Communication Services kezelik:
 
 | Név                             | Leírás                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | A CallClient a hívó SDK fő belépési pontja.                                                                       |
-| CallAgent                        | A CallAgent a hívások indításához és kezeléséhez használatos.                                                                                            |
-| AzureCommunicationTokenCredential | A AzureCommunicationTokenCredential osztály az CommunicationTokenCredential felületet valósítja meg, amely a CallAgent létrehozásához használatos. |
+| CallAgent (CallAgent)                        | A CallAgent hívásokat indít el és kezel.                                                                                            |
+| AzureCommunicationTokenCredential | Az AzureCommunicationTokenCredential osztály a CommunicationTokenCredential felületet implementálja, amely a CallAgent példányának példányosítását használja. |
 
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Be kell állítania egy érvényes felhasználói hozzáférési tokent az erőforráshoz a szövegmezőbe, majd kattintson a "submit" (küldés) gombra. Ha még nem áll rendelkezésre jogkivonat, tekintse meg a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) dokumentációját. A használatával `CallClient` inicializáljon egy `CallAgent` példányt egy példánnyal, `CommunicationTokenCredential` amely lehetővé teszi a hívások kezdeményezését és fogadását. Adja hozzá a következő kódot a **client.jshoz**:
+A szövegmezőbe be kell írnunk egy érvényes felhasználói hozzáférési jogkivonatot az erőforráshoz, és a Küldés gombra kell kattintanunk. Ha még nem [rendelkezik](../../access-tokens.md) elérhető jogkivonattal, tekintse meg a felhasználói hozzáférési jogkivonat dokumentációját. A használatával inicializáljon egy példányt egy használatával, amely lehetővé teszi a `CallClient` `CallAgent` hívások `CommunicationTokenCredential` hívását és fogadását. Adja hozzá a következő kódot **aclient.js:**
 
 ```javascript
 submitToken.addEventListener("click", async () => {
@@ -116,9 +116,9 @@ submitToken.addEventListener("click", async () => {
 })
 ```
 
-## <a name="start-a-call"></a>Hívás indítása
+## <a name="start-a-call"></a>Hívás elindítani
 
-Eseménykezelő hozzáadásával kezdeményezheti a hívását, ha a `callButton` gombra kattint:
+Adjon hozzá egy eseménykezelőt, amely hívást kezdeményez, amikor `callButton` a elemre kattint:
 
 ```javascript
 callButton.addEventListener("click", () => {
@@ -134,9 +134,9 @@ callButton.addEventListener("click", () => {
 });
 ```
 
-## <a name="end-a-call"></a>Hívás befejezése
+## <a name="end-a-call"></a>Hívás vége
 
-Esemény-figyelő hozzáadása az aktuális hívás befejezéséhez, amikor a `hangUpButton` gombra kattint:
+Adjon hozzá egy esemény figyelőt az aktuális hívásának a hívásának a `hangUpButton` gombra való kattintása esetén:
 
 ```javascript
 hangUpButton.addEventListener("click", () => {
@@ -150,18 +150,22 @@ hangUpButton.addEventListener("click", () => {
 });
 ```
 
-A `forEveryone` tulajdonság véget ér a hívás minden résztvevőnél.
+A `forEveryone` tulajdonság minden hívási résztvevő számára befejezi a hívást.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Használja az `webpack-dev-server` alkalmazást az alkalmazás létrehozásához és futtatásához. Futtassa a következő parancsot az alkalmazás gazdagépének a helyi webkiszolgálón való megadásához:
+A használatával `webpack-dev-server` készítse el és futtassa az alkalmazást. Futtassa a következő parancsot az alkalmazásgazda helyi webkiszolgálón való kötegl akkorához:
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 ```
 
-Nyissa meg a böngészőt, és navigáljon a gombra http://localhost:8080/ . A következőnek kell megjelennie:
+Nyissa meg a böngészőt, és navigáljon a következőre: http://localhost:8080/ . A következőnek kell megjelennie:
 
-:::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Képernyőkép a befejezett JavaScript-alkalmazásról.":::
+:::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Az elkészült JavaScript-alkalmazás képernyőképe.":::
 
-A kimenő VOIP-hívást úgy teheti meg, hogy egy felhasználói azonosítót biztosít a szövegmezőben, és a **hívás indítása** gombra kattint. A Calling `8:echo123` egy echo-robottal csatlakozik, ez nagyszerű megoldás az első lépésekhez és a hangeszközök ellenőrzéséhez.
+Kimenő VOIP-hívást úgy hívhat meg, hogy a szövegmezőben egy felhasználói azonosítót ad meg, majd a **Start Call (Hívás kezdete) gombra** kattint. A hívása egy echo robothoz csatlakoztatja. Ez nagyszerű az első lépésekhez és annak ellenőrzéséhez, hogy `8:echo123` a hangeszközök működnek-e.
+
+## <a name="sample-code"></a>Mintakód
+
+A mintaalkalmazást a [GitHubról töltheti le.](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling)

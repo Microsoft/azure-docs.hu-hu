@@ -5,20 +5,23 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91318075"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308439"
 ---
 # <a name="laying-out-files-for-conversion"></a>Fájlok elrendezése átalakításhoz
 
 Egy eszköz megfelelő feldolgozásához a konverziós szolgáltatásnak képesnek kell lennie az összes bemeneti fájl megkeresésére.
 Ilyenek a konvertált fő adatfájlok, és általában néhány más fájl is hivatkozik az adatfájlban lévő elérési utakon.
-Az eszköz átalakítására irányuló kérelem két paramétert kap, amelyek meghatározzák, hogy az átalakítási szolgáltatás hogyan találja meg ezeket a fájlokat: a `input.folderPath` (nem kötelező) és a `input.inputAssetPath` .
+Az eszköz átalakítására irányuló kérelem két paramétert kap, amelyek meghatározzák, hogy az átalakítási szolgáltatás hogyan találja meg ezeket a fájlokat: a `settings.inputLocation.blobPrefix` (nem kötelező) és a `settings.inputLocation.relativeInputAssetPath` .
 Ezek teljes mértékben dokumentálva vannak az [átalakítási REST API](conversion-rest-api.md) oldalon.
-A fájlok megállapítása céljából fontos megjegyezni, hogy az `folderPath` eszköz feldolgozásakor az átalakítási szolgáltatás számára elérhető összes fájl teljes készletét határozza meg.
+A fájlok megállapítása céljából fontos megjegyezni, hogy az `BlobPrefix` eszköz feldolgozásakor az átalakítási szolgáltatás számára elérhető összes fájl teljes készletét határozza meg.
+
+> [!Note]
+> A szolgáltatás a bemenet alá tartozó összes fájlt letölti. BlobPrefix. Győződjön meg arról, hogy a fájlnevek és az elérési utak nem haladják meg a [Windows-útvonalak hosszának korlátait](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation) a szolgáltatással kapcsolatos problémák 
 
 ## <a name="placing-files-so-they-can-be-found"></a>Fájlok elhelyezése, hogy megtalálja őket
 

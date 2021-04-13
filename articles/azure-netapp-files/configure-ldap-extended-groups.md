@@ -12,22 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 04/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 9edf8c6eca223ece8728f9868ee9fe310c517ca9
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259710"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311532"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurálja az LDAP HOZZÁADÁSát kiterjesztett csoportokkal az NFS mennyiségi hozzáféréshez
 
-Ha [létrehoz egy NFS-kötetet](azure-netapp-files-create-volumes.md), lehetősége van ENGEDÉLYEZNI az LDAP és a kiterjesztett csoportok funkció (az **LDAP** -beállítás) használatát a kötethez. Ez a szolgáltatás lehetővé teszi Active Directory LDAP-felhasználók és kiterjesztett csoportok (legfeljebb 1024 csoport) számára a kötet elérését.  
+Ha [létrehoz egy NFS-kötetet](azure-netapp-files-create-volumes.md), lehetősége van ENGEDÉLYEZNI az LDAP és a kiterjesztett csoportok funkció (az **LDAP** -beállítás) használatát a kötethez. Ez a szolgáltatás lehetővé teszi Active Directory LDAP-felhasználók és kiterjesztett csoportok (legfeljebb 1024 csoport) számára a kötet elérését. Az LDAP és a kiterjesztett csoportok funkció a NFSv 4.1-es és a NFSv3-kötetek esetében is használható. 
 
 Ez a cikk ismerteti azokat a szempontokat és lépéseket, amelyek lehetővé teszik, hogy az LDAP-t kiterjesztett csoportokkal engedélyezze az NFS-kötetek létrehozásakor.  
 
 ## <a name="considerations"></a>Megfontolandó szempontok
+
+* A kiterjesztett csoportokkal rendelkező LDAP csak Active Directory Domain Services (Hozzáadás) vagy Azure Active Directory tartományi szolgáltatásokkal (AADDS) támogatott. A OpenLDAP vagy más külső gyártótól származó LDAP-címtárszolgáltatások nem támogatottak. 
 
 * Azure Active Directory Domain Services (AADDS) használata esetén a TLS protokollon keresztüli LDAP-t *nem* szabad engedélyezni.  
 
@@ -69,6 +71,9 @@ Ez a cikk ismerteti azokat a szempontokat és lépéseket, amelyek lehetővé te
 
 2. Az LDAP-kötetek Active Directory konfigurációt igényelnek az LDAP-kiszolgáló beállításaihoz. Kövesse az [Active Directory kapcsolatokra vonatkozó követelmények](create-active-directory-connections.md#requirements-for-active-directory-connections) című témakör utasításait, és [hozzon létre egy Active Directory kapcsolatot](create-active-directory-connections.md#create-an-active-directory-connection) a Azure Portal Active Directory kapcsolatainak konfigurálásához.  
 
+    > [!NOTE]
+    > Győződjön meg arról, hogy konfigurálta a Active Directory-kapcsolatok beállításait. A rendszer létrehoz egy számítógépfiókot a Active Directoryi kapcsolatok beállításaiban megadott szervezeti egységben (OU). A beállításokat az LDAP-ügyfél használja a Active Directory való hitelesítéshez.
+
 3. Győződjön meg arról, hogy a Active Directory LDAP-kiszolgáló működik és fut a Active Directory. 
 
 4. Az LDAP NFS-felhasználóknak bizonyos POSIX-attribútumokkal kell rendelkezniük az LDAP-kiszolgálón. Az LDAP-felhasználók és az LDAP-csoportok attribútumai az alábbiak szerint állíthatók be: 
@@ -82,7 +87,7 @@ Ez a cikk ismerteti azokat a szempontokat és lépéseket, amelyek lehetővé te
 
     ![Active Directory Attribute Editor](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
-5. Ha LDAP-hez integrált Linux-ügyfelet szeretne konfigurálni, tekintse meg [az NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md)című témakört.
+5. Ha LDAP-integrált NFSv 4.1 Linux-ügyfelet szeretne konfigurálni, tekintse meg [az NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md)című témakört.
 
 6.  Az NFS-kötet létrehozásához kövesse az [NFS-kötet létrehozása a Azure NetApp Files](azure-netapp-files-create-volumes.md) számára című témakör lépéseit. A kötet létrehozása folyamat alatt, a **protokoll** lapon engedélyezze az **LDAP** -beállítást.   
 

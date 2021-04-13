@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589540"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305242"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -184,7 +184,7 @@ A fenti kód letiltja az adaptív mintavételezést. Kövesse az alábbi lépés
 A `TelemetryProcessorChainBuilder` mintavételezési viselkedés testreszabásához használja az alább látható bővítmény-metódusokat.
 
 > [!IMPORTANT]
-> Ha ezt a módszert használja a mintavételezés konfigurálásához, ügyeljen arra, hogy a `aiOptions.EnableAdaptiveSampling` tulajdonságot a `false` híváskor állítsa be `AddApplicationInsightsTelemetry()` .
+> Ha ezt a módszert használja a mintavételezés konfigurálásához, ügyeljen arra, hogy a `aiOptions.EnableAdaptiveSampling` tulajdonságot a `false` híváskor állítsa be `AddApplicationInsightsTelemetry()` . A módosítás elvégzése után kövesse az alábbi kódrészlet utasításait **pontosan** ahhoz, hogy ismét engedélyezze az adaptív mintavételezést a testreszabott testreszabásokkal. Ha ezt elmulasztja, akkor az adatfeldolgozás felesleges. Mindig tesztelje a mintavételezés utáni beállításokat, és állítson be egy megfelelő [napi adatkorlátot](pricing.md#set-the-daily-cap) , amely segít a költségek szabályozásában.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility

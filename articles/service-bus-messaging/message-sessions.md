@@ -2,13 +2,13 @@
 title: Azure Service Bus üzenet-munkamenetek | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használhatók a munkamenetek a kapcsolódó üzenetek nem kötött sorrendjének közös és rendezett kezelésének engedélyezéséhez.
 ms.topic: article
-ms.date: 01/20/2021
-ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: c9a1c4fdccbbc8b38805e23d4895448959126f10
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98680753"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308478"
 ---
 # <a name="message-sessions"></a>Üzenet-munkamenetek
 Microsoft Azure Service Bus-munkamenetek lehetővé teszik a kapcsolódó üzenetek nem kötött sorrendjének együttes és rendezett kezelését. A munkamenetek a-ben **, az elsőben (FIFO)** és a **kérés-válasz** mintákban is használhatók. Ez a cikk bemutatja, hogyan használhatja a munkameneteket ezen minták megvalósításához Service Bus használatakor. 
@@ -19,24 +19,27 @@ Microsoft Azure Service Bus-munkamenetek lehetővé teszik a kapcsolódó üzene
 ## <a name="first-in-first-out-fifo-pattern"></a>Első – első kimenő (FIFO) minta
 Ha Service Bus-ben a FIFO-garanciát szeretné megvalósítani, használja a munkameneteket. Service Bus nem rendelkezik az üzenetek közötti kapcsolat természetétől, és nem határoz meg egy adott modellt, amely meghatározza, hogy a rendszer hol induljon el vagy végződik.
 
-Bármely feladó létrehozhat egy munkamenetet, amikor üzeneteket küld egy témakörbe vagy várólistába úgy, hogy [a munkamenet-tulajdonságot](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) egy olyan alkalmazás által definiált azonosítóra állítja be, amely egyedi a munkamenetben. Az AMQP 1,0 protokoll szintjén ez az érték a *Group-ID* tulajdonságra van leképezve.
+Bármely feladó létrehozhat egy munkamenetet, amikor üzeneteket küld egy témakörbe vagy várólistába úgy, hogy a **munkamenet-azonosító** tulajdonságot egy olyan alkalmazás által definiált azonosítóra állítja be, amely egyedi a munkamenetben. Az AMQP 1,0 protokoll szintjén ez az érték a *Group-ID* tulajdonságra van leképezve.
 
-A munkamenet-kompatibilis várólistákon vagy előfizetéseken a munkamenetek akkor jönnek létre, amikor legalább egy üzenet szerepel a munkamenet [munkamenet](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId)-azonosítójában. Ha a munkamenet már létezik, nincs definiálva idő vagy API a munkamenet lejáratának vagy eltűnésének idejére. Elméletileg egy üzenet érkezik egy adott munkamenethez, a következő üzenet egy év múlva, és ha a munkamenet-azonosító megegyezik, a **munkamenet megegyezik a** Service Bus perspektívával.
+A munkamenet-kompatibilis várólistákon vagy előfizetéseken a munkamenetek akkor jönnek létre, ha legalább egy üzenet van a munkamenet-AZONOSÍTÓval. Ha a munkamenet már létezik, nincs definiálva idő vagy API a munkamenet lejáratának vagy eltűnésének idejére. Elméletileg egy üzenet érkezik egy adott munkamenethez, a következő üzenet egy évben, és ha a munkamenet-azonosító megegyezik, a munkamenet megegyezik a Service Bus perspektívával.
 
-Az alkalmazások jellemzően azonban egyértelmű fogalmat mutatnak arról, hogy hol kezdődnek és végződik a kapcsolódó üzenetek halmaza. Service Bus nem állít be konkrét szabályokat.
+Az alkalmazások jellemzően azonban egyértelmű fogalmat mutatnak arról, hogy hol kezdődnek és végződik a kapcsolódó üzenetek halmaza. Service Bus nem állít be konkrét szabályokat. Az alkalmazás például megadhatja a **label (címke** ) tulajdonságot az első üzenet **elindításához**, a köztes üzenetekhez a **tartalomhoz**, valamint az utolsó üzenet **befejezéséhez**. A tartalmi üzenetek relatív helyzete a **Start** Message *sorszám* származó aktuális *sorszám* -különbözetként számítható ki.
 
-Egy példa arra, hogy miként lehet egy fájl átadására szolgáló sorozatot megszabni az első üzenet **felirat** tulajdonságának megadásához, a köztes üzenetekhez, valamint az utolsó üzenet **befejezéséhez**.   A tartalmi üzenetek relatív helyzete a **Start** Message *sorszám* származó aktuális *sorszám* -különbözetként számítható ki.
+A szolgáltatás engedélyezéséhez állítsa be az [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) tulajdonságot a várólistán vagy az előfizetésen a Azure Resource Manageron keresztül, vagy állítsa be a jelölőt a portálon. A kapcsolódó API-műveletek használatának megkísérlése előtt szükség van rá.
 
-A Service Bus munkamenet-funkciója lehetővé teszi egy adott fogadási művelet használatát a C# és a Java API-k [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) formájában. A szolgáltatás engedélyezéséhez állítsa be az [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) tulajdonságot a várólistán vagy az előfizetésen a Azure Resource Manageron keresztül, vagy állítsa be a jelölőt a portálon. A kapcsolódó API-műveletek használatának megkísérlése előtt szükség van rá.
+A portálon engedélyezheti a munkameneteket, miközben az alábbi példákban látható módon létrehoz egy entitást (Üzenetsor vagy előfizetés). 
 
-A portálon állítsa be a jelzőt a következő jelölőnégyzet bejelölésével:
+:::image type="content" source="./media/message-sessions/queue-sessions.png" alt-text="Munkamenet engedélyezése a várólista létrehozásának időpontjában":::
 
-![A várólista létrehozása párbeszédpanel képernyőképe, amelyen a munkamenetek engedélyezése beállítás be van jelölve, és piros színnel van ellátva.][2]
+:::image type="content" source="./media/message-sessions/subscription-sessions.png" alt-text="Munkamenet engedélyezése az előfizetés létrehozásának időpontjában":::
 
-> [!NOTE]
-> Ha a munkamenetek engedélyezve vannak egy várólistán vagy előfizetésen, az ügyfélalkalmazások ***többé nem*** küldhetnek és fogadhatnak rendszeres üzeneteket. Az összes üzenetet el kell juttatni egy munkamenet részeként (a munkamenet-azonosító beállításával), és fogadni kell a munkamenetet.
 
-A munkamenetek API-jai léteznek a várólista-és előfizetési ügyfeleken. Van egy kötelező modell, amely meghatározza a munkamenetek és üzenetek fogadását, valamint a *OnMessage* hasonló, a fogadási hurok kezelésének összetettségét.
+> [!IMPORTANT]
+> Ha a munkamenetek engedélyezve vannak egy várólistán vagy előfizetésen, az ügyfélalkalmazások ***többé nem*** küldhetnek és fogadhatnak rendszeres üzeneteket. Minden üzenetet el kell juttatni a munkamenet részeként (a munkamenet-azonosító beállításával), és a fogadást a munkamenet elfogadásával.
+
+A munkamenetek API-jai léteznek a várólista-és előfizetési ügyfeleken. Van egy kötelező modell, amely a munkamenetek és üzenetek fogadását vezérli, valamint egy kezelő-alapú modellt, amely elrejti a fogadási hurok kezelésének bonyolultságát. 
+
+A példákat a [következő lépések](#next-steps) szakaszban található hivatkozásokra kattintva végezheti el. 
 
 ### <a name="session-features"></a>Munkamenet-funkciók
 
@@ -44,11 +47,9 @@ A munkamenetek egyidejű, egymással párhuzamosan megjelenő üzeneteket biztos
 
 ![Egy diagram, amely azt mutatja, hogy a munkamenetek szolgáltatás hogyan őrzi meg a rendezett kézbesítést.][1]
 
-A munkamenetet elfogadó ügyfél létrehoz egy [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -fogadót. Az ügyfél a C# nyelvben hívja meg a [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) vagy a [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) . A reaktív visszahívási modellben regisztrál egy munkamenet-kezelőt.
+A munkamenet-fogadót egy-munkamenetet elfogadó ügyfél hozza létre. Ha a munkamenetet elfogadják és egy ügyfél tartja, az ügyfél kizárólagos zárolást tart az adott munkamenet **munkamenet-azonosítójával** rendelkező összes üzenetben a várólistán vagy az előfizetésen belül. Emellett a **munkamenet-azonosítóval** rendelkező összes üzenet kizárólagos zárolását is tartalmazza, amely később érkezik.
 
-Ha a [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -objektumot elfogadják, és az ügyfél tárolja, az ügyfél kizárólagos zárolást biztosít minden olyan üzenetben, amely az adott munkamenethez [tartozó munkamenet-](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) azonosítóval rendelkezik, **és amely a** munkamenet időpontjának megérkezése után is megérkezik.
-
-A zárolás akkor jelenik meg, ha a **Bezárás** vagy a **CloseAsync** meghívása megtörténik, vagy ha a zárolás olyan esetekben jár le, amikor az alkalmazás nem tudja végrehajtani a bezárási műveletet. A munkamenet-zárolást úgy kell kezelni, mint egy fájl kizárólagos zárolását, ami azt jelenti, hogy az alkalmazásnak le kell zárnia a munkamenetet, amint már nincs rá szüksége, és/vagy nem vár semmilyen további üzenetet.
+A zárolás akkor jelenik meg, ha meghívja a lezárt kapcsolódó metódusokat a fogadón, vagy amikor lejár a zárolás. A fogadó módszerekkel megújíthatja a zárolásokat is. Ehelyett használhatja az automatikus zárolás megújítása funkciót, ahol megadhatja azt az időtartamot, ameddig szeretné megőrizni a zárolást. A munkamenet-zárolást úgy kell kezelni, mint egy fájl kizárólagos zárolását, ami azt jelenti, hogy az alkalmazásnak le kell zárnia a munkamenetet, amint már nincs rá szüksége, és/vagy nem vár semmilyen további üzenetet.
 
 Ha több párhuzamos fogadó is lekéri a várólistáról, az adott munkamenethez tartozó üzeneteket a rendszer az adott munkamenethez tartozó zárolást betöltő adott fogadónak küldi el. Ezzel a művelettel az egyik várólistában vagy előfizetésben lévő, egymástól elválasztott üzenetek streamje tiszta módon, különböző fogadók számára érhető el, és ezek a fogadók különböző ügyfélszámítógépeken is élhetnek, mivel a zárolási felügyelet Service Buson belül történik.
 
@@ -64,11 +65,9 @@ A munkamenet-állapot lehetőség lehetővé teszi egy üzenet-munkamenet alkalm
 
 Az Service Bus perspektívából az üzenet-munkamenet állapota egy átlátszatlan bináris objektum, amely egy üzenet méretének tárolására képes, amely 256 KB Service Bus standard és 1 MB a Service Bus Premium esetében. A munkamenet-állapothoz viszonyított feldolgozási állapot a munkamenet-állapotban tartható, vagy a munkamenet-állapot olyan tárolási helyre vagy adatbázis-rekordra mutathat, amely az ilyen adatokat tárolja.
 
-A munkamenet-állapot, a [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) és a [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)kezelésére szolgáló API-k a [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) objektumban találhatók a C# és a Java API-k esetében is. Egy korábban nem megadott munkamenet-állapotú munkamenet **Null** hivatkozást ad vissza a **GetState**. A korábban beállított munkamenet-állapot törlése a [SetState (null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_)értékkel történik.
+A munkamenet-állapot, a SetState és a GetState kezelésének módszerei a munkamenet-fogadó objektumon találhatók. Egy olyan munkamenet, amely korábban nem tartalmazott munkamenet-állapotot, null hivatkozást ad vissza a GetState. A korábban beállított munkamenet-állapot törölhető úgy, hogy null értéket továbbít a fogadó SetState metódusának.
 
 A munkamenet-állapot addig marad mindaddig, amíg nincs törölve ( **Null értékre** tér vissza), még akkor is, ha a munkamenetben lévő összes üzenetet felhasználják.
-
-Az üzenetsor vagy előfizetés összes meglévő munkamenete a Java API **SessionBrowser** metódusával és a .NET-keretrendszer ügyfelének [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) és [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) együtt is enumerálható.
 
 Egy várólistában vagy előfizetésben tárolt munkamenet-állapot az entitás tárolási kvótája felé mutat. Ha az alkalmazás egy munkamenettel fejeződött be, ezért ajánlott az alkalmazás számára megőrizni a megőrzött állapotot, hogy elkerülje a külső felügyeleti költségeket.
 
@@ -88,17 +87,17 @@ A [kérelem-válasz minta](https://www.enterpriseintegrationpatterns.com/pattern
 Több alkalmazás is elküldheti kérelmeit egyetlen kérelem-várólistába, egy adott fejléc-paraméterrel, amely egyedileg azonosítja a küldő alkalmazást. A fogadó alkalmazás képes feldolgozni a várólistára érkező kéréseket, és elküldi a válaszokat a munkamenet-kompatibilis várólistán, a munkamenet-azonosítót pedig arra a egyedi azonosítóra állítja, amelyet a küldő a kérelem üzenetében küldött. A kérést elküldő alkalmazás az adott munkamenet-AZONOSÍTÓra vonatkozó üzeneteket fogadhat, és helyesen dolgozza fel a válaszokat.
 
 > [!NOTE]
-> A kezdeti kérelmeket küldő alkalmazásnak ismernie kell a munkamenet-azonosítót, és `SessionClient.AcceptMessageSession(SessionID)` a használatával zárolhatja azt a munkamenetet, amelyen a válasz várható. Érdemes olyan GUID-t használni, amely egyedileg azonosítja az alkalmazás példányát munkamenet-azonosítóként. Nem lehet munkamenet-kezelő vagy a `AcceptMessageSession(timeout)` várólistán annak biztosítása érdekében, hogy a válaszok az adott fogadók számára legyenek zárolva és feldolgozva.
+> A kezdeti kérelmeket küldő alkalmazásnak ismernie kell a munkamenet-azonosítót, és annak használatával el kell fogadnia a munkamenetet, hogy az a munkamenet, amelyen a válasz vár, zárolva legyen. Érdemes olyan GUID-t használni, amely egyedileg azonosítja az alkalmazás példányát munkamenet-azonosítóként. A várólista munkamenet-fogadóján nincs megadva munkamenet-kezelő vagy időtúllépés, így biztosítható, hogy a válaszok zárolva legyenek, és az adott fogadók feldolgozzák azokat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a [Microsoft. Azure. ServiceBus Samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) vagy a [Microsoft. ServiceBus. Messaging példákat](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) egy olyan példához, amely a .NET-keretrendszer ügyfelet használja a munkamenet-kompatibilis üzenetek kezelésére. 
+- [Azure. Messaging. ServiceBus-minták a .NET-hez](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+- [A Java-hez készült ügyféloldali kódtár Azure Service Bus – minták](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [A Pythonhoz készült ügyféloldali kódtár Azure Service Bus – minták](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [A JavaScript-hez készült ügyféloldali kódtár Azure Service Buse – minták](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus a géppel készült ügyféloldali kódtár – minták](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [Microsoft. Azure. ServiceBus-minták .net-hez](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) (munkamenetek és SessionState minták)  
 
-Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
-
-* [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
-* [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
-* [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a [Service Bus várólisták, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)című témakört.
 
 [1]: ./media/message-sessions/sessions.png
-[2]: ./media/message-sessions/queue-sessions.png

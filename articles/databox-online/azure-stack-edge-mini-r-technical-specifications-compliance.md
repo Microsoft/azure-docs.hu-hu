@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0f3b81ac12d0ae96dde0397bc01a4570d992ea9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727481"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310172"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>A Azure Stack Edge mini R műszaki specifikációi
 
@@ -24,31 +24,35 @@ Az Microsoft Azure Stack Edge mini R-eszköz hardveres összetevői megfelelnek 
 
 Az Azure Stack Edge mini R-eszköz a következő, a számítási és a memória-specifikációkat tartalmazta:
 
-| Specifikáció           | Érték                  |
-|-------------------------|------------------------|
-| CPU    | 16 Magos CPU, Intel Xeon-D 1577 |
-| Memória              | 48 GB RAM (2400 MT/s)                  |
+| Specifikáció           | Érték                           |
+|-------------------------|---------------------------------|
+| CPU-típus                | Intel Xeon-D 1577               |
+| CPU: nyers                | 16 mag összesen, 32 összesen vCPU  |
+| CPU: felhasználható             | 24 vCPU                        |
+| Memória típusa             | 16 GB 2400 MT/s nátrium          |
+| Memória: nyers             | 48 GB RAM (3 x 16 GB)           |
+| Memória: felhasználható          | 32 GB RAM                       |
 
 
 ## <a name="compute-acceleration-specifications"></a>Számítási gyorsítási specifikációk
 
 A Kubernetes, a mély neurális hálózat és a számítógép-alapú alkalmazásokhoz tartozó, minden Azure Stack Edge-beli mini R-eszköz tartalmaz egy vizuális feldolgozási egységet (VPU).
 
-| Specifikáció           | Érték                  |
-|-------------------------|------------------------|
-| Számítási gyorsítási kártya         | Intel Movidius számtalan X VPU <br> További információ: [Intel Movidius számtalan X VPU](https://www.movidius.com/MyriadX) |
+| Specifikáció             | Érték                  |
+|---------------------------|------------------------|
+| Számítási gyorsítási kártya | Intel Movidius számtalan X VPU <br> További információ: [Intel Movidius számtalan X VPU](https://www.movidius.com/MyriadX) |
 
 
 ## <a name="storage-specifications"></a>Tárolási specifikációk
 
 Az Azure Stack Edge mini R-eszköz 1 adatlemezzel és 1 rendszerindító lemezzel rendelkezik (amely operációsrendszer-tárolóként szolgál). Az alábbi táblázat az eszköz tárolókapacitásának részleteit tartalmazza.
 
-|     Specifikáció                          |     Érték             |
-|--------------------------------------------|-----------------------|
-|    SSD-meghajtók száma     |    2 X 1 TB lemez <br> Egy adatlemez és egy rendszerindító lemez                  |
-|    Egyetlen SSD-kapacitás                     |    1 TB               |
-|    Teljes kapacitás (csak adatmennyiség)              |    1 TB              |
-|    Teljes felhasználható kapacitás *                  |    ~ 750 GB        |
+|     Specifikáció                          |     Érték                                              |
+|--------------------------------------------|--------------------------------------------------------|
+|    SSD-meghajtók száma     |    2 X 1 TB lemez <br> Egy adatlemez és egy rendszerindító lemez |
+|    Egyetlen SSD-kapacitás                     |    1 TB                                                |
+|    Teljes kapacitás (csak adatmennyiség)              |    1 TB                                                |
+|    Teljes felhasználható kapacitás *                  |    ~ 750 GB                                            |
 
 **Bizonyos területek belső használatra vannak fenntartva.*
 
@@ -85,9 +89,9 @@ Az Azure Stack Edge mini R-eszköz tartalmaz egy, a tápegység által felszám�
 A bevezető akkumulátorral együtt további 2590-es [típusú akkumulátort](https://www.bren-tronics.com/bt-70791ck.html) is használhat az eszköznek a díjak közötti kibővítéséhez. Az akkumulátornak meg kell felelnie a használati országban érvényes összes biztonsági, szállítási és környezeti előírásnak.
 
 
-| Specifikáció           | Érték                      |
-|-------------------------|----------------------------|
-| Akkumulátor kapacitása | 73 WHr                    |
+| Specifikáció            | Érték                      |
+|--------------------------|----------------------------|
+| Akkumulátor kapacitása | 73 wh                     |
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>A bekerítés méretei és súlyozási jellemzői
 
@@ -99,18 +103,18 @@ A következő táblázat az eszköz és az USP dimenzióit sorolja fel, a robusz
 
 |     Ház     |     Milliméter     |     Hüvelyk     |
 |-------------------|---------------------|----------------|
-|    Magasság         |    68            |    2,68          |
-|    Szélesség          |    208          |      8,19          |
-|    Hossz          |   259           |    10,20          |
+|    Magasság         |    68               |    2,68        |
+|    Szélesség          |    208              |      8,19      |
+|    Hossz          |   259              |    10,20       |
 
 
 ### <a name="enclosure-weight"></a>Ház súlya
 
 A következő táblázat felsorolja az eszköz súlyát, beleértve az akkumulátort is.
 
-|     Ház                                 |     Tömeg          |
-|-----------------------------------------------|---------------------|
-|    Az eszköz teljes súlya     |    7 lbs.          |
+|     Ház                     |     Tömeg          |
+|-----------------------------------|---------------------|
+|    Az eszköz teljes súlya     |     7 lbs           |
 
 ## <a name="enclosure-environment-specifications"></a>Bekerítési környezet specifikációi
 
@@ -118,7 +122,7 @@ A következő táblázat felsorolja az eszköz súlyát, beleértve az akkumulá
 Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációkat, például a hőmérsékletet, a páratartalmat és a magasságot.
 
 
-|     Specifikációk             |     Leírás                                                          |
+|     Specifikációk             |     Description                                                          |
 |--------------------------------|--------------------------------------------------------------------------|
 |     Hőmérséklet-tartomány          |     0 – 43 ° C (működési)                                              |
 |     Rezgés                  |     MIL-STD-810 metódus 514,7 *<br> Eljárás I CAT 4, 20                  |

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 64015f1f2d6fc3438e55cbdc146ba83492b332e2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 59b766cd5721a9a77b3506cc438ec267e5131979
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066092"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309452"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -44,7 +44,7 @@ Ebből a cikkből megtudhatja, hogyan védheti meg a virtuális hálózatok köv
 
 + Ha erőforrásokat szeretne telepíteni egy virtuális hálózatba vagy alhálózatba, a felhasználói fióknak engedéllyel kell rendelkeznie a következő műveletekhez az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szolgáltatásban:
 
-    - "Microsoft. Network/virtualNetworks/JOIN/Action" a virtuális hálózati erőforráson.
+    - "Microsoft. Network/virtualNetworks/*/Read" a virtuális hálózati erőforráson.
     - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
 
     A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](../role-based-access-control/built-in-roles.md#networking) .
@@ -59,7 +59,7 @@ Ha [felügyelt Azure Machine learning __számítási célt__](concept-compute-ta
 > * A számítási példányhoz vagy fürthöz megadott alhálózatnak elegendő, nem hozzárendelt IP-címmel kell rendelkeznie a célként kijelölt virtuális gépek számának kielégítéséhez. Ha az alhálózat nem rendelkezik elegendő nem hozzárendelt IP-címmel, a számítási fürt részlegesen le lesz foglalva.
 > * Ellenőrizze, hogy a virtuális hálózat előfizetése vagy erőforráscsoport biztonsági szabályzatai vagy zárolásai korlátozzák-e az engedélyeket a virtuális hálózat kezeléséhez. Ha a virtuális hálózat védelmét úgy tervezi, hogy korlátozza a forgalmat, hagyjon meg néhány portot a számítási szolgáltatás számára. További információ: a [szükséges portok](#mlcports) szakasz.
 > * Ha egy virtuális hálózatban több számítási példányt vagy fürtöt szeretne létrehozni, előfordulhat, hogy egy vagy több erőforrásra vonatkozó kvóta-növelést kell kérnie.
-> * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Machine Learning számítási példánnyal vagy fürttel azonos virtuális hálózatban és alhálózatban kell lenniük. 
+> * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Machine Learning számítási példánnyal vagy fürttel azonos virtuális hálózatban és alhálózatban kell lenniük. Konfigurálja a tárolási tűzfal beállításait, hogy engedélyezze a kommunikációt a virtuális hálózattal és az alhálózat számítási feladataival. Vegye figyelembe, hogy a "megbízható Microsoft-szolgáltatások elérésének engedélyezése ehhez a fiókhoz" jelölőnégyzet bejelölése nem elegendő ahhoz, hogy lehetővé tegye a kommunikációt a számításból.
 > * A számítási példányok Jupyter működéséhez győződjön meg arról, hogy a webes szoftvercsatorna-kommunikáció nincs letiltva. Győződjön meg arról, hogy a hálózat engedélyezi a WebSocket-kapcsolatokat a *. instances.azureml.net és a *. instances.azureml.ms. 
 > * Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a virtuális hálózaton belülről lehet hozzáférni. Ha egyéni DNS-vagy hosts fájlt használ, adjon hozzá egy bejegyzést a `<instance-name>.<region>.instances.azureml.ms` munkaterület privát végpontjának magánhálózati IP-címéhez. További információ az [Egyéni DNS-](./how-to-custom-dns.md) cikkben található.
 > * A számítási fürt/példány telepítéséhez használt alhálózatot nem lehet delegálni más szolgáltatásokhoz, például az ACI-hoz

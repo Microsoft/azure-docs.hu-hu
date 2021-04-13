@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/06/2021
+ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 879ca169604dcd61a79db4ec3ca937289dacdd9b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449273"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309849"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a Python használatával
 
@@ -40,7 +40,7 @@ A folyamatok különböző adattárakból származó adatok betöltésére képe
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (nem kötelező).
 
-* [Egy alkalmazás a Azure Active Directoryban](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Jegyezze fel a következő értékeket a későbbi lépésekben való használathoz: **alkalmazás azonosítója**, **hitelesítési kulcs** és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
+* [Egy alkalmazás a Azure Active Directoryban](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Jegyezze fel a következő értékeket a későbbi lépésekben való használathoz: **alkalmazás azonosítója**, **hitelesítési kulcs** és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve. Jegyezze fel a következő értékeket, ahogy az a cikkben is látható a későbbi lépésekben való használathoz: az **alkalmazás azonosítója (az alábbi egyszerű szolgáltatásnév), a hitelesítési kulcs (az ügyfél titkos kulcsa) és a bérlő azonosítója.**
 
 ## <a name="create-and-upload-an-input-file"></a>Bemeneti fájl létrehozása és feltöltése
 
@@ -225,6 +225,9 @@ Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
+ > [!NOTE] 
+ > A to pass paramétereket a folyamathoz, adja hozzá őket a JSON-karakterlánchoz params_for_pipeline a (z) **{"ParameterName1": "ParameterValue1"}** formátumban, a folyamathoz szükséges összes paraméternél. Ha paramétereket szeretne átadni egy adatfolyam, hozzon létre egy folyamat paramétert a paraméter neve/értéke tárolásához, majd használja a adatfolyam paraméterben található folyamat paramétert a következő formátumban: **@pipeline (). Parameters. parametername.**
+
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 

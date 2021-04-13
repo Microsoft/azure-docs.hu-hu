@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 04/06/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2f41034331ed21e194fc2b86c2902c5957333313
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010598"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304919"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -24,7 +24,7 @@ Ez a cikk a közelmúltban kiadott vagy továbbfejlesztett Azure arc-kompatibili
 
 ## <a name="march-2021"></a>Március 2021
 
-A márciusi 2021 kiadás a 2021. április 6-án lett bevezetve.
+A márciusi 2021-es kiadás eredetileg április 2021 5-én lett bevezetve, és a kiadás utolsó szakaszai a kilencedik 2021. április 9-én befejeződtek.
 
 Tekintse át a jelen kiadás korlátozásait az [ismert problémákkal – Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)](known-issues.md).
 
@@ -45,7 +45,9 @@ A PostgreSQL-hez készült egyéni erőforrás-definíciók (CRD) egyetlen CRD-b
 
 Az előző CRDs a korábbi telepítések törlése után törölheti. Lásd: [a korábbi telepítések tisztítása](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations).
 
-### <a name="azure-arc-enabled-managed-instance"></a>Azure arc-kompatibilis felügyelt példány
+### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc-kompatibilis, felügyelt SQL-példány
+
+- Most már létrehozhat egy SQL felügyelt példányt a Azure Portal közvetlenül csatlakoztatott módban.
 
 - Mostantól 3 replikával állíthatja vissza az adatbázist a felügyelt SQL-példányra, és a rendszer automatikusan hozzáadja a rendelkezésre állási csoporthoz. 
 

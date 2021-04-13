@@ -420,7 +420,7 @@
               href: search-security-get-encryption-keys.md
         - name: Bejövő biztonság
           items:
-            - name: API-hozzáférési kulcsok
+            - name: API-kulcs hitelesítése
               href: search-security-api-keys.md
             - name: IP-tűzfal konfigurálása
               href: service-configure-firewall.md

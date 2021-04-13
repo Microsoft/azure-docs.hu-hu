@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 4588eee721a58a7e4f3366d0d325b48de0f56ae5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 267dc7c7d89bbecfbed127f4a46adb7cd9044bc4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259812"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309373"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
@@ -99,7 +99,7 @@ A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg akt
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot.
 1. Nyissa meg a **SQLPOOL1**  >  **táblákat**. 
-3. Kattintson a jobb gombbal a **dbo. Utazási** táblázat és válassza az **új SQL-parancsfájl** lehetőséget, majd  >  **válassza a Top 100 sort**.
+3. Kattintson a jobb gombbal a **dbo. NYCTaxiTripSmall** tábla és válassza az **új SQL-parancsfájl** lehetőséget, majd válassza a  >  **Top 100 sort**.
 4. Várjon, amíg a rendszer létrehoz egy új SQL-parancsfájlt, és futtatja azt.
 5. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a **SQLPOOL1** nevű SQL-készletre lesz beállítva.
 6. Cserélje le az SQL-parancsfájl szövegét ezzel a kóddal, majd futtassa.
@@ -108,7 +108,7 @@ A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg akt
     SELECT PassengerCount,
           SUM(TripDistanceMiles) as SumTripDistance,
           AVG(TripDistanceMiles) as AvgTripDistance
-    FROM  dbo.Trip
+    FROM  dbo.NYCTaxiTripSmall
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
     ORDER BY PassengerCount;

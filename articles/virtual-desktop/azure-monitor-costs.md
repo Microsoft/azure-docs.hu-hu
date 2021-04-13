@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5bd89a734a20c913bacca1f5531aa76d76418c80
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448219"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309305"
 ---
 # <a name="estimate-azure-monitor-costs"></a>Azure Monitor költségek becslése
 
@@ -35,7 +35,7 @@ A Windows rendszerű virtuális asztali Azure Monitor számára előre definiál
 - Windows-eseménynaplók a munkamenet-gazdagépekről
 - Windows rendszerű virtuális asztali diagnosztika a szolgáltatási infrastruktúrából
 
-Az adatfeldolgozási és tárolási költségek a környezet méretétől, állapotától és használattól függenek. Az ebben a cikkben ismertetett becslések alapján kiszámíthatja, hogy a várhatóan használt költségek köre a [virtuális gépek méretezési irányelvei](/remote/remote-desktop-services/virtual-machine-recs)alapján, a lehető legkevesebb adatfeldolgozási és tárolási költségek kiszámítására szolgál.
+Az adatfeldolgozási és tárolási költségek a környezet méretétől, állapotától és használattól függenek. Az ebben a cikkben ismertetett becslések alapján kiszámíthatja, hogy a várhatóan használt költségek köre a [virtuális gépek méretezési irányelvei](/windows-server/remote/remote-desktop-services/virtual-machine-recs)alapján, a lehető legkevesebb adatfeldolgozási és tárolási költségek kiszámítására szolgál.
 
 A példában a könnyű használatú virtuális gép a következő összetevőket tartalmazza:
 

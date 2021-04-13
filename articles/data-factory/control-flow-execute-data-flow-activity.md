@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 01/03/2021
-ms.openlocfilehash: 0663690318773ccad3bddfaaa03e456c2f58895e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 3e48eee5bf36732edc4f897103cb72bbbe75a5c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383381"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306313"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -76,9 +76,9 @@ Az alapszám és a számítási típus tulajdonságainak beállítása dinamikus
 
 ### <a name="data-flow-integration-runtime"></a>Adatfolyam-integrációs modul
 
-Válassza ki, hogy melyik Integration Runtime szeretné használni az adatfolyam tevékenységének végrehajtásához. Alapértelmezés szerint a Data Factory az Azure Integration Runtime automatikus feloldását fogja használni négy munkavégző maggal, és nincs élettartam (TTL). Ez az IR általános célú számítási típussal rendelkezik, és ugyanabban a régióban fut, mint a gyár. Létrehozhat saját Azure-integrációs modulokat, amelyek meghatározott régiókat, számítási típusokat, alapszámokat és ÉLETTARTAMot határoznak meg az adatfolyam tevékenységének végrehajtásához.
+Válassza ki, hogy melyik Integration Runtime szeretné használni az adatfolyam tevékenységének végrehajtásához. Alapértelmezés szerint a Data Factory az Azure Integration Runtime automatikus feloldását fogja használni négy munkavégző maggal. Ez az IR általános célú számítási típussal rendelkezik, és ugyanabban a régióban fut, mint a gyár. Az operatív folyamatok esetében erősen ajánlott saját Azure Integration Runtime-t létrehozni, amely meghatározott régiókat, számítási típusokat, alapszámokat és ÉLETTARTAMot határoz meg az adatfolyam tevékenységének végrehajtásához.
 
-A folyamatok végrehajtásához a fürt egy olyan fürt, amely a végrehajtás megkezdése előtt több percet vesz igénybe. Ha nem ad meg TTL-értéket, a rendszer ezt az indítási időt igényli minden folyamat futtatásához. Ha a TTL értéket adja meg, a meleg fürt a legutóbbi végrehajtás után megadott időre aktív marad, ami rövidebb indítási időt eredményez. Ha például 60 perc ÉLETTARTAMa van, és óránként egyszer futtat egy adatfolyamot, a fürtön marad aktív. További információ: [Azure Integration Runtime](concepts-integration-runtime.md).
+A minimális számítási típus a általános célú (nagy számítási feladatokhoz nem ajánlott a nagyméretű munkaterhelések esetében) 8 + 8 (16 teljes v-mag) konfigurációval, és egy 10 perc a legtöbb éles üzemi számítási feladatra vonatkozó minimális javaslat. Egy kis élettartam beállításával a Azure IR egy olyan meleg fürtöt tarthat fenn, amely nem vonja maga után a hideg fürthöz tartozó kezdési idő néhány percét. Az adatfolyamatok végrehajtásának felgyorsításához válassza a "gyors ismételt használat" lehetőséget a Azure IR adatfolyam-konfigurációkon. További információ: [Azure Integration Runtime](concepts-integration-runtime.md).
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 

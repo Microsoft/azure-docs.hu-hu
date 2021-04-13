@@ -1,21 +1,20 @@
 ---
 title: Az Azure Monitor-munkafüzetek áttekintése
 description: Ebből a témakörből megtudhatja, hogy a munkafüzetek Hogyan biztosítják az adatelemzést és a részletes vizualizációs jelentések létrehozását a Azure Portalon belül.
-manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: e401eb4a5608db6e5767298f53046099a42679b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a02e5fced0a9e338a32d8d8beaa9e4b5fca994e8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100613738"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309477"
 ---
 # <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 
-A munkafüzetek Azure Portalon belül kínálnak rugalmas vásznat az adatelemzéshez és a részletgazdag vizuális jelentések létrehozásához. Lehetővé teszik, hogy több adatforrásra koppintson az Azure-ból, és egyesítse azokat egységes interaktív környezetekben. 
+A munkafüzetek Azure Portalon belül kínálnak rugalmas vásznat az adatelemzéshez és a részletgazdag vizuális jelentések létrehozásához. Lehetővé teszik, hogy több adatforrásra koppintson az Azure-ból, és egyesítse azokat egységes interaktív környezetekben.
 
 Íme egy videós bemutató a munkafüzetek létrehozásához.
 
@@ -39,7 +38,7 @@ A munkafüzetek jelenleg a következő adatforrásokkal kompatibilisek:
 
 ## <a name="visualizations"></a>Vizualizációk
 
-A munkafüzetek számos képességet biztosítanak az adatmegjelenítéshez. Az egyes vizualizációs típusok részletes példáit az alábbi hivatkozásokra kattintva tekintheti meg:
+A munkafüzetek számos képességet biztosítanak az adatmegjelenítéshez. Az egyes vizualizációk típusaira vonatkozó részletes példákat az alábbi hivatkozásokra kattintva tekintheti meg:
 
 * [Szöveg](../visualize/workbooks-text-visualizations.md)
 * [Diagramok](../visualize/workbooks-chart-visualizations.md)
@@ -49,7 +48,7 @@ A munkafüzetek számos képességet biztosítanak az adatmegjelenítéshez. Az 
 * [Grafikonok](../visualize/workbooks-graph-visualizations.md)
 * [Összetett sáv](../visualize/workbooks-composite-bar.md)
 
-![Példa munkafüzet-vizualizációk](./media/workbooks-overview/visualizations.png)
+:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Példa a munkafüzetek vizualizációinak megjelenítésére" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -57,19 +56,40 @@ A munkafüzetek felületének megismeréséhez először navigáljon a Azure Mon
 
 Ezután válassza a **munkafüzetek** lehetőséget.
 
-![Egy piros mezőben Kiemelt munkafüzetek képernyőképe](./media/workbooks-overview/workbooks.png)
+:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Egy piros mezőben Kiemelt munkafüzetek képernyőképe" border="false":::
 
 ### <a name="gallery"></a>Katalógus
 
-Ekkor megjelenik a munkafüzetek gyűjteménye:
+A katalógus használatával kényelmesen rendezheti, rendezheti és kezelheti az összes típusú munkafüzetet.
 
-![Képernyőkép Azure Monitor munkafüzetek gyűjteményének nézetéről](./media/workbooks-overview/gallery.png)
+:::image type="content" source="./media/workbooks-overview/gallery-all-tab.png" alt-text="Képernyőkép a gyűjteményről az összes lapon." lightbox="media/workbooks-overview/gallery-all-tab.png":::
+
+#### <a name="gallery-tabs"></a>Katalógus lapjai
+
+A katalógusban négy lap segíti a munkafüzetek rendszerezését.
+
+| Tab              | Description                                       |
+|------------------|---------------------------------------------------|
+| Mind | Megjeleníti az első négy elemet minden Type-munkafüzethez, nyilvános sablonhoz és saját sablonokhoz. A munkafüzetek a módosítás dátuma szerint vannak rendezve, így látni fogja a legutóbbi nyolc módosított munkafüzetet.|
+| Munkafüzetek | Megjeleníti a létrehozott vagy Önnel megosztva elérhető munkafüzetek listáját. |
+| Nyilvános sablonok | Megjeleníti a rendelkezésre álló használatra kész, a Microsoft által közzétett funkcionális munkafüzet-sablonokat. Kategória szerint csoportosítva. |
+| Saját sablonok | Megjeleníti az Ön által létrehozott vagy Önnel megosztott összes elérhető, telepített munkafüzetet tartalmazó sablon listáját. Kategória szerint csoportosítva. |
+
+#### <a name="features"></a>Funkciók
+
+* Az egyes lapokon a munkafüzetek adatait tartalmazó rács található. Tartalmazza a leírást, az utolsó módosítás dátumát, a címkéket, az előfizetést, az erőforráscsoportot, a régiót és a megosztott állapotot. Ezen információk alapján is rendezheti a munkafüzeteket.
+* Szűrés erőforráscsoport, előfizetések, munkafüzet/sablon neve vagy sablon kategória alapján.
+* Jelöljön ki több munkafüzetet a törléshez vagy a tömeges törléshez.
+* Minden munkafüzetnek van helyi menüje (három pont/három pont a végén), és a kijelöléssel megnyílik a gyors műveletek listája.
+    * Az erőforrás-hozzáférés munkafüzet-erőforrás lapján megtekintheti a munkafüzet erőforrás-AZONOSÍTÓját, címkéket adhat hozzá, kezelheti a zárolásokat stb.
+    * Törölje vagy nevezze át a munkafüzetet.
+    * Munkafüzet rögzítése az irányítópulton.
 
 ### <a name="workbooks-versus-workbook-templates"></a>Munkafüzetek és munkafüzet-sablonok
 
-Megtekintheti a _munkafüzetet_ zöld színnel és számos _munkafüzet-sablonban_ a lila nyelven. A sablonok a több felhasználó és csapat számára rugalmas újrafelhasználásra tervezett, kurátori jelentésként szolgálnak. A sablon megnyitása egy átmeneti munkafüzetet hoz létre, amely a sablon tartalmával van feltöltve. 
+Megtekintheti a _munkafüzetet_ zöld színnel és számos _munkafüzet-sablonban_ a lila nyelven. A sablonok a több felhasználó és csapat számára rugalmas újrafelhasználásra tervezett, kurátori jelentésként szolgálnak. A sablon megnyitása egy átmeneti munkafüzetet hoz létre, amely a sablon tartalmával van feltöltve.
 
-Módosíthatja a sablon alapú munkafüzet paramétereit, és elvégezheti az elemzést anélkül, hogy a munkatársainak jövőbeli jelentéskészítési élményét kellene megszakítani. Ha megnyit egy sablont, hajtson végre néhány módosítást, majd válassza a Mentés ikont, majd mentse a sablont egy olyan munkafüzetként, amely az eredeti sablon érintetlen állapotának elhagyásakor zöldre vált. 
+Módosíthatja a sablon alapú munkafüzet paramétereit, és elvégezheti az elemzést anélkül, hogy a munkatársainak jövőbeli jelentéskészítési élményét kellene megszakítani. Ha megnyit egy sablont, hajtson végre néhány módosítást, majd válassza a Mentés ikont, majd mentse a sablont egy olyan munkafüzetként, amely az eredeti sablon érintetlen állapotának elhagyásakor zöldre vált.
 
 A motorháztető alatt a sablonok a mentett munkafüzetektől is eltérhetnek. A munkafüzet mentése egy társított Azure Resource Manager erőforrást hoz létre, míg a sablon megnyitásakor létrehozott átmeneti munkafüzethez nincs egyedi erőforrás társítva. Ha többet szeretne megtudni arról, hogy a hozzáférés-vezérlés hogyan legyen kezelve a munkafüzetekben, tekintse meg a [munkafüzetek hozzáférés-vezérlése című cikket](../visualize/workbooks-access-control.md).
 
@@ -77,7 +97,7 @@ A motorháztető alatt a sablonok a mentett munkafüzetektől is eltérhetnek. A
 
 Válassza az **alkalmazáshiba elemzése** lehetőséget az egyik alapértelmezett alkalmazás-munkafüzet-sablon megtekintéséhez.
 
-![Képernyőkép az alkalmazáshiba-elemzési sablonról](./media/workbooks-overview/failure-analysis.png)
+:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Képernyőkép az alkalmazáshiba-elemzési sablonról" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
 
 Amint azt korábban már említettük, a sablon megnyitása egy ideiglenes munkafüzetet hoz létre, amely lehetővé teszi a kommunikációt. Alapértelmezés szerint a munkafüzet olvasási módban nyílik meg, amely csak az eredeti sablon szerzője által létrehozott kívánt elemzési felület adatait jeleníti meg.
 
@@ -87,34 +107,35 @@ Az adott munkafüzet esetében az élmény interaktív. Módosíthatja az előfi
 
 Annak megismeréséhez, hogy a munkafüzet-sablon hogyan legyen összekapcsolva, **a Szerkesztés gombra** kattintva kell cserélnie a szerkesztési módba.
 
-![A munkafüzetek szerkesztési gombjának képernyőképe.](./media/workbooks-overview/edit.png)
+:::image type="content" source="./media/workbooks-overview/edit.png" alt-text="A munkafüzetek szerkesztési gombjának képernyőképe." border="false" :::
 
 Miután átváltotta a szerkesztési módot, megfigyelheti, hogy számos **szerkesztési** mező jelenik meg a munkafüzet minden egyes aspektusának megfelelő módon.
 
-![Képernyőkép a Szerkesztés gombról](./media/workbooks-overview/edit-mode.png)
+:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="Képernyőkép a Szerkesztés gombról" border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
 
 Ha a Szerkesztés gombot azonnal bejelöli a kérelmek adatainak rácsa alatt, láthatjuk, hogy a munkafüzet ezen része egy Application Insights erőforrásból származó adatokkal kapcsolatos Kusto-lekérdezést tartalmaz.
 
-![Képernyőkép az alapul szolgáló Kusto-lekérdezésről](./media/workbooks-overview/kusto.png)
+:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Képernyőkép az alapul szolgáló Kusto-lekérdezésről" border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-A jobb oldalon található egyéb **szerkesztési** gombokra kattintva megjelenítheti a munkafüzetek, például a Markdown-alapú [szövegmezők](../visualize/workbooks-text-visualizations.md), a [paraméter-kiválasztási](../visualize/workbooks-parameters.md) felhasználóifelület-elemek, valamint az egyéb [diagram/vizualizáció típusok](#visualizations)számát. 
+
+A jobb oldalon található egyéb **szerkesztési** gombokra kattintva megjelenítheti a munkafüzetek, például a Markdown-alapú [szövegmezők](../visualize/workbooks-text-visualizations.md), a [paraméter-kiválasztási](../visualize/workbooks-parameters.md) felhasználóifelület-elemek, valamint az egyéb [diagram/vizualizáció típusok](#visualizations)számát.
 
 Szerkessze az előre elkészített sablonokat szerkesztési módban, majd módosítsa őket az igényeinek megfelelően, és mentse a saját egyéni munkafüzetét, hogy megismerkedjen a Azure Monitor munkafüzetek lehetséges lehetőségeivel.
 
 ## <a name="pinning-visualizations"></a>Vizualizációk rögzítése
 
-A munkafüzetben lévő szöveg-, lekérdezési és mérőszám-lépések a PIN-kód gomb használatával állíthatók be, miközben a munkafüzet PIN-módban van, vagy ha a munkafüzet szerzője engedélyezte az adott elemhez tartozó beállításokat, hogy a PIN-ikon látható legyen. 
+A munkafüzetben lévő szöveg-, lekérdezési és mérőszám-lépések a PIN-kód gomb használatával állíthatók be, miközben a munkafüzet PIN-módban van, vagy ha a munkafüzet szerzője engedélyezte az adott elemhez tartozó beállításokat, hogy a PIN-ikon látható legyen.
 
 A PIN-kód mód eléréséhez kattintson a **Szerkesztés** gombra a szerkesztési mód megadásához, majd a felső sávon a kék PIN-kód ikonra. A képernyő jobb oldalán megjelenik egy egyedi PIN-kód ikon, amely a megfelelő munkafüzet részének *szerkesztési* mezője fölé kerül.
 
-![PIN-kód felhasználói élmény](./media/workbooks-overview/pin-experience.png)
+:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Képernyőfelvétel a PIN-kód felhasználói felületéről." border="false":::
 
 > [!NOTE]
 > A rendszer a PIN-kód időpontjában menti a munkafüzet állapotát, és az irányítópulton rögzített munkafüzetek nem frissülnek, ha módosul a mögöttes munkafüzet. Egy rögzített munkafüzet-rész frissítéséhez törölnie kell és újra rögzítenie kell ezt a részt.
 
 ## <a name="dashboard-time-ranges"></a>Irányítópult időtartományai
 
-A rögzített munkafüzet-lekérdezési részek figyelembe veszik az irányítópult időtartományát, ha a rögzített elem *időtartomány* -paraméter használatára van konfigurálva. Az irányítópult időtartományának értéke az időtartomány paraméterének értéke lesz, az irányítópult időtartományának bármilyen módosítása pedig a rögzített elem frissítését eredményezi. Ha egy rögzített rész az irányítópult időtartományát használja, látni fogja a rögzített rész frissítésének alcímét, hogy megjelenjen az irányítópult időtartománya, amikor az időtartomány megváltozik. 
+A rögzített munkafüzet-lekérdezési részek figyelembe veszik az irányítópult időtartományát, ha a rögzített elem *időtartomány* -paraméter használatára van konfigurálva. Az irányítópult időtartományának értéke az időtartomány paraméterének értéke lesz, az irányítópult időtartományának bármilyen módosítása pedig a rögzített elem frissítését eredményezi. Ha egy rögzített rész az irányítópult időtartományát használja, látni fogja a rögzített rész frissítésének alcímét, hogy megjelenjen az irányítópult időtartománya, amikor az időtartomány megváltozik.
 
 Emellett az időtartomány-paramétert használó rögzített munkafüzet-részek automatikusan frissülnek az irányítópult időtartománya által meghatározott sebességgel. Az utolsó alkalommal, amikor a lekérdezés futott, megjelenik a rögzített rész alcíme.
 

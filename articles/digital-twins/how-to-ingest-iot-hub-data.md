@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5e00ef81afc709a9072eedbb07983057f57eb08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950593"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304298"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -45,7 +45,7 @@ Ha a termosztátos eszköz egy hőmérséklet-telemetria eseményt küld, a füg
 
 Ebben a szakaszban egy [Digital Twin](concepts-twins-graph.md) -et állít be az Azure Digital ikrek szolgáltatásban, amely a termosztát-eszközt jelképezi, és a IoT hubról származó információkkal fog frissülni.
 
-A következő típusú termosztát létrehozásához először fel kell töltenie a termosztát [modelljét](concepts-models.md) a példányba, amely leírja a termosztát tulajdonságait, és később a Twin létrehozásához lesz használva. 
+A következő típusú termosztát létrehozásához először fel kell töltenie a termosztát [modelljét](concepts-models.md) a példányba, amely leírja a termosztát tulajdonságait, és később a Twin létrehozásához lesz használva.
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 

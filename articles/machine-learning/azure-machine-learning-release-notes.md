@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 7c22381d547029aedc5965d07033e8800fcbddc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210894"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313147"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -145,7 +145,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio notebookok felülete (február Update)
 + **Új funkciók**
   + [Natív terminál (GA)](./how-to-access-terminal.md). A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az integrált terminálon keresztül is.
-  + [Jegyzetfüzet-kódrészletek (előzetes verzió)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). A Common Azure ML Code-részletek mostantól elérhetők. Navigáljon a kódrészletek panelre, amely az eszköztáron keresztül érhető el, vagy aktiválja a kódban szereplő kódrészleteket a CTRL + szóköz billentyűkombinációval.  
+  + Jegyzetfüzet-kódrészletek (előzetes verzió). A Common Azure ML Code-részletek mostantól elérhetők. Navigáljon a kódrészletek panelre, amely az eszköztáron keresztül érhető el, vagy aktiválja a kódban szereplő kódrészleteket a CTRL + szóköz billentyűkombinációval.  
   + [Billentyűparancsok](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Teljes paritás a Jupyter-ben elérhető billentyűparancsokkal. 
   + Adja meg a cella paramétereit. Azokat a felhasználókat jeleníti meg, akik egy jegyzetfüzetben lévő cellák paraméter-cellák, és a számítási példányon [Papermill](https://github.com/nteract/papermill) keresztül futtathatnak paraméteres jegyzetfüzeteket.
   + A terminál és a kernel munkamenet-kezelője: a felhasználók a számítási folyamaton futó összes kernelt és terminál-munkamenetet kezelhetik.

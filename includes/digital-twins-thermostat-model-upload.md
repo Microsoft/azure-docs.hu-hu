@@ -3,28 +3,20 @@ author: baanders
 description: Az Azure Digital Twins-példányba feltöltendő modell feltöltésére szolgáló fájl belefoglalása
 ms.service: digital-twins
 ms.topic: include
-ms.date: 3/23/2021
+ms.date: 4/1/2021
 ms.author: baanders
-ms.openlocfilehash: 987409f070f34f0fd9ee212fab8cc57e889e0146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: add49cabaece1187cb9bcda3a94c92feb08b2439
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950594"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304297"
 ---
 A modell így néz ki:
 :::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
 
-A **modell az ikrek-példányba való feltöltéséhez** futtassa az alábbi Azure CLI-parancsot, amely a fenti MODELLT beágyazott JSON-ként tölti fel. A (z) [Azure Cloud Shell](../articles/cloud-shell/overview.md) a böngészőben futtathatja a parancsot, vagy a gépen, ha a CLI telepítve van a [helyi](/cli/azure/install-azure-cli)számítógépen.
+A **modell az ikrek-példányba való feltöltéséhez** futtassa az alábbi Azure CLI-parancsot, amely a fenti MODELLT beágyazott JSON-ként tölti fel. A (z) [Azure Cloud Shellban](../articles/cloud-shell/overview.md) futtathatja a parancsot a böngészőben (a **bash** -környezettel) vagy a GÉPEN, ha a CLI [telepítve](/cli/azure/install-azure-cli)van a helyi számítógépen.
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
-
-> [!Note]
-> Ha Cloud Shellt használ a PowerShell-környezetben, akkor előfordulhat, hogy el kell kerülnie az idézőjelek karaktereit a beágyazott JSON-mezőkben az értékek megfelelő elemzéséhez. Az alábbi paranccsal töltheti fel a modellt a következő módosítással:
->
-> Modell feltöltése:
-> ```azurecli-interactive
-> az dt model create --models '{  \"@id\": \"dtmi:contosocom:DigitalTwins:Thermostat;1\",  \"@type\": \"Interface\",  \"@context\": \"dtmi:dtdl:context;2\",  \"contents\": [    {      \"@type\": \"Property\",      \"name\": \"Temperature\",      \"schema\": \"double\"    }  ]}' -n {digital_twins_instance_name}
-> ```

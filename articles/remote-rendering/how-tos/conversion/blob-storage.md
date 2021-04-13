@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 629b48a378dd029d9952270e3c71762a5bb7aa82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507517"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306721"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Modellek átalakítása az Azure Blob Storage használatával
 
@@ -71,6 +71,9 @@ A modellek átalakításának megkezdéséhez fel kell töltenie azt a következ
 - [Az Azure Storage REST API-k használata](/rest/api/storageservices/blob-service-rest-api)
 
 Az adatok átalakítására való feltöltésre példaként tekintse meg a PowerShell- [példa parancsfájljainak](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1.
+
+> [!Note]
+> Egy bemeneti modell feltöltésekor ügyelni kell a hosszú fájlnevek és/vagy a mappák struktúrájának elkerülésére, hogy elkerülje a [Windows-útvonal hosszának korlátját](https://docs.mxicrosoft.com/windows/win32/fileio/maximum-file-path-limitation) a szolgáltatásban. 
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>SAS URI beszerzése az átalakított modellhez
 
