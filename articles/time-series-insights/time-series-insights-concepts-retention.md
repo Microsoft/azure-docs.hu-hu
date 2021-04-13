@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26363031aea37c53cce098e2b6cbc2b4d93b918f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91535689"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307078"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Az adatmegőrzés ismertetése Azure Time Series Insights Gen1
 
@@ -85,7 +85,7 @@ Ebben az időben a környezet ugyanazt az adatkészletet jeleníti meg, amíg a 
 A bejövő forgalom folytatásakor:
 
 - Az adatfolyamatok az eseményforrás által fogadott sorrendben
-- Az események az időbélyegük alapján vannak indexelve, kivéve, ha túllépte az adott eseményforrás adatmegőrzési szabályzatait. További információ az eseményforrás-megőrzési konfigurációról: [Event HUBS GYIK](../event-hubs/event-hubs-faq.md)
+- Az események az időbélyegük alapján vannak indexelve, kivéve, ha túllépte az adott eseményforrás adatmegőrzési szabályzatait. További információ az eseményforrás-megőrzési konfigurációról: [Event HUBS GYIK](../event-hubs/event-hubs-faq.yml)
 
 > [!IMPORTANT]
 > Riasztásokat kell beállítania, hogy értesítést kapjon a bejövő forgalom szüneteltetésének elkerüléséhez. Az adatvesztés lehetséges, mivel az alapértelmezett megőrzési idő 1 nap az Azure-eseményeknél. Ezért a bejövő forgalom felfüggesztése után valószínűleg elveszíti a legutóbbi adatvesztést, kivéve, ha további műveletet végez. Az adatvesztés elkerülése érdekében növelje a kapacitást, vagy váltson viselkedésre a **régi adatmennyiség törléséhez** .

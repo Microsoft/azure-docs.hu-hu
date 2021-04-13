@@ -10,19 +10,26 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 02/22/2021
-ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/09/2021
+ms.openlocfilehash: 47686f457e2579ca8a643de6671c886effefa6f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106653"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313521"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis erőforrásainak skálázása az Azure SQL Database-ben
 
 Ez a cikk azt ismerteti, hogyan méretezheti a számítási és a tárolási erőforrásokat a kiépített számítási szinten lévő Azure SQL Database számára. Azt is megteheti, hogy a [kiszolgáló nélküli számítási](serverless-tier-overview.md) csomag számítási automatikus skálázást és másodpercenkénti számlázást biztosít a felhasznált számítási feladatokhoz.
 
-A virtuális mag vagy a DTU számának kezdeti kiválasztását követően a [Azure Portal](single-database-manage.md#the-azure-portal), a [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](/rest/api/sql/databases/update)használatával dinamikusan méretezheti az önálló adatbázisokat a tényleges tapasztalatok alapján.
+A virtuális mag vagy a DTU számának kezdeti kiválasztását követően a tényleges felhasználói élmény alapján akár dinamikusan is méretezheti az egyes adatbázisokat a következő módszerekkel:
+
+* [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure Portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
+* [Azure CLI](/cli/azure/sql/db#az-sql-db-update)
+* [REST API](/rest/api/sql/databases/update)
+
 
 A következő videó bemutatja, hogyan lehet dinamikusan módosítani a szolgáltatási szintet és a számítási méretet, hogy az elérhető DTU egyetlen adatbázishoz lehessen emelni.
 
@@ -125,7 +132,7 @@ A számlázás minden órában megtörténik, amely az adott órában alkalmazot
 
 ### <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
-- A tárterület az adattároló maximális mérete 1 GB-os növekmények használatával állítható be. A minimálisan konfigurálható adattárolás 1 GB. Tekintse meg az erőforrás-korlátozási dokumentációs lapokat az [önálló adatbázisokhoz](resource-limits-vcore-single-databases.md) és a [rugalmas készletekhez](resource-limits-vcore-elastic-pools.md) az adattárolók maximális méretére az egyes szolgáltatási célkitűzéseknél
+- A tárterület az adattároló maximális mérete 1 GB-os növekmények használatával állítható be. A minimálisan konfigurálható adattárolás 1 GB. Az adattárolók maximális méretének korlátozásai az egyes szolgáltatási célkitűzések esetében: erőforrás-korlátozási dokumentációs lapok az [önálló adatbázisok erőforrás-korlátozásához a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md) és az [önálló adatbázisok erőforrás-korlátaival a DTU beszerzési modell használatával](resource-limits-dtu-single-databases.md).
 - Az önálló adatbázisok adattárolása a maximális méret növelésével vagy csökkentésével végezhető el a [Azure Portal](https://portal.azure.com), a [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](/rest/api/sql/databases/update)használatával. Ha a maximális méret értéke bájtban van megadva, akkor az 1 GB-nál többnek kell lennie (1073741824 bájt).
 - Az adatbázisok adatfájljaiban tárolható adatmennyiséget a beállított adattároló maximális mérete korlátozza. A tárterületen kívül a Azure SQL Database automatikusan 30%-kal több tárterületet foglal le a tranzakciónaplóhoz való használathoz.
 - A Azure SQL Database automatikusan 32 GB-ot foglal le virtuális mag az `tempdb` adatbázishoz. `tempdb` a minden szolgáltatási szinten a helyi SSD-tárolóban található.

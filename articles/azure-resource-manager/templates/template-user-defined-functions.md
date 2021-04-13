@@ -2,13 +2,13 @@
 title: Felhasználó által definiált függvények a sablonokban
 description: Ismerteti, hogyan lehet felhasználó által definiált függvényeket definiálni és használni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 802ac6e1c70db8caa58aecde3efe814430c79682
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379624"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307775"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Felhasználó által definiált függvények az ARM-sablonban
 
@@ -107,6 +107,7 @@ A felhasználói függvények meghatározásakor bizonyos korlátozások vonatko
 * A függvény csak a függvényben definiált paramétereket tudja használni. Ha a [Parameters](template-functions-deployment.md#parameters) függvényt egy felhasználó által definiált függvényen belül használja, akkor a függvény paraméterei vannak korlátozva.
 * A függvény nem hívhat meg más, felhasználó által definiált függvényeket.
 * A függvény nem tudja használni a [Reference](template-functions-resource.md#reference) függvényt vagy a [List](template-functions-resource.md#list) függvények egyikét sem.
+* A függvény nem tudja használni a [dateTimeAdd](template-functions-date.md#datetimeadd) függvényt.
 * A függvény paraméterei nem rendelkezhetnek alapértelmezett értékekkel.
 
 ## <a name="next-steps"></a>Következő lépések

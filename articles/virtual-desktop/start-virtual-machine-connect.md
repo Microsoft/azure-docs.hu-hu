@@ -3,15 +3,15 @@ title: A virtuális gép összekapcsolásának indítása – Azure
 description: A virtuális gép elindítása a kapcsolódási szolgáltatásban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/10/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d9ce9811cd660c9a9b1fcb6f9e24cadd65d3c2bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d3ef8e3656051c4a99ab52a7b52a0d623fdf9ce2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445601"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303958"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Virtuális gép elindítása a kapcsolaton (előzetes verzió)
 
@@ -35,8 +35,7 @@ A következő távoli asztali ügyfelek támogatják a virtuális gép elindít�
 
 A frissítésekkel és az ügyfelek támogatásával kapcsolatos közleményeket a [technikai közösségi fórumon](https://aka.ms/wvdtc)tekintheti meg.
 
->[!IMPORTANT]
->A virtuális gép elindítása a csatlakoztatási szolgáltatásban jelenleg csak a PowerShellt és a REST API támogatja, nem pedig a Azure Portal. További információ: [állomáslista létrehozása vagy frissítése](/rest/api/desktopvirtualization/hostpools/createorupdate).
+A Azure Government felhő jelenleg nem támogatja a Start VM használatát a kapcsolaton.
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>Egyéni szerepkör létrehozása a virtuális gép indításához a kapcsolaton
 
@@ -115,6 +114,24 @@ A virtuális gép indítása a kapcsolaton egy címkészlet-beállítás. Ha csa
 
 >[!IMPORTANT]
 > Ezt a funkciót csak a meglévő gazdagép-készletekben lehet konfigurálni. Ez a funkció új alkalmazáskészlet létrehozásakor nem érhető el.
+
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
+
+A virtuális gép indítása a kapcsolódáskor a Azure Portal használatával:
+
+1. Nyissa meg a böngészőt, és lépjen [a Azure Portal](https://portal.azure.com/?feature.startVMonConnect=true#home). Javasoljuk, hogy nyissa meg a Azure Portal InPrivate-ablakban.
+
+2. A Azure Portal nyissa meg a **Windows rendszerű virtuális asztalt**.
+
+3. Válassza ki a **gazdagép-készleteket**, majd keresse meg azt a gazdagépet, amely a szerepkörhöz hozzárendelt személyes asztalokat tartalmazza.
+
+   >[!NOTE]
+   > A szolgáltatásban konfigurált gazdagép-készletnek a közvetlen szerepkör-hozzárendelésekkel rendelkező személyes asztalokkal kell rendelkeznie. Ha a gazdagép-készletben lévő asztali számítógépek nem megfelelően vannak konfigurálva, a konfigurációs folyamat nem fog működni.
+
+4. A gazdagép készletében válassza a **Tulajdonságok** lehetőséget. A **virtuális gép indítása a kapcsolódáskor** területen válassza az **Igen**, majd a **Mentés** lehetőséget a beállítás azonnali alkalmazásához.
+
+    > [!div class="mx-imgBorder"]
+    > ![A Tulajdonságok ablak képernyőképe. A virtuális gép elindítása a kapcsolaton beállítás piros színnel van kiemelve.](media/properties-start-vm-on-connect.png)
 
 ### <a name="use-powershell"></a>A PowerShell használata
 

@@ -321,7 +321,7 @@
 - name: Referencia
   items:
     - name: App proxy – gyakori kérdések
-      href: application-proxy-faq.md
+      href: application-proxy-faq.yml
     - name: Alkalmazás-felügyeleti tanúsítványok – gyakori kérdések
       href: application-management-certs-faq.md
     - name: Alkalmazásproxy verzióelőzményei

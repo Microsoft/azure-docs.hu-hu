@@ -16,18 +16,20 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6253458bb31388e5f7e6f84b7720cce0dc22886c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97f6e158065fd8f5f8a377b4da17b7b0357b66e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259960"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305395"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Váratlan beleegyezés kérése egy alkalmazásba való bejelentkezéskor
 
 Számos Azure Active Directory integrációt igénylő alkalmazásnak a futtatásához különböző erőforrásokhoz van szükségük. Ha ezek az erőforrások integrálva vannak a Azure Active Directoryba, a hozzáféréshez szükséges engedélyek az Azure AD-beli engedélyezési keretrendszer használatával is megtalálhatók. 
 
 Ennek eredményeként a rendszer az alkalmazás első használatakor egy hozzájárulási kérést jelenít meg, amely gyakran egyszeri művelet. 
+
+> [!VIDEO https://www.youtube.com/embed/a1AjdvNDda4]
 
 ## <a name="scenarios-in-which-users-see-consent-prompts"></a>Olyan forgatókönyvek, amelyekben a felhasználók a hozzájárulási kéréseket látják
 

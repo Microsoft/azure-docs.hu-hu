@@ -126,8 +126,6 @@
       href: disaster-recovery.md
     - name: A KDC-proxy beállítása
       href: key-distribution-center-proxy.md
-    - name: A RD-átjáró szerepkör beállítása
-      href: rd-gateway-role.md
     - name: Virtuális gép indítása a kapcsolaton
       items:
         - name: Virtuális gép indításának beállítása a kapcsolaton

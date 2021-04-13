@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e778c7ee14d2115bf6d8cf7f12ceaa61e364a4a2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: a5f4b23196a04d88e4329cb5ebf26d0b0a477444
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120178"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307266"
 ---
 # <a name="device-update-agent-provisioning"></a>Eszköz frissítési ügynökének kiépítés
 
@@ -81,8 +81,25 @@ Az alábbi utasításokat követve kiépítheti az eszköz frissítési ügynök
 
 1. Az [Azure IoT Edge futtatókörnyezet telepítéséhez és üzembe](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true)helyezéséhez kövesse az utasításokat.
 
-1. Ezután telepítse az eszköz frissítési ügynökét [az összetevőkből, és most](https://github.com/Azure/iot-hub-device-update/releases) már készen áll az eszköz frissítési ügynökének elindítására a IoT Edge eszközön.
+1. Az eszköz frissítési rendszerkép-frissítési ügynökének telepítése
+    - A rendszerképeket olyan összetevőkben biztosítjuk [, amelyekkel](https://github.com/Azure/iot-hub-device-update/releases) kipróbálhatja a lemezképek frissítését a különböző verziókban egy alaprendszerkép (adu-Base-image) és egy frissítési lemezkép (adu-Update-image) használatával. Lásd: példa arra, [Hogyan lehet a rendszerképet a IoT hub eszközre felvillanni](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).  
 
+1. Az eszköz frissítési csomagjának frissítési ügynökének telepítése  
+    - A packages.miscrosoft.com: frissítési csomagok listáinak frissítése az eszközön, és az eszköz frissítési ügynök csomagjának és függőségeinek telepítése a következő használatával:   
+    ```shell
+    sudo apt-get update
+    ```
+    
+    ```shell
+    sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
+    ```
+    
+    - Az összetevőkből jövő kiadásra jelölt verziók [esetén: töltse](https://github.com/Azure/iot-hub-device-update/releases) le a. DEP fájlt arra a gépre, amelyre telepíteni kívánja az eszköz frissítési ügynökét, majd:
+     ```shell
+    Sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
+     ```
+    
+1. Most már készen áll az eszköz frissítési ügynökének elindítására a IoT Edge eszközön. 
 
 ### <a name="on-non-edge-iot-linux-devices"></a>Nem peremhálózati IoT Linux-eszközökön
 
@@ -130,14 +147,15 @@ Ezeket az utasításokat követve kiépítheti az eszköz frissítési ügynök�
     sudo aziotctl config apply
     ```
     
-1.  Végül telepítse az eszköz frissítési ügynökét [az összetevőkből, és most](https://github.com/Azure/iot-hub-device-update/releases) már készen áll az eszköz frissítési ügynökének elindítására a IoT Edge eszközön.
+1.  Végül telepítse az eszköz frissítési ügynökét. A rendszerképeket olyan összetevőkben biztosítjuk [, amelyekkel](https://github.com/Azure/iot-hub-device-update/releases) kipróbálhatja a lemezképek frissítését a különböző verziókban egy alaprendszerkép (adu-Base-image) és egy frissítési lemezkép (adu-Update-image) használatával. Lásd: példa arra, [Hogyan lehet a rendszerképet a IoT hub eszközre felvillanni](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).
 
+1.  Most már készen áll az eszköz frissítési ügynökének elindítására a IoT-eszközön. 
 
 ### <a name="other-iot-devices"></a>Egyéb IoT-eszközök
 
 Az eszköz frissítési ügynöke a IoT Identity Service nélkül is konfigurálható teszteléshez vagy korlátozott eszközökhöz. A következő lépések végrehajtásával kiépítheti az eszköz frissítési ügynökét egy kapcsolódási karakterlánc használatával (a modulból vagy eszközből).
 
-1.  Telepítse [az eszköz](https://github.com/Azure/iot-hub-device-update/releases)frissítési ügynökét az összetevőkből.
+1.  A rendszerképeket olyan összetevőkben biztosítjuk [, amelyekkel](https://github.com/Azure/iot-hub-device-update/releases) kipróbálhatja a lemezképek frissítését a különböző verziókban egy alaprendszerkép (adu-Base-image) és egy frissítési lemezkép (adu-Update-image) használatával. Lásd: példa arra, [Hogyan lehet a rendszerképet a IoT hub eszközre felvillanni](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).
 
 1.  Jelentkezzen be a gépre, vagy IoT Edge eszköz-vagy IoT-eszközre.
     
@@ -150,16 +168,17 @@ Az eszköz frissítési ügynöke a IoT Identity Service nélkül is konfigurál
        
     1. Ekkor meg kell jelennie egy, a szövegben megnyíló ablaknak. Törölje a "connection_String =" következő teljes karakterláncot, amikor először kiépíti az eszköz frissítési ügynökét a IoT-eszközön. Csak a tulajdonos szövegét helyezi el.
     
-    1. A terminálban cserélje le a <a-kapcsolatok-string> az eszközhöz tartozó, az eszköz frissítési ügynökéhez tartozó kapcsolatok karakterláncára.
+    1. A terminálban cserélje le a "<a-kapcsolatok-string>" kifejezést az eszközhöz tartozó, az eszköz frissítési ügynökéhez tartozó kapcsolatok karakterláncára.
     
         > [!Important]
         > Ne adjon hozzá idézőjeleket a kapcsolatok karakterlánca körül.
-        
-        - connection_string =<a-kapcsolatok-karakterláncot>
+        ```shell
+        - connection_string=<ADD CONNECTION STRING HERE>
+       ```
        
     1. Adja meg és mentse a értéket.
     
-1.  Most már készen áll az eszköz frissítési ügynökének elindítására a IoT Edge eszközön. 
+1.  Most már készen áll az eszköz frissítési ügynökének elindítására a IoT-eszközön. 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>Az eszköz frissítési ügynökének elindítása

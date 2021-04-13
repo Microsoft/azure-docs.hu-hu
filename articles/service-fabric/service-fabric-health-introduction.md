@@ -3,12 +3,12 @@ title: Állapot-figyelés Service Fabric
 description: Bevezetés az Azure Service Fabric Health monitoring modellbe, amely a fürt és az alkalmazásai és szolgáltatásai figyelését teszi lehetővé.
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.openlocfilehash: a1c545048739182e3baba3e3d94da1accca227d1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1fa000d46a6199fa23f07e5310eaca96b60a183f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627415"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311277"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy olyan egészségügyi modellt vezet be, amely gazdag, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést tesz lehetővé. A modell lehetővé teszi a fürt állapotának és a rajta futó szolgáltatásoknak a közel valós idejű figyelését. Egyszerűen beszerezhet egészségügyi információkat, és kiválaszthatja a potenciális problémákat, mielőtt lépcsőzetesen kiesést okoz. A tipikus modellben a szolgáltatások a helyi nézeteik alapján küldenek jelentéseket, és ezek az információk összesítve biztosítják a teljes fürt szintű nézetet.
@@ -99,7 +99,7 @@ A fürt állapotára vonatkozó házirend a következőket tartalmazza:
   </FabricSettings>
   ```
 
-* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). A fürt állapotának kiértékelése során felhasználható a csomópont-állapotra vonatkozó szabályzat-hozzárendelés a speciális csomópont-típusok leírásához. A csomópont-típusokat a rendszer kiértékeli a csomópont-típus nevével társított százalékok alapján. Ennek az értéknek a beállítása nincs hatással a számára használt csomópontok globális készletére `MaxPercentUnhealthyNodes` . Egy fürt például több száz különböző típusú csomópontot tartalmaz, és néhány csomópont-típust, amelyek fontos munkát futtatnak. Az adott típusú csomópontoknak nem kell megjelenniük. Megadhatja, hogy a globális `MaxPercentUnhealthyNodes` érték 20% legyen az összes csomópont meghibásodása esetén, de a csomópont típusa esetén `SpecialNodeType` állítsa a `MaxPercentUnhealthyNodes` értéket 0-ra. Így ha a sok csomópont állapota nem kifogástalan, de a globális nem kifogástalan százalék alatt van, a rendszer kiértékeli a fürtöt a figyelmeztetési állapotnak megfelelően. A figyelmeztetési állapot nem befolyásolja a fürt frissítését vagy a hiba állapota által aktivált egyéb figyelést. `SpecialNodeType`Egy hiba állapotú csomópontban azonban a fürt nem Kifogástalan állapotba kerül, és a frissítési konfigurációtól függően a fürt frissítését vagy szüneteltetését is elvégezheti. Ezzel szemben a globális érték 0 értékre állítása `MaxPercentUnhealthyNodes` és a nem kifogástalan `SpecialNodeType` állapotú csomópontok maximális százalékos aránya 100-re egy hibás állapotú csomópontnál a fürt a hiba `SpecialNodeType` állapotában marad, mert a globális korlátozás szigorúbb ebben az esetben. 
+* `NodeTypeHealthPolicyMap`. A fürt állapotának kiértékelése során felhasználható a csomópont-állapotra vonatkozó szabályzat-hozzárendelés a speciális csomópont-típusok leírásához. A csomópont-típusokat a rendszer kiértékeli a csomópont-típus nevével társított százalékok alapján. Ennek az értéknek a beállítása nincs hatással a számára használt csomópontok globális készletére `MaxPercentUnhealthyNodes` . Egy fürt például több száz különböző típusú csomópontot tartalmaz, és néhány csomópont-típust, amelyek fontos munkát futtatnak. Az adott típusú csomópontoknak nem kell megjelenniük. Megadhatja, hogy a globális `MaxPercentUnhealthyNodes` érték 20% legyen az összes csomópont meghibásodása esetén, de a csomópont típusa esetén `SpecialNodeType` állítsa a `MaxPercentUnhealthyNodes` értéket 0-ra. Így ha a sok csomópont állapota nem kifogástalan, de a globális nem kifogástalan százalék alatt van, a rendszer kiértékeli a fürtöt a figyelmeztetési állapotnak megfelelően. A figyelmeztetési állapot nem befolyásolja a fürt frissítését vagy a hiba állapota által aktivált egyéb figyelést. `SpecialNodeType`Egy hiba állapotú csomópontban azonban a fürt nem Kifogástalan állapotba kerül, és a frissítési konfigurációtól függően a fürt frissítését vagy szüneteltetését is elvégezheti. Ezzel szemben a globális érték 0 értékre állítása `MaxPercentUnhealthyNodes` és a nem kifogástalan `SpecialNodeType` állapotú csomópontok maximális százalékos aránya 100-re egy hibás állapotú csomópontnál a fürt a hiba `SpecialNodeType` állapotában marad, mert a globális korlátozás szigorúbb ebben az esetben. 
 
   A következő példa egy fürt jegyzékfájljának kivonata. A csomópont típusú leképezésben szereplő bejegyzések definiálásához előtagként adja meg a paraméter nevét a "NodeTypeMaxPercentUnhealthyNodes-" kifejezéssel, majd a csomópont típusának nevét.
 

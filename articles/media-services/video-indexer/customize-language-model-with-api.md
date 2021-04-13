@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: kumud
-ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 890e02812fb06cf0b0ebe990b0175311d5c85ab5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047090"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312926"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Nyelvi modell testreszabása a Video Indexer API-val
 
@@ -27,7 +27,7 @@ A jelen témakörben leírtak szerint a Video Indexer API-k használatával hozh
 
 ## <a name="create-a-language-model"></a>Nyelvi modell létrehozása
 
-A [nyelvi modell létrehozása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) API létrehoz egy új egyéni nyelvi modellt a megadott fiókban. Ebben a hívásban tölthet fel fájlokat a nyelvi modellbe. Azt is megteheti, hogy itt létrehozhatja a nyelvi modellt, és később is feltöltheti a modell fájljait a nyelvi modell frissítésével.
+A [nyelvi modell létrehozása](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Language-Model) API létrehoz egy új egyéni nyelvi modellt a megadott fiókban. Ebben a hívásban tölthet fel fájlokat a nyelvi modellbe. Azt is megteheti, hogy itt létrehozhatja a nyelvi modellt, és később is feltöltheti a modell fájljait a nyelvi modell frissítésével.
 
 > [!NOTE]
 > Továbbra is be kell tanítania a modellt a modell engedélyezett fájljaival a fájl tartalmának megismeréséhez. A nyelv tanításának irányai a következő szakaszban találhatók.
@@ -70,7 +70,7 @@ A válasz metaadatokat biztosít az újonnan létrehozott nyelvi modellhez, vala
 
 ## <a name="train-a-language-model"></a>Nyelvi modell betanítása
 
-A [Language Model API betanítása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) egyéni nyelvi modellt használ a megadott fiókban a nyelvi modellben feltöltött és engedélyezett fájlok tartalmával.
+A [Language Model API betanítása](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Train-Language-Model) egyéni nyelvi modellt használ a megadott fiókban a nyelvi modellben feltöltött és engedélyezett fájlok tartalmával.
 
 > [!NOTE]
 > Először létre kell hoznia a nyelvi modellt, és fel kell töltenie a fájljait. A nyelvi modell létrehozásakor vagy a nyelvi modell frissítésével tölthet fel fájlokat.
@@ -105,11 +105,11 @@ A válasz metaadatokat biztosít az újonnan betanított nyelvi modellhez, valam
 }
 ```
 
-A visszaadott `id` egyedi azonosító, amely a nyelvi modellek megkülönböztetésére szolgál, míg a videók `languageModelId` [feltöltéséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) és a videó API-k [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (más néven `linguisticModelId` video Indexer feltöltési/újraindexelési API-khoz) is használható.
+A visszaadott `id` egyedi azonosító, amely a nyelvi modellek megkülönböztetésére szolgál, míg a videók `languageModelId` [feltöltéséhez](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) és a videó API-k [újraindexeléséhez](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) (más néven `linguisticModelId` video Indexer feltöltési/újraindexelési API-khoz) is használható.
 
 ## <a name="delete-a-language-model"></a>Nyelvi modell törlése
 
-A [nyelvi modell törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API törli a megadott fiókból származó egyéni nyelvi modellt. A törölt nyelvi modellt használó összes videó esetében Ugyanez az index marad, amíg újra nem indexeli a videót. Ha újraindexeli a videót, hozzárendelhet egy új nyelvi modellt a videóhoz. Ellenkező esetben a Video Indexer az alapértelmezett modellt fogja használni a videó újraindexeléséhez.
+A [nyelvi modell törlése](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model) API törli a megadott fiókból származó egyéni nyelvi modellt. A törölt nyelvi modellt használó összes videó esetében Ugyanez az index marad, amíg újra nem indexeli a videót. Ha újraindexeli a videót, hozzárendelhet egy új nyelvi modellt a videóhoz. Ellenkező esetben a Video Indexer az alapértelmezett modellt fogja használni a videó újraindexeléséhez.
 
 ### <a name="response"></a>Reagálás
 
@@ -117,7 +117,7 @@ A nyelvi modell törlése után a rendszer nem adott vissza tartalmat.
 
 ## <a name="update-a-language-model"></a>Nyelvi modell frissítése
 
-A [Language Model API frissítése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) a megadott fiókban frissíti a Custom Language person modellt.
+A [Language Model API frissítése](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model) a megadott fiókban frissíti a Custom Language person modellt.
 
 > [!NOTE]
 > Már létre kell hoznia a nyelvi modellt. Ezzel a hívással engedélyezheti vagy letilthatja a modellben található összes fájlt, frissítheti a nyelvi modell nevét, és feltöltheti a nyelvi modellbe felvenni kívánt fájlokat.
@@ -161,7 +161,7 @@ A `id` válaszban visszaadott fájlok használatával töltse le a fájl tartalm
 
 ## <a name="update-a-file-from-a-language-model"></a>Fájl frissítése nyelvi modellből
 
-A [fájl frissítése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) lehetővé teszi `enable` egy fájl nevének és állapotának frissítését egy egyéni nyelvi modellben a megadott fiókban.
+A [fájl frissítése](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model-file) lehetővé teszi `enable` egy fájl nevének és állapotának frissítését egy egyéni nyelvi modellben a megadott fiókban.
 
 ### <a name="response"></a>Reagálás
 
@@ -181,7 +181,7 @@ Használja a `id` válaszban visszaadott fájl tartalmát a fájl tartalmának l
 
 ## <a name="get-a-specific-language-model"></a>Adott nyelvi modell beszerzése
 
-A [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API adja vissza a megadott nyelvi modell adatait a megadott fiókban, például a nyelvet és a nyelvi modellben lévő fájlokat.
+A [Get](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model) API adja vissza a megadott nyelvi modell adatait a megadott fiókban, például a nyelvet és a nyelvi modellben lévő fájlokat.
 
 ### <a name="response"></a>Reagálás
 
@@ -217,7 +217,7 @@ Használja a `id` válaszban visszaadott fájl tartalmát a fájl tartalmának l
 
 ## <a name="get-all-the-language-models"></a>Az összes nyelvi modell lekérése
 
-A [Get all](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API az összes egyéni nyelvi modellt visszaadja egy lista megadott fiókjában.
+A [Get all](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Models) API az összes egyéni nyelvi modellt visszaadja egy lista megadott fiókjában.
 
 ### <a name="response"></a>Reagálás
 
@@ -261,7 +261,7 @@ A válasz felsorolja a fiókban lévő összes nyelvi modellt, valamint az egyes
 
 ## <a name="delete-a-file-from-a-language-model"></a>Fájl törlése egy nyelvi modellből
 
-A [delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API törli a megadott fájlt a megadott nyelvi modellből a megadott fiókból.
+A [delete](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model-File) API törli a megadott fájlt a megadott nyelvi modellből a megadott fiókból.
 
 ### <a name="response"></a>Reagálás
 
@@ -269,7 +269,7 @@ A nyelvi modellből való törlés után a rendszer nem adott vissza tartalmat.
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>Metaadatok beolvasása egy nyelvi modellből származó fájlhoz
 
-A file API-k [metaadatainak beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) a megadott fájl tartalmát és metaadatait a fiókjában kiválasztott nyelvi modellből adja vissza.
+A file API-k [metaadatainak beolvasása](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model-File-Data) a megadott fájl tartalmát és metaadatait a fiókjában kiválasztott nyelvi modellből adja vissza.
 
 ### <a name="response"></a>Reagálás
 
@@ -291,7 +291,7 @@ A válasz JSON formátumban adja meg a fájl tartalmát és metaadatait, a köve
 
 ## <a name="download-a-file-from-a-language-model"></a>Fájl letöltése nyelvi modellből
 
-A [Fájl letöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) API letölt egy szövegfájlt, amely a megadott fiók megadott nyelvi modelljéből származó adott fájl tartalmát tartalmazza. A szövegfájlnak meg kell egyeznie az eredetileg feltöltött szövegfájl tartalmával.
+A [Fájl letöltése](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Download-Language-Model-File-Content) API letölt egy szövegfájlt, amely a megadott fiók megadott nyelvi modelljéből származó adott fájl tartalmát tartalmazza. A szövegfájlnak meg kell egyeznie az eredetileg feltöltött szövegfájl tartalmával.
 
 ### <a name="response"></a>Reagálás
 

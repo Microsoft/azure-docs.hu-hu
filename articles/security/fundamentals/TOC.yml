@@ -64,9 +64,9 @@
     - name: Biztonsági ellenőrzőlista
       href: steps-secure-identity.md
     - name: Jelszó nélküli hitelesítés kiválasztása
-      href: ../../active-directory/authentication/concept-authentication-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Hitelesítés
-      href: /azure/architecture/framework/security/design-identity-authentication?toc=azure/security/fundamentals/toc.json&bc=azure/security/breadcrumb/toc.json
+      href: /azure/architecture/framework/security/design-identity-authentication?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Hálózati biztonság
   items:
     - name: Biztonsági áttekintés
@@ -80,7 +80,7 @@
     - name: Értékhiányos DNS és altartomány-átvétel
       href: subdomain-takeover.md
     - name: Biztonságos hibrid hálózati architektúra
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: IaaS-biztonság
   items:
     - name: Microsoft Antimalware
@@ -120,7 +120,7 @@
         - name: Biztonsági ellenőrzőlista
           href: database-security-checklist.md
     - name: Biztonsági útmutató a tároláshoz
-      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Ügyfélszéf
       href: customer-lockbox-overview.md
     - name: Biztonsági alapkonfiguráció az Ügyfélszéfhez

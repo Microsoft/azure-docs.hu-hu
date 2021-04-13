@@ -10,34 +10,34 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7fe50a6236cf67f1048dddecbf46fea836ec05c5
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: e5b5433be4a95a9df9d3b3527473c3004d24acac
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125712"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327514"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- A [Java Development Kit (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) 8-as vagy újabb verziója.
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- [A Java fejlesztői készlet (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) 8-as vagy újabb verziója.
 - [Apache Maven](https://maven.apache.org/download.cgi).
-- Egy üzembe helyezett kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
-- [Felhasználói hozzáférési jogkivonat](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a "csevegés" értékre állítsa, és jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot.
+- Egy üzembe helyezett Communication Services erőforrás és kapcsolati sztring. [Hozzon létre egy Communication Services erőforrást.](../../create-communication-resource.md)
+- Egy [felhasználói hozzáférési jogkivonat.](../../access-tokens.md) Ügyeljen arra, hogy a hatókört "chat" (csevegés) beállításra állítsa, és jegyezze fel a jogkivonat-sztringet és a userId sztringet.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-java-application"></a>Új Java-alkalmazás létrehozása
 
-Nyissa meg a terminál vagy a parancssorablakot, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Java-alkalmazást. Futtassa az alábbi parancsot a Java-projekt létrehozásához a Maven-archetípus-Gyorsindítás sablonból.
+Nyissa meg a terminált vagy a parancsablakot, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Java-alkalmazást. Az alábbi parancs futtatásával hozza létre a Java-projektet a maven-archetype-quickstart sablonból.
 
 ```console
 mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=communication-quickstart -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
 
-Megfigyelheti, hogy a "létrehozás" cél létrehozta a artifactId megegyező nevű könyvtárat. Ebben a könyvtárban a `src/main/java directory` projekt forráskódját tartalmazza, a `src/test/java` könyvtár tartalmazza a teszt forrását, és a pom.xml fájl a projekt projekt-objektummodell vagy [Pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html).
+Figyelje meg, hogy a "létrehozási" cél létrehozott egy könyvtárat, amely az artifactId nevével azonos. Ebben a könyvtárban a tartalmazza a projekt forráskódját, a könyvtár a tesztforrást, a pom.xml-fájl pedig a projekt `src/main/java directory` `src/test/java` Projektobjektum-modellje vagy [POM fájlja.](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)
 
-Az alkalmazás POM-fájljának frissítése a Java 8 vagy újabb verzió használatára:
+Frissítse az alkalmazás POM-fájlját a Java 8-as vagy újabb verzió használatára:
 
 ```xml
 <properties>
@@ -47,9 +47,9 @@ Az alkalmazás POM-fájljának frissítése a Java 8 vagy újabb verzió haszná
 </properties>
 ```
 
-### <a name="add-the-package-references-for-the-chat-sdk"></a>A csevegő SDK-hoz tartozó csomagok hivatkozásainak hozzáadása
+### <a name="add-the-package-references-for-the-chat-sdk"></a>Csomaghivatkozások hozzáadása a Chat SDK-hoz
 
-A POM-fájlban hivatkozzon a `azure-communication-chat` csomagra a csevegési API-kkal:
+A POM-fájlban hivatkozhat a `azure-communication-chat` csomagra a csevegő API-jaival:
 
 ```xml
 <dependency>
@@ -59,7 +59,7 @@ A POM-fájlban hivatkozzon a `azure-communication-chat` csomagra a csevegési AP
 </dependency>
 ```
 
-A hitelesítéshez az ügyfélnek a csomagra kell hivatkoznia `azure-communication-common` :
+A hitelesítéshez az ügyfélnek hivatkozni kell a `azure-communication-common` csomagra:
 
 ```xml
 <dependency>
@@ -71,21 +71,21 @@ A hitelesítéshez az ügyfélnek a csomagra kell hivatkoznia `azure-communicati
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek a Javához készült Azure Communication Services csevegő SDK főbb funkcióit kezelik.
+Az alábbi osztályok és felületek a Javához készült Chat SDK néhány fő funkcióját Azure Communication Services kezelik.
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| ChatClient | Ez az osztály szükséges a csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozásához, lekéréséhez és törléséhez. |
-| ChatAsyncClient | Ez az osztály szükséges az aszinkron csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozásához, lekéréséhez és törléséhez. |
-| ChatThreadClient | Ez az osztály szükséges a csevegési szál működéséhez. A példányokat a ChatClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére |
-| ChatThreadAsyncClient | Ez az osztály szükséges az aszinkron csevegési szál működéséhez. A példányokat a ChatAsyncClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére |
+| ChatClient | Erre az osztályra a Csevegés funkcióhoz van szükség. Példányosithatja az előfizetési adataival, majd a használatával létrehozhat, lekért és törölhet szálakat. |
+| ChatAsyncClient | Erre az osztályra az aszinkron csevegési funkcióhoz van szükség. Példányosithatja az előfizetési adataival, majd a használatával létrehozhat, lekért és törölhet szálakat. |
+| ChatThreadClient | Erre az osztályra a csevegési szál funkcióhoz van szükség. Egy példányt a ChatClienten keresztül szerezhet be, majd üzenetek küldésére/fogadására/frissítésére/törlésére, felhasználók hozzáadására,eltávolítására/leküldésére, gépelési értesítések küldésére és nyugták olvasására használhatja. |
+| ChatThreadAsyncClient | Erre az osztályra az aszinkron csevegési szál funkcióhoz van szükség. A példányt a ChatAsyncClient használatával szerezheti be, majd üzenetek küldésére/fogadására/frissítésére/törlésére, felhasználók hozzáadására,eltávolítására/leküldésére, gépelési értesítések küldésére és nyugták olvasására használhatja. |
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A Common SDK CommunicationTokenCredential osztályát kell használnia, hogy átadja a tokent a csevegési ügyfelének.
+Csevegési ügyfél létrehozásához a Kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési jogkivonatot fogja használni az előfeltételként szükséges lépések részeként. A felhasználói hozzáférési jogkivonatokkal olyan ügyfélalkalmazásokat építhet, amelyek közvetlenül hitelesítik magukat Azure Communication Services. Miután generálta ezeket a jogkivonatokat a kiszolgálón, továbbadja azokat egy ügyféleszköznek. Ahhoz, hogy a jogkivonatot továbbadja a csevegési ügyfélnek, a Common SDK CommunicationTokenCredential osztályát kell használnia.
 
 További információ a [csevegési architektúráról](../../../concepts/chat/concepts.md)
 
-Az importálási utasítások hozzáadásakor ügyeljen arra, hogy csak a com. Azure. Communication. chat és a com. Azure. Communication. chat. models névtérből vegyen fel importokat, nem pedig a com. Azure. Communication. chat. implementációs névtérből. A Maven használatával létrehozott app. Java-fájlban a következő kódot használhatja a kezdéshez:
+Importálási utasítások hozzáadásakor győződjön meg arról, hogy csak a com.azure.communication.chat és a com.azure.communication.chat.models névterek importálásait adja hozzá, a com.azure.communication.chat.implementation névtérből nem. A Maven használatával létrehozott App.java fájlban a következő kóddal kezdje a műveletet:
 
 ```Java
 package com.communication.quickstart;
@@ -122,24 +122,27 @@ public class App
 }
 ```
 
-## <a name="start-a-chat-thread"></a>Csevegési szál elindítása
+## <a name="start-a-chat-thread"></a>Csevegés elindítása
 
-`createChatThread`Csevegési szál létrehozásához használja a metódust.
-`createChatThreadOptions` a szál kérelmének leírására szolgál.
+A `createChatThread` metódussal hozzon létre egy csevegési szálat.
+`createChatThreadOptions` A a szálkérés leírására használatos.
 
-- A `topic` konstruktor paraméterének használatával adjon meg egy témakört a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` .
-- Ezzel a paranccsal `participants` listázhatja a szálhoz hozzáadandó hozzászólásláncok résztvevőit. `ChatParticipant` a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) rövid útmutatójában létrehozott felhasználót hozza létre.
+- A `topic` konstruktor paraméterének használatával adjon egy témakört a csevegéshez; A témakör a csevegési szál függvény használatával való létrehozása után `UpdateThread` frissíthető.
+- A használatával listába sorolja a szálhoz `participants` hozzáadni a résztvevőket. `ChatParticipant` A a felhasználói hozzáférési jogkivonat [gyorsútmutatóban létrehozott](../../access-tokens.md) felhasználót veszi fel.
 
-`CreateChatThreadResult` a válasz egy csevegési szál létrehozásával tért vissza.
-Egy olyan `getChatThread()` metódust tartalmaz, amely visszaadja a `ChatThread` szál ügyfelének lekéréséhez használható objektumot, amelyből a `ChatThreadClient` létrehozott szálon végezheti el a műveletek végrehajtását: résztvevők hozzáadása, üzenet küldése stb. Az `ChatThread` objektum tartalmazza azt a `getId()` metódust is, amely lekéri a szál egyedi azonosítóját.
+`CreateChatThreadResult` A egy csevegési szál létrehozásából visszaadott válasz.
+Tartalmaz egy metódust, amely visszaadja a objektumot, amellyel lekérte a szál ügyfelét, amelyből lekérte a műveletet a létrehozott szálon: résztvevők hozzáadása, üzenet küldése `getChatThread()` `ChatThread` `ChatThreadClient` stb. A `ChatThread` objektum tartalmazza a `getId()` metódust is, amely lekéri a szál egyedi azonosítóját.
 
 ```Java
+CommunicationUserIdentifier identity1 = new CommunicationUserIdentifier("<USER_1_ID>");
+CommunicationUserIdentifier identity2 = new CommunicationUserIdentifier("<USER_2_ID>");
+
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(firstUser)
+    .setCommunicationIdentifier(identity1)
     .setDisplayName("Participant Display Name 1");
 
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(secondUser)
+    .setCommunicationIdentifier(identity2)
     .setDisplayName("Participant Display Name 2");
 
 CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions("Topic")
@@ -150,9 +153,9 @@ CreateChatThreadResult result = chatClient.createChatThread(createChatThreadOpti
 String chatThreadId = result.getChatThread().getId();
 ```
 
-## <a name="list-chat-threads"></a>Csevegési szálak listázása
+## <a name="list-chat-threads"></a>Csevegési szálak listása
 
-Használja a `listChatThreads` metódust a meglévő csevegési szálak listájának lekéréséhez.
+A `listChatThreads` metódussal lekérhető a meglévő csevegőszálak listája.
 
 ```java
 PagedIterable<ChatThreadItem> chatThreads = chatClient.listChatThreads();
@@ -162,24 +165,24 @@ chatThreads.forEach(chatThread -> {
 });
 ```
 
-## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
+## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének lekérte
 
-A `getChatThreadClient` metódus egy szál-ügyfelet ad vissza egy már létező szálhoz. A létrehozott szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása, üzenet küldése stb. `chatThreadId` a meglévő csevegési szál egyedi azonosítója.
+A `getChatThreadClient` metódus egy szál ügyfelét adja vissza egy már létező szálhoz. Használható műveletek végrehajtásához a létrehozott szálon: résztvevők hozzáadása, üzenet küldése stb. `chatThreadId` A a meglévő csevegési szál egyedi azonosítója.
 
 ```Java
 ChatThreadClient chatThreadClient = chatClient.getChatThreadClient(chatThreadId);
 ```
 
-## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
+## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése egy csevegési szálnak
 
-A `sendMessage` metódus használatával üzenetet küldhet az imént létrehozott, chatThreadId által azonosított szálnak.
-`sendChatMessageOptions` a csevegési üzenetre vonatkozó kérelem leírására szolgál.
+A metódussal küldjön üzenetet az éppen létrehozott `sendMessage` szálnak, amelyet a chatThreadId azonosít.
+`sendChatMessageOptions` A a csevegőüzenet-kérés leírására használatos.
 
-- `content`A csevegési üzenet tartalmának megadásához használja a következőt:.
-- `type`A csevegési üzenet tartalomtípusának, szövegének vagy HTML-címének megadásához használja a következőt:.
-- A (z `senderDisplayName` ) használatával adja meg a feladó megjelenítendő nevét.
+- A `content` használatával adja meg a csevegőüzenet tartalmát.
+- A `type` csevegőüzenet tartalomtípusának (TEXT vagy HTML) megadásához használható.
+- A `senderDisplayName` küldő megjelenítendő nevének megadásához használja a következőt: .
 
-A válasz `sendChatMessageResult` tartalmaz egy `id` -t, amely az üzenet egyedi azonosítója.
+A válasz `sendChatMessageResult` tartalmaz egy `id` et, amely az üzenet egyedi azonosítója.
 
 ```Java
 SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
@@ -191,9 +194,9 @@ SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendC
 String chatMessageId = sendChatMessageResult.getId();
 ```
 
-## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása csevegési szálból
+## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása egy csevegési szálból
 
-A csevegési üzeneteket lekérheti úgy, hogy a `listMessages` csevegési szál ügyfélprogramjában megadott időközönként lekérdezi a metódust.
+A csevegési üzenetek lekérése a metódus lekérdezésével történik a csevegési szál `listMessages` ügyfelén megadott időközönként.
 
 ```Java
 chatThreadClient.listMessages().forEach(message -> {
@@ -201,23 +204,23 @@ chatThreadClient.listMessages().forEach(message -> {
 });
 ```
 
-`listMessages` az üzenet legújabb verzióját adja vissza, beleértve a. editMessage () és a. deleteMessage () használatával az üzenettel történt módosításokat és törléseket is. A törölt üzenetek esetében `chatMessage.getDeletedOn()` egy DateTime értéket ad vissza, amely azt jelzi, hogy az üzenet törölve lett. A szerkesztett üzenetek esetében `chatMessage.getEditedOn()` egy DateTime értéket ad vissza, amely azt jelzi, hogy mikor lett szerkesztve az üzenet. Az üzenet létrehozásának eredeti időpontja a használatával érhető el `chatMessage.getCreatedOn()` , és az üzenetek rendezésére is használható.
+`listMessages` az üzenet legújabb verzióját adja vissza, beleértve az üzenettel történt módosításokat vagy törléseket az .editMessage() és a .deleteMessage() használatával. Törölt üzeneteknél a egy datetime értéket ad vissza, amely `chatMessage.getDeletedOn()` jelzi, hogy az üzenet mikor lett törölve. Szerkesztett üzenetekhez a visszaad egy dátum/idő értéket, amely az üzenet `chatMessage.getEditedOn()` szerkesztésének időpontját jelzi. Az üzenetek létrehozásának eredeti ideje a használatával érhető el, és az üzenetek `chatMessage.getCreatedOn()` megrendelésére használható.
 
-További információ az üzenetek típusairól: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
+További információ az üzenettípusokról: [Üzenettípusok.](../../../concepts/chat/concepts.md#message-types)
 
-## <a name="send-read-receipt"></a>Olvasási visszaigazolás küldése
+## <a name="send-read-receipt"></a>Olvasási nyugták küldése
 
-A `sendReadReceipt` metódussal a felhasználó nevében küldhet egy olvasási beérkezési eseményt egy csevegési szálba.
-`chatMessageId` a beolvasott csevegési üzenet egyedi azonosítója.
+A metódussal olvasási nyugtát közzétevhet egy csevegési szálon egy `sendReadReceipt` felhasználó nevében.
+`chatMessageId` A a beolvasott csevegési üzenet egyedi azonosítója.
 
 ```Java
 String chatMessageId = message.getId();
 chatThreadClient.sendReadReceipt(chatMessageId);
 ```
 
-## <a name="list-chat-participants"></a>Csevegés résztvevőinek listázása
+## <a name="list-chat-participants"></a>Csevegés résztvevőinek felsorolása
 
-A használatával `listParticipants` lekérheti a chatThreadId által azonosított csevegési szál résztvevőit tartalmazó lapozható gyűjteményt.
+A használatával lekérhet egy lapozásos gyűjteményt, amely a chatThreadId által azonosított csevegési szál `listParticipants` résztvevőit tartalmazza.
 
 ```Java
 PagedIterable<ChatParticipant> chatParticipantsResponse = chatThreadClient.listParticipants();
@@ -226,25 +229,28 @@ chatParticipantsResponse.forEach(chatParticipant -> {
 });
 ```
 
-## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
+## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Felhasználó hozzáadása résztvevőként a csevegési szálhoz
 
-A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldjön a csevegési szálba, és további résztvevőket vegyen fel/távolítson el. Először új hozzáférési jogkivonatot és identitást kell beszereznie az adott felhasználó számára. A addParticipants metódus meghívása előtt győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
+Miután létrejött egy csevegési szál, hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést adhat nekik, hogy üzeneteket küldjenek a csevegési szálnak, és további résztvevőket adhat hozzá vagy távolíthat el. Először egy új hozzáférési jogkivonatot és identitást kell lekérte az adott felhasználóhoz. Az addParticipants metódus hívása előtt győződjön meg arról, hogy beszerezte az adott felhasználó új hozzáférési jogkivonatát és identitását. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra a csevegő ügyfelének inicializálása érdekében.
 
-A `addParticipants` metódussal vehet fel résztvevőket a szálba.
+A `addParticipants` metódussal vegyen fel résztvevőket a szálba.
 
-- `communicationIdentifier`, kötelező, az a CommunicationIdentifier, amelyet a CommunicationIdentityClient hozott létre a [felhasználói hozzáférési jogkivonat rövid útmutatójában](../../access-tokens.md) .
-- `displayName`, nem kötelező, a szál résztvevő megjelenítendő neve.
-- `shareHistoryTime`, nem kötelező, az az idő, amely alapján a csevegési előzmények megoszthatók a résztvevővel. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha a résztvevő hozzáadását megelőzően meg szeretné osztani a korábbi előzményeket, állítsa azt az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a szükséges dátumra.
+- `communicationIdentifier`, kötelező: a CommunicationIdentityClient által a felhasználói hozzáférési jogkivonat rövid útmutatóban létrehozott CommunicationIdentifier. [](../../access-tokens.md)
+- `displayName`, nem kötelező: a szál résztvevőjének megjelenítendő neve.
+- `shareHistoryTime`, nem kötelező: az az időpont, amelyből a csevegési előzmények megoszthatóak a résztvevővel. Ha a csevegési szál kezdetétől fogva meg kell osztania az előzményeket, állítsa ezt a tulajdonságot bármely olyan dátumra, amely a szál létrehozási ideje vagy annál rövidebb. Ha nem oszt meg korábbi előzményeket a résztvevő hozzáadása előtt, állítsa az aktuális dátumra. A részleges előzmények megosztásához állítsa be a kívánt dátumot.
 
 ```Java
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
+CommunicationUserIdentifier identity3 = new CommunicationUserIdentifier("<USER_3_ID>");
+CommunicationUserIdentifier identity4 = new CommunicationUserIdentifier("<USER_4_ID>");
+
 ChatParticipant thirdThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(user3)
+    .setCommunicationIdentifier(identity3)
     .setDisplayName("Display Name 3");
 
 ChatParticipant fourthThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(user4)
+    .setCommunicationIdentifier(identity4)
     .setDisplayName("Display Name 4");
 
 participants.add(thirdThreadParticipant);
@@ -255,19 +261,19 @@ chatThreadClient.addParticipants(participants);
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Navigáljon a *pom.xml* fájlt tartalmazó könyvtárra, és fordítsa le a projektet a következő `mvn` parancs használatával.
+Keresse meg apom.xml *fájlt* tartalmazó könyvtárat, és fordítsa le a projektet a következő `mvn` paranccsal.
 
 ```console
 mvn compile
 ```
 
-Ezután hozza létre a csomagot.
+Ezután készítse el a csomagot.
 
 ```console
 mvn package
 ```
 
-Futtassa az alábbi `mvn` parancsot az alkalmazás végrehajtásához.
+Futtassa a `mvn` következő parancsot az alkalmazás végrehajtásához.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.communication.quickstart.App" -Dexec.cleanupDaemonThreads=false

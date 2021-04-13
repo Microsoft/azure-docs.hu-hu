@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b8a94409f082177192847f2c65d44a513ecdbe4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96350228"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305038"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Oktatóanyag: statikus Webalkalmazás létrehozása az Azure statikus Web Apps villámgyors szolgáltatásával
 
@@ -43,7 +43,7 @@ Ezek a projektek együttesen alkotják a szükséges részeket az API-háttér �
 
 ## <a name="fallback-route"></a>Tartalék útvonal
 
-Az alkalmazás olyan URL-címeket tesz elérhetővé, mint a _/Counter_ és a _/fetchdata_ , amelyek az alkalmazás adott útvonalára vannak leképezve. Mivel ez az alkalmazás egy egyoldalas alkalmazásként lett implementálva, minden útvonal a _index.html_ -fájlt szolgálja ki. Annak biztosítása érdekében, hogy bármely elérési útra vonatkozó kérelem _index.html_ , egy [tartalék útvonal](./routes.md#fallback-routes) kerül megvalósításra az ügyfél-projekt _wwwroot_ mappájában található _routes.js_ fájlban.
+Az alkalmazás olyan URL-címeket tesz elérhetővé, mint a _/Counter_ és a _/fetchdata_ , amelyek az alkalmazás adott útvonalára vannak leképezve. Mivel ez az alkalmazás egy egyoldalas alkalmazásként lett implementálva, minden útvonal a _index.html_ -fájlt szolgálja ki. Annak biztosítása érdekében, hogy bármely elérési útra vonatkozó kérelem _index.html_ , egy [tartalék útvonal](./routes.md#fallback-routes) kerül megvalósításra az ügyfél-projekt _wwwroot_ mappájában található _staticwebapp.config.js_ fájlban.
 
 ```json
 {
@@ -64,14 +64,14 @@ A fenti konfiguráció biztosítja, hogy az alkalmazás bármely útvonalára ir
 Ez a cikk egy GitHub-sablon tárházát használja, amely megkönnyíti az első lépéseket. A sablon egy Azure statikus Web Apps üzembe helyezett alapszintű alkalmazást tartalmaz.
 
 1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat:
-    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
+   - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. Nevezze el a tárházat **az első-static-Blazer-App**
 
 ## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
 Most, hogy létrejött a tárház, hozzon létre egy statikus webalkalmazást a Azure Portal.
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Lépjen az [Azure Portalra](https://portal.azure.com)
 1. Válassza **az erőforrás létrehozása** lehetőséget.
 1. Keressen rá a **Static Web Apps** kifejezésre
 1. **Statikus Web Apps kiválasztása (előzetes verzió)**
@@ -84,7 +84,7 @@ Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHu
 1. Azure- _előfizetés_ kiválasztása
 1. Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
 1. Az alkalmazás neve az **első-static-Blazer-App**
-    - Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.
+   - Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.
 1. Válasszon egy Önhöz legközelebb eső _régiót_
 1. Válassza ki az **ingyenes** _SKU_ -t
 1. Jelölje ki a GitHub gombbal a **bejelentkezést** , és végezze el a hitelesítést a GitHub használatával
@@ -97,23 +97,23 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 1. Válassza ki az **én-első-static-Blazer-alkalmazást** az _adattár_ legördülő menüből
 1. Válassza ki a **fő** elemet az _ág_ legördülő menüből
 
-    Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve** lehetőségre, válassza az **Azure statikus Web Apps** lehetőséget, majd válassza a **támogatás** lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
+   Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve** lehetőségre, válassza az **Azure statikus Web Apps** lehetőséget, majd válassza a **támogatás** lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
 
 1. A _Build Details (részletek összeállítása_ ) szakaszban adja meg a Blazer-specifikus konfigurációs adatokat.
 
-    - Válassza a **Blazer** elemet a _Build alapkészletek_ legördülő menüből, és tartsa meg az összes alapértelmezett értéket.
+   - Válassza a **Blazer** elemet a _Build alapkészletek_ legördülő menüből, és tartsa meg az összes alapértelmezett értéket.
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="A létrehozás gomb áttekintése":::
+   :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="A létrehozás gomb áttekintése":::
 
 1. Válassza a **Létrehozás** lehetőséget.
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Létrehozás gomb":::
+   :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Létrehozás gomb":::
 
 1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
+   :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
 
 ## <a name="view-the-website"></a>Webhely megtekintése
 

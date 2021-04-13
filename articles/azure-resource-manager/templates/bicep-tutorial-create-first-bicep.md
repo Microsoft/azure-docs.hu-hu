@@ -2,16 +2,16 @@
 title: Oktatóanyag – Azure Resource Manager bicep-fájlok létrehozása & üzembe helyezése
 description: Hozza létre az első bicep-fájlt az Azure-erőforrások üzembe helyezéséhez. Az oktatóanyagban megismerheti a bicep fájl szintaxisát és a Storage-fiók üzembe helyezésének módját.
 author: mumian
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594274"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306678"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Oktatóanyag: az első Azure Resource Manager bicep-fájl létrehozása és üzembe helyezése
 
@@ -57,7 +57,7 @@ Most már készen áll arra, hogy megkezdje a bicep megismerését.
 
     ```bicep
     resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-      name: '{provide-unique-name}'
+      name: '{provide-unique-name}'  // must be globally unique
       location: 'eastus'
       sku: {
         name: 'Standard_LRS'
@@ -85,6 +85,10 @@ Most már készen áll arra, hogy megkezdje a bicep megismerését.
         Ha egy régebbi API-verziót (például [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)) tekint meg, láthatja, hogy a tulajdonságok kisebb készlete áll rendelkezésre.
 
         Ha úgy dönt, hogy megváltoztatja egy erőforrás API-verzióját, ügyeljen rá, hogy kiértékelje az adott verzió tulajdonságait, és megfelelően módosítsa a bicep-fájlt.
+
+    További információ: [bicep struktúra](./bicep-file.md).
+
+    A name tulajdonsághoz megjegyzés tartozik.  `//`Egysoros megjegyzésekhez vagy `/* ... */` Többsoros megjegyzésekhez használható
 
 1. Cserélje le `{provide-unique-name}` a kapcsos zárójeleket `{}` egy egyedi Storage-fiók nevére.
 

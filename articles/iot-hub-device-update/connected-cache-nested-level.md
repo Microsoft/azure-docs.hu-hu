@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e9749dfd7b28551a4fc2e7c6ba70ba9cce4e5a69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568817"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307299"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>A Microsoft csatlakoztatott gyorsítótár előzetes telepítési forgatókönyvének mintája: kétszintű beágyazott Azure IoT Edge átjáró kimenő, nem hitelesített proxyval
 
@@ -70,7 +70,7 @@ Az alábbi ábra azt a forgatókönyvet ismerteti, amelyben az egyik Azure IoT E
 ## <a name="child-gateway-configuration"></a>Alárendelt átjáró konfigurációja
 
 >[!Note]
->Ha a saját privát beállításjegyzékében a konfigurációban használt replikált tárolók vannak, akkor módosítani kell a config. toml beállításait és a futásidejű beállításokat a modul üzembe helyezésében. További információkért tekintse meg az [oktatóanyag – IoT Edge eszközök hierarchiájának létrehozása – Azure IoT Edge](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device) további részleteket.
+>Ha a saját privát beállításjegyzékében a konfigurációban használt replikált tárolók vannak, akkor módosítani kell a config. toml beállításait és a futásidejű beállításokat a modul üzembe helyezésében. További információkért lásd: az [alsóbb rétegbeli IoT Edge eszközök csatlakoztatása – Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices) további részletekért.
 
 1. Módosítsa a peremhálózati ügynök rendszerképének elérési útját az alábbi példában bemutatott módon:
 

@@ -3,12 +3,12 @@ title: Az Azure Event Hubs Apache Kafka kapcsolatos hibáinak elhárítása
 description: Ez a cikk bemutatja, hogyan lehet elhárítani a problémákat az Azure Event Hubs for Apache Kafka
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9d4a93f0074f206cd4627913505c66eb6480cbd
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061427"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314082"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs Apache Kafka hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket nyújt a Event Hubs Apache Kafka való használatakor futtatott problémákhoz. 
@@ -67,5 +67,5 @@ Ha többet szeretne megtudni a Kafka Event Hubséről és Event Hubsról, tekint
 
 - [Apache Kafka fejlesztői útmutató Event Hubs](apache-kafka-developer-guide.md)
 - [A Event Hubs Apache Kafka áttelepítési útmutatója](apache-kafka-migration-guide.md)
-- [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.yml)
 - [Ajánlott konfigurációk](apache-kafka-configurations.md)

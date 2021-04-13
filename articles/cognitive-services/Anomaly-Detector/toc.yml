@@ -3,12 +3,18 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az a anomália detektor?
+    - name: Mi az a anomália-detektor (többváltozós)?
+      href: overview-multivariate.md
+    - name: Mi az a anomália detektor (univariate)?
       href: overview.md
     - name: Díjszabás és korlátok
       href: 'https://aka.ms/adpricing'
-- name: Anomália detektor – rövid útmutató
-  href: ./quickstarts/client-libraries.md
+- name: Anomáliák detektora
+  items:
+    - name: Többváltozós ügyféloldali kódtárak
+      href: ./quickstarts/client-libraries-multivariate.md
+    - name: Univariate-ügyfél kódtárai
+      href: ./quickstarts/client-libraries.md
 - name: Példák
   items:
     - name: Interaktív bemutató
@@ -39,10 +45,18 @@
               href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Alapelvek
   items:
-    - name: Anomália-detektor API – ajánlott eljárások
+    - name: Anomália-detektor API – ajánlott eljárások (többváltozós)
+      href: concepts/best-practices-multivariate.md
+    - name: Anomália-detektor API – ajánlott eljárások (univariate)
       href: concepts/anomaly-detection-best-practices.md
+    - name: Prediktív karbantartási architektúra (többváltozós)
+      href: concepts/multivariate-architecture.md
+    - name: Többváltozós hibaelhárítás
+      href: concepts/troubleshoot.md
     - name: A spektrális maradék (SR) és a többfunkciós neurális háló (CNN) rendellenességének észlelése
       href: 'https://arxiv.org/abs/1906.03821'
+    - name: Többváltozós idősorozatú anomáliák észlelése gráfon keresztüli hangalapú hálózattal
+      href: 'https://arxiv.org/abs/2009.02040'
 - name: Oktatóanyagok
   items:
     - name: Rendellenességek vizualizálása kötegként a Power BI használatával

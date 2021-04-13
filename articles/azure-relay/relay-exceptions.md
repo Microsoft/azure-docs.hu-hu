@@ -3,12 +3,12 @@ title: Kivételek Azure Relay és azok feloldása | Microsoft Docs
 description: Azure Relay kivételek és javasolt műveletek listája, melyekkel megoldhatja a megoldást.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f9fe2e8aac826bd63d9842bd3380be10e1b87e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625148"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313946"
 ---
 # <a name="azure-relay-exceptions"></a>Kivételek Azure Relay
 
@@ -48,7 +48,7 @@ Az alábbi táblázat az üzenetkezelési kivételek típusait és azok okait so
 
 ## <a name="quotaexceededexception"></a>Quotaexceededexception osztályról
 
-A [quotaexceededexception osztályról](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) azt jelzi, hogy egy adott entitásra vonatkozó kvóta túllépve.
+A [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) kivétel azt jelzi, hogy túllépte az adott entitáshoz tartozó kvótát.
 
 A Relay esetében ez a kivétel a [System. ServiceModel. quotaexceededexception osztályról](/dotnet/api/system.servicemodel.quotaexceededexception)takarja, amely azt jelzi, hogy a figyelő maximális száma túllépte a végpontot. Ezt a kivételt jelző üzenet **MaximumListenersPerEndpoint** értéke jelzi.
 
@@ -80,7 +80,7 @@ Ennek a hibának két gyakori oka van:
     Időnként előfordulhat, hogy a továbbító szolgáltatás késéseket tapasztal a feldolgozási kérelmekben. Ez például a nagy forgalmú időszakok esetében fordulhat elő. Ha ez történik, próbálkozzon újra a művelettel egy késleltetés után, amíg a művelet nem sikerült. Ha ugyanaz a művelet több kísérlet után is folytatódik, ellenőrizze az [Azure szolgáltatás állapotát](https://azure.microsoft.com/status/) , és győződjön meg róla, hogy ismert szolgáltatások kimaradása történt.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Azure Relay GYIK](relay-faq.md)
+* [Azure Relay GYIK](relay-faq.yml)
 * [Relay-névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a Azure Relay és a .NET használatával](relay-hybrid-connections-dotnet-get-started.md)
 * [A Azure Relay és a Node első lépései](relay-hybrid-connections-node-get-started.md)

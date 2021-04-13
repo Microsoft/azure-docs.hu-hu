@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e0eb976f655308082671afe2dc1923f082a3373b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034744"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303168"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro műszaki specifikációi és megfelelőségi követelményei 
 
@@ -23,10 +23,14 @@ A Azure Stack Edge Pro és egy beépített grafikus processzorral (GPU) kapcsola
 
 Az Azure Stack Edge Pro-eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
 
-| Specifikáció           | Érték                  |
-|-------------------------|----------------------------|
-| CPU                     | 2 X Intel Xeon Silver 4214 (Cascade-tó) CPU<br> 24 fizikai mag (12/CPU)<br>48 logikai mag (vCPU) (24 processzor)       |
-| Memória                  | 128 (8x16 GB) GB RAM <br> Dell-kompatibilis 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC regisztrált RDIMM       |
+| Specifikáció  | Érték                                                                       |
+|----------------|-----------------------------------------------------------------------------|
+| CPU-típus       | Dual Intel Xeon Silver 4214 (Cascade-tó) CPU                              |
+| CPU: nyers       | 24 mag összesen, 48 összesen vCPU                                              |
+| CPU: felhasználható    | 40 vCPU                                                                    |
+| Memória típusa    | Dell-kompatibilis 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC regisztrált RDIMM |
+| Memória: nyers    | 128 GB RAM (8 x 16 GB)                                                      |
+| Memória: felhasználható | 102 GB RAM                                                                  |
 
 
 ## <a name="compute-acceleration-specifications"></a>Számítási gyorsítási specifikációk
@@ -44,7 +48,7 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximális kimeneti teljesítmény    | 750 W                     |
+| Maximális kimeneti teljesítmény    | 750 W                      |
 | Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
 | Gyors csatlakoztatás           | Yes                        |
@@ -56,11 +60,11 @@ Az Azure Stack Edge Pro-eszköz hat hálózati adapterrel rendelkezik, a PORT1-P
 
 | Specifikáció           | Description                 |
 |-------------------------|----------------------------|
-|  Hálózati adapterek    | **2 X 1 GbE-illesztő** – 1 felügyeleti felület az 1. port a kezdeti beállításhoz van használatban, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. port a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP. <br>**4 X 25 GbE interfész** – ezeket az adatillesztőket, a 3-as portot a 6-os porton keresztül, a felhasználó DHCP-ként (alapértelmezett) vagy statikusként is konfigurálhatja. Akár 10 GbE interfészként is működhetnek.  | 
+|  Hálózati adapterek    | **2 X 1 GbE-illesztő** – 1 felügyeleti felület az 1. port a kezdeti beállításhoz van használatban, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. port a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP. <br>**4 X 25 – GbE felületek** – ezeket az adatillesztőket, a 3-as portot a 6-os porton keresztül, a felhasználó DHCP-ként (alapértelmezett) vagy statikusként is konfigurálhatja. Akár 10 GbE-illesztőfelület is működhetnek.  | 
 
 Az Azure Stack Edge Pro-eszköz a következő hálózati hardverrel rendelkezik:
 
-* **Egyéni Microsoft Qlogic Cavium 25G NDC adapter** – 1. port a 4. porton keresztül.
+* **Egyéni Microsoft `Qlogic` Cavium 25G NDC-adapter** – 1. port a 4. porton keresztül.
 * **Mellanox Dual port 25G ConnectX-4 csatornás hálózati adapter** -5. és 6. port.
 
 A Mellanox kártya részletei:
@@ -74,7 +78,7 @@ A Mellanox kártya részletei:
 
 A hálózati kártyák által támogatott kábelek, kapcsolók és adóvevők teljes listájáért keresse fel a következőt:
 
-- [Qlogic Cavium 25G NDC adapter együttműködési mátrixa](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [ `Qlogic` CAVIUM 25G NDC-adapter együttműködési mátrixa](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mellanox Dual port 25G ConnectX-4 csatornás hálózati adapter kompatibilis termékek](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
 ## <a name="storage-specifications"></a>Tárolási specifikációk

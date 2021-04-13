@@ -3,12 +3,12 @@ title: Azure Relay Hibrid kapcsolatok Protocol-útmutató | Microsoft Docs
 description: Ez a cikk azokat az ügyféloldali interakciókat ismerteti, amelyekkel az Hibrid kapcsolatok Relay csatlakozik az ügyfelekhez a figyelő és a küldő szerepköreiben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95eb6a66ac7580f115c85ddb258768b9eef62321
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976962"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314218"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hibrid kapcsolatok protokoll
 
@@ -151,7 +151,7 @@ Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolati útvonal regisztr�
 
 Ha a WebSocket-kapcsolatot szándékosan leállítja a szolgáltatás a kezdeti beállítás után, akkor ennek oka a megfelelő WebSocket protokoll hibakódja, valamint egy leíró hibaüzenet, amely tartalmazza a követési azonosítót is. A szolgáltatás nem állítja le a vezérlési csatornát a hiba feltétele nélkül. Minden tiszta leállítás ügyfél által vezérelt.
 
-| WS állapota | Leírás
+| WS állapota | Description
 | --------- | -------------------------------------------------------------------------------
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.
 | 1008      | A biztonsági jogkivonat lejárt, ezért a rendszer megsértette az engedélyezési házirendet.
@@ -215,7 +215,7 @@ Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
  A kapcsolat létrejötte után a kiszolgáló leállítja a WebSocketet, amikor a küldő WebSocket leáll, vagy a következő állapottal:
 
-| WS állapota | Leírás                                                                     |
+| WS állapota | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | A küldő ügyfél leállítja a kapcsolódást.                                    |
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.                        |
@@ -379,7 +379,7 @@ Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
  A kapcsolat létrejötte után a kiszolgáló leállítja a WebSocketet, ha az ügyfél HTTP-szoftvercsatorna leáll, vagy a következő állapottal rendelkezik:
 
-| WS állapota | Leírás                                                                     |
+| WS állapota | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | A küldő ügyfél leállítja a kapcsolódást.                                    |
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.                        |
@@ -404,7 +404,7 @@ Ha a figyelő token hamarosan lejár, lecserélheti azt úgy, hogy szöveges ker
 
 Ha a jogkivonat ellenőrzése nem sikerül, a hozzáférés megtagadva, és a Cloud Service hibával zárja be a vezérlési csatorna websocketjét. Ellenkező esetben nincs válasz.
 
-| WS állapota | Leírás                                                                     |
+| WS állapota | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1008      | A biztonsági jogkivonat lejárt, ezért a rendszer megsértette az engedélyezési házirendet. |
 
@@ -449,7 +449,7 @@ Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolat elérési útja nem
 
 Ha a WebSocket-kapcsolatot szándékosan leállítja a szolgáltatás a kezdeti beállítás után, akkor ennek oka a megfelelő WebSocket protokoll hibakódja, valamint egy leíró hibaüzenet, amely tartalmazza a követési azonosítót is.
 
-| WS állapota | Leírás
+| WS állapota | Description
 | --------- | ------------------------------------------------------------------------------- 
 | 1000      | A figyelő leállítja a szoftvercsatornát.
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.
@@ -471,7 +471,7 @@ A kérés tetszőleges további HTTP-fejléceket tartalmazhat, beleértve az alk
 
 A lekérdezési karakterlánc paraméterének beállításai a következők:
 
-| Param          | Kötelező? | Leírás
+| Param          | Kötelező? | Description
 | -------------- | --------- | ---------------- |
 | `sb-hc-token`  | Igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
 
@@ -498,7 +498,7 @@ Ha hiba lép fel, a szolgáltatás a következőképpen válaszolhat. Azt jelzi,
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Relay – gyakori kérdések](relay-faq.md)
+* [Relay – gyakori kérdések](relay-faq.yml)
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)

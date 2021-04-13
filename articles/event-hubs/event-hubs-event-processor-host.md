@@ -4,12 +4,12 @@ description: Ez a cikk az Azure Event Hubs Event Processor Hostját ismerteti, a
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: de5d8f0f8bf9f64a473b18a50434cac83e8e38c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97b446993d3f0a280c1f4fadb237726ac09228a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622062"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313419"
 ---
 # <a name="event-processor-host"></a>Event Processor Host
 > [!NOTE]
@@ -199,5 +199,5 @@ Most, hogy már ismeri az Event Processor Hostt, tekintse meg a következő cikk
     - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 * [Rendelkezésre állás és konzisztencia az Event Hubsban](event-hubs-availability-and-consistency.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+* [Event Hubs – gyakori kérdések](event-hubs-faq.yml)
 * [Event Hubs minták a GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples)

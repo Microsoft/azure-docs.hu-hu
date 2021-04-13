@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 12/10/2020
-ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564320"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308982"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
 
@@ -96,66 +96,6 @@ A hibakeresési mód lehetővé teszi az egyes átalakítási lépések eredmén
 Az adatáramlás leképezése integrálható a meglévő Azure Data Factory Figyelési képességeivel. Az adatfolyam-figyelés kimenetének megismeréséhez lásd: a [leképezési adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
 
 A Azure Data Factory csapat létrehozta a [teljesítmény-hangolási útmutatót](concepts-data-flow-performance.md) , amellyel optimalizálhatja az Adatáramlások végrehajtási idejét az üzleti logikája kiépítése után.
-
-## <a name="available-regions"></a>Elérhető régiók
-
-= = = = = = = Az adatfolyamatok leképezése az ADF következő régióiban érhető el:
-
-| Azure-régió | Adatfolyamatok az ADF-ben |
-| ------------ | ----------------- |
-|  Ausztrália középső régiója | |
-| Ausztrália 2. középső régiója | |
-| Kelet-Ausztrália | ✓ |
-| Délkelet-Ausztrália   | ✓ |
-| Dél-Brazília  | ✓ |
-| Közép-Kanada | ✓ |
-| Közép-India | ✓ |
-| Az USA középső régiója    | ✓ |
-| Kelet-Kína |      |
-| Kelet-Kína 2  |   |
-| Kína nem regionális | |
-| Észak-Kína |     |
-| Észak-Kína 2 | |
-| Kelet-Ázsia | ✓ |
-| USA keleti régiója   | ✓ |
-| USA 2. keleti régiója | ✓ |
-| Közép-Franciaország | ✓ |
-| Dél-Franciaország  | |
-| Közép-Németország (szuverén) | |
-| Németország – régiófüggetlen (szuverén) | |
-| Észak-Németország (nyilvános) | |
-| Északkelet-Németország (szuverén) | |
-| Középnyugat-Németország (nyilvános) |  |
-| Kelet-Japán | ✓ |
-| Nyugat-Japán |  |
-| Dél-Korea középső régiója | ✓ |
-| Dél-Korea déli régiója | |
-| USA északi középső régiója  | ✓ |
-| Észak-Európa  | ✓ |
-| Kelet-Norvégia | |
-| Norvégia nyugati régiója | |
-| Dél-Afrika északi régiója    | ✓ |
-| Dél-Afrika nyugati régiója |  |
-| USA déli középső régiója  | |
-| Dél-India | |
-| Délkelet-Ázsia    | ✓ |
-| Észak-Svájc |   |
-| Nyugat-Svájc | |
-| UAE középső régiója | |
-| Észak-Egyesült Arab |  |
-| Az Egyesült Királyság déli régiója  | ✓ |
-| Az Egyesült Királyság nyugati régiója |     |
-| US DoD – Középső régió | |
-| US DoD – Kelet | |
-| USA-beli államigazgatás – Arizona |      |
-| US Gov – régiófüggetlen | |
-| USA-beli államigazgatás – Texas | |
-| USA-beli államigazgatás – Virginia |     |
-| USA nyugati középső régiója |     |
-| Nyugat-Európa   | ✓ |
-| Nyugat-India | |
-| USA nyugati régiója   | ✓ |
-| USA 2. nyugati régiója | ✓ |
 
 ## <a name="next-steps"></a>Következő lépések
 

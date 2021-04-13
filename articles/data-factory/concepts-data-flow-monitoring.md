@@ -3,17 +3,16 @@ title: Figyelési leképezési adatfolyamok
 description: A leképezési adatfolyamatok vizuális figyelése Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/22/2020
-ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96004871"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309067"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
@@ -77,9 +76,15 @@ Az egyes partíció-transzformációs lépések részletes időzítését is meg
 }
 ```
 
-### <a name="post-processing-time"></a>Feldolgozás utáni idő
+### <a name="sink-processing-time"></a>Fogadó feldolgozási ideje
 
 Amikor kijelöl egy fogadó transzformációs ikont a térképen, a jobb oldalon található becsúsztatható panel egy további adatpontot jelenít meg, amelynek alján a "post Processing Time" (feldolgozás időpontja) felirat jelenik meg. Az adatok betöltését, átalakítását és írását *követően* ez az idő a Spark-fürtön végzett feladatok végrehajtásával töltött időt. Ez az idő magában foglalhatja a kapcsolatok lezárását, az illesztőprogramok leállítását, a fájlok törlését, a coalescing-fájlokat stb. Ha olyan műveleteket hajt végre a folyamatokban, mint például a "fájlok áthelyezése" és a "kimenet egyetlen fájlba", akkor valószínű, hogy növekedni fog a post Processing Time értéke.
+
+* Írási szakasz időtartama: az az időpont, amikor az adatbevitelt egy átmeneti helyre kívánja írni a szinapszis SQL számára
+* Táblázatos művelet SQL-időtartama: az adatok ideiglenes táblákból cél táblába való áthelyezésének ideje
+* SQL előtti időtartam & az SQL utáni időtartam: az SQL-parancsok előzetes/utáni futtatására fordított idő
+* Előre megadott parancsok időtartama & utáni parancsok időtartama: a fájl alapú forrás/nyelők számára a művelet előtti/utáni műveletek futtatására fordított idő. Például a feldolgozás után helyezze át vagy törölje a fájlokat.
+* Egyesítés időtartama: a fájl egyesítésének ideje, a fájlok egyesítése a fájl-alapú nyelők számára, ha egyetlen fájlba ír, vagy ha a "fájlnév oszlop adatként" érték van használatban. Ha ez a metrika jelentős időt tölt, ne használja ezeket a beállításokat.
   
 ## <a name="error-rows"></a>Hibák sorai
 

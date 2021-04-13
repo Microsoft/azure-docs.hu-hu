@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f09e744dfdd7be73c62c70bcfa91804f14aaa68
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558414"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313674"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure Customer használati jóváírás
 
-Az ügyfél-használati jóváírás az Azure-erőforrásokból származó, az Ön partnereként való üzembe helyezése során létrehozott ügyfél-előfizetésekben található használati adatokat társítja. Ezen társítások belső Microsoft-rendszerekben való kialakítása nagyobb láthatóságot biztosít a szoftvert futtató Azure-lábnyomon. A [kereskedelmi piactéren elérhető Azure-alkalmazások](#commercial-marketplace-azure-apps)esetében ez a nyomon követési funkció segít a Microsoft értékesítési csapatokkal való összehangolásban és a Microsoft-partneri programokhoz való kreditek megszerzésében.
+Az ügyfél-használati jóváírás az Azure-erőforrásokból származó, az Ön partnereként való üzembe helyezése során létrehozott ügyfél-előfizetésekben található használati adatokat társítja. Ezen társítások belső Microsoft-rendszerekben való kialakítása nagyobb láthatóságot biztosít a szoftvert futtató Azure-lábnyomon. A [kereskedelmi piactéren elérhető Azure-alkalmazások](#commercial-marketplace-azure-apps)esetében ez a nyomon követési funkció segít a Microsoft értékesítési csapatokkal való összehangolásban és a Microsoft-partneri programokhoz való kreditek megszerzésében. Az ügyfél-használati jóváírás nem alkalmazható [a kereskedelmi piactéren található Azure-beli virtuális gépekre](./azure-vm-create.md). Nincs olyan piactér-közzétevő, amely biztosítja, hogy az Azure-beli használatot a végfelhasználói előfizetések nyomon kövessék a virtuális gépekhez.
 
 A Customer használati jóváírás három üzembe helyezési lehetőséget támogat:
 

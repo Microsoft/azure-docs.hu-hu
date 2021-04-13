@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99af5ff3add6d002f3a0e5efdb91215873b8d3c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599884"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304222"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -82,6 +82,10 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 
 ## <a name="change-log"></a>Módosítási napló
+- 04/12/2021: a SLES-konfigurációs útmutatóban az Azure-beli [virtuális gépeken lévő pacemakerrel rendelkező SAP HANA kibővíthető HSR](./sap-hana-high-availability-scale-out-hsr-suse.md) kiadása
+- 04/07/2021: a SQL Server többpéldányos és többadatbázisos támogatásának tisztázott támogatása [SQL Server Azure Virtual Machines adatbázis-kezelő rendszerekben az SAP NetWeaver](./dbms_guide_sqlserver.md) -ben
+- 04/07/2021: további információk az Azure-beli másodlagos IP-címekkel kapcsolatban [Virtual Machines az SAP NetWeaver tervezése és megvalósítása](./planning-guide.md)
+- 04/07/2021: az Oracle adatbázis-kezelői támogatásának támogatása az [Azure Storage](./planning-guide-storage.md) -beli ANF az SAP számítási feladatokhoz
 - 03/17/2021: a (z) [SAP HANA Azure-beli virtuális gépeken](./sap-hana-high-availability.md)való megváltozása a SLES-on, [Ha a SAP HANA Azure-beli virtuális gépeken](./sap-hana-high-availability-rhel.md) a [SAP HANA](./sap-hana-high-availability-netapp-files-red-hat.md) RHEL-on
 - 03/15/2021: változás az [SAP ASCS/SCS-példányban a WSFC és a fájlmegosztás](./sap-high-availability-guide-wsfc-file-share.md)használatával, az[SAP ASCS/SCS példány telepítése a WSFC és a fájlmegosztás](./sap-high-availability-installation-wsfc-file-share.md) , valamint az [SAP ASCS/SCS multi-SID WSFC és fájlmegosztás](./sap-ascs-ha-multi-sid-wsfc-file-share.md) segítségével annak tisztázására, hogy az SAP ASCS/SCS-példányok és a SOFS-megosztás külön fürtökben legyen telepítve
 - 03/03/2021: a [WSFC és a Azure NetApp Files (SMB) SAP ASCS/SCS-hez](./high-availability-guide-windows-netapp-files-smb.md) való megváltozása esetén az SAP rendszer telepítése során a SWPM-t futtató felhasználóhoz emelt szintű jogosultságok szükségesek.

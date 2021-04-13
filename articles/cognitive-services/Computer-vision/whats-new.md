@@ -10,16 +10,29 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f102bbe45fd5eea853ba63def4f1c1a92888ca46
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 826bd22375fb6649bf4edbbeca88aed64cfe7245
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285943"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312127"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. Könyvjelző ezen az oldalon naprakészen maradhat a szolgáltatással.
+
+## <a name="april-2021"></a>Április 2021
+
+### <a name="computer-vision-v32-ga"></a>Computer Vision v 3.2 GA
+
+A Computer Vision API v 3.2 mostantól általánosan elérhető a következő frissítésekkel:
+* Továbbfejlesztett képcímkézési modell: elemzi a vizuális tartalmakat, és a képen megjelenített objektumok, műveletek és tartalmak alapján hozza létre a kapcsolódó címkéket. Ez a [címke RENDSZERKÉP API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f200)-n keresztül érhető el. További információért tekintse meg a rendszerképek elemzését ismertető [útmutatót](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) és az [áttekintést](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
+* Frissített Content moderációs modell: észleli a felnőtt tartalmak jelenlétét, és jelzőket biztosít a felnőtt, a zamatos és a véres vizuális tartalmat tartalmazó képek szűréséhez. Ez az [elemzés API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)-n keresztül érhető el. További információért tekintse meg a rendszerképek elemzését ismertető [útmutatót](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) és az [áttekintést](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
+* [Az optikai karakterfelismerés (olvasás) 73 nyelven érhető el](./language-support.md#optical-character-recognition-ocr) , beleértve az egyszerűsített és a hagyományos kínai, Japán, Koreai és latin nyelveket.
+* Az [OCR (olvasás)](./overview-ocr.md) a helyszíni üzembe helyezéshez is elérhető, amely a [disztribúciós tároló](./computer-vision-how-to-install-containers.md?tabs=version-3-2) .
+
+> [!div class="nextstepaction"]
+> [Lásd: Computer Vision v 3.2 GA](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="march-2021"></a>Március 2021
 

@@ -260,6 +260,8 @@
               href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
             - name: Virtuális kapcsoló létrehozása
               href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
+            - name: VM-lemezek biztonsági mentése
+              href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
         - name: Tanúsítványok kezelése
           items:
             - name: Követelmények

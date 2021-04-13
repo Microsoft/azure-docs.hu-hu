@@ -3,21 +3,21 @@ title: Oktatóanyag – egyéni tartomány hozzáadása az Azure-beli bejárati 
 description: Ebből az oktatóanyagból megtudhatja, hogyan regisztrálható egyéni tartomány az Azure Front Door szolgáltatásban.
 services: frontdoor
 documentationcenter: ''
-author: duongau
+author: jessie-jyy
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2020
-ms.author: duau
-ms.openlocfilehash: e1540602bae0779d69c0cb4bb59e93b810b52904
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.date: 04/12/2021
+ms.author: yuajia
+ms.openlocfilehash: 7e2f05a7d911ce2b311a423994d2b459de0fa269
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550761"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308863"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a Front Doorhoz
 
@@ -40,9 +40,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy Front Doort. További információkért lásd a [Rövid útmutató: Front Door létrehozása](quickstart-create-front-door.md) szakaszt.
 
-* Ha nem rendelkezik egyéni tartománnyal, először vásároljon egyet egy tartományszolgáltatótól. Példákért lásd az [egyéni tartománynév vásárlásáról](../app-service/manage-custom-dns-buy-domain.md) szóló részt.
+* Ha még nem rendelkezik egyéni tartománnyal, először az egyiket kell megvásárolnia egy tartományi szolgáltatóval. Példákért lásd az [egyéni tartománynév vásárlásáról](../app-service/manage-custom-dns-buy-domain.md) szóló részt.
 
-* Ha az Azure-t használja a [DNS-tartományai](../dns/dns-overview.md) üzemeltetésére, delegálnia kell a tartományszolgáltató tartománynévrendszerét (DNS-ét) egy Azure DNS-re. További információ: [tartomány delegálása Azure DNSra](../dns/dns-delegate-domain-azure-dns.md). Egyéb esetben, ha tartományszolgáltatót használ a DNS-tartománya kezeléséhez, lépjen tovább a [CNAME DNS-rekord létrehozása](#create-a-cname-dns-record) szakaszra.
+* Ha az Azure-t használja a [DNS-tartományok](../dns/dns-overview.md)üzemeltetéséhez, akkor a tartományi szolgáltató tartománynevét (DNS) delegálnia kell egy Azure DNS. További információ: [tartomány delegálása Azure DNSra](../dns/dns-delegate-domain-azure-dns.md). Ellenkező esetben, ha tartományi szolgáltatót használ a DNS-tartomány kezeléséhez, folytassa a [CNAME DNS-rekord létrehozásával](#create-a-cname-dns-record).
 
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS-rekord létrehozása
@@ -54,9 +54,9 @@ Egy egyéni tartományt és altartományát egyszerre csak egyetlen bejárati aj
 
 ## <a name="map-the-temporary-afdverify-subdomain"></a>Az ideiglenes afdverify altartomány leképezése
 
-Amikor meglévő, éles környezetben futó tartományt képez le, speciális szempontokat kell figyelembe vennie. Amikor regisztrálja az egyéni tartományát az Azure Portalon, rövid kimaradás fordulhat elő a tartományon. A webes forgalom megszakításának elkerülése érdekében először az Azure afdverify altartománnyal társítsa az egyéni tartományt az előtérben lévő alapértelmezett előtér-gazdagéphez, és hozzon létre egy ideiglenes CNAME-leképezést. Ezzel a módszerrel a felhasználók megszakítás nélkül férhetnek hozzá a tartományhoz a DNS-hozzárendelés közben.
+Amikor meglévő, éles környezetben futó tartományt képez le, speciális szempontokat kell figyelembe vennie. Az egyéni tartomány a Azure Portalban való regisztrálása közben előfordulhat, hogy a tartomány rövid állásidőt eredményez. A webes forgalom megszakításának elkerülése érdekében először az Azure afdverify altartománnyal társítsa az egyéni tartományt az előtérben lévő alapértelmezett előtér-gazdagéphez, és hozzon létre egy ideiglenes CNAME-leképezést. Ezzel a módszerrel a felhasználók megszakítás nélkül férhetnek hozzá a tartományhoz a DNS-hozzárendelés közben.
 
-Egyéb esetben, ha először használja az egyéni tartományát, és nem fut rajta éles forgalom, a tartományt leképezheti közvetlenül a Front Doorra. Lépjen tovább [az állandó egyéni tartomány leképezését](#map-the-permanent-custom-domain) bemutató cikkre.
+Ellenkező esetben, ha első alkalommal használja az egyéni tartományt, és az üzemi forgalom nem fut rajta, közvetlenül leképezheti az egyéni tartományt az előtérben. folytassa [az állandó egyéni tartomány leképezését](#map-the-permanent-custom-domain).
 
 CNAME rekord létrehozása az afdverify altartománnyal:
 
@@ -109,13 +109,13 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a Front Doorho
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és navigáljon arra a Front Doorra, amely tartalmazza azt az előtérbeli gazdagépet, amelyet az egyéni tartományhoz kíván leképezni.
     
-2. A **Front Door-tervező** lapon kattintson a „+” jelre egyéni tartomány hozzáadásához.
+2. A **bejárati ajtó tervezője** lapon válassza a "+" lehetőséget az egyéni tartomány hozzáadásához.
     
 3. Adjon meg az **Egyéni tartomány** értékét. 
 
 4. Az **Előtérbeli gazdagép** mezőben előre ki van töltve a CNAME rekordhoz céltartományként használt előtérbeli gazdagép neve, amely a Front Doorból van származtatva: *&lt;alapértelmezett gazdagépnév&gt;*.azurefd.net. A név nem módosítható.
 
-5. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt, amelyet a CNAME rekord forrástartományaként fog használni. Például: www \. contoso.com vagy CDN.contoso.com. Ne használja az afdverify altartománynevet.
+5. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt, amelyet a CNAME rekord forrástartományaként fog használni. Például: www \. contoso.com vagy CDN.contoso.com. Ne használja a afdverify aldomain nevét.
 
 6. Válassza a **Hozzáadás** lehetőséget.
 
@@ -126,14 +126,14 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a Front Doorho
 
 ## <a name="verify-the-custom-domain"></a>Az egyéni tartomány ellenőrzése
 
-Az egyéni tartomány regisztrálása után ellenőrizze, hogy az egyéni tartomány az alapértelmezett előtérbeli Front Door-gazdagépre hivatkozik-e.
+Miután elvégezte az egyéni tartomány regisztrációját, ellenőrizze, hogy az egyéni tartomány hivatkozik-e az alapértelmezett előtér-gazdagépre.
  
 A böngészőjében navigáljon a fájl címére az egyéni tartomány használatával. Ha például az egyéni tartománya a robotics.contoso.com, a gyorsítótárazott fájl URL-címe a következő URL-címre fog hasonlítani: http:\//robotics.contoso.com/my-public-container/my-file.jpg. Győződjön meg arról, hogy az eredmény ugyanaz, mint amikor közvetlenül *&lt; &gt; a bejárati* ajtóhoz fér hozzá. azurefd.net.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Az állandó egyéni tartomány leképezése
 
-Ha ellenőrizte, hogy az adfverify altartomány sikeresen le lett képezve a Front Doorra (vagy ha új egyéni tartományt használ, amely nem fut éles környezetben), akkor leképezheti az egyéni tartományt közvetlenül az alapértelmezett előtérbeli Front Door-gazdagépre.
+Ha ellenőrizte, hogy a afdverify altartomány sikeresen le lett képezve a bejárati ajtóra (vagy ha olyan új egyéni tartományt használ, amely nem éles környezetben van), akkor az egyéni tartományt közvetlenül az alapértelmezett előtér-gazdagéphez rendelheti.
 
 CNAME rekord létrehozása az egyéni tartományhoz:
 
@@ -157,7 +157,7 @@ CNAME rekord létrehozása az egyéni tartományhoz:
 
 5. Ha korábban létrehozott egy ideiglenes afdverify altartományhoz tartozó CNAME rekordot, törölje azt. 
 
-6. Ha éles környezetben most először használja az egyéni tartományt, kövesse [Az egyéni tartomány hozzárendelése a Front Doorhoz](#associate-the-custom-domain-with-your-front-door) és [Az egyéni tartomány ellenőrzése](#verify-the-custom-domain) szakaszok lépéseit.
+6. Ha első alkalommal használja ezt az egyéni tartományt, kövesse az [egyéni tartomány a bejárati ajtóhoz való hozzárendeléséhez](#associate-the-custom-domain-with-your-front-door) és [az egyéni tartomány ellenőrzéséhez](#verify-the-custom-domain)szükséges lépéseket.
 
 Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
@@ -187,17 +187,18 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
 8. A **Törlés** gombra kattintva törölje a CNAME rekordot.
 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben hozzáadott egy egyéni tartományt egy Front Doorhoz. Ha már nem szeretné egyéni tartománnyal társítani a Front Doort, az alábbi lépésekkel eltávolíthatja az egyéni tartományt:
+Az előző lépésekben hozzáadott egy egyéni tartományt egy Front Doorhoz. Ha már nem szeretné egyéni tartományhoz rendelni a bejárati ajtót, az alábbi lépésekkel távolíthatja el az egyéni tartományt:
  
-1. A Front Door-tervezőben válassza ki azt az egyéni tartományt, amelyet el szeretne távolítani.
+1. Nyissa meg a DNS-szolgáltatót, törölje az egyéni tartomány CNAME rekordját, vagy frissítse az egyéni tartomány CNAME rekordját egy nem előtérben lévő végpontra.
 
-2. Kattintson a Törlés elemre a helyi menüben az egyéni tartománynál.  
+    > [!Important]
+    > Ha meg szeretné akadályozni, hogy a DNS-bejegyzések és az általuk létrehozott biztonsági kockázatok ne legyenek létrehozva, az Azure-beli bejárati ajtón az erőforrások törlése előtt el kell 2021 indítani a CNAME-rekordokat az első ajtós végpontokra. Az erőforrások közé tartoznak a bejárati ajtóhoz tartozó egyéni tartományok, a bejárati végpontok vagy az Azure-erőforráscsoportok, amelyeken engedélyezve van az egyéni tartomány (ok).
 
-   Az egyéni tartomány társítása a végponttal ekkor megszűnik.
+2. A Front Door-tervezőben válassza ki azt az egyéni tartományt, amelyet el szeretne távolítani.
 
+3. Válassza a **Törlés** lehetőséget az egyéni tartomány helyi menüjében. Az egyéni tartomány most már nem lesz hozzárendelve a végponthoz.
 
 ## <a name="next-steps"></a>További lépések
 

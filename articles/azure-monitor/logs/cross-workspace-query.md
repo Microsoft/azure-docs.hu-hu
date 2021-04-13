@@ -4,13 +4,13 @@ description: Ez a cikk azt ismerteti, hogyan lehet lekérdezéseket lekérdezni 
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 57ed43b25c9031138a91f0870d316e1ae7a07a5b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/11/2021
+ms.openlocfilehash: e007f5af214dcfa475eb59a5981bc580b9499915
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030967"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314235"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Napló lekérdezés végrehajtása a munkaterületeken és alkalmazásokon átnyúló Azure Monitorekben
 
@@ -27,7 +27,7 @@ A több munkaterületen és alkalmazásokban tárolt adatlekérdezés két móds
 ## <a name="cross-resource-query-limits"></a>Erőforrások közötti lekérdezési korlátok 
 
 * Az egyetlen lekérdezésben felvehető Application Insights-erőforrások és Log Analytics-munkaterületek száma legfeljebb 100.
-* Az erőforrások közötti lekérdezés nem támogatott a Tervező nézetében. Létrehozhat egy lekérdezést a Log Analyticsban, és rögzítheti az Azure-irányítópulton [egy napló lekérdezésének megjelenítéséhez](../visualize/tutorial-logs-dashboards.md). 
+* Az erőforrások közötti lekérdezés nem támogatott a Tervező nézetében. Létrehozhat egy lekérdezést a Log Analyticsban, és rögzítheti az Azure-irányítópulton [egy napló lekérdezésének megjelenítéséhez](../visualize/tutorial-logs-dashboards.md) , illetve a [munkafüzetekbe](../visualize/workbooks-overview.md)való felvételéhez.
 * A naplózási riasztásokban az erőforrások közötti lekérdezések csak a jelenlegi [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)-ban támogatottak. Ha az örökölt Log Analytics riasztások API-t használja, át kell [váltania az aktuális API](../alerts/alerts-log-api-switch.md)-ra.
 
 
@@ -41,6 +41,9 @@ A munkaterület azonosításához többféleképpen is elvégezhető:
 
 * Erőforrás neve – a munkaterület egy ember által olvasható neve, más néven az *összetevő neve*. 
 
+    >[!Note]
+    >Mivel az alkalmazások és a munkaterületek nevei nem egyediek, az azonosító lehet kétértelmű. Az erőforrás nevének több példánya esetén a hivatkozásnak minősített névvel, erőforrás-AZONOSÍTÓval vagy Azure-erőforrás-AZONOSÍTÓval kell rendelkeznie.
+
     `workspace("contosoretail-it").Update | count`
 
 * Minősített név – a munkaterület "teljes neve", amely az előfizetés nevét, az erőforráscsoportot és az összetevő nevét alkotja ebben a formátumban: *subscriptionName/resourceGroup/componentName*. 
@@ -48,8 +51,7 @@ A munkaterület azonosításához többféleképpen is elvégezhető:
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
-    >Mivel az Azure-előfizetések nevei nem egyediek, lehet, hogy ez az azonosító nem egyértelmű. 
-    >
+    >Mivel az Azure-előfizetések nevei nem egyediek, lehet, hogy ez az azonosító nem egyértelmű.
 
 * Munkaterület-azonosító – a munkaterület-azonosító a globálisan egyedi azonosítóként (GUID) jelölt minden munkaterülethez rendelt egyedi, nem módosítható azonosító.
 

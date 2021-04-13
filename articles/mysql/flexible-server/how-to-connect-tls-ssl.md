@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 399cf8087d39f78184cfdae4b9f0e34efecaea66
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 6dbb1b46aef40986fc2d601aee152aed02591ac0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491597"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312603"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>Csatlakozás Azure Database for MySQL-rugalmas kiszolgálóhoz titkosított kapcsolattal
 
@@ -26,7 +26,7 @@ A következőkben az SSL-és TLS-beállítások különböző konfigurációit h
 
 | Eset   | Kiszolgáló paraméterének beállításai      | Description                                    |
 |------------|--------------------------------|------------------------------------------------|
-|SSL letiltása (titkosított kapcsolatok) | require_secure_transport = kikapcsolva |Ha az örökölt alkalmazás nem támogatja a MySQL-kiszolgálóval létesített titkosított kapcsolatokat, akkor a require_secure_transport = OFF beállítással letilthatja a titkosított kapcsolatok kényszerítését a rugalmas kiszolgálóval.|
+|SSL-kényszerítés letiltása | require_secure_transport = kikapcsolva |Ha az örökölt alkalmazás nem támogatja a MySQL-kiszolgálóval létesített titkosított kapcsolatokat, akkor a require_secure_transport = OFF beállítással letilthatja a titkosított kapcsolatok kényszerítését a rugalmas kiszolgálóval.|
 |SSL kikényszerítés TLS-verzióval < 1,2 | require_secure_transport = ON és tls_version = TLSV1 vagy TLS 1.1| Ha az örökölt alkalmazás támogatja a titkosított kapcsolatokat, de a 1,2-es TLS-< verzióra van szükség, akkor engedélyezheti a titkosított kapcsolatokat, de a rugalmas kiszolgáló konfigurálásával engedélyezheti az alkalmazás által támogatott TLS-verzióhoz (v 1.0 vagy v 1.1) való csatlakozást.|
 |SSL betartatása TLS-verzióval = 1.2 (alapértelmezett konfiguráció)|require_secure_transport = ON és tls_version = TLS 1.2| Ez a rugalmas kiszolgáló ajánlott és alapértelmezett konfigurációja.|
 |SSL kikényszerített TLS-verzió = 1.3 (a MySQL v 8.0-s és újabb verzióival támogatott)| require_secure_transport = ON és tls_version = TLS 1.3| Ez hasznos és ajánlott az új alkalmazások fejlesztéséhez|
@@ -44,7 +44,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 * A kapcsolatok titkosítási állapotának ellenőrzése
 * Csatlakozás a rugalmas kiszolgálóhoz titkosított kapcsolattal különböző alkalmazási keretrendszerek használatával
 
-## <a name="disable-ssl-on-your-flexible-server"></a>Az SSL letiltása a rugalmas kiszolgálón
+## <a name="disable-ssl-enforcement-on-your-flexible-server"></a>Az SSL-kényszerítés letiltása a rugalmas kiszolgálón
 Ha az ügyfélalkalmazás nem támogatja a titkosított kapcsolatokat, akkor le kell tiltania a titkosított kapcsolatok kényszerítését a rugalmas kiszolgálón. A titkosított kapcsolatok kényszerítésének letiltásához be kell állítania require_secure_transport Server paramétert úgy, hogy ki legyen kapcsolva a képernyőképen látható módon, és mentse a kiszolgálói paraméter konfigurációját az érvénybe léptetéséhez. a require_secure_transport egy **dinamikus kiszolgálói paraméter** , amely azonnal érvénybe lép, és nem igényli a kiszolgáló újraindítását a működés érvénybe léptetéséhez.
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="A Azure Database for MySQL rugalmas kiszolgálóval való SSL letiltását bemutató képernyőkép.":::

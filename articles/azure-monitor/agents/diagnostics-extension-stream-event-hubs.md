@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6aa960eb7aed7a579c3fc95748b6e32601201a61
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732037"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305123"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Adatok küldése a Windows Azure Diagnostics bővítményből az Azure-Event Hubs
 Az Azure Diagnostics bővítmény olyan Azure Monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk azt ismerteti, hogyan lehet adatok küldését a Windows Azure diagnosztikai bővítménnyel (WAD) az [azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/) , így az Azure-on kívüli helyekre is továbbíthatja őket.
@@ -177,7 +177,7 @@ A különböző módszerekkel ellenőrizheti, hogy az adatküldés folyamatban v
 
 * [Event Hubs áttekintése](../../event-hubs/event-hubs-about.md)
 * [Eseményközpont létrehozása](../../event-hubs/event-hubs-create.md)
-* [Event Hubs – gyakori kérdések](../../event-hubs/event-hubs-faq.md)
+* [Event Hubs – gyakori kérdések](../../event-hubs/event-hubs-faq.yml)
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

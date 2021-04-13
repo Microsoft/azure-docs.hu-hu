@@ -8,18 +8,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: lagayhar
-ms.openlocfilehash: d45d8bed328dc91dfeeabd6ce878074fa1218623
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ac83d0c43026b431370fab1d8c49aec1adf6659
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737018"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312722"
 ---
 # <a name="angular-plugin-for-application-insights-javascript-sdk"></a>Szögletes beépülő modul a Application Insights JavaScript SDK-hoz
 
 A Application Insights JavaScript SDK szögletes beépülő modulja a következőket teszi lehetővé:
 
 - Az útválasztó változásainak követése
+- Nem kezelt kivételek nyomon követése
 
 > [!WARNING]
 > A szögletes beépülő modul nem ECMAScript 3 (ES3) kompatibilis.
@@ -62,6 +63,24 @@ export class AppComponent {
         appInsights.loadAppInsights();
     }
 }
+```
+
+A nem kezelt kivételek nyomon követéséhez a telepítő ApplicationinsightsAngularpluginErrorService a következőben `app.module.ts` :
+
+```js
+import { ApplicationinsightsAngularpluginErrorService } from '@microsoft/applicationinsights-angularplugin-js';
+
+@NgModule({
+  ...
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ApplicationinsightsAngularpluginErrorService
+    }
+  ]
+  ...
+})
+export class AppModule { }
 ```
 
 ## <a name="next-steps"></a>Következő lépések

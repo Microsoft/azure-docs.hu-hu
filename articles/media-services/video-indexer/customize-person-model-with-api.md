@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 09366dea1a0d77052b6f99e9f5ab52c270e341b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dced3cde1aae082bd64d785212b40e100013e0bf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047008"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312892"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Személy modell testreszabása a Video Indexer API-val
 
@@ -35,7 +35,7 @@ Minden fiókhoz legfeljebb 50 személy-modell tartozik. Ha nincs szüksége a t�
 
 ## <a name="create-a-new-person-model"></a>Új személy modell létrehozása
 
-Ha új személy modellt szeretne létrehozni a megadott fiókban, használja a [create a person Model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API-t.
+Ha új személy modellt szeretne létrehozni a megadott fiókban, használja a [create a person Model](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Person-Model) API-t.
 
 A válasz megadja az imént létrehozott személy modell nevét és a generált modell AZONOSÍTÓját, amelyet az alábbi példa formátuma követ.
 
@@ -46,11 +46,11 @@ A válasz megadja az imént létrehozott személy modell nevét és a generált 
 }
 ```
 
-Ezután használja a **personModelId** paraméter **azonosító** értékét, amikor [feltölt egy videót egy videó indexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Ezután használja a **personModelId** paraméter **azonosító** értékét, amikor [feltölt egy videót egy videó indexeléséhez](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) vagy [újraindexeléséhez](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video).
 
 ## <a name="delete-a-person-model"></a>Személy modell törlése
 
-Ha törölni szeretne egy egyéni személy modellt a megadott fiókból, használja a [személyes modell törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) API-t.
+Ha törölni szeretne egy egyéni személy modellt a megadott fiókból, használja a [személyes modell törlése](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Person-Model) API-t.
 
 Miután sikeresen törölte a személy modelljét, a törölt modellt használó aktuális videók indexe változatlan marad, amíg újra nem indexeli őket. Az újraindexelés során a törölt modellben megnevezett arcok nem ismerhetők fel Video Indexer az adott modellel indexelt aktuális videókon, de az arcok továbbra is észlelhetők lesznek. A törölt modell használatával indexelt aktuális videók mostantól a fiók alapértelmezett személyének modelljét fogják használni. Ha a törölt modellből származó arcok a fiók alapértelmezett modelljében is megtalálhatók, akkor a rendszer továbbra is felismeri ezeket az arcokat a videókban.
 
@@ -58,7 +58,7 @@ A személy modelljének törlése után nincs visszaadott tartalom.
 
 ## <a name="get-all-person-models"></a>Összes modell lekérése
 
-A megadott fiókban található összes modell beszerzéséhez használja a [személyre szabott modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) API-t.
+A megadott fiókban található összes modell beszerzéséhez használja a [személyre szabott modell](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Person-Models) API-t.
 
 A válasz felsorolja a fiókban lévő összes személy modelljét (beleértve a megadott fiókban található alapértelmezett személy modellt is) és az alábbi példa formátumát követő neveket és azonosítókat.
 
@@ -75,7 +75,7 @@ A válasz felsorolja a fiókban lévő összes személy modelljét (beleértve a
 ]
 ```
 
-Kiválaszthatja, hogy melyik modellt kívánja használni a videóhoz, `id` `personModelId` Ha egy videót tölt fel az [indexbe](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) , vagy [újraindexel egy](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)videót.
+Kiválaszthatja, hogy melyik modellt kívánja használni a videóhoz, `id` `personModelId` Ha egy videót tölt fel az [indexbe](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) , vagy [újraindexel egy](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)videót.
 
 ## <a name="update-a-face"></a>Arc frissítése
 
@@ -85,7 +85,7 @@ A rendszer ezután felismeri, hogy ugyanaz az arc fordul elő a többi aktuális
 
 Frissíthet egy olyan arcot, amely új néven hírességként Video Indexer ismert. Az Ön által megadott új név elsőbbséget élvez a beépített híresség felismerésével szemben.
 
-Az arc frissítéséhez használja a [video Face API frissítése lapot](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) .
+Az arc frissítéséhez használja a [video Face API frissítése lapot](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Face) .
 
 A nevek egyediek a személy modellek esetében, így ha két különböző arcot ad meg ugyanabban a `name` paraméter-értékben, video Indexer megtekinti az arcokat ugyanazzal a személlyel, és a videó újraindexelése után átszervezi őket.
 

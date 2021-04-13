@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7e2bd2987e7eaf7798093f3918f72b7e09a3cb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865791"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313468"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -265,7 +265,7 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
 > [!NOTE]
 >
-> A (z) " [MS-python >= 2020.5.78807 verziója nem támogatott ezen a bővítményen"](#issues-changed) megoldva. Frissítse az **MS-Pythont** a **legújabb verzióra** .
+> az [MS-toolsai. jupyter >2021.3.684299474 verziója nem támogatott ez a bővítmény](#known-issues) ismert probléma. Használja a szinapszis kernelt a Microsoft Jupyter-2021.3.684299474 való ragasztással.
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark-kötegelt feladatok elküldése
 
@@ -485,9 +485,19 @@ A HDInsight-fürthöz Data Lake Storage Gen2 használatával küldhet el feladat
 
 A menüsávban válassza a parancs-   >  **paletta** megtekintése elemet, majd írja be az **Azure: kijelentkezés** lehetőséget.
 
-## <a name="issues-changed"></a>Megváltoztatott problémák
+## <a name="known-issues"></a>Ismert problémák 
 
-A "MS-Python >= 2020.5.78807 verzió nem támogatja ezt a bővítményt" című cikkben található probléma megoldásához frissítse az **MS-Pythont** a **legújabb verzióra** .
+ az MS-toolsai. jupyter >2021.3.684299474 verziója nem támogatott ezen a bővítményen, a Microsoft Jupyter 2021.3.684299474 való ragasztással használja a szinapszis kernelt.
+
+ 1. Tiltsa le az automatikus frissítési bővítményt.
+
+      ![bővítmény automatikus frissítésének letiltása](./media/hdinsight-for-vscode/disable-auto-updating-extension.png)
+
+2. Telepítse a Microsoft Jupyter kiválasztott verzióját.
+
+      ![a Microsoft jupyter kiválasztott verziója](./media/hdinsight-for-vscode/selected-version-of-microsoft-jupyter.png)
+
+3. A Microsoft Jupyter verziójának 2021.3.684299474 telepítése
 
 
 ## <a name="next-steps"></a>Következő lépések

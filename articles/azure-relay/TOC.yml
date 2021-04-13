@@ -94,7 +94,7 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: GYIK
-      href: relay-faq.md
+      href: relay-faq.yml
     - name: Blog
       href: /archive/blogs/servicebus/
     - name: Díjszabás

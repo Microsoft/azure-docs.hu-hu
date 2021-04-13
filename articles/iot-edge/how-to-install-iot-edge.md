@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 7b4c2cb946017fd9871e2d99dbed8f841f025008
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030525"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311073"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Linuxos Azure IoT Edge telepítése vagy eltávolítása
 
@@ -146,7 +146,7 @@ A IoT Identity Service a IoT Edge 1,2-es verziójával együtt lett bevezetve. E
 Az ebben a szakaszban szereplő lépések a legújabb verziónak az internetkapcsolattal rendelkező eszközre történő telepítésének tipikus folyamatát szemléltetik. Ha telepítenie kell egy adott verziót, például egy előzetes verziót, vagy offline üzemmódban kell telepítenie, kövesse a jelen cikk későbbi, [Offline vagy adott verziójának telepítési](#offline-or-specific-version-installation-optional) lépéseit.
 
 >[!NOTE]
->A jelen szakaszban ismertetett lépések bemutatják, hogyan telepítheti az IoT Edge 1,2-es verzióját, amely jelenleg nyilvános előzetes verzióban érhető el. Ha a IoT Edge legújabb általánosan elérhető verziójának telepítésére vonatkozó lépéseket keresi, tekintse meg a cikk [1,1 (LTS)](?view=iotedge-2018-06&preserve-view=true) verzióját.
+>Az ebben a szakaszban ismertetett lépések bemutatják, hogyan telepítheti IoT Edge 1,2-es verzióját.
 >
 >Ha már rendelkezik egy régebbi verziót futtató IoT Edge eszközzel, és a 1,2-re szeretné frissíteni, használja a [IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakör lépéseit. Az 1,2-es verzió megfelelően különbözik a korábbi IoT Edge verzióitól, hogy a frissítéshez adott lépések szükségesek.
 
@@ -168,15 +168,11 @@ Ha a IoT Edge legújabb verzióját szeretné telepíteni, használja a követke
    sudo apt-get install aziot-edge
    ```
 
-<!-- commenting out for public preview. reintroduce at GA
-
-Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+Ha a IoT Edge és az Identity szolgáltatás egy adott verzióját szeretné telepíteni, adja meg a verzióit az apt List kimenetből. Mindkét szolgáltatás esetében ugyanazt a verziót kell megadni. A következő parancs például az 1,2 kiadás legújabb verzióját telepíti:
 
    ```bash
    sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
    ```
-
--->
 
 <!-- end 1.2 -->
 ::: moniker-end

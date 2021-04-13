@@ -4,12 +4,12 @@ description: Nem látja az Azure Application Insightsban tárolt adatmegjelenít
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056572"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311226"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -28,6 +28,10 @@ ms.locfileid: "106056572"
 *Adatvesztést tapasztalok a konzol alkalmazásban vagy a webalkalmazásban, ha az alkalmazás hamarosan leáll.*
 
 * Az SDK-csatorna tárolja a telemetria a pufferben, és azokat kötegekben küldi el. Ha az alkalmazás leáll, előfordulhat, hogy explicit módon meg kell hívnia a [Flush ()](api-custom-events-metrics.md#flushing-data)-t. A viselkedés az `Flush()` aktuálisan használt [csatornától](telemetry-channels.md#built-in-telemetry-channels) függ.
+
+## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Application Insights SDK által összegyűjtött kérelmek száma nem egyezik meg az alkalmazás IIS-naplóinak számával
+
+A Internet Information Services-(IIS-) naplók az IIS-t elérő kérések számát és a bennük rejlő teljes kérelem eltérhetnek az alkalmazás eléréséhez. Ennek köszönhetően nem garantált, hogy az SDK-k által gyűjtött kérelmek száma megfelel az IIS-naplók teljes számának. 
 
 ## <a name="no-data-from-my-server"></a>Nincsenek adatok a saját kiszolgálóról
 *Telepítettem az alkalmazást a webkiszolgálón, és most nem látok semmilyen telemetria. A fejlesztői gépen rendben működött.*
