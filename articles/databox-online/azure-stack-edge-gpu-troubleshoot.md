@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: c6f7182fe058bacb1236ff10dfc1553d23a7e1f2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 87e75d771c2cc269eaae81c2433f445eb65a17a9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645251"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314150"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Stack Edge Pro GPU-eszköz problémáinak elhárítása 
 
@@ -146,7 +146,7 @@ Az itt látható hibák a Azure Resource Manager konfigurációjában jelenhetne
 |Add-AzureRmEnvironment: hiba történt a kérelem elküldésekor.<br>At. sor: 1 karakter: 1<br>+ Add-AzureRmEnvironment-Name AZ3-ARMEndpoint " https://management.dbe ...|Ez a hiba azt jelenti, hogy az Azure Stack Edge Pro-eszköz nem érhető el vagy nem megfelelően van konfigurálva. Ellenőrizze, hogy a peremhálózati eszköz és az ügyfél megfelelően van-e konfigurálva. Útmutatásért tekintse meg a táblázat **általános problémák** sorát.|
 |A szolgáltatás hibát adott vissza. További részletekért tekintse meg a InnerException: az alapul szolgáló kapcsolat bezárult: nem hozható létre megbízhatósági kapcsolat az SSL/TLS biztonságos csatorna számára. |   Ennek a hibának az a valószínűsége, hogy egy vagy több saját tanúsítványa helytelenül lett végrehajtva. [Itt](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)talál útmutatást. |
 |A művelet érvénytelen állapotkódot adott vissza: "ServiceUnavailable". <br> A válasz állapotkód nem jelzi a sikert: 503 (a szolgáltatás nem érhető el). | Ez a hiba a fenti feltételek bármelyikének következménye lehet.<li>A ArmStsPool leállított állapotban van.</li><li>A Azure Resource Manager-vagy biztonsági jogkivonat-szolgáltatások webhelyei nem állnak le.</li><li>A Azure Resource Manager fürterőforrás nem található.</li><br><strong>Megjegyzés:</strong> Előfordulhat, hogy a készülék újraindítása megoldhatja a problémát, de a támogatási csomagot össze kell gyűjtenie, hogy tovább lehessen a hibakereséshez.|
-|AADSTS50126: Érvénytelen felhasználónév vagy jelszó.<br>Nyomkövetési azonosító: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelációs azonosító: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Timestamp: 2019-11-15 09:21:57Z: a távoli kiszolgáló hibát adott vissza: (400) hibás kérés.<br>At. sor: 1 karakter: 1 |Ez a hiba a fenti feltételek bármelyikének következménye lehet.<li>Az érvénytelen Felhasználónév és jelszó beállításnál ellenőrizze, hogy az ügyfél módosította-e a jelszót Azure Portal az [itt](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password) leírt lépéseket követve, majd a megfelelő jelszó használatával.<li>Érvénytelen bérlői azonosító esetén a bérlő azonosítója rögzített GUID, és a következőre kell beállítani: `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126: Érvénytelen felhasználónév vagy jelszó.<br>Nyomkövetési azonosító: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelációs azonosító: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Timestamp: 2019-11-15 09:21:57Z: a távoli kiszolgáló hibát adott vissza: (400) hibás kérés.<br>At. sor: 1 karakter: 1 |Ez a hiba a fenti feltételek bármelyikének következménye lehet.<li>Az érvénytelen Felhasználónév és jelszó beállításnál ellenőrizze, hogy az ügyfél módosította-e a jelszót Azure Portal az [itt](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password) leírt lépéseket követve, majd a megfelelő jelszó használatával.<li>Érvénytelen bérlői azonosító esetén a bérlő azonosítója rögzített GUID, és a következőre kell beállítani: `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |összekapcsolás-AzureRmAccount: AADSTS90056: az erőforrás le van tiltva, vagy nem létezik. Ellenőrizze az alkalmazás kódjában, hogy megadta-e az elérni kívánt erőforrás URL-címét.<br>Nyomkövetési azonosító: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Korrelációs azonosító: 75c8ef5a-830e-48b5-B039-595a96488ff9 timestamp: 2019-11-18 07:00:51Z: a távoli kiszolgáló hibát adott vissza: (400) rossz |A parancsban használt erőforrás-végpontok `Add-AzureRmEnvironment` helytelenek.|
 |Nem lehet lekérni a végpontokat a felhőből.<br>Gondoskodjon arról, hogy legyen hálózati kapcsolatban. Hiba részletei: HTTPSConnectionPool (host = "Management. dbg-of4k6suvm.microsoftdatabox.com", Port = 30005): a maximális újrapróbálkozások száma túllépte az URL-címet:/metadata/endpoints? API-Version = 2015-01-01 (SSLError okozta (SSLError ("hibás kézfogás: hiba ([) (SSL-rutinok," tls_process_server_certificate, "tanúsítvány ellenőrzése sikertelen")],) ",") |Ez a hiba többnyire egy Mac-/Linux-környezetben jelenik meg, és az alábbi problémák miatt fordul elő:<li>Nem adtak hozzá PEM formátumú tanúsítványt a Python tanúsítványtárolóhoz.</li> |
 

@@ -4,13 +4,13 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466497"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305225"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
@@ -91,9 +91,10 @@ Ha egy adott metrikához szeretne riasztást létrehozni, de nem látja a metrik
 Ha [egy metrika adott dimenzió értékeire](./alerts-metric-overview.md#using-dimensions)szeretne riasztást kapni, de nem találja ezeket az értékeket, vegye figyelembe a következőket:
 
 1. Eltarthat egy pár percig, amíg a dimenzióértékek megjelennek a **Dimenzióértékek** listában
-1. A megjelenített dimenzióértékek az elmúlt napban gyűjtött metrikaadatokon alapulnak
-1. Ha a dimenzió értéke még nincs kibocsátva, vagy nem jelenik meg, az „Egyéni érték hozzáadása” lehetőséggel adhat hozzá egyéni dimenzió értéket
-1. Ha szeretne riasztást kapni egy dimenzió összes lehetséges értékéről (beleértve a jövőbeli értékeket is), válassza az összes jelenlegi és jövőbeli érték kiválasztása lehetőséget.
+2. A megjelenített dimenzióértékek az elmúlt napban gyűjtött metrikaadatokon alapulnak
+3. Ha a dimenzió értéke még nincs kibocsátva, vagy nem jelenik meg, az „Egyéni érték hozzáadása” lehetőséggel adhat hozzá egyéni dimenzió értéket
+4. Ha szeretne riasztást kapni egy dimenzió összes lehetséges értékéről (beleértve a jövőbeli értékeket is), válassza az összes jelenlegi és jövőbeli érték kiválasztása lehetőséget.
+5. A Application Insights erőforrások egyéni metrikáinak méretei alapértelmezés szerint ki vannak kapcsolva. A méretek ezen egyéni metrikák gyűjteményének bekapcsolásához [itt](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)talál további információt.
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>A metrika riasztási szabályai még definiálva vannak egy törölt erőforráson 
 

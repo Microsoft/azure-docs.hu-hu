@@ -1,43 +1,43 @@
 ---
-title: Tárterület automatikus növekedése – Azure CLI – Azure Database for MySQL
-description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növekedés tárolását a Azure Database for MySQL Azure CLI használatával.
+title: Tárterület automatikus nőjön – Azure CLI – Azure Database for MySQL
+description: Ez a cikk bemutatja, hogyan engedélyezheti a tárterület automatikus növekedését az Azure CLI használatával a Azure Database for MySQL.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3126adbae6cb719bf19dc549e83dfc55af56f7d2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ae22a80829ecaaff84c308ec9059d398b1ccbfb
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110015"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365059"
 ---
-# <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Azure Database for MySQL tárterület automatikus növelése az Azure CLI használatával
-Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MySQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
+# <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Tárterület automatikus Azure Database for MySQL az Azure CLI használatával
+Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MySQL-kiszolgáló tárolóját úgy, hogy az ne befolyásolja a számítási feladatokat.
 
-A [tárolási korlátot elérő](./concepts-pricing-tiers.md#reaching-the-storage-limit)kiszolgáló csak olvasható értékre van állítva. Ha a Storage automatikus növekedése engedélyezve van, akkor a 100 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete a kiosztott tárterület méretének 5%-a alá esik. Az [itt](./concepts-pricing-tiers.md#storage) megadott maximális tárolási korlátozások érvényesek.
+A [tárhelykorlátot](./concepts-pricing-tiers.md#reaching-the-storage-limit)el érő kiszolgáló csak olvashatóra van állítva. Ha a tárterület automatikus mérete engedélyezve van, akkor a 100 GB-nál kisebb kiépítésű tárterülettel rendelkező kiszolgálók esetén a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület 1 GB-nál nagyobb vagy 10%-a alá csökken. A 100 GB-nál nagyobb kiépített tárterülettel rendelkező kiszolgálók esetén a kiépített tárterület 5%-kal nő, ha a szabad tárterület a kiépített tárterület 10 GB-nál kisebb. Az itt megadott maximális tárolási [korlátok érvényesek.](./concepts-pricing-tiers.md#storage)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A útmutató lépéseinek elvégzéséhez:
+Az útmutató befejezéséhez:
 
-- Szüksége van egy [Azure Database for MySQL-kiszolgálóra](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Szüksége lesz egy [Azure Database for MySQL kiszolgálóra.](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="enable-mysql-server-storage-auto-grow"></a>A MySQL-kiszolgáló tárterületének automatikus növekedésének engedélyezése
 
-A kiszolgáló automatikus növekedésének engedélyezése egy meglévő kiszolgálón a következő paranccsal:
+Engedélyezze a kiszolgáló automatikus tárolókapacitását egy meglévő kiszolgálón a következő paranccsal:
 
 ```azurecli-interactive
 az mysql server update --name mydemoserver --resource-group myresourcegroup --auto-grow Enabled
 ```
 
-A kiszolgáló automatikus növekedésének engedélyezése a tárolóban új kiszolgáló létrehozásakor a következő paranccsal:
+Engedélyezze a kiszolgáló automatikus tárolókapacitását új kiszolgáló létrehozásakor a következő paranccsal:
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
@@ -45,4 +45,4 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver  --a
 
 ## <a name="next-steps"></a>Következő lépések
 
-Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).
+Ismerje [meg, hogyan hozhat létre metrikákra vonatkozó riasztásokat.](howto-alert-on-metric.md)

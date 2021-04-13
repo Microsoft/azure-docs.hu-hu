@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afc3d1d84d7b50cdaa7031230d7085e9f611c6c6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98065116"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304970"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
 
@@ -49,7 +49,7 @@ A helyszíni címtárak és az Azure AD integrálása révén a felhasználók m
 * Többféle alkalmazási helyzethez is biztosítja az elérhető legújabb képességeket. A Azure AD Connect az Identity Integration Tools (például az rSync és a Azure AD-szinkronizáló) régebbi verzióit váltja fel. További információ: [hibrid identitás címtár-integrációs eszközök összehasonlítása](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
 ## <a name="why-use-azure-ad-connect-health"></a>Miért érdemes az Azure AD Connect Health eszközt használni?
-Ha az Azure AD-t használják, a felhasználók termelékenyek, mivel közös identitással férhet hozzá a Felhőbeli és a helyszíni erőforrásokhoz is. A környezet megbízhatóságának biztosítása, hogy a felhasználók hozzáférhessenek ezekhez az erőforrásokhoz, kihívás lesz.  Azure AD Connect Health segíti a helyszíni identitás-infrastruktúra monitorozását és elemzését, így biztosítva a környezet megbízhatóságát. Használata éppolyan egyszerű, mintha egy-egy ügynököt telepítene a helyszíni identitás-kiszolgálókra.
+Az Azure AD-val végzett hitelesítés során a felhasználók hatékonyabbak, mivel közös identitással férhet hozzá a Felhőbeli és a helyszíni erőforrásokhoz. A környezet megbízhatóságának biztosítása, hogy a felhasználók hozzáférhessenek ezekhez az erőforrásokhoz, kihívás lesz.  Azure AD Connect Health segíti a helyszíni identitás-infrastruktúra monitorozását és elemzését, így biztosítva a környezet megbízhatóságát. Használata éppolyan egyszerű, mintha egy-egy ügynököt telepítene a helyszíni identitás-kiszolgálókra.
 
 Az AD FS-hez készült Azure AD Connect Health a Windows Server 2008 R2, a Windows Server 2012, a Windows Server 2012 R2 és a Windows Server 2016 rendszeren támogatja az AD FS 2.0-s verzióját. Ezen kívül támogatja az AD FS proxy- vagy webalkalmazás-proxykiszolgálók figyelését is, amelyek az extranetes hozzáféréshez biztosítanak hitelesítési támogatást. Az állapotügynök egyszerűen és gyorsan végrehajtható telepítésével elérhetővé válnak az Azure AD Connect Health for AD FS legfontosabb képességei.
 

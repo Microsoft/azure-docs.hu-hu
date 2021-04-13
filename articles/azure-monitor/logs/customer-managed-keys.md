@@ -1,80 +1,80 @@
 ---
 title: Azure Monitor – ügyfél által kezelt kulcs
-description: Információk és lépések az ügyfél által felügyelt kulcs konfigurálásához a Log Analytics munkaterületen lévő adatok Azure Key Vault kulcs használatával történő titkosításához.
+description: Információk és lépések a Felhasználó által felügyelt kulcs log Analytics-munkaterületeken lévő adatok titkosításához egy Azure Key Vault kulcs használatával.
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: fdd62ebfe992398d33d2851a1aa1c66497296b5d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 4033421095ead47e2bd1e97c4f2f42672644d7df
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311192"
+ms.locfileid: "107364855"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
-A Azure Monitorban lévő, a Microsoft által felügyelt kulcsokkal titkosított adatforgalom. Használhatja a saját titkosítási kulcsát a munkaterületeken tárolt és mentett lekérdezések védelme érdekében. Ha ügyfél által felügyelt kulcsot ad meg, a kulcs az adataihoz való hozzáférés védelme és szabályozása, valamint a konfigurálás után a munkaterületekre eljuttatott összes információ titkosítva lesz a Azure Key Vault kulccsal. A felhasználó által kezelt kulcsokkal rugalmasabban kezelhető a hozzáférés-vezérlés.
+A Azure Monitor Microsoft által kezelt kulcsokkal vannak titkosítva. A saját titkosítási kulcsát használhatja a munkaterületeken lévő adatok és mentett lekérdezések védelmére. Ha felhasználó által kezelt kulcsot ad meg, a rendszer ezzel a kulccsal védi és vezéreli az adatokhoz való hozzáférést, és a konfigurálás után a munkaterületre küldött összes adat titkosítva lesz a Azure Key Vault kulccsal. A felhasználó által kezelt kulcsokkal rugalmasabban kezelhető a hozzáférés-vezérlés.
 
-Javasoljuk, hogy a konfiguráció előtt tekintse át [az alábbi korlátozásokat és korlátozásokat](#limitationsandconstraints) .
+Javasoljuk, hogy a konfigurálás előtt tekintse át az alábbi [korlátozásokat](#limitationsandconstraints) és korlátozásokat.
 
-## <a name="customer-managed-key-overview"></a>Ügyfél által felügyelt kulcs áttekintése
+## <a name="customer-managed-key-overview"></a>Felhasználó által kezelt kulcsok áttekintése
 
-A inaktív adatok [titkosítása](../../security/fundamentals/encryption-atrest.md) a szervezetek közös adatvédelmi és biztonsági követelménye. Lehetővé teheti, hogy az Azure teljes mértékben kezelhesse a titkosítást, míg számos különböző lehetőség áll rendelkezésre a titkosítási és titkosítási kulcsok szoros kezeléséhez.
+[Az rest-titkosítás](../../security/fundamentals/encryption-atrest.md) gyakori adatvédelmi és biztonsági követelmény a szervezeteknél. Az Azure-nak teljes mértékben felügyelheti az adattitkosítást, miközben számos lehetőség áll rendelkezésre a titkosítási és titkosítási kulcsok szoros kezelésére.
 
-Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](../../key-vault/general/overview.md)tárolt saját kulcs használatával is lehetővé teszi a titkosítást, amely lehetővé teszi a vezérlő számára, hogy bármikor visszavonja az adataihoz való hozzáférést. Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) működésének módjával.
+Azure Monitor biztosítja, hogy az összes adat és mentett lekérdezés titkosítva legyen a Microsoft által felügyelt kulcsokkal (MMK). Azure Monitor az Azure Key Vault-ban tárolt saját kulcs használatával is lehetővé [](../../key-vault/general/overview.md)teszi a titkosítást, így bármikor visszavonhatja az adatokhoz való hozzáférést. Azure Monitor titkosítás használata megegyezik az [Azure Storage-titkosítás működésével.](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)
 
-Az ügyfél által felügyelt kulcs olyan [dedikált fürtökön](./logs-dedicated-clusters.md) érhető el, amelyek magasabb szintű védelmi szintet és irányítást biztosítanak. A dedikált fürtökbe betöltött adat kétszer, a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal, illetve az infrastruktúra szintjén egyszer, két különböző titkosítási algoritmus és két különböző kulcs használatával titkosítva van. A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait. A dedikált fürt lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel is védve legyenek.
+Az ügyfél által felügyelt [](./logs-dedicated-clusters.md) kulcs dedikált fürtökön van kézbesítve, így magasabb védelmi szintet és irányítást biztosít. A dedikált fürtökbe betöltött adatokat a rendszer kétszer titkosítja – egyszer a szolgáltatás szintjén a Microsoft által felügyelt vagy ügyfél által kezelt kulcsokkal, egyszer pedig infrastruktúraszinten két különböző titkosítási algoritmus és két különböző kulcs használatával. [A dupla titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet nyújt az olyan forgatókönyvek ellen, ahol az egyik titkosítási algoritmus vagy kulcs biztonsága sérülhet. Ebben az esetben a további titkosítási réteg továbbra is védi az adatokat. A dedikált fürt az adatok védelmét is lehetővé teszi a [Lockbox vezérlővel.](#customer-lockbox-preview)
 
-Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy az SSD-adatmennyiséget a 2021 első felében az ügyfél által felügyelt kulccsal titkosítjuk.
+Az elmúlt 14 napban betöltött adatokat a rendszer a gyors gyorsítótárban (SSD-alapú) is megtartja a hatékony lekérdezési motorművelet érdekében. Ezek az adatok az ügyfél által felügyelt kulcskonfigurációtól függetlenül Microsoft-kulcsokkal titkosítva maradnak, de az SSD-adatok fölötti irányítás megfelel a [kulcs-visszavonásnak.](#key-revocation) Dolgozunk azon, hogy 2021 első felében ügyfél által kezelt kulccsal titkosított SSD-adatokkal dolgozunk.
 
-Log Analytics dedikált fürtök kapacitás foglalási [díjszabási modellt](./logs-dedicated-clusters.md#cluster-pricing-model) használnak, amely 1000 GB/nap.
+A dedikált Log Analytics-fürtök a napi 1000 GB-os kapacitásfoglalási díjszabási modellt használják. [](./logs-dedicated-clusters.md#cluster-pricing-model)
 
-## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Az ügyfél által felügyelt kulcs működése Azure Monitor
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>A felhasználó által felügyelt kulcs működése a Azure Monitor
 
-Azure Monitor felügyelt identitást használ a Azure Key Vaulthoz való hozzáférés biztosításához. A fürt szintjén a Log Analytics-fürt identitása támogatott. Az ügyfél által felügyelt kulcsok több munkaterületen való engedélyezéséhez az új Log Analytics *fürterőforrás* közbenső identitás-kapcsolatként működik a Key Vault és a log Analytics munkaterületek között. A fürt tárterülete a fürt erőforrásához társított felügyelt identitást használja a \' Azure Key Vault Azure Active Directory használatával történő hitelesítéséhez.  
+Azure Monitor felügyelt identitással biztosít hozzáférést a Azure Key Vault. A Log Analytics-fürt identitása fürtszinten támogatott. Annak érdekében, hogy az ügyfél által felügyelt kulcsvédelem több munkaterületen is lehetővé tegye, egy új Log  Analytics-fürterőforrás köztes identitáskapcsolatként teljesít a Key Vault és a Log Analytics-munkaterületek között. A fürt tárolója a fürterőforráshoz társított felügyelt identitást használja a hitelesítéshez a Azure Key Vault \' Azure Active Directory.  
 
-Az ügyfél által felügyelt kulcs konfigurálását követően a dedikált fürthöz kapcsolódó új betöltött adatmennyiségeket a kulcsával titkosítja a szolgáltatás. A munkaterületeket bármikor leválaszthatja a fürtből. A rendszer betölti az új adatait, és a Microsoft-kulccsal titkosítja Log Analytics a tárterületet, míg az új és a régi adatait zökkenőmentesen kérdezheti le.
+Az Ügyfél által felügyelt kulcs konfigurálása után a dedikált fürthöz kapcsolt munkaterületeken az új betöltött adatokat a rendszer az Ön kulcsával titkosítja. A munkaterületeket bármikor leválaszthatja a fürtről. Az új adatok ezután a Log Analytics-tárolóba vannak beolvasva, és Microsoft-kulccsal vannak titkosítva, miközben zökkenőmentesen lekérdezheti az új és a régi adatokat.
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsfontosságú képesség a regionális. A Azure Key Vault, a fürtnek és a csatolt Log Analytics-munkaterületnek ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet.
+> Az ügyfél által felügyelt kulcs képessége regionális. A Azure Key Vault, a fürtöknek és a csatolt Log Analytics-munkaterületnek ugyanabban a régióban kell lennie, de eltérő előfizetésben is lehetnek.
 
-![Ügyfél által felügyelt kulcs áttekintése](media/customer-managed-keys/cmk-overview.png)
+![Az ügyfél által kezelt kulcsok áttekintése](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
-2. Log Analytics a Key Vault számára engedélyekkel rendelkező, felügyelt identitással rendelkező *fürterőforrás* – az identitást a dedikált log Analytics fürt tárterületére propagálja a rendszer.
+2. Log *Analytics-fürterőforrás,* amely felügyelt identitással rendelkezik Key Vault – Az identitás propagálva lesz a dedikált Log Analytics-fürttárolóba
 3. Dedikált Log Analytics-fürt
-4. *Fürterőforrás* -kapcsolattal társított munkaterületek 
+4. Fürterőforráshoz csatolt *munkaterületek* 
 
-### <a name="encryption-keys-operation"></a>Titkosítási kulcsok művelete
+### <a name="encryption-keys-operation"></a>Titkosítási kulcsok működése
 
-A Storage adattitkosítása 3 típusú kulcsot vesz fel:
+A Storage-adattitkosítás háromféle kulcsot tartalmaz:
 
-- **KEK** – kulcs titkosítási kulcsa (az ügyfél által felügyelt kulcs)
-- **AEK** – fiók titkosítási kulcsa
-- **Adattitkosítási kulcsot** – adattitkosítási kulcs
+- **KEK** – Kulcstitkosítási kulcs (az Ügyfél által felügyelt kulcs)
+- **AEK –** Fióktitkosítási kulcs
+- **DEK** – Adattitkosítási kulcs
 
 A következő szabályok érvényesek:
 
-- A Log Analytics fürt Storage-fiókjai egyedi titkosítási kulcsot hoznak az összes Storage-fiókhoz, amely a "AEK" néven ismert.
-- A AEK a DEKs származtatása céljából használható, amelyek a lemezre írt adatblokkok titkosításához használt kulcsok.
-- Ha a kulcsot Key Vaultban konfigurálja, és a fürtben hivatkozik rá, az Azure Storage kérelmeket küld a Azure Key Vaultnak a AEK becsomagolásához és az adattitkosítási és visszafejtési műveletek elvégzéséhez.
+- A Log Analytics-fürt tárfiókja minden tárfiókhoz egyedi titkosítási kulcsot hoz létre, amelyet AEK-nek is nevezik.
+- Az AEK az adattitkok származtatására használható, amelyek a lemezre írt adatblokkok titkosítására használt kulcsok.
+- Amikor konfigurálja a kulcsot az Key Vault-ban, és hivatkozik rá a fürtben, az Azure Storage kéréseket küld az Azure Key Vault-nek az AEK becsomagolása és kicsomagzása érdekében az adattitkosítási és -visszafejtési műveletek végrehajtásához.
 - A KEK soha nem hagyja el a Key Vault.
-- Az Azure Storage a *fürterőforrás* -hez társított felügyelt identitást használja a Azure Key Vault hitelesítésére és elérésére Azure Active Directory használatával.
+- Az Azure Storage a fürterőforráshoz  társított felügyelt identitást használja a hitelesítéshez és a Azure Key Vault hozzáféréséhez Azure Active Directory.
 
-### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed kulcs létesítésének lépései
+### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed kulcs üzembe Customer-Managed lépései
 
-1. Azure Key Vault létrehozása és a kulcs tárolása
+1. Kulcs Azure Key Vault és tárolása
 1. Fürt létrehozása
-1. Engedélyek megadása a Key Vault számára
-1. A fürt frissítése a kulcs-azonosító részleteivel
+1. Engedélyek megadása a Key Vault
+1. Fürt frissítése a kulcsazonosító részleteivel
 1. Log Analytics-munkaterületek összekapcsolása
 
-Az ügyfél által felügyelt kulcs konfigurációja nem támogatott Azure Portal jelenleg és a kiépítés a [PowerShell](/powershell/module/az.operationalinsights/), a [CLI](/cli/azure/monitor/log-analytics) vagy a [Rest](/rest/api/loganalytics/) -kérelmek használatával végezhető el.
+Az ügyfél által felügyelt kulcs konfigurálása jelenleg nem támogatott a Azure Portal és a kiépítés [PowerShell-,](/powershell/module/az.operationalinsights/) [CLI-](/cli/azure/monitor/log-analytics) vagy [REST-kérésekkel](/rest/api/loganalytics/) hajtható végre.
 
-### <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapot-ellenőrzések
+### <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapotellenőrzés
 
-Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végre gyorsan. A `status` Válasz a következők egyike lehet: "Inprogress", "frissítés", "Törlés", "sikeres" vagy "sikertelen" a hibakódtal.
+Egyes konfigurációs lépések aszinkron módon futnak, mert nem használhatja őket gyorsan. A válasza a következők egyike `status` lehet: "InProgress", "Frissítés", "Törlés", "Sikeres" vagy "Sikertelen" hibakóddal.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -90,12 +90,12 @@ N/A
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-A REST használatakor a válasz a 202 (elfogadva) HTTP-állapotkódot és az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet adja vissza:
+REST használata esetén a válasz először a 202 (Elfogadva) HTTP-állapotkódot és az *Azure-AsyncOperation* tulajdonsággal megadott fejlécet adja vissza:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-Az aszinkron művelet állapotát úgy tekintheti meg, hogy egy GET kérelmet küld a végpontnak az *Azure-AsyncOperation* fejlécben:
+Az aszinkron művelet állapotát úgy ellenőrizheti, hogy egy GET kérést küld a végpontnak az *Azure-AsyncOperation fejlécben:*
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
@@ -105,21 +105,21 @@ Authorization: Bearer <token>
 
 ## <a name="storing-encryption-key-kek"></a>Titkosítási kulcs (KEK) tárolása
 
-Hozzon létre vagy használjon olyan Azure Key Vault, amelyet már létre kell hoznia, vagy importálnia kell az adattitkosításhoz használni kívánt kulcsot. A Azure Key Vaultt helyreállítható kell konfigurálni, hogy megvédje a kulcsot és az adataihoz való hozzáférést Azure monitorban. Ezt a konfigurációt a Key Vault tulajdonságok területén ellenőrizheti, ha engedélyezni szeretné a *Soft delete* és a *Purge Protection* szolgáltatást.
+Létrehozhat vagy használhat egy Azure Key Vault, amit már létre kell hoznia, vagy importálhatja az adattitkosításhoz használt kulcsot. A Azure Key Vault konfigurálni kell helyreállíthatóként a kulcs és az adatokhoz való hozzáférés védelme érdekében a Azure Monitor. Ezt a konfigurációt a konfiguráció tulajdonságai között ellenőrizheti,  Key Vault a Törlés *és* a Végleges törlés elleni védelmet is engedélyezni kell.
 
-![A védelem törlésére és eltávolítására vonatkozó védelmi beállítások](media/customer-managed-keys/soft-purge-protection.png)
+![A törlés és a végleges törlés elleni védelem beállításai](media/customer-managed-keys/soft-purge-protection.png)
 
-Ezek a beállítások a CLI-n és a PowerShellen keresztül Key Vault frissíthetők:
+Ezek a beállítások a parancssori felület Key Vault PowerShell használatával frissíthetők:
 
 - [Helyreállítható törlés](../../key-vault/general/soft-delete-overview.md)
-- A [védelem kiürítése](../../key-vault/general/soft-delete-overview.md#purge-protection) a titkos vagy a tár kényszerített törlésével, a törlést követően is
+- [A végleges törlés elleni](../../key-vault/general/soft-delete-overview.md#purge-protection) védelem a titkos kulcs/tároló kényszerített törlését a törlés után is védi
 
 ## <a name="create-cluster"></a>Fürt létrehozása
 
-A fürtök két [felügyelt identitási típust](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)támogatnak: a rendszer által hozzárendelt és felhasználó által hozzárendelt, míg a forgatókönyvtől függően egyetlen identitást lehet definiálni a fürtben. 
-- A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan jön létre a fürt létrehozásával, ha az identitás `type` "*SystemAssigned*" értékre van állítva. Ezt az identitást később is felhasználhatja a tárhelyhez való hozzáférés biztosításához a Key Vault a becsomagolási és a kicsomagolási műveletekhez. 
+A fürtök két felügyelt [identitástípust támogatnak:](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)a rendszer által hozzárendelt és a felhasználó által hozzárendelt identitást, míg a forgatókönyvtől függően a fürtben egyetlen identitás is definiálható. 
+- A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan jön létre a fürtlétrehozás során, ha az identitás `type` *"SystemAssigned" (Rendszer által hozzárendelt)* értékre van állítva. Ez az identitás később arra használható, hogy tárolási hozzáférést biztosítsunk a Key Vault a burkot és a kicsomagot burkoló műveletekhez. 
   
-  Identitás beállításai a fürtben a rendszer által hozzárendelt felügyelt identitáshoz
+  Identitásbeállítások a fürtben a rendszer által hozzárendelt felügyelt identitáshoz
   ```json
   {
     "identity": {
@@ -128,51 +128,51 @@ A fürtök két [felügyelt identitási típust](../../active-directory/managed-
   }
   ```
 
-- Ha az ügyfél által felügyelt kulcsot a fürt létrehozásakor kívánja konfigurálni, rendelkeznie kell egy kulcs-és felhasználó által hozzárendelt identitással, amelyet előzőleg a Key Vault kell megadni, majd létre kell hoznia a fürtöt a következő beállításokkal: Identity `type` as "*UserAssigned*", `UserAssignedIdentities` az identitás *erőforrás-azonosítójával* .
+- Ha a fürt létrehozásakor ügyfél által felügyelt kulcsot szeretne konfigurálni, akkor az Key Vault-ban előre meg kell adni egy kulcsot és egy felhasználó által hozzárendelt identitást, majd létre kell hoznia a fürtöt a következő beállításokkal: identity `type` as "*UserAssigned*", az identitás erőforrás-azonosítójával. `UserAssignedIdentities` 
 
-  Identitás beállításai a fürtben felhasználó által hozzárendelt felügyelt identitáshoz
+  Felhasználó által hozzárendelt felügyelt identitás identitásbeállítása a fürtben
   ```json
   {
   "identity": {
   "type": "UserAssigned",
     "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
       }
   }
   ```
 
 > [!IMPORTANT]
-> A felhasználó által hozzárendelt felügyelt identitások nem használhatók, ha a Key Vault Private-Link (vNet). Ebben a forgatókönyvben a rendszerhez rendelt felügyelt identitást is használhatja.
+> Nem használhat felhasználó által hozzárendelt felügyelt identitást, ha a Key Vault található Private-Link (vNet). Ebben a forgatókönyvben használhatja a rendszer által hozzárendelt felügyelt identitást.
 
-Kövesse a [dedikált fürtök című cikkben](./logs-dedicated-clusters.md#creating-a-cluster)bemutatott eljárást. 
+Kövesse a Dedikált fürtök cikkben [látható eljárást.](./logs-dedicated-clusters.md#creating-a-cluster) 
 
-## <a name="grant-key-vault-permissions"></a>Key Vault engedélyek megadása
+## <a name="grant-key-vault-permissions"></a>Engedélyek Key Vault megadása
 
-Hozzáférési szabályzat létrehozása Key Vaultban, hogy engedélyeket biztosítson a fürtnek. Ezeket az engedélyeket az alátét Azure Monitor tárolója használja. Nyissa meg a Key Vault a Azure Portalban, és kattintson a *"hozzáférési szabályzatok"* , majd a *"hozzáférési házirend hozzáadása"* lehetőségre a szabályzat létrehozásához a következő beállításokkal:
+Hozzon létre hozzáférési szabályzatot a Key Vault, hogy engedélyeket biztosítson a fürtnek. Ezeket az engedélyeket a tároló Azure Monitor használja. Nyissa meg a Key Vault a Azure Portal kattintson a *"Hozzáférési szabályzatok"* elemre, majd a *"+ Hozzáférési* szabályzat hozzáadása" elemre egy szabályzat létrehozásához a következő beállításokkal:
 
-- Kulcs engedélyei: válassza a *"Get"*, a *"wrap Key"* és a *"kicsomagolási kulcs*" lehetőséget.
-- Válasszon rendszerbiztonsági tag: a fürtben használt identitás típusától (a rendszer vagy a felhasználó által hozzárendelt felügyelt identitás) függően adja meg a fürt nevét vagy a fürt rendszerbiztonsági AZONOSÍTÓját a rendszerhez rendelt felügyelt identitáshoz, vagy a felhasználóhoz rendelt felügyelt identitás nevét.
+- Kulcsengedélyek: válassza a *Get,* *a Wrap Key és* a *Unwrap Key lehetőséget.*
+- Rendszerbiztonsági tag kiválasztása: A fürtben használt identitástípustól (rendszer- vagy felhasználó által hozzárendelt felügyelt identitás) függően adja meg a fürt nevét vagy a rendszer által hozzárendelt felügyelt identitás vagy a felhasználó által hozzárendelt felügyelt identitás nevét.
 
-![Key Vault engedélyek megadása](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
+![engedélyek Key Vault megadása](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
-A *Get* engedély szükséges annak ellenőrzéséhez, hogy a Key Vault helyreállítható-e a kulcs védelme érdekében, valamint a Azure monitor adataihoz való hozzáféréshez.
+A *Get* engedély szükséges annak ellenőrzéséhez, hogy a Key Vault konfigurálva van-e helyreállíthatóként a kulcs és a Azure Monitor hozzáférésének védelme érdekében.
 
-## <a name="update-cluster-with-key-identifier-details"></a>Fürt frissítése a kulcs-azonosító részleteivel
+## <a name="update-cluster-with-key-identifier-details"></a>Fürt frissítése a kulcsazonosító részleteivel
 
-A fürtön lévő összes művelethez a `Microsoft.OperationalInsights/clusters/write` művelet engedély szükséges. Ez az engedély a műveletet tartalmazó tulajdonos vagy közreműködő vagy `*/write` a műveletet tartalmazó log Analytics közreműködő szerepkör használatával adható meg `Microsoft.OperationalInsights/*` .
+A fürt összes műveletéhez műveleti `Microsoft.OperationalInsights/clusters/write` engedélyre van szükség. Ez az engedély a műveletet tartalmazó Tulajdonos vagy Közreműködő szerepkörön vagy a műveletet tartalmazó Log Analytics-közreműködői szerepkörön keresztül `*/write` adható `Microsoft.OperationalInsights/*` meg.
 
-Ez a lépés frissíti Azure Monitor tárterületet az adattitkosításhoz használandó kulccsal és verzióval. A frissítés során az új kulcs a Storage-kulcs (AEK) becsomagolására és kicsomagolására szolgál.
+Ez a lépés frissíti Azure Monitor Storage-tárfiókot az adattitkosításhoz használt kulccsal és verzióval. A frissítéskor a rendszer az új kulcsot használja a Storage-kulcs (AEK) becsomagolása és kicsomaglása érdekében.
 
-Válassza ki a kulcs aktuális verzióját Azure Key Vault a kulcs azonosítójának részleteinek beszerzéséhez.
+Válassza ki a kulcs aktuális verzióját a Azure Key Vault a kulcs azonosítójának részleteiért.
 
-![Key Vault engedélyek megadása](media/customer-managed-keys/key-identifier-8bit.png)
+![Engedélyek Key Vault jogosultságok megadása](media/customer-managed-keys/key-identifier-8bit.png)
 
-Frissítse a KeyVaultProperties a fürtben a kulcs azonosítójának részleteivel.
+Frissítse a KeyVaultProperties adatokat a fürtben a kulcsazonosító részleteivel.
 
 >[!NOTE]
->A Key rotációs szolgáltatás két módot támogat: az automatikus rotációt vagy az explicit verziójú verziófrissítést. a [kulcs elforgatásával](#key-rotation) határozhatja meg az Ön számára legmegfelelőbb módszert.
+>A kulcsrotáció két módot támogat: automatikus [](#key-rotation) rotációt vagy explicit kulcsverzió-frissítést. A legjobb módszer meghatározásához tekintse meg a kulcsrotációt.
 
-A művelet aszinkron, és hosszabb időt is igénybe vehet.
+A művelet aszinkron, és a befejezése több ideig is igénybe vehet.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -212,11 +212,11 @@ Content-type: application/json
 
 **Válasz**
 
-A kulcs propagálásának elvégzése néhány percet vesz igénybe. A frissítési állapotot kétféleképpen is megtekintheti:
-1. Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
-2. Küldjön egy GET kérelmet a fürtre, és tekintse meg a *KeyVaultProperties* tulajdonságait. A legutóbb frissített kulcsnak a válaszban kell visszaadnia.
+A kulcs propagálása néhány percet vesz igénybe. A frissítési állapotot kétféleképpen ellenőrizheti:
+1. Másolja ki a Azure-AsyncOperation URL-címét a válaszból, és kövesse [az aszinkron műveleti állapotellenőrzést.](#asynchronous-operations-and-status-check)
+2. Küldjön egy GET kérést a fürtön, és nézze meg a *KeyVaultProperties tulajdonságait.* A nemrégiben frissített kulcsnak vissza kell térnie a válaszban.
 
-A kérésre adott válasznak a következőhöz hasonlóan kell kinéznie, amikor a kulcs frissítése befejeződött: 202 (elfogadva) és fejléc
+A GET kérésre adott válasznak a következőnek kell lennie a kulcsfrissítés befejezésekor: 202 (Elfogadva) és fejléc
 ```json
 {
   "identity": {
@@ -248,54 +248,54 @@ A kérésre adott válasznak a következőhöz hasonlóan kell kinéznie, amikor
 
 ---
 
-## <a name="link-workspace-to-cluster"></a>Munkaterület csatolása a fürthöz
+## <a name="link-workspace-to-cluster"></a>Munkaterület csatolása fürthöz
 
 > [!IMPORTANT]
-> Ezt a lépést csak a Log Analytics-fürt üzembe helyezésének befejezése után kell végrehajtani. Ha a munkaterületeket a kiépítés előtt rendeli hozzá, és az adatot betölti, a rendszer elveti a betöltött adatmennyiséget, és nem lesz helyreállítható.
+> Ezt a lépést csak a Log Analytics-fürt kiépítésének befejezése után kell végrehajtani. Ha munkaterületeket kapcsol össze és az adatokat a kiépítés előtt fogadja, a betöltött adatok el lesznek dobva, és nem állíthatók helyre.
 
-A művelet végrehajtásához "írási" engedélyekkel kell rendelkeznie a munkaterülethez és a fürthöz, beleértve a következőt: `Microsoft.OperationalInsights/workspaces/write` és `Microsoft.OperationalInsights/clusters/write` .
+A művelet végrehajtásához a munkaterületre és a fürtre is "írási" engedélyekkel kell rendelkeznie, amelyek közé tartozik a és a `Microsoft.OperationalInsights/workspaces/write` `Microsoft.OperationalInsights/clusters/write` .
 
-Kövesse a [dedikált fürtök című cikkben](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)bemutatott eljárást.
+Kövesse a Dedikált fürtök cikkben [látható eljárást.](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)
 
 ## <a name="key-revocation"></a>Kulcs visszavonása
 
 > [!IMPORTANT]
-> - Az adataihoz való hozzáférés visszavonásának ajánlott módja a kulcs letiltásával vagy a hozzáférési szabályzat törlésével a Key Vault.
-> - Ha a fürt értéke "None" értékre van állítva `identity` `type` , az adataihoz való hozzáférés is visszavonásra kerül, de ez a módszer nem ajánlott, mert nem állíthatja vissza a visszavonást, ha a támogatási kérelem megnyitása nélkül nem tudja visszaállítani a-t a `identity` fürtben.
+> - Az adatokhoz való hozzáférés visszavonásának ajánlott módja a kulcs letiltása vagy a hozzáférési szabályzat törlése a Key Vault.
+> - A fürtök "Nincs" beállításával az adatokhoz való hozzáférés is vissza lesz vonva, de ez a megközelítés nem ajánlott, mivel nem lehet visszavonni a visszavonást, amikor a fürtben a kérést a támogatási kérelem megnyitása nélkül állítja `identity` `type` `identity` vissza.
 
-A fürt tárterülete mindig egy órán belül betartja a kulcsfontosságú engedélyek változásait, a tárterület pedig elérhetetlenné válik. A fürthöz kapcsolódó munkaterületekre betöltött új adatmennyiség eldobásra kerül, és nem állítható vissza, az adat elérhetetlenné válik, és sikertelen lesz a munkaterületek lekérdezése. A korábban betöltött adatmennyiség mindaddig a tárolóban marad, amíg a fürt és a munkaterületek nem törlődnek. A nem elérhető adatokra az adatmegőrzési szabályzat vonatkozik, és a rendszer törli az adatmegőrzési időtartamot. Az elmúlt 14 napban betöltött adatok gyors gyorsítótárban (SSD-vel) is megmaradnak a hatékony lekérdezési motor működéséhez. Ez törölve lesz a kulcs-visszavonási művelet során, és elérhetetlenné válik.
+A fürt tárterülete egy órán belül mindig tiszteletben tartja a kulcsengedélyek változásait, és a tárterület elérhetetlenné válik. A fürthöz csatolt munkaterületekre betöltött új adatok el lesznek dobva, és nem állíthatók helyre, az adatok elérhetetlenné válnak, és a munkaterületeken való lekérdezések meghiúsulnak. A korábban betöltött adatok addig maradnak a tárolóban, amíg a fürt és a munkaterületek nem törlődnek. A nem elérhető adatokat az adatmegőrzési szabályzat szabályozza, és a megőrzés elérésekor törlődnek. Az elmúlt 14 napban betöltött adatokat a rendszer a gyors gyorsítótárban (SSD-alapú) is megtartja a hatékony lekérdezési motorművelet érdekében. Ez a kulcs-visszavonási művelet során törlődik, és elérhetetlenné válik.
 
-A fürt tárolója rendszeresen ellenőrzi a Key Vault a titkosítási kulcs kicsomagolásának, valamint a hozzáférés után, az adatfeldolgozás és a lekérdezés 30 percen belül folytatódik.
+A fürt tárolója rendszeresen ellenőrzi a Key Vault, hogy megpróbálja kicsomaglani a titkosítási kulcsot, és ha hozzáfért, az adatbecsülés és a lekérdezés 30 percen belül folytatódik.
 
 ## <a name="key-rotation"></a>Kulcsrotálás
 
-A kulcs forgatásának két módja van: 
-- Automatikus elforgatás – ha frissíti a fürtöt, ```"keyVaultProperties"``` de kihagyja a ```"keyVersion"``` tulajdonságot, vagy beállítja a értékre, ```""``` a Storage a legújabb verziókat fogja használni a autoamatically.
-- Kiadás explicit verziójának frissítése – ha frissíti a fürtöt, és a tulajdonságban megadja a kulcs verzióját ```"keyVersion"``` , minden új kulcs-verzióhoz explicit ```"keyVaultProperties"``` frissítés szükséges a fürtben: [a fürt frissítése a kulcs-azonosító részleteivel](#update-cluster-with-key-identifier-details). Ha Key Vault, de nem frissíti a fürtben, a Log Analytics fürt tárterülete továbbra is az előző kulcsot használja. Ha letiltja vagy törli a régi kulcsot, mielőtt frissíti az új kulcsot a fürtben, a [visszavonási](#key-revocation) állapotba kerül.
+A kulcsrotációnak két módja van: 
+- Automatikus rotáció – ha a fürtöt a használatával frissíti, de kihagyja a tulajdonságot, vagy a tulajdonságot a következőre adja meg: , a tároló automatikusan a legújabb verziókat ```"keyVaultProperties"``` ```"keyVersion"``` fogja ```""``` használni.
+- Explicit kulcsverzió-frissítés – amikor frissíti a fürtöt, és a tulajdonságban adja meg a kulcsverziót, minden új kulcsverzióhoz explicit frissítés szükséges a fürtben, lásd: Fürt frissítése kulcsazonosító ```"keyVersion"``` ```"keyVaultProperties"``` [részleteivel.](#update-cluster-with-key-identifier-details) Ha új kulcsverziót hoz létre a Key Vault de nem frissíti a fürtben, a Log Analytics-fürt tárolója továbbra is az előző kulcsot fogja használni. Ha a fürtben az új kulcs frissítése előtt letiltja vagy törli a régi kulcsot, a kulcs visszavonási [állapotba kerül.](#key-revocation)
 
-Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, mivel az adatai mindig titkosítva vannak a fiók titkosítási kulcsával (AEK), míg a AEK mostantól titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával Key Vaultban.
+A kulcsrotációs művelet után minden adat elérhető marad, mivel az adatok mindig fióktitkosítási kulccsal (AEK) vannak titkosítva, az AEK titkosítása pedig az új kulcstitkosítási kulcs (KEK) verziójával történik a Key Vault.
 
-## <a name="customer-managed-key-for-saved-queries"></a>Ügyfél által felügyelt kulcs mentett lekérdezésekhez
+## <a name="customer-managed-key-for-saved-queries"></a>Felhasználó által felügyelt kulcs mentett lekérdezésekhez
 
-A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme az ügyfél által felügyelt kulcs házirendje alapján történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi, hogy a munkaterülethez való csatlakozáskor a saját kulcsával titkosított *mentett kereséseket* és *napló-riasztásokat* tartalmazó lekérdezéseket tárolja. 
+A Log Analyticsben használt lekérdezési nyelv kifejező jellegű, és bizalmas információkat tartalmazhat a lekérdezésekhez vagy a lekérdezési szintaxishoz küldött megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védve maradnak az Ügyfél által felügyelt kulcs házirendben, önnek pedig titkosítania kell a lekérdezéseket a kulcsával. Azure Monitor segítségével a saját  kulcsával titkosított mentett kereséseket és *naplóriasztásokat* tárolhatja a saját tárfiókjában, amikor a munkaterülethez csatlakozik. 
 
 > [!NOTE]
-> Log Analytics lekérdezések a használt forgatókönyvtől függően különböző áruházakban menthetők. A lekérdezések a Microsoft Key (MMK) szolgáltatással is titkosítva maradnak a következő esetekben, függetlenül az ügyfél által felügyelt kulcs konfigurációjától: Azure Monitor, Azure-irányítópultok, Azure Logic app, Azure Notebooks és Automation Runbookok-munkafüzetek.
+> A Log Analytics-lekérdezések a használt forgatókönyvtől függően különböző tárolókba menthetők. A lekérdezések titkosítása Microsoft-kulccsal (MMK) történik az alábbi forgatókönyvekben, függetlenül az ügyfél által felügyelt kulcs konfigurációtól: Munkafüzetek az Azure Monitor-ban, Azure-irányítópultok, Azure Logic App, Azure Notebooks és Automation-runbookok.
 
-Ha saját tárolót (BYOS) használ, és összekapcsolja azt a munkaterülettel, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](../../storage/common/customer-managed-keys-overview.md) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
+Ha saját tárolót (BYOS) hoz létre, és a  munkaterülethez csatolja, a szolgáltatás mentett kereséseket és *naplóriasztásokat* tölt fel a tárfiókba. Ez azt jelenti, hogy a tárfiókot és az adattitkosítási szabályzatot ugyanazokkal a kulcsokkal vezéreli, mint a Log [Analytics-fürtben](../../storage/common/customer-managed-keys-overview.md) található adatok titkosításához, vagy egy másik kulcsot. Azonban Ön a felelős a tárfiókhoz kapcsolódó költségekért. 
 
-**Az ügyfél által felügyelt kulcs lekérdezésekhez való beállítása előtt megfontolandó szempontok**
-* A munkaterület és a Storage-fiók "Write" engedélyekkel kell rendelkeznie
-* Győződjön meg arról, hogy a Storage-fiókot ugyanabban a régióban hozza létre, mint ahol a Log Analytics munkaterület található.
-* A tárolóban végzett *keresések* szolgáltatásbeli összetevőknek számítanak, és a formátumuk változhat
-* A meglévő *mentett keresések* el lesznek távolítva a munkaterületről. A konfiguráció előtt másolja és mentse a szükséges *kereséseket* . A *mentett keresések* megtekinthetők a [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) használatával
-* A lekérdezési előzmények nem támogatottak, és nem láthatja a futtatott lekérdezéseket
-* A lekérdezések mentése céljából egyetlen Storage-fiókot kapcsolhat a munkaterülethez, de a *mentett keresések* és a *log-riasztások* lekérdezései között is használható.
-* A rögzítés az irányítópulton nem támogatott
+**A felhasználó által kezelt kulcs lekérdezésekhez való beállítása előtt megfontolandó szempontok**
+* A munkaterülethez és a Storage-fiókhoz is "írási" engedélyekkel kell rendelkeznie
+* Győződjön meg arról, hogy a Storage-fiókot ugyanabban a régióban hozza létre, mint ahol a Log Analytics-munkaterület található.
+* A *tárolóban a mentések keresései* szolgáltatás-összetevőknek minősülnek, és a formátumuk megváltozhat
+* A *meglévő mentések keresései* el vannak távolítva a munkaterületről. Másolja és *mentse a konfiguráció előtt* szükséges kereséseket. A mentett *kereséseket a* [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) használatával is megtekintheti
+* A lekérdezési előzmények nem támogatottak, és nem fogja látni a futtatott lekérdezéseket
+* A lekérdezések mentése céljából egyetlen tárfiókot is csatolhat a munkaterülethez, de a mentett és a naplóriasztásos lekérdezések is *használhatók* 
+* Az irányítópulton való rögzítés nem támogatott
 
-**BYOS konfigurálása mentett keresési lekérdezésekhez**
+**BYOS konfigurálása mentett keresésekhez**
 
-Storage-fiók összekapcsolása *a* munkaterülethez – a *mentett keresési* lekérdezések a Storage-fiókba lesznek mentve. 
+Csatolja a *Lekérdezés tárfiókot* a munkaterülethez – a *mentett keresések* lekérdezései a tárfiókban vannak mentve. 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -335,11 +335,11 @@ Content-type: application/json
 
 ---
 
-A konfiguráció után a rendszer minden új *mentett keresési* lekérdezést ment a tárolóba.
+A konfiguráció után  az új mentett keresési lekérdezések a tárolóba lesznek mentve.
 
-**BYOS konfigurálása a log-riasztási lekérdezésekhez**
+**BYOS konfigurálása naplóriasztásos lekérdezésekhez**
 
-Storage-fiók csatolása a munkaterülethez tartozó *riasztásokhoz* – a *log-riasztási* lekérdezések mentése a Storage-fiókba történik. 
+Tárfiók csatolása a *riasztások számára* a munkaterülethez – a *naplóriasztásos* lekérdezések a tárfiókba vannak mentve. 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -379,122 +379,122 @@ Content-type: application/json
 
 ---
 
-A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tárolóba.
+A konfiguráció után minden új riasztáslekérdezés mentve lesz a tárolóban.
 
 ## <a name="customer-lockbox-preview"></a>Ügyfélszéf (előzetes verzió)
 
-A kulcstároló segítségével engedélyezheti vagy elutasíthatja a Microsoft mérnök kérelmét, hogy támogatási kérelem során hozzáférjen az adataihoz.
+A Lockbox lehetővé teszi, hogy jóváhagyja vagy elutasítsa a Microsoft mérnökének az adatokhoz való hozzáférésre vonatkozó kérelmét egy támogatási kérés során.
 
-A Azure Monitor a Log Analytics dedikált fürthöz társított munkaterületeken található adathoz irányítja ezt a vezérlőt. A kulcstároló-vezérlő a Log Analytics dedikált fürtben tárolt adatra vonatkozik, ahol a rendszer elkülönítetten tárolja a fürt Storage-fiókjaiban a kulcstároló által védett előfizetését.  
+Ebben Azure Monitor a dedikált Log Analytics-fürthöz csatolt munkaterületeken lévő adatokra vonatkozó szabályozást. A Lockbox vezérlő a dedikált Log Analytics-fürtben tárolt adatokra vonatkozik, amelyek a fürt tárfiókjaiban vannak elkülönítve a Lockbox által védett előfizetés alatt.  
 
-További információ a [Microsoft Azure Ügyfélszéfről](../../security/fundamentals/customer-lockbox-overview.md)
+További információ a [Ügyfélszéf való Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md)
 
-## <a name="customer-managed-key-operations"></a>Customer-Managed kulcsfontosságú műveletek
+## <a name="customer-managed-key-operations"></a>Customer-Managed kulcsműveletek
 
-A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [dedikált fürtben](./logs-dedicated-clusters.md#change-cluster-properties) jelennek meg.
+Customer-Managed kulcs dedikált fürtön található, és ezeket a műveleteket a dedikált fürtökről [cikkben olvashatja](./logs-dedicated-clusters.md#change-cluster-properties)
 
-- Az erőforráscsoport összes fürtjének beolvasása  
-- Az összes fürt beolvasása az előfizetésben
-- *Kapacitás foglalásának* frissítése a fürtben
-- *BillingType* frissítése a fürtben
-- Munkaterület leválasztása a fürtből
+- Az erőforráscsoportban az összes fürt lekérte  
+- Az előfizetésben az összes fürt lekérte
+- Kapacitásfoglalás *frissítése a* fürtben
+- A *billingType frissítése a* fürtben
+- Munkaterület leválasztása a fürtről
 - Fürt törlése
 
 ## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
 
-- A fürt maximális száma régiónként és az előfizetés 2
+- A fürtök maximális száma régiónként és előfizetésenként 2
 
-- A fürthöz társítható munkaterületek maximális száma 1000
+- Egy fürthöz legfeljebb 1000 munkaterület csatolható
 
-- A munkaterületet összekapcsolhatja a fürttel, majd leválaszthatja azt. Az adott munkaterületen a munkaterület-csatolási műveletek száma legfeljebb 2 lehet, 30 napon belül.
+- Összekapcsolhat egy munkaterületet a fürttel, majd leválaszthatja azt. A munkaterület-hivatkozási műveletek száma egy adott munkaterületen 2-re van korlátozva 30 napon belül.
 
-- Az ügyfél által felügyelt kulcs titkosítása a konfigurációs idő után az újonnan betöltött adatmennyiségre vonatkozik. A konfiguráció előtt betöltött adatmennyiség továbbra is titkosítva marad a Microsoft-kulccsal. Az ügyfél által felügyelt kulcsok zökkenőmentes konfigurálása előtt és után lekérdezheti az adatmennyiséget.
+- Az ügyfél által kezelt kulcstitkosítás a konfigurációs idő után újonnan betöltött adatokra vonatkozik. A konfiguráció előtt betöltött adatok Microsoft-kulccsal vannak titkosítva. Zökkenőmentesen lekérdezheti az ügyfél által kezelt kulcs konfigurálása előtt és után betöltött adatokat.
 
-- A Azure Key Vault helyreállítható kell konfigurálni. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és a CLI vagy a PowerShell használatával kell konfigurálni:<br>
+- A Azure Key Vault konfigurált helyreállíthatóként kell konfigurálni. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és a parancssori felület vagy a PowerShell használatával kell konfigurálni:<br>
   - [Helyreállítható törlés](../../key-vault/general/soft-delete-overview.md)
-  - A [védelem kiürítését](../../key-vault/general/soft-delete-overview.md#purge-protection) be kell kapcsolni ahhoz, hogy védelmet biztosítson a titkos/tár kényszerített törlése után is.
+  - [A végleges törlés elleni](../../key-vault/general/soft-delete-overview.md#purge-protection) védelmet be kell kapcsolva, hogy a titkos kulcs/tároló kényszerített törlésével szemben a törlés után is védelmet nyújtsunk.
 
-- A fürt más erőforráscsoporthoz vagy előfizetéshez való áthelyezése jelenleg nem támogatott.
+- A fürtök másik erőforráscsoportba vagy előfizetésbe való áthelyezése jelenleg nem támogatott.
 
-- A Azure Key Vault, a fürtnek és a munkaterületnek ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet.
+- A Azure Key Vault, fürtöknek és munkaterületeknek ugyanabban a régióban és ugyanabban a Azure Active Directory-bérlőben (Azure AD) kell lennie, de különböző előfizetések is lehetnek.
 
-- A kulcstároló jelenleg nem érhető el Kínában. 
+- A zárolási doboz jelenleg nem érhető el Kínában. 
 
-- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van a támogatott régiókban a 2020 október 1-jétől létrehozott fürtökhöz. Megtekintheti, hogy a fürt kettős titkosításra van-e konfigurálva egy GET kérelem küldésével a fürtön, és annak megfigyelése, hogy az érték olyan fürtök esetében van-e, amelyeken engedélyezve van a `isDoubleEncryptionEnabled` `true` dupla titkosítás. 
-  - Ha létrehoz egy fürtöt, és "<régió neve> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt dupla titkosítás nélkül, `"properties": {"isDoubleEncryptionEnabled": false}` a REST-kérelem törzsének hozzáadásával.
-  - A fürt létrehozása után a kettős titkosítási beállítás nem módosítható.
+- [A dupla titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van a támogatott régiókban 2020 októberében létrehozott fürtökhöz. Ha ellenőrizni tudja, hogy a fürt kettős titkosításra van-e konfigurálva, egy GET kérést küld a fürtre, és megfigyelheti, hogy az érték olyan fürtökre van beállítva, amelyeken engedélyezve van a dupla `isDoubleEncryptionEnabled` `true` titkosítás. 
+  - Ha létrehoz egy fürtöt, és a "<régiónév> nem támogatja a fürtök dupla titkosítását" hibaüzenetet kap, akkor is létrehozhatja a fürtöt dupla titkosítás nélkül, ha hozzáadja a kódot a `"properties": {"isDoubleEncryptionEnabled": false}` REST-kérelem törzséhez.
+  - A dupla titkosítási beállítás a fürt létrehozása után nem módosítható.
 
-  - Ha a fürt felhasználó által hozzárendelt felügyelt identitással van beállítva, akkor a beállítás `UserAssignedIdentities` `None` felfüggeszti a fürtöt, és meggátolja az adatokhoz való hozzáférést, de nem tudja visszaállítani a visszavonást, és nem aktiválja a fürtöt a támogatási kérelem megnyitása nélkül. Ez a korlátozás nem vonatkozik a rendszerhez rendelt felügyelt identitásra.
+  - Ha a fürt felhasználó által hozzárendelt felügyelt identitással van beállítva, a beállítása felfüggeszti a fürtöt, és megakadályozza az adatokhoz való hozzáférést, de nem állíthatja vissza a visszavonást, és nem aktiválhatja a fürtöt a támogatási kérelem megnyitása `UserAssignedIdentities` `None` nélkül. Ez a korlátozás a rendszer által hozzárendelt felügyelt identitásra vonatkozik.
 
-  - Ha a Key Vault Private-Link (vNet), nem használhatja az ügyfél által felügyelt kulcsot a felhasználóhoz rendelt felügyelt identitással. Ebben a forgatókönyvben a rendszerhez rendelt felügyelt identitást is használhatja.
+  - Nem használhat felhasználó által felügyelt kulcsot felhasználó által hozzárendelt felügyelt identitással, ha a Key Vault található Private-Link (vNet). Ebben a forgatókönyvben használhatja a rendszer által hozzárendelt felügyelt identitást.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-- Működés Key Vault rendelkezésre állással
-  - Normál működés esetén – a tárolási gyorsítótárak rövid időre visszamenőleges gyorsítótárazást biztosítanak, és visszakerül a Key Vaultra a rendszeres kicsomagoláshoz.
+- Viselkedés a Key Vault rendelkezésre állásával
+  - Normál működés esetén – A tároló rövid ideig gyorsítótárazza az AEK-t, és rendszeres időközönként visszatér Key Vault kicsomaglása érdekében.
     
-  - Átmeneti kapcsolódási hibák – a tároló átmeneti hibákat (időtúllépések, kapcsolódási hibák, DNS-problémák) biztosít, mivel a kulcsok rövid ideig nem maradhatnak a gyorsítótárban, és ez a rendelkezésre állásban lévő kisméretű rendszerállapot-visszaírásokat eredményezi. A lekérdezési és a betöltési képességek megszakítás nélkül folytatódnak.
+  - Átmeneti kapcsolati hibák – A tárterület úgy kezeli az átmeneti hibákat (időtúllépéseket, kapcsolati hibákat, DNS-problémákat), hogy lehetővé teszi, hogy a kulcsok egy rövid ideig a gyorsítótárban maradjanak, és ez áthidalja a rendelkezésre állás esetleges apró hibáit. A lekérdezési és a belési képességek megszakítás nélkül folytatódnak.
     
-  - Élő webhely – a körülbelül 30 perces leállása miatt a Storage-fiók elérhetetlenné válik. A lekérdezési képesség nem érhető el, és a rendszer az adatvesztés elkerülése érdekében a Microsoft Key használatával több órán keresztül gyorsítótárazza az adatmennyiséget. Ha a rendszer visszaállítja a Key Vault, a lekérdezés elérhetővé válik, és az ideiglenes gyorsítótárazott adatot az adattárba tölti be, és az ügyfél által felügyelt kulccsal titkosítja.
+  - Élő webhely – a körülbelül 30 perces elérhetetlenség miatt a Tárfiók elérhetetlenné válik. A lekérdezési funkció nem érhető el, és a betöltött adatok több órán át gyorsítótárazva lettek a Microsoft Key használatával az adatvesztés elkerülése érdekében. A Key Vault visszaállításakor a lekérdezés elérhetővé válik, és az ideiglenesen gyorsítótárazott adatok be vannak olva az adattárba, és az ügyfél által felügyelt kulccsal vannak titkosítva.
 
-  - Key Vault hozzáférési arány – a Azure Monitor Storage Key Vault a becsomagolási és a kicsomagolási műveletekhez való hozzáférésének gyakorisága 6 – 60 másodperc.
+  - Key Vault hozzáférési sebesség – A Storage Azure Monitor hozzáférési gyakorisága Key Vault 6 és 60 másodperc közötti lehet.
 
-- Ha frissíti a fürtöt, amíg a fürt üzembe helyezése vagy frissítése folyamatban van, a frissítés sikertelen lesz.
+- Ha frissíti a fürtöt, miközben a fürt kiépítési vagy frissítési állapotban van, a frissítés sikertelen lesz.
 
-- Ha a fürt létrehozásakor ütközési hiba lép fel, akkor előfordulhat, hogy az elmúlt 14 napban törölte a fürtöt, és ez egy nem kötelező törlési időszak. A fürt neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A név akkor jelenik meg, ha a rendszer véglegesen törli a fürtöt.
+- Ha ütközési hibát kap a fürt létrehozásakor – Előfordulhat, hogy az elmúlt 14 napban törölte a fürtöt, és a törlési időszakban volt. A fürt neve továbbra is fenntartva marad a törlési időszak alatt, és nem hozhat létre új fürtöt ezzel a névvel. A név a törlési időszak után szabadul fel, amikor a fürt véglegesen törölve lesz.
 
-- A fürtre mutató hivatkozás sikertelen lesz, ha egy másik fürthöz van csatolva.
+- A munkaterület fürtre mutató hivatkozása sikertelen lesz, ha egy másik fürthöz van kapcsolva.
 
-- Ha létrehoz egy fürtöt, és azonnal megadja a KeyVaultProperties, a művelet sikertelen lehet, mivel a hozzáférési házirend nem definiálható, amíg a rendszer identitása hozzá nem rendeli a fürthöz.
+- Ha létrehoz egy fürtöt, és azonnal megadja a KeyVaultProperties értéket, a művelet meghiúsulhat, mivel a hozzáférési szabályzat csak akkor határozható meg, ha a rendszeridentitás hozzá van rendelve a fürthöz.
 
-- Ha a meglévő fürtöt frissíti a KeyVaultProperties, és a "Get" kulcs-hozzáférési szabályzat hiányzik a Key Vault, a művelet sikertelen lesz.
+- Ha a meglévő fürtöt a KeyVaultProperties rel frissíti, és hiányzik a "Get" kulcs hozzáférési szabályzata a Key Vault, a művelet sikertelen lesz.
 
-- Ha nem sikerül telepíteni a fürtöt, ellenőrizze, hogy a Azure Key Vault, a fürt és a csatolt Log Analytics-munkaterületek ugyanabban a régióban találhatók-e. A lehet különböző előfizetésekben.
+- Ha nem tudja üzembe helyezni a fürtöt, ellenőrizze, hogy a Azure Key Vault, a fürt és a csatolt Log Analytics-munkaterületek azonos régióban vannak-e. A különböző előfizetésekbe is lehet.
 
-- Ha Key Vaultban frissíti a kulcs verzióját, és nem frissíti az új kulcs-azonosító részleteit a fürtben, a Log Analytics-fürt továbbra is az előző kulcsot fogja használni, és az adatai elérhetetlenné válnak. Frissítse az új kulcs-azonosító részleteit a fürtben az adatok feldolgozásának folytatásához és az adatok lekérdezési képességéhez.
+- Ha az Key Vault-ban frissíti a kulcsverziót, és nem frissíti az új kulcsazonosító részleteit a fürtben, a Log Analytics-fürt továbbra is az előző kulcsot fogja használni, és az adatok elérhetetlenné válnak. Frissítse a fürt új kulcsazonosító-adatait az adatbevezetés folytatásához és az adatok lekérdezésének lehetőségéhez.
 
-- Bizonyos műveletek hosszúak, és eltarthat egy ideig – ezek a fürtök létrehozása, a fürt kulcsának frissítése és a fürt törlése. A művelet állapotát kétféleképpen tekintheti meg:
-  1. a REST használatakor másolja az Azure-AsyncOperation URL értéket a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
-  2. GET kérelem küldése a fürtnek vagy a munkaterületnek, és figyelje meg a választ. A nem összekapcsolt munkaterület például nem rendelkezik a *szolgáltatások* *clusterResourceId* .
+- Egyes műveletek hosszúak, és hosszabb időt is igénybe vehet – ezek a fürt létrehozása, a fürtkulcs frissítése és a fürt törlése. A művelet állapotát kétféleképpen ellenőrizheti:
+  1. REST használata esetén másolja ki a Azure-AsyncOperation URL-címét a válaszból, és kövesse az aszinkron műveleti [állapotellenőrzést.](#asynchronous-operations-and-status-check)
+  2. Küldjön GET kérést a fürtnek vagy munkaterületnek, és figyelje meg a választ. Például a nem összekapcsolt munkaterületen nem lesz a *clusterResourceId a* *funkciók alatt.*
 
 - Hibaüzenetek
   
   **Fürt létrehozása**
-  -  400 – a fürt neve érvénytelen. A fürt neve az a-z, A-Z, 0-9 és a 3-63 hosszúságú karaktereket tartalmazhat.
-  -  400 – a kérelem törzse null értékű vagy helytelen formátumú.
-  -  400 – az SKU neve érvénytelen. Adja meg az SKU nevét a capacityReservation értékre.
-  -  400 – a kapacitás meg lett biztosítva, de az SKU nem capacityReservation. Adja meg az SKU nevét a capacityReservation értékre.
-  -  400 – hiányzó kapacitás az SKU-ban. Állítsa a kapacitás értékét 1000-re vagy magasabbra a 100 (GB) lépésekben.
-  -  400 – a kapacitás az SKU-ban nincs a tartományon belül. A minimálisan 1000-as és a maximálisan engedélyezett kapacitásnak kell lennie, amely a munkaterület "használat és becsült költségek" területén érhető el.
-  -  400 – a kapacitás 30 napig zárolva van. A csökkenő kapacitás 30 nappal a frissítés után engedélyezett.
-  -  400 – nincs beállítva SKU. Állítsa az SKU nevét a capacityReservation és a kapacitás értékének 1000-re vagy magasabbra a 100 (GB) lépésekben.
-  -  400 – az identitás null értékű vagy üres. Identitás beállítása systemAssigned típussal.
-  -  400 – a KeyVaultProperties beállítása a létrehozáskor történik. A KeyVaultProperties frissítése a fürt létrehozása után.
-  -  400 – a művelet most nem hajtható végre. Az aszinkron művelet a sikeres állapottól eltérő állapotban van. A fürtnek a frissítési művelet végrehajtása előtt el kell végeznie a műveletet.
+  -  400 – A fürt neve érvénytelen. A fürt neve a–z, A–Z, 0–9 és 3–63 karakter hosszúságú lehet.
+  -  400 – A kérés törzse null vagy hibás formátumú.
+  -  400 – A termékváltozat neve érvénytelen. Állítsa a termékváltozat nevét capacityReservation névre.
+  -  400 – A kapacitás meg lett téve, de a termékváltozat nem capacityReservation. Állítsa a termékváltozat nevét capacityReservation névre.
+  -  400 – Hiányzó kapacitás az SKU-ban. Állítsa a Kapacitás értékét 1000-re vagy magasabbra a 100 (GB) lépésekben.
+  -  400 – A termékváltozatban a kapacitás nincs tartományon belül. Legalább 1000-nek kell lennie, és a maximálisan engedélyezett kapacitásnak kell lennie, amely a munkaterület Használat és becsült költségek alatt érhető el.
+  -  400 – A kapacitás 30 napig zárolva van. A kapacitás csökkentése a frissítés után 30 nappal engedélyezett.
+  -  400 – Nincs beállítva termékváltozat. Állítsa a termékváltozat nevét capacityReservation értékre, a Kapacitás értékét pedig 1000-re vagy magasabbra a 100 (GB) lépésekben.
+  -  400 – Az identitás null vagy üres. Az Identitás beállítása systemAssigned típussal.
+  -  400 – A KeyVaultProperties a létrehozáskor van beállítva. Frissítse a KeyVaultProperties et a fürt létrehozása után.
+  -  400 – A művelet jelenleg nem hajtható végre. Az aszinkron művelet nem sikeres állapotban van. A fürtnek a frissítési művelet előtt be kell fejeződnie.
 
-  **Fürt frissítése**
-  -  400 – a fürt törlési állapotban van. Az aszinkron művelet folyamatban van. A fürtnek a frissítési művelet végrehajtása előtt el kell végeznie a műveletet.
-  -  400 – a KeyVaultProperties nem üres, de helytelen formátumú. Lásd a [kulcs-azonosító frissítését](#update-cluster-with-key-identifier-details).
-  -  400 – nem sikerült érvényesíteni a kulcsot a Key Vaultban. Oka lehet az engedélyek hiánya, vagy ha a kulcs nem létezik. Ellenőrizze, hogy a [kulcs-és hozzáférési szabályzatot](#grant-key-vault-permissions) Key Vaultban állította-e be.
-  -  400 – a kulcs nem helyreállítható. A Key Vaultt a Soft-delete és a Purge-Protection értékre kell beállítani. Lásd: [Key Vault dokumentáció](../../key-vault/general/soft-delete-overview.md)
-  -  400 – a művelet most nem hajtható végre. Várjon, amíg az aszinkron művelet befejeződik, és próbálkozzon újra.
-  -  400 – a fürt törlési állapotban van. Várjon, amíg az aszinkron művelet befejeződik, és próbálkozzon újra.
+  **Fürtfrissítés**
+  -  400 – A fürt törlési állapotban van. Aszinkron művelet van folyamatban. A fürtnek a frissítési művelet előtt be kell fejeződnie.
+  -  400 – A KeyVaultProperties nem üres, de hibás formátummal rendelkezik. Lásd [a kulcsazonosító frissítését.](#update-cluster-with-key-identifier-details)
+  -  400 – A kulcs érvényesítése sikertelen volt a Key Vault. Ennek oka lehet az engedélyek hiánya, vagy ha a kulcs nem létezik. Ellenőrizze, hogy [beállította-e a kulcs- és hozzáférési](#grant-key-vault-permissions) Key Vault.
+  -  400 – A kulcs nem állítható helyre. Key Vault a Soft-delete és a Purge-protection (Végleges törlés és végleges törlés elleni védelem) beállításra kell állítani. Lásd [Key Vault dokumentációt](../../key-vault/general/soft-delete-overview.md)
+  -  400 – A művelet jelenleg nem hajtható végre. Várjon, amíg az Async művelet befejeződik, majd próbálkozzon újra.
+  -  400 – A fürt törlési állapotban van. Várjon, amíg az Async művelet befejeződik, majd próbálkozzon újra.
 
-  **Fürt beolvasása**
-    -  404 – a fürt nem található, lehet, hogy törölték a fürtöt. Ha ezzel a névvel próbál létrehozni egy fürtöt, és ütközésbe ütközik, a fürt 14 napig helyreállítható törlést végez. A támogatási szolgálattal helyreállíthatja, vagy egy másik név használatával új fürtöt hozhat létre. 
+  **Fürt lekért**
+    -  404 – A fürt nem található, lehet, hogy a fürt törölve lett. Ha ezzel a névvel próbál fürtöt létrehozni, és ütközést kap, a fürt 14 napig nem törölhető. A helyreállításhoz vegye fel a kapcsolatot az ügyfélszolgálattal, vagy egy másik névvel hozzon létre egy új fürtöt. 
 
   **Fürt törlése**
-    -  409 – a fürt nem törölhető üzembe helyezési állapotban. Várjon, amíg az aszinkron művelet befejeződik, és próbálkozzon újra.
+    -  409 – Kiépítési állapotban nem lehet fürtöt törölni. Várjon, amíg az Async művelet befejeződik, majd próbálkozzon újra.
 
   **Munkaterület hivatkozása**
-  -  404 – a munkaterület nem található. A megadott munkaterület nem létezik vagy törölték.
-  -  409 – a munkaterület hivatkozása vagy a művelet leválasztása folyamatban.
-  -  400 – a fürt nem található, a megadott fürt nem létezik vagy törölték. Ha ezzel a névvel próbál létrehozni egy fürtöt, és ütközésbe ütközik, a fürt 14 napig helyreállítható törlést végez. A támogatási szolgálattal való helyreállításhoz forduljon az ügyfélszolgálathoz.
+  -  404 – A munkaterület nem található. A megadott munkaterület nem létezik vagy törölve lett.
+  -  409 – A munkaterület csatolása vagy leválasztása folyamatban van.
+  -  400 – A fürt nem található, a megadott fürt nem létezik vagy törölve lett. Ha ezzel a névvel próbál fürtöt létrehozni, és ütközést kap, a fürt 14 napig nem törölhető. A helyreállításhoz forduljon az ügyfélszolgálathoz.
 
   **Munkaterület leválasztása**
-  -  404 – a munkaterület nem található. A megadott munkaterület nem létezik vagy törölték.
-  -  409 – a munkaterület hivatkozása vagy a művelet leválasztása folyamatban.
+  -  404 – A munkaterület nem található. A megadott munkaterület nem létezik vagy törölve lett.
+  -  409 – A munkaterület csatolása vagy leválasztása folyamatban van.
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [log Analytics dedikált fürt számlázásáról](./manage-cost-storage.md#log-analytics-dedicated-clusters)
-- A [log Analytics-munkaterületek megfelelő kialakításának](./design-logs-deployment.md) megismerése
+- Tudnivalók a [Log Analytics dedikált fürtök számlázásával kapcsolatban](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+- A [Log Analytics-munkaterületek megfelelő kialakításának megismerése](./design-logs-deployment.md)

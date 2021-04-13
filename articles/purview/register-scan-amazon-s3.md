@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 542b6580994a2054526f0ddbb3ad93dc27c28fcc
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107652"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310196"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure-beli hatáskörébe-összekötő az Amazon S3-hoz
 
@@ -116,9 +116,30 @@ Ez az eljárás azt ismerteti, hogyan hozható létre az AWS-gyűjtők vizsgála
 
     Ha elkészült, válassza a **Létrehozás** lehetőséget a hitelesítő adatok létrehozásának befejezéséhez.
 
-A hatáskörébe tartozó hitelesítő adatokkal kapcsolatos további információkért tekintse meg az Azure-beli [nyilvános előzetes verzió dokumentációját](manage-credentials.md).
+1. Ha még nem tette meg, másolja és illessze be a **Microsoft-fiók azonosítót** és a **külső azonosító** értékeit, ha [új AWS-szerepkört hoz létre a hatáskörébe](#create-a-new-aws-role-for-purview), amely a következő lépés.
+
+További információ a hatáskörébe tartozó hitelesítő adatokról: a [forrás-hitelesítés hitelesítő adatai az Azure hatáskörébe](manage-credentials.md).
 
 ### <a name="create-a-new-aws-role-for-purview"></a>Új AWS-szerepkör létrehozása a hatáskörébe
+
+Ehhez az eljáráshoz az AWS-szerepkör létrehozásakor az Azure-fiók AZONOSÍTÓjának és külső AZONOSÍTÓjának értékét kell megadnia.
+
+Ha nem rendelkezik ezekkel az értékekkel, először keresse meg a [hatáskörébe tartozó hitelesítő adatait](#create-a-purview-credential-for-your-aws-bucket-scan).
+
+**A Microsoft-fiók azonosítójának és külső azonosítójának megkereséséhez**:
+
+1. A hatáskörébe területen navigáljon a **felügyeleti központ**  >  **biztonsági és hozzáférési**  >  **hitelesítő adataihoz**.
+
+1. Válassza ki az AWS- [gyűjtő vizsgálathoz létrehozott](#create-a-purview-credential-for-your-aws-bucket-scan)hitelesítő adatokat, majd az eszköztáron válassza a **Szerkesztés** lehetőséget.
+
+1. A jobb oldalon megjelenő **hitelesítő adatok szerkesztése** ablaktáblán másolja át a **Microsoft-fiók azonosítót** és a **külső azonosítót** egy külön fájlba, vagy az AWS megfelelő mezőjébe illessze be őket.
+
+    Például:
+
+    [![Keresse meg Microsoft-fiók azonosítóját és a külső azonosító értékeit. ](./media/register-scan-amazon-s3/locate-account-id-external-id.png)](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
+
+
+**AWS-szerepkör létrehozása a hatáskörébe**:
 
 1.  Nyissa meg a **Amazon Web Services** konzolt, és a **biztonság, identitás és megfelelőség** területen válassza a **iam** lehetőséget.
 
@@ -129,12 +150,8 @@ A hatáskörébe tartozó hitelesítő adatokkal kapcsolatos további informáci
     |Mező  |Leírás  |
     |---------|---------|
     |**Fiókazonosító**     |    Adja meg a Microsoft-fiókja AZONOSÍTÓját. Például: `615019938638`     |
-    |**Külső azonosító**     |   A beállítások területen válassza a **külső azonosító megkövetelése...** lehetőséget, majd a kijelölt mezőben adja meg a külső azonosítót. <br>Például: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>Ezt a külső azonosítót a következő esetekben találja:.  |
+    |**Külső azonosító**     |   A beállítások területen válassza a **külső azonosító megkövetelése...** lehetőséget, majd a kijelölt mezőben adja meg a külső azonosítót. <br>Például: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`     |
     | | |
-
-    > [!NOTE]
-    > A **Microsoft-fiók azonosítójának** és **külső azonosítójának** értékeit a hatáskörébe tartozó **felügyeleti központ**  >  **hitelesítő adatai** területen találja, ahol [létrehozta a hatáskörébe tartozó hitelesítő adatokat](#create-a-purview-credential-for-your-aws-bucket-scan).
-    >
 
     Például:
 

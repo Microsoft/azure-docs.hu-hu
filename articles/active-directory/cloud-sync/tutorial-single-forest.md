@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a93ce1c4274f63a863880e932b247726639e5cd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3bc9378539e6a7f98e34d0a149848d0e892c224
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98614572"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306092"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Oktatóanyag: egyetlen erdő integrálása egyetlen Azure AD-Bérlővel
 
@@ -51,7 +51,7 @@ Az oktatóanyagban létrehozott környezetet tesztelésre vagy a Felhőbeli szin
    - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80** és **www \. Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Az Azure AD Connect létesítési ügynök telepítése
-1. Jelentkezzen be a tartományhoz csatlakoztatott kiszolgálóra.  Ha az  [alapszintű ad-és Azure-környezettel](tutorial-basic-ad-azure.md) foglalkozó oktatóanyagot használja, az DC1 lenne.
+1. Jelentkezzen be a tartományhoz csatlakoztatott kiszolgálóra.  Ha az  [alapszintű a D és az Azure Environment](tutorial-basic-ad-azure.md) oktatóanyagot használja, az DC1 lenne.
 2. Jelentkezzen be a Azure Portalba kizárólag Felhőbeli globális rendszergazdai hitelesítő adatok használatával.
 3. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** lehetőséget, majd a központban válassza a **Felhőbeli szinkronizálás kezelése** elemet.
 
@@ -64,7 +64,7 @@ Az oktatóanyagban létrehozott környezetet tesztelésre vagy a Felhőbeli szin
    ![Képernyőfelvétel: "Microsoft Azure A D-hez való kapcsolat létesítésére szolgáló ügynök csomag" splash screen.](media/how-to-install/install-1.png)
 
 7. A művelet befejezése után elindul a konfigurációs varázsló.  Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.  Vegye figyelembe, hogy ha az Internet Explorer fokozott biztonsági funkciója engedélyezve van, ez letiltja a bejelentkezést.  Ebben az esetben zárjuk le a telepítést, tiltsa le az IE fokozott biztonságát a Kiszolgálókezelőben, majd kattintson a **HRE-létesítési ügynök varázslóra** a telepítés újraindításához.
-8. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory tartományi rendszergazdai fiókjával.  Megjegyzés: a tartományi rendszergazdai fióknak nem kell módosítania a jelszó-módosítási követelményeket. Abban az esetben, ha a jelszó lejár vagy megváltozik, újra kell konfigurálnia az ügynököt az új hitelesítő adatokkal. Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.
+8. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory tartományi rendszergazdai fiókjával.  Megjegyzés: a tartományi rendszergazdai fióknak nem kell módosítania a jelszó-módosítási követelményeket. Ha a jelszó lejár vagy módosul, újra kell konfigurálnia az ügynököt az új hitelesítő adatokkal. Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.
 
    ![A "kapcsolat Active Directory" képernyő képernyőképe.](media/how-to-install/install-3a.png)
 
@@ -88,7 +88,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azu
 ![Azure Portal](media/how-to-install/install-6.png)</br>
 
 3.  A **Azure ad Connect Cloud Sync (felhő szinkronizálása** ) képernyőn kattintson az **összes ügynök áttekintése** elemre.
-![Azure AD-kiépítés](media/how-to-install/install-7.png)</br>
+![Azure A D kiépítés](media/how-to-install/install-7.png)</br>
  
 4. A helyszíni **kiépítési ügynökök képernyőjén** látni fogja a telepített ügynököket.  Ellenőrizze, hogy a szóban forgó ügynök **aktív**-e, és hogy van-e megjelölve.
 ![Kiépítési ügynökök](media/how-to-install/verify-1.png)</br>
@@ -109,12 +109,12 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
 3.  Kattintson **Azure ad Connect**
 4.  Válassza a **felhőalapú szinkronizálás kezelése** 
  ![ képernyőképet a "Cloud Sync kezelése" hivatkozásra kattintva.](media/how-to-configure/manage-1.png)
-5.  A  
- ![ "New Configuration" (új konfiguráció) hivatkozásra kattintva kiemelve Azure ad Connect Cloud Sync képernyő új konfiguráció képernyőképét.](media/tutorial-single-forest/configure-1.png)
+5.  Kattintson az Azure **Új konfiguráció** képernyőképe elemre, 
+ ![ és válassza ki a Cloud Sync képernyőt az "új konfiguráció" hivatkozás kiemelésével.](media/tutorial-single-forest/configure-1.png)
 7.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés** gombra.
 ![Képernyőkép a konfigurálásról a képernyőn megjelenő értesítő e-mailben és a kijelölés engedélyezése lapon.](media/how-to-configure/configure-2.png)
 1.  A konfigurációs állapotnak most **kifogástalannak** kell lennie.
-![Képernyőfelvétel: Azure AD Connect felhő szinkronizálási képernyője, amely kifogástalan állapotot mutat.](media/how-to-configure/manage-4.png)
+![Képernyőkép az Azure-ról D A felhő szinkronizálási képernyője, amely kifogástalan állapotot mutat.](media/how-to-configure/manage-4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>A felhasználók létrehozásának és szinkronizálásának ellenőrzése
 Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkronizálva lettek-e, és már léteznek-e az Azure AD-bérlőben.  Vegye figyelembe, hogy ez eltarthat néhány óráig.  A felhasználók szinkronizálásának ellenőrzéséhez tegye a következőket.
@@ -123,15 +123,15 @@ Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkroniz
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. A bal oldalon válassza a **Azure Active Directory**
 3. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
-4. Ellenőrizze, hogy megjelenik-e az új felhasználók a bérlőben</br>
+4. Ellenőrizze, hogy megjelenik-e a bérlő új felhasználói</br>
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
+## <a name="test-signing-in-with-one-of-your-users"></a>Bejelentkezés tesztelése az egyik felhasználóval
 
 1. Nyissa meg a következő címet a böngészőben: [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
+2. Jelentkezzen be a bérlőben létrehozott felhasználói fiókkal.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
    ![Ellenőrzés](media/tutorial-single-forest/verify-1.png)</br>
 
-Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
+Sikeresen konfigurált egy hibrid identitási környezetet Azure AD Connect Cloud Sync használatával.
 
 
 ## <a name="next-steps"></a>Következő lépések 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607592"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309985"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Megosztott rendszerkép-galériák az Azure-ban – problémamegoldás
 
@@ -303,6 +303,14 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **OK**: a virtuális gép üzembe helyezéséhez használt rendszerkép-definíció nem tartalmaz a legújabb verziókban található lemezkép-verziókat.  
 **Megkerülő megoldás**: Győződjön meg arról, hogy van legalább egy olyan rendszerkép-verzió, amelynek a "kizárás a legújabbból" beállítás értéke hamis. 
 
+**Üzenet**: *a katalógus rendszerképének/Subscriptions/<SubscriptionID \> /resourceGroups/<resourceGroup \> /providers/Microsoft.Compute/Galleries/<galleryName \> /images/<imageName \> /Versions/<verziószám \> nem érhető el <régió \> régiójában. Kérjük, lépjen kapcsolatba a rendszerkép tulajdonosával, hogy replikálja ezt a régiót, vagy módosítsa a kért régiót.*  
+**OK**: a központi telepítéshez kiválasztott verzió nem létezik, vagy nem rendelkezik replikával a jelzett régióban.  
+**Áthidaló megoldás**: Győződjön meg arról, hogy a rendszerkép-erőforrás neve megfelelő, és hogy a jelzett régióban legalább egy replika szerepel. 
+
+**Üzenet**: *a katalógus rendszerképének/Subscriptions/<SubscriptionID \> /resourceGroups/<resourceGroup \> /providers/Microsoft.Compute/Galleries/<galleryName \> /images/<imageName \> nem érhető el <régió \> régiójában. Kérjük, lépjen kapcsolatba a rendszerkép tulajdonosával, hogy replikálja ezt a régiót, vagy módosítsa a kért régiót.*  
+**OK**: az üzembe helyezéshez kiválasztott rendszerkép-definíció nem rendelkezik a legújabb és a jelzett régióban is megtalálható lemezkép-verziókkal.  
+**Áthidaló megoldás**: Győződjön meg arról, hogy a régióban legalább egy rendszerkép verziója hamis értékre van állítva. 
+
 **Üzenet**: *az ügyfél rendelkezik engedéllyel a (z) "Microsoft. számítás/galériák/lemezképek/verziók/olvasás" művelet végrehajtásához a hatókör <resourceID \> , de a jelenlegi bérlő <tenantID \> nem jogosult a csatolt előfizetés <a subscriptionID elérésére \> .*  
 **OK**: a virtuális gép vagy a méretezési csoport egy másik bérlőben található SIG-lemezképpel lett létrehozva. Megpróbálta módosítani a virtuális gépet vagy a méretezési készletet, de nincs hozzáférése a képet birtokló előfizetéshez.  
 **Megkerülő megoldás**: lépjen kapcsolatba a rendszerkép-verzió előfizetésének tulajdonosával, hogy olvasási hozzáférést biztosítson a rendszerkép verziójához.
@@ -318,10 +326,6 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **Üzenet**: *hiányzik a kötelező "osProfile" paraméter (null).*  
 **OK**: a virtuális gép általánosított rendszerképből lett létrehozva, és hiányzik a rendszergazdai Felhasználónév, jelszó vagy SSH-kulcs. Mivel az általánosított rendszerképek nem őrzik meg a rendszergazdai felhasználónevet, jelszót vagy SSH-kulcsot, ezeket a mezőket meg kell adni egy virtuális gép vagy méretezési csoport létrehozásakor.  
 **Megkerülő megoldás**: határozza meg a rendszergazdai felhasználónevet, jelszót vagy SSH-kulcsot, vagy használjon speciális rendszerkép-verziót.
-
-**Üzenet**: a katalógus *rendszerképének verziója nem hozható létre a következőből: <resourceID, \> mivel a szülő-katalógus rendszerképében lévő operációs rendszer állapota ("Specialized") nem "általánosított".*  
-**OK**: a rendszerkép verziója egy általánosított forrásból jön létre, de a szülő definíciója speciális.  
-**Áthidaló megoldás**: hozza létre a rendszerkép verzióját speciális forrás használatával, vagy használjon általánosított szülő-definíciót.
 
 **Üzenet**: *nem frissíthető a virtuálisgép-méretezési csoport <vmssName \> , mert a virtuálisgép-MÉRETEZÉSi csoport aktuális operációsrendszer-állapota általánosítva van, amely nem azonos a frissített katalógus-rendszerkép operációsrendszer-állapotával.*  
 **OK**: a méretezési csoport aktuális forrásának képe egy általánosított forrás rendszerkép, de a frissítése egy speciális forrás-lemezképpel történik. A méretezési csoport aktuális forrásának és az új forrás rendszerképének azonos állapotban kell lennie.  

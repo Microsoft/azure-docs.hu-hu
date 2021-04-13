@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f83aa7368ec5ac06f2c5a5ebe121c7ce87f93bd1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450038"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304732"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
@@ -40,7 +40,7 @@ ms.locfileid: "106450038"
 - [Az alkalmazásproxy Kerberos által korlátozott delegálási konfigurációinak hibaelhárítása](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [Gyors útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben](add-application-portal-setup-sso.md)
 - [Azure Active Directory Application Management: Újdonságok](whats-new-docs.md)
-- [Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések](application-proxy-faq.md)
+- [Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések](application-proxy-faq.yml)
 - [Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása](application-sign-in-other-problem-access-panel.md)
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [A forgalom optimalizálása Azure Active Directory Application Proxy](application-proxy-network-topology.md)
@@ -75,7 +75,7 @@ ms.locfileid: "106450038"
 - [Alkalmazások kezelése – ajánlott eljárások](application-management-fundamentals.md)
 - [Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal](plan-an-application-integration.md)
 - [Mi az alkalmazáskezelés?](what-is-application-management.md)
-- [Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések](application-proxy-faq.md)
+- [Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések](application-proxy-faq.yml)
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Üzletági alkalmazások fejlesztése a Azure Active Directory](../develop/v2-overview.md)

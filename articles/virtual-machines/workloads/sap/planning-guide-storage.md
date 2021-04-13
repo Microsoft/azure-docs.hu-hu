@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0605c8d6cb3f650a1955688d95ece62fb56d06bc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256038"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302947"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -236,7 +236,7 @@ A ANF-tároló jelenleg számos SAP-munkaterhelési forgatókönyv esetén támo
     - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](./high-availability-guide-suse-netapp-files.md)
     - [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md)
 - SAP HANA az NFS v 4.1-es verzióit használó központi telepítések a/Hana/Data-és/Hana/log-kötetek és/vagy az NFS v 4.1-es vagy NFS v3-kötetek számára a/Hana/Shared-kötetek esetében, az Azure-beli [virtuális gépek tárolási konfigurációjának SAP HANA](./hana-vm-operations-storage.md) cikkben
-- Oracle-környezetek Oracle Linux vendég operációs rendszerekben a [dNFS] használatával (a https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) dOracle és a naplózási kötetek megismétlésével. További részletek az [Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez](./dbms_guide_oracle.md) című cikkben találhatók.
+- Oracle-környezetek Oracle Linux vendég operációs rendszerekben az Oracle- [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) és a naplózási kötetek visszaállításához. További részletek az [Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez](./dbms_guide_oracle.md) című cikkben találhatók.
 
 > [!NOTE]
 > A Azure NetApp Files-alapú NFS-vagy SMB-megosztások nem támogatják az adatbázis-kezelő egyéb számítási feladatokat. A frissítések és a módosítások akkor lesznek megadva, ha ez megváltozik.

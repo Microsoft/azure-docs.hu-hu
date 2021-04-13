@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 04/09/2021
 ms.author: tisande
-ms.openlocfilehash: d5d5bc0a108cd08283ea29ce3bdc2de49310c5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad43d83782a2c7e9eb5cc20128be89a45f0213d1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499560"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312178"
 ---
 # <a name="getting-started-with-sql-queries"></a>Bevezetés az SQL-lekérdezések használatába
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ A dokumentum hátralévő része azt mutatja be, hogyan kezdheti el az SQL-leké
 
 ## <a name="upload-sample-data"></a>Mintaadatok feltöltése
 
-Az SQL API-Cosmos DB fiókjában nyissa meg a [adatkezelő](./data-explorer.md) egy nevű tároló létrehozásához `Families` . A létrehozást követően az adatstruktúrák böngésző használatával megkeresheti és megnyithatja. A `Families` tárolóban megjelenik a `Items` tároló neve alatti jobb oldali lehetőség. Nyissa meg ezt a beállítást, és egy gomb jelenik meg a képernyő középső menüsorában egy új elem létrehozásához. Ezt a funkciót fogja használni az alábbi JSON-elemek létrehozásához.
+Az SQL API-Cosmos DB fiókjában nyissa meg a [adatkezelő](./data-explorer.md) egy nevű tároló létrehozásához `Families` . A tároló létrehozása után az adatstruktúrák böngésző használatával megkeresheti és megnyithatja. A `Families` tárolóban megjelenik a `Items` tároló neve alatti jobb oldali lehetőség. Nyissa meg ezt a beállítást, és egy gomb jelenik meg a képernyő középső menüsorában egy új elem létrehozásához. Ezt a funkciót fogja használni az alábbi JSON-elemek létrehozásához.
 
 ### <a name="create-json-items"></a>JSON-elemek létrehozása
 

@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 228d1a8bcd97daebae873de4c69cbec238e0c995
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437048"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312535"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal
 
@@ -349,7 +349,7 @@ Megtekintheti a felügyelt alkalmazás példányát, és **egyéni műveleteket*
 
 ## <a name="looking-for-help"></a>Segítség keresése
 
-Ha kérdése van a Azure Managed Applicationsával kapcsolatban, próbálja meg megkérdezni a [stack overflow](https://stackoverflow.com/questions/tagged/azure-managedapps). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke hozzáadásával `azure-managedapps` gyors választ kaphat!
+Ha kérdése van a Azure Managed Applicationsával kapcsolatban, az Azure által felügyelt-app vagy [a Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-managed-applications.html) címkével ellátott [stack overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) megkérdezése az Azure-Managed-Application címkével. Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A gyorsabb reagáláshoz használjon megfelelő címkéket. 
 
 ## <a name="next-steps"></a>Következő lépések
 

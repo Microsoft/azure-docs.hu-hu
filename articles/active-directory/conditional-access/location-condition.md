@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07af586bac71ee9b33ef314756454cb3c52ec912
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97615711"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305922"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>A hely feltételének használata feltételes hozzáférési házirendben 
 
@@ -32,39 +32,37 @@ A szervezetek a következő általános feladatokhoz használhatják ezt a hál�
 
 A hálózati helyet az ügyfél által a Azure Active Directory számára biztosított nyilvános IP-cím határozza meg. A feltételes hozzáférési szabályzatok alapértelmezés szerint az összes IPv4-és IPv6-címre érvényesek. 
 
-> [!TIP]
-> Az IPv6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
-
 ## <a name="named-locations"></a>Nevesített helyek
 
-A helyszínek a Azure Portal **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **névvel ellátott helyei** területen vannak kijelölve. Ezek a nevesített hálózati helyek olyan helyekhez tartozhatnak, mint például a szervezeti központ hálózati tartományai, a VPN-hálózatok tartományai vagy a blokkolni kívánt tartományok. 
+A helyszínek a Azure Portal **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **névvel ellátott helyei** területen vannak kijelölve. Ezek a nevesített hálózati helyek olyan helyekhez tartozhatnak, mint például a szervezeti központ hálózati tartományai, a VPN-hálózatok tartományai vagy a blokkolni kívánt tartományok. A nevesített helyszíneket IPv4/IPv6-címtartományok vagy országok/régiók határozzák meg. 
 
 ![Elnevezett helyszínek a Azure Portal](./media/location-condition/new-named-location.png)
 
-A hely konfigurálásához meg kell adnia legalább egy **nevet** és az IP-címtartományt. 
+### <a name="ip-address-ranges"></a>IP-címtartományok
 
-A konfigurálható elnevezett helyszínek számát a kapcsolódó objektum mérete korlátozza az Azure AD-ben. A következő korlátozások alapján állíthatja be a helyszíneket:
+Egy elnevezett hely IPv4/IPv6-címtartományok alapján való definiálásához meg kell adnia egy **nevet** és egy IP-címtartományt. 
 
-- Egy elnevezett hely legfeljebb 1200 IPv4-tartománnyal.
-- Legfeljebb 90 elnevezett helyet, amelyek mindegyike egy IP-tartománnyal van társítva.
-
-> [!TIP]
-> Az IPv6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
+Az IPv4/IPv6-címtartományok által definiált nevesített helyszínek a következő korlátozások alá esnek: 
+- Akár 195 elnevezett helyszín konfigurálása
+- Akár 2000 IP-tartomány konfigurálása egy nevesített helyen
+- Az IPv4-és IPv6-tartományok is támogatottak
+- A magánhálózati IP-címtartományok konfigurálása connot
+- A tartományokban található IP-címek száma korlátozott. IP-címtartomány definiálásakor csak a/8 értéknél nagyobb CIDR-maszk megengedett. 
 
 ### <a name="trusted-locations"></a>Megbízható helyek
 
-Hálózati hely létrehozásakor a rendszergazdának lehetősége van a hely megbízható helyként való megjelölésére. 
+A rendszergazdák megadhatják, hogy az IP-címtartományok által meghatározott megnevezett helyek megbízható elnevezett helyek legyenek. 
 
 ![Megbízható helyek a Azure Portal](./media/location-condition/new-trusted-location.png)
 
-Ez a beállítás a feltételes hozzáférési házirendekben fordulhat elő, ahol például a megbízható hálózati helyről való regisztráció megkövetelése a többtényezős hitelesítéshez. Emellett a Azure AD Identity Protection kockázati számítását is figyelembe veszi, ami csökkenti a felhasználók bejelentkezési kockázatát, ha a megbízhatóként megjelölt helyről érkezik.
+A megbízható elnevezett helyekről érkező bejelentkezések javítják Azure AD Identity Protection kockázati számításának pontosságát, és csökkentik a felhasználók bejelentkezési kockázatát, ha a hitelesítés a megbízható helyről történik. A megbízható elnevezett helyek emellett feltételes hozzáférési szabályzatokban is megadhatók. Előfordulhat például, hogy a többtényezős hitelesítés regisztrációját csak megbízható elnevezett helyekre korlátozza. 
 
 ### <a name="countries-and-regions"></a>Országok és régiók
 
-Egyes szervezetek dönthetnek úgy, hogy a feltételes hozzáférési szabályzatok elnevezett helyei szerint határozzák meg az összes országot vagy régióbeli IP-határokat. Ezeket a helyeket akkor használhatják, amikor blokkolják a szükségtelen forgalmat, ha tudják, hogy az érvényes felhasználók soha nem olyan helyről származnak, mint az Észak-Korea. Az IP-cím és az ország közötti leképezések rendszeresen frissülnek. 
+Néhány szervezet dönthet úgy, hogy a feltételes hozzáférés használatával korlátozza bizonyos országok vagy régiók hozzáférését. A nevesített helyszínek IP-címtartományok alapján történő definiálásán kívül a rendszergazdák ország vagy régiók szerint is meghatározhatnak nevesített helyszíneket. Amikor egy felhasználó bejelentkezik, az Azure AD feloldja a felhasználó IPv4-címeit egy ország vagy régió számára, és a leképezést rendszeresen frissíti. A szervezetek az országok által meghatározott elnevezett helyekkel letilthatják a forgalmat olyan országokból, ahol nem üzleti tevékenységet végeznek, például Észak-Koreában. 
 
 > [!NOTE]
-> Az IPv6-címtartományok nem képezhetők le országokra. Az országoknak csak IPv4-címek képezhetők le.
+> Az IPv6-címekről érkező bejelentkezések nem képezhetők le országokra vagy régiókra, és ismeretlen területnek számítanak. Csak IPv4-címek képezhetők le országokra vagy régiókra.
 
 ![Új ország vagy régió alapú hely létrehozása a Azure Portal](./media/location-condition/new-named-location-country-region.png)
 
@@ -91,33 +89,6 @@ A hosszú élettartamú munkamenetek élettartamát tartalmazó mobil-és asztal
 
 Ha mindkét lépés meghiúsul, a rendszer a felhasználót már nem megbízható IP-címekre tekinti.
 
-## <a name="preview-features"></a>Előzetes verziójú funkciók
-
-Az általánosan elérhető elnevezett Location funkció mellett egy megnevezett hely is található (előzetes verzió). A megnevezett hely villámnézetét az aktuális elnevezett hely panel tetején található szalagcím használatával érheti el.
-
-![Az elnevezett helyszínek előzetes verziójának kipróbálása](./media/location-condition/preview-features.png)
-
-A megnevezett hely előzetes verziójával lehetősége van
-
-- Akár 195 elnevezett helyszín konfigurálása
-- Akár 2000 IP-tartomány konfigurálása egy nevesített helyen
-- IPv6-címek konfigurálása IPv4-címek mellett
-
-További ellenőrzéseket is felvettünk, amelyek segítenek csökkenteni a helytelen konfiguráció változását.
-
-- A magánhálózati IP-címtartományok már nem konfigurálhatók.
-- A tartományba felvehető IP-címek száma korlátozott. IP-címtartomány konfigurálásakor csak a/8-nál nagyobb CIDR-maszkok engedélyezettek.
-
-Az előzetes verzióban mostantól két létrehozási lehetőség közül választhat: 
-
-- **Országok helye**
-- **IP-címtartományok helye**
-
-> [!NOTE]
-> Az IPv6-címtartományok nem képezhetők le országokra. Az országoknak csak IPv4-címek képezhetők le.
-
-![Elnevezett helyszínek előzetes kezelőfelülete](./media/location-condition/named-location-preview.png)
-
 ## <a name="location-condition-in-policy"></a>Hely feltétele a házirendben
 
 A hely feltételének konfigurálásakor lehetősége van a következők megkülönböztetésére:
@@ -143,7 +114,7 @@ Ezzel a beállítással egy vagy több elnevezett helyet választhat ki. Ahhoz, 
 
 ## <a name="ipv6-traffic"></a>IPv6-forgalom
 
-Alapértelmezés szerint a feltételes hozzáférési házirendek minden IPv6-forgalomra érvényesek lesznek. A [megnevezett hely előzetes](#preview-features)verziójával kizárhat bizonyos IPv6-címtartományt egy feltételes hozzáférési szabályzatból. Ez a beállítás olyan esetekben hasznos, amikor nem szeretné kényszeríteni a szabályzatot az adott IPv6-tartományokra vonatkozóan. Ha például nem kívánja kikényszeríteni a vállalati hálózat használatára vonatkozó szabályzatot, és a vállalati hálózat nyilvános IPv6-tartományokon fut.  
+Alapértelmezés szerint a feltételes hozzáférési házirendek minden IPv6-forgalomra érvényesek lesznek. Ha nem szeretné, hogy a házirendek kényszerítve legyenek bizonyos IPv6-tartományokra, kizárhatja az adott IPv6-címtartományt egy feltételes hozzáférési szabályzatból. Ha például nem kívánja kikényszeríteni a vállalati hálózat használatára vonatkozó szabályzatot, és a vállalati hálózat nyilvános IPv6-tartományokon fut.  
 
 ### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Mikor lesz a bérlőnek IPv6-forgalma?
 

@@ -3,19 +3,19 @@ title: 'Oktatóanyag: egyéni tartomány hozzáadása a végponthoz'
 titleSuffix: Azure Content Delivery Network
 description: Ezzel az Oktatóanyaggal adhat hozzá egyéni tartományt egy Azure Content Delivery Network-végponthoz, így a tartománynév látható az URL-címben.
 services: cdn
-author: asudbring
+author: jessie-jyy
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 02/04/2020
-ms.author: allensu
+ms.date: 04/12/2021
+ms.author: yuajia
 ms.custom: mvc
-ms.openlocfilehash: 9bca81e7d0eb68d43c21065f5104fc423115be25
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 63ca8cc981f7a192c35f7d1889187ae84773ba08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065191"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307996"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Oktatóanyag: egyéni tartomány hozzáadása a végponthoz
 
@@ -245,9 +245,14 @@ Az egyéni tartomány regisztrációjának befejezése után ellenőrizze, hogy 
 
 Ha már nem szeretné egyéni tartományhoz rendelni a végpontot, távolítsa el az egyéni tartományt a következő lépések végrehajtásával:
  
-1. A CDN-profilban válassza ki azt a végpontot, amely tartalmazza az eltávolítani kívánt egyéni tartományt.
+1. Nyissa meg a DNS-szolgáltatót, törölje az egyéni tartomány CNAME rekordját, vagy frissítse az egyéni tartomány CNAME rekordját egy nem Azure CDN végpontra.
 
-2. A **Végpont** oldalon, az Egyéni tartományok területen kattintson a jobb gombbal az eltávolítani kívánt egyéni tartományra, és válassza a **Törlés** lehetőséget a helyi menüből. Válassza az **Igen** lehetőséget.
+    > [!Important]
+    > Ha meg szeretné akadályozni 2021, hogy a DNS-bejegyzések és az általuk létrehozott biztonsági kockázatok ne legyenek az erőforrások törlése előtt, akkor a Azure CDN a CNAME rekordok Azure CDN végpontokra való eltávolítását igényli. Az erőforrások közé tartoznak Azure CDN egyéni tartományok, Azure CDN profilok/végpontok vagy olyan Azure-erőforráscsoportok, amelyeken engedélyezve van Azure CDN egyéni tartomány (ok).
+
+2. A CDN-profilban válassza ki azt a végpontot, amely tartalmazza az eltávolítani kívánt egyéni tartományt.
+
+3. A **Végpont** oldalon, az Egyéni tartományok területen kattintson a jobb gombbal az eltávolítani kívánt egyéni tartományra, és válassza a **Törlés** lehetőséget a helyi menüből. Válassza az **Igen** lehetőséget.
 
    Az egyéni tartomány társítása a végponttal ekkor megszűnik.
 
@@ -255,25 +260,29 @@ Ha már nem szeretné egyéni tartományhoz rendelni a végpontot, távolítsa e
 
 Ha már nem szeretné egyéni tartományhoz rendelni a végpontot, távolítsa el az egyéni tartományt a következő lépések végrehajtásával:
 
-1. A [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) használatával távolítsa el az egyéni tartományt a végpontból:
+1. Nyissa meg a DNS-szolgáltatót, törölje az egyéni tartomány CNAME rekordját, vagy frissítse az egyéni tartomány CNAME rekordját egy nem Azure CDN végpontra.
+
+    > [!Important]
+    > Ha meg szeretné akadályozni 2021, hogy a DNS-bejegyzések és az általuk létrehozott biztonsági kockázatok ne legyenek az erőforrások törlése előtt, akkor a Azure CDN a CNAME rekordok Azure CDN végpontokra való eltávolítását igényli. Az erőforrások közé tartoznak Azure CDN egyéni tartományok, Azure CDN profilok/végpontok vagy olyan Azure-erőforráscsoportok, amelyeken engedélyezve van Azure CDN egyéni tartomány (ok).
+
+2. A [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) használatával távolítsa el az egyéni tartományt a végpontból:
 
     * Cserélje le a **myendpoint8675** -t a CDN-végpont nevére.
     * Cserélje le az **www.contoso.com** -t az egyéni tartománynevére.
     * Cserélje le a **myCDN** -t a CDN-profil nevére.
     * Cserélje le a **myResourceGroupCDN** az erőforráscsoport nevére.
 
-
-```azurepowershell-interactive
-    $parameters = @{
-        CustomDomainName = 'www.contoso.com'
-        EndPointName = 'myendpoint8675'
-        ProfileName = 'myCDN'
-        ResourceGroupName = 'myResourceGroupCDN'
-    }
-    Remove-AzCdnCustomDomain @parameters
-```
-
+    ```azurepowershell-interactive
+        $parameters = @{
+            CustomDomainName = 'www.contoso.com'
+            EndPointName = 'myendpoint8675'
+            ProfileName = 'myCDN'
+            ResourceGroupName = 'myResourceGroupCDN'
+        }
+        Remove-AzCdnCustomDomain @parameters
+    ```
 ---
+
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:

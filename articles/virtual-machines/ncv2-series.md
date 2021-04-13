@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9d057afc130b75bdd62031e6d2b9372bc9a37615
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7297e0ba8ae64a262983c9e89de1bbe7187610ec
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615023"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306432"
 ---
 # <a name="ncv2-series"></a>NCv2 sorozat
 
@@ -22,6 +22,7 @@ A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű 
 
 [Premium Storage](premium-storage-performance.md): támogatott<br>
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Ultra-lemezek](disks-types.md#ultra-disk): támogatott[(További információ a](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) rendelkezésre állásról, a használatról és a teljesítményről) <br>
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
