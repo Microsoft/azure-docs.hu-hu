@@ -1,87 +1,82 @@
 ---
-title: A Windows rendszerű virtuális asztali MSIX alkalmazás konfigurálása PowerShell-parancsfájlok csatolása – Azure
-description: PowerShell-parancsfájlok létrehozása a Windows rendszerű virtuális asztali MSIX alkalmazáshoz.
+title: MsIX Windows Virtual Desktop alkalmazás PowerShell-szkriptek csatolásának konfigurálása – Azure
+description: PowerShell-szkriptek létrehozása msix-alkalmazáshoz csatolva Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 224f2e773ecd42dcbdd356531d9ce94636de002f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 143f0a9d23cdc70425147faa95258ec753b92691
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448270"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365380"
 ---
-# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>PowerShell-parancsfájlok létrehozása MSIX-alkalmazás csatolásához (előzetes verzió)
+# <a name="create-powershell-scripts-for-msix-app-attach"></a>PowerShell-szkriptek létrehozása MSIX-alkalmazás csatolása számára
 
-> [!IMPORTANT]
-> A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ebből a témakörből megtudhatja, hogyan állíthat be PowerShell-szkripteket a MSIX alkalmazáshoz.
+Ez a témakör bemutatja, hogyan állíthat be PowerShell-szkripteket az MSIX-alkalmazások csatolása számára.
 
 >[!IMPORTANT]
->Mielőtt elkezdené, győződjön meg róla, hogy kitölti és beküldi [ezt az űrlapot](https://aka.ms/enablemsixappattach) , hogy engedélyezze a MSIX-alkalmazás csatolását az előfizetésében. Ha nem rendelkezik jóváhagyott kéréssel, a MSIX-alkalmazás csatolása nem fog működni. A kérések jóváhagyása akár 24 óráig is eltarthat a munkaidőn belül. A kérés elfogadását és befejezését követően e-mailt fog kapni.
+>Mielőtt hozzá kezd, töltse ki és [](https://aka.ms/enablemsixappattach) küldje el ezt az űrlapot, hogy engedélyezze az MSIX-alkalmazás csatolását az előfizetésben. Ha nem rendelkezik jóváhagyott kérelemvel, az MSIX-alkalmazás csatolása nem fog működni. A kérelmek jóváhagyása a munkanapok során akár 24 órát is igénybe vehet. E-mailt fog kapni, ha a kérést elfogadták és befejezték.
 
 ## <a name="install-certificates"></a>Tanúsítványok telepítése
 
-Telepítenie kell a tanúsítványokat az összes olyan munkamenet-gazdagépre, amely a MSIX-alkalmazáshoz tartozó csomagokat fogja üzemeltetni.
+Tanúsítványokat kell telepítenie a gazdagépkészlet összes olyan munkamenetgazdára, amely az MSIX-alkalmazáscsomagok csatolási csomagjait fogja tartalmazni.
 
-Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbízható vagy önaláírt, a következő módon telepítheti:
+Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvános megbízható vagy önaírta alá, a telepítés a következő:
 
-1. Kattintson a jobb gombbal a csomagra, és válassza a **Tulajdonságok** lehetőséget.
-2. A megjelenő ablakban válassza a **digitális aláírások** fület. A lapon csak egy elemnek kell szerepelnie a listán, ahogy az az alábbi képen is látható. Válassza ki az elemet az elem kiemeléséhez, majd válassza a **részletek** lehetőséget.
-3. Amikor megjelenik a digitális aláírás részletei ablak, válassza az **általános** lapot, majd válassza a **Tanúsítvány megtekintése** lehetőséget, majd válassza a **tanúsítvány telepítése** lehetőséget.
-4. A telepítő megnyitásakor válassza a **helyi gép** lehetőséget a tárolási helyként, majd kattintson a **tovább** gombra.
-5. Ha a telepítő megkérdezi, hogy engedélyezni szeretné-e az alkalmazásnak az eszköz módosítását, válassza az **Igen** lehetőséget.
-6. Válassza **a minden tanúsítvány tárolása a következő tárolóban** lehetőséget, majd válassza a **Tallózás** lehetőséget.
-7. Amikor megjelenik a tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek** lehetőséget, majd kattintson **az OK gombra**.
-8. Válassza a **tovább** , majd a **Befejezés** lehetőséget.
+1. Kattintson a jobb gombbal a csomagra, és válassza a **Tulajdonságok lehetőséget.**
+2. A megjelenő ablakban válassza a Digitális **aláírások** lapot. A listában csak egy elemnek kell lennie a lapon, ahogyan az alábbi képen látható. Jelölje ki az elemet az elem kiemeléshez, majd válassza a **Részletek lehetőséget.**
+3. Amikor megjelenik a digitális aláírás  részletei ablak, válassza az Általános lapot, majd a Tanúsítvány megtekintése **lehetőséget,** végül válassza a **Tanúsítvány telepítése lehetőséget.**
+4. Amikor megnyílik a telepítő, válassza ki a **helyi** gépet tárolási helyként, majd válassza a Tovább **lehetőséget.**
+5. Ha a telepítő rákérdez, hogy engedélyezi-e az alkalmazás számára az eszköz módosításait, válassza az **Igen lehetőséget.**
+6. Válassza **az Összes tanúsítvány tárolása a következő tárolóban** lehetőséget, majd válassza a Tallózás **lehetőséget.**
+7. Amikor megjelenik a Tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek** lehetőséget, majd kattintson az **OK gombra.**
+8. Válassza **a Tovább,** majd a **Befejezés lehetőséget.**
 
-## <a name="enable-microsoft-hyper-v"></a>Microsoft Hyper-V engedélyezése
+## <a name="enable-microsoft-hyper-v"></a>A Microsoft Hyper-V
 
-A Microsoft Hyper-Vt engedélyezni kell, mert a parancs végrehajtásához szükség van a művelet elvégzéséhez `Mount-VHD` `Dismount-VHD` .
+Microsoft Hyper-V engedélyezni kell, mert a parancs a szakaszhoz és a `Mount-VHD` `Dismount-VHD` destage-hez szükséges.
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 
 >[!NOTE]
->Ehhez a változáshoz újra kell indítani a virtuális gépet.
+>Ehhez újra kell indítania a virtuális gépet.
 
-## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-parancsfájlok előkészítése MSIX-alkalmazás csatolásához
+## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-szkriptek előkészítése MSIX-alkalmazás csatolása számára
 
-A MSIX-alkalmazás csatolása négy különböző fázist tartalmaz, amelyeket a következő sorrendben kell végrehajtani:
+Az MSIX-alkalmazás csatolása négy különböző fázisból áll, amelyek a következő sorrendben hajthatóak végre:
 
 1. Fázis
 2. Regisztráció
-3. Képes
-4. Kilépés
+3. Regisztrációjának deregációja
+4. Destage (Destage)
 
-Minden fázis létrehoz egy PowerShell-szkriptet. Az egyes fázisok mintául szolgáló parancsfájljai [itt](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)érhetők el.
+Minden fázis egy PowerShell-szkriptet hoz létre. Az egyes fázisok mint szkriptei itt [érhetők el.](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)
 
-### <a name="stage-powershell-script"></a>Szakasz PowerShell-parancsfájl
+### <a name="stage-powershell-script"></a>PowerShell-szkript szakasza
 
-A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e a kötet GUID azonosítóval a VHD-ben. A kötet GUID-azonosítójának lekérése:
+A PowerShell-parancsfájlok frissítése előtt győződjön meg arról, hogy a kötet GUID-azonosítóját a vhD-ban is elérhető. A kötet GUID-azonosítóját a következővel lehet lekérte:
 
-1.  Nyissa meg azt a hálózati megosztást, ahol a VHD abban a virtuális gépen található, amelyen futtatni fogja a parancsfájlt.
+1.  Nyissa meg azt a hálózati megosztást, ahol a VHD található abban a virtuális gépen belül, ahol a szkriptet fogja futtatni.
 
-2.  Kattintson a jobb gombbal a virtuális merevlemezre, és válassza a **Csatlakoztatás** lehetőséget. Ezzel csatlakoztatja a virtuális merevlemezt egy meghajtóbetűjelhez.
+2.  Kattintson a jobb gombbal a virtuális merevlemezre, és válassza a **Csatlakoztatás lehetőséget.** Ezzel csatlakoztatja a VHD-t egy meghajtóbetűjelhez.
 
-3.  Miután csatlakoztatta a VHD-t, megnyílik a **fájlkezelő** ablak. A szülőmappa rögzítése és a **$parentFolder** változó frissítése
+3.  A VHD csatlakoztatása után **megnyílik Fájlkezelő** ablak. Rögzítse a szülőmappát, és frissítse **a $parentFolder** változót
 
     >[!NOTE]
-    >Ha nem lát szülő mappát, az azt jelenti, hogy a MSIX nem lett megfelelően kibontva. Ismételje meg az előző szakaszt, és próbálkozzon újra.
+    >Ha nem lát szülőmappát, az azt jelenti, hogy az MSIX nincs megfelelően kibontva. Próbálja újra az előző szakaszt, és próbálkozzon újra.
 
-4.  Nyissa meg a szülőmappa mappát. Ha a megfelelően ki van bontva, egy olyan mappa jelenik meg, amelynek a neve megegyezik a csomag nevével. Frissítse a **$packageName** változót, hogy megegyezzen a mappa nevével.
+4.  Nyissa meg a szülőmappát. Ha megfelelően kibontva van, egy, a csomag nevével azonos nevű mappa jelenik meg. Frissítse a **$packageName** változót úgy, hogy megfeleljen a mappa nevének.
 
     Például: `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
-5.  Nyisson meg egy parancssort, és adja meg a **mountvol** parancsot. A parancs megjeleníti a kötetek listáját és a GUID azonosítókat. Másolja ki annak a kötetnek a GUID azonosítóját, amelyben a meghajtóbetűjel megegyezik azzal a meghajtóval, amellyel a virtuális merevlemezt csatlakoztatta a 2. lépésben.
+5.  Nyisson meg egy parancssort, és írja be a **mountvol parancsot.** Ez a parancs megjeleníti a kötetek listáját és azok GUID azonosítóit. Másolja ki annak a kötetnek a GUID azonosítóját, ahol a meghajtó betűjele megegyezik azzal a meghajtóval, amelyhez csatlakoztatta a VHD-t a 2. lépésben.
 
-    Például a mountvol parancs kimenetében, ha a virtuális merevlemezt a C meghajtóhoz csatlakoztatta, a fenti értéket át kell másolnia `C:\` :
+    Ha például ebben a példakimenetben a mountvol parancshoz csatlakoztatta a VHD-t a C meghajtóhoz, a fenti értéket kell `C:\` másolnia:
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -98,9 +93,9 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
     ```
 
 
-6.  Frissítse a **$volumeGuid** változót az imént másolt kötet GUID azonosítóval.
+6.  Frissítse a **$volumeGuid** változót az előbb kimáselt kötet GUID azonosítóját.
 
-7. Nyisson meg egy rendszergazdai PowerShell-parancssort, és frissítse a következő PowerShell-parancsfájlt a környezetre vonatkozó változókkal.
+7. Nyisson meg egy rendszergazdai PowerShell-parancssort, és frissítse a következő PowerShell-szkriptet a környezetére vonatkozó változók használatával.
 
     ```powershell
     #MSIX app attach staging sample
@@ -151,9 +146,9 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
     #endregion
     ```
 
-### <a name="register-powershell-script"></a>PowerShell-parancsfájl regisztrálása
+### <a name="register-powershell-script"></a>PowerShell-szkript regisztrálása
 
-A regisztrálási parancsfájl futtatásához futtassa a következő PowerShell-parancsmagokat a helyőrző értékekkel, amelyek az adott környezetre érvényes értékekkel lesznek lecserélve.
+A regisztrálási szkript futtatásához futtassa a következő PowerShell-parancsmagokat a környezetére vonatkozó értékekkel lecserélt helyőrző értékekkel.
 
 ```powershell
 #MSIX app attach registration sample
@@ -168,9 +163,9 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 #endregion
 ```
 
-### <a name="deregister-powershell-script"></a>PowerShell-parancsfájl regisztrációjának törlése
+### <a name="deregister-powershell-script"></a>PowerShell-szkript regisztrációjának deregációja
 
-Ehhez a parancsfájlhoz cserélje le a **$packageName** helyőrzőjét a tesztelni kívánt csomag nevére.
+Ehhez a szkripthez cserélje  le a $packageName helyőrzőt a tesztelt csomag nevére.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -184,9 +179,9 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #endregion
 ```
 
-### <a name="destage-powershell-script"></a>PowerShell-parancsfájl lefázisa
+### <a name="destage-powershell-script"></a>PowerShell-szkriptek destage (A PowerShell-parancsfájlok) telepítése
 
-Ehhez a parancsfájlhoz cserélje le a **$packageName** helyőrzőjét a tesztelni kívánt csomag nevére. Éles környezetben a legjobb megoldás a leállításkor.
+Ehhez a szkripthez cserélje  le a $packageName helyőrzőt a tesztelt csomag nevére. Éles környezetben a legjobb, ha leállításkor futtatja.
 
 ```powershell
 #MSIX app attach de staging sample
@@ -208,30 +203,30 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
-## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Szimulációs parancsfájlok beállítása a MSIX alkalmazáshoz csatolható ügynökhöz
+## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Szimulációs szkriptek beállítása az MSIX-alkalmazás csatolási ügynökéhez
 
-A parancsfájlok létrehozása után a felhasználók manuálisan futtathatják azokat, vagy beállíthatja, hogy a rendszer automatikusan futtassa az indítási, bejelentkezési, kijelentkezési és leállítási parancsfájlok futtatását. Az ilyen típusú parancsfájlokkal kapcsolatos további információkért lásd: [indítási, leállítási, bejelentkezési és kijelentkezési parancsfájlok használata Csoportházirendban](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
+A szkriptek létrehozása után a felhasználók manuálisan futtathatja őket, vagy beállíthatja őket úgy, hogy automatikusan indítási, bejelentkezési, kijelentkezés- és leállítási parancsfájlként fusson. Az ilyen típusú szkriptekkel kapcsolatos további információkért lásd: [Indítási,](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)leállítási, bejelentkezési és kijelentkezés parancsfájlok használata a Csoportházirend.
 
-Ezen automatikus parancsfájlok mindegyike az alkalmazás egy fázisát futtatja a parancsfájlok csatolásához:
+Ezek az automatikus szkriptek az alkalmazás csatolási szkriptek egy-egy fázisát futtatják:
 
-- Az indítási parancsfájl futtatja a szakasz parancsfájlját.
-- A bejelentkezési parancsfájl a regisztrálási parancsfájlt futtatja.
-- A kijelentkezési parancsfájl a deregister szkriptet futtatja.
-- A leállítási parancsfájl futtatja a kilépési parancsfájlt.
+- Az indítási szkript futtatja a stage szkriptet.
+- A bejelentkezési szkript futtatja a regisztrálási szkriptet.
+- Az kijelentkezés szkript futtatja a regisztrációt megszabaduló szkriptet.
+- A leállítási szkript futtatja a destage szkriptet.
 
-## <a name="use-packages-offline"></a>Csomagok használata kapcsolat nélküli üzemmódban
+## <a name="use-packages-offline"></a>Csomagok offline használata
 
-Ha olyan csomagokat használ a [Microsoft Store for Business](https://businessstore.microsoft.com/) vagy a [Microsoft Store for Education](https://educationstore.microsoft.com/) szolgáltatásban a hálózaton vagy az internethez nem csatlakozó eszközökön, le kell kérnie a csomag licenceit a Microsoft Store, és telepítenie kell őket az eszközre az alkalmazás sikeres futtatásához. Ha az eszköz online állapotban van, és kapcsolódni tud a vállalati Microsoft Storehoz, a szükséges licenceket automatikusan le kell tölteni, de ha offline állapotban van, manuálisan kell beállítania a licenceket.
+Ha a [Microsoft Store Vállalatoknak](https://businessstore.microsoft.com/) vagy a [Microsoft Store Oktatási Intézményeknek](https://educationstore.microsoft.com/) hálózatán belüli vagy az internethez nem csatlakozó eszközökön használ csomagokat, a csomaglicenceket be kell szereznie a Microsoft Store-ból, és telepítenie kell őket az eszközön az alkalmazás sikeres futtatásához. Ha az eszköze online állapotban van, és csatlakozni tud a Microsoft Store Vállalatoknak-hoz, a szükséges licencek letöltése automatikusan megtörténik, de offline állapotban manuálisan kell beállítania a licenceket.
 
-A licencfájl telepítéséhez egy PowerShell-szkriptet kell használnia, amely meghívja a MDM_EnterpriseModernAppManagement_StoreLicenses02_01 osztályt a WMI Bridge-szolgáltatóban.
+A licencfájlok telepítéséhez olyan PowerShell-szkriptet kell használnia, amely a WMI-hídszolgáltató MDM_EnterpriseModernAppManagement_StoreLicenses02_01 osztályát hívja meg.
 
-A következő módon állíthatja be a licenceket offline használatra:
+Így állíthatja be a licenceket offline használatra:
 
-1. Töltse le az alkalmazáscsomag, a licencek és a szükséges keretrendszereket a vállalati Microsoft Store. A kódolt és a titkosítatlan licencek is szükségesek. Részletes letöltési utasítások [itt](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)találhatók.
-2. Frissítse a következő változókat a 3. lépéshez tartozó parancsfájlban:
-      1. `$contentID` a ContentID értéke a nem kódolt licencfájl (. xml). A licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
-      2. `$licenseBlob` a a titkosított licencfájl (. bin) teljes karakterlánca a licenc blobjának. A kódolt licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
-3. Futtassa a következő parancsfájlt egy rendszergazdai PowerShell-parancssorból. A licencek telepítésének megfelelő helye az [átmeneti parancsfájl](#stage-powershell-script) végén található, amelyet rendszergazdai parancssorból is futtatni kell.
+1. Töltse le az alkalmazáscsomagot, a licenceket és a szükséges keretrendszereket a Microsoft Store Vállalatoknak. A kódolt és a kódolatlan licencfájlokra egyaránt szüksége lesz. Részletes letöltési utasításokat itt [talál.](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)
+2. Frissítse az alábbi változókat a szkriptben a 3. lépéshez:
+      1. `$contentID` A a Nem kódolatlan licencfájl (.xml) ContentID értéke. A licencfájlt egy ön által választott szövegszerkesztőben nyithatja meg.
+      2. `$licenseBlob` A a kódolt licencfájlban (.bin) található licencblob teljes sztringe. A kódolt licencfájlt egy Ön által választott szövegszerkesztőben nyithatja meg.
+3. Futtassa a következő szkriptet egy rendszergazdai PowerShell-parancssorból. Jó hely a licenctelepítés végrehajtásához az [](#stage-powershell-script) előkészítési szkript végén van, amely egy rendszergazdai parancssorból is futtatható.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"
@@ -269,6 +264,6 @@ catch [Exception]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a funkció jelenleg nem támogatott, de kérdéseket tehet fel a Közösségnek a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Ez a funkció jelenleg nem támogatott, de a [TechCo Windows Virtual Desktop kérdéseket tehet fel a közösségnek.](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 
-A Windows rendszerű virtuális asztalok visszajelzéseit a [Windows Virtual Desktop visszajelzési központja](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)is elhagyhatja.
+Visszajelzést is küldhet a Windows Virtual Desktop a [Windows Virtual Desktop visszajelzési központban.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)

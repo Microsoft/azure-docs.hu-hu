@@ -1,22 +1,22 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET API, SDK &-erőforrások'
-description: Ismerkedjen meg az SQL .NET API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és a Azure Cosmos DB .NET SDK egyes verzióiban végrehajtott módosításokat.
+title: 'Azure Cosmos DB: SQL .NET API, SDK & erőforrások'
+description: Ismerje meg az SQL .NET API-t és az SDK-t, beleértve a kiadási dátumokat, a kieső dátumokat és a .NET SDK Azure Cosmos DB módosításait.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e603175aa40077009bb208846cba62d5280e57c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 052dfc651ac590fd1acefa0a92dc3ef4f25daaea
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577061"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365212"
 ---
-# <a name="azure-cosmos-db-net-sdk-v2-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v2 az SQL API-hoz: letöltési és kibocsátási megjegyzések
+# <a name="azure-cosmos-db-net-sdk-v2-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v2 for SQL API: Letöltés és kibocsátási megjegyzések
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -30,7 +30,8 @@ ms.locfileid: "104577061"
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark-összekötő](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP-összekötő](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
@@ -41,18 +42,18 @@ ms.locfileid: "104577061"
 | | Hivatkozások |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
-|**API-dokumentáció**|[.NET API-referenciák dokumentációja](/dotnet/api/overview/azure/cosmosdb)|
-|**Példák**|[.NET-kód minták](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
-|**Első lépések**|[Ismerkedés a Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)|
-|**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-dotnet-application.md)|
+|**API-dokumentáció**|[A .NET API referenciadokumentációja](/dotnet/api/overview/azure/cosmosdb)|
+|**Példák**|[.NET-kódminták](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
+|**Első lépések**|[Első lépések a Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)|
+|**Webalkalmazás oktatóanyag**|[Webalkalmazások fejlesztése Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 > [!NOTE]
-> Ha a .NET-keretrendszert használja, tekintse meg a .net-szabványnak megfelelő .net [SDK](sql-api-sdk-dotnet-standard.md)legújabb 3. x verzióját.
+> Ha a .NET .NET-keretrendszer használja, tekintse meg a [.NET Standard-t](sql-api-sdk-dotnet-standard.md)megcélzó .NET SDK legújabb 3.x verzióját.
 
-A .NET SDK-k következő alverziói érhetők el a 2. x. x verzióban:
+A .NET SDK-k következő alverziói érhetők el a 2.x.x verzióban:
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 

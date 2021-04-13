@@ -1,6 +1,6 @@
 ---
-title: Azure-beli automata felügyelet virtuális gépeken
-description: Ismerje meg a virtuális gépek Azure-beli autofelügyeletét.
+title: Azure Automanage virtuális gépekhez
+description: További információ Azure Automanage virtuális gépekhez való Azure Automanage kapcsolatban.
 author: deanwe
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 514f1af2a1b120254840986fc5ceb803dfc24345
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491277"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363376"
 ---
-# <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
+# <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage virtuális gépekhez
 
-Ez a cikk a virtuális gépek Azure-beli autofelügyeletével kapcsolatos információkat ismerteti, amelyek a következő előnyöket nyújtják:
+Ez a cikk a virtuális gépek Azure Automanage kapcsolatos információkat tartalmaz, amelyek a következő előnyökkel járnak:
 
-- Intelligens üzembe helyezés a virtuális gépeken az ajánlott eljárások Azure-szolgáltatások kiválasztásához
-- Az Azure ajánlott eljárásaiban automatikusan konfigurálja az egyes szolgáltatásokat
-- Figyelők az észleléshez és a kijavítására
-- Egyszerű élményt nyújt (pont, kattintás, beállítás, elfelejti)
+- Virtuális gépek intelligens létrehozása az ajánlott eljárások kiválasztásához – Azure-szolgáltatások
+- Automatikusan konfigurálja az egyes szolgáltatásokat az Azure ajánlott eljárásai szerint
+- A sodródás figyelői és az észleléskor megfelelők
+- Egyszerű felhasználói élményt biztosít (pont, kattintás, beállítás, elfelejtés)
 
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-beli automatikus felügyelet virtuális gépeken olyan szolgáltatás, amely kiküszöböli a bevezetést, a bevezetést és az Azure-ban olyan szolgáltatások konfigurálását, amelyek hasznosak a virtuális gép számára. Ezek a szolgáltatások az Azure ajánlott eljárásokat szolgáló szolgáltatásai, és segítenek a virtuális gépek megbízhatóságának, biztonságának és kezelésének javításában. A szolgáltatások közé tartoznak például az [Azure Update Management](../automation/update-management/overview.md) és az [Azure Backup](../backup/backup-overview.md).
+Azure Automanage a virtuális gépekhez való használatra vonatkozó szolgáltatás szükségtelenné válik a virtuális gép számára előnyös egyes szolgáltatások felderítése, a használatuk megismerése és konfigurálása az Azure-ban. Ezeket a szolgáltatásokat az Azure ajánlott eljárásokat kezelő szolgáltatásainak tekintjük, és segítenek növelni a virtuális gépek megbízhatóságát, biztonságát és felügyeletét. Ilyen szolgáltatás például az [Azure Update Management](../automation/update-management/overview.md) és [a Azure Backup.](../backup/backup-overview.md)
 
-Miután bevezette a virtuális gépeket az Azure automanage-ba, minden ajánlott eljárás szolgáltatás a javasolt beállításokra van konfigurálva. Az ajánlott eljárások az egyes szolgáltatások esetében eltérőek. Lehetséges például, hogy Azure Backup, ahol az ajánlott eljárás a virtuális gép biztonsági mentése naponta egyszer, a megőrzési időtartam pedig hat hónap.
+A virtuális gépek Azure Automanage után minden ajánlott eljárás szerint konfigurálva vannak az ajánlott beállítások. Az ajánlott eljárások az egyes szolgáltatásokhoz eltérőek. Erre jó példa lehet Azure Backup, amikor az ajánlott eljárás a virtuális gép biztonsági létrehozása naponta egyszer, és hat hónapos megőrzési időtartam.
 
-Az Azure automatikus felügyelet emellett automatikusan figyeli a sodródás és a kijavítani kívánt adatok észlelését. Ez azt jelenti, hogy ha a virtuális gépet az Azure automanage szolgáltatásba integrálták, nem csak az Azure-ban ajánlott eljárásokat fogjuk konfigurálni, de figyelni fogjuk a gépet annak biztosítására, hogy továbbra is megfeleljenek az ajánlott eljárásoknak a teljes életciklusa során. Ha a virtuális gép elsodródik vagy eltérnek ezektől a gyakorlattól (például ha egy szolgáltatás offboarded), a rendszer kijavította, majd visszaküldi a gépet a kívánt állapotba.
+Azure Automanage automatikusan figyeli a sodródásokat, és észleli azok megfelelőségét. Ez azt jelenti, hogy ha a virtuális gépe Azure Automanage-hoz van beállítva, akkor nem csak az Azure ajánlott eljárásai szerint konfiguráljuk, hanem figyeljük a gépet is, hogy az folyamatosan megfeleljen ezeknek az ajánlott eljárásoknak a teljes életciklus során. Ha a virtuális gép nem tér el ezektől az eljárásoktól (például ha egy szolgáltatás ki van kapcsolva), kijavítjuk azt, és visszaveszi a gépet a kívánt állapotba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Több előfeltételt kell figyelembe vennie, mielőtt az Azure-beli automanage-t megpróbálja engedélyezni a virtuális gépeken.
+A virtuális gépeken a virtuális gépeken való Azure Automanage előtt több előfeltételt is figyelembe kell venni.
 
-- Támogatott [Windows Server-verziók](automanage-windows-server.md#supported-windows-server-versions) és [Linux-disztribúciók](automanage-linux.md#supported-linux-distributions-and-versions)
-- A virtuális gépeknek támogatott régióban kell lenniük (lásd alább)
+- Támogatott [Windows Server-verziók és](automanage-windows-server.md#supported-windows-server-versions) [Linux-disztribúciók](automanage-linux.md#supported-linux-distributions-and-versions)
+- A virtuális gépeknek támogatott régióban kell lennie (lásd alább)
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie (lásd alább)
-- Az automanage nem támogatja a homokozó-előfizetéseket.
+- Az automatikus automatizálás jelenleg nem támogatja a sandbox-előfizetéseket
 
 ### <a name="supported-regions"></a>Támogatott régiók
-Az automanage csak a következő régiókban lévő virtuális gépeket támogatja:
+Az automatikus automatizálás csak a következő régiókban található virtuális gépeket támogatja:
 * Nyugat-Európa
 * Észak-Európa
 * USA középső régiója
@@ -59,184 +59,136 @@ Az automanage csak a következő régiókban lévő virtuális gépeket támogat
 * Az Egyesült Királyság déli régiója
 * Ausztrália keleti régiója
 * Délkelet-Ausztrália
+* Délkelet-Ázsia
 
-### <a name="required-rbac-permissions"></a>Szükséges RBAC engedélyek
-A fiókja kis mértékben eltérő RBAC-szerepköröket igényel attól függően, hogy engedélyezi-e az automanage szolgáltatást egy új, automatikusan felügyelt fiókkal.
+### <a name="required-rbac-permissions"></a>Szükséges RBAC-engedélyek
+A fiókhoz némileg eltérő RBAC-szerepkörökre lesz szükség attól függően, hogy az automatikus kezelést egy új automatikus fiókkal engedélyezi-e.
 
-Ha egy új automanage-fiókkal engedélyezi az autofelügyeletet:
-* A virtuális gépeket tartalmazó előfizetés (ek) **tulajdonosi** szerepköre, _**vagy**_
-* **Közreműködő** és **felhasználói hozzáférés rendszergazdai** szerepkörök a virtuális gépeket tartalmazó előfizetés (ek) hez
+Ha új Automanage-fiókkal engedélyezi az automatikus et:
+* **Tulajdonosi** szerepkör a virtuális gépeket tartalmazó előfizetés(ek)hez, _**vagy**_
+* **Közreműködői** **és felhasználói hozzáférés-rendszergazdai** szerepkörök a virtuális gépeket tartalmazó előfizetés(ek)hez
 
-Ha egy meglévő automanage-fiókkal engedélyezi az autofelügyeletet:
-* **Közreműködő** szerepkör a virtuális gépeket tartalmazó erőforráscsoporthoz
+Ha egy meglévő Automanage-fiókkal engedélyezi az automatikusmanage-t:
+* **Közreműködői** szerepkör a virtuális gépeket tartalmazó erőforráscsoporton
 
-Az automatikusan felügyelt fiók **közreműködői** és **erőforrás-házirend közreműködői** jogosultságokat kap az automatikusan felügyelt gépeken végrehajtandó műveletek végrehajtásához.
+Az automatikus kezelőfiók közreműködői  és erőforrás-házirend-közreműködői jogosultságot kap az automatikusan kezelett gépeken való műveletek végrehajtásához. 
 
 > [!NOTE]
-> Ha egy másik előfizetésben lévő munkaterülethez csatlakozó virtuális gépen szeretné használni az automanage-t, az egyes előfizetésekben a fent ismertetett engedélyekkel kell rendelkeznie.
+> Ha egy másik előfizetésben lévő munkaterülethez csatlakoztatott virtuális gépen szeretné használni az Automatikusmanage-t, akkor minden előfizetéshez rendelkeznie kell a fent ismertetett engedélyekkel.
 
 ## <a name="participating-services"></a>Résztvevő szolgáltatások
 
-:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="Intelligensen integrált szolgáltatások.":::
+:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="A szolgáltatások intelligens módon való táblába való berekesze.":::
 
-A résztvevő Azure-szolgáltatások teljes listáját, valamint azok támogatott környezetét a következő témakörben tekintheti meg:
-- [A Linux-alapú autokezelés](automanage-linux.md)
-- [A Windows Server felügyeletének autokezelése](automanage-windows-server.md)
+A részt vevő Azure-szolgáltatások teljes listájáért, valamint a támogatott környezetükért tekintse meg a következőket:
+- [Automatikus automatizálás Linuxon](automanage-linux.md)
+- [Automatikus automatizálás a Windows Serverhez](automanage-windows-server.md)
 
- A rendszer automatikusan bevezeti Önt ezekhez a résztvevő szolgáltatásokhoz. Alapvető fontosságúak az ajánlott eljárásokról szóló tanulmány, amelyet a [felhőalapú bevezetési keretrendszerben](/azure/cloud-adoption-framework/manage/azure-server-management)talál.
+ Ezeket a szolgáltatásokat automatikusan fel fogjuk venni. Ezek elengedhetetlenek az ajánlott eljárásokhoz, amelyet a következő dokumentumban [talál: felhőadaptálási keretrendszer.](/azure/cloud-adoption-framework/manage/azure-server-management)
 
-Az összes szolgáltatás esetében automatikus bevezetést, automatikus konfigurálást, a drift figyelését, valamint a drift észlelését követően közvetítjük.
+Ezen szolgáltatások mindegyikében automatikusan bevetjük, automatikusan konfiguráljuk, figyeljük a sodródásokat, és közvetítjük a sodródás észlelése esetén.
 
 
-## <a name="enabling-automanage-for-vms-in-azure-portal"></a>Azure Portal-beli virtuális gépek autokezelésének engedélyezése
+## <a name="enabling-automanage-for-vms-in-azure-portal"></a>A virtuális gépek automatikus Azure Portal
 
-A Azure Portalban engedélyezheti a meglévő virtuális gépeken a felügyeletet, vagy új virtuális gép létrehozásakor. A folyamat tömör lépéseihez tekintse meg a [virtuális gépekkel kapcsolatos](quick-create-virtual-machines-portal.md)gyors útmutató című témakört.
+A Azure Portal engedélyezheti az automatikus automatizációt egy meglévő virtuális gépen, vagy új virtuális gép létrehozásakor. A folyamat rövid lépéseiért tekintse meg a virtuális gépek automatikus feldolgozásának rövid [útmutatóját.](quick-create-virtual-machines-portal.md)
 
-Ha első alkalommal engedélyezi a virtuális gép autofelügyeletét, a Azure Portal kereshet az **automanage – Azure virtuális gépek ajánlott eljárásaiban**. Kattintson a **meglévő virtuális gép engedélyezése** lehetőségre, válassza ki a bevezetni kívánt virtuális gépeket, kattintson a **kiválasztás**, majd az **Engedélyezés** elemre, és készen áll.
+Ha most először engedélyezi az automatikus szolgáltatásokat a virtuális géphez, a virtuális gép automatikus Azure Portal – Azure-beli virtuális gépekre vonatkozó ajánlott eljárások között **kereshet.** Kattintson **az Engedélyezés meglévő** virtuális gépen lehetőségre, válassza ki a virtuális gépeket, amelyekre fel szeretneni, kattintson a Kijelölés elemre, kattintson az **Engedélyezés** elemre, és kész. 
 
-Előfordulhat, hogy a virtuális géppel való kommunikációra csak akkor van szükség, ha a virtuális gépet szervizelni próbáltuk, de ezt a szolgáltatást nem sikerült kijavítani. Ha sikeresen szervizeljük a virtuális gépet, akkor még a riasztás nélkül visszatesszük a megfelelőséget. További részletekért lásd: [virtuális gépek állapota](#status-of-vms).
+Előfordulhat, hogy csak akkor kell kapcsolatba lépnie ezzel a virtuális géptel ezeknek a szolgáltatásoknak a kezeléséhez, ha megpróbáljuk szervizelni a virtuális gépet, de ez nem sikerült. Ha sikeresen szervizelést adtunk a virtuális gépnek, a hiba a riasztás nélkül is megfelelő lesz. További részletekért lásd: [Virtuális gépek állapota.](#status-of-vms)
 
-## <a name="enabling-automanage-for-vms-using-azure-policy"></a>Virtuális gépek autokezelésének engedélyezése Azure Policy használatával
-Emellett a beépített Azure Policy használatával is engedélyezheti a virtuális gépeken a méretezést. A házirend DeployIfNotExists hatással van, ami azt jelenti, hogy a szabályzat hatókörén belül található összes jogosult virtuális gép automatikusan be lesz helyezve a virtuális gépek ajánlott eljárásainak automatikus kezelésére.
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>A virtuális gépek automatikus manage-ének engedélyezése a Azure Policy
+A virtuális gépek automatikus szolgáltatását nagy léptékben is engedélyezheti a beépített Azure Policy. A szabályzat DeployIfNotExists hatást gyakorol, ami azt jelenti, hogy a szabályzat hatókörében található összes jogosult virtuális gép automatikusan elő lesz automatizálva a virtuális gépek automatikus alkalmazásával kapcsolatos ajánlott eljárásokhoz.
 
-A szabályzatra mutató közvetlen hivatkozás [itt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3)található.
+A szabályzatra mutató közvetlen hivatkozás itt [található.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3)
 
 ### <a name="how-to-apply-the-policy"></a>A szabályzat alkalmazása
-1. Kattintson a **hozzárendelés** gombra a házirend-definíció megtekintésekor
-1. Válassza ki azt a hatókört, amelyen alkalmazni kívánja a házirendet (felügyeleti csoport, előfizetés vagy erőforráscsoport lehet)
-1. A **Paraméterek** területen határozza meg az automatikus felügyelet fiók, a konfigurációs profil és a hatás paramétereit (a hatás általában DeployIfNotExists kell legyen)
-    1. Ha nincs automatikusan felügyelt fiókja, [létre kell hoznia egyet](#create-an-automanage-account).
-1. A **szervizelés** alatt jelölje be a "kattintás egy szervizelési feladatra" jelölőnégyzetet. Ez elvégzi az automatikusan végzett felügyeletet.
-1. Kattintson a **felülvizsgálat + létrehozás** lehetőségre, és győződjön meg arról, hogy minden beállítás megfelelő.
+1. A **szabályzatdefiníció** megtekintésekor kattintson a Hozzárendelés gombra
+1. Válassza ki azt a hatókört, amelyre alkalmazni szeretné a szabályzatot (lehet felügyeleti csoport, előfizetés vagy erőforráscsoport)
+1. A **Paraméterek alatt** adja meg az automatikus felügyelet fiókjának, konfigurációs profiljának és hatásának paramétereit (a hatás általában DeployIfNotExists lesz)
+    1. Ha nem fiókja van automatikus automatizálva, létre kell hoznia [egyet.](./automanage-account.md)
+1. A **Szervizelés alatt** jelölje be a "Kattintson egy szervizelési feladatra" jelölőnégyzetet. Ezzel elvégzi az automatikus végrehajtásához szükséges be- és leállítást.
+1. Kattintson **az Áttekintés + létrehozás elemre,** és ellenőrizze, hogy minden beállítás megfelelő-e.
 1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="environment-configuration"></a>Környezet konfigurálása
 
-Ha engedélyezi a virtuális gép autofelügyeletét, akkor szükség van egy környezetre. A környezetek a szolgáltatás alapja. Ők határozzák meg, hogy mely szolgáltatások legyenek bevezetve a gépekre, és hogy milyen mértékben működnek ezek a szolgáltatások.
+Ha engedélyezi az Automatikus automatizálást a virtuális gépen, szükség van egy környezetre. A szolgáltatás alapja a környezetek. Ezek határozzák meg, hogy mely szolgáltatásokhoz adhatja meg a gépeket, és bizonyos mértékig a szolgáltatások konfigurációját is.
 
 ### <a name="default-environments"></a>Alapértelmezett környezetek
 
 Jelenleg két környezet érhető el.
 
-- A **fejlesztési és tesztelési** környezet fejlesztési és tesztelési célú gépekhez készült.
-- **Éles környezet az** éles környezetben.
+- **A Dev/Test-környezet** dev/test gépekhez lett kialakítva.
+- **Az** éles környezet éles környezetben való.
 
-A differenciálás oka az, hogy bizonyos szolgáltatások használata a futó munkaterhelés alapján ajánlott. Egy üzemi gépen például automatikusan bekerül a Azure Backupba. A fejlesztési és tesztelési célú gépek esetében azonban a biztonsági mentési szolgáltatás szükségtelennek számít, mivel a fejlesztési/tesztelési gépek jellemzően alacsonyabb üzleti hatással bírnak.
+Ennek a különbségnek az az oka, hogy bizonyos szolgáltatásokat a futó számítási feladat alapján ajánlunk. Az éles gépeken például automatikusan felveszünk egy Azure Backup. Fejlesztési/tesztelési gépeken azonban szükségtelen lenne a biztonsági mentési szolgáltatás, mivel a Dev/Test gépek általában kisebb hatással vannak az üzletre.
 
 ### <a name="customizing-an-environment-using-preferences"></a>Környezet testreszabása beállítások használatával
 
-A szolgáltatásban elérhető standard szolgáltatások mellett lehetővé tesszük a beállítások bizonyos részhalmazának konfigurálását. Ezek a beállítások a különböző konfigurációs beállításokon belül engedélyezettek. Azure Backup esetében például megadhatja a biztonsági mentés gyakoriságát, valamint a hét azon napját, amely a héten bekövetkezik.
+A standard szolgáltatások mellett a beállítások egy bizonyos részkészletének konfigurálható. Ezek a beállítások számos konfigurációs beállításon belül engedélyezettek. Például az Azure Backup megadhatja a biztonsági mentés gyakoriságát és azt, hogy a hét melyik napján történik.
 
 > [!NOTE]
-> A fejlesztési és tesztelési környezetben a virtuális gépet egyáltalán nem fogjuk biztonsági másolatot készíteni.
+> A Dev/Test-környezetben a virtuális gépről egyáltalán nem lesz biztonságimentés.
 
-Az alapértelmezett környezet beállításait a beállítások között módosíthatja. Itt megtudhatja, hogyan hozhat létre előnyt [itt](virtual-machines-custom-preferences.md).
-
-> [!NOTE]
-> A enivonrment-konfiguráció nem módosítható a virtuális gépen, miközben az automatikus felügyelet engedélyezve van. Le kell tiltania az adott virtuális gép autofelügyeletét, majd újra engedélyeznie kell az automatikusan felügyelt környezetet a kívánt környezettel és beállításokkal.
-
-A résztvevő Azure-szolgáltatások teljes listájáért, és ha támogatják a beállításokat, tekintse meg a következőt:
-- [A Linux-alapú autokezelés](automanage-windows-server.md)
-- [A Windows Server felügyeletének autokezelése](automanage-windows-server.md)
-
-
-## <a name="automanage-account"></a>Fiók autokezelése
-
-Az automatikus felügyelet fiók a biztonsági környezet vagy az az identitás, amely alatt az automatizált műveletek történnek. Általában az automatikus felügyelet fiók lehetőség nem szükséges a kiválasztásához, de ha olyan delegálási forgatókönyv volt, amelyben az erőforrások automatizált felügyeletét szeretné osztani (például két rendszergazda között), ez a beállítás lehetővé teszi az Azure-identitás meghatározását az egyes rendszergazdák számára.
-
-Ha a virtuális gépeken engedélyezi az automanage funkciót, az Azure Portal-élményben az Azure-beli **virtuális gépre vonatkozó ajánlott eljárások** panel speciális legördülő menüje lehetővé teszi az automanage-fiók hozzárendelését vagy manuális létrehozását.
-
-Az automatikusan felügyelt fiók a **közreműködő** és az erőforrás- **házirend közreműködői** szerepkört is megkapja azon előfizetések (ek) számára, amelyek az automatikusan felügyelni kívánt gépet (ka) t tartalmazzák. Ugyanazokat az automatikusan felügyelt fiókokat használhatja a gépeken több előfizetésen keresztül is, ami lehetővé teszi, hogy a fiók **közreműködői** és az **erőforrás-házirend közreműködői** engedélyeit az összes előfizetésre vonatkozóan megadja.
-
-Ha a virtuális gép egy másik előfizetéshez tartozó Log Analytics munkaterülethez csatlakozik, az automatikusan felügyelt fiók a **közreműködő** és az **erőforrás-házirend közreműködőjét** is megadja a másik előfizetésben.
-
-Ha új automanage-fiókkal engedélyezi az autofelügyeletet, az előfizetéséhez a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
-
-Ha egy meglévő automanage-fiókkal engedélyezi az autofelügyeletet, rendelkeznie kell a **közreműködő** szerepkörrel a virtuális gépeket tartalmazó erőforráscsoporthoz.
+Az alapértelmezett környezet beállításait a beállítások segítségével módosíthatja. Itt megtudhatja, hogyan hozhat létre [előnyben részesítő beállításokat.](virtual-machines-custom-preferences.md)
 
 > [!NOTE]
-> Ha letiltja az ajánlott eljárások autofelügyeletét, az automatikusan kezeli a fiók engedélyeit a társított előfizetésekben. Manuálisan távolítsa el az engedélyeket az előfizetés IAM oldalára kattintva, vagy törölje az automanage-fiókot. Az automanage fiók nem törölhető, ha továbbra is kezeli a gépeket.
+> Az automatikus kezelés engedélyezése közben a virtuális gép enivonrment konfigurációja nem változtatható meg. Le kell tiltania a virtuális gép automatikus szolgáltatását, majd újra engedélyeznie kell az automatikus et a kívánt környezetben és beállításokban.
 
-### <a name="create-an-automanage-account"></a>Felügyelet nélküli fiók létrehozása
-A portál vagy egy ARM-sablon használatával létrehozhat egy automanage-fiókot.
+A részt vevő Azure-szolgáltatások teljes listáját és ha támogatják a beállításokat, tekintse meg a következőt:
+- [Automatikus automatizálás Linux rendszeren](automanage-windows-server.md)
+- [Automatikus automatizálás a Windows Serveren](automanage-windows-server.md)
 
-#### <a name="portal"></a>Portál
-1. Navigáljon a portál **automanage (felügyelet** ) paneljére
-1. Kattintson **a meglévő gép engedélyezése** lehetőségre.
-1. A **speciális** alatt kattintson az "új fiók létrehozása" elemre.
-1. Töltse ki a kötelező mezőket, majd kattintson a **Létrehozás** gombra.
 
-#### <a name="arm-template"></a>ARM-sablon
-Mentse a következő ARM-sablont, `azuredeploy.json` és futtassa a következő parancsot: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
+## <a name="automanage-account"></a>Fiók automatikus létrehozása
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "automanageAccountName": {
-            "type": "String"
-        },
-        "location": {
-            "type": "String"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2020-06-30-preview",
-            "type": "Microsoft.Automanage/accounts",
-            "name": "[parameters('automanageAccountName')]",
-            "location": "[parameters('location')]",
-            "identity": {
-                "type": "SystemAssigned"
-            }
-        }
-    ]
-}
-```
+Az automatikus felügyelet fiókja az a biztonsági környezet vagy identitás, amelyben az automatikus műveletek le vannak végezve. A fiók automatikus kezelése lehetőség kiválasztása általában nem szükséges, de ha olyan delegálásról van szó, amelyben el szeretné osztani az erőforrások automatikus felügyeletét (például két rendszergazda között), az engedélyezés folyamatában az Automatikus fiókkezelés lehetőséggel azure-identitást határozhat meg az egyes rendszergazdák számára.
 
-## <a name="status-of-vms"></a>Virtuális gépek állapota
+Ha többet szeretne megtudni az automatikus fiókról és a fiók létrehozásáról, olvassa el a fiók [automatikusmanitálása dokumentumot.](./automanage-account.md)
 
-A Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális gépek ajánlott eljárásai** lapot, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Itt láthatja az egyes virtuális gépek általános állapotát.
+## <a name="status-of-vms"></a>A virtuális gépek állapota
+
+A Azure Portal az **Automanage – Azure virtual machine best practices (Az** Azure-beli virtuális gépek automatikus kezelése – Azure-beli virtuális gépek ajánlott eljárásai) lapra, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Itt láthatja az egyes virtuális gépek általános állapotát.
 
 :::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="A konfigurált virtuális gépek listája.":::
 
-Az egyes felsorolt virtuális gépeknél a következő adatok jelennek meg: név, környezet, konfigurációs beállítások, állapot, operációs rendszer, fiók, előfizetés és erőforráscsoport.
+Minden felsorolt virtuális géphez a következő adatok jelennek meg: Név, Környezet, Konfigurációs beállítások, Állapot, Operációs rendszer, Fiók, Előfizetés és Erőforráscsoport.
 
-Az **állapot** oszlopban a következő állapotok jelenhetnek meg:
-- *Folyamatban* – a virtuális gép csak engedélyezve van, és konfigurálva van
-- *Konfigurálva* – a virtuális gép konfigurálva van, és nem észlelhető eltolódás
-- *Sikertelen* – a virtuális gép átsodródott, ezért nem sikerült elhárítani
-- *Függőben* – a virtuális gép jelenleg nem fut, és az automanage megkísérli a virtuális gép bevezetését vagy szervizelését, amikor a következő fut
+Az **Állapot oszlopban** a következő állapotok jelennek meg:
+- *Folyamatban –* a virtuális gép csak most lett engedélyezve, és konfigurálva van
+- *Konfigurálva –* a virtuális gép konfigurálva van, és nem észlelhető eltérés
+- *Sikertelen* – a virtuális gép sodródott, és nem sikerült orvosolni
+- *Függőben* – a virtuális gép jelenleg nem fut, és az Automanage megpróbálja a következő futtatáskor megkísérelni a virtuális gép beállítását vagy szervizelét
 
-Ha az **állapotot** *nem sikerült* megtekinteni, a virtuális gép által használt erőforráscsoport használatával elháríthatja a telepítést. Lépjen az **erőforráscsoportok** elemre, válassza ki az erőforráscsoportot, kattintson a **központi telepítések** elemre, és tekintse meg a *hibás* állapotot a hiba részleteivel együtt.
+Ha a Sikertelen **állapotot** *látja,* az üzembe helyezés hibaelhárítását az erőforráscsoporton keresztül háríthatja el, amely a virtuális géphez tartozik. Az **Erőforráscsoportok menüben** válassza ki  az erőforráscsoportot, kattintson az Üzemelő példányok elemre, és itt tekintse meg a Sikertelen állapotot a hiba részleteivel együtt. 
 
 
-## <a name="disabling-automanage-for-vms"></a>Virtuális gépek autokezelésének letiltása
+## <a name="disabling-automanage-for-vms"></a>Virtuális gépek automatikus automatizálásának letiltása
 
-Dönthet úgy is, hogy egy nap elteltével letiltja az automanage szolgáltatást bizonyos virtuális gépeken. Előfordulhat például, hogy a gép valamilyen rendkívül érzékeny biztonságos munkaterhelést futtat, és az Azure-nál még nagyobb mértékben le kell zárnia azt, ezért az Azure ajánlott eljárásain kívül kell konfigurálnia a gépet.
+Dönthet úgy, hogy egy napon letiltja az automatikus automatizálódást bizonyos virtuális gépeken. A gépe például rendkívül bizalmas, biztonságos számítási feladatot futtat, és az Azure-ban természetes módon végzettnél is tovább kell zárolnia, ezért a gépet az Azure ajánlott eljárásaitól különböző módon kell konfigurálnia.
 
-Ehhez a Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális gépek ajánlott eljárásai** lapot, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Jelölje be az **automanagement** szolgáltatásból letiltani kívánt virtuális gép melletti jelölőnégyzetet, majd kattintson az önfelügyelet letiltása gombra.
+Ezt az automatikus Azure Portal automatikus kezelése –  Azure-beli virtuális gépekre vonatkozó ajánlott eljárások oldalon tudja megtenni, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Jelölje be a jelölőnégyzetet a virtuális gép mellett, amelyről le szeretné tiltani az Automatikusmanage-et, majd kattintson az **Automatikusmanagálás letiltása gombra.**
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="A virtuális gépeken az automanage szolgáltatás letiltása.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Az automatikus automatizáció letiltása egy virtuális gépen.":::
 
-A **Letiltás** előtt olvassa el figyelmesen az üzenetküldést az eredményül kapott előugró ablakban.
+A Disable (Letiltás) engedélyezése előtt olvassa el figyelmesen az üzenetkezelést az eredményül kapott **előugró ablakban.**
 
 > [!NOTE]
-> A virtuális gépeken az automanagement letiltása a következő viselkedést eredményezi:
+> Ha letiltja az automatikus adatokat egy virtuális gépen, az a következő viselkedést követi:
 >
-> - A virtuális gép és a hozzájuk tartozó szolgáltatások konfigurációja nem változik.
-> - A szolgáltatásokban felmerülő költségek számlázandóek maradnak, és továbbra is felmerülnek.
-> - Az automanage viselkedés azonnal leáll.
+> - A virtuális gép konfigurációja és az azt bevetett szolgáltatások nem változnak.
+> - A szolgáltatásokért fizetendő díjak továbbra is számlázhatók, és továbbra is felmerülnek.
+> - A sodródás automatikus felügyelete azonnal leáll.
 
 
-Az első és legfontosabb, hogy a virtuális gépet minden olyan szolgáltatásból kiállítjuk, amelyet a be-és kiállítottunk. Így a szolgáltatásokban felmerülő költségek továbbra is számlázva maradnak. Szükség esetén ki kell jelentkeznie a táblából. Az automanage viselkedés azonnal leáll. Például a rendszer nem figyeli a virtuális gépet a drifthez.
+Mindenekelőtt nem fogjuk kiveszni a virtuális gépet az összes olyan szolgáltatásból, amelybe a virtuális gépet beállította és beállította. Így az ezen szolgáltatásokért fizetendő díjak továbbra is számlázhatók maradnak. Szükség esetén ki kellni a táblából. Az automanage viselkedés azonnal leáll. A továbbiakban például nem figyeljük a virtuális gép eltérését.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, hogy a Virtual Machines szolgáltatás automatikusan felügyeli az Azure-szolgáltatások ajánlott eljárásainak ismeretét, bevezetését és konfigurálásának szükségességét. Emellett, ha a virtuális gépek automatikus felügyeletére szolgáló gép a környezet beállításával sodródik, a rendszer automatikusan visszaküldi a megfelelőséget.
+Ebben a cikkben megtanulta, hogy az Automanage for virtual machines olyan eszközt kínál, amellyel nem kell az Azure-szolgáltatásokat ismernünk, bevetnünk és konfigurálnunk. Emellett ha egy gép, amelynél az Automanage for Virtual Machines szolgáltatáshoz van előállítva, és nem felel meg a környezet beállításának, a rendszer automatikusan visszaveszi a megfelelőséget.
 
-Próbálja meg engedélyezni a Azure Portalban található virtuális gépek autofelügyeletét.
+Próbálja meg engedélyezni a virtuális gépek automatikus Azure Portal.
 
 > [!div class="nextstepaction"]
-> [A virtuális gépek autofelügyeletének engedélyezése a Azure Portalban](quick-create-virtual-machines-portal.md)
+> [A virtuális gépek automatikus automatizálásának engedélyezése a Azure Portal](quick-create-virtual-machines-portal.md)

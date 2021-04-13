@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 774eb05ae43e393db3d11e8e21a427736614809b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a37b740333e599d19248ffa9b21be3e4d6fe78b3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285110"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306296"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -25,7 +25,7 @@ A Computer Vision egyes funkciói több nyelvet támogatnak; az itt nem említet
 
 Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi kód megadását. További információért lásd az [optikai karakterfelismerés (OCR) áttekintését](overview-ocr.md) .
 
-|Nyelv| Nyelvkód | OCR API | Olvasási 3.0/3.1 | A v 3.2 előzetes verziójának olvasása |
+|Nyelv| Nyelvkód | OCR API | Olvasási 3.0/3.1 | A v 3.2 olvasása |
 |:-----|:----:|:-----:|:---:|:---:|
 |búr|`af`| | |✔ |
 |albán |`sq`| | |✔ |
@@ -46,7 +46,7 @@ Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi k�
 |Dán | `da` |✔ | |✔ |
 |Holland | `nl` |✔ |✔ |✔ |
 |Angol | `en` |✔ |✔ |✔ |
-|Észt  |`crh`| | |✔ |
+|Észt  |`et`| | |✔ |
 |Fidzsi |`fj`| | |✔ |
 |Filipino  |`fil`| | |✔ |
 |finn | `fi` |✔ | |✔ |
@@ -113,7 +113,7 @@ Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi k�
 
 Az [elemzés-rendszerkép](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API egyes műveletei más nyelveket is visszaadhatnak a `language` lekérdezési paraméterrel megadottak szerint. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a és a `visualFeatures` `details` lekérdezési paraméterekkel vannak megadva. az [áttekintést](overview-image-analysis.md) a képelemzéssel elvégezhető műveletek listájáról tekintheti meg.
 
-|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
+|Nyelv | Nyelvkód | Kategóriák | Címkék | Description | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

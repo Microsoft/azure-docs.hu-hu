@@ -8,13 +8,15 @@
 - name: Fogalmak
   expanded: true
   items:
-    - name: A Linux-alapú autokezelés
+    - name: Automatikus alkalmazás-automatizálás Linux rendszeren
       href: automanage-linux.md
-    - name: A Windows Server felügyeletének autokezelése
+    - name: Automatikus automatizálás a Windows Serveren
       href: automanage-windows-server.md
       items:
-        - name: HotPatching melletti telepítéséről az új virtuális gépekhez
+        - name: Gyorsjavítás új virtuális gépekhez
           href: automanage-hotpatch.md
+    - name: Fiók automatikus létrehozása
+      href: automanage-account.md
 - name: Útmutató
   expanded: true
   items:
@@ -22,11 +24,13 @@
       href: virtual-machines-custom-preferences.md
     - name: Engedélyezés virtuális gépeken az Azure Policy segítségével
       href: virtual-machines-policy-enable.md
-    - name: Bevezetési hibák elhárítása
+    - name: Engedélyezés virtuális gépeken ARM-sablonon keresztül
+      href: arm-deploy.md
+    - name: A telepítési hibák elhárítása
       href: common-errors.md
     - name: Sérült Automanage-fiókok javítása
       href: repair-automanage-account.md
-    - name: Egy autofelügyelt virtuális gép áthelyezése régiók között
+    - name: Automatikusan géppel nemizált virtuális gép áthelyezése régiók között
       href: move-automanaged-vms.md
 - name: További források
   expanded: true

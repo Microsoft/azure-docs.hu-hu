@@ -11,17 +11,17 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc81e0b5a2b7e9e2e5ab12094950f71ad51c6871
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: af4eaa5912cdf7463c81f501d71b69e934f8febb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107225971"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306007"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Mi az Azure AD Connect Cloud Sync?
 Azure AD Connect a Cloud Sync a Microsoft új ajánlása, amely a felhasználók, csoportok és névjegyek Azure AD-be való szinkronizálásához készült hibrid identitási célok teljesítésére és megvalósítására lett tervezve.  Ezt a Azure AD Connect alkalmazás helyett az Azure AD Cloud kiépítési ügynök használatával hajtja végre.  Azonban Azure AD Connect szinkronizálással is használható, és a következő előnyöket biztosítja:
     
-- Azure AD-bérlők többerdős kapcsolattal való szinkronizálásának támogatása Active Directory Forest-környezetből: a gyakori forgatókönyvek közé tartozik az egyesítés & a beszerzés, ahol a beszerzett vállalat AD-erdők el vannak különítve a szülő vállalat AD-erdőkből és olyan vállalatoktól, amelyeknek történelmileg több AD-erdője van.
+- Azure AD-bérlők közötti, többerdős kapcsolattal Active Directory erdő-környezettel való szinkronizálás támogatása: a gyakori forgatókönyvek közé tartozik az egyesítés & beszerzése (ahol a beszerzett vállalat AD-erdők el vannak különítve a szülő vállalat AD-erdőkből), és a vállalatoknak, amelyeknek történelmileg több AD-erdője van.
 - Egyszerűsített telepítés kis teljesítményű kiépítési ügynökökkel: az ügynökök az AD-ből az Azure AD-ből származó hidakként működnek, és a felhőben kezelt összes szinkronizálási konfigurációval rendelkeznek. 
 - Több kiépítési ügynök használható a magas rendelkezésre állású üzemelő példányok leegyszerűsítéséhez, különösen kritikus fontosságú az AD és az Azure AD közötti jelszó-kivonatolási szinkronizálást használó szervezetek számára.
 - Nagyméretű csoportok támogatása akár 50 000 taggal. A nagyméretű csoportok szinkronizálásakor ajánlott csak a szervezeti egység hatókörű szűrőjét használni.
@@ -30,7 +30,7 @@ Azure AD Connect a Cloud Sync a Microsoft új ajánlása, amely a felhasználók
 ![Mi az az Azure AD Connect?](media/what-is-cloud-sync/architecture-1.png)
 
 ## <a name="how-is-azure-ad-connect-cloud-sync-different-from-azure-ad-connect-sync"></a>Miben különbözik az Azure AD Connect Cloud Sync Azure AD Connect synctől?
-Azure AD Connect Cloud Sync használatával az AD-ből az Azure AD-be való kiépítés a Microsoft Online Services szolgáltatásban történik. Egy szervezetnek csak a helyszíni és a IaaS üzemeltetett környezetében kell üzembe helyeznie egy egyszerű ügynököt, amely az Azure AD és az AD közötti hidat képez. A létesítési konfiguráció az Azure AD-ben tárolódik, és a szolgáltatás részeként van kezelve.
+Azure AD Connect Cloud Sync használatával az AD-ből az Azure AD-be való kiépítés a Microsoft Online Services szolgáltatásban történik. Egy szervezetnek csak a helyszíni vagy IaaS üzemelő környezetében kell központilag telepítenie egy olyan, az Azure AD és az AD közötti hidat kezelő, kis súlyú ügynököt. A létesítési konfiguráció az Azure AD-ben tárolódik, és a szolgáltatás részeként van kezelve.
 
 ## <a name="azure-ad-connect-cloud-sync-video"></a>Azure AD Connect Cloud Sync videó
 A következő rövid videó kiváló áttekintést nyújt a Azure AD Connect Cloud Sync szolgáltatásról:

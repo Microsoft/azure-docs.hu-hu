@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b260793cc3c0b5ac3ffce8fac909e2db8991c713
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626707"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307809"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára az Azure Cognitive Search használatával
 
@@ -67,7 +67,7 @@ A válaszok a kérelem paramétereinek alapján vannak formázva:
 
 + Az automatikus kiegészítés beállításnál állítsa be a [autocompleteMode](/rest/api/searchservice/autocomplete#query-parameters) annak megállapítására, hogy a szöveg befejezése egy vagy két kifejezésen történik-e. 
 
-+ A javaslatok beállításnál állítsa be a [$Select](/rest/api/searchservice/suggestionse#query-parameters) értéket, amely egyedi vagy megkülönböztető értékeket (például neveket és leírást) tartalmazó mezőket ad vissza. Kerülje az ismétlődő értékeket (például kategóriát vagy várost) tartalmazó mezőket.
++ A javaslatok beállításnál állítsa be a [$Select](/rest/api/searchservice/suggestions#query-parameters) értéket, amely egyedi vagy megkülönböztető értékeket (például neveket és leírást) tartalmazó mezőket ad vissza. Kerülje az ismétlődő értékeket (például kategóriát vagy várost) tartalmazó mezőket.
 
 A következő további paraméterek is érvényesek az automatikus kiegészítésre és a javaslatokra, de talán a javaslatoknál nagyobb szükség van rá, különösen akkor, ha egy javaslat több mezőt is tartalmaz.
 

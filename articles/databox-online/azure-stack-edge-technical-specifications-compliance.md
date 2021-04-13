@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91bb558d47e56ebbcbdf25b0276c2a247ec81b47
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460293"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312637"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro technikai specifikációi
 
@@ -23,16 +23,21 @@ Az Microsoft Azure Stack Edge Pro-eszköz hardveres összetevői megfelelnek a j
 
 Az Azure Stack Edge Pro-eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
 
-| Specifikáció           | Érték                  |
-|-------------------------|----------------------------|
-| CPU    | 2 X 10 mag CPU Intel Xeon Silver 4114 2.2 G                    |
-| Memória              | 128 GB RAM (8x 16GB RDIMM)                 |
+| Specifikáció           | Érték                             |
+|-------------------------|-----------------------------------|
+| CPU-típus                | Dual Intel Xeon Silver 4114 2,2 G |
+| CPU: nyers                | 20 összes mag, 40 összesen vCPU    |
+| CPU: felhasználható             | 32 vCPU                          |
+| Memória típusa             | 8 x 16 GB RDIMM                   |
+| Memória: nyers             | 128 GB RAM (8 x 16 GB)           |
+| Memória: felhasználható          | 102 GB RAM                        |
+
 
 ## <a name="fpga-specifications"></a>FPGA-specifikációk
 
 A rendszer minden olyan Azure Stack Edge Pro-eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely Machine Learning (ML) forgatókönyveket tesz lehetővé.
 
-| Specifikáció           | Érték                  |
+| Specifikáció           | Érték                      |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure).|
 
@@ -42,7 +47,7 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximális kimeneti teljesítmény    | 750 W                     |
+| Maximális kimeneti teljesítmény    | 750 W                      |
 | Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
 | Gyors csatlakoztatás           | Yes                        |
@@ -60,13 +65,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Azure Stack Edge Pro-eszközének 6 hálózati adaptere van, a PORT1-PORT6.
 
-| Specifikáció           | Leírás                 |
+| Specifikáció           | Description                 |
 |-------------------------|----------------------------|
 |  Hálózati adapterek    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
 
-A használt hálózati adapterek a következők: 
+A használt hálózati adapterek a következők:
 
-| Specifikáció           | Leírás                 |
+| Specifikáció           | Description                 |
 |-------------------------|----------------------------|
 |Hálózati lánya kártya (rNDC) |QLogic FastLinQ 41264 Dual port 25GbE SFP +, Dual port 1 GbE, rNDC|
 |PCI hálózati adapter |QLogic FastLinQ 41262 Zwei-portok 25Gbit/s SFP28 adapter|
@@ -82,7 +87,7 @@ Az Azure Stack Edge Pro-eszközök 9 X 2,5 "NVMe SSD-k rendelkeznek, amelyek min
 |    SSD-meghajtók száma     |    8                  |
 |    Egyetlen SSD-kapacitás                     |    1,6 TB             |
 |    Teljes kapacitás                          |    12,8 TB            |
-|    Teljes felhasználható kapacitás *                  |    ~ 12,5 TB            |
+|    Teljes felhasználható kapacitás *                  |    ~ 12,5 TB          |
 
 **Bizonyos területek belső használatra vannak fenntartva.*
 
@@ -94,19 +99,19 @@ A következő táblázatok a méretek és a súlyozás különböző területekr
 
 A következő táblázat a ház dimenzióit mutatja milliméterben és hüvelykben.
 
-|     Ház     |     Milliméter     |     Hüvelyk     |
-|-------------------|---------------------|----------------|
-|    Magasság         |    44,45            |    1,75 "          |
-|    Szélesség          |    434,1           |    17,09 "          |
-|    Hossz          |    740,4           |    29,15 "          |
+|     Ház     |     Milliméter    |     Hüvelyk     |
+|-------------------|--------------------|----------------|
+|    Magasság         |    44,45           |    1,75 "       |
+|    Szélesség          |    434,1           |    17,09 "      |
+|    Hossz         |    740,4           |    29,15 "      |
 
 A következő táblázat a szállítási csomag dimenzióit mutatja be milliméterben és hüvelykben.
 
-|     Csomag     |     Milliméter     |     Hüvelyk     |
+|     Csomag       |     Milliméter     |     Hüvelyk     |
 |-------------------|---------------------|----------------|
-|    Magasság         |    311,2            |    12,25 "          |
-|    Szélesség          |    642,8          |    25,31 "          |
-|    Hossz          |   1 051,1          |    41,38 "          |
+|    Magasság         |    311,2            |    12,25 "      |
+|    Szélesség          |    642,8            |    25,31 "      |
+|    Hossz         |   1 051,1           |    41,38 "      |
 
 ### <a name="enclosure-weight"></a>Ház súlya
 

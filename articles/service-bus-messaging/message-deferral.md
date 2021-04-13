@@ -4,12 +4,12 @@ description: Ez a cikk elmagyarázza, hogyan késleltetheti Azure Service Bus ü
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 997aab36652b08864892f1171e2b8588ec5f06b4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622045"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306109"
 ---
 # <a name="message-deferral"></a>Üzenetek halasztása
 
@@ -22,7 +22,7 @@ Egy egyszerű szemléltető példa egy olyan sorrend-feldolgozási folyamat, ame
 Végső soron a késleltető támogatások az üzenetek érkezési sorrendjéből való átrendezésének sorrendjét a feldolgozható sorrendben, miközben az üzenetek biztonságosan elhagyják az üzenetet tárolóban, hogy melyik feldolgozást kell elhalasztani.
 
 > [!NOTE]
-> A késleltetett üzenetek a [lejárat után](./service-bus-dead-letter-queues.md#exceeding-timetolive)nem lesznek automatikusan áthelyezve a kézbesítetlen levelek várólistára. Ez a viselkedés a tervezés szerint történik.
+> A késleltetett üzenetek a [lejárat után](./service-bus-dead-letter-queues.md#time-to-live)nem lesznek automatikusan áthelyezve a kézbesítetlen levelek várólistára. Ez a viselkedés a tervezés szerint történik.
 
 ## <a name="message-deferral-apis"></a>Üzenet halasztási API-jai
 

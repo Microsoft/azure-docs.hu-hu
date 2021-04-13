@@ -3,12 +3,12 @@ title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
 ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb20509fe6d699050e0c98e82873ccdb6a0137b2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598490"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313691"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -141,7 +141,7 @@ A házirend-definíció létrehozásához kövesse az alábbi eljárást.
 
    Cserélje le az előző {subscriptionId} azonosítót az előfizetés azonosítójával vagy {managementGroupId} a [felügyeleti csoportjának](../../management-groups/overview.md)azonosítójával.
 
-   További információ a lekérdezés struktúrájáról: [Azure Policy definíciók – létrehozás vagy frissítés](/rest/api/resources/policydefinitions/createorupdate) és [szabályzat-definíciók – létrehozás vagy frissítés a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   További információ a lekérdezés struktúrájáról: [Azure Policy definíciók – létrehozás vagy frissítés](/rest/api/policy/policydefinitions/createorupdate) és [szabályzat-definíciók – létrehozás vagy frissítés a felügyeleti csoportban](/rest/api/policy/policydefinitions/createorupdateatmanagementgroup)
 
 A következő eljárással hozhat létre szabályzat-hozzárendelést, és hozzárendelheti a házirend-definíciót az erőforráscsoport szintjén.
 

@@ -30,8 +30,8 @@ highlightedContent:
 productDirectory:
   title: Tekintse át az Azure-termékeket
   items:
-    - title: Azure-Percept
-      summary: Peremhálózati intelligencia a szilíciumból a szolgáltatásba
+    - title: Azure Percept
+      summary: Élintelligencia a szilíciumtól a szolgáltatásig
       imageSrc: ./media/index/azure-percept.svg
       azureCategories:
         - iot
@@ -71,8 +71,8 @@ productDirectory:
         - ai-machine-learning
         - analytics
       url: /azure/databricks/
-    - title: Állapotú robot
-      summary: Felügyelt szolgáltatás célja – a virtuális egészségügyi asszisztensek fejlesztéséhez készült.
+    - title: Állapot robot
+      summary: 'Egy felügyelt szolgáltatás, amely virtuális egészségügyi asszisztensek fejlesztésére lett kiépítve.'
       imageSrc: media/index/health-bot-logo.svg
       azureCategories:
         - ai-machine-learning
@@ -408,8 +408,8 @@ productDirectory:
         - databases
         - iot
       url: cosmos-db/index.yml
-    - title: Azure felügyelt példány az Apache Cassandra-hoz
-      summary: A felügyelt nyílt forráskódú Apache Cassandra-adatközpontok üzembe helyezésének és méretezésének automatizálása
+    - title: Felügyelt Azure-példány az Apache Cassandrában
+      summary: 'Felügyelt, nyílt forráskódú Apache Cassandra-adatközpontok üzembe helyezésének és méretezésének automatizálása'
       imageSrc: ./media/index/managed-instance-apache-cassandra.svg
       azureCategories:
         - databases
@@ -469,7 +469,7 @@ productDirectory:
         - containers
       url: aks/index.yml
     - title: Azure Quantum (előzetes verzió)
-      summary: Az Azure-ban még ma is tapasztalhatja a kvantum-hatást
+      summary: A kvantumhatások ma az Azure-ban
       imageSrc: ./media/index/quantum.svg
       azureCategories:
         - compute
@@ -714,12 +714,6 @@ productDirectory:
       azureCategories:
         - developer-tools
       url: 'https://code.visualstudio.com/docs'
-    - title: Visual Studio Codespaces (előzetes verzió)
-      summary: Bárhonnan elérhető felhőbeli fejlesztési környezetek
-      imageSrc: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-      azureCategories:
-        - developer-tools
-      url: /visualstudio/online/overview/what-is-vsonline
     - title: Application Insights
       summary: 'Teljes megfigyelhetőséget eredményez az alkalmazásaiban, infrastruktúrájában és hálózatán'
       imageSrc: 'https://static.docs.com/ui/media/product/azure/application-insights.svg'
@@ -1097,8 +1091,8 @@ productDirectory:
         - migration
         - storage
       url: databox/index.yml
-    - title: Objektum-horgonyok (előzetes verzió)
-      summary: 3D tartalom automatikus igazítása és rögzítése a fizikai világban lévő objektumokhoz
+    - title: Object Anchors (előzetes verzió)
+      summary: 3D-tartalom automatikus igazítása és rögzítése a fizikai világ objektumaihoz
       imageSrc: ./media/index/object-anchors.svg
       azureCategories:
         - mixed-reality
@@ -1205,7 +1199,7 @@ productDirectory:
         - networking
       url: load-balancer/index.yml
     - title: Azure Route Server (előzetes verzió)
-      summary: A hálózati berendezések működtetésének leegyszerűsítése
+      summary: A hálózati berendezések üzemeltetési felügyeletének egyszerűsítése
       imageSrc: ./media/index/azure-route-server.svg
       azureCategories:
         - networking
@@ -1380,9 +1374,9 @@ additionalContent:
           url: /azure/china/
     - title: Partneri megoldások
       items:
-        - title: Azure partneri megoldások
-          summary: 'Integrált partneri megoldások, amelyeket az Azure-ban használhat a felhőalapú infrastruktúra fejlesztéséhez.'
+        - title: Azure-partnermegoldások
+          summary: 'Integrált partnermegoldások, amelyek segítségével továbbfejlesztheti a felhőalapú infrastruktúrát az Azure-ban.'
           url: ./partner-solutions/overview.md
         - title: Kereskedelmi piactér
-          summary: Független szoftvergyártói partnereinktől származó alkalmazások és szolgáltatások online piactére.
+          summary: Független szoftverszállítói (ISV-) partnerektől származó alkalmazások és szolgáltatások online piactere.
           url: ./marketplace/index.yml

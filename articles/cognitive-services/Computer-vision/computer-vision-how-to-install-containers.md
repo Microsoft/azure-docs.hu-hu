@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: helyszíni, OCR, Docker, tároló
-ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285722"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308776"
 ---
-# <a name="install-read-ocr-docker-containers-preview"></a>Az OCR Docker-tárolók beolvasása (előzetes verzió) 
+# <a name="install-read-ocr-docker-containers"></a>Az OCR Docker-tárolók beolvasása
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -27,12 +27,9 @@ A tárolók lehetővé teszik a Computer Vision API-k a saját környezetében v
 
 Az *olvasási* OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ: az [API-k olvasása útmutató](Vision-API-How-to-Topics/call-read-api.md).
 
-## <a name="read-32-preview-container"></a>Olvasás 3,2 – előzetes verzió tárolója
+## <a name="read-32-container"></a>3,2-tároló olvasása
 
-> [!NOTE]
-> A Read 3,0 – Preview tároló elavult. 
-
-Az olvasási 3,2 – előzetes verziójú OCR-tároló a következőket biztosítja:
+Az olvasási 3,2 OCR-tároló a következőket biztosítja:
 * Új modellek a nagyobb pontosság érdekében.
 * Több nyelv támogatása ugyanazon a dokumentumon belül.
 * Összesen 73 nyelv támogatása. Tekintse meg az [OCR által támogatott nyelvek](./language-support.md#optical-character-recognition-ocr)teljes listáját.
@@ -62,7 +59,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/csgate) a tároló futtatásához jóváhagyás kéréséhez. 
 
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to run the container](../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -92,16 +89,16 @@ Az olvasáshoz tároló lemezképek érhetők el.
 | Tároló | Container Registry/adattár/rendszerkép neve |
 |-----------|------------|
 | Olvasás 2,0 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Olvasás 3,2 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
+| Olvasási 3,2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 
 A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) parancs használatával töltse le a tárolók rendszerképét.
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>Docker-lekérés az olvasási OCR-tárolóhoz
 
-# <a name="version-32-preview"></a>[3,2-es verzió – előzetes verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
 ```
 
 # <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
@@ -127,11 +124,11 @@ A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engi
 
 [](computer-vision-resource-container-config.md#example-docker-run-commands) A parancs például `docker run` elérhető.
 
-# <a name="version-32-preview"></a>[3,2-es verzió – előzetes verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -189,9 +186,9 @@ A kapcsolódási karakterlánc megkeresése:
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt. 
 
-# <a name="version-32-preview"></a>[3,2-es verzió – előzetes verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
 
-A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A hencegő útvonalat a következő helyen tekintheti meg: `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` .
+A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A hencegő útvonalat a következő helyen tekintheti meg: `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` .
 
 # <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
 
@@ -202,7 +199,7 @@ A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A henceg
 ### <a name="asynchronous-read"></a>Aszinkron olvasás
 
 
-# <a name="version-32-preview"></a>[3,2-es verzió – előzetes verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
 
 A `POST /vision/v3.2/read/analyze` koncerten a és a `GET /vision/v3.2/read/operations/{operationId}` műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan értéket ad vissza, `operationId` amely a HTTP Get kérelem termékazonosító szolgál.
 
@@ -398,7 +395,7 @@ A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával ér
 
 A következő művelettel lehet szinkronban olvasni egy rendszerképet. 
 
-# <a name="version-32-preview"></a>[3,2-es verzió – előzetes verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
 
 `POST /vision/v3.2/read/syncAnalyze` 
 
@@ -443,7 +440,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 Ebben a cikkben megtanulta Computer Vision tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
 * A Computer Vision egy Linux-tárolót biztosít a Docker számára, és beolvassa a beágyazást.
-* A Container images letölthető a "Container Preview" tároló-beállításjegyzékből az Azure-ban.
+* Az olvasási tároló rendszerképének futtatásához alkalmazás szükséges. 
 * A tároló lemezképei a Docker-ben futnak.
 * Használhatja a REST API vagy az SDK-t az olvasási OCR-tárolóban végzett műveletek meghívásához a tároló gazda URI azonosítójának megadásával.
 * A tárolók létrehozásakor számlázási adatokat kell megadnia.

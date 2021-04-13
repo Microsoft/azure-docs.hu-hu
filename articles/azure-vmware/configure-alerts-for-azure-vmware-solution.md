@@ -3,16 +3,16 @@ title: Riasztások konfigurálása és mérőszámok használata az Azure VMware
 description: Ismerje meg, hogyan fogadhat értesítéseket a riasztások használatával. Azt is megtudhatja, hogyan dolgozhat a mérőszámokkal, hogy mélyebb betekintést nyerjen az Azure VMware-megoldás saját felhőbe.
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: f021662658399111187e9963fc5caec434fabf4a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096795"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309628"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Azure-riasztások konfigurálása az Azure VMware-megoldásban 
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat [Azure-műveleti csoportokat](/azure/azure-monitor/alerts/action-groups) [Microsoft Azure riasztásokban](/azure/azure-monitor/alerts/alerts-overvie) , hogy fogadja az Ön által meghatározott aktivált események értesítéseit. Azt is megismerheti, [Azure monitor metrikák](/azure/azure-monitor/essentials/data-platform-metrics) használatával mélyebb információkhoz juthat az Azure VMware-megoldás privát felhőben.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat [Azure-műveleti csoportokat](/azure/azure-monitor/alerts/action-groups) [Microsoft Azure riasztásokban](/azure/azure-monitor/alerts/alerts-overview) , hogy fogadja az Ön által meghatározott aktivált események értesítéseit. Azt is megismerheti, [Azure monitor metrikák](/azure/azure-monitor/essentials/data-platform-metrics) használatával mélyebb információkhoz juthat az Azure VMware-megoldás privát felhőben.
 
 
 ## <a name="supported-metrics-and-activities"></a>Támogatott mérőszámok és tevékenységek

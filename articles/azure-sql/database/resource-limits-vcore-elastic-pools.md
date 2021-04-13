@@ -10,25 +10,36 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 03/23/2021
-ms.openlocfilehash: fa21acc09858f4468e53788428e4928dc381a94e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 1d58f79d0fe8accc728c4484dd5d92159836aa88
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107856"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305140"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ez a cikk részletes erőforrás-korlátokat biztosít a rugalmas készletek és a készletezett adatbázisok Azure SQL Database a virtuális mag beszerzési modell használatával.
 
-A DTU megvásárlására vonatkozó korlátokat lásd: [SQL Database DTU erőforrás-korlátok – rugalmas készletek](resource-limits-dtu-elastic-pools.md).
+* A kiszolgálón található önálló adatbázisokra vonatkozó DTU megvásárlásával kapcsolatban lásd: a [kiszolgálók erőforrás-korlátainak áttekintése](resource-limits-logical-server.md).
+* Az Azure SQL Database DTU beszerzési modellre vonatkozó korlátozásait lásd: a DTU erőforrás-korlátozásai az [önálló adatbázisok](resource-limits-dtu-single-databases.md) és a [DTU-erőforrások korlátai rugalmas készletek](resource-limits-dtu-elastic-pools.md).
+* A virtuális mag erőforrás-korlátaival kapcsolatban lásd: virtuális mag-erőforrás korlátai [– Azure SQL Database](resource-limits-vcore-single-databases.md) és [virtuális mag erőforrás-korlátok – rugalmas készletek](resource-limits-vcore-elastic-pools.md).
+* A különböző vásárlási modellekkel kapcsolatos további információkért lásd: [modellek és szolgáltatási szintek beszerzése](purchasing-models.md).
 
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
 
-A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) és a tárterületet a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](elastic-pool-manage.md#powershell), az [Azure CLI](elastic-pool-manage.md#azure-cli)vagy a [REST API](elastic-pool-manage.md#rest-api)használatával állíthatja be.
+Minden írásvédett replika saját erőforrásokkal rendelkezik, mint például a virtuális mag, a memória, az adatIOPS, a TempDB, a feldolgozók és a munkamenetek. Az egyes írásvédett replikák a cikk későbbi részében részletesen ismertetett erőforrás-korlátokra vonatkoznak.
+
+A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) és a tárolási mennyiséget a következő módon állíthatja be:
+
+* [Transact-SQL](elastic-pool-scale.md) az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database) használatával
+* [Azure Portal](elastic-pool-manage.md#azure-portal)
+* [PowerShell](elastic-pool-manage.md#powershell)
+* [Azure CLI](elastic-pool-manage.md#azure-cli)
+* [REST API](elastic-pool-manage.md#rest-api)
 
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [rugalmas készlet](elastic-pool-scale.md)skálázása.
